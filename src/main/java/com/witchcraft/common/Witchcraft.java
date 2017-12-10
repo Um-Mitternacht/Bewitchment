@@ -61,8 +61,6 @@ public class Witchcraft {
 		ModSpells.init();
 		proxy.preInit(event);
 
-		logger.info("<:// { W3LC0M3 T0 TH3 H4RUSP3X H0UR } >");
-
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
 	}
