@@ -165,6 +165,7 @@ public final class WitchcraftCreativeTabs {
 			addItem(ModItems.oak_apple_gall);
 			addItem(ModItems.absinthe_green);
 			addItem(ModItems.cold_iron_ingot);
+			addItem(ModItems.spell_page);
 		}
 	}
 

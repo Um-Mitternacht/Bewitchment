@@ -1,5 +1,6 @@
 package com.witchcraft.client.core;
 
+import com.witchcraft.api.spell.Spell;
 import com.witchcraft.client.ResourceLocations;
 import com.witchcraft.client.core.event.BrewHUD;
 import com.witchcraft.client.core.event.ClientEvents;
@@ -11,6 +12,7 @@ import com.witchcraft.client.handler.ItemCandleColorHandler;
 import com.witchcraft.client.handler.ModelHandler;
 import com.witchcraft.client.render.entity.BrewRenderer;
 import com.witchcraft.client.render.entity.EmptyRenderer;
+import com.witchcraft.client.render.entity.SpellRenderer;
 import com.witchcraft.client.render.tile.TileRenderCauldron;
 import com.witchcraft.common.Witchcraft;
 import com.witchcraft.common.block.ModBlocks;
@@ -18,12 +20,17 @@ import com.witchcraft.common.core.net.GuiHandler;
 import com.witchcraft.common.core.proxy.ISidedProxy;
 import com.witchcraft.common.entity.EntityBrew;
 import com.witchcraft.common.entity.EntityBrewLinger;
+import com.witchcraft.common.entity.EntitySpellCarrier;
 import com.witchcraft.common.item.ModItems;
+import com.witchcraft.common.item.magic.ItemSpellPage;
 import com.witchcraft.common.tile.TileCauldron;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -82,6 +89,18 @@ public class ClientProxy implements ISidedProxy {
 				Item.getItemFromBlock(ModBlocks.candle_small));
 		items.registerItemColorHandler(new BrewItemColorHandler(),
 				ModItems.brew_phial_drink, ModItems.brew_phial_splash, ModItems.brew_phial_linger);
+		
+		items.registerItemColorHandler(new IItemColor() {
+			
+			@Override
+			public int colorMultiplier(ItemStack stack, int tintIndex) {
+				if (tintIndex==0) {
+					Spell s = ItemSpellPage.getSpellFromItemStack(stack);
+					if (s!=null) return s.getColor();
+				}
+				return -1;
+			}
+		}, ModItems.spell_page);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(Witchcraft.instance, new GuiHandler());
 	}
@@ -113,7 +132,8 @@ public class ClientProxy implements ISidedProxy {
 	private void registerRenders() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBrew.class, BrewRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBrewLinger.class, EmptyRenderer::new);
-
+		RenderingRegistry.registerEntityRenderingHandler(EntitySpellCarrier.class, SpellRenderer::new);
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCauldron.class, new TileRenderCauldron());
 	}
 }

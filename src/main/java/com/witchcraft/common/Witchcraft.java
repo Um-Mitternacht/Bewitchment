@@ -1,5 +1,10 @@
 package com.witchcraft.common;
 
+import static com.witchcraft.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.witchcraft.common.block.ModBlocks;
 import com.witchcraft.common.brew.ModBrews;
 import com.witchcraft.common.core.capability.brew.CapabilityBrewStorage;
@@ -15,18 +20,16 @@ import com.witchcraft.common.entity.ModEntities;
 import com.witchcraft.common.item.ModItems;
 import com.witchcraft.common.item.food.seed.SeedDropRegistry;
 import com.witchcraft.common.lib.LibMod;
+import com.witchcraft.common.spell.ModSpells;
+
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.witchcraft.common.lib.LibMod.MOD_NAME;
-import static net.minecraftforge.fml.common.Mod.EventHandler;
-import static net.minecraftforge.fml.common.Mod.Instance;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -55,6 +58,7 @@ public class Witchcraft {
 		ModEvents.init();
 		ModEntities.init();
 		ModBrews.init();
+		ModSpells.init();
 		proxy.preInit(event);
 
 		logger.info("<:// { W3LC0M3 T0 TH3 H4RUSP3X H0UR } >");

@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "witchcraft:items/spell_static",
+        "layer0": "witchcraft:items/spell_inside"
+    }
+}
