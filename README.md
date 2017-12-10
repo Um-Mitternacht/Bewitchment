@@ -1,7 +1,7 @@
 # Witchworks
 A mod inspired by Witchery
 
-[![Build Status](https://travis-ci.org/Um-Mitternacht/Witchworks.svg?branch=1.12.1)](https://travis-ci.org/Um-Mitternacht/Witchworks)
+[![Build Status](https://travis-ci.org/Um-Mitternacht/Unnamed-Witchery-Clone.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Unnamed-Witchery-Clone)
 
 WIP, but Alpha Builds are being released to GitHub on a regular basis.
 
