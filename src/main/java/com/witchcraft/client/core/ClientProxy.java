@@ -24,7 +24,6 @@ import com.witchcraft.common.entity.EntitySpellCarrier;
 import com.witchcraft.common.item.ModItems;
 import com.witchcraft.common.item.magic.ItemSpellPage;
 import com.witchcraft.common.tile.TileCauldron;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -89,14 +88,14 @@ public class ClientProxy implements ISidedProxy {
 				Item.getItemFromBlock(ModBlocks.candle_small));
 		items.registerItemColorHandler(new BrewItemColorHandler(),
 				ModItems.brew_phial_drink, ModItems.brew_phial_splash, ModItems.brew_phial_linger);
-		
+
 		items.registerItemColorHandler(new IItemColor() {
-			
+
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				if (tintIndex==0) {
+				if (tintIndex == 0) {
 					Spell s = ItemSpellPage.getSpellFromItemStack(stack);
-					if (s!=null) return s.getColor();
+					if (s != null) return s.getColor();
 				}
 				return -1;
 			}
@@ -133,7 +132,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBrew.class, BrewRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBrewLinger.class, EmptyRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpellCarrier.class, SpellRenderer::new);
-		
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCauldron.class, new TileRenderCauldron());
 	}
 }

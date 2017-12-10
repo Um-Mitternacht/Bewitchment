@@ -7,7 +7,6 @@
 package com.witchcraft.common.spell;
 
 import com.witchcraft.api.spell.Spell;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,11 +30,11 @@ public class SpellDisarming extends Spell {
 			EnumHand hand = null;
 			if (!entity.getHeldItemMainhand().isEmpty()) hand = EnumHand.MAIN_HAND;
 			else if (!entity.getHeldItemOffhand().isEmpty()) hand = EnumHand.OFF_HAND;
-			if (hand!=null) {
+			if (hand != null) {
 				ItemStack stack = entity.getHeldItem(hand).copy();
 				entity.setHeldItem(hand, ItemStack.EMPTY);
-				if (!(entity instanceof EntityPlayer) && stack.isItemStackDamageable() && stack.getItemDamage()==0) {
-					stack.setItemDamage((int) (stack.getMaxDamage()*(0.5D+0.5D*Math.random())));
+				if (!(entity instanceof EntityPlayer) && stack.isItemStackDamageable() && stack.getItemDamage() == 0) {
+					stack.setItemDamage((int) (stack.getMaxDamage() * (0.5D + 0.5D * Math.random())));
 				}
 				EntityItem ei = new EntityItem(world, entity.posX, entity.posY, entity.posZ, stack);
 				ei.setPickupDelay(200);

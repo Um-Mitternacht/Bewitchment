@@ -7,7 +7,6 @@
 package com.witchcraft.common.spell;
 
 import com.witchcraft.api.spell.Spell;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -24,8 +23,8 @@ public class SpellSlowness extends Spell {
 
 	@Override
 	public void performEffect(RayTraceResult rtrace, EntityLivingBase caster, World world) {
-		if (rtrace.typeOfHit==Type.ENTITY && rtrace.entityHit instanceof EntityLivingBase) {
-			((EntityLivingBase)rtrace.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 120, false, false));
+		if (rtrace.typeOfHit == Type.ENTITY && rtrace.entityHit instanceof EntityLivingBase) {
+			((EntityLivingBase) rtrace.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 120, false, false));
 		}
 	}
 

@@ -19,17 +19,9 @@ import com.witchcraft.common.item.magic.books.ItemShadowBook;
 import com.witchcraft.common.item.magic.brew.ItemBrewDrink;
 import com.witchcraft.common.item.magic.brew.ItemBrewLinger;
 import com.witchcraft.common.item.magic.brew.ItemBrewSplash;
-import com.witchcraft.common.item.tool.ItemAthame;
-import com.witchcraft.common.item.tool.ItemBoline;
-import com.witchcraft.common.item.tool.ItemSalt;
-import com.witchcraft.common.item.tool.ItemSilverAxe;
-import com.witchcraft.common.item.tool.ItemSilverHoe;
-import com.witchcraft.common.item.tool.ItemSilverPickaxe;
-import com.witchcraft.common.item.tool.ItemSilverSpade;
-import com.witchcraft.common.item.tool.ItemSilverSword;
+import com.witchcraft.common.item.tool.*;
 import com.witchcraft.common.lib.LibItemName;
 import com.witchcraft.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
@@ -147,7 +139,7 @@ public final class ModItems {
 	public static final Item silver_chestplate = PLACE_HOLDER;
 	public static final Item silver_leggings = PLACE_HOLDER;
 	public static final Item silver_boots = PLACE_HOLDER;
-	
+
 	public static final Item spell_page = PLACE_HOLDER;
 
 	private ModItems() {
@@ -166,9 +158,9 @@ public final class ModItems {
 		registry.register(new ItemMod(LibItemName.SILVER_POWDER));
 		registry.register(new ItemMod(LibItemName.SILVER_INGOT));
 		registry.register(new ItemMod(LibItemName.SILVER_NUGGET));
-		
+
 		registry.register(new ItemSpellPage(LibItemName.SPELL_PAGE));
-		
+
 		//Misc
 		registry.registerAll(
 				new ItemHoney(),

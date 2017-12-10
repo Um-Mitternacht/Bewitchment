@@ -1,12 +1,8 @@
 package com.witchcraft.common.entity;
 
-import com.witchcraft.api.spell.Spell;
-import com.witchcraft.api.spell.Spell.EnumSpellType;
 import com.witchcraft.common.Witchcraft;
 import com.witchcraft.common.item.ModItems;
-import com.witchcraft.common.item.magic.ItemSpellPage;
 import com.witchcraft.common.lib.LibMod;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorProjectileDispense;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -14,11 +10,7 @@ import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.RayTraceResult.Type;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 

@@ -6,13 +6,10 @@
 
 package com.witchcraft.common.item.magic;
 
-import javax.annotation.Nullable;
-
 import com.witchcraft.api.spell.Spell;
 import com.witchcraft.api.spell.Spell.EnumSpellType;
 import com.witchcraft.common.entity.EntitySpellCarrier;
 import com.witchcraft.common.item.ItemMod;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -22,16 +19,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class ItemSpellPage extends ItemMod {
 
@@ -39,19 +33,20 @@ public class ItemSpellPage extends ItemMod {
 		super(id);
 		this.setMaxStackSize(1);
 		this.setHasSubtypes(true);
-		
+
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, new IBehaviorDispenseItem() {
 
 			@Override
 			public ItemStack dispense(IBlockSource source, ItemStack stack) {
 				Spell s = ItemSpellPage.getSpellFromItemStack(stack);
-				if (s!=null) {
-					EnumFacing enumfacing = (EnumFacing)source.getBlockState().getValue(BlockDispenser.FACING);
+				if (s != null) {
+					EnumFacing enumfacing = (EnumFacing) source.getBlockState().getValue(BlockDispenser.FACING);
 					Vec3d lookVect = new Vec3d(enumfacing.getDirectionVec());
 					if (s.canBeUsed(source.getWorld(), source.getBlockPos().offset(enumfacing), null)) {
-						if (s.getType()==EnumSpellType.INSTANT) s.performEffect(new RayTraceResult(Type.MISS, lookVect, EnumFacing.UP, source.getBlockPos()), null, source.getWorld());
+						if (s.getType() == EnumSpellType.INSTANT)
+							s.performEffect(new RayTraceResult(Type.MISS, lookVect, EnumFacing.UP, source.getBlockPos()), null, source.getWorld());
 						else {
-							EntitySpellCarrier car = new EntitySpellCarrier(source.getWorld(), source.getBlockPos().getX()+1.5*lookVect.x+0.5, source.getBlockPos().getY()+0.5d+lookVect.y, source.getBlockPos().getZ()+1.5*lookVect.z+0.5);
+							EntitySpellCarrier car = new EntitySpellCarrier(source.getWorld(), source.getBlockPos().getX() + 1.5 * lookVect.x + 0.5, source.getBlockPos().getY() + 0.5d + lookVect.y, source.getBlockPos().getZ() + 1.5 * lookVect.z + 0.5);
 							car.setSpell(s);
 							car.setCaster(null);
 							car.shoot(car, 0, enumfacing.getHorizontalAngle(), 0, 1f, 0);
@@ -63,31 +58,9 @@ public class ItemSpellPage extends ItemMod {
 				return stack;
 			}
 		});
-		
+
 	}
-	
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if (this.isInCreativeTab(tab)) {
-			for (Spell s:Spell.SPELL_REGISTRY) {
-				items.add(getStackFor(s));
-			}
-		}
-	}
-	
-	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("spell")) return super.getUnlocalizedName(stack)+"."+stack.getTagCompound().getString("spell").replace(':', '.');
-		return super.getUnlocalizedName(stack);
-	}
-	
-	public ItemStack getStackFor(Spell s) {
-		ItemStack stack = new ItemStack(this);
-		stack.setTagCompound(new NBTTagCompound());
-		stack.getTagCompound().setString("spell", s.getRegistryName().toString());
-		return stack;
-	}
-	
+
 	@Nullable
 	public static Spell getSpellFromItemStack(ItemStack stack) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("spell")) {
@@ -95,40 +68,64 @@ public class ItemSpellPage extends ItemMod {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		if (this.isInCreativeTab(tab)) {
+			for (Spell s : Spell.SPELL_REGISTRY) {
+				items.add(getStackFor(s));
+			}
+		}
+	}
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("spell"))
+			return super.getUnlocalizedName(stack) + "." + stack.getTagCompound().getString("spell").replace(':', '.');
+		return super.getUnlocalizedName(stack);
+	}
+
+	public ItemStack getStackFor(Spell s) {
+		ItemStack stack = new ItemStack(this);
+		stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setString("spell", s.getRegistryName().toString());
+		return stack;
+	}
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		Spell s = getSpellFromItemStack(playerIn.getHeldItem(handIn));
-		if (s!=null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
+		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 		} else {
 			return super.onItemRightClick(worldIn, playerIn, handIn);
 		}
 	}
-	
+
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		Spell spell = getSpellFromItemStack(stack);
-		if (spell!=null && !worldIn.isRemote) {
-			if (spell.getType()==EnumSpellType.INSTANT) spell.performEffect(new RayTraceResult(Type.MISS, entityLiving.getLookVec(), EnumFacing.UP, entityLiving.getPosition()), entityLiving, worldIn);
+		if (spell != null && !worldIn.isRemote) {
+			if (spell.getType() == EnumSpellType.INSTANT)
+				spell.performEffect(new RayTraceResult(Type.MISS, entityLiving.getLookVec(), EnumFacing.UP, entityLiving.getPosition()), entityLiving, worldIn);
 			else {
-				EntitySpellCarrier car = new EntitySpellCarrier(worldIn, entityLiving.posX+entityLiving.getLookVec().x, entityLiving.posY+entityLiving.getEyeHeight()+entityLiving.getLookVec().y, entityLiving.posZ+entityLiving.getLookVec().z);
+				EntitySpellCarrier car = new EntitySpellCarrier(worldIn, entityLiving.posX + entityLiving.getLookVec().x, entityLiving.posY + entityLiving.getEyeHeight() + entityLiving.getLookVec().y, entityLiving.posZ + entityLiving.getLookVec().z);
 				car.setSpell(spell);
 				car.setCaster(entityLiving);
 				car.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 2f, 0);
 				worldIn.spawnEntity(car);
 			}
 		}
-		if (entityLiving instanceof EntityPlayer && ((EntityPlayer)entityLiving).isCreative()) return stack;
+		if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).isCreative()) return stack;
 		return ItemStack.EMPTY;
 	}
-	
+
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 30;
 	}
-	
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BOW;

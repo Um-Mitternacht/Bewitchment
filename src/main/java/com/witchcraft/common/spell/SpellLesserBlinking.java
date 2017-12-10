@@ -7,7 +7,6 @@
 package com.witchcraft.common.spell;
 
 import com.witchcraft.api.spell.Spell;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -21,7 +20,7 @@ public class SpellLesserBlinking extends Spell {
 
 	@Override
 	public void performEffect(RayTraceResult rtrace, EntityLivingBase caster, World world) {
-		if (caster!=null) {
+		if (caster != null) {
 			BlockPos dest = new BlockPos(caster.getPositionVector().add(caster.getLookVec().scale(2).addVector(0, 1, 0)));
 			if (!world.getBlockState(dest).causesSuffocation()) {
 				caster.setPositionAndUpdate(dest.getX(), dest.getY(), dest.getZ());

@@ -7,12 +7,7 @@
 package com.witchcraft.common.spell;
 
 import com.witchcraft.api.spell.Spell;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockButton;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockLever;
-import net.minecraft.block.BlockTrapDoor;
+import net.minecraft.block.*;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
@@ -29,9 +24,9 @@ public class SpellActivation extends Spell {
 
 	@Override
 	public void performEffect(RayTraceResult rtrace, EntityLivingBase caster, World world) {
-		if (rtrace.typeOfHit==Type.BLOCK) {
+		if (rtrace.typeOfHit == Type.BLOCK) {
 			Block block = world.getBlockState(rtrace.getBlockPos()).getBlock();
-			if ((caster==null || caster instanceof EntityPlayer) && (block instanceof BlockButton || block instanceof BlockLever || block instanceof BlockDoor || block instanceof BlockTrapDoor)) {
+			if ((caster == null || caster instanceof EntityPlayer) && (block instanceof BlockButton || block instanceof BlockLever || block instanceof BlockDoor || block instanceof BlockTrapDoor)) {
 				block.onBlockActivated(world, rtrace.getBlockPos(), world.getBlockState(rtrace.getBlockPos()), (EntityPlayer) caster, EnumHand.MAIN_HAND, rtrace.sideHit, 0.5f, 0.5f, 0.5f);
 			}
 		}

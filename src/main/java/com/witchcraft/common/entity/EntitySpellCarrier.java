@@ -6,15 +6,9 @@
 
 package com.witchcraft.common.entity;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.witchcraft.api.spell.Spell;
 import com.witchcraft.api.spell.Spell.EnumSpellType;
 import com.witchcraft.common.Witchcraft;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -27,15 +21,19 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class EntitySpellCarrier extends EntityThrowable {
-	
+
 	private static final DataParameter<String> SPELL = EntityDataManager.<String>createKey(EntitySpellCarrier.class, DataSerializers.STRING);
 	private static final DataParameter<String> CASTER = EntityDataManager.<String>createKey(EntitySpellCarrier.class, DataSerializers.STRING);
-	
+
 	public EntitySpellCarrier(World world) {
 		super(world);
 	}
-	
+
 	public EntitySpellCarrier(World worldIn, double x, double y, double z) {
 		super(worldIn, x, y, z);
 	}
@@ -52,65 +50,66 @@ public class EntitySpellCarrier extends EntityThrowable {
 	public void setSpell(Spell spell) {
 		setSpell(spell.getRegistryName().toString());
 	}
-	
+
 	private void setSpell(String spell) {
 		this.getDataManager().set(SPELL, spell);
 		this.getDataManager().setDirty(SPELL);
 	}
-	
+
 	private void setCaster(String uuid) {
 		this.getDataManager().set(CASTER, uuid);
 		this.getDataManager().setDirty(CASTER);
 	}
-	
+
 	public void setCaster(EntityLivingBase player) {
-		if (player!=null) setCaster(player.getUniqueID().toString());
+		if (player != null) setCaster(player.getUniqueID().toString());
 		else setCaster("");
 	}
-	
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setString("spell", getSpellName());
 		compound.setString("caster", getCasterUUID());
 	}
-	
+
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setSpell(compound.getString("spell"));
 		this.setCaster(compound.getString("caster"));
 	}
-	
+
 	private String getSpellName() {
 		return this.getDataManager().get(SPELL);
 	}
-	
+
 	@Nullable
 	public Spell getSpell() {
 		return Spell.SPELL_REGISTRY.getValue(new ResourceLocation(getSpellName()));
 	}
-	
+
 	private String getCasterUUID() {
 		return this.getDataManager().get(CASTER);
 	}
-	
+
 	@Override
 	public void onEntityUpdate() {
 		super.onEntityUpdate();
-		if (ticksExisted>40) {
+		if (ticksExisted > 40) {
 			this.setDead();
 		}
 	}
-	
+
 	@Nullable
 	public EntityLivingBase getCaster() {
 		String uuid = getCasterUUID();
-		if (uuid==null || uuid.equals("")) return null;
+		if (uuid == null || uuid.equals("")) return null;
 		EntityLivingBase player = this.world.getPlayerEntityByUUID(UUID.fromString(uuid));
-		if (player!=null) return player;
+		if (player != null) return player;
 		ArrayList<Entity> ent = new ArrayList<Entity>(world.getLoadedEntityList());
-		for (Entity e:ent) if (e instanceof EntityLivingBase && uuid.equals(e.getUniqueID().toString())) return (EntityLivingBase) e;
+		for (Entity e : ent)
+			if (e instanceof EntityLivingBase && uuid.equals(e.getUniqueID().toString())) return (EntityLivingBase) e;
 		return null;
 	}
 
@@ -119,14 +118,17 @@ public class EntitySpellCarrier extends EntityThrowable {
 		if (!world.isRemote) {
 			Spell spell = getSpell();
 			EntityLivingBase caster = getCaster();
-			if (spell!=null) {
-				if (result.typeOfHit!=Type.ENTITY || result.entityHit!=caster) spell.performEffect(result, caster, world);
-				if (result.typeOfHit == Type.BLOCK && (spell.getType()==EnumSpellType.PROJECTILE_BLOCK||spell.getType()==EnumSpellType.PROJECTILE_ALL)) this.setDead();
-				if (result.typeOfHit == Type.ENTITY && (spell.getType()==EnumSpellType.PROJECTILE_ENTITY||spell.getType()==EnumSpellType.PROJECTILE_ALL) && result.entityHit!=caster) this.setDead();
-			} else Witchcraft.logger.warn("Spell is null for "+this+" with spell reg name of "+getSpellName());
+			if (spell != null) {
+				if (result.typeOfHit != Type.ENTITY || result.entityHit != caster)
+					spell.performEffect(result, caster, world);
+				if (result.typeOfHit == Type.BLOCK && (spell.getType() == EnumSpellType.PROJECTILE_BLOCK || spell.getType() == EnumSpellType.PROJECTILE_ALL))
+					this.setDead();
+				if (result.typeOfHit == Type.ENTITY && (spell.getType() == EnumSpellType.PROJECTILE_ENTITY || spell.getType() == EnumSpellType.PROJECTILE_ALL) && result.entityHit != caster)
+					this.setDead();
+			} else Witchcraft.logger.warn("Spell is null for " + this + " with spell reg name of " + getSpellName());
 		}
 	}
-	
+
 	@Override
 	public void setDead() {
 //		for (int i=0; i<40;i++) Covens.proxy.spawnParticleExplosionSpell(posX, posY, posZ, rand);//FIXME find how this code handles vanilla particle spawning
