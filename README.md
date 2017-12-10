@@ -6,3 +6,5 @@ A mod inspired by Witchery
 WIP, but Alpha Builds are being released to GitHub on a regular basis.
 
 A witchery-like mod in the progress. A decent amount of code has been done.
+
+MASSIVE CHANGE IN PROGRESS
