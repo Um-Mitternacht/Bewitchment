@@ -1,0 +1,6 @@
+{
+  "parent": "witchcraft:block/salt_side",
+  "textures": {
+    "line": "witchcraft:blocks/salt_dust_line1"
+  }
+}

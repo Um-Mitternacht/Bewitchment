@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 7
+    }
+  ],
+  "result": {
+    "item": "witchcraft:malachite_block",
+    "data": 0,
+    "count": 1
+  }
+}

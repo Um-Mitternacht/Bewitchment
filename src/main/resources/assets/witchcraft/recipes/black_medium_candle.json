@@ -1,0 +1,26 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "S ",
+    "T ",
+    "TD"
+  ],
+  "key": {
+    "S": {
+      "item": "witchcraft:candle_small",
+      "data": 0
+    },
+    "T": {
+      "item": "witchcraft:wax",
+      "data": 0
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlack"
+    }
+  },
+  "result": {
+    "item": "witchcraft:candle_medium",
+    "data": 15
+  }
+}

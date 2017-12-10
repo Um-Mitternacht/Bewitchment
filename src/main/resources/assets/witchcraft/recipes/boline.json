@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SS ",
+    "  S",
+    "  G"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "G": {
+      "item": "witchcraft:gem",
+      "data": 5
+    }
+  },
+  "result": {
+    "item": "witchcraft:boline",
+    "data": 0
+  }
+}

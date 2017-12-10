@@ -1,0 +1,145 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "gradle"
+            url "https://plugins.gradle.org/m2/"
+        }		
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.7'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.matthewprenger.cursegradle'
+apply plugin: "checkstyle"
+
+checkstyle {
+    toolVersion = "6.11.2"
+    configFile = new File(rootDir, "checkstyle/checkstyle.xml")
+}
+
+version = "${mc_version}-${ww_version}"
+group = "com.witchcraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "Witchcraft"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+class StructExtApi {
+    String name
+    String api
+    String exclusion
+    String root = api
+}
+
+minecraft {
+    version = mc_forge_version
+    mappings = mcp_mappings
+    runDir = "run"
+	
+    replace '@FINGERPRINT@', project.findProperty('signSHA1')	
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven {
+        name = "Mobius Repo"
+        url = "http://tehnut.info/maven"
+    }
+    maven {
+        name = "leviathan"
+        url = "http://maven.leviathan-studio.com/artifactory/leviathan/"
+    }	
+    maven {
+        name = "JEI"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven { 
+    	url = "https://minecraft.curseforge.com/api/maven/"
+    }    
+     maven {
+     	name = "ModMaven"
+    	url = "modmaven.k-4u.nl"
+    }    
+    maven {
+     	name = "ModMaven"
+    	url = "modmaven.k-4u.nl"
+    }     
+    maven {
+        url 'https://jitpack.io'	
+	}
+}
+
+dependencies {
+    deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
+    deobfCompile "baubles:Baubles:1.12:1.5.1"
+    deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+    compile 'com.leviathanstudio:CraftStudio:1.0.0.93-mc1.12-alpha:dev'
+    runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ["-Xlint:all", "-Xlint:deprecation", "-Xlint:rawtypes", "-Xlint:unchecked"]
+    options.deprecation = true
+    options.encoding = "UTF-8"
+}
+
+runClient {
+    if(project.hasProperty("mc_username") && project.hasProperty("mc_password") ) {
+        args "--username=${project.mc_username}"
+        args "--password=${project.mc_password}"
+    }
+}
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
+
+    // Skips if the keyStore property is missing.
+    onlyIf {
+        project.hasProperty('keyStore')
+    }
+
+    // findProperty allows us to reference the property without it existing.
+    // Using project.propName would cause the script to fail validation if
+    // the property did not exist.
+    keyStore = project.findProperty('keyStore')
+    alias = project.findProperty('keyStoreAlias')
+    storePass = project.findProperty('keyStorePass')
+    keyPass = project.findProperty('keyStoreKeyPass')
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
+}
+
+build.dependsOn signJar
+
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}

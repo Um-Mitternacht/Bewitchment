@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    },
+    {
+      "item": "witchcraft:gem",
+      "data": 4
+    }
+  ],
+  "result": {
+    "item": "witchcraft:tourmaline_block",
+    "data": 0,
+    "count": 1
+  }
+}

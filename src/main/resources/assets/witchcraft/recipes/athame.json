@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " S ",
+    "SGS",
+    " T "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "G": {
+      "item": "witchcraft:gem",
+      "data": 9
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "witchcraft:athame",
+    "data": 0
+  }
+}

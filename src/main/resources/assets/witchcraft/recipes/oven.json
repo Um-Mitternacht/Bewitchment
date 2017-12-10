@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "NNN",
+    "NIN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_bars",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "witchcraft:oven",
+    "data": 0
+  }
+}

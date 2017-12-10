@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:amethyst_block",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "witchcraft:gem",
+    "data": 8,
+    "count": 9
+  }
+}

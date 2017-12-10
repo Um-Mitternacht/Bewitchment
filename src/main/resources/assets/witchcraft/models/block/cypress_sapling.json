@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "witchcraft:blocks/cypress_sapling"
+  }
+}

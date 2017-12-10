@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "T",
+    "T"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "T": {
+      "item": "witchcraft:wax",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "witchcraft:candle_small",
+    "data": 0
+  }
+}

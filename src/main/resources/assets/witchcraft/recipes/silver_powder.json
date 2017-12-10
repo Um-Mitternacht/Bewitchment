@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:mortar_and_pestle",
+      "data": 0
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "oreSilver"
+    }
+  ],
+  "result": {
+    "item": "witchcraft:silver_powder",
+    "data": 0,
+    "count": 2
+  }
+}

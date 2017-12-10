@@ -1,0 +1,50 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:fluid"
+  },
+  "variants": {
+    "for.honey": [
+      {
+        "custom": {
+          "fluid": "for.honey"
+        }
+      }
+    ],
+    "oil_mundane": [
+      {
+        "custom": {
+          "fluid": "oil_mundane"
+        }
+      }
+    ],
+    "oil_soothing": [
+      {
+        "custom": {
+          "fluid": "oil_soothing"
+        }
+      }
+    ],
+    "oil_spicy": [
+      {
+        "custom": {
+          "fluid": "oil_spicy"
+        }
+      }
+    ],
+    "oil_toxic": [
+      {
+        "custom": {
+          "fluid": "oil_toxic"
+        }
+      }
+    ],
+    "oil_magical": [
+      {
+        "custom": {
+          "fluid": "oil_magical"
+        }
+      }
+    ]
+  }
+}

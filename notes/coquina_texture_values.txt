@@ -1,0 +1,15 @@
+sepia on cobble
+
+hue -3
+
+saturation 161
+
+lightness 37
+
+noise:
+
+color saturation 0
+
+coverage 100
+
+intensity 20

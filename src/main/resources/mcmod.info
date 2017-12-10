@@ -1,0 +1,18 @@
+[
+{
+  "modid": "witchcraft",
+  "name": "Witchcraft",
+  "description": "A Witchery inspired mod",
+  "version":"${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Sunconure11/Spinosaurus111/NotLegalTender", "ArekkuusuJerii", "Ingoleth", "KingEdward9830", "Thermawrench", "Felinoel", "BigHatMagnus", "Hman745", "BerciTheBeast", "Triliton", "mljola9", "Witch_Cat", "DivineAspect", "EyrionOfTime", "TrollWorkout", "Abused_Master"],
+  "credits": "To all contributors of the mod. Credit to Monospace for Nethersteel Textures. Credit to Dobroide and NewAgeSoup for some of the sounds.",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [ "baubles", "forge" ],
+  "dependencies": [ "baubles", "forge" ],
+  "useDependencyInformation": true
+}
+]

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:tourmaline_block",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "witchcraft:gem",
+    "data": 4,
+    "count": 9
+  }
+}

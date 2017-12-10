@@ -1,0 +1,10 @@
+diff a/src/main/java/com/witchcraft/common/core/handler/ConfigHandler.java b/src/main/java/com/witchcraft/common/core/handler/ConfigHandler.java	(rejected hunks)
+@@ -84,7 +84,7 @@
+ 			public int bloodStone_max_vein = 2;
+ 			public int bloodStone_min_height = 10;
+ 			public int bloodStone_max_height = 100;
+-			public int bloodStone_gen_chance = 6;
++			public int bloodStone_gen_chance = 1;
+ 		}
+ 
+ 		public static class Tourmaline {

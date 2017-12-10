@@ -1,0 +1,474 @@
+//CreativeTab
+itemGroup.witchcraft_plants=Witchcraft - Plants and Herbs
+itemGroup.witchcraft_items=Witchcraft - Sticks and Stones
+itemGroup.witchcraft_blocks=Witchcraft - Blocks
+
+//Config
+witchcraft.config.world_gen=World Gen
+witchcraft.config.energy_hud=Energy HUD
+witchcraft.config.brew_hud=Brews HUD
+
+//Gui
+container.apiary=Apiary
+container.oven=Oven
+
+////Names
+//Items
+item.seed_aconitum.name=Aconitum Seeds
+item.seed_asphodel.name=Asphodel Seeds
+item.seed_belladonna.name=Belladonna Seeds
+item.seed_ginger.name=Ginger Seeds
+item.seed_kelp.name=Kelp Spores
+item.seed_mint.name=Mint Seeds
+item.seed_white_sage.name=White Sage Seeds
+item.seed_mandrake.name=Mandrake Seeds
+item.seed_lavender.name=Lavender Seeds
+item.seed_thistle.name=Thistle Seeds
+item.seed_silphium.name=Silphium Seeds
+item.seed_tulsi.name=Tulsi Seeds
+item.seed_garlic.name=Garlic Seeds
+item.seed_kenaf.name=Kenaf Seeds
+item.seed_wormwood.name=Wormwood Seeds
+
+//Crops
+item.aconitum.name=Aconitum
+item.asphodel.name=Asphodel
+item.belladonna.name=Belladonna
+item.ginger.name=Ginger
+item.kelp.name=Kelp
+item.mint.name=Mint
+item.white_sage.name=White Sage
+item.mandrake_root.name=Mandrake Root
+item.lavender.name=Lavender
+item.thistle.name=Thistle
+item.silphium.name=Silphium
+item.wormwood.name=Wormwood
+item.kenaf.name=Kenaf
+item.garlic.name=Garlic
+item.tulsi.name=Tulsi
+
+//Gemstones
+item.gem_garnet.name=Garnet
+item.gem_moldavite.name=Moldavite
+item.gem_nuummite.name=Nuummite
+item.gem_tourmaline.name=Tourmaline
+item.gem_tigers_eye.name=Tiger's Eye
+item.gem_bloodstone.name=Bloodstone
+item.gem_jasper.name=Jasper
+item.gem_malachite.name=Malachite
+item.gem_amethyst.name=Amethyst
+item.gem_alexandrite.name=Alexandrite
+item.quartz.name=Quartz
+item.gemstone_amalgam.name=Gemstone Amalgam
+
+//Resources and Tools
+item.wax.name=Wax
+item.honey.name=Honey
+item.honeycomb.name=Honeycomb
+item.empty_honeycomb.name=Empty Honeycomb
+item.glass_jar.name=Glass Jar
+item.wool_of_bat.name=Wool of Bat
+item.tongue_of_dog.name=Tongue of Dog
+item.wood_ash.name=Wood Ash
+item.ectoplasm.name=Ectoplasm
+item.spectral_dust.name=Spectral Dust
+item.silver_scales.name=Silver Scales
+item.eye_of_old.name=Eye of Old
+item.heart.name=Heart
+item.envenomed_fang.name=Envenomed Fang
+item.dimensional_sand.name=Dimensional Sand
+item.chromatic_quill.name=Chromatic Quill
+item.carnivorous_tooth.name=Carnivorous Tooth
+item.eye_of_ancient.name=Eye of Ancient
+item.hoof.name=Hoof
+item.equine_tail.name=Equine's Tail
+item.bee.name=Bee
+item.salt.name=Salt
+item.cold_iron_ingot.name=Cold Iron Ingot
+item.silver_ingot.name=Silver Ingot
+item.silver_nugget.name=Silver Nugget
+item.silver_powder.name=Silver Powder
+item.silver_pickaxe.name=Silver Pickaxe
+item.silver_sword.name=Silver Sword
+item.silver_axe.name=Silver Axe
+item.silver_spade.name=Silver Spade
+item.silver_hoe.name=Silver Hoe
+item.silver_helmet.name=Silver Helmet
+item.silver_chestplate.name=Silver Chestplate
+item.silver_leggings.name=Silver Leggings
+item.silver_boots.name=Silver Boots
+item.athame.name=Athame
+item.boline.name=Boline
+item.mortar_and_pestle.name=Mortar and Pestle
+item.brew_phial.name=Brew Phial
+item.taglock.name=Taglock Kit
+item.chalk_item.name=Mundane Chalk
+item.wand.name=Wand
+item.needle_bone.name=Bone Needle
+item.unrefined_chalk.name=Unrefined Chalk
+item.brew_phial_drink.name=Brew Phial
+item.brew_phial_splash.name=Splash Brew Phial
+item.brew_phial_drink_lingering.name=Lingering Brew Phial
+item.oak_apple_gall.name=Oak Apple Gall
+item.grilled_watermelon.name=Grilled Watermelon
+item.fume.name=Foul Fume
+
+//Dyes
+item.catechu.name=Catechu Brown
+item.absinthe_green.name=Absinthe Green
+item.albedo.name=Alchemical White
+item.iron_gall_ink.name=Iron Gall Ink
+
+//Blocks
+tile.candle_small.white.name=Small White Candle
+tile.candle_small.orange.name=Small Orange Candle
+tile.candle_small.magenta.name=Small Magenta Candle
+tile.candle_small.lightBlue.name=Small Light Blue Candle
+tile.candle_small.yellow.name=Small Yellow Candle
+tile.candle_small.lime.name=Small Lime Candle
+tile.candle_small.pink.name=Small Pink Candle
+tile.candle_small.gray.name=Small Gray Candle
+tile.candle_small.silver.name=Small Light Grey Candle
+tile.candle_small.cyan.name=Small Cyan Candle
+tile.candle_small.purple.name=Small Purple Candle
+tile.candle_small.blue.name=Small Blue Candle
+tile.candle_small.brown.name=Small Brown Candle
+tile.candle_small.green.name=Small Green Candle
+tile.candle_small.red.name=Small Red Candle
+tile.candle_small.black.name=Small Black Candle
+
+tile.candle_medium.white.name=Medium White Candle
+tile.candle_medium.orange.name=Medium Orange Candle
+tile.candle_medium.magenta.name=Medium Magenta Candle
+tile.candle_medium.lightBlue.name=Medium Light Blue Candle
+tile.candle_medium.yellow.name=Medium Yellow Candle
+tile.candle_medium.lime.name=Medium Lime Candle
+tile.candle_medium.pink.name=Medium Pink Candle
+tile.candle_medium.gray.name=Medium Gray Candle
+tile.candle_medium.silver.name=Medium Light Grey Candle
+tile.candle_medium.cyan.name=Medium Cyan Candle
+tile.candle_medium.purple.name=Medium Purple Candle
+tile.candle_medium.blue.name=Medium Blue Candle
+tile.candle_medium.brown.name=Medium Brown Candle
+tile.candle_medium.green.name=Medium Green Candle
+tile.candle_medium.red.name=Medium Red Candle
+tile.candle_medium.black.name=Medium Black Candle
+
+tile.candle_large.white.name=Large White Candle
+tile.candle_large.orange.name=Large Orange Candle
+tile.candle_large.magenta.name=Large Magenta Candle
+tile.candle_large.lightBlue.name=Large Light Blue Candle
+tile.candle_large.yellow.name=Large Yellow Candle
+tile.candle_large.lime.name=Large Lime Candle
+tile.candle_large.pink.name=Large Pink Candle
+tile.candle_large.gray.name=Large Gray Candle
+tile.candle_large.silver.name=Large Light Grey Candle
+tile.candle_large.cyan.name=Large Cyan Candle
+tile.candle_large.purple.name=Large Purple Candle
+tile.candle_large.blue.name=Large Blue Candle
+tile.candle_large.brown.name=Large Brown Candle
+tile.candle_large.green.name=Large Green Candle
+tile.candle_large.red.name=Large Red Candle
+tile.candle_large.black.name=Large Black Candle
+
+tile.crop_aconitum.name=Aconitum Crop
+tile.crop_asphodel.name=Asphodel Crop
+tile.crop_belladonna.name=Belladonna Crop
+tile.crop_ginger.name=Ginger Crop
+tile.crop_kelp.name=Kelp Crop
+tile.crop_mint.name=Mint Crop
+tile.crop_white_sage.name=White Sage Crop
+tile.crop_mandrake_root.name=Mandrake Crop
+tile.crop_lavender.name=Lavender Crop
+tile.crop_thistle.name=Thistle Crop
+tile.crop_silphium.name=Silphium Crop
+tile.crop_garlic.name=Garlic Crop
+tile.crop_wormwood.name=Wormwood Crop
+tile.crop_kenaf.name=Kenaf Crop
+tile.crop_tulsi.name=Tulsi Crop
+
+//Metals, Stones and Ores
+tile.silver_ore.name=Silver Ore
+tile.gem_ore_moldavite.name=Moldavite Ore
+tile.gem_ore_bloodstone.name=Bloodstone Ore
+tile.gem_ore_malachite.name=Malachite Ore
+tile.gem_ore_tourmaline.name=Tourmaline Ore
+tile.tourmaline_block.name=Tourmaline Block
+tile.moldavite_block.name=Moldavite Block
+tile.bloodstone_block.name=Bloodstone Block
+tile.tigers_eye_block.name=Tiger's Eye Block
+tile.malachite_block.name=Malachite Block
+tile.nuummite_block.name=Nuummite Block
+tile.garnet_block.name=Garnet Block
+tile.alexandrite_block.name=Alexandrite Block
+tile.jasper_block.name=Jasper Block
+tile.amethyst_block.name=Amethyst Block
+tile.silver_block.name=Silver Block
+tile.nethersteel.name=Nethersteel
+tile.gem_ore_jasper.name=Jasper Ore
+tile.gem_ore_tigers_eye.name=Tiger's Eye Ore
+tile.gem_ore_serpentine.name=Serpentine ore
+tile.gem_ore_nuummite.name=Nuummite Ore
+tile.gem_ore_garnet.name=Garnet Ore
+tile.salt_ore.name=Salt Ore
+tile.gem_ore_amethyst.name=Amethyst Ore
+tile.gem_ore_alexandrite.name=Alexandrite Ore
+tile.coquina.name=Coquina
+tile.chalk.name=Raw Chalk
+tile.unrefined_chalk.name=Unrefined Chalk
+tile.fake_ice.name=Perpetual Ice
+tile.fake_ice_fence.name=Perpetual Ice Fence
+tile.fake_ice_stairs.name=Perpetual Ice Stairs
+tile.fake_ice_slab_half.name=Perpetual Ice Slab
+
+//Saplings
+tile.cypress_sapling.name=Cypress Sapling
+
+//Mutant Plants
+tile.torchwood.name=Torchwood
+tile.ember_grass.name=Ember Grass
+
+//Devices
+tile.cauldron.name=Witches Cauldron
+tile.apiary.name=Apiary
+tile.beehive.name=Beehive
+tile.altar.name=Altar
+tile.oven.name=Oven
+
+//Fluid
+fluid.oil_mundane=Oil
+fluid.for.honey=Honey
+
+//Brew
+brew.instant=Instant
+
+brew.shell_armor.name=Shell Armor Brew
+brew.shell_armor.desc=The edges of your shell may hurt those who attack you.
+brew.shell_armor.tooltip=Shell Armor
+
+brew.spider_nightmare.name=Spider Nightmare Brew
+brew.spider_nightmare.desc=Surround your enemy with webs and spiders.
+brew.spider_nightmare.tooltip=Spider Nightmare
+
+brew.frostbite.name=Frostbite Brew
+brew.frostbite.desc=Encases a target in ice. May have other effects.
+brew.frostbite.tooltip=Frostbite
+
+brew.extinguish_fires.name=Extinguish Fires Brew
+brew.extinguish_fires.desc=Puts out any fires on you.
+brew.extinguish_fires.tooltip=Extinguish Fires
+
+brew.mars_water.name=Water of Mars Brew
+brew.mars_water.desc=Inflicts nasty debuffs on the target.
+brew.mars_water.tooltip=Mars water
+
+brew.holy_water.name=Holy Water
+brew.holy_water.desc=Damages undead and demons, but has no effect on the living.
+brew.holy_water.tooltip=Holy Water
+
+brew.volatility.name=Brew of Volatility
+brew.volatility.desc=Makes you explode upon being hit.
+brew.volatility.tooltip=Volatility
+
+brew.till_land.name=Tilled Land Brew
+brew.till_land.desc=Turns dirt into farmland when thrown.
+brew.till_land.tooltip=Tilled Land
+
+brew.fertilize.name=Fertilize Brew
+brew.fertilize.desc=Makes stuff grow when thrown.
+brew.fertilize.tooltip=Fertilize
+
+brew.harvest.name=Harvest Festival Brew
+brew.harvest.desc=Harvests crops when thrown.
+brew.harvest.tooltip=Harvest Festival
+
+brew.grow_flowers.name=Flower Apparition Brew
+brew.grow_flowers.desc=Makes flowers when thrown.
+brew.grow_flowers.tooltip=Flower Apparition
+
+brew.ender_inhibition.name=Ender Inhibition Brew
+brew.ender_inhibition.desc=Ender beings can't teleport.
+brew.ender_inhibition.tooltip=Ender Inhibition
+
+brew.path_of_the_deep.name=Path of the Deep Brew
+brew.path_of_the_deep.desc=Allows you to swim faster.
+brew.path_of_the_deep.tooltip=Path of the Deep
+
+brew.rock_pulverize.name=Rock Pulverize Brew
+brew.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
+brew.rock_pulverize.tooltip=Rock Pulverize
+
+brew.prune_leaves.name=Prune Leaves Brew
+brew.prune_leaves.desc=Removes leaves.
+brew.prune_leaves.tooltip=Prune Leaves
+
+brew.auto_plant.name=Auto Plant Brew
+brew.auto_plant.desc=Plants any seed that is on the ground.
+brew.auto_plant.tooltip=Auto Plant
+
+brew.snow_trail.name=Snow Trail Brew
+brew.snow_trail.desc=Places a snow layer as an affected mob or player walks.
+brew.snow_trail.tooltip=Snow Trail
+
+brew.skin_tint.name=Skin Tint Brew
+brew.skin_tint.desc=Tints your skin with a specific color.
+brew.skin_tint.tooltip=Skin Tint
+
+brew.wolfsbane.name=Wolfsbane Brew
+brew.wolfsbane.desc=Deals damage to wolves and therians.
+brew.wolfsbane.tooltip=Wolfsbane
+
+brew.sinking.name=Brew of Sinking
+brew.sinking.desc=Causes you to sink and be unable to jump.
+brew.sinking.tooltip=Sinking
+
+brew.cursed_leaping.name=Brew of Cursed Leaping
+brew.cursed_leaping.desc=Causes a target to jump uncontrollably.
+brew.cursed_leaping.tooltip=Cursed Leaping
+
+brew.bane_arthropods.name=Bane of Arthropods Brew
+brew.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
+brew.bane_arthropods.tooltip=Bane of Arthropods
+
+brew.outcasts_shame.name=Outcast's Shame Brew
+brew.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
+brew.outcasts_shame.tooltip=Outcast's Shame
+
+brew.ignition.name=Brew of Ignition
+brew.ignition.desc=Lights you or a target on fire.
+brew.ignition.tooltip=Ignition
+
+brew.grace.name=Brew of Grace
+brew.grace.desc=Negates fall damage.
+brew.grace.tooltip=Grace
+
+brew.purify.name=Brew of Purification
+brew.purify.desc=Removes harmful brew effects.
+brew.purify.tooltip=Purity
+
+brew.notched.name=Notched Brew
+brew.notched.desc=Adds all of the effects a notch apple applies.
+brew.notched.tooltip=Notched
+
+brew.mycological_corruption.name=Brew of Mycological Corruption
+brew.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
+brew.mycological_corruption.tooltip=Mycological Corruption
+
+brew.growth.name=Brew of Growth
+brew.growth.desc=Turns mycelium and dirt into grass. May have other effects.
+brew.growth.tooltip=Growth
+
+brew.ozymandias.name=Ozymandias' Brew
+brew.ozymandias.desc=Look on my Works, ye Mighty, and despair!
+brew.ozymandias.tooltip=Ozymandias
+
+brew.hells_wroth.name=Hell's Wroth Brew
+brew.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
+brew.hells_wroth.tooltip=Hell's Wroth
+
+brew.setehs_wastes.name=Brew of Seteh's Wastes
+brew.setehs_wastes.desc=Converts sand and sandstone to their red variants.
+brew.setehs_wastes.tooltip=Seteh's Wastes
+
+brew.hell_world.name=Brew of Fire World
+brew.hell_world.desc=Converts your surroundings to a hellish scene.
+brew.hell_world.tooltip=Fire World
+
+brew.ice_world.name=Brew of Ice World
+brew.ice_world.desc=Converts your surroundings to a wintery wonderland.
+brew.ice_world.tooltip=Ice World
+
+brew.corruption.name=Brew of Corruption
+brew.corruption.desc=Removes all beneficial brew effects.
+brew.corruption.tooltip=Corruption
+
+brew.salt_land.name=Brew of Salting
+brew.salt_land.desc=Destroys farmland and renders it useless.
+brew.salt_land.tooltip=Salting
+
+brew.absence.name=Absence Brew
+brew.absence.desc=Removes all brew effects from a player.
+brew.absence.tooltip=Absence
+
+brew.bulletproof.name=Bulletproof Brew
+brew.bulletproof.desc=Negates damage from projectiles.
+brew.bulletproof.tooltip=Bulletproof
+
+brew.overcoat.name=Overcoat Brew
+brew.overcoat.desc=Negates most damage.
+brew.overcoat.tooltip=Overcoat
+
+brew.mortal_coil.name=Mortal Coil Brew
+brew.mortal_coil.desc=Kills you at the end of the timer.
+brew.mortal_coil.tooltip=Mortal Coil
+
+brew..name=
+brew..desc=
+brew..tooltip=
+
+//Sound
+witchcraft.subtitle.boil=Cauldron boiling
+witchcraft.subtitle.buzz=Bees buzzing
+witchcraft.subtitle.chalk_scribble=Chalk scribbling
+
+///ToolTips
+witch.tooltip.seed_aconitum_description.name=Seed from a poisonous plant
+witch.tooltip.seed_asphodel_description.name=Seed from a plant of the dead
+witch.tooltip.seed_belladonna_description.name=Seed from a herbaceous plant
+witch.tooltip.seed_ginger_description.name=Seed from a flowering plant
+witch.tooltip.seed_kelp_description.name=Spore from a large algae
+witch.tooltip.seed_mint_description.name=Seed from a herbaceous plant
+witch.tooltip.seed_white_sage_description.name=Seed from an evergreen perennial shrub
+witch.tooltip.seed_mandrake_description.name=Seed from a plant with a strange root
+witch.tooltip.seed_lavender_description.name=Seed from a flowering plant
+witch.tooltip.seed_thistle_description.name=Seed from a thorny flower
+witch.tooltip.seed_silphium_description.name=Seed from a strange fennel
+witch.tooltip.seed_garlic_description.name=Seed from a smelly allium
+witch.tooltip.seed_wormwood_description.name=Seed from a weedy herb
+witch.tooltip.seed_kenaf_description.name=Seed from a bamboo-like hibiscus
+witch.tooltip.seed_tulsi_description.name=Seed from a small herb
+
+witch.tooltip.aconitum_description.name=Poisonous, can prevent or revert shapeshifting, and wolves and therians have an aversion to it
+witch.tooltip.asphodel_description.name=Related to death and the afterlife, but not poisonous
+witch.tooltip.belladonna_description.name=A highly toxic plant, this is a prime component of flying ointment
+witch.tooltip.ginger_description.name=Meant to give energy and increased speed
+witch.tooltip.kelp_description.name=Related to water and protection overseas
+witch.tooltip.mint_description.name=Used for protection against magic
+witch.tooltip.white_sage_description.name=Used as an aid in exorcisms
+witch.tooltip.mandrake_root_description.name=Used to amplify magical effects
+witch.tooltip.lavender_description.name=Associated with purity and grace
+witch.tooltip.thistle_description.name=A flower associated with strength and durability, and is the national flower of Scotland
+witch.tooltip.silphium_description.name=A rather large and unusual fennel prized by the romans for its many uses
+witch.tooltip.garlic_description.name=The bulb of a type of allium, it is rather smelly, and seems to keep undead at bay.
+witch.tooltip.wormwood_description.name=A rather weedy herb which bugs do not seem to like.
+witch.tooltip.kenaf_description.name=A tall plant with useful fibers.
+witch.tooltip.tulsi_description.name=A small herb considered sacred by some.
+
+item.tag_lock.empty=Empty Taglock
+
+tooltip.brew.data=Brew Data:
+tooltip.potion.data=Potion Data:
+
+tooltip.shift_for_info=<hold shift for details>
+
+//Baubles
+item.shirt.name=Shirt
+item.ring.name=Ring
+item.belt.name=Belt
+item.amulet.name=Amulet
+item.trinket.name=Trinket
+item.crown.name=Crown
+item.charm.name=Charm
+
+//Books
+item.book_of_shadows.name=Book of Shadows
+item.dusty_grimoire.name=Dusty Grimoire
+
+//Incantation
+commands.incantation.notFound=The powers you cast forth fizzle into nothingness
+
+//Advancements
+achievement.witchcraft:craftMalachite=Let's Be Malachite Again!
+achievement.witchcraft:craftMalachite.desc=This Is Between Us!
+
+////JEI

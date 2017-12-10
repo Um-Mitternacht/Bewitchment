@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "witchcraft:fake_ice"
+    },
+    "half=top": {
+      "model": "witchcraft:fake_ice"
+    }
+  }
+}

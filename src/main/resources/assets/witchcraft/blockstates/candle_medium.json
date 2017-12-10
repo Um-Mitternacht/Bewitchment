@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "color=white": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=orange": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=magenta": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=light_blue": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=yellow": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=lime": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=pink": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=gray": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=silver": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=cyan": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=purple": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=blue": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=brown": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=green": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=red": {
+      "model": "witchcraft:candle_medium"
+    },
+    "color=black": {
+      "model": "witchcraft:candle_medium"
+    }
+  }
+}

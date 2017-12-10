@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "S S",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:wooden_slab",
+      "data": 0
+    },
+    "T": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "witchcraft:mortar_and_pestle",
+    "data": 0,
+    "count": 1
+  }
+}

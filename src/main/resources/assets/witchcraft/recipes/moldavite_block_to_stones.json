@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "witchcraft:moldavite_block",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "witchcraft:gem",
+    "data": 1,
+    "count": 9
+  }
+}

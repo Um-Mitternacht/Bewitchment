@@ -1,0 +1,30 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "TMT",
+    "SSS",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "T": {
+      "item": "minecraft:carpet",
+      "data": 0
+    },
+    "S": {
+      "item": "minecraft:stone",
+      "data": 0
+    },
+    "M": {
+      "item": "witchcraft:gem",
+      "data": 1
+    }
+  },
+  "result": {
+    "item": "witchcraft:altar",
+    "data": 0
+  }
+}

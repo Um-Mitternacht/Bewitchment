@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "STS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "T": {
+      "item": "witchcraft:empty_honeycomb",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "witchcraft:apiary",
+    "data": 0
+  }
+}
