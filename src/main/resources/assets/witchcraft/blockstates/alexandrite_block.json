@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:alexandrite_block"
+        "model": "bewitchment:alexandrite_block"
       }
     ]
   }

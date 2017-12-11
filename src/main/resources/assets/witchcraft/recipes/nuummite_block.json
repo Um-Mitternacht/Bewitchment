@@ -2,44 +2,44 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 2
     }
   ],
   "result": {
-    "item": "witchcraft:nuummite_block",
+    "item": "bewitchment:nuummite_block",
     "data": 0,
     "count": 1
   }

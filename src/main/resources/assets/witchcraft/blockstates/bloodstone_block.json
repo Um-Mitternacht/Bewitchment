@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:bloodstone_block"
+        "model": "bewitchment:bloodstone_block"
       }
     ]
   }

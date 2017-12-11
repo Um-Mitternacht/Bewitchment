@@ -7,7 +7,7 @@ import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 
 /**
  * This class was created by Joseph on 7/21/2017..
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 

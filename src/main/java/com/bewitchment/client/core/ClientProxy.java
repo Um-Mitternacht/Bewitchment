@@ -14,7 +14,7 @@ import com.bewitchment.client.render.entity.BrewRenderer;
 import com.bewitchment.client.render.entity.EmptyRenderer;
 import com.bewitchment.client.render.entity.SpellRenderer;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
@@ -46,7 +46,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 @Mod.EventBusSubscriber(Side.CLIENT)
@@ -101,7 +101,7 @@ public class ClientProxy implements ISidedProxy {
 			}
 		}, ModItems.spell_page);
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(Witchcraft.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
 
 	public void displayRecordText(ITextComponent text) {

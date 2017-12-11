@@ -7,42 +7,42 @@
     "age": {
       "0": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_0"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_0"
         }
       },
       "1": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_1"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_1"
         }
       },
       "2": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_1"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_1"
         }
       },
       "3": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_1"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_1"
         }
       },
       "4": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_2"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_2"
         }
       },
       "5": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_2"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_2"
         }
       },
       "6": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_2"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_2"
         }
       },
       "7": {
         "textures": {
-          "cross": "witchcraft:blocks/crop/crop_white_sage_3"
+          "cross": "bewitchment:blocks/crop/crop_white_sage_3"
         }
       }
     }

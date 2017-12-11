@@ -1,5 +1,5 @@
 {
-  "parent": "witchcraft:block/fake_ice_stairs",
+  "parent": "bewitchment:block/fake_ice_stairs",
   "display": {
     "thirdperson": {
       "rotation": [

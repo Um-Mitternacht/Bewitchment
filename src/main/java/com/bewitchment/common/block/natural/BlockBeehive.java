@@ -2,7 +2,7 @@ package com.bewitchment.common.block.natural;
 
 import com.bewitchment.api.sound.WitchSoundEvents;
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
@@ -31,7 +31,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class BlockBeehive extends BlockMod {
@@ -84,7 +84,7 @@ public class BlockBeehive extends BlockMod {
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (rand.nextInt(10) == 0) {
-			Witchcraft.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
+			Bewitchment.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
 		}
 		if (rand.nextInt(25) == 0) {
 			worldIn.playSound(null, pos, WitchSoundEvents.BUZZ, SoundCategory.BLOCKS, 0.2F, 1F);

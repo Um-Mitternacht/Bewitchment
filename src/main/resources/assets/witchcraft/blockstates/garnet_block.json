@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:garnet_block"
+        "model": "bewitchment:garnet_block"
       }
     ]
   }

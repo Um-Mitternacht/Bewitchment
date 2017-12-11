@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "witchcraft:blocks/coquina_bricks_carved"
+    "all": "bewitchment:blocks/coquina_bricks_carved"
   }
 }

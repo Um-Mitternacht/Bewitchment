@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=bottom": {
-      "model": "witchcraft:fake_ice_slab_half"
+      "model": "bewitchment:fake_ice_slab_half"
     },
     "half=top": {
-      "model": "witchcraft:fake_ice_slab_double"
+      "model": "bewitchment:fake_ice_slab_double"
     }
   }
 }

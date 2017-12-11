@@ -6,11 +6,11 @@
   ],
   "key": {
     "I": {
-      "item": "witchcraft:fake_ice"
+      "item": "bewitchment:fake_ice"
     }
   },
   "result": {
-    "item": "witchcraft:fake_ice_fence",
+    "item": "bewitchment:fake_ice_fence",
     "count": 6
   }
 }

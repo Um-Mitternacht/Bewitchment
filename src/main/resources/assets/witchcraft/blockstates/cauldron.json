@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,half=bottom": {
-      "model": "witchcraft:cauldron"
+      "model": "bewitchment:cauldron"
     },
     "facing=south,half=bottom": {
-      "model": "witchcraft:cauldron",
+      "model": "bewitchment:cauldron",
       "y": 180
     },
     "facing=east,half=bottom": {
-      "model": "witchcraft:cauldron",
+      "model": "bewitchment:cauldron",
       "y": 90
     },
     "facing=west,half=bottom": {
-      "model": "witchcraft:cauldron",
+      "model": "bewitchment:cauldron",
       "y": 270
     },
     "facing=north,half=top": {
-      "model": "witchcraft:cauldron_hanging"
+      "model": "bewitchment:cauldron_hanging"
     },
     "facing=south,half=top": {
-      "model": "witchcraft:cauldron_hanging",
+      "model": "bewitchment:cauldron_hanging",
       "y": 180
     },
     "facing=east,half=top": {
-      "model": "witchcraft:cauldron_hanging",
+      "model": "bewitchment:cauldron_hanging",
       "y": 90
     },
     "facing=west,half=top": {
-      "model": "witchcraft:cauldron_hanging",
+      "model": "bewitchment:cauldron_hanging",
       "y": 270
     }
   }

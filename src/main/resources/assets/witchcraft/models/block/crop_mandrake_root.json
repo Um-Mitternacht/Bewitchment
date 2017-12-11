@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "witchcraft:blocks/crop_mandrake_root_0"
+    "cross": "bewitchment:blocks/crop_mandrake_root_0"
   }
 }

@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:nuummite_block"
+        "model": "bewitchment:nuummite_block"
       }
     ]
   }

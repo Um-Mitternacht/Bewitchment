@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/gemstone_amalgam"
+    "layer0": "bewitchment:items/gemstone_amalgam"
   }
 }

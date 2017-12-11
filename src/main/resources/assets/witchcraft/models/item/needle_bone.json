@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/needle_bone"
+    "layer0": "bewitchment:items/needle_bone"
   }
 }

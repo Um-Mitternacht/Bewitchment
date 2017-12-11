@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/brew_phial_splash",
-    "layer1": "witchcraft:items/brew_phial_splash_overlay"
+    "layer0": "bewitchment:items/brew_phial_splash",
+    "layer1": "bewitchment:items/brew_phial_splash_overlay"
   }
 }

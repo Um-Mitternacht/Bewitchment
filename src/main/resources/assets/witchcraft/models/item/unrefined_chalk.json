@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/unrefined_chalk"
+    "layer0": "bewitchment:items/unrefined_chalk"
   }
 }

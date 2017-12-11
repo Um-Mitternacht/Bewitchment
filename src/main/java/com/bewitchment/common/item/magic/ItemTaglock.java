@@ -34,7 +34,7 @@ import static net.minecraft.util.math.RayTraceResult.Type.ENTITY;
 
 /**
  * This class was created by Arekkuusu on 5/15/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class ItemTaglock extends ItemMod {

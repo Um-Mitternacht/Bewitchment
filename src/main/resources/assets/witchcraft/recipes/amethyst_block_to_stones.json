@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:amethyst_block",
+      "item": "bewitchment:amethyst_block",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:gem",
+    "item": "bewitchment:gem",
     "data": 8,
     "count": 9
   }

@@ -1,6 +1,6 @@
 {
-  "parent": "witchcraft:block/salt_side_alt",
+  "parent": "bewitchment:block/salt_side_alt",
   "textures": {
-    "line": "witchcraft:blocks/salt_dust_line0"
+    "line": "bewitchment:blocks/salt_dust_line0"
   }
 }

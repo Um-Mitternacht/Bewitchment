@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * This class was created by Joseph on 3/4/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class BlockFakeIceStairs extends BlockStairs implements IModelRegister {

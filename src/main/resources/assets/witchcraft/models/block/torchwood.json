@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "witchcraft:blocks/torchwood"
+    "cross": "bewitchment:blocks/torchwood"
   }
 }

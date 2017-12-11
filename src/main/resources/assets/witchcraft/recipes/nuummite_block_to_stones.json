@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:nuummite_block",
+      "item": "bewitchment:nuummite_block",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:gem",
+    "item": "bewitchment:gem",
     "data": 2,
     "count": 9
   }

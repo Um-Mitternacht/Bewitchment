@@ -11,7 +11,7 @@ import static com.bewitchment.common.lib.LibMod.MOD_ID;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 //Note: Current code is ripped from Choonster's TestMod3, and modified for usage here.

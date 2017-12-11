@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:amethyst_block"
+        "model": "bewitchment:amethyst_block"
       }
     ]
   }

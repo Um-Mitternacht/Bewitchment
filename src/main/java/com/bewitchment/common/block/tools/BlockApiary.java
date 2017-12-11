@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.tools;
 
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibGui;
@@ -31,7 +31,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class BlockApiary extends BlockMod implements ITileEntityProvider {
@@ -81,7 +81,7 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (rand.nextInt(5) == 0) {
-			Witchcraft.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
+			Bewitchment.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
 		}
 	}
 
@@ -104,7 +104,7 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 			if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
 				((TileApiary) tile).setCustomInventoryName(heldItem.getDisplayName());
 			} else {
-				playerIn.openGui(Witchcraft.instance, LibGui.APIARY, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				playerIn.openGui(Bewitchment.instance, LibGui.APIARY, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
 		return true;

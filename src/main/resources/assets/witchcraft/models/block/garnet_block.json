@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "witchcraft:blocks/garnet_block"
+    "all": "bewitchment:blocks/garnet_block"
   }
 }

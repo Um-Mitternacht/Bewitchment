@@ -2,8 +2,8 @@
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "parent": "block/block",
   "textures": {
-    "0": "witchcraft:blocks/candle_texture",
-    "particle": "witchcraft:blocks/candle_texture"
+    "0": "bewitchment:blocks/candle_texture",
+    "particle": "bewitchment:blocks/candle_texture"
   },
   "elements": [
     {

@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:moldavite_block"
+        "model": "bewitchment:moldavite_block"
       }
     ]
   }

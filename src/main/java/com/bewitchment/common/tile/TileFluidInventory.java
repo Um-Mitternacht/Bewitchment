@@ -22,7 +22,7 @@ import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 01/05/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public abstract class TileFluidInventory extends TileFluidHandler {

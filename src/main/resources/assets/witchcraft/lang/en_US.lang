@@ -1,12 +1,12 @@
 //CreativeTab
-itemGroup.witchcraft_plants=Witchcraft - Plants and Herbs
-itemGroup.witchcraft_items=Witchcraft - Sticks and Stones
-itemGroup.witchcraft_blocks=Witchcraft - Blocks
+itemGroup.witchcraft_plants=Bewitchment - Plants and Herbs
+itemGroup.witchcraft_items=Bewitchment - Sticks and Stones
+itemGroup.witchcraft_blocks=Bewitchment - Blocks
 
 //Config
-witchcraft.config.world_gen=World Gen
-witchcraft.config.energy_hud=Energy HUD
-witchcraft.config.brew_hud=Brews HUD
+bewitchment.config.world_gen=World Gen
+bewitchment.config.energy_hud=Energy HUD
+bewitchment.config.brew_hud=Brews HUD
 
 //Gui
 container.apiary=Apiary
@@ -407,9 +407,9 @@ brew..desc=
 brew..tooltip=
 
 //Sound
-witchcraft.subtitle.boil=Cauldron boiling
-witchcraft.subtitle.buzz=Bees buzzing
-witchcraft.subtitle.chalk_scribble=Chalk scribbling
+bewitchment.subtitle.boil=Cauldron boiling
+bewitchment.subtitle.buzz=Bees buzzing
+bewitchment.subtitle.chalk_scribble=Chalk scribbling
 
 ///ToolTips
 witch.tooltip.seed_aconitum_description.name=Seed from a poisonous plant
@@ -468,7 +468,7 @@ item.dusty_grimoire.name=Dusty Grimoire
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness
 
 //Advancements
-achievement.witchcraft:craftMalachite=Let's Be Malachite Again!
-achievement.witchcraft:craftMalachite.desc=This Is Between Us!
+achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
+achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 
 ////JEI

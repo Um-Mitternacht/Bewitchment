@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "witchcraft:blocks/coquina_smooth"
+    "all": "bewitchment:blocks/coquina_smooth"
   }
 }

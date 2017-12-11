@@ -11,12 +11,12 @@
       "ore": "plankWood"
     },
     "T": {
-      "item": "witchcraft:empty_honeycomb",
+      "item": "bewitchment:empty_honeycomb",
       "data": 0
     }
   },
   "result": {
-    "item": "witchcraft:apiary",
+    "item": "bewitchment:apiary",
     "data": 0
   }
 }

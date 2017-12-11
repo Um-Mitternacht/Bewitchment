@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:jasper_block"
+        "model": "bewitchment:jasper_block"
       }
     ]
   }

@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:tourmaline_block",
+      "item": "bewitchment:tourmaline_block",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:gem",
+    "item": "bewitchment:gem",
     "data": 4,
     "count": 9
   }

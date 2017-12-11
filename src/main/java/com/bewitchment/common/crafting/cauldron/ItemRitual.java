@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 21/05/2017.
- * It's distributed as split of Witchcraft under
+ * It's distributed as split of Bewitchment under
  * the MIT license.
  */
 public class ItemRitual implements IRitual<TileCauldron> {

@@ -1,4 +1,4 @@
-diff a/src/main/java/com/witchcraft/common/core/handler/ConfigHandler.java b/src/main/java/com/witchcraft/common/core/handler/ConfigHandler.java	(rejected hunks)
+diff a/src/main/java/com/bewitchment/common/core/handler/ConfigHandler.java b/src/main/java/com/bewitchment/common/core/handler/ConfigHandler.java	(rejected hunks)
 @@ -84,7 +84,7 @@
  			public int bloodStone_max_vein = 2;
  			public int bloodStone_min_height = 10;

@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "witchcraft:blocks/crop_white_sage_0"
+    "cross": "bewitchment:blocks/crop_white_sage_0"
   }
 }

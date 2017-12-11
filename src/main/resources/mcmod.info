@@ -1,7 +1,7 @@
 [
 {
-  "modid": "witchcraft",
-  "name": "Witchcraft",
+  "modid": "bewitchment",
+  "name": "Bewitchment",
   "description": "A Witchery inspired mod",
   "version":"${version}",
   "mcversion": "${mcversion}",

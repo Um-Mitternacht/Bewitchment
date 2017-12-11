@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/chalk_item"
+    "layer0": "bewitchment:items/chalk_item"
   }
 }

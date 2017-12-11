@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * This class was created by Arekkuusu on 28/02/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {

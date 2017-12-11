@@ -2,44 +2,44 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:garnet_block",
+    "item": "bewitchment:garnet_block",
     "data": 0,
     "count": 1
   }

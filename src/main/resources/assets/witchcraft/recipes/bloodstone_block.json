@@ -2,44 +2,44 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     }
   ],
   "result": {
-    "item": "witchcraft:bloodstone_block",
+    "item": "bewitchment:bloodstone_block",
     "data": 0,
     "count": 1
   }

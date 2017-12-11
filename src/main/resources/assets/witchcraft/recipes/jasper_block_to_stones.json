@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:jasper_block",
+      "item": "bewitchment:jasper_block",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:gem",
+    "item": "bewitchment:gem",
     "data": 6,
     "count": 9
   }

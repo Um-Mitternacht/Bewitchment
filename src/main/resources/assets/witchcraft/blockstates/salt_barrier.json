@@ -28,7 +28,7 @@
         ]
       },
       "apply": {
-        "model": "witchcraft:salt_dot"
+        "model": "bewitchment:salt_dot"
       }
     },
     {
@@ -46,7 +46,7 @@
         ]
       },
       "apply": {
-        "model": "witchcraft:salt_side0"
+        "model": "bewitchment:salt_side0"
       }
     },
     {
@@ -64,7 +64,7 @@
         ]
       },
       "apply": {
-        "model": "witchcraft:salt_side_alt0"
+        "model": "bewitchment:salt_side_alt0"
       }
     },
     {
@@ -82,7 +82,7 @@
         ]
       },
       "apply": {
-        "model": "witchcraft:salt_side_alt1",
+        "model": "bewitchment:salt_side_alt1",
         "y": 270
       }
     },
@@ -101,7 +101,7 @@
         ]
       },
       "apply": {
-        "model": "witchcraft:salt_side1",
+        "model": "bewitchment:salt_side1",
         "y": 270
       }
     },
@@ -110,7 +110,7 @@
         "north": "up"
       },
       "apply": {
-        "model": "witchcraft:salt_up"
+        "model": "bewitchment:salt_up"
       }
     },
     {
@@ -118,7 +118,7 @@
         "east": "up"
       },
       "apply": {
-        "model": "witchcraft:salt_up",
+        "model": "bewitchment:salt_up",
         "y": 90
       }
     },
@@ -127,7 +127,7 @@
         "south": "up"
       },
       "apply": {
-        "model": "witchcraft:salt_up",
+        "model": "bewitchment:salt_up",
         "y": 180
       }
     },
@@ -136,7 +136,7 @@
         "west": "up"
       },
       "apply": {
-        "model": "witchcraft:salt_up",
+        "model": "bewitchment:salt_up",
         "y": 270
       }
     }

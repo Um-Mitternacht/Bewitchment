@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "witchcraft:crop_kenaf_false"
+    "cross": "bewitchment:crop_kenaf_false"
   }
 }

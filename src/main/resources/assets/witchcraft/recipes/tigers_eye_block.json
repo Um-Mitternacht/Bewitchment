@@ -2,44 +2,44 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 3
     }
   ],
   "result": {
-    "item": "witchcraft:tigers_eye_block",
+    "item": "bewitchment:tigers_eye_block",
     "data": 0,
     "count": 1
   }

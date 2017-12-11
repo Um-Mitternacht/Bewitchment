@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:malachite_block"
+        "model": "bewitchment:malachite_block"
       }
     ]
   }

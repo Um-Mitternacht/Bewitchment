@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/grilled_watermelon"
+    "layer0": "bewitchment:items/grilled_watermelon"
   }
 }

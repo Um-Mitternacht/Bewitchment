@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 /**
  * This class was created by Arekkuusu on 27/05/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public final class ItemNullHelper {

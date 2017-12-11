@@ -2,7 +2,7 @@
   "parent": "block/block",
   "textures": {
     "all": "blocks/stone",
-    "overlay": "witchcraft:blocks/silver_ore",
+    "overlay": "bewitchment:blocks/silver_ore",
     "particle": "blocks/stone"
   },
   "elements": [

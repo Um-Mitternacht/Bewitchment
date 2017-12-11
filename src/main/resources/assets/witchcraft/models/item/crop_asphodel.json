@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:blocks/crop_asphodel"
+    "layer0": "bewitchment:blocks/crop_asphodel"
   }
 }

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 21/03/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 

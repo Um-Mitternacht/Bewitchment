@@ -1,7 +1,7 @@
 package com.bewitchment.common.core.net;
 
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * This class was created by Arekkuusu on 04/04/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class ParticleMessage implements IMessage {
@@ -82,7 +82,7 @@ public class ParticleMessage implements IMessage {
 		public IMessage onMessage(ParticleMessage message, MessageContext ctx) {
 			if (ctx.side == Side.CLIENT) {
 				for (int i = 0; i < message.amount; i++) {
-					Witchcraft.proxy.spawnParticle(message.particleF, message.x, message.y, message.z, message.xSpeed, message.ySpeed, message.zSpeed, message.args);
+					Bewitchment.proxy.spawnParticle(message.particleF, message.x, message.y, message.z, message.xSpeed, message.ySpeed, message.zSpeed, message.args);
 				}
 			}
 			return null;

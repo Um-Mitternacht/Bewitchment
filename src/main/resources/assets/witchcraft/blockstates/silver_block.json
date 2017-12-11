@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:silver_block"
+        "model": "bewitchment:silver_block"
       }
     ]
   }

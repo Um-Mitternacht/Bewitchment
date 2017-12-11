@@ -19,12 +19,12 @@
       "data": 0
     },
     "M": {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 1
     }
   },
   "result": {
-    "item": "witchcraft:altar",
+    "item": "bewitchment:altar",
     "data": 0
   }
 }

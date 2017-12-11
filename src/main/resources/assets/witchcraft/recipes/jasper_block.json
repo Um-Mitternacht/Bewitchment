@@ -2,44 +2,44 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     },
     {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 6
     }
   ],
   "result": {
-    "item": "witchcraft:jasper_block",
+    "item": "bewitchment:jasper_block",
     "data": 0,
     "count": 1
   }

@@ -10,7 +10,7 @@ import com.bewitchment.api.recipe.CauldronItemRecipe;
 import com.bewitchment.api.recipe.ItemValidator;
 import com.bewitchment.api.ritual.RitualHolder;
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.block.material.Material;
@@ -49,7 +49,7 @@ import static net.minecraftforge.fluids.Fluid.BUCKET_VOLUME;
 
 /**
  * This class was created by Arekkuusu on 08/03/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 @SuppressWarnings("WeakerAccess")
@@ -392,13 +392,13 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 			float posY = getParticleLevel();
 			double posZ = getPos().getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
 
-			Witchcraft.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, posY, posZ, 0, 0, 0, rgb);
+			Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, posY, posZ, 0, 0, 0, rgb);
 		}
 		if (ticks % 2 == 0 && hasIngredients()) {
 			final float x = getPos().getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 			float y = getParticleLevel();
 			final float z = getPos().getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
-			Witchcraft.proxy.spawnParticle(ParticleF.SPARK, x, y, z, 0.0D, 0.1D, 0.0D);
+			Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, y, z, 0.0D, 0.1D, 0.0D);
 		}
 	}
 

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/mortar_and_pestle"
+    "layer0": "bewitchment:items/mortar_and_pestle"
   }
 }

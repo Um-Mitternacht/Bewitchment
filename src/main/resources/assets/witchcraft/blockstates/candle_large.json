@@ -1,52 +1,52 @@
 {
   "variants": {
     "color=white": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=orange": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=magenta": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=light_blue": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=yellow": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=lime": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=pink": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=gray": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=silver": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=cyan": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=purple": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=blue": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=brown": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=green": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=red": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     },
     "color=black": {
-      "model": "witchcraft:candle_large"
+      "model": "bewitchment:candle_large"
     }
   }
 }

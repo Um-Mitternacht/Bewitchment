@@ -1,6 +1,6 @@
 /**
  * This class was created by <ZaBi94> on Dec 10th, 2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 
@@ -8,7 +8,7 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.api.spell.Spell.EnumSpellType;
-import com.bewitchment.common.Witchcraft;
+import com.bewitchment.common.Bewitchment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -125,7 +125,7 @@ public class EntitySpellCarrier extends EntityThrowable {
 					this.setDead();
 				if (result.typeOfHit == Type.ENTITY && (spell.getType() == EnumSpellType.PROJECTILE_ENTITY || spell.getType() == EnumSpellType.PROJECTILE_ALL) && result.entityHit != caster)
 					this.setDead();
-			} else Witchcraft.logger.warn("Spell is null for " + this + " with spell reg name of " + getSpellName());
+			} else Bewitchment.logger.warn("Spell is null for " + this + " with spell reg name of " + getSpellName());
 		}
 	}
 

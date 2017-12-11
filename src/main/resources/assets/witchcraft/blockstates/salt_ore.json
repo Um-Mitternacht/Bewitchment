@@ -2,7 +2,7 @@
   "variants": {
     "normal": [
       {
-        "model": "witchcraft:salt_ore"
+        "model": "bewitchment:salt_ore"
       }
     ]
   }

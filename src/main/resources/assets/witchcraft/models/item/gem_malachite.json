@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/malachite"
+    "layer0": "bewitchment:items/malachite"
   }
 }

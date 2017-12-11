@@ -2,9 +2,9 @@
   "parent": "block/block",
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "particle": "witchcraft:blocks/apiary_top",
-    "0": "witchcraft:blocks/apiary_sides",
-    "1": "witchcraft:blocks/apiary_top"
+    "particle": "bewitchment:blocks/apiary_top",
+    "0": "bewitchment:blocks/apiary_sides",
+    "1": "bewitchment:blocks/apiary_top"
   },
   "elements": [
     {

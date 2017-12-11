@@ -10,12 +10,12 @@
       "item": "minecraft:string"
     },
     "T": {
-      "item": "witchcraft:wax",
+      "item": "bewitchment:wax",
       "data": 0
     }
   },
   "result": {
-    "item": "witchcraft:candle_small",
+    "item": "bewitchment:candle_small",
     "data": 0
   }
 }

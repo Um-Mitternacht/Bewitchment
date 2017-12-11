@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:items/lavender"
+    "layer0": "bewitchment:items/lavender"
   }
 }

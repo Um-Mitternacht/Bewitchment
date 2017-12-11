@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "witchcraft:blocks/crop_lilac"
+    "layer0": "bewitchment:blocks/crop_lilac"
   }
 }

@@ -11,12 +11,12 @@
       "ore": "ingotSilver"
     },
     "G": {
-      "item": "witchcraft:gem",
+      "item": "bewitchment:gem",
       "data": 5
     }
   },
   "result": {
-    "item": "witchcraft:boline",
+    "item": "bewitchment:boline",
     "data": 0
   }
 }

@@ -31,18 +31,18 @@ import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
- * It's distributed as part of Witchcraft under
+ * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 @SuppressWarnings("WeakerAccess")
 @Mod(modid = LibMod.MOD_ID, name = MOD_NAME, version = LibMod.MOD_VER, dependencies = LibMod.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.13]", certificateFingerprint = "@FINGERPRINT@")
-public class Witchcraft {
+public class Bewitchment {
 
 	public static final Logger logger = LogManager.getLogger(MOD_NAME);
 	@SidedProxy(serverSide = LibMod.PROXY_COMMON, clientSide = LibMod.PROXY_CLIENT)
 	public static ISidedProxy proxy;
 	@Instance(LibMod.MOD_ID)
-	public static Witchcraft instance;
+	public static Bewitchment instance;
 
 	static {
 		FluidRegistry.enableUniversalBucket();

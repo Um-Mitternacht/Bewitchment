@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "witchcraft:needle_bone",
+      "item": "bewitchment:needle_bone",
       "data": 0
     },
     {
-      "item": "witchcraft:glass_jar",
+      "item": "bewitchment:glass_jar",
       "data": 0
     }
   ],
   "result": {
-    "item": "witchcraft:taglock",
+    "item": "bewitchment:taglock",
     "data": 0,
     "count": 1
   }
