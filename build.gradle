@@ -29,7 +29,7 @@ checkstyle {
     configFile = new File(rootDir, "checkstyle/checkstyle.xml")
 }
 
-version = "${mc_version}-${ww_version}"
+version = "${mc_version}-${bw_version}"
 group = "com.bewitchment" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Bewitchment"
 
