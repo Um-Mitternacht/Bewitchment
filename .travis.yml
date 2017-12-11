@@ -18,8 +18,8 @@ deploy:
   file_glob: true
   api_key: $GITHUB_OAUTH
   file: 
-  - "./build/libs/Witchcraft-*-*.jar"
-  - "./build/libs/Witchcraft-*-*-sources.jar"
+  - "./build/libs/Bewitchment-*-*.jar"
+  - "./build/libs/Bewitchment-*-*-sources.jar"
   skip_cleanup: true
   on:
     tags: true
