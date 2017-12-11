@@ -1,4 +1,4 @@
-# Covens-Witchworks Merger
+# Bewitchment
 A mod inspired by Witchery
 
 [![Build Status](https://travis-ci.org/Um-Mitternacht/Unnamed-Witchery-Clone.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Unnamed-Witchery-Clone)
