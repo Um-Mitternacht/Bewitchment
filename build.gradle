@@ -31,7 +31,7 @@ checkstyle {
 
 version = "${mc_version}-${ww_version}"
 group = "com.bewitchment" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Witchcraft"
+archivesBaseName = "Bewitchment"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
