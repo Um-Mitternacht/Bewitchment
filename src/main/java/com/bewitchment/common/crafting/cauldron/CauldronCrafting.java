@@ -65,7 +65,7 @@ public final class CauldronCrafting {
 		}
 
 		//------------------------------------Fluid Creation------------------------------------//
-		CauldronRegistry.registerFluidIngredient(ModItems.honey, new FluidStack(Fluids.WW_HONEY, 1000));
+		CauldronRegistry.registerFluidIngredient(ModItems.honey, new FluidStack(Fluids.BW_HONEY, 1000));
 		CauldronRegistry.registerFluidIngredient(Items.POTATO, new FluidStack(Fluids.MUNDANE_OIL, 1000));
 
 		//------------------------------------Item Rituals------------------------------------//
