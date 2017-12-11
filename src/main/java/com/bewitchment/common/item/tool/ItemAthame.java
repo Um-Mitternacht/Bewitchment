@@ -2,7 +2,7 @@ package com.bewitchment.common.item.tool;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.core.helper.ItemNBTHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
@@ -41,7 +41,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 		setMaxDamage(600);
 		setRegistryName(LibItemName.ATHAME);
 		setUnlocalizedName(LibItemName.ATHAME);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

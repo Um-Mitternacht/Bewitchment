@@ -2,7 +2,7 @@ package com.bewitchment.common.item.magic.brew;
 
 import com.bewitchment.api.BrewRegistry;
 import com.bewitchment.api.brew.BrewUtils;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.entity.EntityBrew;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;
@@ -31,7 +31,7 @@ public class ItemBrewSplash extends ItemBrew {
 
 	public ItemBrewSplash() {
 		super(LibItemName.BREW_PHIAL_SPLASH);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

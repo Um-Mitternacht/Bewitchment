@@ -1,7 +1,7 @@
 //CreativeTab
-itemGroup.witchcraft_plants=Bewitchment - Plants and Herbs
-itemGroup.witchcraft_items=Bewitchment - Sticks and Stones
-itemGroup.witchcraft_blocks=Bewitchment - Blocks
+itemGroup.bewitchment_plants=Bewitchment - Plants and Herbs
+itemGroup.bewitchment_items=Bewitchment - Sticks and Stones
+itemGroup.bewitchment_blocks=Bewitchment - Blocks
 
 //Config
 bewitchment.config.world_gen=World Gen

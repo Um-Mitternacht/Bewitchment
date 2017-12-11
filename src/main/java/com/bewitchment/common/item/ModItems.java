@@ -3,7 +3,7 @@ package com.bewitchment.common.item;
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemGemOre;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
@@ -241,7 +241,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.fake_ice_fence),
 				itemBlock(ModBlocks.fake_ice_stairs),
 
-				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB),
+				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB),
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),
 				itemBlock(ModBlocks.silver_block),
 				itemBlock(ModBlocks.silver_ore),

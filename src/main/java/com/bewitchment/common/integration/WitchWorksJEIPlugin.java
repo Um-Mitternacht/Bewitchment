@@ -5,7 +5,7 @@ package com.bewitchment.common.integration;
  */
 
 //@JEIPlugin
-//public class WitchcraftJEIPlugin implements IModPlugin {
+//public class BewitchmentJEIPlugin implements IModPlugin {
 
 //@Override
 //public void registerCategories(IRecipeCategoryRegistration registry) {

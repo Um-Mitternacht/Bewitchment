@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.block.properties.PropertyEnum;
@@ -23,7 +23,7 @@ public class ItemFume extends ItemMod {
 		super(LibItemName.FUME);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

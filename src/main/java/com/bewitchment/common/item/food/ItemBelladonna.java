@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -17,7 +17,7 @@ public class ItemBelladonna extends ItemCrop {
 
 	public ItemBelladonna() {
 		super(LibItemName.BELLADONNA, 2, 1.5F, false);
-		setCreativeTab(WitchcraftCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

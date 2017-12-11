@@ -15,7 +15,7 @@ import net.minecraft.util.NonNullList;
 
 import javax.annotation.Nonnull;
 
-import static com.bewitchment.common.core.WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB;
+import static com.bewitchment.common.core.BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 /**
  * This class was created by <Arekkuusu> on 27/06/2017.

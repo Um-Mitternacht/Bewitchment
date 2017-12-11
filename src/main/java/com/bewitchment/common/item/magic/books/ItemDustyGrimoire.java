@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.magic.books;
 
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 
@@ -14,7 +14,7 @@ public class ItemDustyGrimoire extends ItemMod {
 	public ItemDustyGrimoire() {
 		super(LibItemName.DUSTY_GRIMOIRE);
 		setMaxDamage(0);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	//Todo: Functionality, such as documentation.

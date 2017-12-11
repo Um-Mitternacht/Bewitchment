@@ -3,7 +3,7 @@ package com.bewitchment.common.item.tool;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,7 +29,7 @@ public class ItemSilverPickaxe extends ItemPickaxe implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER);
 		setRegistryName(LibItemName.SILVER_PICKAXE);
 		setUnlocalizedName(LibItemName.SILVER_PICKAXE);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

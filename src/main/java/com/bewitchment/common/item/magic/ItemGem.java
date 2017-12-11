@@ -2,7 +2,7 @@ package com.bewitchment.common.item.magic;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +22,7 @@ public class ItemGem extends ItemMod {
 		super(LibItemName.GEM);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

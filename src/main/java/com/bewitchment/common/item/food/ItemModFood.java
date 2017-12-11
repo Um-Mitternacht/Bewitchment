@@ -2,7 +2,7 @@ package com.bewitchment.common.item.food;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import net.minecraft.item.ItemFood;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,7 +18,7 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 		super(amount, saturation, isWolfFood);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		setCreativeTab(WitchcraftCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

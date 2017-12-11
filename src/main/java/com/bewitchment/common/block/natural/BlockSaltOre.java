@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.natural;
 
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.material.Material;
@@ -23,7 +23,7 @@ public class BlockSaltOre extends BlockMod {
 		super(LibBlockName.SALT_ORE, Material.ROCK);
 		setResistance(3F);
 		setHardness(3F);
-		setCreativeTab(WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
 	@Override

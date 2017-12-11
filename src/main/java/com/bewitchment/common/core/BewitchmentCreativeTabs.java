@@ -19,13 +19,13 @@ import javax.annotation.Nonnull;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public final class WitchcraftCreativeTabs {
+public final class BewitchmentCreativeTabs {
 
 	public static final PlantsCreativeTab PLANTS_CREATIVE_TAB = new PlantsCreativeTab();
 	public static final ItemsCreativeTab ITEMS_CREATIVE_TAB = new ItemsCreativeTab();
 	public static final BlocksCreativeTab BLOCKS_CREATIVE_TAB = new BlocksCreativeTab();
 
-	private WitchcraftCreativeTabs() {
+	private BewitchmentCreativeTabs() {
 	}
 
 	private static class CreativeTab extends CreativeTabs {

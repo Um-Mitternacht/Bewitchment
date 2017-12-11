@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.bewitchment.api.WitchcraftAPI.TAGLOCK_ENTITY;
-import static com.bewitchment.api.WitchcraftAPI.TAGLOCK_ENTITY_NAME;
+import static com.bewitchment.api.BewitchmentAPI.TAGLOCK_ENTITY;
+import static com.bewitchment.api.BewitchmentAPI.TAGLOCK_ENTITY_NAME;
 import static net.minecraft.util.math.RayTraceResult.Type.ENTITY;
 
 /**

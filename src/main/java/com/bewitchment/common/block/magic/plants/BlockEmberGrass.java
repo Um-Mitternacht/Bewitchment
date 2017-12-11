@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.magic.plants;
 
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -38,7 +38,7 @@ public class BlockEmberGrass extends BlockMod implements IGrowable, IPlantable {
 		setSound(SoundType.PLANT);
 		this.setLightLevel(0.1F);
 		this.setTickRandomly(true);
-		setCreativeTab(WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
 	@Override

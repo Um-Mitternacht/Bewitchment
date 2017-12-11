@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
@@ -16,7 +16,7 @@ public class ItemAconitum extends ItemCrop {
 	public ItemAconitum() {
 		super(LibItemName.ACONITUM, 2, 0.6F, false);
 		addPotion(MobEffects.POISON, MobEffects.NAUSEA);
-		setCreativeTab(WitchcraftCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

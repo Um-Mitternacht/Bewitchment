@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.bewitchment.api.WitchcraftAPI.COLOR;
+import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.

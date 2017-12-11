@@ -10,7 +10,7 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -31,7 +31,7 @@ public class BlockMod extends Block implements IModelRegister {
 		setUnlocalizedName(id);
 		setDefaultState(defaultState());
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
 	protected IBlockState defaultState() {

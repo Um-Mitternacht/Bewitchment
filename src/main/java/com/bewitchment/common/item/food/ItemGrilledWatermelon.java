@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 
 /**
@@ -12,6 +12,6 @@ public class ItemGrilledWatermelon extends ItemModFood {
 
 	public ItemGrilledWatermelon() {
 		super(LibItemName.GRILLED_WATERMELON, 4, 2.5F, false);
-		setCreativeTab(WitchcraftCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 }

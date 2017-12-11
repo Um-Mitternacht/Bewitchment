@@ -1,7 +1,7 @@
 //CreativeTab
-itemGroup.witchcraft_plants=Bewitchment - Green stuff
-itemGroup.witchcraft_items=Bewitchment - Stikz n stonz
-itemGroup.witchcraft_blocks=Bewitchment - Blockz
+itemGroup.bewitchment_plants=Bewitchment - Green stuff
+itemGroup.bewitchment_items=Bewitchment - Stikz n stonz
+itemGroup.bewitchment_blocks=Bewitchment - Blockz
 
 //Config
 bewitchment.config.world_gen=World Gen

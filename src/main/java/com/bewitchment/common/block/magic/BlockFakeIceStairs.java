@@ -2,7 +2,7 @@ package com.bewitchment.common.block.magic;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
@@ -29,7 +29,7 @@ public class BlockFakeIceStairs extends BlockStairs implements IModelRegister {
 		super(state);
 		setUnlocalizedName(LibBlockName.FAKE_ICE_STAIRS);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
-		setCreativeTab(WitchcraftCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;
 		setResistance(2F);
 		setHardness(2F);

@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.WitchcraftCreativeTabs;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -17,7 +17,7 @@ public class ItemKelp extends ItemCrop {
 
 	public ItemKelp() {
 		super(LibItemName.KELP, 3, 0.8F, false);
-		setCreativeTab(WitchcraftCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override
