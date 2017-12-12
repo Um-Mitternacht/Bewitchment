@@ -51,7 +51,7 @@ public final class BewitchmentCreativeTabs {
 
 		@SideOnly(Side.CLIENT)
 		void addBlock(Block block) {
-			final ItemStack stack = new ItemStack(block);
+//			final ItemStack stack = new ItemStack(block); //Why are we instantiating this?
 			block.getSubBlocks(this, list);
 		}
 
