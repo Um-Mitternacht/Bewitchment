@@ -1,8 +1,8 @@
 package com.bewitchment.api;
 
+import com.bewitchment.api.ritual.IRitual;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.bewitchment.api.ritual.IRitual;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IntIdentityHashBiMap;
 import net.minecraft.util.ResourceLocation;

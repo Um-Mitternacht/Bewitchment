@@ -1,10 +1,10 @@
 package com.bewitchment.api;
 
+import com.bewitchment.api.brew.BrewEffect;
+import com.bewitchment.api.brew.IBrew;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
-import com.bewitchment.api.brew.BrewEffect;
-import com.bewitchment.api.brew.IBrew;
 import net.minecraft.item.Item;
 import net.minecraft.util.IntIdentityHashBiMap;
 import net.minecraft.util.ResourceLocation;

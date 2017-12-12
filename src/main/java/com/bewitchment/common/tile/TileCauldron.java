@@ -1,6 +1,5 @@
 package com.bewitchment.common.tile;
 
-import com.google.common.collect.Lists;
 import com.bewitchment.api.CauldronRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
@@ -13,6 +12,7 @@ import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.item.ModItems;
+import com.google.common.collect.Lists;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;

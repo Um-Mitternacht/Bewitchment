@@ -1,12 +1,12 @@
 package com.bewitchment.common.block.magic;
 
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

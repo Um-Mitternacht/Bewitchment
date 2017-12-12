@@ -1,8 +1,8 @@
 package com.bewitchment.common.crafting.oven;
 
-import com.google.common.collect.Maps;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
+import com.google.common.collect.Maps;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
