@@ -47,10 +47,4 @@ public class ModelHerbPouch extends ModelBase {
 		this.Cuboid4.render(scale);
 		this.Cuboid5.render(scale);
 	}
-
-	private void setRotationAngles(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
 }
