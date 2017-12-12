@@ -24,6 +24,7 @@ import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -104,6 +105,7 @@ public class ClientProxy implements ISidedProxy {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
 
+	@Override
 	public void displayRecordText(ITextComponent text) {
 		Minecraft.getMinecraft().ingameGUI.setRecordPlayingMessage(text.getFormattedText());
 	}
@@ -134,5 +136,10 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpellCarrier.class, SpellRenderer::new);
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCauldron.class, new TileRenderCauldron());
+	}
+	
+	@Override
+	public boolean isFancyGraphicsEnabled() {
+		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
 }
