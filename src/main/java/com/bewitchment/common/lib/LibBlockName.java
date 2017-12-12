@@ -67,6 +67,13 @@ public final class LibBlockName {
 	public static final String FAKE_ICE_SLAB = "fake_ice_slab";
 	public static final String FAKE_ICE_SLAB_DOUBLE = "fake_ice_slab_double";
 	public static final String FAKE_ICE_SLAB_HALF = "fake_ice_slab_half";
+	public static final String LOG_ELDER = "log_elder";
+	public static final String LOG_JUNIPER = "log_juniper";
+	public static final String LOG_YEW = "log_yew";
+	public static final String LEAVES_ELDER = "leaves_elder";
+	public static final String LEAVES_JUNIPER = "leaves_juniper";
+	public static final String LEAVES_YEW = "leaves_yew";
+	public static final String SAPLING = "sapling";
 
 	private LibBlockName() {
 	}

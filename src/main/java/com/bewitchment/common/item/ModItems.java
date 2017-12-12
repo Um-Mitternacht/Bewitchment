@@ -5,6 +5,8 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.block.ItemBlockColor;
+import com.bewitchment.common.item.block.ItemBlockLeaves;
+import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
@@ -19,10 +21,19 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-import com.bewitchment.common.item.tool.*;
+import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.item.tool.ItemSalt;
+import com.bewitchment.common.item.tool.ItemSilverAxe;
+import com.bewitchment.common.item.tool.ItemSilverHoe;
+import com.bewitchment.common.item.tool.ItemSilverPickaxe;
+import com.bewitchment.common.item.tool.ItemSilverSpade;
+import com.bewitchment.common.item.tool.ItemSilverSword;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -216,7 +227,7 @@ public final class ModItems {
 				new ItemSilverArmor(LibItemName.SILVER_LEGGINGS, ModMaterials.ARMOR_SILVER, 2, EntityEquipmentSlot.LEGS),
 				new ItemSilverArmor(LibItemName.SILVER_BOOTS, ModMaterials.ARMOR_SILVER, 1, EntityEquipmentSlot.FEET)
 		);
-		//Item Blocks
+		//Item Blocks @formatter:off
 		registry.registerAll(
 				new ItemBlockColor(ModBlocks.candle_large),
 				new ItemBlockColor(ModBlocks.candle_medium),
@@ -267,8 +278,16 @@ public final class ModItems {
 				itemBlock(ModBlocks.salt_ore),
 				itemBlock(ModBlocks.nethersteel),
 				itemBlock(ModBlocks.salt_barrier),
-				itemBlock(ModBlocks.chalk)
+				itemBlock(ModBlocks.chalk),
+				itemBlock(ModBlocks.log_elder),
+				itemBlock(ModBlocks.log_juniper),
+				itemBlock(ModBlocks.log_yew),
+				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_elder),
+				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_juniper),
+				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_yew),
+				new ItemBlockSapling()
 		);
+		//@formatter:on
 	}
 
 	private static Item itemBlock(Block block) {
