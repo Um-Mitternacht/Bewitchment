@@ -14,6 +14,7 @@ import java.util.Set;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+@SuppressWarnings("rawtypes")
 public class RitualRegistry {
 
 	private static final BiMap<ResourceLocation, IRitual> LOCATION_RITUALS = HashBiMap.create(256);

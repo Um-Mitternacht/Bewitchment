@@ -466,6 +466,7 @@ public final class CauldronCrafting {
 		return new ItemStack(item, size, meta);
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static void registerItemRitual(String name, ItemStack spawned, int cost, Object... needed) {
 		IRitual ritual = RitualRegistry.register(new ResourceLocation(LibMod.MOD_ID, name), new ItemRitual(spawned, cost));
 		CauldronRegistry.registerItemRitual((ItemRitual) ritual, needed);

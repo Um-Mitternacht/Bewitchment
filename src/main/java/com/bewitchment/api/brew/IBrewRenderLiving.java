@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public interface IBrewRenderLiving {
 
+	@SuppressWarnings("rawtypes")
 	@SideOnly(Side.CLIENT)
 	void onRenderLiving(RenderLivingEvent.Pre event, RenderLivingBase renderer, int amplifier);
 }

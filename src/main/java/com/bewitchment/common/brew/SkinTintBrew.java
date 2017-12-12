@@ -90,6 +90,7 @@ public class SkinTintBrew implements IBrew, IBrewRenderLiving {
 		GlStateManager.popMatrix();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void onRenderLiving(RenderLivingEvent.Pre event, RenderLivingBase renderer, int amplifier) {

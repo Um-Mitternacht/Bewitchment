@@ -52,7 +52,7 @@ import static net.minecraftforge.fluids.Fluid.BUCKET_VOLUME;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "rawtypes"})
 public class TileCauldron extends TileFluidInventory implements ITickable {
 
 	private final String TAG_HEAT = "heat";

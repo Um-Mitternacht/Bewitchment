@@ -18,6 +18,7 @@ import java.util.Collection;
 @SideOnly(Side.CLIENT)
 public class ClientEvents {
 
+	@SuppressWarnings("rawtypes")
 	@SubscribeEvent
 	public void onRender(RenderLivingEvent.Pre event) {
 		Collection<BrewEffect> effects = BrewStorageHandler.getBrewEffects(event.getEntity());
