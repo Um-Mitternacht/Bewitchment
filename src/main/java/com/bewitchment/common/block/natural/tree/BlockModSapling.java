@@ -1,3 +1,8 @@
+/**
+ * This class was created by <ZaBi94> on Dec 11th, 2017.
+ * It's distributed as part of Bewitchment under
+ * the MIT license.
+ */
 
 package com.bewitchment.common.block.natural.tree;
 
