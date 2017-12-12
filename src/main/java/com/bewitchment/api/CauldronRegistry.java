@@ -20,7 +20,7 @@ import java.util.Map;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public final class CauldronRegistry {
 
 	private static final Map<Fluid, Map<Item, ItemValidator<ItemStack>>> ITEM_PROCESSING = new HashMap<>();

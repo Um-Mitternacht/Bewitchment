@@ -17,7 +17,7 @@ import net.minecraftforge.common.config.Config.Comment;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 @Config(modid = LibMod.MOD_ID)
 public final class ConfigHandler {
 

@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public final class BewitchmentAPI {
 
 	//States

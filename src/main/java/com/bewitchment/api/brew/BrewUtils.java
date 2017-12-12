@@ -27,7 +27,7 @@ import java.util.*;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BrewUtils {
 
 	public static final String BREW_COLOR = "brew_color";

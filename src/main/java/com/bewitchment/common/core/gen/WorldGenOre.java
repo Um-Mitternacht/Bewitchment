@@ -19,7 +19,7 @@ import java.util.function.Function;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class WorldGenOre extends WorldGenMinable implements IWorldGenerator {
 
 	private final List<BiomeDictionary.Type> biomes = new ArrayList<>();

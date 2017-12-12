@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 @SideOnly(Side.CLIENT)
 public final class ModelHandler {
 

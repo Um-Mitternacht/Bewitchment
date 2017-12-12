@@ -17,7 +17,7 @@ import java.util.Set;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public final class BrewRegistry {
 
 	private static final BiMap<ResourceLocation, IBrew> LOCATION_BREWS = HashBiMap.create(256);

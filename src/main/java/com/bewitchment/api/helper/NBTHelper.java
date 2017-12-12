@@ -14,7 +14,6 @@ import java.util.UUID;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings("unused")
 public final class NBTHelper {
 
 	private NBTHelper() {
