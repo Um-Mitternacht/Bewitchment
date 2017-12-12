@@ -24,7 +24,6 @@ import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.tile.TileCauldron;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -137,7 +136,7 @@ public class ClientProxy implements ISidedProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCauldron.class, new TileRenderCauldron());
 	}
-	
+
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;

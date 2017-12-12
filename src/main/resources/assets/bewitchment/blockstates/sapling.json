@@ -1,35 +1,35 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"model": "cross"
-	},
-    "variants": {
-        "stage": {
-        	"0": {
-        	},
-        	"1": {
-        	},
-        	"2": {
-        	},
-        	"3": {
-        	}
-        },
-        "type": {
-        	"elder": {
-        		"textures": {
-        			"cross": "bewitchment:blocks/sapling_elder"
-        		}
-        	},
-        	"juniper": {
-        		"textures": {
-        			"cross": "bewitchment:blocks/sapling_juniper"
-        		}
-        	},
-        	"yew": {
-        		"textures": {
-        			"cross": "bewitchment:blocks/sapling_yew"
-        		}
-        	}
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cross"
+  },
+  "variants": {
+    "stage": {
+      "0": {
+      },
+      "1": {
+      },
+      "2": {
+      },
+      "3": {
+      }
+    },
+    "type": {
+      "elder": {
+        "textures": {
+          "cross": "bewitchment:blocks/sapling_elder"
         }
+      },
+      "juniper": {
+        "textures": {
+          "cross": "bewitchment:blocks/sapling_juniper"
+        }
+      },
+      "yew": {
+        "textures": {
+          "cross": "bewitchment:blocks/sapling_yew"
+        }
+      }
     }
+  }
 }

@@ -1,6 +1,6 @@
 {
-	"parent": "block/leaves",
-    "textures": {
-        "all": "bewitchment:blocks/leaves_yew"
-    }
+  "parent": "block/leaves",
+  "textures": {
+    "all": "bewitchment:blocks/leaves_yew"
+  }
 }

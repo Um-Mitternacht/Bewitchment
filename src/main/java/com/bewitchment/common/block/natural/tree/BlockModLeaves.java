@@ -6,18 +6,12 @@
 
 package com.bewitchment.common.block.natural.tree;
 
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -37,6 +31,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Random;
+
 public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	public BlockModLeaves(String id) {
@@ -45,7 +43,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
 	}
-	
+
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		return NonNullList.withSize(1, new ItemStack(this));
@@ -58,27 +56,27 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	@Override
 	protected void dropApple(World worldIn, BlockPos pos, IBlockState state, int chance) {
-		if (this.getBlockState().getBlock()==ModBlocks.leaves_elder && worldIn.rand.nextInt(chance) == 0) {
+		if (this.getBlockState().getBlock() == ModBlocks.leaves_elder && worldIn.rand.nextInt(chance) == 0) {
 			spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE)); // TODO drop of one of the extra fruits for one of the trees
 		}
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(DECAYABLE, ((meta)&1)==1).withProperty(CHECK_DECAY, ((meta)&2)>0);
+		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
 	}
-	
+
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int meta = 0;
-		meta += (state.getValue(DECAYABLE)?1:0);
-		meta += (state.getValue(CHECK_DECAY)?2:0);
+		meta += (state.getValue(DECAYABLE) ? 1 : 0);
+		meta += (state.getValue(CHECK_DECAY) ? 2 : 0);
 		return meta;
 	}
-	
+
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {CHECK_DECAY, DECAYABLE});
+		return new BlockStateContainer(this, new IProperty[]{CHECK_DECAY, DECAYABLE});
 	}
 
 	@Override
@@ -90,32 +88,32 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 			super.harvestBlock(worldIn, player, pos, state, te, stack);
 		}
 	}
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(ModBlocks.sapling);
 	}
-	
+
 	@Override
 	public int damageDropped(IBlockState state) {
-		if (this==ModBlocks.leaves_elder) return 0;
-		if (this==ModBlocks.leaves_juniper) return 1;
-		if (this==ModBlocks.leaves_yew) return 2;
+		if (this == ModBlocks.leaves_elder) return 0;
+		if (this == ModBlocks.leaves_juniper) return 1;
+		if (this == ModBlocks.leaves_yew) return 2;
 		return 3; // give a useless item, but should never happen
 	}
-	
+
 	@Override
 	protected int getSaplingDropChance(IBlockState state) {
-		if (state.getBlock()==ModBlocks.leaves_juniper) return super.getSaplingDropChance(state)*3;
+		if (state.getBlock() == ModBlocks.leaves_juniper) return super.getSaplingDropChance(state) * 3;
 		return super.getSaplingDropChance(state);
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
-        return !this.leavesFancy;
-    }
-	
+		return !this.leavesFancy;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
@@ -126,5 +124,5 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 		else if (this == ModBlocks.leaves_yew)
 			ModelHandler.registerModel(this, 2);
 	}
-	
+
 }

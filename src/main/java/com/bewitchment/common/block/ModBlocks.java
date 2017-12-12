@@ -1,11 +1,6 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.magic.BlockFakeIce;
-import com.bewitchment.common.block.magic.BlockFakeIceFence;
-import com.bewitchment.common.block.magic.BlockFakeIceSlabDouble;
-import com.bewitchment.common.block.magic.BlockFakeIceSlabHalf;
-import com.bewitchment.common.block.magic.BlockFakeIceStairs;
-import com.bewitchment.common.block.magic.BlockSaltBarrier;
+import com.bewitchment.common.block.magic.*;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
@@ -13,30 +8,16 @@ import com.bewitchment.common.block.natural.BlockBeehive;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.block.natural.BlockSaltOre;
 import com.bewitchment.common.block.natural.BlockSilverOre;
-import com.bewitchment.common.block.natural.crop.BlockCrop;
-import com.bewitchment.common.block.natural.crop.CropBelladonna;
-import com.bewitchment.common.block.natural.crop.CropKelp;
-import com.bewitchment.common.block.natural.crop.CropKenaf;
-import com.bewitchment.common.block.natural.crop.CropMint;
-import com.bewitchment.common.block.natural.crop.CropSilphium;
-import com.bewitchment.common.block.natural.crop.CropThistle;
-import com.bewitchment.common.block.natural.crop.CropWormwood;
+import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.tree.BlockCypressSapling;
 import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
-import com.bewitchment.common.block.tools.BlockAltar;
-import com.bewitchment.common.block.tools.BlockApiary;
-import com.bewitchment.common.block.tools.BlockCandleLarge;
-import com.bewitchment.common.block.tools.BlockCandleMedium;
-import com.bewitchment.common.block.tools.BlockCandleSmall;
-import com.bewitchment.common.block.tools.BlockCauldron;
-import com.bewitchment.common.block.tools.BlockOven;
+import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -108,8 +89,6 @@ public final class ModBlocks {
 	public static final Block torchwood = PLACE_HOLDER;
 	public static final Block ember_grass = PLACE_HOLDER;
 	public static final Block raging_grass = PLACE_HOLDER;
-	private static Block STAIRS_ICE = new Block(Material.ICE);
-	
 	public static final Block log_elder = PLACE_HOLDER;
 	public static final Block log_juniper = PLACE_HOLDER;
 	public static final Block log_yew = PLACE_HOLDER;
@@ -117,6 +96,7 @@ public final class ModBlocks {
 	public static final Block leaves_juniper = PLACE_HOLDER;
 	public static final Block leaves_yew = PLACE_HOLDER;
 	public static final Block sapling = PLACE_HOLDER;
+	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
 
@@ -186,7 +166,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.CHALK, Material.ROCK).setHardness(5.0F)
 		);
-		
+
 		//Trees
 		registry.registerAll(
 				new BlockModLog(LibBlockName.LOG_ELDER),
@@ -194,7 +174,7 @@ public final class ModBlocks {
 				new BlockModLog(LibBlockName.LOG_YEW),
 				new BlockModLeaves(LibBlockName.LEAVES_ELDER),
 				new BlockModLeaves(LibBlockName.LEAVES_JUNIPER),
-				new BlockModLeaves(LibBlockName.LEAVES_YEW), 
+				new BlockModLeaves(LibBlockName.LEAVES_YEW),
 				new BlockModSapling(LibBlockName.SAPLING)
 		);
 	}

@@ -10,7 +10,6 @@ import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockModLog extends BlockLog implements IModelRegister {
-	
+
 	public BlockModLog(String id) {
 		super();
 		setUnlocalizedName(id);
@@ -29,12 +28,12 @@ public class BlockModLog extends BlockLog implements IModelRegister {
 		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
 	}
-	
+
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(LOG_AXIS).ordinal();
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumAxis axis = EnumAxis.values()[meta];
@@ -43,7 +42,7 @@ public class BlockModLog extends BlockLog implements IModelRegister {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {LOG_AXIS});
+		return new BlockStateContainer(this, new IProperty[]{LOG_AXIS});
 	}
 
 	@Override

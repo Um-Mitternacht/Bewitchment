@@ -7,7 +7,6 @@
 package com.bewitchment.common.item.block;
 
 import com.bewitchment.common.block.natural.tree.BlockModSapling.EnumSaplingType;
-
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.item.ItemLeaves;
 import net.minecraft.item.ItemStack;
@@ -20,7 +19,7 @@ public class ItemBlockLeaves extends ItemLeaves {
 		this.setRegistryName(block.getRegistryName());
 		this.setUnlocalizedName("leaves");// TODO lookup lib for name
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return "tile.leaves_" + EnumSaplingType.values()[stack.getMetadata()].getName();// TODO lookup lib for name

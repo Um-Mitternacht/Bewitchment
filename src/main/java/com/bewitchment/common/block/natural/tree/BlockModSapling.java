@@ -6,16 +6,10 @@
 
 package com.bewitchment.common.block.natural.tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
-
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockLog.EnumAxis;
@@ -41,13 +35,17 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Random;
+
 public class BlockModSapling extends BlockBush implements IGrowable, IModelRegister {
-	
-	protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
-	
+
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
 	public static final PropertySapling TYPE = new PropertySapling("type", EnumSaplingType.class, Arrays.asList(EnumSaplingType.values()));
-	
+	protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
+
 	public BlockModSapling(String id) {
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
@@ -55,136 +53,13 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		this.setTickRandomly(true);
 		this.setDefaultState(blockState.getBaseState().withProperty(STAGE, 0).withProperty(TYPE, EnumSaplingType.ELDER));
 	}
-	
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return SAPLING_AABB;
-	}
-	
-	@Override
-	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ModBlocks.sapling, 1, 0));
-		items.add(new ItemStack(ModBlocks.sapling, 1, 1));
-		items.add(new ItemStack(ModBlocks.sapling, 1, 2));
-	}
-		
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return true;
-	}
-	
-	@Override
-	public int damageDropped(IBlockState state) {
-		return state.getValue(TYPE).ordinal();
-	}
-		
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return worldIn.rand.nextFloat() < 0.45D;
-	}
-		
-	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
-		if (canSaplingGrow(state.getValue(TYPE), world, pos)) {
-			if (state.getValue(STAGE) < 3)
-				world.setBlockState(pos, state.cycleProperty(STAGE), 3);
-			else {
-				generateTree(world, rand, pos, state);
-			}
-		} else {
-			if (state.getValue(TYPE) == EnumSaplingType.YEW) {
-				if (world.getBlockState(pos.south()).getBlock() == ModBlocks.sapling && world.getBlockState(pos.south()).getValue(TYPE) == EnumSaplingType.YEW) {
-					((BlockModSapling) world.getBlockState(pos.south()).getBlock()).grow(world, rand, pos.south(), world.getBlockState(pos.south()));
-					return;
-				}
-				if (world.getBlockState(pos.west()).getBlock() == ModBlocks.sapling && world.getBlockState(pos.west()).getValue(TYPE) == EnumSaplingType.YEW) {
-					((BlockModSapling) world.getBlockState(pos.west()).getBlock()).grow(world, rand, pos.west(), world.getBlockState(pos.west()));
-					return;
-				}
-			}
-		}
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(TYPE).ordinal() | (state.getValue(STAGE) << 2);
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		if ((meta & 3) >= EnumSaplingType.values().length)
-			return this.getDefaultState();
-		return this.getDefaultState().withProperty(TYPE, EnumSaplingType.values()[meta & 3]).withProperty(STAGE, meta >> 2);
-	}
-		
-		@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, TYPE, STAGE);
-	}
-	
-	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-		if (random.nextDouble() < 0.1)
-			grow(worldIn, random, pos, state);
-	}
-	
-	private void generateTree(World world, Random rand, BlockPos pos, IBlockState state) {
-		if (!world.isRemote) {
-			switch (state.getValue(TYPE)) {
-				case ELDER:
-					generateElderTree(world, pos, rand);
-					break;
-				case JUNIPER:
-					generateJuniperTree(world, pos, rand);
-					break;
-				case YEW:
-					generateYewTree(world, pos, rand);
-					break;
-				default:
-					break;
-				
-			}
-		}
-	}
-	
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		int t = stack.getMetadata();
-		if (t >= EnumSaplingType.values().length)
-			t = 0;
-		worldIn.setBlockState(pos, state.withProperty(TYPE, EnumSaplingType.values()[t]), 3);
-	}
-	
-	public static enum EnumSaplingType implements IStringSerializable {
-		
-		ELDER, JUNIPER, YEW;
-		
-		@Override
-		public String getName() {
-			return this.name().toLowerCase();
-		}
-	}
-	
-	public static class PropertySapling extends PropertyEnum<EnumSaplingType> {
-		protected PropertySapling(String name, Class<EnumSaplingType> valueClass, Collection<EnumSaplingType> allowedValues) {
-			super(name, valueClass, allowedValues);
-		}
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerModel() {
-		registerModel(this, 0);
-		registerModel(this, 1);
-		registerModel(this, 2);
-	}
-	
+
 	private static void registerModel(Block block, int meta) {
 		Item item = Item.getItemFromBlock(block);
 		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(new ResourceLocation(item.getRegistryName().toString() + "_" + EnumSaplingType.values()[meta].getName()), "inventory");
 		ModelLoader.setCustomModelResourceLocation(item, meta, modelResourceLocation);
 	}
-		
+
 	public static void generateElderTree(World world, BlockPos pos, Random r) {
 		IBlockState leaves = ModBlocks.leaves_elder.getDefaultState();
 		int h = generateTrunk(3, 5, ModBlocks.log_elder.getDefaultState(), world, pos, r);
@@ -201,7 +76,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 			}
 		}
 	}
-	
+
 	public static void generateJuniperTree(World world, BlockPos pos, Random r) {
 		int h = generateTrunk(2, 4, ModBlocks.log_juniper.getDefaultState(), world, pos, r);
 		EnumFacing branchOffset = EnumFacing.HORIZONTALS[r.nextInt(4)];
@@ -224,7 +99,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				world.setBlockState(current, log, 3);
 			}
 		}
-		
+
 		IBlockState leaves = ModBlocks.leaves_juniper.getDefaultState();
 		for (BlockPos p : logs) {
 			for (EnumFacing f : EnumFacing.VALUES) {
@@ -239,9 +114,9 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 					}
 			}
 		}
-		
+
 	}
-		
+
 	public static void generateYewTree(World world, BlockPos pos, Random r) {
 		int h1 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos, r);
 		int h2 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos.east(), r);
@@ -249,9 +124,9 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		int h4 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos.north(), r);
 		int hmin = Math.min(Math.min(h1, h2), Math.min(h3, h4));
 		int hmax = Math.max(Math.max(h1, h2), Math.max(h3, h4));
-		
+
 		IBlockState leaves = ModBlocks.leaves_yew.getDefaultState();
-		
+
 		for (int dx = -2; dx < 4; dx++)
 			for (int dz = -3; dz < 3; dz++)
 				for (int dy = -2; dy < hmax - hmin + 2; dy++) {
@@ -274,10 +149,10 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 						if (dx == 3 && dz == 2)
 							continue;
 						world.setBlockState(current, leaves, 3);
-			}
-		}
+					}
+				}
 	}
-	
+
 	public static boolean canSaplingGrow(EnumSaplingType type, World world, BlockPos pos) {
 		if (world.isRemote)
 			return false;
@@ -325,7 +200,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		}
 		return true;// TODO
 	}
-	
+
 	private static int generateTrunk(int minHeight, int maxHeight, IBlockState log, World world, BlockPos pos, Random r) {
 		int h = minHeight + r.nextInt(maxHeight - minHeight + 1);
 		for (int i = 0; i < h; i++) {
@@ -335,8 +210,131 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		}
 		return h;
 	}
-	
+
 	private static boolean isAirBlock(World world, BlockPos current) {
 		return world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current);
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return SAPLING_AABB;
+	}
+
+	@Override
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
+		items.add(new ItemStack(ModBlocks.sapling, 1, 0));
+		items.add(new ItemStack(ModBlocks.sapling, 1, 1));
+		items.add(new ItemStack(ModBlocks.sapling, 1, 2));
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return true;
+	}
+
+	@Override
+	public int damageDropped(IBlockState state) {
+		return state.getValue(TYPE).ordinal();
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return worldIn.rand.nextFloat() < 0.45D;
+	}
+
+	@Override
+	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
+		if (canSaplingGrow(state.getValue(TYPE), world, pos)) {
+			if (state.getValue(STAGE) < 3)
+				world.setBlockState(pos, state.cycleProperty(STAGE), 3);
+			else {
+				generateTree(world, rand, pos, state);
+			}
+		} else {
+			if (state.getValue(TYPE) == EnumSaplingType.YEW) {
+				if (world.getBlockState(pos.south()).getBlock() == ModBlocks.sapling && world.getBlockState(pos.south()).getValue(TYPE) == EnumSaplingType.YEW) {
+					((BlockModSapling) world.getBlockState(pos.south()).getBlock()).grow(world, rand, pos.south(), world.getBlockState(pos.south()));
+					return;
+				}
+				if (world.getBlockState(pos.west()).getBlock() == ModBlocks.sapling && world.getBlockState(pos.west()).getValue(TYPE) == EnumSaplingType.YEW) {
+					((BlockModSapling) world.getBlockState(pos.west()).getBlock()).grow(world, rand, pos.west(), world.getBlockState(pos.west()));
+					return;
+				}
+			}
+		}
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(TYPE).ordinal() | (state.getValue(STAGE) << 2);
+	}
+
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		if ((meta & 3) >= EnumSaplingType.values().length)
+			return this.getDefaultState();
+		return this.getDefaultState().withProperty(TYPE, EnumSaplingType.values()[meta & 3]).withProperty(STAGE, meta >> 2);
+	}
+
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, TYPE, STAGE);
+	}
+
+	@Override
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
+		if (random.nextDouble() < 0.1)
+			grow(worldIn, random, pos, state);
+	}
+
+	private void generateTree(World world, Random rand, BlockPos pos, IBlockState state) {
+		if (!world.isRemote) {
+			switch (state.getValue(TYPE)) {
+				case ELDER:
+					generateElderTree(world, pos, rand);
+					break;
+				case JUNIPER:
+					generateJuniperTree(world, pos, rand);
+					break;
+				case YEW:
+					generateYewTree(world, pos, rand);
+					break;
+				default:
+					break;
+
+			}
+		}
+	}
+
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		int t = stack.getMetadata();
+		if (t >= EnumSaplingType.values().length)
+			t = 0;
+		worldIn.setBlockState(pos, state.withProperty(TYPE, EnumSaplingType.values()[t]), 3);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		registerModel(this, 0);
+		registerModel(this, 1);
+		registerModel(this, 2);
+	}
+
+	public static enum EnumSaplingType implements IStringSerializable {
+
+		ELDER, JUNIPER, YEW;
+
+		@Override
+		public String getName() {
+			return this.name().toLowerCase();
+		}
+	}
+
+	public static class PropertySapling extends PropertyEnum<EnumSaplingType> {
+		protected PropertySapling(String name, Class<EnumSaplingType> valueClass, Collection<EnumSaplingType> allowedValues) {
+			super(name, valueClass, allowedValues);
+		}
 	}
 }
