@@ -2,10 +2,10 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class HarvestEvent {
 
 	@SubscribeEvent
-	public static void onHarvestAllium(BlockEvent.HarvestDropsEvent harvest) {
+	public void onHarvestAllium(BlockEvent.HarvestDropsEvent harvest) {
 		if (harvest.getState().getBlock() == Blocks.RED_FLOWER && harvest.getState().getBlock().getMetaFromState(harvest.getState()) == 2 && harvest.getWorld().rand.nextInt(5) == 0 && !harvest.isSilkTouching()) {
 			harvest.getDrops().clear();
 			harvest.getDrops().add(new ItemStack(ModItems.seed_garlic, 1));
@@ -22,7 +22,6 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	@Mod.EventHandler
 	public void onHarvestDeadBush(BlockEvent.HarvestDropsEvent harvest) {
 		if ((harvest.getState().getBlock() == Blocks.DEADBUSH && harvest.getWorld().rand.nextInt(150) < 25)) {
 			harvest.getDrops().clear();
@@ -31,7 +30,6 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	@Mod.EventHandler
 	public void onHarvestOakLeaves(BlockEvent.HarvestDropsEvent event) {
 		if ((event.getState().getBlock() == Blocks.LEAVES && event.getWorld().rand.nextInt(150) < 25)) {
 			event.getDrops().clear();
@@ -40,7 +38,6 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	@Mod.EventHandler
 	public void onScoopGravel(BlockEvent.HarvestDropsEvent event) {
 		if ((event.getState().getBlock() == Blocks.GRAVEL && event.getWorld().rand.nextInt(400) < 25)) {
 			event.getDrops().clear();
@@ -49,7 +46,6 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	@Mod.EventHandler
 	public void onMineCoquina(BlockEvent.HarvestDropsEvent event) {
 		if ((event.getState().getBlock() == ModBlocks.coquina && event.getWorld().rand.nextInt(345) < 25)) {
 			event.getDrops().clear();
@@ -58,7 +54,6 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	@Mod.EventHandler
 	public void onHarvestWormwood(BlockEvent.HarvestDropsEvent event) {
 		if ((event.getState().getBlock() == ModBlocks.crop_wormwood && event.getWorld().rand.nextInt(450) < 25)) {
 			event.getDrops().clear();
