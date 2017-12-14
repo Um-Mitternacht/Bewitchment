@@ -14,6 +14,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class HarvestEvent {
 
 	@SubscribeEvent
+	public static void onHarvestAllium(BlockEvent.HarvestDropsEvent harvest) {
+		if (harvest.getState().getBlock() == Blocks.RED_FLOWER && harvest.getState().getBlock().getMetaFromState(harvest.getState()) == 2 && harvest.getWorld().rand.nextInt(5) == 0 && !harvest.isSilkTouching()) {
+			harvest.getDrops().clear();
+			harvest.getDrops().add(new ItemStack(ModItems.seed_garlic, 1));
+		}
+	}
+
+	@SubscribeEvent
 	@Mod.EventHandler
 	public void onHarvestDeadBush(BlockEvent.HarvestDropsEvent harvest) {
 		if ((harvest.getState().getBlock() == Blocks.DEADBUSH && harvest.getWorld().rand.nextInt(150) < 25)) {
