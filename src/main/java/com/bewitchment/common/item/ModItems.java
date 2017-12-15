@@ -21,9 +21,17 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-import com.bewitchment.common.item.tool.*;
+import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.item.tool.ItemSalt;
+import com.bewitchment.common.item.tool.ItemSilverAxe;
+import com.bewitchment.common.item.tool.ItemSilverHoe;
+import com.bewitchment.common.item.tool.ItemSilverPickaxe;
+import com.bewitchment.common.item.tool.ItemSilverSpade;
+import com.bewitchment.common.item.tool.ItemSilverSword;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockSlab;
@@ -85,6 +93,8 @@ public final class ModItems {
 	public static final Item seed_silphium = PLACE_HOLDER;
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
+	public static final Item moonbell = PLACE_HOLDER;
+	
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
 
@@ -219,7 +229,7 @@ public final class ModItems {
 				new ItemSilverArmor(LibItemName.SILVER_LEGGINGS, ModMaterials.ARMOR_SILVER, 2, EntityEquipmentSlot.LEGS),
 				new ItemSilverArmor(LibItemName.SILVER_BOOTS, ModMaterials.ARMOR_SILVER, 1, EntityEquipmentSlot.FEET)
 		);
-		//Item Blocks @formatter:off
+		// Item Blocks
 		registry.registerAll(
 				new ItemBlockColor(ModBlocks.candle_large),
 				new ItemBlockColor(ModBlocks.candle_medium),
@@ -277,9 +287,9 @@ public final class ModItems {
 				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_elder),
 				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_juniper),
 				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_yew),
-				new ItemBlockSapling()
+				new ItemBlockSapling(),
+				itemBlock(ModBlocks.moonbell)
 		);
-		//@formatter:on
 	}
 
 	private static Item itemBlock(Block block) {

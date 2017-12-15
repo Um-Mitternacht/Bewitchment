@@ -1,6 +1,12 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.natural.crop.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
 import com.bewitchment.common.core.capability.brew.CapabilityBrewStorage;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
@@ -16,18 +22,17 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.food.seed.SeedDropRegistry;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.spell.ModSpells;
+
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -81,6 +86,13 @@ public class Bewitchment {
 
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent evt) {
+		ForgeRegistries.BIOMES.getValues().parallelStream().filter(b -> b.getBiomeName().toLowerCase().contains("roofed forest")).forEach(b -> {
+			BlockMoonbell.addValidMoonbellBiome(b);
+		});
 	}
 
 	@EventHandler

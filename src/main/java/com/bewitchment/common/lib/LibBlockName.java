@@ -74,6 +74,7 @@ public final class LibBlockName {
 	public static final String LEAVES_JUNIPER = "leaves_juniper";
 	public static final String LEAVES_YEW = "leaves_yew";
 	public static final String SAPLING = "sapling";
+	public static final String MOONBELL = "moonbell";
 
 	private LibBlockName() {
 	}
