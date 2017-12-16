@@ -21,17 +21,9 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-import com.bewitchment.common.item.tool.ItemAthame;
-import com.bewitchment.common.item.tool.ItemBoline;
-import com.bewitchment.common.item.tool.ItemSalt;
-import com.bewitchment.common.item.tool.ItemSilverAxe;
-import com.bewitchment.common.item.tool.ItemSilverHoe;
-import com.bewitchment.common.item.tool.ItemSilverPickaxe;
-import com.bewitchment.common.item.tool.ItemSilverSpade;
-import com.bewitchment.common.item.tool.ItemSilverSword;
+import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockSlab;
@@ -94,7 +86,7 @@ public final class ModItems {
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
-	
+
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
 

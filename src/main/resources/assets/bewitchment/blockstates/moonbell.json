@@ -1,18 +1,18 @@
 {
-    "forge_marker": 1,
-	"parent": "block/block",
-	"variants": {
-		"inventory": {
-			"model": "bewitchment:moonbell",
-			"transform": "forge:default-block"
-		},
-		"placed": {
-			"true": {
-				"model": "bewitchment:moonbell"
-			},
-			"false": {
-				"model": "bewitchment:moonbell"
-			}
-		}
+  "forge_marker": 1,
+  "parent": "block/block",
+  "variants": {
+    "inventory": {
+      "model": "bewitchment:moonbell",
+      "transform": "forge:default-block"
+    },
+    "placed": {
+      "true": {
+        "model": "bewitchment:moonbell"
+      },
+      "false": {
+        "model": "bewitchment:moonbell"
+      }
     }
+  }
 }

@@ -2,7 +2,6 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
