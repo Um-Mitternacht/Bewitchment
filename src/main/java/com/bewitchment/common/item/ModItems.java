@@ -254,7 +254,6 @@ public final class ModItems {
 				itemBlock(ModBlocks.coquina),
 				itemBlock(ModBlocks.bloodstone_block),
 				itemBlock(ModBlocks.cauldron),
-				itemBlock(ModBlocks.altar),
 				itemBlock(ModBlocks.oven),
 				itemBlock(ModBlocks.apiary),
 				itemBlock(ModBlocks.torchwood),
