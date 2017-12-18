@@ -38,7 +38,7 @@ public class BlockEmberGrass extends BlockMod implements IGrowable, IPlantable {
 		setSound(SoundType.PLANT);
 		this.setLightLevel(0.1F);
 		this.setTickRandomly(true);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

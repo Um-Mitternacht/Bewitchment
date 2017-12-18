@@ -91,6 +91,9 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.log_juniper);
 			addBlock(ModBlocks.log_yew);
 			addBlock(ModBlocks.cypress_sapling);
+			addBlock(ModBlocks.torchwood);
+			addBlock(ModBlocks.ember_grass);
+			addBlock(ModBlocks.raging_grass);
 		}
 	}
 
@@ -205,7 +208,6 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.beehive);
 			addBlock(ModBlocks.altar);
 			addBlock(ModBlocks.oven);
-			addBlock(ModBlocks.torchwood);
 			addBlock(ModBlocks.apiary);
 			addBlock(ModBlocks.chalk);
 			addBlock(ModBlocks.coquina);

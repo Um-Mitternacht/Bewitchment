@@ -35,7 +35,7 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 		setSound(SoundType.WOOD);
 		this.setLightLevel(0.7F);
 		this.setTickRandomly(true);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@SuppressWarnings("deprecation")
