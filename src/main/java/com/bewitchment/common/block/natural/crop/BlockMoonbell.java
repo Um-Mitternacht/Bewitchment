@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.natural.crop;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -34,6 +35,7 @@ public class BlockMoonbell extends BlockModFlower {
 		MinecraftForge.EVENT_BUS.register(this);
 		this.setLightOpacity(16).setLightLevel(0.5f).setTickRandomly(true);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(placed, false));
+		this.setSoundType(SoundType.PLANT);
 	}
 
 	public static void addValidMoonbellBiome(Biome b) {

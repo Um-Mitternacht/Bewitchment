@@ -186,6 +186,9 @@ tile.crop_garlic.name=Garlic Crop
 tile.crop_wormwood.name=Wormwood Crop
 tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
+tile.moonbell.name=Moonbell Flower
+
+tile.witch_altar.name=Witches Altar
 
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore
@@ -223,6 +226,10 @@ tile.fake_ice_slab_half.name=Perpetual Ice Slab
 
 //Saplings
 tile.cypress_sapling.name=Cypress Sapling
+tile.sapling_juniper.name=Juniper Sapling
+tile.sapling_elder.name=Elderwood Sapling
+tile.sapling_yew.name=Yew Sapling
+
 
 //Mutant Plants
 tile.torchwood.name=Torchwood

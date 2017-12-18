@@ -14,6 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
@@ -49,8 +50,9 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 	public BlockModSapling(String id) {
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setTickRandomly(true);
+		this.setSoundType(SoundType.PLANT);
 		this.setDefaultState(blockState.getBaseState().withProperty(STAGE, 0).withProperty(TYPE, EnumSaplingType.ELDER));
 	}
 

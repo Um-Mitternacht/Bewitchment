@@ -25,7 +25,7 @@ public class BlockModLog extends BlockLog implements IModelRegister {
 		super();
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
 	}
 

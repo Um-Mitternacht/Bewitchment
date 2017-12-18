@@ -40,7 +40,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 	public BlockModLeaves(String id) {
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
 	}
 

@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.natural.tree;
 
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -28,6 +29,7 @@ public class BlockCypressSapling extends BlockMod {
 		setResistance(1F);
 		setHardness(1F);
 		useNeighborBrightness = true;
+		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@SuppressWarnings("deprecation")
