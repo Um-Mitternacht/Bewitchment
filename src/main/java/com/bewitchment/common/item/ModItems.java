@@ -280,7 +280,8 @@ public final class ModItems {
 				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_juniper),
 				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_yew),
 				new ItemBlockSapling(),
-				itemBlock(ModBlocks.moonbell)
+				itemBlock(ModBlocks.moonbell),
+				itemBlock(ModBlocks.witch_altar)
 		);
 	}
 
