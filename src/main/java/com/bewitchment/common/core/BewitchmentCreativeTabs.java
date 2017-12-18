@@ -84,6 +84,12 @@ public final class BewitchmentCreativeTabs {
 			CropRegistry.getSeeds().forEach((crop, item) -> addItem(item));
 			addBlock(ModBlocks.moonbell);
 			addBlock(ModBlocks.sapling);
+			addBlock(ModBlocks.leaves_elder);
+			addBlock(ModBlocks.leaves_juniper);
+			addBlock(ModBlocks.leaves_yew);
+			addBlock(ModBlocks.log_elder);
+			addBlock(ModBlocks.log_juniper);
+			addBlock(ModBlocks.log_yew);
 		}
 	}
 
@@ -168,12 +174,6 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.absinthe_green);
 			addItem(ModItems.cold_iron_ingot);
 			addItem(ModItems.spell_page);
-			addBlock(ModBlocks.leaves_elder);
-			addBlock(ModBlocks.leaves_juniper);
-			addBlock(ModBlocks.leaves_yew);
-			addBlock(ModBlocks.log_elder);
-			addBlock(ModBlocks.log_juniper);
-			addBlock(ModBlocks.log_yew);
 		}
 	}
 
