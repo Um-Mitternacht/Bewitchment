@@ -206,7 +206,6 @@ public final class BewitchmentCreativeTabs {
 
 			addBlock(ModBlocks.cauldron);
 			addBlock(ModBlocks.beehive);
-			addBlock(ModBlocks.altar);
 			addBlock(ModBlocks.oven);
 			addBlock(ModBlocks.apiary);
 			addBlock(ModBlocks.chalk);
