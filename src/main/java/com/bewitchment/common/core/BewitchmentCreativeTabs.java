@@ -90,6 +90,7 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.log_elder);
 			addBlock(ModBlocks.log_juniper);
 			addBlock(ModBlocks.log_yew);
+			addBlock(ModBlocks.cypress_sapling);
 		}
 	}
 
@@ -227,7 +228,6 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.candle_medium);
 			addBlock(ModBlocks.candle_small);
 			addBlock(ModBlocks.fake_ice);
-			addBlock(ModBlocks.cypress_sapling);
 			addBlock(ModBlocks.fake_ice_fence);
 			addBlock(ModBlocks.fake_ice_stairs);
 			addBlock(ModBlocks.fake_ice_slab_half);
