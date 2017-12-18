@@ -234,7 +234,18 @@ tile.log_elder.name=Elderwood Log
 tile.log_juniper.name=Juniper Log
 
 //Spells
-//TODO!
+item.spell_page.name=Forgotten Spell
+item.spell_page.bewitchment.magnet.name=Spell of Far Reach
+item.spell_page.bewitchment.poke.name=Spell of Punch
+item.spell_page.bewitchment.water.name=Spell of the Puddle
+item.spell_page.bewitchment.activation.name=Spell of Telekinesis
+item.spell_page.bewitchment.slowness.name=Spell of the Tangled Feet
+item.spell_page.bewitchment.lesser_blink.name=Spell of Lesser Blink
+item.spell_page.bewitchment.blink.name=Spell of Blink
+item.spell_page.bewitchment.explosion.name=Spell of Destabilization
+item.spell_page.bewitchment.disarming.name=Spell of Disarming
+item.spell_page.bewitchment.infuse_life.name=Spell of the Gift
+item.spell_page.bewitchment.self_heal.name=Spell of Restoration
 
 
 //Mutant Plants
