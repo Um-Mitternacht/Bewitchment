@@ -224,11 +224,14 @@ tile.fake_ice_fence.name=Perpetual Ice Fence
 tile.fake_ice_stairs.name=Perpetual Ice Stairs
 tile.fake_ice_slab_half.name=Perpetual Ice Slab
 
-//Saplings
+//Saplings and Trees
 tile.cypress_sapling.name=Cypress Sapling
 tile.sapling_juniper.name=Juniper Sapling
 tile.sapling_elder.name=Elderwood Sapling
 tile.sapling_yew.name=Yew Sapling
+tile.log_yew.name=Yew Log
+tile.log_elder.name=Elderwood Log
+tile.log_juniper.name=Juniper Log
 
 
 //Mutant Plants
