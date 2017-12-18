@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "bewitchment:blocks/altar_unformed_side",
+        "bottom": "bewitchment:blocks/altar_bottom",
+        "top": "bewitchment:blocks/altar_unformed_top"
+    }
+}
