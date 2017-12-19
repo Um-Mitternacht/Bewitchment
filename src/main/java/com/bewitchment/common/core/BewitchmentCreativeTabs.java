@@ -137,12 +137,12 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.spell_page);
 			addItem(ModItems.book_of_shadows);
 			addItem(ModItems.dusty_grimoire);
-			addItem(ModItems.gem_powder);
-			addItem(ModItems.gem);
-			addItem(ModItems.gemstone_amalgam);
 			addItem(ModItems.brew_phial_drink);
 			addItem(ModItems.brew_phial_splash);
 			addItem(ModItems.brew_phial_linger);
+			addItem(ModItems.gem_powder);
+			addItem(ModItems.gem);
+			addItem(ModItems.gemstone_amalgam);
 			addItem(ModItems.bee);
 			addItem(ModItems.honeycomb);
 			addItem(ModItems.empty_honeycomb);
