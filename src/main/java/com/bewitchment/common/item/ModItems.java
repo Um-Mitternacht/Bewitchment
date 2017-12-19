@@ -5,7 +5,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.block.ItemBlockColor;
-import com.bewitchment.common.item.block.ItemBlockLeaves;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
@@ -24,8 +23,8 @@ import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -275,9 +274,9 @@ public final class ModItems {
 				itemBlock(ModBlocks.log_elder),
 				itemBlock(ModBlocks.log_juniper),
 				itemBlock(ModBlocks.log_yew),
-				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_elder),
-				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_juniper),
-				new ItemBlockLeaves((BlockLeaves) ModBlocks.leaves_yew),
+				itemBlock(ModBlocks.leaves_elder),
+				itemBlock(ModBlocks.leaves_juniper),
+				itemBlock(ModBlocks.leaves_yew),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar)
