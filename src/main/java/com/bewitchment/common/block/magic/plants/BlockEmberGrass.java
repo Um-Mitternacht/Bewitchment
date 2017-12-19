@@ -1,8 +1,13 @@
 package com.bewitchment.common.block.magic.plants;
 
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -21,10 +26,6 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Joseph on 11/7/2017.
@@ -111,6 +112,7 @@ public class BlockEmberGrass extends BlockMod implements IGrowable, IPlantable {
 		return this.canSustainBush(worldIn.getBlockState(pos.down()));
 	}
 
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (rand.nextInt(25) == 0) {
 			int i = 5;
@@ -147,22 +149,25 @@ public class BlockEmberGrass extends BlockMod implements IGrowable, IPlantable {
 		return Block.EnumOffsetType.XYZ;
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+		super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
 		if (entityIn instanceof EntityLivingBase) {
-			entityIn.attackEntityFrom(DamageSource.IN_FIRE, 4);
+			entityIn.attackEntityFrom(DamageSource.IN_FIRE, 2); // Maybe we should just set the entity on fire
+			// ((EntityLivingBase) entityIn).setFire(1);
 		}
 	}
 }
