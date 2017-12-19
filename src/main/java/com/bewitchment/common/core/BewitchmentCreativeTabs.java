@@ -120,22 +120,11 @@ public final class BewitchmentCreativeTabs {
 		public void displayAllRelevantItems(@Nonnull NonNullList<ItemStack> list) {
 			this.list = list;
 
-			addItem(ModItems.gem);
-			addItem(ModItems.fume);
-			addItem(ModItems.gem_powder);
-			addItem(ModItems.gemstone_amalgam);
-			addItem(ModItems.bee);
-			addItem(ModItems.honeycomb);
-			addItem(ModItems.empty_honeycomb);
-			addItem(ModItems.glass_jar);
-			addItem(ModItems.honey);
-			addItem(ModItems.wax);
-			addItem(ModItems.mortar_and_pestle);
+			addItem(ModItems.boline);
+			addItem(ModItems.athame);
+			addItem(ModItems.taglock);
 			addItem(ModItems.salt);
-			addItem(ModItems.cold_iron_ingot);
-			addItem(ModItems.silver_powder);
-			addItem(ModItems.silver_ingot);
-			addItem(ModItems.silver_nugget);
+			addItem(ModItems.mortar_and_pestle);
 			addItem(ModItems.silver_pickaxe);
 			addItem(ModItems.silver_axe);
 			addItem(ModItems.silver_spade);
@@ -145,15 +134,26 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.silver_chestplate);
 			addItem(ModItems.silver_leggings);
 			addItem(ModItems.silver_boots);
+			addItem(ModItems.spell_page);
 			addItem(ModItems.book_of_shadows);
 			addItem(ModItems.dusty_grimoire);
+			addItem(ModItems.gem_powder);
+			addItem(ModItems.gem);
+			addItem(ModItems.gemstone_amalgam);
 			addItem(ModItems.brew_phial_drink);
 			addItem(ModItems.brew_phial_splash);
 			addItem(ModItems.brew_phial_linger);
+			addItem(ModItems.bee);
+			addItem(ModItems.honeycomb);
+			addItem(ModItems.empty_honeycomb);
+			addItem(ModItems.glass_jar);
+			addItem(ModItems.honey);
+			addItem(ModItems.wax);
+			addItem(ModItems.cold_iron_ingot);
+			addItem(ModItems.silver_powder);
+			addItem(ModItems.silver_ingot);
+			addItem(ModItems.silver_nugget);
 			addItem(ModItems.chalk_item);
-			addItem(ModItems.boline);
-			addItem(ModItems.athame);
-			addItem(ModItems.taglock);
 			addItem(ModItems.unrefined_chalk);
 			addItem(ModItems.needle_bone);
 			addItem(ModItems.wool_of_bat);
@@ -177,7 +177,7 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.oak_apple_gall);
 			addItem(ModItems.absinthe_green);
 			addItem(ModItems.cold_iron_ingot);
-			addItem(ModItems.spell_page);
+			addItem(ModItems.fume);
 		}
 	}
 
@@ -205,9 +205,13 @@ public final class BewitchmentCreativeTabs {
 			this.list = list;
 
 			addBlock(ModBlocks.cauldron);
-			addBlock(ModBlocks.beehive);
+			addBlock(ModBlocks.witch_altar);
 			addBlock(ModBlocks.oven);
 			addBlock(ModBlocks.apiary);
+			addBlock(ModBlocks.candle_large);
+			addBlock(ModBlocks.candle_medium);
+			addBlock(ModBlocks.candle_small);
+			addBlock(ModBlocks.beehive);
 			addBlock(ModBlocks.chalk);
 			addBlock(ModBlocks.coquina);
 			addBlock(ModBlocks.gem_ore);
@@ -225,14 +229,10 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.garnet_block);
 			addBlock(ModBlocks.silver_block);
 			addBlock(ModBlocks.nethersteel);
-			addBlock(ModBlocks.candle_large);
-			addBlock(ModBlocks.candle_medium);
-			addBlock(ModBlocks.candle_small);
 			addBlock(ModBlocks.fake_ice);
 			addBlock(ModBlocks.fake_ice_fence);
 			addBlock(ModBlocks.fake_ice_stairs);
 			addBlock(ModBlocks.fake_ice_slab_half);
-			addBlock(ModBlocks.witch_altar);
 		}
 	}
 }
