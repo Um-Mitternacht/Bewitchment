@@ -1,9 +1,12 @@
 package com.bewitchment.common.core;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,8 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nonnull;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -176,7 +177,6 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.iron_gall_ink);
 			addItem(ModItems.oak_apple_gall);
 			addItem(ModItems.absinthe_green);
-			addItem(ModItems.cold_iron_ingot);
 			addItem(ModItems.fume);
 		}
 	}
