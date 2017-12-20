@@ -24,6 +24,7 @@ public class OvenCrafting {
 		final ItemStack ash = new ItemStack(ModItems.wood_ash);
 		final ItemStack cloudy_oil = new ItemStack(ModItems.fume, 1, 6);
 
+		//Todo: Fumes for the special saplings? Maybe add toast?
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING), ash, new ItemStack(ModItems.fume, 1, 2));
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 1), ash, new ItemStack(ModItems.fume, 1, 5));
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 2), ash, new ItemStack(ModItems.fume, 1, 3));
