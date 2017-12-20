@@ -11,8 +11,8 @@ import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
-import com.bewitchment.common.item.magic.ItemFume;
 import com.bewitchment.common.item.magic.ItemGem;
+import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.item.magic.ItemTaglock;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
@@ -20,9 +20,17 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-import com.bewitchment.common.item.tool.*;
+import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.item.tool.ItemSalt;
+import com.bewitchment.common.item.tool.ItemSilverAxe;
+import com.bewitchment.common.item.tool.ItemSilverHoe;
+import com.bewitchment.common.item.tool.ItemSilverPickaxe;
+import com.bewitchment.common.item.tool.ItemSilverSpade;
+import com.bewitchment.common.item.tool.ItemSilverSword;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
@@ -155,7 +163,8 @@ public final class ModItems {
 			registry.register(itemBlock((Block) fluidBlock));
 		}
 		registry.register(new ItemGem());
-		registry.register(new ItemFume());
+		// registry.register(new ItemFume());
+		registry.register(new ItemFumes("fume"));
 		registry.register(new ItemMod(LibItemName.GEMSTONE_AMALGAM));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
 		registry.register(new ItemMod(LibItemName.SILVER_POWDER));

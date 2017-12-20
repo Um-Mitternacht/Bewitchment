@@ -111,7 +111,25 @@ item.brew_phial_splash.name=Splash Brew Phial
 item.brew_phial_drink_lingering.name=Lingering Brew Phial
 item.oak_apple_gall.name=Oak Apple Gall
 item.grilled_watermelon.name=Grilled Watermelon
-item.fume.name=Foul Fume
+
+//fumes
+item.fume.unfired_jar.name=Unfired Jar
+item.fume.empty_jar.name=Empty Jar
+item.fume.oak_spirit.name=Oak Spirit
+item.fume.birch_soul.name=Birch Soul
+item.fume.acacia_essence.name=Acacia Essence
+item.fume.spruce_heart.name=Spruce Heart
+item.fume.cloudy_oil.name=Cloudy Oil
+item.fume.cleansing_aura.name=Cleansing Aura
+item.fume.emanation_of_dishonesty.name=Emanation of Dishonesty
+item.fume.foul_presence.name=Foul Presence
+item.fume.undying_image.name=Undying Image
+item.fume.demonic_dew.name=Demonic Dew
+item.fume.floating_tears.name=Floating Tears
+item.fume.heavenly_winds.name=Heavenly Winds
+item.fume.otherworld_breeze.name=Otherworldy Breeze
+item.fume.petrichor_odour.name=Odour of Petrichor
+item.fume.zephyr_of_the_depths.name=Zephir of the Depths
 
 //Dyes
 item.catechu.name=Catechu Brown
