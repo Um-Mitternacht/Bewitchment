@@ -1,7 +1,6 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFumes extends ItemMod {
-	public static final String[] names = new String[] {
+	public static final String[] names = new String[]{
 			"unfired_jar", // 0
 			"empty_jar", // 1
 			"oak_spirit", // 2
@@ -31,18 +30,18 @@ public class ItemFumes extends ItemMod {
 			"petrichor_odour", // 15
 			"zephyr_of_the_depths" // 16
 	};
-	
+
 	public ItemFumes(String id) {
 		super(id);
 		this.setHasSubtypes(true);
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata()>=names.length) return super.getUnlocalizedName(stack);
-		return super.getUnlocalizedName(stack)+"."+names[stack.getMetadata()];
+		if (stack.getMetadata() >= names.length) return super.getUnlocalizedName(stack);
+		return super.getUnlocalizedName(stack) + "." + names[stack.getMetadata()];
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs itemIn, NonNullList<ItemStack> tab) {
 		if (this.isInCreativeTab(itemIn)) {
@@ -50,7 +49,7 @@ public class ItemFumes extends ItemMod {
 				tab.add(new ItemStack(this, 1, i));
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
@@ -60,5 +59,5 @@ public class ItemFumes extends ItemMod {
 			ModelLoader.setCustomModelResourceLocation(this, i, mrl);
 		}
 	}
-	
+
 }

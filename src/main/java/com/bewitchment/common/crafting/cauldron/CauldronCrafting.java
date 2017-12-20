@@ -13,7 +13,6 @@ import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.brew.ModBrews;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

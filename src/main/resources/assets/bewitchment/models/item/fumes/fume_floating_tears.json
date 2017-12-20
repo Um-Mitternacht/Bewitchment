@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "bewitchment:items/fumes/fume_floating_tears"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bewitchment:items/fumes/fume_floating_tears"
+  }
 }
