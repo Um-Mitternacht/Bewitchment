@@ -1,13 +1,14 @@
 package com.bewitchment.common.crafting.oven;
 
+import java.util.Map;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Maps;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-
-import java.util.Map;
 
 /**
  * Created by Joseph on 11/6/2017.
@@ -75,7 +76,7 @@ public class OvenCrafting {
 	public ItemStack getSmeltResult(ItemStack stack) {
 		for (Map.Entry<ItemStack, ItemStack> entry : this.smeltingList.entrySet()) {
 			if (this.compareItemStacks(stack, entry.getKey())) {
-				return entry.getValue();
+				return entry.getValue().copy();
 			}
 		}
 
@@ -85,7 +86,7 @@ public class OvenCrafting {
 	public ItemStack getFumesResult(ItemStack stack) {
 		for (Map.Entry<ItemStack, ItemStack> entry : this.fumeList.entrySet()) {
 			if (this.compareItemStacks(stack, entry.getKey())) {
-				return entry.getValue();
+				return entry.getValue().copy();
 			}
 		}
 
