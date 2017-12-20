@@ -14,22 +14,22 @@ public class ItemFumes extends ItemMod {
 	public static final String[] names = new String[]{
 			"unfired_jar", // 0
 			"empty_jar", // 1
-			
+
 			"oak_spirit", // 2
 			"birch_soul", // 3
 			"acacia_essence", // 4
 			"spruce_heart", // 5
-			
+
 			"cloudy_oil", // 6 ~ equivalent of foul fume - byproduct
-			
+
 			"cleansing_aura", // 7 ~ connected with cleaning, purifying
 			"emanation_of_dishonesty", // 8 ~ connected with evil
 			"everchanging_presence", // 9 ~ connected with changing
 			"undying_image", // 10 ~ connected with rebirth
-			
+
 			"demonic_dew", // 11 ~ connected with nether/infernal stuff
 			"otherworld_tears", // 12 ~ connected with end/ethereal stuff
-			
+
 			"fiery_breeze", // 13 ~ connected with fire
 			"heavenly_winds", // 14 ~ connected with air
 			"petrichor_odour", // 15 ~ connected with earth

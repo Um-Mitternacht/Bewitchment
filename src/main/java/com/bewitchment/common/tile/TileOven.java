@@ -1,11 +1,8 @@
 package com.bewitchment.common.tile;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.crafting.oven.OvenCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -19,6 +16,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import javax.annotation.Nullable;
+
 /**
  * Created by Joseph on 7/17/2017.
  */
@@ -28,23 +27,24 @@ public class TileOven extends TileEntity implements ITickable {
 	public boolean isBurning = false;
 	public int burnTime;
 	public int itemBurnTime = 0;
+	protected String customName;
 	public AutomatableInventory inventory = new AutomatableInventory(5) {
-		
+
 		@Override
 		public String getName() {
 			return customName;
 		}
-		
+
 		@Override
 		public boolean hasCustomName() {
 			return customName != null;
 		}
-		
+
 		@Override
 		public ITextComponent getDisplayName() {
 			return new TextComponentString(getName());
 		}
-		
+
 		@Override
 		public boolean canMachineInsert(int slot, ItemStack stack) {
 			if (slot == 1 && TileEntityFurnace.isItemFuel(stack))
@@ -55,19 +55,17 @@ public class TileOven extends TileEntity implements ITickable {
 				return true;
 			return false;
 		}
-		
+
 		@Override
 		public boolean canMachineExtract(int slot, ItemStack stack) {
 			return slot > 2;
 		}
-		
+
 		@Override
 		public void onMarkDirty() {
 			TileOven.this.markDirty();
 		}
 	};
-	
-	protected String customName;
 
 	public void dropItems() {
 		for (int i = 0; i < 5; ++i) {
@@ -150,7 +148,7 @@ public class TileOven extends TileEntity implements ITickable {
 				inventory.decrStackSize(2, 1);
 		}
 	}
-	
+
 	private boolean shouldYieldFumes() {
 		return true; // TODO add drop chance
 	}

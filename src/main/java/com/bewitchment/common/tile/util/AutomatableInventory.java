@@ -11,7 +11,7 @@ import net.minecraftforge.items.IItemHandler;
 public abstract class AutomatableInventory implements IInventory, IItemHandler {
 
 	NonNullList<ItemStack> stacks;
-	
+
 	public AutomatableInventory(int slots) {
 		stacks = NonNullList.<ItemStack>withSize(slots, ItemStack.EMPTY);
 	}
@@ -27,7 +27,7 @@ public abstract class AutomatableInventory implements IInventory, IItemHandler {
 			return insertItemUnchecked(slot, stack, simulate);
 		return stack;
 	}
-	
+
 	// Skips the machine insertion check, internal use only
 	public ItemStack insertItemUnchecked(int slot, ItemStack stack, boolean simulate) {
 		ItemStack stackPresent = getStackInSlot(slot);
@@ -52,7 +52,7 @@ public abstract class AutomatableInventory implements IInventory, IItemHandler {
 		}
 		return stack;
 	}
-	
+
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
 		if (canMachineExtract(slot, getStackInSlot(slot).copy().splitStack(amount))) {
@@ -154,23 +154,23 @@ public abstract class AutomatableInventory implements IInventory, IItemHandler {
 	public void clear() {
 		stacks.clear();
 	}
-	
+
 	public void loadFromNBT(NBTTagCompound tag) {
 		ItemStackHelper.loadAllItems(tag, stacks);
 	}
-	
+
 	public NBTTagCompound saveToNbt() {
 		NBTTagCompound tag = new NBTTagCompound();
 		ItemStackHelper.saveAllItems(tag, stacks, true);
 		return tag;
 	}
-	
+
 	// returns true if the machine can insert the stack in the slot, indipendently of what there is inside already
 	public abstract boolean canMachineInsert(int slot, ItemStack stack);
-	
+
 	// returns true if the machine can extract the stack from the slot, indipendently of what there is inside
 	public abstract boolean canMachineExtract(int slot, ItemStack stack);
-	
+
 	// You probably wanna call the markDirty() method on the tile
 	public abstract void onMarkDirty();
 
@@ -178,5 +178,5 @@ public abstract class AutomatableInventory implements IInventory, IItemHandler {
 	public void setStackInSlot(int i, ItemStack stack) {
 		setInventorySlotContents(i, stack);
 	}
-	
+
 }

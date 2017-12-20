@@ -1,14 +1,13 @@
 package com.bewitchment.common.crafting.oven;
 
-import java.util.Map;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Maps;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import java.util.Map;
 
 /**
  * Created by Joseph on 11/6/2017.
@@ -24,7 +23,7 @@ public class OvenCrafting {
 	public OvenCrafting() {
 		final ItemStack ash = new ItemStack(ModItems.wood_ash);
 		final ItemStack cloudy_oil = new ItemStack(ModItems.fume, 1, 6);
-		
+
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING), ash, new ItemStack(ModItems.fume, 1, 2));
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 1), ash, new ItemStack(ModItems.fume, 1, 5));
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 2), ash, new ItemStack(ModItems.fume, 1, 3));
