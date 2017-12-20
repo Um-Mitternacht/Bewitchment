@@ -1,18 +1,16 @@
 package com.bewitchment.client.gui.container;
 
+import com.bewitchment.client.gui.container.slots.FilteredSlot;
+import com.bewitchment.client.gui.container.slots.OutputSlot;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.TileOven;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraftforge.items.SlotItemHandler;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created by Joseph on 7/17/2017.
@@ -24,35 +22,15 @@ public class ContainerOven extends Container {
 	public ContainerOven(IInventory playerInventory, TileOven te) {
 		this.oven = te;
 		//input slot
-		this.addSlotToContainer(new SlotItemHandler(oven.inventory, 0, 19, 17));
+		this.addSlotToContainer(new Slot(oven.inventory, 0, 19, 17));
 		//fuel slot
-		this.addSlotToContainer(new SlotItemHandler(oven.inventory, 1, 19, 53) {
-			@Override
-			public boolean isItemValid(@Nonnull ItemStack stack) {
-				return TileEntityFurnace.isItemFuel(stack);
-			}
-		});
+		this.addSlotToContainer(new FilteredSlot(oven.inventory, 1, 19, 53, net.minecraft.tileentity.TileEntityFurnace::isItemFuel));
 		//jar slot
-		this.addSlotToContainer(new SlotItemHandler(oven.inventory, 2, 69, 53) {
-			@Override
-			public boolean isItemValid(@Nonnull ItemStack stack) {
-				return stack.getItem() == Items.GLASS_BOTTLE || stack.getItem() == ModItems.glass_jar;
-			}
-		});
+		this.addSlotToContainer(new FilteredSlot(oven.inventory, 2, 69, 53, s -> s.getItem() == ModItems.fume && s.getMetadata() == 1));
 		//fume slot
-		this.addSlotToContainer(new SlotItemHandler(oven.inventory, 3, 128, 53) {
-			@Override
-			public boolean isItemValid(@Nonnull ItemStack stack) {
-				return false;
-			}
-		});
+		this.addSlotToContainer(new OutputSlot(oven.inventory, 3, 128, 53));
 		//output slot
-		this.addSlotToContainer(new SlotItemHandler(oven.inventory, 4, 124, 21) {
-			@Override
-			public boolean isItemValid(@Nonnull ItemStack stack) {
-				return false;
-			}
-		});
+		this.addSlotToContainer(new OutputSlot(oven.inventory, 4, 124, 21));
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {

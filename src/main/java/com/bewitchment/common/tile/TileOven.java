@@ -1,21 +1,23 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.crafting.oven.OvenCrafting;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.tile.util.AutomatableInventory;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 7/17/2017.
@@ -26,16 +28,46 @@ public class TileOven extends TileEntity implements ITickable {
 	public boolean isBurning = false;
 	public int burnTime;
 	public int itemBurnTime = 0;
-	public ItemStackHandler inventory = new ItemStackHandler(5) {
+	public AutomatableInventory inventory = new AutomatableInventory(5) {
+		
 		@Override
-		protected void onContentsChanged(int slot) {
+		public String getName() {
+			return customName;
+		}
+		
+		@Override
+		public boolean hasCustomName() {
+			return customName != null;
+		}
+		
+		@Override
+		public ITextComponent getDisplayName() {
+			return new TextComponentString(getName());
+		}
+		
+		@Override
+		public boolean canMachineInsert(int slot, ItemStack stack) {
+			if (slot == 1 && TileEntityFurnace.isItemFuel(stack))
+				return true;
+			if (slot == 2 && stack.getItem() == ModItems.fume && stack.getMetadata() == 1)
+				return true;
+			if (slot == 0)
+				return true;
+			return false;
+		}
+		
+		@Override
+		public boolean canMachineExtract(int slot, ItemStack stack) {
+			return slot > 2;
+		}
+		
+		@Override
+		public void onMarkDirty() {
 			TileOven.this.markDirty();
 		}
 	};
-	//come back to for input with hopper/other ducts
-	//private static final int[] SLOT_TOP = new int[]{3, 4};
-	//private static final int[] SLOT_BOTTOM = new int[]{0, 1, 2};
-	private String customName;
+	
+	protected String customName;
 
 	public void dropItems() {
 		for (int i = 0; i < 5; ++i) {
@@ -52,10 +84,9 @@ public class TileOven extends TileEntity implements ITickable {
 	public void update() {
 		if (!world.isRemote) {
 			IBlockState state = world.getBlockState(pos);
-			world.notifyBlockUpdate(pos, state, state, 3);
+			world.notifyBlockUpdate(pos, state, state, 3); // <zabi> FIXME This causes a chunk re-draw at every tick, it's very bad!
 		}
 		this.totalWorkTime = getWorkTime();
-
 		if (!isBurning) {
 			if (!inventory.getStackInSlot(1).isEmpty()) {
 				if (TileEntityFurnace.isItemFuel(inventory.getStackInSlot(1))) {
@@ -91,46 +122,17 @@ public class TileOven extends TileEntity implements ITickable {
 
 	//Change to speed up smelting, lower = faster
 	public int getWorkTime() {
-		return 512;
+		return 400;
 	}
 
+	// Returns true if the input is not empty,
 	public boolean canSmelt() {
 		if (!inventory.getStackInSlot(0).isEmpty()) {
-			if (OvenCrafting.instance().getSmeltResult(inventory.getStackInSlot(0)) != ItemStack.EMPTY) {
-				if (!inventory.getStackInSlot(2).isEmpty()) {
-					if (inventory.getStackInSlot(2).getItem() == ModItems.glass_jar || inventory.getStackInSlot(2).getItem() == Items.GLASS_BOTTLE) {
-
-						ItemStack stack = inventory.getStackInSlot(0);
-						if (inventory.getStackInSlot(3).isEmpty() && inventory.getStackInSlot(4).isEmpty()) {
-							return true;
-						} else if (!inventory.getStackInSlot(3).isEmpty() && inventory.getStackInSlot(4).isEmpty()) {
-							ItemStack stackFume = inventory.getStackInSlot(3);
-							if (inventory.getStackInSlot(3).getCount() < 64) {
-								if (stackFume == OvenCrafting.instance().getFumesResult(stack)) {
-									return true;
-								}
-							}
-						} else if (!inventory.getStackInSlot(4).isEmpty() && inventory.getStackInSlot(3).isEmpty()) {
-							if (inventory.getStackInSlot(4).getCount() < 64) {
-								ItemStack stackOutput = inventory.getStackInSlot(4);
-								if (stackOutput == OvenCrafting.instance().getSmeltResult(stack)) {
-									return true;
-								}
-							}
-						} else if (!inventory.getStackInSlot(3).isEmpty() && !inventory.getStackInSlot(4).isEmpty()) {
-							ItemStack stackFume = inventory.getStackInSlot(3);
-							ItemStack stackOutput = inventory.getStackInSlot(4);
-							if (inventory.getStackInSlot(3).getCount() < 64 && inventory.getStackInSlot(4).getCount() < 64) {
-								if (stackFume == OvenCrafting.instance().getFumesResult(stack) && stackOutput == OvenCrafting.instance().getSmeltResult(stack)) {
-									return true;
-								}
-							}
-						} else {
-							return false;
-						}
-					}
-				} else {
-					return false;
+			if (!OvenCrafting.instance().getSmeltResult(inventory.getStackInSlot(0)).isEmpty()) {
+				ItemStack stackToBeSmelted = inventory.getStackInSlot(0);
+				ItemStack stackNewOutput = OvenCrafting.instance().getSmeltResult(stackToBeSmelted);
+				if (inventory.insertItemUnchecked(4, stackNewOutput, true).isEmpty()) { // empty stack returned = I can fit a whole new batch of results
+					return true;
 				}
 			}
 		}
@@ -138,52 +140,30 @@ public class TileOven extends TileEntity implements ITickable {
 	}
 
 	public void smelt() {
-		if (canSmelt()) {
-			ItemStack stack = inventory.getStackInSlot(0);
-			ItemStack outputStack = OvenCrafting.instance().getSmeltResult(stack);
-			ItemStack fumesStack = OvenCrafting.instance().getFumesResult(stack);
-
-			if (inventory.getStackInSlot(3).isEmpty()) {
-				inventory.setStackInSlot(3, fumesStack);
-			} else {
-				if (inventory.getStackInSlot(3).getCount() < 64) {
-					inventory.getStackInSlot(3).grow(1);
-				}
-			}
-
-			/**
-			 * This is where you could add random checks for random chances
-			 */
-			if (inventory.getStackInSlot(4).isEmpty()) {
-				inventory.setStackInSlot(4, outputStack);
-			} else {
-				if (inventory.getStackInSlot(4).getCount() < 64) {
-					inventory.getStackInSlot(4).grow(1);
-				}
-			}
-
-			inventory.getStackInSlot(0).shrink(1);
-			inventory.getStackInSlot(2).shrink(1);
+		ItemStack stack = inventory.getStackInSlot(0);
+		ItemStack outputStack = OvenCrafting.instance().getSmeltResult(stack);
+		ItemStack fumesStack = OvenCrafting.instance().getFumesResult(stack);
+		inventory.decrStackSize(0, 1);
+		inventory.insertItemUnchecked(4, outputStack, false);
+		if (!inventory.getStackInSlot(2).isEmpty() && shouldYieldFumes()) { // If there are jars
+			if (inventory.insertItemUnchecked(3, fumesStack, false).isEmpty()) // If the fumes output is full fumes will be lost
+				inventory.decrStackSize(2, 1);
 		}
+	}
+	
+	private boolean shouldYieldFumes() {
+		return true; // TODO add drop chance
 	}
 
 	public void setCustomName(String name) {
 		this.customName = name;
 	}
 
-	public String getName() {
-		return this.customName;
-	}
-
-	public boolean hasCustomName() {
-		return this.customName != null && !this.customName.isEmpty();
-	}
-
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		if (compound.hasKey("items")) {
-			inventory.deserializeNBT((NBTTagCompound) compound.getTag("items"));
+			inventory.loadFromNBT((NBTTagCompound) compound.getTag("items"));
 		}
 
 		if (compound.hasKey("CustomName", 8)) {
@@ -199,9 +179,9 @@ public class TileOven extends TileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setTag("items", inventory.serializeNBT());
+		compound.setTag("items", inventory.saveToNbt());
 
-		if (this.hasCustomName()) {
+		if (inventory.hasCustomName()) {
 			compound.setString("CustomName", this.customName);
 		}
 
