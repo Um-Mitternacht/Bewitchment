@@ -1,14 +1,13 @@
 package com.bewitchment.common.crafting.oven;
 
-import java.util.Map;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Maps;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import java.util.Map;
 
 /**
  * Created by Joseph on 11/6/2017.
