@@ -20,9 +20,17 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-import com.bewitchment.common.item.tool.*;
+import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.item.tool.ItemSalt;
+import com.bewitchment.common.item.tool.ItemSilverAxe;
+import com.bewitchment.common.item.tool.ItemSilverHoe;
+import com.bewitchment.common.item.tool.ItemSilverPickaxe;
+import com.bewitchment.common.item.tool.ItemSilverSpade;
+import com.bewitchment.common.item.tool.ItemSilverSword;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
@@ -240,7 +248,6 @@ public final class ModItems {
 				itemBlock(ModBlocks.crop_kenaf),
 				itemBlock(ModBlocks.crop_garlic),
 				itemBlock(ModBlocks.crop_wormwood),
-				itemBlock(ModBlocks.cypress_sapling),
 				itemBlock(ModBlocks.fake_ice),
 				itemBlock(ModBlocks.fake_ice_fence),
 				itemBlock(ModBlocks.fake_ice_stairs),

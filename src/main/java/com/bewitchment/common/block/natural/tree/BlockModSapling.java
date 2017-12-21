@@ -6,10 +6,16 @@
 
 package com.bewitchment.common.block.natural.tree;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Random;
+
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockLog.EnumAxis;
@@ -36,11 +42,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
-
 public class BlockModSapling extends BlockBush implements IGrowable, IModelRegister {
 
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
@@ -61,7 +62,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(new ResourceLocation(item.getRegistryName().toString() + "_" + EnumSaplingType.values()[meta].getName()), "inventory");
 		ModelLoader.setCustomModelResourceLocation(item, meta, modelResourceLocation);
 	}
-
+	
 	public static void generateElderTree(World world, BlockPos pos, Random r) {
 		IBlockState leaves = ModBlocks.leaves_elder.getDefaultState();
 		int h = generateTrunk(3, 5, ModBlocks.log_elder.getDefaultState(), world, pos, r);
@@ -77,6 +78,10 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				}
 			}
 		}
+	}
+	
+	private void generateCypressTree(World world, BlockPos pos, Random rand) {
+		// TODO
 	}
 
 	public static void generateJuniperTree(World world, BlockPos pos, Random r) {
@@ -199,6 +204,8 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 					}
 				}
 			}
+		} else if (type == EnumSaplingType.CYPRESS) {
+			return false;// TODO
 		}
 		return true;// TODO
 	}
@@ -227,6 +234,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		items.add(new ItemStack(ModBlocks.sapling, 1, 0));
 		items.add(new ItemStack(ModBlocks.sapling, 1, 1));
 		items.add(new ItemStack(ModBlocks.sapling, 1, 2));
+		items.add(new ItemStack(ModBlocks.sapling, 1, 3));
 	}
 
 	@Override
@@ -273,8 +281,6 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		if ((meta & 3) >= EnumSaplingType.values().length)
-			return this.getDefaultState();
 		return this.getDefaultState().withProperty(TYPE, EnumSaplingType.values()[meta & 3]).withProperty(STAGE, meta >> 2);
 	}
 
@@ -301,6 +307,9 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				case YEW:
 					generateYewTree(world, pos, rand);
 					break;
+				case CYPRESS:
+					generateCypressTree(world, pos, rand);
+					break;
 				default:
 					break;
 
@@ -322,11 +331,12 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		registerModel(this, 0);
 		registerModel(this, 1);
 		registerModel(this, 2);
+		registerModel(this, 3);
 	}
 
 	public static enum EnumSaplingType implements IStringSerializable {
 
-		ELDER, JUNIPER, YEW;
+		ELDER, JUNIPER, YEW, CYPRESS;
 
 		@Override
 		public String getName() {

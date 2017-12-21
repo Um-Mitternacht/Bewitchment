@@ -29,6 +29,11 @@
         "textures": {
           "cross": "bewitchment:blocks/sapling_yew"
         }
+      },
+      "cypress": {
+        "textures": {
+          "cross": "bewitchment:blocks/sapling_cypress"
+        }
       }
     }
   }

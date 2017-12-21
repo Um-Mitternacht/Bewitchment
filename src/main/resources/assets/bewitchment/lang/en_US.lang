@@ -243,7 +243,7 @@ tile.fake_ice_stairs.name=Perpetual Ice Stairs
 tile.fake_ice_slab_half.name=Perpetual Ice Slab
 
 //Saplings and Trees
-tile.cypress_sapling.name=Cypress Sapling
+tile.sapling_cypress.name=Cypress Sapling
 tile.sapling_juniper.name=Juniper Sapling
 tile.sapling_elder.name=Elderwood Sapling
 tile.sapling_yew.name=Yew Sapling
