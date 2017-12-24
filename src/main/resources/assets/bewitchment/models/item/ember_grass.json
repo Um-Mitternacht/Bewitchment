@@ -1,3 +1,6 @@
 {
-  "parent": "bewitchment:block/ember_grass"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bewitchment:blocks/ember_grass"
+  }
 }
