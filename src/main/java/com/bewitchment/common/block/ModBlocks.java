@@ -4,10 +4,7 @@ import com.bewitchment.common.block.magic.*;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
-import com.bewitchment.common.block.natural.BlockBeehive;
-import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.block.natural.BlockSaltOre;
-import com.bewitchment.common.block.natural.BlockSilverOre;
+import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.tree.BlockModLeaves;
@@ -17,6 +14,7 @@ import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -73,7 +71,6 @@ public final class ModBlocks {
 	public static final Block candle_small = PLACE_HOLDER;
 	public static final Block salt_barrier = PLACE_HOLDER;
 	public static final Block beehive = PLACE_HOLDER;
-	public static final Block altar = PLACE_HOLDER;
 	public static final Block oven = PLACE_HOLDER;
 	public static final Block apiary = PLACE_HOLDER;
 	public static final Block salt_ore = PLACE_HOLDER;
