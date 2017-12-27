@@ -250,8 +250,14 @@ public final class CauldronCrafting {
 		registerEffect(getStack(Items.RABBIT_FOOT)
 				, new PotionEffect(MobEffects.JUMP_BOOST, 500), false);
 
+		registerEffect(getStack(ModItems.bee)
+				, new PotionEffect(MobEffects.INSTANT_DAMAGE, 1), false);
+
 		registerEffect(getStack(Items.SPECKLED_MELON)
 				, new PotionEffect(MobEffects.INSTANT_HEALTH, 1), false);
+
+		registerEffect(getStack(Items.PUMPKIN_PIE)
+				, new PotionEffect(MobEffects.SATURATION, 10), false);
 
 		registerEffect(getStack(Items.FISH, 1, 3)
 				, new PotionEffect(MobEffects.WATER_BREATHING, 500), true);
