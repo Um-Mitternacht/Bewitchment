@@ -1,7 +1,7 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import com.bewitchment.api.ritual.IRitual;
-import com.bewitchment.api.ritual.RitualHolder;
+import com.bewitchment.api.ritual.ICauldronRitual;
+import com.bewitchment.api.ritual.CauldronRitualHolder;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -26,7 +26,7 @@ import java.util.List;
  * It's distributed as split of Bewitchment under
  * the MIT license.
  */
-public class ItemRitual implements IRitual<TileCauldron> {
+public class ItemRitual implements ICauldronRitual<TileCauldron> {
 
 	private final ItemStack stack;
 	private final int cost;
@@ -50,7 +50,7 @@ public class ItemRitual implements IRitual<TileCauldron> {
 	}
 
 	@Override
-	public void onUpdate(RitualHolder<TileCauldron> ritual, TileCauldron tile, World world, BlockPos pos) {
+	public void onUpdate(CauldronRitualHolder<TileCauldron> ritual, TileCauldron tile, World world, BlockPos pos) {
 		if (getCost() > 0 && ritual.energy_left > 0 && ritual.ticks % 10 == 0) {
 			List<EntityPlayer> list = EnergyHandler.getEnergySources(EntityPlayer.class, world, pos, 5);
 			int taken = (split / list.size()) + 1;

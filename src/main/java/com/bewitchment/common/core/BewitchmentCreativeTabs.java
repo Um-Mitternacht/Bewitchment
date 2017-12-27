@@ -1,9 +1,12 @@
 package com.bewitchment.common.core;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,8 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nonnull;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -152,8 +153,8 @@ public final class BewitchmentCreativeTabs {
 			addItem(ModItems.silver_powder);
 			addItem(ModItems.silver_ingot);
 			addItem(ModItems.silver_nugget);
-			addItem(ModItems.chalk_item);
-			addItem(ModItems.unrefined_chalk);
+			addItem(ModItems.ritual_chalk);
+			// addItem(ModItems.unrefined_chalk);
 			addItem(ModItems.needle_bone);
 			addItem(ModItems.wool_of_bat);
 			addItem(ModItems.tongue_of_dog);
@@ -210,7 +211,7 @@ public final class BewitchmentCreativeTabs {
 			addBlock(ModBlocks.candle_medium);
 			addBlock(ModBlocks.candle_small);
 			addBlock(ModBlocks.beehive);
-			addBlock(ModBlocks.chalk);
+			// addBlock(ModBlocks.chalk);
 			addBlock(ModBlocks.coquina);
 			addBlock(ModBlocks.gem_ore);
 			addBlock(ModBlocks.salt_ore);
