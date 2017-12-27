@@ -32,7 +32,6 @@ public final class LibBlockName {
 	public static final String CROP_THISTLE = "crop_thistle";
 
 	public static final String GEM_ORE = "gem_ore";
-	public static final String CYPRESS_SAPLING = "cypress_sapling";
 	public static final String SILVER_ORE = "silver_ore";
 	public static final String SILVER_BLOCK = "silver_block";
 	public static final String MOLDAVITE_BLOCK = "moldavite_block";
