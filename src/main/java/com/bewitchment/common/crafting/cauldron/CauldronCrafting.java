@@ -299,13 +299,13 @@ public final class CauldronCrafting {
 				, BrewRegistry.getDefault(ModBrews.SHELL_ARMOR), false);
 
 		registerEffect(getStack(ModItems.thistle)
-				, new PotionEffect(MobEffects.HEALTH_BOOST, 200), false);
+				, new PotionEffect(MobEffects.HEALTH_BOOST, 150), false);
 
 		registerEffect(getStack(Items.GOLDEN_APPLE)
-				, new PotionEffect(MobEffects.ABSORPTION, 200), true);
+				, new PotionEffect(MobEffects.ABSORPTION, 150), true);
 
 		registerEffect(getStack(ModItems.heart)
-				, new PotionEffect(MobEffects.RESISTANCE, 200), false);
+				, new PotionEffect(MobEffects.RESISTANCE, 150), false);
 
 		registerEffect(getStack(ModItems.mint)
 				, BrewRegistry.getDefault(ModBrews.EXTINGUISH_FIRES), false);
