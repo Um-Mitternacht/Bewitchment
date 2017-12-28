@@ -62,8 +62,8 @@ public class Bewitchment {
 		ModSpells.init();
 		proxy.preInit(event);
 
-		logger.info("Remember when I told you how my");
-		logger.info("Kin is different in some ways?");
+		logger.info("[BEWITCHMENT]: Remember when I told you how my");
+		logger.info("[BEWITCHMENT]: Kin is different in some ways?");
 	}
 
 	@EventHandler
@@ -77,10 +77,10 @@ public class Bewitchment {
 		SeedDropRegistry.init();
 		ModGen.init();
 
-		logger.info("It's a fact, she is exactly that!");
-		logger.info("A harbinger of death from the world of bewitchment,");
-		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
-		logger.info("And her magic brings dismay!");
+		logger.info("[BEWITCHMENT]: It's a fact, she is exactly that!");
+		logger.info("[BEWITCHMENT]: A harbinger of death from the world of bewitchment,");
+		logger.info("[BEWITCHMENT]: And she's feeding them cakes and her ale to this innocent boy,");
+		logger.info("[BEWITCHMENT]: And her magic brings dismay!");
 
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");

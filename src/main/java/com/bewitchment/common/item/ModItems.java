@@ -20,6 +20,7 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
+import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
@@ -190,7 +191,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.ECTOPLASM),
 				new ItemMod(LibItemName.SPECTRAL_DUST),
 				new ItemMod(LibItemName.SILVER_SCALES),
-				new ItemMod(LibItemName.EYE_OF_OLD),
+				new ItemEyeOfOld(),
 				new ItemMod(LibItemName.ENVENOMED_FANG),
 				new ItemMod(LibItemName.DIMENSIONAL_SAND),
 				new ItemMod(LibItemName.CHROMATIC_QUILL),
