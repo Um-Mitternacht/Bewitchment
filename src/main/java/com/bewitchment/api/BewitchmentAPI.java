@@ -70,6 +70,7 @@ public final class BewitchmentAPI {
 	public static ResourceLocation OVERCOAT = getLocation("overcoat");
 	public static ResourceLocation DISROBING = getLocation("disrobing");
 	public static ResourceLocation ROTTING = getLocation("rotting");
+	public static ResourceLocation ARROW_DEFLECTION = getLocation("arrow_deflection");
 
 	private BewitchmentAPI() {
 	}

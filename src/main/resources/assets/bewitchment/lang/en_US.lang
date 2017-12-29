@@ -457,6 +457,10 @@ brew.rotting.name=Brew of Rotting
 brew.rotting.desc=Rots any living being hit by this brew
 brew.rotting.tooltip=Rotting
 
+brew.arrow_deflection.name=Brew of Deflection
+brew.arrow_deflection.desc=Deflects any arrow sent at you
+brew.arrow_deflection.tooltip=Deflection
+
 brew..name=
 brew..desc=
 brew..tooltip=

@@ -5,6 +5,7 @@ import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 
 import static com.bewitchment.api.BrewRegistry.Brew.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -62,6 +63,7 @@ public final class ModBrews {
 	public static IBrew OVERCOAT;
 	public static IBrew DISROBING;
 	public static IBrew ROTTING;
+	public static IBrew ARROW_DEFLECTION;
 
 	private ModBrews() {
 	}
@@ -109,6 +111,7 @@ public final class ModBrews {
 		OVERCOAT = registerBrew(new OvercoatBrew());
 		DISROBING = registerBrew(new DisrobingBrew());
 		ROTTING = registerBrew(new RottingBrew());
+		ARROW_DEFLECTION = registerBrew(new ArrowDeflectionBrew());
 
 		//--------------------------------DRINKS--------------------------------//
 		addDrink(SHELL_ARMOR, 2500, 0);
@@ -126,6 +129,7 @@ public final class ModBrews {
 		addDrink(BULLETPROOF, 2500, 0);
 		addDrink(ROTTING, 2500, 0);
 		addDrink(OVERCOAT, 2500, 0);
+		addDrink(ARROW_DEFLECTION, 2500, 0);
 
 		//--------------------------------SPLASH--------------------------------//
 		addSplash(SPIDER_NIGHTMARE, 500, 0);
@@ -166,6 +170,7 @@ public final class ModBrews {
 		addSplash(MORTAL_COIL, 2500, 0);
 		addSplash(DISROBING, 0, 0);
 		addSplash(ROTTING, 750, 0);
+		addSplash(ARROW_DEFLECTION, 750, 0);
 
 		//--------------------------------LINGER--------------------------------//
 		addLinger(SPIDER_NIGHTMARE, 1000, 0);
@@ -184,6 +189,7 @@ public final class ModBrews {
 		addLinger(CORRUPTION, 50, 0);
 		addLinger(ABSENCE, 50, 0);
 		addLinger(ROTTING, 750, 0);
+		addLinger(ARROW_DEFLECTION, 750, 0);
 	}
 
 	private static IBrew registerBrew(IBrew brew) {
