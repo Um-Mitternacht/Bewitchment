@@ -53,6 +53,7 @@ public class OvenCrafting {
 		addSmeltingRecipe(new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), cloudy_oil);
 		addSmeltingRecipe(new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModItems.dimensional_sand, 2));
 		addSmeltingRecipe(new ItemStack(ModItems.mandrake_root), ash, cloudy_oil);
+		addSmeltingRecipe(new ItemStack(ModItems.fume, 1,0), new ItemStack(ModItems.fume, 1, 1), ash);
 	}
 
 	public static OvenCrafting instance() {

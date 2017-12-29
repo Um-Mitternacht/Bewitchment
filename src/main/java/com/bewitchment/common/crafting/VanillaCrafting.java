@@ -29,6 +29,7 @@ public final class VanillaCrafting {
 		GameRegistry.addSmelting(Blocks.SAPLING, new ItemStack(ModItems.wood_ash, 4), 0.15F);
 		GameRegistry.addSmelting(ModItems.silver_scales, new ItemStack(ModItems.silver_nugget, 1), 0.20F);
 		GameRegistry.addSmelting(Items.MELON, new ItemStack(ModItems.grilled_watermelon, 1), 0.45F);
+		GameRegistry.addSmelting((new ItemStack(ModItems.fume, 1,0)), new ItemStack(ModItems.fume, 1, 1), 0.45F);
 
 		ModMaterials.TOOL_RITUAL.setRepairItem(new ItemStack(ModItems.silver_ingot));
 		ModMaterials.ARMOR_SILVER.setRepairItem(new ItemStack(ModItems.silver_ingot));

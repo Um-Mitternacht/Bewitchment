@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " S ",
+    "G G",
+    " G "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "slabWood"
+    },
+    "G": {
+      "item": "minecraft:clay",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:fume",
+    "data": 0,
+    "count": 3
+  }
+}

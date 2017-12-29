@@ -50,7 +50,7 @@ public final class BewitchmentCreativeTabs {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() {
-			return new ItemStack(ModItems.mandrake_root);
+			return new ItemStack(ModItems.aconitum);
 		}
 	}
 
@@ -63,7 +63,7 @@ public final class BewitchmentCreativeTabs {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() {
-			return new ItemStack(ModItems.gem, 1, 4);
+			return new ItemStack(ModItems.mortar_and_pestle);
 		}
 	}
 
