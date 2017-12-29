@@ -453,6 +453,10 @@ brew.disrobing.name=Brew of Disrobing
 brew.disrobing.desc=Has a chance of knocking a piece of armor off of a target
 brew.disrobing.tooltip=Disrobing
 
+brew.rotting.name=Brew of Rotting
+brew.rotting.desc=Rots any living being hit by this brew
+brew.rotting.tooltip=Rotting
+
 brew..name=
 brew..desc=
 brew..tooltip=
