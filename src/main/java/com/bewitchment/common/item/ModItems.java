@@ -273,9 +273,11 @@ public final class ModItems {
 				itemBlock(ModBlocks.log_elder),
 				itemBlock(ModBlocks.log_juniper),
 				itemBlock(ModBlocks.log_yew),
+				itemBlock(ModBlocks.log_cypress),
 				itemBlock(ModBlocks.leaves_elder),
 				itemBlock(ModBlocks.leaves_juniper),
 				itemBlock(ModBlocks.leaves_yew),
+				itemBlock(ModBlocks.leaves_cypress),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar)

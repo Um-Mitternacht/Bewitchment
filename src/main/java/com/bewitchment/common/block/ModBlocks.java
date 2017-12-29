@@ -90,9 +90,11 @@ public final class ModBlocks {
 	public static final Block log_elder = PLACE_HOLDER;
 	public static final Block log_juniper = PLACE_HOLDER;
 	public static final Block log_yew = PLACE_HOLDER;
+	public static final Block log_cypress = PLACE_HOLDER;
 	public static final Block leaves_elder = PLACE_HOLDER;
 	public static final Block leaves_juniper = PLACE_HOLDER;
 	public static final Block leaves_yew = PLACE_HOLDER;
+	public static final Block leaves_cypress = PLACE_HOLDER;
 	public static final Block sapling = PLACE_HOLDER;
 	public static final Block moonbell = PLACE_HOLDER;
 	public static final Block witch_altar = PLACE_HOLDER;
@@ -172,9 +174,11 @@ public final class ModBlocks {
 				new BlockModLog(LibBlockName.LOG_ELDER),
 				new BlockModLog(LibBlockName.LOG_JUNIPER),
 				new BlockModLog(LibBlockName.LOG_YEW),
+				new BlockModLog(LibBlockName.LOG_CYPRESS),
 				new BlockModLeaves(LibBlockName.LEAVES_ELDER),
 				new BlockModLeaves(LibBlockName.LEAVES_JUNIPER),
 				new BlockModLeaves(LibBlockName.LEAVES_YEW),
+				new BlockModLeaves(LibBlockName.LEAVES_CYPRESS),
 				new BlockModSapling(LibBlockName.SAPLING)
 		);
 	}

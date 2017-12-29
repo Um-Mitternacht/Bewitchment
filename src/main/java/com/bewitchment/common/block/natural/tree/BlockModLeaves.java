@@ -99,7 +99,8 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 		if (this == ModBlocks.leaves_elder) return 0;
 		if (this == ModBlocks.leaves_juniper) return 1;
 		if (this == ModBlocks.leaves_yew) return 2;
-		return 3; // give a useless item, but should never happen
+		if (this == ModBlocks.leaves_cypress) return 3;
+		return 4; // give a useless item, but should never happen
 	}
 
 	@Override
@@ -125,6 +126,8 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 			ModelHandler.registerModel(this, 1);
 		else if (this == ModBlocks.leaves_yew)
 			ModelHandler.registerModel(this, 2);
+		else if (this == ModBlocks.leaves_cypress)
+			ModelHandler.registerModel(this, 3);
 	}
 
 }
