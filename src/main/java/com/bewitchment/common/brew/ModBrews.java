@@ -60,6 +60,7 @@ public final class ModBrews {
 	public static IBrew BULLETPROOF;
 	public static IBrew MORTAL_COIL;
 	public static IBrew OVERCOAT;
+	public static IBrew DISROBING;
 
 	private ModBrews() {
 	}
@@ -105,6 +106,7 @@ public final class ModBrews {
 		BULLETPROOF = registerBrew(new BulletProofBrew());
 		MORTAL_COIL = registerBrew(new MortalCoilBrew());
 		OVERCOAT = registerBrew(new OvercoatBrew());
+		DISROBING = registerBrew(new DisrobingBrew());
 
 		//--------------------------------DRINKS--------------------------------//
 		addDrink(SHELL_ARMOR, 2500, 0);
@@ -117,6 +119,7 @@ public final class ModBrews {
 		addDrink(PURIFY, 1, 0);
 		addDrink(NOTCHED, 1, 0);
 		addDrink(CORRUPTION, 1, 0);
+		addDrink(DISROBING, 1, 0);
 		addDrink(ABSENCE, 1, 0);
 		addDrink(BULLETPROOF, 2500, 0);
 		addDrink(OVERCOAT, 2500, 0);
@@ -158,6 +161,7 @@ public final class ModBrews {
 		addSplash(SALT_LAND, 0, 0);
 		addSplash(ABSENCE, 1, 0);
 		addSplash(MORTAL_COIL, 2500, 0);
+		addSplash(DISROBING, 0, 0);
 
 		//--------------------------------LINGER--------------------------------//
 		addLinger(SPIDER_NIGHTMARE, 1000, 0);

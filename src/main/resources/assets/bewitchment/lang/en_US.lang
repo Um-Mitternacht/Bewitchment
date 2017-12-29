@@ -449,6 +449,10 @@ brew.mortal_coil.name=Mortal Coil Brew
 brew.mortal_coil.desc=Kills you at the end of the timer.
 brew.mortal_coil.tooltip=Mortal Coil
 
+brew.disrobing.name=Brew of Disrobing
+brew.disrobing.desc=Has a chance of knocking a piece of armor off of a target
+brew.disrobing.tooltip=Disrobing
+
 brew..name=
 brew..desc=
 brew..tooltip=

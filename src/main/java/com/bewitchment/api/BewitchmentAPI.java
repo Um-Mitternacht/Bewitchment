@@ -68,6 +68,7 @@ public final class BewitchmentAPI {
 	public static ResourceLocation BULLETPROOF = getLocation("bulletproof");
 	public static ResourceLocation MORTAL_COIL = getLocation("mortal_coil");
 	public static ResourceLocation OVERCOAT = getLocation("overcoat");
+	public static ResourceLocation DISROBING = getLocation("disrobing");
 
 	private BewitchmentAPI() {
 	}
