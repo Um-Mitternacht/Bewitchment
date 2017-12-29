@@ -250,9 +250,11 @@ tile.sapling_yew.name=Yew Sapling
 tile.log_yew.name=Yew Log
 tile.log_elder.name=Elderwood Log
 tile.log_juniper.name=Juniper Log
+tile.log_cypress.name=Cypress Log
 tile.leaves_elder.name=Elderwood Leaves
 tile.leaves_juniper.name=Juniper Leaves
 tile.leaves_yew.name=Yew Leaves
+tile.leaves_cypress.name=Cypress Leaves
 
 //Spells
 item.spell_page.name=Forgotten Spell
