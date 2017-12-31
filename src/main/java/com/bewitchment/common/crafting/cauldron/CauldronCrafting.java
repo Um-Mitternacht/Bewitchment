@@ -412,6 +412,9 @@ public final class CauldronCrafting {
 		registerEffect(getStack(ModItems.fume, 1, 9)
 				, BrewRegistry.getDefault(ModBrews.ARROW_DEFLECTION), false);
 
+		registerEffect(getStack(ModItems.oak_apple_gall)
+				, new PotionEffect(MobEffects.SLOWNESS, 500), false);
+
 
 		//Time Extenders
 		registerModifier(getStack(Items.REDSTONE)
