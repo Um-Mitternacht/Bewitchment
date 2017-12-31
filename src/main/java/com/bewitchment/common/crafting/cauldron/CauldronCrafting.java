@@ -225,7 +225,7 @@ public final class CauldronCrafting {
 
 		registerEffect(getStack(Items.ROTTEN_FLESH)
 				, new PotionEffect(MobEffects.HUNGER, 500), false);
-		
+
 		registerEffect(getStack(Items.SPIDER_EYE)
 				, new PotionEffect(MobEffects.POISON, 500), false);
 
@@ -405,6 +405,12 @@ public final class CauldronCrafting {
 
 		registerEffect(getStack(ModItems.tongue_of_dog)
 				, BrewRegistry.getDefault(ModBrews.ROTTING), false);
+
+		registerEffect(getStack(ModItems.wax)
+				, BrewRegistry.getDefault(ModBrews.DISROBING), false);
+
+		registerEffect(getStack(ModItems.fume, 1, 9)
+				, BrewRegistry.getDefault(ModBrews.ARROW_DEFLECTION), false);
 
 
 		//Time Extenders
