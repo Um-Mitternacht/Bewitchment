@@ -5,6 +5,7 @@ import baubles.api.IBauble;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -19,5 +20,15 @@ public class ItemNazar extends ItemMod implements IBauble {
 	@Override
 	public BaubleType getBaubleType(ItemStack itemStack) {
 		return BaubleType.AMULET;
+	}
+
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		//TODO
+	}
+
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		//TODO
 	}
 }

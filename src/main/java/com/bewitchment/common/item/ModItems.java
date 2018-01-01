@@ -7,6 +7,7 @@ import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
+import com.bewitchment.common.item.equipment.ItemNazar;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
@@ -143,6 +144,8 @@ public final class ModItems {
 	public static final Item silver_leggings = PLACE_HOLDER;
 	public static final Item silver_boots = PLACE_HOLDER;
 
+	public static final Item nazar = PLACE_HOLDER;
+
 	public static final Item spell_page = PLACE_HOLDER;
 
 	private ModItems() {
@@ -183,6 +186,7 @@ public final class ModItems {
 				new ItemAthame(),
 				new ItemBoline(),
 				new ItemTaglock(),
+				new ItemNazar(),
 				new ItemMod(LibItemName.CHALK_ITEM),
 				new ItemMod(LibItemName.NEEDLE_BONE),
 				new ItemMod(LibItemName.WOOL_OF_BAT),
