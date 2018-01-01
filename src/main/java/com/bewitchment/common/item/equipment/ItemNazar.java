@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Joseph on 1/1/2018.
  */
+//I have to commit this now so I don't throw up all over my keyboard, god I feel sick. ಠ_ಠ
 public class ItemNazar extends ItemMod implements IBauble {
 	public ItemNazar() {
 		super(LibItemName.NAZAR);
