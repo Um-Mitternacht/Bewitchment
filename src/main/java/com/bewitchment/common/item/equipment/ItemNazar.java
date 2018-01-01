@@ -25,7 +25,6 @@ public class ItemNazar extends ItemMod implements IBauble {
 		return BaubleType.AMULET;
 	}
 
-	@Override
 	public boolean effectOnDamage(LivingHurtEvent event) {
 		if (event.getSource().isMagicDamage()) {
 			event.setCanceled(true);
