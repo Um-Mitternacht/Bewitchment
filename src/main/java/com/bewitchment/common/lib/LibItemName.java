@@ -51,6 +51,7 @@ public final class LibItemName {
 	public static final String SILVER_CHESTPLATE = "silver_chestplate";
 	public static final String SILVER_LEGGINGS = "silver_leggings";
 	public static final String SILVER_BOOTS = "silver_boots";
+	public static final String NAZAR = "nazar";
 
 	//Misc
 	public static final String BREW_PHIAL_DRINK = "brew_phial_drink";
