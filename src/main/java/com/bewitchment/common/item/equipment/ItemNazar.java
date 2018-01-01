@@ -7,11 +7,13 @@ import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 /**
  * Created by Joseph on 1/1/2018.
  */
-//I have to commit this now so I don't throw up all over my keyboard, god I feel sick. ಠ_ಠ
+//NVM i feel better lul
 public class ItemNazar extends ItemMod implements IBauble {
 	public ItemNazar() {
 		super(LibItemName.NAZAR);
@@ -24,8 +26,11 @@ public class ItemNazar extends ItemMod implements IBauble {
 	}
 
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		//TODO
+	public boolean effectOnDamage(LivingHurtEvent event) {
+		if (event.getSource().isMagicDamage()) {
+			event.setCanceled(true);
+		}
+		return true;
 	}
 
 	@Override
