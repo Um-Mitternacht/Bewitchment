@@ -5,10 +5,11 @@ import baubles.api.IBauble;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Created by Joseph on 1/1/2018.
@@ -25,15 +26,12 @@ public class ItemNazar extends ItemMod implements IBauble {
 		return BaubleType.AMULET;
 	}
 
-	public boolean effectOnDamage(LivingHurtEvent event) {
-		if (event.getSource().isMagicDamage()) {
-			event.setCanceled(true);
+	@SubscribeEvent
+	public void onEntityDamage(LivingHurtEvent event, DamageSource source, ItemStack itemstack) {
+		Entity attacker = source.getImmediateSource();
+		if (attacker != null && source.isMagicDamage()) {
+			float newAmount = event.getAmount() / (1.2F);
+			event.setAmount(newAmount);
 		}
-		return true;
-	}
-
-	@Override
-	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-		//TODO
 	}
 }
