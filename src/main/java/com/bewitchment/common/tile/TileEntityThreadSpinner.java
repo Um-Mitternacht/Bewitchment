@@ -73,15 +73,13 @@ public class TileEntityThreadSpinner extends TileMod implements ITickable {
 	public void update() {
 		if (world.isRemote) return;
 		if (loadedRecipe!=null && canStackResults()) {
-			if (te == null || te.isInvalid())
+			if ((te == null || te.isInvalid()) && world.getTotalWorldTime() % 20 == 0)
 				te = TileEntityWitchAltar.getClosest(getPos(), getWorld());
 			if (te==null || te.isInvalid()) {
-				loadedRecipe = null;
 				return;
 			}
 			if (te.consumePower(POWER_PER_TICK, false)) {
 				tickProcessed++;
-				
 				if (tickProcessed>=MAX_TICKS) {
 					ItemStack result = SpinningThreadRecipe.REGISTRY.getValue(new ResourceLocation(loadedRecipe)).getResult();
 					if (inv.getStackInSlot(0).isEmpty()) inv.setInventorySlotContents(0, result);
