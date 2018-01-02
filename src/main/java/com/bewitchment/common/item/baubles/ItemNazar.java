@@ -49,7 +49,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 				if (baubles.getStackInSlot(i).isEmpty() && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
 					baubles.setStackInSlot(i, player.getHeldItem(hand).copy());
 					if (!player.capabilities.isCreativeMode) {
-						player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
+						player.setHeldItem(hand, ItemStack.EMPTY);
 					}
 					onEquipped(player.getHeldItem(hand), player);
 					break;
