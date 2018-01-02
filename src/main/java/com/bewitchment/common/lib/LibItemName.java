@@ -109,6 +109,11 @@ public final class LibItemName {
 	public static final String SILVER = "silver";
 	public static final String RITUAL = "ritual";
 	public static final String COLD_IRON = "cold_iron";
+	public static final String TALISMAN_AQUAMARINE_CROWN = "talisman_aquamarine_crown";
+	public static final String TALISMAN_ADAMANTINE_STAR_RING = "talisman_adamantine_star_ring";
+	public static final String TALISMAN_EMERALD_PENDANT = "talisman_emerald_pendant";
+	public static final String TALISMAN_RUBY_ORB = "talisman_ruby_orb";
+	public static final String TALISMAN_WATCHING_EYE = "talisman_watching_eye";
 
 
 	private LibItemName() {

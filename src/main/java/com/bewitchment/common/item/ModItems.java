@@ -5,6 +5,7 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.baubles.ItemNazar;
+import com.bewitchment.common.item.baubles.ItemTalisman;
 import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
@@ -12,10 +13,7 @@ import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
-import com.bewitchment.common.item.magic.ItemFumes;
-import com.bewitchment.common.item.magic.ItemGem;
-import com.bewitchment.common.item.magic.ItemSpellPage;
-import com.bewitchment.common.item.magic.ItemTaglock;
+import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
@@ -25,13 +23,12 @@ import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
+import baubles.api.BaubleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
@@ -144,7 +141,13 @@ public final class ModItems {
 	public static final Item silver_leggings = PLACE_HOLDER;
 	public static final Item silver_boots = PLACE_HOLDER;
 
+	// Baubles
 	public static final Item nazar = PLACE_HOLDER;
+	public static final Item talisman_aquamarine_crown = PLACE_HOLDER;
+	public static final Item talisman_diamond_star = PLACE_HOLDER;
+	public static final Item talisman_emerald_pendant = PLACE_HOLDER;
+	public static final Item talisman_watching_eye = PLACE_HOLDER;
+	public static final Item talisman_ruby_orb = PLACE_HOLDER;
 
 	public static final Item spell_page = PLACE_HOLDER;
 
@@ -186,7 +189,6 @@ public final class ModItems {
 				new ItemAthame(),
 				new ItemBoline(),
 				new ItemTaglock(),
-				new ItemNazar(),
 				new ItemMod(LibItemName.CHALK_ITEM),
 				new ItemMod(LibItemName.NEEDLE_BONE),
 				new ItemMod(LibItemName.WOOL_OF_BAT),
@@ -213,6 +215,17 @@ public final class ModItems {
 				new ItemGrilledWatermelon(),
 				new ItemDustyGrimoire()
 		);
+		
+		// Baubles
+		registry.registerAll(//
+				new ItemNazar(),
+				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),
+				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
+				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
+				new ItemTalisman(BaubleType.BELT, 30, LibItemName.TALISMAN_RUBY_ORB),
+				new ItemTalisman(BaubleType.CHARM, 18, LibItemName.TALISMAN_WATCHING_EYE)
+		);
+		
 		//Equipment
 		registry.registerAll(
 				new ItemSilverPickaxe(),
