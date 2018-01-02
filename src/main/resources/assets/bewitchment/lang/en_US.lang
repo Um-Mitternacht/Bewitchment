@@ -206,8 +206,6 @@ tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
 tile.moonbell.name=Moonbell Flower
 
-tile.witch_altar.name=Witches Altar
-
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore
 tile.gem_ore_moldavite.name=Moldavite Ore
@@ -279,8 +277,9 @@ tile.ember_grass.name=Ember Grass
 tile.cauldron.name=Witches Cauldron
 tile.apiary.name=Apiary
 tile.beehive.name=Beehive
-tile.altar.name=Altar
 tile.oven.name=Oven
+tile.thread_spinner.name=Thread Spinner
+tile.witch_altar.name=Witches Altar
 
 //Fluid
 fluid.oil_mundane=Oil
@@ -519,9 +518,15 @@ item.trinket.name=Trinket
 item.crown.name=Crown
 item.charm.name=Charm
 item.nazar.name=Nazar
+item.talisman_aquamarine_crown.name=Aquamarine Crown
+item.talisman_adamantine_star_ring.name=Ring of the Adamantine Star
+item.talisman_emerald_pendant.name=Emerald Pendant
+item.talisman_ruby_orb.name=Scarlet Orb
+item.talisman_watching_eye.name=Everwatching Eye
 
 //Trinket Descriptions
 witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
+witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
 
 //Books
 item.book_of_shadows.name=Book of Shadows
