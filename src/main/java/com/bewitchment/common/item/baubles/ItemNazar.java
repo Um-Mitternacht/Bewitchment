@@ -1,4 +1,4 @@
-package com.bewitchment.common.item.equipment;
+package com.bewitchment.common.item.baubles;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 		if (!world.isRemote) {
 			IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
 			for (int i = 0; i < baubles.getSlots(); i++)
-				if ((baubles.getStackInSlot(i) == null || baubles.getStackInSlot(i).isEmpty()) && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
+				if (baubles.getStackInSlot(i).isEmpty() && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
 					baubles.setStackInSlot(i, player.getHeldItem(hand).copy());
 					if (!player.capabilities.isCreativeMode) {
 						player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
