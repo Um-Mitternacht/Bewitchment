@@ -5,7 +5,6 @@ import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
 
 import static com.bewitchment.api.BrewRegistry.Brew.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
