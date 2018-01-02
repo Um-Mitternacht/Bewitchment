@@ -29,6 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ItemNazar extends ItemMod implements IBauble {
 	public ItemNazar() {
 		super(LibItemName.NAZAR);
+		this.setMaxStackSize(1);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -71,7 +72,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 	public void onEntityDamage(LivingHurtEvent event, DamageSource source, ItemStack itemstack) {
 		Entity attacker = source.getImmediateSource();
 		if (attacker != null && source.isMagicDamage()) {
-			float newAmount = event.getAmount() / (1.2F);
+			float newAmount = event.getAmount() / (0.3F);
 			event.setAmount(newAmount);
 		}
 	}

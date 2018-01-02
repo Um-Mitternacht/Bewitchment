@@ -518,6 +518,7 @@ item.amulet.name=Amulet
 item.trinket.name=Trinket
 item.crown.name=Crown
 item.charm.name=Charm
+item.nazar.name=Nazar
 
 //Books
 item.book_of_shadows.name=Book of Shadows
