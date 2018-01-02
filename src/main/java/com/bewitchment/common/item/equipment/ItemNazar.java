@@ -72,7 +72,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 	public void onEntityDamage(LivingHurtEvent event, DamageSource source, ItemStack itemstack) {
 		Entity attacker = source.getImmediateSource();
 		if (attacker != null && source.isMagicDamage()) {
-			float newAmount = event.getAmount() / (0.3F);
+			float newAmount = event.getAmount() / (0.5F);
 			event.setAmount(newAmount);
 		}
 	}
