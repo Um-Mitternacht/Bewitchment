@@ -67,7 +67,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 39 == 0) {
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 60, 0, true, true));
+			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
 		}
 	}
 
