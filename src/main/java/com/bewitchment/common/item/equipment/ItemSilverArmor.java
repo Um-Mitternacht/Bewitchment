@@ -17,6 +17,7 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 
 	public ItemSilverArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndex, equipmentSlotIn);
+		this.setMaxStackSize(1);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
