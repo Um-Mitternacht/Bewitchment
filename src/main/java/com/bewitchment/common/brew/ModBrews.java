@@ -18,8 +18,6 @@ import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 @ObjectHolder(LibMod.MOD_ID)
 public final class ModBrews {
 
-	//Todo: Brew that removes armor.
-
 	public static IBrew SHELL_ARMOR;
 	public static IBrew SPIDER_NIGHTMARE;
 	public static IBrew EXTINGUISH_FIRES;
