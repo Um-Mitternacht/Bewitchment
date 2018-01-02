@@ -27,6 +27,7 @@ public class ItemSilverPickaxe extends ItemPickaxe implements IModelRegister {
 
 	public ItemSilverPickaxe() {
 		super(ModMaterials.TOOL_SILVER);
+		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_PICKAXE);
 		setUnlocalizedName(LibItemName.SILVER_PICKAXE);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);

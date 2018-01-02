@@ -26,6 +26,7 @@ public class ItemSilverHoe extends ItemHoe implements IModelRegister {
 
 	public ItemSilverHoe() {
 		super(ModMaterials.TOOL_SILVER);
+		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_HOE);
 		setUnlocalizedName(LibItemName.SILVER_HOE);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);

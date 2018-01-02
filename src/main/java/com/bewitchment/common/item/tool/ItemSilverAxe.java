@@ -26,6 +26,7 @@ public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 
 	public ItemSilverAxe() {
 		super(ModMaterials.TOOL_SILVER, ModMaterials.TOOL_SILVER.getAttackDamage(), ModMaterials.TOOL_SILVER.getEfficiency());
+		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_AXE);
 		setUnlocalizedName(LibItemName.SILVER_AXE);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);

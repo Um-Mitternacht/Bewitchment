@@ -26,6 +26,7 @@ public class ItemSilverSpade extends ItemSpade implements IModelRegister {
 
 	public ItemSilverSpade() {
 		super(ModMaterials.TOOL_SILVER);
+		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_SPADE);
 		setUnlocalizedName(LibItemName.SILVER_SPADE);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);

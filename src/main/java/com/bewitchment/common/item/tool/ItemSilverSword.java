@@ -26,6 +26,7 @@ public class ItemSilverSword extends ItemSword implements IModelRegister {
 
 	public ItemSilverSword() {
 		super(ModMaterials.TOOL_SILVER);
+		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_SWORD);
 		setUnlocalizedName(LibItemName.SILVER_SWORD);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
