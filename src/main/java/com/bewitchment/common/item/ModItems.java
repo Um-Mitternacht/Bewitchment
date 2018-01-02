@@ -1,5 +1,6 @@
 package com.bewitchment.common.item;
 
+import baubles.api.BaubleType;
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -13,7 +14,10 @@ import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
-import com.bewitchment.common.item.magic.*;
+import com.bewitchment.common.item.magic.ItemFumes;
+import com.bewitchment.common.item.magic.ItemGem;
+import com.bewitchment.common.item.magic.ItemSpellPage;
+import com.bewitchment.common.item.magic.ItemTaglock;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
@@ -23,12 +27,13 @@ import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
-import baubles.api.BaubleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
@@ -215,7 +220,7 @@ public final class ModItems {
 				new ItemGrilledWatermelon(),
 				new ItemDustyGrimoire()
 		);
-		
+
 		// Baubles
 		registry.registerAll(//
 				new ItemNazar(),
@@ -225,7 +230,7 @@ public final class ModItems {
 				new ItemTalisman(BaubleType.BELT, 30, LibItemName.TALISMAN_RUBY_ORB),
 				new ItemTalisman(BaubleType.CHARM, 18, LibItemName.TALISMAN_WATCHING_EYE)
 		);
-		
+
 		//Equipment
 		registry.registerAll(
 				new ItemSilverPickaxe(),

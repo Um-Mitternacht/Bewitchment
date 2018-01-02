@@ -10,7 +10,6 @@ import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileApiary;
 import com.bewitchment.common.tile.TileEntityThreadSpinner;
 import com.bewitchment.common.tile.TileOven;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;

@@ -1,17 +1,12 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,6 +24,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * Created by Joseph on 1/1/2018.
