@@ -14,15 +14,17 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,6 +38,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 		super(LibItemName.NAZAR);
 		this.setMaxStackSize(1);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@Override
@@ -85,11 +88,9 @@ public class ItemNazar extends ItemMod implements IBauble {
 	}
 
 	@SubscribeEvent
-	public void onEntityDamage(LivingHurtEvent event, DamageSource source, ItemStack itemstack) {
-		Entity attacker = source.getImmediateSource();
-		if (attacker != null && source.isMagicDamage()) {
-			float newAmount = event.getAmount() * (0.9F);
-			event.setAmount(newAmount);
+	public void onEntityDamage(LivingHurtEvent event) {
+		if (event.getSource().isMagicDamage()) {
+			event.setAmount(event.getAmount() * 0.9F);
 		}
 	}
 }
