@@ -1,3 +1,4 @@
+
 package com.bewitchment.client.gui.container;
 
 import com.bewitchment.client.gui.container.slots.OutputSlot;
@@ -9,7 +10,7 @@ import net.minecraft.inventory.Slot;
 public class ContainerThreadSpinner extends ContainerBase {
 	
 	TileEntityThreadSpinner ts;
-	public int data_a[] = {0};
+	public int data_a[] = { 0 }; // 0: progress
 	
 	public ContainerThreadSpinner(InventoryPlayer pi, TileEntityThreadSpinner spinner) {
 		ts = spinner;
