@@ -520,6 +520,9 @@ item.crown.name=Crown
 item.charm.name=Charm
 item.nazar.name=Nazar
 
+//Trinket Descriptions
+witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
+
 //Books
 item.book_of_shadows.name=Book of Shadows
 item.dusty_grimoire.name=Dusty Grimoire
