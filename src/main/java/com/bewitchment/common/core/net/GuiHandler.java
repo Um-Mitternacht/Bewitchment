@@ -2,11 +2,17 @@ package com.bewitchment.common.core.net;
 
 import com.bewitchment.client.gui.GuiApiary;
 import com.bewitchment.client.gui.GuiOven;
+import com.bewitchment.client.gui.GuiThreadSpinner;
 import com.bewitchment.client.gui.container.ContainerApiary;
 import com.bewitchment.client.gui.container.ContainerOven;
+import com.bewitchment.client.gui.container.ContainerThreadSpinner;
+import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileApiary;
+import com.bewitchment.common.tile.TileEntityThreadSpinner;
 import com.bewitchment.common.tile.TileOven;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -23,13 +29,14 @@ public class GuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		switch (ID) {
-			case 0:
-				final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		switch (LibGui.values()[ID]) {
+			case APIARY:
 				return tile != null && (tile instanceof TileApiary) ? new ContainerApiary(player.inventory, (TileApiary) tile) : null;
-			case 1:
-				final TileEntity tile1 = world.getTileEntity(new BlockPos(x, y, z));
-				return tile1 != null && (tile1 instanceof TileOven) ? new ContainerOven(player.inventory, (TileOven) tile1) : null;
+			case OVEN:
+				return tile != null && (tile instanceof TileOven) ? new ContainerOven(player.inventory, (TileOven) tile) : null;
+			case THREAD_SPINNER:
+				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
 			default:
 				return null;
 		}
@@ -38,13 +45,14 @@ public class GuiHandler implements IGuiHandler {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		switch (ID) {
-			case 0:
-				final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		switch (LibGui.values()[ID]) {
+			case APIARY:
 				return tile != null && (tile instanceof TileApiary) ? new GuiApiary(player.inventory, (TileApiary) tile) : null;
-			case 1:
-				final TileEntity tile1 = world.getTileEntity(new BlockPos(x, y, z));
-				return tile1 != null && (tile1 instanceof TileOven) ? new GuiOven(player.inventory, (TileOven) tile1) : null;
+			case OVEN:
+				return tile != null && (tile instanceof TileOven) ? new GuiOven(player.inventory, (TileOven) tile) : null;
+			case THREAD_SPINNER:
+				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new GuiThreadSpinner((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityThreadSpinner) tile) : null;
 			default:
 				return null;
 		}

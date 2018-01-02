@@ -76,6 +76,7 @@ public final class LibBlockName {
 	public static final String SAPLING = "sapling";
 	public static final String MOONBELL = "moonbell";
 	public static final String WITCH_ALTAR = "witch_altar";
+	public static final String THREAD_SPINNER = "thread_spinner";
 
 	private LibBlockName() {
 	}

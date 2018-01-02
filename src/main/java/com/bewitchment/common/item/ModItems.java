@@ -284,7 +284,8 @@ public final class ModItems {
 				itemBlock(ModBlocks.leaves_cypress),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
-				itemBlock(ModBlocks.witch_altar)
+				itemBlock(ModBlocks.witch_altar),
+				itemBlock(ModBlocks.thread_spinner)
 		);
 	}
 

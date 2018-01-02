@@ -98,6 +98,7 @@ public final class ModBlocks {
 	public static final Block sapling = PLACE_HOLDER;
 	public static final Block moonbell = PLACE_HOLDER;
 	public static final Block witch_altar = PLACE_HOLDER;
+	public static final Block thread_spinner = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -149,7 +150,8 @@ public final class ModBlocks {
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(),
-				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK)
+				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
+				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER)
 		);
 		//Normal Blocks
 		registry.registerAll(

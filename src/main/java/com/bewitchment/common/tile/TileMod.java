@@ -37,8 +37,18 @@ public abstract class TileMod extends TileEntity {
 		return new SPacketUpdateTileEntity(pos, 0, tag);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * By making this final we would prevent stripping useless nbt data from a (frequently sent)
+	 * network packet, which is of course bad. For example, in the thread spinner tile entity,
+	 * the NBT tag carries way more information than what the clients need to know to function
+	 * properly. I'm removing the final modifier to allow a lighter network load. I'll probably
+	 * rework the base class in the future to have two methods that only read and write sync-data
+	 * 
+	 * - zabi
+	 */
 	@Override
-	public final NBTTagCompound getUpdateTag() {
+	public NBTTagCompound getUpdateTag() {
 		return writeToNBT(new NBTTagCompound());
 	}
 
