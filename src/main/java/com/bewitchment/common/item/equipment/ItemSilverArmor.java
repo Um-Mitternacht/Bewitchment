@@ -32,9 +32,9 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 	//FIXME: This likely does not work
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event, DamageSource source, EntityLivingBase entity) {
-		Entity attacker = source.getImmediateSource();
-		if (attacker != null && entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-			event.setAmount(event.getAmount() * 0.9F);
+		EntityLivingBase attacker = (EntityLivingBase) source.getTrueSource();
+		if (attacker.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+			event.setAmount(event.getAmount() * 0.1F);
 		}
 	}
 
