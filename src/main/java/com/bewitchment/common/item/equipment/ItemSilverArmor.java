@@ -3,8 +3,14 @@ package com.bewitchment.common.item.equipment;
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.util.DamageSource;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,6 +27,13 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+	}
+
+	@SubscribeEvent
+	public void onEntityDamage(LivingHurtEvent event, DamageSource source, EntityLivingBase entity) {
+		if (entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+			event.setAmount(event.getAmount() * 0.9F);
+		}
 	}
 
 	@Override
