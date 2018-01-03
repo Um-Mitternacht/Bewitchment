@@ -31,14 +31,13 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	//FIXME: This likely does not work
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		DamageSource source = event.getSource();
 
 		Entity attacker = source.getTrueSource();
 		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase) attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-			event.setAmount(event.getAmount() * 0.9F);
+			event.setAmount(event.getAmount() * 0.95F);
 		}
 	}
 
