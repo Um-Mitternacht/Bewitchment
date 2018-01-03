@@ -29,6 +29,7 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
+	//FIXME: This likely does not work
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event, DamageSource source, EntityLivingBase entity) {
 		Entity attacker = source.getImmediateSource();
