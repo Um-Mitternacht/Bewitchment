@@ -9,6 +9,7 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,6 +28,7 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	//FIXME: This likely does not work
@@ -35,8 +37,8 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		DamageSource source = event.getSource();
 
 		Entity attacker = source.getTrueSource();
-		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase)attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-			event.setAmount(event.getAmount() * 0.1F);
+		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase) attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+			event.setAmount(event.getAmount() * 0.9F);
 		}
 	}
 
