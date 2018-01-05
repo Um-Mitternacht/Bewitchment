@@ -90,6 +90,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return new BlockStateContainer(this, ALTAR_TYPE, COLOR);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.BLOCK;
@@ -100,11 +101,13 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return state.getValue(ALTAR_TYPE).ordinal();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(ALTAR_TYPE, AltarMultiblockType.values()[meta]);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		if (state.getBlock().hasTileEntity(state)) {
@@ -196,6 +199,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (pos.getY() == fromPos.getY() && world.isAirBlock(fromPos) && !checkRecursive(world, pos, 0, new ArrayList<BlockPos>(6)) && blockIn.equals(ModBlocks.witch_altar)) {
@@ -232,6 +236,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;

@@ -1,6 +1,5 @@
 package com.bewitchment.common.block.natural.plants;
 
-import com.bewitchment.common.block.natural.plants.BlockModFlower;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -44,6 +43,7 @@ public class BlockMoonbell extends BlockModFlower {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(placed, meta == 0);
 	}
