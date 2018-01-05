@@ -47,6 +47,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return world.getBlockState(pos).getBlock().equals(ModBlocks.witch_altar) && world.getBlockState(pos).getValue(ALTAR_TYPE).equals(AltarMultiblockType.UNFORMED);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void notifyAround(BlockPos pos, World world) {
 		for (int dx = -1; dx <= 1; dx++)
 			for (int dy = -1; dy <= 1; dy++) {
