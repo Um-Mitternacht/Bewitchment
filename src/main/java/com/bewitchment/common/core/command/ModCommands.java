@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public final class ModCommands {
 
+	//Todo: Convert all of these into spells.
+
 	static final Map<String, IIncantation> commands = new HashMap<>();
 
 	private ModCommands() {
