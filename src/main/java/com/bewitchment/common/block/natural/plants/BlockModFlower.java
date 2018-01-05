@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.natural.crop;
+package com.bewitchment.common.block.natural.plants;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;

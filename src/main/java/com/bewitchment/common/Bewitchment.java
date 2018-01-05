@@ -1,7 +1,7 @@
 package com.bewitchment.common;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.natural.crop.BlockMoonbell;
+import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
 import com.bewitchment.common.core.capability.brew.CapabilityBrewStorage;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;

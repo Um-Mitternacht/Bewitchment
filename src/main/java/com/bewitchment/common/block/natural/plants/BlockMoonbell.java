@@ -1,5 +1,6 @@
-package com.bewitchment.common.block.natural.crop;
+package com.bewitchment.common.block.natural.plants;
 
+import com.bewitchment.common.block.natural.plants.BlockModFlower;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;

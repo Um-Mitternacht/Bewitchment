@@ -18,6 +18,8 @@ import javax.annotation.Nonnull;
  */
 public final class BewitchmentCreativeTabs {
 
+	//Todo: Organize the tabs. They are very messy.
+
 	public static final PlantsCreativeTab PLANTS_CREATIVE_TAB = new PlantsCreativeTab();
 	public static final ItemsCreativeTab ITEMS_CREATIVE_TAB = new ItemsCreativeTab();
 	public static final BlocksCreativeTab BLOCKS_CREATIVE_TAB = new BlocksCreativeTab();

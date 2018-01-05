@@ -10,6 +10,7 @@ import com.bewitchment.common.block.natural.BlockSaltOre;
 import com.bewitchment.common.block.natural.BlockSilverOre;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
