@@ -62,7 +62,7 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 39 == 0) {
+		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 40 == 0) {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
 		}
 	}

@@ -64,7 +64,7 @@ public class ItemTriskelionAmulet extends ItemMod implements IBauble {
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 39 == 0) {
+		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 40 == 0) {
 			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 120, 0, true, true));
 			player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 0, true, true));
 		}
