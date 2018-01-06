@@ -9,8 +9,10 @@ import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -30,9 +32,9 @@ import java.util.List;
 /**
  * Created by Joseph on 1/1/2018.
  */
-public class ItemHorseshoe extends ItemMod implements IBauble {
-	public ItemHorseshoe() {
-		super(LibItemName.HORSESHOE);
+public class ItemTriskelionAmulet extends ItemMod implements IBauble {
+	public ItemTriskelionAmulet() {
+		super(LibItemName.TRISKELION_AMULET);
 		this.setMaxStackSize(1);
 		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -63,13 +65,14 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		if (itemstack.getItemDamage() == 0 && player.ticksExisted % 39 == 0) {
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
+			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 120, 0, true, true));
+			player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 0, true, true));
 		}
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, .75F, 1.9f);
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
@@ -80,5 +83,10 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
+	}
+
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return enchantment == Enchantments.BINDING_CURSE;
 	}
 }

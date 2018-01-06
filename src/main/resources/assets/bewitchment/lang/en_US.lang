@@ -519,6 +519,7 @@ item.crown.name=Crown
 item.charm.name=Charm
 item.nazar.name=Nazar
 item.horseshoe.name=Horseshoe
+item.triskelion_amulet.name=Triskelion Amulet
 item.talisman_aquamarine_crown.name=Aquamarine Crown
 item.talisman_adamantine_star_ring.name=Ring of the Adamantine Star
 item.talisman_emerald_pendant.name=Emerald Pendant
@@ -528,6 +529,7 @@ item.talisman_watching_eye.name=Everwatching Eye
 //Trinket Descriptions
 witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
 witch.tooltip.horseshoe_description.name=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
+witch.tooltip.triskelion_amulet_description.name=This amulet seems to provide some strength against foes, but drains you slightly.
 witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
 
 //Books

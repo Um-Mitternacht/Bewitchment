@@ -8,6 +8,7 @@ import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.baubles.ItemHorseshoe;
 import com.bewitchment.common.item.baubles.ItemNazar;
 import com.bewitchment.common.item.baubles.ItemTalisman;
+import com.bewitchment.common.item.baubles.ItemTriskelionAmulet;
 import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
@@ -227,6 +228,7 @@ public final class ModItems {
 		registry.registerAll(//
 				new ItemNazar(),
 				new ItemHorseshoe(),
+				new ItemTriskelionAmulet(),
 				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),
 				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
