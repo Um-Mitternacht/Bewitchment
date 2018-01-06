@@ -5,6 +5,7 @@ import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.item.baubles.ItemHorseshoe;
 import com.bewitchment.common.item.baubles.ItemNazar;
 import com.bewitchment.common.item.baubles.ItemTalisman;
 import com.bewitchment.common.item.block.ItemBlockColor;
@@ -153,6 +154,7 @@ public final class ModItems {
 	public static final Item talisman_emerald_pendant = PLACE_HOLDER;
 	public static final Item talisman_watching_eye = PLACE_HOLDER;
 	public static final Item talisman_ruby_orb = PLACE_HOLDER;
+	public static final Item horseshoe = PLACE_HOLDER;
 
 	public static final Item spell_page = PLACE_HOLDER;
 
@@ -224,6 +226,7 @@ public final class ModItems {
 		// Baubles
 		registry.registerAll(//
 				new ItemNazar(),
+				new ItemHorseshoe(),
 				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),
 				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
