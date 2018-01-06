@@ -59,7 +59,7 @@ public class ItemTriskelionAmulet extends ItemMod implements IBauble {
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemStack) {
-		return BaubleType.TRINKET;
+		return BaubleType.AMULET;
 	}
 
 	@Override
