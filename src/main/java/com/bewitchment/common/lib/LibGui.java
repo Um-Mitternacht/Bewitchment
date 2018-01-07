@@ -6,5 +6,5 @@ package com.bewitchment.common.lib;
  * the MIT license.
  */
 public enum LibGui {
-	APIARY, OVEN, THREAD_SPINNER;
+	APIARY, OVEN, THREAD_SPINNER, BARREL;
 }

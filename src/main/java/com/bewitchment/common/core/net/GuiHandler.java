@@ -1,15 +1,10 @@
 package com.bewitchment.common.core.net;
 
-import com.bewitchment.client.gui.GuiApiary;
-import com.bewitchment.client.gui.GuiOven;
-import com.bewitchment.client.gui.GuiThreadSpinner;
-import com.bewitchment.client.gui.container.ContainerApiary;
-import com.bewitchment.client.gui.container.ContainerOven;
-import com.bewitchment.client.gui.container.ContainerThreadSpinner;
+import com.bewitchment.client.gui.*;
+import com.bewitchment.client.gui.container.*;
 import com.bewitchment.common.lib.LibGui;
-import com.bewitchment.common.tile.TileApiary;
-import com.bewitchment.common.tile.TileEntityThreadSpinner;
-import com.bewitchment.common.tile.TileOven;
+import com.bewitchment.common.tile.*;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
@@ -36,6 +31,8 @@ public class GuiHandler implements IGuiHandler {
 				return tile != null && (tile instanceof TileOven) ? new ContainerOven(player.inventory, (TileOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
+			case BARREL:
+				return tile != null && (tile instanceof TileEntityBarrel) ? new ContainerBarrel(player.inventory, (TileEntityBarrel) tile) : null;
 			default:
 				return null;
 		}
@@ -52,6 +49,8 @@ public class GuiHandler implements IGuiHandler {
 				return tile != null && (tile instanceof TileOven) ? new GuiOven(player.inventory, (TileOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new GuiThreadSpinner((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityThreadSpinner) tile) : null;
+			case BARREL:
+				return tile != null && (tile instanceof TileEntityBarrel) ? new GuiBarrel((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityBarrel) tile) : null;
 			default:
 				return null;
 		}

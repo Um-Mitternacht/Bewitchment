@@ -100,6 +100,7 @@ public final class ModBlocks {
 	public static final Block moonbell = PLACE_HOLDER;
 	public static final Block witch_altar = PLACE_HOLDER;
 	public static final Block thread_spinner = PLACE_HOLDER;
+	public static final Block barrel = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -152,7 +153,8 @@ public final class ModBlocks {
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(),
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
-				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER)
+				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
+				new BlockBarrel(LibBlockName.BARREL)
 		);
 		//Normal Blocks
 		registry.registerAll(

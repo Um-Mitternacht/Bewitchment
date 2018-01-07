@@ -206,6 +206,26 @@ tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
 tile.moonbell.name=Moonbell Flower
 
+//Barrels
+tile.barrel.name=Barrel
+tile.barrel_oak.name=Oak Barrel
+tile.barrel_birch.name=Birch Barrel
+tile.barrel_spruce.name=Spruce Barrel
+tile.barrel_jungle.name=Jungle Barrel
+tile.barrel_acacia.name=Acacia Barrel
+tile.barrel_big_oak.name=Dark Oak Barrel
+tile.barrel_elder.name=Elder Barrel
+tile.barrel_juniper.name=Juniper Barrel
+tile.barrel_yew.name=Yew Barrel
+tile.barrel.full=%s (%d/%d)
+tile.barrel.empty=Empty
+tile.barrel.altar.none_required=No magic power required
+tile.barrel.altar.no_altar=There are no magic sources nearby
+tile.barrel.altar.working=Charging
+tile.barrel.altar.done=Charged
+fluid.quantity.mB=%d mB
+fluid.none=Empty
+
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore
 tile.gem_ore_moldavite.name=Moldavite Ore

@@ -1,0 +1,9 @@
+{
+	"parent": "bewitchment:block/barrels/barrel",
+	"textures": {
+		"particle": "blocks/log_acacia",
+		"side": "blocks/log_acacia",
+		"front": "blocks/log_acacia_top",
+		"tap": "blocks/anvil_base"
+	}
+}
