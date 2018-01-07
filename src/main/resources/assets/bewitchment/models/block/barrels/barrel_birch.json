@@ -1,9 +1,9 @@
 {
-	"parent": "bewitchment:block/barrels/barrel",
-	"textures": {
-		"particle": "blocks/log_birch",
-		"side": "blocks/log_birch",
-		"front": "blocks/log_birch_top",
-		"tap": "blocks/anvil_base"
-	}
+  "parent": "bewitchment:block/barrels/barrel",
+  "textures": {
+    "particle": "blocks/log_birch",
+    "side": "blocks/log_birch",
+    "front": "blocks/log_birch_top",
+    "tap": "blocks/anvil_base"
+  }
 }

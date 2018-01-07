@@ -1,49 +1,49 @@
 {
-	"forge_marker": 1,
-	"parent": "bewitchment:block/barrel",
-	"variants": {
-		"facing": {
-			"north": {
-				"y": 0
-			},
-			"south": {
-				"y": 180
-			},
-			"east": {
-				"y": 90
-			},
-			"west": {
-				"y": 270
-			}
-		},
-		"wood": {
-			"oak": {
-				"model": "bewitchment:barrels/barrel_oak"
-			},
-			"spruce": {
-				"model": "bewitchment:barrels/barrel_spruce"
-			},
-			"birch": {
-				"model": "bewitchment:barrels/barrel_birch"
-			},
-			"jungle": {
-				"model": "bewitchment:barrels/barrel_jungle"
-			},
-			"acacia": {
-				"model": "bewitchment:barrels/barrel_acacia"
-			},
-			"big_oak": {
-				"model": "bewitchment:barrels/barrel_big_oak"
-			},
-			"elder": {
-				"model": "bewitchment:barrels/barrel_elder"
-			},
-			"juniper": {
-				"model": "bewitchment:barrels/barrel_juniper"
-			},
-			"yew": {
-				"model": "bewitchment:barrels/barrel_yew"
-			}
-		}
-	}
+  "forge_marker": 1,
+  "parent": "bewitchment:block/barrel",
+  "variants": {
+    "facing": {
+      "north": {
+        "y": 0
+      },
+      "south": {
+        "y": 180
+      },
+      "east": {
+        "y": 90
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "wood": {
+      "oak": {
+        "model": "bewitchment:barrels/barrel_oak"
+      },
+      "spruce": {
+        "model": "bewitchment:barrels/barrel_spruce"
+      },
+      "birch": {
+        "model": "bewitchment:barrels/barrel_birch"
+      },
+      "jungle": {
+        "model": "bewitchment:barrels/barrel_jungle"
+      },
+      "acacia": {
+        "model": "bewitchment:barrels/barrel_acacia"
+      },
+      "big_oak": {
+        "model": "bewitchment:barrels/barrel_big_oak"
+      },
+      "elder": {
+        "model": "bewitchment:barrels/barrel_elder"
+      },
+      "juniper": {
+        "model": "bewitchment:barrels/barrel_juniper"
+      },
+      "yew": {
+        "model": "bewitchment:barrels/barrel_yew"
+      }
+    }
+  }
 }

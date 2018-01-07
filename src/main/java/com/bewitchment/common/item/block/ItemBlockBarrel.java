@@ -8,7 +8,6 @@ package com.bewitchment.common.item.block;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockBarrel;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -38,7 +37,7 @@ public class ItemBlockBarrel extends ItemBlock {
 	public boolean getHasSubtypes() {
 		return true;
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (this.isInCreativeTab(tab)) {

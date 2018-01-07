@@ -1,13 +1,8 @@
 package com.bewitchment.common.tile;
 
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.fermenting.BarrelRecipe;
 import com.bewitchment.common.block.tools.BlockBarrel;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,47 +17,41 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import javax.annotation.Nullable;
+import java.util.stream.Collectors;
+
 public class TileEntityBarrel extends TileMod implements ITickable {
-	
+
 	AxisAlignedBB around;
-	
-	FluidTank internalTank = new FluidTank(Fluid.BUCKET_VOLUME) {
-		@Override
-		protected void onContentsChanged() {
-			if (this.getFluidAmount() == 0 || this.getFluidAmount() == Fluid.BUCKET_VOLUME)
-				TileEntityBarrel.this.markDirty();
-			checkRecipe();
-		};
-	};
 	AutomatableInventory inv = new AutomatableInventory(7) {
-		
+
 		@Override
 		public void onMarkDirty() {
 			TileEntityBarrel.this.markDirty();
 		}
-		
+
 		@Override
 		public boolean canMachineInsert(int slot, ItemStack stack) {
-			return slot!=0;
+			return slot != 0;
 		}
-		
+
 		@Override
 		public boolean canMachineExtract(int slot, ItemStack stack) {
-			return slot==0;
+			return slot == 0;
 		}
-		
+
 		@Override
 		public String getName() {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		
+
 		@Override
 		public boolean hasCustomName() {
 			// TODO Auto-generated method stub
 			return false;
 		}
-		
+
 		@Override
 		public ITextComponent getDisplayName() {
 			// TODO Auto-generated method stub
@@ -73,11 +62,21 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 	String recipeName = null;
 	TileEntityWitchAltar te = null; // cached
 	private BarrelRecipe cachedRecipe = null;
+	FluidTank internalTank = new FluidTank(Fluid.BUCKET_VOLUME) {
+		@Override
+		protected void onContentsChanged() {
+			if (this.getFluidAmount() == 0 || this.getFluidAmount() == Fluid.BUCKET_VOLUME)
+				TileEntityBarrel.this.markDirty();
+			checkRecipe();
+		}
+
+		;
+	};
 
 	public TileEntityBarrel() {
 		internalTank.setTileEntity(this);
 	}
-	
+
 	@Override
 	protected void readDataNBT(NBTTagCompound tag) {
 		brewingTime = tag.getInteger("time");
@@ -100,7 +99,7 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 		NBTTagCompound fluid = new NBTTagCompound();
 		internalTank.writeToNBT(fluid);
 		tag.setTag("fluid", fluid);
-		if (recipeName!=null) tag.setString("recipe", recipeName);
+		if (recipeName != null) tag.setString("recipe", recipeName);
 	}
 
 	@Override
@@ -108,14 +107,14 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 		if (!world.isRemote) {
 			if (hasRecipe()) {
 				BarrelRecipe currentRecipe = getRecipe();
-				if (powerAbsorbed<currentRecipe.getPower()) {
+				if (powerAbsorbed < currentRecipe.getPower()) {
 					if (consumePower(1)) {
 						powerAbsorbed++;
 						markDirty();
 						return;
 					}
 				} else {
-					if (brewingTime<currentRecipe.getRequiredTime()) {
+					if (brewingTime < currentRecipe.getRequiredTime()) {
 						brewingTime++;
 						markDirty();
 						return;
@@ -136,18 +135,18 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 			}
 		}
 	}
-	
+
 	public void checkRecipe() {
-		if (this.recipeName!=null && this.recipeName.length()>0) {
+		if (this.recipeName != null && this.recipeName.length() > 0) {
 			return;
 		}
 		refreshRecipeStatus(BarrelRecipe.getRecipe(world, inv.getList().stream().skip(1).collect(Collectors.toList()), pos, internalTank.drainInternal(1000, false)));
 	}
-	
+
 	public void refreshRecipeStatus(BarrelRecipe incomingRecipe) {
-		if (incomingRecipe!=null) {
+		if (incomingRecipe != null) {
 			ItemStack recipeOutput = inv.getStackInSlot(0);
-			if (recipeOutput.isEmpty() || recipeOutput.getMaxStackSize()>=recipeOutput.getCount()+incomingRecipe.getResult().getCount()) {
+			if (recipeOutput.isEmpty() || recipeOutput.getMaxStackSize() >= recipeOutput.getCount() + incomingRecipe.getResult().getCount()) {
 				internalTank.drain(Fluid.BUCKET_VOLUME, true);
 				this.cachedRecipe = incomingRecipe;
 				this.recipeName = incomingRecipe.getRegistryName().toString();
@@ -157,48 +156,48 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability==CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) return true;
-		if (capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) return true;
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
 		return super.hasCapability(capability, facing);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability==CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) return (T) internalTank;
-		if (capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) inv;
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) return (T) internalTank;
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) inv;
 		return super.getCapability(capability, facing);
 	}
-	
+
 	public void setType(BlockBarrel.WoodType type) {
 		barrelType = type.ordinal();
 		markDirty();
 	}
-	
+
 	public void setType(int type) {
 		barrelType = type;
 		markDirty();
 	}
-	
+
 	public BlockBarrel.WoodType getType() {
 		return BlockBarrel.WoodType.values()[barrelType];
 	}
-	
+
 	public boolean consumePower(int power) {
-		if (power==0) return true;
+		if (power == 0) return true;
 		if (te == null || te.isInvalid())
 			te = TileEntityWitchAltar.getClosest(pos, world);
-		if (te==null) return false;
+		if (te == null) return false;
 		return te.consumePower(power, false);
 	}
 
 	public boolean hasRecipe() {
-		return recipeName!=null && recipeName.length()>0;
+		return recipeName != null && recipeName.length() > 0;
 	}
-	
+
 	public int getBrewingTime() {
 		return brewingTime;
 	}
@@ -210,13 +209,13 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 	public String getRecipeName() {
 		return recipeName;
 	}
-	
+
 	@Nullable
 	public BarrelRecipe getRecipe() {
-		if (cachedRecipe==null) {
-			if (recipeName==null || recipeName.length()==0) return null;
+		if (cachedRecipe == null) {
+			if (recipeName == null || recipeName.length() == 0) return null;
 			cachedRecipe = BarrelRecipe.REGISTRY.getValue(new ResourceLocation(recipeName));
-			if (cachedRecipe!=null) {
+			if (cachedRecipe != null) {
 				powerRequired = cachedRecipe.getPower();
 				timeRequired = cachedRecipe.getRequiredTime();
 			}
@@ -239,7 +238,7 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 		// internalTank.readFromNBT(tag.getCompoundTag("tank"));
 		super.handleUpdateTag(tag);
 	}
-	
+
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		return super.getUpdateTag();
@@ -265,16 +264,16 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 	public int getTimeRequired() {
 		return timeRequired;
 	}
-	
+
 	protected void markTileDirty() {
 		markDirty();
 		checkRecipe();
 	}
-	
+
 	public IInventory getInventory() {
 		return inv;
 	}
-	
+
 	public TileEntityWitchAltar getAltar(boolean rebind) {
 		if ((te == null || te.isInvalid()) && rebind)
 			te = TileEntityWitchAltar.getClosest(pos, world);
