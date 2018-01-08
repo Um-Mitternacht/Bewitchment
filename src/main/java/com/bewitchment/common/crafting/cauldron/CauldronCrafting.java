@@ -415,6 +415,10 @@ public final class CauldronCrafting {
 		registerEffect(getStack(ModItems.oak_apple_gall)
 				, new PotionEffect(MobEffects.SLOWNESS, 500), false);
 
+		//temp effect until i figure out what to make for a brew regarding this
+		registerEffect(getStack(ModItems.kenaf)
+				, new PotionEffect(MobEffects.SLOWNESS, 500), false);
+
 
 		//Time Extenders
 		registerModifier(getStack(Items.REDSTONE)
