@@ -52,6 +52,7 @@ public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 		this.setLightOpacity(0);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		EnumFacing f = state.getValue(FACING);
@@ -64,11 +65,13 @@ public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 		return state.getValue(FACING).getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.HORIZONTALS[meta]);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean hasTileEntity() {
 		return true;
@@ -84,11 +87,13 @@ public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
@@ -99,6 +104,7 @@ public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing()).withProperty(WOOD_TYPE, WoodType.values()[meta]);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -109,6 +115,7 @@ public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 		return new BlockStateContainer(this, FACING, WOOD_TYPE);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntity te = worldIn.getTileEntity(pos);
