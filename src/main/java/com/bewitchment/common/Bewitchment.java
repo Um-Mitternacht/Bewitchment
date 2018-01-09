@@ -24,20 +24,14 @@ import com.bewitchment.common.item.food.seed.SeedDropRegistry;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
-<<<<<<< HEAD
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
-=======
 
->>>>>>> ritual-rewrite
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 /**
@@ -68,12 +62,9 @@ public class Bewitchment {
 		ModEntities.init();
 		ModBrews.init();
 		ModSpells.init();
-<<<<<<< HEAD
 		ModSpinningThreadRecipes.init();
 		ModBarrelRecipes.init();
-=======
 		ModRituals.init();
->>>>>>> ritual-rewrite
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");

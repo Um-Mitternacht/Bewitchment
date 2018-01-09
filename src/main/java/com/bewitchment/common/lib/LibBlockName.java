@@ -76,12 +76,9 @@ public final class LibBlockName {
 	public static final String SAPLING = "sapling";
 	public static final String MOONBELL = "moonbell";
 	public static final String WITCH_ALTAR = "witch_altar";
-<<<<<<< HEAD
 	public static final String THREAD_SPINNER = "thread_spinner";
 	public static final String BARREL = "barrel";
-=======
 	public static final String GLYPH = "glyph";
->>>>>>> ritual-rewrite
 
 	private LibBlockName() {
 	}

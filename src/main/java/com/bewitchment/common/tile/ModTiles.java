@@ -14,12 +14,9 @@ public final class ModTiles {
 	private static final String APIARY = "apiary";
 	private static final String OVEN = "oven";
 	private static final String WITCH_ALTAR = "witch_altar";
-<<<<<<< HEAD
 	private static final String THREAD_SPINNER = "thread_spinner";
 	private static final String BARREL = "barrel";
-=======
 	private static final String RITUAL_GLYPH = "glyph";
->>>>>>> ritual-rewrite
 
 	private ModTiles() {
 	}
@@ -31,11 +28,8 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileApiary.class, APIARY);
 		GameRegistry.registerTileEntity(TileOven.class, OVEN);
 		GameRegistry.registerTileEntity(TileEntityWitchAltar.class, WITCH_ALTAR);
-<<<<<<< HEAD
 		GameRegistry.registerTileEntity(TileEntityThreadSpinner.class, THREAD_SPINNER);
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, BARREL);
-=======
 		GameRegistry.registerTileEntity(TileEntityGlyph.class, RITUAL_GLYPH);
->>>>>>> ritual-rewrite
 	}
 }
