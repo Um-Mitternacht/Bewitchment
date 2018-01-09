@@ -53,17 +53,26 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		return true;
 	}
 	
+	// Called every tick if there is enough power
 	public void onUpdate(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {}
+	
+	// Called when the ritual stops because it has completed
 	public void onFinish(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {}
+	
+	// Called when the ritual gets stopped by right-click or breaking of the glyph
 	public void onStopped(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {}
+	
+	// Called when the ritual gets started
 	public void onStarted(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {}
+	
+	// Called every tick if there is not enough power
 	public void onLowPower(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {}
 	
 	public int getTime() {
 		return time;
 	}
 	
-	public NonNullList<ItemStack> getOutput() {
+	public NonNullList<ItemStack> getOutput(NBTTagCompound data) { // data is used to allow the output of modified input items
 		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
 		for (ItemStack i:output) copy.add(i);
 		return copy;
