@@ -1,7 +1,7 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
+import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.PacketHandler;

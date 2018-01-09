@@ -1,14 +1,13 @@
 package com.bewitchment.common.core.gen;
 
-import static com.bewitchment.common.core.gen.WorldGenOre.OreGenBuilder.DEFAULT_STATE;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.core.handler.ConfigHandler;
-
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import static com.bewitchment.common.core.gen.WorldGenOre.OreGenBuilder.DEFAULT_STATE;
 
 /**
  * This class was created by Arekkuusu on 21/05/2017.

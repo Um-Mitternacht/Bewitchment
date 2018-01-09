@@ -3,7 +3,6 @@ package com.bewitchment.common.item.magic;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemRitualChalk extends ItemMod {
-	
+
 	private static final int MAX_USES = 40;
 
 	public ItemRitualChalk(String id) {
@@ -26,22 +25,22 @@ public class ItemRitualChalk extends ItemMod {
 		this.setNoRepair();
 		this.setHasSubtypes(true);
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack)+"_"+BlockCircleGlyph.GlyphType.values()[stack.getMetadata()].name().toLowerCase();
+		return super.getUnlocalizedName(stack) + "_" + BlockCircleGlyph.GlyphType.values()[stack.getMetadata()].name().toLowerCase();
 	}
-	
+
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean canItemEditBlocks() {
 		return true;
 	}
-	
+
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
 		if (!stack.hasTagCompound()) {
@@ -49,23 +48,23 @@ public class ItemRitualChalk extends ItemMod {
 			stack.getTagCompound().setInteger("usesLeft", MAX_USES);
 		}
 		int usesLeft = stack.getTagCompound().getInteger("usesLeft");
-		return 1d-((double)usesLeft/(double)MAX_USES);
+		return 1d - ((double) usesLeft / (double) MAX_USES);
 	}
-	
+
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
-		return getDurabilityForDisplay(stack)>0;
+		return getDurabilityForDisplay(stack) > 0;
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs itemIn, NonNullList<ItemStack> tab) {
 		if (this.isInCreativeTab(itemIn)) {
-			for (int i=0;i<4;i++) {
-				tab.add(new ItemStack(this,1,i));
+			for (int i = 0; i < 4; i++) {
+				tab.add(new ItemStack(this, 1, i));
 			}
 		}
 	}
-	
+
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		boolean isReplacing = worldIn.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs);
@@ -79,16 +78,16 @@ public class ItemRitualChalk extends ItemMod {
 			if (!player.isCreative()) {
 				int usesLeft = chalk.getTagCompound().getInteger("usesLeft") - 1;
 				chalk.getTagCompound().setInteger("usesLeft", usesLeft);
-				if (usesLeft<1) chalk.setCount(0);
+				if (usesLeft < 1) chalk.setCount(0);
 			}
 			IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), worldIn, pos);
-			state = state.withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int)(Math.random()*4)]);
+			state = state.withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]);
 			state = state.withProperty(BlockCircleGlyph.TYPE, BlockCircleGlyph.GlyphType.values()[type]);
-			worldIn.setBlockState(isReplacing?pos:pos.up(), state, 2);
+			worldIn.setBlockState(isReplacing ? pos : pos.up(), state, 2);
 		}
 		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 	}
-	
+
 	@Override
 	public void registerModel() {
 		for (int meta = 0; meta < 4; meta++) {
