@@ -6,16 +6,15 @@ import com.bewitchment.client.core.event.BrewHUD;
 import com.bewitchment.client.core.event.ClientEvents;
 import com.bewitchment.client.core.event.EnergyHUD;
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.client.handler.BlockCandleColorHandler;
-import com.bewitchment.client.handler.BrewItemColorHandler;
-import com.bewitchment.client.handler.ItemCandleColorHandler;
-import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.client.handler.*;
 import com.bewitchment.client.render.entity.BrewRenderer;
 import com.bewitchment.client.render.entity.EmptyRenderer;
 import com.bewitchment.client.render.entity.SpellRenderer;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.entity.EntityBrew;
@@ -24,13 +23,15 @@ import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.tile.TileCauldron;
+
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.client.renderer.color.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -80,6 +81,24 @@ public class ClientProxy implements ISidedProxy {
 		blocks.registerBlockColorHandler(new BlockCandleColorHandler(),
 				ModBlocks.candle_large, ModBlocks.candle_medium, ModBlocks.candle_small);
 
+		blocks.registerBlockColorHandler(new IBlockColor() {
+			@Override
+			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+				GlyphType type = state.getValue(BlockCircleGlyph.TYPE);
+				switch (type) {
+					case ENDER:
+						return 0x770077;
+					case GOLDEN:
+						return 0xe3dc3c;
+					case NETHER:
+						return 0xbb0000;
+					default:
+					case NORMAL:
+						return 0xFFFFFF;
+				}
+			}
+		}, ModBlocks.ritual_glyphs);
+		
 		ItemColors items = Minecraft.getMinecraft().getItemColors();
 		//Item Colors
 		items.registerItemColorHandler(new ItemCandleColorHandler(),

@@ -3,11 +3,11 @@ package com.bewitchment.common.tile;
 import com.bewitchment.api.CauldronRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
+import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
 import com.bewitchment.api.recipe.BrewModifier;
 import com.bewitchment.api.recipe.CauldronBrewRecipe;
 import com.bewitchment.api.recipe.CauldronItemRecipe;
 import com.bewitchment.api.recipe.ItemValidator;
-import com.bewitchment.api.ritual.RitualHolder;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -63,7 +63,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 	private final CauldronFluid inv = tank();
 
 	private int rgb = 0x12193b;
-	private RitualHolder ritual;
+	private CauldronRitualHolder ritual;
 	private Mode mode = Mode.NORMAL;
 	private List<ItemStack> ingredients = new ArrayList<>();
 	private ItemStack container = ItemStack.EMPTY;
@@ -484,7 +484,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 		setColorRGB(cmp.getInteger(TAG_RGB));
 		setMode(Mode.valueOf(cmp.getString(TAG_MODE)));
 		if (cmp.hasKey("ritual_data")) {
-			ritual = RitualHolder.newInstance();
+			ritual = CauldronRitualHolder.newInstance();
 			ritual.readNBT(cmp);
 		}
 	}
@@ -531,7 +531,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 		this.rgb = rgbIn;
 	}
 
-	public void setRitual(RitualHolder ritual) {
+	public void setRitual(CauldronRitualHolder ritual) {
 		this.ritual = ritual;
 		markDirty();
 	}
@@ -543,7 +543,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 		).findAny();
 		if (optional.isPresent()) {
 			CauldronItemRecipe recipe = optional.get();
-			setRitual(new RitualHolder<>(recipe.getRitual()));
+			setRitual(new CauldronRitualHolder<>(recipe.getRitual()));
 			if (ritual.canPerform(this, world, getPos())) {
 				setMode(Mode.RITUAL);
 				markDirty();

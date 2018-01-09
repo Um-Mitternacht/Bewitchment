@@ -1,4 +1,4 @@
-package com.bewitchment.api.ritual;
+package com.bewitchment.api.cauldron_ritual;
 
 import com.bewitchment.api.RitualRegistry;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,25 +12,25 @@ import net.minecraft.world.World;
  * the MIT license.
  */
 @SuppressWarnings("WeakerAccess")
-public class RitualHolder<T extends TileEntity> {
+public class CauldronRitualHolder<T extends TileEntity> {
 
 	public int energy_left;
 	public int ticks;
 
-	private IRitual<T> ritual;
+	private ICauldronRitual<T> ritual;
 	private boolean fail;
 
-	private RitualHolder() {
+	private CauldronRitualHolder() {
 		ritual = null;
 	}
 
-	public RitualHolder(IRitual<T> ritual) {
+	public CauldronRitualHolder(ICauldronRitual<T> ritual) {
 		this.ritual = ritual;
 		this.energy_left = ritual.getCost();
 	}
 
-	public static <T extends TileEntity> RitualHolder<T> newInstance() {
-		return new RitualHolder<>();
+	public static <T extends TileEntity> CauldronRitualHolder<T> newInstance() {
+		return new CauldronRitualHolder<>();
 	}
 
 	public boolean canPerform(T tile, World world, BlockPos pos) {

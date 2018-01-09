@@ -5,9 +5,9 @@ import com.bewitchment.api.CauldronRegistry;
 import com.bewitchment.api.RitualRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
+import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.api.recipe.BrewModifier;
 import com.bewitchment.api.recipe.BrewSimpleModifier;
-import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.brew.ModBrews;
@@ -481,7 +481,7 @@ public final class CauldronCrafting {
 
 	@SuppressWarnings("rawtypes")
 	private static void registerItemRitual(String name, ItemStack spawned, int cost, Object... needed) {
-		IRitual ritual = RitualRegistry.register(new ResourceLocation(LibMod.MOD_ID, name), new ItemRitual(spawned, cost));
+		ICauldronRitual ritual = RitualRegistry.register(new ResourceLocation(LibMod.MOD_ID, name), new ItemRitual(spawned, cost));
 		CauldronRegistry.registerItemRitual((ItemRitual) ritual, needed);
 	}
 

@@ -1,13 +1,14 @@
 package com.bewitchment.common.core.gen;
 
+import static com.bewitchment.common.core.gen.WorldGenOre.OreGenBuilder.DEFAULT_STATE;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.core.handler.ConfigHandler;
+
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import static com.bewitchment.common.core.gen.WorldGenOre.OreGenBuilder.DEFAULT_STATE;
 
 /**
  * This class was created by Arekkuusu on 21/05/2017.
@@ -102,12 +103,6 @@ public final class ModGen {
 				.setVeinSize(ConfigHandler.WORLD_GEN.coquina.coquina_min_vein, ConfigHandler.WORLD_GEN.coquina.coquina_max_vein)
 				.setHeightRange(ConfigHandler.WORLD_GEN.coquina.coquina_min_height, ConfigHandler.WORLD_GEN.coquina.coquina_max_height)
 				.setBiomes(BiomeDictionary.Type.BEACH)
-				.build(DEFAULT_STATE), 0);
-		GameRegistry.registerWorldGenerator(WorldGenOre.OreGenBuilder.forOre(ModBlocks.chalk, ConfigHandler.WORLD_GEN.chalk.chalk_gen_chance)
-				.generateOn(Blocks.STONE)
-				.setVeinSize(ConfigHandler.WORLD_GEN.chalk.chalk_min_vein, ConfigHandler.WORLD_GEN.chalk.chalk_max_vein)
-				.setHeightRange(ConfigHandler.WORLD_GEN.chalk.chalk_min_height, ConfigHandler.WORLD_GEN.chalk.chalk_max_height)
-				.setBiomes(BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.HILLS)
 				.build(DEFAULT_STATE), 0);
 		//-------------------beehive-------------------//
 		GameRegistry.registerWorldGenerator(WorldGenOre.OreGenBuilder.forOre(ModBlocks.beehive, ConfigHandler.WORLD_GEN.beehive.beehive_gen_chance)
