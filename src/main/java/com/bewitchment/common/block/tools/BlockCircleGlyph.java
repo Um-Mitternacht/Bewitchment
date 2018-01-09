@@ -63,6 +63,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return floor.getBlock().canPlaceTorchOnTop(floor, worldIn, pos);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return FLAT_AABB;
@@ -73,6 +74,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return state.getValue(TYPE).equals(GlyphType.GOLDEN);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		return new ArrayList<ItemStack>(0);
@@ -103,6 +105,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return null;
@@ -119,22 +122,26 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return BlockRenderLayer.CUTOUT;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState blockState, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int color = meta & 3;
@@ -151,6 +158,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return (dir << 2) | color; //Bitwise that's DDCC, where DD is either 00=south, 01=... and CC is 00=normal, 01=golden...
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		int letter = Math.abs(pos.getX() + pos.getZ() * 2) % 6;
@@ -162,6 +170,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return new BlockStateContainer(this, FACING, TYPE, LETTER);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.DESTROY;
@@ -210,6 +219,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!this.canPlaceBlockAt(worldIn, pos)) worldIn.destroyBlock(pos, false);
