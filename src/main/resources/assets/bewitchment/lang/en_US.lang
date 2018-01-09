@@ -102,15 +102,17 @@ item.boline.name=Boline
 item.mortar_and_pestle.name=Mortar and Pestle
 item.brew_phial.name=Brew Phial
 item.taglock.name=Taglock Kit
-item.chalk_item.name=Mundane Chalk
 item.wand.name=Wand
 item.needle_bone.name=Bone Needle
-item.unrefined_chalk.name=Unrefined Chalk
 item.brew_phial_drink.name=Brew Phial
 item.brew_phial_splash.name=Splash Brew Phial
 item.brew_phial_drink_lingering.name=Lingering Brew Phial
 item.oak_apple_gall.name=Oak Apple Gall
 item.grilled_watermelon.name=Grilled Watermelon
+item.ritual_chalk_normal.name=Ritual Chalk
+item.ritual_chalk_nether.name=Fiery Chalk
+item.ritual_chalk_ender.name=Phasing Chalk
+item.ritual_chalk_golden.name=Focal Chalk
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
@@ -253,8 +255,6 @@ tile.salt_ore.name=Salt Ore
 tile.gem_ore_amethyst.name=Amethyst Ore
 tile.gem_ore_alexandrite.name=Alexandrite Ore
 tile.coquina.name=Coquina
-tile.chalk.name=Raw Chalk
-tile.unrefined_chalk.name=Unrefined Chalk
 tile.fake_ice.name=Perpetual Ice
 tile.fake_ice_fence.name=Perpetual Ice Fence
 tile.fake_ice_stairs.name=Perpetual Ice Stairs
@@ -564,3 +564,13 @@ achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
 achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 
 ////JEI
+
+//Rituals
+ritual.failure.unknown=You never heard of such rites
+ritual.failure.power=Your source of magic is not strong enough
+ritual.failure.precondition=Something's wrong
+ritual.bewitchment.high_moon.name=Ritual of the High Moon
+ritual.bewitchment.time_sands.name=Ritual of the Sands of Time
+ritual.bewitchment.perception.name=Ritual of Perception
+ritual.bewitchment.conjure_wither_ritual.name=Ritual of Conjuration (Wither)
+ritual.bewitchment.conjure_witch_ritual.name=Ritual of Conjuration (Witch)
