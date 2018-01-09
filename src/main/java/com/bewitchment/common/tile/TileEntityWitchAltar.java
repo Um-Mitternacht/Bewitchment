@@ -1,9 +1,15 @@
 package com.bewitchment.common.tile;
 
+import java.util.HashMap;
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -19,10 +25,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Optional;
 
 public class TileEntityWitchAltar extends TileMod implements ITickable {
 
@@ -73,11 +75,10 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 		if (power > maxPower) power = maxPower;
 	}
 
-	private void refreshNature() {
+	public void refreshNature() {
 		gain = 1;
 		maxPower = 0;
 		HashMap<Block, Integer> map = new HashMap<Block, Integer>();
-
 		for (int i = -RADIUS; i <= RADIUS; i++) {
 			for (int j = -RADIUS; j <= RADIUS; j++) {
 				for (int k = -RADIUS; k <= RADIUS; k++) {
@@ -92,6 +93,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 				}
 			}
 		}
+		
 		map.values().forEach(i -> maxPower += i);
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
