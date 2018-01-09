@@ -1,6 +1,6 @@
 package com.bewitchment.api;
 
-import com.bewitchment.api.ritual.IRitual;
+import com.bewitchment.api.ritual.ICauldronRitual;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import net.minecraft.tileentity.TileEntity;
@@ -17,10 +17,10 @@ import java.util.Set;
 @SuppressWarnings("rawtypes")
 public class RitualRegistry {
 
-	private static final BiMap<ResourceLocation, IRitual> LOCATION_RITUALS = HashBiMap.create(256);
-	private static final IntIdentityHashBiMap<IRitual> RITUALS = new IntIdentityHashBiMap<>(256);
+	private static final BiMap<ResourceLocation, ICauldronRitual> LOCATION_RITUALS = HashBiMap.create(256);
+	private static final IntIdentityHashBiMap<ICauldronRitual> RITUALS = new IntIdentityHashBiMap<>(256);
 
-	public static <T extends TileEntity, R extends IRitual<T>> IRitual<T> register(ResourceLocation location, R ritual) {
+	public static <T extends TileEntity, R extends ICauldronRitual<T>> ICauldronRitual<T> register(ResourceLocation location, R ritual) {
 		if (LOCATION_RITUALS.containsKey(location))
 			throw new IllegalArgumentException("This Ritual has been registered twice!: " + location);
 		LOCATION_RITUALS.put(location, ritual);
@@ -28,27 +28,27 @@ public class RitualRegistry {
 		return ritual;
 	}
 
-	public static int getRitualId(IRitual brew) {
+	public static int getRitualId(ICauldronRitual brew) {
 		return RITUALS.getId(brew);
 	}
 
-	public static IRitual getRitual(int id) {
+	public static ICauldronRitual getRitual(int id) {
 		return RITUALS.get(id);
 	}
 
-	public static ResourceLocation getRitualResource(IRitual brew) {
+	public static ResourceLocation getRitualResource(ICauldronRitual brew) {
 		return LOCATION_RITUALS.inverse().get(brew);
 	}
 
-	public static IRitual getRegisteredRitual(String location) {
+	public static ICauldronRitual getRegisteredRitual(String location) {
 		return getRegisteredRitual(new ResourceLocation(location));
 	}
 
-	public static IRitual getRegisteredRitual(ResourceLocation location) {
+	public static ICauldronRitual getRegisteredRitual(ResourceLocation location) {
 		return LOCATION_RITUALS.get(location);
 	}
 
-	public static Set<IRitual> getRituals() {
+	public static Set<ICauldronRitual> getRituals() {
 		return LOCATION_RITUALS.values();
 	}
 }
