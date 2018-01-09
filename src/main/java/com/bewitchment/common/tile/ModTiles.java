@@ -14,7 +14,6 @@ public final class ModTiles {
 	private static final String APIARY = "apiary";
 	private static final String OVEN = "oven";
 	private static final String WITCH_ALTAR = "witch_altar";
-	private static final String RITUAL_GLYPH = "glyph";
 
 	private ModTiles() {
 	}
@@ -26,6 +25,5 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileApiary.class, APIARY);
 		GameRegistry.registerTileEntity(TileOven.class, OVEN);
 		GameRegistry.registerTileEntity(TileEntityWitchAltar.class, WITCH_ALTAR);
-		GameRegistry.registerTileEntity(TileEntityGlyph.class, RITUAL_GLYPH);
 	}
 }
