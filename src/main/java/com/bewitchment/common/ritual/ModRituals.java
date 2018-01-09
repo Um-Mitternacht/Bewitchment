@@ -7,11 +7,8 @@ import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ModRituals {
-	
 	
 	public static void init() {
 		
