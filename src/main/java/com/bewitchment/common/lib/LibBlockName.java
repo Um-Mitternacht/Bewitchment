@@ -54,7 +54,7 @@ public final class LibBlockName {
 	public static final String JASPER_BLOCK = "jasper_block";
 	public static final String GARNET_BLOCK = "garnet_block";
 	public static final String NETHERSTEEL = "nethersteel";
-	// public static final String CHALK = "chalk";
+	public static final String CHALK = "chalk";
 	public static final String SALT_BARRIER = "salt_barrier";
 	public static final String FAKE_ICE = "fake_ice";
 	public static final String FAKE_ICE_FENCE = "fake_ice_fence";
@@ -76,12 +76,8 @@ public final class LibBlockName {
 	public static final String SAPLING = "sapling";
 	public static final String MOONBELL = "moonbell";
 	public static final String WITCH_ALTAR = "witch_altar";
-<<<<<<< HEAD
 	public static final String THREAD_SPINNER = "thread_spinner";
 	public static final String BARREL = "barrel";
-=======
-	public static final String GLYPH = "glyph";
->>>>>>> ritual-rewrite
 
 	private LibBlockName() {
 	}

@@ -1,10 +1,5 @@
 package com.bewitchment.common;
 
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
@@ -22,13 +17,8 @@ import com.bewitchment.common.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.food.seed.SeedDropRegistry;
 import com.bewitchment.common.lib.LibMod;
-import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
-<<<<<<< HEAD
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
-=======
-
->>>>>>> ritual-rewrite
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -39,6 +29,10 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -68,12 +62,8 @@ public class Bewitchment {
 		ModEntities.init();
 		ModBrews.init();
 		ModSpells.init();
-<<<<<<< HEAD
 		ModSpinningThreadRecipes.init();
 		ModBarrelRecipes.init();
-=======
-		ModRituals.init();
->>>>>>> ritual-rewrite
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");

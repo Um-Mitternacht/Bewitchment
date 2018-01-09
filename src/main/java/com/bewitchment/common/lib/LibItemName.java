@@ -60,14 +60,14 @@ public final class LibItemName {
 	public static final String BREW_PHIAL_SPLASH = "brew_phial_splash";
 	public static final String BREW_PHIAL_LINGER = "brew_phial_linger";
 	public static final String GLASS_JAR = "glass_jar";
-	// public static final String UNREFINED_CHALK = "unrefined_chalk";
+	public static final String UNREFINED_CHALK = "unrefined_chalk";
 	public static final String NEEDLE_BONE = "needle_bone";
 	public static final String WAND = "wand";
 	public static final String ATHAME = "athame";
 	public static final String BOLINE = "boline";
 	public static final String TAGLOCK = "taglock";
 	public static final String MORTAR_AND_PESTLE = "mortar_and_pestle";
-	// public static final String CHALK_ITEM = "chalk_item";
+	public static final String CHALK_ITEM = "chalk_item";
 	public static final String WAX = "wax";
 	public static final String SALT = "salt";
 	public static final String BEE = "bee";
@@ -106,7 +106,6 @@ public final class LibItemName {
 	public static final String FUME = "fume";
 	public static final String GRILLED_WATERMELON = "grilled_watermelon";
 	public static final String SPELL_PAGE = "spell_page";
-	public static final String CHALK = "ritual_chalk";
 
 	//Materials
 	public static final String SILVER = "silver";
