@@ -12,13 +12,14 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class RitualConjurationWitch extends Ritual {
 
-	public RitualConjurationWitch(NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
-		super(input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
+	public RitualConjurationWitch(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 	
 	@Override

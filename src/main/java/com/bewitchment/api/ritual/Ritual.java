@@ -38,13 +38,14 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 * @param circles is the byte annotation to define what circles are needed. It follows this pattern 332211TT where 33, 22, 11 are the glyph type of the nth circle, and TT the number of required circles, 0 being 1, 2 being 3. 3 (11) will always return a failed circle
 	 * 
 	 */
-	public Ritual(@Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+	public Ritual(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		this.time = timeInTicks;
 		this.input = input;
 		this.output = output;
 		this.circles = circles;
 		this.altarStartingPower = altarStartingPower;
 		this.tickPower = powerPerTick;
+		setRegistryName(registryName);
 		if (input.size()==0) throw new IllegalArgumentException("Cannot have an empty input in a ritual");
 	}
 	

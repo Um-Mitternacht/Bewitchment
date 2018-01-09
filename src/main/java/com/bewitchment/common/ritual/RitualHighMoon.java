@@ -10,13 +10,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class RitualHighMoon extends Ritual {
 
-	public RitualHighMoon(NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarPower, int costPerTick) {
-		super(input, output, timeInTicks, circles, altarPower, costPerTick);
+	public RitualHighMoon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarPower, int costPerTick) {
+		super(registryName, input, output, timeInTicks, circles, altarPower, costPerTick);
 	}
 
 	@Override
