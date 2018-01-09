@@ -17,7 +17,6 @@ import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
-import com.bewitchment.common.item.magic.ItemChalk;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.item.magic.ItemGem;
 import com.bewitchment.common.item.magic.ItemSpellPage;
@@ -27,22 +26,10 @@ import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
 import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
 import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
-<<<<<<< HEAD
 import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
-=======
-import com.bewitchment.common.item.tool.ItemAthame;
-import com.bewitchment.common.item.tool.ItemBoline;
-import com.bewitchment.common.item.tool.ItemSalt;
-import com.bewitchment.common.item.tool.ItemSilverAxe;
-import com.bewitchment.common.item.tool.ItemSilverHoe;
-import com.bewitchment.common.item.tool.ItemSilverPickaxe;
-import com.bewitchment.common.item.tool.ItemSilverSpade;
-import com.bewitchment.common.item.tool.ItemSilverSword;
->>>>>>> ritual-rewrite
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -103,8 +90,6 @@ public final class ModItems {
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
-	
-	public static final Item ritual_chalk = PLACE_HOLDER;
 
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
@@ -121,6 +106,7 @@ public final class ModItems {
 	public static final Item wood_ash = PLACE_HOLDER;
 	public static final Item honeycomb = PLACE_HOLDER;
 	public static final Item empty_honeycomb = PLACE_HOLDER;
+	public static final Item unrefined_chalk = PLACE_HOLDER;
 	public static final Item needle_bone = PLACE_HOLDER;
 	public static final Item cold_iron_ingot = PLACE_HOLDER;
 	public static final Item silver_ingot = PLACE_HOLDER;
@@ -129,6 +115,7 @@ public final class ModItems {
 	public static final Item book_of_shadows = PLACE_HOLDER;
 	public static final Item dusty_grimoire = PLACE_HOLDER;
 	public static final Item mortar_and_pestle = PLACE_HOLDER;
+	public static final Item chalk_item = PLACE_HOLDER;
 	public static final Item wand = PLACE_HOLDER;
 	public static final Item athame = PLACE_HOLDER;
 	public static final Item boline = PLACE_HOLDER;
@@ -183,6 +170,7 @@ public final class ModItems {
 			registry.register(itemBlock((Block) fluidBlock));
 		}
 		registry.register(new ItemGem());
+		// registry.register(new ItemFume());
 		registry.register(new ItemFumes("fume"));
 		registry.register(new ItemMod(LibItemName.GEMSTONE_AMALGAM));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
@@ -202,6 +190,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
 				new ItemMod(LibItemName.GEM_POWDER),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),
+				new ItemMod(LibItemName.UNREFINED_CHALK),
 				new ItemBrewDrink(),
 				new ItemBrewSplash(),
 				new ItemBrewLinger(),
@@ -209,6 +198,7 @@ public final class ModItems {
 				new ItemAthame(),
 				new ItemBoline(),
 				new ItemTaglock(),
+				new ItemMod(LibItemName.CHALK_ITEM),
 				new ItemMod(LibItemName.NEEDLE_BONE),
 				new ItemMod(LibItemName.WOOL_OF_BAT),
 				new ItemMod(LibItemName.TONGUE_OF_DOG),
@@ -232,8 +222,7 @@ public final class ModItems {
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
-				new ItemDustyGrimoire(),
-				new ItemChalk(LibItemName.CHALK)
+				new ItemDustyGrimoire()
 		);
 
 		// Baubles
@@ -308,7 +297,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.salt_ore),
 				itemBlock(ModBlocks.nethersteel),
 				itemBlock(ModBlocks.salt_barrier),
-				// itemBlock(ModBlocks.chalk),
+				itemBlock(ModBlocks.chalk),
 				itemBlock(ModBlocks.log_elder),
 				itemBlock(ModBlocks.log_juniper),
 				itemBlock(ModBlocks.log_yew),
