@@ -1,27 +1,31 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import net.minecraftforge.common.util.Constants.NBT;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
@@ -108,14 +112,11 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			ritualData = tag.getCompoundTag("data");
 		if (tag.hasKey("entityList")) {
 			entityList = new ArrayList<Tuple<String, String>>();
-			NBTTagCompound listTag = tag.getCompoundTag("entityList");
-			for (String s : listTag.getKeySet()) {
-				String unsplit = listTag.getString(s);
-				String[] names = unsplit.split("�");
-				if (names.length != 2)
-					continue;
-				entityList.add(new Tuple<String, String>(names[0], names[1]));
-			}
+			tag.getTagList("entityList", NBT.TAG_STRING).forEach(nbts -> {
+				String[] names = ((NBTTagString) nbts).getString().split("!");
+				if (names.length == 2)
+					entityList.add(new Tuple<String, String>(names[0], names[1]));
+			});
 		}
 	}
 
@@ -128,10 +129,10 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			tag.setString("player", entityPlayer.toString());
 		if (ritualData != null)
 			tag.setTag("data", ritualData);
-		NBTTagCompound list = new NBTTagCompound();
+		NBTTagList list = new NBTTagList();
 		for (int i = 0; i < entityList.size(); i++) {
 			Tuple<String, String> t = entityList.get(i);
-			list.setString("entity" + i, t.getFirst() + "�" + t.getSecond());
+			list.appendTag(new NBTTagString(t.getFirst() + "!" + t.getSecond()));
 		}
 		tag.setTag("entityList", list);
 	}
@@ -242,8 +243,6 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		entityList.add(new Tuple<String, String>(entity.getUniqueID().toString(), entity.getName()));
 		markDirty();
 	}
-
-	// ##################################################################################################################
 
 	public void addEntityUUIDToList(String uuid, String name) {
 		entityList.add(new Tuple<String, String>(uuid, name));
