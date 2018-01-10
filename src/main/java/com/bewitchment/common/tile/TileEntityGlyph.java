@@ -29,9 +29,9 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
-	private static final ArrayList<int[]> small = new ArrayList<int[]>();
-	private static final ArrayList<int[]> medium = new ArrayList<int[]>();
-	private static final ArrayList<int[]> big = new ArrayList<int[]>();
+	public static final ArrayList<int[]> small = new ArrayList<int[]>();
+	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
+	public static final ArrayList<int[]> big = new ArrayList<int[]>();
 
 	static {
 		for (int i = -1; i <= 1; i++) {
