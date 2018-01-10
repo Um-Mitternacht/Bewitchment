@@ -214,9 +214,9 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		int requiredCircles = rit.getCircles() & 3;
 		if (requiredCircles == 3)
 			return false;
-		GlyphType typeFirst = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 2 & 3];
-		GlyphType typeSecond = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 4 & 3];
-		GlyphType typeThird = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 6 & 3];
+		GlyphType typeFirst = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 2 & 3);
+		GlyphType typeSecond = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 4 & 3);
+		GlyphType typeThird = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 6 & 3);
 		if (requiredCircles > 1)
 			if (!checkThird(typeThird)) {
 				return false;
@@ -250,34 +250,49 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 	}
 
 	private boolean checkFirst(GlyphType typeFirst) {
+		GlyphType lastFound = null;
 		for (int[] c : small) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst) && !typeFirst.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}
 
 	private boolean checkSecond(GlyphType typeSecond) {
+		GlyphType lastFound = null;
 		for (int[] c : medium) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond) && !typeSecond.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}
 
 	private boolean checkThird(GlyphType typeThird) {
+		GlyphType lastFound = null;
 		for (int[] c : big) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird) && !typeThird.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}

@@ -1,10 +1,16 @@
 package com.bewitchment.common.ritual;
 
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ANY;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ENDER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NETHER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NORMAL;
+
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,8 +19,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
-
-import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.*;
 
 public class ModRituals {
 
@@ -32,7 +36,7 @@ public class ModRituals {
 				),
 				none, // Output
 				100, //Initial cast time
-				circles(NORMAL, null, null),
+				circles(ANY, null, null),
 				800, //Initial cost
 				0 //Cost per tick
 		);
@@ -123,6 +127,6 @@ public class ModRituals {
 		int circleNum = 0;
 		if (medium != null) circleNum++;
 		if (big != null) circleNum++;
-		return circleNum | small.ordinal() << 2 | (medium == null ? 0 : medium.ordinal() << 4) | (big == null ? 0 : big.ordinal() << 6);
+		return circleNum | small.meta() << 2 | (medium == null ? 0 : medium.meta() << 4) | (big == null ? 0 : big.meta() << 6);
 	}
 }

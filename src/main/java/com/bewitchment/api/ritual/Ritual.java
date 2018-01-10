@@ -1,6 +1,14 @@
 package com.bewitchment.api.ritual;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -12,12 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
@@ -75,9 +77,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 
 	public NonNullList<ItemStack> getOutput(NBTTagCompound data) { // data is used to allow the output of modified input items
-		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
-		for (ItemStack i : output) copy.add(i);
-		return copy;
+		return getOutputRaw();
 	}
 
 	public boolean isValidInput(List<ItemStack> ground, boolean circles) {
@@ -145,4 +145,11 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		return true;
 	}
 
+	public NonNullList<ItemStack> getOutputRaw() {
+		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
+		for (ItemStack i : output)
+			copy.add(i);
+		return copy;
+	}
+	
 }
