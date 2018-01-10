@@ -1,12 +1,9 @@
 package com.bewitchment.common.block.tools;
 
-import java.util.*;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.TileEntityGlyph;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -34,6 +31,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.*;
 
 public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
@@ -239,28 +238,28 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	//######################################################################################### PROPERTY STUFF
 
 	public static enum GlyphType implements IStringSerializable {
-		
+
 		NORMAL(0), GOLDEN(-1), ENDER(2), NETHER(3), ANY(1);
-		
+
 		int meta;
-		
+
 		GlyphType(int metadata) {
 			meta = metadata;
 		}
-		
-		public int meta() {
-			return meta;
-		}
-		
-		@Override
-		public String getName() {
-			return this.name().toLowerCase();
-		}
-		
+
 		public static GlyphType fromMeta(int meta) {
 			if (meta == 1 || meta == 5)
 				return ANY;
 			return values()[meta];
+		}
+
+		public int meta() {
+			return meta;
+		}
+
+		@Override
+		public String getName() {
+			return this.name().toLowerCase();
 		}
 
 	}
