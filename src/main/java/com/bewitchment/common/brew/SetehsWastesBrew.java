@@ -4,9 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedSandstone;
 import net.minecraft.block.BlockSandStone;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -63,7 +60,7 @@ public class SetehsWastesBrew extends BlockHitBrew {
 			if (place) {
 				IBlockState state = world.getBlockState(spot);
 				Block block = state.getBlock();
-				if(block == Blocks.SANDSTONE_STAIRS) {
+				if (block == Blocks.SANDSTONE_STAIRS) {
 					IBlockState newState = Blocks.RED_SANDSTONE_STAIRS.getDefaultState()
 							.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
 							.withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF));

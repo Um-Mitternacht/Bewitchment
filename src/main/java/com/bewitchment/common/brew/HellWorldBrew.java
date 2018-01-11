@@ -62,7 +62,7 @@ public class HellWorldBrew extends BlockHitBrew {
 			Block block = world.getBlockState(spot).getBlock();
 			IBlockState state = world.getBlockState(spot);
 			boolean place = amplifier > 2 || world.rand.nextBoolean();
-			if(BlockStairs.isBlockStairs(state)) {
+			if (BlockStairs.isBlockStairs(state)) {
 				IBlockState newState = Blocks.NETHER_BRICK_STAIRS.getDefaultState()
 						.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
 						.withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF));
