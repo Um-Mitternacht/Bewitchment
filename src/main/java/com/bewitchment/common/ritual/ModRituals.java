@@ -1,11 +1,17 @@
 package com.bewitchment.common.ritual;
 
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ANY;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ENDER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NETHER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NORMAL;
+
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -14,8 +20,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
-
-import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.*;
 
 public class ModRituals {
 
@@ -95,6 +99,7 @@ public class ModRituals {
 		draw_circle_medium = new RitualDrawing(
 				rl("draw_circle_medium"),
 				of(
+						Ingredient.fromItem(ModItems.wood_ash),
 						Ingredient.fromItem(Items.CLAY_BALL) // balanced
 				),
 				none,
@@ -106,6 +111,8 @@ public class ModRituals {
 		draw_circle_large = new RitualDrawing(
 				rl("draw_circle_large"),
 				of(
+						Ingredient.fromItem(ModItems.wood_ash),
+						Ingredient.fromItem(ModItems.wood_ash),
 						Ingredient.fromItem(Items.CLAY_BALL),
 						Ingredient.fromItem(Items.CLAY_BALL) // VERY balanced
 				),

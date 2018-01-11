@@ -1,6 +1,14 @@
 package com.bewitchment.api.ritual;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -12,12 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
@@ -37,6 +39,13 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 */
 	public Ritual(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		this.time = timeInTicks;
+		
+		for (int i = 0; i < input.size(); i++) {
+			Ingredient ing = input.get(i);
+			if (ing.getMatchingStacks().length == 0)
+				throw new IllegalArgumentException("Ritual inputs must be valid: ingredient #" + i + " for " + registryName + " has no matching items");
+		}
+		
 		this.input = input;
 		this.output = output;
 		this.circles = circles;
@@ -154,7 +163,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 * known bugs
 	 * FIXME - If a ritual has multiple of the same ingredient, not all of them get consumed
 	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
-	 * FIXME - There is a worrying problem when using items from the mod as ritual ingredients, they don't get recognized
 	 */
 
 }
