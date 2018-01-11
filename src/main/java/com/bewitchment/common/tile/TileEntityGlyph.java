@@ -1,16 +1,10 @@
 package com.bewitchment.common.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -26,6 +20,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
@@ -83,7 +82,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
 	private TileEntityWitchAltar te = null; // The currently bound altar
-	
+
 	// A list of entities for which some rituals behaves differently, depending on the ritual
 	// For instance in Covens there was a ritual that hijacked all tp attempt in an area and
 	// redirected them somewhere else. This was used as a blacklist, in order to allow the owner
@@ -194,7 +193,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
 						// ^^^^^
-						
+
 						// Sets the ritual up
 						this.ritual = rit;
 						this.entityPlayer = player.getPersistentID();
