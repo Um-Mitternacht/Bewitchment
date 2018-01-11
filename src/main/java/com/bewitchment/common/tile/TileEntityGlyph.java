@@ -1,10 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -20,11 +26,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
@@ -178,15 +179,17 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 					if (consumePower(rit.getRequiredStartingPower())) {
 						this.ritualData = new NBTTagCompound();
 						NBTTagCompound itemsUsed = new NBTTagCompound();
-						ritualData.setTag("itemsUsed", itemsUsed);
 						itemsOnGround.forEach(ei -> {
 							NBTTagCompound item = new NBTTagCompound();
 							ei.getItem().writeToNBT(item);
-							ritualData.getCompoundTag("itemsUsed").setTag("item" + ritualData.getCompoundTag("itemsUsed").getKeySet().size(), item);
-							ei.getItem().setCount(ei.getItem().getCount() - 1);
-							if (ei.getItem().getCount() < 1)
-								ei.setDead();
+							while (!ei.isDead) {
+								itemsUsed.setTag("item" + itemsUsed.getKeySet().size(), item);
+								ei.getItem().setCount(ei.getItem().getCount() - 1);
+								if (ei.getItem().getCount() < 1)
+									ei.setDead();
+							}
 						});
+						ritualData.setTag("itemsUsed", itemsUsed);
 						this.ritual = rit;
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;

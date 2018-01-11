@@ -161,7 +161,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	
 	/*
 	 * known bugs
-	 * FIXME - If a ritual has multiple of the same ingredient, not all of them get consumed
 	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
 	 */
 
