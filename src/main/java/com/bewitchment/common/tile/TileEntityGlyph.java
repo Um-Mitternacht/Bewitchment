@@ -178,16 +178,12 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 				if (rit.isValid(player, world, pos, recipe)) {
 					if (consumePower(rit.getRequiredStartingPower())) {
 						this.ritualData = new NBTTagCompound();
-						NBTTagCompound itemsUsed = new NBTTagCompound();
+						NBTTagList itemsUsed = new NBTTagList();
 						itemsOnGround.forEach(ei -> {
 							NBTTagCompound item = new NBTTagCompound();
 							ei.getItem().writeToNBT(item);
-							while (!ei.isDead) {
-								itemsUsed.setTag("item" + itemsUsed.getKeySet().size(), item);
-								ei.getItem().setCount(ei.getItem().getCount() - 1);
-								if (ei.getItem().getCount() < 1)
-									ei.setDead();
-							}
+							itemsUsed.appendTag(item);
+							ei.getItem().setCount(ei.getItem().getCount() - 1);
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
 						this.ritual = rit;

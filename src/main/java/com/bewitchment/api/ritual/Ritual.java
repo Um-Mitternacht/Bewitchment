@@ -13,10 +13,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -163,5 +165,15 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 * known bugs
 	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
 	 */
+	
+	public static NonNullList<ItemStack> getItemsUsedForInput(NBTTagCompound tag) {
+		NonNullList<ItemStack> list = NonNullList.create();
+		NBTTagList tagList = tag.getTagList("itemsUsed", NBT.TAG_COMPOUND);
+		tagList.forEach(nbt -> {
+			NBTTagCompound itemTag = (NBTTagCompound) nbt;
+			list.add(new ItemStack(itemTag));
+		});
+		return list;
+	}
 
 }
