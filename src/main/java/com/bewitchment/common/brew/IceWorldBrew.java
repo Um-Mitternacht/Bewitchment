@@ -2,6 +2,7 @@ package com.bewitchment.common.brew;
 
 import com.bewitchment.common.block.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -70,28 +71,11 @@ public class IceWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.STONEBRICK) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.OAK_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.SPRUCE_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.BIRCH_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.DARK_OAK_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.JUNGLE_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.ACACIA_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.RED_SANDSTONE_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.PURPUR_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.SANDSTONE_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.STONE_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
-			} else if (state.getBlock() == Blocks.STONE_BRICK_STAIRS) {
-				world.setBlockState(spot, ModBlocks.fake_ice_stairs.getDefaultState(), 3);
+			} else if (BlockStairs.isBlockStairs(state)) {
+				IBlockState newState = ModBlocks.fake_ice_stairs.getDefaultState()
+						.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
+						.withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF));
+				world.setBlockState(spot, newState);
 			} else if (state.getBlock() == Blocks.OAK_FENCE) {
 				world.setBlockState(spot, ModBlocks.fake_ice_fence.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.ACACIA_FENCE) {

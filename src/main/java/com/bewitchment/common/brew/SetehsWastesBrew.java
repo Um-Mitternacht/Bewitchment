@@ -3,6 +3,10 @@ package com.bewitchment.common.brew;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedSandstone;
 import net.minecraft.block.BlockSandStone;
+import net.minecraft.block.BlockStairs;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,7 +32,6 @@ public class SetehsWastesBrew extends BlockHitBrew {
 
 	public SetehsWastesBrew() {
 		stateMap.put(Blocks.SAND, Blocks.SAND.getStateFromMeta(1));
-		stateMap.put(Blocks.SANDSTONE_STAIRS, Blocks.RED_SANDSTONE_STAIRS.getDefaultState());
 	}
 
 	@Override
@@ -60,7 +63,12 @@ public class SetehsWastesBrew extends BlockHitBrew {
 			if (place) {
 				IBlockState state = world.getBlockState(spot);
 				Block block = state.getBlock();
-				if (stateMap.containsKey(block)) {
+				if(block == Blocks.SANDSTONE_STAIRS) {
+					IBlockState newState = Blocks.RED_SANDSTONE_STAIRS.getDefaultState()
+							.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
+							.withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF));
+					world.setBlockState(spot, newState);
+				} else if (stateMap.containsKey(block)) {
 					world.setBlockState(spot, stateMap.get(block), 3);
 				} else if (block == Blocks.SANDSTONE) {
 					BlockSandStone.EnumType type = state.getValue(BlockSandStone.TYPE);
