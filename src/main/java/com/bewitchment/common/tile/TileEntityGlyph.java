@@ -78,11 +78,17 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		big.add(a(-5, -5));
 	}
 
-	private Ritual ritual = null;
-	private int cooldown = 0;
-	private UUID entityPlayer;
-	private NBTTagCompound ritualData = null;
-	private TileEntityWitchAltar te = null;
+	private Ritual ritual = null; // If a ritual is active it is stored here
+	private int cooldown = 0; // The times that passed since activation
+	private UUID entityPlayer; // The player that casted it
+	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
+	private TileEntityWitchAltar te = null; // The currently bound altar
+	
+	// A list of entities for which some rituals behaves differently, depending on the ritual
+	// For instance in Covens there was a ritual that hijacked all tp attempt in an area and
+	// redirected them somewhere else. This was used as a blacklist, in order to allow the owner
+	// to safely teleport back to their base. The use is left to who codes the specific ritual.
+	// The adding of entities is done via a specific ritual (Used to be called Identification rit)
 	private ArrayList<Tuple<String, String>> entityList = new ArrayList<Tuple<String, String>>();
 
 	public static ArrayList<int[]> getSmall() {
@@ -148,11 +154,10 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			}
 			if (ritual.getTime() <= cooldown && ritual.getTime() >= 0) {
 				ritual.onFinish(player, this, getWorld(), getPos(), ritualData);
-				if (!getWorld().isRemote)
-					for (ItemStack stack : ritual.getOutput(ritualData)) {
-						EntityItem ei = new EntityItem(getWorld(), getPos().getX(), getPos().up().getY(), getPos().getZ(), stack);
-						getWorld().spawnEntity(ei);
-					}
+				for (ItemStack stack : ritual.getOutput(ritualData)) {
+					EntityItem ei = new EntityItem(getWorld(), getPos().getX(), getPos().up().getY(), getPos().getZ(), stack);
+					getWorld().spawnEntity(ei);
+				}
 				entityPlayer = null;
 				cooldown = 0;
 				ritual = null;
@@ -173,10 +178,12 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			return;
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
-		for (Ritual rit : Ritual.REGISTRY) {
-			if (rit.isValidInput(recipe, hasCircles(rit))) {
-				if (rit.isValid(player, world, pos, recipe)) {
-					if (consumePower(rit.getRequiredStartingPower())) {
+		for (Ritual rit : Ritual.REGISTRY) { // Check every ritual
+			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
+				if (rit.isValid(player, world, pos, recipe)) { // Checks of extra conditions are met
+					if (consumePower(rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
+						// The following block saves all the item used in the input inside the nbt
+						// vvvvvv
 						this.ritualData = new NBTTagCompound();
 						NBTTagList itemsUsed = new NBTTagList();
 						itemsOnGround.forEach(ei -> {
@@ -186,6 +193,9 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 							ei.setDead();
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
+						// ^^^^^
+						
+						// Sets the ritual up
 						this.ritual = rit;
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;
