@@ -154,7 +154,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 * known bugs
 	 * FIXME - If a ritual has multiple of the same ingredient, not all of them get consumed
 	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
-	 * FIXME - Chalk will draw over the golden one when using the ritual of drawing if not enough power or other problems
 	 * FIXME - There is a worrying problem when using items from the mod as ritual ingredients, they don't get recognized
 	 */
 
