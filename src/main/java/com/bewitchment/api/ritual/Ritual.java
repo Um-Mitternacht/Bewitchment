@@ -75,9 +75,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 
 	public NonNullList<ItemStack> getOutput(NBTTagCompound data) { // data is used to allow the output of modified input items
-		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
-		for (ItemStack i : output) copy.add(i);
-		return copy;
+		return getOutputRaw();
 	}
 
 	public boolean isValidInput(List<ItemStack> ground, boolean circles) {
@@ -144,5 +142,20 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public boolean canBeUsedFromCandle() {
 		return true;
 	}
+
+	public NonNullList<ItemStack> getOutputRaw() {
+		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
+		for (ItemStack i : output)
+			copy.add(i);
+		return copy;
+	}
+	
+	/*
+	 * known bugs
+	 * FIXME - If a ritual has multiple of the same ingredient, not all of them get consumed
+	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
+	 * FIXME - Chalk will draw over the golden one when using the ritual of drawing if not enough power or other problems
+	 * FIXME - There is a worrying problem when using items from the mod as ritual ingredients, they don't get recognized
+	 */
 
 }

@@ -11,12 +11,15 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.util.Constants.NBT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +28,9 @@ import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
-	private static final ArrayList<int[]> small = new ArrayList<int[]>();
-	private static final ArrayList<int[]> medium = new ArrayList<int[]>();
-	private static final ArrayList<int[]> big = new ArrayList<int[]>();
+	public static final ArrayList<int[]> small = new ArrayList<int[]>();
+	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
+	public static final ArrayList<int[]> big = new ArrayList<int[]>();
 
 	static {
 		for (int i = -1; i <= 1; i++) {
@@ -108,14 +111,11 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			ritualData = tag.getCompoundTag("data");
 		if (tag.hasKey("entityList")) {
 			entityList = new ArrayList<Tuple<String, String>>();
-			NBTTagCompound listTag = tag.getCompoundTag("entityList");
-			for (String s : listTag.getKeySet()) {
-				String unsplit = listTag.getString(s);
-				String[] names = unsplit.split("�");
-				if (names.length != 2)
-					continue;
-				entityList.add(new Tuple<String, String>(names[0], names[1]));
-			}
+			tag.getTagList("entityList", NBT.TAG_STRING).forEach(nbts -> {
+				String[] names = ((NBTTagString) nbts).getString().split("!");
+				if (names.length == 2)
+					entityList.add(new Tuple<String, String>(names[0], names[1]));
+			});
 		}
 	}
 
@@ -128,10 +128,10 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			tag.setString("player", entityPlayer.toString());
 		if (ritualData != null)
 			tag.setTag("data", ritualData);
-		NBTTagCompound list = new NBTTagCompound();
+		NBTTagList list = new NBTTagList();
 		for (int i = 0; i < entityList.size(); i++) {
 			Tuple<String, String> t = entityList.get(i);
-			list.setString("entity" + i, t.getFirst() + "�" + t.getSecond());
+			list.appendTag(new NBTTagString(t.getFirst() + "!" + t.getSecond()));
 		}
 		tag.setTag("entityList", list);
 	}
@@ -213,9 +213,9 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		int requiredCircles = rit.getCircles() & 3;
 		if (requiredCircles == 3)
 			return false;
-		GlyphType typeFirst = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 2 & 3];
-		GlyphType typeSecond = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 4 & 3];
-		GlyphType typeThird = BlockCircleGlyph.GlyphType.values()[rit.getCircles() >> 6 & 3];
+		GlyphType typeFirst = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 2 & 3);
+		GlyphType typeSecond = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 4 & 3);
+		GlyphType typeThird = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 6 & 3);
 		if (requiredCircles > 1)
 			if (!checkThird(typeThird)) {
 				return false;
@@ -243,42 +243,55 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		markDirty();
 	}
 
-	// ##################################################################################################################
-
 	public void addEntityUUIDToList(String uuid, String name) {
 		entityList.add(new Tuple<String, String>(uuid, name));
 		markDirty();
 	}
 
 	private boolean checkFirst(GlyphType typeFirst) {
+		GlyphType lastFound = null;
 		for (int[] c : small) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst) && !typeFirst.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}
 
 	private boolean checkSecond(GlyphType typeSecond) {
+		GlyphType lastFound = null;
 		for (int[] c : medium) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond) && !typeSecond.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}
 
 	private boolean checkThird(GlyphType typeThird) {
+		GlyphType lastFound = null;
 		for (int[] c : big) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || !bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird)) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird) && !typeThird.equals(GlyphType.ANY))) {
 				return false;
 			}
+			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			if (lastFound != null && lastFound != thisOne)
+				return false;
+			lastFound = thisOne;
 		}
 		return true;
 	}

@@ -5,6 +5,7 @@ import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.tile.TileEntityGlyph;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -20,7 +21,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither;
+	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_medium, draw_circle_large;
 
 	public static void init() {
 
@@ -91,12 +92,36 @@ public class ModRituals {
 				5000,
 				4);
 
+		draw_circle_medium = new RitualDrawing(
+				rl("draw_circle_medium"),
+				of(
+						Ingredient.fromItem(Items.CLAY_BALL) // balanced
+				),
+				none,
+				40,
+				circles(ANY, null, null),
+				100,
+				0,
+				TileEntityGlyph.medium);
+		draw_circle_large = new RitualDrawing(
+				rl("draw_circle_large"),
+				of(
+						Ingredient.fromItem(Items.CLAY_BALL),
+						Ingredient.fromItem(Items.CLAY_BALL) // VERY balanced
+				),
+				none,
+				40,
+				circles(ANY, ANY, null),
+				100,
+				0,
+				TileEntityGlyph.big);
+
 		registerAll();
 	}
 
 	public static void registerAll() {
 		Ritual.REGISTRY.registerAll(
-				night, fast_day, glowing, spawn_witch, spawn_wither
+				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium
 		);
 	}
 
@@ -123,6 +148,6 @@ public class ModRituals {
 		int circleNum = 0;
 		if (medium != null) circleNum++;
 		if (big != null) circleNum++;
-		return circleNum | small.ordinal() << 2 | (medium == null ? 0 : medium.ordinal() << 4) | (big == null ? 0 : big.ordinal() << 6);
+		return circleNum | small.meta() << 2 | (medium == null ? 0 : medium.meta() << 4) | (big == null ? 0 : big.meta() << 6);
 	}
 }
