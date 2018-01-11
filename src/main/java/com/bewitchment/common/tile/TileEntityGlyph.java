@@ -183,7 +183,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 							NBTTagCompound item = new NBTTagCompound();
 							ei.getItem().writeToNBT(item);
 							itemsUsed.appendTag(item);
-							ei.getItem().setCount(ei.getItem().getCount() - 1);
+							ei.setDead();
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
 						this.ritual = rit;
