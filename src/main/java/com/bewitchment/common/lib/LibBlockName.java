@@ -78,6 +78,7 @@ public final class LibBlockName {
 	public static final String THREAD_SPINNER = "thread_spinner";
 	public static final String BARREL = "barrel";
 	public static final String GLYPHS = "ritual_glyphs";
+	public static final String CRYSTAL_BALL = "crystal_ball";
 
 	private LibBlockName() {
 	}

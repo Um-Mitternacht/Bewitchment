@@ -101,6 +101,7 @@ public final class ModBlocks {
 	public static final Block thread_spinner = PLACE_HOLDER;
 	public static final Block barrel = PLACE_HOLDER;
 	public static final Block ritual_glyphs = PLACE_HOLDER;
+	public static final Block crystal_ball = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -155,7 +156,8 @@ public final class ModBlocks {
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
 				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
 				new BlockBarrel(LibBlockName.BARREL),
-				new BlockCircleGlyph(LibBlockName.GLYPHS)
+				new BlockCircleGlyph(LibBlockName.GLYPHS),
+				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL)
 		);
 		//Normal Blocks
 		registry.registerAll(

@@ -18,6 +18,7 @@ import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.crafting.cauldron.CauldronCrafting;
+import com.bewitchment.common.divination.ModFortunes;
 import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.item.ModItems;
@@ -64,6 +65,7 @@ public class Bewitchment {
 		ModEntities.init();
 		ModBrews.init();
 		ModSpells.init();
+		ModFortunes.init();
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");

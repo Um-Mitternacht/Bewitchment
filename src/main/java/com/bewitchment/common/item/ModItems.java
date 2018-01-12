@@ -304,7 +304,8 @@ public final class ModItems {
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar),
 				itemBlock(ModBlocks.thread_spinner),
-				new ItemBlockBarrel()
+				new ItemBlockBarrel(),
+				itemBlock(ModBlocks.crystal_ball)
 		);
 	}
 
