@@ -300,6 +300,7 @@ tile.beehive.name=Beehive
 tile.oven.name=Oven
 tile.thread_spinner.name=Thread Spinner
 tile.witch_altar.name=Witches Altar
+tile.crystal_ball.name=Crystal Ball
 
 //Fluid
 fluid.oil_mundane=Oil
