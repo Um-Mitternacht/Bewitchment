@@ -1,7 +1,6 @@
 package com.bewitchment.common.core.capability.divination;
 
 import com.bewitchment.api.divination.Fortune;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -17,7 +16,7 @@ public class DivinationStorage implements IStorage<CapabilityDivination> {
 			tag.setString("fortune", instance.getFortune().getRegistryName().toString());
 		return tag;
 	}
-	
+
 	@Override
 	public void readNBT(Capability<CapabilityDivination> capability, CapabilityDivination instance, EnumFacing side, NBTBase nbt) {
 		NBTTagCompound tag = (NBTTagCompound) nbt;
