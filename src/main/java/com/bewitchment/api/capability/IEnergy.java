@@ -43,14 +43,20 @@ public interface IEnergy {
 	 *
 	 * @return The frequency
 	 */
-	int getRegen();
+	int getRegenTime();
+	
+	/**
+	 * @return How much energy should be restored per energy regen tick
+	 */
+	int getRegenBurst();
 
 	/**
 	 * Sets the regen frequency.
 	 *
 	 * @param rateInSeconds The new regen frequency
+	 * @param burst How much energy should be given per regen tick
 	 */
-	void setRegen(int rateInSeconds);
+	void setRegen(int rateInSeconds, int burst);
 
 	/**
 	 * Returns the amount of times energy has been used.

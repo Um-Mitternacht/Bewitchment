@@ -1,9 +1,12 @@
 package com.bewitchment.common.core.event;
 
+import java.util.Optional;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.capability.energy.EnergyProvider;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -12,8 +15,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 20/04/2017.
@@ -40,7 +41,7 @@ public class EnergyEvents {
 			final IEnergy newCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
 			newCap.set(oldCap.get());
 			newCap.setMax(oldCap.getMax());
-			newCap.setRegen(oldCap.getRegen());
+			newCap.setRegen(oldCap.getRegenTime(), oldCap.getRegenBurst());
 			newCap.setUses(oldCap.getUses());
 		}
 	}
@@ -67,9 +68,9 @@ public class EnergyEvents {
 	}
 
 	private void energyRegen(EntityPlayerMP player, IEnergy energy) {
-		if (energy.getRegen() == -1) return;
-		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegen() == 0) {
-			energy.set(energy.get() + 1);
+		if (energy.getRegenTime() == -1) return;
+		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
+			energy.set(energy.get() + energy.getRegenBurst());
 			energy.tickReset();
 
 			energy.syncTo(player);

@@ -1,16 +1,17 @@
 package com.bewitchment.common.core.capability.energy;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.capability.IEnergy;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * This class was created by Arekkuusu on 20/04/2017.
@@ -90,8 +91,8 @@ public final class EnergyHandler {
 	 * @param player      The player
 	 * @param timeInTicks Ticks
 	 */
-	public static void setRegen(EntityPlayer player, int timeInTicks) {
+	public static void setRegen(EntityPlayer player, int timeInTicks, int burst) {
 		Optional<IEnergy> optional = getEnergy(player);
-		optional.ifPresent(iEnergy -> iEnergy.setRegen(timeInTicks));
+		optional.ifPresent(iEnergy -> iEnergy.setRegen(timeInTicks, burst));
 	}
 }

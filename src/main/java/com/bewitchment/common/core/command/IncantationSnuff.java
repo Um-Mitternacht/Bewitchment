@@ -3,6 +3,7 @@ package com.bewitchment.common.core.command;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.tile.TileCandle;
+
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,6 +37,6 @@ class IncantationSnuff implements IIncantation {
 				PacketHandler.updateToNearbyPlayers(world, pos);
 			}
 		}
-		EnergyHandler.addEnergy((EntityPlayer) sender, 8);
+		EnergyHandler.addEnergy((EntityPlayer) sender, 800);
 	}
 }
