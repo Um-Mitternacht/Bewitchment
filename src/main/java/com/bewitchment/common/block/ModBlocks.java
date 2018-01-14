@@ -176,7 +176,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.AMETHYST_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.GARNET_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.PACKED_ICE).setSound(SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F)
 		);
 
