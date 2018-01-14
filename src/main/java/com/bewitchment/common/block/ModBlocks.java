@@ -1,5 +1,6 @@
 package com.bewitchment.common.block;
 
+import com.bewitchment.common.block.decorations.*;
 import com.bewitchment.common.block.magic.*;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
@@ -104,6 +105,7 @@ public final class ModBlocks {
 	public static final Block crystal_ball = PLACE_HOLDER;
 	public static final Block embittered_bricks = PLACE_HOLDER;
 	public static final Block scorned_bricks = PLACE_HOLDER;
+	public static final Block scorned_brick_fence = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -151,6 +153,7 @@ public final class ModBlocks {
 				new BlockRagingGrass(),
 				new BlockFakeIce(),
 				new BlockFakeIceFence(),
+				new BlockScornedBrickFence(),
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
