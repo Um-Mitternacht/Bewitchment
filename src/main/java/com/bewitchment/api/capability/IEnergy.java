@@ -66,9 +66,39 @@ public interface IEnergy {
 	 */
 	void setUses(int uses);
 
+	/**
+	 * Ticks the interanl counter and returns the result
+	 * 
+	 * @return the amount of ticks passed
+	 */
 	int tick();
+	
+	/**
+	 * @return the internal tick counter without increasing it
+	 */
+	int tickProgress();
 
+	/**
+	 * Resets the internal tick counter
+	 */
 	void tickReset();
 
+	/**
+	 * Sends a sync packet containing IEnergy information
+	 * @param target the player you want to sync energy for
+	 */
 	void syncTo(EntityPlayerMP target);
+	
+	/**
+	 * Gets the type of infusion/attunement this player has
+	 * 
+	 * @return the corresponding EnumInfusionType
+	 */
+	EnumInfusionType getType();
+	
+	/**
+	 * Sets the type of infusion/attunement for this player
+	 * @param type the corresponding EnumInfusionType
+	 */
+	void setType(EnumInfusionType type);
 }

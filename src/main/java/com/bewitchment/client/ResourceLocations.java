@@ -1,6 +1,7 @@
 package com.bewitchment.client;
 
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -19,7 +20,6 @@ public final class ResourceLocations {
 	public static final ResourceLocation APIARY_GUI = getLocation("textures/gui/apiary.png");
 	public static final ResourceLocation OVEN_GUI = getLocation("textures/gui/oven.png");
 	public static final ResourceLocation THREAD_SPINNER_GUI = getLocation("textures/gui/thread_spinner.png");
-	public static final ResourceLocation ENERGY = getLocation("textures/gui/energy.png");
 	public static final ResourceLocation[] ENERGY_BACKGROUND = new ResourceLocation[]{
 			getLocation("textures/gui/energy_dark.png"),
 			getLocation("textures/gui/energy_white.png"),
