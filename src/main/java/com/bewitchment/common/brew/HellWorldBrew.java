@@ -34,9 +34,6 @@ public class HellWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.JUNGLE_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.BIRCH_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.DARK_OAK_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
-		stateMap.put(Blocks.END_BRICKS, Blocks.NETHER_BRICK.getDefaultState());
-		stateMap.put(Blocks.BRICK_BLOCK, Blocks.NETHER_BRICK.getDefaultState());
-		stateMap.put(Blocks.STONEBRICK, Blocks.NETHER_BRICK.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(14));
 	}
 
@@ -73,6 +70,14 @@ public class HellWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.LOG2) {
 				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.BRICK_BLOCK) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.STONEBRICK) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.END_BRICKS) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.embittered_bricks) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
 			}
 		}
 	}

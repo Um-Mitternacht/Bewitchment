@@ -259,6 +259,8 @@ tile.fake_ice.name=Perpetual Ice
 tile.fake_ice_fence.name=Perpetual Ice Fence
 tile.fake_ice_stairs.name=Perpetual Ice Stairs
 tile.fake_ice_slab_half.name=Perpetual Ice Slab
+tile.embittered_bricks.name=Embittered Bricks
+tile.scorned_bricks.name=Scorned Bricks
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling

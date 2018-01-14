@@ -68,9 +68,9 @@ public class IceWorldBrew extends BlockHitBrew {
 			} else if (state.getBlock() == Blocks.STONE) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.BRICK_BLOCK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.STONEBRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (BlockStairs.isBlockStairs(state)) {
 				IBlockState newState = ModBlocks.fake_ice_stairs.getDefaultState()
 						.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
@@ -91,11 +91,13 @@ public class IceWorldBrew extends BlockHitBrew {
 			} else if (state.getBlock() == Blocks.SANDSTONE) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.NETHER_BRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.RED_NETHER_BRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.END_BRICKS) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.scorned_bricks) {
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			}
 		}
 	}

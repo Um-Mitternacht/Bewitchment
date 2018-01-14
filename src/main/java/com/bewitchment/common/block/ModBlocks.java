@@ -102,6 +102,8 @@ public final class ModBlocks {
 	public static final Block barrel = PLACE_HOLDER;
 	public static final Block ritual_glyphs = PLACE_HOLDER;
 	public static final Block crystal_ball = PLACE_HOLDER;
+	public static final Block embittered_bricks = PLACE_HOLDER;
+	public static final Block scorned_bricks = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -173,7 +175,9 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.JASPER_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.AMETHYST_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.GARNET_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F)
+				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
+				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.PACKED_ICE).setSound(SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F)
 		);
 
 		//Trees
