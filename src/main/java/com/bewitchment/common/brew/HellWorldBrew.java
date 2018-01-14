@@ -22,6 +22,7 @@ public class HellWorldBrew extends BlockHitBrew {
 
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 
+	//Todo: Glazed Terracotta. And maybe shulker boxes.
 	@SuppressWarnings("deprecation")
 	public HellWorldBrew() {
 		stateMap.put(Blocks.GRASS_PATH, Blocks.RED_NETHER_BRICK.getDefaultState());
@@ -35,6 +36,11 @@ public class HellWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.BIRCH_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.DARK_OAK_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(14));
+		stateMap.put(Blocks.FARMLAND, Blocks.SOUL_SAND.getDefaultState());
+		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
 	}
 
 	@Override

@@ -22,6 +22,7 @@ public class IceWorldBrew extends BlockHitBrew {
 
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 
+	//Todo: Glazed Terracotta. And maybe shulker boxes.
 	@SuppressWarnings("deprecation")
 	public IceWorldBrew() {
 		stateMap.put(Blocks.GRASS_PATH, Blocks.PACKED_ICE.getDefaultState());
@@ -33,6 +34,11 @@ public class IceWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.GRASS, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.MYCELIUM, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(3));
+		stateMap.put(Blocks.FARMLAND, Blocks.DIRT.getStateFromMeta(1));
+		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
+		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
+		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(3));
+		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(3));
 	}
 
 	@Override
