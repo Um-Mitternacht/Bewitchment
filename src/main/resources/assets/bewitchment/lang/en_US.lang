@@ -584,6 +584,10 @@ ritual.bewitchment.conjure_wither.name=Ritual of Conjuration (Wither)
 ritual.bewitchment.conjure_witch.name=Ritual of Conjuration (Witch)
 ritual.bewitchment.draw_circle_medium.name=Ritual of the Lesser Marks
 ritual.bewitchment.draw_circle_large.name=Ritual of the Major Marks
+ritual.bewitchment.infusion_overworld.name=Ritual of Infusion of the Beings
+ritual.bewitchment.infusion_nether.name=Ritual of Infusion of the Demons
+ritual.bewitchment.infusion_end.name=Ritual of Infusion of the Others
+ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
