@@ -6,15 +6,12 @@
 
 package com.bewitchment.common.item.magic;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.api.spell.Spell.EnumSpellType;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -32,10 +29,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
+import javax.annotation.Nullable;
+
 public class ItemSpellPage extends ItemMod {
-	
+
 	IItemEnergyUser defImpl = IItemEnergyUser.ENERGY_USER_CAPABILITY.getDefaultInstance();
-	
+
 	public ItemSpellPage(String id) {
 		super(id);
 		this.setMaxStackSize(1);
@@ -139,18 +138,18 @@ public class ItemSpellPage extends ItemMod {
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BOW;
 	}
-	
+
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
 		return new ICapabilityProvider() {
-			
+
 			@Override
 			public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 				if (capability == IItemEnergyUser.ENERGY_USER_CAPABILITY)
 					return true;
 				return false;
 			}
-			
+
 			@SuppressWarnings("unchecked")
 			@Override
 			public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
@@ -160,5 +159,5 @@ public class ItemSpellPage extends ItemMod {
 			}
 		};
 	}
-	
+
 }

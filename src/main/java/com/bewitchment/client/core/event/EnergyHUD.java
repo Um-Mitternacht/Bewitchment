@@ -1,15 +1,10 @@
 package com.bewitchment.client.core.event;
 
-import java.util.Optional;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.handler.ConfigHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -24,6 +19,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -104,7 +102,7 @@ public class EnergyHUD {
 		}
 		return false;
 	}
-	
+
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Post event) {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && renderTime > 0) {
@@ -126,9 +124,9 @@ public class EnergyHUD {
 					interpEnergy = energy.get();
 				}
 				double filled = interpEnergy / energy.getMax();
-				
+
 				// System.out.println("fil: " + filled + ", chg: " + energy.get() + ", max: " + energy.getMax());
-				
+
 				int height = ConfigHandler.ENERGY_HUD.height;
 				int width = ConfigHandler.ENERGY_HUD.width;
 				int x = ConfigHandler.ENERGY_HUD.x;
@@ -147,11 +145,11 @@ public class EnergyHUD {
 				if (visible == 1f) {
 					GlStateManager.pushMatrix();
 					GlStateManager.color(1F, 1F, 1F, visible == 1F ? barAlpha : visible);
-					
+
 					manager.bindTexture(ResourceLocations.ENERGY_BACKGROUND[1]);
 					renderTexture(x + 9, y + 88, barWidth, -(height - 28D) * filled, 0, filled);
 					GlStateManager.enableCull();
-					
+
 					GlStateManager.popMatrix();
 				}
 

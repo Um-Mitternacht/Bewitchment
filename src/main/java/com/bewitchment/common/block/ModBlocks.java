@@ -1,7 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.decorations.*;
-import com.bewitchment.common.block.magic.*;
+import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
