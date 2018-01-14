@@ -26,7 +26,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream;
+	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream;
 
 	public static void init() {
 
@@ -96,7 +96,17 @@ public class ModRituals {
 				circles(NETHER, NETHER, NETHER),
 				5000,
 				4);
-
+		draw_circle_small = new RitualDrawing(
+				rl("draw_circle_small"),
+				of(
+						Ingredient.fromItem(ModItems.wood_ash)
+				),
+				none,
+				40,
+				circles(ANY, null, null),
+				100,
+				0,
+				TileEntityGlyph.small);
 		draw_circle_medium = new RitualDrawing(
 				rl("draw_circle_medium"),
 				of(
@@ -135,7 +145,7 @@ public class ModRituals {
 
 	public static void registerAll() {
 		Ritual.REGISTRY.registerAll(
-				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, infusion_overworld, infusion_nether, infusion_end, infusion_dream
+				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream
 		);
 	}
 
