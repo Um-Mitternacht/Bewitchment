@@ -1,4 +1,6 @@
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.decorations;
+
+import com.bewitchment.common.block.decorations.BlockFakeIceSlab;
 
 /**
  * Created by Joseph on 9/3/2017.

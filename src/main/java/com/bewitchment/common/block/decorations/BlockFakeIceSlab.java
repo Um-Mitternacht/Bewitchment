@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
