@@ -604,3 +604,4 @@ crystal_ball.error.already_told=This one's future has already been revealed: %s
 crystal_ball.error.no_available_fortunes=This world has no secrets awaiting
 crystal_ball.read.other=You can see %2$s's future: %1$s
 fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened
+fortunes.bewitchment.meet_silverfish.name=Foul vermin might see you
