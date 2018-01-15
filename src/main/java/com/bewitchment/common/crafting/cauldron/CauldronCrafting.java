@@ -480,6 +480,27 @@ public final class CauldronCrafting {
 		registerFood(Items.CHICKEN, 2, 1.2f);
 		registerFood(Items.MUTTON, 2, 1.2f);
 		registerFood(Items.RABBIT, 3, 1.8f);
+		registerFood(Items.WHEAT_SEEDS, 2, 1f);
+		registerFood(Items.PUMPKIN_SEEDS, 2, 1.3f);
+		registerFood(Items.MELON_SEEDS, 2, 1.2f);
+		registerFood(Items.BEETROOT_SEEDS, 2, 1.1f);
+		registerFood(Items.NETHER_WART, 3, 1.6f);
+		registerFood(ModItems.garlic, 2, 0.8f);
+		registerFood(ModItems.silphium, 3, 1.3f);
+		registerFood(ModItems.kelp, 4, 3.3f);
+		registerFood(ModItems.salt, 1, 0.5f);
+		registerFood(ModItems.mint, 1, 0.7f);
+		registerFood(ModItems.tulsi, 1, 0.7f);
+		registerFood(ModItems.ginger, 3, 0.9f);
+		registerFood(ModItems.lavender, 1, 0.6f);
+		registerFood(ModItems.wormwood, 1, 0.8f);
+		registerFood(ModItems.white_sage, 2, 0.9f);
+		registerFood(ModItems.honey, 2, 1.3f);
+		//Why would you eat this?
+		registerFood(ModItems.heart, 6, 6.6f);
+		registerFood(ModItems.tongue_of_dog, 4, 4.4f);
+		registerFood(ModItems.equine_tail, 6, 6.6f);
+		registerFood(Items.ROTTEN_FLESH, 4, 1.4f);
 
 	}
 
