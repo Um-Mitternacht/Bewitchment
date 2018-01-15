@@ -32,8 +32,10 @@ public class IceWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.LOG2, Blocks.PACKED_ICE.getDefaultState());
 		stateMap.put(Blocks.DIRT, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.GRASS, Blocks.SNOW.getDefaultState());
+		stateMap.put(Blocks.SAND, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.MYCELIUM, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.OBSIDIAN, Blocks.PACKED_ICE.getDefaultState());
+		stateMap.put(Blocks.SOUL_SAND, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(3));
 		stateMap.put(Blocks.FARMLAND, Blocks.DIRT.getStateFromMeta(1));
 		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
