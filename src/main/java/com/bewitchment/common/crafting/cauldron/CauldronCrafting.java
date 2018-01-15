@@ -218,7 +218,7 @@ public final class CauldronCrafting {
 
 		registerBrewRecipe(BrewRegistry.Brew.LINGER, new BrewEffect(ModBrews.ABSENCE, 50, 0)
 				, getStack(ModItems.salt, 1, 0), Items.BONE, Items.IRON_NUGGET, Items.NETHER_WART, Items.DRAGON_BREATH);
-		
+
 
 		//------------------------------------Custom Brew Creation------------------------------------//
 		registerEffect(getStack(Items.DYE, 1, 0)
@@ -458,7 +458,7 @@ public final class CauldronCrafting {
 
 		registerModifier(getStack(Blocks.COAL_BLOCK)
 				, new BrewSimpleModifier(-2400, 0), true);
-		
+
 		//Food Values
 		registerFood(Items.APPLE, 4, 2.4f);
 		registerFood(Items.BAKED_POTATO, 5, 6f);
@@ -480,7 +480,7 @@ public final class CauldronCrafting {
 		registerFood(Items.CHICKEN, 2, 1.2f);
 		registerFood(Items.MUTTON, 2, 1.2f);
 		registerFood(Items.RABBIT, 3, 1.8f);
-		
+
 	}
 
 	private static void registerItemProcess(Fluid fluid, Item in, Item out, boolean perfectMatch) {
@@ -577,10 +577,11 @@ public final class CauldronCrafting {
 	private static void registerModifier(ItemStack key, BrewModifier modifier, boolean perfectMatch) {
 		CauldronRegistry.registerItemModifier(key, modifier, perfectMatch);
 	}
-	
+
 	private static void registerFood(ItemStack key, int hunger, float saturation) {
 		CauldronRegistry.registerFoodValue(key, new CauldronFoodValue(hunger, saturation));
 	}
+
 	private static void registerFood(Item key, int hunger, float saturation) {
 		registerFood(getStack(key), hunger, saturation);
 	}

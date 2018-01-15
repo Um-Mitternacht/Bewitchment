@@ -90,7 +90,7 @@ public final class CauldronRegistry {
 			BREW_MODIFIERS.put(item, new ItemValidator<BrewModifier>().add(stack, modifier, strict));
 		}
 	}
-	
+
 	public static void registerFoodValue(ItemStack stack, CauldronFoodValue value) {
 		Item item = stack.getItem();
 		FOOD_VALUES.put(item, value);
@@ -119,8 +119,8 @@ public final class CauldronRegistry {
 	public static Map<Item, ItemValidator<BrewModifier>> getBrewModifiers() {
 		return BREW_MODIFIERS;
 	}
-	
-	public static Map<Item, CauldronFoodValue> getFoodValues(){
+
+	public static Map<Item, CauldronFoodValue> getFoodValues() {
 		return FOOD_VALUES;
 	}
 }
