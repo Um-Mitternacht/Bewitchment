@@ -43,7 +43,7 @@ public class ItemFilledBowl extends ItemModFood {
 			stack.setTagCompound(new NBTTagCompound()); //including this again because issues with crashing
 		}
 		NBTTagCompound nbt = stack.getTagCompound();
-		if(nbt.getInteger("hunger") == 0) {
+		if (nbt.getInteger("hunger") == 0) {
 			float roundedSaturation = Math.round(nbt.getFloat("saturation") * 10) / 10;
 			tooltip.add(I18n.format("item.stew.desc2", nbt.getInteger("hunger"), roundedSaturation));
 			if (nbt.getInteger("hunger") == 0) {
