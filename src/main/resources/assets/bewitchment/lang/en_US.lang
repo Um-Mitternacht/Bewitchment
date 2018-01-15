@@ -594,6 +594,7 @@ ritual.bewitchment.infusion_overworld.name=Ritual of Infusion of the Beings
 ritual.bewitchment.infusion_nether.name=Ritual of Infusion of the Demons
 ritual.bewitchment.infusion_end.name=Ritual of Infusion of the Others
 ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
+ritual.bewitchment.flames.name=Ritual of the Hungry Flames
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
