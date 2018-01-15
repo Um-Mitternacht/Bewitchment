@@ -218,6 +218,7 @@ public final class CauldronCrafting {
 
 		registerBrewRecipe(BrewRegistry.Brew.LINGER, new BrewEffect(ModBrews.ABSENCE, 50, 0)
 				, getStack(ModItems.salt, 1, 0), Items.BONE, Items.IRON_NUGGET, Items.NETHER_WART, Items.DRAGON_BREATH);
+		
 
 		//------------------------------------Custom Brew Creation------------------------------------//
 		registerEffect(getStack(Items.DYE, 1, 0)
@@ -457,6 +458,29 @@ public final class CauldronCrafting {
 
 		registerModifier(getStack(Blocks.COAL_BLOCK)
 				, new BrewSimpleModifier(-2400, 0), true);
+		
+		//Food Values
+		registerFood(Items.APPLE, 4, 2.4f);
+		registerFood(Items.BAKED_POTATO, 5, 6f);
+		registerFood(Items.BEETROOT, 1, 1.2f);
+		registerFood(Items.BREAD, 5, 6f);
+		registerFood(Items.CARROT, 3, 3.6f);
+		registerFood(Items.CHORUS_FRUIT, 4, 2.4f);
+		registerFood(Items.FISH, 2, 0.4f);
+		registerFood(Items.COOKED_CHICKEN, 6, 7.2f);
+		registerFood(Items.COOKED_FISH, 5, 6f);
+		registerFood(Items.COOKED_MUTTON, 6, 9.6f);
+		registerFood(Items.COOKED_PORKCHOP, 8, 12.8f);
+		registerFood(Items.COOKED_RABBIT, 5, 6f);
+		registerFood(Items.GOLDEN_APPLE, 4, 9.6f);
+		registerFood(Items.GOLDEN_CARROT, 6, 14.4f);
+		registerFood(Items.MELON, 2, 1.2f);
+		registerFood(Items.POTATO, 1, 0.6f);
+		registerFood(Items.BEEF, 3, 1.8f);
+		registerFood(Items.CHICKEN, 2, 1.2f);
+		registerFood(Items.MUTTON, 2, 1.2f);
+		registerFood(Items.RABBIT, 3, 1.8f);
+		
 	}
 
 	private static void registerItemProcess(Fluid fluid, Item in, Item out, boolean perfectMatch) {
@@ -552,5 +576,12 @@ public final class CauldronCrafting {
 
 	private static void registerModifier(ItemStack key, BrewModifier modifier, boolean perfectMatch) {
 		CauldronRegistry.registerItemModifier(key, modifier, perfectMatch);
+	}
+	
+	private static void registerFood(ItemStack key, int hunger, float saturation) {
+		CauldronRegistry.registerFoodValue(key, new CauldronFoodValue(hunger, saturation));
+	}
+	private static void registerFood(Item key, int hunger, float saturation) {
+		registerFood(getStack(key), hunger, saturation);
 	}
 }

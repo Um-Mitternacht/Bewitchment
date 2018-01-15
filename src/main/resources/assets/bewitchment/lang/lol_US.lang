@@ -110,6 +110,7 @@ item.brew_phial_drink.name=Funny Watr Bottle
 item.brew_phial_splash.name=Funny Watr Bottle
 item.brew_phial_drink_lingering.name=Funny Watr Bottle
 item.oak_apple_gall.name=Yuckee Mapple
+item.stew.name=some stew
 
 //Dyes
 item.catechu.name=Acashuh Wuud jooce
@@ -236,6 +237,7 @@ tile.oven.name=ovun
 //Fluid
 fluid.oil_mundane=Thick stuff
 fluid.for.honey=Hunny
+fluid.stew=stoo
 
 //Brew
 brew.instant=Instant

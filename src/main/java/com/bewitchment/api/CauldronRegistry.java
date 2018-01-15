@@ -4,6 +4,7 @@ import com.bewitchment.api.recipe.BrewModifier;
 import com.bewitchment.api.recipe.CauldronBrewRecipe;
 import com.bewitchment.api.recipe.CauldronItemRecipe;
 import com.bewitchment.api.recipe.ItemValidator;
+import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,7 @@ public final class CauldronRegistry {
 	private static final List<CauldronBrewRecipe> BREW_RECIPES = new ArrayList<>();
 	private static final Map<Item, ItemValidator<Object>> BREW_EFFECTS = new HashMap<>();
 	private static final Map<Item, ItemValidator<BrewModifier>> BREW_MODIFIERS = new HashMap<>();
+	private static final Map<Item, CauldronFoodValue> FOOD_VALUES = new HashMap<>();
 
 	private CauldronRegistry() {
 	}
@@ -88,6 +90,11 @@ public final class CauldronRegistry {
 			BREW_MODIFIERS.put(item, new ItemValidator<BrewModifier>().add(stack, modifier, strict));
 		}
 	}
+	
+	public static void registerFoodValue(ItemStack stack, CauldronFoodValue value) {
+		Item item = stack.getItem();
+		FOOD_VALUES.put(item, value);
+	}
 
 	public static Map<Item, ItemValidator<ItemStack>> getItemProcessing(Fluid fluid) {
 		return ITEM_PROCESSING.get(fluid);
@@ -111,5 +118,9 @@ public final class CauldronRegistry {
 
 	public static Map<Item, ItemValidator<BrewModifier>> getBrewModifiers() {
 		return BREW_MODIFIERS;
+	}
+	
+	public static Map<Item, CauldronFoodValue> getFoodValues(){
+		return FOOD_VALUES;
 	}
 }

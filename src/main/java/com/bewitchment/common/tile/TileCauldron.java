@@ -11,6 +11,7 @@ import com.bewitchment.api.recipe.ItemValidator;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Lists;
 import net.minecraft.block.material.Material;
@@ -44,7 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import static net.minecraftforge.fluids.Fluid.BUCKET_VOLUME;
 
 /**
@@ -293,6 +293,30 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 					potionRecipeLogic(player, hand, heldItem);
 				} else if (mode == Mode.CUSTOM) {
 					potionCustomLogic(player, hand, heldItem);
+				}
+			}else if(heldItem.getItem() == Items.BOWL) {
+				ItemStack stewToGive = new ItemStack(ModItems.stew);
+				int hunger = 0;
+				float saturation = 0f;
+				float multiplier = 1.0f; 
+				for(ItemStack stack : ingredients) {
+					if(CauldronRegistry.getFoodValues().get(stack.getItem()) != null) {
+						CauldronFoodValue foodValue = CauldronRegistry.getFoodValues().get(stack.getItem());
+						hunger += foodValue.hunger*multiplier;
+						saturation += foodValue.saturation*multiplier;
+						multiplier *= 0.75;
+					}
+				}
+				NBTTagCompound nbt = new NBTTagCompound();
+				stewToGive.setTagCompound(nbt);
+				nbt.setInteger("hunger", hunger);
+				nbt.setFloat("saturation", saturation);
+				
+				if(player.addItemStackToInventory(stewToGive)) { //if the player has enough inventory space	
+					heldItem.setCount(heldItem.getCount()-1);
+					ingredients.clear();
+					inv.setFluid(null);
+					setContainer(ItemStack.EMPTY);
 				}
 			} else if (getContainer().isEmpty()) {
 				ItemStack copy = heldItem.copy();
@@ -593,7 +617,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 			onLiquidChange();
 		}
 	}
-
+	
 	@Nullable
 	public NBTTagCompound getBrewData() {
 		final Map<Item, ItemValidator<Object>> brewEffect = CauldronRegistry.getBrewEffects();

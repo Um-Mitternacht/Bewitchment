@@ -14,6 +14,7 @@ import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
+import com.bewitchment.common.item.food.ItemFilledBowl;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
@@ -87,6 +88,7 @@ public final class ModItems {
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
+	public static final Item stew = PLACE_HOLDER;
 
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
@@ -216,6 +218,7 @@ public final class ModItems {
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
+				new ItemFilledBowl(),
 				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK)
 		);
