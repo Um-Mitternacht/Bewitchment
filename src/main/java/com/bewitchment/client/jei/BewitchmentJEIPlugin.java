@@ -1,22 +1,37 @@
 package com.bewitchment.client.jei;
 
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.ritual.Ritual;
-import com.bewitchment.client.jei.components.*;
+import com.bewitchment.client.jei.components.RitualCategory;
+import com.bewitchment.client.jei.components.RitualWrapper;
+import com.bewitchment.client.jei.components.SpinnerCategory;
+import com.bewitchment.client.jei.components.SpinnerWrapper;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.spinning.SpinningThreadRecipe;
-
-import mezz.jei.api.*;
+import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.item.ItemStack;
 
+import java.util.stream.Collectors;
+
 @JEIPlugin
 public class BewitchmentJEIPlugin implements IModPlugin {
+	protected static int compareRituals(Ritual a, Ritual b) {
+		if (a == b)
+			return 0;
+		int av = a.getInput().size() / 3;
+		int bv = b.getInput().size() / 3;
+		av += a.getCircles() & 3;
+		bv += b.getCircles() & 3;
+		return av > bv ? 1 : -1;
+	}
+
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -46,15 +61,5 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		public IRecipeWrapper getRecipeWrapper(Ritual recipe) {
 			return new RitualWrapper(recipe, igh);
 		}
-	}
-	
-	protected static int compareRituals(Ritual a, Ritual b) {
-		if (a == b)
-			return 0;
-		int av = a.getInput().size() / 3;
-		int bv = b.getInput().size() / 3;
-		av += a.getCircles() & 3;
-		bv += b.getCircles() & 3;
-		return av > bv ? 1 : -1;
 	}
 }

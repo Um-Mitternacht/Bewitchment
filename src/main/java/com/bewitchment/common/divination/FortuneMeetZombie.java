@@ -36,6 +36,8 @@ public class FortuneMeetZombie extends Fortune {
 					zombie.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
 				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
 					zombie.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
+				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+					zombie.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
 				return true;
 			}
 		}

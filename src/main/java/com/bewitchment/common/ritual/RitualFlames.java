@@ -1,11 +1,7 @@
 package com.bewitchment.common.ritual;
 
-import java.util.List;
-import java.util.Random;
-
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -22,14 +18,17 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.List;
+import java.util.Random;
+
 public class RitualFlames extends Ritual {
-	
+
 	private static final Random rng = new Random();
-	
+
 	public RitualFlames(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
-	
+
 	@Override
 	public void onUpdate(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 		if (ticks % 40 == 0) {
@@ -51,7 +50,7 @@ public class RitualFlames extends Ritual {
 			}
 		}
 	}
-	
+
 	private void smeltAndSpawn(EntityItem e) {
 		ItemStack copy = e.getItem().copy();
 		ItemStack is = copy.splitStack(1);
@@ -63,7 +62,7 @@ public class RitualFlames extends Ritual {
 		}
 		e.setItem(copy);
 	}
-	
+
 	private boolean canBurn(World world, BlockPos pos) {
 		if (!world.isAirBlock(pos))
 			return false;
@@ -77,5 +76,5 @@ public class RitualFlames extends Ritual {
 		}
 		return false;
 	}
-	
+
 }
