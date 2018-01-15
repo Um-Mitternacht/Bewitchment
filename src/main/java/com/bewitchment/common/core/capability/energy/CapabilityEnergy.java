@@ -4,7 +4,6 @@ import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.net.EnergyMessage;
 import com.bewitchment.common.core.net.PacketHandler;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -143,7 +142,7 @@ public final class CapabilityEnergy {
 		public int tickProgress() {
 			return tick;
 		}
-		
+
 		@Override
 		public int getRegenBurst() {
 			return regenBurst;

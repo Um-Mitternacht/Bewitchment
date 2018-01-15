@@ -1,13 +1,9 @@
 package com.bewitchment.common.core.net;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,6 +11,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+import java.util.Optional;
+import java.util.UUID;
 
 /**
  * This class was created by Arekkuusu on 04/04/2017.

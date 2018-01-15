@@ -3,7 +3,6 @@ package com.bewitchment.common.core.command;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.tile.TileCandle;
-
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
