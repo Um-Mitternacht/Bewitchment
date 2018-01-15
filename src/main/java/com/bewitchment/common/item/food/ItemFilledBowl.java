@@ -12,6 +12,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -35,6 +36,7 @@ public class ItemFilledBowl extends ItemModFood{
 		final FoodStats foodStats = player.getFoodStats();
 		foodStats.setFoodLevel(foodStats.getFoodLevel() + stack.getTagCompound().getInteger("hunger"));
 		foodStats.setFoodSaturationLevel(foodStats.getFoodLevel() + stack.getTagCompound().getFloat("saturation"));
+		player.addItemStackToInventory(new ItemStack(Items.BOWL, 1));
 	}
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -42,12 +44,14 @@ public class ItemFilledBowl extends ItemModFood{
 		if(stack.getTagCompound() == null) {
 			stack.setTagCompound(new NBTTagCompound()); //including this again because issues with crashing
 		}
-		tooltip.add(I18n.format("item.stew.desc1"));
 		NBTTagCompound nbt = stack.getTagCompound();
-		float roundedSaturation = Math.round(nbt.getFloat("saturation")*10)/10;
-		tooltip.add(I18n.format("item.stew.desc2", nbt.getInteger("hunger"), roundedSaturation));
 		if(nbt.getInteger("hunger") == 0) {
 			tooltip.add(I18n.format("item.stew.desc3"));
+		} else {
+			tooltip.add(I18n.format("item.stew.desc1"));
 		}
+		float roundedSaturation = Math.round(nbt.getFloat("saturation")*10)/10;
+		tooltip.add(I18n.format("item.stew.desc2", nbt.getInteger("hunger"), roundedSaturation));
+		
     }
 }
