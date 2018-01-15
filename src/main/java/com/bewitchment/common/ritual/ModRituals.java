@@ -1,5 +1,6 @@
 package com.bewitchment.common.ritual;
 
+import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
@@ -21,7 +22,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_medium, draw_circle_large;
+	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream;
 
 	public static void init() {
 
@@ -91,10 +92,21 @@ public class ModRituals {
 				circles(NETHER, NETHER, NETHER),
 				5000,
 				4);
-
+		draw_circle_small = new RitualDrawing(
+				rl("draw_circle_small"),
+				of(
+						Ingredient.fromItem(ModItems.wood_ash)
+				),
+				none,
+				40,
+				circles(ANY, null, null),
+				100,
+				0,
+				TileEntityGlyph.small);
 		draw_circle_medium = new RitualDrawing(
 				rl("draw_circle_medium"),
 				of(
+						Ingredient.fromItem(ModItems.wood_ash),
 						Ingredient.fromItem(Items.CLAY_BALL) // balanced
 				),
 				none,
@@ -106,6 +118,8 @@ public class ModRituals {
 		draw_circle_large = new RitualDrawing(
 				rl("draw_circle_large"),
 				of(
+						Ingredient.fromItem(ModItems.wood_ash),
+						Ingredient.fromItem(ModItems.wood_ash),
 						Ingredient.fromItem(Items.CLAY_BALL),
 						Ingredient.fromItem(Items.CLAY_BALL) // VERY balanced
 				),
@@ -116,12 +130,18 @@ public class ModRituals {
 				0,
 				TileEntityGlyph.big);
 
+		ResourceLocation infusions = new ResourceLocation(LibMod.MOD_ID, "infusion");
+		infusion_overworld = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 15))), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, EnumInfusionType.OVERWORLD);
+		infusion_nether = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 13))), none, 60, circles(NETHER, NETHER, NETHER), 6000, 1, EnumInfusionType.NETHER);
+		infusion_end = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 14))), none, 60, circles(ENDER, ENDER, ENDER), 6000, 1, EnumInfusionType.END);
+		infusion_dream = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 16))), none, 60, circles(NORMAL, NETHER, ENDER), 6000, 1, EnumInfusionType.DREAM);
+
 		registerAll();
 	}
 
 	public static void registerAll() {
 		Ritual.REGISTRY.registerAll(
-				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium
+				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream
 		);
 	}
 

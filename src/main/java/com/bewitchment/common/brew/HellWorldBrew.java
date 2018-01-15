@@ -22,6 +22,7 @@ public class HellWorldBrew extends BlockHitBrew {
 
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 
+	//Todo: Glazed Terracotta. And maybe shulker boxes.
 	@SuppressWarnings("deprecation")
 	public HellWorldBrew() {
 		stateMap.put(Blocks.GRASS_PATH, Blocks.RED_NETHER_BRICK.getDefaultState());
@@ -34,10 +35,12 @@ public class HellWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.JUNGLE_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.BIRCH_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 		stateMap.put(Blocks.DARK_OAK_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
-		stateMap.put(Blocks.END_BRICKS, Blocks.NETHER_BRICK.getDefaultState());
-		stateMap.put(Blocks.BRICK_BLOCK, Blocks.NETHER_BRICK.getDefaultState());
-		stateMap.put(Blocks.STONEBRICK, Blocks.NETHER_BRICK.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(14));
+		stateMap.put(Blocks.FARMLAND, Blocks.SOUL_SAND.getDefaultState());
+		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
 	}
 
 	@Override
@@ -62,7 +65,7 @@ public class HellWorldBrew extends BlockHitBrew {
 			Block block = world.getBlockState(spot).getBlock();
 			IBlockState state = world.getBlockState(spot);
 			boolean place = amplifier > 2 || world.rand.nextBoolean();
-			if(BlockStairs.isBlockStairs(state)) {
+			if (BlockStairs.isBlockStairs(state)) {
 				IBlockState newState = Blocks.NETHER_BRICK_STAIRS.getDefaultState()
 						.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
 						.withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF));
@@ -73,6 +76,14 @@ public class HellWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.LOG2) {
 				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.BRICK_BLOCK) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.STONEBRICK) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.END_BRICKS) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.embittered_bricks) {
+				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
 			}
 		}
 	}

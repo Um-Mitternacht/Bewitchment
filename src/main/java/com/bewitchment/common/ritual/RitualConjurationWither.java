@@ -2,6 +2,7 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
+import com.bewitchment.common.item.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +14,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class RitualConjurationWither extends Ritual {
 
@@ -32,6 +35,17 @@ public class RitualConjurationWither extends Ritual {
 			world.spawnEntity(entitywither);
 			entitywither.ignite();
 		}
+	}
+
+	@Override
+	public NonNullList<ItemStack> getOutput(NBTTagCompound data) {
+		NonNullList<ItemStack> oldOutput = super.getOutput(data);
+		NonNullList<ItemStack> oldInput = getItemsUsedForInput(data);
+		Optional<ItemStack> oldAthame = oldInput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst();
+		if (oldAthame.isPresent()) {
+			oldOutput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 50));
+		}
+		return oldOutput;
 	}
 
 }

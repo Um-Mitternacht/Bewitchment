@@ -39,8 +39,15 @@ public class RitualDrawing extends Ritual {
 
 	@Override
 	public void onStarted(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {
-		data.setInteger("chalkType", player.getHeldItemOffhand().getMetadata());
-		player.setHeldItem(EnumHand.OFF_HAND, ItemStack.EMPTY);
+		ItemStack chalk = player.getHeldItemOffhand();
+		data.setInteger("chalkType", chalk.getMetadata());
+		if (!player.isCreative()) {
+			int usesLeft = chalk.getTagCompound().getInteger("usesLeft") - coords.size();
+			chalk.getTagCompound().setInteger("usesLeft", usesLeft);
+			if (usesLeft < 1)
+				chalk.setCount(0);
+		}
+		player.setHeldItem(EnumHand.OFF_HAND, chalk);
 	}
 
 	@Override
@@ -51,7 +58,7 @@ public class RitualDrawing extends Ritual {
 				return false;
 		}
 
-		return player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk && player.getHeldItemOffhand().getMetadata() != 1;
+		return player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk && player.getHeldItemOffhand().getMetadata() != 1 && (player.isCreative() || player.getHeldItemOffhand().getTagCompound().getInteger("usesLeft") >= coords.size());
 	}
 
 }

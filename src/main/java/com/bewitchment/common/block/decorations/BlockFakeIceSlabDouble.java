@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.decorations;
 
 /**
  * Created by Joseph on 9/3/2017.

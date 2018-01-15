@@ -22,6 +22,7 @@ public class IceWorldBrew extends BlockHitBrew {
 
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 
+	//Todo: Glazed Terracotta. And maybe shulker boxes.
 	@SuppressWarnings("deprecation")
 	public IceWorldBrew() {
 		stateMap.put(Blocks.GRASS_PATH, Blocks.PACKED_ICE.getDefaultState());
@@ -33,6 +34,11 @@ public class IceWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.GRASS, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.MYCELIUM, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(3));
+		stateMap.put(Blocks.FARMLAND, Blocks.DIRT.getStateFromMeta(1));
+		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
+		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
+		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(3));
+		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(3));
 	}
 
 	@Override
@@ -68,9 +74,9 @@ public class IceWorldBrew extends BlockHitBrew {
 			} else if (state.getBlock() == Blocks.STONE) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.BRICK_BLOCK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.STONEBRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (BlockStairs.isBlockStairs(state)) {
 				IBlockState newState = ModBlocks.fake_ice_stairs.getDefaultState()
 						.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))
@@ -91,11 +97,13 @@ public class IceWorldBrew extends BlockHitBrew {
 			} else if (state.getBlock() == Blocks.SANDSTONE) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.NETHER_BRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.RED_NETHER_BRICK) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.END_BRICKS) {
-				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.scorned_bricks) {
+				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			}
 		}
 	}

@@ -50,6 +50,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
+import java.awt.*;
+
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
  * It's distributed as part of Bewitchment under
@@ -105,6 +107,16 @@ public class ClientProxy implements ISidedProxy {
 				}
 			}
 		}, ModBlocks.ritual_glyphs);
+
+		blocks.registerBlockColorHandler(new IBlockColor() {
+			@Override
+			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+				if (tintIndex == 1) {
+					return Color.HSBtoRGB((pos.getX() + pos.getY() + pos.getZ()) % 50 / 50f, 0.4f, 1f);
+				}
+				return -1;
+			}
+		}, ModBlocks.crystal_ball);
 
 		ItemColors items = Minecraft.getMinecraft().getItemColors();
 		//Item Colors

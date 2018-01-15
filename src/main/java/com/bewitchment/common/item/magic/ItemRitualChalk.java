@@ -1,7 +1,9 @@
 package com.bewitchment.common.item.magic;
 
+import com.bewitchment.api.sound.WitchSoundEvents;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -67,7 +69,7 @@ public class ItemRitualChalk extends ItemMod {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		boolean isReplacing = worldIn.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs);
+		boolean isReplacing = worldIn.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs) && worldIn.getBlockState(pos).getValue(BlockCircleGlyph.TYPE) != GlyphType.GOLDEN;
 		if (!worldIn.isRemote && (facing == EnumFacing.UP && ModBlocks.ritual_glyphs.canPlaceBlockAt(worldIn, pos.up()) || isReplacing)) {
 			ItemStack chalk = player.getHeldItem(hand);
 			if (!chalk.hasTagCompound()) {
@@ -84,6 +86,7 @@ public class ItemRitualChalk extends ItemMod {
 			state = state.withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]);
 			state = state.withProperty(BlockCircleGlyph.TYPE, BlockCircleGlyph.GlyphType.values()[type]);
 			worldIn.setBlockState(isReplacing ? pos : pos.up(), state, 2);
+			worldIn.playSound(null, pos, WitchSoundEvents.CHALK_SCRIBBLE, SoundCategory.BLOCKS, 0.5f, 1f + 0.5f * player.getRNG().nextFloat());
 		}
 		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 	}

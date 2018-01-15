@@ -40,7 +40,7 @@ public class EnergyEvents {
 			final IEnergy newCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
 			newCap.set(oldCap.get());
 			newCap.setMax(oldCap.getMax());
-			newCap.setRegen(oldCap.getRegen());
+			newCap.setRegen(oldCap.getRegenTime(), oldCap.getRegenBurst());
 			newCap.setUses(oldCap.getUses());
 		}
 	}
@@ -67,9 +67,9 @@ public class EnergyEvents {
 	}
 
 	private void energyRegen(EntityPlayerMP player, IEnergy energy) {
-		if (energy.getRegen() == -1) return;
-		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegen() == 0) {
-			energy.set(energy.get() + 1);
+		if (energy.getRegenTime() == -1) return;
+		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
+			energy.set(energy.get() + energy.getRegenBurst());
 			energy.tickReset();
 
 			energy.syncTo(player);

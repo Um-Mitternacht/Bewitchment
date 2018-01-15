@@ -14,7 +14,6 @@ import com.bewitchment.common.item.block.ItemBlockColor;
 import com.bewitchment.common.item.block.ItemBlockSapling;
 import com.bewitchment.common.item.block.ItemGemOre;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.food.ItemFilledBowl;
 import com.bewitchment.common.item.food.ItemGrilledWatermelon;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemHoney;
@@ -88,7 +87,6 @@ public final class ModItems {
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
-	public static final Item stew = PLACE_HOLDER;
 
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
@@ -135,6 +133,7 @@ public final class ModItems {
 	public static final Item oak_apple_gall = PLACE_HOLDER;
 	public static final Item iron_gall_ink = PLACE_HOLDER;
 	public static final Item grilled_watermelon = PLACE_HOLDER;
+	public static final Item stew = PLACE_HOLDER;
 
 	public static final Item silver_pickaxe = PLACE_HOLDER;
 	public static final Item silver_axe = PLACE_HOLDER;
@@ -218,7 +217,6 @@ public final class ModItems {
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
-				new ItemFilledBowl(),
 				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK)
 		);
@@ -269,6 +267,9 @@ public final class ModItems {
 				itemBlock(ModBlocks.fake_ice),
 				itemBlock(ModBlocks.fake_ice_fence),
 				itemBlock(ModBlocks.fake_ice_stairs),
+				itemBlock(ModBlocks.embittered_bricks),
+				itemBlock(ModBlocks.scorned_bricks),
+				itemBlock(ModBlocks.scorned_brick_fence),
 
 				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB),
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),
@@ -307,7 +308,8 @@ public final class ModItems {
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar),
 				itemBlock(ModBlocks.thread_spinner),
-				new ItemBlockBarrel()
+				new ItemBlockBarrel(),
+				itemBlock(ModBlocks.crystal_ball)
 		);
 	}
 

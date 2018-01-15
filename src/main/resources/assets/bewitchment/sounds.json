@@ -13,7 +13,9 @@
   },
   "chalk_scribble": {
     "sounds": [
-      "bewitchment:chalk_scribble"
+      "bewitchment:chalk_scribble_1",
+      "bewitchment:chalk_scribble_2",
+      "bewitchment:chalk_scribble_3"
     ],
     "subtitle": "bewitchment.subtitle.chalk_scribble"
   }

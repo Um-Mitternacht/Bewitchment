@@ -207,7 +207,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		if (state.getBlock().hasTileEntity(state)) {
 			TileEntityGlyph te = (TileEntityGlyph) worldIn.getTileEntity(pos);
 			if (te == null) {
-				Bewitchment.logger.warn("Null TE on ritual");
+				Bewitchment.logger.warn("Null TE on ritual! Please report this to the devs!");
 				return false;
 			}
 			if (te.hasRunningRitual()) {

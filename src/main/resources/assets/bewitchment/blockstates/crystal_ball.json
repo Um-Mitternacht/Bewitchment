@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "model": "bewitchment:crystal_ball"
+  },
+  "variants": {
+    "normal": {
+      "model": "bewitchment:crystal_ball"
+    },
+    "inventory": {
+      "model": "bewitchment:crystal_ball",
+      "transform": "forge:default-block"
+    }
+  }
+}

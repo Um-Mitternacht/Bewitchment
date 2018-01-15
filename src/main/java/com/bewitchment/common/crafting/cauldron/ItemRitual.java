@@ -53,7 +53,7 @@ public class ItemRitual implements ICauldronRitual<TileCauldron> {
 	public void onUpdate(CauldronRitualHolder<TileCauldron> ritual, TileCauldron tile, World world, BlockPos pos) {
 		if (getCost() > 0 && ritual.energy_left > 0 && ritual.ticks % 10 == 0) {
 			List<EntityPlayer> list = EnergyHandler.getEnergySources(EntityPlayer.class, world, pos, 5);
-			int taken = (split / list.size()) + 1;
+			int taken = 100 * ((split / list.size()) + 1);
 			for (int i = 0, size = list.size(); i < size; i++) {
 				EntityPlayer player = list.get(i);
 				if (EnergyHandler.addEnergy(player, -taken)) {

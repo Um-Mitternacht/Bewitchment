@@ -5,10 +5,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -37,6 +39,13 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	 */
 	public Ritual(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		this.time = timeInTicks;
+
+		for (int i = 0; i < input.size(); i++) {
+			Ingredient ing = input.get(i);
+			if (ing.getMatchingStacks().length == 0)
+				throw new IllegalArgumentException("Ritual inputs must be valid: ingredient #" + i + " for " + registryName + " has no matching items");
+		}
+
 		this.input = input;
 		this.output = output;
 		this.circles = circles;
@@ -46,6 +55,17 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		if (input.size() == 0) throw new IllegalArgumentException("Cannot have an empty input in a ritual");
 	}
 
+	public static NonNullList<ItemStack> getItemsUsedForInput(NBTTagCompound tag) {
+		NonNullList<ItemStack> list = NonNullList.create();
+		NBTTagList tagList = tag.getTagList("itemsUsed", NBT.TAG_COMPOUND);
+		tagList.forEach(nbt -> {
+			NBTTagCompound itemTag = (NBTTagCompound) nbt;
+			list.add(new ItemStack(itemTag));
+		});
+		return list;
+	}
+
+	// Check for extra conditions that need to be met (time of the day/phase of the moon/item hold in offhand/being in a dimension/having an amount of free space...)
 	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe) {
 		return true;
 	}
@@ -70,14 +90,17 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onLowPower(@Nullable EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 	}
 
+	// Time required for completion
 	public int getTime() {
 		return time;
 	}
 
-	public NonNullList<ItemStack> getOutput(NBTTagCompound data) { // data is used to allow the output of modified input items
+	// Gets what shoud be spit out when the ritual finishes, data is used to allow the output of modified input items
+	public NonNullList<ItemStack> getOutput(NBTTagCompound data) {
 		return getOutputRaw();
 	}
 
+	// Checks circles and recipe
 	public boolean isValidInput(List<ItemStack> ground, boolean circles) {
 		ArrayList<ItemStack> checklist = new ArrayList<ItemStack>(ground.size());
 		for (ItemStack item : ground)
@@ -101,7 +124,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 				}
 			}
 			if (found == null) {
-				return false; //The stack on the ground doesn't belong to the rite 
+				return false; //The stack on the ground doesn't belong to the rite
 			}
 			removalList.remove(found);
 		}
@@ -111,6 +134,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		return circles;
 	}
 
+	// Return the bit annotation of what circles are needed
 	public int getCircles() {
 		return circles;
 	}
@@ -139,23 +163,24 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		for (Ingredient i : input) jei_cache.add(Arrays.asList(i.getMatchingStacks()));
 	}
 
-	public boolean canBeUsedFromCandle() {
-		return true;
+	// Legacy method to check if a ritual needs to be performed on a circle or can be used through some other means
+	// (Originally ritual candles)
+	public boolean canBeUsedWithNoGlyphs() {
+		return false;
 	}
+	
+	/*
+	 * known bugs
+	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
+	 */
 
+	// Returns the static output
+	// aka what should be shown by JEI (If an input gets damaged and then spit out, this should show the item at 0 damage
 	public NonNullList<ItemStack> getOutputRaw() {
 		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
 		for (ItemStack i : output)
 			copy.add(i);
 		return copy;
 	}
-	
-	/*
-	 * known bugs
-	 * FIXME - If a ritual has multiple of the same ingredient, not all of them get consumed
-	 * FIXME - There might be a desync when disconnecting and reconnecting (noticed with the perception ritual)
-	 * FIXME - Chalk will draw over the golden one when using the ritual of drawing if not enough power or other problems
-	 * FIXME - There is a worrying problem when using items from the mod as ritual ingredients, they don't get recognized
-	 */
 
 }

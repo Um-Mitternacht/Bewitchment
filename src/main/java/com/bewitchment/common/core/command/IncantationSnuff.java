@@ -36,6 +36,6 @@ class IncantationSnuff implements IIncantation {
 				PacketHandler.updateToNearbyPlayers(world, pos);
 			}
 		}
-		EnergyHandler.addEnergy((EntityPlayer) sender, 8);
+		EnergyHandler.addEnergy((EntityPlayer) sender, 800);
 	}
 }

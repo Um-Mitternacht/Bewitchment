@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.capability.energy;
 
+import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.net.EnergyMessage;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -19,9 +20,11 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 public final class CapabilityEnergy {
 
 	private static final String AMOUNT = "energy_amount";
-	private static final String MAX = "energy_max";
-	private static final String REGEN = "energy_regen";
+	private static final String MAX = "energy_max_amount";
+	private static final String REGEN_TIME = "energy_regen_rate";
+	private static final String REGEN_BURST = "energy_regen_burst";
 	private static final String USES = "energy_uses";
+	private static final String TYPE = "energy_type";
 
 	private CapabilityEnergy() {
 	}
@@ -34,8 +37,10 @@ public final class CapabilityEnergy {
 				final NBTTagCompound tag = new NBTTagCompound();
 				tag.setInteger(AMOUNT, instance.get());
 				tag.setInteger(MAX, instance.getMax());
-				tag.setInteger(REGEN, instance.getRegen());
+				tag.setInteger(REGEN_TIME, instance.getRegenTime());
+				tag.setInteger(REGEN_BURST, instance.getRegenBurst());
 				tag.setInteger(USES, instance.getUses());
+				tag.setInteger(TYPE, instance.getType().getMeta());
 				return tag;
 			}
 
@@ -44,8 +49,9 @@ public final class CapabilityEnergy {
 				final NBTTagCompound tag = (NBTTagCompound) nbt;
 				instance.set(tag.getInteger(AMOUNT));
 				instance.setMax(tag.getInteger(MAX));
-				instance.setRegen(tag.getInteger(REGEN));
+				instance.setRegen(tag.getInteger(REGEN_TIME), tag.getInteger(REGEN_BURST));
 				instance.setUses(tag.getInteger(USES));
+				instance.setType(EnumInfusionType.fromMeta(tag.getInteger(TYPE)));
 			}
 		}, DefaultEnergy::new);
 	}
@@ -53,10 +59,12 @@ public final class CapabilityEnergy {
 	public static class DefaultEnergy implements IEnergy {
 
 		private int amount;
-		private int max = 8;
-		private int regen = 60;
+		private int max = 800;
+		private int regenTime = 20;
+		private int regenBurst = 10;
 		private int uses;
 		private int tick;
+		private int type = EnumInfusionType.NONE.getMeta();
 
 		@Override
 		public boolean set(int i) {
@@ -85,13 +93,14 @@ public final class CapabilityEnergy {
 		}
 
 		@Override
-		public int getRegen() {
-			return regen;
+		public int getRegenTime() {
+			return regenTime;
 		}
 
 		@Override
-		public void setRegen(int rate) {
-			this.regen = rate > 0 ? rate : -1;
+		public void setRegen(int rate, int burst) {
+			this.regenTime = rate > 0 ? rate : -1;
+			this.regenBurst = burst;
 		}
 
 		@Override
@@ -117,6 +126,26 @@ public final class CapabilityEnergy {
 		@Override
 		public void syncTo(EntityPlayerMP target) {
 			PacketHandler.HANDLER.sendTo(new EnergyMessage(this, target), target);
+		}
+
+		@Override
+		public EnumInfusionType getType() {
+			return EnumInfusionType.fromMeta(type);
+		}
+
+		@Override
+		public void setType(EnumInfusionType infusion) {
+			type = infusion.getMeta();
+		}
+
+		@Override
+		public int tickProgress() {
+			return tick;
+		}
+
+		@Override
+		public int getRegenBurst() {
+			return regenBurst;
 		}
 	}
 }

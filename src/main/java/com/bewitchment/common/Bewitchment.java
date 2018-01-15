@@ -4,7 +4,9 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
 import com.bewitchment.common.core.capability.brew.CapabilityBrewStorage;
+import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
+import com.bewitchment.common.core.capability.energy.energy_item.CapabilityEnergyUser;
 import com.bewitchment.common.core.command.CommandIncantation;
 import com.bewitchment.common.core.command.ModCommands;
 import com.bewitchment.common.core.event.ModEvents;
@@ -12,6 +14,7 @@ import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.crafting.cauldron.CauldronCrafting;
+import com.bewitchment.common.divination.ModFortunes;
 import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.item.ModItems;
@@ -58,14 +61,14 @@ public class Bewitchment {
 	public void preInit(FMLPreInitializationEvent event) {
 		CapabilityEnergy.init();
 		CapabilityBrewStorage.init();
+		CapabilityDivination.init();
+		CapabilityEnergyUser.init();
 		PacketHandler.init();
 		ModEvents.init();
 		ModEntities.init();
 		ModBrews.init();
 		ModSpells.init();
-		ModSpinningThreadRecipes.init();
-		ModBarrelRecipes.init();
-		ModRituals.init();
+		ModFortunes.init();
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");
@@ -82,6 +85,9 @@ public class Bewitchment {
 
 		SeedDropRegistry.init();
 		ModGen.init();
+		ModSpinningThreadRecipes.init();
+		ModBarrelRecipes.init();
+		ModRituals.init();
 
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of bewitchment,");

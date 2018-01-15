@@ -90,8 +90,8 @@ public final class EnergyHandler {
 	 * @param player      The player
 	 * @param timeInTicks Ticks
 	 */
-	public static void setRegen(EntityPlayer player, int timeInTicks) {
+	public static void setRegen(EntityPlayer player, int timeInTicks, int burst) {
 		Optional<IEnergy> optional = getEnergy(player);
-		optional.ifPresent(iEnergy -> iEnergy.setRegen(timeInTicks));
+		optional.ifPresent(iEnergy -> iEnergy.setRegen(timeInTicks, burst));
 	}
 }

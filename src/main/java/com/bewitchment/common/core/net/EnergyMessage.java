@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.net;
 
+import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
@@ -37,8 +38,9 @@ public class EnergyMessage implements IMessage {
 	public void fromBytes(ByteBuf buf) {
 		energy.set(buf.readInt());
 		energy.setMax(buf.readInt());
-		energy.setRegen(buf.readInt());
+		energy.setRegen(buf.readInt(), buf.readInt());
 		energy.setUses(buf.readInt());
+		energy.setType(EnumInfusionType.fromMeta(buf.readInt()));
 
 		target = new UUID(buf.readLong(), buf.readLong());
 	}
@@ -47,8 +49,10 @@ public class EnergyMessage implements IMessage {
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(energy.get());
 		buf.writeInt(energy.getMax());
-		buf.writeInt(energy.getRegen());
+		buf.writeInt(energy.getRegenTime());
+		buf.writeInt(energy.getRegenBurst());
 		buf.writeInt(energy.getUses());
+		buf.writeInt(energy.getType().getMeta());
 
 		buf.writeLong(target.getMostSignificantBits());
 		buf.writeLong(target.getLeastSignificantBits());
@@ -67,8 +71,9 @@ public class EnergyMessage implements IMessage {
 						final IEnergy data = optData.get();
 						data.set(message.energy.get());
 						data.setMax(message.energy.getMax());
-						data.setRegen(message.energy.getRegen());
+						data.setRegen(message.energy.getRegenTime(), message.energy.getRegenBurst());
 						data.setUses(message.energy.getUses());
+						data.setType(message.energy.getType());
 					}
 				}
 			});

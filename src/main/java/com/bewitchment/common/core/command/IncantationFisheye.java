@@ -25,7 +25,7 @@ class IncantationFisheye implements IIncantation {
 			entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 275, 0));
 			entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 275, 0));
 
-			EnergyHandler.addEnergy((EntityPlayer) sender, 8);
+			EnergyHandler.addEnergy((EntityPlayer) sender, 800);
 		}
 	}
 }

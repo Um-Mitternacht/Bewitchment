@@ -2,6 +2,7 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
+import com.bewitchment.common.item.ModItems;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +15,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class RitualConjurationWitch extends Ritual {
 
@@ -31,6 +34,17 @@ public class RitualConjurationWitch extends Ritual {
 			if (Math.random() < 0.1)
 				witch.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 6000, 2, false, false));
 		}
+	}
+
+	@Override
+	public NonNullList<ItemStack> getOutput(NBTTagCompound data) {
+		NonNullList<ItemStack> oldOutput = super.getOutput(data);
+		NonNullList<ItemStack> oldInput = getItemsUsedForInput(data);
+		Optional<ItemStack> oldAthame = oldInput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst();
+		if (oldAthame.isPresent()) {
+			oldOutput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 50));
+		}
+		return oldOutput;
 	}
 
 }

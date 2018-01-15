@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;

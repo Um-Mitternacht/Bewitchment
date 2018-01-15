@@ -1,6 +1,7 @@
 package com.bewitchment.client.core.event;
 
 import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.handler.ConfigHandler;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,9 +33,11 @@ public class EnergyHUD {
 
 	private int renderTime;
 	private float visible;
-	private int oldEnergy;
+	private int oldEnergy = -1;
 	private float barAlpha;
 	private boolean reverse;
+	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
+	private int lastPulsed = 40; // Prevents pulsating incontrollably when recharging fast enough. Min ticks between 2 pulsation
 
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
@@ -42,8 +46,13 @@ public class EnergyHUD {
 
 			if (optional.isPresent()) {
 				IEnergy energy = optional.get();
+				if (lastPulsed > 0)
+					lastPulsed--;
+				boolean energyChanged = (oldEnergy != energy.get());
+				if (energyChanged)
+					shouldPulse = lastPulsed == 0;
 
-				if (oldEnergy != energy.get()) {
+				if (energyChanged || isItemEnergyUsing()) {
 					oldEnergy = energy.get();
 					renderTime = 60;
 					visible = 1F;
@@ -58,21 +67,40 @@ public class EnergyHUD {
 					renderTime--;
 				}
 
-				if (!reverse) {
-					barAlpha += 0.05F;
-					if (barAlpha > 1F) {
-						barAlpha = 1F;
-						reverse = true;
-					}
-				} else {
-					barAlpha -= 0.05F;
-					if (barAlpha < 0F) {
-						barAlpha = 0;
-						reverse = false;
+				if (shouldPulse) {
+					if (!reverse) {
+						barAlpha += 0.15F;
+						if (barAlpha > 1F) {
+							barAlpha = 1F;
+							reverse = true;
+						}
+					} else {
+						barAlpha -= 0.15F;
+						if (barAlpha < 0F) {
+							barAlpha = 0;
+							reverse = false;
+							shouldPulse = false;
+							lastPulsed = 40;
+						}
 					}
 				}
 			}
 		}
+	}
+
+	private boolean isItemEnergyUsing() { // Don't hide HUD when holding items that use ME/MP/AP
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		if (p == null)
+			return false;
+		if (p.getHeldItemMainhand().hasCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null)) {
+			if (p.getHeldItemMainhand().getCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null).shouldShowHud())
+				return true;
+		}
+		if (p.getHeldItemOffhand().hasCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null)) {
+			if (p.getHeldItemOffhand().getCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null).shouldShowHud())
+				return true;
+		}
+		return false;
 	}
 
 	@SubscribeEvent
@@ -89,7 +117,16 @@ public class EnergyHUD {
 				GlStateManager.enableBlend();
 
 				ScaledResolution resolution = event.getResolution();
-				double filled = (double) energy.get() / (double) energy.getMax();
+				double interpEnergy = 0;
+				if (oldEnergy >= 0) {
+					interpEnergy = (double) (energy.get() - oldEnergy) * event.getPartialTicks() + oldEnergy;
+				} else {
+					interpEnergy = energy.get();
+				}
+				double filled = interpEnergy / energy.getMax();
+
+				// System.out.println("fil: " + filled + ", chg: " + energy.get() + ", max: " + energy.getMax());
+
 				int height = ConfigHandler.ENERGY_HUD.height;
 				int width = ConfigHandler.ENERGY_HUD.width;
 				int x = ConfigHandler.ENERGY_HUD.x;
@@ -99,26 +136,28 @@ public class EnergyHUD {
 					GlStateManager.color(1F, 1F, 1F, visible);
 				}
 
-				double off = 0.13725490196078431372549019607843D;
+				double barWidth = width * 7 / 25;
 
 				GlStateManager.disableCull();
 				manager.bindTexture(ResourceLocations.ENERGY_BACKGROUND[0]);
-				renderTexture(x, y + 88, width, -((double) height - 28D) * filled, off, (1 - off) * filled);
+				renderTexture(x + 9, y + 88, barWidth, -(height - 28D) * filled, 0, filled);
 
-				GlStateManager.pushMatrix();
-				GlStateManager.color(1F, 1F, 1F, visible == 1F ? barAlpha : visible);
+				if (visible == 1f) {
+					GlStateManager.pushMatrix();
+					GlStateManager.color(1F, 1F, 1F, visible == 1F ? barAlpha : visible);
 
-				manager.bindTexture(ResourceLocations.ENERGY_BACKGROUND[1]);
-				renderTexture(x, y + 88, width, -((double) height - 28D) * filled, off, (1 - off) * filled);
-				GlStateManager.enableCull();
+					manager.bindTexture(ResourceLocations.ENERGY_BACKGROUND[1]);
+					renderTexture(x + 9, y + 88, barWidth, -(height - 28D) * filled, 0, filled);
+					GlStateManager.enableCull();
 
-				GlStateManager.popMatrix();
+					GlStateManager.popMatrix();
+				}
 
 				if (ConfigHandler.ENERGY_HUD.hide) {
 					GlStateManager.color(1F, 1F, 1F, visible);
 				}
 
-				manager.bindTexture(ResourceLocations.ENERGY);
+				manager.bindTexture(energy.getType().getTexture());
 				renderTexture(x, y, width, height, 0, 1);
 
 				int textColor = 0x990066;
@@ -140,10 +179,10 @@ public class EnergyHUD {
 		BufferBuilder buff = tessellator.getBuffer();
 
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		buff.pos(x, y + height, 0).tex((double) 0, vMax).endVertex();
-		buff.pos(x + width, y + height, 0).tex((double) 1, vMax).endVertex();
-		buff.pos(x + width, y, 0).tex((double) 1, vMin).endVertex();
-		buff.pos(x, y, 0).tex((double) 0, vMin).endVertex();
+		buff.pos(x, y + height, 0).tex(0, vMax).endVertex();
+		buff.pos(x + width, y + height, 0).tex(1, vMax).endVertex();
+		buff.pos(x + width, y, 0).tex(1, vMin).endVertex();
+		buff.pos(x, y, 0).tex(0, vMin).endVertex();
 
 		tessellator.draw();
 	}

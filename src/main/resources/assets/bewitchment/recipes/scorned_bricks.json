@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian",
+      "data": 0
+    },
+    {
+      "item": "minecraft:netherrack",
+      "data": 0
+    },
+    {
+      "item": "minecraft:obsidian",
+      "data": 0
+    },
+    {
+      "item": "minecraft:netherrack",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "bewitchment:scorned_bricks",
+    "data": 0,
+    "count": 4
+  }
+}

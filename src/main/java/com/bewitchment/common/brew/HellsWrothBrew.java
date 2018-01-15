@@ -35,6 +35,7 @@ public class HellsWrothBrew extends BlockHitBrew {
 		stateMap.put(Blocks.MAGMA, Blocks.OBSIDIAN.getDefaultState());
 		stateMap.put(Blocks.WATER, Blocks.COBBLESTONE.getDefaultState());
 		stateMap.put(Blocks.FLOWING_WATER, Blocks.COBBLESTONE.getDefaultState());
+		stateMap.put(Blocks.FARMLAND, Blocks.SOUL_SAND.getDefaultState());
 	}
 
 	@Override

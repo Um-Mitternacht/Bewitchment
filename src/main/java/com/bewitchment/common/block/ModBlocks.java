@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.magic.*;
+import com.bewitchment.common.block.decorations.*;
+import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
@@ -101,6 +102,10 @@ public final class ModBlocks {
 	public static final Block thread_spinner = PLACE_HOLDER;
 	public static final Block barrel = PLACE_HOLDER;
 	public static final Block ritual_glyphs = PLACE_HOLDER;
+	public static final Block crystal_ball = PLACE_HOLDER;
+	public static final Block embittered_bricks = PLACE_HOLDER;
+	public static final Block scorned_bricks = PLACE_HOLDER;
+	public static final Block scorned_brick_fence = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 
 	private ModBlocks() {
@@ -148,6 +153,7 @@ public final class ModBlocks {
 				new BlockRagingGrass(),
 				new BlockFakeIce(),
 				new BlockFakeIceFence(),
+				new BlockScornedBrickFence(),
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
@@ -155,7 +161,8 @@ public final class ModBlocks {
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
 				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
 				new BlockBarrel(LibBlockName.BARREL),
-				new BlockCircleGlyph(LibBlockName.GLYPHS)
+				new BlockCircleGlyph(LibBlockName.GLYPHS),
+				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL)
 		);
 		//Normal Blocks
 		registry.registerAll(
@@ -171,7 +178,9 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.JASPER_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.AMETHYST_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.GARNET_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F)
+				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
+				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F)
 		);
 
 		//Trees
