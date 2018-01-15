@@ -33,6 +33,7 @@ public class IceWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.DIRT, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.GRASS, Blocks.SNOW.getDefaultState());
 		stateMap.put(Blocks.MYCELIUM, Blocks.SNOW.getDefaultState());
+		stateMap.put(Blocks.OBSIDIAN, Blocks.PACKED_ICE.getDefaultState());
 		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(3));
 		stateMap.put(Blocks.FARMLAND, Blocks.DIRT.getStateFromMeta(1));
 		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(3));
@@ -94,6 +95,8 @@ public class IceWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.fake_ice_fence.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.SPRUCE_FENCE) {
 				world.setBlockState(spot, ModBlocks.fake_ice_fence.getDefaultState(), 3);
+			} else if (state.getBlock() == Blocks.NETHER_BRICK_FENCE) {
+				world.setBlockState(spot, ModBlocks.fake_ice_fence.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.SANDSTONE) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.NETHER_BRICK) {
@@ -104,6 +107,8 @@ public class IceWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == ModBlocks.scorned_bricks) {
 				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.nethersteel) {
+				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
 			}
 		}
 	}
