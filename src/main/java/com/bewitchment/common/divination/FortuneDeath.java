@@ -33,6 +33,6 @@ public class FortuneDeath extends Fortune {
 	public boolean apply(@Nonnull EntityPlayer player) {
 		player.getCapability(CapabilityDivination.CAPABILITY, null).setActive();
 		player.attackEntityFrom(DamageSource.MAGIC, 50000000);
-		return false;
+		return true;
 	}
 }
