@@ -15,7 +15,7 @@ public class ModFortunes {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
 		silverfish = new FortuneMeetUberSilverfish(8, "meet_silverfish", LibMod.MOD_ID);
 		dropBow = new FortuneDropBow(7, "drop_bow", LibMod.MOD_ID);
-		death = new FortuneDropBow(2, "drop_bow", LibMod.MOD_ID);
+		death = new FortuneDeath(2, "death", LibMod.MOD_ID);
 		registerAll();
 	}
 
