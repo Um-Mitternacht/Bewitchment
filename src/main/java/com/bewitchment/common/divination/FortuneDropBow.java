@@ -33,7 +33,7 @@ public class FortuneDropBow extends Fortune {
 	}
 	
 	@SubscribeEvent
-	public void onArrowKnock(ArrowNockEvent evt) {
+	public void onArrowNock(ArrowNockEvent evt) {
 		if (evt.getEntityPlayer() != null && !evt.getEntityPlayer().isCreative() && evt.getHand() == EnumHand.MAIN_HAND) { // Needs to check for mainhand due to how the event works
 			CapabilityDivination cap = evt.getEntityPlayer().getCapability(CapabilityDivination.CAPABILITY, null);
 			if (cap.getFortune() == this && cap.isActive()) {

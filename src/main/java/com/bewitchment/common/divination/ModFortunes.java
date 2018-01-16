@@ -9,11 +9,13 @@ public class ModFortunes {
 	private static Fortune zombie;
 	private static Fortune silverfish;
 	private static Fortune dropBow;
+	private static Fortune death;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
-		silverfish = new FortuneMeetUberSilverfish(10, "meet_silverfish", LibMod.MOD_ID);
+		silverfish = new FortuneMeetUberSilverfish(8, "meet_silverfish", LibMod.MOD_ID);
 		dropBow = new FortuneDropBow(7, "drop_bow", LibMod.MOD_ID);
+		death = new FortuneDropBow(2, "drop_bow", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -21,7 +23,8 @@ public class ModFortunes {
 		Fortune.REGISTRY.registerAll(
 				zombie,
 				silverfish,
-				dropBow
+				dropBow,
+				death
 		);
 	}
 }

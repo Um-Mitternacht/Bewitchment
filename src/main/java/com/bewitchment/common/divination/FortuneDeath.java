@@ -3,16 +3,15 @@ package com.bewitchment.common.divination;
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ArrowNockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 /**
  * Created by Joseph on 1/16/2018.
  */
+
 public class FortuneDeath extends Fortune {
 
 	public FortuneDeath(int weight, String name, String modid) {
@@ -33,18 +32,7 @@ public class FortuneDeath extends Fortune {
 	@Override
 	public boolean apply(@Nonnull EntityPlayer player) {
 		player.getCapability(CapabilityDivination.CAPABILITY, null).setActive();
+		player.attackEntityFrom(DamageSource.MAGIC, 50000000);
 		return false;
-	}
-
-	@SubscribeEvent
-	public void onArrowNock(ArrowNockEvent evt) {
-		if (evt.getEntityPlayer() != null && !evt.getEntityPlayer().isCreative() && evt.getHand() == EnumHand.MAIN_HAND) { // Needs to check for mainhand due to how the event works
-			CapabilityDivination cap = evt.getEntityPlayer().getCapability(CapabilityDivination.CAPABILITY, null);
-			if (cap.getFortune() == this && cap.isActive()) {
-				if (evt.getEntityPlayer().dropItem(true) != null) {
-					cap.setRemovable();
-				}
-			}
-		}
 	}
 }
