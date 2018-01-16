@@ -4,6 +4,7 @@ import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -32,16 +33,21 @@ public class DivinationEvents {
 		CapabilityDivination oldPlayerData = oldPlayer.getCapability(CapabilityDivination.CAPABILITY, null);
 		newPlayerData.setFortune(oldPlayerData.getFortune());
 	}
-
+	
 	@SubscribeEvent
 	public void onLivingTick(PlayerTickEvent evt) {
 		if (!evt.player.world.isRemote && evt.phase == Phase.END) {
 			CapabilityDivination data = evt.player.getCapability(CapabilityDivination.CAPABILITY, null);
 			Fortune f = data.getFortune();
 			if (f != null) {
-				if (f.canShouldBeAppliedNow(evt.player)) {
-					if (f.apply(evt.player))
-						data.setFortune(null);
+				if (data.isRemovable()) {
+					data.setFortune(null);
+				} else {
+					if (!data.isActive() && f.canShouldBeAppliedNow(evt.player)) {
+						data.setActive();
+						if (f.apply(evt.player))
+							data.setFortune(null);
+					}
 				}
 			}
 		}

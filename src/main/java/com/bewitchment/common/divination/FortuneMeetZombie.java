@@ -1,6 +1,7 @@
 package com.bewitchment.common.divination;
 
 import com.bewitchment.api.divination.Fortune;
+
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -20,7 +21,7 @@ public class FortuneMeetZombie extends Fortune {
 
 	@Override
 	public boolean canShouldBeAppliedNow(EntityPlayer player) {
-		return player.dimension != 1 && player.dimension != -1 && player.getRNG().nextDouble() < 0.0001;
+		return player.getRNG().nextDouble() < 0.0001;
 	}
 
 	@Override

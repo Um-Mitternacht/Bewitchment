@@ -1,14 +1,15 @@
 package com.bewitchment.api.divination;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nonnull;
 
 public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 
@@ -50,20 +51,25 @@ public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	 * Don't use this to do stuff linked to the profecy, as this method
 	 * gets called multiple times per second. Use {@link #apply(EntityPlayer)} for that.
 	 *
-	 * @param player the player this fortune is being applied to
+	 * @param player
+	 *            the player this fortune is being applied to
 	 * @return true if this fortune can and should be applied right now
 	 */
 	public abstract boolean canShouldBeAppliedNow(@Nonnull EntityPlayer player);
 
 	/**
-	 * Execute the logic of the profecy. After this is called the profecy gets removed
-	 * from the player, and they can get a new one. Only called server side
+	 * Execute the logic of the profecy
+	 * On "instant" profecies this should return true.
+	 * On event dependent profecies this should mark the fortune as active in the capability,
+	 * while the removable part should be set after the event has happened succesfully
+	 * Only called server side
 	 *
-	 * @param player the player this fortune is being applied to
-	 * @return true if the fortune was successfully applied
+	 * @param player
+	 *            the player this fortune is being applied to
+	 * @return true if the fortune should be automatically removed after this
 	 */
 	public abstract boolean apply(@Nonnull EntityPlayer player);
-
+	
 	public String getUnlocalizedName() {
 		return "fortunes." + this.getRegistryName().getResourceDomain() + "." + this.getRegistryName().getResourcePath() + ".name";
 	}
@@ -73,3 +79,4 @@ public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	}
 
 }
+
