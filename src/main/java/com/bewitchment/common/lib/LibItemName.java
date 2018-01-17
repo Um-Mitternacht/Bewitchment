@@ -8,6 +8,8 @@ package com.bewitchment.common.lib;
 public final class LibItemName {
 
 	//Crops
+	public static final String HELLEBORE = "hellebore";
+	public static final String SEED_HELLEBORE = "seed_hellebore";
 	public static final String ACONITUM = "aconitum";
 	public static final String SEED_ACONITUM = "seed_aconitum";
 	public static final String ASPHODEL = "asphodel";

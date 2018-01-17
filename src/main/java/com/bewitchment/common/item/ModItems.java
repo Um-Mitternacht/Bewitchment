@@ -76,6 +76,8 @@ public final class ModItems {
 	public static final Item seed_silphium = PLACE_HOLDER;
 	public static final Item wormwood = PLACE_HOLDER;
 	public static final Item seed_wormwood = PLACE_HOLDER;
+	public static final Item hellebore = PLACE_HOLDER;
+	public static final Item seed_hellebore = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
 
 	public static final Item bee = PLACE_HOLDER;

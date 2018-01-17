@@ -23,7 +23,8 @@ public enum Crop {
 	KENAF(Blocks.FARMLAND),
 	SILPHIUM(Blocks.FARMLAND),
 	GARLIC(Blocks.FARMLAND),
-	WORMWOOD(Blocks.FARMLAND);
+	WORMWOOD(Blocks.FARMLAND),
+	HELLEBORE(Blocks.FARMLAND);
 
 	private final Block soil;
 
