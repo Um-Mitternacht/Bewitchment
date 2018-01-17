@@ -232,6 +232,7 @@ tile.barrel.altar.working=Charging
 tile.barrel.altar.done=Charged
 fluid.quantity.mB=%d mB
 fluid.none=Empty
+tile.goblet.name=Goblet
 
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore

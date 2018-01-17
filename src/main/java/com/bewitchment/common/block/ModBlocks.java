@@ -5,10 +5,8 @@ import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
-import com.bewitchment.common.block.natural.BlockBeehive;
-import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.block.natural.BlockSaltOre;
-import com.bewitchment.common.block.natural.BlockSilverOre;
+import com.bewitchment.common.block.misc.BlockGoblet;
+import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -19,6 +17,7 @@ import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -107,6 +106,7 @@ public final class ModBlocks {
 	public static final Block embittered_bricks = PLACE_HOLDER;
 	public static final Block scorned_bricks = PLACE_HOLDER;
 	public static final Block scorned_brick_fence = PLACE_HOLDER;
+	public static final Block goblet = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
 
@@ -165,7 +165,8 @@ public final class ModBlocks {
 				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
 				new BlockBarrel(LibBlockName.BARREL),
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
-				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL)
+				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
+				new BlockGoblet(LibBlockName.GOBLET)
 		);
 		//Normal Blocks
 		registry.registerAll(

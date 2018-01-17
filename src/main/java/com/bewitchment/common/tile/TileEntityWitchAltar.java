@@ -1,9 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.HashMap;
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -19,10 +26,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Optional;
 
 public class TileEntityWitchAltar extends TileMod implements ITickable {
 
@@ -226,14 +229,15 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			return 75;
 		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
 			return 50;
-			// } else if (blockState.getBlock().equals(ModBlocks.goblet)) {
-			// if (typesMult[1]) return 0;
-			// typesMult[1]=true;
-			// if (blockState.getValue(BlockGoblet.FULL)) {
-			// return 0.6;
-			// } else {
-			// return 0.3;
-			// }
+		} else if (blockState.getBlock().equals(ModBlocks.goblet)) {
+			if (typesMult[1])
+				return 0;
+			typesMult[1] = true;
+			if (blockState.getValue(BlockGoblet.FULL)) {
+				return 0.6;
+			} else {
+				return 0.3;
+			}
 			// } else if (blockState.getBlock().equals(ModBlocks.candle_plate)) {
 			// if (typesMult[2]) return 0;
 			// typesMult[2]=true;
