@@ -170,6 +170,8 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			return 225;
 		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
 			return 225;
+		} else if (blockState.getBlock().equals(Blocks.QUARTZ_BLOCK)) {
+			return 225;
 		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
 			return 200;
 		} else if (blockState.getBlock() instanceof BlockCandle) {
@@ -226,6 +228,8 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 		} else if (blockState.getBlock().equals(ModBlocks.jasper_block)) {
 			return 75;
 		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
+			return 75;
+		} else if (blockState.getBlock().equals(Blocks.QUARTZ_BLOCK)) {
 			return 75;
 		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
 			return 50;
