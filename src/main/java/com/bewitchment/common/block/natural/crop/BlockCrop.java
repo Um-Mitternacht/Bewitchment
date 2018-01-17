@@ -4,7 +4,13 @@ import com.bewitchment.api.crop.ICrop;
 import com.bewitchment.api.helper.IModelRegister;
 
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,6 +24,7 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 	private int maxAge;
 	private Item seed;
 	private Item crop;
+	private ItemStack iconCache = ItemStack.EMPTY;
 
 	public BlockCrop(String id) {
 		super();
@@ -58,6 +65,12 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 	@Override
 	public void setCrop(Item crop) {
 		this.crop = crop;
+		iconCache = new ItemStack(crop);
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		return iconCache.copy();
 	}
 
 	@Override
