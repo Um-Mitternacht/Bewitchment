@@ -4,7 +4,6 @@ import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -33,7 +32,7 @@ public class DivinationEvents {
 		CapabilityDivination oldPlayerData = oldPlayer.getCapability(CapabilityDivination.CAPABILITY, null);
 		newPlayerData.setFortune(oldPlayerData.getFortune());
 	}
-	
+
 	@SubscribeEvent
 	public void onLivingTick(PlayerTickEvent evt) {
 		if (!evt.player.world.isRemote && evt.phase == Phase.END) {

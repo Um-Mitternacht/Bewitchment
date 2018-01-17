@@ -1,7 +1,6 @@
 package com.bewitchment.common.divination;
 
 import com.bewitchment.api.divination.Fortune;
-
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

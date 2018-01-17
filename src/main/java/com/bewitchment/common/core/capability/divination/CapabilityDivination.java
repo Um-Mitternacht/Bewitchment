@@ -1,12 +1,11 @@
 package com.bewitchment.common.core.capability.divination;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.Fortune;
-
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+
+import javax.annotation.Nullable;
 
 public interface CapabilityDivination {
 
@@ -21,13 +20,13 @@ public interface CapabilityDivination {
 
 	@Nullable
 	public Fortune getFortune();
-	
+
 	public void setActive();
-	
+
 	public void setRemovable();
-	
+
 	public boolean isActive();
-	
+
 	public boolean isRemovable();
 
 	public static class Impl implements CapabilityDivination {
@@ -46,22 +45,22 @@ public interface CapabilityDivination {
 		public Fortune getFortune() {
 			return fortune;
 		}
-		
+
 		@Override
 		public void setActive() {
 			active = true;
 		}
-		
+
 		@Override
 		public void setRemovable() {
 			removable = true;
 		}
-		
+
 		@Override
 		public boolean isActive() {
 			return active;
 		}
-		
+
 		@Override
 		public boolean isRemovable() {
 			return removable;
