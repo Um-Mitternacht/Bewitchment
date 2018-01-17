@@ -2,7 +2,7 @@ package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.api.crop.ICrop;
 import com.bewitchment.api.helper.IModelRegister;
-import com.bewitchment.client.handler.ModelHandler;
+
 import net.minecraft.block.BlockCrops;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
@@ -45,6 +45,7 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 		return seed;
 	}
 
+	@Override
 	public void setSeed(Item seed) {
 		this.seed = seed;
 	}
@@ -54,6 +55,7 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 		return crop;
 	}
 
+	@Override
 	public void setCrop(Item crop) {
 		this.crop = crop;
 	}
@@ -61,6 +63,6 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
-		ModelHandler.registerModel(this, 0);
+		// NO-OP since crops don't have an itemBlock to texture
 	}
 }
