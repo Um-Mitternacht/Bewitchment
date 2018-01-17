@@ -29,6 +29,7 @@ item.seed_tulsi.name=Tulsi Seeds
 item.seed_garlic.name=Garlic Seeds
 item.seed_kenaf.name=Kenaf Seeds
 item.seed_wormwood.name=Wormwood Seeds
+item.seed_hellebore.name=Hellebore Seeds
 
 //Crops
 item.aconitum.name=Aconitum
@@ -46,6 +47,7 @@ item.wormwood.name=Wormwood
 item.kenaf.name=Kenaf
 item.garlic.name=Garlic
 item.tulsi.name=Tulsi
+item.hellebore.name=Hellebore
 
 //Gemstones
 item.gem_garnet.name=Garnet
