@@ -140,6 +140,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 					return 1;
 				}
 			}
+			//TODO: Change the way gems are stored on an altar. Use a ritual plate. Pick them up via the oredict, to increase mod support.
 		} else if (blockState.getBlock().equals(Blocks.DIAMOND_BLOCK)) {
 			return 325;
 		} else if (blockState.getBlock().equals(Blocks.EMERALD_BLOCK)) {
