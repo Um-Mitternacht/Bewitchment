@@ -142,6 +142,8 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			}
 		} else if (blockState.getBlock().equals(Blocks.DIAMOND_BLOCK)) {
 			return 325;
+		} else if (blockState.getBlock().equals(Blocks.EMERALD_BLOCK)) {
+			return 275;
 		} else if (blockState.getBlock().equals(ModBlocks.moldavite_block)) {
 			return 225;
 		} else if (blockState.getBlock().equals(ModBlocks.alexandrite_block)) {
@@ -162,6 +164,10 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			return 225;
 		} else if (blockState.getBlock().equals(ModBlocks.jasper_block)) {
 			return 225;
+		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
+			return 225;
+		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
+			return 200;
 		} else if (blockState.getBlock() instanceof BlockCandle) {
 			if (types[1]) return 0;
 			types[1] = true;
@@ -193,6 +199,8 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			}
 		} else if (blockState.getBlock().equals(Blocks.DIAMOND_BLOCK)) {
 			return 125;
+		} else if (blockState.getBlock().equals(Blocks.EMERALD_BLOCK)) {
+			return 100;
 		} else if (blockState.getBlock().equals(ModBlocks.moldavite_block)) {
 			return 75;
 		} else if (blockState.getBlock().equals(ModBlocks.alexandrite_block)) {
@@ -213,6 +221,10 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 			return 75;
 		} else if (blockState.getBlock().equals(ModBlocks.jasper_block)) {
 			return 75;
+		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
+			return 75;
+		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
+			return 50;
 			// } else if (blockState.getBlock().equals(ModBlocks.goblet)) {
 			// if (typesMult[1]) return 0;
 			// typesMult[1]=true;
