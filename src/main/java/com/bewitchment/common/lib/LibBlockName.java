@@ -65,6 +65,7 @@ public final class LibBlockName {
 	public static final String EMBITTERED_BRICKS = "embittered_bricks";
 	public static final String SCORNED_BRICKS = "scorned_bricks";
 	public static final String SCORNED_BRICK_FENCE = "scorned_brick_fence";
+	public static final String SCORNED_BRICK_STAIRS = "scorned_brick_stairs";
 	public static final String FAKE_ICE_SLAB_DOUBLE = "fake_ice_slab_double";
 	public static final String FAKE_ICE_SLAB_HALF = "fake_ice_slab_half";
 	public static final String LOG_ELDER = "log_elder";

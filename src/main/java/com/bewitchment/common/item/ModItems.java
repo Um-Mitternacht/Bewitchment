@@ -272,6 +272,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.embittered_bricks),
 				itemBlock(ModBlocks.scorned_bricks),
 				itemBlock(ModBlocks.scorned_brick_fence),
+				itemBlock(ModBlocks.scorned_brick_stairs),
 
 				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB),
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),

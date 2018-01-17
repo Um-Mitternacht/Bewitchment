@@ -85,6 +85,7 @@ public final class ModBlocks {
 	public static final Block fake_ice_stairs = PLACE_HOLDER;
 	public static final Block fake_ice_slab_half = PLACE_HOLDER;
 	public static final Block fake_ice_slab_double = PLACE_HOLDER;
+	public static final Block scorned_brick_stairs = PLACE_HOLDER;
 	public static final Block torchwood = PLACE_HOLDER;
 	public static final Block ember_grass = PLACE_HOLDER;
 	public static final Block raging_grass = PLACE_HOLDER;
@@ -107,6 +108,7 @@ public final class ModBlocks {
 	public static final Block scorned_bricks = PLACE_HOLDER;
 	public static final Block scorned_brick_fence = PLACE_HOLDER;
 	private static Block STAIRS_ICE = new Block(Material.ICE);
+	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
 
 	private ModBlocks() {
 
@@ -155,6 +157,7 @@ public final class ModBlocks {
 				new BlockFakeIceFence(),
 				new BlockScornedBrickFence(),
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
+				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_SCORNED_BRICK.getDefaultState(), Material.ROCK),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(),
