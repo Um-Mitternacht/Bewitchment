@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I  ",
+    "II ",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "bewitchment:scorned_bricks"
+    }
+  },
+  "result": {
+    "item": "bewitchment:scorned_brick_stairs",
+    "count": 6
+  }
+}
