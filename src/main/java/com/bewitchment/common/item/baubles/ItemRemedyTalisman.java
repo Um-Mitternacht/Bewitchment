@@ -1,16 +1,11 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,11 +21,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 /**
  * Created by Joseph on 1/1/2018.
  */
 public class ItemRemedyTalisman extends ItemMod implements IBauble {
-	
+
 	public ItemRemedyTalisman() {
 		super(LibItemName.REMEDY_TALISMAN);
 		this.setMaxStackSize(1);
@@ -68,6 +66,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 			p.removePotionEffect(MobEffects.WITHER);
 			p.removePotionEffect(MobEffects.BLINDNESS);
 			p.removePotionEffect(MobEffects.POISON);
+			p.removePotionEffect(MobEffects.WEAKNESS);
 			if (flag) {
 				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
 				if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
@@ -76,7 +75,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
 		return true;
