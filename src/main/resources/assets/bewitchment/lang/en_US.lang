@@ -118,7 +118,7 @@ item.stew.name=Bowl of Stew
 item.stew.desc1=A hearty bowl of stew.
 item.stew.desc2=Restores %d hunger and %f saturation.
 item.stew.desc3=This is a bowl of water. Why did you make this?
-
+item.remedy_talisman.name=Token of Remedies
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
@@ -563,6 +563,7 @@ witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and pr
 witch.tooltip.horseshoe_description.name=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 witch.tooltip.triskelion_amulet_description.name=This amulet seems to provide some strength against foes, but drains you slightly.
 witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
+witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
 
 //Books
 item.book_of_shadows.name=Book of Shadows
