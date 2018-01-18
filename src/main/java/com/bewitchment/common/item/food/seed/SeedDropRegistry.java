@@ -28,5 +28,6 @@ public class SeedDropRegistry {
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_tulsi), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_kenaf), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_silphium), 1);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_hellebore), 3);
 	}
 }
