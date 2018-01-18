@@ -517,6 +517,7 @@ witch.tooltip.seed_garlic_description.name=Seed from a smelly allium
 witch.tooltip.seed_wormwood_description.name=Seed from a weedy herb
 witch.tooltip.seed_kenaf_description.name=Seed from a bamboo-like hibiscus
 witch.tooltip.seed_tulsi_description.name=Seed from a small herb
+witch.tooltip.seed_hellebore_description.name=Seed from a innocent-looking plant
 
 witch.tooltip.aconitum_description.name=Poisonous, can prevent or revert shapeshifting, and wolves and therians have an aversion to it
 witch.tooltip.asphodel_description.name=Related to death and the afterlife, but not poisonous
@@ -529,10 +530,11 @@ witch.tooltip.mandrake_root_description.name=Used to amplify magical effects
 witch.tooltip.lavender_description.name=Associated with purity and grace
 witch.tooltip.thistle_description.name=A flower associated with strength and durability, and is the national flower of Scotland
 witch.tooltip.silphium_description.name=A rather large and unusual fennel prized by the romans for its many uses
-witch.tooltip.garlic_description.name=The bulb of a type of allium, it is rather smelly, and seems to keep undead at bay.
-witch.tooltip.wormwood_description.name=A rather weedy herb which bugs do not seem to like.
-witch.tooltip.kenaf_description.name=A tall plant with useful fibers.
-witch.tooltip.tulsi_description.name=A small herb considered sacred by some.
+witch.tooltip.garlic_description.name=The bulb of a type of allium, it is rather smelly, and seems to keep undead at bay
+witch.tooltip.wormwood_description.name=A rather weedy herb which bugs do not seem to like
+witch.tooltip.kenaf_description.name=A tall plant with useful fibers
+witch.tooltip.tulsi_description.name=A small herb considered sacred by some
+witch.tooltip.hellebore_description.name=A beautiful and poisonous flower linked to demons
 
 item.tag_lock.empty=Empty Taglock
 
