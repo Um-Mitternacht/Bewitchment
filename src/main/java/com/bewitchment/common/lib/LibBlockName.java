@@ -85,6 +85,7 @@ public final class LibBlockName {
 	public static final String GLYPHS = "ritual_glyphs";
 	public static final String CRYSTAL_BALL = "crystal_ball";
 	public static final String GOBLET = "goblet";
+	public static final String TAROT_TABLE = "tarot_table";
 
 	private LibBlockName() {
 	}

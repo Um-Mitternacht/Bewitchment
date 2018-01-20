@@ -299,7 +299,8 @@ public final class ModItems {
 				itemBlock(ModBlocks.thread_spinner),
 				new ItemBlockBarrel(),
 				itemBlock(ModBlocks.crystal_ball),
-				itemBlock(ModBlocks.goblet)
+				itemBlock(ModBlocks.goblet),
+				itemBlock(ModBlocks.tarot_table)
 		);
 	}
 

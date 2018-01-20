@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=north": {
-      "model": "bewitchment:altar"
+      "model": "bewitchment:tarot_table"
     },
     "facing=south": {
-      "model": "bewitchment:altar",
+      "model": "bewitchment:tarot_table",
       "y": 180
     },
     "facing=east": {
-      "model": "bewitchment:altar",
+      "model": "bewitchment:tarot_table",
       "y": 90
     },
     "facing=west": {
-      "model": "bewitchment:altar",
+      "model": "bewitchment:tarot_table",
       "y": 270
     }
   }

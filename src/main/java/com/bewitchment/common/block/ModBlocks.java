@@ -110,6 +110,8 @@ public final class ModBlocks {
 	public static final Block scorned_bricks = PLACE_HOLDER;
 	public static final Block scorned_brick_fence = PLACE_HOLDER;
 	public static final Block goblet = PLACE_HOLDER;
+	public static final Block tarot_table = PLACE_HOLDER;
+	
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
 
@@ -170,7 +172,8 @@ public final class ModBlocks {
 				new BlockBarrel(LibBlockName.BARREL),
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
 				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
-				new BlockGoblet(LibBlockName.GOBLET)
+				new BlockGoblet(LibBlockName.GOBLET),
+				new BlockTarotTable()
 		);
 		//Normal Blocks
 		registry.registerAll(
