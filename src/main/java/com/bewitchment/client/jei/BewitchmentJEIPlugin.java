@@ -38,6 +38,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.addRecipeCategories(new SpinnerCategory(registry.getJeiHelpers().getGuiHelper()));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void register(IModRegistry registry) {
 		registry.handleRecipes(Ritual.class, new RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);

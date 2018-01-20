@@ -496,6 +496,10 @@ brew.arrow_deflection.name=Brew of Deflection
 brew.arrow_deflection.desc=Deflects any arrow sent at you
 brew.arrow_deflection.tooltip=Deflection
 
+brew.demons_bane.name=Demonsbane Brew
+brew.demons_bane.desc=Damages demons and nether-based mobs
+brew.demons_bane.tooltip=Demonsbane
+
 brew..name=
 brew..desc=
 brew..tooltip=

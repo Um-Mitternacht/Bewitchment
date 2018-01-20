@@ -308,6 +308,9 @@ public final class CauldronCrafting {
 		registerEffect(getStack(ModItems.white_sage)
 				, BrewRegistry.getDefault(ModBrews.HOLY_WATER), false);
 
+		registerEffect(getStack(ModItems.hellebore)
+				, BrewRegistry.getDefault(ModBrews.DEMONS_BANE), false);
+
 		registerEffect(getStack(Blocks.WEB)
 				, BrewRegistry.getDefault(ModBrews.SPIDER_NIGHTMARE), false);
 
@@ -500,6 +503,7 @@ public final class CauldronCrafting {
 		registerFood(ModItems.heart, 6, 6.6f);
 		registerFood(ModItems.tongue_of_dog, 4, 4.4f);
 		registerFood(ModItems.equine_tail, 6, 6.6f);
+		//Well, if you're starving...
 		registerFood(Items.ROTTEN_FLESH, 4, 1.4f);
 
 	}

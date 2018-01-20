@@ -61,6 +61,7 @@ public final class ModBrews {
 	public static IBrew DISROBING;
 	public static IBrew ROTTING;
 	public static IBrew ARROW_DEFLECTION;
+	public static IBrew DEMONS_BANE;
 
 	private ModBrews() {
 	}
@@ -109,6 +110,7 @@ public final class ModBrews {
 		DISROBING = registerBrew(new DisrobingBrew());
 		ROTTING = registerBrew(new RottingBrew());
 		ARROW_DEFLECTION = registerBrew(new ArrowDeflectionBrew());
+		DEMONS_BANE = registerBrew(new DemonsBaneBrew());
 
 		//--------------------------------DRINKS--------------------------------//
 		addDrink(SHELL_ARMOR, 2500, 0);
@@ -168,6 +170,7 @@ public final class ModBrews {
 		addSplash(DISROBING, 0, 0);
 		addSplash(ROTTING, 750, 0);
 		addSplash(ARROW_DEFLECTION, 750, 0);
+		addSplash(DEMONS_BANE, 1, 0);
 
 		//--------------------------------LINGER--------------------------------//
 		addLinger(SPIDER_NIGHTMARE, 1000, 0);

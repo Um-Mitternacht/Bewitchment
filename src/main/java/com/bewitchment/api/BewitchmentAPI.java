@@ -71,6 +71,7 @@ public final class BewitchmentAPI {
 	public static ResourceLocation DISROBING = getLocation("disrobing");
 	public static ResourceLocation ROTTING = getLocation("rotting");
 	public static ResourceLocation ARROW_DEFLECTION = getLocation("arrow_deflection");
+	public static ResourceLocation DEMONS_BANE = getLocation("demons_bane");
 
 	private BewitchmentAPI() {
 	}

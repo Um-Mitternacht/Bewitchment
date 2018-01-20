@@ -1,33 +1,39 @@
 package com.bewitchment.common.tile;
 
+<<<<<<< HEAD
 import javax.annotation.Nonnull;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 
+=======
+import com.bewitchment.common.item.ModItems;
+>>>>>>> 7f7b9640a3f8bbedcdc5060693f2d0a190221523
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import javax.annotation.Nonnull;
+
 public class TileEntityTarotsTable extends TileMod { // No ticking
-	
+
 	private static final int READ_COST = 2000;
-	
+
 	private TileEntityWitchAltar te = null;
-	
+
 	public TileEntityTarotsTable() {
 	}
-	
+
 	@Override
 	void readDataNBT(NBTTagCompound cmp) {
 	}
-	
+
 	@Override
 	void writeDataNBT(NBTTagCompound cmp) {
 	}
-	
+
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
 		if (!reader.world.isRemote) {
 			if (checkDeck(tarotDeck) && consumePower(READ_COST, false)) {
@@ -37,11 +43,11 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 			}
 		}
 	}
-	
+
 	private boolean checkDeck(ItemStack tarotDeck) {
 		return (tarotDeck.getItem() == ModItems.tarots && tarotDeck.hasTagCompound() && tarotDeck.getTagCompound().hasKey("read_id") && tarotDeck.getTagCompound().hasKey("read_name"));
 	}
-	
+
 	private boolean consumePower(int power, boolean simulate) {
 		if (power == 0)
 			return true;
@@ -51,5 +57,5 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 			return false;
 		return te.consumePower(power, simulate);
 	}
-	
+
 }

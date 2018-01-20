@@ -98,6 +98,7 @@ public class Bewitchment {
 		logger.info("Come with me, father, I'm to expose a heathen");
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent evt) {
 		ForgeRegistries.BIOMES.getValues().parallelStream().filter(b -> b.getBiomeName().toLowerCase().contains("roofed forest")).forEach(b -> {
