@@ -24,16 +24,19 @@ public class BlockGoblet extends BlockMod {
 		this.setLightOpacity(0);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return bounding_box;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean canProvidePower(IBlockState state) {
 		return state.getValue(FULL);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		if (blockState.getValue(FULL)) return 8;
@@ -45,16 +48,19 @@ public class BlockGoblet extends BlockMod {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -65,6 +71,7 @@ public class BlockGoblet extends BlockMod {
 		return new BlockStateContainer(this, FULL);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FULL, meta == 1);
