@@ -109,6 +109,7 @@ public final class ModBrews {
 		OVERCOAT = registerBrew(new OvercoatBrew());
 		DISROBING = registerBrew(new DisrobingBrew());
 		ROTTING = registerBrew(new RottingBrew());
+		ARROW_DEFLECTION = registerBrew(new ArrowDeflectionBrew());
 		DEMONS_BANE = registerBrew(new DemonsBaneBrew());
 
 		//--------------------------------DRINKS--------------------------------//
