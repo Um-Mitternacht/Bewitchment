@@ -154,7 +154,7 @@ public final class ModItems {
 	public static final Item talisman_ruby_orb = PLACE_HOLDER;
 	public static final Item horseshoe = PLACE_HOLDER;
 	public static final Item remedy_talisman = PLACE_HOLDER;
-	
+
 	public static final Item tarots = PLACE_HOLDER;
 
 	public static final Item spell_page = PLACE_HOLDER;
