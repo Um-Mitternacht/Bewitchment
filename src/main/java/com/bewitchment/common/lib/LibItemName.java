@@ -119,6 +119,7 @@ public final class LibItemName {
 	public static final String TALISMAN_WATCHING_EYE = "talisman_watching_eye";
 	public static final String RITUAL_CHALK = "ritual_chalk";
 	public static final String REMEDY_TALISMAN = "remedy_talisman";
+	public static final String TAROTS = "tarots";
 
 
 	private LibItemName() {

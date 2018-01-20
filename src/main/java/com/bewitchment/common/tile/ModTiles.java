@@ -18,6 +18,7 @@ public final class ModTiles {
 	private static final String BARREL = "barrel";
 	private static final String GLYPH = "glyph";
 	private static final String CRYSTAL_BALL = "crystal_ball";
+	private static final String TAROTS_TABLE = "tarots_table";
 
 	private ModTiles() {
 	}
@@ -33,5 +34,6 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, BARREL);
 		GameRegistry.registerTileEntity(TileEntityGlyph.class, GLYPH);
 		GameRegistry.registerTileEntity(TileEntityCrystalBall.class, CRYSTAL_BALL);
+		GameRegistry.registerTileEntity(TileEntityTarotsTable.class, TAROTS_TABLE);
 	}
 }

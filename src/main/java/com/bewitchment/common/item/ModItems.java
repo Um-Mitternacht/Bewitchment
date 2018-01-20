@@ -154,6 +154,8 @@ public final class ModItems {
 	public static final Item talisman_ruby_orb = PLACE_HOLDER;
 	public static final Item horseshoe = PLACE_HOLDER;
 	public static final Item remedy_talisman = PLACE_HOLDER;
+	
+	public static final Item tarots = PLACE_HOLDER;
 
 	public static final Item spell_page = PLACE_HOLDER;
 	public static final Item ritual_chalk = PLACE_HOLDER;
@@ -221,7 +223,8 @@ public final class ModItems {
 				new ItemFilledBowl(),
 				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
-				new ItemRemedyTalisman()
+				new ItemRemedyTalisman(),
+				new ItemTarots(LibItemName.TAROTS)
 		);
 
 		// Baubles

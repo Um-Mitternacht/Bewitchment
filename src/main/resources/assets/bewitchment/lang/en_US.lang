@@ -119,6 +119,9 @@ item.stew.desc1=A hearty bowl of stew.
 item.stew.desc2=Restores %d hunger and %f saturation.
 item.stew.desc3=This is a bowl of water. Why did you make this?
 item.remedy_talisman.name=Token of Remedies
+item.tarots.name=Tarots Cards
+item.tarots.read_to=They are receptive to %s's future
+item.tarots.error_reading=The cards predictions make no sense
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
