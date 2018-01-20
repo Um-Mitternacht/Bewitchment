@@ -4,7 +4,6 @@ import com.bewitchment.client.gui.*;
 import com.bewitchment.client.gui.container.*;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.*;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;

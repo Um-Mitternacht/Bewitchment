@@ -1,15 +1,8 @@
 package com.bewitchment.common.tile;
 
-<<<<<<< HEAD
-import javax.annotation.Nonnull;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
-
-=======
-import com.bewitchment.common.item.ModItems;
->>>>>>> 7f7b9640a3f8bbedcdc5060693f2d0a190221523
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
