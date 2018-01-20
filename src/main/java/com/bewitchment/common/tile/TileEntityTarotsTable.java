@@ -2,14 +2,14 @@ package com.bewitchment.common.tile;
 
 import javax.annotation.Nonnull;
 
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.lib.LibGui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 
 public class TileEntityTarotsTable extends TileMod { // No ticking
 	
@@ -31,8 +31,7 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
 		if (!reader.world.isRemote) {
 			if (checkDeck(tarotDeck) && consumePower(READ_COST, false)) {
-				// show gui
-				reader.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + "TEMP MESSAGE"), true);
+				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
 			} else {
 				reader.sendStatusMessage(new TextComponentTranslation("item.tarots.error_reading"), true);
 			}
