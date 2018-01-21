@@ -1,5 +1,8 @@
 package com.bewitchment.common.block.natural.plants;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,9 +24,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class BlockMoonbell extends BlockModFlower {
 
@@ -93,7 +93,7 @@ public class BlockMoonbell extends BlockModFlower {
 			World w = evt.player.world;
 			if (w.getTotalWorldTime() % 20 == 0 && validBiomesMoonBell.contains(w.getBiome(evt.player.getPosition()))) {
 				Random r = evt.player.getRNG();
-				if (w.provider.getDimension() == 0 && w.getMoonPhase() == 4 && !w.isDaytime() && evt.player.getRNG().nextDouble() < 0.2) {
+				if (w.provider.getDimension() == 0 && w.provider.getMoonPhase(w.getWorldTime()) == 4 && !w.isDaytime() && evt.player.getRNG().nextDouble() < 0.2) {
 					int dx = (r.nextInt(7) - 3) * 10;
 					int dz = (r.nextInt(7) - 3) * 10;
 					MutableBlockPos pos = new MutableBlockPos(evt.player.getPosition().add(dx, 0, dz));
