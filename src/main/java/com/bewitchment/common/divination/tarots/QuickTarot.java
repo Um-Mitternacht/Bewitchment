@@ -1,16 +1,18 @@
 package com.bewitchment.common.divination.tarots;
 
-import com.bewitchment.api.divination.ITarot;
-import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import com.bewitchment.api.divination.ITarot;
+import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class QuickTarot implements ITarot {
 
 	ResourceLocation rl;
+	ResourceLocation regName = null;
 	String name, unlocalizedName;
 	Predicate<EntityPlayer> apply, reverse;
 	Function<EntityPlayer, Integer> getNum;
@@ -23,6 +25,7 @@ public class QuickTarot implements ITarot {
 		this.reverse = reverse;
 		this.getNum = getNum;
 		this.apply = apply;
+		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, name));
 	}
 
 	private static final void validateAll(Object... objects) {
@@ -61,4 +64,20 @@ public class QuickTarot implements ITarot {
 		return getNum.apply(player);
 	}
 
+	@Override
+	public ITarot setRegistryName(ResourceLocation name) {
+		regName = name;
+		return this;
+	}
+	
+	@Override
+	public ResourceLocation getRegistryName() {
+		return regName;
+	}
+	
+	@Override
+	public Class<ITarot> getRegistryType() {
+		return ITarot.class;
+	}
+	
 }

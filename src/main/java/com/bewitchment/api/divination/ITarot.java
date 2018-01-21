@@ -2,8 +2,9 @@ package com.bewitchment.api.divination;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public interface ITarot {
+public interface ITarot extends IForgeRegistryEntry<ITarot> {
 
 	/**
 	 * @return the ResourceLocation of the artwork for this card

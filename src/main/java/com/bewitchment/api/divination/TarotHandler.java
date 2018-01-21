@@ -1,22 +1,26 @@
 package com.bewitchment.api.divination;
 
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryBuilder;
+
 public class TarotHandler {
 
-	private static final ArrayList<ITarot> REGISTRY = new ArrayList<ITarot>(30);
+	public static final IForgeRegistry<ITarot> REGISTRY = new RegistryBuilder<ITarot>().setName(new ResourceLocation(LibMod.MOD_ID, "tarots")).setType(ITarot.class).setIDRange(0, 200).create();
 	private static final int MAX_CARDS_PER_READING = 5;
 
 	private TarotHandler() {
 	}
 
 	public static void registerTarot(ITarot tarot) {
-		REGISTRY.add(tarot);
+		REGISTRY.register(tarot);
 	}
 
 	public static ArrayList<TarotInfo> getTarotsForPlayer(EntityPlayer player) {
@@ -25,7 +29,7 @@ public class TarotHandler {
 
 		// Can't instantiate since the collected List<> might not support remove operations,
 		// depending on the jre, so this needs to be addAll for safety
-		res.addAll(REGISTRY.parallelStream() //
+		res.addAll(REGISTRY.getValues().parallelStream() //
 				.filter(it -> it.isApplicableToPlayer(player)) //
 				.map(it -> new TarotInfo(it, player)) //
 				.collect(Collectors.toList()));
