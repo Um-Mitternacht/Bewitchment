@@ -12,13 +12,15 @@ import net.minecraft.util.ResourceLocation;
 public class QuickTarot implements ITarot {
 	
 	ResourceLocation rl;
-	String name;
+	String name, unlocalizedName;
 	Predicate<EntityPlayer> apply, reverse;
 	Function<EntityPlayer, Integer> getNum;
 	
-	public QuickTarot(String unlocalizedName, Predicate<EntityPlayer> apply, Predicate<EntityPlayer> reverse, Function<EntityPlayer, Integer> getNum) {
+	public QuickTarot(String name, Predicate<EntityPlayer> apply, Predicate<EntityPlayer> reverse, Function<EntityPlayer, Integer> getNum) {
+		validateAll(name, apply, reverse, getNum);
 		rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarots/" + unlocalizedName + ".png");
-		name = unlocalizedName;
+		this.name = name;
+		this.unlocalizedName = "tarot." + name + ".name";
 		this.reverse = reverse;
 		this.getNum = getNum;
 		this.apply = apply;
@@ -46,12 +48,18 @@ public class QuickTarot implements ITarot {
 	
 	@Override
 	public String getUnlocalizedName() {
-		return name;
+		return unlocalizedName;
 	}
 	
 	@Override
 	public int getNumber(EntityPlayer player) {
 		return getNum.apply(player);
+	}
+	
+	private static final void validateAll(Object... objects) {
+		for (Object o : objects)
+			if (o == null)
+				throw new RuntimeException("Arguments cannot be null");
 	}
 	
 }

@@ -3,6 +3,8 @@ package com.bewitchment.client.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.divination.TarotHandler;
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.lib.LibMod;
@@ -11,13 +13,17 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 
 public class GuiTarots extends GuiScreen {
 
 	protected static final ResourceLocation background = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_gui.png");
-
+	protected static final ResourceLocation card_frame = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame.png");
+	
 	EntityPlayer player;
 	ArrayList<TarotButton> buttons; // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
 	ArrayList<TarotInfo> data;
@@ -25,7 +31,11 @@ public class GuiTarots extends GuiScreen {
 
 	public GuiTarots(EntityPlayer player) {
 		this.player = player;
+		
+		// These should actually be passed as an argument, after requesting them to the server
+		// Currently they don't work with information stored only serverside (see the diamonds tarot)
 		this.data = TarotHandler.getTarotsForPlayer(player);
+		
 		this.buttons = new ArrayList<TarotButton>(data.size());
 		this.setGuiSize(252, 192);
 		int t = data.size();
@@ -55,20 +65,47 @@ public class GuiTarots extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
+		drawCard();
+		GL11.glColor4f(1f, 1f, 1f, 1f);
 		for (int i = 0; i < this.buttons.size(); ++i) {
 			this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
 		}
-		drawCard();
+		
+		for (int i = 0; i < this.buttons.size(); ++i) {
+			if (this.buttons.get(i).isMouseOver()) {
+				drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
+			}
+		}
+		
 	}
 	
 	private void drawCard() {
 		if (pressed < 0)
 			return; // no card selected
-		String t = data.get(pressed).toString();
+		double scale = 0.5d;
+		TarotInfo t = data.get(pressed);
 		ScaledResolution sr = new ScaledResolution(mc);
 		int left = ((sr.getScaledWidth() - 252) / 2);
 		int top = ((sr.getScaledHeight() - 192) / 2);
-		drawString(this.mc.fontRenderer, t, left + 30, top + 30, 0);
+		Minecraft.getMinecraft().renderEngine.bindTexture(t.getTexture());
+		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 10 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
+		Minecraft.getMinecraft().renderEngine.bindTexture(card_frame);
+		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 10 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
+		GL11.glPushMatrix();
+		String text = I18n.format(t.getUnlocalizedName());
+		GlStateManager.translate(left + ((252 - mc.fontRenderer.getStringWidth(text) * 0.7) / 2), top + 124, 0);
+		// GlStateManager.scale(0.7, 0.7, 0.7); // This sucks
+		GL11.glScalef(0.7f, 0.7f, 0.7f);
+		mc.fontRenderer.drawString(text, 0, 0, 0xFCD71C, false);
+		GL11.glPopMatrix();
+		if (t.hasNumber()) {
+			GL11.glPushMatrix();
+			String num = "" + t.getNumber();
+			GlStateManager.translate(left + ((252 - mc.fontRenderer.getStringWidth(num) * 0.65) / 2), top + 135, 0);
+			GlStateManager.scale(0.65, 0.65, 0.65);
+			mc.fontRenderer.drawString(num, 0, 0, 0xFCD71C, false);
+			GL11.glPopMatrix();
+		}
 	}
 
 	@Override
@@ -115,7 +152,6 @@ public class GuiTarots extends GuiScreen {
 		}
 
 		public void setPressed(boolean p) {
-			System.out.println("pressing " + this.id);
 			pressed = p;
 		}
 

@@ -3,6 +3,7 @@ package com.bewitchment.api.divination;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -57,7 +58,7 @@ public class TarotHandler {
 			return reversed;
 		}
 		
-		public boolean hanNumber() {
+		public boolean hasNumber() {
 			return number >= 0;
 		}
 		
@@ -75,7 +76,7 @@ public class TarotHandler {
 		
 		@Override
 		public String toString() {
-			return getUnlocalizedName() + "#" + number + (reversed ? "r" : "n");
+			return I18n.format(getUnlocalizedName()) + ", " + number + (reversed ? ", reversed" : "");
 		}
 		
 	}

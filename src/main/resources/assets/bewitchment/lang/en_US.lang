@@ -119,7 +119,7 @@ item.stew.desc1=A hearty bowl of stew.
 item.stew.desc2=Restores %d hunger and %f saturation.
 item.stew.desc3=This is a bowl of water. Why did you make this?
 item.remedy_talisman.name=Token of Remedies
-item.tarots.name=Tarots Cards
+item.tarots.name=Tarots Deck
 item.tarots.read_to=They are receptive to %s's future
 item.tarots.error_reading=The cards predictions make no sense
 
@@ -621,3 +621,10 @@ fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened
 fortunes.bewitchment.meet_silverfish.name=A foul vermin hides in the path
 fortunes.bewitchment.death.name=The path ahead looks very bleak
 fortunes.bewitchment.drop_bow.name=Fingers won't obey when they're most needed
+
+//Tarots
+tarot.enderman.name=The Enderman
+tarot.diamonds.name=The Diamonds
+tarot.iron_golem.name=The Iron Golem
+tarot.wither_skeleton.name=The Wither Skeleton
+tarot.star.name=The Night Star
