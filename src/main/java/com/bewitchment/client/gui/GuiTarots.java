@@ -23,6 +23,7 @@ public class GuiTarots extends GuiScreen {
 
 	protected static final ResourceLocation background = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_gui.png");
 	protected static final ResourceLocation card_frame = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame.png");
+	protected static final ResourceLocation card_frame_number = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame_number.png");
 	
 	EntityPlayer player;
 	ArrayList<TarotButton> buttons; // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
@@ -87,25 +88,28 @@ public class GuiTarots extends GuiScreen {
 		ScaledResolution sr = new ScaledResolution(mc);
 		int left = ((sr.getScaledWidth() - 252) / 2);
 		int top = ((sr.getScaledHeight() - 192) / 2);
-		Minecraft.getMinecraft().renderEngine.bindTexture(t.getTexture());
-		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 10 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
-		Minecraft.getMinecraft().renderEngine.bindTexture(card_frame);
-		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 10 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
+		int cardX = (int) (left + ((252 - 192 * scale) / 2));
+		int cardY = (int) (top + 15 + ((146 - 256 * scale) / 2));
 		GL11.glPushMatrix();
-		String text = I18n.format(t.getUnlocalizedName());
-		GlStateManager.translate(left + ((252 - mc.fontRenderer.getStringWidth(text) * 0.7) / 2), top + 124, 0);
-		// GlStateManager.scale(0.7, 0.7, 0.7); // This sucks
-		GL11.glScalef(0.7f, 0.7f, 0.7f);
-		mc.fontRenderer.drawString(text, 0, 0, 0xFCD71C, false);
-		GL11.glPopMatrix();
-		if (t.hasNumber()) {
-			GL11.glPushMatrix();
-			String num = "" + t.getNumber();
-			GlStateManager.translate(left + ((252 - mc.fontRenderer.getStringWidth(num) * 0.65) / 2), top + 135, 0);
-			GlStateManager.scale(0.65, 0.65, 0.65);
-			mc.fontRenderer.drawString(num, 0, 0, 0xFCD71C, false);
-			GL11.glPopMatrix();
+		if (t.isReversed()) {
+			GlStateManager.translate(cardX + (192 * scale / 2), cardY + (256 * scale / 2), 0);
+			GlStateManager.rotate(180, 0, 0, 1);
+			GlStateManager.translate(-cardX - (192 * scale / 2), -cardY - (256 * scale / 2), 0);
 		}
+		Minecraft.getMinecraft().renderEngine.bindTexture(t.getTexture());
+		drawModalRectWithCustomSizedTexture(cardX, cardY, 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
+		Minecraft.getMinecraft().renderEngine.bindTexture(t.hasNumber() ? card_frame_number : card_frame);
+		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 15 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
+		
+		if (t.hasNumber()) {
+			String num = "" + t.getNumber();
+			mc.fontRenderer.drawString(num, left + ((252 - mc.fontRenderer.getStringWidth(num)) / 2), top + 139, 0xFCD71C, true);
+		}
+		GL11.glPopMatrix();
+		String name = I18n.format(t.getUnlocalizedName());
+		mc.fontRenderer.drawString(name, left + ((252 - mc.fontRenderer.getStringWidth(name)) / 2), top + 14, 0xFCD71C, true);
+		
+
 	}
 
 	@Override
