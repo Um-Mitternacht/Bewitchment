@@ -2,6 +2,7 @@ package com.bewitchment.common.divination;
 
 
 import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.divination.fortunes.*;
 import com.bewitchment.common.lib.LibMod;
 
 public class ModFortunes {

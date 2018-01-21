@@ -1,7 +1,8 @@
-package com.bewitchment.common.divination;
+package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,5 +42,10 @@ public class FortuneDropBow extends Fortune {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public boolean isNegative() {
+		return true;
 	}
 }

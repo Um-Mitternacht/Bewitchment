@@ -1,6 +1,12 @@
 package com.bewitchment.client.gui;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.bewitchment.api.divination.TarotHandler;
+import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -8,36 +14,35 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class GuiTarots extends GuiScreen {
 
 	protected static final ResourceLocation background = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_gui.png");
 
 	EntityPlayer player;
-	ArrayList<TarotButton> buttons = new ArrayList<TarotButton>(4); // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
+	ArrayList<TarotButton> buttons; // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
+	ArrayList<TarotInfo> data;
+	int pressed = -1;
 
 	public GuiTarots(EntityPlayer player) {
 		this.player = player;
+		this.data = TarotHandler.getTarotsForPlayer(player);
+		this.buttons = new ArrayList<TarotButton>(data.size());
 		this.setGuiSize(252, 192);
-		int t = getTarots();
+		int t = data.size();
 		for (int i = 0; i < t; i++) {
 			int qx = ((252 - (22 * t)) / (t + 1)) * (i + 1) + (i * 22);
 			TarotButton tb = new TarotButton(i, qx, 160);
 			this.buttons.add(tb);
-			if (i == 0)
+			if (i == 0) {
 				tb.setPressed(true);
+				pressed = 0;
+			}
 		}
 	}
 
 	@Override
 	public boolean doesGuiPauseGame() {
 		return true;
-	}
-
-	public int getTarots() {
-		return 5;
 	}
 
 	@Override
@@ -53,11 +58,23 @@ public class GuiTarots extends GuiScreen {
 		for (int i = 0; i < this.buttons.size(); ++i) {
 			this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
 		}
+		drawCard();
+	}
+	
+	private void drawCard() {
+		if (pressed < 0)
+			return; // no card selected
+		String t = data.get(pressed).toString();
+		ScaledResolution sr = new ScaledResolution(mc);
+		int left = ((sr.getScaledWidth() - 252) / 2);
+		int top = ((sr.getScaledHeight() - 192) / 2);
+		drawString(this.mc.fontRenderer, t, left + 30, top + 30, 0);
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		buttons.forEach(b -> b.setPressed(b == button));
+		pressed = button.id;
 	}
 
 	@Override
