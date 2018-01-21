@@ -1,14 +1,14 @@
 package com.bewitchment.api.divination;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.common.lib.LibMod;
-import net.minecraft.client.resources.I18n;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nonnull;
 
 public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 
@@ -75,10 +75,5 @@ public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	public String getUnlocalizedName() {
 		return "fortunes." + this.getRegistryName().getResourceDomain() + "." + this.getRegistryName().getResourcePath() + ".name";
 	}
-
-	public String getLocalizedName(@Nonnull EntityPlayer player) { //Override this to format the fortune differently
-		return I18n.format(getUnlocalizedName());
-	}
-
 }
 

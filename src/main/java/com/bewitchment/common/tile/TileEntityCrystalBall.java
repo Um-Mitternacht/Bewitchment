@@ -1,16 +1,17 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.divination.Fortune;
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityCrystalBall extends TileMod {
 
@@ -47,7 +48,8 @@ public class TileEntityCrystalBall extends TileMod {
 		Fortune fortune = endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).getFortune();
 
 		if (fortune != null) {
-			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", fortune.getLocalizedName(endPlayer)), false);
+			
+			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", new TextComponentTranslation(fortune.getUnlocalizedName())), false);
 			return false;
 		}
 		List<Fortune> valid = Fortune.REGISTRY.getValues().parallelStream().filter(f -> f.canBeUsedFor(endPlayer)).collect(Collectors.toList());
@@ -67,7 +69,7 @@ public class TileEntityCrystalBall extends TileMod {
 			current += entries;
 		}
 		endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).setFortune(fortune);
-		endPlayer.sendStatusMessage(new TextComponentString(fortune.getLocalizedName(endPlayer)), true);
+		endPlayer.sendStatusMessage(new TextComponentTranslation(fortune.getUnlocalizedName()), true);
 		return true;
 	}
 
