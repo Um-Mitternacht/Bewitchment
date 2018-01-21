@@ -92,9 +92,9 @@ public class GuiTarots extends GuiScreen {
 		int cardY = (int) (top + 15 + ((146 - 256 * scale) / 2));
 		GL11.glPushMatrix();
 		if (t.isReversed()) {
-			GlStateManager.translate(cardX + (192 * scale / 2), cardY + (256 * scale / 2), 0);
-			GlStateManager.rotate(180, 0, 0, 1);
-			GlStateManager.translate(-cardX - (192 * scale / 2), -cardY - (256 * scale / 2), 0);
+			GlStateManager.translate(cardX + (192 * scale / 2), cardY + (256 * scale / 2), 0); // Center on the card center
+			GlStateManager.rotate(180, 0, 0, 1);// Rotate everything
+			GlStateManager.translate(-cardX - (192 * scale / 2), -cardY - (256 * scale / 2), 0); // Go back
 		}
 		Minecraft.getMinecraft().renderEngine.bindTexture(t.getTexture());
 		drawModalRectWithCustomSizedTexture(cardX, cardY, 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
