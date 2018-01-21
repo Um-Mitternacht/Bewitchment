@@ -4,6 +4,7 @@ import com.bewitchment.client.gui.*;
 import com.bewitchment.client.gui.container.*;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.*;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
@@ -53,7 +54,7 @@ public class GuiHandler implements IGuiHandler {
 			case BARREL:
 				return tile != null && (tile instanceof TileEntityBarrel) ? new GuiBarrel((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityBarrel) tile) : null;
 			case TAROT:
-				return tile != null && (tile instanceof TileEntityTarotsTable) ? new GuiTarots(player) : null;
+				return tile != null && (tile instanceof TileEntityTarotsTable) ? new GuiTarots() : null;
 			default:
 				return null;
 		}

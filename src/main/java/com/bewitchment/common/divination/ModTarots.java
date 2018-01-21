@@ -18,13 +18,6 @@ public class ModTarots {
 		TarotHandler.registerTarot(new QuickTarot("iron_golem", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.OVERWORLD, p -> false, p -> -1));
 		TarotHandler.registerTarot(new QuickTarot("wither_skeleton", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.NETHER, p -> false, p -> -1));
 		TarotHandler.registerTarot(new QuickTarot("star", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.DREAM, p -> false, p -> -1));
-
-		TarotHandler.registerTarot(new QuickTarot("filler1", p -> true, p -> false, p -> 1));
-		TarotHandler.registerTarot(new QuickTarot("filler2", p -> true, p -> true, p -> 2));
-		TarotHandler.registerTarot(new QuickTarot("filler3", p -> true, p -> false, p -> 3));
-		TarotHandler.registerTarot(new QuickTarot("filler4", p -> true, p -> true, p -> 4));
-		TarotHandler.registerTarot(new QuickTarot("filler5", p -> true, p -> false, p -> 5));
-		TarotHandler.registerTarot(new QuickTarot("filler6", p -> true, p -> true, p -> 6));
 	}
 
 }

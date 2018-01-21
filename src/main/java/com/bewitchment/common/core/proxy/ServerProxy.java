@@ -1,6 +1,10 @@
 package com.bewitchment.common.core.proxy;
 
+import java.util.ArrayList;
+
+import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.client.fx.ParticleF;
+
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -35,5 +39,10 @@ public class ServerProxy implements ISidedProxy {
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return false;
+	}
+	
+	@Override
+	public void handleTarot(ArrayList<TarotInfo> tarots) {
+		// NO-OP
 	}
 }

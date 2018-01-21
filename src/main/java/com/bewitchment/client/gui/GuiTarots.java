@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
 
-import com.bewitchment.api.divination.TarotHandler;
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.lib.LibMod;
 
@@ -15,7 +14,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
@@ -25,18 +23,17 @@ public class GuiTarots extends GuiScreen {
 	protected static final ResourceLocation card_frame = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame.png");
 	protected static final ResourceLocation card_frame_number = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame_number.png");
 
-	EntityPlayer player;
-	ArrayList<TarotButton> buttons; // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
-	ArrayList<TarotInfo> data;
+	ArrayList<TarotButton> buttons = new ArrayList<TarotButton>(0); // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
+	ArrayList<TarotInfo> data = new ArrayList<TarotInfo>(0);
 	int pressed = -1;
+	boolean dataReceived = false;
 
-	public GuiTarots(EntityPlayer player) {
-		this.player = player;
+	public GuiTarots() {
 
-		// These should actually be passed as an argument, after requesting them to the server
-		// Currently they don't work with information stored only serverside (see the diamonds tarot)
-		this.data = TarotHandler.getTarotsForPlayer(player);
+	}
 
+	public void loadData(ArrayList<TarotInfo> fromNetwork) {
+		this.data = fromNetwork;
 		this.buttons = new ArrayList<TarotButton>(data.size());
 		this.setGuiSize(252, 192);
 		int t = data.size();
@@ -49,8 +46,11 @@ public class GuiTarots extends GuiScreen {
 				pressed = 0;
 			}
 		}
+		dataReceived = true;
+		ScaledResolution sr = new ScaledResolution(mc);
+		this.onResize(mc, sr.getScaledWidth(), sr.getScaledHeight());
 	}
-
+	
 	@Override
 	public boolean doesGuiPauseGame() {
 		return true;
@@ -66,20 +66,28 @@ public class GuiTarots extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
-		drawCard();
-		GL11.glColor4f(1f, 1f, 1f, 1f);
-		for (int i = 0; i < this.buttons.size(); ++i) {
-			this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
-		}
-
-		for (int i = 0; i < this.buttons.size(); ++i) {
-			if (this.buttons.get(i).isMouseOver()) {
-				drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
+		if (dataReceived) {
+			drawCard();
+			GL11.glColor4f(1f, 1f, 1f, 1f);
+			for (int i = 0; i < this.buttons.size(); ++i) {
+				this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
 			}
+			
+			for (int i = 0; i < this.buttons.size(); ++i) {
+				if (this.buttons.get(i).isMouseOver()) {
+					drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
+				}
+			}
+		} else {
+			String reading = I18n.format("tarots.reading");
+			ScaledResolution sr = new ScaledResolution(mc);
+			int x = ((sr.getScaledWidth() - mc.fontRenderer.getStringWidth(reading)) / 2);
+			int y = ((sr.getScaledHeight() - mc.fontRenderer.FONT_HEIGHT) / 2);
+			mc.fontRenderer.drawString(reading, x, y, 0xFCD71C, false);
 		}
 
 	}
-
+	
 	private void drawCard() {
 		if (pressed < 0)
 			return; // no card selected
