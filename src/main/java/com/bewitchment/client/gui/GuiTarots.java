@@ -1,13 +1,7 @@
 package com.bewitchment.client.gui;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -16,6 +10,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class GuiTarots extends GuiScreen {
 
@@ -50,7 +48,7 @@ public class GuiTarots extends GuiScreen {
 		ScaledResolution sr = new ScaledResolution(mc);
 		this.onResize(mc, sr.getScaledWidth(), sr.getScaledHeight());
 	}
-	
+
 	@Override
 	public boolean doesGuiPauseGame() {
 		return true;
@@ -72,7 +70,7 @@ public class GuiTarots extends GuiScreen {
 			for (int i = 0; i < this.buttons.size(); ++i) {
 				this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
 			}
-			
+
 			for (int i = 0; i < this.buttons.size(); ++i) {
 				if (this.buttons.get(i).isMouseOver()) {
 					drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
@@ -87,7 +85,7 @@ public class GuiTarots extends GuiScreen {
 		}
 
 	}
-	
+
 	private void drawCard() {
 		if (pressed < 0)
 			return; // no card selected
@@ -108,7 +106,7 @@ public class GuiTarots extends GuiScreen {
 		drawModalRectWithCustomSizedTexture(cardX, cardY, 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
 		Minecraft.getMinecraft().renderEngine.bindTexture(t.hasNumber() ? card_frame_number : card_frame);
 		drawModalRectWithCustomSizedTexture((int) (left + ((252 - 192 * scale) / 2)), (int) (top + 15 + ((146 - 256 * scale) / 2)), 0f, 0f, (int) (192 * scale), (int) (256 * scale), (int) (192 * scale), (int) (256 * scale));
-		
+
 		if (t.hasNumber()) {
 			String num = "" + t.getNumber();
 			mc.fontRenderer.drawString(num, left + ((252 - mc.fontRenderer.getStringWidth(num)) / 2), top + 139, 0xFCD71C, true);
@@ -116,7 +114,7 @@ public class GuiTarots extends GuiScreen {
 		GL11.glPopMatrix();
 		String name = I18n.format(t.getUnlocalizedName());
 		mc.fontRenderer.drawString(name, left + ((252 - mc.fontRenderer.getStringWidth(name)) / 2), top + 14, 0xFCD71C, true);
-		
+
 
 	}
 

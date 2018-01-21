@@ -1,14 +1,13 @@
 package com.bewitchment.api.divination;
 
-import javax.annotation.Nonnull;
-
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nonnull;
 
 public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 

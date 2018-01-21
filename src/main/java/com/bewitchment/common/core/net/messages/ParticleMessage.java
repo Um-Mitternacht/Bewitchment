@@ -2,7 +2,6 @@ package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

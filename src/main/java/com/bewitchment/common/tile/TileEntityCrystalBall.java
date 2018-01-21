@@ -1,17 +1,15 @@
 package com.bewitchment.common.tile;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends TileMod {
 
@@ -48,7 +46,7 @@ public class TileEntityCrystalBall extends TileMod {
 		Fortune fortune = endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).getFortune();
 
 		if (fortune != null) {
-			
+
 			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", new TextComponentTranslation(fortune.getUnlocalizedName())), false);
 			return false;
 		}

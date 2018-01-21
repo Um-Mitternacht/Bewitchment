@@ -1,17 +1,16 @@
 package com.bewitchment.common.core.net.messages;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.divination.TarotHandler;
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.Bewitchment;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+import java.util.ArrayList;
 
 /**
  * This class was created by Arekkuusu on 24/04/2017.
@@ -43,9 +42,9 @@ public class TarotMessage implements IMessage {
 			ByteBufUtils.writeUTF8String(buf, ti.getRegistryName());
 		}
 	}
-	
+
 	public static class TarotMessageHandler implements IMessageHandler<TarotMessage, IMessage> {
-		
+
 		@Override
 		public IMessage onMessage(TarotMessage message, MessageContext ctx) {
 			Bewitchment.proxy.handleTarot(message.info);

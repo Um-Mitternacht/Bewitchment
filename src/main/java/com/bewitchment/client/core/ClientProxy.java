@@ -1,8 +1,5 @@
 package com.bewitchment.client.core;
 
-import java.awt.Color;
-import java.util.ArrayList;
-
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.client.ResourceLocations;
@@ -11,7 +8,10 @@ import com.bewitchment.client.core.event.ClientEvents;
 import com.bewitchment.client.core.event.EnergyHUD;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
-import com.bewitchment.client.handler.*;
+import com.bewitchment.client.handler.BlockCandleColorHandler;
+import com.bewitchment.client.handler.BrewItemColorHandler;
+import com.bewitchment.client.handler.ItemCandleColorHandler;
+import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.BrewRenderer;
 import com.bewitchment.client.render.entity.EmptyRenderer;
 import com.bewitchment.client.render.entity.SpellRenderer;
@@ -29,10 +29,12 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileCauldron;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.*;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,6 +53,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -179,7 +184,7 @@ public class ClientProxy implements ISidedProxy {
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
-	
+
 	@Override
 	public void handleTarot(ArrayList<TarotInfo> tarots) {
 		EntityPlayer p = Minecraft.getMinecraft().player;

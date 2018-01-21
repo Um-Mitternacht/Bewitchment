@@ -1,10 +1,6 @@
 package com.bewitchment.api.divination;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import com.bewitchment.common.lib.LibMod;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +8,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class TarotHandler {
 
@@ -60,6 +59,20 @@ public class TarotHandler {
 			this(tarot, tarot.isReversed(player), tarot.hasNumber(player) ? tarot.getNumber(player) : -1);
 		}
 
+		public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
+			ArrayList<TarotInfo> res = new ArrayList<TarotInfo>(5);
+			int size = buf.readInt();
+			for (int i = 0; i < size; i++) {
+				boolean reversed = buf.readBoolean();
+				int num = buf.readInt();
+				String name = ByteBufUtils.readUTF8String(buf);
+				ITarot tarot = TarotHandler.REGISTRY.getValue(new ResourceLocation(name));
+				TarotInfo ti = new TarotInfo(tarot, reversed, num);
+				res.add(ti);
+			}
+			return res;
+		}
+
 		public boolean isReversed() {
 			return reversed;
 		}
@@ -79,7 +92,7 @@ public class TarotHandler {
 		public String getUnlocalizedName() {
 			return tarot.getUnlocalizedName();
 		}
-		
+
 		public String getRegistryName() {
 			return tarot.getRegistryName().toString();
 		}
@@ -87,20 +100,6 @@ public class TarotHandler {
 		@Override
 		public String toString() {
 			return I18n.format(getUnlocalizedName()) + ", " + number + (reversed ? ", reversed" : "");
-		}
-		
-		public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
-			ArrayList<TarotInfo> res = new ArrayList<TarotInfo>(5);
-			int size = buf.readInt();
-			for (int i = 0; i < size; i++) {
-				boolean reversed = buf.readBoolean();
-				int num = buf.readInt();
-				String name = ByteBufUtils.readUTF8String(buf);
-				ITarot tarot = TarotHandler.REGISTRY.getValue(new ResourceLocation(name));
-				TarotInfo ti = new TarotInfo(tarot, reversed, num);
-				res.add(ti);
-			}
-			return res;
 		}
 	}
 
