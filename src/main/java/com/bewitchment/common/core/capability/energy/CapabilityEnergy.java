@@ -2,8 +2,9 @@ package com.bewitchment.common.core.capability.energy;
 
 import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.common.core.net.EnergyMessage;
 import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.messages.EnergyMessage;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;

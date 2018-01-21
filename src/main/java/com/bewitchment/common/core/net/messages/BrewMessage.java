@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.net;
+package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.api.BrewRegistry;
 import com.bewitchment.api.brew.BrewEffect;

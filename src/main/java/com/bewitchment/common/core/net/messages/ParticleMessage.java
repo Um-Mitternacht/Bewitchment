@@ -1,7 +1,8 @@
-package com.bewitchment.common.core.net;
+package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -29,7 +30,7 @@ public class ParticleMessage implements IMessage {
 	public ParticleMessage() {
 	}
 
-	ParticleMessage(ParticleF particleF, double x, double y, double z, int amount, double xSpeed, double ySpeed, double zSpeed, int... args) {
+	public ParticleMessage(ParticleF particleF, double x, double y, double z, int amount, double xSpeed, double ySpeed, double zSpeed, int... args) {
 		this.particleF = particleF;
 		this.x = x;
 		this.y = y;

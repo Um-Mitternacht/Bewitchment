@@ -5,8 +5,9 @@ import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.api.capability.IBrewStorage;
-import com.bewitchment.common.core.net.BrewMessage;
 import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.messages.BrewMessage;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;

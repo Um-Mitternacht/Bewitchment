@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.net;
+package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
