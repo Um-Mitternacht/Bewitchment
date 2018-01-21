@@ -1,7 +1,6 @@
 package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
-
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -51,5 +50,5 @@ public class FortuneMeetUberSilverfish extends Fortune {
 	public boolean isNegative() {
 		return true;
 	}
-	
+
 }

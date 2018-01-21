@@ -24,7 +24,7 @@ public class GuiTarots extends GuiScreen {
 	protected static final ResourceLocation background = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_gui.png");
 	protected static final ResourceLocation card_frame = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame.png");
 	protected static final ResourceLocation card_frame_number = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarot_frame_number.png");
-	
+
 	EntityPlayer player;
 	ArrayList<TarotButton> buttons; // buttonList acts funky, I add a button but when drawScreen gets called the list is empty
 	ArrayList<TarotInfo> data;
@@ -32,11 +32,11 @@ public class GuiTarots extends GuiScreen {
 
 	public GuiTarots(EntityPlayer player) {
 		this.player = player;
-		
+
 		// These should actually be passed as an argument, after requesting them to the server
 		// Currently they don't work with information stored only serverside (see the diamonds tarot)
 		this.data = TarotHandler.getTarotsForPlayer(player);
-		
+
 		this.buttons = new ArrayList<TarotButton>(data.size());
 		this.setGuiSize(252, 192);
 		int t = data.size();
@@ -71,15 +71,15 @@ public class GuiTarots extends GuiScreen {
 		for (int i = 0; i < this.buttons.size(); ++i) {
 			this.buttons.get(i).drawButton(this.mc, mouseX, mouseY, partialTicks);
 		}
-		
+
 		for (int i = 0; i < this.buttons.size(); ++i) {
 			if (this.buttons.get(i).isMouseOver()) {
 				drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
 			}
 		}
-		
+
 	}
-	
+
 	private void drawCard() {
 		if (pressed < 0)
 			return; // no card selected
