@@ -620,6 +620,7 @@ crystal_ball.read.other=You can see %2$s's future: %1$s
 fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened
 fortunes.bewitchment.meet_silverfish.name=A foul vermin hides in the path
 fortunes.bewitchment.death.name=The path ahead looks very bleak
+fortunes.bewitchment.meet_witch.name=Something wicked this way comes
 fortunes.bewitchment.drop_bow.name=Fingers won't obey when they're most needed
 
 //Tarots
