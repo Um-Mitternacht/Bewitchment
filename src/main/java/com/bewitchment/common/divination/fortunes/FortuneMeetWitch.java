@@ -32,6 +32,7 @@ public class FortuneMeetWitch extends Fortune {
 				witch.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				witch.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(witch);
+				//Calm down Satan
 				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
 					witch.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
 				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
@@ -44,6 +45,8 @@ public class FortuneMeetWitch extends Fortune {
 					witch.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 900, 1));
 				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
 					witch.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 900, 1));
+				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+					witch.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 1));
 				return true;
 			}
 		}

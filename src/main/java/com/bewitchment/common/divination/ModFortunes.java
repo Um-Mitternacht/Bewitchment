@@ -16,9 +16,9 @@ public class ModFortunes {
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
 		silverfish = new FortuneMeetUberSilverfish(8, "meet_silverfish", LibMod.MOD_ID);
-		witch = new FortuneMeetWitch(7, "meet_witch", LibMod.MOD_ID);
+		witch = new FortuneMeetWitch(5, "meet_witch", LibMod.MOD_ID);
 		dropBow = new FortuneDropBow(7, "drop_bow", LibMod.MOD_ID);
-		death = new FortuneDeath(2, "death", LibMod.MOD_ID);
+		death = new FortuneDeath(1, "death", LibMod.MOD_ID);
 		registerAll();
 	}
 
