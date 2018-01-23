@@ -61,7 +61,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		if (player.ticksExisted % 40 == 0 && player instanceof EntityPlayer) {
 			EntityPlayer p = (EntityPlayer) player;
-			boolean flag = p.getActivePotionEffect(MobEffects.POISON) != null || p.getActivePotionEffect(MobEffects.NAUSEA) != null || p.getActivePotionEffect(MobEffects.WITHER) != null || p.getActivePotionEffect(MobEffects.BLINDNESS) != null;
+			boolean flag = p.getActivePotionEffect(MobEffects.POISON) != null || p.getActivePotionEffect(MobEffects.NAUSEA) != null || p.getActivePotionEffect(MobEffects.WITHER) != null || p.getActivePotionEffect(MobEffects.BLINDNESS) != null || p.getActivePotionEffect(MobEffects.WEAKNESS) != null;
 			p.removePotionEffect(MobEffects.NAUSEA);
 			p.removePotionEffect(MobEffects.WITHER);
 			p.removePotionEffect(MobEffects.BLINDNESS);
