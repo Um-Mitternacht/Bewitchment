@@ -38,6 +38,12 @@ public class FortuneMeetWitch extends Fortune {
 					witch.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
 				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
 					witch.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
+				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+					witch.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 900, 1));
+				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+					witch.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 900, 1));
+				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+					witch.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 900, 1));
 				return true;
 			}
 		}
