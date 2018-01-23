@@ -3,10 +3,8 @@ package com.bewitchment.common.brew;
 import com.bewitchment.api.brew.IBrew;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.monster.*;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,7 +20,7 @@ public class DemonsBaneBrew implements IBrew {
 
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
-		if (entity instanceof EntityBlaze || entity instanceof EntityMagmaCube || entity instanceof EntityPigZombie || entity instanceof EntityGhast) {
+		if (entity instanceof EntityBlaze || entity instanceof EntityMagmaCube || entity instanceof EntityPigZombie || entity instanceof EntityGhast || entity instanceof EntityWither || entity instanceof EntityWitherSkeleton) {
 			entity.attackEntityFrom(DamageSource.MAGIC, 13);
 		}
 	}
