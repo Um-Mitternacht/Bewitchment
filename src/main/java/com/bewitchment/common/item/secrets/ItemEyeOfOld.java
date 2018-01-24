@@ -43,6 +43,9 @@ public class ItemEyeOfOld extends ItemMod {
 				}
 				if (stack.getDisplayName().compareToIgnoreCase("Izu") == 0) {
 					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
+				}
+				if (stack.getDisplayName().compareToIgnoreCase("Izuxe43ui520815") == 0) {
+					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
 				} else {
 					return new ModelResourceLocation(baseName.toString());
 				}
