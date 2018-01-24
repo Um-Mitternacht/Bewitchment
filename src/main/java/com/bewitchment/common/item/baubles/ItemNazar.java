@@ -72,7 +72,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, .75F, 1.9f);
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
