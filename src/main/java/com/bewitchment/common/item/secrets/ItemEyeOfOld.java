@@ -38,6 +38,9 @@ public class ItemEyeOfOld extends ItemMod {
 				if (stack.getDisplayName().compareToIgnoreCase("Haruspex") == 0) {
 					baseName = new ResourceLocation(LibMod.MOD_ID + ":haru");
 				}
+				if (stack.getDisplayName().compareToIgnoreCase("H4rv5p3x") == 0) {
+					baseName = new ResourceLocation(LibMod.MOD_ID + ":haru");
+				}
 				if (stack.getDisplayName().compareToIgnoreCase("Izuxe") == 0) {
 					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
 				}
