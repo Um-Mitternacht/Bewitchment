@@ -24,6 +24,7 @@ public class TarotHandler {
 		REGISTRY.register(tarot);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static ArrayList<TarotInfo> getTarotsForPlayer(EntityPlayer player) {
 
 		ArrayList<TarotInfo> res = new ArrayList<TarotInfo>(5);

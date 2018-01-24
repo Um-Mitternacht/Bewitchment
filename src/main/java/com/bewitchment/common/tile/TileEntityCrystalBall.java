@@ -33,6 +33,7 @@ public class TileEntityCrystalBall extends TileMod {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean readFortune(@Nonnull EntityPlayer endPlayer, @Nullable EntityPlayer externalReader) {
 
 		// This is here to support reading to others in the future
