@@ -24,10 +24,10 @@ public class QuickTarot implements ITarot {
 		rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarots/" + name + ".png");
 		this.reverse = reverse;
 		if (reverse == null)
-			reverse = p -> p.getRNG().nextBoolean();
+			this.reverse = p -> p.getRNG().nextBoolean();
 		this.getNum = getNum;
 		if (getNum == null)
-			getNum = p -> -1;
+			this.getNum = p -> -1;
 		this.apply = apply;
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, name));
 	}
