@@ -1,13 +1,12 @@
 package com.bewitchment.common.divination.tarots;
 
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 import com.bewitchment.api.divination.ITarot;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class QuickTarot implements ITarot {
 
