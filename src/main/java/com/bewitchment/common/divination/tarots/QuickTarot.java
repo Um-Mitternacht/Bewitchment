@@ -1,12 +1,13 @@
 package com.bewitchment.common.divination.tarots;
 
-import com.bewitchment.api.divination.ITarot;
-import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import com.bewitchment.api.divination.ITarot;
+import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class QuickTarot implements ITarot {
 
@@ -17,12 +18,16 @@ public class QuickTarot implements ITarot {
 	Function<EntityPlayer, Integer> getNum;
 
 	public QuickTarot(String name, Predicate<EntityPlayer> apply, Predicate<EntityPlayer> reverse, Function<EntityPlayer, Integer> getNum) {
-		validateAll(name, apply, reverse, getNum);
+		validateAll(name, apply);
 		this.name = name;
 		this.unlocalizedName = "tarot." + name + ".name";
 		rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarots/" + name + ".png");
 		this.reverse = reverse;
+		if (reverse == null)
+			reverse = p -> p.getRNG().nextBoolean();
 		this.getNum = getNum;
+		if (getNum == null)
+			getNum = p -> -1;
 		this.apply = apply;
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, name));
 	}

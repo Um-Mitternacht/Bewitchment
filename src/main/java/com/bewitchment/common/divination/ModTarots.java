@@ -13,11 +13,12 @@ public class ModTarots {
 	}
 
 	public static void init() {
-		TarotHandler.registerTarot(new QuickTarot("enderman", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.END, p -> false, p -> -1));
-		TarotHandler.registerTarot(new QuickTarot("diamonds", p -> p.getCapability(CapabilityDivination.CAPABILITY, null).getFortune() != null, p -> p.getCapability(CapabilityDivination.CAPABILITY, null).getFortune().isNegative(), p -> -1));
-		TarotHandler.registerTarot(new QuickTarot("iron_golem", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.OVERWORLD, p -> false, p -> -1));
-		TarotHandler.registerTarot(new QuickTarot("wither_skeleton", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.NETHER, p -> false, p -> -1));
-		TarotHandler.registerTarot(new QuickTarot("star", p -> EnergyHandler.getEnergy(p).orElseGet(() -> DummyIEnergy.INSTANCE).getType() == EnumInfusionType.DREAM, p -> false, p -> -1));
+		TarotHandler.registerTarot(new QuickTarot("enderman", p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getType() == EnumInfusionType.END, null, null));
+		TarotHandler.registerTarot(new QuickTarot("diamonds", p -> p.getCapability(CapabilityDivination.CAPABILITY, null).getFortune() != null, p -> p.getCapability(CapabilityDivination.CAPABILITY, null).getFortune().isNegative(), null));
+		TarotHandler.registerTarot(new QuickTarot("iron_golem", p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getType() == EnumInfusionType.OVERWORLD, null, null));
+		TarotHandler.registerTarot(new QuickTarot("wither_skeleton", p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getType() == EnumInfusionType.NETHER, null, null));
+		TarotHandler.registerTarot(new QuickTarot("star", p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getType() == EnumInfusionType.DREAM, null, null));
+		TarotHandler.registerTarot(new QuickTarot("nitwit", p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getMax() / 800 > 0, null, p -> EnergyHandler.getEnergy(p).orElse(DummyIEnergy.INSTANCE).getMax() / 800));
 	}
 
 }
