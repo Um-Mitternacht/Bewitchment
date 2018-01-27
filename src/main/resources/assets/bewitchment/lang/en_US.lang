@@ -122,6 +122,7 @@ item.remedy_talisman.name=Token of Remedies
 item.tarots.name=Tarots Deck
 item.tarots.read_to=They are receptive to %s's future
 item.tarots.error_reading=The cards predictions make no sense
+item.bark_belt.name=Bark Belt [Change name maybe?]
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
@@ -574,6 +575,7 @@ witch.tooltip.horseshoe_description.name=Horseshoes seem to be rather lucky trin
 witch.tooltip.triskelion_amulet_description.name=This amulet seems to provide some strength against foes, but drains you slightly.
 witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
 witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
+witch.tooltip.bark_belt_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
 
 //Books
 item.book_of_shadows.name=Book of Shadows
