@@ -1,16 +1,11 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.item.ModItems;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.item.ModItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,38 +25,147 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class ItemBarkBelt extends ItemMod implements IBauble {
-	
+
 	private static final int BARK_PIECES = 5;// 0 means max charge, 5 means break
 	private static final BaubleType BAUBTYPE = BaubleType.BELT;
-	
+
 	public ItemBarkBelt(String id) {
 		super(id);
 		this.setMaxDamage(BARK_PIECES + 1);
 		this.setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
+	/**
+	 * Returns how many bark pieces are currently on the item work.
+	 * This doesn't take into account the max number of pieces! If you need a
+	 * precise amount, refresh it first if on a server, or use {@link #getBarkPiecesForRendering(EntityPlayer)}
+	 * on a client
+	 *
+	 * @param player The player
+	 * @return The amount of pieces
+	 */
+	public static int getBarkPieces(EntityPlayer player) {
+		ItemStack belt = getBarkBelt(player);
+		if (belt.getItem() == ModItems.bark_belt) {
+			return BARK_PIECES - belt.getItemDamage();
+		}
+		return 0;
+	}
+
+	/**
+	 * Retrieves the bark belt itemstack worn by a player
+	 *
+	 * @param player The player
+	 * @return The Bark Belt itemstack, if the player wears one, or an empty stack if the player is wearing something else or nothing
+	 */
+	public static ItemStack getBarkBelt(EntityPlayer player) {
+		ItemStack bb = BaublesApi.getBaublesHandler(player).getStackInSlot(BAUBTYPE.getValidSlots()[0]);
+		if (bb.getItem() == ModItems.bark_belt)
+			return bb;
+		return ItemStack.EMPTY;
+	}
+
+	/**
+	 * Sets the number of bark pieces on a player.
+	 * If the player has no belt, this does nothing.
+	 * If the amount is too high, it sets it to the maximum
+	 * If too few it breaks the belt
+	 *
+	 * @param player The player
+	 * @param pieces The amount of pieces to have on a player
+	 */
+	public static void setBarkBeltPieces(EntityPlayer player, int pieces) {
+		ItemStack is = getBarkBelt(player);
+		if (is.isEmpty())
+			return;
+		if (pieces > BARK_PIECES) {
+			pieces = BARK_PIECES;
+		} else if (pieces < 1) {
+			is.setCount(0);
+		} else {
+			int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
+			int actual = Math.min(possible, pieces);
+			is.setItemDamage(BARK_PIECES - actual);
+		}
+	}
+
+	/**
+	 * Restores a piece of bark on a player
+	 *
+	 * @param player The player
+	 */
+	public static void buildBark(EntityPlayer player) {
+		ItemStack bb = getBarkBelt(player);
+		if (!bb.isEmpty()) {
+			setBarkBeltPieces(player, getBarkPieces(player) + 1);
+		}
+	}
+
+	/**
+	 * Pops off a piece of bark from a player
+	 *
+	 * @param player The player
+	 */
+	public static void destroyBark(EntityPlayer player) {
+		ItemStack bb = getBarkBelt(player);
+		if (!bb.isEmpty()) {
+			setBarkBeltPieces(player, getBarkPieces(player) - 1);
+		}
+	}
+
+	/**
+	 * ONLY CALL IF SURE TO HAVE A BARK BELT EQUIPPED, THIS DOESN'T CHECK
+	 * <p>
+	 * This recalibrates the max bark pieces that can stay on a player after the armor's value changes
+	 */
+	public static void refreshMaxBark(EntityPlayer player) {
+		ItemStack is = getBarkBelt(player);
+		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
+		int actual = Math.min(possible, getBarkPieces(player));
+		is.setItemDamage(BARK_PIECES - actual);
+	}
+
+	/**
+	 * Returns how many pieces of bark are currently on the player, capped for desync reasons (hud would go on top of missing armor)
+	 *
+	 * @param player The player
+	 */
+	@SideOnly(Side.CLIENT)
+	public static int getBarkPiecesForRendering(EntityPlayer player) {
+		ItemStack belt = getBarkBelt(player);
+		if (belt.getItem() == ModItems.bark_belt) {
+			int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
+			int actual = Math.min(possible, BARK_PIECES - belt.getItemDamage());
+			return actual;
+		}
+		return 0;
+	}
+
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		return BAUBTYPE;
 	}
-	
+
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isDamaged(ItemStack stack) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isDamageable() {
 		return true;
 	}
-	
+
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
 		if (!entity.world.isRemote) {
@@ -77,7 +181,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 			}
 		}
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
@@ -94,24 +198,24 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
-	
+
 	@Override
 	public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
 		return true;// TODO swap from bark damage to an internal counter and sync up manually when it changes
 	}
-	
+
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
 		itemstack.setItemDamage(BARK_PIECES);
 		refreshMaxBark((EntityPlayer) player);
 	}
-	
+
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		itemstack.setItemDamage(BARK_PIECES);
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerDamaged(LivingHurtEvent evt) {
 		if (!evt.getEntityLiving().world.isRemote && evt.getAmount() > 2 && evt.getSource().getTrueSource() != null && evt.getEntityLiving() instanceof EntityPlayer) {
@@ -125,7 +229,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onEquipmentChanged(LivingEquipmentChangeEvent evt) {
 		if (!evt.getEntityLiving().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
@@ -134,124 +238,11 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 			}
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
-	
-	/**
-	 * Returns how many bark pieces are currently on the item work.
-	 * This doesn't take into account the max number of pieces! If you need a
-	 * precise amount, refresh it first if on a server, or use {@link #getBarkPiecesForRendering(EntityPlayer)}
-	 * on a client
-	 * 
-	 * @param player
-	 *            The player
-	 * @return The amount of pieces
-	 */
-	public static int getBarkPieces(EntityPlayer player) {
-		ItemStack belt = getBarkBelt(player);
-		if (belt.getItem() == ModItems.bark_belt) {
-			return BARK_PIECES - belt.getItemDamage();
-		}
-		return 0;
-	}
-	
-	/**
-	 * Retrieves the bark belt itemstack worn by a player
-	 * 
-	 * @param player
-	 *            The player
-	 * @return The Bark Belt itemstack, if the player wears one, or an empty stack if the player is wearing something else or nothing
-	 */
-	public static ItemStack getBarkBelt(EntityPlayer player) {
-		ItemStack bb = BaublesApi.getBaublesHandler(player).getStackInSlot(BAUBTYPE.getValidSlots()[0]);
-		if (bb.getItem() == ModItems.bark_belt)
-			return bb;
-		return ItemStack.EMPTY;
-	}
-	
-	/**
-	 * Sets the number of bark pieces on a player.
-	 * If the player has no belt, this does nothing.
-	 * If the amount is too high, it sets it to the maximum
-	 * If too few it breaks the belt
-	 * 
-	 * @param player
-	 *            The player
-	 * @param pieces
-	 *            The amount of pieces to have on a player
-	 */
-	public static void setBarkBeltPieces(EntityPlayer player, int pieces) {
-		ItemStack is = getBarkBelt(player);
-		if (is.isEmpty())
-			return;
-		if (pieces > BARK_PIECES) {
-			pieces = BARK_PIECES;
-		} else if (pieces < 1) {
-			is.setCount(0);
-		} else {
-			int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
-			int actual = Math.min(possible, pieces);
-			is.setItemDamage(BARK_PIECES - actual);
-		}
-	}
-	
-	/**
-	 * Restores a piece of bark on a player
-	 * 
-	 * @param player
-	 *            The player
-	 */
-	public static void buildBark(EntityPlayer player) {
-		ItemStack bb = getBarkBelt(player);
-		if (!bb.isEmpty()) {
-			setBarkBeltPieces(player, getBarkPieces(player) + 1);
-		}
-	}
-	
-	/**
-	 * Pops off a piece of bark from a player
-	 * 
-	 * @param player
-	 *            The player
-	 */
-	public static void destroyBark(EntityPlayer player) {
-		ItemStack bb = getBarkBelt(player);
-		if (!bb.isEmpty()) {
-			setBarkBeltPieces(player, getBarkPieces(player) - 1);
-		}
-	}
-	
-	/**
-	 * ONLY CALL IF SURE TO HAVE A BARK BELT EQUIPPED, THIS DOESN'T CHECK
-	 * 
-	 * This recalibrates the max bark pieces that can stay on a player after the armor's value changes
-	 */
-	public static void refreshMaxBark(EntityPlayer player) {
-		ItemStack is = getBarkBelt(player);
-		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
-		int actual = Math.min(possible, getBarkPieces(player));
-		is.setItemDamage(BARK_PIECES - actual);
-	}
-	
-	/**
-	 * Returns how many pieces of bark are currently on the player, capped for desync reasons (hud would go on top of missing armor)
-	 * 
-	 * @param player
-	 *            The player
-	 */
-	@SideOnly(Side.CLIENT)
-	public static int getBarkPiecesForRendering(EntityPlayer player) {
-		ItemStack belt = getBarkBelt(player);
-		if (belt.getItem() == ModItems.bark_belt) {
-			int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
-			int actual = Math.min(possible, BARK_PIECES - belt.getItemDamage());
-			return actual;
-		}
-		return 0;
-	}
-	
+
 }
