@@ -8,8 +8,10 @@ import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -243,6 +245,11 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
+	}
+
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return enchantment == Enchantments.BINDING_CURSE;
 	}
 
 }
