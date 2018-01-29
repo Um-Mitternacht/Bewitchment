@@ -35,6 +35,8 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 import java.util.List;
 
+;
+
 public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 
 	private static final int BARK_PIECES = 5;// 0 means max charge, 5 means break
@@ -58,8 +60,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	 * precise amount, refresh it first if on a server ({@link #refreshMaxBark(EntityPlayer)}), or use {@link #getBarkPiecesForRendering(EntityPlayer)}
 	 * on a client
 	 *
-	 * @param player
-	 *            The player
+	 * @param player The player
 	 * @return The amount of pieces
 	 */
 	public static int getBarkPieces(EntityPlayer player) {
@@ -260,7 +261,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.DARK_GREEN + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
 
 	@Override

@@ -12,12 +12,12 @@ import net.minecraft.block.material.Material;
 
 public class BlockPlanks extends Block {
 
-		public BlockPlanks(String name) {
-			super(Material.WOOD);
-			this.setUnlocalizedName("planks_"+name);
-			this.setRegistryName(LibMod.MOD_ID, "planks_"+name);
-			this.setHarvestLevel("axe", 0);
-			this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
-			this.setSoundType(SoundType.WOOD);
-		}
+	public BlockPlanks(String name) {
+		super(Material.WOOD);
+		this.setUnlocalizedName("planks_" + name);
+		this.setRegistryName(LibMod.MOD_ID, "planks_" + name);
+		this.setHarvestLevel("axe", 0);
+		this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		this.setSoundType(SoundType.WOOD);
 	}
+}
