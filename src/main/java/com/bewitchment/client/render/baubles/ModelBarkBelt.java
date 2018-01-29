@@ -1,9 +1,7 @@
-
 package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.item.baubles.ItemBarkBelt;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -16,12 +14,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelBarkBelt extends ModelBase {
-	
+
 	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/bark_belt.png");
-	
-    public ModelRenderer armfakeleft;
-    public ModelRenderer armfakeright;
-    public ModelRenderer Rootright1;
+
+	public ModelRenderer armfakeleft;
+	public ModelRenderer armfakeright;
+	public ModelRenderer Rootright1;
 	public ModelRenderer Rootleft1;
 	public ModelRenderer Belt2;
 	public ModelRenderer Belt;
@@ -41,18 +39,18 @@ public class ModelBarkBelt extends ModelBase {
 	public ModelRenderer Pauldronrighttop2;
 	public ModelRenderer pauldronrightback;
 	public ModelRenderer pauldronrightfront;
-    public ModelRenderer Rootright2;
-    public ModelRenderer Rootleft2;
-    public ModelRenderer barkfront3b;
-    public ModelRenderer barkfront3c;
-    public ModelRenderer barkfront3d;
+	public ModelRenderer Rootright2;
+	public ModelRenderer Rootleft2;
+	public ModelRenderer barkfront3b;
+	public ModelRenderer barkfront3c;
+	public ModelRenderer barkfront3d;
 	public ModelRenderer barkfront2b;
 	public ModelRenderer barkfront2c;
 	public ModelRenderer barkfront1b;
 	public ModelRenderer barkfront1c;
-    public ModelRenderer barkback3b;
-    public ModelRenderer barkback3c;
-    public ModelRenderer barkback3d;
+	public ModelRenderer barkback3b;
+	public ModelRenderer barkback3c;
+	public ModelRenderer barkback3d;
 	public ModelRenderer barkback2b;
 	public ModelRenderer barkback2c;
 	public ModelRenderer barkback1b;
@@ -60,7 +58,7 @@ public class ModelBarkBelt extends ModelBase {
 
 	public ModelBarkBelt() {
 		this.textureWidth = 32;
-        this.textureHeight = 32;
+		this.textureHeight = 32;
 		this.barkback1a = new ModelRenderer(this, 1, 27);
 		this.barkback1a.setRotationPoint(-1.5F, 10.04F, 3.0F);
 		this.barkback1a.addBox(0.0F, -3.0F, 0.0F, 2, 3, 1, 0.0F);
@@ -102,12 +100,12 @@ public class ModelBarkBelt extends ModelBase {
 		this.pauldronlefttop2.setRotationPoint(1.5F, 0.0F, 0.0F);
 		this.pauldronlefttop2.addBox(0.0F, 0.0F, -3.0F, 3, 1, 6, 0.0F);
 		this.setRotateAngle(pauldronlefttop2, 0.0F, 0.0F, 0.43633234628809603F);
-        this.armfakeright = new ModelRenderer(this, 62, 47);
+		this.armfakeright = new ModelRenderer(this, 62, 47);
 		this.armfakeright.mirror = true;
-        this.armfakeright.setRotationPoint(5.0F, 2.0F, 0.0F);
+		this.armfakeright.setRotationPoint(5.0F, 2.0F, 0.0F);
 		this.armfakeright.addBox(0.0F, -2.0F, -2.0F, 0, 0, 0, 0.0F);
-        this.Rootright1 = new ModelRenderer(this, 21, 26);
-        this.Rootright1.setRotationPoint(0.5F, 5.0F, 2.5F);
+		this.Rootright1 = new ModelRenderer(this, 21, 26);
+		this.Rootright1.setRotationPoint(0.5F, 5.0F, 2.5F);
 		this.Rootright1.addBox(0.0F, -2.0F, 0.0F, 2, 2, 3, 0.0F);
 		this.setRotateAngle(Rootright1, 0.6108652381980153F, 0.2617993877991494F, 0.0F);
 		this.barkfront3b = new ModelRenderer(this, 16, 21);
@@ -133,8 +131,8 @@ public class ModelBarkBelt extends ModelBase {
 		this.Barkfront1a.setRotationPoint(1.5F, 10.04F, -3.0F);
 		this.Barkfront1a.addBox(0.0F, -3.0F, 0.0F, 2, 3, 1, 0.0F);
 		this.setRotateAngle(Barkfront1a, 0.05375614096142535F, -0.17383479349863523F, -0.0153588974175501F);
-        this.Rootleft1 = new ModelRenderer(this, 21, 26);
-        this.Rootleft1.setRotationPoint(-0.5F, 5.0F, 2.5F);
+		this.Rootleft1 = new ModelRenderer(this, 21, 26);
+		this.Rootleft1.setRotationPoint(-0.5F, 5.0F, 2.5F);
 		this.Rootleft1.addBox(-2.0F, -2.0F, 0.0F, 2, 2, 3, 0.0F);
 		this.setRotateAngle(Rootleft1, 0.6108652381980153F, -0.2617993877991494F, 0.0F);
 		this.Belt3 = new ModelRenderer(this, 1, 1);
@@ -144,7 +142,7 @@ public class ModelBarkBelt extends ModelBase {
 		this.barkfront3d.setRotationPoint(-2.2878177165985107F, -2.080759048461914F, 0.3301289975643158F);
 		this.barkfront3d.addBox(-2.0F, -3.0F, 0.0F, 2, 3, 1, 0.0F);
 		this.setRotateAngle(barkfront3d, -0.42063677337711863F, 0.2867452177299217F, -0.334097154017912F);
-        this.barkfront1c = new ModelRenderer(this, 17, 25);
+		this.barkfront1c = new ModelRenderer(this, 17, 25);
 		this.barkfront1c.setRotationPoint(-2.954423189163208F, -0.01818070188164711F, 0.5206272006034851F);
 		this.barkfront1c.addBox(-2.0F, -2.0F, 0.0F, 2, 2, 1, 0.0F);
 		this.setRotateAngle(barkfront1c, -0.015215062708624117F, 0.3488441755276304F, 0.012701695067186129F);
@@ -165,7 +163,7 @@ public class ModelBarkBelt extends ModelBase {
 		this.Rootleft2.setRotationPoint(-0.5F, -0.5F, 3.0F);
 		this.Rootleft2.addBox(-1.0F, -1.0F, 0.0F, 1, 1, 2, 0.0F);
 		this.setRotateAngle(Rootleft2, 0.2617993877991494F, -0.3490658503988659F, 0.0F);
-        this.barkback3b = new ModelRenderer(this, 16, 21);
+		this.barkback3b = new ModelRenderer(this, 16, 21);
 		this.barkback3b.setRotationPoint(-2.2953593730926514F, 0.199678435921669F, 0.8008123636245728F);
 		this.barkback3b.addBox(-2.0F, -2.0F, -1.0F, 3, 2, 1, 0.0F);
 		this.setRotateAngle(barkback3b, -0.15734173766502388F, 0.42867029867388357F, -0.08382197165770001F);
@@ -228,52 +226,52 @@ public class ModelBarkBelt extends ModelBase {
 		this.barkfront3a.addChild(this.barkfront3c);
 		this.pauldronrighttop1.addChild(this.pauldronrightfront);
 		this.barkback2a.addChild(this.barkback2b);
-    }
+	}
 
-    @Override
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float f5) {
 		if (!(entity instanceof EntityPlayer))
 			return;
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-		
+
 		int barkPieces = ItemBarkBelt.getBarkPiecesForRendering((EntityPlayer) entity);
-		
+
 		if (barkPieces > 0) {
 			this.barkback1a.render(f5);
 			this.Barkfront1a.render(f5);
 		}
-		
+
 		if (barkPieces > 1) {
 			this.barkback2a.render(f5);
 			this.barkfront2a.render(f5);
 		}
-		
+
 		if (barkPieces > 2) {
 			this.barkback3a.render(f5);
 			this.barkfront3a.render(f5);
 		}
-		
+
 		if (barkPieces > 3) {
 			this.armfakeleft.render(f5);
 			this.armfakeright.render(f5);
 		}
-		
+
 		if (barkPieces > 4) {
 			this.Rootleft1.render(f5);
 			this.Rootright1.render(f5);
 		}
-		
+
 
 		this.Belt.render(f5);
 		this.Belt2.render(f5);
 		this.Belt3.render(f5);
 		this.Belt4.render(f5);
 
-    }
+	}
 
 	protected void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
 }

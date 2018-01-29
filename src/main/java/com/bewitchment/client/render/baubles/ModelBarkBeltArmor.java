@@ -1,8 +1,6 @@
-
 package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,12 +9,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelBarkBeltArmor extends ModelBarkBelt {
-	
+
 	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/bark_belt.png");
 
 	public ModelBarkBeltArmor() {
 		this.textureWidth = 32;
-        this.textureHeight = 32;
+		this.textureHeight = 32;
 		this.barkback1a = new ModelRenderer(this, 1, 27);
 		this.barkback1a.setRotationPoint(-1.5F, 10.04F, 4.0F);
 		this.barkback1a.addBox(0.0F, -3.0F, 0.0F, 2, 3, 1, 0.0F);
@@ -98,9 +96,9 @@ public class ModelBarkBeltArmor extends ModelBarkBelt {
 		this.barkback1b.setRotationPoint(-0.4055797755718231F, -0.020214997231960297F, 0.5788751840591431F);
 		this.barkback1b.addBox(-2.5F, -4.0F, -0.5F, 3, 4, 1, 0.0F);
 		this.setRotateAngle(barkback1b, 0.035444551902461F, 0.1744255332284755F, 0.0061536955906296405F);
-        this.armfakeright = new ModelRenderer(this, 62, 47);
+		this.armfakeright = new ModelRenderer(this, 62, 47);
 		this.armfakeright.mirror = true;
-        this.armfakeright.setRotationPoint(5.0F, 2.0F, 0.0F);
+		this.armfakeright.setRotationPoint(5.0F, 2.0F, 0.0F);
 		this.armfakeright.addBox(0.0F, -2.0F, -2.0F, 0, 0, 0, 0.0F);
 		this.barkback2b = new ModelRenderer(this, 8, 20);
 		this.barkback2b.setRotationPoint(-0.2363673448562622F, -1.0835572481155396F, 0.900143027305603F);
@@ -132,11 +130,11 @@ public class ModelBarkBeltArmor extends ModelBarkBelt {
 		this.pauldronrighttop1.setRotationPoint(0.5F, -4.0F, 0.0F);
 		this.pauldronrighttop1.addBox(-1.5F, 0.0F, -3.5F, 3, 1, 7, 0.0F);
 		this.setRotateAngle(pauldronrighttop1, 0.0F, 0.0F, 0.17453292519943295F);
-        this.Rootright1 = new ModelRenderer(this, 21, 26);
+		this.Rootright1 = new ModelRenderer(this, 21, 26);
 		this.Rootright1.setRotationPoint(0.5F, 5.0F, 3.5F);
 		this.Rootright1.addBox(0.0F, -2.0F, 0.0F, 2, 2, 3, 0.0F);
 		this.setRotateAngle(Rootright1, 0.6108652381980153F, 0.2617993877991494F, 0.0F);
-        this.Rootleft1 = new ModelRenderer(this, 21, 26);
+		this.Rootleft1 = new ModelRenderer(this, 21, 26);
 		this.Rootleft1.setRotationPoint(-0.5F, 5.0F, 3.5F);
 		this.Rootleft1.addBox(-2.0F, -2.0F, 0.0F, 2, 2, 3, 0.0F);
 		this.setRotateAngle(Rootleft1, 0.6108652381980153F, -0.2617993877991494F, 0.0F);
@@ -156,7 +154,7 @@ public class ModelBarkBeltArmor extends ModelBarkBelt {
 		this.barkfront1b.setRotationPoint(-0.4055797755718231F, -0.02021503821015358F, 0.5788751840591431F);
 		this.barkfront1b.addBox(-2.5F, -4.0F, -0.5F, 3, 4, 1, 0.0F);
 		this.setRotateAngle(barkfront1b, 0.035444630965055866F, 0.1744255332284755F, 0.006153645656359201F);
-        this.barkback3b = new ModelRenderer(this, 16, 21);
+		this.barkback3b = new ModelRenderer(this, 16, 21);
 		this.barkback3b.setRotationPoint(-2.2953593730926514F, 0.199678435921669F, 0.8008123636245728F);
 		this.barkback3b.addBox(-2.0F, -2.0F, -1.0F, 3, 2, 1, 0.0F);
 		this.setRotateAngle(barkback3b, -0.15734173766502388F, 0.42867029867388357F, -0.08382197165770001F);
@@ -184,5 +182,5 @@ public class ModelBarkBeltArmor extends ModelBarkBelt {
 		this.barkfront3a.addChild(this.barkfront3b);
 		this.Barkfront1a.addChild(this.barkfront1b);
 		this.barkback3a.addChild(this.barkback3b);
-    }
+	}
 }
