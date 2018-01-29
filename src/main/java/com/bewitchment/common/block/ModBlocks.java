@@ -16,6 +16,7 @@ import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
+import com.bewitchment.common.block.natural.tree.BlockPlanks;
 import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.lib.LibBlockName;
@@ -99,6 +100,10 @@ public final class ModBlocks {
 	public static final Block leaves_juniper = PLACE_HOLDER;
 	public static final Block leaves_yew = PLACE_HOLDER;
 	public static final Block leaves_cypress = PLACE_HOLDER;
+	public static final Block planks_elder = PLACE_HOLDER;
+	public static final Block planks_juniper = PLACE_HOLDER;
+	public static final Block planks_yew = PLACE_HOLDER;
+	public static final Block planks_cypress = PLACE_HOLDER;
 	public static final Block sapling = PLACE_HOLDER;
 	public static final Block moonbell = PLACE_HOLDER;
 	public static final Block witch_altar = PLACE_HOLDER;
@@ -204,6 +209,10 @@ public final class ModBlocks {
 				new BlockModLeaves(LibBlockName.LEAVES_JUNIPER),
 				new BlockModLeaves(LibBlockName.LEAVES_YEW),
 				new BlockModLeaves(LibBlockName.LEAVES_CYPRESS),
+				new BlockPlanks(LibBlockName.PLANKS_ELDER),
+				new BlockPlanks(LibBlockName.PLANKS_JUNIPER),
+				new BlockPlanks(LibBlockName.PLANKS_YEW),
+				new BlockPlanks(LibBlockName.PLANKS_CYPRESS),
 				new BlockModSapling(LibBlockName.SAPLING)
 		);
 	}
