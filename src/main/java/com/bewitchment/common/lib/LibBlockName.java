@@ -77,6 +77,10 @@ public final class LibBlockName {
 	public static final String LEAVES_JUNIPER = "leaves_juniper";
 	public static final String LEAVES_YEW = "leaves_yew";
 	public static final String LEAVES_CYPRESS = "leaves_cypress";
+	public static final String PLANKS_ELDER = "planks_elder";
+	public static final String PLANKS_JUNIPER = "planks_juniper";
+	public static final String PLANKS_YEW = "planks_yew";
+	public static final String PLANKS_CYPRESS = "planks_cypress";
 	public static final String SAPLING = "sapling";
 	public static final String MOONBELL = "moonbell";
 	public static final String WITCH_ALTAR = "witch_altar";
