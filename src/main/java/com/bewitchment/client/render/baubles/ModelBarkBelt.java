@@ -8,6 +8,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -252,6 +253,11 @@ public class ModelBarkBelt extends ModelBase {
 		}
 
 		if (barkPieces > 3) {
+			float f = 1.0f;
+			f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+			float armrot = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * limbSwingAmount / f;
+			this.armfakeleft.rotateAngleX = (float) (armrot * Math.PI / 360) * 1.1f;
+			this.armfakeright.rotateAngleX = -this.armfakeleft.rotateAngleX;
 			this.armfakeleft.render(f5);
 			this.armfakeright.render(f5);
 		}

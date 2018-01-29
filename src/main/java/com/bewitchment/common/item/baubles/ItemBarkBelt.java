@@ -55,10 +55,11 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	/**
 	 * Returns how many bark pieces are currently on the item work.
 	 * This doesn't take into account the max number of pieces! If you need a
-	 * precise amount, refresh it first if on a server, or use {@link #getBarkPiecesForRendering(EntityPlayer)}
+	 * precise amount, refresh it first if on a server ({@link #refreshMaxBark(EntityPlayer)}), or use {@link #getBarkPiecesForRendering(EntityPlayer)}
 	 * on a client
 	 *
-	 * @param player The player
+	 * @param player
+	 *            The player
 	 * @return The amount of pieces
 	 */
 	public static int getBarkPieces(EntityPlayer player) {
@@ -219,7 +220,12 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
-		itemstack.setItemDamage(BARK_PIECES);
+		if (player instanceof EntityPlayer) {
+			if (((EntityPlayer) player).isCreative())
+				itemstack.setItemDamage(0);
+			else
+				itemstack.setItemDamage(BARK_PIECES);
+		}
 		refreshMaxBark((EntityPlayer) player);
 	}
 
@@ -273,8 +279,8 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 			GL11.glPushMatrix();
 			IRenderBauble.Helper.rotateIfSneaking(player);
 			GL11.glRotated(180, 1, 0, 0);
-			GL11.glTranslated(0, 0, 0.01);
-			GL11.glScaled(0.125, 0.125, 0.125);
+			GL11.glTranslated(0, 0, 0.02);
+			GL11.glScaled(0.12, 0.12, 0.12);
 			IRenderBauble.Helper.translateToChest();
 			IRenderBauble.Helper.defaultTransforms();
 			if (player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty()) {
