@@ -1,11 +1,21 @@
 package com.bewitchment.common.item.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.client.render.baubles.ModelBarkBelt;
+import com.bewitchment.client.render.baubles.ModelBarkBeltArmor;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.item.ModItems;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.item.ModItems;
+import baubles.api.render.IRenderBauble;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -13,6 +23,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -27,13 +38,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
-public class ItemBarkBelt extends ItemMod implements IBauble {
+public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 
 	private static final int BARK_PIECES = 5;// 0 means max charge, 5 means break
 	private static final BaubleType BAUBTYPE = BaubleType.BELT;
+	
+	@SideOnly(Side.CLIENT)
+	private static ModelBarkBelt model;
+	@SideOnly(Side.CLIENT)
+	private static ModelBarkBelt model_with_armor;
 
 	public ItemBarkBelt(String id) {
 		super(id);
@@ -252,4 +265,28 @@ public class ItemBarkBelt extends ItemMod implements IBauble {
 		return enchantment == Enchantments.BINDING_CURSE;
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
+		if (type == RenderType.BODY) {
+			if (model == null) {
+				model = new ModelBarkBelt();
+				model_with_armor = new ModelBarkBeltArmor();
+			}
+			GL11.glPushMatrix();
+			IRenderBauble.Helper.rotateIfSneaking(player);
+			GL11.glRotated(180, 1, 0, 0);
+			GL11.glTranslated(0, 0, 0.01);
+			GL11.glScaled(0.125, 0.125, 0.125);
+			IRenderBauble.Helper.translateToChest();
+			IRenderBauble.Helper.defaultTransforms();
+			if (player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty()) {
+				model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
+			} else {
+				model_with_armor.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
+			}
+			GL11.glPopMatrix();
+		}
+	}
+	
 }
