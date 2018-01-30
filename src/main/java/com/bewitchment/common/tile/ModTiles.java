@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public final class ModTiles {
 
 	private static final String CAULDRON = "cauldron";
-	private static final String CANDLE = "candle";
 	private static final String APIARY = "apiary";
 	private static final String OVEN = "oven";
 	private static final String WITCH_ALTAR = "witch_altar";
@@ -26,7 +25,6 @@ public final class ModTiles {
 	public static void registerAll() {
 
 		GameRegistry.registerTileEntity(TileCauldron.class, CAULDRON);
-		GameRegistry.registerTileEntity(TileCandle.class, CANDLE);
 		GameRegistry.registerTileEntity(TileApiary.class, APIARY);
 		GameRegistry.registerTileEntity(TileOven.class, OVEN);
 		GameRegistry.registerTileEntity(TileEntityWitchAltar.class, WITCH_ALTAR);

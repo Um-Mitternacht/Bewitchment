@@ -1,20 +1,13 @@
 package com.bewitchment.common.item;
 
-import baubles.api.BaubleType;
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.item.baubles.*;
-import com.bewitchment.common.item.block.ItemBlockBarrel;
-import com.bewitchment.common.item.block.ItemBlockColor;
-import com.bewitchment.common.item.block.ItemBlockSapling;
-import com.bewitchment.common.item.block.ItemGemOre;
+import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.food.ItemFilledBowl;
-import com.bewitchment.common.item.food.ItemGrilledWatermelon;
-import com.bewitchment.common.item.food.ItemHeart;
-import com.bewitchment.common.item.food.ItemHoney;
+import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
@@ -25,13 +18,12 @@ import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
+import baubles.api.BaubleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -254,7 +246,6 @@ public final class ModItems {
 		);
 		// Item Blocks
 		registry.registerAll(
-				new ItemBlockColor(ModBlocks.candle_large),
 				new ItemBlockColor(ModBlocks.candle_medium),
 				new ItemBlockColor(ModBlocks.candle_small),
 				itemBlock(ModBlocks.fake_ice),

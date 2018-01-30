@@ -37,7 +37,8 @@ public final class LibBlockName {
 	public static final String SILVER_BLOCK = "silver_block";
 	public static final String MOLDAVITE_BLOCK = "moldavite_block";
 	public static final String BLOODSTONE_BLOCK = "bloodstone_block";
-	public static final String CANDLE_LARGE = "candle_large";
+	public static final String CANDLE_SMALL_LIT = "candle_small_lit";
+	public static final String CANDLE_MEDIUM_LIT = "candle_medium_lit";
 	public static final String CANDLE_MEDIUM = "candle_medium";
 	public static final String CANDLE_SMALL = "candle_small";
 	public static final String APIARY = "apiary";

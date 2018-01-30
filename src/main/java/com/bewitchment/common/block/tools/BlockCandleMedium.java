@@ -1,8 +1,12 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.lib.LibBlockName;
+import java.util.Random;
+
+import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -18,8 +22,8 @@ public class BlockCandleMedium extends BlockCandle {
 
 	private static final AxisAlignedBB MEDIUM_BOX = new AxisAlignedBB(0.31, 0, 0.31, 0.69, 0.75, 0.69);
 
-	public BlockCandleMedium() {
-		super(LibBlockName.CANDLE_MEDIUM);
+	public BlockCandleMedium(String id, boolean lit) {
+		super(id, lit);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -35,6 +39,11 @@ public class BlockCandleMedium extends BlockCandle {
 				items.add(new ItemStack(this, 1, i));
 			}
 		}
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(ModBlocks.candle_medium);
 	}
 
 	@Override

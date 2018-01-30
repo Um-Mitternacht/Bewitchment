@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "color=white": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=orange": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=magenta": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=light_blue": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=yellow": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=lime": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=pink": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=gray": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=silver": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=cyan": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=purple": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=blue": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=brown": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=green": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=red": {
+      "model": "bewitchment:candle_medium"
+    },
+    "color=black": {
+      "model": "bewitchment:candle_medium"
+    }
+  }
+}

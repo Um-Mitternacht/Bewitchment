@@ -1,8 +1,12 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.lib.LibBlockName;
+import java.util.Random;
+
+import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -18,8 +22,8 @@ public class BlockCandleSmall extends BlockCandle {
 
 	private static final AxisAlignedBB SMALL_BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
 
-	public BlockCandleSmall() {
-		super(LibBlockName.CANDLE_SMALL);
+	public BlockCandleSmall(String id, boolean lit) {
+		super(id, lit);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -30,10 +34,18 @@ public class BlockCandleSmall extends BlockCandle {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		{
-			for (int i = 0; i < 16; ++i) {
-				items.add(new ItemStack(this, 1, i));
-			}
+		for (int i = 0; i < 16; ++i) {
+			items.add(new ItemStack(this, 1, i));
 		}
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(ModBlocks.candle_small);
+	}
+	
+	@Override
+	public int getType() {
+		return 0;
 	}
 }
