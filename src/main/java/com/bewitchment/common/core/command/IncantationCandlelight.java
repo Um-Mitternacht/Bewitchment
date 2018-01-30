@@ -25,7 +25,7 @@ class IncantationCandlelight implements IIncantation {
 	public void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		World world = sender.getEntityWorld();
 		BlockPos source = sender.getPosition();
-		for (BlockPos pos : BlockPos.getAllInBox(source.add(7, 3, 7), source.add(-5, -5, -5))) {
+		for (BlockPos pos : BlockPos.getAllInBox(source.add(7, 3, 7), source.add(-7, -3, -7))) {
 			IBlockState state = world.getBlockState(pos);
 			boolean flag = false;
 			if (state.getBlock() == ModBlocks.candle_medium) {
