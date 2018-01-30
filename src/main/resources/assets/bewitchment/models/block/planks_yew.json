@@ -1,6 +1,6 @@
 {
-	"parent": "block/cube_all",
-    "textures": {
-        "all": "bewitchment:blocks/planks_yew"
-    }
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "bewitchment:blocks/planks_yew"
+  }
 }

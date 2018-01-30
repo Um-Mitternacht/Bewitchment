@@ -1,7 +1,6 @@
 package com.bewitchment.common.block.natural.tree;
 
 import com.bewitchment.common.block.BlockMod;
-
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
