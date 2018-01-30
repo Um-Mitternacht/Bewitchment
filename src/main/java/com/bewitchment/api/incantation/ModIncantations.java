@@ -1,20 +1,22 @@
-package com.bewitchment.common.core.command;
+package com.bewitchment.api.incantation;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.bewitchment.common.core.command.*;
 
 /**
  * This class was created by Arekkuusu on 19/04/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public final class ModCommands {
+public final class ModIncantations {
 
 	//Todo: Convert all of these into spells.
 
-	static final Map<String, IIncantation> commands = new HashMap<>();
+	private static final Map<String, IIncantation> commands = new HashMap<>();
 
-	private ModCommands() {
+	private ModIncantations() {
 	}
 
 	public static void init() {
@@ -25,6 +27,10 @@ public final class ModCommands {
 	}
 
 	private static void addIncantation(String name, IIncantation incantation) {
-		commands.put(name, incantation);
+		getCommands().put(name, incantation);
+	}
+
+	public static Map<String, IIncantation> getCommands() {
+		return commands;
 	}
 }

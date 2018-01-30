@@ -2,13 +2,12 @@ package com.bewitchment.common.core.command;
 
 import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
+import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +18,7 @@ import net.minecraft.world.World;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-class IncantationSnuff implements IIncantation {
+public class IncantationSnuff implements IIncantation {
 
 	@Override
 	public void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
@@ -45,6 +44,10 @@ class IncantationSnuff implements IIncantation {
 				}
 			}
 		}
-		EnergyHandler.addEnergy((EntityPlayer) sender, 800);
+	}
+	
+	@Override
+	public int getCost() {
+		return 100;
 	}
 }

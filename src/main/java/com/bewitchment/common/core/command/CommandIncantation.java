@@ -1,16 +1,22 @@
 package com.bewitchment.common.core.command;
 
-import com.google.common.collect.Lists;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.math.BlockPos;
-
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.api.incantation.IIncantation;
+import com.bewitchment.api.incantation.ModIncantations;
+import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.google.common.collect.Lists;
+
+import net.minecraft.command.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 
 /**
  * This class was created by BerciTheBeast on 19.4.2017.
@@ -26,12 +32,12 @@ public class CommandIncantation implements ICommand {
 
 	@Override
 	public String getName() {
-		return "incant";
+		return "chant";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) {
-		return "/incant [incantation]";
+		return "/chant [incantation]";
 	}
 
 	@Override
@@ -47,8 +53,30 @@ public class CommandIncantation implements ICommand {
 		if (args.length < 1) throw new WrongUsageException("commands.incantation.usage");
 		if (sender.getCommandSenderEntity() == null) return;
 		final String command = args[0];
-		if (ModCommands.commands.containsKey(command)) {
-			ModCommands.commands.get(command).cast(server, sender, args);
+		if (ModIncantations.getCommands().containsKey(command)) {
+			IIncantation incantation = ModIncantations.getCommands().get(command);
+			if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
+				Optional<IEnergy> ienopt = EnergyHandler.getEnergy(player);
+				if (ienopt.isPresent()) {
+					if (ienopt.get().get() >= incantation.getCost()) {
+						
+						// FIXME when energy is 0 it doesn't get synced and acts weird
+						// see aqua incantation, it gets casted succesfully but seems to use no power
+						EnergyHandler.addEnergy(player, -incantation.getCost());
+						
+						try {
+							incantation.cast(server, sender, args);
+						} catch (CommandException e) {
+							e.printStackTrace();
+						}
+					} else {
+						throw new CommandException("commands.incantation.no_energy", sender.getName());
+					}
+				} else {
+					throw new CommandException("commands.incantation.no_energy", sender.getName());
+				}
+			}
 		} else {
 			throw new CommandException("commands.incantation.notFound", sender.getName());
 		}
@@ -61,7 +89,7 @@ public class CommandIncantation implements ICommand {
 
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
-		return Lists.newArrayList(ModCommands.commands.keySet());
+		return Lists.newArrayList(ModIncantations.getCommands().keySet().stream().filter(s -> args.length == 0 || s.startsWith(args[args.length - 1])).collect(Collectors.toList()));
 	}
 
 	@Override

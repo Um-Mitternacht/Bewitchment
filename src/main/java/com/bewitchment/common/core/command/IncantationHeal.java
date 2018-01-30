@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.command;
 
+import com.bewitchment.api.incantation.IIncantation;
+
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,7 +14,7 @@ import net.minecraft.server.MinecraftServer;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-class IncantationHeal implements IIncantation {
+public class IncantationHeal implements IIncantation {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
@@ -21,5 +23,10 @@ class IncantationHeal implements IIncantation {
 		if (entity.isEntityAlive() && entity.getHealth() < entity.getMaxHealth()) {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 0));
 		}
+	}
+	
+	@Override
+	public int getCost() {
+		return 1000;
 	}
 }

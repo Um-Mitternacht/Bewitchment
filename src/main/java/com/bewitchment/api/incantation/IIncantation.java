@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.command;
+package com.bewitchment.api.incantation;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -9,7 +9,9 @@ import net.minecraft.server.MinecraftServer;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-interface IIncantation {
+public interface IIncantation {
 
 	void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException;
+	
+	int getCost();
 }

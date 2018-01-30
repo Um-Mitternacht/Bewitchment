@@ -1,6 +1,8 @@
 package com.bewitchment.common.core.command;
 
+import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,7 +16,7 @@ import net.minecraft.server.MinecraftServer;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-class IncantationFisheye implements IIncantation {
+public class IncantationFisheye implements IIncantation {
 
 	//Todo: Make this only affect vision.
 	@SuppressWarnings("ConstantConditions")
@@ -27,5 +29,10 @@ class IncantationFisheye implements IIncantation {
 
 			EnergyHandler.addEnergy((EntityPlayer) sender, 800);
 		}
+	}
+	
+	@Override
+	public int getCost() {
+		return 800;
 	}
 }

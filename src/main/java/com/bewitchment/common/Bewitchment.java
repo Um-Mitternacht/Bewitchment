@@ -1,5 +1,6 @@
 package com.bewitchment.common;
 
+import com.bewitchment.api.incantation.ModIncantations;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
@@ -8,7 +9,6 @@ import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.energy_item.CapabilityEnergyUser;
 import com.bewitchment.common.core.command.CommandIncantation;
-import com.bewitchment.common.core.command.ModCommands;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -110,7 +110,7 @@ public class Bewitchment {
 
 	@EventHandler
 	public void start(FMLServerStartingEvent event) {
-		ModCommands.init();
+		ModIncantations.init();
 		event.registerServerCommand(new CommandIncantation());
 	}
 }
