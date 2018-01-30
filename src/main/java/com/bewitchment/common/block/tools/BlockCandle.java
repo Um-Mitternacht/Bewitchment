@@ -10,6 +10,7 @@ import com.bewitchment.common.block.ModBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -150,9 +151,21 @@ public abstract class BlockCandle extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		if (!this.canPlaceBlockAt(worldIn, pos))
+		if (!this.canPlaceBlockAt(worldIn, pos)) {
+			this.dropBlockAsItem(worldIn, pos, state, 0);
 			worldIn.destroyBlock(pos, false);
+		}
 	}
-
+	
+	@Override
+	public int quantityDropped(IBlockState state, int fortune, Random random) {
+		return 1;
+	}
+	
+	@Override
+	public EnumPushReaction getMobilityFlag(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
+	
 	public abstract int getType();
 }
