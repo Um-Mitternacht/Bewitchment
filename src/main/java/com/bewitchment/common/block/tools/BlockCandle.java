@@ -19,6 +19,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -138,11 +139,13 @@ public abstract class BlockCandle extends BlockMod {
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
 	}
 
+	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (isLit) {
-			world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7 + getType() * 0.25, pos.getZ() + 0.5, 0, 0, 0);
+			Vec3d offset = getOffset(state, world, pos);
+			world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5 + offset.x, pos.getY() + 0.7 + getType() * 0.25, pos.getZ() + 0.5 + offset.z, 0, 0, 0);
 		}
 	}
 
