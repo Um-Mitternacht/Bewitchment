@@ -1,8 +1,11 @@
 package com.bewitchment.common.block.tools;
 
+import static com.bewitchment.api.BewitchmentAPI.COLOR;
+
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.tile.TileCandle;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -22,8 +25,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.
@@ -50,9 +51,10 @@ public class BlockCandle extends BlockMod implements ITileEntityProvider {
 		}
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
 	public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return MapColor.getBlockColor((EnumDyeColor) state.getValue(COLOR));
+		return MapColor.getBlockColor(state.getValue(COLOR));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -115,10 +117,14 @@ public class BlockCandle extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		final TileCandle candle = (TileCandle) world.getTileEntity(pos);
-		return candle != null && candle.isLit() ? (int) (15.0F * (0.5F + getType() * 0.25)) : 0;
+		TileEntity te = world.getTileEntity(pos);
+		if (te instanceof TileCandle) {
+			final TileCandle candle = (TileCandle) te;
+			return candle != null && candle.isLit() ? (int) (15.0F * (0.5F + getType() * 0.25)) : super.getLightValue(state, world, pos);
+		}
+		return super.getLightValue(state, world, pos);
 	}
-
+	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
