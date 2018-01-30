@@ -28,7 +28,7 @@ public class BlockCandleSmall extends BlockCandle {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return SMALL_BOX;
+		return SMALL_BOX.offset(state.getOffset(source, pos));
 	}
 
 	@Override
@@ -46,5 +46,10 @@ public class BlockCandleSmall extends BlockCandle {
 	@Override
 	public int getType() {
 		return 0;
+	}
+
+	@Override
+	public EnumOffsetType getOffsetType() {
+		return EnumOffsetType.XZ;
 	}
 }

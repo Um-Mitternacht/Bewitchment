@@ -154,6 +154,7 @@ public abstract class BlockCandle extends BlockMod {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.DESTROY;
