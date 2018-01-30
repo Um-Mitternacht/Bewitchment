@@ -107,12 +107,11 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (isLit) {
-			if (state.getBlock() == ModBlocks.candle_medium_lit)
-				world.setBlockState(pos, ModBlocks.candle_medium.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
-			else if (state.getBlock() == ModBlocks.candle_small_lit)
-				world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
-		} else {
+		if (state.getBlock() == ModBlocks.candle_medium_lit)
+			world.setBlockState(pos, ModBlocks.candle_medium.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+		else if (state.getBlock() == ModBlocks.candle_small_lit)
+			world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+		else {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (!heldItem.isEmpty() && heldItem.getItem() == Items.FLINT_AND_STEEL) {
 				heldItem.damageItem(1, playerIn);
@@ -132,7 +131,7 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return isLit ? (int) (15.0F * (0.5F + getType() * 0.25)) : 0;
+		return isLit ? 5 + getType() * 5 : 0;
 	}
 
 	@Override
@@ -152,14 +151,8 @@ public abstract class BlockCandle extends BlockMod {
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!this.canPlaceBlockAt(worldIn, pos)) {
-			this.dropBlockAsItem(worldIn, pos, state, 0);
-			worldIn.destroyBlock(pos, false);
+			worldIn.destroyBlock(pos, true);
 		}
-	}
-	
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		return 1;
 	}
 	
 	@Override
