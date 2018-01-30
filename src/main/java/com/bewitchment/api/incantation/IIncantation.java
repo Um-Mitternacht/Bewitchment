@@ -12,6 +12,6 @@ import net.minecraft.server.MinecraftServer;
 public interface IIncantation {
 
 	void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException;
-	
+
 	int getCost();
 }

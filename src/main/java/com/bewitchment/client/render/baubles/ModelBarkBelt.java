@@ -2,7 +2,6 @@ package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.item.baubles.ItemBarkBelt;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -168,30 +167,30 @@ public class ModelBarkBelt extends ModelBase {
 		this.rootLeft3.setRotationPoint(-0.5F, 8.0F, 3.5F);
 		this.rootLeft3.addBox(-1.0F, -1.0F, 0.0F, 1, 1, 2, 0.0F);
 		this.setRotateAngle(rootLeft3, 0.5235987755982988F, -0.3490658503988659F, 0.0F);
-		
+
 		this.barkFront2a.addChild(this.barkFront2c);
 		this.barkFront2a.addChild(this.barkFront2b);
-		
+
 		this.rootLeft1.addChild(this.rootLeft2);
-		
+
 		this.barkBack3a.addChild(this.barkBack3b);
 		this.barkBack3a.addChild(this.barkBack3d);
 		this.barkBack3a.addChild(this.barkBack3c);
-		
+
 		this.barkFront3a.addChild(this.barkFront3d);
 		this.barkFront3a.addChild(this.barkFront3c);
 		this.barkFront3a.addChild(this.barkFront3b);
-		
+
 		this.barkBack1a.addChild(this.barkBack1b);
 		this.barkBack1a.addChild(this.barkBack1c);
 		this.barkFront1a.addChild(this.barkFront1b);
 		this.barkFront1a.addChild(this.barkFront1c);
-		
+
 		this.rootRight1.addChild(this.rootRight2);
-		
+
 		this.barkBack2a.addChild(this.barkBack2c);
 		this.barkBack2a.addChild(this.barkBack2b);
-		
+
 	}
 
 	@Override
@@ -201,14 +200,14 @@ public class ModelBarkBelt extends ModelBase {
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 
 		int barkPieces = ItemBarkBelt.getBarkPiecesForRendering((EntityPlayer) entity);
-		
+
 		if (barkPieces > 0) {
 			this.belt1.render(f5);
 			this.belt2.render(f5);
 			this.belt3.render(f5);
 			this.belt4.render(f5);
 		}
-		
+
 		if (barkPieces > 1) {
 			barkBack1a.render(1);
 			barkFront1a.render(1);
@@ -228,7 +227,6 @@ public class ModelBarkBelt extends ModelBase {
 			rootRight1.render(1);
 			rootLeft1.render(1);
 		}
-
 
 
 	}

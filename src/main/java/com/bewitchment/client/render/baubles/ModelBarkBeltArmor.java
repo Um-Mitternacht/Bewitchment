@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;

@@ -1,7 +1,6 @@
 package com.bewitchment.common.core.command;
 
 import com.bewitchment.api.incantation.IIncantation;
-
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +23,7 @@ public class IncantationHeal implements IIncantation {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 0));
 		}
 	}
-	
+
 	@Override
 	public int getCost() {
 		return 1000;

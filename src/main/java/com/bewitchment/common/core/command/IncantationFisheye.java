@@ -2,7 +2,6 @@ package com.bewitchment.common.core.command;
 
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
-
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,7 +29,7 @@ public class IncantationFisheye implements IIncantation {
 			EnergyHandler.addEnergy((EntityPlayer) sender, 800);
 		}
 	}
-	
+
 	@Override
 	public int getCost() {
 		return 800;

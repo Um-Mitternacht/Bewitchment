@@ -1,13 +1,8 @@
 package com.bewitchment.common.block.tools;
 
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
-
-import java.util.Random;
-
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -29,13 +24,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Random;
+
+import static com.bewitchment.api.BewitchmentAPI.COLOR;
+
 /**
  * This class was created by Arekkuusu on 11/03/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public abstract class BlockCandle extends BlockMod {
-	
+
 	private boolean isLit;
 
 	public BlockCandle(String id, boolean lit) {
@@ -138,7 +137,7 @@ public abstract class BlockCandle extends BlockMod {
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
@@ -146,7 +145,7 @@ public abstract class BlockCandle extends BlockMod {
 			world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7 + getType() * 0.25, pos.getZ() + 0.5, 0, 0, 0);
 		}
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
@@ -154,11 +153,11 @@ public abstract class BlockCandle extends BlockMod {
 			worldIn.destroyBlock(pos, true);
 		}
 	}
-	
+
 	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.DESTROY;
 	}
-	
+
 	public abstract int getType();
 }

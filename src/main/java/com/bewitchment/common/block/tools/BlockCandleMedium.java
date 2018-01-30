@@ -1,9 +1,6 @@
 package com.bewitchment.common.block.tools;
 
-import java.util.Random;
-
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,6 +9,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
+import java.util.Random;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -38,7 +37,7 @@ public class BlockCandleMedium extends BlockCandle {
 			items.add(new ItemStack(this, 1, i));
 		}
 	}
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(ModBlocks.candle_medium);

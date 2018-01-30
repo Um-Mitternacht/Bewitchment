@@ -1,10 +1,7 @@
 package com.bewitchment.common.core.command;
 
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
-
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -12,6 +9,8 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 4/20/2017.
@@ -45,7 +44,7 @@ public class IncantationCandlelight implements IIncantation {
 			}
 		}
 	}
-	
+
 	@Override
 	public int getCost() {
 		return 100;

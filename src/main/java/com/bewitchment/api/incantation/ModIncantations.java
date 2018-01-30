@@ -1,9 +1,12 @@
 package com.bewitchment.api.incantation;
 
+import com.bewitchment.common.core.command.IncantationCandlelight;
+import com.bewitchment.common.core.command.IncantationFisheye;
+import com.bewitchment.common.core.command.IncantationHeal;
+import com.bewitchment.common.core.command.IncantationSnuff;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.bewitchment.common.core.command.*;
 
 /**
  * This class was created by Arekkuusu on 19/04/2017.
