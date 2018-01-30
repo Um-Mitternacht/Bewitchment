@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
  * the MIT license.
  */
 @SuppressWarnings("deprecation")
-public class TileCandle extends TileMod implements ITickable {
+public class TileCandle extends TileMod implements ITickable { // TODO no reason for them to be tickable tiles, we can achieve the same results with blockstates
 
 	private EnumDyeColor color;
 	private boolean lit;
