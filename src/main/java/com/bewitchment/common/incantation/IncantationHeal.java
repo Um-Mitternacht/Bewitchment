@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.command;
+package com.bewitchment.common.incantation;
 
 import com.bewitchment.api.incantation.IIncantation;
 import net.minecraft.command.CommandException;

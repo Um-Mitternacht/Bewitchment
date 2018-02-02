@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.command;
+package com.bewitchment.common.incantation;
 
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.block.ModBlocks;
@@ -17,7 +17,7 @@ import static com.bewitchment.api.BewitchmentAPI.COLOR;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class IncantationSnuff implements IIncantation {
+public class IncantationCandlelight implements IIncantation {
 
 	@Override
 	public void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
@@ -26,12 +26,12 @@ public class IncantationSnuff implements IIncantation {
 		for (BlockPos pos : BlockPos.getAllInBox(source.add(7, 3, 7), source.add(-7, -3, -7))) {
 			IBlockState state = world.getBlockState(pos);
 			boolean flag = false;
-			if (state.getBlock() == ModBlocks.candle_medium_lit) {
-				world.setBlockState(pos, ModBlocks.candle_medium.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+			if (state.getBlock() == ModBlocks.candle_medium) {
+				world.setBlockState(pos, ModBlocks.candle_medium_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
 				flag = true;
 			}
-			if (state.getBlock() == ModBlocks.candle_small_lit) {
-				world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+			if (state.getBlock() == ModBlocks.candle_small) {
+				world.setBlockState(pos, ModBlocks.candle_small_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
 				flag = true;
 			}
 			if (flag) {
