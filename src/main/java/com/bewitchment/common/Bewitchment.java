@@ -1,10 +1,5 @@
 package com.bewitchment.common;
 
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.bewitchment.api.incantation.ModIncantations;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -29,7 +24,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -38,6 +32,10 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -113,7 +111,7 @@ public class Bewitchment {
 		ModIncantations.init();
 		event.registerServerCommand(new CommandIncantation());
 	}
-	
+
 	@EventHandler
 	public void setFlight(FMLServerStartedEvent evt) {
 		FMLCommonHandler.instance().getMinecraftServerInstance().setAllowFlight(true);

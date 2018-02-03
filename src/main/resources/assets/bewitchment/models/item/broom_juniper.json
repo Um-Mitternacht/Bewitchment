@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "bewitchment:items/broom_juniper"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bewitchment:items/broom_juniper"
+  }
 }
