@@ -5,6 +5,9 @@
     "inventory": {
       "model": "bewitchment:raging_grass",
       "transform": "forge:default-block"
+    },
+    "normal": {
+      "model": "bewitchment:raging_grass"
     }
   }
 }
