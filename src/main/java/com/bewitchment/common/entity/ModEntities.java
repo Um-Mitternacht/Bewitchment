@@ -3,11 +3,9 @@ package com.bewitchment.common.entity;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.dispenser.BehaviorProjectileDispense;
-import net.minecraft.dispenser.IBehaviorDispenseItem;
-import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.dispenser.IPosition;
+import net.minecraft.dispenser.*;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -51,6 +49,7 @@ public final class ModEntities {
 				}).dispense(source, stack);
 			}
 		});
+		EntityRegistry.registerModEntity(getResource("broom"), EntityFlyingBroom.class, "broom", id++, Bewitchment.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(getResource("brew_linger"), EntityBrewLinger.class, "brew_linger", id, Bewitchment.instance, 64, 1, false);
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(ModItems.brew_phial_linger, new IBehaviorDispenseItem() {
 			@Override

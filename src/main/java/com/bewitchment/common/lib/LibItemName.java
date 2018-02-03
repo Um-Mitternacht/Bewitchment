@@ -121,6 +121,7 @@ public final class LibItemName {
 	public static final String REMEDY_TALISMAN = "remedy_talisman";
 	public static final String TAROTS = "tarots";
 	public static final String BARK_BELT = "bark_belt";
+	public static final String BROOM = "broom";
 
 
 	private LibItemName() {
