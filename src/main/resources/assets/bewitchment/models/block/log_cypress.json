@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "bewitchment:blocks/log_cypress_top",
+    "side": "bewitchment:blocks/log_cypress"
+  }
+}

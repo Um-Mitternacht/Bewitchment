@@ -39,6 +39,11 @@
         "textures": {
           "cross": "bewitchment:blocks/crop/crop_silphium_6"
         }
+      },
+      "7": {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_silphium_7"
+        }
       }
     }
   }

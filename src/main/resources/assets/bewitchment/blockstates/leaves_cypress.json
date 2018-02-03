@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "normal": {
+      "model": "bewitchment:leaves_cypress"
+    }
+  },
+  "variants": {
+    "check_decay": {
+      "true": {
+        "model": "bewitchment:leaves_cypress"
+      },
+      "false": {
+        "model": "bewitchment:leaves_cypress"
+      }
+    },
+    "decayable": {
+      "true": {
+        "model": "bewitchment:leaves_cypress"
+      },
+      "false": {
+        "model": "bewitchment:leaves_cypress"
+      }
+    }
+  }
+}

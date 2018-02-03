@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "bewitchment:blocks/log_cypress_top",
+      "side": "bewitchment:blocks/log_cypress",
+      "all": "bewitchment:blocks/log_cypress"
+    }
+  },
+  "variants": {
+    "axis": {
+      "x": {
+        "x": 90,
+        "y": 90
+      },
+      "y": {
+      },
+      "z": {
+        "x": 90
+      },
+      "none": {
+        "model": "cube_all"
+      }
+    }
+  }
+}
