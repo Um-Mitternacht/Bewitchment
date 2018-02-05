@@ -1,8 +1,13 @@
 package com.bewitchment.common.block.tools;
 
+import static com.bewitchment.api.BewitchmentAPI.COLOR;
+
+import java.util.Random;
+
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -16,20 +21,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
-
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.
@@ -177,6 +176,13 @@ public abstract class BlockCandle extends BlockMod {
 		for (int i = 0; i < 16; ++i) {
 			items.add(new ItemStack(this, 1, i));
 		}
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		if (isLit)
+			return new ItemStack(state.getBlock() == ModBlocks.candle_medium_lit ? ModBlocks.candle_medium : ModBlocks.candle_small, 1, state.getBlock().getMetaFromState(state));
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 
 }
