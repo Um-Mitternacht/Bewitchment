@@ -123,6 +123,12 @@ item.tarots.name=Tarots Deck
 item.tarots.read_to=They are receptive to %s's future
 item.tarots.error_reading=The cards predictions make no sense
 item.bark_belt.name=Bark Belt [Change name maybe?]
+item.broom_mundane.name=Broom
+item.broom_elder.name=Elder Broom
+item.broom_juniper.name=Juniper Broom
+item.broom_yew.name=Yew Broom
+item.broom_cypress.name=Cypress Broom
+item.gem_powder.name=Gem Powder
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
@@ -234,6 +240,7 @@ tile.crop_wormwood.name=Wormwood Crop
 tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
 tile.moonbell.name=Moonbell Flower
+tile.raging_grass.name=Raging Grass
 
 //Barrels
 tile.barrel.name=Barrel
@@ -246,6 +253,7 @@ tile.barrel_big_oak.name=Dark Oak Barrel
 tile.barrel_elder.name=Elder Barrel
 tile.barrel_juniper.name=Juniper Barrel
 tile.barrel_yew.name=Yew Barrel
+tile.barrel_cypress.name=Cypress Barrel
 tile.barrel.full=%s (%d/%d)
 tile.barrel.empty=Empty
 tile.barrel.altar.none_required=No magic power required
@@ -261,6 +269,7 @@ tile.tarot_table.name=Divination Table
 tile.planks_juniper.name=Juniper Planks
 tile.planks_elder.name=Elderwood Planks
 tile.planks_yew.name=Yew Planks
+tile.planks_cypress.name=Cypress Planks
 
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore
@@ -654,3 +663,6 @@ tarot.diamonds.name=The Diamonds
 tarot.iron_golem.name=The Iron Golem
 tarot.wither_skeleton.name=The Wither Skeleton
 tarot.star.name=The Night Star
+
+//Entities
+entity.broom.name=Flying Broom
