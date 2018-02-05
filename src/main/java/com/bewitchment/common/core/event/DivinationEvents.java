@@ -1,9 +1,11 @@
 package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -26,11 +28,7 @@ public class DivinationEvents {
 
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerEvent.Clone event) {
-		EntityPlayer newPlayer = event.getEntityPlayer();
-		EntityPlayer oldPlayer = event.getOriginal();
-		CapabilityDivination newPlayerData = newPlayer.getCapability(CapabilityDivination.CAPABILITY, null);
-		CapabilityDivination oldPlayerData = oldPlayer.getCapability(CapabilityDivination.CAPABILITY, null);
-		newPlayerData.setFortune(oldPlayerData.getFortune());
+		CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityDivination.CAPABILITY);
 	}
 
 	@SubscribeEvent

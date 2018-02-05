@@ -17,5 +17,6 @@ public final class ModEvents {
 		MinecraftForge.EVENT_BUS.register(new BrewEvents());
 		MinecraftForge.EVENT_BUS.register(new HarvestEvent());
 		MinecraftForge.EVENT_BUS.register(new DivinationEvents());
+		MinecraftForge.EVENT_BUS.register(new TransformationEvents());
 	}
 }
