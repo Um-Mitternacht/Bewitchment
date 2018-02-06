@@ -200,7 +200,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				}
 			}
 		} else if (type == EnumSaplingType.CYPRESS) {
-			return false;// TODO
+			return false;// TODO: Cypress Gen. Would appear similar to the Murray Pine from Plants 2
 		}
 		return true;// TODO
 	}

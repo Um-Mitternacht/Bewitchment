@@ -24,6 +24,8 @@ public class ItemBroom extends ItemMod {
 		this.setMaxStackSize(1);
 	}
 
+
+	//Todo: Special effects for cypress broom
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (this.isInCreativeTab(tab)) {
