@@ -1,16 +1,9 @@
 package com.bewitchment.common.block.tools;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityBarrel;
-
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -36,6 +29,12 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Random;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
 
 public class BlockBarrel extends BlockMod implements ITileEntityProvider {
 

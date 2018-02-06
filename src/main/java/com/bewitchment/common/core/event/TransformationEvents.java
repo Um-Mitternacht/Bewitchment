@@ -4,7 +4,6 @@ import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

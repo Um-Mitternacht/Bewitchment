@@ -43,9 +43,9 @@
       },
       "yew": {
         "model": "bewitchment:barrels/barrel_yew"
-      }, 
+      },
       "cypress": {
-      	"model": "bewitchment:barrels/barrel_cypress"
+        "model": "bewitchment:barrels/barrel_cypress"
       }
     }
   }

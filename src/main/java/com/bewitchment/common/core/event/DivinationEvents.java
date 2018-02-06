@@ -5,7 +5,6 @@ import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

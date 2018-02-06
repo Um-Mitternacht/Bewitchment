@@ -2,7 +2,6 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -10,7 +9,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
 public class TransformationDataStorage implements IStorage<ITransformationData> {
-	
+
 	@Override
 	public NBTBase writeNBT(Capability<ITransformationData> capability, ITransformationData instance, EnumFacing side) {
 		NBTTagCompound data = new NBTTagCompound();
@@ -21,7 +20,7 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		}
 		return data;
 	}
-	
+
 	@Override
 	public void readNBT(Capability<ITransformationData> capability, ITransformationData instance, EnumFacing side, NBTBase nbt) {
 		NBTTagCompound data = (NBTTagCompound) nbt;
@@ -31,5 +30,5 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 			instance.setBlood(data.getInteger("blood"));
 		}
 	}
-	
+
 }
