@@ -31,6 +31,8 @@ import java.util.Optional;
 @SideOnly(Side.CLIENT)
 public class EnergyHUD {
 
+	//Todo: RENAME ME, NAME OVERLAPS WITH APPLIED ENERGISTICS, AND SOMETHING MORE CREATIVE COULD BE THOUGHT OF.
+
 	private int renderTime;
 	private float visible;
 	private int oldEnergy = -1;
