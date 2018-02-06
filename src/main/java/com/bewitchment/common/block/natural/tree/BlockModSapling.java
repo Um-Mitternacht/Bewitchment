@@ -232,12 +232,12 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 	private void generateCypressTree(World world, BlockPos pos, Random r) { //Todo: Make this like a cypress. This is just test gen for now, while I try and figure out tree gen
 		IBlockState leaves = ModBlocks.leaves_cypress.getDefaultState();
 		int h = generateTrunk(4, 9, ModBlocks.log_cypress.getDefaultState(), world, pos, r);
-		for (int dx = -1; dx++ < 2; dx++) {
-			for (int dz = -1; dz++ < 2; dz++) {
-				for (int dy = -5; dy++ < 3; dy++) {
+		for (int dx = -1; dx < 2; dx++) {
+			for (int dz = -1; dz < 2; dz++) {
+				for (int dy = -5; dy < 3; dy++) {
 					BlockPos current = pos.up(h).add(dx, dy, dz);
 					if (isAirBlock(world, current) && ((Math.abs(dz) != 2 || Math.abs(dx) != 2) || r.nextDouble() < 0.2)) {
-						if ((dy < 0 || (dx < 2 && dz < 2 && dx > -2 && dz > -2))) {
+						if ((dy++ < 0 || (dx < 2 && dz < 2 && dx > -2 && dz > -2))) {
 							world.setBlockState(current, leaves, 3);
 						}
 					}
