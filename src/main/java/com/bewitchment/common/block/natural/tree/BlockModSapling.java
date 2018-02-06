@@ -200,7 +200,17 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				}
 			}
 		} else if (type == EnumSaplingType.CYPRESS) {
-			return false;// TODO: Cypress Gen. Would appear similar to the Murray Pine from Plants 2
+			// TODO: Cypress Gen. Would appear similar to the Murray Pine from Plants 2
+			for (int dx = -1; dx < 2; dx++) {
+				for (int dz = -1; dz < 2; dz++) {
+					for (int dy = 0; dy < 1; dy++) {
+						BlockPos current = pos.up(2).add(dx, dy, dz);
+						if (!isAirBlock(world, current)) {
+							return false;
+						}
+					}
+				}
+			}
 		}
 		return true;// TODO
 	}
@@ -219,8 +229,21 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		return world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current);
 	}
 
-	private void generateCypressTree(World world, BlockPos pos, Random rand) {
-		// TODO
+	private void generateCypressTree(World world, BlockPos pos, Random r) { //Todo: Make this like a cypress. This is just test gen for now, while I try and figure out tree gen
+		IBlockState leaves = ModBlocks.leaves_cypress.getDefaultState();
+		int h = generateTrunk(3, 5, ModBlocks.log_cypress.getDefaultState(), world, pos, r);
+		for (int dx = -2; dx < 3; dx++) {
+			for (int dz = -2; dz < 3; dz++) {
+				for (int dy = -2; dy < 1; dy++) {
+					BlockPos current = pos.up(h).add(dx, dy, dz);
+					if (isAirBlock(world, current) && ((Math.abs(dz) != 2 || Math.abs(dx) != 2) || r.nextDouble() < 0.2)) {
+						if ((dy < 0 || (dx < 2 && dz < 2 && dx > -2 && dz > -2))) {
+							world.setBlockState(current, leaves, 3);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
