@@ -231,7 +231,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 
 	private void generateCypressTree(World world, BlockPos pos, Random r) { //Todo: Make this like a cypress. This is just test gen for now, while I try and figure out tree gen
 		IBlockState leaves = ModBlocks.leaves_cypress.getDefaultState();
-		int h = generateTrunk(4, 9, ModBlocks.log_cypress.getDefaultState(), world, pos, r);
+		int h = generateTrunk(11, 11, ModBlocks.log_cypress.getDefaultState(), world, pos, r); //Run the bark all the way up the tree
 		for (int dx = -1; dx < 2; dx++) {
 			for (int dz = -1; dz < 2; dz++) {
 				for (int dy = -5; dy < 3; dy++) {
