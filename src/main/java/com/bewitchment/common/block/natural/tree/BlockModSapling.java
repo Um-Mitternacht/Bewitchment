@@ -54,7 +54,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		ModelLoader.setCustomModelResourceLocation(item, meta, modelResourceLocation);
 	}
 	
-	public static void generateElderTree(World world, BlockPos pos, Random r) {
+	private static void generateElderTree(World world, BlockPos pos, Random r) {
 		IBlockState leaves = ModBlocks.leaves_elder.getDefaultState();
 		int h = generateTrunk(3, 5, ModBlocks.log_elder.getDefaultState(), world, pos, r);
 		for (int dx = -2; dx < 3; dx++) {
@@ -71,7 +71,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		}
 	}
 	
-	public static void generateJuniperTree(World world, BlockPos pos, Random r) {
+	private static void generateJuniperTree(World world, BlockPos pos, Random r) {
 		int h = generateTrunk(2, 4, ModBlocks.log_juniper.getDefaultState(), world, pos, r);
 		EnumFacing branchOffset = EnumFacing.HORIZONTALS[r.nextInt(4)];
 		BlockPos branching = pos.up(h).offset(branchOffset);
@@ -111,7 +111,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		
 	}
 	
-	public static void generateYewTree(World world, BlockPos pos, Random r) {
+	private static void generateYewTree(World world, BlockPos pos, Random r) {
 		int h1 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos, r);
 		int h2 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos.east(), r);
 		int h3 = generateTrunk(4, 6, ModBlocks.log_yew.getDefaultState(), world, pos.east().north(), r);
@@ -192,10 +192,9 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				}
 			}
 		} else if (type == EnumSaplingType.CYPRESS) {
-			// TODO: Cypress Gen. Would appear similar to the Murray Pine from Plants 2
 			for (int dx = -1; dx < 2; dx++) {
 				for (int dz = -1; dz < 2; dz++) {
-					for (int dy = 0; dy < 1; dy++) {
+					for (int dy = 0; dy < 8; dy++) {
 						BlockPos current = pos.up(2).add(dx, dy, dz);
 						if (!isAirBlock(world, current)) {
 							return false;
@@ -204,7 +203,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 				}
 			}
 		}
-		return true;// TODO
+		return true;
 	}
 	
 	private static int generateTrunk(int minHeight, int maxHeight, IBlockState log, World world, BlockPos pos, Random r) {
@@ -221,7 +220,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		return world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current);
 	}
 	
-	private void generateCypressTree(World world, BlockPos pos, Random r) { //Todo: Make this like a cypress. This is just test gen for now, while I try and figure out tree gen
+	private static void generateCypressTree(World world, BlockPos pos, Random r) { // Todo: Make this like a cypress. This is just test gen for now, while I try and figure out tree gen
 		IBlockState leaves = ModBlocks.leaves_cypress.getDefaultState();
 		int h = generateTrunk(7, 11, ModBlocks.log_cypress.getDefaultState(), world, pos, r); // Run the bark all the way up the tree
 		for (int dy = -h + 2; dy < 2; dy++) {
