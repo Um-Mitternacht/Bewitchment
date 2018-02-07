@@ -45,13 +45,13 @@ public class CommandTransformationModifier extends CommandBase {
 			String typeStr = args[0].toLowerCase();
 			EnumTransformationType transf = null;
 
-			if (typeStr.equals("v") || typeStr.equals("vamp") || typeStr.equals("vampire")) {
+			if (typeStr.equals("v") || typeStr.equals("vamp")) {
 				transf = EnumTransformationType.VAMPIRE;
-			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf") || typeStr.equals("werewolf")) {
-				transf = EnumTransformationType.WEREWOLF;
-			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh") || typeStr.equals("hunter")) {
+			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
+					transf = EnumTransformationType.WEREWOLF;
+			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
 				transf = EnumTransformationType.HUNTER;
-			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom") || typeStr.equals("spectre")) {
+			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
 				transf = EnumTransformationType.SPECTRE;
 			} else if (typeStr.equals("n")) {
 				transf = EnumTransformationType.NONE;
