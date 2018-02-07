@@ -3,7 +3,6 @@ package com.bewitchment.common.core.event;
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -12,9 +11,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class VampireAbilityHandler {
-	
+
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
-	
+
 	/**
 	 * Modifies damage depending on the type. Fire and explosion make it 150%of the original,
 	 * all the other types make it 10% of the original provided there's blood in the pool
@@ -39,7 +38,7 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void checkSun(PlayerTickEvent evt) {
 		if (evt.side.isServer()) {
@@ -53,5 +52,5 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
+
 }

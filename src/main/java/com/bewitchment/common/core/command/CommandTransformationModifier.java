@@ -1,43 +1,42 @@
 package com.bewitchment.common.core.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CommandTransformationModifier extends CommandBase {
-	
+
 	private static final List<String> aliases = Arrays.asList("setTransformation", "bw-st");
-	
+
 	@Override
 	public int compareTo(ICommand arg0) {
 		return 0;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "setTransformation";
 	}
-	
+
 	@Override
 	public String getUsage(ICommandSender sender) {
 		return "/setTransformation [path] [level]";
 	}
-	
+
 	@Override
 	public List<String> getAliases() {
 		return aliases;
 	}
-	
+
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if (args.length == 0)
@@ -45,25 +44,25 @@ public class CommandTransformationModifier extends CommandBase {
 		if (sender instanceof EntityPlayer) {
 			String typeStr = args[0].toLowerCase();
 			EnumTransformationType transf = null;
-			
-			if (typeStr.equals("v") || typeStr.equals("vamp")) {
+
+			if (typeStr.equals("v") || typeStr.equals("vamp") || typeStr.equals("vampire")) {
 				transf = EnumTransformationType.VAMPIRE;
-			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
+			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf") || typeStr.equals("werewolf")) {
 				transf = EnumTransformationType.WEREWOLF;
-			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
+			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh") || typeStr.equals("hunter")) {
 				transf = EnumTransformationType.HUNTER;
-			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
+			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom") || typeStr.equals("spectre")) {
 				transf = EnumTransformationType.SPECTRE;
 			} else if (typeStr.equals("n")) {
 				transf = EnumTransformationType.NONE;
 			} else
 				for (EnumTransformationType tt : EnumTransformationType.values()) {
 					if (typeStr.equals(tt.name().toLowerCase())) {
-					transf = tt;
-					break;
+						transf = tt;
+						break;
+					}
 				}
-			}
-			
+
 			if (transf == null)
 				throw new WrongUsageException("commands.set_transformation.usage.no_transformation");
 			int level = 0;
@@ -85,17 +84,17 @@ public class CommandTransformationModifier extends CommandBase {
 			throw new WrongUsageException("commands.set_transformation.usage.no_console");
 		}
 	}
-	
+
 	@Override
 	public int getRequiredPermissionLevel() {
 		return 3;
 	}
-	
+
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
 		if (args.length == 1)
 			return Arrays.asList(EnumTransformationType.values()).stream().map(t -> t.name().toLowerCase()).filter(s -> s.startsWith(args[args.length - 1].toLowerCase())).collect(Collectors.toList());
 		return super.getTabCompletions(server, sender, args, targetPos);
 	}
-	
+
 }
