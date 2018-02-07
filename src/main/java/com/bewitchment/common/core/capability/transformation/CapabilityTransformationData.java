@@ -12,6 +12,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	public static final Capability<ITransformationData> CAPABILITY = null;
 	EnumTransformationType type;
 	int level, blood;
+
 	public CapabilityTransformationData() {
 		type = EnumTransformationType.NONE;
 		level = 0;
