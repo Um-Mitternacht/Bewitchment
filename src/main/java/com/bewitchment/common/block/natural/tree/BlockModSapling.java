@@ -234,7 +234,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		int h = generateTrunk(9, 9, ModBlocks.log_cypress.getDefaultState(), world, pos, r); //Run the bark all the way up the tree
 		for (int dx = -1; dx < 2; dx++) {
 			for (int dz = -1; dz < 2; dz++) {
-				for (int dy = -5; dy < 3; dy++) {
+				for (int dy = -5; dy < 1; dy++) {
 					BlockPos current = pos.up(h).add(dx, dy, dz);
 					if (isAirBlock(world, current) && ((Math.abs(dz) != 2 || Math.abs(dx) != 2) || r.nextDouble() < 0.2)) {
 						if ((dy++ < 0 || (dx < 2 && dz < 2 && dx > -2 && dz > -2))) {
