@@ -48,7 +48,7 @@ public class CommandTransformationModifier extends CommandBase {
 			if (typeStr.equals("v") || typeStr.equals("vamp")) {
 				transf = EnumTransformationType.VAMPIRE;
 			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
-					transf = EnumTransformationType.WEREWOLF;
+				transf = EnumTransformationType.WEREWOLF;
 			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
 				transf = EnumTransformationType.HUNTER;
 			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {

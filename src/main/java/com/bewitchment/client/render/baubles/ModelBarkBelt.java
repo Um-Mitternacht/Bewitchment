@@ -2,7 +2,6 @@ package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.item.baubles.ItemBarkBelt;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -206,7 +205,7 @@ public class ModelBarkBelt extends ModelBase {
 		this.belt2.render(f5);
 		this.belt3.render(f5);
 		this.belt4.render(f5);
-		
+
 		if (barkPieces > 0) {
 			barkBack1a.render(1);
 			barkFront1a.render(1);
@@ -226,7 +225,7 @@ public class ModelBarkBelt extends ModelBase {
 			rootRight1.render(1);
 			rootLeft1.render(1);
 		}
-		
+
 		if (barkPieces > 4) {
 			rootRight3.render(1);
 			rootLeft3.render(1);
