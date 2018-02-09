@@ -2,6 +2,7 @@ package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.item.baubles.ItemBarkBelt;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -171,8 +172,6 @@ public class ModelBarkBelt extends ModelBase {
 		this.barkFront2a.addChild(this.barkFront2c);
 		this.barkFront2a.addChild(this.barkFront2b);
 
-		this.rootLeft1.addChild(this.rootLeft2);
-
 		this.barkBack3a.addChild(this.barkBack3b);
 		this.barkBack3a.addChild(this.barkBack3d);
 		this.barkBack3a.addChild(this.barkBack3c);
@@ -186,6 +185,7 @@ public class ModelBarkBelt extends ModelBase {
 		this.barkFront1a.addChild(this.barkFront1b);
 		this.barkFront1a.addChild(this.barkFront1c);
 
+		this.rootLeft1.addChild(this.rootLeft2);
 		this.rootRight1.addChild(this.rootRight2);
 
 		this.barkBack2a.addChild(this.barkBack2c);
@@ -201,34 +201,36 @@ public class ModelBarkBelt extends ModelBase {
 
 		int barkPieces = ItemBarkBelt.getBarkPiecesForRendering((EntityPlayer) entity);
 
+		// FIXME belt is still rendering weirdly
+		this.belt1.render(f5);
+		this.belt2.render(f5);
+		this.belt3.render(f5);
+		this.belt4.render(f5);
+		
 		if (barkPieces > 0) {
-			this.belt1.render(f5);
-			this.belt2.render(f5);
-			this.belt3.render(f5);
-			this.belt4.render(f5);
-		}
-
-		if (barkPieces > 1) {
 			barkBack1a.render(1);
 			barkFront1a.render(1);
 		}
 
-		if (barkPieces > 2) {
+		if (barkPieces > 1) {
 			barkFront2a.render(1);
 			barkBack2a.render(1);
 		}
 
-		if (barkPieces > 3) {
+		if (barkPieces > 2) {
 			barkFront3a.render(1);
 			barkBack3a.render(1);
 		}
 
-		if (barkPieces > 4) {
+		if (barkPieces > 3) {
 			rootRight1.render(1);
 			rootLeft1.render(1);
 		}
-
-
+		
+		if (barkPieces > 4) {
+			rootRight3.render(1);
+			rootLeft3.render(1);
+		}
 	}
 
 	protected void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
