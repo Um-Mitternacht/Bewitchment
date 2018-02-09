@@ -85,8 +85,7 @@ public class ExtraBarButtonsHUD {
 	public void renderOverlay(RenderGameOverlayEvent.Pre event) {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && isInExtraBar) {
 			selectedItemTemp = Minecraft.getMinecraft().player.inventory.currentItem;
-			if (slotSelected != -1)
-				Minecraft.getMinecraft().player.inventory.currentItem = 100;// Render overlay offscreen to the right
+			Minecraft.getMinecraft().player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
 		}
 	}
 	
