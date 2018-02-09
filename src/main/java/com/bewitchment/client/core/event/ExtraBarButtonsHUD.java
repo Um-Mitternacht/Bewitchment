@@ -11,8 +11,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ExtraBarButtonsHUD {
 	
-	int slotSelected = -1; // TODO reset this when the user closes the game, either MP or SP
-	boolean isInExtraBar = false; // TODO reset this when the user closes the game, either MP or SP
+	// TODO reset these when the user closes the game, either MP or SP
+	// TODO sync to the server when the slot changes, keep data inside some capability on the player. Needed to block
+	// the item actually selected and trigger the correct power
+	int slotSelected = -1;
+	boolean isInExtraBar = false;
 	
 	public ExtraBarButtonsHUD() {
 	}
