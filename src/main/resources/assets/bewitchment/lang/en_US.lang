@@ -266,10 +266,10 @@ fluid.none=Empty
 
 tile.goblet.name=Goblet
 tile.tarot_table.name=Divination Table
-tile.planks_juniper.name=Juniper Planks
-tile.planks_elder.name=Elderwood Planks
-tile.planks_yew.name=Yew Planks
-tile.planks_cypress.name=Cypress Planks
+tile.planks_juniper.name=Juniper Wood Planks
+tile.planks_elder.name=Elderwood Wood Planks
+tile.planks_yew.name=Yew Wood Planks
+tile.planks_cypress.name=Cypress Wood Planks
 
 //Metals, Stones and Ores
 tile.silver_ore.name=Silver Ore
@@ -312,10 +312,10 @@ tile.sapling_cypress.name=Cypress Sapling
 tile.sapling_juniper.name=Juniper Sapling
 tile.sapling_elder.name=Elderwood Sapling
 tile.sapling_yew.name=Yew Sapling
-tile.log_yew.name=Yew Log
-tile.log_elder.name=Elderwood Log
-tile.log_juniper.name=Juniper Log
-tile.log_cypress.name=Cypress Log
+tile.log_yew.name=Yew Wood
+tile.log_elder.name=Elderwood Wood
+tile.log_juniper.name=Juniper Wood
+tile.log_cypress.name=Cypress Wood
 tile.leaves_elder.name=Elderwood Leaves
 tile.leaves_juniper.name=Juniper Leaves
 tile.leaves_yew.name=Yew Leaves
