@@ -668,6 +668,10 @@ tarot.diamonds.name=The Diamonds
 tarot.iron_golem.name=The Iron Golem
 tarot.wither_skeleton.name=The Wither Skeleton
 tarot.star.name=The Night Star
+tarot.moon.name=The Moon
+tarot.silver_sword.name=The Silver Sword
+tarot.hermit.name=The Hermit
+tarot.nitwit.name=The Nitwit
 
 //Entities
 entity.broom.name=Flying Broom
