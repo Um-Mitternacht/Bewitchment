@@ -87,6 +87,14 @@ public class IceWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.LEAVES2) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.leaves_cypress) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.leaves_elder) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.leaves_juniper) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.leaves_yew) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.PLANKS) {
 				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			} else if (state.getBlock() == Blocks.STONE) {
@@ -126,6 +134,22 @@ public class IceWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.embittered_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == ModBlocks.nethersteel) {
 				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_cypress) {
+				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_elder) {
+				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_yew) {
+				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_juniper) {
+				world.setBlockState(spot, Blocks.PACKED_ICE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.planks_cypress) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.planks_yew) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.planks_juniper) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.planks_elder) {
+				world.setBlockState(spot, ModBlocks.fake_ice.getDefaultState(), 3);
 			}
 		}
 	}

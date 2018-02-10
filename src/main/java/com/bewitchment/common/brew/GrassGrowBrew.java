@@ -31,6 +31,7 @@ public class GrassGrowBrew extends BlockHitBrew {
 		stateMap.put(Blocks.SAND, Blocks.DIRT.getDefaultState());
 	}
 
+	//Todo: Put Animania compat here, Animania replaces vanilla cows and mooshrooms
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
 		if (entity instanceof EntityMooshroom) {

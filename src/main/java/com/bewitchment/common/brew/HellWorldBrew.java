@@ -104,6 +104,14 @@ public class HellWorldBrew extends BlockHitBrew {
 				world.setBlockState(spot, ModBlocks.scorned_bricks.getDefaultState(), 3);
 			} else if (state.getBlock() == ModBlocks.fake_ice_fence) {
 				world.setBlockState(spot, Blocks.NETHER_BRICK_FENCE.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_cypress) {
+				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_elder) {
+				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_yew) {
+				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+			} else if (state.getBlock() == ModBlocks.log_juniper) {
+				world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
 			}
 		}
 	}
