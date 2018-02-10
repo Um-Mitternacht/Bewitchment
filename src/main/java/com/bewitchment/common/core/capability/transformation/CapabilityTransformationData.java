@@ -7,9 +7,7 @@ import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -42,7 +40,8 @@ public class CapabilityTransformationData implements ITransformationData {
 	}
 
 	/**
-	 * After changing type you should call {@link com.bewitchment.api.event.HotbarAction#refreshActions(EntityPlayer, World)}
+	 * Prefer the use of {@link com.bewitchment.common.core.helper.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
+	 * care of syncronization and refreshing data
 	 */
 	@Override
 	public void setType(EnumTransformationType type) {
@@ -60,7 +59,8 @@ public class CapabilityTransformationData implements ITransformationData {
 	}
 
 	/**
-	 * After changing level you should call {@link com.bewitchment.api.event.HotbarAction#refreshActions(EntityPlayer, World)}
+	 * Prefer the use of {@link com.bewitchment.common.core.helper.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
+	 * care of syncronization and refreshing data
 	 */
 	@Override
 	public void setLevel(int level) {

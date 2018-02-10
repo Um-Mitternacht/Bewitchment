@@ -2,11 +2,9 @@ package com.bewitchment.common.core.net;
 
 import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.common.core.net.messages.BrewMessage;
-import com.bewitchment.common.core.net.messages.EnergyMessage;
-import com.bewitchment.common.core.net.messages.ParticleMessage;
-import com.bewitchment.common.core.net.messages.TarotMessage;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
@@ -34,8 +32,9 @@ public final class PacketHandler {
 		HANDLER.registerMessage(EnergyMessage.EnergyMessageHandler.class, EnergyMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(BrewMessage.PotionMessageHandler.class, BrewMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
+		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
 	}
-
+	
 	public static void sendNear(EntityLivingBase entity, IBrewStorage storage) {
 		int dim = entity.getEntityWorld().provider.getDimension();
 		HANDLER.sendToAllAround(new BrewMessage(storage, entity), new NetworkRegistry.TargetPoint(dim, entity.posX, entity.posY, entity.posZ, 40));

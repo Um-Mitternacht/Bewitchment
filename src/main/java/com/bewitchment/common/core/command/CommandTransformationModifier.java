@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.ITransformationData;
-import com.bewitchment.api.event.HotbarAction;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.helper.TransformationHelper;
 
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -78,10 +76,7 @@ public class CommandTransformationModifier extends CommandBase {
 			if (level < 0 || level > 10) {
 				throw new WrongUsageException("commands.set_transformation.usage.invalid_level");
 			}
-			ITransformationData data = ((EntityPlayer) sender).getCapability(CapabilityTransformationData.CAPABILITY, null);
-			data.setLevel(level);
-			data.setType(transf);
-			HotbarAction.refreshActions((EntityPlayer) sender, ((EntityPlayer) sender).world);
+			TransformationHelper.setTypeAndLevel((EntityPlayer) sender, transf, level);
 			sender.sendMessage(new TextComponentTranslation("command.set_transformation.success", transf.name().toLowerCase(), level));
 		} else {
 			throw new WrongUsageException("commands.set_transformation.usage.no_console");
