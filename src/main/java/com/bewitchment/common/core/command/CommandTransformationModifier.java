@@ -1,17 +1,19 @@
 package com.bewitchment.common.core.command;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CommandTransformationModifier extends CommandBase {
 
@@ -79,6 +81,7 @@ public class CommandTransformationModifier extends CommandBase {
 			ITransformationData data = ((EntityPlayer) sender).getCapability(CapabilityTransformationData.CAPABILITY, null);
 			data.setLevel(level);
 			data.setType(transf);
+			HotbarAction.refreshActions((EntityPlayer) sender, ((EntityPlayer) sender).world);
 			sender.sendMessage(new TextComponentTranslation("command.set_transformation.success", transf.name().toLowerCase(), level));
 		} else {
 			throw new WrongUsageException("commands.set_transformation.usage.no_console");

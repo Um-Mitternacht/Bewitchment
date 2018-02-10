@@ -1,7 +1,15 @@
 package com.bewitchment.common.core.capability.transformation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.event.HotbarAction;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -10,13 +18,18 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	@CapabilityInject(ITransformationData.class)
 	public static final Capability<ITransformationData> CAPABILITY = null;
+	
 	EnumTransformationType type;
 	int level, blood;
+	NBTTagCompound misc;
+	List<HotbarAction> actions;
 
 	public CapabilityTransformationData() {
 		type = EnumTransformationType.NONE;
 		level = 0;
 		blood = 0;
+		misc = new NBTTagCompound();
+		actions = new ArrayList<HotbarAction>();
 	}
 
 	public static void init() {
@@ -28,6 +41,9 @@ public class CapabilityTransformationData implements ITransformationData {
 		return type;
 	}
 
+	/**
+	 * After changing type you should call {@link com.bewitchment.api.event.HotbarAction#refreshActions(EntityPlayer, World)}
+	 */
 	@Override
 	public void setType(EnumTransformationType type) {
 		this.type = type;
@@ -43,6 +59,9 @@ public class CapabilityTransformationData implements ITransformationData {
 		return level;
 	}
 
+	/**
+	 * After changing level you should call {@link com.bewitchment.api.event.HotbarAction#refreshActions(EntityPlayer, World)}
+	 */
 	@Override
 	public void setLevel(int level) {
 		this.level = level;
@@ -81,4 +100,24 @@ public class CapabilityTransformationData implements ITransformationData {
 		this.blood = blood;
 	}
 
+	@Override
+	public NBTTagCompound getMiscDataTag() {
+		return misc;
+	}
+	
+	@Override
+	public void loadMiscDataTag(NBTTagCompound tag) {
+		misc = tag;
+	}
+	
+	@Override
+	public void loadAvailableHotbarActions(List<HotbarAction> list) {
+		actions = list;
+	}
+	
+	@Override
+	public List<HotbarAction> getAvailableHotbarActions() {
+		return actions;
+	}
+	
 }
