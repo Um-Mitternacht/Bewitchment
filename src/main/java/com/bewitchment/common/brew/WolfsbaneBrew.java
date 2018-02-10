@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class WolfsbaneBrew implements IBrew {
 
+	//Todo: Make this damage werewolves when their codebase is set up
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
 		if (amplifier >= 3) {

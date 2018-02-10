@@ -44,6 +44,21 @@ public class HellWorldBrew extends BlockHitBrew {
 		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
 		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
 		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
+		stateMap.put(Blocks.BLUE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.GREEN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.YELLOW_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.BROWN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.CYAN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.LIME_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.MAGENTA_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.PINK_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.PURPLE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.SILVER_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
 	}
 
 	@Override

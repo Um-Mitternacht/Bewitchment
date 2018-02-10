@@ -24,7 +24,7 @@ public class MortalCoilBrew implements IBrew {
 	@Override
 	public void onFinish(World world, BlockPos pos, EntityLivingBase entity, int amplifier) {
 		if (entity instanceof EntityLivingBase) {
-			entity.attackEntityFrom(DamageSource.MAGIC, 500000);
+			entity.attackEntityFrom(DamageSource.MAGIC, 800000);
 		}
 	}
 

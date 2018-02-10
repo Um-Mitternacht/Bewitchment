@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class HolyWaterBrew extends BrewAtributeModifier {
 
+	//Todo: Make this damage vampires and spectres when their respective codebases are finished
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
 		if (entity.isEntityUndead()) {
