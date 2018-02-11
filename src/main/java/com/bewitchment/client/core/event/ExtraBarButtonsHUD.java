@@ -1,11 +1,11 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
 import com.bewitchment.api.event.HotbarAction;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -21,6 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
+	
+	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
 
 	// TODO reset these when the user closes the game, either MP or SP
 	// TODO sync to the server when the slot changes, keep data inside some capability on the player. Needed to block
@@ -28,19 +30,19 @@ public class ExtraBarButtonsHUD {
 	int slotSelected = -1;
 	boolean isInExtraBar = false;
 	int selectedItemTemp = 0;
-	List<HotbarAction> actions;
+	List<HotbarAction> actions = new ArrayList<HotbarAction>();
 	HotbarAction[] actionScroller = new HotbarAction[3];// 0: current, 1: prev, 2: next
 
-	public ExtraBarButtonsHUD() {
+	private ExtraBarButtonsHUD() {
 	}
 
 	@SubscribeEvent
 	public void scrollWheelHijacker(MouseEvent evt) {
 		int dir = evt.getDwheel() == 0 ? 0 : evt.getDwheel() > 0 ? -1 : 1;
-		if (dir == 0)
+		if (dir == 0 || (!Minecraft.getMinecraft().player.isSneaking() && !isInExtraBar))
 			return;
 		int curItm = Minecraft.getMinecraft().player.inventory.currentItem;
-		int max = getMaxActions();
+		int max = actions.size();
 		if (Minecraft.getMinecraft().currentScreen == null) {// Don't mess with scroll wheels if a gui is open, only when playing
 			refreshSelected();
 			evt.setCanceled(isInExtraBar || (dir < 0 && slotSelected == 0) || (dir > 0 && curItm == 8 && max > 0));
@@ -67,7 +69,6 @@ public class ExtraBarButtonsHUD {
 	}
 
 	private void refreshSelected() {
-		loadActions();
 		if (slotSelected >= 0) {
 			actionScroller[0] = actions.get(slotSelected);
 		} else {
@@ -86,16 +87,13 @@ public class ExtraBarButtonsHUD {
 		}
 	}
 	
-	public int getMaxActions() {
-		loadActions();
-		return actions.size();
+	public void setList(List<HotbarAction> list) {
+		this.actions = list;
+		this.slotSelected = Math.min(slotSelected, list.size() - 1);
+		refreshSelected();
+		System.out.println("List reloaded: " + list.size());
 	}
 	
-	public void loadActions() {
-		if (actions == null) {
-			actions = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getAvailableHotbarActions();
-		}
-	}
 
 	@SubscribeEvent
 	public void keybordSelectorCheck(KeyInputEvent evt) { // Used to keep it coherent when the player uses the keys 1-9 to pick the selected item
@@ -120,7 +118,7 @@ public class ExtraBarButtonsHUD {
 			ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 			if (actionScroller[0] != null) {
 				mc.getTextureManager().bindTexture(actionScroller[0].getIcon(mc.player));
-				renderTextureAtIndex((sr.getScaledWidth() / 2) + 136, sr.getScaledHeight() - 15, actionScroller[0].getIconIndexX(mc.player), actionScroller[0].getIconIndexY(mc.player));
+				renderTextureAtIndex((sr.getScaledWidth() / 2) + 131.5, sr.getScaledHeight() - 19.5, actionScroller[0].getIconIndexX(mc.player), actionScroller[0].getIconIndexY(mc.player));
 			}
 			mc.player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
 		}
@@ -140,5 +138,4 @@ public class ExtraBarButtonsHUD {
 		
 		tessellator.draw();
 	}
-
 }

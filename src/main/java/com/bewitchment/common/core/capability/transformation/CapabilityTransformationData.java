@@ -109,15 +109,4 @@ public class CapabilityTransformationData implements ITransformationData {
 	public void loadMiscDataTag(NBTTagCompound tag) {
 		misc = tag;
 	}
-	
-	@Override
-	public void loadAvailableHotbarActions(List<HotbarAction> list) {
-		actions = list;
-	}
-	
-	@Override
-	public List<HotbarAction> getAvailableHotbarActions() {
-		return actions;
-	}
-	
 }

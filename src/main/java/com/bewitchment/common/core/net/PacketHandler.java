@@ -3,6 +3,7 @@ package com.bewitchment.common.core.net;
 import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.core.net.messages.ActionRefreshedMessage.ActionRefreshedMessageHandler;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.block.state.IBlockState;
@@ -33,6 +34,8 @@ public final class PacketHandler {
 		HANDLER.registerMessage(BrewMessage.PotionMessageHandler.class, BrewMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
+		HANDLER.registerMessage(ActionRefreshedMessageHandler.class, ActionRefreshedMessage.class, id++, Side.CLIENT);
+		
 	}
 	
 	public static void sendNear(EntityLivingBase entity, IBrewStorage storage) {

@@ -1,9 +1,5 @@
 package com.bewitchment.api.capability;
 
-import java.util.List;
-
-import com.bewitchment.api.event.HotbarAction;
-
 import net.minecraft.nbt.NBTTagCompound;
 
 public interface ITransformationData {
@@ -65,8 +61,4 @@ public interface ITransformationData {
 	 */
 	public void loadMiscDataTag(NBTTagCompound tag);
 	
-	public void loadAvailableHotbarActions(List<HotbarAction> list);
-	
-	public List<HotbarAction> getAvailableHotbarActions();
-
 }

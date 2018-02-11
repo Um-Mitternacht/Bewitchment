@@ -2,10 +2,12 @@ package com.bewitchment.api.event;
 
 import java.util.ArrayList;
 
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.messages.ActionRefreshedMessage;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -53,7 +55,9 @@ public class HotbarAction {
 	public static void refreshActions(EntityPlayer player, World world) {
 		HotbarActionCollectionEvent evt = new HotbarActionCollectionEvent(player, world);
 		MinecraftForge.EVENT_BUS.post(evt);
-		player.getCapability(CapabilityTransformationData.CAPABILITY, null).loadAvailableHotbarActions(evt.getList());
+		if (player instanceof EntityPlayerMP) {
+			PacketHandler.HANDLER.sendTo(new ActionRefreshedMessage((ArrayList<HotbarAction>) evt.getList()), (EntityPlayerMP) player);
+		}
 	}
 	
 
