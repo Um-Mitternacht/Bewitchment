@@ -6,7 +6,6 @@ import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -22,6 +21,7 @@ public class VampireAbilityHandler {
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
 
 	public static final String NIGHT_VISION_TAG = "ability_night_vision";
+
 	/**
 	 * Modifies damage depending on the type. Fire and explosion make it 150%of the original,
 	 * all the other types make it 10% of the original provided there's blood in the pool
@@ -60,7 +60,7 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void attachAbilities(HotbarActionCollectionEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
@@ -78,7 +78,7 @@ public class VampireAbilityHandler {
 			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, !data.getMiscDataTag().getBoolean(NIGHT_VISION_TAG));
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START) {
