@@ -83,8 +83,8 @@ public class VampireAbilityHandler {
 	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-			if (nv == null || nv.getDuration() <= 200 && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
-				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 1, true, false));
+			if ((nv == null || nv.getDuration() <= 200) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
+				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 			}
 		}
 	}
