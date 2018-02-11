@@ -1,22 +1,21 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CapabilityTransformationData implements ITransformationData {
 
 	@CapabilityInject(ITransformationData.class)
 	public static final Capability<ITransformationData> CAPABILITY = null;
-	
+
 	EnumTransformationType type;
 	int level, blood;
 	NBTTagCompound misc;
@@ -104,7 +103,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	public NBTTagCompound getMiscDataTag() {
 		return misc;
 	}
-	
+
 	@Override
 	public void loadMiscDataTag(NBTTagCompound tag) {
 		misc = tag;

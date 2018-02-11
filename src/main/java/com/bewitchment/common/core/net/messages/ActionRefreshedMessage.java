@@ -1,15 +1,14 @@
 package com.bewitchment.common.core.net.messages;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.Bewitchment;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+import java.util.ArrayList;
 
 /**
  * This class was created by Arekkuusu on 24/04/2017.

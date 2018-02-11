@@ -1,12 +1,6 @@
 package com.bewitchment.client.core.event;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.event.HotbarAction;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -18,10 +12,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
-	
+
 	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
 
 	// TODO reset these when the user closes the game, either MP or SP
@@ -34,6 +32,21 @@ public class ExtraBarButtonsHUD {
 	HotbarAction[] actionScroller = new HotbarAction[3];// 0: current, 1: prev, 2: next
 
 	private ExtraBarButtonsHUD() {
+	}
+
+	private static void renderTextureAtIndex(double x, double y, int xIndex, int yIndex) {
+		double rX = 0.25d * xIndex;
+		double rY = 0.25d * yIndex;
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder buff = tessellator.getBuffer();
+
+		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		buff.pos(x, y + 16, 0).tex(rX, rY + 0.25d).endVertex();
+		buff.pos(x + 16, y + 16, 0).tex(rX + 0.25d, rY + 0.25d).endVertex();
+		buff.pos(x + 16, y, 0).tex(rX + 0.25d, rY).endVertex();
+		buff.pos(x, y, 0).tex(rX, rY).endVertex();
+
+		tessellator.draw();
 	}
 
 	@SubscribeEvent
@@ -86,13 +99,12 @@ public class ExtraBarButtonsHUD {
 			actionScroller[2] = null;
 		}
 	}
-	
+
 	public void setList(List<HotbarAction> list) {
 		this.actions = list;
 		this.slotSelected = Math.min(slotSelected, list.size() - 1);
 		refreshSelected();
 	}
-	
 
 	@SubscribeEvent
 	public void keybordSelectorCheck(KeyInputEvent evt) { // Used to keep it coherent when the player uses the keys 1-9 to pick the selected item
@@ -121,20 +133,5 @@ public class ExtraBarButtonsHUD {
 			}
 			mc.player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
 		}
-	}
-	
-	private static void renderTextureAtIndex(double x, double y, int xIndex, int yIndex) {
-		double rX = 0.25d * xIndex;
-		double rY = 0.25d * yIndex;
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder buff = tessellator.getBuffer();
-		
-		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		buff.pos(x, y + 16, 0).tex(rX, rY + 0.25d).endVertex();
-		buff.pos(x + 16, y + 16, 0).tex(rX + 0.25d, rY + 0.25d).endVertex();
-		buff.pos(x + 16, y, 0).tex(rX + 0.25d, rY).endVertex();
-		buff.pos(x, y, 0).tex(rX, rY).endVertex();
-		
-		tessellator.draw();
 	}
 }

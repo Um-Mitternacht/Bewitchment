@@ -5,7 +5,6 @@ import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.core.net.messages.ActionRefreshedMessage.ActionRefreshedMessageHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
@@ -35,9 +34,9 @@ public final class PacketHandler {
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(ActionRefreshedMessageHandler.class, ActionRefreshedMessage.class, id++, Side.CLIENT);
-		
+
 	}
-	
+
 	public static void sendNear(EntityLivingBase entity, IBrewStorage storage) {
 		int dim = entity.getEntityWorld().provider.getDimension();
 		HANDLER.sendToAllAround(new BrewMessage(storage, entity), new NetworkRegistry.TargetPoint(dim, entity.posX, entity.posY, entity.posZ, 40));
