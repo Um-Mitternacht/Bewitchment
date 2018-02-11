@@ -91,7 +91,6 @@ public class ExtraBarButtonsHUD {
 		this.actions = list;
 		this.slotSelected = Math.min(slotSelected, list.size() - 1);
 		refreshSelected();
-		System.out.println("List reloaded: " + list.size());
 	}
 	
 

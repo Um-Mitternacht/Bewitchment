@@ -10,6 +10,9 @@ public class ModAbilities {
 	private ModAbilities() {
 	}
 	
+	public static void dummyMethodToLoadClass() {
+	}
+	
 	public static final HotbarAction NIGHT_VISION = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "night_vision")).setIconIndexes(0, 0);
 	
 }
