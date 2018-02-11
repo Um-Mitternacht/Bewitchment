@@ -1,18 +1,16 @@
 package com.bewitchment.common.core.capability.transformation;
 
+import java.util.ArrayList;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
+
+import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import java.util.ArrayList;
 
 public class TransformationDataStorage implements IStorage<ITransformationData> {
 
