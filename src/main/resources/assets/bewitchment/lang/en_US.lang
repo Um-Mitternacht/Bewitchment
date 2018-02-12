@@ -267,7 +267,7 @@ fluid.none=Empty
 tile.goblet.name=Goblet
 tile.tarot_table.name=Divination Table
 tile.planks_juniper.name=Juniper Wood Planks
-tile.planks_elder.name=Elderwood Wood Planks
+tile.planks_elder.name=Elder Wood Planks
 tile.planks_yew.name=Yew Wood Planks
 tile.planks_cypress.name=Cypress Wood Planks
 
@@ -310,13 +310,13 @@ tile.scorned_brick_stairs.name=Scorned Brick Stairs
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
 tile.sapling_juniper.name=Juniper Sapling
-tile.sapling_elder.name=Elderwood Sapling
+tile.sapling_elder.name=Elder Sapling
 tile.sapling_yew.name=Yew Sapling
 tile.log_yew.name=Yew Wood
-tile.log_elder.name=Elderwood Wood
+tile.log_elder.name=Elder Wood
 tile.log_juniper.name=Juniper Wood
 tile.log_cypress.name=Cypress Wood
-tile.leaves_elder.name=Elderwood Leaves
+tile.leaves_elder.name=Elder Leaves
 tile.leaves_juniper.name=Juniper Leaves
 tile.leaves_yew.name=Yew Leaves
 tile.leaves_cypress.name=Cypress Leaves
