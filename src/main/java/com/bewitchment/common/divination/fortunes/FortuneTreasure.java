@@ -1,6 +1,7 @@
 package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -20,7 +21,7 @@ public class FortuneTreasure extends Fortune {
 
 	@Override
 	public boolean canBeUsedFor(@Nonnull EntityPlayer player) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -30,6 +31,7 @@ public class FortuneTreasure extends Fortune {
 
 	@Override
 	public boolean apply(@Nonnull EntityPlayer player) {
+		player.getCapability(CapabilityDivination.CAPABILITY, null).setActive();
 		return false;
 	}
 
