@@ -1,11 +1,18 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
+import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -21,6 +28,7 @@ public class VampireAbilityHandler {
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
 
 	public static final String NIGHT_VISION_TAG = "ability_night_vision";
+	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
 
 	/**
 	 * Modifies damage depending on the type. Fire and explosion make it 150%of the original,
@@ -86,6 +94,19 @@ public class VampireAbilityHandler {
 			if ((nv == null || nv.getDuration() <= 200) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
 				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void refreshModifiers(TransformationModifiedEvent evt) {
+		ITransformationData data = evt.getEntityPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null);
+		IAttributeInstance attack_speed = evt.getEntityPlayer().getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+		AttributeModifier modifier = attack_speed.getModifier(ATTACK_SPEED_MODIFIER_UUID);
+		if (modifier != null) {
+			attack_speed.removeModifier(modifier);
+		}
+		if (data.getType() == EnumTransformationType.VAMPIRE) {
+			attack_speed.applyModifier(new AttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Vampire Atk Speed", evt.level / 10, 0));
 		}
 	}
 
