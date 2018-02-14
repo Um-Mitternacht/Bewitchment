@@ -44,6 +44,9 @@ public final class CauldronCrafting {
 		registerItemProcess(FluidRegistry.WATER, Items.LEATHER_LEGGINGS, Items.LEATHER_LEGGINGS, false);
 		registerItemProcess(FluidRegistry.WATER, Items.LEATHER_BOOTS, Items.LEATHER_BOOTS, false);
 		registerItemProcess(FluidRegistry.WATER, Items.SHIELD, Items.SHIELD, false);
+		//Miscellaneous water-based recipes
+		registerItemProcess(FluidRegistry.WATER, getStack(Blocks.STICKY_PISTON, 1, 0), getStack(Blocks.PISTON, 1, 0), false);
+		registerItemProcess(FluidRegistry.WATER, getStack(Blocks.SPONGE, 1, 1), getStack(Blocks.SPONGE, 1, 0), false);
 		//Cooking with Oil
 		registerItemProcess(Fluids.MUNDANE_OIL, Items.PORKCHOP, Items.COOKED_PORKCHOP, true);
 		registerItemProcess(Fluids.MUNDANE_OIL, Items.MUTTON, Items.COOKED_MUTTON, true);

@@ -1,13 +1,12 @@
 package com.bewitchment.common.core.event;
 
+import baubles.common.network.PacketHandler;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.lib.LibMod;
-
-import baubles.common.network.PacketHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
