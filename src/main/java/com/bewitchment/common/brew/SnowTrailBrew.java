@@ -1,5 +1,7 @@
 package com.bewitchment.common.brew;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,8 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-
 /**
  * This class was created by Arekkuusu on 13/06/2017.
  * It's distributed as part of Bewitchment under
@@ -25,9 +25,9 @@ public class SnowTrailBrew extends BlockHitBrew {
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
 		for (int l = 0; l < 4; ++l) {
-			int i = MathHelper.floor(entity.posX + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
+			int i = MathHelper.floor(entity.posX + (l % 2 * 2 - 1) * 0.25F);
 			int j = MathHelper.floor(entity.posY);
-			int k = MathHelper.floor(entity.posZ + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
+			int k = MathHelper.floor(entity.posZ + (l / 2 % 2 * 2 - 1) * 0.25F);
 			BlockPos blockpos = new BlockPos(i, j, k);
 
 			if (world.getBlockState(blockpos).getMaterial() == Material.AIR && Blocks.SNOW_LAYER.canPlaceBlockAt(world, blockpos)) {
@@ -49,7 +49,7 @@ public class SnowTrailBrew extends BlockHitBrew {
 
 	@Override
 	void safeImpact(BlockPos pos, @Nullable EnumFacing side, World world, int amplifier) {
-		int box = 1 + (int) ((float) amplifier / 2F);
+		int box = 1 + (int) (amplifier / 2F);
 
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);

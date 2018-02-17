@@ -2,6 +2,7 @@ package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,29 +19,28 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+@SuppressWarnings("deprecation")
 public class BlockFakeIce extends BlockMod {
 
-	@SuppressWarnings("deprecation")
 	public BlockFakeIce() {
 		super(LibBlockName.FAKE_ICE, Material.ICE);
 		setSound(SoundType.STONE);
 		setResistance(2F);
 		setHardness(2F);
-		slipperiness = 0.98F;
+		setDefaultSlipperiness(0.98F);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState sideState = world.getBlockState(pos.offset(side));

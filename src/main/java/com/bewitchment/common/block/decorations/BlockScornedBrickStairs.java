@@ -5,6 +5,7 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
@@ -21,9 +22,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+@SuppressWarnings("deprecation")
 public class BlockScornedBrickStairs extends BlockStairs implements IModelRegister {
 
-	@SuppressWarnings("deprecation")
 	public BlockScornedBrickStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
 		setUnlocalizedName(LibBlockName.SCORNED_BRICK_STAIRS);
@@ -34,7 +35,6 @@ public class BlockScornedBrickStairs extends BlockStairs implements IModelRegist
 		setHardness(5F);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -45,25 +45,21 @@ public class BlockScornedBrickStairs extends BlockStairs implements IModelRegist
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isTopSolid(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState sideState = world.getBlockState(pos.offset(side));

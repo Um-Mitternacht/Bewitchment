@@ -1,12 +1,12 @@
 package com.bewitchment.common.brew;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 11/06/2017.
@@ -28,7 +28,7 @@ public class SaltLandBrew extends BlockHitBrew {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void safeImpact(BlockPos pos, @Nullable EnumFacing side, World world, int amplifier) {
-		int box = 1 + (int) ((float) amplifier / 2F);
+		int box = 1 + (int) (amplifier / 2F);
 
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);

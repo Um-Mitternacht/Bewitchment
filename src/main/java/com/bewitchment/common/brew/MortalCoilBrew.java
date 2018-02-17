@@ -1,6 +1,7 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.brew.IBrew;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
@@ -23,7 +24,7 @@ public class MortalCoilBrew implements IBrew {
 
 	@Override
 	public void onFinish(World world, BlockPos pos, EntityLivingBase entity, int amplifier) {
-		if (entity instanceof EntityLivingBase) {
+		if (entity != null) {
 			entity.attackEntityFrom(DamageSource.MAGIC, 800000);
 		}
 	}

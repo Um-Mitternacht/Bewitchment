@@ -1,8 +1,11 @@
 package com.bewitchment.common.block.decorations;
 
+import java.util.Random;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -19,14 +22,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Random;
-
 /**
  * Created by Joseph on 9/3/2017.
  */
 public abstract class BlockFakeIceSlab extends BlockSlab {
 
-	@SuppressWarnings("deprecation")
 	public BlockFakeIceSlab(String unlocalizedName) {
 		super(Material.ICE);
 		setResistance(2F);
@@ -34,22 +34,22 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setHardness(2F);
-		slipperiness = 0.98F;
+		setDefaultSlipperiness(0.98F);
 		useNeighborBrightness = true;
 	}
 
-	@SuppressWarnings("deprecation")
+
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState sideState = world.getBlockState(pos.offset(side));
@@ -82,7 +82,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	public int getMetaFromState(IBlockState state) {
 		if (this.isDouble())
 			return 0;
-		return ((EnumBlockHalf) state.getValue(HALF)).ordinal() + 1;
+		return state.getValue(HALF).ordinal() + 1;
 	}
 
 	@Override
@@ -100,19 +100,16 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isTopSolid(IBlockState state) {
 		return false;

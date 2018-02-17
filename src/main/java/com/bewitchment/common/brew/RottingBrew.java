@@ -1,6 +1,7 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.brew.IBrew;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -19,7 +20,7 @@ public class RottingBrew implements IBrew {
 	@Override
 	public void apply(World world, BlockPos pos, EntityLivingBase entity, int amplifier, int tick) {
 		if (entity.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD) {
-			entity.attackEntityFrom(DamageSource.MAGIC, 0.5f + (float) amplifier / 4f);
+			entity.attackEntityFrom(DamageSource.MAGIC, 0.5f + amplifier / 4f);
 		}
 	}
 

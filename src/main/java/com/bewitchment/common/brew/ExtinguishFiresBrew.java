@@ -1,5 +1,7 @@
 package com.bewitchment.common.brew;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,8 +11,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 23/04/2017.
@@ -47,7 +47,7 @@ public class ExtinguishFiresBrew extends BlockHitBrew {
 	public void safeImpact(BlockPos pos, @Nullable EnumFacing side, World world, int amplifier) {
 		if (side != null) pos = pos.offset(side);
 		if (canExtinguish(world, pos, amplifier)) {
-			int box = 1 + (int) ((float) amplifier / 2F);
+			int box = 1 + (int) (amplifier / 2F);
 
 			world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1F, 1F);
 

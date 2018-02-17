@@ -1,6 +1,7 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.brew.IBrew;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCaveSpider;
@@ -29,7 +30,7 @@ public class SpiderNightmareBrew implements IBrew {
 			spider.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			world.spawnEntity(spider);
 		}
-		int box = 1 + (int) ((float) amplifier / 2F);
+		int box = 1 + (int) (amplifier / 2F);
 
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);

@@ -1,7 +1,12 @@
 package com.bewitchment.common.block.decorations;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -25,14 +30,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+@SuppressWarnings("deprecation")
 public class BlockFakeIceFence extends BlockMod {
 
 	/**
@@ -58,7 +61,6 @@ public class BlockFakeIceFence extends BlockMod {
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.625D, 0.0D, 0.375D, 1.0D, 1.5D, 0.625D);
 	protected static final AxisAlignedBB[] BOUNDING_BOXES = new AxisAlignedBB[]{new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
 
-	@SuppressWarnings("deprecation")
 	public BlockFakeIceFence() {
 		super(LibBlockName.FAKE_ICE_FENCE, Material.ICE);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
@@ -71,19 +73,19 @@ public class BlockFakeIceFence extends BlockMod {
 	private static int getBoundingBoxIdx(IBlockState state) {
 		int i = 0;
 
-		if (((Boolean) state.getValue(NORTH)).booleanValue()) {
+		if (state.getValue(NORTH).booleanValue()) {
 			i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
 		}
 
-		if (((Boolean) state.getValue(EAST)).booleanValue()) {
+		if (state.getValue(EAST).booleanValue()) {
 			i |= 1 << EnumFacing.EAST.getHorizontalIndex();
 		}
 
-		if (((Boolean) state.getValue(SOUTH)).booleanValue()) {
+		if (state.getValue(SOUTH).booleanValue()) {
 			i |= 1 << EnumFacing.SOUTH.getHorizontalIndex();
 		}
 
-		if (((Boolean) state.getValue(WEST)).booleanValue()) {
+		if (state.getValue(WEST).booleanValue()) {
 			i |= 1 << EnumFacing.WEST.getHorizontalIndex();
 		}
 
@@ -94,18 +96,18 @@ public class BlockFakeIceFence extends BlockMod {
 		return Block.isExceptBlockForAttachWithPiston(p_194142_0_) || p_194142_0_ == Blocks.BARRIER || p_194142_0_ == Blocks.MELON_BLOCK || p_194142_0_ == Blocks.PUMPKIN || p_194142_0_ == Blocks.LIT_PUMPKIN;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		if (!p_185477_7_) {
 			state = state.getActualState(worldIn, pos);
@@ -113,24 +115,24 @@ public class BlockFakeIceFence extends BlockMod {
 
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, PILLAR_AABB);
 
-		if (((Boolean) state.getValue(NORTH)).booleanValue()) {
+		if (state.getValue(NORTH).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NORTH_AABB);
 		}
 
-		if (((Boolean) state.getValue(EAST)).booleanValue()) {
+		if (state.getValue(EAST).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
 		}
 
-		if (((Boolean) state.getValue(SOUTH)).booleanValue()) {
+		if (state.getValue(SOUTH).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, SOUTH_AABB);
 		}
 
-		if (((Boolean) state.getValue(WEST)).booleanValue()) {
+		if (state.getValue(WEST).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		state = this.getActualState(state, source, pos);
 		return BOUNDING_BOXES[getBoundingBoxIdx(state)];
@@ -144,7 +146,7 @@ public class BlockFakeIceFence extends BlockMod {
 		return !isExcepBlockForAttachWithPiston(block) && blockfaceshape == BlockFaceShape.SOLID || flag;
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return true;
@@ -153,20 +155,22 @@ public class BlockFakeIceFence extends BlockMod {
 	/**
 	 * Called when the block is right clicked by a player.
 	 */
+	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
 			return ItemLead.attachToFence(playerIn, worldIn, pos);
-		} else {
-			ItemStack itemstack = playerIn.getHeldItem(hand);
-			return itemstack.getItem() == Items.LEAD || itemstack.isEmpty();
 		}
+		ItemStack itemstack = playerIn.getHeldItem(hand);
+		return itemstack.getItem() == Items.LEAD || itemstack.isEmpty();
+		
 	}
 
+	@Override
 	public int getMetaFromState(IBlockState state) {
 		return 0;
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		return state.withProperty(NORTH, canFenceConnectTo(worldIn, pos, EnumFacing.NORTH))
 				.withProperty(EAST, canFenceConnectTo(worldIn, pos, EnumFacing.EAST))
@@ -174,7 +178,7 @@ public class BlockFakeIceFence extends BlockMod {
 				.withProperty(WEST, canFenceConnectTo(worldIn, pos, EnumFacing.WEST));
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		switch (rot) {
 			case CLOCKWISE_180:
@@ -188,7 +192,7 @@ public class BlockFakeIceFence extends BlockMod {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		switch (mirrorIn) {
 			case LEFT_RIGHT:
@@ -200,6 +204,7 @@ public class BlockFakeIceFence extends BlockMod {
 		}
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[]{NORTH, EAST, WEST, SOUTH});
 	}
@@ -225,7 +230,7 @@ public class BlockFakeIceFence extends BlockMod {
 		return block.canBeConnectedTo(world, other, facing.getOpposite()) || canConnectTo(world, other, facing.getOpposite());
 	}
 
-	@SuppressWarnings("deprecation")
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess p_193383_1_, IBlockState p_193383_2_, BlockPos p_193383_3_, EnumFacing p_193383_4_) {
 		return p_193383_4_ != EnumFacing.UP && p_193383_4_ != EnumFacing.DOWN ? BlockFaceShape.MIDDLE_POLE : BlockFaceShape.CENTER;
 	}

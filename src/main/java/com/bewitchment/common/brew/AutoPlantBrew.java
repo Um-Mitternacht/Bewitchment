@@ -1,5 +1,9 @@
 package com.bewitchment.common.brew;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -9,9 +13,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 12/06/2017.
@@ -43,7 +44,7 @@ public class AutoPlantBrew extends BlockHitBrew {
 	}
 
 	private void plantAll(List<EntityItem> items, World world, BlockPos pos, int amplifier) {
-		int box = 1 + (int) ((float) amplifier / 2F);
+		int box = 1 + (int) (amplifier / 2F);
 
 		BlockPos posI = pos.add(box, 1, box);
 		BlockPos posF = pos.add(-box, -1, -box);
