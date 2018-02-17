@@ -45,6 +45,7 @@ options.txt
 *.iml
 /classes/
 .metadata
+*.rej
 bin/
 tmp/
 *.tmp
