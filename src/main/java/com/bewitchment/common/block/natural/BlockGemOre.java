@@ -1,8 +1,13 @@
 package com.bewitchment.common.block.natural;
 
+import static com.bewitchment.common.core.BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB;
+
+import javax.annotation.Nonnull;
+
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -12,10 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
-
-import javax.annotation.Nonnull;
-
-import static com.bewitchment.common.core.BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 /**
  * This class was created by <Arekkuusu> on 27/06/2017.
@@ -32,7 +33,6 @@ public class BlockGemOre extends BlockMod {
 		setCreativeTab(BLOCKS_CREATIVE_TAB);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(GEM, Gem.values()[meta]);
@@ -55,10 +55,8 @@ public class BlockGemOre extends BlockMod {
 
 	@Override
 	public void getSubBlocks(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items) {
-		{
-			for (int i = 0; i < Gem.values().length; ++i) {
-				items.add(new ItemStack(this, 1, i));
-			}
+		for (int i = 0; i < Gem.values().length; ++i) {
+			items.add(new ItemStack(this, 1, i));
 		}
 	}
 

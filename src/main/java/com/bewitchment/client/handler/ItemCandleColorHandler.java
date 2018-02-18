@@ -61,6 +61,7 @@ public class ItemCandleColorHandler implements IItemColor {
 				break;
 			case 15:
 				color = 1908001;
+				break;
 			default:
 				break;
 		}

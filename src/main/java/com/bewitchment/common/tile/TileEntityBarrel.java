@@ -1,8 +1,13 @@
 package com.bewitchment.common.tile;
 
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.fermenting.BarrelRecipe;
 import com.bewitchment.common.block.tools.BlockBarrel;
 import com.bewitchment.common.tile.util.AutomatableInventory;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,9 +21,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
-
-import javax.annotation.Nullable;
-import java.util.stream.Collectors;
 
 public class TileEntityBarrel extends TileMod implements ITickable {
 
@@ -69,8 +71,6 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 				TileEntityBarrel.this.markDirty();
 			checkRecipe();
 		}
-
-		;
 	};
 
 	public TileEntityBarrel() {
@@ -118,19 +118,20 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 						brewingTime++;
 						markDirty();
 						return;
-					} else {
-						currentRecipe.onFinish(world, inv.getList().stream().skip(1).collect(Collectors.toList()), pos, internalTank.drain(1000, true));
-						ItemStack output = inv.getStackInSlot(0);
-						if (output.isEmpty()) inv.setInventorySlotContents(0, currentRecipe.getResult());
-						else output.grow(currentRecipe.getResult().getCount());
-						brewingTime = 0;
-						powerAbsorbed = 0;
-						recipeName = null;
-						cachedRecipe = null;
-						markDirty();
-						checkRecipe();
-						return;
 					}
+					currentRecipe.onFinish(world, inv.getList().stream().skip(1).collect(Collectors.toList()), pos, internalTank.drain(1000, true));
+					ItemStack output = inv.getStackInSlot(0);
+					if (output.isEmpty())
+						inv.setInventorySlotContents(0, currentRecipe.getResult());
+					else
+						output.grow(currentRecipe.getResult().getCount());
+					brewingTime = 0;
+					powerAbsorbed = 0;
+					recipeName = null;
+					cachedRecipe = null;
+					markDirty();
+					checkRecipe();
+					return;
 				}
 			}
 		}

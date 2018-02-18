@@ -6,6 +6,10 @@
 
 package com.bewitchment.common.item.magic;
 
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.api.spell.Spell;
@@ -13,6 +17,7 @@ import com.bewitchment.api.spell.Spell.EnumSpellType;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -29,9 +34,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
 
 public class ItemSpellPage extends ItemMod {
 
@@ -106,9 +108,8 @@ public class ItemSpellPage extends ItemMod {
 		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-		} else {
-			return super.onItemRightClick(worldIn, playerIn, handIn);
 		}
+		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
 	@Override

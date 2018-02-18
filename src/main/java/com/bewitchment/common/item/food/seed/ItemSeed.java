@@ -1,8 +1,13 @@
 package com.bewitchment.common.item.food.seed;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -14,12 +19,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 27/02/2017.
@@ -27,7 +28,7 @@ import java.util.List;
  * the MIT license.
  */
 @SuppressWarnings("WeakerAccess")
-public class ItemSeed extends ItemSeeds implements IPlantable, IModelRegister {
+public class ItemSeed extends ItemSeeds implements IModelRegister {
 
 	protected final Block crop;
 	protected final Block soil;

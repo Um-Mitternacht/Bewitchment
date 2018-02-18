@@ -1,6 +1,11 @@
 package com.bewitchment.common.block.natural.crop;
 
+import static net.minecraft.block.BlockLiquid.LEVEL;
+
+import java.util.Random;
+
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -9,10 +14,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.Random;
-
-import static net.minecraft.block.BlockLiquid.LEVEL;
 
 /**
  * This class was created by Arekkuusu on 02/03/2017.
@@ -25,7 +26,6 @@ public class CropKelp extends BlockCrop {
 		super(LibBlockName.CROP_KELP);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public Material getMaterial(IBlockState state) {
 		return Material.WATER;
@@ -78,6 +78,7 @@ public class CropKelp extends BlockCrop {
 	}
 
 
+	@Override
 	protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
 		if (!this.canBlockStay(worldIn, pos, state)) {
 			this.dropBlockAsItem(worldIn, pos, state, 0);

@@ -15,6 +15,7 @@ public class ParticleOvenFlame extends Particle {
 
 	@SideOnly(Side.CLIENT)
 	static class Factory implements IParticleF {
+		@Override
 		public Particle createParticle(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... args) {
 			return new ParticleOvenFlame(worldIn, xCoordIn, yCoordIn, zCoordIn);
 		}

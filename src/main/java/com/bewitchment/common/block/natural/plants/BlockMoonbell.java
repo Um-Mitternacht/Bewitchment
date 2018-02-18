@@ -1,5 +1,8 @@
 package com.bewitchment.common.block.natural.plants;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,9 +25,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class BlockMoonbell extends BlockModFlower {
 
 	public static final PropertyBool placed = PropertyBool.create("placed");
@@ -43,7 +43,6 @@ public class BlockMoonbell extends BlockModFlower {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(placed, meta == 0);
 	}

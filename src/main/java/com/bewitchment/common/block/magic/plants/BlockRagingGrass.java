@@ -1,8 +1,14 @@
 package com.bewitchment.common.block.magic.plants;
 
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -23,13 +29,10 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
-
 /**
  * Created by Joseph on 11/7/2017.
  */
+@SuppressWarnings("deprecation")
 public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable {
 
 	public BlockRagingGrass() {
@@ -47,13 +50,11 @@ public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable 
 		return true;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -97,7 +98,6 @@ public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable 
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
@@ -117,6 +117,7 @@ public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable 
 		return EnumOffsetType.XYZ;
 	}
 
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (rand.nextInt(25) == 0) {
 			int i = 5;
@@ -148,18 +149,18 @@ public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable 
 	}
 
 
-	@SuppressWarnings("deprecation")
+	@Override
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		if (entityIn instanceof EntityLivingBase && (((EntityLivingBase) entityIn).getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD)) {

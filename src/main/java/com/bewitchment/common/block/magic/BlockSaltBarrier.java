@@ -1,12 +1,19 @@
 package com.bewitchment.common.block.magic;
 
 
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -16,10 +23,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityVex;
+import net.minecraft.entity.monster.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,17 +35,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 /**
  * This class was created by BerciTheBeast on 27.3.2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({ "WeakerAccess", "deprecation" })
 public class BlockSaltBarrier extends BlockMod {
 
 	public static final PropertyEnum<BlockSaltBarrier.EnumAttachPosition> NORTH = PropertyEnum.create("north", BlockSaltBarrier.EnumAttachPosition.class);
@@ -93,7 +92,6 @@ public class BlockSaltBarrier extends BlockMod {
 		return i;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState();
@@ -104,7 +102,6 @@ public class BlockSaltBarrier extends BlockMod {
 		return 0;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		state = state.withProperty(WEST, this.getAttachPosition(worldIn, pos, EnumFacing.WEST));
@@ -134,12 +131,10 @@ public class BlockSaltBarrier extends BlockMod {
 			}
 
 			return BlockSaltBarrier.EnumAttachPosition.NONE;
-		} else {
-			return BlockSaltBarrier.EnumAttachPosition.SIDE;
 		}
+		return BlockSaltBarrier.EnumAttachPosition.SIDE;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		switch (rot) {
@@ -154,7 +149,6 @@ public class BlockSaltBarrier extends BlockMod {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		switch (mirrorIn) {
@@ -167,26 +161,22 @@ public class BlockSaltBarrier extends BlockMod {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return SALT_BARRIER_AABB[getAABBIndex(state.getActualState(source, pos))];
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -195,15 +185,14 @@ public class BlockSaltBarrier extends BlockMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		double x = (double) pos.getX() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
-		double y = (double) ((float) pos.getY() + 0.0625F);
-		double z = (double) pos.getZ() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
-		final float f = (float) 3 / 15.0F;
+		double x = pos.getX() + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
+		double y = pos.getY() + 0.0625F;
+		double z = pos.getZ() + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
+		final float f = 3 / 15.0F;
 		final float f2 = Math.max(0.0F, f * f * 0.7F - 0.5F);
-		worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, 0D, (double) f2, 0D);
+		worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, 0D, f2, 0D);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos toPos) {
 		if (!worldIn.isRemote) {
@@ -289,7 +278,6 @@ public class BlockSaltBarrier extends BlockMod {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		if (entityIn instanceof EntityLivingBase && (((EntityLivingBase) entityIn).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)) {
@@ -324,18 +312,17 @@ public class BlockSaltBarrier extends BlockMod {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		return worldIn.getBlockState(pos.down()).isTopSolid() || worldIn.getBlockState(pos.down()).getBlock() == Blocks.GLOWSTONE;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 		return new ItemStack(ModItems.salt);
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, NORTH, EAST, SOUTH, WEST);
 	}
@@ -351,10 +338,12 @@ public class BlockSaltBarrier extends BlockMod {
 			this.name = name;
 		}
 
+		@Override
 		public String toString() {
 			return this.getName();
 		}
 
+		@Override
 		public String getName() {
 			return this.name;
 		}

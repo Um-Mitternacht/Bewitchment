@@ -1,13 +1,11 @@
 package com.bewitchment.api.brew;
 
-import com.google.common.collect.Maps;
-import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
-
 import java.util.Map;
 import java.util.UUID;
+
+import com.google.common.collect.Maps;
+
+import net.minecraft.entity.ai.attributes.*;
 
 /**
  * This class was created by Arekkuusu on 10/06/2017.
@@ -32,7 +30,7 @@ public abstract class BrewAtributeModifier implements IBrew {
 
 			AttributeModifier modifier = entry.getValue();
 			attribute.removeModifier(modifier);
-			attribute.applyModifier(new AttributeModifier(modifier.getID(), this.getName() + " " + amplifier, modifier.getAmount() * (double) (amplifier + 1), modifier.getOperation()));
+			attribute.applyModifier(new AttributeModifier(modifier.getID(), this.getName() + " " + amplifier, modifier.getAmount() * (amplifier + 1), modifier.getOperation()));
 		}
 	}
 

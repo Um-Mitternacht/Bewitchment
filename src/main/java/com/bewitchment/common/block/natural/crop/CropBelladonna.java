@@ -1,13 +1,14 @@
 package com.bewitchment.common.block.natural.crop;
 
+import java.util.Random;
+
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 /**
  * This class was created by Arekkuusu on 20/03/2017.
@@ -22,10 +23,12 @@ public class CropBelladonna extends BlockCrop {
 		super(LibBlockName.CROP_BELLADONNA, 5);
 	}
 
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return CROPS_AABB[state.getValue(this.getAgeProperty())];
 	}
 
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		checkAndDropBlock(worldIn, pos, state);
 

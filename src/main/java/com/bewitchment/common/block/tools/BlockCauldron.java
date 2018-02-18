@@ -1,10 +1,17 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.api.helper.IModelRegister;
+import static com.bewitchment.api.BewitchmentAPI.HALF;
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -24,18 +31,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
-import static com.bewitchment.api.BewitchmentAPI.HALF;
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockCauldron extends BlockMod implements IModelRegister, ITileEntityProvider {
+public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 
 	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 15 * 0.0625, 11 * 0.0625, 15 * 0.0625);
 	private static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);
@@ -123,6 +124,7 @@ public class BlockCauldron extends BlockMod implements IModelRegister, ITileEnti
 		return tile != null && tile.useCauldron(playerIn, hand, playerIn.getHeldItem(hand));
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, FACING, HALF);
 	}

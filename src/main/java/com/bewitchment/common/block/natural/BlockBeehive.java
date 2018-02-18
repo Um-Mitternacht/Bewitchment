@@ -1,11 +1,18 @@
 package com.bewitchment.common.block.natural;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.bewitchment.api.sound.WitchSoundEvents;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -23,12 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
@@ -45,7 +46,6 @@ public class BlockBeehive extends BlockMod {
 		setHardness(1F);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		final EnumFacing facing = EnumFacing.getHorizontal(meta);
@@ -58,24 +58,22 @@ public class BlockBeehive extends BlockMod {
 		return facing.getHorizontalIndex();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOX;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@Override
 	public int quantityDropped(Random random) {
 		return random.nextInt(5);
 	}
@@ -91,11 +89,11 @@ public class BlockBeehive extends BlockMod {
 		}
 	}
 
+	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return ModItems.empty_honeycomb;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> ret = new ArrayList<ItemStack>();

@@ -1,10 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.ritual.IRitualHandler;
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -20,11 +26,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
 
@@ -203,14 +204,12 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
 						return;
-					} else {
-						player.sendStatusMessage(new TextComponentTranslation("ritual.failure.power", new Object[0]), true);
-						return;
 					}
-				} else {
-					player.sendStatusMessage(new TextComponentTranslation("ritual.failure.precondition", new Object[0]), true);
+					player.sendStatusMessage(new TextComponentTranslation("ritual.failure.power", new Object[0]), true);
 					return;
 				}
+				player.sendStatusMessage(new TextComponentTranslation("ritual.failure.precondition", new Object[0]), true);
+				return;
 
 			}
 		}

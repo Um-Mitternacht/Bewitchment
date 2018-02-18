@@ -1,9 +1,14 @@
 package com.bewitchment.common.entity;
 
+import java.util.*;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.google.common.collect.Maps;
+
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,12 +23,6 @@ import net.minecraft.util.Tuple;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import javax.annotation.Nullable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * This class was created by Arekkuusu on 08/06/2017.
@@ -95,13 +94,13 @@ public class EntityBrewLinger extends Entity {
 							int r = color >> 16 & 255;
 							int g = color >> 8 & 255;
 							int b = color & 255;
-							world.spawnAlwaysVisibleParticle(EnumParticleTypes.SPELL_MOB.getParticleID(), posX + (double) f3, posY, posZ + (double) f4, (double) ((float) r / 255.0F), (double) ((float) g / 255.0F), (double) ((float) b / 255.0F));
+							world.spawnAlwaysVisibleParticle(EnumParticleTypes.SPELL_MOB.getParticleID(), posX + f3, posY, posZ + f4, r / 255.0F, g / 255.0F, b / 255.0F);
 						}
 					}
 				} else {
 					float rad = (float) Math.PI * radius * radius;
 
-					for (int k1 = 0; (float) k1 < rad; ++k1) {
+					for (int k1 = 0; k1 < rad; ++k1) {
 						float f6 = rand.nextFloat() * ((float) Math.PI * 2F);
 						float f7 = MathHelper.sqrt(rand.nextFloat()) * radius;
 						float f8 = MathHelper.cos(f6) * f7;
@@ -111,7 +110,7 @@ public class EntityBrewLinger extends Entity {
 						int r = color >> 16 & 255;
 						int g = color >> 8 & 255;
 						int b = color & 255;
-						world.spawnAlwaysVisibleParticle(EnumParticleTypes.SPELL_MOB.getParticleID(), posX + (double) f8, posY, posZ + (double) f9, (double) ((float) r / 255.0F), (double) ((float) g / 255.0F), (double) ((float) b / 255.0F));
+						world.spawnAlwaysVisibleParticle(EnumParticleTypes.SPELL_MOB.getParticleID(), posX + f8, posY, posZ + f9, r / 255.0F, g / 255.0F, b / 255.0F);
 					}
 				}
 			} else if (tuple != null) {
@@ -167,7 +166,7 @@ public class EntityBrewLinger extends Entity {
 									double z = entity.posZ - posZ;
 									double xz = x * x + z * z;
 
-									if (xz <= (double) (radius * radius)) {
+									if (xz <= radius * radius) {
 										reapplicationDelayMap.put(entity, ticksExisted + reapplicationDelay);
 
 										for (BrewEffect effect : tuple.getFirst()) {

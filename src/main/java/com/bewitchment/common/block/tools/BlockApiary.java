@@ -1,11 +1,16 @@
 package com.bewitchment.common.block.tools;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.Random;
+
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileApiary;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -25,10 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
@@ -46,7 +47,6 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 		setHardness(2F);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		final EnumFacing facing = EnumFacing.getHorizontal(meta);
@@ -59,19 +59,16 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 		return facing.getHorizontalIndex();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOX;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

@@ -1,5 +1,8 @@
 package com.bewitchment.common.tile.util;
 
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -7,9 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.IItemHandler;
-
-import java.util.Collections;
-import java.util.List;
 
 public abstract class AutomatableInventory implements IInventory, IItemHandler {
 
@@ -40,17 +40,16 @@ public abstract class AutomatableInventory implements IInventory, IItemHandler {
 				markDirty();
 			}
 			return ItemStack.EMPTY;
-		} else {
-			if (ItemStack.areItemsEqual(stack, stackPresent) && ItemStack.areItemStackTagsEqual(stack, stackPresent)) {
-				int inserted = Math.min(stack.getCount(), stackPresent.getMaxStackSize() - stackPresent.getCount());
-				if (inserted > 0) {
-					if (simulate) {
-						return stack.copy().splitStack(stack.getCount() - inserted);
-					}
-					stackPresent.grow(inserted);
-					markDirty();
+		}
+		if (ItemStack.areItemsEqual(stack, stackPresent) && ItemStack.areItemStackTagsEqual(stack, stackPresent)) {
+			int inserted = Math.min(stack.getCount(), stackPresent.getMaxStackSize() - stackPresent.getCount());
+			if (inserted > 0) {
+				if (simulate) {
 					return stack.copy().splitStack(stack.getCount() - inserted);
 				}
+				stackPresent.grow(inserted);
+				markDirty();
+				return stack.copy().splitStack(stack.getCount() - inserted);
 			}
 		}
 		return stack;

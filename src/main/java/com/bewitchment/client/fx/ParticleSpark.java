@@ -37,6 +37,7 @@ class ParticleSpark extends Particle {
 		this.setParticleTextureIndex(65);
 	}
 
+	@Override
 	public void onUpdate() {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
@@ -47,8 +48,8 @@ class ParticleSpark extends Particle {
 		}
 
 		this.move(this.motionX, this.motionY, this.motionZ);
-		this.particleGreen = (float) ((double) this.particleGreen * 0.96D);
-		this.particleBlue = (float) ((double) this.particleBlue * 0.9D);
+		this.particleGreen = (float) (this.particleGreen * 0.96D);
+		this.particleBlue = (float) (this.particleBlue * 0.9D);
 		this.motionX *= 0.699999988079071D;
 		this.motionZ *= 0.699999988079071D;
 		this.motionY -= 0.019999999552965164D;
@@ -59,8 +60,9 @@ class ParticleSpark extends Particle {
 		}
 	}
 
+	@Override
 	public void renderParticle(BufferBuilder buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		float scale = ((float) this.particleAge + partialTicks) / (float) this.particleMaxAge * 32.0F;
+		float scale = (this.particleAge + partialTicks) / this.particleMaxAge * 32.0F;
 		scale = MathHelper.clamp(scale, 0.0F, 1.0F);
 		this.particleScale = this.oSize * scale;
 		super.renderParticle(buffer, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
@@ -69,6 +71,7 @@ class ParticleSpark extends Particle {
 
 	@SideOnly(Side.CLIENT)
 	static class Factory implements IParticleF {
+		@Override
 		public Particle createParticle(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... args) {
 			return new ParticleSpark(worldIn, xCoordIn, yCoordIn, zCoordIn);
 		}

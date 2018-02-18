@@ -1,19 +1,24 @@
 package com.bewitchment.common.tile;
 
+import static net.minecraftforge.fluids.Fluid.BUCKET_VOLUME;
+
+import java.awt.Color;
+import java.util.*;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.CauldronRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
-import com.bewitchment.api.recipe.BrewModifier;
-import com.bewitchment.api.recipe.CauldronBrewRecipe;
-import com.bewitchment.api.recipe.CauldronItemRecipe;
-import com.bewitchment.api.recipe.ItemValidator;
+import com.bewitchment.api.recipe.*;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Lists;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -38,15 +43,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import static net.minecraftforge.fluids.Fluid.BUCKET_VOLUME;
 
 /**
  * This class was created by Arekkuusu on 08/03/2017.
@@ -251,7 +247,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 	}
 
 	public float getParticleLevel() {
-		float level = (float) inv.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
+		float level = inv.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
 		return getPos().getY() + 0.1F + level;
 	}
 

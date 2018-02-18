@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,8 +16,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 21/03/2017.
@@ -107,14 +107,16 @@ public abstract class TileItemInventory extends TileEntity {
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 			if (allow) {
 				return super.insertItem(slot, stack, simulate);
-			} else return stack;
+			}
+			return stack;
 		}
 
 		@Override
 		public ItemStack extractItem(int slot, int amount, boolean simulate) {
 			if (allow) {
 				return super.extractItem(slot, 1, simulate);
-			} else return ItemStack.EMPTY;
+			}
+			return ItemStack.EMPTY;
 		}
 
 		@Override
@@ -125,7 +127,8 @@ public abstract class TileItemInventory extends TileEntity {
 		public ItemStack getItemSimulate(int slot) {
 			if (allow) {
 				return super.extractItem(slot, 1, true);
-			} else return ItemStack.EMPTY;
+			}
+			return ItemStack.EMPTY;
 		}
 	}
 }

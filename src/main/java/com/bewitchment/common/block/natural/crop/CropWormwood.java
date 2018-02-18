@@ -1,13 +1,14 @@
 package com.bewitchment.common.block.natural.crop;
 
+import java.util.Random;
+
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 /**
  * This class was created by Arekkuusu on 19/05/2017.
@@ -49,11 +50,10 @@ public class CropWormwood extends BlockCrop {
 	private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state) {
 		if (this.canSustainBush(worldIn.getBlockState(pos.down()))) {
 			return true;
-		} else {
-			this.dropBlockAsItem(worldIn, pos, state, 0);
-			worldIn.setBlockToAir(pos);
-			return false;
 		}
+		this.dropBlockAsItem(worldIn, pos, state, 0);
+		worldIn.setBlockToAir(pos);
+		return false;
 	}
 
 

@@ -3,6 +3,7 @@ package com.bewitchment.common.item.tool;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -32,8 +33,7 @@ public class ItemSalt extends ItemMod {
 			stack.shrink(1);
 			worldIn.setBlockState(blockpos, ModBlocks.salt_barrier.getDefaultState());
 			return EnumActionResult.SUCCESS;
-		} else {
-			return EnumActionResult.FAIL;
 		}
+		return EnumActionResult.FAIL;
 	}
 }

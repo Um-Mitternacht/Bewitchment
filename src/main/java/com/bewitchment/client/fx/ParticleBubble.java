@@ -1,6 +1,9 @@
 package com.bewitchment.client.fx;
 
+import java.awt.Color;
+
 import com.bewitchment.client.ResourceLocations;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -14,8 +17,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.awt.*;
 
 @SideOnly(Side.CLIENT)
 class ParticleBubble extends Particle {
@@ -64,20 +65,20 @@ class ParticleBubble extends Particle {
 
 	@Override
 	public void renderParticle(BufferBuilder buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		int i = (int) (((float) this.life + partialTicks) / (float) this.particleMaxAge);
+		int i = (int) ((this.life + partialTicks) / this.particleMaxAge);
 
 		if (i <= 7) {
 			this.textureManager.bindTexture(ResourceLocations.BUBBLE);
 			float minX = 0;
 			float maxX = minX + 1;
 
-			float minY = (float) i / 8F;
+			float minY = i / 8F;
 			float maxY = minY + 0.125F;
 
 			float scale = 1.0F * this.particleScale;
-			float x = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) partialTicks - interpPosX);
-			float y = (float) (this.prevPosY + (this.posY - this.prevPosY) * (double) partialTicks - interpPosY);
-			float z = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) partialTicks - interpPosZ);
+			float x = (float) (this.prevPosX + (this.posX - this.prevPosX) * partialTicks - interpPosX);
+			float y = (float) (this.prevPosY + (this.posY - this.prevPosY) * partialTicks - interpPosY);
+			float z = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * partialTicks - interpPosZ);
 			Vec3d vec0 = new Vec3d(-rotationX * scale - rotationXY * scale, -rotationZ * scale, -rotationYZ * scale - rotationXZ * scale);
 			Vec3d vec1 = new Vec3d(-rotationX * scale + rotationXY * scale, rotationZ * scale, -rotationYZ * scale + rotationXZ * scale);
 			Vec3d vec2 = new Vec3d(rotationX * scale + rotationXY * scale, rotationZ * scale, rotationYZ * scale + rotationXZ * scale);
@@ -85,10 +86,10 @@ class ParticleBubble extends Particle {
 
 			GlStateManager.color(getRedColorF(), getGreenColorF(), getBlueColorF(), 1.0F);
 			buffer.begin(7, VERTEX_FORMAT);
-			buffer.pos((double) x + vec0.x, (double) y + vec0.y, (double) z + vec0.z).tex((double) maxX, (double) maxY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-			buffer.pos((double) x + vec1.x, (double) y + vec1.y, (double) z + vec1.z).tex((double) maxX, (double) minY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-			buffer.pos((double) x + vec2.x, (double) y + vec2.y, (double) z + vec2.z).tex((double) minX, (double) minY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-			buffer.pos((double) x + vec3.x, (double) y + vec3.y, (double) z + vec3.z).tex((double) minX, (double) maxY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+			buffer.pos(x + vec0.x, y + vec0.y, z + vec0.z).tex(maxX, maxY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+			buffer.pos(x + vec1.x, y + vec1.y, z + vec1.z).tex(maxX, minY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+			buffer.pos(x + vec2.x, y + vec2.y, z + vec2.z).tex(minX, minY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+			buffer.pos(x + vec3.x, y + vec3.y, z + vec3.z).tex(minX, maxY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 			Tessellator.getInstance().draw();
 		}
 	}
@@ -100,6 +101,7 @@ class ParticleBubble extends Particle {
 
 	@SideOnly(Side.CLIENT)
 	static class Factory implements IParticleF {
+		@Override
 		public Particle createParticle(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... args) {
 			Color color = new Color(args[0]).darker();
 			return new ParticleBubble(Minecraft.getMinecraft().getTextureManager(), worldIn, xCoordIn, yCoordIn, zCoordIn, color.getRGB());

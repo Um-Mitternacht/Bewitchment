@@ -1,9 +1,14 @@
 package com.bewitchment.common.block.magic.plants;
 
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.BewitchmentCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -20,12 +25,10 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.Random;
-
 /**
  * Created by Joseph on 11/4/2017.
  */
+@SuppressWarnings("deprecation")
 public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 
 	public BlockTorchwood() {
@@ -38,13 +41,11 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -66,7 +67,6 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
@@ -100,7 +100,6 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
