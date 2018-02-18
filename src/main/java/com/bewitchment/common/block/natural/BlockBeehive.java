@@ -57,16 +57,19 @@ public class BlockBeehive extends BlockMod {
 		return facing.getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOX;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

@@ -99,6 +99,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;

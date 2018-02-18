@@ -42,6 +42,7 @@ public class BlockMoonbell extends BlockModFlower {
 		validBiomesMoonBell.add(b);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(placed, meta == 0);

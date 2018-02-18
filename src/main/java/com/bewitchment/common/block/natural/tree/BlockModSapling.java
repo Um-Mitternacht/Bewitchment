@@ -303,6 +303,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 		return state.getValue(TYPE).ordinal() | (state.getValue(STAGE) << 2);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(TYPE, EnumSaplingType.values()[meta & 3]).withProperty(STAGE, meta >> 2);

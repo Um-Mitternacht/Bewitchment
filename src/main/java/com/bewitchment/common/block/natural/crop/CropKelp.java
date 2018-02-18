@@ -25,6 +25,7 @@ public class CropKelp extends BlockCrop {
 		super(LibBlockName.CROP_KELP);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Material getMaterial(IBlockState state) {
 		return Material.WATER;

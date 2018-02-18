@@ -46,6 +46,7 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 		setHardness(2F);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		final EnumFacing facing = EnumFacing.getHorizontal(meta);
@@ -58,16 +59,19 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 		return facing.getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOX;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
