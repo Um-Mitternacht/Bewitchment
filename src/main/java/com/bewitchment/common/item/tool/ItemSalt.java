@@ -3,7 +3,6 @@ package com.bewitchment.common.item.tool;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;

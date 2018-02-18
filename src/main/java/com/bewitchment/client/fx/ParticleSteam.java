@@ -1,7 +1,6 @@
 package com.bewitchment.client.fx;
 
 import com.bewitchment.client.ResourceLocations;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;

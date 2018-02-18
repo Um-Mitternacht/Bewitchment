@@ -1,7 +1,6 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.brew.IBrew;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;

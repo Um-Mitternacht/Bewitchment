@@ -1,13 +1,10 @@
 package com.bewitchment.common.entity;
 
-import java.util.List;
-
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.brew.IBrewEntityImpact;
 import com.bewitchment.api.helper.NBTHelper;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
@@ -22,6 +19,8 @@ import net.minecraft.util.Tuple;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 22/04/2017.

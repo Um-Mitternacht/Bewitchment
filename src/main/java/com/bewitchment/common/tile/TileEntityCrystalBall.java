@@ -1,17 +1,15 @@
 package com.bewitchment.common.tile;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends TileMod {
 
@@ -35,7 +33,7 @@ public class TileEntityCrystalBall extends TileMod {
 		return false;
 	}
 
-	@SuppressWarnings({ "deprecation", "null" })
+	@SuppressWarnings({"deprecation", "null"})
 	private boolean readFortune(@Nonnull EntityPlayer endPlayer, @Nullable EntityPlayer externalReader) {
 
 		// This is here to support reading to others in the future

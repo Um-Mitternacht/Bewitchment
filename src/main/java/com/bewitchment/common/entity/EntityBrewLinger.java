@@ -1,14 +1,9 @@
 package com.bewitchment.common.entity;
 
-import java.util.*;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.google.common.collect.Maps;
-
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +18,12 @@ import net.minecraft.util.Tuple;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+
+import javax.annotation.Nullable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * This class was created by Arekkuusu on 08/06/2017.

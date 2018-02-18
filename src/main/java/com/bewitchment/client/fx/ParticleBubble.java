@@ -1,9 +1,6 @@
 package com.bewitchment.client.fx;
 
-import java.awt.Color;
-
 import com.bewitchment.client.ResourceLocations;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -17,6 +14,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.awt.*;
 
 @SideOnly(Side.CLIENT)
 class ParticleBubble extends Particle {

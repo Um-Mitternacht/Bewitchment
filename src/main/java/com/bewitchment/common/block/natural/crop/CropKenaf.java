@@ -1,9 +1,6 @@
 package com.bewitchment.common.block.natural.crop;
 
-import java.util.Random;
-
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -11,6 +8,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 /**
  * This class was created by Arekkuusu on 17/05/2017.

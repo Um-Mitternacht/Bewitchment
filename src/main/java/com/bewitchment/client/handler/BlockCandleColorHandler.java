@@ -1,13 +1,12 @@
 package com.bewitchment.client.handler;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.BewitchmentAPI;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
+import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.

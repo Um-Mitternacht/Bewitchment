@@ -1,12 +1,7 @@
 package com.bewitchment.client.render.tile;
 
-import java.util.Optional;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.tile.TileCauldron;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -21,6 +16,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 09/03/2017.

@@ -1,13 +1,15 @@
 package com.bewitchment.client.gui.container;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 16/04/2017.

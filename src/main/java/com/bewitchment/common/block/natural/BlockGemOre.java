@@ -1,13 +1,8 @@
 package com.bewitchment.common.block.natural;
 
-import static com.bewitchment.common.core.BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB;
-
-import javax.annotation.Nonnull;
-
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -17,6 +12,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
+
+import javax.annotation.Nonnull;
+
+import static com.bewitchment.common.core.BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 /**
  * This class was created by <Arekkuusu> on 27/06/2017.
