@@ -45,6 +45,7 @@ public class BlockBeehive extends BlockMod {
 		setHardness(1F);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		final EnumFacing facing = EnumFacing.getHorizontal(meta);
@@ -96,6 +97,7 @@ public class BlockBeehive extends BlockMod {
 		return ModItems.empty_honeycomb;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
