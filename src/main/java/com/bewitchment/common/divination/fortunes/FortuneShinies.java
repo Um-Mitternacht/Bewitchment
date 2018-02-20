@@ -24,9 +24,10 @@ import java.util.List;
  * Created by Joseph on 2/12/2018.
  */
 
-public class FortuneTreasure extends Fortune {
+//Todo: Create loot table.
+public class FortuneShinies extends Fortune {
 
-	public FortuneTreasure(int weight, String name, String modid) {
+	public FortuneShinies(int weight, String name, String modid) {
 		super(weight, name, modid);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -60,7 +61,7 @@ public class FortuneTreasure extends Fortune {
 			if (cap.isActive()) {
 				Block block = evt.getState().getBlock();
 				if (block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS) {
-					LootTable lt = evt.getWorld().getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_SIMPLE_DUNGEON);
+					LootTable lt = evt.getWorld().getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_DESERT_PYRAMID);
 					LootContext lc = (new LootContext.Builder((WorldServer) evt.getWorld()).withLuck(evt.getPlayer().getLuck()).withPlayer(evt.getPlayer())).build();
 					List<ItemStack> spawn = lt.generateLootForPools(evt.getPlayer().getRNG(), lc);
 					spawn.forEach(s -> spawn(s, evt.getWorld(), evt.getPos()));
