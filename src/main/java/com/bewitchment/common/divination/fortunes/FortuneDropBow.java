@@ -2,6 +2,7 @@ package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,7 +34,7 @@ public class FortuneDropBow extends Fortune {
 
 	@SubscribeEvent
 	public void onArrowNock(ArrowNockEvent evt) {
-		if (evt.getEntityPlayer() != null && !evt.getEntityPlayer().isCreative() && evt.getHand() == EnumHand.MAIN_HAND) { // Needs to check for mainhand due to how the event works
+		if (evt.getEntityPlayer() != null && evt.getHand() == EnumHand.MAIN_HAND) { // Needs to check for mainhand due to how the event works
 			CapabilityDivination cap = evt.getEntityPlayer().getCapability(CapabilityDivination.CAPABILITY, null);
 			if (cap.getFortune() == this && cap.isActive()) {
 				if (evt.getEntityPlayer().dropItem(true) != null) {
