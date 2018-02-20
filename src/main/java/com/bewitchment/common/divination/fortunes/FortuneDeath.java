@@ -1,12 +1,13 @@
 package com.bewitchment.common.divination.fortunes;
 
-import com.bewitchment.api.divination.Fortune;
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.MinecraftForge;
-
 import javax.annotation.Nonnull;
+
+import com.bewitchment.api.divination.Fortune;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Created by Joseph on 1/16/2018.
@@ -31,8 +32,7 @@ public class FortuneDeath extends Fortune {
 
 	@Override
 	public boolean apply(@Nonnull EntityPlayer player) {
-		player.getCapability(CapabilityDivination.CAPABILITY, null).setActive();
-		player.attackEntityFrom(DamageSource.MAGIC, 50000000);
+		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 
