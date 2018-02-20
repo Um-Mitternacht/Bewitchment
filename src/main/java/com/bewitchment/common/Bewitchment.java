@@ -15,9 +15,7 @@ import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.energy_item.CapabilityEnergyUser;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.command.CommandFortuneActivator;
-import com.bewitchment.common.core.command.CommandIncantation;
-import com.bewitchment.common.core.command.CommandTransformationModifier;
+import com.bewitchment.common.core.command.*;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -120,6 +118,7 @@ public class Bewitchment {
 		event.registerServerCommand(new CommandIncantation());
 		event.registerServerCommand(new CommandTransformationModifier());
 		event.registerServerCommand(new CommandFortuneActivator());
+		event.registerServerCommand(new CommandForceFortune());
 	}
 
 	@EventHandler

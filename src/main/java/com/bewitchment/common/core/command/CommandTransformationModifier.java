@@ -1,16 +1,17 @@
 package com.bewitchment.common.core.command;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.common.core.helper.TransformationHelper;
+
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CommandTransformationModifier extends CommandBase {
 
@@ -76,9 +77,9 @@ public class CommandTransformationModifier extends CommandBase {
 				throw new WrongUsageException("commands.set_transformation.usage.invalid_level");
 			}
 			TransformationHelper.setTypeAndLevel((EntityPlayer) sender, transf, level);
-			sender.sendMessage(new TextComponentTranslation("command.set_transformation.success", transf.name().toLowerCase(), level));
+			sender.sendMessage(new TextComponentTranslation("commands.set_transformation.success", transf.name().toLowerCase(), level));
 		} else {
-			throw new WrongUsageException("commands.set_transformation.usage.no_console");
+			throw new WrongUsageException("commands.error.no_console");
 		}
 	}
 

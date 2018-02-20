@@ -48,7 +48,7 @@ public class CommandFortuneActivator extends CommandBase {
 				throw new CommandException("commands.enable_fortune.error.no_fortune");
 			}
 		} else {
-			throw new CommandException("commands.set_transformation.error.no_console");
+			throw new CommandException("commands.error.no_console");
 		}
 	}
 
