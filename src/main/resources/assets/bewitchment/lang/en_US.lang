@@ -620,6 +620,10 @@ commands.set_transformation.usage.no_transformation=That path doesn't exist
 commands.set_transformation.usage.invalid_level=Level missing or not in range [0-10]
 command.set_transformation.success=Transformation set to %s, level %d
 commands.set_transformation.usage.no_console=This command can only be used by an operator player 
+commands.enable_fortune.error.already_active=Fortune is already active
+commands.enable_fortune.error.no_fortune=Use a crystal ball first
+commands.enable_fortune.error.no_console=This command cannot be executed from console
+commands.enable_fortune.success=Fortune enabled
 
 //Advancements
 achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
