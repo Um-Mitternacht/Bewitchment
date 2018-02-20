@@ -1,10 +1,5 @@
 package com.bewitchment.common;
 
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.bewitchment.api.incantation.ModIncantations;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
@@ -15,7 +10,10 @@ import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.energy_item.CapabilityEnergyUser;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.command.*;
+import com.bewitchment.common.core.command.CommandForceFortune;
+import com.bewitchment.common.core.command.CommandFortuneActivator;
+import com.bewitchment.common.core.command.CommandIncantation;
+import com.bewitchment.common.core.command.CommandTransformationModifier;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.PacketHandler;
@@ -31,7 +29,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
-
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -40,6 +37,10 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.

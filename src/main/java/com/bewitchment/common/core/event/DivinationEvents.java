@@ -5,7 +5,6 @@ import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -43,7 +42,7 @@ public class DivinationEvents {
 					if (f.canShouldBeAppliedNow(evt.player)) {
 						data.setActive();
 					}
-					
+
 					if (data.isActive()) {
 						if (f.apply(evt.player))
 							data.setFortune(null);
