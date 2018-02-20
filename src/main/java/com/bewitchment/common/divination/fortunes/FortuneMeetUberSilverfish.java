@@ -1,6 +1,7 @@
 package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
+
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -32,14 +33,14 @@ public class FortuneMeetUberSilverfish extends Fortune {
 				silverfish.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				silverfish.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(silverfish);
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
-					silverfish.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 2));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
-					silverfish.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 2));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
-					silverfish.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 2));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
-					silverfish.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 2));
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+					silverfish.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+					silverfish.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+					silverfish.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+					silverfish.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 1));
 				return true;
 			}
 		}

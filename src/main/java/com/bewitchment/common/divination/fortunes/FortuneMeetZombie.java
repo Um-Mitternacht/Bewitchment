@@ -1,6 +1,7 @@
 package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.api.divination.Fortune;
+
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -32,13 +33,13 @@ public class FortuneMeetZombie extends Fortune {
 				zombie.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				zombie.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(zombie);
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
 					zombie.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
 					zombie.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
 					zombie.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
-				if (player.getRNG().nextBoolean() && player.getRNG().nextBoolean())
+				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
 					zombie.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 900, 1));
 				return true;
 			}
