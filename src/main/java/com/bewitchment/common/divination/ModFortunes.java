@@ -13,6 +13,7 @@ public class ModFortunes {
 	private static Fortune death;
 	private static Fortune witch;
 	private static Fortune treasure;
+	private static Fortune merchant;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
@@ -21,6 +22,7 @@ public class ModFortunes {
 		dropBow = new FortuneDropBow(7, "drop_bow", LibMod.MOD_ID);
 		death = new FortuneDeath(1, "death", LibMod.MOD_ID);
 		treasure = new FortuneTreasure(5, "treasure", LibMod.MOD_ID);
+		merchant = new FortuneMeetMerchant(5, "merchant", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -31,7 +33,8 @@ public class ModFortunes {
 				dropBow,
 				death,
 				witch,
-				treasure
+				treasure,
+				merchant
 		);
 	}
 }
