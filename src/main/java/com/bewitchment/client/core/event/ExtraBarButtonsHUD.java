@@ -1,14 +1,8 @@
 package com.bewitchment.client.core.event;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -21,6 +15,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -51,7 +49,7 @@ public class ExtraBarButtonsHUD {
 
 		tessellator.draw();
 	}
-	
+
 	@SubscribeEvent
 	public void RMBHijacker(MouseEvent evt) {
 		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
@@ -163,7 +161,7 @@ public class ExtraBarButtonsHUD {
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 152.5, sr.getScaledHeight() - 19.5, actionScroller[2].getIconIndexX(mc.player), actionScroller[2].getIconIndexY(mc.player));
 				GlStateManager.popMatrix();
 			}
-			
+
 			if (actionScroller[1] != null) {
 				GlStateManager.pushMatrix();
 				GlStateManager.color(1, 1, 1, 0.4f);
@@ -177,7 +175,7 @@ public class ExtraBarButtonsHUD {
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 106, sr.getScaledHeight() - 19.5, 3, 3);
 				GlStateManager.popMatrix();
 			}
-			
+
 		}
 	}
 }

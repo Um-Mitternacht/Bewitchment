@@ -2,7 +2,6 @@ package com.bewitchment.common.abilities;
 
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 
 public class ModAbilities {

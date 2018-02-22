@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
@@ -10,7 +8,6 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -27,6 +24,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+
+import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -87,7 +86,7 @@ public class VampireAbilityHandler {
 		} else {
 			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, false);
 		}
-		
+
 	}
 
 	@SubscribeEvent

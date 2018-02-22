@@ -1,11 +1,8 @@
 package com.bewitchment.api.event;
 
-import java.util.ArrayList;
-
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.net.messages.ActionRefreshedMessage;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
@@ -13,6 +10,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
 
 public class HotbarAction {
 

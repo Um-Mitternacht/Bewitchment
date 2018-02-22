@@ -5,7 +5,6 @@ import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.core.net.messages.ActionRefreshedMessage.ActionRefreshedMessageHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
@@ -35,7 +34,7 @@ public final class PacketHandler {
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(ActionRefreshedMessageHandler.class, ActionRefreshedMessage.class, id++, Side.CLIENT);
-		
+
 		HANDLER.registerMessage(PlayerUsedAbilityMessage.class, PlayerUsedAbilityMessage.class, id++, Side.SERVER);
 
 	}
