@@ -1,9 +1,18 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.event.HotbarAction;
+import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.client.event.MouseEvent;
@@ -12,10 +21,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -23,8 +28,6 @@ public class ExtraBarButtonsHUD {
 	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
 
 	// TODO reset these when the user closes the game, either MP or SP
-	// TODO sync to the server when the slot changes, keep data inside some capability on the player. Needed to block
-	// the item actually selected and trigger the correct power
 	int slotSelected = -1;
 	boolean isInExtraBar = false;
 	int selectedItemTemp = 0;
@@ -47,6 +50,14 @@ public class ExtraBarButtonsHUD {
 		buff.pos(x, y, 0).tex(rX, rY).endVertex();
 
 		tessellator.draw();
+	}
+	
+	@SubscribeEvent
+	public void RMBHijacker(MouseEvent evt) {
+		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
+			evt.setCanceled(true);
+			PacketHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
+		}
 	}
 
 	@SubscribeEvent
@@ -86,6 +97,12 @@ public class ExtraBarButtonsHUD {
 			actionScroller[0] = actions.get(slotSelected);
 		} else {
 			actionScroller = new HotbarAction[3];
+			if (actions.size() > 0) {
+				actionScroller[0] = actions.get(0);
+				if (actions.size() > 1) {
+					actionScroller[2] = actions.get(1);
+				}
+			}
 			return;
 		}
 		if (slotSelected > 0) {
@@ -111,6 +128,7 @@ public class ExtraBarButtonsHUD {
 		if (Minecraft.getMinecraft().player.inventory.currentItem < 8) {
 			slotSelected = -1;
 			isInExtraBar = false;
+			refreshSelected();
 		}
 	}
 
@@ -123,15 +141,43 @@ public class ExtraBarButtonsHUD {
 
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Pre event) {
-		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && isInExtraBar) {
-			selectedItemTemp = Minecraft.getMinecraft().player.inventory.currentItem;
+		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
 			Minecraft mc = Minecraft.getMinecraft();
+			if (isInExtraBar) {
+				selectedItemTemp = Minecraft.getMinecraft().player.inventory.currentItem;
+				mc.player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
+			}
 			ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 			if (actionScroller[0] != null) {
+				GlStateManager.pushMatrix();
+				if (slotSelected < 0)
+					GlStateManager.color(1, 1, 1, 0.4f);
 				mc.getTextureManager().bindTexture(actionScroller[0].getIcon(mc.player));
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 131.5, sr.getScaledHeight() - 19.5, actionScroller[0].getIconIndexX(mc.player), actionScroller[0].getIconIndexY(mc.player));
+				GlStateManager.popMatrix();
 			}
-			mc.player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
+			if (actionScroller[2] != null) {
+				GlStateManager.pushMatrix();
+				GlStateManager.color(1, 1, 1, 0.4f);
+				mc.getTextureManager().bindTexture(actionScroller[2].getIcon(mc.player));
+				renderTextureAtIndex((sr.getScaledWidth() / 2) + 152.5, sr.getScaledHeight() - 19.5, actionScroller[2].getIconIndexX(mc.player), actionScroller[2].getIconIndexY(mc.player));
+				GlStateManager.popMatrix();
+			}
+			
+			if (actionScroller[1] != null) {
+				GlStateManager.pushMatrix();
+				GlStateManager.color(1, 1, 1, 0.4f);
+				mc.getTextureManager().bindTexture(actionScroller[1].getIcon(mc.player));
+				renderTextureAtIndex((sr.getScaledWidth() / 2) + 110.5, sr.getScaledHeight() - 19.5, actionScroller[1].getIconIndexX(mc.player), actionScroller[1].getIconIndexY(mc.player));
+				GlStateManager.popMatrix();
+			} else if (slotSelected < 0 && actions.size() > 0) {
+				GlStateManager.pushMatrix();
+				GlStateManager.color(1, 1, 1, mc.player.isSneaking() ? 1 : 0.2f);
+				mc.getTextureManager().bindTexture(HotbarAction.DEFAULT_ICON_TEXTURE);
+				renderTextureAtIndex((sr.getScaledWidth() / 2) + 106, sr.getScaledHeight() - 19.5, 3, 3);
+				GlStateManager.popMatrix();
+			}
+			
 		}
 	}
 }

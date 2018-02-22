@@ -1,8 +1,11 @@
 package com.bewitchment.api.event;
 
+import java.util.ArrayList;
+
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.net.messages.ActionRefreshedMessage;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
@@ -11,14 +14,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-
 public class HotbarAction {
 
+	public static final ResourceLocation DEFAULT_ICON_TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/abilities.png");
 	private static final ArrayList<HotbarAction> ACTIONS = new ArrayList<>();
 
 	private ResourceLocation name;
-	private ResourceLocation DEFAULT_ICON_TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/abilities.png");
 	private int xIconIndex = 0, yIconIndex = 0;
 
 	public HotbarAction(ResourceLocation name) {

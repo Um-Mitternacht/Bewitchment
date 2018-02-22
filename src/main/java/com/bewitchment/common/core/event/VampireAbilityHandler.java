@@ -1,12 +1,17 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
+import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -14,13 +19,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -71,11 +77,17 @@ public class VampireAbilityHandler {
 	@SubscribeEvent
 	public void attachAbilities(HotbarActionCollectionEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-		if (data.getType() == EnumTransformationType.VAMPIRE && data.getLevel() > 5) {
-			evt.getList().add(ModAbilities.NIGHT_VISION);
+		if (data.getType() == EnumTransformationType.VAMPIRE) {
+			evt.getList().add(ModAbilities.DRAIN_BLOOD);
+			if (data.getLevel() > 5) {
+				evt.getList().add(ModAbilities.NIGHT_VISION);
+			} else {
+				data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, false);
+			}
 		} else {
 			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, false);
 		}
+		
 	}
 
 	@SubscribeEvent
@@ -83,6 +95,14 @@ public class VampireAbilityHandler {
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, !data.getMiscDataTag().getBoolean(NIGHT_VISION_TAG));
+		} else if (evt.action == ModAbilities.DRAIN_BLOOD) {
+			RayTraceResult rt = RayTraceHelper.rayTraceResult(evt.player, RayTraceHelper.fromLookVec(evt.player, evt.player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue()), true, true);
+			if (rt != null && rt.typeOfHit == Type.ENTITY) {
+				if (rt.entityHit instanceof EntityLivingBase) {
+					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
+					evt.player.sendStatusMessage(new TextComponentString("[DEBUG:] Blood taken from " + entity.getName()), true);
+				}
+			}
 		}
 	}
 
@@ -90,7 +110,7 @@ public class VampireAbilityHandler {
 	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-			if ((nv == null || nv.getDuration() <= 200) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
+			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
 				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 			}
 		}
