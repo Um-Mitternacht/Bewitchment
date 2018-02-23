@@ -2,14 +2,10 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
-import com.bewitchment.api.event.HotbarAction;
-import net.minecraft.nbt.NBTTagCompound;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CapabilityTransformationData implements ITransformationData {
 
@@ -18,15 +14,13 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	EnumTransformationType type;
 	int level, blood;
-	NBTTagCompound misc;
-	List<HotbarAction> actions;
+	boolean isNightVisionActive;
 
 	public CapabilityTransformationData() {
 		type = EnumTransformationType.NONE;
 		level = 0;
 		blood = 0;
-		misc = new NBTTagCompound();
-		actions = new ArrayList<HotbarAction>();
+		isNightVisionActive = false;
 	}
 
 	public static void init() {
@@ -100,12 +94,13 @@ public class CapabilityTransformationData implements ITransformationData {
 	}
 
 	@Override
-	public NBTTagCompound getMiscDataTag() {
-		return misc;
+	public boolean isNightVisionActive() {
+		return isNightVisionActive;
 	}
 
 	@Override
-	public void loadMiscDataTag(NBTTagCompound tag) {
-		misc = tag;
+	public void setNightVision(boolean flag) {
+		isNightVisionActive = flag;
 	}
+	
 }

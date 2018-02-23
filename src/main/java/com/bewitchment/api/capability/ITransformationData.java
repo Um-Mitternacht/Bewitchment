@@ -1,7 +1,5 @@
 package com.bewitchment.api.capability;
 
-import net.minecraft.nbt.NBTTagCompound;
-
 public interface ITransformationData {
 
 	public EnumTransformationType getType();
@@ -48,16 +46,7 @@ public interface ITransformationData {
 	 */
 	public void setBlood(int blood);
 
-	/**
-	 * An NBT Tag to hold misc data, such as abilities status and similar
-	 */
-	public NBTTagCompound getMiscDataTag();
-
-	/**
-	 * Loads the misc tag
-	 *
-	 * @param tag The tag to load
-	 */
-	public void loadMiscDataTag(NBTTagCompound tag);
-
+	public boolean isNightVisionActive();
+	
+	public void setNightVision(boolean flag);
 }

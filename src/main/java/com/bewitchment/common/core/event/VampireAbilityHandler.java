@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
@@ -8,6 +10,7 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -25,13 +28,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-import java.util.UUID;
-
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
 
-	public static final String NIGHT_VISION_TAG = "ability_night_vision";
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
 
 	/**
@@ -81,10 +81,10 @@ public class VampireAbilityHandler {
 			if (data.getLevel() > 5) {
 				evt.getList().add(ModAbilities.NIGHT_VISION);
 			} else {
-				data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, false);
+				data.setNightVision(false);
 			}
 		} else {
-			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, false);
+			data.setNightVision(false);
 		}
 
 	}
@@ -93,7 +93,7 @@ public class VampireAbilityHandler {
 	public void onAbilityToggled(HotbarActionTriggeredEvent evt) {
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-			data.getMiscDataTag().setBoolean(NIGHT_VISION_TAG, !data.getMiscDataTag().getBoolean(NIGHT_VISION_TAG));
+			data.setNightVision(!data.isNightVisionActive());
 		} else if (evt.action == ModAbilities.DRAIN_BLOOD) {
 			RayTraceResult rt = RayTraceHelper.rayTraceResult(evt.player, RayTraceHelper.fromLookVec(evt.player, evt.player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue()), true, true);
 			if (rt != null && rt.typeOfHit == Type.ENTITY) {
@@ -109,7 +109,7 @@ public class VampireAbilityHandler {
 	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getMiscDataTag().getBoolean(NIGHT_VISION_TAG)) {
+			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
 				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 			}
 		}

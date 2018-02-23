@@ -2,6 +2,7 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -18,7 +19,7 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		if (instance.getType() == EnumTransformationType.VAMPIRE) {
 			data.setInteger("blood", instance.getBlood());
 		}
-		data.setTag("misc", instance.getMiscDataTag());
+		data.setBoolean("nightvision", instance.isNightVisionActive());
 		return data;
 	}
 
@@ -30,7 +31,7 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		if (instance.getType() == EnumTransformationType.VAMPIRE) {
 			instance.setBlood(data.getInteger("blood"));
 		}
-		instance.loadMiscDataTag(data.getCompoundTag("misc"));
+		instance.setNightVision(data.getBoolean("nightvision"));
 	}
 
 }
