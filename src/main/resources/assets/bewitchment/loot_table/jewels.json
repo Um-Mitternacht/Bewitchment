@@ -6,13 +6,19 @@
       "entries": [
         {
           "type": "item",
-          "name": "minecraft:nether_star",
+          "name": "minecraft:emerald",
           "weight": 40
         },
         {
-          "type": "empty",
-          "weight": 60
-        }
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "weight": 40
+        },
+		{
+          "type": "item",
+          "name": "minecraft:diamond",
+          "weight": 40		
+		}
       ]
     }
   ]
