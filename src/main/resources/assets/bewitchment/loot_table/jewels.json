@@ -1,17 +1,53 @@
 {
   "pools": [
     {
-      "name": "main",
-      "rolls": 1,
+      "name": "jewels",
+      "rolls": {
+        "min": 1,
+        "max": 4
+      },
       "entries": [
         {
           "type": "item",
-          "name": "minecraft:nether_star",
-          "weight": 40
+          "name": "minecraft:emerald",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 20
+              }
+            }
+          ],
+          "weight": 20
         },
         {
-          "type": "empty",
-          "weight": 60
+          "type": "item",
+          "name": "minecraft:diamond",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 20
+              }
+            }
+          ],
+          "weight": 20
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 20
+              }
+            }
+          ],
+          "weight": 20
         }
       ]
     }
