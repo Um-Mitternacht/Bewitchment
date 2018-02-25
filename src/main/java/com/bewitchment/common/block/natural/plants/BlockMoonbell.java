@@ -1,5 +1,8 @@
 package com.bewitchment.common.block.natural.plants;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,13 +25,10 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class BlockMoonbell extends BlockModFlower {
 
 	public static final PropertyBool placed = PropertyBool.create("placed");
-	private static ArrayList<Biome> validBiomesMoonBell = new ArrayList<Biome>(2);
+	private static ArrayList<Biome> validBiomesMoonBell = new ArrayList<Biome>();
 
 	public BlockMoonbell() {
 		super("moonbell");
