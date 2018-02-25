@@ -1,17 +1,18 @@
 package com.bewitchment.common.core.command;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.divination.Fortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CommandForceFortune extends CommandBase {
 
@@ -47,6 +48,7 @@ public class CommandForceFortune extends CommandBase {
 			if (add == null) {
 				throw new CommandException("commands.set_fortune.error.no_fortune");
 			}
+			// TODO send to server and let server handle this!
 			dc.setFortune(add);
 			sender.sendMessage(new TextComponentTranslation("commands.set_fortune.success"));
 		} else {
