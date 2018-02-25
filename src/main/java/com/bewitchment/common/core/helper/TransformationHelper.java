@@ -22,9 +22,11 @@ public class TransformationHelper {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setType(type);
 		data.setLevel(level);
-		HotbarAction.refreshActions(player, player.world);
-		if (!player.world.isRemote)
-			PacketHandler.INSTANCE.sendToDimension(new PlayerTransformationChangedMessage(player), player.world.provider.getDimension());
+		if (!player.world.isRemote) {
+			PacketHandler.INSTANCE.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) player);
+		} else {
+			HotbarAction.refreshActions(player, player.world);
+		}
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
 	

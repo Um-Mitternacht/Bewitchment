@@ -6,8 +6,11 @@ import com.bewitchment.common.core.capability.transformation.CapabilityTransform
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.core.net.PacketHandler;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
+import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage;
+import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
 import com.bewitchment.common.lib.LibMod;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -15,6 +18,8 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TransformationEvents {
 	
@@ -35,8 +40,11 @@ public class TransformationEvents {
 			PacketHandler.HANDLER.sendToDimension(new PlayerTransformationChangedMessage(event.getEntityPlayer()), event.getEntityPlayer().world.provider.getDimension());
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onPlayerJoin(EntityJoinWorldEvent evt) {
-		// TODO Send request for data from client (Transformation general + specific data should return)
+		if (Minecraft.getMinecraft().player != null && evt.getEntity().getUniqueID() == Minecraft.getMinecraft().player.getUniqueID()) {
+			PacketHandler.HANDLER.sendToServer(new RequestPlayerDataMessage(DataType.TRANSFORMATION_DATA));
+		}
 	}
 }

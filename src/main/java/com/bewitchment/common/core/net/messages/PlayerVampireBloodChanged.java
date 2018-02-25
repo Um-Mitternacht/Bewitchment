@@ -30,7 +30,7 @@ public class PlayerVampireBloodChanged extends SimpleMessage<PlayerVampireBloodC
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		EntityPlayer player = Minecraft.getMinecraft().world.getPlayerEntityByUUID(id);
+		EntityPlayer player = Minecraft.getMinecraft().player;
 		if (player != null) {
 			ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			data.setBlood(amount);

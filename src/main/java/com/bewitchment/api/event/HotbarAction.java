@@ -1,17 +1,16 @@
 package com.bewitchment.api.event;
 
-import com.bewitchment.common.core.net.PacketHandler;
-import com.bewitchment.common.core.net.messages.ActionRefreshedMessage;
+import java.util.ArrayList;
+
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
 
 public class HotbarAction {
 
@@ -29,9 +28,7 @@ public class HotbarAction {
 	public static void refreshActions(EntityPlayer player, World world) {
 		HotbarActionCollectionEvent evt = new HotbarActionCollectionEvent(player, world);
 		MinecraftForge.EVENT_BUS.post(evt);
-		if (player instanceof EntityPlayerMP) {
-			PacketHandler.HANDLER.sendTo(new ActionRefreshedMessage((ArrayList<HotbarAction>) evt.getList()), (EntityPlayerMP) player);
-		}
+		Bewitchment.proxy.loadActionsClient((ArrayList<HotbarAction>) evt.getList(), player);
 	}
 
 	public static HotbarAction getFromRegistryName(String name) {
