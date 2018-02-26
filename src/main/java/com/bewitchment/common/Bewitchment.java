@@ -16,7 +16,7 @@ import com.bewitchment.common.core.command.CommandIncantation;
 import com.bewitchment.common.core.command.CommandTransformationModifier;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.crafting.cauldron.CauldronCrafting;
 import com.bewitchment.common.divination.ModFortunes;
@@ -68,7 +68,7 @@ public class Bewitchment {
 		CapabilityDivination.init();
 		CapabilityEnergyUser.init();
 		CapabilityTransformationData.init();
-		PacketHandler.init();
+		NetworkHandler.init();
 		ModEvents.init();
 		ModEntities.init();
 		ModBrews.init();

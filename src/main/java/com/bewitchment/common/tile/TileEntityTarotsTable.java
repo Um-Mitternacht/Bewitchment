@@ -1,7 +1,7 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
@@ -34,7 +34,7 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 		if (!reader.world.isRemote) {
 			if (checkDeck(tarotDeck) && consumePower(READ_COST, false)) {
 				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
-				PacketHandler.HANDLER.sendTo(new TarotMessage(reader), (EntityPlayerMP) reader);
+				NetworkHandler.HANDLER.sendTo(new TarotMessage(reader), (EntityPlayerMP) reader);
 			} else {
 				reader.sendStatusMessage(new TextComponentTranslation("item.tarots.error_reading"), true);
 			}

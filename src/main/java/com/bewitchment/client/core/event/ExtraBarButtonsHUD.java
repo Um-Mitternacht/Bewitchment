@@ -1,7 +1,7 @@
 package com.bewitchment.client.core.event;
 
 import com.bewitchment.api.event.HotbarAction;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -54,7 +54,7 @@ public class ExtraBarButtonsHUD {
 	public void RMBHijacker(MouseEvent evt) {
 		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
 			evt.setCanceled(true);
-			PacketHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
+			NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
 		}
 	}
 

@@ -2,7 +2,7 @@ package com.bewitchment.common.core.capability.energy;
 
 import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergyMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
@@ -125,7 +125,7 @@ public final class CapabilityEnergy {
 
 		@Override
 		public void syncTo(EntityPlayerMP target) {
-			PacketHandler.HANDLER.sendTo(new EnergyMessage(this, target), target);
+			NetworkHandler.HANDLER.sendTo(new EnergyMessage(this, target), target);
 		}
 
 		@Override

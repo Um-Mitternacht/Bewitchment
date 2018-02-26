@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
 
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -25,10 +25,10 @@ public class RequestPlayerDataMessage extends SimpleMessage<RequestPlayerDataMes
 	public IMessage handleMessage(MessageContext context) {
 		EntityPlayerMP player = context.getServerHandler().player;
 		if (DataType.isRequested(DataType.TRANSFORMATION_DATA, type)) {
-			PacketHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), player);
+			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), player);
 		}
 		if (DataType.isRequested(DataType.VAMPIRE_BLOOD, type)) {
-			PacketHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), player);
+			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), player);
 		}
 		return null;
 	}

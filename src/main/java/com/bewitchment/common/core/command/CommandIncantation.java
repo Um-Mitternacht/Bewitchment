@@ -62,7 +62,6 @@ public class CommandIncantation implements ICommand {
 					if (ienopt.get().get() >= incantation.getCost()) {
 						EnergyHandler.addEnergy(player, -incantation.getCost());
 						try {
-							// TODO send to server and let server handle this!
 							incantation.cast(server, sender, args);
 						} catch (CommandException e) {
 							e.printStackTrace();

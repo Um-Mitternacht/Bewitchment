@@ -5,10 +5,10 @@ import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 
-import baubles.common.network.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,14 +18,14 @@ public class TransformationHelper {
 	private TransformationHelper() {
 	}
 
-	public static void setTypeAndLevel(EntityPlayer player, EnumTransformationType type, int level) {
+	public static void setTypeAndLevel(EntityPlayer player, EnumTransformationType type, int level, boolean isClient) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setType(type);
 		data.setLevel(level);
-		if (!player.world.isRemote) {
-			PacketHandler.INSTANCE.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) player);
-		} else {
+		if (isClient) {
 			HotbarAction.refreshActions(player, player.world);
+		} else {
+			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) player);
 		}
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
@@ -34,7 +34,7 @@ public class TransformationHelper {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setBlood(amount);
 		if (player instanceof EntityPlayerMP) {
-			PacketHandler.INSTANCE.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
+			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class TransformationHelper {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		boolean flag = data.addVampireBlood(amount);
 		if (player instanceof EntityPlayerMP) {
-			PacketHandler.INSTANCE.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
+			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 		}
 		return flag;
 	}

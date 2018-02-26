@@ -19,11 +19,11 @@ import net.minecraftforge.fml.relauncher.Side;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public final class PacketHandler {
+public final class NetworkHandler {
 
 	public static final SimpleNetworkWrapper HANDLER = new SimpleNetworkWrapper(LibMod.MOD_ID);
 
-	private PacketHandler() {
+	private NetworkHandler() {
 	}
 
 	public static void init() {

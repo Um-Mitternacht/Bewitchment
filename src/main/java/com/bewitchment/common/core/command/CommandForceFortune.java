@@ -48,7 +48,6 @@ public class CommandForceFortune extends CommandBase {
 			if (add == null) {
 				throw new CommandException("commands.set_fortune.error.no_fortune");
 			}
-			// TODO send to server and let server handle this!
 			dc.setFortune(add);
 			sender.sendMessage(new TextComponentTranslation("commands.set_fortune.success"));
 		} else {

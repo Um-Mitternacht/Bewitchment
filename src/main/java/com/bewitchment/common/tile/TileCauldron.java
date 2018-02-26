@@ -10,7 +10,7 @@ import com.bewitchment.api.recipe.CauldronItemRecipe;
 import com.bewitchment.api.recipe.ItemValidator;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Lists;
@@ -217,7 +217,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 
 					play(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1F, 1F);
 					for (int i = 0; i < 4; i++) {
-						PacketHandler.spawnParticle(ParticleF.STEAM, world, x + world.rand.nextFloat(), getParticleLevel(), z + world.rand.nextFloat(), 5, 0, 0, 0);
+						NetworkHandler.spawnParticle(ParticleF.STEAM, world, x + world.rand.nextFloat(), getParticleLevel(), z + world.rand.nextFloat(), 5, 0, 0, 0);
 					}
 
 					inv.drain(fluidTaken, true);
@@ -235,7 +235,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 			final float saturation = (world.rand.nextInt(2000) + 1000) / 7000f;
 			final float luminance = 0.25f;
 			setColorRGB(Color.getHSBColor(hue, saturation, luminance).getRGB());
-			PacketHandler.updateToNearbyPlayers(world, pos);
+			NetworkHandler.updateToNearbyPlayers(world, pos);
 			return true;
 		}
 		return false;
@@ -263,7 +263,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 	public void setContainer(ItemStack container) {
 		this.container = container;
 		world.updateComparatorOutputLevel(pos, world.getBlockState(pos).getBlock());
-		PacketHandler.updateToNearbyPlayers(world, pos);
+		NetworkHandler.updateToNearbyPlayers(world, pos);
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -545,7 +545,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 			setColorRGB(color);
 		}
 		if (!world.isRemote)
-			PacketHandler.updateToNearbyPlayers(world, pos);
+			NetworkHandler.updateToNearbyPlayers(world, pos);
 	}
 
 	public int getColorRGB() {

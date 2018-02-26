@@ -76,8 +76,7 @@ public class CommandTransformationModifier extends CommandBase {
 			if (level < 0 || level > 10) {
 				throw new WrongUsageException("commands.set_transformation.usage.invalid_level");
 			}
-			// TODO send to server and let server handle this!
-			TransformationHelper.setTypeAndLevel((EntityPlayer) sender, transf, level);
+			TransformationHelper.setTypeAndLevel((EntityPlayer) sender, transf, level, false);
 			sender.sendMessage(new TextComponentTranslation("commands.set_transformation.success", transf.name().toLowerCase(), level));
 		} else {
 			throw new WrongUsageException("commands.error.no_console");

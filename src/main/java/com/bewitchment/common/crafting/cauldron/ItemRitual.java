@@ -4,7 +4,7 @@ import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
 import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.tile.TileCauldron;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -79,7 +79,7 @@ public class ItemRitual implements ICauldronRitual<TileCauldron> {
 			final float y = pos.getY() + 0.2F + world.rand.nextFloat();
 			final float z = pos.getZ() + 0.2F + MathHelper.clamp(world.rand.nextFloat(), 0F, 0.5F);
 
-			PacketHandler.spawnParticle(ParticleF.STEAM, world, x, y, z, 10, 0, 0, 0);
+			NetworkHandler.spawnParticle(ParticleF.STEAM, world, x, y, z, 10, 0, 0, 0);
 		}
 		if (!stack.isEmpty()) {
 			if (tile.getContainer().isEmpty()) {

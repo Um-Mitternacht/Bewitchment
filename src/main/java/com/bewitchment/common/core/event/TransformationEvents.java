@@ -4,7 +4,7 @@ import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
-import com.bewitchment.common.core.net.PacketHandler;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
@@ -37,14 +37,14 @@ public class TransformationEvents {
 		CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityTransformationData.CAPABILITY);
 		HotbarAction.refreshActions(event.getEntityPlayer(), event.getEntityPlayer().world);
 		if (!event.getEntityPlayer().world.isRemote)
-			PacketHandler.HANDLER.sendToDimension(new PlayerTransformationChangedMessage(event.getEntityPlayer()), event.getEntityPlayer().world.provider.getDimension());
+			NetworkHandler.HANDLER.sendToDimension(new PlayerTransformationChangedMessage(event.getEntityPlayer()), event.getEntityPlayer().world.provider.getDimension());
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onPlayerJoin(EntityJoinWorldEvent evt) {
 		if (Minecraft.getMinecraft().player != null && evt.getEntity().getUniqueID() == Minecraft.getMinecraft().player.getUniqueID()) {
-			PacketHandler.HANDLER.sendToServer(new RequestPlayerDataMessage(DataType.TRANSFORMATION_DATA));
+			NetworkHandler.HANDLER.sendToServer(new RequestPlayerDataMessage(DataType.TRANSFORMATION_DATA));
 		}
 	}
 }

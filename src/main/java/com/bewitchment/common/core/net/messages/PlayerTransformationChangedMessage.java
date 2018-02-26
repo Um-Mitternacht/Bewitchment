@@ -32,7 +32,7 @@ public class PlayerTransformationChangedMessage extends SimpleMessage<PlayerTran
 	public IMessage handleMessage(MessageContext context) {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		if (player != null) {
-			TransformationHelper.setTypeAndLevel(player, EnumTransformationType.values()[type], level);
+			TransformationHelper.setTypeAndLevel(player, EnumTransformationType.values()[type], level, true);
 			if (EnumTransformationType.values()[type] == EnumTransformationType.VAMPIRE) {
 				return new RequestPlayerDataMessage(DataType.VAMPIRE_BLOOD);
 			}

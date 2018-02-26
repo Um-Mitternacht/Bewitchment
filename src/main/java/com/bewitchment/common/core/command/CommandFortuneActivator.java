@@ -42,7 +42,6 @@ public class CommandFortuneActivator extends CommandBase {
 				if (dc.isActive()) {
 					throw new CommandException("commands.enable_fortune.error.already_active");
 				}
-				// TODO send to server and let server handle this!
 				dc.setActive();
 				sender.sendMessage(new TextComponentTranslation("commands.enable_fortune.success"));
 			} else {
