@@ -5,6 +5,7 @@ import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.brew.ModBrews;
+import com.bewitchment.common.core.BewitchmentLootTables;
 import com.bewitchment.common.core.capability.brew.CapabilityBrewStorage;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
@@ -75,6 +76,7 @@ public class Bewitchment {
 		ModSpells.init();
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
+		BewitchmentLootTables.preInit();
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");
