@@ -34,6 +34,7 @@ public final class NetworkHandler {
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(PlayerVampireBloodChanged.class, PlayerVampireBloodChanged.class, id++, Side.CLIENT);
+		HANDLER.registerMessage(EntityInternalBloodChanged.class, EntityInternalBloodChanged.class, id++, Side.CLIENT);
 
 		HANDLER.registerMessage(PlayerUsedAbilityMessage.class, PlayerUsedAbilityMessage.class, id++, Side.SERVER);
 		HANDLER.registerMessage(RequestPlayerDataMessage.class, RequestPlayerDataMessage.class, id++, Side.SERVER);

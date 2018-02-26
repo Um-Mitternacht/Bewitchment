@@ -1,17 +1,24 @@
 package com.bewitchment.common.core.helper;
 
 import com.bewitchment.api.capability.EnumTransformationType;
+import com.bewitchment.api.capability.IBloodReserve;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.potion.ModPotions;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class TransformationHelper {
 
@@ -31,7 +38,7 @@ public class TransformationHelper {
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
 	
-	public void setVampireBlood(EntityPlayer player, int amount) {
+	public static void setVampireBlood(EntityPlayer player, int amount) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setBlood(amount);
 		if (player instanceof EntityPlayerMP) {
@@ -52,12 +59,27 @@ public class TransformationHelper {
 	 * @throws UnsupportedOperationException
 	 *             if the player is not a vampire
 	 */
-	public boolean addVampireBlood(EntityPlayer player, int amount) {
+	public static boolean addVampireBlood(EntityPlayer player, int amount) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		boolean flag = data.addVampireBlood(amount);
 		if (player instanceof EntityPlayerMP) {
 			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 		}
 		return flag;
+	}
+	
+	public static void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity, int amount) {
+		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+		if (br.getBlood() > 0 && br.getMaxBlood() > 0) {
+			int transferred = Math.min(br.getBlood(), amount);
+			if (transferred > 0 && addVampireBlood(player, transferred)) {
+				br.setBlood(br.getBlood() - transferred);
+				float stored = br.getPercentFilled();
+				if (stored > 0 && stored < 0.4f) {
+					entity.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
+				}
+				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(entity), new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32));
+			}
+		}
 	}
 }

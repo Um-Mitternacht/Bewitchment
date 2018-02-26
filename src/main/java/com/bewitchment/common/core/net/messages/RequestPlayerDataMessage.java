@@ -30,12 +30,15 @@ public class RequestPlayerDataMessage extends SimpleMessage<RequestPlayerDataMes
 		if (DataType.isRequested(DataType.VAMPIRE_BLOOD, type)) {
 			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), player);
 		}
+		if (DataType.isRequested(DataType.INTERNAL_POOL_BLOOD, type)) {
+			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), player);
+		}
 		return null;
 	}
 	
 	public static enum DataType {
 		
-		TRANSFORMATION_DATA, VAMPIRE_BLOOD;
+		TRANSFORMATION_DATA, VAMPIRE_BLOOD, INTERNAL_POOL_BLOOD;
 		
 		public int getBinaryID() {
 			return 1 << ordinal();
