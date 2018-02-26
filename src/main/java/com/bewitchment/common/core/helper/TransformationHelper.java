@@ -22,6 +22,7 @@ public class TransformationHelper {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setType(type);
 		data.setLevel(level);
+		data.setNightVision(data.isNightVisionActive() && (type == EnumTransformationType.WEREWOLF || type == EnumTransformationType.VAMPIRE));
 		if (isClient) {
 			HotbarAction.refreshActions(player, player.world);
 		} else {
