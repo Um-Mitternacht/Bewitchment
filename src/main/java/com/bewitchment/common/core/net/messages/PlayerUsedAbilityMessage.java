@@ -4,11 +4,10 @@ import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.common.core.net.SimpleMessage;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PlayerUsedAbilityMessage extends SimpleMessage<PlayerUsedAbilityMessage> {
 
@@ -21,7 +20,6 @@ public class PlayerUsedAbilityMessage extends SimpleMessage<PlayerUsedAbilityMes
 		this.ability = ability;
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
 	public IMessage handleMessage(MessageContext context) {
 		HotbarAction action = HotbarAction.getFromRegistryName(ability);
