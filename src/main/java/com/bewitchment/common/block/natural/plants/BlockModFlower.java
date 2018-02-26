@@ -2,7 +2,7 @@ package com.bewitchment.common.block.natural.plants;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.BlockBush;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,7 +13,7 @@ public class BlockModFlower extends BlockBush implements IModelRegister {
 	public BlockModFlower(String name) {
 		this.setRegistryName(LibMod.MOD_ID, name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		this.setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

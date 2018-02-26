@@ -2,7 +2,7 @@ package com.bewitchment.common.item.tool;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +28,7 @@ public class ItemBoline extends ItemShears implements IModelRegister {
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.BOLINE);
 		setUnlocalizedName(LibItemName.BOLINE);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

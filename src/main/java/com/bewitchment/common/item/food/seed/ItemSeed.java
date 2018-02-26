@@ -2,7 +2,7 @@ package com.bewitchment.common.item.food.seed;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -35,7 +35,7 @@ public class ItemSeed extends ItemSeeds implements IModelRegister {
 		super(crop, soil);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.crop = crop;
 		this.soil = soil;
 	}

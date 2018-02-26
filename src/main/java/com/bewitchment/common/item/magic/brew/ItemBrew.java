@@ -2,7 +2,7 @@ package com.bewitchment.common.item.magic.brew;
 
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.helper.NBTHelper;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -26,7 +26,7 @@ public class ItemBrew extends ItemMod {
 
 	public ItemBrew(String id) {
 		super(id);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@SideOnly(Side.CLIENT)

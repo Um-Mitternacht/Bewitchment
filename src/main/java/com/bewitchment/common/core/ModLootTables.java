@@ -7,7 +7,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 /**
  * Created by Joseph on 2/26/2018.
  */
-public class BewitchmentLootTables {
+public class ModLootTables {
 
 	//Fortunes and chests
 	public static final ResourceLocation JEWELS = new ResourceLocation(LibMod.MOD_ID + ":" + "chests/jewels");

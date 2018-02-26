@@ -4,7 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
@@ -34,7 +34,7 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 	public ItemHorseshoe() {
 		super(LibItemName.HORSESHOE);
 		this.setMaxStackSize(1);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

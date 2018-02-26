@@ -8,7 +8,7 @@ package com.bewitchment.common.block.natural.tree;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -50,7 +50,7 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 	public BlockModSapling(String id) {
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setTickRandomly(true);
 		this.setSoundType(SoundType.PLANT);
 		this.setDefaultState(blockState.getBaseState().withProperty(STAGE, 0).withProperty(TYPE, EnumSaplingType.ELDER));

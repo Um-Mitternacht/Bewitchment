@@ -8,7 +8,7 @@ package com.bewitchment.common.block.natural.tree;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.properties.IProperty;
@@ -25,7 +25,7 @@ public class BlockModLog extends BlockLog implements IModelRegister {
 		super();
 		setUnlocalizedName(id);
 		setRegistryName(LibMod.MOD_ID, id);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
 	}
 

@@ -3,7 +3,7 @@ package com.bewitchment.common.item.magic.brew;
 import com.bewitchment.api.BrewRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;
@@ -36,7 +36,7 @@ public class ItemBrewDrink extends ItemBrew {
 
 	public ItemBrewDrink() {
 		super(LibItemName.BREW_PHIAL_DRINK);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override

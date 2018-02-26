@@ -9,7 +9,6 @@ import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessa
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,16 +21,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TransformationEvents {
-	
+
 	public static final ResourceLocation PLAYER_DATA = new ResourceLocation(LibMod.MOD_ID, "transformations");
-	
+
 	@SubscribeEvent
 	public void attachCapability(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof EntityPlayer) {
 			event.addCapability(PLAYER_DATA, new TransformationDataProvider());
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerEvent.Clone event) {
 		CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityTransformationData.CAPABILITY);
@@ -39,7 +38,7 @@ public class TransformationEvents {
 		if (!event.getEntityPlayer().world.isRemote)
 			NetworkHandler.HANDLER.sendToDimension(new PlayerTransformationChangedMessage(event.getEntityPlayer()), event.getEntityPlayer().world.provider.getDimension());
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onPlayerJoin(EntityJoinWorldEvent evt) {

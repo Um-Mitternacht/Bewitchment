@@ -1,15 +1,14 @@
 package com.bewitchment.common.core.proxy;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.client.fx.ParticleF;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import java.util.ArrayList;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.

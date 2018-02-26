@@ -2,7 +2,7 @@ package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
@@ -28,7 +28,7 @@ public class BlockScornedBrickStairs extends BlockStairs implements IModelRegist
 		super(state);
 		setUnlocalizedName(LibBlockName.SCORNED_BRICK_STAIRS);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;
 		setResistance(5F);
 		setHardness(5F);

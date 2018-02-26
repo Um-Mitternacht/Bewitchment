@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.magic.plants;
 
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -40,7 +40,7 @@ public class BlockRagingGrass extends BlockMod implements IGrowable, IPlantable 
 		setSound(SoundType.PLANT);
 		this.setLightLevel(0.1F);
 		this.setTickRandomly(true);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

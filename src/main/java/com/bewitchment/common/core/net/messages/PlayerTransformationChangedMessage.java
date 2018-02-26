@@ -6,7 +6,6 @@ import com.bewitchment.common.core.capability.transformation.CapabilityTransform
 import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.net.SimpleMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

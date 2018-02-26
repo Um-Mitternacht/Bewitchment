@@ -2,7 +2,7 @@ package com.bewitchment.common.item.tool;
 
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,7 +29,7 @@ public class ItemSilverSword extends ItemSword implements IModelRegister {
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_SWORD);
 		setUnlocalizedName(LibItemName.SILVER_SWORD);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@Override
