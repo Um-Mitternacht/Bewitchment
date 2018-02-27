@@ -8,13 +8,11 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.passive.EntitySkeletonHorse;
-import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -28,19 +26,19 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 @Mod.EventBusSubscriber
 public class BloodEvents {
-	
+
 	public static final ResourceLocation BLOOD_DATA = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
-	
+
 	private BloodEvents() {
 	}
-	
+
 	@SubscribeEvent
 	public static void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 		if (evt.getObject() instanceof EntityLivingBase) {
 			evt.addCapability(BLOOD_DATA, new BloodReserveProvider());
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void onJoin(EntityJoinWorldEvent evt) {
 		Entity e = evt.getEntity();
@@ -52,6 +50,18 @@ public class BloodEvents {
 					maxBlood = 480;
 				} else if (e instanceof EntityVillager) {
 					maxBlood = 320;
+				} else if (e instanceof EntityCow) {
+					maxBlood = 275;
+				} else if (e instanceof EntityHorse) {
+					maxBlood = 260;
+				} else if (e instanceof EntityDonkey) {
+					maxBlood = 235;
+				} else if (e instanceof EntityLlama) {
+					maxBlood = 200;
+				} else if (e instanceof EntitySheep) {
+					maxBlood = 200;
+				} else if (e instanceof EntityChicken) {
+					maxBlood = 120;
 				} else if (e instanceof EntitySkeleton || e instanceof EntitySkeletonHorse || e instanceof EntityShulker || !e.isNonBoss()) {
 					maxBlood = -1;
 				}
@@ -60,7 +70,7 @@ public class BloodEvents {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void fillBloodOverTime(LivingUpdateEvent evt) {
 		EntityLivingBase ent = evt.getEntityLiving();
@@ -76,15 +86,15 @@ public class BloodEvents {
 				} else {
 					br.setBlood(br.getBlood() + 10);
 				}
-				
+
 				float stored = br.getPercentFilled();
 				if (stored < PotionBloodDrained.TRESHOLD) {
 					ent.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
 				}
-				
+
 				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(ent.dimension, ent.posX, ent.posY, ent.posZ, 32));
 			}
 		}
 	}
-	
+
 }
