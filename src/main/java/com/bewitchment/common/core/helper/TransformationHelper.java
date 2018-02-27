@@ -11,11 +11,10 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
-import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
@@ -29,6 +28,11 @@ public class TransformationHelper {
 		data.setType(type);
 		data.setLevel(level);
 		data.setNightVision(data.isNightVisionActive() && (type == EnumTransformationType.WEREWOLF || type == EnumTransformationType.VAMPIRE));
+		if ((type == EnumTransformationType.SPECTRE || type == EnumTransformationType.VAMPIRE)) {
+			player.getCapability(CapabilityBloodReserve.CAPABILITY, null).setMaxBlood(-1);
+		} else {
+			player.getCapability(CapabilityBloodReserve.CAPABILITY, null).setMaxBlood(480);
+		}
 		if (isClient) {
 			HotbarAction.refreshActions(player, player.world);
 		} else {
@@ -68,12 +72,8 @@ public class TransformationHelper {
 		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 		if (br.getBlood() > 0 && br.getMaxBlood() > 0) {
 			int transferred = Math.min(br.getBlood(), amount);
-			if (transferred > 0 && addVampireBlood(player, transferred)) {
+			if (transferred > 0 && (addVampireBlood(player, transferred) || player.isSneaking())) {
 				br.setBlood(br.getBlood() - transferred);
-				float stored = br.getPercentFilled();
-				if (stored > 0 && stored < 0.4f) {
-					entity.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
-				}
 				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(entity), new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32));
 			}
 		}

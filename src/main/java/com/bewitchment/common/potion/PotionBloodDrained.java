@@ -17,6 +17,7 @@ public class PotionBloodDrained extends PotionMod {
 	
 	private static final List<ItemStack> cure = new ArrayList<ItemStack>(0);
 	public static final DamageSource DRAIN_DAMAGE = new DamageSourceDrain();
+	public static final float TRESHOLD = 0.2f;
 
 	public PotionBloodDrained() {
 		super("blood_drain", true, 0x820000);
@@ -30,7 +31,7 @@ public class PotionBloodDrained extends PotionMod {
 
 	@Override
 	public boolean isReady(int duration, int amplifier) {
-		return duration % 40 == 0;
+		return duration % 80 == 0;
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class PotionBloodDrained extends PotionMod {
 		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 		float amount = br.getPercentFilled();
 
-		if (amount > 0 && amount < 0.4f) {
+		if (amount > 0 && amount < TRESHOLD) {
 			entity.attackEntityFrom(DRAIN_DAMAGE, 0.5f);
 			entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
 		} else {

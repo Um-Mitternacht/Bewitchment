@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.IBloodReserve;
 import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -9,9 +10,8 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.helper.TransformationHelper;
-import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -27,8 +27,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -97,19 +95,12 @@ public class VampireAbilityHandler {
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			data.setNightVision(!data.isNightVisionActive());
 		} else if (evt.action == ModAbilities.DRAIN_BLOOD) {
+			
 			RayTraceResult rt = RayTraceHelper.rayTraceResult(evt.player, RayTraceHelper.fromLookVec(evt.player, evt.player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue()), true, true);
 			if (rt != null && rt.typeOfHit == Type.ENTITY) {
 				if (rt.entityHit instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
-					IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
-					if (br.getBlood() > 0 && br.getMaxBlood() > 0) {
-						br.setBlood(br.getBlood() - 20);
-						TransformationHelper.addVampireBlood(evt.player, 20);
-						float amount = br.getPercentFilled();
-						if (amount > 0 && amount < 0.4f) {
-							entity.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
-						}
-					}
+					TransformationHelper.drainBloodFromEntity(evt.player, entity, 20);
 				}
 			}
 		}

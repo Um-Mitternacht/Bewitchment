@@ -6,6 +6,9 @@ import com.bewitchment.common.core.capability.transformation.blood.CapabilityBlo
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.potion.ModPotions;
+import com.bewitchment.common.potion.PotionBloodDrained;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
@@ -22,24 +25,22 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class BloodEvents {
-
+	
 	public static final ResourceLocation BLOOD_DATA = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
-
+	
 	private BloodEvents() {
 	}
-
+	
 	@SubscribeEvent
 	public static void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 		if (evt.getObject() instanceof EntityLivingBase) {
 			evt.addCapability(BLOOD_DATA, new BloodReserveProvider());
 		}
 	}
-
+	
 	@SubscribeEvent
 	public static void onJoin(EntityJoinWorldEvent evt) {
 		Entity e = evt.getEntity();
@@ -59,24 +60,31 @@ public class BloodEvents {
 			}
 		}
 	}
-
-	@SideOnly(Side.SERVER)
+	
 	@SubscribeEvent
 	public static void fillBloodOverTime(LivingUpdateEvent evt) {
 		EntityLivingBase ent = evt.getEntityLiving();
-		IBloodReserve br = ent.getCapability(CapabilityBloodReserve.CAPABILITY, null);
-		if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 60 == 0) {
-			if (ent instanceof EntityPlayer) {
-				ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
-				br.setBlood(br.getBlood() + 40);
-			} else if (ent instanceof EntityVillager) {
-				// TODO check for villagers nearby. Regen rate should be nerfed when many are in the same place
-				br.setBlood(br.getBlood() + 40);
-			} else {
-				br.setBlood(br.getBlood() + 40);
+		if (!ent.world.isRemote) {
+			IBloodReserve br = ent.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+			if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 80 == 0) {
+				if (ent instanceof EntityPlayer) {
+					ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
+					br.setBlood(br.getBlood() + 10);
+				} else if (ent instanceof EntityVillager) {
+					// TODO check for villagers nearby. Regen rate should be nerfed when many are in the same place
+					br.setBlood(br.getBlood() + 10);
+				} else {
+					br.setBlood(br.getBlood() + 10);
+				}
+				
+				float stored = br.getPercentFilled();
+				if (stored < PotionBloodDrained.TRESHOLD) {
+					ent.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
+				}
+				
+				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(ent.dimension, ent.posX, ent.posY, ent.posZ, 32));
 			}
-			NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(ent.dimension, ent.posX, ent.posY, ent.posZ, 32));
 		}
 	}
-
+	
 }
