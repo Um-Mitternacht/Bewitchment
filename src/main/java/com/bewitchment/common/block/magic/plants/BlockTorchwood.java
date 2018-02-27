@@ -2,7 +2,7 @@ package com.bewitchment.common.block.magic.plants;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -36,7 +36,7 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 		setSound(SoundType.WOOD);
 		this.setLightLevel(0.7F);
 		this.setTickRandomly(true);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override

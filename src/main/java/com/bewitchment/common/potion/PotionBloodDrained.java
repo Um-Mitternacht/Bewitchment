@@ -17,28 +17,28 @@ public class PotionBloodDrained extends PotionMod {
 	
 	private static final List<ItemStack> cure = new ArrayList<ItemStack>(0);
 	public static final DamageSource DRAIN_DAMAGE = new DamageSourceDrain();
-	
+
 	public PotionBloodDrained() {
 		super("blood_drain", true, 0x820000);
 		this.setIconIndex(1, 0);
 	}
-	
+
 	@Override
 	public List<ItemStack> getCurativeItems() {
 		return cure;// No healing
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return duration % 40 == 0;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
-		
+
 		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 		float amount = br.getPercentFilled();
-		
+
 		if (amount > 0 && amount < 0.4f) {
 			entity.attackEntityFrom(DRAIN_DAMAGE, 0.5f);
 			entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
@@ -46,15 +46,15 @@ public class PotionBloodDrained extends PotionMod {
 			entity.removePotionEffect(this);
 			br.setDrinker(null);
 		}
-		
+
 	}
-	
+
 	public static class DamageSourceDrain extends DamageSource {
-		
+
 		public DamageSourceDrain() {
 			super("drain_damage");
 		}
-		
+
 		@Override
 		public ITextComponent getDeathMessage(EntityLivingBase entity) {
 			String name = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null).getLastDrinker(entity.world);
@@ -63,9 +63,9 @@ public class PotionBloodDrained extends PotionMod {
 				return new TextComponentTranslation(s + ".player", name);
 			}
 			return new TextComponentTranslation(s);
-			
+
 		}
-		
+
 	}
-	
+
 }

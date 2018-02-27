@@ -4,7 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -32,7 +32,7 @@ public class ItemTalisman extends ItemMod implements IBauble {
 
 	public ItemTalisman(BaubleType type, int enchantability, String id) {
 		super(id);
-		this.setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		this.setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		this.enchantability = enchantability;
 		this.setMaxStackSize(1);
 		this.type = type;

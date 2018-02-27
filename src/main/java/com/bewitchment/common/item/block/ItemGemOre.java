@@ -3,7 +3,7 @@ package com.bewitchment.common.item.block;
 import com.bewitchment.api.helper.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
@@ -24,7 +24,7 @@ public class ItemGemOre extends ItemBlock implements IModelRegister {
 		setRegistryName(block.getRegistryName());
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
 	@Override

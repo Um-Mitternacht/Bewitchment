@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.init.MobEffects;
 
@@ -14,6 +14,6 @@ public class ItemThistle extends ItemCrop {
 	public ItemThistle() {
 		super(LibItemName.THISTLE, 4, 0.8F, false);
 		addPotion(MobEffects.STRENGTH);
-		setCreativeTab(BewitchmentCreativeTabs.PLANTS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 }

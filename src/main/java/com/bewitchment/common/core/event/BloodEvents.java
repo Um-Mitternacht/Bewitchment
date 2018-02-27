@@ -6,7 +6,6 @@ import com.bewitchment.common.core.capability.transformation.blood.CapabilityBlo
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
@@ -28,19 +27,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class BloodEvents {
-	
+
 	public static final ResourceLocation BLOOD_DATA = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
-	
+
 	private BloodEvents() {
 	}
-	
+
 	@SubscribeEvent
 	public static void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 		if (evt.getObject() instanceof EntityLivingBase) {
 			evt.addCapability(BLOOD_DATA, new BloodReserveProvider());
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void onJoin(EntityJoinWorldEvent evt) {
 		Entity e = evt.getEntity();
@@ -60,7 +59,7 @@ public class BloodEvents {
 			}
 		}
 	}
-	
+
 	@SideOnly(Side.SERVER)
 	@SubscribeEvent
 	public static void fillBloodOverTime(LivingUpdateEvent evt) {
@@ -79,5 +78,5 @@ public class BloodEvents {
 			NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(ent.dimension, ent.posX, ent.posY, ent.posZ, 32));
 		}
 	}
-	
+
 }

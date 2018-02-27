@@ -2,7 +2,6 @@ package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -35,19 +34,19 @@ public class RequestPlayerDataMessage extends SimpleMessage<RequestPlayerDataMes
 		}
 		return null;
 	}
-	
+
 	public static enum DataType {
-		
+
 		TRANSFORMATION_DATA, VAMPIRE_BLOOD, INTERNAL_POOL_BLOOD;
-		
-		public int getBinaryID() {
-			return 1 << ordinal();
-		}
-		
+
 		public static boolean isRequested(DataType type, int request) {
 			return ((request >> type.ordinal()) & 1) == 1;
 		}
-		
+
+		public int getBinaryID() {
+			return 1 << ordinal();
+		}
+
 	}
 
 }

@@ -4,7 +4,7 @@ import baubles.api.BaubleType;
 import com.bewitchment.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.baubles.*;
 import com.bewitchment.common.item.block.ItemBlockBarrel;
 import com.bewitchment.common.item.block.ItemBlockColor;
@@ -265,7 +265,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.scorned_brick_fence),
 				itemBlock(ModBlocks.scorned_brick_stairs),
 
-				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB),
+				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB),
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),
 				itemBlock(ModBlocks.silver_block),
 				itemBlock(ModBlocks.silver_ore),

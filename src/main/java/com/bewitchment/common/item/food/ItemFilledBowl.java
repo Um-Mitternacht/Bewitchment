@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.food;
 
 
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -21,7 +21,7 @@ public class ItemFilledBowl extends ItemModFood {
 
 	public ItemFilledBowl() {
 		super(LibItemName.FILLED_BOWL, 0, 0f, true);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		setMaxStackSize(16);
 	}
 

@@ -2,7 +2,7 @@ package com.bewitchment.common.block.tools;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.tile.TileEntityWitchAltar;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -39,7 +39,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 	public BlockWitchAltar(String id, Material material) {
 		super(id, material);
 		this.setHardness(2);
-		this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ALTAR_TYPE, AltarMultiblockType.UNFORMED).withProperty(COLOR, 16));
 	}
 

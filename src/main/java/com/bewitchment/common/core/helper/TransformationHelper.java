@@ -12,7 +12,6 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -37,7 +36,7 @@ public class TransformationHelper {
 		}
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
-	
+
 	public static void setVampireBlood(EntityPlayer player, int amount) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		data.setBlood(amount);
@@ -45,19 +44,16 @@ public class TransformationHelper {
 			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 		}
 	}
-	
+
 	/**
-	 * @param player
-	 *            The player whose blood reserve is being modified
-	 * @param amount
-	 *            The amount of blood to add (negative values will decrease the total)
+	 * @param player The player whose blood reserve is being modified
+	 * @param amount The amount of blood to add (negative values will decrease the total)
 	 * @return <i>When adding</i> blood this will return true if the value changed and false otherwise: this is <b>true</b> if there was
-	 *         even a little bit of space in the pool, but the blood added was greater than the amount that could be inserted,
-	 *         and <b>false</b> if the pool was maxed.<br>
-	 *         <i>When removing</i> blood this will return true if ALL the blood requested was drained.
-	 *         If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
-	 * @throws UnsupportedOperationException
-	 *             if the player is not a vampire
+	 * even a little bit of space in the pool, but the blood added was greater than the amount that could be inserted,
+	 * and <b>false</b> if the pool was maxed.<br>
+	 * <i>When removing</i> blood this will return true if ALL the blood requested was drained.
+	 * If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
+	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	public static boolean addVampireBlood(EntityPlayer player, int amount) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
@@ -67,7 +63,7 @@ public class TransformationHelper {
 		}
 		return flag;
 	}
-	
+
 	public static void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity, int amount) {
 		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 		if (br.getBlood() > 0 && br.getMaxBlood() > 0) {

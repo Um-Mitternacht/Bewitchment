@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -31,7 +31,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		setResistance(2F);
 		this.setUnlocalizedName(unlocalizedName);
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
-		this.setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setHardness(2F);
 		setDefaultSlipperiness(0.98F);
 		useNeighborBrightness = true;

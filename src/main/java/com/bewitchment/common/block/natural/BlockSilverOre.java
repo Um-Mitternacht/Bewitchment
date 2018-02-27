@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.natural;
 
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +20,7 @@ public class BlockSilverOre extends BlockMod {
 		super(LibBlockName.SILVER_ORE, Material.ROCK);
 		setResistance(3F);
 		setHardness(3F);
-		setCreativeTab(BewitchmentCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
 	@Override

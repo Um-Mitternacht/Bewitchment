@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.secrets;
 
-import com.bewitchment.common.core.BewitchmentCreativeTabs;
+import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
@@ -20,7 +20,7 @@ public class ItemEyeOfOld extends ItemMod {
 	public ItemEyeOfOld() {
 		super(LibItemName.EYE_OF_OLD);
 		setMaxDamage(0);
-		setCreativeTab(BewitchmentCreativeTabs.ITEMS_CREATIVE_TAB);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
 	@SideOnly(Side.CLIENT)
