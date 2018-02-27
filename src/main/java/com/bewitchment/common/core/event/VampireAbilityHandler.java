@@ -100,7 +100,7 @@ public class VampireAbilityHandler {
 			if (rt != null && rt.typeOfHit == Type.ENTITY) {
 				if (rt.entityHit instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
-					TransformationHelper.drainBloodFromEntity(evt.player, entity, 20);
+					TransformationHelper.drainBloodFromEntity(evt.player, entity, 10);
 				}
 			}
 		}

@@ -2,6 +2,7 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.EnumTransformationType;
 import com.bewitchment.api.capability.ITransformationData;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -82,7 +83,11 @@ public class CapabilityTransformationData implements ITransformationData {
 	public int getMaxBlood() {
 		if (getType() != EnumTransformationType.VAMPIRE)
 			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
-		return 50 + 75 * getLevel(); // lvl 0: 50, lvl 5: 425, lvl 10: 800
+		int max = 50 + 75 * getLevel();
+		if (getBlood() > max) {
+			setBlood(max);
+		}
+		return max; // lvl 0: 50, lvl 5: 425, lvl 10: 800
 	}
 
 	@Override
