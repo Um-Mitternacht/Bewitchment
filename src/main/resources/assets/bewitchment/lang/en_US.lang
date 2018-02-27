@@ -683,3 +683,6 @@ tarot.nitwit.name=The Nitwit
 
 //Entities
 entity.broom.name=Flying Broom
+
+//Potion effects
+effect.blood_drain.name=Blood Drained

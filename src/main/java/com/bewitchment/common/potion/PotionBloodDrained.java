@@ -5,24 +5,22 @@ import java.util.List;
 
 import com.bewitchment.api.capability.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
-import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class PotionBloodDrained extends Potion {
+public class PotionBloodDrained extends PotionMod {
 	
 	private static final List<ItemStack> cure = new ArrayList<ItemStack>(0);
 	public static final DamageSource DRAIN_DAMAGE = new DamageSourceDrain();
 	
 	public PotionBloodDrained() {
-		super(true, 0x820000);
-		this.setRegistryName(LibMod.MOD_ID, "blood_drain");
+		super("blood_drain", true, 0x820000);
+		this.setIconIndex(1, 0);
 	}
 	
 	@Override
