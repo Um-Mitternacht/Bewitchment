@@ -466,6 +466,7 @@ public final class CauldronCrafting {
 				, new BrewSimpleModifier(-2400, 0), true);
 
 		//Food Values
+		//Fixme: Allow blocks to be placed in, so mushrooms and pumpkins can be put in. Meta might be needed too, for salmon and what not.
 		registerFood(Items.APPLE, 4, 2.4f);
 		registerFood(Items.BAKED_POTATO, 5, 6f);
 		registerFood(Items.BEETROOT, 1, 1.2f);
@@ -478,6 +479,7 @@ public final class CauldronCrafting {
 		registerFood(Items.COOKED_MUTTON, 6, 9.6f);
 		registerFood(Items.COOKED_PORKCHOP, 8, 12.8f);
 		registerFood(Items.COOKED_RABBIT, 5, 6f);
+		registerFood(Items.SPECKLED_MELON, 3, 7.6f);
 		registerFood(Items.GOLDEN_APPLE, 4, 9.6f);
 		registerFood(Items.GOLDEN_CARROT, 6, 14.4f);
 		registerFood(Items.MELON, 2, 1.2f);
@@ -491,6 +493,8 @@ public final class CauldronCrafting {
 		registerFood(Items.MELON_SEEDS, 2, 1.2f);
 		registerFood(Items.BEETROOT_SEEDS, 2, 1.1f);
 		registerFood(Items.NETHER_WART, 3, 1.6f);
+		registerFood(Items.EGG, 2, 1.2f);
+		registerFood(Items.SUGAR, 1, 0.5f);
 		registerFood(ModItems.garlic, 2, 0.8f);
 		registerFood(ModItems.silphium, 3, 1.3f);
 		registerFood(ModItems.kelp, 4, 3.3f);
@@ -508,6 +512,8 @@ public final class CauldronCrafting {
 		registerFood(ModItems.equine_tail, 6, 6.6f);
 		//Well, if you're starving...
 		registerFood(Items.ROTTEN_FLESH, 4, 1.4f);
+		//Tears add flavor and character
+		registerFood(Items.GHAST_TEAR, 2, 2.6f);
 
 	}
 
