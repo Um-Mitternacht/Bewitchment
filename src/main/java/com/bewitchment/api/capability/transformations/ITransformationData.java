@@ -3,7 +3,7 @@ package com.bewitchment.api.capability.transformations;
 public interface ITransformationData {
 
 	public EnumTransformationType getType();
-	
+
 	/**
 	 * Internal use only. Use TransformationHelper.setTypeAndLevel
 	 */

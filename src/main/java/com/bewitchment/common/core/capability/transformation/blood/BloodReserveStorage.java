@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.capability.transformation.blood;
 
+import com.bewitchment.api.capability.transformations.IBloodReserve;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -7,8 +8,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
 import java.util.UUID;
-
-import com.bewitchment.api.capability.transformations.IBloodReserve;
 
 public class BloodReserveStorage implements IStorage<IBloodReserve> {
 

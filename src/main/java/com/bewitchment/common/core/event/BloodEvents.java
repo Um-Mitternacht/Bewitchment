@@ -8,7 +8,6 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
@@ -74,9 +73,9 @@ public class BloodEvents {
 		if (!ent.world.isRemote) {
 			IBloodReserve br = ent.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 			if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 80 == 0) {
-				
+
 				int baseIncrease = getBloodRegen(br);
-				
+
 				if (ent instanceof EntityPlayer) {
 					ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
 					br.setBlood(br.getBlood() + baseIncrease);
@@ -102,5 +101,5 @@ public class BloodEvents {
 			return 20;
 		return 10;
 	}
-	
+
 }
