@@ -62,8 +62,6 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	@Override
 	public boolean addVampireBlood(int amount) {
-		if (getType() != EnumTransformationType.VAMPIRE)
-			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
 		if (getBlood() >= getMaxBlood() && amount > 0)
 			return false;
 		if (amount + getBlood() < 0)
@@ -74,15 +72,11 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	@Override
 	public int getBlood() {
-		if (getType() != EnumTransformationType.VAMPIRE)
-			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
 		return blood;
 	}
 
 	@Override
 	public int getMaxBlood() {
-		if (getType() != EnumTransformationType.VAMPIRE)
-			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
 		int max = 50 + 75 * getLevel();
 		if (getBlood() > max) {
 			setBlood(max);
@@ -92,8 +86,6 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	@Override
 	public void setBlood(int blood) {
-		if (getType() != EnumTransformationType.VAMPIRE)
-			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
 		this.blood = blood;
 	}
 

@@ -27,7 +27,6 @@ public interface ITransformationData {
 	 * and <b>false</b> if the pool was maxed.<br>
 	 * <i>When removing</i> blood this will return true if ALL the blood requested was drained.
 	 * If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
-	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	@Deprecated
 	public boolean addVampireBlood(int amount);
@@ -36,7 +35,6 @@ public interface ITransformationData {
 	 * Gets the amount of blood in a vampire's pool
 	 *
 	 * @return The amount of blood available
-	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	public int getBlood();
 
@@ -44,15 +42,12 @@ public interface ITransformationData {
 	 * Gets the maximum amount of blood that can be stored in a vampire's pool
 	 *
 	 * @return The amount of blood that can be stored
-	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	public int getMaxBlood();
 
 	/**
 	 * Internal use only. Use TransformationHelper.setVampireBlood instead to keep it syncronized
 	 * Sets the amount of blood in a vampire's pool
-	 *
-	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	@Deprecated
 	public void setBlood(int blood);
