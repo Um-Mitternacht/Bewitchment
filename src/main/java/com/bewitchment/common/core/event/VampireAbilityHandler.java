@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -27,8 +29,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-import java.util.UUID;
-
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
@@ -47,7 +47,7 @@ public class VampireAbilityHandler {
 			if (data.getType() == EnumTransformationType.VAMPIRE) {
 				if (evt.getSource() == SUN_DAMAGE)
 					return;
-				if (evt.getSource().isFireDamage() || evt.getSource().isExplosion()) {
+				if (evt.getSource().isFireDamage() || evt.getSource().isExplosion() || evt.getSource().canHarmInCreative()) {
 					evt.setCanceled(false);
 					evt.setAmount(evt.getAmount() * 1.5f);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
@@ -66,7 +66,7 @@ public class VampireAbilityHandler {
 			ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == EnumTransformationType.VAMPIRE && evt.player.world.getTotalWorldTime() % 40 == 0) {
 				if (evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
-					if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -11 + data.getLevel())) {
+					if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -(13 + data.getLevel()))) {
 						evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
 					}
 				}
@@ -101,12 +101,22 @@ public class VampireAbilityHandler {
 			if (rt != null && rt.typeOfHit == Type.ENTITY) {
 				if (rt.entityHit instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
-					TransformationHelper.drainBloodFromEntity(evt.player, entity, 10);
+					if (canDrainBloodFrom(evt.player, entity)) {
+						TransformationHelper.drainBloodFromEntity(evt.player, entity, 10);
+					} else {
+						entity.attackEntityAsMob(evt.player);
+					}
 				}
 			}
 		}
 	}
 
+	private boolean canDrainBloodFrom(EntityPlayer player, EntityLivingBase entity) {
+		if (player.getLastAttackedEntity() == entity || entity.getAttackingEntity() == player)
+			return false;
+		return true;
+	}
+	
 	@SubscribeEvent
 	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START && !evt.player.world.isRemote) {
