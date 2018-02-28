@@ -1,20 +1,21 @@
 package com.bewitchment.common.potion;
 
-import com.bewitchment.api.capability.transformations.IBloodReserve;
-import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bewitchment.api.capability.transformations.IBloodReserve;
+import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
+
 public class PotionBloodDrained extends PotionMod {
 
-	public static final DamageSource DRAIN_DAMAGE = new DamageSourceDrain();
 	public static final float TRESHOLD = 0.2f;
 	private static final List<ItemStack> cure = new ArrayList<ItemStack>(0);
 
@@ -40,7 +41,9 @@ public class PotionBloodDrained extends PotionMod {
 		float amount = br.getPercentFilled();
 
 		if (amount > 0 && amount < TRESHOLD) {
-			entity.attackEntityFrom(DRAIN_DAMAGE, 0.5f);
+			entity.attackEntityFrom(new DamageSourceDrain(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID())), 0.5f);
+			if (br.getDrinkerUUID() != null)
+				entity.setRevengeTarget(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID()));
 			entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
 		} else {
 			entity.removePotionEffect(this);
@@ -49,21 +52,20 @@ public class PotionBloodDrained extends PotionMod {
 
 	}
 
-	public static class DamageSourceDrain extends DamageSource {
+	public static class DamageSourceDrain extends EntityDamageSource {
 
-		public DamageSourceDrain() {
-			super("drain_damage");
+		public DamageSourceDrain(Entity damageSourceEntity) {
+			super("drain_damage", damageSourceEntity);
 		}
 
 		@Override
 		public ITextComponent getDeathMessage(EntityLivingBase entity) {
-			String name = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null).getLastDrinker(entity.world);
+			String name = getTrueSource() == null ? entity.getCapability(CapabilityBloodReserve.CAPABILITY, null).getLastDrinker(entity.world) : getTrueSource().getName();
 			String s = "death.attack.drain_damage";
 			if (name != null) {
 				return new TextComponentTranslation(s + ".player", name);
 			}
 			return new TextComponentTranslation(s);
-
 		}
 
 	}
