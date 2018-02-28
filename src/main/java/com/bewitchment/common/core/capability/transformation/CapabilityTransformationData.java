@@ -64,7 +64,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	public boolean addVampireBlood(int amount) {
 		if (getType() != EnumTransformationType.VAMPIRE)
 			throw new UnsupportedOperationException("Player is not a vampire, cannot add blood");
-		if (getBlood() >= getMaxBlood())
+		if (getBlood() >= getMaxBlood() && amount > 0)
 			return false;
 		if (amount + getBlood() < 0)
 			return false;

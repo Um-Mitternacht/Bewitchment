@@ -94,10 +94,12 @@ public class VampireBloodViewerHUD {
 	}
 	
 	private double roundToThirds(double val) {
-		if (val > 0.66)
-			return 0.66;
-		if (val > 0.33)
-			return 0.33;
+		if (val > 0.75)
+			return 1;
+		if (val > 0.5)
+			return 0.75;
+		if (val > 0.25)
+			return 0.5;
 		return 0;
 	}
 	

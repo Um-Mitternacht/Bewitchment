@@ -686,3 +686,6 @@ entity.broom.name=Flying Broom
 
 //Potion effects
 effect.blood_drain.name=Blood Drained
+
+//Vampire
+vampire.nightvision.low_blood=You feel weak and your vision obfuscates

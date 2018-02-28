@@ -22,6 +22,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -65,7 +66,7 @@ public class VampireAbilityHandler {
 			ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == EnumTransformationType.VAMPIRE && evt.player.world.getTotalWorldTime() % 40 == 0) {
 				if (evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
-					if (data.getLevel() < 5 || !data.addVampireBlood(-11 + data.getLevel())) {
+					if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -11 + data.getLevel())) {
 						evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
 					}
 				}
@@ -108,10 +109,15 @@ public class VampireAbilityHandler {
 
 	@SubscribeEvent
 	public void abilityHandler(PlayerTickEvent evt) {
-		if (evt.phase == Phase.START) {
+		if (evt.phase == Phase.START && !evt.player.world.isRemote) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
 			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
-				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
+				if (TransformationHelper.addVampireBlood(evt.player, -1)) {
+					evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
+				} else {
+					evt.player.sendStatusMessage(new TextComponentTranslation("vampire.nightvision.low_blood"), true);
+					evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).setNightVision(false);
+				}
 			}
 		}
 	}
