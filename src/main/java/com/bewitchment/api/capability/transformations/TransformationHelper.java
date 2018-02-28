@@ -1,8 +1,5 @@
-package com.bewitchment.common.core.helper;
+package com.bewitchment.api.capability.transformations;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.IBloodReserve;
-import com.bewitchment.api.capability.ITransformationData;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
@@ -11,16 +8,19 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
+@SuppressWarnings("deprecation")
 public class TransformationHelper {
 
 	private TransformationHelper() {
 	}
+
 
 	public static void setTypeAndLevel(EntityPlayer player, EnumTransformationType type, int level, boolean isClient) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);

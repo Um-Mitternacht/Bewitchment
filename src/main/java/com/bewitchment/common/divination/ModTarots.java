@@ -1,7 +1,7 @@
 package com.bewitchment.common.divination;
 
 import com.bewitchment.api.capability.EnumInfusionType;
-import com.bewitchment.api.capability.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.divination.TarotHandler;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.DummyIEnergy;

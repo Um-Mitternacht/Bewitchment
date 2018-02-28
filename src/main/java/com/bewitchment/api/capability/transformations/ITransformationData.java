@@ -1,13 +1,21 @@
-package com.bewitchment.api.capability;
+package com.bewitchment.api.capability.transformations;
 
 public interface ITransformationData {
 
 	public EnumTransformationType getType();
-
+	
+	/**
+	 * Internal use only. Use TransformationHelper.setTypeAndLevel
+	 */
+	@Deprecated
 	public void setType(EnumTransformationType type);
 
 	public int getLevel();
 
+	/**
+	 * Internal use only. Use TransformationHelper.setTypeAndLevel
+	 */
+	@Deprecated
 	public void setLevel(int level);
 
 	/**
@@ -21,6 +29,7 @@ public interface ITransformationData {
 	 * If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
 	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
+	@Deprecated
 	public boolean addVampireBlood(int amount);
 
 	/**
@@ -45,6 +54,7 @@ public interface ITransformationData {
 	 *
 	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
+	@Deprecated
 	public void setBlood(int blood);
 
 	public boolean isNightVisionActive();

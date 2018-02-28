@@ -1,4 +1,4 @@
-package com.bewitchment.api.capability;
+package com.bewitchment.api.capability.transformations;
 
 import net.minecraft.world.World;
 

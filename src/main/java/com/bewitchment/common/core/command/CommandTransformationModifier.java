@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.common.core.helper.TransformationHelper;
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -11,6 +9,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.TransformationHelper;
 
 public class CommandTransformationModifier extends CommandBase {
 

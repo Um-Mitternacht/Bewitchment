@@ -1,14 +1,15 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.ITransformationData;
+import com.bewitchment.api.capability.transformations.TransformationHelper;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.helper.TransformationHelper;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.ITransformationData;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -22,6 +23,7 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		return data;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void readNBT(Capability<ITransformationData> capability, ITransformationData instance, EnumFacing side, NBTBase nbt) {
 		NBTTagCompound data = (NBTTagCompound) nbt;

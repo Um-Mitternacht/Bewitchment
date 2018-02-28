@@ -1,7 +1,7 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;

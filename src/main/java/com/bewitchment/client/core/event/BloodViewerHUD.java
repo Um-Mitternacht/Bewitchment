@@ -1,6 +1,6 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.capability.IBloodReserve;
+import com.bewitchment.api.capability.transformations.IBloodReserve;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.lib.LibMod;

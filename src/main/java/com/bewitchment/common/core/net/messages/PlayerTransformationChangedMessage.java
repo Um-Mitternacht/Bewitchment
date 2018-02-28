@@ -1,9 +1,9 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.api.capability.EnumTransformationType;
-import com.bewitchment.api.capability.ITransformationData;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.ITransformationData;
+import com.bewitchment.api.capability.transformations.TransformationHelper;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.net.SimpleMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
 import net.minecraft.client.Minecraft;

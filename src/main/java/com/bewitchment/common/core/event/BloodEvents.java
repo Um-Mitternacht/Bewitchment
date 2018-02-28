@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.IBloodReserve;
+import com.bewitchment.api.capability.transformations.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;

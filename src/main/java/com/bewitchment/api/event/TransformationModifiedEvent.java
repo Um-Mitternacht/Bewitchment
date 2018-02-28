@@ -1,6 +1,7 @@
 package com.bewitchment.api.event;
 
-import com.bewitchment.api.capability.EnumTransformationType;
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
