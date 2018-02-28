@@ -8,6 +8,7 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
@@ -45,23 +46,19 @@ public class BloodEvents {
 		if (e instanceof EntityLivingBase) {
 			IBloodReserve br = e.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 			if (br.getMaxBlood() == 0) {
-				int maxBlood = 120;
+				int maxBlood = 100;
 				if (e instanceof EntityPlayer) {
 					maxBlood = 480;
 				} else if (e instanceof EntityVillager) {
 					maxBlood = 320;
-				} else if (e instanceof EntityCow) {
-					maxBlood = 275;
-				} else if (e instanceof EntityHorse) {
-					maxBlood = 260;
-				} else if (e instanceof EntityDonkey) {
-					maxBlood = 235;
-				} else if (e instanceof EntityLlama) {
+				} else if (e instanceof EntityCow || e instanceof EntityHorse) {
 					maxBlood = 200;
+				} else if (e instanceof EntityDonkey || e instanceof EntityLlama) {
+					maxBlood = 180;
 				} else if (e instanceof EntitySheep) {
-					maxBlood = 200;
-				} else if (e instanceof EntityChicken) {
-					maxBlood = 120;
+					maxBlood = 150;
+				} else if (e instanceof EntityChicken || e instanceof EntityParrot) {
+					maxBlood = 80;
 				} else if (e instanceof EntitySkeleton || e instanceof EntitySkeletonHorse || e instanceof EntityShulker || !e.isNonBoss()) {
 					maxBlood = -1;
 				}
@@ -77,14 +74,17 @@ public class BloodEvents {
 		if (!ent.world.isRemote) {
 			IBloodReserve br = ent.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 			if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 80 == 0) {
+				
+				int baseIncrease = getBloodRegen(br);
+				
 				if (ent instanceof EntityPlayer) {
 					ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
-					br.setBlood(br.getBlood() + 10);
+					br.setBlood(br.getBlood() + baseIncrease);
 				} else if (ent instanceof EntityVillager) {
 					// TODO check for villagers nearby. Regen rate should be nerfed when many are in the same place
-					br.setBlood(br.getBlood() + 10);
+					br.setBlood(br.getBlood() + baseIncrease);
 				} else {
-					br.setBlood(br.getBlood() + 10);
+					br.setBlood(br.getBlood() + baseIncrease);
 				}
 
 				float stored = br.getPercentFilled();
@@ -97,4 +97,10 @@ public class BloodEvents {
 		}
 	}
 
+	private static int getBloodRegen(IBloodReserve br) {
+		if (br.getPercentFilled() < PotionBloodDrained.TRESHOLD)
+			return 20;
+		return 10;
+	}
+	
 }
