@@ -10,6 +10,7 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.*;
@@ -50,7 +51,7 @@ public class BloodEvents {
 					maxBlood = 480;
 				} else if (e instanceof EntityVillager) {
 					maxBlood = 320;
-				} else if (e instanceof EntityCow || e instanceof EntityHorse) {
+				} else if (e instanceof EntityCow || e instanceof EntityHorse || e instanceof EntityPolarBear) {
 					maxBlood = 200;
 				} else if (e instanceof EntityDonkey || e instanceof EntityLlama) {
 					maxBlood = 180;
