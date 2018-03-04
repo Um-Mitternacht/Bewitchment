@@ -56,8 +56,10 @@ public class BloodEvents {
 					maxBlood = 180;
 				} else if (e instanceof EntitySheep) {
 					maxBlood = 150;
-				} else if (e instanceof EntityChicken || e instanceof EntityParrot) {
+				} else if (e instanceof EntityWolf || e instanceof EntityOcelot) {
 					maxBlood = 80;
+				} else if (e instanceof EntityChicken || e instanceof EntityParrot) {
+					maxBlood = 50;
 				} else if (e instanceof EntitySkeleton || e instanceof EntitySkeletonHorse || e instanceof EntityShulker || !e.isNonBoss()) {
 					maxBlood = -1;
 				}
