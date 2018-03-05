@@ -1,9 +1,12 @@
 package com.bewitchment.client.core.event;
 
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -15,10 +18,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class VampireBloodViewerHUD {
+public class VampireBloodBarHUD {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/blood_meter.png");
 
@@ -73,7 +75,7 @@ public class VampireBloodViewerHUD {
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Post event) {
 		ITransformationData td = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == EnumTransformationType.VAMPIRE) {
+		if (!Minecraft.getMinecraft().player.isCreative() && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == EnumTransformationType.VAMPIRE) {
 			GlStateManager.pushMatrix();
 			GlStateManager.color(1, 1, 1, 1);
 			GlStateManager.enableAlpha();
