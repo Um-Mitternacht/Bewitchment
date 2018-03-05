@@ -71,6 +71,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 	private int heat;
 	private int ticks;
 
+	//Fixme: A new way of determining color is needed, just so I don't have to throw a deliberate crash at players who remove the oredicts the mod uses for wool.
 	public static Optional<EnumDyeColor> getDyeColor(ItemStack stack) {
 		for (int oreId : OreDictionary.getOreIDs(stack)) {
 			String name = OreDictionary.getOreName(oreId);
