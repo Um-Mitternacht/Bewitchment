@@ -3,6 +3,7 @@ package com.bewitchment.client.core.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.bewitchment.api.event.HotbarAction;
@@ -127,7 +128,7 @@ public class ExtraBarButtonsHUD {
 	}
 
 	@SubscribeEvent
-	public void keybordSelectorCheck(KeyInputEvent evt) { // Used to keep it coherent when the player uses the keys 1-9 to pick the selected item
+	public void keybordInput(KeyInputEvent evt) {
 		if (Keybinds.gotoExtraBar.isPressed()) {
 			if (actions.size() > 0) {
 				slotSelected = 0;
@@ -137,6 +138,11 @@ public class ExtraBarButtonsHUD {
 		}
 		if (Keybinds.alwaysEnableBar.isPressed()) {
 			barEnabled = !barEnabled;
+		}
+		if (Keyboard.isKeyDown(Keyboard.KEY_1) || Keyboard.isKeyDown(Keyboard.KEY_2) || Keyboard.isKeyDown(Keyboard.KEY_3) || Keyboard.isKeyDown(Keyboard.KEY_4) || Keyboard.isKeyDown(Keyboard.KEY_5) || Keyboard.isKeyDown(Keyboard.KEY_6) || Keyboard.isKeyDown(Keyboard.KEY_7) || Keyboard.isKeyDown(Keyboard.KEY_8) || Keyboard.isKeyDown(Keyboard.KEY_9)) {
+			slotSelected = -1;
+			isInExtraBar = false;
+			refreshSelected();
 		}
 	}
 
