@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -9,29 +11,39 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-import java.util.UUID;
+import net.minecraftforge.oredict.OreIngredient;
 
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
 
+	public static final Ingredient WOOD_WEAPON = new OreIngredient("weaponWood");
+	public static final Ingredient SILVER_WEAPON = new OreIngredient("weaponSilver");
+	
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
 
 	/**
@@ -39,16 +51,17 @@ public class VampireAbilityHandler {
 	 * all the other types make it 10% of the original provided there's blood in the pool
 	 */
 	@SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
-	public void onDamageReceived(LivingHurtEvent evt) {
+	public void incomingDamageModifier(LivingHurtEvent evt) {
 		if (!evt.getEntity().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) evt.getEntityLiving();
 			ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == EnumTransformationType.VAMPIRE) {
 				if (evt.getSource() == SUN_DAMAGE)
 					return;
-				if (evt.getSource().isFireDamage() || evt.getSource().isExplosion() || evt.getSource().canHarmInCreative()) {
+				float multiplier = getMultiplier(evt); // A multiplier greater 1 makes the damage not be reduced
+				if (multiplier > 1) {
 					evt.setCanceled(false);
-					evt.setAmount(evt.getAmount() * 1.5f);
+					evt.setAmount(evt.getAmount() * multiplier);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
 					evt.setAmount(evt.getAmount() * 0.1f);
 					if (evt.getAmount() > 5f) {
@@ -59,22 +72,88 @@ public class VampireAbilityHandler {
 		}
 	}
 
+	// NO-SUBSCRIBE
+	private float getMultiplier(LivingHurtEvent evt) {
+		float mult = 1;
+		if (evt.getSource().getTrueSource() instanceof EntityPlayer) {
+			EntityPlayer source = (EntityPlayer) evt.getSource().getTrueSource();
+			ITransformationData data = source.getCapability(CapabilityTransformationData.CAPABILITY, null);
+			if (data.getType() == EnumTransformationType.VAMPIRE || data.getType() == EnumTransformationType.WEREWOLF || data.getType() == EnumTransformationType.SPECTRE)
+				mult += 0.1;
+			if (data.getType() == EnumTransformationType.HUNTER) {
+				mult += 0.8;
+			}
+			if (WOOD_WEAPON.apply(source.getHeldItemMainhand()))
+				mult += 0.1;
+			else if (SILVER_WEAPON.apply(source.getHeldItemMainhand()))
+				mult += 0.3;
+		}
+		if (evt.getSource().isFireDamage() || evt.getSource().isExplosion() || evt.getSource().canHarmInCreative())
+			mult += 0.5;
+		return mult;
+	}
+	
 	@SubscribeEvent
-	public void checkSun(PlayerTickEvent evt) {
-		if (evt.side.isServer()) {
-			ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-			if (data.getType() == EnumTransformationType.VAMPIRE && evt.player.world.getTotalWorldTime() % 40 == 0) {
-				if (evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
-					if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -(13 + data.getLevel()))) {
-						evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
-					}
+	public void tickChecks(PlayerTickEvent evt) {
+		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		if (data.getType() == EnumTransformationType.VAMPIRE && evt.side.isServer()) {
+			
+			// Check sun damage
+			if (evt.player.world.getTotalWorldTime() % 40 == 0 && evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
+				if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -(13 + data.getLevel()))) {
+					evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
 				}
+			}
+			
+			// Replace hunger mechanics with blood mechanics
+			if (evt.player.ticksExisted % 80 == 0) {
+				evt.player.getFoodStats().addStats(20, 3000);
+				if (data.getBlood() == 0) {
+					evt.player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 2, false, false));
+					evt.player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 2, false, false));
+					evt.player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 2, false, false));
+				}
+				PotionEffect effect = evt.player.getActivePotionEffect(MobEffects.HUNGER);
+				if (effect != null) {
+					TransformationHelper.addVampireBlood(evt.player, -effect.getAmplifier() * 5);
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void sleepBed(RightClickBlock evt) {
+		ITransformationData data = evt.getEntityPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null);
+		if (data.getType() == EnumTransformationType.VAMPIRE && evt.getEntityPlayer().world.getBlockState(evt.getPos()).getBlock() == Blocks.BED) {
+			evt.setCancellationResult(EnumActionResult.FAIL);
+			evt.setCanceled(true);
+			evt.getEntityPlayer().sendStatusMessage(new TextComponentTranslation("vampire.bed_blocked"), true);
+		}
+	}
+	
+	@SubscribeEvent
+	public void foodEaten(LivingEntityUseItemEvent.Finish evt) {
+		if (evt.getEntityLiving() instanceof EntityPlayer && evt.getItem().getItem() instanceof ItemFood) {
+			ITransformationData data = ((EntityPlayer) evt.getEntityLiving()).getCapability(CapabilityTransformationData.CAPABILITY, null);
+			if (data.getType() == EnumTransformationType.VAMPIRE) {
+				evt.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 2, false, true));
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void healControl(LivingHealEvent evt) {
+		if (evt.getEntityLiving() instanceof EntityPlayer) {
+			ITransformationData data = ((EntityPlayer) evt.getEntityLiving()).getCapability(CapabilityTransformationData.CAPABILITY, null);
+			if (data.getType() == EnumTransformationType.VAMPIRE) {
+				if (!TransformationHelper.addVampireBlood((EntityPlayer) evt.getEntityLiving(), (int) evt.getAmount() * -3))
+					evt.setCanceled(true);
 			}
 		}
 	}
 
 	@SubscribeEvent
-	public void attachAbilities(HotbarActionCollectionEvent evt) {
+	public void attachHotbarAbilities(HotbarActionCollectionEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (data.getType() == EnumTransformationType.VAMPIRE) {
 			evt.getList().add(ModAbilities.DRAIN_BLOOD);
@@ -90,7 +169,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public void onAbilityToggled(HotbarActionTriggeredEvent evt) {
+	public void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			data.setNightVision(!data.isNightVisionActive());
@@ -113,6 +192,7 @@ public class VampireAbilityHandler {
 	private boolean canDrainBloodFrom(EntityPlayer player, EntityLivingBase entity) {
 		if (player.getLastAttackedEntity() == entity || entity.getAttackingEntity() == player)
 			return false;
+		// TODO check if frontal, in case return false and damage the entity
 		return true;
 	}
 

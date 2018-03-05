@@ -689,3 +689,4 @@ effect.blood_drain.name=Blood Drained
 
 //Vampire
 vampire.nightvision.low_blood=You feel weak and your vision obfuscates
+vampire.bed_blocked=This doesn't feel comfortable anymore
