@@ -7,6 +7,7 @@ itemGroup.bewitchment_blocks=Bewitchment - Blocks
 bewitchment.config.world_gen=World Gen
 bewitchment.config.energy_hud=Energy HUD
 bewitchment.config.brew_hud=Brews HUD
+bewitchment.config.client=Client Settings
 
 //Gui
 container.apiary=Apiary
@@ -690,3 +691,8 @@ effect.blood_drain.name=Blood Drained
 //Vampire
 vampire.nightvision.low_blood=You feel weak and your vision obfuscates
 vampire.bed_blocked=This doesn't feel comfortable anymore
+
+//Keys
+key.categories.bewitchment=Bewitchment
+key.description.jump_to_bar=Jump to extra bar
+key.description.enable_bar=Toggle extra bar reachability

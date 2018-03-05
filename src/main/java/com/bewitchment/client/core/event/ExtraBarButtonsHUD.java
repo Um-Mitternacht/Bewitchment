@@ -1,8 +1,16 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.event.HotbarAction;
+import com.bewitchment.client.handler.Keybinds;
+import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -15,10 +23,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -28,6 +32,7 @@ public class ExtraBarButtonsHUD {
 	// TODO reset these when the user closes the game, either MP or SP
 	int slotSelected = -1;
 	boolean isInExtraBar = false;
+	boolean barEnabled = false;
 	int selectedItemTemp = 0;
 	List<HotbarAction> actions = new ArrayList<HotbarAction>();
 	HotbarAction[] actionScroller = new HotbarAction[3];// 0: current, 1: prev, 2: next
@@ -61,16 +66,16 @@ public class ExtraBarButtonsHUD {
 	@SubscribeEvent
 	public void scrollWheelHijacker(MouseEvent evt) {
 		int dir = evt.getDwheel() == 0 ? 0 : evt.getDwheel() > 0 ? -1 : 1;
-		if (dir == 0 || (!Minecraft.getMinecraft().player.isSneaking() && !isInExtraBar))
+		if (dir == 0 || (!Minecraft.getMinecraft().player.isSneaking() && !barEnabled && !isInExtraBar))
 			return;
 		int curItm = Minecraft.getMinecraft().player.inventory.currentItem;
 		int max = actions.size();
 		if (Minecraft.getMinecraft().currentScreen == null) {// Don't mess with scroll wheels if a gui is open, only when playing
 			refreshSelected();
 			evt.setCanceled(isInExtraBar || (dir < 0 && slotSelected == 0) || (dir > 0 && curItm == 8 && max > 0));
-			if (curItm == 8) {
+			if (evt.isCanceled()) {
 				if (dir > 0) {
-					if (curItm == 8 && max > 0) {
+					if (max > 0) {
 						isInExtraBar = true;
 						slotSelected++;
 						if (slotSelected >= max) {
@@ -123,10 +128,15 @@ public class ExtraBarButtonsHUD {
 
 	@SubscribeEvent
 	public void keybordSelectorCheck(KeyInputEvent evt) { // Used to keep it coherent when the player uses the keys 1-9 to pick the selected item
-		if (Minecraft.getMinecraft().player.inventory.currentItem < 8) {
-			slotSelected = -1;
-			isInExtraBar = false;
-			refreshSelected();
+		if (Keybinds.gotoExtraBar.isPressed()) {
+			if (actions.size() > 0) {
+				slotSelected = 0;
+				isInExtraBar = true;
+				refreshSelected();
+			}
+		}
+		if (Keybinds.alwaysEnableBar.isPressed()) {
+			barEnabled = !barEnabled;
 		}
 	}
 
@@ -168,9 +178,9 @@ public class ExtraBarButtonsHUD {
 				mc.getTextureManager().bindTexture(actionScroller[1].getIcon(mc.player));
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 110.5, sr.getScaledHeight() - 19.5, actionScroller[1].getIconIndexX(mc.player), actionScroller[1].getIconIndexY(mc.player));
 				GlStateManager.popMatrix();
-			} else if (slotSelected < 0 && actions.size() > 0) {
+			} else if (slotSelected < 0 && actions.size() > 0 && ConfigHandler.CLIENT.showArrowsInBar) {
 				GlStateManager.pushMatrix();
-				GlStateManager.color(1, 1, 1, mc.player.isSneaking() ? 1 : 0.2f);
+				GlStateManager.color(1, 1, 1, (mc.player.isSneaking() || barEnabled) ? 1 : 0.2f);
 				mc.getTextureManager().bindTexture(HotbarAction.DEFAULT_ICON_TEXTURE);
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 106, sr.getScaledHeight() - 19.5, 3, 3);
 				GlStateManager.popMatrix();

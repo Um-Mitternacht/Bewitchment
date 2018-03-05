@@ -1,10 +1,15 @@
 package com.bewitchment.client.core.event;
 
+import java.util.Optional;
+
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.handler.ConfigHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -19,9 +24,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -61,7 +63,7 @@ public class EnergyHUD {
 				}
 
 				if (renderTime > 0 && energy.get() == energy.getMax()) {
-					if (ConfigHandler.ENERGY_HUD.hide && renderTime < 20) {
+					if (ConfigHandler.CLIENT.ENERGY_HUD.hide && renderTime < 20) {
 						visible -= 0.05F;
 						visible = MathHelper.clamp(visible, 0F, 1F);
 					}
@@ -129,12 +131,12 @@ public class EnergyHUD {
 
 				// System.out.println("fil: " + filled + ", chg: " + energy.get() + ", max: " + energy.getMax());
 
-				int height = ConfigHandler.ENERGY_HUD.height;
-				int width = ConfigHandler.ENERGY_HUD.width;
-				int x = ConfigHandler.ENERGY_HUD.x;
-				int y = resolution.getScaledHeight() - ConfigHandler.ENERGY_HUD.y;
+				int height = ConfigHandler.CLIENT.ENERGY_HUD.height;
+				int width = ConfigHandler.CLIENT.ENERGY_HUD.width;
+				int x = ConfigHandler.CLIENT.ENERGY_HUD.x;
+				int y = resolution.getScaledHeight() - ConfigHandler.CLIENT.ENERGY_HUD.y;
 
-				if (ConfigHandler.ENERGY_HUD.hide) {
+				if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
 					GlStateManager.color(1F, 1F, 1F, visible);
 				}
 
@@ -155,7 +157,7 @@ public class EnergyHUD {
 					GlStateManager.popMatrix();
 				}
 
-				if (ConfigHandler.ENERGY_HUD.hide) {
+				if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
 					GlStateManager.color(1F, 1F, 1F, visible);
 				}
 
@@ -163,7 +165,7 @@ public class EnergyHUD {
 				renderTexture(x, y, width, height, 0, 1);
 
 				int textColor = 0x990066;
-				if (ConfigHandler.ENERGY_HUD.hide) {
+				if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
 					int alpha = (int) (visible * 255);
 					textColor = alpha << 24 | 0x990066;
 				}
