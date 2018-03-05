@@ -1,7 +1,11 @@
 package com.bewitchment.common.potion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bewitchment.api.capability.transformations.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -9,9 +13,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PotionBloodDrained extends PotionMod {
 
@@ -40,7 +41,8 @@ public class PotionBloodDrained extends PotionMod {
 		float amount = br.getPercentFilled();
 
 		if (amount > 0 && amount < TRESHOLD) {
-			entity.attackEntityFrom(new DamageSourceDrain(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID())), 0.5f);
+			if (br.getDrinkerUUID() != null)
+				entity.attackEntityFrom(new DamageSourceDrain(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID())), 0.5f);
 			if (br.getDrinkerUUID() != null)
 				entity.setRevengeTarget(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID()));
 			entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
