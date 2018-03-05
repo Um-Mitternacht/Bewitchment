@@ -4,6 +4,7 @@ import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
@@ -31,13 +32,18 @@ public final class NetworkHandler {
 		HANDLER.registerMessage(EnergyMessage.EnergyMessageHandler.class, EnergyMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(BrewMessage.PotionMessageHandler.class, BrewMessage.class, id++, Side.CLIENT);
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
-		HANDLER.registerMessage(PlayerTransformationChangedMessage.class, PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
-		HANDLER.registerMessage(PlayerVampireBloodChanged.class, PlayerVampireBloodChanged.class, id++, Side.CLIENT);
-		HANDLER.registerMessage(EntityInternalBloodChanged.class, EntityInternalBloodChanged.class, id++, Side.CLIENT);
+		registerSimpleMessage(PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
+		registerSimpleMessage(PlayerVampireBloodChanged.class, id++, Side.CLIENT);
+		registerSimpleMessage(EntityInternalBloodChanged.class, id++, Side.CLIENT);
+		registerSimpleMessage(NightVisionStatus.class, id++, Side.CLIENT);
 
-		HANDLER.registerMessage(PlayerUsedAbilityMessage.class, PlayerUsedAbilityMessage.class, id++, Side.SERVER);
-		HANDLER.registerMessage(RequestPlayerDataMessage.class, RequestPlayerDataMessage.class, id++, Side.SERVER);
+		registerSimpleMessage(PlayerUsedAbilityMessage.class, id++, Side.SERVER);
+		registerSimpleMessage(RequestPlayerDataMessage.class, id++, Side.SERVER);
 
+	}
+	
+	private static <MSG extends SimpleMessage<MSG>> void registerSimpleMessage(Class<MSG> clazz, int id, Side side) {
+		HANDLER.registerMessage(clazz, clazz, id, side);
 	}
 
 	public static void sendNear(EntityLivingBase entity, IBrewStorage storage) {

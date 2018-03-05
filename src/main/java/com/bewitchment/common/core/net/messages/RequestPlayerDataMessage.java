@@ -1,7 +1,9 @@
 package com.bewitchment.common.core.net.messages;
 
+import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -32,12 +34,15 @@ public class RequestPlayerDataMessage extends SimpleMessage<RequestPlayerDataMes
 		if (DataType.isRequested(DataType.INTERNAL_POOL_BLOOD, type)) {
 			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), player);
 		}
+		if (DataType.isRequested(DataType.NIGHT_VISION, type)) {
+			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), player);
+		}
 		return null;
 	}
 
 	public static enum DataType {
 
-		TRANSFORMATION_DATA, VAMPIRE_BLOOD, INTERNAL_POOL_BLOOD;
+		TRANSFORMATION_DATA, VAMPIRE_BLOOD, INTERNAL_POOL_BLOOD, NIGHT_VISION;
 
 		public static boolean isRequested(DataType type, int request) {
 			return ((request >> type.ordinal()) & 1) == 1;

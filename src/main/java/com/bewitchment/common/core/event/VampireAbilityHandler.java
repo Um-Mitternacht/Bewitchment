@@ -11,12 +11,15 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.NightVisionStatus;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemFood;
@@ -172,7 +175,11 @@ public class VampireAbilityHandler {
 	public void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (evt.action == ModAbilities.NIGHT_VISION) {
-			data.setNightVision(!data.isNightVisionActive());
+			boolean newStatus = !data.isNightVisionActive();
+			data.setNightVision(newStatus);
+			if (evt.player instanceof EntityPlayerMP) {
+				NetworkHandler.HANDLER.sendTo(new NightVisionStatus(newStatus), (EntityPlayerMP) evt.player);
+			}
 		} else if (evt.action == ModAbilities.DRAIN_BLOOD) {
 
 			RayTraceResult rt = RayTraceHelper.rayTraceResult(evt.player, RayTraceHelper.fromLookVec(evt.player, evt.player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue()), true, true);

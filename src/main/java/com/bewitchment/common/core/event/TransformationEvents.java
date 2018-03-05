@@ -9,6 +9,7 @@ import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessa
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage;
 import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,7 +44,7 @@ public class TransformationEvents {
 	@SubscribeEvent
 	public void onPlayerJoin(EntityJoinWorldEvent evt) {
 		if (Minecraft.getMinecraft().player != null && evt.getEntity().getUniqueID() == Minecraft.getMinecraft().player.getUniqueID()) {
-			NetworkHandler.HANDLER.sendToServer(new RequestPlayerDataMessage(DataType.TRANSFORMATION_DATA));
+			NetworkHandler.HANDLER.sendToServer(new RequestPlayerDataMessage(DataType.TRANSFORMATION_DATA, DataType.NIGHT_VISION));
 		}
 	}
 }
