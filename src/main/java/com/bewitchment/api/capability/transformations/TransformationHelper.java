@@ -8,6 +8,8 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -28,6 +30,7 @@ public class TransformationHelper {
 		data.setNightVision(data.isNightVisionActive() && (type == EnumTransformationType.WEREWOLF || type == EnumTransformationType.VAMPIRE));
 		if ((type == EnumTransformationType.SPECTRE || type == EnumTransformationType.VAMPIRE)) {
 			player.getCapability(CapabilityBloodReserve.CAPABILITY, null).setMaxBlood(-1);
+			player.removePotionEffect(ModPotions.bloodDrained);
 		} else {
 			player.getCapability(CapabilityBloodReserve.CAPABILITY, null).setMaxBlood(480);
 		}

@@ -1,6 +1,9 @@
 package com.bewitchment.common.core.event;
 
+import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.IBloodReserve;
+import com.bewitchment.api.capability.transformations.ITransformationData;
+import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -8,6 +11,7 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -74,13 +78,19 @@ public class BloodEvents {
 	public static void fillBloodOverTime(LivingUpdateEvent evt) {
 		EntityLivingBase ent = evt.getEntityLiving();
 		if (!ent.world.isRemote) {
+			boolean ignore = false;
 			IBloodReserve br = ent.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 			if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 80 == 0) {
 
 				int baseIncrease = getBloodRegen(br);
 
 				if (ent instanceof EntityPlayer) {
-					ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
+					ITransformationData data = ent.getCapability(CapabilityTransformationData.CAPABILITY, null);
+					if (data.getType() != EnumTransformationType.VAMPIRE) {
+						ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
+					}
+					if (data.getType() == EnumTransformationType.VAMPIRE || data.getType() == EnumTransformationType.SPECTRE)
+						ignore = true;
 					br.setBlood(br.getBlood() + baseIncrease);
 				} else if (ent instanceof EntityVillager) {
 					// TODO check for villagers nearby. Regen rate should be nerfed when many are in the same place
@@ -90,7 +100,7 @@ public class BloodEvents {
 				}
 
 				float stored = br.getPercentFilled();
-				if (stored < PotionBloodDrained.TRESHOLD) {
+				if (!ignore && stored < PotionBloodDrained.TRESHOLD) {
 					ent.addPotionEffect(new PotionEffect(ModPotions.bloodDrained, 200, 0));
 				}
 
