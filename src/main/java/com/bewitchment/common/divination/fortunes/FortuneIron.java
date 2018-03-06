@@ -24,7 +24,6 @@ import java.util.List;
  * Created by Joseph on 2/12/2018.
  */
 
-//Todo: Create loot table.
 public class FortuneIron extends Fortune {
 
 	public FortuneIron(int weight, String name, String modid) {
@@ -61,7 +60,7 @@ public class FortuneIron extends Fortune {
 			if (cap.isActive()) {
 				Block block = evt.getState().getBlock();
 				if (block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.SAND || block == Blocks.MYCELIUM || block == Blocks.GRAVEL || block == Blocks.SOUL_SAND) {
-					LootTable lt = evt.getWorld().getLootTableManager().getLootTableFromLocation(ModLootTables.JEWELS);
+					LootTable lt = evt.getWorld().getLootTableManager().getLootTableFromLocation(ModLootTables.METALS);
 					LootContext lc = (new LootContext.Builder((WorldServer) evt.getWorld()).withLuck(evt.getPlayer().getLuck()).withPlayer(evt.getPlayer())).build();
 					List<ItemStack> spawn = lt.generateLootForPools(evt.getPlayer().getRNG(), lc);
 					spawn.forEach(s -> spawn(s, evt.getWorld(), evt.getPos()));
