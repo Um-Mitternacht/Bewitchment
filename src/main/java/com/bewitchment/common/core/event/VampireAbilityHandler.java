@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -13,7 +11,6 @@ import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -40,13 +37,15 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
 
+import java.util.UUID;
+
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
 
 	public static final Ingredient WOOD_WEAPON = new OreIngredient("weaponWood");
 	public static final Ingredient SILVER_WEAPON = new OreIngredient("weaponSilver");
-	
+
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
 
 	/**
@@ -95,19 +94,19 @@ public class VampireAbilityHandler {
 			mult += 0.5;
 		return mult;
 	}
-	
+
 	@SubscribeEvent
 	public void tickChecks(PlayerTickEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (data.getType() == EnumTransformationType.VAMPIRE && evt.side.isServer()) {
-			
+
 			// Check sun damage
 			if (evt.player.world.getTotalWorldTime() % 40 == 0 && evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
 				if (data.getLevel() < 5 || !TransformationHelper.addVampireBlood(evt.player, -(13 + data.getLevel()))) {
 					evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
 				}
 			}
-			
+
 			// Replace hunger mechanics with blood mechanics
 			if (evt.player.ticksExisted % 80 == 0) {
 				evt.player.getFoodStats().addStats(20, 3000);
@@ -123,7 +122,7 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void sleepBed(RightClickBlock evt) {
 		ITransformationData data = evt.getEntityPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null);
@@ -133,7 +132,7 @@ public class VampireAbilityHandler {
 			evt.getEntityPlayer().sendStatusMessage(new TextComponentTranslation("vampire.bed_blocked"), true);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void foodEaten(LivingEntityUseItemEvent.Finish evt) {
 		if (evt.getEntityLiving() instanceof EntityPlayer && evt.getItem().getItem() instanceof ItemFood) {
@@ -143,7 +142,7 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void healControl(LivingHealEvent evt) {
 		if (evt.getEntityLiving() instanceof EntityPlayer) {

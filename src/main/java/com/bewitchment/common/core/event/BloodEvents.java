@@ -11,7 +11,6 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -108,7 +107,7 @@ public class BloodEvents {
 			}
 		}
 	}
-	
+
 	private static int getBloodRegen(IBloodReserve br) {
 		if (br.getPercentFilled() < PotionBloodDrained.TRESHOLD)
 			return 20;

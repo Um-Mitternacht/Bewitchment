@@ -24,9 +24,10 @@ import java.util.List;
  * Created by Joseph on 2/12/2018.
  */
 
-public class FortuneShinies extends Fortune {
+//Todo: Create loot table.
+public class FortuneIron extends Fortune {
 
-	public FortuneShinies(int weight, String name, String modid) {
+	public FortuneIron(int weight, String name, String modid) {
 		super(weight, name, modid);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

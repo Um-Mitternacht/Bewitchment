@@ -4,7 +4,6 @@ import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
@@ -40,7 +39,7 @@ public final class NetworkHandler {
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, id++, Side.SERVER);
 
 	}
-	
+
 	private static <MSG extends SimpleMessage<MSG>> void registerSimpleMessage(Class<MSG> clazz, int id, Side side) {
 		HANDLER.registerMessage(clazz, clazz, id, side);
 	}

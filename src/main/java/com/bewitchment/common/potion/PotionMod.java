@@ -1,7 +1,6 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;

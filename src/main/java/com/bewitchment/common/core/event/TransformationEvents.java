@@ -6,9 +6,11 @@ import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
+import com.bewitchment.common.core.net.messages.NightVisionStatus;
+import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
+import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -40,7 +42,7 @@ public class TransformationEvents {
 		}
 		HotbarAction.refreshActions(event.getEntityPlayer(), event.getEntityPlayer().world);
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerLoggedInEvent evt) {
 		if (evt.player instanceof EntityPlayerMP) {

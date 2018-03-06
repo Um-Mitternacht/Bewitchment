@@ -9,7 +9,6 @@
 package com.bewitchment.common.core.handler;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.Type;
@@ -35,6 +34,13 @@ public final class ConfigHandler {
 	@Comment("Customize the client-side only settings")
 	@Config.LangKey("bewitchment.config.client")
 	public static ClientConfig CLIENT = new ClientConfig();
+
+	@SubscribeEvent
+	public static void onConfigChanged(ConfigChangedEvent evt) {
+		if (evt.getModID().equals(LibMod.MOD_ID)) {
+			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
+		}
+	}
 
 	public static class WorldGen {
 
@@ -199,17 +205,17 @@ public final class ConfigHandler {
 		public BrewHUD BREW_HUD = new BrewHUD();
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
-		
+
 		public static class BrewHUD {
 			@Comment("Should the brew HUD be hidden?")
 			public boolean hide;
-			@Comment({ "Orientation of the brews", "true : vertical", "false : horizontal" })
+			@Comment({"Orientation of the brews", "true : vertical", "false : horizontal"})
 			public boolean orientation = true;
-			@Comment({ "Position of the HUD in the screen", "\"x\" value is from right to left", "\"y\" value is from top to bottom" })
+			@Comment({"Position of the HUD in the screen", "\"x\" value is from right to left", "\"y\" value is from top to bottom"})
 			public int x = 21;
 			public int y = 100;
 		}
-		
+
 		public static class EnergyHUD {
 			@Comment("Should the energy HUD be hidden?")
 			public boolean hide = true;
@@ -217,17 +223,10 @@ public final class ConfigHandler {
 			public int height = 102;
 			@Comment("Width of the HUD")
 			public int width = 25;
-			
-			@Comment({ "Position of the HUD in the screen", "\"x\" value is from left to right", "\"y\" value is from bottom to top" })
+
+			@Comment({"Position of the HUD in the screen", "\"x\" value is from left to right", "\"y\" value is from bottom to top"})
 			public int x = 25;
 			public int y = 129;
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onConfigChanged(ConfigChangedEvent evt) {
-		if (evt.getModID().equals(LibMod.MOD_ID)) {
-			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 		}
 	}
 }

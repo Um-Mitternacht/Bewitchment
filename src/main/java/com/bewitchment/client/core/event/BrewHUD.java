@@ -1,14 +1,10 @@
 package com.bewitchment.client.core.event;
 
-import java.util.Collection;
-import java.util.Optional;
-
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.core.handler.ConfigHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,6 +12,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Collection;
+import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 24/04/2017.
