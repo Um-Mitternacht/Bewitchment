@@ -5,7 +5,7 @@ import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.net.SimpleMessage;
-import com.bewitchment.common.core.net.messages.RequestPlayerDataMessage.DataType;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -29,13 +29,9 @@ public class PlayerTransformationChangedMessage extends SimpleMessage<PlayerTran
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		if (player != null) {
-			TransformationHelper.setTypeAndLevel(player, EnumTransformationType.values()[type], level, true);
-			if (EnumTransformationType.values()[type] == EnumTransformationType.VAMPIRE) {
-				return new RequestPlayerDataMessage(DataType.VAMPIRE_BLOOD);
-			}
-		}
+		Minecraft.getMinecraft().addScheduledTask(() -> {
+			TransformationHelper.setTypeAndLevel(Minecraft.getMinecraft().player, EnumTransformationType.values()[type], level, true);
+		});
 		return null;
 	}
 

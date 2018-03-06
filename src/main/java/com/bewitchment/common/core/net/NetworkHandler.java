@@ -38,7 +38,6 @@ public final class NetworkHandler {
 		registerSimpleMessage(NightVisionStatus.class, id++, Side.CLIENT);
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, id++, Side.SERVER);
-		registerSimpleMessage(RequestPlayerDataMessage.class, id++, Side.SERVER);
 
 	}
 	

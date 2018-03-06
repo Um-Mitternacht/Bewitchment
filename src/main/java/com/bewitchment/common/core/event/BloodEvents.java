@@ -15,8 +15,6 @@ import com.bewitchment.common.potion.PotionBloodDrained;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
-import net.minecraft.entity.monster.EntityShulker;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -34,9 +32,6 @@ public class BloodEvents {
 
 	public static final ResourceLocation BLOOD_DATA = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
 
-	private BloodEvents() {
-	}
-
 	@SubscribeEvent
 	public static void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 		if (evt.getObject() instanceof EntityLivingBase) {
@@ -47,29 +42,34 @@ public class BloodEvents {
 	@SubscribeEvent
 	public static void onJoin(EntityJoinWorldEvent evt) {
 		Entity e = evt.getEntity();
-		if (e instanceof EntityLivingBase) {
+		if (!e.world.isRemote && e instanceof EntityLivingBase) {
 			IBloodReserve br = e.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 			if (br.getMaxBlood() == 0) {
 				int maxBlood = 100;
 				if (e instanceof EntityPlayer) {
 					maxBlood = 480;
 				} else if (e instanceof EntityVillager) {
-					maxBlood = 320;
+					maxBlood = 240;
 				} else if (e instanceof EntityCow || e instanceof EntityHorse || e instanceof EntityPolarBear) {
-					maxBlood = 200;
-				} else if (e instanceof EntityDonkey || e instanceof EntityLlama) {
-					maxBlood = 180;
-				} else if (e instanceof EntitySheep) {
 					maxBlood = 150;
+				} else if (e instanceof EntityDonkey || e instanceof EntityLlama) {
+					maxBlood = 130;
+				} else if (e instanceof EntitySheep) {
+					maxBlood = 110;
 				} else if (e instanceof EntityWolf || e instanceof EntityOcelot) {
 					maxBlood = 80;
 				} else if (e instanceof EntityChicken || e instanceof EntityParrot) {
 					maxBlood = 50;
-				} else if (e instanceof EntitySkeleton || e instanceof EntitySkeletonHorse || e instanceof EntityShulker || !e.isNonBoss()) {
+				} else {
 					maxBlood = -1;
 				}
 				br.setMaxBlood(maxBlood);
 				br.setBlood(maxBlood);
+				EntityLivingBase ent = (EntityLivingBase) e;
+				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(e.dimension, ent.posX, ent.posY, ent.posZ, 32));
+			} else {
+				EntityLivingBase ent = (EntityLivingBase) e;
+				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(e.dimension, ent.posX, ent.posY, ent.posZ, 32));
 			}
 		}
 	}
@@ -108,7 +108,7 @@ public class BloodEvents {
 			}
 		}
 	}
-
+	
 	private static int getBloodRegen(IBloodReserve br) {
 		if (br.getPercentFilled() < PotionBloodDrained.TRESHOLD)
 			return 20;

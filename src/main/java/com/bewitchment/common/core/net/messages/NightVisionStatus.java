@@ -24,7 +24,7 @@ public class NightVisionStatus extends SimpleMessage<NightVisionStatus> {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).setNightVision(active);
+		Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).setNightVision(active));
 		return null;
 	}
 	
