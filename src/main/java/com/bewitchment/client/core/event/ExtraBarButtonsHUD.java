@@ -60,10 +60,12 @@ public class ExtraBarButtonsHUD {
 
 	@SubscribeEvent
 	public void RMBHijacker(MouseEvent evt) {
-		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1 && cooldown == 0) {
+		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
 			evt.setCanceled(true);
-			NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
-			cooldown = 15;
+			if (cooldown == 0) {
+				NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
+				cooldown = 15;
+			}
 		}
 	}
 	
