@@ -6,13 +6,14 @@
 
 package com.bewitchment.common.item.magic;
 
-import com.bewitchment.api.capability.IEnergy;
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.api.spell.Spell.EnumSpellType;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -29,9 +30,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
 
 public class ItemSpellPage extends ItemMod {
 
@@ -114,13 +112,13 @@ public class ItemSpellPage extends ItemMod {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		Spell spell = getSpellFromItemStack(stack);
 		if (spell != null && !worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				int spellCost = spell.getCost() * 80;
-				Optional<IEnergy> eng = EnergyHandler.getEnergy((EntityPlayer) entityLiving);
-				if (eng.isPresent() && eng.get().get() < spellCost)
-					return stack;
-				EnergyHandler.addEnergy((EntityPlayer) entityLiving, -spellCost);
-			}
+			// if (entityLiving instanceof EntityPlayer) {
+			// int spellCost = spell.getCost() * 80;
+			// Optional<IEnergy> eng = EnergyHandler.getEnergy((EntityPlayer) entityLiving);
+			// if (eng.isPresent() && eng.get().get() < spellCost)
+			// return stack;
+			// EnergyHandler.addEnergy((EntityPlayer) entityLiving, -spellCost);
+			// }
 			if (spell.getType() == EnumSpellType.INSTANT)
 				spell.performEffect(new RayTraceResult(Type.MISS, entityLiving.getLookVec(), EnumFacing.UP, entityLiving.getPosition()), entityLiving, worldIn);
 			else {
