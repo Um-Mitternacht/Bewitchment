@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -11,6 +13,8 @@ import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
+import com.bewitchment.common.entity.EntityBatSwarm;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -36,8 +40,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -164,6 +166,9 @@ public class VampireAbilityHandler {
 			} else {
 				data.setNightVision(false);
 			}
+			if (data.getLevel() > 6) {
+				evt.getList().add(ModAbilities.BAT_SWARM);
+			}
 		} else {
 			data.setNightVision(false);
 		}
@@ -192,6 +197,12 @@ public class VampireAbilityHandler {
 					}
 				}
 			}
+		} else if (evt.action == ModAbilities.BAT_SWARM) {
+			EntityBatSwarm bs = new EntityBatSwarm(evt.player.world);
+			float pitch = Math.abs(evt.player.rotationPitch) < 10 ? 0 : evt.player.rotationPitch;
+			bs.setPositionAndRotation(evt.player.posX, evt.player.posY + evt.player.getEyeHeight(), evt.player.posZ, evt.player.rotationYaw, pitch);
+			evt.player.world.spawnEntity(bs);
+			evt.player.startRiding(bs);
 		}
 	}
 
