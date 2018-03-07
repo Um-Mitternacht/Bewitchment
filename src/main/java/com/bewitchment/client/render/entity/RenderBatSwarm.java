@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.entity;
 
 import com.bewitchment.common.entity.EntityBatSwarm;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -26,20 +25,20 @@ public class RenderBatSwarm extends Render<EntityBatSwarm> {
 	public void doRender(EntityBatSwarm entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		// TODO
 	}
-	
+
 	@Override
 	public void doRenderShadowAndFire(Entity entityIn, double x, double y, double z, float yaw, float partialTicks) {
 	}
-	
+
 	public static class PlayerHider {
-		
+
 		@SubscribeEvent
 		public void onRenderPlayer(RenderPlayerEvent.Pre evt) {
 			if (evt.getEntityPlayer().getRidingEntity() instanceof EntityBatSwarm) {
 				evt.setCanceled(true);
 			}
 		}
-		
+
 		@SubscribeEvent
 		public void onRenderHand(RenderHandEvent evt) {
 			if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityBatSwarm) {
@@ -47,5 +46,5 @@ public class RenderBatSwarm extends Render<EntityBatSwarm> {
 			}
 		}
 	}
-	
+
 }

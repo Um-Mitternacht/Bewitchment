@@ -3,7 +3,6 @@ package com.bewitchment.common.abilities;
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -23,7 +22,7 @@ public class ModAbilities {
 		}
 
 	}.setIconIndexes(0, 0);
-	
+
 	private ModAbilities() {
 	}
 

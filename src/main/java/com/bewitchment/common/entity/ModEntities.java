@@ -3,9 +3,11 @@ package com.bewitchment.common.entity;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.dispenser.*;
+import net.minecraft.dispenser.BehaviorProjectileDispense;
+import net.minecraft.dispenser.IBehaviorDispenseItem;
+import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

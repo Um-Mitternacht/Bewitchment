@@ -10,7 +10,6 @@ import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityBatSwarm extends Entity {
-	
+
 	public EntityBatSwarm(World worldIn) {
 		super(worldIn);
 		this.setSize(0.2f, 0.2f);
@@ -15,25 +15,25 @@ public class EntityBatSwarm extends Entity {
 		this.setNoGravity(true);
 		this.setSilent(true);
 	}
-	
+
 	@Override
 	protected void entityInit() {
 		this.setEntityBoundingBox(null);
 	}
-	
+
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound compound) {
 	}
-	
+
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound compound) {
 	}
-	
+
 	@Override
 	public boolean canBePushed() {
 		return false;
 	}
-	
+
 	@Override
 	public void onEntityUpdate() {
 		super.onEntityUpdate();
@@ -46,12 +46,12 @@ public class EntityBatSwarm extends Entity {
 			this.setDead();
 		}
 	}
-	
+
 	@Override
 	protected boolean canBeRidden(Entity entityIn) {
 		return super.canBeRidden(entityIn) && (entityIn instanceof EntityPlayer);
 	}
-	
+
 	@Override
 	public double getMountedYOffset() {
 		return -1.2;
