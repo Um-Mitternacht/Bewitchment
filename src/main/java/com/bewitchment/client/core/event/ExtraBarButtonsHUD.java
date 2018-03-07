@@ -1,10 +1,17 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.event.HotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -15,13 +22,9 @@ import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -32,6 +35,7 @@ public class ExtraBarButtonsHUD {
 	int slotSelected = -1;
 	boolean isInExtraBar = false;
 	boolean barEnabled = false;
+	int cooldown = 0;
 	int selectedItemTemp = 0;
 	List<HotbarAction> actions = new ArrayList<HotbarAction>();
 	HotbarAction[] actionScroller = new HotbarAction[3];// 0: current, 1: prev, 2: next
@@ -56,9 +60,17 @@ public class ExtraBarButtonsHUD {
 
 	@SubscribeEvent
 	public void RMBHijacker(MouseEvent evt) {
-		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
+		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1 && cooldown == 0) {
 			evt.setCanceled(true);
 			NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
+			cooldown = 15;
+		}
+	}
+	
+	@SubscribeEvent
+	public void clientTick(TickEvent.ClientTickEvent evt) {
+		if (cooldown > 0) {
+			cooldown--;
 		}
 	}
 

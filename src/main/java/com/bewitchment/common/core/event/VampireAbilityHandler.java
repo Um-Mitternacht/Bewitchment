@@ -199,7 +199,7 @@ public class VampireAbilityHandler {
 			}
 		} else if (evt.action == ModAbilities.BAT_SWARM) {
 			EntityBatSwarm bs = new EntityBatSwarm(evt.player.world);
-			float pitch = Math.abs(evt.player.rotationPitch) < 10 ? 0 : evt.player.rotationPitch;
+			float pitch = (Math.abs(evt.player.rotationPitch) < 7) ? 0 : evt.player.rotationPitch;
 			bs.setPositionAndRotation(evt.player.posX, evt.player.posY + evt.player.getEyeHeight(), evt.player.posZ, evt.player.rotationYaw, pitch);
 			evt.player.world.spawnEntity(bs);
 			evt.player.startRiding(bs);
