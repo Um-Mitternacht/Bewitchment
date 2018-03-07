@@ -191,18 +191,20 @@ public class VampireAbilityHandler {
 				if (rt.entityHit instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
 					if (canDrainBloodFrom(evt.player, entity)) {
-						TransformationHelper.drainBloodFromEntity(evt.player, entity, 10);
+						TransformationHelper.drainBloodFromEntity(evt.player, entity);
 					} else {
 						entity.attackEntityAsMob(evt.player);
 					}
 				}
 			}
 		} else if (evt.action == ModAbilities.BAT_SWARM) {
-			EntityBatSwarm bs = new EntityBatSwarm(evt.player.world);
-			float pitch = (Math.abs(evt.player.rotationPitch) < 7) ? 0 : evt.player.rotationPitch;
-			bs.setPositionAndRotation(evt.player.posX, evt.player.posY + evt.player.getEyeHeight(), evt.player.posZ, evt.player.rotationYaw, pitch);
-			evt.player.world.spawnEntity(bs);
-			evt.player.startRiding(bs);
+			if (TransformationHelper.addVampireBlood(evt.player, -150)) {
+				EntityBatSwarm bs = new EntityBatSwarm(evt.player.world);
+				float pitch = (Math.abs(evt.player.rotationPitch) < 7) ? 0 : evt.player.rotationPitch;
+				bs.setPositionAndRotation(evt.player.posX, evt.player.posY + evt.player.getEyeHeight(), evt.player.posZ, evt.player.rotationYaw, pitch);
+				evt.player.world.spawnEntity(bs);
+				evt.player.startRiding(bs);
+			}
 		}
 	}
 
@@ -218,7 +220,7 @@ public class VampireAbilityHandler {
 		if (evt.phase == Phase.START && !evt.player.world.isRemote) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
 			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
-				if (TransformationHelper.addVampireBlood(evt.player, -1)) {
+				if (TransformationHelper.addVampireBlood(evt.player, -2)) {
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 				} else {
 					evt.player.sendStatusMessage(new TextComponentTranslation("vampire.nightvision.low_blood"), true);

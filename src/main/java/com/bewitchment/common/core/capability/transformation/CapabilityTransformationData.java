@@ -2,6 +2,7 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -76,11 +77,11 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	@Override
 	public int getMaxBlood() {
-		int max = 50 + 75 * getLevel();
+		int max = 50 + 155 * getLevel();
 		if (getBlood() > max) {
 			setBlood(max);
 		}
-		return max; // lvl 0: 50, lvl 5: 425, lvl 10: 800
+		return max; // lvl 0: 50, lvl 5: 825, lvl 10: 1600
 	}
 
 	@Override

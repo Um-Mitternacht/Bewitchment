@@ -5,11 +5,9 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -73,10 +71,11 @@ public class TransformationHelper {
 		return flag;
 	}
 
-	public static void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity, int amount) {
+	public static void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity) {
 		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (br.getBlood() > 0 && br.getMaxBlood() > 0) {
-			int transferred = Math.min(br.getBlood(), amount);
+			int transferred = (int) Math.min(br.getBlood(), br.getBlood() * 0.05 * data.getLevel());
 			if (transferred > 0 && (addVampireBlood(player, transferred) || player.isSneaking())) {
 				br.setBlood(br.getBlood() - transferred);
 				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(entity), new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32));
