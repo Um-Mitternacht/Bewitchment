@@ -80,7 +80,7 @@ public class Bewitchment {
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
 		ModPotions.init();
-		ModLootTables.preInit();
+		ModLootTables.registerLootTables();
 		proxy.preInit(event);
 
 		logger.info("Remember when I told you how my");

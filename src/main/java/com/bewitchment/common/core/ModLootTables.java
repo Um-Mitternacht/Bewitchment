@@ -10,12 +10,8 @@ import net.minecraft.world.storage.loot.LootTableList;
 public class ModLootTables {
 
 	//Fortunes and chests
-	public static final ResourceLocation JEWELS = new ResourceLocation(LibMod.MOD_ID + ":" + "chests/jewels");
-	public static final ResourceLocation METALS = new ResourceLocation(LibMod.MOD_ID + ":" + "chests/metals");
-
-	public static void preInit() {
-		registerLootTables();
-	}
+	public static final ResourceLocation JEWELS = new ResourceLocation(LibMod.MOD_ID, "chests/jewels");
+	public static final ResourceLocation METALS = new ResourceLocation(LibMod.MOD_ID, "chests/metals");
 
 	public static void registerLootTables() {
 		LootTableList.register(JEWELS);
