@@ -3,8 +3,6 @@ package com.bewitchment.common.divination.fortunes;
 import com.bewitchment.api.divination.Fortune;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 
 public class FortuneMeetDog extends Fortune {
