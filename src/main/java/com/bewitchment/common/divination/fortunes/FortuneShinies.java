@@ -59,7 +59,7 @@ public class FortuneShinies extends Fortune {
 		if (cap.getFortune() == this) {
 			if (cap.isActive()) {
 				Block block = evt.getState().getBlock();
-				if (block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.SAND || block == Blocks.MYCELIUM || block == Blocks.GRAVEL || block == Blocks.SOUL_SAND) {
+				if (block == Blocks.STONE || block == Blocks.SANDSTONE || block == Blocks.RED_SANDSTONE || block == Blocks.END_STONE || block == Blocks.NETHERRACK || block == Blocks.COBBLESTONE || block == Blocks.MOSSY_COBBLESTONE) {
 					LootTable lt = evt.getWorld().getLootTableManager().getLootTableFromLocation(ModLootTables.JEWELS);
 					LootContext lc = (new LootContext.Builder((WorldServer) evt.getWorld()).withLuck(evt.getPlayer().getLuck()).withPlayer(evt.getPlayer())).build();
 					List<ItemStack> spawn = lt.generateLootForPools(evt.getPlayer().getRNG(), lc);
