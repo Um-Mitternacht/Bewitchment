@@ -16,6 +16,8 @@ public class ModFortunes {
 	private static Fortune merchant;
 	private static Fortune shinies;
 	private static Fortune iron;
+	private static Fortune direwolf;
+	private static Fortune dog;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
@@ -27,6 +29,8 @@ public class ModFortunes {
 		shinies = new FortuneShinies(3, "shinies", LibMod.MOD_ID);
 		merchant = new FortuneMeetMerchant(8, "merchant", LibMod.MOD_ID);
 		iron = new FortuneIron(7, "iron", LibMod.MOD_ID);
+		direwolf = new FortuneMeetDireWolf(5, "direwolf", LibMod.MOD_ID);
+		dog = new FortuneMeetDog(5, "dog", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -40,6 +44,8 @@ public class ModFortunes {
 				treasure,
 				shinies,
 				iron,
+				direwolf,
+				dog,
 				merchant
 		);
 	}
