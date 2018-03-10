@@ -12,6 +12,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
@@ -88,8 +89,11 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 	//Fixme: Gotta work on this
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		if (event.getSource().isMagicDamage()) {
-			event.setAmount(event.getAmount() * 0.95F);
+		DamageSource source = event.getSource();
+		Entity attacker = source.getTrueSource();
+
+		if (attacker instanceof EntityLivingBase){
+			attacker.attackEntityFrom(DamageSource.CACTUS, 2F);
 		}
 	}
 }
