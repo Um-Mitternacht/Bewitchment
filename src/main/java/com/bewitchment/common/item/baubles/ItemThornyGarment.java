@@ -1,12 +1,16 @@
 package com.bewitchment.common.item.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -16,10 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,21 +29,19 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
 /**
  * Created by Joseph on 1/1/2018.
  */
 public class ItemThornyGarment extends ItemMod implements IBauble {
+	
+	private static final float amountReflected = 0.2f;
+	
 	public ItemThornyGarment() {
 		super(LibItemName.THORNY_GARMENT);
 		this.setMaxStackSize(1);
-		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	//Todo: Specialized effects for thorns. Also, some testing, and allow for more enchants.
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
@@ -76,23 +75,23 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment == Enchantments.THORNS;
+		return enchantment == Enchantments.BINDING_CURSE;
 	}
-
-	//Fixme: Gotta work on this. Can't figure it out at the moment.
+	
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		DamageSource source = event.getSource();
-		Entity attacker = source.getTrueSource();
-
-		if (attacker instanceof EntityLivingBase) {
-			attacker.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 2F);
+		if (event.getEntityLiving() instanceof EntityPlayer && BaublesApi.isBaubleEquipped((EntityPlayer) event.getEntityLiving(), this) > 0) {
+			DamageSource source = event.getSource();
+			Entity attacker = source.getTrueSource();
+			if (attacker instanceof EntityLivingBase && !source.getDamageType().equals("thorns")) { // Don't reflect other forms of thorn dmg, otherwise you get an infinite loop
+				attacker.attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), event.getAmount() * amountReflected);
+			}
 		}
 	}
 }
