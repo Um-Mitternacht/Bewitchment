@@ -82,7 +82,7 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return (enchantment == Enchantments.THORNS || enchantment == Enchantments.BINDING_CURSE);
+		return enchantment == Enchantments.THORNS;
 	}
 
 	//Fixme: Gotta work on this
