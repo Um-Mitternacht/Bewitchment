@@ -86,14 +86,14 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 		return enchantment == Enchantments.THORNS;
 	}
 
-	//Fixme: Gotta work on this
+	//Fixme: Gotta work on this. Can't figure it out at the moment.
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		DamageSource source = event.getSource();
 		Entity attacker = source.getTrueSource();
 
 		if (attacker instanceof EntityLivingBase){
-			attacker.attackEntityFrom(DamageSource.CACTUS, 2F);
+			attacker.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 2F);
 		}
 	}
 }
