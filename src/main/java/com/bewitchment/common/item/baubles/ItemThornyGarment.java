@@ -12,7 +12,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
@@ -92,7 +91,7 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 		DamageSource source = event.getSource();
 		Entity attacker = source.getTrueSource();
 
-		if (attacker instanceof EntityLivingBase){
+		if (attacker instanceof EntityLivingBase) {
 			attacker.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 2F);
 		}
 	}
