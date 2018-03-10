@@ -235,6 +235,8 @@ public final class ModItems {
 				new ItemNazar(),
 				new ItemHorseshoe(),
 				new ItemTriskelionAmulet(),
+				new ItemHellishBauble(),
+				new ItemThornyGarment(),
 				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),
 				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),

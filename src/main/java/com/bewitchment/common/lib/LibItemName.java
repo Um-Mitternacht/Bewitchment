@@ -56,6 +56,8 @@ public final class LibItemName {
 	public static final String NAZAR = "nazar";
 	public static final String HORSESHOE = "horseshoe";
 	public static final String TRISKELION_AMULET = "triskelion_amulet";
+	public static final String HELLISH_BAUBLE = "hellish_bauble";
+	public static final String THORNY_GARMENT = "thorny_garment";
 
 	//Misc
 	public static final String BREW_PHIAL_DRINK = "brew_phial_drink";
