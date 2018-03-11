@@ -1,16 +1,11 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -20,7 +15,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,13 +27,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 /**
  * Created by Joseph on 1/1/2018.
  */
 public class ItemThornyGarment extends ItemMod implements IBauble {
-	
+
 	private static final float amountReflected = 0.2f;
-	
+
 	public ItemThornyGarment() {
 		super(LibItemName.THORNY_GARMENT);
 		this.setMaxStackSize(1);
@@ -83,7 +84,7 @@ public class ItemThornyGarment extends ItemMod implements IBauble {
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return enchantment == Enchantments.BINDING_CURSE;
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer && BaublesApi.isBaubleEquipped((EntityPlayer) event.getEntityLiving(), this) > 0) {
