@@ -1,76 +1,59 @@
 package com.bewitchment.common.item.magic;
 
-import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
-import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
-
-import javax.annotation.Nonnull;
-
-import static com.bewitchment.common.core.ModCreativeTabs.ITEMS_CREATIVE_TAB;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Joseph on 11/26/2017.
  */
 public class ItemGemPowder extends ItemMod {
 
-	public static final PropertyEnum<ItemGemPowder.GemPowderEnum> FUME = PropertyEnum.create("gem_powder", ItemGemPowder.GemPowderEnum.class);
+	public static final String[] names = new String[]{
+			"gem_powder_garnet", // 0
+			"gem_powder_moldavite", // 1
+			"gem_powder_nuummite", // 2
+			"gem_powder_tigers_eye", // 3
+			"gem_powder_tourmaline", // 4
+			"gem_powder_bloodstone", // 5
+			"gem_powder_jasper", // 6
+			"gem_powder_malachite", // 7
+			"gem_powder_amethyst", // 8
+			"gem_powder_alexandrite", // 9
+	};
 
-	public ItemGemPowder() {
-		super(LibItemName.GEM_POWDER);
-		setHasSubtypes(true);
-		setMaxDamage(0);
-		setCreativeTab(ITEMS_CREATIVE_TAB);
-	}
-
-	@Override
-	public int getMetadata(int damage) {
-		return damage;
+	public ItemGemPowder(String id) {
+		super(id);
+		this.setHasSubtypes(true);
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + ItemGemPowder.GemPowderEnum.values()[stack.getMetadata()].getName();
+		if (stack.getMetadata() >= names.length) return super.getUnlocalizedName(stack);
+		return super.getUnlocalizedName(stack) + "." + names[stack.getMetadata()];
 	}
 
 	@Override
+	public void getSubItems(CreativeTabs itemIn, NonNullList<ItemStack> tab) {
+		if (this.isInCreativeTab(itemIn)) {
+			for (int i = 0; i < names.length; i++)
+				tab.add(new ItemStack(this, 1, i));
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerModel() {
-		ItemGemPowder.GemPowderEnum[] values = ItemGemPowder.GemPowderEnum.values();
-		for (int i = 0; i < values.length; i++) {
-			ItemGemPowder.GemPowderEnum powder = values[i];
-			ModelHandler.registerForgeModel(this, i, "powder=" + powder.getName());
-		}
-	}
-
-	@Override
-	public void getSubItems(CreativeTabs tab, @Nonnull NonNullList<ItemStack> items) {
-		if (this.isInCreativeTab(tab)) {
-			for (int i = 0; i < ItemGemPowder.GemPowderEnum.values().length; ++i) {
-				items.add(new ItemStack(this, 1, i));
-			}
-		}
-	}
-
-
-	public enum GemPowderEnum implements IStringSerializable {
-		GARNET,
-		MOLDAVITE,
-		NUUMMITE,
-		TIGERS_EYE,
-		TOURMALINE,
-		BLOODSTONE,
-		JASPER,
-		MALACHITE,
-		AMETHYST,
-		ALEXANDRITE;
-
-		@Override
-		public String getName() {
-			return name().toLowerCase();
+		for (int i = 0; i < names.length; i++) {
+			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getResourceDomain(), "powders/" + this.getRegistryName().getResourcePath() + "_" + names[i]);
+			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
+			ModelLoader.setCustomModelResourceLocation(this, i, mrl);
 		}
 	}
 }
