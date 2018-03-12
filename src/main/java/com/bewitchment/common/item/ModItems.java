@@ -172,6 +172,7 @@ public final class ModItems {
 			registry.register(itemBlock((Block) fluidBlock));
 		}
 		registry.register(new ItemGem());
+		registry.register(new ItemGemPowder());
 		// registry.register(new ItemFume());
 		registry.register(new ItemFumes("fume"));
 		registry.register(new ItemMod(LibItemName.GEMSTONE_AMALGAM));
@@ -190,7 +191,6 @@ public final class ModItems {
 				new ItemMod(LibItemName.BEE).setMaxDamage(35),
 				new ItemMod(LibItemName.HONEYCOMB),
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
-				new ItemMod(LibItemName.GEM_POWDER),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),
 				new ItemBrewDrink(),
 				new ItemBrewSplash(),
