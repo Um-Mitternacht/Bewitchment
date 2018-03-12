@@ -4,7 +4,7 @@
       "name": "metals",
       "rolls": {
         "min": 1,
-        "max": 4
+        "max": 3
       },
       "entries": [
         {
@@ -15,11 +15,11 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 20
+                "max": 2
               }
             }
           ],
-          "weight": 20
+          "weight": 1
         },
         {
           "type": "item",
@@ -29,11 +29,11 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 20
+                "max": 3
               }
             }
           ],
-          "weight": 20
+          "weight": 1
         },
         {
           "type": "item",
@@ -43,11 +43,11 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 20
+                "max": 2
               }
             }
           ],
-          "weight": 20
+          "weight": 1
         },
         {
           "type": "item",
@@ -57,11 +57,11 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 20
+                "max": 2
               }
             }
           ],
-          "weight": 20
+          "weight": 1
         }
       ]
     }
