@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -12,6 +14,7 @@ import com.bewitchment.common.core.capability.transformation.CapabilityTransform
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -38,8 +41,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
 
-import java.util.UUID;
-
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
@@ -59,11 +60,12 @@ public class VampireAbilityHandler {
 			EntityPlayer player = (EntityPlayer) evt.getEntityLiving();
 			ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == EnumTransformationType.VAMPIRE) {
-				if (evt.getSource() == SUN_DAMAGE)
+				evt.setCanceled(false); // No immunity for you
+				if (evt.getSource() == SUN_DAMAGE) {
 					return;
+				}
 				float multiplier = getMultiplier(evt); // A multiplier greater 1 makes the damage not be reduced
 				if (multiplier > 1) {
-					evt.setCanceled(false);
 					evt.setAmount(evt.getAmount() * multiplier);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
 					evt.setAmount(evt.getAmount() * 0.1f);
@@ -81,18 +83,24 @@ public class VampireAbilityHandler {
 		if (evt.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer source = (EntityPlayer) evt.getSource().getTrueSource();
 			ITransformationData data = source.getCapability(CapabilityTransformationData.CAPABILITY, null);
-			if (data.getType() == EnumTransformationType.VAMPIRE || data.getType() == EnumTransformationType.WEREWOLF || data.getType() == EnumTransformationType.SPECTRE)
-				mult += 0.1;
 			if (data.getType() == EnumTransformationType.HUNTER) {
 				mult += 0.8;
+			} else if (data.getType() != EnumTransformationType.NONE) {
+				mult += 0.1; // All transformations basically (except hunter)
 			}
-			if (WOOD_WEAPON.apply(source.getHeldItemMainhand()))
+			if (WOOD_WEAPON.apply(source.getHeldItemMainhand())) {
 				mult += 0.1;
-			else if (SILVER_WEAPON.apply(source.getHeldItemMainhand()))
+			} else if (SILVER_WEAPON.apply(source.getHeldItemMainhand())) {
 				mult += 0.3;
+			}
 		}
-		if (evt.getSource().isFireDamage() || evt.getSource().isExplosion() || evt.getSource().canHarmInCreative())
+		if (evt.getSource().isFireDamage() || evt.getSource().isExplosion() || evt.getSource().canHarmInCreative()) {
 			mult += 0.5;
+			if (evt.isCanceled()) {
+				mult += 1; // Attempts to prevent damage are bad
+			}
+		}
+		
 		return mult;
 	}
 
@@ -112,13 +120,21 @@ public class VampireAbilityHandler {
 			if (evt.player.ticksExisted % 80 == 0) {
 				evt.player.getFoodStats().addStats(20, 3000);
 				if (data.getBlood() == 0) {
-					evt.player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 2, false, false));
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 2, false, false));
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 2, false, false));
 				}
+				
+				// Hunger drains blood
 				PotionEffect effect = evt.player.getActivePotionEffect(MobEffects.HUNGER);
 				if (effect != null) {
 					TransformationHelper.addVampireBlood(evt.player, -effect.getAmplifier() * 5);
+				}
+				
+				// Fire resistance becomes hunger
+				PotionEffect pe = evt.player.getActivePotionEffect(MobEffects.FIRE_RESISTANCE);
+				if (pe != null) {
+					evt.player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, pe.getDuration(), pe.getAmplifier()));
+					evt.player.removePotionEffect(MobEffects.FIRE_RESISTANCE);
 				}
 			}
 		}
