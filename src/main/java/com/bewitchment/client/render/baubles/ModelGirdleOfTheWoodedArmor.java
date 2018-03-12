@@ -8,11 +8,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)
-public class ModelBarkBeltArmor extends ModelBarkBelt {
+public class ModelGirdleOfTheWoodedArmor extends ModelGirdleOfTheWooded {
 
 	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/bark_belt.png");
 
-	public ModelBarkBeltArmor() {
+	public ModelGirdleOfTheWoodedArmor() {
 		this.textureWidth = 32;
 		this.textureHeight = 32;
 		this.barkBack3c = new ModelRenderer(this, 1, 13);

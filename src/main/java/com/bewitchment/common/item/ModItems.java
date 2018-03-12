@@ -155,7 +155,7 @@ public final class ModItems {
 	public static final Item talisman_ruby_orb = PLACE_HOLDER;
 	public static final Item horseshoe = PLACE_HOLDER;
 	public static final Item remedy_talisman = PLACE_HOLDER;
-	public static final Item bark_belt = PLACE_HOLDER;
+	public static final Item girdle_of_the_wooded = PLACE_HOLDER;
 
 	public static final Item tarots = PLACE_HOLDER;
 	public static final Item broom = PLACE_HOLDER;
@@ -241,7 +241,7 @@ public final class ModItems {
 				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
 				new ItemTalisman(BaubleType.BELT, 30, LibItemName.TALISMAN_RUBY_ORB),
-				new ItemTalisman(BaubleType.CHARM, 18, LibItemName.TALISMAN_WATCHING_EYE), new ItemBarkBelt(LibItemName.BARK_BELT)
+				new ItemTalisman(BaubleType.CHARM, 18, LibItemName.TALISMAN_WATCHING_EYE), new ItemGirdleOfTheWooded(LibItemName.GIRDLE_OF_THE_WOODED)
 		);
 
 		//Equipment

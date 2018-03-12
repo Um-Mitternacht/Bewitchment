@@ -122,7 +122,7 @@ public final class LibItemName {
 	public static final String RITUAL_CHALK = "ritual_chalk";
 	public static final String REMEDY_TALISMAN = "remedy_talisman";
 	public static final String TAROTS = "tarots";
-	public static final String BARK_BELT = "bark_belt";
+	public static final String GIRDLE_OF_THE_WOODED = "girdle_of_the_wooded";
 	public static final String BROOM = "broom";
 
 

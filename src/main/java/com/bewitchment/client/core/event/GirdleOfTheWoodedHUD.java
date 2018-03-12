@@ -1,6 +1,6 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.common.item.baubles.ItemBarkBelt;
+import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -16,9 +16,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class BarkBeltHUD {
+public class GirdleOfTheWoodedHUD {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/bark_belt_hud.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/girdle_of_the_wooded_hud.png");
 	private static final ResourceLocation ICONS = new ResourceLocation("textures/gui/icons.png");
 
 	private static void renderTexture(double x, double y, double width, double height, double vMin, double vMax) {
@@ -40,7 +40,7 @@ public class BarkBeltHUD {
 			GL11.glPushMatrix();
 			GlStateManager.enableAlpha();
 			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			for (int i = 0; i < ItemBarkBelt.getBarkPiecesForRendering(Minecraft.getMinecraft().player); i++)
+			for (int i = 0; i < ItemGirdleOfTheWooded.getBarkPiecesForRendering(Minecraft.getMinecraft().player); i++)
 				renderTexture(evt.getResolution().getScaledWidth() / 2 - 91 + (8 * i), evt.getResolution().getScaledHeight() - 49, 9, 9, 0, 1);
 			Minecraft.getMinecraft().renderEngine.bindTexture(ICONS);
 			GL11.glPopMatrix();

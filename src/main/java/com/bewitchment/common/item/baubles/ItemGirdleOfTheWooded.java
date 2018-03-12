@@ -5,8 +5,8 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-import com.bewitchment.client.render.baubles.ModelBarkBelt;
-import com.bewitchment.client.render.baubles.ModelBarkBeltArmor;
+import com.bewitchment.client.render.baubles.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.baubles.ModelGirdleOfTheWoodedArmor;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.client.resources.I18n;
@@ -35,17 +35,17 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
+public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 
 	private static final int BARK_PIECES = 5;// 0 means max charge, 5 means break
 	private static final BaubleType BAUBTYPE = BaubleType.BELT;
 
 	@SideOnly(Side.CLIENT)
-	private static ModelBarkBelt model;
+	private static ModelGirdleOfTheWooded model;
 	@SideOnly(Side.CLIENT)
-	private static ModelBarkBelt model_with_armor;
+	private static ModelGirdleOfTheWooded model_with_armor;
 
-	public ItemBarkBelt(String id) {
+	public ItemGirdleOfTheWooded(String id) {
 		super(id);
 		this.setMaxDamage(BARK_PIECES + 1);
 		this.setMaxStackSize(1);
@@ -63,7 +63,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	 */
 	public static int getBarkPieces(EntityPlayer player) {
 		ItemStack belt = getBarkBelt(player);
-		if (belt.getItem() == ModItems.bark_belt) {
+		if (belt.getItem() == ModItems.girdle_of_the_wooded) {
 			return BARK_PIECES - belt.getItemDamage();
 		}
 		return 0;
@@ -77,7 +77,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	 */
 	public static ItemStack getBarkBelt(EntityPlayer player) {
 		ItemStack bb = BaublesApi.getBaublesHandler(player).getStackInSlot(BAUBTYPE.getValidSlots()[0]);
-		if (bb.getItem() == ModItems.bark_belt)
+		if (bb.getItem() == ModItems.girdle_of_the_wooded)
 			return bb;
 		return ItemStack.EMPTY;
 	}
@@ -150,7 +150,7 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	@SideOnly(Side.CLIENT)
 	public static int getBarkPiecesForRendering(EntityPlayer player) {
 		ItemStack belt = getBarkBelt(player);
-		if (belt.getItem() == ModItems.bark_belt) {
+		if (belt.getItem() == ModItems.girdle_of_the_wooded) {
 			int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), BARK_PIECES);
 			int actual = Math.min(possible, BARK_PIECES - belt.getItemDamage());
 			return actual;
@@ -272,8 +272,8 @@ public class ItemBarkBelt extends ItemMod implements IBauble, IRenderBauble {
 	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
 		if (type == RenderType.BODY) {
 			if (model == null) {
-				model = new ModelBarkBelt();
-				model_with_armor = new ModelBarkBeltArmor();
+				model = new ModelGirdleOfTheWooded();
+				model_with_armor = new ModelGirdleOfTheWoodedArmor();
 			}
 			GL11.glPushMatrix();
 			IRenderBauble.Helper.rotateIfSneaking(player);

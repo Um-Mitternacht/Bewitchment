@@ -1,6 +1,6 @@
 package com.bewitchment.client.render.baubles;
 
-import com.bewitchment.common.item.baubles.ItemBarkBelt;
+import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)
-public class ModelBarkBelt extends ModelBase {
+public class ModelGirdleOfTheWooded extends ModelBase {
 
 	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/bark_belt.png");
 
@@ -48,7 +48,7 @@ public class ModelBarkBelt extends ModelBase {
 	public ModelRenderer barkBack1b;
 	public ModelRenderer barkBack1c;
 
-	public ModelBarkBelt() {
+	public ModelGirdleOfTheWooded() {
 		this.textureWidth = 32;
 		this.textureHeight = 32;
 		this.barkFront2c = new ModelRenderer(this, 25, 14);
@@ -198,7 +198,7 @@ public class ModelBarkBelt extends ModelBase {
 			return;
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 
-		int barkPieces = ItemBarkBelt.getBarkPiecesForRendering((EntityPlayer) entity);
+		int barkPieces = ItemGirdleOfTheWooded.getBarkPiecesForRendering((EntityPlayer) entity);
 
 		// FIXME belt is still rendering weirdly
 		this.belt1.render(f5);
