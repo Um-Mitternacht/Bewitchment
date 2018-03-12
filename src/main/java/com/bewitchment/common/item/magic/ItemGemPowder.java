@@ -1,9 +1,6 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.block.properties.PropertyEnum;
@@ -16,9 +13,6 @@ import javax.annotation.Nonnull;
 
 import static com.bewitchment.common.core.ModCreativeTabs.ITEMS_CREATIVE_TAB;
 
-/**
- * Created by Joseph on 3/12/2018.
- */
 /**
  * Created by Joseph on 11/26/2017.
  */
