@@ -3,12 +3,11 @@ package com.bewitchment.client.gui.container;
 import com.bewitchment.client.gui.container.slots.FilteredSlot;
 import com.bewitchment.client.gui.container.slots.OutputSlot;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.tile.TileOven;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -25,7 +24,7 @@ public class ContainerOven extends Container {
 		//fuel slot
 		this.addSlotToContainer(new FilteredSlot(oven.inventory, 1, 19, 53, net.minecraft.tileentity.TileEntityFurnace::isItemFuel));
 		//jar slot
-		this.addSlotToContainer(new FilteredSlot(oven.inventory, 2, 69, 53, s -> s.getItem() == ModItems.fume && s.getMetadata() == 1));
+		this.addSlotToContainer(new FilteredSlot(oven.inventory, 2, 69, 53, s -> s.getItem() == ModItems.fume && s.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
 		//fume slot
 		this.addSlotToContainer(new OutputSlot(oven.inventory, 3, 128, 53));
 		//output slot

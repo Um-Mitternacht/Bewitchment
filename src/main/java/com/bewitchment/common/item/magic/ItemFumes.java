@@ -1,6 +1,7 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.common.item.ItemMod;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -11,30 +12,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFumes extends ItemMod {
-	public static final String[] names = new String[]{
-			"unfired_jar", // 0
-			"empty_jar", // 1
+	
+	public static enum Type {
+		unfired_jar, empty_jar, // Empty
 
-			"oak_spirit", // 2
-			"birch_soul", // 3
-			"acacia_essence", // 4
-			"spruce_heart", // 5
+		oak_spirit, birch_soul, acacia_essence, spruce_heart, // common trees
 
-			"cloudy_oil", // 6 ~ equivalent of foul fume - byproduct
+		cloudy_oil, // equivalent of foul fume - byproduct
 
-			"cleansing_aura", // 7 ~ connected with cleaning, purifying
-			"emanation_of_dishonesty", // 8 ~ connected with evil
-			"everchanging_presence", // 9 ~ connected with changing
-			"undying_image", // 10 ~ connected with rebirth
+		cleansing_aura, // connected with cleaning, purifying
+		emanation_of_dishonesty, // connected with evil
+		everchanging_presence, // connected with changing
+		undying_image, // connected with rebirth
 
-			"demonic_dew", // 11 ~ connected with nether/infernal stuff
-			"otherworld_tears", // 12 ~ connected with end/ethereal stuff
+		demonic_dew, // connected with nether/infernal stuff
+		otherworld_tears, // connected with end/ethereal stuff
 
-			"fiery_breeze", // 13 ~ connected with fire
-			"heavenly_winds", // 14 ~ connected with air
-			"petrichor_odour", // 15 ~ connected with earth
-			"zephyr_of_the_depths" // 16 ~ connected with water
-	};
+		fiery_breeze, // connected with fire
+		heavenly_winds, // connected with air
+		petrichor_odour, // connected with earth
+		zephyr_of_the_depths // connected with water
+	}
 
 	public ItemFumes(String id) {
 		super(id);
@@ -43,25 +41,26 @@ public class ItemFumes extends ItemMod {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata() >= names.length) return super.getUnlocalizedName(stack);
-		return super.getUnlocalizedName(stack) + "." + names[stack.getMetadata()];
+		if (stack.getMetadata() >= Type.values().length)
+			return super.getUnlocalizedName(stack);
+		return super.getUnlocalizedName(stack) + "." + Type.values()[stack.getMetadata()].name();
 	}
 
 	@Override
 	public void getSubItems(CreativeTabs itemIn, NonNullList<ItemStack> tab) {
 		if (this.isInCreativeTab(itemIn)) {
-			for (int i = 0; i < names.length; i++)
-				tab.add(new ItemStack(this, 1, i));
+			for (Type t : Type.values())
+				tab.add(new ItemStack(this, 1, t.ordinal()));
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
-		for (int i = 0; i < names.length; i++) {
-			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getResourceDomain(), "fumes/" + this.getRegistryName().getResourcePath() + "_" + names[i]);
+		for (Type t : Type.values()) {
+			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getResourceDomain(), "fumes/" + this.getRegistryName().getResourcePath() + "_" + t.name());
 			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
-			ModelLoader.setCustomModelResourceLocation(this, i, mrl);
+			ModelLoader.setCustomModelResourceLocation(this, t.ordinal(), mrl);
 		}
 	}
 

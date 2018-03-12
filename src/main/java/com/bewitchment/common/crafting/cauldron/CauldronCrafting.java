@@ -12,7 +12,9 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.brew.ModBrews;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -149,11 +151,11 @@ public final class CauldronCrafting {
 		registerItemRitual("albedo", getStack(ModItems.albedo, 4, 0), 4
 				, getStack(Blocks.STONE, 4), ModItems.white_sage);
 
-		registerItemRitual("torchwood", getStack(ModBlocks.torchwood, 2), 6, getStack(ModItems.fume, 1, 9), Blocks.TORCH, Items.GLOWSTONE_DUST, Blocks.SAPLING);
+		registerItemRitual("torchwood", getStack(ModBlocks.torchwood, 2), 6, getStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal()), Blocks.TORCH, Items.GLOWSTONE_DUST, Blocks.SAPLING);
 
-		registerItemRitual("ember_grass", getStack(ModBlocks.ember_grass, 2), 6, getStack(ModItems.fume, 1, 9), Items.FIRE_CHARGE, Items.BLAZE_POWDER, Blocks.GRASS);
+		registerItemRitual("ember_grass", getStack(ModBlocks.ember_grass, 2), 6, getStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal()), Items.FIRE_CHARGE, Items.BLAZE_POWDER, Blocks.GRASS);
 
-		registerItemRitual("raging_grass", getStack(ModBlocks.raging_grass, 2), 6, getStack(ModItems.fume, 1, 11), Items.NETHER_WART, ModItems.carnivorous_tooth, ModItems.heart, Blocks.GRASS);
+		registerItemRitual("raging_grass", getStack(ModBlocks.raging_grass, 2), 6, getStack(ModItems.fume, 1, ItemFumes.Type.demonic_dew.ordinal()), Items.NETHER_WART, ModItems.carnivorous_tooth, ModItems.heart, Blocks.GRASS);
 
 		//------------------------------------Brew Recipes------------------------------------//
 		registerBrewRecipe(BrewRegistry.Brew.LINGER, new BrewEffect(ModBrews.MARS_WATER, 500, 0)
@@ -416,7 +418,7 @@ public final class CauldronCrafting {
 		registerEffect(getStack(ModItems.wax)
 				, BrewRegistry.getDefault(ModBrews.DISROBING), false);
 
-		registerEffect(getStack(ModItems.fume, 1, 9)
+		registerEffect(getStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())
 				, BrewRegistry.getDefault(ModBrews.ARROW_DEFLECTION), false);
 
 		registerEffect(getStack(ModItems.oak_apple_gall)

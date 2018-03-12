@@ -1,13 +1,15 @@
 package com.bewitchment.common.crafting.oven;
 
+import java.util.Map;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemFumes;
 import com.google.common.collect.Maps;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-
-import java.util.Map;
 
 /**
  * Created by Joseph on 11/6/2017.
@@ -22,15 +24,15 @@ public class OvenCrafting {
 
 	public OvenCrafting() {
 		final ItemStack ash = new ItemStack(ModItems.wood_ash);
-		final ItemStack cloudy_oil = new ItemStack(ModItems.fume, 1, 6);
+		final ItemStack cloudy_oil = new ItemStack(ModItems.fume, 1, ItemFumes.Type.cloudy_oil.ordinal());
 
 		//Todo: Fumes for the special saplings? Maybe add toast?
-		addSmeltingRecipe(new ItemStack(Blocks.SAPLING), ash, new ItemStack(ModItems.fume, 1, 2));
-		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 1), ash, new ItemStack(ModItems.fume, 1, 5));
-		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 2), ash, new ItemStack(ModItems.fume, 1, 3));
+		addSmeltingRecipe(new ItemStack(Blocks.SAPLING), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.oak_spirit.ordinal()));
+		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 1), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.spruce_heart.ordinal()));
+		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 2), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.birch_soul.ordinal()));
 		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 3), ash, cloudy_oil);
-		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 4), ash, new ItemStack(ModItems.fume, 1, 4));
-		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 5), ash, new ItemStack(ModItems.fume, 1, 2));
+		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 4), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.acacia_essence.ordinal()));
+		addSmeltingRecipe(new ItemStack(Blocks.SAPLING, 1, 5), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.oak_spirit.ordinal()));
 		addSmeltingRecipe(new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModItems.ectoplasm, 3));
 		addSmeltingRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(Items.IRON_INGOT), new ItemStack(Items.IRON_NUGGET, 4));
 		addSmeltingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 2));
@@ -53,7 +55,7 @@ public class OvenCrafting {
 		addSmeltingRecipe(new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), cloudy_oil);
 		addSmeltingRecipe(new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModItems.dimensional_sand, 2));
 		addSmeltingRecipe(new ItemStack(ModItems.mandrake_root), ash, cloudy_oil);
-		addSmeltingRecipe(new ItemStack(ModItems.fume, 1, 0), new ItemStack(ModItems.fume, 1, 1), ash);
+		addSmeltingRecipe(new ItemStack(ModItems.fume, 1, ItemFumes.Type.unfired_jar.ordinal()), new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()), ash);
 	}
 
 	public static OvenCrafting instance() {
