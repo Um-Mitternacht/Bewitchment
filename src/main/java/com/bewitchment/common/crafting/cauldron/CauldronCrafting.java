@@ -448,7 +448,9 @@ public final class CauldronCrafting {
 				, new BrewSimpleModifier(0, 3), true);
 
 		//Amplitude Decreasers
-		//Todo: Create gemstone powders, and add tourmaline powder as a tier 1 amplitude decreaser.
+		registerModifier(getStack(ModItems.gem_powder, 1, 4)
+				, new BrewSimpleModifier(0, -1), true);
+
 		registerModifier(getStack(ModItems.gem, 1, 4)
 				, new BrewSimpleModifier(0, -2), true);
 
