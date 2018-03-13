@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.api.capability.transformations.TransformationHelper;
@@ -14,7 +12,6 @@ import com.bewitchment.common.core.capability.transformation.CapabilityTransform
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -40,6 +37,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
+
+import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -100,7 +99,7 @@ public class VampireAbilityHandler {
 				mult += 1; // Attempts to prevent damage are bad
 			}
 		}
-		
+
 		return mult;
 	}
 
@@ -123,13 +122,13 @@ public class VampireAbilityHandler {
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 2, false, false));
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 2, false, false));
 				}
-				
+
 				// Hunger drains blood
 				PotionEffect effect = evt.player.getActivePotionEffect(MobEffects.HUNGER);
 				if (effect != null) {
 					TransformationHelper.addVampireBlood(evt.player, -effect.getAmplifier() * 5);
 				}
-				
+
 				// Fire resistance becomes hunger
 				PotionEffect pe = evt.player.getActivePotionEffect(MobEffects.FIRE_RESISTANCE);
 				if (pe != null) {

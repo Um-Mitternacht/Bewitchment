@@ -1,12 +1,9 @@
 package com.bewitchment.common.tile;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.crafting.oven.OvenCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -19,6 +16,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 7/17/2017.

@@ -1,7 +1,6 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -12,27 +11,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFumes extends ItemMod {
-	
-	public static enum Type {
-		unfired_jar, empty_jar, // Empty
-
-		oak_spirit, birch_soul, acacia_essence, spruce_heart, // common trees
-
-		cloudy_oil, // equivalent of foul fume - byproduct
-
-		cleansing_aura, // connected with cleaning, purifying
-		emanation_of_dishonesty, // connected with evil
-		everchanging_presence, // connected with changing
-		undying_image, // connected with rebirth
-
-		demonic_dew, // connected with nether/infernal stuff
-		otherworld_tears, // connected with end/ethereal stuff
-
-		fiery_breeze, // connected with fire
-		heavenly_winds, // connected with air
-		petrichor_odour, // connected with earth
-		zephyr_of_the_depths // connected with water
-	}
 
 	public ItemFumes(String id) {
 		super(id);
@@ -62,6 +40,27 @@ public class ItemFumes extends ItemMod {
 			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 			ModelLoader.setCustomModelResourceLocation(this, t.ordinal(), mrl);
 		}
+	}
+
+	public static enum Type {
+		unfired_jar, empty_jar, // Empty
+
+		oak_spirit, birch_soul, acacia_essence, spruce_heart, // common trees
+
+		cloudy_oil, // equivalent of foul fume - byproduct
+
+		cleansing_aura, // connected with cleaning, purifying
+		emanation_of_dishonesty, // connected with evil
+		everchanging_presence, // connected with changing
+		undying_image, // connected with rebirth
+
+		demonic_dew, // connected with nether/infernal stuff
+		otherworld_tears, // connected with end/ethereal stuff
+
+		fiery_breeze, // connected with fire
+		heavenly_winds, // connected with air
+		petrichor_odour, // connected with earth
+		zephyr_of_the_depths // connected with water
 	}
 
 }

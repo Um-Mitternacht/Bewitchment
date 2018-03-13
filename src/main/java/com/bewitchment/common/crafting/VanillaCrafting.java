@@ -1,19 +1,18 @@
 package com.bewitchment.common.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.item.magic.ItemFumes;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
