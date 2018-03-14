@@ -1,6 +1,6 @@
 package com.bewitchment.common.block.natural.fluid;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

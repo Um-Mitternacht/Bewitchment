@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.natural;
 
-import com.bewitchment.api.sound.WitchSoundEvents;
 import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.client.sound.ModSounds;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
@@ -88,7 +88,7 @@ public class BlockBeehive extends BlockMod {
 			Bewitchment.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
 		}
 		if (rand.nextInt(25) == 0) {
-			worldIn.playSound(null, pos, WitchSoundEvents.BUZZ, SoundCategory.BLOCKS, 0.2F, 1F);
+			worldIn.playSound(null, pos, ModSounds.BUZZ, SoundCategory.BLOCKS, 0.2F, 1F);
 		}
 	}
 

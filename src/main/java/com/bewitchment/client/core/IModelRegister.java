@@ -1,4 +1,4 @@
-package com.bewitchment.api.helper;
+package com.bewitchment.client.core;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

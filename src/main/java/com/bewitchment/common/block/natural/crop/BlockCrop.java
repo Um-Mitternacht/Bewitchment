@@ -1,6 +1,6 @@
 package com.bewitchment.common.block.natural.crop;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.core.ICrop;
 
 import net.minecraft.block.BlockCrops;

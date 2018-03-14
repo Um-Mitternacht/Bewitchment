@@ -1,8 +1,8 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.cauldron.brew.IBrew;
-import com.bewitchment.api.helper.NBTHelper;
-import com.bewitchment.api.helper.RomanNumber;
+import com.bewitchment.common.core.helper.NBTHelper;
+import com.bewitchment.common.core.helper.RomanNumber;
 import com.bewitchment.common.internalApi.BrewRegistry;
 import com.google.common.collect.Lists;
 import net.minecraft.client.resources.I18n;

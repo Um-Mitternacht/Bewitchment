@@ -1,4 +1,4 @@
-package com.bewitchment.api.sound;
+package com.bewitchment.client.sound;
 
 import com.bewitchment.common.lib.LibMod;
 
@@ -10,7 +10,7 @@ import net.minecraft.util.SoundEvent;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public final class WitchSoundEvents {
+public final class ModSounds {
 
 	public static final SoundEvent BOIL = getRegisteredSound("boil");
 	public static final SoundEvent BUZZ = getRegisteredSound("buzz");
@@ -18,7 +18,7 @@ public final class WitchSoundEvents {
 	public static final SoundEvent BUBBLE = getRegisteredSound("bubble");
 	public static final SoundEvent OVEN_OPEN = getRegisteredSound("oven_open");
 
-	private WitchSoundEvents() {
+	private ModSounds() {
 	}
 
 	private static SoundEvent getRegisteredSound(String name) {

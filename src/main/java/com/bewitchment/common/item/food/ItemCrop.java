@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.api.helper.NBTHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +12,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+
+import com.bewitchment.common.core.helper.NBTHelper;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

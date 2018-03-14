@@ -6,11 +6,15 @@
 
 package com.bewitchment.common.item.magic;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.capability.IItemEnergyUser;
-import com.bewitchment.api.spell.Spell;
-import com.bewitchment.api.spell.Spell.EnumSpellType;
+import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -28,8 +32,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-import javax.annotation.Nullable;
-
 public class ItemSpellPage extends ItemMod {
 
 	IItemEnergyUser defImpl = IItemEnergyUser.ENERGY_USER_CAPABILITY.getDefaultInstance();
@@ -43,7 +45,7 @@ public class ItemSpellPage extends ItemMod {
 
 			@Override
 			public ItemStack dispense(IBlockSource source, ItemStack stack) {
-				Spell s = ItemSpellPage.getSpellFromItemStack(stack);
+				ISpell s = ItemSpellPage.getSpellFromItemStack(stack);
 				if (s != null) {
 					EnumFacing enumfacing = source.getBlockState().getValue(BlockDispenser.FACING);
 					Vec3d lookVect = new Vec3d(enumfacing.getDirectionVec());
@@ -67,7 +69,7 @@ public class ItemSpellPage extends ItemMod {
 	}
 
 	@Nullable
-	public static Spell getSpellFromItemStack(ItemStack stack) {
+	public static ISpell getSpellFromItemStack(ItemStack stack) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("spell")) {
 			return Spell.SPELL_REGISTRY.getValue(new ResourceLocation(stack.getTagCompound().getString("spell")));
 		}
@@ -77,7 +79,7 @@ public class ItemSpellPage extends ItemMod {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (this.isInCreativeTab(tab)) {
-			for (Spell s : Spell.SPELL_REGISTRY) {
+			for (ISpell s : Spell.SPELL_REGISTRY) {
 				items.add(getStackFor(s));
 			}
 		}
@@ -90,7 +92,7 @@ public class ItemSpellPage extends ItemMod {
 		return super.getUnlocalizedName(stack);
 	}
 
-	public ItemStack getStackFor(Spell s) {
+	public ItemStack getStackFor(ISpell s) {
 		ItemStack stack = new ItemStack(this);
 		stack.setTagCompound(new NBTTagCompound());
 		stack.getTagCompound().setString("spell", s.getRegistryName().toString());
@@ -99,7 +101,7 @@ public class ItemSpellPage extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		Spell s = getSpellFromItemStack(playerIn.getHeldItem(handIn));
+		ISpell s = getSpellFromItemStack(playerIn.getHeldItem(handIn));
 		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
@@ -109,7 +111,7 @@ public class ItemSpellPage extends ItemMod {
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		Spell spell = getSpellFromItemStack(stack);
+		ISpell spell = getSpellFromItemStack(stack);
 		if (spell != null && !worldIn.isRemote) {
 			// if (entityLiving instanceof EntityPlayer) {
 			// int spellCost = spell.getCost() * 80;

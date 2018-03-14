@@ -5,6 +5,7 @@ import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
+import com.bewitchment.api.spell.ISpell;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -60,4 +61,6 @@ public abstract class BewitchmentAPI {
 	public abstract void registerFortune(IFortune fortune);
 	
 	public abstract void registerIncantation(String name, IIncantation incantation);
+	
+	public abstract void registerSpell(ISpell spell);
 }

@@ -1,10 +1,11 @@
 package com.bewitchment.common.entity;
 
 import com.bewitchment.api.cauldron.brew.special.IBrewEntityImpact;
-import com.bewitchment.api.helper.NBTHelper;
 import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
+import com.bewitchment.common.core.helper.NBTHelper;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;

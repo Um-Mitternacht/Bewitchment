@@ -6,7 +6,6 @@
 
 package com.bewitchment.common.spell;
 
-import com.bewitchment.api.spell.Spell;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;

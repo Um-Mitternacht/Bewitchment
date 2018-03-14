@@ -6,12 +6,14 @@ import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
+import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
+import com.bewitchment.common.spell.Spell;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -82,6 +84,11 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void registerIncantation(String name, IIncantation incantation) {
 		ModIncantations.registerIncantation(name, incantation);
+	}
+	
+	@Override
+	public void registerSpell(ISpell spell) {
+		Spell.SPELL_REGISTRY.register(spell);
 	}
 	
 }

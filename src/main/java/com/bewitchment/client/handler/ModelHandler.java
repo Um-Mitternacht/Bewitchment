@@ -1,6 +1,7 @@
 package com.bewitchment.client.handler;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;

@@ -6,7 +6,7 @@
 
 package com.bewitchment.common.block.natural.tree;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;

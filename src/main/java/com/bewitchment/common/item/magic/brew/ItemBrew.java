@@ -1,8 +1,8 @@
 package com.bewitchment.common.item.magic.brew;
 
-import com.bewitchment.api.helper.NBTHelper;
 import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;

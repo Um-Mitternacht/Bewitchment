@@ -6,8 +6,7 @@
 
 package com.bewitchment.common.spell;
 
-import com.bewitchment.api.spell.Spell;
-import com.bewitchment.api.spell.Spell.EnumSpellType;
+import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.lib.LibMod;
 
 public class ModSpells {

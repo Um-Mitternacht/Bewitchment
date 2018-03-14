@@ -1,7 +1,8 @@
 package com.bewitchment.common.block.decorations;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
+
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

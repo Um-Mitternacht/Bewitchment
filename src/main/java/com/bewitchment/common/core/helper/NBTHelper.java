@@ -1,4 +1,4 @@
-package com.bewitchment.api.helper;
+package com.bewitchment.common.core.helper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;

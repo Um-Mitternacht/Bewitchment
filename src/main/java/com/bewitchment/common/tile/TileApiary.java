@@ -1,8 +1,8 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.helper.ItemNullHelper;
-import com.bewitchment.api.sound.WitchSoundEvents;
 import com.bewitchment.client.gui.container.ContainerApiary;
+import com.bewitchment.client.sound.ModSounds;
+import com.bewitchment.common.core.helper.ItemNullHelper;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -166,7 +166,7 @@ public class TileApiary extends TileEntityLockable implements ITickable, ISidedI
 			if (!bee.isEmpty() && bee.getItemDamage() < 35) {
 				lookForFlowers();
 				if (tick % 60 == 0 && world.rand.nextBoolean()) {
-					world.playSound(null, pos, WitchSoundEvents.BUZZ, SoundCategory.BLOCKS, 0.1F, 1F);
+					world.playSound(null, pos, ModSounds.BUZZ, SoundCategory.BLOCKS, 0.1F, 1F);
 				}
 				if (flowerCount > 0) {
 					if (world.rand.nextInt(3) == 0 && tick % (GEN - flowerCount * 3) == 0) {

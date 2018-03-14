@@ -8,9 +8,9 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import com.bewitchment.api.helper.NBTHelper;
-import com.bewitchment.api.helper.RayTraceHelper;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.core.helper.NBTHelper;
+import com.bewitchment.common.core.helper.RayTraceHelper;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 

@@ -6,9 +6,16 @@
 
 package com.bewitchment.common.entity;
 
-import com.bewitchment.api.spell.Spell;
-import com.bewitchment.api.spell.Spell.EnumSpellType;
+import java.util.ArrayList;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -20,10 +27,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.UUID;
 
 public class EntitySpellCarrier extends EntityThrowable {
 
@@ -47,7 +50,7 @@ public class EntitySpellCarrier extends EntityThrowable {
 		this.getDataManager().register(CASTER, "");
 	}
 
-	public void setSpell(Spell spell) {
+	public void setSpell(ISpell spell) {
 		setSpell(spell.getRegistryName().toString());
 	}
 
@@ -85,7 +88,7 @@ public class EntitySpellCarrier extends EntityThrowable {
 	}
 
 	@Nullable
-	public Spell getSpell() {
+	public ISpell getSpell() {
 		return Spell.SPELL_REGISTRY.getValue(new ResourceLocation(getSpellName()));
 	}
 
@@ -116,7 +119,7 @@ public class EntitySpellCarrier extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if (!world.isRemote) {
-			Spell spell = getSpell();
+			ISpell spell = getSpell();
 			EntityLivingBase caster = getCaster();
 			if (spell != null) {
 				if (result.typeOfHit != Type.ENTITY || result.entityHit != caster)
@@ -131,7 +134,6 @@ public class EntitySpellCarrier extends EntityThrowable {
 
 	@Override
 	public void setDead() {
-//		for (int i=0; i<40;i++) Covens.proxy.spawnParticleExplosionSpell(posX, posY, posZ, rand);//FIXME find how this code handles vanilla particle spawning
 		super.setDead();
 	}
 

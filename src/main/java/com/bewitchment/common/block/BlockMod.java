@@ -8,7 +8,7 @@
  */
 package com.bewitchment.common.block;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;

@@ -1,9 +1,10 @@
 package com.bewitchment.common.item.block;
 
-import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.core.ModCreativeTabs;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
-import com.bewitchment.api.spell.Spell;
+import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
@@ -131,7 +131,7 @@ public class ClientProxy implements ISidedProxy {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if (tintIndex == 0) {
-					Spell s = ItemSpellPage.getSpellFromItemStack(stack);
+					ISpell s = ItemSpellPage.getSpellFromItemStack(stack);
 					if (s != null) return s.getColor();
 				}
 				return -1;

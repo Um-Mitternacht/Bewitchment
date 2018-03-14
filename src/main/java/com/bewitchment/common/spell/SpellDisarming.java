@@ -6,7 +6,6 @@
 
 package com.bewitchment.common.spell;
 
-import com.bewitchment.api.spell.Spell;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
