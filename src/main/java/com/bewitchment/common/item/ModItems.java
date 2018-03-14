@@ -1,10 +1,11 @@
 package com.bewitchment.common.item;
 
 import baubles.api.BaubleType;
-import com.bewitchment.api.CropRegistry;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.internalApi.CropRegistry;
 import com.bewitchment.common.item.baubles.*;
 import com.bewitchment.common.item.block.ItemBlockBarrel;
 import com.bewitchment.common.item.block.ItemBlockColor;

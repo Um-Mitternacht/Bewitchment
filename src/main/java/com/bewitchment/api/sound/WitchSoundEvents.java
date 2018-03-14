@@ -1,6 +1,7 @@
 package com.bewitchment.api.sound;
 
-import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
@@ -11,16 +12,16 @@ import net.minecraft.util.SoundEvent;
  */
 public final class WitchSoundEvents {
 
-	public static final SoundEvent BOIL = getRegisteredSound(BewitchmentAPI.BOIL);
-	public static final SoundEvent BUZZ = getRegisteredSound(BewitchmentAPI.BUZZ);
-	public static final SoundEvent CHALK_SCRIBBLE = getRegisteredSound(BewitchmentAPI.CHALK_SCRIBBLE);
-	public static final SoundEvent BUBBLE = getRegisteredSound(BewitchmentAPI.BUBBLE);
-	public static final SoundEvent OVEN_OPEN = getRegisteredSound(BewitchmentAPI.OVEN_OPEN);
+	public static final SoundEvent BOIL = getRegisteredSound("boil");
+	public static final SoundEvent BUZZ = getRegisteredSound("buzz");
+	public static final SoundEvent CHALK_SCRIBBLE = getRegisteredSound("chalk_scribble");
+	public static final SoundEvent BUBBLE = getRegisteredSound("bubble");
+	public static final SoundEvent OVEN_OPEN = getRegisteredSound("oven_open");
 
 	private WitchSoundEvents() {
 	}
 
-	private static SoundEvent getRegisteredSound(ResourceLocation name) {
-		return SoundEvent.REGISTRY.getObject(name);
+	private static SoundEvent getRegisteredSound(String name) {
+		return SoundEvent.REGISTRY.getObject(new ResourceLocation(LibMod.MOD_ID, name));
 	}
 }

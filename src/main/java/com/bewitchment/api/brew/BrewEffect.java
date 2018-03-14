@@ -23,8 +23,8 @@ public class BrewEffect {
 
 	public void start(World world, BlockPos pos, EntityLivingBase entity) {
 		brew.onStart(world, pos, entity, amplifier);
-		if (brew instanceof BrewAtributeModifier)
-			((BrewAtributeModifier) brew).applyAttributeModifiers(entity.getAttributeMap(), amplifier);
+		if (brew instanceof BrewAttributeModifier)
+			((BrewAttributeModifier) brew).applyAttributeModifiers(entity.getAttributeMap(), amplifier);
 	}
 
 	public void update(World world, BlockPos pos, EntityLivingBase entity) {
@@ -33,8 +33,8 @@ public class BrewEffect {
 
 	public void end(World world, BlockPos pos, EntityLivingBase entity) {
 		brew.onFinish(world, pos, entity, amplifier);
-		if (brew instanceof BrewAtributeModifier)
-			((BrewAtributeModifier) brew).removeAttributeModifiers(entity.getAttributeMap(), amplifier);
+		if (brew instanceof BrewAttributeModifier)
+			((BrewAttributeModifier) brew).removeAttributeModifiers(entity.getAttributeMap(), amplifier);
 	}
 
 	public IBrew getBrew() {

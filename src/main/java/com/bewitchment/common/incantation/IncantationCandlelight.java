@@ -1,7 +1,9 @@
 package com.bewitchment.common.incantation;
 
 import com.bewitchment.api.incantation.IIncantation;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -9,8 +11,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 4/20/2017.
@@ -27,11 +27,11 @@ public class IncantationCandlelight implements IIncantation {
 			IBlockState state = world.getBlockState(pos);
 			boolean flag = false;
 			if (state.getBlock() == ModBlocks.candle_medium) {
-				world.setBlockState(pos, ModBlocks.candle_medium_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+				world.setBlockState(pos, ModBlocks.candle_medium_lit.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 				flag = true;
 			}
 			if (state.getBlock() == ModBlocks.candle_small) {
-				world.setBlockState(pos, ModBlocks.candle_small_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+				world.setBlockState(pos, ModBlocks.candle_small_lit.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 				flag = true;
 			}
 			if (flag) {

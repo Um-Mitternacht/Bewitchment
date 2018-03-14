@@ -1,12 +1,12 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.BrewRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.common.internalApi.BrewRegistry;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 
-import static com.bewitchment.api.BrewRegistry.Brew.*;
+import static com.bewitchment.common.internalApi.BrewRegistry.Brew.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 /**

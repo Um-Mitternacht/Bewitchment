@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.BrewAtributeModifier;
+import com.bewitchment.api.brew.BrewAttributeModifier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class MarsWaterBrew extends BrewAtributeModifier {
+public class MarsWaterBrew extends BrewAttributeModifier {
 
 	public MarsWaterBrew() {
 		MinecraftForge.EVENT_BUS.register(this);

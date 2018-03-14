@@ -11,7 +11,7 @@ import java.util.List;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BrewSimpleModifier implements BrewModifier {
+public class BrewSimpleModifier implements IBrewModifier {
 
 	private final int duration;
 	private final int amplifier;

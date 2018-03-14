@@ -1,10 +1,9 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.CauldronRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
-import com.bewitchment.api.recipe.BrewModifier;
+import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.CauldronBrewRecipe;
 import com.bewitchment.api.recipe.CauldronItemRecipe;
 import com.bewitchment.api.recipe.ItemValidator;
@@ -12,6 +11,7 @@ import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
+import com.bewitchment.common.internalApi.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.google.common.collect.Lists;
 import net.minecraft.block.material.Material;
@@ -623,7 +623,7 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 	@Nullable
 	public NBTTagCompound getBrewData() {
 		final Map<Item, ItemValidator<Object>> brewEffect = CauldronRegistry.getBrewEffects();
-		final Map<Item, ItemValidator<BrewModifier>> brewModifier = CauldronRegistry.getBrewModifiers();
+		final Map<Item, ItemValidator<IBrewModifier>> brewModifier = CauldronRegistry.getBrewModifiers();
 		List<Object> effects = new ArrayList<>();
 
 		int mix = 0xFFFFFF;
@@ -665,8 +665,8 @@ public class TileCauldron extends TileFluidInventory implements ITickable {
 						failHorribly();
 						return null;
 					}
-					ItemValidator<BrewModifier> val = brewModifier.get(modifier.getItem());
-					Optional<BrewModifier> opt = val.getMatchFor(modifier);
+					ItemValidator<IBrewModifier> val = brewModifier.get(modifier.getItem());
+					Optional<IBrewModifier> opt = val.getMatchFor(modifier);
 					if (opt.isPresent()) {
 						for (int j = 0, size = modifier.getCount(); j < size; j++) {
 							add = opt.get().apply(effects, brew);

@@ -15,11 +15,11 @@ import java.util.UUID;
  * the MIT license.
  */
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
-public abstract class BrewAtributeModifier implements IBrew {
+public abstract class BrewAttributeModifier implements IBrew {
 
 	private final Map<IAttribute, AttributeModifier> modifierMap = Maps.newHashMap();
 
-	public BrewAtributeModifier() {
+	public BrewAttributeModifier() {
 		initAtributes();
 	}
 
@@ -45,7 +45,7 @@ public abstract class BrewAtributeModifier implements IBrew {
 		}
 	}
 
-	protected BrewAtributeModifier register(IAttribute attribute, String uuid, double ammount, int operation) {
+	protected BrewAttributeModifier register(IAttribute attribute, String uuid, double ammount, int operation) {
 		AttributeModifier attributemodifier = new AttributeModifier(UUID.fromString(uuid), getName(), ammount, operation);
 		modifierMap.put(attribute, attributemodifier);
 		return this;

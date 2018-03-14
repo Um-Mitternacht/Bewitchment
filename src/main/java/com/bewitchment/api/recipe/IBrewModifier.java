@@ -7,7 +7,7 @@ import java.util.List;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public interface BrewModifier {
+public interface IBrewModifier {
 
 	boolean apply(List<Object> brews, Object current);
 }

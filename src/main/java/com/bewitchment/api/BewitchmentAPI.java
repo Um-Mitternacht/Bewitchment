@@ -1,82 +1,71 @@
 package com.bewitchment.api;
 
-import net.minecraft.block.BlockStairs;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.item.EnumDyeColor;
+import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.crop.Crop;
+import com.bewitchment.api.crop.ICrop;
+import com.bewitchment.api.recipe.IBrewModifier;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 
-/**
- * This class was created by Arekkuusu on 01/03/2017.
- * It's distributed as part of Bewitchment under
- * the MIT license.
- */
-@SuppressWarnings({"WeakerAccess"})
-public final class BewitchmentAPI {
-
-	//States
-	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
-	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
-
-	//Constants
-	public static final String TAGLOCK_ENTITY = "tag_entity";
-	public static final String TAGLOCK_ENTITY_NAME = "tag_entity_name";
-
-	//Sounds
-	public static final ResourceLocation BOIL = getLocation("boil");
-	public static final ResourceLocation BUZZ = getLocation("buzz");
-	public static final ResourceLocation BUBBLE = getLocation("bubble");
-	public static final ResourceLocation OVEN_OPEN = getLocation("oven_open");
-	public static final ResourceLocation CHALK_SCRIBBLE = getLocation("chalk_scribble");
-
-	public static ResourceLocation SHELL_ARMOR = getLocation("shell_armor");
-	public static ResourceLocation SPIDER_NIGHTMARE = getLocation("spider_nightmare");
-	public static ResourceLocation EXTINGUISH_FIRES = getLocation("extinguish_fires");
-	public static ResourceLocation MARS_WATER = getLocation("mars_water");
-	public static ResourceLocation FROSTBITE = getLocation("frostbite");
-	public static ResourceLocation HOLY_WATER = getLocation("holy_water");
-	public static ResourceLocation VOLATILE = getLocation("volatility");
-	public static ResourceLocation HARVEST = getLocation("harvest");
-	public static ResourceLocation FERTILIZE = getLocation("fertilize");
-	public static ResourceLocation GROW_FLOWERS = getLocation("grow_flowers");
-	public static ResourceLocation TILL_LAND = getLocation("till_land");
-	public static ResourceLocation ENDER_INHIBITION = getLocation("ender_inhibition");
-	public static ResourceLocation PATH_OF_THE_DEEP = getLocation("path_of_the_deep");
-	public static ResourceLocation ROCK_PULVERIZE = getLocation("rock_pulverize");
-	public static ResourceLocation PRUNE_LEAVES = getLocation("prune_leaves");
-	public static ResourceLocation AUTO_PLANT = getLocation("auto_plant");
-	public static ResourceLocation BANE_ARTHROPODS = getLocation("bane_arthropods");
-	public static ResourceLocation SINKING = getLocation("sinking");
-	public static ResourceLocation CURSED_LEAPING = getLocation("cursed_leaping");
-	public static ResourceLocation SKIN_TINT = getLocation("skin_tint");
-	public static ResourceLocation SNOW_TRAIL = getLocation("snow_trail");
-	public static ResourceLocation WOLFSBANE = getLocation("wolfsbane");
-	public static ResourceLocation OUTCASTS_SHAME = getLocation("outcasts_shame");
-	public static ResourceLocation IGNITION = getLocation("ignition");
-	public static ResourceLocation GRACE = getLocation("grace");
-	public static ResourceLocation PURIFY = getLocation("purify");
-	public static ResourceLocation NOTCHED = getLocation("notched");
-	public static ResourceLocation MYCOLOGICAL_CORRUPTION = getLocation("mycological_corruption");
-	public static ResourceLocation GROWTH = getLocation("growth");
-	public static ResourceLocation OZYMANDIAS = getLocation("ozymandias");
-	public static ResourceLocation HELLS_WROTH = getLocation("hells_wroth");
-	public static ResourceLocation SETEHS_WASTES = getLocation("setehs_wastes");
-	public static ResourceLocation HELL_WORLD = getLocation("hell_world");
-	public static ResourceLocation ICE_WORLD = getLocation("ice_world");
-	public static ResourceLocation CORRUPTION = getLocation("corruption");
-	public static ResourceLocation SALT_LAND = getLocation("salt_land");
-	public static ResourceLocation ABSENCE = getLocation("absence");
-	public static ResourceLocation BULLETPROOF = getLocation("bulletproof");
-	public static ResourceLocation MORTAL_COIL = getLocation("mortal_coil");
-	public static ResourceLocation OVERCOAT = getLocation("overcoat");
-	public static ResourceLocation DISROBING = getLocation("disrobing");
-	public static ResourceLocation ROTTING = getLocation("rotting");
-	public static ResourceLocation ARROW_DEFLECTION = getLocation("arrow_deflection");
-	public static ResourceLocation DEMONS_BANE = getLocation("demons_bane");
-
-	private BewitchmentAPI() {
+public abstract class BewitchmentAPI {
+	
+	private static BewitchmentAPI INSTANCE;
+	
+	public static void setupAPI(BewitchmentAPI api) {
+		if (INSTANCE == null) {
+			INSTANCE = api;
+		} else {
+			throw new IllegalStateException("Bewitchment API already initialized");
+		}
 	}
-
-	private static ResourceLocation getLocation(String name) {
-		return new ResourceLocation("bewitchment", name);
+	
+	public static BewitchmentAPI getAPI() {
+		if (INSTANCE != null) {
+			return INSTANCE;
+		}
+		throw new IllegalStateException("Bewitchment API not ready yet");
 	}
+	
+	public abstract void registerBrew(IBrew brew, ResourceLocation name);
+	
+	public abstract void registerBrewRecipe(ItemStack stack, Object... objects);
+	
+	public abstract <T> void registerItemEffect(ItemStack stack, T effect, boolean strict);
+	
+	public abstract void registerItemModifier(ItemStack stack, IBrewModifier modifier, boolean strict);
+	
+	public abstract void registerFoodValue(ItemStack stack, int hunger, float saturation);
+	
+	public abstract void registerItemRitual(ItemStack stack, int cost, Object... objects);
+	
+	public abstract void registerFluidIngredient(Item item, FluidStack fluid);
+	
+	/**
+	 * Register an Item to the Processing factory.
+	 *
+	 * @param fluid  The fluid this Item needs
+	 * @param in     The Item you throw in
+	 * @param out    The Item that comes out
+	 * @param strict If the Item must be identical
+	 */
+	public abstract void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict);
+	
+	/**
+	 * Register a Crop to the crop registry.
+	 * <p>
+	 * The Item Seed needs to be different, for ex the Kelp seed,
+	 * that needs to be placed on water so it uses a different placement recipeDropLogic.
+	 * </p>
+	 *
+	 * @param crop The Crop enum
+	 * @param cropItem The item this Crop will drop when harvested
+	 * @param seedItem The seed that will place the Crop
+	 */
+	public abstract <T extends Block & ICrop> void registerCrop(Crop crop, T placed, Item cropItem, Item seedItem);
+	
 }

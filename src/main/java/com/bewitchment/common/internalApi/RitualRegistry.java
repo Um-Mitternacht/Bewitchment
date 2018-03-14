@@ -1,4 +1,4 @@
-package com.bewitchment.api;
+package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.google.common.collect.BiMap;

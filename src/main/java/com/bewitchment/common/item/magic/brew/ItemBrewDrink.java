@@ -1,10 +1,10 @@
 package com.bewitchment.common.item.magic.brew;
 
-import com.bewitchment.api.BrewRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
+import com.bewitchment.common.internalApi.BrewRegistry;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,9 +23,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
+import static com.bewitchment.common.internalApi.BrewRegistry.Brew.DRINK;
 
-import static com.bewitchment.api.BrewRegistry.Brew.DRINK;
+import javax.annotation.Nonnull;
 
 /**
  * This class was created by BerciTheBeast on 27.3.2017.

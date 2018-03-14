@@ -1,16 +1,16 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import com.bewitchment.api.BrewRegistry;
-import com.bewitchment.api.CauldronRegistry;
-import com.bewitchment.api.RitualRegistry;
 import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.BrewUtils;
 import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
-import com.bewitchment.api.recipe.BrewModifier;
+import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.BrewSimpleModifier;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.brew.ModBrews;
+import com.bewitchment.common.internalApi.BrewRegistry;
+import com.bewitchment.common.internalApi.CauldronRegistry;
+import com.bewitchment.common.internalApi.RitualRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
@@ -611,7 +611,7 @@ public final class CauldronCrafting {
 		CauldronRegistry.registerItemEffect(key, brew, perfectMatch);
 	}
 
-	private static void registerModifier(ItemStack key, BrewModifier modifier, boolean perfectMatch) {
+	private static void registerModifier(ItemStack key, IBrewModifier modifier, boolean perfectMatch) {
 		CauldronRegistry.registerItemModifier(key, modifier, perfectMatch);
 	}
 

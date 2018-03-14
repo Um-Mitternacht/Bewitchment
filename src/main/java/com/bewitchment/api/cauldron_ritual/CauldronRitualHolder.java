@@ -1,6 +1,7 @@
 package com.bewitchment.api.cauldron_ritual;
 
-import com.bewitchment.api.RitualRegistry;
+import com.bewitchment.common.internalApi.RitualRegistry;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

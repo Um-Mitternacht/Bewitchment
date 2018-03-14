@@ -1,12 +1,13 @@
 package com.bewitchment.client.handler;
 
-import com.bewitchment.api.BewitchmentAPI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nullable;
+
+import com.bewitchment.common.Bewitchment;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.
@@ -18,7 +19,7 @@ public class BlockCandleColorHandler implements IBlockColor {
 	@Override
 	public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
 		int color = 0;
-		switch (state.getValue(BewitchmentAPI.COLOR).getMetadata()) {
+		switch (state.getValue(Bewitchment.COLOR).getMetadata()) {
 			case 0:
 				color = 16383998;
 				break;

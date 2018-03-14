@@ -1,4 +1,4 @@
-package com.bewitchment.api;
+package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.crop.Crop;
 import com.bewitchment.api.crop.ICrop;

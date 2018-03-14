@@ -1,9 +1,17 @@
 package com.bewitchment.common.block.tools;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -22,12 +30,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-
-import static com.bewitchment.api.BewitchmentAPI.HALF;
-import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -54,7 +56,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	protected IBlockState defaultState() {
 		return super.defaultState()
 				.withProperty(FACING, EnumFacing.NORTH)
-				.withProperty(HALF, BlockStairs.EnumHalf.BOTTOM);
+				.withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.BOTTOM);
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState iblockstate = getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
+		IBlockState iblockstate = getDefaultState().withProperty(Bewitchment.HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
 		iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(5 - (meta & 3)));
 		return iblockstate;
 	}
@@ -75,7 +77,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 
-		if (state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
+		if (state.getValue(Bewitchment.HALF) == BlockStairs.EnumHalf.TOP) {
 			i |= 4;
 		}
 
@@ -124,7 +126,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, FACING, HALF);
+		return new BlockStateContainer(this, FACING, Bewitchment.HALF);
 	}
 
 	@Override
@@ -132,8 +134,8 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 		IBlockState iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing());
 		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F) ?
-				iblockstate.withProperty(HALF, BlockStairs.EnumHalf.BOTTOM) :
-				iblockstate.withProperty(HALF, BlockStairs.EnumHalf.TOP);
+				iblockstate.withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.BOTTOM) :
+				iblockstate.withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.TOP);
 	}
 
 	@Override

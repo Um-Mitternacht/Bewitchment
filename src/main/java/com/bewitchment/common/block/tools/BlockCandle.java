@@ -1,8 +1,12 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.Random;
+
 import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -16,10 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -27,10 +28,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
-
-import static com.bewitchment.api.BewitchmentAPI.COLOR;
 
 /**
  * This class was created by Arekkuusu on 11/03/2017.
@@ -51,7 +48,7 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	protected IBlockState defaultState() {
-		return super.defaultState().withProperty(COLOR, EnumDyeColor.WHITE);
+		return super.defaultState().withProperty(Bewitchment.COLOR, EnumDyeColor.WHITE);
 	}
 
 	@Override
@@ -67,18 +64,18 @@ public abstract class BlockCandle extends BlockMod {
 	@Override
 	@SuppressWarnings("deprecation")
 	public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return MapColor.getBlockColor(state.getValue(COLOR));
+		return MapColor.getBlockColor(state.getValue(Bewitchment.COLOR));
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
+		return getDefaultState().withProperty(Bewitchment.COLOR, EnumDyeColor.byMetadata(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(COLOR).getMetadata();
+		return state.getValue(Bewitchment.COLOR).getMetadata();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -111,17 +108,17 @@ public abstract class BlockCandle extends BlockMod {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (state.getBlock() == ModBlocks.candle_medium_lit)
-			world.setBlockState(pos, ModBlocks.candle_medium.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+			world.setBlockState(pos, ModBlocks.candle_medium.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 		else if (state.getBlock() == ModBlocks.candle_small_lit)
-			world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+			world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 		else {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (!heldItem.isEmpty() && heldItem.getItem() == Items.FLINT_AND_STEEL) {
 				heldItem.damageItem(1, playerIn);
 				if (state.getBlock() == ModBlocks.candle_medium)
-					world.setBlockState(pos, ModBlocks.candle_medium_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+					world.setBlockState(pos, ModBlocks.candle_medium_lit.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 				else if (state.getBlock() == ModBlocks.candle_small)
-					world.setBlockState(pos, ModBlocks.candle_small_lit.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 3);
+					world.setBlockState(pos, ModBlocks.candle_small_lit.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 			}
 		}
 		return true;
@@ -129,7 +126,7 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	public BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, COLOR);
+		return new BlockStateContainer(this, Bewitchment.COLOR);
 	}
 
 	@Override
@@ -139,7 +136,7 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
+		return getDefaultState().withProperty(Bewitchment.COLOR, EnumDyeColor.byMetadata(meta));
 	}
 
 	@SuppressWarnings("deprecation")

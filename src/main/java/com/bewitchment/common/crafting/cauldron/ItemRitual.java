@@ -1,11 +1,14 @@
 package com.bewitchment.common.crafting.cauldron;
 
+import java.util.List;
+
 import com.bewitchment.api.cauldron_ritual.CauldronRitualHolder;
 import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -19,8 +22,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-import java.util.List;
-
 /**
  * This class was created by Arekkuusu on 21/05/2017.
  * It's distributed as split of Bewitchment under
@@ -31,12 +32,6 @@ public class ItemRitual implements ICauldronRitual<TileCauldron> {
 	private final ItemStack stack;
 	private final int cost;
 	private final int split;
-
-	public ItemRitual(int cost) {
-		this.stack = ItemStack.EMPTY;
-		this.cost = cost;
-		this.split = cost / 10;
-	}
 
 	public ItemRitual(ItemStack stack, int cost) {
 		this.stack = stack;
