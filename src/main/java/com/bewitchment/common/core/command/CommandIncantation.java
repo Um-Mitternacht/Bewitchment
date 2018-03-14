@@ -1,23 +1,22 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.api.incantation.ModIncantations;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.google.common.collect.Lists;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.math.BlockPos;
-
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.api.incantation.IIncantation;
+import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.incantation.ModIncantations;
+import com.google.common.collect.Lists;
+
+import net.minecraft.command.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 
 /**
  * This class was created by BerciTheBeast on 19.4.2017.
@@ -62,11 +61,7 @@ public class CommandIncantation implements ICommand {
 				if (ienopt.isPresent()) {
 					if (ienopt.get().get() >= incantation.getCost()) {
 						EnergyHandler.addEnergy(player, -incantation.getCost());
-						try {
-							incantation.cast(server, sender, args);
-						} catch (CommandException e) {
-							e.printStackTrace();
-						}
+						incantation.cast(player, args);
 					} else {
 						throw new CommandException("commands.incantation.no_energy", sender.getName());
 					}

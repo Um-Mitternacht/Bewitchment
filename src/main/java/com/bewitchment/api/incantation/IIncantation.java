@@ -1,8 +1,6 @@
 package com.bewitchment.api.incantation;
 
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.entity.player.EntityPlayer;
 
 /**
  * This class was created by Arekkuusu on 19/04/2017.
@@ -11,7 +9,7 @@ import net.minecraft.server.MinecraftServer;
  */
 public interface IIncantation {
 
-	void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException;
+	void cast(EntityPlayer sender, String[] args);
 
 	int getCost();
 }

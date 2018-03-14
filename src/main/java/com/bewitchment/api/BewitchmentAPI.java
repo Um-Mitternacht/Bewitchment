@@ -3,6 +3,7 @@ package com.bewitchment.api;
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
+import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
 
 import net.minecraft.item.Item;
@@ -57,4 +58,6 @@ public abstract class BewitchmentAPI {
 	public abstract void registerHotbarAction(IHotbarAction action);
 	
 	public abstract void registerFortune(IFortune fortune);
+	
+	public abstract void registerIncantation(String name, IIncantation incantation);
 }

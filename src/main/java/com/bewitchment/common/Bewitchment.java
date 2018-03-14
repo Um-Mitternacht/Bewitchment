@@ -5,7 +5,6 @@ import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.bewitchment.api.incantation.ModIncantations;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -27,6 +26,7 @@ import com.bewitchment.common.divination.ModFortunes;
 import com.bewitchment.common.divination.ModTarots;
 import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.fermenting.ModBarrelRecipes;
+import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.internalApi.ApiInstance;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.food.seed.SeedDropRegistry;

@@ -5,9 +5,7 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -20,7 +18,7 @@ import net.minecraft.world.World;
 public class IncantationSnuff implements IIncantation {
 
 	@Override
-	public void cast(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+	public void cast(EntityPlayer sender, String[] args) {
 		World world = sender.getEntityWorld();
 		BlockPos source = sender.getPosition();
 		for (BlockPos pos : BlockPos.getAllInBox(source.add(7, 3, 7), source.add(-7, -3, -7))) {
