@@ -1,7 +1,7 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.common.brew.brews.*;
 import com.bewitchment.common.internalApi.BrewRegistry;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
@@ -79,7 +79,7 @@ public final class ModBrews {
 		GROW_FLOWER = registerBrew(new GrowFlowersBrew());
 		TILL_LAND = registerBrew(new TillLandBrew());
 		ENDER_INHIBITION = registerBrew(new EnderInhibitionBrew());
-		PATH_OF_THE_DEEP = registerBrew(new PathOfTheDeep());
+		PATH_OF_THE_DEEP = registerBrew(new PathOfTheDeepBrew());
 		ROCK_PULVERIZE = registerBrew(new RockPulverizeBrew());
 		PRUNE_LEAVES = registerBrew(new PruneLeavesBrew());
 		AUTO_PLANT = registerBrew(new AutoPlantBrew());

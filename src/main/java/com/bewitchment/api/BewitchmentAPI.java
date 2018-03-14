@@ -1,11 +1,8 @@
 package com.bewitchment.api;
 
 import com.bewitchment.api.brew.IBrew;
-import com.bewitchment.api.crop.Crop;
-import com.bewitchment.api.crop.ICrop;
 import com.bewitchment.api.recipe.IBrewModifier;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -54,18 +51,4 @@ public abstract class BewitchmentAPI {
 	 * @param strict If the Item must be identical
 	 */
 	public abstract void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict);
-	
-	/**
-	 * Register a Crop to the crop registry.
-	 * <p>
-	 * The Item Seed needs to be different, for ex the Kelp seed,
-	 * that needs to be placed on water so it uses a different placement recipeDropLogic.
-	 * </p>
-	 *
-	 * @param crop The Crop enum
-	 * @param cropItem The item this Crop will drop when harvested
-	 * @param seedItem The seed that will place the Crop
-	 */
-	public abstract <T extends Block & ICrop> void registerCrop(Crop crop, T placed, Item cropItem, Item seedItem);
-	
 }

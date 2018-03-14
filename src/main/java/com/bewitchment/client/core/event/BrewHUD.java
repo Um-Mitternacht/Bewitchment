@@ -1,8 +1,8 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.api.capability.IBrewStorage;
+import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import net.minecraft.client.Minecraft;

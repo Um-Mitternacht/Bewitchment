@@ -1,7 +1,7 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.brew.BrewEffect;
-import com.bewitchment.api.brew.IBrewRenderLiving;
+import com.bewitchment.api.brew.special.IBrewRenderLiving;
+import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

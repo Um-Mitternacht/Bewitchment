@@ -1,5 +1,7 @@
 package com.bewitchment.api.cauldron_ritual;
 
+import com.bewitchment.common.tile.CauldronRitualHolder;
+
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

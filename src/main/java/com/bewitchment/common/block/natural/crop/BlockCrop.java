@@ -1,7 +1,8 @@
 package com.bewitchment.common.block.natural.crop;
 
-import com.bewitchment.api.crop.ICrop;
 import com.bewitchment.api.helper.IModelRegister;
+import com.bewitchment.common.core.ICrop;
+
 import net.minecraft.block.BlockCrops;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;

@@ -2,14 +2,11 @@ package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.brew.IBrew;
-import com.bewitchment.api.crop.Crop;
-import com.bewitchment.api.crop.ICrop;
 import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -59,11 +56,6 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict) {
 		CauldronRegistry.registerItemProcessing(fluid, in, out, strict);
-	}
-	
-	@Override
-	public <T extends Block & ICrop> void registerCrop(Crop crop, T placed, Item cropItem, Item seedItem) {
-		CropRegistry.registerCrop(crop, placed, cropItem, seedItem);
 	}
 	
 	@Override

@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.magic.brew;
 
-import com.bewitchment.api.brew.BrewEffect;
-import com.bewitchment.api.brew.BrewUtils;
+import com.bewitchment.common.brew.BrewEffect;
+import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.internalApi.BrewRegistry;

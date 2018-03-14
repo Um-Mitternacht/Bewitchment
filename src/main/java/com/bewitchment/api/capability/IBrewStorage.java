@@ -1,7 +1,8 @@
 package com.bewitchment.api.capability;
 
-import com.bewitchment.api.brew.BrewEffect;
 import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.common.brew.BrewEffect;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 

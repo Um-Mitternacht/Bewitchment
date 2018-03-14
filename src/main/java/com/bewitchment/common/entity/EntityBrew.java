@@ -1,9 +1,9 @@
 package com.bewitchment.common.entity;
 
-import com.bewitchment.api.brew.BrewEffect;
-import com.bewitchment.api.brew.BrewUtils;
-import com.bewitchment.api.brew.IBrewEntityImpact;
+import com.bewitchment.api.brew.special.IBrewEntityImpact;
 import com.bewitchment.api.helper.NBTHelper;
+import com.bewitchment.common.brew.BrewEffect;
+import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;

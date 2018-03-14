@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.food.seed;
 
-import com.bewitchment.api.crop.Crop;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.core.Crop;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
