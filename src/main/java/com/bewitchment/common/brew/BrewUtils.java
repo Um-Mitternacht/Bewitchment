@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.helper.NBTHelper;
 import com.bewitchment.api.helper.RomanNumber;
 import com.bewitchment.common.internalApi.BrewRegistry;

@@ -1,4 +1,4 @@
-package com.bewitchment.api.brew;
+package com.bewitchment.api.cauldron.brew;
 
 import com.bewitchment.client.ResourceLocations;
 import net.minecraft.client.renderer.BufferBuilder;

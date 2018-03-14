@@ -1,4 +1,4 @@
-package com.bewitchment.api.brew.special;
+package com.bewitchment.api.cauldron.brew.special;
 
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraftforge.client.event.RenderLivingEvent;

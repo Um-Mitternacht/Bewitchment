@@ -1,9 +1,11 @@
 package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 
@@ -61,6 +63,11 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void registerFoodValue(ItemStack stack, int hunger, float saturation) {
 		CauldronRegistry.registerFoodValue(stack, new CauldronFoodValue(hunger, saturation));
+	}
+	
+	@Override
+	public void registerHotbarAction(IHotbarAction action) {
+		HotbarAction.registerNewAction(action);
 	}
 	
 }

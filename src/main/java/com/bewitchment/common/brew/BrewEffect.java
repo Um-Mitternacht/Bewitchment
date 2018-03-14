@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;

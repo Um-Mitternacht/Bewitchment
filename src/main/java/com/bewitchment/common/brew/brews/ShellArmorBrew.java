@@ -1,7 +1,7 @@
 package com.bewitchment.common.brew.brews;
 
-import com.bewitchment.api.brew.IBrew;
-import com.bewitchment.api.brew.special.IBrewHurt;
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.special.IBrewHurt;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;

@@ -1,6 +1,6 @@
 package com.bewitchment.common.internalApi;
 
-import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
+import com.bewitchment.api.cauldron.ICauldronRitual;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import net.minecraft.tileentity.TileEntity;

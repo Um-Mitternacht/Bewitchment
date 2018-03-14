@@ -1,7 +1,7 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import com.bewitchment.api.cauldron_ritual.ICauldronRitual;
 import com.bewitchment.api.recipe.IBrewModifier;
+import com.bewitchment.api.cauldron.ICauldronRitual;
 import com.bewitchment.api.recipe.BrewSimpleModifier;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;

@@ -1,4 +1,4 @@
-package com.bewitchment.api.brew.special;
+package com.bewitchment.api.cauldron.brew.special;
 
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;

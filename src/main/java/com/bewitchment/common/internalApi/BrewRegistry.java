@@ -1,6 +1,6 @@
 package com.bewitchment.common.internalApi;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.BrewEffect;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;

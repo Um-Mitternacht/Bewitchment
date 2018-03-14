@@ -1,4 +1,4 @@
-package com.bewitchment.api.cauldron_ritual;
+package com.bewitchment.api.cauldron;
 
 import com.bewitchment.common.tile.CauldronRitualHolder;
 

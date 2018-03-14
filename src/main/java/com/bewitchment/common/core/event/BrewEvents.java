@@ -1,8 +1,8 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.brew.*;
-import com.bewitchment.api.brew.special.*;
 import com.bewitchment.api.capability.IBrewStorage;
+import com.bewitchment.api.cauldron.brew.*;
+import com.bewitchment.api.cauldron.brew.special.*;
 import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.core.capability.brew.BrewStorageProvider;

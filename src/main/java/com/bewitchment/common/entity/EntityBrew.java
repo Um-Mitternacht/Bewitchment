@@ -1,6 +1,6 @@
 package com.bewitchment.common.entity;
 
-import com.bewitchment.api.brew.special.IBrewEntityImpact;
+import com.bewitchment.api.cauldron.brew.special.IBrewEntityImpact;
 import com.bewitchment.api.helper.NBTHelper;
 import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.brew.BrewUtils;

@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

@@ -1,7 +1,9 @@
 package com.bewitchment.common.core.capability.brew;
 
-import com.bewitchment.api.brew.IBrew;
+import java.util.*;
+
 import com.bewitchment.api.capability.IBrewStorage;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -16,8 +18,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
-
-import java.util.*;
 
 /**
  * This class was created by Arekkuusu on 23/04/2017.
@@ -96,6 +96,32 @@ public final class CapabilityBrewStorage {
 		@Override
 		public void syncTo(EntityPlayerMP target) {
 			NetworkHandler.HANDLER.sendTo(new BrewMessage(this, target), target);
+		}
+		
+		@Override
+		public void addBrew(EntityLivingBase entity, BrewEffect effect) {
+			if (effect.isInstant()) {
+				effect.update(entity.world, entity.getPosition(), entity);
+			} else {
+				effect.start(entity.world, entity.getPosition(), entity);
+				getBrewMap().put(effect.getBrew(), effect);
+				syncToNear(entity);
+			}
+		}
+		
+		@Override
+		public void removeBrew(EntityLivingBase entity, IBrew brew) {
+			BrewEffect effect = getBrew(brew);
+			if (effect != null) {
+				effect.end(entity.world, entity.getPosition(), entity);
+				getBrewMap().remove(brew);
+				syncToNear(entity);
+			}
+		}
+		
+		@Override
+		public BrewEffect getBrew(IBrew brew) {
+			return getBrewMap().get(brew);
 		}
 	}
 }

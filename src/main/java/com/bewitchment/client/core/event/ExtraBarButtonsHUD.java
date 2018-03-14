@@ -1,10 +1,18 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.event.HotbarAction;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -18,11 +26,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -35,8 +38,8 @@ public class ExtraBarButtonsHUD {
 	boolean barEnabled = false;
 	int cooldown = 0;
 	int selectedItemTemp = 0;
-	List<HotbarAction> actions = new ArrayList<HotbarAction>();
-	HotbarAction[] actionScroller = new HotbarAction[3];// 0: current, 1: prev, 2: next
+	List<IHotbarAction> actions = new ArrayList<IHotbarAction>();
+	IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
 
 	private ExtraBarButtonsHUD() {
 	}
@@ -131,7 +134,7 @@ public class ExtraBarButtonsHUD {
 		}
 	}
 
-	public void setList(List<HotbarAction> list) {
+	public void setList(List<IHotbarAction> list) {
 		this.actions = list;
 		this.slotSelected = Math.min(slotSelected, list.size() - 1);
 		refreshSelected();

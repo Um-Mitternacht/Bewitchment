@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import net.minecraft.client.Minecraft;

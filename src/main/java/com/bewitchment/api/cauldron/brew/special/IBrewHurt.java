@@ -1,4 +1,4 @@
-package com.bewitchment.api.brew.special;
+package com.bewitchment.api.cauldron.brew.special;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;

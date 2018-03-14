@@ -2,8 +2,8 @@ package com.bewitchment.common.brew;
 
 import javax.annotation.Nullable;
 
-import com.bewitchment.api.brew.IBrew;
-import com.bewitchment.api.brew.special.IBrewEntityImpact;
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.special.IBrewEntityImpact;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;

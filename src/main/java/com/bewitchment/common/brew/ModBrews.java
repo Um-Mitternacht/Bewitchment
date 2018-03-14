@@ -1,6 +1,6 @@
 package com.bewitchment.common.brew;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.brews.*;
 import com.bewitchment.common.internalApi.BrewRegistry;
 import com.bewitchment.common.lib.LibMod;

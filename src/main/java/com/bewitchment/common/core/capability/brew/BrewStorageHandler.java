@@ -1,7 +1,7 @@
 package com.bewitchment.common.core.capability.brew;
 
-import com.bewitchment.api.brew.IBrew;
 import com.bewitchment.api.capability.IBrewStorage;
+import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.BrewEffect;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;

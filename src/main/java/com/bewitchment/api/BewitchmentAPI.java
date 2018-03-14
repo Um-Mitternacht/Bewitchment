@@ -1,6 +1,7 @@
 package com.bewitchment.api;
 
-import com.bewitchment.api.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.recipe.IBrewModifier;
 
 import net.minecraft.item.Item;
@@ -51,4 +52,6 @@ public abstract class BewitchmentAPI {
 	 * @param strict If the Item must be identical
 	 */
 	public abstract void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict);
+	
+	public abstract void registerHotbarAction(IHotbarAction action);
 }
