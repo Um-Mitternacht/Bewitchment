@@ -1,7 +1,6 @@
 package com.bewitchment.client.sound;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 

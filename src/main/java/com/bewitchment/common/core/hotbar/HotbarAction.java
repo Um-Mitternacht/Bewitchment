@@ -1,16 +1,15 @@
 package com.bewitchment.common.core.hotbar;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+
+import java.util.ArrayList;
 
 public class HotbarAction implements IHotbarAction {
 
@@ -41,6 +40,10 @@ public class HotbarAction implements IHotbarAction {
 		throw new RuntimeException(name + " was never created as an IHotbarAction");
 	}
 
+	public static void registerNewAction(IHotbarAction action) {
+		ACTIONS.add(action);
+	}
+
 	@Override
 	public ResourceLocation getName() {
 		return name;
@@ -59,10 +62,6 @@ public class HotbarAction implements IHotbarAction {
 	@Override
 	public ResourceLocation getIcon(EntityPlayer player) {
 		return DEFAULT_ICON_TEXTURE;
-	}
-	
-	public static void registerNewAction(IHotbarAction action) {
-		ACTIONS.add(action);
 	}
 
 }

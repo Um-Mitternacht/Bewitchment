@@ -1,5 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
+import com.bewitchment.common.brew.BlockHitBrew;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,8 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-
-import com.bewitchment.common.brew.BlockHitBrew;
 
 /**
  * This class was created by Arekkuusu on 24/04/2017.

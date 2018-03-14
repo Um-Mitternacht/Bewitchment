@@ -1,9 +1,9 @@
 package com.bewitchment.common.incantation;
 
+import com.bewitchment.api.incantation.IIncantation;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.bewitchment.api.incantation.IIncantation;
 
 /**
  * This class was created by Arekkuusu on 19/04/2017.

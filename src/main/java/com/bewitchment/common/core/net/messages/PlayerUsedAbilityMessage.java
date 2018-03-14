@@ -5,7 +5,6 @@ import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.SimpleMessage;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;

@@ -1,12 +1,11 @@
 package com.bewitchment.common.core.capability.divination;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.IFortune;
-
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+
+import javax.annotation.Nullable;
 
 public interface CapabilityDivination {
 

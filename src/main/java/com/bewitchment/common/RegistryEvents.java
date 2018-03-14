@@ -1,7 +1,5 @@
 package com.bewitchment.common;
 
-import static com.bewitchment.common.core.Crop.*;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.crop.BlockCrop;
 import com.bewitchment.common.core.Crop;
@@ -19,6 +17,8 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import static com.bewitchment.common.core.Crop.*;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.

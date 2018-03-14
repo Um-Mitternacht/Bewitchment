@@ -8,7 +8,6 @@ package com.bewitchment.common.spell;
 
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -49,21 +48,21 @@ public abstract class Spell implements ISpell {
 	public EnumSpellType getType() {
 		return type;
 	}
-	
+
 	@Override
 	public ResourceLocation getRegistryName() {
 		return regName;
 	}
-	
+
 	@Override
 	public Class<ISpell> getRegistryType() {
 		return ISpell.class;
 	}
-	
+
 	@Override
 	public ISpell setRegistryName(ResourceLocation name) {
 		regName = name;
 		return this;
 	}
-	
+
 }

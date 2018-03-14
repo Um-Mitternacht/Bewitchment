@@ -3,7 +3,6 @@ package com.bewitchment.common.incantation;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;

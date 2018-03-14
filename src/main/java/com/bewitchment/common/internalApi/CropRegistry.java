@@ -1,13 +1,12 @@
 package com.bewitchment.common.internalApi;
 
+import com.bewitchment.common.core.Crop;
+import com.bewitchment.common.core.ICrop;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import com.bewitchment.common.core.Crop;
-import com.bewitchment.common.core.ICrop;
 
 /**
  * This class was created by Arekkuusu on 14/04/2017.

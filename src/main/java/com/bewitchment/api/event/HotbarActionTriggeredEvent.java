@@ -1,7 +1,6 @@
 package com.bewitchment.api.event;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;

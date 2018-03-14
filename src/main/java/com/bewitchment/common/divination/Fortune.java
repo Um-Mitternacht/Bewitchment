@@ -1,14 +1,13 @@
 package com.bewitchment.common.divination;
 
-import javax.annotation.Nonnull;
-
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nonnull;
 
 public abstract class Fortune implements IFortune {
 
@@ -25,6 +24,10 @@ public abstract class Fortune implements IFortune {
 	public Fortune(int weight, @Nonnull String name, @Nonnull String modid) {
 		this.setRegistryName(new ResourceLocation(modid, name));
 		this.weight = weight;
+	}
+
+	public static void registerFortune(IFortune fortune) {
+		REGISTRY.register(fortune);
 	}
 
 	/**
@@ -82,25 +85,21 @@ public abstract class Fortune implements IFortune {
 	public String getUnlocalizedName() {
 		return "fortunes." + this.getRegistryName().getResourceDomain() + "." + this.getRegistryName().getResourcePath() + ".name";
 	}
-	
+
 	@Override
 	public IFortune setRegistryName(ResourceLocation name) {
 		this.name = name;
 		return this;
 	}
-	
+
 	@Override
 	public ResourceLocation getRegistryName() {
 		return name;
 	}
-	
+
 	@Override
 	public Class<IFortune> getRegistryType() {
 		return IFortune.class;
-	}
-	
-	public static void registerFortune(IFortune fortune) {
-		REGISTRY.register(fortune);
 	}
 }
 

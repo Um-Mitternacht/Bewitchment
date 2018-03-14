@@ -1,5 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
+import com.bewitchment.common.brew.BlockHitBrew;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,8 +12,6 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
-import com.bewitchment.common.brew.BlockHitBrew;
 
 /**
  * This class was created by Arekkuusu on 23/04/2017.

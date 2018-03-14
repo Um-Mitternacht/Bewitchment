@@ -1,11 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.brew.BlockHitBrew;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -15,6 +10,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 12/06/2017.

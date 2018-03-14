@@ -1,7 +1,6 @@
 package com.bewitchment.common.brew;
 
 import com.bewitchment.api.cauldron.brew.IBrew;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
  * the MIT license.
  */
 public class BrewEffect {
-	
+
 	private IBrew brew;
 	private int duration;
 	private int amplifier;
@@ -22,7 +21,7 @@ public class BrewEffect {
 		this.duration = duration;
 		this.amplifier = amplifier;
 	}
-	
+
 	public void start(World world, BlockPos pos, EntityLivingBase entity) {
 		brew.onStart(world, pos, entity, amplifier);
 		if (brew instanceof BrewAttributeModifier) {

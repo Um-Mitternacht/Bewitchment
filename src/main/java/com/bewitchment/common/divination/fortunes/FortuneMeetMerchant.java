@@ -1,7 +1,6 @@
 package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.common.divination.Fortune;
-
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

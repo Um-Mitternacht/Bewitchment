@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.capability.brew;
 
-import java.util.*;
-
 import com.bewitchment.api.capability.IBrewStorage;
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.common.brew.BrewEffect;
@@ -9,7 +7,6 @@ import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.BrewMessage;
 import com.bewitchment.common.internalApi.BrewRegistry;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
@@ -18,6 +15,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+
+import java.util.*;
 
 /**
  * This class was created by Arekkuusu on 23/04/2017.
@@ -97,7 +96,7 @@ public final class CapabilityBrewStorage {
 		public void syncTo(EntityPlayerMP target) {
 			NetworkHandler.HANDLER.sendTo(new BrewMessage(this, target), target);
 		}
-		
+
 		@Override
 		public void addBrew(EntityLivingBase entity, BrewEffect effect) {
 			if (effect.isInstant()) {
@@ -108,7 +107,7 @@ public final class CapabilityBrewStorage {
 				syncToNear(entity);
 			}
 		}
-		
+
 		@Override
 		public void removeBrew(EntityLivingBase entity, IBrew brew) {
 			BrewEffect effect = getBrew(brew);
@@ -118,7 +117,7 @@ public final class CapabilityBrewStorage {
 				syncToNear(entity);
 			}
 		}
-		
+
 		@Override
 		public BrewEffect getBrew(IBrew brew) {
 			return getBrewMap().get(brew);

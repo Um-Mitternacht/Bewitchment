@@ -5,7 +5,6 @@ import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.core.helper.NBTHelper;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;

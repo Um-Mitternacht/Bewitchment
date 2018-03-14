@@ -6,16 +6,10 @@
 
 package com.bewitchment.common.entity;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.spell.Spell;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -27,6 +21,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class EntitySpellCarrier extends EntityThrowable {
 

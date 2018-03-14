@@ -1,19 +1,18 @@
 package com.bewitchment.common.core.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.divination.Fortune;
-
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CommandForceFortune extends CommandBase {
 

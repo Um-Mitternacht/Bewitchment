@@ -1,14 +1,11 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import java.util.List;
-
 import com.bewitchment.api.cauldron.ICauldronRitual;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.tile.CauldronRitualHolder;
 import com.bewitchment.common.tile.TileCauldron;
-
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -21,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+
+import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 21/05/2017.

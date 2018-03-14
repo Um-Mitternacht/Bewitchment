@@ -2,7 +2,6 @@ package com.bewitchment.common.brew.brews;
 
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.cauldron.brew.special.IBrewEnderTeleport;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;

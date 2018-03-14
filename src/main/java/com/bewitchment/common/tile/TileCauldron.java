@@ -1,8 +1,8 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.CauldronBrewRecipe;
 import com.bewitchment.api.recipe.CauldronItemRecipe;
+import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.ItemValidator;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;

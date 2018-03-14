@@ -1,13 +1,12 @@
 package com.bewitchment.api.event;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.api.hotbar.IHotbarAction;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HotbarActionCollectionEvent extends Event {
 

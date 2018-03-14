@@ -2,7 +2,6 @@ package com.bewitchment.common.brew.brews;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.brew.BlockHitBrew;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;

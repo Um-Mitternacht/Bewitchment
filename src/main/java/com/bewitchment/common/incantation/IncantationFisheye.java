@@ -1,7 +1,6 @@
 package com.bewitchment.common.incantation;
 
 import com.bewitchment.api.incantation.IIncantation;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;

@@ -1,5 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
+import com.bewitchment.common.brew.BlockHitBrew;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedSandstone;
 import net.minecraft.block.BlockSandStone;
@@ -15,9 +16,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-
-import com.bewitchment.common.brew.BlockHitBrew;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -2,7 +2,6 @@ package com.bewitchment.client.handler;
 
 import com.bewitchment.common.brew.BrewUtils;
 import com.bewitchment.common.core.helper.NBTHelper;
-
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemStack;
 

@@ -1,8 +1,8 @@
 package com.bewitchment.common.internalApi;
 
-import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.CauldronBrewRecipe;
 import com.bewitchment.api.recipe.CauldronItemRecipe;
+import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.recipe.ItemValidator;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;

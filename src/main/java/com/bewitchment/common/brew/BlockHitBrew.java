@@ -1,10 +1,7 @@
 package com.bewitchment.common.brew;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.cauldron.brew.special.IBrewEntityImpact;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
@@ -13,6 +10,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 11/06/2017.

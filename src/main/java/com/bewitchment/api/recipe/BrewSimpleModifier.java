@@ -1,11 +1,10 @@
 package com.bewitchment.api.recipe;
 
+import com.bewitchment.common.brew.BrewEffect;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.List;
-
-import com.bewitchment.common.brew.BrewEffect;
 
 /**
  * This class was created by Arekkuusu on 30/05/2017.

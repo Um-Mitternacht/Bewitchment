@@ -6,7 +6,6 @@ import com.bewitchment.common.brew.BrewEffect;
 import com.bewitchment.common.core.capability.brew.BrewStorageHandler;
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.internalApi.BrewRegistry;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;

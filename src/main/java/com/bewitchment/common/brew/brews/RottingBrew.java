@@ -1,7 +1,6 @@
 package com.bewitchment.common.brew.brews;
 
 import com.bewitchment.api.cauldron.brew.IBrew;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;

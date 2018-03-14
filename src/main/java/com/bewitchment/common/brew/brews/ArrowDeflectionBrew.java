@@ -1,5 +1,7 @@
 package com.bewitchment.common.brew.brews;
 
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.cauldron.brew.special.IBrewHurt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -16,9 +18,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import com.bewitchment.api.cauldron.brew.IBrew;
-import com.bewitchment.api.cauldron.brew.special.IBrewHurt;
 
 /**
  * This was created originally in Covens

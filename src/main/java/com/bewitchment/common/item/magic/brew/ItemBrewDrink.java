@@ -23,9 +23,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.bewitchment.common.internalApi.BrewRegistry.Brew.DRINK;
-
 import javax.annotation.Nonnull;
+
+import static com.bewitchment.common.internalApi.BrewRegistry.Brew.DRINK;
 
 /**
  * This class was created by BerciTheBeast on 27.3.2017.

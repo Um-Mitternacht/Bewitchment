@@ -1,14 +1,13 @@
 package com.bewitchment.api.capability;
 
+import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.common.brew.BrewEffect;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-
-import com.bewitchment.api.cauldron.brew.IBrew;
-import com.bewitchment.common.brew.BrewEffect;
-
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayerMP;
 
 /**
  * This class was created by Arekkuusu on 23/04/2017.
