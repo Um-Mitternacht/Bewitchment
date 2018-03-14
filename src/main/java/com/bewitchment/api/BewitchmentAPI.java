@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+// TODO Javadocs
 public abstract class BewitchmentAPI {
 	
 	private static BewitchmentAPI INSTANCE;
