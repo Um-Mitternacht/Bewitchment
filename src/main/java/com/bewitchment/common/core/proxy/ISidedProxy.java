@@ -2,9 +2,9 @@ package com.bewitchment.common.core.proxy;
 
 import java.util.ArrayList;
 
-import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.common.divination.TarotHandler.TarotInfo;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.ITextComponent;

@@ -2,12 +2,14 @@ package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
+import com.bewitchment.common.divination.Fortune;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -68,6 +70,11 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void registerHotbarAction(IHotbarAction action) {
 		HotbarAction.registerNewAction(action);
+	}
+	
+	@Override
+	public void registerFortune(IFortune fortune) {
+		Fortune.registerFortune(fortune);
 	}
 	
 }

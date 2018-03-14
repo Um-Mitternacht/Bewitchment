@@ -1,6 +1,7 @@
 package com.bewitchment.api;
 
 import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.recipe.IBrewModifier;
 
@@ -54,4 +55,6 @@ public abstract class BewitchmentAPI {
 	public abstract void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict);
 	
 	public abstract void registerHotbarAction(IHotbarAction action);
+	
+	public abstract void registerFortune(IFortune fortune);
 }

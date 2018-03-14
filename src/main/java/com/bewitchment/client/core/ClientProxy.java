@@ -3,7 +3,6 @@ package com.bewitchment.client.core;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import com.bewitchment.api.divination.TarotHandler.TarotInfo;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.spell.Spell;
 import com.bewitchment.client.ResourceLocations;
@@ -19,6 +18,7 @@ import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.divination.TarotHandler.TarotInfo;
 import com.bewitchment.common.entity.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;

@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.capability.divination;
 
-import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

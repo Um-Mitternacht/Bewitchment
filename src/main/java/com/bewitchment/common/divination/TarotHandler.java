@@ -1,5 +1,6 @@
-package com.bewitchment.api.divination;
+package com.bewitchment.common.divination;
 
+import com.bewitchment.api.divination.ITarot;
 import com.bewitchment.common.lib.LibMod;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.resources.I18n;

@@ -1,10 +1,11 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -34,7 +35,7 @@ public class DivinationEvents {
 	public void onLivingTick(PlayerTickEvent evt) {
 		if (!evt.player.world.isRemote && evt.phase == Phase.END) {
 			CapabilityDivination data = evt.player.getCapability(CapabilityDivination.CAPABILITY, null);
-			Fortune f = data.getFortune();
+			IFortune f = data.getFortune();
 			if (f != null) {
 				if (data.isRemovable()) {
 					data.setFortune(null);

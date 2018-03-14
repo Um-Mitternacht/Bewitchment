@@ -1,6 +1,7 @@
 package com.bewitchment.common.divination.fortunes;
 
-import com.bewitchment.api.divination.Fortune;
+import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

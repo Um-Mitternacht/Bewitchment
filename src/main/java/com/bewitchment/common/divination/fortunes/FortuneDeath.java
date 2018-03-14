@@ -1,12 +1,13 @@
 package com.bewitchment.common.divination.fortunes;
 
-import com.bewitchment.api.divination.Fortune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 
 import javax.annotation.Nonnull;
+
+import com.bewitchment.common.divination.Fortune;
 
 /**
  * Created by Joseph on 1/16/2018.

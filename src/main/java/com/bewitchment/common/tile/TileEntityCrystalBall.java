@@ -1,15 +1,18 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.divination.Fortune;
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentTranslation;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import com.bewitchment.api.divination.IFortune;
+import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+import com.bewitchment.common.divination.Fortune;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityCrystalBall extends TileMod {
 
@@ -44,14 +47,14 @@ public class TileEntityCrystalBall extends TileMod {
 			return false;
 		}
 
-		Fortune fortune = endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).getFortune();
+		IFortune fortune = endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).getFortune();
 
 		if (fortune != null) {
 
 			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", new TextComponentTranslation(fortune.getUnlocalizedName())), false);
 			return false;
 		}
-		List<Fortune> valid = Fortune.REGISTRY.getValues().parallelStream().filter(f -> f.canBeUsedFor(endPlayer)).collect(Collectors.toList());
+		List<IFortune> valid = Fortune.REGISTRY.getValuesCollection().parallelStream().filter(f -> f.canBeUsedFor(endPlayer)).collect(Collectors.toList());
 		if (valid.size() == 0) {
 			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_available_fortunes"), true);
 			return false;
@@ -59,7 +62,7 @@ public class TileEntityCrystalBall extends TileMod {
 		int totalEntries = valid.parallelStream().mapToInt(f -> f.getDrawingWeight()).sum();
 		final int draw = endPlayer.getRNG().nextInt(totalEntries);
 		int current = 0;
-		for (Fortune f : valid) {
+		for (IFortune f : valid) {
 			int entries = f.getDrawingWeight();
 			if (current < draw && draw < current + entries) {
 				fortune = f;
