@@ -143,3 +143,19 @@ idea {
         inheritOutputDirs = true
     }
 }
+
+jar {
+	from sourceSets.main.output
+	from sourceSets.api.output
+}
+
+task apiJar(type: Jar) {
+	classifier = 'api'
+	from sourceSets.main.output //Save .class files
+	from sourceSets.main.allJava //Save corresponding .java files
+	include 'com/bewitchment/api/**/*' //Only include the api directory and subdirectory
+}
+
+artifacts {
+	archives apiJar
+}
