@@ -20,6 +20,7 @@ deploy:
   file: 
   - "./build/libs/Bewitchment-*-*.jar"
   - "./build/libs/Bewitchment-*-*-sources.jar"
+  - "./build/libs/Bewitchment-*-*-api.jar"
   skip_cleanup: true
   on:
     tags: true
