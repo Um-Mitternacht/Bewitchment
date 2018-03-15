@@ -687,7 +687,7 @@ tarot.hermit.name=The Hermit
 tarot.nitwit.name=The Nitwit
 
 //Death Messages
-death.attack.sun_on_vampire=should not have walked outside
+death.attack.sun_on_vampire=You should not have walked outside
 
 //Entities
 entity.broom.name=Flying Broom
