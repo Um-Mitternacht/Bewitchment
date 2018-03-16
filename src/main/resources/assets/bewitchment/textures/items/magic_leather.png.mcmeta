@@ -1,0 +1,9 @@
+{ 
+   "animation":{
+      "width":1,
+      "height":1,
+      "interpolate": true,
+      "frametime":8,
+      frames: [0,1,2,0]
+   }
+}
