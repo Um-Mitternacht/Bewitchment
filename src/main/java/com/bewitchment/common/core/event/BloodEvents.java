@@ -11,7 +11,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;

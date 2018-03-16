@@ -9,7 +9,6 @@ package com.bewitchment.common.spell;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

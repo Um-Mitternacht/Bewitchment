@@ -5,7 +5,6 @@ import com.bewitchment.common.core.capability.transformation.CapabilityTransform
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.net.SimpleMessage;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

@@ -2,7 +2,6 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.transformations.ITransformation;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -18,7 +17,7 @@ public class CapabilityTransformationData implements ITransformationData {
 
 	public CapabilityTransformationData() {
 	}
-	
+
 	public static void init() {
 		CapabilityManager.INSTANCE.register(ITransformationData.class, new TransformationDataStorage(), CapabilityTransformationData::new);
 	}

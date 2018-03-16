@@ -1,7 +1,5 @@
 package com.bewitchment.common.internalApi;
 
-import java.util.Optional;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
@@ -21,7 +19,10 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
+import com.bewitchment.common.core.net.messages.NightVisionStatus;
+import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
+import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 import com.bewitchment.common.divination.Fortune;
@@ -30,7 +31,6 @@ import com.bewitchment.common.infusion.ModInfusions;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.spell.Spell;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -40,82 +40,84 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Optional;
+
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
-	
+
 	private ApiInstance() {
 	}
-	
+
 	public static void initAPI() {
 		BewitchmentAPI.setupAPI(new ApiInstance());
 		Bewitchment.logger.debug("API is ready!");
 	}
-	
+
 	@Override
 	public void registerBrew(IBrew brew, ResourceLocation name) {
 		BrewRegistry.register(name, brew);
 	}
-	
+
 	@Override
 	public void registerBrewRecipe(ItemStack stack, Object... objects) {
 		CauldronRegistry.registerBrewRecipe(stack, objects);
 	}
-	
+
 	@Override
 	public <T> void registerItemEffect(ItemStack stack, T effect, boolean strict) {
 		CauldronRegistry.registerItemEffect(stack, effect, strict);
 	}
-	
+
 	@Override
 	public void registerItemModifier(ItemStack stack, IBrewModifier modifier, boolean strict) {
 		CauldronRegistry.registerItemModifier(stack, modifier, strict);
 	}
-	
+
 	@Override
 	public void registerItemRitual(ItemStack stack, int cost, Object... objects) {
 		CauldronRegistry.registerItemRitual(new ItemRitual(stack, cost), objects);
 	}
-	
+
 	@Override
 	public void registerFluidIngredient(Item item, FluidStack fluid) {
 		CauldronRegistry.registerFluidIngredient(item, fluid);
 	}
-	
+
 	@Override
 	public void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict) {
 		CauldronRegistry.registerItemProcessing(fluid, in, out, strict);
 	}
-	
+
 	@Override
 	public void registerFoodValue(ItemStack stack, int hunger, float saturation) {
 		CauldronRegistry.registerFoodValue(stack, new CauldronFoodValue(hunger, saturation));
 	}
-	
+
 	@Override
 	public void registerHotbarAction(IHotbarAction action) {
 		HotbarAction.registerNewAction(action);
 	}
-	
+
 	@Override
 	public void registerFortune(IFortune fortune) {
 		Fortune.registerFortune(fortune);
 	}
-	
+
 	@Override
 	public void registerIncantation(String name, IIncantation incantation) {
 		ModIncantations.registerIncantation(name, incantation);
 	}
-	
+
 	@Override
 	public void registerSpell(ISpell spell) {
 		Spell.SPELL_REGISTRY.register(spell);
 	}
-	
+
 	@Override
 	public void registerInfusion(IInfusion infusion) {
 		ModInfusions.REGISTRY.register(infusion);
 	}
-	
+
 	@Override
 	public IInfusion getPlayerInfusion(EntityPlayer player) {
 		Optional<IEnergy> iEnergy = EnergyHandler.getEnergy(player);
@@ -124,7 +126,7 @@ public class ApiInstance extends BewitchmentAPI {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void setPlayerInfusion(EntityPlayer player, IInfusion infusion) {
 		Optional<IEnergy> iEnergy = EnergyHandler.getEnergy(player);
@@ -132,7 +134,7 @@ public class ApiInstance extends BewitchmentAPI {
 			iEnergy.get().setType(infusion);
 		}
 	}
-	
+
 	/**
 	 * @param player The player whose blood reserve is being modified
 	 * @param amount The amount of blood to add (negative values will decrease the total)
@@ -152,7 +154,7 @@ public class ApiInstance extends BewitchmentAPI {
 		}
 		return flag;
 	}
-	
+
 	@Override
 	public void setTypeAndLevel(EntityPlayer player, ITransformation type, int level, boolean isClient) {
 		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
@@ -174,9 +176,9 @@ public class ApiInstance extends BewitchmentAPI {
 			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), (EntityPlayerMP) player);
 			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), (EntityPlayerMP) player);
-			
+
 		}
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
-	
+
 }

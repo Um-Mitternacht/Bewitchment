@@ -1,18 +1,17 @@
 package com.bewitchment.common.core.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.transformations.ITransformation;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CommandTransformationModifier extends CommandBase {
 

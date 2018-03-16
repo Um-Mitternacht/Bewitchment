@@ -8,7 +8,6 @@ import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.spell.ISpell;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -67,23 +66,23 @@ public abstract class BewitchmentAPI {
 	public abstract void registerIncantation(String name, IIncantation incantation);
 
 	public abstract void registerSpell(ISpell spell);
-	
+
 	public abstract void registerInfusion(IInfusion infusion);
-	
+
 	public abstract IInfusion getPlayerInfusion(EntityPlayer player);
-	
+
 	public abstract void setPlayerInfusion(EntityPlayer player, IInfusion infusion);
-	
+
 	public abstract void setTypeAndLevel(EntityPlayer player, ITransformation type, int level, boolean isClient);
-	
+
 	/**
 	 * @param player The player whose blood reserve is being modified
 	 * @param amount The amount of blood to add (negative values will decrease the total)
 	 * @return <i>When adding</i> blood this will return true if the value changed and false otherwise: this is <b>true</b> if there was
-	 *         even a little bit of space in the pool, but the blood added was greater than the amount that could be inserted,
-	 *         and <b>false</b> if the pool was maxed.<br>
-	 *         <i>When removing</i> blood this will return true if ALL the blood requested was drained.
-	 *         If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
+	 * even a little bit of space in the pool, but the blood added was greater than the amount that could be inserted,
+	 * and <b>false</b> if the pool was maxed.<br>
+	 * <i>When removing</i> blood this will return true if ALL the blood requested was drained.
+	 * If the amount drained is greater than the amount available this will return false, and no blood will be drained from the pool
 	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	public abstract boolean addVampireBlood(EntityPlayer player, int amount);

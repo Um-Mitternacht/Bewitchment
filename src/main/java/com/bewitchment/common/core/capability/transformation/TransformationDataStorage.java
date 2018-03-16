@@ -2,7 +2,6 @@ package com.bewitchment.common.core.capability.transformation;
 
 import com.bewitchment.api.capability.transformations.ITransformation;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
