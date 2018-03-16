@@ -1,9 +1,8 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
 import com.bewitchment.api.capability.transformations.IBloodReserve;
-import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -11,6 +10,8 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -85,10 +86,10 @@ public class BloodEvents {
 
 				if (ent instanceof EntityPlayer) {
 					ITransformationData data = ent.getCapability(CapabilityTransformationData.CAPABILITY, null);
-					if (data.getType() != EnumTransformationType.VAMPIRE) {
+					if (data.getType() != ModTransformations.VAMPIRE) {
 						ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
 					}
-					if (data.getType() == EnumTransformationType.VAMPIRE || data.getType() == EnumTransformationType.SPECTRE)
+					if (data.getType() == ModTransformations.VAMPIRE || data.getType() == ModTransformations.SPECTRE)
 						ignore = true;
 					br.setBlood(br.getBlood() + baseIncrease);
 				} else if (ent instanceof EntityVillager) {

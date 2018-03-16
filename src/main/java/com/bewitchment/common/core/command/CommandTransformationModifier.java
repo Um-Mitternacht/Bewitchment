@@ -1,16 +1,18 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
-import com.bewitchment.api.capability.transformations.TransformationHelper;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CommandTransformationModifier extends CommandBase {
 
@@ -42,21 +44,21 @@ public class CommandTransformationModifier extends CommandBase {
 			throw new WrongUsageException("commands.set_transformation.usage");
 		if (sender instanceof EntityPlayer) {
 			String typeStr = args[0].toLowerCase();
-			EnumTransformationType transf = null;
+			ITransformation transf = null;
 
 			if (typeStr.equals("v") || typeStr.equals("vamp")) {
-				transf = EnumTransformationType.VAMPIRE;
+				transf = ModTransformations.VAMPIRE;
 			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
-				transf = EnumTransformationType.WEREWOLF;
+				transf = ModTransformations.WEREWOLF;
 			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
-				transf = EnumTransformationType.HUNTER;
+				transf = ModTransformations.HUNTER;
 			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
-				transf = EnumTransformationType.SPECTRE;
+				transf = ModTransformations.SPECTRE;
 			} else if (typeStr.equals("n")) {
-				transf = EnumTransformationType.NONE;
+				transf = ModTransformations.NONE;
 			} else
-				for (EnumTransformationType tt : EnumTransformationType.values()) {
-					if (typeStr.equals(tt.name().toLowerCase())) {
+				for (ITransformation tt : ModTransformations.REGISTRY) {
+					if (typeStr.equals(tt.getRegistryName().getResourcePath().toLowerCase()) || typeStr.equals(tt.getRegistryName().toString().toLowerCase())) {
 						transf = tt;
 						break;
 					}
@@ -66,7 +68,7 @@ public class CommandTransformationModifier extends CommandBase {
 				throw new WrongUsageException("commands.set_transformation.usage.no_transformation");
 			int level = 0;
 			try {
-				if (transf != EnumTransformationType.NONE) {
+				if (transf != ModTransformations.NONE) {
 					level = Integer.valueOf(args[1]);
 				}
 			} catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
@@ -75,8 +77,8 @@ public class CommandTransformationModifier extends CommandBase {
 			if (level < 0 || level > 10) {
 				throw new WrongUsageException("commands.set_transformation.usage.invalid_level");
 			}
-			TransformationHelper.setTypeAndLevel((EntityPlayer) sender, transf, level, false);
-			sender.sendMessage(new TextComponentTranslation("commands.set_transformation.success", transf.name().toLowerCase(), level));
+			BewitchmentAPI.getAPI().setTypeAndLevel((EntityPlayer) sender, transf, level, false);
+			sender.sendMessage(new TextComponentTranslation("commands.set_transformation.success", transf.getRegistryName().toString().toLowerCase(), level));
 		} else {
 			throw new WrongUsageException("commands.error.no_console");
 		}
@@ -90,7 +92,7 @@ public class CommandTransformationModifier extends CommandBase {
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
 		if (args.length == 1)
-			return Arrays.asList(EnumTransformationType.values()).stream().map(t -> t.name().toLowerCase()).filter(s -> s.startsWith(args[args.length - 1].toLowerCase())).collect(Collectors.toList());
+			return ModTransformations.REGISTRY.getKeys().stream().map(t -> t.getResourcePath()).filter(s -> s.startsWith(args[args.length - 1].toLowerCase())).collect(Collectors.toList());
 		return super.getTabCompletions(server, sender, args, targetPos);
 	}
 

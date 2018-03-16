@@ -1,10 +1,12 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
-import com.bewitchment.api.capability.transformations.ITransformationData;
+import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
@@ -14,8 +16,8 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 	public NBTBase writeNBT(Capability<ITransformationData> capability, ITransformationData instance, EnumFacing side) {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setInteger("level", instance.getLevel());
-		data.setInteger("type", instance.getType().ordinal());
-		if (instance.getType() == EnumTransformationType.VAMPIRE) {
+		data.setString("type", instance.getType().getRegistryName().toString());
+		if (instance.getType() == ModTransformations.VAMPIRE) {
 			data.setInteger("blood", instance.getBlood());
 		}
 		data.setBoolean("nightvision", instance.isNightVisionActive());
@@ -27,8 +29,9 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 	public void readNBT(Capability<ITransformationData> capability, ITransformationData instance, EnumFacing side, NBTBase nbt) {
 		NBTTagCompound data = (NBTTagCompound) nbt;
 		instance.setLevel(data.getInteger("level"));
-		instance.setType(EnumTransformationType.values()[data.getInteger("type")]);
-		if (instance.getType() == EnumTransformationType.VAMPIRE) {
+		ITransformation transf = ModTransformations.REGISTRY.getValue(new ResourceLocation(data.getString("type")));
+		instance.setType(transf == null ? ModTransformations.NONE : transf);
+		if (transf == ModTransformations.VAMPIRE) {
 			instance.setBlood(data.getInteger("blood"));
 		}
 		instance.setNightVision(data.getBoolean("nightvision"));

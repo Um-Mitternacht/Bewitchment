@@ -1,7 +1,9 @@
 package com.bewitchment.common.core.capability.energy;
 
-import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.api.capability.IInfusion;
+import com.bewitchment.common.infusion.ModInfusions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public class DummyIEnergy implements IEnergy {
@@ -72,12 +74,12 @@ public class DummyIEnergy implements IEnergy {
 	}
 
 	@Override
-	public EnumInfusionType getType() {
-		return EnumInfusionType.NONE;
+	public IInfusion getType() {
+		return ModInfusions.NONE;
 	}
 
 	@Override
-	public void setType(EnumInfusionType type) {
+	public void setType(IInfusion type) {
 	}
 
 }

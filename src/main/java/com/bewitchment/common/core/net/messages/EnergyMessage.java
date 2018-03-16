@@ -1,19 +1,22 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.api.capability.EnumInfusionType;
+import java.util.Optional;
+import java.util.UUID;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.infusion.ModInfusions;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import java.util.Optional;
-import java.util.UUID;
 
 /**
  * This class was created by Arekkuusu on 04/04/2017.
@@ -40,7 +43,7 @@ public class EnergyMessage implements IMessage {
 		energy.setMax(buf.readInt());
 		energy.setRegen(buf.readInt(), buf.readInt());
 		energy.setUses(buf.readInt());
-		energy.setType(EnumInfusionType.fromMeta(buf.readInt()));
+		energy.setType(ModInfusions.REGISTRY.getValue(new ResourceLocation(ByteBufUtils.readUTF8String(buf))));
 
 		target = new UUID(buf.readLong(), buf.readLong());
 	}
@@ -52,7 +55,7 @@ public class EnergyMessage implements IMessage {
 		buf.writeInt(energy.getRegenTime());
 		buf.writeInt(energy.getRegenBurst());
 		buf.writeInt(energy.getUses());
-		buf.writeInt(energy.getType().getMeta());
+		ByteBufUtils.writeUTF8String(buf, energy.getType().getRegistryName().toString());
 
 		buf.writeLong(target.getMostSignificantBits());
 		buf.writeLong(target.getLeastSignificantBits());

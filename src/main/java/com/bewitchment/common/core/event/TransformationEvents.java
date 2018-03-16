@@ -1,16 +1,15 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.transformations.ITransformationData;
-import com.bewitchment.api.capability.transformations.TransformationHelper;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
+import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -34,7 +33,7 @@ public class TransformationEvents {
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerEvent.Clone event) {
 		ITransformationData data = event.getOriginal().getCapability(CapabilityTransformationData.CAPABILITY, null);
-		TransformationHelper.setTypeAndLevel(event.getEntityPlayer(), data.getType(), data.getLevel(), false);
+		BewitchmentAPI.getAPI().setTypeAndLevel(event.getEntityPlayer(), data.getType(), data.getLevel(), false);
 		if (event.isWasDeath()) {
 			TransformationHelper.setVampireBlood(event.getEntityPlayer(), (int) (data.getMaxBlood() * 0.1));
 		} else {

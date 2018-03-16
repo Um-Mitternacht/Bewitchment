@@ -6,9 +6,10 @@
 
 package com.bewitchment.common.spell;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
-import com.bewitchment.api.capability.transformations.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.capability.transformation.ITransformationData;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -34,7 +35,7 @@ public class SpellCallThunderstorm extends Spell {
 	public boolean canBeUsed(World world, BlockPos pos, EntityLivingBase caster) {
 		if (caster instanceof EntityPlayer) {
 			ITransformationData data = ((EntityPlayer) caster).getCapability(CapabilityTransformationData.CAPABILITY, null);
-			return data.getType() == EnumTransformationType.VAMPIRE && data.getLevel() >= 9;
+			return data.getType() == ModTransformations.VAMPIRE && data.getLevel() >= 9;
 		}
 		return false;
 	}

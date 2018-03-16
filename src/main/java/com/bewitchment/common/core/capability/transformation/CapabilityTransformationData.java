@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
-import com.bewitchment.api.capability.transformations.ITransformationData;
+import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -11,34 +12,33 @@ public class CapabilityTransformationData implements ITransformationData {
 	@CapabilityInject(ITransformationData.class)
 	public static final Capability<ITransformationData> CAPABILITY = null;
 
-	EnumTransformationType type;
-	int level, blood;
-	boolean isNightVisionActive;
+	ITransformation type = ModTransformations.NONE;
+	int level = 0, blood = 0;
+	boolean isNightVisionActive = false;
 
 	public CapabilityTransformationData() {
-		type = EnumTransformationType.NONE;
-		level = 0;
-		blood = 0;
-		isNightVisionActive = false;
 	}
-
+	
 	public static void init() {
 		CapabilityManager.INSTANCE.register(ITransformationData.class, new TransformationDataStorage(), CapabilityTransformationData::new);
 	}
 
 	@Override
-	public EnumTransformationType getType() {
+	public ITransformation getType() {
+		if (type == null) {
+			return ModTransformations.NONE;
+		}
 		return type;
 	}
 
 	/**
-	 * Prefer the use of {@link com.bewitchment.api.capability.transformations.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
+	 * Prefer the use of {@link com.bewitchment.common.core.helper.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
 	 * care of syncronization and refreshing data
 	 */
 	@Override
-	public void setType(EnumTransformationType type) {
+	public void setType(ITransformation type) {
 		this.type = type;
-		if (type != EnumTransformationType.VAMPIRE) {
+		if (type != ModTransformations.VAMPIRE) {
 			blood = 0;
 		} else {
 			blood = getMaxBlood();
@@ -51,7 +51,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	}
 
 	/**
-	 * Prefer the use of {@link com.bewitchment.api.capability.transformations.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
+	 * Prefer the use of {@link com.bewitchment.common.core.helper.TransformationHelper#setTypeAndLevel()} over this. That one automatically takes
 	 * care of syncronization and refreshing data
 	 */
 	@Override

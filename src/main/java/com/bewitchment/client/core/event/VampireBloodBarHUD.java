@@ -1,9 +1,12 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.capability.transformations.EnumTransformationType;
-import com.bewitchment.api.capability.transformations.ITransformationData;
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -15,7 +18,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class VampireBloodBarHUD {
@@ -73,7 +75,7 @@ public class VampireBloodBarHUD {
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Post event) {
 		ITransformationData td = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-		if (!Minecraft.getMinecraft().player.isCreative() && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == EnumTransformationType.VAMPIRE) {
+		if (!Minecraft.getMinecraft().player.isCreative() && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == ModTransformations.VAMPIRE) {
 			GlStateManager.pushMatrix();
 			GlStateManager.color(1, 1, 1, 1);
 			GlStateManager.enableAlpha();
@@ -103,7 +105,7 @@ public class VampireBloodBarHUD {
 
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Pre event) {
-		if (event.getType() == RenderGameOverlayEvent.ElementType.FOOD && Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == EnumTransformationType.VAMPIRE) {
+		if (event.getType() == RenderGameOverlayEvent.ElementType.FOOD && Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == ModTransformations.VAMPIRE) {
 			event.setCanceled(true);
 		}
 	}

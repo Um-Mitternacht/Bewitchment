@@ -1,13 +1,19 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.capability.EnumInfusionType;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ANY;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.ENDER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NETHER;
+import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.NORMAL;
+
 import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+import com.bewitchment.common.infusion.ModInfusions;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -16,8 +22,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
-
-import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.*;
 
 public class ModRituals {
 
@@ -132,10 +136,10 @@ public class ModRituals {
 				TileEntityGlyph.big);
 
 		ResourceLocation infusions = new ResourceLocation(LibMod.MOD_ID, "infusion");
-		infusion_overworld = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.petrichor_odour.ordinal()))), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, EnumInfusionType.OVERWORLD);
-		infusion_nether = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.fiery_breeze.ordinal()))), none, 60, circles(NETHER, NETHER, NETHER), 6000, 1, EnumInfusionType.NETHER);
-		infusion_end = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.heavenly_winds.ordinal()))), none, 60, circles(ENDER, ENDER, ENDER), 6000, 1, EnumInfusionType.END);
-		infusion_dream = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.zephyr_of_the_depths.ordinal()))), none, 60, circles(NORMAL, NETHER, ENDER), 6000, 1, EnumInfusionType.DREAM);
+		infusion_overworld = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.petrichor_odour.ordinal()))), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, ModInfusions.OVERWORLD);
+		infusion_nether = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.fiery_breeze.ordinal()))), none, 60, circles(NETHER, NETHER, NETHER), 6000, 1, ModInfusions.NETHER);
+		infusion_end = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.heavenly_winds.ordinal()))), none, 60, circles(ENDER, ENDER, ENDER), 6000, 1, ModInfusions.END);
+		infusion_dream = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.zephyr_of_the_depths.ordinal()))), none, 60, circles(NORMAL, NETHER, ENDER), 6000, 1, ModInfusions.DREAM);
 		flames = new RitualFlames(new ResourceLocation(LibMod.MOD_ID, "flames"), of(Ingredient.fromItem(Items.BLAZE_ROD), Ingredient.fromItem(Items.COAL)), none, 3600, circles(NETHER, null, null), 300, 4);
 		registerAll();
 	}

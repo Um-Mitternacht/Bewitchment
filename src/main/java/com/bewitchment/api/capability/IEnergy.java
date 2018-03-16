@@ -101,12 +101,12 @@ public interface IEnergy {
 	 *
 	 * @return the corresponding EnumInfusionType
 	 */
-	EnumInfusionType getType();
+	IInfusion getType();
 
 	/**
 	 * Sets the type of infusion/attunement for this player
 	 *
 	 * @param type the corresponding EnumInfusionType
 	 */
-	void setType(EnumInfusionType type);
+	void setType(IInfusion type);
 }

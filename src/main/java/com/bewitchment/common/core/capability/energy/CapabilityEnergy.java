@@ -1,13 +1,16 @@
 package com.bewitchment.common.core.capability.energy;
 
-import com.bewitchment.api.capability.EnumInfusionType;
 import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.api.capability.IInfusion;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergyMessage;
+import com.bewitchment.common.infusion.ModInfusions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -40,7 +43,7 @@ public final class CapabilityEnergy {
 				tag.setInteger(REGEN_TIME, instance.getRegenTime());
 				tag.setInteger(REGEN_BURST, instance.getRegenBurst());
 				tag.setInteger(USES, instance.getUses());
-				tag.setInteger(TYPE, instance.getType().getMeta());
+				tag.setString(TYPE, instance.getType().getRegistryName().toString());
 				return tag;
 			}
 
@@ -51,7 +54,7 @@ public final class CapabilityEnergy {
 				instance.setMax(tag.getInteger(MAX));
 				instance.setRegen(tag.getInteger(REGEN_TIME), tag.getInteger(REGEN_BURST));
 				instance.setUses(tag.getInteger(USES));
-				instance.setType(EnumInfusionType.fromMeta(tag.getInteger(TYPE)));
+				instance.setType(ModInfusions.REGISTRY.getValue(new ResourceLocation(tag.getString(TYPE))));
 			}
 		}, DefaultEnergy::new);
 	}
@@ -64,7 +67,7 @@ public final class CapabilityEnergy {
 		private int regenBurst = 10;
 		private int uses;
 		private int tick;
-		private int type = EnumInfusionType.NONE.getMeta();
+		private String type = ModInfusions.NONE.getRegistryName().toString();
 
 		@Override
 		public boolean set(int i) {
@@ -129,13 +132,24 @@ public final class CapabilityEnergy {
 		}
 
 		@Override
-		public EnumInfusionType getType() {
-			return EnumInfusionType.fromMeta(type);
+		public IInfusion getType() {
+			if (type == null) {
+				return ModInfusions.NONE;
+			}
+			IInfusion inf = ModInfusions.REGISTRY.getValue(new ResourceLocation(type));
+			if (inf == null) {
+				return ModInfusions.NONE;
+			}
+			return inf;
 		}
 
 		@Override
-		public void setType(EnumInfusionType infusion) {
-			type = infusion.getMeta();
+		public void setType(IInfusion infusion) {
+			if (infusion == null) {
+				type = ModInfusions.NONE.getRegistryName().toString();
+			} else {
+				type = infusion.getRegistryName().toString();
+			}
 		}
 
 		@Override
