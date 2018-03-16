@@ -7,42 +7,42 @@
     "age": {
       "0": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_0"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_0"
         }
       },
       "1": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_1"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
         }
       },
       "2": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_1"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
         }
       },
       "3": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_1"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
         }
       },
       "4": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_2"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
         }
       },
       "5": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_2"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
         }
       },
       "6": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_2"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
         }
       },
       "7": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/hellebore_3"
+          "cross": "bewitchment:blocks/crop/crop_hellebore_3"
         }
       }
     }
