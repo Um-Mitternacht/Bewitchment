@@ -40,6 +40,10 @@ public final class LibItemName {
 	public static final String SEED_KENAF = "seed_kenaf";
 	public static final String THISTLE = "thistle";
 	public static final String SEED_THISTLE = "seed_thistle";
+	public static final String SAGEBRUSH = "sagebrush";
+	public static final String SEED_SAGEBRUSH = "seed_sagebrush";
+	public static final String CHRYSANTHEMUM = "chrysanthemum";
+	public static final String SEED_CHRYSANTHEMUM = "seed_chrysanthemum";
 
 	//Tools
 	public static final String SILVER_PICKAXE = "silver_pickaxe";
