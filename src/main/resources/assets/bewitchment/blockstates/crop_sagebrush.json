@@ -1,0 +1,51 @@
+{
+  "forge_marker": 1,
+  "parent": "block/cross",
+  "defaults": {
+    "model": "bewitchment:sagebrush"
+  },
+  "variants": {
+    "age": {
+      "0": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_0"
+        }
+      },
+      "1": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_0"
+        }
+      },
+      "2": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_0"
+        }
+      },
+      "3": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_1"
+        }
+      },
+      "4": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_1"
+        }
+      },
+      "5": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_2"
+        }
+      },
+      "6": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_2"
+        }
+      },
+      "7": {
+        "textures": {
+          "textureage": "bewitchment:blocks/sagebrush_3"
+        }
+      }
+    }
+  }
+}
