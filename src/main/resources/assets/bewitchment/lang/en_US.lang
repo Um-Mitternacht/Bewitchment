@@ -31,6 +31,8 @@ item.seed_garlic.name=Garlic Seeds
 item.seed_kenaf.name=Kenaf Seeds
 item.seed_wormwood.name=Wormwood Seeds
 item.seed_hellebore.name=Hellebore Seeds
+item.seed_chrysanthemum.name=Chrysanthemum Seeds
+item.seed_sagebrush.name=Sagebrush Seeds
 
 //Crops
 item.aconitum.name=Aconitum
@@ -49,6 +51,8 @@ item.kenaf.name=Kenaf
 item.garlic.name=Garlic
 item.tulsi.name=Tulsi
 item.hellebore.name=Hellebore
+item.chrysanthemum.name=Chrysanthemum
+item.sagebrush.name=Sagebrush
 
 //Gemstones
 item.gem_garnet.name=Garnet
@@ -240,6 +244,10 @@ tile.crop_garlic.name=Garlic Crop
 tile.crop_wormwood.name=Wormwood Crop
 tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
+tile.crop_chrysanthemum.name=Chrysanthemum Crop
+tile.crop_sagebrush.name=Sagebrush Crop
+
+//Misc plants
 tile.moonbell.name=Moonbell Flower
 tile.raging_grass.name=Raging Grass
 
