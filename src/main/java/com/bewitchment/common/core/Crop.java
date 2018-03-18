@@ -24,7 +24,9 @@ public enum Crop {
 	SILPHIUM(Blocks.FARMLAND),
 	GARLIC(Blocks.FARMLAND),
 	WORMWOOD(Blocks.FARMLAND),
-	HELLEBORE(Blocks.FARMLAND);
+	HELLEBORE(Blocks.FARMLAND),
+	SAGEBRUSH(Blocks.FARMLAND),
+	CHRYSANTHEMUM(Blocks.FARMLAND);
 
 	private final Block soil;
 
