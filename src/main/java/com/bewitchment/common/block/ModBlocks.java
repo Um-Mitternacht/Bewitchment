@@ -140,6 +140,8 @@ public final class ModBlocks {
 				new BlockCrop(LibBlockName.CROP_TULSI),
 				new BlockCrop(LibBlockName.CROP_GARLIC),
 				new BlockCrop(LibBlockName.CROP_HELLEBORE),
+				new BlockCrop(LibBlockName.CROP_CHRYSANTHEMUM),
+				new BlockCrop(LibBlockName.CROP_SAGEBRUSH),
 				new CropWormwood(),
 				new CropSilphium(),
 				new CropKenaf(),
