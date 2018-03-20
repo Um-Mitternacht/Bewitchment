@@ -1,11 +1,10 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.common.tile.TileEntityGlyph;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +17,7 @@ public class RitualSandsTime extends RitualImpl {
 	}
 
 	@Override
-	public void onUpdate(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 		world.setWorldTime(world.getWorldTime() + 5);
 	}
 

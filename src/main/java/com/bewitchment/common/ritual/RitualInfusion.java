@@ -5,13 +5,13 @@ import java.util.Optional;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.bewitchment.common.tile.TileEntityGlyph;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -27,9 +27,8 @@ public class RitualInfusion extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 		if (player == null) {
-			tile.stopRitual(null);
 			return;
 		}
 		Optional<IEnergy> eng = EnergyHandler.getEnergy(player);

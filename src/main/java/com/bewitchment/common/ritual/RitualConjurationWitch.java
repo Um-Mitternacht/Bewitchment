@@ -3,7 +3,6 @@ package com.bewitchment.common.ritual;
 import java.util.Optional;
 
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.tile.TileEntityGlyph;
 
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityWitch;
@@ -13,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +25,7 @@ public class RitualConjurationWitch extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 		if (!world.isRemote) {
 			EntityWitch witch = new EntityWitch(world);
 			witch.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), (float) (Math.random() * 360), 0);

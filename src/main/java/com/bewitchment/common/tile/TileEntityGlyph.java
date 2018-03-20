@@ -167,7 +167,9 @@ public class TileEntityGlyph extends TileMod implements ITickable {
 			if (hasPowerToUpdate) {
 				ritual.onUpdate(player, this, getWorld(), getPos(), ritualData, cooldown);
 			} else {
-				ritual.onLowPower(player, this, world, pos, ritualData, cooldown);
+				if (ritual.onLowPower(player, this, world, pos, ritualData, cooldown)) {
+					stopRitual(player);
+				}
 			}
 		}
 	}

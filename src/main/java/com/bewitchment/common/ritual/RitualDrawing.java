@@ -7,13 +7,13 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.tile.TileEntityGlyph;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,7 +28,7 @@ public class RitualDrawing extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(BlockCircleGlyph.TYPE, EnumGlyphType.values()[data.getInteger("chalkType")]);
 		coords.forEach(rc -> {
 			world.setBlockState(pos.add(rc[0], 0, rc[1]), state, 3);
@@ -36,7 +36,7 @@ public class RitualDrawing extends RitualImpl {
 	}
 
 	@Override
-	public void onStarted(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 		ItemStack chalk = player.getHeldItemOffhand();
 		data.setInteger("chalkType", chalk.getMetadata());
 		if (!player.isCreative()) {

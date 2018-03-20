@@ -75,8 +75,8 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 		ritual.onStarted(player, tile, world, pos, data);
 	}
 
-	public void onLowPower(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
-		ritual.onLowPower(player, tile, world, pos, data, ticks);
+	public boolean onLowPower(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+		return ritual.onLowPower(player, tile, world, pos, data, ticks);
 	}
 
 	public int getTime() {

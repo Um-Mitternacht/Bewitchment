@@ -3,12 +3,12 @@ package com.bewitchment.common.ritual;
 import javax.annotation.Nonnull;
 
 import com.bewitchment.api.ritual.IRitual;
-import com.bewitchment.common.tile.TileEntityGlyph;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -73,23 +73,24 @@ public class RitualImpl implements IRitual {
 	}
 	
 	@Override
-	public void onLowPower(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public boolean onLowPower(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+		return false;
 	}
 	
 	@Override
-	public void onStarted(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
 	
 	@Override
-	public void onStopped(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStopped(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
 	
 	@Override
-	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
 	
 	@Override
-	public void onUpdate(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 	}
 	
 	@Override

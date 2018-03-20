@@ -2,12 +2,11 @@ package com.bewitchment.common.ritual;
 
 import java.util.List;
 
-import com.bewitchment.common.tile.TileEntityGlyph;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -20,7 +19,7 @@ public class RitualHighMoon extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound tag) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound tag) {
 		if (!world.isRemote) world.setWorldTime(17600);
 	}
 

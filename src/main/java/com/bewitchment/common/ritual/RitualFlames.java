@@ -3,8 +3,6 @@ package com.bewitchment.common.ritual;
 import java.util.List;
 import java.util.Random;
 
-import com.bewitchment.common.tile.TileEntityGlyph;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -14,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -30,7 +29,7 @@ public class RitualFlames extends RitualImpl {
 	}
 
 	@Override
-	public void onUpdate(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 		if (ticks % 40 == 0) {
 			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3), ie -> !FurnaceRecipes.instance().getSmeltingResult(ie.getItem()).isEmpty());
 			smeltables.parallelStream().filter(ei -> !ei.getItem().getItem().hasContainerItem(ei.getItem())).findAny().ifPresent(e -> smeltAndSpawn(e));
