@@ -1,7 +1,10 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.ritual.IRitualHandler;
-import com.bewitchment.api.ritual.Ritual;
+import java.util.List;
+import java.util.Random;
+
+import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -18,10 +21,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
-import java.util.Random;
-
-public class RitualFlames extends Ritual {
+public class RitualFlames extends RitualImpl {
 
 	private static final Random rng = new Random();
 
@@ -30,7 +30,7 @@ public class RitualFlames extends Ritual {
 	}
 
 	@Override
-	public void onUpdate(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 		if (ticks % 40 == 0) {
 			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3), ie -> !FurnaceRecipes.instance().getSmeltingResult(ie.getItem()).isEmpty());
 			smeltables.parallelStream().filter(ei -> !ei.getItem().getItem().hasContainerItem(ei.getItem())).findAny().ifPresent(e -> smeltAndSpawn(e));

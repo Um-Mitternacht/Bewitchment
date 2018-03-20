@@ -1,8 +1,10 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.ritual.IRitualHandler;
-import com.bewitchment.api.ritual.Ritual;
+import java.util.Optional;
+
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,16 +18,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.Optional;
-
-public class RitualConjurationWitch extends Ritual {
+public class RitualConjurationWitch extends RitualImpl {
 
 	public RitualConjurationWitch(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
 		if (!world.isRemote) {
 			EntityWitch witch = new EntityWitch(world);
 			witch.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), (float) (Math.random() * 360), 0);
@@ -37,10 +37,9 @@ public class RitualConjurationWitch extends Ritual {
 	}
 
 	@Override
-	public NonNullList<ItemStack> getOutput(NBTTagCompound data) {
-		NonNullList<ItemStack> oldOutput = super.getOutput(data);
-		NonNullList<ItemStack> oldInput = getItemsUsedForInput(data);
-		Optional<ItemStack> oldAthame = oldInput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst();
+	public NonNullList<ItemStack> getOutput(NonNullList<ItemStack> input, NBTTagCompound data) {
+		NonNullList<ItemStack> oldOutput = super.getOutput(input, data);
+		Optional<ItemStack> oldAthame = input.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst();
 		if (oldAthame.isPresent()) {
 			oldOutput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 50));
 		}

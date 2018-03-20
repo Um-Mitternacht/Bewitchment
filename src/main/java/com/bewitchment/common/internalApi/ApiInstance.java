@@ -1,5 +1,7 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.Optional;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
@@ -11,6 +13,8 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
+import com.bewitchment.api.ritual.EnumGlyphType;
+import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
@@ -19,18 +23,18 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.ItemRitual;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.infusion.ModInfusions;
 import com.bewitchment.common.potion.ModPotions;
+import com.bewitchment.common.ritual.AdapterIRitual;
+import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.Spell;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -39,8 +43,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-
-import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -181,4 +183,14 @@ public class ApiInstance extends BewitchmentAPI {
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
 	}
 
+	@Override
+	public void registerCircleRitual(IRitual ritual) {
+		AdapterIRitual.REGISTRY.register(new AdapterIRitual(ritual));
+	}
+	
+	@Override
+	public int getCirclesIntegerForRitual(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType large) {
+		return ModRituals.circles(small, medium, large);
+	}
+	
 }

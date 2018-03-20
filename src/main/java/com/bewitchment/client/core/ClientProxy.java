@@ -1,6 +1,7 @@
 package com.bewitchment.client.core;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
@@ -12,7 +13,6 @@ import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.divination.TarotHandler.TarotInfo;
@@ -93,7 +93,7 @@ public class ClientProxy implements ISidedProxy {
 		blocks.registerBlockColorHandler(new IBlockColor() {
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				GlyphType type = state.getValue(BlockCircleGlyph.TYPE);
+				EnumGlyphType type = state.getValue(BlockCircleGlyph.TYPE);
 				switch (type) {
 					case ENDER:
 						return 0x770077;

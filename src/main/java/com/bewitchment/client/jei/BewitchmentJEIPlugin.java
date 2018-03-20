@@ -1,13 +1,13 @@
 package com.bewitchment.client.jei;
 
-import com.bewitchment.api.ritual.Ritual;
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.jei.components.RitualCategory;
 import com.bewitchment.client.jei.components.RitualWrapper;
 import com.bewitchment.client.jei.components.SpinnerCategory;
 import com.bewitchment.client.jei.components.SpinnerWrapper;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.spinning.SpinningThreadRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @JEIPlugin
 public class BewitchmentJEIPlugin implements IModPlugin {
-	protected static int compareRituals(Ritual a, Ritual b) {
+	protected static int compareRituals(AdapterIRitual a, AdapterIRitual b) {
 		if (a == b)
 			return 0;
 		int av = a.getInput().size() / 3;
@@ -41,16 +41,16 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void register(IModRegistry registry) {
-		registry.handleRecipes(Ritual.class, new RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
-		registry.addRecipes(Ritual.REGISTRY.getValues().stream().sorted(BewitchmentJEIPlugin::compareRituals).collect(Collectors.toList()), RitualCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModItems.ritual_chalk, 1, BlockCircleGlyph.GlyphType.GOLDEN.ordinal()), RitualCategory.UID);
+		registry.handleRecipes(AdapterIRitual.class, new RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
+		registry.addRecipes(AdapterIRitual.REGISTRY.getValues().stream().sorted(BewitchmentJEIPlugin::compareRituals).collect(Collectors.toList()), RitualCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModItems.ritual_chalk, 1, EnumGlyphType.GOLDEN.ordinal()), RitualCategory.UID);
 
 		registry.handleRecipes(SpinningThreadRecipe.class, i -> new SpinnerWrapper(i), SpinnerCategory.UID);
 		registry.addRecipes(SpinningThreadRecipe.REGISTRY.getValues(), SpinnerCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.thread_spinner), SpinnerCategory.UID);
 	}
 
-	protected static class RitualWrapperFactory implements IRecipeWrapperFactory<Ritual> {
+	protected static class RitualWrapperFactory implements IRecipeWrapperFactory<AdapterIRitual> {
 
 		private IGuiHelper igh;
 
@@ -59,7 +59,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		}
 
 		@Override
-		public IRecipeWrapper getRecipeWrapper(Ritual recipe) {
+		public IRecipeWrapper getRecipeWrapper(AdapterIRitual recipe) {
 			return new RitualWrapper(recipe, igh);
 		}
 	}

@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tools;
 
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
@@ -37,7 +38,7 @@ import java.util.*;
 public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyType TYPE = new PropertyType("type", GlyphType.class, Arrays.asList(GlyphType.values()));
+	public static final PropertyType TYPE = new PropertyType("type", EnumGlyphType.class, Arrays.asList(EnumGlyphType.values()));
 	public static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
 	protected static final AxisAlignedBB FLAT_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0025D, 1.0D);
 
@@ -45,7 +46,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		super(id, Material.GRASS);
 		this.setDefaultState(this.blockState.getBaseState()
 				.withProperty(FACING, EnumFacing.SOUTH)
-				.withProperty(TYPE, GlyphType.NORMAL)
+				.withProperty(TYPE, EnumGlyphType.NORMAL)
 				.withProperty(LETTER, 0)
 		);
 		this.setHardness(5);
@@ -53,7 +54,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		if (getStateFromMeta(meta).getValue(TYPE).equals(GlyphType.GOLDEN)) return new TileEntityGlyph();
+		if (getStateFromMeta(meta).getValue(TYPE).equals(EnumGlyphType.GOLDEN)) return new TileEntityGlyph();
 		return null;
 	}
 
@@ -71,7 +72,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean hasTileEntity(IBlockState state) {
-		return state.getValue(TYPE).equals(GlyphType.GOLDEN);
+		return state.getValue(TYPE).equals(EnumGlyphType.GOLDEN);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -147,7 +148,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		int color = meta & 3;
 		int dir = (meta >> 2) & 3;
 		return this.getDefaultState()
-				.withProperty(TYPE, GlyphType.values()[color])
+				.withProperty(TYPE, EnumGlyphType.values()[color])
 				.withProperty(FACING, EnumFacing.HORIZONTALS[dir]);
 	}
 
@@ -237,35 +238,8 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	//######################################################################################### PROPERTY STUFF
 
-	public static enum GlyphType implements IStringSerializable {
-
-		NORMAL(0), GOLDEN(-1), ENDER(2), NETHER(3), ANY(1);
-
-		int meta;
-
-		GlyphType(int metadata) {
-			meta = metadata;
-		}
-
-		public static GlyphType fromMeta(int meta) {
-			if (meta == 1 || meta == 5)
-				return ANY;
-			return values()[meta];
-		}
-
-		public int meta() {
-			return meta;
-		}
-
-		@Override
-		public String getName() {
-			return this.name().toLowerCase();
-		}
-
-	}
-
-	public static class PropertyType extends PropertyEnum<GlyphType> {
-		protected PropertyType(String name, Class<GlyphType> valueClass, Collection<GlyphType> allowedValues) {
+	public static class PropertyType extends PropertyEnum<EnumGlyphType> {
+		protected PropertyType(String name, Class<EnumGlyphType> valueClass, Collection<EnumGlyphType> allowedValues) {
 			super(name, valueClass, allowedValues);
 		}
 	}

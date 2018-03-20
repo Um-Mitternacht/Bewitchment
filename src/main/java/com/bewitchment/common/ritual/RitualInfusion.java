@@ -1,10 +1,12 @@
 package com.bewitchment.common.ritual;
 
+import java.util.Optional;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.api.ritual.IRitualHandler;
-import com.bewitchment.api.ritual.Ritual;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -15,9 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.Optional;
-
-public class RitualInfusion extends Ritual {
+public class RitualInfusion extends RitualImpl {
 
 	IInfusion type;
 
@@ -27,7 +27,7 @@ public class RitualInfusion extends Ritual {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
 		if (player == null) {
 			tile.stopRitual(null);
 			return;

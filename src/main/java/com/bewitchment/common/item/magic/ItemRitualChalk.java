@@ -1,9 +1,9 @@
 package com.bewitchment.common.item.magic;
 
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.sound.ModSounds;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -30,7 +30,7 @@ public class ItemRitualChalk extends ItemMod {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + "_" + BlockCircleGlyph.GlyphType.values()[stack.getMetadata()].name().toLowerCase();
+		return super.getUnlocalizedName(stack) + "_" + EnumGlyphType.values()[stack.getMetadata()].name().toLowerCase();
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class ItemRitualChalk extends ItemMod {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		boolean isReplacing = worldIn.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs) && worldIn.getBlockState(pos).getValue(BlockCircleGlyph.TYPE) != GlyphType.GOLDEN;
+		boolean isReplacing = worldIn.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs) && worldIn.getBlockState(pos).getValue(BlockCircleGlyph.TYPE) != EnumGlyphType.GOLDEN;
 		if (!worldIn.isRemote && (facing == EnumFacing.UP && ModBlocks.ritual_glyphs.canPlaceBlockAt(worldIn, pos.up()) || isReplacing)) {
 			ItemStack chalk = player.getHeldItem(hand);
 			if (!chalk.hasTagCompound()) {
@@ -84,7 +84,7 @@ public class ItemRitualChalk extends ItemMod {
 			}
 			IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), worldIn, pos);
 			state = state.withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]);
-			state = state.withProperty(BlockCircleGlyph.TYPE, BlockCircleGlyph.GlyphType.values()[type]);
+			state = state.withProperty(BlockCircleGlyph.TYPE, EnumGlyphType.values()[type]);
 			worldIn.setBlockState(isReplacing ? pos : pos.up(), state, 2);
 			worldIn.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.BLOCKS, 0.5f, 1f + 0.5f * player.getRNG().nextFloat());
 		}
@@ -94,7 +94,7 @@ public class ItemRitualChalk extends ItemMod {
 	@Override
 	public void registerModel() {
 		for (int meta = 0; meta < 4; meta++) {
-			ResourceLocation rl = new ResourceLocation(getRegistryName() + "_" + BlockCircleGlyph.GlyphType.values()[meta].name().toLowerCase());
+			ResourceLocation rl = new ResourceLocation(getRegistryName() + "_" + EnumGlyphType.values()[meta].name().toLowerCase());
 			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 			ModelLoader.setCustomModelResourceLocation(this, meta, mrl);
 		}

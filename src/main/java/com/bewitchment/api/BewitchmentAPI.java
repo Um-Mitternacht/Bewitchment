@@ -7,7 +7,10 @@ import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.recipe.IBrewModifier;
+import com.bewitchment.api.ritual.EnumGlyphType;
+import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -86,4 +89,8 @@ public abstract class BewitchmentAPI {
 	 * @throws UnsupportedOperationException if the player is not a vampire
 	 */
 	public abstract boolean addVampireBlood(EntityPlayer player, int amount);
+	
+	public abstract void registerCircleRitual(IRitual ritual);
+	
+	public abstract int getCirclesIntegerForRitual(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType large);
 }

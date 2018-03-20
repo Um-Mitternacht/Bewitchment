@@ -2,6 +2,7 @@ package com.bewitchment.common.infusion;
 
 import com.bewitchment.api.capability.IInfusion;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.util.ResourceLocation;
 
 public class SimpleInfusion implements IInfusion {
@@ -11,7 +12,7 @@ public class SimpleInfusion implements IInfusion {
 
 	public SimpleInfusion(String name, int dim) {
 		dimension = dim;
-		setRegistryName(new ResourceLocation(LibMod.MOD_ID, name));
+		setRegistryName(new ResourceLocation(LibMod.MOD_ID, "infusion_" + name));
 	}
 
 	@Override

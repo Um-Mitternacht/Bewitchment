@@ -1,26 +1,24 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.ritual.IRitualHandler;
-import com.bewitchment.api.ritual.Ritual;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class RitualDrawing extends Ritual {
+public class RitualDrawing extends RitualImpl {
 
 	ArrayList<int[]> coords;
 
@@ -30,15 +28,15 @@ public class RitualDrawing extends Ritual {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {
-		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(BlockCircleGlyph.TYPE, BlockCircleGlyph.GlyphType.values()[data.getInteger("chalkType")]);
+	public void onFinish(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
+		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(BlockCircleGlyph.TYPE, EnumGlyphType.values()[data.getInteger("chalkType")]);
 		coords.forEach(rc -> {
 			world.setBlockState(pos.add(rc[0], 0, rc[1]), state, 3);
 		});
 	}
 
 	@Override
-	public void onStarted(EntityPlayer player, IRitualHandler tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStarted(EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
 		ItemStack chalk = player.getHeldItemOffhand();
 		data.setInteger("chalkType", chalk.getMetadata());
 		if (!player.isCreative()) {

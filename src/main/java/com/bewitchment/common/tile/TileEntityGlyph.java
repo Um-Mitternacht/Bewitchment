@@ -1,10 +1,15 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.ritual.IRitualHandler;
-import com.bewitchment.api.ritual.Ritual;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+import com.bewitchment.common.ritual.AdapterIRitual;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -21,12 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
-public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandler {
+public class TileEntityGlyph extends TileMod implements ITickable {
 
 	public static final ArrayList<int[]> small = new ArrayList<int[]>();
 	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
@@ -77,7 +77,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		big.add(a(-5, -5));
 	}
 
-	private Ritual ritual = null; // If a ritual is active it is stored here
+	private AdapterIRitual ritual = null; // If a ritual is active it is stored here
 	private int cooldown = 0; // The times that passed since activation
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
@@ -110,7 +110,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 	protected void readDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
 		if (tag.hasKey("ritual"))
-			ritual = Ritual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
+			ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
 		if (tag.hasKey("player"))
 			entityPlayer = UUID.fromString(tag.getString("player"));
 		if (tag.hasKey("data"))
@@ -153,7 +153,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			}
 			if (ritual.getTime() <= cooldown && ritual.getTime() >= 0) {
 				ritual.onFinish(player, this, getWorld(), getPos(), ritualData);
-				for (ItemStack stack : ritual.getOutput(ritualData)) {
+				for (ItemStack stack : ritual.getOutput(AdapterIRitual.getItemsUsedForInput(ritualData), ritualData)) {
 					EntityItem ei = new EntityItem(getWorld(), getPos().getX(), getPos().up().getY(), getPos().getZ(), stack);
 					getWorld().spawnEntity(ei);
 				}
@@ -177,7 +177,7 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			return;
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
-		for (Ritual rit : Ritual.REGISTRY) { // Check every ritual
+		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe)) { // Checks of extra conditions are met
 					if (consumePower(rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
@@ -216,13 +216,13 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 			player.sendStatusMessage(new TextComponentTranslation("ritual.failure.unknown", new Object[0]), true);
 	}
 
-	private boolean hasCircles(Ritual rit) {
+	private boolean hasCircles(AdapterIRitual rit) {
 		int requiredCircles = rit.getCircles() & 3;
 		if (requiredCircles == 3)
 			return false;
-		GlyphType typeFirst = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 2 & 3);
-		GlyphType typeSecond = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 4 & 3);
-		GlyphType typeThird = BlockCircleGlyph.GlyphType.fromMeta(rit.getCircles() >> 6 & 3);
+		EnumGlyphType typeFirst = EnumGlyphType.fromMeta(rit.getCircles() >> 2 & 3);
+		EnumGlyphType typeSecond = EnumGlyphType.fromMeta(rit.getCircles() >> 4 & 3);
+		EnumGlyphType typeThird = EnumGlyphType.fromMeta(rit.getCircles() >> 6 & 3);
 		if (requiredCircles > 1)
 			if (!checkThird(typeThird)) {
 				return false;
@@ -255,15 +255,15 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		markDirty();
 	}
 
-	private boolean checkFirst(GlyphType typeFirst) {
-		GlyphType lastFound = null;
+	private boolean checkFirst(EnumGlyphType typeFirst) {
+		EnumGlyphType lastFound = null;
 		for (int[] c : small) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst) && !typeFirst.equals(GlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst) && !typeFirst.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -271,15 +271,15 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		return true;
 	}
 
-	private boolean checkSecond(GlyphType typeSecond) {
-		GlyphType lastFound = null;
+	private boolean checkSecond(EnumGlyphType typeSecond) {
+		EnumGlyphType lastFound = null;
 		for (int[] c : medium) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond) && !typeSecond.equals(GlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond) && !typeSecond.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -287,15 +287,15 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		return true;
 	}
 
-	private boolean checkThird(GlyphType typeThird) {
-		GlyphType lastFound = null;
+	private boolean checkThird(EnumGlyphType typeThird) {
+		EnumGlyphType lastFound = null;
 		for (int[] c : big) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(GlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird) && !typeThird.equals(GlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird) && !typeThird.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			GlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -303,7 +303,6 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		return true;
 	}
 
-	@Override
 	public void stopRitual(EntityPlayer player) {
 		if (ritual != null) {
 			ritual.onStopped(player, this, world, pos, ritualData);
@@ -321,7 +320,6 @@ public class TileEntityGlyph extends TileMod implements ITickable, IRitualHandle
 		return cooldown > 0;
 	}
 
-	@Override
 	public boolean consumePower(int power) {
 		if (power == 0)
 			return true;

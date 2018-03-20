@@ -1,9 +1,9 @@
 package com.bewitchment.client.jei.components;
 
-import com.bewitchment.api.ritual.Ritual;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.ritual.AdapterIRitual;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredients;
@@ -24,7 +24,7 @@ public class RitualWrapper implements IRecipeWrapper {
 	private int circles, powerStart, powerTick;
 	private String name;
 
-	public RitualWrapper(Ritual ritual, IGuiHelper igh) {
+	public RitualWrapper(AdapterIRitual ritual, IGuiHelper igh) {
 		output = ritual.getOutputRaw();
 		input = ritual.getJeiInput();
 		circles = ritual.getCircles();
@@ -59,10 +59,10 @@ public class RitualWrapper implements IRecipeWrapper {
 
 
 		int requiredCircles = circles & 3;
-		GlyphType typeFirst = BlockCircleGlyph.GlyphType.fromMeta(circles >> 2 & 3);
-		GlyphType typeSecond = BlockCircleGlyph.GlyphType.fromMeta(circles >> 4 & 3);
-		GlyphType typeThird = BlockCircleGlyph.GlyphType.fromMeta(circles >> 6 & 3);
-		color(GlyphType.GOLDEN, null, 0);
+		EnumGlyphType typeFirst = EnumGlyphType.fromMeta(circles >> 2 & 3);
+		EnumGlyphType typeSecond = EnumGlyphType.fromMeta(circles >> 4 & 3);
+		EnumGlyphType typeThird = EnumGlyphType.fromMeta(circles >> 6 & 3);
+		color(EnumGlyphType.GOLDEN, null, 0);
 
 		int dx = 53, dy = 35;
 
@@ -79,7 +79,7 @@ public class RitualWrapper implements IRecipeWrapper {
 		}
 	}
 
-	private void color(GlyphType gt, Minecraft minecraft, int circle) {
+	private void color(EnumGlyphType gt, Minecraft minecraft, int circle) {
 		switch (gt) {
 			case ENDER:
 				GlStateManager.color(0.5f, 0f, 0.5f);
@@ -103,13 +103,13 @@ public class RitualWrapper implements IRecipeWrapper {
 		int r = (int) (v % 60 / 20);
 		switch ((r + circle) % 3) {
 			case 1:
-				color(GlyphType.NORMAL, null, 0);
+				color(EnumGlyphType.NORMAL, null, 0);
 				break;
 			case 2:
-				color(GlyphType.ENDER, null, 0);
+				color(EnumGlyphType.ENDER, null, 0);
 				break;
 			case 0:
-				color(GlyphType.NETHER, null, 0);
+				color(EnumGlyphType.NETHER, null, 0);
 				break;
 			default:
 				break;

@@ -1,13 +1,19 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.ritual.Ritual;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType;
+import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
+import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
+
+import java.util.Arrays;
+
+import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.infusion.ModInfusions;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,13 +23,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
 
-import static com.bewitchment.common.block.tools.BlockCircleGlyph.GlyphType.*;
-
 public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static Ritual night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames;
 
 	public static void init() {
 
@@ -141,9 +145,8 @@ public class ModRituals {
 	}
 
 	public static void registerAll() {
-		Ritual.REGISTRY.registerAll(
-				night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames
-		);
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+		
 	}
 
 	public static NonNullList<Ingredient> of(Ingredient... list) {
@@ -160,11 +163,11 @@ public class ModRituals {
 		return new ResourceLocation(LibMod.MOD_ID, s);
 	}
 
-	public static int circles(GlyphType small, BlockCircleGlyph.GlyphType medium, BlockCircleGlyph.GlyphType big) {
+	public static int circles(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType big) {
 		if (small == null) throw new IllegalArgumentException("Cannot have the smaller circle missing");
 		if (medium == null && big != null)
 			throw new IllegalArgumentException("Cannot have null middle circle when a big circle is present");
-		if (small == GlyphType.GOLDEN || medium == GlyphType.GOLDEN || big == GlyphType.GOLDEN)
+		if (small == EnumGlyphType.GOLDEN || medium == EnumGlyphType.GOLDEN || big == EnumGlyphType.GOLDEN)
 			throw new IllegalArgumentException("No golden circles allowed");
 		int circleNum = 0;
 		if (medium != null) circleNum++;
