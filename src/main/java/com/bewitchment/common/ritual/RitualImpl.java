@@ -1,9 +1,6 @@
 package com.bewitchment.common.ritual;
 
-import javax.annotation.Nonnull;
-
 import com.bewitchment.api.ritual.IRitual;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -14,13 +11,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class RitualImpl implements IRitual {
-	
+
 	private ResourceLocation rl;
 	private int time, circles, altarStartingPower, tickPower;
 	private NonNullList<ItemStack> output;
 	private NonNullList<Ingredient> input;
-	
+
 	public RitualImpl(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		this.time = timeInTicks;
 		this.input = input;
@@ -30,34 +29,34 @@ public class RitualImpl implements IRitual {
 		this.tickPower = powerPerTick;
 		setRegistryName(registryName);
 	}
-	
+
 	@Override
 	public IRitual setRegistryName(ResourceLocation name) {
 		rl = name;
 		return this;
 	}
-	
+
 	public IRitual setRegistryName(String domain, String name) {
 		return setRegistryName(new ResourceLocation(domain, name));
 	}
-	
+
 	@Override
 	public ResourceLocation getRegistryName() {
 		return rl;
 	}
-	
+
 	@Override
 	public Class<IRitual> getRegistryType() {
 		return IRitual.class;
 	}
-	
+
 	@Override
 	public NonNullList<Ingredient> getInput() {
 		NonNullList<Ingredient> stacks = NonNullList.create();
 		stacks.addAll(input);
 		return stacks;
 	}
-	
+
 	@Override
 	public NonNullList<ItemStack> getOutputRaw() {
 		NonNullList<ItemStack> copy = NonNullList.<ItemStack>create();
@@ -66,46 +65,46 @@ public class RitualImpl implements IRitual {
 		}
 		return copy;
 	}
-	
+
 	@Override
 	public int getTime() {
 		return time;
 	}
-	
+
 	@Override
 	public boolean onLowPower(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 		return false;
 	}
-	
+
 	@Override
 	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
-	
+
 	@Override
 	public void onStopped(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
-	
+
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
 	}
-	
+
 	@Override
 	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
 	}
-	
+
 	@Override
 	public int getCircles() {
 		return circles;
 	}
-	
+
 	@Override
 	public int getRunningPower() {
 		return tickPower;
 	}
-	
+
 	@Override
 	public int getRequiredStartingPower() {
 		return altarStartingPower;
 	}
-	
+
 }

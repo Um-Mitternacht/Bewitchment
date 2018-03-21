@@ -3,7 +3,6 @@ package com.bewitchment.client.jei.components;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.AdapterIRitual;
-
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredients;
