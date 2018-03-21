@@ -1,6 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -21,10 +20,18 @@ public class HarvestEvent {
 	}
 
 	@SubscribeEvent
-	public void onHarvestDeadBush(BlockEvent.HarvestDropsEvent harvest) {
+	public void onHarvestSage(BlockEvent.HarvestDropsEvent harvest) {
 		if ((harvest.getState().getBlock() == Blocks.DEADBUSH && harvest.getWorld().rand.nextInt(150) < 25)) {
 			harvest.getDrops().clear();
 			harvest.getDrops().add(new ItemStack(ModItems.seed_white_sage, 1));
+		}
+	}
+
+	@SubscribeEvent
+	public void onHarvestSagebrush(BlockEvent.HarvestDropsEvent harvest) {
+		if ((harvest.getState().getBlock() == Blocks.DEADBUSH && harvest.getWorld().rand.nextInt(150) < 25)) {
+			harvest.getDrops().clear();
+			harvest.getDrops().add(new ItemStack(ModItems.seed_sagebrush, 1));
 		}
 	}
 
