@@ -23,7 +23,6 @@ public class HellWorldBrew extends BlockHitBrew {
 
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 
-	//Todo: Glazed Terracotta. And maybe shulker boxes.
 	@SuppressWarnings("deprecation")
 	public HellWorldBrew() {
 		stateMap.put(Blocks.GRASS_PATH, Blocks.RED_NETHER_BRICK.getDefaultState());

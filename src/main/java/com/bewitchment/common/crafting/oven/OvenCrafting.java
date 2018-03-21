@@ -14,7 +14,6 @@ import java.util.Map;
  * Created by Joseph on 11/6/2017.
  */
 
-//Todo: Add RNG for fumes, and add an optional setting for glass jars.
 public class OvenCrafting {
 
 	private static final OvenCrafting OVEN_RECIPES = new OvenCrafting();

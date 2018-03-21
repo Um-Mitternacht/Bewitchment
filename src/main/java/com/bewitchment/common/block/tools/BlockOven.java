@@ -29,8 +29,6 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  */
 public class BlockOven extends BlockMod implements ITileEntityProvider {
 
-	//Todo: Add functionality.
-
 
 	public BlockOven() {
 		super(LibBlockName.OVEN, Material.IRON);
