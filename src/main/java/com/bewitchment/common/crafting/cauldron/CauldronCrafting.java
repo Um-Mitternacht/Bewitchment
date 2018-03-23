@@ -214,15 +214,6 @@ public final class CauldronCrafting {
 		registerBrewRecipe(BrewRegistry.Brew.DRINK, new BrewEffect(ModBrews.OVERCOAT, 2500, 0)
 				, getStack(ModItems.wool_of_bat, 1, 0), ModItems.tongue_of_dog, ModItems.silver_scales, ModItems.tulsi, ModItems.dimensional_sand, Items.IRON_NUGGET, Items.NETHER_WART);
 
-		registerBrewRecipe(BrewRegistry.Brew.DRINK, new BrewEffect(ModBrews.ABSENCE, 1, 0)
-				, getStack(ModItems.salt, 1, 0), Items.BONE, Items.IRON_NUGGET, Items.NETHER_WART);
-
-		registerBrewRecipe(BrewRegistry.Brew.SPLASH, new BrewEffect(ModBrews.ABSENCE, 1, 0)
-				, getStack(ModItems.salt, 1, 0), Items.BONE, Items.IRON_NUGGET, Items.NETHER_WART, Items.GUNPOWDER);
-
-		registerBrewRecipe(BrewRegistry.Brew.LINGER, new BrewEffect(ModBrews.ABSENCE, 50, 0)
-				, getStack(ModItems.salt, 1, 0), Items.BONE, Items.IRON_NUGGET, Items.NETHER_WART, Items.DRAGON_BREATH);
-
 
 		//------------------------------------Custom Brew Creation------------------------------------//
 		registerEffect(getStack(Items.DYE, 1, 0)
@@ -416,6 +407,9 @@ public final class CauldronCrafting {
 
 		registerEffect(getStack(ModItems.wax)
 				, BrewRegistry.getDefault(ModBrews.DISROBING), false);
+
+		registerEffect(getStack(ModItems.sagebrush)
+				, BrewRegistry.getDefault(ModBrews.ABSENCE), false);
 
 		registerEffect(getStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())
 				, BrewRegistry.getDefault(ModBrews.ARROW_DEFLECTION), false);
