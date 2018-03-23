@@ -542,6 +542,10 @@ brew.demons_bane.name=Demonsbane Brew
 brew.demons_bane.desc=Damages demons and nether-based mobs
 brew.demons_bane.tooltip=Demonsbane
 
+brew.paralysis.name=Brew of Paralysis
+brew.paralysis.desc=Paralyzes a target and prevents them from moving.
+brew.paralysis.tooltip=Paralysis
+
 brew..name=
 brew..desc=
 brew..tooltip=
