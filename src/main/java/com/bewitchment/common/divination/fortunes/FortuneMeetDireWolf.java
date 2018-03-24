@@ -31,7 +31,7 @@ public class FortuneMeetDireWolf extends Fortune {
 			if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(wolf)) {
 				wolf.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				wolf.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
-				wolf.setRevengeTarget(player);
+				wolf.setAttackTarget(player);
 				player.world.spawnEntity(wolf);
 				if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
 					wolf.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
