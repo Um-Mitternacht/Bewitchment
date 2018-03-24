@@ -2,12 +2,9 @@ package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.common.divination.Fortune;
 import net.minecraft.entity.monster.EntityIllusionIllager;
-import net.minecraft.entity.monster.EntitySpellcasterIllager;
-import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 
 public class FortuneMeetIllusioner extends Fortune {
