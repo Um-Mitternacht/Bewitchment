@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -13,6 +15,7 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -30,7 +33,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -38,8 +40,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -115,13 +115,15 @@ public class VampireAbilityHandler {
 			}
 
 			// Replace hunger mechanics with blood mechanics
-			if (evt.player.ticksExisted % 80 == 0) {
-				evt.player.getFoodStats().setFoodLevel(10); // Stops autoregen
+			if (evt.player.ticksExisted % 30 == 0) {
+				evt.player.getFoodStats().setFoodLevel(10); // No healing from food
 				if (data.getBlood() == 0) {
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 2, false, false));
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 2, false, false));
 				} else {
-					evt.player.heal(4);
+					if (evt.player.getHealth() < evt.player.getMaxHealth() && BewitchmentAPI.getAPI().addVampireBlood(evt.player, -20)) {
+						evt.player.heal(1);
+					}
 				}
 
 				// Hunger drains blood
@@ -136,6 +138,10 @@ public class VampireAbilityHandler {
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, pe.getDuration(), pe.getAmplifier()));
 					evt.player.removePotionEffect(MobEffects.FIRE_RESISTANCE);
 				}
+				
+				// No need for air
+				evt.player.setAir(150);
+				
 			}
 		}
 	}
@@ -156,18 +162,6 @@ public class VampireAbilityHandler {
 			ITransformationData data = ((EntityPlayer) evt.getEntityLiving()).getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == ModTransformations.VAMPIRE) {
 				evt.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 2, false, true));
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void healControl(LivingHealEvent evt) {
-		if (evt.getEntityLiving() instanceof EntityPlayer) {
-			ITransformationData data = ((EntityPlayer) evt.getEntityLiving()).getCapability(CapabilityTransformationData.CAPABILITY, null);
-			if (data.getType() == ModTransformations.VAMPIRE) {
-				if (!BewitchmentAPI.getAPI().addVampireBlood((EntityPlayer) evt.getEntityLiving(), (int) evt.getAmount() * -20)) {
-					evt.setCanceled(true);
-				}
 			}
 		}
 	}

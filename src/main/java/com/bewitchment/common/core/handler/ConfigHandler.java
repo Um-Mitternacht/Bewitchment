@@ -9,6 +9,7 @@
 package com.bewitchment.common.core.handler;
 
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.Type;
@@ -205,6 +206,8 @@ public final class ConfigHandler {
 		public BrewHUD BREW_HUD = new BrewHUD();
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
+		@Comment("Set to false to let the vampire blood meter not be rounded")
+		public boolean roundVampireBlood = true;
 
 		public static class BrewHUD {
 			@Comment("Should the brew HUD be hidden?")
