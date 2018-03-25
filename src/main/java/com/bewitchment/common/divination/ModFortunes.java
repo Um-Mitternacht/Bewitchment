@@ -17,15 +17,13 @@ public class ModFortunes {
 	private static Fortune iron;
 	private static Fortune direwolf;
 	private static Fortune dog;
-	private static Fortune partyparrot;
 	private static Fortune parrot;
-	private static Fortune illusioner;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
 		silverfish = new FortuneMeetUberSilverfish(8, "meet_silverfish", LibMod.MOD_ID);
 		witch = new FortuneMeetWitch(5, "meet_witch", LibMod.MOD_ID);
-		dropBow = new FortuneDropBow(7, "drop_bow", LibMod.MOD_ID);
+		dropBow = new FortuneDropItem(7, "drop_item", LibMod.MOD_ID);
 		death = new FortuneDeath(1, "death", LibMod.MOD_ID);
 		treasure = new FortuneTreasure(5, "treasure", LibMod.MOD_ID);
 		shinies = new FortuneShinies(3, "shinies", LibMod.MOD_ID);
@@ -33,9 +31,7 @@ public class ModFortunes {
 		iron = new FortuneIron(7, "iron", LibMod.MOD_ID);
 		direwolf = new FortuneMeetDireWolf(5, "direwolf", LibMod.MOD_ID);
 		dog = new FortuneMeetDog(5, "dog", LibMod.MOD_ID);
-		partyparrot = new FortuneMeetPartyParrot(1, "meet_party_parrot", LibMod.MOD_ID);
 		parrot = new FortuneMeetParrot(1, "meet_parrot", LibMod.MOD_ID);
-		illusioner = new FortuneMeetIllusioner(1, "illusioner", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -51,9 +47,7 @@ public class ModFortunes {
 				iron,
 				direwolf,
 				dog,
-				partyparrot,
 				parrot,
-				illusioner,
 				merchant
 		);
 	}

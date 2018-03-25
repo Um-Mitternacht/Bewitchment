@@ -2,15 +2,15 @@ package com.bewitchment.common.divination.fortunes;
 
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumHand;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class FortuneDropBow extends Fortune {
+public class FortuneDropItem extends Fortune {
 
-	public FortuneDropBow(int weight, String name, String modid) {
+	public FortuneDropItem(int weight, String name, String modid) {
 		super(weight, name, modid);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -32,8 +32,8 @@ public class FortuneDropBow extends Fortune {
 	}
 
 	@SubscribeEvent
-	public void onArrowNock(ArrowNockEvent evt) {
-		if (evt.getEntityPlayer() != null && evt.getHand() == EnumHand.MAIN_HAND) { // Needs to check for mainhand due to how the event works
+	public void onItemUsed(RightClickItem evt) {
+		if (evt.getEntityPlayer() != null) { // Needs to check for mainhand due to how the event works
 			CapabilityDivination cap = evt.getEntityPlayer().getCapability(CapabilityDivination.CAPABILITY, null);
 			if (cap.getFortune() == this && cap.isActive()) {
 				if (evt.getEntityPlayer().dropItem(true) != null) {
@@ -42,6 +42,7 @@ public class FortuneDropBow extends Fortune {
 			}
 		}
 	}
+
 
 	@Override
 	public boolean isNegative() {
