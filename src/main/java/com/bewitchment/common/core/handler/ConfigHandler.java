@@ -9,7 +9,6 @@
 package com.bewitchment.common.core.handler;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.Type;
