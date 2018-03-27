@@ -1,24 +1,24 @@
 package com.bewitchment.client.render.tile;
 
+import java.util.Optional;
+
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import org.lwjgl.opengl.GL11;
-
-import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 09/03/2017.
@@ -70,16 +70,6 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> 
 			GlStateManager.enableLighting();
 			GlStateManager.popMatrix();
 		}
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5, y + 0.2D, z + 0.35);
-		GlStateManager.rotate(90F, 1F, 0, 0);
-
-		ItemStack stack = te.getContainer();
-		if (!stack.isEmpty()) {
-			Minecraft mc = Minecraft.getMinecraft();
-			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
-		}
-		GlStateManager.popMatrix();
 	}
 
 	private void renderWater(ResourceLocation loc) {
