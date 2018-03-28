@@ -4,8 +4,6 @@ import javax.annotation.Nullable;
 
 import com.bewitchment.common.tile.TileCauldron;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
@@ -13,14 +11,10 @@ import net.minecraftforge.fluids.FluidTank;
 public class CauldronFluidTank extends FluidTank {
 	
 	private final TileCauldron tile;
-	private final World world;
-	private final BlockPos pos;
 	
 	public CauldronFluidTank(TileCauldron tile) {
 		super(Fluid.BUCKET_VOLUME);
 		this.tile = tile;
-		this.world = tile.getWorld();
-		this.pos = tile.getPos();
 	}
 	
 	@Override
