@@ -19,6 +19,7 @@ import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.ModFortunes;
 import com.bewitchment.common.divination.ModTarots;
 import com.bewitchment.common.entity.ModEntities;
@@ -103,7 +104,7 @@ public class Bewitchment {
 		ModItems.init();
 		ModBlocks.init();
 		ModTarots.init();
-
+		CauldronRegistry.init();
 		SeedDropRegistry.init();
 		ModGen.init();
 		ModSpinningThreadRecipes.init();

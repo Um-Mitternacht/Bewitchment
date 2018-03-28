@@ -126,11 +126,11 @@ public class TileCauldron extends TileMod implements ITickable {
 	private void updateSoupStats(ItemStack stack) {
 		// TEMP CODE, TODO
 		
+		ingredients.add(stack);
 		int hunger = 0;
 		float saturation = 0;
 		float multiplier = 1;
 		float decay = 0.6f;
-		
 		for (ItemStack i : ingredients) {
 			CauldronFoodValue next = CauldronRegistry.getValue(i);
 			if (next == null) {
@@ -141,9 +141,6 @@ public class TileCauldron extends TileMod implements ITickable {
 			saturation += (next.saturation * multiplier);
 			multiplier *= decay;
 		}
-		
-		System.out.format("Soup stats:\nUses: %d\nHunger: %d\nSaturation: %d", ingredients.size(), hunger, saturation);
-		
 	}
 	
 	private void checkForCraftingRecipe() {
