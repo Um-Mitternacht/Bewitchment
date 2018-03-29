@@ -1,10 +1,17 @@
 package com.bewitchment.common.block.tools;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileCauldron;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -23,11 +30,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -119,7 +121,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		final TileCauldron tile = (TileCauldron) worldIn.getTileEntity(pos);
-		return tile != null && tile.useCauldron(playerIn, hand, playerIn.getHeldItem(hand));
+		return tile != null && tile.onCauldronRightClick(playerIn, hand, playerIn.getHeldItem(hand));
 	}
 
 	@Override

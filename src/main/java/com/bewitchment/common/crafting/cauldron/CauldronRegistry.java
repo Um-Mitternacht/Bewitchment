@@ -1,19 +1,26 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class CauldronRegistry {
 	
 	private static final HashMap<Ingredient, CauldronFoodValue> STEW_REGISTRY = new HashMap<>();
+	private static final ArrayList<CauldronCraftingRecipe> CRAFTING_REGISTRY = new ArrayList<>();
 	
 	// The less entries an Ingredient has, the higher priority it will be in the list
 	private static final Comparator<Map.Entry<Ingredient, CauldronFoodValue>> STEW_INGREDIENT_PRIORITY = Map.Entry.<Ingredient, CauldronFoodValue>comparingByKey(Comparator.comparing(i -> i.getMatchingStacks().length)).reversed();
@@ -24,9 +31,17 @@ public class CauldronRegistry {
 		}
 	}
 	
-	public static CauldronFoodValue getValue(ItemStack stack) {
+	public static void registerCauldronCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronCraftingRecipe(fluid, output, ingredients));
+	}
+	
+	public static CauldronFoodValue getCauldronFoodValue(ItemStack stack) {
 		System.out.println(stack);
 		return STEW_REGISTRY.entrySet().stream().filter(e -> e.getKey().apply(stack)).sorted(STEW_INGREDIENT_PRIORITY).map(e -> e.getValue()).peek(f -> System.out.println(f)).findFirst().orElse(null);
+	}
+	
+	public static Optional<ItemStack> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {
+		return CRAFTING_REGISTRY.stream().filter(r -> r.matches(stacks, fluid)).map(r -> r.getResult()).findFirst();
 	}
 	
 	public static void init() { // TODO tune values
@@ -70,11 +85,42 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
 		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f);
 		registerFood(new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt"), 2, 1);
-		// Why would you eat this?
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
-		// Well, if you're starving...
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
+		
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET), noMeta(Items.LEATHER_HELMET));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE), noMeta(Items.LEATHER_CHESTPLATE));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS), noMeta(Items.LEATHER_LEGGINGS));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS), noMeta(Items.LEATHER_BOOTS));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.SHIELD), noMeta(Items.SHIELD));
+		// Miscellaneous water-based recipes
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Blocks.STICKY_PISTON, 1, 0), Ingredient.fromStacks(new ItemStack(Blocks.PISTON, 1, 0)));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Blocks.SPONGE, 1, 1), Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0)));
+		// Cooking with Oil
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_PORKCHOP), Ingredient.fromItem(Items.PORKCHOP));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_MUTTON), Ingredient.fromItem(Items.MUTTON));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_RABBIT), Ingredient.fromItem(Items.RABBIT));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_CHICKEN), Ingredient.fromItem(Items.CHICKEN));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_BEEF), Ingredient.fromItem(Items.BEEF));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_FISH), Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 0)));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.BAKED_POTATO), Ingredient.fromItem(Items.POTATO));
+		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.FISH, 1, 1), Ingredient.fromStacks(new ItemStack(Items.COOKED_FISH, 1, 1)));
+		// Cooking and Processing with Water
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.wax), Ingredient.fromItem(ModItems.empty_honeycomb));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.honey), Ingredient.fromItem(ModItems.honeycomb));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), Ingredient.fromItem(ModItems.hoof));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 6, 0), Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0)));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.absinthe_green), Ingredient.fromStacks(new ItemStack(ModItems.wormwood, 1, 0)));
+		// Banner pattern removal
+		for (int i = 0; i < 16; i++) {
+			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
+		}
+		
+	}
+	
+	private static Ingredient noMeta(Item i) {
+		return Ingredient.fromStacks(new ItemStack(i, 1, OreDictionary.WILDCARD_VALUE));
 	}
 	
 	private static void registerFood(Ingredient ingredient, int hunger, float saturation) {

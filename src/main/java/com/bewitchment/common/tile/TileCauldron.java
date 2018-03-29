@@ -22,25 +22,27 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 public class TileCauldron extends TileMod implements ITickable {
 	
-	private static final int MAX_HEAT = 20, BOILING_POINT = 15;
-
-	private int currentColorRGB = 0x12193b;
+	private static final int MAX_HEAT = 40, BOILING_POINT = 30, CRAFTING_TIME = 100, DEFAULT_COLOR = 0x12193b;
+	
 	private Mode mode = Mode.IDLE;
 	private List<ItemStack> ingredients = new ArrayList<>();
-	private int heat = 0;
-	private int ticks = 0;
 	private AxisAlignedBB collectionZone;
 	private CauldronFluidTank tank;
+	
+	private int currentColorRGB = DEFAULT_COLOR;
+	private int heat = 0;
+	private int progress = 0;
+	private boolean lockInput = false;
+
 
 	public enum Mode {
 		
-		IDLE(false), FAILING(false), BREW(true), CRAFTING(true), COOKING(true);
+		IDLE(false), FAILING(false), BREW(true), CRAFTING(true), STEW(true);
 		
 		private boolean failable;
 		
@@ -56,42 +58,74 @@ public class TileCauldron extends TileMod implements ITickable {
 	public TileCauldron() {
 		collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65D, 1);
 		tank = new CauldronFluidTank(this);
-		tank.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
 	}
 	
 	@Override
 	public void update() {
-		if (!world.isRemote) {
-			if (ticks % 10 == 0) {
+		if (!world.isRemote) { // ----------- Server side
+			if (world.getTotalWorldTime() % 5 == 0) {
 				handleHeatAndBoilingStatus();
-				if (isBoiling()) {
+				if (isBoiling() && !lockInput) {
 					ItemStack stack = gatherNextItemFromTop();
 					if (!stack.isEmpty()) {
 						processNextItem(stack);
 					}
 				}
 			}
-			ticks++;
-		} else {
-			float level = tank.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
-			level = getPos().getY() + 0.1F + level;
-			for (int i = 0; i < 2; i++) {
-				double posX = getPos().getX() + 0.2D + world.rand.nextDouble() * 0.6D;
-				double posZ = getPos().getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
-				Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, level, posZ, 0, 0, 0, currentColorRGB);
+			
+			if ((mode == Mode.CRAFTING && lockInput) || mode == Mode.STEW) {
+				if (progress < CRAFTING_TIME) {
+					progress++; // TODO Should this require ME?
+					markDirty();
+				} else {
+					if (mode == Mode.CRAFTING) {
+						CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients).ifPresent(stack -> {
+							EntityItem result = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+							world.spawnEntity(result);
+						});
+						reset();
+					}
+				}
 			}
-			if (ticks % 2 == 0 && hasIngredients()) {
-				final float x = getPos().getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
-				final float z = getPos().getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
-				Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);
+			
+		} else { // ----------- Client side
+			if (isBoiling() && tank.getInnerFluid() == FluidRegistry.WATER) {
+				float level = tank.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
+				level = getPos().getY() + 0.1F + level;
+				for (int i = 0; i < 2; i++) {
+					double posX = getPos().getX() + 0.2D + world.rand.nextDouble() * 0.6D;
+					double posZ = getPos().getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
+					Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, level, posZ, 0, 0, 0, currentColorRGB);
+				}
+				if (world.getTotalWorldTime() % 2 == 0 && hasIngredients()) {
+					final float x = getPos().getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
+					final float z = getPos().getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
+					Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);
+				}
 			}
 		}
 	}
 	
+	private void reset() {
+		tank.setFluid(null);
+		tank.setCanDrain(true);
+		tank.setCanFill(true);
+		lockInput = false;
+		ingredients.clear();
+		mode = Mode.IDLE;
+		heat = 0;
+		currentColorRGB = DEFAULT_COLOR;
+		markDirty();
+	}
+	
+
 	private void processNextItem(ItemStack stack) {
 		switch (mode) {
 			case IDLE: {
 				mode = getModeForFirstItem(stack);
+				tank.setCanDrain(false);
+				tank.setCanFill(false);
+				processNextItem(stack); // Now actually pass it to the correct mode handler
 				break;
 			}
 			case CRAFTING: {
@@ -99,7 +133,7 @@ public class TileCauldron extends TileMod implements ITickable {
 				checkForCraftingRecipe();
 				break;
 			}
-			case COOKING: {
+			case STEW: {
 				updateSoupStats(stack);
 				break;
 			}
@@ -120,21 +154,21 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	private void updateBrew() {
-		// TODO Auto-generated method stub
+		progress = 0;
 	}
 	
 	private void updateSoupStats(ItemStack stack) {
 		// TEMP CODE, TODO
-		
+		progress = 0;
 		ingredients.add(stack);
 		int hunger = 0;
 		float saturation = 0;
 		float multiplier = 1;
 		float decay = 0.6f;
 		for (ItemStack i : ingredients) {
-			CauldronFoodValue next = CauldronRegistry.getValue(i);
+			CauldronFoodValue next = CauldronRegistry.getCauldronFoodValue(i);
 			if (next == null) {
-				Bewitchment.logger.warn("Not a valid food, this shouldn't happen!");
+				Bewitchment.logger.warn("Not a valid food, this shouldn't happen! Report to https://github.com/Um-Mitternacht/Bewitchment/issues");
 				return;
 			}
 			hunger += (next.hunger * multiplier);
@@ -144,13 +178,17 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	private void checkForCraftingRecipe() {
-		// TODO Auto-generated method stub
+		FluidStack fs = tank.getFluid();
+		Optional<ItemStack> result = CauldronRegistry.getCraftingResult(fs, new ArrayList<>(ingredients));
+		if (result.isPresent()) {
+			lockInput = true;
+		}
 	}
 	
 	private Mode getModeForFirstItem(ItemStack stack) {
-		if (stack.getItem() instanceof ItemFood) {
-			return Mode.COOKING;
-		} else if (stack.getItem() == Items.NETHER_WART) {
+		if (stack.getItem() instanceof ItemFood && tank.getInnerFluid() == FluidRegistry.WATER) {
+			return Mode.STEW;
+		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
 			return Mode.BREW;
 		}
 		return Mode.CRAFTING;
@@ -171,23 +209,27 @@ public class TileCauldron extends TileMod implements ITickable {
 	
 	private void handleHeatAndBoilingStatus() {
 		if (tank.isEmpty()) {
-			heat = 0;
-			mode = Mode.IDLE;
-			ingredients.clear();
-			markDirty();
+			reset();
 		} else {
-			if (isAboveFlame()) {
+			if (tank.getInnerFluid().getTemperature() > 1000) { // Hot liquids are hot
 				if (heat < MAX_HEAT) {
-					heat++;
+					heat = MAX_HEAT;
 					markDirty();
 				}
 			} else {
-				if (heat > 0) {
-					heat--;
-					if (mode.canFail() && heat < BOILING_POINT) {
-						mode = Mode.FAILING;
+				if (isAboveFlame()) {
+					if (heat < MAX_HEAT) {
+						heat++;
+						markDirty();
 					}
-					markDirty();
+				} else {
+					if (heat > 0) {
+						heat--;
+						if (mode.canFail() && heat < BOILING_POINT) {
+							mode = Mode.FAILING;
+						}
+						markDirty();
+					}
 				}
 			}
 		}
@@ -203,8 +245,13 @@ public class TileCauldron extends TileMod implements ITickable {
 		// TODO
 	}
 	
-	public boolean useCauldron(EntityPlayer playerIn, EnumHand hand, ItemStack heldItem) {
-		return false; // TODO
+	public boolean onCauldronRightClick(EntityPlayer playerIn, EnumHand hand, ItemStack heldItem) {
+		if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
+			return true;
+		}
+		// TODO
+		return false;
 	}
 	
 	public int getColorRGB() {
@@ -258,7 +305,6 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	public void onLiquidChange() {
-		// TODO check if recipe should be voided
 		markDirty();
 	}
 }
