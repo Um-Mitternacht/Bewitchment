@@ -7,8 +7,6 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * This class was created by Arekkuusu on 08/03/2017.
@@ -18,45 +16,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class TileMod extends TileEntity {
 
 	@Override
-	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
-		super.readFromNBT(par1nbtTagCompound);
-		readDataNBT(par1nbtTagCompound);
+	public void readFromNBT(NBTTagCompound tag) {
+		super.readFromNBT(tag);
+		readAllModDataNBT(tag);
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound par1nbtTagCompound) {
-		final NBTTagCompound ret = super.writeToNBT(par1nbtTagCompound);
-		writeDataNBT(ret);
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		final NBTTagCompound ret = super.writeToNBT(tag);
+		writeAllModDataNBT(ret);
 		return ret;
 	}
 
 	@Override
 	public final SPacketUpdateTileEntity getUpdatePacket() {
-		final NBTTagCompound tag = getUpdateTag();
-		writeDataNBT(tag);
-		return new SPacketUpdateTileEntity(pos, 0, tag);
+		return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * By making this final we would prevent stripping useless nbt data from a (frequently sent)
-	 * network packet, which is of course bad. For example, in the thread spinner tile entity,
-	 * the NBT tag carries way more information than what the clients need to know to function
-	 * properly. I'm removing the final modifier to allow a lighter network load. I'll probably
-	 * rework the base class in the future to have two methods that only read and write sync-data
-	 * 
-	 * - zabi
-	 */
 	@Override
 	public NBTTagCompound getUpdateTag() {
-		return writeToNBT(new NBTTagCompound());
+		NBTTagCompound tag = super.getUpdateTag();
+		writeModSyncDataNBT(tag);
+		return tag;
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-		super.onDataPacket(net, packet);
-		readDataNBT(packet.getNbtCompound());
+		handleUpdateTag(packet.getNbtCompound());
+	}
+	
+	@Override
+	public void handleUpdateTag(NBTTagCompound tag) {
+		readModSyncDataNBT(tag);
 	}
 
 	@Override
@@ -64,7 +55,16 @@ public abstract class TileMod extends TileEntity {
 		return oldState.getBlock() != newState.getBlock();
 	}
 
-	abstract void readDataNBT(NBTTagCompound cmp);
+	abstract void readAllModDataNBT(NBTTagCompound cmp);
 
-	abstract void writeDataNBT(NBTTagCompound cmp);
+	abstract void writeAllModDataNBT(NBTTagCompound cmp);
+	
+	abstract void writeModSyncDataNBT(NBTTagCompound tag);
+	
+	abstract void readModSyncDataNBT(NBTTagCompound tag);
+	
+	public void syncToClient() {
+		IBlockState state = world.getBlockState(pos);
+		world.notifyBlockUpdate(pos, state, state, 3);
+	}
 }

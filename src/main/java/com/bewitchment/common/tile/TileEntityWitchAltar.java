@@ -1,10 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.HashMap;
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -20,10 +26,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Optional;
 
 public class TileEntityWitchAltar extends TileMod implements ITickable {
 
@@ -44,7 +46,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void readDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
 		power = tag.getInteger("power");
 		maxPower = tag.getInteger("maxPower");
 		gain = tag.getInteger("gain");
@@ -52,7 +54,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void writeDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("power", power);
 		tag.setInteger("gain", gain);
 		tag.setInteger("maxPower", maxPower);
@@ -67,7 +69,6 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 				refreshTimer = 0;
 				refreshNature();
 				markDirty();
-				world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 			}
 		}
 		power += gain;
@@ -291,4 +292,14 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 		return newState.getBlock() != ModBlocks.witch_altar || newState.getValue(BlockWitchAltar.ALTAR_TYPE) != AltarMultiblockType.TILE;
 	}
 
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("color", color);
+	}
+	
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		color = tag.getInteger("color");
+	}
+	
 }

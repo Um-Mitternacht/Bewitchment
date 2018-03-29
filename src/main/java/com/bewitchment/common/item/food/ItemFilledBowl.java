@@ -1,8 +1,14 @@
 package com.bewitchment.common.item.food;
 
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
+
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,9 +19,6 @@ import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemFilledBowl extends ItemModFood {
 
@@ -39,18 +42,19 @@ public class ItemFilledBowl extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if (stack.getTagCompound() == null) {
-			stack.setTagCompound(new NBTTagCompound()); //including this again because issues with crashing
-		}
-		NBTTagCompound nbt = stack.getTagCompound();
-		if (nbt.getInteger("hunger") == 0) {
-			float roundedSaturation = Math.round(nbt.getFloat("saturation") * 10) / 10;
-			tooltip.add(I18n.format("item.stew.desc2", nbt.getInteger("hunger"), roundedSaturation));
-			if (nbt.getInteger("hunger") == 0) {
-				tooltip.add(I18n.format("item.stew.desc3"));
+		if (stack.hasTagCompound()) {
+			NBTTagCompound nbt = stack.getTagCompound();
+			if (nbt.getInteger("hunger") > 0) {
+				float roundedSaturation = Math.round(nbt.getFloat("saturation") * 10) / 10;
+				tooltip.add(I18n.format("item.stew.description.generic"));
+				if (GuiScreen.isShiftKeyDown()) {
+					tooltip.add(I18n.format("item.stew.description.precise", nbt.getInteger("hunger"), roundedSaturation));
+				}
 			} else {
-				tooltip.add(I18n.format("item.stew.desc1"));
+				tooltip.add(I18n.format("item.stew.description.empty"));
 			}
+		} else {
+			tooltip.add(I18n.format("item.stew.description.empty"));
 		}
 	}
 }

@@ -36,8 +36,7 @@ public class CauldronRegistry {
 	}
 	
 	public static CauldronFoodValue getCauldronFoodValue(ItemStack stack) {
-		System.out.println(stack);
-		return STEW_REGISTRY.entrySet().stream().filter(e -> e.getKey().apply(stack)).sorted(STEW_INGREDIENT_PRIORITY).map(e -> e.getValue()).peek(f -> System.out.println(f)).findFirst().orElse(null);
+		return STEW_REGISTRY.entrySet().stream().filter(e -> e.getKey().apply(stack)).sorted(STEW_INGREDIENT_PRIORITY).map(e -> e.getValue()).findFirst().orElse(null);
 	}
 	
 	public static Optional<ItemStack> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {

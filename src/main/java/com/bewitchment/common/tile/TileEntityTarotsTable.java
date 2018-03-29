@@ -1,17 +1,18 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import javax.annotation.Nonnull;
 
 public class TileEntityTarotsTable extends TileMod { // No ticking
 
@@ -23,11 +24,11 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 	}
 
 	@Override
-	void readDataNBT(NBTTagCompound cmp) {
+	void readAllModDataNBT(NBTTagCompound cmp) {
 	}
 
 	@Override
-	void writeDataNBT(NBTTagCompound cmp) {
+	void writeAllModDataNBT(NBTTagCompound cmp) {
 	}
 
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
@@ -55,4 +56,12 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 		return te.consumePower(power, simulate);
 	}
 
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+	}
+	
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
+	}
+	
 }
