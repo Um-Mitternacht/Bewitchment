@@ -6,10 +6,7 @@ import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
 import com.bewitchment.common.block.misc.BlockGoblet;
-import com.bewitchment.common.block.natural.BlockBeehive;
-import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.block.natural.BlockSaltOre;
-import com.bewitchment.common.block.natural.BlockSilverOre;
+import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -120,6 +117,8 @@ public final class ModBlocks {
 	public static final Block goblet = PLACE_HOLDER;
 	public static final Block tarot_table = PLACE_HOLDER;
 
+	public static final Block infested_farmland = PLACE_HOLDER;
+
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
 
@@ -151,7 +150,8 @@ public final class ModBlocks {
 				new CropKelp(),
 				new CropBelladonna(),
 				new CropMint(),
-				new BlockMoonbell()
+				new BlockMoonbell(),
+				new BlockInfestedFarmland()
 		);
 		//Ore
 		registry.register(new BlockSilverOre());

@@ -34,6 +34,8 @@ public final class LibBlockName {
 	public static final String CROP_CHRYSANTHEMUM = "crop_chrysanthemum";
 	public static final String CROP_SAGEBRUSH = "crop_sagebrush";
 
+	public static final String INFESTED_FARMLAND = "infested_farmland";
+
 	public static final String GEM_ORE = "gem_ore";
 	public static final String SILVER_ORE = "silver_ore";
 	public static final String SILVER_BLOCK = "silver_block";
