@@ -95,7 +95,7 @@ public class BlockInfestedFarmland extends BlockMod implements IGrowable {
 
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
+		return true;
 
 	}
 }
