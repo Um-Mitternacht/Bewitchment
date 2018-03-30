@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
@@ -16,22 +16,27 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 public class TileCauldron extends TileMod implements ITickable {
 	
-	private static final int MAX_HEAT = 40, BOILING_POINT = 30, CRAFTING_TIME = 100, DEFAULT_COLOR = 0x12193b;
+	public static final int MAX_HEAT = 40, BOILING_POINT = 25, CRAFTING_TIME = 100, DEFAULT_COLOR = 0x42499b;
 	
 	private Mode mode = Mode.IDLE;
-	private List<ItemStack> ingredients = new ArrayList<>();
+	private NonNullList<ItemStack> ingredients = NonNullList.create();
 	private AxisAlignedBB collectionZone;
 	private CauldronFluidTank tank;
 	
@@ -39,21 +44,9 @@ public class TileCauldron extends TileMod implements ITickable {
 	private int heat = 0;
 	private int progress = 0;
 	private boolean lockInputForCrafting = false;
-
-
+	
 	public enum Mode {
-		
-		IDLE(false), FAILING(false), BREW(true), CRAFTING(true), STEW(true);
-		
-		private boolean failable;
-		
-		Mode(boolean failable) {
-			this.failable = failable;
-		}
-		
-		public boolean canFail() {
-			return failable;
-		}
+		IDLE, FAILING, BREW, CRAFTING, STEW, LAVA;
 	}
 	
 	public TileCauldron() {
@@ -63,48 +56,42 @@ public class TileCauldron extends TileMod implements ITickable {
 	
 	@Override
 	public void update() {
-		if (!world.isRemote) { // ----------- Server side
+		if (!world.isRemote) { 
 			if (world.getTotalWorldTime() % 5 == 0) {
 				handleHeatAndBoilingStatus();
-				if (isBoiling() && !lockInputForCrafting) {
-					ItemStack stack = gatherNextItemFromTop();
-					if (!stack.isEmpty()) {
-						processNextItem(stack);
-					}
-				}
+				handleItemCollisions();
 			}
-			
-			if ((mode == Mode.CRAFTING && lockInputForCrafting) || mode == Mode.STEW) {
-				if (progress < CRAFTING_TIME) {
-					progress++; // TODO Should this require ME?
-					markDirty();
-				} else {
-					if (mode == Mode.CRAFTING) {
-						CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients).ifPresent(stack -> {
-							EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);
-							world.spawnEntity(result);
-						});
-						reset();
-					}
-					syncToClient();
+			handleCraftingProgress();
+		}
+	}
+	
+	private void handleCraftingProgress() {
+		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || getMode() == Mode.STEW) {
+			if (progress < CRAFTING_TIME) {
+				progress++; // TODO Should this require ME?
+				markDirty();
+			} else {
+				if (getMode() == Mode.CRAFTING) {
+					CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients).ifPresent(stack -> {
+						EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);
+						world.spawnEntity(result);
+					});
+					ingredients.clear();
+					tank.setCanDrain(true);
+					tank.setCanDrain(true);
+					mode = Mode.IDLE;
+					lockInputForCrafting = false;
 				}
+				syncToClient();
 			}
-			
-		} else { // ----------- Client side
-			float level = tank.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
-			level = getPos().getY() + 0.1F + level;
-			if (isBoiling()) {
-				for (int i = 0; i < 2; i++) {
-					double posX = getPos().getX() + 0.2D + world.rand.nextDouble() * 0.6D;
-					double posZ = getPos().getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
-					Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, level, posZ, 0, 0, 0, currentColorRGB);
-				}
-			}
-			
-			if (mode == Mode.CRAFTING || (mode == Mode.STEW && progress >= CRAFTING_TIME)) {
-				final float x = getPos().getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
-				final float z = getPos().getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
-				Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);
+		}
+	}
+	
+	private void handleItemCollisions() {
+		if (isBoiling() && !lockInputForCrafting) {
+			ItemStack stack = gatherNextItemFromTop();
+			if (!stack.isEmpty()) {
+				processNextItem(stack);
 			}
 		}
 	}
@@ -115,7 +102,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		tank.setCanFill(true);
 		lockInputForCrafting = false;
 		ingredients.clear();
-		mode = Mode.IDLE;
+		setMode(Mode.IDLE);
 		heat = 0;
 		currentColorRGB = DEFAULT_COLOR;
 		markDirty();
@@ -125,16 +112,20 @@ public class TileCauldron extends TileMod implements ITickable {
 
 	private void processNextItem(ItemStack stack) {
 		boolean flag = ingredients.isEmpty();
-		switch (mode) {
+		switch (getMode()) {
 			case IDLE: {
-				mode = getModeForFirstItem(stack);
+				setMode(getModeForFirstItem(stack));
 				tank.setCanDrain(false);
 				tank.setCanFill(false);
 				processNextItem(stack); // Now actually pass it to the correct mode handler
 				break;
 			}
 			case CRAFTING: {
-				ingredients.add(stack);
+				if (tank.getInnerFluid() != FluidRegistry.LAVA) {
+					ingredients.add(stack);
+				} else if (tank.getInnerFluid() == FluidRegistry.WATER) {
+					blendColor(0xFF000000 | (0x10000 * this.world.rand.nextInt(0xFF)) | (0x100 * this.world.rand.nextInt(0xFF)) | (this.world.rand.nextInt(0xFF)), 0.15f);
+				}
 				checkForCraftingRecipe();
 				break;
 			}
@@ -143,10 +134,10 @@ public class TileCauldron extends TileMod implements ITickable {
 				if (CauldronRegistry.getCauldronFoodValue(stack) != null) {
 					ingredients.add(stack);
 				} else {
-					mode = Mode.FAILING;
+					setMode(Mode.FAILING);
 				}
 				if (ingredients.size() > 10) {
-					mode = Mode.FAILING;
+					setMode(Mode.FAILING);
 				}
 				break;
 			}
@@ -159,6 +150,12 @@ public class TileCauldron extends TileMod implements ITickable {
 				updateBrew();
 				break;
 			}
+			case LAVA: {
+				tank.setCanDrain(true);
+				tank.setCanFill(true);
+				handleExplosivesInLava(stack);
+				break;
+			}
 			default: {
 				break;
 			}
@@ -168,13 +165,22 @@ public class TileCauldron extends TileMod implements ITickable {
 		}
 		markDirty();
 	}
+
+	private void handleExplosivesInLava(ItemStack stack) {
+		if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
+			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 1, true); // FIXME
+		} else if (stack.getItem() == Item.getItemFromBlock(Blocks.TNT)) {
+			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 3, true); // FIXME I have no idea why it's not working tbh...
+		} else if (stack.getItem() == Items.FIREWORKS || stack.getItem() == Items.FIREWORK_CHARGE) {
+			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 3, true); // FIXME + TODO Make firework go off
+		}
+	}
 	
 	private void updateBrew() {
 		progress = 0;
 	}
 	
 	private ItemStack getSoup() {
-		// TEMP CODE, TODO
 		int hunger = 0;
 		float saturation = 0;
 		float multiplier = 1;
@@ -186,7 +192,7 @@ public class TileCauldron extends TileMod implements ITickable {
 			CauldronFoodValue next = CauldronRegistry.getCauldronFoodValue(i);
 			if (next == null) {
 				Bewitchment.logger.warn(i + " is not a valid food, this shouldn't happen! Report to https://github.com/Um-Mitternacht/Bewitchment/issues");
-				mode = Mode.FAILING;
+				setMode(Mode.FAILING);
 				return ItemStack.EMPTY;
 			}
 			hunger += (next.hunger * multiplier);
@@ -214,6 +220,9 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	private Mode getModeForFirstItem(ItemStack stack) {
+		if (tank.getInnerFluid() == FluidRegistry.LAVA) {
+			return Mode.LAVA;
+		}
 		if (CauldronRegistry.getCauldronFoodValue(stack) != null && tank.getInnerFluid() == FluidRegistry.WATER) {
 			return Mode.STEW;
 		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
@@ -252,8 +261,8 @@ public class TileCauldron extends TileMod implements ITickable {
 				} else {
 					if (heat > 0) {
 						heat--;
-						if (mode.canFail() && heat < BOILING_POINT) {
-							mode = Mode.FAILING;
+						if (ingredients.size() > 0 && heat < BOILING_POINT) {
+							setMode(Mode.FAILING);
 						}
 						markDirty();
 					}
@@ -266,13 +275,26 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	@Override
-	void readAllModDataNBT(NBTTagCompound cmp) {
-		// TODO
+	void readAllModDataNBT(NBTTagCompound tag) {
+		mode = Mode.values()[tag.getInteger("mode")];
+		progress = tag.getInteger("progress");
+		heat = tag.getInteger("heat");
+		currentColorRGB = tag.getInteger("color");
+		lockInputForCrafting = tag.getBoolean("lock");
+		tank.readFromNBT(tag.getCompoundTag("tank"));
+		ingredients.clear();
+		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
 	}
 	
 	@Override
-	void writeAllModDataNBT(NBTTagCompound cmp) {
-		// TODO
+	void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setInteger("mode", mode.ordinal());
+		tag.setInteger("progress", progress);
+		tag.setInteger("heat", heat);
+		tag.setInteger("color", currentColorRGB);
+		tag.setBoolean("lock", lockInputForCrafting);
+		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
+		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), ingredients));
 	}
 	
 	public boolean onCauldronRightClick(EntityPlayer playerIn, EnumHand hand, ItemStack heldItem) {
@@ -281,7 +303,7 @@ public class TileCauldron extends TileMod implements ITickable {
 				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
 				return true;
 			}
-			if (heldItem.getItem() == Items.BOWL && mode == Mode.STEW && progress >= CRAFTING_TIME) {
+			if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= CRAFTING_TIME) {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
@@ -295,8 +317,14 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	public int getColorRGB() {
-		if (mode == Mode.FAILING) {
+		if (getMode() == Mode.FAILING) {
 			return 0xb1d626; // Vomit color basically
+		}
+		if (tank.getInnerFluid() == Fluids.BW_HONEY) {
+			return 0x8b720a;
+		}
+		if (tank.getInnerFluid() == Fluids.MUNDANE_OIL) {
+			return 0x508030;
 		}
 		return currentColorRGB;
 	}
@@ -333,6 +361,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		int B = ((int) (aB * iRatio) + (int) (bB * ratio));
 		
 		currentColorRGB = A << 24 | R << 16 | G << 8 | B;
+		syncToClient();
 	}
 	
 	private boolean isAboveFlame() {
@@ -357,7 +386,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		tag.setInteger("progress", progress);
 		tag.setInteger("color", currentColorRGB);
 		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
-		tag.setInteger("mode", mode.ordinal());
+		tag.setInteger("mode", getMode().ordinal());
 	}
 	
 	@Override
@@ -370,7 +399,7 @@ public class TileCauldron extends TileMod implements ITickable {
 			ingredients.clear();
 			ingredients.add(ItemStack.EMPTY); // Makes the list not empty
 		}
-		mode = Mode.values()[tag.getInteger("mode")];
+		setMode(Mode.values()[tag.getInteger("mode")]);
 	}
 	
 	private void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
@@ -379,5 +408,21 @@ public class TileCauldron extends TileMod implements ITickable {
 		} else if (player instanceof EntityPlayerMP) {
 			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
 		}
+	}
+	
+	public CauldronFluidTank getTank() {
+		return tank;
+	}
+	
+	public Mode getMode() {
+		return mode;
+	}
+	
+	public void setMode(Mode mode) {
+		this.mode = mode;
+	}
+	
+	public int getProgress() {
+		return progress;
 	}
 }
