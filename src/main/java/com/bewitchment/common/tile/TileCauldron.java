@@ -98,8 +98,12 @@ public class TileCauldron extends TileMod implements ITickable {
 					tank.drain(250, true);
 					tank.setCanDrain(false);
 					progress = 0;
-					markDirty();
-					syncToClient();
+					if (tank.isEmpty()) {
+						reset();
+					} else {
+						markDirty();
+						syncToClient();
+					}
 				}
 				
 			}
@@ -147,6 +151,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		if (stack.getItem() == ModItems.wood_ash) {
 			setMode(Mode.CLEANING);
 			lockInputForCrafting = true;
+			tank.setFluid(new FluidStack(FluidRegistry.WATER, tank.getFluidAmount()));
 			tank.setCanDrain(false);
 			tank.setCanFill(false);
 			currentColorRGB = 0xFF00FF;
