@@ -34,7 +34,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 public class TileCauldron extends TileMod implements ITickable {
 	
-	public static final int MAX_HEAT = 40, BOILING_POINT = 25, CRAFTING_TIME = 100, DEFAULT_COLOR = 0x42499b;
+	public static final int MAX_HEAT = 40, BOILING_POINT = 25, DEFAULT_COLOR = 0x42499b;
 	
 	private Mode mode = Mode.IDLE;
 	private NonNullList<ItemStack> ingredients = NonNullList.create();
@@ -47,7 +47,17 @@ public class TileCauldron extends TileMod implements ITickable {
 	private boolean lockInputForCrafting = false;
 	
 	public static enum Mode {
-		IDLE, FAILING, BREW, CRAFTING, STEW, LAVA;
+		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0);
+		
+		private int time;
+		
+		private Mode(int time) {
+			this.time = time;
+		}
+		
+		public int getTime() {
+			return time;
+		}
 	}
 	
 	public TileCauldron() {
@@ -68,7 +78,7 @@ public class TileCauldron extends TileMod implements ITickable {
 	
 	private void handleCraftingProgress() {
 		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || getMode() == Mode.STEW) {
-			if (progress < CRAFTING_TIME) {
+			if (progress < getMode().getTime()) {
 				progress++; // TODO Should this require ME?
 				markDirty();
 			} else {
@@ -315,7 +325,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		if (!playerIn.world.isRemote) {
 			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
-			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= CRAFTING_TIME) {
+			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= getMode().getTime()) {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
@@ -331,7 +341,7 @@ public class TileCauldron extends TileMod implements ITickable {
 					syncToClient();
 					markDirty();
 				}
-			} else if (heldItem.getItem() == Items.POTIONITEM && Mode.BREW == mode && progress >= CRAFTING_TIME) {
+			} else if (heldItem.getItem() == Items.POTIONITEM && Mode.BREW == getMode() && progress >= getMode().getTime()) {
 				createAndGiveBrew(playerIn);
 			}
 		}
