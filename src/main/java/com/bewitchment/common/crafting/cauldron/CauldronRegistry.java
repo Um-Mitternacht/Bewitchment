@@ -39,8 +39,8 @@ public class CauldronRegistry {
 		return STEW_REGISTRY.entrySet().stream().filter(e -> e.getKey().apply(stack)).sorted(STEW_INGREDIENT_PRIORITY).map(e -> e.getValue()).findFirst().orElse(null);
 	}
 	
-	public static Optional<ItemStack> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {
-		return CRAFTING_REGISTRY.stream().filter(r -> r.matches(stacks, fluid)).map(r -> r.getResult()).findFirst();
+	public static Optional<CauldronCraftingRecipe> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {
+		return CRAFTING_REGISTRY.stream().filter(r -> r.matches(stacks, fluid)).findFirst();
 	}
 	
 	public static void init() { // TODO tune values

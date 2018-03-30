@@ -13,15 +13,21 @@ public class CauldronCraftingRecipe {
 	private Ingredient[] ingredients;
 	private Fluid fluid;
 	private ItemStack output;
+	private int fluidAmount;
 	
 	// The ingredients must be ordered from the more strict to the least strict
 	// eg: if a recipe requires both a dyeBlack and an ink sack (not ore dict)
 	// the ink sack index should be lower than the dye index
-	public CauldronCraftingRecipe(Fluid fluid, ItemStack output, Ingredient... ingredient) {
+	public CauldronCraftingRecipe(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredient) {
 		this.ingredients = ingredient;
 		this.fluid = fluid;
 		this.output = output.copy();
+		this.fluidAmount = fluidAmount;
 		checkInputHiding();
+	}
+	
+	public CauldronCraftingRecipe(Fluid fluid, ItemStack output, Ingredient... ingredient) {
+		this(fluid, Fluid.BUCKET_VOLUME, output, ingredient);
 	}
 	
 	// I heard you like for loops and O(+inf) algorithms... (jk, it shouldn't be that bad, hopefully)
@@ -55,11 +61,15 @@ public class CauldronCraftingRecipe {
 		}
 		if (newList.size() > 0)
 			return false;// One or more items were not part of the recipe
-		return fluid == fluidstack.getFluid() && fluidstack.amount >= Fluid.BUCKET_VOLUME;
+		return fluid == fluidstack.getFluid();
 	}
 	
 	public ItemStack getResult() {
 		return output.copy();
+	}
+	
+	public int getRequiredAmount() {
+		return fluidAmount;
 	}
 	
 }

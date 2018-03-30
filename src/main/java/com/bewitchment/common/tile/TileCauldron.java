@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
@@ -45,7 +46,7 @@ public class TileCauldron extends TileMod implements ITickable {
 	private int progress = 0;
 	private boolean lockInputForCrafting = false;
 	
-	public enum Mode {
+	public static enum Mode {
 		IDLE, FAILING, BREW, CRAFTING, STEW, LAVA;
 	}
 	
@@ -72,19 +73,31 @@ public class TileCauldron extends TileMod implements ITickable {
 				markDirty();
 			} else {
 				if (getMode() == Mode.CRAFTING) {
-					CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients).ifPresent(stack -> {
-						EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);
-						world.spawnEntity(result);
-					});
-					ingredients.clear();
-					tank.setCanDrain(true);
-					tank.setCanDrain(true);
-					mode = Mode.IDLE;
-					lockInputForCrafting = false;
+					Optional<CauldronCraftingRecipe> result = CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients);
+					if (result.isPresent()) {
+						CauldronCraftingRecipe recipe = result.get();
+						if (tank.getFluidAmount() >= recipe.getRequiredAmount()) {
+							tank.drain(recipe.getRequiredAmount(), true);
+							spawnCraftingResultAndUnlock(recipe);
+						}
+					}
 				}
 				syncToClient();
 			}
 		}
+	}
+	
+	private void spawnCraftingResultAndUnlock(CauldronCraftingRecipe stack) {
+		EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack.getResult());
+		world.spawnEntity(result);
+		tank.drain(stack.getRequiredAmount(), true);
+		ingredients.clear();
+		tank.setCanDrain(true);
+		tank.setCanDrain(true);
+		mode = Mode.IDLE;
+		lockInputForCrafting = false;
+		progress = 0;
+		markDirty();
 	}
 	
 	private void handleItemCollisions() {
@@ -117,7 +130,7 @@ public class TileCauldron extends TileMod implements ITickable {
 				setMode(getModeForFirstItem(stack));
 				tank.setCanDrain(false);
 				tank.setCanFill(false);
-				processNextItem(stack); // Now actually pass it to the correct mode handler
+				processNextItem(stack); // Now this actually passes it to the correct mode handler
 				break;
 			}
 			case CRAFTING: {
@@ -147,7 +160,8 @@ public class TileCauldron extends TileMod implements ITickable {
 			}
 			case BREW: {
 				ingredients.add(stack);
-				updateBrew();
+				progress = 0;
+				updateBrewColor();
 				break;
 			}
 			case LAVA: {
@@ -176,8 +190,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		}
 	}
 	
-	private void updateBrew() {
-		progress = 0;
+	private void updateBrewColor() {
 	}
 	
 	private ItemStack getSoup() {
@@ -213,7 +226,7 @@ public class TileCauldron extends TileMod implements ITickable {
 	
 	private void checkForCraftingRecipe() {
 		FluidStack fs = tank.getFluid();
-		Optional<ItemStack> result = CauldronRegistry.getCraftingResult(fs, new ArrayList<>(ingredients));
+		Optional<CauldronCraftingRecipe> result = CauldronRegistry.getCraftingResult(fs, new ArrayList<>(ingredients));
 		if (result.isPresent()) {
 			lockInputForCrafting = true;
 		}
@@ -301,19 +314,21 @@ public class TileCauldron extends TileMod implements ITickable {
 		if (!playerIn.world.isRemote) {
 			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
-				return true;
-			}
-			if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= CRAFTING_TIME) {
+			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= CRAFTING_TIME) {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
 				giveItemToPlayer(playerIn, getSoup());
 				reset();
-				return true;
+			} else if (heldItem.getItem() == Items.POTIONITEM && Mode.BREW == mode && progress >= CRAFTING_TIME) {
+				createAndGiveBrew(playerIn);
 			}
 		}
-		// TODO
 		return true;
+	}
+	
+	private void createAndGiveBrew(EntityPlayer playerIn) {
+		// TODO
 	}
 	
 	public int getColorRGB() {
