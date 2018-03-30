@@ -1,5 +1,6 @@
 package com.bewitchment.common.core;
 
+import com.bewitchment.common.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
@@ -26,6 +27,7 @@ public enum Crop {
 	WORMWOOD(Blocks.FARMLAND),
 	HELLEBORE(Blocks.FARMLAND),
 	SAGEBRUSH(Blocks.FARMLAND),
+	INFESTED_WHEAT(ModBlocks.infested_farmland),
 	CHRYSANTHEMUM(Blocks.FARMLAND);
 
 	private final Block soil;
