@@ -27,7 +27,7 @@ public class CauldronCraftingRecipe {
 	}
 	
 	public CauldronCraftingRecipe(Fluid fluid, ItemStack output, Ingredient... ingredient) {
-		this(fluid, Fluid.BUCKET_VOLUME, output, ingredient);
+		this(fluid, Fluid.BUCKET_VOLUME / 4, output, ingredient);
 	}
 	
 	// I heard you like for loops and O(+inf) algorithms... (jk, it shouldn't be that bad, hopefully)

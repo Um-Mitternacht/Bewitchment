@@ -77,6 +77,7 @@ public class TileCauldron extends TileMod implements ITickable {
 					if (result.isPresent()) {
 						CauldronCraftingRecipe recipe = result.get();
 						if (tank.getFluidAmount() >= recipe.getRequiredAmount()) {
+							tank.setCanDrain(true);
 							tank.drain(recipe.getRequiredAmount(), true);
 							spawnCraftingResultAndUnlock(recipe);
 						}
@@ -90,10 +91,9 @@ public class TileCauldron extends TileMod implements ITickable {
 	private void spawnCraftingResultAndUnlock(CauldronCraftingRecipe stack) {
 		EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack.getResult());
 		world.spawnEntity(result);
-		tank.drain(stack.getRequiredAmount(), true);
+		tank.setCanDrain(true);
+		tank.setCanFill(true);
 		ingredients.clear();
-		tank.setCanDrain(true);
-		tank.setCanDrain(true);
 		mode = Mode.IDLE;
 		lockInputForCrafting = false;
 		progress = 0;
@@ -152,6 +152,7 @@ public class TileCauldron extends TileMod implements ITickable {
 				if (ingredients.size() > 10) {
 					setMode(Mode.FAILING);
 				}
+				syncToClient();
 				break;
 			}
 			case FAILING: {
@@ -318,8 +319,18 @@ public class TileCauldron extends TileMod implements ITickable {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
-				giveItemToPlayer(playerIn, getSoup());
-				reset();
+				lockInputForCrafting = true;
+				ItemStack soup = getSoup();
+				tank.setCanDrain(true);
+				tank.drain(500, true);
+				tank.setCanDrain(false);
+				giveItemToPlayer(playerIn, soup);
+				if (tank.isEmpty()) {
+					reset();
+				} else {
+					syncToClient();
+					markDirty();
+				}
 			} else if (heldItem.getItem() == Items.POTIONITEM && Mode.BREW == mode && progress >= CRAFTING_TIME) {
 				createAndGiveBrew(playerIn);
 			}
@@ -389,7 +400,9 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	public void onLiquidChange() {
-		heat = 0;
+		if (tank.getFluidAmount() == 0) {
+			reset();
+		}
 		markDirty();
 		syncToClient();
 	}
