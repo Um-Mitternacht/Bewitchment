@@ -191,9 +191,16 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 						world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 1F + rand.nextFloat() * 0.8f, true);
 					}
 				}
+				
+				if (tile.getMode() == Mode.CLEANING) {
+					double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
+					double py = pos.getY() + 0.5 + world.rand.nextGaussian();
+					double pz = pos.getZ() + 0.5 + world.rand.nextGaussian() * 0.5;
+					world.spawnParticle(EnumParticleTypes.SPELL_INSTANT, px, py, pz, 0, 0.1, 0);
+				}
 			}
 			
-			if (tile.getMode() == Mode.CRAFTING || (tile.getMode() == Mode.STEW && tile.getProgress() >= TileCauldron.CRAFTING_TIME)) {
+			if (tile.getMode() == Mode.CRAFTING || (tile.getMode() == Mode.STEW && tile.getProgress() >= tile.getMode().getTime())) {
 				final float x = pos.getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 				final float z = pos.getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 				Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);

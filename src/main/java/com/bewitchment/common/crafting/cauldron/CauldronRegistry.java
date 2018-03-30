@@ -69,7 +69,6 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.PUMPKIN_SEEDS), 2, 1.3f);
 		registerFood(Ingredient.fromItem(Items.MELON_SEEDS), 2, 1.2f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT_SEEDS), 2, 1.1f);
-		registerFood(Ingredient.fromItem(Items.NETHER_WART), 3, 1.6f);
 		registerFood(Ingredient.fromItem(Items.EGG), 2, 1.2f);
 		registerFood(Ingredient.fromItem(Items.SUGAR), 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.garlic), 2, 0.8f);

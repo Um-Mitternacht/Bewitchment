@@ -47,7 +47,7 @@ public class TileCauldron extends TileMod implements ITickable {
 	private boolean lockInputForCrafting = false;
 	
 	public static enum Mode {
-		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0);
+		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0), CLEANING(30);
 		
 		private int time;
 		
@@ -77,7 +77,7 @@ public class TileCauldron extends TileMod implements ITickable {
 	}
 	
 	private void handleCraftingProgress() {
-		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || getMode() == Mode.STEW) {
+		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || getMode().getTime() > 0) {
 			if (progress < getMode().getTime()) {
 				progress++; // TODO Should this require ME?
 				markDirty();
@@ -89,11 +89,19 @@ public class TileCauldron extends TileMod implements ITickable {
 						if (tank.getFluidAmount() >= recipe.getRequiredAmount()) {
 							tank.setCanDrain(true);
 							tank.drain(recipe.getRequiredAmount(), true);
-							spawnCraftingResultAndUnlock(recipe);
+							spawnCraftingResultAndUnlock(recipe);// TODO rename to ...AndReset instead of ...AndUnlock
+							syncToClient();
 						}
 					}
+				} else if (getMode() == Mode.CLEANING) {
+					tank.setCanDrain(true);
+					tank.drain(250, true);
+					tank.setCanDrain(false);
+					progress = 0;
+					markDirty();
+					syncToClient();
 				}
-				syncToClient();
+				
 			}
 		}
 	}
@@ -135,6 +143,18 @@ public class TileCauldron extends TileMod implements ITickable {
 
 	private void processNextItem(ItemStack stack) {
 		boolean flag = ingredients.isEmpty();
+		progress = 0;
+		if (stack.getItem() == ModItems.wood_ash) {
+			setMode(Mode.CLEANING);
+			lockInputForCrafting = true;
+			tank.setCanDrain(false);
+			tank.setCanFill(false);
+			currentColorRGB = 0xFF00FF;
+			syncToClient();
+			markDirty();
+			return;
+		}
+		
 		switch (getMode()) {
 			case IDLE: {
 				setMode(getModeForFirstItem(stack));
@@ -153,9 +173,9 @@ public class TileCauldron extends TileMod implements ITickable {
 				break;
 			}
 			case STEW: {
-				progress = 0;
 				if (CauldronRegistry.getCauldronFoodValue(stack) != null) {
 					ingredients.add(stack);
+					blendColor(0x855000, 0.2f);
 				} else {
 					setMode(Mode.FAILING);
 				}
@@ -190,7 +210,7 @@ public class TileCauldron extends TileMod implements ITickable {
 		}
 		markDirty();
 	}
-
+	
 	private void handleExplosivesInLava(ItemStack stack) {
 		if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
 			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 1, true); // FIXME
@@ -248,10 +268,13 @@ public class TileCauldron extends TileMod implements ITickable {
 			return Mode.LAVA;
 		}
 		if (CauldronRegistry.getCauldronFoodValue(stack) != null && tank.getInnerFluid() == FluidRegistry.WATER) {
+			currentColorRGB = 0xede301;
 			return Mode.STEW;
 		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
+			currentColorRGB = 0xa366a3;
 			return Mode.BREW;
 		}
+		currentColorRGB = 0x5cb85c;
 		return Mode.CRAFTING;
 	}
 	
@@ -325,6 +348,11 @@ public class TileCauldron extends TileMod implements ITickable {
 		if (!playerIn.world.isRemote) {
 			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
+				if (playerIn.isCreative() && tank.isFull()) {
+					heat = MAX_HEAT;
+					markDirty();
+					syncToClient();
+				}
 			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= getMode().getTime()) {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
