@@ -313,6 +313,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.witch_altar),
 				itemBlock(ModBlocks.thread_spinner),
 				new ItemBlockBarrel(),
+				itemBlock(ModBlocks.infested_farmland),
 				itemBlock(ModBlocks.crystal_ball),
 				itemBlock(ModBlocks.goblet),
 				itemBlock(ModBlocks.tarot_table)
