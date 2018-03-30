@@ -4,8 +4,6 @@ import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
