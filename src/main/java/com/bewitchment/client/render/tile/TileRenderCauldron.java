@@ -40,7 +40,7 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> 
 			GlStateManager.pushMatrix();
 			GlStateManager.disableLighting();
 			GlStateManager.translate(x, y + 0.1 + level, z);
-			if (fluid == FluidRegistry.WATER || te.hasIngredients()) {
+			if (fluid == FluidRegistry.WATER && te.hasIngredients()) {
 				float r = (te.getColorRGB() >>> 16 & 0xFF) / 256.0F;
 				float g = (te.getColorRGB() >>> 8 & 0xFF) / 256.0F;
 				float b = (te.getColorRGB() & 0xFF) / 256.0F;

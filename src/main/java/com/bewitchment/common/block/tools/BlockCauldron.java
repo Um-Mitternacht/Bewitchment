@@ -3,14 +3,19 @@ package com.bewitchment.common.block.tools;
 import static net.minecraft.block.BlockHorizontal.FACING;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.client.sound.ModSounds;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileCauldron;
+import com.bewitchment.common.tile.TileCauldron.Mode;
 
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
@@ -21,13 +26,16 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -120,6 +128,11 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (playerIn.isSneaking() && playerIn.getHeldItem(hand).isEmpty()) {
+			worldIn.setBlockState(pos, state.cycleProperty(Bewitchment.HALF), 3);
+			return true;
+		}
+		
 		final TileCauldron tile = (TileCauldron) worldIn.getTileEntity(pos);
 		return tile != null && tile.onCauldronRightClick(playerIn, hand, playerIn.getHeldItem(hand));
 	}
@@ -142,4 +155,50 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCauldron();
 	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
+		TileCauldron tile = (TileCauldron) world.getTileEntity(pos);
+		if (tile != null) {
+			float level = tile.getTank().getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
+			level = pos.getY() + 0.1F + level;
+			if (tile.isBoiling()) {
+				Fluid fluid = tile.getTank().getInnerFluid();
+				if (fluid == FluidRegistry.WATER || fluid == Fluids.MUNDANE_OIL || fluid == Fluids.BW_HONEY) {
+					for (int i = 0; i < 2; i++) {
+						double posX = pos.getX() + 0.2D + world.rand.nextDouble() * 0.6D;
+						double posZ = pos.getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
+						Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, level, posZ, 0, 0, 0, tile.getColorRGB());
+					}
+					if (rand.nextInt(3) == 0) {
+						world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.5F + rand.nextFloat() * 0.8f, true);
+					}
+				} else if (fluid == FluidRegistry.LAVA) {
+					if (rand.nextInt(5) == 0) {
+						double posX = pos.getX() + 0.2D + world.rand.nextDouble() * 0.6D;
+						double posZ = pos.getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
+						world.spawnParticle(EnumParticleTypes.LAVA, posX, level, posZ, 0, 0.1, 0);
+					}
+					world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.6F, 0.9F + rand.nextFloat() * 0.15F, false);
+				} else {
+					for (int i = 0; i < 3; i++) {
+						double posX = pos.getX() + 0.2D + world.rand.nextDouble() * 0.6D;
+						double posZ = pos.getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
+						world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX, level, posZ, 0, 0, 0);
+					}
+					if (rand.nextInt(3) == 0) {
+						world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 1F + rand.nextFloat() * 0.8f, true);
+					}
+				}
+			}
+			
+			if (tile.getMode() == Mode.CRAFTING || (tile.getMode() == Mode.STEW && tile.getProgress() >= TileCauldron.CRAFTING_TIME)) {
+				final float x = pos.getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
+				final float z = pos.getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
+				Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);
+			}
+		}
+	}
+	
 }
