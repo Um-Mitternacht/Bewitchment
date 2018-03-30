@@ -46,8 +46,7 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> 
 				float g = (color >>> 8 & 0xFF) / 256.0F;
 				float b = (color & 0xFF) / 256.0F;
 				GlStateManager.color(r, g, b, 0.8f);
-				if (fluid == FluidRegistry.WATER)
-					location = ResourceLocations.GRAY_WATER;
+				location = ResourceLocations.GRAY_WATER;
 			}
 
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
