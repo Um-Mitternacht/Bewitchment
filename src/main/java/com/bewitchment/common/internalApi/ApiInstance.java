@@ -24,6 +24,7 @@ import com.bewitchment.common.core.capability.transformation.blood.CapabilityBlo
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.infusion.ModInfusions;
@@ -150,14 +151,23 @@ public class ApiInstance extends BewitchmentAPI {
 
 	@Override
 	public void registerBrewModifier(IBrewModifier modifier) {
-		// TODO Auto-generated method stub
-		
+		CauldronRegistry.registerBrewModifier(modifier);
 	}
 	
 	@Override
 	public void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient) {
-		// TODO Auto-generated method stub
-		
+		CauldronRegistry.registerBrewIngredient(effect, ingredient);
+		CauldronRegistry.bindPotionAndEffect(effect, potion);
+	}
+	
+	@Override
+	public Potion getPotionFromBrew(IBrewEffect effect) {
+		return CauldronRegistry.getPotionFromBrew(effect);
+	}
+	
+	@Override
+	public IBrewEffect getBrewFromPotion(Potion potion) {
+		return CauldronRegistry.getBrewFromPotion(potion);
 	}
 	
 }

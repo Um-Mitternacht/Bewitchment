@@ -38,4 +38,6 @@ public interface IBrewEffect {
 	 * @param modifiers The modifier list associated with the cloud
 	 */
 	public void onEffectCloudSpawned(EntityAreaEffectCloud cloud, IBrewModifierList modifiers);
+	
+	public boolean hasInWorldEffect();
 }

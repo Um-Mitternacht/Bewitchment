@@ -1,6 +1,7 @@
 package com.bewitchment.api.cauldron;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
@@ -27,5 +28,7 @@ public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
 	 *         or {@link #PASS} to ignore this item and let other modifiers process it.
 	 */
 	public int acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers);
+	
+	public Ingredient getJEIStackRepresentative();
 	
 }

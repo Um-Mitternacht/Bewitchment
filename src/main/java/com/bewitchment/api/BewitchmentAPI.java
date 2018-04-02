@@ -79,4 +79,8 @@ public abstract class BewitchmentAPI {
 	 * Links a brew effect, a potion and a crafting ingredient together, for crafting and application on brew itemstacks
 	 */
 	public abstract void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient);
+	
+	public abstract Potion getPotionFromBrew(IBrewEffect effect);
+	
+	public abstract IBrewEffect getBrewFromPotion(Potion potion);
 }

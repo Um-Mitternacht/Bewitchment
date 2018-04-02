@@ -2,25 +2,36 @@ package com.bewitchment.common.crafting.cauldron;
 
 import java.util.*;
 
+import com.bewitchment.api.cauldron.IBrewEffect;
+import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.lib.LibMod;
+import com.google.common.collect.HashBiMap;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryBuilder;
 
 public class CauldronRegistry {
 	
 	private static final HashMap<Ingredient, CauldronFoodValue> STEW_REGISTRY = new HashMap<>();
 	private static final ArrayList<CauldronCraftingRecipe> CRAFTING_REGISTRY = new ArrayList<>();
+	private static final HashMap<Ingredient, IBrewEffect> BREW_INGREDIENT_REGISTRY = new HashMap<>();
+	private static final HashBiMap<IBrewEffect, Potion> BREW_POTION_MAP = HashBiMap.<IBrewEffect, Potion>create(90);
+	private static final IForgeRegistry<IBrewModifier> BREW_MODIFIERS = new RegistryBuilder<IBrewModifier>().setName(new ResourceLocation(LibMod.MOD_ID, "brew modifiers")).setIDRange(0, 200).setType(IBrewModifier.class).create();
 	
 	// The less entries an Ingredient has, the higher priority it will be in the list
 	private static final Comparator<Map.Entry<Ingredient, CauldronFoodValue>> STEW_INGREDIENT_PRIORITY = Map.Entry.<Ingredient, CauldronFoodValue>comparingByKey(Comparator.comparing(i -> i.getMatchingStacks().length)).reversed();
@@ -29,6 +40,18 @@ public class CauldronRegistry {
 		if (ingredient.getMatchingStacks().length > 0) {
 			STEW_REGISTRY.put(ingredient, value);
 		}
+	}
+	
+	public static void bindPotionAndEffect(IBrewEffect effect, Potion potion) {
+		BREW_POTION_MAP.put(effect, potion);
+	}
+	
+	public static void registerBrewModifier(IBrewModifier modifier) {
+		BREW_MODIFIERS.register(modifier);
+	}
+	
+	public static void registerBrewIngredient(IBrewEffect effect, Ingredient ingredient) {
+		BREW_INGREDIENT_REGISTRY.put(ingredient, effect);
 	}
 	
 	public static void registerCauldronCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
@@ -41,6 +64,14 @@ public class CauldronRegistry {
 	
 	public static Optional<CauldronCraftingRecipe> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {
 		return CRAFTING_REGISTRY.stream().filter(r -> r.matches(stacks, fluid)).findFirst();
+	}
+	
+	public static Potion getPotionFromBrew(IBrewEffect effect) {
+		return BREW_POTION_MAP.get(effect);
+	}
+	
+	public static IBrewEffect getBrewFromPotion(Potion potion) {
+		return BREW_POTION_MAP.inverse().get(potion);
 	}
 	
 	public static void init() { // TODO tune values

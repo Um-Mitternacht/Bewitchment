@@ -1,6 +1,11 @@
 package com.bewitchment.common.spinning;
 
+import java.util.ArrayList;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -9,12 +14,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-
 public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThreadRecipe> {
 
-	public static final IForgeRegistry<SpinningThreadRecipe> REGISTRY = new RegistryBuilder<SpinningThreadRecipe>().setName(new ResourceLocation(LibMod.MOD_ID, "thread_spinning")).setType(SpinningThreadRecipe.class).setIDRange(0, 200).create();
+	public static final IForgeRegistry<SpinningThreadRecipe> REGISTRY = new RegistryBuilder<SpinningThreadRecipe>().disableSaving().setName(new ResourceLocation(LibMod.MOD_ID, "thread_spinning")).setType(SpinningThreadRecipe.class).setIDRange(0, 200).create();
 
 	final ItemStack output;
 	final Ingredient[] inputs;

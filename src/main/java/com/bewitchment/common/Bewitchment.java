@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
+import com.bewitchment.common.cauldron.ModBrewModifiers;
 import com.bewitchment.common.core.ModLootTables;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
@@ -77,6 +78,7 @@ public class Bewitchment {
 	public void preInit(FMLPreInitializationEvent event) {
 		ApiInstance.initAPI();
 		CapabilityEnergy.init();
+		ModBrewModifiers.init();
 		CapabilityDivination.init();
 		CapabilityEnergyUser.init();
 		CapabilityTransformationData.init();

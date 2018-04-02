@@ -11,10 +11,10 @@ public class BewitchmentModifiers {
 	
 	public static IBrewModifier POWER;
 	public static IBrewModifier DURATION;
-	public static IBrewModifier GAS_CLOUD_RADIUS;
+	public static IBrewModifier RADIUS;
 	public static IBrewModifier GAS_CLOUD_DURATION;
-	public static IBrewModifier BLOCK_ENTITY_EFFECT;
-	public static IBrewModifier BLOCK_IN_WORLD_EFFECT;
+	public static IBrewModifier SUPPRESS_ENTITY_EFFECT;
+	public static IBrewModifier SUPPRESS_IN_WORLD_EFFECT;
 	public static IBrewModifier COLOR;
 	
 }
