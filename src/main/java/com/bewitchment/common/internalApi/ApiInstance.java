@@ -7,6 +7,8 @@ import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
 import com.bewitchment.api.capability.transformations.IBloodReserve;
 import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.cauldron.IBrewEffect;
+import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
@@ -33,6 +35,8 @@ import com.bewitchment.common.transformation.ModTransformations;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 
 @SuppressWarnings("deprecation")
@@ -144,4 +148,16 @@ public class ApiInstance extends BewitchmentAPI {
 		return ModRituals.circles(small, medium, large);
 	}
 
+	@Override
+	public void registerBrewModifier(IBrewModifier modifier) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
