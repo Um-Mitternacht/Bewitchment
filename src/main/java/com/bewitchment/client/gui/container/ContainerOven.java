@@ -4,7 +4,7 @@ import com.bewitchment.client.gui.container.slots.FilteredSlot;
 import com.bewitchment.client.gui.container.slots.OutputSlot;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
-import com.bewitchment.common.tile.TileOven;
+import com.bewitchment.common.tile.TileEntityOven;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
@@ -17,9 +17,9 @@ import net.minecraft.item.ItemStack;
  */
 public class ContainerOven extends Container {
 
-	private final TileOven oven;
+	private final TileEntityOven oven;
 
-	public ContainerOven(IInventory playerInventory, TileOven te) {
+	public ContainerOven(IInventory playerInventory, TileEntityOven te) {
 		this.oven = te;
 		//input slot
 		this.addSlotToContainer(new Slot(oven.inventory, 0, 19, 17));

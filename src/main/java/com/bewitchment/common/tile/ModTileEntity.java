@@ -13,7 +13,7 @@ import net.minecraft.world.World;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public abstract class TileMod extends TileEntity {
+public abstract class ModTileEntity extends TileEntity {
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {

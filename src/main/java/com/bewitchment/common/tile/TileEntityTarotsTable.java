@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class TileEntityTarotsTable extends TileMod { // No ticking
+public class TileEntityTarotsTable extends ModTileEntity { // No ticking
 
 	private static final int READ_COST = 2000;
 

@@ -25,9 +25,9 @@ public class GuiHandler implements IGuiHandler {
 		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 		switch (LibGui.values()[ID]) {
 			case APIARY:
-				return tile != null && (tile instanceof TileApiary) ? new ContainerApiary(player.inventory, (TileApiary) tile) : null;
+				return tile != null && (tile instanceof TileEntityApiary) ? new ContainerApiary(player.inventory, (TileEntityApiary) tile) : null;
 			case OVEN:
-				return tile != null && (tile instanceof TileOven) ? new ContainerOven(player.inventory, (TileOven) tile) : null;
+				return tile != null && (tile instanceof TileEntityOven) ? new ContainerOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
 			case BARREL:
@@ -45,9 +45,9 @@ public class GuiHandler implements IGuiHandler {
 		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 		switch (LibGui.values()[ID]) {
 			case APIARY:
-				return tile != null && (tile instanceof TileApiary) ? new GuiApiary(player.inventory, (TileApiary) tile) : null;
+				return tile != null && (tile instanceof TileEntityApiary) ? new GuiApiary(player.inventory, (TileEntityApiary) tile) : null;
 			case OVEN:
-				return tile != null && (tile instanceof TileOven) ? new GuiOven(player.inventory, (TileOven) tile) : null;
+				return tile != null && (tile instanceof TileEntityOven) ? new GuiOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new GuiThreadSpinner((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityThreadSpinner) tile) : null;
 			case BARREL:

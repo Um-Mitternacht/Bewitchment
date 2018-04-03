@@ -2,7 +2,7 @@ package com.bewitchment.common.tile.util;
 
 import javax.annotation.Nullable;
 
-import com.bewitchment.common.tile.TileCauldron;
+import com.bewitchment.common.tile.TileEntityCauldron;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -10,9 +10,9 @@ import net.minecraftforge.fluids.FluidTank;
 
 public class CauldronFluidTank extends FluidTank {
 	
-	private final TileCauldron tile;
+	private final TileEntityCauldron tile;
 	
-	public CauldronFluidTank(TileCauldron tile) {
+	public CauldronFluidTank(TileEntityCauldron tile) {
 		super(Fluid.BUCKET_VOLUME);
 		this.tile = tile;
 	}

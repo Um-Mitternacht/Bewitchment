@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TileEntityWitchAltar extends TileMod implements ITickable {
+public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
 

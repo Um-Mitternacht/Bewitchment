@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.lwjgl.opengl.GL11;
 
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.common.tile.TileCauldron;
+import com.bewitchment.common.tile.TileEntityCauldron;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -25,11 +25,11 @@ import net.minecraftforge.fluids.FluidStack;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> {
+public class TileRenderCauldron extends TileEntitySpecialRenderer<TileEntityCauldron> {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void render(TileCauldron te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+	public void render(TileEntityCauldron te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		Optional<FluidStack> optional = te.getFluid();
 		if (optional.isPresent() && optional.get().amount > 0) {
 			FluidStack fluidStack = optional.get();

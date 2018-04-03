@@ -2,7 +2,7 @@ package com.bewitchment.client.gui;
 
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.gui.container.ContainerOven;
-import com.bewitchment.common.tile.TileOven;
+import com.bewitchment.common.tile.TileEntityOven;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -14,9 +14,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 public class GuiOven extends GuiContainer {
 
 	private final InventoryPlayer playerInventory;
-	private final TileOven tileOven;
+	private final TileEntityOven tileOven;
 
-	public GuiOven(InventoryPlayer playerInventory, TileOven tileOven) {
+	public GuiOven(InventoryPlayer playerInventory, TileEntityOven tileOven) {
 		super(new ContainerOven(playerInventory, tileOven));
 		this.playerInventory = playerInventory;
 		this.tileOven = tileOven;

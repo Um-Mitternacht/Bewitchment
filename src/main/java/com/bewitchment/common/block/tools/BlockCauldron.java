@@ -14,8 +14,8 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.lib.LibBlockName;
-import com.bewitchment.common.tile.TileCauldron;
-import com.bewitchment.common.tile.TileCauldron.Mode;
+import com.bewitchment.common.tile.TileEntityCauldron;
+import com.bewitchment.common.tile.TileEntityCauldron.Mode;
 
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
@@ -133,7 +133,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 			return true;
 		}
 		
-		final TileCauldron tile = (TileCauldron) worldIn.getTileEntity(pos);
+		final TileEntityCauldron tile = (TileEntityCauldron) worldIn.getTileEntity(pos);
 		return tile != null && tile.onCauldronRightClick(playerIn, hand, playerIn.getHeldItem(hand));
 	}
 
@@ -153,13 +153,13 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileCauldron();
+		return new TileEntityCauldron();
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
-		TileCauldron tile = (TileCauldron) world.getTileEntity(pos);
+		TileEntityCauldron tile = (TileEntityCauldron) world.getTileEntity(pos);
 		if (tile != null) {
 			float level = tile.getTank().getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
 			level = pos.getY() + 0.1F + level;

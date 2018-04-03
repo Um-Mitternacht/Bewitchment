@@ -24,9 +24,9 @@ public final class ModTiles {
 
 	public static void registerAll() {
 
-		GameRegistry.registerTileEntity(TileCauldron.class, CAULDRON);
-		GameRegistry.registerTileEntity(TileApiary.class, APIARY);
-		GameRegistry.registerTileEntity(TileOven.class, OVEN);
+		GameRegistry.registerTileEntity(TileEntityCauldron.class, CAULDRON);
+		GameRegistry.registerTileEntity(TileEntityApiary.class, APIARY);
+		GameRegistry.registerTileEntity(TileEntityOven.class, OVEN);
 		GameRegistry.registerTileEntity(TileEntityWitchAltar.class, WITCH_ALTAR);
 		GameRegistry.registerTileEntity(TileEntityThreadSpinner.class, THREAD_SPINNER);
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, BARREL);

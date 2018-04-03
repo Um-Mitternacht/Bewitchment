@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Joseph on 7/17/2017.
  */
-public class TileOven extends TileEntity implements ITickable {
+public class TileEntityOven extends TileEntity implements ITickable {
 	public int workTime;
 	public int totalWorkTime;
 	public boolean isBurning = false;
@@ -64,7 +64,7 @@ public class TileOven extends TileEntity implements ITickable {
 
 		@Override
 		public void onMarkDirty() {
-			TileOven.this.markDirty();
+			TileEntityOven.this.markDirty();
 		}
 	};
 

@@ -11,7 +11,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityThreadSpinner extends TileMod implements ITickable {
+public class TileEntityThreadSpinner extends ModTileEntity implements ITickable {
 
 	public static final int MAX_TICKS = 200;
 	public static final int POWER_PER_TICK = 6;

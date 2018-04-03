@@ -26,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
 
-public class TileEntityGlyph extends TileMod implements ITickable {
+public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	public static final ArrayList<int[]> small = new ArrayList<int[]>();
 	public static final ArrayList<int[]> medium = new ArrayList<int[]>();

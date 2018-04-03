@@ -33,7 +33,7 @@ import java.util.List;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class TileApiary extends TileEntityLockable implements ITickable, ISidedInventory {
+public class TileEntityApiary extends TileEntityLockable implements ITickable, ISidedInventory {
 
 	private static final int[] SLOT_TOP = new int[]{0};
 	private static final int[] SLOT_BOTTOM = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};

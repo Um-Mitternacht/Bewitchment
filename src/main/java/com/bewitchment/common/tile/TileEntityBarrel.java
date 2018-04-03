@@ -22,7 +22,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityBarrel extends TileMod implements ITickable {
+public class TileEntityBarrel extends ModTileEntity implements ITickable {
 
 	AxisAlignedBB around;
 	AutomatableInventory inv = new AutomatableInventory(7) {
