@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
@@ -407,29 +408,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 	
 	private void blendColor(int newColorRGB, float ratio) {
-		if (ratio > 1f) {
-			ratio = 1f;
-		} else if (ratio < 0f) {
-			ratio = 0f;
-		}
-		float iRatio = 1.0f - ratio;
-		
-		int aA = (currentColorRGB >> 24 & 0xff);
-		int aR = ((currentColorRGB & 0xff0000) >> 16);
-		int aG = ((currentColorRGB & 0xff00) >> 8);
-		int aB = (currentColorRGB & 0xff);
-		
-		int bA = (newColorRGB >> 24 & 0xff);
-		int bR = ((newColorRGB & 0xff0000) >> 16);
-		int bG = ((newColorRGB & 0xff00) >> 8);
-		int bB = (newColorRGB & 0xff);
-		
-		int A = ((int) (aA * iRatio) + (int) (bA * ratio));
-		int R = ((int) (aR * iRatio) + (int) (bR * ratio));
-		int G = ((int) (aG * iRatio) + (int) (bG * ratio));
-		int B = ((int) (aB * iRatio) + (int) (bB * ratio));
-		
-		currentColorRGB = A << 24 | R << 16 | G << 8 | B;
+		currentColorRGB = ColorHelper.blendColor(currentColorRGB, newColorRGB, ratio);
 		syncToClient();
 	}
 	
