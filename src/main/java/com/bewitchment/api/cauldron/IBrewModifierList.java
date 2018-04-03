@@ -1,5 +1,12 @@
 package com.bewitchment.api.cauldron;
 
+import java.util.Set;
+
+/**
+ * This is not meant to be implemented by other mods, just use the provided one
+ * 
+ * @author zabi9
+ */
 public interface IBrewModifierList {
 	
 	public static final int NOT_PRESENT = Integer.MAX_VALUE;
@@ -10,4 +17,5 @@ public interface IBrewModifierList {
 	 */
 	public int getLevel(IBrewModifier modifier);
 	
+	public Set<IBrewModifier> getModifiers();
 }
