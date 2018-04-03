@@ -20,7 +20,7 @@ public abstract class BewitchmentAPI {
 
 	private static BewitchmentAPI INSTANCE;
 
-	public static void setupAPI(BewitchmentAPI api) {
+	public static final void setupAPI(BewitchmentAPI api) {
 		if (INSTANCE == null) {
 			INSTANCE = api;
 		} else {
@@ -28,7 +28,7 @@ public abstract class BewitchmentAPI {
 		}
 	}
 
-	public static BewitchmentAPI getAPI() {
+	public static final BewitchmentAPI getAPI() {
 		if (INSTANCE != null) {
 			return INSTANCE;
 		}
