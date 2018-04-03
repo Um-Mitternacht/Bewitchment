@@ -1,5 +1,7 @@
 package com.bewitchment.common.potion;
 
+import com.bewitchment.common.potion.potions.PotionBloodDrained;
+
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
