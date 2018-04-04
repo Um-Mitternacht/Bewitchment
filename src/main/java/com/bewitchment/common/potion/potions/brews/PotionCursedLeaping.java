@@ -14,11 +14,6 @@ public class PotionCursedLeaping extends BrewMod {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	@Override
-	public boolean isReady(int duration, int amplifier) {
-		return false;
-	}
-	
 	@SubscribeEvent
 	public void onJump(LivingJumpEvent e) {
 		PotionEffect pe = e.getEntityLiving().getActivePotionEffect(this);

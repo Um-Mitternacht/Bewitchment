@@ -24,6 +24,11 @@ public class PotionMod extends Potion {
 	public boolean isInstant() {
 		return instant;
 	}
+	
+	@Override
+	public boolean isReady(int duration, int amplifier) {
+		return false;
+	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
