@@ -2,7 +2,6 @@ package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.common.potion.BrewMod;
 
-import net.minecraft.entity.MoverType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
@@ -17,14 +16,14 @@ public class PotionCursedLeaping extends BrewMod {
 	
 	@Override
 	public boolean isReady(int duration, int amplifier) {
-		return true;
+		return false;
 	}
 	
 	@SubscribeEvent
 	public void onJump(LivingJumpEvent e) {
 		PotionEffect pe = e.getEntityLiving().getActivePotionEffect(this);
 		if (pe != null) {
-			e.getEntityLiving().move(MoverType.SELF, 0, -0.1 * pe.getAmplifier(), 0);
+			e.getEntityLiving().motionY -= 0.1 * (1 + pe.getAmplifier());
 		}
 	}
 	

@@ -50,6 +50,7 @@ public class ModPotions {
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
 		if (potion instanceof IBrewEffect) {
 			BewitchmentAPI.getAPI().registerBrewEffect((IBrewEffect) potion, potion, ingredient);
+			return;
 		}
 		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects");
 	}
