@@ -10,12 +10,7 @@ import net.minecraft.util.DamageSource;
 public class PotionBaneArthropods extends BrewMod {
 	
 	public PotionBaneArthropods() {
-		super("bane_arthropods", true, 0x50C878);
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
+		super("bane_arthropods", true, 0x50C878, true);
 	}
 	
 	@Override

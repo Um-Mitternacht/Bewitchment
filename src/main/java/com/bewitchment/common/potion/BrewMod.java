@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 
 public class BrewMod extends PotionMod implements IBrewEffect {
 	
-	public BrewMod(String name, boolean isBadEffectIn, int liquidColorIn) {
-		super(name, isBadEffectIn, liquidColorIn);
+	public BrewMod(String name, boolean isBadEffectIn, int liquidColorIn, boolean isInstant) {
+		super(name, isBadEffectIn, liquidColorIn, isInstant);
 	}
 	
 	@Override

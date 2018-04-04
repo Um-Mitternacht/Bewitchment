@@ -21,12 +21,7 @@ import net.minecraftforge.common.IPlantable;
 public class PotionPlant extends BrewMod {
 	
 	public PotionPlant() {
-		super("plant", true, 0x003506);
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
+		super("plant", true, 0x003506, true);
 	}
 	
 	@Override

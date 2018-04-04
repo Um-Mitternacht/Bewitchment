@@ -11,11 +11,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class PotionMod extends Potion {
 
 	public static final ResourceLocation EXTRA_EFFECTS_ALT = new ResourceLocation(LibMod.MOD_ID, "textures/gui/potions.png");
+	private final boolean instant;
 
-	public PotionMod(String name, boolean isBadEffectIn, int liquidColorIn) {
+	public PotionMod(String name, boolean isBadEffectIn, int liquidColorIn, boolean isInstant) {
 		super(isBadEffectIn, liquidColorIn);
 		this.setRegistryName(LibMod.MOD_ID, name);
 		this.setPotionName("effect." + name + ".name");
+		this.instant = isInstant;
+	}
+	
+	@Override
+	public boolean isInstant() {
+		return instant;
 	}
 
 	@SideOnly(Side.CLIENT)

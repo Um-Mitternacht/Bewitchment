@@ -1,5 +1,8 @@
 package com.bewitchment.common.potion.potions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bewitchment.api.capability.transformations.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.potion.PotionMod;
@@ -12,16 +15,13 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PotionBloodDrained extends PotionMod {
 
 	public static final float TRESHOLD = 0.2f;
 	private static final List<ItemStack> cure = new ArrayList<ItemStack>(0);
 
 	public PotionBloodDrained() {
-		super("blood_drain", true, 0x820000);
+		super("blood_drain", true, 0x820000, false);
 		this.setIconIndex(1, 0);
 	}
 

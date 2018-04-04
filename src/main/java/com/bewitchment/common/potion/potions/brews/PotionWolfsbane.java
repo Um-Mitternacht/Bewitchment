@@ -16,7 +16,7 @@ import net.minecraft.util.DamageSource;
 public class PotionWolfsbane extends BrewMod {
 	
 	public PotionWolfsbane() {
-		super("wolfsbane", true, 0xEFCC00);
+		super("wolfsbane", true, 0xEFCC00, true);
 	}
 	
 	@Override
@@ -27,11 +27,6 @@ public class PotionWolfsbane extends BrewMod {
 				entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200 * amplifier, 0));
 			}
 		}
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
 	}
 	
 	private static boolean isWolf(EntityLivingBase entity) {

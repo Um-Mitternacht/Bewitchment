@@ -8,12 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 public class PotionAbsence extends BrewMod {
 	
 	public PotionAbsence() {
-		super("absence", true, 0x808080);
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
+		super("absence", true, 0x808080, true);
 	}
 	
 	@Override
