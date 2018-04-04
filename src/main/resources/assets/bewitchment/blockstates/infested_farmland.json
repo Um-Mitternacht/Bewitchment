@@ -4,9 +4,9 @@
   "defaults": {
     "model": "cube_column",
     "textures": {
-      "end": "bewitchment:blocks/infestedroots_top",
-      "side": "bewitchment:blocks/infestedroots_side",
-      "all": "bewitchment:blocks/infestedroots_side"
+      "end": "bewitchment:blocks/infested_farmland_top",
+      "side": "bewitchment:blocks/infested_farmland_side",
+      "all": "bewitchment:blocks/infested_farmland_side"
     }
   },
   "variants": {
