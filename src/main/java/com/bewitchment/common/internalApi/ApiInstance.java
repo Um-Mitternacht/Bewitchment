@@ -39,6 +39,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -48,6 +49,8 @@ public class ApiInstance extends BewitchmentAPI {
 
 	public static void initAPI() {
 		BewitchmentAPI.setupAPI(new ApiInstance());
+		BewitchmentAPI.getAPI().DEMON = EnumHelper.addCreatureAttribute("DEMON");
+		BewitchmentAPI.getAPI().SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
 		Bewitchment.logger.debug("API is ready!");
 	}
 

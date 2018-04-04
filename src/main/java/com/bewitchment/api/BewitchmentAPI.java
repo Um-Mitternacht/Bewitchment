@@ -11,6 +11,7 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
@@ -19,6 +20,7 @@ import net.minecraft.potion.Potion;
 public abstract class BewitchmentAPI {
 
 	private static BewitchmentAPI INSTANCE;
+	public EnumCreatureAttribute DEMON, SPIRIT;
 
 	public static final void setupAPI(BewitchmentAPI api) {
 		if (INSTANCE == null) {

@@ -21,7 +21,7 @@ public class ModPotions {
 	public static Potion bloodDrained;
 	
 	// Also brews
-	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping;
+	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 
 	private ModPotions() {
 	}
@@ -35,6 +35,7 @@ public class ModPotions {
 		bane_arthropods = new PotionBaneArthropods();
 		corruption = new PotionCorruption();
 		cursed_leaping = new PotionCursedLeaping();
+		demons_bane = new PotionDemonsbane();
 		
 		registerCombinedBrewEffect(wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
@@ -43,8 +44,12 @@ public class ModPotions {
 		registerCombinedBrewEffect(bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
 		registerCombinedBrewEffect(corruption, Ingredient.fromItem(Items.BONE));
 		registerCombinedBrewEffect(cursed_leaping, Ingredient.fromItem(Items.CHORUS_FRUIT));
+		registerCombinedBrewEffect(demons_bane, Ingredient.fromItem(ModItems.hellebore));
 		
-		ForgeRegistries.POTIONS.registerAll(bloodDrained, wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping);
+		ForgeRegistries.POTIONS.registerAll(//
+				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
+				bane_arthropods, corruption, cursed_leaping, demons_bane //
+		);
 	}
 
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
