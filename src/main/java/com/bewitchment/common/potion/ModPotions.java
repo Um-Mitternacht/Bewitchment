@@ -21,7 +21,7 @@ public class ModPotions {
 	public static Potion bloodDrained;
 	
 	// Also brews
-	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption;
+	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping;
 
 	private ModPotions() {
 	}
@@ -34,6 +34,7 @@ public class ModPotions {
 		plant = new PotionPlant();
 		bane_arthropods = new PotionBaneArthropods();
 		corruption = new PotionCorruption();
+		cursed_leaping = new PotionCursedLeaping();
 		
 		registerCombinedBrewEffect(wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
@@ -41,15 +42,16 @@ public class ModPotions {
 		registerCombinedBrewEffect(plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
 		registerCombinedBrewEffect(bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
 		registerCombinedBrewEffect(corruption, Ingredient.fromItem(Items.BONE));
+		registerCombinedBrewEffect(cursed_leaping, Ingredient.fromItem(Items.CHORUS_FRUIT));
 		
-		ForgeRegistries.POTIONS.registerAll(bloodDrained, wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption);
+		ForgeRegistries.POTIONS.registerAll(bloodDrained, wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping);
 	}
 
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
 		if (potion instanceof IBrewEffect) {
 			BewitchmentAPI.getAPI().registerBrewEffect((IBrewEffect) potion, potion, ingredient);
 		}
-		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect for register them as separate objects");
+		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects");
 	}
 	
 }
