@@ -8,6 +8,7 @@ import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.brews.*;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -20,7 +21,7 @@ public class ModPotions {
 	public static Potion bloodDrained;
 	
 	// Also brews
-	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods;
+	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption;
 
 	private ModPotions() {
 	}
@@ -32,14 +33,16 @@ public class ModPotions {
 		absence = new PotionAbsence();
 		plant = new PotionPlant();
 		bane_arthropods = new PotionBaneArthropods();
+		corruption = new PotionCorruption();
 		
 		registerCombinedBrewEffect(wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
 		registerCombinedBrewEffect(absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME recipe conflict with radius modifier
 		registerCombinedBrewEffect(plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
 		registerCombinedBrewEffect(bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
+		registerCombinedBrewEffect(corruption, Ingredient.fromItem(Items.BONE));
 		
-		ForgeRegistries.POTIONS.registerAll(bloodDrained, wolfsbane, arrow_deflect, absence, plant, bane_arthropods);
+		ForgeRegistries.POTIONS.registerAll(bloodDrained, wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption);
 	}
 
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
