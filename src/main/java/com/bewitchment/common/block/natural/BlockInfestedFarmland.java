@@ -9,7 +9,9 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -22,7 +24,7 @@ import java.util.Random;
 public class BlockInfestedFarmland extends BlockMod implements IGrowable {
 
 	public BlockInfestedFarmland() {
-		super(LibBlockName.INFESTED_FARMLAND, Material.GROUND);
+		super(LibBlockName.INFESTED_FARMLAND, Material.VINE);
 		setResistance(1F);
 		setHardness(1F);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
@@ -97,5 +99,10 @@ public class BlockInfestedFarmland extends BlockMod implements IGrowable {
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 		return true;
 
+	}
+
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
 	}
 }
