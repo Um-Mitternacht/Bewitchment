@@ -1,7 +1,8 @@
 //CreativeTab
-itemGroup.bewitchment_plants=Bewitchment - Plants and Herbs
-itemGroup.bewitchment_items=Bewitchment - Sticks and Stones
+itemGroup.bewitchment_plants=Bewitchment - Plants
+itemGroup.bewitchment_items=Bewitchment - Items
 itemGroup.bewitchment_blocks=Bewitchment - Blocks
+itemGroup.bewitchment_brews=Bewitchment - Brews
 
 //Config
 bewitchment.config.world_gen=World Gen
@@ -112,7 +113,7 @@ item.wand.name=Wand
 item.needle_bone.name=Bone Needle
 item.brew_phial_drink.name=Brew Phial
 item.brew_phial_splash.name=Splash Brew Phial
-item.brew_phial_drink_lingering.name=Lingering Brew Phial
+item.brew_phial_linger.name=Lingering Brew Phial
 item.oak_apple_gall.name=Oak Apple Gall
 item.grilled_watermelon.name=Grilled Watermelon
 item.ritual_chalk_normal.name=Ritual Chalk
@@ -366,189 +367,185 @@ fluid.for.honey=Honey
 //Brew
 brew.instant=Instant
 
-brew.shell_armor.name=Shell Armor Brew
-brew.shell_armor.desc=The edges of your shell may hurt those who attack you.
-brew.shell_armor.tooltip=Shell Armor
+effect.shell_armor.name=Shell Armor Brew
+effect.shell_armor.desc=The edges of your shell may hurt those who attack you.
+effect.shell_armor.tooltip=Shell Armor
 
-brew.spider_nightmare.name=Spider Nightmare Brew
-brew.spider_nightmare.desc=Surround your enemy with webs and spiders.
-brew.spider_nightmare.tooltip=Spider Nightmare
+effect.spider_nightmare.name=Spider Nightmare Brew
+effect.spider_nightmare.desc=Surround your enemy with webs and spiders.
+effect.spider_nightmare.tooltip=Spider Nightmare
 
-brew.frostbite.name=Frostbite Brew
-brew.frostbite.desc=Encases a target in ice. May have other effects.
-brew.frostbite.tooltip=Frostbite
+effect.frostbite.name=Frostbite Brew
+effect.frostbite.desc=Encases a target in ice. May have other effects.
+effect.frostbite.tooltip=Frostbite
 
-brew.extinguish_fires.name=Extinguish Fires Brew
-brew.extinguish_fires.desc=Puts out any fires on you.
-brew.extinguish_fires.tooltip=Extinguish Fires
+effect.extinguish_fires.name=Extinguish Fires Brew
+effect.extinguish_fires.desc=Puts out any fires on you.
+effect.extinguish_fires.tooltip=Extinguish Fires
 
-brew.mars_water.name=Water of Mars Brew
-brew.mars_water.desc=Inflicts nasty debuffs on the target.
-brew.mars_water.tooltip=Mars water
+effect.mars_water.name=Water of Mars Brew
+effect.mars_water.desc=Inflicts nasty debuffs on the target.
+effect.mars_water.tooltip=Mars water
 
-brew.holy_water.name=Holy Water
-brew.holy_water.desc=Damages undead and demons, but has no effect on the living.
-brew.holy_water.tooltip=Holy Water
+effect.holy_water.name=Holy Water
+effect.holy_water.desc=Damages undead and demons, but has no effect on the living.
+effect.holy_water.tooltip=Holy Water
 
-brew.volatility.name=Brew of Volatility
-brew.volatility.desc=Makes you explode upon being hit.
-brew.volatility.tooltip=Volatility
+effect.volatility.name=Brew of Volatility
+effect.volatility.desc=Makes you explode upon being hit.
+effect.volatility.tooltip=Volatility
 
-brew.till_land.name=Tilled Land Brew
-brew.till_land.desc=Turns dirt into farmland when thrown.
-brew.till_land.tooltip=Tilled Land
+effect.till_land.name=Tilled Land Brew
+effect.till_land.desc=Turns dirt into farmland when thrown.
+effect.till_land.tooltip=Tilled Land
 
-brew.fertilize.name=Fertilize Brew
-brew.fertilize.desc=Makes stuff grow when thrown.
-brew.fertilize.tooltip=Fertilize
+effect.fertilize.name=Fertilize Brew
+effect.fertilize.desc=Makes stuff grow when thrown.
+effect.fertilize.tooltip=Fertilize
 
-brew.harvest.name=Harvest Festival Brew
-brew.harvest.desc=Harvests crops when thrown.
-brew.harvest.tooltip=Harvest Festival
+effect.harvest.name=Harvest Festival Brew
+effect.harvest.desc=Harvests crops when thrown.
+effect.harvest.tooltip=Harvest Festival
 
-brew.grow_flowers.name=Flower Apparition Brew
-brew.grow_flowers.desc=Makes flowers when thrown.
-brew.grow_flowers.tooltip=Flower Apparition
+effect.grow_flowers.name=Flower Apparition Brew
+effect.grow_flowers.desc=Makes flowers when thrown.
+effect.grow_flowers.tooltip=Flower Apparition
 
-brew.ender_inhibition.name=Ender Inhibition Brew
-brew.ender_inhibition.desc=Ender beings can't teleport.
-brew.ender_inhibition.tooltip=Ender Inhibition
+effect.ender_inhibition.name=Ender Inhibition Brew
+effect.ender_inhibition.desc=Ender beings can't teleport.
+effect.ender_inhibition.tooltip=Ender Inhibition
 
-brew.path_of_the_deep.name=Path of the Deep Brew
-brew.path_of_the_deep.desc=Allows you to swim faster.
-brew.path_of_the_deep.tooltip=Path of the Deep
+effect.path_of_the_deep.name=Path of the Deep Brew
+effect.path_of_the_deep.desc=Allows you to swim faster.
+effect.path_of_the_deep.tooltip=Path of the Deep
 
-brew.rock_pulverize.name=Rock Pulverize Brew
-brew.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
-brew.rock_pulverize.tooltip=Rock Pulverize
+effect.rock_pulverize.name=Rock Pulverize Brew
+effect.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
+effect.rock_pulverize.tooltip=Rock Pulverize
 
-brew.prune_leaves.name=Prune Leaves Brew
-brew.prune_leaves.desc=Removes leaves.
-brew.prune_leaves.tooltip=Prune Leaves
+effect.prune_leaves.name=Prune Leaves Brew
+effect.prune_leaves.desc=Removes leaves.
+effect.prune_leaves.tooltip=Prune Leaves
 
-brew.auto_plant.name=Auto Plant Brew
-brew.auto_plant.desc=Plants any seed that is on the ground.
-brew.auto_plant.tooltip=Auto Plant
+effect.plant.name=Auto Plant Brew
+effect.plant.desc=Plants any seed that is on the ground.
+effect.plant.tooltip=Auto Plant
 
-brew.snow_trail.name=Snow Trail Brew
-brew.snow_trail.desc=Places a snow layer as an affected mob or player walks.
-brew.snow_trail.tooltip=Snow Trail
+effect.snow_trail.name=Snow Trail Brew
+effect.snow_trail.desc=Places a snow layer as an affected mob or player walks.
+effect.snow_trail.tooltip=Snow Trail
 
-brew.skin_tint.name=Skin Tint Brew
-brew.skin_tint.desc=Tints your skin with a specific color.
-brew.skin_tint.tooltip=Skin Tint
+effect.skin_tint.name=Skin Tint Brew
+effect.skin_tint.desc=Tints your skin with a specific color.
+effect.skin_tint.tooltip=Skin Tint
 
-brew.wolfsbane.name=Wolfsbane Brew
-brew.wolfsbane.desc=Deals damage to wolves and therians.
-brew.wolfsbane.tooltip=Wolfsbane
+effect.wolfsbane.name=Wolfsbane Brew
+effect.wolfsbane.desc=Deals damage to wolves and therians.
+effect.wolfsbane.tooltip=Wolfsbane
 
-brew.sinking.name=Brew of Sinking
-brew.sinking.desc=Causes you to sink and be unable to jump.
-brew.sinking.tooltip=Sinking
+effect.sinking.name=Brew of Sinking
+effect.sinking.desc=Causes you to sink and be unable to jump.
+effect.sinking.tooltip=Sinking
 
-brew.cursed_leaping.name=Brew of Cursed Leaping
-brew.cursed_leaping.desc=Causes a target to jump uncontrollably.
-brew.cursed_leaping.tooltip=Cursed Leaping
+effect.cursed_leaping.name=Brew of Cursed Leaping
+effect.cursed_leaping.desc=Causes a target to jump uncontrollably.
+effect.cursed_leaping.tooltip=Cursed Leaping
 
-brew.bane_arthropods.name=Bane of Arthropods Brew
-brew.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
-brew.bane_arthropods.tooltip=Bane of Arthropods
+effect.bane_arthropods.name=Bane of Arthropods Brew
+effect.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
+effect.bane_arthropods.tooltip=Bane of Arthropods
 
-brew.outcasts_shame.name=Outcast's Shame Brew
-brew.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
-brew.outcasts_shame.tooltip=Outcast's Shame
+effect.outcasts_shame.name=Outcast's Shame Brew
+effect.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
+effect.outcasts_shame.tooltip=Outcast's Shame
 
-brew.ignition.name=Brew of Ignition
-brew.ignition.desc=Lights you or a target on fire.
-brew.ignition.tooltip=Ignition
+effect.ignition.name=Brew of Ignition
+effect.ignition.desc=Lights you or a target on fire.
+effect.ignition.tooltip=Ignition
 
-brew.grace.name=Brew of Grace
-brew.grace.desc=Negates fall damage.
-brew.grace.tooltip=Grace
+effect.grace.name=Brew of Grace
+effect.grace.desc=Negates fall damage.
+effect.grace.tooltip=Grace
 
-brew.purify.name=Brew of Purification
-brew.purify.desc=Removes harmful brew effects.
-brew.purify.tooltip=Purity
+effect.purify.name=Brew of Purification
+effect.purify.desc=Removes harmful brew effects.
+effect.purify.tooltip=Purity
 
-brew.notched.name=Notched Brew
-brew.notched.desc=Adds all of the effects a notch apple applies.
-brew.notched.tooltip=Notched
+effect.notched.name=Notched Brew
+effect.notched.desc=Adds all of the effects a notch apple applies.
+effect.notched.tooltip=Notched
 
-brew.mycological_corruption.name=Brew of Mycological Corruption
-brew.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
-brew.mycological_corruption.tooltip=Mycological Corruption
+effect.mycological_corruption.name=Brew of Mycological Corruption
+effect.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
+effect.mycological_corruption.tooltip=Mycological Corruption
 
-brew.growth.name=Brew of Growth
-brew.growth.desc=Turns mycelium and dirt into grass. May have other effects.
-brew.growth.tooltip=Growth
+effect.growth.name=Brew of Growth
+effect.growth.desc=Turns mycelium and dirt into grass. May have other effects.
+effect.growth.tooltip=Growth
 
-brew.ozymandias.name=Ozymandias' Brew
-brew.ozymandias.desc=Look on my Works, ye Mighty, and despair!
-brew.ozymandias.tooltip=Ozymandias
+effect.ozymandias.name=Ozymandias' Brew
+effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!
+effect.ozymandias.tooltip=Ozymandias
 
-brew.hells_wroth.name=Hell's Wroth Brew
-brew.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
-brew.hells_wroth.tooltip=Hell's Wroth
+effect.hells_wroth.name=Hell's Wroth Brew
+effect.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
+effect.hells_wroth.tooltip=Hell's Wroth
 
-brew.setehs_wastes.name=Brew of Seteh's Wastes
-brew.setehs_wastes.desc=Converts sand and sandstone to their red variants.
-brew.setehs_wastes.tooltip=Seteh's Wastes
+effect.setehs_wastes.name=Brew of Seteh's Wastes
+effect.setehs_wastes.desc=Converts sand and sandstone to their red variants.
+effect.setehs_wastes.tooltip=Seteh's Wastes
 
-brew.hell_world.name=Brew of Fire World
-brew.hell_world.desc=Converts your surroundings to a hellish scene.
-brew.hell_world.tooltip=Fire World
+effect.hell_world.name=Brew of Fire World
+effect.hell_world.desc=Converts your surroundings to a hellish scene.
+effect.hell_world.tooltip=Fire World
 
-brew.ice_world.name=Brew of Ice World
-brew.ice_world.desc=Converts your surroundings to a wintery wonderland.
-brew.ice_world.tooltip=Ice World
+effect.ice_world.name=Brew of Ice World
+effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
+effect.ice_world.tooltip=Ice World
 
-brew.corruption.name=Brew of Corruption
-brew.corruption.desc=Removes all beneficial brew effects.
-brew.corruption.tooltip=Corruption
+effect.corruption.name=Brew of Corruption
+effect.corruption.desc=Removes all beneficial brew effects.
+effect.corruption.tooltip=Corruption
 
-brew.salt_land.name=Brew of Salting
-brew.salt_land.desc=Destroys farmland and renders it useless.
-brew.salt_land.tooltip=Salting
+effect.salt_land.name=Brew of Salting
+effect.salt_land.desc=Destroys farmland and renders it useless.
+effect.salt_land.tooltip=Salting
 
-brew.absence.name=Absence Brew
-brew.absence.desc=Removes all brew effects from a player.
-brew.absence.tooltip=Absence
+effect.absence.name=Absence Brew
+effect.absence.desc=Removes all brew effects from a player.
+effect.absence.tooltip=Absence
 
-brew.bulletproof.name=Bulletproof Brew
-brew.bulletproof.desc=Negates damage from projectiles.
-brew.bulletproof.tooltip=Bulletproof
+effect.bulletproof.name=Bulletproof Brew
+effect.bulletproof.desc=Negates damage from projectiles.
+effect.bulletproof.tooltip=Bulletproof
 
-brew.overcoat.name=Overcoat Brew
-brew.overcoat.desc=Negates most damage.
-brew.overcoat.tooltip=Overcoat
+effect.overcoat.name=Overcoat Brew
+effect.overcoat.desc=Negates most damage.
+effect.overcoat.tooltip=Overcoat
 
-brew.mortal_coil.name=Mortal Coil Brew
-brew.mortal_coil.desc=Kills you at the end of the timer.
-brew.mortal_coil.tooltip=Mortal Coil
+effect.mortal_coil.name=Mortal Coil Brew
+effect.mortal_coil.desc=Kills you at the end of the timer.
+effect.mortal_coil.tooltip=Mortal Coil
 
-brew.disrobing.name=Brew of Disrobing
-brew.disrobing.desc=Has a chance of knocking a piece of armor off of a target
-brew.disrobing.tooltip=Disrobing
+effect.disrobing.name=Brew of Disrobing
+effect.disrobing.desc=Has a chance of knocking a piece of armor off of a target
+effect.disrobing.tooltip=Disrobing
 
-brew.rotting.name=Brew of Rotting
-brew.rotting.desc=Rots any living being hit by this brew
-brew.rotting.tooltip=Rotting
+effect.rotting.name=Brew of Rotting
+effect.rotting.desc=Rots any living being hit by this brew
+effect.rotting.tooltip=Rotting
 
-brew.arrow_deflection.name=Brew of Deflection
-brew.arrow_deflection.desc=Deflects any arrow sent at you
-brew.arrow_deflection.tooltip=Deflection
+effect.arrow_deflection.name=Brew of Deflection
+effect.arrow_deflection.desc=Deflects any arrow sent at you
+effect.arrow_deflection.tooltip=Deflection
 
-brew.demons_bane.name=Demonsbane Brew
-brew.demons_bane.desc=Damages demons and nether-based mobs
-brew.demons_bane.tooltip=Demonsbane
+effect.demons_bane.name=Demonsbane Brew
+effect.demons_bane.desc=Damages demons and nether-based mobs
+effect.demons_bane.tooltip=Demonsbane
 
-brew.paralysis.name=Brew of Paralysis
-brew.paralysis.desc=Paralyzes a target and prevents them from moving.
-brew.paralysis.tooltip=Paralysis
-
-brew..name=
-brew..desc=
-brew..tooltip=
+effect.paralysis.name=Brew of Paralysis
+effect.paralysis.desc=Paralyzes a target and prevents them from moving.
+effect.paralysis.tooltip=Paralysis
 
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
@@ -719,3 +716,9 @@ vampire.bed_blocked=This doesn't feel comfortable anymore
 key.categories.bewitchment=Bewitchment
 key.description.jump_to_bar=Jump to extra bar
 key.description.enable_bar=Toggle extra bar reachability
+
+//Brew misc
+brew.parameters.formatting= %s
+brew.description.formatting=%s
+modifier.bewitchment.radius=Radius %d
+modifier.bewitchment.power=Power %d

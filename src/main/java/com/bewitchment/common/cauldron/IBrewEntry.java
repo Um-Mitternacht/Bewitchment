@@ -9,5 +9,5 @@ public interface IBrewEntry {
 	
 	public Potion getPotion();
 	
-	public IBrewModifierList getModifiers();
+	public IBrewModifierList getModifierList();
 }

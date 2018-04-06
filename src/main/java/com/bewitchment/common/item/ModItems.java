@@ -11,6 +11,9 @@ import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
+import com.bewitchment.common.item.magic.brew.ItemBrewDrinkable;
+import com.bewitchment.common.item.magic.brew.ItemBrewLingering;
+import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
 import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
@@ -185,6 +188,9 @@ public final class ModItems {
 				new ItemMod(LibItemName.HONEYCOMB),
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),
+				new ItemBrewDrinkable(),
+				new ItemBrewSplash(),
+				new ItemBrewLingering(),
 				new ItemMod(LibItemName.GLASS_JAR),
 				new ItemAthame(),
 				new ItemBoline(),

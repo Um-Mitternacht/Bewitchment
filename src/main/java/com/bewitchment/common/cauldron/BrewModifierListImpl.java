@@ -3,6 +3,7 @@ package com.bewitchment.common.cauldron;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifierList;
@@ -16,23 +17,23 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable<NBTTagList> {
 	
-	private HashMap<IBrewModifier, Integer> mods = new HashMap<>();
+	private HashMap<ResourceLocation, Integer> map = new HashMap<>();
 	
 	@Override
 	public Optional<Integer> getLevel(IBrewModifier modifier) {
-		if (mods.containsKey(modifier)) {
-			return Optional.of(mods.get(modifier));
+		if (map.containsKey(modifier.getRegistryName())) {
+			return Optional.of(map.get(modifier.getRegistryName()));
 		}
 		return Optional.empty();
 	}
 	
 	@Override
 	public Set<IBrewModifier> getModifiers() {
-		return mods.keySet();
+		return map.keySet().stream().map(rl -> CauldronRegistry.BREW_MODIFIERS.getValue(rl)).collect(Collectors.toSet());
 	}
 	
 	public void addModifier(IBrewModifier mod, int level) {
-		mods.put(mod, level);
+		map.put(mod.getRegistryName(), level);
 	}
 	
 	@Override
@@ -52,13 +53,13 @@ public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable
 	
 	@Override
 	public void deserializeNBT(NBTTagList list) {
-		mods.clear();
+		map.clear();
 		for (NBTBase b : list) {
 			NBTTagCompound singleModifier = (NBTTagCompound) b;
 			if (singleModifier.hasKey("level")) {
 				int lvl = singleModifier.getInteger("level");
 				IBrewModifier mod = CauldronRegistry.BREW_MODIFIERS.getValue(new ResourceLocation(singleModifier.getString("name")));
-				mods.put(mod, lvl);
+				map.put(mod.getRegistryName(), lvl);
 			}
 		}
 	}

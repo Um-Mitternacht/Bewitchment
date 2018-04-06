@@ -66,7 +66,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		private Potion pot;
 		private BrewModifierListImpl mods;
 		
-		protected BrewEntry(Potion potion, BrewModifierListImpl modifiers) {
+		public BrewEntry(Potion potion, BrewModifierListImpl modifiers) {
 			this.pot = potion;
 			this.mods = modifiers;
 		}
@@ -81,7 +81,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		}
 		
 		@Override
-		public IBrewModifierList getModifiers() {
+		public IBrewModifierList getModifierList() {
 			return mods;
 		}
 		

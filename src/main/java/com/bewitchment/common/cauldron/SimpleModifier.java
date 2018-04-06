@@ -50,4 +50,12 @@ public abstract class SimpleModifier implements IBrewModifier {
 	public Ingredient getJEIStackRepresentative() {
 		return ingredient;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof IBrewModifier) {
+			return this.getRegistryName().equals(((IBrewModifier) obj).getRegistryName());
+		}
+		return false;
+	}
 }
