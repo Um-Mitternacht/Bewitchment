@@ -56,6 +56,7 @@ public final class ModBlocks {
 	public static final BlockCrop crop_hellebore = null;
 	public static final BlockCrop crop_chrysanthemum = null;
 	public static final BlockCrop crop_sagebrush = null;
+	public static final BlockCrop crop_infested_wheat = null;
 	private static Block PLACE_HOLDER = new Block(Material.AIR);
 	//--------------------------------Blocks--------------------------------//
 	public static final Block silver_block = PLACE_HOLDER;
@@ -143,6 +144,7 @@ public final class ModBlocks {
 				new BlockCrop(LibBlockName.CROP_HELLEBORE),
 				new BlockCrop(LibBlockName.CROP_CHRYSANTHEMUM),
 				new BlockCrop(LibBlockName.CROP_SAGEBRUSH),
+				new BlockCrop(LibBlockName.CROP_INFESTED_WHEAT),
 				new CropWormwood(),
 				new CropSilphium(),
 				new CropKenaf(),

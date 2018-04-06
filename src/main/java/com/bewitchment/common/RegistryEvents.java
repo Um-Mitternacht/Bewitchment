@@ -55,6 +55,8 @@ public final class RegistryEvents {
 				new ItemCrop(LibItemName.CHRYSANTHEMUM, 2, 0.1F, false), LibItemName.SEED_CHRYSANTHEMUM);
 		registerCrop(SAGEBRUSH, ModBlocks.crop_sagebrush,
 				new ItemCrop(LibItemName.SAGEBRUSH, 2, 0.1F, false), LibItemName.SEED_SAGEBRUSH);
+		registerCrop(INFESTED_WHEAT, ModBlocks.crop_infested_wheat,
+				new ItemCrop(LibItemName.INFESTED_WHEAT, 1, 0.1F, false), LibItemName.WITCHWEED);
 		registerCrop(BELLADONNA, ModBlocks.crop_belladonna
 				, new ItemBelladonna(), LibItemName.SEED_BELLADONNA);
 		registerCrop(ACONITUM, ModBlocks.crop_aconitum

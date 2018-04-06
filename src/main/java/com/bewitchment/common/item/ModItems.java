@@ -92,6 +92,8 @@ public final class ModItems {
 	public static final Item chrysanthemum = PLACE_HOLDER;
 	public static final Item seed_chrysanthemum = PLACE_HOLDER;
 	public static final Item moonbell = PLACE_HOLDER;
+	public static final Item infested_wheat = PLACE_HOLDER;
+	public static final Item witchweed = PLACE_HOLDER;
 
 	public static final Item bee = PLACE_HOLDER;
 	public static final Item glass_jar = PLACE_HOLDER;
@@ -231,7 +233,9 @@ public final class ModItems {
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
 				new ItemTarots(LibItemName.TAROTS),
-				new ItemBroom(LibItemName.BROOM)
+				new ItemBroom(LibItemName.BROOM),
+				new ItemMod(LibItemName.WITCHWEED),
+				new ItemMod(LibItemName.INFESTED_WHEAT)
 		);
 
 		// Baubles
