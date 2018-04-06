@@ -1,6 +1,7 @@
 package com.bewitchment.common.cauldron;
 
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.Set;
 
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -18,11 +19,11 @@ public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable
 	private HashMap<IBrewModifier, Integer> mods = new HashMap<>();
 	
 	@Override
-	public int getLevel(IBrewModifier modifier) {
+	public Optional<Integer> getLevel(IBrewModifier modifier) {
 		if (mods.containsKey(modifier)) {
-			return mods.get(modifier);
+			return Optional.of(mods.get(modifier));
 		}
-		return IBrewModifierList.NOT_PRESENT;
+		return Optional.empty();
 	}
 	
 	@Override
@@ -38,10 +39,13 @@ public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable
 	public NBTTagList serializeNBT() {
 		NBTTagList modf_list = new NBTTagList();
 		for (IBrewModifier mod : getModifiers()) {
-			NBTTagCompound singleModifier = new NBTTagCompound();
-			singleModifier.setString("name", mod.getRegistryName().toString());
-			singleModifier.setInteger("level", getLevel(mod));
-			modf_list.appendTag(singleModifier);
+			Optional<Integer> lvl = getLevel(mod);
+			if (lvl.isPresent()) {
+				NBTTagCompound singleModifier = new NBTTagCompound();
+				singleModifier.setString("name", mod.getRegistryName().toString());
+				singleModifier.setInteger("level", lvl.get());
+				modf_list.appendTag(singleModifier);
+			}
 		}
 		return modf_list;
 	}
@@ -51,9 +55,11 @@ public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable
 		mods.clear();
 		for (NBTBase b : list) {
 			NBTTagCompound singleModifier = (NBTTagCompound) b;
-			int lvl = singleModifier.getInteger("level");
-			IBrewModifier mod = CauldronRegistry.BREW_MODIFIERS.getValue(new ResourceLocation(singleModifier.getString("name")));
-			mods.put(mod, lvl);
+			if (singleModifier.hasKey("level")) {
+				int lvl = singleModifier.getInteger("level");
+				IBrewModifier mod = CauldronRegistry.BREW_MODIFIERS.getValue(new ResourceLocation(singleModifier.getString("name")));
+				mods.put(mod, lvl);
+			}
 		}
 	}
 	

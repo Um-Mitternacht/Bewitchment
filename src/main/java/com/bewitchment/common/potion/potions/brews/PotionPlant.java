@@ -38,7 +38,7 @@ public class PotionPlant extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int amplifier = modifiers.getLevel(BewitchmentModifiers.POWER);
+		int amplifier = modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0);
 		AxisAlignedBB space = new AxisAlignedBB(pos).grow(2 + MathHelper.clamp(amplifier, 0, 5));
 		List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, space, input -> input != null && isSeed(input.getItem()));
 		if (!items.isEmpty()) {

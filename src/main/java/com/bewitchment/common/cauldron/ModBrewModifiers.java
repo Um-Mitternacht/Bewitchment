@@ -9,6 +9,7 @@ import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.crafting.IngredientOr;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.tile.TileEntityCauldron;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -113,13 +114,13 @@ public class ModBrewModifiers {
 			}
 			
 			@Override
-			public int acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers) {
+			public ModifierResult acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers) {
 				if (DyeUtils.isDye(stack)) {
-					int currentColor = currentModifiers.getLevel(this);
+					int currentColor = currentModifiers.getLevel(this).orElse(TileEntityCauldron.DEFAULT_COLOR);
 					int newColor = DyeUtils.colorFromStack(stack).map(e -> e.getColorValue()).orElse(currentColor);
-					return ColorHelper.blendColor(currentColor, newColor, 0.5f);
+					return new ModifierResult(ColorHelper.blendColor(currentColor, newColor, 0.5f), ResultType.SUCCESS);
 				}
-				return IBrewModifier.PASS;
+				return new ModifierResult(ResultType.PASS);
 			}
 		};
 	}

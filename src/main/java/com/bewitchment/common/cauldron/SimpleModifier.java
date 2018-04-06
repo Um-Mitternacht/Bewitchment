@@ -35,15 +35,15 @@ public abstract class SimpleModifier implements IBrewModifier {
 	}
 	
 	@Override
-	public int acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers) {
-		int currentLevel = currentModifiers.getLevel(this);
+	public ModifierResult acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers) {
+		int currentLevel = currentModifiers.getLevel(this).orElse(0);
 		if (ingredient.apply(stack)) {
 			if (currentLevel < 5) {
-				return currentLevel + 1;
+				return new ModifierResult(currentLevel + 1, ResultType.SUCCESS);
 			}
-			return currentLevel;
+			return new ModifierResult(ResultType.FAIL);
 		}
-		return IBrewModifier.PASS;
+		return new ModifierResult(ResultType.PASS);
 	}
 	
 	@Override

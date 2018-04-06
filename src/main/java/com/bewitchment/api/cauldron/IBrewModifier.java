@@ -6,8 +6,6 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
 	
-	public static final int PASS = Integer.MAX_VALUE;
-	
 	/**
 	 * Decide if a modifier is applicable to a specific potion
 	 * 
@@ -24,11 +22,39 @@ public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
 	 * @param currentModifiers The current list of modifiers applied to this brew.
 	 *            The effect might already be present if the ingredient is thrown in twice,
 	 *            so you should check it before in case this uses multiple levels
-	 * @return The level at witch this modifier should be set at,
-	 *         or {@link #PASS} to ignore this item and let other modifiers process it.
+	 * @return the ModifierResult representing what should happen. if ResultType is SUCCESS, the modifier gets
+	 *         set to the level value of the Result, if the result type is FAIL the potion will fail, if the result type
+	 *         is PASS nothing will be modified, and the next brew modifier will be called.
 	 */
-	public int acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers);
+	public ModifierResult acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers);
 	
 	public Ingredient getJEIStackRepresentative();
 	
+	public static class ModifierResult {
+		
+		private int level;
+		private ResultType result;
+		
+		public ModifierResult(int level, ResultType result) {
+			this.level = level;
+			this.result = result;
+		}
+		
+		public ModifierResult(ResultType result) {
+			this(0, result);
+		}
+		
+		public int getLevel() {
+			return level;
+		}
+		
+		public ResultType getResult() {
+			return result;
+		}
+		
+	}
+	
+	public static enum ResultType {
+		SUCCESS, FAIL, PASS
+	}
 }
