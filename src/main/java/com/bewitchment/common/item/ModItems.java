@@ -11,9 +11,7 @@ import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
-import com.bewitchment.common.item.magic.brew.ItemBrewDrinkable;
-import com.bewitchment.common.item.magic.brew.ItemBrewLingering;
-import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
+import com.bewitchment.common.item.magic.brew.*;
 import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
@@ -91,6 +89,7 @@ public final class ModItems {
 	public static final Item brew_phial_drink = PLACE_HOLDER;
 	public static final Item brew_phial_splash = PLACE_HOLDER;
 	public static final Item brew_phial_linger = PLACE_HOLDER;
+	public static final Item brew_arrow = PLACE_HOLDER;
 
 	public static final Item wax = PLACE_HOLDER;
 	public static final Item honey = PLACE_HOLDER;
@@ -191,6 +190,7 @@ public final class ModItems {
 				new ItemBrewDrinkable(),
 				new ItemBrewSplash(),
 				new ItemBrewLingering(),
+				new ItemBrewArrow(),
 				new ItemMod(LibItemName.GLASS_JAR),
 				new ItemAthame(),
 				new ItemBoline(),

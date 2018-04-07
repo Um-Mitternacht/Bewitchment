@@ -67,6 +67,7 @@ public final class LibItemName {
 	public static final String BREW_PHIAL_DRINK = "brew_phial_drink";
 	public static final String BREW_PHIAL_SPLASH = "brew_phial_splash";
 	public static final String BREW_PHIAL_LINGER = "brew_phial_linger";
+	public static final String BREW_ARROW = "brew_arrow";
 	public static final String GLASS_JAR = "glass_jar";
 	public static final String NEEDLE_BONE = "needle_bone";
 	public static final String WAND = "wand";

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "bewitchment:items/brew_phial_drink",
-    "layer1": "bewitchment:items/brew_phial_drink_overlay"
+    "layer1": "bewitchment:items/brew_phial_drink",
+    "layer0": "bewitchment:items/brew_phial_drink_overlay"
   }
 }

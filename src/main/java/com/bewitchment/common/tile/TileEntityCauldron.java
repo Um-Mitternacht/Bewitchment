@@ -392,7 +392,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					syncToClient();
 					markDirty();
 				}
-			} else if (heldItem.getItem() == Items.GLASS_BOTTLE && Mode.BREW == getMode() && progress >= getMode().getTime()) {
+			} else if ((heldItem.getItem() == Items.GLASS_BOTTLE || heldItem.getItem() == Items.ARROW) && Mode.BREW == getMode() && progress >= getMode().getTime()) {
 				if (progress >= getMode().getTime() || playerIn.isCreative()) {
 					lockInputForCrafting = true;
 					createAndGiveBrew(playerIn, heldItem);
@@ -405,14 +405,25 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private void createAndGiveBrew(EntityPlayer playerIn, ItemStack stack) {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
-			ItemStack brew = new ItemStack(ModItems.brew_phial_drink);
+			ItemStack brew;
+			int costBase;
+			int costRand;
+			if (stack.getItem() == Items.GLASS_BOTTLE) {// TODO add other variants
+				brew = new ItemStack(ModItems.brew_phial_drink);
+				costBase = 300;
+				costRand = 400;
+			} else {
+				brew = new ItemStack(ModItems.brew_arrow);
+				costBase = 100;
+				costRand = 150;
+			}
 			if (!playerIn.isCreative()) {
 				stack.shrink(1);
 			}
 			data.get().saveToStack(brew);
 			giveItemToPlayer(playerIn, brew);
 			tank.setCanDrain(true);
-			tank.drain(300 + world.rand.nextInt(400), true);// TODO make it not completely random but dependent on the player brewing skill
+			tank.drain(costBase + world.rand.nextInt(costRand), true);// TODO make it not completely random but dependent on the player brewing skill
 			tank.setCanDrain(false);
 			if (tank.isEmpty()) {
 				reset();

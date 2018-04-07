@@ -145,12 +145,12 @@ public class ClientProxy implements ISidedProxy {
 			
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				if (tintIndex != 0) {
+				if (tintIndex == 0) {
 					return PotionUtils.getPotionColorFromEffectList(BrewData.fromStack(stack).getEffects().stream().map(be -> new PotionEffect(be.getPotion())).collect(Collectors.toList()));
 				}
 				return -1;
 			}
-		}, ModItems.brew_phial_drink, ModItems.brew_phial_linger, ModItems.brew_phial_splash);
+		}, ModItems.brew_phial_drink, ModItems.brew_phial_linger, ModItems.brew_phial_splash, ModItems.brew_arrow);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
