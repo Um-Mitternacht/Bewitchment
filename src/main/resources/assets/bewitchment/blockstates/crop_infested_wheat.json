@@ -1,48 +1,48 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "cross"
+    "model": "crop"
   },
   "variants": {
     "age": {
       "0": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_0"
+          "crop": "blocks/wheat_stage_0"
         }
       },
       "1": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_1"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_0"
         }
       },
       "2": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_1"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_1"
         }
       },
       "3": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_1"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_2"
         }
       },
       "4": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_2"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_3"
         }
       },
       "5": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_2"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_4"
         }
       },
       "6": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_2"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_5"
         }
       },
       "7": {
         "textures": {
-          "cross": "bewitchment:blocks/crop/crop_infested_wheat_3"
+          "crop": "bewitchment:blocks/crop/crop_infested_wheat_6"
         }
       }
     }
