@@ -1,9 +1,11 @@
 package com.bewitchment.common.block.natural;
 
+import java.util.Random;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -13,8 +15,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -27,9 +27,9 @@ public class BlockInfestedFarmland extends BlockMod implements IGrowable {
 		super(LibBlockName.INFESTED_FARMLAND, Material.VINE);
 		setResistance(1F);
 		setHardness(1F);
-		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote) {
 			if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getLightOpacity(worldIn, pos.up()) > 2) {
@@ -55,6 +55,7 @@ public class BlockInfestedFarmland extends BlockMod implements IGrowable {
 		}
 	}
 
+	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 		BlockPos blockpos = pos.up();
 
