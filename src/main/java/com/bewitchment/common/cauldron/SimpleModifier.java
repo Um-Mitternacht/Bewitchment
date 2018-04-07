@@ -16,6 +16,9 @@ public abstract class SimpleModifier implements IBrewModifier {
 	
 	public SimpleModifier(String name, Ingredient ingredient) {
 		this.name = new ResourceLocation(LibMod.MOD_ID, name);
+		if (ingredient.getMatchingStacks().length == 0) {
+			throw new IllegalArgumentException("Empty ingredient when registering the following brew modifier: " + name);
+		}
 		this.ingredient = ingredient;
 	}
 	
@@ -57,5 +60,10 @@ public abstract class SimpleModifier implements IBrewModifier {
 			return this.getRegistryName().equals(((IBrewModifier) obj).getRegistryName());
 		}
 		return false;
+	}
+	
+	@Override
+	public boolean hasMultipleLevels() {
+		return true;
 	}
 }

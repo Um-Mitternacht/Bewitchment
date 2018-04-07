@@ -2,13 +2,20 @@ package com.bewitchment.common.crafting.cauldron;
 
 import java.util.*;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
+import com.bewitchment.api.cauldron.IBrewModifier.ModifierResult;
+import com.bewitchment.api.cauldron.IBrewModifier.ResultType;
+import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
 
 import net.minecraft.init.Blocks;
@@ -72,6 +79,31 @@ public class CauldronRegistry {
 	
 	public static IBrewEffect getBrewFromPotion(Potion potion) {
 		return BREW_POTION_MAP.inverse().get(potion);
+	}
+	
+	public static Optional<IBrewModifierList> getModifierListFromStack(ItemStack stack, IBrewModifierList currentList, IBrewEffect currentEffect) {
+		for (IBrewModifier bm : BREW_MODIFIERS) {
+			if (bm.canApply(currentEffect)) {
+				ModifierResult mr = bm.acceptIngredient(currentEffect, stack, currentList);
+				if (mr.getResult() == ResultType.SUCCESS) {
+					BrewModifierListImpl newList = new BrewModifierListImpl(currentList);
+					newList.addModifier(bm, mr.getLevel());
+					return Optional.of(newList);
+				} else if (mr.getResult() == ResultType.FAIL) {
+					return null;
+				}
+			}
+		}
+		return Optional.empty();
+	}
+	
+	public static Optional<IBrewEffect> getBrewFromStack(ItemStack stack) {
+		for (Ingredient i : BREW_INGREDIENT_REGISTRY.keySet()) {
+			if (i.apply(stack)) {
+				return Optional.ofNullable(BREW_INGREDIENT_REGISTRY.get(i));
+			}
+		}
+		return Optional.empty();
 	}
 	
 	public static void init() { // TODO tune values
@@ -146,10 +178,27 @@ public class CauldronRegistry {
 			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
 		}
 		
+		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
+		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
+		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME recipe conflict with radius modifier
+		registerCombinedBrewEffect(ModPotions.plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
+		registerCombinedBrewEffect(ModPotions.bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
+		registerCombinedBrewEffect(ModPotions.corruption, Ingredient.fromItem(Items.BONE));
+		registerCombinedBrewEffect(ModPotions.cursed_leaping, Ingredient.fromItem(Items.CHORUS_FRUIT));
+		registerCombinedBrewEffect(ModPotions.demons_bane, Ingredient.fromItem(ModItems.hellebore));
+		
 	}
 	
 	private static Ingredient noMeta(Item i) {
 		return Ingredient.fromStacks(new ItemStack(i, 1, OreDictionary.WILDCARD_VALUE));
+	}
+	
+	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
+		if (potion instanceof IBrewEffect) {
+			BewitchmentAPI.getAPI().registerBrewEffect((IBrewEffect) potion, potion, ingredient);
+			return;
+		}
+		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects");
 	}
 	
 	private static void registerFood(Ingredient ingredient, int hunger, float saturation) {

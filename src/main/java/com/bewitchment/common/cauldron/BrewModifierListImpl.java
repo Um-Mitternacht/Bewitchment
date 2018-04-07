@@ -19,6 +19,13 @@ public class BrewModifierListImpl implements IBrewModifierList, INBTSerializable
 	
 	private HashMap<ResourceLocation, Integer> map = new HashMap<>();
 	
+	public BrewModifierListImpl() {
+	}
+	
+	public BrewModifierListImpl(IBrewModifierList from) {
+		from.getModifiers().forEach(bm -> addModifier(bm, from.getLevel(bm).get()));
+	}
+	
 	@Override
 	public Optional<Integer> getLevel(IBrewModifier modifier) {
 		if (map.containsKey(modifier.getRegistryName())) {

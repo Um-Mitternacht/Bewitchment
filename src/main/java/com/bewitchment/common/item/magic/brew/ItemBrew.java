@@ -9,7 +9,6 @@ import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.core.helper.RomanNumber;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ItemMod;
 
@@ -59,13 +58,12 @@ public class ItemBrew extends ItemMod {
 			if (GuiScreen.isShiftKeyDown()) {
 				tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".tooltip"));
 				list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
-					String ref = I18n.format("modifier." + bm.getRegistryName().toString().replace(':', '.'), brewEntry.getModifierList().getLevel(bm).get());
-					tooltip.add(I18n.format("brew.parameters.formatting", ref));
+					tooltip.add(I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
 				});
 			} else {
 				Optional<Integer> lvl = list.getLevel(BewitchmentModifiers.POWER);
 				if (lvl.isPresent() && lvl.get() > 1) {
-					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".tooltip") + " " + RomanNumber.getRoman(lvl.get()));
+					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".tooltip") + " " + lvl.get()); // TODO fix roman
 				} else {
 					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".tooltip"));
 				}

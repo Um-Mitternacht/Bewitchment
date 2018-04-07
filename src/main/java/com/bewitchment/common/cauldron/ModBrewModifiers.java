@@ -11,6 +11,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityCauldron;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -59,7 +60,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.GAS_CLOUD_DURATION = new SimpleModifier("length", Ingredient.fromItem(ModItems.hellebore)) {
+		BewitchmentModifiers.GAS_CLOUD_DURATION = new SimpleModifier("gas_duration", Ingredient.fromItem(ModItems.hellebore)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -67,19 +68,29 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("power", Ingredient.fromItem(Items.BRICK)) {
+		BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("suppress_entity", Ingredient.fromItem(Items.BRICK)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
 				return true;
 			}
+			
+			@Override
+			public boolean hasMultipleLevels() {
+				return false;
+			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("power", Ingredient.fromItem(Items.NETHERBRICK)) {
+		BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("suppress_in_world", Ingredient.fromItem(Items.NETHERBRICK)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
 				return brew.hasInWorldEffect();
+			}
+			
+			@Override
+			public boolean hasMultipleLevels() {
+				return false;
 			}
 		};
 		
@@ -121,6 +132,16 @@ public class ModBrewModifiers {
 					return new ModifierResult(ColorHelper.blendColor(currentColor, newColor, 0.5f), ResultType.SUCCESS);
 				}
 				return new ModifierResult(ResultType.PASS);
+			}
+			
+			@Override
+			public boolean hasMultipleLevels() {
+				return false;
+			}
+			
+			@Override
+			public String getTooltipString(int lvl) {
+				return I18n.format("modifier.bewitchment.color", lvl);
 			}
 		};
 	}

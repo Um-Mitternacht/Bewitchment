@@ -78,7 +78,6 @@ public class Bewitchment {
 	public void preInit(FMLPreInitializationEvent event) {
 		ApiInstance.initAPI();
 		CapabilityEnergy.init();
-		ModBrewModifiers.init();
 		CapabilityDivination.init();
 		CapabilityEnergyUser.init();
 		CapabilityTransformationData.init();
@@ -112,6 +111,7 @@ public class Bewitchment {
 		ModSpinningThreadRecipes.init();
 		ModBarrelRecipes.init();
 		ModRituals.init();
+		ModBrewModifiers.init();
 
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of bewitchment,");

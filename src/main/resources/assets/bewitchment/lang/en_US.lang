@@ -720,5 +720,10 @@ key.description.enable_bar=Toggle extra bar reachability
 //Brew misc
 brew.parameters.formatting= %s
 brew.description.formatting=%s
-modifier.bewitchment.radius=Radius %d
-modifier.bewitchment.power=Power %d
+modifier.bewitchment.radius=Expanding %d
+modifier.bewitchment.power=Strength %d
+modifier.bewitchment.color=Colored as #%08X
+modifier.bewitchment.suppress_in_world=No world effect
+modifier.bewitchment.suppress_entity=No entity effect
+modifier.bewitchment.gas_duration=Permeating %d
+modifier.bewitchment.length=Lasting %d

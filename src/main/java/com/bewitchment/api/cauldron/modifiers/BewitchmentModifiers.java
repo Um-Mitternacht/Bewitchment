@@ -3,7 +3,7 @@ package com.bewitchment.api.cauldron.modifiers;
 import com.bewitchment.api.cauldron.IBrewModifier;
 
 /**
- * All this modifiers are initialized before the Init phase by Bewitchment
+ * All this modifiers are initialized during the Init phase by Bewitchment
  * 
  * @author zabi94
  */

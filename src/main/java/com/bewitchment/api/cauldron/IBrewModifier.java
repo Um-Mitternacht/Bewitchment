@@ -1,5 +1,6 @@
 package com.bewitchment.api.cauldron;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -13,6 +14,15 @@ public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
 	 * @return true if the modifier can be applied to this potion, false otherwise
 	 */
 	public boolean canApply(IBrewEffect brew);
+	
+	public boolean hasMultipleLevels();
+	
+	default String getTooltipString(int lvl) {
+		if (hasMultipleLevels()) {
+			return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'), lvl);
+		}
+		return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'));
+	}
 	
 	/**
 	 * Given the ingredient thrown in the cauldron, decide what level this modifier should be set at

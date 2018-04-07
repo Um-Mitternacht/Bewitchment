@@ -3,9 +3,12 @@ package com.bewitchment.common.tile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.cauldron.BrewBuilder;
+import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.crafting.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
@@ -24,6 +27,8 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -78,7 +83,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 	
 	private void handleCraftingProgress() {
-		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || getMode().getTime() > 0) {
+		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || (getMode() != Mode.CRAFTING && getMode().getTime() > 0)) {
 			if (progress < getMode().getTime()) {
 				progress++; // TODO Should this require ME?
 				markDirty();
@@ -166,7 +171,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				setMode(getModeForFirstItem(stack));
 				tank.setCanDrain(false);
 				tank.setCanFill(false);
-				processNextItem(stack); // Now this actually passes it to the correct mode handler
+				if (mode != Mode.BREW) {
+					processNextItem(stack); // Now this actually passes it to the correct mode handler
+				}
 				break;
 			}
 			case CRAFTING: {
@@ -228,6 +235,16 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 	
 	private void updateBrewColor() {
+		Optional<BrewData> data = new BrewBuilder(ingredients).build();
+		if (data.isPresent()) {
+			currentColorRGB = PotionUtils.getPotionColorFromEffectList(data.get().getEffects().stream()//
+					.map(ibe -> new PotionEffect(ibe.getPotion()))//
+					.collect(Collectors.toList()));
+		} else {
+			this.mode = Mode.FAILING;
+		}
+		markDirty();
+		syncToClient();
 	}
 	
 	private ItemStack getSoup() {
@@ -359,7 +376,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					markDirty();
 					syncToClient();
 				}
-			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && progress >= getMode().getTime()) {
+			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && (progress >= getMode().getTime() || playerIn.isCreative())) {
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
@@ -375,15 +392,35 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					syncToClient();
 					markDirty();
 				}
-			} else if (heldItem.getItem() == Items.POTIONITEM && Mode.BREW == getMode() && progress >= getMode().getTime()) {
-				createAndGiveBrew(playerIn);
+			} else if (heldItem.getItem() == Items.GLASS_BOTTLE && Mode.BREW == getMode() && progress >= getMode().getTime()) {
+				if (progress >= getMode().getTime() || playerIn.isCreative()) {
+					lockInputForCrafting = true;
+					createAndGiveBrew(playerIn, heldItem);
+				}
 			}
 		}
 		return true;
 	}
 	
-	private void createAndGiveBrew(EntityPlayer playerIn) {
-		// TODO
+	private void createAndGiveBrew(EntityPlayer playerIn, ItemStack stack) {
+		Optional<BrewData> data = new BrewBuilder(ingredients).build();
+		if (data.isPresent()) {
+			ItemStack brew = new ItemStack(ModItems.brew_phial_drink);
+			if (!playerIn.isCreative()) {
+				stack.shrink(1);
+			}
+			data.get().saveToStack(brew);
+			giveItemToPlayer(playerIn, brew);
+			tank.setCanDrain(true);
+			tank.drain(300 + world.rand.nextInt(400), true);// TODO make it not completely random but dependent on the player brewing skill
+			tank.setCanDrain(false);
+			if (tank.isEmpty()) {
+				reset();
+			} else {
+				markDirty();
+				syncToClient();
+			}
+		}
 	}
 	
 	public int getColorRGB() {
