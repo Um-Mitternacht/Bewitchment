@@ -128,7 +128,9 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 	}
 	
 	public void applyToEntity(EntityLivingBase entity, Entity indirectSource, Entity thrower, ApplicationType type) {
-		this.getEffects().forEach(be -> applyEffect(be, entity, indirectSource, thrower, type));
+		this.getEffects().stream()
+			.filter(be -> !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT).isPresent())
+			.forEach(be -> applyEffect(be, entity, indirectSource, thrower, type));
 	}
 	
 	private void applyEffect(IBrewEntry be, EntityLivingBase entity, Entity carrier, Entity thrower, ApplicationType type) {
@@ -171,7 +173,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 	}
 	
 	public void applyInWorld(World world, double x, double y, double z, EntityLivingBase thrower) {
-		this.getEffects().stream().forEach(be -> {
+		this.getEffects().stream().filter(be -> !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT).isPresent()).forEach(be -> {
 			CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), be.getModifierList(), thrower);
 		});
 	}
