@@ -12,7 +12,7 @@ import net.minecraft.potion.PotionEffect;
 public class PotionCorruption extends BrewMod {
 	
 	public PotionCorruption() {
-		super("corruption", true, 0x66FF00, true);
+		super("corruption", true, 0x66FF00, true, 0);
 	}
 	
 	@Override

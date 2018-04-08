@@ -94,6 +94,19 @@ public class ModBrewModifiers {
 			}
 		};
 		
+		BewitchmentModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(ModItems.wax)) {
+			
+			@Override
+			public boolean canApply(IBrewEffect brew) {
+				return true;
+			}
+			
+			@Override
+			public boolean hasMultipleLevels() {
+				return false;
+			}
+		};
+		
 		BewitchmentModifiers.COLOR = new IBrewModifier() {
 			
 			private final ResourceLocation name = new ResourceLocation(LibMod.MOD_ID, "color");

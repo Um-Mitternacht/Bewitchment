@@ -16,6 +16,6 @@ public class BewitchmentModifiers {
 	public static IBrewModifier SUPPRESS_ENTITY_EFFECT;
 	public static IBrewModifier SUPPRESS_IN_WORLD_EFFECT;
 	public static IBrewModifier COLOR;
-	
+	public static IBrewModifier SUPPRESS_PARTICLES;
 }
 

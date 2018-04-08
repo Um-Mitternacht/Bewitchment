@@ -31,7 +31,7 @@ public class PotionWolfsbane extends GenericBrewDamageVS {
 	@Override
 	protected void applyExtraEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
 		if (amplifier > 2) {
-			entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200 * amplifier, 0));
+			entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.WITHER, 40 * amplifier, 0));
 		}
 	}
 	

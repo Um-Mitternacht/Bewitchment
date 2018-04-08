@@ -21,7 +21,7 @@ import net.minecraftforge.common.IPlantable;
 public class PotionPlant extends BrewMod {
 	
 	public PotionPlant() {
-		super("plant", true, 0x003506, true);
+		super("plant", true, 0x003506, true, 0);
 	}
 	
 	@Override

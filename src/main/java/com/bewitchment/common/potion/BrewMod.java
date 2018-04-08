@@ -3,6 +3,7 @@ package com.bewitchment.common.potion;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
@@ -11,8 +12,11 @@ import net.minecraft.world.World;
 
 public class BrewMod extends PotionMod implements IBrewEffect {
 	
-	public BrewMod(String name, boolean isBadEffectIn, int liquidColorIn, boolean isInstant) {
+	protected int defaultDuration;
+	
+	public BrewMod(String name, boolean isBadEffectIn, int liquidColorIn, boolean isInstant, int defaultDuration) {
 		super(name, isBadEffectIn, liquidColorIn, isInstant);
+		this.defaultDuration = defaultDuration;
 	}
 	
 	@Override
@@ -20,7 +24,7 @@ public class BrewMod extends PotionMod implements IBrewEffect {
 	}
 	
 	@Override
-	public PotionEffect onApplyToEntity(EntityLivingBase entity, PotionEffect effect, IBrewModifierList modifiers, EntityLivingBase thrower) {
+	public PotionEffect onApplyToEntity(EntityLivingBase entity, PotionEffect effect, IBrewModifierList modifiers, Entity thrower) {
 		return effect;
 	}
 	
@@ -31,6 +35,21 @@ public class BrewMod extends PotionMod implements IBrewEffect {
 	@Override
 	public boolean hasInWorldEffect() {
 		return false;
+	}
+	
+	@Override
+	public int getDefaultDuration() {
+		return defaultDuration;
+	}
+	
+	@Override
+	public int getArrowDuration() {
+		return defaultDuration / 10;
+	}
+	
+	@Override
+	public int getLingeringDuration() {
+		return defaultDuration / 5;
 	}
 	
 }

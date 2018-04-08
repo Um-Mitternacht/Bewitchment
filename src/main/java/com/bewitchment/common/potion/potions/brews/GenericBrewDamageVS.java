@@ -9,13 +9,13 @@ import net.minecraft.util.DamageSource;
 public abstract class GenericBrewDamageVS extends BrewMod {
 	
 	public GenericBrewDamageVS(String name, int liquidColorIn) {
-		super(name, true, liquidColorIn, true);
+		super(name, true, liquidColorIn, true, 0);
 	}
 	
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
 		if (shouldAffect(entityLivingBaseIn)) {
-			entityLivingBaseIn.attackEntityFrom(DamageSource.causeIndirectMagicDamage(source, indirectSource), 7 + amplifier * 5);
+			entityLivingBaseIn.attackEntityFrom(DamageSource.causeIndirectMagicDamage(source, indirectSource), 4 + amplifier * 3);
 			applyExtraEffect(entityLivingBaseIn, amplifier);
 		}
 	}

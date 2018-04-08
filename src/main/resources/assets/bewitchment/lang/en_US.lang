@@ -368,185 +368,140 @@ fluid.for.honey=Honey
 //Brew
 brew.instant=Instant
 
-effect.shell_armor.name=Shell Armor Brew
+effect.shell_armor.name=Shell Armor
 effect.shell_armor.desc=The edges of your shell may hurt those who attack you.
-effect.shell_armor.tooltip=Shell Armor
 
-effect.spider_nightmare.name=Spider Nightmare Brew
+effect.spider_nightmare.name=Spider Nightmare
 effect.spider_nightmare.desc=Surround your enemy with webs and spiders.
-effect.spider_nightmare.tooltip=Spider Nightmare
 
-effect.frostbite.name=Frostbite Brew
+effect.frostbite.name=Frostbite
 effect.frostbite.desc=Encases a target in ice. May have other effects.
-effect.frostbite.tooltip=Frostbite
 
-effect.extinguish_fires.name=Extinguish Fires Brew
+effect.extinguish_fires.name=Extinguish Fires
 effect.extinguish_fires.desc=Puts out any fires on you.
-effect.extinguish_fires.tooltip=Extinguish Fires
 
-effect.mars_water.name=Water of Mars Brew
+effect.mars_water.name=Water of Mars
 effect.mars_water.desc=Inflicts nasty debuffs on the target.
-effect.mars_water.tooltip=Mars water
 
 effect.holy_water.name=Holy Water
 effect.holy_water.desc=Damages undead and demons, but has no effect on the living.
-effect.holy_water.tooltip=Holy Water
 
-effect.volatility.name=Brew of Volatility
+effect.volatility.name=Volatility
 effect.volatility.desc=Makes you explode upon being hit.
-effect.volatility.tooltip=Volatility
 
-effect.till_land.name=Tilled Land Brew
+effect.till_land.name=Tilled Land
 effect.till_land.desc=Turns dirt into farmland when thrown.
-effect.till_land.tooltip=Tilled Land
 
-effect.fertilize.name=Fertilize Brew
+effect.fertilize.name=Fertilize
 effect.fertilize.desc=Makes stuff grow when thrown.
-effect.fertilize.tooltip=Fertilize
 
-effect.harvest.name=Harvest Festival Brew
+effect.harvest.name=Harvest Festival
 effect.harvest.desc=Harvests crops when thrown.
-effect.harvest.tooltip=Harvest Festival
 
-effect.grow_flowers.name=Flower Apparition Brew
+effect.grow_flowers.name=Flower Spring
 effect.grow_flowers.desc=Makes flowers when thrown.
-effect.grow_flowers.tooltip=Flower Apparition
 
-effect.ender_inhibition.name=Ender Inhibition Brew
+effect.ender_inhibition.name=Ender Inhibition
 effect.ender_inhibition.desc=Ender beings can't teleport.
-effect.ender_inhibition.tooltip=Ender Inhibition
 
-effect.path_of_the_deep.name=Path of the Deep Brew
+effect.path_of_the_deep.name=Path of the Deep
 effect.path_of_the_deep.desc=Allows you to swim faster.
-effect.path_of_the_deep.tooltip=Path of the Deep
 
-effect.rock_pulverize.name=Rock Pulverize Brew
+effect.rock_pulverize.name=Pulverization
 effect.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
-effect.rock_pulverize.tooltip=Rock Pulverize
 
-effect.prune_leaves.name=Prune Leaves Brew
+effect.prune_leaves.name=Prune Leaves
 effect.prune_leaves.desc=Removes leaves.
-effect.prune_leaves.tooltip=Prune Leaves
 
-effect.plant.name=Auto Plant Brew
+effect.plant.name=Planting
 effect.plant.desc=Plants any seed that is on the ground.
-effect.plant.tooltip=Auto Plant
 
-effect.snow_trail.name=Snow Trail Brew
+effect.snow_trail.name=Snow Trail
 effect.snow_trail.desc=Places a snow layer as an affected mob or player walks.
-effect.snow_trail.tooltip=Snow Trail
 
-effect.skin_tint.name=Skin Tint Brew
+effect.skin_tint.name=Skin Tint
 effect.skin_tint.desc=Tints your skin with a specific color.
-effect.skin_tint.tooltip=Skin Tint
 
-effect.wolfsbane.name=Wolfsbane Brew
+effect.wolfsbane.name=Wolfsbane
 effect.wolfsbane.desc=Deals damage to wolves and therians.
-effect.wolfsbane.tooltip=Wolfsbane
 
-effect.sinking.name=Brew of Sinking
+effect.sinking.name=Sinking
 effect.sinking.desc=Causes you to sink and be unable to jump.
-effect.sinking.tooltip=Sinking
 
-effect.cursed_leaping.name=Brew of Cursed Leaping
+effect.cursed_leaping.name=Cursed Leaps
 effect.cursed_leaping.desc=Causes a target to jump uncontrollably.
-effect.cursed_leaping.tooltip=Cursed Leaping
 
-effect.bane_arthropods.name=Bane of Arthropods Brew
+effect.bane_arthropods.name=Arachnophobia
 effect.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
-effect.bane_arthropods.tooltip=Bane of Arthropods
 
-effect.outcasts_shame.name=Outcast's Shame Brew
+effect.outcasts_shame.name=Outcast's Shame
 effect.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
-effect.outcasts_shame.tooltip=Outcast's Shame
 
-effect.ignition.name=Brew of Ignition
+effect.ignition.name=Ignition
 effect.ignition.desc=Lights you or a target on fire.
-effect.ignition.tooltip=Ignition
 
-effect.grace.name=Brew of Grace
+effect.grace.name=Grace
 effect.grace.desc=Negates fall damage.
-effect.grace.tooltip=Grace
 
-effect.purify.name=Brew of Purification
+effect.purify.name=Purification
 effect.purify.desc=Removes harmful brew effects.
-effect.purify.tooltip=Purity
 
-effect.notched.name=Notched Brew
+effect.notched.name=Notched
 effect.notched.desc=Adds all of the effects a notch apple applies.
-effect.notched.tooltip=Notched
 
-effect.mycological_corruption.name=Brew of Mycological Corruption
+effect.mycological_corruption.name=Mycosis
 effect.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
-effect.mycological_corruption.tooltip=Mycological Corruption
 
-effect.growth.name=Brew of Growth
+effect.growth.name=Growth
 effect.growth.desc=Turns mycelium and dirt into grass. May have other effects.
-effect.growth.tooltip=Growth
 
 effect.ozymandias.name=Ozymandias' Brew
 effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!
-effect.ozymandias.tooltip=Ozymandias
 
-effect.hells_wroth.name=Hell's Wroth Brew
+effect.hells_wroth.name=Hell's Wroth
 effect.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
-effect.hells_wroth.tooltip=Hell's Wroth
 
-effect.setehs_wastes.name=Brew of Seteh's Wastes
+effect.setehs_wastes.name=Seteh's Wastes
 effect.setehs_wastes.desc=Converts sand and sandstone to their red variants.
-effect.setehs_wastes.tooltip=Seteh's Wastes
 
-effect.hell_world.name=Brew of Fire World
+effect.hell_world.name=Fire World
 effect.hell_world.desc=Converts your surroundings to a hellish scene.
-effect.hell_world.tooltip=Fire World
 
-effect.ice_world.name=Brew of Ice World
+effect.ice_world.name=Ice World
 effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
-effect.ice_world.tooltip=Ice World
 
-effect.corruption.name=Brew of Corruption
+effect.corruption.name=Corruption
 effect.corruption.desc=Removes all beneficial brew effects.
-effect.corruption.tooltip=Corruption
 
-effect.salt_land.name=Brew of Salting
+effect.salt_land.name=Salting
 effect.salt_land.desc=Destroys farmland and renders it useless.
-effect.salt_land.tooltip=Salting
 
-effect.absence.name=Absence Brew
+effect.absence.name=Absence
 effect.absence.desc=Removes all brew effects from a player.
-effect.absence.tooltip=Absence
 
-effect.bulletproof.name=Bulletproof Brew
+effect.bulletproof.name=Bulletproof
 effect.bulletproof.desc=Negates damage from projectiles.
-effect.bulletproof.tooltip=Bulletproof
 
-effect.overcoat.name=Overcoat Brew
+effect.overcoat.name=Overcoat
 effect.overcoat.desc=Negates most damage.
-effect.overcoat.tooltip=Overcoat
 
-effect.mortal_coil.name=Mortal Coil Brew
+effect.mortal_coil.name=Mortal Coil
 effect.mortal_coil.desc=Kills you at the end of the timer.
-effect.mortal_coil.tooltip=Mortal Coil
 
-effect.disrobing.name=Brew of Disrobing
+effect.disrobing.name=Disrobing
 effect.disrobing.desc=Has a chance of knocking a piece of armor off of a target
-effect.disrobing.tooltip=Disrobing
 
-effect.rotting.name=Brew of Rotting
+effect.rotting.name=Rotting
 effect.rotting.desc=Rots any living being hit by this brew
-effect.rotting.tooltip=Rotting
 
-effect.arrow_deflection.name=Brew of Deflection
+effect.arrow_deflection.name=Deflection
 effect.arrow_deflection.desc=Deflects any arrow sent at you
-effect.arrow_deflection.tooltip=Deflection
 
-effect.demons_bane.name=Demonsbane Brew
+effect.demons_bane.name=Demonsbane
 effect.demons_bane.desc=Damages demons and nether-based mobs
-effect.demons_bane.tooltip=Demonsbane
 
-effect.paralysis.name=Brew of Paralysis
+effect.paralysis.name=Paralysis
 effect.paralysis.desc=Paralyzes a target and prevents them from moving.
-effect.paralysis.tooltip=Paralysis
 
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
@@ -726,5 +681,6 @@ modifier.bewitchment.power=Strength %d
 modifier.bewitchment.color=Colored as #%08X
 modifier.bewitchment.suppress_in_world=No world effect
 modifier.bewitchment.suppress_entity=No entity effect
+modifier.bewitchment.suppress_particles=Invisible
 modifier.bewitchment.gas_duration=Permeating %d
 modifier.bewitchment.length=Lasting %d

@@ -3,7 +3,6 @@ package com.bewitchment.common.tile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -27,8 +26,6 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -237,9 +234,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private void updateBrewColor() {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
-			currentColorRGB = PotionUtils.getPotionColorFromEffectList(data.get().getEffects().stream()//
-					.map(ibe -> new PotionEffect(ibe.getPotion()))//
-					.collect(Collectors.toList()));
+			currentColorRGB = data.get().getColor();
 		} else {
 			this.mode = Mode.FAILING;
 		}
@@ -408,7 +403,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			ItemStack brew;
 			int costBase;
 			int costRand;
-			if (stack.getItem() == Items.GLASS_BOTTLE) {// TODO add other variants
+			if (stack.getItem() == Items.GLASS_BOTTLE) {// TODO add other variants (splash, lingering)
 				brew = new ItemStack(ModItems.brew_phial_drink);
 				costBase = 300;
 				costRand = 400;

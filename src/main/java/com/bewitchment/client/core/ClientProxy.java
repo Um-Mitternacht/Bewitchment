@@ -3,7 +3,6 @@ package com.bewitchment.client.core;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
@@ -13,9 +12,7 @@ import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
 import com.bewitchment.client.handler.*;
-import com.bewitchment.client.render.entity.RenderBatSwarm;
-import com.bewitchment.client.render.entity.RenderBroom;
-import com.bewitchment.client.render.entity.SpellRenderer;
+import com.bewitchment.client.render.entity.*;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
@@ -24,9 +21,7 @@ import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.divination.TarotHandler.TarotInfo;
-import com.bewitchment.common.entity.EntityBatSwarm;
-import com.bewitchment.common.entity.EntityFlyingBroom;
-import com.bewitchment.common.entity.EntitySpellCarrier;
+import com.bewitchment.common.entity.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
@@ -38,8 +33,6 @@ import net.minecraft.client.renderer.color.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockAccess;
@@ -146,7 +139,7 @@ public class ClientProxy implements ISidedProxy {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if (tintIndex == 0) {
-					return PotionUtils.getPotionColorFromEffectList(BrewData.fromStack(stack).getEffects().stream().map(be -> new PotionEffect(be.getPotion())).collect(Collectors.toList()));
+					return BrewData.fromStack(stack).getColor();
 				}
 				return -1;
 			}
@@ -184,6 +177,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpellCarrier.class, SpellRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityFlyingBroom.class, RenderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatSwarm.class, RenderBatSwarm::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityBrewArrow.class, RenderBrewArrow::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());

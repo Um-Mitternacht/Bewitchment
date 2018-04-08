@@ -2,6 +2,7 @@ package com.bewitchment.api.cauldron;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
@@ -29,7 +30,7 @@ public interface IBrewEffect {
 	 * @param thrower the (optional) thrower of the potion
 	 * @return The potion effect to be applied to the entity. If no changes are required, just return the one passed as a parameter
 	 */
-	public PotionEffect onApplyToEntity(EntityLivingBase entity, PotionEffect effect, IBrewModifierList modifiers, @Nullable EntityLivingBase thrower);
+	public PotionEffect onApplyToEntity(EntityLivingBase entity, PotionEffect effect, IBrewModifierList modifiers, @Nullable Entity thrower);
 	
 	/**
 	 * Called after the creation of a lingering cloud from a brew
@@ -40,4 +41,10 @@ public interface IBrewEffect {
 	public void onEffectCloudSpawned(EntityAreaEffectCloud cloud, IBrewModifierList modifiers);
 	
 	public boolean hasInWorldEffect();
+	
+	public int getDefaultDuration();
+	
+	public int getArrowDuration();
+	
+	public int getLingeringDuration();
 }

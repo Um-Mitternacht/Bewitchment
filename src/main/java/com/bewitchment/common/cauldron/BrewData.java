@@ -2,15 +2,24 @@ package com.bewitchment.common.cauldron;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewData;
+import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
+import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
+import com.bewitchment.common.core.helper.ColorHelper;
+import com.bewitchment.common.tile.TileEntityCauldron;
 import com.google.common.collect.ImmutableList;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -101,4 +110,54 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		}
 		
 	}
+	
+	public int getColor() {
+		return this.getEffects().stream().map(be -> getColorFromEntry(be)).reduce((a, b) -> ColorHelper.blendColor(a, b, 0.5f + (0.5f / getEffects().size()))).orElse(TileEntityCauldron.DEFAULT_COLOR);
+	}
+	
+	private int getColorFromEntry(IBrewEntry be) {
+		Optional<Integer> color = be.getModifierList().getLevel(BewitchmentModifiers.COLOR);
+		if (color.isPresent()) {
+			return color.get();
+		}
+		return be.getPotion().getLiquidColor();
+	}
+	
+	public void applyToEntity(EntityLivingBase entity, Entity indirectSource, Entity thrower, ApplicationType type) {
+		this.getEffects().forEach(be -> applyEffect(be, entity, indirectSource, thrower, type));
+	}
+	
+	private void applyEffect(IBrewEntry be, EntityLivingBase entity, Entity carrier, Entity thrower, ApplicationType type) {
+		IBrewEffect brew = BewitchmentAPI.getAPI().getBrewFromPotion(be.getPotion());
+		if (!be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT).isPresent()) {
+			int duration = (int) (0.5d * getDuration(type, brew)) * (be.getPotion().isInstant() ? 0 : 1);
+			int amplifier = be.getModifierList().getLevel(BewitchmentModifiers.POWER).orElse(0);
+			boolean particles = !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_PARTICLES).isPresent();
+			PotionEffect pe = new PotionEffect(be.getPotion(), duration, amplifier, false, particles);
+			pe = brew.onApplyToEntity(entity, pe, be.getModifierList(), thrower);
+			if (be.getPotion().isInstant()) {
+				be.getPotion().affectEntity(carrier, thrower, entity, pe.getAmplifier(), entity.getHealth());
+			} else {
+				entity.addPotionEffect(pe);
+			}
+		}
+	}
+	
+	private int getDuration(ApplicationType type, IBrewEffect brew) {
+		switch (type) {
+			case ARROW:
+				return brew.getArrowDuration();
+			case GENERAL:
+				return brew.getDefaultDuration();
+			case LINGERING:
+				return brew.getLingeringDuration();
+			default:
+				return brew.getDefaultDuration();
+		}
+	}
+	
+	public static enum ApplicationType {
+		GENERAL, ARROW, LINGERING
+	}
+	
 }
