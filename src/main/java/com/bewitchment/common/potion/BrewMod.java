@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -26,10 +25,6 @@ public class BrewMod extends PotionMod implements IBrewEffect {
 	@Override
 	public PotionEffect onApplyToEntity(EntityLivingBase entity, PotionEffect effect, IBrewModifierList modifiers, Entity thrower) {
 		return effect;
-	}
-	
-	@Override
-	public void onEffectCloudSpawned(EntityAreaEffectCloud cloud, IBrewModifierList modifiers) {
 	}
 	
 	@Override

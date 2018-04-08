@@ -10,6 +10,8 @@ import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.core.helper.ColorHelper;
+import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
+import com.bewitchment.common.entity.EntityLingeringBrew;
 import com.bewitchment.common.tile.TileEntityCauldron;
 import com.google.common.collect.ImmutableList;
 
@@ -21,6 +23,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -160,4 +164,15 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		GENERAL, ARROW, LINGERING
 	}
 	
+	public void setupLingeringCloud(EntityLingeringBrew entBrew) {
+		float radius = (float) this.effects.stream().mapToDouble(be -> be.getModifierList().getLevel(BewitchmentModifiers.RADIUS).orElse(0)).average().orElse(0);
+		int duration = (int) (1 + this.effects.stream().mapToInt(be -> be.getModifierList().getLevel(BewitchmentModifiers.GAS_CLOUD_DURATION).orElse(0)).average().orElse(0));
+		entBrew.setRadius(1f + radius).setDuration(100 * duration).setRadiusPerTick(0.01f * radius);
+	}
+	
+	public void applyInWorld(World world, double x, double y, double z, EntityLivingBase thrower) {
+		this.getEffects().stream().forEach(be -> {
+			CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), be.getModifierList(), thrower);
+		});
+	}
 }
