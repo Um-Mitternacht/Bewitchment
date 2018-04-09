@@ -16,13 +16,19 @@ public class PotionMod extends Potion {
 	public PotionMod(String name, boolean isBadEffectIn, int liquidColorIn, boolean isInstant) {
 		super(isBadEffectIn, liquidColorIn);
 		this.setRegistryName(LibMod.MOD_ID, name);
-		this.setPotionName("effect." + name + ".name");
+		this.setPotionName("effect." + name);
 		this.instant = isInstant;
 	}
 	
 	@Override
 	public boolean isInstant() {
 		return instant;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isBeneficial() {
+		return !this.isBadEffect();
 	}
 	
 	@Override

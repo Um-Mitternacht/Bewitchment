@@ -368,139 +368,139 @@ fluid.for.honey=Honey
 //Brew
 brew.instant=Instant
 
-effect.shell_armor.name=Shell Armor
+effect.shell_armor=Shell Armor
 effect.shell_armor.desc=The edges of your shell may hurt those who attack you.
 
-effect.spider_nightmare.name=Spider Nightmare
+effect.spider_nightmare=Spider Nightmare
 effect.spider_nightmare.desc=Surround your enemy with webs and spiders.
 
-effect.frostbite.name=Frostbite
+effect.frostbite=Frostbite
 effect.frostbite.desc=Encases a target in ice. May have other effects.
 
-effect.extinguish_fires.name=Extinguish Fires
+effect.extinguish_fires=Extinguish Fires
 effect.extinguish_fires.desc=Puts out any fires on you.
 
-effect.mars_water.name=Water of Mars
+effect.mars_water=Water of Mars
 effect.mars_water.desc=Inflicts nasty debuffs on the target.
 
-effect.holy_water.name=Holy Water
+effect.holy_water=Holy Water
 effect.holy_water.desc=Damages undead and demons, but has no effect on the living.
 
-effect.volatility.name=Volatility
+effect.volatility=Volatility
 effect.volatility.desc=Makes you explode upon being hit.
 
-effect.till_land.name=Tilled Land
+effect.till_land=Tilled Land
 effect.till_land.desc=Turns dirt into farmland when thrown.
 
-effect.fertilize.name=Fertilize
+effect.fertilize=Fertilize
 effect.fertilize.desc=Makes stuff grow when thrown.
 
-effect.harvest.name=Harvest Festival
+effect.harvest=Harvest Festival
 effect.harvest.desc=Harvests crops when thrown.
 
-effect.grow_flowers.name=Flower Spring
+effect.grow_flowers=Flower Spring
 effect.grow_flowers.desc=Makes flowers when thrown.
 
-effect.ender_inhibition.name=Ender Inhibition
+effect.ender_inhibition=Ender Inhibition
 effect.ender_inhibition.desc=Ender beings can't teleport.
 
-effect.path_of_the_deep.name=Path of the Deep
+effect.path_of_the_deep=Path of the Deep
 effect.path_of_the_deep.desc=Allows you to swim faster.
 
-effect.rock_pulverize.name=Pulverization
+effect.rock_pulverize=Pulverization
 effect.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
 
-effect.prune_leaves.name=Prune Leaves
+effect.prune_leaves=Prune Leaves
 effect.prune_leaves.desc=Removes leaves.
 
-effect.plant.name=Planting
+effect.plant=Planting
 effect.plant.desc=Plants any seed that is on the ground.
 
-effect.snow_trail.name=Snow Trail
+effect.snow_trail=Snow Trail
 effect.snow_trail.desc=Places a snow layer as an affected mob or player walks.
 
-effect.skin_tint.name=Skin Tint
+effect.skin_tint=Skin Tint
 effect.skin_tint.desc=Tints your skin with a specific color.
 
-effect.wolfsbane.name=Wolfsbane
+effect.wolfsbane=Wolfsbane
 effect.wolfsbane.desc=Deals damage to wolves and therians.
 
-effect.sinking.name=Sinking
+effect.sinking=Sinking
 effect.sinking.desc=Causes you to sink and be unable to jump.
 
-effect.cursed_leaping.name=Cursed Leaps
+effect.cursed_leaping=Cursed Leaps
 effect.cursed_leaping.desc=Causes a target to jump uncontrollably.
 
-effect.bane_arthropods.name=Arachnophobia
+effect.bane_arthropods=Arachnophobia
 effect.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
 
-effect.outcasts_shame.name=Outcast's Shame
+effect.outcasts_shame=Outcast's Shame
 effect.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
 
-effect.ignition.name=Ignition
+effect.ignition=Ignition
 effect.ignition.desc=Lights you or a target on fire.
 
-effect.grace.name=Grace
+effect.grace=Grace
 effect.grace.desc=Negates fall damage.
 
-effect.purify.name=Purification
+effect.purify=Purification
 effect.purify.desc=Removes harmful brew effects.
 
-effect.notched.name=Notched
+effect.notched=Notched
 effect.notched.desc=Adds all of the effects a notch apple applies.
 
-effect.mycological_corruption.name=Mycosis
+effect.mycological_corruption=Mycosis
 effect.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
 
-effect.growth.name=Growth
+effect.growth=Growth
 effect.growth.desc=Turns mycelium and dirt into grass. May have other effects.
 
-effect.ozymandias.name=Ozymandias' Brew
+effect.ozymandias=Ozymandias' Brew
 effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!
 
-effect.hells_wroth.name=Hell's Wroth
+effect.hells_wroth=Hell's Wroth
 effect.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
 
-effect.setehs_wastes.name=Seteh's Wastes
+effect.setehs_wastes=Seteh's Wastes
 effect.setehs_wastes.desc=Converts sand and sandstone to their red variants.
 
-effect.hell_world.name=Fire World
+effect.hell_world=Fire World
 effect.hell_world.desc=Converts your surroundings to a hellish scene.
 
-effect.ice_world.name=Ice World
+effect.ice_world=Ice World
 effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
 
-effect.corruption.name=Corruption
+effect.corruption=Corruption
 effect.corruption.desc=Removes all beneficial brew effects.
 
-effect.salt_land.name=Salting
+effect.salt_land=Salting
 effect.salt_land.desc=Destroys farmland and renders it useless.
 
-effect.absence.name=Absence
+effect.absence=Absence
 effect.absence.desc=Removes all brew effects from a player.
 
-effect.bulletproof.name=Bulletproof
+effect.bulletproof=Bulletproof
 effect.bulletproof.desc=Negates damage from projectiles.
 
-effect.overcoat.name=Overcoat
+effect.overcoat=Overcoat
 effect.overcoat.desc=Negates most damage.
 
-effect.mortal_coil.name=Mortal Coil
+effect.mortal_coil=Mortal Coil
 effect.mortal_coil.desc=Kills you at the end of the timer.
 
-effect.disrobing.name=Disrobing
+effect.disrobing=Disrobing
 effect.disrobing.desc=Has a chance of knocking a piece of armor off of a target
 
-effect.rotting.name=Rotting
+effect.rotting=Rotting
 effect.rotting.desc=Rots any living being hit by this brew
 
-effect.arrow_deflection.name=Deflection
+effect.arrow_deflection=Deflection
 effect.arrow_deflection.desc=Deflects any arrow sent at you
 
-effect.demons_bane.name=Demonsbane
+effect.demons_bane=Demonsbane
 effect.demons_bane.desc=Damages demons and nether-based mobs
 
-effect.paralysis.name=Paralysis
+effect.paralysis=Paralysis
 effect.paralysis.desc=Paralyzes a target and prevents them from moving.
 
 //Sound
@@ -662,7 +662,7 @@ death.attack.sun_on_vampire=You should not have walked outside
 entity.broom.name=Flying Broom
 
 //Potion effects
-effect.blood_drain.name=Blood Drained
+effect.blood_drain=Blood Drained
 
 //Vampire
 vampire.nightvision.low_blood=You feel weak and your vision obfuscates

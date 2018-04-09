@@ -56,19 +56,19 @@ public class ItemBrew extends ItemMod {
 			TextFormatting color = brewEntry.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.DARK_AQUA;
 			IBrewModifierList list = brewEntry.getModifierList();
 			if (GuiScreen.isShiftKeyDown()) {
-				tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name"));
+				tooltip.add(color + I18n.format(brewEntry.getPotion().getName()));
 				list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
 					tooltip.add(I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
 				});
 			} else {
 				Optional<Integer> lvl = list.getLevel(BewitchmentModifiers.POWER);
 				if (lvl.isPresent() && lvl.get() > 1) {
-					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name") + " " + lvl.get()); // TODO fix roman
+					tooltip.add(color + I18n.format(brewEntry.getPotion().getName()) + " " + lvl.get()); // TODO fix roman
 				} else {
-					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name"));
+					tooltip.add(color + I18n.format(brewEntry.getPotion().getName()));
 				}
 				
-				String ref = TextFormatting.DARK_GRAY + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".desc");
+				String ref = TextFormatting.DARK_GRAY + I18n.format(brewEntry.getPotion().getName() + ".desc");
 				tooltip.add(I18n.format("brew.description.formatting", ref));
 			}
 		});
