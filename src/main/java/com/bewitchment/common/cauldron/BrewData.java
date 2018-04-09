@@ -142,7 +142,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 			PotionEffect pe = new PotionEffect(be.getPotion(), duration, amplifier, false, particles);
 			pe = brew.onApplyToEntity(entity, pe, be.getModifierList(), thrower);
 			if (be.getPotion().isInstant()) {
-				be.getPotion().affectEntity(carrier, thrower, entity, pe.getAmplifier(), entity.getHealth());
+				be.getPotion().affectEntity(carrier, thrower, entity, pe.getAmplifier(), 1D);
 			} else {
 				entity.addPotionEffect(pe);
 			}
