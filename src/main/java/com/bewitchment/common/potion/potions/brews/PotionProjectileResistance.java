@@ -11,6 +11,7 @@ public class PotionProjectileResistance extends BrewMod {
 	
 	public PotionProjectileResistance() {
 		super("bulletproof", false, 0x2a3439, false, 3000);
+		this.setIconIndex(2, 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	

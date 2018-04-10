@@ -27,6 +27,7 @@ public class PotionArrowDeflection extends BrewMod {
 		} catch (Exception e) {
 			throw new LoaderException("Bewitchment cannot find some essential forge data, please report this to the Bewitchment Github page", e);
 		}
+		this.setIconIndex(4, 0);
 	}
 	
 	@Override

@@ -12,6 +12,7 @@ public class PotionCursedLeaping extends BrewMod {
 	public PotionCursedLeaping() {
 		super("cursed_leaping", true, 0x4F7942, false, 2400);
 		MinecraftForge.EVENT_BUS.register(this);
+		this.setIconIndex(3, 0);
 	}
 	
 	@SubscribeEvent
