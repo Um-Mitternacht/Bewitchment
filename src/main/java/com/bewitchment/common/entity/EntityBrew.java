@@ -76,7 +76,7 @@ public class EntityBrew extends EntityThrowable {
 		if (!this.world.isRemote) {
 			ItemStack itemstack = this.getBrew();
 			BrewData data = BrewData.fromStack(itemstack);
-			data.applyInWorld(world, result.hitVec.x, result.hitVec.y, result.hitVec.z, this.getThrower());
+			data.applyInWorld(world, result.hitVec.x, result.hitVec.y, result.hitVec.z, result.sideHit, this.getThrower());
 			if (this.isLingering()) {
 				EntityLingeringBrew entBrew = new EntityLingeringBrew(world, result.hitVec.x, result.hitVec.y, result.hitVec.z);
 				entBrew.setBrew(itemstack);

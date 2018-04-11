@@ -13,7 +13,7 @@ public class ModPotions {
 	
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
-	public static Potion projectile_resistance, disrobing, ender_inhibition;
+	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires;
 
 	private ModPotions() {
 	}
@@ -31,11 +31,12 @@ public class ModPotions {
 		projectile_resistance = new PotionProjectileResistance();
 		disrobing = new PotionDisrobing();
 		ender_inhibition = new PotionEnderInhibition();
+		extinguish_fires = new PotionExtinguishFire();
 		
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
 				bane_arthropods, corruption, cursed_leaping, demons_bane, //
-				projectile_resistance, disrobing, ender_inhibition//
+				projectile_resistance, disrobing, ender_inhibition, extinguish_fires//
 		);
 	}
 }

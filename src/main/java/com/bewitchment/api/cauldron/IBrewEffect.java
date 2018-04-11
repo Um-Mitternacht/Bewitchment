@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -18,7 +19,7 @@ public interface IBrewEffect {
 	 * @param modifiers The list of modifiers carried by the splash brew entity
 	 * @param thrower The (optional) thrower of the potion
 	 */
-	public void applyInWorld(World world, BlockPos pos, IBrewModifierList modifiers, @Nullable EntityLivingBase thrower);
+	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, @Nullable EntityLivingBase thrower);
 	
 	/**
 	 * Called when a brew effect gets applied to an entity

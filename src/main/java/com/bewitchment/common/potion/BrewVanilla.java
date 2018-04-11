@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -38,7 +39,7 @@ public class BrewVanilla implements IBrewEffect {
 	}
 	
 	@Override
-	public void applyInWorld(World world, BlockPos pos, IBrewModifierList modifiers, EntityLivingBase thrower) {
+	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 	}
 	
 	@Override

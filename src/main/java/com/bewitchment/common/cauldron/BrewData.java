@@ -22,6 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -172,9 +173,9 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		entBrew.setRadius(1f + radius).setDuration(100 * duration).setRadiusPerTick(0.01f * radius);
 	}
 	
-	public void applyInWorld(World world, double x, double y, double z, EntityLivingBase thrower) {
+	public void applyInWorld(World world, double x, double y, double z, EnumFacing side, EntityLivingBase thrower) {
 		this.getEffects().stream().filter(be -> !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT).isPresent()).forEach(be -> {
-			CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), be.getModifierList(), thrower);
+			CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), side, be.getModifierList(), thrower);
 		});
 	}
 }
