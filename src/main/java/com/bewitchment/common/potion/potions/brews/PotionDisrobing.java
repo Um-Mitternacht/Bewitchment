@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public class PotionDisrobing extends BrewMod {
 	
 	public PotionDisrobing() {
-		super("", true, 0xA52A2A, true, 0);
+		super("disrobing", true, 0xA52A2A, true, 0);
 	}
 	
 	@Override
