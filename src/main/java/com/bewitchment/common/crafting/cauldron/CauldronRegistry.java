@@ -80,7 +80,14 @@ public class CauldronRegistry {
 	}
 	
 	public static IBrewEffect getBrewFromPotion(Potion potion) {
-		return BREW_POTION_MAP.inverse().get(potion);
+		if (potion == null) {
+			throw new NullPointerException("The potion parameter cannot be null");
+		}
+		IBrewEffect effect = BREW_POTION_MAP.inverse().get(potion);
+		if (effect == null) {
+			throw new NoSuchElementException(potion.getName() + " has no associated IBrewEffect");
+		}
+		return effect;
 	}
 	
 	public static Optional<IBrewModifierList> getModifierListFromStack(ItemStack stack, IBrewModifierList currentList, IBrewEffect currentEffect) {
@@ -210,6 +217,10 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
 		
+	}
+	
+	public static void postInit() {
+		BewitchmentAPI.getAPI().registerBrewEffect(ModPotions.freezing, ModPotions.freezing.getPotion(), Ingredient.fromItem(Items.SNOWBALL));
 	}
 	
 	private static void registerVanillaBrewEffect(Potion potion, Ingredient ingredient) {

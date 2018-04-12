@@ -88,7 +88,7 @@ public class EntityBrew extends EntityThrowable {
 				applySplash(result, data);
 			}
 			
-			int i = data.getEffects().stream().map(be -> be.getPotion()).anyMatch(p -> p.isInstant()) ? 2007 : 2002;
+			int i = data.getEffects().stream().filter(be -> be.getPotion() != null).map(be -> be.getPotion()).anyMatch(p -> p.isInstant()) ? 2007 : 2002;
 			this.world.playEvent(i, new BlockPos(this), getColor());
 			this.setDead();
 		}

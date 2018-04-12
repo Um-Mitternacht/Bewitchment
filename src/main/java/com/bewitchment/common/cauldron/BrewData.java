@@ -1,14 +1,15 @@
 package com.bewitchment.common.cauldron;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import javax.annotation.Nullable;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewData;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.entity.EntityLingeringBrew;
@@ -90,6 +91,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		}
 		
 		@Override
+		@Nullable
 		public Potion getPotion() {
 			return pot;
 		}
@@ -101,17 +103,22 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 		
 		@Override
 		public NBTTagCompound serializeNBT() {
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setString("potion", pot.getRegistryName().toString());
-			tag.setTag("modifiers", mods.serializeNBT());
-			return tag;
+			if (pot != null) {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setString("potion", pot.getRegistryName().toString());
+				tag.setTag("modifiers", mods.serializeNBT());
+				return tag;
+			}
+			return new NBTTagCompound();
 		}
 		
 		@Override
 		public void deserializeNBT(NBTTagCompound nbt) {
 			pot = ForgeRegistries.POTIONS.getValue(new ResourceLocation(nbt.getString("potion")));
-			mods = new BrewModifierListImpl();
-			mods.deserializeNBT(nbt.getTagList("modifiers", NBT.TAG_COMPOUND));
+			if (pot != null) {
+				mods = new BrewModifierListImpl();
+				mods.deserializeNBT(nbt.getTagList("modifiers", NBT.TAG_COMPOUND));
+			}
 		}
 		
 	}
@@ -121,11 +128,14 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 	}
 	
 	private int getColorFromEntry(IBrewEntry be) {
-		Optional<Integer> color = be.getModifierList().getLevel(BewitchmentModifiers.COLOR);
-		if (color.isPresent()) {
-			return color.get();
+		if (be.getPotion() != null) {
+			Optional<Integer> color = be.getModifierList().getLevel(BewitchmentModifiers.COLOR);
+			if (color.isPresent()) {
+				return color.get();
+			}
+			return be.getPotion().getLiquidColor();
 		}
-		return be.getPotion().getLiquidColor();
+		return TileEntityCauldron.DEFAULT_COLOR;
 	}
 	
 	public void applyToEntity(EntityLivingBase entity, Entity indirectSource, Entity thrower, ApplicationType type) {
@@ -135,18 +145,22 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 	}
 	
 	private void applyEffect(IBrewEntry be, EntityLivingBase entity, Entity carrier, Entity thrower, ApplicationType type) {
-		IBrewEffect brew = BewitchmentAPI.getAPI().getBrewFromPotion(be.getPotion());
-		if (!be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT).isPresent()) {
-			int duration = (int) (0.5d * getDuration(type, brew)) * (be.getPotion().isInstant() ? 0 : 1);
-			int amplifier = be.getModifierList().getLevel(BewitchmentModifiers.POWER).orElse(0);
-			boolean particles = !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_PARTICLES).isPresent();
-			PotionEffect pe = new PotionEffect(be.getPotion(), duration, amplifier, false, particles);
-			pe = brew.onApplyToEntity(entity, pe, be.getModifierList(), thrower);
-			if (be.getPotion().isInstant()) {
-				be.getPotion().affectEntity(carrier, thrower, entity, pe.getAmplifier(), 1D);
-			} else {
-				entity.addPotionEffect(pe);
+		if (be.getPotion() != null) {
+			IBrewEffect brew = BewitchmentAPI.getAPI().getBrewFromPotion(be.getPotion());
+			if (!be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT).isPresent()) {
+				int duration = (int) (0.5d * getDuration(type, brew)) * (be.getPotion().isInstant() ? 0 : 1);
+				int amplifier = be.getModifierList().getLevel(BewitchmentModifiers.POWER).orElse(0);
+				boolean particles = !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_PARTICLES).isPresent();
+				PotionEffect pe = new PotionEffect(be.getPotion(), duration, amplifier, false, particles);
+				pe = brew.onApplyToEntity(entity, pe, be.getModifierList(), thrower);
+				if (be.getPotion().isInstant()) {
+					be.getPotion().affectEntity(carrier, thrower, entity, pe.getAmplifier(), 1D);
+				} else {
+					entity.addPotionEffect(pe);
+				}
 			}
+		} else {
+			Bewitchment.logger.error("No potion associated with the brew!");
 		}
 	}
 	
@@ -175,7 +189,11 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 	
 	public void applyInWorld(World world, double x, double y, double z, EnumFacing side, EntityLivingBase thrower) {
 		this.getEffects().stream().filter(be -> !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT).isPresent()).forEach(be -> {
-			CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), side, be.getModifierList(), thrower);
+			try {
+				CauldronRegistry.getBrewFromPotion(be.getPotion()).applyInWorld(world, new BlockPos(x, y, z), side, be.getModifierList(), thrower);
+			} catch (NoSuchElementException exc) {
+				Bewitchment.logger.error(exc.getMessage());
+			}
 		});
 	}
 }

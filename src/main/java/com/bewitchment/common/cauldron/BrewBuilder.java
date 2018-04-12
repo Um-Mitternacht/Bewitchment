@@ -42,7 +42,7 @@ public class BrewBuilder {
 				if (currentEffect != null) {
 					data.addEntry(new BrewEntry(CauldronRegistry.getPotionFromBrew(currentEffect), new BrewModifierListImpl(modList)));
 					ResourceLocation newPot = CauldronRegistry.getPotionFromBrew(newBrew.get()).getRegistryName();
-					if (data.getEffects().stream().map(be -> be.getPotion().getRegistryName()).anyMatch(p -> p.equals(newPot))) {
+					if (data.getEffects().stream().filter(be -> be.getPotion() != null).map(be -> be.getPotion().getRegistryName()).anyMatch(p -> p.equals(newPot))) {
 						return Optional.empty();
 					}
 				}

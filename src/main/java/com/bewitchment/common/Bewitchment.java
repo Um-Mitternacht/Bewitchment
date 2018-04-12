@@ -41,6 +41,7 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -76,6 +77,7 @@ public class Bewitchment {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(this);
 		ApiInstance.initAPI();
 		CapabilityEnergy.init();
 		CapabilityDivination.init();
@@ -128,6 +130,8 @@ public class Bewitchment {
 		BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST).parallelStream().filter(b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE)).forEach(b -> {
 			BlockMoonbell.addValidMoonbellBiome(b);
 		});
+		
+		CauldronRegistry.postInit();
 	}
 
 	@EventHandler

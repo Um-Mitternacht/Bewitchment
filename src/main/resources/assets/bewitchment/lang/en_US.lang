@@ -675,6 +675,7 @@ key.description.enable_bar=Toggle extra bar reachability
 
 //Brew misc
 brew.parameters.formatting= %s
+brew.parameters.none=This does not carry additional powers
 brew.description.formatting=%s
 modifier.bewitchment.radius=Expanding %d
 modifier.bewitchment.power=Strength %d

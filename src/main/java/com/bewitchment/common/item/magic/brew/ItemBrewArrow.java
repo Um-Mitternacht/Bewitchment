@@ -1,10 +1,7 @@
 package com.bewitchment.common.item.magic.brew;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
@@ -14,9 +11,7 @@ import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.entity.EntityBrewArrow;
 import com.bewitchment.common.lib.LibItemName;
 
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,7 +21,6 @@ import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,28 +62,10 @@ public class ItemBrewArrow extends ItemArrow implements IModelRegister {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		BrewData.fromStack(stack).getEffects().forEach(brewEntry -> {
-			TextFormatting color = brewEntry.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.DARK_AQUA;
-			IBrewModifierList list = brewEntry.getModifierList();
-			if (GuiScreen.isShiftKeyDown()) {
-				tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name"));
-				list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
-					tooltip.add(I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
-				});
-			} else {
-				Optional<Integer> lvl = list.getLevel(BewitchmentModifiers.POWER);
-				if (lvl.isPresent() && lvl.get() > 1) {
-					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name") + " " + lvl.get()); // TODO fix roman
-				} else {
-					tooltip.add(color + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".name"));
-				}
-				
-				String ref = TextFormatting.DARK_GRAY + I18n.format("effect." + brewEntry.getPotion().getRegistryName().getResourcePath() + ".desc");
-				tooltip.add(I18n.format("brew.description.formatting", ref));
-			}
-		});
+		ItemBrew.addTooltip(stack, worldIn, tooltip, flagIn);
 	}
 	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {

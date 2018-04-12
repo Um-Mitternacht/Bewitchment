@@ -52,14 +52,23 @@ public class ItemBrew extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		BrewData.fromStack(stack).getEffects().forEach(brewEntry -> {
+		addTooltip(stack, worldIn, tooltip, flagIn);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void addTooltip(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		BrewData.fromStack(stack).getEffects().stream().filter(be -> be.getPotion() != null).forEach(brewEntry -> {
 			TextFormatting color = brewEntry.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.DARK_AQUA;
 			IBrewModifierList list = brewEntry.getModifierList();
 			if (GuiScreen.isShiftKeyDown()) {
 				tooltip.add(color + I18n.format(brewEntry.getPotion().getName()));
-				list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
-					tooltip.add(I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
-				});
+				if (!list.getModifiers().isEmpty()) {
+					list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
+						tooltip.add(I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
+					});
+				} else {
+					tooltip.add(TextFormatting.DARK_GRAY.toString() + I18n.format("brew.parameters.none"));
+				}
 			} else {
 				Optional<Integer> lvl = list.getLevel(BewitchmentModifiers.POWER);
 				if (lvl.isPresent() && lvl.get() > 1) {
