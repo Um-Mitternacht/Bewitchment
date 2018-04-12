@@ -404,7 +404,15 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			int costBase;
 			int costRand;
 			if (stack.getItem() == Items.GLASS_BOTTLE) {// TODO add other variants (splash, lingering)
-				brew = new ItemStack(ModItems.brew_phial_drink);
+				if (playerIn.getHeldItemOffhand().getItem() == Items.GUNPOWDER) {// TEMP SOLUTION
+					brew = new ItemStack(ModItems.brew_phial_splash);
+					playerIn.getHeldItemOffhand().shrink(1);
+				} else if (playerIn.getHeldItemOffhand().getItem() == Items.DRAGON_BREATH) {// TEMP SOLUTION
+					brew = new ItemStack(ModItems.brew_phial_linger);
+					playerIn.getHeldItemOffhand().shrink(1);
+				} else {
+					brew = new ItemStack(ModItems.brew_phial_drink);
+				}
 				costBase = 300;
 				costRand = 400;
 			} else {
