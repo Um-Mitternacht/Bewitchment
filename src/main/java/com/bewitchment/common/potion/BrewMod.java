@@ -40,7 +40,7 @@ public class BrewMod extends PotionMod implements IBrewEffect {
 	
 	@Override
 	public int getArrowDuration() {
-		return defaultDuration / 10;
+		return defaultDuration / 6;
 	}
 	
 	@Override
