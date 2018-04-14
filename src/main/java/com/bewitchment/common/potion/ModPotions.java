@@ -13,7 +13,7 @@ public class ModPotions {
 	
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
-	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize;
+	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld;
 	
 	public static PotionFrostbite freezing;
 
@@ -35,6 +35,7 @@ public class ModPotions {
 		ender_inhibition = new PotionEnderInhibition();
 		extinguish_fires = new PotionExtinguishFire();
 		fertilize = new PotionFertilize();
+		fireworld = new PotionFertilize();
 		
 		freezing = new PotionFrostbite();
 		
@@ -42,7 +43,7 @@ public class ModPotions {
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
 				bane_arthropods, corruption, cursed_leaping, demons_bane, //
 				projectile_resistance, disrobing, ender_inhibition, extinguish_fires, //
-				fertilize, freezing
+				fertilize, freezing, fireworld
 		);
 	}
 }
