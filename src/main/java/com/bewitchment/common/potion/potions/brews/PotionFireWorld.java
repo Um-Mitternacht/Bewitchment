@@ -2,21 +2,16 @@ package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
-import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.potion.BrewMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSnow;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
