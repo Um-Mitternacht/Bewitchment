@@ -149,6 +149,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 			IBrewEffect brew = BewitchmentAPI.getAPI().getBrewFromPotion(be.getPotion());
 			if (!be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT).isPresent()) {
 				int duration = (int) (0.5d * getDuration(type, brew)) * (be.getPotion().isInstant() ? 0 : 1);
+				duration *= 1 + (be.getModifierList().getLevel(BewitchmentModifiers.DURATION).orElse(0) * 0.3);
 				int amplifier = be.getModifierList().getLevel(BewitchmentModifiers.POWER).orElse(0);
 				boolean particles = !be.getModifierList().getLevel(BewitchmentModifiers.SUPPRESS_PARTICLES).isPresent();
 				PotionEffect pe = new PotionEffect(be.getPotion(), duration, amplifier, false, particles);

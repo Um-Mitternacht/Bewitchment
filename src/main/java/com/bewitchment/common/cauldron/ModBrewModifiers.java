@@ -94,7 +94,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(ModItems.wax)) {
+		BewitchmentModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(Items.DIAMOND)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
