@@ -500,6 +500,9 @@ effect.arrow_deflection.desc=Deflects any arrow sent at you
 effect.demons_bane=Demonsbane
 effect.demons_bane.desc=Damages demons and nether-based mobs
 
+effect.freezing=Freezing
+effect.freezing.desc=Freezes things in harmless magic ice
+
 effect.paralysis=Paralysis
 effect.paralysis.desc=Paralyzes a target and prevents them from moving.
 
@@ -680,7 +683,7 @@ brew.description.formatting=%s
 brew.effects.formatting=%s%s (%s)
 modifier.bewitchment.radius=Expanding%s
 modifier.bewitchment.power=Strength%s
-modifier.bewitchment.color=Colored as #%08X
+modifier.bewitchment.color=Colored as #%06X
 modifier.bewitchment.suppress_in_world=No world effect
 modifier.bewitchment.suppress_entity=No entity effect
 modifier.bewitchment.suppress_particles=Invisible

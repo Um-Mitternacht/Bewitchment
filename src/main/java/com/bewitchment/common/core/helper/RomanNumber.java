@@ -7,7 +7,11 @@ package com.bewitchment.common.core.helper;
  */
 public final class RomanNumber {
 
-	private static final String[] romans = { "", " I", " II", " III", " IV", " V", " V+" };
+	private static final String[] romans = { "", "I", "II", "III", "IV", "V", "V+" };
+	
+	public static String getRomanSpaced(int i) {
+		return " " + getRoman(i);
+	}
 	
 	public static String getRoman(int i) {
 		if (i < 0) {

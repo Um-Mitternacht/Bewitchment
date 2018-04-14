@@ -80,7 +80,7 @@ public class ItemBrew extends ItemMod {
 				String powerString = "";
 				String lengthString = "";
 				if (power.isPresent() && power.get() > 1) {
-					powerString = RomanNumber.getRoman(power.get());
+					powerString = RomanNumber.getRomanSpaced(power.get());
 				}
 				lengthString = getLengthTTip(lengthMod, brewEntry.getPotion(), stack.getItem());
 				
