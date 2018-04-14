@@ -18,13 +18,53 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Joseph on 4/14/2018.
  */
 public class PotionFireWorld extends BrewMod {
 
+	private final Map<Block, IBlockState> stateMap = new HashMap<>();
+
+	@SuppressWarnings("deprecation")
 	public PotionFireWorld() {
 		super("fireworld", true, 0xED2939, true, 0);
+		stateMap.put(Blocks.GRASS_PATH, Blocks.RED_NETHER_BRICK.getDefaultState());
+		stateMap.put(Blocks.GRAVEL, Blocks.SOUL_SAND.getDefaultState());
+		stateMap.put(Blocks.COBBLESTONE, Blocks.NETHERRACK.getDefaultState());
+		stateMap.put(Blocks.PLANKS, Blocks.NETHER_BRICK.getDefaultState());
+		stateMap.put(Blocks.OAK_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.SPRUCE_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.ACACIA_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.JUNGLE_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.BIRCH_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.DARK_OAK_FENCE, Blocks.NETHER_BRICK_FENCE.getDefaultState());
+		stateMap.put(Blocks.PACKED_ICE, Blocks.OBSIDIAN.getDefaultState());
+		stateMap.put(Blocks.ICE, Blocks.NETHERRACK.getDefaultState());
+		stateMap.put(Blocks.SNOW, Blocks.SOUL_SAND.getDefaultState());
+		stateMap.put(Blocks.WOOL, Blocks.WOOL.getStateFromMeta(14));
+		stateMap.put(Blocks.FARMLAND, Blocks.SOUL_SAND.getDefaultState());
+		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getStateFromMeta(14));
+		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
+		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14));
+		stateMap.put(Blocks.BLUE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.GREEN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.YELLOW_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.BROWN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.CYAN_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.LIME_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.MAGENTA_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.PINK_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.PURPLE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.SILVER_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
+		stateMap.put(Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState());
 	}
 
 	@Override
