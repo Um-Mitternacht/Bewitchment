@@ -22,12 +22,12 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.matthewprenger.cursegradle'
-apply plugin: "checkstyle"
+//apply plugin: "checkstyle"
 
-checkstyle {
-    toolVersion = "6.11.2"
-    configFile = new File(rootDir, "checkstyle/checkstyle.xml")
-}
+//checkstyle {
+//    toolVersion = "6.11.2"
+//    configFile = new File(rootDir, "checkstyle/checkstyle.xml")
+//}
 
 version = "${mc_version}-${bw_version}"
 group = "com.bewitchment" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
