@@ -86,7 +86,7 @@ public class BrewData implements INBTSerializable<NBTTagList>, IBrewData {
 			this.mods = modifiers;
 		}
 		
-		protected BrewEntry(NBTTagCompound tag) {
+		public BrewEntry(NBTTagCompound tag) {
 			deserializeNBT(tag);
 		}
 		
