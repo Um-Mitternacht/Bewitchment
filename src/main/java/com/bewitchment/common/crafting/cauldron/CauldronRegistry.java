@@ -8,6 +8,7 @@ import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifier.ModifierResult;
 import com.bewitchment.api.cauldron.IBrewModifier.ResultType;
 import com.bewitchment.api.cauldron.IBrewModifierList;
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.crafting.CauldronCraftingRecipe;
@@ -216,6 +217,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.ender_inhibition, Ingredient.fromItem(ModItems.dimensional_sand));
 		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
+		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
 		
 	}
 	

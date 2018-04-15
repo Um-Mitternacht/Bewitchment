@@ -35,7 +35,7 @@ public class ModPotions {
 		ender_inhibition = new PotionEnderInhibition();
 		extinguish_fires = new PotionExtinguishFire();
 		fertilize = new PotionFertilize();
-		fireworld = new PotionFertilize();
+		fireworld = new PotionFireWorld();
 		
 		freezing = new PotionFrostbite();
 		
