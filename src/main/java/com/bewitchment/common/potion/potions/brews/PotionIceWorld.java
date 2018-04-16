@@ -10,9 +10,12 @@ import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
@@ -23,7 +26,7 @@ public class PotionIceWorld extends BrewMod {
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
 	
 	public PotionIceWorld() {
-		super("ice_world", false, 0xB0E0E6, true, 0);
+		super("ice_world", true, 0xB0E0E6, true, 0);
 		stateMap.put(Blocks.GRASS_PATH, Blocks.PACKED_ICE.getDefaultState());
 		stateMap.put(Blocks.GRAVEL, Blocks.PACKED_ICE.getDefaultState());
 		stateMap.put(Blocks.COBBLESTONE, Blocks.PACKED_ICE.getDefaultState());
@@ -43,6 +46,11 @@ public class PotionIceWorld extends BrewMod {
 		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getDefaultState().withProperty(BlockStainedGlassPane.COLOR, EnumDyeColor.BLUE));
 		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.BLUE));
 		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.BLUE));
+	}
+	
+	@Override
+	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double mult) {
+		entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80 * (amplifier + 1), amplifier / 2));
 	}
 	
 	@Override
