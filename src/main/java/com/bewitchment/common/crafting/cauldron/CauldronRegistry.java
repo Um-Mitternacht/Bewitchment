@@ -223,6 +223,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(ModItems.silphium));
 		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(ModItems.seed_silphium));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.white_sage));
+		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.seed_mint));
 		
 	}
 	
