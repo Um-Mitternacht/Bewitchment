@@ -9,6 +9,7 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.*;
+import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -16,7 +17,9 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
 
 /**
@@ -76,12 +79,12 @@ public class PotionFireWorld extends BrewMod {
 
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 1 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int box = 2 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
 
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
 
-		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
+		Iterable<MutableBlockPos> spots = BlockPos.getAllInBoxMutable(posI, posF);
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
 				IBlockState state = world.getBlockState(spot);
@@ -102,7 +105,14 @@ public class PotionFireWorld extends BrewMod {
 					} else if (state.getBlock() == ModBlocks.fake_ice_fence) {
 						world.setBlockState(spot, Blocks.NETHER_BRICK_FENCE.getDefaultState(), 3);
 					} else if (state.getBlock() instanceof BlockLog) {
-						world.setBlockState(spot, ModBlocks.nethersteel.getDefaultState(), 3);
+						EnumFacing.Axis bone_axis = EnumFacing.Axis.Y;
+						BlockLog.EnumAxis log_axis = state.getValue(BlockLog.LOG_AXIS);
+						if (log_axis == EnumAxis.X) {
+							bone_axis = Axis.X;
+						} else if (log_axis == EnumAxis.Z) {
+							bone_axis = Axis.Z;
+						}
+						world.setBlockState(spot, Blocks.BONE_BLOCK.getDefaultState().withProperty(BlockBone.AXIS, bone_axis), 3);
 					} else if (stateMap.containsKey(state.getBlock())) {
 						world.setBlockState(spot, stateMap.get(state.getBlock()), 3);
 					} else if (state.getMaterial() == Material.SNOW) {
@@ -112,10 +122,10 @@ public class PotionFireWorld extends BrewMod {
 					} else if (state.getBlock() == Blocks.FLOWING_WATER) {
 						world.setBlockState(spot, Blocks.FLOWING_LAVA.getDefaultState().withProperty(BlockDynamicLiquid.LEVEL, state.getValue(BlockDynamicLiquid.LEVEL)), 2);
 					} else if (state.getBlock() instanceof BlockLeaves) {
-						world.setBlockState(spot, Blocks.GLOWSTONE.getDefaultState(), 3);
+						world.setBlockState(spot, Blocks.NETHER_WART_BLOCK.getDefaultState(), 3);
 					}
 					
-					if (world.getBlockState(spot).getBlock() == Blocks.NETHERRACK && world.isAirBlock(spot.up()) && world.rand.nextInt(10) == 0) {
+					if (state.getBlock() != Blocks.NETHERRACK && world.getBlockState(spot).getBlock() == Blocks.NETHERRACK && world.isAirBlock(spot.up()) && world.rand.nextInt(10) == 0) {
 						world.setBlockState(spot.up(), Blocks.FIRE.getDefaultState(), 3);
 					}
 					
