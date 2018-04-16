@@ -220,6 +220,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
 		registerCombinedBrewEffect(ModPotions.grass_growth, Ingredient.fromItem(Item.getItemFromBlock(Blocks.GRASS)));
+		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(ModItems.silphium));
 		
 	}
 	
