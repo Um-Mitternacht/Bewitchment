@@ -219,6 +219,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
 		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
+		registerCombinedBrewEffect(ModPotions.grass_growth, Ingredient.fromItem(Item.getItemFromBlock(Blocks.GRASS)));
 		
 	}
 	
@@ -250,3 +251,4 @@ public class CauldronRegistry {
 		registerFoodValue(ingredient, new CauldronFoodValue(hunger, saturation));
 	}
 }
+
