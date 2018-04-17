@@ -443,14 +443,11 @@ effect.grace.desc=Negates fall damage.
 effect.purify=Purification
 effect.purify.desc=Removes harmful brew effects.
 
-effect.notched=Notched
-effect.notched.desc=Adds all of the effects a notch apple applies.
-
 effect.infestation=Infestation
 effect.infestation.desc=Turns grass and dirt into mycelium. May have other effects.
 
-effect.growth=Growth
-effect.growth.desc=Turns mycelium and dirt into grass. May have other effects.
+effect.mending=Mending
+effect.mending.desc=Turns mycelium and dirt into grass. Cleans and boosts entities.
 
 effect.ozymandias=Ozymandias' Brew
 effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!

@@ -14,7 +14,7 @@ public class ModPotions {
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
-	public static Potion grass_growth, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation;
+	public static Potion purification, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation;
 	
 	public static PotionFrostbite freezing;
 
@@ -39,7 +39,7 @@ public class ModPotions {
 		fireworld = new PotionFireWorld();
 		grace = new PotionGrace();
 		freezing = new PotionFrostbite();
-		grass_growth = new PotionGrassGrow();
+		purification = new PotionMending();
 		flower_growth = new PotionGrowFlowers();
 		harvest = new PotionHarvest();
 		holy_water = new PotionHolyWater();
@@ -51,7 +51,7 @@ public class ModPotions {
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
 				bane_arthropods, corruption, cursed_leaping, demons_bane, //
 				projectile_resistance, disrobing, ender_inhibition, extinguish_fires, //
-				fertilize, freezing, fireworld, grace, grass_growth, flower_growth, //
+				fertilize, freezing, fireworld, grace, purification, flower_growth, //
 				harvest, holy_water, ice_world, outcasts_shame, infestation
 		);
 	}
