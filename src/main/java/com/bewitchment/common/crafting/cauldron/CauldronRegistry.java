@@ -224,6 +224,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(ModItems.seed_silphium));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.white_sage));
 		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.seed_mint));
+		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
 		
 	}
 	
