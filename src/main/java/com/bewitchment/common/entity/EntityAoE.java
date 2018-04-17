@@ -1,9 +1,9 @@
 package com.bewitchment.common.entity;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
@@ -37,7 +37,7 @@ public class EntityAoE extends Entity {
 		this(world);
 		this.entry = data;
 		dataManager.set(COLOR, entry.getPotion().getLiquidColor());
-		this.width = entry.getModifierList().getLevel(BewitchmentModifiers.RADIUS).orElse(0) + 1;// FIXME not working
+		this.width = entry.getModifierList().getLevel(DefaultModifiers.RADIUS).orElse(0) + 1;// FIXME not working
 		this.height = width;
 		maxLife = getMaxLife();
 		this.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
@@ -82,7 +82,7 @@ public class EntityAoE extends Entity {
 	}
 	
 	private int getMaxLife() {
-		return 100 * (1 + entry.getModifierList().getLevel(BewitchmentModifiers.GAS_CLOUD_DURATION).orElse(0));
+		return 100 * (1 + entry.getModifierList().getLevel(DefaultModifiers.GAS_CLOUD_DURATION).orElse(0));
 	}
 	
 	@Override

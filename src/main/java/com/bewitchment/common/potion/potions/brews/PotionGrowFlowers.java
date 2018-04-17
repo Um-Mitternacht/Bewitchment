@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.state.IBlockState;
@@ -19,8 +19,8 @@ public class PotionGrowFlowers extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int amplifier = modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0);
-		int box = 1 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
+		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
 		

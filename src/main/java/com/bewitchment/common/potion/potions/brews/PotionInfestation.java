@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.*;
@@ -43,7 +43,7 @@ public class PotionInfestation extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 2 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
@@ -54,7 +54,7 @@ public class PotionInfestation extends BrewMod {
 				IBlockState state = world.getBlockState(spot);
 				Block mushroom = (state.getBlock().getRegistryName().toString().length() + state.getBlock().getMetaFromState(state)) % 2 == 0 ? Blocks.RED_MUSHROOM_BLOCK : Blocks.BROWN_MUSHROOM_BLOCK;
 				Block mushroomSmall = world.rand.nextBoolean() ? Blocks.RED_MUSHROOM : Blocks.BROWN_MUSHROOM;
-				if (world.rand.nextInt(4) <= modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0) / 2) {
+				if (world.rand.nextInt(4) <= modifiers.getLevel(DefaultModifiers.POWER).orElse(0) / 2) {
 					if (state.getBlock() == Blocks.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.GRASS_PATH) {
 						world.setBlockState(spot, Blocks.MYCELIUM.getDefaultState(), 3);
 						if (world.isAirBlock(spot.up()) && world.rand.nextInt(10) == 0) {

@@ -1,10 +1,7 @@
 package com.bewitchment.common.cauldron;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.cauldron.IBrewEffect;
-import com.bewitchment.api.cauldron.IBrewModifier;
-import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
+import com.bewitchment.api.cauldron.*;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.crafting.IngredientOr;
 import com.bewitchment.common.item.ModItems;
@@ -26,17 +23,17 @@ public class ModBrewModifiers {
 		initApiModifiers();
 		
 		BewitchmentAPI api = BewitchmentAPI.getAPI();
-		api.registerBrewModifier(BewitchmentModifiers.POWER);
-		api.registerBrewModifier(BewitchmentModifiers.DURATION);
-		api.registerBrewModifier(BewitchmentModifiers.RADIUS);
-		api.registerBrewModifier(BewitchmentModifiers.GAS_CLOUD_DURATION);
-		api.registerBrewModifier(BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT);
-		api.registerBrewModifier(BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT);
-		api.registerBrewModifier(BewitchmentModifiers.COLOR);
+		api.registerBrewModifier(DefaultModifiers.POWER);
+		api.registerBrewModifier(DefaultModifiers.DURATION);
+		api.registerBrewModifier(DefaultModifiers.RADIUS);
+		api.registerBrewModifier(DefaultModifiers.GAS_CLOUD_DURATION);
+		api.registerBrewModifier(DefaultModifiers.SUPPRESS_ENTITY_EFFECT);
+		api.registerBrewModifier(DefaultModifiers.SUPPRESS_IN_WORLD_EFFECT);
+		api.registerBrewModifier(DefaultModifiers.COLOR);
 	}
 	
 	private static void initApiModifiers() {
-		BewitchmentModifiers.POWER = new SimpleModifier("power", Ingredient.fromItem(Items.GLOWSTONE_DUST)) {
+		DefaultModifiers.POWER = new SimpleModifier("power", Ingredient.fromItem(Items.GLOWSTONE_DUST)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -44,7 +41,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.DURATION = new SimpleModifier("length", Ingredient.fromItem(Items.REDSTONE)) {
+		DefaultModifiers.DURATION = new SimpleModifier("length", Ingredient.fromItem(Items.REDSTONE)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -52,7 +49,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.RADIUS = new SimpleModifier("radius", Ingredient.fromItem(ModItems.sagebrush)) {
+		DefaultModifiers.RADIUS = new SimpleModifier("radius", Ingredient.fromItem(ModItems.sagebrush)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -60,7 +57,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.GAS_CLOUD_DURATION = new SimpleModifier("gas_duration", Ingredient.fromItem(ModItems.hellebore)) {
+		DefaultModifiers.GAS_CLOUD_DURATION = new SimpleModifier("gas_duration", Ingredient.fromItem(ModItems.hellebore)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -68,7 +65,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("suppress_entity", Ingredient.fromItem(Items.BRICK)) {
+		DefaultModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("suppress_entity", Ingredient.fromItem(Items.BRICK)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -81,7 +78,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("suppress_in_world", Ingredient.fromItem(Items.NETHERBRICK)) {
+		DefaultModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("suppress_in_world", Ingredient.fromItem(Items.NETHERBRICK)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -94,7 +91,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(Items.DIAMOND)) {
+		DefaultModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(Items.DIAMOND)) {
 			
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -107,7 +104,7 @@ public class ModBrewModifiers {
 			}
 		};
 		
-		BewitchmentModifiers.COLOR = new IBrewModifier() {
+		DefaultModifiers.COLOR = new IBrewModifier() {
 			
 			private final ResourceLocation name = new ResourceLocation(LibMod.MOD_ID, "color");
 			private final Ingredient ingredient = new IngredientOr(Ingredient.fromItem(Items.DYE), new OreIngredient("dye")); // TODO add the dye tag to items

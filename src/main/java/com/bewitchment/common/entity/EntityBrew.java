@@ -2,7 +2,7 @@ package com.bewitchment.common.entity;
 
 import java.util.List;
 
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.ApplicationType;
 import com.bewitchment.common.item.ModItems;
@@ -95,7 +95,7 @@ public class EntityBrew extends EntityThrowable {
 	}
 	
 	private void applySplash(RayTraceResult raytrace, BrewData data) {
-		int size = (int) data.getEffects().stream().mapToDouble(be -> be.getModifierList().getLevel(BewitchmentModifiers.RADIUS).orElse(0)).average().orElse(0);
+		int size = (int) data.getEffects().stream().mapToDouble(be -> be.getModifierList().getLevel(DefaultModifiers.RADIUS).orElse(0)).average().orElse(0);
 		AxisAlignedBB axisalignedbb = this.getEntityBoundingBox().grow(size + 4.0D, size / 2 + 2.0D, size + 4.0D);
 		List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
 		for (EntityLivingBase entitylivingbase : list) {

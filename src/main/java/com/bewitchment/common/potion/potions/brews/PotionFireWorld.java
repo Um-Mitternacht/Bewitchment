@@ -3,8 +3,8 @@ package com.bewitchment.common.potion.potions.brews;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.potion.BrewMod;
 
@@ -65,7 +65,7 @@ public class PotionFireWorld extends BrewMod {
 
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 2 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
@@ -74,7 +74,7 @@ public class PotionFireWorld extends BrewMod {
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
 				IBlockState state = world.getBlockState(spot);
-				if (world.rand.nextInt(4) <= modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0) / 2) {
+				if (world.rand.nextInt(4) <= modifiers.getLevel(DefaultModifiers.POWER).orElse(0) / 2) {
 					if (BlockStairs.isBlockStairs(state)) {
 						IBlockState newState = Blocks.NETHER_BRICK_STAIRS.getDefaultState()
 								.withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING))

@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.material.Material;
@@ -36,8 +36,8 @@ public class PotionExtinguishFire extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int amplifier = modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0);
-		int radius = modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
+		int radius = modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		if (canExtinguish(world, amplifier)) {
 			if (side != null) {
 				pos = pos.offset(side);

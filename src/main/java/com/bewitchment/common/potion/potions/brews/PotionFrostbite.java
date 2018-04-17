@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.potion.BrewMod;
 
@@ -41,7 +41,7 @@ public class PotionFrostbite extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 1 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
@@ -50,7 +50,7 @@ public class PotionFrostbite extends BrewMod {
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
 				IBlockState state = world.getBlockState(spot);
-				if (world.rand.nextInt(4) <= modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0) / 2) {
+				if (world.rand.nextInt(4) <= modifiers.getLevel(DefaultModifiers.POWER).orElse(0) / 2) {
 					Block block = state.getBlock();
 					if (block == Blocks.WATER && world.isAirBlock(spot.up())) {
 						world.setBlockState(spot, Blocks.ICE.getDefaultState(), 3);

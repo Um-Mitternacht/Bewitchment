@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
@@ -75,8 +75,8 @@ public class ItemBrew extends ItemMod {
 					tooltip.add(TextFormatting.DARK_GRAY.toString() + I18n.format("brew.parameters.none"));
 				}
 			} else {
-				Optional<Integer> power = list.getLevel(BewitchmentModifiers.POWER);
-				int lengthMod = list.getLevel(BewitchmentModifiers.DURATION).orElse(0);
+				Optional<Integer> power = list.getLevel(DefaultModifiers.POWER);
+				int lengthMod = list.getLevel(DefaultModifiers.DURATION).orElse(0);
 				String powerString = "";
 				String lengthString = "";
 				if (power.isPresent() && power.get() > 1) {

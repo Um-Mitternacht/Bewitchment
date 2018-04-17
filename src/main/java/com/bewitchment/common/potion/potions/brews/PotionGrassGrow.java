@@ -3,8 +3,8 @@ package com.bewitchment.common.potion.potions.brews;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.potion.BrewMod;
 
 import net.minecraft.block.Block;
@@ -49,8 +49,8 @@ public class PotionGrassGrow extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 1 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
-		int ampl = modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0);
+		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
+		int ampl = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);

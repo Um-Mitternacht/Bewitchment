@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.api.cauldron.modifiers.BewitchmentModifiers;
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.potion.BrewMod;
 
@@ -33,10 +33,10 @@ public class PotionFertilize extends BrewMod {
 	
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		int box = 1 + modifiers.getLevel(BewitchmentModifiers.RADIUS).orElse(0);
+		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
-		int amplifier = modifiers.getLevel(BewitchmentModifiers.POWER).orElse(0);
+		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);
