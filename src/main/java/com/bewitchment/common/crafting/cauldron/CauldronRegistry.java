@@ -226,6 +226,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.seed_mint));
 		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
+		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
 		
 	}
 	
