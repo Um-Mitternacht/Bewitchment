@@ -429,16 +429,13 @@ effect.sinking=Sinking
 effect.sinking.desc=Causes you to sink and be unable to jump.
 
 effect.cursed_leaping=Cursed Leaps
-effect.cursed_leaping.desc=Causes a target to jump uncontrollably.
+effect.cursed_leaping.desc=Causes a target to lose jump strength.
 
 effect.bane_arthropods=Arachnophobia
 effect.bane_arthropods.desc=Damages arthropods, useful for dealing with swarms of spiders.
 
 effect.outcasts_shame=Outcast's Shame
 effect.outcasts_shame.desc=Damages those outcast from society, such as Illagers.
-
-effect.ignition=Ignition
-effect.ignition.desc=Lights you or a target on fire.
 
 effect.grace=Grace
 effect.grace.desc=Negates fall damage.
@@ -449,17 +446,14 @@ effect.purify.desc=Removes harmful brew effects.
 effect.notched=Notched
 effect.notched.desc=Adds all of the effects a notch apple applies.
 
-effect.mycological_corruption=Mycosis
-effect.mycological_corruption.desc=Turns grass and dirt into mycelium. May have other effects.
+effect.infestation=Infestation
+effect.infestation.desc=Turns grass and dirt into mycelium. May have other effects.
 
 effect.growth=Growth
 effect.growth.desc=Turns mycelium and dirt into grass. May have other effects.
 
 effect.ozymandias=Ozymandias' Brew
 effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!
-
-effect.hells_wroth=Hell's Wroth
-effect.hells_wroth.desc=Encases a target in scalding magma. May have other effects.
 
 effect.setehs_wastes=Seteh's Wastes
 effect.setehs_wastes.desc=Converts sand and sandstone to their red variants.
