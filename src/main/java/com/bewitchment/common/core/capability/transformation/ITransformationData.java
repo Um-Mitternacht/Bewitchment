@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.transformation.ITransformation;
 
 public interface ITransformationData {
 

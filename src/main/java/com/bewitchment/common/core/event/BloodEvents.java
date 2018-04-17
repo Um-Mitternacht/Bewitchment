@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.transformations.IBloodReserve;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
@@ -10,7 +11,7 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.PotionBloodDrained;
-import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -85,10 +86,10 @@ public class BloodEvents {
 
 				if (ent instanceof EntityPlayer) {
 					ITransformationData data = ent.getCapability(CapabilityTransformationData.CAPABILITY, null);
-					if (data.getType() != ModTransformations.VAMPIRE) {
+					if (data.getType() != DefaultTransformations.VAMPIRE) {
 						ent.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 60, 1));
 					}
-					if (data.getType() == ModTransformations.VAMPIRE || data.getType() == ModTransformations.SPECTRE)
+					if (data.getType() == DefaultTransformations.VAMPIRE || data.getType() == DefaultTransformations.SPECTRE)
 						ignore = true;
 					br.setBlood(br.getBlood() + baseIncrease);
 				} else if (ent instanceof EntityVillager) {

@@ -1,6 +1,7 @@
 package com.bewitchment.api.event;
 
-import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.transformation.ITransformation;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 

@@ -1,10 +1,11 @@
 package com.bewitchment.client.core.event;
 
+import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -74,7 +75,7 @@ public class VampireBloodBarHUD {
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Post event) {
 		ITransformationData td = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-		if (!Minecraft.getMinecraft().player.isCreative() && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == ModTransformations.VAMPIRE) {
+		if (!Minecraft.getMinecraft().player.isCreative() && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && td.getType() == DefaultTransformations.VAMPIRE) {
 			GlStateManager.pushMatrix();
 			GlStateManager.color(1, 1, 1, 1);
 			GlStateManager.enableAlpha();
@@ -106,7 +107,7 @@ public class VampireBloodBarHUD {
 
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Pre event) {
-		if ((event.getType() == RenderGameOverlayEvent.ElementType.FOOD || event.getType() == RenderGameOverlayEvent.ElementType.AIR) && Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == ModTransformations.VAMPIRE) {
+		if ((event.getType() == RenderGameOverlayEvent.ElementType.FOOD || event.getType() == RenderGameOverlayEvent.ElementType.AIR) && Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 			event.setCanceled(true);
 		}
 	}

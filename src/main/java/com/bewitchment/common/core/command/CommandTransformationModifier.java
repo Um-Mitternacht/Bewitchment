@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.command;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.transformation.ModTransformations;
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -46,15 +47,15 @@ public class CommandTransformationModifier extends CommandBase {
 			ITransformation transf = null;
 
 			if (typeStr.equals("v") || typeStr.equals("vamp")) {
-				transf = ModTransformations.VAMPIRE;
+				transf = DefaultTransformations.VAMPIRE;
 			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
-				transf = ModTransformations.WEREWOLF;
+				transf = DefaultTransformations.WEREWOLF;
 			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
-				transf = ModTransformations.HUNTER;
+				transf = DefaultTransformations.HUNTER;
 			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
-				transf = ModTransformations.SPECTRE;
+				transf = DefaultTransformations.SPECTRE;
 			} else if (typeStr.equals("n")) {
-				transf = ModTransformations.NONE;
+				transf = DefaultTransformations.NONE;
 			} else
 				for (ITransformation tt : ModTransformations.REGISTRY) {
 					if (typeStr.equals(tt.getRegistryName().getResourcePath().toLowerCase()) || typeStr.equals(tt.getRegistryName().toString().toLowerCase())) {
@@ -67,7 +68,7 @@ public class CommandTransformationModifier extends CommandBase {
 				throw new WrongUsageException("commands.set_transformation.usage.no_transformation");
 			int level = 0;
 			try {
-				if (transf != ModTransformations.NONE) {
+				if (transf != DefaultTransformations.NONE) {
 					level = Integer.valueOf(args[1]);
 				}
 			} catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {

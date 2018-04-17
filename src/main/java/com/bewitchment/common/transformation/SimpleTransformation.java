@@ -1,6 +1,6 @@
 package com.bewitchment.common.transformation;
 
-import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 

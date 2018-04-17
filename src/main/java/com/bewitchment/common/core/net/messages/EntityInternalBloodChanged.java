@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.api.capability.transformations.IBloodReserve;
+import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.SimpleMessage;
 import net.minecraft.client.Minecraft;

@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.transformations.ITransformation;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.transformation.ModTransformations;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,7 +17,7 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		NBTTagCompound data = new NBTTagCompound();
 		data.setInteger("level", instance.getLevel());
 		data.setString("type", instance.getType().getRegistryName().toString());
-		if (instance.getType() == ModTransformations.VAMPIRE) {
+		if (instance.getType() == DefaultTransformations.VAMPIRE) {
 			data.setInteger("blood", instance.getBlood());
 		}
 		data.setBoolean("nightvision", instance.isNightVisionActive());
@@ -29,8 +30,8 @@ public class TransformationDataStorage implements IStorage<ITransformationData> 
 		NBTTagCompound data = (NBTTagCompound) nbt;
 		instance.setLevel(data.getInteger("level"));
 		ITransformation transf = ModTransformations.REGISTRY.getValue(new ResourceLocation(data.getString("type")));
-		instance.setType(transf == null ? ModTransformations.NONE : transf);
-		if (transf == ModTransformations.VAMPIRE) {
+		instance.setType(transf == null ? DefaultTransformations.NONE : transf);
+		if (transf == DefaultTransformations.VAMPIRE) {
 			instance.setBlood(data.getInteger("blood"));
 		}
 		instance.setNightVision(data.getBoolean("nightvision"));

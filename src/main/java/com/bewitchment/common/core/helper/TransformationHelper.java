@@ -1,7 +1,7 @@
 package com.bewitchment.common.core.helper;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.capability.transformations.IBloodReserve;
+import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;

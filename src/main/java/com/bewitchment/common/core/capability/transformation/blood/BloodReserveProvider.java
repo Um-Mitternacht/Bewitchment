@@ -1,12 +1,13 @@
 package com.bewitchment.common.core.capability.transformation.blood;
 
-import com.bewitchment.api.capability.transformations.IBloodReserve;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 import static com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve.CAPABILITY;
+
+import com.bewitchment.api.transformation.IBloodReserve;
 
 public class BloodReserveProvider implements ICapabilitySerializable<NBTBase> {
 

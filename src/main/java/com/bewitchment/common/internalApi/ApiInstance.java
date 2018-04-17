@@ -3,8 +3,6 @@ package com.bewitchment.common.internalApi;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.api.capability.transformations.IBloodReserve;
-import com.bewitchment.api.capability.transformations.ITransformation;
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.event.TransformationModifiedEvent;
@@ -14,6 +12,9 @@ import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.IBloodReserve;
+import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
@@ -34,7 +35,7 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.Spell;
-import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -165,8 +166,8 @@ public class ApiInstance extends BewitchmentAPI {
 		IBloodReserve ibr = player.getCapability(CapabilityBloodReserve.CAPABILITY, null);
 		data.setType(type);
 		data.setLevel(level);
-		data.setNightVision(data.isNightVisionActive() && (type == ModTransformations.WEREWOLF || type == ModTransformations.VAMPIRE));
-		if ((type == ModTransformations.SPECTRE || type == ModTransformations.VAMPIRE)) {
+		data.setNightVision(data.isNightVisionActive() && (type == DefaultTransformations.WEREWOLF || type == DefaultTransformations.VAMPIRE));
+		if ((type == DefaultTransformations.SPECTRE || type == DefaultTransformations.VAMPIRE)) {
 			ibr.setMaxBlood(-1);
 			player.removePotionEffect(ModPotions.bloodDrained);
 		} else if (ibr.getMaxBlood() < 0) {

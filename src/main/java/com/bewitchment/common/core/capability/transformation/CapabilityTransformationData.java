@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.capability.transformation;
 
-import com.bewitchment.api.capability.transformations.ITransformation;
-import com.bewitchment.common.transformation.ModTransformations;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.ITransformation;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -11,7 +12,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	@CapabilityInject(ITransformationData.class)
 	public static final Capability<ITransformationData> CAPABILITY = null;
 
-	ITransformation type = ModTransformations.NONE;
+	ITransformation type = DefaultTransformations.NONE;
 	int level = 0, blood = 0;
 	boolean isNightVisionActive = false;
 
@@ -25,7 +26,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	@Override
 	public ITransformation getType() {
 		if (type == null) {
-			return ModTransformations.NONE;
+			return DefaultTransformations.NONE;
 		}
 		return type;
 	}
@@ -37,7 +38,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	@Override
 	public void setType(ITransformation type) {
 		this.type = type;
-		if (type != ModTransformations.VAMPIRE) {
+		if (type != DefaultTransformations.VAMPIRE) {
 			blood = 0;
 		} else {
 			blood = getMaxBlood();

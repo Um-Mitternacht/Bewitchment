@@ -1,7 +1,6 @@
 package com.bewitchment.api;
 
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.api.capability.transformations.ITransformation;
 import com.bewitchment.api.cauldron.brew.IBrew;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
@@ -10,6 +9,8 @@ import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.transformation.ITransformation;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

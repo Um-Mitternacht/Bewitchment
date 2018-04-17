@@ -1,4 +1,4 @@
-package com.bewitchment.api.capability.transformations;
+package com.bewitchment.api.transformation;
 
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
