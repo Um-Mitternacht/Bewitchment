@@ -6,6 +6,7 @@ import com.bewitchment.common.transformation.ModTransformations;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class PotionHolyWater extends GenericBrewDamageVS {
@@ -17,6 +18,9 @@ public class PotionHolyWater extends GenericBrewDamageVS {
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
 		if (entity instanceof EntityGhast) {
+			return true;
+		}
+		if (entity instanceof EntityVex) {
 			return true;
 		}
 		if (entity instanceof EntityPlayer) {
