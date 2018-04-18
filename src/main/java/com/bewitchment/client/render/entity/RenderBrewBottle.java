@@ -7,7 +7,6 @@
 package com.bewitchment.client.render.entity;
 
 import com.bewitchment.common.entity.EntityBrew;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderSnowball;
@@ -23,5 +22,5 @@ public class RenderBrewBottle extends RenderSnowball<EntityBrew> {
 	public ItemStack getStackToRender(EntityBrew entityIn) {
 		return entityIn.getBrew();
 	}
-	
+
 }

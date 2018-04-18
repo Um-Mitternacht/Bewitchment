@@ -1,7 +1,5 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import java.util.*;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -19,7 +17,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.BrewVanilla;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -35,51 +32,52 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
+import java.util.*;
+
 public class CauldronRegistry {
-	
+
+	public static final HashBiMap<IBrewEffect, Potion> BREW_POTION_MAP = HashBiMap.<IBrewEffect, Potion>create(90);
+	public static final IForgeRegistry<IBrewModifier> BREW_MODIFIERS = new RegistryBuilder<IBrewModifier>().setName(new ResourceLocation(LibMod.MOD_ID, "brew modifiers")).setIDRange(0, 200).setType(IBrewModifier.class).create();
 	private static final HashMap<Ingredient, CauldronFoodValue> STEW_REGISTRY = new HashMap<>();
 	private static final ArrayList<CauldronCraftingRecipe> CRAFTING_REGISTRY = new ArrayList<>();
 	private static final HashMap<Ingredient, IBrewEffect> BREW_INGREDIENT_REGISTRY = new HashMap<>();
-	public static final HashBiMap<IBrewEffect, Potion> BREW_POTION_MAP = HashBiMap.<IBrewEffect, Potion>create(90);
-	public static final IForgeRegistry<IBrewModifier> BREW_MODIFIERS = new RegistryBuilder<IBrewModifier>().setName(new ResourceLocation(LibMod.MOD_ID, "brew modifiers")).setIDRange(0, 200).setType(IBrewModifier.class).create();
-	
 	// The less entries an Ingredient has, the higher priority it will be in the list
 	private static final Comparator<Map.Entry<Ingredient, CauldronFoodValue>> STEW_INGREDIENT_PRIORITY = Map.Entry.<Ingredient, CauldronFoodValue>comparingByKey(Comparator.comparing(i -> i.getMatchingStacks().length)).reversed();
-	
+
 	public static void registerFoodValue(Ingredient ingredient, CauldronFoodValue value) {
 		if (ingredient.getMatchingStacks().length > 0) {
 			STEW_REGISTRY.put(ingredient, value);
 		}
 	}
-	
+
 	public static void bindPotionAndEffect(IBrewEffect effect, Potion potion) {
 		BREW_POTION_MAP.put(effect, potion);
 	}
-	
+
 	public static void registerBrewModifier(IBrewModifier modifier) {
 		BREW_MODIFIERS.register(modifier);
 	}
-	
+
 	public static void registerBrewIngredient(IBrewEffect effect, Ingredient ingredient) {
 		BREW_INGREDIENT_REGISTRY.put(ingredient, effect);
 	}
-	
+
 	public static void registerCauldronCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronCraftingRecipe(fluid, output, ingredients));
 	}
-	
+
 	public static CauldronFoodValue getCauldronFoodValue(ItemStack stack) {
 		return STEW_REGISTRY.entrySet().stream().filter(e -> e.getKey().apply(stack)).sorted(STEW_INGREDIENT_PRIORITY).map(e -> e.getValue()).findFirst().orElse(null);
 	}
-	
+
 	public static Optional<CauldronCraftingRecipe> getCraftingResult(FluidStack fluid, List<ItemStack> stacks) {
 		return CRAFTING_REGISTRY.stream().filter(r -> r.matches(stacks, fluid)).findFirst();
 	}
-	
+
 	public static Potion getPotionFromBrew(IBrewEffect effect) {
 		return BREW_POTION_MAP.get(effect);
 	}
-	
+
 	public static IBrewEffect getBrewFromPotion(Potion potion) {
 		if (potion == null) {
 			throw new NullPointerException("The potion parameter cannot be null");
@@ -90,7 +88,7 @@ public class CauldronRegistry {
 		}
 		return effect;
 	}
-	
+
 	public static Optional<IBrewModifierList> getModifierListFromStack(ItemStack stack, IBrewModifierList currentList, IBrewEffect currentEffect) {
 		for (IBrewModifier bm : BREW_MODIFIERS) {
 			if (bm.canApply(currentEffect)) {
@@ -106,7 +104,7 @@ public class CauldronRegistry {
 		}
 		return Optional.empty();
 	}
-	
+
 	public static Optional<IBrewEffect> getBrewFromStack(ItemStack stack) {
 		for (Ingredient i : BREW_INGREDIENT_REGISTRY.keySet()) {
 			if (i.apply(stack)) {
@@ -115,7 +113,7 @@ public class CauldronRegistry {
 		}
 		return Optional.empty();
 	}
-	
+
 	public static void init() { // TODO tune values
 		registerFood(Ingredient.fromItem(Items.APPLE), 4, 2.4f);
 		registerFood(Ingredient.fromItem(Items.BAKED_POTATO), 5, 6f);
@@ -159,7 +157,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
-		
+
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET), noMeta(Items.LEATHER_HELMET));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE), noMeta(Items.LEATHER_CHESTPLATE));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS), noMeta(Items.LEATHER_LEGGINGS));
@@ -187,7 +185,7 @@ public class CauldronRegistry {
 		for (int i = 0; i < 16; i++) {
 			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
 		}
-		
+
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);
 		registerVanillaBrewEffect(MobEffects.FIRE_RESISTANCE, Ingredient.fromItem(Items.MAGMA_CREAM));
 		registerVanillaBrewEffect(MobEffects.HUNGER, Ingredient.fromItem(Items.ROTTEN_FLESH), 600);
@@ -203,7 +201,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 2)));// TODO make this pufferfish
 		registerVanillaBrewEffect(MobEffects.STRENGTH, Ingredient.fromItem(Items.BLAZE_POWDER));
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
-		
+
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
 		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME recipe conflict with radius modifier
@@ -227,25 +225,25 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
-		
+
 	}
-	
+
 	public static void postInit() {
 		BewitchmentAPI.getAPI().registerBrewEffect(ModPotions.freezing, ModPotions.freezing.getPotion(), Ingredient.fromItem(Items.SNOWBALL));
 	}
-	
+
 	private static void registerVanillaBrewEffect(Potion potion, Ingredient ingredient) {
 		BewitchmentAPI.getAPI().registerBrewEffect(new BrewVanilla(potion), potion, ingredient);
 	}
-	
+
 	private static void registerVanillaBrewEffect(Potion potion, Ingredient ingredient, int duration) {
 		BewitchmentAPI.getAPI().registerBrewEffect(new BrewVanilla(duration), potion, ingredient);
 	}
-	
+
 	private static Ingredient noMeta(Item i) {
 		return Ingredient.fromStacks(new ItemStack(i, 1, OreDictionary.WILDCARD_VALUE));
 	}
-	
+
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
 		if (potion instanceof IBrewEffect) {
 			BewitchmentAPI.getAPI().registerBrewEffect((IBrewEffect) potion, potion, ingredient);
@@ -253,7 +251,7 @@ public class CauldronRegistry {
 		}
 		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects");
 	}
-	
+
 	private static void registerFood(Ingredient ingredient, int hunger, float saturation) {
 		registerFoodValue(ingredient, new CauldronFoodValue(hunger, saturation));
 	}

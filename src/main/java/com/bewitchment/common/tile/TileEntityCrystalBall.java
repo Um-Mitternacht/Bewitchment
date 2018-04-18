@@ -1,18 +1,16 @@
 package com.bewitchment.common.tile;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.divination.Fortune;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends ModTileEntity {
 
@@ -82,14 +80,14 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		if (te == null) return false;
 		return te.consumePower(power, simulate);
 	}
-	
+
 	@Override
 	void writeModSyncDataNBT(NBTTagCompound tag) {
-		
+
 	}
-	
+
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
-		
+
 	}
 }

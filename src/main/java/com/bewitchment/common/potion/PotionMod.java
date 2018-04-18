@@ -1,7 +1,6 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
@@ -19,18 +18,18 @@ public class PotionMod extends Potion {
 		this.setPotionName("effect." + name);
 		this.instant = isInstant;
 	}
-	
+
 	@Override
 	public boolean isInstant() {
 		return instant;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean isBeneficial() {
 		return !this.isBadEffect();
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return false;

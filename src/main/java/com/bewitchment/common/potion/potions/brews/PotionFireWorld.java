@@ -1,13 +1,9 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.*;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.material.Material;
@@ -21,6 +17,9 @@ import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Joseph on 4/14/2018.
@@ -57,7 +56,7 @@ public class PotionFireWorld extends BrewMod {
 		stateMap.put(Blocks.GLASS, Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.RED));
 		stateMap.put(Blocks.STAINED_GLASS, Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.RED));
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
 		entity.setFire((1 + amplifier) * 2);
@@ -112,11 +111,11 @@ public class PotionFireWorld extends BrewMod {
 					} else if (state.getBlock() instanceof BlockGlazedTerracotta) {
 						world.setBlockState(spot, Blocks.RED_GLAZED_TERRACOTTA.getDefaultState().withProperty(BlockGlazedTerracotta.FACING, state.getValue(BlockGlazedTerracotta.FACING)), 3);
 					}
-					
+
 					if (state.getBlock() != Blocks.NETHERRACK && world.getBlockState(spot).getBlock() == Blocks.NETHERRACK && world.isAirBlock(spot.up()) && world.rand.nextInt(10) == 0) {
 						world.setBlockState(spot.up(), Blocks.FIRE.getDefaultState(), 3);
 					}
-					
+
 				}
 			}
 		}

@@ -7,7 +7,6 @@ import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -18,9 +17,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityAoE extends Entity {
-	
+
 	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityAoE.class, DataSerializers.VARINT);
-	
+
 	private BrewEntry entry = null;
 	private int maxLife;
 
@@ -32,7 +31,7 @@ public class EntityAoE extends Entity {
 		this.width = 1;
 		this.height = 1;
 	}
-	
+
 	public EntityAoE(World world, BrewEntry data, BlockPos pos) {
 		this(world);
 		this.entry = data;
@@ -42,7 +41,7 @@ public class EntityAoE extends Entity {
 		maxLife = getMaxLife();
 		this.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
 	}
-	
+
 	@Override
 	public void onUpdate() {
 		if (!world.isRemote) {
@@ -53,12 +52,12 @@ public class EntityAoE extends Entity {
 				world.getEntitiesWithinAABB(Entity.class, this.getEntityBoundingBox()).forEach(e -> {
 					eff.performEffectAoEOverTime(e, entry.getModifierList());
 				});
-				
+
 			} else {
 				Bewitchment.logger.warn(entry.getPotion().getName() + " has no AoE Over Time effect associated");
 				this.setDead();
 			}
-			
+
 			if (this.ticksExisted >= maxLife) {
 				this.setDead();
 			}
@@ -75,16 +74,16 @@ public class EntityAoE extends Entity {
 			}
 		}
 	}
-	
+
 	@Override
 	protected void entityInit() {
 		this.getDataManager().register(COLOR, Integer.valueOf(0));
 	}
-	
+
 	private int getMaxLife() {
 		return 100 * (1 + entry.getModifierList().getLevel(DefaultModifiers.GAS_CLOUD_DURATION).orElse(0));
 	}
-	
+
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {
 		entry = new BrewEntry(tag.getCompoundTag("entry"));
@@ -92,12 +91,12 @@ public class EntityAoE extends Entity {
 		dataManager.setDirty(COLOR);
 		maxLife = getMaxLife();
 	}
-	
+
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound compound) {
 		compound.setTag("entry", entry.serializeNBT());
 	}
-	
+
 	public static interface IBrewEffectAoEOverTime {
 		public void performEffectAoEOverTime(Entity entity, IBrewModifierList modifiers);
 	}

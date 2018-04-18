@@ -1,15 +1,8 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.state.IBlockState;
@@ -28,12 +21,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class PotionMending extends BrewMod {
-	
+
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
-	
+
 	private Method startConverting;
-	
+
 	public PotionMending() {
 		super("mending", false, 0x4CBB17, true, 0);
 		stateMap.put(Blocks.MYCELIUM, Blocks.GRASS.getDefaultState());
@@ -47,10 +46,10 @@ public class PotionMending extends BrewMod {
 			throw new LoaderException("[Bewitchment] Failed to find startConverting method in class EntityZombieVillager for PotionMending");
 		}
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
-		
+
 		if (entity instanceof EntityMooshroom) {
 			entity.setDead();
 			EntityCow entitycow = new EntityCow(entity.world);
@@ -80,7 +79,7 @@ public class PotionMending extends BrewMod {
 			entity.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 3));
 		}
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
@@ -99,5 +98,5 @@ public class PotionMending extends BrewMod {
 			}
 		}
 	}
-	
+
 }

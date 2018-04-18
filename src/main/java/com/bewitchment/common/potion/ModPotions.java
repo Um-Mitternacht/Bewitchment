@@ -2,7 +2,6 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.brews.*;
-
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -10,12 +9,12 @@ public class ModPotions {
 
 	// Normal effects
 	public static Potion bloodDrained;
-	
+
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion purification, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
-	
+
 	public static PotionFrostbite freezing;
 
 	private ModPotions() {
@@ -47,7 +46,7 @@ public class ModPotions {
 		outcasts_shame = new PotionOutcastsShame();
 		infestation = new PotionInfestation();
 		ozymandias = new PotionOzymandias();
-		
+
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
 				bane_arthropods, corruption, cursed_leaping, demons_bane, //

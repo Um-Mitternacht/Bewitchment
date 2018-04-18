@@ -1,12 +1,5 @@
 package com.bewitchment.common.block.tools;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.sound.ModSounds;
@@ -16,7 +9,6 @@ import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityCauldron;
 import com.bewitchment.common.tile.TileEntityCauldron.Mode;
-
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -28,7 +20,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -38,6 +33,12 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Random;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -132,7 +133,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 			worldIn.setBlockState(pos, state.cycleProperty(Bewitchment.HALF), 3);
 			return true;
 		}
-		
+
 		final TileEntityCauldron tile = (TileEntityCauldron) worldIn.getTileEntity(pos);
 		return tile != null && tile.onCauldronRightClick(playerIn, hand, playerIn.getHeldItem(hand));
 	}
@@ -155,7 +156,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityCauldron();
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
@@ -191,7 +192,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 						world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 1F + rand.nextFloat() * 0.8f, true);
 					}
 				}
-				
+
 				if (tile.getMode() == Mode.CLEANING) {
 					double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
 					double py = pos.getY() + 0.5 + world.rand.nextGaussian();
@@ -199,7 +200,7 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 					world.spawnParticle(EnumParticleTypes.SPELL_INSTANT, px, py, pz, 0, 0.1, 0);
 				}
 			}
-			
+
 			if (tile.getMode() == Mode.CRAFTING || (tile.getMode() == Mode.STEW && tile.getProgress() >= tile.getMode().getTime())) {
 				final float x = pos.getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 				final float z = pos.getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
@@ -207,5 +208,5 @@ public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 			}
 		}
 	}
-	
+
 }

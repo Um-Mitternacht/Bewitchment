@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,18 +16,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
 public class PotionInfestation extends BrewMod {
-	
-	private static final DamageSource[] source = new DamageSource[] { DamageSource.WITHER, DamageSource.DROWN, DamageSource.ON_FIRE, DamageSource.MAGIC };
-	
+
+	private static final DamageSource[] source = new DamageSource[]{DamageSource.WITHER, DamageSource.DROWN, DamageSource.ON_FIRE, DamageSource.MAGIC};
+
 	public PotionInfestation() {
 		super("infestation", true, 0xFF80DC, false, 3 * 60 * 20);
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return duration % 40 == 0;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
 		entity.attackEntityFrom(source[entity.getRNG().nextInt(source.length)], 3 + entity.getRNG().nextFloat() * amplifier);
@@ -40,14 +39,14 @@ public class PotionInfestation extends BrewMod {
 			});
 		}
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
-		
+
 		Iterable<MutableBlockPos> spots = BlockPos.getAllInBoxMutable(posI, posF);
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
@@ -71,7 +70,7 @@ public class PotionInfestation extends BrewMod {
 					} else if (state.getBlock() == Blocks.STONEBRICK) {
 						world.setBlockState(spot, Blocks.STONEBRICK.getDefaultState().withProperty(BlockStoneBrick.VARIANT, BlockStoneBrick.EnumType.MOSSY), 3);
 					}
-					
+
 					// TODO add wheat to infested wheat
 				}
 			}

@@ -2,7 +2,6 @@ package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-
 import net.minecraft.block.BlockGlazedTerracotta;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
@@ -23,14 +22,14 @@ public class PotionOzymandias extends GenericBrewDamageVS {
 	public PotionOzymandias() {
 		super("ozymandias", 0x303E0C);
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
-		
+
 		Iterable<MutableBlockPos> spots = BlockPos.getAllInBoxMutable(posI, posF);
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
@@ -51,12 +50,12 @@ public class PotionOzymandias extends GenericBrewDamageVS {
 			}
 		}
 	}
-	
+
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
 		return (entity instanceof EntitySlime) && !(entity instanceof EntityMagmaCube);
 	}
-	
+
 	@Override
 	protected void applyExtraEffect(EntityLivingBase entity, int amplifier) {
 		if (amplifier > 2 && entity.isEntityAlive() && entity.getRNG().nextInt(4) == 0) {

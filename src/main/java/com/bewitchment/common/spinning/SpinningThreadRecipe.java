@@ -1,11 +1,6 @@
 package com.bewitchment.common.spinning;
 
-import java.util.ArrayList;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -13,6 +8,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 
 public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThreadRecipe> {
 

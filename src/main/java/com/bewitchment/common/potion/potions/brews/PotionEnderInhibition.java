@@ -1,7 +1,6 @@
 package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,18 +9,18 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionEnderInhibition extends BrewMod {
-	
+
 	public PotionEnderInhibition() {
 		super("ender_inhibition", true, 0x86608E, false, 900);
 		MinecraftForge.EVENT_BUS.register(this);
 		this.setIconIndex(5, 0);
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return true;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase e, int amplifier) {
 		int redo = 5 - amplifier;
@@ -32,7 +31,7 @@ public class PotionEnderInhibition extends BrewMod {
 			e.setPositionAndUpdate(e.lastTickPosX, e.lastTickPosY, e.lastTickPosZ);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onTeleport(EnderTeleportEvent event) {
 		PotionEffect pe = event.getEntityLiving().getActivePotionEffect(this);
@@ -43,7 +42,7 @@ public class PotionEnderInhibition extends BrewMod {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onTeleportDimensional(EntityTravelToDimensionEvent event) {
 		if (event.getEntity() instanceof EntityLivingBase) {
@@ -56,5 +55,5 @@ public class PotionEnderInhibition extends BrewMod {
 			}
 		}
 	}
-	
+
 }

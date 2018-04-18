@@ -2,7 +2,6 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 

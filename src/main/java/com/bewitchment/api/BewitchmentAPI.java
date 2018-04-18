@@ -10,7 +10,6 @@ import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
-
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.Ingredient;
@@ -68,21 +67,21 @@ public abstract class BewitchmentAPI {
 	public abstract void registerCircleRitual(IRitual ritual);
 
 	public abstract int getCirclesIntegerForRitual(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType large);
-	
+
 	/**
 	 * Register a new modifier for brews. This modifiers extend the idea of using glowstone/redstone to extend power and duration
 	 * and allow you to register new types of modifiers for them. See {@link com.bewitchment.api.cauldron.modifiers}
-	 * 
+	 *
 	 * @param modifier The modifier to register
 	 */
 	public abstract void registerBrewModifier(IBrewModifier modifier);
-	
+
 	/**
 	 * Links a brew effect, a potion and a crafting ingredient together, for crafting and application on brew itemstacks
 	 */
 	public abstract void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient);
-	
+
 	public abstract Potion getPotionFromBrew(IBrewEffect effect);
-	
+
 	public abstract IBrewEffect getBrewFromPotion(Potion potion);
 }

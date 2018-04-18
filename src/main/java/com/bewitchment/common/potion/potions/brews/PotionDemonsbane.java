@@ -4,16 +4,15 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.transformation.ModTransformations;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class PotionDemonsbane extends GenericBrewDamageVS {
-	
+
 	public PotionDemonsbane() {
 		super("demons_bane", 0xFFF5EE);
 	}
-	
+
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
 		if (entity.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
@@ -25,5 +24,5 @@ public class PotionDemonsbane extends GenericBrewDamageVS {
 		}
 		return false;
 	}
-	
+
 }

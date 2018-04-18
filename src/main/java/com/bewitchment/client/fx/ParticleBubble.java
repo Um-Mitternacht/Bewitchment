@@ -1,9 +1,6 @@
 package com.bewitchment.client.fx;
 
-import java.awt.Color;
-
 import com.bewitchment.client.ResourceLocations;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -17,6 +14,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.awt.*;
 
 @SideOnly(Side.CLIENT)
 class ParticleBubble extends Particle {
@@ -66,14 +65,14 @@ class ParticleBubble extends Particle {
 	@Override
 	public void renderParticle(BufferBuilder buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 		int i = ((this.life + partialTicks) / this.particleMaxAge) > 8 ? 1 : 0;
-		
+
 		this.textureManager.bindTexture(ResourceLocations.BUBBLE);
 		float minX = 0;
 		float maxX = minX + 1;
-		
+
 		float minY = i / 2F;
 		float maxY = minY + 0.5F;
-		
+
 		float scale = 1.0F * this.particleScale;
 		float x = (float) (this.prevPosX + (this.posX - this.prevPosX) * partialTicks - interpPosX);
 		float y = (float) (this.prevPosY + (this.posY - this.prevPosY) * partialTicks - interpPosY);
@@ -82,7 +81,7 @@ class ParticleBubble extends Particle {
 		Vec3d vec1 = new Vec3d(-rotationX * scale + rotationXY * scale, rotationZ * scale, -rotationYZ * scale + rotationXZ * scale);
 		Vec3d vec2 = new Vec3d(rotationX * scale + rotationXY * scale, rotationZ * scale, rotationYZ * scale + rotationXZ * scale);
 		Vec3d vec3 = new Vec3d(rotationX * scale - rotationXY * scale, -rotationZ * scale, rotationYZ * scale - rotationXZ * scale);
-		
+
 		GlStateManager.color(getRedColorF(), getGreenColorF(), getBlueColorF(), 1.0F);
 		buffer.begin(7, VERTEX_FORMAT);
 		buffer.pos(x + vec0.x, y + vec0.y, z + vec0.z).tex(maxX, maxY).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();

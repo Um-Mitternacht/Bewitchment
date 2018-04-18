@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -15,11 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class PotionFertilize extends BrewMod {
-	
+
 	public PotionFertilize() {
 		super("fertilize", false, 0xede5e3, true, 0);
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
 		if (entity instanceof EntityPlayer) {
@@ -30,7 +29,7 @@ public class PotionFertilize extends BrewMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
@@ -43,8 +42,8 @@ public class PotionFertilize extends BrewMod {
 			if (world.rand.nextBoolean() && state.getBlock() instanceof IGrowable) {
 				IGrowable crop = (IGrowable) state.getBlock();
 				for (int i = 0; i < amplifier + 1; i++)
-				if (crop.canGrow(world, spot, state, false))
-					crop.grow(world, world.rand, spot, state);
+					if (crop.canGrow(world, spot, state, false))
+						crop.grow(world, world.rand, spot, state);
 			}
 		}
 	}

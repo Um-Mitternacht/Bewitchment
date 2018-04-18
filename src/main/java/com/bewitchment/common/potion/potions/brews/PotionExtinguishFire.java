@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,11 +15,16 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 public class PotionExtinguishFire extends BrewMod {
-	
+
 	public PotionExtinguishFire() {
 		super("extinguish_fire", false, 0x3EB489, true, 0);
 	}
-	
+
+	private static boolean canExtinguish(World world, int amplifier) {
+		int dimId = world.provider.getDimension();
+		return dimId != DimensionType.NETHER.getId() || amplifier > 2;
+	}
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
 		if (entity.isBurning() && canExtinguish(entity.world, amplifier)) {
@@ -28,12 +32,7 @@ public class PotionExtinguishFire extends BrewMod {
 			entity.extinguish();
 		}
 	}
-	
-	private static boolean canExtinguish(World world, int amplifier) {
-		int dimId = world.provider.getDimension();
-		return dimId != DimensionType.NETHER.getId() || amplifier > 2;
-	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
@@ -59,5 +58,5 @@ public class PotionExtinguishFire extends BrewMod {
 			});
 		}
 	}
-	
+
 }

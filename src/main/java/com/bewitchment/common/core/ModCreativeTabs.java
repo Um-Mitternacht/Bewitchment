@@ -1,7 +1,5 @@
 package com.bewitchment.common.core;
 
-import javax.annotation.Nonnull;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
@@ -9,12 +7,13 @@ import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -74,13 +73,13 @@ public final class ModCreativeTabs {
 			return new ItemStack(ModItems.mortar_and_pestle);
 		}
 	}
-	
+
 	private static class BrewsCreativeTab extends CreativeTab {
-		
+
 		BrewsCreativeTab() {
 			super("_brews");
 		}
-		
+
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() {

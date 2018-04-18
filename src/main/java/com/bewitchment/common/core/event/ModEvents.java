@@ -19,6 +19,6 @@ public final class ModEvents {
 		MinecraftForge.EVENT_BUS.register(new TransformationEvents());
 		MinecraftForge.EVENT_BUS.register(new VampireAbilityHandler());
 	}
-	
-	
+
+
 }

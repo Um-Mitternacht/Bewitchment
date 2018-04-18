@@ -1,13 +1,9 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -21,10 +17,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PotionIceWorld extends BrewMod {
-	
+
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
-	
+
 	public PotionIceWorld() {
 		super("ice_world", true, 0xB0E0E6, true, 0);
 		stateMap.put(Blocks.GRASS_PATH, Blocks.PACKED_ICE.getDefaultState());
@@ -47,12 +46,12 @@ public class PotionIceWorld extends BrewMod {
 		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.BLUE));
 		stateMap.put(Blocks.STAINED_HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.BLUE));
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double mult) {
 		entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80 * (amplifier + 1), amplifier / 2));
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);

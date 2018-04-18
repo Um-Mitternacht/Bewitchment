@@ -1,7 +1,5 @@
 package com.bewitchment.common.item.magic.brew;
 
-import java.util.List;
-
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
@@ -10,7 +8,6 @@ import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.entity.EntityBrewArrow;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,29 +23,31 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+
 public class ItemBrewArrow extends ItemArrow implements IModelRegister {
-	
+
 	public ItemBrewArrow() {
 		super();
 		setRegistryName(LibItemName.BREW_ARROW);
 		setUnlocalizedName(LibItemName.BREW_ARROW);
 		setCreativeTab(ModCreativeTabs.BREW_CREATIVE_TAB);
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (this.isInCreativeTab(tab)) {
 			CauldronRegistry.BREW_POTION_MAP.values().forEach(p -> addPotionType(items, p));
 		}
 	}
-	
+
 	@Override
 	public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
 		EntityBrewArrow brewArrow = new EntityBrewArrow(worldIn, shooter);
 		brewArrow.setArrowStack(stack.copy().splitStack(1));
 		return brewArrow;
 	}
-	
+
 	private void addPotionType(NonNullList<ItemStack> items, Potion p) {
 		BrewData data = new BrewData();
 		BrewModifierListImpl list = new BrewModifierListImpl();
@@ -57,14 +56,14 @@ public class ItemBrewArrow extends ItemArrow implements IModelRegister {
 		data.saveToStack(stack);
 		items.add(stack);
 	}
-	
+
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		ItemBrew.addTooltip(stack, worldIn, tooltip, flagIn);
 	}
-	
+
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -72,5 +71,5 @@ public class ItemBrewArrow extends ItemArrow implements IModelRegister {
 		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(Items.TIPPED_ARROW.getRegistryName(), "inventory");
 		ModelLoader.setCustomModelResourceLocation(this, 0, modelResourceLocation);
 	}
-	
+
 }

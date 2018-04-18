@@ -44,7 +44,7 @@ public abstract class ModTileEntity extends TileEntity {
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
 		handleUpdateTag(packet.getNbtCompound());
 	}
-	
+
 	@Override
 	public void handleUpdateTag(NBTTagCompound tag) {
 		readModSyncDataNBT(tag);
@@ -58,11 +58,11 @@ public abstract class ModTileEntity extends TileEntity {
 	abstract void readAllModDataNBT(NBTTagCompound cmp);
 
 	abstract void writeAllModDataNBT(NBTTagCompound cmp);
-	
+
 	abstract void writeModSyncDataNBT(NBTTagCompound tag);
-	
+
 	abstract void readModSyncDataNBT(NBTTagCompound tag);
-	
+
 	public void syncToClient() {
 		IBlockState state = world.getBlockState(pos);
 		world.notifyBlockUpdate(pos, state, state, 3);

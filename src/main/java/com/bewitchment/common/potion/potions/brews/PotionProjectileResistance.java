@@ -1,20 +1,19 @@
 package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionProjectileResistance extends BrewMod {
-	
+
 	public PotionProjectileResistance() {
 		super("bulletproof", false, 0x2a3439, false, 3000);
 		this.setIconIndex(2, 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
 		PotionEffect pe = event.getEntityLiving().getActivePotionEffect(this);
@@ -26,5 +25,5 @@ public class PotionProjectileResistance extends BrewMod {
 			event.setAmount(newAmount);
 		}
 	}
-	
+
 }

@@ -3,7 +3,6 @@ package com.bewitchment.common.core.net;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

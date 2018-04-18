@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
@@ -18,14 +17,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class PotionFrostbite extends BrewMod {
-	
+
+	@ObjectHolder("extraalchemy:effect.freezing")
+	public static final Potion freezing = null;
+
 	public PotionFrostbite() {
 		super("freezing", true, 0xB0E0E6, true, 0);
 	}
-	
-	@ObjectHolder("extraalchemy:effect.freezing")
-	public static final Potion freezing = null;
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
 		BlockPos pos = entity.getPosition();
@@ -38,14 +37,14 @@ public class PotionFrostbite extends BrewMod {
 			}
 		});
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
-		
+
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
@@ -74,7 +73,7 @@ public class PotionFrostbite extends BrewMod {
 			}
 		}
 	}
-	
+
 	public Potion getPotion() {
 		if (freezing != null) {
 			Bewitchment.logger.info("Extra Alchemy spotted! The freezing potion entity effect will be \"borrowed\" from it");
@@ -83,5 +82,5 @@ public class PotionFrostbite extends BrewMod {
 		Bewitchment.logger.info("No extra alchemy found, freezing potion will default to its potion object!");
 		return this;
 	}
-	
+
 }

@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -20,7 +19,7 @@ public class PotionHarvest extends BrewMod {
 	public PotionHarvest() {
 		super("harvest", true, 0xC48F31, true, 0);
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
 		if (entityLivingBaseIn instanceof EntityPlayer) {
@@ -33,15 +32,15 @@ public class PotionHarvest extends BrewMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, 1, box);
 		BlockPos posF = pos.add(-box, -1, -box);
-		
+
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		int chance = 10 + amplifier * 2;
 		int fortune = MathHelper.clamp(amplifier, 0, 5);

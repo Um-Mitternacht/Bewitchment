@@ -2,10 +2,12 @@ package com.bewitchment.common.tile;
 
 import com.bewitchment.common.spinning.SpinningThreadRecipe;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;

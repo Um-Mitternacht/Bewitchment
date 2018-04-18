@@ -1,13 +1,8 @@
 package com.bewitchment.common.tile;
 
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.fermenting.BarrelRecipe;
 import com.bewitchment.common.block.tools.BlockBarrel;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +16,9 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
+
+import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
 public class TileEntityBarrel extends ModTileEntity implements ITickable {
 
@@ -257,7 +255,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			tag.setString("recipeName", recipeName);
 		}
 	}
-	
+
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
 		barrelType = tag.getInteger("type");
@@ -267,5 +265,5 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			recipeName = null;
 		}
 	}
-	
+
 }

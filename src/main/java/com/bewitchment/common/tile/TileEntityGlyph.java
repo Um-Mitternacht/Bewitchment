@@ -1,15 +1,9 @@
 package com.bewitchment.common.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.ritual.AdapterIRitual;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -25,6 +19,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
@@ -343,10 +342,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("cooldown", cooldown); // cooldown > 0 --> Particles
 	}
-	
+
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
 	}
-	
+
 }

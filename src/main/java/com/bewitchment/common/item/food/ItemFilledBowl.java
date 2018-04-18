@@ -1,13 +1,8 @@
 package com.bewitchment.common.item.food;
 
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,6 +14,9 @@ import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemFilledBowl extends ItemModFood {
 

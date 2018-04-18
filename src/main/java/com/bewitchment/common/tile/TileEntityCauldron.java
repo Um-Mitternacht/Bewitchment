@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewBuilder;
@@ -14,7 +10,6 @@ import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -35,42 +30,32 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
-	
+
 	public static final int MAX_HEAT = 40, BOILING_POINT = 25, DEFAULT_COLOR = 0x42499b;
-	
+
 	private Mode mode = Mode.IDLE;
 	private NonNullList<ItemStack> ingredients = NonNullList.create();
 	private AxisAlignedBB collectionZone;
 	private CauldronFluidTank tank;
-	
+
 	private int currentColorRGB = DEFAULT_COLOR;
 	private int heat = 0;
 	private int progress = 0;
 	private boolean lockInputForCrafting = false;
-	
-	public static enum Mode {
-		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0), CLEANING(30);
-		
-		private int time;
-		
-		private Mode(int time) {
-			this.time = time;
-		}
-		
-		public int getTime() {
-			return time;
-		}
-	}
-	
+
 	public TileEntityCauldron() {
 		collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65D, 1);
 		tank = new CauldronFluidTank(this);
 	}
-	
+
 	@Override
 	public void update() {
-		if (!world.isRemote) { 
+		if (!world.isRemote) {
 			if (world.getTotalWorldTime() % 5 == 0) {
 				handleHeatAndBoilingStatus();
 				handleItemCollisions();
@@ -78,7 +63,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			handleCraftingProgress();
 		}
 	}
-	
+
 	private void handleCraftingProgress() {
 		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || (getMode() != Mode.CRAFTING && getMode().getTime() > 0)) {
 			if (progress < getMode().getTime()) {
@@ -108,11 +93,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 						syncToClient();
 					}
 				}
-				
+
 			}
 		}
 	}
-	
+
 	private void spawnCraftingResultAndUnlock(CauldronCraftingRecipe stack) {
 		EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack.getResult());
 		world.spawnEntity(result);
@@ -124,7 +109,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		progress = 0;
 		markDirty();
 	}
-	
+
 	private void handleItemCollisions() {
 		if (isBoiling() && !lockInputForCrafting) {
 			ItemStack stack = gatherNextItemFromTop();
@@ -133,7 +118,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
+
 	private void reset() {
 		tank.setFluid(null);
 		tank.setCanDrain(true);
@@ -146,7 +131,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		markDirty();
 		syncToClient();
 	}
-	
 
 	private void processNextItem(ItemStack stack) {
 		boolean flag = ingredients.isEmpty();
@@ -162,7 +146,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			markDirty();
 			return;
 		}
-		
+
 		switch (getMode()) {
 			case IDLE: {
 				setMode(getModeForFirstItem(stack));
@@ -220,7 +204,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		markDirty();
 	}
-	
+
 	private void handleExplosivesInLava(ItemStack stack) {
 		if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
 			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 1, true); // FIXME
@@ -230,7 +214,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 3, true); // FIXME + TODO Make firework go off
 		}
 	}
-	
+
 	private void updateBrewColor() {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
@@ -241,15 +225,15 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		markDirty();
 		syncToClient();
 	}
-	
+
 	private ItemStack getSoup() {
 		int hunger = 0;
 		float saturation = 0;
 		float multiplier = 1;
 		float decay = 0.6f;
-		
+
 		long differentItems = ingredients.stream().map(is -> is.toString()).distinct().count();
-		
+
 		for (ItemStack i : ingredients) {
 			CauldronFoodValue next = CauldronRegistry.getCauldronFoodValue(i);
 			if (next == null) {
@@ -261,7 +245,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			saturation += (next.saturation * multiplier);
 			multiplier *= decay;
 		}
-		
+
 		float bonus = differentItems / 4f;
 		hunger *= bonus;
 		saturation *= bonus;
@@ -272,7 +256,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		stew.setTagCompound(nbt);
 		return stew;
 	}
-	
+
 	private void checkForCraftingRecipe() {
 		FluidStack fs = tank.getFluid();
 		Optional<CauldronCraftingRecipe> result = CauldronRegistry.getCraftingResult(fs, new ArrayList<>(ingredients));
@@ -280,7 +264,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			lockInputForCrafting = true;
 		}
 	}
-	
+
 	private Mode getModeForFirstItem(ItemStack stack) {
 		if (tank.getInnerFluid() == FluidRegistry.LAVA) {
 			return Mode.LAVA;
@@ -295,7 +279,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		currentColorRGB = 0x5cb85c;
 		return Mode.CRAFTING;
 	}
-	
+
 	private ItemStack gatherNextItemFromTop() {
 		List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, collectionZone.offset(getPos()));
 		if (list.isEmpty()) {
@@ -308,7 +292,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		return next;
 	}
-	
+
 	private void handleHeatAndBoilingStatus() {
 		if (!tank.isEmpty()) {
 			if (tank.getInnerFluid().getTemperature() > 1000) { // Hot liquids are hot
@@ -338,7 +322,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
+
 	@Override
 	void readAllModDataNBT(NBTTagCompound tag) {
 		mode = Mode.values()[tag.getInteger("mode")];
@@ -350,7 +334,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		ingredients.clear();
 		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
 	}
-	
+
 	@Override
 	void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("mode", mode.ordinal());
@@ -361,7 +345,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
 		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), ingredients));
 	}
-	
+
 	public boolean onCauldronRightClick(EntityPlayer playerIn, EnumHand hand, ItemStack heldItem) {
 		if (!playerIn.world.isRemote) {
 			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
@@ -396,7 +380,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		return true;
 	}
-	
+
 	private void createAndGiveBrew(EntityPlayer playerIn, ItemStack stack) {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
@@ -436,7 +420,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
+
 	public int getColorRGB() {
 		if (getMode() == Mode.FAILING) {
 			return 0xb1d626; // Vomit color basically
@@ -449,29 +433,29 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		return currentColorRGB;
 	}
-	
+
 	public boolean hasIngredients() {
 		return !ingredients.isEmpty();
 	}
-	
+
 	public Optional<FluidStack> getFluid() {
 		return tank.isEmpty() ? Optional.empty() : Optional.ofNullable(tank.getFluid());
 	}
-	
+
 	private void blendColor(int newColorRGB, float ratio) {
 		currentColorRGB = ColorHelper.blendColor(currentColorRGB, newColorRGB, ratio);
 		syncToClient();
 	}
-	
+
 	private boolean isAboveFlame() {
 		IBlockState below = world.getBlockState(this.pos.down());
 		return (below.getMaterial() == Material.FIRE || below.getMaterial() == Material.LAVA);
 	}
-	
+
 	public boolean isBoiling() {
 		return heat >= BOILING_POINT;
 	}
-	
+
 	public void onLiquidChange() {
 		if (tank.getFluidAmount() == 0) {
 			reset();
@@ -479,7 +463,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		markDirty();
 		syncToClient();
 	}
-	
+
 	@Override
 	void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
@@ -489,7 +473,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
 		tag.setInteger("mode", getMode().ordinal());
 	}
-	
+
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
 		tank.readFromNBT(tag.getCompoundTag("tank"));
@@ -502,7 +486,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		setMode(Mode.values()[tag.getInteger("mode")]);
 	}
-	
+
 	private void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
 		if (!player.inventory.addItemStackToInventory(toGive)) {
 			player.dropItem(toGive, false);
@@ -510,20 +494,34 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
 		}
 	}
-	
+
 	public CauldronFluidTank getTank() {
 		return tank;
 	}
-	
+
 	public Mode getMode() {
 		return mode;
 	}
-	
+
 	public void setMode(Mode mode) {
 		this.mode = mode;
 	}
-	
+
 	public int getProgress() {
 		return progress;
+	}
+
+	public static enum Mode {
+		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0), CLEANING(30);
+
+		private int time;
+
+		private Mode(int time) {
+			this.time = time;
+		}
+
+		public int getTime() {
+			return time;
+		}
 	}
 }

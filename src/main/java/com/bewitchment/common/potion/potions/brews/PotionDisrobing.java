@@ -1,7 +1,6 @@
 package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -9,11 +8,17 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 public class PotionDisrobing extends BrewMod {
-	
+
 	public PotionDisrobing() {
 		super("disrobing", true, 0xA52A2A, true, 0);
 	}
-	
+
+	private static void spawnItem(EntityLivingBase entity, ItemStack is) {
+		EntityItem ei = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, is);
+		ei.setPickupDelay(100);
+		entity.world.spawnEntity(ei);
+	}
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double mult) {
 		if (!entity.world.isRemote) {
@@ -38,11 +43,5 @@ public class PotionDisrobing extends BrewMod {
 			}
 		}
 	}
-	
-	private static void spawnItem(EntityLivingBase entity, ItemStack is) {
-		EntityItem ei = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, is);
-		ei.setPickupDelay(100);
-		entity.world.spawnEntity(ei);
-	}
-	
+
 }
