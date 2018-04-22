@@ -15,7 +15,7 @@ public class ModPotions {
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
-	public static Potion purification;
+	public static Potion purification, path_of_the_deep, prune_leaves;
 
 	public static PotionFrostbite freezing;
 
@@ -49,6 +49,8 @@ public class ModPotions {
 		infestation = new PotionInfestation();
 		ozymandias = new PotionOzymandias();
 		purification = new PotionPurification();
+		path_of_the_deep = new PotionPathOfTheDeep();
+		prune_leaves = new PotionPruneLeaves();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -56,7 +58,7 @@ public class ModPotions {
 				projectile_resistance, disrobing, ender_inhibition, extinguish_fires, //
 				fertilize, freezing, fireworld, grace, mending, flower_growth, //
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
-				purification
+				purification, path_of_the_deep, prune_leaves
 		);
 	}
 }
