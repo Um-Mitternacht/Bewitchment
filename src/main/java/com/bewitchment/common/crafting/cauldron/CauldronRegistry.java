@@ -229,6 +229,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
 		registerCombinedBrewEffect(ModPotions.path_of_the_deep, Ingredient.fromItem(ModItems.kelp));
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
+		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 	}
 
 	public static void postInit() {
