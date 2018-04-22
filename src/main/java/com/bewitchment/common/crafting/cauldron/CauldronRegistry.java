@@ -1,5 +1,7 @@
 package com.bewitchment.common.crafting.cauldron;
 
+import java.util.*;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -17,6 +19,7 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.BrewVanilla;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -31,8 +34,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import java.util.*;
 
 public class CauldronRegistry {
 
@@ -217,7 +218,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
 		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
-		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(Items.GOLDEN_APPLE));
+		registerCombinedBrewEffect(ModPotions.mending, Ingredient.fromItem(Items.GOLDEN_APPLE));
 		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(ModItems.silphium));
 		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(ModItems.seed_silphium));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.white_sage));
@@ -225,7 +226,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
-
+		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
 	}
 
 	public static void postInit() {

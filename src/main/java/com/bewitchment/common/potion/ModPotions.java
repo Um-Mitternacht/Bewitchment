@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.brews.*;
+
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -13,7 +14,8 @@ public class ModPotions {
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
-	public static Potion purification, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
+	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
+	public static Potion purification;
 
 	public static PotionFrostbite freezing;
 
@@ -38,7 +40,7 @@ public class ModPotions {
 		fireworld = new PotionFireWorld();
 		grace = new PotionGrace();
 		freezing = new PotionFrostbite();
-		purification = new PotionMending();
+		mending = new PotionMending();
 		flower_growth = new PotionGrowFlowers();
 		harvest = new PotionHarvest();
 		holy_water = new PotionHolyWater();
@@ -46,13 +48,15 @@ public class ModPotions {
 		outcasts_shame = new PotionOutcastsShame();
 		infestation = new PotionInfestation();
 		ozymandias = new PotionOzymandias();
+		purification = new PotionPurification();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
 				bane_arthropods, corruption, cursed_leaping, demons_bane, //
 				projectile_resistance, disrobing, ender_inhibition, extinguish_fires, //
-				fertilize, freezing, fireworld, grace, purification, flower_growth, //
-				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias
+				fertilize, freezing, fireworld, grace, mending, flower_growth, //
+				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
+				purification
 		);
 	}
 }
