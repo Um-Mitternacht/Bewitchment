@@ -9,7 +9,7 @@ public class PotionPathOfTheDeep extends BrewMod {
 	
 	public PotionPathOfTheDeep() {
 		super("path_of_the_deep", false, 0x59d2ff, false, 3 * 20 * 60);
-		setIconIndex(0, 1); // TODO
+		setIconIndex(0, 1);
 	}
 	
 	@Override
