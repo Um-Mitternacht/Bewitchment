@@ -153,7 +153,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.wormwood), 1, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
 		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f);
-		registerFood(new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt"), 2, 1);
+		registerFood(new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt"), 2, 1);
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
@@ -229,6 +229,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.path_of_the_deep, Ingredient.fromItem(ModItems.kelp));
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
+		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
 	}
 
 	public static void postInit() {
