@@ -91,7 +91,9 @@ repositories {
     maven {
      	name = "ModMaven"
     	url = "modmaven.k-4u.nl"
-    }     
+    maven {
+        url 'https://jitpack.io'	
+	}   
 }
 
 dependencies {
