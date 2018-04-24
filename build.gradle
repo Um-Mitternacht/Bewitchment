@@ -97,8 +97,10 @@ repositories {
     	url = "modmaven.k-4u.nl"
 	}
     maven {
-        url 'https://jitpack.io'	
-	}	
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+}	
 }
 
 dependencies {
