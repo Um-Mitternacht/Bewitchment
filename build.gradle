@@ -95,6 +95,10 @@ repositories {
     maven {
         url 'https://jitpack.io'	
 	}
+    ivy {
+        name = 'Thaumcraft 6'
+        artifactPattern 'https://www.dropbox.com/s/4sxx2g56f4sezx8/Thaumcraft-1.12.2-6.1.BETA10-deobf.jar?dl=1'
+    }	
 }
 
 dependencies {
