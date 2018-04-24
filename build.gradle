@@ -110,6 +110,7 @@ dependencies {
     compile 'com.leviathanstudio:CraftStudio:1.0.0.93-mc1.12-alpha:dev'
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 	compile 'com.github.Azanor:thaumcraft-api:master-SNAPSHOT'
+	compile 'thaumcraft:Thaumcraft-1.12.2:release:universal'
 }
 
 tasks.withType(JavaCompile) {
