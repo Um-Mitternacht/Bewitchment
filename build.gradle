@@ -92,9 +92,6 @@ repositories {
      	name = "ModMaven"
     	url = "modmaven.k-4u.nl"
     }     
-	dependencies {
-	        compile 'com.github.Azanor:thaumcraft-api:-SNAPSHOT'
-	}
 }
 
 dependencies {
@@ -103,6 +100,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     compile 'com.leviathanstudio:CraftStudio:1.0.0.93-mc1.12-alpha:dev'
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+	compile 'com.github.Azanor:thaumcraft-api:-SNAPSHOT'
 }
 
 tasks.withType(JavaCompile) {
