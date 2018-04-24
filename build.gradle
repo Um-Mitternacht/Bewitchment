@@ -12,13 +12,13 @@ buildscript {
         maven {
             name = "gradle"
             url "https://plugins.gradle.org/m2/"
-        }		
-		maven {
-			name = "CurseForge"
-			url = "https://minecraft.curseforge.com/api/maven/"		
-		}
-	}	
-	
+        }
+        maven {
+            name = "CurseForge"
+            url = "https://minecraft.curseforge.com/api/maven/"
+        }
+    }
+
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.7'
@@ -52,8 +52,8 @@ minecraft {
     version = mc_forge_version
     mappings = mcp_mappings
     runDir = "run"
-	
-    replace '@FINGERPRINT@', project.findProperty('signSHA1')	
+
+    replace '@FINGERPRINT@', project.findProperty('signSHA1')
 }
 
 processResources {
@@ -62,7 +62,7 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
@@ -73,7 +73,7 @@ processResources {
 repositories {
     flatDir {
         dirs 'libs'
-    }	
+    }
     maven {
         name = "Mobius Repo"
         url = "http://tehnut.info/maven"
@@ -81,23 +81,23 @@ repositories {
     maven {
         name = "leviathan"
         url = "http://maven.leviathan-studio.com/artifactory/leviathan/"
-    }	
+    }
     maven {
         name = "JEI"
         url = "http://dvs1.progwml6.com/files/maven"
     }
-    maven { 
-    	url = "https://minecraft.curseforge.com/api/maven/"
-    }    
-     maven {
-     	name = "ModMaven"
-    	url = "modmaven.k-4u.nl"
-    }    
     maven {
-     	name = "ModMaven"
-    	url = "modmaven.k-4u.nl"
-	}
-}	
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
+    maven {
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
+}
 
 dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
@@ -115,7 +115,7 @@ tasks.withType(JavaCompile) {
 }
 
 runClient {
-    if(project.hasProperty("mc_username") && project.hasProperty("mc_password") ) {
+    if (project.hasProperty("mc_username") && project.hasProperty("mc_password")) {
         args "--username=${project.mc_username}"
         args "--password=${project.mc_password}"
     }
@@ -148,17 +148,17 @@ idea {
 }
 
 jar {
-	from sourceSets.main.output
-	from sourceSets.api.output
+    from sourceSets.main.output
+    from sourceSets.api.output
 }
 
 task apiJar(type: Jar) {
-	classifier = 'api'
-	from sourceSets.main.output //Save .class files
-	from sourceSets.main.allJava //Save corresponding .java files
-	include 'com/bewitchment/api/**/*' //Only include the api directory and subdirectory
+    classifier = 'api'
+    from sourceSets.main.output //Save .class files
+    from sourceSets.main.allJava //Save corresponding .java files
+    include 'com/bewitchment/api/**/*' //Only include the api directory and subdirectory
 }
 
 artifacts {
-	archives apiJar
+    archives apiJar
 }
