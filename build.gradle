@@ -13,10 +13,11 @@ buildscript {
             name = "gradle"
             url "https://plugins.gradle.org/m2/"
         }		
-        maven {
-			url "https://jitpack.io" 
-		}		
-    }
+		maven {
+			name = "CurseForge"
+			url = "https://minecraft.curseforge.com/api/maven/"		
+		}
+	}	
 	
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -101,15 +102,13 @@ repositories {
         url = "https://minecraft.curseforge.com/api/maven/"
     }
 }	
-}
 
 dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
-    deobfCompile "com.github.azanor:Baubles:${baubles_version}"
+    deobfCompile "baubles:Baubles:release:universal"
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     compile 'com.leviathanstudio:CraftStudio:1.0.0.93-mc1.12-alpha:dev'
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
-	compile 'com.github.Azanor:thaumcraft-api:master-SNAPSHOT'
 	compile 'thaumcraft:Thaumcraft-1.12.2:release:universal'
 }
 
