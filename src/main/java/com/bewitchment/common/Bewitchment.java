@@ -117,7 +117,7 @@ public class Bewitchment {
 		ModBrewModifiers.init();
 
 		logger.info("It's a fact, she is exactly that!");
-		logger.info("A harbinger of death from the world of bewitchment,");
+		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
 		logger.info("And her magic brings dismay!");
 

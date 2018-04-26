@@ -114,7 +114,7 @@ public class CauldronRegistry {
 		return Optional.empty();
 	}
 
-	public static void init() { // TODO tune values
+	public static void init() { // TODO: Tune values. Also call for oredicts where possible.
 		registerFood(Ingredient.fromItem(Items.APPLE), 4, 2.4f);
 		registerFood(Ingredient.fromItem(Items.BAKED_POTATO), 5, 6f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT), 1, 1.2f);
@@ -226,10 +226,11 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
 		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
-		registerCombinedBrewEffect(ModPotions.path_of_the_deep, Ingredient.fromItem(ModItems.kelp));
+		registerCombinedBrewEffect(ModPotions.path_of_the_deep, Ingredient.fromItem(ModItems.kelp)); // TODO: Call for modded kelp in usage here too
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
+		registerCombinedBrewEffect(ModPotions.salted_earth, Ingredient.fromItem(ModItems.salt)); // TODO: Call for modded salt in usage here too
 	}
 
 	public static void postInit() {

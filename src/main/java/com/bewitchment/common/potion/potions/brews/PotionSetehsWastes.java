@@ -29,12 +29,14 @@ public class PotionSetehsWastes extends BrewMod {
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
+		//int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
 
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
 
 		Iterable<MutableBlockPos> spots = BlockPos.getAllInBoxMutable(posI, posF);
 		for (BlockPos spot : spots) {
+			//boolean place = amplifier > 2 || world.rand.nextBoolean();
 			if (spot.distanceSq(pos) < 2 + box * box / 2) {
 				IBlockState state = world.getBlockState(spot);
 				Block block = state.getBlock();
