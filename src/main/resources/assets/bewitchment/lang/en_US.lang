@@ -592,6 +592,7 @@ achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 //JEI
 jei.category.rituals=Rituals
 jei.category.spinner=Thread Spinning
+jei.category.brewing=Brew Bottling
 jei.ritual.power.flat=%d Altar Power
 jei.ritual.power.tick=%d Altar Power Per Second
 
