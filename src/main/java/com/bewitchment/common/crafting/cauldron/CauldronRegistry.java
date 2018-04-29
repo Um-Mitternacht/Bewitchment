@@ -32,6 +32,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
@@ -114,8 +115,17 @@ public class CauldronRegistry {
 		}
 		return Optional.empty();
 	}
+	
+	public static Optional<Ingredient> getIngredientFromBrew(IBrewEffect effect) {
+		return BREW_INGREDIENT_REGISTRY.keySet().parallelStream()
+			.filter(ing -> BREW_INGREDIENT_REGISTRY.get(ing)==effect)
+			.findFirst();
+	}
 
 	public static void init() { // TODO: Tune values. Also call for oredicts where possible.
+		
+		Ingredient salt = new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt");
+		
 		registerFood(Ingredient.fromItem(Items.APPLE), 4, 2.4f);
 		registerFood(Ingredient.fromItem(Items.BAKED_POTATO), 5, 6f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT), 1, 1.2f);
@@ -154,7 +164,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.wormwood), 1, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
 		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f);
-		registerFood(new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt"), 2, 1);
+		registerFood(salt, 2, 1);
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
@@ -227,11 +237,11 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
 		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
-		registerCombinedBrewEffect(ModPotions.path_of_the_deep, Ingredient.fromItem(ModItems.kelp)); // TODO: Call for modded kelp in usage here too
+		registerCombinedBrewEffect(ModPotions.path_of_the_deep, new OreIngredient("kelp"));
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
-		registerCombinedBrewEffect(ModPotions.salted_earth, Ingredient.fromItem(ModItems.salt)); // TODO: Call for modded salt in usage here too
+		registerCombinedBrewEffect(ModPotions.salted_earth, salt);
 		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
 	}
 
