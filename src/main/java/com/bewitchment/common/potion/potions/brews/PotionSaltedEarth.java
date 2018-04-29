@@ -3,14 +3,14 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
+
+import net.minecraft.block.BlockDirt;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class PotionSaltedEarth extends BrewMod {
 
@@ -25,13 +25,15 @@ public class PotionSaltedEarth extends BrewMod {
 
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
-
+		
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
-			IBlockState state = world.getBlockState(spot);
-			boolean place = amplifier > 2 || world.rand.nextBoolean();
-			if (place && state.getBlock() == Blocks.FARMLAND && world.isAirBlock(spot.up())) {
-				world.setBlockState(spot, Blocks.DIRT.getStateFromMeta(1), 3);
+			if (spot.distanceSq(pos) < 2 + box * box / 2) {
+				IBlockState state = world.getBlockState(spot);
+				boolean place = world.rand.nextInt(7) <= amplifier;
+				if (place && state.getBlock() == Blocks.FARMLAND) {
+					world.setBlockState(spot, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+				}
 			}
 		}
 	}

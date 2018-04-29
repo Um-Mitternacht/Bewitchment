@@ -1,12 +1,13 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedSandstone;
-import net.minecraft.block.BlockSandStone;
-import net.minecraft.block.BlockStairs;
+
+import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -14,9 +15,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class PotionSetehsWastes extends BrewMod {
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
@@ -29,15 +27,15 @@ public class PotionSetehsWastes extends BrewMod {
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 2 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
-		//int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
+		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
 
 		BlockPos posI = pos.add(box, box / 2, box);
 		BlockPos posF = pos.add(-box, -box / 2, -box);
 
 		Iterable<MutableBlockPos> spots = BlockPos.getAllInBoxMutable(posI, posF);
 		for (BlockPos spot : spots) {
-			//boolean place = amplifier > 2 || world.rand.nextBoolean();
-			if (spot.distanceSq(pos) < 2 + box * box / 2) {
+			boolean place = world.rand.nextInt(7) <= amplifier;
+			if (place && spot.distanceSq(pos) < 2 + box * box / 2) {
 				IBlockState state = world.getBlockState(spot);
 				Block block = state.getBlock();
 				if (block == Blocks.SANDSTONE_STAIRS) {
