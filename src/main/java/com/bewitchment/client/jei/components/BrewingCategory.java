@@ -51,7 +51,7 @@ public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 	public void setRecipe(IRecipeLayout l, BrewingWrapper w, IIngredients ingredients) {
 		IGuiItemStackGroup is = l.getItemStacks();
 		
-		is.init(2, true, 45, 0);
+		is.init(2, true, 18, 19);
 		
 		if (l.getFocus() != null) {
 			if (l.getFocus().getValue() instanceof ItemStack && l.getFocus().getMode() == Mode.OUTPUT) {

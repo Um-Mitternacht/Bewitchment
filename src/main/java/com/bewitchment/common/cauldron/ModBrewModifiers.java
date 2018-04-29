@@ -1,20 +1,20 @@
 package com.bewitchment.common.cauldron;
 
+import java.util.Arrays;
+
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.cauldron.DefaultModifiers;
-import com.bewitchment.api.cauldron.IBrewEffect;
-import com.bewitchment.api.cauldron.IBrewModifier;
-import com.bewitchment.api.cauldron.IBrewModifierList;
+import com.bewitchment.api.cauldron.*;
 import com.bewitchment.common.core.helper.ColorHelper;
-import com.bewitchment.common.crafting.IngredientOr;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityCauldron;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.oredict.DyeUtils;
 import net.minecraftforge.oredict.OreIngredient;
 
@@ -109,7 +109,8 @@ public class ModBrewModifiers {
 		DefaultModifiers.COLOR = new IBrewModifier() {
 
 			private final ResourceLocation name = new ResourceLocation(LibMod.MOD_ID, "color");
-			private final Ingredient ingredient = new IngredientOr(Ingredient.fromItem(Items.DYE), new OreIngredient("dye")); // TODO add the dye tag to items
+			private final Ingredient ingredient = new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Items.DYE), new OreIngredient("dye"))) {
+			}; // TODO add the dye tag to items
 
 			@Override
 			public IBrewModifier setRegistryName(ResourceLocation name) {
