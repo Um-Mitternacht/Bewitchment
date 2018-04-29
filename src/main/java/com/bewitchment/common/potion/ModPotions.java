@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.brews.*;
+
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -14,7 +15,7 @@ public class ModPotions {
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
-	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth;
+	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor;
 
 	public static PotionFrostbite freezing;
 
@@ -53,6 +54,7 @@ public class ModPotions {
 		rotting = new PotionRotting();
 		setehs_wastes = new PotionSetehsWastes();
 		salted_earth = new PotionSaltedEarth();
+		shell_armor = new PotionShellArmor();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -61,7 +63,7 @@ public class ModPotions {
 				fertilize, freezing, fireworld, grace, mending, flower_growth, //
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
-				salted_earth
+				salted_earth, shell_armor
 		);
 	}
 }

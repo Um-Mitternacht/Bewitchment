@@ -1,5 +1,7 @@
 package com.bewitchment.common.crafting.cauldron;
 
+import java.util.*;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -17,6 +19,7 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.BrewVanilla;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -31,8 +34,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import java.util.*;
 
 public class CauldronRegistry {
 
@@ -231,6 +232,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
 		registerCombinedBrewEffect(ModPotions.salted_earth, Ingredient.fromItem(ModItems.salt)); // TODO: Call for modded salt in usage here too
+		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
 	}
 
 	public static void postInit() {
