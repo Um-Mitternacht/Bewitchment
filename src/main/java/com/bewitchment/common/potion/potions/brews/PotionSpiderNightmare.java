@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.init.Blocks;
@@ -13,15 +12,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class PotionSpiderNightmare extends BrewMod {
-	
+
 	public PotionSpiderNightmare() {
 		super("spider_nightmare", true, 0x353839, false, 20 * 60 * 3);
 		this.setIconIndex(5, 1);
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		
+
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
@@ -30,14 +29,14 @@ public class PotionSpiderNightmare extends BrewMod {
 				world.setBlockState(pos1, Blocks.WEB.getDefaultState());
 			}
 		});
-		
+
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return duration % (20 + 60 * Math.max(0, 5 - amplifier)) == 0; // The higher the amplifier, the higher frequency of spawns
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
 		World world = entity.world;
@@ -56,5 +55,5 @@ public class PotionSpiderNightmare extends BrewMod {
 		}
 	}
 
-	
+
 }

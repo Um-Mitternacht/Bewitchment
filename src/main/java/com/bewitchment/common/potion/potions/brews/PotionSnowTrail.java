@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,21 +13,21 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class PotionSnowTrail extends BrewMod {
-	
+
 	public PotionSnowTrail() {
 		super("snow_trail", false, 0xccfff9, false, 3 * 60 * 20);
 		this.setIconIndex(4, 1);
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
-		
+
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
-		
+
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);
@@ -47,12 +46,12 @@ public class PotionSnowTrail extends BrewMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean isReady(int duration, int amplifier) {
 		return (duration % Math.max(1, 10 - 2 * amplifier)) == 0;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
 		for (int l = 0; l < 4; ++l) {
@@ -66,5 +65,5 @@ public class PotionSnowTrail extends BrewMod {
 			}
 		}
 	}
-	
+
 }

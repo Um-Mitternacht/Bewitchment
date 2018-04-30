@@ -2,7 +2,6 @@ package com.bewitchment.common.potion.potions.brews;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -21,14 +20,14 @@ public class PotionSinking extends BrewMod {
 	public boolean isReady(int duration, int amplifier) {
 		return true;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
 		if (entity.isInWater()) {
 			entity.motionY += -0.008d * Math.sqrt(1 + amplifier);
 		}
 	}
-	
+
 	public Potion getPotion() {
 		if (freezing != null) {
 			Bewitchment.logger.info("Extra Alchemy spotted! The sinking potion entity effect will be \"borrowed\" from it");
