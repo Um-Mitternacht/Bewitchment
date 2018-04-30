@@ -17,7 +17,7 @@ public class PotionSnowTrail extends BrewMod {
 	
 	public PotionSnowTrail() {
 		super("snow_trail", false, 0xccfff9, false, 3 * 60 * 20);
-		this.setIconIndex(1, 4);
+		this.setIconIndex(4, 1);
 	}
 	
 	@Override

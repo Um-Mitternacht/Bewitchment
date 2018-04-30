@@ -3,6 +3,7 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -14,6 +15,7 @@ public class PotionGrowFlowers extends BrewMod {
 
 	public PotionGrowFlowers() {
 		super("grow_flowers", false, 0xff63ff, false, 600);
+		this.setIconIndex(7, 0);
 	}
 
 	@Override
