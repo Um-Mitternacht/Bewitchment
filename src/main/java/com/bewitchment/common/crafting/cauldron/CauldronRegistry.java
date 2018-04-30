@@ -162,7 +162,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.wormwood), 1, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
 		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f); //Todo: Honey oredicts.
-		registerFood(salt, 2, 1);
+		registerFood(salt, 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
