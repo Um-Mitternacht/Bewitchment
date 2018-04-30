@@ -1,7 +1,5 @@
 package com.bewitchment.client.jei;
 
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.jei.components.*;
@@ -11,13 +9,14 @@ import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.spinning.SpinningThreadRecipe;
-
 import mezz.jei.api.*;
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.item.ItemStack;
+
+import java.util.stream.Collectors;
 
 @JEIPlugin
 public class BewitchmentJEIPlugin implements IModPlugin {
@@ -47,17 +46,17 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.handleRecipes(SpinningThreadRecipe.class, i -> new SpinnerWrapper(i), SpinnerCategory.UID);
 		registry.addRecipes(SpinningThreadRecipe.REGISTRY.getValuesCollection(), SpinnerCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.thread_spinner), SpinnerCategory.UID);
-		
+
 		registry.handleRecipes(IBrewEffect.class, BrewingWrapper::new, BrewingCategory.UID);
 		registry.addRecipes(CauldronRegistry.BREW_POTION_MAP.keySet(), BrewingCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.cauldron), BrewingCategory.UID);
 	}
-	
+
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
-		
+
 		ISubtypeInterpreter brewDataInterpreter = new BrewDataInterpreter();
-		
+
 		subtypeRegistry.registerSubtypeInterpreter(ModItems.brew_phial_drink, brewDataInterpreter);
 		subtypeRegistry.registerSubtypeInterpreter(ModItems.brew_phial_linger, brewDataInterpreter);
 		subtypeRegistry.registerSubtypeInterpreter(ModItems.brew_phial_splash, brewDataInterpreter);
@@ -65,7 +64,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	}
 
 	private static final class BrewDataInterpreter implements ISubtypeInterpreter {
-		
+
 		@Override
 		public String apply(ItemStack itemStack) {
 			BrewData data = BrewData.fromStack(itemStack);

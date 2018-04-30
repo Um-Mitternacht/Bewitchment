@@ -1,7 +1,5 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import java.util.*;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -19,7 +17,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.BrewVanilla;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -35,6 +32,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import java.util.*;
 
 public class CauldronRegistry {
 
@@ -115,17 +114,17 @@ public class CauldronRegistry {
 		}
 		return Optional.empty();
 	}
-	
+
 	public static Optional<Ingredient> getIngredientFromBrew(IBrewEffect effect) {
 		return BREW_INGREDIENT_REGISTRY.keySet().parallelStream()
-			.filter(ing -> BREW_INGREDIENT_REGISTRY.get(ing)==effect)
-			.findFirst();
+				.filter(ing -> BREW_INGREDIENT_REGISTRY.get(ing) == effect)
+				.findFirst();
 	}
 
-	public static void init() { // TODO: Tune values. Also call for oredicts where possible.
-		
+	public static void init() { // TODO: Tune values. Also call for oredicts where possible. Such things have been marked with todos.
+
 		Ingredient salt = new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt");
-		
+
 		registerFood(Ingredient.fromItem(Items.APPLE), 4, 2.4f);
 		registerFood(Ingredient.fromItem(Items.BAKED_POTATO), 5, 6f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT), 1, 1.2f);
@@ -151,19 +150,19 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.PUMPKIN_SEEDS), 2, 1.3f);
 		registerFood(Ingredient.fromItem(Items.MELON_SEEDS), 2, 1.2f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT_SEEDS), 2, 1.1f);
-		registerFood(Ingredient.fromItem(Items.EGG), 2, 1.2f);
+		registerFood(Ingredient.fromItem(Items.EGG), 2, 1.2f); //Todo: Egg oredicts
 		registerFood(Ingredient.fromItem(Items.SUGAR), 1, 0.5f);
-		registerFood(Ingredient.fromItem(ModItems.garlic), 2, 0.8f);
+		registerFood(Ingredient.fromItem(ModItems.garlic), 2, 0.8f); //Todo: Garlic oredicts.
 		registerFood(Ingredient.fromItem(ModItems.silphium), 3, 1.3f);
-		registerFood(Ingredient.fromItem(ModItems.kelp), 4, 3.3f);
+		registerFood(Ingredient.fromItem(ModItems.kelp), 4, 3.3f); //Todo: Kelp/Seaweed oredicts
 		registerFood(Ingredient.fromItem(ModItems.salt), 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.mint), 1, 0.7f);
 		registerFood(Ingredient.fromItem(ModItems.tulsi), 1, 0.7f);
-		registerFood(Ingredient.fromItem(ModItems.ginger), 3, 0.9f);
+		registerFood(Ingredient.fromItem(ModItems.ginger), 3, 0.9f); //Todo: Ginger oredicts.
 		registerFood(Ingredient.fromItem(ModItems.lavender), 1, 0.6f);
 		registerFood(Ingredient.fromItem(ModItems.wormwood), 1, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
-		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f);
+		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f); //Todo: Honey oredicts.
 		registerFood(salt, 2, 1);
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
@@ -238,11 +237,13 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
 		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
 		registerCombinedBrewEffect(ModPotions.path_of_the_deep, new OreIngredient("kelp"));
+		registerCombinedBrewEffect(ModPotions.path_of_the_deep, new OreIngredient("cropSeaweed"));
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
 		registerCombinedBrewEffect(ModPotions.salted_earth, salt);
 		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
+		registerCombinedBrewEffect(ModPotions.till_land, Ingredient.fromItem(Item.getItemFromBlock(Blocks.DIRT))); //Todo: While this won't need a gemstone, make usage of gemstone powders in some brews. They need localization, too.
 	}
 
 	public static void postInit() {

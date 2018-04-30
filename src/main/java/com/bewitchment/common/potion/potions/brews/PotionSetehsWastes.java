@@ -1,13 +1,12 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRedSandstone;
+import net.minecraft.block.BlockSandStone;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -15,6 +14,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PotionSetehsWastes extends BrewMod {
 	private final Map<Block, IBlockState> stateMap = new HashMap<>();
