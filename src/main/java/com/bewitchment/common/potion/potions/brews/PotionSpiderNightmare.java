@@ -46,7 +46,8 @@ public class PotionSpiderNightmare extends BrewMod {
 			spider.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			world.spawnEntity(spider);
 			if (entity.getRNG().nextInt(Math.max(1, 7 - amplifier)) == 0) { // The higher the amplifier, the higher the chance of decreasing the potion level
-				PotionEffect pe = entity.removeActivePotionEffect(this);
+				PotionEffect pe = new PotionEffect(entity.getActivePotionEffect(this));
+				entity.removePotionEffect(this);
 				if (amplifier > 0) {
 					entity.addPotionEffect(new PotionEffect(this, pe.getDuration(), amplifier - 1, pe.getIsAmbient(), pe.doesShowParticles()));
 				}
