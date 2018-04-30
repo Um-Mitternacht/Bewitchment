@@ -247,6 +247,7 @@ public class CauldronRegistry {
 
 	public static void postInit() {
 		BewitchmentAPI.getAPI().registerBrewEffect(ModPotions.freezing, ModPotions.freezing.getPotion(), Ingredient.fromItem(Items.SNOWBALL));
+		BewitchmentAPI.getAPI().registerBrewEffect(ModPotions.sinking, ModPotions.sinking.getPotion(), Ingredient.fromItem(Items.IRON_NUGGET));
 	}
 
 	private static void registerVanillaBrewEffect(Potion potion, Ingredient ingredient) {
