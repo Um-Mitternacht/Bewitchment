@@ -3,6 +3,7 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -27,7 +28,7 @@ public class PotionTillLand extends BrewMod {
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);
-			boolean place = amplifier > 2 || world.rand.nextBoolean();
+			boolean place = world.rand.nextInt(6) <= amplifier;
 			if (place && state.getBlock() == Blocks.GRASS && world.isAirBlock(spot.up())) {
 				world.setBlockState(spot, Blocks.FARMLAND.getDefaultState(), 3);
 			}
