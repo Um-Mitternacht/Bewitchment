@@ -244,6 +244,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
 		registerCombinedBrewEffect(ModPotions.till_land, Ingredient.fromItem(Item.getItemFromBlock(Blocks.DIRT))); //Todo: While this won't need a gemstone, make usage of gemstone powders in some brews. They need localization, too.
 		registerCombinedBrewEffect(ModPotions.snow_trail, Ingredient.fromItem(Item.getItemFromBlock(Blocks.PACKED_ICE)));
+		registerCombinedBrewEffect(ModPotions.spider_nightmare, Ingredient.fromItem(Item.getItemFromBlock(Blocks.WEB)));
 	}
 
 	public static void postInit() {
