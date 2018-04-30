@@ -15,7 +15,8 @@ public class ModPotions {
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
-	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor, till_land;
+	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor;
+	public static Potion till_land, snow_trail;
 
 	public static PotionFrostbite freezing;
 	public static PotionSinking sinking;
@@ -58,6 +59,7 @@ public class ModPotions {
 		shell_armor = new PotionShellArmor();
 		till_land = new PotionTillLand();
 		sinking = new PotionSinking();
+		snow_trail = new PotionSnowTrail();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -66,7 +68,7 @@ public class ModPotions {
 				fertilize, freezing, fireworld, grace, mending, flower_growth, //
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
-				salted_earth, shell_armor, till_land, sinking
+				salted_earth, shell_armor, till_land, sinking, snow_trail
 		);
 	}
 }

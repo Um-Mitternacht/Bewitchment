@@ -201,7 +201,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.HUNGER, Ingredient.fromItem(Items.ROTTEN_FLESH), 600);
 		registerVanillaBrewEffect(MobEffects.INSTANT_DAMAGE, Ingredient.fromItem(Items.FERMENTED_SPIDER_EYE));
 		registerVanillaBrewEffect(MobEffects.INSTANT_HEALTH, Ingredient.fromItem(Items.SPECKLED_MELON));
-		registerVanillaBrewEffect(MobEffects.INVISIBILITY, Ingredient.fromItem(ModItems.mint));
+		registerVanillaBrewEffect(MobEffects.INVISIBILITY, Ingredient.fromItem(ModItems.mint)); // FIXME ingredient collision with extinguish_fire
 		registerVanillaBrewEffect(MobEffects.JUMP_BOOST, Ingredient.fromItem(ModItems.equine_tail));
 		registerVanillaBrewEffect(MobEffects.NIGHT_VISION, Ingredient.fromItem(Items.GOLDEN_CARROT));
 		registerVanillaBrewEffect(MobEffects.POISON, Ingredient.fromItem(Items.SPIDER_EYE));
@@ -243,6 +243,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.salted_earth, salt);
 		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
 		registerCombinedBrewEffect(ModPotions.till_land, Ingredient.fromItem(Item.getItemFromBlock(Blocks.DIRT))); //Todo: While this won't need a gemstone, make usage of gemstone powders in some brews. They need localization, too.
+		registerCombinedBrewEffect(ModPotions.snow_trail, Ingredient.fromItem(Item.getItemFromBlock(Blocks.PACKED_ICE)));
 	}
 
 	public static void postInit() {
