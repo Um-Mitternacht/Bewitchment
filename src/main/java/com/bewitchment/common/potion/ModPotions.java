@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.brews.*;
+
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -15,7 +16,7 @@ public class ModPotions {
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
 	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor;
-	public static Potion till_land, snow_trail, spider_nightmare;
+	public static Potion till_land, snow_trail, spider_nightmare, volatility;
 
 	public static PotionFrostbite freezing;
 	public static PotionSinking sinking;
@@ -60,6 +61,7 @@ public class ModPotions {
 		sinking = new PotionSinking();
 		snow_trail = new PotionSnowTrail();
 		spider_nightmare = new PotionSpiderNightmare();
+		volatility = new PotionVolatility();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -68,7 +70,8 @@ public class ModPotions {
 				fertilize, freezing, fireworld, grace, mending, flower_growth, //
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
-				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare
+				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare, //
+				volatility
 		);
 	}
 }
