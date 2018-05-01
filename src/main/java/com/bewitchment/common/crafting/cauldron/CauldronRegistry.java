@@ -201,7 +201,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.HUNGER, Ingredient.fromItem(Items.ROTTEN_FLESH), 600);
 		registerVanillaBrewEffect(MobEffects.INSTANT_DAMAGE, Ingredient.fromItem(Items.FERMENTED_SPIDER_EYE));
 		registerVanillaBrewEffect(MobEffects.INSTANT_HEALTH, Ingredient.fromItem(Items.SPECKLED_MELON));
-		registerVanillaBrewEffect(MobEffects.INVISIBILITY, Ingredient.fromItem(ModItems.mint)); // FIXME ingredient collision with extinguish_fire
+		registerVanillaBrewEffect(MobEffects.INVISIBILITY, Ingredient.fromItem(Item.getItemFromBlock(Blocks.GLASS)));
 		registerVanillaBrewEffect(MobEffects.JUMP_BOOST, Ingredient.fromItem(ModItems.equine_tail));
 		registerVanillaBrewEffect(MobEffects.NIGHT_VISION, Ingredient.fromItem(Items.GOLDEN_CARROT));
 		registerVanillaBrewEffect(MobEffects.POISON, Ingredient.fromItem(Items.SPIDER_EYE));
