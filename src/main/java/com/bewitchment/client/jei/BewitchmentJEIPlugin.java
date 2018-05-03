@@ -1,7 +1,5 @@
 package com.bewitchment.client.jei;
 
-import java.util.stream.Collectors;
-
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.ritual.EnumGlyphType;
@@ -12,13 +10,14 @@ import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.spinning.SpinningThreadRecipe;
-
 import mezz.jei.api.*;
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.item.ItemStack;
+
+import java.util.stream.Collectors;
 
 @JEIPlugin
 public class BewitchmentJEIPlugin implements IModPlugin {
@@ -53,7 +52,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.handleRecipes(IBrewEffect.class, BrewingWrapper::new, BrewingCategory.UID);
 		registry.addRecipes(CauldronRegistry.BREW_POTION_MAP.keySet(), BrewingCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.cauldron), BrewingCategory.UID);
-		
+
 		registry.handleRecipes(IBrewModifier.class, BrewModifierWrapper::new, BrewModifierCategory.UID);
 		registry.addRecipes(CauldronRegistry.BREW_MODIFIERS.getValuesCollection(), BrewModifierCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.cauldron), BrewModifierCategory.UID);

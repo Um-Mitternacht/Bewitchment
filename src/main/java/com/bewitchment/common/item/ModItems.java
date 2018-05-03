@@ -353,6 +353,7 @@ public final class ModItems {
 		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.silver_ingot));
 		OreDictionary.registerOre("honeyDrop", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("dropHoney", new ItemStack(ModItems.honey));
+		OreDictionary.registerOre("foodHoneydrop", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("listAllsugar", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("materialWax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("materialBeeswax", new ItemStack(ModItems.wax));

@@ -48,6 +48,7 @@ public class PotionFireWorld extends BrewMod {
 		stateMap.put(Blocks.FARMLAND, Blocks.SOUL_SAND.getDefaultState());
 		stateMap.put(Blocks.DIRT, Blocks.NETHERRACK.getDefaultState());
 		stateMap.put(Blocks.GRASS, Blocks.NETHERRACK.getDefaultState());
+		stateMap.put(Blocks.IRON_BLOCK, ModBlocks.nethersteel.getDefaultState());
 		stateMap.put(Blocks.GLASS_PANE, Blocks.STAINED_GLASS_PANE.getDefaultState().withProperty(BlockStainedGlassPane.COLOR, EnumDyeColor.RED));
 		stateMap.put(Blocks.STAINED_GLASS_PANE, Blocks.STAINED_GLASS_PANE.getDefaultState().withProperty(BlockStainedGlassPane.COLOR, EnumDyeColor.RED));
 		stateMap.put(Blocks.HARDENED_CLAY, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED));

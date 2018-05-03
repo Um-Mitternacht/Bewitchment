@@ -1,14 +1,14 @@
 package com.bewitchment.common.cauldron;
 
-import java.util.Arrays;
-
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.cauldron.*;
+import com.bewitchment.api.cauldron.DefaultModifiers;
+import com.bewitchment.api.cauldron.IBrewEffect;
+import com.bewitchment.api.cauldron.IBrewModifier;
+import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityCauldron;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -17,6 +17,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.oredict.DyeUtils;
 import net.minecraftforge.oredict.OreIngredient;
+
+import java.util.Arrays;
 
 public class ModBrewModifiers {
 

@@ -1,7 +1,5 @@
 package com.bewitchment.common.crafting.cauldron;
 
-import java.util.*;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -19,7 +17,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.BrewVanilla;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -34,6 +31,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import java.util.*;
 
 public class CauldronRegistry {
 
@@ -150,19 +149,19 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.PUMPKIN_SEEDS), 2, 1.3f);
 		registerFood(Ingredient.fromItem(Items.MELON_SEEDS), 2, 1.2f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT_SEEDS), 2, 1.1f);
-		registerFood(Ingredient.fromItem(Items.EGG), 2, 1.2f); //Todo: Egg oredicts
+		registerFood(new IngredientMultiOreDict("egg", "foodSimpleEgg", "ingredientEgg", "listAllegg", "bakingEgg"), 2, 1.2f);
 		registerFood(Ingredient.fromItem(Items.SUGAR), 1, 0.5f);
-		registerFood(Ingredient.fromItem(ModItems.garlic), 2, 0.8f); //Todo: Garlic oredicts.
+		registerFood(new IngredientMultiOreDict("cropGarlic"), 2, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.silphium), 3, 1.3f);
-		registerFood(Ingredient.fromItem(ModItems.kelp), 4, 3.3f); //Todo: Kelp/Seaweed oredicts
+		registerFood(new IngredientMultiOreDict("cropSeaweed", "cropKelp"), 4, 3.3f);
 		registerFood(Ingredient.fromItem(ModItems.salt), 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.mint), 1, 0.7f);
 		registerFood(Ingredient.fromItem(ModItems.tulsi), 1, 0.7f);
-		registerFood(Ingredient.fromItem(ModItems.ginger), 3, 0.9f); //Todo: Ginger oredicts.
+		registerFood(new IngredientMultiOreDict("cropGinger"), 3, 0.9f);
 		registerFood(Ingredient.fromItem(ModItems.lavender), 1, 0.6f);
 		registerFood(Ingredient.fromItem(ModItems.wormwood), 1, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.white_sage), 2, 0.9f);
-		registerFood(Ingredient.fromItem(ModItems.honey), 2, 1.3f); //Todo: Honey oredicts.
+		registerFood(new IngredientMultiOreDict("dropHoney", "honeyDrop", "foodHoneydrop"), 2, 1.3f);
 		registerFood(salt, 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);

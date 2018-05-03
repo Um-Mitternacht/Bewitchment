@@ -5,7 +5,6 @@ import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.core.helper.RomanNumber;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

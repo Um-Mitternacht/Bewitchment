@@ -1,8 +1,5 @@
 package com.bewitchment.common.item.magic.brew;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewEffect;
@@ -15,7 +12,6 @@ import com.bewitchment.common.core.helper.RomanNumber;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -28,6 +24,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ItemBrew extends ItemMod {
 
