@@ -368,7 +368,6 @@ public final class ModItems {
 		OreDictionary.registerOre("ingredientSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("pinchSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("portionSalt", new ItemStack(ModItems.salt));
-		OreDictionary.registerOre("lumpSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("cropLavender", new ItemStack(ModItems.lavender));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.lavender));
 		OreDictionary.registerOre("cropBelladonna", new ItemStack(ModItems.belladonna));
