@@ -3,6 +3,8 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
+
+import net.minecraft.block.BlockStoneBrick;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -30,14 +32,14 @@ public class PotionPulverize extends BrewMod {
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);
-			boolean place = amplifier > 2 || world.rand.nextInt(3) == 0;
+			boolean place = world.rand.nextInt(7) <= amplifier;
 			if (place) {
 				if (state.getBlock() == Blocks.GRAVEL) {
 					world.setBlockState(spot, Blocks.SAND.getDefaultState(), 3);
 				} else if (state.getBlock() == Blocks.STONE) {
 					world.setBlockState(spot, Blocks.GRAVEL.getDefaultState(), 3);
 				} else if (state.getBlock() == Blocks.STONEBRICK) {
-					world.setBlockState(spot, Blocks.STONEBRICK.getStateFromMeta(2), 3);
+					world.setBlockState(spot, Blocks.STONEBRICK.getDefaultState().withProperty(BlockStoneBrick.VARIANT, BlockStoneBrick.EnumType.CRACKED), 3);
 				}
 			}
 		}

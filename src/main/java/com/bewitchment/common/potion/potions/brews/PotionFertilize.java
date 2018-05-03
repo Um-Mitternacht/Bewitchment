@@ -4,11 +4,13 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.potion.BrewMod;
+
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,11 +41,18 @@ public class PotionFertilize extends BrewMod {
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);
-			if (world.rand.nextBoolean() && state.getBlock() instanceof IGrowable) {
-				IGrowable crop = (IGrowable) state.getBlock();
-				for (int i = 0; i < amplifier + 1; i++)
-					if (crop.canGrow(world, spot, state, false))
-						crop.grow(world, world.rand, spot, state);
+			if (world.rand.nextBoolean()) {
+				if (state.getBlock() instanceof IGrowable) {
+					IGrowable crop = (IGrowable) state.getBlock();
+					int steps = world.rand.nextInt(amplifier + 1);
+					for (int i = 0; i < steps + 1; i++) {
+						if (crop.canGrow(world, spot, state, false)) {
+							crop.grow(world, world.rand, spot, state);
+						}
+					}
+				} else if (state.getBlock() == Blocks.DIRT) {
+					world.setBlockState(spot, Blocks.GRASS.getDefaultState(), 3);
+				}
 			}
 		}
 	}
