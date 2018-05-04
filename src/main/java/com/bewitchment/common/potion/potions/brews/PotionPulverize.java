@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.BlockStoneBrick;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;

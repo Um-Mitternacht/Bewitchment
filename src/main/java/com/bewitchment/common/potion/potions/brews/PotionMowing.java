@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,15 @@ public class PotionMowing extends BrewMod {
 	public PotionMowing() {
 		super("mowing", false, 0x4d4a0d, true, 0);
 	}
-	
+
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
 		int box = 1 + modifiers.getLevel(DefaultModifiers.RADIUS).orElse(0);
 		int amplifier = modifiers.getLevel(DefaultModifiers.POWER).orElse(0);
-		
+
 		BlockPos posI = pos.add(box, box, box);
 		BlockPos posF = pos.add(-box, -box, -box);
-		
+
 		Iterable<BlockPos> spots = BlockPos.getAllInBox(posI, posF);
 		for (BlockPos spot : spots) {
 			IBlockState state = world.getBlockState(spot);

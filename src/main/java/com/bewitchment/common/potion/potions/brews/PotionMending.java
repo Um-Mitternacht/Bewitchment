@@ -1,15 +1,8 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.state.IBlockState;
@@ -27,6 +20,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class PotionMending extends BrewMod {
 
