@@ -117,6 +117,8 @@ public class Bewitchment {
 		ModBarrelRecipes.init();
 		ModRituals.init();
 
+		BewitchmentAspectRegistry.register();
+
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of bewitchment,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
