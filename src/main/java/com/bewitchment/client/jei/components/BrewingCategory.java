@@ -1,8 +1,9 @@
 package com.bewitchment.client.jei.components;
 
-import com.bewitchment.common.item.magic.brew.ItemBrew;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.brew.ItemBrewArrow;
 import com.bewitchment.common.lib.LibMod;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
@@ -55,8 +56,12 @@ public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 			if (l.getFocus().getValue() instanceof ItemStack && l.getFocus().getMode() == Mode.OUTPUT) {
 				if (((ItemStack) l.getFocus().getValue()).getItem() instanceof ItemBrewArrow) {
 					is.set(2, new ItemStack(Items.ARROW));
-				} else if (((ItemStack) l.getFocus().getValue()).getItem() instanceof ItemBrew) {
-					is.set(2, new ItemStack(Items.GLASS_BOTTLE)); // TODO change when bottles change
+				} else if (((ItemStack) l.getFocus().getValue()).getItem() == ModItems.brew_phial_drink) {
+					is.set(2, new ItemStack(ModItems.empty_brew_drink));
+				} else if (((ItemStack) l.getFocus().getValue()).getItem() == ModItems.brew_phial_linger) {
+					is.set(2, new ItemStack(ModItems.empty_brew_linger));
+				} else if (((ItemStack) l.getFocus().getValue()).getItem() == ModItems.brew_phial_splash) {
+					is.set(2, new ItemStack(ModItems.empty_brew_splash));
 				}
 			}
 

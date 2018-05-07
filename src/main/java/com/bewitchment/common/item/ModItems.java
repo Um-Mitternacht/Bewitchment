@@ -1,20 +1,13 @@
 package com.bewitchment.common.item;
 
-import baubles.api.BaubleType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.internalApi.CropRegistry;
 import com.bewitchment.common.item.baubles.*;
-import com.bewitchment.common.item.block.ItemBlockBarrel;
-import com.bewitchment.common.item.block.ItemBlockColor;
-import com.bewitchment.common.item.block.ItemBlockSapling;
-import com.bewitchment.common.item.block.ItemGemOre;
+import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.food.ItemFilledBowl;
-import com.bewitchment.common.item.food.ItemGrilledWatermelon;
-import com.bewitchment.common.item.food.ItemHeart;
-import com.bewitchment.common.item.food.ItemHoney;
+import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
@@ -25,13 +18,12 @@ import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
+import baubles.api.BaubleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -100,6 +92,9 @@ public final class ModItems {
 	public static final Item brew_phial_splash = PLACE_HOLDER;
 	public static final Item brew_phial_linger = PLACE_HOLDER;
 	public static final Item brew_arrow = PLACE_HOLDER;
+	public static final Item empty_brew_drink = PLACE_HOLDER;
+	public static final Item empty_brew_splash = PLACE_HOLDER;
+	public static final Item empty_brew_linger = PLACE_HOLDER;
 
 	public static final Item wax = PLACE_HOLDER;
 	public static final Item honey = PLACE_HOLDER;
@@ -200,6 +195,9 @@ public final class ModItems {
 				new ItemBrewDrinkable(),
 				new ItemBrewThrowable(LibItemName.BREW_PHIAL_SPLASH),
 				new ItemBrewThrowable(LibItemName.BREW_PHIAL_LINGER),
+				new ItemMod(LibItemName.EMPTY_BREW_DRINK),
+				new ItemMod(LibItemName.EMPTY_BREW_SPLASH),
+				new ItemMod(LibItemName.EMPTY_BREW_LINGER),
 				new ItemBrewArrow(),
 				new ItemMod(LibItemName.GLASS_JAR),
 				new ItemAthame(),

@@ -1,5 +1,9 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewBuilder;
@@ -10,6 +14,7 @@ import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -29,10 +34,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
@@ -371,7 +372,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					syncToClient();
 					markDirty();
 				}
-			} else if ((heldItem.getItem() == Items.GLASS_BOTTLE || heldItem.getItem() == Items.ARROW) && Mode.BREW == getMode() && progress >= getMode().getTime()) {
+			} else if ((heldItem.getItem() == ModItems.empty_brew_drink || heldItem.getItem() == Items.ARROW || heldItem.getItem() == ModItems.empty_brew_linger || heldItem.getItem() == ModItems.empty_brew_splash) && Mode.BREW == getMode() && progress >= getMode().getTime()) {
 				if (progress >= getMode().getTime() || playerIn.isCreative()) {
 					lockInputForCrafting = true;
 					createAndGiveBrew(playerIn, heldItem);
@@ -385,20 +386,14 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
 			ItemStack brew;
-			int costBase;
-			int costRand;
-			if (stack.getItem() == Items.GLASS_BOTTLE) {// TODO add other variants (splash, lingering)
-				if (playerIn.getHeldItemOffhand().getItem() == Items.GUNPOWDER) {// TEMP SOLUTION
+			int costBase = 200;
+			int costRand = 400;
+			if (stack.getItem() == ModItems.empty_brew_splash) {
 					brew = new ItemStack(ModItems.brew_phial_splash);
-					playerIn.getHeldItemOffhand().shrink(1);
-				} else if (playerIn.getHeldItemOffhand().getItem() == Items.DRAGON_BREATH) {// TEMP SOLUTION
+			} else if (stack.getItem() == ModItems.empty_brew_linger) {
 					brew = new ItemStack(ModItems.brew_phial_linger);
-					playerIn.getHeldItemOffhand().shrink(1);
-				} else {
+			} else if (stack.getItem() == ModItems.empty_brew_drink) {
 					brew = new ItemStack(ModItems.brew_phial_drink);
-				}
-				costBase = 300;
-				costRand = 400;
 			} else {
 				brew = new ItemStack(ModItems.brew_arrow);
 				costBase = 100;
