@@ -1,14 +1,16 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
+import com.bewitchment.common.potion.potions.PotionSunWard;
 import com.bewitchment.common.potion.potions.brews.*;
+
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ModPotions {
 
 	// Normal effects
-	public static Potion bloodDrained;
+	public static Potion bloodDrained, sun_ward;
 
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
@@ -25,6 +27,7 @@ public class ModPotions {
 
 	public static void init() {
 		bloodDrained = new PotionBloodDrained();
+		sun_ward = new PotionSunWard();
 		wolfsbane = new PotionWolfsbane();
 		arrow_deflect = new PotionArrowDeflection();
 		absence = new PotionAbsence();
@@ -72,7 +75,7 @@ public class ModPotions {
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
 				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare, //
-				volatility, pulverize, mowing
+				volatility, pulverize, mowing, sun_ward
 		);
 	}
 }

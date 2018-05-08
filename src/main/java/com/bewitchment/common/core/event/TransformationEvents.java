@@ -1,20 +1,21 @@
 package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -38,6 +39,9 @@ public class TransformationEvents {
 		BewitchmentAPI.getAPI().setTypeAndLevel(event.getEntityPlayer(), data.getType(), data.getLevel(), false);
 		if (event.isWasDeath()) {
 			TransformationHelper.setVampireBlood(event.getEntityPlayer(), (int) (data.getMaxBlood() * 0.1));
+			if (data.getType() == DefaultTransformations.VAMPIRE) {
+				event.getEntityPlayer().addPotionEffect(new PotionEffect(ModPotions.sun_ward, 600, 0));
+			}
 		} else {
 			TransformationHelper.setVampireBlood(event.getEntityPlayer(), data.getMaxBlood());
 		}

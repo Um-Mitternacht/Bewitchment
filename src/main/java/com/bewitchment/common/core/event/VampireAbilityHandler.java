@@ -14,6 +14,7 @@ import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
+import com.bewitchment.common.potion.ModPotions;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -105,7 +106,7 @@ public class VampireAbilityHandler {
 		if (data.getType() == DefaultTransformations.VAMPIRE && evt.side.isServer()) {
 
 			// Check sun damage
-			if (evt.player.world.getTotalWorldTime() % 40 == 0 && evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition())) {
+			if (evt.player.world.getTotalWorldTime() % 40 == 0 && evt.player.world.canBlockSeeSky(evt.player.getPosition()) && evt.player.world.isDaytime() && !evt.player.world.isRainingAt(evt.player.getPosition()) && evt.player.getActivePotionEffect(ModPotions.sun_ward) == null) {
 				if (data.getLevel() < 5 || !BewitchmentAPI.getAPI().addVampireBlood(evt.player, -(13 + data.getLevel()))) {
 					evt.player.attackEntityFrom(SUN_DAMAGE, 11 - data.getLevel());
 				}

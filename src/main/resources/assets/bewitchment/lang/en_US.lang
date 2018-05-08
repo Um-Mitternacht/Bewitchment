@@ -656,6 +656,7 @@ entity.broom.name=Flying Broom
 
 //Potion effects
 effect.blood_drain=Blood Drained
+effect.sun_ward=Sun Ward
 
 //Vampire
 vampire.nightvision.low_blood=You feel weak and your vision obfuscates
