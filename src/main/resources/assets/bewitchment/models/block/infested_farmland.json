@@ -1,9 +1,9 @@
 {
-    "parent": "block/cube_bottom_top",
-    "textures": {
-        "particle": "blocks/dirt",
-        "bottom": "bewitchment:blocks/infested_farmland_top",
-        "top": "blocks/dirt",
-        "side": "bewitchment:blocks/infested_farmland_side"
-    }
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "blocks/dirt",
+    "bottom": "bewitchment:blocks/infested_farmland_top",
+    "top": "blocks/dirt",
+    "side": "bewitchment:blocks/infested_farmland_side"
+  }
 }

@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewBuilder;
@@ -14,7 +10,6 @@ import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -34,6 +29,10 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
@@ -389,11 +388,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			int costBase = 200;
 			int costRand = 400;
 			if (stack.getItem() == ModItems.empty_brew_splash) {
-					brew = new ItemStack(ModItems.brew_phial_splash);
+				brew = new ItemStack(ModItems.brew_phial_splash);
 			} else if (stack.getItem() == ModItems.empty_brew_linger) {
-					brew = new ItemStack(ModItems.brew_phial_linger);
+				brew = new ItemStack(ModItems.brew_phial_linger);
 			} else if (stack.getItem() == ModItems.empty_brew_drink) {
-					brew = new ItemStack(ModItems.brew_phial_drink);
+				brew = new ItemStack(ModItems.brew_phial_drink);
 			} else {
 				brew = new ItemStack(ModItems.brew_arrow);
 				costBase = 100;

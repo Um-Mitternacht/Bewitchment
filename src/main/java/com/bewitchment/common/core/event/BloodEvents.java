@@ -11,7 +11,6 @@ import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -75,7 +74,7 @@ public class BloodEvents {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void entityTrackingEvent(StartTracking evt) {
 		if (evt.getTarget() instanceof EntityLivingBase) {
