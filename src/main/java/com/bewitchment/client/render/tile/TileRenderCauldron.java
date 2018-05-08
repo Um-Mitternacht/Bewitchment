@@ -1,17 +1,15 @@
 package com.bewitchment.client.render.tile;
 
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.common.tile.TileCauldron;
+import com.bewitchment.common.tile.TileEntityCauldron;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -25,11 +23,11 @@ import java.util.Optional;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> {
+public class TileRenderCauldron extends TileEntitySpecialRenderer<TileEntityCauldron> {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void render(TileCauldron te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+	public void render(TileEntityCauldron te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		Optional<FluidStack> optional = te.getFluid();
 		if (optional.isPresent() && optional.get().amount > 0) {
 			FluidStack fluidStack = optional.get();
@@ -40,13 +38,13 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> 
 			GlStateManager.pushMatrix();
 			GlStateManager.disableLighting();
 			GlStateManager.translate(x, y + 0.1 + level, z);
-			if (fluid == FluidRegistry.WATER || te.hasIngredients()) {
-				float r = (te.getColorRGB() >>> 16 & 0xFF) / 256.0F;
-				float g = (te.getColorRGB() >>> 8 & 0xFF) / 256.0F;
-				float b = (te.getColorRGB() & 0xFF) / 256.0F;
-				GlStateManager.color(r, g, b);
-				if (fluid == FluidRegistry.WATER)
-					location = ResourceLocations.GRAY_WATER;
+			if (fluid == FluidRegistry.WATER) {
+				int color = te.getColorRGB();
+				float r = (color >>> 16 & 0xFF) / 256.0F;
+				float g = (color >>> 8 & 0xFF) / 256.0F;
+				float b = (color & 0xFF) / 256.0F;
+				GlStateManager.color(r, g, b, 0.8f);
+				location = ResourceLocations.GRAY_WATER;
 			}
 
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
@@ -70,16 +68,6 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileCauldron> 
 			GlStateManager.enableLighting();
 			GlStateManager.popMatrix();
 		}
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5, y + 0.2D, z + 0.35);
-		GlStateManager.rotate(90F, 1F, 0, 0);
-
-		ItemStack stack = te.getContainer();
-		if (!stack.isEmpty()) {
-			Minecraft mc = Minecraft.getMinecraft();
-			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
-		}
-		GlStateManager.popMatrix();
 	}
 
 	private void renderWater(ResourceLocation loc) {

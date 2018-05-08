@@ -5,7 +5,7 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibGui;
-import com.bewitchment.common.tile.TileApiary;
+import com.bewitchment.common.tile.TileEntityApiary;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -88,8 +88,8 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		final TileEntity tile = worldIn.getTileEntity(pos);
-		if (tile != null && tile instanceof TileApiary) {
-			((TileApiary) tile).dropItems();
+		if (tile != null && tile instanceof TileEntityApiary) {
+			((TileEntityApiary) tile).dropItems();
 		}
 		worldIn.removeTileEntity(pos);
 	}
@@ -98,11 +98,11 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
 			final TileEntity tile = worldIn.getTileEntity(pos);
-			if (tile == null || !(tile instanceof TileApiary)) return false;
+			if (tile == null || !(tile instanceof TileEntityApiary)) return false;
 
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-				((TileApiary) tile).setCustomInventoryName(heldItem.getDisplayName());
+				((TileEntityApiary) tile).setCustomInventoryName(heldItem.getDisplayName());
 			} else {
 				playerIn.openGui(Bewitchment.instance, LibGui.APIARY.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 			}
@@ -123,6 +123,6 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileApiary();
+		return new TileEntityApiary();
 	}
 }

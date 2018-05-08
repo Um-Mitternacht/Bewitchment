@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class TileEntityGlyph extends TileMod implements ITickable {
+public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	public static final ArrayList<int[]> small = new ArrayList<int[]>();
 	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
@@ -106,7 +106,7 @@ public class TileEntityGlyph extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void readDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
 		if (tag.hasKey("ritual"))
 			ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
@@ -125,7 +125,7 @@ public class TileEntityGlyph extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void writeDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("cooldown", cooldown);
 		if (ritual != null)
 			tag.setString("ritual", ritual.getRegistryName().toString());
@@ -174,8 +174,9 @@ public class TileEntityGlyph extends TileMod implements ITickable {
 	}
 
 	public void startRitual(EntityPlayer player) {
-		if (player.getEntityWorld().isRemote)
+		if (player.getEntityWorld().isRemote) {
 			return;
+		}
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
@@ -335,6 +336,16 @@ public class TileEntityGlyph extends TileMod implements ITickable {
 	public void invalidate() {
 		stopRitual(null);
 		super.invalidate();
+	}
+
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("cooldown", cooldown); // cooldown > 0 --> Particles
+	}
+
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		cooldown = tag.getInteger("cooldown");
 	}
 
 }

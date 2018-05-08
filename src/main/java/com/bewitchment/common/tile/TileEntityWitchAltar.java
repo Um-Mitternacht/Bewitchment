@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Optional;
 
-public class TileEntityWitchAltar extends TileMod implements ITickable {
+public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
 
@@ -44,7 +44,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void readDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
 		power = tag.getInteger("power");
 		maxPower = tag.getInteger("maxPower");
 		gain = tag.getInteger("gain");
@@ -52,7 +52,7 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void writeDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("power", power);
 		tag.setInteger("gain", gain);
 		tag.setInteger("maxPower", maxPower);
@@ -67,7 +67,6 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 				refreshTimer = 0;
 				refreshNature();
 				markDirty();
-				world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 			}
 		}
 		power += gain;
@@ -289,6 +288,16 @@ public class TileEntityWitchAltar extends TileMod implements ITickable {
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return newState.getBlock() != ModBlocks.witch_altar || newState.getValue(BlockWitchAltar.ALTAR_TYPE) != AltarMultiblockType.TILE;
+	}
+
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("color", color);
+	}
+
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		color = tag.getInteger("color");
 	}
 
 }

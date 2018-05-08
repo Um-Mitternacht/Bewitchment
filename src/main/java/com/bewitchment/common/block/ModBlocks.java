@@ -16,6 +16,7 @@ import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
 import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
@@ -317,5 +318,8 @@ public final class ModBlocks {
 		OreDictionary.registerOre("treeLeaves", ModBlocks.leaves_yew);
 		OreDictionary.registerOre("treeLeaves", ModBlocks.leaves_cypress);
 		OreDictionary.registerOre("treeSapling", ModBlocks.sapling);
+
+		// Misc
+		OreDictionary.registerOre("kelp", ModItems.kelp);
 	}
 }

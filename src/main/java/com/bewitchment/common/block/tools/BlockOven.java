@@ -4,7 +4,7 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibGui;
-import com.bewitchment.common.tile.TileOven;
+import com.bewitchment.common.tile.TileEntityOven;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -55,11 +55,11 @@ public class BlockOven extends BlockMod implements ITileEntityProvider {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
 			final TileEntity tile1 = worldIn.getTileEntity(pos);
-			if (tile1 == null || !(tile1 instanceof TileOven)) return false;
+			if (tile1 == null || !(tile1 instanceof TileEntityOven)) return false;
 
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-				((TileOven) tile1).setCustomName(heldItem.getDisplayName());
+				((TileEntityOven) tile1).setCustomName(heldItem.getDisplayName());
 			} else {
 				playerIn.openGui(Bewitchment.instance, LibGui.OVEN.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 			}
@@ -70,8 +70,8 @@ public class BlockOven extends BlockMod implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		final TileEntity tile1 = worldIn.getTileEntity(pos);
-		if (tile1 != null && tile1 instanceof TileOven) {
-			((TileOven) tile1).dropItems();
+		if (tile1 != null && tile1 instanceof TileEntityOven) {
+			((TileEntityOven) tile1).dropItems();
 		}
 		worldIn.removeTileEntity(pos);
 	}
@@ -101,6 +101,6 @@ public class BlockOven extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileOven();
+		return new TileEntityOven();
 	}
 }

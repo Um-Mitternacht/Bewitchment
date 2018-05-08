@@ -1,8 +1,12 @@
 package com.bewitchment.common.core;
 
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.cauldron.BrewData;
+import com.bewitchment.common.cauldron.BrewData.BrewEntry;
+import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -22,6 +26,7 @@ public final class ModCreativeTabs {
 
 	public static final PlantsCreativeTab PLANTS_CREATIVE_TAB = new PlantsCreativeTab();
 	public static final ItemsCreativeTab ITEMS_CREATIVE_TAB = new ItemsCreativeTab();
+	public static final BrewsCreativeTab BREW_CREATIVE_TAB = new BrewsCreativeTab();
 	public static final BlocksCreativeTab BLOCKS_CREATIVE_TAB = new BlocksCreativeTab();
 
 	private ModCreativeTabs() {
@@ -66,6 +71,23 @@ public final class ModCreativeTabs {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() {
 			return new ItemStack(ModItems.mortar_and_pestle);
+		}
+	}
+
+	private static class BrewsCreativeTab extends CreativeTab {
+
+		BrewsCreativeTab() {
+			super("_brews");
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public ItemStack getIconItemStack() {
+			ItemStack stack = new ItemStack(ModItems.brew_phial_drink);
+			BrewData data = new BrewData();
+			data.addEntry(new BrewEntry(ModPotions.cursed_leaping, new BrewModifierListImpl()));
+			data.saveToStack(stack);
+			return stack;
 		}
 	}
 

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "bewitchment:items/brew_phial_linger",
-    "layer1": "bewitchment:items/brew_phial_linger_overlay"
+    "layer1": "bewitchment:items/brew_phial_linger",
+    "layer0": "bewitchment:items/brew_phial_linger_overlay"
   }
 }

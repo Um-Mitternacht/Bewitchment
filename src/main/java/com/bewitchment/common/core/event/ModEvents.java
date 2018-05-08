@@ -14,10 +14,11 @@ public final class ModEvents {
 
 	public static void init() {
 		MinecraftForge.EVENT_BUS.register(new EnergyEvents());
-		MinecraftForge.EVENT_BUS.register(new BrewEvents());
 		MinecraftForge.EVENT_BUS.register(new HarvestEvent());
 		MinecraftForge.EVENT_BUS.register(new DivinationEvents());
 		MinecraftForge.EVENT_BUS.register(new TransformationEvents());
 		MinecraftForge.EVENT_BUS.register(new VampireAbilityHandler());
 	}
+
+
 }

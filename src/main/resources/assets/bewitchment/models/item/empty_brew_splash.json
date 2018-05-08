@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bewitchment:items/brew_phial_splash"
+  }
+}

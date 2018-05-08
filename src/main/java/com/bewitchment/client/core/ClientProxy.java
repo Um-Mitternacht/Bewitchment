@@ -7,12 +7,16 @@ import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
-import com.bewitchment.client.handler.*;
+import com.bewitchment.client.handler.BlockCandleColorHandler;
+import com.bewitchment.client.handler.ItemCandleColorHandler;
+import com.bewitchment.client.handler.Keybinds;
+import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.*;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.divination.TarotHandler.TarotInfo;
@@ -20,7 +24,7 @@ import com.bewitchment.common.entity.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
-import com.bewitchment.common.tile.TileCauldron;
+import com.bewitchment.common.tile.TileEntityCauldron;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
@@ -74,8 +78,6 @@ public class ClientProxy implements ISidedProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		registerRenders();
 		MinecraftForge.EVENT_BUS.register(new EnergyHUD());
-		MinecraftForge.EVENT_BUS.register(new BrewHUD());
-		MinecraftForge.EVENT_BUS.register(new ClientEvents());
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
 		MinecraftForge.EVENT_BUS.register(new BloodViewerHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());
@@ -86,9 +88,8 @@ public class ClientProxy implements ISidedProxy {
 	public void init(FMLInitializationEvent event) {
 		Keybinds.registerKeys();
 		BlockColors blocks = Minecraft.getMinecraft().getBlockColors();
-		//Block Colors
-		blocks.registerBlockColorHandler(new BlockCandleColorHandler(),
-				ModBlocks.candle_medium, ModBlocks.candle_small, ModBlocks.candle_medium_lit, ModBlocks.candle_small_lit);
+		// Block Colors
+		blocks.registerBlockColorHandler(new BlockCandleColorHandler(), ModBlocks.candle_medium, ModBlocks.candle_small, ModBlocks.candle_medium_lit, ModBlocks.candle_small_lit);
 
 		blocks.registerBlockColorHandler(new IBlockColor() {
 			@Override
@@ -121,12 +122,8 @@ public class ClientProxy implements ISidedProxy {
 		}, ModBlocks.crystal_ball);
 
 		ItemColors items = Minecraft.getMinecraft().getItemColors();
-		//Item Colors
-		items.registerItemColorHandler(new ItemCandleColorHandler(),
-				Item.getItemFromBlock(ModBlocks.candle_medium),
-				Item.getItemFromBlock(ModBlocks.candle_small));
-		items.registerItemColorHandler(new BrewItemColorHandler(),
-				ModItems.brew_phial_drink, ModItems.brew_phial_splash, ModItems.brew_phial_linger);
+		// Item Colors
+		items.registerItemColorHandler(new ItemCandleColorHandler(), Item.getItemFromBlock(ModBlocks.candle_medium), Item.getItemFromBlock(ModBlocks.candle_small));
 
 		items.registerItemColorHandler(new IItemColor() {
 
@@ -134,11 +131,23 @@ public class ClientProxy implements ISidedProxy {
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if (tintIndex == 0) {
 					ISpell s = ItemSpellPage.getSpellFromItemStack(stack);
-					if (s != null) return s.getColor();
+					if (s != null)
+						return s.getColor();
 				}
 				return -1;
 			}
 		}, ModItems.spell_page);
+
+		items.registerItemColorHandler(new IItemColor() {
+
+			@Override
+			public int colorMultiplier(ItemStack stack, int tintIndex) {
+				if (tintIndex == 0) {
+					return BrewData.fromStack(stack).getColor();
+				}
+				return -1;
+			}
+		}, ModItems.brew_phial_drink, ModItems.brew_phial_linger, ModItems.brew_phial_splash, ModItems.brew_arrow);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
@@ -169,14 +178,16 @@ public class ClientProxy implements ISidedProxy {
 	}
 
 	private void registerRenders() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityBrew.class, BrewRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityBrewLinger.class, EmptyRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpellCarrier.class, SpellRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityFlyingBroom.class, RenderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatSwarm.class, RenderBatSwarm::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityBrewArrow.class, RenderBrewArrow::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityBrew.class, RenderBrewBottle::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityLingeringBrew.class, EmptyRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityAoE.class, EmptyRenderer::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCauldron.class, new TileRenderCauldron());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());
 	}
 
 	@Override

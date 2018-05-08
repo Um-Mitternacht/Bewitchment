@@ -1,29 +1,28 @@
 package com.bewitchment.api;
 
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.cauldron.IBrewEffect;
+import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.transformation.ITransformation;
 
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Potion;
 
 // TODO Javadocs
 public abstract class BewitchmentAPI {
 
 	private static BewitchmentAPI INSTANCE;
+	public EnumCreatureAttribute DEMON, SPIRIT;
 
-	public static void setupAPI(BewitchmentAPI api) {
+	public static final void setupAPI(BewitchmentAPI api) {
 		if (INSTANCE == null) {
 			INSTANCE = api;
 		} else {
@@ -31,36 +30,12 @@ public abstract class BewitchmentAPI {
 		}
 	}
 
-	public static BewitchmentAPI getAPI() {
+	public static final BewitchmentAPI getAPI() {
 		if (INSTANCE != null) {
 			return INSTANCE;
 		}
 		throw new IllegalStateException("Bewitchment API not ready yet");
 	}
-
-	public abstract void registerBrew(IBrew brew, ResourceLocation name);
-
-	public abstract void registerBrewRecipe(ItemStack stack, Object... objects);
-
-	public abstract <T> void registerItemEffect(ItemStack stack, T effect, boolean strict);
-
-	public abstract void registerItemModifier(ItemStack stack, IBrewModifier modifier, boolean strict);
-
-	public abstract void registerFoodValue(ItemStack stack, int hunger, float saturation);
-
-	public abstract void registerItemRitual(ItemStack stack, int cost, Object... objects);
-
-	public abstract void registerFluidIngredient(Item item, FluidStack fluid);
-
-	/**
-	 * Register an Item to the Processing factory.
-	 *
-	 * @param fluid  The fluid this Item needs
-	 * @param in     The Item you throw in
-	 * @param out    The Item that comes out
-	 * @param strict If the Item must be identical
-	 */
-	public abstract void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict);
 
 	public abstract void registerHotbarAction(IHotbarAction action);
 
@@ -93,4 +68,21 @@ public abstract class BewitchmentAPI {
 	public abstract void registerCircleRitual(IRitual ritual);
 
 	public abstract int getCirclesIntegerForRitual(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType large);
+
+	/**
+	 * Register a new modifier for brews. This modifiers extend the idea of using glowstone/redstone to extend power and duration
+	 * and allow you to register new types of modifiers for them. See {@link com.bewitchment.api.cauldron.modifiers}
+	 *
+	 * @param modifier The modifier to register
+	 */
+	public abstract void registerBrewModifier(IBrewModifier modifier);
+
+	/**
+	 * Links a brew effect, a potion and a crafting ingredient together, for crafting and application on brew itemstacks
+	 */
+	public abstract void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient);
+
+	public abstract Potion getPotionFromBrew(IBrewEffect effect);
+
+	public abstract IBrewEffect getBrewFromPotion(Potion potion);
 }

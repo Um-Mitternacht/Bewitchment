@@ -1,14 +1,16 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.Optional;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.api.cauldron.brew.IBrew;
+import com.bewitchment.api.cauldron.IBrewEffect;
+import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.api.recipe.IBrewModifier;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
@@ -22,12 +24,8 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
-import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
-import com.bewitchment.common.crafting.cauldron.ItemRitual;
+import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.infusion.ModInfusions;
@@ -38,14 +36,10 @@ import com.bewitchment.common.spell.Spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-
-import java.util.Optional;
+import net.minecraftforge.common.util.EnumHelper;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -55,47 +49,9 @@ public class ApiInstance extends BewitchmentAPI {
 
 	public static void initAPI() {
 		BewitchmentAPI.setupAPI(new ApiInstance());
+		BewitchmentAPI.getAPI().DEMON = EnumHelper.addCreatureAttribute("DEMON");
+		BewitchmentAPI.getAPI().SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
 		Bewitchment.logger.debug("API is ready!");
-	}
-
-	@Override
-	public void registerBrew(IBrew brew, ResourceLocation name) {
-		BrewRegistry.register(name, brew);
-	}
-
-	@Override
-	public void registerBrewRecipe(ItemStack stack, Object... objects) {
-		CauldronRegistry.registerBrewRecipe(stack, objects);
-	}
-
-	@Override
-	public <T> void registerItemEffect(ItemStack stack, T effect, boolean strict) {
-		CauldronRegistry.registerItemEffect(stack, effect, strict);
-	}
-
-	@Override
-	public void registerItemModifier(ItemStack stack, IBrewModifier modifier, boolean strict) {
-		CauldronRegistry.registerItemModifier(stack, modifier, strict);
-	}
-
-	@Override
-	public void registerItemRitual(ItemStack stack, int cost, Object... objects) {
-		CauldronRegistry.registerItemRitual(new ItemRitual(stack, cost), objects);
-	}
-
-	@Override
-	public void registerFluidIngredient(Item item, FluidStack fluid) {
-		CauldronRegistry.registerFluidIngredient(item, fluid);
-	}
-
-	@Override
-	public void registerItemProcessing(Fluid fluid, ItemStack in, ItemStack out, boolean strict) {
-		CauldronRegistry.registerItemProcessing(fluid, in, out, strict);
-	}
-
-	@Override
-	public void registerFoodValue(ItemStack stack, int hunger, float saturation) {
-		CauldronRegistry.registerFoodValue(stack, new CauldronFoodValue(hunger, saturation));
 	}
 
 	@Override
@@ -194,6 +150,27 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public int getCirclesIntegerForRitual(EnumGlyphType small, EnumGlyphType medium, EnumGlyphType large) {
 		return ModRituals.circles(small, medium, large);
+	}
+
+	@Override
+	public void registerBrewModifier(IBrewModifier modifier) {
+		CauldronRegistry.registerBrewModifier(modifier);
+	}
+
+	@Override
+	public void registerBrewEffect(IBrewEffect effect, Potion potion, Ingredient ingredient) {
+		CauldronRegistry.registerBrewIngredient(effect, ingredient);
+		CauldronRegistry.bindPotionAndEffect(effect, potion);
+	}
+
+	@Override
+	public Potion getPotionFromBrew(IBrewEffect effect) {
+		return CauldronRegistry.getPotionFromBrew(effect);
+	}
+
+	@Override
+	public IBrewEffect getBrewFromPotion(Potion potion) {
+		return CauldronRegistry.getBrewFromPotion(potion);
 	}
 
 }

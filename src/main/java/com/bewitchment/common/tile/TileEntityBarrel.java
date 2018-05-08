@@ -20,7 +20,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import javax.annotation.Nullable;
 import java.util.stream.Collectors;
 
-public class TileEntityBarrel extends TileMod implements ITickable {
+public class TileEntityBarrel extends ModTileEntity implements ITickable {
 
 	AxisAlignedBB around;
 	AutomatableInventory inv = new AutomatableInventory(7) {
@@ -76,7 +76,7 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void readDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
 		brewingTime = tag.getInteger("time");
 		barrelType = tag.getInteger("type");
 		powerAbsorbed = tag.getInteger("powerAbsorbed");
@@ -89,7 +89,7 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void writeDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("time", brewingTime);
 		tag.setInteger("type", barrelType);
 		tag.setInteger("powerAbsorbed", powerAbsorbed);
@@ -223,39 +223,6 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 		return cachedRecipe;
 	}
 
-	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		// brewingTime = tag.getInteger("bt");
-		// powerAbsorbed = tag.getInteger("pw");
-		// barrelType = tag.getInteger("ty");
-		// powerRequired = tag.getInteger("pr");
-		// timeRequired = tag.getInteger("tr");
-		// if (tag.hasKey("rc")) {
-		// recipeName = tag.getString("rc");
-		// } else
-		// recipeName = null;
-		// internalTank.readFromNBT(tag.getCompoundTag("tank"));
-		super.handleUpdateTag(tag);
-	}
-
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		return super.getUpdateTag();
-		// NBTTagCompound tag = super.writeToNBT(new NBTTagCompound());
-		// tag.setInteger("bt", brewingTime);
-		// tag.setInteger("pw", powerAbsorbed);
-		// tag.setInteger("ty", barrelType);
-		// tag.setInteger("pr", powerRequired);
-		// tag.setInteger("tr", timeRequired);
-		// if (recipeName!=null) {
-		// if (getRecipe()!=null) {
-		// tag.setString("rc", recipeName);
-		// }
-		// }
-		// tag.setTag("tank", internalTank.writeToNBT(new NBTTagCompound()));
-		// return tag;
-	}
-
 	public int getPowerRequired() {
 		return powerRequired;
 	}
@@ -279,6 +246,24 @@ public class TileEntityBarrel extends TileMod implements ITickable {
 		if (te == null || te.isInvalid())
 			return null;
 		return te;
+	}
+
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("type", barrelType);
+		if (recipeName != null) {
+			tag.setString("recipeName", recipeName);
+		}
+	}
+
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		barrelType = tag.getInteger("type");
+		if (tag.hasKey("recipeName")) {
+			recipeName = tag.getString("recipeName");
+		} else {
+			recipeName = null;
+		}
 	}
 
 }

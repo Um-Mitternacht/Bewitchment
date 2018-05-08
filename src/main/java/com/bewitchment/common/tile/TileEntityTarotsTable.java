@@ -13,7 +13,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nonnull;
 
-public class TileEntityTarotsTable extends TileMod { // No ticking
+public class TileEntityTarotsTable extends ModTileEntity { // No ticking
 
 	private static final int READ_COST = 2000;
 
@@ -23,11 +23,11 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 	}
 
 	@Override
-	void readDataNBT(NBTTagCompound cmp) {
+	void readAllModDataNBT(NBTTagCompound cmp) {
 	}
 
 	@Override
-	void writeDataNBT(NBTTagCompound cmp) {
+	void writeAllModDataNBT(NBTTagCompound cmp) {
 	}
 
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
@@ -53,6 +53,14 @@ public class TileEntityTarotsTable extends TileMod { // No ticking
 		if (te == null)
 			return false;
 		return te.consumePower(power, simulate);
+	}
+
+	@Override
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+	}
+
+	@Override
+	void readModSyncDataNBT(NBTTagCompound tag) {
 	}
 
 }

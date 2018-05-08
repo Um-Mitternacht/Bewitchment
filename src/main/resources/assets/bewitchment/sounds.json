@@ -1,7 +1,9 @@
 {
   "boil": {
     "sounds": [
-      "bewitchment:boil"
+      "bewitchment:bubble_1",
+      "bewitchment:bubble_2",
+      "bewitchment:bubble_3"
     ],
     "subtitle": "bewitchment.subtitle.boil"
   },

@@ -11,9 +11,9 @@ import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
-import com.bewitchment.common.item.magic.brew.ItemBrewDrink;
-import com.bewitchment.common.item.magic.brew.ItemBrewLinger;
-import com.bewitchment.common.item.magic.brew.ItemBrewSplash;
+import com.bewitchment.common.item.magic.brew.ItemBrewArrow;
+import com.bewitchment.common.item.magic.brew.ItemBrewDrinkable;
+import com.bewitchment.common.item.magic.brew.ItemBrewThrowable;
 import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
@@ -93,6 +93,10 @@ public final class ModItems {
 	public static final Item brew_phial_drink = PLACE_HOLDER;
 	public static final Item brew_phial_splash = PLACE_HOLDER;
 	public static final Item brew_phial_linger = PLACE_HOLDER;
+	public static final Item brew_arrow = PLACE_HOLDER;
+	public static final Item empty_brew_drink = PLACE_HOLDER;
+	public static final Item empty_brew_splash = PLACE_HOLDER;
+	public static final Item empty_brew_linger = PLACE_HOLDER;
 
 	public static final Item wax = PLACE_HOLDER;
 	public static final Item honey = PLACE_HOLDER;
@@ -190,9 +194,13 @@ public final class ModItems {
 				new ItemMod(LibItemName.HONEYCOMB),
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),
-				new ItemBrewDrink(),
-				new ItemBrewSplash(),
-				new ItemBrewLinger(),
+				new ItemBrewDrinkable(),
+				new ItemBrewThrowable(LibItemName.BREW_PHIAL_SPLASH),
+				new ItemBrewThrowable(LibItemName.BREW_PHIAL_LINGER),
+				new ItemMod(LibItemName.EMPTY_BREW_DRINK),
+				new ItemMod(LibItemName.EMPTY_BREW_SPLASH),
+				new ItemMod(LibItemName.EMPTY_BREW_LINGER),
+				new ItemBrewArrow(),
 				new ItemMod(LibItemName.GLASS_JAR),
 				new ItemAthame(),
 				new ItemBoline(),
@@ -348,6 +356,7 @@ public final class ModItems {
 		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.silver_ingot));
 		OreDictionary.registerOre("honeyDrop", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("dropHoney", new ItemStack(ModItems.honey));
+		OreDictionary.registerOre("foodHoneydrop", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("listAllsugar", new ItemStack(ModItems.honey));
 		OreDictionary.registerOre("materialWax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("materialBeeswax", new ItemStack(ModItems.wax));
@@ -358,6 +367,10 @@ public final class ModItems {
 		OreDictionary.registerOre("materialSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("lumpSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("salt", new ItemStack(ModItems.salt));
+		OreDictionary.registerOre("listAllsalt", new ItemStack(ModItems.salt));
+		OreDictionary.registerOre("ingredientSalt", new ItemStack(ModItems.salt));
+		OreDictionary.registerOre("pinchSalt", new ItemStack(ModItems.salt));
+		OreDictionary.registerOre("portionSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("cropLavender", new ItemStack(ModItems.lavender));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.lavender));
 		OreDictionary.registerOre("cropBelladonna", new ItemStack(ModItems.belladonna));

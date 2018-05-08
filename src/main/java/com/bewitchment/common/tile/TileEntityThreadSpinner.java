@@ -13,7 +13,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityThreadSpinner extends TileMod implements ITickable {
+public class TileEntityThreadSpinner extends ModTileEntity implements ITickable {
 
 	public static final int MAX_TICKS = 200;
 	public static final int POWER_PER_TICK = 6;
@@ -57,7 +57,7 @@ public class TileEntityThreadSpinner extends TileMod implements ITickable {
 	};
 
 	@Override
-	protected void readDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
 		inv.loadFromNBT(tag.getCompoundTag("inv"));
 		if (tag.hasKey("recipe")) loadedRecipe = tag.getString("recipe");
 		else loadedRecipe = null;
@@ -65,7 +65,7 @@ public class TileEntityThreadSpinner extends TileMod implements ITickable {
 	}
 
 	@Override
-	protected void writeDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setTag("inv", inv.saveToNbt());
 		if (loadedRecipe != null) tag.setString("recipe", loadedRecipe);
 		tag.setInteger("ticks", tickProcessed);
@@ -145,16 +145,13 @@ public class TileEntityThreadSpinner extends TileMod implements ITickable {
 	}
 
 	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		super.handleUpdateTag(tag);
-		tickProcessed = tag.getInteger("tick");
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("tick", tickProcessed);
 	}
 
 	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound tag = super.writeToNBT(new NBTTagCompound());
-		tag.setInteger("tick", tickProcessed);
-		return tag;
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		tickProcessed = tag.getInteger("tick");
 	}
 
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThreadRecipe> {
 
-	public static final IForgeRegistry<SpinningThreadRecipe> REGISTRY = new RegistryBuilder<SpinningThreadRecipe>().setName(new ResourceLocation(LibMod.MOD_ID, "thread_spinning")).setType(SpinningThreadRecipe.class).setIDRange(0, 200).create();
+	public static final IForgeRegistry<SpinningThreadRecipe> REGISTRY = new RegistryBuilder<SpinningThreadRecipe>().disableSaving().setName(new ResourceLocation(LibMod.MOD_ID, "thread_spinning")).setType(SpinningThreadRecipe.class).setIDRange(0, 200).create();
 
 	final ItemStack output;
 	final Ingredient[] inputs;
