@@ -1,11 +1,18 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -19,11 +26,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -62,7 +64,11 @@ public class ExtraBarButtonsHUD {
 		if (evt.isButtonstate() && slotSelected >= 0 && evt.getButton() == 1) {
 			evt.setCanceled(true);
 			if (cooldown == 0) {
-				NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString()));
+				int e_id = -1;
+				if (Minecraft.getMinecraft().pointedEntity != null) {
+					e_id = Minecraft.getMinecraft().pointedEntity.getEntityId();
+				}
+				NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString(), e_id));
 				cooldown = 15;
 			}
 		}

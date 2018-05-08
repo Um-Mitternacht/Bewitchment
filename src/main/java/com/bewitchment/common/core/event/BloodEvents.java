@@ -17,12 +17,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
@@ -71,6 +73,14 @@ public class BloodEvents {
 				EntityLivingBase ent = (EntityLivingBase) e;
 				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(ent), new TargetPoint(e.dimension, ent.posX, ent.posY, ent.posZ, 32));
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public static void entityTrackingEvent(StartTracking evt) {
+		if (evt.getTarget() instanceof EntityLivingBase) {
+			EntityLivingBase ent = (EntityLivingBase) evt.getTarget();
+			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(ent), (EntityPlayerMP) evt.getEntityPlayer());
 		}
 	}
 

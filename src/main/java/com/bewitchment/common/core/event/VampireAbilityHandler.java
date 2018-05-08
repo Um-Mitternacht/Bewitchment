@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -8,7 +10,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
-import com.bewitchment.common.core.helper.RayTraceHelper;
 import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
@@ -27,8 +28,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -38,8 +37,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -195,15 +192,12 @@ public class VampireAbilityHandler {
 			}
 		} else if (evt.action == ModAbilities.DRAIN_BLOOD) {
 
-			RayTraceResult rt = RayTraceHelper.rayTraceResult(evt.player, RayTraceHelper.fromLookVec(evt.player, evt.player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue()), true, true);
-			if (rt != null && rt.typeOfHit == Type.ENTITY) {
-				if (rt.entityHit instanceof EntityLivingBase) {
-					EntityLivingBase entity = (EntityLivingBase) rt.entityHit;
-					if (canDrainBloodFrom(evt.player, entity)) {
-						TransformationHelper.drainBloodFromEntity(evt.player, entity);
-					} else {
-						entity.attackEntityAsMob(evt.player);
-					}
+			if (evt.focusedEntity instanceof EntityLivingBase) {
+				EntityLivingBase entity = (EntityLivingBase) evt.focusedEntity;
+				if (canDrainBloodFrom(evt.player, entity)) {
+					TransformationHelper.drainBloodFromEntity(evt.player, entity);
+				} else {
+					entity.attackEntityAsMob(evt.player);
 				}
 			}
 		} else if (evt.action == ModAbilities.BAT_SWARM) {
