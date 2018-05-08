@@ -2,7 +2,8 @@ package com.bewitchment.common.core.capability.energy;
 
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
-import com.bewitchment.common.infusion.ModInfusions;
+import com.bewitchment.api.infusion.DefaultInfusions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public class DummyIEnergy implements IEnergy {
@@ -74,7 +75,7 @@ public class DummyIEnergy implements IEnergy {
 
 	@Override
 	public IInfusion getType() {
-		return ModInfusions.NONE;
+		return DefaultInfusions.NONE;
 	}
 
 	@Override

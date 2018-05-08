@@ -2,9 +2,11 @@ package com.bewitchment.common.core.capability.energy;
 
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.capability.IInfusion;
+import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergyMessage;
 import com.bewitchment.common.infusion.ModInfusions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -66,7 +68,7 @@ public final class CapabilityEnergy {
 		private int regenBurst = 10;
 		private int uses;
 		private int tick;
-		private String type = ModInfusions.NONE.getRegistryName().toString();
+		private String type = DefaultInfusions.NONE.getRegistryName().toString();
 
 		@Override
 		public boolean set(int i) {
@@ -133,11 +135,11 @@ public final class CapabilityEnergy {
 		@Override
 		public IInfusion getType() {
 			if (type == null) {
-				return ModInfusions.NONE;
+				return DefaultInfusions.NONE;
 			}
 			IInfusion inf = ModInfusions.REGISTRY.getValue(new ResourceLocation(type));
 			if (inf == null) {
-				return ModInfusions.NONE;
+				return DefaultInfusions.NONE;
 			}
 			return inf;
 		}
@@ -145,7 +147,7 @@ public final class CapabilityEnergy {
 		@Override
 		public void setType(IInfusion infusion) {
 			if (infusion == null) {
-				type = ModInfusions.NONE.getRegistryName().toString();
+				type = DefaultInfusions.NONE.getRegistryName().toString();
 			} else {
 				type = infusion.getRegistryName().toString();
 			}
