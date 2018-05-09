@@ -1,6 +1,6 @@
 package com.bewitchment.common.infusion;
 
-import com.bewitchment.api.capability.IInfusion;
+import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 

@@ -1,14 +1,16 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.Optional;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.api.capability.IInfusion;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
+import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
@@ -22,10 +24,7 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
@@ -34,14 +33,13 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {

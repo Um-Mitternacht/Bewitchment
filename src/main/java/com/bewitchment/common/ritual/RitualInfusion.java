@@ -1,7 +1,7 @@
 package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.api.capability.IInfusion;
+import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

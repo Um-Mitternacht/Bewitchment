@@ -3,6 +3,7 @@ package com.bewitchment.common.transformation;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -13,11 +14,11 @@ public class ModTransformations {
 
 	public static void init() {
 
-		DefaultTransformations.NONE = new SimpleTransformation("none");
-		DefaultTransformations.WEREWOLF = new SimpleTransformation("werewolf");
-		DefaultTransformations.VAMPIRE = new SimpleTransformation("vampire");
-		DefaultTransformations.SPECTRE = new SimpleTransformation("spectre");
-		DefaultTransformations.HUNTER = new SimpleTransformation("hunter");
+		DefaultTransformations.NONE = new SimpleTransformation("none", true);
+		DefaultTransformations.WEREWOLF = new SimpleTransformation("werewolf", false);
+		DefaultTransformations.VAMPIRE = new SimpleTransformation("vampire", false);
+		DefaultTransformations.SPECTRE = new SimpleTransformation("spectre", false);
+		DefaultTransformations.HUNTER = new SimpleTransformation("hunter", true);
 
 		REGISTRY.registerAll(DefaultTransformations.NONE, DefaultTransformations.WEREWOLF, DefaultTransformations.VAMPIRE, DefaultTransformations.SPECTRE, DefaultTransformations.HUNTER);
 	}

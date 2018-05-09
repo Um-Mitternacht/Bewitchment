@@ -1,4 +1,4 @@
-package com.bewitchment.api.capability;
+package com.bewitchment.api.infusion;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;

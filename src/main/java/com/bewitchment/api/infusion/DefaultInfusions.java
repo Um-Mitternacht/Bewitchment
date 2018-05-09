@@ -1,7 +1,5 @@
 package com.bewitchment.api.infusion;
 
-import com.bewitchment.api.capability.IInfusion;
-
 public class DefaultInfusions {
 	public static IInfusion OVERWORLD;
 	public static IInfusion NETHER;
