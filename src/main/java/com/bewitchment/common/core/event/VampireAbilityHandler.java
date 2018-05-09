@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -8,11 +10,13 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
+import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -35,8 +39,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 public class VampireAbilityHandler {
 
@@ -242,7 +244,7 @@ public class VampireAbilityHandler {
 			attack_speed.removeModifier(modifier);
 		}
 		if (data.getType() == DefaultTransformations.VAMPIRE) {
-			attack_speed.applyModifier(new AttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Vampire Atk Speed", evt.level / 10, 0));
+			attack_speed.applyModifier(new AttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Vampire Atk Speed", evt.level / 10, AttributeModifierModeHelper.ADD));
 		}
 	}
 

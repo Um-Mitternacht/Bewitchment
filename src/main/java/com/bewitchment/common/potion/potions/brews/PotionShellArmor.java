@@ -1,6 +1,10 @@
 package com.bewitchment.common.potion.potions.brews;
 
+import java.util.UUID;
+
+import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.potion.BrewMod;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
@@ -11,8 +15,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.UUID;
 
 public class PotionShellArmor extends BrewMod {
 
@@ -29,7 +31,7 @@ public class PotionShellArmor extends BrewMod {
 		super.applyAttributesModifiersToEntity(entity, attributeMapIn, amplifier);
 		IAttributeInstance armor_attr = entity.getEntityAttribute(SharedMonsterAttributes.ARMOR);
 		armor_attr.removeModifier(modifierUUID);
-		armor_attr.applyModifier(new AttributeModifier(modifierUUID, "PotionShellArmor", amplifier + 1, 0));
+		armor_attr.applyModifier(new AttributeModifier(modifierUUID, "PotionShellArmor", amplifier + 1, AttributeModifierModeHelper.ADD));
 	}
 
 	@Override
