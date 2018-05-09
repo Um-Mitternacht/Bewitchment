@@ -2,6 +2,7 @@ package com.bewitchment.client.render.baubles;
 
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -198,7 +199,7 @@ public class ModelGirdleOfTheWooded extends ModelBase {
 			return;
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 
-		int barkPieces = ItemGirdleOfTheWooded.getBarkPiecesForRendering((EntityPlayer) entity);
+		int barkPieces = ItemGirdleOfTheWooded.getBarkPieces((EntityPlayer) entity);
 
 		// FIXME belt is still rendering weirdly
 		this.belt1.render(f5);
