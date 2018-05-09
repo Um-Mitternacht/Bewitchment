@@ -18,6 +18,7 @@ public final class ModEvents {
 		MinecraftForge.EVENT_BUS.register(new DivinationEvents());
 		MinecraftForge.EVENT_BUS.register(new TransformationEvents());
 		MinecraftForge.EVENT_BUS.register(new VampireAbilityHandler());
+		MinecraftForge.EVENT_BUS.register(new WerewolfAbilityHandler());
 	}
 
 
