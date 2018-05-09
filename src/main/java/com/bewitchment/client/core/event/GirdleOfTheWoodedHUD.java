@@ -1,19 +1,22 @@
 package com.bewitchment.client.core.event;
 
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GirdleOfTheWoodedHUD {
@@ -35,13 +38,14 @@ public class GirdleOfTheWoodedHUD {
 	}
 
 	@SubscribeEvent
-	public void onRenderHud(RenderGameOverlayEvent evt) {
+	public void onRenderHud(RenderGameOverlayEvent.Post evt) {
 		if (evt.getType() == ElementType.ARMOR) {
 			GL11.glPushMatrix();
 			GlStateManager.enableAlpha();
 			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			for (int i = 0; i < ItemGirdleOfTheWooded.getBarkPiecesForRendering(Minecraft.getMinecraft().player); i++)
-				renderTexture(evt.getResolution().getScaledWidth() / 2 - 91 + (8 * i), evt.getResolution().getScaledHeight() - 49, 9, 9, 0, 1);
+			for (int i = 0; i < ItemGirdleOfTheWooded.getBarkPiecesForRendering(Minecraft.getMinecraft().player); i++) {
+				renderTexture(evt.getResolution().getScaledWidth() / 2 - 91 + (8 * i), evt.getResolution().getScaledHeight() + 10 - GuiIngameForge.left_height, 9, 9, 0, 1);
+			}
 			Minecraft.getMinecraft().renderEngine.bindTexture(ICONS);
 			GL11.glPopMatrix();
 		}
