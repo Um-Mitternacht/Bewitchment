@@ -51,6 +51,7 @@ public class BlockSaltBarrier extends BlockMod {
 	public static final PropertyEnum<BlockSaltBarrier.EnumAttachPosition> SOUTH = PropertyEnum.create("south", BlockSaltBarrier.EnumAttachPosition.class);
 	public static final PropertyEnum<BlockSaltBarrier.EnumAttachPosition> WEST = PropertyEnum.create("west", BlockSaltBarrier.EnumAttachPosition.class);
 	private static final AxisAlignedBB[] SALT_BARRIER_AABB = new AxisAlignedBB[]{new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D)};
+	private static final AxisAlignedBB wall = new AxisAlignedBB(0, 0, 0, 1, 3, 1);
 	private final Set<BlockPos> blocksNeedingUpdate = Sets.newHashSet();
 
 	public BlockSaltBarrier() {
@@ -286,24 +287,24 @@ public class BlockSaltBarrier extends BlockMod {
 		if (entityIn instanceof EntityLivingBase) {
 			EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
 			if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT) {
-				collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 			}
 		}
 		if (entityIn instanceof EntityBlaze) {
-			collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
 		if (entityIn instanceof EntityEnderman) {
-			collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
 		if (entityIn instanceof EntityGhast) {
-			collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
 		if (entityIn instanceof EntityVex) {
-			collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
-		if (entityIn instanceof EntityPlayer) {
+		if ((entityIn instanceof EntityPlayer) && !((EntityPlayer) entityIn).isCreative()) {
 			if (!entityIn.getCapability(CapabilityTransformationData.CAPABILITY, null).getType().canCrossSalt()) {
-				collidingBoxes.add(new AxisAlignedBB(pos).expand(0, 255, 0));
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 			}
 		}
 	}
@@ -322,7 +323,7 @@ public class BlockSaltBarrier extends BlockMod {
 
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return worldIn.getBlockState(pos.down()).isTopSolid() || worldIn.getBlockState(pos.down()).getBlock() == Blocks.GLOWSTONE;
+		return worldIn.getBlockState(pos.down()).isSideSolid(worldIn, pos, EnumFacing.UP) || worldIn.getBlockState(pos.down()).getBlock() == Blocks.GLOWSTONE;
 	}
 
 	@Override
