@@ -1,10 +1,7 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.util.UUID;
-
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
@@ -15,6 +12,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.UUID;
 
 public class PotionShellArmor extends BrewMod {
 

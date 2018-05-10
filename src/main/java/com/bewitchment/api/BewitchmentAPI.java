@@ -10,7 +10,6 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.transformation.ITransformation;
-
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.Ingredient;

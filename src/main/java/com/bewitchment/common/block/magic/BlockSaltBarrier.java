@@ -1,12 +1,6 @@
 package com.bewitchment.common.block.magic;
 
 
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
@@ -15,7 +9,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -25,7 +18,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -37,6 +33,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * This class was created by BerciTheBeast on 27.3.2017.

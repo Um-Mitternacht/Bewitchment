@@ -2,7 +2,6 @@ package com.bewitchment.common.transformation;
 
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 
 public class SimpleTransformation implements ITransformation {
@@ -35,5 +34,5 @@ public class SimpleTransformation implements ITransformation {
 	public boolean canCrossSalt() {
 		return crossSalt;
 	}
-	
+
 }

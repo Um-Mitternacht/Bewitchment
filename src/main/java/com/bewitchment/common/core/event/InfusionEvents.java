@@ -2,7 +2,6 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.DefaultInfusions;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class InfusionEvents {
-	
+
 	@SubscribeEvent
 	public static void onGetCollisionBoxes(GetCollisionBoxesEvent evt) {
 		if (isValidForLeavesNoClipping(evt.getEntity())) {
@@ -28,7 +27,7 @@ public class InfusionEvents {
 			}
 		}
 	}
-	
+
 	private static boolean isValidForLeavesNoClipping(Entity e) {
 		if (e == null) {
 			return false;
@@ -43,5 +42,5 @@ public class InfusionEvents {
 		}
 		return false;
 	}
-	
+
 }

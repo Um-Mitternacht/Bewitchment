@@ -1,23 +1,15 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
-import org.lwjgl.opengl.GL11;
-
-import com.bewitchment.client.render.baubles.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.baubles.ModelGirdleOfTheWoodedArmor;
-import com.bewitchment.common.attributes.BarkAmountAttribute;
-import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
-import com.bewitchment.common.item.ItemMod;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
+import com.bewitchment.client.render.baubles.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.baubles.ModelGirdleOfTheWoodedArmor;
+import com.bewitchment.common.attributes.BarkAmountAttribute;
+import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
+import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -41,6 +33,11 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 
@@ -56,6 +53,32 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		super(id);
 		this.setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	public static boolean buildBark(EntityPlayer player) {
+		IAttributeInstance attr = getAttribute(player);
+		int base = (int) attr.getAttributeValue();
+		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
+		int value = Math.min(possible, base);
+		attr.removeModifier(pieces_modifier);
+		attr.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", value + 1, AttributeModifierModeHelper.ADD));
+		return value < 5;
+	}
+
+	public static int getBarkPieces(EntityPlayer player) {
+		IAttributeInstance attr = getAttribute(player);
+		int base = (int) attr.getAttributeValue();
+		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
+		int actual = Math.min(possible, base);
+		return actual;
+	}
+
+	private static IAttributeInstance getAttribute(EntityPlayer player) {
+		IAttributeInstance attr = player.getEntityAttribute(BarkAmountAttribute.INSTANCE);
+		if (attr == null) {
+			attr = player.getAttributeMap().registerAttribute(BarkAmountAttribute.INSTANCE);
+		}
+		return attr;
 	}
 
 	@Override
@@ -92,16 +115,6 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		}
 	}
 
-	public static boolean buildBark(EntityPlayer player) {
-		IAttributeInstance attr = getAttribute(player);
-		int base = (int) attr.getAttributeValue();
-		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
-		int value = Math.min(possible, base);
-		attr.removeModifier(pieces_modifier);
-		attr.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", value + 1, AttributeModifierModeHelper.ADD));
-		return value < 5;
-	}
-	
 	private boolean destroyBark(EntityPlayer player) {
 		IAttributeInstance attr = getAttribute(player);
 		int value = (int) attr.getAttributeValue();
@@ -109,23 +122,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		attr.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", value - 1, AttributeModifierModeHelper.ADD));
 		return value > 0;
 	}
-	
-	public static int getBarkPieces(EntityPlayer player) {
-		IAttributeInstance attr = getAttribute(player);
-		int base = (int) attr.getAttributeValue();
-		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
-		int actual = Math.min(possible, base);
-		return actual;
-	}
-	
-	private static IAttributeInstance getAttribute(EntityPlayer player) {
-		IAttributeInstance attr = player.getEntityAttribute(BarkAmountAttribute.INSTANCE);
-		if (attr == null) {
-			attr = player.getAttributeMap().registerAttribute(BarkAmountAttribute.INSTANCE);
-		}
-		return attr;
-	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
@@ -207,7 +204,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 			GL11.glPopMatrix();
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onEquipmentChanged(LivingEquipmentChangeEvent evt) {
 		if (!evt.getEntityLiving().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {

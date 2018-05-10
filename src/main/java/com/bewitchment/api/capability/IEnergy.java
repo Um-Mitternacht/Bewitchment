@@ -1,7 +1,6 @@
 package com.bewitchment.api.capability;
 
 import com.bewitchment.api.infusion.IInfusion;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 
 /**

@@ -3,7 +3,6 @@ package com.bewitchment.common.core.capability.energy;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.infusion.IInfusion;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public class DummyIEnergy implements IEnergy {
