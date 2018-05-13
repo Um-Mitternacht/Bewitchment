@@ -1,21 +1,14 @@
 package com.bewitchment.common.item.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import org.lwjgl.opengl.GL11;
-
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
-import com.bewitchment.common.core.capability.simple.BarkCapability;
-import com.bewitchment.common.item.ItemMod;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
+import com.bewitchment.common.core.capability.simple.BarkCapability;
+import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -37,6 +30,10 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 

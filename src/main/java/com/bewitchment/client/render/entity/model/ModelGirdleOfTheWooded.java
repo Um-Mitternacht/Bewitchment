@@ -2,7 +2,6 @@ package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.item.baubles.ItemGirdleOfTheWooded;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
