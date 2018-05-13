@@ -5,8 +5,9 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-import com.bewitchment.client.render.baubles.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.baubles.ModelGirdleOfTheWoodedArmor;
+
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
 import com.bewitchment.common.attributes.BarkAmountAttribute;
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.item.ItemMod;

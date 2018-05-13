@@ -1,5 +1,6 @@
-package com.bewitchment.client.render.entity;
+package com.bewitchment.client.render.entity.renderer;
 
+import com.bewitchment.client.render.entity.model.ModelBroom;
 import com.bewitchment.common.entity.EntityFlyingBroom;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;

@@ -1,4 +1,4 @@
-package com.bewitchment.client.render.entity;
+package com.bewitchment.client.render.entity.renderer;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;

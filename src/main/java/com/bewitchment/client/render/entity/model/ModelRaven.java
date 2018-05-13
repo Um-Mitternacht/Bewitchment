@@ -1,4 +1,5 @@
-package raven;
+
+package com.bewitchment.client.render.entity.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -8,7 +9,7 @@ import net.minecraft.entity.Entity;
  * raven - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class raven extends ModelBase {
+public class ModelRaven extends ModelBase {
 	public ModelRenderer body;
 	public ModelRenderer neck;
 	public ModelRenderer lWing01;
@@ -43,68 +44,68 @@ public class raven extends ModelBase {
 	public ModelRenderer rLeg02;
 	public ModelRenderer rFoot;
 
-	public raven() {
+	public ModelRaven() {
 		this.textureWidth = 64;
 		this.textureHeight = 32;
 		this.tail01 = new ModelRenderer(this, 14, 23);
 		this.tail01.setRotationPoint(0.0F, -0.5F, 4.3F);
 		this.tail01.addBox(-2.0F, -0.5F, 0.0F, 4, 1, 4, 0.0F);
-		this.setRotateAngle(tail01, 0.045553093477052F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(tail01, 0.045553093477052F, 0.0F, 0.0F);
 		this.bodyFeathers = new ModelRenderer(this, 47, 6);
 		this.bodyFeathers.setRotationPoint(0.0F, 1.5F, 1.1F);
 		this.bodyFeathers.addBox(-1.5F, 0.0F, -2.5F, 3, 1, 5, 0.0F);
-		this.setRotateAngle(bodyFeathers, 0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(bodyFeathers, 0.136659280431156F, 0.0F, 0.0F);
 		this.beak02 = new ModelRenderer(this, 52, 0);
 		this.beak02.setRotationPoint(0.0F, 0.8F, -1.9F);
 		this.beak02.addBox(-0.5F, -0.5F, -2.2F, 1, 1, 3, 0.0F);
-		this.setRotateAngle(beak02, -0.091106186954104F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(beak02, -0.091106186954104F, 0.0F, 0.0F);
 		this.lLeg01 = new ModelRenderer(this, 47, 15);
 		this.lLeg01.setRotationPoint(1.2F, 0.2F, 2.7F);
 		this.lLeg01.addBox(0.0F, 0.2F, -1.0F, 1, 2, 2, 0.0F);
-		this.setRotateAngle(lLeg01, 0.31869712141416456F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(lLeg01, 0.31869712141416456F, 0.0F, 0.0F);
 		this.lWing02 = new ModelRenderer(this, 19, 4);
 		this.lWing02.setRotationPoint(3.7F, 0.0F, -0.3F);
 		this.lWing02.addBox(0.0F, -0.51F, -0.5F, 7, 1, 1, 0.0F);
-		this.setRotateAngle(lWing02, -0.136659280431156F, -0.5009094953223726F, 0.0F);
+		ModelHelper.setRotateAngle(lWing02, -0.136659280431156F, -0.5009094953223726F, 0.0F);
 		this.neck = new ModelRenderer(this, 0, 12);
 		this.neck.setRotationPoint(0.0F, 0.0F, -0.9F);
 		this.neck.addBox(-1.5F, -1.2F, -3.0F, 3, 2, 3, 0.0F);
-		this.setRotateAngle(neck, -0.5009094953223726F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(neck, -0.5009094953223726F, 0.0F, 0.0F);
 		this.lTailFeather01 = new ModelRenderer(this, 42, 22);
 		this.lTailFeather01.setRotationPoint(1.2F, 0.6F, 1.6F);
 		this.lTailFeather01.addBox(-0.5F, 0.01F, 0.0F, 1, 0, 6, 0.0F);
-		this.setRotateAngle(lTailFeather01, 0.0F, 0.091106186954104F, 0.0F);
+		ModelHelper.setRotateAngle(lTailFeather01, 0.0F, 0.091106186954104F, 0.0F);
 		this.rTailFeather01 = new ModelRenderer(this, 42, 22);
 		this.rTailFeather01.mirror = true;
 		this.rTailFeather01.setRotationPoint(-1.2F, 0.6F, 1.6F);
 		this.rTailFeather01.addBox(-0.5F, 0.01F, 0.0F, 1, 0, 6, 0.0F);
-		this.setRotateAngle(rTailFeather01, 0.0F, -0.091106186954104F, 0.0F);
+		ModelHelper.setRotateAngle(rTailFeather01, 0.0F, -0.091106186954104F, 0.0F);
 		this.lTailFeather02 = new ModelRenderer(this, 42, 22);
 		this.lTailFeather02.setRotationPoint(0.6F, 0.6F, 2.4F);
 		this.lTailFeather02.addBox(-0.5F, 0.0F, 0.0F, 1, 0, 6, 0.0F);
-		this.setRotateAngle(lTailFeather02, 0.0F, 0.045553093477052F, 0.0F);
+		ModelHelper.setRotateAngle(lTailFeather02, 0.0F, 0.045553093477052F, 0.0F);
 		this.neckFeathers02 = new ModelRenderer(this, 0, 19);
 		this.neckFeathers02.setRotationPoint(0.0F, 1.1F, -2.4F);
 		this.neckFeathers02.addBox(-1.5F, -0.5F, -0.2F, 3, 1, 3, 0.0F);
-		this.setRotateAngle(neckFeathers02, -0.8651597102135892F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(neckFeathers02, -0.8651597102135892F, 0.0F, 0.0F);
 		this.lFoot = new ModelRenderer(this, 50, 21);
 		this.lFoot.setRotationPoint(0.0F, 2.8F, 0.1F);
 		this.lFoot.addBox(-1.5F, 0.0F, -2.0F, 3, 0, 3, 0.0F);
-		this.setRotateAngle(lFoot, 0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(lFoot, 0.136659280431156F, 0.0F, 0.0F);
 		this.body = new ModelRenderer(this, 0, 0);
 		this.body.setRotationPoint(0.0F, 18.1F, -1.5F);
 		this.body.addBox(-2.0F, -2.1F, -2.5F, 4, 4, 7, 0.0F);
-		this.setRotateAngle(body, -0.31869712141416456F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(body, -0.31869712141416456F, 0.0F, 0.0F);
 		this.rWing02 = new ModelRenderer(this, 19, 4);
 		this.rWing02.mirror = true;
 		this.rWing02.setRotationPoint(-3.7F, 0.0F, -0.3F);
 		this.rWing02.addBox(-7.0F, -0.51F, -0.5F, 7, 1, 1, 0.0F);
-		this.setRotateAngle(rWing02, -0.136659280431156F, 0.5009094953223726F, 0.0F);
+		ModelHelper.setRotateAngle(rWing02, -0.136659280431156F, 0.5009094953223726F, 0.0F);
 		this.rLeg02 = new ModelRenderer(this, 54, 16);
 		this.rLeg02.mirror = true;
 		this.rLeg02.setRotationPoint(-0.5F, 2.0F, 0.0F);
 		this.rLeg02.addBox(-0.49F, 0.0F, -0.5F, 1, 3, 1, 0.0F);
-		this.setRotateAngle(rLeg02, -0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(rLeg02, -0.136659280431156F, 0.0F, 0.0F);
 		this.lWingFeathers02 = new ModelRenderer(this, 8, 15);
 		this.lWingFeathers02.setRotationPoint(3.5F, 0.0F, 0.0F);
 		this.lWingFeathers02.addBox(-3.5F, 0.0F, 0.4F, 13, 0, 7, 0.0F);
@@ -119,14 +120,14 @@ public class raven extends ModelBase {
 		this.rWing01.mirror = true;
 		this.rWing01.setRotationPoint(-1.9F, -0.5F, -1.1F);
 		this.rWing01.addBox(-4.0F, -0.5F, -1.0F, 4, 1, 2, 0.0F);
-		this.setRotateAngle(rWing01, 0.18203784098300857F, 1.1383037381507017F, -0.091106186954104F);
+		ModelHelper.setRotateAngle(rWing01, 0.18203784098300857F, 1.1383037381507017F, -0.091106186954104F);
 		this.beak01b = new ModelRenderer(this, 39, 6);
 		this.beak01b.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.beak01b.addBox(-0.7F, -0.5F, -2.0F, 1, 1, 2, 0.0F);
 		this.lWingFeathers01 = new ModelRenderer(this, 17, 8);
 		this.lWingFeathers01.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.lWingFeathers01.addBox(-0.5F, -0.1F, 0.8F, 7, 0, 6, 0.0F);
-		this.setRotateAngle(lWingFeathers01, -0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(lWingFeathers01, -0.136659280431156F, 0.0F, 0.0F);
 		this.beak01a = new ModelRenderer(this, 39, 6);
 		this.beak01a.setRotationPoint(0.0F, 0.5F, -1.9F);
 		this.beak01a.addBox(-0.3F, -0.5F, -2.0F, 1, 1, 2, 0.0F);
@@ -134,11 +135,11 @@ public class raven extends ModelBase {
 		this.rFoot.mirror = true;
 		this.rFoot.setRotationPoint(0.0F, 2.8F, 0.1F);
 		this.rFoot.addBox(-1.5F, 0.0F, -2.0F, 3, 0, 3, 0.0F);
-		this.setRotateAngle(rFoot, 0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(rFoot, 0.136659280431156F, 0.0F, 0.0F);
 		this.beak01c = new ModelRenderer(this, 39, 10);
 		this.beak01c.setRotationPoint(0.0F, -0.5F, 0.1F);
 		this.beak01c.addBox(-0.5F, -0.5F, -2.5F, 1, 1, 3, 0.0F);
-		this.setRotateAngle(beak01c, 0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(beak01c, 0.136659280431156F, 0.0F, 0.0F);
 		this.lTailFeather03 = new ModelRenderer(this, 42, 22);
 		this.lTailFeather03.setRotationPoint(0.1F, 0.6F, 3.3F);
 		this.lTailFeather03.addBox(-0.5F, -0.01F, 0.0F, 1, 0, 6, 0.0F);
@@ -149,38 +150,38 @@ public class raven extends ModelBase {
 		this.lLeg02 = new ModelRenderer(this, 54, 16);
 		this.lLeg02.setRotationPoint(0.5F, 2.0F, 0.0F);
 		this.lLeg02.addBox(-0.51F, 0.0F, -0.5F, 1, 3, 1, 0.0F);
-		this.setRotateAngle(lLeg02, -0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(lLeg02, -0.136659280431156F, 0.0F, 0.0F);
 		this.head = new ModelRenderer(this, 40, 0);
 		this.head.setRotationPoint(0.0F, -0.3F, -2.4F);
 		this.head.addBox(-1.5F, -1.5F, -2.0F, 3, 3, 2, 0.0F);
-		this.setRotateAngle(head, 0.7740535232594852F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(head, 0.7740535232594852F, 0.0F, 0.0F);
 		this.rLeg01 = new ModelRenderer(this, 47, 15);
 		this.rLeg01.mirror = true;
 		this.rLeg01.setRotationPoint(-1.2F, 0.2F, 2.7F);
 		this.rLeg01.addBox(-1.0F, 0.2F, -1.0F, 1, 2, 2, 0.0F);
-		this.setRotateAngle(rLeg01, 0.31869712141416456F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(rLeg01, 0.31869712141416456F, 0.0F, 0.0F);
 		this.rTailFeather02 = new ModelRenderer(this, 42, 22);
 		this.rTailFeather02.mirror = true;
 		this.rTailFeather02.setRotationPoint(-0.6F, 0.6F, 2.4F);
 		this.rTailFeather02.addBox(-0.5F, 0.0F, 0.0F, 1, 0, 6, 0.0F);
-		this.setRotateAngle(rTailFeather02, 0.0F, -0.045553093477052F, 0.0F);
+		ModelHelper.setRotateAngle(rTailFeather02, 0.0F, -0.045553093477052F, 0.0F);
 		this.lWing01 = new ModelRenderer(this, 19, 0);
 		this.lWing01.setRotationPoint(1.9F, -0.5F, -1.1F);
 		this.lWing01.addBox(0.0F, -0.5F, -1.0F, 4, 1, 2, 0.0F);
-		this.setRotateAngle(lWing01, 0.18203784098300857F, -1.1383037381507017F, 0.091106186954104F);
+		ModelHelper.setRotateAngle(lWing01, 0.18203784098300857F, -1.1383037381507017F, 0.091106186954104F);
 		this.tail03 = new ModelRenderer(this, 51, 26);
 		this.tail03.setRotationPoint(0.0F, 0.7F, 3.5F);
 		this.tail03.addBox(-1.5F, 0.0F, -0.6F, 3, 1, 3, 0.0F);
-		this.setRotateAngle(tail03, 0.18203784098300857F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(tail03, 0.18203784098300857F, 0.0F, 0.0F);
 		this.rWingFeathers01 = new ModelRenderer(this, 17, 8);
 		this.rWingFeathers01.mirror = true;
 		this.rWingFeathers01.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.rWingFeathers01.addBox(-6.5F, -0.1F, 0.8F, 7, 0, 6, 0.0F);
-		this.setRotateAngle(rWingFeathers01, -0.136659280431156F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(rWingFeathers01, -0.136659280431156F, 0.0F, 0.0F);
 		this.neckFeathers01 = new ModelRenderer(this, 0, 24);
 		this.neckFeathers01.setRotationPoint(0.0F, 1.2F, -1.6F);
 		this.neckFeathers01.addBox(-1.5F, -0.5F, -0.2F, 3, 1, 3, 0.0F);
-		this.setRotateAngle(neckFeathers01, -0.6829473363053812F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(neckFeathers01, -0.6829473363053812F, 0.0F, 0.0F);
 		this.body.addChild(this.tail01);
 		this.body.addChild(this.bodyFeathers);
 		this.head.addChild(this.beak02);
@@ -219,13 +220,5 @@ public class raven extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.body.render(f5);
 	}
-
-	/**
-	 * This is a helper function from Tabula to set the rotation of model parts
-	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
+	
 }

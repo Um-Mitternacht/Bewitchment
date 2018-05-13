@@ -1,4 +1,4 @@
-package com.bewitchment.client.render.entity;
+package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.common.entity.EntityBatSwarm;
 import net.minecraft.client.Minecraft;

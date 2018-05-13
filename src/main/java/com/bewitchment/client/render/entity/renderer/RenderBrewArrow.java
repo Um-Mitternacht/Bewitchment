@@ -1,4 +1,4 @@
-package com.bewitchment.client.render.entity;
+package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.common.entity.EntityBrewArrow;
 import net.minecraft.client.renderer.entity.RenderArrow;

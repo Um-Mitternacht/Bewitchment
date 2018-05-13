@@ -4,7 +4,7 @@
  * the MIT license.
  */
 
-package com.bewitchment.client.render.entity;
+package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import net.minecraft.client.Minecraft;
