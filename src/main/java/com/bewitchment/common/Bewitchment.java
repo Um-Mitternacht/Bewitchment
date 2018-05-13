@@ -21,6 +21,7 @@ import com.bewitchment.common.core.command.*;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.BarkGrow;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.ModFortunes;
@@ -49,6 +50,9 @@ import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -84,7 +88,7 @@ public class Bewitchment {
 		CapabilityEnergyUser.init();
 		CapabilityTransformationData.init();
 		CapabilityBloodReserve.init();
-		SimpleCapability.preInit(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, new BarkCapability());
+		SimpleCapability.preInit(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE);
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
@@ -104,7 +108,8 @@ public class Bewitchment {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		SimpleCapability.init(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, new BarkCapability());
+		IMessageHandler<BarkGrow, IMessage> mh = SimpleCapability.init(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE, NetworkHandler.HANDLER, BarkGrow::decode, BarkGrow::encode);
+		NetworkHandler.HANDLER.registerMessage(mh, BarkGrow.class, NetworkHandler.next(), Side.CLIENT);
 		ModItems.init();
 		ModBlocks.init();
 		ModTarots.init();

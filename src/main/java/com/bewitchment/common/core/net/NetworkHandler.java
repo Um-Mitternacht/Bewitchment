@@ -3,6 +3,7 @@ package com.bewitchment.common.core.net;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -19,21 +20,22 @@ import net.minecraftforge.fml.relauncher.Side;
 public final class NetworkHandler {
 
 	public static final SimpleNetworkWrapper HANDLER = new SimpleNetworkWrapper(LibMod.MOD_ID);
+	
+	private static int nextId = 0;
 
 	private NetworkHandler() {
 	}
 
 	public static void init() {
-		int id = 0;
-		HANDLER.registerMessage(ParticleMessage.ParticleMessageHandler.class, ParticleMessage.class, id++, Side.CLIENT);
-		HANDLER.registerMessage(EnergyMessage.EnergyMessageHandler.class, EnergyMessage.class, id++, Side.CLIENT);
-		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, id++, Side.CLIENT);
-		registerSimpleMessage(PlayerTransformationChangedMessage.class, id++, Side.CLIENT);
-		registerSimpleMessage(PlayerVampireBloodChanged.class, id++, Side.CLIENT);
-		registerSimpleMessage(EntityInternalBloodChanged.class, id++, Side.CLIENT);
-		registerSimpleMessage(NightVisionStatus.class, id++, Side.CLIENT);
+		HANDLER.registerMessage(ParticleMessage.ParticleMessageHandler.class, ParticleMessage.class, next(), Side.CLIENT);
+		HANDLER.registerMessage(EnergyMessage.EnergyMessageHandler.class, EnergyMessage.class, next(), Side.CLIENT);
+		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, next(), Side.CLIENT);
+		registerSimpleMessage(PlayerTransformationChangedMessage.class, next(), Side.CLIENT);
+		registerSimpleMessage(PlayerVampireBloodChanged.class, next(), Side.CLIENT);
+		registerSimpleMessage(EntityInternalBloodChanged.class, next(), Side.CLIENT);
+		registerSimpleMessage(NightVisionStatus.class, next(), Side.CLIENT);
 
-		registerSimpleMessage(PlayerUsedAbilityMessage.class, id++, Side.SERVER);
+		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
 
 	}
 
@@ -54,5 +56,10 @@ public final class NetworkHandler {
 	public static void updateToNearbyPlayers(World worldObj, BlockPos pos) {
 		final IBlockState state = worldObj.getBlockState(pos);
 		worldObj.notifyBlockUpdate(pos, state, state, 8);
+	}
+	
+	public static int next() {
+		nextId++;
+		return nextId - 1;
 	}
 }

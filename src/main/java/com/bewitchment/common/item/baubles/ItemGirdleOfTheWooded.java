@@ -54,10 +54,12 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	}
 
 	public static boolean buildBark(EntityPlayer player) {
+		System.out.println("Growing");
 		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
 		int value = Math.min(possible, base);
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value + 1;
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 		if (value > 5) {
 			value = 5;
 			return false;
@@ -108,6 +110,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 
 	private boolean destroyBark(EntityPlayer player) {
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces -= 1;
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 		if (player.getCapability(BarkCapability.CAPABILITY, null).pieces < 0) {
 			player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
 			return false;
@@ -141,11 +144,13 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 5 : 0;
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 	}
 
 	@SubscribeEvent
@@ -200,6 +205,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 			int possible = Math.min((ForgeHooks.getTotalArmorValue((EntityPlayer) evt.getEntityLiving()) / 2), 5);
 			int actual = Math.min(possible, base);
 			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).pieces = actual;
+			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).markDirty();
 		}
 	}
 }
