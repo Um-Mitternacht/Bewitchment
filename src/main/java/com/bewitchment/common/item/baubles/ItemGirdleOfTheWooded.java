@@ -1,22 +1,25 @@
 package com.bewitchment.common.item.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
+import com.bewitchment.common.core.capability.simple.BarkCapability;
+import com.bewitchment.common.item.ItemMod;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
-import com.bewitchment.common.attributes.BarkAmountAttribute;
-import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
-import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
@@ -34,16 +37,10 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
 
 public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 
 	private static final BaubleType BAUBTYPE = BaubleType.BELT;
-	private static final UUID pieces_modifier = UUID.fromString("b190875d-bfa0-4670-9342-cd816f42c13d");
 
 	@SideOnly(Side.CLIENT)
 	private static ModelGirdleOfTheWooded model;
@@ -57,29 +54,22 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	}
 
 	public static boolean buildBark(EntityPlayer player) {
-		IAttributeInstance attr = getAttribute(player);
-		int base = (int) attr.getAttributeValue();
+		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
 		int value = Math.min(possible, base);
-		attr.removeModifier(pieces_modifier);
-		attr.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", value + 1, AttributeModifierModeHelper.ADD));
-		return value < 5;
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value + 1;
+		if (value > 5) {
+			value = 5;
+			return false;
+		}
+		return true;
 	}
 
 	public static int getBarkPieces(EntityPlayer player) {
-		IAttributeInstance attr = getAttribute(player);
-		int base = (int) attr.getAttributeValue();
+		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
 		int actual = Math.min(possible, base);
 		return actual;
-	}
-
-	private static IAttributeInstance getAttribute(EntityPlayer player) {
-		IAttributeInstance attr = player.getEntityAttribute(BarkAmountAttribute.INSTANCE);
-		if (attr == null) {
-			attr = player.getAttributeMap().registerAttribute(BarkAmountAttribute.INSTANCE);
-		}
-		return attr;
 	}
 
 	@Override
@@ -117,11 +107,12 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	}
 
 	private boolean destroyBark(EntityPlayer player) {
-		IAttributeInstance attr = getAttribute(player);
-		int value = (int) attr.getAttributeValue();
-		attr.removeModifier(pieces_modifier);
-		attr.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", value - 1, AttributeModifierModeHelper.ADD));
-		return value > 0;
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces -= 1;
+		if (player.getCapability(BarkCapability.CAPABILITY, null).pieces < 0) {
+			player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -143,22 +134,18 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 
 	@Override
 	public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
-		IAttributeInstance aii = getAttribute((EntityPlayer) player);
-		aii.removeAllModifiers();
-		if (((EntityPlayer) player).isCreative()) {
-			aii.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", Math.min((ForgeHooks.getTotalArmorValue((EntityPlayer) player) / 2), 5), AttributeModifierModeHelper.ADD));
-		}
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 5 : 0;
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-		getAttribute((EntityPlayer) player).removeAllModifiers();
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
 	}
 
 	@SubscribeEvent
@@ -209,13 +196,10 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	@SubscribeEvent
 	public void onEquipmentChanged(LivingEquipmentChangeEvent evt) {
 		if (!evt.getEntityLiving().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
-			IAttributeInstance ai = getAttribute((EntityPlayer) evt.getEntityLiving());
-			int base = (int) ai.getAttributeValue();
+			int base = evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).pieces;
 			int possible = Math.min((ForgeHooks.getTotalArmorValue((EntityPlayer) evt.getEntityLiving()) / 2), 5);
 			int actual = Math.min(possible, base);
-			ai.removeAllModifiers();
-			ai.applyModifier(new AttributeModifier(pieces_modifier, "bark_pieces", actual, AttributeModifierModeHelper.ADD));
+			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).pieces = actual;
 		}
 	}
-
 }
