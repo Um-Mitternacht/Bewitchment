@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
+import com.bewitchment.client.render.entity.model.ModelWerewolf;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
 
@@ -14,19 +15,23 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class WerewolfHUD {
+public class WerewolfEventHandler {
 	
 	private static final ResourceLocation MOON = new ResourceLocation(LibMod.MOD_ID, "textures/gui/moon_warning.png");
+	private static final ResourceLocation WEREWOLF_SKIN = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/npcs/werewolf_grey.png");
+	private static final ModelWerewolf WW_MODEL = new ModelWerewolf();
 	
 	@SubscribeEvent
 	public void renderBar(RenderGameOverlayEvent.Post evt) {
@@ -81,5 +86,22 @@ public class WerewolfHUD {
 		buff.pos(x - radius, y - radius, 0).tex(0, 0).endVertex();
 		
 		tessellator.draw();
+	}
+	
+	@SubscribeEvent
+	public void renderPlayer(RenderPlayerEvent.Pre evt) {
+		evt.setCanceled(true);
+		EntityPlayer p = evt.getEntityPlayer();
+		if (p.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
+			evt.setCanceled(true);
+			GlStateManager.pushMatrix();
+			Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);
+			GL11.glRotated(180, 1, 0, 0);
+			GL11.glRotated(p.rotationYaw, 0, 1, 0);
+			GL11.glTranslated(0, -3, 0.02);
+			GL11.glScaled(0.1, 0.1, 0.1);
+			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, 1f);
+			GlStateManager.popMatrix();
+		}
 	}
 }

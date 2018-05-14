@@ -1,39 +1,70 @@
 package com.bewitchment.client.render.entity.model;
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 /**
  * werewolf - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelWerewolf extends ModelBase {
+public class ModelWerewolf extends ModelBiped {
+	
 	public ModelRenderer stomach;
 	public ModelRenderer chest;
-	public ModelRenderer lLeg01;
-	public ModelRenderer fur05;
-	public ModelRenderer fur06;
+	
 	public ModelRenderer tail01;
+	public ModelRenderer tail01Floof;
+	public ModelRenderer tail02;
+	public ModelRenderer tail03;
+	public ModelRenderer tail02Floof;
+	public ModelRenderer tail03Floof;
+	
+	public ModelRenderer lLeg01;
+	public ModelRenderer lLeg02;
+	public ModelRenderer lLeg03;
+	public ModelRenderer lFoot;
+	
 	public ModelRenderer rLeg01;
+	public ModelRenderer rLeg02;
+	public ModelRenderer rLeg03;
+	public ModelRenderer rFoot;
+	
 	public ModelRenderer neck;
-	public ModelRenderer lArm01;
+	
+	public ModelRenderer fur01;
 	public ModelRenderer fur02;
 	public ModelRenderer fur03;
 	public ModelRenderer fur04;
+	public ModelRenderer fur05;
+	public ModelRenderer fur06;
+	
 	public ModelRenderer rArm01;
+	public ModelRenderer rArm02;
+	public ModelRenderer rArmFur;
+	public ModelRenderer rClaw01;
+	public ModelRenderer rClaw02;
+	public ModelRenderer rClaw03;
+	public ModelRenderer rClaw04;
+	
+	public ModelRenderer lArm01;
+	public ModelRenderer lArm02;
+	public ModelRenderer lArmFur;
+	public ModelRenderer lClaw01;
+	public ModelRenderer lClaw02;
+	public ModelRenderer lClaw03;
+	public ModelRenderer lClaw04;
+	
 	public ModelRenderer head;
-	public ModelRenderer fur01;
 	public ModelRenderer jawUpper01;
+	public ModelRenderer jawUpper02;
 	public ModelRenderer jawLower;
 	public ModelRenderer lEarFeral01;
 	public ModelRenderer rEarFeral01;
-	public ModelRenderer lCheekFur;
-	public ModelRenderer rCheekFur;
 	public ModelRenderer lEarClassic;
 	public ModelRenderer rEarClassic;
+	public ModelRenderer lCheekFur;
+	public ModelRenderer rCheekFur;
 	public ModelRenderer snout;
-	public ModelRenderer jawUpper02;
 	public ModelRenderer upperTeeth01;
 	public ModelRenderer upperTeeth03;
 	public ModelRenderer lowerTeeth01;
@@ -43,29 +74,6 @@ public class ModelWerewolf extends ModelBase {
 	public ModelRenderer rEarFeral02;
 	public ModelRenderer lEarFeral03_1;
 	public ModelRenderer upperTeeth02;
-	public ModelRenderer lArm02;
-	public ModelRenderer lClaw01;
-	public ModelRenderer lArmFur;
-	public ModelRenderer lClaw02;
-	public ModelRenderer lClaw03;
-	public ModelRenderer lClaw04;
-	public ModelRenderer rArm02;
-	public ModelRenderer rClaw01;
-	public ModelRenderer rArmFur;
-	public ModelRenderer rClaw02;
-	public ModelRenderer rClaw03;
-	public ModelRenderer rClaw04;
-	public ModelRenderer lLeg02;
-	public ModelRenderer lLeg03;
-	public ModelRenderer lFoot;
-	public ModelRenderer tail01Floof;
-	public ModelRenderer tail02;
-	public ModelRenderer tail03;
-	public ModelRenderer tail02Floof;
-	public ModelRenderer tail03Floof;
-	public ModelRenderer rLeg02;
-	public ModelRenderer rLeg03;
-	public ModelRenderer rFoot;
 
 	public ModelWerewolf() {
 		this.textureWidth = 128;
@@ -308,6 +316,14 @@ public class ModelWerewolf extends ModelBase {
 		this.jawLower = new ModelRenderer(this, 37, 48);
 		this.jawLower.setRotationPoint(0.0F, -4.8F, -2.5F);
 		this.jawLower.addBox(-1.5F, -4.0F, -0.5F, 3, 4, 1, 0.0F);
+		
+		bipedHead.addChild(neck);
+		bipedLeftLeg.addChild(lLeg01);
+		bipedRightLeg.addChild(rLeg01);
+		bipedLeftArm.addChild(lArm01);
+		bipedRightArm.addChild(rArm01);
+		bipedBody.addChild(stomach);
+		
 		this.jawLower.addChild(this.lowerTeeth01);
 		this.rArm02.addChild(this.rArmFur);
 		this.tail01.addChild(this.tail01Floof);
@@ -317,7 +333,7 @@ public class ModelWerewolf extends ModelBase {
 		this.head.addChild(this.snout);
 		this.lLeg02.addChild(this.lLeg03);
 		this.lClaw03.addChild(this.lClaw04);
-		this.chest.addChild(this.lArm01);
+		// this.chest.addChild(this.lArm01);
 		this.head.addChild(this.lEarClassic);
 		this.head.addChild(this.lCheekFur);
 		this.lLeg01.addChild(this.lLeg02);
@@ -345,9 +361,9 @@ public class ModelWerewolf extends ModelBase {
 		this.rEarFeral01.addChild(this.lEarFeral03_1);
 		this.head.addChild(this.jawUpper02);
 		this.rLeg03.addChild(this.rFoot);
-		this.chest.addChild(this.rArm01);
+		// this.chest.addChild(this.rArm01);
 		this.lArm01.addChild(this.lArm02);
-		this.stomach.addChild(this.rLeg01);
+		// this.stomach.addChild(this.rLeg01);
 		this.head.addChild(this.rCheekFur);
 		this.lClaw02.addChild(this.lClaw03);
 		this.head.addChild(this.lEarFeral01);
@@ -358,16 +374,12 @@ public class ModelWerewolf extends ModelBase {
 		this.head.addChild(this.jawUpper01);
 		this.jawUpper01.addChild(this.upperTeeth01);
 		this.rArm02.addChild(this.rClaw01);
-		this.chest.addChild(this.neck);
+		// this.chest.addChild(this.neck);
 		this.stomach.addChild(this.chest);
 		this.chest.addChild(this.fur02);
 		this.jawUpper01.addChild(this.upperTeeth03);
-		this.stomach.addChild(this.lLeg01);
+		// this.stomach.addChild(this.lLeg01);
 		this.head.addChild(this.jawLower);
-	}
-
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.stomach.render(f5);
+		
 	}
 }

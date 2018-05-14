@@ -77,7 +77,7 @@ public class ClientProxy implements ISidedProxy {
 		MinecraftForge.EVENT_BUS.register(new BloodViewerHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());
 		MinecraftForge.EVENT_BUS.register(ExtraBarButtonsHUD.INSTANCE);
-		MinecraftForge.EVENT_BUS.register(new WerewolfHUD());
+		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
 	}
 
 	@Override
