@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.transformation.DefaultTransformations;
@@ -9,11 +7,12 @@ import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.UUID;
 
 public class WerewolfAbilityHandler {
 
@@ -33,7 +32,7 @@ public class WerewolfAbilityHandler {
 			evt.getEntityPlayer().setHealth(evt.getEntityPlayer().getMaxHealth() * healthPC);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void attachAbilities(HotbarActionCollectionEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
@@ -42,7 +41,7 @@ public class WerewolfAbilityHandler {
 			if (data.getLevel() >= 2) {
 				evt.getList().add(ModAbilities.NIGHT_VISION);
 			}
-			
+
 			if (data.getLevel() >= 5) {
 				evt.getList().add(ModAbilities.HOWL);
 			}
