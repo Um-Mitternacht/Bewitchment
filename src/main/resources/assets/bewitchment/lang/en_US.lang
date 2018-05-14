@@ -689,3 +689,7 @@ modifier.description.bewitchment.suppress_entity=Entity effect suppression
 modifier.description.bewitchment.suppress_particles=Particle suppression
 modifier.description.bewitchment.gas_duration=Lingering cloud duration
 modifier.description.bewitchment.length=Effect duration
+
+moon.tooltip.0=You feel weird today
+moon.tooltip.1=Your heart is beating faster, your thoughts are slipping out of control
+moon.tooltip.2=No matter how hard you try, you cannot switch back

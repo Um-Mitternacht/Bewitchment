@@ -1,11 +1,18 @@
 package com.bewitchment.client.core.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -19,11 +26,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD {
@@ -176,11 +178,12 @@ public class ExtraBarButtonsHUD {
 				selectedItemTemp = Minecraft.getMinecraft().player.inventory.currentItem;
 				mc.player.inventory.currentItem = 11;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
 			}
-			ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+			ScaledResolution sr = event.getResolution();
 			if (actionScroller[0] != null) {
 				GlStateManager.pushMatrix();
-				if (slotSelected < 0)
+				if (slotSelected < 0) {
 					GlStateManager.color(1, 1, 1, 0.4f);
+				}
 				mc.getTextureManager().bindTexture(actionScroller[0].getIcon(mc.player));
 				renderTextureAtIndex((sr.getScaledWidth() / 2) + 131.5, sr.getScaledHeight() - 19.5, actionScroller[0].getIconIndexX(mc.player), actionScroller[0].getIconIndexY(mc.player));
 				GlStateManager.popMatrix();
