@@ -1,7 +1,7 @@
 
 package com.bewitchment.client.render.entity.model;
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -9,7 +9,7 @@ import net.minecraft.entity.Entity;
  * werewolf - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelWerewolf extends ModelBase {
+public class ModelWerewolf extends ModelBiped {
 	public ModelRenderer stomach;
 	public ModelRenderer lArm01;
 	public ModelRenderer rArm01;
@@ -360,22 +360,41 @@ public class ModelWerewolf extends ModelBase {
 		this.tail01.addChild(this.tail02);
 		this.lArm02.addChild(this.lClaw01);
 		this.tail01.addChild(this.tail01Floof);
+		stomach.addChild(tail01);
+		
+		bipedBody = stomach;
+		bipedLeftArm = lArm01;
+		bipedRightArm = rArm01;
+		bipedLeftLeg = lLeg01;
+		bipedRightLeg = rLeg01;
+		bipedHead = neck;
 	}
-
+	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.stomach.render(f5);
-		this.rLeg01.render(f5);
-		this.lLeg01.render(f5);
-		this.neck.render(f5);
-		this.rArm01.render(f5);
-		this.lArm01.render(f5);
-		this.tail01.render(f5);
+		
+		// if (bipedBody.childModels == null || bipedBody.childModels.isEmpty()) {
+		// bipedBody.addChild(stomach);
+		// bipedBody.addChild(tail01);
+		// bipedLeftArm.addChild(lArm01);
+		// bipedRightArm.addChild(rArm01);
+		// bipedLeftLeg.addChild(lLeg01);
+		// bipedRightLeg.addChild(rLeg01);
+		// }
+		//
+		//
+		//
+		super.render(entity, f, f1, f2, f3, f4, f5);
+		
+		// this.stomach.render(f5);
+		// this.rLeg01.render(f5);
+		// this.lLeg01.render(f5);
+		// this.neck.render(f5);
+		// this.rArm01.render(f5);
+		// this.lArm01.render(f5);
+		// this.tail01.render(f5);
 	}
 
-	/**
-	 * This is a helper function from Tabula to set the rotation of model parts
-	 */
 	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;

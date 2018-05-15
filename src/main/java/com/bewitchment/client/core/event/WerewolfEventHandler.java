@@ -1,15 +1,18 @@
 package com.bewitchment.client.core.event;
 
+import java.util.Arrays;
+
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.client.render.entity.model.ModelWerewolf;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,10 +25,6 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
-
-import java.util.Arrays;
 
 @SideOnly(Side.CLIENT)
 public class WerewolfEventHandler {
@@ -100,7 +99,7 @@ public class WerewolfEventHandler {
 			GL11.glRotated(180, 1, 0, 0);
 			GL11.glRotated(p.rotationYaw, 0, 1, 0);
 			GL11.glTranslated(0, -3, 0.02);
-			GL11.glScaled(0.1, 0.1, 0.1);
+			GL11.glScaled(0.12, 0.12, 0.12);
 			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, 1f);
 			GlStateManager.popMatrix();
 		}
