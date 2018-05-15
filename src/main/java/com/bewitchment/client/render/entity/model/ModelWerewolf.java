@@ -1,4 +1,5 @@
-package werewolf;
+
+package com.bewitchment.client.render.entity.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -308,6 +309,7 @@ public class ModelWerewolf extends ModelBase {
 		this.tail01Floof = new ModelRenderer(this, 112, 18);
 		this.tail01Floof.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.tail01Floof.addBox(-1.5F, 0.0F, -1.5F, 3, 5, 3, 0.0F);
+		
 		this.lClaw01.addChild(this.lClaw02);
 		this.rClaw01.addChild(this.rClaw02);
 		this.stomach.addChild(this.chest);
