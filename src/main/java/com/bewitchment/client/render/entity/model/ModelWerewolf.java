@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * werewolf - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class werewolf extends ModelBase {
+public class ModelWerewolf extends ModelBase {
 	public ModelRenderer stomach;
 	public ModelRenderer lArm01;
 	public ModelRenderer rArm01;
@@ -67,7 +67,7 @@ public class werewolf extends ModelBase {
 	public ModelRenderer tail02Floof;
 	public ModelRenderer tail03Floof;
 
-	public werewolf() {
+	public ModelWerewolf() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
 		this.lClaw02 = new ModelRenderer(this, 0, 0);
