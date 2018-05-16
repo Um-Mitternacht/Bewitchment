@@ -96,11 +96,13 @@ public class WerewolfEventHandler {
 			evt.setCanceled(true);
 			GlStateManager.pushMatrix();
 			Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);
+			GL11.glRotated(-p.rotationYaw, 0, 1, 0);
+			GL11.glRotated(-20, 1, 0, 0);
 			GL11.glRotated(180, 1, 0, 0);
-			GL11.glRotated(p.rotationYaw, 0, 1, 0);
-			GL11.glTranslated(0, -3, 0.02);
-			GL11.glScaled(0.12, 0.12, 0.12);
-			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, 1f);
+			GL11.glTranslated(0, -1.25, -0.8);
+			GL11.glScaled(0.06, 0.06, 0.06);
+			GlStateManager.disableLighting();
+			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, evt.getPartialRenderTick());
 			GlStateManager.popMatrix();
 		}
 	}

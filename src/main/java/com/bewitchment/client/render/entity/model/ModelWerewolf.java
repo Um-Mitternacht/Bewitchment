@@ -3,6 +3,10 @@ package com.bewitchment.client.render.entity.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * werewolf5 - cybercat5555
@@ -361,13 +365,38 @@ public class ModelWerewolf extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.bipedRightArm.render(f5);
-		this.bipedBody.render(f5);
-		this.bipedLeftLeg.render(f5);
-		this.bipedHead.render(f5);
-		this.bipedRightLeg.render(f5);
-		this.bipedLeftArm.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
+		
+		EntityPlayer p = (EntityPlayer) entity;
+		
+		float rotArm = MathHelper.cos(limbSwing * 0.5f) * limbSwingAmount * 2;
+		bipedRightArm.rotateAngleX = rotArm;
+		bipedLeftArm.rotateAngleX = -rotArm;
+		
+		bipedRightLeg.rotateAngleX = -rotArm;
+		bipedLeftLeg.rotateAngleX = rotArm;
+		
+		bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
+		bipedHead.rotateAngleX = MathHelper.clamp((float) (2 * Math.PI * headPitch / 360f), -1.20f, 0.4f);
+		
+		float sp = p.swingProgress;
+		float psp = p.prevSwingProgress;
+		
+		if (sp != 0) {
+			float interpolatedSwingProgress = (psp + (sp + 0.16f - psp) * ptick); // TODO fix
+			if ((p.swingingHand == EnumHand.MAIN_HAND) == (p.getPrimaryHand() == EnumHandSide.RIGHT)) {
+				this.bipedRightArm.rotateAngleX += interpolatedSwingProgress;
+			} else {
+				this.bipedLeftArm.rotateAngleX += interpolatedSwingProgress;
+			}
+		}
+		
+		this.bipedRightArm.render(1);
+		this.bipedBody.render(1);
+		this.bipedLeftLeg.render(1);
+		this.bipedHead.render(1);
+		this.bipedRightLeg.render(1);
+		this.bipedLeftArm.render(1);
 	}
 
 	/**
