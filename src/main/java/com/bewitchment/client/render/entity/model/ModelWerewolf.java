@@ -366,22 +366,22 @@ public class ModelWerewolf extends ModelBase {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
-		
+
 		EntityPlayer p = (EntityPlayer) entity;
-		
+
 		float rotArm = MathHelper.cos(limbSwing * 0.5f) * limbSwingAmount * 2;
 		bipedRightArm.rotateAngleX = rotArm;
 		bipedLeftArm.rotateAngleX = -rotArm;
-		
+
 		bipedRightLeg.rotateAngleX = -rotArm;
 		bipedLeftLeg.rotateAngleX = rotArm;
-		
+
 		bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 		bipedHead.rotateAngleX = MathHelper.clamp((float) (2 * Math.PI * headPitch / 360f), -1.20f, 0.4f);
-		
+
 		float sp = p.swingProgress;
 		float psp = p.prevSwingProgress;
-		
+
 		if (sp != 0) {
 			float interpolatedSwingProgress = (psp + (sp + 0.16f - psp) * ptick); // TODO fix
 			if ((p.swingingHand == EnumHand.MAIN_HAND) == (p.getPrimaryHand() == EnumHandSide.RIGHT)) {
@@ -390,7 +390,7 @@ public class ModelWerewolf extends ModelBase {
 				this.bipedLeftArm.rotateAngleX += interpolatedSwingProgress;
 			}
 		}
-		
+
 		this.bipedRightArm.render(1);
 		this.bipedBody.render(1);
 		this.bipedLeftLeg.render(1);
