@@ -122,6 +122,7 @@ public final class ModItems {
 	public static final Item book_of_shadows = PLACE_HOLDER;
 	public static final Item dusty_grimoire = PLACE_HOLDER;
 	public static final Item mortar_and_pestle = PLACE_HOLDER;
+	public static final Item mortar_and_pestle_stone = PLACE_HOLDER;
 	public static final Item wand = PLACE_HOLDER;
 	public static final Item athame = PLACE_HOLDER;
 	public static final Item boline = PLACE_HOLDER;
@@ -202,6 +203,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.HONEYCOMB),
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),
+				new ItemMod(LibItemName.MORTAR_AND_PESTLE_STONE),
 				new ItemBrewDrinkable(),
 				new ItemBrewThrowable(LibItemName.BREW_PHIAL_SPLASH),
 				new ItemBrewThrowable(LibItemName.BREW_PHIAL_LINGER),
