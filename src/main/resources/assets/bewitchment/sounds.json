@@ -20,5 +20,11 @@
       "bewitchment:chalk_scribble_3"
     ],
     "subtitle": "bewitchment.subtitle.chalk_scribble"
+  },
+  "broom_sweep": {
+    "sounds": [
+      "bewitchment:broom_sweep"
+    ],
+    "subtitle": "bewitchment.subtitle.broom_sweep"
   }
 }

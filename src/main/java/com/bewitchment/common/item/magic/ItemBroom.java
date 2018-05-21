@@ -2,16 +2,15 @@ package com.bewitchment.common.item.magic;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.tree.BlockModSapling.EnumSaplingType;
+import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.entity.EntityFlyingBroom;
 import com.bewitchment.common.item.ItemMod;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -45,8 +44,12 @@ public class ItemBroom extends ItemMod {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (world.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs)) {
+		if (world.getBlockState(pos).getBlock().equals(ModBlocks.ritual_glyphs) || (world.getBlockState(pos).getBlock().equals(ModBlocks.salt_barrier) && player.getHeldItem(hand).getMetadata() != 0)) {
 			world.setBlockToAir(pos);
+			player.swingArm(hand);
+			world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BROOM_SWEEP, SoundCategory.BLOCKS, 0.8f, world.rand.nextFloat() * 0.4f + 0.8f, false);
+			world.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, pos.getX() + world.rand.nextDouble(), pos.getY() + 0.1, pos.getZ() + world.rand.nextDouble(), 0, 0, 0);
+			world.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, pos.getX() + world.rand.nextDouble(), pos.getY() + 0.1, pos.getZ() + world.rand.nextDouble(), 0, 0, 0);
 		} else if (player.getHeldItem(hand).getMetadata() != 0) {
 			spawnBroom(player, world, pos.offset(side), player.getHeldItem(hand));
 			player.setHeldItem(hand, ItemStack.EMPTY);

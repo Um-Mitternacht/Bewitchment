@@ -1,7 +1,13 @@
 package com.bewitchment.common.entity;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,10 +32,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-
-import javax.annotation.Nullable;
-import java.lang.reflect.Field;
-import java.util.Arrays;
 
 @Mod.EventBusSubscriber
 public class EntityFlyingBroom extends Entity {
@@ -213,7 +215,7 @@ public class EntityFlyingBroom extends Entity {
 		Vec3d horAxis = look.crossProduct(new Vec3d(0, 1, 0)).normalize().scale(-strafe / 10);
 		motionX += front * (horAxis.x + look.x) / 20;
 		motionZ += front * (horAxis.z + look.z) / 20;
-		motionY += up / 60;
+		motionY += (up / 60) - 0.005;
 
 		if (motionX * motionX + motionY * motionY + motionZ * motionZ > 8) {
 			Vec3d limit = new Vec3d(motionX, motionY, motionZ).normalize().scale(2);

@@ -1,10 +1,11 @@
 package com.bewitchment.common.item.magic;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
-import com.bewitchment.client.sound.ModSounds;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.item.ItemMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;

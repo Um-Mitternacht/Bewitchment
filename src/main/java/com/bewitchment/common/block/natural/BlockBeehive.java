@@ -1,11 +1,18 @@
 package com.bewitchment.common.block.natural;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.bewitchment.client.fx.ParticleF;
-import com.bewitchment.client.sound.ModSounds;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,12 +29,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.
