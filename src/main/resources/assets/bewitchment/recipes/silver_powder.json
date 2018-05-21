@@ -2,7 +2,7 @@
   "type": "forge:ore_shapeless",
   "ingredients": [
     {
-      "item": "bewitchment:mortar_and_pestle",
+      "item": "bewitchment:mortar_and_pestle_stone",
       "data": 0
     },
     {
