@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.net.messages;
 
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.net.SimpleMessage;
 
@@ -26,7 +27,7 @@ public class WitchFireTP extends SimpleMessage<WitchFireTP> {
 		CapabilityCauldronTeleport ctp = sender.world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null);
 		BlockPos dest = ctp.get(destination, sender.world);
 		if (dest != null) {
-			sender.world.setBlockToAir(sender.getPosition());
+			sender.world.setBlockState(sender.getPosition(), ModBlocks.witchfire.getDefaultState(), 3);
 			sender.setPositionAndUpdate(dest.getX() + 0.5d, dest.getY() + 0.5, dest.getZ() + 0.5d);
 		}
 		return null;
