@@ -337,6 +337,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		lockInputForCrafting = tag.getBoolean("lock");
 		tank.readFromNBT(tag.getCompoundTag("tank"));
 		ingredients.clear();
+		if (tag.hasKey("name")) {
+			name = tag.getString("name");
+		} else {
+			name = null;
+		}
 		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
 	}
 
@@ -385,6 +390,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					createAndGiveBrew(playerIn, heldItem);
 				}
 			} else if (heldItem.getItem() == Items.NAME_TAG && heldItem.hasDisplayName()) {
+				String oldName = name;
 				name = heldItem.getDisplayName();
 				if (world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null).put(world, pos)) {
 					if (!playerIn.isCreative()) {
@@ -394,6 +400,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					syncToClient();
 				} else {
 					playerIn.sendStatusMessage(new TextComponentTranslation("cauldron.name.add.error"), true);
+					name = oldName;
 				}
 			}
 		}
