@@ -46,6 +46,9 @@ public interface CapabilityCauldronTeleport {
 			if (cauldronName == null) {
 				return false;
 			}
+			
+			cauldronName = cauldronName.replace(" ", "").trim();
+			
 			BlockPos pos = get(cauldronName, world);
 			if (pos != null && !pos.equals(position)) {
 				return false;
@@ -57,6 +60,7 @@ public interface CapabilityCauldronTeleport {
 		@Override
 		@Nullable
 		public BlockPos get(String name, World world) {
+			name = name.replace(" ", "").trim();
 			BlockPos position = map.get(name);
 			if (position == null) {
 				return null;
@@ -65,7 +69,7 @@ public interface CapabilityCauldronTeleport {
 				return null;
 			}
 			
-			if (!name.equals(((TileEntityCauldron) world.getTileEntity(position)).getName())) {
+			if (!name.equals(((TileEntityCauldron) world.getTileEntity(position)).getName().replace(" ", "").trim())) {
 				return null;
 			}
 			return map.get(name);

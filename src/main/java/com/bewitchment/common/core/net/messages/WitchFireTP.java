@@ -2,9 +2,11 @@ package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
+import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -28,6 +30,8 @@ public class WitchFireTP extends SimpleMessage<WitchFireTP> {
 		BlockPos dest = ctp.get(destination, sender.world);
 		if (dest != null) {
 			sender.world.setBlockState(sender.getPosition(), ModBlocks.witchfire.getDefaultState(), 3);
+			NetworkHandler.HANDLER.sendToAllTracking(new WitchfireFlame(sender.getPosition(), dest), sender);
+			NetworkHandler.HANDLER.sendTo(new WitchfireFlame(sender.getPosition(), dest), (EntityPlayerMP) sender);
 			sender.setPositionAndUpdate(dest.getX() + 0.5d, dest.getY() + 0.5, dest.getZ() + 0.5d);
 		}
 		return null;
