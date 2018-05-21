@@ -41,6 +41,11 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_old), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_ancient), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2).add(Aspect.ELDRITCH, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.chromatic_quill), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 2).add(Aspect.AIR, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.tongue_of_dog), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 4).add(Aspect.DEATH, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.needle_bone), new AspectList().add(Aspect.DEATH, 2).add(Aspect.CRAFT, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle), new AspectList().add(Aspect.MOTION, 8).add(Aspect.CRAFT, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.nazar), new AspectList().add(Aspect.PROTECT, 8).add(Aspect.CRAFT, 8).add(Aspect.MAGIC, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.bee), new AspectList().add(Aspect.AVERSION, 2).add(Aspect.BEAST, 2).add(Aspect.ALCHEMY, 2));
 	}
 
 }
