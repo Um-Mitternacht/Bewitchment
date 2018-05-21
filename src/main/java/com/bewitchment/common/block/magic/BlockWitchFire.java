@@ -109,19 +109,21 @@ public class BlockWitchFire extends BlockMod {
 			world.scheduleBlockUpdate(pos, state.getBlock(), 1, 1);
 			
 			AxisAlignedBB aa = new AxisAlignedBB(pos);
-			world.getEntitiesWithinAABB(EntityPlayer.class, aa).parallelStream()
+			world.getEntitiesWithinAABB(EntityPlayer.class, aa).stream()
 				.filter(p -> p.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()==DefaultTransformations.VAMPIRE)
 				.forEach(p -> p.attackEntityFrom(DamageSource.IN_FIRE, 1f));
 			switch (state.getValue(TYPE)) {
 				case NORMAL:
-					world.getEntitiesWithinAABB(EntityItem.class, aa).parallelStream()
-							.forEach(i -> itemInFire(i, world, pos, state));
+					world.getEntitiesWithinAABB(EntityItem.class, aa).stream()
+						.filter(i -> !i.isDead)
+						.forEach(i -> itemInFire(i, world, pos, state));
 					if (world.getBlockState(pos.down()).getBlock() == Blocks.OBSIDIAN) {
 						world.setBlockState(pos, Blocks.FIRE.getDefaultState(), 3);
 					}
 					break;
 				case FROSTFIRE:
-					world.getEntitiesWithinAABB(EntityItem.class, aa).parallelStream()
+					world.getEntitiesWithinAABB(EntityItem.class, aa).stream()
+						.filter(i -> !i.isDead)
 						.filter(i -> Block.getBlockFromItem(i.getItem().getItem())==Blocks.IRON_ORE)
 						.forEach(i -> spawnColdIron(world, rand, i));
 					break;
