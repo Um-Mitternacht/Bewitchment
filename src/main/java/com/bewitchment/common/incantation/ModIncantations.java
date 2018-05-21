@@ -1,9 +1,9 @@
 package com.bewitchment.common.incantation;
 
-import com.bewitchment.api.incantation.IIncantation;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.bewitchment.api.incantation.IIncantation;
 
 /**
  * This class was created by Arekkuusu on 19/04/2017.
@@ -24,6 +24,7 @@ public final class ModIncantations {
 		registerIncantation("lux", new IncantationCandlelight());
 		registerIncantation("tenebrae", new IncantationSnuff());
 		registerIncantation("aqua", new IncantationFisheye());
+		registerIncantation("pyra", new IncantationWitchFire());
 	}
 
 	public static void registerIncantation(String name, IIncantation incantation) {

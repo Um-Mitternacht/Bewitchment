@@ -116,6 +116,9 @@ public class BlockWitchFire extends BlockMod {
 				case NORMAL:
 					world.getEntitiesWithinAABB(EntityItem.class, aa).parallelStream()
 							.forEach(i -> itemInFire(i, world, pos, state));
+					if (world.getBlockState(pos.down()).getBlock() == Blocks.OBSIDIAN) {
+						world.setBlockState(pos, Blocks.FIRE.getDefaultState(), 3);
+					}
 					break;
 				case FROSTFIRE:
 					world.getEntitiesWithinAABB(EntityItem.class, aa).parallelStream()
