@@ -172,7 +172,6 @@ public class BlockWitchFire extends BlockMod {
 	public void onChat(ClientChatEvent evt) {
 		if (Bewitchment.proxy.isPlayerInEndFire()) {
 			evt.setCanceled(true);
-			System.out.println(evt.getOriginalMessage());
 			NetworkHandler.HANDLER.sendToServer(new WitchFireTP(evt.getOriginalMessage()));
 		}
 	}
