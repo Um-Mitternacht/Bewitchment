@@ -1,12 +1,7 @@
 package com.bewitchment.client.render.tile;
 
-import java.util.Optional;
-
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.tile.TileEntityCauldron;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -19,6 +14,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 09/03/2017.
@@ -70,7 +68,7 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileEntityCaul
 			GlStateManager.enableLighting();
 			GlStateManager.popMatrix();
 		}
-		
+
 		if (te.getName() != null && te.getPos().equals(Minecraft.getMinecraft().objectMouseOver.getBlockPos())) {
 			drawNameplate(te, te.getName(), x, y, z, 5);
 		}

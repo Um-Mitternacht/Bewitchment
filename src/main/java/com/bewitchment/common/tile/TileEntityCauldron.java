@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewBuilder;
@@ -15,7 +11,6 @@ import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -37,15 +32,19 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	public static final int MAX_HEAT = 40, BOILING_POINT = 25, DEFAULT_COLOR = 0x42499b;
-	
+
 	private Mode mode = Mode.IDLE;
 	private NonNullList<ItemStack> ingredients = NonNullList.create();
 	private AxisAlignedBB collectionZone;
 	private CauldronFluidTank tank;
-	
+
 	private String name;
 
 	private int currentColorRGB = DEFAULT_COLOR;
@@ -539,6 +538,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		return progress;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public static enum Mode {
 		IDLE(0), FAILING(0), BREW(200), CRAFTING(100), STEW(1000), LAVA(0), CLEANING(30);
 
@@ -551,9 +554,5 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		public int getTime() {
 			return time;
 		}
-	}
-	
-	public String getName() {
-		return name;
 	}
 }

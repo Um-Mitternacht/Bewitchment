@@ -4,7 +4,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
@@ -12,16 +11,16 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class WitchFireTP extends SimpleMessage<WitchFireTP> {
-	
+
 	public String destination = null;
-	
+
 	public WitchFireTP(String to) {
 		destination = to;
 	}
-	
+
 	public WitchFireTP() {
 	}
-	
+
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
@@ -36,5 +35,5 @@ public class WitchFireTP extends SimpleMessage<WitchFireTP> {
 		}
 		return null;
 	}
-	
+
 }

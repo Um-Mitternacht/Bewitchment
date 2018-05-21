@@ -1,13 +1,13 @@
 package com.bewitchment.common.core.handler;
 
-import static com.bewitchment.common.lib.LibMod.MOD_ID;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import static com.bewitchment.common.lib.LibMod.MOD_ID;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.

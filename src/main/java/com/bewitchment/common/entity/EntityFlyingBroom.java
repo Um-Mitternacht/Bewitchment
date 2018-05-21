@@ -1,13 +1,7 @@
 package com.bewitchment.common.entity;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,6 +26,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import javax.annotation.Nullable;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 
 @Mod.EventBusSubscriber
 public class EntityFlyingBroom extends Entity {

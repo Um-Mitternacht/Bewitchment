@@ -7,18 +7,18 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
 public class CauldronTeleportStorage implements IStorage<CapabilityCauldronTeleport> {
-	
+
 	@Override
 	public NBTBase writeNBT(Capability<CapabilityCauldronTeleport> capability, CapabilityCauldronTeleport instance, EnumFacing side) {
 		NBTTagCompound tag = new NBTTagCompound();
 		instance.writeToNBT(tag);
 		return tag;
 	}
-	
+
 	@Override
 	public void readNBT(Capability<CapabilityCauldronTeleport> capability, CapabilityCauldronTeleport instance, EnumFacing side, NBTBase nbt) {
 		NBTTagCompound tag = (NBTTagCompound) nbt;
 		instance.readFromNBT(tag);
 	}
-	
+
 }

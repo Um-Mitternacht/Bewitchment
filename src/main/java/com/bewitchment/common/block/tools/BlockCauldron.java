@@ -1,12 +1,5 @@
 package com.bewitchment.common.block.tools;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
@@ -16,7 +9,6 @@ import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityCauldron;
 import com.bewitchment.common.tile.TileEntityCauldron.Mode;
-
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -28,7 +20,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -38,6 +33,12 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Random;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * This class was created by Joseph on 3/4/2017.

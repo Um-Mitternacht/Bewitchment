@@ -1,14 +1,14 @@
 {
-	"forge_marker": 1,
-	"parent": "block/block",
-	"defaults": {
-		"model": "bewitchment:witchfire"
-	},
-	"variants": {
-		"type": {
-			"normal": {},
-			"endfire": {},
-			"frostfire": {}
-		}
-	}
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "model": "bewitchment:witchfire"
+  },
+  "variants": {
+    "type": {
+      "normal": {},
+      "endfire": {},
+      "frostfire": {}
+    }
+  }
 }

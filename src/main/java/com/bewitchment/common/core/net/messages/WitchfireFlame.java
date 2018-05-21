@@ -1,9 +1,6 @@
 package com.bewitchment.common.core.net.messages;
 
-import java.util.Random;
-
 import com.bewitchment.common.core.net.SimpleMessage;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
@@ -14,18 +11,20 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Random;
+
 public class WitchfireFlame extends SimpleMessage<WitchfireFlame> {
-	
+
 	public BlockPos posA, posB;
-	
+
 	public WitchfireFlame(BlockPos start, BlockPos end) {
 		this.posA = start;
 		this.posB = end;
 	}
-	
+
 	public WitchfireFlame() {
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IMessage handleMessage(MessageContext context) {

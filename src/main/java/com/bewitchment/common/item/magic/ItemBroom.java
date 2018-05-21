@@ -5,7 +5,6 @@ import com.bewitchment.common.block.natural.tree.BlockModSapling.EnumSaplingType
 import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.entity.EntityFlyingBroom;
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
