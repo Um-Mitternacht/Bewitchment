@@ -77,6 +77,7 @@ public final class LibItemName {
 	public static final String BOLINE = "boline";
 	public static final String TAGLOCK = "taglock";
 	public static final String MORTAR_AND_PESTLE = "mortar_and_pestle";
+	public static final String MORTAR_AND_PESTLE_STONE = "mortar_and_pestle_stone";
 	public static final String WAX = "wax";
 	public static final String SALT = "salt";
 	public static final String BEE = "bee";
