@@ -7,6 +7,8 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 
@@ -169,8 +171,9 @@ public class BlockWitchFire extends BlockMod {
 	@SubscribeEvent
 	public void onChat(ClientChatEvent evt) {
 		if (Bewitchment.proxy.isPlayerInEndFire()) {
-			System.out.println("CANC");
-			// TODO send packet to server for tp
+			evt.setCanceled(true);
+			System.out.println(evt.getOriginalMessage());
+			NetworkHandler.HANDLER.sendToServer(new WitchFireTP(evt.getOriginalMessage()));
 		}
 	}
 	

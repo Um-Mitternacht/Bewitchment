@@ -6,6 +6,15 @@
 
 package com.bewitchment.common.core.capability.simple;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.function.Function;
+
+import org.apache.commons.lang3.tuple.Pair;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,18 +36,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
-import java.util.function.Function;
+import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
@@ -457,9 +455,11 @@ public abstract class SimpleCapability {
 		public IMessage onMessage(MSG message, MessageContext ctx) {
 			// TODO investigate why this never gets called, but looks like it is
 			Tuple<Integer, NBTTagCompound> data = messageDecoder.apply(message);
-			Entity e = Minecraft.getMinecraft().world.getEntityByID(data.getFirst());
-			if (e != null && e.hasCapability(capability, null)) {
-				e.getCapability(capability, null).readSyncNBT(data.getSecond());
+			if (data != null && Minecraft.getMinecraft().world != null) {
+				Entity e = Minecraft.getMinecraft().world.getEntityByID(data.getFirst());
+				if (e != null && e.hasCapability(capability, null)) {
+					e.getCapability(capability, null).readSyncNBT(data.getSecond());
+				}
 			}
 			return null;
 		}

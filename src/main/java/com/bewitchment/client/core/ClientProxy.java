@@ -225,9 +225,8 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public boolean isPlayerInEndFire() {
 		Minecraft mc = Minecraft.getMinecraft();
-		IBlockState ibs = mc.world.getBlockState(new BlockPos(mc.player.posX + 0.5, mc.player.posY + 0.5, mc.player.posZ + 0.5));
+		IBlockState ibs = mc.world.getBlockState(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ));
 		boolean res = (ibs.getBlock() == ModBlocks.witchfire && ibs.getValue(BlockWitchFire.TYPE) == BlockWitchFire.EnumFireType.ENDFIRE);
-		System.out.println(res);
 		return res;
 	}
 }

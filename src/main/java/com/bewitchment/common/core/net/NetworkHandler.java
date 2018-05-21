@@ -3,6 +3,7 @@ package com.bewitchment.common.core.net;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +36,7 @@ public final class NetworkHandler {
 		registerSimpleMessage(NightVisionStatus.class, next(), Side.CLIENT);
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
-
+		registerSimpleMessage(WitchFireTP.class, next(), Side.SERVER);
 	}
 
 	private static <MSG extends SimpleMessage<MSG>> void registerSimpleMessage(Class<MSG> clazz, int id, Side side) {
