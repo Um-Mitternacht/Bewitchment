@@ -16,7 +16,8 @@ public enum ParticleF {
 	STEAM(new ParticleSteam.Factory()),
 	BEE(new ParticleBee.Factory()),
 	SPARK(new ParticleSpark.Factory()),
-	FLAME(new ParticleOvenFlame.Factory());
+	FLAME(new ParticleOvenFlame.Factory()),
+	COLORED_FLAME(new ParticleColoredflame.Factory());
 
 	private final IParticleF factory;
 

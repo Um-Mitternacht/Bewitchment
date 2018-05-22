@@ -1,9 +1,11 @@
 package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
@@ -27,10 +29,11 @@ public class WitchFireTP extends SimpleMessage<WitchFireTP> {
 		EntityPlayer sender = context.getServerHandler().player;
 		CapabilityCauldronTeleport ctp = sender.world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null);
 		BlockPos dest = ctp.get(destination, sender.world);
-		if (dest != null) {
+		if (dest != null && sender.world.getBlockState(sender.getPosition()).getBlock() == ModBlocks.witchfire) {
+			int color = sender.world.getBlockState(sender.getPosition()).getValue(BlockWitchFire.TYPE).getColor();
+			NetworkHandler.HANDLER.sendToAllTracking(new WitchfireFlame(sender.getPosition(), dest, color), sender);
+			NetworkHandler.HANDLER.sendTo(new WitchfireFlame(sender.getPosition(), dest, color), (EntityPlayerMP) sender);
 			sender.world.setBlockState(sender.getPosition(), ModBlocks.witchfire.getDefaultState(), 3);
-			NetworkHandler.HANDLER.sendToAllTracking(new WitchfireFlame(sender.getPosition(), dest), sender);
-			NetworkHandler.HANDLER.sendTo(new WitchfireFlame(sender.getPosition(), dest), (EntityPlayerMP) sender);
 			sender.setPositionAndUpdate(dest.getX() + 0.5d, dest.getY() + 0.5, dest.getZ() + 0.5d);
 		}
 		return null;
