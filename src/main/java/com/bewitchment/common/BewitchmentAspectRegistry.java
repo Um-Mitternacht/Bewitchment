@@ -46,6 +46,7 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle), new AspectList().add(Aspect.MOTION, 8).add(Aspect.CRAFT, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.nazar), new AspectList().add(Aspect.PROTECT, 8).add(Aspect.CRAFT, 8).add(Aspect.MAGIC, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.bee), new AspectList().add(Aspect.AVERSION, 2).add(Aspect.BEAST, 2).add(Aspect.ALCHEMY, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.athame), new AspectList().add(Aspect.AVERSION, 10).add(Aspect.MAGIC, 10).add(Aspect.METAL, 10));
 	}
 
 }
