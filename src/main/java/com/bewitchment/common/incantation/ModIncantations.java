@@ -24,7 +24,7 @@ public final class ModIncantations {
 		registerIncantation("lux", new IncantationCandlelight());
 		registerIncantation("tenebrae", new IncantationSnuff());
 		registerIncantation("aqua", new IncantationFisheye());
-		registerIncantation("pyra", new IncantationWitchFire());
+		registerIncantation("ignis", new IncantationWitchFire());
 	}
 
 	public static void registerIncantation(String name, IIncantation incantation) {
