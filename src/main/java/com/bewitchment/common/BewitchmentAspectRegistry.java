@@ -62,6 +62,12 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 1), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ELDRITCH, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 2), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.MAGIC, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 3), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.SENSES, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 4), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.AURA, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 5), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.LIFE, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 6), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.AVERSION, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 7), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.EARTH, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 8), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.gem, 1, 9), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.MIND, 4));
 	}
 
 }
