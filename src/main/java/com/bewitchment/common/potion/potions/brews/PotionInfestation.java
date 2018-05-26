@@ -3,9 +3,9 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
+
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityMooshroom;
@@ -33,6 +33,20 @@ public class PotionInfestation extends BrewMod {
 
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
+		
+		if (entity instanceof EntityCow) {
+			EntityMooshroom entitymooshroom = new EntityMooshroom(entity.world);
+			entitymooshroom.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+			entitymooshroom.setHealth(entity.getHealth());
+			entitymooshroom.renderYawOffset = entity.renderYawOffset;
+			if (entity.hasCustomName()) {
+				entitymooshroom.setCustomNameTag(entity.getCustomNameTag());
+			}
+			entity.setDead();
+			entity.world.spawnEntity(entitymooshroom);
+			return;
+		}
+		
 		entity.attackEntityFrom(source[entity.getRNG().nextInt(source.length)], 3 + entity.getRNG().nextFloat() * amplifier);
 		if (entity.getRNG().nextBoolean() && amplifier > 1) {
 			entity.world.getEntitiesWithinAABB(EntityLivingBase.class, entity.getEntityBoundingBox().grow(amplifier)).forEach(e -> {
@@ -42,23 +56,6 @@ public class PotionInfestation extends BrewMod {
 			});
 		}
 	}
-
-	@Override
-	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
-
-		EntityMooshroom entitymooshroom = new EntityMooshroom(entity.world);
-		if (entity instanceof EntityCow) {
-			entity.setDead();
-			entitymooshroom.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
-			entitymooshroom.setHealth(entity.getHealth());
-			entitymooshroom.renderYawOffset = entity.renderYawOffset;
-			if (entity.hasCustomName()) {
-				entitymooshroom.setCustomNameTag(entity.getCustomNameTag());
-			}
-			entity.world.spawnEntity(entitymooshroom);
-		}
-	}
-
 
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
