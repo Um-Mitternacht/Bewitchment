@@ -3,7 +3,6 @@ package com.bewitchment.common.potion.potions.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,7 +32,7 @@ public class PotionInfestation extends BrewMod {
 
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
-		
+
 		if (entity instanceof EntityCow) {
 			EntityMooshroom entitymooshroom = new EntityMooshroom(entity.world);
 			entitymooshroom.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
@@ -46,7 +45,7 @@ public class PotionInfestation extends BrewMod {
 			entity.world.spawnEntity(entitymooshroom);
 			return;
 		}
-		
+
 		entity.attackEntityFrom(source[entity.getRNG().nextInt(source.length)], 3 + entity.getRNG().nextFloat() * amplifier);
 		if (entity.getRNG().nextBoolean() && amplifier > 1) {
 			entity.world.getEntitiesWithinAABB(EntityLivingBase.class, entity.getEntityBoundingBox().grow(amplifier)).forEach(e -> {
