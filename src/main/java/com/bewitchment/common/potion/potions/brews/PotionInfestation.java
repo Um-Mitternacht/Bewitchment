@@ -5,7 +5,10 @@ import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.BrewMod;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -39,6 +42,23 @@ public class PotionInfestation extends BrewMod {
 			});
 		}
 	}
+
+	@Override
+	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
+
+		EntityMooshroom entitymooshroom = new EntityMooshroom(entity.world);
+		if (entity instanceof EntityCow) {
+			entity.setDead();
+			entitymooshroom.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+			entitymooshroom.setHealth(entity.getHealth());
+			entitymooshroom.renderYawOffset = entity.renderYawOffset;
+			if (entity.hasCustomName()) {
+				entitymooshroom.setCustomNameTag(entity.getCustomNameTag());
+			}
+			entity.world.spawnEntity(entitymooshroom);
+		}
+	}
+
 
 	@Override
 	public void applyInWorld(World world, BlockPos pos, EnumFacing side, IBrewModifierList modifiers, EntityLivingBase thrower) {
