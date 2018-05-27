@@ -7,19 +7,18 @@ import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
 import com.bewitchment.common.block.misc.BlockGoblet;
+import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
-import com.bewitchment.common.block.natural.tree.BlockModLeaves;
-import com.bewitchment.common.block.natural.tree.BlockModLog;
-import com.bewitchment.common.block.natural.tree.BlockModSapling;
-import com.bewitchment.common.block.natural.tree.BlockPlanks;
+import com.bewitchment.common.block.natural.tree.*;
 import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -122,6 +121,8 @@ public final class ModBlocks {
 
 	public static final Block infested_farmland = PLACE_HOLDER;
 	public static final Block witchfire = PLACE_HOLDER;
+	public static final Block revealing_lantern = PLACE_HOLDER;
+	public static final Block lantern = PLACE_HOLDER;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -190,7 +191,9 @@ public final class ModBlocks {
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
 				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
 				new BlockGoblet(LibBlockName.GOBLET),
-				new BlockTarotTable()
+				new BlockTarotTable(),
+				new BlockLantern(true),
+				new BlockLantern(false)
 		);
 		//Normal Blocks
 		registry.registerAll(

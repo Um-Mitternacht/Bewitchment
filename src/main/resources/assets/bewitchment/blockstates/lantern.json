@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "model": "bewitchment:revealing_lantern"
+  },
+  "variants": {
+    "color": {
+      "cyan": {},
+      "red": {},
+      "brown": {},
+      "black": {},
+      "cyan": {},
+      "red": {},
+      "brown": {},
+      "black": {},
+      "cyan": {},
+      "red": {},
+      "brown": {},
+      "black": {},
+      "cyan": {},
+      "red": {},
+      "brown": {},
+      "black": {}
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "defaults": {
+    "model": "bewitchment:revealing_lantern"
+  },
+  "variants": {
+    "type": {
+      "off": {},
+      "normal": {},
+      "revealing": {}
+    }
+  }
+}

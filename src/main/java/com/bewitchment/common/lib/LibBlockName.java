@@ -97,6 +97,8 @@ public final class LibBlockName {
 	public static final String GOBLET = "goblet";
 	public static final String TAROT_TABLE = "tarot_table";
 	public static final String WITCHFIRE = "witchfire";
+	public static final String LANTERN = "lantern";
+	public static final String REVEALING_LANTERN = "revealing_lantern";
 
 	private LibBlockName() {
 	}
