@@ -1,5 +1,8 @@
 package com.bewitchment.common.tile;
 
+import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -9,15 +12,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public final class ModTiles {
 
-	private static final String CAULDRON = "cauldron";
-	private static final String APIARY = "apiary";
-	private static final String OVEN = "oven";
-	private static final String WITCH_ALTAR = "witch_altar";
-	private static final String THREAD_SPINNER = "thread_spinner";
-	private static final String BARREL = "barrel";
-	private static final String GLYPH = "glyph";
-	private static final String CRYSTAL_BALL = "crystal_ball";
-	private static final String TAROTS_TABLE = "tarots_table";
+	private static final ResourceLocation CAULDRON = new ResourceLocation(LibMod.MOD_ID, "cauldron");
+	private static final ResourceLocation APIARY = new ResourceLocation(LibMod.MOD_ID, "apiary");
+	private static final ResourceLocation OVEN = new ResourceLocation(LibMod.MOD_ID, "oven");
+	private static final ResourceLocation WITCH_ALTAR = new ResourceLocation(LibMod.MOD_ID, "witch_altar");
+	private static final ResourceLocation THREAD_SPINNER = new ResourceLocation(LibMod.MOD_ID, "thread_spinner");
+	private static final ResourceLocation BARREL = new ResourceLocation(LibMod.MOD_ID, "barrel");
+	private static final ResourceLocation GLYPH = new ResourceLocation(LibMod.MOD_ID, "glyph");
+	private static final ResourceLocation CRYSTAL_BALL = new ResourceLocation(LibMod.MOD_ID, "crystal_ball");
+	private static final ResourceLocation TAROTS_TABLE = new ResourceLocation(LibMod.MOD_ID, "tarots_table");
 
 	private ModTiles() {
 	}
