@@ -17,9 +17,9 @@ public class BewitchmentAspectRegistry {
 
 	//This spot will register our new aspects
 	public static final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
-	public static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[]{Aspect.EARTH, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
-	public static final Aspect STAR = new Aspect("stellaris", 0XFFF8E7, new Aspect[]{BewitchmentAspectRegistry.SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellaris.png"), 1);
-	public static final Aspect DEMON = new Aspect("diabolos", 0X960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolos.png"), 1);
+	public static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
+	public static final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[]{BewitchmentAspectRegistry.SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
+	public static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
 
 	public static void register() {
 
