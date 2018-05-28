@@ -733,7 +733,7 @@ moon.tooltip.1=Your heart is beating faster, your thoughts are slipping out of c
 moon.tooltip.2=No matter how hard you try, you cannot switch back
 
 //Thaumcraft aspects
-tc.aspect.diabolos=Demon, Unholy, Profane
+tc.aspect.diabolus=Demon, Unholy, Profane
 tc.aspect.stellae=Stars, Constellation
 tc.aspect.luna=The Moon
 tc.aspect.sol=The Sun
