@@ -6,18 +6,25 @@
 
 package com.bewitchment.common.item.block;
 
+import java.util.List;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockRevealingLantern extends ItemBlock {
 
@@ -35,6 +42,14 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 			return super.getUnlocalizedName(stack) + "." + EnumDyeColor.values()[stack.getMetadata()].getDyeColorName();
 		}
 		return super.getUnlocalizedName(stack);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (!lit) {
+			tooltip.add(TextFormatting.GRAY + TextFormatting.ITALIC.toString() + I18n.format("tile.lantern.desc"));
+		}
 	}
 	
 	@Override

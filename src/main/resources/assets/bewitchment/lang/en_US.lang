@@ -252,6 +252,7 @@ tile.lantern.brown.name=Lantern (Brown)
 tile.lantern.green.name=Lantern (Green)
 tile.lantern.red.name=Lantern (Red)
 tile.lantern.black.name=Lantern (Black)
+tile.lantern.desc=There is no air inside to burn, you need another type of fire to light this
 
 tile.revealing_lantern.name=Revealing Lantern
 tile.revealing_lantern.white.name=Revealing Lantern (White)

@@ -1,5 +1,8 @@
 package com.bewitchment.common.block.magic;
 
+import java.util.Arrays;
+import java.util.Random;
+
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
@@ -8,6 +11,7 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -31,9 +35,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Arrays;
-import java.util.Random;
 
 public class BlockWitchFire extends BlockMod {
 
@@ -204,9 +205,9 @@ public class BlockWitchFire extends BlockMod {
 
 	public static enum EnumFireType implements IStringSerializable {
 
-		NORMAL(15, 0xc032db, Ingredient.EMPTY), //
-		ENDFIRE(3, 0x0B4D42, Ingredient.fromItem(Items.ENDER_PEARL)), //
-		FROSTFIRE(8, 0xa4f8ff, Ingredient.fromItem(Items.SNOWBALL)), //
+		NORMAL(11, 0xc032db, Ingredient.EMPTY), //
+		ENDFIRE(2, 0x0B4D42, Ingredient.fromItem(Items.ENDER_PEARL)), //
+		FROSTFIRE(7, 0xa4f8ff, Ingredient.fromItem(Items.SNOWBALL)), //
 		SIGHTFIRE(15, 0xFFD700, Ingredient.fromItem(Items.GLOWSTONE_DUST));
 
 		private int light, color;
