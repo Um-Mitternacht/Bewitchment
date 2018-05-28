@@ -11,7 +11,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockRevealingCandle extends ItemBlock {
-	
+
 	private boolean lit;
 
 	public ItemBlockRevealingCandle(Block block, boolean lit) {
@@ -19,7 +19,7 @@ public class ItemBlockRevealingCandle extends ItemBlock {
 		this.setRegistryName(block.getRegistryName());
 		this.lit = lit;
 	}
-	
+
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return lit;

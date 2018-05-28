@@ -14,6 +14,8 @@ public class BewitchmentAspectRegistry {
 
 	public static void register() {
 
+		//THis spot will register aspects when/if I add sol, luna, stellaris, and diabolus aspects.
+
 		//Items
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.tarots), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10));
