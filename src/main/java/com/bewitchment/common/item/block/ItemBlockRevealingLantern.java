@@ -6,17 +6,17 @@
 
 package com.bewitchment.common.item.block;
 
-import java.util.List;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -25,6 +25,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBlockRevealingLantern extends ItemBlock {
 
@@ -35,7 +37,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 		this.setRegistryName(block.getRegistryName());
 		this.lit = lit;
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if (stack.getMetadata() < 16 && stack.getMetadata() >= 0) {
@@ -43,7 +45,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 		}
 		return super.getUnlocalizedName(stack);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
@@ -51,12 +53,12 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 			tooltip.add(TextFormatting.GRAY + TextFormatting.ITALIC.toString() + I18n.format("tile.lantern.desc"));
 		}
 	}
-	
+
 	@Override
 	public int getMetadata(int damage) {
 		return damage;
 	}
-	
+
 	@Override
 	public boolean getHasSubtypes() {
 		return true;
@@ -66,7 +68,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	public boolean hasEffect(ItemStack stack) {
 		return lit;
 	}
-	
+
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (worldIn.getBlockState(pos).getBlock() == ModBlocks.witchfire && worldIn.getBlockState(pos).getValue(BlockWitchFire.TYPE) == EnumFireType.SIGHTFIRE && player.getHeldItem(hand).getItem().equals(Item.getItemFromBlock(ModBlocks.lantern))) {

@@ -1,12 +1,9 @@
 package com.bewitchment.common.block.misc;
 
-import java.util.Random;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -24,6 +21,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+
+import java.util.Random;
 
 public class BlockLantern extends BlockMod {
 
@@ -43,7 +42,7 @@ public class BlockLantern extends BlockMod {
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return lit ? 15 : 0;
 	}
-	
+
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return bounding_box;
@@ -71,12 +70,12 @@ public class BlockLantern extends BlockMod {
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
-	
+
 	@Override
 	public int damageDropped(IBlockState state) {
 		return (state.getValue(Bewitchment.COLOR)).ordinal();
 	}
-	
+
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return new ItemStack(this, 1, state.getValue(Bewitchment.COLOR).ordinal());

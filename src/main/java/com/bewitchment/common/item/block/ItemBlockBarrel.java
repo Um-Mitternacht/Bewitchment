@@ -8,7 +8,6 @@ package com.bewitchment.common.item.block;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockBarrel;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

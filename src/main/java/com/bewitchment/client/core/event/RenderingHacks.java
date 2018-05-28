@@ -1,14 +1,13 @@
 package com.bewitchment.client.core.event;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import com.bewitchment.common.item.block.ItemBlockRevealingLantern;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class RenderingHacks {
 

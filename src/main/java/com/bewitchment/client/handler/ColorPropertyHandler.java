@@ -1,9 +1,6 @@
 package com.bewitchment.client.handler;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.Bewitchment;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -11,28 +8,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+import javax.annotation.Nullable;
+
 /**
  * This class was created by Arekkuusu on 11/03/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
 public class ColorPropertyHandler implements IBlockColor, IItemColor {
-	
+
 	public static final ColorPropertyHandler INSTANCE = new ColorPropertyHandler();
-	
+
 	private ColorPropertyHandler() {
 	}
 
-	@Override
-	public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-		return getColor(state.getValue(Bewitchment.COLOR).getMetadata());
-	}
-	
-	@Override
-	public int colorMultiplier(ItemStack stack, int tintIndex) {
-		return getColor(stack.getMetadata());
-	}
-	
 	private static final int getColor(int index) {
 		switch (index) {
 			case 0:
@@ -70,5 +59,15 @@ public class ColorPropertyHandler implements IBlockColor, IItemColor {
 			default:
 				return 0;
 		}
+	}
+
+	@Override
+	public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
+		return getColor(state.getValue(Bewitchment.COLOR).getMetadata());
+	}
+
+	@Override
+	public int colorMultiplier(ItemStack stack, int tintIndex) {
+		return getColor(stack.getMetadata());
 	}
 }
