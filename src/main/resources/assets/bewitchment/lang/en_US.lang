@@ -731,3 +731,9 @@ modifier.description.bewitchment.length=Effect duration
 moon.tooltip.0=You feel weird today
 moon.tooltip.1=Your heart is beating faster, your thoughts are slipping out of control
 moon.tooltip.2=No matter how hard you try, you cannot switch back
+
+//Thaumcraft aspects
+tc.aspect.diabolos=Demon, Unholy, Profane
+tc.aspect.stellaris=Stars, Constellation
+tc.aspect.luna=The Moon
+tc.aspect.sol=The Sun

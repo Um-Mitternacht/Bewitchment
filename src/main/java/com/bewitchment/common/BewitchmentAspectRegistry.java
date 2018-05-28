@@ -2,7 +2,9 @@ package com.bewitchment.common;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.lib.LibMod;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -12,9 +14,14 @@ import thaumcraft.api.aspects.AspectList;
  */
 public class BewitchmentAspectRegistry {
 
-	public static void register() {
 
-		//THis spot will register aspects when/if I add sol, luna, stellaris, and diabolus aspects.
+	//This spot will register our new aspects
+	public static final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
+	public static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[]{Aspect.EARTH, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
+	public static final Aspect STAR = new Aspect("stellaris", 0XFFF8E7, new Aspect[]{BewitchmentAspectRegistry.SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellaris.png"), 1);
+	public static final Aspect DEMON = new Aspect("diabolos", 0X960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolos.png"), 1);
+
+	public static void register() {
 
 		//Items
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
@@ -85,7 +92,7 @@ public class BewitchmentAspectRegistry {
 
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(BewitchmentAspectRegistry.MOON, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.raging_grass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.AVERSION, 8).add(Aspect.MAGIC, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
