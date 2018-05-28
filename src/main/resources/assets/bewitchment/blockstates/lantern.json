@@ -6,21 +6,21 @@
   },
   "variants": {
     "color": {
+      "white": {},
+      "orange": {},
+      "magenta": {},
+      "light_blue": {},
+      "yellow": {},
+      "lime": {},
+      "pink": {},
+      "gray": {},
+      "silver": {},
       "cyan": {},
-      "red": {},
+      "purple": {},
+      "blue": {},
       "brown": {},
-      "black": {},
-      "cyan": {},
+      "green": {},
       "red": {},
-      "brown": {},
-      "black": {},
-      "cyan": {},
-      "red": {},
-      "brown": {},
-      "black": {},
-      "cyan": {},
-      "red": {},
-      "brown": {},
       "black": {}
     }
   }

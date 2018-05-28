@@ -328,8 +328,8 @@ public final class ModItems {
 				itemBlock(ModBlocks.crystal_ball),
 				itemBlock(ModBlocks.goblet),
 				itemBlock(ModBlocks.tarot_table),
-				new ItemBlockRevealingCandle(ModBlocks.lantern, false),
-				new ItemBlockRevealingCandle(ModBlocks.revealing_lantern, true)
+				new ItemBlockRevealingLantern(ModBlocks.lantern, false),
+				new ItemBlockRevealingLantern(ModBlocks.revealing_lantern, true)
 		);
 	}
 

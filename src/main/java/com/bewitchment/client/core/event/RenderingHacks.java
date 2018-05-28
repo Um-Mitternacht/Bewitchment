@@ -1,6 +1,6 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.common.item.block.ItemBlockRevealingCandle;
+import com.bewitchment.common.item.block.ItemBlockRevealingLantern;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -17,14 +17,14 @@ public class RenderingHacks {
 
 	@SubscribeEvent
 	public static void raisePlayerHandWhenHoldingLantern(RenderPlayerEvent.Pre evt) {
-		if (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingCandle) {
+		if (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingLantern) {
 			saveAndRaise(evt.getEntityPlayer());
 		}
 	}
 
 	@SubscribeEvent
 	public static void lowerPlayerHandWhenHoldingLantern(RenderPlayerEvent.Post evt) {
-		if (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingCandle) {
+		if (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingLantern) {
 			restore(evt.getEntityPlayer());
 		}
 	}

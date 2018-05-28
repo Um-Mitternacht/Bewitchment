@@ -8,6 +8,7 @@ package com.bewitchment.common.item.block;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockBarrel;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -23,8 +24,9 @@ public class ItemBlockBarrel extends ItemBlock {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata() == OreDictionary.WILDCARD_VALUE)
+		if (stack.getMetadata() == OreDictionary.WILDCARD_VALUE) {
 			return super.getUnlocalizedName(stack);
+		}
 		return super.getUnlocalizedName(stack) + "_" + BlockBarrel.WoodType.values()[stack.getMetadata()].getName();
 	}
 
