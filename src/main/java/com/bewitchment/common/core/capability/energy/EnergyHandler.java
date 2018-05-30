@@ -1,16 +1,16 @@
 package com.bewitchment.common.core.capability.energy;
 
-import com.bewitchment.api.capability.IEnergy;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import com.bewitchment.api.capability.IEnergy;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 /**
  * This class was created by Arekkuusu on 20/04/2017.
@@ -40,17 +40,18 @@ public final class EnergyHandler {
 	 * @return If the amount was greater or equal than 0 and less or equal than the max amount
 	 */
 	public static boolean addEnergy(EntityPlayer player, int amount) {
-		final Optional<IEnergy> optional = getEnergy(player);
-		boolean mod = false;
-
-		if (optional.isPresent()) {
-			IEnergy energy = optional.get();
-			mod = energy.set(energy.get() + amount);
-			energy.tickReset();
-			if (player instanceof EntityPlayerMP)
-				energy.syncTo((EntityPlayerMP) player);
-		}
-		return mod;
+		return true; // TODO
+		// final Optional<IEnergy> optional = getEnergy(player);
+		// boolean mod = false;
+		//
+		// if (optional.isPresent()) {
+		// IEnergy energy = optional.get();
+		// mod = energy.set(energy.get() + amount);
+		// energy.tickReset();
+		// if (player instanceof EntityPlayerMP)
+		// energy.syncTo((EntityPlayerMP) player);
+		// }
+		// return mod;
 	}
 
 	/**
