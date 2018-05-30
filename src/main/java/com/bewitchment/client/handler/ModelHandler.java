@@ -1,6 +1,7 @@
 package com.bewitchment.client.handler;
 
 import com.bewitchment.client.core.IModelRegister;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
@@ -52,8 +53,9 @@ public final class ModelHandler {
 
 	public static void registerModel(Block block, int meta) {
 		Item item = Item.getItemFromBlock(block);
-		if (item == Items.AIR) throw new UnsupportedOperationException("This block has no Item!");
-		registerModel(item, meta);
+		if (item != Items.AIR) {
+			registerModel(item, meta);
+		}
 	}
 
 	public static void registerModel(Item item, int meta) {

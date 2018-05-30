@@ -99,6 +99,7 @@ public final class LibBlockName {
 	public static final String WITCHFIRE = "witchfire";
 	public static final String LANTERN = "lantern";
 	public static final String REVEALING_LANTERN = "revealing_lantern";
+	public static final String WILL_O_WISP = "will_o_wisp";
 
 	private LibBlockName() {
 	}

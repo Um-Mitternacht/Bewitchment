@@ -8,6 +8,7 @@ import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
+import com.bewitchment.common.block.misc.BlockWillOWisp;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -125,6 +126,7 @@ public final class ModBlocks {
 	public static final Block witchfire = PLACE_HOLDER;
 	public static final Block revealing_lantern = PLACE_HOLDER;
 	public static final Block lantern = PLACE_HOLDER;
+	public static final Block will_o_wisp = PLACE_HOLDER;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -195,7 +197,8 @@ public final class ModBlocks {
 				new BlockGoblet(LibBlockName.GOBLET),
 				new BlockTarotTable(),
 				new BlockLantern(true),
-				new BlockLantern(false)
+				new BlockLantern(false),
+				new BlockWillOWisp()
 		);
 		//Normal Blocks
 		registry.registerAll(

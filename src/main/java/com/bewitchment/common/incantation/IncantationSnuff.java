@@ -3,6 +3,7 @@ package com.bewitchment.common.incantation;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
@@ -30,6 +31,9 @@ public class IncantationSnuff implements IIncantation {
 			if (state.getBlock() == ModBlocks.candle_small_lit) {
 				world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 				flag = true;
+			}
+			if (state.getBlock() == ModBlocks.will_o_wisp) {
+				world.setBlockToAir(pos);
 			}
 			if (flag) {
 				for (int i = 0; i < 5; i++) {
