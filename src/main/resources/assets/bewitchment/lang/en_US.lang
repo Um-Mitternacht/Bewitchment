@@ -73,6 +73,8 @@ item.powders.gem_powder_garnet.name=Garnet Powder
 item.powders.gem_powder_moldavite.name=Moldavite Powder
 item.powders.gem_powder_nuummite.name=Nuummite Powder
 item.powders.gem_powder_tigers_eye.name=Tiger's Eye Powder
+item.powders.gem_powder_tourmaline.name=Tourmaline Powder
+item.powders.gem_powder_bloodstone.name=Bloodstone Powder
 
 //Resources and Tools
 item.wax.name=Wax
