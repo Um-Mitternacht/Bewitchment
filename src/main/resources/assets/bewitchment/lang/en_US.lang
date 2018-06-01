@@ -70,6 +70,8 @@ item.gemstone_amalgam.name=Gemstone Amalgam
 
 //Gemstone powders
 item.powders.gem_powder_garnet.name=Garnet Powder
+item.powders.gem_powder_moldavite.name=Moldavite Powder
+item.powders.gem_powder_nuummite.name=Nuummite Powder
 
 //Resources and Tools
 item.wax.name=Wax
