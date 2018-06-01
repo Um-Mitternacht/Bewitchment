@@ -1,13 +1,19 @@
 package com.bewitchment.common.block.misc;
 
+import java.util.Random;
+
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleManager;
+import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -16,8 +22,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
 
 public class BlockWillOWisp extends BlockMod {
 
@@ -111,8 +115,9 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		if (rand.nextInt(8) == 0) {
+		if (Minecraft.getMinecraft().player.getHeldItemMainhand().getItem() == Item.getItemFromBlock(ModBlocks.revealing_lantern) || Minecraft.getMinecraft().player.getHeldItemOffhand().getItem() == Item.getItemFromBlock(ModBlocks.revealing_lantern)) {
 			worldIn.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, pos.getX() + 0.5d + rand.nextGaussian() * 0.2, pos.getY() + rand.nextDouble() * 0.6 + 0.2, pos.getZ() + 0.5d + rand.nextGaussian() * 0.2, 0, 0, 0);
 		}
 	}
