@@ -1,15 +1,8 @@
 package com.bewitchment.common.ritual;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -23,6 +16,11 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 

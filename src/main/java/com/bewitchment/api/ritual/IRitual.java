@@ -1,10 +1,5 @@
 package com.bewitchment.api.ritual;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -14,6 +9,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public interface IRitual extends IForgeRegistryEntry<IRitual> {
 
@@ -53,14 +52,14 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 * This method is called every tick if the altar has not enough power to keep it running.
 	 * This method is called in place of {@link #onUpdate(EntityPlayer, TileEntity, World, BlockPos, NBTTagCompound, int)}
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param tile the TileEntityGlyph performing the ritual
-	 * @param world the world the ritual is being performed into
-	 * @param mainGlyphPos the position of the tile
+	 * @param player            The player that activated the ritual, or null
+	 * @param tile              the TileEntityGlyph performing the ritual
+	 * @param world             the world the ritual is being performed into
+	 * @param mainGlyphPos      the position of the tile
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
-	 * @param data the accessory tag
-	 * @param ticks how many ticks passed since activation
+	 * @param covenSize         the size of the coven performing this ritual, player included
+	 * @param data              the accessory tag
+	 * @param ticks             how many ticks passed since activation
 	 * @return true if the ritual should be stopped after this, false otherwise
 	 */
 	public boolean onLowPower(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize);
