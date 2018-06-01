@@ -75,6 +75,10 @@ item.powders.gem_powder_nuummite.name=Nuummite Powder
 item.powders.gem_powder_tigers_eye.name=Tiger's Eye Powder
 item.powders.gem_powder_tourmaline.name=Tourmaline Powder
 item.powders.gem_powder_bloodstone.name=Bloodstone Powder
+item.powders.gem_powder_jasper.name=Jasper Powder
+item.powders.gem_powder_malachite.name=Malachite Powder
+item.powders.gem_powder_amethyst.name=Amethyst Powder
+item.powders.gem_powder_alexandrite.name=Alexandrite Powder
 
 //Resources and Tools
 item.wax.name=Wax
