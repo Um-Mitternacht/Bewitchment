@@ -68,6 +68,9 @@ item.gem_amethyst.name=Amethyst
 item.gem_alexandrite.name=Alexandrite
 item.gemstone_amalgam.name=Gemstone Amalgam
 
+//Gemstone powders
+item.powders.gem_powder_garnet.name=Garnet Powder
+
 //Resources and Tools
 item.wax.name=Wax
 item.honey.name=Honey
