@@ -17,7 +17,7 @@ public class RitualSandsTime extends RitualImpl {
 	}
 
 	@Override
-	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
 		world.setWorldTime(world.getWorldTime() + 5);
 	}
 

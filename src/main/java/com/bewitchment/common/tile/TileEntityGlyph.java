@@ -1,9 +1,15 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.ritual.AdapterIRitual;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -19,11 +25,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
@@ -151,7 +152,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				markDirty();
 			}
 			if (ritual.getTime() <= cooldown && ritual.getTime() >= 0) {
-				ritual.onFinish(player, this, getWorld(), getPos(), ritualData);
+				ritual.onFinish(player, this, getWorld(), getPos(), ritualData, getPos(), 1);
 				for (ItemStack stack : ritual.getOutput(AdapterIRitual.getItemsUsedForInput(ritualData), ritualData)) {
 					EntityItem ei = new EntityItem(getWorld(), getPos().getX(), getPos().up().getY(), getPos().getZ(), stack);
 					getWorld().spawnEntity(ei);
@@ -164,9 +165,9 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				return;
 			}
 			if (hasPowerToUpdate) {
-				ritual.onUpdate(player, this, getWorld(), getPos(), ritualData, cooldown);
+				ritual.onUpdate(player, this, getWorld(), getPos(), ritualData, cooldown, getPos(), 1);
 			} else {
-				if (ritual.onLowPower(player, this, world, pos, ritualData, cooldown)) {
+				if (ritual.onLowPower(player, this, world, pos, ritualData, cooldown, getPos(), 1)) {
 					stopRitual(player);
 				}
 			}
@@ -181,7 +182,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
-				if (rit.isValid(player, world, pos, recipe)) { // Checks of extra conditions are met
+				if (rit.isValid(player, world, pos, recipe, pos, 1)) { // Checks of extra conditions are met
 					if (consumePower(rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
@@ -200,7 +201,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 						this.ritual = rit;
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;
-						ritual.onStarted(player, this, getWorld(), getPos(), ritualData);
+						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, getPos(), 1);
 						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name", new Object[0]), true);
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
@@ -307,7 +308,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	public void stopRitual(EntityPlayer player) {
 		if (ritual != null) {
-			ritual.onStopped(player, this, world, pos, ritualData);
+			ritual.onStopped(player, this, world, pos, ritualData, getPos(), 1);
 			entityPlayer = null;
 			cooldown = 0;
 			ritual = null;

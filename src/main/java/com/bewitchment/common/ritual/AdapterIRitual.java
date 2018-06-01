@@ -1,8 +1,15 @@
 package com.bewitchment.common.ritual;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,11 +23,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
@@ -53,28 +55,28 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 		return list;
 	}
 
-	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe) {
-		return ritual.isValid(player, world, pos, recipe);
+	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {
+		return ritual.isValid(player, world, pos, recipe, effectivePosition, covenSize);
 	}
 
-	public void onUpdate(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
-		ritual.onUpdate(player, tile, world, pos, data, ticks);
+	public void onUpdate(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
+		ritual.onUpdate(player, tile, world, pos, data, ticks, effectivePosition, covenSize);
 	}
 
-	public void onFinish(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
-		ritual.onFinish(player, tile, world, pos, data);
+	public void onFinish(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
+		ritual.onFinish(player, tile, world, pos, data, effectivePosition, covenSize);
 	}
 
-	public void onStopped(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
-		ritual.onStopped(player, tile, world, pos, data);
+	public void onStopped(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
+		ritual.onStopped(player, tile, world, pos, data, effectivePosition, covenSize);
 	}
 
-	public void onStarted(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data) {
-		ritual.onStarted(player, tile, world, pos, data);
+	public void onStarted(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
+		ritual.onStarted(player, tile, world, pos, data, effectivePosition, covenSize);
 	}
 
-	public boolean onLowPower(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
-		return ritual.onLowPower(player, tile, world, pos, data, ticks);
+	public boolean onLowPower(@Nullable EntityPlayer player, TileEntityGlyph tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
+		return ritual.onLowPower(player, tile, world, pos, data, ticks, effectivePosition, covenSize);
 	}
 
 	public int getTime() {

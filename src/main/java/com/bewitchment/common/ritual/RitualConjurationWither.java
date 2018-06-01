@@ -1,6 +1,9 @@
 package com.bewitchment.common.ritual;
 
+import java.util.Optional;
+
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,8 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.Optional;
-
 public class RitualConjurationWither extends RitualImpl {
 
 	public RitualConjurationWither(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
@@ -23,7 +24,7 @@ public class RitualConjurationWither extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		if (!world.isRemote) {
 			EntityWither entitywither = new EntityWither(world);
 			BlockPos blockpos1 = pos.add(0, 0, 0);

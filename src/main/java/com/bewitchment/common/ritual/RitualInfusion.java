@@ -1,8 +1,11 @@
 package com.bewitchment.common.ritual;
 
+import java.util.Optional;
+
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -14,8 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.Optional;
-
 public class RitualInfusion extends RitualImpl {
 
 	IInfusion type;
@@ -26,7 +27,7 @@ public class RitualInfusion extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		if (player == null) {
 			return;
 		}

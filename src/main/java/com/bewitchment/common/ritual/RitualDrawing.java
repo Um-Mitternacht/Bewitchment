@@ -1,24 +1,22 @@
 package com.bewitchment.common.ritual;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RitualDrawing extends RitualImpl {
 
@@ -30,7 +28,7 @@ public class RitualDrawing extends RitualImpl {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(BlockCircleGlyph.TYPE, EnumGlyphType.values()[data.getInteger("chalkType")]);
 		coords.forEach(rc -> {
 			world.setBlockState(pos.add(rc[0], 0, rc[1]), state, 3);
@@ -38,7 +36,7 @@ public class RitualDrawing extends RitualImpl {
 	}
 
 	@Override
-	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		ItemStack chalk = player.getHeldItemOffhand();
 		data.setInteger("chalkType", chalk.getMetadata());
 		if (!player.isCreative()) {
@@ -51,7 +49,7 @@ public class RitualDrawing extends RitualImpl {
 	}
 
 	@Override
-	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe) {
+	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {
 		for (int[] rc : coords) {
 			BlockPos pos2 = pos.add(rc[0], 0, rc[1]);
 			if (!world.isAirBlock(pos2) && !world.getBlockState(pos2).getBlock().isReplaceable(world, pos2) && world.getBlockState(pos2).getBlock() != ModBlocks.ritual_glyphs)

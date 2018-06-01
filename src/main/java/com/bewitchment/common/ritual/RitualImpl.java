@@ -1,6 +1,9 @@
 package com.bewitchment.common.ritual;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.api.ritual.IRitual;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -10,8 +13,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
 
 public class RitualImpl implements IRitual {
 
@@ -72,24 +73,24 @@ public class RitualImpl implements IRitual {
 	}
 
 	@Override
-	public boolean onLowPower(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public boolean onLowPower(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
 		return false;
 	}
 
 	@Override
-	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStarted(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 	}
 
 	@Override
-	public void onStopped(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onStopped(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 	}
 
 	@Override
-	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data) {
+	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 	}
 
 	@Override
-	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks) {
+	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
 	}
 
 	@Override
