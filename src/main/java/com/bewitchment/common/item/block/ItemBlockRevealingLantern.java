@@ -6,18 +6,18 @@
 
 package com.bewitchment.common.item.block;
 
+import java.util.List;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -26,8 +26,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemBlockRevealingLantern extends ItemBlock {
 
@@ -42,7 +40,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if (stack.getMetadata() < 16 && stack.getMetadata() >= 0) {
-			return super.getUnlocalizedName(stack) + "." + EnumDyeColor.values()[stack.getMetadata()].getDyeColorName();
+			return super.getUnlocalizedName(stack) + "." + EnumDyeColor.values()[stack.getMetadata()].name().toLowerCase();
 		}
 		return super.getUnlocalizedName(stack);
 	}
