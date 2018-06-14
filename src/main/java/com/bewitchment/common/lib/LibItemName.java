@@ -53,6 +53,7 @@ public final class LibItemName {
 	public static final String SILVER_SPADE = "silver_spade";
 	public static final String SILVER_HOE = "silver_hoe";
 	public static final String SILVER_SWORD = "silver_sword";
+	public static final String COLD_IRON_SWORD = "cold_iron_sword";
 
 	//Equipment
 	public static final String SILVER_HELMET = "silver_helmet";
