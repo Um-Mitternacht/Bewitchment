@@ -106,6 +106,9 @@ public class Bewitchment {
 		ModPotions.init();
 		ModLootTables.registerLootTables();
 		proxy.preInit(event);
+		if (Loader.isModLoaded("thaumcraft")) {
+			BewitchmentAspectRegistry.register();
+		}
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
@@ -126,10 +129,6 @@ public class Bewitchment {
 		ModBarrelRecipes.init();
 		ModRituals.init();
 		ModBrewModifiers.init();
-
-		if (Loader.isModLoaded("thaumcraft")) {
-			BewitchmentAspectRegistry.register();
-		}
 
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
