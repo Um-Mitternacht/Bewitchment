@@ -7,12 +7,15 @@ import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.common.entities.monster.*;
 
 import javax.annotation.Nonnull;
 
@@ -29,10 +32,11 @@ public class ItemColdIronSword extends ItemSword implements IModelRegister {
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
+	//FIXME: Better way of handling thaumcraft mobs
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
 		if (!target.world.isRemote) {
-			if (target.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON || target.getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT && attacker instanceof EntityPlayer) {
+			if (target.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON || target.getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT || target instanceof EntityEnderman || target instanceof EntityBlaze || target instanceof EntityGhast || target instanceof EntityWither || target instanceof EntityGuardian || target instanceof EntityEldritchGuardian || target instanceof EntityVex || target instanceof EntityEndermite || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider && attacker instanceof EntityPlayer) {
 				target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 12);
 				stack.damageItem(5, attacker);
 			} else {
