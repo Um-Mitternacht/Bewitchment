@@ -5,8 +5,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityEndermite;
-import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
