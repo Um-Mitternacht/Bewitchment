@@ -13,6 +13,8 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.entities.monster.*;
+import thaumcraft.common.entities.monster.boss.EntityEldritchGolem;
+import thaumcraft.common.entities.monster.boss.EntityEldritchWarden;
 
 /**
  * Created by Joseph on 5/6/2018.
@@ -30,11 +32,9 @@ public class ThaumcraftCompat {
 	 */
 	
 	// This spot will register our new aspects
-	final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[] { Aspect.FIRE, Aspect.LIGHT }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
-	@Deprecated
+	static final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[] { Aspect.FIRE, Aspect.LIGHT }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
 	static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[] { Aspect.EARTH, Aspect.DARKNESS }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
-	final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[] { SUN, Aspect.VOID }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
-	@Deprecated
+	static final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[] { SUN, Aspect.VOID }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
 	static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[] { Aspect.SOUL, Aspect.AVERSION }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
 	
 	@Deprecated
@@ -48,7 +48,7 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.aconitum), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DEATH, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.asphodel), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DARKNESS, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.belladonna), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DEATH, 2).add(Aspect.MAGIC, 2));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.chrysanthemum), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.chrysanthemum), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(SUN, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.garlic), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.AVERSION, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ginger), new AspectList().add(Aspect.PLANT, 2).add(Aspect.FIRE, 2).add(Aspect.SENSES, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.hellebore), new AspectList().add(Aspect.PLANT, 2).add(Aspect.MAGIC, 2).add(Aspect.FIRE, 2).add(DEMON, 2));
@@ -66,8 +66,8 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.white_sage), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AURA, 2).add(Aspect.SOUL, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.witchweed), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DEATH, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.wormwood), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SOUL, 2));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_old), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_ancient), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2).add(Aspect.ELDRITCH, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_old), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2).add(Aspect.ELDRITCH, 2).add(STAR, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.eye_of_ancient), new AspectList().add(Aspect.SENSES, 4).add(Aspect.WATER, 2).add(Aspect.ELDRITCH, 2).add(STAR, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.chromatic_quill), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 2).add(Aspect.AIR, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.tongue_of_dog), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 4).add(Aspect.DEATH, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.needle_bone), new AspectList().add(Aspect.DEATH, 2).add(Aspect.CRAFT, 2));
@@ -109,7 +109,7 @@ public class ThaumcraftCompat {
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.raging_grass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.AVERSION, 8).add(Aspect.MAGIC, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.raging_grass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.AVERSION, 8).add(Aspect.MAGIC, 8).add(DEMON, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.scorned_bricks), new AspectList().add(Aspect.FIRE, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10));
@@ -124,6 +124,6 @@ public class ThaumcraftCompat {
 	
 	@Deprecated
 	static boolean isThaumcraftMob(Entity target) {
-		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider;
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden;
 	}
 }
