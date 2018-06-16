@@ -1,28 +1,44 @@
-package com.bewitchment.common;
+package com.bewitchment.common.integration.thaumcraft;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityEndermite;
+import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.entities.monster.*;
 
 /**
  * Created by Joseph on 5/6/2018.
+ * <b>DON'T USE THIS OUTSIDE OF ThaumcraftCompatBridge!</b>
  */
-public class BewitchmentAspectRegistry {
-
-
-	//This spot will register our new aspects
-	public static final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
-	public static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
-	public static final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[]{BewitchmentAspectRegistry.SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
-	public static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
-
-	public static void register() {
-
+@Deprecated
+public class ThaumcraftCompat {
+	
+	/*
+	 * DO NOT USE THIS CLASS DIRECTLY.
+	 * USE METHODS IN ThaumcraftCompatBridge
+	 * 
+	 * DO NOT CHANGE VISIBILITY. DEFAULT VISIBILITY ALLOWS THE BRIDGE
+	 * TO BE THE ONLY CLASS TO ACCESS THESE METHODS
+	 */
+	
+	// This spot will register our new aspects
+	// final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[] { Aspect.FIRE, Aspect.LIGHT }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
+	@Deprecated
+	static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[] { Aspect.EARTH, Aspect.DARKNESS }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
+	// final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[] { SUN, Aspect.VOID }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
+	@Deprecated
+	static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[] { Aspect.SOUL, Aspect.AVERSION }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
+	
+	@Deprecated
+	static void registerAspectsInternal() {
 		//Items
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.tarots), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10));
@@ -35,7 +51,7 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.chrysanthemum), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.garlic), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.AVERSION, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ginger), new AspectList().add(Aspect.PLANT, 2).add(Aspect.FIRE, 2).add(Aspect.SENSES, 2));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.hellebore), new AspectList().add(Aspect.PLANT, 2).add(Aspect.MAGIC, 2).add(Aspect.FIRE, 2).add(BewitchmentAspectRegistry.DEMON, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.hellebore), new AspectList().add(Aspect.PLANT, 2).add(Aspect.MAGIC, 2).add(Aspect.FIRE, 2).add(DEMON, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.kenaf), new AspectList().add(Aspect.PLANT, 2).add(Aspect.CRAFT, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.kelp), new AspectList().add(Aspect.PLANT, 2).add(Aspect.WATER, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.lavender), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2));
@@ -89,10 +105,10 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.envenomed_fang), new AspectList().add(Aspect.BEAST, 4).add(Aspect.ALCHEMY, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.wool_of_bat), new AspectList().add(Aspect.BEAST, 4).add(Aspect.AIR, 4));
-
+		
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(BewitchmentAspectRegistry.MOON, 6));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.raging_grass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.AVERSION, 8).add(Aspect.MAGIC, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
@@ -105,5 +121,9 @@ public class BewitchmentAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.oven), new AspectList().add(Aspect.FIRE, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.cauldron), new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
 	}
-
+	
+	@Deprecated
+	static boolean isThaumcraftMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityVex || target instanceof EntityEndermite || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider;
+	}
 }

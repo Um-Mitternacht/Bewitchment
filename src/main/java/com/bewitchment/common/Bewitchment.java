@@ -1,5 +1,10 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -13,10 +18,7 @@ import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
-import com.bewitchment.common.core.command.CommandForceFortune;
-import com.bewitchment.common.core.command.CommandFortuneActivator;
-import com.bewitchment.common.core.command.CommandIncantation;
-import com.bewitchment.common.core.command.CommandTransformationModifier;
+import com.bewitchment.common.core.command.*;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -29,6 +31,7 @@ import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.infusion.ModInfusions;
+import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.internalApi.ApiInstance;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.food.seed.SeedDropRegistry;
@@ -38,26 +41,20 @@ import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -107,7 +104,7 @@ public class Bewitchment {
 		ModLootTables.registerLootTables();
 		proxy.preInit(event);
 		if (Loader.isModLoaded("thaumcraft")) {
-			BewitchmentAspectRegistry.register();
+			ThaumcraftCompatBridge.registerAspects();
 		}
 
 		logger.info("Remember when I told you how my");
