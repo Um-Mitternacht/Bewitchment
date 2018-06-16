@@ -136,6 +136,7 @@ public final class LibItemName {
 	public static final String EMPTY_BREW_DRINK = "empty_brew_drink";
 	public static final String EMPTY_BREW_SPLASH = "empty_brew_splash";
 	public static final String EMPTY_BREW_LINGER = "empty_brew_linger";
+	public static final String GOLDEN_THREAD = "golden_thread";
 
 
 	private LibItemName() {

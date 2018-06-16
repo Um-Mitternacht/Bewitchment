@@ -144,6 +144,8 @@ public final class ModItems {
 	public static final Item grilled_watermelon = PLACE_HOLDER;
 	public static final Item stew = PLACE_HOLDER;
 
+	public static final Item golden_thread = PLACE_HOLDER;
+
 	public static final Item silver_pickaxe = PLACE_HOLDER;
 	public static final Item silver_axe = PLACE_HOLDER;
 	public static final Item silver_spade = PLACE_HOLDER;
@@ -232,6 +234,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.IRON_GALL_INK),
 				new ItemMod(LibItemName.ABSINTHE_GREEN),
 				new ItemMod(LibItemName.ALBEDO),
+				new ItemMod(LibItemName.GOLDEN_THREAD),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
