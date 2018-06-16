@@ -30,10 +30,10 @@ public class ThaumcraftCompat {
 	 */
 	
 	// This spot will register our new aspects
-	// final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[] { Aspect.FIRE, Aspect.LIGHT }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
+	final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[] { Aspect.FIRE, Aspect.LIGHT }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
 	@Deprecated
 	static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[] { Aspect.EARTH, Aspect.DARKNESS }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
-	// final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[] { SUN, Aspect.VOID }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
+	final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[] { SUN, Aspect.VOID }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
 	@Deprecated
 	static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[] { Aspect.SOUL, Aspect.AVERSION }, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
 	
@@ -124,6 +124,6 @@ public class ThaumcraftCompat {
 	
 	@Deprecated
 	static boolean isThaumcraftMob(Entity target) {
-		return target instanceof EntityEldritchGuardian || target instanceof EntityVex || target instanceof EntityEndermite || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider;
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider;
 	}
 }
