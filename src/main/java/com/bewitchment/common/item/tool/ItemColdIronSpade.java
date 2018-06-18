@@ -11,7 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,13 +22,13 @@ import javax.annotation.Nonnull;
 /**
  * Created by Joseph on 6/14/2018.
  */
-public class ItemColdIronAxe extends ItemAxe implements IModelRegister {
+public class ItemColdIronSpade extends ItemSpade implements IModelRegister {
 
-	public ItemColdIronAxe() {
-		super(ModMaterials.TOOL_COLD_IRON, ModMaterials.TOOL_COLD_IRON.getAttackDamage(), ModMaterials.TOOL_COLD_IRON.getEfficiency());
+	public ItemColdIronSpade() {
+		super(ModMaterials.TOOL_COLD_IRON);
 		this.setMaxStackSize(1);
-		setRegistryName(LibItemName.COLD_IRON_AXE);
-		setUnlocalizedName(LibItemName.COLD_IRON_AXE);
+		setRegistryName(LibItemName.COLD_IRON_SPADE);
+		setUnlocalizedName(LibItemName.COLD_IRON_SPADE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

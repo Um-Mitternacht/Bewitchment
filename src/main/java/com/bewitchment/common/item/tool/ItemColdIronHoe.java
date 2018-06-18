@@ -11,7 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,13 +22,13 @@ import javax.annotation.Nonnull;
 /**
  * Created by Joseph on 6/14/2018.
  */
-public class ItemColdIronAxe extends ItemAxe implements IModelRegister {
+public class ItemColdIronHoe extends ItemHoe implements IModelRegister {
 
-	public ItemColdIronAxe() {
-		super(ModMaterials.TOOL_COLD_IRON, ModMaterials.TOOL_COLD_IRON.getAttackDamage(), ModMaterials.TOOL_COLD_IRON.getEfficiency());
+	public ItemColdIronHoe() {
+		super(ModMaterials.TOOL_COLD_IRON);
 		this.setMaxStackSize(1);
-		setRegistryName(LibItemName.COLD_IRON_AXE);
-		setUnlocalizedName(LibItemName.COLD_IRON_AXE);
+		setRegistryName(LibItemName.COLD_IRON_HOE);
+		setUnlocalizedName(LibItemName.COLD_IRON_HOE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

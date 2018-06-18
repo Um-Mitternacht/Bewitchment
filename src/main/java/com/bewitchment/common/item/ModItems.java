@@ -273,7 +273,10 @@ public final class ModItems {
 				new ItemSilverArmor(LibItemName.SILVER_LEGGINGS, ModMaterials.ARMOR_SILVER, 2, EntityEquipmentSlot.LEGS),
 				new ItemSilverArmor(LibItemName.SILVER_BOOTS, ModMaterials.ARMOR_SILVER, 1, EntityEquipmentSlot.FEET),
 				new ItemColdIronSword(),
-				new ItemColdIronAxe()
+				new ItemColdIronAxe(),
+				new ItemColdIronHoe(),
+				new ItemColdIronPickaxe(),
+				new ItemColdIronSpade()
 		);
 		// Item Blocks
 		registry.registerAll(
