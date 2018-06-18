@@ -1,10 +1,13 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.Optional;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
+import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
@@ -22,10 +25,7 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.divination.Fortune;
 import com.bewitchment.common.incantation.ModIncantations;
@@ -34,14 +34,13 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -173,6 +172,19 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public IBrewEffect getBrewFromPotion(Potion potion) {
 		return CauldronRegistry.getBrewFromPotion(potion);
+	}
+	
+	@Override
+	public void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f) {
+		if (!f.isTamed() || !f.getOwnerAcrossWorlds().equals(p)) {
+			throw new IllegalStateException("Can't make a familiar if the entity is not tamed, or tamed by another player");
+		}
+		f.setFamiliar(true);
+		f.setFamiliarSkin(p.getRNG().nextInt(f.getTotalVariants()));
+		if (!f.hasCustomName()) {
+			f.setCustomNameTag(f.getRandomNames()[p.getRNG().nextInt(f.getRandomNames().length)]);
+		}
+		// TODO save that to player data
 	}
 
 }

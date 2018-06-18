@@ -4,6 +4,10 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,9 +17,19 @@ public abstract class EntityFamiliar extends EntityTameable {
 	
 	private static final float REDIRECTED_DAMAGE = 0.1f;
 	private static final DamageSource FAMILIAR_LINK = new DamageSource("familiar_link").setMagicDamage();
+	
+	private static final DataParameter<Boolean> FAMILIAR_STATUS = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Integer> FAMILIAR_TYPE = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.VARINT);
 
 	public EntityFamiliar(World worldIn) {
 		super(worldIn);
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(FAMILIAR_STATUS, false);
+		this.dataManager.register(FAMILIAR_TYPE, 0);
 	}
 
 	@Override
@@ -47,18 +61,35 @@ public abstract class EntityFamiliar extends EntityTameable {
 		}
 	}
 	
-	private boolean isFamiliar() {
-		return false;
+	public boolean isFamiliar() {
+		return dataManager.get(FAMILIAR_STATUS);
 	}
 	
-	@Override
-	public boolean isTamed() {
-		return super.isTamed() || isFamiliar();
+	public void setFamiliar(boolean flag) {
+		dataManager.set(FAMILIAR_STATUS, flag);
 	}
+	
+	/**
+	 * @return The integer representing the skin type
+	 */
+	public int getFamiliarSkin() {
+		return dataManager.get(FAMILIAR_TYPE);
+	}
+	
+	public void setFamiliarSkin(int type) {
+		if (type >= getTotalVariants()) {
+			throw new IllegalArgumentException(String.format("Skin of index %d doesn't exist for %s", type, this.getClass().getName()));
+		}
+		dataManager.set(FAMILIAR_TYPE, type);
+	}
+	
+	public abstract int getTotalVariants();
+	
+	public abstract String[] getRandomNames();
 	
 	@Nullable
 	public EntityPlayer getOwnerAcrossWorlds() {
-		if (getOwnerId() == null) {
+		if (getOwnerId() == null || !isTamed()) {
 			return null;
 		}
 		for (WorldServer ws : world.getMinecraftServer().worlds) {
@@ -68,5 +99,19 @@ public abstract class EntityFamiliar extends EntityTameable {
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setBoolean("familiar", isFamiliar());
+		compound.setInteger("fam_type", getFamiliarSkin());
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		setFamiliar(compound.getBoolean("familiar"));
+		setFamiliarSkin(compound.getInteger("fam_type"));
 	}
 }
