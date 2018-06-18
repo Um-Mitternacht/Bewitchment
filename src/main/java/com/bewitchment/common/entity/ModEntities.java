@@ -3,7 +3,6 @@ package com.bewitchment.common.entity;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
@@ -28,7 +27,7 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("brew_bottle"), EntityBrew.class, "brew_bottle", id++, Bewitchment.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(getResource("brew_lingering_effect"), EntityLingeringBrew.class, "brew_lingering_effect", id++, Bewitchment.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(getResource("brew_aoe_effect"), EntityAoE.class, "brew_aoe_effect", id++, Bewitchment.instance, 64, 1, false);
-		
+
 		// Mob entities
 		EntityRegistry.registerModEntity(getResource("owl"), EntityOwl.class, "entity_owl", id++, Bewitchment.instance, 64, 1, true, 0xAF813F, 0x6E5127);
 	}

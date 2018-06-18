@@ -2,12 +2,14 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -23,15 +25,15 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityOwl extends EntityFamiliar {
-	
-	private static final String[] names = { "Owlmighty", "Owliver", "Owl Capone" };
+
+	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone"};
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityOwl.class, DataSerializers.VARINT);
-	
+
 	public EntityOwl(World worldIn) {
 		super(worldIn);
 		this.setSize(0.4f, 0.9f);
 	}
-	
+
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -40,19 +42,19 @@ public class EntityOwl extends EntityFamiliar {
 		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
 	}
-	
+
 	@Override
 	protected void entityInit() {
 		super.entityInit();
 		dataManager.register(TINT, 0xFFFFFF);
 		this.aiSit = new EntityAISit(this);
 	}
-	
+
 	@Override
 	protected void setupTamedAI() {
 		this.tasks.addTask(5, new EntityAIFollowOwnerFlying(this, 1, 1, 10));
 	}
-	
+
 	@Override
 	protected void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
@@ -64,7 +66,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, this.aiSit);
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
 	}
-	
+
 	@Override
 	protected PathNavigate createNavigator(World worldIn) {
 		PathNavigateFlying pathnavigateflying = new PathNavigateFlying(this, worldIn);
@@ -73,7 +75,7 @@ public class EntityOwl extends EntityFamiliar {
 		pathnavigateflying.setCanEnterDoors(true);
 		return pathnavigateflying;
 	}
-	
+
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!player.world.isRemote) {
@@ -93,30 +95,30 @@ public class EntityOwl extends EntityFamiliar {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityOwl(world);
 	}
-	
+
 	@Override
 	public int getTotalVariants() {
 		return 1;
 	}
-	
+
 	@Override
 	public String[] getRandomNames() {
 		return names;
 	}
-	
+
 	@Override
 	public void fall(float distance, float damageMultiplier) {
 	}
-	
+
 	@Override
 	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
 	}
-	
+
 	@Override
 	public boolean getCanSpawnHere() {
 		int i = MathHelper.floor(this.posX);
@@ -126,24 +128,24 @@ public class EntityOwl extends EntityFamiliar {
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		return block instanceof BlockLeaves || block == Blocks.GRASS || block instanceof BlockLog || block == Blocks.AIR && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
 	}
-	
+
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		return entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F);
 	}
-	
+
 	@Override
 	public boolean canBePushed() {
 		return true;
 	}
-	
+
 	@Override
 	protected void collideWithEntity(Entity entityIn) {
 		if (!entityIn.equals(getOwner())) {
 			super.collideWithEntity(entityIn);
 		}
 	}
-	
+
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
@@ -154,7 +156,7 @@ public class EntityOwl extends EntityFamiliar {
 		}
 		return super.attackEntityFrom(source, amount);
 	}
-	
+
 	@Override
 	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
 		if (forSpawnCount && isFamiliar()) {
@@ -162,10 +164,10 @@ public class EntityOwl extends EntityFamiliar {
 		}
 		return super.isCreatureType(type, forSpawnCount);
 	}
-	
+
 	@Override
 	public boolean isNoDespawnRequired() {
 		return super.isNoDespawnRequired() || isFamiliar();
 	}
-	
+
 }
