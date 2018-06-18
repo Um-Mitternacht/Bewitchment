@@ -1,7 +1,5 @@
 package com.bewitchment.api.entity;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -9,8 +7,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
+import javax.annotation.Nullable;
+
 public abstract class EntityFamiliar extends EntityTameable {
-	
+
 	private static final float REDIRECTED_DAMAGE = 0.1f;
 	private static final DamageSource FAMILIAR_LINK = new DamageSource("familiar_link").setMagicDamage();
 
@@ -20,7 +20,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 
 	@Override
 	protected void damageEntity(DamageSource damageSrc, float damageAmount) {
-		if (getOwner() != null && this.isFamiliar() && getOwner().getDistanceSq(this) < 256 && damageSrc.getImmediateSource()!=this) {
+		if (getOwner() != null && this.isFamiliar() && getOwner().getDistanceSq(this) < 256 && damageSrc.getImmediateSource() != this) {
 			getOwner().attackEntityFrom(DamageSource.causeIndirectMagicDamage(damageSrc.getTrueSource(), this), REDIRECTED_DAMAGE * damageAmount);
 			damageAmount *= 1 - REDIRECTED_DAMAGE;
 		}
@@ -46,16 +46,16 @@ public abstract class EntityFamiliar extends EntityTameable {
 			}
 		}
 	}
-	
+
 	private boolean isFamiliar() {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isTamed() {
 		return super.isTamed() || isFamiliar();
 	}
-	
+
 	@Nullable
 	public EntityPlayer getOwnerAcrossWorlds() {
 		if (getOwnerId() == null) {
