@@ -29,7 +29,7 @@ public class EntityOwl extends EntityFamiliar {
 	
 	public EntityOwl(World worldIn) {
 		super(worldIn);
-		this.setSize(0.4f, 0.8f);
+		this.setSize(0.4f, 0.9f);
 	}
 	
 	@Override
@@ -58,6 +58,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
+		// this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(2, new EntityAIFleeSun(this, 2d));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(4, this.aiSit);
