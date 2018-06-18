@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 public abstract class EntityFamiliar extends EntityTameable {
-	
+
 	private static final float REDIRECTED_DAMAGE = 0.1f;
 	private static final DamageSource FAMILIAR_LINK = new DamageSource("familiar_link").setMagicDamage();
 	
@@ -34,7 +34,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 
 	@Override
 	protected void damageEntity(DamageSource damageSrc, float damageAmount) {
-		if (getOwner() != null && this.isFamiliar() && getOwner().getDistanceSq(this) < 256 && damageSrc.getImmediateSource()!=this) {
+		if (getOwner() != null && this.isFamiliar() && getOwner().getDistanceSq(this) < 256 && damageSrc.getImmediateSource() != this) {
 			getOwner().attackEntityFrom(DamageSource.causeIndirectMagicDamage(damageSrc.getTrueSource(), this), REDIRECTED_DAMAGE * damageAmount);
 			damageAmount *= 1 - REDIRECTED_DAMAGE;
 		}

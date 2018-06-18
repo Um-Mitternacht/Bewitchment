@@ -11,8 +11,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,13 +22,13 @@ import javax.annotation.Nonnull;
 /**
  * Created by Joseph on 6/14/2018.
  */
-public class ItemColdIronSword extends ItemSword implements IModelRegister {
+public class ItemColdIronSpade extends ItemSpade implements IModelRegister {
 
-	public ItemColdIronSword() {
+	public ItemColdIronSpade() {
 		super(ModMaterials.TOOL_COLD_IRON);
 		this.setMaxStackSize(1);
-		setRegistryName(LibItemName.COLD_IRON_SWORD);
-		setUnlocalizedName(LibItemName.COLD_IRON_SWORD);
+		setRegistryName(LibItemName.COLD_IRON_SPADE);
+		setUnlocalizedName(LibItemName.COLD_IRON_SPADE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

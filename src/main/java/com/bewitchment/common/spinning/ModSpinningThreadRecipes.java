@@ -9,6 +9,7 @@ import net.minecraft.item.crafting.Ingredient;
 
 public class ModSpinningThreadRecipes {
 
+	//Register recipes here
 	public static SpinningThreadRecipe web;
 	public static SpinningThreadRecipe gold_thread;
 
@@ -27,6 +28,7 @@ public class ModSpinningThreadRecipes {
 		registerAll();
 	}
 
+	//Register recipes here
 	public static void registerAll() {
 		SpinningThreadRecipe.REGISTRY.registerAll(web);
 		SpinningThreadRecipe.REGISTRY.registerAll(gold_thread);
