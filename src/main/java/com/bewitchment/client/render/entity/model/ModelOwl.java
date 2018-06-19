@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -79,7 +78,7 @@ public class ModelOwl extends ModelBase {
 		this.wingRight3 = new ModelRenderer(this, 2, 44);
 		this.wingRight3.addBox(0.0F, 0.0F, -2.0F, 6, 8, 2);
 		this.wingRight2.addChild(this.wingRight3);
-		
+
 		setWanderingStance();
 	}
 
