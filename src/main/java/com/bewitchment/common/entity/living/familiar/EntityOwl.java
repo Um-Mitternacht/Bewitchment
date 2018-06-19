@@ -2,14 +2,12 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -32,6 +30,7 @@ public class EntityOwl extends EntityFamiliar {
 	public EntityOwl(World worldIn) {
 		super(worldIn);
 		this.setSize(0.4f, 0.9f);
+		this.moveHelper = new EntityFlyHelper(this);
 	}
 
 	@Override
@@ -52,7 +51,7 @@ public class EntityOwl extends EntityFamiliar {
 
 	@Override
 	protected void setupTamedAI() {
-		this.tasks.addTask(5, new EntityAIFollowOwnerFlying(this, 1, 1, 10));
+		this.tasks.addTask(5, new EntityAIFollowOwnerFlying(this, 1, 10, 2));
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
-		// this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
+		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(2, new EntityAIFleeSun(this, 2d));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(4, this.aiSit);

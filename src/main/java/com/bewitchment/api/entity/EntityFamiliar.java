@@ -1,5 +1,8 @@
 package com.bewitchment.api.entity;
 
+import javax.annotation.Nullable;
+
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,10 +11,9 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import javax.annotation.Nullable;
 
 public abstract class EntityFamiliar extends EntityTameable {
 
@@ -76,7 +78,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 		return dataManager.get(FAMILIAR_TYPE);
 	}
 
-	public void setFamiliarSkin(int type) {
+	public void setEntitySkin(int type) {
 		if (type >= getTotalVariants()) {
 			throw new IllegalArgumentException(String.format("Skin of index %d doesn't exist for %s", type, this.getClass().getName()));
 		}
@@ -112,6 +114,13 @@ public abstract class EntityFamiliar extends EntityTameable {
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		setFamiliar(compound.getBoolean("familiar"));
-		setFamiliarSkin(compound.getInteger("fam_type"));
+		setEntitySkin(compound.getInteger("fam_type"));
 	}
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
+		this.setEntitySkin(rand.nextInt(getTotalVariants()));
+		return super.onInitialSpawn(difficulty, livingdata);
+	}
+	
 }

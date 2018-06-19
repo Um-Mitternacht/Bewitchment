@@ -182,7 +182,7 @@ public class ApiInstance extends BewitchmentAPI {
 			throw new IllegalStateException("Can't make a familiar if the entity is not tamed, or tamed by another player");
 		}
 		f.setFamiliar(true);
-		f.setFamiliarSkin(p.getRNG().nextInt(f.getTotalVariants()));
+		f.setEntitySkin(p.getRNG().nextInt(f.getTotalVariants()));
 		if (!f.hasCustomName()) {
 			f.setCustomNameTag(f.getRandomNames()[p.getRNG().nextInt(f.getRandomNames().length)]);
 		}
