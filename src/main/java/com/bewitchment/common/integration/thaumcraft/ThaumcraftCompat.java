@@ -10,8 +10,10 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.entities.monster.*;
-import thaumcraft.common.entities.monster.boss.EntityEldritchGolem;
-import thaumcraft.common.entities.monster.boss.EntityEldritchWarden;
+import thaumcraft.common.entities.monster.boss.*;
+import thaumcraft.common.entities.monster.cult.EntityCultist;
+import thaumcraft.common.entities.monster.cult.EntityCultistPortalLesser;
+import thaumcraft.common.entities.monster.tainted.*;
 
 /**
  * Created by Joseph on 5/6/2018.
@@ -120,7 +122,27 @@ public class ThaumcraftCompat {
 	}
 
 	@Deprecated
-	static boolean isThaumcraftMob(Entity target) {
+	static boolean isEldritchMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden;
+	}
+
+	@Deprecated
+	static boolean isTCSpiritMob(Entity target) {
 		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden;
+	}
+
+	@Deprecated
+	static boolean isCrimsonCultMob(Entity target) {
+		return target instanceof EntityCultistLeader || target instanceof EntityCultist || target instanceof EntityCultistPortalGreater || target instanceof EntityCultistPortalLesser;
+	}
+
+	@Deprecated
+	static boolean isThaumcraftMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden || target instanceof EntityCultistLeader || target instanceof EntityCultist || target instanceof EntityCultistPortalGreater || target instanceof EntityCultistPortalLesser || target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm || target instanceof EntityBrainyZombie || target instanceof EntityThaumicSlime;
+	}
+
+	@Deprecated
+	static boolean isTaintedMob(Entity target) {
+		return target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm|| target instanceof EntityThaumicSlime;
 	}
 }

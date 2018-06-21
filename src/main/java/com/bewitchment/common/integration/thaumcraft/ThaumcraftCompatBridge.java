@@ -14,6 +14,34 @@ public class ThaumcraftCompatBridge {
 		}
 	}
 
+	public static boolean isEldritchMob(Entity entity) {
+		if (Loader.isModLoaded(TC_MOD_ID)) {
+			return ThaumcraftCompat.isEldritchMob(entity);
+		}
+		return false;
+	}
+
+	public static boolean isTCSpiritMob(Entity entity) {
+		if (Loader.isModLoaded(TC_MOD_ID)) {
+			return ThaumcraftCompat.isTCSpiritMob(entity);
+		}
+		return false;
+	}
+
+	public static boolean isCrimsonCultMob(Entity entity) {
+		if (Loader.isModLoaded(TC_MOD_ID)) {
+			return ThaumcraftCompat.isCrimsonCultMob(entity);
+		}
+		return false;
+	}
+
+	public static boolean isTaintedMob(Entity entity) {
+		if (Loader.isModLoaded(TC_MOD_ID)) {
+			return ThaumcraftCompat.isTaintedMob(entity);
+		}
+		return false;
+	}
+
 	public static boolean isThaumcraftMob(Entity entity) {
 		if (Loader.isModLoaded(TC_MOD_ID)) {
 			return ThaumcraftCompat.isThaumcraftMob(entity);
