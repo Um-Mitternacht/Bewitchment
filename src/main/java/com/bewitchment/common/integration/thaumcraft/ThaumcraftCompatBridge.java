@@ -14,6 +14,8 @@ public class ThaumcraftCompatBridge {
 		}
 	}
 
+
+	//These methods call for various groups of mobs from Thaumcraft, allowing them to be targeted.
 	public static boolean isEldritchMob(Entity entity) {
 		if (Loader.isModLoaded(TC_MOD_ID)) {
 			return ThaumcraftCompat.isEldritchMob(entity);
