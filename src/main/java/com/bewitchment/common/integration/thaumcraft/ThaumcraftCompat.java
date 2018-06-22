@@ -143,6 +143,6 @@ public class ThaumcraftCompat {
 
 	@Deprecated
 	static boolean isTaintedMob(Entity target) {
-		return target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm|| target instanceof EntityThaumicSlime;
+		return target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm || target instanceof EntityThaumicSlime;
 	}
 }
