@@ -79,10 +79,6 @@ repositories {
         url = "http://tehnut.info/maven"
     }
     maven {
-        name = "leviathan"
-        url = "http://maven.leviathan-studio.com/artifactory/leviathan/"
-    }
-    maven {
         name = "JEI"
         url = "http://dvs1.progwml6.com/files/maven"
     }
@@ -103,7 +99,6 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
     compile "baubles:Baubles:1.12:1.5.2"
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
-    compile "com.leviathanstudio:CraftStudio:1.0.0.93-mc1.12-alpha:dev"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
     compile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA16"
 }
