@@ -1,5 +1,8 @@
 package com.bewitchment.client.core;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
@@ -7,10 +10,7 @@ import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
-import com.bewitchment.client.handler.ColorPropertyHandler;
-import com.bewitchment.client.handler.ItemCandleColorHandler;
-import com.bewitchment.client.handler.Keybinds;
-import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.client.handler.*;
 import com.bewitchment.client.render.entity.renderer.*;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.common.Bewitchment;
@@ -18,6 +18,7 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.cauldron.BrewData;
+import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.divination.TarotHandler.TarotInfo;
@@ -27,12 +28,10 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityCauldron;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.client.renderer.color.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,9 +50,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-
-import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -90,6 +86,7 @@ public class ClientProxy implements ISidedProxy {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
+		setupHealthRenderer(ConfigHandler.CLIENT.overrideHealth);
 		Keybinds.registerKeys();
 		BlockColors blocks = Minecraft.getMinecraft().getBlockColors();
 		// Block Colors
@@ -238,5 +235,10 @@ public class ClientProxy implements ISidedProxy {
 		IBlockState ibs = mc.world.getBlockState(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ));
 		boolean res = (ibs.getBlock() == ModBlocks.witchfire && ibs.getValue(BlockWitchFire.TYPE) == BlockWitchFire.EnumFireType.ENDFIRE);
 		return res;
+	}
+	
+	@Override
+	public void setupHealthRenderer(boolean overrideHealth) {
+		HealthDisplayOverride.set(overrideHealth);
 	}
 }

@@ -8,7 +8,9 @@
  */
 package com.bewitchment.common.core.handler;
 
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.Type;
@@ -39,6 +41,7 @@ public final class ConfigHandler {
 	public static void onConfigChanged(ConfigChangedEvent evt) {
 		if (evt.getModID().equals(LibMod.MOD_ID)) {
 			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
+			Bewitchment.proxy.setupHealthRenderer(CLIENT.overrideHealth);
 		}
 	}
 
@@ -207,7 +210,9 @@ public final class ConfigHandler {
 		public boolean showArrowsInBar = true;
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
-
+		@Comment("Override health rendering HUD")
+		public boolean overrideHealth = true;
+		
 		public static class BrewHUD {
 			@Comment("Should the brew HUD be hidden?")
 			public boolean hide;
