@@ -1,6 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -119,8 +120,17 @@ public class ModelOwl extends ModelBase {
 			}
 		} else {
 			setFlyingStance();
-			wingRight1.rotateAngleY = MathHelper.sin((limbSwing) * 0.5f);
+			float time = (owl.ticksExisted + partialTickTime);
+			wingRight1.rotateAngleY = 0.26179938779914943f + 1.047166666666666f * MathHelper.cos((float) (time / Math.PI));
 			wingLeft1.rotateAngleY = -wingRight1.rotateAngleY;
+			float angleAbs = Math.abs(0.2966972222f * MathHelper.sin(3.1415f * time / 0.4363194444f));
+			if (angleAbs > 0.1745277777f) {
+				angleAbs = 0.1745277777f;
+			}
+			wingLeft2.rotateAngleY = -angleAbs;
+			wingLeft3.rotateAngleY = -angleAbs;
+			wingRight2.rotateAngleY = angleAbs;
+			wingRight3.rotateAngleY = angleAbs;
 		}
 	}
 
@@ -132,7 +142,7 @@ public class ModelOwl extends ModelBase {
 		this.owlLeftEar.setRotationPoint(-4.0F, -3.4F, 0.0F);
 		this.setRotationAngles(owlLeftEar, -0.3490658503988659F, 0.0F, -0.2617993877991494F);
 		this.wingLeft1.setRotationPoint(-6.0F, -7.0F, 0.0F);
-		this.setRotationAngles(wingLeft1, 0.0F, 0.17453292519943295F, 0.0F);
+		this.setRotationAngles(wingLeft1, 0.08726646259971647F, 0.7853981633974483F, -0.08726646259971647F);
 		this.wingRight2.setRotationPoint(6.0F, 0.0F, 1.0F);
 		this.setRotationAngles(wingRight2, 0.0F, 0.08726646259971647F, 0.0F);
 		this.owlHead.setRotationPoint(0.0F, -12.0F, 0.0F);
@@ -143,7 +153,7 @@ public class ModelOwl extends ModelBase {
 		this.owlLeftClaw.setRotationPoint(-3.0F, 6.0F, -1.5F);
 		this.setRotationAngles(owlLeftClaw, 0.8726646259971648F, 0.08726646259971647F, 0.0F);
 		this.wingRight1.setRotationPoint(6.0F, -7.0F, 0.0F);
-		this.setRotationAngles(wingRight1, 0.0F, -0.17453292519943295F, 0.0F);
+		this.setRotationAngles(wingRight1, 0.08726646259971647F, -0.7853981633974483F, 0.08726646259971647F);
 		this.owlBody.setRotationPoint(0.0F, 16.0F, 0.0F);
 		this.setRotationAngles(owlBody, 1.48352986419518F, 0.0F, 0.0F);
 		this.tailRight.setRotationPoint(2.0F, 2.5F, 4.0F);
