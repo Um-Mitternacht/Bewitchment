@@ -10,7 +10,6 @@ package com.bewitchment.common.core.handler;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.Type;
@@ -212,7 +211,7 @@ public final class ConfigHandler {
 		public boolean roundVampireBlood = true;
 		@Comment("Override health rendering HUD")
 		public boolean overrideHealth = true;
-		
+
 		public static class BrewHUD {
 			@Comment("Should the brew HUD be hidden?")
 			public boolean hide;

@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
