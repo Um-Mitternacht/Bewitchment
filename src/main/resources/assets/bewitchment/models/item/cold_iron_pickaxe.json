@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "bewitchment:items/cold_iron_pickaxe"
+  }
+}
