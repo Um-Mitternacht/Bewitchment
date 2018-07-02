@@ -121,6 +121,7 @@ public final class ModBlocks {
 	public static final Block scorned_brick_fence = PLACE_HOLDER;
 	public static final Block goblet = PLACE_HOLDER;
 	public static final Block tarot_table = PLACE_HOLDER;
+	public static final Block cold_iron_block = PLACE_HOLDER;
 
 	public static final Block infested_farmland = PLACE_HOLDER;
 	public static final Block witchfire = PLACE_HOLDER;
@@ -204,6 +205,7 @@ public final class ModBlocks {
 		registry.registerAll(
 				new BlockMod(LibBlockName.MOLDAVITE_BLOCK, Material.ROCK).setSound(SoundType.GLASS).setHardness(5.0F),
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
+				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.TOURMALINE_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.BLOODSTONE_BLOCK, Material.ROCK).setHardness(5.0F),

@@ -143,6 +143,7 @@ public final class ModItems {
 	public static final Item iron_gall_ink = PLACE_HOLDER;
 	public static final Item grilled_watermelon = PLACE_HOLDER;
 	public static final Item stew = PLACE_HOLDER;
+	public static final Item cold_iron_nugget = PLACE_HOLDER;
 
 	public static final Item golden_thread = PLACE_HOLDER;
 
@@ -235,6 +236,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.ABSINTHE_GREEN),
 				new ItemMod(LibItemName.ALBEDO),
 				new ItemMod(LibItemName.GOLDEN_THREAD),
+				new ItemMod(LibItemName.COLD_IRON_NUGGET),
+				new ItemMod(LibItemName.OWLETS_WING),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
@@ -336,6 +339,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.crystal_ball),
 				itemBlock(ModBlocks.goblet),
 				itemBlock(ModBlocks.tarot_table),
+				itemBlock(ModBlocks.cold_iron_block),
 				new ItemBlockRevealingLantern(ModBlocks.lantern, false),
 				new ItemBlockRevealingLantern(ModBlocks.revealing_lantern, true)
 		);

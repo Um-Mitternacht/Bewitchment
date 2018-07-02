@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "normal": [
+      {
+        "model": "bewitchment:cold_iron_block"
+      }
+    ]
+  }
+}

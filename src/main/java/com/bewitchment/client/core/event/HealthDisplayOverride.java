@@ -33,6 +33,10 @@ public class HealthDisplayOverride {
 		mantleInstalled = Loader.isModLoaded("mantle");
 	}
 
+	public static void set(boolean override) {
+		INSTANCE.setOverride(override);
+	}
+
 	private void setOverride(boolean mode) {
 		if (!override && mode) {
 			MinecraftForge.EVENT_BUS.register(this);
@@ -40,10 +44,6 @@ public class HealthDisplayOverride {
 			MinecraftForge.EVENT_BUS.unregister(this);
 		}
 		override = mode;
-	}
-
-	public static void set(boolean override) {
-		INSTANCE.setOverride(override);
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)

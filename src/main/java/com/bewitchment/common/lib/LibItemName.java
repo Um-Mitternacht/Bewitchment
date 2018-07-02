@@ -122,6 +122,7 @@ public final class LibItemName {
 	public static final String GRILLED_WATERMELON = "grilled_watermelon";
 	public static final String SPELL_PAGE = "spell_page";
 	public static final String FILLED_BOWL = "stew";
+	public static final String OWLETS_WING = "owlets_wing";
 
 	//Materials
 	public static final String SILVER = "silver";
@@ -141,6 +142,7 @@ public final class LibItemName {
 	public static final String EMPTY_BREW_SPLASH = "empty_brew_splash";
 	public static final String EMPTY_BREW_LINGER = "empty_brew_linger";
 	public static final String GOLDEN_THREAD = "golden_thread";
+	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 
 
 	private LibItemName() {
