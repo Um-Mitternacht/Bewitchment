@@ -100,8 +100,8 @@ dependencies {
     compile "baubles:Baubles:1.12:1.5.2"
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA16"
-    compile "astral-sorcery:AstralSorcery:1.12.2:1.9.1"    
+    compile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA17"
+    compile "astral-sorcery:AstralSorcery:1.12.2:1.9.2"    
 }
 
 tasks.withType(JavaCompile) {
