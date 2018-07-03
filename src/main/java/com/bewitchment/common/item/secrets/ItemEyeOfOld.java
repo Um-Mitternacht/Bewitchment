@@ -23,6 +23,9 @@ public class ItemEyeOfOld extends ItemMod {
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
+	//This easter egg is a reference to an ARG Sunconure11 was involved in at one point.
+	//If you want to continue your descent into this insanity, you can follow this link:
+	//https://www.reddit.com/r/izuxe43ui520815/
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModel() {
