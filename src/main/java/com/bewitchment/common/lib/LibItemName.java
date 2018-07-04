@@ -123,6 +123,7 @@ public final class LibItemName {
 	public static final String SPELL_PAGE = "spell_page";
 	public static final String FILLED_BOWL = "stew";
 	public static final String OWLETS_WING = "owlets_wing";
+	public static final String RAVENS_FEATHER = "ravens_feather";
 
 	//Materials
 	public static final String SILVER = "silver";

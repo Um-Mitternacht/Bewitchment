@@ -1,5 +1,10 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -13,10 +18,7 @@ import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
-import com.bewitchment.common.core.command.CommandForceFortune;
-import com.bewitchment.common.core.command.CommandFortuneActivator;
-import com.bewitchment.common.core.command.CommandIncantation;
-import com.bewitchment.common.core.command.CommandTransformationModifier;
+import com.bewitchment.common.core.command.*;
 import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -39,26 +41,20 @@ import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -104,7 +100,6 @@ public class Bewitchment {
 		ModSpells.init();
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
-		ModPotions.init();
 		ModLootTables.registerLootTables();
 		proxy.preInit(event);
 		if (Loader.isModLoaded("thaumcraft")) {
@@ -118,6 +113,7 @@ public class Bewitchment {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		ModPotions.init();
 		IMessageHandler<BarkGrow, IMessage> mh = SimpleCapability.init(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE, NetworkHandler.HANDLER, BarkGrow::decode, BarkGrow::encode);
 		NetworkHandler.HANDLER.registerMessage(mh, BarkGrow.class, NetworkHandler.next(), Side.CLIENT);
 		ModItems.init();
