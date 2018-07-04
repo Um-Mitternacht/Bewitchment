@@ -110,7 +110,7 @@ public class EntityOwl extends EntityFamiliar {
 
 	@Override
 	public int getTotalVariants() {
-		return 1;
+		return 2;
 	}
 
 	@Override
