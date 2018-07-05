@@ -1,5 +1,7 @@
 package com.bewitchment.api.entity;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,13 +15,10 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-import javax.annotation.Nullable;
-
 public abstract class EntityFamiliar extends EntityTameable {
 
 	private static final float REDIRECTED_DAMAGE = 0.1f;
 	private static final DamageSource FAMILIAR_LINK = new DamageSource("familiar_link").setMagicDamage();
-
 	private static final DataParameter<Boolean> FAMILIAR_STATUS = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Integer> FAMILIAR_TYPE = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.VARINT);
 
@@ -69,8 +68,11 @@ public abstract class EntityFamiliar extends EntityTameable {
 
 	public void setFamiliar(boolean flag) {
 		dataManager.set(FAMILIAR_STATUS, flag);
+		setFamiliarAttributes(flag);
 	}
 
+	protected abstract void setFamiliarAttributes(boolean isFamiliar);
+	
 	/**
 	 * @return The integer representing the skin type
 	 */
