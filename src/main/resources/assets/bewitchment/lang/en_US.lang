@@ -157,6 +157,9 @@ item.broom_juniper.name=Juniper Broom
 item.broom_yew.name=Yew Broom
 item.broom_cypress.name=Cypress Broom
 item.gem_powder.name=Gem Powder
+item.cold_iron_nugget.name=Cold Iron Nugget
+item.owlets_wing.name=Owlet's Wing
+item.ravens_feather.name=Raven's Feather
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
@@ -375,6 +378,7 @@ tile.embittered_bricks.name=Embittered Bricks
 tile.scorned_bricks.name=Scorned Bricks
 tile.scorned_brick_fence.name=Scorned Brick Fence
 tile.scorned_brick_stairs.name=Scorned Brick Stairs
+tile.cold_iron_block.name=Cold Iron Block
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
