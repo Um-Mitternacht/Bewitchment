@@ -184,5 +184,5 @@ public class EntityOwl extends EntityFamiliar {
 	protected void setFamiliarAttributes(boolean isFamiliar) {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
 	}
-	
+
 }
