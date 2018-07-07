@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "bewitchment:mortar_and_pestle_stone",
+      "data": 0
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "nuggetColdIron"
+    }
+  ],
+  "result": {
+    "item": "bewitchment:cold_iron_dust_small",
+    "data": 0,
+    "count": 1
+  }
+}

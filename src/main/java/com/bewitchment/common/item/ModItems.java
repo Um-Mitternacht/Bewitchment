@@ -239,6 +239,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.COLD_IRON_NUGGET),
 				new ItemMod(LibItemName.OWLETS_WING),
 				new ItemMod(LibItemName.RAVENS_FEATHER),
+				new ItemMod(LibItemName.COLD_IRON_DUST),
+				new ItemMod(LibItemName.COLD_IRON_DUST_SMALL),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),

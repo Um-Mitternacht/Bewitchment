@@ -160,6 +160,8 @@ item.gem_powder.name=Gem Powder
 item.cold_iron_nugget.name=Cold Iron Nugget
 item.owlets_wing.name=Owlet's Wing
 item.ravens_feather.name=Raven's Feather
+item.cold_iron_dust.name=Cold Iron Powder
+item.cold_iron_dust_small.name=Cold Iron Dustpile
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar

@@ -144,6 +144,8 @@ public final class LibItemName {
 	public static final String EMPTY_BREW_LINGER = "empty_brew_linger";
 	public static final String GOLDEN_THREAD = "golden_thread";
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
+	public static final String COLD_IRON_DUST = "cold_iron_dust";
+	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
 
 
 	private LibItemName() {
