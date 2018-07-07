@@ -127,6 +127,7 @@ public class BlockWitchFire extends BlockMod {
 					}
 					break;
 				case FROSTFIRE:
+					//Todo: Allow cold iron powder and dustpiles to be smithed back into ingots and dust here.
 					world.getEntitiesWithinAABB(EntityItem.class, aa).stream()
 							.filter(i -> !i.isDead)
 							.filter(i -> Block.getBlockFromItem(i.getItem().getItem()) == Blocks.IRON_ORE)
