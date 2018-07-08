@@ -339,6 +339,7 @@ fluid.none=Empty
 
 
 tile.goblet.name=Goblet
+tile.gem_bowl.name=Gem Bowl
 tile.tarot_table.name=Divination Table
 tile.planks_juniper.name=Juniper Wood Planks
 tile.planks_elder.name=Elder Wood Planks

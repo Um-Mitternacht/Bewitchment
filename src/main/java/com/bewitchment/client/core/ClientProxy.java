@@ -13,6 +13,7 @@ import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.renderer.*;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
+import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
@@ -28,6 +29,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityCauldron;
+import com.bewitchment.common.tile.TileEntityGemBowl;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
@@ -205,6 +207,7 @@ public class ClientProxy implements ISidedProxy {
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGemBowl.class, new TileRenderGemBowl());
 	}
 
 	@Override

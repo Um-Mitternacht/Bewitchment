@@ -6,6 +6,7 @@ import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
+import com.bewitchment.common.block.misc.BlockGemBowl;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
@@ -119,6 +120,7 @@ public final class ModBlocks {
 	public static final Block scorned_bricks = null;
 	public static final Block scorned_brick_fence = null;
 	public static final Block goblet = null;
+	public static final Block gem_bowl = null;
 	public static final Block tarot_table = null;
 	public static final Block cold_iron_block = null;
 
@@ -195,6 +197,7 @@ public final class ModBlocks {
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
 				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
 				new BlockGoblet(LibBlockName.GOBLET),
+				new BlockGemBowl(LibBlockName.GEM_BOWL),
 				new BlockTarotTable(),
 				new BlockLantern(true),
 				new BlockLantern(false),

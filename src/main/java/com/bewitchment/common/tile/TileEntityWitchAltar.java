@@ -1,6 +1,7 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.misc.BlockGemBowl;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
@@ -140,37 +141,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 					return 1;
 				}
 			}
-			//TODO: Change the way gems are stored on an altar. Use a ritual plate. Pick them up via the oredict, to increase mod support.
-		} else if (blockState.getBlock().equals(Blocks.DIAMOND_BLOCK)) {
-			return 325;
-		} else if (blockState.getBlock().equals(Blocks.EMERALD_BLOCK)) {
-			return 275;
-		} else if (blockState.getBlock().equals(ModBlocks.moldavite_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.alexandrite_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.nuummite_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.garnet_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.amethyst_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.tourmaline_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.tigers_eye_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.malachite_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.bloodstone_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(ModBlocks.jasper_block)) {
-			return 225;
-		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
-			return 225;
-		} else if (blockState.getBlock().equals(Blocks.QUARTZ_BLOCK)) {
-			return 225;
-		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
-			return 200;
+		} else if(blockState.getBlock() instanceof BlockGemBowl) {
+			return ((TileEntityGemBowl) world.getTileEntity(pos)).getGain();
 		} else if (blockState.getBlock() instanceof BlockCandle) {
 			if (types[1]) return 0;
 			types[1] = true;
