@@ -77,7 +77,7 @@ public class TileEntityGemBowl extends ModTileEntity {
     }
 
     public boolean hasGem() {
-        return gem.isEmpty();
+        return !gem.isEmpty();
     }
 
     public ItemStack getGem() {
