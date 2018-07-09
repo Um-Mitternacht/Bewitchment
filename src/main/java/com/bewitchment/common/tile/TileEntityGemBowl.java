@@ -16,7 +16,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 	private static final String[] ACCEPTED_ORE_NAMES = {"gemDiamond", "gemEmerald", "gemQuartz", "gemLapis",
 			"dustRedstone", "gemBloodstone", "gemMoldavite", "gemNuummite", "gemGarnet", "gemTourmaline",
 			"gemTigersEye", "gemJasper", "gemMalachite", "gemAmethyst", "gemAlexandrite", "gemAquamarine",
-			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber"};
+			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber", "gemApatite"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
@@ -128,6 +128,8 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemPeridot")) {
 				return 225;
 			} else if (oreName.equals("gemAmber")) {
+				return 225;
+			} else if (oreName.equals("gemApatite")) {
 				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
