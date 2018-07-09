@@ -23,7 +23,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 			"gemSerpentine", "gemPetoskeyStone", "gemLifeCrystal", "gemValonite", "gemRhodochrosite", "gemBoronNitride",
 			"gemFluorite", "gemVilliaumite", "gemCarobbiite", "gemMoon", "gemRedstone", "gemVinteum", "gemQuartzite",
 			"gemGlass", "gemQuartzBlock", "gemAlmandine", "gemBlueTopaz", "gemCinnabar", "gemGreenSapphire", "gemRutile",
-			""};
+			"gemLazurite", "gemSodalite"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
@@ -225,6 +225,10 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemGreenSapphire")) {
 				return 225;
 			} else if (oreName.equals("gemRutile")) {
+				return 225;
+			} else if (oreName.equals("gemLazurite")) {
+				return 225;
+			} else if (oreName.equals("gemSodalite")) {
 				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
