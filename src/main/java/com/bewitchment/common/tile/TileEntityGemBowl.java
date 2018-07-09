@@ -120,11 +120,11 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemJasper")) {
 				return 225;
 			} else if (oreName.equals("gemLapis")) {
-				return 225;
+				return 255;
 			} else if (oreName.equals("gemQuartz")) {
-				return 225;
+				return 245;
 			} else if (oreName.equals("gemAquamarine")) {
-				return 225;
+				return 240;
 			} else if (oreName.equals("gemRuby")) {
 				return 225;
 			} else if (oreName.equals("gemSapphire")) {
@@ -148,13 +148,13 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemZanite")) {
 				return 225;
 			} else if (oreName.equals("gemPsi")) {
-				return 225;
+				return 240;
 			} else if (oreName.equals("gemCrimsonMiddleGem")) {
-				return 225;
+				return 240;
 			} else if (oreName.equals("gemAquaMiddleGem")) {
-				return 225;
+				return 240;
 			} else if (oreName.equals("gemGreenMiddleGem")) {
-				return 225;
+				return 240;
 			} else if (oreName.equals("gemZircon")) {
 				return 225;
 			} else if (oreName.equals("gemAzurite")) {
