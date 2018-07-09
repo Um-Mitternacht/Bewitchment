@@ -15,7 +15,8 @@ import net.minecraftforge.oredict.OreDictionary;
 public class TileEntityGemBowl extends ModTileEntity {
 	private static final String[] ACCEPTED_ORE_NAMES = {"gemDiamond", "gemEmerald", "gemQuartz", "gemLapis",
 			"dustRedstone", "gemBloodstone", "gemMoldavite", "gemNuummite", "gemGarnet", "gemTourmaline",
-			"gemTigersEye", "gemJasper", "gemMalachite", "gemAmethyst", "gemAlexandrite"};
+			"gemTigersEye", "gemJasper", "gemMalachite", "gemAmethyst", "gemAlexandrite", "gemAquamarine",
+			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
