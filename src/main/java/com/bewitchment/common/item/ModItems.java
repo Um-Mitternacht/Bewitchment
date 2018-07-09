@@ -341,6 +341,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.infested_farmland),
 				itemBlock(ModBlocks.crystal_ball),
 				itemBlock(ModBlocks.goblet),
+				itemBlock(ModBlocks.gem_bowl),
 				itemBlock(ModBlocks.tarot_table),
 				itemBlock(ModBlocks.cold_iron_block),
 				new ItemBlockRevealingLantern(ModBlocks.lantern, false),

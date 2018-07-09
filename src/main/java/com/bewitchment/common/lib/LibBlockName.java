@@ -95,6 +95,7 @@ public final class LibBlockName {
 	public static final String GLYPHS = "ritual_glyphs";
 	public static final String CRYSTAL_BALL = "crystal_ball";
 	public static final String GOBLET = "goblet";
+	public static final String GEM_BOWL = "gem_bowl";
 	public static final String TAROT_TABLE = "tarot_table";
 	public static final String WITCHFIRE = "witchfire";
 	public static final String LANTERN = "lantern";
