@@ -141,7 +141,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 					return 1;
 				}
 			}
-		} else if(blockState.getBlock() instanceof BlockGemBowl) {
+		} else if (blockState.getBlock() instanceof BlockGemBowl) {
 			return ((TileEntityGemBowl) world.getTileEntity(pos)).getGain();
 		} else if (blockState.getBlock() instanceof BlockCandle) {
 			if (types[1]) return 0;
