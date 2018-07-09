@@ -118,6 +118,8 @@ public class TileEntityGemBowl extends ModTileEntity {
 				return 225;
 			} else if (oreName.equals("gemQuartz")) {
 				return 225;
+			} else if (oreName.equals("gemAquamarine")) {
+				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
 			}
