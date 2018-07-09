@@ -16,7 +16,7 @@ public class ModPotions {
 	public static Potion projectile_resistance, disrobing, ender_inhibition, extinguish_fires, fertilize, fireworld, grace;
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
 	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor;
-	public static Potion till_land, snow_trail, spider_nightmare, volatility, pulverize, mowing;
+	public static Potion till_land, snow_trail, spider_nightmare, volatility, pulverize, mowing, love;
 
 	public static PotionFrostbite freezing;
 	public static PotionSinking sinking;
@@ -65,6 +65,7 @@ public class ModPotions {
 		volatility = new PotionVolatility();
 		pulverize = new PotionPulverize();
 		mowing = new PotionMowing();
+		love = new PotionLove();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -74,7 +75,7 @@ public class ModPotions {
 				harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias, //
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
 				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare, //
-				volatility, pulverize, mowing, sun_ward
+				volatility, pulverize, mowing, sun_ward, love
 		);
 	}
 }
