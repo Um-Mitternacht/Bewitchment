@@ -17,7 +17,8 @@ public class TileEntityGemBowl extends ModTileEntity {
 			"dustRedstone", "gemBloodstone", "gemMoldavite", "gemNuummite", "gemGarnet", "gemTourmaline",
 			"gemTigersEye", "gemJasper", "gemMalachite", "gemAmethyst", "gemAlexandrite", "gemAquamarine",
 			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber", "gemApatite", "gemTopaz", "gemJet",
-			"gemTanzanite", "gemPearl", "gemOpal"};
+			"gemTanzanite", "gemPearl", "gemOpal", "gemZanite", "gemPsi", "gemCrimsonMiddleGem", "gemAquaMiddleGem",
+			"gemGreenMiddleGem", "gemZircon", "gemAzurite", "gemEudialyte", "gemRime", "gemAgate"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
@@ -141,6 +142,26 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemPearl")) {
 				return 225;
 			} else if (oreName.equals("gemOpal")) {
+				return 225;
+			} else if (oreName.equals("gemZanite")) {
+				return 225;
+			} else if (oreName.equals("gemPsi")) {
+				return 225;
+			} else if (oreName.equals("gemCrimsonMiddleGem")) {
+				return 225;
+			} else if (oreName.equals("gemAquaMiddleGem")) {
+				return 225;
+			} else if (oreName.equals("gemGreenMiddleGem")) {
+				return 225;
+			} else if (oreName.equals("gemZircon")) {
+				return 225;
+			} else if (oreName.equals("gemAzurite")) {
+				return 225;
+			} else if (oreName.equals("gemEudialyte")) {
+				return 225;
+			} else if (oreName.equals("gemRime")) {
+				return 225;
+			} else if (oreName.equals("gemAgate")) {
 				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
