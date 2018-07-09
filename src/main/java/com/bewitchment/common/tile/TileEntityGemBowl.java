@@ -19,7 +19,8 @@ public class TileEntityGemBowl extends ModTileEntity {
 			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber", "gemApatite", "gemTopaz", "gemJet",
 			"gemTanzanite", "gemPearl", "gemOpal", "gemZanite", "gemPsi", "gemCrimsonMiddleGem", "gemAquaMiddleGem",
 			"gemGreenMiddleGem", "gemZircon", "gemAzurite", "gemEudialyte", "gemRime", "gemAgate", "gemJade",
-			"gemPrismarine", "gemOnyx", "gemEnderBiotite", "gemBurnium", "gemEndimium", "gemHephaestite", "gemScarlite"};
+			"gemPrismarine", "gemOnyx", "gemEnderBiotite", "gemBurnium", "gemEndimium", "gemHephaestite", "gemScarlite", "gemAether",
+			"gemSerpentine", "gemPetoskeyStone"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
@@ -179,6 +180,12 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemHephaestite")) {
 				return 225;
 			} else if (oreName.equals("gemScarlite")) {
+				return 225;
+			} else if (oreName.equals("gemAether")) {
+				return 225;
+			} else if (oreName.equals("gemSerpentine")) {
+				return 225;
+			} else if (oreName.equals("gemPetoskeyStone")) {
 				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
