@@ -17,13 +17,13 @@ public class PotionLove extends BrewMod {
 
 	@Override
 	public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
-		if(entityLivingBaseIn instanceof EntityAnimal) {
+		if (entityLivingBaseIn instanceof EntityAnimal) {
 			EntityAnimal animal = (EntityAnimal) entityLivingBaseIn;
-			if(animal.getGrowingAge() == 0 && !animal.isInLove()) {
-				if(source instanceof EntityLingeringBrew) {
+			if (animal.getGrowingAge() == 0 && !animal.isInLove()) {
+				if (source instanceof EntityLingeringBrew) {
 					EntityLingeringBrew brew = (EntityLingeringBrew) source;
 					animal.setInLove((EntityPlayer) brew.getOwner());
-				} else if(source instanceof EntityBrew) {
+				} else if (source instanceof EntityBrew) {
 					EntityBrew brew = (EntityBrew) source;
 					animal.setInLove((EntityPlayer) brew.getThrower());
 				}
