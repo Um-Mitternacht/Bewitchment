@@ -557,7 +557,7 @@ effect.paralysis=Paralysis
 effect.paralysis.desc=Paralyzes a target and prevents them from moving.
 
 effect.love=Love
-effect.paralysis.desc=Puts animals in a loving mood.
+effect.love.desc=Puts animals in a loving mood.
 
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
