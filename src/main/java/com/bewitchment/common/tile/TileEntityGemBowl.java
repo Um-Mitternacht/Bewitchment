@@ -21,7 +21,10 @@ public class TileEntityGemBowl extends ModTileEntity {
 			"gemGreenMiddleGem", "gemZircon", "gemAzurite", "gemEudialyte", "gemRime", "gemAgate", "gemJade",
 			"gemPrismarine", "gemOnyx", "gemEnderBiotite", "gemBurnium", "gemEndimium", "gemHephaestite", "gemScarlite", "gemAether",
 			"gemSerpentine", "gemPetoskeyStone", "gemLifeCrystal", "gemValonite", "gemRhodochrosite", "gemBoronNitride",
-			"gemFluorite", "gemVilliaumite", "gemCarobbiite"};
+			"gemFluorite", "gemVilliaumite", "gemCarobbiite", "gemMoon", "gemRedstone", "gemVinteum", "gemQuartzite",
+			"gemGlass", "gemQuartzBlock", "gemAlmandine", "gemBlueTopaz", "gemCinnabar", "gemGreenSapphire", "gemRutile",
+			"gemLazurite", "gemSodalite", "gemCertusQuartz", "gemOlivine", "gemLignite", "gemGarnetRed", "gemGarnetYellow",
+			"gemMonazite"};
 	private ItemStack gem;
 
 	public TileEntityGemBowl() {
@@ -201,6 +204,44 @@ public class TileEntityGemBowl extends ModTileEntity {
 			} else if (oreName.equals("gemVilliaumite")) {
 				return 225;
 			} else if (oreName.equals("gemCarobbiite")) {
+				return 225;
+			} else if (oreName.equals("gemMoon")) {
+				return 225;
+			} else if (oreName.equals("gemRedstone")) {
+				return 225;
+			} else if (oreName.equals("gemVinteum")) {
+				return 225;
+			} else if (oreName.equals("gemQuartzite")) {
+				return 225;
+			} else if (oreName.equals("gemGlass")) {
+				return 225;
+			} else if (oreName.equals("gemQuartzBlock")) {
+				return 225;
+			} else if (oreName.equals("gemAlmandine")) {
+				return 225;
+			} else if (oreName.equals("gemBlueTopaz")) {
+				return 225;
+			} else if (oreName.equals("gemCinnabar")) {
+				return 225;
+			} else if (oreName.equals("gemGreenSapphire")) {
+				return 225;
+			} else if (oreName.equals("gemRutile")) {
+				return 225;
+			} else if (oreName.equals("gemLazurite")) {
+				return 225;
+			} else if (oreName.equals("gemSodalite")) {
+				return 225;
+			} else if (oreName.equals("gemCertusQuartz")) {
+				return 225;
+			} else if (oreName.equals("gemOlivine")) {
+				return 225;
+			} else if (oreName.equals("gemLignite")) {
+				return 225;
+			} else if (oreName.equals("gemGarnetRed")) {
+				return 225;
+			} else if (oreName.equals("gemGarnetYellow")) {
+				return 225;
+			} else if (oreName.equals("gemMonazite")) {
 				return 225;
 			} else if (oreName.equals("dustRedstone")) {
 				return 200;
