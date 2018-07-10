@@ -556,6 +556,9 @@ effect.freezing.desc=Freezes things in harmless magic ice
 effect.paralysis=Paralysis
 effect.paralysis.desc=Paralyzes a target and prevents them from moving.
 
+effect.love=Love
+effect.love.desc=Puts animals in a loving mood.
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing

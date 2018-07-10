@@ -57,12 +57,6 @@ public class BlockGemBowl extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean canProvidePower(IBlockState state) {
-		return true;
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOUNDING_BOX;
 	}
