@@ -22,13 +22,14 @@ public class ModSpinningThreadRecipes {
 
 		//Declare recipes here
 		web = new SpinningThreadRecipe(LibMod.MOD_ID, "spider_web", new ItemStack(Blocks.WEB), string, string, string);
-		gold_thread = new SpinningThreadRecipe(LibMod.MOD_ID, "gold_thread", new ItemStack(ModItems.golden_thread), straw, string, gold_nugget);
+		gold_thread = new SpinningThreadRecipe(LibMod.MOD_ID, "gold_thread", new ItemStack(ModItems.golden_thread, 3, 0), straw, straw, Ingredient.fromStacks(new ItemStack(Blocks.HAY_BLOCK, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 9)));
 		// soulstring = new SpinningThreadRecipe(LibMod.MOD_ID, "soulstring", new ItemStack(ModItems.soulstring), string, string, Ingredient.fromStacks(new ItemStack(ModItems.misc, 1, 5)), Ingredient.fromStacks(new ItemStack(ModItems.flowers, 1, 1)));
 
 		registerAll();
 	}
 
 	//Register recipes here
+	//It may also be possible to hide recipes by not registering them... :thonk:
 	public static void registerAll() {
 		SpinningThreadRecipe.REGISTRY.registerAll(web);
 		SpinningThreadRecipe.REGISTRY.registerAll(gold_thread);
