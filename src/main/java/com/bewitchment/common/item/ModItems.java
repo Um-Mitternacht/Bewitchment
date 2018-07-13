@@ -147,6 +147,7 @@ public final class ModItems {
 
 	public static final Item golden_thread = null;
 	public static final Item regal_silk = null;
+	public static final Item witches_stitching = null;
 
 	public static final Item silver_pickaxe = null;
 	public static final Item silver_axe = null;
@@ -243,6 +244,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.COLD_IRON_DUST),
 				new ItemMod(LibItemName.COLD_IRON_DUST_SMALL),
 				new ItemMod(LibItemName.REGAL_SILK),
+				new ItemMod(LibItemName.WITCHES_STITCHING),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
