@@ -145,6 +145,9 @@ public final class LibItemName {
 	public static final String GOLDEN_THREAD = "golden_thread";
 	public static final String REGAL_SILK = "regal_silk";
 	public static final String WITCHES_STITCHING = "witches_stitching";
+	public static final String DIABOLIC_VEIN = "diabolic_vein";
+	public static final String PURE_FILAMENT = "pure_filament";
+	public static final String SOUL_STRING = "soul_string";
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 	public static final String COLD_IRON_DUST = "cold_iron_dust";
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
