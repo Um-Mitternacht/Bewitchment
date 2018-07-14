@@ -15,14 +15,14 @@ public class CapabilityMimicData implements IMimicData {
 	private UUID mimickedPlayerID;
 	private String mimickedPlayerName;
 
-	public static void init() {
-		CapabilityManager.INSTANCE.register(IMimicData.class, new MimicDataStorage(), CapabilityMimicData::new);
-	}
-
 	public CapabilityMimicData() {
 		mimicking = false;
-		mimickedPlayerID = new UUID(0,0);
+		mimickedPlayerID = new UUID(0, 0);
 		mimickedPlayerName = "";
+	}
+
+	public static void init() {
+		CapabilityManager.INSTANCE.register(IMimicData.class, new MimicDataStorage(), CapabilityMimicData::new);
 	}
 
 	public boolean isMimicking() {

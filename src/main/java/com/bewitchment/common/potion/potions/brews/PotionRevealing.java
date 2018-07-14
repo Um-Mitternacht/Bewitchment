@@ -19,13 +19,13 @@ public class PotionRevealing extends BrewMod {
 
 	@Override
 	public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
-		if(!entityLivingBaseIn.getEntityWorld().isRemote) {
-			if(entityLivingBaseIn.isPotionActive(MobEffects.INVISIBILITY)) {
+		if (!entityLivingBaseIn.getEntityWorld().isRemote) {
+			if (entityLivingBaseIn.isPotionActive(MobEffects.INVISIBILITY)) {
 				entityLivingBaseIn.removePotionEffect(MobEffects.INVISIBILITY);
 			}
-			if(entityLivingBaseIn.hasCapability(CapabilityMimicData.CAPABILITY, null)) {
+			if (entityLivingBaseIn.hasCapability(CapabilityMimicData.CAPABILITY, null)) {
 				final IMimicData capability = entityLivingBaseIn.getCapability(CapabilityMimicData.CAPABILITY, null);
-				if(capability.isMimicking()) {
+				if (capability.isMimicking()) {
 					capability.setMimicking(false);
 				}
 				NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged((EntityPlayer) entityLivingBaseIn));

@@ -7,7 +7,6 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -44,10 +43,10 @@ public class PlayerMimicDataChanged implements IMessage {
 		@Override
 		public IMessage onMessage(PlayerMimicDataChanged playerMimicDataChanged, MessageContext messageContext) {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
-				if(Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().world != null) {
 					EntityPlayer player = Minecraft.getMinecraft().world.getPlayerEntityByUUID(playerMimicDataChanged.id);
 					final IMimicData capability = player.getCapability(CapabilityMimicData.CAPABILITY, null);
-					CapabilityMimicData.CAPABILITY.getStorage().readNBT(CapabilityMimicData.CAPABILITY,capability, null, playerMimicDataChanged.compound);
+					CapabilityMimicData.CAPABILITY.getStorage().readNBT(CapabilityMimicData.CAPABILITY, capability, null, playerMimicDataChanged.compound);
 					player.refreshDisplayName();
 				}
 			});

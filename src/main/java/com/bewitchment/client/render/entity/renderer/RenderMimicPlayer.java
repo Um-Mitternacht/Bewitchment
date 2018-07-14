@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
-import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -57,7 +56,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 	 * Method unmodified from RenderPlayer#getMainModel
 	 */
 	public ModelPlayer getMainModel() {
-		return (ModelPlayer)super.getMainModel();
+		return (ModelPlayer) super.getMainModel();
 	}
 
 	public void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks) {
@@ -134,7 +133,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 	public ResourceLocation getEntityTexture(AbstractClientPlayer entity) {
 		//TODO: find a way to get skin without referencing the player (allowing for mimicking to occur when vitim offline)
 		AbstractClientPlayer newEntity = (AbstractClientPlayer) Minecraft.getMinecraft().world.getPlayerEntityByName(mimicName);
-		if(newEntity == null) {
+		if (newEntity == null) {
 			Bewitchment.logger.info("Attempted mimicking but player not online. ");
 			return entity.getLocationSkin();
 		} else {
@@ -164,7 +163,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 			if (scoreobjective != null) {
 				Score score = scoreboard.getOrCreateScore(entityIn.getName(), scoreobjective);
 				this.renderLivingLabel(entityIn, score.getScorePoints() + " " + scoreobjective.getDisplayName(), x, y, z, 64);
-				y += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * 0.025F);
+				y += (double) ((float) this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * 0.025F);
 			}
 		}
 
@@ -184,7 +183,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 	 */
 	protected void renderLivingAt(AbstractClientPlayer entityLivingBaseIn, double x, double y, double z) {
 		if (entityLivingBaseIn.isEntityAlive() && entityLivingBaseIn.isPlayerSleeping()) {
-			super.renderLivingAt(entityLivingBaseIn, x + (double)entityLivingBaseIn.renderOffsetX, y + (double)entityLivingBaseIn.renderOffsetY, z + (double)entityLivingBaseIn.renderOffsetZ);
+			super.renderLivingAt(entityLivingBaseIn, x + (double) entityLivingBaseIn.renderOffsetX, y + (double) entityLivingBaseIn.renderOffsetY, z + (double) entityLivingBaseIn.renderOffsetZ);
 		} else {
 			super.renderLivingAt(entityLivingBaseIn, x, y, z);
 		}
@@ -201,7 +200,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 			GlStateManager.rotate(270.0F, 0.0F, 1.0F, 0.0F);
 		} else if (entityLiving.isElytraFlying()) {
 			super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
-			float f = (float)entityLiving.getTicksElytraFlying() + partialTicks;
+			float f = (float) entityLiving.getTicksElytraFlying() + partialTicks;
 			float f1 = MathHelper.clamp(f * f / 100.0F, 0.0F, 1.0F);
 			GlStateManager.rotate(f1 * (-90.0F - entityLiving.rotationPitch), 1.0F, 0.0F, 0.0F);
 			Vec3d vec3d = entityLiving.getLook(partialTicks);
@@ -210,12 +209,11 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 			if (d0 > 0.0D && d1 > 0.0D) {
 				double d2 = (entityLiving.motionX * vec3d.x + entityLiving.motionZ * vec3d.z) / (Math.sqrt(d0) * Math.sqrt(d1));
 				double d3 = entityLiving.motionX * vec3d.z - entityLiving.motionZ * vec3d.x;
-				GlStateManager.rotate((float)(Math.signum(d3) * Math.acos(d2)) * 180.0F / 3.1415927F, 0.0F, 1.0F, 0.0F);
+				GlStateManager.rotate((float) (Math.signum(d3) * Math.acos(d2)) * 180.0F / 3.1415927F, 0.0F, 1.0F, 0.0F);
 			}
 		} else {
 			super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
 		}
-
 
 
 	}

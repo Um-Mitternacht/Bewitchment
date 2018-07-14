@@ -20,23 +20,16 @@ public class MimicHandler {
 
 	@SubscribeEvent
 	public static void onAttach(AttachCapabilitiesEvent<Entity> evt) {
-		if(evt.getObject() instanceof EntityPlayer) {
+		if (evt.getObject() instanceof EntityPlayer) {
 			evt.addCapability(cap, new MimicDataProvider());
 		}
 	}
 
 	@SubscribeEvent
-	public void onPlayerRespawn(PlayerEvent.Clone event) {
-		if(event.isWasDeath()) {
-			event.getEntityPlayer().getCapability(CapabilityMimicData.CAPABILITY, null).copyFields(event.getOriginal().getCapability(CapabilityMimicData.CAPABILITY, null));
-		}
-	}
-
-	@SubscribeEvent
 	public static void onChatMessage(ServerChatEvent event) {
-		if(event.getPlayer().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
+		if (event.getPlayer().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
 			final IMimicData capability = event.getPlayer().getCapability(CapabilityMimicData.CAPABILITY, null);
-			if(capability.isMimicking()) {
+			if (capability.isMimicking()) {
 				event.setCanceled(true);
 				event.getPlayer().getServerWorld().playerEntities.stream().forEach(player ->
 						player.sendMessage(new TextComponentString("<" + capability.getMimickedPlayerName() + "> " + event.getMessage())));
@@ -46,11 +39,18 @@ public class MimicHandler {
 
 	@SubscribeEvent
 	public static void onDisplayName(PlayerEvent.NameFormat event) {
-		if(event.getEntity().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
+		if (event.getEntity().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
 			final IMimicData capability = event.getEntity().getCapability(CapabilityMimicData.CAPABILITY, null);
-			if(capability.isMimicking()) {
+			if (capability.isMimicking()) {
 				event.setDisplayname(capability.getMimickedPlayerName());
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerRespawn(PlayerEvent.Clone event) {
+		if (event.isWasDeath()) {
+			event.getEntityPlayer().getCapability(CapabilityMimicData.CAPABILITY, null).copyFields(event.getOriginal().getCapability(CapabilityMimicData.CAPABILITY, null));
 		}
 	}
 }

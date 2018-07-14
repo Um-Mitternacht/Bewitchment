@@ -28,13 +28,13 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		if(!world.isRemote) {
-			if(count % TICK_DELAY == 0) {
-				if(this.world.isAnyPlayerWithinRangeAt(this.pos.getX(), this.pos.getY(), this.pos.getZ(), SHADOW_RANGE)) {
+		if (!world.isRemote) {
+			if (count % TICK_DELAY == 0) {
+				if (this.world.isAnyPlayerWithinRangeAt(this.pos.getX(), this.pos.getY(), this.pos.getZ(), SHADOW_RANGE)) {
 					EntityPlayer player = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADOW_RANGE, false);
-					if(player.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
+					if (player.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
 						final ITransformationData capability = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-						if(capability.getType() != DefaultTransformations.VAMPIRE) {
+						if (capability.getType() != DefaultTransformations.VAMPIRE) {
 							activate(true);
 						}
 					} else {

@@ -31,7 +31,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -42,10 +41,10 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	public static final PropertyDirection BOTTOM_FACING = BlockHorizontal.FACING;
 
-	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f + 13.0f/16.0f, 1.0f, 1.0f, 1.0f);
-	private static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f - 13.0f/16.0f);
-	private static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f - 13.0f/16.0f, 1.0f, 1.0f);
-	private static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(0.0f + 13.0f/16.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f + 13.0f / 16.0f, 1.0f, 1.0f, 1.0f);
+	private static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f - 13.0f / 16.0f);
+	private static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f - 13.0f / 16.0f, 1.0f, 1.0f);
+	private static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(0.0f + 13.0f / 16.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 
 	public BlockMagicMirror() {
 		super(LibBlockName.MAGIC_MIRROR, Material.IRON);
@@ -60,7 +59,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
+		if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 			facing = EnumFacing.NORTH;
 		}
 		return this.getDefaultState().withProperty(ACTIVE, false).withProperty(BOTTOM_FACING, facing);
@@ -68,7 +67,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		if(worldIn.getBlockState(pos.up()).getBlock() != Blocks.AIR) {
+		if (worldIn.getBlockState(pos.up()).getBlock() != Blocks.AIR) {
 			return false;
 		} else {
 			return super.canPlaceBlockAt(worldIn, pos);
@@ -78,20 +77,20 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		BlockPos bottomBackPosition = new BlockPos(0, 0, 0);
-		if(side == EnumFacing.NORTH) {
+		if (side == EnumFacing.NORTH) {
 			bottomBackPosition = pos.south();
-		} else if(side == EnumFacing.WEST) {
+		} else if (side == EnumFacing.WEST) {
 			bottomBackPosition = pos.east();
-		} else if(side == EnumFacing.EAST) {
+		} else if (side == EnumFacing.EAST) {
 			bottomBackPosition = pos.west();
-		} else if(side == EnumFacing.SOUTH) {
+		} else if (side == EnumFacing.SOUTH) {
 			bottomBackPosition = pos.north();
-		} else if(side == EnumFacing.UP || side == EnumFacing.DOWN) {
+		} else if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
 			return false;
 		}
 		IBlockState bottomBack = worldIn.getBlockState(bottomBackPosition);
 		IBlockState topBack = worldIn.getBlockState(bottomBackPosition.up());
-		if(!bottomBack.isFullBlock() || !topBack.isFullBlock()) {
+		if (!bottomBack.isFullBlock() || !topBack.isFullBlock()) {
 			return false;
 		} else {
 			return super.canPlaceBlockOnSide(worldIn, pos, side);
@@ -108,7 +107,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		boolean active = false;
-		if(meta >= 6) {
+		if (meta >= 6) {
 			active = true;
 			meta -= 6;
 		}
@@ -149,13 +148,13 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		EnumFacing facing = state.getValue(BOTTOM_FACING);
-		if(facing == EnumFacing.NORTH) {
+		if (facing == EnumFacing.NORTH) {
 			return BOUNDING_BOX_NORTH;
-		} else if(facing == EnumFacing.SOUTH) {
+		} else if (facing == EnumFacing.SOUTH) {
 			return BOUNDING_BOX_SOUTH;
-		} else if(facing == EnumFacing.EAST) {
+		} else if (facing == EnumFacing.EAST) {
 			return BOUNDING_BOX_EAST;
-		} else if(facing == EnumFacing.WEST) {
+		} else if (facing == EnumFacing.WEST) {
 			return BOUNDING_BOX_WEST;
 		}
 		return BOUNDING_BOX_NORTH;
@@ -175,15 +174,15 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if(!worldIn.isRemote) {
+		if (!worldIn.isRemote) {
 			ItemStack held = playerIn.getHeldItem(hand);
-			if(held.getItem() == ModItems.taglock) {
+			if (held.getItem() == ModItems.taglock) {
 				final UUID playerID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
 				final String playerName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
 				final IMimicData capability = playerIn.getCapability(CapabilityMimicData.CAPABILITY, null);
 				capability.setMimickedPlayerID(playerID);
 				capability.setMimickedPlayerName(playerName);
-				if(playerIn.getUniqueID().equals(playerID)) {
+				if (playerIn.getUniqueID().equals(playerID)) {
 					capability.setMimicking(false);
 				} else {
 					capability.setMimicking(true);
@@ -253,8 +252,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 		}
 
 		@SideOnly(Side.CLIENT)
-		public BlockRenderLayer getBlockLayer()
-		{
+		public BlockRenderLayer getBlockLayer() {
 			return BlockRenderLayer.CUTOUT;
 		}
 
@@ -267,13 +265,13 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			EnumFacing facing = state.getValue(TOP_FACING);
-			if(facing == EnumFacing.NORTH) {
+			if (facing == EnumFacing.NORTH) {
 				return BOUNDING_BOX_NORTH;
-			} else if(facing == EnumFacing.SOUTH) {
+			} else if (facing == EnumFacing.SOUTH) {
 				return BOUNDING_BOX_SOUTH;
-			} else if(facing == EnumFacing.EAST) {
+			} else if (facing == EnumFacing.EAST) {
 				return BOUNDING_BOX_EAST;
-			} else if(facing == EnumFacing.WEST) {
+			} else if (facing == EnumFacing.WEST) {
 				return BOUNDING_BOX_WEST;
 			}
 			return BOUNDING_BOX_NORTH;
