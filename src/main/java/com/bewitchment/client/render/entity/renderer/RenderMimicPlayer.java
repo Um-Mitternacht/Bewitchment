@@ -138,8 +138,7 @@ public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {
 			Bewitchment.logger.info("Attempted mimicking but player not online. ");
 			return entity.getLocationSkin();
 		} else {
-			NetworkPlayerInfo info = new NetworkPlayerInfo(newEntity.getGameProfile()); //TODO: an attempt at not log in necessity.
-			return info.getLocationSkin();
+			return newEntity.getLocationSkin();
 		}
 	}
 

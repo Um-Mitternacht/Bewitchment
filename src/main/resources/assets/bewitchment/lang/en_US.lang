@@ -560,6 +560,9 @@ effect.paralysis.desc=Paralyzes a target and prevents them from moving.
 effect.love=Love
 effect.love.desc=Puts animals in a loving mood.
 
+effect.revealing=Revealing
+effect.revealing.desc=Dispels illusions
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing
