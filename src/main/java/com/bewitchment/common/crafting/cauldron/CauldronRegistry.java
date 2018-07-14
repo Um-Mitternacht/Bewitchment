@@ -249,6 +249,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.volatility, Ingredient.fromItem(Items.GUNPOWDER));
 		registerCombinedBrewEffect(ModPotions.pulverize, Ingredient.fromStacks(new ItemStack(ModItems.gem, 1, 6)));
 		registerCombinedBrewEffect(ModPotions.love, Ingredient.fromItem(ModItems.silphium));
+		registerCombinedBrewEffect(ModPotions.revealing, Ingredient.fromItem(Items.SPIDER_EYE)); //TODO: change this ingredient to something more sensible
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
 	}

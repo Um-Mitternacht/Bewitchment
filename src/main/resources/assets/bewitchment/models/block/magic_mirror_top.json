@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "bewitchment:blocks/magic_mirror",
+    "all": "bewitchment:blocks/magic_mirror_top"
+  }
+}

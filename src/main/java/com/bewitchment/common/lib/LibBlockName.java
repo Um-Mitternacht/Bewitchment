@@ -48,6 +48,8 @@ public final class LibBlockName {
 	public static final String CANDLE_SMALL = "candle_small";
 	public static final String APIARY = "apiary";
 	public static final String CAULDRON = "cauldron";
+	public static final String MAGIC_MIRROR = "magic_mirror";
+	public static final String MAGIC_MIRROR_TOP = "magic_mirror_top";
 	public static final String OVEN = "oven";
 	public static final String COQUINA = "coquina";
 	public static final String BEEHIVE = "beehive";

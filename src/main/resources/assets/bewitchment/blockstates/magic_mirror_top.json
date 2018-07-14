@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bewitchment:magic_mirror_top"
+    },
+    "facing=east": {
+      "model": "bewitchment:magic_mirror_top"
+    },
+    "facing=south": {
+      "model": "bewitchment:magic_mirror_top"
+    },
+    "facing=west": {
+      "model": "bewitchment:magic_mirror_top"
+    }
+  }
+}

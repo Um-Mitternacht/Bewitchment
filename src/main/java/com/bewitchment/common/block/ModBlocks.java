@@ -6,10 +6,7 @@ import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
-import com.bewitchment.common.block.misc.BlockGemBowl;
-import com.bewitchment.common.block.misc.BlockGoblet;
-import com.bewitchment.common.block.misc.BlockLantern;
-import com.bewitchment.common.block.misc.BlockWillOWisp;
+import com.bewitchment.common.block.misc.*;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -77,6 +74,8 @@ public final class ModBlocks {
 	public static final Block amethyst_block = null;
 	public static final Block garnet_block = null;
 	public static final Block cauldron = null;
+	public static final Block magic_mirror = null;
+	public static final Block magic_mirror_top = null;
 	public static final Block candle_medium = null;
 	public static final Block candle_small = null;
 	public static final Block candle_medium_lit = null;
@@ -123,6 +122,7 @@ public final class ModBlocks {
 	public static final Block gem_bowl = null;
 	public static final Block tarot_table = null;
 	public static final Block cold_iron_block = null;
+
 
 	public static final Block infested_farmland = null;
 	public static final Block witchfire = null;
@@ -173,6 +173,8 @@ public final class ModBlocks {
 		//Tool Blocks
 		registry.registerAll(
 				new BlockCauldron(),
+				new BlockMagicMirror(),
+				new BlockMagicMirror.BlockMagicMirrorTop(),
 				new BlockOven(),
 				new BlockCandleMedium(LibBlockName.CANDLE_MEDIUM, false),
 				new BlockCandleSmall(LibBlockName.CANDLE_SMALL, false),

@@ -425,6 +425,7 @@ tile.oven.name=Oven
 tile.thread_spinner.name=Thread Spinner
 tile.witch_altar.name=Witches Altar
 tile.crystal_ball.name=Crystal Ball
+tile.magic_mirror.name=Magic Mirror
 
 //Fluid
 fluid.oil_mundane=Oil
@@ -652,6 +653,8 @@ commands.enable_fortune.success=Fortune enabled
 commands.set_fortune.error.no_fortune=Fortune not found
 commands.set_fortune.success=Fortune set
 commands.error.no_console=This command cannot be executed from console
+commands.create_taglock.usage=/createTaglock <name> <UUID>
+commands.create_taglock.no_player.usage=No player found with that name.
 
 //Advancements
 achievement.bewitchment:craftMalachite=Let's Be Malachite Again!

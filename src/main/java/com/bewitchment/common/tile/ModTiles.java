@@ -21,6 +21,7 @@ public final class ModTiles {
 	private static final ResourceLocation CRYSTAL_BALL = new ResourceLocation(LibMod.MOD_ID, "crystal_ball");
 	private static final ResourceLocation TAROTS_TABLE = new ResourceLocation(LibMod.MOD_ID, "tarots_table");
 	private static final ResourceLocation GEM_BOWL = new ResourceLocation(LibMod.MOD_ID, "gem_bowl");
+	private static final ResourceLocation MAGIC_MIRROR = new ResourceLocation(LibMod.MOD_ID, "gem_bowl");
 
 	private ModTiles() {
 	}
@@ -37,5 +38,6 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileEntityCrystalBall.class, CRYSTAL_BALL);
 		GameRegistry.registerTileEntity(TileEntityTarotsTable.class, TAROTS_TABLE);
 		GameRegistry.registerTileEntity(TileEntityGemBowl.class, GEM_BOWL);
+		GameRegistry.registerTileEntity(TileEntityMagicMirror.class, MAGIC_MIRROR);
 	}
 }
