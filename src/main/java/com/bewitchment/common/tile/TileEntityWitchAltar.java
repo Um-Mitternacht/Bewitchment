@@ -68,6 +68,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				refreshTimer = 0;
 				refreshNature();
 				markDirty();
+				syncToClient();
 			}
 		}
 		power += gain;
@@ -172,36 +173,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				default:
 					return 0;
 			}
-		} else if (blockState.getBlock().equals(Blocks.DIAMOND_BLOCK)) {
-			return 125;
-		} else if (blockState.getBlock().equals(Blocks.EMERALD_BLOCK)) {
-			return 100;
-		} else if (blockState.getBlock().equals(ModBlocks.moldavite_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.alexandrite_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.nuummite_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.garnet_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.amethyst_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.tourmaline_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.tigers_eye_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.malachite_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.bloodstone_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(ModBlocks.jasper_block)) {
-			return 75;
-		} else if (blockState.getBlock().equals(Blocks.LAPIS_BLOCK)) {
-			return 75;
-		} else if (blockState.getBlock().equals(Blocks.QUARTZ_BLOCK)) {
-			return 75;
-		} else if (blockState.getBlock().equals(Blocks.REDSTONE_BLOCK)) {
-			return 50;
+		} else if (blockState.getBlock() instanceof BlockGemBowl) {
+			return ((TileEntityGemBowl) world.getTileEntity(pos)).getMultiplier();
 		} else if (blockState.getBlock().equals(ModBlocks.goblet)) {
 			if (typesMult[1])
 				return 0;
@@ -264,11 +237,17 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	@Override
 	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("power", power);
+		tag.setInteger("gain", gain);
+		tag.setInteger("maxPower", maxPower);
 		tag.setInteger("color", color);
 	}
 
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
+		power = tag.getInteger("power");
+		maxPower = tag.getInteger("maxPower");
+		gain = tag.getInteger("gain");
 		color = tag.getInteger("color");
 	}
 

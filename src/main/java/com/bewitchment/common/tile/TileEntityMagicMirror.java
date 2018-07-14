@@ -11,11 +11,11 @@ import net.minecraft.util.ITickable;
 
 public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	private static final double SHADOW_RANGE = 4.0;
-	private static final int TICK_DELAY = 120;
-	private int count;
+	private static final int REFRESH_TIME = 120;
+	private int refreshTimer;
 
 	public TileEntityMagicMirror() {
-		this.count = 0;
+		this.refreshTimer = 0;
 	}
 
 	public void activate(boolean active) {
@@ -29,7 +29,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (count % TICK_DELAY == 0) {
+			if (refreshTimer % REFRESH_TIME == 0) {
 				if (this.world.isAnyPlayerWithinRangeAt(this.pos.getX(), this.pos.getY(), this.pos.getZ(), SHADOW_RANGE)) {
 					EntityPlayer player = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADOW_RANGE, false);
 					if (player.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
@@ -43,7 +43,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 				} else {
 					activate(false);
 				}
-				count = 0;
+				refreshTimer = 0;
 			}
 		}
 	}
