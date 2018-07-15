@@ -7,7 +7,7 @@
 ### Steps to Reproduce
 
 
-### Version of Minecraft, Bewitchment, Forge, Craftstudio API, and Baubles
+### Version of Minecraft, Bewitchment, Forge, and Baubles
 
 
 ### Screenshots encouraged
