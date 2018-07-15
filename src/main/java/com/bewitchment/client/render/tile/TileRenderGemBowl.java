@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
 
@@ -24,8 +25,9 @@ public class TileRenderGemBowl extends TileEntitySpecialRenderer<TileEntityGemBo
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(x + 0.5, y + 0.25, z + 0.5);
-			GlStateManager.rotate(90, 0, 1, 0);
-
+			if(te.getDirection() == EnumFacing.EAST || te.getDirection() == EnumFacing.WEST) {
+				GlStateManager.rotate(90, 0, 1, 0);
+			}
 			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
 			model = ForgeHooksClient.handleCameraTransforms(model, ItemCameraTransforms.TransformType.GROUND, false);
 

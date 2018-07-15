@@ -25,10 +25,16 @@ public class TileEntityGemBowl extends ModTileEntity {
 			"gemGlass", "gemQuartzBlock", "gemAlmandine", "gemBlueTopaz", "gemCinnabar", "gemGreenSapphire", "gemRutile",
 			"gemLazurite", "gemSodalite", "gemCertusQuartz", "gemOlivine", "gemLignite", "gemGarnetRed", "gemGarnetYellow",
 			"gemMonazite"};
+
+	private static final String GEM_TAG_NAME = "gem";
+	private static final String DIRECTION_TAG_NAME = "facing";
+
 	private ItemStack gem;
+	private EnumFacing direction;
 
 	public TileEntityGemBowl() {
 		gem = new ItemStack(Items.AIR);
+		direction = EnumFacing.UP;
 	}
 
 	public void onBowlRightClicked(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -38,6 +44,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 				if (this.hasGem()) {
 					playerIn.setHeldItem(hand, gem);
 					gem = new ItemStack(Items.AIR);
+					direction = EnumFacing.UP;
 					this.markDirty();
 					this.syncToClient();
 				}
@@ -56,6 +63,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 									ItemHandlerHelper.giveItemToPlayer(playerIn, previousGem);
 								}
 							}
+							direction = facing;
 							this.markDirty();
 							this.syncToClient();
 						}
@@ -67,22 +75,26 @@ public class TileEntityGemBowl extends ModTileEntity {
 
 	@Override
 	void readAllModDataNBT(NBTTagCompound cmp) {
-		gem = new ItemStack(cmp.getCompoundTag("gem"));
+		gem = new ItemStack(cmp.getCompoundTag(GEM_TAG_NAME));
+		direction = EnumFacing.byName(cmp.getString(DIRECTION_TAG_NAME));
 	}
 
 	@Override
 	void writeAllModDataNBT(NBTTagCompound cmp) {
-		cmp.setTag("gem", gem.writeToNBT(new NBTTagCompound()));
+		cmp.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
+		cmp.setString(DIRECTION_TAG_NAME, direction.getName());
 	}
 
 	@Override
 	void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag("gem", gem.writeToNBT(new NBTTagCompound()));
+		tag.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
+		tag.setString(DIRECTION_TAG_NAME, direction.getName());
 	}
 
 	@Override
 	void readModSyncDataNBT(NBTTagCompound tag) {
-		gem = new ItemStack(tag.getCompoundTag("gem"));
+		gem = new ItemStack(tag.getCompoundTag(GEM_TAG_NAME));
+		direction = EnumFacing.byName(tag.getString(DIRECTION_TAG_NAME));
 	}
 
 	public boolean hasGem() {
@@ -91,6 +103,10 @@ public class TileEntityGemBowl extends ModTileEntity {
 
 	public ItemStack getGem() {
 		return gem;
+	}
+
+	public EnumFacing getDirection() {
+		return direction;
 	}
 
 	public int getGain() {
