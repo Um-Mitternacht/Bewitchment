@@ -91,6 +91,7 @@ public final class LibBlockName {
 	public static final String PLANKS_CYPRESS = "planks_cypress";
 	public static final String SAPLING = "sapling";
 	public static final String MOONBELL = "moonbell";
+	public static final String SPANISH_MOSS = "spanish_moss";
 	public static final String WITCH_ALTAR = "witch_altar";
 	public static final String THREAD_SPINNER = "thread_spinner";
 	public static final String BARREL = "barrel";
