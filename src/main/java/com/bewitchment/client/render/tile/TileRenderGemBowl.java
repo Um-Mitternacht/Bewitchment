@@ -25,7 +25,7 @@ public class TileRenderGemBowl extends TileEntitySpecialRenderer<TileEntityGemBo
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(x + 0.5, y + 0.25, z + 0.5);
-			if(te.getDirection() == EnumFacing.EAST || te.getDirection() == EnumFacing.WEST) {
+			if (te.getDirection() == EnumFacing.EAST || te.getDirection() == EnumFacing.WEST) {
 				GlStateManager.rotate(90, 0, 1, 0);
 			}
 			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
