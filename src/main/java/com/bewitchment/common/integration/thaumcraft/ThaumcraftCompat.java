@@ -110,6 +110,7 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.pure_filament), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.AURA, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.soul_string), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.SOUL, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.regal_silk), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.SENSES, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.spanish_moss_stuffing), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.PLANT, 4).add(Aspect.AIR, 4));
 
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
