@@ -63,7 +63,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 									ItemHandlerHelper.giveItemToPlayer(playerIn, previousGem);
 								}
 							}
-							direction = facing;
+							direction = EnumFacing.fromAngle(playerIn.rotationYaw).getOpposite();
 							this.markDirty();
 							this.syncToClient();
 						}
