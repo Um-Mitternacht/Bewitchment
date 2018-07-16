@@ -190,10 +190,6 @@ public final class ConfigHandler {
 		}
 
 		public static class Beehive {
-			public int beehive_min_amount = 1;
-			public int beehive_max_amount = 1;
-			public int beehive_min_height = 64;
-			public int beehive_max_height = 128;
 			public int beehive_gen_chance = 12;
 		}
 	}

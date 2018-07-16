@@ -104,10 +104,13 @@ public final class ModGen {
 				.setBiomes(BiomeDictionary.Type.BEACH)
 				.build(DEFAULT_STATE), 0);
 		//-------------------beehive-------------------//
+		/*
 		GameRegistry.registerWorldGenerator(WorldGenOre.OreGenBuilder.forOre(ModBlocks.beehive, ConfigHandler.WORLD_GEN.beehive.beehive_gen_chance)
 				.generateOn(Blocks.LEAVES)
 				.setVeinSize(ConfigHandler.WORLD_GEN.beehive.beehive_min_amount, ConfigHandler.WORLD_GEN.beehive.beehive_max_amount)
 				.setHeightRange(ConfigHandler.WORLD_GEN.beehive.beehive_min_height, ConfigHandler.WORLD_GEN.beehive.beehive_max_height)
 				.build(DEFAULT_STATE), 0);
+		*/
+		GameRegistry.registerWorldGenerator(new WorldGenBeehive(), 0);
 	}
 }
