@@ -144,6 +144,7 @@ public final class ModItems {
 	public static final Item grilled_watermelon = null;
 	public static final Item stew = null;
 	public static final Item cold_iron_nugget = null;
+	public static final Item four_thieves_vinegar = null;
 
 	public static final Item golden_thread = null;
 	public static final Item regal_silk = null;
@@ -152,6 +153,8 @@ public final class ModItems {
 	public static final Item pure_filament = null;
 	public static final Item soul_string = null;
 	public static final Item spanish_moss_stuffing = null;
+	public static final Item goofer_dust = null;
+	public static final Item graveyard_dust = null;
 
 	public static final Item silver_pickaxe = null;
 	public static final Item silver_axe = null;
@@ -254,6 +257,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
 				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
+				new ItemMod(LibItemName.GOOFER_DUST),
+				new ItemMod(LibItemName.FOUR_THIEVES_VINEGAR),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
@@ -346,6 +351,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.planks_juniper),
 				itemBlock(ModBlocks.planks_yew),
 				itemBlock(ModBlocks.planks_cypress),
+				itemBlock(ModBlocks.sacrosanct_ground),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar),
@@ -358,6 +364,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.magic_mirror),
 				itemBlock(ModBlocks.tarot_table),
 				itemBlock(ModBlocks.cold_iron_block),
+				itemBlock(ModBlocks.graveyard_dirt),
 				new ItemBlockRevealingLantern(ModBlocks.lantern, false),
 				new ItemBlockRevealingLantern(ModBlocks.revealing_lantern, true)
 		);

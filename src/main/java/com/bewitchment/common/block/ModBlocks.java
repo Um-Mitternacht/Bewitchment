@@ -125,6 +125,8 @@ public final class ModBlocks {
 	public static final Block gem_bowl = null;
 	public static final Block tarot_table = null;
 	public static final Block cold_iron_block = null;
+	public static final Block graveyard_dirt = null;
+	public static final Block sacrosanct_ground = null;
 
 
 	public static final Block infested_farmland = null;
@@ -225,7 +227,9 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.GARNET_BLOCK, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
-				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F)
+				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.GRAVEYARD_DIRT, Material.GROUND).setHardness(1.0F),
+				new BlockMod(LibBlockName.SACROSANCT_GROUND, Material.GROUND).setHardness(1.0F)
 		);
 
 		//Trees

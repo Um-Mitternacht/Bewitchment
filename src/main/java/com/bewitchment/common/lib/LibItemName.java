@@ -124,6 +124,7 @@ public final class LibItemName {
 	public static final String FILLED_BOWL = "stew";
 	public static final String OWLETS_WING = "owlets_wing";
 	public static final String RAVENS_FEATHER = "ravens_feather";
+	public static final String FOUR_THIEVES_VINEGAR = "four_thieves_vinegar";
 
 	//Materials
 	public static final String SILVER = "silver";
@@ -152,6 +153,7 @@ public final class LibItemName {
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 	public static final String COLD_IRON_DUST = "cold_iron_dust";
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
+	public static final String GOOFER_DUST = "goofer_dust";
 
 
 	private LibItemName() {
