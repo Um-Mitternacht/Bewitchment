@@ -36,7 +36,7 @@ public class ModSpinningThreadRecipes {
 		witches_stitching = new SpinningThreadRecipe(LibMod.MOD_ID, "witches_stitching", new ItemStack(ModItems.witches_stitching, 4), string, string, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 2)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 2)));
 		diabolic_vein = new SpinningThreadRecipe(LibMod.MOD_ID, "diabolic_vein", new ItemStack(ModItems.diabolic_vein, 4), soul_string, soul_string, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 8)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 13)));
 		pure_filament = new SpinningThreadRecipe(LibMod.MOD_ID, "pure_filament", new ItemStack(ModItems.pure_filament, 4), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7)));
-		soulstring = new SpinningThreadRecipe(LibMod.MOD_ID, "soulstring", new ItemStack(ModItems.soul_string), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 2, 10)), ectoplasm);
+		soulstring = new SpinningThreadRecipe(LibMod.MOD_ID, "soulstring", new ItemStack(ModItems.soul_string, 2), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 10)), ectoplasm);
 
 		registerAll();
 	}
