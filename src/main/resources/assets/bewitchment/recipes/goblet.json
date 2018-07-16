@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "I I",
+    "ISI",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetSilver"
+    }
+  },
+  "result": {
+    "item": "bewitchment:goblet",
+    "data": 0
+  }
+}
