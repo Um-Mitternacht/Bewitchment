@@ -1,0 +1,29 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"OSO",
+		"ILI",
+		"ILI"
+	],
+	"key": {
+		"I": {
+			"item": "minecraft:stonebrick"
+		},
+		"L": {
+			"item": "bewitchment:log_elder"
+		},
+		"O": {
+			"item": "bewitchment:fume",
+			"data": 2
+		},
+		"S": {
+			"item": "bewitchment:salt",
+			"data": 0
+		}
+	},
+	"result": {
+		"item": "bewitchment:witch_altar",
+		"data": 0,
+		"count": 3
+	}
+}
