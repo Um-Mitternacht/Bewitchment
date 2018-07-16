@@ -32,7 +32,7 @@
 			<property name="format" value="^\t* "/>
 			<property name="message" value="Indent must use tab characters"/>
 			<property name="ignoreComments" value="true"/>
-			<property name="severity" value="error"/>
+			<property name="severity" value="false"/>
 		</module>
 		<module name="MissingOverride">
 			<property name="severity" value="error"/>
