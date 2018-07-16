@@ -8,13 +8,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * Created by Joseph on 7/16/2018.
@@ -27,13 +24,19 @@ public class BlockSacrosanctGround extends BlockMod {
 	}
 
 	@SuppressWarnings("deprecation")
-	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
-		if (entityIn instanceof EntityLivingBase) {
-			EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
-			if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT) {
-				entityIn.attackEntityFrom(DamageSource.ON_FIRE, 6);
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return FULL_BLOCK_AABB;
+	}
+
+
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+		EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
+		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT) {
+			if (!entityIn.isBurning()) {
+				entityIn.setFire(1500);
 			}
+
+			super.onEntityWalk(worldIn, pos, entityIn);
 		}
 	}
 }
