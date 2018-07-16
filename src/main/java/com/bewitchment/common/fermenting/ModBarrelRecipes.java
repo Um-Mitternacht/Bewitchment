@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 public class ModBarrelRecipes {
 
 	public static BarrelRecipe slime;
-	public static BarrelRecipe four_thieves_vinegar;
+	//public static BarrelRecipe four_thieves_vinegar;
 	// public static BarrelRecipe potionDetonation;
 
 	public static void init() {
@@ -24,7 +24,7 @@ public class ModBarrelRecipes {
 
 	public static void registerAll() {
 		BarrelRecipe.REGISTRY.registerAll(
-				slime, four_thieves_vinegar// , potionDetonation
+				slime //four_thieves_vinegar// , potionDetonation
 		);
 	}
 }
