@@ -3,7 +3,6 @@ package com.bewitchment.common.ritual;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;

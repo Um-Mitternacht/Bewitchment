@@ -18,7 +18,6 @@ import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.GuiHandler;
