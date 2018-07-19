@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile;
 
+import java.util.UUID;
+
 import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
@@ -12,6 +14,7 @@ import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,8 +24,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.UUID;
 
 public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	private static final double SHADOW_RANGE = 4.0;
@@ -58,9 +59,9 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 			capability.setMimickedPlayerID(playerID);
 			capability.setMimickedPlayerName(playerName);
 			if (playerIn.getUniqueID().equals(playerID)) {
-				capability.setMimicking(false);
+				capability.setMimicking(false, playerIn);
 			} else {
-				capability.setMimicking(true);
+				capability.setMimicking(true, playerIn);
 			}
 			NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged(playerIn));
 		}

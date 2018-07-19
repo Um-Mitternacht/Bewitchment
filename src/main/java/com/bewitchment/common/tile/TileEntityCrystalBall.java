@@ -1,9 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,11 +19,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends ModTileEntity {
 	private static final String USER_TAG = "magicPointsUser";
@@ -90,9 +92,8 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		if (power == 0) return true;
 		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
 			return magicPointsUser.getAltar(world).subtract(power);
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	@Override

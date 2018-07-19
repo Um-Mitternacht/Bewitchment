@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.common.Bewitchment;
@@ -7,6 +9,7 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,8 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
 
 public class TileEntityThreadSpinner extends ModTileEntity implements ITickable, IWorldNameable {
 	public static final int MAX_TICKS = 200;
@@ -83,9 +84,8 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 				if (!magicPointsUser.hasValidAltar(world)) {
 					if (!magicPointsUser.findClosestAltar(this.pos, this.world)) {
 						return;
-					} else {
-						this.markDirty();
 					}
+					this.markDirty();
 				}
 			}
 

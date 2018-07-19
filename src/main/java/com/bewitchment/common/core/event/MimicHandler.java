@@ -4,6 +4,7 @@ import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -44,13 +45,6 @@ public class MimicHandler {
 			if (capability.isMimicking()) {
 				event.setDisplayname(capability.getMimickedPlayerName());
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onPlayerRespawn(PlayerEvent.Clone event) {
-		if (event.isWasDeath()) {
-			event.getEntityPlayer().getCapability(CapabilityMimicData.CAPABILITY, null).copyFields(event.getOriginal().getCapability(CapabilityMimicData.CAPABILITY, null));
 		}
 	}
 }

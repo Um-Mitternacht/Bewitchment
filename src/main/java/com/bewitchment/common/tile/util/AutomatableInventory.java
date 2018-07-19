@@ -21,9 +21,8 @@ public abstract class AutomatableInventory extends ItemStackHandler {
 	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 		if (isItemValidForSlot(slot, stack)) {
 			return super.insertItem(slot, stack, simulate);
-		} else {
-			return stack;
 		}
+		return stack;
 	}
 
 	public abstract boolean isItemValidForSlot(int slot, ItemStack stack);

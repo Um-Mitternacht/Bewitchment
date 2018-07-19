@@ -1,11 +1,11 @@
 package com.bewitchment.common.core.capability.mimic;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
-
-import javax.annotation.Nullable;
 
 public class MimicDataStorage implements Capability.IStorage<IMimicData> {
 
@@ -27,7 +27,7 @@ public class MimicDataStorage implements Capability.IStorage<IMimicData> {
 	@Override
 	public void readNBT(Capability<IMimicData> capability, IMimicData iMimicData, EnumFacing enumFacing, NBTBase nbtBase) {
 		NBTTagCompound compound = (NBTTagCompound) nbtBase;
-		iMimicData.setMimicking(compound.getBoolean(MIMICKING));
+		iMimicData.setMimickingDirect(compound.getBoolean(MIMICKING));
 		iMimicData.setMimickedPlayerID(compound.getUniqueId(MIMICKING_ID));
 		iMimicData.setMimickedPlayerName(compound.getString(MIMICKING_NAME));
 	}

@@ -2,6 +2,7 @@ package com.bewitchment.common.crafting;
 
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,7 +14,7 @@ public class ModSpinningThreadRecipes {
 	public static void init() {
 		Ingredient string = Ingredient.fromItem(Items.STRING);
 		Ingredient straw = Ingredient.fromItem(Items.WHEAT);
-		Ingredient gold_nugget = Ingredient.fromItem(Items.GOLD_NUGGET);
+		// Ingredient gold_nugget = Ingredient.fromItem(Items.GOLD_NUGGET);
 		Ingredient parrot_feather = Ingredient.fromItem(ModItems.chromatic_quill);
 		Ingredient stitching = Ingredient.fromItem(ModItems.witches_stitching);
 		Ingredient ectoplasm = Ingredient.fromItem(ModItems.ectoplasm);

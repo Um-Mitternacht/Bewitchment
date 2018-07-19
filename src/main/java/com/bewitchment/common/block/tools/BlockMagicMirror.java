@@ -1,9 +1,12 @@
 package com.bewitchment.common.block.tools;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityMagicMirror;
+
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,8 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-
 public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	public static final PropertyDirection BOTTOM_FACING = BlockHorizontal.FACING;
@@ -44,6 +45,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 		this.setLightOpacity(0);
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, ACTIVE, BOTTOM_FACING);
 	}
@@ -61,9 +63,8 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		if (worldIn.getBlockState(pos.up()).getBlock() != Blocks.AIR) {
 			return false;
-		} else {
-			return super.canPlaceBlockAt(worldIn, pos);
 		}
+		return super.canPlaceBlockAt(worldIn, pos);
 	}
 
 	@Override
@@ -84,9 +85,8 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 		IBlockState topBack = worldIn.getBlockState(bottomBackPosition.up());
 		if (!bottomBack.isFullBlock() || !topBack.isFullBlock()) {
 			return false;
-		} else {
-			return super.canPlaceBlockOnSide(worldIn, pos, side);
 		}
+		return super.canPlaceBlockOnSide(worldIn, pos, side);
 	}
 
 	@Override
@@ -179,6 +179,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 			this.setLightOpacity(0);
 		}
 
+		@Override
 		protected BlockStateContainer createBlockState() {
 			return new BlockStateContainer(this, TOP_FACING);
 		}
@@ -222,6 +223,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 			return false;
 		}
 
+		@Override
 		@SideOnly(Side.CLIENT)
 		public BlockRenderLayer getBlockLayer() {
 			return BlockRenderLayer.CUTOUT;

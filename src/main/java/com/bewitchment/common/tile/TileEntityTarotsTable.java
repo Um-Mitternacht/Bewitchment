@@ -1,11 +1,14 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,8 +19,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
 
 public class TileEntityTarotsTable extends ModTileEntity {
 	private static final String USER_TAG = "magicPointsUser";
@@ -59,9 +60,8 @@ public class TileEntityTarotsTable extends ModTileEntity {
 		if (power == 0) return true;
 		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
 			return magicPointsUser.getAltar(world).subtract(power);
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	@Override

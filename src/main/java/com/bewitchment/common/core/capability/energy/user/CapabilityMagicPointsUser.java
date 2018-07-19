@@ -1,17 +1,19 @@
 package com.bewitchment.common.core.capability.energy.user;
 
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.core.capability.ModCapability;
 import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.tile.TileEntityWitchAltar;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
 
 public class CapabilityMagicPointsUser extends ModCapability {
 	@CapabilityInject(CapabilityMagicPointsUser.class)
@@ -33,10 +35,9 @@ public class CapabilityMagicPointsUser extends ModCapability {
 		if (res.isPresent()) {
 			altarPos = res.get().getFirst().getPos();
 			return true;
-		} else {
-			altarPos = null;
-			return false;
 		}
+		altarPos = null;
+		return false;
 	}
 
 	public boolean hasValidAltar(World world) {

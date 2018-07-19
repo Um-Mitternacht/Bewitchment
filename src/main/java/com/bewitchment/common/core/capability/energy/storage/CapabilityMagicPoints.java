@@ -6,6 +6,7 @@ import com.bewitchment.common.core.capability.ModCapability;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergyMessage;
 import com.bewitchment.common.infusion.ModInfusions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -50,9 +51,8 @@ public final class CapabilityMagicPoints extends ModCapability {
 		if(hasPoints(amount)) {
 			this.amount -= amount;
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	
@@ -155,6 +155,7 @@ public final class CapabilityMagicPoints extends ModCapability {
 	}
 
 	
+	@Override
 	public NBTTagCompound serializeNBT() {
 		final NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger(AMOUNT_TAG, get());
@@ -167,6 +168,7 @@ public final class CapabilityMagicPoints extends ModCapability {
 	}
 
 	
+	@Override
 	public void deserializeNBT(NBTTagCompound tag) {
 		this.set(tag.getInteger(AMOUNT_TAG));
 		this.setMax(tag.getInteger(MAX_TAG));
