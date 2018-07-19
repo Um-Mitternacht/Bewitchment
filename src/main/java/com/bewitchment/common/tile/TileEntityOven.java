@@ -1,14 +1,13 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.api.crafting.OvenSmeltingRecipe;
-import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-import com.bewitchment.common.tile.util.IMachine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +32,7 @@ import java.util.Random;
 /**
  * Created by Joseph on 7/17/2017.
  */
-public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNameable, IMachine {
+public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNameable {
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String WORK_TIME_TAG = "workTime";
 	private static final String TOTAL_WORK_TIME_TAG = "totalWorkTime";
@@ -77,7 +76,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 				if (slot == 0) {
 					return TileEntityFurnace.isItemFuel(stack);
 				} else if (slot == 1) {
-					return ItemStackHelper.haveSameItem(stack, ModItems.fume, ItemFumes.Type.empty_jar.ordinal());
+					return ItemStack.areItemsEqual(stack, new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()));
 				} else {
 					return false;
 				}
@@ -111,9 +110,9 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			return;
 		}
 
-		ItemStackHelper.dropItems(handlerUp, world, pos);
-		ItemStackHelper.dropItems(handlerSide, world, pos);
-		ItemStackHelper.dropItems(handlerDown, world, pos);
+		ItemHandlerHelper.dropItems(handlerUp, world, pos);
+		ItemHandlerHelper.dropItems(handlerSide, world, pos);
+		ItemHandlerHelper.dropItems(handlerDown, world, pos);
 		final EntityItem item = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.oven));
 		world.spawnEntity(item);
 	}
@@ -129,7 +128,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		if (!isBurning) {
 			if (!handlerSide.getStackInSlot(0).isEmpty()) {
 				if (TileEntityFurnace.isItemFuel(handlerSide.getStackInSlot(0))) {
-					if (canProcess()) {
+					if (canSmelt()) {
 						itemBurnTime = TileEntityFurnace.getItemBurnTime(handlerSide.getStackInSlot(0));
 						handlerSide.getStackInSlot(0).shrink(1);
 						isBurning = true;
@@ -142,11 +141,11 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 				burnTime = 0;
 				isBurning = false;
 			}
-			if (canProcess()) {
+			if (canSmelt()) {
 				workTime++;
 				if (workTime >= totalWorkTime) {
 					workTime = 0;
-					onFinished();
+					smelt();
 				}
 			} else if (workTime > 0) {
 				workTime = 0;
@@ -166,8 +165,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	}
 
 	// Returns true if the input is not empty,
-	@Override
-	public boolean canProcess() {
+	public boolean canSmelt() {
 		ItemStack stackToBeSmelted = handlerUp.getStackInSlot(0);
 		if (!stackToBeSmelted.isEmpty()) {
 			OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stackToBeSmelted);
@@ -181,8 +179,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		return false;
 	}
 
-	@Override
-	public void onFinished() {
+	public void smelt() {
 		ItemStack stack = handlerUp.getStackInSlot(0);
 		OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stack);
 		final ItemStack outputStack = recipe.getOutput();

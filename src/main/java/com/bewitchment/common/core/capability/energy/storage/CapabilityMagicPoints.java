@@ -6,7 +6,6 @@ import com.bewitchment.common.core.capability.ModCapability;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergyMessage;
 import com.bewitchment.common.infusion.ModInfusions;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;

@@ -1,9 +1,6 @@
 package com.bewitchment.client.render.entity.renderer;
 
-import java.util.UUID;
-
 import com.bewitchment.common.Bewitchment;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
@@ -25,6 +22,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.UUID;
 
 @SideOnly(Side.CLIENT)
 public class RenderMimicPlayer extends RenderLivingBase<AbstractClientPlayer> {

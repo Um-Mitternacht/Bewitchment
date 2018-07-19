@@ -1,17 +1,16 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+
+import javax.annotation.Nullable;
 
 public class PotionRevealing extends BrewMod {
 	public PotionRevealing() {

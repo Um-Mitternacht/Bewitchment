@@ -1,11 +1,11 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
-import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
+import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -65,7 +65,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (worldIn.isRemote) {
 			return;
 		}
-		ItemStackHelper.dropItems(handler, world, pos);
+		ItemHandlerHelper.dropItems(handler, world, pos);
 		final EntityItem item = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.thread_spinner));
 		world.spawnEntity(item);
 	}

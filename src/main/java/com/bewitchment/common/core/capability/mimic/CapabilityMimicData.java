@@ -1,13 +1,12 @@
 package com.bewitchment.common.core.capability.mimic;
 
-import java.util.UUID;
-
 import com.bewitchment.common.Bewitchment;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+
+import java.util.UUID;
 
 public class CapabilityMimicData implements IMimicData {
 

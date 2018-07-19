@@ -1,10 +1,5 @@
 package com.bewitchment.client.core.event;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
@@ -12,7 +7,6 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.lib.LibReflection;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetHandlerPlayClient;
@@ -25,6 +19,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = LibMod.MOD_ID)
 public class MimicEventHandler {

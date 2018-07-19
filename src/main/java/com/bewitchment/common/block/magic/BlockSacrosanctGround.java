@@ -3,7 +3,6 @@ package com.bewitchment.common.block.magic;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

@@ -1,8 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.UUID;
-
-import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.tools.BlockMagicMirror;
@@ -14,7 +11,6 @@ import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,6 +20,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.UUID;
 
 public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	private static final double SHADOW_RANGE = 4.0;
@@ -52,7 +50,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 		}
 
 		ItemStack held = playerIn.getHeldItem(hand);
-		if (ItemStackHelper.haveSameItem(held, ModItems.taglock, 0)) {
+		if (ItemStack.areItemsEqual(held, new ItemStack(ModItems.taglock))) {
 			final UUID playerID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
 			final String playerName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
 			final IMimicData capability = playerIn.getCapability(CapabilityMimicData.CAPABILITY, null);

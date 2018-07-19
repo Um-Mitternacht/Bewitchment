@@ -4,7 +4,6 @@ import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

@@ -1,12 +1,9 @@
 package com.bewitchment.common.block.tools;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityMagicMirror;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -29,6 +26,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
