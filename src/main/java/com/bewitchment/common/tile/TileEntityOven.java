@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.crafting.OvenSmeltingRecipe;
 import com.bewitchment.api.helper.ItemStackHelper;
 import com.bewitchment.common.Bewitchment;
@@ -13,7 +9,6 @@ import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.util.AutomatableInventory;
 import com.bewitchment.common.tile.util.IMachine;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +27,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
+import java.util.Random;
+
 /**
  * Created by Joseph on 7/17/2017.
  */
@@ -45,6 +43,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	private static final String HANDLER_UP_TAG = "handlerUp";
 	private static final String HANDLER_SIDE_TAG = "handlerSide";
 	private static final String HANDLER_DOWN_TAG = "handlerDown";
+
 	public int workTime;
 	public int totalWorkTime;
 	public boolean isBurning = false;
@@ -121,7 +120,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 
 	@Override
 	public void update() {
-		//TODO: attempt to rewrite this method in such a way that it doesn't update every tick.
+		//TODO: <rustylocks79> attempt to rewrite this method in such a way that it doesn't update every tick.
 		if (world.isRemote) {
 			return;
 		}
@@ -190,7 +189,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		final ItemStack fumesStack = recipe.getFumes();
 		handlerUp.getStackInSlot(0).shrink(1);
 		handlerDown.insertItem(0, outputStack, false);
-		if (!handlerSide.getStackInSlot(1).isEmpty() && random.nextInt(100) < recipe.getFumeChance()) { // If there are jars
+		if (!handlerSide.getStackInSlot(1).isEmpty() && random.nextInt(100) <= recipe.getFumeChance()) { // If there are jars
 			if (handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
 				handlerSide.getStackInSlot(1).shrink(1);
 			}
@@ -218,11 +217,11 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (facing == EnumFacing.UP) {
-			return (T) handlerUp;
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);
 		} else if (facing == EnumFacing.DOWN) {
-			return (T) handlerDown;
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
 		} else if (facing == EnumFacing.NORTH || facing == EnumFacing.EAST || facing == EnumFacing.SOUTH || facing == EnumFacing.WEST) {
-			return (T) handlerSide;
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerSide);
 		} else {
 			return super.getCapability(capability, facing);
 		}
