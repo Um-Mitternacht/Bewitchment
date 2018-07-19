@@ -11,13 +11,6 @@ import javax.annotation.Nullable;
 
 public abstract class ModCapability implements INBTSerializable<NBTTagCompound> {
 	public static <C extends ModCapability>void init(Class<C> capabilityClass) {
-		try {
-			System.out.println(capabilityClass.newInstance() == null);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
 		CapabilityManager.INSTANCE.register(capabilityClass, new ModStorage<>(), capabilityClass::newInstance);
 	}
 

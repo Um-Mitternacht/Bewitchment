@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.HashMap;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
@@ -11,7 +7,6 @@ import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -30,6 +25,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.oredict.OreDictionary;
+
+import javax.annotation.Nullable;
+import java.util.HashMap;
 
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
@@ -213,6 +211,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
 		if (capability == CapabilityMagicPoints.CAPABILITY) {
+			//TODO: <rustylocks79> update to new magic points system.
 			return true;
 		}
 		return super.hasCapability(capability, facing);
@@ -222,6 +221,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (capability == CapabilityMagicPoints.CAPABILITY) {
+			//TODO: <rustylocks79> update to new magic points system.
 			return CapabilityMagicPoints.CAPABILITY.cast(magicPoints);
 		}
 		return super.getCapability(capability, facing);
