@@ -1,8 +1,8 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -30,9 +30,9 @@ public class RitualInfusion extends RitualImpl {
 		if (player == null) {
 			return;
 		}
-		Optional<IEnergy> eng = EnergyHandler.getEnergy(player);
+		Optional<CapabilityMagicPoints> eng = EnergyHandler.getEnergy(player);
 		if (eng.isPresent()) {
-			IEnergy ien = eng.get();
+			CapabilityMagicPoints ien = eng.get();
 			ien.setType(type);
 			if (player instanceof EntityPlayerMP)
 				ien.syncTo((EntityPlayerMP) player);

@@ -1,9 +1,9 @@
 package com.bewitchment.client.core.event;
 
-import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
+import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -44,10 +44,10 @@ public class EnergyHUD {
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
 		if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().player != null) {
-			Optional<IEnergy> optional = EnergyHandler.getEnergy(Minecraft.getMinecraft().player);
+			Optional<CapabilityMagicPoints> optional = EnergyHandler.getEnergy(Minecraft.getMinecraft().player);
 
 			if (optional.isPresent()) {
-				IEnergy energy = optional.get();
+				CapabilityMagicPoints energy = optional.get();
 				if (lastPulsed > 0)
 					lastPulsed--;
 				boolean energyChanged = (oldEnergy != energy.get());
@@ -94,12 +94,12 @@ public class EnergyHUD {
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (p == null)
 			return false;
-		if (p.getHeldItemMainhand().hasCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null)) {
-			if (p.getHeldItemMainhand().getCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null).shouldShowHud())
+		if (p.getHeldItemMainhand().hasCapability(CapabilityMagicPointsUser.CAPABILITY, null)) {
+			if (p.getHeldItemMainhand().getCapability(CapabilityMagicPointsUser.CAPABILITY, null).shouldShowHud())
 				return true;
 		}
-		if (p.getHeldItemOffhand().hasCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null)) {
-			if (p.getHeldItemOffhand().getCapability(IItemEnergyUser.ENERGY_USER_CAPABILITY, null).shouldShowHud())
+		if (p.getHeldItemOffhand().hasCapability(CapabilityMagicPointsUser.CAPABILITY, null)) {
+			if (p.getHeldItemOffhand().getCapability(CapabilityMagicPointsUser.CAPABILITY, null).shouldShowHud())
 				return true;
 		}
 		return false;
@@ -110,10 +110,10 @@ public class EnergyHUD {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && renderTime > 0) {
 			Minecraft mc = Minecraft.getMinecraft();
 			TextureManager manager = mc.getTextureManager();
-			Optional<IEnergy> optional = EnergyHandler.getEnergy(mc.player);
+			Optional<CapabilityMagicPoints> optional = EnergyHandler.getEnergy(mc.player);
 
 			if (optional.isPresent()) {
-				IEnergy energy = optional.get();
+				CapabilityMagicPoints energy = optional.get();
 
 				GlStateManager.pushMatrix();
 				GlStateManager.enableBlend();

@@ -1,9 +1,6 @@
 package com.bewitchment.common.core.gen;
 
-import java.util.Random;
-
 import com.bewitchment.common.block.ModBlocks;
-
 import com.bewitchment.common.core.handler.ConfigHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -15,6 +12,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 public class WorldGenBeehive implements IWorldGenerator {
 

@@ -25,7 +25,7 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	NonNullList<Ingredient> getInput();
 
 	/**
-	 * @return the raw output without modifications. This is mainly used for showing the recipe in JEI
+	 * @return the raw output without modifications. This is mainly used for showing the crafting in JEI
 	 */
 	public @Nonnull
 	NonNullList<ItemStack> getOutputRaw();

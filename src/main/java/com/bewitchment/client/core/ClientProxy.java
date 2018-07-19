@@ -3,6 +3,7 @@ package com.bewitchment.client.core;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
@@ -110,7 +111,7 @@ public class ClientProxy implements ISidedProxy {
 		blocks.registerBlockColorHandler(new IBlockColor() {
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				EnumGlyphType type = state.getValue(BlockCircleGlyph.TYPE);
+				EnumGlyphType type = state.getValue(StateProperties.GLYPH_TYPE);
 				switch (type) {
 					case ENDER:
 						return 0x770077;

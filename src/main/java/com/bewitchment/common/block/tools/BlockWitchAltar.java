@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tools;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.tile.TileEntityWitchAltar;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -254,7 +255,8 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			} else if (worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
-					playerIn.sendStatusMessage(new TextComponentString(tea.getAltarPower() + "/" + tea.getMaxPower() + " (x" + tea.getGain() + ")"), true);
+					CapabilityMagicPoints magicPoints = tea.getCapability(CapabilityMagicPoints.CAPABILITY, null);
+					playerIn.sendStatusMessage(new TextComponentString(magicPoints.get() + "/" + magicPoints.getMax()), true);
 					return true;
 				} else if (state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {
 					for (EnumFacing h : EnumFacing.HORIZONTALS) {

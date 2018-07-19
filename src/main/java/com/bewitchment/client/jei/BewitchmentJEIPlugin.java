@@ -2,6 +2,7 @@ package com.bewitchment.client.jei;
 
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
+import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.jei.components.*;
 import com.bewitchment.common.block.ModBlocks;
@@ -9,7 +10,6 @@ import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.ritual.AdapterIRitual;
-import com.bewitchment.common.spinning.SpinningThreadRecipe;
 import mezz.jei.api.*;
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;

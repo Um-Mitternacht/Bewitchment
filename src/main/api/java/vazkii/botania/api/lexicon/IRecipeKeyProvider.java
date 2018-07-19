@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Have an Item implement this so that the method used for mapping it into
- * the lexicon recipe mappings isn't the typical id:meta key.
+ * the lexicon crafting mappings isn't the typical id:meta key.
  */
 public interface IRecipeKeyProvider {
 

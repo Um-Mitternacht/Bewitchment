@@ -1,6 +1,6 @@
 package com.bewitchment.client.jei.components;
 
-import com.bewitchment.common.spinning.SpinningThreadRecipe;
+import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;

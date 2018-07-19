@@ -1,8 +1,8 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.google.common.collect.Lists;
 import net.minecraft.command.CommandException;
@@ -59,7 +59,7 @@ public class CommandIncantation implements ICommand {
 			IIncantation incantation = ModIncantations.getCommands().get(command);
 			if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
-				Optional<IEnergy> ienopt = EnergyHandler.getEnergy(player);
+				Optional<CapabilityMagicPoints> ienopt = EnergyHandler.getEnergy(player);
 				if (ienopt.isPresent()) {
 					if (true || ienopt.get().get() >= incantation.getCost()) { // TODO fix
 						EnergyHandler.addEnergy(player, -incantation.getCost());

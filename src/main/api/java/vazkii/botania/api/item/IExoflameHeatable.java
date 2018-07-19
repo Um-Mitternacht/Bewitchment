@@ -16,7 +16,7 @@ package vazkii.botania.api.item;
 public interface IExoflameHeatable {
 
 	/**
-	 * Can this TileEntity smelt its contents. If true, the Exoflame is allowed
+	 * Can this TileEntity onFinished its contents. If true, the Exoflame is allowed
 	 * to fuel it.
 	 */
 	public boolean canSmelt();

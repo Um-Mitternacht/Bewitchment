@@ -1,14 +1,7 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
-import com.bewitchment.common.core.capability.mimic.IMimicData;
-import com.bewitchment.common.core.helper.NBTHelper;
-import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
-import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityMagicMirror;
 import net.minecraft.block.BlockHorizontal;
@@ -35,7 +28,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
 public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
@@ -170,27 +162,6 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
 		super.breakBlock(worldIn, pos, state);
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) {
-			ItemStack held = playerIn.getHeldItem(hand);
-			if (held.getItem() == ModItems.taglock) {
-				final UUID playerID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
-				final String playerName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
-				final IMimicData capability = playerIn.getCapability(CapabilityMimicData.CAPABILITY, null);
-				capability.setMimickedPlayerID(playerID);
-				capability.setMimickedPlayerName(playerName);
-				if (playerIn.getUniqueID().equals(playerID)) {
-					capability.setMimicking(false);
-				} else {
-					capability.setMimicking(true);
-				}
-				NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged(playerIn));
-			}
-		}
-		return true;
 	}
 
 	@Nullable

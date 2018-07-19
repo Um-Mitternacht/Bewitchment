@@ -6,9 +6,10 @@
 
 package com.bewitchment.common.item.magic;
 
-import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
+import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.spell.Spell;
@@ -33,7 +34,7 @@ import javax.annotation.Nullable;
 
 public class ItemSpellPage extends ItemMod {
 
-	IItemEnergyUser defImpl = IItemEnergyUser.ENERGY_USER_CAPABILITY.getDefaultInstance();
+	CapabilityMagicPointsUser defImpl = CapabilityMagicPointsUser.CAPABILITY.getDefaultInstance();
 
 	public ItemSpellPage(String id) {
 		super(id);
@@ -114,7 +115,7 @@ public class ItemSpellPage extends ItemMod {
 		if (spell != null && !worldIn.isRemote) {
 			// if (entityLiving instanceof EntityPlayer) {
 			// int spellCost = spell.getCost() * 80;
-			// Optional<IEnergy> eng = EnergyHandler.getEnergy((EntityPlayer) entityLiving);
+			// Optional<IMagicPoints> eng = EnergyHandler.getEnergy((EntityPlayer) entityLiving);
 			// if (eng.isPresent() && eng.get().get() < spellCost)
 			// return stack;
 			// EnergyHandler.addEnergy((EntityPlayer) entityLiving, -spellCost);
@@ -149,7 +150,7 @@ public class ItemSpellPage extends ItemMod {
 
 			@Override
 			public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-				if (capability == IItemEnergyUser.ENERGY_USER_CAPABILITY)
+				if (capability == CapabilityMagicPointsUser.CAPABILITY)
 					return true;
 				return false;
 			}
@@ -157,7 +158,7 @@ public class ItemSpellPage extends ItemMod {
 			@SuppressWarnings("unchecked")
 			@Override
 			public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-				if (capability == IItemEnergyUser.ENERGY_USER_CAPABILITY)
+				if (capability == CapabilityMagicPointsUser.CAPABILITY)
 					return (T) defImpl;
 				return null;
 			}

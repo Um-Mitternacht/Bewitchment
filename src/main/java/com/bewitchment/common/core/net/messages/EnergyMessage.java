@@ -1,8 +1,7 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.infusion.ModInfusions;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -24,14 +23,14 @@ import java.util.UUID;
  */
 public class EnergyMessage implements IMessage {
 
-	private IEnergy energy;
+	private CapabilityMagicPoints energy;
 	private UUID target;
 
 	public EnergyMessage() {
-		energy = new CapabilityEnergy.DefaultEnergy();
+		energy = new CapabilityMagicPoints();
 	}
 
-	public EnergyMessage(IEnergy energy, EntityLivingBase target) {
+	public EnergyMessage(CapabilityMagicPoints energy, EntityLivingBase target) {
 		this.energy = energy;
 		this.target = target.getUniqueID();
 	}
@@ -68,9 +67,9 @@ public class EnergyMessage implements IMessage {
 				final EntityPlayer entityTarget = Minecraft.getMinecraft().world.getPlayerEntityByUUID(message.target);
 
 				if (entityTarget != null) {
-					final Optional<IEnergy> optData = EnergyHandler.getEnergy(entityTarget);
+					final Optional<CapabilityMagicPoints> optData = EnergyHandler.getEnergy(entityTarget);
 					if (optData.isPresent()) {
-						final IEnergy data = optData.get();
+						final CapabilityMagicPoints data = optData.get();
 						data.set(message.energy.get());
 						data.setMax(message.energy.getMax());
 						data.setRegen(message.energy.getRegenTime(), message.energy.getRegenBurst());

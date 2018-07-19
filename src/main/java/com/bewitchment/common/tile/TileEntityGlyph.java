@@ -1,8 +1,9 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -12,12 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Tuple;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
 import java.util.ArrayList;
@@ -80,7 +80,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	private int cooldown = 0; // The times that passed since activation
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
-	private TileEntityWitchAltar te = null; // The currently bound altar
+	private CapabilityMagicPointsUser magicPointsUser = null; // The currently bound altar
 
 	// A list of entities for which some rituals behaves differently, depending on the ritual
 	// For instance in Covens there was a ritual that hijacked all tp attempt in an area and
@@ -88,6 +88,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	// to safely teleport back to their base. The use is left to who codes the specific ritual.
 	// The adding of entities is done via a specific ritual (Used to be called Identification rit)
 	private ArrayList<Tuple<String, String>> entityList = new ArrayList<Tuple<String, String>>();
+
+	public TileEntityGlyph() {
+		magicPointsUser = new CapabilityMagicPointsUser();
+	}
 
 	public static ArrayList<int[]> getSmall() {
 		return small;
@@ -106,39 +110,22 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	}
 
 	@Override
-	protected void readAllModDataNBT(NBTTagCompound tag) {
-		cooldown = tag.getInteger("cooldown");
-		if (tag.hasKey("ritual"))
-			ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
-		if (tag.hasKey("player"))
-			entityPlayer = UUID.fromString(tag.getString("player"));
-		if (tag.hasKey("data"))
-			ritualData = tag.getCompoundTag("data");
-		if (tag.hasKey("entityList")) {
-			entityList = new ArrayList<Tuple<String, String>>();
-			tag.getTagList("entityList", NBT.TAG_STRING).forEach(nbts -> {
-				String[] names = ((NBTTagString) nbts).getString().split("!");
-				if (names.length == 2)
-					entityList.add(new Tuple<String, String>(names[0], names[1]));
-			});
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (hand.equals(EnumHand.OFF_HAND) || !playerIn.getHeldItem(hand).isEmpty()) {
+			return false;
 		}
+
+		if (this.hasRunningRitual()) {
+			this.stopRitual(playerIn);
+		} else {
+			this.startRitual(playerIn);
+		}
+		return true;
 	}
 
 	@Override
-	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setInteger("cooldown", cooldown);
-		if (ritual != null)
-			tag.setString("ritual", ritual.getRegistryName().toString());
-		if (entityPlayer != null)
-			tag.setString("player", entityPlayer.toString());
-		if (ritualData != null)
-			tag.setTag("data", ritualData);
-		NBTTagList list = new NBTTagList();
-		for (int i = 0; i < entityList.size(); i++) {
-			Tuple<String, String> t = entityList.get(i);
-			list.appendTag(new NBTTagString(t.getFirst() + "!" + t.getSecond()));
-		}
-		tag.setTag("entityList", list);
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+
 	}
 
 	@Override
@@ -262,10 +249,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		for (int[] c : small) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeFirst) && !typeFirst.equals(EnumGlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(StateProperties.GLYPH_TYPE).equals(typeFirst) && !typeFirst.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -278,10 +265,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		for (int[] c : medium) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeSecond) && !typeSecond.equals(EnumGlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(StateProperties.GLYPH_TYPE).equals(typeSecond) && !typeSecond.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -294,10 +281,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		for (int[] c : big) {
 			BlockPos bp = pos.add(c[0], 0, c[1]);
 			IBlockState bs = world.getBlockState(bp);
-			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(BlockCircleGlyph.TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(BlockCircleGlyph.TYPE).equals(typeThird) && !typeThird.equals(EnumGlyphType.ANY))) {
+			if (!bs.getBlock().equals(ModBlocks.ritual_glyphs) || bs.getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN) || (!bs.getValue(StateProperties.GLYPH_TYPE).equals(typeThird) && !typeThird.equals(EnumGlyphType.ANY))) {
 				return false;
 			}
-			EnumGlyphType thisOne = bs.getValue(BlockCircleGlyph.TYPE);
+			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
 			if (lastFound != null && lastFound != thisOne)
 				return false;
 			lastFound = thisOne;
@@ -322,14 +309,13 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		return cooldown > 0;
 	}
 
-	public boolean consumePower(int power) {
-		if (power == 0)
-			return true;
-		if (te == null || te.isInvalid())
-			te = TileEntityWitchAltar.getClosest(pos, world);
-		if (te == null)
+	private boolean consumePower(int power) {
+		if (power == 0) return true;
+		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
+			return magicPointsUser.getAltar(world).subtract(power);
+		} else {
 			return false;
-		return te.consumePower(power, false);
+		}
 	}
 
 	@Override
@@ -339,12 +325,48 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	}
 
 	@Override
-	void writeModSyncDataNBT(NBTTagCompound tag) {
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		cooldown = tag.getInteger("cooldown");
+		if (tag.hasKey("ritual"))
+			ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
+		if (tag.hasKey("player"))
+			entityPlayer = UUID.fromString(tag.getString("player"));
+		if (tag.hasKey("data"))
+			ritualData = tag.getCompoundTag("data");
+		if (tag.hasKey("entityList")) {
+			entityList = new ArrayList<Tuple<String, String>>();
+			tag.getTagList("entityList", NBT.TAG_STRING).forEach(nbts -> {
+				String[] names = ((NBTTagString) nbts).getString().split("!");
+				if (names.length == 2)
+					entityList.add(new Tuple<String, String>(names[0], names[1]));
+			});
+		}
+	}
+
+	@Override
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setInteger("cooldown", cooldown);
+		if (ritual != null)
+			tag.setString("ritual", ritual.getRegistryName().toString());
+		if (entityPlayer != null)
+			tag.setString("player", entityPlayer.toString());
+		if (ritualData != null)
+			tag.setTag("data", ritualData);
+		NBTTagList list = new NBTTagList();
+		for (int i = 0; i < entityList.size(); i++) {
+			Tuple<String, String> t = entityList.get(i);
+			list.appendTag(new NBTTagString(t.getFirst() + "!" + t.getSecond()));
+		}
+		tag.setTag("entityList", list);
+	}
+
+	@Override
+	protected void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("cooldown", cooldown); // cooldown > 0 --> Particles
 	}
 
 	@Override
-	void readModSyncDataNBT(NBTTagCompound tag) {
+	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
 	}
 

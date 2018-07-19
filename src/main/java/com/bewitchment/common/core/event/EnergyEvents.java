@@ -1,8 +1,8 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.bewitchment.common.core.capability.energy.EnergyProvider;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
+import com.bewitchment.common.core.capability.energy.storage.MagicPointsProvider;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +25,7 @@ public class EnergyEvents {
 	@SubscribeEvent
 	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof EntityPlayer) {
-			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "EnergyData"), new EnergyProvider());
+			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "EnergyData"), new MagicPointsProvider());
 		}
 	}
 
@@ -35,9 +35,9 @@ public class EnergyEvents {
 		final EntityPlayer oldPlayer = event.getOriginal();
 		final EntityPlayer newPlayer = event.getEntityPlayer();
 
-		if (event.isWasDeath() && oldPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null) && newPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null)) {
-			final IEnergy oldCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
-			final IEnergy newCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
+		if (event.isWasDeath() && oldPlayer.hasCapability(CapabilityMagicPoints.CAPABILITY, null) && newPlayer.hasCapability(CapabilityMagicPoints.CAPABILITY, null)) {
+			final CapabilityMagicPoints oldCap = oldPlayer.getCapability(CapabilityMagicPoints.CAPABILITY, null);
+			final CapabilityMagicPoints newCap = oldPlayer.getCapability(CapabilityMagicPoints.CAPABILITY, null);
 			newCap.set(oldCap.get());
 			newCap.setMax(oldCap.getMax());
 			newCap.setRegen(oldCap.getRegenTime(), oldCap.getRegenBurst());
@@ -49,7 +49,7 @@ public class EnergyEvents {
 	public void onWorldJoin(EntityJoinWorldEvent event) {
 		if (event.getEntity() instanceof EntityPlayerMP) {
 			EntityPlayerMP entity = (EntityPlayerMP) event.getEntity();
-			Optional<IEnergy> optional = EnergyHandler.getEnergy(entity);
+			Optional<CapabilityMagicPoints> optional = EnergyHandler.getEnergy(entity);
 			optional.ifPresent(iEnergy -> iEnergy.syncTo(entity));
 		}
 	}
@@ -58,15 +58,15 @@ public class EnergyEvents {
 	public void playerUpdate(LivingEvent.LivingUpdateEvent event) {
 		if (!event.getEntity().world.isRemote && event.getEntity() instanceof EntityPlayerMP) {
 			final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-			final Optional<IEnergy> optional = EnergyHandler.getEnergy(player);
+			final Optional<CapabilityMagicPoints> optional = EnergyHandler.getEnergy(player);
 			if (optional.isPresent()) {
-				final IEnergy energy = optional.get();
+				final CapabilityMagicPoints energy = optional.get();
 				energyRegen(player, energy);
 			}
 		}
 	}
 
-	private void energyRegen(EntityPlayerMP player, IEnergy energy) {
+	private void energyRegen(EntityPlayerMP player, CapabilityMagicPoints energy) {
 		if (energy.getRegenTime() == -1) return;
 		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
 			energy.set(energy.get() + energy.getRegenBurst());

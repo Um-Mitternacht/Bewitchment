@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.capability.energy;
 
-import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -17,14 +17,13 @@ import java.util.stream.Collectors;
  * the MIT license.
  */
 public final class EnergyHandler {
-
 	private EnergyHandler() {
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	public static <T extends Entity> List<T> getEnergySources(Class<T> type, World world, BlockPos pos, int range) {
 		return world.getEntitiesWithinAABB(type, new AxisAlignedBB(pos).grow(range)).stream()
-				.filter(entity -> entity.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null)).collect(Collectors.toList());
+				.filter(entity -> entity.hasCapability(CapabilityMagicPoints.CAPABILITY, null)).collect(Collectors.toList());
 	}
 
 	/**
@@ -40,11 +39,11 @@ public final class EnergyHandler {
 	 */
 	public static boolean addEnergy(EntityPlayer player, int amount) {
 		return true; // TODO
-		// final Optional<IEnergy> optional = getEnergy(player);
+		// final Optional<IMagicPoints> optional = getEnergy(player);
 		// boolean mod = false;
 		//
 		// if (optional.isPresent()) {
-		// IEnergy energy = optional.get();
+		// IMagicPoints energy = optional.get();
 		// mod = energy.set(energy.get() + amount);
 		// energy.tickReset();
 		// if (player instanceof EntityPlayerMP)
@@ -54,15 +53,15 @@ public final class EnergyHandler {
 	}
 
 	/**
-	 * Returns the {@link IEnergy} interface of the player.
+	 * Returns the {@link CapabilityMagicPoints} interface of the player.
 	 *
 	 * @param player The player
-	 * @return An {@link Optional<IEnergy>} for correctness
+	 * @return An {@link Optional< CapabilityMagicPoints >} for correctness
 	 */
 	@SuppressWarnings("ConstantConditions")
-	public static Optional<IEnergy> getEnergy(EntityPlayer player) {
-		if (player.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null)) {
-			return Optional.of(player.getCapability(EnergyProvider.ENERGY_CAPABILITY, null));
+	public static Optional<CapabilityMagicPoints> getEnergy(EntityPlayer player) {
+		if (player.hasCapability(CapabilityMagicPoints.CAPABILITY, null)) {
+			return Optional.of(player.getCapability(CapabilityMagicPoints.CAPABILITY, null));
 		}
 		return Optional.empty();
 	}
@@ -74,7 +73,7 @@ public final class EnergyHandler {
 	 * @param maxAmount The new max amount
 	 */
 	public static void setMaxEnergy(EntityPlayer player, int maxAmount) {
-		Optional<IEnergy> optional = getEnergy(player);
+		Optional<CapabilityMagicPoints> optional = getEnergy(player);
 		if (optional.isPresent() && maxAmount >= 0) {
 			optional.get().setMax(maxAmount);
 		}
@@ -91,7 +90,7 @@ public final class EnergyHandler {
 	 * @param timeInTicks Ticks
 	 */
 	public static void setRegen(EntityPlayer player, int timeInTicks, int burst) {
-		Optional<IEnergy> optional = getEnergy(player);
+		Optional<CapabilityMagicPoints> optional = getEnergy(player);
 		optional.ifPresent(iEnergy -> iEnergy.setRegen(timeInTicks, burst));
 	}
 }

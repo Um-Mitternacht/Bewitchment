@@ -1,7 +1,6 @@
 package com.bewitchment.common.internalApi;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
@@ -18,6 +17,7 @@ import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
@@ -84,7 +84,7 @@ public class ApiInstance extends BewitchmentAPI {
 
 	@Override
 	public IInfusion getPlayerInfusion(EntityPlayer player) {
-		Optional<IEnergy> iEnergy = EnergyHandler.getEnergy(player);
+		Optional<CapabilityMagicPoints> iEnergy = EnergyHandler.getEnergy(player);
 		if (iEnergy.isPresent()) {
 			return iEnergy.get().getType();
 		}
@@ -93,7 +93,7 @@ public class ApiInstance extends BewitchmentAPI {
 
 	@Override
 	public void setPlayerInfusion(EntityPlayer player, IInfusion infusion) {
-		Optional<IEnergy> iEnergy = EnergyHandler.getEnergy(player);
+		Optional<CapabilityMagicPoints> iEnergy = EnergyHandler.getEnergy(player);
 		if (iEnergy.isPresent()) {
 			iEnergy.get().setType(infusion);
 		}
