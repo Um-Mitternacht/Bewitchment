@@ -20,36 +20,59 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	private ItemStack input, output, fumes;
 	private int fumeChance;
 
-	public OvenSmeltingRecipe(ItemStack input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
+	/**
+	 * @param regName The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
+	 * @param input The stack inserted into the furnace to be smelted. Cannot be null.
+	 * @param output The stack created upon smelting the input. Cannot be null.
+	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
+	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
+	 */
+	public OvenSmeltingRecipe(String regName, ItemStack input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
 		if(fumeChance > 100 || fumeChance < 0) { throw new IllegalArgumentException("fumeChance must be between 0 and 100. "); }
+		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, regName));
 		this.input = input;
 		this.output = output;
 		this.fumes = fumes;
 		this.fumeChance = fumeChance;
 	}
 
-	public OvenSmeltingRecipe(String regName, ItemStack input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
-		this(input, output, fumes, fumeChance);
-		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, regName));
-	}
-
+	/**
+	 * @return a copy of the input stack.
+	 */
 	public ItemStack getInput() {
 		return input.copy();
 	}
 
+	/**
+	 * @return a copy of the output stack.
+	 */
 	public ItemStack getOutput() {
 		return output.copy();
 	}
 
+	/**
+	 * @return a copy of the fume stack. If returns null then recipe has no fumes.
+	 */
 	@Nullable
 	public ItemStack getFumes() {
+		if(fumes == null) {
+			return null;
+		}
 		return fumes.copy();
 	}
 
+	/**
+	 * @return the chance of producing fumes.
+	 */
 	public int getFumeChance() {
 		return fumeChance;
 	}
 
+	/**
+	 * Determines if there are any registry entries that contains input as the stack to be smelted.
+	 * @param input The stack to be tested.
+	 * @return weather their is a recipe in the registry that requires input to be smelted.
+	 */
 	public static boolean isSmeltable(ItemStack input) {
 		for(OvenSmeltingRecipe recipe : REGISTRY) {
 			if(ItemStack.areItemsEqual(recipe.getInput(), input)) {
@@ -59,6 +82,11 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 		return false;
 	}
 
+	/**
+	 * Finds any registry entries that contains input as the stack to be smelted.
+	 * @param input The stack to be tested
+	 * @return The recipe that contains input as the stack to be smelted.
+	 */
 	@Nullable
 	public static OvenSmeltingRecipe getRecipe(ItemStack input) {
 		for(OvenSmeltingRecipe recipe : REGISTRY) {
