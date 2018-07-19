@@ -11,15 +11,12 @@ import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.lib.LibReflection;
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
-import net.minecraft.client.resources.SkinManager;
-import net.minecraft.client.resources.SkinManager.SkinAvailableCallback;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -41,28 +38,12 @@ public class MimicEventHandler {
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void fakeSkin(RenderPlayerEvent.Pre event) {
+	public static void fakeSkin(RenderPlayerEvent.Pre event) { // TODO change this to a single fired event (like player logging in)
 		if (event.getEntity().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
 			final IMimicData capability = event.getEntity().getCapability(CapabilityMimicData.CAPABILITY, null);
-			final AbstractClientPlayer victim = (AbstractClientPlayer) Minecraft.getMinecraft().world.getPlayerEntityByName(capability.getMimickedPlayerName());
 			final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntityPlayer();
-			if (victim != null) {
-				if (capability.isMimicking()) {
-					setPlayerSkin(player, victim.getLocationSkin());
-				}
-			} else {
-				SkinManager sm = Minecraft.getMinecraft().getSkinManager();
-				Map<Type, MinecraftProfileTexture> map = sm.loadSkinFromCache(new GameProfile(capability.getMimickedPlayerID(), capability.getMimickedPlayerName()));
-				sm.loadSkin(map.get(Type.SKIN), Type.SKIN, new SkinAvailableCallback() {
-					
-					@Override
-					public void skinAvailable(Type typeIn, ResourceLocation location, MinecraftProfileTexture profileTexture) {
-						if (capability.isMimicking()) {
-							setPlayerSkin(player, location);
-						}
-					}
-				});
-			}
+			NetworkPlayerInfo victimInfo = new NetworkPlayerInfo(new GameProfile(capability.getMimickedPlayerID(), capability.getMimickedPlayerName()));
+			setPlayerSkin(player, victimInfo.getLocationSkin());
 		}
 	}
 	
