@@ -17,18 +17,6 @@ import java.util.Random;
 
 public class WorldGenBeehive implements IWorldGenerator {
 
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-						 net.minecraft.world.gen.IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		final Biome biome = world.getBiomeForCoordsBody(new BlockPos(chunkX, 0, chunkZ));
-
-		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.END) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
-			return;
-		}
-
-		generateBeehives(world, random, chunkX * 16 + 8, chunkZ * 16 + 8);
-	}
-
 	private static void generateBeehives(World world, Random random, int chunkX, int chunkZ) {
 		final BlockPos.MutableBlockPos variableBlockPos = new BlockPos.MutableBlockPos();
 
@@ -47,13 +35,13 @@ public class WorldGenBeehive implements IWorldGenerator {
 			variableBlockPos.setY(newY);
 			IBlockState state = ModBlocks.beehive.getDefaultState();
 			int positionRand = random.nextInt(4);
-			if(positionRand == 0) {
+			if (positionRand == 0) {
 				state = state.withProperty(BlockHorizontal.FACING, EnumFacing.NORTH);
-			} else if(positionRand == 1) {
+			} else if (positionRand == 1) {
 				state = state.withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH);
-			} else if(positionRand == 2) {
-				state = state.withProperty(BlockHorizontal.FACING, EnumFacing.EAST	);
-			} else if(positionRand == 3) {
+			} else if (positionRand == 2) {
+				state = state.withProperty(BlockHorizontal.FACING, EnumFacing.EAST);
+			} else if (positionRand == 3) {
 				state = state.withProperty(BlockHorizontal.FACING, EnumFacing.WEST);
 			}
 			world.setBlockState(variableBlockPos, state);
@@ -82,6 +70,18 @@ public class WorldGenBeehive implements IWorldGenerator {
 			return -1;
 		}
 		return -1;
+	}
+
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world,
+	                     net.minecraft.world.gen.IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		final Biome biome = world.getBiomeForCoordsBody(new BlockPos(chunkX, 0, chunkZ));
+
+		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.END) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
+			return;
+		}
+
+		generateBeehives(world, random, chunkX * 16 + 8, chunkZ * 16 + 8);
 	}
 
 }
