@@ -665,6 +665,7 @@ achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
 achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 
 //JEI
+jei.category.oven=Oven
 jei.category.rituals=Rituals
 jei.category.spinner=Thread Spinning
 jei.category.brewing=Brew Bottling

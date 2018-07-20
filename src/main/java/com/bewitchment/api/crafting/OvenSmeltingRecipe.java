@@ -3,6 +3,7 @@ package com.bewitchment.api.crafting;
 import com.bewitchment.common.lib.LibMod;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -17,7 +18,8 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	private static final ResourceLocation REGISTRY_LOCATION = new ResourceLocation(LibMod.MOD_ID, "oven");
 	public static final IForgeRegistry<OvenSmeltingRecipe> REGISTRY = new RegistryBuilder<OvenSmeltingRecipe>().disableSaving().setName(REGISTRY_LOCATION).setType(OvenSmeltingRecipe.class).setIDRange(0, 200).create();
 
-	private ItemStack input, output, fumes;
+	private Ingredient input;
+	private ItemStack output, fumes;
 	private int fumeChance;
 
 	/**
@@ -27,7 +29,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
 	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
 	 */
-	public OvenSmeltingRecipe(String regName, ItemStack input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
+	public OvenSmeltingRecipe(String regName, Ingredient input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
 		if(fumeChance > 100 || fumeChance < 0) { throw new IllegalArgumentException("fumeChance must be between 0 and 100. "); }
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, regName));
 		this.input = input;
@@ -39,8 +41,8 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	/**
 	 * @return a copy of the input stack.
 	 */
-	public ItemStack getInput() {
-		return input.copy();
+	public Ingredient getInput() {
+		return input;
 	}
 
 	/**
@@ -74,9 +76,11 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	 * @return weather their is a recipe in the registry that requires input to be smelted.
 	 */
 	public static boolean isSmeltable(ItemStack input) {
-		for(OvenSmeltingRecipe recipe : REGISTRY) {
-			if(ItemStack.areItemsEqual(recipe.getInput(), input)) {
-				return true;
+		for (OvenSmeltingRecipe recipe : REGISTRY) {
+			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
+				if (ItemStack.areItemsEqual(stack, input)) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -90,8 +94,10 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	@Nullable
 	public static OvenSmeltingRecipe getRecipe(ItemStack input) {
 		for(OvenSmeltingRecipe recipe : REGISTRY) {
-			if(ItemStack.areItemsEqual(recipe.getInput(), input)) {
-				return recipe;
+			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
+				if (ItemStack.areItemsEqual(stack, input)) {
+					return recipe;
+				}
 			}
 		}
 		return null;

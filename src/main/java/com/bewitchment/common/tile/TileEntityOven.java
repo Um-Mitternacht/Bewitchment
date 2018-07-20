@@ -179,6 +179,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		return false;
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	public void smelt() {
 		ItemStack stack = handlerUp.getStackInSlot(0);
 		OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stack);
@@ -219,9 +220,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
 		} else if (facing == EnumFacing.NORTH || facing == EnumFacing.EAST || facing == EnumFacing.SOUTH || facing == EnumFacing.WEST) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerSide);
-		} else {
-			return super.getCapability(capability, facing);
 		}
+		return super.getCapability(capability, facing);
 	}
 
 	@Override
