@@ -24,8 +24,8 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 
 	/**
 	 * @param regName The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
-	 * @param input The stack inserted into the furnace to be smelted. Cannot be null.
-	 * @param output The stack created upon smelting the input. Cannot be null.
+	 * @param input The input needed for this recipe. Cannot be null.
+	 * @param output The output that will be produced by this recipe.  Cannot be null.
 	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
 	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
 	 */
@@ -39,7 +39,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	}
 
 	/**
-	 * @return a copy of the input stack.
+	 * @return the input ingredient.
 	 */
 	public Ingredient getInput() {
 		return input;
@@ -89,7 +89,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	/**
 	 * Finds any registry entries that contains input as the stack to be smelted.
 	 * @param input The stack to be tested
-	 * @return The recipe that contains input as the stack to be smelted.
+	 * @return The recipe that contains input as the stack to be smelted. Returns null if not recipe is found.
 	 */
 	@Nullable
 	public static OvenSmeltingRecipe getRecipe(ItemStack input) {

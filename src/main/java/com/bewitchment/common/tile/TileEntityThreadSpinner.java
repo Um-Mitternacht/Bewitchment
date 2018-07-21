@@ -28,10 +28,12 @@ import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class TileEntityThreadSpinner extends ModTileEntity implements ITickable, IWorldNameable {
+	private static final String CUSTOM_NAME_TAG = "customName";
+	private static final String TICKS_PROCESSED_TAG = "ticksProcessed";
+	private static final String HANDLER_TAG = "handler";
+
 	public static final int MAX_TICKS = 200;
 	public static final int POWER_PER_TICK = 6;
-	private static final String CUSTOM_NAME_TAG = "customName";
-	private static final String HANDLER_TAG = "handler";
 
 	private CapabilityMagicPointsUser magicPointsUser;
 	private ItemStackHandler handler;
@@ -102,14 +104,14 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if(loadedRecipe == null || !loadedRecipe.matches(list)) {
 			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
-		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getResult(), true).isEmpty() && magicPointsUser.consumePower(POWER_PER_TICK, this.world, this.pos);
+		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && magicPointsUser.consumePower(POWER_PER_TICK, this.world, this.pos);
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private void onFinished() {
-		if (handler.getStackInSlot(0).isEmpty()) handler.setStackInSlot(0, loadedRecipe.getResult());
+		if (handler.getStackInSlot(0).isEmpty()) handler.setStackInSlot(0, loadedRecipe.getOutput());
 		else {
-			handler.getStackInSlot(0).grow(loadedRecipe.getResult().getCount());
+			handler.getStackInSlot(0).grow(loadedRecipe.getOutput().getCount());
 		}
 		for (int i = 1; i < 5; i++) handler.getStackInSlot(i).shrink(1);
 		loadedRecipe = null;
@@ -154,7 +156,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
 		tag.setTag(HANDLER_TAG, handler.serializeNBT());
-		tag.setInteger("ticks", tickProcessed);
+		tag.setInteger(TICKS_PROCESSED_TAG, tickProcessed);
 	}
 
 	@Override
@@ -163,7 +165,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
 		handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
-		tickProcessed = tag.getInteger("ticks");
+		tickProcessed = tag.getInteger(TICKS_PROCESSED_TAG);
 	}
 
 	@Override
@@ -171,7 +173,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (this.hasCustomName()) {
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
-		tag.setInteger("tick", tickProcessed);
+		tag.setInteger(TICKS_PROCESSED_TAG, tickProcessed);
 	}
 
 	@Override
@@ -179,6 +181,6 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
-		tickProcessed = tag.getInteger("tick");
+		tickProcessed = tag.getInteger(TICKS_PROCESSED_TAG);
 	}
 }

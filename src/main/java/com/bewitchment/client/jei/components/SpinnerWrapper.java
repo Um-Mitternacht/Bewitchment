@@ -17,7 +17,7 @@ public class SpinnerWrapper implements IRecipeWrapper {
 
 	public SpinnerWrapper(SpinningThreadRecipe recipe) {
 		input = recipe.getInputs();
-		output = recipe.getResult();
+		output = recipe.getOutput();
 	}
 
 	@Override
