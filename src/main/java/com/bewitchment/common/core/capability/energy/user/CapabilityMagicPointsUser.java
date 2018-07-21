@@ -46,6 +46,14 @@ public class CapabilityMagicPointsUser extends ModCapability {
 		return ((TileEntityWitchAltar) world.getTileEntity(altarPos)).getCapability(CapabilityMagicPoints.CAPABILITY, null);
 	}
 
+	public boolean consumePower(int power, World world, BlockPos pos) {
+		if (power == 0) return true;
+		if (this.hasValidAltar(world) || this.findClosestAltar(pos, world)) {
+			return this.getAltar(world).subtract(power);
+		}
+		return false;
+	}
+
 	public boolean shouldShowHud() {
 		return false;
 	}

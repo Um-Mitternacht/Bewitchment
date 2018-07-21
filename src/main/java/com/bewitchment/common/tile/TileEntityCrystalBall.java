@@ -41,7 +41,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 	}
 
 	public boolean fortune(EntityPlayer reader) {
-		if (consumePower(5000)) {
+		if (magicPointsUser.consumePower(5000, this.world, this.pos)) {
 			return readFortune(reader, null);
 		}
 		reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
@@ -85,14 +85,6 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		endPlayer.getCapability(CapabilityDivination.CAPABILITY, null).setFortune(fortune);
 		endPlayer.sendStatusMessage(new TextComponentTranslation(fortune.getUnlocalizedName()), true);
 		return true;
-	}
-
-	private boolean consumePower(int power) {
-		if (power == 0) return true;
-		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-			return magicPointsUser.getAltar(world).subtract(power);
-		}
-		return false;
 	}
 
 	@Override

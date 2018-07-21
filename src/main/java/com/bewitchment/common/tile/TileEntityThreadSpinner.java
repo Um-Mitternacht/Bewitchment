@@ -3,7 +3,6 @@ package com.bewitchment.common.tile;
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
 import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
@@ -13,7 +12,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IWorldNameable;
@@ -24,20 +26,23 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("NullableProblems")
 public class TileEntityThreadSpinner extends ModTileEntity implements ITickable, IWorldNameable {
 	public static final int MAX_TICKS = 200;
 	public static final int POWER_PER_TICK = 6;
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String HANDLER_TAG = "handler";
-	private int tickProcessed = 0;
-	private String loadedRecipe = null;
-	private String customName = null;
+
 	private CapabilityMagicPointsUser magicPointsUser;
 	private ItemStackHandler handler;
+	private SpinningThreadRecipe loadedRecipe;
+	private String customName = null;
+	private int tickProcessed = 0;
 
 	public TileEntityThreadSpinner() {
 		handler = new ItemStackHandler(5);
 		magicPointsUser = new CapabilityMagicPointsUser();
+		loadedRecipe = null;
 	}
 
 	@Override
@@ -60,6 +65,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		return true;
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
 		if (worldIn.isRemote) {
@@ -75,63 +81,38 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (world.isRemote) {
 			return;
 		}
-
-		//TODO: this needs to be rewritten.
-		checkRecipe();
-		if (loadedRecipe != null && canStackResults()) {
-			if (world.getTotalWorldTime() % 20 == 0) {
-				if (!magicPointsUser.hasValidAltar(world)) {
-					if (!magicPointsUser.findClosestAltar(this.pos, this.world)) {
-						return;
-					}
-					this.markDirty();
-				}
+		if (this.canProgress()) {
+			this.tickProcessed++;
+			if (this.tickProcessed >= MAX_TICKS) {
+				this.onFinished();
+				this.tickProcessed = 0;
 			}
-
-			if (magicPointsUser.hasValidAltar(world)) {
-				CapabilityMagicPoints magicPoints = magicPointsUser.getAltar(this.world);
-				if (magicPoints.subtract(POWER_PER_TICK)) {
-					tickProcessed++;
-					if (tickProcessed >= MAX_TICKS) {
-						ItemStack result = SpinningThreadRecipe.REGISTRY.getValue(new ResourceLocation(loadedRecipe)).getResult();
-						if (handler.getStackInSlot(0).isEmpty()) handler.setStackInSlot(0, result);
-						else {
-							handler.getStackInSlot(0).grow(result.getCount());
-						}
-						for (int i = 1; i < 5; i++) handler.getStackInSlot(i).shrink(1);
-						tickProcessed = 0;
-						loadedRecipe = null;
-					}
-					this.syncToClient();
-					markDirty();
-				}
-			}
-		} else if (tickProcessed != 0) {
-			tickProcessed = 0;
 			this.syncToClient();
-			markDirty();
+			this.markDirty();
+		} else if (this.tickProcessed != 0) {
+			this.tickProcessed = 0;
+			this.syncToClient();
+			this.markDirty();
 		}
 	}
 
-	private boolean canStackResults() {
-		if (handler.getStackInSlot(0).isEmpty()) return true;
-		ItemStack recipeResult = SpinningThreadRecipe.REGISTRY.getValue(new ResourceLocation(loadedRecipe)).getResult();
-		if (ItemStack.areItemsEqual(handler.getStackInSlot(0), recipeResult) && ItemStack.areItemStackTagsEqual(handler.getStackInSlot(0), recipeResult)) {
-			int sum = handler.getStackInSlot(0).getCount() + recipeResult.getCount();
-			return sum <= recipeResult.getMaxStackSize();
+	private boolean canProgress() {
+		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, handler.getStackInSlot(1),
+				handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4));
+		if(loadedRecipe == null || !loadedRecipe.matches(list)) {
+			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
-		return false;
+		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getResult(), true).isEmpty() && magicPointsUser.consumePower(POWER_PER_TICK, this.world, this.pos);
 	}
 
-	private void checkRecipe() {
-		SpinningThreadRecipe recipe = SpinningThreadRecipe.getRecipe(NonNullList.from(ItemStack.EMPTY, new ItemStack[]{
-				handler.getStackInSlot(1), handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4)
-		}));
-		if (recipe != null) {
-			loadedRecipe = recipe.getRegistryName().toString();
-		} else {
-			loadedRecipe = null;
+	@SuppressWarnings("ConstantConditions")
+	private void onFinished() {
+		if (handler.getStackInSlot(0).isEmpty()) handler.setStackInSlot(0, loadedRecipe.getResult());
+		else {
+			handler.getStackInSlot(0).grow(loadedRecipe.getResult().getCount());
 		}
+		for (int i = 1; i < 5; i++) handler.getStackInSlot(i).shrink(1);
+		loadedRecipe = null;
 	}
 
 	public int getTickProgress() {
@@ -173,7 +154,6 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
 		tag.setTag(HANDLER_TAG, handler.serializeNBT());
-		if (loadedRecipe != null) tag.setString("crafting", loadedRecipe);
 		tag.setInteger("ticks", tickProcessed);
 	}
 
@@ -183,8 +163,6 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
 		handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
-		if (tag.hasKey("crafting")) loadedRecipe = tag.getString("crafting");
-		else loadedRecipe = null;
 		tickProcessed = tag.getInteger("ticks");
 	}
 

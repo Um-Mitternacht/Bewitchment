@@ -32,6 +32,7 @@ import java.util.Random;
 /**
  * Created by Joseph on 7/17/2017.
  */
+@SuppressWarnings("NullableProblems")
 public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNameable {
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String WORK_TIME_TAG = "workTime";
@@ -55,6 +56,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	private ItemStackHandler handlerSide;
 	private ItemStackHandler handlerDown;
 
+	@SuppressWarnings("ConstantConditions")
 	public TileEntityOven() {
 		this.random = new Random(100);
 		this.handlerUp = new AutomatableInventory(1) {
@@ -104,6 +106,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		return true;
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
 		if (world.isRemote) {
@@ -160,34 +163,32 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	}
 
 	//Change to speed up smelting, lower = faster
-	public int getWorkTime() {
+	private int getWorkTime() {
 		return 400;
 	}
 
 	// Returns true if the input is not empty,
-	public boolean canSmelt() {
+	private boolean canSmelt() {
 		ItemStack stackToBeSmelted = handlerUp.getStackInSlot(0);
 		if (!stackToBeSmelted.isEmpty()) {
 			OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stackToBeSmelted);
 			if (recipe != null) {
 				ItemStack stackNewOutput = recipe.getOutput();
-				if (handlerDown.insertItem(0, stackNewOutput, true).isEmpty()) { // empty stack returned = I can fit a whole new batch of results
-					return true;
-				}
+				return handlerDown.insertItem(0, stackNewOutput, true).isEmpty();
 			}
 		}
 		return false;
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	public void smelt() {
+	private void smelt() {
 		ItemStack stack = handlerUp.getStackInSlot(0);
 		OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stack);
 		final ItemStack outputStack = recipe.getOutput();
 		final ItemStack fumesStack = recipe.getFumes();
 		handlerUp.getStackInSlot(0).shrink(1);
 		handlerDown.insertItem(0, outputStack, false);
-		if (!handlerSide.getStackInSlot(1).isEmpty() && random.nextInt(100) <= recipe.getFumeChance()) { // If there are jars
+		if (fumesStack != null && !handlerSide.getStackInSlot(1).isEmpty() && random.nextInt(100) <= recipe.getFumeChance()) { // If there are jars
 			if (handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
 				handlerSide.getStackInSlot(1).shrink(1);
 			}
