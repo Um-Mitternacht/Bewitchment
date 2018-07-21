@@ -3,12 +3,12 @@ sudo: false
 jdk:
 - oraclejdk8
 before_install:
-- chmod +x ./gradlew
-install: "./gradlew setupDecompWorkspace"
+- travis_wait 100 chmod +x ./gradlew
+install: travis_wait 100 "./gradlew setupDecompWorkspace"
 script: 
 - travis_wait 100 ./gradlew build
 before_cache:
-- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- travis_wait 100 rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
   - "$HOME/.gradle/caches/"
