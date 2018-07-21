@@ -4,7 +4,7 @@ jdk:
 - oraclejdk8
 before_install:
 - chmod +x ./gradlew
-install: "./gradlew setupCIWorkspace"
+install: "./gradlew SetupDecompWorkspace"
 script: 
 - travis_wait 100 ./gradlew build
 before_cache:
