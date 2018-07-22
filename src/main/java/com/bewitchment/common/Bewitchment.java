@@ -16,7 +16,6 @@ import com.bewitchment.common.core.capability.simple.SimpleCapability;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.command.*;
-import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.BarkGrow;
@@ -100,7 +99,6 @@ public class Bewitchment {
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
-		ModEvents.init();
 		ModEntities.init();
 		ModSpells.init();
 		ModFortunes.init();

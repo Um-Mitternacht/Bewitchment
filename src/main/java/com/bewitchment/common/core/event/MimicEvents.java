@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class MimicHandler {
+public class MimicEvents {
 	public static final ResourceLocation cap = new ResourceLocation(LibMod.MOD_ID, "mimic_data");
 
 	@SubscribeEvent
