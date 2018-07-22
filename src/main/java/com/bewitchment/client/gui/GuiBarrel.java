@@ -1,9 +1,11 @@
 package com.bewitchment.client.gui;
 
+import java.util.ArrayList;
+
 import com.bewitchment.common.container.ContainerBarrel;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityBarrel;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -15,8 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-
-import java.util.ArrayList;
 
 public class GuiBarrel extends GuiContainer {
 
@@ -86,8 +86,9 @@ public class GuiBarrel extends GuiContainer {
 		} else if (mouseX > guiLeft + 134 && mouseX < guiLeft + 150 && mouseY > guiTop + 20 && mouseY < guiTop + 36) {
 			String text = TextFormatting.YELLOW + I18n.format("tile.barrel.altar.working");
 			if (te.getPowerRequired() == 0) text = TextFormatting.GREEN + I18n.format("tile.barrel.altar.none_required");
-			else if (!te.getCapability(CapabilityMagicPointsUser.CAPABILITY, null).hasValidAltar(te.getWorld()))
-				text = TextFormatting.DARK_RED + I18n.format("tile.barrel.altar.no_altar");
+			// TODO:
+			// else if (!te.getCapability(CapabilityMagicPointsUser.CAPABILITY, null).hasValidAltar(te.getWorld()))
+			// text = TextFormatting.DARK_RED + I18n.format("tile.barrel.altar.no_altar");
 			else if (te.getPowerRequired() == te.getPowerAbsorbed()) text = TextFormatting.GREEN + I18n.format("tile.barrel.altar.done");
 
 			drawHoveringText(text, mouseX - guiLeft, mouseY - guiTop);

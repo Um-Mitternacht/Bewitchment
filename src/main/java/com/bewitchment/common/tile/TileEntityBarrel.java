@@ -1,21 +1,23 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.crafting.BarrelRecipe;
 import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -28,14 +30,9 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-
 @SuppressWarnings({"NullableProblems", "unchecked"})
 public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	private ItemStackHandler handler;
-	private CapabilityMagicPointsUser magicPointsUser;
 	private String recipeName = null;
 	private BarrelRecipe cachedRecipe = null;
 	private int brewingTime = 0;
@@ -43,6 +40,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	private int powerAbsorbed = 0;
 	private int powerRequired = 0;
 	private int timeRequired = 0;
+	
 	private FluidTank internalTank = new FluidTank(Fluid.BUCKET_VOLUME) {
 		@Override
 		protected void onContentsChanged() {
@@ -54,7 +52,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 
 	public TileEntityBarrel() {
 		handler = new ItemStackHandler(7);
-		magicPointsUser = new CapabilityMagicPointsUser();
 		internalTank.setTileEntity(this);
 	}
 
@@ -187,10 +184,11 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	}
 
 	private boolean consumePower(int power) {
-		if (power == 0) return true;
-		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-			return magicPointsUser.getAltar(world).subtract(power);
-		}
+		// TODO
+		// if (power == 0) return true;
+		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
+		// return magicPointsUser.getAltar(world).subtract(power);
+		// }
 		return false;
 	}
 
@@ -238,9 +236,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			return true;
 		} else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
-		} else if (capability == CapabilityMagicPointsUser.CAPABILITY) {
-			//TODO: <rustylocks79> update to new magic points system.
-			return true;
 		}
 		return super.hasCapability(capability, facing);
 	}
@@ -251,9 +246,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(internalTank);
 		} else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handler);
-		} else if (capability == CapabilityMagicPointsUser.CAPABILITY) {
-			//TODO: <rustylocks79> update to new magic points system.
-			return CapabilityMagicPointsUser.CAPABILITY.cast(magicPointsUser);
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -264,7 +256,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		tag.setInteger("type", barrelType);
 		tag.setInteger("powerAbsorbed", powerAbsorbed);
 		tag.setTag("handler", handler.serializeNBT());
-		tag.setTag("magicPointUser", magicPointsUser.serializeNBT());
 		NBTTagCompound fluid = new NBTTagCompound();
 		internalTank.writeToNBT(fluid);
 		tag.setTag("fluid", fluid);
@@ -277,7 +268,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		barrelType = tag.getInteger("type");
 		powerAbsorbed = tag.getInteger("powerAbsorbed");
 		handler.deserializeNBT((NBTTagCompound) tag.getTag("handler"));
-		magicPointsUser.deserializeNBT((NBTTagCompound) tag.getTag("magicPointUser"));
 		internalTank = internalTank.readFromNBT(tag.getCompoundTag("fluid"));
 		if (tag.hasKey("crafting")) {
 			recipeName = tag.getString("crafting");
@@ -290,7 +280,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("type", barrelType);
-		tag.setTag("magicPointUser", magicPointsUser.serializeNBT());
 		if (recipeName != null) {
 			tag.setString("recipeName", recipeName);
 		}
@@ -299,7 +288,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		barrelType = tag.getInteger("type");
-		magicPointsUser.deserializeNBT((NBTTagCompound) tag.getTag("magicPointUser"));
 		if (tag.hasKey("recipeName")) {
 			recipeName = tag.getString("recipeName");
 		} else {

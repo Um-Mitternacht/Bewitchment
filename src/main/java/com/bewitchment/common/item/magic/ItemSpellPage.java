@@ -6,12 +6,15 @@
 
 package com.bewitchment.common.item.magic;
 
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -29,11 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-import javax.annotation.Nullable;
-
 public class ItemSpellPage extends ItemMod {
-
-	CapabilityMagicPointsUser defImpl = CapabilityMagicPointsUser.CAPABILITY.getDefaultInstance();
 
 	public ItemSpellPage(String id) {
 		super(id);
@@ -149,18 +148,17 @@ public class ItemSpellPage extends ItemMod {
 
 			@Override
 			public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-				if (capability == CapabilityMagicPointsUser.CAPABILITY)
+				if (capability == IMagicPowerUsingItem.CAPABILITY) {
 					return true;
+				}
 				return false;
 			}
 
-			@SuppressWarnings("unchecked")
 			@Override
 			public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-				if (capability == CapabilityMagicPointsUser.CAPABILITY)
-					return (T) defImpl;
 				return null;
 			}
+			
 		};
 	}
 

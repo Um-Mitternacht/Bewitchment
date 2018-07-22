@@ -1,23 +1,20 @@
 package com.bewitchment.common.core.command;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
+import com.bewitchment.api.mp.IMagicPowerStorage;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.google.common.collect.Lists;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
+
+import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * This class was created by BerciTheBeast on 19.4.2017.
@@ -59,14 +56,8 @@ public class CommandIncantation implements ICommand {
 			IIncantation incantation = ModIncantations.getCommands().get(command);
 			if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
-				Optional<CapabilityMagicPoints> ienopt = EnergyHandler.getEnergy(player);
-				if (ienopt.isPresent()) {
-					if (true || ienopt.get().get() >= incantation.getCost()) { // TODO fix
-						EnergyHandler.addEnergy(player, -incantation.getCost());
-						incantation.cast(player, args);
-					} else {
-						throw new CommandException("commands.incantation.no_energy", sender.getName());
-					}
+				if (player.getCapability(IMagicPowerStorage.CAPABILITY, null).drain(incantation.getCost())) {
+					incantation.cast(player, args);
 				} else {
 					throw new CommandException("commands.incantation.no_energy", sender.getName());
 				}

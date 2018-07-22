@@ -1,12 +1,18 @@
 package com.bewitchment.common.tile;
 
+import java.util.HashMap;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.mp.DefaultMPStorage;
+import com.bewitchment.api.mp.IMagicPowerStorage;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
-import com.bewitchment.common.core.capability.energy.storage.CapabilityMagicPoints;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -26,29 +32,23 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nullable;
-import java.util.HashMap;
-
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
 	int gain = 0, color = EnumDyeColor.RED.ordinal();
 	int refreshTimer = REFRESH_TIME;
-	private CapabilityMagicPoints magicPoints;
-
+	private DefaultMPStorage storage = new DefaultMPStorage(0);
+	
 	public TileEntityWitchAltar() {
-		magicPoints = new CapabilityMagicPoints();
 	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		//Never called.
 		return false;
 	}
 
 	@Override
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-		//Never called.
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				markDirty();
 				syncToClient();
 			}
-			magicPoints.add(gain);
+			storage.fill(gain);
 		}
 	}
 
@@ -98,7 +98,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				}
 			}
 		maxPower *= multiplier;
-		magicPoints.setMax(maxPower);
+		storage.setMaxAmount(maxPower);
 	}
 
 	private int getGain(BlockPos pos, boolean[] types) {
@@ -210,8 +210,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		if (capability == CapabilityMagicPoints.CAPABILITY) {
-			//TODO: <rustylocks79> update to new magic points system.
+		if (capability == IMagicPowerStorage.CAPABILITY) {
 			return true;
 		}
 		return super.hasCapability(capability, facing);
@@ -220,9 +219,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (capability == CapabilityMagicPoints.CAPABILITY) {
-			//TODO: <rustylocks79> update to new magic points system.
-			return CapabilityMagicPoints.CAPABILITY.cast(magicPoints);
+		if (capability == IMagicPowerStorage.CAPABILITY) {
+			return IMagicPowerStorage.CAPABILITY.cast(storage);
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -230,24 +228,24 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("color", color);
-		tag.setTag("magicPoints", magicPoints.serializeNBT());
+		tag.setTag("mp", storage.saveNBTTag());
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		color = tag.getInteger("color");
-		magicPoints.deserializeNBT((NBTTagCompound) tag.getTag("magicPoints"));
+		storage.loadFromNBT(tag.getCompoundTag("mp"));
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("color", color);
-		tag.setTag("magicPoints", magicPoints.serializeNBT());
+		tag.setTag("mp", storage.saveNBTTag());
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		color = tag.getInteger("color");
-		magicPoints.deserializeNBT((NBTTagCompound) tag.getTag("magicPoints"));
+		storage.loadFromNBT(tag.getCompoundTag("mp"));
 	}
 }

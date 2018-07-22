@@ -1,11 +1,13 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,21 +18,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class TileEntityTarotsTable extends ModTileEntity {
-	private static final String USER_TAG = "magicPointsUser";
 
 	private static final int READ_COST = 2000;
-
-	private CapabilityMagicPointsUser magicPointsUser;
-
-	public TileEntityTarotsTable() {
-		magicPointsUser = new CapabilityMagicPointsUser();
-	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -59,33 +50,19 @@ public class TileEntityTarotsTable extends ModTileEntity {
 
 	private boolean consumePower(int power) {
 		if (power == 0) return true;
-		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-			return magicPointsUser.getAltar(world).subtract(power);
-		}
+		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
+		// return magicPointsUser.getAltar(world).subtract(power);
+		// }
+		// TODO
 		return false;
 	}
 
 	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
-		return super.hasCapability(capability, facing);
-	}
-
-	@Nullable
-	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
-		return super.getCapability(capability, facing);
-	}
-
-	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setTag(USER_TAG, magicPointsUser.serializeNBT());
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
-		magicPointsUser.deserializeNBT((NBTTagCompound) tag.getTag(USER_TAG));
 	}
 
 	@Override

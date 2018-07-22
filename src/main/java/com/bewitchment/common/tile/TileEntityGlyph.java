@@ -1,10 +1,17 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.ritual.AdapterIRitual;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -20,12 +27,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
@@ -82,7 +83,6 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	private int cooldown = 0; // The times that passed since activation
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
-	private CapabilityMagicPointsUser magicPointsUser = null; // The currently bound altar
 
 	// A list of entities for which some rituals behaves differently, depending on the ritual
 	// For instance in Covens there was a ritual that hijacked all tp attempt in an area and
@@ -90,10 +90,6 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	// to safely teleport back to their base. The use is left to who codes the specific ritual.
 	// The adding of entities is done via a specific ritual (Used to be called Identification rit)
 	private ArrayList<Tuple<String, String>> entityList = new ArrayList<Tuple<String, String>>();
-
-	public TileEntityGlyph() {
-		magicPointsUser = new CapabilityMagicPointsUser();
-	}
 
 	public static ArrayList<int[]> getSmall() {
 		return small;
@@ -313,9 +309,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	private boolean consumePower(int power) {
 		if (power == 0) return true;
-		if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-			return magicPointsUser.getAltar(world).subtract(power);
-		}
+		// TODO
+		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
+		// return magicPointsUser.getAltar(world).subtract(power);
+		// }
 		return false;
 	}
 

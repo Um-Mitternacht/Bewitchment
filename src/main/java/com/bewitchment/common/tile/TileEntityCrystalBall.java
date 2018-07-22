@@ -1,9 +1,15 @@
 package com.bewitchment.common.tile;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import com.bewitchment.common.core.capability.energy.user.CapabilityMagicPointsUser;
 import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,19 +20,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class TileEntityCrystalBall extends ModTileEntity {
-	private static final String USER_TAG = "magicPointsUser";
-
-	private CapabilityMagicPointsUser magicPointsUser;
-
-	public TileEntityCrystalBall() {
-		this.magicPointsUser = new CapabilityMagicPointsUser();
-	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -41,11 +35,12 @@ public class TileEntityCrystalBall extends ModTileEntity {
 	}
 
 	public boolean fortune(EntityPlayer reader) {
-		if (magicPointsUser.consumePower(5000, this.world, this.pos)) {
+		// TODO
+		// if (magicPointsUser.consumePower(5000, this.world, this.pos)) {
 			return readFortune(reader, null);
-		}
-		reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
-		return false;
+		// }
+		// reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
+		// return false;
 	}
 
 	@SuppressWarnings({"deprecation", "null"})
@@ -101,16 +96,6 @@ public class TileEntityCrystalBall extends ModTileEntity {
 	}
 
 	@Override
-	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag(USER_TAG, magicPointsUser.serializeNBT());
-	}
-
-	@Override
-	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		magicPointsUser.deserializeNBT((NBTTagCompound) tag.getTag(USER_TAG));
-	}
-
-	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		// NO-OP
 	}
@@ -118,5 +103,15 @@ public class TileEntityCrystalBall extends ModTileEntity {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		// NO-OP
+	}
+
+	@Override
+	protected void writeModSyncDataNBT(NBTTagCompound tag) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void readModSyncDataNBT(NBTTagCompound tag) {
+		// TODO Auto-generated method stub
 	}
 }
