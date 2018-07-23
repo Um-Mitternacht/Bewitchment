@@ -6,12 +6,12 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public class PlayerMPStorage implements IMagicPowerContainer {
+public class PlayerMPContainer implements IMagicPowerContainer {
 	
 	WeakReference<EntityPlayer> player;
 	int amount = 0, baseMaxAmount = 800;
 	
-	public PlayerMPStorage(EntityPlayer p) {
+	public PlayerMPContainer(EntityPlayer p) {
 		player = new WeakReference<EntityPlayer>(p);
 	}
 

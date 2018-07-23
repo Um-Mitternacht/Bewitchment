@@ -2,13 +2,8 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
-import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
-import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
+
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,14 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class MimicEvents {
-	public static final ResourceLocation cap = new ResourceLocation(LibMod.MOD_ID, "mimic_data");
-
-	@SubscribeEvent
-	public static void onAttach(AttachCapabilitiesEvent<Entity> evt) {
-		if (evt.getObject() instanceof EntityPlayer) {
-			evt.addCapability(cap, new MimicDataProvider());
-		}
-	}
 
 	@SubscribeEvent
 	public static void onChatMessage(ServerChatEvent event) {

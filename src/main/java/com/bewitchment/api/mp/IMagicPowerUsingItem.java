@@ -6,7 +6,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 
 public interface IMagicPowerUsingItem {
 	/**
@@ -16,9 +15,6 @@ public interface IMagicPowerUsingItem {
 	public static final Capability<IMagicPowerUsingItem> CAPABILITY = null;
 	
 	public static class Storage implements IStorage<IMagicPowerUsingItem> {
-		
-		protected static final IMagicPowerUsingItem INSTANCE = new IMagicPowerUsingItem() {
-		};
 		
 		@Override
 		public NBTBase writeNBT(Capability<IMagicPowerUsingItem> capability, IMagicPowerUsingItem instance, EnumFacing side) {
@@ -30,9 +26,4 @@ public interface IMagicPowerUsingItem {
 		}
 		
 	}
-	
-	static void init() {
-		CapabilityManager.INSTANCE.register(IMagicPowerUsingItem.class, new Storage(), () -> Storage.INSTANCE);
-	}
-	
 }

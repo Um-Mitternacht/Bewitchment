@@ -3,9 +3,8 @@ package com.bewitchment.common.core.event;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -17,13 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class EnergyEvents {
 
-	@SubscribeEvent
-	public static void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
-		if (event.getObject() instanceof EntityPlayer) {
-			// event.addCapability(new ResourceLocation(LibMod.MOD_ID, "M"), new MagicPointsProvider()); TODO
-		}
-	}
-
 	@SuppressWarnings("ConstantConditions")
 	@SubscribeEvent
 	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
@@ -32,26 +24,26 @@ public class EnergyEvents {
 		}
 	}
 
-	// TODO:
-	// @SubscribeEvent
-	// public static void playerUpdate(LivingEvent.LivingUpdateEvent event) {
-	// if (!event.getEntity().world.isRemote && event.getEntity() instanceof EntityPlayerMP) {
-	// final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-	// final Optional<CapabilityMagicPoints> optional = EnergyHandler.getEnergy(player);
-	// if (optional.isPresent()) {
-	// final CapabilityMagicPoints energy = optional.get();
-	// energyRegen(player, energy);
-	// }
-	// }
-	// }
-	//
-	// private static void energyRegen(EntityPlayerMP player, CapabilityMagicPoints energy) {
-	// if (energy.getRegenTime() == -1) return;
-	// if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
-	// energy.set(energy.get() + energy.getRegenBurst());
-	// energy.tickReset();
-	//
-	// energy.syncTo(player);
-	// }
-	// }
+	@SubscribeEvent
+	public static void playerUpdate(LivingEvent.LivingUpdateEvent event) {
+		if (!event.getEntity().world.isRemote && event.getEntity() instanceof EntityPlayerMP) {
+			final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
+			final IMagicPowerContainer energy = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			if (energy.getAmount() < energy.getMaxAmount() && player.ticksExisted % getRegenTime(player) == 0) {
+				energy.fill(getRegenBurst(player));
+			}
+			
+			// energy.syncTo(player); TODO
+		}
+	}
+	
+	private static int getRegenTime(EntityPlayerMP player) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	private static int getRegenBurst(EntityPlayerMP player) {
+		// TODO Auto-generated method stub
+		return Integer.MAX_VALUE;
+	}
 }
