@@ -1,7 +1,12 @@
 package com.bewitchment.api.mp;
 
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 
 public interface IMagicPowerUsingItem {
 	/**
@@ -9,5 +14,25 @@ public interface IMagicPowerUsingItem {
 	 */
 	@CapabilityInject(IMagicPowerUsingItem.class)
 	public static final Capability<IMagicPowerUsingItem> CAPABILITY = null;
+	
+	public static class Storage implements IStorage<IMagicPowerUsingItem> {
+		
+		protected static final IMagicPowerUsingItem INSTANCE = new IMagicPowerUsingItem() {
+		};
+		
+		@Override
+		public NBTBase writeNBT(Capability<IMagicPowerUsingItem> capability, IMagicPowerUsingItem instance, EnumFacing side) {
+			return new NBTTagCompound();
+		}
+		
+		@Override
+		public void readNBT(Capability<IMagicPowerUsingItem> capability, IMagicPowerUsingItem instance, EnumFacing side, NBTBase nbt) {
+		}
+		
+	}
+	
+	static void init() {
+		CapabilityManager.INSTANCE.register(IMagicPowerUsingItem.class, new Storage(), () -> Storage.INSTANCE);
+	}
 	
 }

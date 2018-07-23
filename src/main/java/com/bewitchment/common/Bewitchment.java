@@ -5,6 +5,7 @@ import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -12,6 +13,7 @@ import com.bewitchment.common.cauldron.ModBrewModifiers;
 import com.bewitchment.common.core.ModLootTables;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+import com.bewitchment.common.core.capability.infusion.InfusionDefaultImplementation;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
@@ -85,6 +87,8 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(this);
 		ApiInstance.initAPI();
 		CapabilityDivination.init();
+		InfusionDefaultImplementation.init();
+		IMagicPowerUsingItem.init();
 		CapabilityTransformationData.init();
 		CapabilityBloodReserve.init();
 		CapabilityCauldronTeleport.init();
