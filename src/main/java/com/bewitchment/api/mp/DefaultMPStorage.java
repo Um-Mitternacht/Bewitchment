@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author zabi94
  *
  */
-public class DefaultMPStorage implements IMagicPowerStorage {
+public class DefaultMPStorage implements IMagicPowerContainer {
 	
 	int amount = 0;
 	int maxAmount;

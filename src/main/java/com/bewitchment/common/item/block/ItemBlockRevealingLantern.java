@@ -8,7 +8,7 @@ package com.bewitchment.common.item.block;
 
 import java.util.List;
 
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
@@ -81,7 +81,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
 		if (lit && !player.isSneaking()) {
-			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerStorage.CAPABILITY, null).drain(100)) {
+			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(100)) {
 				world.setBlockState(pos.offset(side), ModBlocks.will_o_wisp.getDefaultState(), 3);
 				return EnumActionResult.SUCCESS;
 			}

@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ public class EnergyEvents {
 	@SubscribeEvent
 	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
 		if (event.isWasDeath()) {
-			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerStorage.CAPABILITY);
+			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
 		}
 	}
 

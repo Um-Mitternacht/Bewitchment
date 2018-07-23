@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.google.common.collect.Lists;
 
@@ -56,7 +56,7 @@ public class CommandIncantation implements ICommand {
 			IIncantation incantation = ModIncantations.getCommands().get(command);
 			if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
-				if (player.getCapability(IMagicPowerStorage.CAPABILITY, null).drain(incantation.getCost())) {
+				if (player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(incantation.getCost())) {
 					incantation.cast(player, args);
 				} else {
 					throw new CommandException("commands.incantation.no_energy", sender.getName());

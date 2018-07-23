@@ -5,7 +5,7 @@ import java.util.HashMap;
 import javax.annotation.Nullable;
 
 import com.bewitchment.api.mp.DefaultMPStorage;
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
@@ -210,7 +210,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerStorage.CAPABILITY) {
+		if (capability == IMagicPowerContainer.CAPABILITY) {
 			return true;
 		}
 		return super.hasCapability(capability, facing);
@@ -219,8 +219,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerStorage.CAPABILITY) {
-			return IMagicPowerStorage.CAPABILITY.cast(storage);
+		if (capability == IMagicPowerContainer.CAPABILITY) {
+			return IMagicPowerContainer.CAPABILITY.cast(storage);
 		}
 		return super.getCapability(capability, facing);
 	}

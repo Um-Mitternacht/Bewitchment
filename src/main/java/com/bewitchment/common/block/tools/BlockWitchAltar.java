@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
@@ -253,7 +253,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			} else if (worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
-					IMagicPowerStorage magicPoints = tea.getCapability(IMagicPowerStorage.CAPABILITY, null);
+					IMagicPowerContainer magicPoints = tea.getCapability(IMagicPowerContainer.CAPABILITY, null);
 					playerIn.sendStatusMessage(new TextComponentString(magicPoints.getAmount() + "/" + magicPoints.getMaxAmount()), true);
 					return true;
 				} else if (state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {

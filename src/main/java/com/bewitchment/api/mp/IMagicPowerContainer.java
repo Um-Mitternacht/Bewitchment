@@ -10,10 +10,10 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
  * 
  * @author zabi94
  */
-public interface IMagicPowerStorage {
+public interface IMagicPowerContainer {
 	
-	@CapabilityInject(IMagicPowerStorage.class)
-	public static final Capability<IMagicPowerStorage> CAPABILITY = null;
+	@CapabilityInject(IMagicPowerContainer.class)
+	public static final Capability<IMagicPowerContainer> CAPABILITY = null;
 	
 	public int getAmount();
 	

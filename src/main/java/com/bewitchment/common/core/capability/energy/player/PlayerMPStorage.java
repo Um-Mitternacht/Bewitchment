@@ -2,11 +2,11 @@ package com.bewitchment.common.core.capability.energy.player;
 
 import java.lang.ref.WeakReference;
 
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public class PlayerMPStorage implements IMagicPowerStorage {
+public class PlayerMPStorage implements IMagicPowerContainer {
 	
 	WeakReference<EntityPlayer> player;
 	int amount = 0, baseMaxAmount = 800;

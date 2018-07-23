@@ -2,7 +2,7 @@ package com.bewitchment.client.core.event;
 
 import org.lwjgl.opengl.GL11;
 
-import com.bewitchment.api.mp.IMagicPowerStorage;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.handler.ConfigHandler;
@@ -44,7 +44,7 @@ public class EnergyHUD {
 	public void onTick(TickEvent.ClientTickEvent event) {
 		if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().player != null) {
 			
-			IMagicPowerStorage storage = Minecraft.getMinecraft().player.getCapability(IMagicPowerStorage.CAPABILITY, null);
+			IMagicPowerContainer storage = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
 			if (lastPulsed > 0)
 				lastPulsed--;
 			boolean energyChanged = (oldEnergy != storage.getAmount());
@@ -106,7 +106,7 @@ public class EnergyHUD {
 			Minecraft mc = Minecraft.getMinecraft();
 			TextureManager manager = mc.getTextureManager();
 			
-			IMagicPowerStorage energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerStorage.CAPABILITY, null);
+			IMagicPowerContainer energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
 			
 			GlStateManager.pushMatrix();
 			GlStateManager.enableBlend();
