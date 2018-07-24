@@ -2,6 +2,7 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.common.core.capability.divination.DivinationProvider;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainerProvider;
+import com.bewitchment.common.core.capability.infusion.InfusionProvider;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
 import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
 import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
@@ -23,6 +24,7 @@ public class CapabilityAttacher {
 	public static final ResourceLocation BLOOD_TAG = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
 	public static final ResourceLocation MIMIC_TAG = new ResourceLocation(LibMod.MOD_ID, "mimic_data");
 	public static final ResourceLocation TRANSFORMATION_TAG = new ResourceLocation(LibMod.MOD_ID, "transformations");
+	public static final ResourceLocation INFUSION_TAG = new ResourceLocation(LibMod.MOD_ID, "infusion");
 	
 	@SubscribeEvent
 	public static void attach(AttachCapabilitiesEvent<Entity> evt) {
@@ -36,6 +38,7 @@ public class CapabilityAttacher {
 			evt.addCapability(MP_PLAYER_TAG, new PlayerMPContainerProvider());
 			evt.addCapability(MIMIC_TAG, new MimicDataProvider());
 			evt.addCapability(TRANSFORMATION_TAG, new TransformationDataProvider());
+			evt.addCapability(INFUSION_TAG, new InfusionProvider());
 		}
 	}
 	
