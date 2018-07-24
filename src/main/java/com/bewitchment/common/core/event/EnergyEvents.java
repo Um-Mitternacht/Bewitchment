@@ -39,11 +39,11 @@ public class EnergyEvents {
 	
 	private static int getRegenTime(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 100;
 	}
 	
 	private static int getRegenBurst(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
-		return Integer.MAX_VALUE;
+		return 100;
 	}
 }

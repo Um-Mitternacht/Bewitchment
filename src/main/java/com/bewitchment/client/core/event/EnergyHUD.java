@@ -2,6 +2,7 @@ package com.bewitchment.client.core.event;
 
 import org.lwjgl.opengl.GL11;
 
+import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
@@ -107,6 +108,7 @@ public class EnergyHUD {
 			TextureManager manager = mc.getTextureManager();
 			
 			IMagicPowerContainer energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			IInfusionCapability cap = Minecraft.getMinecraft().player.getCapability(IInfusionCapability.CAPABILITY, null);
 			
 			GlStateManager.pushMatrix();
 			GlStateManager.enableBlend();
@@ -152,7 +154,7 @@ public class EnergyHUD {
 				GlStateManager.color(1F, 1F, 1F, visible);
 			}
 			
-			// manager.bindTexture(energy.getType().getTexture()); TODO add the infusion capability
+			manager.bindTexture(cap.getType().getTexture());
 			renderTexture(x, y, width, height, 0, 1);
 			
 			int textColor = 0x990066;
