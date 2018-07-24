@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import javax.annotation.Nullable;
 
-import com.bewitchment.api.mp.DefaultMPStorage;
+import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
@@ -37,7 +37,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
 	int gain = 0, color = EnumDyeColor.RED.ordinal();
 	int refreshTimer = REFRESH_TIME;
-	private DefaultMPStorage storage = new DefaultMPStorage(0);
+	private DefaultMPContainer storage = new DefaultMPContainer(0);
 	
 	public TileEntityWitchAltar() {
 	}
