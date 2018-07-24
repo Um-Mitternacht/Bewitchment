@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.capability.mimic;
 
+import com.bewitchment.common.Bewitchment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -25,34 +27,45 @@ public class CapabilityMimicData implements IMimicData {
 		CapabilityManager.INSTANCE.register(IMimicData.class, new MimicDataStorage(), CapabilityMimicData::new);
 	}
 
+	@Override
 	public boolean isMimicking() {
 		return mimicking;
 	}
 
-	public void setMimicking(boolean mimicking) {
-		this.mimicking = mimicking;
+	@Override
+	public void setMimicking(boolean mimicking, EntityPlayer p) {
+		setMimickingDirect(mimicking);
+		if (!mimicking) {
+			Bewitchment.proxy.stopMimicking(p);
+		}
 	}
 
+	@Override
 	public UUID getMimickedPlayerID() {
 		return mimickedPlayerID;
 	}
 
+	@Override
 	public void setMimickedPlayerID(UUID mimickedPlayerID) {
 		this.mimickedPlayerID = mimickedPlayerID;
 	}
 
+	@Override
 	public String getMimickedPlayerName() {
 		return mimickedPlayerName;
 	}
 
+	@Override
 	public void setMimickedPlayerName(String mimickedPlayerName) {
 		this.mimickedPlayerName = mimickedPlayerName;
 	}
-
+	
+	/**
+	 * Calling this won't call cleanup methods, and should only be used when restoring data from NBT
+	 * Prefer the use of {@link IMimicData#setMimicking(boolean, EntityPlayer)}
+	 */
 	@Override
-	public void copyFields(IMimicData data) {
-		this.setMimicking(data.isMimicking());
-		this.setMimickedPlayerID(data.getMimickedPlayerID());
-		this.setMimickedPlayerName(data.getMimickedPlayerName());
+	public void setMimickingDirect(boolean mimicking) {
+		this.mimicking = mimicking;
 	}
 }

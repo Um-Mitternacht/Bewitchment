@@ -1,78 +1,49 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.capability.IEnergy;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
-import com.bewitchment.common.core.capability.energy.EnergyProvider;
-import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.common.core.capability.CapabilityUtils;
 
-import java.util.Optional;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * This class was created by Arekkuusu on 20/04/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+@Mod.EventBusSubscriber
 public class EnergyEvents {
-
-	@SubscribeEvent
-	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
-		if (event.getObject() instanceof EntityPlayer) {
-			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "EnergyData"), new EnergyProvider());
-		}
-	}
 
 	@SuppressWarnings("ConstantConditions")
 	@SubscribeEvent
-	public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
-		final EntityPlayer oldPlayer = event.getOriginal();
-		final EntityPlayer newPlayer = event.getEntityPlayer();
-
-		if (event.isWasDeath() && oldPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null) && newPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null)) {
-			final IEnergy oldCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
-			final IEnergy newCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
-			newCap.set(oldCap.get());
-			newCap.setMax(oldCap.getMax());
-			newCap.setRegen(oldCap.getRegenTime(), oldCap.getRegenBurst());
-			newCap.setUses(oldCap.getUses());
+	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
+		if (event.isWasDeath()) {
+			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
 		}
 	}
 
 	@SubscribeEvent
-	public void onWorldJoin(EntityJoinWorldEvent event) {
-		if (event.getEntity() instanceof EntityPlayerMP) {
-			EntityPlayerMP entity = (EntityPlayerMP) event.getEntity();
-			Optional<IEnergy> optional = EnergyHandler.getEnergy(entity);
-			optional.ifPresent(iEnergy -> iEnergy.syncTo(entity));
-		}
-	}
-
-	@SubscribeEvent
-	public void playerUpdate(LivingEvent.LivingUpdateEvent event) {
+	public static void playerUpdate(LivingEvent.LivingUpdateEvent event) {
 		if (!event.getEntity().world.isRemote && event.getEntity() instanceof EntityPlayerMP) {
 			final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-			final Optional<IEnergy> optional = EnergyHandler.getEnergy(player);
-			if (optional.isPresent()) {
-				final IEnergy energy = optional.get();
-				energyRegen(player, energy);
+			final IMagicPowerContainer energy = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			if (energy.getAmount() < energy.getMaxAmount() && player.ticksExisted % getRegenTime(player) == 0) {
+				energy.fill(getRegenBurst(player));
 			}
+			
+			// energy.syncTo(player); TODO
 		}
 	}
-
-	private void energyRegen(EntityPlayerMP player, IEnergy energy) {
-		if (energy.getRegenTime() == -1) return;
-		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
-			energy.set(energy.get() + energy.getRegenBurst());
-			energy.tickReset();
-
-			energy.syncTo(player);
-		}
+	
+	private static int getRegenTime(EntityPlayerMP player) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	private static int getRegenBurst(EntityPlayerMP player) {
+		// TODO Auto-generated method stub
+		return Integer.MAX_VALUE;
 	}
 }

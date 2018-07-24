@@ -1,9 +1,15 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.tile.TileEntityWitchAltar;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.EnumPushReaction;
@@ -18,18 +24,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
@@ -254,7 +253,8 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			} else if (worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
-					playerIn.sendStatusMessage(new TextComponentString(tea.getAltarPower() + "/" + tea.getMaxPower() + " (x" + tea.getGain() + ")"), true);
+					IMagicPowerContainer magicPoints = tea.getCapability(IMagicPowerContainer.CAPABILITY, null);
+					playerIn.sendStatusMessage(new TextComponentString(magicPoints.getAmount() + "/" + magicPoints.getMaxAmount()), true);
 					return true;
 				} else if (state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {
 					for (EnumFacing h : EnumFacing.HORIZONTALS) {

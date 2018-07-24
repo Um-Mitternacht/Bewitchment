@@ -1,6 +1,8 @@
 package com.bewitchment.common.tile;
 
+import com.bewitchment.common.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -37,64 +39,55 @@ public class TileEntityGemBowl extends ModTileEntity {
 		direction = EnumFacing.UP;
 	}
 
-	public void onBowlRightClicked(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) {
-			ItemStack held = playerIn.getHeldItem(hand);
-			if (held.isEmpty()) {
-				if (this.hasGem()) {
-					playerIn.setHeldItem(hand, gem);
-					gem = new ItemStack(Items.AIR);
-					direction = EnumFacing.UP;
-					this.markDirty();
-					this.syncToClient();
-				}
-			} else {
-				for (String acceptedName : ACCEPTED_ORE_NAMES) {
-					for (int oreID : OreDictionary.getOreIDs(held)) {
-						if (OreDictionary.getOreName(oreID).equals(acceptedName)) {
-							ItemStack previousGem = gem;
-							if (held.getCount() == 1) {
-								gem = held;
-								playerIn.setHeldItem(hand, previousGem);
-							} else {
-								gem = new ItemStack(held.getItem(), 1, held.getMetadata());
-								held.setCount(held.getCount() - 1);
-								if (!previousGem.isEmpty()) {
-									ItemHandlerHelper.giveItemToPlayer(playerIn, previousGem);
-								}
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (playerIn.isSneaking()) {
+			return false;
+		}
+		if (worldIn.isRemote) {
+			return true;
+		}
+
+		ItemStack held = playerIn.getHeldItem(hand);
+		if (held.isEmpty()) {
+			if (this.hasGem()) {
+				playerIn.setHeldItem(hand, gem);
+				gem = new ItemStack(Items.AIR);
+				direction = EnumFacing.UP;
+				this.markDirty();
+				this.syncToClient();
+			}
+		} else {
+			for (String acceptedName : ACCEPTED_ORE_NAMES) {
+				for (int oreID : OreDictionary.getOreIDs(held)) {
+					if (OreDictionary.getOreName(oreID).equals(acceptedName)) {
+						ItemStack previousGem = gem;
+						if (held.getCount() == 1) {
+							gem = held;
+							playerIn.setHeldItem(hand, previousGem);
+						} else {
+							gem = new ItemStack(held.getItem(), 1, held.getMetadata());
+							held.setCount(held.getCount() - 1);
+							if (!previousGem.isEmpty()) {
+								ItemHandlerHelper.giveItemToPlayer(playerIn, previousGem);
 							}
-							direction = EnumFacing.fromAngle(playerIn.rotationYaw).getOpposite();
-							this.markDirty();
-							this.syncToClient();
 						}
+						direction = EnumFacing.fromAngle(playerIn.rotationYaw).getOpposite();
+						this.markDirty();
+						this.syncToClient();
 					}
 				}
 			}
 		}
+		return true;
 	}
 
 	@Override
-	void readAllModDataNBT(NBTTagCompound cmp) {
-		gem = new ItemStack(cmp.getCompoundTag(GEM_TAG_NAME));
-		direction = EnumFacing.byName(cmp.getString(DIRECTION_TAG_NAME));
-	}
-
-	@Override
-	void writeAllModDataNBT(NBTTagCompound cmp) {
-		cmp.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
-		cmp.setString(DIRECTION_TAG_NAME, direction.getName());
-	}
-
-	@Override
-	void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
-		tag.setString(DIRECTION_TAG_NAME, direction.getName());
-	}
-
-	@Override
-	void readModSyncDataNBT(NBTTagCompound tag) {
-		gem = new ItemStack(tag.getCompoundTag(GEM_TAG_NAME));
-		direction = EnumFacing.byName(tag.getString(DIRECTION_TAG_NAME));
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+		EntityItem item = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), gem);
+		worldIn.spawnEntity(item);
+		EntityItem block = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.gem_bowl));
+		worldIn.spawnEntity(block);
 	}
 
 	public boolean hasGem() {
@@ -421,5 +414,29 @@ public class TileEntityGemBowl extends ModTileEntity {
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	protected void readAllModDataNBT(NBTTagCompound cmp) {
+		gem = new ItemStack(cmp.getCompoundTag(GEM_TAG_NAME));
+		direction = EnumFacing.byName(cmp.getString(DIRECTION_TAG_NAME));
+	}
+
+	@Override
+	protected void writeAllModDataNBT(NBTTagCompound cmp) {
+		cmp.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
+		cmp.setString(DIRECTION_TAG_NAME, direction.getName());
+	}
+
+	@Override
+	protected void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
+		tag.setString(DIRECTION_TAG_NAME, direction.getName());
+	}
+
+	@Override
+	protected void readModSyncDataNBT(NBTTagCompound tag) {
+		gem = new ItemStack(tag.getCompoundTag(GEM_TAG_NAME));
+		direction = EnumFacing.byName(tag.getString(DIRECTION_TAG_NAME));
 	}
 }

@@ -3,6 +3,7 @@ package com.bewitchment.client.core;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
@@ -17,7 +18,6 @@ import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.GuiHandler;
@@ -32,6 +32,7 @@ import com.bewitchment.common.tile.TileEntityCauldron;
 import com.bewitchment.common.tile.TileEntityGemBowl;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -110,7 +111,7 @@ public class ClientProxy implements ISidedProxy {
 		blocks.registerBlockColorHandler(new IBlockColor() {
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				EnumGlyphType type = state.getValue(BlockCircleGlyph.TYPE);
+				EnumGlyphType type = state.getValue(StateProperties.GLYPH_TYPE);
 				switch (type) {
 					case ENDER:
 						return 0x770077;
@@ -248,5 +249,10 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void setupHealthRenderer(boolean overrideHealth) {
 		HealthDisplayOverride.set(overrideHealth);
+	}
+	
+	@Override
+	public void stopMimicking(EntityPlayer p) {
+		MimicEventHandler.stopMimicking((AbstractClientPlayer) p);
 	}
 }

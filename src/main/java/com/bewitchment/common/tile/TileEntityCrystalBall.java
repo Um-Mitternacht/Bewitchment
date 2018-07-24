@@ -1,37 +1,46 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.divination.IFortune;
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import com.bewitchment.common.divination.Fortune;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentTranslation;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.divination.IFortune;
+import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+import com.bewitchment.common.divination.Fortune;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+
 public class TileEntityCrystalBall extends ModTileEntity {
 
-	private TileEntityWitchAltar te = null;
-
 	@Override
-	protected void readAllModDataNBT(NBTTagCompound tag) {
-		// NO-OP
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (hand == EnumHand.OFF_HAND) return false;
+		if (worldIn.isRemote) return true;
+		return fortune(playerIn);
 	}
 
 	@Override
-	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		// NO-OP
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+
 	}
 
 	public boolean fortune(EntityPlayer reader) {
-		if (consumePower(5000, false)) {
+		// TODO
+		// if (magicPointsUser.consumePower(5000, this.world, this.pos)) {
 			return readFortune(reader, null);
-		}
-		reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
-		return false;
+		// }
+		// reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
+		// return false;
 	}
 
 	@SuppressWarnings({"deprecation", "null"})
@@ -73,21 +82,36 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		return true;
 	}
 
-	private boolean consumePower(int power, boolean simulate) {
-		if (power == 0) return true;
-		if (te == null || te.isInvalid())
-			te = TileEntityWitchAltar.getClosest(pos, world);
-		if (te == null) return false;
-		return te.consumePower(power, simulate);
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+		//TODO: <rustylocks79> update to new magic points system.
+		return super.hasCapability(capability, facing);
+	}
+
+	@Nullable
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+		//TODO: <rustylocks79> update to new magic points system.
+		return super.getCapability(capability, facing);
 	}
 
 	@Override
-	void writeModSyncDataNBT(NBTTagCompound tag) {
-
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		// NO-OP
 	}
 
 	@Override
-	void readModSyncDataNBT(NBTTagCompound tag) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		// NO-OP
+	}
 
+	@Override
+	protected void writeModSyncDataNBT(NBTTagCompound tag) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void readModSyncDataNBT(NBTTagCompound tag) {
+		// TODO Auto-generated method stub
 	}
 }

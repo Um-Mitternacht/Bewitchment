@@ -1,9 +1,8 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityTarotsTable;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,7 +21,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockTarotTable extends BlockMod implements ITileEntityProvider {
+public class BlockTarotTable extends BlockModTileEntity {
 
 	public BlockTarotTable() {
 		super(LibBlockName.TAROT_TABLE, Material.ROCK);

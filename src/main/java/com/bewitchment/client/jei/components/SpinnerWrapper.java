@@ -1,6 +1,6 @@
 package com.bewitchment.client.jei.components;
 
-import com.bewitchment.common.spinning.SpinningThreadRecipe;
+import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ public class SpinnerWrapper implements IRecipeWrapper {
 
 	public SpinnerWrapper(SpinningThreadRecipe recipe) {
 		input = recipe.getInputs();
-		output = recipe.getResult();
+		output = recipe.getOutput();
 	}
 
 	@Override

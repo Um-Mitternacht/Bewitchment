@@ -26,7 +26,7 @@ public class PotionRevealing extends BrewMod {
 			if (entityLivingBaseIn.hasCapability(CapabilityMimicData.CAPABILITY, null)) {
 				final IMimicData capability = entityLivingBaseIn.getCapability(CapabilityMimicData.CAPABILITY, null);
 				if (capability.isMimicking()) {
-					capability.setMimicking(false);
+					capability.setMimicking(false, (EntityPlayer) entityLivingBaseIn);
 				}
 				NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged((EntityPlayer) entityLivingBaseIn));
 			}

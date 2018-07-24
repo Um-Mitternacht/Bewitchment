@@ -23,12 +23,14 @@ public class BlockSacrosanctGround extends BlockMod {
 		setHardness(1F);
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return FULL_BLOCK_AABB;
 	}
 
 
+	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
 		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT) {

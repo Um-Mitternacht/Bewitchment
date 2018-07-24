@@ -7,7 +7,6 @@ import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
-import com.bewitchment.common.block.misc.BlockGemBowl;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
