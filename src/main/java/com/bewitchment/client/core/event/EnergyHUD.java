@@ -157,14 +157,14 @@ public class EnergyHUD {
 			manager.bindTexture(cap.getType().getTexture());
 			renderTexture(x, y, width, height, 0, 1);
 			
-			int textColor = 0x990066;
-			if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
-				int alpha = (int) (visible * 255);
-				textColor = alpha << 24 | 0x990066;
-			}
-			
-			String text = "E: " + energy.getAmount();
-			mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
+			// int textColor = 0x990066;
+			// if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
+			// int alpha = (int) (visible * 255);
+			// textColor = alpha << 24 | 0x990066;
+			// }
+			//
+			// String text = "E: " + energy.getAmount();
+			// mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
