@@ -2,6 +2,7 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.core.capability.CapabilityUtils;
+import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergySync;
 
@@ -39,10 +40,11 @@ public class EnergyEvents {
 	public static void playerUpdate(LivingEvent.LivingUpdateEvent event) {
 		if (event.getEntity() instanceof EntityPlayerMP) {
 			final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-			final IMagicPowerContainer energy = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-			if (energy.getAmount() < energy.getMaxAmount() && player.ticksExisted % (10 * getRegenTime(player)) == 0) {
+			final PlayerMPContainer energy = (PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			if (energy.isDirty() || energy.getAmount() < energy.getMaxAmount() && player.ticksExisted % (10 * getRegenTime(player)) == 0) {
 				energy.fill(getRegenBurst(player));
 				NetworkHandler.HANDLER.sendTo(new EnergySync(energy.getAmount(), energy.getMaxAmount()), player);
+				energy.setClean();
 			}
 		}
 	}

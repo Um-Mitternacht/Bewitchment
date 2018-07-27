@@ -1,6 +1,5 @@
 package com.bewitchment.common.core.capability.energy.player;
 
-import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 
 import net.minecraft.nbt.NBTBase;
@@ -10,7 +9,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 public class PlayerMPContainerProvider implements ICapabilitySerializable<NBTBase> {
 	
-	private IMagicPowerContainer container = new DefaultMPContainer(800);
+	private IMagicPowerContainer container = new PlayerMPContainer();
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
