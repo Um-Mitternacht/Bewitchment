@@ -101,7 +101,7 @@ public class ItemSpellPage extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		ISpell s = getSpellFromItemStack(playerIn.getHeldItem(handIn));
-		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
+		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn) && playerIn.getCapability(IMagicPowerContainer.CAPABILITY, null).getAmount() >= s.getCost()) {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 		}

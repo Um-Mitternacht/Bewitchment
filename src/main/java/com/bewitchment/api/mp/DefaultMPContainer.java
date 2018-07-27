@@ -31,7 +31,7 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 	@Override
 	public boolean fill(int in) {
 		if (getAmount() < getMaxAmount()) {
-			setAmount(getAmount() + in);
+			setAmount(Math.min(getAmount() + in, getMaxAmount()));
 			return true;
 		}
 		return false;
