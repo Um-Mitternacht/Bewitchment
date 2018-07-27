@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -14,6 +16,7 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -38,8 +41,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
 
-import java.util.UUID;
-
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {
 
@@ -62,15 +63,30 @@ public class VampireAbilityHandler {
 			if (data.getType() == DefaultTransformations.VAMPIRE) {
 				if (evt.getSource() == SUN_DAMAGE) {
 					evt.setCanceled(false); // No immunity for you
-					return;
+					return; // No multipliers for sun
 				}
 				float multiplier = getMultiplier(evt); // A multiplier greater 1 makes the damage not be reduced
-				evt.setCanceled(false); // No immunity for vampires
+				evt.setCanceled(false); // No forms of immunity for vampires
+				evt.setAmount(lastDamage); // No reductions either
 				if (multiplier > 1) {
 					evt.setAmount(evt.getAmount() * multiplier);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
-					evt.setAmount(evt.getAmount() * 0.1f);
+					evt.setAmount(evt.getAmount() * (1f - 0.1f * data.getLevel()));
 				}
+			}
+		}
+	}
+	
+	// TODO Check: can two different living hurt events run down the subscriber list in parallel?
+	// If so this doesn't work and one entity might end up receiving the damage amount meant for someone else in some cases
+	public static float lastDamage = 0;
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+	public static void dropInvalidGear(LivingHurtEvent evt) {
+		if (!evt.getEntity().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
+			ITransformationData data = evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null);
+			if (data.getType() == DefaultTransformations.VAMPIRE) {
+				lastDamage = evt.getAmount();
 			}
 		}
 	}
