@@ -35,6 +35,7 @@ public final class NetworkHandler {
 		registerSimpleMessage(EntityInternalBloodChanged.class, next(), Side.CLIENT);
 		registerSimpleMessage(NightVisionStatus.class, next(), Side.CLIENT);
 		registerSimpleMessage(WitchfireFlame.class, next(), Side.CLIENT);
+		registerSimpleMessage(EnergySync.class, next(), Side.CLIENT);
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
 		registerSimpleMessage(WitchFireTP.class, next(), Side.SERVER);

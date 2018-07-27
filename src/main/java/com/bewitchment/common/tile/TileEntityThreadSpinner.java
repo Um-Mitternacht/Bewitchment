@@ -3,6 +3,7 @@ package com.bewitchment.common.tile;
 import javax.annotation.Nullable;
 
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
+import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
@@ -36,6 +37,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	private SpinningThreadRecipe loadedRecipe;
 	private String customName = null;
 	private int tickProcessed = 0;
+	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	public TileEntityThreadSpinner() {
 		handler = new ItemStackHandler(5);
@@ -94,12 +96,11 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	}
 
 	private boolean canProgress() {
-		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, handler.getStackInSlot(1),
-				handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4));
+		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, handler.getStackInSlot(1), handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4));
 		if(loadedRecipe == null || !loadedRecipe.matches(list)) {
 			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
-		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty()/* TODO && magicPointsUser.consumePower(POWER_PER_TICK, this.world, this.pos) */;
+		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && altarTracker.drain(null, pos, world.provider.getDimension(), POWER_PER_TICK);
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -128,17 +129,15 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			return true;
-		}
-		return super.hasCapability(capability, facing);
+		return capability == IMagicPowerConsumer.CAPABILITY || capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
+		if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
+		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handler);
 		}
@@ -152,6 +151,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		}
 		tag.setTag(HANDLER_TAG, handler.serializeNBT());
 		tag.setInteger(TICKS_PROCESSED_TAG, tickProcessed);
+		tag.setTag("altar", altarTracker.writeToNbt());
 	}
 
 	@Override
@@ -159,6 +159,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
+		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
 		handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
 		tickProcessed = tag.getInteger(TICKS_PROCESSED_TAG);
 	}

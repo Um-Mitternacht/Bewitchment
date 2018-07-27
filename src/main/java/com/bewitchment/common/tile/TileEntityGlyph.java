@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
+import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
@@ -83,6 +84,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	private int cooldown = 0; // The times that passed since activation
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
+	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	// A list of entities for which some rituals behaves differently, depending on the ritual
 	// For instance in Covens there was a ritual that hijacked all tp attempt in an area and
@@ -130,7 +132,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	public void update() {
 		if (!world.isRemote && ritual != null) {
 			EntityPlayer player = getWorld().getPlayerEntityByUUID(entityPlayer);
-			boolean hasPowerToUpdate = consumePower(ritual.getRunningPower());
+			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), ritual.getRunningPower());
 			if (hasPowerToUpdate) {
 				cooldown++;
 				markDirty();
@@ -167,7 +169,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, pos, 1)) { // Checks of extra conditions are met
-					if (consumePower(rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
+					if (altarTracker.drain(player, pos, world.provider.getDimension(), rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
 						this.ritualData = new NBTTagCompound();
@@ -307,15 +309,6 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		return cooldown > 0;
 	}
 
-	private boolean consumePower(int power) {
-		if (power == 0) return true;
-		// TODO
-		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-		// return magicPointsUser.getAltar(world).subtract(power);
-		// }
-		return false;
-	}
-
 	@Override
 	public void invalidate() {
 		stopRitual(null);
@@ -324,26 +317,34 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
+		if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return true;
+		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		//TODO: <rustylocks79> update to new magic points system.
+		if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
+		}
 		return super.getCapability(capability, facing);
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
-		if (tag.hasKey("ritual"))
+		if (tag.hasKey("ritual")) {
 			ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
-		if (tag.hasKey("player"))
+		}
+		if (tag.hasKey("player")) {
 			entityPlayer = UUID.fromString(tag.getString("player"));
-		if (tag.hasKey("data"))
+		}
+		if (tag.hasKey("data")) {
 			ritualData = tag.getCompoundTag("data");
+		}
+		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
 		if (tag.hasKey("entityList")) {
 			entityList = new ArrayList<Tuple<String, String>>();
 			tag.getTagList("entityList", NBT.TAG_STRING).forEach(nbts -> {
@@ -357,12 +358,16 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setInteger("cooldown", cooldown);
-		if (ritual != null)
+		if (ritual != null) {
 			tag.setString("ritual", ritual.getRegistryName().toString());
-		if (entityPlayer != null)
+		}
+		if (entityPlayer != null) {
 			tag.setString("player", entityPlayer.toString());
-		if (ritualData != null)
+		}
+		if (ritualData != null) {
 			tag.setTag("data", ritualData);
+		}
+		tag.setTag("altar", altarTracker.writeToNbt());
 		NBTTagList list = new NBTTagList();
 		for (int i = 0; i < entityList.size(); i++) {
 			Tuple<String, String> t = entityList.get(i);

@@ -2,6 +2,7 @@ package com.bewitchment.common.tile;
 
 import javax.annotation.Nonnull;
 
+import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
@@ -18,9 +19,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 
 public class TileEntityTarotsTable extends ModTileEntity {
 
+	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 	private static final int READ_COST = 2000;
 
 	@Override
@@ -35,7 +38,7 @@ public class TileEntityTarotsTable extends ModTileEntity {
 
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
 		if (!reader.world.isRemote) {
-			if (checkDeck(tarotDeck) && consumePower(READ_COST)) {
+			if (checkDeck(tarotDeck) && altarTracker.drain(reader, pos, world.provider.getDimension(), READ_COST)) {
 				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
 				NetworkHandler.HANDLER.sendTo(new TarotMessage(reader), (EntityPlayerMP) reader);
 			} else {
@@ -44,25 +47,31 @@ public class TileEntityTarotsTable extends ModTileEntity {
 		}
 	}
 
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
+		}
+		return super.getCapability(capability, facing);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		return capability == IMagicPowerConsumer.CAPABILITY || super.hasCapability(capability, facing);
+	}
+	
 	private boolean checkDeck(ItemStack tarotDeck) {
 		return (tarotDeck.getItem() == ModItems.tarots && tarotDeck.hasTagCompound() && tarotDeck.getTagCompound().hasKey("read_id") && tarotDeck.getTagCompound().hasKey("read_name"));
 	}
 
-	private boolean consumePower(int power) {
-		if (power == 0) return true;
-		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-		// return magicPointsUser.getAltar(world).subtract(power);
-		// }
-		// TODO
-		return false;
-	}
-
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setTag("altar", altarTracker.writeToNbt());
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
+		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
 	}
 
 	@Override

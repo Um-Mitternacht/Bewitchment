@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.bewitchment.api.crafting.BarrelRecipe;
+import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
@@ -40,6 +41,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	private int powerAbsorbed = 0;
 	private int powerRequired = 0;
 	private int timeRequired = 0;
+	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 	
 	private FluidTank internalTank = new FluidTank(Fluid.BUCKET_VOLUME) {
 		@Override
@@ -107,7 +109,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		if (hasRecipe()) {
 			BarrelRecipe currentRecipe = getRecipe();
 			if (powerAbsorbed < currentRecipe.getPower()) {
-				if (consumePower(1)) {
+				if (altarTracker.drain(null, getPos(), world.provider.getDimension(), 1)) {
 					powerAbsorbed++;
 					markDirty();
 					return;
@@ -183,15 +185,6 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		syncToClient();
 	}
 
-	private boolean consumePower(int power) {
-		// TODO
-		// if (power == 0) return true;
-		// if (magicPointsUser.hasValidAltar(world) || magicPointsUser.findClosestAltar(this.pos, this.world)) {
-		// return magicPointsUser.getAltar(world).subtract(power);
-		// }
-		return false;
-	}
-
 	public boolean hasRecipe() {
 		return recipeName != null && recipeName.length() > 0;
 	}
@@ -236,6 +229,8 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			return true;
 		} else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
+		} else if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return true;
 		}
 		return super.hasCapability(capability, facing);
 	}
@@ -246,6 +241,8 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(internalTank);
 		} else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handler);
+		} else if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -256,6 +253,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		tag.setInteger("type", barrelType);
 		tag.setInteger("powerAbsorbed", powerAbsorbed);
 		tag.setTag("handler", handler.serializeNBT());
+		tag.setTag("altar_cache", altarTracker.writeToNbt());
 		NBTTagCompound fluid = new NBTTagCompound();
 		internalTank.writeToNBT(fluid);
 		tag.setTag("fluid", fluid);
@@ -269,6 +267,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		powerAbsorbed = tag.getInteger("powerAbsorbed");
 		handler.deserializeNBT((NBTTagCompound) tag.getTag("handler"));
 		internalTank = internalTank.readFromNBT(tag.getCompoundTag("fluid"));
+		altarTracker.readFromNbt(tag.getCompoundTag("altar_cache"));
 		if (tag.hasKey("crafting")) {
 			recipeName = tag.getString("crafting");
 			getRecipe();//Refresh cache

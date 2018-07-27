@@ -12,6 +12,7 @@ import com.bewitchment.common.cauldron.ModBrewModifiers;
 import com.bewitchment.common.core.ModLootTables;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+import com.bewitchment.common.core.capability.energy.MagicPowerConsumer;
 import com.bewitchment.common.core.capability.energy.MagicPowerContainer;
 import com.bewitchment.common.core.capability.energy.MagicPowerUsingItem;
 import com.bewitchment.common.core.capability.infusion.InfusionDefaultImplementation;
@@ -91,6 +92,7 @@ public class Bewitchment {
 		InfusionDefaultImplementation.init();
 		MagicPowerUsingItem.init();
 		MagicPowerContainer.init();
+		MagicPowerConsumer.init();
 		CapabilityTransformationData.init();
 		CapabilityBloodReserve.init();
 		CapabilityCauldronTeleport.init();

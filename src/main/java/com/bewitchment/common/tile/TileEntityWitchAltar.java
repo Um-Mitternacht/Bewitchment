@@ -103,6 +103,9 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private int getGain(BlockPos pos, boolean[] types) {
 		IBlockState blockState = getWorld().getBlockState(pos);
+		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
+			return 10;
+		}
 		if (blockState.getBlock().equals(Blocks.SKULL)) {
 			if (types[0]) return 0;
 			types[0] = true;
@@ -149,6 +152,9 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private double getMultiplier(BlockPos pos, boolean[] typesMult) {
 		IBlockState blockState = getWorld().getBlockState(pos);
+		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
+			return 10000;
+		}
 		if (blockState.getBlock().equals(Blocks.SKULL)) {
 			if (typesMult[0]) return 0;
 			typesMult[0] = true;

@@ -1,5 +1,9 @@
 package com.bewitchment.common.tile;
 
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
@@ -8,6 +12,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.util.AutomatableInventory;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,9 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
-import java.util.Random;
 
 /**
  * Created by Joseph on 7/17/2017.
@@ -215,16 +217,18 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (facing == EnumFacing.UP) {
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);
-		} else if (facing == EnumFacing.DOWN) {
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
-		} else if (facing == EnumFacing.NORTH || facing == EnumFacing.EAST || facing == EnumFacing.SOUTH || facing == EnumFacing.WEST) {
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerSide);
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (facing == EnumFacing.UP) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);
+			} else if (facing == EnumFacing.DOWN) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
+			} else if (facing == EnumFacing.NORTH || facing == EnumFacing.EAST || facing == EnumFacing.SOUTH || facing == EnumFacing.WEST) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerSide);
+			}
 		}
 		return super.getCapability(capability, facing);
 	}
-
+	
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		if (this.hasCustomName()) {

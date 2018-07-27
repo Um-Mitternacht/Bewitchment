@@ -15,6 +15,7 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 	
 	public DefaultMPContainer(int max) {
 		maxAmount = max;
+		amount = max;
 	}
 	
 	@Override
