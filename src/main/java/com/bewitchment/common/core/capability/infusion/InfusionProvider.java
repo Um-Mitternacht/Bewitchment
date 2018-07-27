@@ -10,6 +10,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 public class InfusionProvider implements ICapabilitySerializable<NBTBase> {
+	
 	private IInfusionCapability default_capability = CAPABILITY.getDefaultInstance();
 	
 	@Override
@@ -19,8 +20,9 @@ public class InfusionProvider implements ICapabilitySerializable<NBTBase> {
 	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CAPABILITY)
-			return CAPABILITY.<T>cast(default_capability);
+		if (capability == CAPABILITY) {
+			return CAPABILITY.cast(default_capability);
+		}
 		return null;
 	}
 	

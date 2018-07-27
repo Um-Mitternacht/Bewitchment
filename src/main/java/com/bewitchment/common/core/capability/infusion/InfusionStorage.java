@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.capability.infusion;
 
+import com.bewitchment.api.infusion.DefaultInfusions;
+import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.common.infusion.ModInfusions;
 
@@ -19,7 +21,11 @@ public class InfusionStorage implements IStorage<IInfusionCapability> {
 	
 	@Override
 	public void readNBT(Capability<IInfusionCapability> capability, IInfusionCapability instance, EnumFacing side, NBTBase nbt) {
-		ModInfusions.REGISTRY.getValue(new ResourceLocation(((NBTTagString) nbt).getString()));
+		IInfusion inf = ModInfusions.REGISTRY.getValue(new ResourceLocation(((NBTTagString) nbt).getString()));
+		if (inf == null) {
+			inf = DefaultInfusions.NONE;
+		}
+		instance.setType(inf);
 	}
 	
 }

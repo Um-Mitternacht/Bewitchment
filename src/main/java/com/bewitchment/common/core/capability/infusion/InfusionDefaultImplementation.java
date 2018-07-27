@@ -12,7 +12,7 @@ public class InfusionDefaultImplementation implements IInfusionCapability {
 	
 	@Override
 	public IInfusion getType() {
-		return current;
+		return current == null ? DefaultInfusions.NONE : current;
 	}
 	
 	@Override
