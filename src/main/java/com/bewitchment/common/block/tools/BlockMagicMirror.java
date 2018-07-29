@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tools;
 
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
@@ -7,7 +8,6 @@ import com.bewitchment.common.tile.TileEntityMagicMirror;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -30,7 +30,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
-	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	public static final PropertyDirection BOTTOM_FACING = BlockHorizontal.FACING;
 
 	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f + 13.0f / 16.0f, 1.0f, 1.0f, 1.0f);
@@ -40,13 +39,13 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 
 	public BlockMagicMirror() {
 		super(LibBlockName.MAGIC_MIRROR, Material.IRON);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(BOTTOM_FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(StateProperties.MIRROR_VARIANTS, 0).withProperty(BOTTOM_FACING, EnumFacing.NORTH));
 		this.setLightOpacity(0);
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, ACTIVE, BOTTOM_FACING);
+		return new BlockStateContainer(this, StateProperties.MIRROR_VARIANTS, BOTTOM_FACING);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -55,7 +54,7 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 		if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 			facing = EnumFacing.NORTH;
 		}
-		return this.getDefaultState().withProperty(ACTIVE, false).withProperty(BOTTOM_FACING, facing);
+		return this.getDefaultState().withProperty(BOTTOM_FACING, facing);
 	}
 
 	@Override
@@ -90,20 +89,22 @@ public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		final boolean active = state.getValue(ACTIVE);
-		return active ? state.getValue(BOTTOM_FACING).getHorizontalIndex() + 6 : state.getValue(BOTTOM_FACING).getHorizontalIndex();
+		return state.getValue(BOTTOM_FACING).getHorizontalIndex();
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		boolean active = false;
-		if (meta >= 6) {
-			active = true;
-			meta -= 6;
+		return this.getDefaultState().withProperty(BOTTOM_FACING, EnumFacing.getHorizontal(meta));
+	}
+
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		if(state.getBlock().hasTileEntity(state)) {
+			TileEntityMagicMirror magicMirror = (TileEntityMagicMirror) worldIn.getTileEntity(pos);
+			return state.withProperty(StateProperties.MIRROR_VARIANTS, magicMirror.getShadeType());
 		}
-		return this.getDefaultState().withProperty(ACTIVE, active)
-				.withProperty(BOTTOM_FACING, EnumFacing.getHorizontal(meta));
+		return state;
 	}
 
 	@Override

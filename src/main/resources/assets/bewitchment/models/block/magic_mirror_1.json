@@ -1,8 +1,8 @@
 {
   "__comment": "Model made by Ingoleth",
   "textures": {
-    "0": "bewitchment:blocks/magic_mirror",
-    "particle": "bewitchment:blocks/magic_mirror"
+    "0": "bewitchment:blocks/magic_mirror_1",
+    "particle": "bewitchment:blocks/magic_mirror_0"
   },
   "elements": [
     {

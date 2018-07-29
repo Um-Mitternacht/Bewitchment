@@ -1,5 +1,6 @@
 package com.bewitchment.common.tile;
 
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.tools.BlockMagicMirror;
@@ -24,19 +25,33 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
-	private static final double SHADOW_RANGE = 4.0;
-	private static final int REFRESH_TIME = 120;
+	private static final int REFRESH_TIME = 10;
+	private static final double SHADE_DISTANCE_1 = 2.0;
+	private static final double SHADE_DISTANCE_2 = 3.0;
+	private static final double SHADE_DISTANCE_3 = 4.0;
+
 	private int refreshTimer;
+	private int shadeType;
 
 	public TileEntityMagicMirror() {
 		this.refreshTimer = 0;
 	}
 
-	public void activate(boolean active) {
+	private void activate(boolean active, double distanceSq) {
+		if(!active) {
+			shadeType = 0;
+		} else if(distanceSq <= SHADE_DISTANCE_1 * SHADE_DISTANCE_1) {
+			shadeType = 3;
+		} else if(distanceSq <= SHADE_DISTANCE_2 * SHADE_DISTANCE_2) {
+			shadeType = 2;
+		} else {
+			shadeType = 1;
+		}
 		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos)
-				.withProperty(BlockMagicMirror.ACTIVE, active)
+				.withProperty(StateProperties.MIRROR_VARIANTS, shadeType)
 				.withProperty(BlockMagicMirror.BOTTOM_FACING, this.world.getBlockState(this.pos).getValue(BlockMagicMirror.BOTTOM_FACING)));
 		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false); //TODO: is this the right method
+		this.syncToClient();
 		this.markDirty();
 	}
 
@@ -77,41 +92,44 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 			return;
 		}
 
-		if (refreshTimer % REFRESH_TIME == 0) {
-			if (this.world.isAnyPlayerWithinRangeAt(this.pos.getX(), this.pos.getY(), this.pos.getZ(), SHADOW_RANGE)) {
-				EntityPlayer player = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADOW_RANGE, false);
-				if (player.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
-					final ITransformationData capability = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-					if (capability.getType() != DefaultTransformations.VAMPIRE) {
-						activate(true);
-					}
-				} else {
-					activate(true);
+		if (refreshTimer >= REFRESH_TIME) {
+			EntityPlayer closestPlayer = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADE_DISTANCE_3, false);
+			if(closestPlayer == null) {
+				activate(false, -1.0f);
+			} else if (closestPlayer.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
+				final ITransformationData capability = closestPlayer.getCapability(CapabilityTransformationData.CAPABILITY, null);
+				if (capability.getType() != DefaultTransformations.VAMPIRE) {
+					activate(true, closestPlayer.getDistanceSq(this.pos));
 				}
 			} else {
-				activate(false);
+				activate(true, closestPlayer.getDistanceSq(this.pos));
 			}
 			refreshTimer = 0;
 		}
+		refreshTimer++;
+	}
+
+	public int getShadeType() {
+		return shadeType;
 	}
 
 	@Override
-	protected void readAllModDataNBT(NBTTagCompound cmp) {
-
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setInteger("shadeType", shadeType);
 	}
 
 	@Override
-	protected void writeAllModDataNBT(NBTTagCompound cmp) {
-
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		shadeType = tag.getInteger("shadeType");
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-
+		tag.setInteger("shadeType", shadeType);
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-
+		shadeType = tag.getInteger("shadeType");
 	}
 }

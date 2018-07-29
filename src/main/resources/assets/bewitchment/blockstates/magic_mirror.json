@@ -1,33 +1,63 @@
 {
   "variants": {
-    "active=false,facing=north": {
-      "model": "bewitchment:magic_mirror"
+    "facing=north,mirror=0": {
+      "model": "bewitchment:magic_mirror_0"
     },
-    "active=true,facing=north": {
-      "model": "bewitchment:magic_mirror_active"
+    "facing=north,mirror=1": {
+      "model": "bewitchment:magic_mirror_1"
     },
-    "active=false,facing=east": {
-      "model": "bewitchment:magic_mirror",
+    "facing=north,mirror=2": {
+      "model": "bewitchment:magic_mirror_2"
+    },
+    "facing=north,mirror=3": {
+      "model": "bewitchment:magic_mirror_3"
+    },
+    "facing=east,mirror=0": {
+      "model": "bewitchment:magic_mirror_0",
       "y": 90
     },
-    "active=true,facing=east": {
-      "model": "bewitchment:magic_mirror_active",
+    "facing=east,mirror=1": {
+      "model": "bewitchment:magic_mirror_1",
       "y": 90
     },
-    "active=false,facing=south": {
-      "model": "bewitchment:magic_mirror",
+    "facing=east,mirror=2": {
+      "model": "bewitchment:magic_mirror_2",
+      "y": 90
+    },
+    "facing=east,mirror=3": {
+      "model": "bewitchment:magic_mirror_3",
+      "y": 90
+    },
+    "facing=south,mirror=0": {
+      "model": "bewitchment:magic_mirror_0",
       "y": 180
     },
-    "active=true,facing=south": {
-      "model": "bewitchment:magic_mirror_active",
+    "facing=south,mirror=1": {
+      "model": "bewitchment:magic_mirror_1",
       "y": 180
     },
-    "active=false,facing=west": {
-      "model": "bewitchment:magic_mirror",
+    "facing=south,mirror=2": {
+      "model": "bewitchment:magic_mirror_2",
+      "y": 180
+    },
+    "facing=south,mirror=3": {
+      "model": "bewitchment:magic_mirror_3",
+      "y": 180
+    },
+    "facing=west,mirror=0": {
+      "model": "bewitchment:magic_mirror_0",
       "y": 270
     },
-    "active=true,facing=west": {
-      "model": "bewitchment:magic_mirror_active",
+    "facing=west,mirror=1": {
+      "model": "bewitchment:magic_mirror_1",
+      "y": 270
+    },
+    "facing=west,mirror=2": {
+      "model": "bewitchment:magic_mirror_2",
+      "y": 270
+    },
+    "facing=west,mirror=3": {
+      "model": "bewitchment:magic_mirror_3",
       "y": 270
     }
   }

@@ -13,4 +13,6 @@ public class StateProperties {
 	public static final PropertyEnum<EnumGlyphType> GLYPH_TYPE = PropertyEnum.create("type", EnumGlyphType.class);
 
 	public static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
+
+	public static final PropertyInteger MIRROR_VARIANTS = PropertyInteger.create("mirror", 0, 3);
 }
