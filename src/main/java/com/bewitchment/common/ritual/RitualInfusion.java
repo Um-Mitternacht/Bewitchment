@@ -2,8 +2,11 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.api.infusion.IInfusionCapability;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.InfusionChangedMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,7 +31,9 @@ public class RitualInfusion extends RitualImpl {
 			return;
 		}
 		player.getCapability(IInfusionCapability.CAPABILITY, null).setType(type);
-		// TODO sync
+		if (player instanceof EntityPlayerMP) {
+			NetworkHandler.HANDLER.sendTo(new InfusionChangedMessage(player), (EntityPlayerMP) player);
+		}
 	}
 
 }

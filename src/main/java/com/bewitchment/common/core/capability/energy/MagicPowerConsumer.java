@@ -2,8 +2,12 @@ package com.bewitchment.common.core.capability.energy;
 
 import java.util.Comparator;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.common.Bewitchment;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,62 +15,82 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 
 public class MagicPowerConsumer implements IMagicPowerConsumer {
 	
-	// TODO add storage and register the capability
+	BlockPos cachedPos = null;
+	int cachedDim = 0;
 	
-	BlockPos pos = null;
-	int dimID = 0;
+	public static void init() {
+		CapabilityManager.INSTANCE.register(IMagicPowerConsumer.class, new MagicPoweConsumerStorage(), MagicPowerConsumer::new);
+	}
 	
 	@Override
-	public boolean drain(EntityPlayer caster, World world, BlockPos position, int radius, int amount) {
-		if (world.isRemote) {
-			return false;
+	public boolean drain(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
+		if (amount == 0) {
+			return true;
 		}
-		if (pos == null) {
-			findNewAltar(world, position, radius);
+		if (cachedPos == null || !isValidAltar(DimensionManager.getWorld(cachedDim), cachedPos)) {
+			findNewAltar(DimensionManager.getWorld(dimension), pos, 16);
 		}
-		if (pos != null) {
-			World w = DimensionManager.getWorld(dimID);
-			if (isValidAltar(w, pos)) {
-				if (w.getTileEntity(pos).getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount)) {
-					return true;
-				}
+		if (cachedPos != null) {
+			World tileWorld = DimensionManager.getWorld(cachedDim);
+			IMagicPowerContainer source = tileWorld.getTileEntity(cachedPos).getCapability(IMagicPowerContainer.CAPABILITY, null);
+			if (source.drain(amount)) {
+				return true;
 			}
 		}
-		return caster.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount);
+		if (caster != null) {
+			return caster.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount);
+		}
+		return false;
 	}
 	
 	private void findNewAltar(World world, BlockPos position, int radius) {
-		pos = world.tickableTileEntities.parallelStream()//
+		cachedPos = world.tickableTileEntities.parallelStream()//
 				.filter(t -> !t.isInvalid())//
 				.filter(t -> t.hasCapability(IMagicPowerContainer.CAPABILITY, null))//
-				.sorted(Comparator.<TileEntity>comparingDouble(t -> t.getDistanceSq(position.getX(), position.getY(), position.getZ())))//
 				.filter(t -> t.getDistanceSq(position.getX(), position.getY(), position.getZ()) < radius * radius)//
+				.sorted(Comparator.<TileEntity>comparingDouble(t -> t.getDistanceSq(position.getX(), position.getY(), position.getZ())))//
 				.map(t -> t.getPos())//
 			.findFirst().orElse(null);
-		if (pos!=null) {
-			dimID = world.provider.getDimension();
+		if (cachedPos != null) {
+			cachedDim = world.provider.getDimension();
 		} else {
-			dimID = 0;
+			cachedDim = 0;
 		}
 		
 	}
 	
 	private boolean isValidAltar(World world, BlockPos position) {
-		TileEntity te = world.getTileEntity(pos);
+		if (world == null || position == null) {
+			Bewitchment.logger.warn("Checked if null is a valid altar dimension/position. I won't crash, but that shouldn't happen");
+			new NullPointerException().printStackTrace();
+			return false;
+		}
+		TileEntity te = world.getTileEntity(cachedPos);
 		return (te != null && !te.isInvalid() && te.hasCapability(IMagicPowerContainer.CAPABILITY, null));
 	}
 	
 	@Override
 	public NBTTagCompound writeToNbt() {
-		return null;
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("altarDim", cachedDim);
+		if (cachedPos != null) {
+			tag.setInteger("altarX", cachedPos.getX());
+			tag.setInteger("altarY", cachedPos.getY());
+			tag.setInteger("altarZ", cachedPos.getZ());
+		}
+		return tag;
 	}
 	
 	@Override
 	public void readFromNbt(NBTTagCompound tag) {
-		
+		cachedDim = tag.getInteger("altarDim");
+		if (tag.hasKey("altarX")) {
+			cachedPos = new BlockPos(tag.getInteger("altarX"), tag.getInteger("altarY"), tag.getInteger("altarZ"));
+		}
 	}
 	
 }

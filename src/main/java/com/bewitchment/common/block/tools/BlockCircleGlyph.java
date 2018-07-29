@@ -1,10 +1,15 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -20,9 +25,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -31,10 +34,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
@@ -57,7 +56,16 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 			return new TileEntityGlyph();
 		return null;
 	}
-
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (state.getValue(StateProperties.GLYPH_TYPE) == EnumGlyphType.GOLDEN) {
+			((TileEntityGlyph) worldIn.getTileEntity(pos)).onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState floor = worldIn.getBlockState(pos.down());

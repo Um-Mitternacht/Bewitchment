@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.tile.ModTileEntity;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -33,6 +34,7 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 			((ModTileEntity) tile).onBlockBroken(worldIn, pos, state);
 		}
 		worldIn.removeTileEntity(pos);
+		super.breakBlock(worldIn, pos, state);
 	}
 
 	@Override

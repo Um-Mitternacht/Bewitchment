@@ -8,13 +8,14 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author zabi94
  *
  */
-public class DefaultMPStorage implements IMagicPowerContainer {
+public class DefaultMPContainer implements IMagicPowerContainer {
 	
 	int amount = 0;
 	int maxAmount;
 	
-	public DefaultMPStorage(int max) {
+	public DefaultMPContainer(int max) {
 		maxAmount = max;
+		amount = max;
 	}
 	
 	@Override
@@ -30,7 +31,7 @@ public class DefaultMPStorage implements IMagicPowerContainer {
 	@Override
 	public boolean fill(int in) {
 		if (getAmount() < getMaxAmount()) {
-			setAmount(getAmount() + in);
+			setAmount(Math.min(getAmount() + in, getMaxAmount()));
 			return true;
 		}
 		return false;

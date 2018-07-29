@@ -250,7 +250,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 					setColor(worldIn, pos, newColor);
 					return true;
 				}
-			} else if (worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
+			} else if (!worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
 					IMagicPowerContainer magicPoints = tea.getCapability(IMagicPowerContainer.CAPABILITY, null);
