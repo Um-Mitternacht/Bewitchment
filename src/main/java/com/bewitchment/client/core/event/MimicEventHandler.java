@@ -1,8 +1,7 @@
 package com.bewitchment.client.core.event;
 
+import com.bewitchment.client.core.event.custom.MimicEvent;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
-import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.lib.LibReflection;
 import com.mojang.authlib.GameProfile;
@@ -13,7 +12,6 @@ import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -37,11 +35,12 @@ public class MimicEventHandler {
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void fakeSkin(RenderPlayerEvent.Pre event) { // TODO change this to a single fired event (like player logging in)
-		if (event.getEntity().hasCapability(CapabilityMimicData.CAPABILITY, null)) {
-			final IMimicData capability = event.getEntity().getCapability(CapabilityMimicData.CAPABILITY, null);
-			final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntityPlayer();
-			NetworkPlayerInfo victimInfo = new NetworkPlayerInfo(new GameProfile(capability.getMimickedPlayerID(), capability.getMimickedPlayerName()));
+	public static void fakeSkin(MimicEvent event) {
+		final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntityPlayer();
+		if(event.isReverting()) {
+			stopMimicking(player);
+		} else {
+			NetworkPlayerInfo victimInfo = new NetworkPlayerInfo(new GameProfile(event.getVictimID(), event.getVictimName()));
 			setPlayerSkin(player, victimInfo.getLocationSkin());
 		}
 	}

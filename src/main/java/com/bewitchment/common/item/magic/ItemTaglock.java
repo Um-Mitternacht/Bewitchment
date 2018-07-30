@@ -98,7 +98,7 @@ public class ItemTaglock extends ItemMod {
 		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME);
 	}
 
-	public Optional<EntityLivingBase> getVictim(ItemStack stack, World world) {
+	public static Optional<EntityLivingBase> getVictim(ItemStack stack, World world) {
 		UUID uuid = NBTHelper.getUniqueID(stack, Bewitchment.TAGLOCK_ENTITY);
 		for (Entity entity : world.loadedEntityList) {
 			if (entity instanceof EntityLivingBase && entity.getUniqueID().equals(uuid)) {

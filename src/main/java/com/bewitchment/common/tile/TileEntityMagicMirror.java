@@ -2,16 +2,15 @@ package com.bewitchment.common.tile;
 
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.client.core.event.custom.MimicEvent;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.tools.BlockMagicMirror;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
 import com.bewitchment.common.core.helper.NBTHelper;
-import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
 import com.bewitchment.common.item.ModItems;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,6 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.UUID;
 
@@ -34,7 +34,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	private int shadeType;
 
 	public TileEntityMagicMirror() {
-		this.refreshTimer = 0;
+		this.refreshTimer = REFRESH_TIME;
 	}
 
 	private void activate(boolean active, double distanceSq) {
@@ -49,7 +49,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 		}
 		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos)
 				.withProperty(StateProperties.MIRROR_VARIANTS, shadeType)
-				.withProperty(BlockMagicMirror.BOTTOM_FACING, this.world.getBlockState(this.pos).getValue(BlockMagicMirror.BOTTOM_FACING)));
+				.withProperty(BlockHorizontal.FACING, this.world.getBlockState(this.pos).getValue(BlockHorizontal.FACING)));
 		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false); //TODO: is this the right method
 		this.syncToClient();
 		this.markDirty();
@@ -60,23 +60,25 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 		if (playerIn.isSneaking()) {
 			return false;
 		}
-		if (worldIn.isRemote) {
+		//The "!worldIn.isRemote" is intentional. This code should only run on the client.
+		if (!worldIn.isRemote) {
 			return true;
 		}
 
 		ItemStack held = playerIn.getHeldItem(hand);
 		if (ItemStack.areItemsEqual(held, new ItemStack(ModItems.taglock))) {
-			final UUID playerID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
-			final String playerName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
+			UUID victimID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
+			String victimName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
 			final IMimicData capability = playerIn.getCapability(CapabilityMimicData.CAPABILITY, null);
-			capability.setMimickedPlayerID(playerID);
-			capability.setMimickedPlayerName(playerName);
-			if (playerIn.getUniqueID().equals(playerID)) {
+			capability.setMimickedPlayerID(victimID);
+			capability.setMimickedPlayerName(victimName);
+			if (playerIn.getUniqueID().equals(victimID)) {
 				capability.setMimicking(false, playerIn);
+				MinecraftForge.EVENT_BUS.post(new MimicEvent(playerIn, playerIn.getUniqueID(), playerIn.getName(), true));
 			} else {
 				capability.setMimicking(true, playerIn);
+				MinecraftForge.EVENT_BUS.post(new MimicEvent(playerIn, victimID, victimName, false));
 			}
-			NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged(playerIn));
 		}
 		return true;
 	}
@@ -100,6 +102,8 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 				final ITransformationData capability = closestPlayer.getCapability(CapabilityTransformationData.CAPABILITY, null);
 				if (capability.getType() != DefaultTransformations.VAMPIRE) {
 					activate(true, closestPlayer.getDistanceSq(this.pos));
+				} else {
+					activate(false, -1.0f);
 				}
 			} else {
 				activate(true, closestPlayer.getDistanceSq(this.pos));
