@@ -113,7 +113,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		loadedRecipe = null;
 	}
 
-	public int getTickProgress() {
+	public int getWork() {
 		return work;
 	}
 
