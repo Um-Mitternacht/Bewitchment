@@ -27,16 +27,16 @@ import net.minecraftforge.items.ItemStackHandler;
 @SuppressWarnings("NullableProblems")
 public class TileEntityThreadSpinner extends ModTileEntity implements ITickable, IWorldNameable {
 	private static final String CUSTOM_NAME_TAG = "customName";
-	private static final String TICKS_PROCESSED_TAG = "ticksProcessed";
+	private static final String WORK_TAG = "work";
 	private static final String HANDLER_TAG = "handler";
 
-	public static final int MAX_TICKS = 200;
+	public static final int TOTAL_WORK = 200;
 	public static final int POWER_PER_TICK = 6;
 
 	private ItemStackHandler handler;
 	private SpinningThreadRecipe loadedRecipe;
 	private String customName = null;
-	private int tickProcessed = 0;
+	private int work = 0;
 	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	public TileEntityThreadSpinner() {
@@ -81,15 +81,15 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			return;
 		}
 		if (this.canProgress()) {
-			this.tickProcessed++;
-			if (this.tickProcessed >= MAX_TICKS) {
+			this.work++;
+			if (this.work >= TOTAL_WORK) {
 				this.onFinished();
-				this.tickProcessed = 0;
+				this.work = 0;
 			}
 			this.syncToClient();
 			this.markDirty();
-		} else if (this.tickProcessed != 0) {
-			this.tickProcessed = 0;
+		} else if (this.work != 0) {
+			this.work = 0;
 			this.syncToClient();
 			this.markDirty();
 		}
@@ -114,7 +114,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	}
 
 	public int getTickProgress() {
-		return tickProcessed;
+		return work;
 	}
 
 	@Override
@@ -150,7 +150,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
 		tag.setTag(HANDLER_TAG, handler.serializeNBT());
-		tag.setInteger(TICKS_PROCESSED_TAG, tickProcessed);
+		tag.setInteger(WORK_TAG, work);
 		tag.setTag("altar", altarTracker.writeToNbt());
 	}
 
@@ -161,7 +161,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		}
 		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
 		handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
-		tickProcessed = tag.getInteger(TICKS_PROCESSED_TAG);
+		work = tag.getInteger(WORK_TAG);
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (this.hasCustomName()) {
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
-		tag.setInteger(TICKS_PROCESSED_TAG, tickProcessed);
+		tag.setInteger(WORK_TAG, work);
 	}
 
 	@Override
@@ -177,6 +177,6 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
-		tickProcessed = tag.getInteger(TICKS_PROCESSED_TAG);
+		work = tag.getInteger(WORK_TAG);
 	}
 }
