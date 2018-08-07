@@ -102,8 +102,6 @@ public final class LibItemName {
 	public static final String HOOF = "hoof";
 	public static final String EQUINE_TAIL = "equine_tail";
 	public static final String CATECHU = "catechu";
-	public static final String ABSINTHE_GREEN = "absinthe_green";
-	public static final String ALBEDO = "albedo";
 	public static final String OAK_APPLE_GALL = "oak_apple_gall";
 	public static final String IRON_GALL_INK = "iron_gall_ink";
 	public static final String HONEYCOMB = "honeycomb";
@@ -111,7 +109,6 @@ public final class LibItemName {
 	public static final String HONEY = "honey";
 	public static final String GEM = "gem";
 	public static final String GEM_POWDER = "gem_powder";
-	public static final String GEMSTONE_AMALGAM = "gemstone_amalgam";
 	public static final String SHADOW_BOOK = "book_of_shadows";
 	public static final String DUSTY_GRIMOIRE = "dusty_grimoire";
 	public static final String SILVER_NUGGET = "silver_nugget";

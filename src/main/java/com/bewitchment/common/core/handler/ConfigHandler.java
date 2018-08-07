@@ -72,8 +72,6 @@ public final class ConfigHandler {
 		public Alexandrite alexandrite = new Alexandrite();
 		@Comment("Coquina gen, this determines how much can spawn in a chunk, and how far up")
 		public Coquina coquina = new Coquina();
-		@Comment("Chalk gen, this determines how much can spawn in a chunk, and how far up")
-		public Chalk chalk = new Chalk();
 		@Comment("Beehive gen, this determines how many can spawn in a chunk, and how far up")
 		public Beehive beehive = new Beehive();
 
@@ -179,14 +177,6 @@ public final class ConfigHandler {
 			public int coquina_min_height = 55;
 			public int coquina_max_height = 65;
 			public int coquina_gen_chance = 4;
-		}
-
-		public static class Chalk {
-			public int chalk_min_vein = 1;
-			public int chalk_max_vein = 25;
-			public int chalk_min_height = 10;
-			public int chalk_max_height = 255;
-			public int chalk_gen_chance = 8;
 		}
 
 		public static class Beehive {

@@ -2,6 +2,7 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
@@ -23,7 +24,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex;
 
 	public static void init() {
 
@@ -39,6 +40,10 @@ public class ModRituals {
 				800, //Initial cost
 				0 //Cost per tick
 		);
+
+		{
+			sanctuary = new RitualImpl(rl("sanctuary"), of(Ingredient.fromItem(ModItems.white_sage), (Ingredient.fromItem(ModItems.sagebrush)), Ingredient.fromItem(ModItems.salt), Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1,0))), ofs(new ItemStack(ModBlocks.sacrosanct_ground)), 130, circles(NORMAL, NORMAL, null), 400, 4);
+		};
 
 		fast_day = new RitualSandsTime(
 				rl("time_sands"),
@@ -80,15 +85,29 @@ public class ModRituals {
 				3
 		);
 
+		spawn_vex = new RitualConjurationWitch(
+				rl("conjure_vex"),
+				of(
+						Ingredient.fromItem(ModItems.athame),
+						Ingredient.fromItem(ModItems.wormwood),
+						Ingredient.fromItem(Items.APPLE)
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				100,
+				circles(NETHER, ENDER, null),
+				1000,
+				2
+		);
+
 		spawn_wither = new RitualConjurationWither(
 				rl("conjure_wither"),
 				of(
-						Ingredient.fromStacks(new ItemStack(Items.SKULL, 1, 1)),
 						Ingredient.fromItem(ModItems.athame),
+						Ingredient.fromStacks(new ItemStack(Items.SKULL, 1, 1)),
 						Ingredient.fromItem(Item.getItemFromBlock(Blocks.SOUL_SAND))
 
 				),
-				none,
+				ofs(new ItemStack(ModItems.athame)),
 				400,
 				circles(NETHER, NETHER, NETHER),
 				5000,
@@ -141,7 +160,7 @@ public class ModRituals {
 	}
 
 	public static void registerAll() {
-		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
 
 	}
 
