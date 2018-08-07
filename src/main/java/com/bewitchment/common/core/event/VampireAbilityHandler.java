@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -16,7 +14,6 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -41,6 +38,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
 
+import java.util.UUID;
+
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {
 
@@ -50,6 +49,9 @@ public class VampireAbilityHandler {
 	public static final Ingredient SILVER_WEAPON = new OreIngredient("weaponSilver");
 
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
+	// TODO Check: can two different living hurt events run down the subscriber list in parallel?
+	// If so this doesn't work and one entity might end up receiving the damage amount meant for someone else in some cases
+	public static float lastDamage = 0;
 
 	/**
 	 * Modifies damage depending on the type. Fire and explosion make it 150%of the original,
@@ -76,11 +78,7 @@ public class VampireAbilityHandler {
 			}
 		}
 	}
-	
-	// TODO Check: can two different living hurt events run down the subscriber list in parallel?
-	// If so this doesn't work and one entity might end up receiving the damage amount meant for someone else in some cases
-	public static float lastDamage = 0;
-	
+
 	@SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
 	public static void dropInvalidGear(LivingHurtEvent evt) {
 		if (!evt.getEntity().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {

@@ -7,9 +7,11 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.helper.TransformationHelper;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
+import com.bewitchment.common.core.net.messages.NightVisionStatus;
+import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
+import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.player.PlayerEvent;

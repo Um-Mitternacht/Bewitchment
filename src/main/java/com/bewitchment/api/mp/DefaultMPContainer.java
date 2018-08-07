@@ -4,30 +4,29 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Add one of these in any object that hold MP for an easy solution
- * 
- * @author zabi94
  *
+ * @author zabi94
  */
 public class DefaultMPContainer implements IMagicPowerContainer {
-	
+
 	int amount = 0;
 	int maxAmount;
-	
+
 	public DefaultMPContainer(int max) {
 		maxAmount = max;
 		amount = max;
 	}
-	
+
 	@Override
 	public int getAmount() {
 		return amount;
 	}
-	
+
 	@Override
 	public int getMaxAmount() {
 		return maxAmount;
 	}
-	
+
 	@Override
 	public boolean fill(int in) {
 		if (getAmount() < getMaxAmount()) {
@@ -36,7 +35,7 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean drain(int out) {
 		if (getAmount() >= out) {
@@ -45,7 +44,7 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void setAmount(int newAmount) {
 		if (newAmount > getMaxAmount()) {
@@ -56,7 +55,7 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 		}
 		amount = newAmount;
 	}
-	
+
 	@Override
 	public void setMaxAmount(int newMaxAmount) {
 		if (newMaxAmount < 0) {
@@ -67,17 +66,17 @@ public class DefaultMPContainer implements IMagicPowerContainer {
 			setAmount(maxAmount);
 		}
 	}
-	
+
 	public NBTTagCompound saveNBTTag() {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("current", getAmount());
 		tag.setInteger("max", getMaxAmount());
 		return tag;
 	}
-	
+
 	public void loadFromNBT(NBTTagCompound tag) {
 		setMaxAmount(tag.getInteger("max"));
 		setAmount(tag.getInteger("current"));
 	}
-	
+
 }

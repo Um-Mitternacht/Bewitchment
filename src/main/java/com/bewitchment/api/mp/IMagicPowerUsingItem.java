@@ -13,17 +13,17 @@ public interface IMagicPowerUsingItem {
 	 */
 	@CapabilityInject(IMagicPowerUsingItem.class)
 	public static final Capability<IMagicPowerUsingItem> CAPABILITY = null;
-	
+
 	public static class Storage implements IStorage<IMagicPowerUsingItem> {
-		
+
 		@Override
 		public NBTBase writeNBT(Capability<IMagicPowerUsingItem> capability, IMagicPowerUsingItem instance, EnumFacing side) {
 			return new NBTTagCompound();
 		}
-		
+
 		@Override
 		public void readNBT(Capability<IMagicPowerUsingItem> capability, IMagicPowerUsingItem instance, EnumFacing side, NBTBase nbt) {
 		}
-		
+
 	}
 }

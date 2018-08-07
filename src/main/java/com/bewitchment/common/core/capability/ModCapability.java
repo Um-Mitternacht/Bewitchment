@@ -10,7 +10,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 import javax.annotation.Nullable;
 
 public abstract class ModCapability implements INBTSerializable<NBTTagCompound> {
-	public static <C extends ModCapability>void init(Class<C> capabilityClass) {
+	public static <C extends ModCapability> void init(Class<C> capabilityClass) {
 		CapabilityManager.INSTANCE.register(capabilityClass, new ModStorage<>(), capabilityClass::newInstance);
 	}
 

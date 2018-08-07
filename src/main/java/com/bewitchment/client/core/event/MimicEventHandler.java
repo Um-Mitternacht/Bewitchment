@@ -25,7 +25,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = LibMod.MOD_ID)
 public class MimicEventHandler {
-	
+
 	@SideOnly(Side.CLIENT)
 	private static final Field playerTextures = ReflectionHelper.findField(NetworkPlayerInfo.class, "playerTextures", LibReflection.NETWORK_PLAYER_INFO__PLAYER_TEXTURES);
 	@SideOnly(Side.CLIENT)
@@ -37,14 +37,14 @@ public class MimicEventHandler {
 	@SideOnly(Side.CLIENT)
 	public static void fakeSkin(MimicEvent event) {
 		final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntityPlayer();
-		if(event.isReverting()) {
+		if (event.isReverting()) {
 			stopMimicking(player);
 		} else {
 			NetworkPlayerInfo victimInfo = new NetworkPlayerInfo(new GameProfile(event.getVictimID(), event.getVictimName()));
 			setPlayerSkin(player, victimInfo.getLocationSkin());
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings("unchecked")
 	private static void setPlayerSkin(AbstractClientPlayer player, ResourceLocation skin) {
@@ -53,15 +53,15 @@ public class MimicEventHandler {
 			Bewitchment.logger.debug("Connection object is null, cannot fake skin");
 			return;
 		}
-		
+
 		NetworkPlayerInfo info = connection.getPlayerInfo(player.getUniqueID());
-		
+
 		UUID uuid = EntityPlayer.getUUID(player.getGameProfile());
 		if (!skinMap.containsKey(uuid)) {
 			skinMap.put(uuid, player.getLocationSkin());
 			modelType.put(uuid, info.getSkinType());
 		}
-		
+
 		try {
 			Map<Type, ResourceLocation> ptextures = (Map<Type, ResourceLocation>) playerTextures.get(info);
 			ptextures.put(Type.SKIN, skin);
@@ -69,9 +69,9 @@ public class MimicEventHandler {
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			Bewitchment.logger.fatal(e);
 		}
-		
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void stopMimicking(AbstractClientPlayer p) {
 		if (skinMap.containsKey(p.getUniqueID())) {

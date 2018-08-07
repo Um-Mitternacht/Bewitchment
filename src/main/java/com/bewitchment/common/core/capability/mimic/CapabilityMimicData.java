@@ -59,7 +59,7 @@ public class CapabilityMimicData implements IMimicData {
 	public void setMimickedPlayerName(String mimickedPlayerName) {
 		this.mimickedPlayerName = mimickedPlayerName;
 	}
-	
+
 	/**
 	 * Calling this won't call cleanup methods, and should only be used when restoring data from NBT
 	 * Prefer the use of {@link IMimicData#setMimicking(boolean, EntityPlayer)}

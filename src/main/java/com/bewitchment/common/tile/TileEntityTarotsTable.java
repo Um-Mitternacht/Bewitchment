@@ -1,14 +1,11 @@
 package com.bewitchment.common.tile;
 
-import javax.annotation.Nonnull;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -21,10 +18,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
+import javax.annotation.Nonnull;
+
 public class TileEntityTarotsTable extends ModTileEntity {
 
-	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 	private static final int READ_COST = 2000;
+	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -54,12 +53,12 @@ public class TileEntityTarotsTable extends ModTileEntity {
 		}
 		return super.getCapability(capability, facing);
 	}
-	
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		return capability == IMagicPowerConsumer.CAPABILITY || super.hasCapability(capability, facing);
 	}
-	
+
 	private boolean checkDeck(ItemStack tarotDeck) {
 		return (tarotDeck.getItem() == ModItems.tarots && tarotDeck.hasTagCompound() && tarotDeck.getTagCompound().hasKey("read_id") && tarotDeck.getTagCompound().hasKey("read_name"));
 	}

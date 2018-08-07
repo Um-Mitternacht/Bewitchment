@@ -1,21 +1,21 @@
 package com.bewitchment.common.tile;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IWorldNameable;
@@ -24,15 +24,15 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
+
 @SuppressWarnings("NullableProblems")
 public class TileEntityThreadSpinner extends ModTileEntity implements ITickable, IWorldNameable {
+	public static final int TOTAL_WORK = 200;
+	public static final int POWER_PER_TICK = 6;
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String WORK_TAG = "work";
 	private static final String HANDLER_TAG = "handler";
-
-	public static final int TOTAL_WORK = 200;
-	public static final int POWER_PER_TICK = 6;
-
 	private ItemStackHandler handler;
 	private SpinningThreadRecipe loadedRecipe;
 	private String customName = null;
@@ -97,7 +97,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 
 	private boolean canProgress() {
 		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, handler.getStackInSlot(1), handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4));
-		if(loadedRecipe == null || !loadedRecipe.matches(list)) {
+		if (loadedRecipe == null || !loadedRecipe.matches(list)) {
 			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
 		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && altarTracker.drain(null, pos, world.provider.getDimension(), POWER_PER_TICK);

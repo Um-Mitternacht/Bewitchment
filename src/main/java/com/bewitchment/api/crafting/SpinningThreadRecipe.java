@@ -26,14 +26,32 @@ public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThrea
 
 	/**
 	 * @param regName The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
-	 * @param output The output that will be produced by this recipe. Cannot be null.
-	 * @param inputs The inputs needed for this recipe. Cannot be null or have a size greater than four.
+	 * @param output  The output that will be produced by this recipe. Cannot be null.
+	 * @param inputs  The inputs needed for this recipe. Cannot be null or have a size greater than four.
 	 */
 	public SpinningThreadRecipe(String regName, ItemStack output, Ingredient... inputs) {
-		if(inputs.length > 4) { throw new IllegalArgumentException("The list of inputs cannot be greater than 4. "); }
+		if (inputs.length > 4) {
+			throw new IllegalArgumentException("The list of inputs cannot be greater than 4. ");
+		}
 		this.output = output;
 		this.inputs = inputs;
 		this.setRegistryName(LibMod.MOD_ID, regName);
+	}
+
+	/**
+	 * Finds any registry entries that contains has this list as it's input.
+	 *
+	 * @param list The list of potential ingredients. Cannot be null.
+	 * @return the recipe associated with the list of ingredients. Returns null if not recipe is found.
+	 */
+	@Nullable
+	public static SpinningThreadRecipe getRecipe(NonNullList<ItemStack> list) {
+		for (SpinningThreadRecipe recipe : REGISTRY) {
+			if (recipe.matches(list)) {
+				return recipe;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -51,22 +69,8 @@ public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThrea
 	}
 
 	/**
-	 * Finds any registry entries that contains has this list as it's input.
-	 * @param list The list of potential ingredients. Cannot be null.
-	 * @return the recipe associated with the list of ingredients. Returns null if not recipe is found.
-	 */
-	@Nullable
-	public static SpinningThreadRecipe getRecipe(NonNullList<ItemStack> list) {
-		for (SpinningThreadRecipe recipe : REGISTRY) {
-			if (recipe.matches(list)) {
-				return recipe;
-			}
-		}
-		return null;
-	}
-
-	/**
 	 * Determines if this recipe ingredients are contained in list.
+	 *
 	 * @param list The list of potential ingredients. Cannot be null.
 	 * @return weather this is the list of ingredients for this recipe.
 	 */

@@ -23,19 +23,56 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	private int fumeChance;
 
 	/**
-	 * @param regName The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
-	 * @param input The input needed for this recipe. Cannot be null.
-	 * @param output The output that will be produced by this recipe.  Cannot be null.
-	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
+	 * @param regName    The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
+	 * @param input      The input needed for this recipe. Cannot be null.
+	 * @param output     The output that will be produced by this recipe.  Cannot be null.
+	 * @param fumes      The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
 	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
 	 */
 	public OvenSmeltingRecipe(String regName, Ingredient input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
-		if(fumeChance > 100 || fumeChance < 0) { throw new IllegalArgumentException("fumeChance must be between 0 and 100. "); }
+		if (fumeChance > 100 || fumeChance < 0) {
+			throw new IllegalArgumentException("fumeChance must be between 0 and 100. ");
+		}
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, regName));
 		this.input = input;
 		this.output = output;
 		this.fumes = fumes;
 		this.fumeChance = fumeChance;
+	}
+
+	/**
+	 * Determines if there are any registry entries that contains input as the stack to be smelted.
+	 *
+	 * @param input The stack to be tested.
+	 * @return weather their is a recipe in the registry that requires input to be smelted.
+	 */
+	public static boolean isSmeltable(ItemStack input) {
+		for (OvenSmeltingRecipe recipe : REGISTRY) {
+			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
+				if (ItemStack.areItemsEqual(stack, input)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Finds any registry entries that contains input as the stack to be smelted.
+	 *
+	 * @param input The stack to be tested
+	 * @return The recipe that contains input as the stack to be smelted. Returns null if not recipe is found.
+	 */
+	@Nullable
+	public static OvenSmeltingRecipe getRecipe(ItemStack input) {
+		for (OvenSmeltingRecipe recipe : REGISTRY) {
+			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
+				if (ItemStack.areItemsEqual(stack, input)) {
+					return recipe;
+				}
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -57,7 +94,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	 */
 	@Nullable
 	public ItemStack getFumes() {
-		if(fumes == null) {
+		if (fumes == null) {
 			return null;
 		}
 		return fumes.copy();
@@ -68,38 +105,5 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	 */
 	public int getFumeChance() {
 		return fumeChance;
-	}
-
-	/**
-	 * Determines if there are any registry entries that contains input as the stack to be smelted.
-	 * @param input The stack to be tested.
-	 * @return weather their is a recipe in the registry that requires input to be smelted.
-	 */
-	public static boolean isSmeltable(ItemStack input) {
-		for (OvenSmeltingRecipe recipe : REGISTRY) {
-			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
-				if (ItemStack.areItemsEqual(stack, input)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Finds any registry entries that contains input as the stack to be smelted.
-	 * @param input The stack to be tested
-	 * @return The recipe that contains input as the stack to be smelted. Returns null if not recipe is found.
-	 */
-	@Nullable
-	public static OvenSmeltingRecipe getRecipe(ItemStack input) {
-		for(OvenSmeltingRecipe recipe : REGISTRY) {
-			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
-				if (ItemStack.areItemsEqual(stack, input)) {
-					return recipe;
-				}
-			}
-		}
-		return null;
 	}
 }

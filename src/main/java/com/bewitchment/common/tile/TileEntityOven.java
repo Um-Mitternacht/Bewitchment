@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile;
 
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
@@ -12,7 +8,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,11 +26,16 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
+import java.util.Random;
+
 /**
  * Created by Joseph on 7/17/2017.
  */
 @SuppressWarnings("NullableProblems")
 public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNameable {
+	//Change to speed up smelting, lower = faster
+	public static final int TOTAL_WORK = 400;
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String WORK_TIME_TAG = "work";
 	private static final String IS_BURNING_TAG = "isBurning";
@@ -44,10 +44,6 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	private static final String HANDLER_UP_TAG = "handlerUp";
 	private static final String HANDLER_SIDE_TAG = "handlerSide";
 	private static final String HANDLER_DOWN_TAG = "handlerDown";
-
-	//Change to speed up smelting, lower = faster
-	public static final int TOTAL_WORK = 400;
-
 	private int work;
 	private boolean isBurning = false;
 	private int burnTime;
@@ -239,7 +235,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		}
 		return super.getCapability(capability, facing);
 	}
-	
+
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		if (this.hasCustomName()) {

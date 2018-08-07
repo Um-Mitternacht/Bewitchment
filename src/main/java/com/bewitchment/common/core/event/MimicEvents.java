@@ -2,7 +2,6 @@ package com.bewitchment.common.core.event;
 
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
-
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;

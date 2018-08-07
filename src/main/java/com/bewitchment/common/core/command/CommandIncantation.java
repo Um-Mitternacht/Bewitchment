@@ -1,20 +1,21 @@
 package com.bewitchment.common.core.command;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.google.common.collect.Lists;
-
-import net.minecraft.command.*;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class was created by BerciTheBeast on 19.4.2017.

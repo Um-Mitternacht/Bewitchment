@@ -6,8 +6,6 @@
 
 package com.bewitchment.common.item.magic;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.api.spell.ISpell;
@@ -15,7 +13,6 @@ import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.spell.Spell;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -32,6 +29,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+
+import javax.annotation.Nullable;
 
 public class ItemSpellPage extends ItemMod {
 
@@ -157,7 +156,7 @@ public class ItemSpellPage extends ItemMod {
 			public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 				return null;
 			}
-			
+
 		};
 	}
 

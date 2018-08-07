@@ -98,7 +98,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		if(state.getBlock().hasTileEntity(state)) {
+		if (state.getBlock().hasTileEntity(state)) {
 			TileEntityMagicMirror magicMirror = (TileEntityMagicMirror) worldIn.getTileEntity(pos);
 			return state.withProperty(StateProperties.MIRROR_VARIANTS, magicMirror.getShadeType());
 		}

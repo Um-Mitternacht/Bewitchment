@@ -1,14 +1,8 @@
 package com.bewitchment.common.core.capability.energy;
 
-import java.util.Comparator;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.Bewitchment;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -17,15 +11,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Comparator;
+
 public class MagicPowerConsumer implements IMagicPowerConsumer {
-	
+
 	BlockPos cachedPos = null;
 	int cachedDim = 0;
-	
+
 	public static void init() {
 		CapabilityManager.INSTANCE.register(IMagicPowerConsumer.class, new MagicPoweConsumerStorage(), MagicPowerConsumer::new);
 	}
-	
+
 	@Override
 	public boolean drain(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
 		if (amount == 0) {
@@ -46,7 +44,7 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 		}
 		return false;
 	}
-	
+
 	private void findNewAltar(World world, BlockPos position, int radius) {
 		cachedPos = world.tickableTileEntities.parallelStream()//
 				.filter(t -> !t.isInvalid())//
@@ -54,15 +52,15 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 				.filter(t -> t.getDistanceSq(position.getX(), position.getY(), position.getZ()) < radius * radius)//
 				.sorted(Comparator.<TileEntity>comparingDouble(t -> t.getDistanceSq(position.getX(), position.getY(), position.getZ())))//
 				.map(t -> t.getPos())//
-			.findFirst().orElse(null);
+				.findFirst().orElse(null);
 		if (cachedPos != null) {
 			cachedDim = world.provider.getDimension();
 		} else {
 			cachedDim = 0;
 		}
-		
+
 	}
-	
+
 	private boolean isValidAltar(World world, BlockPos position) {
 		if (world == null || position == null) {
 			Bewitchment.logger.warn("Checked if null is a valid altar dimension/position. I won't crash, but that shouldn't happen");
@@ -72,7 +70,7 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 		TileEntity te = world.getTileEntity(cachedPos);
 		return (te != null && !te.isInvalid() && te.hasCapability(IMagicPowerContainer.CAPABILITY, null));
 	}
-	
+
 	@Override
 	public NBTTagCompound writeToNbt() {
 		NBTTagCompound tag = new NBTTagCompound();
@@ -84,7 +82,7 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 		}
 		return tag;
 	}
-	
+
 	@Override
 	public void readFromNbt(NBTTagCompound tag) {
 		cachedDim = tag.getInteger("altarDim");
@@ -92,5 +90,5 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 			cachedPos = new BlockPos(tag.getInteger("altarX"), tag.getInteger("altarY"), tag.getInteger("altarZ"));
 		}
 	}
-	
+
 }

@@ -24,7 +24,7 @@ public abstract class ModContainer<T extends TileEntity> extends Container {
 		for (int i = 0; i < 9; ++i) {
 			addSlotToContainer(new Slot(playerInventory, i, x + i * 18, y + 58));
 		}
-}
+	}
 
 	protected void addPlayerSlots(InventoryPlayer playerInventory) {
 		this.addPlayerSlots(playerInventory, 8, 84);

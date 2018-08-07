@@ -5,7 +5,6 @@ import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergySync;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +25,7 @@ public class EnergyEvents {
 			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void onPlayerLogin(PlayerLoggedInEvent evt) {
 		if (evt.player instanceof EntityPlayerMP) {
@@ -48,12 +47,12 @@ public class EnergyEvents {
 			}
 		}
 	}
-	
+
 	private static int getRegenTime(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
 		return 10;
 	}
-	
+
 	private static int getRegenBurst(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
 		return 10;

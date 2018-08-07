@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 public abstract class ModTileEntity extends TileEntity {
 
 	/**
-	 *
 	 * @param worldIn
 	 * @param pos
 	 * @param state
@@ -34,7 +33,6 @@ public abstract class ModTileEntity extends TileEntity {
 	public abstract boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ);
 
 	/**
-	 *
 	 * @param worldIn
 	 * @param pos
 	 * @param state
@@ -42,25 +40,21 @@ public abstract class ModTileEntity extends TileEntity {
 	public abstract void onBlockBroken(World worldIn, BlockPos pos, IBlockState state);
 
 	/**
-	 *
 	 * @param tag
 	 */
 	protected abstract void readAllModDataNBT(NBTTagCompound tag);
 
 	/**
-	 *
 	 * @param tag
 	 */
 	protected abstract void writeAllModDataNBT(NBTTagCompound tag);
 
 	/**
-	 *
 	 * @param tag
 	 */
 	protected abstract void writeModSyncDataNBT(NBTTagCompound tag);
 
 	/**
-	 *
 	 * @param tag
 	 */
 	protected abstract void readModSyncDataNBT(NBTTagCompound tag);
@@ -75,6 +69,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @param tag The nbt data to be read.
 	 */
 	@Override
@@ -85,6 +80,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @param tag A nbt tag provided by forge to save tile data in.
 	 * @return A nbt tag with all the tile data saved on it.
 	 */
@@ -97,6 +93,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @return
 	 */
 	@Override
@@ -106,6 +103,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @return
 	 */
 	@Override
@@ -117,6 +115,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @param net
 	 * @param packet
 	 */
@@ -127,6 +126,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @param tag
 	 */
 	@Override
@@ -136,6 +136,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	/**
 	 * For internal use only.
+	 *
 	 * @param world
 	 * @param pos
 	 * @param oldState

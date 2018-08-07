@@ -4,14 +4,6 @@
 
 package com.bewitchment.common.core.net;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
-
-import org.apache.commons.lang3.tuple.Pair;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,6 +14,13 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.UUID;
 
 @SuppressWarnings("rawtypes")
 public class SimpleMessage<REQ extends SimpleMessage> implements IMessage, IMessageHandler<REQ, IMessage> {
@@ -201,15 +200,15 @@ public class SimpleMessage<REQ extends SimpleMessage> implements IMessage, IMess
 		buf.writeDouble(vec.y);
 		buf.writeDouble(vec.z);
 	}
-	
+
 	public static void writeResourceLocation(ResourceLocation rl, ByteBuf buf) {
 		writeString(rl.toString(), buf);
 	}
-	
+
 	public static ResourceLocation readResourceLocation(ByteBuf buf) {
 		return new ResourceLocation(readString(buf));
 	}
-	
+
 	public IMessage handleMessage(MessageContext context) {
 		return null;
 	}

@@ -6,8 +6,8 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 public interface IInfusionCapability {
 	@CapabilityInject(IInfusionCapability.class)
 	public static final Capability<IInfusionCapability> CAPABILITY = null;
-	
+
 	public IInfusion getType();
-	
+
 	public void setType(IInfusion infusion);
 }

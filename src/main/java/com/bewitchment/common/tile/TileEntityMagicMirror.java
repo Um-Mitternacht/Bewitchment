@@ -38,11 +38,11 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	}
 
 	private void activate(boolean active, double distanceSq) {
-		if(!active) {
+		if (!active) {
 			shadeType = 0;
-		} else if(distanceSq <= SHADE_DISTANCE_1 * SHADE_DISTANCE_1) {
+		} else if (distanceSq <= SHADE_DISTANCE_1 * SHADE_DISTANCE_1) {
 			shadeType = 3;
-		} else if(distanceSq <= SHADE_DISTANCE_2 * SHADE_DISTANCE_2) {
+		} else if (distanceSq <= SHADE_DISTANCE_2 * SHADE_DISTANCE_2) {
 			shadeType = 2;
 		} else {
 			shadeType = 1;
@@ -96,7 +96,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 
 		if (refreshTimer >= REFRESH_TIME) {
 			EntityPlayer closestPlayer = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADE_DISTANCE_3, false);
-			if(closestPlayer == null) {
+			if (closestPlayer == null) {
 				activate(false, -1.0f);
 			} else if (closestPlayer.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
 				final ITransformationData capability = closestPlayer.getCapability(CapabilityTransformationData.CAPABILITY, null);

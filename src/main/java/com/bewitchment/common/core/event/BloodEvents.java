@@ -9,7 +9,6 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;

@@ -61,9 +61,9 @@ public class ServerProxy implements ISidedProxy {
 	public void setupHealthRenderer(boolean overrideHealth) {
 
 	}
-	
+
 	@Override
 	public void stopMimicking(EntityPlayer p) {
-		
+
 	}
 }

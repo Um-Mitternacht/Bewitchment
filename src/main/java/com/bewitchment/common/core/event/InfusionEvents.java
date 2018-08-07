@@ -4,7 +4,6 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.InfusionChangedMessage;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 
 @Mod.EventBusSubscriber
 public class InfusionEvents {
-	
+
 	@SubscribeEvent
 	public static void onPlayerLogin(PlayerLoggedInEvent evt) {
 		if (evt.player instanceof EntityPlayerMP) {
