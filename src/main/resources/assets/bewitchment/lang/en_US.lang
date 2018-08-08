@@ -174,6 +174,7 @@ item.regal_silk.name=Regal Silk
 item.golden_thread.name=Golden Thread
 item.hellish_bauble.name=Hellish Bauble
 item.thorny_garment.name=Thorny Garment
+item.graveyard_dust.name=Graveyard Dust
 
 //fumes
 item.fume.unfired_jar.name=Unfired Jar
