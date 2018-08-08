@@ -1,7 +1,10 @@
 package com.bewitchment.common.block.magic;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.transformation.DefaultTransformations;
+import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -9,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -35,7 +39,8 @@ public class BlockSacrosanctGround extends BlockMod {
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
-		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT) {
+		ITransformation transformation = ((EntityPlayer) entityIn).getCapability(CapabilityTransformationData.CAPABILITY, null).getType();
+		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT || transformation == DefaultTransformations.VAMPIRE || transformation == DefaultTransformations.SPECTRE || transformation == DefaultTransformations.WEREWOLF) {
 			if (!entityIn.isBurning()) {
 				entityIn.setFire(1500);
 			}
