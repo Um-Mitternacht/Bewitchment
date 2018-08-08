@@ -195,6 +195,7 @@ public class CauldronRegistry {
 		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), Ingredient.fromStacks(new ItemStack (ModItems.ritual_chalk, 2, 0), new ItemStack(Items.BLAZE_POWDER, 4, 0), new ItemStack(ModItems.fume, 2, 11)));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), Ingredient.fromStacks(new ItemStack (ModItems.ritual_chalk, 2, 0), new ItemStack(ModItems.dimensional_sand, 4, 0), new ItemStack(ModItems.fume, 2, 12)));
 		registerCauldronCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), Ingredient.fromStacks(new ItemStack (ModItems.ritual_chalk, 2, 0), new ItemStack(Items.GOLD_NUGGET, 4, 0), new ItemStack(ModItems.fume, 2, 7)));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), Ingredient.fromStacks(new ItemStack (ModItems.ectoplasm, 4, 0), new ItemStack(ModItems.graveyard_dust, 4, 0), new ItemStack(ModItems.wormwood, 2, 0), new ItemStack(Blocks.DIRT, 4, 0)));
 		// Banner pattern removal
 		for (int i = 0; i < 16; i++) {
 			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
