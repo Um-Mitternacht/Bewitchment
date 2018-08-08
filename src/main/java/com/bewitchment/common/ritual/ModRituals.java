@@ -94,7 +94,7 @@ public class ModRituals {
 				),
 				ofs(new ItemStack(ModItems.athame)),
 				100,
-				circles(NETHER, ENDER, null),
+				circles(NORMAL, ENDER, null),
 				1000,
 				2
 		);
