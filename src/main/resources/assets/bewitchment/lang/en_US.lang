@@ -177,8 +177,8 @@ item.thorny_garment.name=Thorny Garment
 item.graveyard_dust.name=Graveyard Dust
 
 //fumes
-item.fume.unfired_jar.name=Unfired Jar
-item.fume.empty_jar.name=Empty Jar
+item.fume.unfired_jar.name=Unfired Clay Jar
+item.fume.empty_jar.name=Empty Clay Jar
 item.fume.oak_spirit.name=Oak Spirit
 item.fume.birch_soul.name=Birch Soul
 item.fume.acacia_essence.name=Acacia Essence
