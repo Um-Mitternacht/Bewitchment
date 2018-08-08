@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 /**
  * Created by Joseph on 7/16/2018.
  */
-//Todo: Allow grass to grow over this. Also create a class for graveyard dirt, which will act as a slow spawner of undead. Graveyard dirt's spawnrate will only be slightly higher than vanilla undead.
+//Todo: Allow grass to grow over this. Also create a class for graveyard dirt, which will act as a slow spawner of undead. Graveyard dirt's spawn rate will only be slightly higher than vanilla undead.
 public class BlockSacrosanctGround extends BlockMod {
 	public BlockSacrosanctGround() {
 		super(LibBlockName.SACROSANCT_GROUND, Material.GROUND);
