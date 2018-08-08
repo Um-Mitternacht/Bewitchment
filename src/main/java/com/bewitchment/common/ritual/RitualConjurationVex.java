@@ -2,7 +2,6 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
