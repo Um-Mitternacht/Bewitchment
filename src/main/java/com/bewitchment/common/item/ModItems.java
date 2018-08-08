@@ -253,6 +253,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GOOFER_DUST),
 				new ItemMod(LibItemName.FOUR_THIEVES_VINEGAR),
+				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
