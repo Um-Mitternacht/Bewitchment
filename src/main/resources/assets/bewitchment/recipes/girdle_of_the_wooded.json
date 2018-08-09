@@ -3,31 +3,34 @@
   "pattern": [
     "PLP",
     "UIU",
-    "PMP"
-  ],
-  "key": {
-    "U": {
-      "item": "bewitchment:fume",
-      "data": 10
+    "PMP",
+    "key"
+    :
+    {
+      "U": {
+        "item": "bewitchment:fume",
+        "data": 10
+      }
+    {
+      "M": {
+        "item": "bewitchment:gem",
+        "data": 1
+      }
+    {
+      "L": {
+        "type": "forge:ore_dict",
+        "ore": "logWood"
+      }
+    {
+      "P": {
+        "item": "bewitchment:fume",
+        "data": 15
+      }
     },
-    {	
-    "M": {
-      "item": "bewitchment:gem",
-      "data": 1
-    },	
-    {	
-    "L": {
-      "type": "forge:ore_dict",
-      "ore": "logWood"
-    },
-    {	
-    "P": {
-      "item": "bewitchment:fume",
-      "data": 15
+    "result"
+    :
+    {
+      "item": "bewitchment:girdle_of_the_wooded",
+      "data": 0
     }
-  },
-  "result": {
-    "item": "bewitchment:girdle_of_the_wooded",
-    "data": 0
-  }
-}
+    }

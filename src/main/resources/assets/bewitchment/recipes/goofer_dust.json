@@ -12,15 +12,15 @@
     {
       "type": "forge:ore_dict",
       "ore": "listAllherb"
-    },	
+    },
     {
       "type": "forge:ore_dict",
       "ore": "salt"
-    },	
+    },
     {
       "item": "bewitchment:wood_ash",
       "data": 0
-    },	
+    },
     {
       "item": "minecraft:iron_nugget",
       "data": 0
@@ -28,11 +28,11 @@
     {
       "item": "minecraft:dye",
       "data": 15
-    },	
+    },
     {
       "item": "bewitchment:graveyard_dirt",
       "data": 0
-    }	
+    }
   ],
   "result": {
     "item": "bewitchment:goofer_dust",
