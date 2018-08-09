@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SIS",
+    "IPI",
+    "SIS"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetGold"
+    },
+    "P": {
+      "item": "bewitchment:fume",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "bewitchment:triskelion_amulet",
+    "data": 0
+  }
+}
