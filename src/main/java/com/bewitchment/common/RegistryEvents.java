@@ -1,9 +1,28 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.core.Crop.ACONITUM;
+import static com.bewitchment.common.core.Crop.ASPHODEL;
+import static com.bewitchment.common.core.Crop.BELLADONNA;
+import static com.bewitchment.common.core.Crop.CHRYSANTHEMUM;
+import static com.bewitchment.common.core.Crop.GARLIC;
+import static com.bewitchment.common.core.Crop.GINGER;
+import static com.bewitchment.common.core.Crop.HELLEBORE;
+import static com.bewitchment.common.core.Crop.INFESTED_WHEAT;
+import static com.bewitchment.common.core.Crop.KELP;
+import static com.bewitchment.common.core.Crop.KENAF;
+import static com.bewitchment.common.core.Crop.LAVENDER;
+import static com.bewitchment.common.core.Crop.MANDRAKE;
+import static com.bewitchment.common.core.Crop.MINT;
+import static com.bewitchment.common.core.Crop.SAGEBRUSH;
+import static com.bewitchment.common.core.Crop.SILPHIUM;
+import static com.bewitchment.common.core.Crop.THISTLE;
+import static com.bewitchment.common.core.Crop.TULSI;
+import static com.bewitchment.common.core.Crop.WHITE_SAGE;
+import static com.bewitchment.common.core.Crop.WORMWOOD;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.crop.BlockCrop;
 import com.bewitchment.common.core.Crop;
-import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.internalApi.CropRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.food.*;
@@ -12,15 +31,13 @@ import com.bewitchment.common.item.food.seed.ItemSeed;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.ModTiles;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.bewitchment.common.core.Crop.*;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -35,9 +52,6 @@ public final class RegistryEvents {
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		registerCrop(WHITE_SAGE, ModBlocks.crop_white_sage
 				, new ItemCrop(LibItemName.WHITE_SAGE, 1, 0.4F, false), LibItemName.SEED_WHITE_SAGE);
 		registerCrop(WORMWOOD, ModBlocks.crop_wormwood
@@ -81,26 +95,17 @@ public final class RegistryEvents {
 	}
 
 	private static void registerCrop(Crop crop, BlockCrop placed, Item cropItem, String seedName) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		CropRegistry.registerCrop(crop, placed, cropItem, new ItemSeed(seedName, placed, crop.getSoil()));
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		ModBlocks.register(event.getRegistry());
 		ModTiles.registerAll();
 	}
 
 	@SubscribeEvent
 	public static void registerPotions(RegistryEvent.Register<Potion> event) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		event.getRegistry().registerAll();
 	}
 }

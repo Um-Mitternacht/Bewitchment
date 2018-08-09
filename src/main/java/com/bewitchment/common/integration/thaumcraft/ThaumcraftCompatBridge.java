@@ -9,9 +9,9 @@ public class ThaumcraftCompatBridge {
 	//FIXME: Support for beta 20 is needed.
 	private static final String TC_MOD_ID = "thaumcraft";
 
-	public static void registerAspects() {
+	public static void loadThaumcraftCompat() {
 		if (Loader.isModLoaded(TC_MOD_ID)) {
-			ThaumcraftCompat.registerAspectsInternal();
+			ThaumcraftCompat.register();
 		}
 	}
 
