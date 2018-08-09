@@ -7,7 +7,7 @@
   ],
   "key": {
     "I": {
-      "item": "bewitchment:cold_iron_ingot"
+      "item": "bewitchment:cold_iron_nugget"
     },
     "S": {
       "type": "forge:ore_dict",
