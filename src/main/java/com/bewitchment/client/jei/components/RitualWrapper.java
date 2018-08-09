@@ -1,8 +1,11 @@
 package com.bewitchment.client.jei.components;
 
+import java.util.List;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.AdapterIRitual;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredients;
@@ -13,8 +16,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.List;
 
 public class RitualWrapper implements IRecipeWrapper {
 	private static IDrawable centerGlyph, circle1, circle2, circle3;
@@ -31,10 +32,10 @@ public class RitualWrapper implements IRecipeWrapper {
 		powerTick = ritual.getRunningPower();
 		name = I18n.format("ritual." + ritual.getRegistryName().toString().replace(':', '.') + ".name");
 		if (centerGlyph == null) {
-			centerGlyph = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34, 34, 34);
-			circle1 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34, 34, 34);
-			circle2 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_2.png"), 0, 0, 34, 34, 34, 34);
-			circle3 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_3.png"), 0, 0, 34, 34, 34, 34);
+			centerGlyph = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
+			circle1 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
+			circle2 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_2.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
+			circle3 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_3.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 		}
 	}
 

@@ -1,6 +1,9 @@
 package com.bewitchment.client.jei.components;
 
+import java.util.Arrays;
+
 import com.bewitchment.common.lib.LibMod;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -9,15 +12,13 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
-
 public class SpinnerCategory implements IRecipeCategory<SpinnerWrapper> {
 
 	public static final String UID = LibMod.MOD_ID + ":spinner";
 	private IDrawable bg;
 
 	public SpinnerCategory(IGuiHelper igh) {
-		bg = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_spinner.png"), 0, 0, 90, 36, 90, 36);
+		bg = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_spinner.png"), 0, 0, 90, 36).setTextureSize(90, 36).build();
 	}
 
 	@Override
