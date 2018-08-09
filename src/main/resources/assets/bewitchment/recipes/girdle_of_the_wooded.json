@@ -2,7 +2,7 @@
   "type": "forge:ore_shaped",
   "pattern": [
     "PLP",
-    "UIU",
+    "UFU",
     "PMP"
   ],
   "key": {
@@ -13,10 +13,14 @@
     "M": {
       "item": "bewitchment:gem",
       "data": 1
-    },		
+    },
     "L": {
       "type": "forge:ore_dict",
       "ore": "logWood"
+    },
+    "F": {
+      "item": "bewitchment:pure_filament",
+      "data": 0
     },
     "P": {
       "item": "bewitchment:fume",
@@ -25,6 +29,7 @@
   },
   "result": {
     "item": "bewitchment:girdle_of_the_wooded",
-    "data": 0
+    "data": 0,
+    "count": 1
   }
 }

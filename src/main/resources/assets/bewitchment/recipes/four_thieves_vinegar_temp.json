@@ -12,15 +12,15 @@
     {
       "type": "forge:ore_dict",
       "ore": "listAllherb"
-    },	
+    },
     {
       "type": "forge:ore_dict",
       "ore": "listAllherb"
-    },	
+    },
     {
       "item": "minecraft:apple",
       "data": 0
-    },	
+    },
     {
       "item": "minecraft:glass_bottle",
       "data": 0
