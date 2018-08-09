@@ -1,5 +1,8 @@
 package com.bewitchment.common.core.gen;
 
+import java.util.*;
+import java.util.function.Function;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -10,9 +13,6 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
-
-import java.util.*;
-import java.util.function.Function;
 
 /**
  * This class was created by BerciTheBeast on 4.3.2017.
@@ -111,8 +111,8 @@ public class WorldGenOre extends WorldGenMinable implements IWorldGenerator {
 			return this;
 		}
 
-		public OreGenBuilder setBiomes(BiomeDictionary.Type... biomes) {
-			this.biomes = biomes;
+		public OreGenBuilder setBiomes(BiomeDictionary.Type... biomesIn) {
+			this.biomes = biomesIn;
 			return this;
 		}
 

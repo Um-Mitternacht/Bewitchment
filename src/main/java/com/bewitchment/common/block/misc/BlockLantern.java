@@ -1,9 +1,12 @@
 package com.bewitchment.common.block.misc;
 
+import java.util.Random;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -21,8 +24,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-
-import java.util.Random;
 
 public class BlockLantern extends BlockMod {
 
@@ -44,10 +45,11 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return bounding_box;
 	}
-
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
@@ -61,12 +63,14 @@ public class BlockLantern extends BlockMod {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
@@ -82,6 +86,7 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
@@ -102,11 +107,13 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(Bewitchment.COLOR, EnumDyeColor.values()[meta]);
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(Bewitchment.COLOR).ordinal();
 	}

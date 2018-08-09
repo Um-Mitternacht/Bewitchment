@@ -1,7 +1,12 @@
 package com.bewitchment.common.block.decorations;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -24,9 +29,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -204,7 +206,7 @@ public class BlockFakeIceFence extends BlockMod {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{NORTH, EAST, WEST, SOUTH});
+		return new BlockStateContainer(this, new IProperty<?>[] { NORTH, EAST, WEST, SOUTH });
 	}
 
 	@Override
