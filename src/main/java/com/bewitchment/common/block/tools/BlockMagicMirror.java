@@ -1,11 +1,14 @@
 package com.bewitchment.common.block.tools;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityMagicMirror;
+
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -25,8 +28,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class BlockMagicMirror extends BlockModTileEntity {
 	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f + 13.0f / 16.0f, 1.0f, 1.0f, 1.0f);
@@ -89,8 +90,8 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
+	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta));
 	}
@@ -186,6 +187,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public IBlockState getStateFromMeta(int meta) {
 			return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta));
 		}

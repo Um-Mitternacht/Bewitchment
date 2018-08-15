@@ -33,9 +33,9 @@ public class CapabilityMimicData implements IMimicData {
 	}
 
 	@Override
-	public void setMimicking(boolean mimicking, EntityPlayer p) {
-		setMimickingDirect(mimicking);
-		if (!mimicking) {
+	public void setMimicking(boolean mimickingIn, EntityPlayer p) {
+		setMimickingDirect(mimickingIn);
+		if (!mimickingIn) {
 			Bewitchment.proxy.stopMimicking(p);
 		}
 	}
@@ -65,7 +65,7 @@ public class CapabilityMimicData implements IMimicData {
 	 * Prefer the use of {@link IMimicData#setMimicking(boolean, EntityPlayer)}
 	 */
 	@Override
-	public void setMimickingDirect(boolean mimicking) {
-		this.mimicking = mimicking;
+	public void setMimickingDirect(boolean mimickingIn) {
+		this.mimicking = mimickingIn;
 	}
 }

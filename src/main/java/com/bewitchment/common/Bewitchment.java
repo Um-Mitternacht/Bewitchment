@@ -1,5 +1,10 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -39,6 +44,7 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
@@ -46,7 +52,6 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -55,10 +60,6 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -108,9 +109,7 @@ public class Bewitchment {
 		ModAbilities.dummyMethodToLoadClass();
 		ModLootTables.registerLootTables();
 		proxy.preInit(event);
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
+		ThaumcraftCompatBridge.loadThaumcraftCompat();
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");

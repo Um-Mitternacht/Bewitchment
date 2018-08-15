@@ -5,6 +5,7 @@ import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.core.helper.RomanNumber;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -24,7 +25,7 @@ public abstract class SimpleModifier implements IBrewModifier {
 	}
 
 	@Override
-	public IBrewModifier setRegistryName(ResourceLocation name) {
+	public IBrewModifier setRegistryName(ResourceLocation nameIn) {
 		throw new UnsupportedOperationException("Don't mess with bewitchment default implementation of modifiers!");
 	}
 

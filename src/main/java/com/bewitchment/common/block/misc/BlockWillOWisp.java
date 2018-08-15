@@ -1,8 +1,11 @@
 package com.bewitchment.common.block.misc;
 
+import java.util.Random;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -19,8 +22,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
 
 public class BlockWillOWisp extends BlockMod {
 
@@ -58,11 +59,13 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return NULL_AABB;
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
@@ -79,6 +82,7 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -94,6 +98,7 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
@@ -104,11 +109,13 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}

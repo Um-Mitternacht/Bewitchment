@@ -1,6 +1,7 @@
 package com.bewitchment.client.jei.components;
 
 import com.bewitchment.common.lib.LibMod;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
@@ -18,7 +19,7 @@ public class BrewModifierCategory implements IRecipeCategory<BrewModifierWrapper
 	private IDrawable bg;
 
 	public BrewModifierCategory(IGuiHelper igh) {
-		bg = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing_modifier.png"), 0, 0, 140, 80, 140, 80);
+		bg = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing_modifier.png"), 0, 0, 140, 80).setTextureSize(140, 80).build();
 	}
 
 	@Override
