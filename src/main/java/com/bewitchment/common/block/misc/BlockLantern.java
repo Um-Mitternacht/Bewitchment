@@ -1,12 +1,9 @@
 package com.bewitchment.common.block.misc;
 
-import java.util.Random;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -24,6 +21,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+
+import java.util.Random;
 
 public class BlockLantern extends BlockMod {
 
@@ -49,7 +48,7 @@ public class BlockLantern extends BlockMod {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return bounding_box;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {

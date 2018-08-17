@@ -1,8 +1,5 @@
 package com.bewitchment.common.core.gen;
 
-import java.util.*;
-import java.util.function.Function;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -13,6 +10,9 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.*;
+import java.util.function.Function;
 
 /**
  * This class was created by BerciTheBeast on 4.3.2017.

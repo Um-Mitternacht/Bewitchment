@@ -1,9 +1,6 @@
 package com.bewitchment.client.jei.components;
 
-import java.util.Arrays;
-
 import com.bewitchment.common.lib.LibMod;
-
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -11,6 +8,8 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
 
 public class SpinnerCategory implements IRecipeCategory<SpinnerWrapper> {
 
