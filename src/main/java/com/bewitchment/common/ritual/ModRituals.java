@@ -1,5 +1,12 @@
 package com.bewitchment.common.ritual;
 
+import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
+import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
+
+import java.util.Arrays;
+
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
@@ -7,6 +14,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.TileEntityGlyph;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -15,10 +23,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.Arrays;
-
-import static com.bewitchment.api.ritual.EnumGlyphType.*;
 
 public class ModRituals {
 
@@ -40,11 +44,6 @@ public class ModRituals {
 				800, //Initial cost
 				0 //Cost per tick
 		);
-
-		{
-			sanctuary = new RitualImpl(rl("sanctuary"), of(Ingredient.fromItem(ModItems.white_sage), (Ingredient.fromItem(ModItems.sagebrush)), Ingredient.fromItem(ModItems.salt), Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0))), ofs(new ItemStack(ModBlocks.sacrosanct_ground)), 130, circles(NORMAL, NORMAL, null), 400, 4);
-		}
-		;
 
 		fast_day = new RitualSandsTime(
 				rl("time_sands"),
@@ -157,6 +156,7 @@ public class ModRituals {
 		infusion_end = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.heavenly_winds.ordinal()))), none, 60, circles(ENDER, ENDER, ENDER), 6000, 1, DefaultInfusions.END);
 		infusion_dream = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.zephyr_of_the_depths.ordinal()))), none, 60, circles(NORMAL, NETHER, ENDER), 6000, 1, DefaultInfusions.DREAM);
 		flames = new RitualFlames(new ResourceLocation(LibMod.MOD_ID, "flames"), of(Ingredient.fromItem(Items.BLAZE_ROD), Ingredient.fromItem(Items.COAL)), none, 3600, circles(NETHER, null, null), 300, 4);
+		sanctuary = new RitualImpl(rl("sanctuary"), of(Ingredient.fromItem(ModItems.white_sage), (Ingredient.fromItem(ModItems.sagebrush)), Ingredient.fromItem(ModItems.salt), Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0))), ofs(new ItemStack(ModBlocks.sacrosanct_ground)), 130, circles(NORMAL, NORMAL, null), 400, 4);
 		registerAll();
 	}
 
