@@ -4,6 +4,7 @@ import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.TileEntityBarrel;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -38,6 +39,7 @@ public class BlockBarrel extends BlockModTileEntity {
 		super(id, Material.WOOD);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.SOUTH).withProperty(StateProperties.WOOD_TYPE, EnumWoodType.OAK));
 		this.setHarvestLevel("axe", 0);
+		this.setSound(SoundType.WOOD);
 		this.setHardness(2.0f);
 		this.setLightOpacity(0);
 	}
