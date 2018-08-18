@@ -5,8 +5,7 @@ import net.minecraftforge.fml.common.Loader;
 
 @SuppressWarnings("deprecation")
 public class ThaumcraftCompatBridge {
-
-	//FIXME: Support for beta 20 is needed.
+	
 	private static final String TC_MOD_ID = "thaumcraft";
 
 	public static void loadThaumcraftCompat() {
