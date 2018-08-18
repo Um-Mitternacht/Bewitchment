@@ -21,11 +21,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.crafting.IInfusionStabiliser;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockMoonbell extends BlockModFlower {
+public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser {
 
 	public static final PropertyBool placed = PropertyBool.create("placed");
 	private static ArrayList<Biome> validBiomesMoonBell = new ArrayList<Biome>();
@@ -112,6 +113,10 @@ public class BlockMoonbell extends BlockModFlower {
 				return;
 			}
 		}
+	}
+
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
 	}
 
 }

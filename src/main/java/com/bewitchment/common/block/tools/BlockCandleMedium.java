@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import thaumcraft.api.crafting.IInfusionStabiliser;
 
 import java.util.Random;
 
@@ -14,7 +16,7 @@ import java.util.Random;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockCandleMedium extends BlockCandle {
+public class BlockCandleMedium extends BlockCandle implements IInfusionStabiliser {
 
 	private static final AxisAlignedBB MEDIUM_BOX = new AxisAlignedBB(0.31, 0, 0.31, 0.69, 0.75, 0.69);
 
@@ -36,5 +38,9 @@ public class BlockCandleMedium extends BlockCandle {
 	@Override
 	public int getType() {
 		return 1;
+	}
+
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
 	}
 }

@@ -9,8 +9,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.api.crafting.IInfusionStabiliser;
 
-public class BlockGemBowl extends BlockModTileEntity {
+public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabiliser {
 	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0.0f, 0.25f, 0.75f, 0.1875f, 0.75f);
 
 	public BlockGemBowl(String id) {
@@ -63,5 +64,9 @@ public class BlockGemBowl extends BlockModTileEntity {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityGemBowl();
+	}
+
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
 	}
 }
