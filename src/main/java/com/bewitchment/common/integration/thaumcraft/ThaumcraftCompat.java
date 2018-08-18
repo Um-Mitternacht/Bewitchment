@@ -154,6 +154,8 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 1), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(SUN, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 2), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 3), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(DEMON, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.seed_hellebore), new AspectList().add(Aspect.PLANT, 1).add(DEMON, 1));
+		evt.register.registerObjectTag(new ItemStack(ModItems.seed_silphium), new AspectList().add(Aspect.PLANT, 1).add(Aspect.DESIRE, 1));
 
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
