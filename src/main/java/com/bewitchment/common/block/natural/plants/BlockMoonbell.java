@@ -16,6 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -26,6 +27,7 @@ import thaumcraft.api.crafting.IInfusionStabiliser;
 import java.util.ArrayList;
 import java.util.Random;
 
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
 public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser {
 
 	public static final PropertyBool placed = PropertyBool.create("placed");
@@ -115,6 +117,8 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 		}
 	}
 
+	@Override
+	@Optional.Method(modid = "thaumcraft")
 	public boolean canStabaliseInfusion(World world, BlockPos pos) {
 		return true;
 	}
