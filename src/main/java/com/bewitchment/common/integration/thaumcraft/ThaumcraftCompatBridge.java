@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.Loader;
 
 @SuppressWarnings("deprecation")
 public class ThaumcraftCompatBridge {
-	
+
 	private static final String TC_MOD_ID = "thaumcraft";
 
 	public static void loadThaumcraftCompat() {
