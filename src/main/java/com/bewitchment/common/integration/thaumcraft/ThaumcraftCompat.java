@@ -35,7 +35,7 @@ public class ThaumcraftCompat {
 	// This spot will register our new aspects
 	static final Aspect SUN = new Aspect("sol", 0XFFD300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/sol.png"), 1);
 	static final Aspect MOON = new Aspect("luna", 0X808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/luna.png"), 1);
-	static final Aspect STAR = new Aspect("stellae", 0XFFF8E7, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
+	static final Aspect STAR = new Aspect("stellae", 0X73C2FB, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/stellae.png"), 1);
 	static final Aspect DEMON = new Aspect("diabolus", 0X960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(LibMod.MOD_ID, "textures/thaumcraft/diabolus.png"), 1);
 	private static final ThaumcraftCompat INSTANCE = new ThaumcraftCompat();
 	private static boolean registered = false;
@@ -171,6 +171,7 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_belladonna), new AspectList().add(Aspect.PLANT, 1).add(Aspect.DEATH, 1).add(Aspect.MAGIC, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_thistle), new AspectList().add(Aspect.PLANT, 1).add(Aspect.AVERSION, 1).add(Aspect.PROTECT, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kenaf), new AspectList().add(Aspect.PLANT, 1).add(Aspect.CRAFT, 1));
+		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kelp), new AspectList().add(Aspect.PLANT, 1).add(Aspect.WATER, 1));
 
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
