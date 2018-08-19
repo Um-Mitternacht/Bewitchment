@@ -3,7 +3,6 @@ package com.bewitchment.client.core;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
-import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.client.core.event.*;
 import com.bewitchment.client.fx.ParticleF;
@@ -18,6 +17,7 @@ import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
+import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.GuiHandler;
@@ -32,7 +32,6 @@ import com.bewitchment.common.tile.TileEntityCauldron;
 import com.bewitchment.common.tile.TileEntityGemBowl;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -111,7 +110,7 @@ public class ClientProxy implements ISidedProxy {
 		blocks.registerBlockColorHandler(new IBlockColor() {
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				EnumGlyphType type = state.getValue(StateProperties.GLYPH_TYPE);
+				EnumGlyphType type = state.getValue(BlockCircleGlyph.TYPE);
 				switch (type) {
 					case ENDER:
 						return 0x770077;
@@ -221,8 +220,10 @@ public class ClientProxy implements ISidedProxy {
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		p.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
 		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarots) {
+			System.out.println("Found valid GUI, loading data");
 			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarots) Minecraft.getMinecraft().currentScreen).loadData(tarots));
 		} else {
+			System.out.println("Gui not found, loading a new one");
 			GuiTarots gt = new GuiTarots();
 			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gt));
 			Minecraft.getMinecraft().addScheduledTask(() -> gt.loadData(tarots));
@@ -247,10 +248,5 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void setupHealthRenderer(boolean overrideHealth) {
 		HealthDisplayOverride.set(overrideHealth);
-	}
-
-	@Override
-	public void stopMimicking(EntityPlayer p) {
-		MimicEventHandler.stopMimicking((AbstractClientPlayer) p);
 	}
 }

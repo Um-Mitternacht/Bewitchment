@@ -6,10 +6,10 @@
 
 package com.bewitchment.common.item.block;
 
-import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
+import com.bewitchment.common.core.capability.energy.EnergyHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -83,7 +83,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
 		if (lit && !player.isSneaking()) {
-			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(100)) {
+			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && EnergyHandler.addEnergy(player, 10)) {
 				world.setBlockState(pos.offset(side), ModBlocks.will_o_wisp.getDefaultState(), 3);
 				return EnumActionResult.SUCCESS;
 			}

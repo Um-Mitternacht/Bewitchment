@@ -8,9 +8,9 @@ public class ThaumcraftCompatBridge {
 
 	private static final String TC_MOD_ID = "thaumcraft";
 
-	public static void loadThaumcraftCompat() {
+	public static void registerAspects() {
 		if (Loader.isModLoaded(TC_MOD_ID)) {
-			ThaumcraftCompat.register();
+			ThaumcraftCompat.registerAspectsInternal();
 		}
 	}
 

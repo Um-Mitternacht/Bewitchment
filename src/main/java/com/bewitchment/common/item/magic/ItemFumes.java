@@ -42,7 +42,6 @@ public class ItemFumes extends ItemMod {
 		}
 	}
 
-	//Idea: Specialized fumes from our trees?
 	public static enum Type {
 		unfired_jar, empty_jar, // Empty
 

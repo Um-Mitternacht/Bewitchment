@@ -31,7 +31,6 @@ public class ItemBoline extends ItemShears implements IModelRegister {
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
-	//Todo: Rewrite, allow it to double harvests from crops if used on such.
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
 		if (!target.world.isRemote) {

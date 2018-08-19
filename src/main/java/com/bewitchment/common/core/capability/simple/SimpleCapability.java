@@ -357,13 +357,13 @@ public abstract class SimpleCapability {
 		}
 
 		@Override
-		public boolean hasCapability(Capability<?> capabilityIn, EnumFacing facing) {
-			return capabilityIn == this.capability;
+		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+			return capability == this.capability;
 		}
 
 		@Override
-		public <V> V getCapability(Capability<V> capabilityIn, EnumFacing facing) {
-			if (capabilityIn == this.capability) {
+		public <V> V getCapability(Capability<V> capability, EnumFacing facing) {
+			if (capability == this.capability) {
 				return this.capability.cast(this.deafault_instance);
 			}
 			return null;

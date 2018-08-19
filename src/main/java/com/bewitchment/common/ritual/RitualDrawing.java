@@ -1,10 +1,9 @@
 package com.bewitchment.common.ritual;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
-import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.tools.BlockCircleGlyph;
 import com.bewitchment.common.item.ModItems;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,7 +31,7 @@ public class RitualDrawing extends RitualImpl {
 
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
-		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(StateProperties.GLYPH_TYPE, EnumGlyphType.values()[data.getInteger("chalkType")]);
+		final IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), world, pos).withProperty(BlockCircleGlyph.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]).withProperty(BlockCircleGlyph.TYPE, EnumGlyphType.values()[data.getInteger("chalkType")]);
 		coords.forEach(rc -> {
 			world.setBlockState(pos.add(rc[0], 0, rc[1]), state, 3);
 		});

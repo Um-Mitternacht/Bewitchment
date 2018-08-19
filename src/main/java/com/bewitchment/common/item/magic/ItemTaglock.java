@@ -44,17 +44,6 @@ public class ItemTaglock extends ItemMod {
 
 	//Todo: Make appearance change based on whether it has a taglock or not in it.
 
-	public static Optional<EntityLivingBase> getVictim(ItemStack stack, World world) {
-		UUID uuid = NBTHelper.getUniqueID(stack, Bewitchment.TAGLOCK_ENTITY);
-		for (Entity entity : world.loadedEntityList) {
-			if (entity instanceof EntityLivingBase && entity.getUniqueID().equals(uuid)) {
-				return Optional.of((EntityLivingBase) entity);
-			}
-		}
-		EntityPlayer victim = world.getPlayerEntityByUUID(uuid);
-		return Optional.ofNullable(victim);
-	}
-
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -85,7 +74,6 @@ public class ItemTaglock extends ItemMod {
 			Optional<EntityPlayer> victim = getPlayerFromBed(world, pos, state.getValue(BlockBed.OCCUPIED));
 			if (victim.isPresent()) {
 				setVictim(player.getHeldItem(hand), victim.get());
-				return EnumActionResult.SUCCESS;
 			}
 		}
 
@@ -93,10 +81,10 @@ public class ItemTaglock extends ItemMod {
 	}
 
 	private Optional<EntityPlayer> getPlayerFromBed(World world, BlockPos bed, boolean inBed) {
-		return world.playerEntities.stream()
-				.filter(player -> player.bedLocation != null)
-				.filter(player -> player.getBedLocation().equals(bed))
-				.findAny();
+		return world.playerEntities.stream().filter(
+				player -> inBed ? (player.isPlayerSleeping() && player.bedLocation.equals(bed))
+						: player.getBedLocation().equals(bed)
+		).findAny();
 	}
 
 	public void setVictim(ItemStack stack, EntityLivingBase victim) {
@@ -107,5 +95,16 @@ public class ItemTaglock extends ItemMod {
 	public void removeVictim(ItemStack stack) {
 		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY);
 		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME);
+	}
+
+	public Optional<EntityLivingBase> getVictim(ItemStack stack, World world) {
+		UUID uuid = NBTHelper.getUniqueID(stack, Bewitchment.TAGLOCK_ENTITY);
+		for (Entity entity : world.loadedEntityList) {
+			if (entity instanceof EntityLivingBase && entity.getUniqueID().equals(uuid)) {
+				return Optional.of((EntityLivingBase) entity);
+			}
+		}
+		EntityPlayer victim = world.getPlayerEntityByUUID(uuid);
+		return Optional.ofNullable(victim);
 	}
 }

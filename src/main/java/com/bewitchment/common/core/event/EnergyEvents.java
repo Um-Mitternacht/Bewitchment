@@ -1,60 +1,78 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.api.mp.IMagicPowerContainer;
-import com.bewitchment.common.core.capability.CapabilityUtils;
-import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
-import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EnergySync;
+import com.bewitchment.api.capability.IEnergy;
+import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.common.core.capability.energy.EnergyProvider;
+import com.bewitchment.common.lib.LibMod;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+
+import java.util.Optional;
 
 /**
  * This class was created by Arekkuusu on 20/04/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@Mod.EventBusSubscriber
 public class EnergyEvents {
 
 	@SubscribeEvent
-	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
-		if (event.isWasDeath()) {
-			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
+	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
+		if (event.getObject() instanceof EntityPlayer) {
+			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "EnergyData"), new EnergyProvider());
+		}
+	}
+
+	@SuppressWarnings("ConstantConditions")
+	@SubscribeEvent
+	public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
+		final EntityPlayer oldPlayer = event.getOriginal();
+		final EntityPlayer newPlayer = event.getEntityPlayer();
+
+		if (event.isWasDeath() && oldPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null) && newPlayer.hasCapability(EnergyProvider.ENERGY_CAPABILITY, null)) {
+			final IEnergy oldCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
+			final IEnergy newCap = oldPlayer.getCapability(EnergyProvider.ENERGY_CAPABILITY, null);
+			newCap.set(oldCap.get());
+			newCap.setMax(oldCap.getMax());
+			newCap.setRegen(oldCap.getRegenTime(), oldCap.getRegenBurst());
+			newCap.setUses(oldCap.getUses());
 		}
 	}
 
 	@SubscribeEvent
-	public static void onPlayerLogin(PlayerLoggedInEvent evt) {
-		if (evt.player instanceof EntityPlayerMP) {
-			EntityPlayerMP player = (EntityPlayerMP) evt.player;
-			IMagicPowerContainer mp = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-			NetworkHandler.HANDLER.sendTo(new EnergySync(mp.getAmount(), mp.getMaxAmount()), player);
-		}
-	}
-
-	@SubscribeEvent
-	public static void playerUpdate(LivingEvent.LivingUpdateEvent event) {
+	public void onWorldJoin(EntityJoinWorldEvent event) {
 		if (event.getEntity() instanceof EntityPlayerMP) {
+			EntityPlayerMP entity = (EntityPlayerMP) event.getEntity();
+			Optional<IEnergy> optional = EnergyHandler.getEnergy(entity);
+			optional.ifPresent(iEnergy -> iEnergy.syncTo(entity));
+		}
+	}
+
+	@SubscribeEvent
+	public void playerUpdate(LivingEvent.LivingUpdateEvent event) {
+		if (!event.getEntity().world.isRemote && event.getEntity() instanceof EntityPlayerMP) {
 			final EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-			final PlayerMPContainer energy = (PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-			if (energy.isDirty() || energy.getAmount() < energy.getMaxAmount() && player.ticksExisted % (10 * getRegenTime(player)) == 0) {
-				energy.fill(getRegenBurst(player));
-				NetworkHandler.HANDLER.sendTo(new EnergySync(energy.getAmount(), energy.getMaxAmount()), player);
-				energy.setClean();
+			final Optional<IEnergy> optional = EnergyHandler.getEnergy(player);
+			if (optional.isPresent()) {
+				final IEnergy energy = optional.get();
+				energyRegen(player, energy);
 			}
 		}
 	}
 
-	private static int getRegenTime(EntityPlayerMP player) {
-		// TODO Auto-generated method stub
-		return 10;
-	}
+	private void energyRegen(EntityPlayerMP player, IEnergy energy) {
+		if (energy.getRegenTime() == -1) return;
+		if (energy.get() < energy.getMax() && energy.tick() % energy.getRegenTime() == 0) {
+			energy.set(energy.get() + energy.getRegenBurst());
+			energy.tickReset();
 
-	private static int getRegenBurst(EntityPlayerMP player) {
-		// TODO Auto-generated method stub
-		return 10;
+			energy.syncTo(player);
+		}
 	}
 }

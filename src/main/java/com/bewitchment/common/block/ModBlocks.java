@@ -7,6 +7,7 @@ import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
+import com.bewitchment.common.block.misc.BlockGemBowl;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
@@ -229,7 +230,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
-				new BlockMod(LibBlockName.GRAVEYARD_DIRT, Material.GROUND).setSound(SoundType.GROUND).setHardness(1.0F)
+				new BlockMod(LibBlockName.GRAVEYARD_DIRT, Material.GROUND).setHardness(1.0F)
 		);
 
 		//Trees

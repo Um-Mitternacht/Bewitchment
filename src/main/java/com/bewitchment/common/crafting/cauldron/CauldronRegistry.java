@@ -9,7 +9,8 @@ import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
-import com.bewitchment.common.crafting.util.IngredientMultiOreDict;
+import com.bewitchment.common.crafting.CauldronCraftingRecipe;
+import com.bewitchment.common.crafting.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
@@ -167,7 +168,6 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
-		//Todo: Support for more modded foods.
 
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET), noMeta(Items.LEATHER_HELMET));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE), noMeta(Items.LEATHER_CHESTPLATE));
@@ -191,11 +191,7 @@ public class CauldronRegistry {
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.honey), Ingredient.fromItem(ModItems.honeycomb));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), Ingredient.fromItem(ModItems.hoof));
 		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 6, 0), Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0)));
-		// Arcane recipes
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.BLAZE_POWDER, 4, 0), new ItemStack(ModItems.fume, 2, 11)));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(ModItems.dimensional_sand, 4, 0), new ItemStack(ModItems.fume, 2, 12)));
-		registerCauldronCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.GOLD_NUGGET, 4, 0), new ItemStack(ModItems.fume, 2, 7)));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), Ingredient.fromStacks(new ItemStack(ModItems.ectoplasm, 2, 0), new ItemStack(ModItems.graveyard_dust, 2, 0), new ItemStack(ModItems.wormwood, 2, 0), new ItemStack(Blocks.DIRT, 4, 0)));
+		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.absinthe_green), Ingredient.fromStacks(new ItemStack(ModItems.wormwood, 1, 0)));
 		// Banner pattern removal
 		for (int i = 0; i < 16; i++) {
 			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
@@ -219,7 +215,7 @@ public class CauldronRegistry {
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
-		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME crafting conflict with radius modifier
+		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME recipe conflict with radius modifier
 		registerCombinedBrewEffect(ModPotions.plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
 		registerCombinedBrewEffect(ModPotions.corruption, Ingredient.fromItem(Items.BONE));
@@ -241,7 +237,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
 		registerCombinedBrewEffect(ModPotions.purification, Ingredient.fromItem(ModItems.tulsi));
-		registerCombinedBrewEffect(ModPotions.path_of_the_deep, new IngredientMultiOreDict("kelp", "seaWeed", "cropSeaweed", "cropKelp"));
+		registerCombinedBrewEffect(ModPotions.path_of_the_deep, new IngredientMultiOreDict("kelp", "seaWeed"));
 		registerCombinedBrewEffect(ModPotions.prune_leaves, Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.rotting, Ingredient.fromItem(ModItems.tongue_of_dog));
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
@@ -251,7 +247,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.snow_trail, Ingredient.fromItem(Item.getItemFromBlock(Blocks.PACKED_ICE)));
 		registerCombinedBrewEffect(ModPotions.spider_nightmare, Ingredient.fromItem(Item.getItemFromBlock(Blocks.WEB)));
 		registerCombinedBrewEffect(ModPotions.volatility, Ingredient.fromItem(Items.GUNPOWDER));
-		registerCombinedBrewEffect(ModPotions.pulverize, Ingredient.fromItem(Item.getItemFromBlock(Blocks.COBBLESTONE)));
+		registerCombinedBrewEffect(ModPotions.pulverize, Ingredient.fromStacks(new ItemStack(ModItems.gem, 1, 6)));
 		registerCombinedBrewEffect(ModPotions.love, Ingredient.fromItem(ModItems.silphium));
 		registerCombinedBrewEffect(ModPotions.revealing, Ingredient.fromItem(Items.SPIDER_EYE)); //TODO: change this ingredient to something more sensible
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {

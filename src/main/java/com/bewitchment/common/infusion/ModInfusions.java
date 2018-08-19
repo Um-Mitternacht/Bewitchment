@@ -17,6 +17,6 @@ public class ModInfusions {
 		DefaultInfusions.END = new SimpleInfusion("end", 1);
 		DefaultInfusions.DREAM = new SimpleInfusion("dream", 0); // TODO make this the correct number
 		DefaultInfusions.NONE = new SimpleInfusion("none", 0);
-		REGISTRY.registerAll(DefaultInfusions.NONE, DefaultInfusions.OVERWORLD, DefaultInfusions.NETHER, DefaultInfusions.END, DefaultInfusions.DREAM);
+		REGISTRY.registerAll(DefaultInfusions.OVERWORLD, DefaultInfusions.NETHER, DefaultInfusions.END, DefaultInfusions.DREAM);
 	}
 }

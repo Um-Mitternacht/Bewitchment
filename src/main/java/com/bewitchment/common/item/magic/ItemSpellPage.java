@@ -6,8 +6,7 @@
 
 package com.bewitchment.common.item.magic;
 
-import com.bewitchment.api.mp.IMagicPowerContainer;
-import com.bewitchment.api.mp.IMagicPowerUsingItem;
+import com.bewitchment.api.capability.IItemEnergyUser;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.entity.EntitySpellCarrier;
@@ -33,6 +32,8 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import javax.annotation.Nullable;
 
 public class ItemSpellPage extends ItemMod {
+
+	IItemEnergyUser defImpl = IItemEnergyUser.ENERGY_USER_CAPABILITY.getDefaultInstance();
 
 	public ItemSpellPage(String id) {
 		super(id);
@@ -100,7 +101,7 @@ public class ItemSpellPage extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		ISpell s = getSpellFromItemStack(playerIn.getHeldItem(handIn));
-		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn) && playerIn.getCapability(IMagicPowerContainer.CAPABILITY, null).getAmount() >= s.getCost()) {
+		if (s != null && s.canBeUsed(worldIn, playerIn.getPosition(), playerIn)) {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 		}
@@ -111,23 +112,25 @@ public class ItemSpellPage extends ItemMod {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		ISpell spell = getSpellFromItemStack(stack);
 		if (spell != null && !worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				int spellCost = spell.getCost() * 80;
-				IMagicPowerContainer mpc = entityLiving.getCapability(IMagicPowerContainer.CAPABILITY, null);
-				if (mpc.drain(spellCost)) {
-					if (spell.getType() == EnumSpellType.INSTANT)
-						spell.performEffect(new RayTraceResult(Type.MISS, entityLiving.getLookVec(), EnumFacing.UP, entityLiving.getPosition()), entityLiving, worldIn);
-					else {
-						EntitySpellCarrier car = new EntitySpellCarrier(worldIn, entityLiving.posX + entityLiving.getLookVec().x, entityLiving.posY + entityLiving.getEyeHeight() + entityLiving.getLookVec().y, entityLiving.posZ + entityLiving.getLookVec().z);
-						car.setSpell(spell);
-						car.setCaster(entityLiving);
-						car.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 2f, 0);
-						worldIn.spawnEntity(car);
-					}
-				}
+			// if (entityLiving instanceof EntityPlayer) {
+			// int spellCost = spell.getCost() * 80;
+			// Optional<IEnergy> eng = EnergyHandler.getEnergy((EntityPlayer) entityLiving);
+			// if (eng.isPresent() && eng.get().get() < spellCost)
+			// return stack;
+			// EnergyHandler.addEnergy((EntityPlayer) entityLiving, -spellCost);
+			// }
+			if (spell.getType() == EnumSpellType.INSTANT)
+				spell.performEffect(new RayTraceResult(Type.MISS, entityLiving.getLookVec(), EnumFacing.UP, entityLiving.getPosition()), entityLiving, worldIn);
+			else {
+				EntitySpellCarrier car = new EntitySpellCarrier(worldIn, entityLiving.posX + entityLiving.getLookVec().x, entityLiving.posY + entityLiving.getEyeHeight() + entityLiving.getLookVec().y, entityLiving.posZ + entityLiving.getLookVec().z);
+				car.setSpell(spell);
+				car.setCaster(entityLiving);
+				car.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 2f, 0);
+				worldIn.spawnEntity(car);
 			}
 		}
-		return stack;
+		if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).isCreative()) return stack;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -146,17 +149,18 @@ public class ItemSpellPage extends ItemMod {
 
 			@Override
 			public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-				if (capability == IMagicPowerUsingItem.CAPABILITY) {
+				if (capability == IItemEnergyUser.ENERGY_USER_CAPABILITY)
 					return true;
-				}
 				return false;
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+				if (capability == IItemEnergyUser.ENERGY_USER_CAPABILITY)
+					return (T) defImpl;
 				return null;
 			}
-
 		};
 	}
 

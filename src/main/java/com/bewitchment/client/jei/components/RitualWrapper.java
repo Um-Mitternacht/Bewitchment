@@ -31,10 +31,10 @@ public class RitualWrapper implements IRecipeWrapper {
 		powerTick = ritual.getRunningPower();
 		name = I18n.format("ritual." + ritual.getRegistryName().toString().replace(':', '.') + ".name");
 		if (centerGlyph == null) {
-			centerGlyph = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
-			circle1 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
-			circle2 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_2.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
-			circle3 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_3.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
+			centerGlyph = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34, 34, 34);
+			circle1 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34, 34, 34);
+			circle2 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_2.png"), 0, 0, 34, 34, 34, 34);
+			circle3 = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_3.png"), 0, 0, 34, 34, 34, 34);
 		}
 	}
 

@@ -3,20 +3,21 @@ package com.bewitchment.common.block.tools;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.BlockModTileEntity;
+import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityCauldron;
 import com.bewitchment.common.tile.TileEntityCauldron.Mode;
-import com.bewitchment.common.tile.util.CauldronFluidTank;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -30,7 +31,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -45,7 +45,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockCauldron extends BlockModTileEntity {
+public class BlockCauldron extends BlockMod implements ITileEntityProvider {
 
 	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 15 * 0.0625, 11 * 0.0625, 15 * 0.0625);
 	private static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);
@@ -128,6 +128,17 @@ public class BlockCauldron extends BlockModTileEntity {
 	}
 
 	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (playerIn.isSneaking() && playerIn.getHeldItem(hand).isEmpty()) {
+			worldIn.setBlockState(pos, state.cycleProperty(Bewitchment.HALF), 3);
+			return true;
+		}
+
+		final TileEntityCauldron tile = (TileEntityCauldron) worldIn.getTileEntity(pos);
+		return tile != null && tile.onCauldronRightClick(playerIn, hand, playerIn.getHeldItem(hand));
+	}
+
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, FACING, Bewitchment.HALF);
 	}
@@ -151,11 +162,10 @@ public class BlockCauldron extends BlockModTileEntity {
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		TileEntityCauldron tile = (TileEntityCauldron) world.getTileEntity(pos);
 		if (tile != null) {
-			CauldronFluidTank tank = (CauldronFluidTank) tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			float level = tank.getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
+			float level = tile.getTank().getFluidAmount() / (Fluid.BUCKET_VOLUME * 2F);
 			level = pos.getY() + 0.1F + level;
 			if (tile.isBoiling()) {
-				Fluid fluid = tank.getInnerFluid();
+				Fluid fluid = tile.getTank().getInnerFluid();
 				if (fluid == FluidRegistry.WATER || fluid == Fluids.MUNDANE_OIL || fluid == Fluids.BW_HONEY) {
 					for (int i = 0; i < 2; i++) {
 						double posX = pos.getX() + 0.2D + world.rand.nextDouble() * 0.6D;

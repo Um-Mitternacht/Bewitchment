@@ -35,7 +35,6 @@ public class CapabilityTransformationData implements ITransformationData {
 	 * care of syncronization and refreshing data
 	 */
 	@Override
-	@SuppressWarnings("deprecation")
 	public void setType(ITransformation type) {
 		this.type = type;
 		if (type != DefaultTransformations.VAMPIRE) {
@@ -55,13 +54,11 @@ public class CapabilityTransformationData implements ITransformationData {
 	 * care of syncronization and refreshing data
 	 */
 	@Override
-	@SuppressWarnings("deprecation")
 	public void setLevel(int level) {
 		this.level = level;
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean addVampireBlood(int amount) {
 		if (getBlood() >= getMaxBlood() && amount > 0)
 			return false;
@@ -86,7 +83,6 @@ public class CapabilityTransformationData implements ITransformationData {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public void setBlood(int blood) {
 		this.blood = blood;
 	}

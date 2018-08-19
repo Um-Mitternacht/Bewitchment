@@ -7,27 +7,24 @@ import com.bewitchment.common.cauldron.ModBrewModifiers;
 import com.bewitchment.common.core.ModLootTables;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import com.bewitchment.common.core.capability.energy.MagicPowerConsumer;
-import com.bewitchment.common.core.capability.energy.MagicPowerContainer;
-import com.bewitchment.common.core.capability.energy.MagicPowerUsingItem;
-import com.bewitchment.common.core.capability.infusion.InfusionDefaultImplementation;
+import com.bewitchment.common.core.capability.energy.CapabilityEnergy;
+import com.bewitchment.common.core.capability.energy.energy_item.CapabilityEnergyUser;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.command.*;
+import com.bewitchment.common.core.event.ModEvents;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.BarkGrow;
 import com.bewitchment.common.core.proxy.ISidedProxy;
-import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
-import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
-import com.bewitchment.common.crafting.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.divination.ModFortunes;
 import com.bewitchment.common.divination.ModTarots;
 import com.bewitchment.common.entity.ModEntities;
+import com.bewitchment.common.fermenting.ModBarrelRecipes;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.bewitchment.common.infusion.ModInfusions;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
@@ -38,6 +35,7 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
+import com.bewitchment.common.spinning.ModSpinningThreadRecipes;
 import com.bewitchment.common.transformation.ModTransformations;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
@@ -46,6 +44,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -88,11 +87,9 @@ public class Bewitchment {
 	public void preInit(FMLPreInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
 		ApiInstance.initAPI();
+		CapabilityEnergy.init();
 		CapabilityDivination.init();
-		InfusionDefaultImplementation.init();
-		MagicPowerUsingItem.init();
-		MagicPowerContainer.init();
-		MagicPowerConsumer.init();
+		CapabilityEnergyUser.init();
 		CapabilityTransformationData.init();
 		CapabilityBloodReserve.init();
 		CapabilityCauldronTeleport.init();
@@ -101,13 +98,16 @@ public class Bewitchment {
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
+		ModEvents.init();
 		ModEntities.init();
 		ModSpells.init();
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
 		ModLootTables.registerLootTables();
 		proxy.preInit(event);
-		ThaumcraftCompatBridge.loadThaumcraftCompat();
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
@@ -127,7 +127,6 @@ public class Bewitchment {
 		ModGen.init();
 		ModSpinningThreadRecipes.init();
 		ModBarrelRecipes.init();
-		ModOvenSmeltingRecipes.init();
 		ModRituals.init();
 		ModBrewModifiers.init();
 

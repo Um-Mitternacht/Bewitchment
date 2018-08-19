@@ -1,7 +1,10 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.block.BlockModTileEntity;
+import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityThreadSpinner;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,7 +24,7 @@ import net.minecraft.world.World;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
-public class BlockThreadSpinner extends BlockModTileEntity {
+public class BlockThreadSpinner extends BlockMod implements ITileEntityProvider {
 
 	public BlockThreadSpinner(String id) {
 		super(id, Material.WOOD);
@@ -32,6 +35,12 @@ public class BlockThreadSpinner extends BlockModTileEntity {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityThreadSpinner();
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		playerIn.openGui(Bewitchment.instance, LibGui.THREAD_SPINNER.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+		return true;
 	}
 
 	@Override

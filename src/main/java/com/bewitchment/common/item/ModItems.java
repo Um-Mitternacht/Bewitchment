@@ -45,6 +45,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public final class ModItems {
 
 	public static final Item gem = null;
+	public static final Item gemstone_amalgam = null;
 	public static final Item gem_powder = null;
 
 	public static final Item fume = null;
@@ -136,6 +137,8 @@ public final class ModItems {
 	public static final Item owlets_wing = null;
 	public static final Item ravens_feather = null;
 	public static final Item equine_tail = null;
+	public static final Item albedo = null;
+	public static final Item absinthe_green = null;
 	public static final Item oak_apple_gall = null;
 	public static final Item iron_gall_ink = null;
 	public static final Item grilled_watermelon = null;
@@ -193,6 +196,7 @@ public final class ModItems {
 		// registry.register(new ItemFume());
 		registry.register(new ItemFumes("fume"));
 		registry.register(new ItemGemPowder("powders"));
+		registry.register(new ItemMod(LibItemName.GEMSTONE_AMALGAM));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
 		registry.register(new ItemMod(LibItemName.SILVER_POWDER));
 		registry.register(new ItemMod(LibItemName.SILVER_INGOT));
@@ -239,6 +243,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.CATECHU),
 				new ItemMod(LibItemName.OAK_APPLE_GALL),
 				new ItemMod(LibItemName.IRON_GALL_INK),
+				new ItemMod(LibItemName.ABSINTHE_GREEN),
+				new ItemMod(LibItemName.ALBEDO),
 				new ItemMod(LibItemName.GOLDEN_THREAD),
 				new ItemMod(LibItemName.COLD_IRON_NUGGET),
 				new ItemMod(LibItemName.OWLETS_WING),
@@ -253,7 +259,6 @@ public final class ModItems {
 				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GOOFER_DUST),
 				new ItemMod(LibItemName.FOUR_THIEVES_VINEGAR),
-				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
 				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
@@ -443,9 +448,9 @@ public final class ModItems {
 		OreDictionary.registerOre("cropWormwood", new ItemStack(ModItems.wormwood));
 		OreDictionary.registerOre("feather", new ItemStack(ModItems.chromatic_quill));
 		OreDictionary.registerOre("dyeBrown", new ItemStack(ModItems.catechu));
+		OreDictionary.registerOre("dyeWhite", new ItemStack(ModItems.albedo));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.iron_gall_ink));
-		OreDictionary.registerOre("dye", new ItemStack(ModItems.iron_gall_ink));
-		OreDictionary.registerOre("dye", new ItemStack(ModItems.catechu));
+		OreDictionary.registerOre("dyeGreen", new ItemStack(ModItems.absinthe_green));
 		OreDictionary.registerOre("ingotColdIron", new ItemStack(ModItems.cold_iron_ingot));
 		OreDictionary.registerOre("nuggetColdIron", new ItemStack(ModItems.cold_iron_nugget));
 	}

@@ -204,7 +204,7 @@ public class BlockFakeIceFence extends BlockMod {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty<?>[]{NORTH, EAST, WEST, SOUTH});
+		return new BlockStateContainer(this, new IProperty[]{NORTH, EAST, WEST, SOUTH});
 	}
 
 	@Override

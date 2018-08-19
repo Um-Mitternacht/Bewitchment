@@ -87,8 +87,8 @@ public abstract class Fortune implements IFortune {
 	}
 
 	@Override
-	public IFortune setRegistryName(ResourceLocation nameIn) {
-		this.name = nameIn;
+	public IFortune setRegistryName(ResourceLocation name) {
+		this.name = name;
 		return this;
 	}
 

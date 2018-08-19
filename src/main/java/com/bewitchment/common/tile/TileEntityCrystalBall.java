@@ -1,18 +1,11 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.api.divination.IFortune;
-import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.divination.Fortune;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -21,22 +14,20 @@ import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends ModTileEntity {
 
-	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
+	private TileEntityWitchAltar te = null;
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (hand == EnumHand.OFF_HAND) return false;
-		if (worldIn.isRemote) return true;
-		return fortune(playerIn);
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		// NO-OP
 	}
 
 	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		// NO-OP
 	}
 
 	public boolean fortune(EntityPlayer reader) {
-		if (getCapability(IMagicPowerConsumer.CAPABILITY, null).drain(reader, getPos(), world.provider.getDimension(), 5000)) {
+		if (consumePower(5000, false)) {
 			return readFortune(reader, null);
 		}
 		reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);
@@ -82,38 +73,21 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		return true;
 	}
 
-	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerConsumer.CAPABILITY) {
-			return true;
-		}
-		return super.hasCapability(capability, facing);
-	}
-
-	@Nullable
-	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerConsumer.CAPABILITY) {
-			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
-		}
-		return super.getCapability(capability, facing);
+	private boolean consumePower(int power, boolean simulate) {
+		if (power == 0) return true;
+		if (te == null || te.isInvalid())
+			te = TileEntityWitchAltar.getClosest(pos, world);
+		if (te == null) return false;
+		return te.consumePower(power, simulate);
 	}
 
 	@Override
-	protected void readAllModDataNBT(NBTTagCompound tag) {
-		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+
 	}
 
 	@Override
-	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setTag("altar", altarTracker.writeToNbt());
-	}
+	void readModSyncDataNBT(NBTTagCompound tag) {
 
-	@Override
-	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-	}
-
-	@Override
-	protected void readModSyncDataNBT(NBTTagCompound tag) {
 	}
 }

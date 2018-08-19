@@ -31,7 +31,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
@@ -40,7 +39,6 @@ import net.minecraftforge.oredict.OreIngredient;
 
 import java.util.UUID;
 
-@Mod.EventBusSubscriber
 public class VampireAbilityHandler {
 
 	public static final DamageSource SUN_DAMAGE = new DamageSource("sun_on_vampire").setDamageBypassesArmor().setDamageIsAbsolute().setFireDamage();
@@ -49,48 +47,34 @@ public class VampireAbilityHandler {
 	public static final Ingredient SILVER_WEAPON = new OreIngredient("weaponSilver");
 
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("c73f6d26-65ed-4ba5-ada8-9a96f8712424");
-	// TODO Check: can two different living hurt events run down the subscriber list in parallel?
-	// If so this doesn't work and one entity might end up receiving the damage amount meant for someone else in some cases
-	public static float lastDamage = 0;
 
 	/**
 	 * Modifies damage depending on the type. Fire and explosion make it 150%of the original,
 	 * all the other types make it 10% of the original provided there's blood in the pool
 	 */
 	@SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
-	public static void incomingDamageModifier(LivingHurtEvent evt) {
+	public void incomingDamageModifier(LivingHurtEvent evt) {
 		if (!evt.getEntity().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) evt.getEntityLiving();
 			ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == DefaultTransformations.VAMPIRE) {
 				if (evt.getSource() == SUN_DAMAGE) {
 					evt.setCanceled(false); // No immunity for you
-					return; // No multipliers for sun
+					return;
 				}
 				float multiplier = getMultiplier(evt); // A multiplier greater 1 makes the damage not be reduced
-				evt.setCanceled(false); // No forms of immunity for vampires
-				evt.setAmount(lastDamage); // No reductions either
+				evt.setCanceled(false); // No immunity for vampires
 				if (multiplier > 1) {
 					evt.setAmount(evt.getAmount() * multiplier);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
-					evt.setAmount(evt.getAmount() * (1f - 0.1f * data.getLevel()));
+					evt.setAmount(evt.getAmount() * 0.1f);
 				}
-			}
-		}
-	}
-
-	@SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
-	public static void dropInvalidGear(LivingHurtEvent evt) {
-		if (!evt.getEntity().world.isRemote && evt.getEntityLiving() instanceof EntityPlayer) {
-			ITransformationData data = evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null);
-			if (data.getType() == DefaultTransformations.VAMPIRE) {
-				lastDamage = evt.getAmount();
 			}
 		}
 	}
 
 	// NO-SUBSCRIBE
-	private static float getMultiplier(LivingHurtEvent evt) {
+	private float getMultiplier(LivingHurtEvent evt) {
 		float mult = 1;
 		if (evt.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer source = (EntityPlayer) evt.getSource().getTrueSource();
@@ -117,7 +101,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void tickChecks(PlayerTickEvent evt) {
+	public void tickChecks(PlayerTickEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (data.getType() == DefaultTransformations.VAMPIRE && evt.side.isServer()) {
 
@@ -161,7 +145,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void sleepBed(RightClickBlock evt) {
+	public void sleepBed(RightClickBlock evt) {
 		ITransformationData data = evt.getEntityPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (data.getType() == DefaultTransformations.VAMPIRE && evt.getEntityPlayer().world.getBlockState(evt.getPos()).getBlock() == Blocks.BED) {
 			evt.setCancellationResult(EnumActionResult.FAIL);
@@ -171,7 +155,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void foodEaten(LivingEntityUseItemEvent.Finish evt) {
+	public void foodEaten(LivingEntityUseItemEvent.Finish evt) {
 		if (evt.getEntityLiving() instanceof EntityPlayer && evt.getItem().getItem() instanceof ItemFood) {
 			ITransformationData data = ((EntityPlayer) evt.getEntityLiving()).getCapability(CapabilityTransformationData.CAPABILITY, null);
 			if (data.getType() == DefaultTransformations.VAMPIRE) {
@@ -181,7 +165,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void attachHotbarAbilities(HotbarActionCollectionEvent evt) {
+	public void attachHotbarAbilities(HotbarActionCollectionEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (data.getType() == DefaultTransformations.VAMPIRE) {
 			evt.getList().add(ModAbilities.DRAIN_BLOOD);
@@ -199,7 +183,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
+	public void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			boolean newStatus = !data.isNightVisionActive();
@@ -228,7 +212,7 @@ public class VampireAbilityHandler {
 		}
 	}
 
-	private static boolean canDrainBloodFrom(EntityPlayer player, EntityLivingBase entity) {
+	private boolean canDrainBloodFrom(EntityPlayer player, EntityLivingBase entity) {
 		if (player.getLastAttackedEntity() == entity || entity.getAttackingEntity() == player)
 			return false;
 		// TODO check if frontal, in case return false and damage the entity
@@ -236,7 +220,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void abilityHandler(PlayerTickEvent evt) {
+	public void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START && !evt.player.world.isRemote) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
 			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
@@ -251,7 +235,7 @@ public class VampireAbilityHandler {
 	}
 
 	@SubscribeEvent
-	public static void refreshModifiers(TransformationModifiedEvent evt) {
+	public void refreshModifiers(TransformationModifiedEvent evt) {
 		ITransformationData data = evt.getEntityPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null);
 		IAttributeInstance attack_speed = evt.getEntityPlayer().getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 		AttributeModifier modifier = attack_speed.getModifier(ATTACK_SPEED_MODIFIER_UUID);

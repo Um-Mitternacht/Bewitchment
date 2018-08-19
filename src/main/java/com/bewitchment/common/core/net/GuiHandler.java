@@ -1,10 +1,11 @@
 package com.bewitchment.common.core.net;
 
 import com.bewitchment.client.gui.*;
-import com.bewitchment.common.container.*;
+import com.bewitchment.client.gui.container.*;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -24,13 +25,13 @@ public class GuiHandler implements IGuiHandler {
 		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 		switch (LibGui.values()[ID]) {
 			case APIARY:
-				return tile instanceof TileEntityApiary ? new ContainerApiary(player.inventory, (TileEntityApiary) tile) : null;
+				return tile != null && (tile instanceof TileEntityApiary) ? new ContainerApiary(player.inventory, (TileEntityApiary) tile) : null;
 			case OVEN:
-				return tile instanceof TileEntityOven ? new ContainerOven(player.inventory, (TileEntityOven) tile) : null;
+				return tile != null && (tile instanceof TileEntityOven) ? new ContainerOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
-				return tile instanceof TileEntityThreadSpinner ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
+				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
 			case BARREL:
-				return tile instanceof TileEntityBarrel ? new ContainerBarrel(player.inventory, (TileEntityBarrel) tile) : null;
+				return tile != null && (tile instanceof TileEntityBarrel) ? new ContainerBarrel(player.inventory, (TileEntityBarrel) tile) : null;
 			case TAROT:
 				return new ContainerFake();// No container
 			default:
@@ -44,15 +45,15 @@ public class GuiHandler implements IGuiHandler {
 		final TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 		switch (LibGui.values()[ID]) {
 			case APIARY:
-				return tile instanceof TileEntityApiary ? new GuiApiary(player.inventory, (TileEntityApiary) tile) : null;
+				return tile != null && (tile instanceof TileEntityApiary) ? new GuiApiary(player.inventory, (TileEntityApiary) tile) : null;
 			case OVEN:
-				return tile instanceof TileEntityOven ? new GuiOven(player.inventory, (TileEntityOven) tile) : null;
+				return tile != null && (tile instanceof TileEntityOven) ? new GuiOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
-				return tile instanceof TileEntityThreadSpinner ? new GuiThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
+				return tile != null && (tile instanceof TileEntityThreadSpinner) ? new GuiThreadSpinner((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityThreadSpinner) tile) : null;
 			case BARREL:
-				return tile instanceof TileEntityBarrel ? new GuiBarrel(player.inventory, (TileEntityBarrel) tile) : null;
+				return tile != null && (tile instanceof TileEntityBarrel) ? new GuiBarrel((Container) getServerGuiElement(ID, player, world, x, y, z), (TileEntityBarrel) tile) : null;
 			case TAROT:
-				return tile instanceof TileEntityTarotsTable ? new GuiTarots() : null;
+				return tile != null && (tile instanceof TileEntityTarotsTable) ? new GuiTarots() : null;
 			default:
 				return null;
 		}

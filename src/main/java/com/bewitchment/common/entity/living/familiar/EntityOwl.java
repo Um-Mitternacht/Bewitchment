@@ -74,7 +74,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(2, new EntityAIFleeSun(this, 2d));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class<?>[0]));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
 	}
 
 	@Override

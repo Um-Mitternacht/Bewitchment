@@ -1,52 +1,63 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.mp.DefaultMPContainer;
-import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.misc.BlockGemBowl;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
-import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
-	int gain = 0, color = EnumDyeColor.RED.ordinal();
+
+	int power = 0, maxPower = 0, gain = 1, color = EnumDyeColor.RED.ordinal();
 	int refreshTimer = REFRESH_TIME;
-	private DefaultMPContainer storage = new DefaultMPContainer(0);
 
-	public TileEntityWitchAltar() {
+	@Nullable
+	public static TileEntityWitchAltar getClosest(BlockPos pos, World world) { //Cache the returned value!
+		Optional<Tuple<TileEntityWitchAltar, Double>> res = world.loadedTileEntityList.parallelStream()
+				.filter(te -> te instanceof TileEntityWitchAltar)
+				.map(te -> new Tuple<TileEntityWitchAltar, Double>((TileEntityWitchAltar) te, te.getDistanceSq(pos.getX(), pos.getY(), pos.getZ())))
+				.filter(tup -> tup.getSecond() <= 256)
+				.min((t1, t2) -> t1.getSecond().compareTo(t2.getSecond()));
+		if (res.isPresent()) return res.get().getFirst();
+		return null;
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		return false;
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		power = tag.getInteger("power");
+		maxPower = tag.getInteger("maxPower");
+		gain = tag.getInteger("gain");
+		color = tag.getInteger("color");
 	}
 
 	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setInteger("power", power);
+		tag.setInteger("gain", gain);
+		tag.setInteger("maxPower", maxPower);
+		tag.setInteger("color", color);
 	}
 
 	@Override
@@ -59,13 +70,14 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				markDirty();
 				syncToClient();
 			}
-			storage.fill(gain);
 		}
+		power += gain;
+		if (power > maxPower) power = maxPower;
 	}
 
 	private void refreshNature() {
 		gain = 1;
-		int maxPower;
+		maxPower = 0;
 		HashMap<Block, Integer> map = new HashMap<Block, Integer>();
 
 		for (int i = -RADIUS; i <= RADIUS; i++) {
@@ -82,7 +94,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				}
 			}
 		}
-		maxPower = map.values().stream().mapToInt(i -> i).sum();
+		map.values().forEach(i -> maxPower += i);
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
 		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/plate, 2=vase
@@ -96,14 +108,10 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				}
 			}
 		maxPower *= multiplier;
-		storage.setMaxAmount(maxPower);
 	}
 
 	private int getGain(BlockPos pos, boolean[] types) {
 		IBlockState blockState = getWorld().getBlockState(pos);
-		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
-			return 10;
-		}
 		if (blockState.getBlock().equals(Blocks.SKULL)) {
 			if (types[0]) return 0;
 			types[0] = true;
@@ -150,9 +158,6 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private double getMultiplier(BlockPos pos, boolean[] typesMult) {
 		IBlockState blockState = getWorld().getBlockState(pos);
-		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
-			return 10000;
-		}
 		if (blockState.getBlock().equals(Blocks.SKULL)) {
 			if (typesMult[0]) return 0;
 			typesMult[0] = true;
@@ -198,8 +203,26 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		return 0;
 	}
 
+	public int getAltarPower() {
+		return power;
+	}
+
+	public int getGain() {
+		return gain;
+	}
+
+	public int getMaxPower() {
+		return maxPower;
+	}
+
 	public int getColor() {
 		return color;
+	}
+
+	public boolean consumePower(int amount, boolean simulate) {
+		if (amount > power) return false;
+		if (!simulate) power -= amount;
+		return true;
 	}
 
 	public void setColor(int newColor) {
@@ -213,43 +236,19 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	}
 
 	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerContainer.CAPABILITY) {
-			return true;
-		}
-		return super.hasCapability(capability, facing);
-	}
-
-	@Nullable
-	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (capability == IMagicPowerContainer.CAPABILITY) {
-			return IMagicPowerContainer.CAPABILITY.cast(storage);
-		}
-		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	protected void writeAllModDataNBT(NBTTagCompound tag) {
+	void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setInteger("power", power);
+		tag.setInteger("gain", gain);
+		tag.setInteger("maxPower", maxPower);
 		tag.setInteger("color", color);
-		tag.setTag("mp", storage.saveNBTTag());
 	}
 
 	@Override
-	protected void readAllModDataNBT(NBTTagCompound tag) {
+	void readModSyncDataNBT(NBTTagCompound tag) {
+		power = tag.getInteger("power");
+		maxPower = tag.getInteger("maxPower");
+		gain = tag.getInteger("gain");
 		color = tag.getInteger("color");
-		storage.loadFromNBT(tag.getCompoundTag("mp"));
 	}
 
-	@Override
-	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setInteger("color", color);
-		tag.setTag("mp", storage.saveNBTTag());
-	}
-
-	@Override
-	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		color = tag.getInteger("color");
-		storage.loadFromNBT(tag.getCompoundTag("mp"));
-	}
 }

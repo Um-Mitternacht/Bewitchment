@@ -17,7 +17,7 @@ public class SpinnerCategory implements IRecipeCategory<SpinnerWrapper> {
 	private IDrawable bg;
 
 	public SpinnerCategory(IGuiHelper igh) {
-		bg = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_spinner.png"), 0, 0, 90, 36).setTextureSize(90, 36).build();
+		bg = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_spinner.png"), 0, 0, 90, 36, 90, 36);
 	}
 
 	@Override

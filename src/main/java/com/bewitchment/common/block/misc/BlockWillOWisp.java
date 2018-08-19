@@ -58,13 +58,11 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return NULL_AABB;
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
@@ -81,7 +79,6 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -97,7 +94,6 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
@@ -108,13 +104,11 @@ public class BlockWillOWisp extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}

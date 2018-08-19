@@ -18,7 +18,7 @@ public class BrewModifierCategory implements IRecipeCategory<BrewModifierWrapper
 	private IDrawable bg;
 
 	public BrewModifierCategory(IGuiHelper igh) {
-		bg = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing_modifier.png"), 0, 0, 140, 80).setTextureSize(140, 80).build();
+		bg = igh.createDrawable(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing_modifier.png"), 0, 0, 140, 80, 140, 80);
 	}
 
 	@Override

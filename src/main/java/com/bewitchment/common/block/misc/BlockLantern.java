@@ -44,7 +44,6 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return bounding_box;
 	}
@@ -62,14 +61,12 @@ public class BlockLantern extends BlockMod {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
@@ -85,7 +82,6 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
@@ -106,13 +102,11 @@ public class BlockLantern extends BlockMod {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(Bewitchment.COLOR, EnumDyeColor.values()[meta]);
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(Bewitchment.COLOR).ordinal();
 	}

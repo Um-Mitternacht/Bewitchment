@@ -42,7 +42,7 @@ public class BlockModLog extends BlockLog implements IModelRegister {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty<?>[]{LOG_AXIS});
+		return new BlockStateContainer(this, new IProperty[]{LOG_AXIS});
 	}
 
 	@Override

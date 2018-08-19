@@ -6,8 +6,8 @@
 
 package com.bewitchment.common.item.block;
 
-import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.tools.BlockBarrel;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -26,7 +26,7 @@ public class ItemBlockBarrel extends ItemBlock {
 		if (stack.getMetadata() == OreDictionary.WILDCARD_VALUE) {
 			return super.getUnlocalizedName(stack);
 		}
-		return super.getUnlocalizedName(stack) + "_" + EnumWoodType.values()[stack.getMetadata()].getName();
+		return super.getUnlocalizedName(stack) + "_" + BlockBarrel.WoodType.values()[stack.getMetadata()].getName();
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class ItemBlockBarrel extends ItemBlock {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (this.isInCreativeTab(tab)) {
-			for (int i = 0; i < EnumWoodType.values().length; i++) {
+			for (int i = 0; i < BlockBarrel.WoodType.values().length; i++) {
 				items.add(new ItemStack(this, 1, i));
 			}
 		}

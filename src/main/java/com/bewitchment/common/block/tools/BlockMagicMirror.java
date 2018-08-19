@@ -1,13 +1,21 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.api.state.StateProperties;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
+import com.bewitchment.common.core.capability.mimic.IMimicData;
+import com.bewitchment.common.core.helper.NBTHelper;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.PlayerMimicDataChanged;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.TileEntityMagicMirror;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,8 +35,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class BlockMagicMirror extends BlockModTileEntity {
+public class BlockMagicMirror extends BlockMod implements ITileEntityProvider {
+	public static final PropertyBool ACTIVE = PropertyBool.create("active");
+	public static final PropertyDirection BOTTOM_FACING = BlockHorizontal.FACING;
+
 	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f + 13.0f / 16.0f, 1.0f, 1.0f, 1.0f);
 	private static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f - 13.0f / 16.0f);
 	private static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f - 13.0f / 16.0f, 1.0f, 1.0f);
@@ -36,13 +48,12 @@ public class BlockMagicMirror extends BlockModTileEntity {
 
 	public BlockMagicMirror() {
 		super(LibBlockName.MAGIC_MIRROR, Material.IRON);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(StateProperties.MIRROR_VARIANTS, 0).withProperty(BlockHorizontal.FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(BOTTOM_FACING, EnumFacing.NORTH));
 		this.setLightOpacity(0);
 	}
 
-	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, StateProperties.MIRROR_VARIANTS, BlockHorizontal.FACING);
+		return new BlockStateContainer(this, ACTIVE, BOTTOM_FACING);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -51,15 +62,16 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 			facing = EnumFacing.NORTH;
 		}
-		return this.getDefaultState().withProperty(BlockHorizontal.FACING, facing);
+		return this.getDefaultState().withProperty(ACTIVE, false).withProperty(BOTTOM_FACING, facing);
 	}
 
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		if (worldIn.getBlockState(pos.up()).getBlock() != Blocks.AIR) {
 			return false;
+		} else {
+			return super.canPlaceBlockAt(worldIn, pos);
 		}
-		return super.canPlaceBlockAt(worldIn, pos);
 	}
 
 	@Override
@@ -80,29 +92,27 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		IBlockState topBack = worldIn.getBlockState(bottomBackPosition.up());
 		if (!bottomBack.isFullBlock() || !topBack.isFullBlock()) {
 			return false;
+		} else {
+			return super.canPlaceBlockOnSide(worldIn, pos, side);
 		}
-		return super.canPlaceBlockOnSide(worldIn, pos, side);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+		final boolean active = state.getValue(ACTIVE);
+		return active ? state.getValue(BOTTOM_FACING).getHorizontalIndex() + 6 : state.getValue(BOTTOM_FACING).getHorizontalIndex();
 	}
 
-	@Override
 	@SuppressWarnings("deprecation")
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta));
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		if (state.getBlock().hasTileEntity(state)) {
-			TileEntityMagicMirror magicMirror = (TileEntityMagicMirror) worldIn.getTileEntity(pos);
-			return state.withProperty(StateProperties.MIRROR_VARIANTS, magicMirror.getShadeType());
+		boolean active = false;
+		if (meta >= 6) {
+			active = true;
+			meta -= 6;
 		}
-		return state;
+		return this.getDefaultState().withProperty(ACTIVE, active)
+				.withProperty(BOTTOM_FACING, EnumFacing.getHorizontal(meta));
 	}
 
 	@Override
@@ -137,7 +147,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		EnumFacing facing = state.getValue(BlockHorizontal.FACING);
+		EnumFacing facing = state.getValue(BOTTOM_FACING);
 		if (facing == EnumFacing.NORTH) {
 			return BOUNDING_BOX_NORTH;
 		} else if (facing == EnumFacing.SOUTH) {
@@ -152,7 +162,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), ModBlocks.magic_mirror_top.getDefaultState().withProperty(BlockHorizontal.FACING, state.getValue(BlockHorizontal.FACING)));
+		worldIn.setBlockState(pos.up(), ModBlocks.magic_mirror_top.getDefaultState().withProperty(BlockMagicMirrorTop.TOP_FACING, state.getValue(BOTTOM_FACING)));
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
@@ -162,6 +172,27 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		super.breakBlock(worldIn, pos, state);
 	}
 
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (!worldIn.isRemote) {
+			ItemStack held = playerIn.getHeldItem(hand);
+			if (held.getItem() == ModItems.taglock) {
+				final UUID playerID = NBTHelper.getUniqueID(held, Bewitchment.TAGLOCK_ENTITY);
+				final String playerName = NBTHelper.getString(held, Bewitchment.TAGLOCK_ENTITY_NAME);
+				final IMimicData capability = playerIn.getCapability(CapabilityMimicData.CAPABILITY, null);
+				capability.setMimickedPlayerID(playerID);
+				capability.setMimickedPlayerName(playerName);
+				if (playerIn.getUniqueID().equals(playerID)) {
+					capability.setMimicking(false);
+				} else {
+					capability.setMimicking(true);
+				}
+				NetworkHandler.HANDLER.sendToAll(new PlayerMimicDataChanged(playerIn));
+			}
+		}
+		return true;
+	}
+
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
@@ -169,26 +200,26 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	}
 
 	public static class BlockMagicMirrorTop extends BlockMod {
+		public static final PropertyDirection TOP_FACING = BlockHorizontal.FACING;
+
 		public BlockMagicMirrorTop() {
 			super(LibBlockName.MAGIC_MIRROR_TOP, Material.IRON);
-			this.setDefaultState(this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.NORTH));
+			this.setDefaultState(this.getDefaultState().withProperty(TOP_FACING, EnumFacing.NORTH));
 			this.setLightOpacity(0);
 		}
 
-		@Override
 		protected BlockStateContainer createBlockState() {
-			return new BlockStateContainer(this, BlockHorizontal.FACING);
+			return new BlockStateContainer(this, TOP_FACING);
 		}
 
 		@Override
 		public int getMetaFromState(IBlockState state) {
-			return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+			return state.getValue(BOTTOM_FACING).getHorizontalIndex();
 		}
 
 		@Override
-		@SuppressWarnings("deprecation")
 		public IBlockState getStateFromMeta(int meta) {
-			return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta));
+			return this.getDefaultState().withProperty(BOTTOM_FACING, EnumFacing.getHorizontal(meta));
 		}
 
 		@SuppressWarnings("deprecation")
@@ -220,7 +251,6 @@ public class BlockMagicMirror extends BlockModTileEntity {
 			return false;
 		}
 
-		@Override
 		@SideOnly(Side.CLIENT)
 		public BlockRenderLayer getBlockLayer() {
 			return BlockRenderLayer.CUTOUT;
@@ -234,7 +264,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		@SuppressWarnings("deprecation")
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-			EnumFacing facing = state.getValue(BlockHorizontal.FACING);
+			EnumFacing facing = state.getValue(TOP_FACING);
 			if (facing == EnumFacing.NORTH) {
 				return BOUNDING_BOX_NORTH;
 			} else if (facing == EnumFacing.SOUTH) {

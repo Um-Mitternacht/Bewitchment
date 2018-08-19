@@ -60,8 +60,8 @@ public abstract class Spell implements ISpell {
 	}
 
 	@Override
-	public ISpell setRegistryName(ResourceLocation nameIn) {
-		regName = nameIn;
+	public ISpell setRegistryName(ResourceLocation name) {
+		regName = name;
 		return this;
 	}
 
