@@ -177,6 +177,17 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.book_of_shadows), new AspectList().add(Aspect.MIND, 10).add(Aspect.DARKNESS, 10).add(Aspect.MAGIC, 10).add(Aspect.CRAFT, 10).add(STAR, 10).add(MOON, 10).add(SUN, 10));
 		evt.register.registerObjectTag(new ItemStack(ModItems.dusty_grimoire), new AspectList().add(Aspect.MIND, 10).add(Aspect.DESIRE, 10).add(Aspect.MAGIC, 10).add(DEMON, 10));
 
+		//Fumes
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume), new AspectList().add(Aspect.EARTH, 11).add(Aspect.WATER, 11));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 1), new AspectList().add(Aspect.EARTH, 11).add(Aspect.WATER, 11).add(Aspect.FIRE, 11));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 2), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 3), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.SOUL, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 4), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.MAGIC, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 5), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.LIFE, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 6), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.DARKNESS, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 7), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.AURA, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 8), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.DARKNESS, 3).add(DEMON, 3));
+
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
