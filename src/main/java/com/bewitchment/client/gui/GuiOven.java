@@ -1,11 +1,10 @@
 package com.bewitchment.client.gui;
 
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.gui.container.ContainerOven;
+import com.bewitchment.common.container.ContainerOven;
 import com.bewitchment.common.tile.TileEntityOven;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 
 /**
@@ -31,9 +30,7 @@ public class GuiOven extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = I18n.format("tile.oven.name");
-		if (this.tileOven.inventory.hasCustomName())
-			s = this.tileOven.inventory.getName();
+		String s = tileOven.getName();
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 	}
@@ -46,7 +43,7 @@ public class GuiOven extends GuiContainer {
 		final int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
-		if (tileOven.isBurning) {
+		if (tileOven.isBurning()) {
 			int k = this.getBurnLeftScaled(13);
 			this.drawTexturedModalRect(i + 19, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
 		}
@@ -56,12 +53,12 @@ public class GuiOven extends GuiContainer {
 	}
 
 	public int getCookProgress(int pixels) {
-		return this.tileOven.workTime * pixels / this.tileOven.totalWorkTime;
+		return this.tileOven.getWork() * pixels / TileEntityOven.TOTAL_WORK;
 	}
 
 	private int getBurnLeftScaled(int pixels) {
-		if (tileOven.itemBurnTime > 0) {
-			return (this.tileOven.itemBurnTime - this.tileOven.burnTime) * pixels / tileOven.itemBurnTime;
+		if (tileOven.getItemBurnTime() > 0) {
+			return (this.tileOven.getItemBurnTime() - this.tileOven.getBurnTime()) * pixels / this.tileOven.getItemBurnTime();
 		}
 		return 0;
 	}

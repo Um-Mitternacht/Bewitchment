@@ -1,0 +1,34 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "listAllspice"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "listAllspice"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "listAllherb"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "listAllherb"
+    },
+    {
+      "item": "minecraft:apple",
+      "data": 0
+    },
+    {
+      "item": "minecraft:glass_bottle",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "bewitchment:four_thieves_vinegar",
+    "data": 0,
+    "count": 1
+  }
+}

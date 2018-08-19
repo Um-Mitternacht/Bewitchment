@@ -27,7 +27,7 @@ public class MimicDataStorage implements Capability.IStorage<IMimicData> {
 	@Override
 	public void readNBT(Capability<IMimicData> capability, IMimicData iMimicData, EnumFacing enumFacing, NBTBase nbtBase) {
 		NBTTagCompound compound = (NBTTagCompound) nbtBase;
-		iMimicData.setMimicking(compound.getBoolean(MIMICKING));
+		iMimicData.setMimickingDirect(compound.getBoolean(MIMICKING));
 		iMimicData.setMimickedPlayerID(compound.getUniqueId(MIMICKING_ID));
 		iMimicData.setMimickedPlayerName(compound.getString(MIMICKING_NAME));
 	}

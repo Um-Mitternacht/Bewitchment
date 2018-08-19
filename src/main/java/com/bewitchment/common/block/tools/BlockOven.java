@@ -1,19 +1,13 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.lib.LibBlockName;
-import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityOven;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -27,8 +21,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockOven extends BlockMod implements ITileEntityProvider {
-
+public class BlockOven extends BlockModTileEntity {
 
 	public BlockOven() {
 		super(LibBlockName.OVEN, Material.IRON);
@@ -49,31 +42,6 @@ public class BlockOven extends BlockMod implements ITileEntityProvider {
 	public int getMetaFromState(IBlockState state) {
 		final EnumFacing facing = state.getValue(FACING);
 		return facing.getHorizontalIndex();
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) {
-			final TileEntity tile1 = worldIn.getTileEntity(pos);
-			if (tile1 == null || !(tile1 instanceof TileEntityOven)) return false;
-
-			ItemStack heldItem = playerIn.getHeldItem(hand);
-			if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-				((TileEntityOven) tile1).setCustomName(heldItem.getDisplayName());
-			} else {
-				playerIn.openGui(Bewitchment.instance, LibGui.OVEN.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
-			}
-		}
-		return true;
-	}
-
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		final TileEntity tile1 = worldIn.getTileEntity(pos);
-		if (tile1 != null && tile1 instanceof TileEntityOven) {
-			((TileEntityOven) tile1).dropItems();
-		}
-		worldIn.removeTileEntity(pos);
 	}
 
 	@SuppressWarnings("deprecation")

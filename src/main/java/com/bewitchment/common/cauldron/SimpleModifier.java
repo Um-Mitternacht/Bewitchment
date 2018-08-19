@@ -24,7 +24,7 @@ public abstract class SimpleModifier implements IBrewModifier {
 	}
 
 	@Override
-	public IBrewModifier setRegistryName(ResourceLocation name) {
+	public IBrewModifier setRegistryName(ResourceLocation nameIn) {
 		throw new UnsupportedOperationException("Don't mess with bewitchment default implementation of modifiers!");
 	}
 

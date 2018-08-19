@@ -6,7 +6,7 @@ import com.bewitchment.common.cauldron.BrewBuilder;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.core.capability.cauldronTeleports.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.helper.ColorHelper;
-import com.bewitchment.common.crafting.CauldronCraftingRecipe;
+import com.bewitchment.common.crafting.cauldron.CauldronCraftingRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronFoodValue;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
@@ -22,16 +22,21 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +60,65 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	public TileEntityCauldron() {
 		collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65D, 1);
 		tank = new CauldronFluidTank(this);
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (playerIn.isSneaking() && playerIn.getHeldItem(hand).isEmpty()) {
+			worldIn.setBlockState(pos, state.cycleProperty(Bewitchment.HALF), 3);
+			return true;
+		}
+		ItemStack heldItem = playerIn.getHeldItem(hand);
+		if (!playerIn.world.isRemote) {
+			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
+				if (playerIn.isCreative() && tank.isFull()) {
+					heat = MAX_HEAT;
+					markDirty();
+					syncToClient();
+				}
+			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && (progress >= getMode().getTime() || playerIn.isCreative())) {
+				if (!playerIn.isCreative()) {
+					heldItem.shrink(1);
+				}
+				lockInputForCrafting = true;
+				ItemStack soup = getSoup();
+				tank.setCanDrain(true);
+				tank.drain(500, true);
+				tank.setCanDrain(false);
+				giveItemToPlayer(playerIn, soup);
+				if (tank.isEmpty()) {
+					reset();
+				} else {
+					syncToClient();
+					markDirty();
+				}
+			} else if ((heldItem.getItem() == ModItems.empty_brew_drink || heldItem.getItem() == Items.ARROW || heldItem.getItem() == ModItems.empty_brew_linger || heldItem.getItem() == ModItems.empty_brew_splash) && Mode.BREW == getMode() && progress >= getMode().getTime()) {
+				if (progress >= getMode().getTime() || playerIn.isCreative()) {
+					lockInputForCrafting = true;
+					createAndGiveBrew(playerIn, heldItem);
+				}
+			} else if (heldItem.getItem() == Items.NAME_TAG && heldItem.hasDisplayName()) {
+				String oldName = name;
+				name = heldItem.getDisplayName();
+				if (world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null).put(world, pos)) {
+					if (!playerIn.isCreative()) {
+						heldItem.shrink(1);
+					}
+					markDirty();
+					syncToClient();
+				} else {
+					playerIn.sendStatusMessage(new TextComponentTranslation("cauldron.name.add.error"), true);
+					name = oldName;
+				}
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+
 	}
 
 	@Override
@@ -327,85 +391,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 	}
 
-	@Override
-	void readAllModDataNBT(NBTTagCompound tag) {
-		mode = Mode.values()[tag.getInteger("mode")];
-		progress = tag.getInteger("progress");
-		heat = tag.getInteger("heat");
-		currentColorRGB = tag.getInteger("color");
-		lockInputForCrafting = tag.getBoolean("lock");
-		tank.readFromNBT(tag.getCompoundTag("tank"));
-		ingredients.clear();
-		if (tag.hasKey("name")) {
-			name = tag.getString("name");
-		} else {
-			name = null;
-		}
-		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
-	}
-
-	@Override
-	void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setInteger("mode", mode.ordinal());
-		tag.setInteger("progress", progress);
-		tag.setInteger("heat", heat);
-		tag.setInteger("color", currentColorRGB);
-		tag.setBoolean("lock", lockInputForCrafting);
-		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
-		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), ingredients));
-		if (name != null) {
-			tag.setString("name", name);
-		}
-	}
-
-	public boolean onCauldronRightClick(EntityPlayer playerIn, EnumHand hand, ItemStack heldItem) {
-		if (!playerIn.world.isRemote) {
-			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
-				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
-				if (playerIn.isCreative() && tank.isFull()) {
-					heat = MAX_HEAT;
-					markDirty();
-					syncToClient();
-				}
-			} else if (heldItem.getItem() == Items.BOWL && getMode() == Mode.STEW && (progress >= getMode().getTime() || playerIn.isCreative())) {
-				if (!playerIn.isCreative()) {
-					heldItem.shrink(1);
-				}
-				lockInputForCrafting = true;
-				ItemStack soup = getSoup();
-				tank.setCanDrain(true);
-				tank.drain(500, true);
-				tank.setCanDrain(false);
-				giveItemToPlayer(playerIn, soup);
-				if (tank.isEmpty()) {
-					reset();
-				} else {
-					syncToClient();
-					markDirty();
-				}
-			} else if ((heldItem.getItem() == ModItems.empty_brew_drink || heldItem.getItem() == Items.ARROW || heldItem.getItem() == ModItems.empty_brew_linger || heldItem.getItem() == ModItems.empty_brew_splash) && Mode.BREW == getMode() && progress >= getMode().getTime()) {
-				if (progress >= getMode().getTime() || playerIn.isCreative()) {
-					lockInputForCrafting = true;
-					createAndGiveBrew(playerIn, heldItem);
-				}
-			} else if (heldItem.getItem() == Items.NAME_TAG && heldItem.hasDisplayName()) {
-				String oldName = name;
-				name = heldItem.getDisplayName();
-				if (world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null).put(world, pos)) {
-					if (!playerIn.isCreative()) {
-						heldItem.shrink(1);
-					}
-					markDirty();
-					syncToClient();
-				} else {
-					playerIn.sendStatusMessage(new TextComponentTranslation("cauldron.name.add.error"), true);
-					name = oldName;
-				}
-			}
-		}
-		return true;
-	}
-
 	private void createAndGiveBrew(EntityPlayer playerIn, ItemStack stack) {
 		Optional<BrewData> data = new BrewBuilder(ingredients).build();
 		if (data.isPresent()) {
@@ -483,47 +468,12 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		syncToClient();
 	}
 
-	@Override
-	void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
-		tag.setInteger("heat", heat);
-		tag.setInteger("progress", progress);
-		tag.setInteger("color", currentColorRGB);
-		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
-		tag.setInteger("mode", getMode().ordinal());
-		if (name != null) {
-			tag.setString("name", name);
-		}
-	}
-
-	@Override
-	void readModSyncDataNBT(NBTTagCompound tag) {
-		tank.readFromNBT(tag.getCompoundTag("tank"));
-		heat = tag.getInteger("heat");
-		progress = tag.getInteger("progress");
-		currentColorRGB = tag.getInteger("color");
-		if (tag.getBoolean("hasItemsInside")) {
-			ingredients.clear();
-			ingredients.add(ItemStack.EMPTY); // Makes the list not empty
-		}
-		if (tag.hasKey("name")) {
-			name = tag.getString("name");
-		} else {
-			name = null;
-		}
-		setMode(Mode.values()[tag.getInteger("mode")]);
-	}
-
 	private void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
 		if (!player.inventory.addItemStackToInventory(toGive)) {
 			player.dropItem(toGive, false);
 		} else if (player instanceof EntityPlayerMP) {
 			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
 		}
-	}
-
-	public CauldronFluidTank getTank() {
-		return tank;
 	}
 
 	public Mode getMode() {
@@ -540,6 +490,82 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+	}
+
+	@Nullable
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
+		}
+		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setInteger("mode", mode.ordinal());
+		tag.setInteger("progress", progress);
+		tag.setInteger("heat", heat);
+		tag.setInteger("color", currentColorRGB);
+		tag.setBoolean("lock", lockInputForCrafting);
+		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
+		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), ingredients));
+		if (name != null) {
+			tag.setString("name", name);
+		}
+	}
+
+	@Override
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		mode = Mode.values()[tag.getInteger("mode")];
+		progress = tag.getInteger("progress");
+		heat = tag.getInteger("heat");
+		currentColorRGB = tag.getInteger("color");
+		lockInputForCrafting = tag.getBoolean("lock");
+		tank.readFromNBT(tag.getCompoundTag("tank"));
+		ingredients.clear();
+		if (tag.hasKey("name")) {
+			name = tag.getString("name");
+		} else {
+			name = null;
+		}
+		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
+	}
+
+	@Override
+	protected void writeModSyncDataNBT(NBTTagCompound tag) {
+		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
+		tag.setInteger("heat", heat);
+		tag.setInteger("progress", progress);
+		tag.setInteger("color", currentColorRGB);
+		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
+		tag.setInteger("mode", getMode().ordinal());
+		if (name != null) {
+			tag.setString("name", name);
+		}
+	}
+
+	@Override
+	protected void readModSyncDataNBT(NBTTagCompound tag) {
+		tank.readFromNBT(tag.getCompoundTag("tank"));
+		heat = tag.getInteger("heat");
+		progress = tag.getInteger("progress");
+		currentColorRGB = tag.getInteger("color");
+		if (tag.getBoolean("hasItemsInside")) {
+			ingredients.clear();
+			ingredients.add(ItemStack.EMPTY); // Makes the list not empty
+		}
+		if (tag.hasKey("name")) {
+			name = tag.getString("name");
+		} else {
+			name = null;
+		}
+		setMode(Mode.values()[tag.getInteger("mode")]);
 	}
 
 	public static enum Mode {

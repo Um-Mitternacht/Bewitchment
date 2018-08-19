@@ -2,19 +2,14 @@ package com.bewitchment.common.block.tools;
 
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.lib.LibBlockName;
-import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.TileEntityApiary;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -34,7 +29,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockApiary extends BlockMod implements ITileEntityProvider {
+public class BlockApiary extends BlockModTileEntity {
 
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.12F, 0, 0.12F, 0.88F, 1, 0.88F);
 
@@ -83,31 +78,6 @@ public class BlockApiary extends BlockMod implements ITileEntityProvider {
 		if (rand.nextInt(5) == 0) {
 			Bewitchment.proxy.spawnParticle(ParticleF.BEE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 0, 0);
 		}
-	}
-
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		final TileEntity tile = worldIn.getTileEntity(pos);
-		if (tile != null && tile instanceof TileEntityApiary) {
-			((TileEntityApiary) tile).dropItems();
-		}
-		worldIn.removeTileEntity(pos);
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) {
-			final TileEntity tile = worldIn.getTileEntity(pos);
-			if (tile == null || !(tile instanceof TileEntityApiary)) return false;
-
-			ItemStack heldItem = playerIn.getHeldItem(hand);
-			if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-				((TileEntityApiary) tile).setCustomInventoryName(heldItem.getDisplayName());
-			} else {
-				playerIn.openGui(Bewitchment.instance, LibGui.APIARY.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
-			}
-		}
-		return true;
 	}
 
 	@Override

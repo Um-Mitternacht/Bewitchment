@@ -1,11 +1,11 @@
 package com.bewitchment.client.gui;
 
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.gui.container.ContainerApiary;
+import com.bewitchment.common.container.ContainerApiary;
+import com.bewitchment.common.tile.TileEntityApiary;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
 
 /**
  * This class was created by Arekkuusu on 16/04/2017.
@@ -15,9 +15,9 @@ import net.minecraft.inventory.IInventory;
 public class GuiApiary extends GuiContainer {
 
 	private final InventoryPlayer playerInventory;
-	private final IInventory tileApiary;
+	private final TileEntityApiary tileApiary;
 
-	public GuiApiary(InventoryPlayer playerInventory, IInventory tileApiary) {
+	public GuiApiary(InventoryPlayer playerInventory, TileEntityApiary tileApiary) {
 		super(new ContainerApiary(playerInventory, tileApiary));
 		this.playerInventory = playerInventory;
 		this.tileApiary = tileApiary;
@@ -25,7 +25,7 @@ public class GuiApiary extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		final String s = this.tileApiary.getDisplayName().getUnformattedText();
+		final String s = this.tileApiary.getName();
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 	}

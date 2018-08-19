@@ -22,7 +22,7 @@ public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 
 	public BrewingCategory(IGuiHelper igh) {
 		ResourceLocation rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing.png");
-		bg = igh.createDrawable(rl, 0, 0, 91, 40, 91, 40);
+		bg = igh.drawableBuilder(rl, 0, 0, 91, 40).setTextureSize(91, 40).build();
 	}
 
 	@Override

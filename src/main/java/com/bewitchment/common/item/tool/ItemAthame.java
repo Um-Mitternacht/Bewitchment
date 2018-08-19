@@ -59,6 +59,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 		return true;
 	}
 
+	//Todo: Rewrite in it's entirety. Use loot tables.
 	@SuppressWarnings("deprecation")
 	@SubscribeEvent
 	public void onEntityDrops(LivingDropsEvent event) {

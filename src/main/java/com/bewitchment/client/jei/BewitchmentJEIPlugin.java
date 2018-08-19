@@ -2,6 +2,8 @@ package com.bewitchment.client.jei;
 
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
+import com.bewitchment.api.crafting.OvenSmeltingRecipe;
+import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.jei.components.*;
 import com.bewitchment.common.block.ModBlocks;
@@ -9,7 +11,6 @@ import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.ritual.AdapterIRitual;
-import com.bewitchment.common.spinning.SpinningThreadRecipe;
 import mezz.jei.api.*;
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
@@ -35,6 +36,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new SpinnerCategory(registry.getJeiHelpers().getGuiHelper()));
+		registry.addRecipeCategories(new OvenCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewingCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewModifierCategory(registry.getJeiHelpers().getGuiHelper()));
 	}
@@ -48,6 +50,10 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.handleRecipes(SpinningThreadRecipe.class, i -> new SpinnerWrapper(i), SpinnerCategory.UID);
 		registry.addRecipes(SpinningThreadRecipe.REGISTRY.getValuesCollection(), SpinnerCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.thread_spinner), SpinnerCategory.UID);
+
+		registry.handleRecipes(OvenSmeltingRecipe.class, i -> new OvenWrapper(i), OvenCategory.UID);
+		registry.addRecipes(OvenSmeltingRecipe.REGISTRY.getValuesCollection(), OvenCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.oven), OvenCategory.UID);
 
 		registry.handleRecipes(IBrewEffect.class, BrewingWrapper::new, BrewingCategory.UID);
 		registry.addRecipes(CauldronRegistry.BREW_POTION_MAP.keySet(), BrewingCategory.UID);

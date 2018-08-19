@@ -68,8 +68,8 @@ public class QuickTarot implements ITarot {
 	}
 
 	@Override
-	public ITarot setRegistryName(ResourceLocation name) {
-		regName = name;
+	public ITarot setRegistryName(ResourceLocation nameIn) {
+		regName = nameIn;
 		return this;
 	}
 

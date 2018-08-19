@@ -4,11 +4,9 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.capability.transformation.ITransformationData;
-import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import net.minecraft.entity.Entity;
@@ -19,8 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
@@ -30,15 +26,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 @Mod.EventBusSubscriber
 public class BloodEvents {
-
-	public static final ResourceLocation BLOOD_DATA = new ResourceLocation(LibMod.MOD_ID, "blood_pool");
-
-	@SubscribeEvent
-	public static void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
-		if (evt.getObject() instanceof EntityLivingBase) {
-			evt.addCapability(BLOOD_DATA, new BloodReserveProvider());
-		}
-	}
 
 	@SubscribeEvent
 	public static void onJoin(EntityJoinWorldEvent evt) {

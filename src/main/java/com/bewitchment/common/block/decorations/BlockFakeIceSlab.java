@@ -91,7 +91,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{HALF});
+		return new BlockStateContainer(this, new IProperty<?>[]{HALF});
 	}
 
 	@Override

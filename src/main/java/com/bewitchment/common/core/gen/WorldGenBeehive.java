@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -73,8 +74,7 @@ public class WorldGenBeehive implements IWorldGenerator {
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-	                     net.minecraft.world.gen.IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		final Biome biome = world.getBiomeForCoordsBody(new BlockPos(chunkX, 0, chunkZ));
 
 		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.END) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {

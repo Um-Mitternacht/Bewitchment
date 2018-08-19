@@ -13,6 +13,7 @@ bewitchment.config.client=Client Settings
 //Gui
 container.apiary=Apiary
 container.oven=Oven
+container.thread_spinner=Thread Spinner
 
 ////Names
 //Items
@@ -162,10 +163,22 @@ item.owlets_wing.name=Owlet's Wing
 item.ravens_feather.name=Raven's Feather
 item.cold_iron_dust.name=Cold Iron Powder
 item.cold_iron_dust_small.name=Cold Iron Dustpile
+item.four_thieves_vinegar.name=Four Thieves Vinegar
+item.goofer_dust.name=Goofer Dust
+item.spanish_moss_stuffing.name=Spanish Moss Stuffing
+item.soul_string.name=Soul String
+item.pure_filament.name=Pure Filament
+item.diabolic_vein.name=Diabolic Vein
+item.witches_stitching.name=Witches Stitching
+item.regal_silk.name=Regal Silk
+item.golden_thread.name=Golden Thread
+item.hellish_bauble.name=Hellish Bauble
+item.thorny_garment.name=Thorny Garment
+item.graveyard_dust.name=Graveyard Dust
 
 //fumes
-item.fume.unfired_jar.name=Unfired Jar
-item.fume.empty_jar.name=Empty Jar
+item.fume.unfired_jar.name=Unfired Clay Jar
+item.fume.empty_jar.name=Empty Clay Jar
 item.fume.oak_spirit.name=Oak Spirit
 item.fume.birch_soul.name=Birch Soul
 item.fume.acacia_essence.name=Acacia Essence
@@ -382,6 +395,8 @@ tile.scorned_bricks.name=Scorned Bricks
 tile.scorned_brick_fence.name=Scorned Brick Fence
 tile.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.cold_iron_block.name=Cold Iron Block
+tile.graveyard_dirt.name=Graveyard Dirt
+tile.sacrosanct_ground.name=Sacrosanct Earth
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
@@ -664,6 +679,7 @@ achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
 achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 
 //JEI
+jei.category.oven=Oven
 jei.category.rituals=Rituals
 jei.category.spinner=Thread Spinning
 jei.category.brewing=Brew Bottling
@@ -680,6 +696,7 @@ ritual.bewitchment.time_sands.name=Ritual of the Sands of Time
 ritual.bewitchment.perception.name=Ritual of Perception
 ritual.bewitchment.conjure_wither.name=Ritual of Conjuration (Wither)
 ritual.bewitchment.conjure_witch.name=Ritual of Conjuration (Witch)
+ritual.bewitchment.conjure_vex.name=Ritual of Conjuration (Vex)
 ritual.bewitchment.draw_circle_small.name=Ritual of the Lesser Marks
 ritual.bewitchment.draw_circle_medium.name=Ritual of the Marks
 ritual.bewitchment.draw_circle_large.name=Ritual of the Major Marks
@@ -688,6 +705,7 @@ ritual.bewitchment.infusion_nether.name=Ritual of Infusion of the Demons
 ritual.bewitchment.infusion_end.name=Ritual of Infusion of the Others
 ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
 ritual.bewitchment.flames.name=Ritual of the Hungry Flames
+ritual.bewitchment.sanctuary.name=Ritual of the Sacred
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
@@ -696,13 +714,13 @@ crystal_ball.error.too_far=Approach the sphere, curious one
 crystal_ball.error.already_told=This one's future has already been revealed: %s
 crystal_ball.error.no_available_fortunes=This world has no secrets awaiting
 crystal_ball.read.other=You can see %2$s's future: %1$s
-fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened
-fortunes.bewitchment.meet_silverfish.name=A foul vermin hides in the path
-fortunes.bewitchment.death.name=The path ahead looks very bleak
-fortunes.bewitchment.meet_witch.name=Something wicked this way comes
-fortunes.bewitchment.drop_bow.name=Fingers won't obey when they're most needed
+fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened.
+fortunes.bewitchment.meet_silverfish.name=A foul vermin hides in the path.
+fortunes.bewitchment.death.name=The path ahead looks very bleak.
+fortunes.bewitchment.meet_witch.name=Something wicked this way comes.
+fortunes.bewitchment.drop_bow.name=Fingers won't obey when they're most needed.
 fortunes.bewitchment.treasure.name=You might be very rich, very soon.
-fortunes.bewitchment.merchant.name=You will stumble upon some good deals
+fortunes.bewitchment.merchant.name=You will stumble upon some good deals.
 fortunes.bewitchment.shinies.name=Something glimmers in my sight.
 fortunes.bewitchment.iron.name=Scalding hot irons burn my retinas.
 fortunes.bewitchment.direwolf.name=A rabid beast will soon stumble upon you.

@@ -1,8 +1,7 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.incantation.IIncantation;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.incantation.ModIncantations;
 import com.google.common.collect.Lists;
 import net.minecraft.command.CommandException;
@@ -16,7 +15,6 @@ import net.minecraft.util.math.BlockPos;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -59,14 +57,8 @@ public class CommandIncantation implements ICommand {
 			IIncantation incantation = ModIncantations.getCommands().get(command);
 			if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
-				Optional<IEnergy> ienopt = EnergyHandler.getEnergy(player);
-				if (ienopt.isPresent()) {
-					if (true || ienopt.get().get() >= incantation.getCost()) { // TODO fix
-						EnergyHandler.addEnergy(player, -incantation.getCost());
-						incantation.cast(player, args);
-					} else {
-						throw new CommandException("commands.incantation.no_energy", sender.getName());
-					}
+				if (player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(incantation.getCost())) {
+					incantation.cast(player, args);
 				} else {
 					throw new CommandException("commands.incantation.no_energy", sender.getName());
 				}

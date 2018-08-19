@@ -32,9 +32,9 @@ public class ItemCrop extends ItemModFood {
 		super(id, amount, saturation, isWolfFood);
 	}
 
-	protected void addPotion(Potion... potions) {
+	protected void addPotion(Potion... potionsIn) {
 		this.potions = new ArrayList<>();
-		Collections.addAll(this.potions, potions);
+		Collections.addAll(this.potions, potionsIn);
 	}
 
 	@Override

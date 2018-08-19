@@ -77,7 +77,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{CHECK_DECAY, DECAYABLE});
+		return new BlockStateContainer(this, new IProperty<?>[]{CHECK_DECAY, DECAYABLE});
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.tools;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
-import com.bewitchment.common.Bewitchment;
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.TileEntityGlyph;
@@ -10,9 +10,6 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -36,29 +33,39 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
-	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyType TYPE = new PropertyType("type", EnumGlyphType.class, Arrays.asList(EnumGlyphType.values()));
-	public static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
+
 	protected static final AxisAlignedBB FLAT_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0025D, 1.0D);
 
 	public BlockCircleGlyph(String id) {
 		super(id, Material.GRASS);
 		this.setDefaultState(this.blockState.getBaseState()
-				.withProperty(FACING, EnumFacing.SOUTH)
-				.withProperty(TYPE, EnumGlyphType.NORMAL)
-				.withProperty(LETTER, 0)
+				.withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH)
+				.withProperty(StateProperties.GLYPH_TYPE, EnumGlyphType.NORMAL)
+				.withProperty(StateProperties.LETTER, 0)
 		);
 		this.setHardness(5);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		if (getStateFromMeta(meta).getValue(TYPE).equals(EnumGlyphType.GOLDEN)) return new TileEntityGlyph();
+		if (getStateFromMeta(meta).getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN))
+			return new TileEntityGlyph();
 		return null;
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (state.getValue(StateProperties.GLYPH_TYPE) == EnumGlyphType.GOLDEN) {
+			((TileEntityGlyph) worldIn.getTileEntity(pos)).onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -75,7 +82,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean hasTileEntity(IBlockState state) {
-		return state.getValue(TYPE).equals(EnumGlyphType.GOLDEN);
+		return state.getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -151,14 +158,14 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		int color = meta & 3;
 		int dir = (meta >> 2) & 3;
 		return this.getDefaultState()
-				.withProperty(TYPE, EnumGlyphType.values()[color])
-				.withProperty(FACING, EnumFacing.HORIZONTALS[dir]);
+				.withProperty(StateProperties.GLYPH_TYPE, EnumGlyphType.values()[color])
+				.withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[dir]);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int color = state.getValue(TYPE).ordinal();
-		int dir = state.getValue(FACING).getHorizontalIndex();
+		int color = state.getValue(StateProperties.GLYPH_TYPE).ordinal();
+		int dir = state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 		return (dir << 2) | color; //Bitwise that's DDCC, where DD is either 00=south, 01=... and CC is 00=normal, 01=golden...
 	}
 
@@ -166,12 +173,12 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		int letter = Math.abs(pos.getX() + pos.getZ() * 2) % 6;
-		return state.withProperty(LETTER, letter);
+		return state.withProperty(StateProperties.LETTER, letter);
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, FACING, TYPE, LETTER);
+		return new BlockStateContainer(this, BlockHorizontal.FACING, StateProperties.GLYPH_TYPE, StateProperties.LETTER);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -183,7 +190,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		int pt = stateIn.getValue(TYPE).ordinal();
+		int pt = stateIn.getValue(StateProperties.GLYPH_TYPE).ordinal();
 		double d0 = pos.getX() + 0.5D;
 		double d1 = pos.getY() + 0.05D;
 		double d2 = pos.getZ() + 0.5D;
@@ -204,25 +211,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		}
 	}
 
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (hand.equals(EnumHand.OFF_HAND) || !playerIn.getHeldItem(hand).isEmpty())
-			return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-		if (state.getBlock().hasTileEntity(state)) {
-			TileEntityGlyph te = (TileEntityGlyph) worldIn.getTileEntity(pos);
-			if (te == null) {
-				Bewitchment.logger.warn("Null TE on ritual! Please report this to the devs!");
-				return false;
-			}
-			if (te.hasRunningRitual()) {
-				te.stopRitual(playerIn);
-			} else {
-				te.startRitual(playerIn);
-			}
-		}
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-	}
-
 	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
@@ -231,20 +219,13 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		int meta = state.getValue(TYPE).ordinal();
+		int meta = state.getValue(StateProperties.GLYPH_TYPE).ordinal();
 		return new ItemStack(ModItems.ritual_chalk, 1, meta);
 	}
 
 	@Override
 	public void registerModel() {// No associated item
-	}
 
-	//######################################################################################### PROPERTY STUFF
-
-	public static class PropertyType extends PropertyEnum<EnumGlyphType> {
-		protected PropertyType(String name, Class<EnumGlyphType> valueClass, Collection<EnumGlyphType> allowedValues) {
-			super(name, valueClass, allowedValues);
-		}
 	}
 
 

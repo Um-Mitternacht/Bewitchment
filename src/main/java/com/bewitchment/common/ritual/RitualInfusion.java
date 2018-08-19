@@ -1,8 +1,9 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.api.capability.IEnergy;
 import com.bewitchment.api.infusion.IInfusion;
-import com.bewitchment.common.core.capability.energy.EnergyHandler;
+import com.bewitchment.api.infusion.IInfusionCapability;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.InfusionChangedMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -13,8 +14,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.Optional;
 
 public class RitualInfusion extends RitualImpl {
 
@@ -30,12 +29,9 @@ public class RitualInfusion extends RitualImpl {
 		if (player == null) {
 			return;
 		}
-		Optional<IEnergy> eng = EnergyHandler.getEnergy(player);
-		if (eng.isPresent()) {
-			IEnergy ien = eng.get();
-			ien.setType(type);
-			if (player instanceof EntityPlayerMP)
-				ien.syncTo((EntityPlayerMP) player);
+		player.getCapability(IInfusionCapability.CAPABILITY, null).setType(type);
+		if (player instanceof EntityPlayerMP) {
+			NetworkHandler.HANDLER.sendTo(new InfusionChangedMessage(player), (EntityPlayerMP) player);
 		}
 	}
 

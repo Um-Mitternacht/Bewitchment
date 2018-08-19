@@ -111,8 +111,8 @@ public class WorldGenOre extends WorldGenMinable implements IWorldGenerator {
 			return this;
 		}
 
-		public OreGenBuilder setBiomes(BiomeDictionary.Type... biomes) {
-			this.biomes = biomes;
+		public OreGenBuilder setBiomes(BiomeDictionary.Type... biomesIn) {
+			this.biomes = biomesIn;
 			return this;
 		}
 

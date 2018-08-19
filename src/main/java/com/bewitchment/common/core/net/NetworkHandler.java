@@ -27,14 +27,16 @@ public final class NetworkHandler {
 
 	public static void init() {
 		HANDLER.registerMessage(ParticleMessage.ParticleMessageHandler.class, ParticleMessage.class, next(), Side.CLIENT);
-		HANDLER.registerMessage(EnergyMessage.EnergyMessageHandler.class, EnergyMessage.class, next(), Side.CLIENT);
 		HANDLER.registerMessage(TarotMessage.TarotMessageHandler.class, TarotMessage.class, next(), Side.CLIENT);
-		HANDLER.registerMessage(PlayerMimicDataChanged.PlayerMimicDataHandler.class, PlayerMimicDataChanged.class, next(), Side.CLIENT);
+		//TODO <rustylocks79> remove
+		//HANDLER.registerMessage(PlayerMimicDataChanged.PlayerMimicDataHandler.class, PlayerMimicDataChanged.class, next(), Side.CLIENT);
 		registerSimpleMessage(PlayerTransformationChangedMessage.class, next(), Side.CLIENT);
 		registerSimpleMessage(PlayerVampireBloodChanged.class, next(), Side.CLIENT);
 		registerSimpleMessage(EntityInternalBloodChanged.class, next(), Side.CLIENT);
 		registerSimpleMessage(NightVisionStatus.class, next(), Side.CLIENT);
 		registerSimpleMessage(WitchfireFlame.class, next(), Side.CLIENT);
+		registerSimpleMessage(EnergySync.class, next(), Side.CLIENT);
+		registerSimpleMessage(InfusionChangedMessage.class, next(), Side.CLIENT);
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
 		registerSimpleMessage(WitchFireTP.class, next(), Side.SERVER);
