@@ -185,8 +185,16 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 4), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.MAGIC, 5));
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 5), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.LIFE, 5));
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 6), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.DARKNESS, 5));
-		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 7), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.AURA, 5));
-		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 8), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.PLANT, 5).add(Aspect.DARKNESS, 3).add(DEMON, 3));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 7), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.VOID, 5).add(Aspect.AURA, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 8), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.DARKNESS, 5).add(DEMON, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 9), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.SOUL, 5).add(Aspect.EXCHANGE, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 10), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.BEAST, 5).add(Aspect.EXCHANGE, 3).add(Aspect.LIFE, 3));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 11), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.FIRE, 5).add(DEMON, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 12), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.ELDRITCH, 5).add(STAR, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 13), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.FIRE, 10));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 14), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 10));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 15), new AspectList().add(Aspect.EARTH, 10).add(Aspect.WATER, 5).add(Aspect.SENSES, 5));
+		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 16), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 10).add(Aspect.AIR, 5));
 
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
