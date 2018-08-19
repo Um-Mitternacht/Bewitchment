@@ -4,6 +4,7 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -211,6 +212,9 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.witchfire), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.oven), new AspectList().add(Aspect.FIRE, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.cauldron), new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
+
+		//Add some of our aspects to existing items in vanilla
+		evt.register.registerObjectTag(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new AspectList().add(Aspect.PLANT, 5).add(Aspect.SENSES, 5).add(SUN, 3).add(Aspect.AIR, 1).add(Aspect.LIFE, 1));
 
 	}
 }
