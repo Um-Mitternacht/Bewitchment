@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * salamander - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelSalamander extends ModelBase {
+public class ModelNewt extends ModelBase {
 	public ModelRenderer body01;
 	public ModelRenderer body02;
 	public ModelRenderer neck;
@@ -57,7 +57,7 @@ public class ModelSalamander extends ModelBase {
 	public ModelRenderer rFToe03;
 	public ModelRenderer rFToe04;
 
-	public ModelSalamander() {
+	public ModelNewt() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.lFToe04 = new ModelRenderer(this, 0, 59);
