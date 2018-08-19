@@ -173,6 +173,10 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kenaf), new AspectList().add(Aspect.PLANT, 1).add(Aspect.CRAFT, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kelp), new AspectList().add(Aspect.PLANT, 1).add(Aspect.WATER, 1));
 
+		//Books and Spells
+		evt.register.registerObjectTag(new ItemStack(ModItems.book_of_shadows), new AspectList().add(Aspect.MIND, 10).add(Aspect.DARKNESS, 10).add(Aspect.MAGIC, 10).add(Aspect.CRAFT, 10).add(STAR, 10).add(MOON, 10).add(SUN, 10));
+		evt.register.registerObjectTag(new ItemStack(ModItems.dusty_grimoire), new AspectList().add(Aspect.MIND, 10).add(Aspect.DESIRE, 10).add(Aspect.MAGIC, 10).add(DEMON, 10));
+
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
