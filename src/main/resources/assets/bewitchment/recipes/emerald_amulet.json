@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "S S",
+    " S ",
+    " E "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    },
+    "E": {
+      "item": "minecraft:emerald",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:talisman_emerald_pendant",
+    "data": 0
+  }
+}

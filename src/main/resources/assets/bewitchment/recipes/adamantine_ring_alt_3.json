@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " N ",
+    "NEN",
+    " N "
+  ],
+  "key": {
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetSilver"
+    },
+    "E": {
+      "item": "minecraft:emerald",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:talisman_adamantine_star_ring",
+    "data": 0
+  }
+}
