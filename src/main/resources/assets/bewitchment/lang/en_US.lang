@@ -13,7 +13,7 @@ bewitchment.config.client=Client Settings
 //Gui
 container.apiary=Apiary
 container.oven=Oven
-container.thread_spinner=Thread Spinner
+container.thread_spinner=Loom
 
 ////Names
 //Items

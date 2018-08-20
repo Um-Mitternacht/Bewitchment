@@ -112,8 +112,6 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.needle_bone), new AspectList().add(Aspect.DEATH, 2).add(Aspect.CRAFT, 2));
 		evt.register.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle), new AspectList().add(Aspect.MOTION, 8).add(Aspect.CRAFT, 8));
 		evt.register.registerObjectTag(new ItemStack(ModItems.bee), new AspectList().add(Aspect.AVERSION, 2).add(Aspect.BEAST, 2).add(Aspect.ALCHEMY, 2));
-		evt.register.registerObjectTag(new ItemStack(ModItems.athame), new AspectList().add(Aspect.AVERSION, 10).add(Aspect.MAGIC, 10).add(Aspect.METAL, 10));
-		evt.register.registerObjectTag(new ItemStack(ModItems.boline), new AspectList().add(Aspect.PLANT, 10).add(Aspect.MAGIC, 10).add(Aspect.METAL, 10));
 		evt.register.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle_stone), new AspectList().add(Aspect.MOTION, 8).add(Aspect.EARTH, 8).add(Aspect.CRAFT, 8));
 		evt.register.registerObjectTag(new ItemStack(ModItems.salt), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.honey), new AspectList().add(Aspect.DESIRE, 6).add(Aspect.LIFE, 6));
