@@ -155,7 +155,7 @@ public class ModRituals {
 		infusion_dream = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.zephyr_of_the_depths.ordinal()))), none, 60, circles(NORMAL, NETHER, ENDER), 6000, 1, DefaultInfusions.DREAM);
 		flames = new RitualFlames(new ResourceLocation(LibMod.MOD_ID, "flames"), of(Ingredient.fromItem(Items.BLAZE_ROD), Ingredient.fromItem(Items.COAL)), none, 3600, circles(NETHER, null, null), 300, 4);
 		sanctuary = new RitualImpl(rl("sanctuary"), of(Ingredient.fromItem(ModItems.white_sage), (Ingredient.fromItem(ModItems.sagebrush)), Ingredient.fromItem(ModItems.salt), Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0))), ofs(new ItemStack(ModBlocks.sacrosanct_ground)), 130, circles(NORMAL, NORMAL, null), 500, 4);
-		deck = new RitualImpl(rl("deck"), of(Ingredient.fromItem(ModItems.iron_gall_ink), (Ingredient.fromItem(Items.PAPER)), Ingredient.fromItem(ModItems.wax)), ofs(new ItemStack(ModItems.tarots)), 50, circles(NORMAL, null, null), 350, 1);
+		deck = new RitualImpl(rl("deck"), of(new IngredientMultiOreDict("dye"), (new IngredientMultiOreDict("dye")), (Ingredient.fromItem(Items.PAPER)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 3)), Ingredient.fromItem(ModItems.wax)), ofs(new ItemStack(ModItems.tarots)), 50, circles(NORMAL, null, null), 350, 1);
 		registerAll();
 	}
 
