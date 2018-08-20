@@ -3,11 +3,13 @@ package com.bewitchment.client.jei.components;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.brew.ItemBrewArrow;
 import com.bewitchment.common.lib.LibMod;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IFocus.Mode;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
@@ -67,9 +69,9 @@ public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 		}
 
 		is.init(0, true, 18, 0);
-		is.set(0, ingredients.getInputs(ItemStack.class).get(0));
+		is.set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 
 		is.init(1, false, 62, 19);
-		is.set(1, ingredients.getOutputs(ItemStack.class).get(0));
+		is.set(1, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
 	}
 }

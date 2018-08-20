@@ -1,11 +1,15 @@
 package com.bewitchment.client.jei.components;
 
+import java.util.List;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.ritual.AdapterIRitual;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -13,8 +17,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.List;
 
 public class RitualWrapper implements IRecipeWrapper {
 	private static IDrawable centerGlyph, circle1, circle2, circle3;
@@ -40,8 +42,9 @@ public class RitualWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInputLists(ItemStack.class, input);
-		if (!output.isEmpty()) ingredients.setOutputs(ItemStack.class, output);
+		ingredients.setInputLists(VanillaTypes.ITEM, input);
+		if (!output.isEmpty())
+			ingredients.setOutputs(VanillaTypes.ITEM, output);
 	}
 
 	@Override

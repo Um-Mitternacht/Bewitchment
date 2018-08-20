@@ -1,21 +1,23 @@
 package com.bewitchment.client.jei.components;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
+
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BrewModifierWrapper implements IRecipeWrapper {
 
@@ -39,8 +41,8 @@ public class BrewModifierWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInputLists(ItemStack.class, Arrays.asList(Arrays.asList(in)));
-		ingredients.setOutputLists(ItemStack.class, Arrays.asList(validBrews));
+		ingredients.setInputLists(VanillaTypes.ITEM, Arrays.asList(Arrays.asList(in)));
+		ingredients.setOutputLists(VanillaTypes.ITEM, Arrays.asList(validBrews));
 	}
 
 	@Override

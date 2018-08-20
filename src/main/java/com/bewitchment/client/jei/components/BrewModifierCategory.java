@@ -1,14 +1,15 @@
 package com.bewitchment.client.jei.components;
 
 import com.bewitchment.common.lib.LibMod;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class BrewModifierCategory implements IRecipeCategory<BrewModifierWrapper> {
@@ -47,10 +48,10 @@ public class BrewModifierCategory implements IRecipeCategory<BrewModifierWrapper
 		IGuiItemStackGroup sg = recipeLayout.getItemStacks();
 
 		sg.init(0, true, 61, 1);
-		sg.set(0, ingredients.getInputs(ItemStack.class).get(0));
+		sg.set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 
 		sg.init(1, true, 61, 33);
-		sg.set(1, ingredients.getOutputs(ItemStack.class).get(0));
+		sg.set(1, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
 	}
 
 
