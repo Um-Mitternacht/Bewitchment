@@ -458,8 +458,8 @@ effect.spider_nightmare.desc=Surround your enemy with webs and spiders.
 effect.frostbite=Frostbite
 effect.frostbite.desc=Encases a target in ice. May have other effects.
 
-effect.extinguish_fires=Extinguish Fires
-effect.extinguish_fires.desc=Puts out any fires on you.
+effect.extinguish_fire=Extinguish
+effect.extinguish_fire.desc=Puts out any fires on you.
 
 effect.mars_water=Water of Mars
 effect.mars_water.desc=Inflicts nasty debuffs on the target.
@@ -479,6 +479,9 @@ effect.fertilize.desc=Makes stuff grow when thrown.
 effect.harvest=Harvest Festival
 effect.harvest.desc=Harvests crops when thrown.
 
+effect.mowing=Mowing
+effect.mowing.desc=Removes grass
+
 effect.grow_flowers=Flower Spring
 effect.grow_flowers.desc=Makes flowers when thrown.
 
@@ -488,8 +491,8 @@ effect.ender_inhibition.desc=Ender beings can't teleport.
 effect.path_of_the_deep=Path of the Deep
 effect.path_of_the_deep.desc=Allows you to swim faster.
 
-effect.rock_pulverize=Pulverization
-effect.rock_pulverize.desc=Turns rock into gravel, and gravel into sand.
+effect.pulverize=Pulverization
+effect.pulverize.desc=Turns rock into gravel, and gravel into sand.
 
 effect.prune_leaves=Prune Leaves
 effect.prune_leaves.desc=Removes leaves.
@@ -536,8 +539,8 @@ effect.ozymandias.desc=Look on my Works, ye Mighty, and despair!
 effect.setehs_wastes=Seteh's Wastes
 effect.setehs_wastes.desc=Converts sand and sandstone to their red variants.
 
-effect.hell_world=Fire World
-effect.hell_world.desc=Converts your surroundings to a hellish scene.
+effect.fireworld=Fire World
+effect.fireworld.desc=Converts your surroundings to a hellish scene.
 
 effect.ice_world=Ice World
 effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
@@ -545,8 +548,8 @@ effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
 effect.corruption=Corruption
 effect.corruption.desc=Removes all beneficial brew effects.
 
-effect.salt_land=Salting
-effect.salt_land.desc=Destroys farmland and renders it useless.
+effect.salted_earth=Salting
+effect.salted_earth.desc=Destroys farmland and renders it useless.
 
 effect.absence=Absence
 effect.absence.desc=Removes all brew effects from a player.
@@ -706,6 +709,7 @@ ritual.bewitchment.infusion_end.name=Ritual of Infusion of the Others
 ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
 ritual.bewitchment.flames.name=Ritual of the Hungry Flames
 ritual.bewitchment.sanctuary.name=Ritual of the Sacred
+ritual.bewitchment.deck.name=A Suit of Cards
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong

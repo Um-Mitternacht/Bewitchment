@@ -1,15 +1,11 @@
 package com.bewitchment.client.jei.components;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.common.cauldron.BrewData;
 import com.bewitchment.common.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
-
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -18,6 +14,9 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BrewModifierWrapper implements IRecipeWrapper {
 

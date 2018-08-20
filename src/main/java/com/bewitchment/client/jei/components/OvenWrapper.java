@@ -1,16 +1,15 @@
 package com.bewitchment.client.jei.components;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.bewitchment.api.crafting.OvenSmeltingRecipe;
-
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class OvenWrapper implements IRecipeWrapper {
 
