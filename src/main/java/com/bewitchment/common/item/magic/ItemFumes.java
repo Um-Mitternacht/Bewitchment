@@ -42,7 +42,6 @@ public class ItemFumes extends ItemMod {
 		}
 	}
 
-	//Idea: Specialized fumes from our trees?
 	public static enum Type {
 		unfired_jar, empty_jar, // Empty
 
@@ -61,7 +60,9 @@ public class ItemFumes extends ItemMod {
 		fiery_breeze, // connected with fire
 		heavenly_winds, // connected with air
 		petrichor_odour, // connected with earth
-		zephyr_of_the_depths // connected with water
+		zephyr_of_the_depths, // connected with water
+
+		reek_of_death, vital_essence, droplet_of_wisdom, bottled_magic //Trees from our mod. In order: Cypress, Yew, Elder, Juniper
 	}
 
 }
