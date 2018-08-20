@@ -117,7 +117,6 @@ public final class ModItems {
 	public static final Item dusty_grimoire = null;
 	public static final Item mortar_and_pestle = null;
 	public static final Item mortar_and_pestle_stone = null;
-	public static final Item wand = null;
 	public static final Item athame = null;
 	public static final Item boline = null;
 	public static final Item taglock = null;

@@ -77,7 +77,6 @@ public final class LibItemName {
 	public static final String BREW_ARROW = "brew_arrow";
 	public static final String GLASS_JAR = "glass_jar";
 	public static final String NEEDLE_BONE = "needle_bone";
-	public static final String WAND = "wand";
 	public static final String ATHAME = "athame";
 	public static final String BOLINE = "boline";
 	public static final String TAGLOCK = "taglock";
