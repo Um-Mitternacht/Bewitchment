@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "bewitchment:items/fumes/bottled_magic"
+    "layer0": "bewitchment:items/fumes/fume_bottled_magic"
   }
 }

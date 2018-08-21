@@ -10,11 +10,13 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderOwl extends RenderLiving<EntityOwl> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[2];
+	private static final ResourceLocation[] textures = new ResourceLocation[4];
 
 	static {
 		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_0.png");
 		textures[1] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_1.png");
+		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_2.png");
+		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_3.png");
 	}
 
 	public RenderOwl(RenderManager rendermanagerIn) {

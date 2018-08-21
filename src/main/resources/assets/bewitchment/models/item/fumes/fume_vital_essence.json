@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "bewitchment:items/fumes/vital_essence"
+    "layer0": "bewitchment:items/fumes/fume_vital_essence"
   }
 }
