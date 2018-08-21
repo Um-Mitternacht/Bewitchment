@@ -714,6 +714,7 @@ ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
 ritual.bewitchment.flames.name=Ritual of the Hungry Flames
 ritual.bewitchment.sanctuary.name=Ritual of the Sacred
 ritual.bewitchment.deck.name=A Suit of Cards
+ritual.bewitchment.table.name=Transmorgify Item (Divination Table)
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
