@@ -25,7 +25,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball;
 
 	public static void init() {
 
@@ -156,11 +156,12 @@ public class ModRituals {
 		sanctuary = new RitualImpl(rl("sanctuary"), of(Ingredient.fromItem(ModItems.white_sage), (Ingredient.fromItem(ModItems.sagebrush)), Ingredient.fromItem(ModItems.salt), Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0))), ofs(new ItemStack(ModBlocks.sacrosanct_ground)), 130, circles(NORMAL, NORMAL, null), 500, 4);
 		deck = new RitualImpl(rl("deck"), of(new IngredientMultiOreDict("dye"), (new IngredientMultiOreDict("dye")), (Ingredient.fromItem(Items.PAPER)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 3)), Ingredient.fromItem(ModItems.wax)), ofs(new ItemStack(ModItems.tarots)), 50, circles(NORMAL, null, null), 350, 1);
 		table = new RitualImpl(rl("table"), of(new IngredientMultiOreDict("string"), (new IngredientMultiOreDict("dye")), Ingredient.fromStacks(new ItemStack(Blocks.CRAFTING_TABLE, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 20)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 19)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 19))), ofs(new ItemStack(ModBlocks.tarot_table)), 50, circles(NORMAL, NORMAL, null), 350, 1);
+		crystal_ball = new RitualImpl(rl("crystal_ball"), of(new IngredientMultiOreDict("gemQuartz"), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 20))), ofs(new ItemStack(ModBlocks.crystal_ball)), 50, circles(NORMAL, ENDER, null), 750, 3);
 		registerAll();
 	}
 
 	public static void registerAll() {
-		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
 
 	}
 

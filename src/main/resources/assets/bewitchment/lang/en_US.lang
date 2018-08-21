@@ -715,6 +715,7 @@ ritual.bewitchment.flames.name=Ritual of the Hungry Flames
 ritual.bewitchment.sanctuary.name=Ritual of the Sacred
 ritual.bewitchment.deck.name=A Suit of Cards
 ritual.bewitchment.table.name=Transmorgify Item (Divination Table)
+ritual.bewitchment.crystal_ball.name=Transmorgify Item (Crystal Ball)
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
