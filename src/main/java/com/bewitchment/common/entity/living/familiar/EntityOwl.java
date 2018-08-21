@@ -12,6 +12,8 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -134,6 +136,39 @@ public class EntityOwl extends EntityFamiliar {
 	public boolean isBreedingItem(ItemStack stack)
 	{
 		return stack.getItem() == Items.RABBIT;
+	}
+
+	public boolean canMateWith(EntityAnimal otherAnimal)
+	{
+		if (otherAnimal == this)
+		{
+			return false;
+		}
+		else if (!this.isTamed())
+		{
+			return false;
+		}
+		else if (!(otherAnimal instanceof EntityOwl))
+		{
+			return false;
+		}
+		else
+		{
+			EntityOwl entityowl = (EntityOwl)otherAnimal;
+
+			if (!entityowl.isTamed())
+			{
+				return false;
+			}
+			else if (entityowl.isSitting())
+			{
+				return false;
+			}
+			else
+			{
+				return this.isInLove() && entityowl.isInLove();
+			}
+		}
 	}
 
 	@Override
