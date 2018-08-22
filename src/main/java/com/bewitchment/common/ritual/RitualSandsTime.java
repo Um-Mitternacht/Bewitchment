@@ -20,5 +20,10 @@ public class RitualSandsTime extends RitualImpl {
 	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
 		world.setWorldTime(world.getWorldTime() + 5);
 	}
+	
+	@Override
+	public boolean canBePerformedRemotely() {
+		return false;
+	}
 
 }
