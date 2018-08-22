@@ -401,7 +401,7 @@ public class ModelWerewolf extends ModelBase {
 		float time = (p.ticksExisted + ptick);
 
 
-		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((float) (time * 0.10471975512F));
+		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin(time * 0.10471975512F);
 		tail01Floof.rotateAngleX = 0.6108652381980153F + 0.00872664626F * MathHelper.cos((float) (time * 0.10471975512));
 		tail02Floof.rotateAngleZ = 0.03490658503F * MathHelper.cos((float) (time * 0.10471975512));
 		tail02Floof.rotateAngleZ = 0.03490658503F * MathHelper.cos((float) (time * 0.10471975512));
