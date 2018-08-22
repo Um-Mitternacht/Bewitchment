@@ -87,7 +87,7 @@ public class ModelWerewolf extends ModelBase {
 		this.fur05.addBox(-2.0F, -1.0F, 0.0F, 4, 5, 2, 0.0F);
 		this.setRotateAngle(fur05, 0.4363323129985824F, 0.0F, 0.0F);
 		this.bipedBody = new ModelRenderer(this, 16, 16);
-		this.bipedBody.setRotationPoint(0.0F, 2.0F, 0.0F);
+		this.bipedBody.setRotationPoint(0.0F, 0.0F, 6.0F);
 		this.bipedBody.addBox(-4.0F, -7.5F, -3.0F, 8, 11, 6, 0.0F);
 		this.setRotateAngle(bipedBody, 0.43633231299F, 0.0F, 0.0F);
 		this.bipedLeftLeg = new ModelRenderer(this, 13, 48);
@@ -312,10 +312,12 @@ public class ModelWerewolf extends ModelBase {
 
 		this.chest.addChild(this.bipedLeftArm);
 		this.chest.addChild(this.bipedRightArm);
-		this.chest.addChild(this.bipedHead);
 		this.chest.addChild(this.fur02);
 		this.chest.addChild(this.fur03);
 		this.chest.addChild(this.fur04);
+		this.chest.addChild(this.bipedHead);
+		this.bipedHead.addChild(this.wolfHead);
+		this.bipedHead.addChild(this.fur01);
 
 		this.bipedRightArm.addChild(this.rArm02);
 		this.rArm02.addChild(this.rClaw01);
@@ -331,38 +333,41 @@ public class ModelWerewolf extends ModelBase {
 		this.lClaw02.addChild(this.lClaw03);
 		this.lClaw03.addChild(this.lClaw04);
 
+		this.bipedRightLeg.addChild(this.rLeg02);
 		this.rLeg02.addChild(this.rLeg03);
 		this.lLeg03.addChild(this.lFoot);
+		
+		
+		this.bipedLeftLeg.addChild(this.lLeg02);
+		this.lLeg02.addChild(this.lLeg03);
+		this.rLeg03.addChild(this.rFoot);
 
 		this.tail01Floof.addChild(this.tail02Floof);
 		this.tail02Floof.addChild(this.tail03Floof);
-		this.bipedHead.addChild(this.wolfHead);
 
 		this.wolfHead.addChild(this.jawUpper01);
+		this.jawUpper01.addChild(this.jawUpper02);
 		this.jawUpper01.addChild(this.upperTeeth01);
 		this.jawUpper01.addChild(this.upperTeeth02);
 		this.jawUpper01.addChild(this.upperTeeth03);
 
 		this.wolfHead.addChild(this.jawLower);
 		this.jawLower.addChild(this.lowerTeeth01);
-		this.bipedHead.addChild(this.fur01);
-		this.wolfHead.addChild(this.lEarClassic);
-		this.wolfHead.addChild(this.rEarFeral01);
-		this.rEarFeral01.addChild(this.lEarFeral03_1);
-		this.lEarFeral01.addChild(this.lEarFeral03);
-		this.wolfHead.addChild(this.snout);
-		this.wolfHead.addChild(this.rEarClassic);
-		this.bipedLeftLeg.addChild(this.lLeg02);
-		this.bipedRightLeg.addChild(this.rLeg02);
-		this.jawUpper01.addChild(this.jawUpper02);
-		this.wolfHead.addChild(this.rCheekFur);
-		this.rEarFeral01.addChild(this.rEarFeral02);
 		this.lowerTeeth01.addChild(this.lowerTeeth02);
-		this.lEarFeral01.addChild(this.lEarFeral02);
+		
+		this.wolfHead.addChild(this.lEarClassic);
 		this.wolfHead.addChild(this.lEarFeral01);
+		this.lEarFeral01.addChild(this.lEarFeral02);
+		this.lEarFeral01.addChild(this.lEarFeral03);
+		this.rEarFeral01.addChild(this.lEarFeral03_1);
+		
+		this.wolfHead.addChild(this.rEarClassic);
+		this.wolfHead.addChild(this.rEarFeral01);
+		this.rEarFeral01.addChild(this.rEarFeral02);
+		
+		this.wolfHead.addChild(this.snout);
+		this.wolfHead.addChild(this.rCheekFur);
 		this.wolfHead.addChild(this.lCheekFur);
-		this.lLeg02.addChild(this.lLeg03);
-		this.rLeg03.addChild(this.rFoot);
 	}
 
 	@Override
@@ -404,7 +409,8 @@ public class ModelWerewolf extends ModelBase {
 		chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((float) (time * 0.10471975512));
 		bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((float) (time * 0.10471975512));
 		bipedLeftArm.rotateAngleZ = -0.3490658503988659F + 0.0174532925199432F * MathHelper.cos((float) (time * 0.10471975512));
-
+		
+		
 		this.bipedBody.render(1);
 
 	}
