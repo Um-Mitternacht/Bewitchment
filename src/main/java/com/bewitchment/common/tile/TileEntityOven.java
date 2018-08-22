@@ -1,9 +1,9 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
+import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;

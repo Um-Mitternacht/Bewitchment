@@ -11,10 +11,13 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.transformation.ITransformation;
+
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 // TODO Javadocs
 public abstract class BewitchmentAPI {
@@ -86,5 +89,10 @@ public abstract class BewitchmentAPI {
 
 	public abstract IBrewEffect getBrewFromPotion(Potion potion);
 
+	public abstract void addSpinningThreadRecipe(ResourceLocation registryName, ItemStack output, Ingredient... inputs);
+	
+	public abstract void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, int byproductChance, Ingredient input);
+	
 	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
+	
 }

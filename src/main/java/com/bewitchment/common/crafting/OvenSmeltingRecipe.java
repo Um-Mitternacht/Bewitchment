@@ -1,7 +1,10 @@
-package com.bewitchment.api.crafting;
+package com.bewitchment.common.crafting;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.bewitchment.common.lib.LibMod;
-import mcp.MethodsReturnNonnullByDefault;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -9,11 +12,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
 
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRecipe> {
 	private static final ResourceLocation REGISTRY_LOCATION = new ResourceLocation(LibMod.MOD_ID, "oven");
 	public static final IForgeRegistry<OvenSmeltingRecipe> REGISTRY = new RegistryBuilder<OvenSmeltingRecipe>().disableSaving().setName(REGISTRY_LOCATION).setType(OvenSmeltingRecipe.class).setIDRange(0, 200).create();
@@ -23,17 +21,20 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	private int fumeChance;
 
 	/**
-	 * @param regName    The name of this entry in the forge registry with the format "mod:regName". Cannot be null.
-	 * @param input      The input needed for this recipe. Cannot be null.
-	 * @param output     The output that will be produced by this recipe.  Cannot be null.
-	 * @param fumes      The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
+	 * @param regName The resourceLocation name of this entry in the forge registry with the format "mod:regName". Cannot be null.
+	 * @param input The input needed for this recipe. Cannot be null.
+	 * @param output The output that will be produced by this recipe. Cannot be null.
+	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
 	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
 	 */
-	public OvenSmeltingRecipe(String regName, Ingredient input, ItemStack output, @Nullable ItemStack fumes, int fumeChance) {
+	public OvenSmeltingRecipe(ResourceLocation regName, Ingredient input, ItemStack output, @Nonnull ItemStack fumes, int fumeChance) {
 		if (fumeChance > 100 || fumeChance < 0) {
 			throw new IllegalArgumentException("fumeChance must be between 0 and 100. ");
 		}
-		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, regName));
+		if (fumes == null) {
+			throw new NullPointerException("Fumes cannot be null, recipe: " + regName);
+		}
+		this.setRegistryName(regName);
 		this.input = input;
 		this.output = output;
 		this.fumes = fumes;
@@ -66,12 +67,11 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	@Nullable
 	public static OvenSmeltingRecipe getRecipe(ItemStack input) {
 		for (OvenSmeltingRecipe recipe : REGISTRY) {
-			for (ItemStack stack : recipe.getInput().getMatchingStacks()) {
-				if (ItemStack.areItemsEqual(stack, input)) {
-					return recipe;
-				}
+			if (recipe.getInput().apply(input)) {
+				return recipe;
 			}
 		}
+		
 		return null;
 	}
 
@@ -94,9 +94,6 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	 */
 	@Nullable
 	public ItemStack getFumes() {
-		if (fumes == null) {
-			return null;
-		}
 		return fumes.copy();
 	}
 

@@ -1,10 +1,10 @@
 package com.bewitchment.common.tile;
 
-import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
+import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.lib.LibGui;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
