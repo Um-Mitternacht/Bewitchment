@@ -4,7 +4,6 @@ import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.InfusionChangedMessage;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -35,7 +34,7 @@ public class RitualInfusion extends RitualImpl {
 			NetworkHandler.HANDLER.sendTo(new InfusionChangedMessage(player), (EntityPlayerMP) player);
 		}
 	}
-	
+
 	@Override
 	public boolean canBePerformedRemotely() {
 		return false;

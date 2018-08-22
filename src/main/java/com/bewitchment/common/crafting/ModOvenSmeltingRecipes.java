@@ -4,7 +4,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -28,7 +27,7 @@ public class ModOvenSmeltingRecipes {
 				new OvenSmeltingRecipe(rl("unfired_jar"), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.unfired_jar.ordinal())), new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()), ash, 85), new OvenSmeltingRecipe(rl("sapling_6"), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.reek_of_death.ordinal()), 85), new OvenSmeltingRecipe(rl("sapling_7"), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 1)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.bottled_magic.ordinal()), 85), new OvenSmeltingRecipe(rl("sapling_8"), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 2)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.vital_essence.ordinal()), 85), new OvenSmeltingRecipe(rl("sapling_9"), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 0)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.droplet_of_wisdom.ordinal()), 85)
 		);
 	}
-	
+
 	private static ResourceLocation rl(String name) {
 		return new ResourceLocation(LibMod.MOD_ID, name);
 	}

@@ -1,9 +1,5 @@
 package com.bewitchment.common.block.magic;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
-
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
@@ -12,7 +8,6 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -36,6 +31,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Random;
 
 public class BlockWitchFire extends BlockMod {
 
@@ -154,7 +153,7 @@ public class BlockWitchFire extends BlockMod {
 			world.spawnEntity(ei);
 		}
 	}
-	
+
 	private void itemInFire(EntityItem i, World world, BlockPos pos, IBlockState state) {
 		if (isMundane(i)) {
 			i.setDead();

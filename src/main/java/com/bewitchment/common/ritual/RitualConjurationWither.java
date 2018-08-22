@@ -1,9 +1,6 @@
 package com.bewitchment.common.ritual;
 
-import java.util.Optional;
-
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +13,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class RitualConjurationWither extends RitualImpl {
 

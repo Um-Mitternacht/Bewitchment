@@ -1,10 +1,5 @@
 package com.bewitchment.api.ritual;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -15,8 +10,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+
 public interface IRitual extends IForgeRegistryEntry<IRitual> {
-	
+
 	default boolean canBePerformedRemotely() {
 		return true;
 	}
@@ -72,13 +71,13 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	/**
 	 * This method gets called when the ritual is triggered by a player
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param tile The TileEntityGlyph performing the ritual
-	 * @param world The world the ritual is being performed into
-	 * @param mainGlyphPos The position of the tile
-	 * @param data The accessory tag
+	 * @param player            The player that activated the ritual, or null
+	 * @param tile              The TileEntityGlyph performing the ritual
+	 * @param world             The world the ritual is being performed into
+	 * @param mainGlyphPos      The position of the tile
+	 * @param data              The accessory tag
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
+	 * @param covenSize         the size of the coven performing this ritual, player included
 	 */
 	public void onStarted(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, BlockPos effectivePosition, int covenSize);
 
@@ -86,13 +85,13 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 * This method gets called when the ritual is stopped before completion by a player
 	 * This method is never called if {@link #onFinish(EntityPlayer, TileEntity, World, BlockPos, NBTTagCompound)} is called
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param tile the TileEntityGlyph performing the ritual
-	 * @param world the world the ritual is being performed into
-	 * @param mainGlyphPos the position of the tile
-	 * @param data the accessory tag
+	 * @param player            The player that activated the ritual, or null
+	 * @param tile              the TileEntityGlyph performing the ritual
+	 * @param world             the world the ritual is being performed into
+	 * @param mainGlyphPos      the position of the tile
+	 * @param data              the accessory tag
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
+	 * @param covenSize         the size of the coven performing this ritual, player included
 	 */
 	public void onStopped(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, BlockPos effectivePosition, int covenSize);
 
@@ -100,13 +99,13 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 * This method gets called when the ritual time expires, before stopping automatically
 	 * This method is never called if {@link #onStopped(EntityPlayer, TileEntity, World, BlockPos, NBTTagCompound)} is called
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param tile the TileEntityGlyph performing the ritual
-	 * @param world the world the ritual is being performed into
-	 * @param mainGlyphPos the position of the tile
-	 * @param data the accessory tag
+	 * @param player            The player that activated the ritual, or null
+	 * @param tile              the TileEntityGlyph performing the ritual
+	 * @param world             the world the ritual is being performed into
+	 * @param mainGlyphPos      the position of the tile
+	 * @param data              the accessory tag
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
+	 * @param covenSize         the size of the coven performing this ritual, player included
 	 */
 	public void onFinish(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, BlockPos effectivePosition, int covenSize);
 
@@ -114,26 +113,26 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 * This method gets called every tick since the ritual was activated, if it has enough power to run.
 	 * If it doesn't, {@link #onLowPower(EntityPlayer, TileEntity, World, BlockPos, NBTTagCompound, int)} gets called instead
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param tile the TileEntityGlyph performing the ritual
-	 * @param world the world the ritual is being performed into
-	 * @param mainGlyphPos the position of the tile
-	 * @param data the accessory tag
-	 * @param ticks how many ticks passed since activation
+	 * @param player            The player that activated the ritual, or null
+	 * @param tile              the TileEntityGlyph performing the ritual
+	 * @param world             the world the ritual is being performed into
+	 * @param mainGlyphPos      the position of the tile
+	 * @param data              the accessory tag
+	 * @param ticks             how many ticks passed since activation
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
+	 * @param covenSize         the size of the coven performing this ritual, player included
 	 */
 	public void onUpdate(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize);
 
 	/**
 	 * This method is used to check other pre-conditions, different from the input items (dimension, activating player, nearby blocks, lunar phase...)
 	 *
-	 * @param player The player that activated the ritual, or null
-	 * @param world the world the ritual is being performed into
-	 * @param mainGlyphPos the position of the tile
-	 * @param recipe the list of items used to trigger this ritual
+	 * @param player            The player that activated the ritual, or null
+	 * @param world             the world the ritual is being performed into
+	 * @param mainGlyphPos      the position of the tile
+	 * @param recipe            the list of items used to trigger this ritual
 	 * @param effectivePosition the position where the ritual should take place
-	 * @param covenSize the size of the coven performing this ritual, player included
+	 * @param covenSize         the size of the coven performing this ritual, player included
 	 * @return
 	 */
 	default boolean isValid(EntityPlayer player, World world, BlockPos mainGlyphPos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {

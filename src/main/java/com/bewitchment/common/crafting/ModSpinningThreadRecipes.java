@@ -2,7 +2,6 @@ package com.bewitchment.common.crafting;
 
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,7 +30,7 @@ public class ModSpinningThreadRecipes {
 				new SpinningThreadRecipe(rl("soulstring"), new ItemStack(ModItems.soul_string, 2), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 10)), ectoplasm)
 		);
 	}
-	
+
 	private static ResourceLocation rl(String name) {
 		return new ResourceLocation(LibMod.MOD_ID, name);
 	}

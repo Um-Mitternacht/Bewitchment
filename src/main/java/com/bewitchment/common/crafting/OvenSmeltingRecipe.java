@@ -1,16 +1,15 @@
 package com.bewitchment.common.crafting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRecipe> {
 	private static final ResourceLocation REGISTRY_LOCATION = new ResourceLocation(LibMod.MOD_ID, "oven");
@@ -21,10 +20,10 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	private int fumeChance;
 
 	/**
-	 * @param regName The resourceLocation name of this entry in the forge registry with the format "mod:regName". Cannot be null.
-	 * @param input The input needed for this recipe. Cannot be null.
-	 * @param output The output that will be produced by this recipe. Cannot be null.
-	 * @param fumes The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
+	 * @param regName    The resourceLocation name of this entry in the forge registry with the format "mod:regName". Cannot be null.
+	 * @param input      The input needed for this recipe. Cannot be null.
+	 * @param output     The output that will be produced by this recipe. Cannot be null.
+	 * @param fumes      The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
 	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
 	 */
 	public OvenSmeltingRecipe(ResourceLocation regName, Ingredient input, ItemStack output, @Nonnull ItemStack fumes, int fumeChance) {
@@ -71,7 +70,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 				return recipe;
 			}
 		}
-		
+
 		return null;
 	}
 
