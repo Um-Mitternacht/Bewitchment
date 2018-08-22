@@ -1,5 +1,7 @@
 package com.bewitchment.api;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
@@ -94,5 +96,7 @@ public abstract class BewitchmentAPI {
 	public abstract void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, int byproductChance, Ingredient input);
 	
 	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
+	
+	public abstract void registerFrostfireSmelting(ResourceLocation name, Ingredient input, Supplier<ItemStack> output);
 	
 }

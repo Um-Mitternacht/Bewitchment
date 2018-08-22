@@ -1,5 +1,10 @@
 package com.bewitchment.common;
 
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bewitchment.common.abilities.ModAbilities;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -21,6 +26,7 @@ import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.BarkGrow;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
 import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
@@ -39,6 +45,7 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
@@ -54,10 +61,6 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -106,6 +109,7 @@ public class Bewitchment {
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
 		ModLootTables.registerLootTables();
+		FrostFireRecipe.init();
 		proxy.preInit(event);
 		ThaumcraftCompatBridge.loadThaumcraftCompat();
 

@@ -2,6 +2,7 @@ package com.bewitchment.common.incantation;
 
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.entity.player.EntityPlayer;
 
 public class IncantationWitchFire implements IIncantation {
@@ -15,7 +16,7 @@ public class IncantationWitchFire implements IIncantation {
 
 	@Override
 	public int getCost() {
-		return 1000;
+		return 400;
 	}
 
 }

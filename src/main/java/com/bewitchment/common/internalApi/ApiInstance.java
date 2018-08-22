@@ -1,5 +1,7 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -23,6 +25,7 @@ import com.bewitchment.common.core.capability.transformation.blood.CapabilityBlo
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.*;
+import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
@@ -189,6 +192,11 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, int byproductChance, Ingredient input) {
 		OvenSmeltingRecipe.REGISTRY.register(new OvenSmeltingRecipe(registryName, input, output, byproduct, byproductChance));
+	}
+	
+	@Override
+	public void registerFrostfireSmelting(ResourceLocation name, Ingredient input, Supplier<ItemStack> output) {
+		FrostFireRecipe.REGISTRY.register(new FrostFireRecipe(name, input, output));
 	}
 	
 }
