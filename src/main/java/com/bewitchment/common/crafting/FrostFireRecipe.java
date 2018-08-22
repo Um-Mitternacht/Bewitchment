@@ -23,6 +23,7 @@ public class FrostFireRecipe extends IForgeRegistryEntry.Impl<FrostFireRecipe> {
 	private static final ItemStack packedIce = new ItemStack(Blocks.PACKED_ICE, 1);
 	private Ingredient input;
 	private Supplier<ItemStack> output;
+
 	public FrostFireRecipe(ResourceLocation name, Ingredient inputIn, Supplier<ItemStack> outputIn) {
 		this.setRegistryName(name);
 		this.input = inputIn;
@@ -32,6 +33,8 @@ public class FrostFireRecipe extends IForgeRegistryEntry.Impl<FrostFireRecipe> {
 	public static void init() {
 		REGISTRY.register(new FrostFireRecipe(new ResourceLocation(LibMod.MOD_ID, "cold_iron"), Ingredient.fromItem(Item.getItemFromBlock(Blocks.IRON_ORE)), () -> new ItemStack(ModItems.cold_iron_nugget, 1 + rng.nextInt(4))));
 		REGISTRY.register(new FrostFireRecipe(new ResourceLocation(LibMod.MOD_ID, "packed_ice"), Ingredient.fromItem(Item.getItemFromBlock(Blocks.ICE)), () -> packedIce));
+		REGISTRY.register(new FrostFireRecipe(new ResourceLocation(LibMod.MOD_ID, "cold_iron_dust_small"), Ingredient.fromStacks(new ItemStack(ModItems.cold_iron_dust_small, 1)), () -> new ItemStack(ModItems.cold_iron_nugget, 1)));
+		REGISTRY.register(new FrostFireRecipe(new ResourceLocation(LibMod.MOD_ID, "cold_iron_dust"), Ingredient.fromStacks(new ItemStack(ModItems.cold_iron_dust, 1)), () -> new ItemStack(ModItems.cold_iron_ingot, 1)));
 	}
 
 	public static Optional<ItemStack> getOutput(ItemStack in) {
