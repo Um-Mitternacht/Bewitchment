@@ -3,6 +3,7 @@ package com.bewitchment.client.gui;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.container.ContainerOven;
 import com.bewitchment.common.tile.TileEntityOven;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -45,11 +46,11 @@ public class GuiOven extends GuiContainer {
 
 		if (tileOven.isBurning()) {
 			int k = this.getBurnLeftScaled(13);
-			this.drawTexturedModalRect(i + 19, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+			this.drawTexturedModalRect(i + 44, j + 50 - k, 176, 12 - k, 14, k + 1);
 		}
 
 		int l = this.getCookProgress(24);
-		this.drawTexturedModalRect(i + 68, j + 22, 176, 14, l + 1, 16);
+		this.drawTexturedModalRect(i + 76, j + 19, 176, 14, l + 1, 16);
 	}
 
 	public int getCookProgress(int pixels) {

@@ -6,6 +6,7 @@ import com.bewitchment.common.container.slots.SlotOutput;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.tile.TileEntityOven;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
@@ -26,15 +27,15 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		IItemHandler handlerDown = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 		//input slot
-		this.addSlotToContainer(new ModSlot<>(tileEntity, handlerUp, 0, 19, 17));
+		this.addSlotToContainer(new ModSlot<>(tileEntity, handlerUp, 0, 44, 19));
 		//fuel slot
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 0, 19, 53, TileEntityFurnace::isItemFuel));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 0, 44, 55, TileEntityFurnace::isItemFuel));
 		//jar slot
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 1, 69, 53, stack -> stack.getItem() == ModItems.fume && stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 1, 80, 55, stack -> stack.getItem() == ModItems.fume && stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
 		//output slot
-		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 0, 124, 21));
+		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 0, 116, 19));
 		//fume slot
-		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 1, 128, 53));
+		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 1, 116, 55));
 
 		this.addPlayerSlots(playerInventory);
 	}
