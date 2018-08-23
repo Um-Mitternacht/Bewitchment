@@ -27,11 +27,12 @@ public class RitualConjurationWitch extends RitualImpl {
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		if (!world.isRemote) {
 			EntityWitch witch = new EntityWitch(world);
-			witch.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), (float) (Math.random() * 360), 0);
+			witch.setLocationAndAngles(effectivePosition.getX(), effectivePosition.getY(), effectivePosition.getZ(), (float) (Math.random() * 360), 0);
 			witch.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(witch)), (IEntityLivingData) null);
 			world.spawnEntity(witch);
-			if (Math.random() < 0.1)
+			if (Math.random() < 0.1) {
 				witch.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 6000, 2, false, false));
+			}
 		}
 	}
 

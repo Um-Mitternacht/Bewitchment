@@ -26,7 +26,7 @@ public class RitualConjurationVex extends RitualImpl {
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		if (!world.isRemote) {
 			EntityVex entityvex = new EntityVex(world);
-			BlockPos blockpos1 = pos.add(0, 0, 0);
+			BlockPos blockpos1 = effectivePosition.add(0, 0, 0);
 			entityvex.setLocationAndAngles(blockpos1.getX() + 0.5D, blockpos1.getY() + 0.55D, blockpos1.getZ() + 0.5D, 0F, 0F);
 			for (EntityPlayerMP entityplayermp : world.getEntitiesWithinAABB(EntityPlayerMP.class, entityvex.getEntityBoundingBox().grow(50.0D))) {
 				CriteriaTriggers.SUMMONED_ENTITY.trigger(entityplayermp, entityvex);

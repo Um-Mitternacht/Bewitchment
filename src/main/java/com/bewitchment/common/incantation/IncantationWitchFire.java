@@ -15,7 +15,7 @@ public class IncantationWitchFire implements IIncantation {
 
 	@Override
 	public int getCost() {
-		return 1000;
+		return 400;
 	}
 
 }

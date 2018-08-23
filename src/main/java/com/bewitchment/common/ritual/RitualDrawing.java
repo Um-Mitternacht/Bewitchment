@@ -62,4 +62,9 @@ public class RitualDrawing extends RitualImpl {
 		return player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk && player.getHeldItemOffhand().getMetadata() != 1 && (player.isCreative() || player.getHeldItemOffhand().getTagCompound().getInteger("usesLeft") >= coords.size());
 	}
 
+	@Override
+	public boolean canBePerformedRemotely() {
+		return false;
+	}
+
 }

@@ -31,20 +31,23 @@ public class RitualFlames extends RitualImpl {
 	@Override
 	public void onUpdate(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound data, int ticks, BlockPos effectivePosition, int covenSize) {
 		if (ticks % 40 == 0) {
-			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3), ie -> !FurnaceRecipes.instance().getSmeltingResult(ie.getItem()).isEmpty());
+			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(effectivePosition).grow(3), ie -> !FurnaceRecipes.instance().getSmeltingResult(ie.getItem()).isEmpty());
 			smeltables.parallelStream().filter(ei -> !ei.getItem().getItem().hasContainerItem(ei.getItem())).findAny().ifPresent(e -> smeltAndSpawn(e));
 			if (rng.nextDouble() < 0.1) {
 				if (world.getGameRules().getBoolean("doFireTick")) {
 					int x = Math.round(pos.getX()) - 5 + rng.nextInt(12);
 					int y = Math.round(pos.getY()) - 5 + rng.nextInt(12);
 					int z = Math.round(pos.getZ()) - 5 + rng.nextInt(12);
-					if (y < 1)
+					if (y < 1) {
 						y = 1;
-					if (y > world.getActualHeight())
+					}
+					if (y > world.getActualHeight()) {
 						y = world.getActualHeight() - 2;
+					}
 					BlockPos posn = new BlockPos(x, y, z);
-					if (canBurn(world, posn))
+					if (canBurn(world, posn)) {
 						world.setBlockState(posn, Blocks.FIRE.getDefaultState());
+					}
 				}
 			}
 		}
@@ -63,8 +66,9 @@ public class RitualFlames extends RitualImpl {
 	}
 
 	private boolean canBurn(World world, BlockPos pos) {
-		if (!world.isAirBlock(pos))
+		if (!world.isAirBlock(pos)) {
 			return false;
+		}
 		for (EnumFacing side : EnumFacing.VALUES) {
 			BlockPos offset = pos.offset(side);
 			if (!world.isAirBlock(pos.offset(side))) {

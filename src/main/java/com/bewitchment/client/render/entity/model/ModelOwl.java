@@ -246,6 +246,8 @@ public class ModelOwl extends ModelBase {
 				
 			} else {
 				setWanderingStance();
+				float time = (owl.ticksExisted + partialTickTime)*0.10471975512F;
+				owlBody.rotateAngleX= 0.08726646259F + 0.00484813681f*MathHelper.sin(time);
 			}
 		} else {
 			setFlyingStance();

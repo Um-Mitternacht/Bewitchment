@@ -3,16 +3,16 @@ package com.bewitchment.common.entity.living.familiar;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.lib.LibMod;
+import com.google.common.base.Predicates;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -76,8 +76,10 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(2, new EntityAIFleeSun(this, 2d));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
+		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class<?>[0]));
+		this.targetTasks.addTask(2, new EntityAITargetNonTamed<EntityRabbit>(this, EntityRabbit.class, false, Predicates.alwaysTrue()));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 
 	@Override
@@ -92,10 +94,10 @@ public class EntityOwl extends EntityFamiliar {
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!player.world.isRemote) {
-			if (!isFamiliar()) {
+			if (!isFamiliar() && !isChild()) {
 				setTamedBy(player);
 				BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
-			} else {
+			} else if (player.getHeldItem(hand).isEmpty()) { // TODO temp code
 				if (player.isSneaking()) {
 					setFamiliar(false);
 					setTamed(false);
@@ -104,6 +106,8 @@ public class EntityOwl extends EntityFamiliar {
 					this.aiSit.setSitting(!isSitting());
 					this.setSitting(!isSitting());
 				}
+			} else {
+				super.processInteract(player, hand);
 			}
 		}
 		return true;
@@ -132,10 +136,12 @@ public class EntityOwl extends EntityFamiliar {
 	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
 	}
 
+	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
 	}
 
+	@Override
 	public boolean canMateWith(EntityAnimal otherAnimal) {
 		if (otherAnimal == this) {
 			return false;

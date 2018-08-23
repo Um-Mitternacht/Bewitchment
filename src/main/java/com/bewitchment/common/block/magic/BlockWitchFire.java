@@ -6,7 +6,7 @@ import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
-import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -33,6 +33,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
 
 public class BlockWitchFire extends BlockMod {
@@ -127,11 +128,9 @@ public class BlockWitchFire extends BlockMod {
 					}
 					break;
 				case FROSTFIRE:
-					//Todo: Allow cold iron powder and dustpiles to be smithed back into ingots and dust here.
 					world.getEntitiesWithinAABB(EntityItem.class, aa).stream()
 							.filter(i -> !i.isDead)
-							.filter(i -> Block.getBlockFromItem(i.getItem().getItem()) == Blocks.IRON_ORE)
-							.forEach(i -> spawnColdIron(world, rand, i));
+							.forEach(is -> spawnItemInWorld(is));
 					break;
 				case SIGHTFIRE:
 					world.getEntitiesWithinAABB(EntityItem.class, aa).stream()
@@ -142,6 +141,16 @@ public class BlockWitchFire extends BlockMod {
 				default:
 					break;
 			}
+		}
+	}
+
+	private void spawnItemInWorld(EntityItem smeltedItem) {
+		Optional<ItemStack> resultOpt = FrostFireRecipe.getOutput(smeltedItem.getItem());
+		if (resultOpt.isPresent()) {
+			World world = smeltedItem.world;
+			EntityItem ei = new EntityItem(world, smeltedItem.posX, smeltedItem.posY, smeltedItem.posZ, resultOpt.get());
+			smeltedItem.getItem().shrink(1);
+			world.spawnEntity(ei);
 		}
 	}
 
@@ -159,13 +168,6 @@ public class BlockWitchFire extends BlockMod {
 		}
 	}
 
-	private void spawnColdIron(World world, Random rand, EntityItem i) {
-		ItemStack nuggets = new ItemStack(ModItems.cold_iron_ingot, 1 + rand.nextInt(9));
-		EntityItem ei = new EntityItem(world, i.posX, i.posY, i.posZ, nuggets);
-		ei.setNoPickupDelay();
-		i.setDead();
-		world.spawnEntity(ei);
-	}
 
 	private boolean isMundane(EntityItem i) {
 		Block b = Block.getBlockFromItem(i.getItem().getItem());

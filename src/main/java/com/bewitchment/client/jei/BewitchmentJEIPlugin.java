@@ -2,12 +2,12 @@ package com.bewitchment.client.jei;
 
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
-import com.bewitchment.api.crafting.OvenSmeltingRecipe;
-import com.bewitchment.api.crafting.SpinningThreadRecipe;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.client.jei.components.*;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.cauldron.BrewData;
+import com.bewitchment.common.crafting.OvenSmeltingRecipe;
+import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.ritual.AdapterIRitual;

@@ -339,8 +339,7 @@ public class ModelWerewolf extends ModelBase {
 		this.bipedRightLeg.addChild(this.rLeg02);
 		this.rLeg02.addChild(this.rLeg03);
 		this.lLeg03.addChild(this.lFoot);
-		
-		
+
 		this.bipedLeftLeg.addChild(this.lLeg02);
 		this.lLeg02.addChild(this.lLeg03);
 		this.rLeg03.addChild(this.rFoot);
@@ -357,17 +356,17 @@ public class ModelWerewolf extends ModelBase {
 		this.wolfHead.addChild(this.jawLower);
 		this.jawLower.addChild(this.lowerTeeth01);
 		this.lowerTeeth01.addChild(this.lowerTeeth02);
-		
+
 		this.wolfHead.addChild(this.lEarClassic);
 		this.wolfHead.addChild(this.lEarFeral01);
 		this.lEarFeral01.addChild(this.lEarFeral02);
 		this.lEarFeral01.addChild(this.lEarFeral03);
 		this.rEarFeral01.addChild(this.lEarFeral03_1);
-		
+
 		this.wolfHead.addChild(this.rEarClassic);
 		this.wolfHead.addChild(this.rEarFeral01);
 		this.rEarFeral01.addChild(this.rEarFeral02);
-		
+
 		this.wolfHead.addChild(this.snout);
 		this.wolfHead.addChild(this.rCheekFur);
 		this.wolfHead.addChild(this.lCheekFur);
@@ -402,6 +401,7 @@ public class ModelWerewolf extends ModelBase {
 
 */
 		float time = (p.ticksExisted + ptick)*0.10471975512F;
+
 
 
 		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((float) (time));

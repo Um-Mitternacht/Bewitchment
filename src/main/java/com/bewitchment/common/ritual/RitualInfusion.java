@@ -35,4 +35,9 @@ public class RitualInfusion extends RitualImpl {
 		}
 	}
 
+	@Override
+	public boolean canBePerformedRemotely() {
+		return false;
+	}
+
 }

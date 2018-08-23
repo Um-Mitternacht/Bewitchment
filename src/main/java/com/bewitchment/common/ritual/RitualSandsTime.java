@@ -21,4 +21,9 @@ public class RitualSandsTime extends RitualImpl {
 		world.setWorldTime(world.getWorldTime() + 5);
 	}
 
+	@Override
+	public boolean canBePerformedRemotely() {
+		return false;
+	}
+
 }

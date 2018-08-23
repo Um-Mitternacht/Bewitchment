@@ -152,6 +152,9 @@ public final class ModItems {
 	public static final Item goofer_dust = null;
 	public static final Item graveyard_dust = null;
 
+	public static final Item cold_iron_dust_small = null;
+	public static final Item cold_iron_dust = null;
+
 	public static final Item silver_pickaxe = null;
 	public static final Item silver_axe = null;
 	public static final Item silver_spade = null;

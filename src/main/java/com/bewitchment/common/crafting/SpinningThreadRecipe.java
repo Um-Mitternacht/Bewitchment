@@ -1,4 +1,4 @@
-package com.bewitchment.api.crafting;
+package com.bewitchment.common.crafting;
 
 import com.bewitchment.common.lib.LibMod;
 import mcp.MethodsReturnNonnullByDefault;
@@ -29,13 +29,13 @@ public class SpinningThreadRecipe extends IForgeRegistryEntry.Impl<SpinningThrea
 	 * @param output  The output that will be produced by this recipe. Cannot be null.
 	 * @param inputs  The inputs needed for this recipe. Cannot be null or have a size greater than four.
 	 */
-	public SpinningThreadRecipe(String regName, ItemStack output, Ingredient... inputs) {
+	public SpinningThreadRecipe(ResourceLocation regName, ItemStack output, Ingredient... inputs) {
 		if (inputs.length > 4) {
 			throw new IllegalArgumentException("The list of inputs cannot be greater than 4. ");
 		}
 		this.output = output;
 		this.inputs = inputs;
-		this.setRegistryName(LibMod.MOD_ID, regName);
+		this.setRegistryName(regName);
 	}
 
 	/**

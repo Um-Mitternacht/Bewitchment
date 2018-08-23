@@ -21,6 +21,7 @@ import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.BarkGrow;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
 import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
 import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
@@ -106,6 +107,7 @@ public class Bewitchment {
 		ModFortunes.init();
 		ModAbilities.dummyMethodToLoadClass();
 		ModLootTables.registerLootTables();
+		FrostFireRecipe.init();
 		proxy.preInit(event);
 		ThaumcraftCompatBridge.loadThaumcraftCompat();
 

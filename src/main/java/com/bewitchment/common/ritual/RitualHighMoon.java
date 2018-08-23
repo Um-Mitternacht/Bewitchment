@@ -28,4 +28,9 @@ public class RitualHighMoon extends RitualImpl {
 		return world.isDaytime();
 	}
 
+	@Override
+	public boolean canBePerformedRemotely() {
+		return false;
+	}
+
 }
