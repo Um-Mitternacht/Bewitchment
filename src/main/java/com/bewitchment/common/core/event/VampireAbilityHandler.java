@@ -1,5 +1,7 @@
 package com.bewitchment.common.core.event;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -14,6 +16,7 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -37,8 +40,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {
@@ -201,6 +202,9 @@ public class VampireAbilityHandler {
 	@SubscribeEvent
 	public static void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		if (data.getType() != DefaultTransformations.VAMPIRE) {
+			return;
+		}
 		if (evt.action == ModAbilities.NIGHT_VISION) {
 			boolean newStatus = !data.isNightVisionActive();
 			data.setNightVision(newStatus);
@@ -237,7 +241,7 @@ public class VampireAbilityHandler {
 
 	@SubscribeEvent
 	public static void abilityHandler(PlayerTickEvent evt) {
-		if (evt.phase == Phase.START && !evt.player.world.isRemote) {
+		if (evt.phase == Phase.START && !evt.player.world.isRemote && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
 			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
 				if (BewitchmentAPI.getAPI().addVampireBlood(evt.player, -2)) {
