@@ -32,6 +32,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.Mod;
@@ -264,6 +265,18 @@ public class VampireAbilityHandler {
 		}
 		if (data.getType() == DefaultTransformations.VAMPIRE) {
 			attack_speed.applyModifier(new AttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Vampire Atk Speed", evt.level / 10, AttributeModifierModeHelper.ADD));
+		}
+	}
+	
+	@SubscribeEvent
+	public static void checkHealing(LivingHealEvent evt) {
+		if (evt.getEntityLiving() instanceof EntityPlayer && !evt.getEntityLiving().world.isRemote) {
+			ITransformationData data = evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null);
+			if (data.getType() == DefaultTransformations.VAMPIRE) {
+				if (data.getBlood() == 0) {
+					evt.setCanceled(true);
+				}
+			}
 		}
 	}
 
