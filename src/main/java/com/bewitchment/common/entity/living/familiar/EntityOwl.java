@@ -94,10 +94,10 @@ public class EntityOwl extends EntityFamiliar {
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!player.world.isRemote) {
-			if (!isFamiliar()) {
+			if (!isFamiliar() && !isChild()) {
 				setTamedBy(player);
 				BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
-			} else if (player.getHeldItem(hand).isEmpty()) {
+			} else if (player.getHeldItem(hand).isEmpty()) { // TODO temp code
 				if (player.isSneaking()) {
 					setFamiliar(false);
 					setTamed(false);

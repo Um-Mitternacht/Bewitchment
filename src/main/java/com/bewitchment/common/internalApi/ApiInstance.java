@@ -1,5 +1,7 @@
 package com.bewitchment.common.internalApi;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -22,10 +24,7 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
+import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
@@ -37,6 +36,7 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.AdapterIRitual;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -45,8 +45,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -179,7 +177,7 @@ public class ApiInstance extends BewitchmentAPI {
 			throw new IllegalStateException("Can't make a familiar if the entity is not tamed, or tamed by another player");
 		}
 		f.setFamiliar(true);
-		f.setEntitySkin(p.getRNG().nextInt(f.getTotalVariants()));
+		f.setEntitySkin(p.getRNG().nextInt(f.getTotalVariants())); // TODO add special variants
 		if (!f.hasCustomName()) {
 			f.setCustomNameTag(f.getRandomNames()[p.getRNG().nextInt(f.getRandomNames().length)]);
 		}
