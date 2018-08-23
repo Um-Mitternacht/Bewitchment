@@ -1,6 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -252,9 +253,9 @@ public class ModelOwl extends ModelBase {
 		} else {
 			setFlyingStance();
 			float time = (owl.ticksExisted + partialTickTime) / (1.5F*((float) Math.PI));
-			wingRight01.rotateAngleY = 0.26179938779914943f + 1.047166666666666f * MathHelper.cos((float) time);
+			wingRight01.rotateAngleY = 0.26179938779914943f + 1.047166666666666f * MathHelper.cos(time);
 			wingLeft01.rotateAngleY = -wingRight01.rotateAngleY;
-			wingRight02.rotateAngleY= -0.52359877559F + 0.34906585039f * MathHelper.sin((float) time);
+			wingRight02.rotateAngleY = -0.52359877559F + 0.34906585039f * MathHelper.sin(time);
 			wingLeft02.rotateAngleY= -wingRight02.rotateAngleY;
 			wingRight03.rotateAngleY= wingRight01.rotateAngleY/4;
 			wingLeft03.rotateAngleY= -wingRight03.rotateAngleY;

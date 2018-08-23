@@ -1,10 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
@@ -404,13 +401,13 @@ public class ModelWerewolf extends ModelBase {
 
 
 
-		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((float) (time));
-		tail01Floof.rotateAngleX = 0.6108652381980153F + 0.00872664626F * MathHelper.cos((float) (time));
-		tail02Floof.rotateAngleZ = 0.03490658503F * MathHelper.cos((float) (time));
+		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((time));
+		tail01Floof.rotateAngleX = 0.6108652381980153F + 0.00872664626F * MathHelper.cos((time));
+		tail02Floof.rotateAngleZ = 0.03490658503F * MathHelper.cos((time));
 		tail03Floof.rotateAngleZ = tail02Floof.rotateAngleZ;
 
-		chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((float) (time));
-		bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((float) (time));
+		chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((time));
+		bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((time));
 		bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
 		
 		
