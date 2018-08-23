@@ -1,12 +1,14 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.common.block.ModBlocks;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -83,13 +85,15 @@ public class TileEntityGemBowl extends ModTileEntity {
 	}
 
 	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		if (worldIn.isRemote || player.isCreative()) {
+			return;
+		}
 		EntityItem item = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), gem);
 		worldIn.spawnEntity(item);
 		EntityItem block = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.gem_bowl));
 		worldIn.spawnEntity(block);
 	}
-
 	public boolean hasGem() {
 		return !gem.isEmpty();
 	}

@@ -2,6 +2,7 @@ package com.bewitchment.common.tile;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -18,50 +19,24 @@ import net.minecraft.world.World;
  */
 public abstract class ModTileEntity extends TileEntity {
 
-	/**
-	 * @param worldIn
-	 * @param pos
-	 * @param state
-	 * @param playerIn
-	 * @param hand
-	 * @param facing
-	 * @param hitX
-	 * @param hitY
-	 * @param hitZ
-	 * @return
-	 */
-	public abstract boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ);
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		return false;
+	}
 
-	/**
-	 * @param worldIn
-	 * @param pos
-	 * @param state
-	 */
-	public abstract void onBlockBroken(World worldIn, BlockPos pos, IBlockState state);
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+	}
+	
+	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+	}
 
-	/**
-	 * @param tag
-	 */
 	protected abstract void readAllModDataNBT(NBTTagCompound tag);
 
-	/**
-	 * @param tag
-	 */
 	protected abstract void writeAllModDataNBT(NBTTagCompound tag);
 
-	/**
-	 * @param tag
-	 */
 	protected abstract void writeModSyncDataNBT(NBTTagCompound tag);
 
-	/**
-	 * @param tag
-	 */
 	protected abstract void readModSyncDataNBT(NBTTagCompound tag);
 
-	/**
-	 *
-	 */
 	public void syncToClient() {
 		IBlockState state = world.getBlockState(pos);
 		world.notifyBlockUpdate(pos, state, state, 3);

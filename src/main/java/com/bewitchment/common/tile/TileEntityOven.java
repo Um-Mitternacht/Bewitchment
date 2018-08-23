@@ -1,5 +1,9 @@
 package com.bewitchment.common.tile;
 
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
@@ -8,12 +12,14 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.util.AutomatableInventory;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -25,9 +31,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
-import java.util.Random;
 
 /**
  * Created by Joseph on 7/17/2017.
@@ -105,13 +108,11 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		return true;
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-		if (world.isRemote) {
+	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		if (world.isRemote || player.isCreative()) {
 			return;
 		}
-
 		ItemHandlerHelper.dropItems(handlerUp, world, pos);
 		ItemHandlerHelper.dropItems(handlerSide, world, pos);
 		ItemHandlerHelper.dropItems(handlerDown, world, pos);

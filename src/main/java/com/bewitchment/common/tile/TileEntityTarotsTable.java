@@ -1,11 +1,14 @@
 package com.bewitchment.common.tile;
 
+import javax.annotation.Nonnull;
+
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,8 +21,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
-import javax.annotation.Nonnull;
-
 public class TileEntityTarotsTable extends ModTileEntity {
 
 	private static final int READ_COST = 2000;
@@ -28,11 +29,6 @@ public class TileEntityTarotsTable extends ModTileEntity {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		return false;
-	}
-
-	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-
 	}
 
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {

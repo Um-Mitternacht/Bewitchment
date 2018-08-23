@@ -1,5 +1,10 @@
 package com.bewitchment.common.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.crafting.BarrelRecipe;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.state.enums.EnumWoodType;
@@ -7,15 +12,14 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -27,10 +31,6 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 
 @SuppressWarnings({"NullableProblems", "unchecked"})
 public class TileEntityBarrel extends ModTileEntity implements ITickable {
@@ -47,8 +47,9 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	private FluidTank internalTank = new FluidTank(Fluid.BUCKET_VOLUME) {
 		@Override
 		protected void onContentsChanged() {
-			if (this.getFluidAmount() == 0 || this.getFluidAmount() == Fluid.BUCKET_VOLUME)
+			if (this.getFluidAmount() == 0 || this.getFluidAmount() == Fluid.BUCKET_VOLUME) {
 				TileEntityBarrel.this.markDirty();
+			}
 			checkRecipe();
 		}
 	};
@@ -92,8 +93,8 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 	}
 
 	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-		if (worldIn.isRemote) {
+	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		if (worldIn.isRemote || player.isCreative()) {
 			return;
 		}
 		ItemHandlerHelper.dropItems(handler, world, pos);

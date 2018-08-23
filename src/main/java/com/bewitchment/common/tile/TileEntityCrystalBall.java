@@ -1,9 +1,16 @@
 package com.bewitchment.common.tile;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.core.capability.divination.CapabilityDivination;
 import com.bewitchment.common.divination.Fortune;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,11 +21,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class TileEntityCrystalBall extends ModTileEntity {
 
 	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
@@ -28,11 +30,6 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		if (hand == EnumHand.OFF_HAND) return false;
 		if (worldIn.isRemote) return true;
 		return fortune(playerIn);
-	}
-
-	@Override
-	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-
 	}
 
 	public boolean fortune(EntityPlayer reader) {
