@@ -1,14 +1,22 @@
 package com.bewitchment.common.block.magic;
 
 
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -19,7 +27,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,11 +41,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 /**
  * This class was created by BerciTheBeast on 27.3.2017.
  * It's distributed as part of Bewitchment under
@@ -52,7 +54,7 @@ public class BlockSaltBarrier extends BlockMod {
 	public static final PropertyEnum<BlockSaltBarrier.EnumAttachPosition> SOUTH = PropertyEnum.create("south", BlockSaltBarrier.EnumAttachPosition.class);
 	public static final PropertyEnum<BlockSaltBarrier.EnumAttachPosition> WEST = PropertyEnum.create("west", BlockSaltBarrier.EnumAttachPosition.class);
 	private static final AxisAlignedBB[] SALT_BARRIER_AABB = new AxisAlignedBB[]{new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.8125D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.8125D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.1875D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.1875D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 0.8125D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D)};
-	private static final AxisAlignedBB wall = new AxisAlignedBB(0, 0, 0, 1, 3, 1);
+	private static final AxisAlignedBB wall = new AxisAlignedBB(0, -5, 0, 1, 5, 1);
 	private final Set<BlockPos> blocksNeedingUpdate = Sets.newHashSet();
 
 	public BlockSaltBarrier() {
@@ -188,17 +190,6 @@ public class BlockSaltBarrier extends BlockMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		double x = pos.getX() + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
-		double y = pos.getY() + 0.0625F;
-		double z = pos.getZ() + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
-		final float f = 3 / 15.0F;
-		final float f2 = Math.max(0.0F, f * f * 0.7F - 0.5F);
-		worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, 0D, f2, 0D);
-	}
-
-	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos toPos) {
 		if (!worldIn.isRemote) {
 			if (this.canPlaceBlockAt(worldIn, pos)) {
@@ -291,16 +282,7 @@ public class BlockSaltBarrier extends BlockMod {
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 			}
 		}
-		if (entityIn instanceof EntityBlaze) {
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
-		}
-		if (entityIn instanceof EntityEnderman) {
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
-		}
-		if (entityIn instanceof EntityGhast) {
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
-		}
-		if (entityIn instanceof EntityVex) {
+		if (entityIn instanceof EntityBlaze || entityIn instanceof EntityGhast || entityIn instanceof EntityVex || entityIn instanceof EntityBatSwarm) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
 		if ((entityIn instanceof EntityPlayer) && !((EntityPlayer) entityIn).isCreative()) {

@@ -67,6 +67,7 @@ public class VampireAbilityHandler {
 			if (data.getType() == DefaultTransformations.VAMPIRE) {
 				if (evt.getSource() == SUN_DAMAGE) {
 					evt.setCanceled(false); // No immunity for you
+					player.dismountRidingEntity();
 					return; // No multipliers for sun
 				}
 				float multiplier = getMultiplier(evt); // A multiplier greater 1 makes the damage not be reduced
@@ -76,6 +77,9 @@ public class VampireAbilityHandler {
 					evt.setAmount(evt.getAmount() * multiplier);
 				} else if (data.getBlood() > 0) { // Don't mitigate damage when there is no blood in the pool
 					evt.setAmount(evt.getAmount() * (1f - 0.1f * data.getLevel()));
+				}
+				if (player.getRidingEntity() instanceof EntityBatSwarm) {
+					evt.setCanceled(true);
 				}
 			}
 		}

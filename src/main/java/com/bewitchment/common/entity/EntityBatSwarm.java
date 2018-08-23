@@ -10,7 +10,7 @@ public class EntityBatSwarm extends Entity {
 
 	public EntityBatSwarm(World worldIn) {
 		super(worldIn);
-		this.setSize(0.2f, 0.2f);
+		this.setSize(0.01f, 0.01f);
 		this.setEntityInvulnerable(true);
 		this.setNoGravity(true);
 		this.setSilent(true);
