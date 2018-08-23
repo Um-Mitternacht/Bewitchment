@@ -25,7 +25,7 @@ public abstract class ModTileEntity extends TileEntity {
 
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
 	}
-	
+
 	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
 	}
 

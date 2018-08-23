@@ -1,12 +1,11 @@
 package com.bewitchment.common.potion.potions.brews;
 
-import java.util.ArrayList;
-
 import com.bewitchment.common.potion.BrewMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
+
+import java.util.ArrayList;
 
 public class PotionPurification extends BrewMod {
 

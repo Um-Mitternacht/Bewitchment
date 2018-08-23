@@ -1,7 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import java.util.UUID;
-
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
@@ -12,7 +10,6 @@ import com.bewitchment.common.core.capability.transformation.ITransformationData
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -23,6 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+
+import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class WerewolfAbilityHandler {
@@ -58,7 +57,7 @@ public class WerewolfAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void abilityHandler(PlayerTickEvent evt) {
 		if (evt.phase == Phase.START && !evt.player.world.isRemote && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
@@ -68,7 +67,7 @@ public class WerewolfAbilityHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
 		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);

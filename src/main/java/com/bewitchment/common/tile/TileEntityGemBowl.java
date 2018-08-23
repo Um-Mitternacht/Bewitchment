@@ -1,7 +1,6 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -94,6 +93,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 		EntityItem block = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.gem_bowl));
 		worldIn.spawnEntity(block);
 	}
+
 	public boolean hasGem() {
 		return !gem.isEmpty();
 	}

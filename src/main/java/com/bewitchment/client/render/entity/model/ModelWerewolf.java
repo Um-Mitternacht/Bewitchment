@@ -397,8 +397,7 @@ public class ModelWerewolf extends ModelBase {
 		}
 
 */
-		float time = (p.ticksExisted + ptick)*0.10471975512F;
-
+		float time = (p.ticksExisted + ptick) * 0.10471975512F;
 
 
 		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((time));
@@ -409,11 +408,11 @@ public class ModelWerewolf extends ModelBase {
 		chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((time));
 		bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((time));
 		bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
-		
-		
+
+
 		this.bipedBody.render(1);
-		
-		
+
+
 	}
 
 	/**
