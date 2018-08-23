@@ -92,8 +92,6 @@ public class TileEntityApiary extends ModTileEntity implements ITickable, IWorld
 
 		ItemHandlerHelper.dropItems(handlerUp, worldIn, pos);
 		ItemHandlerHelper.dropItems(handlerDown, worldIn, pos);
-		final EntityItem item = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, handlerUp.getStackInSlot(0));
-		world.spawnEntity(item);
 		final EntityItem block = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.apiary));
 		world.spawnEntity(block);
 	}

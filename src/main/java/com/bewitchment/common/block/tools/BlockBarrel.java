@@ -1,9 +1,14 @@
 package com.bewitchment.common.block.tools;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.Random;
+
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.TileEntityBarrel;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -14,10 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -26,10 +28,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
 
 public class BlockBarrel extends BlockModTileEntity {
 	private static final AxisAlignedBB bounding_box_NS = new AxisAlignedBB(0.1875D, 0.0D, 0.03125D, 0.8125D, 0.625D, 0.96875D);
@@ -124,7 +122,6 @@ public class BlockBarrel extends BlockModTileEntity {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
-
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return new ItemStack(this, 1, state.getActualState(world, pos).getValue(StateProperties.WOOD_TYPE).ordinal());
@@ -137,7 +134,7 @@ public class BlockBarrel extends BlockModTileEntity {
 			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), wt.ordinal(), modelResourceLocation);
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
