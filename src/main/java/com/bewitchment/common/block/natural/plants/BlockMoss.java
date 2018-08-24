@@ -17,16 +17,19 @@ import net.minecraft.block.BlockVine;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+// FIXME placement (try and place it under a dangling piece while not connected laterally to any block)
 public class BlockMoss extends BlockVine implements IModelRegister {
 	
 	boolean terminalPiece;
@@ -111,7 +114,19 @@ public class BlockMoss extends BlockVine implements IModelRegister {
 	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		return side != EnumFacing.DOWN && side != EnumFacing.UP && super.canAttachTo(worldIn, pos, side);
+		
+		if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
+			for (EnumFacing f : EnumFacing.HORIZONTALS) {
+				if (canAttachTo(worldIn, pos.offset(f), f.getOpposite())) {
+					return true;
+				}
+			}
+		}
+		if (side == EnumFacing.DOWN) {
+			return worldIn.getBlockState(pos.up()).getBlock() == ModBlocks.spanish_moss;
+		}
+		
+		return this.canAttachTo(worldIn, pos.offset(side.getOpposite()), side);
 	}
 	
 	@Override
@@ -120,5 +135,25 @@ public class BlockMoss extends BlockVine implements IModelRegister {
 			return false;
 		}
 		return !isExceptBlockForAttaching(world.getBlockState(blockToAttachTo).getBlock());
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = ModBlocks.spanish_moss.getDefaultState();
+		if (worldIn.getBlockState(pos.up()).getBlockFaceShape(worldIn, pos.up(), EnumFacing.DOWN) == BlockFaceShape.SOLID) {
+			state = state.withProperty(UP, true);
+		}
+		for (EnumFacing f : EnumFacing.HORIZONTALS) {
+			PropertyBool side = getPropertyFor(f);
+			if (canAttachTo(worldIn, pos.offset(f), f.getOpposite()) || (worldIn.getBlockState(pos.up()).getBlock() == ModBlocks.spanish_moss && worldIn.getBlockState(pos.up()).getValue(side))) {
+				state = state.withProperty(side, true);
+			}
+		}
+		return state;
+	}
+	
+	@Override
+	public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
+		return false;
 	}
 }
