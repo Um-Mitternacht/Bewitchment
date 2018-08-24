@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Loader;
 /**
  * Created by Joseph on 8/3/2018.
  */
+@SuppressWarnings("deprecation")
 public class AstralSorceryCompatBridge {
 
 	private static final String AS_MOD_ID = "astralsorcery";
