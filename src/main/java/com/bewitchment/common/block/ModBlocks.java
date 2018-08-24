@@ -14,15 +14,14 @@ import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
-import com.bewitchment.common.block.natural.tree.BlockModLeaves;
-import com.bewitchment.common.block.natural.tree.BlockModLog;
-import com.bewitchment.common.block.natural.tree.BlockModSapling;
-import com.bewitchment.common.block.natural.tree.BlockPlanks;
+import com.bewitchment.common.block.natural.plants.BlockMoss;
+import com.bewitchment.common.block.natural.tree.*;
 import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -127,7 +126,8 @@ public final class ModBlocks {
 	public static final Block cold_iron_block = null;
 	public static final Block graveyard_dirt = null;
 	public static final Block sacrosanct_ground = null;
-
+	public static final Block spanish_moss = null;
+	public static final Block spanish_moss_end = null;
 
 	public static final Block infested_farmland = null;
 	public static final Block witchfire = null;
@@ -168,7 +168,9 @@ public final class ModBlocks {
 				new CropBelladonna(),
 				new CropMint(),
 				new BlockMoonbell(),
-				new BlockInfestedFarmland()
+				new BlockInfestedFarmland(),
+				new BlockMoss(true),
+				new BlockMoss(false)
 		);
 		//Ore
 		registry.register(new BlockSilverOre());
