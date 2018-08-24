@@ -6,6 +6,7 @@ import com.bewitchment.common.container.slots.SlotOutput;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.tile.TileEntityOven;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
@@ -46,7 +47,7 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size();
+			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size() - 2;
 			if (index < containerSlots) {
 				if (!this.mergeItemStack(itemstack1, containerSlots, inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
