@@ -328,6 +328,7 @@ tile.crop_kenaf.name=Kenaf Crop
 tile.crop_tulsi.name=Tulsi Crop
 tile.crop_chrysanthemum.name=Chrysanthemum Crop
 tile.crop_sagebrush.name=Sagebrush Crop
+tile.spanish_moss.name=Spanish Moss
 
 //Misc plants
 tile.moonbell.name=Moonbell Flower
