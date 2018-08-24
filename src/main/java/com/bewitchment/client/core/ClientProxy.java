@@ -128,9 +128,7 @@ public class ClientProxy implements ISidedProxy {
 			
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-				Color color = (worldIn != null && pos != null ? (new Color(BiomeColorHelper.getGrassColorAtPos(worldIn, pos))) : Color.WHITE);
-				return color.brighter().getRGB();
-				
+				return (worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : -1);
 			}
 		}, ModBlocks.spanish_moss, ModBlocks.spanish_moss_end);
 
