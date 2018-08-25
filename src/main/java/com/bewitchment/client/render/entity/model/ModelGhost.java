@@ -1,12 +1,11 @@
 package com.bewitchment.client.render.entity.model;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.input.Keyboard;
 
 /**
  * werewolf5 - cybercat5555
@@ -67,14 +66,16 @@ public class ModelGhost extends ModelBase {
 	public ModelRenderer lLeg02;
 	public ModelRenderer lLeg03;
 	public ModelRenderer lFoot;
-	
-	public ModelRenderer body;
-    public ModelRenderer lArm;
-    public ModelRenderer lLeg;
-    public ModelRenderer head;
-    public ModelRenderer rLeg;
-    public ModelRenderer rArm;
 
+	public ModelRenderer body;
+	public ModelRenderer lArm;
+	public ModelRenderer lLeg;
+	public ModelRenderer head;
+	public ModelRenderer rLeg;
+	public ModelRenderer rArm;
+	private int transition = 0;
+	private int timer = 0;
+	private int timer2 = 0;
 	public ModelGhost() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
@@ -307,28 +308,28 @@ public class ModelGhost extends ModelBase {
 		this.rFoot.setRotationPoint(0.0F, 5.8F, -1.5F);
 		this.rFoot.addBox(-2.0F, 0.0F, -4.3F, 4, 2, 6, 0.0F);
 		this.setRotateAngle(rFoot, 0.296705972839036F, 0.0F, 0.0F);
-		
+
 		this.lArm = new ModelRenderer(this, 40, 16);
-        this.lArm.mirror = true;
-        this.lArm.setRotationPoint(5.0F, 2.0F, -0.0F);
-        this.lArm.addBox(-1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F);
-        this.body = new ModelRenderer(this, 16, 16);
-        this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.body.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F);
-        this.setRotateAngle( body, 0.6108652381980153F, 0.0F, 0.0F);
-        this.rLeg = new ModelRenderer(this, 0, 16);
-        this.rLeg.setRotationPoint(-1.9F, 12.0F, 0.1F);
-        this.rLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F);
-        this.head = new ModelRenderer(this, 0, 0);
-        this.head.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.head.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
-        this.rArm = new ModelRenderer(this, 40, 16);
-        this.rArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-        this.rArm.addBox(-3.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F);
-        this.lLeg = new ModelRenderer(this, 0, 16);
-        this.lLeg.mirror = true;
-        this.lLeg.setRotationPoint(1.9F, 12.0F, 0.1F);
-        this.lLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F);
+		this.lArm.mirror = true;
+		this.lArm.setRotationPoint(5.0F, 2.0F, -0.0F);
+		this.lArm.addBox(-1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F);
+		this.body = new ModelRenderer(this, 16, 16);
+		this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.body.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F);
+		this.setRotateAngle(body, 0.6108652381980153F, 0.0F, 0.0F);
+		this.rLeg = new ModelRenderer(this, 0, 16);
+		this.rLeg.setRotationPoint(-1.9F, 12.0F, 0.1F);
+		this.rLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F);
+		this.head = new ModelRenderer(this, 0, 0);
+		this.head.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.head.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
+		this.rArm = new ModelRenderer(this, 40, 16);
+		this.rArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
+		this.rArm.addBox(-3.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F);
+		this.lLeg = new ModelRenderer(this, 0, 16);
+		this.lLeg.mirror = true;
+		this.lLeg.setRotationPoint(1.9F, 12.0F, 0.1F);
+		this.lLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F);
 
 		/**
 		 * Childing
@@ -398,20 +399,17 @@ public class ModelGhost extends ModelBase {
 		this.wolfHead.addChild(this.snout);
 		this.wolfHead.addChild(this.rCheekFur);
 		this.wolfHead.addChild(this.lCheekFur);
-		
+
 		this.body.addChild(this.lArm);
-        this.body.addChild(this.rLeg);
-        this.body.addChild(this.head);
-        this.body.addChild(this.rArm);
-        this.body.addChild(this.lLeg);
+		this.body.addChild(this.rLeg);
+		this.body.addChild(this.head);
+		this.body.addChild(this.rArm);
+		this.body.addChild(this.lLeg);
 	}
 
-	private int transition = 0;
-	private	int timer = 0;
-	private	int	timer2 = 0;
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
-		
+
 		EntityPlayer p = (EntityPlayer) entity;
 /*
 		float rotArm = MathHelper.cos(limbSwing * 0.5f) * limbSwingAmount * 2;
@@ -437,66 +435,60 @@ public class ModelGhost extends ModelBase {
 		}
 
 */
-		float time = (p.ticksExisted + ptick)*0.10471975512F;
+		float time = (p.ticksExisted + ptick) * 0.10471975512F;
 		this.body.render(1);
-		
 
 
-		if (entity.isSneaking() && transition == 0) 
-		{
+		if (entity.isSneaking() && transition == 0) {
 			System.out.println("test1");
-			float anglechange = 2.4712389F-body.rotateAngleX;
-				body.rotateAngleX = body.rotateAngleX + anglechange*(timer+1)/40;
-				head.rotateAngleX = -(body.rotateAngleX - 0.43633231299F);
-			
-				timer++;
-					if (timer>=40) {
-						transition = 1;
-					}
+			float anglechange = 2.4712389F - body.rotateAngleX;
+			body.rotateAngleX = body.rotateAngleX + anglechange * (timer + 1) / 40;
+			head.rotateAngleX = -(body.rotateAngleX - 0.43633231299F);
+
+			timer++;
+			if (timer >= 40) {
+				transition = 1;
+			}
 			//Sets the sneak position
-		}
-		else if (entity.isSneaking() && transition == 1)
-		{
+		} else if (entity.isSneaking() && transition == 1) {
 			body.rotateAngleZ = 0F;
-			body.rotationPointY = 2F + 1.5F*MathHelper.sin(time);
-			body.rotateAngleX =  0.43633231299F + 6F*limbSwingAmount+0.03490658503F;
-			lLeg.rotateAngleZ = -0.03490658503F + 0.03490658503F*MathHelper.sin(time);
+			body.rotationPointY = 2F + 1.5F * MathHelper.sin(time);
+			body.rotateAngleX = 0.43633231299F + 6F * limbSwingAmount + 0.03490658503F;
+			lLeg.rotateAngleZ = -0.03490658503F + 0.03490658503F * MathHelper.sin(time);
 			rLeg.rotateAngleZ = -lLeg.rotateAngleZ;
 			lArm.rotateAngleZ = lLeg.rotateAngleZ;
 			rArm.rotateAngleZ = -lLeg.rotateAngleZ;
 			head.rotateAngleX = -(body.rotateAngleX - 0.43633231299F);
-			timer =1;
+			timer = 1;
 			//After the sneak position is taken, if shift remains pressed, it does the actual shift animation
-		}
-		else 
-		{
-			body.rotationPointY = -2F + 1.5F*MathHelper.sin(time);
-			body.rotateAngleX =  0.43633231299F + 3F*limbSwingAmount+0.03490658503F;
-			lLeg.rotateAngleZ = -0.03490658503F + 0.03490658503F*MathHelper.sin(time);
+		} else {
+			body.rotationPointY = -2F + 1.5F * MathHelper.sin(time);
+			body.rotateAngleX = 0.43633231299F + 3F * limbSwingAmount + 0.03490658503F;
+			lLeg.rotateAngleZ = -0.03490658503F + 0.03490658503F * MathHelper.sin(time);
 			rLeg.rotateAngleZ = -lLeg.rotateAngleZ;
 			lArm.rotateAngleZ = lLeg.rotateAngleZ;
 			rArm.rotateAngleZ = -lLeg.rotateAngleZ;
 			head.rotateAngleX = -(body.rotateAngleX - 0.43633231299F);
 			transition = 0;
-			
-			
-	}
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || timer2 != 0){
-			if(timer2 != 40); {
-				body.rotateAngleZ = 6.28318531F*(timer2+1)/40;
+
+
+		}
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || timer2 != 0) {
+			if (timer2 != 40) ;
+			{
+				body.rotateAngleZ = 6.28318531F * (timer2 + 1) / 40;
 				timer2++;
 			}
-			if(timer2==40) {
+			if (timer2 == 40) {
 				timer2 = 0;
 				System.out.println("Do you even work?");
 			}
-				
-		}else {
+
+		} else {
 			timer2 = 0;
 		}
 	}
-	
-			
+
 
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
