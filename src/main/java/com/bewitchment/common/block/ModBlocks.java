@@ -15,13 +15,15 @@ import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.plants.BlockMoss;
-import com.bewitchment.common.block.natural.tree.*;
+import com.bewitchment.common.block.natural.tree.BlockModLeaves;
+import com.bewitchment.common.block.natural.tree.BlockModLog;
+import com.bewitchment.common.block.natural.tree.BlockModSapling;
+import com.bewitchment.common.block.natural.tree.BlockPlanks;
 import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
