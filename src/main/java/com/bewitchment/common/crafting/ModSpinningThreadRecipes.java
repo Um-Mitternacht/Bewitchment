@@ -29,7 +29,7 @@ public class ModSpinningThreadRecipes {
 				new SpinningThreadRecipe(rl("diabolic_vein"), new ItemStack(ModItems.diabolic_vein, 4), soul_string, soul_string, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 8)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 13))),
 				new SpinningThreadRecipe(rl("pure_filament"), new ItemStack(ModItems.pure_filament, 4), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7))),
 				new SpinningThreadRecipe(rl("soulstring"), new ItemStack(ModItems.soul_string, 2), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 10)), ectoplasm),
-				new SpinningThreadRecipe(rl("spanish_moss_stuffing"), new ItemStack(ModItems.spanish_moss, 4))
+				new SpinningThreadRecipe(rl("spanish_moss_stuffing"), new ItemStack(ModItems.spanish_moss_stuffing, 4), Ingredient.fromStacks(new ItemStack(ModItems.spanish_moss, 4, 0)))
 		);
 	}
 
