@@ -172,6 +172,8 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kenaf), new AspectList().add(Aspect.PLANT, 1).add(Aspect.CRAFT, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_kelp), new AspectList().add(Aspect.PLANT, 1).add(Aspect.WATER, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.goofer_dust), new AspectList().add(Aspect.FIRE, 7).add(Aspect.DARKNESS, 7).add(Aspect.DEATH, 7).add(Aspect.AVERSION, 7).add(Aspect.PROTECT, 7).add(Aspect.MAGIC, 7));
+		evt.register.registerObjectTag(new ItemStack(ModItems.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
 
 		//Books and Spells
 		evt.register.registerObjectTag(new ItemStack(ModItems.book_of_shadows), new AspectList().add(Aspect.MIND, 10).add(Aspect.DARKNESS, 10).add(Aspect.MAGIC, 10).add(Aspect.CRAFT, 10).add(STAR, 10).add(MOON, 10).add(SUN, 10));
@@ -213,6 +215,9 @@ public class ThaumcraftCompat {
 
 		//Add some of our aspects to existing items in vanilla
 		evt.register.registerObjectTag(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new AspectList().add(Aspect.PLANT, 5).add(Aspect.SENSES, 5).add(SUN, 3).add(Aspect.AIR, 1).add(Aspect.LIFE, 1));
+
+		//Entities
+		
 
 	}
 }
