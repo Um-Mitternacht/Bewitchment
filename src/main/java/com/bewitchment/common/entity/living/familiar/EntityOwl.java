@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
-import com.bewitchment.common.integration.common.DietaryUtils;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.base.Predicate;
 import net.minecraft.block.Block;
@@ -13,6 +12,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -43,6 +43,11 @@ public class EntityOwl extends EntityFamiliar {
 		super(worldIn);
 		this.setSize(0.4f, 0.9f);
 		this.moveHelper = new EntityFlyHelper(this);
+	}
+
+	public static boolean isOwlFodder(Entity entity) {
+		String className = entity.getClass().getSimpleName();
+		return entity instanceof EntityRabbit || entity instanceof EntityBat || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Hedgehog") || className.contains("Hamster") || className.contains("Squirrel") || className.contains("Hare") || className.contains("Fox") || className.contains("Weasel") || className.contains("Pigeon") || className.contains("Turkey") || className.contains("Mouse") || className.contains("Bat") || className.contains("Lizard") || className.contains("Frog") || className.contains("Toad") || className.contains("Snake") || className.contains("Beetle") || className.contains("Chinchilla") || className.contains("Cavy") || className.contains("GuineaPig") || className.contains("Crow") || className.contains("Raven") || className.contains("Pheasant") || className.contains("Partridge") || className.contains("Jackdaw") || className.contains("Mongoose") || className.contains("Rooster") || className.contains("Hen") || className.contains("Chick") || className.contains("Shrew") || className.contains("Mole") || className.contains("Vole") || className.contains("Lemming") || className.contains("Jird") || className.contains("Jerboa") || className.contains("Gerbil") || className.contains("Muskrat") || className.contains("Marmot") || className.contains("Deer");
 	}
 
 	@Override
@@ -81,9 +86,10 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityAnimal.class, false, new Predicate<Entity>() {
+		//Fixme: Overhaul isOwlFodder
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityLivingBase.class, false, new Predicate<Entity>() {
 			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase && DietaryUtils.isAlive((EntityLivingBase)entity) && entity instanceof EntityOwl;
+				return entity instanceof EntityLivingBase && EntityOwl.isOwlFodder((EntityLivingBase) entity);
 			}
 		}));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
