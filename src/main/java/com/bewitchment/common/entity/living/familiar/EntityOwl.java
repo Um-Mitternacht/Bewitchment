@@ -2,18 +2,17 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
+import com.bewitchment.common.integration.common.DietaryUtils;
 import com.bewitchment.common.lib.LibMod;
-import com.google.common.base.Predicates;
+import com.google.common.base.Predicate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -30,6 +29,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityOwl extends EntityFamiliar {
 
@@ -80,7 +81,11 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(2, new EntityAITargetNonTamed<EntityRabbit>(this, EntityRabbit.class, false, Predicates.alwaysTrue()));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityAnimal.class, false, new Predicate<Entity>() {
+			public boolean apply(@Nullable Entity entity) {
+				return entity instanceof EntityLivingBase && DietaryUtils.isAlive((EntityLivingBase)entity) && entity instanceof EntityOwl;
+			}
+		}));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 

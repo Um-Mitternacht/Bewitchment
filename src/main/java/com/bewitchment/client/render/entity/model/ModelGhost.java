@@ -76,6 +76,7 @@ public class ModelGhost extends ModelBase {
 	private int transition = 0;
 	private int timer = 0;
 	private int timer2 = 0;
+
 	public ModelGhost() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
