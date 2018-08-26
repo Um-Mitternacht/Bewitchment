@@ -83,7 +83,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		//Fixme: Overhaul isOwlFodder
+		//Fixme: Overhaul isOwlFodder, move it to DietaryUtils, and set up a class whitelist. Current means are messy and possibly straining on resources.
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityLivingBase.class, false, new Predicate<Entity>() {
 			public boolean apply(@Nullable Entity entity) {
 				return entity instanceof EntityLivingBase && EntityOwl.isOwlFodder((EntityLivingBase) entity);
