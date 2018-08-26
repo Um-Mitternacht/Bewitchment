@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " S ",
+    "SGS",
+    " T "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "G": {
+      "item": "minecraft:emerald",
+      "data": 0
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "bewitchment:athame",
+    "data": 0
+  }
+}
