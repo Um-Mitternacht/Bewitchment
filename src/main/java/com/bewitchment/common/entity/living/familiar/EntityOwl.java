@@ -10,10 +10,7 @@ import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityRabbit;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -47,7 +44,7 @@ public class EntityOwl extends EntityFamiliar {
 
 	public static boolean isOwlFodder(Entity entity) {
 		String className = entity.getClass().getSimpleName();
-		return entity instanceof EntityRabbit || entity instanceof EntityBat || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Hedgehog") || className.contains("Hamster") || className.contains("Squirrel") || className.contains("Hare") || className.contains("Fox") || className.contains("Weasel") || className.contains("Pigeon") || className.contains("Turkey") || className.contains("Mouse") || className.contains("Bat") || className.contains("Lizard") || className.contains("Frog") || className.contains("Toad") || className.contains("Snake") || className.contains("Beetle") || className.contains("Chinchilla") || className.contains("Cavy") || className.contains("GuineaPig") || className.contains("Crow") || className.contains("Raven") || className.contains("Pheasant") || className.contains("Partridge") || className.contains("Jackdaw") || className.contains("Mongoose") || className.contains("Rooster") || className.contains("Hen") || className.contains("Chick") || className.contains("Shrew") || className.contains("Mole") || className.contains("Vole") || className.contains("Lemming") || className.contains("Jird") || className.contains("Jerboa") || className.contains("Gerbil") || className.contains("Muskrat") || className.contains("Marmot") || className.contains("Deer");
+		return entity instanceof EntityRabbit || entity instanceof EntityBat || entity instanceof EntityChicken || entity instanceof EntityParrot || className.contains("Rat") || className.contains("Hedgehog") || className.contains("Hamster") || className.contains("Squirrel") || className.contains("Hare") || className.contains("Fox") || className.contains("Weasel") || className.contains("Pigeon") || className.contains("Turkey") || className.contains("Mouse") || className.contains("Bat") || className.contains("Lizard") || className.contains("Frog") || className.contains("Toad") || className.contains("Snake") || className.contains("Beetle") || className.contains("Chinchilla") || className.contains("Cavy") || className.contains("GuineaPig") || className.contains("Crow") || className.contains("Raven") || className.contains("Pheasant") || className.contains("Partridge") || className.contains("Jackdaw") || className.contains("Mongoose") || className.contains("Rooster") || className.contains("Hen") || className.contains("Chick") || className.contains("Shrew") || className.contains("Mole") || className.contains("Vole") || className.contains("Lemming") || className.contains("Jird") || className.contains("Jerboa") || className.contains("Gerbil") || className.contains("Muskrat") || className.contains("Marmot") || className.contains("Deer") || className.contains("Ferret");
 	}
 
 	@Override
