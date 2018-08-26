@@ -2,6 +2,7 @@ package com.bewitchment.common.crafting;
 
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ public class ModSpinningThreadRecipes {
 		Ingredient stitching = Ingredient.fromItem(ModItems.witches_stitching);
 		Ingredient ectoplasm = Ingredient.fromItem(ModItems.ectoplasm);
 		Ingredient soul_string = Ingredient.fromItem(ModItems.soul_string);
+		@SuppressWarnings("unused")
 		Ingredient spanish_moss_stuffing = Ingredient.fromItem(ModItems.spanish_moss_stuffing);
 
 		SpinningThreadRecipe.REGISTRY.registerAll(

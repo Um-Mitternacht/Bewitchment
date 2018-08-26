@@ -1,11 +1,12 @@
 package com.bewitchment.client.render.entity.model;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
-import org.lwjgl.input.Keyboard;
 
 /**
  * werewolf5 - cybercat5555
@@ -475,11 +476,8 @@ public class ModelGhost extends ModelBase {
 
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || timer2 != 0) {
-			if (timer2 != 40) ;
-			{
-				body.rotateAngleZ = 6.28318531F * (timer2 + 1) / 40;
-				timer2++;
-			}
+			body.rotateAngleZ = 6.28318531F * (timer2 + 1) / 40;
+			timer2++;
 			if (timer2 == 40) {
 				timer2 = 0;
 				System.out.println("Do you even work?");
