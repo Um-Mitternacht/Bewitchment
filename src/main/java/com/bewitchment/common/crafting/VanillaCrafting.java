@@ -21,6 +21,7 @@ public final class VanillaCrafting {
 
 	public static void blocks() {
 
+		//Fixme: Make ores smelt into their appropriate gemstones.
 		GameRegistry.addSmelting(ModBlocks.silver_ore, new ItemStack(ModItems.silver_ingot, 1), 0.35F);
 		GameRegistry.addSmelting(Blocks.SAPLING, new ItemStack(ModItems.wood_ash, 4), 0.15F);
 		GameRegistry.addSmelting(ModItems.silver_scales, new ItemStack(ModItems.silver_nugget, 1), 0.20F);
