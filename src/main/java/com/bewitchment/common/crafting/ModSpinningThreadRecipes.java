@@ -2,7 +2,6 @@ package com.bewitchment.common.crafting;
 
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
