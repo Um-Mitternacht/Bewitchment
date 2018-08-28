@@ -81,7 +81,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
 		//Fixme: Overhaul isOwlFodder, move it to DietaryUtils, and set up a class whitelist. Current means are messy and possibly straining on resources.
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> EntityOwl.isOwlFodder(e)));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntityOwl::isOwlFodder));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 
@@ -183,6 +183,11 @@ public class EntityOwl extends EntityFamiliar {
 	@Override
 	public boolean canBePushed() {
 		return true;
+	}
+
+	public int getMaxSpawnedInChunk()
+	{
+		return 4;
 	}
 
 	@Override
