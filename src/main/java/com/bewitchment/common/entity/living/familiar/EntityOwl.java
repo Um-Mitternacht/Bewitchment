@@ -185,8 +185,7 @@ public class EntityOwl extends EntityFamiliar {
 		return true;
 	}
 
-	public int getMaxSpawnedInChunk()
-	{
+	public int getMaxSpawnedInChunk() {
 		return 4;
 	}
 

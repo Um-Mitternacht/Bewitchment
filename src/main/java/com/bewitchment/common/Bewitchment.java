@@ -40,6 +40,8 @@ import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.ritual.ModRituals;
 import com.bewitchment.common.spell.ModSpells;
 import com.bewitchment.common.transformation.ModTransformations;
+import com.bewitchment.common.world.EntityPlacementHelper;
+import com.bewitchment.common.world.SpawnHelper;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
@@ -54,6 +56,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -110,6 +113,7 @@ public class Bewitchment {
 		FrostFireRecipe.init();
 		proxy.preInit(event);
 		ThaumcraftCompatBridge.loadThaumcraftCompat();
+		EntityPlacementHelper.init();
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
@@ -132,6 +136,7 @@ public class Bewitchment {
 		ModOvenSmeltingRecipes.init();
 		ModRituals.init();
 		ModBrewModifiers.init();
+		GameRegistry.registerWorldGenerator(new SpawnHelper(), 10);
 
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
