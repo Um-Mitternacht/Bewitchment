@@ -25,7 +25,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom;
 
 	public static void init() {
 
@@ -158,11 +158,14 @@ public class ModRituals {
 		table = new RitualImpl(rl("table"), of(new IngredientMultiOreDict("string"), (new IngredientMultiOreDict("dye")), Ingredient.fromStacks(new ItemStack(Blocks.CRAFTING_TABLE, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 20)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 19)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 19))), ofs(new ItemStack(ModBlocks.tarot_table)), 50, circles(NORMAL, NORMAL, null), 350, 1);
 		crystal_ball = new RitualImpl(rl("crystal_ball"), of(new IngredientMultiOreDict("gemQuartz"), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), (new IngredientMultiOreDict("blockGlass")), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 20))), ofs(new ItemStack(ModBlocks.crystal_ball)), 50, circles(NORMAL, ENDER, null), 750, 3);
 		elder_broom = new RitualImpl(rl("elder_broom"), of(Ingredient.fromStacks(new ItemStack(ModBlocks.log_elder, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.broom, 1, 0)), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 0))), ofs(new ItemStack(ModItems.broom, 1, 1)), 130, circles(NORMAL, NORMAL, null), 1000, 4);
+		juniper_broom = new RitualImpl(rl("juniper_broom"), of(Ingredient.fromStacks(new ItemStack(ModBlocks.log_juniper, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.broom, 1, 0)), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 1))), ofs(new ItemStack(ModItems.broom, 1, 2)), 130, circles(NORMAL, NORMAL, null), 1000, 4);
+		yew_broom = new RitualImpl(rl("yew_broom"), of(Ingredient.fromStacks(new ItemStack(ModBlocks.log_yew, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.broom, 1, 0)), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 2))), ofs(new ItemStack(ModItems.broom, 1, 3)), 130, circles(NORMAL, NORMAL, null), 1000, 4);
+		cypress_broom = new RitualImpl(rl("cypress_broom"), of(Ingredient.fromStacks(new ItemStack(ModBlocks.log_cypress, 1, 0)), Ingredient.fromStacks(new ItemStack(ModItems.broom, 1, 0)), Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3))), ofs(new ItemStack(ModItems.broom, 1, 4)), 130, circles(NORMAL, NORMAL, null), 1000, 4);
 		registerAll();
 	}
 
 	public static void registerAll() {
-		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
 
 	}
 
