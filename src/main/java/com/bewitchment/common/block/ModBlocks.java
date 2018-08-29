@@ -5,7 +5,6 @@ import com.bewitchment.common.block.magic.BlockSacrosanctGround;
 import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
-import com.bewitchment.common.block.magic.plants.BlockRagingGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
@@ -99,7 +98,6 @@ public final class ModBlocks {
 	public static final Block scorned_brick_stairs = null;
 	public static final Block torchwood = null;
 	public static final Block ember_grass = null;
-	public static final Block raging_grass = null;
 	public static final Block log_elder = null;
 	public static final Block log_juniper = null;
 	public static final Block log_yew = null;
@@ -193,7 +191,6 @@ public final class ModBlocks {
 				new BlockApiary(),
 				new BlockTorchwood(),
 				new BlockEmberGrass(),
-				new BlockRagingGrass(),
 				new BlockFakeIce(),
 				new BlockFakeIceFence(),
 				new BlockScornedBrickFence(),
