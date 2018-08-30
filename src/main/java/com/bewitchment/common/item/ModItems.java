@@ -8,10 +8,7 @@ import com.bewitchment.common.internalApi.CropRegistry;
 import com.bewitchment.common.item.baubles.*;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.food.ItemFilledBowl;
-import com.bewitchment.common.item.food.ItemGrilledWatermelon;
-import com.bewitchment.common.item.food.ItemHeart;
-import com.bewitchment.common.item.food.ItemHoney;
+import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
 import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
 import com.bewitchment.common.item.magic.books.ItemShadowBook;
@@ -255,7 +252,6 @@ public final class ModItems {
 				new ItemMod(LibItemName.SOUL_STRING),
 				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GOOFER_DUST),
-				new ItemMod(LibItemName.FOUR_THIEVES_VINEGAR),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
 				new ItemShadowBook(),
@@ -264,6 +260,7 @@ public final class ModItems {
 				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
+				new ItemFourThievesVinegar(),
 				new ItemTarots(LibItemName.TAROTS),
 				new ItemBroom(LibItemName.BROOM)// ,
 				// new ItemMod(LibItemName.WITCHWEED),
