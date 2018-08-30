@@ -252,7 +252,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.DIABOLIC_VEIN),
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
-				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
+				///new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GOOFER_DUST),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
