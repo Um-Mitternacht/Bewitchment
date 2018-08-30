@@ -1,0 +1,34 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "bewitchment:wax",
+      "data": 0
+    },
+    {
+      "item": "bewitchment:mandrake",
+      "data": 0
+    },
+    {
+      "item": "bewitchment:belladonna",
+      "data": 0
+    },
+    {
+      "item": "bewitchment:aconitum",
+      "data": 0
+    },
+    {
+      "item": "minecraft:red_flower",
+      "data": 0
+    },
+    {
+      "item": "minecraft:glass_bottle",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "bewitchment:magic_salve",
+    "data": 0,
+    "count": 1
+  }
+}
