@@ -718,10 +718,10 @@ ritual.bewitchment.sanctuary.name=Sacrosanct Ceremony
 ritual.bewitchment.deck.name=A Suit of Cards
 ritual.bewitchment.table.name=Transmorgify Item (Divination Table)
 ritual.bewitchment.crystal_ball.name=Transmorgify Item (Crystal Ball)
-ritual.bewitchment.cypress_broom.name=A Witches Best Friend (Cypress)
-ritual.bewitchment.yew_broom.name=A Witches Best Friend (Yew)
-ritual.bewitchment.elder_broom.name=A Witches Best Friend (Elder)
-ritual.bewitchment.juniper_broom.name=A Witches Best Friend (Juniper)
+ritual.bewitchment.cypress_broom.name=Broom Infusion (Cypress)
+ritual.bewitchment.yew_broom.name=Broom Infusion (Yew)
+ritual.bewitchment.elder_broom.name=Broom Infusion (Elder)
+ritual.bewitchment.juniper_broom.name=Broom Infusion (Juniper)
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
