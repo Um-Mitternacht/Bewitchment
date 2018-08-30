@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.living.familiar;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
@@ -185,6 +186,7 @@ public class EntityOwl extends EntityFamiliar {
 		return true;
 	}
 
+	@Override
 	public int getMaxSpawnedInChunk() {
 		return 4;
 	}
