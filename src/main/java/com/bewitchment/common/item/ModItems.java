@@ -174,6 +174,8 @@ public final class ModItems {
 	public static final Item remedy_talisman = null;
 	public static final Item girdle_of_the_wooded = null;
 
+	public static final Item magic_salve = null;
+
 	public static final Item tarots = null;
 	public static final Item broom = null;
 	public static final Item spell_page = null;
@@ -261,6 +263,7 @@ public final class ModItems {
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
 				new ItemFourThievesVinegar(),
+				new ItemMagicSalve(),
 				new ItemTarots(LibItemName.TAROTS),
 				new ItemBroom(LibItemName.BROOM)// ,
 				// new ItemMod(LibItemName.WITCHWEED),
