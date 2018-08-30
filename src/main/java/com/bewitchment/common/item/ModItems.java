@@ -347,7 +347,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.planks_juniper),
 				itemBlock(ModBlocks.planks_yew),
 				itemBlock(ModBlocks.planks_cypress),
-				itemBlock(ModBlocks.sacrosanct_ground),
+				itemBlock(ModBlocks.purifying_earth),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar),

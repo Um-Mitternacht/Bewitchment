@@ -37,7 +37,7 @@ public final class LibBlockName {
 
 	public static final String INFESTED_FARMLAND = "infested_farmland";
 	public static final String GRAVEYARD_DIRT = "graveyard_dirt";
-	public static final String SACROSANCT_GROUND = "sacrosanct_ground";
+	public static final String PURIFYING_EARTH = "purifying_earth";
 
 	public static final String GEM_ORE = "gem_ore";
 	public static final String SILVER_ORE = "silver_ore";

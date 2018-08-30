@@ -1,7 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.decorations.*;
-import com.bewitchment.common.block.magic.BlockSacrosanctGround;
+import com.bewitchment.common.block.magic.BlockPurifyingEarth;
 import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
@@ -125,7 +125,7 @@ public final class ModBlocks {
 	public static final Block tarot_table = null;
 	public static final Block cold_iron_block = null;
 	public static final Block graveyard_dirt = null;
-	public static final Block sacrosanct_ground = null;
+	public static final Block purifying_earth = null;
 	public static final Block spanish_moss = null;
 	public static final Block spanish_moss_end = null;
 
@@ -210,7 +210,7 @@ public final class ModBlocks {
 				new BlockLantern(true),
 				new BlockLantern(false),
 				new BlockWillOWisp(),
-				new BlockSacrosanctGround()
+				new BlockPurifyingEarth()
 		);
 		//Normal Blocks
 		registry.registerAll(
