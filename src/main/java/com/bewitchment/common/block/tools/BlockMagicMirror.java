@@ -6,7 +6,6 @@ import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.tiles.TileEntityMagicMirror;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;

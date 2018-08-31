@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.crystalBall.capability;
 
 import com.bewitchment.common.content.crystalBall.Fortune;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

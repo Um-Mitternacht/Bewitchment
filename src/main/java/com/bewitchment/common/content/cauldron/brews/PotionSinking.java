@@ -2,7 +2,6 @@ package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;

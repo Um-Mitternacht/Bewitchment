@@ -2,7 +2,6 @@ package com.bewitchment.common.content.crystalBall.fortunes;
 
 import com.bewitchment.common.content.crystalBall.Fortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;

@@ -2,8 +2,8 @@ package com.bewitchment.common.core;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.cauldron.BrewData;
-import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
+import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;

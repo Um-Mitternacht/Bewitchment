@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 

@@ -3,7 +3,6 @@ package com.bewitchment.common.content.ritual;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

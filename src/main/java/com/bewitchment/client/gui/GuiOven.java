@@ -3,7 +3,6 @@ package com.bewitchment.client.gui;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.container.ContainerOven;
 import com.bewitchment.common.tile.tiles.TileEntityOven;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -11,7 +11,6 @@ import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.item.ModItems;
-
 import mezz.jei.api.*;
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;

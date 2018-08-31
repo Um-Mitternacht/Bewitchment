@@ -37,7 +37,6 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;

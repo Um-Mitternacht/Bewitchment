@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.content.cauldron.BrewMod;
 import com.bewitchment.common.item.equipment.baubles.ItemGirdleOfTheWooded;
-
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

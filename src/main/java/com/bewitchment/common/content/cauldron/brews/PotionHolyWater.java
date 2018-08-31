@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron.brews;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityGhast;

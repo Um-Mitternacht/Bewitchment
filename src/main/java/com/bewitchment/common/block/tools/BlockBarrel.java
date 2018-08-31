@@ -4,7 +4,6 @@ import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.state.enums.EnumWoodType;
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.tiles.TileEntityBarrel;
-
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;

@@ -1,12 +1,11 @@
 package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.api.cauldron.IBrewModifierList;
+import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.content.cauldron.BrewMod;
 import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
-import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.entity.EntityAoE;
 import com.bewitchment.common.entity.EntityAoE.IBrewEffectAoEOverTime;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;

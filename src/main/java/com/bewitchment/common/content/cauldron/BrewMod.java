@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.potion.PotionMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;

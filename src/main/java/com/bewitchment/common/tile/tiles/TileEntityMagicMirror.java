@@ -11,7 +11,6 @@ import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

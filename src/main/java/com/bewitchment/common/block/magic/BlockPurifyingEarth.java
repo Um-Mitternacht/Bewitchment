@@ -6,7 +6,6 @@ import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +23,7 @@ import net.minecraft.world.World;
  */
 //Todo: Allow grass to grow over this. Also create a class for graveyard dirt, which will act as a slow spawner of undead. Graveyard dirt's spawn rate will only be slightly higher than vanilla undead.
 public class BlockPurifyingEarth extends BlockMod {
-	
+
 	public BlockPurifyingEarth() {
 		super(LibBlockName.PURIFYING_EARTH, Material.GROUND);
 		setResistance(1F);

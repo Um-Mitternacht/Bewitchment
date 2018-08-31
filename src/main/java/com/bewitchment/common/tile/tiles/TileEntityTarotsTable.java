@@ -7,7 +7,6 @@ import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

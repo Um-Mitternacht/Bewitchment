@@ -3,7 +3,6 @@ package com.bewitchment.common.potion;
 import com.bewitchment.common.content.cauldron.brews.*;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
 import com.bewitchment.common.potion.potions.PotionSunWard;
-
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 

@@ -1,12 +1,5 @@
 package com.bewitchment.common.content.ritual;
 
-import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
-import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
-
-import java.util.Arrays;
-
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
@@ -16,7 +9,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -25,6 +17,10 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
+
+import java.util.Arrays;
+
+import static com.bewitchment.api.ritual.EnumGlyphType.*;
 
 public class ModRituals {
 

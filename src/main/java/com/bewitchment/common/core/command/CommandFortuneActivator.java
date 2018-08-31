@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.command;
 
+import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -10,8 +11,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 
 public class CommandFortuneActivator extends CommandBase {
 

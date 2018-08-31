@@ -1,5 +1,6 @@
 package com.bewitchment.common.content.ritual.rituals;
 
+import com.bewitchment.common.content.ritual.RitualImpl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -11,8 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.List;
-
-import com.bewitchment.common.content.ritual.RitualImpl;
 
 public class RitualHighMoon extends RitualImpl {
 

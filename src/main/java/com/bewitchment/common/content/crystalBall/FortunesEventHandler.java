@@ -3,7 +3,6 @@ package com.bewitchment.common.content.crystalBall;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import com.bewitchment.common.core.capability.CapabilityUtils;
-
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

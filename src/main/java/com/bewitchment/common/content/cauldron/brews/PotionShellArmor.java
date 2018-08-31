@@ -2,7 +2,6 @@ package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.common.content.cauldron.BrewMod;
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;

@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.crystalBall.fortunes;
 
 import com.bewitchment.common.content.crystalBall.Fortune;
-
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

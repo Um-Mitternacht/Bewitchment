@@ -1,5 +1,6 @@
 package com.bewitchment.common.content.ritual.rituals;
 
+import com.bewitchment.common.content.ritual.RitualImpl;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -19,8 +20,6 @@ import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.Random;
-
-import com.bewitchment.common.content.ritual.RitualImpl;
 
 public class RitualFlames extends RitualImpl {
 

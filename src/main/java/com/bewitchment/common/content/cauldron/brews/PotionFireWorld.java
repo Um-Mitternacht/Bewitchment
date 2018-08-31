@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.block.*;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.material.Material;

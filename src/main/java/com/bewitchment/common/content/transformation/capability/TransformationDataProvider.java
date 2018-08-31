@@ -1,11 +1,11 @@
 package com.bewitchment.common.content.transformation.capability;
 
-import static com.bewitchment.common.content.transformation.capability.CapabilityTransformationData.CAPABILITY;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+
+import static com.bewitchment.common.content.transformation.capability.CapabilityTransformationData.CAPABILITY;
 
 public class TransformationDataProvider implements ICapabilitySerializable<NBTBase> {
 

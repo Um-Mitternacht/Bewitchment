@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron.brews;
 import com.bewitchment.common.content.cauldron.BrewMod;
 import com.bewitchment.common.entity.EntityBrew;
 import com.bewitchment.common.entity.EntityLingeringBrew;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;

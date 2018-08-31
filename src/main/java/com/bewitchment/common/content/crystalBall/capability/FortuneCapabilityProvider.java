@@ -1,11 +1,11 @@
 package com.bewitchment.common.content.crystalBall.capability;
 
-import static com.bewitchment.common.content.crystalBall.capability.CapabilityFortune.CAPABILITY;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+
+import static com.bewitchment.common.content.crystalBall.capability.CapabilityFortune.CAPABILITY;
 
 public class FortuneCapabilityProvider implements ICapabilitySerializable<NBTBase> {
 

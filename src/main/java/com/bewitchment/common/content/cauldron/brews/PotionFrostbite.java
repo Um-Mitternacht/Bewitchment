@@ -4,7 +4,6 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;

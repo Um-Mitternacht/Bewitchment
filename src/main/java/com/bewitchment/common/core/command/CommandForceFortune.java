@@ -3,7 +3,6 @@ package com.bewitchment.common.core.command;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.content.crystalBall.Fortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
-
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;

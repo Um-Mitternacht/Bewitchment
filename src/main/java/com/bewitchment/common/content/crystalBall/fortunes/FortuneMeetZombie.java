@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.crystalBall.fortunes;
 
 import com.bewitchment.common.content.crystalBall.Fortune;
-
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

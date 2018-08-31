@@ -30,7 +30,6 @@ import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;

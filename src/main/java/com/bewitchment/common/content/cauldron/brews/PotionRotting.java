@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.util.DamageSource;

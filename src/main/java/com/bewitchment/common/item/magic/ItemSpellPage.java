@@ -13,7 +13,6 @@ import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.content.spell.Spell;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;

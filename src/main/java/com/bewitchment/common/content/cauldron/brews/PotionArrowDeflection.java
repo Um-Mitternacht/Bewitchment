@@ -1,5 +1,6 @@
 package com.bewitchment.common.content.cauldron.brews;
 
+import com.bewitchment.common.content.cauldron.BrewMod;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -11,8 +12,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import com.bewitchment.common.content.cauldron.BrewMod;
 
 public class PotionArrowDeflection extends BrewMod {
 

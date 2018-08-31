@@ -2,7 +2,6 @@ package com.bewitchment.common.content.cauldron.teleportCapability;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

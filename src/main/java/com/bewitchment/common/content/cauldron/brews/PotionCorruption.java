@@ -1,13 +1,12 @@
 package com.bewitchment.common.content.cauldron.brews;
 
+import com.bewitchment.common.content.cauldron.BrewMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 import java.util.ArrayList;
-
-import com.bewitchment.common.content.cauldron.BrewMod;
 
 public class PotionCorruption extends BrewMod {
 

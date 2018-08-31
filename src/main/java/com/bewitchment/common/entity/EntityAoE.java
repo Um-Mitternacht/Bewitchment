@@ -7,7 +7,6 @@ import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;

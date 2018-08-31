@@ -4,7 +4,6 @@ import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.infusion.IInfusion;
 import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.common.content.infusion.ModInfusions;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;

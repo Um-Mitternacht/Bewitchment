@@ -9,7 +9,6 @@ import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;

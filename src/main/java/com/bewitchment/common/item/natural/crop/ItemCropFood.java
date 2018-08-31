@@ -2,7 +2,6 @@ package com.bewitchment.common.item.natural.crop;
 
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.food.ItemModFood;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;

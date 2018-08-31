@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;

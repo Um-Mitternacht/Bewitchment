@@ -2,7 +2,6 @@ package com.bewitchment.common.content.cauldron;
 
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;

@@ -1,25 +1,5 @@
 package com.bewitchment.common.core.event;
 
-import static com.bewitchment.common.core.Crop.ACONITUM;
-import static com.bewitchment.common.core.Crop.ASPHODEL;
-import static com.bewitchment.common.core.Crop.BELLADONNA;
-import static com.bewitchment.common.core.Crop.CHRYSANTHEMUM;
-import static com.bewitchment.common.core.Crop.GARLIC;
-import static com.bewitchment.common.core.Crop.GINGER;
-import static com.bewitchment.common.core.Crop.HELLEBORE;
-import static com.bewitchment.common.core.Crop.INFESTED_WHEAT;
-import static com.bewitchment.common.core.Crop.KELP;
-import static com.bewitchment.common.core.Crop.KENAF;
-import static com.bewitchment.common.core.Crop.LAVENDER;
-import static com.bewitchment.common.core.Crop.MANDRAKE;
-import static com.bewitchment.common.core.Crop.MINT;
-import static com.bewitchment.common.core.Crop.SAGEBRUSH;
-import static com.bewitchment.common.core.Crop.SILPHIUM;
-import static com.bewitchment.common.core.Crop.THISTLE;
-import static com.bewitchment.common.core.Crop.TULSI;
-import static com.bewitchment.common.core.Crop.WHITE_SAGE;
-import static com.bewitchment.common.core.Crop.WORMWOOD;
-
 import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.crop.BlockCrop;
@@ -31,13 +11,14 @@ import com.bewitchment.common.item.natural.seed.ItemSeed;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.ModTiles;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import static com.bewitchment.common.core.Crop.*;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.

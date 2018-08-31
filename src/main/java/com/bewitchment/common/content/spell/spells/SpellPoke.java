@@ -7,7 +7,6 @@
 package com.bewitchment.common.content.spell.spells;
 
 import com.bewitchment.common.content.spell.Spell;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;

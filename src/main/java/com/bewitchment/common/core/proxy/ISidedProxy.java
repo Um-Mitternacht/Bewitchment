@@ -3,7 +3,6 @@ package com.bewitchment.common.core.proxy;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

@@ -8,7 +8,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

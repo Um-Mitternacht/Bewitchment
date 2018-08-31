@@ -3,7 +3,6 @@ package com.bewitchment.common.core.net.messages;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.content.infusion.ModInfusions;
 import com.bewitchment.common.core.net.SimpleMessage;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

@@ -3,7 +3,6 @@ package com.bewitchment.common.item.magic;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.tile.tiles.TileEntityTarotsTable;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;

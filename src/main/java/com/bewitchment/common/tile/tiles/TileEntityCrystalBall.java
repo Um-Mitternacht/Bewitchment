@@ -5,7 +5,6 @@ import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.content.crystalBall.Fortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
