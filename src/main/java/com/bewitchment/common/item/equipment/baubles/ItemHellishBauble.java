@@ -11,6 +11,7 @@ import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
@@ -78,7 +79,16 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 		return getUnlocalizedName().substring(5);
 	}
 
-	@Override
+	private static boolean isDemon(Entity e) {
+		if (e instanceof EntityLivingBase) {
+			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+		@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
