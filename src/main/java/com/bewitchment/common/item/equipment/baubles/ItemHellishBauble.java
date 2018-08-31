@@ -13,11 +13,13 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
@@ -97,8 +99,12 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 	//Fixme: Figure out how I'm supposed to deal with damage from demons, creature enums aren't working here
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
+		DamageSource source = event.getSource();
+		Entity attacker = source.getTrueSource();
+
 		if (event.getSource().isFireDamage() || event.getSource().isExplosion()) ;
-		{
+		event.setAmount(event.getAmount() * 0.80F);
+		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase) attacker).getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
 			event.setAmount(event.getAmount() * 0.80F);
 		}
 	}
