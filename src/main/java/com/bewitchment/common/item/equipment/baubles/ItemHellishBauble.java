@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
@@ -83,9 +84,10 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 
+	//Fixme: Figure out how I'm supposed to deal with damage from demons, creature enums aren't working here
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		if (event.getSource().isFireDamage()) {
+		if (event.getSource().isFireDamage() || event.getSource().isExplosion()); {
 			event.setAmount(event.getAmount() * 0.80F);
 		}
 	}
