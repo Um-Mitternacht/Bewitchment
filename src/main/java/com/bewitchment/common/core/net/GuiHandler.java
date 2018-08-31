@@ -3,7 +3,8 @@ package com.bewitchment.common.core.net;
 import com.bewitchment.client.gui.*;
 import com.bewitchment.common.container.*;
 import com.bewitchment.common.lib.LibGui;
-import com.bewitchment.common.tile.*;
+import com.bewitchment.common.tile.tiles.*;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

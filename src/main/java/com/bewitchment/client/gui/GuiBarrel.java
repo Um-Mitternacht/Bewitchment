@@ -2,7 +2,8 @@ package com.bewitchment.client.gui;
 
 import com.bewitchment.common.container.ContainerBarrel;
 import com.bewitchment.common.lib.LibMod;
-import com.bewitchment.common.tile.TileEntityBarrel;
+import com.bewitchment.common.tile.tiles.TileEntityBarrel;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;

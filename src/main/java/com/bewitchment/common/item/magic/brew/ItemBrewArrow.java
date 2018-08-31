@@ -1,11 +1,11 @@
 package com.bewitchment.common.item.magic.brew;
 
 import com.bewitchment.client.core.IModelRegister;
-import com.bewitchment.common.cauldron.BrewData;
-import com.bewitchment.common.cauldron.BrewData.BrewEntry;
-import com.bewitchment.common.cauldron.BrewModifierListImpl;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
+import com.bewitchment.common.content.cauldron.CauldronRegistry;
+import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
 import com.bewitchment.common.entity.EntityBrewArrow;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

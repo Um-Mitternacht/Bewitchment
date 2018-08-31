@@ -1,7 +1,8 @@
 package com.bewitchment.common.block.tools;
 
 import com.bewitchment.common.block.BlockModTileEntity;
-import com.bewitchment.common.tile.TileEntityGemBowl;
+import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;

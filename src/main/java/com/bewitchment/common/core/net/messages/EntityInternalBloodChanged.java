@@ -2,7 +2,7 @@ package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
+import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.SimpleMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;

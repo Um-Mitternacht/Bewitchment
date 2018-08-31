@@ -4,6 +4,7 @@ import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
+import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -106,7 +107,7 @@ public class EnergyHUD {
 			TextureManager manager = mc.getTextureManager();
 
 			IMagicPowerContainer energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-			IInfusionCapability cap = Minecraft.getMinecraft().player.getCapability(IInfusionCapability.CAPABILITY, null);
+			IInfusionCapability cap = Minecraft.getMinecraft().player.getCapability(InfusionCapability.CAPABILITY, null);
 
 			GlStateManager.pushMatrix();
 			GlStateManager.enableBlend();

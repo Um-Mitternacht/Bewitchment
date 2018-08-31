@@ -2,7 +2,8 @@ package com.bewitchment.common.block.tools;
 
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.lib.LibBlockName;
-import com.bewitchment.common.tile.TileEntityOven;
+import com.bewitchment.common.tile.tiles.TileEntityOven;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;

@@ -163,8 +163,6 @@ item.owlets_wing.name=Owlet's Wing
 item.ravens_feather.name=Raven's Feather
 item.cold_iron_dust.name=Cold Iron Powder
 item.cold_iron_dust_small.name=Cold Iron Dustpile
-item.four_thieves_vinegar.name=Four Thieves Vinegar
-item.goofer_dust.name=Goofer Dust
 item.spanish_moss_stuffing.name=Spanish Moss Stuffing
 item.soul_string.name=Soul String
 item.pure_filament.name=Pure Filament
@@ -662,10 +660,6 @@ witch.tooltip.triskelion_amulet_description.name=This amulet seems to provide so
 witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
 witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
 witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
-
-//Books
-item.book_of_shadows.name=Book of Shadows
-item.dusty_grimoire.name=Dusty Grimoire
 
 //Commands
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness

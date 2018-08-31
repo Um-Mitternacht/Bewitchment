@@ -1,8 +1,8 @@
 package com.bewitchment.api.cauldron;
 
-import com.bewitchment.common.cauldron.IBrewEntry;
-
 import java.util.List;
+
+import com.bewitchment.common.content.cauldron.IBrewEntry;
 
 public interface IBrewData {
 	public List<IBrewEntry> getEffects();

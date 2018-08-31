@@ -1,10 +1,11 @@
 package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.capability.transformation.ITransformationData;
+import com.bewitchment.common.content.transformation.ModTransformations;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.core.net.SimpleMessage;
-import com.bewitchment.common.transformation.ModTransformations;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

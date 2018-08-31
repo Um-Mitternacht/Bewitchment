@@ -1,7 +1,7 @@
 package com.bewitchment.common.entity;
 
-import com.bewitchment.common.cauldron.BrewData;
-import com.bewitchment.common.cauldron.BrewData.ApplicationType;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
 import com.google.common.collect.Maps;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.entity.Entity;

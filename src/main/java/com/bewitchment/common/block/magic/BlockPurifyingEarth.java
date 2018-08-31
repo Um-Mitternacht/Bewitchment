@@ -4,7 +4,7 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibBlockName;
 
 import net.minecraft.block.SoundType;

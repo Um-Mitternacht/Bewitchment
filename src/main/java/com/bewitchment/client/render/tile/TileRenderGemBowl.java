@@ -1,6 +1,5 @@
 package com.bewitchment.client.render.tile;
 
-import com.bewitchment.common.tile.TileEntityGemBowl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -12,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
 
 public class TileRenderGemBowl extends TileEntitySpecialRenderer<TileEntityGemBowl> {
 	@Override

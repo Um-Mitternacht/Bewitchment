@@ -1,11 +1,11 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.common.core.capability.divination.DivinationProvider;
+import com.bewitchment.common.content.crystalBall.capability.FortuneCapabilityProvider;
+import com.bewitchment.common.content.infusion.capability.InfusionProvider;
+import com.bewitchment.common.content.transformation.capability.TransformationDataProvider;
+import com.bewitchment.common.content.transformation.vampire.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainerProvider;
-import com.bewitchment.common.core.capability.infusion.InfusionProvider;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
-import com.bewitchment.common.core.capability.transformation.TransformationDataProvider;
-import com.bewitchment.common.core.capability.transformation.blood.BloodReserveProvider;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,7 +33,7 @@ public class CapabilityAttacher {
 		}
 
 		if (evt.getObject() instanceof EntityPlayer) {
-			evt.addCapability(DIVINATION_TAG, new DivinationProvider());
+			evt.addCapability(DIVINATION_TAG, new FortuneCapabilityProvider());
 			evt.addCapability(MP_PLAYER_TAG, new PlayerMPContainerProvider());
 			evt.addCapability(MIMIC_TAG, new MimicDataProvider());
 			evt.addCapability(TRANSFORMATION_TAG, new TransformationDataProvider());

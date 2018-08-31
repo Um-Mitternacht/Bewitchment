@@ -1,11 +1,12 @@
 package com.bewitchment.common.tile.util;
 
-import com.bewitchment.common.tile.TileEntityCauldron;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 import javax.annotation.Nullable;
+
+import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 
 public class CauldronFluidTank extends FluidTank {
 

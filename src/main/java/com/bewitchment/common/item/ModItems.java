@@ -1,17 +1,14 @@
 package com.bewitchment.common.item;
 
-import baubles.api.BaubleType;
+import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.internalApi.CropRegistry;
-import com.bewitchment.common.item.baubles.*;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
+import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
-import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
-import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewArrow;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrinkable;
 import com.bewitchment.common.item.magic.brew.ItemBrewThrowable;
@@ -19,13 +16,12 @@ import com.bewitchment.common.item.secrets.ItemEyeOfOld;
 import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
+
+import baubles.api.BaubleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -110,8 +106,6 @@ public final class ModItems {
 	public static final Item silver_ingot = null;
 	public static final Item silver_powder = null;
 	public static final Item silver_nugget = null;
-	public static final Item book_of_shadows = null;
-	public static final Item dusty_grimoire = null;
 	public static final Item mortar_and_pestle = null;
 	public static final Item mortar_and_pestle_stone = null;
 	public static final Item athame = null;
@@ -137,7 +131,6 @@ public final class ModItems {
 	public static final Item grilled_watermelon = null;
 	public static final Item stew = null;
 	public static final Item cold_iron_nugget = null;
-	public static final Item four_thieves_vinegar = null;
 	public static final Item spanish_moss = null;
 
 	public static final Item golden_thread = null;
@@ -147,7 +140,6 @@ public final class ModItems {
 	public static final Item pure_filament = null;
 	public static final Item soul_string = null;
 	public static final Item spanish_moss_stuffing = null;
-	public static final Item goofer_dust = null;
 	public static final Item graveyard_dust = null;
 
 	public static final Item cold_iron_dust_small = null;
@@ -253,16 +245,12 @@ public final class ModItems {
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
 				///new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
-				new ItemMod(LibItemName.GOOFER_DUST),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
-				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
-				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
-				new ItemFourThievesVinegar(),
 				new ItemMagicSalve(),
 				new ItemTarots(LibItemName.TAROTS),
 				new ItemBroom(LibItemName.BROOM)// ,

@@ -1,8 +1,9 @@
 package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.divination.TarotHandler;
-import com.bewitchment.common.divination.TarotHandler.TarotInfo;
+import com.bewitchment.common.content.tarot.TarotHandler;
+import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;

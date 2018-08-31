@@ -2,7 +2,8 @@ package com.bewitchment.common.container;
 
 import com.bewitchment.common.container.slots.ModSlot;
 import com.bewitchment.common.container.slots.SlotOutput;
-import com.bewitchment.common.tile.TileEntityBarrel;
+import com.bewitchment.common.tile.tiles.TileEntityBarrel;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;

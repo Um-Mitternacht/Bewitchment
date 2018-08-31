@@ -10,9 +10,10 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
+import com.bewitchment.common.content.spell.Spell;
 import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.spell.Spell;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;

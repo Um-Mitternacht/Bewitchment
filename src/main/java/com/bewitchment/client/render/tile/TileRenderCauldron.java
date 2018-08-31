@@ -1,7 +1,8 @@
 package com.bewitchment.client.render.tile;
 
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.common.tile.TileEntityCauldron;
+import com.bewitchment.common.tile.tiles.TileEntityCauldron;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;

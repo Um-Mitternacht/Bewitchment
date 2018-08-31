@@ -1,8 +1,9 @@
 package com.bewitchment.common.core.command;
 
 import com.bewitchment.api.divination.IFortune;
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
-import com.bewitchment.common.divination.Fortune;
+import com.bewitchment.common.content.crystalBall.Fortune;
+import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
+
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -43,7 +44,7 @@ public class CommandForceFortune extends CommandBase {
 		if (args.length == 0)
 			throw new WrongUsageException("commands.set_fortune.usage");
 		if (sender instanceof EntityPlayer) {
-			CapabilityDivination dc = ((EntityPlayer) sender).getCapability(CapabilityDivination.CAPABILITY, null);
+			CapabilityFortune dc = ((EntityPlayer) sender).getCapability(CapabilityFortune.CAPABILITY, null);
 			IFortune add = Fortune.REGISTRY.getValue(new ResourceLocation(args[0]));
 			if (add == null) {
 				throw new CommandException("commands.set_fortune.error.no_fortune");
