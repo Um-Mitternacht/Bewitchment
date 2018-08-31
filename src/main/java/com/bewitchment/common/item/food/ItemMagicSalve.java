@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class ItemMagicSalve extends ItemModFood {
 
 	public ItemMagicSalve() {
-		super(LibItemName.MAGIC_SALVE, 2, 0.5F, false);
+		super(LibItemName.MAGIC_SALVE, 0, 0.5F, false);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		setAlwaysEdible();
 	}
