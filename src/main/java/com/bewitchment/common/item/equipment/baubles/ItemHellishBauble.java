@@ -42,6 +42,15 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	private static boolean isDemon(Entity e) {
+		if (e instanceof EntityLivingBase) {
+			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	//Todo: Create variant that takes 5% of fire damage and turns it into health, at expense of damage to the bauble.
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -79,16 +88,7 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 		return getUnlocalizedName().substring(5);
 	}
 
-	private static boolean isDemon(Entity e) {
-		if (e instanceof EntityLivingBase) {
-			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-		@Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
@@ -97,7 +97,8 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 	//Fixme: Figure out how I'm supposed to deal with damage from demons, creature enums aren't working here
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		if (event.getSource().isFireDamage() || event.getSource().isExplosion()); {
+		if (event.getSource().isFireDamage() || event.getSource().isExplosion()) ;
+		{
 			event.setAmount(event.getAmount() * 0.80F);
 		}
 	}
