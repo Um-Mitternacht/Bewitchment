@@ -18,7 +18,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
@@ -41,6 +40,15 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 		this.setMaxStackSize(1);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	private static boolean isSpirit(Entity e) {
+		if (e instanceof EntityLivingBase) {
+			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -83,10 +91,7 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		DamageSource source = event.getSource();
-		Entity attacker = source.getTrueSource();
-
-		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase) attacker).getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT) {
+		if (isSpirit(event.getSource().getTrueSource())) {
 			event.setAmount(event.getAmount() * 0.80F);
 		}
 	}
