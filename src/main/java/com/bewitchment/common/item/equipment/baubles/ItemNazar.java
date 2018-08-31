@@ -85,6 +85,16 @@ public class ItemNazar extends ItemMod implements IBauble {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 
+	private boolean doesPlayerHaveAmulet(EntityPlayer e) {
+		IBaublesItemHandler ih = BaublesApi.getBaublesHandler(e);
+		for (int i = 0; i < ih.getSlots(); i++) {
+			if (ih.getStackInSlot(i).getItem() == this) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		if (event.getSource().isMagicDamage()) {
