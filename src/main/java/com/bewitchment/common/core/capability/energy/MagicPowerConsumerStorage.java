@@ -7,7 +7,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
-public class MagicPoweConsumerStorage implements IStorage<IMagicPowerConsumer> {
+public class MagicPowerConsumerStorage implements IStorage<IMagicPowerConsumer> {
 
 	@Override
 	public NBTBase writeNBT(Capability<IMagicPowerConsumer> capability, IMagicPowerConsumer instance, EnumFacing side) {

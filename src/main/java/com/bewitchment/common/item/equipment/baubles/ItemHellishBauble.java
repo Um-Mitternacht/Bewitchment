@@ -1,13 +1,19 @@
 package com.bewitchment.common.item.equipment.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -27,9 +33,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * Created by Joseph on 1/1/2018.
@@ -93,13 +96,24 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
-
-	//Fixme: Figure out how I'm supposed to deal with damage from demons, creature enums aren't working here
+	
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		if (event.getSource().isFireDamage() || event.getSource().isExplosion()) ;
-		{
-			event.setAmount(event.getAmount() * 0.80F);
+		if (event.getEntityLiving() instanceof EntityPlayer && doesPlayerHaveAmulet((EntityPlayer) event.getEntityLiving()))
+			if (event.getSource().isFireDamage() || event.getSource().isExplosion() || isDemon(event.getSource().getTrueSource())) {
+				if (event.getEntityLiving().getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) {
+					event.setAmount(event.getAmount() * 0.80F);
+				}
+			}
+	}
+	
+	private boolean doesPlayerHaveAmulet(EntityPlayer e) {
+		IBaublesItemHandler ih = BaublesApi.getBaublesHandler(e);
+		for (int i = 0; i < ih.getSlots(); i++) {
+			if (ih.getStackInSlot(i).getItem() == this) {
+				return true;
+			}
 		}
+		return false;
 	}
 }

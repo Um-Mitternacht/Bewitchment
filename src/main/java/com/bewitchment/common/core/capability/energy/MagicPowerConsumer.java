@@ -21,7 +21,7 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 	int cachedDim = 0;
 
 	public static void init() {
-		CapabilityManager.INSTANCE.register(IMagicPowerConsumer.class, new MagicPoweConsumerStorage(), MagicPowerConsumer::new);
+		CapabilityManager.INSTANCE.register(IMagicPowerConsumer.class, new MagicPowerConsumerStorage(), MagicPowerConsumer::new);
 	}
 
 	@Override
