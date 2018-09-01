@@ -66,12 +66,12 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 			boolean flag = p.getActivePotionEffect(MobEffects.POISON) != null || p.getActivePotionEffect(MobEffects.NAUSEA) != null || p.getActivePotionEffect(MobEffects.WITHER) != null || p.getActivePotionEffect(MobEffects.BLINDNESS) != null || p.getActivePotionEffect(MobEffects.WEAKNESS) != null;
 			if (flag) {
 				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
-				if (player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50));
-					p.removePotionEffect(MobEffects.NAUSEA);
-					p.removePotionEffect(MobEffects.WITHER);
-					p.removePotionEffect(MobEffects.BLINDNESS);
-					p.removePotionEffect(MobEffects.POISON);
-					p.removePotionEffect(MobEffects.WEAKNESS);
+				if (player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) ;
+				p.removePotionEffect(MobEffects.NAUSEA);
+				p.removePotionEffect(MobEffects.WITHER);
+				p.removePotionEffect(MobEffects.BLINDNESS);
+				p.removePotionEffect(MobEffects.POISON);
+				p.removePotionEffect(MobEffects.WEAKNESS);
 				if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
 					itemstack.setCount(0);
 				}
