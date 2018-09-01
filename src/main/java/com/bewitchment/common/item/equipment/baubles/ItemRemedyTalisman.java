@@ -58,6 +58,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 		return BaubleType.TRINKET;
 	}
 
+	//Todo: Get these effects to properly sync
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		if (player.ticksExisted % 40 == 0 && player instanceof EntityPlayer) {
@@ -70,7 +71,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 			p.removePotionEffect(MobEffects.WEAKNESS);
 			if (flag) {
 				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
-				player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50);
+				if (player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50));
 				if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
 					itemstack.setCount(0);
 				}
