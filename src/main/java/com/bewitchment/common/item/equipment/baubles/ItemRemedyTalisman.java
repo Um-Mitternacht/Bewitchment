@@ -60,6 +60,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 		return BaubleType.TRINKET;
 	}
 
+	//Todo: Get these effects to properly sync
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		// Check the condition that is easier to fail first, so it's more performant
