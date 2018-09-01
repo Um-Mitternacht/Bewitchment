@@ -99,7 +99,7 @@ public class ItemNazar extends ItemMod implements IBauble {
 	public void onEntityDamage(LivingHurtEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer && doesPlayerHaveAmulet((EntityPlayer) event.getEntityLiving()))
 			if (event.getSource().isMagicDamage()) {
-				event.setAmount(event.getAmount() * 0.95F);
+				event.setAmount(event.getAmount() * 0.90F);
 			}
 	}
 }

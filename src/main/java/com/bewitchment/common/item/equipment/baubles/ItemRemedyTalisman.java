@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
@@ -69,6 +70,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 			p.removePotionEffect(MobEffects.WEAKNESS);
 			if (flag) {
 				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
+				player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50);
 				if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
 					itemstack.setCount(0);
 				}
