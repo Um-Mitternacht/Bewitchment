@@ -1,12 +1,17 @@
 package com.bewitchment.common.item.equipment.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.api.mp.IMagicPowerContainer;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,9 +26,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * Created by Joseph on 1/1/2018.
@@ -60,20 +62,19 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if (player.ticksExisted % 40 == 0 && player instanceof EntityPlayer) {
+		// Check the condition that is easier to fail first, so it's more performant
+		if (player instanceof EntityPlayer && player.ticksExisted % 40 == 0) {
 			EntityPlayer p = (EntityPlayer) player;
 			boolean flag = p.getActivePotionEffect(MobEffects.POISON) != null || p.getActivePotionEffect(MobEffects.NAUSEA) != null || p.getActivePotionEffect(MobEffects.WITHER) != null || p.getActivePotionEffect(MobEffects.BLINDNESS) != null || p.getActivePotionEffect(MobEffects.WEAKNESS) != null;
-			p.removePotionEffect(MobEffects.NAUSEA);
-			p.removePotionEffect(MobEffects.WITHER);
-			p.removePotionEffect(MobEffects.BLINDNESS);
-			p.removePotionEffect(MobEffects.POISON);
-			p.removePotionEffect(MobEffects.WEAKNESS);
-			if (flag) {
-				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
-				player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50);
-				if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
-					itemstack.setCount(0);
-				}
+			// by putting "flag" first (in the AND operation) we don't drain MP if there was nothing to cure
+			// due to java lazy evaluation
+			if (flag && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) {
+				p.removePotionEffect(MobEffects.NAUSEA);
+				p.removePotionEffect(MobEffects.WITHER);
+				p.removePotionEffect(MobEffects.BLINDNESS);
+				p.removePotionEffect(MobEffects.POISON);
+				p.removePotionEffect(MobEffects.WEAKNESS);
+				itemstack.damageItem(1, player); // this also takes care of the breaking
 			}
 		}
 	}
