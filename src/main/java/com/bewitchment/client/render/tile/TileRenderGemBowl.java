@@ -1,6 +1,6 @@
 package com.bewitchment.client.render.tile;
 
-import com.bewitchment.common.tile.TileEntityGemBowl;
+import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;

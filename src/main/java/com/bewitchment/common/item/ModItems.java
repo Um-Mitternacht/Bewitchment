@@ -1,20 +1,15 @@
 package com.bewitchment.common.item;
 
 import baubles.api.BaubleType;
+import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.internalApi.CropRegistry;
-import com.bewitchment.common.item.baubles.*;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.food.ItemFilledBowl;
-import com.bewitchment.common.item.food.ItemGrilledWatermelon;
-import com.bewitchment.common.item.food.ItemHeart;
-import com.bewitchment.common.item.food.ItemHoney;
+import com.bewitchment.common.item.equipment.baubles.*;
+import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
-import com.bewitchment.common.item.magic.books.ItemDustyGrimoire;
-import com.bewitchment.common.item.magic.books.ItemShadowBook;
 import com.bewitchment.common.item.magic.brew.ItemBrewArrow;
 import com.bewitchment.common.item.magic.brew.ItemBrewDrinkable;
 import com.bewitchment.common.item.magic.brew.ItemBrewThrowable;
@@ -113,8 +108,6 @@ public final class ModItems {
 	public static final Item silver_ingot = null;
 	public static final Item silver_powder = null;
 	public static final Item silver_nugget = null;
-	public static final Item book_of_shadows = null;
-	public static final Item dusty_grimoire = null;
 	public static final Item mortar_and_pestle = null;
 	public static final Item mortar_and_pestle_stone = null;
 	public static final Item athame = null;
@@ -140,7 +133,6 @@ public final class ModItems {
 	public static final Item grilled_watermelon = null;
 	public static final Item stew = null;
 	public static final Item cold_iron_nugget = null;
-	public static final Item four_thieves_vinegar = null;
 	public static final Item spanish_moss = null;
 
 	public static final Item golden_thread = null;
@@ -150,7 +142,6 @@ public final class ModItems {
 	public static final Item pure_filament = null;
 	public static final Item soul_string = null;
 	public static final Item spanish_moss_stuffing = null;
-	public static final Item goofer_dust = null;
 	public static final Item graveyard_dust = null;
 
 	public static final Item cold_iron_dust_small = null;
@@ -176,6 +167,8 @@ public final class ModItems {
 	public static final Item horseshoe = null;
 	public static final Item remedy_talisman = null;
 	public static final Item girdle_of_the_wooded = null;
+
+	public static final Item magic_salve = null;
 
 	public static final Item tarots = null;
 	public static final Item broom = null;
@@ -253,17 +246,14 @@ public final class ModItems {
 				new ItemMod(LibItemName.DIABOLIC_VEIN),
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
-				new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
-				new ItemMod(LibItemName.GOOFER_DUST),
-				new ItemMod(LibItemName.FOUR_THIEVES_VINEGAR),
+				///new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
-				new ItemShadowBook(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
-				new ItemDustyGrimoire(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
+				new ItemMagicSalve(),
 				new ItemTarots(LibItemName.TAROTS),
 				new ItemBroom(LibItemName.BROOM)// ,
 				// new ItemMod(LibItemName.WITCHWEED),
@@ -276,7 +266,6 @@ public final class ModItems {
 				new ItemHorseshoe(),
 				new ItemTriskelionAmulet(),
 				new ItemHellishBauble(),
-				new ItemThornyGarment(),
 				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),
 				new ItemTalisman(BaubleType.RING, 18, LibItemName.TALISMAN_ADAMANTINE_STAR_RING),
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
@@ -324,7 +313,6 @@ public final class ModItems {
 				itemBlock(ModBlocks.apiary),
 				itemBlock(ModBlocks.torchwood),
 				itemBlock(ModBlocks.ember_grass),
-				itemBlock(ModBlocks.raging_grass),
 				itemBlock(ModBlocks.beehive),
 				itemBlock(ModBlocks.tourmaline_block),
 				itemBlock(ModBlocks.malachite_block),
@@ -349,7 +337,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.planks_juniper),
 				itemBlock(ModBlocks.planks_yew),
 				itemBlock(ModBlocks.planks_cypress),
-				itemBlock(ModBlocks.sacrosanct_ground),
+				itemBlock(ModBlocks.purifying_earth),
 				new ItemBlockSapling(),
 				itemBlock(ModBlocks.moonbell),
 				itemBlock(ModBlocks.witch_altar),

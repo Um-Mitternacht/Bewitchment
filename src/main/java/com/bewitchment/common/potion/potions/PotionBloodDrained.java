@@ -1,7 +1,7 @@
 package com.bewitchment.common.potion.potions;
 
 import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
+import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.potion.PotionMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

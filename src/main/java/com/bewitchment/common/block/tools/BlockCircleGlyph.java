@@ -4,7 +4,7 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.tile.TileEntityGlyph;
+import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;

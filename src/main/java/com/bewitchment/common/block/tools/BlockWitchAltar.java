@@ -4,7 +4,7 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.tile.TileEntityWitchAltar;
+import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.EnumPushReaction;

@@ -3,7 +3,7 @@ package com.bewitchment.common.core.command;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
-import com.bewitchment.common.transformation.ModTransformations;
+import com.bewitchment.common.content.transformation.ModTransformations;
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;

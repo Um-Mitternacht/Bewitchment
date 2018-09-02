@@ -3,7 +3,7 @@ package com.bewitchment.client.gui;
 
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.container.ContainerThreadSpinner;
-import com.bewitchment.common.tile.TileEntityThreadSpinner;
+import com.bewitchment.common.tile.tiles.TileEntityThreadSpinner;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -1,8 +1,8 @@
 package com.bewitchment.client.core.event;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.capability.transformation.ITransformationData;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;

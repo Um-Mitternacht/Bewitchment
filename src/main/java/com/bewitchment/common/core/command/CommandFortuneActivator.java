@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.command;
 
-import com.bewitchment.common.core.capability.divination.CapabilityDivination;
+import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -39,7 +39,7 @@ public class CommandFortuneActivator extends CommandBase {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if (sender instanceof EntityPlayer) {
-			CapabilityDivination dc = ((EntityPlayer) sender).getCapability(CapabilityDivination.CAPABILITY, null);
+			CapabilityFortune dc = ((EntityPlayer) sender).getCapability(CapabilityFortune.CAPABILITY, null);
 			if (dc.getFortune() != null) {
 				if (dc.isActive()) {
 					throw new CommandException("commands.enable_fortune.error.already_active");

@@ -1,10 +1,10 @@
 package com.bewitchment.common.entity;
 
 import com.bewitchment.api.cauldron.DefaultModifiers;
-import com.bewitchment.common.cauldron.BrewData;
-import com.bewitchment.common.cauldron.BrewData.ApplicationType;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.tile.TileEntityCauldron;
+import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.google.common.base.Predicate;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;

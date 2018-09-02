@@ -2,7 +2,7 @@ package com.bewitchment.common.core.command;
 
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.mp.IMagicPowerContainer;
-import com.bewitchment.common.incantation.ModIncantations;
+import com.bewitchment.common.content.incantation.ModIncantations;
 import com.google.common.collect.Lists;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;

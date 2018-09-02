@@ -2,7 +2,7 @@ package com.bewitchment.common.container;
 
 import com.bewitchment.common.container.slots.SlotFiltered;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.tile.TileEntityApiary;
+import com.bewitchment.common.tile.tiles.TileEntityApiary;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;

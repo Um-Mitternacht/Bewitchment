@@ -9,7 +9,7 @@ package com.bewitchment.common.entity;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.spell.ISpell.EnumSpellType;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.spell.Spell;
+import com.bewitchment.common.content.spell.Spell;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;

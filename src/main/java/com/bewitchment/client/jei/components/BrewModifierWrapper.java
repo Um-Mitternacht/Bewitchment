@@ -1,10 +1,10 @@
 package com.bewitchment.client.jei.components;
 
 import com.bewitchment.api.cauldron.IBrewModifier;
-import com.bewitchment.common.cauldron.BrewData;
-import com.bewitchment.common.cauldron.BrewData.BrewEntry;
-import com.bewitchment.common.cauldron.BrewModifierListImpl;
-import com.bewitchment.common.crafting.cauldron.CauldronRegistry;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
+import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
+import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.item.ModItems;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;

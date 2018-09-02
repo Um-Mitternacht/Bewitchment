@@ -3,7 +3,7 @@ package com.bewitchment.common.block.magic;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.crafting.FrostFireRecipe;

@@ -1,6 +1,6 @@
 package com.bewitchment.common.tile.util;
 
-import com.bewitchment.common.tile.TileEntityCauldron;
+import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;

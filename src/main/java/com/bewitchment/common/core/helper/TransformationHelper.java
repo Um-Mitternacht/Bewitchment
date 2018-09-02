@@ -2,9 +2,9 @@ package com.bewitchment.common.core.helper;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
-import com.bewitchment.common.core.capability.transformation.ITransformationData;
-import com.bewitchment.common.core.capability.transformation.blood.CapabilityBloodReserve;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;

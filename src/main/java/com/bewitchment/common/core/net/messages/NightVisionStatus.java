@@ -1,6 +1,6 @@
 package com.bewitchment.common.core.net.messages;
 
-import com.bewitchment.common.core.capability.transformation.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.core.net.SimpleMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

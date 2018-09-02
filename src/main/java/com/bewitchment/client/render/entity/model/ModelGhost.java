@@ -1,12 +1,11 @@
 package com.bewitchment.client.render.entity.model;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.input.Keyboard;
 
 /**
  * werewolf5 - cybercat5555

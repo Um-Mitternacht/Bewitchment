@@ -151,7 +151,7 @@ item.remedy_talisman.name=Token of Remedies
 item.tarots.name=Tarots Deck
 item.tarots.read_to=They are receptive to %s's future
 item.tarots.error_reading=The cards predictions make no sense
-item.girdle_of_the_wooded.name=Girdle Of The Wooded
+item.girdle_of_the_wooded.name=Girdle Of The Dryads
 item.broom_mundane.name=Broom
 item.broom_elder.name=Elder Broom
 item.broom_juniper.name=Juniper Broom
@@ -163,8 +163,6 @@ item.owlets_wing.name=Owlet's Wing
 item.ravens_feather.name=Raven's Feather
 item.cold_iron_dust.name=Cold Iron Powder
 item.cold_iron_dust_small.name=Cold Iron Dustpile
-item.four_thieves_vinegar.name=Four Thieves Vinegar
-item.goofer_dust.name=Goofer Dust
 item.spanish_moss_stuffing.name=Spanish Moss Stuffing
 item.soul_string.name=Soul String
 item.pure_filament.name=Pure Filament
@@ -175,6 +173,7 @@ item.golden_thread.name=Golden Thread
 item.hellish_bauble.name=Hellish Bauble
 item.thorny_garment.name=Thorny Garment
 item.graveyard_dust.name=Graveyard Dust
+item.magic_salve.name=Magic Salve
 
 //fumes
 item.fume.unfired_jar.name=Unfired Clay Jar
@@ -401,7 +400,7 @@ tile.scorned_brick_fence.name=Scorned Brick Fence
 tile.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.cold_iron_block.name=Cold Iron Block
 tile.graveyard_dirt.name=Graveyard Dirt
-tile.sacrosanct_ground.name=Sacrosanct Earth
+tile.purifying_earth.name=Purifying Earth
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
@@ -662,10 +661,6 @@ witch.tooltip.talismans_description.name=An enchantable trinket, its effects wil
 witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
 witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
 
-//Books
-item.book_of_shadows.name=Book of Shadows
-item.dusty_grimoire.name=Dusty Grimoire
-
 //Commands
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness
 commands.incantation.no_energy=You feel the pull of the enchantment, but lack the strength to cast it
@@ -708,15 +703,19 @@ ritual.bewitchment.conjure_vex.name=Ritual of Conjuration (Vex)
 ritual.bewitchment.draw_circle_small.name=Ritual of the Lesser Marks
 ritual.bewitchment.draw_circle_medium.name=Ritual of the Marks
 ritual.bewitchment.draw_circle_large.name=Ritual of the Major Marks
-ritual.bewitchment.infusion_overworld.name=Ritual of Infusion of the Beings
-ritual.bewitchment.infusion_nether.name=Ritual of Infusion of the Demons
-ritual.bewitchment.infusion_end.name=Ritual of Infusion of the Others
-ritual.bewitchment.infusion_dream.name=Ritual of Infusion of the Dreamers
+ritual.bewitchment.infusion_overworld.name=WIPNAME: INFUSION-OW-RITUAL
+ritual.bewitchment.infusion_nether.name=WIPNAME: INFUSION-NETHER-RITUAL
+ritual.bewitchment.infusion_end.name=WIPNAME: INFUSION-END-RITUAL
+ritual.bewitchment.infusion_dream.name=WIPNAME: INFUSION-DREAM-RITUAL
 ritual.bewitchment.flames.name=Ritual of the Hungry Flames
-ritual.bewitchment.sanctuary.name=Ritual of the Sacred
-ritual.bewitchment.deck.name=A Suit of Cards
-ritual.bewitchment.table.name=Transmorgify Item (Divination Table)
-ritual.bewitchment.crystal_ball.name=Transmorgify Item (Crystal Ball)
+ritual.bewitchment.sanctuary.name=Ritual of the Sanctuary
+ritual.bewitchment.deck.name=Ritual of Engraving
+ritual.bewitchment.table.name=Ritual of Construction
+ritual.bewitchment.crystal_ball.name=Ritual of Construction
+ritual.bewitchment.cypress_broom.name=Riual of the Rising Twigs
+ritual.bewitchment.yew_broom.name=Riual of the Rising Twigs
+ritual.bewitchment.elder_broom.name=Riual of the Rising Twigs
+ritual.bewitchment.juniper_broom.name=Riual of the Rising Twigs
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong

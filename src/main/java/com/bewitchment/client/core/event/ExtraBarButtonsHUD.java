@@ -2,8 +2,8 @@ package com.bewitchment.client.core.event;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
+import com.bewitchment.common.content.actionbar.HotbarAction;
 import com.bewitchment.common.core.handler.ConfigHandler;
-import com.bewitchment.common.core.hotbar.HotbarAction;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
 import net.minecraft.client.Minecraft;

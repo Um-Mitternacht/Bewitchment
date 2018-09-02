@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.magic.brew;
 
-import com.bewitchment.common.cauldron.BrewData;
-import com.bewitchment.common.cauldron.BrewData.ApplicationType;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

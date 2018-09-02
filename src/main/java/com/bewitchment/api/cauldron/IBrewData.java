@@ -1,6 +1,6 @@
 package com.bewitchment.api.cauldron;
 
-import com.bewitchment.common.cauldron.IBrewEntry;
+import com.bewitchment.common.content.cauldron.IBrewEntry;
 
 import java.util.List;
 

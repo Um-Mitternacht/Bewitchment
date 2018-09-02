@@ -1,6 +1,6 @@
 package com.bewitchment.client.gui;
 
-import com.bewitchment.common.divination.TarotHandler.TarotInfo;
+import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

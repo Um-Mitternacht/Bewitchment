@@ -1,6 +1,7 @@
 package com.bewitchment.common.tile;
 
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.tile.tiles.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

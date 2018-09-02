@@ -108,8 +108,6 @@ public final class LibItemName {
 	public static final String HONEY = "honey";
 	public static final String GEM = "gem";
 	public static final String GEM_POWDER = "gem_powder";
-	public static final String SHADOW_BOOK = "book_of_shadows";
-	public static final String DUSTY_GRIMOIRE = "dusty_grimoire";
 	public static final String SILVER_NUGGET = "silver_nugget";
 	public static final String SILVER_POWDER = "silver_powder";
 	public static final String SILVER_INGOT = "silver_ingot";
@@ -120,8 +118,8 @@ public final class LibItemName {
 	public static final String FILLED_BOWL = "stew";
 	public static final String OWLETS_WING = "owlets_wing";
 	public static final String RAVENS_FEATHER = "ravens_feather";
-	public static final String FOUR_THIEVES_VINEGAR = "four_thieves_vinegar";
 	public static final String GRAVEYARD_DUST = "graveyard_dust";
+	public static final String MAGIC_SALVE = "magic_salve";
 
 	//Materials
 	public static final String SILVER = "silver";
@@ -146,11 +144,10 @@ public final class LibItemName {
 	public static final String DIABOLIC_VEIN = "diabolic_vein";
 	public static final String PURE_FILAMENT = "pure_filament";
 	public static final String SOUL_STRING = "soul_string";
-	public static final String SPANISH_MOSS_STUFFING = "spanish_moss_stuffing";
+	///public static final String SPANISH_MOSS_STUFFING = "spanish_moss_stuffing";
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 	public static final String COLD_IRON_DUST = "cold_iron_dust";
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
-	public static final String GOOFER_DUST = "goofer_dust";
 
 
 	private LibItemName() {
