@@ -1,5 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -87,9 +89,9 @@ public class ModelWerewolf extends ModelBase {
 		this.fur05.addBox(-2.0F, -1.0F, 0.0F, 4, 5, 2, 0.0F);
 		this.setRotateAngle(fur05, 0.4363323129985824F, 0.0F, 0.0F);
 		this.bipedBody = new ModelRenderer(this, 16, 16);
-		this.bipedBody.setRotationPoint(0.0F, 0.0F, 6.0F);
+		this.bipedBody.setRotationPoint(0.0F, -1.25F, 6.0F);
 		this.bipedBody.addBox(-4.0F, -7.5F, -3.0F, 8, 11, 6, 0.0F);
-		this.setRotateAngle(bipedBody, 0.43633231299F, 0.0F, 0.0F);
+		this.setRotateAngle(bipedBody, 0.0F, 0.0F, 0.0F);
 		this.bipedLeftLeg = new ModelRenderer(this, 13, 48);
 		this.bipedLeftLeg.setRotationPoint(1.1F, 2.5F, -0.3F);
 		this.bipedLeftLeg.addBox(0.0F, -1.0F, -2.5F, 4, 10, 5, 0.0F);
@@ -369,6 +371,11 @@ public class ModelWerewolf extends ModelBase {
 		this.wolfHead.addChild(this.lCheekFur);
 	}
 
+	int timer = 0;
+	int phase = 0;
+
+	boolean rotation = true;
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
 
@@ -397,24 +404,140 @@ public class ModelWerewolf extends ModelBase {
 		}
 
 */
-		float time = (p.ticksExisted + ptick) * 0.10471975512F;
+		float time = (p.ticksExisted + ptick)*0.10471975512F;
+		float time_running = (p.ticksExisted + ptick)*0.314159265F;
 
 
+		this.bipedBody.render(1);	
+		
 		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((time));
 		tail01Floof.rotateAngleX = 0.6108652381980153F + 0.00872664626F * MathHelper.cos((time));
 		tail02Floof.rotateAngleZ = 0.03490658503F * MathHelper.cos((time));
 		tail03Floof.rotateAngleZ = tail02Floof.rotateAngleZ;
 
-		chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((time));
-		bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((time));
-		bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
+		if(limbSwingAmount > 0.05 || timer > 0) {//Walking animation
+			if(limbSwingAmount < 0.3333333 && timer == 0) { // Walking animation
+				bipedRightArm.rotateAngleX = -0.3490658503988659F + limbSwingAmount*MathHelper.sin(time*5);
+				bipedLeftArm.rotateAngleX = -0.698131701F -bipedRightArm.rotateAngleX;
+				bipedLeftLeg.rotateAngleX = bipedRightArm.rotateAngleX;
+				bipedRightLeg.rotateAngleX = bipedLeftArm.rotateAngleX;
+				chest.rotateAngleY = bipedRightArm.rotateAngleX/10 +0.03490658503988659F;
+			} else {
+				if(timer<13) { // Transition to running animation
+					if ( (MathHelper.sin(time_running) > -0.1 && MathHelper.sin(time_running) < 0.1 )|| phase == 1) {
+						bipedBody.rotateAngleX = bipedBody.rotateAngleX + (1.4835298642F - bipedBody.rotateAngleX) * (timer + 1) / 40;
+						chest.rotateAngleX = chest.rotateAngleX - (chest.rotateAngleX - 0.17453292519F)*(timer+1)/40;
+						bipedHead.rotateAngleX = bipedHead.rotateAngleX +(-bipedHead.rotateAngleX)*(timer+1)/40;
+						bipedLeftArm.rotateAngleX = bipedLeftArm.rotateAngleX + (-1.74532925199F - bipedLeftArm.rotateAngleX)*(timer+1)/40;
+						bipedRightArm.rotateAngleX = bipedRightArm.rotateAngleX + (-1.74532925199F -bipedRightArm.rotateAngleX)*(timer+1)/40;
+						bipedRightArm.rotateAngleZ = bipedRightArm.rotateAngleZ -bipedRightArm.rotateAngleZ*(timer+1)/40;
+						bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
+						bipedLeftLeg.rotateAngleX = bipedLeftLeg.rotateAngleX +(-1.2217304764F -bipedLeftLeg.rotateAngleX)*(timer+1)/40;
+						bipedRightLeg.rotateAngleX = bipedRightLeg.rotateAngleX +(-1.2217304764F -bipedRightLeg.rotateAngleX)*(timer+1)/40;
+						lLeg02.rotateAngleX = lLeg02.rotateAngleX + (1.0471975512F - lLeg02.rotateAngleX)*(timer+1)/40;
+						rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+						lFoot.rotateAngleX = lFoot.rotateAngleX + (0.3839724354387525f - lFoot.rotateAngleX)*(timer+1)/40;
+						rFoot.rotateAngleX = lFoot.rotateAngleX;
+						fur02.rotateAngleX = fur02.rotateAngleX + (0.69813170079F-fur02.rotateAngleX)*(timer+1)/40;
+						fur03.rotateAngleX = fur02.rotateAngleX + (0.52359877559F-fur03.rotateAngleX)*(timer+1)/40;
+						fur04.rotateAngleX = fur03.rotateAngleX + (0.26179938779F-fur04.rotateAngleX)*(timer+1)/40;
+						
+						timer++;
+						phase = 1;
+					}else {
+						bipedRightArm.rotateAngleX = -0.3490658503988659F + limbSwingAmount*MathHelper.sin(time*5);
+						bipedLeftArm.rotateAngleX = -0.698131701F -bipedRightArm.rotateAngleX;
+						bipedLeftLeg.rotateAngleX = bipedRightArm.rotateAngleX;
+						bipedRightLeg.rotateAngleX = bipedLeftArm.rotateAngleX;
+						chest.rotateAngleY = bipedRightArm.rotateAngleX/10 +0.03490658503988659F;
+					}	
+				} else {
+					if (limbSwingAmount > 0.3333333) { //Running animation goes here; Sin phase = 6; timer unit = 0.033 (aprox);
 
-
-		this.bipedBody.render(1);
-
-
+						bipedBody.rotateAngleX = 1.4835298642F + 0.17453292519F*MathHelper.sin(time_running);
+						chest.rotateAngleX = 0.34906585038F + 0.08726646259F*MathHelper.sin(time_running);
+						bipedHead.rotateAngleX = -0.52359877559F + chest.rotateAngleX -0.34906585038F;
+						bipedLeftArm.rotateAngleX = -1.74532925199F + 0.52359877559F*MathHelper.sin((float) (time_running+4.5));
+						bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
+						rArm02.rotateAngleX = -1.3962634016F + 0.0872664626F*MathHelper.sin(time_running);
+						lArm02.rotateAngleX = rArm02.rotateAngleX;
+						bipedLeftLeg.rotateAngleX = -1.2217304764F + 0.52359877559F*MathHelper.cos(time_running);
+						bipedRightLeg.rotateAngleX = bipedLeftLeg.rotateAngleX;
+						lLeg02.rotateAngleX = 1.0471975512F + 0.52359877559F*MathHelper.sin((float) (time_running+4.5));
+						rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+						lFoot.rotateAngleX = 0.3839724354387525f + 0.43633231299F*MathHelper.cos(time_running);
+						rFoot.rotateAngleX = lFoot.rotateAngleX;
+						bipedBody.setRotationPoint(0.0F, (float) (-1.5F+ 5*MathHelper.sin((float) (time_running+4.5))), 6.0F);
+						tail01Floof.rotateAngleX = 0.34906585039F + 0.26179938779F*MathHelper.cos(time_running);
+						tail02Floof.rotateAngleX = -0.3490658503988659F + 0.26179938779F*MathHelper.sin(time_running);
+						tail03Floof.rotateAngleX = -0.17453292519943295F + 0.08726646259F*MathHelper.sin(time_running);
+						fur02.rotateAngleX = 0.69813170079F + 0.0872664625997164F*MathHelper.sin(time_running);
+						fur03.rotateAngleX = 0.52359877559F + fur02.rotateAngleX -0.69813170079F;
+						fur04.rotateAngleX = 0.26179938779F + fur02.rotateAngleX -0.69813170079F;
+						//Fix fur rotation...
+					}else{	
+					if(timer<53){ //Transition to idle
+							bipedBody.rotateAngleX = bipedBody.rotateAngleX -bipedBody.rotateAngleX*(timer-12)/40;
+							bipedBody.setRotationPoint(0.0F, -1.25F, 6.0F);
+							chest.rotateAngleX = chest.rotateAngleX + (0.5235987755982988F - chest.rotateAngleX)*(timer-12)/40;
+							bipedHead.rotateAngleX = bipedHead.rotateAngleX + (0.7853981633974483F-bipedHead.rotateAngleX)*(timer-12)/40;;
+							bipedLeftArm.rotateAngleX = bipedLeftArm.rotateAngleX + (-0.17683882565f -bipedLeftArm.rotateAngleX)*(timer-12)/40;
+							bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
+							bipedLeftArm.rotateAngleZ = bipedLeftArm.rotateAngleZ + (-0.3490658503988659F - bipedLeftArm.rotateAngleZ)*(timer-12)/40;
+							bipedRightArm.rotateAngleZ = -bipedLeftArm.rotateAngleZ;
+							rArm02.rotateAngleX = rArm02.rotateAngleX + (-0.5235987755982988F-rArm02.rotateAngleX)*(timer-12)/40;
+							lArm02.rotateAngleX = rArm02.rotateAngleX;
+							bipedLeftLeg.rotateAngleX = bipedLeftLeg.rotateAngleX + (-0.5235987755982988F - bipedLeftLeg.rotateAngleX)*(timer-12)/40;
+							bipedRightLeg.rotateAngleX = bipedLeftLeg.rotateAngleX;
+							lLeg02.rotateAngleX = lLeg02.rotateAngleX + (1.2217304763960306F - lLeg02.rotateAngleX)*(timer-12)/40;
+							rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+							lFoot.rotateAngleX = lFoot.rotateAngleX + (0.296705972839036F - lFoot.rotateAngleX)*(timer-12)/40;
+							rFoot.rotateAngleX = lFoot.rotateAngleX;
+							tail01Floof.rotateAngleX = tail01Floof.rotateAngleX - (0.6108652381980153F-tail01Floof.rotateAngleX)*(timer-12)/40;
+							tail02Floof.rotateAngleX = tail02Floof.rotateAngleX + (-0.3490658503988659F-tail02Floof.rotateAngleX)*(timer-12)/40;
+							tail03Floof.rotateAngleX = tail03Floof.rotateAngleX + (-0.17453292519943295F-tail03Floof.rotateAngleX)*(timer-12)/40;
+							fur02.rotateAngleX = fur02.rotateAngleX + (0.9599310885968813F-fur02.rotateAngleX)*(timer-12)/40;
+							fur03.rotateAngleX = fur02.rotateAngleX + (0.7853981633974483F-fur03.rotateAngleX)*(timer-12)/40;
+							fur04.rotateAngleX = fur03.rotateAngleX + (0.5235987755982988F-fur04.rotateAngleX)*(timer-12)/40;
+							
+							timer++;
+						}else{//Resets the values to the originals, as to avoid possible aberrations...
+							bipedBody.rotateAngleX = 0;
+							bipedBody.setRotationPoint(0.0F, -1.25F, 6.0F);
+							chest.rotateAngleX = 0.5235987755982988F;
+							bipedHead.rotateAngleX = 0.7853981633974483F;
+							bipedLeftArm.rotateAngleX = -0.17683882565F;
+							bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
+							bipedLeftArm.rotateAngleZ = -0.3490658503988659F;
+							bipedRightArm.rotateAngleZ = -bipedLeftArm.rotateAngleZ;
+							rArm02.rotateAngleX = -0.5235987755982988F;
+							bipedLeftLeg.rotateAngleX = -0.5235987755982988F;
+							bipedRightLeg.rotateAngleX = bipedLeftLeg.rotateAngleX;
+							lLeg02.rotateAngleX = 1.2217304763960306F;
+							rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+							lFoot.rotateAngleX = 0.296705972839036F;
+							rFoot.rotateAngleX = lFoot.rotateAngleX;
+							tail01Floof.rotateAngleX = 0.6108652381980153F;
+							tail02Floof.rotateAngleX = -0.3490658503988659F;
+							tail03Floof.rotateAngleX = -0.17453292519943295F;
+							fur02.rotateAngleX = 0.9599310885968813F;
+							fur03.rotateAngleX = 0.7853981633974483F;
+							fur04.rotateAngleX = 0.5235987755982988F;
+							
+							timer = 0;
+							phase = 0;
+						}	
+					}
+				}
+			}
+		}else {
+			
+			chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((time));
+			bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((time));
+			bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
+		}
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

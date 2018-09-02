@@ -31,7 +31,7 @@ import java.util.Arrays;
 public class WerewolfEventHandler {
 
 	private static final ResourceLocation MOON = new ResourceLocation(LibMod.MOD_ID, "textures/gui/moon_warning.png");
-	private static final ResourceLocation WEREWOLF_SKIN = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/npcs/werewolf_grey.png");
+	private static final ResourceLocation WEREWOLF_SKIN = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/npcs/werewolf_grey_feral.png");
 	private static final ModelWerewolf WW_MODEL = new ModelWerewolf();
 
 	private static void renderTextureCenteredAt(double x, double y, int radius) {
@@ -97,9 +97,9 @@ public class WerewolfEventHandler {
 			GlStateManager.pushMatrix();
 			Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);
 			GL11.glRotated(-p.rotationYaw, 0, 1, 0);
-			GL11.glRotated(-20, 1, 0, 0);
+			GL11.glRotated(0, 1, 0, 0);
 			GL11.glRotated(180, 1, 0, 0);
-			GL11.glTranslated(0, -1.25, -0.8);
+			GL11.glTranslated(0.0, -1.25, -0.2);
 			GL11.glScaled(0.06, 0.06, 0.06);
 			GlStateManager.disableLighting();
 			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, evt.getPartialRenderTick());
