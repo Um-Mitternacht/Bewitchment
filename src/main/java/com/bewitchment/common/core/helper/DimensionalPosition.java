@@ -27,6 +27,10 @@ public class DimensionalPosition {
 		this(entity.getPos(), entity.getWorld().provider.getDimension());
 	}
 	
+	public BlockPos getPosition() {
+		return new BlockPos(getX(), getY(), getZ());
+	}
+	
 	public int getX() {
 		return x;
 	}
