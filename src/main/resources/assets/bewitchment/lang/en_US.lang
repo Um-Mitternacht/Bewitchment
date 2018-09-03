@@ -176,7 +176,7 @@ item.graveyard_dust.name=Graveyard Dust
 item.magic_salve.name=Magic Salve
 item.location_stone.bound_to=Bound to %d %d %d (%s)
 item.location_stone.name=TemporaryName LocationStone
-item.location_stone.bound_to=Not bound
+item.location_stone.unbound=Not bound
 
 //fumes
 item.fume.unfired_jar.name=Unfired Clay Jar
@@ -773,7 +773,7 @@ key.description.enable_bar=Toggle extra bar reachability
 brew.parameters.formatting= %s
 brew.parameters.none=This does not carry additional powers
 brew.description.formatting=%s
-brew.effects.formatting=%s%s (%s)
+brew.effects.formatting=%s %s (%s)
 modifier.bewitchment.radius=Expanding %s
 modifier.bewitchment.power=Strength %s
 modifier.bewitchment.color=Colored as #%s
