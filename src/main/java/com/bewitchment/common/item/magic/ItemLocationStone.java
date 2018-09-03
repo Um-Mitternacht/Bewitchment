@@ -1,13 +1,9 @@
 package com.bewitchment.common.item.magic;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,46 +17,22 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+import java.util.Optional;
+
 public class ItemLocationStone extends ItemMod {
-	
+
 	public ItemLocationStone() {
 		super(LibItemName.LOCATION_STONE);
 		this.setMaxDamage(3);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 	}
-	
-	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return isBound(stack);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if (isBound(stack)) {
-			DimensionalPosition pos = getLocation(stack).get();
-			String dimName = pos.getDim() + ""; // TODO transform this to the dimension name
-			tooltip.add(I18n.format("item.location_stone.bound_to", pos.getX(), pos.getY(), pos.getZ(), dimName));
-		} else {
-			tooltip.add(I18n.format("item.location_stone.unbound"));
-		}
-	}
-	
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		ItemStack stack = playerIn.getHeldItem(handIn);
-		if (!isBound(stack)) {
-			bind(stack, new DimensionalPosition(playerIn));
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
-		}
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
-	}
-	
+
 	public static boolean isBound(ItemStack stack) {
 		return checkOrSetTag(stack).getBoolean("bound");
 	}
-	
+
 	public static Optional<DimensionalPosition> getLocation(ItemStack stack) {
 		NBTTagCompound tag = checkOrSetTag(stack);
 		if (!isBound(stack)) {
@@ -73,7 +45,7 @@ public class ItemLocationStone extends ItemMod {
 		int d = coordTag.getInteger("d");
 		return Optional.of(new DimensionalPosition(x, y, z, d));
 	}
-	
+
 	public static Optional<DimensionalPosition> getLocationAndDamageStack(ItemStack stack, EntityLivingBase entityIn) {
 		Optional<DimensionalPosition> odp = getLocation(stack);
 		if (odp.isPresent()) {
@@ -81,7 +53,7 @@ public class ItemLocationStone extends ItemMod {
 		}
 		return odp;
 	}
-	
+
 	public static void bind(ItemStack stack, DimensionalPosition pos) {
 		NBTTagCompound tag = checkOrSetTag(stack);
 		NBTTagCompound posTag = new NBTTagCompound();
@@ -92,7 +64,7 @@ public class ItemLocationStone extends ItemMod {
 		tag.setTag("coords", posTag);
 		tag.setBoolean("bound", true);
 	}
-	
+
 	private static NBTTagCompound checkOrSetTag(ItemStack stack) {
 		if (!stack.hasTagCompound()) {
 			stack.setTagCompound(new NBTTagCompound());
@@ -107,5 +79,32 @@ public class ItemLocationStone extends ItemMod {
 		}
 		return tag;
 	}
-	
+
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return isBound(stack);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (isBound(stack)) {
+			DimensionalPosition pos = getLocation(stack).get();
+			String dimName = pos.getDim() + ""; // TODO transform this to the dimension name
+			tooltip.add(I18n.format("item.location_stone.bound_to", pos.getX(), pos.getY(), pos.getZ(), dimName));
+		} else {
+			tooltip.add(I18n.format("item.location_stone.unbound"));
+		}
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		ItemStack stack = playerIn.getHeldItem(handIn);
+		if (!isBound(stack)) {
+			bind(stack, new DimensionalPosition(playerIn));
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+		}
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
+	}
+
 }
