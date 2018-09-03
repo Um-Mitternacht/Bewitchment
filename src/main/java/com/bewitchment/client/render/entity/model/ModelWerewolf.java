@@ -463,7 +463,7 @@ public class ModelWerewolf extends ModelBase {
 						rLeg02.rotateAngleX = lLeg02.rotateAngleX;
 						lFoot.rotateAngleX = 0.3839724354387525f + 0.43633231299F * MathHelper.cos(time_running);
 						rFoot.rotateAngleX = lFoot.rotateAngleX;
-						bipedBody.setRotationPoint(0.0F, (float) (-1.5F + 5 * MathHelper.sin((float) (time_running + 4.5))), 6.0F);
+						bipedBody.setRotationPoint(0.0F, -1.5F + 5 * MathHelper.sin((float) (time_running + 4.5)), 6.0F);
 						tail01Floof.rotateAngleX = 0.34906585039F + 0.26179938779F * MathHelper.cos(time_running);
 						tail02Floof.rotateAngleX = -0.3490658503988659F + 0.26179938779F * MathHelper.sin(time_running);
 						tail03Floof.rotateAngleX = -0.17453292519943295F + 0.08726646259F * MathHelper.sin(time_running);
@@ -477,7 +477,6 @@ public class ModelWerewolf extends ModelBase {
 							bipedBody.setRotationPoint(0.0F, -1.25F, 6.0F);
 							chest.rotateAngleX = chest.rotateAngleX + (0.5235987755982988F - chest.rotateAngleX) * (timer - 12) / 40;
 							bipedHead.rotateAngleX = bipedHead.rotateAngleX + (0.7853981633974483F - bipedHead.rotateAngleX) * (timer - 12) / 40;
-							;
 							bipedLeftArm.rotateAngleX = bipedLeftArm.rotateAngleX + (-0.17683882565f - bipedLeftArm.rotateAngleX) * (timer - 12) / 40;
 							bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
 							bipedLeftArm.rotateAngleZ = bipedLeftArm.rotateAngleZ + (-0.3490658503988659F - bipedLeftArm.rotateAngleZ) * (timer - 12) / 40;
