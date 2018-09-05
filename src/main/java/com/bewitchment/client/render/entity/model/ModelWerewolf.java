@@ -1,10 +1,11 @@
 package com.bewitchment.client.render.entity.model;
 
-import org.lwjgl.input.Keyboard;
+
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
 
@@ -373,13 +374,13 @@ public class ModelWerewolf extends ModelBase {
 
 	int timer = 0;
 	int phase = 0;
-
-	boolean rotation = true;
+	
 	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
 
 		EntityPlayer p = (EntityPlayer) entity;
+		float view_angle = MathHelper.abs(p.rotationYaw);
 /*
 		float rotArm = MathHelper.cos(limbSwing * 0.5f) * limbSwingAmount * 2;
 		bipedRightArm.rotateAngleX = rotArm;
@@ -405,10 +406,21 @@ public class ModelWerewolf extends ModelBase {
 
 */
 		float time = (p.ticksExisted + ptick)*0.10471975512F;
-		float time_running = (p.ticksExisted + ptick)*0.314159265F;
+		float time_running;
 
+		if (p.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() < 0.1820000051558018){
+			time_running = (p.ticksExisted + ptick)*0.31772053926F;
+		}else if (p.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() > 0.3640000122487546){
+				time_running = (p.ticksExisted + ptick)*0.81728115053F;
+			}else {
+				time_running = (float) ((float) ((p.ticksExisted + ptick)*1.42799666*p.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue())/(1-p.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+			}
+		
+		System.out.println(p.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
+		
+		this.bipedBody.render(1);
+		
 
-		this.bipedBody.render(1);	
 		
 		tail01Floof.rotateAngleZ = 0.03490658503F * MathHelper.sin((time));
 		tail01Floof.rotateAngleX = 0.6108652381980153F + 0.00872664626F * MathHelper.cos((time));
@@ -417,7 +429,7 @@ public class ModelWerewolf extends ModelBase {
 
 		if(limbSwingAmount > 0.05 || timer > 0) {//Walking animation
 			if(limbSwingAmount < 0.3333333 && timer == 0) { // Walking animation
-				bipedRightArm.rotateAngleX = -0.3490658503988659F + limbSwingAmount*MathHelper.sin(time*5);
+				bipedRightArm.rotateAngleX = -0.3490658503988659F + limbSwingAmount*2*MathHelper.sin(time*5);
 				bipedLeftArm.rotateAngleX = -0.698131701F -bipedRightArm.rotateAngleX;
 				bipedLeftLeg.rotateAngleX = bipedRightArm.rotateAngleX;
 				bipedRightLeg.rotateAngleX = bipedLeftArm.rotateAngleX;
@@ -458,15 +470,15 @@ public class ModelWerewolf extends ModelBase {
 						chest.rotateAngleX = 0.34906585038F + 0.08726646259F*MathHelper.sin(time_running);
 						bipedHead.rotateAngleX = -0.52359877559F + chest.rotateAngleX -0.34906585038F;
 						bipedLeftArm.rotateAngleX = -1.74532925199F + 0.52359877559F*MathHelper.sin((float) (time_running+4.5));
-						bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
+						bipedRightArm.rotateAngleX = -1.74532925199F + 0.52359877559F*MathHelper.sin(time_running+5);
 						rArm02.rotateAngleX = -1.3962634016F + 0.0872664626F*MathHelper.sin(time_running);
-						lArm02.rotateAngleX = rArm02.rotateAngleX;
+						lArm02.rotateAngleX = -1.3962634016F + 0.0872664626F*MathHelper.sin((float) (time_running+0.5));
 						bipedLeftLeg.rotateAngleX = -1.2217304764F + 0.52359877559F*MathHelper.cos(time_running);
-						bipedRightLeg.rotateAngleX = bipedLeftLeg.rotateAngleX;
+						bipedRightLeg.rotateAngleX = -1.2217304764F + 0.52359877559F*MathHelper.cos((float) (time_running+0.5));
 						lLeg02.rotateAngleX = 1.0471975512F + 0.52359877559F*MathHelper.sin((float) (time_running+4.5));
-						rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+						rLeg02.rotateAngleX = 1.0471975512F + 0.52359877559F*MathHelper.sin((float) (time_running+5));
 						lFoot.rotateAngleX = 0.3839724354387525f + 0.43633231299F*MathHelper.cos(time_running);
-						rFoot.rotateAngleX = lFoot.rotateAngleX;
+						rFoot.rotateAngleX =  0.3839724354387525f + 0.43633231299F*MathHelper.cos((float) (time_running+0.5));
 						bipedBody.setRotationPoint(0.0F, (float) (-1.5F+ 5*MathHelper.sin((float) (time_running+4.5))), 6.0F);
 						tail01Floof.rotateAngleX = 0.34906585039F + 0.26179938779F*MathHelper.cos(time_running);
 						tail02Floof.rotateAngleX = -0.3490658503988659F + 0.26179938779F*MathHelper.sin(time_running);
