@@ -53,7 +53,6 @@ public class ModelGhost extends ModelBase {
 		 * Childing
 		 */
 
-		
 
 		this.body.addChild(this.lArm);
 		this.body.addChild(this.rLeg);

@@ -49,7 +49,7 @@ public class CropThistle extends BlockCrop {
 
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
-		entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+		entityIn.attackEntityFrom(DamageSource.CACTUS, 0.5F);
 	}
 
 	@Override

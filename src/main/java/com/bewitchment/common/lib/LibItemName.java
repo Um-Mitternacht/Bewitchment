@@ -148,6 +148,7 @@ public final class LibItemName {
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 	public static final String COLD_IRON_DUST = "cold_iron_dust";
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
+	public static final String LOCATION_STONE = "location_stone";
 
 
 	private LibItemName() {

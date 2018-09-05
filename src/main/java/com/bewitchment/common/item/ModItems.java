@@ -174,6 +174,7 @@ public final class ModItems {
 	public static final Item broom = null;
 	public static final Item spell_page = null;
 	public static final Item ritual_chalk = null;
+	public static final Item location_stone = null;
 
 
 	private ModItems() {
@@ -254,6 +255,7 @@ public final class ModItems {
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
 				new ItemMagicSalve(),
+				new ItemLocationStone(),
 				new ItemTarots(LibItemName.TAROTS),
 				new ItemBroom(LibItemName.BROOM)// ,
 				// new ItemMod(LibItemName.WITCHWEED),

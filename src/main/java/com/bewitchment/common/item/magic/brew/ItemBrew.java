@@ -61,7 +61,7 @@ public class ItemBrew extends ItemMod {
 				}
 				lengthString = getLengthTTip(lengthMod, brewEntry.getPotion(), stack.getItem());
 
-				tooltip.add(color + I18n.format("brew.effects.formatting", I18n.format(brewEntry.getPotion().getName()), powerString, lengthString));
+				tooltip.add(color + I18n.format("brew.effects.formatting", I18n.format(brewEntry.getPotion().getName()), powerString, lengthString).replace("  ", " "));
 
 				String ref = TextFormatting.DARK_GRAY + I18n.format(brewEntry.getPotion().getName() + ".desc");
 				tooltip.add(I18n.format("brew.description.formatting", ref));

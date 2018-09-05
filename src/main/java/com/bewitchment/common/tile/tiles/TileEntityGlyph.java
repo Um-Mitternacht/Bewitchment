@@ -5,6 +5,9 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
+import com.bewitchment.common.core.helper.DimensionalPosition;
+import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemLocationStone;
 import com.bewitchment.common.tile.ModTileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -17,6 +20,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -25,6 +29,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -33,6 +38,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	public static final ArrayList<int[]> small = new ArrayList<int[]>();
 	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
 	public static final ArrayList<int[]> big = new ArrayList<int[]>();
+	private static final double DISTANCE_SQUARED_BEFORE_COST_INCREASES = 400d;
 
 	static {
 		for (int i = -1; i <= 1; i++) {
@@ -81,6 +87,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	private AdapterIRitual ritual = null; // If a ritual is active it is stored here
 	private int cooldown = 0; // The times that passed since activation
+	private BlockPos runningPos = null; // The effective position where to run the ritual, or null if on the spot
 	private UUID entityPlayer; // The player that casted it
 	private NBTTagCompound ritualData = null; // Extra data for the ritual, includes a list of items used
 	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
@@ -110,60 +117,90 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (hand.equals(EnumHand.OFF_HAND) || !playerIn.getHeldItem(hand).isEmpty()) {
+		if (hand.equals(EnumHand.OFF_HAND)) {
 			return false;
 		}
 
-		if (this.hasRunningRitual()) {
-			this.stopRitual(playerIn);
-		} else {
-			this.startRitual(playerIn);
+		ItemStack held = playerIn.getHeldItem(hand);
+
+		if (held.isEmpty()) {
+			if (this.hasRunningRitual()) {
+				this.stopRitual(playerIn);
+				return true;
+			}
+			this.startRitual(playerIn, null);
+			return true;
+		} else if (held.getItem() == ModItems.location_stone && !this.hasRunningRitual()) {
+			Optional<DimensionalPosition> odp = ItemLocationStone.getLocationAndDamageStack(held, playerIn);
+			if (odp.isPresent() && odp.get().getDim() == worldIn.provider.getDimension()) {
+				this.startRitual(playerIn, odp.get().getPosition());
+				return true;
+			}
+			playerIn.sendStatusMessage(new TextComponentTranslation("ritual.failure.wrong_redirection"), true);
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override
 	public void update() {
 		if (!world.isRemote && ritual != null) {
 			EntityPlayer player = getWorld().getPlayerEntityByUUID(entityPlayer);
-			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), ritual.getRunningPower());
+			double powerDrainMult = 1;
+			BlockPos effPos = getPos();
+			if (runningPos != null) {
+				powerDrainMult = MathHelper.ceil(runningPos.distanceSq(getPos()) / DISTANCE_SQUARED_BEFORE_COST_INCREASES);
+				effPos = runningPos;
+			}
+
+			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
 			if (hasPowerToUpdate) {
 				cooldown++;
 				markDirty();
 			}
 			if (ritual.getTime() <= cooldown && ritual.getTime() >= 0) {
-				ritual.onFinish(player, this, getWorld(), getPos(), ritualData, getPos(), 1);
+				ritual.onFinish(player, this, getWorld(), getPos(), ritualData, effPos, 1);
 				for (ItemStack stack : ritual.getOutput(AdapterIRitual.getItemsUsedForInput(ritualData), ritualData)) {
-					EntityItem ei = new EntityItem(getWorld(), getPos().getX(), getPos().up().getY(), getPos().getZ(), stack);
+					EntityItem ei = new EntityItem(getWorld(), effPos.getX(), effPos.up().getY(), effPos.getZ(), stack);
 					getWorld().spawnEntity(ei);
 				}
 				entityPlayer = null;
 				cooldown = 0;
 				ritual = null;
+				runningPos = null;
 				world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 				markDirty();
 				return;
 			}
 			if (hasPowerToUpdate) {
-				ritual.onUpdate(player, this, getWorld(), getPos(), ritualData, cooldown, getPos(), 1);
+				ritual.onUpdate(player, this, getWorld(), getPos(), ritualData, cooldown, effPos, 1);
 			} else {
-				if (ritual.onLowPower(player, this, world, pos, ritualData, cooldown, getPos(), 1)) {
+				if (ritual.onLowPower(player, this, world, pos, ritualData, cooldown, effPos, 1)) {
 					stopRitual(player);
 				}
 			}
 		}
 	}
 
-	public void startRitual(EntityPlayer player) {
+	public void startRitual(EntityPlayer player, BlockPos startAt) {
 		if (player.getEntityWorld().isRemote) {
 			return;
 		}
+
+		double powerDrainMult = 1;
+		BlockPos effPos = getPos();
+		if (startAt != null) {
+			powerDrainMult = MathHelper.ceil(startAt.distanceSq(getPos()) / DISTANCE_SQUARED_BEFORE_COST_INCREASES);
+			effPos = startAt;
+		}
+
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
-				if (rit.isValid(player, world, pos, recipe, pos, 1)) { // Checks of extra conditions are met
-					if (altarTracker.drain(player, pos, world.provider.getDimension(), rit.getRequiredStartingPower())) { // Check if there is enough starting power (and uses it in case there is)
+				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
+
+					if (altarTracker.drain(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
 						this.ritualData = new NBTTagCompound();
@@ -178,25 +215,27 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 						// ^^^^^
 
 						// Sets the ritual up
+						this.runningPos = startAt;
 						this.ritual = rit;
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;
-						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, getPos(), 1);
-						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name", new Object[0]), true);
+						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, effPos, 1);
+						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name"), true);
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
 						return;
 					}
-					player.sendStatusMessage(new TextComponentTranslation("ritual.failure.power", new Object[0]), true);
+					player.sendStatusMessage(new TextComponentTranslation("ritual.failure.power"), true);
 					return;
 				}
-				player.sendStatusMessage(new TextComponentTranslation("ritual.failure.precondition", new Object[0]), true);
+				player.sendStatusMessage(new TextComponentTranslation("ritual.failure.precondition"), true);
 				return;
 
 			}
 		}
-		if (!itemsOnGround.isEmpty())
-			player.sendStatusMessage(new TextComponentTranslation("ritual.failure.unknown", new Object[0]), true);
+		if (!itemsOnGround.isEmpty()) {
+			player.sendStatusMessage(new TextComponentTranslation("ritual.failure.unknown"), true);
+		}
 	}
 
 	private boolean hasCircles(AdapterIRitual rit) {
@@ -288,11 +327,12 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 	public void stopRitual(EntityPlayer player) {
 		if (ritual != null) {
-			ritual.onStopped(player, this, world, pos, ritualData, getPos(), 1);
+			ritual.onStopped(player, this, world, pos, ritualData, runningPos == null ? getPos() : runningPos, 1);
 			entityPlayer = null;
 			cooldown = 0;
 			ritual = null;
 			ritualData = null;
+			runningPos = null;
 			IBlockState glyph = world.getBlockState(pos);
 			world.notifyBlockUpdate(pos, glyph, glyph, 3);
 			markDirty();
@@ -335,6 +375,10 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		if (tag.hasKey("player")) {
 			entityPlayer = UUID.fromString(tag.getString("player"));
 		}
+		if (tag.hasKey("runningPos")) {
+			NBTTagCompound rp = tag.getCompoundTag("runningPos");
+			runningPos = new BlockPos(rp.getInteger("x"), rp.getInteger("y"), rp.getInteger("z"));
+		}
 		if (tag.hasKey("data")) {
 			ritualData = tag.getCompoundTag("data");
 		}
@@ -360,6 +404,13 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		}
 		if (ritualData != null) {
 			tag.setTag("data", ritualData);
+		}
+		if (runningPos != null) {
+			NBTTagCompound rp = new NBTTagCompound();
+			rp.setInteger("x", runningPos.getX());
+			rp.setInteger("y", runningPos.getY());
+			rp.setInteger("z", runningPos.getZ());
+			tag.setTag("runningPos", rp);
 		}
 		tag.setTag("altar", altarTracker.writeToNbt());
 		NBTTagList list = new NBTTagList();

@@ -2,8 +2,10 @@ package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -42,6 +44,11 @@ public class CropMint extends BlockCrop {
 					}
 				}
 		);
+	}
+
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
 	}
 
 	@Override
