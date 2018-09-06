@@ -68,6 +68,7 @@ public class ModelWerewolf extends ModelBase {
 	public ModelRenderer lFoot;
 	int timer = 0;
 	int phase = 0;
+
 	public ModelWerewolf() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
