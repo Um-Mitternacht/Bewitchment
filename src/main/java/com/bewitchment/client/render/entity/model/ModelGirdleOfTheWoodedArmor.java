@@ -1,16 +1,12 @@
 package com.bewitchment.client.render.entity.model;
 
-import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)
 public class ModelGirdleOfTheWoodedArmor extends ModelGirdleOfTheWooded {
-
-	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/girdle_of_the_wood.png");
 
 	public ModelGirdleOfTheWoodedArmor() {
 		this.textureWidth = 32;

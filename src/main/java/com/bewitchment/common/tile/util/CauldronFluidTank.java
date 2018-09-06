@@ -9,11 +9,11 @@ import javax.annotation.Nullable;
 
 public class CauldronFluidTank extends FluidTank {
 
-	private final TileEntityCauldron tile;
+	private final TileEntityCauldron tileCauldron;
 
 	public CauldronFluidTank(TileEntityCauldron tile) {
 		super(Fluid.BUCKET_VOLUME);
-		this.tile = tile;
+		this.tileCauldron = tile;
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class CauldronFluidTank extends FluidTank {
 
 	@Override
 	protected void onContentsChanged() {
-		tile.onLiquidChange();
+		tileCauldron.onLiquidChange();
 	}
 
 	@Override
