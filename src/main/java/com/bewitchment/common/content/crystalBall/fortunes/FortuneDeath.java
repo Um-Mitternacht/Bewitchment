@@ -31,7 +31,7 @@ public class FortuneDeath extends Fortune {
 
 	@Override
 	public boolean apply(@Nonnull EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 1 + player.world.getDifficulty().ordinal(), false, false));
+		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 

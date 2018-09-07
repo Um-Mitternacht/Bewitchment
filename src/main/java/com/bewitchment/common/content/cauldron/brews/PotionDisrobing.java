@@ -1,5 +1,6 @@
 package com.bewitchment.common.content.cauldron.brews;
 
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.BrewMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,6 +40,9 @@ public class PotionDisrobing extends BrewMod {
 				case 3:
 					spawnItem(entity, entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD));
 					entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, ItemStack.EMPTY);
+					break;
+				default:
+					Bewitchment.logger.warn("Possible bug in Bewitchment: report this to the authors [PotionDisrobing.java]");
 					break;
 			}
 		}

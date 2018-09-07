@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class BlockWillOWisp extends BlockMod {
 
-	private static final AxisAlignedBB NULL_AABB = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
+	private static final AxisAlignedBB EMPTY_AABB = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
 	private static final Material WISP_MATERIAL = new Material(MapColor.AIR) {
 		@Override
 		public boolean blocksLight() {
@@ -60,13 +60,13 @@ public class BlockWillOWisp extends BlockMod {
 	@Override
 	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return NULL_AABB;
+		return EMPTY_AABB;
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		return NULL_AABB;
+		return EMPTY_AABB;
 	}
 
 	@Override

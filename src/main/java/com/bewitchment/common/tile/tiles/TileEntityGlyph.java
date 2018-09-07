@@ -1,10 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
@@ -14,7 +9,6 @@ import com.bewitchment.common.core.helper.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemLocationStone;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -32,13 +26,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants.NBT;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 public class TileEntityGlyph extends ModTileEntity implements ITickable {
-	
-	private static final double DISTANCE_SQUARED_BEFORE_COST_INCREASES = 400d;
 
 	public static final ArrayList<int[]> small = new ArrayList<int[]>();
 	public static final ArrayList<int[]> medium = new ArrayList<int[]>();
 	public static final ArrayList<int[]> big = new ArrayList<int[]>();
+	private static final double DISTANCE_SQUARED_BEFORE_COST_INCREASES = 400d;
 
 	static {
 		for (int i = -1; i <= 1; i++) {
@@ -120,9 +120,9 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		if (hand.equals(EnumHand.OFF_HAND)) {
 			return false;
 		}
-		
+
 		ItemStack held = playerIn.getHeldItem(hand);
-		
+
 		if (held.isEmpty()) {
 			if (this.hasRunningRitual()) {
 				this.stopRitual(playerIn);
@@ -152,7 +152,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				powerDrainMult = MathHelper.ceil(runningPos.distanceSq(getPos()) / DISTANCE_SQUARED_BEFORE_COST_INCREASES);
 				effPos = runningPos;
 			}
-			
+
 			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
 			if (hasPowerToUpdate) {
 				cooldown++;
@@ -181,25 +181,25 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
+
 	public void startRitual(EntityPlayer player, BlockPos startAt) {
 		if (player.getEntityWorld().isRemote) {
 			return;
 		}
-		
+
 		double powerDrainMult = 1;
 		BlockPos effPos = getPos();
 		if (startAt != null) {
 			powerDrainMult = MathHelper.ceil(startAt.distanceSq(getPos()) / DISTANCE_SQUARED_BEFORE_COST_INCREASES);
 			effPos = startAt;
 		}
-		
+
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
-					
+
 					if (altarTracker.drain(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
