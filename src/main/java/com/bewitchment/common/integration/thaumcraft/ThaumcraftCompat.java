@@ -112,18 +112,18 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.tongue_of_dog), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 4).add(Aspect.DEATH, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.needle_bone), new AspectList().add(Aspect.DEATH, 2).add(Aspect.CRAFT, 2));
 		evt.register.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle), new AspectList().add(Aspect.MOTION, 8).add(Aspect.CRAFT, 8));
-		evt.register.registerObjectTag(new ItemStack(ModItems.bee), new AspectList().add(Aspect.AVERSION, 2).add(Aspect.BEAST, 2).add(Aspect.ALCHEMY, 2));
+		evt.register.registerObjectTag(new ItemStack(ModItems.bee), new AspectList().add(Aspect.AVERSION, 2).add(Aspect.BEAST, 2).add(Aspect.ALCHEMY, 2).add(SUN, 2));
 		evt.register.registerObjectTag(new ItemStack(ModItems.mortar_and_pestle_stone), new AspectList().add(Aspect.MOTION, 8).add(Aspect.EARTH, 8).add(Aspect.CRAFT, 8));
 		evt.register.registerObjectTag(new ItemStack(ModItems.salt), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.honey), new AspectList().add(Aspect.DESIRE, 6).add(Aspect.LIFE, 6));
+		evt.register.registerObjectTag(new ItemStack(ModItems.honey), new AspectList().add(Aspect.DESIRE, 6).add(Aspect.LIFE, 6).add(SUN, 3));
 		evt.register.registerObjectTag(new ItemStack(ModItems.girdle_of_the_wooded), new AspectList().add(Aspect.PLANT, 20).add(Aspect.LIFE, 20).add(Aspect.PROTECT, 20).add(Aspect.MAGIC, 20));
 		evt.register.registerObjectTag(new ItemStack(ModItems.nazar), new AspectList().add(Aspect.DESIRE, 8).add(Aspect.METAL, 8).add(Aspect.CRYSTAL, 8).add(Aspect.PROTECT, 8).add(Aspect.MAGIC, 8));
 		evt.register.registerObjectTag(new ItemStack(ModItems.horseshoe), new AspectList().add(Aspect.METAL, 8).add(Aspect.BEAST, 8).add(Aspect.PROTECT, 8));
-		evt.register.registerObjectTag(new ItemStack(ModItems.wax), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8));
+		evt.register.registerObjectTag(new ItemStack(ModItems.wax), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8).add(SUN, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.taglock), new AspectList().add(Aspect.SOUL, 8).add(Aspect.LIFE, 8));
 		evt.register.registerObjectTag(new ItemStack(ModItems.cold_iron_ingot), new AspectList().add(Aspect.AVERSION, 15).add(Aspect.COLD, 15).add(Aspect.METAL, 15));
-		evt.register.registerObjectTag(new ItemStack(ModItems.empty_honeycomb), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.VOID, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.honeycomb), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.LIFE, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.empty_honeycomb), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.VOID, 4).add(SUN, 3));
+		evt.register.registerObjectTag(new ItemStack(ModItems.honeycomb), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.LIFE, 4).add(SUN, 3));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, 0), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, 1), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ELDRITCH, 4).add(STAR, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, 2), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.MAGIC, 4));
@@ -203,14 +203,15 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.moonbell), new AspectList().add(Aspect.PLANT, 6).add(Aspect.DARKNESS, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.scorned_bricks), new AspectList().add(Aspect.FIRE, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.scorned_bricks), new AspectList().add(Aspect.FIRE, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10).add(DEMON, 10));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.embittered_bricks), new AspectList().add(Aspect.COLD, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.fake_ice), new AspectList().add(Aspect.COLD, 10).add(Aspect.MAGIC, 10));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.VOID, 15));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.thread_spinner), new AspectList().add(Aspect.PLANT, 30).add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 25));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.witchfire), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.oven), new AspectList().add(Aspect.FIRE, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.cauldron), new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.nethersteel), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.METAL, 5).add(DEMON, 10));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.beehive), new AspectList().add(Aspect.BEAST, 15).add(Aspect.DESIRE, 15).add(Aspect.PLANT, 13).add(SUN, 10));
 
 		//Ores
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.gem_ore, 1, 0), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(Aspect.EARTH, 4));
@@ -224,7 +225,20 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.gem_ore, 1, 8), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(MOON, 4).add(Aspect.EARTH, 4));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.gem_ore, 1, 9), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.MIND, 4).add(Aspect.EARTH, 4));
 
+		//Silver
+		evt.register.registerObjectTag(new ItemStack(ModItems.silver_ingot), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 5).add(MOON, 3));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.silver_ore), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 5).add(Aspect.EARTH, 5).add(MOON, 3));
+
+		//Saplings
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.sapling, 1, 0), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MIND, 3));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.sapling, 1, 1), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MAGIC, 3));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.sapling, 1, 2), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.EXCHANGE, 3));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.sapling, 1, 3), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
+
 		//Add some of our aspects to existing items in vanilla
+		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.
+		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.
+		//The same applies if you try and add aspects to items from other mods.
 		evt.register.registerObjectTag(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new AspectList().add(Aspect.PLANT, 5).add(Aspect.SENSES, 5).add(SUN, 3).add(Aspect.AIR, 1).add(Aspect.LIFE, 1));
 
 		//Entities

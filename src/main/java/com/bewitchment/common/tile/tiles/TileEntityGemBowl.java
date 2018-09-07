@@ -1,7 +1,10 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.HashMap;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.tile.ModTileEntity;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,18 +20,83 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityGemBowl extends ModTileEntity {
-	private static final String[] ACCEPTED_ORE_NAMES = {"gemDiamond", "gemEmerald", "gemQuartz", "gemLapis",
-			"dustRedstone", "gemBloodstone", "gemMoldavite", "gemNuummite", "gemGarnet", "gemTourmaline",
-			"gemTigersEye", "gemJasper", "gemMalachite", "gemAmethyst", "gemAlexandrite", "gemAquamarine",
-			"gemRuby", "gemSapphire", "gemPeridot", "gemAmber", "gemApatite", "gemTopaz", "gemJet",
-			"gemTanzanite", "gemPearl", "gemOpal", "gemZanite", "gemPsi", "gemCrimsonMiddleGem", "gemAquaMiddleGem",
-			"gemGreenMiddleGem", "gemZircon", "gemAzurite", "gemEudialyte", "gemRime", "gemAgate", "gemJade",
-			"gemPrismarine", "gemOnyx", "gemEnderBiotite", "gemBurnium", "gemEndimium", "gemHephaestite", "gemScarlite", "gemAether",
-			"gemSerpentine", "gemPetoskeyStone", "gemLifeCrystal", "gemValonite", "gemRhodochrosite", "gemBoronNitride",
-			"gemFluorite", "gemVilliaumite", "gemCarobbiite", "gemMoon", "gemRedstone", "gemVinteum", "gemQuartzite",
-			"gemGlass", "gemQuartzBlock", "gemAlmandine", "gemBlueTopaz", "gemCinnabar", "gemGreenSapphire", "gemRutile",
-			"gemLazurite", "gemSodalite", "gemCertusQuartz", "gemOlivine", "gemLignite", "gemGarnetRed", "gemGarnetYellow",
-			"gemMonazite"};
+	
+	private static final HashMap<String, Integer> gainMap = new HashMap<>();
+	static {
+		gainMap.put("gemDiamond", 2);
+		gainMap.put("gemEmerald", 2);
+		gainMap.put("gemPsi", 2);
+		gainMap.put("gemPrismarine", 2);
+		gainMap.put("gemLifeCrystal", 2);
+		gainMap.put("gemQuartz", 1);
+		gainMap.put("gemLapis", 1);
+		gainMap.put("dustRedstone", 1);
+		gainMap.put("gemBloodstone", 1);
+		gainMap.put("gemMoldavite", 1);
+		gainMap.put("gemNuummite", 1);
+		gainMap.put("gemGarnet", 1);
+		gainMap.put("gemTourmaline", 1);
+		gainMap.put("gemJasper", 1);
+		gainMap.put("gemTigersEye", 1);
+		gainMap.put("gemMalachite", 1);
+		gainMap.put("gemAmethyst", 1);
+		gainMap.put("gemAlexandrite", 1);
+		gainMap.put("gemAquamarine", 1);
+		gainMap.put("gemRuby", 1);
+		gainMap.put("gemSapphire", 1);
+		gainMap.put("gemPeridot", 1);
+		gainMap.put("gemAmber", 1);
+		gainMap.put("gemApatite", 1);
+		gainMap.put("gemTopaz", 1);
+		gainMap.put("gemJet", 1);
+		gainMap.put("gemTanzanite", 1);
+		gainMap.put("gemPearl", 1);
+		gainMap.put("gemOpal", 1);
+		gainMap.put("gemZanite", 1);
+		gainMap.put("gemCrimsonMiddleGem", 1);
+		gainMap.put("gemAquaMiddleGem", 1);
+		gainMap.put("gemGreenMiddleGem", 1);
+		gainMap.put("gemZircon", 1);
+		gainMap.put("gemAzurite", 1);
+		gainMap.put("gemEudialyte", 1);
+		gainMap.put("gemRime", 1);
+		gainMap.put("gemAgate", 1);
+		gainMap.put("gemJade", 1);
+		gainMap.put("gemOnyx", 1);
+		gainMap.put("gemEnderBiotite", 1);
+		gainMap.put("gemBurnium", 1);
+		gainMap.put("gemEndimium", 1);
+		gainMap.put("gemHephaestite", 1);
+		gainMap.put("gemScarlite", 1);
+		gainMap.put("gemAether", 1);
+		gainMap.put("gemSerpentine", 1);
+		gainMap.put("gemPetoskeyStone", 1);
+		gainMap.put("gemValonite", 1);
+		gainMap.put("gemRhodochrosite", 1);
+		gainMap.put("gemBoronNitride", 1);
+		gainMap.put("gemFluorite", 1);
+		gainMap.put("gemVilliaumite", 1);
+		gainMap.put("gemCarobbiite", 1);
+		gainMap.put("gemMoon", 1);
+		gainMap.put("gemRedstone", 1);
+		gainMap.put("gemVinteum", 1);
+		gainMap.put("gemQuartzite", 1);
+		gainMap.put("gemGlass", 1);
+		gainMap.put("gemQuartzBlock", 1);
+		gainMap.put("gemAlmandine", 1);
+		gainMap.put("gemBlueTopaz", 1);
+		gainMap.put("gemCinnabar", 1);
+		gainMap.put("gemGreenSapphire", 1);
+		gainMap.put("gemRutile", 1);
+		gainMap.put("gemLazurite", 1);
+		gainMap.put("gemSodalite", 1);
+		gainMap.put("gemCertusQuartz", 1);
+		gainMap.put("gemOlivine", 1);
+		gainMap.put("gemLignite", 1);
+		gainMap.put("gemGarnetRed", 1);
+		gainMap.put("gemGarnetYellow", 1);
+		gainMap.put("gemMonazite", 1);
+	}
 
 	private static final String GEM_TAG_NAME = "gem";
 	private static final String DIRECTION_TAG_NAME = "facing";
@@ -60,7 +128,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 				this.syncToClient();
 			}
 		} else {
-			for (String acceptedName : ACCEPTED_ORE_NAMES) {
+			for (String acceptedName : gainMap.keySet()) {
 				for (int oreID : OreDictionary.getOreIDs(held)) {
 					if (OreDictionary.getOreName(oreID).equals(acceptedName)) {
 						ItemStack previousGem = gem;
@@ -113,309 +181,8 @@ public class TileEntityGemBowl extends ModTileEntity {
 		}
 		for (int oreID : OreDictionary.getOreIDs(gem)) {
 			String oreName = OreDictionary.getOreName(oreID);
-			if (oreName.equals("gemDiamond")) {
-				return 325;
-			} else if (oreName.equals("gemEmerald")) {
-				return 275;
-			} else if (oreName.equals("gemMoldavite")) {
-				return 225;
-			} else if (oreName.equals("gemAlexandrite")) {
-				return 225;
-			} else if (oreName.equals("gemNuummite")) {
-				return 225;
-			} else if (oreName.equals("gemGarnet")) {
-				return 225;
-			} else if (oreName.equals("gemAmethyst")) {
-				return 225;
-			} else if (oreName.equals("gemTourmaline")) {
-				return 225;
-			} else if (oreName.equals("gemTigersEye")) {
-				return 225;
-			} else if (oreName.equals("gemMalachite")) {
-				return 225;
-			} else if (oreName.equals("gemBloodstone")) {
-				return 225;
-			} else if (oreName.equals("gemJasper")) {
-				return 225;
-			} else if (oreName.equals("gemLapis")) {
-				return 255;
-			} else if (oreName.equals("gemQuartz")) {
-				return 245;
-			} else if (oreName.equals("gemAquamarine")) {
-				return 240;
-			} else if (oreName.equals("gemRuby")) {
-				return 225;
-			} else if (oreName.equals("gemSapphire")) {
-				return 225;
-			} else if (oreName.equals("gemPeridot")) {
-				return 225;
-			} else if (oreName.equals("gemAmber")) {
-				return 225;
-			} else if (oreName.equals("gemApatite")) {
-				return 225;
-			} else if (oreName.equals("gemTopaz")) {
-				return 225;
-			} else if (oreName.equals("gemJet")) {
-				return 225;
-			} else if (oreName.equals("gemTanzanite")) {
-				return 225;
-			} else if (oreName.equals("gemPearl")) {
-				return 225;
-			} else if (oreName.equals("gemOpal")) {
-				return 225;
-			} else if (oreName.equals("gemZanite")) {
-				return 225;
-			} else if (oreName.equals("gemPsi")) {
-				return 240;
-			} else if (oreName.equals("gemCrimsonMiddleGem")) {
-				return 240;
-			} else if (oreName.equals("gemAquaMiddleGem")) {
-				return 240;
-			} else if (oreName.equals("gemGreenMiddleGem")) {
-				return 240;
-			} else if (oreName.equals("gemZircon")) {
-				return 225;
-			} else if (oreName.equals("gemAzurite")) {
-				return 225;
-			} else if (oreName.equals("gemEudialyte")) {
-				return 225;
-			} else if (oreName.equals("gemRime")) {
-				return 225;
-			} else if (oreName.equals("gemAgate")) {
-				return 225;
-			} else if (oreName.equals("gemJade")) {
-				return 225;
-			} else if (oreName.equals("gemPrismarine")) {
-				return 250;
-			} else if (oreName.equals("gemOnyx")) {
-				return 225;
-			} else if (oreName.equals("gemEnderBiotite")) {
-				return 225;
-			} else if (oreName.equals("gemBurnium")) {
-				return 225;
-			} else if (oreName.equals("gemEndimium")) {
-				return 225;
-			} else if (oreName.equals("gemHephaestite")) {
-				return 225;
-			} else if (oreName.equals("gemScarlite")) {
-				return 225;
-			} else if (oreName.equals("gemAether")) {
-				return 225;
-			} else if (oreName.equals("gemSerpentine")) {
-				return 225;
-			} else if (oreName.equals("gemPetoskeyStone")) {
-				return 225;
-			} else if (oreName.equals("gemLifeCrystal")) {
-				return 225;
-			} else if (oreName.equals("gemValonite")) {
-				return 225;
-			} else if (oreName.equals("gemRhodochrosite")) {
-				return 225;
-			} else if (oreName.equals("gemBoronNitride")) {
-				return 225;
-			} else if (oreName.equals("gemFluorite")) {
-				return 225;
-			} else if (oreName.equals("gemVilliaumite")) {
-				return 225;
-			} else if (oreName.equals("gemCarobbiite")) {
-				return 225;
-			} else if (oreName.equals("gemMoon")) {
-				return 225;
-			} else if (oreName.equals("gemRedstone")) {
-				return 225;
-			} else if (oreName.equals("gemVinteum")) {
-				return 225;
-			} else if (oreName.equals("gemQuartzite")) {
-				return 225;
-			} else if (oreName.equals("gemGlass")) {
-				return 225;
-			} else if (oreName.equals("gemQuartzBlock")) {
-				return 225;
-			} else if (oreName.equals("gemAlmandine")) {
-				return 225;
-			} else if (oreName.equals("gemBlueTopaz")) {
-				return 225;
-			} else if (oreName.equals("gemCinnabar")) {
-				return 225;
-			} else if (oreName.equals("gemGreenSapphire")) {
-				return 225;
-			} else if (oreName.equals("gemRutile")) {
-				return 225;
-			} else if (oreName.equals("gemLazurite")) {
-				return 225;
-			} else if (oreName.equals("gemSodalite")) {
-				return 225;
-			} else if (oreName.equals("gemCertusQuartz")) {
-				return 225;
-			} else if (oreName.equals("gemOlivine")) {
-				return 225;
-			} else if (oreName.equals("gemLignite")) {
-				return 225;
-			} else if (oreName.equals("gemGarnetRed")) {
-				return 225;
-			} else if (oreName.equals("gemGarnetYellow")) {
-				return 225;
-			} else if (oreName.equals("gemMonazite")) {
-				return 225;
-			} else if (oreName.equals("dustRedstone")) {
-				return 200;
-			}
-		}
-		return 0;
-	}
-
-	public int getMultiplier() {
-		if (gem.isEmpty()) {
-			return 0;
-		}
-		for (int oreID : OreDictionary.getOreIDs(gem)) {
-			String oreName = OreDictionary.getOreName(oreID);
-			if (oreName.equals("gemDiamond")) {
-				return 125;
-			} else if (oreName.equals("gemEmerald")) {
-				return 100;
-			} else if (oreName.equals("gemMoldavite")) {
-				return 75;
-			} else if (oreName.equals("gemAlexandrite")) {
-				return 75;
-			} else if (oreName.equals("gemNuummite")) {
-				return 75;
-			} else if (oreName.equals("gemGarnet")) {
-				return 75;
-			} else if (oreName.equals("gemAmethyst")) {
-				return 75;
-			} else if (oreName.equals("gemTourmaline")) {
-				return 75;
-			} else if (oreName.equals("gemTigersEye")) {
-				return 75;
-			} else if (oreName.equals("gemMalachite")) {
-				return 75;
-			} else if (oreName.equals("gemBloodstone")) {
-				return 75;
-			} else if (oreName.equals("gemJasper")) {
-				return 75;
-			} else if (oreName.equals("gemLapis")) {
-				return 75;
-			} else if (oreName.equals("gemQuartz")) {
-				return 75;
-			} else if (oreName.equals("gemAquamarine")) {
-				return 75;
-			} else if (oreName.equals("gemRuby")) {
-				return 75;
-			} else if (oreName.equals("gemSapphire")) {
-				return 75;
-			} else if (oreName.equals("gemPeridot")) {
-				return 75;
-			} else if (oreName.equals("gemAmber")) {
-				return 75;
-			} else if (oreName.equals("gemApatite")) {
-				return 75;
-			} else if (oreName.equals("gemTopaz")) {
-				return 75;
-			} else if (oreName.equals("gemJet")) {
-				return 75;
-			} else if (oreName.equals("gemTanzanite")) {
-				return 75;
-			} else if (oreName.equals("gemPearl")) {
-				return 75;
-			} else if (oreName.equals("gemOpal")) {
-				return 75;
-			} else if (oreName.equals("gemZanite")) {
-				return 75;
-			} else if (oreName.equals("gemPsi")) {
-				return 75;
-			} else if (oreName.equals("gemCrimsonMiddleGem")) {
-				return 75;
-			} else if (oreName.equals("gemAquaMiddleGem")) {
-				return 75;
-			} else if (oreName.equals("gemGreenMiddleGem")) {
-				return 75;
-			} else if (oreName.equals("gemZircon")) {
-				return 75;
-			} else if (oreName.equals("gemAzurite")) {
-				return 75;
-			} else if (oreName.equals("gemEudialyte")) {
-				return 75;
-			} else if (oreName.equals("gemRime")) {
-				return 75;
-			} else if (oreName.equals("gemAgate")) {
-				return 75;
-			} else if (oreName.equals("gemJade")) {
-				return 75;
-			} else if (oreName.equals("gemPrismarine")) {
-				return 75;
-			} else if (oreName.equals("gemOnyx")) {
-				return 75;
-			} else if (oreName.equals("gemEnderBiotite")) {
-				return 75;
-			} else if (oreName.equals("gemBurnium")) {
-				return 75;
-			} else if (oreName.equals("gemEndimium")) {
-				return 75;
-			} else if (oreName.equals("gemHephaestite")) {
-				return 75;
-			} else if (oreName.equals("gemScarlite")) {
-				return 75;
-			} else if (oreName.equals("gemAether")) {
-				return 75;
-			} else if (oreName.equals("gemSerpentine")) {
-				return 75;
-			} else if (oreName.equals("gemPetoskeyStone")) {
-				return 75;
-			} else if (oreName.equals("gemLifeCrystal")) {
-				return 75;
-			} else if (oreName.equals("gemValonite")) {
-				return 75;
-			} else if (oreName.equals("gemRhodochrosite")) {
-				return 75;
-			} else if (oreName.equals("gemBoronNitride")) {
-				return 75;
-			} else if (oreName.equals("gemFluorite")) {
-				return 75;
-			} else if (oreName.equals("gemVilliaumite")) {
-				return 75;
-			} else if (oreName.equals("gemCarobbiite")) {
-				return 75;
-			} else if (oreName.equals("gemMoon")) {
-				return 75;
-			} else if (oreName.equals("gemRedstone")) {
-				return 75;
-			} else if (oreName.equals("gemVinteum")) {
-				return 75;
-			} else if (oreName.equals("gemQuartzite")) {
-				return 75;
-			} else if (oreName.equals("gemGlass")) {
-				return 75;
-			} else if (oreName.equals("gemQuartzBlock")) {
-				return 75;
-			} else if (oreName.equals("gemAlmandine")) {
-				return 75;
-			} else if (oreName.equals("gemBlueTopaz")) {
-				return 75;
-			} else if (oreName.equals("gemCinnabar")) {
-				return 75;
-			} else if (oreName.equals("gemGreenSapphire")) {
-				return 75;
-			} else if (oreName.equals("gemRutile")) {
-				return 75;
-			} else if (oreName.equals("gemLazurite")) {
-				return 75;
-			} else if (oreName.equals("gemSodalite")) {
-				return 75;
-			} else if (oreName.equals("gemCertusQuartz")) {
-				return 75;
-			} else if (oreName.equals("gemOlivine")) {
-				return 75;
-			} else if (oreName.equals("gemLignite")) {
-				return 75;
-			} else if (oreName.equals("gemGarnetRed")) {
-				return 75;
-			} else if (oreName.equals("gemGarnetYellow")) {
-				return 75;
-			} else if (oreName.equals("gemMonazite")) {
-				return 75;
-			} else if (oreName.equals("dustRedstone")) {
-				return 50;
+			if (gainMap.containsKey(oreName)) {
+				return gainMap.get(oreName);
 			}
 		}
 		return 0;

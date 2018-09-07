@@ -1,6 +1,7 @@
 package com.bewitchment.client.jei.components;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
+import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.lib.LibMod;
 import mezz.jei.api.IGuiHelper;
@@ -96,6 +97,9 @@ public class RitualWrapper implements IRecipeWrapper {
 				break;
 			case ANY:
 				colorRandom(minecraft.world.getTotalWorldTime(), circle);
+				break;
+			default:
+				Bewitchment.logger.warn("Probable bug in Bewitchment [RitualWrapper.java]");
 				break;
 		}
 	}

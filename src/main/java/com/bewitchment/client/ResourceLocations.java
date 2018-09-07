@@ -1,6 +1,7 @@
 package com.bewitchment.client;
 
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -28,6 +29,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation BUBBLE = getLocation("textures/particle/bubble.png");
 	public static final ResourceLocation STEAM = getLocation("particle/steam");
 	public static final ResourceLocation BEE = getLocation("particle/bee");
+	public static final ResourceLocation BAT = getLocation("particle/bat");
 	public static final ResourceLocation FLAME = getLocation("particle/flame");
 
 	//Loot Tables
