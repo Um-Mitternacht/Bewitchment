@@ -1,5 +1,7 @@
 package com.bewitchment.common.content.transformation.vampire;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -14,6 +16,7 @@ import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -38,8 +41,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {
@@ -226,7 +227,7 @@ public class VampireAbilityHandler {
 				}
 			}
 		} else if (evt.action == ModAbilities.BAT_SWARM) {
-			if (!(evt.player.getRidingEntity() instanceof EntityBatSwarm) && BewitchmentAPI.getAPI().addVampireBlood(evt.player, -150)) {
+			if (!(evt.player.getRidingEntity() instanceof EntityBatSwarm) && (evt.player.isCreative() || BewitchmentAPI.getAPI().addVampireBlood(evt.player, -150))) {
 				EntityBatSwarm bs = new EntityBatSwarm(evt.player.world);
 				float pitch = (Math.abs(evt.player.rotationPitch) < 7) ? 0 : evt.player.rotationPitch;
 				bs.setPositionAndRotation(evt.player.posX, evt.player.posY + evt.player.getEyeHeight(), evt.player.posZ, evt.player.rotationYaw, pitch);
