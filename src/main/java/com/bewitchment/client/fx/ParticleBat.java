@@ -18,7 +18,7 @@ class ParticleBat extends Particle {
 
 	private ParticleBat(World worldIn, double posXIn, double posYIn, double posZIn) {
 		super(worldIn, posXIn, posYIn, posZIn);
-		this.particleScale = (float) (1 + rand.nextGaussian() * 0.3);
+		this.particleScale = (float) (1 + rand.nextDouble() * 0.3);
 		this.particleMaxAge = 10;
 		acc = new Vec3d(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian());
 		this.decay = 1d;

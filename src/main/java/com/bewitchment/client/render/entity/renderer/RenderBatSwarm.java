@@ -38,7 +38,7 @@ public class RenderBatSwarm extends Render<EntityBatSwarm> {
 			ipx += rng.nextGaussian() * 0.3;
 			ipy += rng.nextGaussian() * 0.3;
 			ipz += rng.nextGaussian() * 0.3;
-			if (rng.nextInt(5)<2) {
+			if (rng.nextInt(4)==0) {
 				entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, ipx, ipy, ipz, 0, 0, 0);
 			} else {
 				Bewitchment.proxy.spawnParticle(ParticleF.BAT, ipx, ipy, ipz, 0, 0, 0);
