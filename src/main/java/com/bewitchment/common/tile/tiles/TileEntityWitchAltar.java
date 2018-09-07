@@ -82,8 +82,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		maxPower = map.values().stream().mapToInt(i -> i).sum();
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
-		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/plate, 2=vase
-		boolean[] typesMult = new boolean[3]; //Types of modifiers. 0=skull, 1=goblet, 2=plate
+		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/candle, 2=vase/gemBowl
+		boolean[] typesMult = new boolean[2]; //Types of modifiers. 0=skull, 1=goblet
 		for (int dx = -1; dx <= 1; dx++)
 			for (int dz = -1; dz <= 1; dz++) {
 				BlockPos ps = getPos().add(dx, 0, dz);
@@ -126,21 +126,23 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			if (blockState.getBlock().hasTileEntity(blockState)) {
 				TileEntityFlowerPot tefp = (TileEntityFlowerPot) world.getTileEntity(pos);
 				if (!tefp.getFlowerItemStack().isEmpty()) {
-					if (types[2]) return 0;
+					if (types[2]) {
+						return 0;
+					}
 					types[2] = true;
 					return 1;
 				}
 			}
 		} else if (blockState.getBlock() instanceof BlockGemBowl) {
+			if (types[2]) {
+				return 0;
+			}
+			types[2] = true;
 			return ((TileEntityGemBowl) world.getTileEntity(pos)).getGain();
 		} else if (blockState.getBlock() instanceof BlockCandle) {
 			if (types[1]) return 0;
 			types[1] = true;
 			return 2;
-			// } else if (blockState.getBlock().equals(ModBlocks.ritual_candle)) {
-			// if (types[1]) return 0;
-			// types[1]=true;
-			// return 2;
 		}
 		return 0;
 	}
@@ -165,8 +167,6 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				default:
 					return 0;
 			}
-		} else if (blockState.getBlock() instanceof BlockGemBowl) {
-			return ((TileEntityGemBowl) world.getTileEntity(pos)).getMultiplier();
 		} else if (blockState.getBlock().equals(ModBlocks.goblet)) {
 			if (typesMult[1])
 				return 0;
@@ -235,13 +235,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		color = tag.getInteger("color");
-		storage.loadFromNBT(tag.getCompoundTag("mp"));
+//		storage.loadFromNBT(tag.getCompoundTag("mp"));
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("color", color);
-		tag.setTag("mp", storage.saveNBTTag());
+//		tag.setTag("mp", storage.saveNBTTag());
 	}
 
 	@Override
