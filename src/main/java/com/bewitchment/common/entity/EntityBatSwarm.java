@@ -1,5 +1,8 @@
 package com.bewitchment.common.entity;
 
+import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.common.Bewitchment;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,6 +48,14 @@ public class EntityBatSwarm extends Entity {
 		if (this.getPassengers().isEmpty()) {
 			this.setDead();
 		}
+	}
+	
+	@Override
+	public void setDead() {
+		for (int i=0;i<30;i++) {
+			Bewitchment.proxy.spawnParticle(ParticleF.BAT, this.posX+rand.nextGaussian(), posY+rand.nextGaussian(), posZ+rand.nextGaussian(), 0, 0, 0, 1);
+		}
+		super.setDead();
 	}
 
 	@Override
