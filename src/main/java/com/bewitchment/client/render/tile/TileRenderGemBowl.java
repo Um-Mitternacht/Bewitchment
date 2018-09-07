@@ -24,10 +24,15 @@ public class TileRenderGemBowl extends TileEntitySpecialRenderer<TileEntityGemBo
 			RenderHelper.enableStandardItemLighting();
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 			GlStateManager.pushMatrix();
-			GlStateManager.translate(x + 0.5, y + 0.25, z + 0.5);
+			GlStateManager.translate(x + 0.5, y + 0.27, z + 0.5);
 			if (te.getDirection() == EnumFacing.EAST || te.getDirection() == EnumFacing.WEST) {
 				GlStateManager.rotate(90, 0, 1, 0);
 			}
+			GlStateManager.translate(0, -0.125, 0);
+			GlStateManager.rotate(90, 1, 0, 0);
+			GlStateManager.translate(0, -0.100, 0);
+			GlStateManager.scale(0.8, 0.8, 0.8);
+			
 			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
 			model = ForgeHooksClient.handleCameraTransforms(model, ItemCameraTransforms.TransformType.GROUND, false);
 
