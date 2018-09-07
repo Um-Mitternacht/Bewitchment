@@ -134,7 +134,7 @@ public abstract class BlockCandle extends BlockMod {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return isLit ? 5 + getType() * 5 : 0;
+		return isLit ? 9 + getType() * 5 : 0;
 	}
 
 	@Override
