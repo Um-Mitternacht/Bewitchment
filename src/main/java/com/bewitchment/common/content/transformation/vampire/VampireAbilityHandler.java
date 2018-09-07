@@ -249,7 +249,7 @@ public class VampireAbilityHandler {
 		if (evt.phase == Phase.START && !evt.player.world.isRemote && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
 			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
-				if (BewitchmentAPI.getAPI().addVampireBlood(evt.player, -2)) {
+				if (evt.player.isCreative() || BewitchmentAPI.getAPI().addVampireBlood(evt.player, -2)) {
 					evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 				} else {
 					evt.player.sendStatusMessage(new TextComponentTranslation("vampire.nightvision.low_blood"), true);
