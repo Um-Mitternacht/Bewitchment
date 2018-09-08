@@ -82,14 +82,18 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
-		if (lit && !player.isSneaking()) {
-			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(100)) {
+		if (player.isSneaking()) {
+			return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+		}
+		
+		if (lit) {
+			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) {
 				world.setBlockState(pos.offset(side), ModBlocks.will_o_wisp.getDefaultState(), 3);
 				return EnumActionResult.SUCCESS;
 			}
 		}
 
-		return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+		return EnumActionResult.FAIL;
 	}
 
 }
