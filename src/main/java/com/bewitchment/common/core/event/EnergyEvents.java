@@ -52,11 +52,17 @@ public class EnergyEvents {
 
 	private static int getRegenTime(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
+		if (player.isCreative()) {
+			return 1;
+		}
 		return 10;
 	}
 
 	private static int getRegenBurst(EntityPlayerMP player) {
 		// TODO Auto-generated method stub
+		if (player.isCreative()) {
+			return 100;
+		}
 		return 10;
 	}
 }
