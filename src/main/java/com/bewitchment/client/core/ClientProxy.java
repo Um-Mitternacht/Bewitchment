@@ -8,11 +8,27 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.core.event.*;
+import com.bewitchment.client.core.event.BloodViewerHUD;
+import com.bewitchment.client.core.event.EnergyHUD;
+import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
+import com.bewitchment.client.core.event.GirdleOfTheWoodedHUD;
+import com.bewitchment.client.core.event.MimicEventHandler;
+import com.bewitchment.client.core.event.RenderingHacks;
+import com.bewitchment.client.core.event.VampireBloodBarHUD;
+import com.bewitchment.client.core.event.WerewolfEventHandler;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
-import com.bewitchment.client.handler.*;
-import com.bewitchment.client.render.entity.renderer.*;
+import com.bewitchment.client.handler.ColorPropertyHandler;
+import com.bewitchment.client.handler.ItemCandleColorHandler;
+import com.bewitchment.client.handler.Keybinds;
+import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.client.render.entity.renderer.EmptyRenderer;
+import com.bewitchment.client.render.entity.renderer.RenderBatSwarm;
+import com.bewitchment.client.render.entity.renderer.RenderBrewArrow;
+import com.bewitchment.client.render.entity.renderer.RenderBrewBottle;
+import com.bewitchment.client.render.entity.renderer.RenderBroom;
+import com.bewitchment.client.render.entity.renderer.RenderOwl;
+import com.bewitchment.client.render.entity.renderer.SpellRenderer;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.common.Bewitchment;
@@ -20,10 +36,15 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
-import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
-import com.bewitchment.common.entity.*;
+import com.bewitchment.common.entity.EntityAoE;
+import com.bewitchment.common.entity.EntityBatSwarm;
+import com.bewitchment.common.entity.EntityBrew;
+import com.bewitchment.common.entity.EntityBrewArrow;
+import com.bewitchment.common.entity.EntityFlyingBroom;
+import com.bewitchment.common.entity.EntityLingeringBrew;
+import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
@@ -34,7 +55,10 @@ import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.renderer.color.*;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -91,7 +115,6 @@ public class ClientProxy implements ISidedProxy {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		setupHealthRenderer(ConfigHandler.CLIENT.overrideHealth);
 		Keybinds.registerKeys();
 		BlockColors blocks = Minecraft.getMinecraft().getBlockColors();
 		// Block Colors
@@ -247,11 +270,6 @@ public class ClientProxy implements ISidedProxy {
 		IBlockState ibs = mc.world.getBlockState(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ));
 		boolean res = (ibs.getBlock() == ModBlocks.witchfire && ibs.getValue(BlockWitchFire.TYPE) == BlockWitchFire.EnumFireType.ENDFIRE);
 		return res;
-	}
-
-	@Override
-	public void setupHealthRenderer(boolean overrideHealth) {
-		HealthDisplayOverride.set(overrideHealth);
 	}
 
 	@Override

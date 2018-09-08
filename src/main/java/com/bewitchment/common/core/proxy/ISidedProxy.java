@@ -33,7 +33,5 @@ public interface ISidedProxy {
 
 	boolean isPlayerInEndFire();
 
-	void setupHealthRenderer(boolean overrideHealth);
-
 	void stopMimicking(EntityPlayer p);
 }
