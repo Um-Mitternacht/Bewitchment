@@ -85,7 +85,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 		if (player.isSneaking()) {
 			return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
 		}
-		
+
 		if (lit) {
 			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) {
 				world.setBlockState(pos.offset(side), ModBlocks.will_o_wisp.getDefaultState(), 3);

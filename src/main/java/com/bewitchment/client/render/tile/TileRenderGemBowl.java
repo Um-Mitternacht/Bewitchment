@@ -32,7 +32,7 @@ public class TileRenderGemBowl extends TileEntitySpecialRenderer<TileEntityGemBo
 			GlStateManager.rotate(90, 1, 0, 0);
 			GlStateManager.translate(0, -0.100, 0);
 			GlStateManager.scale(0.8, 0.8, 0.8);
-			
+
 			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
 			model = ForgeHooksClient.handleCameraTransforms(model, ItemCameraTransforms.TransformType.GROUND, false);
 

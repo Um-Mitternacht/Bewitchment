@@ -95,7 +95,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		maxPower *= multiplier;
 		storage.setMaxAmount(maxPower);
 	}
-	
+
 	public int getCurrentGain() {
 		return gain;
 	}

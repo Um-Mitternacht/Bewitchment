@@ -1,10 +1,5 @@
 package com.bewitchment.common.block.magic;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
-import java.util.function.Supplier;
-
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
@@ -15,12 +10,7 @@ import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockGravel;
-import net.minecraft.block.BlockSand;
-import net.minecraft.block.BlockStone;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -43,6 +33,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Random;
+import java.util.function.Supplier;
 
 public class BlockWitchFire extends BlockMod {
 

@@ -1,7 +1,6 @@
 package com.bewitchment.client;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 
 /**

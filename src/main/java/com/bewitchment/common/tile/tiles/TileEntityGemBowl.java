@@ -1,10 +1,7 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.HashMap;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,9 +16,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.HashMap;
+
 public class TileEntityGemBowl extends ModTileEntity {
-	
+
 	private static final HashMap<String, Integer> gainMap = new HashMap<>();
+	private static final String GEM_TAG_NAME = "gem";
+	private static final String DIRECTION_TAG_NAME = "facing";
+
 	static {
 		gainMap.put("gemDiamond", 2);
 		gainMap.put("gemEmerald", 2);
@@ -97,9 +99,6 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemGarnetYellow", 1);
 		gainMap.put("gemMonazite", 1);
 	}
-
-	private static final String GEM_TAG_NAME = "gem";
-	private static final String DIRECTION_TAG_NAME = "facing";
 
 	private ItemStack gem;
 	private EnumFacing direction;

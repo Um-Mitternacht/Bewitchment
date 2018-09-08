@@ -256,7 +256,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
 					IMagicPowerContainer magicPoints = tea.getCapability(IMagicPowerContainer.CAPABILITY, null);
-					playerIn.sendStatusMessage(new TextComponentString(magicPoints.getAmount() + "/" + magicPoints.getMaxAmount() + " (x"+tea.getCurrentGain()+")"), true);
+					playerIn.sendStatusMessage(new TextComponentString(magicPoints.getAmount() + "/" + magicPoints.getMaxAmount() + " (x" + tea.getCurrentGain() + ")"), true);
 					return true;
 				} else if (state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {
 					for (EnumFacing h : EnumFacing.HORIZONTALS) {

@@ -69,7 +69,7 @@ public class TileRenderCauldron extends TileEntitySpecialRenderer<TileEntityCaul
 			GlStateManager.popMatrix();
 		}
 
-		if (te.getName() != null && Minecraft.getMinecraft().objectMouseOver!=null && te.getPos().equals(Minecraft.getMinecraft().objectMouseOver.getBlockPos())) {
+		if (te.getName() != null && Minecraft.getMinecraft().objectMouseOver != null && te.getPos().equals(Minecraft.getMinecraft().objectMouseOver.getBlockPos())) {
 			drawNameplate(te, te.getName(), x, y, z, 5);
 		}
 	}
