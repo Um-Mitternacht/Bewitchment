@@ -53,6 +53,11 @@ public class BlockBarrel extends BlockModTileEntity {
 	}
 
 	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
+	}
+
+	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(FACING).getHorizontalIndex();
 	}

@@ -24,6 +24,7 @@ import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -59,6 +60,11 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 		if (this.getBlockState().getBlock() == ModBlocks.leaves_elder && worldIn.rand.nextInt(chance) == 0) {
 			spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE)); // TODO drop of one of the extra fruits for one of the trees
 		}
+	}
+
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
 	}
 
 	@SuppressWarnings("deprecation")

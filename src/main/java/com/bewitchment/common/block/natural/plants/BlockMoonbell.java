@@ -45,6 +45,11 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 		validBiomesMoonBell.add(b);
 	}
 
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
+	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {

@@ -249,6 +249,11 @@ public class BlockModSapling extends BlockBush implements IGrowable, IModelRegis
 	}
 
 	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
+	}
+
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return SAPLING_AABB;
 	}
