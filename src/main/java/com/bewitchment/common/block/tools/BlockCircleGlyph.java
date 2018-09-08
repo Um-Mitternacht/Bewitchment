@@ -1,10 +1,16 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -27,15 +33,12 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 
@@ -77,7 +80,15 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		//Dont change the actual bounding box to the offset, as that's only a visual thing.
+		//This is used on the server
 		return FLAT_AABB;
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		return super.getOffset(state, worldIn, pos).scale(ConfigHandler.CLIENT.glyphImprecision);
 	}
 
 	@Override
@@ -226,6 +237,11 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@Override
 	public void registerModel() {// No associated item
 
+	}
+	
+	@Override
+	public EnumOffsetType getOffsetType() {
+		return EnumOffsetType.XZ;
 	}
 
 

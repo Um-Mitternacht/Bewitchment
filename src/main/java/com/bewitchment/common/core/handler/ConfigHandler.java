@@ -194,6 +194,9 @@ public final class ConfigHandler {
 		public boolean showArrowsInBar = true;
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
+		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
+		@Config.RangeDouble(min = 0d, max = 1d)
+		public double glyphImprecision = 0.6d;
 
 		public static class BrewHUD {
 			@Comment("Should the brew HUD be hidden?")
