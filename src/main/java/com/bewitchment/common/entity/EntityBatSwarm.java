@@ -6,7 +6,9 @@ import com.bewitchment.common.Bewitchment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class EntityBatSwarm extends Entity {
@@ -40,6 +42,9 @@ public class EntityBatSwarm extends Entity {
 	@Override
 	public void onEntityUpdate() {
 		super.onEntityUpdate();
+		if (this.rand.nextInt(7)==0) {
+			this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_LOOP, SoundCategory.PLAYERS, 0.8f, 0.8f + 0.4f*rand.nextFloat());
+		}
 		this.move(MoverType.SELF, this.getLookVec().x, this.getLookVec().y, this.getLookVec().z);
 		if (this.collided || this.ticksExisted > 60) {
 			this.getPassengers().forEach(e -> e.dismountRidingEntity());
@@ -55,6 +60,8 @@ public class EntityBatSwarm extends Entity {
 		for (int i=0;i<30;i++) {
 			Bewitchment.proxy.spawnParticle(ParticleF.BAT, this.posX+rand.nextGaussian(), posY+rand.nextGaussian(), posZ+rand.nextGaussian(), 0, 0, 0, 1);
 		}
+		this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_AMBIENT, SoundCategory.PLAYERS, 1f, 0.8f+0.4f*rand.nextFloat());
+		this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.PLAYERS, 1f, 0.8f+0.4f*rand.nextFloat());
 		super.setDead();
 	}
 
