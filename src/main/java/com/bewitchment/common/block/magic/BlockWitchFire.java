@@ -1,15 +1,26 @@
 package com.bewitchment.common.block.magic;
 
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Random;
+import java.util.function.Supplier;
+
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.core.helper.CachedSupplier;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
-import net.minecraft.block.*;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
+import net.minecraft.block.BlockGravel;
+import net.minecraft.block.BlockSand;
+import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -32,10 +43,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
 
 public class BlockWitchFire extends BlockMod {
 
@@ -208,18 +215,18 @@ public class BlockWitchFire extends BlockMod {
 
 	public static enum EnumFireType implements IStringSerializable {
 
-		NORMAL(11, 0xc032db, Ingredient.EMPTY), //
-		ENDFIRE(2, 0x0B4D42, Ingredient.fromItem(ModItems.dimensional_sand)), //
-		FROSTFIRE(7, 0xa4f8ff, Ingredient.fromItem(Items.SNOWBALL)), //
-		SIGHTFIRE(15, 0xFFD700, Ingredient.fromItem(Items.GLOWSTONE_DUST));
+		NORMAL(11, 0xc032db, () -> Ingredient.EMPTY), //
+		ENDFIRE(2, 0x0B4D42, () -> Ingredient.fromItem(ModItems.dimensional_sand)), //
+		FROSTFIRE(7, 0xa4f8ff, () -> Ingredient.fromItem(Items.SNOWBALL)), //
+		SIGHTFIRE(15, 0xFFD700, () -> Ingredient.fromItem(Items.GLOWSTONE_DUST));
 
 		private int light, color;
-		private Ingredient ingredient;
+		private CachedSupplier<Ingredient> ingredient;
 
-		EnumFireType(int lightValue, int color, Ingredient i) {
+		EnumFireType(int lightValue, int color, Supplier<Ingredient> supplier) {
 			light = lightValue;
 			this.color = color;
-			this.ingredient = i;
+			this.ingredient = new CachedSupplier<>(supplier);
 		}
 
 		public int getLight() {
@@ -231,7 +238,7 @@ public class BlockWitchFire extends BlockMod {
 		}
 
 		public boolean isIngredient(ItemStack stack) {
-			return ingredient.apply(stack);
+			return ingredient.get().apply(stack);
 		}
 
 		@Override
