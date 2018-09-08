@@ -1,9 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
 import net.minecraft.client.model.ModelBase;
-
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
