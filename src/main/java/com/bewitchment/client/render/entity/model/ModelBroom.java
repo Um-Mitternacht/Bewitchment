@@ -16,6 +16,7 @@ public class ModelBroom extends ModelBase {
 	public ModelRenderer twigs;
 	float time1;
 	float time2;
+
 	public ModelBroom() {
 		this.textureWidth = 64;
 		this.textureHeight = 32;
