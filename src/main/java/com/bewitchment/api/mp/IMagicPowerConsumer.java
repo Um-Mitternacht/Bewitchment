@@ -26,9 +26,9 @@ public interface IMagicPowerConsumer {
 	public NBTTagCompound writeToNbt();
 
 	public void readFromNbt(NBTTagCompound tag);
-	
+
 	default boolean drainPlayerFirst(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
-		if (caster!=null && caster.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount)) {
+		if (caster != null && caster.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount)) {
 			return true;
 		}
 		return drainAltarFirst(null, pos, dimension, amount);

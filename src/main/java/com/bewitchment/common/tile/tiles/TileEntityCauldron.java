@@ -277,7 +277,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			if (stack.getItem() == Items.FIREWORK_CHARGE) {
 				isCharge = true;
 				NBTTagCompound fireworks = new NBTTagCompound();
-				fireworks.setByte("Flight",(byte) 3);
+				fireworks.setByte("Flight", (byte) 3);
 				NBTTagList explosionList = new NBTTagList();
 				if (stack.getTagCompound() != null) {
 					explosionList.appendTag(stack.getTagCompound().getCompoundTag("Explosion"));
@@ -289,7 +289,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				stack.setTagCompound(fireworksBaseTag);
 
 			}
-			EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(world, pos.getX(), pos.getY(),pos.getZ(), stack);
+			EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 			if (isCharge) {
 				NBTTagCompound hackTag = new NBTTagCompound();
 				entityfireworkrocket.writeEntityToNBT(hackTag);

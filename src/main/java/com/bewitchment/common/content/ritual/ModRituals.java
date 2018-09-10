@@ -167,15 +167,14 @@ public class ModRituals {
 	}
 
 	public static void registerAll() {
-		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, 
-				draw_circle_large, draw_circle_medium, draw_circle_small, 
-				infusion_overworld, infusion_nether, infusion_end, infusion_dream, 
-				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, 
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither,
+				draw_circle_large, draw_circle_medium, draw_circle_small,
+				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
+				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway
-				
-				
-				
-				).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+
+
+		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
 
 	}
 
