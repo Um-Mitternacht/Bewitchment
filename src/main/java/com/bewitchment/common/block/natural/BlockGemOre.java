@@ -24,7 +24,7 @@ import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
  */
 public class BlockGemOre extends BlockMod {
 
-	//FIXME: Make me drop gems again, and fix my crooked meta
+	//FIXME: Make them drop gems upon being mined with a pick.
 	public static final PropertyEnum<Gem> GEM = PropertyEnum.create("gem", Gem.class);
 
 	public BlockGemOre() {

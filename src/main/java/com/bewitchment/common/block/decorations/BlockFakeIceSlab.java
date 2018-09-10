@@ -26,6 +26,8 @@ import java.util.Random;
  */
 public abstract class BlockFakeIceSlab extends BlockSlab {
 
+	//FIXME: Make these less screwy.
+
 	public BlockFakeIceSlab(String unlocalizedName) {
 		super(Material.ICE);
 		setResistance(2F);
