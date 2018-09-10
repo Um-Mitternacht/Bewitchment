@@ -10,6 +10,7 @@ import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -19,6 +20,7 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
@@ -267,11 +269,26 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	private void handleExplosivesInLava(ItemStack stack) {
 		if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
-			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 1, true); // FIXME
+			world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, true);
 		} else if (stack.getItem() == Item.getItemFromBlock(Blocks.TNT)) {
-			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 3, true); // FIXME I have no idea why it's not working tbh...
+			world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, true);
 		} else if (stack.getItem() == Items.FIREWORKS || stack.getItem() == Items.FIREWORK_CHARGE) {
-			world.createExplosion(null, pos.getX() + 0.5, pos.getX() + 0.5, pos.getX() + 0.5, 3, true); // FIXME + TODO Make firework go off
+			world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, true);
+			if(stack.getItem() == Items.FIREWORK_CHARGE) {
+				NBTTagCompound fireworks = new NBTTagCompound();
+				fireworks.setByte("Flight",(byte) 3);
+				NBTTagList explosionList = new NBTTagList();
+				if(stack.getTagCompound() != null)
+					explosionList.appendTag(stack.getTagCompound().getCompoundTag("Explosion"));
+				fireworks.setTag("Explosions", explosionList);
+				stack = new ItemStack(Items.FIREWORKS);
+				NBTTagCompound fireworksBaseTag = new NBTTagCompound();
+				fireworksBaseTag.setTag("Fireworks", fireworks);
+				stack.setTagCompound(fireworksBaseTag);
+
+			}
+			EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(world, pos.getX(), pos.getY(),pos.getZ(), stack);
+			world.spawnEntity(entityfireworkrocket);
 		}
 	}
 
