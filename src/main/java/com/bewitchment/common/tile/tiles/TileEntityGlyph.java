@@ -153,7 +153,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				effPos = runningPos;
 			}
 
-			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
+			boolean hasPowerToUpdate = altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
 			if (hasPowerToUpdate) {
 				cooldown++;
 				markDirty();
@@ -200,7 +200,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
 
-					if (altarTracker.drain(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
+					if (altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
 						this.ritualData = new NBTTagCompound();

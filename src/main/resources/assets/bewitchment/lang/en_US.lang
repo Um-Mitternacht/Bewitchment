@@ -719,6 +719,7 @@ ritual.bewitchment.cypress_broom.name=Riual of the Rising Twigs
 ritual.bewitchment.yew_broom.name=Riual of the Rising Twigs
 ritual.bewitchment.elder_broom.name=Riual of the Rising Twigs
 ritual.bewitchment.juniper_broom.name=Riual of the Rising Twigs
+ritual.bewitchment.gateway.name=Ritual of the Gates
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong

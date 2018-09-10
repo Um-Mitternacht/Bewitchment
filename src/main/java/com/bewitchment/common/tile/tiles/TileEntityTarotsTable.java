@@ -33,7 +33,7 @@ public class TileEntityTarotsTable extends ModTileEntity {
 
 	public void read(@Nonnull ItemStack tarotDeck, @Nonnull EntityPlayer reader) {
 		if (!reader.world.isRemote) {
-			if (checkDeck(tarotDeck) && altarTracker.drain(reader, pos, world.provider.getDimension(), READ_COST)) {
+			if (checkDeck(tarotDeck) && altarTracker.drainAltarFirst(reader, pos, world.provider.getDimension(), READ_COST)) {
 				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
 				NetworkHandler.HANDLER.sendTo(new TarotMessage(reader), (EntityPlayerMP) reader);
 			} else {
