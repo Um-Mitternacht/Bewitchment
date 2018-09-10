@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -220,6 +221,8 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;
 						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, effPos, 1);
+						//TODO get a better sound
+						world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 0.7f, 0.7f);
 						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name"), true);
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
