@@ -273,13 +273,15 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		} else if (stack.getItem() == Item.getItemFromBlock(Blocks.TNT)) {
 			world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, true);
 		} else if (stack.getItem() == Items.FIREWORKS || stack.getItem() == Items.FIREWORK_CHARGE) {
-			world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, true);
-			if(stack.getItem() == Items.FIREWORK_CHARGE) {
+			boolean isCharge = false;
+			if (stack.getItem() == Items.FIREWORK_CHARGE) {
+				isCharge = true;
 				NBTTagCompound fireworks = new NBTTagCompound();
 				fireworks.setByte("Flight",(byte) 3);
 				NBTTagList explosionList = new NBTTagList();
-				if(stack.getTagCompound() != null)
+				if (stack.getTagCompound() != null) {
 					explosionList.appendTag(stack.getTagCompound().getCompoundTag("Explosion"));
+				}
 				fireworks.setTag("Explosions", explosionList);
 				stack = new ItemStack(Items.FIREWORKS);
 				NBTTagCompound fireworksBaseTag = new NBTTagCompound();
@@ -288,6 +290,12 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 			}
 			EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(world, pos.getX(), pos.getY(),pos.getZ(), stack);
+			if (isCharge) {
+				NBTTagCompound hackTag = new NBTTagCompound();
+				entityfireworkrocket.writeEntityToNBT(hackTag);
+				hackTag.setInteger("LifeTime", 2);
+				entityfireworkrocket.readEntityFromNBT(hackTag);
+			}
 			world.spawnEntity(entityfireworkrocket);
 		}
 	}
