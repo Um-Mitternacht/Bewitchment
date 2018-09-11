@@ -5,6 +5,8 @@ package com.bewitchment.common.block.decorations;
  */
 public class BlockFakeIceSlabDouble extends BlockFakeIceSlab {
 
+	//FIXME: Make these less screwy.
+
 	public BlockFakeIceSlabDouble(String unlocalizedName) {
 		super(unlocalizedName);
 	}

@@ -21,10 +21,17 @@ public interface IMagicPowerConsumer {
 	@CapabilityInject(IMagicPowerConsumer.class)
 	public static final Capability<IMagicPowerConsumer> CAPABILITY = null;
 
-	public boolean drain(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount);
+	public boolean drainAltarFirst(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount);
 
 	public NBTTagCompound writeToNbt();
 
 	public void readFromNbt(NBTTagCompound tag);
+
+	default boolean drainPlayerFirst(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
+		if (caster != null && caster.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(amount)) {
+			return true;
+		}
+		return drainAltarFirst(null, pos, dimension, amount);
+	}
 
 }

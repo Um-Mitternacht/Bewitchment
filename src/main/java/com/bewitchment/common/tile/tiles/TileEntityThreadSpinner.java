@@ -101,7 +101,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (loadedRecipe == null || !loadedRecipe.matches(list)) {
 			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
-		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && altarTracker.drain(null, pos, world.provider.getDimension(), POWER_PER_TICK);
+		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && altarTracker.drainAltarFirst(null, pos, world.provider.getDimension(), POWER_PER_TICK);
 	}
 
 	@SuppressWarnings("ConstantConditions")

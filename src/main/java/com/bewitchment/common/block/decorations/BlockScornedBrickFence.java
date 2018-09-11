@@ -36,6 +36,8 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 public class BlockScornedBrickFence extends BlockMod {
 
+	//FIXME: Make these less screwy.
+
 	/**
 	 * Whether this fence connects in the northern direction
 	 */

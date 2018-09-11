@@ -24,6 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("deprecation")
 public class BlockScornedBrickStairs extends BlockStairs implements IModelRegister {
 
+	//FIXME: Make these less screwy.
+
 	public BlockScornedBrickStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
 		setUnlocalizedName(LibBlockName.SCORNED_BRICK_STAIRS);

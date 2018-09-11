@@ -147,7 +147,7 @@ public final class ModBlocks {
 			registry.register((Block) fluidBlock);
 		}
 		//Crops
-		//Todo: Make the resst flammable.
+		//Todo: Make the rest flammable.
 		registry.registerAll(
 				new BlockCrop(LibBlockName.CROP_ACONITUM),
 				new BlockCrop(LibBlockName.CROP_ASPHODEL),

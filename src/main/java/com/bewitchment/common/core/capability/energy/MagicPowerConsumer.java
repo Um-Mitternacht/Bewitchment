@@ -25,7 +25,7 @@ public class MagicPowerConsumer implements IMagicPowerConsumer {
 	}
 
 	@Override
-	public boolean drain(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
+	public boolean drainAltarFirst(@Nullable EntityPlayer caster, @Nonnull BlockPos pos, int dimension, int amount) {
 		if (amount == 0) {
 			return true;
 		}

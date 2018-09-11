@@ -10,6 +10,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockFakeIceSlabHalf extends BlockFakeIceSlab implements IModelRegister {
 
+	//FIXME: Make these less screwy.
+
 	public BlockFakeIceSlabHalf(String unlocalizedName) {
 		super(unlocalizedName);
 	}

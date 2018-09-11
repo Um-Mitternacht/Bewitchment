@@ -32,7 +32,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 	}
 
 	public boolean fortune(EntityPlayer reader) {
-		if (getCapability(IMagicPowerConsumer.CAPABILITY, null).drain(reader, getPos(), world.provider.getDimension(), 5000)) {
+		if (getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(reader, getPos(), world.provider.getDimension(), 5000)) {
 			return readFortune(reader, null);
 		}
 		reader.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.no_power"), true);

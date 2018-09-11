@@ -26,7 +26,7 @@ public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway;
 
 	public static void init() {
 
@@ -147,6 +147,7 @@ public class ModRituals {
 				100,
 				0,
 				TileEntityGlyph.big);
+		gateway = new RitualGateway(rl("gateway"), of(Ingredient.fromItem(ModItems.location_stone)), ofs(), -1, circles(ENDER, NORMAL, ENDER), 4000, 8);
 
 		ResourceLocation infusions = new ResourceLocation(LibMod.MOD_ID, "infusion");
 		infusion_overworld = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.petrichor_odour.ordinal()))), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, DefaultInfusions.OVERWORLD);
@@ -166,7 +167,14 @@ public class ModRituals {
 	}
 
 	public static void registerAll() {
-		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_large, draw_circle_medium, draw_circle_small, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
+		Arrays.asList(night, fast_day, glowing, spawn_witch, spawn_wither,
+				draw_circle_large, draw_circle_medium, draw_circle_small,
+				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
+				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
+				juniper_broom, yew_broom, cypress_broom, gateway
+
+
+		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
 
 	}
 

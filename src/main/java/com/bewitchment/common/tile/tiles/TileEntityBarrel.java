@@ -113,7 +113,7 @@ public class TileEntityBarrel extends ModTileEntity implements ITickable {
 		if (hasRecipe()) {
 			BarrelRecipe currentRecipe = getRecipe();
 			if (powerAbsorbed < currentRecipe.getPower()) {
-				if (altarTracker.drain(null, getPos(), world.provider.getDimension(), 1)) {
+				if (altarTracker.drainAltarFirst(null, getPos(), world.provider.getDimension(), 1)) {
 					powerAbsorbed++;
 					markDirty();
 					return;

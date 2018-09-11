@@ -25,6 +25,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("deprecation")
 public class BlockFakeIceStairs extends BlockStairs implements IModelRegister {
 
+	//FIXME: Make these less screwy.
+
 	public BlockFakeIceStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
 		setUnlocalizedName(LibBlockName.FAKE_ICE_STAIRS);

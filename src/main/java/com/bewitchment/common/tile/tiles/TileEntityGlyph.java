@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -153,7 +154,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				effPos = runningPos;
 			}
 
-			boolean hasPowerToUpdate = altarTracker.drain(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
+			boolean hasPowerToUpdate = altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (ritual.getRunningPower() * powerDrainMult));
 			if (hasPowerToUpdate) {
 				cooldown++;
 				markDirty();
@@ -200,7 +201,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
 
-					if (altarTracker.drain(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
+					if (altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
 						// The following block saves all the item used in the input inside the nbt
 						// vvvvvv
 						this.ritualData = new NBTTagCompound();
@@ -220,6 +221,8 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 						this.entityPlayer = player.getPersistentID();
 						this.cooldown = 1;
 						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, effPos, 1);
+						//TODO get a better sound
+						world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 0.7f, 0.7f);
 						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name"), true);
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
