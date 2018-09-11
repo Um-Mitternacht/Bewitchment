@@ -147,7 +147,7 @@ public final class ModBlocks {
 			registry.register((Block) fluidBlock);
 		}
 		//Crops
-		//Todo: Make the rest flammable.
+		//Todo: Make the rest of the crops flammable.
 		registry.registerAll(
 				new BlockCrop(LibBlockName.CROP_ACONITUM),
 				new BlockCrop(LibBlockName.CROP_ASPHODEL),
@@ -214,6 +214,7 @@ public final class ModBlocks {
 				new BlockPurifyingEarth()
 		);
 		//Normal Blocks
+		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
 		registry.registerAll(
 				new BlockMod(LibBlockName.MOLDAVITE_BLOCK, Material.ROCK).setSound(SoundType.GLASS).setHardness(5.0F),
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
