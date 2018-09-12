@@ -138,6 +138,7 @@ public class EntityOwl extends EntityFamiliar {
 	}
 
 	//Fixme: Instructions unclear, owl won't hoot.
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
