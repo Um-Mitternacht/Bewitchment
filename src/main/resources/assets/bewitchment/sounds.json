@@ -26,5 +26,11 @@
       "bewitchment:broom_sweep"
     ],
     "subtitle": "bewitchment.subtitle.broom_sweep"
+  },
+  "owl_hoot": {
+    "sounds": [
+      "bewitchment:owl_hoot"
+    ],
+    "subtitle": "bewitchment.subtitle.owl_hoot"
   }
 }
