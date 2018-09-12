@@ -32,6 +32,8 @@ public final class ModSounds {
 	public static final SoundEvent CHALK_SCRIBBLE = createSoundEvent("chalk_scribble");
 	@GameRegistry.ObjectHolder("broom_sweep")
 	public static final SoundEvent BROOM_SWEEP = createSoundEvent("broom_sweep");
+	@GameRegistry.ObjectHolder("owl_hoot")
+	public static final SoundEvent OWL_HOOT = createSoundEvent("owl_hoot");
 
 	private ModSounds() {
 	}
@@ -56,7 +58,9 @@ public final class ModSounds {
 					BOIL,
 					BUBBLE,
 					OVEN_OPEN,
-					CHALK_SCRIBBLE
+					CHALK_SCRIBBLE,
+					BROOM_SWEEP,
+					OWL_HOOT
 			);
 		}
 	}

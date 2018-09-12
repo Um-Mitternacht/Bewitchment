@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
+import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -22,6 +23,7 @@ import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -133,6 +135,11 @@ public class EntityOwl extends EntityFamiliar {
 
 	@Override
 	public void fall(float distance, float damageMultiplier) {
+	}
+
+	//Fixme: Instructions unclear, owl won't hoot.
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.OWL_HOOT;
 	}
 
 	@Override
