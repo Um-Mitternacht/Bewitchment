@@ -140,7 +140,7 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.equine_tail), new AspectList().add(Aspect.BEAST, 4).add(Aspect.AIR, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.silver_scales), new AspectList().add(Aspect.BEAST, 4).add(Aspect.METAL, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.carnivorous_tooth), new AspectList().add(Aspect.BEAST, 4).add(Aspect.AVERSION, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.envenomed_fang), new AspectList().add(Aspect.BEAST, 4).add(Aspect.ALCHEMY, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.wool_of_bat), new AspectList().add(Aspect.BEAST, 4).add(Aspect.AIR, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.diabolic_vein), new AspectList().add(Aspect.CRAFT, 4).add(DEMON, 4));
@@ -176,6 +176,7 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.owlets_wing), new AspectList().add(Aspect.BEAST, 3).add(Aspect.AIR, 2).add(MOON, 2));
 		evt.register.registerObjectTag(new ItemStack(ModItems.ravens_feather), new AspectList().add(Aspect.BEAST, 3).add(Aspect.AIR, 2).add(Aspect.DARKNESS, 2));
 		evt.register.registerObjectTag(new ItemStack(ModItems.graveyard_dust), new AspectList().add(Aspect.DEATH, 3).add(Aspect.SOUL, 2).add(MOON, 2));
+		evt.register.registerObjectTag(new ItemStack(ModItems.grilled_watermelon), new AspectList().add(Aspect.LIFE, 3).add(Aspect.DESIRE, 3));
 
 		//Fumes
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume), new AspectList().add(Aspect.EARTH, 11).add(Aspect.WATER, 11));
@@ -195,6 +196,10 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 14), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 10));
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 15), new AspectList().add(Aspect.EARTH, 10).add(Aspect.WATER, 5).add(Aspect.SENSES, 5));
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume, 1, 16), new AspectList().add(Aspect.EARTH, 5).add(Aspect.WATER, 10).add(Aspect.AIR, 5));
+
+		//Todo: Make spells choose their aspects based on NBT Data.
+		//Spells
+		evt.register.registerObjectTag(new ItemStack(ModItems.spell_page, 1, 0), new AspectList().add(Aspect.MAGIC, 6).add(Aspect.TOOL, 6).add(STAR, 6));
 
 		// Blocks
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
