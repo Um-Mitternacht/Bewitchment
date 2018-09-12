@@ -68,7 +68,6 @@ public final class LibItemName {
 	public static final String HORSESHOE = "horseshoe";
 	public static final String TRISKELION_AMULET = "triskelion_amulet";
 	public static final String HELLISH_BAUBLE = "hellish_bauble";
-	public static final String THORNY_GARMENT = "thorny_garment";
 
 	//Misc
 	public static final String BREW_PHIAL_DRINK = "brew_phial_drink";
@@ -144,7 +143,6 @@ public final class LibItemName {
 	public static final String DIABOLIC_VEIN = "diabolic_vein";
 	public static final String PURE_FILAMENT = "pure_filament";
 	public static final String SOUL_STRING = "soul_string";
-	///public static final String SPANISH_MOSS_STUFFING = "spanish_moss_stuffing";
 	public static final String COLD_IRON_NUGGET = "cold_iron_nugget";
 	public static final String COLD_IRON_DUST = "cold_iron_dust";
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";

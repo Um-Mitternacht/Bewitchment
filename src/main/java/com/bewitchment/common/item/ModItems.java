@@ -141,7 +141,6 @@ public final class ModItems {
 	public static final Item diabolic_vein = null;
 	public static final Item pure_filament = null;
 	public static final Item soul_string = null;
-	public static final Item spanish_moss_stuffing = null;
 	public static final Item graveyard_dust = null;
 
 	public static final Item cold_iron_dust_small = null;
@@ -247,7 +246,6 @@ public final class ModItems {
 				new ItemMod(LibItemName.DIABOLIC_VEIN),
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
-				///new ItemMod(LibItemName.SPANISH_MOSS_STUFFING),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),

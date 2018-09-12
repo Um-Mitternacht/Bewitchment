@@ -20,7 +20,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-
 import java.util.Random;
 
 import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
@@ -67,12 +66,15 @@ public class BlockGemOre extends BlockMod {
 			items.add(new ItemStack(this, 1, i));
 		}
 	}
+
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) { return ModItems.gem; }
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return ModItems.gem;
+	}
 
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped((IBlockState)this.getBlockState().getValidStates().iterator().next(), random, fortune)) {
+		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped((IBlockState) this.getBlockState().getValidStates().iterator().next(), random, fortune)) {
 			int i = random.nextInt(fortune + 2) - 1;
 			if (i < 0) {
 				i = 0;
@@ -83,9 +85,10 @@ public class BlockGemOre extends BlockMod {
 			return this.quantityDropped(random);
 		}
 	}
+
 	@Override
 	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
-		Random rand = world instanceof World ? ((World)world).rand : new Random();
+		Random rand = world instanceof World ? ((World) world).rand : new Random();
 		return MathHelper.getInt(rand, 2, 5);
 	}
 
