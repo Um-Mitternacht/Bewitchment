@@ -77,6 +77,7 @@ public class ThaumcraftCompat {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@SubscribeEvent
 	public void aspectRegistrationEvent(AspectRegistryEvent evt) {
 		// Items
