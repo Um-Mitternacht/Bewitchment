@@ -183,11 +183,13 @@ public class BlockCauldron extends BlockModTileEntity {
 					}
 				}
 
-				if (tile.getMode() == Mode.CLEANING) {
-					double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
-					double py = pos.getY() + 0.5 + world.rand.nextGaussian();
-					double pz = pos.getZ() + 0.5 + world.rand.nextGaussian() * 0.5;
-					world.spawnParticle(EnumParticleTypes.SPELL_INSTANT, px, py, pz, 0, 0.1, 0);
+				for (int i=0;i<10;i++) {
+					if (tile.getMode() == Mode.CLEANING) {
+						double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
+						double py = pos.getY() + 0.5 + world.rand.nextGaussian();
+						double pz = pos.getZ() + 0.5 + world.rand.nextGaussian() * 0.5;
+						Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, px, py, pz, 0, 0.1, 0, tile.getColorRGB());
+					}
 				}
 			}
 

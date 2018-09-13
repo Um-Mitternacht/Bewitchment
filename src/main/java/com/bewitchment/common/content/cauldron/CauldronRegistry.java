@@ -61,8 +61,28 @@ public class CauldronRegistry {
 		BREW_INGREDIENT_REGISTRY.put(ingredient, effect);
 	}
 
-	public static void registerCauldronCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
-		CRAFTING_REGISTRY.add(new CauldronCraftingRecipe(fluid, output, ingredients));
+	public static void registerCauldronItemCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME/4, output, ingredients));
+	}
+	
+	public static void registerCauldronItemCrafting(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, fluidAmount, output, ingredients));
+	}
+	
+	public static void registerCauldronFluidCrafting(Fluid fluid, FluidStack output, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronFluidCraftingRecipe(fluid, Fluid.BUCKET_VOLUME, output, ingredients));
+	}
+	
+	public static void registerCauldronFluidCrafting(Fluid fluid, int exactFluidAmount, FluidStack output, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronFluidCraftingRecipe(fluid, exactFluidAmount, output, ingredients));
+	}
+	
+	public static void registerCauldronMixedCrafting(Fluid fluid, FluidStack fluidOutput, ItemStack itemOutput, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronMixedCraftingRecipe(fluid, Fluid.BUCKET_VOLUME, fluidOutput, itemOutput, ingredients));
+	}
+	
+	public static void registerCauldronMixedCrafting(Fluid fluid, int exactFluidAmount, FluidStack fluidOutput, ItemStack itemOutput, Ingredient... ingredients) {
+		CRAFTING_REGISTRY.add(new CauldronMixedCraftingRecipe(fluid, exactFluidAmount, fluidOutput, itemOutput, ingredients));
 	}
 
 	public static CauldronFoodValue getCauldronFoodValue(ItemStack stack) {
@@ -167,37 +187,38 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
 		//Todo: Support for more modded foods.
 
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET), noMeta(Items.LEATHER_HELMET));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE), noMeta(Items.LEATHER_CHESTPLATE));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS), noMeta(Items.LEATHER_LEGGINGS));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS), noMeta(Items.LEATHER_BOOTS));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.SHIELD), noMeta(Items.SHIELD));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET), noMeta(Items.LEATHER_HELMET));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE), noMeta(Items.LEATHER_CHESTPLATE));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS), noMeta(Items.LEATHER_LEGGINGS));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS), noMeta(Items.LEATHER_BOOTS));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.SHIELD), noMeta(Items.SHIELD));
 		// Miscellaneous water-based recipes
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Blocks.STICKY_PISTON, 1, 0), Ingredient.fromStacks(new ItemStack(Blocks.PISTON, 1, 0)));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Blocks.SPONGE, 1, 1), Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Blocks.STICKY_PISTON, 1, 0), Ingredient.fromStacks(new ItemStack(Blocks.PISTON, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Blocks.SPONGE, 1, 1), Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0)));
 		// Cooking with Oil
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_PORKCHOP), Ingredient.fromItem(Items.PORKCHOP));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_MUTTON), Ingredient.fromItem(Items.MUTTON));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_RABBIT), Ingredient.fromItem(Items.RABBIT));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_CHICKEN), Ingredient.fromItem(Items.CHICKEN));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_BEEF), Ingredient.fromItem(Items.BEEF));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_FISH), Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 0)));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.BAKED_POTATO), Ingredient.fromItem(Items.POTATO));
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.FISH, 1, 1), Ingredient.fromStacks(new ItemStack(Items.COOKED_FISH, 1, 1)));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_PORKCHOP), Ingredient.fromItem(Items.PORKCHOP));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_MUTTON), Ingredient.fromItem(Items.MUTTON));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_RABBIT), Ingredient.fromItem(Items.RABBIT));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_CHICKEN), Ingredient.fromItem(Items.CHICKEN));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_BEEF), Ingredient.fromItem(Items.BEEF));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.COOKED_FISH), Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 0)));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.BAKED_POTATO), Ingredient.fromItem(Items.POTATO));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(Items.FISH, 1, 1), Ingredient.fromStacks(new ItemStack(Items.COOKED_FISH, 1, 1)));
 		// Cooking and Processing with Water
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.wax), Ingredient.fromItem(ModItems.empty_honeycomb));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.honey), Ingredient.fromItem(ModItems.honeycomb));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), Ingredient.fromItem(ModItems.hoof));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 6, 0), Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.wax), Ingredient.fromItem(ModItems.empty_honeycomb));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), Ingredient.fromItem(ModItems.hoof));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 6, 0), Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0)));
 		// Arcane recipes
-		registerCauldronCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.BLAZE_POWDER, 4, 0), new ItemStack(ModItems.fume, 2, 11)));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(ModItems.dimensional_sand, 4, 0), new ItemStack(ModItems.fume, 2, 12)));
-		registerCauldronCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.GOLD_NUGGET, 4, 0), new ItemStack(ModItems.fume, 2, 7)));
-		registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), Ingredient.fromStacks(new ItemStack(ModItems.ectoplasm, 2, 0), new ItemStack(ModItems.graveyard_dust, 2, 0), new ItemStack(ModItems.wormwood, 2, 0), new ItemStack(Blocks.DIRT, 4, 0)));
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.BLAZE_POWDER, 4, 0), new ItemStack(ModItems.fume, 2, 11)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(ModItems.dimensional_sand, 4, 0), new ItemStack(ModItems.fume, 2, 12)));
+		registerCauldronItemCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk, 2, 0), new ItemStack(Items.GOLD_NUGGET, 4, 0), new ItemStack(ModItems.fume, 2, 7)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), Ingredient.fromStacks(new ItemStack(ModItems.ectoplasm, 2, 0), new ItemStack(ModItems.graveyard_dust, 2, 0), new ItemStack(ModItems.wormwood, 2, 0), new ItemStack(Blocks.DIRT, 4, 0)));
 		// Banner pattern removal
 		for (int i = 0; i < 16; i++) {
-			registerCauldronCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
+			registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
 		}
+		
+		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
 
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);
 		registerVanillaBrewEffect(MobEffects.FIRE_RESISTANCE, Ingredient.fromItem(Items.MAGMA_CREAM));

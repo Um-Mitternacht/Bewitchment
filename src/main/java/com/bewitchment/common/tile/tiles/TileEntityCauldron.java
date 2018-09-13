@@ -129,19 +129,18 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private void handleCraftingProgress() {
 		if ((getMode() == Mode.CRAFTING && lockInputForCrafting) || (getMode() != Mode.CRAFTING && getMode().getTime() > 0)) {
 			if (progress < getMode().getTime()) {
-				progress++; // TODO Should this require ME?
+				progress++;
 				markDirty();
 			} else {
 				if (getMode() == Mode.CRAFTING) {
 					Optional<CauldronCraftingRecipe> result = CauldronRegistry.getCraftingResult(tank.getFluid(), ingredients);
 					if (result.isPresent()) {
 						CauldronCraftingRecipe recipe = result.get();
-						if (tank.getFluidAmount() >= recipe.getRequiredAmount()) {
-							tank.setCanDrain(true);
+						if (recipe.hasItemOutput() && tank.getFluidAmount() >= recipe.getRequiredAmount()) {
 							tank.drain(recipe.getRequiredAmount(), true);
-							spawnCraftingResultAndUnlock(recipe);// TODO rename to ...AndReset instead of ...AndUnlock
-							syncToClient();
 						}
+						spawnCraftingResultAndUnlock(recipe);
+						syncToClient();
 					}
 				} else if (getMode() == Mode.CLEANING) {
 					tank.setCanDrain(true);
@@ -160,15 +159,21 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 	}
 
-	private void spawnCraftingResultAndUnlock(CauldronCraftingRecipe stack) {
-		EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack.getResult());
-		world.spawnEntity(result);
+	private void spawnCraftingResultAndUnlock(CauldronCraftingRecipe recipe) {
+		if (recipe.hasItemOutput()) {
+			EntityItem result = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, recipe.getItemResult());
+			world.spawnEntity(result);
+		}
+		if (recipe.hasFluidOutput()) {
+			tank.setFluid(recipe.getFluidResult());
+		}
 		tank.setCanDrain(true);
 		tank.setCanFill(true);
 		ingredients.clear();
 		mode = Mode.IDLE;
 		lockInputForCrafting = false;
 		progress = 0;
+		syncToClient();
 		markDirty();
 	}
 
@@ -356,7 +361,8 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		if (CauldronRegistry.getCauldronFoodValue(stack) != null && tank.getInnerFluid() == FluidRegistry.WATER) {
 			currentColorRGB = 0xede301;
-			return Mode.STEW;
+			return Mode.CRAFTING;
+//			return Mode.STEW;
 		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
 			currentColorRGB = 0xa366a3;
 			return Mode.BREW;
