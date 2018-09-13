@@ -183,17 +183,23 @@ public class BlockCauldron extends BlockModTileEntity {
 					}
 				}
 
-				for (int i = 0; i < 10; i++) {
-					if (tile.getMode() == Mode.CLEANING) {
+				if (tile.getMode() == Mode.CLEANING) {
+					for (int i = 0; i < 10; i++) {
 						double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
 						double py = pos.getY() + 0.5 + world.rand.nextGaussian();
 						double pz = pos.getZ() + 0.5 + world.rand.nextGaussian() * 0.5;
 						Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, px, py, pz, 0, 0.1, 0, tile.getColorRGB());
 					}
+				} else if (tile.getMode() == Mode.FAILING) {
+					for (int i = 0; i < 10; i++) {
+						double px = pos.getX() + 0.4 + world.rand.nextGaussian() * 0.2;
+						double pz = pos.getZ() + 0.4 + world.rand.nextGaussian() * 0.2;
+						world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, px, level+0.1, pz, 0, 0, 0);
+					}
 				}
 			}
 
-			if (tile.getMode() == Mode.CRAFTING || (tile.getMode() == Mode.STEW && tile.getProgress() >= tile.getMode().getTime())) {
+			if ((tile.getMode() == Mode.CRAFTING && tile.isLockInputForCrafting()) || (tile.getMode() == Mode.STEW && tile.getProgress() >= tile.getMode().getTime())) {
 				final float x = pos.getX() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 				final float z = pos.getZ() + MathHelper.clamp(world.rand.nextFloat(), 0.2F, 0.9F);
 				Bewitchment.proxy.spawnParticle(ParticleF.SPARK, x, level, z, 0.0D, 0.1D, 0.0D);

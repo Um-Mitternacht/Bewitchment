@@ -28,6 +28,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -37,6 +38,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -229,6 +231,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		switch (getMode()) {
 			case IDLE: {
 				setMode(getModeForFirstItem(stack));
+				currentColorRGB = getRawColorRGB();
 				tank.setCanDrain(false);
 				tank.setCanFill(false);
 				if (mode != Mode.BREW) {
@@ -321,6 +324,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			currentColorRGB = data.get().getColor();
 		} else {
 			this.mode = Mode.FAILING;
+			currentColorRGB = getRawColorRGB();
 		}
 		markDirty();
 		syncToClient();
@@ -372,11 +376,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		if (CauldronRegistry.getCauldronFoodValue(stack) != null && tank.getInnerFluid() == FluidRegistry.WATER) {
 			currentColorRGB = 0xede301;
 			return Mode.STEW;
-		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
-			currentColorRGB = 0xa366a3;
+		} 
+		if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
 			return Mode.BREW;
 		}
-		currentColorRGB = 0x5cb85c;
 		return Mode.CRAFTING;
 	}
 
@@ -389,6 +392,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		ItemStack next = selectedEntityItem.getItem().splitStack(1);
 		if (selectedEntityItem.getItem().isEmpty()) {
 			selectedEntityItem.setDead();
+			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f*Math.random()+1));
 		}
 		return next;
 	}
@@ -475,7 +479,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			return currentColorRGB;
 		}
 		if (getMode()==Mode.CLEANING) {
-			return 0xff00ff;
+			return 0xa19206;
+		}
+		if (getMode()==Mode.BREW) {
+			return 0x600787;
 		}
 		return DEFAULT_COLOR;
 	}
@@ -489,7 +496,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	private void blendColor(int newColorRGB, float ratio) {
-		currentColorRGB = newColorRGB;
+		currentColorRGB = ColorHelper.blendColor(currentColorRGB, newColorRGB, ratio);
 		syncToClient();
 		markDirty();
 	}
@@ -517,6 +524,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		} else if (player instanceof EntityPlayerMP) {
 			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
 		}
+	}
+	
+	public boolean isLockInputForCrafting() {
+		return lockInputForCrafting;
 	}
 
 	public Mode getMode() {
@@ -586,6 +597,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		tag.setInteger("heat", heat);
 		tag.setInteger("progress", progress);
 		tag.setInteger("color", currentColorRGB);
+		tag.setBoolean("lock", lockInputForCrafting);
 		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
 		tag.setInteger("mode", getMode().ordinal());
 		if (name != null) {
@@ -599,6 +611,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		heat = tag.getInteger("heat");
 		progress = tag.getInteger("progress");
 		currentColorRGB = tag.getInteger("color");
+		lockInputForCrafting = tag.getBoolean("lock");
 		if (tag.getBoolean("hasItemsInside")) {
 			ingredients.clear();
 			ingredients.add(ItemStack.EMPTY); // Makes the list not empty
