@@ -1,13 +1,25 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
-import com.bewitchment.common.content.cauldron.*;
+import com.bewitchment.common.content.cauldron.BrewBuilder;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
+import com.bewitchment.common.content.cauldron.CauldronFoodValue;
+import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.helper.ColorHelper;
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityFireworkRocket;
@@ -35,11 +47,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	public static final int MAX_HEAT = 40, BOILING_POINT = 25, DEFAULT_COLOR = 0x42499b;
@@ -52,6 +59,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private String name;
 
 	private int currentColorRGB = DEFAULT_COLOR;
+	private int effectiveClientSideColor = DEFAULT_COLOR;
 	private int heat = 0;
 	private int progress = 0;
 	private boolean lockInputForCrafting = false;
@@ -117,7 +125,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		if (!world.isRemote) {
+		if (world.isRemote) {
+			if (effectiveClientSideColor!=getRawColorRGB()) {
+				effectiveClientSideColor = ColorHelper.blendColor(effectiveClientSideColor, currentColorRGB, 0.92f);
+			}
+		} else {
 			if (world.getTotalWorldTime() % 5 == 0) {
 				handleHeatAndBoilingStatus();
 				handleItemCollisions();
@@ -137,6 +149,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					if (result.isPresent()) {
 						CauldronCraftingRecipe recipe = result.get();
 						if (recipe.hasItemOutput() && tank.getFluidAmount() >= recipe.getRequiredAmount()) {
+							tank.setCanDrain(true);
 							tank.drain(recipe.getRequiredAmount(), true);
 						}
 						spawnCraftingResultAndUnlock(recipe);
@@ -200,7 +213,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	private void processNextItem(ItemStack stack) {
-		boolean flag = ingredients.isEmpty();
 		progress = 0;
 		if (stack.getItem() == ModItems.wood_ash) {
 			setMode(Mode.CLEANING);
@@ -227,8 +239,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			case CRAFTING: {
 				if (tank.getInnerFluid() != FluidRegistry.LAVA) {
 					ingredients.add(stack);
-				} else if (tank.getInnerFluid() == FluidRegistry.WATER) {
-					blendColor(0xFF000000 | (0x10000 * this.world.rand.nextInt(0xFF)) | (0x100 * this.world.rand.nextInt(0xFF)) | (this.world.rand.nextInt(0xFF)), 0.15f);
+				} 
+				if (tank.getInnerFluid() == FluidRegistry.WATER) {
+					blendColor(0xFF000000 | (0x10000 * this.world.rand.nextInt(0xFF)) | (0x100 * this.world.rand.nextInt(0xFF)) | (this.world.rand.nextInt(0xFF)), 0.5f);
 				}
 				checkForCraftingRecipe();
 				break;
@@ -243,7 +256,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				if (ingredients.size() > 10) {
 					setMode(Mode.FAILING);
 				}
-				syncToClient();
 				break;
 			}
 			case FAILING: {
@@ -266,9 +278,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				break;
 			}
 		}
-		if (flag) {
-			syncToClient();
-		}
+		syncToClient();
 		markDirty();
 	}
 
@@ -327,7 +337,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		for (ItemStack i : ingredients) {
 			CauldronFoodValue next = CauldronRegistry.getCauldronFoodValue(i);
 			if (next == null) {
-				Bewitchment.logger.warn(i + " is not a valid food, this shouldn't happen! Report to https://github.com/Um-Mitternacht/Bewitchment/issues");
+				Log.w(i + " is not a valid food, this shouldn't happen! Report to https://github.com/Um-Mitternacht/Bewitchment/issues");
 				setMode(Mode.FAILING);
 				return ItemStack.EMPTY;
 			}
@@ -361,8 +371,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		if (CauldronRegistry.getCauldronFoodValue(stack) != null && tank.getInnerFluid() == FluidRegistry.WATER) {
 			currentColorRGB = 0xede301;
-			return Mode.CRAFTING;
-//			return Mode.STEW;
+			return Mode.STEW;
 		} else if (stack.getItem() == Items.NETHER_WART && tank.getInnerFluid() == FluidRegistry.WATER) {
 			currentColorRGB = 0xa366a3;
 			return Mode.BREW;
@@ -449,6 +458,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	public int getColorRGB() {
+		return effectiveClientSideColor;
+	}
+	
+	public int getRawColorRGB() {
 		if (getMode() == Mode.FAILING) {
 			return 0xb1d626; // Vomit color basically
 		}
@@ -458,7 +471,13 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		if (tank.getInnerFluid() == Fluids.MUNDANE_OIL) {
 			return 0x508030;
 		}
-		return currentColorRGB;
+		if (getMode()==Mode.CRAFTING && !lockInputForCrafting) {
+			return currentColorRGB;
+		}
+		if (getMode()==Mode.CLEANING) {
+			return 0xff00ff;
+		}
+		return DEFAULT_COLOR;
 	}
 
 	public boolean hasIngredients() {
@@ -470,8 +489,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	private void blendColor(int newColorRGB, float ratio) {
-		currentColorRGB = ColorHelper.blendColor(currentColorRGB, newColorRGB, ratio);
+		currentColorRGB = newColorRGB;
 		syncToClient();
+		markDirty();
 	}
 
 	private boolean isAboveFlame() {

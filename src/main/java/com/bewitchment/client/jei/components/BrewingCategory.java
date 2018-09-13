@@ -18,11 +18,11 @@ import net.minecraft.util.ResourceLocation;
 
 public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 
-	public static final String UID = LibMod.MOD_ID + ":cauldron";
+	public static final String UID = LibMod.MOD_ID + ":cauldron_brewing";
 	public static IDrawable bg;
+	private static ResourceLocation rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing.png");
 
 	public BrewingCategory(IGuiHelper igh) {
-		ResourceLocation rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_brewing.png");
 		bg = igh.drawableBuilder(rl, 0, 0, 91, 40).setTextureSize(91, 40).build();
 	}
 

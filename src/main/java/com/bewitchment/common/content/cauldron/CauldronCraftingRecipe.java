@@ -1,15 +1,19 @@
 package com.bewitchment.common.content.cauldron;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class CauldronCraftingRecipe {
 
+	private List<List<ItemStack>> jeiCache;
 	private Ingredient[] ingredients;
 	private Fluid fluid;
 	private int fluidAmount;
@@ -40,28 +44,58 @@ public abstract class CauldronCraftingRecipe {
 	}
 
 	public boolean matches(List<ItemStack> stacks, FluidStack fluidstack) {
-		ArrayList<ItemStack> newList = new ArrayList<>(stacks);
-		for (Ingredient ing : ingredients) {
+		if (fluid != fluidstack.getFluid() || stacks.size()!=ingredients.length) {
+			return false;
+		}
+		ArrayList<Ingredient> newIngredientList = Lists.newArrayList(ingredients);
+		ArrayList<ItemStack> stackList = Lists.newArrayList(stacks);
+		for (int i = ingredients.length - 1; i>=0; i--) {
 			boolean found = false;
-			for (int is = stacks.size() - 1; is >= 0; is--) {
-				if (ing.apply(stacks.get(is))) {
+			Ingredient ing = newIngredientList.get(i);
+			for (int j = stackList.size() - 1; j>=0; j--) {
+				ItemStack is = stackList.get(j);
+				if (ing.apply(is)) {
+					newIngredientList.remove(i);
+					stackList.remove(is);
 					found = true;
-					newList.remove(stacks.get(is));
 					break;
 				}
 			}
 			if (!found) {
-				return false; // Not all items required were in the crafting
+				return false;
 			}
 		}
-		if (newList.size() > 0) {
-			return false;// One or more items were not part of the crafting
-		}
-		return fluid == fluidstack.getFluid();
+		return true;
 	}
 
 	public int getRequiredAmount() {
 		return fluidAmount;
+	}
+	
+	public List<List<ItemStack>> getJEIInput() {
+		if (jeiCache == null) {
+			jeiCache = Lists.newArrayList();
+			HashMap<Ingredient, Integer> sizes = new HashMap<>();
+			for (Ingredient i:ingredients) {
+				if (sizes.containsKey(i)) {
+					sizes.put(i, sizes.get(i)+1);
+				} else {
+					sizes.put(i, 1);
+				}
+			}
+			for (Ingredient i:sizes.keySet()) {
+				List<ItemStack> l = Lists.newArrayList(i.getMatchingStacks());
+				l.forEach(is -> is.setCount(sizes.get(i)));
+				jeiCache.add(l);
+			}
+		}
+		return jeiCache;
+	}
+	
+	public List<List<FluidStack>> getJEIFluidInput() {
+		List<List<FluidStack>> result = Lists.newArrayList();
+		result.add(Lists.newArrayList(new FluidStack(fluid, fluidAmount)));
+		return result;
 	}
 
 	public abstract boolean hasItemOutput();
