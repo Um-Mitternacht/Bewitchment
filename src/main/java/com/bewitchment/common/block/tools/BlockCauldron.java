@@ -183,7 +183,7 @@ public class BlockCauldron extends BlockModTileEntity {
 					}
 				}
 
-				for (int i=0;i<10;i++) {
+				for (int i = 0; i < 10; i++) {
 					if (tile.getMode() == Mode.CLEANING) {
 						double px = pos.getX() + 0.5 + world.rand.nextGaussian() * 0.5;
 						double py = pos.getY() + 0.5 + world.rand.nextGaussian();

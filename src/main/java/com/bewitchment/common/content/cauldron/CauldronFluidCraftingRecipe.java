@@ -1,16 +1,16 @@
 package com.bewitchment.common.content.cauldron;
 
-import java.util.List;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.List;
+
 public class CauldronFluidCraftingRecipe extends CauldronCraftingRecipe {
 
 	private FluidStack result;
-	
+
 	public CauldronFluidCraftingRecipe(Fluid fluid, int fluidAmount, FluidStack output, Ingredient[] ingredient) {
 		super(fluid, fluidAmount, ingredient);
 		this.result = output.copy();
@@ -25,12 +25,12 @@ public class CauldronFluidCraftingRecipe extends CauldronCraftingRecipe {
 	public boolean matches(List<ItemStack> stacks, FluidStack fluidstack) {
 		return super.matches(stacks, fluidstack) && fluidstack.amount == this.getRequiredAmount();
 	}
-	
+
 	@Override
 	public boolean hasFluidOutput() {
 		return true;
 	}
-	
+
 	@Override
 	public FluidStack getFluidResult() {
 		return result.copy();

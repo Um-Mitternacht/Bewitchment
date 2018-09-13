@@ -62,25 +62,25 @@ public class CauldronRegistry {
 	}
 
 	public static void registerCauldronItemCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
-		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME/4, output, ingredients));
+		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME / 4, output, ingredients));
 	}
-	
+
 	public static void registerCauldronItemCrafting(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, fluidAmount, output, ingredients));
 	}
-	
+
 	public static void registerCauldronFluidCrafting(Fluid fluid, FluidStack output, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronFluidCraftingRecipe(fluid, Fluid.BUCKET_VOLUME, output, ingredients));
 	}
-	
+
 	public static void registerCauldronFluidCrafting(Fluid fluid, int exactFluidAmount, FluidStack output, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronFluidCraftingRecipe(fluid, exactFluidAmount, output, ingredients));
 	}
-	
+
 	public static void registerCauldronMixedCrafting(Fluid fluid, FluidStack fluidOutput, ItemStack itemOutput, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronMixedCraftingRecipe(fluid, Fluid.BUCKET_VOLUME, fluidOutput, itemOutput, ingredients));
 	}
-	
+
 	public static void registerCauldronMixedCrafting(Fluid fluid, int exactFluidAmount, FluidStack fluidOutput, ItemStack itemOutput, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronMixedCraftingRecipe(fluid, exactFluidAmount, fluidOutput, itemOutput, ingredients));
 	}
@@ -217,7 +217,7 @@ public class CauldronRegistry {
 		for (int i = 0; i < 16; i++) {
 			registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
 		}
-		
+
 		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
 
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);

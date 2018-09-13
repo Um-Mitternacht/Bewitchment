@@ -63,13 +63,13 @@ public abstract class CauldronCraftingRecipe {
 	public int getRequiredAmount() {
 		return fluidAmount;
 	}
-	
+
 	public abstract boolean hasItemOutput();
-	
+
 	public abstract boolean hasFluidOutput();
-	
+
 	public abstract ItemStack getItemResult();
-	
+
 	public abstract FluidStack getFluidResult();
 
 }

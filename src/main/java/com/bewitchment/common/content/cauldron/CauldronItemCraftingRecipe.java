@@ -7,8 +7,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class CauldronItemCraftingRecipe extends CauldronCraftingRecipe {
 
-	private ItemStack result; 
-	
+	private ItemStack result;
+
 	public CauldronItemCraftingRecipe(Fluid fluid, int fluidAmount, ItemStack output, Ingredient[] ingredient) {
 		super(fluid, fluidAmount, ingredient);
 		result = output.copy();
@@ -23,7 +23,7 @@ public class CauldronItemCraftingRecipe extends CauldronCraftingRecipe {
 	public boolean hasFluidOutput() {
 		return false;
 	}
-	
+
 	@Override
 	public ItemStack getItemResult() {
 		return result.copy();
