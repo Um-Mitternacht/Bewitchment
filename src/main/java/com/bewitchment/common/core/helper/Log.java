@@ -16,6 +16,19 @@ public class Log {
 		Bewitchment.logger.error(s);
 	}
 	
+	public static void askForReport() {
+		StringBuilder sb = new StringBuilder();
+		String s = "This is a bug in the mod Bewitchment. Update it or report it if already using the latest version";
+		for (int i=0;i<s.length()+10;i++) {
+			sb.append("#");
+		}
+		String frame = sb.toString();
+		e(frame);
+		e("#    "+s+"    #");
+		e(frame);
+		Thread.dumpStack();
+	}
+	
 	public static void d(String s) {
 		if ("true".equals(System.getProperty("debug"))) {
 			i("[DEBUG] -- "+s);

@@ -38,8 +38,10 @@ public abstract class ModTileEntity extends TileEntity {
 	protected abstract void readModSyncDataNBT(NBTTagCompound tag);
 
 	public void syncToClient() {
-		IBlockState state = world.getBlockState(pos);
-		world.notifyBlockUpdate(pos, state, state, 3);
+		if (world!=null) {
+			IBlockState state = world.getBlockState(pos);
+			world.notifyBlockUpdate(pos, state, state, 3);
+		}
 	}
 
 	/**
@@ -65,7 +67,7 @@ public abstract class ModTileEntity extends TileEntity {
 		writeAllModDataNBT(ret);
 		return ret;
 	}
-
+	
 	/**
 	 * For internal use only.
 	 *
