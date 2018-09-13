@@ -219,6 +219,7 @@ public class CauldronRegistry {
 		}
 
 		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
+		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.MUNDANE_OIL, Fluid.BUCKET_VOLUME), new ItemStack(Items.POTATO), Ingredient.fromStacks(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)));
 
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);
 		registerVanillaBrewEffect(MobEffects.FIRE_RESISTANCE, Ingredient.fromItem(Items.MAGMA_CREAM));
