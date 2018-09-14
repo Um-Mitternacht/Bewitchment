@@ -32,7 +32,7 @@ public class CauldronCraftingCategory implements IRecipeCategory<CauldronCraftin
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.brewing");
+		return I18n.format("jei.category.crafting");
 	}
 
 	@Override
