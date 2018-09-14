@@ -1,13 +1,10 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
-import java.util.Random;
-
 import com.bewitchment.common.content.cauldron.CauldronFoodValue;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -15,10 +12,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 
+import java.util.Random;
+
 public class CauldronBehaviourStew implements ICauldronBehaviour {
 
 	private static final String ID = "stew";
-	private static final int COOK_TIME = 20*60;
+	private static final int COOK_TIME = 20 * 60;
 
 	private TileEntityCauldron cauldron;
 	private int progress = 0;
@@ -34,7 +33,7 @@ public class CauldronBehaviourStew implements ICauldronBehaviour {
 	public void handleParticles(boolean isActiveBehaviour) {
 		if (isActiveBehaviour && progress >= COOK_TIME) {
 			Random r = cauldron.getWorld().rand;
-			cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_INSTANT, cauldron.getPos().getX() + 0.4 + 0.2*r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2*r.nextDouble(), 0, 0, 0);
+			cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_INSTANT, cauldron.getPos().getX() + 0.4 + 0.2 * r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2 * r.nextDouble(), 0, 0, 0);
 		}
 	}
 
@@ -48,10 +47,10 @@ public class CauldronBehaviourStew implements ICauldronBehaviour {
 		if (isActiveBehaviour) {
 			clientSideItemNumber = cauldron.getInputs().size();
 			if (clientSideItemNumber != 0) {
-				if (cauldron.getInputs().size()>10) {
+				if (cauldron.getInputs().size() > 10) {
 					cauldron.setBehaviour(cauldron.getDefaultBehaviours().FAILING);
 				} else {
-					ItemStack last = cauldron.getInputs().get(clientSideItemNumber-1);
+					ItemStack last = cauldron.getInputs().get(clientSideItemNumber - 1);
 					if (CauldronRegistry.getCauldronFoodValue(last) == null) {
 						cauldron.setBehaviour(cauldron.getDefaultBehaviours().FAILING);
 					} else {
@@ -61,7 +60,7 @@ public class CauldronBehaviourStew implements ICauldronBehaviour {
 						cauldron.setColor(this.getColor());
 					}
 				}
-			} 
+			}
 			cauldron.markDirty();
 			cauldron.syncToClient();
 		}
@@ -69,7 +68,7 @@ public class CauldronBehaviourStew implements ICauldronBehaviour {
 
 	@Override
 	public void playerInteract(EntityPlayer player, EnumHand hand) {
-		if (player.getHeldItem(hand).getItem().equals(Items.BOWL) && (progress>=COOK_TIME || player.isCreative())) {
+		if (player.getHeldItem(hand).getItem().equals(Items.BOWL) && (progress >= COOK_TIME || player.isCreative())) {
 			player.getHeldItem(hand).splitStack(1);
 			ItemStack soup = currentlyCooking;
 			currentlyCooking = ItemStack.EMPTY;
@@ -86,7 +85,7 @@ public class CauldronBehaviourStew implements ICauldronBehaviour {
 
 	@Override
 	public void update(boolean isActiveBehaviour) {
-		if (isActiveBehaviour && !currentlyCooking.isEmpty() && progress<COOK_TIME) {
+		if (isActiveBehaviour && !currentlyCooking.isEmpty() && progress < COOK_TIME) {
 			++progress;
 		}
 	}

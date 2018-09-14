@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -74,8 +73,8 @@ public class CauldronBehaviourLava implements ICauldronBehaviour {
 
 	@Override
 	public void statusChanged(boolean active) {
-		if (active && cauldron.getInputs().size()>0) {
-			ItemStack stack = cauldron.getInputs().get(cauldron.getInputs().size()-1);
+		if (active && cauldron.getInputs().size() > 0) {
+			ItemStack stack = cauldron.getInputs().get(cauldron.getInputs().size() - 1);
 			if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
 				world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, true);
 			} else if (stack.getItem() == Item.getItemFromBlock(Blocks.TNT)) {
@@ -111,6 +110,6 @@ public class CauldronBehaviourLava implements ICauldronBehaviour {
 
 	@Override
 	public void onDeactivation() {
-		
+
 	}
 }

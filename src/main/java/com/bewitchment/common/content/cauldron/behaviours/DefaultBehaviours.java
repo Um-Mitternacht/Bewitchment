@@ -3,9 +3,9 @@ package com.bewitchment.common.content.cauldron.behaviours;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 
 public class DefaultBehaviours {
-	
+
 	public ICauldronBehaviour IDLE, FAILING, BREWING, STEW, CRAFTING, CLEANING, LAVA;
-	
+
 	public void init(TileEntityCauldron tile) {
 		IDLE = new CauldronBehaviourIdle();
 		LAVA = new CauldronBehaviourLava();
@@ -14,7 +14,7 @@ public class DefaultBehaviours {
 		CLEANING = new CauldronBehaviourClean();
 		BREWING = new CauldronBehaviourBrewing();
 		CRAFTING = new CauldronBehaviourCrafting();
-		
+
 		IDLE.setCauldron(tile);
 		LAVA.setCauldron(tile);
 		STEW.setCauldron(tile);
@@ -22,7 +22,7 @@ public class DefaultBehaviours {
 		CLEANING.setCauldron(tile);
 		BREWING.setCauldron(tile);
 		CRAFTING.setCauldron(tile);
-		
+
 		tile.addBehaviour(IDLE);
 		tile.addBehaviour(LAVA);
 		tile.addBehaviour(STEW);
@@ -30,7 +30,7 @@ public class DefaultBehaviours {
 		tile.addBehaviour(CLEANING);
 		tile.addBehaviour(BREWING);
 		tile.addBehaviour(CRAFTING);
-		
+
 		tile.setBehaviour(IDLE);
 	}
 }

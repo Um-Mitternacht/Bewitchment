@@ -1,7 +1,5 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
-import java.util.Random;
-
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -10,7 +8,6 @@ import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -25,6 +22,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+
+import java.util.Random;
 
 public class CauldronBehaviourIdle implements ICauldronBehaviour {
 
@@ -77,15 +76,15 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 	public boolean canAccept(ItemStack stack) {
 		return true;
 	}
-	
+
 	@Override
 	public boolean canAccept(EntityItem itemEntity) {
-		return ICauldronBehaviour.super.canAccept(itemEntity)  && !itemEntity.getTags().contains("cauldron_drop");
+		return ICauldronBehaviour.super.canAccept(itemEntity) && !itemEntity.getTags().contains("cauldron_drop");
 	}
 
 	@Override
 	public boolean shouldInputsBeBlocked() {
-		return heat < BOIL_THRESHOLD || !cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount<=0;
+		return heat < BOIL_THRESHOLD || !cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount <= 0;
 	}
 
 	@Override
@@ -94,20 +93,20 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 		boolean wasBoiling = heat >= MAX_HEAT;
 		if (cauldron.getFluid().isPresent()) {
 			if (below.getMaterial() == Material.FIRE || below.getMaterial() == Material.LAVA) {
-				if (heat<MAX_HEAT) {
+				if (heat < MAX_HEAT) {
 					heat++;
 				}
 			} else {
-				if (heat>0) {
+				if (heat > 0) {
 					heat--;
 				}
 			}
-			if (cauldron.getFluid().get().getFluid().getTemperature()>800) {
-				heat=MAX_HEAT;
+			if (cauldron.getFluid().get().getFluid().getTemperature() > 800) {
+				heat = MAX_HEAT;
 			}
 			cauldron.markDirty();
 			boolean isBoilingNow = heat >= MAX_HEAT;
-			if (isBoilingNow!=wasBoiling) {
+			if (isBoilingNow != wasBoiling) {
 				cauldron.syncToClient();
 			}
 		}
@@ -145,30 +144,30 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 
 	@Override
 	public void statusChanged(boolean isActive) {
-		if (cauldron.getInputs().size()>0 && cauldron.getInputs().get(cauldron.getInputs().size()-1).getItem()==ModItems.wood_ash) {
+		if (cauldron.getInputs().size() > 0 && cauldron.getInputs().get(cauldron.getInputs().size() - 1).getItem() == ModItems.wood_ash) {
 			cauldron.setBehaviour(cauldron.getDefaultBehaviours().CLEANING);
 			cauldron.setTankLock(false);
 		} else if (isActive) {
-			if (cauldron.getInputs().size()>0) {
-				ItemStack stack = cauldron.getInputs().get(cauldron.getInputs().size()-1);
-				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().getFluid()==FluidRegistry.LAVA) {
+			if (cauldron.getInputs().size() > 0) {
+				ItemStack stack = cauldron.getInputs().get(cauldron.getInputs().size() - 1);
+				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().getFluid() == FluidRegistry.LAVA) {
 					cauldron.setBehaviour(cauldron.getDefaultBehaviours().LAVA);
-				} else if (stack.getItem()==Items.NETHER_WART && cauldron.getFluid().get().getFluid()==FluidRegistry.WATER) {
+				} else if (stack.getItem() == Items.NETHER_WART && cauldron.getFluid().get().getFluid() == FluidRegistry.WATER) {
 					cauldron.setBehaviour(cauldron.getDefaultBehaviours().BREWING);
 					cauldron.setTankLock(false);
-				} else if (CauldronRegistry.getCauldronFoodValue(stack) != null && cauldron.getFluid().get().getFluid()==FluidRegistry.WATER) {
+				} else if (CauldronRegistry.getCauldronFoodValue(stack) != null && cauldron.getFluid().get().getFluid() == FluidRegistry.WATER) {
 					cauldron.setBehaviour(cauldron.getDefaultBehaviours().STEW);
 					cauldron.setTankLock(false);
 				} else {
 					cauldron.setBehaviour(cauldron.getDefaultBehaviours().CRAFTING);
 					cauldron.setTankLock(false);
 				}
-			} 
-		} 
+			}
+		}
 
 
-		if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount<=0) {
-			if (cauldron.getInputs().size()>0) {
+		if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount <= 0) {
+			if (cauldron.getInputs().size() > 0) {
 				cauldron.clearItemInputs();
 			}
 			heat = 0;

@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
-
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +16,7 @@ public class BrewBuilder {
 
 	public BrewBuilder(List<ItemStack> list) {
 		this.list = list;
-		if (list.size()>0 && list.get(0).getItem()==Items.NETHER_WART) {
+		if (list.size() > 0 && list.get(0).getItem() == Items.NETHER_WART) {
 			list.remove(0);
 		}
 	}
