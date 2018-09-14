@@ -20,9 +20,9 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 
 	private static final String ID = "brew";
 	private int color = TileEntityCauldron.DEFAULT_COLOR;
-	
+
 	private TileEntityCauldron cauldron;
-	
+
 	@Override
 	public void setCauldron(TileEntityCauldron tile) {
 		cauldron = tile;
@@ -41,42 +41,51 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 	@Override
 	public void statusChanged(boolean isActiveBehaviour) {
 		if (isActiveBehaviour) {
-			updateBrewColor();
-		}
-	}
-	
-	@Override
-	public void playerInteract(EntityPlayer player, EnumHand hand) {
-		Item heldItem = player.getHeldItem(hand).getItem();
-		int potionAmountUsed = 300;
-		
-		if (heldItem == Items.ARROW) {
-			potionAmountUsed = 100;
-		}
-
-		if (cauldron.getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(null, cauldron.getPos(), cauldron.getWorld().provider.getDimension(), 1000)) { //TODO make the amount dependent on the brew type
-
-			if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount>=potionAmountUsed) {
-				if (heldItem == ModItems.empty_brew_drink) {
-					TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_drink)));
-				} else if (heldItem == ModItems.empty_brew_linger) {
-					TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_linger)));
-				} else if (heldItem == ModItems.empty_brew_splash) {
-					TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_splash)));
-				} else if (heldItem == Items.ARROW) {
-					TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_arrow)));
-				}
-				cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).drain(potionAmountUsed, true);
+			checkBrew();
+			if (cauldron.getInputs().size()==1) {
+				color = 0xe050a0;
 			}
 		}
-		
-		if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount<=0) {
-			cauldron.setTankLock(true);
-			cauldron.clearItemInputs();
-			cauldron.setBehaviour(cauldron.getDefaultBehaviours().IDLE);
+	}
+
+	@Override
+	public void playerInteract(EntityPlayer player, EnumHand hand) {
+		if (!player.world.isRemote) {
+			Item heldItem = player.getHeldItem(hand).getItem();
+			int potionAmountUsed = 500;
+
+			if (heldItem == Items.ARROW) {
+				potionAmountUsed = 100;
+			} else if (heldItem ==ModItems.empty_brew_drink) {
+				potionAmountUsed = 300;
+			}
+
+			if (cauldron.getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(null, cauldron.getPos(), cauldron.getWorld().provider.getDimension(), 1000)) { //TODO make the amount dependent on the brew type
+
+				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount>=potionAmountUsed) {
+					if (heldItem == ModItems.empty_brew_drink) {
+						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_drink)));
+					} else if (heldItem == ModItems.empty_brew_linger) {
+						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_linger)));
+					} else if (heldItem == ModItems.empty_brew_splash) {
+						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_splash)));
+					} else if (heldItem == Items.ARROW) {
+						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_arrow)));
+					}
+					cauldron.setTankLock(true);
+					cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).drain(potionAmountUsed, true);
+					cauldron.setTankLock(false);
+				}
+			}
+
+			if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount<=0) {
+				cauldron.setTankLock(true);
+				cauldron.clearItemInputs();
+				cauldron.setBehaviour(cauldron.getDefaultBehaviours().IDLE);
+			}
+			cauldron.markDirty();
+			cauldron.syncToClient();
 		}
-		cauldron.markDirty();
-		cauldron.syncToClient();
 	}
 
 	@Override
@@ -116,14 +125,16 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 
 	@Override
 	public void onDeactivation() {
-		
+		color = TileEntityCauldron.DEFAULT_COLOR;
 	}
-	
-	private void updateBrewColor() {
+
+	private void checkBrew() {
 		if (cauldron.getInputs().size()>1) { //Ignore the wart
 			Optional<BrewData> data = new BrewBuilder(cauldron.getInputs()).build();
 			if (data.isPresent()) {
 				color = data.get().getColor();
+			} else {
+				cauldron.setBehaviour(cauldron.getDefaultBehaviours().FAILING);
 			}
 			cauldron.markDirty();
 			cauldron.syncToClient();
