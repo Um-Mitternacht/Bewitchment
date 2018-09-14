@@ -68,7 +68,7 @@ public abstract class CauldronCraftingRecipe {
 		return true;
 	}
 
-	public int getRequiredAmount() {
+	public int getRequiredFluidAmount() {
 		return fluidAmount;
 	}
 	

@@ -122,7 +122,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			return ItemStack.EMPTY;
 		}
 		EntityItem selectedEntityItem = list.get(0);
-		if (currentBehaviour.canAccept(selectedEntityItem.getItem().copy().splitStack(1))) {
+		if (currentBehaviour.canAccept(selectedEntityItem)) {
 			ItemStack next = selectedEntityItem.getItem().splitStack(1);
 			if (selectedEntityItem.getItem().isEmpty()) {
 				selectedEntityItem.setDead();

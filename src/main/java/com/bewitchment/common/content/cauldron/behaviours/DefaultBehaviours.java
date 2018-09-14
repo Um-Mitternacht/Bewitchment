@@ -13,6 +13,7 @@ public class DefaultBehaviours {
 		FAILING = new CauldronBehaviourFailing();
 		CLEANING = new CauldronBehaviourClean();
 		BREWING = new CauldronBehaviourBrewing();
+		CRAFTING = new CauldronBehaviourCrafting();
 		
 		IDLE.setCauldron(tile);
 		LAVA.setCauldron(tile);
@@ -20,6 +21,7 @@ public class DefaultBehaviours {
 		FAILING.setCauldron(tile);
 		CLEANING.setCauldron(tile);
 		BREWING.setCauldron(tile);
+		CRAFTING.setCauldron(tile);
 		
 		tile.addBehaviour(IDLE);
 		tile.addBehaviour(LAVA);
@@ -27,6 +29,7 @@ public class DefaultBehaviours {
 		tile.addBehaviour(FAILING);
 		tile.addBehaviour(CLEANING);
 		tile.addBehaviour(BREWING);
+		tile.addBehaviour(CRAFTING);
 		
 		tile.setBehaviour(IDLE);
 	}

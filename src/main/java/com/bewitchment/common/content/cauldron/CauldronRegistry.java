@@ -86,7 +86,7 @@ public class CauldronRegistry {
 	}
 
 	public static void registerCauldronItemCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
-		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME, output, ingredients));
+		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME/4, output, ingredients));
 	}
 
 	public static void registerCauldronItemCrafting(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredients) {

@@ -2,6 +2,7 @@ package com.bewitchment.common.content.cauldron.behaviours;
 
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,6 +17,10 @@ public interface ICauldronBehaviour {
 	/** If <i>any</i> decorator returns true, the cauldron won't accept any more items*/
 	default boolean shouldInputsBeBlocked() {
 		return false;
+	}
+	
+	default boolean canAccept(EntityItem itemEntity) {
+		return canAccept(itemEntity.getItem().copy().splitStack(1));
 	}
 	
 	public boolean canAccept(ItemStack stack);

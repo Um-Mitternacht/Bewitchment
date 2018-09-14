@@ -13,6 +13,7 @@ import com.bewitchment.common.tile.util.CauldronFluidTank;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -75,6 +76,11 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 	@Override
 	public boolean canAccept(ItemStack stack) {
 		return true;
+	}
+	
+	@Override
+	public boolean canAccept(EntityItem itemEntity) {
+		return ICauldronBehaviour.super.canAccept(itemEntity)  && !itemEntity.getTags().contains("cauldron_drop");
 	}
 
 	@Override

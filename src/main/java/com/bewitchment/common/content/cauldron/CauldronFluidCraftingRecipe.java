@@ -23,7 +23,7 @@ public class CauldronFluidCraftingRecipe extends CauldronCraftingRecipe {
 
 	@Override
 	public boolean matches(List<ItemStack> stacks, FluidStack fluidstack) {
-		return super.matches(stacks, fluidstack) && fluidstack.amount == this.getRequiredAmount();
+		return super.matches(stacks, fluidstack) && fluidstack.amount == this.getRequiredFluidAmount();
 	}
 
 	@Override
