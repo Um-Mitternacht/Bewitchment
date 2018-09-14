@@ -194,7 +194,7 @@ public class CauldronRegistry {
 		// Cooking and Processing with Water
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.wax), empty_honeycomb);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), hoof);
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), anyLog);
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), acaciaLog);
 		// Arcane recipes
 
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), normalRitualChalk, normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);

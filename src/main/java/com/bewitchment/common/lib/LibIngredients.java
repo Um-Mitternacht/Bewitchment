@@ -18,6 +18,7 @@ public class LibIngredients {
 	public static Ingredient stickyPiston = Ingredient.fromStacks(new ItemStack(Blocks.STICKY_PISTON, 1, 0));
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));
 	public static Ingredient anyLog = new OreIngredient("logWood");
+	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
 
 	public static Ingredient dimensionalSand = Ingredient.fromItem(ModItems.dimensional_sand);
 	public static Ingredient normalRitualChalk = Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk));
