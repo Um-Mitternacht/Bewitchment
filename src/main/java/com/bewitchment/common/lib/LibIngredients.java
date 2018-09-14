@@ -1,5 +1,6 @@
 package com.bewitchment.common.lib;
 
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import net.minecraft.init.Blocks;
@@ -19,15 +20,19 @@ public class LibIngredients {
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));
 	public static Ingredient anyLog = new OreIngredient("logWood");
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
+	public static Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
+	public static Ingredient ghastTear = Ingredient.fromItem(Items.GHAST_TEAR);
 
 	public static Ingredient dimensionalSand = Ingredient.fromItem(ModItems.dimensional_sand);
 	public static Ingredient normalRitualChalk = Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk));
 	public static Ingredient fumeFieryBreeze = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.fiery_breeze.ordinal()));
 	public static Ingredient fumeHeavenlyWind = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.heavenly_winds.ordinal()));
 	public static Ingredient fumeCleansingAura = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.cleansing_aura.ordinal()));
+	public static Ingredient fumeCloudyOil = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.cloudy_oil.ordinal()));
 	public static Ingredient ectoplasm = Ingredient.fromItem(ModItems.ectoplasm);
 	public static Ingredient graveyardDust = Ingredient.fromItem(ModItems.graveyard_dust);
 	public static Ingredient wormwood = Ingredient.fromItem(ModItems.wormwood);
 	public static Ingredient empty_honeycomb = Ingredient.fromItem(ModItems.empty_honeycomb);
 	public static Ingredient hoof = Ingredient.fromItem(ModItems.hoof);
+	public static Ingredient emptyGoblet = Ingredient.fromStacks(new ItemStack(ModBlocks.goblet, 1, 0));
 }

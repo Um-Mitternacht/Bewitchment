@@ -11,6 +11,7 @@ import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.crafting.util.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
+import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
@@ -197,6 +198,7 @@ public class CauldronRegistry {
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), acaciaLog);
 		// Arcane recipes
 
+		registerCauldronItemCrafting(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME, new ItemStack(ModBlocks.goblet, 1, 1), LibIngredients.redstone, LibIngredients.redstone, LibIngredients.redstone, LibIngredients.fumeCloudyOil, LibIngredients.emptyGoblet, LibIngredients.ghastTear);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), normalRitualChalk, normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), normalRitualChalk, normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand, fumeHeavenlyWind, fumeHeavenlyWind);
 		registerCauldronItemCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), normalRitualChalk, normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
