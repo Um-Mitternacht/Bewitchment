@@ -39,7 +39,7 @@ public class HarvestEvents {
 
 	@SubscribeEvent
 	public static void onHarvestOakLeaves(BlockEvent.HarvestDropsEvent event) {
-		if ((event.getState().getBlock() == Blocks.LEAVES && event.getWorld().rand.nextInt(150) < 25)) {
+		if ((event.getState().getBlock() == Blocks.LEAVES && event.getState().getBlock().getMetaFromState(event.getState()) == 0 && event.getWorld().rand.nextInt(150) < 25)) {
 			event.getDrops().clear();
 			event.getDrops().add(new ItemStack(ModItems.oak_apple_gall, 1));
 		}
