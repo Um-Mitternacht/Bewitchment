@@ -1,6 +1,7 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
+
 import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -8,22 +9,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public class CauldronBehaviourLava implements ICauldronBehaviour {
 
 	private static final String ID = "lava";
 
 	private TileEntityCauldron cauldron;
-	private World world;
-	private BlockPos pos;
 
 	@Override
 	public void setCauldron(TileEntityCauldron tile) {
 		cauldron = tile;
-		world = tile.getWorld();
-		pos = tile.getPos();
 	}
 
 	@Override
@@ -76,9 +71,9 @@ public class CauldronBehaviourLava implements ICauldronBehaviour {
 		if (active && cauldron.getInputs().size() > 0) {
 			ItemStack stack = cauldron.getInputs().get(cauldron.getInputs().size() - 1);
 			if (stack.getItem() == Items.GUNPOWDER || stack.getItem() == Items.FIRE_CHARGE) {
-				world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, true);
+				cauldron.getWorld().createExplosion(null, cauldron.getPos().getX() + 0.5, cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.5, 1, true);
 			} else if (stack.getItem() == Item.getItemFromBlock(Blocks.TNT)) {
-				world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, true);
+				cauldron.getWorld().createExplosion(null, cauldron.getPos().getX() + 0.5, cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.5, 3, true);
 			} else if (stack.getItem() == Items.FIREWORKS || stack.getItem() == Items.FIREWORK_CHARGE) {
 				boolean isCharge = false;
 				if (stack.getItem() == Items.FIREWORK_CHARGE) {
@@ -96,14 +91,14 @@ public class CauldronBehaviourLava implements ICauldronBehaviour {
 					stack.setTagCompound(fireworksBaseTag);
 
 				}
-				EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(cauldron.getWorld(), cauldron.getPos().getX()+0.5, cauldron.getPos().getY()+0.5, cauldron.getPos().getZ()+0.5, stack);
 				if (isCharge) {
 					NBTTagCompound hackTag = new NBTTagCompound();
 					entityfireworkrocket.writeEntityToNBT(hackTag);
-					hackTag.setInteger("LifeTime", 2);
+					hackTag.setInteger("LifeTime", 0);
 					entityfireworkrocket.readEntityFromNBT(hackTag);
 				}
-				world.spawnEntity(entityfireworkrocket);
+				cauldron.getWorld().spawnEntity(entityfireworkrocket);
 			}
 		}
 	}
