@@ -42,10 +42,9 @@ public class ThaumcraftCompat {
 	private static final ThaumcraftCompat INSTANCE = new ThaumcraftCompat();
 	private static boolean registered = false;
 
-	static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image, int blend)
-	{
+	static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image, int blend) {
 		Aspect a = Aspect.getAspect(tag);
-		if(a != null) return a;
+		if (a != null) return a;
 		return new Aspect(tag, color, components, image, blend);
 	}
 

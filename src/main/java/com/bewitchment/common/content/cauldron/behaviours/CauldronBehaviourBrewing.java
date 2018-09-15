@@ -1,13 +1,10 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
-import java.util.Optional;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.content.cauldron.BrewBuilder;
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -15,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+
+import java.util.Optional;
 
 public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 
@@ -42,7 +41,7 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 	public void statusChanged(boolean isActiveBehaviour) {
 		if (isActiveBehaviour) {
 			checkBrew();
-			if (cauldron.getInputs().size()==1) {
+			if (cauldron.getInputs().size() == 1) {
 				color = 0xe050a0;
 			}
 		}
@@ -56,13 +55,13 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 
 			if (heldItem == Items.ARROW) {
 				potionAmountUsed = 100;
-			} else if (heldItem ==ModItems.empty_brew_drink) {
+			} else if (heldItem == ModItems.empty_brew_drink) {
 				potionAmountUsed = 300;
 			}
 
 			if (cauldron.getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(null, cauldron.getPos(), cauldron.getWorld().provider.getDimension(), 1000)) { //TODO make the amount dependent on the brew type
 
-				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount>=potionAmountUsed) {
+				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount >= potionAmountUsed) {
 					if (heldItem == ModItems.empty_brew_drink) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_drink)));
 					} else if (heldItem == ModItems.empty_brew_linger) {
@@ -78,7 +77,7 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 				}
 			}
 
-			if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount<=0) {
+			if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount <= 0) {
 				cauldron.setTankLock(true);
 				cauldron.clearItemInputs();
 				cauldron.setBehaviour(cauldron.getDefaultBehaviours().IDLE);
@@ -129,7 +128,7 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 	}
 
 	private void checkBrew() {
-		if (cauldron.getInputs().size()>1) { //Ignore the wart
+		if (cauldron.getInputs().size() > 1) { //Ignore the wart
 			Optional<BrewData> data = new BrewBuilder(cauldron.getInputs()).build();
 			if (data.isPresent()) {
 				color = data.get().getColor();
@@ -145,7 +144,7 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 		Optional<BrewData> data = new BrewBuilder(cauldron.getInputs()).build();
 		if (data.isPresent()) {
 			data.get().saveToStack(stack);
-		} 
+		}
 		return stack;
 	}
 

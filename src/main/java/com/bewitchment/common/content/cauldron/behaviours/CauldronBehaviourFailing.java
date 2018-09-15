@@ -1,15 +1,14 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
-import java.util.Random;
-
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
 
+import java.util.Random;
+
 public class CauldronBehaviourFailing implements ICauldronBehaviour {
-	
+
 	private static final String ID = "fail";
 	private TileEntityCauldron cauldron;
 
@@ -22,7 +21,7 @@ public class CauldronBehaviourFailing implements ICauldronBehaviour {
 	public void handleParticles(boolean isActiveBehaviour) {
 		if (isActiveBehaviour) {
 			Random r = cauldron.getWorld().rand;
-			cauldron.getWorld().spawnParticle(EnumParticleTypes.SMOKE_NORMAL, cauldron.getPos().getX() + 0.4 + 0.2*r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2*r.nextDouble(), 0, 0, 0);
+			cauldron.getWorld().spawnParticle(EnumParticleTypes.SMOKE_NORMAL, cauldron.getPos().getX() + 0.4 + 0.2 * r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2 * r.nextDouble(), 0, 0, 0);
 		}
 	}
 
@@ -71,7 +70,7 @@ public class CauldronBehaviourFailing implements ICauldronBehaviour {
 
 	@Override
 	public void onDeactivation() {
-		
+
 	}
 
 }

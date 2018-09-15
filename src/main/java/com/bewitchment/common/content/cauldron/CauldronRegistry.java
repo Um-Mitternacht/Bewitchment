@@ -1,31 +1,5 @@
 package com.bewitchment.common.content.cauldron;
 
-import static com.bewitchment.common.lib.LibIngredients.anyLog;
-import static com.bewitchment.common.lib.LibIngredients.blazePowder;
-import static com.bewitchment.common.lib.LibIngredients.dimensionalSand;
-import static com.bewitchment.common.lib.LibIngredients.dirt;
-import static com.bewitchment.common.lib.LibIngredients.ectoplasm;
-import static com.bewitchment.common.lib.LibIngredients.empty_honeycomb;
-import static com.bewitchment.common.lib.LibIngredients.fumeCleansingAura;
-import static com.bewitchment.common.lib.LibIngredients.fumeFieryBreeze;
-import static com.bewitchment.common.lib.LibIngredients.fumeHeavenlyWind;
-import static com.bewitchment.common.lib.LibIngredients.goldNugget;
-import static com.bewitchment.common.lib.LibIngredients.graveyardDust;
-import static com.bewitchment.common.lib.LibIngredients.hoof;
-import static com.bewitchment.common.lib.LibIngredients.normalRitualChalk;
-import static com.bewitchment.common.lib.LibIngredients.sponge;
-import static com.bewitchment.common.lib.LibIngredients.stickyPiston;
-import static com.bewitchment.common.lib.LibIngredients.wormwood;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -37,10 +11,10 @@ import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.crafting.util.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
+import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import com.google.common.collect.HashBiMap;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -57,12 +31,16 @@ import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
+import java.util.*;
+
+import static com.bewitchment.common.lib.LibIngredients.*;
+
 public class CauldronRegistry {
 
 	public static final HashBiMap<IBrewEffect, Potion> BREW_POTION_MAP = HashBiMap.<IBrewEffect, Potion>create(90);
 	public static final IForgeRegistry<IBrewModifier> BREW_MODIFIERS = new RegistryBuilder<IBrewModifier>().setName(new ResourceLocation(LibMod.MOD_ID, "brew modifiers")).setIDRange(0, 200).setType(IBrewModifier.class).create();
-	private static final HashMap<Ingredient, CauldronFoodValue> STEW_REGISTRY = new HashMap<>();
 	public static final ArrayList<CauldronCraftingRecipe> CRAFTING_REGISTRY = new ArrayList<>();
+	private static final HashMap<Ingredient, CauldronFoodValue> STEW_REGISTRY = new HashMap<>();
 	private static final HashMap<Ingredient, IBrewEffect> BREW_INGREDIENT_REGISTRY = new HashMap<>();
 	// The less entries an Ingredient has, the higher priority it will be in the list
 	private static final Comparator<Map.Entry<Ingredient, CauldronFoodValue>> STEW_INGREDIENT_PRIORITY = Map.Entry.<Ingredient, CauldronFoodValue>comparingByKey(Comparator.comparing(i -> i.getMatchingStacks().length)).reversed();
@@ -86,7 +64,7 @@ public class CauldronRegistry {
 	}
 
 	public static void registerCauldronItemCrafting(Fluid fluid, ItemStack output, Ingredient... ingredients) {
-		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME/4, output, ingredients));
+		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, Fluid.BUCKET_VOLUME / 4, output, ingredients));
 	}
 
 	public static void registerCauldronItemCrafting(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredients) {
@@ -217,11 +195,12 @@ public class CauldronRegistry {
 		// Cooking and Processing with Water
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.wax), empty_honeycomb);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.SLIME_BALL), hoof);
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), anyLog);
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), acaciaLog);
 		// Arcane recipes
-		
+
+		registerCauldronItemCrafting(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME, new ItemStack(ModBlocks.goblet, 1, 1), LibIngredients.redstone, LibIngredients.redstone, LibIngredients.redstone, LibIngredients.fumeCloudyOil, LibIngredients.emptyGoblet, LibIngredients.ghastTear);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), normalRitualChalk, normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), normalRitualChalk, normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand,fumeHeavenlyWind, fumeHeavenlyWind);
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), normalRitualChalk, normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand, fumeHeavenlyWind, fumeHeavenlyWind);
 		registerCauldronItemCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), normalRitualChalk, normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), ectoplasm, ectoplasm, graveyardDust, graveyardDust, wormwood, wormwood, dirt, dirt, dirt, dirt);
 		// Banner pattern removal

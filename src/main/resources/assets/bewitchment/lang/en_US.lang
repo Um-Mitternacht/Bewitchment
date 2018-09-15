@@ -360,6 +360,7 @@ fluid.none=Empty
 
 
 tile.goblet.name=Goblet
+tile.goblet_filled.name=Full Goblet
 tile.gem_bowl.name=Gem Bowl
 tile.tarot_table.name=Divination Table
 tile.planks_juniper.name=Juniper Wood Planks
@@ -692,6 +693,7 @@ jei.category.oven=Oven
 jei.category.rituals=Rituals
 jei.category.spinner=Thread Spinning
 jei.category.brewing=Brew Bottling
+jei.category.crafting=Cauldron Crafting
 jei.category.brew_modifiers=Brew Modifier
 jei.ritual.power.flat=%d Altar Power
 jei.ritual.power.tick=%d Altar Power Per Second

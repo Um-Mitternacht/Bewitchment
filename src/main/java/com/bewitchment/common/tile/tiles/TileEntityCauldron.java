@@ -1,11 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.behaviours.DefaultBehaviours;
@@ -14,7 +8,6 @@ import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,11 +16,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -36,6 +25,11 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import javax.annotation.Nullable;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	public static final int DEFAULT_COLOR = 0x42499b;
@@ -43,9 +37,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private NonNullList<ItemStack> ingredients = NonNullList.create();
 	private AxisAlignedBB collectionZone;
 	private CauldronFluidTank tank;
-	
+
 	private IMagicPowerConsumer powerManager = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
-	
+
 	private DefaultBehaviours defaultBehaviours = new DefaultBehaviours();
 	private LinkedList<ICauldronBehaviour> decorators = new LinkedList<>();
 	private ICauldronBehaviour currentBehaviour;
@@ -61,6 +55,14 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		defaultBehaviours.init(this);
 	}
 
+	public static void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
+		if (!player.inventory.addItemStackToInventory(toGive)) {
+			player.dropItem(toGive, false);
+		} else if (player instanceof EntityPlayerMP) {
+			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
+		}
+	}
+
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (playerIn.isSneaking() && playerIn.getHeldItem(hand).isEmpty()) {
@@ -74,11 +76,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					markDirty();
 					syncToClient();
 				}
-			} 
+			}
 		}
-		
+
 		currentBehaviour.playerInteract(playerIn, hand);
-		
+
 		return true;
 	}
 
@@ -89,7 +91,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				effectiveClientSideColor = ColorHelper.blendColor(effectiveClientSideColor, targetColorRGB, 0.92f);
 			}
 		} else {
-			decorators.forEach(d -> d.update(d==currentBehaviour));
+			decorators.forEach(d -> d.update(d == currentBehaviour));
 			if (decorators.stream().allMatch(d -> !d.shouldInputsBeBlocked())) {
 				ItemStack next = gatherNextItemFromTop();
 				if (!next.isEmpty()) {
@@ -110,8 +112,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		return ingredients;
 	}
 
-
-
 	public void addBehaviour(ICauldronBehaviour b) {
 		decorators.add(b);
 	}
@@ -126,7 +126,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			ItemStack next = selectedEntityItem.getItem().splitStack(1);
 			if (selectedEntityItem.getItem().isEmpty()) {
 				selectedEntityItem.setDead();
-				world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f*Math.random()+1));
+				world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f * Math.random() + 1));
 			}
 			return next;
 		}
@@ -136,7 +136,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	public int getColorRGB() {
 		return effectiveClientSideColor;
 	}
-	
+
 	public boolean hasItemsInside() {
 		return !ingredients.isEmpty();
 	}
@@ -151,14 +151,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		markDirty();
 	}
 
-	public static void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
-		if (!player.inventory.addItemStackToInventory(toGive)) {
-			player.dropItem(toGive, false);
-		} else if (player instanceof EntityPlayerMP) {
-			((EntityPlayerMP) player).sendContainerToPlayer(player.inventoryContainer);
-		}
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -179,7 +171,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		}
 		return super.getCapability(capability, facing);
 	}
-	
+
 	public void handleParticles() {
 		decorators.forEach(d -> d.handleParticles(d == currentBehaviour));
 	}
@@ -246,11 +238,11 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
 	public void clearItemInputs() {
 		ingredients.clear();
-		decorators.forEach(d -> d.statusChanged(d==currentBehaviour));
+		decorators.forEach(d -> d.statusChanged(d == currentBehaviour));
 		markDirty();
 		syncToClient();
 	}
-	
+
 	public void setTankLock(boolean canTransfer) {
 		tank.setCanDrain(canTransfer);
 		tank.setCanFill(canTransfer);
@@ -279,7 +271,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		syncToClient();
 	}
 
-	
+
 	public void clearTanks() {
 		tank.setFluid(null);
 		setTankLock(true);

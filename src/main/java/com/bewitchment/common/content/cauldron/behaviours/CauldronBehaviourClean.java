@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron.behaviours;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -38,7 +37,7 @@ public class CauldronBehaviourClean implements ICauldronBehaviour {
 
 	@Override
 	public boolean shouldInputsBeBlocked() {
-		return cauldron.getCurrentBehaviour()==this;
+		return cauldron.getCurrentBehaviour() == this;
 	}
 
 	@Override
@@ -48,11 +47,11 @@ public class CauldronBehaviourClean implements ICauldronBehaviour {
 
 	@Override
 	public void update(boolean isActiveBehaviour) {
-		if (isActiveBehaviour && cauldron.getWorld().getTotalWorldTime()%10==0) {
+		if (isActiveBehaviour && cauldron.getWorld().getTotalWorldTime() % 10 == 0) {
 			cauldron.setTankLock(true);
 			cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).drain(100, true);
 			cauldron.setTankLock(false);
-			if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount==0) {
+			if (!cauldron.getFluid().isPresent() || cauldron.getFluid().get().amount == 0) {
 				cauldron.clearItemInputs();
 				cauldron.clearTanks();
 				cauldron.setBehaviour(cauldron.getDefaultBehaviours().IDLE);
@@ -62,7 +61,7 @@ public class CauldronBehaviourClean implements ICauldronBehaviour {
 
 	@Override
 	public int getColor() {
-		if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().getFluid()==FluidRegistry.LAVA) {
+		if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().getFluid() == FluidRegistry.LAVA) {
 			return cauldron.getDefaultBehaviours().LAVA.getColor();
 		}
 		return 0xb708d8;

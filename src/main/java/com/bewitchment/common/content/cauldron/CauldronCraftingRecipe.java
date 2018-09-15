@@ -1,15 +1,14 @@
 package com.bewitchment.common.content.cauldron;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public abstract class CauldronCraftingRecipe {
 
@@ -44,15 +43,15 @@ public abstract class CauldronCraftingRecipe {
 	}
 
 	public boolean matches(List<ItemStack> stacks, FluidStack fluidstack) {
-		if (fluid != fluidstack.getFluid() || stacks.size()!=ingredients.length) {
+		if (fluid != fluidstack.getFluid() || stacks.size() != ingredients.length) {
 			return false;
 		}
 		ArrayList<Ingredient> newIngredientList = Lists.newArrayList(ingredients);
 		ArrayList<ItemStack> stackList = Lists.newArrayList(stacks);
-		for (int i = ingredients.length - 1; i>=0; i--) {
+		for (int i = ingredients.length - 1; i >= 0; i--) {
 			boolean found = false;
 			Ingredient ing = newIngredientList.get(i);
-			for (int j = stackList.size() - 1; j>=0; j--) {
+			for (int j = stackList.size() - 1; j >= 0; j--) {
 				ItemStack is = stackList.get(j);
 				if (ing.apply(is)) {
 					newIngredientList.remove(i);
@@ -71,19 +70,19 @@ public abstract class CauldronCraftingRecipe {
 	public int getRequiredFluidAmount() {
 		return fluidAmount;
 	}
-	
+
 	public List<List<ItemStack>> getJEIInput() {
 		if (jeiCache == null) {
 			jeiCache = Lists.newArrayList();
 			HashMap<Ingredient, Integer> sizes = new HashMap<>();
-			for (Ingredient i:ingredients) {
+			for (Ingredient i : ingredients) {
 				if (sizes.containsKey(i)) {
-					sizes.put(i, sizes.get(i)+1);
+					sizes.put(i, sizes.get(i) + 1);
 				} else {
 					sizes.put(i, 1);
 				}
 			}
-			for (Ingredient i:sizes.keySet()) {
+			for (Ingredient i : sizes.keySet()) {
 				List<ItemStack> l = Lists.newArrayList(i.getMatchingStacks());
 				l.forEach(is -> is.setCount(sizes.get(i)));
 				jeiCache.add(l);
@@ -91,7 +90,7 @@ public abstract class CauldronCraftingRecipe {
 		}
 		return jeiCache;
 	}
-	
+
 	public List<List<FluidStack>> getJEIFluidInput() {
 		List<List<FluidStack>> result = Lists.newArrayList();
 		result.add(Lists.newArrayList(new FluidStack(fluid, fluidAmount)));
