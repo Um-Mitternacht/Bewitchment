@@ -25,7 +25,7 @@ import javax.annotation.Nonnull;
 public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 
 	public ItemSilverAxe() {
-		super(ModMaterials.TOOL_SILVER, ModMaterials.TOOL_SILVER.getAttackDamage(), ModMaterials.TOOL_SILVER.getEfficiency());
+		super(ModMaterials.TOOL_SILVER, 8.0f, -3.1f);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_AXE);
 		setUnlocalizedName(LibItemName.SILVER_AXE);

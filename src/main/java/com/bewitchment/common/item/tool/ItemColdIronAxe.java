@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 public class ItemColdIronAxe extends ItemAxe implements IModelRegister {
 
 	public ItemColdIronAxe() {
-		super(ModMaterials.TOOL_COLD_IRON, ModMaterials.TOOL_COLD_IRON.getAttackDamage(), ModMaterials.TOOL_COLD_IRON.getEfficiency());
+		super(ModMaterials.TOOL_COLD_IRON, 8.0f, -3.1f);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.COLD_IRON_AXE);
 		setUnlocalizedName(LibItemName.COLD_IRON_AXE);
