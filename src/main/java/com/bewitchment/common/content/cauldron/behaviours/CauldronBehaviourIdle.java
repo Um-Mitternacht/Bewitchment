@@ -54,8 +54,8 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 					double posZ = pos.getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
 					Bewitchment.proxy.spawnParticle(ParticleF.CAULDRON_BUBBLE, posX, level, posZ, 0, 0, 0, cauldron.getColorRGB());
 				}
-				if (rand.nextInt(3) == 0) {
-					world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.5F + rand.nextFloat() * 0.8f, true);
+				if (rand.nextInt(4) == 0) {
+					world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOIL, SoundCategory.BLOCKS, rand.nextFloat() * 0.1F, 0.5F + rand.nextFloat() * 0.8f, true);
 				}
 			} else if (fluid == FluidRegistry.LAVA) {
 				if (rand.nextInt(5) == 0) {
