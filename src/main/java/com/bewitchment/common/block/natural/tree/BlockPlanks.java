@@ -15,7 +15,7 @@ public class BlockPlanks extends BlockMod {
 
 	public BlockPlanks(String name) {
 		super(name, Material.WOOD);
-    this.setHardness(2.0f);
+		this.setHardness(2.0f);
 		this.setHarvestLevel("axe", 0);
 		this.setSoundType(SoundType.WOOD);
 	}

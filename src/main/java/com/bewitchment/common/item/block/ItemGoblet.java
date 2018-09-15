@@ -2,7 +2,6 @@ package com.bewitchment.common.item.block;
 
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.block.ModBlocks;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -16,7 +15,7 @@ public class ItemGoblet extends ItemBlock implements IModelRegister {
 		this.setHasSubtypes(true);
 		this.setRegistryName(ModBlocks.goblet.getRegistryName());
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if (stack.getMetadata() != 1) {
@@ -24,7 +23,7 @@ public class ItemGoblet extends ItemBlock implements IModelRegister {
 		}
 		return super.getUnlocalizedName(stack) + "_filled";
 	}
-	
+
 	@Override
 	public int getMetadata(int damage) {
 		return damage;

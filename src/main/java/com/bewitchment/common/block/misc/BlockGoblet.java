@@ -84,7 +84,7 @@ public class BlockGoblet extends BlockMod {
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(FULL) ? 1 : 0;
 	}
-	
+
 	@Override
 	public int damageDropped(IBlockState state) {
 		return getMetaFromState(state);
@@ -104,7 +104,7 @@ public class BlockGoblet extends BlockMod {
 	public EnumOffsetType getOffsetType() {
 		return EnumOffsetType.XZ;
 	}
-	
+
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
 		items.add(new ItemStack(this, 1, 0));
