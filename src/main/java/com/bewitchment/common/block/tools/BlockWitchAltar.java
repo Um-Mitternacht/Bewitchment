@@ -16,6 +16,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -114,7 +115,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		if (state.getBlock().hasTileEntity(state)) {
 			TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
-			return state.withProperty(COLOR, tea.getColor());
+			return state.withProperty(COLOR, tea.getColor().ordinal());
 		} else if (state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {
 			for (EnumFacing h : EnumFacing.HORIZONTALS) {
 				IBlockState stateAdj = worldIn.getBlockState(pos.offset(h));
@@ -255,6 +256,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			} else if (!worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty()) {
 				if (state.getBlock().hasTileEntity(state)) {
 					TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(pos);
+					tea.forceFullScan();
 					IMagicPowerContainer magicPoints = tea.getCapability(IMagicPowerContainer.CAPABILITY, null);
 					playerIn.sendStatusMessage(new TextComponentString(magicPoints.getAmount() + "/" + magicPoints.getMaxAmount() + " (x" + tea.getCurrentGain() + ")"), true);
 					return true;
@@ -281,7 +283,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 	public void setColor(World world, BlockPos pos, int newColor) {
 		if (world.getBlockState(pos).getValue(ALTAR_TYPE).equals(AltarMultiblockType.TILE)) {
 			TileEntityWitchAltar tea = (TileEntityWitchAltar) world.getTileEntity(pos);
-			tea.setColor(newColor);
+			tea.setColor(EnumDyeColor.values()[newColor]);
 			notifyAround(pos, world);
 		} else if (world.getBlockState(pos).getValue(ALTAR_TYPE).equals(AltarMultiblockType.CORNER)) {
 			for (EnumFacing ef : EnumFacing.HORIZONTALS) {

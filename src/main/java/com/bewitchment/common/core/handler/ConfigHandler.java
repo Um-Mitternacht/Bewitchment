@@ -34,6 +34,10 @@ public final class ConfigHandler {
 	@Comment("Customize the client-side only settings")
 	@Config.LangKey("bewitchment.config.client")
 	public static ClientConfig CLIENT = new ClientConfig();
+	@Comment("The lower this number, the more time it takes for an altar to realize something has changed around it, the better the TPS")
+	@Config.RangeInt(min = 1, max = 46656)
+	//46656 is the max amount of blocks in altar range, meaning it will scan once per tick. More than that is useless
+	public static int altar_scan_blocks_per_tick = 80;
 
 	@SubscribeEvent
 	public static void onConfigChanged(ConfigChangedEvent evt) {
