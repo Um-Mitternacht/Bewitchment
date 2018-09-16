@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SOS",
+    "SWS",
+    "WSW"
+  ],
+  "key": {
+    "S": {
+      "item": "bewitchment:witches_stitching"
+    },
+    "W": {
+      "item": "bewitchment:wool_of_bat"
+    },
+    "O": {
+      "item": "bewitchment:fume",
+      "data": 20
+    }	
+  },
+  "result": {
+    "item": "bewitchment:mantle",
+    "data": 0
+  }
+}
