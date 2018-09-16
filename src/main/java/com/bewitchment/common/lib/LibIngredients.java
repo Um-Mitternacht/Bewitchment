@@ -5,6 +5,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.oredict.OreIngredient;
@@ -30,6 +31,9 @@ public class LibIngredients {
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
 	public static Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
 	public static Ingredient ghastTear = Ingredient.fromItem(Items.GHAST_TEAR);
+	public static Ingredient obsidian = Ingredient.fromItem(Item.getItemFromBlock(Blocks.OBSIDIAN));
+	public static Ingredient fire_charge = Ingredient.fromItem(Items.FIRE_CHARGE);
+
 
 	public static Ingredient dimensionalSand = Ingredient.fromItem(ModItems.dimensional_sand);
 	public static Ingredient normalRitualChalk = Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk));

@@ -1,14 +1,32 @@
 package com.bewitchment.common.content.ritual;
 
+import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
+import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
+
+import java.util.Arrays;
+
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.content.ritual.rituals.*;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationWitch;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationWither;
+import com.bewitchment.common.content.ritual.rituals.RitualDrawing;
+import com.bewitchment.common.content.ritual.rituals.RitualFlames;
+import com.bewitchment.common.content.ritual.rituals.RitualGateway;
+import com.bewitchment.common.content.ritual.rituals.RitualHighMoon;
+import com.bewitchment.common.content.ritual.rituals.RitualInfusion;
+import com.bewitchment.common.content.ritual.rituals.RitualNetherPortal;
+import com.bewitchment.common.content.ritual.rituals.RitualPerception;
+import com.bewitchment.common.content.ritual.rituals.RitualSandsTime;
 import com.bewitchment.common.crafting.util.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
+import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,15 +36,15 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
 
-import java.util.Arrays;
-
-import static com.bewitchment.api.ritual.EnumGlyphType.*;
-
 public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, 
+	draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, 
+	infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, 
+	deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
+	nether_portal;
 
 	public static void init() {
 
@@ -148,6 +166,7 @@ public class ModRituals {
 				0,
 				TileEntityGlyph.big);
 		gateway = new RitualGateway(rl("gateway"), of(Ingredient.fromItem(ModItems.location_stone)), ofs(), -1, circles(ENDER, NORMAL, ENDER), 4000, 8);
+		nether_portal = new RitualNetherPortal(rl("nether_portal"), of(LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.fire_charge), ofs(), 200, circles(NETHER, null, null), 4000, 1);
 
 		ResourceLocation infusions = new ResourceLocation(LibMod.MOD_ID, "infusion");
 		infusion_overworld = new RitualInfusion(infusions, of(Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.petrichor_odour.ordinal()))), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, DefaultInfusions.OVERWORLD);
@@ -171,7 +190,7 @@ public class ModRituals {
 				draw_circle_large, draw_circle_medium, draw_circle_small,
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
-				juniper_broom, yew_broom, cypress_broom, gateway
+				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
