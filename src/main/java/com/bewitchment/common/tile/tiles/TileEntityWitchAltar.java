@@ -1,9 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.HashMap;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
@@ -15,7 +11,6 @@ import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -34,27 +29,30 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
 
+import javax.annotation.Nullable;
+import java.util.HashMap;
+
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20;
 	private int gain = 1;
-	
+
 	//Scan variables, no need to save these
 	private int dx = -RADIUS, dy = -RADIUS, dz = -RADIUS;
 	private HashMap<Block, Integer> map = new HashMap<Block, Integer>();
-	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0,0,0);
+	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0, 0, 0);
 	private boolean complete = false;
-	
-	
+
+
 	private EnumDyeColor color = EnumDyeColor.RED;
 	private DefaultMPContainer storage = new DefaultMPContainer(0);
 
 	public TileEntityWitchAltar() {
 	}
-	
+
 	@Override
 	public void onLoad() {
-		if(!world.isRemote) {
+		if (!world.isRemote) {
 			forceFullScan();
 		}
 	}
@@ -68,7 +66,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	public void update() {
 		if (!getWorld().isRemote) {
 			scanNature();
-			if (storage.getAmount()<storage.getMaxAmount()) {
+			if (storage.getAmount() < storage.getMaxAmount()) {
 				storage.fill(gain);
 				markDirty();
 			}
@@ -76,12 +74,12 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	}
 
 	private void scanNature() {
-		for (int i = 0; i<ConfigHandler.altar_scan_blocks_per_tick; i++) {
+		for (int i = 0; i < ConfigHandler.altar_scan_blocks_per_tick; i++) {
 			getNextCycle();
 			performCurrentCycle();
 		}
 	}
-	
+
 	public void forceFullScan() {
 		dx = -RADIUS;
 		dy = -RADIUS;
@@ -92,14 +90,14 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			performCurrentCycle();
 		}
 	}
-	
+
 	private void performCurrentCycle() {
 		updateScore();
 		if (complete) {
 			refreshNature();
 		}
 	}
-	
+
 	private void getNextCycle() {
 		complete = false;
 		dx++;
@@ -117,7 +115,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		checking.setPos(getPos().getX() + dx, getPos().getY() + dy, getPos().getZ() + dz);
 	}
-	
+
 	private void updateScore() {
 		int score = getPowerValue(checking);
 		if (score > 0) {
@@ -130,7 +128,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private void refreshNature() {
 		gain = 1;
-		int maxPower = map.values().parallelStream().reduce(0, (a,b) -> a+b);
+		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
 		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/candle, 2=vase/gemBowl

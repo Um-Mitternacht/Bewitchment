@@ -5,7 +5,6 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-
 import com.bewitchment.client.render.entity.model.ModelMantle;
 import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.item.ItemMod;
@@ -62,7 +61,6 @@ public class ItemMantle extends ItemMod implements IBauble, IRenderBauble {
 	public boolean isDamageable() {
 		return false;
 	}
-
 
 
 	@Override
@@ -124,7 +122,7 @@ public class ItemMantle extends ItemMod implements IBauble, IRenderBauble {
 			GL11.glScaled(0.125, 0.125, 0.125);
 			IRenderBauble.Helper.translateToChest();
 			IRenderBauble.Helper.defaultTransforms();
-				model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
+			model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
 			GL11.glPopMatrix();
 		}
 	}

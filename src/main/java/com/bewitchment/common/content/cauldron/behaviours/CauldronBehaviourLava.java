@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.cauldron.behaviours;
 
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-
 import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -91,7 +90,7 @@ public class CauldronBehaviourLava implements ICauldronBehaviour {
 					stack.setTagCompound(fireworksBaseTag);
 
 				}
-				EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(cauldron.getWorld(), cauldron.getPos().getX()+0.5, cauldron.getPos().getY()+0.5, cauldron.getPos().getZ()+0.5, stack);
+				EntityFireworkRocket entityfireworkrocket = new EntityFireworkRocket(cauldron.getWorld(), cauldron.getPos().getX() + 0.5, cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.5, stack);
 				if (isCharge) {
 					NBTTagCompound hackTag = new NBTTagCompound();
 					entityfireworkrocket.writeEntityToNBT(hackTag);
