@@ -12,6 +12,7 @@ import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
+import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.tile.ModTileEntity;
 
@@ -35,13 +36,27 @@ import net.minecraftforge.common.capabilities.Capability;
 
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
-	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
-	int gain = 0;
-	EnumDyeColor color = EnumDyeColor.RED;
-	int refreshTimer = REFRESH_TIME;
+	private static final int RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20;
+	private int gain = 1;
+	
+	//Scan variables, no need to save these
+	private int dx = -RADIUS, dy = -RADIUS, dz = -RADIUS;
+	private HashMap<Block, Integer> map = new HashMap<Block, Integer>();
+	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0,0,0);
+	private boolean complete = false;
+	
+	
+	private EnumDyeColor color = EnumDyeColor.RED;
 	private DefaultMPContainer storage = new DefaultMPContainer(0);
 
 	public TileEntityWitchAltar() {
+	}
+	
+	@Override
+	public void onLoad() {
+		if(!world.isRemote) {
+			forceFullScan();
+		}
 	}
 
 	@Override
@@ -52,12 +67,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!getWorld().isRemote) {
-			refreshTimer++;
-			if (refreshTimer >= REFRESH_TIME) {
-				refreshTimer = 0;
-				refreshNature();
-				markDirty();
-			}
+			scanNature();
 			if (storage.getAmount()<storage.getMaxAmount()) {
 				storage.fill(gain);
 				markDirty();
@@ -65,28 +75,62 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 	}
 
+	private void scanNature() {
+		for (int i = 0; i<ConfigHandler.altar_scan_blocks_per_tick; i++) {
+			getNextCycle();
+			performCurrentCycle();
+		}
+	}
+	
+	public void forceFullScan() {
+		dx = -RADIUS;
+		dy = -RADIUS;
+		dz = -RADIUS;
+		complete = false;
+		while (!complete) {
+			getNextCycle();
+			performCurrentCycle();
+		}
+	}
+	
+	private void performCurrentCycle() {
+		updateScore();
+		if (complete) {
+			refreshNature();
+		}
+	}
+	
+	private void getNextCycle() {
+		complete = false;
+		dx++;
+		if (dx > RADIUS) {
+			dx = -RADIUS;
+			dy++;
+		}
+		if (dy > RADIUS) {
+			dy = -RADIUS;
+			dz++;
+		}
+		if (dz > RADIUS) {
+			dz = -RADIUS;
+			complete = true;
+		}
+		checking.setPos(getPos().getX() + dx, getPos().getY() + dy, getPos().getZ() + dz);
+	}
+	
+	private void updateScore() {
+		int score = getPowerValue(checking);
+		if (score > 0) {
+			Block block = getWorld().getBlockState(checking).getBlock();
+			int currentScore = 0;
+			if (map.containsKey(block)) currentScore = map.get(block);
+			if (currentScore < MAX_SCORE_PER_CATEGORY) map.put(block, currentScore + score);
+		}
+	}
+
 	private void refreshNature() {
 		gain = 1;
-		int maxPower;
-		HashMap<Block, Integer> map = new HashMap<Block, Integer>();
-		
-		BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0,0,0);
-
-		for (int i = -RADIUS; i <= RADIUS; i++) {
-			for (int j = -RADIUS; j <= RADIUS; j++) {
-				for (int k = -RADIUS; k <= RADIUS; k++) {
-					checking.setPos(getPos().getX() + i, getPos().getY() + j, getPos().getZ() + k);
-					int score = getPowerValue(checking);
-					if (score > 0) {
-						Block block = getWorld().getBlockState(checking).getBlock();
-						int currentScore = 0;
-						if (map.containsKey(block)) currentScore = map.get(block);
-						if (currentScore < MAX_SCORE_PER_CATEGORY) map.put(block, currentScore + score);
-					}
-				}
-			}
-		}
-		maxPower = map.values().parallelStream().mapToInt(i -> i).sum();
+		int maxPower = map.values().parallelStream().reduce(0, (a,b) -> a+b);
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
 		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/candle, 2=vase/gemBowl
@@ -101,6 +145,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			}
 		maxPower *= multiplier;
 		storage.setMaxAmount(maxPower);
+		map.clear();
+		markDirty();
 	}
 
 	public int getCurrentGain() {
@@ -239,12 +285,14 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setTag("mp", storage.saveNBTTag());
+		tag.setInteger("gain", gain);
 		writeModSyncDataNBT(tag);
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		storage.loadFromNBT(tag.getCompoundTag("mp"));
+		gain = tag.getInteger("gain");
 		readModSyncDataNBT(tag);
 	}
 
