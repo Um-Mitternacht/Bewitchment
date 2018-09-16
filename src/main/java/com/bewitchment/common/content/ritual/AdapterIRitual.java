@@ -1,8 +1,16 @@
 package com.bewitchment.common.content.ritual;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+import com.google.common.collect.Lists;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,11 +24,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
@@ -135,35 +138,48 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 	}
 
 	public List<List<ItemStack>> getJeiInput() {
-		if (jei_cache == null) generateCache();
+		if (jei_cache == null) {
+			generateCache();
+		}
 		return jei_cache;
 	}
 
-	private void generateCache() {
-		jei_cache = new ArrayList<List<ItemStack>>();
-		for (Ingredient i : ritual.getInput()) {
-			jei_cache.add(Arrays.asList(i.getMatchingStacks()));
+	private void generateCache() { //FIXME LibIngredients.anyDye has the wrong stack number
+		jei_cache = Lists.newArrayList();
+
+		HashMap<Ingredient, Integer> sizes = new HashMap<>();
+		for (Ingredient i : getInput()) {
+			if (sizes.containsKey(i)) {
+				sizes.put(i, sizes.get(i) + 1);
+			} else {
+				sizes.put(i, 1);
+			}
+		}
+		for (Ingredient i : sizes.keySet()) {
+			List<ItemStack> l = Lists.newArrayList(i.getMatchingStacks());
+			l.forEach(is -> is.setCount(sizes.get(i)));
+			jei_cache.add(l);
 		}
 	}
 
 	public NonNullList<ItemStack> getOutputRaw() {
-		return ritual.getOutputRaw();
-	}
+	return ritual.getOutputRaw();
+}
 
-	@Override
-	public AdapterIRitual setRegistryName(ResourceLocation name) {
-		ritual.setRegistryName(name);
-		return this;
-	}
+@Override
+public AdapterIRitual setRegistryName(ResourceLocation name) {
+	ritual.setRegistryName(name);
+	return this;
+}
 
-	@Override
-	public ResourceLocation getRegistryName() {
-		return ritual.getRegistryName();
-	}
+@Override
+public ResourceLocation getRegistryName() {
+	return ritual.getRegistryName();
+}
 
-	@Override
-	public Class<AdapterIRitual> getRegistryType() {
-		return AdapterIRitual.class;
-	}
+@Override
+public Class<AdapterIRitual> getRegistryType() {
+	return AdapterIRitual.class;
+}
 
 }
