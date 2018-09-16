@@ -1,9 +1,0 @@
-{
-  "parent": "bewitchment:block/barrels/barrel",
-  "textures": {
-    "particle": "blocks/log_spruce",
-    "side": "blocks/log_spruce",
-    "front": "blocks/log_spruce_top",
-    "tap": "blocks/anvil_base"
-  }
-}

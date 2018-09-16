@@ -29,8 +29,6 @@ public class GuiHandler implements IGuiHandler {
 				return tile instanceof TileEntityOven ? new ContainerOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile instanceof TileEntityThreadSpinner ? new ContainerThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
-			case BARREL:
-				return tile instanceof TileEntityBarrel ? new ContainerBarrel(player.inventory, (TileEntityBarrel) tile) : null;
 			case TAROT:
 				return new ContainerFake();// No container
 			default:
@@ -49,8 +47,6 @@ public class GuiHandler implements IGuiHandler {
 				return tile instanceof TileEntityOven ? new GuiOven(player.inventory, (TileEntityOven) tile) : null;
 			case THREAD_SPINNER:
 				return tile instanceof TileEntityThreadSpinner ? new GuiThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
-			case BARREL:
-				return tile instanceof TileEntityBarrel ? new GuiBarrel(player.inventory, (TileEntityBarrel) tile) : null;
 			case TAROT:
 				return tile instanceof TileEntityTarotsTable ? new GuiTarots() : null;
 			default:

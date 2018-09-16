@@ -337,27 +337,6 @@ tile.spanish_moss.name=Spanish Moss
 tile.moonbell.name=Moonbell Flower
 tile.raging_grass.name=Raging Grass
 
-//Barrels
-tile.barrel.name=Barrel
-tile.barrel_oak.name=Oak Barrel
-tile.barrel_birch.name=Birch Barrel
-tile.barrel_spruce.name=Spruce Barrel
-tile.barrel_jungle.name=Jungle Barrel
-tile.barrel_acacia.name=Acacia Barrel
-tile.barrel_big_oak.name=Dark Oak Barrel
-tile.barrel_elder.name=Elder Barrel
-tile.barrel_juniper.name=Juniper Barrel
-tile.barrel_yew.name=Yew Barrel
-tile.barrel_cypress.name=Cypress Barrel
-tile.barrel.full=%s (%d/%d)
-tile.barrel.empty=Empty
-tile.barrel.altar.none_required=No magic power required
-tile.barrel.altar.no_altar=There are no magic sources nearby
-tile.barrel.altar.working=Charging
-tile.barrel.altar.done=Charged
-fluid.quantity.mB=%d mB
-fluid.none=Empty
-
 
 tile.goblet.name=Goblet
 tile.goblet_filled.name=Full Goblet
