@@ -1,5 +1,9 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.HashMap;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
@@ -8,7 +12,9 @@ import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
+import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.tile.ModTileEntity;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -26,15 +32,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.util.HashMap;
 
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int REFRESH_TIME = 200, RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20; // TODO make refresh_time configurable
-	int gain = 0, color = EnumDyeColor.RED.ordinal();
+	int gain = 0;
+	EnumDyeColor color = EnumDyeColor.RED;
 	int refreshTimer = REFRESH_TIME;
 	private DefaultMPContainer storage = new DefaultMPContainer(0);
 
@@ -54,9 +57,11 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				refreshTimer = 0;
 				refreshNature();
 				markDirty();
-				syncToClient();
 			}
-			storage.fill(gain);
+			if (storage.getAmount()<storage.getMaxAmount()) {
+				storage.fill(gain);
+				markDirty();
+			}
 		}
 	}
 
@@ -64,11 +69,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		gain = 1;
 		int maxPower;
 		HashMap<Block, Integer> map = new HashMap<Block, Integer>();
+		
+		BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0,0,0);
 
 		for (int i = -RADIUS; i <= RADIUS; i++) {
 			for (int j = -RADIUS; j <= RADIUS; j++) {
 				for (int k = -RADIUS; k <= RADIUS; k++) {
-					BlockPos checking = getPos().add(i, j, k);
+					checking.setPos(getPos().getX() + i, getPos().getY() + j, getPos().getZ() + k);
 					int score = getPowerValue(checking);
 					if (score > 0) {
 						Block block = getWorld().getBlockState(checking).getBlock();
@@ -79,7 +86,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				}
 			}
 		}
-		maxPower = map.values().stream().mapToInt(i -> i).sum();
+		maxPower = map.values().parallelStream().mapToInt(i -> i).sum();
 		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
 		double multiplier = 1;
 		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/candle, 2=vase/gemBowl
@@ -192,18 +199,17 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		if (blockState.getBlock().equals(Blocks.PUMPKIN)) return 30;
 		ItemStack stack = new ItemStack(blockState.getBlock());
 		if (!stack.isEmpty()) {
-			int[] ids = OreDictionary.getOreIDs(stack);
-			for (int id : ids) if (OreDictionary.getOreName(id).equals("logWood")) return 15;
-			for (int id : ids) if (OreDictionary.getOreName(id).equals("treeLeaves")) return 10;
+			if (LibIngredients.anyLog.apply(stack)) return 15;
+			if (LibIngredients.anyLeaf.apply(stack)) return 8;
 		}
 		return 0;
 	}
 
-	public int getColor() {
+	public EnumDyeColor getColor() {
 		return color;
 	}
 
-	public void setColor(int newColor) {
+	public void setColor(EnumDyeColor newColor) {
 		color = newColor;
 		markDirty();
 	}
@@ -232,25 +238,23 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setInteger("color", color);
 		tag.setTag("mp", storage.saveNBTTag());
+		writeModSyncDataNBT(tag);
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
-		color = tag.getInteger("color");
-//		storage.loadFromNBT(tag.getCompoundTag("mp"));
+		storage.loadFromNBT(tag.getCompoundTag("mp"));
+		readModSyncDataNBT(tag);
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setInteger("color", color);
-//		tag.setTag("mp", storage.saveNBTTag());
+		tag.setInteger("color", color.ordinal());
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		color = tag.getInteger("color");
-		storage.loadFromNBT(tag.getCompoundTag("mp"));
+		color = EnumDyeColor.values()[tag.getInteger("color")];
 	}
 }

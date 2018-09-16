@@ -19,6 +19,7 @@ public class LibIngredients {
 	public static Ingredient stickyPiston = Ingredient.fromStacks(new ItemStack(Blocks.STICKY_PISTON, 1, 0));
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));
 	public static Ingredient anyLog = new OreIngredient("logWood");
+	public static Ingredient anyLeaf = new OreIngredient("treeLeaves");
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
 	public static Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
 	public static Ingredient ghastTear = Ingredient.fromItem(Items.GHAST_TEAR);
