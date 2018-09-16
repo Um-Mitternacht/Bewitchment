@@ -1,14 +1,13 @@
 package com.bewitchment.client.render.entity.model;
 
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
 
-import baubles.api.render.IRenderBauble;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 
 
 /**
@@ -195,12 +194,13 @@ public class ModelMantle extends ModelBiped {
     	super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
     	this.cape.render(1);
         this.hood.render(1);
+        //Might want to use netHeadYaw to rotate it?
         cape.rotateAngleX = limbSwingAmount;
         capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount*1.5F;
         capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
         this.hood.rotateAngleX = bipedHead.rotateAngleX;
         this.hood.rotateAngleY = bipedHead.rotateAngleY;
-        System.out.println(cape.rotateAngleY);
+        Log.i(""+cape.rotateAngleY);
     }
     
     
