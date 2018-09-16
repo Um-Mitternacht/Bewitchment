@@ -24,6 +24,7 @@ public class LibIngredients {
 	public static Ingredient anySpice = new OreIngredient("listAllspice");
 	public static Ingredient anyFruit = new OreIngredient("listAllfruit");
 	public static Ingredient anyVegetable = new OreIngredient("listAllveggie");
+	public static Ingredient anyDye = new OreIngredient("dye");
 	public static Ingredient pumpkin = Ingredient.fromStacks(new ItemStack(Blocks.PUMPKIN, 1, 0));
 	public static Ingredient watermelon = Ingredient.fromStacks(new ItemStack(Blocks.MELON_BLOCK, 1, 0));
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
