@@ -11,8 +11,8 @@
       "ore": "nuggetSilver"
     },
     "E": {
-      "item": "bewitchment:gem",
-      "data": 1
+      "item": "minecraft:emerald",
+      "data": 0
     }
   },
   "result": {
