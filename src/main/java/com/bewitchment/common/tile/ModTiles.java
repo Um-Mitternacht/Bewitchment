@@ -17,7 +17,6 @@ public final class ModTiles {
 	private static final ResourceLocation OVEN = new ResourceLocation(LibMod.MOD_ID, "oven");
 	private static final ResourceLocation WITCH_ALTAR = new ResourceLocation(LibMod.MOD_ID, "witch_altar");
 	private static final ResourceLocation THREAD_SPINNER = new ResourceLocation(LibMod.MOD_ID, "thread_spinner");
-	private static final ResourceLocation BARREL = new ResourceLocation(LibMod.MOD_ID, "barrel");
 	private static final ResourceLocation GLYPH = new ResourceLocation(LibMod.MOD_ID, "glyph");
 	private static final ResourceLocation CRYSTAL_BALL = new ResourceLocation(LibMod.MOD_ID, "crystal_ball");
 	private static final ResourceLocation TAROTS_TABLE = new ResourceLocation(LibMod.MOD_ID, "tarots_table");
@@ -34,7 +33,6 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileEntityOven.class, OVEN);
 		GameRegistry.registerTileEntity(TileEntityWitchAltar.class, WITCH_ALTAR);
 		GameRegistry.registerTileEntity(TileEntityThreadSpinner.class, THREAD_SPINNER);
-		GameRegistry.registerTileEntity(TileEntityBarrel.class, BARREL);
 		GameRegistry.registerTileEntity(TileEntityGlyph.class, GLYPH);
 		GameRegistry.registerTileEntity(TileEntityCrystalBall.class, CRYSTAL_BALL);
 		GameRegistry.registerTileEntity(TileEntityTarotsTable.class, TAROTS_TABLE);

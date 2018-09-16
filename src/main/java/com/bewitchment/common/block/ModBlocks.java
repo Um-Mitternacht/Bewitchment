@@ -114,7 +114,6 @@ public final class ModBlocks {
 	public static final Block moonbell = null;
 	public static final Block witch_altar = null;
 	public static final Block thread_spinner = null;
-	public static final Block barrel = null;
 	public static final Block ritual_glyphs = null;
 	public static final Block crystal_ball = null;
 	public static final Block embittered_bricks = null;
@@ -202,7 +201,6 @@ public final class ModBlocks {
 				new BlockBeehive(),
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
 				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
-				new BlockBarrel(LibBlockName.BARREL),
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
 				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
 				new BlockGoblet(LibBlockName.GOBLET),

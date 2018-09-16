@@ -316,26 +316,6 @@ tile.crop_sagebrush.name=Урожай полыни
 tile.moonbell.name=Moonbell Flower
 tile.raging_grass.name=Raging Grass
 
-//Barrels
-tile.barrel.name=Бочка
-tile.barrel_oak.name=Дубовая бочка
-tile.barrel_birch.name=Березовая бочка
-tile.barrel_spruce.name=Еловая бочка
-tile.barrel_jungle.name=Тропическая бочка
-tile.barrel_acacia.name=Акациевая бочка
-tile.barrel_big_oak.name=Темная бочка
-tile.barrel_elder.name=Бузинная бочка
-tile.barrel_juniper.name=Можжевельниковая бочка
-tile.barrel_yew.name=Тисовая бочка
-tile.barrel_cypress.name=Кипарисовая бочка
-tile.barrel.full=%s (%d/%d)
-tile.barrel.empty=Пусто
-tile.barrel.altar.none_required=Магическая сила не требуется
-tile.barrel.altar.no_altar=Рядом нет волшебных источников
-tile.barrel.altar.working=Зарядка
-tile.barrel.altar.done=Заряженно
-fluid.quantity.mB=%d mB
-fluid.none=Пусто
 
 
 tile.goblet.name=Кубок
