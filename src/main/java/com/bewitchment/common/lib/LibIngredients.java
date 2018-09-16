@@ -3,7 +3,6 @@ package com.bewitchment.common.lib;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -22,12 +21,12 @@ public class LibIngredients {
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));
 	public static Ingredient anyLog = new OreIngredient("logWood");
 	public static Ingredient anyLeaf = new OreIngredient("treeLeaves");
-//	public static Ingredient anyHerb = new OreIngredient("listAllherb");
+	//	public static Ingredient anyHerb = new OreIngredient("listAllherb");
 //	public static Ingredient anySpice = new OreIngredient("listAllspice");
 //	public static Ingredient anyFruit = new OreIngredient("listAllfruit");
 //	public static Ingredient anyVegetable = new OreIngredient("listAllveggie");
 	public static Ingredient anyDye = new OreIngredient("dye");
-//	public static Ingredient pumpkin = Ingredient.fromStacks(new ItemStack(Blocks.PUMPKIN, 1, 0));
+	//	public static Ingredient pumpkin = Ingredient.fromStacks(new ItemStack(Blocks.PUMPKIN, 1, 0));
 //	public static Ingredient watermelon = Ingredient.fromStacks(new ItemStack(Blocks.MELON_BLOCK, 1, 0));
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
 	public static Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
@@ -68,7 +67,7 @@ public class LibIngredients {
 	public static Ingredient blazeRod = Ingredient.fromItem(Items.BLAZE_ROD);
 	public static Ingredient coal = Ingredient.fromItem(Items.COAL);
 	public static Ingredient whiteSage = Ingredient.fromItem(ModItems.white_sage);
-	public static Ingredient sagebrush=Ingredient.fromItem(ModItems.sagebrush);
+	public static Ingredient sagebrush = Ingredient.fromItem(ModItems.sagebrush);
 	public static Ingredient salt = Ingredient.fromItem(ModItems.salt);
 	public static Ingredient paper = Ingredient.fromItem(Items.PAPER);
 	public static Ingredient wax = Ingredient.fromItem(ModItems.wax);
@@ -83,6 +82,6 @@ public class LibIngredients {
 	public static Ingredient magicSalve = Ingredient.fromItem(ModItems.magic_salve);
 	public static Ingredient elytra = Ingredient.fromItem(Items.ELYTRA);
 	public static Ingredient anyString = new OreIngredient("string");
-	
-	
+
+
 }

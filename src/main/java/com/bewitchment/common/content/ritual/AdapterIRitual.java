@@ -1,16 +1,9 @@
 package com.bewitchment.common.content.ritual;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import com.google.common.collect.Lists;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -24,6 +17,11 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
@@ -163,23 +161,23 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 	}
 
 	public NonNullList<ItemStack> getOutputRaw() {
-	return ritual.getOutputRaw();
-}
+		return ritual.getOutputRaw();
+	}
 
-@Override
-public AdapterIRitual setRegistryName(ResourceLocation name) {
-	ritual.setRegistryName(name);
-	return this;
-}
+	@Override
+	public AdapterIRitual setRegistryName(ResourceLocation name) {
+		ritual.setRegistryName(name);
+		return this;
+	}
 
-@Override
-public ResourceLocation getRegistryName() {
-	return ritual.getRegistryName();
-}
+	@Override
+	public ResourceLocation getRegistryName() {
+		return ritual.getRegistryName();
+	}
 
-@Override
-public Class<AdapterIRitual> getRegistryType() {
-	return AdapterIRitual.class;
-}
+	@Override
+	public Class<AdapterIRitual> getRegistryType() {
+		return AdapterIRitual.class;
+	}
 
 }

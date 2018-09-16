@@ -1,15 +1,10 @@
 package com.bewitchment.common.item.equipment.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.bewitchment.common.item.ItemMod;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -26,6 +21,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemMantle extends ItemMod implements IBauble {
 
@@ -56,7 +54,6 @@ public class ItemMantle extends ItemMod implements IBauble {
 	public boolean isDamageable() {
 		return false;
 	}
-
 
 
 	@Override

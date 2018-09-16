@@ -239,7 +239,8 @@ public class ThaumcraftCompat {
 		//Baubles
 		evt.register.registerObjectTag(new ItemStack(ModItems.talisman_ruby_orb), new AspectList().add(Aspect.METAL, 25).add(Aspect.DESIRE, 25).add(Aspect.CRYSTAL, 25));
 		evt.register.registerObjectTag(new ItemStack(ModItems.talisman_aquamarine_crown), new AspectList().add(Aspect.METAL, 15).add(Aspect.WATER, 25).add(STAR, 15).add(Aspect.LIGHT, 10));
-		evt.register.registerObjectTag(new ItemStack(ModItems.talisman_diamond_star), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.DESIRE, 15).add(STAR, 15));
+		evt.register.registerObjectTag(new ItemStack(ModItems.talisman_adamantine_star_ring), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.DESIRE, 15).add(STAR, 15));
+		evt.register.registerObjectTag(new ItemStack(ModItems.talisman_watching_eye), new AspectList().add(Aspect.METAL, 25).add(Aspect.ELDRITCH, 15).add(Aspect.SENSES, 15));
 
 		//Silver
 		evt.register.registerObjectTag(new ItemStack(ModItems.silver_ingot), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 5).add(MOON, 3));

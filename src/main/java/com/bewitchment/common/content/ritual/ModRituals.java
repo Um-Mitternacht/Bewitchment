@@ -1,44 +1,31 @@
 package com.bewitchment.common.content.ritual;
 
-import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
-import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
-
-import java.util.Arrays;
-
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationWitch;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationWither;
-import com.bewitchment.common.content.ritual.rituals.RitualDrawing;
-import com.bewitchment.common.content.ritual.rituals.RitualFlames;
-import com.bewitchment.common.content.ritual.rituals.RitualGateway;
-import com.bewitchment.common.content.ritual.rituals.RitualHighMoon;
-import com.bewitchment.common.content.ritual.rituals.RitualInfusion;
-import com.bewitchment.common.content.ritual.rituals.RitualNetherPortal;
-import com.bewitchment.common.content.ritual.rituals.RitualPerception;
-import com.bewitchment.common.content.ritual.rituals.RitualSandsTime;
+import com.bewitchment.common.content.ritual.rituals.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 
+import java.util.Arrays;
+
+import static com.bewitchment.api.ritual.EnumGlyphType.*;
+
 public class ModRituals {
 
 	private static final NonNullList<ItemStack> none = NonNullList.<ItemStack>create();
 
-	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither, 
-	draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld, 
-	infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex, 
-	deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-	nether_portal;
+	public static RitualImpl night, fast_day, glowing, spawn_witch, spawn_wither,
+			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
+			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
+			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
+			nether_portal;
 
 	public static void init() {
 
@@ -173,7 +160,7 @@ public class ModRituals {
 		table = new RitualImpl(rl("table"), of(LibIngredients.anyString, LibIngredients.anyDye, LibIngredients.craftingTable, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 20)), LibIngredients.fumeDropletOfWisdom, LibIngredients.fumeDropletOfWisdom), ofs(new ItemStack(ModBlocks.tarot_table)), 50, circles(NORMAL, NORMAL, null), 350, 1);
 		crystal_ball = new RitualImpl(rl("crystal_ball"), of(LibIngredients.quartz, LibIngredients.anyGlass, LibIngredients.anyGlass, LibIngredients.anyGlass, LibIngredients.anyGlass, LibIngredients.fumeBottledMagic), ofs(new ItemStack(ModBlocks.crystal_ball)), 50, circles(NORMAL, ENDER, null), 750, 3);
 		elder_broom = new RitualImpl(rl("elder_broom"), of(LibIngredients.logElder, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 0)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 1)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
-		juniper_broom = new RitualImpl(rl("juniper_broom"), of(LibIngredients.logJuniper, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 1)),LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 2)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
+		juniper_broom = new RitualImpl(rl("juniper_broom"), of(LibIngredients.logJuniper, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 1)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 2)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		yew_broom = new RitualImpl(rl("yew_broom"), of(LibIngredients.logYew, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 2)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 3)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		cypress_broom = new RitualImpl(rl("cypress_broom"), of(LibIngredients.logCypress, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 4)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		registerAll();

@@ -159,6 +159,7 @@ public final class ModItems {
 	// Baubles
 	public static final Item nazar = null;
 	public static final Item talisman_aquamarine_crown = null;
+	public static final Item talisman_adamantine_star_ring = null;
 	public static final Item talisman_diamond_star = null;
 	public static final Item talisman_emerald_pendant = null;
 	public static final Item talisman_watching_eye = null;
