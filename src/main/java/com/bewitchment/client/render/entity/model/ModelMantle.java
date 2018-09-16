@@ -2,10 +2,13 @@ package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.lib.LibMod;
 
+import baubles.api.render.IRenderBauble;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 
 
 /**
@@ -183,22 +186,23 @@ public class ModelMantle extends ModelBiped {
         this.hoodRight1.addChild(this.hoodLeft1);
         this.capeLeft1.addChild(this.capeLeft2);
         this.capeLeft2.addChild(this.capeLeftFront1);
-        this.bipedLeftArm.addChild(shoulderLeft);
-        
 
     }
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) { 
-        this.cape.render(1);
+    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+    	Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
+    	super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+    	this.cape.render(1);
         this.hood.render(1);
         cape.rotateAngleX = limbSwingAmount;
         capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount*1.5F;
         capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
-        bipedHead = hood;
-        hood.rotateAngleX = 0;
-        hood.rotateAngleY = 0;
+        this.hood.rotateAngleX = bipedHead.rotateAngleX;
+        this.hood.rotateAngleY = bipedHead.rotateAngleY;
+        System.out.println(cape.rotateAngleY);
     }
+    
     
     
     

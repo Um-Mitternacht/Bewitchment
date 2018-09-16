@@ -90,8 +90,6 @@ public class ItemMantle extends ItemMod implements IBauble, IRenderBauble {
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.75F, 1.9f);
-		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 5 : 0;
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 	}
 
 	@Override
@@ -102,7 +100,7 @@ public class ItemMantle extends ItemMod implements IBauble, IRenderBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.DARK_GREEN + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
 
 	@Override
@@ -119,11 +117,7 @@ public class ItemMantle extends ItemMod implements IBauble, IRenderBauble {
 			}
 			GL11.glPushMatrix();
 			IRenderBauble.Helper.rotateIfSneaking(player);
-			GL11.glRotated(180, 1, 0, 0);
-			GL11.glTranslated(0, 0, 0.02);
-			GL11.glScaled(0.125, 0.125, 0.125);
-			IRenderBauble.Helper.translateToChest();
-			IRenderBauble.Helper.defaultTransforms();
+			GL11.glScaled(0.07, 0.07, 0.07);
 				model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
 			GL11.glPopMatrix();
 		}
