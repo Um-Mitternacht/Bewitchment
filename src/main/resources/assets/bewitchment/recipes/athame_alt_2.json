@@ -11,8 +11,8 @@
       "ore": "ingotSilver"
     },
     "G": {
-      "item": "bewitchment:gem",
-      "data": 1
+      "item": "minecraft:emerald",
+      "data": 0
     },
     "T": {
       "item": "minecraft:stick"
