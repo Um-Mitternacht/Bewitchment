@@ -1,5 +1,7 @@
 package com.bewitchment.common.block.tools;
 
+import com.bewitchment.client.core.IModelRegister;
+import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
@@ -11,6 +13,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
@@ -19,7 +23,7 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  */
 
 
-public class BlockBrazier extends BlockMod {
+public class BlockBrazier extends BlockMod implements IModelRegister {
 	public BlockBrazier() {
 		super(LibBlockName.BRAZIER, Material.IRON);
 		setDefaultState(defaultState().withProperty(FACING, EnumFacing.NORTH));
@@ -62,5 +66,11 @@ public class BlockBrazier extends BlockMod {
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		final EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(FACING, enumfacing.getOpposite());
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }
