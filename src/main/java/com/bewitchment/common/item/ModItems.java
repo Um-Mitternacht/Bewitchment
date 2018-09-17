@@ -314,6 +314,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.cauldron),
 				itemBlock(ModBlocks.oven),
 				itemBlock(ModBlocks.apiary),
+				itemBlock(ModBlocks.brazier),
 				itemBlock(ModBlocks.torchwood),
 				itemBlock(ModBlocks.ember_grass),
 				itemBlock(ModBlocks.beehive),
