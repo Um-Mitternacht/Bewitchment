@@ -43,8 +43,9 @@ public class RitualWrapper implements IRecipeWrapper {
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		ingredients.setInputLists(VanillaTypes.ITEM, input);
-		if (!output.isEmpty())
+		if (!output.isEmpty()) {
 			ingredients.setOutputs(VanillaTypes.ITEM, output);
+		}
 	}
 
 	@Override

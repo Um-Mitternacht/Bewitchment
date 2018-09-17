@@ -1,9 +1,16 @@
 package com.bewitchment.common.content.ritual;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import com.google.common.collect.Lists;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -17,11 +24,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
@@ -144,7 +146,6 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
 	private void generateCache() { //FIXME LibIngredients.anyDye has the wrong stack number
 		jei_cache = Lists.newArrayList();
-
 		HashMap<Ingredient, Integer> sizes = new HashMap<>();
 		for (Ingredient i : getInput()) {
 			if (sizes.containsKey(i)) {
@@ -154,8 +155,12 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 			}
 		}
 		for (Ingredient i : sizes.keySet()) {
-			List<ItemStack> l = Lists.newArrayList(i.getMatchingStacks());
-			l.forEach(is -> is.setCount(sizes.get(i)));
+			List<ItemStack> l = Lists.newArrayList();
+			for (ItemStack is : i.getMatchingStacks()) {
+				ItemStack nis = is.copy();
+				nis.setCount(sizes.get(i));
+				l.add(nis);
+			}
 			jei_cache.add(l);
 		}
 	}
