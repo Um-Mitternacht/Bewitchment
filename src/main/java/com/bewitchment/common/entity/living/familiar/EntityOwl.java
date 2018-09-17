@@ -141,7 +141,7 @@ public class EntityOwl extends EntityFamiliar {
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
-	
+
 	@Override
 	protected float getSoundVolume() {
 		return 0.5f;

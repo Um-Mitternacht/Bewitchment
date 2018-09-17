@@ -1,8 +1,8 @@
 {
   "ambientocclusion": true,
   "textures": {
-  	"all": "bewitchment:blocks/brazier_standing",
-  	"particle": "bewitchment:blocks/brazier_standing"
+    "all": "bewitchment:blocks/brazier_standing",
+    "particle": "bewitchment:blocks/brazier_standing"
   },
   "elements": [
     {

@@ -32,7 +32,7 @@ public class ItemGem extends ItemMod {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata()<0 || stack.getMetadata()>=BlockGemOre.Gem.values().length) {
+		if (stack.getMetadata() < 0 || stack.getMetadata() >= BlockGemOre.Gem.values().length) {
 			return super.getUnlocalizedName(stack);
 		}
 		return super.getUnlocalizedName(stack) + "_" + BlockGemOre.Gem.values()[stack.getMetadata()].getName();

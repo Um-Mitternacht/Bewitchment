@@ -1,10 +1,7 @@
 package com.bewitchment.common.block.tools;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -16,6 +13,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
 
 /**
  * Created by Joseph on 9/16/2018.

@@ -1,9 +1,9 @@
 {
   "ambientocclusion": true,
   "textures": {
-  	"all": "bewitchment:blocks/brazier_hanging",
-  	"particle": "bewitchment:blocks/brazier_hanging"
-  	},
+    "all": "bewitchment:blocks/brazier_hanging",
+    "particle": "bewitchment:blocks/brazier_hanging"
+  },
   "elements": [
     {
       "name": "chainBolt04",
