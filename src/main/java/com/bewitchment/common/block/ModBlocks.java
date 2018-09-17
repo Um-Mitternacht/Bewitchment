@@ -87,6 +87,7 @@ public final class ModBlocks {
 	public static final Block beehive = null;
 	public static final Block oven = null;
 	public static final Block apiary = null;
+	public static final Block brazier = null;
 	public static final Block salt_ore = null;
 	public static final Block gem_ore = null;
 	public static final Block nethersteel = null;
@@ -183,6 +184,7 @@ public final class ModBlocks {
 				new BlockMagicMirror(),
 				new BlockMagicMirror.BlockMagicMirrorTop(),
 				new BlockOven(),
+				new BlockBrazier(),
 				new BlockCandleMedium(LibBlockName.CANDLE_MEDIUM, false),
 				new BlockCandleSmall(LibBlockName.CANDLE_SMALL, false),
 				new BlockCandleMedium(LibBlockName.CANDLE_MEDIUM_LIT, true),

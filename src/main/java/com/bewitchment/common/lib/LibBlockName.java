@@ -53,6 +53,7 @@ public final class LibBlockName {
 	public static final String MAGIC_MIRROR = "magic_mirror";
 	public static final String MAGIC_MIRROR_TOP = "magic_mirror_top";
 	public static final String OVEN = "oven";
+	public static final String BRAZIER = "brazier";
 	public static final String COQUINA = "coquina";
 	public static final String BEEHIVE = "beehive";
 	public static final String SALT_ORE = "salt_ore";
