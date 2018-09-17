@@ -115,6 +115,9 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemBlackDiamond", 1);
 		gainMap.put("gemTektite", 1);
 		gainMap.put("gemMorganite", 1);
+		gainMap.put("gemLepidolite", 1);
+		gainMap.put("gemCoral", 1);
+		gainMap.put("gemCarnelian", 1);
 	}
 
 	private ItemStack gem;
