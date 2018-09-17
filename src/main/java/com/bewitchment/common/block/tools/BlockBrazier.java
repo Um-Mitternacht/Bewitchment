@@ -1,9 +1,10 @@
 package com.bewitchment.common.block.tools;
 
-import com.bewitchment.client.core.IModelRegister;
-import com.bewitchment.client.handler.ModelHandler;
+import static net.minecraft.block.BlockHorizontal.FACING;
+
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -16,14 +17,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * Created by Joseph on 9/16/2018.
  */
 
 
-public class BlockBrazier extends BlockMod implements IModelRegister {
+public class BlockBrazier extends BlockMod {
 	public BlockBrazier() {
 		super(LibBlockName.BRAZIER, Material.IRON);
 		setDefaultState(defaultState().withProperty(FACING, EnumFacing.NORTH));
@@ -71,6 +70,7 @@ public class BlockBrazier extends BlockMod implements IModelRegister {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModel() {
-		ModelHandler.registerModel(this, 0);
+//		ModelHandler.registerModel(this, 0);
+		super.registerModel();
 	}
 }
