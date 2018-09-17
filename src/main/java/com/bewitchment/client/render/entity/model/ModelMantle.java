@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
-import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -199,7 +199,6 @@ public class ModelMantle extends ModelBiped {
 		capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
 		this.hood.rotateAngleX = bipedHead.rotateAngleX;
 		this.hood.rotateAngleY = bipedHead.rotateAngleY;
-		Log.i("" + cape.rotateAngleY);
 	}
 
 

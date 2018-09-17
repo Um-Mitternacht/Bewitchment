@@ -29,7 +29,7 @@ public class MantleLayer implements LayerRenderer<AbstractClientPlayer> {
 
 	@Override
 	public void doRenderLayer(AbstractClientPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		if (BaublesApi.getBaublesHandler(player).getStackInSlot(BaubleType.HEAD.getValidSlots()[0]).getItem()==ModItems.mantle) {
+		if (BaublesApi.getBaublesHandler(player).getStackInSlot(BaubleType.BODY.getValidSlots()[0]).getItem()==ModItems.mantle) {
 			GL11.glPushMatrix();
 			IRenderBauble.Helper.rotateIfSneaking(player); //Not being a bauble renderer, I'm not sure this works anymore
 			GL11.glScaled(0.07, 0.07, 0.07);
