@@ -26,12 +26,6 @@ public final class ModGen {
 				.setVeinSize(ConfigHandler.WORLD_GEN.silver.silver_min_vein, ConfigHandler.WORLD_GEN.silver.silver_max_vein)
 				.setHeightRange(ConfigHandler.WORLD_GEN.silver.silver_min_height, ConfigHandler.WORLD_GEN.silver.silver_max_height)
 				.build(DEFAULT_STATE), 0);
-		GameRegistry.registerWorldGenerator(WorldGenOre.OreGenBuilder.forOre(ModBlocks.gem_ore, ConfigHandler.WORLD_GEN.moldavite.moldavite_gen_chance)
-				.generateOn(Blocks.STONE)
-				.setVeinSize(ConfigHandler.WORLD_GEN.moldavite.moldavite_min_vein, ConfigHandler.WORLD_GEN.moldavite.moldavite_max_vein)
-				.setHeightRange(ConfigHandler.WORLD_GEN.moldavite.moldavite_min_height, ConfigHandler.WORLD_GEN.moldavite.moldavite_max_height)
-				.setBiomes(BiomeDictionary.Type.FOREST, BiomeDictionary.Type.CONIFEROUS, BiomeDictionary.Type.MAGICAL)
-				.build(block -> BlockGemOre.getStateById(BlockGemOre.Gem.MOLDAVITE.ordinal())), 0);
 		GameRegistry.registerWorldGenerator(WorldGenOre.OreGenBuilder.forOre(ModBlocks.gem_ore, ConfigHandler.WORLD_GEN.blood_stone.bloodStone_gen_chance)
 				.generateOn(Blocks.STONE)
 				.setVeinSize(ConfigHandler.WORLD_GEN.blood_stone.bloodStone_min_vein, ConfigHandler.WORLD_GEN.blood_stone.bloodStone_max_vein)

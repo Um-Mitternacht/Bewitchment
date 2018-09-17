@@ -50,8 +50,6 @@ public final class ConfigHandler {
 
 		@Comment("Silver Ore gen, this determines how much can spawn in a chunk, and how far up")
 		public SilverOre silver = new SilverOre();
-		@Comment("Moldavite Ore gen, this determines how much can spawn in a chunk, and how far up")
-		public MoldaviteOre moldavite = new MoldaviteOre();
 		@Comment("Bloodstone Ore gen, this determines how much can spawn in a chunk, and how far up")
 		public BloodstoneOre blood_stone = new BloodstoneOre();
 		@Comment("Tourmaline Ore gen, this determines how much can spawn in a chunk, and how far up")
@@ -83,14 +81,6 @@ public final class ConfigHandler {
 			public int silver_min_height = 10;
 			public int silver_max_height = 128;
 			public int silver_gen_chance = 8;
-		}
-
-		public static class MoldaviteOre {
-			public int moldavite_min_vein = 1;
-			public int moldavite_max_vein = 4;
-			public int moldavite_min_height = 10;
-			public int moldavite_max_height = 80;
-			public int moldavite_gen_chance = 6;
 		}
 
 		public static class BloodstoneOre {
