@@ -83,7 +83,10 @@ public abstract class CauldronCraftingRecipe {
 				}
 			}
 			for (Ingredient i : sizes.keySet()) {
-				List<ItemStack> l = Lists.newArrayList(i.getMatchingStacks());
+				List<ItemStack> l = Lists.newArrayList();
+				for (ItemStack is:i.getMatchingStacks()) {
+					l.add(is.copy());
+				}
 				l.forEach(is -> is.setCount(sizes.get(i)));
 				jeiCache.add(l);
 			}
