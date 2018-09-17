@@ -42,7 +42,6 @@ public final class LibBlockName {
 	public static final String GEM_ORE = "gem_ore";
 	public static final String SILVER_ORE = "silver_ore";
 	public static final String SILVER_BLOCK = "silver_block";
-	public static final String MOLDAVITE_BLOCK = "moldavite_block";
 	public static final String BLOODSTONE_BLOCK = "bloodstone_block";
 	public static final String CANDLE_SMALL_LIT = "candle_small_lit";
 	public static final String CANDLE_MEDIUM_LIT = "candle_medium_lit";

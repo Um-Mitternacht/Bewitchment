@@ -34,7 +34,6 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemLapis", 1);
 		gainMap.put("dustRedstone", 1);
 		gainMap.put("gemBloodstone", 1);
-		gainMap.put("gemMoldavite", 1);
 		gainMap.put("gemNuummite", 1);
 		gainMap.put("gemGarnet", 1);
 		gainMap.put("gemTourmaline", 1);

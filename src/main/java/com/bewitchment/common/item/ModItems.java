@@ -308,7 +308,6 @@ public final class ModItems {
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),
 				itemBlock(ModBlocks.silver_block),
 				itemBlock(ModBlocks.silver_ore),
-				itemBlock(ModBlocks.moldavite_block),
 				itemBlock(ModBlocks.coquina),
 				itemBlock(ModBlocks.bloodstone_block),
 				itemBlock(ModBlocks.cauldron),
@@ -378,7 +377,6 @@ public final class ModItems {
 
 	private static void initOreDictionary() {
 		OreDictionary.registerOre("gemBloodstone", new ItemStack(ModItems.gem, 1, 5));
-		OreDictionary.registerOre("gemMoldavite", new ItemStack(ModItems.gem, 1, 1));
 		OreDictionary.registerOre("gemNuummite", new ItemStack(ModItems.gem, 1, 2));
 		OreDictionary.registerOre("gemGarnet", new ItemStack(ModItems.gem, 1, 0));
 		OreDictionary.registerOre("gemTourmaline", new ItemStack(ModItems.gem, 1, 4));

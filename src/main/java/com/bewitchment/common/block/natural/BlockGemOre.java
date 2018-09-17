@@ -107,7 +107,6 @@ public class BlockGemOre extends BlockMod {
 
 	public enum Gem implements IStringSerializable {
 		GARNET,
-		MOLDAVITE,
 		NUUMMITE,
 		TIGERS_EYE,
 		TOURMALINE,

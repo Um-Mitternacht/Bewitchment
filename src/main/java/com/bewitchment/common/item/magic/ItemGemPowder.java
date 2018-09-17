@@ -17,15 +17,14 @@ public class ItemGemPowder extends ItemMod {
 
 	public static final String[] names = new String[]{
 			"gem_powder_garnet", // 0
-			"gem_powder_moldavite", // 1
-			"gem_powder_nuummite", // 2
-			"gem_powder_tigers_eye", // 3
-			"gem_powder_tourmaline", // 4
-			"gem_powder_bloodstone", // 5
-			"gem_powder_jasper", // 6
-			"gem_powder_malachite", // 7
-			"gem_powder_amethyst", // 8
-			"gem_powder_alexandrite", // 9
+			"gem_powder_nuummite", // 1
+			"gem_powder_tigers_eye", // 2
+			"gem_powder_tourmaline", // 3
+			"gem_powder_bloodstone", // 4
+			"gem_powder_jasper", // 5
+			"gem_powder_malachite", // 6
+			"gem_powder_amethyst", // 7
+			"gem_powder_alexandrite", // 8
 	};
 
 	public ItemGemPowder(String id) {

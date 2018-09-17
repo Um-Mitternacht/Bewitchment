@@ -65,7 +65,6 @@ public final class ModBlocks {
 	//--------------------------------Blocks--------------------------------//
 	public static final Block silver_block = null;
 	public static final Block silver_ore = null;
-	public static final Block moldavite_block = null;
 	public static final Block coquina = null;
 	public static final Block bloodstone_block = null;
 	public static final Block tourmaline_block = null;
@@ -216,7 +215,6 @@ public final class ModBlocks {
 		//Normal Blocks
 		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
 		registry.registerAll(
-				new BlockMod(LibBlockName.MOLDAVITE_BLOCK, Material.ROCK).setSound(SoundType.GLASS).setHardness(5.0F),
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
@@ -263,14 +261,12 @@ public final class ModBlocks {
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
-		OreDictionary.registerOre("blockMoldavite", new ItemStack(ModBlocks.moldavite_block));
 		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
 		OreDictionary.registerOre("oreGarnet", new ItemStack(ModBlocks.gem_ore, 1, 0));
 		OreDictionary.registerOre("oreNuummite", new ItemStack(ModBlocks.gem_ore, 1, 2));
 		OreDictionary.registerOre("oreAmethyst", new ItemStack(ModBlocks.gem_ore, 1, 8));
 		OreDictionary.registerOre("oreAlexandrite", new ItemStack(ModBlocks.gem_ore, 1, 9));
 		OreDictionary.registerOre("oreSilver", new ItemStack(ModBlocks.silver_ore));
-		OreDictionary.registerOre("oreMoldavite", new ItemStack(ModBlocks.gem_ore, 1, 1));
 		OreDictionary.registerOre("oreBloodstone", new ItemStack(ModBlocks.gem_ore, 1, 5));
 		OreDictionary.registerOre("oreTourmaline", new ItemStack(ModBlocks.gem_ore, 1, 4));
 		OreDictionary.registerOre("oreMalachite", new ItemStack(ModBlocks.gem_ore, 1, 7));

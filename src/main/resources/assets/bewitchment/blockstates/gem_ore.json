@@ -24,11 +24,6 @@
           "overlay": "bewitchment:blocks/garnet_ore"
         }
       },
-      "moldavite": {
-        "textures": {
-          "overlay": "bewitchment:blocks/moldavite_ore"
-        }
-      },
       "nuummite": {
         "textures": {
           "overlay": "bewitchment:blocks/nuummite_ore"
