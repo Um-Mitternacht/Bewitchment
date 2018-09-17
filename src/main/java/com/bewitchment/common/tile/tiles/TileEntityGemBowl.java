@@ -100,6 +100,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemDominicanAmber", 1);
 		gainMap.put("gemScarabBlue", 1);
 		gainMap.put("gemScarab", 1);
+		gainMap.put("gemMoldavite", 1);
 	}
 
 	private ItemStack gem;
