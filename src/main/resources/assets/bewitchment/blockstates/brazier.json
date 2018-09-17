@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bewitchment:brazier"
+    },
+    "facing=south": {
+      "model": "bewitchment:brazier",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "bewitchment:brazier",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "bewitchment:brazier",
+      "y": 270
+    }
+  }
+}
