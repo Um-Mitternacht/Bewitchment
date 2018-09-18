@@ -22,6 +22,7 @@ public class ItemLavender extends ItemCropFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 10, 0));
 	}
 }

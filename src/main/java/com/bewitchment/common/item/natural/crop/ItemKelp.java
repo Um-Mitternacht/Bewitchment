@@ -22,6 +22,7 @@ public class ItemKelp extends ItemCropFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 10, 0));
 	}
 }

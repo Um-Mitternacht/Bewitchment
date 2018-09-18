@@ -20,6 +20,7 @@ public class ItemGinger extends ItemCropFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		player.setFire(10);
 	}
 }
