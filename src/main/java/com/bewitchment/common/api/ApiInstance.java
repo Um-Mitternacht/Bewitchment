@@ -192,7 +192,7 @@ public class ApiInstance extends BewitchmentAPI {
 	}
 
 	@Override
-	public void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, int byproductChance, Ingredient input) {
+	public void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, float byproductChance, Ingredient input) {
 		OvenSmeltingRecipe.REGISTRY.register(new OvenSmeltingRecipe(registryName, input, output, byproduct, byproductChance));
 	}
 

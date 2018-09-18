@@ -181,7 +181,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		final ItemStack fumesStack = recipe.getFumes();
 		handlerUp.getStackInSlot(0).shrink(1);
 		handlerDown.insertItem(0, outputStack, false);
-		if (fumesStack != null && !handlerSide.getStackInSlot(1).isEmpty() && random.nextInt(100) <= recipe.getFumeChance()) { // If there are jars
+		if (fumesStack != null && !handlerSide.getStackInSlot(1).isEmpty() && random.nextFloat()<=recipe.getFumeChance()) { // If there are jars
 			if (handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
 				handlerSide.getStackInSlot(1).shrink(1);
 			}

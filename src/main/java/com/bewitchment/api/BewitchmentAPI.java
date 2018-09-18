@@ -92,7 +92,7 @@ public abstract class BewitchmentAPI {
 
 	public abstract void addSpinningThreadRecipe(ResourceLocation registryName, ItemStack output, Ingredient... inputs);
 
-	public abstract void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, int byproductChance, Ingredient input);
+	public abstract void addOvenSmeltingRecipe(ResourceLocation registryName, ItemStack output, ItemStack byproduct, float byproductChance, Ingredient input);
 
 	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
 

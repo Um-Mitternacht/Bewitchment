@@ -17,18 +17,18 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 
 	private Ingredient input;
 	private ItemStack output, fumes;
-	private int fumeChance;
+	private float fumeChance;
 
 	/**
 	 * @param regName    The resourceLocation name of this entry in the forge registry with the format "mod:regName". Cannot be null.
 	 * @param input      The input needed for this recipe. Cannot be null.
 	 * @param output     The output that will be produced by this recipe. Cannot be null.
 	 * @param fumes      The stack created as a byproduct of smelting the input. If null the recipe produces no fumes.
-	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 100.
+	 * @param fumeChance The chance of obtaining the byproduct. Must be between 0 and 1;
 	 */
-	public OvenSmeltingRecipe(ResourceLocation regName, Ingredient input, ItemStack output, @Nonnull ItemStack fumes, int fumeChance) {
-		if (fumeChance > 100 || fumeChance < 0) {
-			throw new IllegalArgumentException("fumeChance must be between 0 and 100. ");
+	public OvenSmeltingRecipe(ResourceLocation regName, Ingredient input, ItemStack output, @Nonnull ItemStack fumes, float fumeChance) {
+		if (fumeChance < 0 || fumeChance > 1) {
+			throw new IllegalArgumentException("fumeChance must be between 0 and 1");
 		}
 		if (fumes == null) {
 			throw new NullPointerException("Fumes cannot be null, recipe: " + regName);
@@ -99,7 +99,7 @@ public class OvenSmeltingRecipe extends IForgeRegistryEntry.Impl<OvenSmeltingRec
 	/**
 	 * @return the chance of producing fumes.
 	 */
-	public int getFumeChance() {
+	public float getFumeChance() {
 		return fumeChance;
 	}
 }
