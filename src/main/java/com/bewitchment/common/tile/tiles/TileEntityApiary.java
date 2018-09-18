@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile.tiles;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.handler.ModSounds;
@@ -8,6 +10,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
@@ -15,7 +18,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -30,8 +32,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
 
 /**
  * This class was created by Arekkuusu on 16/04/2017.
@@ -55,7 +55,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable, IWorld
 		handlerUp = new AutomatableInventory(1) {
 			@Override
 			public boolean isItemValidForSlot(int slot, ItemStack stack) {
-				return this.getStackInSlot(slot).isEmpty() && stack.getItem() == ModItems.bee;
+				return false;
 			}
 		};
 		handlerDown = new AutomatableInventory(18) {
@@ -118,7 +118,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable, IWorld
 						if (!(handlerDown.getStackInSlot(i).getItem() == ModItems.honeycomb)) {
 							bee.attemptDamageItem(1, world.rand, null);
 							bonemealArea();
-							handlerDown.setStackInSlot(i, randomItem());
+							handlerDown.setStackInSlot(i, new ItemStack(ModItems.honeycomb));
 							break;
 						}
 					}
@@ -150,13 +150,6 @@ public class TileEntityApiary extends ModTileEntity implements ITickable, IWorld
 					}
 				}
 		);
-	}
-
-	private ItemStack randomItem() {
-		final Item item = world.rand.nextBoolean()
-				? (world.rand.nextInt(8) == 0 ? ModItems.bee : ModItems.honeycomb)
-				: ModItems.empty_honeycomb;
-		return new ItemStack(item);
 	}
 
 	private Iterable<BlockPos> getArea() {

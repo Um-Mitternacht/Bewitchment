@@ -27,10 +27,9 @@ public class ContainerApiary extends ModContainer<TileEntityApiary> {
 		final IItemHandler handlerUp = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 		final IItemHandler handlerDown = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
-		this.addSlotToContainer(new SlotOneItem<>(tileEntity, handlerUp, 0, 26, 34, stack -> stack != null && stack.getItem() == ModItems.bee));
+		this.addSlotToContainer(new SlotOneItem<>(tileEntity, handlerUp, 0, 26, 34, stack -> stack != null));
 
-		Predicate<ItemStack> predicate = input -> input != null && (input.getItem() == ModItems.honeycomb
-				|| input.getItem() == ModItems.empty_honeycomb || input.getItem() == ModItems.bee);
+		Predicate<ItemStack> predicate = input -> input != null && (input.getItem() == ModItems.honeycomb || input.getItem() == ModItems.empty_honeycomb);
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 6; j++) {

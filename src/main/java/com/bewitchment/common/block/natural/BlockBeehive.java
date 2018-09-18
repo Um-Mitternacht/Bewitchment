@@ -107,11 +107,6 @@ public class BlockBeehive extends BlockMod {
 		if (!honeycomb.isEmpty()) {
 			ret.add(honeycomb);
 		}
-		ItemStack bees = new ItemStack(ModItems.bee, rand.nextInt(2) + 1, 0);
-		if (!bees.isEmpty()) {
-			ret.add(bees);
-		}
-
 		return ret;
 	}
 
