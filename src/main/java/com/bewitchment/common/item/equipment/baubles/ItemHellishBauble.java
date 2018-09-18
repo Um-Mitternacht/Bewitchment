@@ -6,6 +6,7 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
@@ -21,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,7 +37,7 @@ import java.util.List;
 /**
  * Created by Joseph on 1/1/2018.
  */
-public class ItemHellishBauble extends ItemMod implements IBauble {
+public class ItemHellishBauble extends ItemMod implements IBauble, IMagicPowerExpander {
 	public ItemHellishBauble() {
 		super(LibItemName.HELLISH_BAUBLE);
 		this.setMaxStackSize(1);
@@ -52,7 +54,7 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 		return false;
 	}
 
-	//Todo: Create variant that takes 5% of fire damage and turns it into health, at expense of damage to the bauble.
+	//Todo: Figure out how to properly expand ME via a bauble. This would expand by 100.
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
@@ -113,5 +115,15 @@ public class ItemHellishBauble extends ItemMod implements IBauble {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public ResourceLocation getID() {
+		return this.getRegistryName();
+	}
+
+	@Override
+	public int getExtraAmount() {
+		return 100;
 	}
 }
