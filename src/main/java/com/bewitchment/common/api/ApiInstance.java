@@ -1,5 +1,7 @@
 package com.bewitchment.common.api;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -9,6 +11,7 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.infusion.IInfusion;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
@@ -29,6 +32,7 @@ import com.bewitchment.common.content.spell.Spell;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
+import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
@@ -39,6 +43,7 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -47,8 +52,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -206,11 +209,13 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void expandPlayerMP(IMagicPowerExpander expander, EntityPlayer player) {
 		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).expand(expander);
+		((PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null)).markDirty();
 	}
 	
 	@Override
 	public void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player) {
 		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).remove(expander);
+		((PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null)).markDirty();
 	}
 
 }

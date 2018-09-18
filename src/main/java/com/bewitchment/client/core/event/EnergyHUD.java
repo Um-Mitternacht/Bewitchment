@@ -34,7 +34,7 @@ public class EnergyHUD {
 
 	private int renderTime;
 	private float visible;
-	private int oldEnergy = -1;
+	private int oldEnergy = -1, oldMaxEnergy = -1;
 	private float barAlpha;
 	private boolean reverse;
 	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
@@ -47,12 +47,13 @@ public class EnergyHUD {
 			IMagicPowerContainer storage = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
 			if (lastPulsed > 0)
 				lastPulsed--;
-			boolean energyChanged = (oldEnergy != storage.getAmount());
-			if (energyChanged)
+			boolean energyChanged = oldEnergy != storage.getAmount() || oldMaxEnergy != storage.getMaxAmount();
+			if (energyChanged) {
 				shouldPulse = lastPulsed == 0;
-
+			}
 			if (energyChanged || isItemEnergyUsing()) {
 				oldEnergy = storage.getAmount();
+				oldMaxEnergy = storage.getMaxAmount();
 				renderTime = 60;
 				visible = 1F;
 			}
@@ -156,14 +157,14 @@ public class EnergyHUD {
 			manager.bindTexture(cap.getType().getTexture());
 			renderTexture(x, y, width, height, 0, 1);
 
-			// int textColor = 0x990066;
-			// if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
-			// int alpha = (int) (visible * 255);
-			// textColor = alpha << 24 | 0x990066;
-			// }
-			//
-			// String text = "E: " + energy.getAmount();
-			// mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
+			int textColor = 0x990066;
+			if (ConfigHandler.CLIENT.ENERGY_HUD.hide) {
+				int alpha = (int) (visible * 255);
+				textColor = alpha << 24 | 0x990066;
+			}
+
+			String text = energy.getAmount()+"/"+energy.getMaxAmount();
+			mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}

@@ -32,9 +32,8 @@ public class CapabilityMPExpansion {
 	}
 	
 	public void remove(IMagicPowerExpander exp) {
-		if (increaseMap.remove(exp.getID().toString()) != null) {
-			dirty = true;
-		}
+		increaseMap.remove(exp.getID().toString());
+		dirty = true;
 	}
 	
 	public void clean() {

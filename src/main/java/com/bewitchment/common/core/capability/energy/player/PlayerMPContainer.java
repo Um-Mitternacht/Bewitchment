@@ -3,11 +3,13 @@ package com.bewitchment.common.core.capability.energy.player;
 import com.bewitchment.api.mp.DefaultMPContainer;
 
 public class PlayerMPContainer extends DefaultMPContainer {
+	
+	public static final int STARTING_PLAYER_POWER = 800;
 
 	boolean dirty = false;
 
 	public PlayerMPContainer() {
-		super(800);
+		super(STARTING_PLAYER_POWER);
 	}
 
 	@Override
@@ -28,5 +30,9 @@ public class PlayerMPContainer extends DefaultMPContainer {
 
 	public boolean isDirty() {
 		return dirty;
+	}
+	
+	public void markDirty() {
+		dirty = true;
 	}
 }
