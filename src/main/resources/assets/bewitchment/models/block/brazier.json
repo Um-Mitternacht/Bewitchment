@@ -1,7 +1,7 @@
 {
 	"credit": "Model made by Ingoleth",
 	"textures": {
-		"0": "bewitchment:blocks/brazier_standing",
+		"0": "bewitchment:blocks/brazier",
 		"particle": "blocks/stonebrick"
 	},
 	"elements": [
