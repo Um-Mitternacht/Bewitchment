@@ -5,7 +5,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.core.ModCreativeTabs;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -43,21 +42,21 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		DamageSource source = event.getSource();
 
 		Entity attacker = source.getTrueSource();
-		if (attacker instanceof EntityLivingBase) { 
+		if (attacker instanceof EntityLivingBase) {
 			if (((EntityLivingBase) attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 				event.setAmount(event.getAmount() * 0.9F);
 			}
-			if (attacker instanceof EntityPlayer && attacker.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()== DefaultTransformations.WEREWOLF) {
+			if (attacker instanceof EntityPlayer && attacker.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
 				event.setAmount(event.getAmount() * 0.9F);
 				EntityPlayer a = (EntityPlayer) attacker;
-				a.attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), MathHelper.clamp(event.getAmount()/2, 1f, 4f));
+				a.attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), MathHelper.clamp(event.getAmount() / 2, 1f, 4f));
 			}
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()== DefaultTransformations.WEREWOLF) {
+		if (player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
 			player.attackEntityFrom(DamageSource.MAGIC, 1);
 		}
 	}

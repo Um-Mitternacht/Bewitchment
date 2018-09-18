@@ -3,7 +3,6 @@ package com.bewitchment.common.api;
 import com.bewitchment.common.core.Crop;
 import com.bewitchment.common.core.ICrop;
 import com.bewitchment.common.item.natural.crop.ItemCropFood;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -39,8 +38,8 @@ public final class CropRegistry {
 	public static <T extends Block & ICrop> void registerCrop(Crop crop, T placed, Item cropItem, Item seedItem) {
 		placed.setCrop(cropItem);
 		placed.setSeed(seedItem);
-		if (cropItem instanceof ItemCropFood && crop.getMPExpansionOnEaten()>0) {
-			((ItemCropFood)cropItem).setMPExpansionValue(crop.getMPExpansionOnEaten());
+		if (cropItem instanceof ItemCropFood && crop.getMPExpansionOnEaten() > 0) {
+			((ItemCropFood) cropItem).setMPExpansionValue(crop.getMPExpansionOnEaten());
 		}
 		CropRegistry.getSeeds().put(crop, seedItem);
 		CropRegistry.getCrops().put(crop, placed);

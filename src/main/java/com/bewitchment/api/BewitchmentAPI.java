@@ -98,9 +98,9 @@ public abstract class BewitchmentAPI {
 	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
 
 	public abstract void registerFrostfireSmelting(ResourceLocation name, Ingredient input, Supplier<ItemStack> output);
-	
+
 	public abstract void expandPlayerMP(IMagicPowerExpander expander, EntityPlayer player);
-	
+
 	public abstract void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player);
 
 }

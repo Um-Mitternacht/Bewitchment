@@ -3,7 +3,6 @@ package com.bewitchment.common.item.food;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -44,7 +43,7 @@ public class ItemMagicSalve extends ItemMod {
 		player.setActiveHand(hand);
 		return EnumActionResult.SUCCESS;
 	}
-	
+
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase player) {
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 1000, 1));

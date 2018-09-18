@@ -1,10 +1,7 @@
 package com.bewitchment.common.block.tools;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -20,6 +17,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
 /**
  * Created by Joseph on 9/16/2018.
  */
@@ -28,8 +27,8 @@ import net.minecraft.world.World;
 public class BlockBrazier extends BlockMod {
 
 	private static final PropertyBool HANGING = PropertyBool.create("hanging");
-	private static final AxisAlignedBB BBOX_STANDING = new AxisAlignedBB(0.15625, 0, 0.15625, 0.84375, 1+1d/32d, 0.84375);
-	private static final AxisAlignedBB BBOX_HANGING = new AxisAlignedBB(0.15625, -1d/32d, 0.15625, 0.84375, 1, 0.84375);
+	private static final AxisAlignedBB BBOX_STANDING = new AxisAlignedBB(0.15625, 0, 0.15625, 0.84375, 1 + 1d / 32d, 0.84375);
+	private static final AxisAlignedBB BBOX_HANGING = new AxisAlignedBB(0.15625, -1d / 32d, 0.15625, 0.84375, 1, 0.84375);
 
 	public BlockBrazier() {
 		super(LibBlockName.BRAZIER, Material.IRON);
@@ -38,25 +37,25 @@ public class BlockBrazier extends BlockMod {
 		setResistance(3F);
 		setHardness(3F);
 	}
-	
+
 	@Override
-		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-			return state.getValue(HANGING)?BBOX_HANGING:BBOX_STANDING;
-		}
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return state.getValue(HANGING) ? BBOX_HANGING : BBOX_STANDING;
+	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		final EnumFacing facing = EnumFacing.getHorizontal(meta & 0b11);
-		final boolean hanging = ((meta >> 2) & 1)==1;
+		final boolean hanging = ((meta >> 2) & 1) == 1;
 		return getDefaultState().withProperty(FACING, facing).withProperty(HANGING, hanging);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		final EnumFacing facing = state.getValue(FACING);
-		final int bit = state.getValue(HANGING)?1:0;
-		return facing.getHorizontalIndex() | (bit<<2);
+		final int bit = state.getValue(HANGING) ? 1 : 0;
+		return facing.getHorizontalIndex() | (bit << 2);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -78,7 +77,7 @@ public class BlockBrazier extends BlockMod {
 
 	@Override
 	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side) {
-		return super.canPlaceBlockOnSide(world, pos, side) && ((side==EnumFacing.DOWN && canHangFromAbove(world, pos)) || (side != EnumFacing.DOWN && canSitBelow(world, pos)));
+		return super.canPlaceBlockOnSide(world, pos, side) && ((side == EnumFacing.DOWN && canHangFromAbove(world, pos)) || (side != EnumFacing.DOWN && canSitBelow(world, pos)));
 	}
 
 	private boolean canHangFromAbove(World world, BlockPos pos) {
@@ -116,7 +115,7 @@ public class BlockBrazier extends BlockMod {
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		final EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
-		final boolean hang = facing==EnumFacing.DOWN;
+		final boolean hang = facing == EnumFacing.DOWN;
 		return this.getDefaultState().withProperty(FACING, enumfacing.getOpposite()).withProperty(HANGING, hang);
 	}
 

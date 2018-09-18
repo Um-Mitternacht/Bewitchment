@@ -23,12 +23,7 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -56,14 +51,14 @@ public class BlockWitchFire extends BlockMod {
 		this.setDefaultState(blockState.getBaseState().withProperty(TYPE, EnumFireType.NORMAL));
 		this.setSound(new SoundType(0.6f, 0.9f, SoundEvents.BLOCK_FIRE_EXTINGUISH, null, null, null, null));
 	}
-	
+
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (rand.nextBoolean()) {
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+rand.nextDouble(), pos.getY()+rand.nextDouble(), pos.getZ()+rand.nextDouble(), 0, 0, 0);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
 		}
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
@@ -119,12 +114,12 @@ public class BlockWitchFire extends BlockMod {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, TYPE);
 	}
-	
+
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-	
+
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.scheduleBlockUpdate(pos, state.getBlock(), 1, 10);
@@ -132,8 +127,8 @@ public class BlockWitchFire extends BlockMod {
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextInt(10)<3) {
-			world.playSound(null, pos, SoundEvents.BLOCK_FIRE_AMBIENT, SoundCategory.BLOCKS, 0.4f, 0.9f + 0.2f*rand.nextFloat());
+		if (rand.nextInt(10) < 3) {
+			world.playSound(null, pos, SoundEvents.BLOCK_FIRE_AMBIENT, SoundCategory.BLOCKS, 0.4f, 0.9f + 0.2f * rand.nextFloat());
 		}
 		if (!world.isRemote) {
 			world.scheduleBlockUpdate(pos, state.getBlock(), 1, 1);

@@ -5,7 +5,6 @@ import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.ModCreativeTabs;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -20,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * the MIT license.
  */
 public class ItemModFood extends ItemFood implements IModelRegister {
-	
+
 	private IMagicPowerExpander expander;
 
 	public ItemModFood(String id, int amount, float saturation, boolean isWolfFood) {
@@ -29,15 +28,15 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 		setUnlocalizedName(id);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
-	
+
 	public ItemModFood setMPExpansionValue(int amount) {
 		expander = new IMagicPowerExpander() {
-			
+
 			@Override
 			public ResourceLocation getID() {
 				return getRegistryName();
 			}
-			
+
 			@Override
 			public int getExtraAmount() {
 				return amount;
@@ -49,11 +48,11 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		if (expander!=null) {
+		if (expander != null) {
 			BewitchmentAPI.getAPI().expandPlayerMP(expander, player);
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {

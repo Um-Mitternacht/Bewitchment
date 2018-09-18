@@ -163,7 +163,7 @@ public class EnergyHUD {
 				textColor = alpha << 24 | 0x990066;
 			}
 
-			String text = energy.getAmount()+"/"+energy.getMaxAmount();
+			String text = energy.getAmount() + "/" + energy.getMaxAmount();
 			mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();

@@ -37,7 +37,7 @@ public enum Crop {
 		this.soil = soil;
 		mp_expansion_on_eat = 10;
 	}
-	
+
 	Crop(Block soil, int magicValue) {
 		this(soil);
 		mp_expansion_on_eat = magicValue;
@@ -46,7 +46,7 @@ public enum Crop {
 	public Block getSoil() {
 		return soil;
 	}
-	
+
 	public int getMPExpansionOnEaten() {
 		return mp_expansion_on_eat;
 	}
