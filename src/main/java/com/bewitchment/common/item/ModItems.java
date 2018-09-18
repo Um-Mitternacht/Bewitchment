@@ -3,6 +3,7 @@ package com.bewitchment.common.item;
 import baubles.api.BaubleType;
 import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.block.*;
@@ -376,15 +377,15 @@ public final class ModItems {
 	}
 
 	private static void initOreDictionary() {
-		OreDictionary.registerOre("gemBloodstone", new ItemStack(ModItems.gem, 1, 5));
-		OreDictionary.registerOre("gemNuummite", new ItemStack(ModItems.gem, 1, 2));
-		OreDictionary.registerOre("gemGarnet", new ItemStack(ModItems.gem, 1, 0));
-		OreDictionary.registerOre("gemTourmaline", new ItemStack(ModItems.gem, 1, 4));
-		OreDictionary.registerOre("gemTigersEye", new ItemStack(ModItems.gem, 1, 3));
-		OreDictionary.registerOre("gemJasper", new ItemStack(ModItems.gem, 1, 6));
-		OreDictionary.registerOre("gemMalachite", new ItemStack(ModItems.gem, 1, 7));
-		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, 8));
-		OreDictionary.registerOre("gemAlexandrite", new ItemStack(ModItems.gem, 1, 9));
+		OreDictionary.registerOre("gemBloodstone", new ItemStack(ModItems.gem, 1, Gem.BLOODSTONE.ordinal()));
+		OreDictionary.registerOre("gemNuummite", new ItemStack(ModItems.gem, 1, Gem.NUUMMITE.ordinal()));
+		OreDictionary.registerOre("gemGarnet", new ItemStack(ModItems.gem, 1, Gem.GARNET.ordinal()));
+		OreDictionary.registerOre("gemTourmaline", new ItemStack(ModItems.gem, 1, Gem.TOURMALINE.ordinal()));
+		OreDictionary.registerOre("gemTigersEye", new ItemStack(ModItems.gem, 1, Gem.TIGERS_EYE.ordinal()));
+		OreDictionary.registerOre("gemJasper", new ItemStack(ModItems.gem, 1, Gem.JASPER.ordinal()));
+		OreDictionary.registerOre("gemMalachite", new ItemStack(ModItems.gem, 1, Gem.MALACHITE.ordinal()));
+		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, Gem.AMETHYST.ordinal()));
+		OreDictionary.registerOre("gemAlexandrite", new ItemStack(ModItems.gem, 1, Gem.ALEXANDRITE.ordinal()));
 		OreDictionary.registerOre("nuggetSilver", new ItemStack(ModItems.silver_nugget));
 		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.silver_ingot));
 		OreDictionary.registerOre("honeyDrop", new ItemStack(ModItems.honey));
