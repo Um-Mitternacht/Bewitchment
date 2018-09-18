@@ -6,6 +6,7 @@ import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -107,4 +108,8 @@ public class ItemLocationStone extends ItemMod {
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
 	}
 
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return false;
+	}
 }
