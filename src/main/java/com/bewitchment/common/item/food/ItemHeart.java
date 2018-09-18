@@ -25,6 +25,7 @@ public class ItemHeart extends ItemModFood implements IMagicPowerExpander {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
 		BewitchmentAPI.getAPI().expandPlayerMP(this, player);

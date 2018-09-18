@@ -1,7 +1,14 @@
 package com.bewitchment.common.item.natural.crop;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.food.ItemModFood;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,11 +19,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This class was created by Arekkuusu on 01/03/2017.
@@ -32,7 +34,9 @@ public class ItemCropFood extends ItemModFood {
 	public ItemCropFood(String id, int amount, float saturation, boolean isWolfFood) {
 		super(id, amount, saturation, isWolfFood);
 	}
-
+	
+	
+	
 	protected void addPotion(Potion... potionsIn) {
 		this.potions = new ArrayList<>();
 		Collections.addAll(this.potions, potionsIn);
@@ -50,12 +54,14 @@ public class ItemCropFood extends ItemModFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		if (!worldIn.isRemote && potions != null) {
 			final int modifier = isDry(stack) ? 160 : 80;
 			for (Potion effect : potions) {
 				player.addPotionEffect(new PotionEffect(effect, modifier, modifier / 80));
 			}
 		}
+		
 	}
 
 	public boolean isDry(ItemStack stack) {

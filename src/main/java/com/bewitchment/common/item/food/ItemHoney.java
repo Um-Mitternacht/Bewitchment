@@ -22,6 +22,7 @@ public class ItemHoney extends ItemModFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 450, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 450, 0));
 	}

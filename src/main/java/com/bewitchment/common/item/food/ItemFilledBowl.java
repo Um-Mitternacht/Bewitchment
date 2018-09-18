@@ -28,6 +28,7 @@ public class ItemFilledBowl extends ItemModFood {
 
 	@Override
 	public void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
 		if (stack.getTagCompound() == null) {
 			stack.setTagCompound(new NBTTagCompound()); //not really supposed to happen ingame since you only get the stews with NBT values assigned but it prevents crashing
 		}
