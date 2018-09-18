@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -27,6 +28,8 @@ import net.minecraft.world.World;
 public class BlockBrazier extends BlockMod {
 
 	private static final PropertyBool HANGING = PropertyBool.create("hanging");
+	private static final AxisAlignedBB BBOX_STANDING = new AxisAlignedBB(0.15625, 0, 0.15625, 0.84375, 1+1d/32d, 0.84375);
+	private static final AxisAlignedBB BBOX_HANGING = new AxisAlignedBB(0.15625, -1d/32d, 0.15625, 0.84375, 1, 0.84375);
 
 	public BlockBrazier() {
 		super(LibBlockName.BRAZIER, Material.IRON);
@@ -35,6 +38,11 @@ public class BlockBrazier extends BlockMod {
 		setResistance(3F);
 		setHardness(3F);
 	}
+	
+	@Override
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			return state.getValue(HANGING)?BBOX_HANGING:BBOX_STANDING;
+		}
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -74,7 +82,8 @@ public class BlockBrazier extends BlockMod {
 	}
 
 	private boolean canHangFromAbove(World world, BlockPos pos) {
-		return world.getBlockState(pos.up()).getBlockFaceShape(world, pos.up(), EnumFacing.DOWN) == BlockFaceShape.SOLID;
+		BlockFaceShape fs = world.getBlockState(pos.up()).getBlockFaceShape(world, pos.up(), EnumFacing.DOWN);
+		return fs != BlockFaceShape.BOWL && fs != BlockFaceShape.UNDEFINED;
 	}
 
 	private boolean canSitBelow(World world, BlockPos pos) {
