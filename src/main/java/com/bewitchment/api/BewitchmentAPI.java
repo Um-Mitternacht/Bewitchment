@@ -7,6 +7,7 @@ import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.infusion.IInfusion;
+import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
@@ -97,5 +98,9 @@ public abstract class BewitchmentAPI {
 	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
 
 	public abstract void registerFrostfireSmelting(ResourceLocation name, Ingredient input, Supplier<ItemStack> output);
+	
+	public abstract void expandPlayerMP(IMagicPowerExpander expander, EntityPlayer player);
+	
+	public abstract void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player);
 
 }

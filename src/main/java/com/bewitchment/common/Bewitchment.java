@@ -23,6 +23,7 @@ import com.bewitchment.common.core.SeedDropRegistry;
 import com.bewitchment.common.core.capability.energy.MagicPowerConsumer;
 import com.bewitchment.common.core.capability.energy.MagicPowerContainer;
 import com.bewitchment.common.core.capability.energy.MagicPowerUsingItem;
+import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
@@ -100,6 +101,7 @@ public class Bewitchment {
 		CapabilityBloodReserve.init();
 		CapabilityCauldronTeleport.init();
 		CapabilityMimicData.init();
+		CapabilityMPExpansion.init();
 		SimpleCapability.preInit(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE);
 		NetworkHandler.init();
 		ModInfusions.init();

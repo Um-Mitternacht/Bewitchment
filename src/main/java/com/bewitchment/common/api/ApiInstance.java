@@ -9,6 +9,7 @@ import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.infusion.IInfusion;
+import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
@@ -28,6 +29,7 @@ import com.bewitchment.common.content.spell.Spell;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
+import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
@@ -199,6 +201,16 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void registerFrostfireSmelting(ResourceLocation name, Ingredient input, Supplier<ItemStack> output) {
 		FrostFireRecipe.REGISTRY.register(new FrostFireRecipe(name, input, output));
+	}
+
+	@Override
+	public void expandPlayerMP(IMagicPowerExpander expander, EntityPlayer player) {
+		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).expand(expander);
+	}
+	
+	@Override
+	public void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player) {
+		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).remove(expander);
 	}
 
 }

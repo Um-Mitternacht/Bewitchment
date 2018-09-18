@@ -5,6 +5,7 @@ import com.bewitchment.common.content.infusion.capability.InfusionProvider;
 import com.bewitchment.common.content.transformation.capability.TransformationDataProvider;
 import com.bewitchment.common.content.transformation.vampire.blood.BloodReserveProvider;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainerProvider;
+import com.bewitchment.common.core.capability.energy.player.expansion.MagicPowerExpansionProvider;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.Entity;
@@ -24,6 +25,7 @@ public class CapabilityAttacher {
 	public static final ResourceLocation MIMIC_TAG = new ResourceLocation(LibMod.MOD_ID, "mimic_data");
 	public static final ResourceLocation TRANSFORMATION_TAG = new ResourceLocation(LibMod.MOD_ID, "transformations");
 	public static final ResourceLocation INFUSION_TAG = new ResourceLocation(LibMod.MOD_ID, "infusion");
+	public static final ResourceLocation MP_EXPANSION_TAG = new ResourceLocation(LibMod.MOD_ID, "mp_expansion");
 
 	@SubscribeEvent
 	public static void attach(AttachCapabilitiesEvent<Entity> evt) {
@@ -38,6 +40,7 @@ public class CapabilityAttacher {
 			evt.addCapability(MIMIC_TAG, new MimicDataProvider());
 			evt.addCapability(TRANSFORMATION_TAG, new TransformationDataProvider());
 			evt.addCapability(INFUSION_TAG, new InfusionProvider());
+			evt.addCapability(MP_EXPANSION_TAG, new MagicPowerExpansionProvider());
 		}
 	}
 

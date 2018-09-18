@@ -3,8 +3,11 @@ package com.bewitchment.common.core.event;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
+import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergySync;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +26,7 @@ public class EnergyEvents {
 	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
 		if (event.isWasDeath()) {
 			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
+			CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityMPExpansion.CAPABILITY);
 		}
 	}
 
@@ -31,6 +35,7 @@ public class EnergyEvents {
 		if (evt.player instanceof EntityPlayerMP) {
 			EntityPlayerMP player = (EntityPlayerMP) evt.player;
 			IMagicPowerContainer mp = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			syncExpansions(player);
 			NetworkHandler.HANDLER.sendTo(new EnergySync(mp.getAmount(), mp.getMaxAmount()), player);
 		}
 	}
@@ -44,9 +49,25 @@ public class EnergyEvents {
 				energy.fill(getRegenBurst(player));
 			}
 			if (energy.isDirty()) {
+				syncExpansions(player);
 				NetworkHandler.HANDLER.sendTo(new EnergySync(energy.getAmount(), energy.getMaxAmount()), player);
 				energy.setClean();
 			}
+		}
+	}
+
+	private static void syncExpansions(EntityPlayer p) {
+		CapabilityMPExpansion exps = p.getCapability(CapabilityMPExpansion.CAPABILITY, null);
+		if (exps.isDirty()) {
+			IMagicPowerContainer impc = p.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			int energy = impc.getAmount();
+			int futureMaxAmount = exps.getTotalIncrease();
+			if (energy > futureMaxAmount) {
+				energy = futureMaxAmount;
+			}
+			impc.setAmount(energy);
+			impc.setMaxAmount(futureMaxAmount);
+			exps.clean();
 		}
 	}
 
