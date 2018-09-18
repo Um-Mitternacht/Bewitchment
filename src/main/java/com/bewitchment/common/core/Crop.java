@@ -31,23 +31,23 @@ public enum Crop {
 	CHRYSANTHEMUM(Blocks.FARMLAND);
 
 	private final Block soil;
-	private int mp;
+	private int mp_expansion_on_eat;
 
 	Crop(Block soil) {
 		this.soil = soil;
-		mp = 10;
+		mp_expansion_on_eat = 10;
 	}
 	
 	Crop(Block soil, int magicValue) {
 		this(soil);
-		mp = magicValue;
+		mp_expansion_on_eat = magicValue;
 	}
 
 	public Block getSoil() {
 		return soil;
 	}
 	
-	public int getMP() {
-		return mp;
+	public int getMPExpansionOnEaten() {
+		return mp_expansion_on_eat;
 	}
 }
