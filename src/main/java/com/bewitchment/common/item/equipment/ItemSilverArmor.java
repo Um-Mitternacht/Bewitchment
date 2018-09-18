@@ -43,13 +43,15 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		DamageSource source = event.getSource();
 
 		Entity attacker = source.getTrueSource();
-		if ((attacker instanceof EntityLivingBase) && ((EntityLivingBase) attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-			event.setAmount(event.getAmount() * 0.9F);
-		}
-		if (attacker instanceof EntityPlayer && attacker.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()== DefaultTransformations.WEREWOLF) {
-			event.setAmount(event.getAmount() * 0.9F);
-			EntityPlayer a = (EntityPlayer) attacker;
-			a.attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), MathHelper.clamp(event.getAmount()/2, 1f, 4f));
+		if (attacker instanceof EntityLivingBase) { 
+			if (((EntityLivingBase) attacker).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+				event.setAmount(event.getAmount() * 0.9F);
+			}
+			if (attacker instanceof EntityPlayer && attacker.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()== DefaultTransformations.WEREWOLF) {
+				event.setAmount(event.getAmount() * 0.9F);
+				EntityPlayer a = (EntityPlayer) attacker;
+				a.attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), MathHelper.clamp(event.getAmount()/2, 1f, 4f));
+			}
 		}
 	}
 
