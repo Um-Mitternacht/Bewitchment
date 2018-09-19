@@ -1,0 +1,26 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SNS",
+    "NEN",
+    "SNS"
+  ],
+  "key": {
+    "N": {
+      "item": "bewitchment:fume",
+      "data": 11
+    },
+    "S": {
+      "item": "bewitchment:diabolic_vein",
+      "data": 0
+    },
+    "E": {
+      "item": "minecraft:ender_eye",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:wrathful_eye",
+    "data": 0
+  }
+}
