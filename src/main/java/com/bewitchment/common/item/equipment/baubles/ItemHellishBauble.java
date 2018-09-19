@@ -1,15 +1,20 @@
 package com.bewitchment.common.item.equipment.baubles;
 
-import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
-import baubles.api.IBauble;
-import baubles.api.cap.IBaublesItemHandler;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
+
+import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
+import baubles.api.IBauble;
+import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -23,6 +28,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,9 +36,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 /**
  * Created by Joseph on 1/1/2018.
@@ -54,7 +57,6 @@ public class ItemHellishBauble extends ItemMod implements IBauble, IMagicPowerEx
 		return false;
 	}
 
-	//Todo: Figure out how to properly expand ME via a bauble. This would expand by 100.
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
@@ -84,7 +86,17 @@ public class ItemHellishBauble extends ItemMod implements IBauble, IMagicPowerEx
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
+		IBauble.super.onEquipped(itemstack, player);
+		player.world.playSound((EntityPlayer) player, player.getPosition(), SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.AMBIENT, 0.75F, 1.9f);
+		BewitchmentAPI.getAPI().expandPlayerMP(this, (EntityPlayer) player);
+	}
+
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		IBauble.super.onUnequipped(itemstack, player);
+		if (BaublesApi.isBaubleEquipped((EntityPlayer) player, this) < 0) {
+			BewitchmentAPI.getAPI().removeMPExpansion(this, (EntityPlayer) player);
+		}
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
