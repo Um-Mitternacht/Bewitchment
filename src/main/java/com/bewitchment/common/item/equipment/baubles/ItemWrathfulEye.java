@@ -19,8 +19,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -31,8 +33,9 @@ public class ItemWrathfulEye extends ItemMod implements IBauble {
 
 	public ItemWrathfulEye() {
 		super(LibItemName.WRATHFUL_EYE);
-		this.setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		this.setMaxStackSize(1);
+		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@Override
@@ -80,6 +83,16 @@ public class ItemWrathfulEye extends ItemMod implements IBauble {
 	@Override
 	public BaubleType getBaubleType(ItemStack itemStack) {
 		return BaubleType.AMULET;
+	}
+
+	private boolean doesPlayerHaveAmulet(EntityPlayer e) {
+		IBaublesItemHandler ih = BaublesApi.getBaublesHandler(e);
+		for (int i = 0; i < ih.getSlots(); i++) {
+			if (ih.getStackInSlot(i).getItem() == this) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
