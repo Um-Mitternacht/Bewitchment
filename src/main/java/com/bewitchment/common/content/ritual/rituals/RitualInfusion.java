@@ -1,6 +1,7 @@
 package com.bewitchment.common.content.ritual.rituals;
 
 import com.bewitchment.api.infusion.IInfusion;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.core.net.NetworkHandler;
@@ -30,6 +31,8 @@ public class RitualInfusion extends RitualImpl {
 		if (player == null) {
 			return;
 		}
+		IMagicPowerContainer pc = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+		pc.drain(pc.getAmount());
 		player.getCapability(InfusionCapability.CAPABILITY, null).setType(type);
 		if (player instanceof EntityPlayerMP) {
 			NetworkHandler.HANDLER.sendTo(new InfusionChangedMessage(player), (EntityPlayerMP) player);

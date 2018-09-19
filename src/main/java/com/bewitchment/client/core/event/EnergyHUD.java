@@ -1,11 +1,15 @@
 package com.bewitchment.client.core.event;
 
+import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.core.handler.ConfigHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -14,13 +18,13 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -35,6 +39,7 @@ public class EnergyHUD {
 	private int renderTime;
 	private float visible;
 	private int oldEnergy = -1, oldMaxEnergy = -1;
+	private ResourceLocation oldInfusion = null;
 	private float barAlpha;
 	private boolean reverse;
 	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
@@ -45,15 +50,17 @@ public class EnergyHUD {
 		if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().player != null) {
 
 			IMagicPowerContainer storage = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-			if (lastPulsed > 0)
+			if (lastPulsed > 0) {
 				lastPulsed--;
-			boolean energyChanged = oldEnergy != storage.getAmount() || oldMaxEnergy != storage.getMaxAmount();
+			}
+			boolean energyChanged = oldEnergy != storage.getAmount() || oldMaxEnergy != storage.getMaxAmount() || oldInfusion != BewitchmentAPI.getAPI().getPlayerInfusion(Minecraft.getMinecraft().player).getTexture();
 			if (energyChanged) {
 				shouldPulse = lastPulsed == 0;
 			}
 			if (energyChanged || isItemEnergyUsing()) {
 				oldEnergy = storage.getAmount();
 				oldMaxEnergy = storage.getMaxAmount();
+				oldInfusion = BewitchmentAPI.getAPI().getPlayerInfusion(Minecraft.getMinecraft().player).getTexture();
 				renderTime = 60;
 				visible = 1F;
 			}
