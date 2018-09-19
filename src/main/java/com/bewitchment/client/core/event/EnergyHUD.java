@@ -163,8 +163,14 @@ public class EnergyHUD {
 				textColor = alpha << 24 | 0x990066;
 			}
 
+			float scale = 0.75f;
 			String text = energy.getAmount() + "/" + energy.getMaxAmount();
-			mc.fontRenderer.drawStringWithShadow(text, x, y - 10, textColor);
+			int twidth = (int) (mc.fontRenderer.getStringWidth(text) * scale);
+			int px = (3*x - twidth)/2;
+			int py = (y - 4 - (int) (mc.fontRenderer.FONT_HEIGHT*scale));
+			GlStateManager.scale(scale, scale, scale);
+			GlStateManager.translate(px/scale,  py/scale, 0);
+			mc.fontRenderer.drawStringWithShadow(text, scale, 0, textColor);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
