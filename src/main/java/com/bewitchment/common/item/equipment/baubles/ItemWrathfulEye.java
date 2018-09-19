@@ -1,12 +1,17 @@
 package com.bewitchment.common.item.equipment.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.lib.LibItemName;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.item.ItemMod;
-import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -23,9 +28,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemWrathfulEye extends ItemMod implements IBauble {
 
@@ -84,13 +86,7 @@ public class ItemWrathfulEye extends ItemMod implements IBauble {
 	}
 
 	private boolean doesPlayerHaveAmulet(EntityPlayer e) {
-		IBaublesItemHandler ih = BaublesApi.getBaublesHandler(e);
-		for (int i = 0; i < ih.getSlots(); i++) {
-			if (ih.getStackInSlot(i).getItem() == this) {
-				return true;
-			}
-		}
-		return false;
+		return BaublesApi.isBaubleEquipped(e, this) > 0;
 	}
 
 }
