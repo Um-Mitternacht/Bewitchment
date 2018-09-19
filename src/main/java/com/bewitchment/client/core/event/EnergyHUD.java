@@ -1,7 +1,5 @@
 package com.bewitchment.client.core.event;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.IInfusionCapability;
 import com.bewitchment.api.mp.IMagicPowerContainer;
@@ -9,7 +7,6 @@ import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.core.handler.ConfigHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -25,6 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -173,10 +171,10 @@ public class EnergyHUD {
 			float scale = 0.75f;
 			String text = energy.getAmount() + "/" + energy.getMaxAmount();
 			int twidth = (int) (mc.fontRenderer.getStringWidth(text) * scale);
-			int px = (3*x - twidth)/2;
-			int py = (y - 4 - (int) (mc.fontRenderer.FONT_HEIGHT*scale));
+			int px = (3 * x - twidth) / 2;
+			int py = (y - 4 - (int) (mc.fontRenderer.FONT_HEIGHT * scale));
 			GlStateManager.scale(scale, scale, scale);
-			GlStateManager.translate(px/scale,  py/scale, 0);
+			GlStateManager.translate(px / scale, py / scale, 0);
 			mc.fontRenderer.drawStringWithShadow(text, scale, 0, textColor);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
