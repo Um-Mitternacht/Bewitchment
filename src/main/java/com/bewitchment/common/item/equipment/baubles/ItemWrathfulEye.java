@@ -83,6 +83,7 @@ public class ItemWrathfulEye extends ItemMod implements IBauble {
 		return BaubleType.AMULET;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean doesPlayerHaveAmulet(EntityPlayer e) {
 		return BaublesApi.isBaubleEquipped(e, this) > 0;
 	}
