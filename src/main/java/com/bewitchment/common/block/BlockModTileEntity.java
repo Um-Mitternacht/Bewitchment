@@ -32,7 +32,9 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		((ModTileEntity) worldIn.getTileEntity(pos)).onBlockBroken(worldIn, pos, state);
+		if (worldIn.getTileEntity(pos)!=null) {
+			((ModTileEntity) worldIn.getTileEntity(pos)).onBlockBroken(worldIn, pos, state);
+		}
 		super.breakBlock(worldIn, pos, state);
 	}
 

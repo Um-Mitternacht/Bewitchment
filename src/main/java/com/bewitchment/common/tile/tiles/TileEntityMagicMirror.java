@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.UUID;
+
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.core.event.custom.MimicEvent;
@@ -11,7 +13,7 @@ import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
-import net.minecraft.block.BlockHorizontal;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,8 +24,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-
-import java.util.UUID;
 
 public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 	private static final int REFRESH_TIME = 10;
@@ -48,10 +48,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 		} else {
 			shadeType = 1;
 		}
-		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos)
-				.withProperty(StateProperties.MIRROR_VARIANTS, shadeType)
-				.withProperty(BlockHorizontal.FACING, this.world.getBlockState(this.pos).getValue(BlockHorizontal.FACING)));
-		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false); //TODO: is this the right method
+		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(StateProperties.MIRROR_VARIANTS, shadeType), 3);
 		this.syncToClient();
 		this.markDirty();
 	}

@@ -77,7 +77,6 @@ public final class ModBlocks {
 	public static final Block garnet_block = null;
 	public static final Block cauldron = null;
 	public static final Block magic_mirror = null;
-	public static final Block magic_mirror_top = null;
 	public static final Block candle_medium = null;
 	public static final Block candle_small = null;
 	public static final Block candle_medium_lit = null;
@@ -181,7 +180,6 @@ public final class ModBlocks {
 		registry.registerAll(
 				new BlockCauldron(),
 				new BlockMagicMirror(),
-				new BlockMagicMirror.BlockMagicMirrorTop(),
 				new BlockOven(),
 				new BlockBrazier(),
 				new BlockCandleMedium(LibBlockName.CANDLE_MEDIUM, false),
