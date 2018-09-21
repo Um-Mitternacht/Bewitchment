@@ -1,7 +1,6 @@
 package com.bewitchment.common.block.misc;
 
 import com.bewitchment.common.block.BlockMod;
-
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;

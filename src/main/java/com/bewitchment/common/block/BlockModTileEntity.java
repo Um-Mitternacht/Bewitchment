@@ -23,7 +23,7 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (worldIn.getTileEntity(pos)!=null) {
+		if (worldIn.getTileEntity(pos) != null) {
 			return ((ModTileEntity) worldIn.getTileEntity(pos)).onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 		}
 		return false;
@@ -32,7 +32,7 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		if (worldIn.getTileEntity(pos)!=null) {
+		if (worldIn.getTileEntity(pos) != null) {
 			((ModTileEntity) worldIn.getTileEntity(pos)).onBlockBroken(worldIn, pos, state);
 		}
 		super.breakBlock(worldIn, pos, state);

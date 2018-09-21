@@ -60,7 +60,7 @@
       "model": "bewitchment:magic_mirror_3",
       "y": 270
     },
-     "facing=north,half=false,mirror=0": {
+    "facing=north,half=false,mirror=0": {
       "model": "bewitchment:magic_mirror_top"
     },
     "facing=north,half=false,mirror=1": {

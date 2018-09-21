@@ -1,15 +1,9 @@
 package com.bewitchment.common.block.tools;
 
-import static com.bewitchment.api.state.StateProperties.LOWER_HALF;
-import static com.bewitchment.api.state.StateProperties.MIRROR_VARIANTS;
-
-import java.util.Random;
-
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.tiles.TileEntityMagicMirror;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -26,6 +20,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
+
+import static com.bewitchment.api.state.StateProperties.LOWER_HALF;
+import static com.bewitchment.api.state.StateProperties.MIRROR_VARIANTS;
 
 public class BlockMagicMirror extends BlockModTileEntity {
 
@@ -66,20 +65,20 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		//BitMap: xHFF, Half, Facing
-		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex() | (state.getValue(LOWER_HALF)?4:0);
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex() | (state.getValue(LOWER_HALF) ? 4 : 0);
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta)).withProperty(LOWER_HALF, (meta&4)==4);
+		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta)).withProperty(LOWER_HALF, (meta & 4) == 4);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntityMagicMirror magicMirror = (TileEntityMagicMirror) worldIn.getTileEntity(pos);
-		if (magicMirror!=null) {
+		if (magicMirror != null) {
 			return state.withProperty(MIRROR_VARIANTS, magicMirror.getShadeType());
 		}
 		return state;
@@ -145,10 +144,10 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		IBlockState neighborState = world.getBlockState(fromPos);
 		if (neighborState.getBlock() == ModBlocks.magic_mirror) {
-			if (neighborState.getValue(LOWER_HALF) == state.getValue(LOWER_HALF) && fromPos.getX()==pos.getX() && fromPos.getZ()==pos.getZ()) {
+			if (neighborState.getValue(LOWER_HALF) == state.getValue(LOWER_HALF) && fromPos.getX() == pos.getX() && fromPos.getZ() == pos.getZ()) {
 				world.setBlockToAir(fromPos);
 				world.setBlockToAir(pos);
-			} 
+			}
 		} else {
 			if (state.getValue(LOWER_HALF)) {
 				if (fromPos.equals(pos.up())) {
@@ -161,7 +160,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 			}
 		}
 	}
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		if (!state.getValue(LOWER_HALF)) {

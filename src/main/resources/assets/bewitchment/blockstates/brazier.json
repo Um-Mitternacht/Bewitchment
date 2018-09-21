@@ -17,12 +17,12 @@
       }
     },
     "hanging": {
-    	"true": {
-    		"model": "bewitchment:brazier_hanging"
-    	}, 
-    	"false": {
-    		"model": "bewitchment:brazier"
-    	}
+      "true": {
+        "model": "bewitchment:brazier_hanging"
+      },
+      "false": {
+        "model": "bewitchment:brazier"
+      }
     }
   }
 }
