@@ -135,6 +135,8 @@ public final class ModItems {
 	public static final Item cold_iron_nugget = null;
 	public static final Item spanish_moss = null;
 
+	public static final Item sanguine_fabric = null;
+
 	public static final Item golden_thread = null;
 	public static final Item regal_silk = null;
 	public static final Item witches_stitching = null;
@@ -249,6 +251,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.PURE_FILAMENT),
 				new ItemMod(LibItemName.SOUL_STRING),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
+				new ItemMod(LibItemName.SANGUINE_FABRIC),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
