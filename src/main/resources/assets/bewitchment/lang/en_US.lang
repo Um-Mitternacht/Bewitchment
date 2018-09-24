@@ -152,6 +152,7 @@ item.tarots.read_to=They are receptive to %s's future
 item.tarots.error_reading=The cards predictions make no sense
 item.girdle_of_the_wooded.name=Girdle Of The Dryads
 item.mantle.name=Mantle
+item.pouch.name=Witches Pouch
 item.broom_mundane.name=Broom
 item.broom_elder.name=Elder Broom
 item.broom_juniper.name=Juniper Broom
@@ -645,6 +646,7 @@ witch.tooltip.talismans_description.name=An enchantable trinket, its effects wil
 witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
 witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
 witch.tooltip.mantle_description.name=A plain mantle. It's stylish, though...
+witch.tooltip.pouch_description.name=What secrets does it hold?
 
 //Commands
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness

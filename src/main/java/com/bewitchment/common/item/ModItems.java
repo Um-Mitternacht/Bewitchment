@@ -169,6 +169,7 @@ public final class ModItems {
 	public static final Item girdle_of_the_wooded = null;
 	public static final Item wrathful_eye = null;
 	public static final Item mantle = null;
+	public static final Item pouch = null;
 
 	public static final Item magic_salve = null;
 
@@ -274,7 +275,8 @@ public final class ModItems {
 				new ItemTalisman(BaubleType.AMULET, 18, LibItemName.TALISMAN_EMERALD_PENDANT),
 				new ItemTalisman(BaubleType.BELT, 30, LibItemName.TALISMAN_RUBY_ORB),
 				new ItemTalisman(BaubleType.CHARM, 18, LibItemName.TALISMAN_WATCHING_EYE),
-				new ItemGirdleOfTheWooded(LibItemName.GIRDLE_OF_THE_WOODED), new ItemMantle(LibItemName.MANTLE)
+				new ItemGirdleOfTheWooded(LibItemName.GIRDLE_OF_THE_WOODED), 
+				new ItemMantle(LibItemName.MANTLE), new ItemPouch(LibItemName.POUCH)
 		);
 
 		//Equipment
