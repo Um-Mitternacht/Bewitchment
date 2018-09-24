@@ -11,7 +11,7 @@
     },
     "I": {
       "item": "minecraft:leather"
-    },	
+    },
     "S": {
       "type": "forge:ore_dict",
       "ore": "nuggetSilver"

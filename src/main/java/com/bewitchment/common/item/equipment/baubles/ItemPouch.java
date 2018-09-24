@@ -5,7 +5,6 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-import baubles.api.render.IRenderBauble.RenderType;
 import com.bewitchment.client.render.entity.model.ModelPouch;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
@@ -24,19 +23,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemPouch extends ItemMod implements IBauble, IRenderBauble {
-	
-	@SideOnly(Side.CLIENT)
-	private static ModelPouch model;
 
 	private static final BaubleType BAUBTYPE = BaubleType.CHARM;
+	@SideOnly(Side.CLIENT)
+	private static ModelPouch model;
 
 	public ItemPouch(String id) {
 		super(id);
@@ -102,7 +98,7 @@ public class ItemPouch extends ItemMod implements IBauble, IRenderBauble {
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
-	
+
 	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
 		if (type == RenderType.BODY) {
 			if (model == null) {
@@ -115,7 +111,7 @@ public class ItemPouch extends ItemMod implements IBauble, IRenderBauble {
 			GL11.glScaled(0.07, 0.07, 0.07);
 			IRenderBauble.Helper.translateToChest();
 			IRenderBauble.Helper.defaultTransforms();
-				model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
+			model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.rotationYaw, player.rotationPitch, 1);
 			GL11.glPopMatrix();
 		}
 	}
