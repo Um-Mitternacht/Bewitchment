@@ -82,6 +82,7 @@ public class LibIngredients {
 	public static Ingredient magicSalve = Ingredient.fromItem(ModItems.magic_salve);
 	public static Ingredient elytra = Ingredient.fromItem(Items.ELYTRA);
 	public static Ingredient anyString = new OreIngredient("string");
+	public static Ingredient glowstoneDust = Ingredient.fromItem(Items.GLOWSTONE_DUST);
 
 
 }

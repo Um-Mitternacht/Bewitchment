@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.misc;
 
 import com.bewitchment.common.block.BlockMod;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,10 +22,11 @@ public class BlockGoblet extends BlockMod {
 	private static final AxisAlignedBB bounding_box = new AxisAlignedBB(0.375, 0, 0.375, 0.625, 0.375, 0.625);
 
 	public BlockGoblet(String id) {
-		super(id, Material.IRON);
+		super(id, new Material(MapColor.IRON));
 		this.setDefaultState(blockState.getBaseState().withProperty(FULL, false));
-		this.setHarvestLevel("pickaxe", 0);
 		this.setLightOpacity(0);
+		this.setHardness(0.3f);
+		this.setHarvestLevel("pickaxe", 0);
 	}
 
 	@SuppressWarnings("deprecation")

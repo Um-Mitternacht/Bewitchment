@@ -11,7 +11,6 @@ import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.helper.NBTHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -48,10 +47,7 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 		} else {
 			shadeType = 1;
 		}
-		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos)
-				.withProperty(StateProperties.MIRROR_VARIANTS, shadeType)
-				.withProperty(BlockHorizontal.FACING, this.world.getBlockState(this.pos).getValue(BlockHorizontal.FACING)));
-		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false); //TODO: is this the right method
+		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(StateProperties.MIRROR_VARIANTS, shadeType), 3);
 		this.syncToClient();
 		this.markDirty();
 	}
