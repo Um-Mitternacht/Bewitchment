@@ -181,6 +181,8 @@ public final class ModItems {
 	public static final Item ritual_chalk = null;
 	public static final Item location_stone = null;
 
+	public static final Item pentacle = null;
+
 
 	private ModItems() {
 	}
@@ -253,6 +255,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.SOUL_STRING),
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemMod(LibItemName.SANGUINE_FABRIC),
+				new ItemMod(LibItemName.PENTACLE),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
