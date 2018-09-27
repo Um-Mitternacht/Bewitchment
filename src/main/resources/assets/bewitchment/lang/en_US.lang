@@ -178,6 +178,7 @@ item.magic_salve.name=Magic Salve
 item.location_stone.bound_to=Bound to %d %d %d (%s)
 item.location_stone.name=TemporaryName LocationStone
 item.location_stone.unbound=Not bound
+item.pentacle.name=Pentacle
 
 //fumes
 item.fume.unfired_jar.name=Unfired Clay Jar
