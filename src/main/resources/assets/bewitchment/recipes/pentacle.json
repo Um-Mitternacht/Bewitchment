@@ -3,26 +3,29 @@
   "pattern": [
     "SIS",
     "IMI",
-    "SIS"
-  ],
-  "key": {
-    "M": {
-      "item": "bewitchment:fume",
-      "data": 20	  
+    "SIS",
+    "key"
+    :
+    {
+      "M": {
+        "item": "bewitchment:fume",
+        "data": 20
+      }
+    {
+      "I": {
+        "type": "forge:ore_dict",
+        "ore": "nuggetIron"
+      }
+    {
+      "S": {
+        "type": "forge:ore_dict",
+        "ore": "nuggetSilver"
+      }
     },
-	{
-    "I": {
-      "type": "forge:ore_dict",
-      "ore": "nuggetIron"
-    },
-	{
-    "S": {
-      "type": "forge:ore_dict",
-      "ore": "nuggetSilver"
+    "result"
+    :
+    {
+      "item": "bewitchment:pentacle",
+      "data": 0
     }
-  },
-  "result": {
-    "item": "bewitchment:pentacle",
-    "data": 0
-  }
-}
+    }
