@@ -10,12 +10,10 @@
       "item": "bewitchment:fume",
       "data": 20	  
     },
-	{
     "I": {
       "type": "forge:ore_dict",
       "ore": "nuggetIron"
     },
-	{
     "S": {
       "type": "forge:ore_dict",
       "ore": "nuggetSilver"
