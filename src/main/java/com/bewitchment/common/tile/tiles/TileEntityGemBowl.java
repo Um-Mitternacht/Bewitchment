@@ -25,23 +25,23 @@ public class TileEntityGemBowl extends ModTileEntity {
 	private static final String DIRECTION_TAG_NAME = "facing";
 
 	static {
-		gainMap.put("gemDiamond", 2);
-		gainMap.put("gemEmerald", 2);
-		gainMap.put("gemPsi", 2);
+		gainMap.put("gemDiamond", 4);
+		gainMap.put("gemEmerald", 4);
+		gainMap.put("gemPsi", 4);
 		gainMap.put("gemPrismarine", 2);
 		gainMap.put("gemLifeCrystal", 2);
 		gainMap.put("gemQuartz", 1);
 		gainMap.put("gemLapis", 1);
 		gainMap.put("dustRedstone", 1);
-		gainMap.put("gemBloodstone", 1);
-		gainMap.put("gemNuummite", 1);
-		gainMap.put("gemGarnet", 1);
-		gainMap.put("gemTourmaline", 1);
-		gainMap.put("gemJasper", 1);
-		gainMap.put("gemTigersEye", 1);
-		gainMap.put("gemMalachite", 1);
-		gainMap.put("gemAmethyst", 1);
-		gainMap.put("gemAlexandrite", 1);
+		gainMap.put("gemBloodstone", 2);
+		gainMap.put("gemNuummite", 2);
+		gainMap.put("gemGarnet", 2);
+		gainMap.put("gemTourmaline", 2);
+		gainMap.put("gemJasper", 2);
+		gainMap.put("gemTigersEye", 2);
+		gainMap.put("gemMalachite", 2);
+		gainMap.put("gemAmethyst", 2);
+		gainMap.put("gemAlexandrite", 2);
 		gainMap.put("gemAquamarine", 1);
 		gainMap.put("gemRuby", 1);
 		gainMap.put("gemSapphire", 1);
@@ -100,7 +100,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemDominicanAmber", 1);
 		gainMap.put("gemScarabBlue", 1);
 		gainMap.put("gemScarab", 1);
-		gainMap.put("gemMoldavite", 1);
+		gainMap.put("gemMoldavite", 2);
 		gainMap.put("gemVioletSapphire", 1);
 		gainMap.put("gemCatsEye", 1);
 		gainMap.put("gemAmmolite", 1);
@@ -201,7 +201,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 		return direction;
 	}
 
-	public int getGain() {
+	public int getGemValue() {
 		if (gem.isEmpty()) {
 			return 0;
 		}

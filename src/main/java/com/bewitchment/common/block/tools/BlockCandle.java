@@ -186,5 +186,9 @@ public abstract class BlockCandle extends BlockMod {
 			return new ItemStack(state.getBlock() == ModBlocks.candle_medium_lit ? ModBlocks.candle_medium : ModBlocks.candle_small, 1, state.getBlock().getMetaFromState(state));
 		return super.getPickBlock(state, target, world, pos, player);
 	}
+	
+	public boolean isLit() {
+		return isLit;
+	}
 
 }

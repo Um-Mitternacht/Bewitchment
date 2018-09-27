@@ -1,16 +1,24 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.HashMap;
+
+import javax.annotation.Nullable;
+
+import com.bewitchment.api.event.AltarModifierCheckEvent;
+import com.bewitchment.api.event.AltarModifierCollectionEvent;
+import com.bewitchment.api.event.AltarUpgradeController;
+import com.bewitchment.api.event.AltarUpgradeController.EnumUpgradeClass;
 import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
-import com.bewitchment.common.block.tools.BlockGemBowl;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.tile.ModTileEntity;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -27,14 +35,16 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
-import java.util.HashMap;
-
+@Mod.EventBusSubscriber
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	private static final int RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20;
+
 	private int gain = 1;
 
 	//Scan variables, no need to save these
@@ -126,21 +136,36 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 	}
 
-	private void refreshNature() {
-		gain = 1;
-		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
-		maxPower += (map.keySet().size() * 80); //Variety is the most important thing
-		double multiplier = 1;
-		boolean[] typesGain = new boolean[3]; //Types of modifiers. 0=skull, 1=torch/candle, 2=vase/gemBowl
-		boolean[] typesMult = new boolean[2]; //Types of modifiers. 0=skull, 1=goblet
-		for (int dx = -1; dx <= 1; dx++)
+	public AltarUpgradeController getUpgrades() {
+		AltarUpgradeController controller = new AltarUpgradeController();
+		for (int dx = -1; dx <= 1; dx++) {
 			for (int dz = -1; dz <= 1; dz++) {
 				BlockPos ps = getPos().add(dx, 0, dz);
 				if (getWorld().getBlockState(ps).getBlock().equals(ModBlocks.witch_altar) && !getWorld().getBlockState(ps).getValue(BlockWitchAltar.ALTAR_TYPE).equals(AltarMultiblockType.UNFORMED)) {
-					multiplier += getMultiplier(ps.up(), typesMult);
-					gain += getGain(ps.up(), typesGain);
+					MinecraftForge.EVENT_BUS.post(new AltarModifierCheckEvent(getWorld(), ps.up(), world.getBlockState(ps.up()), controller));
 				}
 			}
+		}
+		return controller;
+	}
+
+	private void refreshNature() {
+		gain = 1;
+		double multiplier = 1;
+		AltarUpgradeController controller = getUpgrades();
+		for (BlockPos p:controller.getModifierPositions()) {
+			if (p!=null) {
+				AltarModifierCollectionEvent collector = new AltarModifierCollectionEvent(world, p, world.getBlockState(p));
+				MinecraftForge.EVENT_BUS.post(collector);
+				multiplier += collector.multiplier;
+				gain += collector.extraGain;
+			}
+		}
+		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
+		int varietyMultiplier = 40;
+		//TODO	If controller.getModifierPositions[EnumUpgradeClass.SWORDS]!=null && isAthame... varietyMultiplier = 90
+
+		maxPower += (map.keySet().size() * varietyMultiplier); //Variety is the most important thing
 		maxPower *= multiplier;
 		storage.setMaxAmount(maxPower);
 		map.clear();
@@ -151,87 +176,89 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		return gain;
 	}
 
-	private int getGain(BlockPos pos, boolean[] types) {
-		IBlockState blockState = getWorld().getBlockState(pos);
-		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
-			return 10;
+	@SubscribeEvent
+	public static void onUpgradeChecked(AltarModifierCheckEvent evt) {
+		Block b = evt.getState().getBlock();
+		if (b==Blocks.DIAMOND_BLOCK || b==Blocks.SKULL) {
+			evt.getController().use(EnumUpgradeClass.PENTACLES, evt.getPos());
+			return;
 		}
-		if (blockState.getBlock().equals(Blocks.SKULL)) {
-			if (types[0]) return 0;
-			types[0] = true;
-			TileEntitySkull tes = (TileEntitySkull) world.getTileEntity(pos);
-			switch (tes.getSkullType()) {
-				case 0:
-				case 2:
-				case 4:
-					return 1; //Zombie, Skeleton and creeper
-				case 1:
-				case 3:
-					return 2; //Wither skull and player skull
-				case 5:
-					return 4; //Ender dragon
-				default:
-					return 0;
-			}
-		} else if (blockState.getBlock().equals(Blocks.TORCH)) {
-			if (types[1]) return 0;
-			types[1] = true;
-			return 1;
-		} else if (blockState.getBlock().equals(Blocks.FLOWER_POT)) {
-			if (blockState.getBlock().hasTileEntity(blockState)) {
-				TileEntityFlowerPot tefp = (TileEntityFlowerPot) world.getTileEntity(pos);
-				if (!tefp.getFlowerItemStack().isEmpty()) {
-					if (types[2]) {
-						return 0;
-					}
-					types[2] = true;
-					return 1;
-				}
-			}
-		} else if (blockState.getBlock() instanceof BlockGemBowl) {
-			if (types[2]) {
-				return 0;
-			}
-			types[2] = true;
-			return ((TileEntityGemBowl) world.getTileEntity(pos)).getGain();
-		} else if (blockState.getBlock() instanceof BlockCandle) {
-			if (types[1]) return 0;
-			types[1] = true;
-			return 2;
+		if (b==Blocks.FLOWER_POT || b==ModBlocks.goblet || b==ModBlocks.gem_bowl) {
+			evt.getController().use(EnumUpgradeClass.CUPS, evt.getPos());
+			return;
 		}
-		return 0;
+		if (b==Blocks.TORCH || b instanceof BlockCandle) {
+			evt.getController().use(EnumUpgradeClass.WANDS, evt.getPos());
+			return;
+		}
 	}
 
-	private double getMultiplier(BlockPos pos, boolean[] typesMult) {
-		IBlockState blockState = getWorld().getBlockState(pos);
-		if (blockState.getBlock() == Blocks.DIAMOND_BLOCK) {
-			return 10000;
+	@SubscribeEvent
+	public static void setModifiers(AltarModifierCollectionEvent evt) {
+		Block b = evt.getState().getBlock();
+		if (b==Blocks.DIAMOND_BLOCK) {
+			evt.extraGain = 100;
+			evt.multiplier = 200;
+			return;
 		}
-		if (blockState.getBlock().equals(Blocks.SKULL)) {
-			if (typesMult[0]) return 0;
-			typesMult[0] = true;
-			TileEntitySkull tes = (TileEntitySkull) world.getTileEntity(pos);
+		if (b==Blocks.SKULL) {
+			TileEntitySkull tes = (TileEntitySkull) evt.getWorld().getTileEntity(evt.getPos());
 			switch (tes.getSkullType()) {
-				case 0:
-					return 0.05; //Skeleton
-				case 1:
-				case 3:
-					return 0.3; //Wither skull and player skull
-				case 5:
-					return 0.8; //Ender dragon
-				default:
-					return 0;
+			case 0:case 2:case 4: //Zombie, Skeleton and creeper
+				evt.extraGain = 1;
+				evt.multiplier = 0.05;
+				break;
+			case 1:case 3://Wither skull and player skull
+				evt.extraGain = 2; 
+				evt.multiplier = 0.2;
+				break;
+			case 5: //Dragon
+				evt.extraGain = 3;
+				evt.multiplier = 0.3;
+				break;
+			default:
+				break;
 			}
-		} else if (blockState.getBlock().equals(ModBlocks.goblet)) {
-			if (typesMult[1])
-				return 0;
-			typesMult[1] = true;
-			if (blockState.getValue(BlockGoblet.FULL)) {
-				return 0.6;
-			}
-			return 0.3;
+			return;
 		}
-		return 0;
+		if (b==Blocks.TORCH) {
+			evt.extraGain = 1;
+			return;
+		}
+		if (b instanceof BlockCandle) {
+			if (((BlockCandle)b).isLit()) {
+				evt.extraGain = 2;
+			} else {
+				evt.extraGain = 1;
+			}
+			return;
+		}
+		if (b == Blocks.FLOWER_POT) {
+			if (b.hasTileEntity(evt.getState())) {
+				TileEntityFlowerPot tefp = (TileEntityFlowerPot) evt.getWorld().getTileEntity(evt.getPos());
+				if (!tefp.getFlowerItemStack().isEmpty()) {
+					evt.multiplier = 0.1;
+				} else {
+					evt.multiplier = 0.05;
+				}
+				return;
+			}
+		}
+		if (b == ModBlocks.goblet) {
+			if (evt.getState().getValue(BlockGoblet.FULL)) {
+				evt.multiplier = 0.25;
+			} else {
+				evt.multiplier = 0.05;
+			}
+			return;
+		}
+		if (b == ModBlocks.gem_bowl) {
+			if (evt.getWorld().getTileEntity(evt.getPos())!=null) {
+				int t = ((TileEntityGemBowl)evt.getWorld().getTileEntity(evt.getPos())).getGemValue();
+				evt.multiplier = 0.05 * t;
+			}
+			return;
+		}
 	}
 
 	private int getPowerValue(BlockPos add) {
