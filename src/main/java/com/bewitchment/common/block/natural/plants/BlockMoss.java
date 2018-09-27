@@ -9,6 +9,7 @@ import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockVine;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
@@ -36,6 +37,7 @@ public class BlockMoss extends BlockVine implements IModelRegister {
 		String name = LibBlockName.SPANISH_MOSS + (terminal ? "_end" : "");
 		this.setRegistryName(LibMod.MOD_ID, name);
 		this.setUnlocalizedName(LibBlockName.SPANISH_MOSS);
+		this.setSoundType(SoundType.PLANT);
 		this.setTickRandomly(!terminalPiece);
 		if (terminal) {
 			this.setCreativeTab(null);
