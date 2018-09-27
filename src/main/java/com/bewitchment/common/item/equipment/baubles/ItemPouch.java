@@ -99,6 +99,7 @@ public class ItemPouch extends ItemMod implements IBauble, IRenderBauble {
 		tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
 
+	@Override
 	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
 		if (type == RenderType.BODY) {
 			if (model == null) {
