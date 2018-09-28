@@ -1,11 +1,19 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
@@ -28,10 +36,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
@@ -246,6 +250,13 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		
+		if (!worldIn.isRemote && (playerIn.getHeldItem(hand).getItem() == ModItems.athame || playerIn.getHeldItem(hand).getItem() == ModItems.boline) && facing == EnumFacing.UP) {
+			worldIn.setBlockState(pos.up(), ModBlocks.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(playerIn.rotationYaw)), 3);
+			((TileEntityPlacedItem) worldIn.getTileEntity(pos.up())).setItem(playerIn.getHeldItem(hand).splitStack(1));
+			return true;
+		}
+		
 		if (hand == EnumHand.MAIN_HAND) {
 			if (playerIn.getHeldItem(hand).getItem().equals(Item.getItemFromBlock(Blocks.CARPET)) && !playerIn.isSneaking()) {
 				if (!state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.UNFORMED)) {

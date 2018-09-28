@@ -16,6 +16,7 @@ import com.bewitchment.client.render.entity.layer.MantleLayer;
 import com.bewitchment.client.render.entity.renderer.*;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.client.render.tile.TileRenderGemBowl;
+import com.bewitchment.client.render.tile.TileRenderPlacedItem;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.magic.BlockWitchFire;
@@ -30,6 +31,8 @@ import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
+import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -223,6 +226,7 @@ public class ClientProxy implements ISidedProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGemBowl.class, new TileRenderGemBowl());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new TileRenderPlacedItem());
 	}
 
 	@Override
