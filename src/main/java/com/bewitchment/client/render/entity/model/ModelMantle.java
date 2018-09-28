@@ -1,5 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
+import java.util.HashMap;
+
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.client.Minecraft;
@@ -7,6 +9,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 
@@ -191,13 +194,13 @@ public class ModelMantle extends ModelBiped {
 
 	}
 
+	private HashMap<String, Float> valuesMap = new HashMap<>();
+	
 	@Override
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-		
-		//Might want to use netHeadYaw to rotate it?
-		cape.rotateAngleX = limbSwingAmount;
+		cape.rotateAngleX = getAndUpdateRotation((EntityPlayer) entityIn, limbSwingAmount);
 		capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount * 1.5F;
 		capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
 		this.hood.rotateAngleX = bipedHead.rotateAngleX;
@@ -205,6 +208,21 @@ public class ModelMantle extends ModelBiped {
 		
 		this.cape.render(1);
 		this.hood.render(1);
+	}
+	
+	private float getAndUpdateRotation(EntityPlayer entity, float limbSwingAmount) {
+		String key = entity.getUniqueID().toString();
+		if (!valuesMap.containsKey(key)) {
+			valuesMap.put(key, 0f);
+		}
+		float currentRotation = valuesMap.get(key);
+		if (entity.moveForward > 0) {
+			currentRotation = (currentRotation+limbSwingAmount)/2;
+		} else {
+			currentRotation *= 0.96;
+		}
+		valuesMap.put(key, currentRotation);
+		return currentRotation;
 	}
 
 
