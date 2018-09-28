@@ -6,6 +6,7 @@ import baubles.api.render.IRenderBauble;
 import com.bewitchment.client.render.entity.model.ModelMantle;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -14,15 +15,10 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class MantleLayer implements LayerRenderer<AbstractClientPlayer> {
 
-	private static final ModelMantle model = new ModelMantle();
-	private static final MantleLayer INSTANCE = new MantleLayer();
+	private ModelMantle model;
 
-	private MantleLayer() {
-		//DON'T CALL THIS
-	}
-
-	public static MantleLayer getInstance() {
-		return INSTANCE;
+	public MantleLayer(ModelPlayer playerModel) {
+		model = new ModelMantle(playerModel);
 	}
 
 	@Override

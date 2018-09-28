@@ -37,6 +37,7 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -97,8 +98,10 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		Keybinds.registerKeys();
-		Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default").addLayer(MantleLayer.getInstance());
-		Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim").addLayer(MantleLayer.getInstance());
+		RenderPlayer defaultRP = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default");
+		defaultRP.addLayer(new MantleLayer(defaultRP.getMainModel()));
+		RenderPlayer slimRP = Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim");
+		slimRP.addLayer(new MantleLayer(slimRP.getMainModel()));
 		BlockColors blocks = Minecraft.getMinecraft().getBlockColors();
 		// Block Colors
 		blocks.registerBlockColorHandler(ColorPropertyHandler.INSTANCE, ModBlocks.candle_medium, ModBlocks.candle_small, ModBlocks.candle_medium_lit, ModBlocks.candle_small_lit, ModBlocks.lantern, ModBlocks.revealing_lantern);
