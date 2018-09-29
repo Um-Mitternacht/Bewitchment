@@ -19,6 +19,12 @@ public class TileEntityPlacedItem extends ModTileEntity {
 		return stack.copy();
 	}
 	
+	public ItemStack pop() {
+		ItemStack stackOut = stack.copy();
+		world.destroyBlock(pos, false);
+		return stackOut;
+	}
+	
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		readModSyncDataNBT(tag);
@@ -40,5 +46,4 @@ public class TileEntityPlacedItem extends ModTileEntity {
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		stack = new ItemStack(tag.getCompoundTag("item"));
 	}
-
 }
