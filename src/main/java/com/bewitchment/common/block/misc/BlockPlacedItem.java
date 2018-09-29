@@ -31,7 +31,7 @@ import net.minecraft.world.World;
 
 public class BlockPlacedItem extends BlockModTileEntity {
 	
-	protected static final AxisAlignedBB BOX = new AxisAlignedBB(0.125D, 0, 0.125D, 0.875D, 0.0625D, 0.875D);
+	protected static final AxisAlignedBB BOX = new AxisAlignedBB(0.25D, 0, 0.25D, 0.75D, 0.0625D, 0.75D);
 
 	public BlockPlacedItem() {
 		super(LibBlockName.PLACED_ITEM, MaterialItemPlaced.ITEM_MATERIAL);

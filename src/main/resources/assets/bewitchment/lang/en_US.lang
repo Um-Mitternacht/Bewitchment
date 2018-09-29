@@ -756,6 +756,7 @@ vampire.bed_blocked=This doesn't feel comfortable anymore
 key.categories.bewitchment=Bewitchment
 key.description.jump_to_bar=Jump to extra bar
 key.description.enable_bar=Toggle extra bar reachability
+key.description.place_item=Place Item
 
 //Brew misc
 brew.parameters.formatting= %s
