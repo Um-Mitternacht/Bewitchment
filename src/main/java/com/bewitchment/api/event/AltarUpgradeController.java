@@ -27,7 +27,7 @@ public class AltarUpgradeController {
 		CUPS, //Container shaped objects (+ their content), boost multiplier
 		WANDS, //For now light sources, boost gain. Should be expanded to better represent wands
 		PENTACLES, //Anything generally magical. Boost both gain and multiplier
-		SWORDS //Cerimonial or magical swords and kinves, they change unique features of the altar
+		SWORDS //Ceremonial or magical swords and knives, they change unique features of the altar
 	}
 
 }

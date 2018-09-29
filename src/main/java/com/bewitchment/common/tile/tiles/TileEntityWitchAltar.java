@@ -69,7 +69,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.getController().use(EnumUpgradeClass.CUPS, evt.getPos());
 			return;
 		}
-		if (b == Blocks.TORCH || b instanceof BlockCandle || b == Blocks.LIT_PUMPKIN) {
+		if (b == Blocks.TORCH || b instanceof BlockCandle || b == Blocks.LIT_PUMPKIN || b == Blocks.GLOWSTONE) {
 			evt.getController().use(EnumUpgradeClass.WANDS, evt.getPos());
 			return;
 		}
@@ -112,6 +112,10 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		if (b == Blocks.LIT_PUMPKIN) {
 			evt.extraGain = 1;
+			return;
+		}
+		if (b == Blocks.GLOWSTONE) {
+			evt.extraGain = 3;
 			return;
 		}
 		if (b instanceof BlockCandle) {
