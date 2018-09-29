@@ -112,11 +112,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		if (b == Blocks.LIT_PUMPKIN) {
 			evt.extraGain = 2;
+			evt.multiplier = 1.5;
 			return;
 		}
 		if (b instanceof BlockCandle) {
 			if (((BlockCandle) b).isLit()) {
 				evt.extraGain = 2;
+				evt.multiplier = 2.0;
 			} else {
 				evt.extraGain = 1;
 			}
