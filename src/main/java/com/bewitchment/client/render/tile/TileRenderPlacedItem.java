@@ -1,9 +1,6 @@
 package com.bewitchment.client.render.tile;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,6 +11,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ForgeHooksClient;
+import org.lwjgl.opengl.GL11;
 
 public class TileRenderPlacedItem extends TileEntitySpecialRenderer<TileEntityPlacedItem> {
 	@Override
@@ -26,9 +24,9 @@ public class TileRenderPlacedItem extends TileEntitySpecialRenderer<TileEntityPl
 			RenderHelper.enableStandardItemLighting();
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 			GlStateManager.pushMatrix();
-			GlStateManager.translate(x + 0.5, y+0.1625, z + 0.5);
-			float rot =  te.getWorld().getBlockState(te.getPos()).getValue(BlockHorizontal.FACING).getHorizontalAngle();
-			if (rot==0 || rot == 180) {
+			GlStateManager.translate(x + 0.5, y + 0.1625, z + 0.5);
+			float rot = te.getWorld().getBlockState(te.getPos()).getValue(BlockHorizontal.FACING).getHorizontalAngle();
+			if (rot == 0 || rot == 180) {
 				rot += 180;
 			}
 			GlStateManager.rotate(rot, 0, 1, 0);

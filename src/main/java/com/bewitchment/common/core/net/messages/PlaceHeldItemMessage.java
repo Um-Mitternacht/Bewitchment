@@ -3,7 +3,6 @@ package com.bewitchment.common.core.net.messages;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.net.SimpleMessage;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,14 +14,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class PlaceHeldItemMessage extends SimpleMessage<PlaceHeldItemMessage> {
 
 	public BlockPos clicked = null;
-	
+
 	public PlaceHeldItemMessage() {
 	}
-	
+
 	public PlaceHeldItemMessage(BlockPos pos) {
 		clicked = pos;
 	}
-	
+
 	@Override
 	public IMessage handleMessage(MessageContext context) {
 		EntityPlayer p = context.getServerHandler().player;
@@ -35,5 +34,5 @@ public class PlaceHeldItemMessage extends SimpleMessage<PlaceHeldItemMessage> {
 		}
 		return null;
 	}
-	
+
 }

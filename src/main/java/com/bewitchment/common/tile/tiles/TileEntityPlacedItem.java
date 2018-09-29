@@ -1,30 +1,29 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityPlacedItem extends ModTileEntity {
-	
+
 	private ItemStack stack = ItemStack.EMPTY;
-	
+
 	public void setItem(ItemStack itemstack) {
 		stack = itemstack;
 		markDirty();
 		syncToClient();
 	}
-	
+
 	public ItemStack getItem() {
 		return stack.copy();
 	}
-	
+
 	public ItemStack pop() {
 		ItemStack stackOut = stack.copy();
 		world.destroyBlock(pos, false);
 		return stackOut;
 	}
-	
+
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		readModSyncDataNBT(tag);
