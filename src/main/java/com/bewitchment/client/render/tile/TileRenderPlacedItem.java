@@ -27,10 +27,14 @@ public class TileRenderPlacedItem extends TileEntitySpecialRenderer<TileEntityPl
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(x + 0.5, y+0.1625, z + 0.5);
-			GlStateManager.rotate(te.getWorld().getBlockState(te.getPos()).getValue(BlockHorizontal.FACING).getHorizontalAngle(), 0, 1, 0);
+			float rot =  te.getWorld().getBlockState(te.getPos()).getValue(BlockHorizontal.FACING).getHorizontalAngle();
+			if (rot==0 || rot == 180) {
+				rot += 180;
+			}
+			GlStateManager.rotate(rot, 0, 1, 0);
 			GlStateManager.translate(0, -0.125, 0);
-			GlStateManager.rotate(90, 1, 0, 0);
-			GlStateManager.translate(0, -0.100, 0);
+			GlStateManager.rotate(-90, 1, 0, 0);
+			GlStateManager.translate(0, -0.125, 0);
 
 			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
 			model = ForgeHooksClient.handleCameraTransforms(model, ItemCameraTransforms.TransformType.GROUND, false);

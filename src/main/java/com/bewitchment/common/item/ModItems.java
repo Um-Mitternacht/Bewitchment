@@ -182,6 +182,12 @@ public final class ModItems {
 	public static final Item location_stone = null;
 
 	public static final Item pentacle = null;
+	
+	public static final Item cold_iron_sword = null;
+	public static final Item cold_iron_axe = null;
+	public static final Item cold_iron_hoe = null;
+	public static final Item cold_iron_spade = null;
+	public static final Item cold_iron_pickaxe = null;
 
 
 	private ModItems() {

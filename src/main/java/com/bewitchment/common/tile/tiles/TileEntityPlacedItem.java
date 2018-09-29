@@ -11,6 +11,7 @@ public class TileEntityPlacedItem extends ModTileEntity {
 	
 	public void setItem(ItemStack itemstack) {
 		stack = itemstack;
+		syncToClient();
 	}
 	
 	public ItemStack getItem() {
