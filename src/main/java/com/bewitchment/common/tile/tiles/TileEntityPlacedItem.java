@@ -11,6 +11,7 @@ public class TileEntityPlacedItem extends ModTileEntity {
 	
 	public void setItem(ItemStack itemstack) {
 		stack = itemstack;
+		markDirty();
 		syncToClient();
 	}
 	
@@ -30,12 +31,14 @@ public class TileEntityPlacedItem extends ModTileEntity {
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		stack.writeToNBT(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		stack.writeToNBT(nbt);
+		tag.setTag("item", nbt);
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		stack = new ItemStack(tag);
+		stack = new ItemStack(tag.getCompoundTag("item"));
 	}
 
 }
