@@ -7,7 +7,6 @@ import com.bewitchment.common.core.net.messages.PlaceHeldItemMessage;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
