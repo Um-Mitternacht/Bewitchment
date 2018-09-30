@@ -16,6 +16,7 @@ public class LibIngredients {
 
 	public static Ingredient blazePowder = Ingredient.fromItem(Items.BLAZE_POWDER);
 	public static Ingredient goldNugget = Ingredient.fromItem(Items.GOLD_NUGGET);
+	public static Ingredient slime = Ingredient.fromItem(Items.SLIME_BALL);
 	public static Ingredient dirt = Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0));
 	public static Ingredient stickyPiston = Ingredient.fromStacks(new ItemStack(Blocks.STICKY_PISTON, 1, 0));
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));

@@ -25,7 +25,7 @@ public class ModRituals {
 			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-			nether_portal, spawn_blaze, spawn_ghast;
+			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube;
 
 	public static void init() {
 
@@ -81,6 +81,20 @@ public class ModRituals {
 				circles(NETHER, ENDER, NETHER),
 				3000,
 				3
+		);
+
+		spawn_magma_cube = new RitualConjurationMagmaCube(
+				rl("conjure_magma_cube"),
+				of(
+						LibIngredients.athame,
+						LibIngredients.blazePowder,
+						LibIngredients.slime
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				120,
+				circles(NETHER, NETHER, null),
+				1200,
+				2
 		);
 
 		spawn_vex = new RitualConjurationVex(
@@ -205,7 +219,7 @@ public class ModRituals {
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
-				spawn_ghast
+				spawn_ghast, spawn_magma_cube
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
