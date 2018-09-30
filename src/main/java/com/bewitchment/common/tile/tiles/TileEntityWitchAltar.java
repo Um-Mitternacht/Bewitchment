@@ -115,11 +115,11 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			return;
 		}
 		if (b == Blocks.GLOWSTONE) {
-			evt.extraGain = 4;
+			evt.extraGain = 2;
 			return;
 		}
 		if (b == Blocks.SEA_LANTERN) {
-			evt.extraGain = 3;
+			evt.extraGain = 2;
 			return;
 		}
 		if (b instanceof BlockCandle) {
