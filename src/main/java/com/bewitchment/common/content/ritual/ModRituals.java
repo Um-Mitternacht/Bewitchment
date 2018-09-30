@@ -82,7 +82,7 @@ public class ModRituals {
 				3
 		);
 
-		spawn_vex = new RitualConjurationWitch(
+		spawn_vex = new RitualConjurationVex(
 				rl("conjure_vex"),
 				of(
 						LibIngredients.apple,
