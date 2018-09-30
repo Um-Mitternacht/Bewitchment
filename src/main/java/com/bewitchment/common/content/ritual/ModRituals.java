@@ -25,7 +25,7 @@ public class ModRituals {
 			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-			nether_portal;
+			nether_portal, spawn_blaze;
 
 	public static void init() {
 
@@ -93,6 +93,20 @@ public class ModRituals {
 				100,
 				circles(NORMAL, ENDER, null),
 				1000,
+				2
+		);
+
+		spawn_vex = new RitualConjurationBlaze(
+				rl("conjure_blaze"),
+				of(
+						LibIngredients.anyLog,
+						LibIngredients.netherBrickItem,
+						LibIngredients.athame
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				100,
+				circles(NETHER, NETHER, null),
+				1200,
 				2
 		);
 
