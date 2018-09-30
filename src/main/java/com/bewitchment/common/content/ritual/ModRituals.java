@@ -73,6 +73,7 @@ public class ModRituals {
 				of(
 						LibIngredients.athame,
 						LibIngredients.apple,
+						LibIngredients.pentacle,
 						LibIngredients.poisonousPotato
 				),
 				ofs(new ItemStack(ModItems.athame)),
