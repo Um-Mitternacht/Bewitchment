@@ -96,7 +96,7 @@ public class ModRituals {
 				2
 		);
 
-		spawn_vex = new RitualConjurationBlaze(
+		spawn_blaze = new RitualConjurationBlaze(
 				rl("conjure_blaze"),
 				of(
 						LibIngredients.anyLog,
