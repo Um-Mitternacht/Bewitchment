@@ -26,7 +26,8 @@ public class MantleLayer implements LayerRenderer<AbstractClientPlayer> {
 		if (BaublesApi.getBaublesHandler(player).getStackInSlot(BaubleType.BODY.getValidSlots()[0]).getItem() == ModItems.mantle) {
 			GL11.glPushMatrix();
 			IRenderBauble.Helper.rotateIfSneaking(player); //Not being a bauble renderer, I'm not sure this works anymore
-			GL11.glScaled(0.07, 0.07, 0.07);
+			GL11.glScaled(0.066, 0.067, 0.068);
+			GL11.glTranslated(0, -0.5, 0);
 			model.render(player, player.limbSwing, player.limbSwingAmount, ageInTicks + partialTicks, player.rotationYaw, player.rotationPitch, scale);
 			GL11.glPopMatrix();
 		}

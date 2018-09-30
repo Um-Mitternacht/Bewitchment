@@ -11,6 +11,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 
 
 /**
@@ -48,8 +49,11 @@ public class ModelMantle extends ModelBiped {
 	public ModelRenderer capeLeftDown2;
 	public ModelRenderer capeLeftFront1;
 	public ModelRenderer CapeLeftFront2;
+	public ModelRenderer neck;
 
 	public ModelPlayer playerModel;
+	private HashMap<String, Float> valuesMap = new HashMap<>();
+
 	
 	public ModelMantle(ModelPlayer model) {
 		playerModel = model;
@@ -120,7 +124,7 @@ public class ModelMantle extends ModelBiped {
 		this.CapeBack2.addBox(-4.0F, 0.0F, 0.0F, 8, 4, 1, 0.0F);
 		this.setRotateAngle(CapeBack2, 0.17453292519943295F, 0.0F, 0.0F);
 		this.capeRightFront1 = new ModelRenderer(this, 48, 1);
-		this.capeRightFront1.setRotationPoint(-3.5F, 0.3826468884944916F, 1.4900000095367432F);
+		this.capeRightFront1.setRotationPoint(-3.5F, -0.009999999776482582F, 1.4900000095367432F);
 		this.capeRightFront1.addBox(-2.5F, 0.0F, -3.299999952316284F, 5, 20, 1, 0.0F);
 		this.setRotateAngle(capeRightFront1, 0.0F, 1.5707963267948966F, 0.0F);
 		this.hoodRight2 = new ModelRenderer(this, 22, 43);
@@ -166,18 +170,20 @@ public class ModelMantle extends ModelBiped {
 		this.capeLeftFront1.setRotationPoint(-3.5F, -0.009999999776482582F, -1.5F);
 		this.capeLeftFront1.addBox(-2.5F, 0.0F, 2.299999952316284F, 5, 20, 1, 0.0F);
 		this.setRotateAngle(capeLeftFront1, 0.0F, -1.5707963267948966F, 0.0F);
+		this.neck = new ModelRenderer(this, 36, 42);
+	    this.neck.setRotationPoint(0.0F, -1.0F, 4.5F);
+	    this.neck.addBox(-4.0F, -6.0F, -3.0F, 8, 6, 3, 0.0F);
+	    this.setRotateAngle(neck, 1.3089969389957472F, 0.0F, 0.0F);
 		this.hoodRight1.addChild(this.hoodLeft2);
 		this.capeRight2.addChild(this.CapeRightDown2);
 		this.armRight.addChild(this.shoulderRight);
 		this.capeLeft2.addChild(this.capeLeftDown2);
 		this.hoodRight1.addChild(this.hoodTop1);
-		this.cape.addChild(this.armLeft);
 		this.capeBack1.addChild(this.capeRight1);
 		this.capeRightFront1.addChild(this.CapeRightFront2);
 		this.cape.addChild(this.capeBack1);
 		this.hood.addChild(this.hoodBack);
 		this.capeRight1.addChild(this.CapeRightDown1);
-		this.cape.addChild(this.armRight);
 		this.capeLeftFront1.addChild(this.CapeLeftFront2);
 		this.capeBack1.addChild(this.capeLeft1);
 		this.capeBack1.addChild(this.CapeBack2);
@@ -194,20 +200,41 @@ public class ModelMantle extends ModelBiped {
 
 	}
 
-	private HashMap<String, Float> valuesMap = new HashMap<>();
 	
 	@Override
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+		
+		if (limbSwingAmount>0.05) {
 		cape.rotateAngleX = getAndUpdateRotation((EntityPlayer) entityIn, limbSwingAmount);
 		capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount * 1.5F;
 		capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
+		armRight.rotateAngleX = -0.52359877559F/0.333333F*limbSwingAmount;
+		armLeft.rotateAngleX = armRight.rotateAngleX;
+		armRight.offsetY= -limbSwingAmount;
+		armLeft.offsetY = -limbSwingAmount;
+		}else {
+			armRight.rotateAngleX = 0;
+			armLeft.rotateAngleX = 0;
+		}
+		
 		this.hood.rotateAngleX = bipedHead.rotateAngleX;
 		this.hood.rotateAngleY = playerModel.bipedHead.rotateAngleY;
 		
+		if (entityIn.isSneaking()) {
+		capeLeftFront1.rotateAngleY = 0;
+		capeRightFront1.rotateAngleY = capeLeftFront1.rotateAngleY;
+		this.hood.rotateAngleX = bipedHead.rotateAngleX+0.52359877559F;
+		}
+		
+		
+		
 		this.cape.render(1);
 		this.hood.render(1);
+		this.neck.render(1);
+		this.armLeft.render(1);
+		this.armRight.render(1);
 	}
 	
 	private float getAndUpdateRotation(EntityPlayer entity, float limbSwingAmount) {
@@ -217,13 +244,14 @@ public class ModelMantle extends ModelBiped {
 		}
 		float currentRotation = valuesMap.get(key);
 		if (entity.moveForward > 0) {
-			currentRotation = (currentRotation+limbSwingAmount)/2;
+			currentRotation = limbSwingAmount;
 		} else {
-			currentRotation *= 0.96;
+			currentRotation = ((float) limbSwingAmount/1.65F);
 		}
 		valuesMap.put(key, currentRotation);
 		return currentRotation;
 	}
+
 
 
 	/**
