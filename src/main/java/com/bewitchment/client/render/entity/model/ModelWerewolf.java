@@ -1,5 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -66,8 +68,14 @@ public class ModelWerewolf extends ModelBase {
 	public ModelRenderer lLeg02;
 	public ModelRenderer lLeg03;
 	public ModelRenderer lFoot;
+	
 	int timer = 0;
 	int phase = 0;
+	int transformation = 0;
+	int howling = 0;
+	int swing = 0;
+	float swing_amount;
+	boolean swinging_arm;
 
 	public ModelWerewolf() {
 		this.textureWidth = 128;
@@ -370,36 +378,58 @@ public class ModelWerewolf extends ModelBase {
 		this.wolfHead.addChild(this.snout);
 		this.wolfHead.addChild(this.rCheekFur);
 		this.wolfHead.addChild(this.lCheekFur);
+		
 	}
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float ptick) {
 
 		EntityPlayer p = (EntityPlayer) entity;
-/*
-		float rotArm = MathHelper.cos(limbSwing * 0.5f) * limbSwingAmount * 2;
-		bipedRightArm.rotateAngleX = rotArm;
-		bipedLeftArm.rotateAngleX = -rotArm;
 
-		bipedRightLeg.rotateAngleX = -rotArm;
-		bipedLeftLeg.rotateAngleX = rotArm;
-	
-		bipedHead.rotateAngleY = netHeadYaw * 0.017453292F; 
-		bipedHead.rotateAngleX = MathHelper.clamp((float) (Math.PI * headPitch / 180f), -1.20f, 0.4f) + 0.785398163395f; //TODO change limits so it covers all the movement range
-/*		
-		float sp = p.swingProgress;
-		float psp = p.prevSwingProgress;
-/*
-		if (sp != 0) {
-			float interpolatedSwingProgress = (psp + (sp + 0.16f - psp) * ptick); // TODO fix
-			if ((p.swingingHand == EnumHand.MAIN_HAND) == (p.getPrimaryHand() == EnumHandSide.RIGHT)) {
-				this.bipedRightArm.rotateAngleX += interpolatedSwingProgress;
+		if (transformation == 0 && howling == 0 && timer == 0){//Head movement with the cursor...
+			bipedHead.rotateAngleY = netHeadYaw * 0.017453292F; 
+			bipedHead.rotateAngleX = MathHelper.clamp((float) (Math.PI * headPitch / 180f), -1.20f, 0.4f) + 0.785398163395f; //TODO change limits so it covers all the movement range
+		}
+		
+		
+		if (p.swingProgress != 0) {
+
+			if (swinging_arm) {
+				bipedRightArm.rotateAngleX = -0.3490658503988659F - 1.57079632679F*swing_amount;
+				bipedRightArm.rotateAngleY = 0.17453292519943295F + 0.52359877559F*swing_amount;
+				bipedRightArm.rotateAngleZ = 0.3490658503988659F + 0.34906585039F*swing_amount;
+				rArm02.rotateAngleX = -0.5235987755982988F - 0.34906585039F*swing_amount;
+				chest.rotateAngleY =  -0.17453292519F*swing_amount;
+
 			} else {
-				this.bipedLeftArm.rotateAngleX += interpolatedSwingProgress;
+				bipedLeftArm.rotateAngleX = -0.3490658503988659F - 1.57079632679F*swing_amount;
+				bipedLeftArm.rotateAngleY = -0.17453292519943295F - 0.52359877559F*swing_amount;
+				bipedLeftArm.rotateAngleZ = -0.3490658503988659F - 0.34906585039F*swing_amount;
+				lArm02.rotateAngleX = -0.5235987755982988F - 0.34906585039F*swing_amount;
+				chest.rotateAngleY =  0.17453292519F*swing_amount;
 			}
+			
+			swing++;
+			swing_amount = MathHelper.sin((float) (swing*0.20943951023));
+			
+		}else if (p.swingProgress == 0 && swing != 0) {//Just in case reset
+			
+			bipedRightArm.rotateAngleX = -0.3490658503988659F; 
+			bipedRightArm.rotateAngleY = 0.17453292519943295F; 
+			bipedRightArm.rotateAngleZ = 0.3490658503988659F;
+			rArm02.rotateAngleX = -0.5235987755982988F;
+			
+			
+			bipedLeftArm.rotateAngleX = -0.3490658503988659F; 
+			bipedLeftArm.rotateAngleY = -0.17453292519943295F; 
+			bipedLeftArm.rotateAngleZ = -0.3490658503988659F;
+			
+			chest.rotateAngleY = 0;
+			
+			swing = 0;
+			swinging_arm = !swinging_arm;
 		}
 
-*/
 		float time = (p.ticksExisted + ptick) * 0.10471975512F;
 		float time_running;
 
@@ -428,7 +458,7 @@ public class ModelWerewolf extends ModelBase {
 				chest.rotateAngleY = bipedRightArm.rotateAngleX / 10 + 0.03490658503988659F;
 			} else {
 				if (timer < 13) { // Transition to running animation
-					if ((MathHelper.sin(time_running) > -0.1 && MathHelper.sin(time_running) < 0.1) || phase == 1) {
+					if ((MathHelper.sin(time_running) > -0.1 && MathHelper.sin(time_running) < 0.1) || phase == 1 && transformation != 1) {
 						bipedBody.rotateAngleX = bipedBody.rotateAngleX + (1.4835298642F - bipedBody.rotateAngleX) * (timer + 1) / 40;
 						chest.rotateAngleX = chest.rotateAngleX - (chest.rotateAngleX - 0.17453292519F) * (timer + 1) / 40;
 						bipedHead.rotateAngleX = bipedHead.rotateAngleX + (-bipedHead.rotateAngleX) * (timer + 1) / 40;
@@ -533,10 +563,77 @@ public class ModelWerewolf extends ModelBase {
 				}
 			}
 		} else {
-
+			
+			if (transformation == 0 && howling == 0) {
 			chest.rotateAngleX = 0.5235987755982988F + 0.0174532925199432F * MathHelper.cos((time));
 			bipedRightArm.rotateAngleZ = 0.3490658503988659F - 0.0174532925199432F * MathHelper.cos((time));
 			bipedLeftArm.rotateAngleZ = -bipedRightArm.rotateAngleZ;
+			}
+			
+			if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
+				bipedBody.rotateAngleY = MathHelper.abs((float) (2*Math.PI*MathHelper.sin(time/20)));
+			}else {
+				bipedBody.rotateAngleY = 0.0F;
+			}
+			
+			
+			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || transformation != 0){ //Transformation?
+				transformation++;
+				
+				if (transformation < 40) { //Transformation animation
+					
+					chest.rotateAngleX = 1.0235987755982988F +MathHelper.sin(transformation * 0.10471975512F+0.5F);
+					bipedRightArm.rotateAngleX = -0.8490658503988659F -MathHelper.sin(transformation * 0.10471975512F+0.5F);
+					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
+					bipedHead.rotateAngleX = 0.8853981633974483F +0.1f*MathHelper.sin(transformation * 0.10471975512F+0.5F);
+				
+				}else if (transformation < 71){
+					chest.rotateAngleX = 0.03182757F +0.49177120559F*MathHelper.sin((transformation-40)*0.05235987756F) + 0.0174532925199432F * MathHelper.cos((time));
+					bipedHead.rotateAngleX = 0.786221F;
+					bipedLeftArm.rotateAngleX = 0.14270538F - 0.49177123F*MathHelper.sin((transformation-40)*0.05235987756F);
+					bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
+					
+					
+				}else if (transformation >= 71) {
+					transformation = 0;
+					
+				}
+			}
+			
+
+			if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || howling != 0){ //Howling animation
+				howling++;
+				if (howling < 45) {
+				chest.rotateAngleX = 0.5235987755982988F + 0.5f +MathHelper.sin(howling * 0.10471975512F+0.5F) + 0.0174532925199432F * MathHelper.cos((time));
+				bipedRightArm.rotateAngleX = -0.3490658503988659F - 0.5f -MathHelper.sin(howling * 0.10471975512F+0.5F);
+				bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
+				bipedHead.rotateAngleX = 0.0922922634F +0.1f*MathHelper.sin(howling * 0.10471975512F+0.5F);
+					if(howling > 30) {
+						jawLower.rotateAngleX = MathHelper.abs(0.5235987755F*MathHelper.cos((howling-14)/10F));
+					}
+				}else if (howling < 172 && howling > 45){
+					chest.rotateAngleX = 0.10067606F + 0.0174532925199432F * MathHelper.cos((time));
+					bipedRightArm.rotateAngleX = 0.07385689F;
+					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
+					bipedHead.rotateAngleX = MathHelper.abs(0.05235987755F*MathHelper.cos((howling+2)/10F));
+					bipedHead.rotateAngleZ = 0.05235987755F*MathHelper.sin((howling+2)/10F);
+					jawLower.rotateAngleX = 0.5235987755F;
+					
+				}else if (howling < 194 && howling > 171) {
+					chest.rotateAngleX = 0.10067606F +0.422922716F*MathHelper.sin(howling * 0.10471975512F) + 0.0174532925199432F * MathHelper.cos((time));
+					bipedRightArm.rotateAngleX = 0.07385689F -0.42292274F*MathHelper.sin(howling * 0.10471975512F);
+					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
+					bipedHead.rotateAngleX = 0.05235987755F + 0.733038286F*MathHelper.sin(howling * 0.10471975512F);
+					jawLower.rotateAngleX = 0.5235987755F - 0.5235987755F*MathHelper.sin(howling * 0.10471975512F);
+				}
+				
+				if (howling > 194 || Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
+					howling = 0;
+					jawLower.rotateAngleX = 0;
+				}
+			}
+			
+			
 		}
 	}
 
