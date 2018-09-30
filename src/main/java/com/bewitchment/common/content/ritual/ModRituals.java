@@ -185,7 +185,7 @@ public class ModRituals {
 				draw_circle_large, draw_circle_medium, draw_circle_small,
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
-				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal
+				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
