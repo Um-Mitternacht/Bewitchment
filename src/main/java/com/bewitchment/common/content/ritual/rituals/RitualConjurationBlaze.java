@@ -4,7 +4,6 @@ import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
