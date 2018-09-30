@@ -6,14 +6,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class AltarModifierCheckEvent extends BlockEvent {
-	
+
 	private AltarUpgradeController controller;
 
 	public AltarModifierCheckEvent(World world, BlockPos pos, IBlockState state, AltarUpgradeController altarController) {
 		super(world, pos, state);
 		this.controller = altarController;
 	}
-	
+
 	public AltarUpgradeController getController() {
 		return controller;
 	}

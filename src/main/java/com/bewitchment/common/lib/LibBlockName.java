@@ -105,6 +105,7 @@ public final class LibBlockName {
 	public static final String REVEALING_LANTERN = "revealing_lantern";
 	public static final String WILL_O_WISP = "will_o_wisp";
 	public static final String COLD_IRON_BLOCK = "cold_iron_block";
+	public static final String PLACED_ITEM = "placed_item";
 
 	private LibBlockName() {
 	}

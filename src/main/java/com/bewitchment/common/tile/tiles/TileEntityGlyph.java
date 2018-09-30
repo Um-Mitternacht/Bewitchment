@@ -5,6 +5,7 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
+import com.bewitchment.common.core.helper.BlockStream;
 import com.bewitchment.common.core.helper.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemLocationStone;
@@ -196,14 +197,20 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		}
 
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
-		List<ItemStack> recipe = itemsOnGround.stream().map(i -> i.getItem()).collect(Collectors.toList());
+		List<BlockPos> placedOnGround = BlockStream.ofPos(getPos().add(3, 0, 3), getPos().add(-3, 0, -3))
+				.filter(t -> (world.getTileEntity(t) instanceof TileEntityPlacedItem))
+				.collect(Collectors.toList());
+		ArrayList<ItemStack> recipe = new ArrayList<>();
+		itemsOnGround.stream().map(i -> i.getItem()).forEach(is -> recipe.add(is));
+		placedOnGround.stream().map(t -> (TileEntityPlacedItem) world.getTileEntity(t))
+				.forEach(te -> recipe.add(te.getItem()));
+
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
 			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
 
 					if (altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
-						// The following block saves all the item used in the input inside the nbt
-						// vvvvvv
+
 						this.ritualData = new NBTTagCompound();
 						NBTTagList itemsUsed = new NBTTagList();
 						itemsOnGround.forEach(ei -> {
@@ -212,8 +219,13 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 							itemsUsed.appendTag(item);
 							ei.setDead();
 						});
+						placedOnGround.forEach(bp -> {
+							TileEntityPlacedItem te = (TileEntityPlacedItem) world.getTileEntity(bp);
+							NBTTagCompound item = new NBTTagCompound();
+							te.pop().writeToNBT(item);
+							itemsUsed.appendTag(item);
+						});
 						ritualData.setTag("itemsUsed", itemsUsed);
-						// ^^^^^
 
 						// Sets the ritual up
 						this.runningPos = startAt;
@@ -236,7 +248,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 
 			}
 		}
-		if (!itemsOnGround.isEmpty()) {
+		if (!(itemsOnGround.isEmpty() && placedOnGround.isEmpty())) {
 			player.sendStatusMessage(new TextComponentTranslation("ritual.failure.unknown"), true);
 		}
 	}
@@ -289,8 +301,9 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				return false;
 			}
 			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
-			if (lastFound != null && lastFound != thisOne)
+			if (lastFound != null && lastFound != thisOne) {
 				return false;
+			}
 			lastFound = thisOne;
 		}
 		return true;
@@ -305,8 +318,9 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				return false;
 			}
 			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
-			if (lastFound != null && lastFound != thisOne)
+			if (lastFound != null && lastFound != thisOne) {
 				return false;
+			}
 			lastFound = thisOne;
 		}
 		return true;
@@ -321,8 +335,9 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				return false;
 			}
 			EnumGlyphType thisOne = bs.getValue(StateProperties.GLYPH_TYPE);
-			if (lastFound != null && lastFound != thisOne)
+			if (lastFound != null && lastFound != thisOne) {
 				return false;
+			}
 			lastFound = thisOne;
 		}
 		return true;

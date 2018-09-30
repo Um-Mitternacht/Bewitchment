@@ -16,11 +16,14 @@ public class LibIngredients {
 
 	public static Ingredient blazePowder = Ingredient.fromItem(Items.BLAZE_POWDER);
 	public static Ingredient goldNugget = Ingredient.fromItem(Items.GOLD_NUGGET);
+	public static Ingredient slime = Ingredient.fromItem(Items.SLIME_BALL);
 	public static Ingredient dirt = Ingredient.fromStacks(new ItemStack(Blocks.DIRT, 1, 0));
 	public static Ingredient stickyPiston = Ingredient.fromStacks(new ItemStack(Blocks.STICKY_PISTON, 1, 0));
 	public static Ingredient sponge = Ingredient.fromStacks(new ItemStack(Blocks.SPONGE, 1, 0));
 	public static Ingredient anyLog = new OreIngredient("logWood");
 	public static Ingredient anyLeaf = new OreIngredient("treeLeaves");
+	public static Ingredient pentacle = Ingredient.fromItem(ModItems.pentacle);
+	public static Ingredient fumeReekOfDeath = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.reek_of_death.ordinal()));
 	//	public static Ingredient anyHerb = new OreIngredient("listAllherb");
 //	public static Ingredient anySpice = new OreIngredient("listAllspice");
 //	public static Ingredient anyFruit = new OreIngredient("listAllfruit");

@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "facing=north": [
+      {
+        "model": "bewitchment:placed_item"
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "bewitchment:placed_item"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "bewitchment:placed_item"
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "bewitchment:placed_item"
+      }
+    ]
+  }
+}

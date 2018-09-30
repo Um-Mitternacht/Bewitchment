@@ -40,6 +40,7 @@ public final class NetworkHandler {
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
 		registerSimpleMessage(WitchFireTP.class, next(), Side.SERVER);
+		registerSimpleMessage(PlaceHeldItemMessage.class, next(), Side.SERVER);
 	}
 
 	private static <MSG extends SimpleMessage<MSG>> void registerSimpleMessage(Class<MSG> clazz, int id, Side side) {

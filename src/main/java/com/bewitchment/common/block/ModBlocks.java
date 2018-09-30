@@ -8,6 +8,7 @@ import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
 import com.bewitchment.common.block.magic.plants.BlockTorchwood;
 import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
+import com.bewitchment.common.block.misc.BlockPlacedItem;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
@@ -132,6 +133,7 @@ public final class ModBlocks {
 	public static final Block revealing_lantern = null;
 	public static final Block lantern = null;
 	public static final Block will_o_wisp = null;
+	public static final Block placed_item = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -208,7 +210,8 @@ public final class ModBlocks {
 				new BlockLantern(true),
 				new BlockLantern(false),
 				new BlockWillOWisp(),
-				new BlockPurifyingEarth()
+				new BlockPurifyingEarth(),
+				new BlockPlacedItem()
 		);
 		//Normal Blocks
 		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
