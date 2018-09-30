@@ -22,6 +22,7 @@ public class LibIngredients {
 	public static Ingredient anyLog = new OreIngredient("logWood");
 	public static Ingredient anyLeaf = new OreIngredient("treeLeaves");
 	public static Ingredient pentacle = new OreIngredient("pentacle");
+	public static Ingredient fumeReekOfDeath = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.reek_of_death.ordinal()));
 	//	public static Ingredient anyHerb = new OreIngredient("listAllherb");
 //	public static Ingredient anySpice = new OreIngredient("listAllspice");
 //	public static Ingredient anyFruit = new OreIngredient("listAllfruit");

@@ -25,7 +25,7 @@ public class ModRituals {
 			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-			nether_portal, spawn_blaze;
+			nether_portal, spawn_blaze, spawn_ghast;
 
 	public static void init() {
 
@@ -105,9 +105,27 @@ public class ModRituals {
 						LibIngredients.athame
 				),
 				ofs(new ItemStack(ModItems.athame)),
-				100,
+				120,
 				circles(NETHER, NETHER, null),
 				1200,
+				2
+		);
+
+		spawn_ghast = new RitualConjurationGhast(
+				rl("conjure_ghast"),
+				of(
+						LibIngredients.soulSand,
+						LibIngredients.soulSand,
+						LibIngredients.soulSand,
+						LibIngredients.ectoplasm,
+						LibIngredients.fumeReekOfDeath,
+						LibIngredients.glowstoneDust,
+						LibIngredients.athame
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				250,
+				circles(NETHER, NETHER, NETHER),
+				3400,
 				2
 		);
 
@@ -186,7 +204,8 @@ public class ModRituals {
 				draw_circle_large, draw_circle_medium, draw_circle_small,
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
-				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze
+				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
+				spawn_ghast
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
