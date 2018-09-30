@@ -42,7 +42,7 @@ public class RitualConjurationMagmaCube extends RitualImpl {
 		NonNullList<ItemStack> oldOutput = super.getOutput(input, data);
 		Optional<ItemStack> oldAthame = input.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst();
 		if (oldAthame.isPresent()) {
-			oldOutput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 35));
+			oldOutput.parallelStream().filter(is -> is.getItem() == ModItems.athame).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 45));
 		}
 		return oldOutput;
 	}
