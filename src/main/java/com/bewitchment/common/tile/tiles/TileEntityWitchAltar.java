@@ -10,6 +10,7 @@ import com.bewitchment.api.mp.DefaultMPContainer;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockGoblet;
+import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
@@ -66,7 +67,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@SubscribeEvent
 	public static void onUpgradeChecked(AltarModifierCheckEvent evt) {
 		Block b = evt.getState().getBlock();
-		if (b == Blocks.DIAMOND_BLOCK || b == Blocks.SKULL) {
+		if (b == Blocks.DIAMOND_BLOCK || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle)) {
 			evt.getController().use(EnumUpgradeClass.PENTACLES, evt.getPos());
 			return;
 		}
@@ -74,7 +75,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.getController().use(EnumUpgradeClass.CUPS, evt.getPos());
 			return;
 		}
-		if (b == Blocks.TORCH || b instanceof BlockCandle/* || b == Blocks.LIT_PUMPKIN || b == Blocks.GLOWSTONE || b == Blocks.SEA_LANTERN*/) {
+		if (b == Blocks.TORCH || b instanceof BlockCandle || b instanceof BlockLantern) {
 			evt.getController().use(EnumUpgradeClass.WANDS, evt.getPos());
 			return;
 		}
@@ -95,6 +96,10 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.multiplier = 200;
 			return;
 		}
+		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) {
+			evt.extraGain = 3;
+			evt.multiplier = -0.2;
+		}
 		if (b == Blocks.SKULL) {
 			TileEntitySkull tes = (TileEntitySkull) evt.getWorld().getTileEntity(evt.getPos());
 			switch (tes.getSkullType()) {
@@ -110,8 +115,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				evt.multiplier = 0.2;
 				break;
 			case 5: //Dragon
-				evt.extraGain = 3;
-				evt.multiplier = 0.3;
+				evt.extraGain = 2;
+				evt.multiplier = 0.4;
 				break;
 			default:
 				break;
@@ -121,19 +126,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		if (b == Blocks.TORCH) {
 			evt.extraGain = 1;
 			return;
-		}/*
-		if (b == Blocks.LIT_PUMPKIN) {
-			evt.extraGain = 1;
-			return;
 		}
-		if (b == Blocks.GLOWSTONE) {
+		if (b == ModBlocks.lantern) {
 			evt.extraGain = 2;
-			return;
 		}
-		if (b == Blocks.SEA_LANTERN) {
-			evt.extraGain = 2;
-			return;
-		}*/
+		if (b == ModBlocks.revealing_lantern) {
+			evt.extraGain = 3;
+		}
 		if (b instanceof BlockCandle) {
 			if (((BlockCandle) b).isLit()) {
 				evt.extraGain = 2;
