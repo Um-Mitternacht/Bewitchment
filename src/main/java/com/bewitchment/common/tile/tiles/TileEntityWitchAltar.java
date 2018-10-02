@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile.tiles;
 
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.event.AltarModifierCheckEvent;
 import com.bewitchment.api.event.AltarModifierCollectionEvent;
 import com.bewitchment.api.event.AltarUpgradeController;
@@ -11,11 +13,11 @@ import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.tools.BlockCandle;
 import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
-import com.bewitchment.common.core.handler.ConfigHandler;
-import com.bewitchment.common.lib.LibIngredients;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
+import com.bewitchment.common.tile.tiles.AltarScanHelper;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -27,35 +29,38 @@ import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
-import java.util.HashMap;
-
 @Mod.EventBusSubscriber
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
+	
+	/*
+	 * SWORDS MODIFIERS ALREADY ADDED:
+	 * 
+	 * 		Boline: nature scan radius +2
+	 * 		Athame: Altars recharge players nearby
+	 * 		Silver: Increase the plant variety bonus 
+	 * 
+	 */
 
-	private static final int RADIUS = 18, MAX_SCORE_PER_CATEGORY = 20;
+	static final int RADIUS = 18;
+	static final int MAX_SCORE_PER_CATEGORY = 20;
+	private AltarScanHelper scanHelper;
 
+	ItemStack swordItem = ItemStack.EMPTY;
+	double multiplier = 1;
 	private int gain = 1;
-
-	//Scan variables, no need to save these
-	private int dx = -RADIUS, dy = -RADIUS, dz = -RADIUS;
-	private HashMap<Block, Integer> map = new HashMap<Block, Integer>();
-	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0, 0, 0);
-	private boolean complete = false;
-
-
 	private EnumDyeColor color = EnumDyeColor.RED;
-	private DefaultMPContainer storage = new DefaultMPContainer(0);
+	DefaultMPContainer storage = new DefaultMPContainer(0);
 
 	public TileEntityWitchAltar() {
+		scanHelper = new AltarScanHelper(this);
 	}
 
 	@SubscribeEvent
@@ -73,36 +78,43 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.getController().use(EnumUpgradeClass.WANDS, evt.getPos());
 			return;
 		}
+		if (b == ModBlocks.placed_item) {
+			ItemStack is = ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem();
+			if (is.getItem() == ModItems.athame || is.getItem() == ModItems.boline || is.getItem() == ModItems.silver_sword || is.getItem() == ModItems.cold_iron_sword) {
+				evt.getController().use(EnumUpgradeClass.SWORDS, evt.getPos());
+				return;
+			}
+		}
 	}
 
 	@SubscribeEvent
 	public static void setModifiers(AltarModifierCollectionEvent evt) {
 		Block b = evt.getState().getBlock();
 		if (b == Blocks.DIAMOND_BLOCK) {
-			evt.extraGain = 100;
+			evt.extraGain = 1000;
 			evt.multiplier = 200;
 			return;
 		}
 		if (b == Blocks.SKULL) {
 			TileEntitySkull tes = (TileEntitySkull) evt.getWorld().getTileEntity(evt.getPos());
 			switch (tes.getSkullType()) {
-				case 0:
-				case 2:
-				case 4: //Zombie, Skeleton and creeper
-					evt.extraGain = 1;
-					evt.multiplier = 0.05;
-					break;
-				case 1:
-				case 3://Wither skull and player skull
-					evt.extraGain = 2;
-					evt.multiplier = 0.2;
-					break;
-				case 5: //Dragon
-					evt.extraGain = 3;
-					evt.multiplier = 0.3;
-					break;
-				default:
-					break;
+			case 0:
+			case 2:
+			case 4: //Zombie, Skeleton and creeper
+				evt.extraGain = 1;
+				evt.multiplier = 0.05;
+				break;
+			case 1:
+			case 3://Wither skull and player skull
+				evt.extraGain = 2;
+				evt.multiplier = 0.2;
+				break;
+			case 5: //Dragon
+				evt.extraGain = 3;
+				evt.multiplier = 0.3;
+				break;
+			default:
+				break;
 			}
 			return;
 		}
@@ -156,13 +168,24 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			}
 			return;
 		}
+		if ( b == ModBlocks.placed_item) {
+			ItemStack is = ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem();
+			if (evt.getType() == EnumUpgradeClass.SWORDS) {
+				evt.getlAltar().setSwordItem(is.copy());
+				evt.getlAltar().markDirty();
+			}
+		}
 	}
 
 	@Override
 	public void onLoad() {
 		if (!world.isRemote) {
-			forceFullScan();
+			scanHelper.forceFullScan();
 		}
+	}
+	
+	public void scheduleUpgrade() {
+		scanHelper.upgradeCheckScheduled = true;
 	}
 
 	@Override
@@ -173,64 +196,21 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!getWorld().isRemote) {
-			scanNature();
+			scanHelper.scanNature();
 			if (storage.getAmount() < storage.getMaxAmount()) {
 				storage.fill(gain);
 				markDirty();
 			}
-		}
-	}
-
-	private void scanNature() {
-		for (int i = 0; i < ConfigHandler.altar_scan_blocks_per_tick; i++) {
-			getNextCycle();
-			performCurrentCycle();
-		}
-	}
-
-	public void forceFullScan() {
-		dx = -RADIUS;
-		dy = -RADIUS;
-		dz = -RADIUS;
-		complete = false;
-		while (!complete) {
-			getNextCycle();
-			performCurrentCycle();
-		}
-	}
-
-	private void performCurrentCycle() {
-		updateScore();
-		if (complete) {
-			refreshNature();
-		}
-	}
-
-	private void getNextCycle() {
-		complete = false;
-		dx++;
-		if (dx > RADIUS) {
-			dx = -RADIUS;
-			dy++;
-		}
-		if (dy > RADIUS) {
-			dy = -RADIUS;
-			dz++;
-		}
-		if (dz > RADIUS) {
-			dz = -RADIUS;
-			complete = true;
-		}
-		checking.setPos(getPos().getX() + dx, getPos().getY() + dy, getPos().getZ() + dz);
-	}
-
-	private void updateScore() {
-		int score = getPowerValue(checking);
-		if (score > 0) {
-			Block block = getWorld().getBlockState(checking).getBlock();
-			int currentScore = 0;
-			if (map.containsKey(block)) currentScore = map.get(block);
-			if (currentScore < MAX_SCORE_PER_CATEGORY) map.put(block, currentScore + score);
+			if (swordItem.getItem() == ModItems.athame) {
+					world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(5))
+					.forEach(player -> {
+						IMagicPowerContainer playerMP = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+						int transferValue = Math.min(20, playerMP.getMaxAmount()-playerMP.getAmount());
+						if (storage.drain(transferValue)) {
+							playerMP.fill(transferValue/10);
+						}
+					});
+			}
 		}
 	}
 
@@ -247,46 +227,25 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		return controller;
 	}
 
-	private void refreshNature() {
+	protected void refreshUpgrades() {
 		gain = 1;
-		double multiplier = 1;
+		multiplier = 1;
+		swordItem = ItemStack.EMPTY;
 		AltarUpgradeController controller = getUpgrades();
-		for (BlockPos p : controller.getModifierPositions()) {
+		for (int i = 0; i < controller.getModifierPositions().length; i++) {
+			BlockPos p = controller.getModifierPositions()[i];
 			if (p != null) {
-				AltarModifierCollectionEvent collector = new AltarModifierCollectionEvent(world, p, world.getBlockState(p));
+				AltarModifierCollectionEvent collector = new AltarModifierCollectionEvent(world, p, world.getBlockState(p), EnumUpgradeClass.values()[i], this);
 				MinecraftForge.EVENT_BUS.post(collector);
 				multiplier += collector.multiplier;
 				gain += collector.extraGain;
 			}
 		}
-		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
-		int varietyMultiplier = 40;
-		//TODO	If controller.getModifierPositions[EnumUpgradeClass.SWORDS]!=null && isAthame... varietyMultiplier = 90
-
-		maxPower += (map.keySet().size() * varietyMultiplier); //Variety is the most important thing
-		maxPower *= multiplier;
-		storage.setMaxAmount(maxPower);
-		map.clear();
 		markDirty();
 	}
 
 	public int getCurrentGain() {
 		return gain;
-	}
-
-	private int getPowerValue(BlockPos add) {
-		IBlockState blockState = world.getBlockState(add);
-		if (blockState.getBlock().equals(Blocks.AIR)) return 0;
-		if (blockState.getBlock() instanceof IPlantable) return 30;
-		if (blockState.getBlock() instanceof IGrowable) return 30;
-		if (blockState.getBlock().equals(Blocks.MELON_BLOCK)) return 30;
-		if (blockState.getBlock().equals(Blocks.PUMPKIN)) return 30;
-		ItemStack stack = new ItemStack(blockState.getBlock());
-		if (!stack.isEmpty()) {
-			if (LibIngredients.anyLog.apply(stack)) return 15;
-			if (LibIngredients.anyLeaf.apply(stack)) return 8;
-		}
-		return 0;
 	}
 
 	public EnumDyeColor getColor() {
@@ -324,6 +283,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setTag("mp", storage.saveNBTTag());
 		tag.setInteger("gain", gain);
+		tag.setTag("swordItem", swordItem.writeToNBT(new NBTTagCompound()));
+		tag.setDouble("multiplier", multiplier);
 		writeModSyncDataNBT(tag);
 	}
 
@@ -331,6 +292,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		storage.loadFromNBT(tag.getCompoundTag("mp"));
 		gain = tag.getInteger("gain");
+		swordItem = new ItemStack(tag.getCompoundTag("swordItem"));
+		multiplier = tag.getDouble("multiplier");
 		readModSyncDataNBT(tag);
 	}
 
@@ -343,4 +306,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		color = EnumDyeColor.values()[tag.getInteger("color")];
 	}
+
+	public void setSwordItem(ItemStack swordItem) {
+		this.swordItem = swordItem;
+	}
+	
+	public void forceFullScan() {
+		scanHelper.forceFullScan();
+	}
+
 }
