@@ -7,6 +7,8 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.core.helper.BlockStream;
 import com.bewitchment.common.core.helper.DimensionalPosition;
+import com.bewitchment.common.core.net.NetworkHandler;
+import com.bewitchment.common.core.net.messages.SmokeSpawn;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemLocationStone;
 import com.bewitchment.common.tile.ModTileEntity;
@@ -217,6 +219,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 							NBTTagCompound item = new NBTTagCompound();
 							ei.getItem().writeToNBT(item);
 							itemsUsed.appendTag(item);
+							NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(ei.posX, ei.posY, ei.posZ), world.provider.getDimension());
 							ei.setDead();
 						});
 						placedOnGround.forEach(bp -> {
@@ -224,6 +227,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 							NBTTagCompound item = new NBTTagCompound();
 							te.pop().writeToNBT(item);
 							itemsUsed.appendTag(item);
+							NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(bp.getX()+0.5d, bp.getY()+0.1, bp.getZ()+0.5d), world.provider.getDimension());
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
 
@@ -234,7 +238,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 						this.cooldown = 1;
 						ritual.onStarted(player, this, getWorld(), getPos(), ritualData, effPos, 1);
 						//TODO get a better sound
-						world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 0.7f, 0.7f);
+						world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.7f, 0.7f);
 						player.sendStatusMessage(new TextComponentTranslation("ritual." + rit.getRegistryName().toString().replace(':', '.') + ".name"), true);
 						world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
 						markDirty();
