@@ -52,11 +52,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 
 	static final int RADIUS = 18;
 	static final int MAX_SCORE_PER_CATEGORY = 20;
+	static final int RIGHT_CLICK_RECALCULATION_COOLDOWN = 200;
 	private AltarScanHelper scanHelper;
 
 	ItemStack swordItem = ItemStack.EMPTY;
 	double multiplier = 1;
 	private int gain = 1;
+	private int recalcCooldown = 0;
 	private EnumDyeColor color = EnumDyeColor.RED;
 	DefaultMPContainer storage = new DefaultMPContainer(0);
 
@@ -200,6 +202,9 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				storage.fill(gain);
 				markDirty();
 			}
+			if (recalcCooldown > 0) {
+				recalcCooldown--;
+			}
 			if (swordItem.getItem() == ModItems.athame) {
 					world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(5))
 					.forEach(player -> {
@@ -284,6 +289,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		tag.setInteger("gain", gain);
 		tag.setTag("swordItem", swordItem.writeToNBT(new NBTTagCompound()));
 		tag.setDouble("multiplier", multiplier);
+		tag.setInteger("recalcCooldown", recalcCooldown);
 		writeModSyncDataNBT(tag);
 	}
 
@@ -293,6 +299,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		gain = tag.getInteger("gain");
 		swordItem = new ItemStack(tag.getCompoundTag("swordItem"));
 		multiplier = tag.getDouble("multiplier");
+		recalcCooldown = tag.getInteger("recalcCooldown");
 		readModSyncDataNBT(tag);
 	}
 
@@ -311,7 +318,10 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	}
 	
 	public void forceFullScan() {
-		scanHelper.forceFullScan();
+		if (recalcCooldown == 0) {
+			scanHelper.forceFullScan();
+			recalcCooldown = RIGHT_CLICK_RECALCULATION_COOLDOWN;
+		}
 	}
 
 }
