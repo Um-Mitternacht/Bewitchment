@@ -1,6 +1,9 @@
 package com.bewitchment.client.render.entity.model;
 
+import java.util.HashMap;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
@@ -8,9 +11,6 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-
-import java.util.HashMap;
 
 
 /**
@@ -241,7 +241,7 @@ public class ModelMantle extends ModelBiped {
 		if (entity.moveForward > 0) {
 			currentRotation = limbSwingAmount;
 		} else {
-			currentRotation = ((float) limbSwingAmount/1.65F);
+			currentRotation = limbSwingAmount/1.65F;
 		}
 		valuesMap.put(key, currentRotation);
 		return currentRotation;

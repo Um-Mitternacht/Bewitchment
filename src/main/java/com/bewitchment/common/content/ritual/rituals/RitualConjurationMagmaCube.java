@@ -1,10 +1,12 @@
 package com.bewitchment.common.content.ritual.rituals;
 
+import java.util.Optional;
+
 import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -15,8 +17,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.Optional;
 
 public class RitualConjurationMagmaCube extends RitualImpl {
 
