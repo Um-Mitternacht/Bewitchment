@@ -1,6 +1,13 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.decorations.*;
+import com.bewitchment.common.block.chisel.BlockSilverChiselled;
+import com.bewitchment.common.block.decorations.BlockFakeIce;
+import com.bewitchment.common.block.decorations.BlockFakeIceFence;
+import com.bewitchment.common.block.decorations.BlockFakeIceSlabDouble;
+import com.bewitchment.common.block.decorations.BlockFakeIceSlabHalf;
+import com.bewitchment.common.block.decorations.BlockFakeIceStairs;
+import com.bewitchment.common.block.decorations.BlockScornedBrickFence;
+import com.bewitchment.common.block.decorations.BlockScornedBrickStairs;
 import com.bewitchment.common.block.magic.BlockPurifyingEarth;
 import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.BlockWitchFire;
@@ -10,8 +17,19 @@ import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockPlacedItem;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
-import com.bewitchment.common.block.natural.*;
-import com.bewitchment.common.block.natural.crop.*;
+import com.bewitchment.common.block.natural.BlockBeehive;
+import com.bewitchment.common.block.natural.BlockGemOre;
+import com.bewitchment.common.block.natural.BlockInfestedFarmland;
+import com.bewitchment.common.block.natural.BlockSaltOre;
+import com.bewitchment.common.block.natural.BlockSilverOre;
+import com.bewitchment.common.block.natural.crop.BlockCrop;
+import com.bewitchment.common.block.natural.crop.CropBelladonna;
+import com.bewitchment.common.block.natural.crop.CropKelp;
+import com.bewitchment.common.block.natural.crop.CropKenaf;
+import com.bewitchment.common.block.natural.crop.CropMint;
+import com.bewitchment.common.block.natural.crop.CropSilphium;
+import com.bewitchment.common.block.natural.crop.CropThistle;
+import com.bewitchment.common.block.natural.crop.CropWormwood;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.plants.BlockMoss;
@@ -19,11 +37,24 @@ import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
-import com.bewitchment.common.block.tools.*;
+import com.bewitchment.common.block.tools.BlockApiary;
+import com.bewitchment.common.block.tools.BlockBrazier;
+import com.bewitchment.common.block.tools.BlockCandleMedium;
+import com.bewitchment.common.block.tools.BlockCandleSmall;
+import com.bewitchment.common.block.tools.BlockCauldron;
+import com.bewitchment.common.block.tools.BlockCircleGlyph;
+import com.bewitchment.common.block.tools.BlockCrystalBall;
+import com.bewitchment.common.block.tools.BlockGemBowl;
+import com.bewitchment.common.block.tools.BlockMagicMirror;
+import com.bewitchment.common.block.tools.BlockOven;
+import com.bewitchment.common.block.tools.BlockTarotTable;
+import com.bewitchment.common.block.tools.BlockThreadSpinner;
+import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -134,6 +165,8 @@ public final class ModBlocks {
 	public static final Block lantern = null;
 	public static final Block will_o_wisp = null;
 	public static final Block placed_item = null;
+	
+	public static final Block silver_block_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -217,6 +250,7 @@ public final class ModBlocks {
 		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
+				new BlockSilverChiselled(Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.TOURMALINE_BLOCK, Material.ROCK).setHardness(5.0F),
@@ -262,6 +296,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
+		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block_chisel));
 		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
 		OreDictionary.registerOre("oreGarnet", new ItemStack(ModBlocks.gem_ore, 1, 0));
 		OreDictionary.registerOre("oreNuummite", new ItemStack(ModBlocks.gem_ore, 1, 2));
@@ -277,38 +312,10 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
 		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
 		//Candles
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 0));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 1));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 2));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 3));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 4));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 5));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 6));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 7));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 8));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 9));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 10));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 11));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 12));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 13));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 14));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 15));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 0));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 1));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 2));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 3));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 4));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 5));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 6));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 7));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 8));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 9));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 10));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 11));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 12));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 13));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 14));
-		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, 15));
+		for (int i=0;i<16;i++) {
+			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, i));
+			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, i));
+		}
 
 		//Wool oredicts, used for coloring brews
 		OreDictionary.registerOre("blockWoolWHITE", new ItemStack(Blocks.WOOL, 1, 0));

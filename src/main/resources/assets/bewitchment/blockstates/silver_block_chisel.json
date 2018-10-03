@@ -1,0 +1,54 @@
+{
+  "forge_marker": 1,
+  "parent": "block/block",
+  "variants": {
+    "variant=sun": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_sun",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=cup": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_cup",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=moon": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_moon",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=pentacle": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_pentacle",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=pentagram": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_pentagram",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=sword": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_sword",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=symbol": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_symbol",
+    	"model": "block/cube_all"
+      }
+    },
+    "variant=wand": {
+      "textures": {
+        "all": "bewitchment:blocks/silver_block_wand",
+    	"model": "block/cube_all"
+      }
+    }
+  }
+}

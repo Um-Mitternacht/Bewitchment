@@ -36,6 +36,7 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
 import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
 import com.bewitchment.common.entity.ModEntities;
+import com.bewitchment.common.integration.chisel.Chisel;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
@@ -137,6 +138,7 @@ public class Bewitchment {
 		ModRituals.init();
 		ModBrewModifiers.init();
 		GameRegistry.registerWorldGenerator(new SpawnHelper(), 10);
+		Chisel.registerBlockVariants();
 
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");

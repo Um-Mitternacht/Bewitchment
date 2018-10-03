@@ -371,6 +371,12 @@ public final class ModItems {
 				new ItemBlockRevealingLantern(ModBlocks.revealing_lantern, true),
 				itemBlock(ModBlocks.spanish_moss)
 		);
+		
+		//Chisel
+		registry.registerAll(
+					itemBlock(ModBlocks.silver_block_chisel)
+				);
+		
 	}
 
 	private static Item itemBlock(Block block) {
