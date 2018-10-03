@@ -1,9 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
-import java.util.HashMap;
-
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
@@ -11,6 +8,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.HashMap;
 
 
 /**
@@ -169,9 +168,9 @@ public class ModelMantle extends ModelBiped {
 		this.capeLeftFront1.addBox(-2.5F, 0.0F, 2.299999952316284F, 5, 20, 1, 0.0F);
 		this.setRotateAngle(capeLeftFront1, 0.0F, -1.5707963267948966F, 0.0F);
 		this.neck = new ModelRenderer(this, 36, 42);
-	    this.neck.setRotationPoint(0.0F, -1.0F, 4.5F);
-	    this.neck.addBox(-4.0F, -6.0F, -3.0F, 8, 6, 3, 0.0F);
-	    this.setRotateAngle(neck, 1.3089969389957472F, 0.0F, 0.0F);
+		this.neck.setRotationPoint(0.0F, -1.0F, 4.5F);
+		this.neck.addBox(-4.0F, -6.0F, -3.0F, 8, 6, 3, 0.0F);
+		this.setRotateAngle(neck, 1.3089969389957472F, 0.0F, 0.0F);
 		this.hoodRight1.addChild(this.hoodLeft2);
 		this.capeRight2.addChild(this.CapeRightDown2);
 		this.armRight.addChild(this.shoulderRight);
@@ -202,29 +201,29 @@ public class ModelMantle extends ModelBiped {
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-		
-		if (limbSwingAmount>0.05) {
-		cape.rotateAngleX = getAndUpdateRotation((EntityPlayer) entityIn, limbSwingAmount);
-		capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount * 1.5F;
-		capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
-		armRight.rotateAngleX = -0.52359877559F/0.333333F*limbSwingAmount;
-		armLeft.rotateAngleX = armRight.rotateAngleX;
-		armRight.offsetY= -limbSwingAmount;
-		armLeft.offsetY = -limbSwingAmount;
-		}else {
+
+		if (limbSwingAmount > 0.05) {
+			cape.rotateAngleX = getAndUpdateRotation((EntityPlayer) entityIn, limbSwingAmount);
+			capeRightFront1.rotateAngleY = 1.57079632679F - limbSwingAmount * 1.5F;
+			capeLeftFront1.rotateAngleY = -capeRightFront1.rotateAngleY;
+			armRight.rotateAngleX = -0.52359877559F / 0.333333F * limbSwingAmount;
+			armLeft.rotateAngleX = armRight.rotateAngleX;
+			armRight.offsetY = -limbSwingAmount;
+			armLeft.offsetY = -limbSwingAmount;
+		} else {
 			armRight.rotateAngleX = 0;
 			armLeft.rotateAngleX = 0;
 		}
-		
+
 		this.hood.rotateAngleX = bipedHead.rotateAngleX;
 		this.hood.rotateAngleY = playerModel.bipedHead.rotateAngleY;
-		
+
 		if (entityIn.isSneaking()) {
 			capeLeftFront1.rotateAngleY = 0;
 			capeRightFront1.rotateAngleY = capeLeftFront1.rotateAngleY;
-			this.hood.rotateAngleX = bipedHead.rotateAngleX+0.52359877559F;
+			this.hood.rotateAngleX = bipedHead.rotateAngleX + 0.52359877559F;
 		}
-		
+
 		this.cape.render(1);
 		this.hood.render(1);
 		this.neck.render(1);
@@ -241,12 +240,11 @@ public class ModelMantle extends ModelBiped {
 		if (entity.moveForward > 0) {
 			currentRotation = limbSwingAmount;
 		} else {
-			currentRotation = limbSwingAmount/1.65F;
+			currentRotation = limbSwingAmount / 1.65F;
 		}
 		valuesMap.put(key, currentRotation);
 		return currentRotation;
 	}
-
 
 
 	/**

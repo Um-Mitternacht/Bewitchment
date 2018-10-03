@@ -227,7 +227,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 							NBTTagCompound item = new NBTTagCompound();
 							te.pop().writeToNBT(item);
 							itemsUsed.appendTag(item);
-							NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(bp.getX()+0.5d, bp.getY()+0.1, bp.getZ()+0.5d), world.provider.getDimension());
+							NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(bp.getX() + 0.5d, bp.getY() + 0.1, bp.getZ() + 0.5d), world.provider.getDimension());
 						});
 						ritualData.setTag("itemsUsed", itemsUsed);
 

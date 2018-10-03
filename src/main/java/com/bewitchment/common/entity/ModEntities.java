@@ -2,6 +2,7 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
+import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -30,6 +31,7 @@ public final class ModEntities {
 
 		// Mob entities
 		EntityRegistry.registerModEntity(getResource("owl"), EntityOwl.class, "entity_owl", id++, Bewitchment.instance, 64, 1, true, 0xAF813F, 0x6E5127);
+		EntityRegistry.registerModEntity(getResource("snake"), EntitySnake.class, "entity_snake", id++, Bewitchment.instance, 64, 1, true, 0xAF813F, 0x6E5127);
 	}
 
 	private static ResourceLocation getResource(String name) {

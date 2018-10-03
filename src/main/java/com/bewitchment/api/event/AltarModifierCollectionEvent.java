@@ -2,7 +2,6 @@ package com.bewitchment.api.event;
 
 import com.bewitchment.api.event.AltarUpgradeController.EnumUpgradeClass;
 import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -37,7 +36,6 @@ public class AltarModifierCollectionEvent extends BlockEvent {
 	private void setTE(TileEntityWitchAltar te) {
 		this.te = te;
 	}
-	
-	
+
 
 }

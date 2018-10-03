@@ -1,7 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.event.AltarModifierCheckEvent;
 import com.bewitchment.api.event.AltarModifierCollectionEvent;
 import com.bewitchment.api.event.AltarUpgradeController;
@@ -16,8 +14,6 @@ import com.bewitchment.common.block.tools.BlockWitchAltar;
 import com.bewitchment.common.block.tools.BlockWitchAltar.AltarMultiblockType;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
-import com.bewitchment.common.tile.tiles.AltarScanHelper;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,6 +34,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import javax.annotation.Nullable;
+
 @Mod.EventBusSubscriber
 public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	
@@ -53,14 +51,13 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	static final int RADIUS = 18;
 	static final int MAX_SCORE_PER_CATEGORY = 20;
 	static final int RIGHT_CLICK_RECALCULATION_COOLDOWN = 200;
-	private AltarScanHelper scanHelper;
-
 	ItemStack swordItem = ItemStack.EMPTY;
 	double multiplier = 1;
+	DefaultMPContainer storage = new DefaultMPContainer(0);
+	private AltarScanHelper scanHelper;
 	private int gain = 1;
 	private int recalcCooldown = 0;
 	private EnumDyeColor color = EnumDyeColor.RED;
-	DefaultMPContainer storage = new DefaultMPContainer(0);
 
 	public TileEntityWitchAltar() {
 		scanHelper = new AltarScanHelper(this);
@@ -105,23 +102,23 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		if (b == Blocks.SKULL) {
 			TileEntitySkull tes = (TileEntitySkull) evt.getWorld().getTileEntity(evt.getPos());
 			switch (tes.getSkullType()) {
-			case 0:
-			case 2:
-			case 4: //Zombie, Skeleton and creeper
-				evt.extraGain = 1;
-				evt.multiplier = 0.05;
-				break;
-			case 1:
-			case 3://Wither skull and player skull
-				evt.extraGain = 2;
-				evt.multiplier = 0.2;
-				break;
-			case 5: //Dragon
-				evt.extraGain = 2;
-				evt.multiplier = 0.4;
-				break;
-			default:
-				break;
+				case 0:
+				case 2:
+				case 4: //Zombie, Skeleton and creeper
+					evt.extraGain = 1;
+					evt.multiplier = 0.05;
+					break;
+				case 1:
+				case 3://Wither skull and player skull
+					evt.extraGain = 2;
+					evt.multiplier = 0.2;
+					break;
+				case 5: //Dragon
+					evt.extraGain = 2;
+					evt.multiplier = 0.4;
+					break;
+				default:
+					break;
 			}
 			return;
 		}
@@ -169,7 +166,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			}
 			return;
 		}
-		if ( b == ModBlocks.placed_item) {
+		if (b == ModBlocks.placed_item) {
 			ItemStack is = ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem();
 			if (evt.getType() == EnumUpgradeClass.SWORDS) {
 				evt.getlAltar().setSwordItem(is.copy());
@@ -184,7 +181,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			scanHelper.forceFullScan();
 		}
 	}
-	
+
 	public void scheduleUpgrade() {
 		scanHelper.upgradeCheckScheduled = true;
 	}
@@ -206,14 +203,14 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 				recalcCooldown--;
 			}
 			if (swordItem.getItem() == ModItems.athame) {
-					world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(5))
-					.forEach(player -> {
-						IMagicPowerContainer playerMP = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-						int transferValue = Math.min(20, playerMP.getMaxAmount()-playerMP.getAmount());
-						if (storage.drain(transferValue)) {
-							playerMP.fill(transferValue/10);
-						}
-					});
+				world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(5))
+						.forEach(player -> {
+							IMagicPowerContainer playerMP = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+							int transferValue = Math.min(20, playerMP.getMaxAmount() - playerMP.getAmount());
+							if (storage.drain(transferValue)) {
+								playerMP.fill(transferValue / 10);
+							}
+						});
 			}
 		}
 	}
@@ -316,7 +313,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	public void setSwordItem(ItemStack swordItem) {
 		this.swordItem = swordItem;
 	}
-	
+
 	public void forceFullScan() {
 		if (recalcCooldown == 0) {
 			scanHelper.forceFullScan();

@@ -1,12 +1,8 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.HashMap;
-
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
-import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -15,20 +11,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.IPlantable;
 
+import java.util.HashMap;
+
 class AltarScanHelper {
-	
+
 	TileEntityWitchAltar te;
-	
+	boolean upgradeCheckScheduled = false;
 	private int dx = -TileEntityWitchAltar.RADIUS, dy = -TileEntityWitchAltar.RADIUS, dz = -TileEntityWitchAltar.RADIUS;
 	private HashMap<Block, Integer> map = new HashMap<Block, Integer>();
 	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos(0, 0, 0);
 	private boolean complete = false;
-	boolean upgradeCheckScheduled = false;
-	
+
 	public AltarScanHelper(TileEntityWitchAltar te) {
 		this.te = te;
 	}
-	
+
 	void scanNature() {
 		if (upgradeCheckScheduled) {
 			te.refreshUpgrades();
@@ -39,14 +36,14 @@ class AltarScanHelper {
 			performCurrentCycle();
 		}
 	}
-	
+
 	private void performCurrentCycle() {
 		updateScore();
 		if (complete) {
 			refreshNature();
 		}
 	}
-	
+
 	private void getNextCycle() {
 		complete = false;
 		int radius_c = TileEntityWitchAltar.RADIUS;
@@ -68,7 +65,7 @@ class AltarScanHelper {
 		}
 		checking.setPos(te.getPos().getX() + dx, te.getPos().getY() + dy, te.getPos().getZ() + dz);
 	}
-	
+
 	private int getPowerValue(BlockPos add) {
 		IBlockState blockState = te.getWorld().getBlockState(add);
 		if (blockState.getBlock().equals(Blocks.AIR)) return 0;
@@ -83,7 +80,7 @@ class AltarScanHelper {
 		}
 		return 0;
 	}
-	
+
 	private void updateScore() {
 		int score = getPowerValue(checking);
 		if (score > 0) {
@@ -98,7 +95,7 @@ class AltarScanHelper {
 			}
 		}
 	}
-	
+
 	private void refreshNature() {
 		te.refreshUpgrades();
 		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
@@ -112,7 +109,7 @@ class AltarScanHelper {
 		map.clear();
 		te.markDirty();
 	}
-	
+
 	public void forceFullScan() {
 		dx = -TileEntityWitchAltar.RADIUS;
 		dy = -TileEntityWitchAltar.RADIUS;
