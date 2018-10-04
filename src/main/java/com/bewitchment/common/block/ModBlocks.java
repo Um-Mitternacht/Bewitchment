@@ -67,15 +67,7 @@ public final class ModBlocks {
 	public static final Block silver_block = null;
 	public static final Block silver_ore = null;
 	public static final Block coquina = null;
-	public static final Block bloodstone_block = null;
-	public static final Block tourmaline_block = null;
-	public static final Block malachite_block = null;
-	public static final Block tigers_eye_block = null;
-	public static final Block nuummite_block = null;
-	public static final Block alexandrite_block = null;
-	public static final Block jasper_block = null;
-	public static final Block amethyst_block = null;
-	public static final Block garnet_block = null;
+	public static final Block gem_block = null;
 	public static final Block cauldron = null;
 	public static final Block magic_mirror = null;
 	public static final Block candle_medium = null;
@@ -219,15 +211,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
-				new BlockGem(LibBlockName.TOURMALINE_BLOCK),
-				new BlockMod(LibBlockName.BLOODSTONE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockGem(LibBlockName.MALACHITE_BLOCK),
-				new BlockGem(LibBlockName.TIGERS_EYE_BLOCK),
-				new BlockGem(LibBlockName.NUUMMITE_BLOCK),
-				new BlockGem(LibBlockName.ALEXANDRITE_BLOCK),
-				new BlockGem(LibBlockName.JASPER_BLOCK),
-				new BlockGem(LibBlockName.AMETHYST_BLOCK),
-				new BlockGem(LibBlockName.GARNET_BLOCK),
+				new BlockGem(),
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
@@ -257,12 +241,14 @@ public final class ModBlocks {
 		initOreDictionary();
 	}
 
+
+	// TODO move gem blocks to metadata
 	private static void initOreDictionary() {
 		//Crystals, Minerals, and Metals
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
-		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
+//		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
 		OreDictionary.registerOre("oreGarnet", new ItemStack(ModBlocks.gem_ore, 1, 0));
 		OreDictionary.registerOre("oreNuummite", new ItemStack(ModBlocks.gem_ore, 1, 2));
 		OreDictionary.registerOre("oreAmethyst", new ItemStack(ModBlocks.gem_ore, 1, 8));
@@ -275,7 +261,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreJasper", new ItemStack(ModBlocks.gem_ore, 1, 6));
 		OreDictionary.registerOre("blockNethersteel", new ItemStack(ModBlocks.nethersteel));
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
-		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
+//		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
 		//Candles
 		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 0));
 		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 1));

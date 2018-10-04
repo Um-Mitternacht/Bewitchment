@@ -39,8 +39,8 @@
     }
   ],
   "result": {
-    "item": "bewitchment:bloodstone_block",
-    "data": 0,
+    "item": "bewitchment:gem_block",
+    "data": 4,
     "count": 1
   }
 }

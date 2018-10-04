@@ -39,8 +39,8 @@
     }
   ],
   "result": {
-    "item": "bewitchment:amethyst_block",
-    "data": 0,
+    "item": "bewitchment:gem_block",
+    "data": 7,
     "count": 1
   }
 }

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "bewitchment:garnet_block",
+      "item": "bewitchment:gem_block",
       "data": 0
     }
   ],
