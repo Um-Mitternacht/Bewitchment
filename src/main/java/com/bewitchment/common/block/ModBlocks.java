@@ -1,13 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
-import com.bewitchment.common.block.decorations.BlockFakeIce;
-import com.bewitchment.common.block.decorations.BlockFakeIceFence;
-import com.bewitchment.common.block.decorations.BlockFakeIceSlabDouble;
-import com.bewitchment.common.block.decorations.BlockFakeIceSlabHalf;
-import com.bewitchment.common.block.decorations.BlockFakeIceStairs;
-import com.bewitchment.common.block.decorations.BlockScornedBrickFence;
-import com.bewitchment.common.block.decorations.BlockScornedBrickStairs;
+import com.bewitchment.common.block.decorations.*;
 import com.bewitchment.common.block.magic.BlockPurifyingEarth;
 import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.BlockWitchFire;
@@ -17,19 +11,8 @@ import com.bewitchment.common.block.misc.BlockGoblet;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockPlacedItem;
 import com.bewitchment.common.block.misc.BlockWillOWisp;
-import com.bewitchment.common.block.natural.BlockBeehive;
-import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.block.natural.BlockInfestedFarmland;
-import com.bewitchment.common.block.natural.BlockSaltOre;
-import com.bewitchment.common.block.natural.BlockSilverOre;
-import com.bewitchment.common.block.natural.crop.BlockCrop;
-import com.bewitchment.common.block.natural.crop.CropBelladonna;
-import com.bewitchment.common.block.natural.crop.CropKelp;
-import com.bewitchment.common.block.natural.crop.CropKenaf;
-import com.bewitchment.common.block.natural.crop.CropMint;
-import com.bewitchment.common.block.natural.crop.CropSilphium;
-import com.bewitchment.common.block.natural.crop.CropThistle;
-import com.bewitchment.common.block.natural.crop.CropWormwood;
+import com.bewitchment.common.block.natural.*;
+import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.plants.BlockMoss;
@@ -37,24 +20,11 @@ import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
-import com.bewitchment.common.block.tools.BlockApiary;
-import com.bewitchment.common.block.tools.BlockBrazier;
-import com.bewitchment.common.block.tools.BlockCandleMedium;
-import com.bewitchment.common.block.tools.BlockCandleSmall;
-import com.bewitchment.common.block.tools.BlockCauldron;
-import com.bewitchment.common.block.tools.BlockCircleGlyph;
-import com.bewitchment.common.block.tools.BlockCrystalBall;
-import com.bewitchment.common.block.tools.BlockGemBowl;
-import com.bewitchment.common.block.tools.BlockMagicMirror;
-import com.bewitchment.common.block.tools.BlockOven;
-import com.bewitchment.common.block.tools.BlockTarotTable;
-import com.bewitchment.common.block.tools.BlockThreadSpinner;
-import com.bewitchment.common.block.tools.BlockWitchAltar;
+import com.bewitchment.common.block.tools.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -165,7 +135,7 @@ public final class ModBlocks {
 	public static final Block lantern = null;
 	public static final Block will_o_wisp = null;
 	public static final Block placed_item = null;
-	
+
 	public static final Block silver_block_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
@@ -312,7 +282,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
 		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
 		//Candles
-		for (int i=0;i<16;i++) {
+		for (int i = 0; i < 16; i++) {
 			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, i));
 			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, i));
 		}
