@@ -206,7 +206,6 @@ public final class ModBlocks {
 				new BlockPlacedItem()
 		);
 		//Normal Blocks
-		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
