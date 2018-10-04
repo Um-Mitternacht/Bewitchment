@@ -365,6 +365,7 @@ tile.alexandrite_block.name=Alexandrite Block
 tile.jasper_block.name=Jasper Block
 tile.amethyst_block.name=Amethyst Block
 tile.silver_block.name=Silver Block
+tile.silver_block_chisel.name=Silver Block (Chiselled)
 tile.nethersteel.name=Nethersteel
 tile.gem_ore_jasper.name=Jasper Ore
 tile.gem_ore_tigers_eye.name=Tiger's Eye Ore
@@ -400,6 +401,16 @@ tile.leaves_elder.name=Elder Leaves
 tile.leaves_juniper.name=Juniper Leaves
 tile.leaves_yew.name=Yew Leaves
 tile.leaves_cypress.name=Cypress Leaves
+
+bewitchment.silver_block_chisel.tooltip.variety.symbol=Symbol
+bewitchment.silver_block_chisel.tooltip.variety.sun=Sun
+bewitchment.silver_block_chisel.tooltip.variety.moon=Moon
+bewitchment.silver_block_chisel.tooltip.variety.cup=Cups
+bewitchment.silver_block_chisel.tooltip.variety.wand=Wands
+bewitchment.silver_block_chisel.tooltip.variety.sword=Swords
+bewitchment.silver_block_chisel.tooltip.variety.pentacle=Pentacles
+bewitchment.silver_block_chisel.tooltip.variety.pentagram=Pentagram
+bewitchment.silver_block_chisel.tooltip.variety.bevel=Bevel
 
 //Spells
 item.spell_page.name=Forgotten Spell

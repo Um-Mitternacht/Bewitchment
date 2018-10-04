@@ -51,7 +51,7 @@ public class BlockSilverChiselled extends BlockMod {
 
 	public static enum BlockSilverVariant implements IStringSerializable {
 
-		SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM;
+		SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM, BEVEL;
 
 		@Override
 		public String getName() {
