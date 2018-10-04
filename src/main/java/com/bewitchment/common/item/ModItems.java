@@ -3,10 +3,12 @@ package com.bewitchment.common.item;
 import baubles.api.BaubleType;
 import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.block.*;
+import com.bewitchment.common.item.block.ItemBlockMeta.EnumNameMode;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.*;
@@ -363,6 +365,12 @@ public final class ModItems {
 				new ItemBlockRevealingLantern(ModBlocks.revealing_lantern, true),
 				itemBlock(ModBlocks.spanish_moss)
 		);
+
+		//Chisel
+		registry.registerAll(
+				new ItemBlockMeta<>(ModBlocks.silver_block_chisel, BlockSilverChiselled.BlockSilverVariant.values(), EnumNameMode.TOOLTIP)
+		);
+
 	}
 
 	private static Item itemBlock(Block block) {
