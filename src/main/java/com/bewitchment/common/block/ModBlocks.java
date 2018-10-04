@@ -242,13 +242,20 @@ public final class ModBlocks {
 	}
 
 
-	// TODO move gem blocks to metadata
 	private static void initOreDictionary() {
 		//Crystals, Minerals, and Metals
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
-//		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
+		OreDictionary.registerOre("blockGarnet", new ItemStack(ModBlocks.gem_block, 1, 0));
+		OreDictionary.registerOre("blockNuummite", new ItemStack(ModBlocks.gem_block, 1, 1));
+		OreDictionary.registerOre("blockTigersEye", new ItemStack(ModBlocks.gem_block, 1, 2));
+		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.gem_block, 1, 3));
+		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.gem_block, 1, 4));
+		OreDictionary.registerOre("blockJasper", new ItemStack(ModBlocks.gem_block, 1, 5));
+		OreDictionary.registerOre("blockMalachite", new ItemStack(ModBlocks.gem_block, 1, 6));
+		OreDictionary.registerOre("blockAmethyst", new ItemStack(ModBlocks.gem_block, 1, 7));
+		OreDictionary.registerOre("blockAlexandrite", new ItemStack(ModBlocks.gem_block, 1, 8));
 		OreDictionary.registerOre("oreGarnet", new ItemStack(ModBlocks.gem_ore, 1, 0));
 		OreDictionary.registerOre("oreNuummite", new ItemStack(ModBlocks.gem_ore, 1, 2));
 		OreDictionary.registerOre("oreAmethyst", new ItemStack(ModBlocks.gem_ore, 1, 8));
@@ -261,7 +268,6 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreJasper", new ItemStack(ModBlocks.gem_ore, 1, 6));
 		OreDictionary.registerOre("blockNethersteel", new ItemStack(ModBlocks.nethersteel));
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
-//		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
 		//Candles
 		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 0));
 		OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, 1));
