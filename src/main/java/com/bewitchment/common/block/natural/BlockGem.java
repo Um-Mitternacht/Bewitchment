@@ -48,6 +48,7 @@ public class BlockGem extends BlockMod implements IInfusionStabiliser {
             items.add(new ItemStack(this, 1, i));
         }
     }
+
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, GEM);
@@ -60,6 +61,11 @@ public class BlockGem extends BlockMod implements IInfusionStabiliser {
             BlockGem.Gem gem = values[i];
             ModelHandler.registerForgeModel(this, i, "gem=" + gem.getName());
         }
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+        return state.getValue(GEM).ordinal();
     }
 
     @Optional.Method(modid = "thaumcraft")
