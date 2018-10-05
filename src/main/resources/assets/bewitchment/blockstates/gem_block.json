@@ -1,0 +1,69 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "blocks/stone",
+      "overlay": "bewitchment:blocks/garnet_block",
+      "particle": "blocks/stone"
+    },
+    "model": "bewitchment:block_overlay",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {
+      }
+    ],
+    "inventory": [
+      {
+      }
+    ],
+    "gem": {
+      "garnet": {
+        "textures": {
+          "overlay": "bewitchment:blocks/garnet_block"
+        }
+      },
+      "nuummite": {
+        "textures": {
+          "overlay": "bewitchment:blocks/nuummite_block"
+        }
+      },
+      "tigers_eye": {
+        "textures": {
+          "overlay": "bewitchment:blocks/tigers_eye_block"
+        }
+      },
+      "tourmaline": {
+        "textures": {
+          "overlay": "bewitchment:blocks/tourmaline_block"
+        }
+      },
+      "bloodstone": {
+        "textures": {
+          "overlay": "bewitchment:blocks/bloodstone_block"
+        }
+      },
+      "jasper": {
+        "textures": {
+          "overlay": "bewitchment:blocks/jasper_block"
+        }
+      },
+      "malachite": {
+        "textures": {
+          "overlay": "bewitchment:blocks/malachite_block"
+        }
+      },
+      "amethyst": {
+        "textures": {
+          "overlay": "bewitchment:blocks/amethyst_block"
+        }
+      },
+      "alexandrite": {
+        "textures": {
+          "overlay": "bewitchment:blocks/alexandrite_block"
+        }
+      }
+    }
+  }
+}

@@ -39,8 +39,8 @@
     }
   ],
   "result": {
-    "item": "bewitchment:malachite_block",
-    "data": 0,
+    "item": "bewitchment:gem_block",
+    "data": 6,
     "count": 1
   }
 }

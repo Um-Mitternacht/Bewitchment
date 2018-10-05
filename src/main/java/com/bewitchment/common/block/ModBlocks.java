@@ -69,15 +69,7 @@ public final class ModBlocks {
 	public static final Block silver_block = null;
 	public static final Block silver_ore = null;
 	public static final Block coquina = null;
-	public static final Block bloodstone_block = null;
-	public static final Block tourmaline_block = null;
-	public static final Block malachite_block = null;
-	public static final Block tigers_eye_block = null;
-	public static final Block nuummite_block = null;
-	public static final Block alexandrite_block = null;
-	public static final Block jasper_block = null;
-	public static final Block amethyst_block = null;
-	public static final Block garnet_block = null;
+	public static final Block gem_block = null;
 	public static final Block cauldron = null;
 	public static final Block magic_mirror = null;
 	public static final Block candle_medium = null;
@@ -218,21 +210,12 @@ public final class ModBlocks {
 				new BlockPlacedItem()
 		);
 		//Normal Blocks
-		//Todo: Make gem blocks valid infusion stabilizers for Thaumcraft. Also, make them all use metadata.
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockSilverChiselled(Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
-				new BlockMod(LibBlockName.TOURMALINE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.BLOODSTONE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.MALACHITE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.TIGERS_EYE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.NUUMMITE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.ALEXANDRITE_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.JASPER_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.AMETHYST_BLOCK, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.GARNET_BLOCK, Material.ROCK).setHardness(5.0F),
+				new BlockGem(),
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
@@ -270,7 +253,15 @@ public final class ModBlocks {
 		for (BlockSilverVariant sv:BlockSilverVariant.values()) {
 			OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block_chisel, 1, sv.ordinal()));
 		}
-		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.bloodstone_block));
+		OreDictionary.registerOre("blockGarnet", new ItemStack(ModBlocks.gem_block, 1, 0));
+		OreDictionary.registerOre("blockNuummite", new ItemStack(ModBlocks.gem_block, 1, 1));
+		OreDictionary.registerOre("blockTigersEye", new ItemStack(ModBlocks.gem_block, 1, 2));
+		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.gem_block, 1, 3));
+		OreDictionary.registerOre("blockBloodstone", new ItemStack(ModBlocks.gem_block, 1, 4));
+		OreDictionary.registerOre("blockJasper", new ItemStack(ModBlocks.gem_block, 1, 5));
+		OreDictionary.registerOre("blockMalachite", new ItemStack(ModBlocks.gem_block, 1, 6));
+		OreDictionary.registerOre("blockAmethyst", new ItemStack(ModBlocks.gem_block, 1, 7));
+		OreDictionary.registerOre("blockAlexandrite", new ItemStack(ModBlocks.gem_block, 1, 8));
 		OreDictionary.registerOre("oreGarnet", new ItemStack(ModBlocks.gem_ore, 1, 0));
 		OreDictionary.registerOre("oreNuummite", new ItemStack(ModBlocks.gem_ore, 1, 2));
 		OreDictionary.registerOre("oreAmethyst", new ItemStack(ModBlocks.gem_ore, 1, 8));
@@ -283,7 +274,6 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreJasper", new ItemStack(ModBlocks.gem_ore, 1, 6));
 		OreDictionary.registerOre("blockNethersteel", new ItemStack(ModBlocks.nethersteel));
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
-		OreDictionary.registerOre("blockTourmaline", new ItemStack(ModBlocks.tourmaline_block));
 		//Candles
 		for (int i = 0; i < 16; i++) {
 			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_small, 1, i));
