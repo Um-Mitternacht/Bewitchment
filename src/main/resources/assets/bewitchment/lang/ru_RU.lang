@@ -162,24 +162,24 @@ item.ravens_feather.name=Воронье перо
 item.cold_iron_dust.name=Пыль холодного железа
 item.cold_iron_dust_small.name=Кучка пыли холодного железа
 
-//fumes
-item.fume.unfired_jar.name=Необожженный кувшин
-item.fume.empty_jar.name=Пустой кувшин
-item.fume.oak_spirit.name=Дух дуба
-item.fume.birch_soul.name=Душа березы
-item.fume.acacia_essence.name=Эссенция акации
-item.fume.spruce_heart.name=Сердце ели
-item.fume.cloudy_oil.name=Пасмурное масло
-item.fume.cleansing_aura.name=Очищающая аура
-item.fume.emanation_of_dishonesty.name=Эманация нечестности
-item.fume.everchanging_presence.name=Постоянное присутствие
-item.fume.undying_image.name=Вечный образ
-item.fume.demonic_dew.name=Демоническая Роса
-item.fume.fiery_breeze.name=Огненный бриз
-item.fume.heavenly_winds.name=Небесные ветры
-item.fume.otherworld_tears.name=Потусторонние слезы
-item.fume.petrichor_odour.name=Запах петригора
-item.fume.zephyr_of_the_depths.name=Зефир глубин
+//fumes (Names changed)
+//item.fume.unfired_jar.name=Необожженный кувшин
+//item.fume.empty_jar.name=Пустой кувшин
+//item.fume.oak_spirit.name=Дух дуба
+//item.fume.birch_soul.name=Душа березы
+//item.fume.acacia_essence.name=Эссенция акации
+//item.fume.spruce_heart.name=Сердце ели
+//item.fume.cloudy_oil.name=Пасмурное масло
+//item.fume.cleansing_aura.name=Очищающая аура
+//item.fume.emanation_of_dishonesty.name=Эманация нечестности
+//item.fume.everchanging_presence.name=Постоянное присутствие
+//item.fume.undying_image.name=Вечный образ
+//item.fume.demonic_dew.name=Демоническая Роса
+//item.fume.fiery_breeze.name=Огненный бриз
+//item.fume.heavenly_winds.name=Небесные ветры
+//item.fume.otherworld_tears.name=Потусторонние слезы
+//item.fume.petrichor_odour.name=Запах петригора
+//item.fume.zephyr_of_the_depths.name=Зефир глубин
 
 //Dyes
 item.catechu.name=Дубильный коричневый
