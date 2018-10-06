@@ -250,7 +250,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
-		for (BlockSilverVariant sv:BlockSilverVariant.values()) {
+		for (BlockSilverVariant sv : BlockSilverVariant.values()) {
 			OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block_chisel, 1, sv.ordinal()));
 		}
 		OreDictionary.registerOre("blockGarnet", new ItemStack(ModBlocks.gem_block, 1, 0));

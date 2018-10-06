@@ -1,7 +1,5 @@
 package com.bewitchment.common.item.block;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -10,8 +8,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 public class ItemBlockMeta<T extends Item> extends ItemBlock {
-	
+
 	private Enum<?>[] itemVariants;
 	private EnumNameMode nMode;
 
@@ -26,7 +26,7 @@ public class ItemBlockMeta<T extends Item> extends ItemBlock {
 		itemVariants = variants;
 		nMode = nameMode;
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
@@ -34,7 +34,7 @@ public class ItemBlockMeta<T extends Item> extends ItemBlock {
 			tooltip.add(I18n.format(getRegistryName().toString().replace(':', '.') + ".tooltip.variety." + itemVariants[stack.getMetadata()].name().toLowerCase()));
 		}
 	}
-	
+
 	@Override
 	public int getMetadata(int damage) {
 		return damage;
@@ -51,7 +51,7 @@ public class ItemBlockMeta<T extends Item> extends ItemBlock {
 		}
 		return super.getUnlocalizedName();
 	}
-	
+
 	public static enum EnumNameMode {
 		NONE, TOOLTIP, NAME
 	}
