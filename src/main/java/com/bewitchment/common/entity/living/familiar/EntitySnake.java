@@ -45,6 +45,13 @@ public class EntitySnake extends EntityFamiliar {
 		String className = entity.getClass().getSimpleName();
 		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Vole") || className.contains("Shrew") || className.contains("Weasel") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
 	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataManager.register(TINT, 0xFFFFFF);
+		this.aiSit = new EntityAISit(this);
+	}
 
 	@Override
 	protected void setFamiliarAttributes(boolean isFamiliar) {
@@ -104,6 +111,7 @@ public class EntitySnake extends EntityFamiliar {
 		return 5;
 	}
 
+	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (super.attackEntityAsMob(entityIn)) {
 			if (entityIn instanceof EntityLivingBase) {
@@ -121,9 +129,8 @@ public class EntitySnake extends EntityFamiliar {
 			}
 
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	@Override
@@ -185,7 +192,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public String[] getRandomNames() {
-		return new String[0];
+		return names;
 	}
 
 	@Override
