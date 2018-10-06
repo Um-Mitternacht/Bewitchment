@@ -55,6 +55,8 @@ item.tulsi.name=Tulsi
 item.hellebore.name=Hellebore
 item.chrysanthemum.name=Chrysanthemum
 item.sagebrush.name=Sagebrush
+item.infested_wheat.name=Infested Wheat
+item.witchweed.name=Witchweed
 
 //Gemstones
 item.gem_garnet.name=Garnet
@@ -179,6 +181,9 @@ item.location_stone.bound_to=Bound to %d %d %d (%s)
 item.location_stone.name=TemporaryName LocationStone
 item.location_stone.unbound=Not bound
 item.pentacle.name=Pentacle
+item.wrathful_eye.name=Wrathful Eye
+item.sanguine_fabric.name=Bloody Rags
+
 
 //fumes
 item.fume.unfired_jar.name=Unfired Clay Jar
@@ -282,7 +287,7 @@ tile.lantern.name=Lantern
 tile.lantern.white.name=Lantern (White)
 tile.lantern.orange.name=Lantern (Orange)
 tile.lantern.magenta.name=Lantern (Magenta)
-tile.lantern.lightBlue.name=Lantern (Light Blue)
+tile.lantern.light_blue.name=Lantern (Light Blue)
 tile.lantern.yellow.name=Lantern (Yellow)
 tile.lantern.lime.name=Lantern (Lime)
 tile.lantern.pink.name=Lantern (Pink)
@@ -301,7 +306,7 @@ tile.revealing_lantern.name=Revealing Lantern
 tile.revealing_lantern.white.name=Revealing Lantern (White)
 tile.revealing_lantern.orange.name=Revealing Lantern (Orange)
 tile.revealing_lantern.magenta.name=Revealing Lantern (Magenta)
-tile.revealing_lantern.lightBlue.name=Revealing Lantern (Light Blue)
+tile.revealing_lantern.light_blue.name=Revealing Lantern (Light Blue)
 tile.revealing_lantern.yellow.name=Revealing Lantern (Yellow)
 tile.revealing_lantern.lime.name=Revealing Lantern (Lime)
 tile.revealing_lantern.pink.name=Revealing Lantern (Pink)
@@ -333,6 +338,7 @@ tile.crop_tulsi.name=Tulsi Crop
 tile.crop_chrysanthemum.name=Chrysanthemum Crop
 tile.crop_sagebrush.name=Sagebrush Crop
 tile.spanish_moss.name=Spanish Moss
+tile.infested_farmland.name=Infested Farmland
 
 //Misc plants
 tile.moonbell.name=Moonbell Flower
@@ -387,6 +393,7 @@ tile.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.cold_iron_block.name=Cold Iron Block
 tile.graveyard_dirt.name=Graveyard Dirt
 tile.purifying_earth.name=Purifying Earth
+tile.brazier.name=Brazier
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
@@ -625,6 +632,8 @@ witch.tooltip.tulsi_description.name=A small herb considered sacred by some
 witch.tooltip.hellebore_description.name=A beautiful and poisonous flower linked to demons
 witch.tooltip.chrysanthemum_description.name=A rather popular flower, it is often linked with nobility
 witch.tooltip.sagebrush_description.name=An herb associated with purification
+witch.tooltip.infested_wheat_description.name=An ill-looking crop
+witch.tooltip.witchweed_description.name=A small herb that grows on other crops
 
 item.tag_lock.empty=Empty Taglock
 
@@ -659,6 +668,8 @@ witch.tooltip.remedy_talisman_description.name=The gem in its core seems to abso
 witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
 witch.tooltip.mantle_description.name=A plain mantle. It's stylish, though...
 witch.tooltip.pouch_description.name=What secrets does it hold?
+witch.tooltip.wrathful_eye_description.name=//TODO | I don't know what this item is for
+witch.tooltip.hellish_bauble_description.name=This oddly shaped trinket will allow you to tap into a small portion of demonic power
 
 //Commands
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness
@@ -807,3 +818,4 @@ tc.aspect.sol=The Sun
 
 //Mobs
 entity.entity_owl.name=Owl
+entity.entity_snake.name=Snake
