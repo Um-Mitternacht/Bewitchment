@@ -86,6 +86,7 @@ public class LibIngredients {
 	public static Ingredient elytra = Ingredient.fromItem(Items.ELYTRA);
 	public static Ingredient anyString = new OreIngredient("string");
 	public static Ingredient glowstoneDust = Ingredient.fromItem(Items.GLOWSTONE_DUST);
+	public static Ingredient boline = Ingredient.fromItem(ModItems.boline);
 
 
 }
