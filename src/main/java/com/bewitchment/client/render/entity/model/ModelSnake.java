@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * adder - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelAdder extends ModelBase {
+public class ModelSnake extends ModelBase {
 	public ModelRenderer neck01a;
 	public ModelRenderer neck01b;
 	public ModelRenderer neck02;
@@ -30,7 +30,7 @@ public class ModelAdder extends ModelBase {
 	public ModelRenderer tail04;
 	public ModelRenderer tail05;
 
-	public ModelAdder() {
+	public ModelSnake() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.rFang = new ModelRenderer(this, 0, 0);
