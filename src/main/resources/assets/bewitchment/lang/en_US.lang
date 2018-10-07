@@ -668,7 +668,7 @@ witch.tooltip.remedy_talisman_description.name=The gem in its core seems to abso
 witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
 witch.tooltip.mantle_description.name=A plain mantle. It's stylish, though...
 witch.tooltip.pouch_description.name=What secrets does it hold?
-witch.tooltip.wrathful_eye_description.name=//TODO | I don't know what this item is for
+witch.tooltip.wrathful_eye_description.name=This trinket commands respect from demons.
 witch.tooltip.hellish_bauble_description.name=This oddly shaped trinket will allow you to tap into a small portion of demonic power
 
 //Commands
