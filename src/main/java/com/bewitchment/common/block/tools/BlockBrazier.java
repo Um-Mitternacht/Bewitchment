@@ -38,6 +38,7 @@ public class BlockBrazier extends BlockMod {
 		setHardness(3F);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return state.getValue(HANGING) ? BBOX_HANGING : BBOX_STANDING;
@@ -119,6 +120,7 @@ public class BlockBrazier extends BlockMod {
 		return this.getDefaultState().withProperty(FACING, enumfacing.getOpposite()).withProperty(HANGING, hang);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;

@@ -25,6 +25,7 @@ public class BlockSilverChiselled extends BlockMod {
 		return state.getValue(VARIANT).ordinal();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(VARIANT, BlockSilverVariant.values()[meta]);
