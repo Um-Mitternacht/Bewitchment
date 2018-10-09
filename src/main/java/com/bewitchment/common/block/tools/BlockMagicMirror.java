@@ -140,6 +140,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		IBlockState neighborState = world.getBlockState(fromPos);

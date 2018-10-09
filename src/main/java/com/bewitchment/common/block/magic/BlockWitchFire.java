@@ -115,6 +115,7 @@ public class BlockWitchFire extends BlockMod {
 		return new BlockStateContainer(this, TYPE);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
