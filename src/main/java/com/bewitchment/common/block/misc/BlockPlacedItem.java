@@ -39,6 +39,7 @@ public class BlockPlacedItem extends BlockModTileEntity {
 		this.setLightOpacity(0);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOX;
@@ -54,6 +55,7 @@ public class BlockPlacedItem extends BlockModTileEntity {
 		return side == EnumFacing.UP && worldIn.getBlockState(pos.down()).getBlockFaceShape(worldIn, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!canPlaceBlockOnSide(worldIn, pos, EnumFacing.UP)) {
@@ -66,6 +68,7 @@ public class BlockPlacedItem extends BlockModTileEntity {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta));
@@ -86,21 +89,25 @@ public class BlockPlacedItem extends BlockModTileEntity {
 		return Items.AIR;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
