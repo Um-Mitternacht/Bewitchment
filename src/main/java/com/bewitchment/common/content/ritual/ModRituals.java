@@ -197,7 +197,7 @@ public class ModRituals {
 		nether_portal = new RitualNetherPortal(rl("nether_portal"), of(LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.fire_charge), ofs(), 200, circles(NETHER, null, null), 4000, 1);
 
 		shift_biome = new RitualBiomeShift(rl("shift_biome"), of(LibIngredients.anyGlass, LibIngredients.boline), ofs(new ItemStack(ModItems.boline)), 400, circles(NORMAL, NORMAL, NORMAL), 2000, 8);
-		
+
 		ResourceLocation infusions = new ResourceLocation(LibMod.MOD_ID, "infusion");
 		infusion_overworld = new RitualInfusion(infusions, of(LibIngredients.fumePetrichorOdour), none, 60, circles(NORMAL, NORMAL, NORMAL), 6000, 1, DefaultInfusions.OVERWORLD);
 		infusion_nether = new RitualInfusion(infusions, of(LibIngredients.fumeFieryBreeze), none, 60, circles(NETHER, NETHER, NETHER), 6000, 1, DefaultInfusions.NETHER);
