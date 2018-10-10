@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class RenderSnake extends RenderLiving<EntitySnake> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[5];
+	private static final ResourceLocation[] textures = new ResourceLocation[6];
 
 	static {
 		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_1.png");
