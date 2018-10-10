@@ -96,6 +96,7 @@ public class EntitySnake extends EntityFamiliar {
 		this.tasks.addTask(4, this.aiSit);
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntitySnake::isSnakeFodder));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
 
 	@Override
@@ -176,6 +177,13 @@ public class EntitySnake extends EntityFamiliar {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	protected void collideWithEntity(Entity entityIn) {
+		if (!entityIn.equals(getOwner())) {
+			super.collideWithEntity(entityIn);
+		}
 	}
 
 	@Override
