@@ -1,0 +1,49 @@
+package com.bewitchment.client.render.entity.renderer;
+
+import com.bewitchment.client.render.entity.model.ModelOwl;
+import com.bewitchment.client.render.entity.model.ModelSnake;
+import com.bewitchment.common.entity.living.familiar.EntityOwl;
+import com.bewitchment.common.entity.living.familiar.EntitySnake;
+import com.bewitchment.common.lib.LibMod;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.util.ResourceLocation;
+
+import javax.annotation.Nullable;
+
+/**
+ * Created by Joseph on 10/9/2018.
+ */
+public class RenderSnake extends RenderLiving<EntitySnake> {
+
+	private static final ResourceLocation[] textures = new ResourceLocation[4];
+
+	static {
+		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_0.png");
+		textures[1] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_1.png");
+		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_2.png");
+		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_3.png");
+	}
+
+	public RenderSnake(RenderManager rendermanagerIn) {
+		super(rendermanagerIn, new ModelSnake(), 0.3f);
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(EntitySnake entity) {
+		return textures[entity.getFamiliarSkin()];
+	}
+
+	@Override
+	protected void preRenderCallback(EntitySnake entitylivingbaseIn, float partialTickTime) {
+		super.preRenderCallback(entitylivingbaseIn, partialTickTime);
+		if (entitylivingbaseIn.isChild()) {
+			GlStateManager.scale(0.4d, 0.4d, 0.4d);
+		} else {
+			GlStateManager.scale(0.6d, 0.6d, 0.6d);
+		}
+	}
+
+}
+
