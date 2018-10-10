@@ -160,7 +160,7 @@ public final class ModItems {
 	public static final Item silver_chestplate = null;
 	public static final Item silver_leggings = null;
 	public static final Item silver_boots = null;
-	
+
 	public static final Item witches_hat = null;
 	public static final Item witches_robes = null;
 	public static final Item witches_pants = null;

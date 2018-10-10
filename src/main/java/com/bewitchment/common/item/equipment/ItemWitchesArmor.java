@@ -4,7 +4,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
 import com.bewitchment.common.core.ModCreativeTabs;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -30,12 +29,12 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 	public void registerModel() {
 		ModelHandler.registerModel(this, 0);
 	}
-	
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default ) {
+
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
 		if (itemStack != ItemStack.EMPTY) {
 			if (itemStack.getItem() instanceof ItemArmor) {
 				ModelWitchesArmor model = new ModelWitchesArmor();
-				
+
 				model.hat1.showModel = armorSlot == EntityEquipmentSlot.HEAD;
 				model.Body.showModel = armorSlot == EntityEquipmentSlot.CHEST;
 				model.armLeft.showModel = armorSlot == EntityEquipmentSlot.CHEST;
@@ -48,13 +47,13 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 				model.isSneak = _default.isSneak;
 				model.rightArmPose = _default.rightArmPose;
 				model.leftArmPose = _default.leftArmPose;
-				
+
 				return model;
 			}
 		}
-		
+
 		return null;
-			
+
 	}
-	
+
 }

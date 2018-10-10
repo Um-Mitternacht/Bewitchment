@@ -26,6 +26,7 @@ import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.entity.*;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
+import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
@@ -222,6 +223,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLingeringBrew.class, EmptyRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityAoE.class, EmptyRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySnake.class, RenderSnake::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());
