@@ -31,7 +31,6 @@ import net.minecraft.world.World;
  * Created by Joseph on 10/2/2018.
  */
 
-//Todo: Fix suffocation upon spawning
 public class EntitySnake extends EntityFamiliar {
 
 	private static final double maxHPWild = 8;
@@ -41,6 +40,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	public EntitySnake(World worldIn) {
 		super(worldIn);
+		setSize(1F,.3F);
 	}
 
 	public static boolean isSnakeFodder(Entity entity) {
