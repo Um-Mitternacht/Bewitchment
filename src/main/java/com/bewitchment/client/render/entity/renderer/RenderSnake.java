@@ -17,13 +17,15 @@ import javax.annotation.Nullable;
  */
 public class RenderSnake extends RenderLiving<EntitySnake> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[4];
+	private static final ResourceLocation[] textures = new ResourceLocation[5];
 
 	static {
-		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_0.png");
-		textures[1] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_1.png");
-		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_2.png");
-		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/owl_3.png");
+		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_1.png");
+		textures[1] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_2.png");
+		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_3.png");
+		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_4.png");
+		textures[4] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_5.png");
+		textures[5] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/adder_6.png");
 	}
 
 	public RenderSnake(RenderManager rendermanagerIn) {

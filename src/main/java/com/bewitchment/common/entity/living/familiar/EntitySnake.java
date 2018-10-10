@@ -80,6 +80,11 @@ public class EntitySnake extends EntityFamiliar {
 	}
 
 	@Override
+	public int getTotalVariants() {
+		return 5;
+	}
+
+	@Override
 	protected void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
@@ -104,11 +109,6 @@ public class EntitySnake extends EntityFamiliar {
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
-	}
-
-	@Override
-	public int getTotalVariants() {
-		return 5;
 	}
 
 	@Override
