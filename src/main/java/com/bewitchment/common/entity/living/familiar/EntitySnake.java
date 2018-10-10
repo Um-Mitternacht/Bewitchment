@@ -126,7 +126,6 @@ public class EntitySnake extends EntityFamiliar {
 					i = 5;
 				} else if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
 					i = 9;
-
 				} else if (this.world.getDifficulty() == EnumDifficulty.HARD) {
 					i = 17;
 				}
