@@ -642,6 +642,23 @@ tooltip.potion.data=Potion Data:
 
 tooltip.shift_for_info=<hold shift for details>
 
+witch.tooltip.silver_pickaxe_description.name=Deals extra damage to undead
+witch.tooltip.silver_axe_description.name=Deals extra damage to undead
+witch.tooltip.silver_spade_description.name=Deals extra damage to undead
+witch.tooltip.silver_hoe_description.name=Deals extra damage to undead
+witch.tooltip.silver_sword_description.name=Deals extra damage to undead
+
+witch.tooltip.cold_iron_pickaxe_description.name=Deals extra damage to spirits
+witch.tooltip.cold_iron_axe_description.name=Deals extra damage to spirits
+witch.tooltip.cold_iron_spade_description.name=Deals extra damage to spirits
+witch.tooltip.cold_iron_hoe_description.name=Deals extra damage to spirits
+witch.tooltip.cold_iron_sword_description.name=Deals extra damage to spirits
+
+witch.tooltip.silver_chestplate_description.name=Protects against undead
+witch.tooltip.silver_helmet_description.name=Protects against undead
+witch.tooltip.silver_leggings_description.name=Protects against undead
+witch.tooltip.silver_boots_description.name=Protects against undead
+
 //Baubles
 item.shirt.name=Shirt
 item.ring.name=Ring
