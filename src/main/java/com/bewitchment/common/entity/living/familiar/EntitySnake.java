@@ -40,7 +40,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	public EntitySnake(World worldIn) {
 		super(worldIn);
-		setSize(1F,.3F);
+		setSize(1F, .3F);
 	}
 
 	public static boolean isSnakeFodder(Entity entity) {
@@ -120,8 +120,13 @@ public class EntitySnake extends EntityFamiliar {
 			if (entityIn instanceof EntityLivingBase) {
 				int i = 0;
 
-				if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
+				if (this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
+					i = 3;
+				} else if (this.world.getDifficulty() == EnumDifficulty.EASY) {
+					i = 5;
+				} else if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
 					i = 9;
+
 				} else if (this.world.getDifficulty() == EnumDifficulty.HARD) {
 					i = 17;
 				}
