@@ -64,6 +64,9 @@ public final class LibItemName {
 	public static final String SILVER_CHESTPLATE = "silver_chestplate";
 	public static final String SILVER_LEGGINGS = "silver_leggings";
 	public static final String SILVER_BOOTS = "silver_boots";
+	public static final String WITCHES_HAT = "witches_hat";
+	public static final String WITCHES_ROBES = "witches_robes";
+	public static final String WITCHES_PANTS = "witches_pants";
 	public static final String NAZAR = "nazar";
 	public static final String HORSESHOE = "horseshoe";
 	public static final String TRISKELION_AMULET = "triskelion_amulet";
@@ -123,6 +126,7 @@ public final class LibItemName {
 
 	//Materials
 	public static final String SILVER = "silver";
+	public static final String BEWITCHED_LEATHER = "bewitched_leather";
 	public static final String RITUAL = "ritual";
 	public static final String COLD_IRON = "cold_iron";
 	public static final String TALISMAN_AQUAMARINE_CROWN = "talisman_aquamarine_crown";
