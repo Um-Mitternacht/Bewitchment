@@ -202,16 +202,16 @@ public final class ConfigHandler {
 		}
 
 		public static class EnergyHUD {
-			@Comment("Should the energy HUD be hidden?")
-			public boolean hide = true;
-			@Comment("Height of the HUD")
-			public int height = 102;
-			@Comment("Width of the HUD")
-			public int width = 25;
+			@Comment("Should the energy HUD be automatically hidden?")
+			public boolean autoHide = true;
+			
+			@Comment("Should the energy HUD be completely removed?")
+			public boolean deactivate = false;
 
-			@Comment({"Position of the HUD in the screen", "\"x\" value is from left to right", "\"y\" value is from bottom to top"})
-			public int x = 25;
-			public int y = 129;
+			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
+			public double x = 0.01;
+			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
+			public double y = 0.49;
 		}
 	}
 }

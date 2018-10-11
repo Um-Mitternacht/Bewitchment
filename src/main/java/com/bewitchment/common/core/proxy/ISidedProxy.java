@@ -21,8 +21,6 @@ public interface ISidedProxy {
 
 	void init(FMLInitializationEvent event);
 
-	void displayRecordText(ITextComponent text);
-
 	void spawnParticle(ParticleF particleF, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, int... args);
 
 	boolean isFancyGraphicsEnabled();

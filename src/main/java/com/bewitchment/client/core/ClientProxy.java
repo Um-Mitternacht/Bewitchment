@@ -1,11 +1,23 @@
 package com.bewitchment.client.core;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.core.event.*;
+import com.bewitchment.client.core.event.BloodViewerHUD;
+import com.bewitchment.client.core.event.EnergyHUD;
+import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
+import com.bewitchment.client.core.event.GirdleOfTheWoodedHUD;
+import com.bewitchment.client.core.event.MimicEventHandler;
+import com.bewitchment.client.core.event.MiscEventHandler;
+import com.bewitchment.client.core.event.RenderingHacks;
+import com.bewitchment.client.core.event.VampireBloodBarHUD;
+import com.bewitchment.client.core.event.WerewolfEventHandler;
+import com.bewitchment.client.core.hud.HudController;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
 import com.bewitchment.client.handler.ColorPropertyHandler;
@@ -13,7 +25,14 @@ import com.bewitchment.client.handler.ItemCandleColorHandler;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.layer.MantleLayer;
-import com.bewitchment.client.render.entity.renderer.*;
+import com.bewitchment.client.render.entity.renderer.EmptyRenderer;
+import com.bewitchment.client.render.entity.renderer.RenderBatSwarm;
+import com.bewitchment.client.render.entity.renderer.RenderBrewArrow;
+import com.bewitchment.client.render.entity.renderer.RenderBrewBottle;
+import com.bewitchment.client.render.entity.renderer.RenderBroom;
+import com.bewitchment.client.render.entity.renderer.RenderOwl;
+import com.bewitchment.client.render.entity.renderer.RenderSnake;
+import com.bewitchment.client.render.entity.renderer.SpellRenderer;
 import com.bewitchment.client.render.tile.TileRenderCauldron;
 import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.client.render.tile.TileRenderPlacedItem;
@@ -24,7 +43,13 @@ import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
-import com.bewitchment.common.entity.*;
+import com.bewitchment.common.entity.EntityAoE;
+import com.bewitchment.common.entity.EntityBatSwarm;
+import com.bewitchment.common.entity.EntityBrew;
+import com.bewitchment.common.entity.EntityBrewArrow;
+import com.bewitchment.common.entity.EntityFlyingBroom;
+import com.bewitchment.common.entity.EntityLingeringBrew;
+import com.bewitchment.common.entity.EntitySpellCarrier;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.bewitchment.common.item.ModItems;
@@ -33,6 +58,7 @@ import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -45,9 +71,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -60,9 +86,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-
-import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -89,9 +112,12 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		registerRenders();
-		MinecraftForge.EVENT_BUS.register(new EnergyHUD());
+		
+		HudController.registerNewComponent(new BloodViewerHUD());
+		HudController.registerNewComponent(new EnergyHUD());
+		
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
-		MinecraftForge.EVENT_BUS.register(new BloodViewerHUD());
+//		MinecraftForge.EVENT_BUS.register(new BloodViewerHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());
 		MinecraftForge.EVENT_BUS.register(ExtraBarButtonsHUD.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
@@ -187,11 +213,8 @@ public class ClientProxy implements ISidedProxy {
 		items.registerItemColorHandler(ColorPropertyHandler.INSTANCE, Item.getItemFromBlock(ModBlocks.lantern), Item.getItemFromBlock(ModBlocks.revealing_lantern));
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
-	}
-
-	@Override
-	public void displayRecordText(ITextComponent text) {
-		Minecraft.getMinecraft().ingameGUI.setRecordPlayingMessage(text.getFormattedText());
+		
+		ClientCommandHandler.instance.registerCommand(new ClientCommandGuiConfig());
 	}
 
 	@Override

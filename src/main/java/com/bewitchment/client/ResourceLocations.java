@@ -19,10 +19,8 @@ public final class ResourceLocations {
 	public static final ResourceLocation APIARY_GUI = getLocation("textures/gui/apiary.png");
 	public static final ResourceLocation OVEN_GUI = getLocation("textures/gui/oven.png");
 	public static final ResourceLocation THREAD_SPINNER_GUI = getLocation("textures/gui/thread_spinner.png");
-	public static final ResourceLocation[] ENERGY_BACKGROUND = new ResourceLocation[]{
-			getLocation("textures/gui/energy_dark.png"),
-			getLocation("textures/gui/energy_white.png"),
-	};
+	public static final ResourceLocation ENERGY_BACKGROUND_FILL = getLocation("textures/gui/energy_dark.png");
+	public static final ResourceLocation ENERGY_BACKGROUND_PULSE = getLocation("textures/gui/energy_white.png");
 
 	//Particles
 	public static final ResourceLocation BUBBLE = getLocation("textures/particle/bubble.png");
