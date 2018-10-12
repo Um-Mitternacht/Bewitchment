@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -114,10 +115,10 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
-	//Fixme: Inflict wither, poison, or some new effect entirely upon hit, in addition to generic damage
-	@Override
-	public boolean attackEntityAsMob(Entity entityIn) {
-		return entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), 4.0F);
+	public boolean attackEntityAsMob(Entity par1) {
+		getAttackTarget().addPotionEffect(
+				new PotionEffect(Potion.getPotionFromResourceLocation("poison"), 40, 1));
+		return super.attackEntityAsMob(par1);
 	}
 
 	@Override
