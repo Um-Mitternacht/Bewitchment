@@ -114,30 +114,10 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
+	//Fixme: Inflict wither, poison, or some new effect entirely upon hit, in addition to generic damage
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		if (super.attackEntityAsMob(entityIn)) {
-			if (entityIn instanceof EntityLivingBase) {
-				int i = 0;
-
-				if (this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
-					i = 3;
-				} else if (this.world.getDifficulty() == EnumDifficulty.EASY) {
-					i = 5;
-				} else if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
-					i = 9;
-				} else if (this.world.getDifficulty() == EnumDifficulty.HARD) {
-					i = 17;
-				}
-
-				if (i > 0) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, i * 22, 1));
-				}
-			}
-
-			return true;
-		}
-		return false;
+		return entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), 4.0F);
 	}
 
 	@Override
