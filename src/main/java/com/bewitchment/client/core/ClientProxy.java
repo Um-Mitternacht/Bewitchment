@@ -8,8 +8,6 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.core.event.BloodViewerHUD;
-import com.bewitchment.client.core.event.EnergyHUD;
 import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
 import com.bewitchment.client.core.event.GirdleOfTheWoodedHUD;
 import com.bewitchment.client.core.event.MimicEventHandler;
@@ -17,7 +15,10 @@ import com.bewitchment.client.core.event.MiscEventHandler;
 import com.bewitchment.client.core.event.RenderingHacks;
 import com.bewitchment.client.core.event.VampireBloodBarHUD;
 import com.bewitchment.client.core.event.WerewolfEventHandler;
+import com.bewitchment.client.core.hud.BloodViewerHUD;
+import com.bewitchment.client.core.hud.EnergyHUD;
 import com.bewitchment.client.core.hud.HudController;
+import com.bewitchment.client.core.hud.MoonHUD;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
 import com.bewitchment.client.handler.ColorPropertyHandler;
@@ -115,9 +116,9 @@ public class ClientProxy implements ISidedProxy {
 		
 		HudController.registerNewComponent(new BloodViewerHUD());
 		HudController.registerNewComponent(new EnergyHUD());
+		HudController.registerNewComponent(new MoonHUD());
 		
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
-//		MinecraftForge.EVENT_BUS.register(new BloodViewerHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());
 		MinecraftForge.EVENT_BUS.register(ExtraBarButtonsHUD.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());

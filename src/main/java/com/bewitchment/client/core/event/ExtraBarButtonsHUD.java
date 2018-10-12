@@ -32,12 +32,12 @@ public class ExtraBarButtonsHUD {
 
 	// TODO reset these when the user closes the game, either MP or SP
 	int slotSelected = -1;
-	boolean isInExtraBar = false;
+	public boolean isInExtraBar = false;
 	boolean barEnabled = false;
 	int cooldown = 0;
 	int selectedItemTemp = 0;
 	List<IHotbarAction> actions = new ArrayList<IHotbarAction>();
-	IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
+	public IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
 
 	private ExtraBarButtonsHUD() {
 	}

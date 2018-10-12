@@ -1,9 +1,10 @@
-package com.bewitchment.client.core.event;
+package com.bewitchment.client.core.hud;
 
 import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.client.core.hud.HudComponent;
+import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
+import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.client.Minecraft;
@@ -11,28 +12,34 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class BloodViewerHUD extends HudComponent {
 	
-	//x and y are used as offset from the center
 	public BloodViewerHUD() {
-		super(0.51, 0.5, 10, 14);//TODO change with config values
+		super(ConfigHandler.CLIENT.BLOOD_HUD.x, ConfigHandler.CLIENT.BLOOD_HUD.y, 10, 14);
+		active = ! ConfigHandler.CLIENT.BLOOD_HUD.deactivate;
 	}
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/blood_droplet.png");
 
 	@Override
 	public void resetConfig() {
-		this.xpos = 0.51;
-		this.ypos = 0.5;
+		this.xpos = 0.5;
+		this.ypos = 0.47;
+		this.active = true;
 	}
 
 	@Override
 	public void saveDataToConfig() {
-		
+		ConfigHandler.CLIENT.BLOOD_HUD.deactivate = !active;
+		ConfigHandler.CLIENT.BLOOD_HUD.x = xpos;
+		ConfigHandler.CLIENT.BLOOD_HUD.y = ypos;
+		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
@@ -74,7 +81,8 @@ public class BloodViewerHUD extends HudComponent {
 
 	@Override
 	public void configChanged() {
-		// TODO Auto-generated method stub
-		
+		xpos = ConfigHandler.CLIENT.BLOOD_HUD.x;
+		ypos = ConfigHandler.CLIENT.BLOOD_HUD.y;
+		active = !ConfigHandler.CLIENT.BLOOD_HUD.deactivate;
 	}
 }

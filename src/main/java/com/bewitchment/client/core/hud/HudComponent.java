@@ -88,8 +88,8 @@ public abstract class HudComponent {
 	}
 
 	public boolean isHovered(int mx, int my) {
-		if (getX() < mx && getX() + w > mx) {
-			if (getY() < my && getY() + h > my) {
+		if (getX() < mx && getX() + getWidth() > mx) {
+			if (getY() < my && getY() + getHeight() > my) {
 				return true;
 			} 
 		}

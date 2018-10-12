@@ -1,4 +1,4 @@
-package com.bewitchment.client.core.event;
+package com.bewitchment.client.core.hud;
 
 import org.lwjgl.opengl.GL11;
 
@@ -7,8 +7,6 @@ import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.core.hud.HudComponent;
-import com.bewitchment.client.core.hud.HudController;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
 
@@ -39,6 +37,7 @@ public class EnergyHUD extends HudComponent {
 
 	public EnergyHUD() {
 		super(ConfigHandler.CLIENT.ENERGY_HUD.x, ConfigHandler.CLIENT.ENERGY_HUD.y, 25, 102);
+		active = ! ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -63,7 +62,7 @@ public class EnergyHUD extends HudComponent {
 			if (energyChanged) {
 				shouldPulse = lastPulsed == 0;
 			}
-			if (energyChanged || isItemEnergyUsing()) {
+			if (energyChanged || isItemEnergyUsing() || !ConfigHandler.CLIENT.ENERGY_HUD.autoHide) {
 				oldEnergy = storage.getAmount();
 				oldMaxEnergy = storage.getMaxAmount();
 				oldInfusion = BewitchmentAPI.getAPI().getPlayerInfusion(Minecraft.getMinecraft().player).getTexture();
@@ -72,7 +71,7 @@ public class EnergyHUD extends HudComponent {
 			}
 
 			if (renderTime > 0 && storage.getAmount() == storage.getMaxAmount()) {
-				if (ConfigHandler.CLIENT.ENERGY_HUD.autoHide && renderTime < 20) {
+				if (renderTime < 20) {
 					visibilityLeft -= 0.05F;
 					visibilityLeft = MathHelper.clamp(visibilityLeft, 0F, 1F);
 				}
@@ -117,7 +116,7 @@ public class EnergyHUD extends HudComponent {
 	@Override
 	public void resetConfig() {
 		this.xpos = 0.01;
-		this.ypos = 0.49;
+		this.ypos = 0.5;
 		this.active = true;
 	}
 
@@ -175,19 +174,14 @@ public class EnergyHUD extends HudComponent {
 
 	private void renderBarContent(double filled) {
 		GlStateManager.pushMatrix();
-		if (ConfigHandler.CLIENT.ENERGY_HUD.autoHide) {
-			GlStateManager.color(1f, 1f, 1f, visibilityLeft);
-		}
+		GlStateManager.color(1f, 1f, 1f, visibilityLeft);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceLocations.ENERGY_BACKGROUND_FILL);
 		renderTexture(getX() + 9, getY() + 14 + 74 * (1 - filled), 7, 74 * filled, 0, filled);
 		GlStateManager.popMatrix();
 	}
 	
 	private void renderPulse(double filled) {
-		float alpha = this.barPulse;
-		if (ConfigHandler.CLIENT.ENERGY_HUD.autoHide) {
-			alpha *= visibilityLeft;
-		}
+		float alpha = this.barPulse * visibilityLeft;
 		GlStateManager.pushMatrix();
 		GlStateManager.color(1, 1, 1, alpha);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceLocations.ENERGY_BACKGROUND_PULSE);
@@ -197,9 +191,7 @@ public class EnergyHUD extends HudComponent {
 	
 	private void renderFrame(ResourceLocation texture) {
 		GlStateManager.pushMatrix();
-		if (ConfigHandler.CLIENT.ENERGY_HUD.autoHide) {
-			GlStateManager.color(1f, 1f, 1f, this.visibilityLeft);
-		}
+		GlStateManager.color(1f, 1f, 1f, this.visibilityLeft);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		renderTexture(getX(), getY(), w, h, 0, 1);
 		GlStateManager.popMatrix();

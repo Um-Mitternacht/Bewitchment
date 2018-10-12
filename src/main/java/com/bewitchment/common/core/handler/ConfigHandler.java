@@ -180,26 +180,24 @@ public final class ConfigHandler {
 		@Comment("Customize the Energy HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.energy_hud")
 		public EnergyHUD ENERGY_HUD = new EnergyHUD();
-		@Comment("Customize the Brew HUD positions in the screen")
-		@Config.LangKey("bewitchment.config.brew_hud")
-		public BrewHUD BREW_HUD = new BrewHUD();
+		
+		@Comment("Customize the Blood Drain HUD positions in the screen")
+		@Config.LangKey("bewitchment.config.blood_hud")
+		public BloodIndicatorHUD BLOOD_HUD = new BloodIndicatorHUD();
+		
+		@Comment("Customize the Moon HUD positions in the screen")
+		@Config.LangKey("bewitchment.config.moon_hud")
+		public MoonHUD MOON_HUD = new MoonHUD();
+		
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
+		
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
+		
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
 		public double glyphImprecision = 0.6d;
-
-		public static class BrewHUD {
-			@Comment("Should the brew HUD be hidden?")
-			public boolean hide;
-			@Comment({"Orientation of the brews", "true : vertical", "false : horizontal"})
-			public boolean orientation = true;
-			@Comment({"Position of the HUD in the screen", "\"x\" value is from right to left", "\"y\" value is from top to bottom"})
-			public int x = 21;
-			public int y = 100;
-		}
 
 		public static class EnergyHUD {
 			@Comment("Should the energy HUD be automatically hidden?")
@@ -211,7 +209,27 @@ public final class ConfigHandler {
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
 			public double x = 0.01;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.49;
+			public double y = 0.5;
+		}
+		
+		public static class BloodIndicatorHUD {
+			@Comment("Should the blood indicator be completely removed?")
+			public boolean deactivate = false;
+
+			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
+			public double x = 0.5;
+			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
+			public double y = 0.47;
+		}
+		
+		public static class MoonHUD {
+			@Comment("Should the moon indicator be completely removed?")
+			public boolean deactivate = false;
+
+			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
+			public double x = 0.01;
+			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
+			public double y = 0.01;
 		}
 	}
 }
