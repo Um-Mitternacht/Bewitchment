@@ -95,5 +95,7 @@ public abstract class HudComponent {
 		}
 		return false;
 	}
+
+	public abstract void configChanged();
 	
 }

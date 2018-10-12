@@ -71,4 +71,10 @@ public class BloodViewerHUD extends HudComponent {
 		this.xpos = x / sr.getScaledWidth_double();
 		this.ypos = y / sr.getScaledHeight_double();
 	}
+
+	@Override
+	public void configChanged() {
+		// TODO Auto-generated method stub
+		
+	}
 }

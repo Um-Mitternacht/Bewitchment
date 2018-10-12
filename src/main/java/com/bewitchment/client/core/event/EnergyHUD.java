@@ -218,4 +218,11 @@ public class EnergyHUD extends HudComponent {
 		}
 		return interpEnergy / energy.getMaxAmount();
 	}
+
+	@Override
+	public void configChanged() {
+		this.xpos = ConfigHandler.CLIENT.ENERGY_HUD.x;
+		this.ypos = ConfigHandler.CLIENT.ENERGY_HUD.y;
+		this.active = !ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
+	}
 }

@@ -9,6 +9,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import com.bewitchment.client.gui.GuiEditMode;
+import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -22,6 +23,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.config.GuiUtils;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,6 +37,7 @@ public class HudController {
 	public ArrayList<HudComponent> components = new ArrayList<>();
 	public HudComponent grabbed = null;
 	private boolean shouldShowHud = false;
+	private int grabX = 0, grabY = 0;
 	
 	private HudController() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -56,6 +59,13 @@ public class HudController {
 	}
 	
 	@SubscribeEvent
+	public void reloadConfig(ConfigChangedEvent evt) {
+		if (evt.getModID().equals(LibMod.MOD_ID)) {
+			components.forEach(c -> c.configChanged());
+		}
+	}
+	
+	@SubscribeEvent
 	public void handleMouse(MouseEvent evt) {
 		if (evt.getButton() != -1 && !isEditModeActive()) {
 			onMouseInteraction(evt.getX(), evt.getY());
@@ -67,12 +77,15 @@ public class HudController {
 			if (c.isActive() || isEditModeActive()) {
 				c.render(sr, pticks, isEditModeActive());
 			}
+			if (!c.isActive() && isEditModeActive()) {
+				drawTranslucentRect(c.getX(), c.getY(), c.getWidth(), c.getHeight(), true);
+			}
 		}
 		final int mouseX = Mouse.getX() * sr.getScaledWidth() / Minecraft.getMinecraft().displayWidth;
         final int mouseY = sr.getScaledHeight() - Mouse.getY() * sr.getScaledHeight() / Minecraft.getMinecraft().displayHeight - 1;
 
 		if (isEditModeActive() && grabbed != null) {
-			drawTranslucentRect(mouseX, mouseY, grabbed.w, grabbed.h);
+			drawTranslucentRect(mouseX - grabX, mouseY - grabY, grabbed.w, grabbed.h, false);
 		} else if (Minecraft.getMinecraft().currentScreen == null){
 			HudComponent hud = getComponentAt(mouseX, mouseY, true);
 			if (hud != null) {
@@ -87,7 +100,7 @@ public class HudController {
 	public void onMouseInteraction(int clickX, int clickY) {
 		if (isEditModeActive()) {
 			if (grabbed != null) {
-				grabbed.placedAt(clickX, clickY);
+				grabbed.placedAt(clickX - grabX, clickY - grabY);
 				grabbed.saveDataToConfig();
 				grabbed = null;
 			} else {
@@ -101,6 +114,8 @@ public class HudController {
 						hud.saveDataToConfig();
 					} else {
 						grabbed = hud;
+						grabX = clickX - hud.getX();
+						grabY = clickY - hud.getY();
 					}
 				}
 			}
@@ -128,19 +143,28 @@ public class HudController {
 		return Minecraft.getMinecraft().currentScreen instanceof GuiEditMode;
 	}
 	
-	private static void drawTranslucentRect(int x, int y, int w, int h) {
+	private static void drawTranslucentRect(int x, int y, int w, int h, boolean red) {
 		GlStateManager.pushMatrix();
-		GlStateManager.color(1, 1, 1, 1);
 		GlStateManager.disableTexture2D();
 		GlStateManager.enableBlend();
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buff = tessellator.getBuffer();
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
-		buff.pos(x, y + h, 0).color(1f, 1f, 1f, 0.4f).endVertex();
-		buff.pos(x + w, y + h, 0).color(1f, 1f, 1f, 0.4f).endVertex();
-		buff.pos(x + w, y, 0).color(1f, 1f, 1f, 0.4f).endVertex();
-		buff.pos(x, y, 0).color(1f, 1f, 1f, 0.4f).endVertex();
+		
+		if (red) {
+			buff.pos(x, y + h, 0).color(0.8f, 0f, 0f, 0.4f).endVertex();
+			buff.pos(x + w, y + h, 0).color(0.8f, 0f, 0f, 0.4f).endVertex();
+			buff.pos(x + w, y, 0).color(0.8f, 0f, 0f, 0.4f).endVertex();
+			buff.pos(x, y, 0).color(0.8f, 0f, 0f, 0.4f).endVertex();
+		} else {
+			buff.pos(x, y + h, 0).color(1f, 1f, 1f, 0.4f).endVertex();
+			buff.pos(x + w, y + h, 0).color(1f, 1f, 1f, 0.4f).endVertex();
+			buff.pos(x + w, y, 0).color(1f, 1f, 1f, 0.4f).endVertex();
+			buff.pos(x, y, 0).color(1f, 1f, 1f, 0.4f).endVertex();
+		}
 		tessellator.draw();
+		GlStateManager.enableTexture2D();
+		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 	
