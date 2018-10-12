@@ -117,7 +117,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	public boolean attackEntityAsMob(Entity par1) {
 		getAttackTarget().addPotionEffect(
-				new PotionEffect(Potion.getPotionFromResourceLocation("poison"), 40, 1));
+				new PotionEffect(Potion.getPotionFromResourceLocation("poison"), 2000, 1));
 		return super.attackEntityAsMob(par1);
 	}
 
