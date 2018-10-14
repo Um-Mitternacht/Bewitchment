@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 
-@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserr", modid = "thaumcraft")
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
 public class BlockGem extends BlockMod implements IInfusionStabiliser {
 	public static final PropertyEnum<BlockGem.Gem> GEM = PropertyEnum.create("gem", BlockGem.Gem.class);
 
