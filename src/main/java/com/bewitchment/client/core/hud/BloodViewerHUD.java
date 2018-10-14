@@ -6,7 +6,6 @@ import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,12 +18,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class BloodViewerHUD extends HudComponent {
-	
+
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/blood_droplet.png");
+
 	public BloodViewerHUD() {
 		super(10, 14);
 	}
-
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/blood_droplet.png");
 
 	@Override
 	public String getTooltip(int mouseX, int mouseY) {
@@ -98,7 +97,7 @@ public class BloodViewerHUD extends HudComponent {
 		ConfigHandler.CLIENT.BLOOD_HUD.deactivate = false;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
-	
+
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {

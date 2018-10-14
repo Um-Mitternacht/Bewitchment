@@ -5,7 +5,6 @@ import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -17,7 +16,7 @@ import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.common.config.ConfigManager;
 
 public class MoonHUD extends HudComponent {
-	
+
 	private static final float minWarn = 12000;
 	private static final int transform = 12900;
 	private static final ResourceLocation MOON = new ResourceLocation(LibMod.MOD_ID, "textures/gui/moon_warning.png");
@@ -37,7 +36,7 @@ public class MoonHUD extends HudComponent {
 
 	@Override
 	public String getTooltip(int mouseX, int mouseY) {
-		if (Minecraft.getMinecraft().world.getMoonPhase()==0) {
+		if (Minecraft.getMinecraft().world.getMoonPhase() == 0) {
 			int warn = 0;
 			if (Minecraft.getMinecraft().world.getWorldTime() < minWarn) {
 			} else if (Minecraft.getMinecraft().world.getWorldTime() > transform) {
@@ -80,18 +79,18 @@ public class MoonHUD extends HudComponent {
 			}
 			renderTextureAt(getX(), getY(), getWidth(), getHeight());
 		}
-		
+
 		GlStateManager.disableRescaleNormal();
 		RenderHelper.disableStandardItemLighting();
 		GlStateManager.disableLighting();
 		GlStateManager.popMatrix();
 	}
-	
+
 	@Override
 	public int getWidth() {
 		return getHeight();
 	}
-	
+
 	@Override
 	public int getHeight() {
 		if (Minecraft.getMinecraft().world.getWorldTime() < transform) {
@@ -132,7 +131,7 @@ public class MoonHUD extends HudComponent {
 		ConfigHandler.CLIENT.MOON_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
-	
+
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {

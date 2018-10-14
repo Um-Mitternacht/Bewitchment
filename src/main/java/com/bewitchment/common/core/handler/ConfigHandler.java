@@ -181,21 +181,21 @@ public final class ConfigHandler {
 		@Comment("Customize the Energy HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.energy_hud")
 		public EnergyHUD ENERGY_HUD = new EnergyHUD();
-		
+
 		@Comment("Customize the Blood Drain HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.blood_hud")
 		public BloodIndicatorHUD BLOOD_HUD = new BloodIndicatorHUD();
-		
+
 		@Comment("Customize the Moon HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.moon_hud")
 		public MoonHUD MOON_HUD = new MoonHUD();
-		
+
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
-		
+
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
-		
+
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
 		public double glyphImprecision = 0.6d;
@@ -203,7 +203,7 @@ public final class ConfigHandler {
 		public static class EnergyHUD {
 			@Comment("Should the energy HUD be automatically hidden?")
 			public boolean autoHide = true;
-			
+
 			@Comment("Should the energy HUD be completely removed?")
 			public boolean deactivate = false;
 
@@ -216,7 +216,7 @@ public final class ConfigHandler {
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
-		
+
 		public static class BloodIndicatorHUD {
 			@Comment("Should the blood indicator be completely removed?")
 			public boolean deactivate = false;
@@ -230,7 +230,7 @@ public final class ConfigHandler {
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
-		
+
 		public static class MoonHUD {
 			@Comment("Should the moon indicator be completely removed?")
 			public boolean deactivate = false;

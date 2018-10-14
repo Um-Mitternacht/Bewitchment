@@ -1,7 +1,5 @@
 package com.bewitchment.client.core.hud;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.mp.IMagicPowerContainer;
@@ -9,7 +7,6 @@ import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -26,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -35,11 +33,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EnergyHUD extends HudComponent {
 
-	public EnergyHUD() {
-		super(25, 102);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-
 	private int renderTime;
 	private float visibilityLeft;
 	private int oldEnergy = -1, oldMaxEnergy = -1;
@@ -48,6 +41,10 @@ public class EnergyHUD extends HudComponent {
 	private boolean reversePulse;
 	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
 	private int lastPulsed = 40; // Prevents pulsating incontrollably when recharging fast enough. Min ticks between 2 pulsation
+	public EnergyHUD() {
+		super(25, 102);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
@@ -134,7 +131,7 @@ public class EnergyHUD extends HudComponent {
 	private void renderTexture(double x, double y, double width, double height, double vMin, double vMax) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buff = tessellator.getBuffer();
-		
+
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
 		buff.pos(x, y + height, 0).tex(0, vMax).endVertex();
 		buff.pos(x + width, y + height, 0).tex(1, vMax).endVertex();
@@ -143,7 +140,7 @@ public class EnergyHUD extends HudComponent {
 
 		tessellator.draw();
 	}
-	
+
 
 	@Override
 	public void render(ScaledResolution resolution, float partialTicks, boolean renderDummy) {
@@ -173,7 +170,7 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX() + 9, getY() + 14 + 74 * (1 - filled), 7, 74 * filled, 0, filled);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderPulse(double filled) {
 		float alpha = this.barPulse * visibilityLeft;
 		GlStateManager.pushMatrix();
@@ -182,7 +179,7 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX() + 9, getY() + 14 + 74 * (1 - filled), 7, 74 * filled, 0, filled);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderFrame(ResourceLocation texture) {
 		GlStateManager.pushMatrix();
 		GlStateManager.color(1f, 1f, 1f, this.visibilityLeft);
@@ -190,11 +187,11 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX(), getY(), w, h, 0, 1);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderText(int amount, int maxAmount) {
-		
+
 	}
-	
+
 	private double getFillLevel(IMagicPowerContainer energy, float partialTicks) {
 		double interpEnergy = 0;
 		if (oldEnergy >= 0) {
