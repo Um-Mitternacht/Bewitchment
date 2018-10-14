@@ -3,10 +3,22 @@ package com.bewitchment.common.entity.living.familiar;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
@@ -18,14 +30,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 /**
@@ -115,10 +125,10 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
-	public boolean attackEntityAsMob(Entity par1) {
-		getAttackTarget().addPotionEffect(
-				new PotionEffect(Potion.getPotionFromResourceLocation("poison"), 2000, 1));
-		return super.attackEntityAsMob(par1);
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		getAttackTarget().addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
+		return super.attackEntityAsMob(entity);
 	}
 
 	@Override
