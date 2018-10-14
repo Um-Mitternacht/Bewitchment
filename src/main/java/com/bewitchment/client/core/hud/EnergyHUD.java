@@ -8,7 +8,6 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.handler.ConfigHandler;
-import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.client.Minecraft;
@@ -231,14 +230,12 @@ public class EnergyHUD extends HudComponent {
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
-		Log.i("Setting component with "+x+":"+y+" and anchors "+horizontal.name()+", "+vertical.name());
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 		ConfigHandler.CLIENT.ENERGY_HUD.v_anchor = vertical;
 		ConfigHandler.CLIENT.ENERGY_HUD.h_anchor = horizontal;
 		ConfigHandler.CLIENT.ENERGY_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
 		ConfigHandler.CLIENT.ENERGY_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
-		Log.i("Components are "+ConfigHandler.CLIENT.ENERGY_HUD.x+":"+ConfigHandler.CLIENT.ENERGY_HUD.y);
 	}
 
 	@Override

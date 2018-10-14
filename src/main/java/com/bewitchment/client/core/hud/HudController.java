@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.I18n;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
@@ -82,12 +83,22 @@ public class HudController {
 		if (isEditModeActive() && grabbed != null) {
 			drawAnchor(mouseX - grabX, mouseY - grabY, grabbed.getWidth(), grabbed.getHeight(), false);
 			drawTranslucentRect(mouseX - grabX, mouseY - grabY, grabbed.getWidth(), grabbed.getHeight(), false);
-		} else if (Minecraft.getMinecraft().currentScreen != null){
+		} else if (Minecraft.getMinecraft().currentScreen != null) {
 			HudComponent hud = getComponentAt(mouseX, mouseY, true);
 			if (hud != null) {
-				String ttip = hud.getTooltip(mouseX, mouseY);
-				if (ttip != null && ttip.trim().length()>0) {
-					GuiUtils.drawHoveringText(Arrays.asList(ttip), mouseX, mouseY, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth() / 2, Minecraft.getMinecraft().fontRenderer);
+				if (isEditModeActive()) {
+					if (grabbed == null) {
+						GuiUtils.drawHoveringText(Arrays.asList(
+								I18n.format("gui.bwguicfg.pick"),
+								I18n.format("gui.bwguicfg.orig"),
+								I18n.format("gui.bwguicfg.hide")
+							), mouseX, mouseY, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth(), Minecraft.getMinecraft().fontRenderer);
+					}
+				} else {
+					String ttip = hud.getTooltip(mouseX, mouseY);
+					if (ttip != null && ttip.trim().length()>0) {
+						GuiUtils.drawHoveringText(Arrays.asList(ttip), mouseX, mouseY, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth() / 2, Minecraft.getMinecraft().fontRenderer);
+					}
 				}
 			}
 		}
