@@ -8,6 +8,7 @@
  */
 package com.bewitchment.common.core.handler;
 
+import com.bewitchment.client.core.hud.HudComponent.EnumHudAnchor;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
@@ -207,9 +208,13 @@ public final class ConfigHandler {
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.01;
+			public double x = 10;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.5;
+			public double y = 0;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
 		
 		public static class BloodIndicatorHUD {
@@ -217,9 +222,13 @@ public final class ConfigHandler {
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.5;
+			public double x = 15;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.47;
+			public double y = 0;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
 		
 		public static class MoonHUD {
@@ -227,9 +236,13 @@ public final class ConfigHandler {
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.01;
+			public double x = 10;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.01;
+			public double y = 10;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
 		}
 	}
 }

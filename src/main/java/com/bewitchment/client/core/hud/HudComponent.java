@@ -2,7 +2,6 @@ package com.bewitchment.client.core.hud;
 
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
@@ -14,40 +13,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class HudComponent {
 	
 	protected int w, h;
-	protected double xpos, ypos;
-	protected boolean active = true;
 	
-	protected HudComponent(double posX, double posY, int width, int height) {
-		this.xpos = posX;
-		this.ypos = posY;
+	protected HudComponent(int width, int height) {
 		this.w = width;
 		this.h = height;
-	}
-	
-	public boolean isActive() {
-		return active;
-	}
-	
-	public void setHidden(boolean hidden) {
-		active = !hidden;
-	}
-	
-	public int getX() {
-		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return (int) (sr.getScaledWidth() * xpos);
-	}
-
-	public void setRelativeX(double x) {
-		this.xpos = x;
-	}
-
-	public int getY() {
-		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return (int) (sr.getScaledHeight() * ypos);
-	}
-
-	public void setY(double y) {
-		this.ypos = y;
 	}
 
 	public int getWidth() {
@@ -57,24 +26,20 @@ public abstract class HudComponent {
 	public int getHeight() {
 		return h;
 	}
-	
-	public abstract void resetConfig();
 
-	public abstract void saveDataToConfig();
-	
-	public void placedAt(int x, int y) {
-		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		this.xpos = x / sr.getScaledWidth_double();
-		this.ypos = y / sr.getScaledHeight_double();
-	}
-	
+	public abstract boolean isActive();
+	public abstract void setHidden(boolean hidden);
+	public abstract double getX();
+	public abstract double getY();
+	public abstract void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical);
+	public abstract void resetConfig();	
 	public abstract String getTooltip(int mouseX, int mouseY);
-	
 	public abstract void onClick(int mouseX, int mouseY);
-	
 	public abstract void render(ScaledResolution resolution, float partialTicks, boolean renderDummy);
+	public abstract EnumHudAnchor getAnchorHorizontal();
+	public abstract EnumHudAnchor getAnchorVertical();
 	
-	protected static void renderTextureAt(int x, int y, int w, int h) {
+	protected static void renderTextureAt(double x, double y, int w, int h) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buff = tessellator.getBuffer();
 
@@ -95,7 +60,29 @@ public abstract class HudComponent {
 		}
 		return false;
 	}
-
-	public abstract void configChanged();
 	
+	public static enum EnumHudAnchor {
+		
+		START_RELATIVE(new AnchorHelper.RelativeVersion(new AnchorHelper.AbsoluteStartHelper())), 
+		CENTER_RELATIVE(new AnchorHelper.RelativeVersion(new AnchorHelper.AbsoluteCenterHelper())), 
+		END_RELATIVE(new AnchorHelper.RelativeVersion(new AnchorHelper.AbsoluteEndHelper())),
+		START_ABSOULTE(new AnchorHelper.AbsoluteStartHelper()), 
+		CENTER_ABSOLUTE(new AnchorHelper.AbsoluteCenterHelper()), 
+		END_ABSOLUTE(new AnchorHelper.AbsoluteEndHelper());
+		
+		private AnchorHelper ah = null;
+		
+		private EnumHudAnchor(AnchorHelper helper) {
+			ah = helper;
+		}
+		
+		public double dataToPixel(double data, int componentSize, int screeScaledSize) {
+			return ah.getPixel(data, screeScaledSize, componentSize);
+		}
+		
+		public double pixelToData(double pixel, int componentSize, int screeScaledSize) {
+			return ah.getData(pixel, screeScaledSize, componentSize);
+		}
+	}
+
 }
