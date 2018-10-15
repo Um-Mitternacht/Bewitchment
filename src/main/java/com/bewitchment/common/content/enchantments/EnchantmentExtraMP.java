@@ -12,14 +12,9 @@ public class EnchantmentExtraMP extends BaublesEnchantment {
 	private static final ResourceLocation expander_name = new ResourceLocation(LibMod.MOD_ID, "enchantment_extra_mp");
 
 	protected EnchantmentExtraMP() {
-		super("extra_mp", Rarity.RARE);
+		super("extra_mp", Rarity.RARE, 3);
 	}
 
-	@Override
-	public int getMaxLevel() {
-		return 3;
-	}
-	
 	@Override
 	public void onEquipped(EntityPlayer player) {
 		updateExpansion(player);

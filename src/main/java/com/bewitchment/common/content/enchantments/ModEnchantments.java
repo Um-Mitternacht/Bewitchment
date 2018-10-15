@@ -9,13 +9,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModEnchantments {
 	
 	public static Enchantment mpExpansion = new EnchantmentExtraMP();
-	public static Enchantment spiritProtection = new SpiritProtection();
-	public static Enchantment demonProtection = new DemonProtection();
+	public static Enchantment spiritProtection = new EnchantmentSpiritProtection();
+	public static Enchantment demonProtection = new EnchantmentDemonProtection();
+	public static Enchantment higherWard = new EnchantmentHigherWard();
+	public static Enchantment lesserWard = new EnchantmentLesserWard();
 	
 	@SubscribeEvent
 	public static void enchantmentRegistration(RegistryEvent.Register<Enchantment> evt) {
 		evt.getRegistry().registerAll(
-				mpExpansion, spiritProtection, demonProtection
+				mpExpansion, spiritProtection, demonProtection, higherWard, lesserWard
 			);
 	}
 	

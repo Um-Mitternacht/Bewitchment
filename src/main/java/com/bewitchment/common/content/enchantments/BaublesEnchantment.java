@@ -19,11 +19,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.IItemHandler;
 
 public class BaublesEnchantment extends Enchantment {
+	
+	private int maxLevel;
 
-	protected BaublesEnchantment(String name, Rarity rarityIn) {
+	protected BaublesEnchantment(String name, Rarity rarityIn, int maxLevelIn) {
 		super(rarityIn, EnumEnchantmentType.WEARABLE, new EntityEquipmentSlot[0]);
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, name));
 		this.setName(name);
+		this.maxLevel = maxLevelIn;
+	}
+	
+	@Override
+	public int getMaxLevel() {
+		return maxLevel;
 	}
 	
 	@Override

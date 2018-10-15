@@ -8,10 +8,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class DemonProtection extends BaublesEnchantment {
+public class EnchantmentDemonProtection extends BaublesEnchantment {
 
-	protected DemonProtection() {
-		super("protection_demon", Rarity.UNCOMMON);
+	protected EnchantmentDemonProtection() {
+		super("protection_demon", Rarity.UNCOMMON, 3);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
@@ -29,10 +29,4 @@ public class DemonProtection extends BaublesEnchantment {
 		//TODO move this to api and generalize with other creatures
 		return trueSource.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON;
 	}
-	
-	@Override
-	public int getMaxLevel() {
-		return 3;
-	}
-	
 }
