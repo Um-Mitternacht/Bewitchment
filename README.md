@@ -1,9 +1,10 @@
 # Bewitchment
 A mod inspired by Witchery
 
-[![Build Status](https://travis-ci.org/Um-Mitternacht/Bewitchment.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Bewitchment)
-
 ![BewitchmentV](https://img.shields.io/badge/Bewitchment-V%200.0.14.1-purple.svg?longCache=true&style=for-the-badge)
+
+
+[![Build Status](https://travis-ci.org/Um-Mitternacht/Bewitchment.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Bewitchment)
 
 
 WIP. Very heavily WIP.
