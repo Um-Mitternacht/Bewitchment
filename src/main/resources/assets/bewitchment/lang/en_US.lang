@@ -847,8 +847,11 @@ entity.entity_snake.name=Snake
 enchantment.extra_mp=Natural Attuning
 enchantment.protection_spirit=Spirit Protection
 enchantment.protection_demon=Demon Protection
-enchantment.higher_ward=Higher Ward
-enchantment.lesser_ward=Desperate Ward
+enchantment.potent_ward=Potent Ward
+enchantment.desperate_ward=Desperate Ward
+enchantment.hex_protection=Hex Resistance
+enchantment.occultation=Occultation
+enchantment.taglock_protection=Taglock Resistance
 
 gui.bwguicfg.pick=§a§l[Click]§r to pick, click again to place
 gui.bwguicfg.orig=§b§l[Alt+Click]§r to reset to the original position

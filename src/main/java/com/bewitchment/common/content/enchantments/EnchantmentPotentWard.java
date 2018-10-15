@@ -8,10 +8,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentHigherWard extends BaublesEnchantment {
+public class EnchantmentPotentWard extends BaublesEnchantment {
 
-	protected EnchantmentHigherWard() {
-		super("higher_ward", Rarity.VERY_RARE, 3);
+	protected EnchantmentPotentWard() {
+		super("potent_ward", Rarity.VERY_RARE, 3);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -32,6 +32,6 @@ public class EnchantmentHigherWard extends BaublesEnchantment {
 
 	@Override
 	protected boolean canApplyTogether(Enchantment ench) {
-		return !(ench instanceof EnchantmentLesserWard);
+		return !(ench instanceof EnchantmentDesperateWard);
 	}
 }
