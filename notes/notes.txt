@@ -1,3 +1,5 @@
+* Make sure to change the url for the bage when you change the version
+
 nethersteel textures belong to monospace
 
 https://www.reddit.com/r/Minecraft/comments/2ztbo6/nether_steel/
