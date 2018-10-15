@@ -4,6 +4,7 @@ import com.bewitchment.api.mp.IMagicPowerExpander;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -30,8 +31,8 @@ public class CapabilityMPExpansion {
 		dirty = true;
 	}
 
-	public void remove(IMagicPowerExpander exp) {
-		increaseMap.remove(exp.getID().toString());
+	public void remove(ResourceLocation exp) {
+		increaseMap.remove(exp.toString());
 		dirty = true;
 	}
 
