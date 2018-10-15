@@ -211,10 +211,10 @@ public class HudController {
 
 	private EnumHudAnchor getVerticalAlignmentForPoint(int y, int h) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		if (y + h < sr.getScaledHeight() / 2) {
+		if (y + h < sr.getScaledHeight()*1/3) {
 			return EnumHudAnchor.START_ABSOULTE;
 		}
-		if (y > sr.getScaledHeight() / 2) {
+		if (y > sr.getScaledHeight()*2/3) {
 			return EnumHudAnchor.END_ABSOLUTE;
 		}
 		return EnumHudAnchor.CENTER_ABSOLUTE;
