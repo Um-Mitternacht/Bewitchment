@@ -1,6 +1,5 @@
 package com.bewitchment.common.entity.living.familiar;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -15,6 +14,7 @@ import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
@@ -147,24 +147,32 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!player.world.isRemote) {
-			if (!isFamiliar() && !isChild()) {
-				setTamedBy(player);
-				BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
-			} else if (player.getHeldItem(hand).isEmpty()) { // TODO temp code
-				if (player.isSneaking()) {
-					setFamiliar(false);
-					setTamed(false);
-					setOwnerId(null);
-				} else {
-					this.aiSit.setSitting(!isSitting());
-					this.setSitting(!isSitting());
+		{
+			ItemStack itemstack = player.getHeldItem(hand);
+
+			if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem())) {
+				if (!player.capabilities.isCreativeMode) {
+					itemstack.shrink(1);
 				}
-			} else {
-				super.processInteract(player, hand);
+
+				if (!this.isSilent()) {
+					this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_PARROT_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+				}
+
+				if (!this.world.isRemote) {
+					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
+						this.setTamedBy(player);
+						this.playTameEffect(true);
+						this.world.setEntityState(this, (byte) 7);
+					} else {
+						this.playTameEffect(false);
+						this.world.setEntityState(this, (byte) 6);
+					}
+				}
+				return true;
 			}
+			return true;
 		}
-		return true;
 	}
 
 	@Override

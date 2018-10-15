@@ -41,6 +41,7 @@ public class EnergyHUD extends HudComponent {
 	private boolean reversePulse;
 	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
 	private int lastPulsed = 40; // Prevents pulsating incontrollably when recharging fast enough. Min ticks between 2 pulsation
+
 	public EnergyHUD() {
 		super(25, 102);
 		MinecraftForge.EVENT_BUS.register(this);
