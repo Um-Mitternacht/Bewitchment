@@ -213,6 +213,11 @@ public class ApiInstance extends BewitchmentAPI {
 
 	@Override
 	public void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player) {
+		removeMPExpansion(expander.getID(), player);
+	}
+
+	@Override
+	public void removeMPExpansion(ResourceLocation expander, EntityPlayer player) {
 		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).remove(expander);
 		((PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null)).markDirty();
 	}

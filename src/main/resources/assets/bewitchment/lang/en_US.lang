@@ -843,6 +843,11 @@ tc.aspect.sol=The Sun
 entity.entity_owl.name=Owl
 entity.entity_snake.name=Snake
 
+//Enchantments
+enchantment.extra_mp=Natural Attuning
+enchantment.protection_spirit=Spirit Protection
+enchantment.protection_demon=Demon Protection
+
 gui.bwguicfg.pick=§a§l[Click]§r to pick, click again to place
 gui.bwguicfg.orig=§b§l[Alt+Click]§r to reset to the original position
 gui.bwguicfg.hide=§b§l[Shift+Click]§r to hide/show
