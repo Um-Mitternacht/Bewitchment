@@ -8,6 +8,7 @@
  */
 package com.bewitchment.common.core.handler;
 
+import com.bewitchment.client.core.hud.HudComponent.EnumHudAnchor;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
@@ -180,21 +181,21 @@ public final class ConfigHandler {
 		@Comment("Customize the Energy HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.energy_hud")
 		public EnergyHUD ENERGY_HUD = new EnergyHUD();
-		
+
 		@Comment("Customize the Blood Drain HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.blood_hud")
 		public BloodIndicatorHUD BLOOD_HUD = new BloodIndicatorHUD();
-		
+
 		@Comment("Customize the Moon HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.moon_hud")
 		public MoonHUD MOON_HUD = new MoonHUD();
-		
+
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
-		
+
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
-		
+
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
 		public double glyphImprecision = 0.6d;
@@ -202,34 +203,46 @@ public final class ConfigHandler {
 		public static class EnergyHUD {
 			@Comment("Should the energy HUD be automatically hidden?")
 			public boolean autoHide = true;
-			
+
 			@Comment("Should the energy HUD be completely removed?")
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.01;
+			public double x = 10;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.5;
+			public double y = 0;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
-		
+
 		public static class BloodIndicatorHUD {
 			@Comment("Should the blood indicator be completely removed?")
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.5;
+			public double x = 15;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.47;
+			public double y = 0;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 		}
-		
+
 		public static class MoonHUD {
 			@Comment("Should the moon indicator be completely removed?")
 			public boolean deactivate = false;
 
 			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 0.01;
+			public double x = 10;
 			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0.01;
+			public double y = 10;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
 		}
 	}
 }

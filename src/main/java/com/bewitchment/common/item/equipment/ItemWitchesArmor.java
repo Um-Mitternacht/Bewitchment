@@ -4,7 +4,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
 import com.bewitchment.common.core.ModCreativeTabs;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -14,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
-	
+
 	private final ModelWitchesArmor model = new ModelWitchesArmor();
 
 	public ItemWitchesArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
@@ -36,7 +35,7 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
 		if (itemStack != ItemStack.EMPTY) {
 			if (itemStack.getItem() instanceof ItemArmor) {
-				
+
 				model.hat1.showModel = armorSlot == EntityEquipmentSlot.HEAD;
 				model.body.showModel = armorSlot == EntityEquipmentSlot.CHEST;
 				model.armLeft.showModel = armorSlot == EntityEquipmentSlot.CHEST;

@@ -29,15 +29,14 @@ import java.util.List;
 public class ExtraBarButtonsHUD {
 
 	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
-
+	public boolean isInExtraBar = false;
+	public IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
 	// TODO reset these when the user closes the game, either MP or SP
 	int slotSelected = -1;
-	public boolean isInExtraBar = false;
 	boolean barEnabled = false;
 	int cooldown = 0;
 	int selectedItemTemp = 0;
 	List<IHotbarAction> actions = new ArrayList<IHotbarAction>();
-	public IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
 
 	private ExtraBarButtonsHUD() {
 	}

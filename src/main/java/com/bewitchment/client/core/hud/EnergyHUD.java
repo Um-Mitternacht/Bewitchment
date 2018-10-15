@@ -1,7 +1,5 @@
 package com.bewitchment.client.core.hud;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.mp.IMagicPowerContainer;
@@ -9,7 +7,6 @@ import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -26,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 /**
  * This class was created by Arekkuusu on 21/04/2017.
@@ -35,12 +33,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EnergyHUD extends HudComponent {
 
-	public EnergyHUD() {
-		super(ConfigHandler.CLIENT.ENERGY_HUD.x, ConfigHandler.CLIENT.ENERGY_HUD.y, 25, 102);
-		active = ! ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-
 	private int renderTime;
 	private float visibilityLeft;
 	private int oldEnergy = -1, oldMaxEnergy = -1;
@@ -49,6 +41,10 @@ public class EnergyHUD extends HudComponent {
 	private boolean reversePulse;
 	private boolean shouldPulse = false; // Only pulsate with white overlay after energy has changed
 	private int lastPulsed = 40; // Prevents pulsating incontrollably when recharging fast enough. Min ticks between 2 pulsation
+	public EnergyHUD() {
+		super(25, 102);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
 	@SubscribeEvent
 	public void onTick(TickEvent.ClientTickEvent event) {
@@ -115,16 +111,10 @@ public class EnergyHUD extends HudComponent {
 
 	@Override
 	public void resetConfig() {
-		this.xpos = 0.01;
-		this.ypos = 0.5;
-		this.active = true;
-	}
-
-	@Override
-	public void saveDataToConfig() {
-		ConfigHandler.CLIENT.ENERGY_HUD.x = this.xpos;
-		ConfigHandler.CLIENT.ENERGY_HUD.y = this.ypos;
-		ConfigHandler.CLIENT.ENERGY_HUD.deactivate = !this.active;
+		ConfigHandler.CLIENT.ENERGY_HUD.v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ConfigHandler.CLIENT.ENERGY_HUD.h_anchor = EnumHudAnchor.START_ABSOULTE;
+		ConfigHandler.CLIENT.ENERGY_HUD.x = 10;
+		ConfigHandler.CLIENT.ENERGY_HUD.y = 0;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
@@ -141,7 +131,7 @@ public class EnergyHUD extends HudComponent {
 	private void renderTexture(double x, double y, double width, double height, double vMin, double vMax) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buff = tessellator.getBuffer();
-		
+
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
 		buff.pos(x, y + height, 0).tex(0, vMax).endVertex();
 		buff.pos(x + width, y + height, 0).tex(1, vMax).endVertex();
@@ -150,12 +140,13 @@ public class EnergyHUD extends HudComponent {
 
 		tessellator.draw();
 	}
-	
+
 
 	@Override
 	public void render(ScaledResolution resolution, float partialTicks, boolean renderDummy) {
 		if (renderDummy) {
-			renderBarContent(0.5f);
+			float fll = (System.currentTimeMillis() % 3000) / 3000f;
+			renderBarContent(fll);
 			renderFrame(DefaultInfusions.NONE.getTexture());
 			renderText(2000, 2000);
 		} else if (renderTime > 0) {
@@ -179,7 +170,7 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX() + 9, getY() + 14 + 74 * (1 - filled), 7, 74 * filled, 0, filled);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderPulse(double filled) {
 		float alpha = this.barPulse * visibilityLeft;
 		GlStateManager.pushMatrix();
@@ -188,7 +179,7 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX() + 9, getY() + 14 + 74 * (1 - filled), 7, 74 * filled, 0, filled);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderFrame(ResourceLocation texture) {
 		GlStateManager.pushMatrix();
 		GlStateManager.color(1f, 1f, 1f, this.visibilityLeft);
@@ -196,11 +187,11 @@ public class EnergyHUD extends HudComponent {
 		renderTexture(getX(), getY(), w, h, 0, 1);
 		GlStateManager.popMatrix();
 	}
-	
+
 	private void renderText(int amount, int maxAmount) {
-		
+
 	}
-	
+
 	private double getFillLevel(IMagicPowerContainer energy, float partialTicks) {
 		double interpEnergy = 0;
 		if (oldEnergy >= 0) {
@@ -212,9 +203,46 @@ public class EnergyHUD extends HudComponent {
 	}
 
 	@Override
-	public void configChanged() {
-		this.xpos = ConfigHandler.CLIENT.ENERGY_HUD.x;
-		this.ypos = ConfigHandler.CLIENT.ENERGY_HUD.y;
-		this.active = !ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
+	public boolean isActive() {
+		return !ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
 	}
+
+	@Override
+	public void setHidden(boolean hidden) {
+		ConfigHandler.CLIENT.ENERGY_HUD.deactivate = hidden;
+		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
+	}
+
+	@Override
+	public double getX() {
+		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+		return ConfigHandler.CLIENT.ENERGY_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.ENERGY_HUD.x, getWidth(), sr.getScaledWidth());
+	}
+
+	@Override
+	public double getY() {
+		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+		return ConfigHandler.CLIENT.ENERGY_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.ENERGY_HUD.y, getHeight(), sr.getScaledHeight());
+	}
+
+	@Override
+	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
+		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+		ConfigHandler.CLIENT.ENERGY_HUD.v_anchor = vertical;
+		ConfigHandler.CLIENT.ENERGY_HUD.h_anchor = horizontal;
+		ConfigHandler.CLIENT.ENERGY_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ConfigHandler.CLIENT.ENERGY_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
+	}
+
+	@Override
+	public EnumHudAnchor getAnchorHorizontal() {
+		return ConfigHandler.CLIENT.ENERGY_HUD.h_anchor;
+	}
+
+	@Override
+	public EnumHudAnchor getAnchorVertical() {
+		return ConfigHandler.CLIENT.ENERGY_HUD.v_anchor;
+	}
+
 }

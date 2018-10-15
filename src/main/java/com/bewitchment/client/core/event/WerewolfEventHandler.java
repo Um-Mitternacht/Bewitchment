@@ -1,12 +1,9 @@
 package com.bewitchment.client.core.event;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.render.entity.model.ModelWerewolf;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +12,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class WerewolfEventHandler {
