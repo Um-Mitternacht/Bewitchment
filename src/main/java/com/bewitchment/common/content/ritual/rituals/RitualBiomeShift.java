@@ -1,12 +1,9 @@
 package com.bewitchment.common.content.ritual.rituals;
 
-import java.util.Optional;
-
 import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.world.BiomeChangingUtils.BiomeChangerWalker;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
@@ -21,6 +18,8 @@ import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+
+import java.util.Optional;
 
 public class RitualBiomeShift extends RitualImpl {
 
@@ -45,7 +44,7 @@ public class RitualBiomeShift extends RitualImpl {
 		mpos.setPos(effectivePos.getX() - radius, 0, effectivePos.getZ() - radius);
 		for (int x = -radius; x <= radius; x++) {
 			for (int z = -radius; z <= radius; z++) {
-				if (x*x + z*z <= radius*radius) {
+				if (x * x + z * z <= radius * radius) {
 					walker.visit(world, mpos);
 				}
 				mpos.move(EnumFacing.SOUTH);

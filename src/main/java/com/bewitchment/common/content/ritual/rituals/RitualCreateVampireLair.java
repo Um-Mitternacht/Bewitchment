@@ -1,14 +1,11 @@
 package com.bewitchment.common.content.ritual.rituals;
 
-import java.util.List;
-
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.world.BiomeChangingUtils.BiomeChangerWalker;
 import com.bewitchment.common.world.biome.ModBiomes;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -22,24 +19,26 @@ import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
+import java.util.List;
+
 public class RitualCreateVampireLair extends RitualImpl {
-	
+
 	private static final int RADIUS = 10;
 
 	public RitualCreateVampireLair(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
-	
+
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos circlePos, NBTTagCompound data, BlockPos effectivePos, int covenSize) {
 		BiomeChangerWalker walker = new BiomeChangerWalker(Biome.getIdForBiome(ModBiomes.VAMPIRE_LAIR));
 		MutableBlockPos mpos = new MutableBlockPos();
 		int blocksUsed = 0;
-		for (int i = getAvailableBlocks(player)<317?1:RADIUS; i <= RADIUS; i++) {
+		for (int i = getAvailableBlocks(player) < 317 ? 1 : RADIUS; i <= RADIUS; i++) {
 			mpos.setPos(effectivePos.getX() - RADIUS, 0, effectivePos.getZ() - RADIUS);
 			for (int x = -RADIUS; x <= RADIUS; x++) {
 				for (int z = -RADIUS; z <= RADIUS; z++) {
-					if (x*x + z*z <= RADIUS*RADIUS && getAvailableBlocks(player)>0) {
+					if (x * x + z * z <= RADIUS * RADIUS && getAvailableBlocks(player) > 0) {
 						if (walker.visit(world, mpos)) {
 							blocksUsed++;
 						}
@@ -63,10 +62,10 @@ public class RitualCreateVampireLair extends RitualImpl {
 	}
 
 	private void removeVampireLairAvailableBlocks(EntityPlayer player, int blocksUsed) {
-		Log.i("Remove blocks from "+player.getName()+" pool: "+blocksUsed);
+		Log.i("Remove blocks from " + player.getName() + " pool: " + blocksUsed);
 		//TODO
 	}
-	
+
 	@Override
 	public boolean isValid(EntityPlayer player, World world, BlockPos mainGlyphPos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {
 		if (player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() != DefaultTransformations.VAMPIRE || getAvailableBlocks(player) <= 0) {

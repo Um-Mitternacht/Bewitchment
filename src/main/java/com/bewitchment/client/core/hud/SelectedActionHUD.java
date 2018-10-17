@@ -1,13 +1,10 @@
 package com.bewitchment.client.core.hud;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -17,11 +14,27 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.common.config.ConfigManager;
+import org.lwjgl.opengl.GL11;
 
 public class SelectedActionHUD extends HudComponent {
 
 	public SelectedActionHUD() {
 		super(32, 32);
+	}
+
+	private static void renderTextureAtIndex(double x, double y, int width, int height, int xIndex, int yIndex) {
+		double rX = 0.25d * xIndex;
+		double rY = 0.25d * yIndex;
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder buff = tessellator.getBuffer();
+
+		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		buff.pos(x, y + height, 0).tex(rX, rY + 0.25d).endVertex();
+		buff.pos(x + width, y + height, 0).tex(rX + 0.25d, rY + 0.25d).endVertex();
+		buff.pos(x + width, y, 0).tex(rX + 0.25d, rY).endVertex();
+		buff.pos(x, y, 0).tex(rX, rY).endVertex();
+
+		tessellator.draw();
 	}
 
 	@Override
@@ -80,12 +93,12 @@ public class SelectedActionHUD extends HudComponent {
 	public String getTooltip(int mouseX, int mouseY) {
 		return null;
 	}
-	
+
 	@Override
 	public int getWidth() {
 		return (int) (super.getWidth() * ConfigHandler.CLIENT.CURRENTACTION_HUD.scale);
 	}
-	
+
 	@Override
 	public int getHeight() {
 		return (int) (super.getHeight() * ConfigHandler.CLIENT.CURRENTACTION_HUD.scale);
@@ -102,27 +115,12 @@ public class SelectedActionHUD extends HudComponent {
 			GlStateManager.pushMatrix();
 			GlStateManager.enableBlend();
 			GlStateManager.color(1f, 1f, 1f, 0.5f);
-			IHotbarAction sel = renderDummy?ModAbilities.NIGHT_VISION:ExtraBarButtonsHUD.INSTANCE.actionScroller[0];
+			IHotbarAction sel = renderDummy ? ModAbilities.NIGHT_VISION : ExtraBarButtonsHUD.INSTANCE.actionScroller[0];
 			Minecraft.getMinecraft().getTextureManager().bindTexture(sel.getIcon(player));
 			renderTextureAtIndex(getX(), getY(), getWidth(), getHeight(), sel.getIconIndexX(player), sel.getIconIndexY(player));
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
-	}
-	
-	private static void renderTextureAtIndex(double x, double y, int width, int height, int xIndex, int yIndex) {
-		double rX = 0.25d * xIndex;
-		double rY = 0.25d * yIndex;
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder buff = tessellator.getBuffer();
-
-		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		buff.pos(x, y + height, 0).tex(rX, rY + 0.25d).endVertex();
-		buff.pos(x + width, y + height, 0).tex(rX + 0.25d, rY + 0.25d).endVertex();
-		buff.pos(x + width, y, 0).tex(rX + 0.25d, rY).endVertex();
-		buff.pos(x, y, 0).tex(rX, rY).endVertex();
-
-		tessellator.draw();
 	}
 
 }

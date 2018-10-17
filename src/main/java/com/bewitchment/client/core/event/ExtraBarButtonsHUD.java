@@ -71,7 +71,7 @@ public class ExtraBarButtonsHUD {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void handRender(RenderHandEvent evt) {
 		if (isInExtraBar && ConfigHandler.CLIENT.hideHandWithAbility) {

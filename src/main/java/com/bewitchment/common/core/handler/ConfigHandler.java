@@ -189,7 +189,7 @@ public final class ConfigHandler {
 		@Comment("Customize the Moon HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.moon_hud")
 		public MoonHUD MOON_HUD = new MoonHUD();
-		
+
 		@Comment("Customize the currently selected bar action HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.current_action_hud")
 		public CurrentActionHUD CURRENTACTION_HUD = new CurrentActionHUD();
@@ -199,7 +199,7 @@ public final class ConfigHandler {
 
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
-		
+
 		@Comment("Setting this to false will cause the hand to show anyway when an ability is selected")
 		public boolean hideHandWithAbility = true;
 
@@ -251,7 +251,7 @@ public final class ConfigHandler {
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
 		}
-		
+
 		public static class CurrentActionHUD {
 			@Comment("Should the indicator be completely removed?")
 			public boolean deactivate = false;
