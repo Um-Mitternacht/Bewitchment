@@ -118,9 +118,13 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
+	//Todo: Allow this snake to actually kill mobs properly
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		getAttackTarget().addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
+		if(entity instanceof EntityLivingBase){
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1));
+		}
 		return super.attackEntityAsMob(entity);
 	}
 
