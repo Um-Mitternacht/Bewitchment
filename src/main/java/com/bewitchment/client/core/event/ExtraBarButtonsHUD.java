@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -68,6 +69,13 @@ public class ExtraBarButtonsHUD {
 				NetworkHandler.HANDLER.sendToServer(new PlayerUsedAbilityMessage(actions.get(slotSelected).getName().toString(), e_id));
 				cooldown = 5;
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void handRender(RenderHandEvent evt) {
+		if (isInExtraBar && ConfigHandler.CLIENT.hideHandWithAbility) {
+			evt.setCanceled(true);
 		}
 	}
 

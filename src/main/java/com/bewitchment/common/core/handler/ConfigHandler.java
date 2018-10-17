@@ -189,12 +189,19 @@ public final class ConfigHandler {
 		@Comment("Customize the Moon HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.moon_hud")
 		public MoonHUD MOON_HUD = new MoonHUD();
+		
+		@Comment("Customize the currently selected bar action HUD positions in the screen")
+		@Config.LangKey("bewitchment.config.current_action_hud")
+		public CurrentActionHUD CURRENTACTION_HUD = new CurrentActionHUD();
 
 		@Comment("Should the arrows to the extra bar buttons be shown?")
 		public boolean showArrowsInBar = true;
 
 		@Comment("Set to false to let the vampire blood meter not be rounded")
 		public boolean roundVampireBlood = true;
+		
+		@Comment("Setting this to false will cause the hand to show anyway when an ability is selected")
+		public boolean hideHandWithAbility = true;
 
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
@@ -207,10 +214,10 @@ public final class ConfigHandler {
 			@Comment("Should the energy HUD be completely removed?")
 			public boolean deactivate = false;
 
-			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
+			@Comment("Horizontal position of the HUD in the screen")
 			public double x = 10;
-			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0;
+			@Comment("Vertical position of the HUD in the screen")
+			public double y = 10;
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
 			@Comment("Defines how to calculate the x offset")
@@ -221,10 +228,10 @@ public final class ConfigHandler {
 			@Comment("Should the blood indicator be completely removed?")
 			public boolean deactivate = false;
 
-			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
-			public double x = 15;
-			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
-			public double y = 0;
+			@Comment("Horizontal position of the HUD in the screen")
+			public double x = 10;
+			@Comment("Vertical position of the HUD in the screen")
+			public double y = 10;
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
 			@Comment("Defines how to calculate the x offset")
@@ -235,14 +242,30 @@ public final class ConfigHandler {
 			@Comment("Should the moon indicator be completely removed?")
 			public boolean deactivate = false;
 
-			@Comment({"Horizontal position of the HUD in the screen", "value is from left (0.0) to right (1.0)"})
+			@Comment("Horizontal position of the HUD in the screen")
 			public double x = 10;
-			@Comment({"Vertical position of the HUD in the screen", "value is from top (0.0) to bottom (1.0)"})
+			@Comment("Vertical position of the HUD in the screen")
 			public double y = 10;
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor h_anchor = EnumHudAnchor.START_ABSOULTE;
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
+		}
+		
+		public static class CurrentActionHUD {
+			@Comment("Should the indicator be completely removed?")
+			public boolean deactivate = false;
+
+			@Comment("Horizontal position of the HUD in the screen")
+			public double x = 0;
+			@Comment("Vertical position of the HUD in the screen")
+			public double y = 0.25;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+			@Comment("Defines how to calculate the x offset")
+			public EnumHudAnchor v_anchor = EnumHudAnchor.START_RELATIVE;
+			@Comment("Defines how big the icon is")
+			public double scale = 1;
 		}
 	}
 }

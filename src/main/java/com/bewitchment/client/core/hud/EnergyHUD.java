@@ -121,8 +121,11 @@ public class EnergyHUD extends HudComponent {
 
 	@Override
 	public String getTooltip(int mouseX, int mouseY) {
-		IMagicPowerContainer energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-		return energy.getAmount() + "/" + energy.getMaxAmount();
+		if (renderTime>0) {
+			IMagicPowerContainer energy = Minecraft.getMinecraft().player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+			return energy.getAmount() + "/" + energy.getMaxAmount();
+		}
+		return null;
 	}
 
 	@Override

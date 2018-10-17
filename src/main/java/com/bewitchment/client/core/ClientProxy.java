@@ -10,6 +10,7 @@ import com.bewitchment.client.core.hud.BloodViewerHUD;
 import com.bewitchment.client.core.hud.EnergyHUD;
 import com.bewitchment.client.core.hud.HudController;
 import com.bewitchment.client.core.hud.MoonHUD;
+import com.bewitchment.client.core.hud.SelectedActionHUD;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
 import com.bewitchment.client.handler.ColorPropertyHandler;
@@ -97,6 +98,7 @@ public class ClientProxy implements ISidedProxy {
 		HudController.registerNewComponent(new BloodViewerHUD());
 		HudController.registerNewComponent(new EnergyHUD());
 		HudController.registerNewComponent(new MoonHUD());
+		HudController.registerNewComponent(new SelectedActionHUD());
 
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());

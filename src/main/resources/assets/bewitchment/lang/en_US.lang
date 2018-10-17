@@ -9,6 +9,7 @@ bewitchment.config.world_gen=World Gen
 bewitchment.config.energy_hud=Energy HUD
 bewitchment.config.blood_hud=Blood Viewer HUD
 bewitchment.config.moon_hud=Moon Warning HUD
+bewitchment.config.current_action_hud=Selected Ability HUD
 bewitchment.config.client=Client Settings
 
 //Gui
