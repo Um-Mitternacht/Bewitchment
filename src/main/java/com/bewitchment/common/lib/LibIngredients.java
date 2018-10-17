@@ -24,13 +24,7 @@ public class LibIngredients {
 	public static Ingredient anyLeaf = new OreIngredient("treeLeaves");
 	public static Ingredient pentacle = Ingredient.fromItem(ModItems.pentacle);
 	public static Ingredient fumeReekOfDeath = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.reek_of_death.ordinal()));
-	//	public static Ingredient anyHerb = new OreIngredient("listAllherb");
-//	public static Ingredient anySpice = new OreIngredient("listAllspice");
-//	public static Ingredient anyFruit = new OreIngredient("listAllfruit");
-//	public static Ingredient anyVegetable = new OreIngredient("listAllveggie");
 	public static Ingredient anyDye = new OreIngredient("dye");
-	//	public static Ingredient pumpkin = Ingredient.fromStacks(new ItemStack(Blocks.PUMPKIN, 1, 0));
-//	public static Ingredient watermelon = Ingredient.fromStacks(new ItemStack(Blocks.MELON_BLOCK, 1, 0));
 	public static Ingredient acaciaLog = Ingredient.fromStacks(new ItemStack(Blocks.LOG2, 1, 0));
 	public static Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
 	public static Ingredient ghastTear = Ingredient.fromItem(Items.GHAST_TEAR);
@@ -87,6 +81,7 @@ public class LibIngredients {
 	public static Ingredient anyString = new OreIngredient("string");
 	public static Ingredient glowstoneDust = Ingredient.fromItem(Items.GLOWSTONE_DUST);
 	public static Ingredient boline = Ingredient.fromItem(ModItems.boline);
-
+	public static Ingredient bloodyRags = Ingredient.fromItem(ModItems.sanguine_fabric);
+	public static Ingredient anySapling = new OreIngredient("treeSapling");
 
 }

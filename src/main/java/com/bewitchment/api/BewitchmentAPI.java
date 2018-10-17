@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.function.Supplier;
 
@@ -26,6 +27,7 @@ public abstract class BewitchmentAPI {
 
 	private static BewitchmentAPI INSTANCE;
 	public EnumCreatureAttribute DEMON, SPIRIT;
+	public BiomeDictionary.Type IMMUTABLE;
 
 	public static final void setupAPI(BewitchmentAPI api) {
 		if (INSTANCE == null) {

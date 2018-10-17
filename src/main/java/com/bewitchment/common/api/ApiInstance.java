@@ -1,5 +1,7 @@
 package com.bewitchment.common.api;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -41,16 +43,16 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -62,6 +64,7 @@ public class ApiInstance extends BewitchmentAPI {
 		BewitchmentAPI.setupAPI(new ApiInstance());
 		BewitchmentAPI.getAPI().DEMON = EnumHelper.addCreatureAttribute("DEMON");
 		BewitchmentAPI.getAPI().SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+		BewitchmentAPI.getAPI().IMMUTABLE = Type.getType("IMMUTABLE");
 		Bewitchment.logger.debug("API is ready!");
 	}
 
