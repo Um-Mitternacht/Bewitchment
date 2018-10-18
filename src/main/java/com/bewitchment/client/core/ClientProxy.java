@@ -95,10 +95,10 @@ public class ClientProxy implements ISidedProxy {
 		HudController.registerNewComponent(new EnergyHUD());
 		HudController.registerNewComponent(new MoonHUD());
 		HudController.registerNewComponent(new SelectedActionHUD());
+		HudController.registerNewComponent(ExtraBarButtonsHUD.INSTANCE);
 
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
 		MinecraftForge.EVENT_BUS.register(new VampireBloodBarHUD());
-		MinecraftForge.EVENT_BUS.register(ExtraBarButtonsHUD.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderingHacks());
 		MinecraftForge.EVENT_BUS.register(new MiscEventHandler(Minecraft.getMinecraft()));

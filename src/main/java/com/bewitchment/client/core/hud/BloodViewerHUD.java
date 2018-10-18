@@ -1,7 +1,6 @@
 package com.bewitchment.client.core.hud;
 
 import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.client.core.event.ExtraBarButtonsHUD;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.handler.ConfigHandler;
@@ -36,7 +35,7 @@ public class BloodViewerHUD extends HudComponent {
 
 	@Override
 	public void render(ScaledResolution sr, float partialTicks, boolean renderDummy) {
-		if (renderDummy || (ExtraBarButtonsHUD.INSTANCE.actionScroller[0] == ModAbilities.DRAIN_BLOOD && ExtraBarButtonsHUD.INSTANCE.isInExtraBar && Minecraft.getMinecraft().pointedEntity instanceof EntityLivingBase)) {
+		if (renderDummy || (ExtraBarButtonsHUD.INSTANCE.actionScroller[0] == ModAbilities.DRAIN_BLOOD && ExtraBarButtonsHUD.INSTANCE.isInExtraBar() && Minecraft.getMinecraft().pointedEntity instanceof EntityLivingBase)) {
 			float filled = (System.currentTimeMillis() % 3000) / 3000f;
 			int maxBlood = 1;
 			if (!renderDummy) {

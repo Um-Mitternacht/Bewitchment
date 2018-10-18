@@ -128,6 +128,7 @@ public class HudController {
 				}
 			}
 		}
+		GlStateManager.enableBlend();
 	}
 
 	private void drawAnchor(int i, int j, int w, int h, boolean fixed) {
