@@ -38,6 +38,6 @@ public class BWMobUtils {
 
 	public static boolean isSpirit(Entity entity) {
 		String className = entity.getClass().getSimpleName();
-		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant");
+		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant") || className.contains("Spirit") || className.contains("ShadowPerson");
 	}
 }
