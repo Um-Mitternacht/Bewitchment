@@ -2,7 +2,6 @@ package com.bewitchment.common.block.tools;
 
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -74,7 +73,7 @@ public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabili
 	public boolean canStabaliseInfusion(World world, BlockPos pos) {
 		return true;
 	}
-	
+
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {

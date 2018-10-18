@@ -1,10 +1,5 @@
 package com.bewitchment.client.core.hud;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.input.Keyboard;
-
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.content.actionbar.HotbarAction;
@@ -13,7 +8,6 @@ import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
@@ -28,25 +22,50 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD extends HudComponent {
 
 	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
-	
-	private boolean isInExtraBar = false;
+	private static final IHotbarAction arrows = new IHotbarAction() {
+
+		@Override
+		public ResourceLocation getName() {
+			return null;
+		}
+
+		@Override
+		public int getIconIndexY() {
+			return 3;
+		}
+
+		@Override
+		public int getIconIndexX() {
+			return 3;
+		}
+
+		@Override
+		public ResourceLocation getIcon() {
+			return HotbarAction.DEFAULT_ICON_TEXTURE;
+		}
+	};
 	public IHotbarAction[] actionScroller = new IHotbarAction[3];// 0: current, 1: prev, 2: next
 	// TODO reset these when the user closes the game, either MP or SP
 	int slotSelected = -1;
 	int cooldown = 0;
 	int selectedItemTemp = 0;
 	List<IHotbarAction> actions = new ArrayList<IHotbarAction>();
+	private boolean isInExtraBar = false;
 
 	private ExtraBarButtonsHUD() {
 		super(70, 16);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	public boolean isInExtraBar() {
 		return isInExtraBar;
 	}
@@ -169,7 +188,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			Minecraft.getMinecraft().player.inventory.currentItem = selectedItemTemp;
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void removeVanillaItemSelector(RenderGameOverlayEvent.Pre event) {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && isInExtraBar) {
@@ -177,7 +196,6 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			Minecraft.getMinecraft().player.inventory.currentItem = 100;// Render overlay to the right (increase to something like 100 to make it disappear, if we decide to use a custom selection indicator)
 		}
 	}
-	
 
 	@Override
 	public boolean isActive() {
@@ -264,31 +282,8 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			}
 		}
 	}
-	
+
 	private void renderSelectionBox(double x, double y) {
 		//TODO
 	}
-	
-	private static final IHotbarAction arrows = new IHotbarAction() {
-		
-		@Override
-		public ResourceLocation getName() {
-			return null;
-		}
-		
-		@Override
-		public int getIconIndexY() {
-			return 3;
-		}
-		
-		@Override
-		public int getIconIndexX() {
-			return 3;
-		}
-		
-		@Override
-		public ResourceLocation getIcon() {
-			return HotbarAction.DEFAULT_ICON_TEXTURE;
-		}
-	};
 }

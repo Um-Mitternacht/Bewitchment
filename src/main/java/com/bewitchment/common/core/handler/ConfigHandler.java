@@ -193,7 +193,7 @@ public final class ConfigHandler {
 		@Comment("Customize the currently selected bar action HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.current_action_hud")
 		public CurrentActionHUD CURRENTACTION_HUD = new CurrentActionHUD();
-		
+
 		@Comment("Customize the action bar HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.action_bar")
 		public AbilityBarHUD ACTION_BAR_HUD = new AbilityBarHUD();
@@ -250,7 +250,7 @@ public final class ConfigHandler {
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
 		}
-		
+
 		public static class AbilityBarHUD {
 			@Comment("Should the ability bar be completely removed?")
 			public boolean deactivate = false;

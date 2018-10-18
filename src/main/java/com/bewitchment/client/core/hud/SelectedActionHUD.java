@@ -4,7 +4,6 @@ import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

@@ -1,8 +1,5 @@
 package com.bewitchment.common.block.natural.plants;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -26,6 +23,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.crafting.IInfusionStabiliserExt;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliserExt {

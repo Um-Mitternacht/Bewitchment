@@ -1,16 +1,15 @@
 package com.bewitchment.api.hotbar;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public interface IHotbarAction {
-	
+
 	public static final int ICONS_PER_ROW = 16;
 
 	public ResourceLocation getName();
@@ -20,7 +19,7 @@ public interface IHotbarAction {
 	public int getIconIndexY();
 
 	public ResourceLocation getIcon();
-	
+
 	default void render(double d, double e, int width, int height, float alpha) {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();

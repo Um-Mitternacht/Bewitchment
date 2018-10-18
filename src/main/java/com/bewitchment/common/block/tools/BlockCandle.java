@@ -193,14 +193,14 @@ public abstract class BlockCandle extends BlockMod implements IInfusionStabilise
 	public boolean isLit() {
 		return isLit;
 	}
-	
+
 
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public boolean canStabaliseInfusion(World world, BlockPos pos) {
 		return true;
 	}
-	
+
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {

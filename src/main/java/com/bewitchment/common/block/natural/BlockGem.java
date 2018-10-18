@@ -1,13 +1,8 @@
 package com.bewitchment.common.block.natural;
 
-import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
-
-import javax.annotation.Nonnull;
-
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -20,6 +15,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.crafting.IInfusionStabiliserExt;
+
+import javax.annotation.Nonnull;
+
+import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExtO", modid = "thaumcraft")
@@ -74,7 +73,7 @@ public class BlockGem extends BlockMod implements IInfusionStabiliserExt {
 	public boolean canStabaliseInfusion(World world, BlockPos blockPos) {
 		return true;
 	}
-	
+
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
