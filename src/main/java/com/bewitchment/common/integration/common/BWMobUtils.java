@@ -14,7 +14,7 @@ import net.minecraft.entity.passive.EntityRabbit;
 
 //A set of utilities to let mobs wreak havoc and interact with each other
 //Fixme: Overhaul isOwlFodder and similar methods, move it to DietaryUtils, and set up a class whitelist. Current means are messy and possibly straining on resources.
-public class DietaryUtils {
+public class BWMobUtils {
 
 	public static boolean isVillager(Entity entity) {
 		String className = entity.getClass().getSimpleName();
@@ -34,5 +34,10 @@ public class DietaryUtils {
 	public static boolean isSnakeFodder(Entity entity) {
 		String className = entity.getClass().getSimpleName();
 		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Vole") || className.contains("Shrew") || className.contains("Weasel") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
+	}
+
+	public static boolean isSpirit(Entity entity) {
+		String className = entity.getClass().getSimpleName();
+		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant");
 	}
 }
