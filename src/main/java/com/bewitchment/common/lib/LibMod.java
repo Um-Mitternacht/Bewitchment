@@ -17,7 +17,11 @@ public final class LibMod {
 	public static final String MOD_VER = "0.0.14.1";
 
 	//Dependency
-	public static final String DEPENDENCIES = "required-after:forge@[14.23.4.2755,];after:jei@[4.9.1.168,];after:waila@[1.8.24-B39_1.12,];required-after:baubles@[1.5.2,]";
+	public static final String DEPENDENCIES = "required-after:forge@[14.23.4.2755,];"
+			+ "after:jei@[4.9.1.168,];"
+			+ "after:waila@[1.8.24-B39_1.12,];"
+			+ "required-after:baubles@[1.5.2,];"
+			+ "after:thaumcraft@[1.12.2:6.1.BETA26,]";
 
 	//Client proxy location
 	public static final String PROXY_CLIENT = "com.bewitchment.client.core.ClientProxy";
