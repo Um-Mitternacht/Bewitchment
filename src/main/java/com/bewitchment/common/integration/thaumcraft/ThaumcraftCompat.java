@@ -266,6 +266,7 @@ public class ThaumcraftCompat {
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("entity_owl", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(MOON, 8));
+		ThaumcraftApi.registerEntityTag("entity_snake", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 10).add(DEMON, 8));
 
 	}
 }
