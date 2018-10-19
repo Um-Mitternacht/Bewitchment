@@ -36,8 +36,15 @@ public class BWMobUtils {
 		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Vole") || className.contains("Shrew") || className.contains("Weasel") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
 	}
 
+	//For usage in cold iron
 	public static boolean isSpirit(Entity entity) {
 		String className = entity.getClass().getSimpleName();
 		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant") || className.contains("Spirit") || className.contains("ShadowPerson") || className.contains("Banshee") || className.contains("Dullahan") || className.contains("Kelpie") || className.contains("Poltergeist") || className.contains("Wisp") || className.contains("CursedArmor") || className.contains("NetherKnight") || className.contains("Imp") || className.contains("Barghest") || className.contains("PossessedArmor") || className.contains("Familiar") || className.contains("PhantomDiver") || className.contains("BlazingJuggernaut") || className.contains("HauntedTool") || className.contains("EnchantedBook");
+	}
+
+	//For usage in silver
+	public static boolean isCorporealUndead(Entity entity) {
+		String className = entity.getClass().getCanonicalName().toLowerCase();
+		return className.contains("Mummy") || className.contains("Draugr") || className.contains("GSSKeleton") || className.contains("ZombieRaider") || className.contains("SkeletonRaider");
 	}
 }
