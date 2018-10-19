@@ -39,12 +39,18 @@ public class BWMobUtils {
 	//For usage in cold iron
 	public static boolean isSpirit(Entity entity) {
 		String className = entity.getClass().getSimpleName();
-		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant") || className.contains("Spirit") || className.contains("ShadowPerson") || className.contains("Banshee") || className.contains("Dullahan") || className.contains("Kelpie") || className.contains("Poltergeist") || className.contains("Wisp") || className.contains("CursedArmor") || className.contains("NetherKnight") || className.contains("Imp") || className.contains("Barghest") || className.contains("PossessedArmor") || className.contains("Familiar") || className.contains("PhantomDiver") || className.contains("BlazingJuggernaut") || className.contains("HauntedTool") || className.contains("EnchantedBook");
+		return className.contains("Flare") || className.contains("Ghost") || className.contains("Wraith") || className.contains("Shade") || className.contains("Pixie") || className.contains("Fairy") || className.contains("Sprite") || className.contains("Soul") || className.contains("Demon") || className.contains("Elemental") || className.contains("Specter") || className.contains("Spectre") || className.contains("Genie") || className.contains("Angel") || className.contains("Phantom") || className.contains("Revenant") || className.contains("Spirit") || className.contains("ShadowPerson") || className.contains("Banshee") || className.contains("Dullahan") || className.contains("Kelpie") || className.contains("Poltergeist") || className.contains("Wisp") || className.contains("CursedArmor") || className.contains("NetherKnight") || className.contains("Imp") || className.contains("Barghest") || className.contains("PossessedArmor") || className.contains("Familiar") || className.contains("PhantomDiver") || className.contains("BlazingJuggernaut") || className.contains("HauntedTool") || className.contains("EnchantedBook") || className.contains("Hirschgeist");
 	}
 
 	//For usage in silver
 	public static boolean isCorporealUndead(Entity entity) {
 		String className = entity.getClass().getCanonicalName().toLowerCase();
 		return className.contains("Mummy") || className.contains("Draugr") || className.contains("GSSKeleton") || className.contains("ZombieRaider") || className.contains("SkeletonRaider");
+	}
+
+	//For usage in aconite
+	public static boolean isCanid(Entity entity) {
+		String className = entity.getClass().getCanonicalName().toLowerCase();
+		return className.contains("Wolf") || className.contains("Werewolf") || className.contains("Coyote") || className.contains("Dingo") || className.contains("Jackal") || className.contains("Dhole") || className.contains("Fox") || className.contains("Dog") || className.contains("Tanuki") || className.contains("Warrah") || className.contains("Culpeo");
 	}
 }
