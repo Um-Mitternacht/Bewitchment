@@ -41,6 +41,7 @@ public class MobHelper {
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
+		SPIRITS.add("hellfirepvp.astralsorcery.common.entities.EntityFlare");
 
 		DEMONS.add(EntityBlaze.class.getName());
 
