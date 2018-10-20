@@ -3,6 +3,7 @@ package com.bewitchment.common.core.helper;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -40,12 +41,19 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
+		SPIRITS.add(EntityBlaze.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
-		SPIRITS.add("hellfirepvp.astralsorcery.common.entities.EntityFlare");
+		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
+		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
 
-		DEMONS.add(EntityBlaze.class.getName());
+		//Will be used for actual demons later on. Blazes are just fire elementals
+		//DEMONS.add(EntityBlaze.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
+		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
+		CANIDS.add("betteranimalsplus.common.entity.EntityFeralWolf");
+		CANIDS.add("betteranimalsplus.common.entity.EntityFox");
+		CANIDS.add("betteranimalsplus.common.entity.EntityCoyote");
 
 		//Villagers are already included in the list
 		HUMANS.add(EntityWitch.class.getName());
@@ -59,11 +67,17 @@ public class MobHelper {
 		OWL_FOOD.add(EntityChicken.class.getName());
 		OWL_FOOD.add(EntityParrot.class.getName());
 		OWL_FOOD.add(EntityBat.class.getName());
+		OWL_FOOD.add(EntitySnake.class.getName());
+		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
+		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogBase");
+		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogAlbino");
+		OWL_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
+		SNAKE_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
