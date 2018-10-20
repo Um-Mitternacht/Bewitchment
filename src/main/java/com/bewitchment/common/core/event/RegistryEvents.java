@@ -1,9 +1,9 @@
 package com.bewitchment.common.core.event;
 
-import com.bewitchment.common.api.CropRegistry;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.crop.BlockCrop;
 import com.bewitchment.common.core.Crop;
+import com.bewitchment.common.core.CropRegistry;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.natural.crop.*;
 import com.bewitchment.common.item.natural.seed.ItemKelpSeed;

@@ -1,7 +1,5 @@
-package com.bewitchment.common.api;
+package com.bewitchment.common.core;
 
-import com.bewitchment.common.core.Crop;
-import com.bewitchment.common.core.ICrop;
 import com.bewitchment.common.item.natural.crop.ItemCropFood;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
