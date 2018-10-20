@@ -1,7 +1,6 @@
 package com.bewitchment.common.item;
 
 import baubles.api.BaubleType;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
