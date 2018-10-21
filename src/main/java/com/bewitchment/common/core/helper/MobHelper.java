@@ -24,15 +24,15 @@ import java.util.Set;
 
 public class MobHelper {
 
-	public static final Set<String> VILLAGERS = Sets.newHashSet();
-	public static final Set<String> SPIRITS = Sets.newHashSet();
-	public static final Set<String> CANIDS = Sets.newHashSet();
-	public static final Set<String> DEMONS = Sets.newHashSet();
-	public static final Set<String> OWL_FOOD = Sets.newHashSet();
-	public static final Set<String> SNAKE_FOOD = Sets.newHashSet();
-	public static final Set<String> UNDEAD_BODY = Sets.newHashSet();
-	public static final Set<String> HUMANS = Sets.newHashSet();
-	public static final Set<String> WEREWOLF_FOOD = Sets.newHashSet();
+	public static final Set<String> VILLAGERS = Sets.newHashSet(); //Hmm hmmm mmph
+	public static final Set<String> SPIRITS = Sets.newHashSet(); //Spirits and discarnate undead
+	public static final Set<String> CANIDS = Sets.newHashSet(); //The entire canid family of carnivorans
+	public static final Set<String> DEMONS = Sets.newHashSet(); //Infernal beings
+	public static final Set<String> OWL_FOOD = Sets.newHashSet(); //Food for owls
+	public static final Set<String> SNAKE_FOOD = Sets.newHashSet(); //Food for sneks
+	public static final Set<String> UNDEAD_BODY = Sets.newHashSet(); //Corporeal undead, such as zombies and mummies
+	public static final Set<String> HUMANS = Sets.newHashSet(); //People
+	public static final Set<String> WEREWOLF_FOOD = Sets.newHashSet(); //Livestock targeted by werewolves
 
 	public static void init() {
 
@@ -43,9 +43,13 @@ public class MobHelper {
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
 		SPIRITS.add(EntityBlaze.class.getName());
+		SPIRITS.add(EntityGuardian.class.getName());
+		SPIRITS.add(EntityElderGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
+		SPIRITS.add("eerieentities.entities.EntityNetherKnight");
+		SPIRITS.add("eerieentities.entities.EntityCursedArmor");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
 		//DEMONS.add(EntityBlaze.class.getName());
@@ -63,6 +67,7 @@ public class MobHelper {
 		HUMANS.add(EntityVindicator.class.getName());
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistCleric");
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistKnight");
+		HUMANS.add("mca.entity.EntityVillagerMCA");
 
 		OWL_FOOD.add(EntityRabbit.class.getName());
 		OWL_FOOD.add(EntityChicken.class.getName());
@@ -79,6 +84,8 @@ public class MobHelper {
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
 		SNAKE_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
+
+		WEREWOLF_FOOD.add(EntitySheep.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
