@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.core.handler.ModSounds;
+import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
@@ -46,11 +47,6 @@ public class EntityOwl extends EntityFamiliar {
 		this.moveHelper = new EntityFlyHelper(this);
 	}
 
-	public static boolean isOwlFodder(Entity entity) {
-		String className = entity.getClass().getSimpleName();
-		return entity instanceof EntityRabbit || entity instanceof EntityBat || entity instanceof EntityChicken || entity instanceof EntityParrot || className.contains("Rat") || className.contains("Hedgehog") || className.contains("Hamster") || className.contains("Squirrel") || className.contains("Hare") || className.contains("Fox") || className.contains("Weasel") || className.contains("Pigeon") || className.contains("Turkey") || className.contains("Mouse") || className.contains("Bat") || className.contains("Lizard") || className.contains("Frog") || className.contains("Toad") || className.contains("Snake") || className.contains("Beetle") || className.contains("Chinchilla") || className.contains("Cavy") || className.contains("GuineaPig") || className.contains("Crow") || className.contains("Raven") || className.contains("Pheasant") || className.contains("Partridge") || className.contains("Jackdaw") || className.contains("Mongoose") || className.contains("Rooster") || className.contains("Hen") || className.contains("Chick") || className.contains("Shrew") || className.contains("Mole") || className.contains("Vole") || className.contains("Lemming") || className.contains("Jird") || className.contains("Jerboa") || className.contains("Gerbil") || className.contains("Muskrat") || className.contains("Marmot") || className.contains("Deer") || className.contains("Ferret") || className.contains("Chinchilla");
-	}
-
 	@Override
 	protected ResourceLocation getLootTable() {
 		return loot;
@@ -87,8 +83,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
 		this.tasks.addTask(4, this.aiSit);
-		//Fixme: Overhaul isOwlFodder, move it to DietaryUtils, and set up a class whitelist. Current means are messy and possibly straining on resources.
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntityOwl::isOwlFodder));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, MobHelper::isOwlFodder));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 

@@ -36,9 +36,11 @@ public class MobHelper {
 
 	public static void init() {
 
-		//Don't overload them for the sake of adding stuff
-		//Eg: endermen are not in any of these lists
-		//Less is more in this case
+		/*
+		* Don't overload them for the sake of adding stuff
+		* Eg: endermen are not in any of these lists
+		* Less is more in this case
+		*/
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
