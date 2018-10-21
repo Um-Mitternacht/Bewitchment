@@ -32,6 +32,7 @@ public class MobHelper {
 	public static final Set<String> SNAKE_FOOD = Sets.newHashSet();
 	public static final Set<String> UNDEAD_BODY = Sets.newHashSet();
 	public static final Set<String> HUMANS = Sets.newHashSet();
+	public static final Set<String> WEREWOLF_FOOD = Sets.newHashSet();
 
 	public static void init() {
 
@@ -112,6 +113,10 @@ public class MobHelper {
 
 	public static boolean isSnakeFodder(EntityLivingBase entity) {
 		return SNAKE_FOOD.contains(entity.getClass().getName());
+	}
+
+	public static boolean isWerewolfFood(EntityLivingBase entity) {
+		return WEREWOLF_FOOD.contains(entity.getClass().getName());
 	}
 
 	public static boolean isDemon(EntityLivingBase entity) {
