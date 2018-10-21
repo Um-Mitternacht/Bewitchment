@@ -66,7 +66,8 @@ public class MobHelper {
 		HUMANS.add(EntityVindicator.class.getName());
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistCleric");
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistKnight");
-		HUMANS.add("mca.entity.EntityVillagerMCA");
+		
+		VILLAGERS.add("mca.entity.EntityVillagerMCA");
 
 		OWL_FOOD.add(EntityRabbit.class.getName());
 		OWL_FOOD.add(EntityChicken.class.getName());
