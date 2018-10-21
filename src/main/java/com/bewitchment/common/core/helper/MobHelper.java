@@ -44,9 +44,6 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
-		SPIRITS.add(EntityBlaze.class.getName());
-		SPIRITS.add(EntityGuardian.class.getName());
-		SPIRITS.add(EntityElderGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
