@@ -198,10 +198,6 @@ public final class ConfigHandler {
 		@Config.LangKey("bewitchment.config.action_bar")
 		public AbilityBarHUD ACTION_BAR_HUD = new AbilityBarHUD();
 
-		@Comment("Set to false to let the vampire blood meter not be rounded")
-		public boolean roundVampireBlood = true;
-
-
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
 		public double glyphImprecision = 0.6d;
