@@ -269,6 +269,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemMod(LibItemName.SANGUINE_FABRIC),
 				new ItemMod(LibItemName.PENTACLE),
+				new ItemMod(LibItemName.ADDERS_FORK),
+				new ItemMod(LibItemName.FILET_OF_FENNY_SNAKE),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
