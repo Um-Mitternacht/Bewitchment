@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bewitchment:items/filet_of_fenny_snake"
+  }
+}
