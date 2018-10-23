@@ -228,6 +228,9 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 2)));// TODO make this pufferfish
 		registerVanillaBrewEffect(MobEffects.STRENGTH, Ingredient.fromItem(Items.BLAZE_POWDER));
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
+		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
+		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
+		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 250);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
