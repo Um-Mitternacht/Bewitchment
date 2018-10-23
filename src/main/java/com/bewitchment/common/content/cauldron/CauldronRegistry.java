@@ -230,7 +230,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
 		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
 		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
-		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 250);
+		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 55);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
