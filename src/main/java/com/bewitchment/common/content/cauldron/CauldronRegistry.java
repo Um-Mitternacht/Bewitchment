@@ -191,6 +191,10 @@ public class CauldronRegistry {
 		registerFood(new IngredientMultiOreDict("listAllturkeycooked"), 6, 8.3f);
 		registerFood(new IngredientMultiOreDict("listAllbeefcooked"), 7, 12.8f);
 		registerFood(new IngredientMultiOreDict("listAllchickencooked"), 6, 7.2f);
+		registerFood(new IngredientMultiOreDict("listAllporkcooked"), 8, 12.8f);
+		registerFood(new IngredientMultiOreDict("listAllmuttoncooked"), 6, 9.6f);
+		registerFood(new IngredientMultiOreDict("listAllrabbitcooked"), 5, 6f);
+		registerFood(new IngredientMultiOreDict("listAllfishcooked"), 5, 6f);
 		//Todo: Support for more modded foods.
 
 		// Miscellaneous water-based recipes
