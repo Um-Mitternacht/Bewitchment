@@ -13,6 +13,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
@@ -21,7 +23,8 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockTarotTable extends BlockModTileEntity {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
+public class BlockTarotTable extends BlockModTileEntity implements IInfusionStabiliserExt {
 
 	public BlockTarotTable() {
 		super(LibBlockName.TAROT_TABLE, Material.ROCK);
@@ -70,5 +73,17 @@ public class BlockTarotTable extends BlockModTileEntity {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityTarotsTable();
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public float getStabilizationAmount(World world, BlockPos pos) {
+		return 0;
 	}
 }

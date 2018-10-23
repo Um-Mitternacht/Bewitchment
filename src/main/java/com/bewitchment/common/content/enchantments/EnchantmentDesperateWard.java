@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.enchantments;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,7 +27,7 @@ public class EnchantmentDesperateWard extends BaublesEnchantment {
 			}
 		}
 	}
-	
+
 	@Override
 	protected boolean canApplyTogether(Enchantment ench) {
 		return !(ench instanceof EnchantmentPotentWard);

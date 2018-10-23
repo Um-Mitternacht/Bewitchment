@@ -6,9 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import thaumcraft.api.crafting.IInfusionStabiliser;
 
 import java.util.Random;
 
@@ -17,8 +14,8 @@ import java.util.Random;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
-public class BlockCandleSmall extends BlockCandle implements IInfusionStabiliser {
+
+public class BlockCandleSmall extends BlockCandle {
 
 	private static final AxisAlignedBB SMALL_BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
 
@@ -40,11 +37,5 @@ public class BlockCandleSmall extends BlockCandle implements IInfusionStabiliser
 	@Override
 	public int getType() {
 		return 0;
-	}
-
-	@Override
-	@Optional.Method(modid = "thaumcraft")
-	public boolean canStabaliseInfusion(World world, BlockPos pos) {
-		return true;
 	}
 }

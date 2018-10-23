@@ -8,12 +8,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 
 public class HotbarAction implements IHotbarAction {
 
+	@SideOnly(Side.CLIENT)
 	public static final ResourceLocation DEFAULT_ICON_TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/abilities.png");
+
 	private static final ArrayList<IHotbarAction> ACTIONS = new ArrayList<>();
 
 	private ResourceLocation name;
@@ -50,17 +54,20 @@ public class HotbarAction implements IHotbarAction {
 	}
 
 	@Override
-	public int getIconIndexX(EntityPlayer player) {
+	@SideOnly(Side.CLIENT)
+	public int getIconIndexX() {
 		return xIconIndex;
 	}
 
 	@Override
-	public int getIconIndexY(EntityPlayer player) {
+	@SideOnly(Side.CLIENT)
+	public int getIconIndexY() {
 		return yIconIndex;
 	}
 
 	@Override
-	public ResourceLocation getIcon(EntityPlayer player) {
+	@SideOnly(Side.CLIENT)
+	public ResourceLocation getIcon() {
 		return DEFAULT_ICON_TEXTURE;
 	}
 

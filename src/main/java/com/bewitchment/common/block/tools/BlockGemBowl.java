@@ -10,10 +10,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
-import thaumcraft.api.crafting.IInfusionStabiliser;
+import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
-@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
-public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabiliser {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
+public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabiliserExt {
 	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0.0f, 0.25f, 0.75f, 0.1875f, 0.75f);
 
 	public BlockGemBowl(String id) {
@@ -72,5 +72,11 @@ public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabili
 	@Optional.Method(modid = "thaumcraft")
 	public boolean canStabaliseInfusion(World world, BlockPos pos) {
 		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public float getStabilizationAmount(World world, BlockPos pos) {
+		return 0;
 	}
 }

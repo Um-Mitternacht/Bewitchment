@@ -3,7 +3,6 @@ package com.bewitchment.common.item.tool;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.core.helper.ItemNBTHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
@@ -20,6 +19,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -213,7 +213,9 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 
 				else if (event.getEntityLiving() instanceof EntityPlayer && rand.nextInt(11) <= 1 + looting) {
 					ItemStack stack = new ItemStack(Items.SKULL, 1, 3);
-					ItemNBTHelper.setString(stack, "SkullOwner", event.getEntityLiving().getName());
+					NBTTagCompound tag = new NBTTagCompound();
+					tag.setString("SkullOwner", event.getEntityLiving().getName());
+					stack.setTagCompound(tag);
 					addDrop(event, stack);
 				}
 			}

@@ -47,6 +47,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -62,6 +63,7 @@ public class ApiInstance extends BewitchmentAPI {
 		BewitchmentAPI.setupAPI(new ApiInstance());
 		BewitchmentAPI.getAPI().DEMON = EnumHelper.addCreatureAttribute("DEMON");
 		BewitchmentAPI.getAPI().SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+		BewitchmentAPI.getAPI().IMMUTABLE = Type.getType("IMMUTABLE");
 		Bewitchment.logger.debug("API is ready!");
 	}
 

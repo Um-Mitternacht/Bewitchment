@@ -26,8 +26,10 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
 import java.util.Random;
 
@@ -36,7 +38,8 @@ import java.util.Random;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public abstract class BlockCandle extends BlockMod {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
+public abstract class BlockCandle extends BlockMod implements IInfusionStabiliserExt {
 
 	private boolean isLit;
 
@@ -189,6 +192,19 @@ public abstract class BlockCandle extends BlockMod {
 
 	public boolean isLit() {
 		return isLit;
+	}
+
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public float getStabilizationAmount(World world, BlockPos pos) {
+		return 0;
 	}
 
 }

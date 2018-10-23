@@ -2,8 +2,10 @@ package com.bewitchment.common.content.actionbar;
 
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModAbilities {
 
@@ -12,9 +14,10 @@ public class ModAbilities {
 	public static final HotbarAction HOWL = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "howl"), 1, 1);
 	public static final HotbarAction WOLF_SHIFT = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "wolf_shift"), 3, 0) {
 		@Override
-		public int getIconIndexY(EntityPlayer player) {
-			int yIndex = super.getIconIndexY(player);
-			if (player.isSneaking()) {
+		@SideOnly(Side.CLIENT)
+		public int getIconIndexY() {
+			int yIndex = super.getIconIndexY();
+			if (Minecraft.getMinecraft().player.isSneaking()) {
 				return yIndex;
 			}
 			return yIndex + 1;
@@ -23,9 +26,10 @@ public class ModAbilities {
 	public static final HotbarAction NIGHT_VISION = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "night_vision"), 0, 0) {
 
 		@Override
-		public int getIconIndexY(EntityPlayer player) {
-			int yIndex = super.getIconIndexY(player);
-			if (player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
+		@SideOnly(Side.CLIENT)
+		public int getIconIndexY() {
+			int yIndex = super.getIconIndexY();
+			if (Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
 				return yIndex;
 			}
 			return yIndex + 1;

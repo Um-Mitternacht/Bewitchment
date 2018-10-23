@@ -16,6 +16,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
@@ -23,8 +25,8 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * Created by Joseph on 9/16/2018.
  */
 
-
-public class BlockBrazier extends BlockMod {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
+public class BlockBrazier extends BlockMod implements IInfusionStabiliserExt {
 
 	private static final PropertyBool HANGING = PropertyBool.create("hanging");
 	private static final AxisAlignedBB BBOX_STANDING = new AxisAlignedBB(0.15625, 0, 0.15625, 0.84375, 1 + 1d / 32d, 0.84375);
@@ -124,5 +126,17 @@ public class BlockBrazier extends BlockMod {
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public float getStabilizationAmount(World world, BlockPos pos) {
+		return 0;
 	}
 }

@@ -4,7 +4,6 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-
 import com.bewitchment.common.content.enchantments.BaublesEnchantment;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
@@ -94,29 +93,29 @@ public class ItemTalisman extends ItemMod implements IBauble {
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return enchantment == Enchantments.BINDING_CURSE;
 	}
-	
+
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		EnchantmentHelper.getEnchantments(itemstack).keySet().parallelStream()
-			.filter(e -> e instanceof BaublesEnchantment)
-			.map(e -> (BaublesEnchantment) e)
-			.forEach(e -> e.onUnequipped((EntityPlayer) player));
+				.filter(e -> e instanceof BaublesEnchantment)
+				.map(e -> (BaublesEnchantment) e)
+				.forEach(e -> e.onUnequipped((EntityPlayer) player));
 	}
-	
+
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		EnchantmentHelper.getEnchantments(itemstack).keySet().parallelStream()
-			.filter(e -> e instanceof BaublesEnchantment)
-			.map(e -> (BaublesEnchantment) e)
-			.forEach(e -> e.onEquipped((EntityPlayer) player));
+				.filter(e -> e instanceof BaublesEnchantment)
+				.map(e -> (BaublesEnchantment) e)
+				.forEach(e -> e.onEquipped((EntityPlayer) player));
 	}
-	
+
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		EnchantmentHelper.getEnchantments(itemstack).keySet().parallelStream()
-			.filter(e -> e instanceof BaublesEnchantment)
-			.map(e -> (BaublesEnchantment) e)
-			.forEach(e -> e.onWornTick((EntityPlayer) player));
+				.filter(e -> e instanceof BaublesEnchantment)
+				.map(e -> (BaublesEnchantment) e)
+				.forEach(e -> e.onWornTick((EntityPlayer) player));
 	}
 
 }

@@ -9,6 +9,7 @@ bewitchment.config.world_gen=World Gen
 bewitchment.config.energy_hud=Energy HUD
 bewitchment.config.blood_hud=Blood Viewer HUD
 bewitchment.config.moon_hud=Moon Warning HUD
+bewitchment.config.current_action_hud=Selected Ability HUD
 bewitchment.config.client=Client Settings
 
 //Gui
@@ -476,7 +477,7 @@ effect.mars_water=Water of Mars
 effect.mars_water.desc=Inflicts nasty debuffs on the target.
 
 effect.holy_water=Holy Water
-effect.holy_water.desc=Damages undead and demons, but has no effect on the living.
+effect.holy_water.desc=Damages undead, spirits and demons, but has no effect on the living.
 
 effect.volatility=Volatility
 effect.volatility.desc=Makes you explode upon being hit.
@@ -754,6 +755,7 @@ ritual.bewitchment.juniper_broom.name=Riual of the Rising Twigs
 ritual.bewitchment.gateway.name=Ritual of the Gates
 ritual.bewitchment.shift_biome.name=Rite of the Falling Leaves
 ritual.bewitchment.nether_portal.name=Rite of the Profane Communion
+ritual.bewitchment.vampire_lair.name=Rite of Rising Darkness
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong

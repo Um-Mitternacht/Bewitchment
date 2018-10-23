@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.enchantments;
 
 import com.bewitchment.api.BewitchmentAPI;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,7 +13,7 @@ public class EnchantmentSpiritProtection extends BaublesEnchantment {
 		super("protection_spirit", Rarity.UNCOMMON, 3);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@SubscribeEvent
 	public void onDamageReceived(LivingHurtEvent evt) {
 		if (evt.getEntityLiving() instanceof EntityPlayer) {

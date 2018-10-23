@@ -1,20 +1,18 @@
 package com.bewitchment.common.entity.living.familiar;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.entity.EntityFamiliar;
+import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
@@ -45,11 +43,6 @@ public class EntitySnake extends EntityFamiliar {
 	public EntitySnake(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
-	}
-
-	public static boolean isSnakeFodder(Entity entity) {
-		String className = entity.getClass().getSimpleName();
-		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Vole") || className.contains("Shrew") || className.contains("Weasel") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
 	}
 
 	@Override
@@ -98,7 +91,7 @@ public class EntitySnake extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntitySnake::isSnakeFodder));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, MobHelper::isSnakeFodder));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
@@ -118,9 +111,13 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
+	//Todo: Allow this snake to actually kill mobs properly
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		getAttackTarget().addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
+		if (entity instanceof EntityLivingBase) {
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1));
+		}
 		return super.attackEntityAsMob(entity);
 	}
 
@@ -147,24 +144,32 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!player.world.isRemote) {
-			if (!isFamiliar() && !isChild()) {
-				setTamedBy(player);
-				BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
-			} else if (player.getHeldItem(hand).isEmpty()) { // TODO temp code
-				if (player.isSneaking()) {
-					setFamiliar(false);
-					setTamed(false);
-					setOwnerId(null);
-				} else {
-					this.aiSit.setSitting(!isSitting());
-					this.setSitting(!isSitting());
+		{
+			ItemStack itemstack = player.getHeldItem(hand);
+
+			if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem())) {
+				if (!player.capabilities.isCreativeMode) {
+					itemstack.shrink(1);
 				}
-			} else {
-				super.processInteract(player, hand);
+
+				if (!this.isSilent()) {
+					this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_PARROT_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+				}
+
+				if (!this.world.isRemote) {
+					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
+						this.setTamedBy(player);
+						this.playTameEffect(true);
+						this.world.setEntityState(this, (byte) 7);
+					} else {
+						this.playTameEffect(false);
+						this.world.setEntityState(this, (byte) 6);
+					}
+				}
+				return true;
 			}
+			return true;
 		}
-		return true;
 	}
 
 	@Override

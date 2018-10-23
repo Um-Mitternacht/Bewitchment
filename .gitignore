@@ -111,3 +111,4 @@ refresh_workspace.bat
 *.iws___jb_tmp___
 *.iws___jb_old___
 *.java___jb_old___
+*.java___jb_tmp___
