@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.core.helper.MobHelper;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
@@ -146,6 +147,18 @@ public class EntitySnake extends EntityFamiliar {
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		{
 			ItemStack itemstack = player.getHeldItem(hand);
+
+			if (itemstack.getItem() == ModItems.glass_jar && this.getGrowingAge() >= 0 && !player.capabilities.isCreativeMode) {
+				itemstack.shrink(1);
+
+				if (itemstack.isEmpty()) {
+					player.setHeldItem(hand, new ItemStack(ModItems.snake_venom));
+				} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.snake_venom))) {
+					player.dropItem(new ItemStack(ModItems.snake_venom), false);
+				}
+
+				return true;
+			}
 
 			if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem())) {
 				if (!player.capabilities.isCreativeMode) {
