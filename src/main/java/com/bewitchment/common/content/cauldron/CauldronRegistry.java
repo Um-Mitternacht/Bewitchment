@@ -230,11 +230,11 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
 		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
 		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
-		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 55);
+		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 100);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
-		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME crafting conflict with radius modifier
+		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.cold_iron_dust_small));
 		registerCombinedBrewEffect(ModPotions.plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
 		registerCombinedBrewEffect(ModPotions.corruption, Ingredient.fromItem(Items.BONE));
