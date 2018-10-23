@@ -121,6 +121,7 @@ public final class LibItemName {
 	public static final String OWLETS_WING = "owlets_wing";
 	public static final String ADDERS_FORK = "adders_fork";
 	public static final String FILET_OF_FENNY_SNAKE = "filet_of_fenny_snake";
+	public static final String SNAKE_VENOM = "snake_venom";
 	public static final String RAVENS_FEATHER = "ravens_feather";
 	public static final String GRAVEYARD_DUST = "graveyard_dust";
 	public static final String MAGIC_SALVE = "magic_salve";

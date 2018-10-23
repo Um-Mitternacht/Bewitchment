@@ -271,6 +271,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.PENTACLE),
 				new ItemMod(LibItemName.ADDERS_FORK),
 				new ItemMod(LibItemName.FILET_OF_FENNY_SNAKE),
+				new ItemMod(LibItemName.SNAKE_VENOM),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),
