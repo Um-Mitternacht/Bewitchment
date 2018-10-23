@@ -36,7 +36,7 @@ import java.util.Set;
 public class EntitySnake extends EntityFamiliar {
 
 	private static final double maxHPWild = 8;
-	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final String[] names = {};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
