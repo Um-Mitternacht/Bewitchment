@@ -1,18 +1,19 @@
 package com.bewitchment.common.potion.potions;
 
-import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
-import com.bewitchment.common.potion.PotionMod;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.bewitchment.api.transformation.IBloodReserve;
+import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
+import com.bewitchment.common.core.helper.PlayerHelper;
+import com.bewitchment.common.potion.PotionMod;
+
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 
 public class PotionBloodDrained extends PotionMod {
 
@@ -31,44 +32,32 @@ public class PotionBloodDrained extends PotionMod {
 
 	@Override
 	public boolean isReady(int duration, int amplifier) {
-		return duration % 80 == 0;
+		return true;
 	}
 
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
-
-		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
-		float amount = br.getPercentFilled();
-
-		if (amount > 0 && amount < TRESHOLD) {
-			if (br.getDrinkerUUID() != null)
-				entity.attackEntityFrom(new DamageSourceDrain(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID())), 0.5f);
-			if (br.getDrinkerUUID() != null)
-				entity.setRevengeTarget(entity.world.getPlayerEntityByUUID(br.getDrinkerUUID()));
-			entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
-		} else {
-			entity.removePotionEffect(this);
-			br.setDrinker(null);
-		}
-
-	}
-
-	public static class DamageSourceDrain extends EntityDamageSource {
-
-		public DamageSourceDrain(Entity damageSourceEntity) {
-			super("drain_damage", damageSourceEntity);
-		}
-
-		@Override
-		public ITextComponent getDeathMessage(EntityLivingBase entity) {
-			String name = getTrueSource() == null ? entity.getCapability(CapabilityBloodReserve.CAPABILITY, null).getLastDrinker(entity.world) : getTrueSource().getName();
-			String s = "death.attack.drain_damage";
-			if (name != null) {
-				return new TextComponentTranslation(s + ".player", name);
+		if (!entity.world.isRemote) {
+			IBloodReserve reserve = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+			if (reserve.getPercentFilled() < TRESHOLD) {
+				if (entity instanceof EntityLiving) {
+					handleNPCEffect((EntityLiving) entity, reserve);
+				}
+				entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, amplifier, true, false));
+				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, amplifier, true, false));
+				entity.addPotionEffect(new PotionEffect(this, 200, amplifier));
+			} else {
+				entity.removePotionEffect(this);
 			}
-			return new TextComponentTranslation(s);
 		}
-
 	}
 
+	private void handleNPCEffect(EntityLiving entity, IBloodReserve reserve) {
+		if (reserve.getDrinkerUUID() != null) {
+			EntityPlayer vampire = PlayerHelper.getPlayerAcrossDimensions(reserve.getDrinkerUUID());
+			if (vampire != null) {
+				entity.setRevengeTarget(vampire);
+			}
+		}
+	}
 }
