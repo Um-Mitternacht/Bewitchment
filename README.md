@@ -1,4 +1,4 @@
-Bewitchment
+# Bewitchment
 A mod inspired by Witchery
 
 ![BewitchmentV](https://img.shields.io/badge/Bewitchment-V%200.0.14.1-purple.svg?longCache=true&style=for-the-badge)
