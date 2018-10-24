@@ -1,4 +1,4 @@
-# Bewitchment
+Bewitchment
 A mod inspired by Witchery
 
 ![BewitchmentV](https://img.shields.io/badge/Bewitchment-V%200.0.14.1-purple.svg?longCache=true&style=for-the-badge)
@@ -18,14 +18,12 @@ Some old documentation can be found here: https://github.com/Um-Mitternacht/Witc
 
 Below, you can find various donation widgets for the various devs.
 
-#Ingoleth
+#### Ingoleth
 [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/Ingoleth)
 
-#Sunconure11
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Q5Q2L824)
-[![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/Sunconure11)
-
+#### Sunconure11
+[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Q5Q2L824) [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/Sunconure11)
 Garlic Coin Wallet: GK4mXLSsqPbZXehX37ejbVvUqKYfcTvfMA
 
-#Zabi94
+#### Zabi94
 [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/Zabi94)
