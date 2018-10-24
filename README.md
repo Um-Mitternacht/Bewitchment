@@ -18,14 +18,14 @@ Please, don't ask for ETAs or release dates, we don't know!
 
 Below, you can find various donation widgets for the various devs.
 
-**Ingoleth**
+**Ingoleth**  
 [![Patreon](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg?longCache=true&style=for-the-badge)](https://www.patreon.com/Ingoleth)
 
-**Sunconure11**
+**Sunconure11**  
 [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Q5Q2L824)  
 [![Patreon](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg?longCache=true&style=for-the-badge)](https://www.patreon.com/Sunconure11)  
 Garlic Coin Wallet: GK4mXLSsqPbZXehX37ejbVvUqKYfcTvfMA
 
-**Zabi94**
+**Zabi94**  
 [![Patreon](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg?longCache=true&style=for-the-badge)](https://www.patreon.com/Zabi94)  
 [![Paypal](https://img.shields.io/badge/Paypal-Donate-blue.svg?longCache=true&style=for-the-badge)](https://paypal.me/zabi94)
