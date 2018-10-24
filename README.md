@@ -23,6 +23,7 @@ Below, you can find various donation widgets for the various devs.
 
 #### Sunconure11
 [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Q5Q2L824) [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/Sunconure11)
+
 Garlic Coin Wallet: GK4mXLSsqPbZXehX37ejbVvUqKYfcTvfMA
 
 #### Zabi94
