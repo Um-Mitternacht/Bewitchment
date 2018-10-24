@@ -26,8 +26,10 @@ public class VampireBloodBarHUD {
 		BufferBuilder buf = tessellator.getBuffer();
 		
 		buf.getClass();//TODO RENDER HERE
+		
+		Minecraft.getMinecraft().fontRenderer.drawString(td.getBlood()+"/"+td.getMaxBlood(), (int) x, (int) y, 0);
 
-		tessellator.draw();
+//		tessellator.draw();
 	}
 
 	@SubscribeEvent
