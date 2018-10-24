@@ -12,6 +12,13 @@ bewitchment.config.moon_hud=Moon Warning HUD
 bewitchment.config.current_action_hud=Selected Ability HUD
 bewitchment.config.client=Client Settings
 
+//Actions
+bewitchment.night_vision=Night Vision
+bewitchment.drain_blood=Drain Blood
+bewitchment.bat_swarm=Bat Swarm
+bewitchment.howl=Howl
+bewitchment.wolf_shift=Transform
+
 //Gui
 container.apiary=Apiary
 container.oven=Oven
