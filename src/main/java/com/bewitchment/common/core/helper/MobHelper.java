@@ -48,18 +48,18 @@ public class MobHelper {
 		SPIRITS.add(EntityGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
-		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
-		SPIRITS.add("eerieentities.entities.EntityNetherKnight");
-		SPIRITS.add("eerieentities.entities.EntityCursedArmor");
+		SPIRITS.add("its_meow.betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
+		SPIRITS.add("com.jarhax.eerieentities.entities.EntityNetherKnight");
+		SPIRITS.add("com.jarhax.eerieentities.entities.EntityCursedArmor");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
 		//DEMONS.add(EntityBlaze.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
 		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
-		CANIDS.add("betteranimalsplus.common.entity.EntityFeralWolf");
-		CANIDS.add("betteranimalsplus.common.entity.EntityFox");
-		CANIDS.add("betteranimalsplus.common.entity.EntityCoyote");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFeralWolf");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFox");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityCoyote");
 
 		//Villagers are already included in the list
 		HUMANS.add(EntityWitch.class.getName());
@@ -96,7 +96,8 @@ public class MobHelper {
 		WEREWOLF_FOOD.add(EntityDonkey.class.getName());
 		WEREWOLF_FOOD.add(EntityMule.class.getName());
 		WEREWOLF_FOOD.add(EntityLlama.class.getName());
-		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire");
+		WEREWOLF_FOOD.add(EntityMooshroom.class.getName());
+		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire"); //Todo: Get every single breed animania adds and support it ಠ_ಠ
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
