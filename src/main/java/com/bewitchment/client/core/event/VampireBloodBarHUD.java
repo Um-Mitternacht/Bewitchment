@@ -4,7 +4,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -24,10 +23,10 @@ public class VampireBloodBarHUD {
 	protected static void renderTextureAt(double x, double y, int w, int h, ITransformationData td) {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buf = tessellator.getBuffer();
-		
+
 		buf.getClass();//TODO RENDER HERE
-		
-		Minecraft.getMinecraft().fontRenderer.drawString(td.getBlood()+"/"+td.getMaxBlood(), (int) x, (int) y, 0);
+
+		Minecraft.getMinecraft().fontRenderer.drawString(td.getBlood() + "/" + td.getMaxBlood(), (int) x, (int) y, 0);
 
 //		tessellator.draw();
 	}

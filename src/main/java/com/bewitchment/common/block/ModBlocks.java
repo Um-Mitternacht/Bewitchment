@@ -3,6 +3,7 @@ package com.bewitchment.common.block;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
+import com.bewitchment.common.block.magic.BlockGraveyardDirt;
 import com.bewitchment.common.block.magic.BlockPurifyingEarth;
 import com.bewitchment.common.block.magic.BlockSaltBarrier;
 import com.bewitchment.common.block.magic.BlockWitchFire;
@@ -219,7 +220,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
 				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
-				new BlockMod(LibBlockName.GRAVEYARD_DIRT, Material.GROUND).setSound(SoundType.GROUND).setHardness(1.0F)
+				new BlockGraveyardDirt()
 		);
 
 		//Trees

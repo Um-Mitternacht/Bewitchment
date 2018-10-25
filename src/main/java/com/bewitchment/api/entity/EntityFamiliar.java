@@ -1,9 +1,6 @@
 package com.bewitchment.api.entity;
 
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.core.helper.PlayerHelper;
-
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +12,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public abstract class EntityFamiliar extends EntityTameable {
 
