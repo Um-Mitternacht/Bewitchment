@@ -12,7 +12,7 @@ public class PotionAddersKiss extends GenericBrewDamageVS {
 
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
-		return MobHelper.isSnakeFodder(entity) || MobHelper.isOwlFodder(entity);
+		return MobHelper.isSnakeFodder(entity);
 	}
 
 	@Override
