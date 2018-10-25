@@ -44,6 +44,8 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
+		SPIRITS.add(EntityBlaze.class.getName()); //Zabi, we discussed this in a past VC, and agreed these are spirits of sorts. As a result, they will stay.
+		SPIRITS.add(EntityGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
@@ -74,18 +76,27 @@ public class MobHelper {
 		OWL_FOOD.add(EntityParrot.class.getName());
 		OWL_FOOD.add(EntityBat.class.getName());
 		OWL_FOOD.add(EntitySnake.class.getName());
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogBase");
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogAlbino");
-		OWL_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogBase");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
+		WEREWOLF_FOOD.add(EntityCow.class.getName());
+		WEREWOLF_FOOD.add(EntityPig.class.getName());
+		WEREWOLF_FOOD.add(EntityHorse.class.getName());
+		WEREWOLF_FOOD.add(EntityDonkey.class.getName());
+		WEREWOLF_FOOD.add(EntityMule.class.getName());
+		WEREWOLF_FOOD.add(EntityLlama.class.getName());
+		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire");
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
