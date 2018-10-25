@@ -233,12 +233,18 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.REGENERATION, Ingredient.fromItem(Items.GHAST_TEAR));
 		registerVanillaBrewEffect(MobEffects.SPEED, Ingredient.fromItem(Items.SUGAR));
 		registerVanillaBrewEffect(MobEffects.SLOWNESS, Ingredient.fromItem(Items.PAPER));
-		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 2)));// TODO make this pufferfish
+		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 3)));
 		registerVanillaBrewEffect(MobEffects.STRENGTH, Ingredient.fromItem(Items.BLAZE_POWDER));
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
 		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
 		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
 		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 100);
+		registerVanillaBrewEffect(MobEffects.HASTE, Ingredient.fromItem(ModItems.lavender));
+		registerVanillaBrewEffect(MobEffects.GLOWING, Ingredient.fromItem(ModItems.spectral_dust));
+		registerVanillaBrewEffect(MobEffects.UNLUCK, Ingredient.fromItem(ModItems.adders_fork));
+		registerVanillaBrewEffect(MobEffects.LUCK, Ingredient.fromItem(ModItems.ginger));
+		//Resistance comes at a screwed up cost.
+		registerVanillaBrewEffect(MobEffects.RESISTANCE, Ingredient.fromItem(ModItems.heart), 100);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
