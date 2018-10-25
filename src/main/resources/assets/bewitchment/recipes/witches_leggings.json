@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SXS",
+    "XXX",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "bewitchment:witches_stitching",
+      "data": 0
+    },
+    "X": {
+      "item": "minecraft:leather",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:witches_pants",
+    "data": 0
+  }
+}

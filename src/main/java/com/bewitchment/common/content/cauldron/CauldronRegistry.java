@@ -187,6 +187,14 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(ModItems.heart), 6, 6.6f);
 		registerFood(Ingredient.fromItem(ModItems.tongue_of_dog), 4, 4.4f);
 		registerFood(Ingredient.fromItem(Items.ROTTEN_FLESH), 2, 1.4f);
+		registerFood(new IngredientMultiOreDict("listAllvenisoncooked"), 7, 11.9f);
+		registerFood(new IngredientMultiOreDict("listAllturkeycooked"), 6, 8.3f);
+		registerFood(new IngredientMultiOreDict("listAllbeefcooked"), 7, 12.8f);
+		registerFood(new IngredientMultiOreDict("listAllchickencooked"), 6, 7.2f);
+		registerFood(new IngredientMultiOreDict("listAllporkcooked"), 8, 12.8f);
+		registerFood(new IngredientMultiOreDict("listAllmuttoncooked"), 6, 9.6f);
+		registerFood(new IngredientMultiOreDict("listAllrabbitcooked"), 5, 6f);
+		registerFood(new IngredientMultiOreDict("listAllfishcooked"), 5, 6f);
 		//Todo: Support for more modded foods.
 
 		// Miscellaneous water-based recipes
@@ -228,10 +236,13 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 2)));// TODO make this pufferfish
 		registerVanillaBrewEffect(MobEffects.STRENGTH, Ingredient.fromItem(Items.BLAZE_POWDER));
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
+		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
+		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
+		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 100);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
-		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.sagebrush));// FIXME crafting conflict with radius modifier
+		registerCombinedBrewEffect(ModPotions.absence, Ingredient.fromItem(ModItems.cold_iron_dust_small));
 		registerCombinedBrewEffect(ModPotions.plant, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM)));
 		registerCombinedBrewEffect(ModPotions.bane_arthropods, Ingredient.fromItem(ModItems.wormwood));
 		registerCombinedBrewEffect(ModPotions.corruption, Ingredient.fromItem(Items.BONE));
@@ -246,7 +257,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
 		registerCombinedBrewEffect(ModPotions.mending, Ingredient.fromItem(Items.GOLDEN_APPLE));
 		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_FLOWER)));
-		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(ModItems.seed_silphium));
+		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(Items.APPLE));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.white_sage));
 		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.seed_mint));
 		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
@@ -259,13 +270,13 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.setehs_wastes, Ingredient.fromStacks(new ItemStack(Blocks.SAND, 1, 1)));
 		registerCombinedBrewEffect(ModPotions.salted_earth, salt);
 		registerCombinedBrewEffect(ModPotions.shell_armor, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina)));
-		registerCombinedBrewEffect(ModPotions.till_land, Ingredient.fromItem(Item.getItemFromBlock(Blocks.DIRT))); //Todo: While this won't need a gemstone, make usage of gemstone powders in some brews. They need localization, too.
+		registerCombinedBrewEffect(ModPotions.till_land, Ingredient.fromItem(Item.getItemFromBlock(Blocks.DIRT)));
 		registerCombinedBrewEffect(ModPotions.snow_trail, Ingredient.fromItem(Item.getItemFromBlock(Blocks.PACKED_ICE)));
 		registerCombinedBrewEffect(ModPotions.spider_nightmare, Ingredient.fromItem(Item.getItemFromBlock(Blocks.WEB)));
 		registerCombinedBrewEffect(ModPotions.volatility, Ingredient.fromItem(Items.GUNPOWDER));
 		registerCombinedBrewEffect(ModPotions.pulverize, Ingredient.fromItem(Item.getItemFromBlock(Blocks.COBBLESTONE)));
-		registerCombinedBrewEffect(ModPotions.love, Ingredient.fromItem(ModItems.silphium));
-		registerCombinedBrewEffect(ModPotions.revealing, Ingredient.fromItem(Items.SPIDER_EYE)); //TODO: change this ingredient to something more sensible
+		registerCombinedBrewEffect(ModPotions.love, Ingredient.fromItem(ModItems.seed_silphium));
+		registerCombinedBrewEffect(ModPotions.revealing, Ingredient.fromItem(Items.ENDER_EYE));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
 	}

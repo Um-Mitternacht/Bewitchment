@@ -10,7 +10,12 @@ import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
@@ -23,6 +28,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +36,7 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class ExtraBarButtonsHUD extends HudComponent {
 
+	public static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/ability_selector.png");
 	public static final ExtraBarButtonsHUD INSTANCE = new ExtraBarButtonsHUD();
 	private static final IHotbarAction arrows = new IHotbarAction() {
 
@@ -107,7 +114,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 		int curItm = Minecraft.getMinecraft().player.inventory.currentItem;
 		int max = actions.size();
 		if (Minecraft.getMinecraft().currentScreen == null) {// Don't mess with scroll wheels if a gui is open, only when playing
-			refreshSelected();
+			IHotbarAction lastSelected = refreshSelected();
 			evt.setCanceled(isInExtraBar || (dir < 0 && slotSelected == 0) || (dir > 0 && curItm == 8 && max > 0));
 			if (evt.isCanceled()) {
 				if (dir > 0) {
@@ -125,13 +132,17 @@ public class ExtraBarButtonsHUD extends HudComponent {
 					}
 				}
 			}
-			if (slotSelected < -1)
+			if (slotSelected < -1) {
 				slotSelected = -1;
-			refreshSelected();
+			}
+			IHotbarAction current = refreshSelected();
+			if (current != null && current != lastSelected) {
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain()+"."+current.getName().getResourcePath()), true);
+			}
 		}
 	}
 
-	private void refreshSelected() {
+	private IHotbarAction refreshSelected() {
 		if (slotSelected >= 0) {
 			actionScroller[0] = actions.get(slotSelected);
 		} else {
@@ -142,7 +153,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 					actionScroller[2] = actions.get(1);
 				}
 			}
-			return;
+			return null;
 		}
 		if (slotSelected > 0) {
 			actionScroller[1] = actions.get(slotSelected - 1);
@@ -154,6 +165,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 		} else {
 			actionScroller[2] = null;
 		}
+		return actionScroller[0];
 	}
 
 	public void setList(List<IHotbarAction> list) {
@@ -166,9 +178,13 @@ public class ExtraBarButtonsHUD extends HudComponent {
 	public void keybordInput(KeyInputEvent evt) {
 		if (Keybinds.gotoExtraBar.isPressed()) {
 			if (actions.size() > 0) {
+				int lastSelected = slotSelected;
 				slotSelected = 0;
 				isInExtraBar = true;
-				refreshSelected();
+				IHotbarAction current = refreshSelected();
+				if (current != null && lastSelected != slotSelected) {
+					Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain()+"."+current.getName().getResourcePath()), true);
+				}
 			}
 		}
 		if (Keybinds.alwaysEnableBar.isPressed()) {
@@ -266,10 +282,13 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			ModAbilities.DRAIN_BLOOD.render(getX() + 18, getY(), 16, 16, 0.4f);
 			ModAbilities.BAT_SWARM.render(getX() + 36, getY(), 16, 16, 1f);
 			ModAbilities.HOWL.render(getX() + 54, getY(), 16, 16, 0.4f);
+			renderSelectionBox(getX() + 35, getY() - 1);
 		} else {
 			if (actionScroller[0] != null) {
-				renderSelectionBox(getX() + 36, getY());
 				actionScroller[0].render(getX() + 36, getY(), 16, 16, slotSelected < 0 ? 0.4f : 1f);
+				if (isInExtraBar) {
+					renderSelectionBox(getX() + 35, getY() - 1);
+				}
 			}
 			if (actionScroller[2] != null) {
 				actionScroller[2].render(getX() + 54, getY(), 16, 16, 0.4f);
@@ -284,6 +303,21 @@ public class ExtraBarButtonsHUD extends HudComponent {
 	}
 
 	private void renderSelectionBox(double x, double y) {
-		//TODO
+		GlStateManager.pushMatrix();
+		GlStateManager.enableBlend();
+		GlStateManager.color(1,  1,  1, 1);
+		Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder buff = tessellator.getBuffer();
+
+		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		buff.pos(x, y + 18, 0).tex(0, 1).endVertex();
+		buff.pos(x + 18, y + 18, 0).tex(1, 1).endVertex();
+		buff.pos(x + 18, y, 0).tex(1, 0).endVertex();
+		buff.pos(x, y, 0).tex(0, 0).endVertex();
+
+		tessellator.draw();
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
 	}
 }

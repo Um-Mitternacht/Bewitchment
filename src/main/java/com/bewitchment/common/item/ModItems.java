@@ -188,6 +188,10 @@ public final class ModItems {
 	public static final Item ritual_chalk = null;
 	public static final Item location_stone = null;
 
+	public static final Item snake_venom = null;
+	public static final Item filet_of_fenny_snake = null;
+	public static final Item adders_fork = null;
+
 	public static final Item pentacle = null;
 
 	public static final Item cold_iron_sword = null;
@@ -269,6 +273,9 @@ public final class ModItems {
 				new ItemMod(LibItemName.GRAVEYARD_DUST),
 				new ItemMod(LibItemName.SANGUINE_FABRIC),
 				new ItemMod(LibItemName.PENTACLE),
+				new ItemMod(LibItemName.ADDERS_FORK),
+				new ItemMod(LibItemName.FILET_OF_FENNY_SNAKE),
+				new ItemMod(LibItemName.SNAKE_VENOM),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),

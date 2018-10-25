@@ -12,6 +12,13 @@ bewitchment.config.moon_hud=Moon Warning HUD
 bewitchment.config.current_action_hud=Selected Ability HUD
 bewitchment.config.client=Client Settings
 
+//Actions
+bewitchment.night_vision=Night Vision
+bewitchment.drain_blood=Drain Blood
+bewitchment.bat_swarm=Bat Swarm
+bewitchment.howl=Howl
+bewitchment.wolf_shift=Transform
+
 //Gui
 container.apiary=Apiary
 container.oven=Oven
@@ -169,6 +176,9 @@ item.gem_powder.name=Gem Powder
 item.cold_iron_nugget.name=Cold Iron Nugget
 item.owlets_wing.name=Owlet's Wing
 item.ravens_feather.name=Raven's Feather
+item.adders_fork.name=Adder's Fork
+item.snake_venom.name=Snake Venom
+item.filet_of_fenny_snake.name=Filet of Fenny Snake
 item.cold_iron_dust.name=Cold Iron Powder
 item.cold_iron_dust_small.name=Cold Iron Dustpile
 item.spanish_moss_stuffing.name=Spanish Moss Stuffing
