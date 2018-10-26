@@ -143,6 +143,7 @@ public class EntitySnake extends EntityFamiliar {
 		}
 	}
 
+	//Todo: Add a cooldown to snake milking
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		{

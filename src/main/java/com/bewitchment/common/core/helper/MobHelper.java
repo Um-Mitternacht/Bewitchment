@@ -44,20 +44,22 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
+		SPIRITS.add(EntityBlaze.class.getName()); //Zabi, we discussed this in a past VC, and agreed these are spirits of sorts. As a result, they will stay.
+		SPIRITS.add(EntityGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
-		SPIRITS.add("betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
-		SPIRITS.add("eerieentities.entities.EntityNetherKnight");
-		SPIRITS.add("eerieentities.entities.EntityCursedArmor");
+		SPIRITS.add("its_meow.betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
+		SPIRITS.add("com.jarhax.eerieentities.entities.EntityNetherKnight");
+		SPIRITS.add("com.jarhax.eerieentities.entities.EntityCursedArmor");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
 		//DEMONS.add(EntityBlaze.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
 		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
-		CANIDS.add("betteranimalsplus.common.entity.EntityFeralWolf");
-		CANIDS.add("betteranimalsplus.common.entity.EntityFox");
-		CANIDS.add("betteranimalsplus.common.entity.EntityCoyote");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFeralWolf");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFox");
+		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityCoyote");
 
 		//Villagers are already included in the list
 		HUMANS.add(EntityWitch.class.getName());
@@ -74,18 +76,28 @@ public class MobHelper {
 		OWL_FOOD.add(EntityParrot.class.getName());
 		OWL_FOOD.add(EntityBat.class.getName());
 		OWL_FOOD.add(EntitySnake.class.getName());
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogBase");
-		OWL_FOOD.add("animania.common.entities.rodents.EntityHedgehogAlbino");
-		OWL_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogBase");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("historicizedmedicine.Mob.Rat.EntityRat");
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
+		WEREWOLF_FOOD.add(EntityCow.class.getName());
+		WEREWOLF_FOOD.add(EntityPig.class.getName());
+		WEREWOLF_FOOD.add(EntityHorse.class.getName());
+		WEREWOLF_FOOD.add(EntityDonkey.class.getName());
+		WEREWOLF_FOOD.add(EntityMule.class.getName());
+		WEREWOLF_FOOD.add(EntityLlama.class.getName());
+		WEREWOLF_FOOD.add(EntityMooshroom.class.getName());
+		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire"); //Todo: Get every single breed animania adds and support it ಠ_ಠ
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {

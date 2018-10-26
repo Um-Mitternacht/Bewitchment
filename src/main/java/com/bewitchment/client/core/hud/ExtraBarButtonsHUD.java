@@ -137,7 +137,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			}
 			IHotbarAction current = refreshSelected();
 			if (current != null && current != lastSelected) {
-				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain()+"."+current.getName().getResourcePath()), true);
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain() + "." + current.getName().getResourcePath()), true);
 			}
 		}
 	}
@@ -183,7 +183,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 				isInExtraBar = true;
 				IHotbarAction current = refreshSelected();
 				if (current != null && lastSelected != slotSelected) {
-					Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain()+"."+current.getName().getResourcePath()), true);
+					Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain() + "." + current.getName().getResourcePath()), true);
 				}
 			}
 		}
@@ -305,7 +305,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 	private void renderSelectionBox(double x, double y) {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
-		GlStateManager.color(1,  1,  1, 1);
+		GlStateManager.color(1, 1, 1, 1);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buff = tessellator.getBuffer();

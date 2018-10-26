@@ -1,19 +1,18 @@
 package com.bewitchment.common.potion.potions;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.helper.PlayerHelper;
 import com.bewitchment.common.potion.PotionMod;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PotionBloodDrained extends PotionMod {
 
