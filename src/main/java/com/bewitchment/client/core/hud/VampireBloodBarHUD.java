@@ -1,13 +1,10 @@
 package com.bewitchment.client.core.hud;
 
-import org.lwjgl.opengl.GL11;
-
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -22,15 +19,29 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class VampireBloodBarHUD extends HudComponent {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/blood_meter.png");
-	
+
 	public VampireBloodBarHUD() {
 		super(80, 8);
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	protected static void renderTextureAt(double x, double y, int w, int h, double uMin, double vMin, double uMax, double vMax) {
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder buff = tessellator.getBuffer();
+
+		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		buff.pos(x, y + h, 0).tex(uMin, vMax).endVertex();
+		buff.pos(x + w, y + h, 0).tex(uMax, vMax).endVertex();
+		buff.pos(x + w, y, 0).tex(uMax, vMin).endVertex();
+		buff.pos(x, y, 0).tex(uMin, vMin).endVertex();
+
+		tessellator.draw();
 	}
 
 	@SubscribeEvent
@@ -77,12 +88,11 @@ public class VampireBloodBarHUD extends HudComponent {
 	public void resetConfig() {
 		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.v_anchor = EnumHudAnchor.END_ABSOLUTE;
 		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.x = 9 + getWidth()/2;
+		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.x = 9 + getWidth() / 2;
 		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.y = 39 - getHeight();
 		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.deactivate = false;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
-
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
@@ -125,46 +135,33 @@ public class VampireBloodBarHUD extends HudComponent {
 		}
 		if (doRender) {
 			GlStateManager.pushMatrix();
-			GlStateManager.color(1,  1,  1,  1);
+			GlStateManager.color(1, 1, 1, 1);
 			Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
 			GlStateManager.enableBlend();
-			
-			renderTextureAt(getX() + 1, getY(), (int) ((getWidth()-2)*blood), getHeight(), 0, 0.5, blood, 1); //Draw the content
-			renderTextureAt(getX(), getY(), 1, getHeight(), 4d/getWidth(), 0, 5d/getWidth(), 0.5); //Draw the first vertical line
-			renderTextureAt(getX() + getWidth() - 2, getY(), 2, getHeight(), 3d/getWidth(), 0, 5d/getWidth(), 0.5); //Draw the last 2 vertical lines
-			int pixelsPerSlot = (int) ((getWidth()-2d)/(level+1d));
+
+			renderTextureAt(getX() + 1, getY(), (int) ((getWidth() - 2) * blood), getHeight(), 0, 0.5, blood, 1); //Draw the content
+			renderTextureAt(getX(), getY(), 1, getHeight(), 4d / getWidth(), 0, 5d / getWidth(), 0.5); //Draw the first vertical line
+			renderTextureAt(getX() + getWidth() - 2, getY(), 2, getHeight(), 3d / getWidth(), 0, 5d / getWidth(), 0.5); //Draw the last 2 vertical lines
+			int pixelsPerSlot = (int) ((getWidth() - 2d) / (level + 1d));
 			for (int i = 0; i < level; i++) { //Draw each slot
-				renderTextureAt(1 + getX() + i*pixelsPerSlot, getY(), 1, getHeight(), 3d/getWidth(), 0, 4d/getWidth(), 0.5);
-				renderTextureAt(2 + getX() + i*pixelsPerSlot, getY(), pixelsPerSlot-1, getHeight(), 0, 0, 1d/getWidth(), 0.5);
+				renderTextureAt(1 + getX() + i * pixelsPerSlot, getY(), 1, getHeight(), 3d / getWidth(), 0, 4d / getWidth(), 0.5);
+				renderTextureAt(2 + getX() + i * pixelsPerSlot, getY(), pixelsPerSlot - 1, getHeight(), 0, 0, 1d / getWidth(), 0.5);
 			}
-			renderTextureAt(1 + getX() + level*pixelsPerSlot, getY(), 1, getHeight(), 3d/getWidth(), 0, 4d/getWidth(), 0.5);
-			renderTextureAt(2 + getX() + level*pixelsPerSlot, getY(), getWidth()-(pixelsPerSlot*level)-4, getHeight(), 0, 0, 1d/getWidth(), 0.5);
+			renderTextureAt(1 + getX() + level * pixelsPerSlot, getY(), 1, getHeight(), 3d / getWidth(), 0, 4d / getWidth(), 0.5);
+			renderTextureAt(2 + getX() + level * pixelsPerSlot, getY(), getWidth() - (pixelsPerSlot * level) - 4, getHeight(), 0, 0, 1d / getWidth(), 0.5);
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
 	}
-	
-	protected static void renderTextureAt(double x, double y, int w, int h, double uMin, double vMin, double uMax, double vMax) {
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder buff = tessellator.getBuffer();
 
-		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		buff.pos(x, y + h, 0).tex(uMin, vMax).endVertex();
-		buff.pos(x + w, y + h, 0).tex(uMax, vMax).endVertex();
-		buff.pos(x + w, y, 0).tex(uMax, vMin).endVertex();
-		buff.pos(x, y, 0).tex(uMin, vMin).endVertex();
-
-		tessellator.draw();
-	}
-	
 	@Override
 	public int getWidth() {
 		return 80;
 	}
-	
+
 	@Override
 	public int getHeight() {
 		return 8;
 	}
-	
+
 }

@@ -197,12 +197,12 @@ public final class ConfigHandler {
 		@Comment("Customize the action bar HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.action_bar")
 		public AbilityBarHUD ACTION_BAR_HUD = new AbilityBarHUD();
-		
+
 
 		@Comment("Customize the vampire blood meter HUD positions in the screen")
 		@Config.LangKey("bewitchment.config.vampire_blood_meter")
-		public VampireBloodHUD VAMPIRE_METER_HUD = new VampireBloodHUD();  
-		
+		public VampireBloodHUD VAMPIRE_METER_HUD = new VampireBloodHUD();
+
 		@Comment("The amount of visual imprecision to give to chalk runes. Use 0 to have them perfectly aligned to the block")
 		@Config.RangeDouble(min = 0d, max = 1d)
 		public double glyphImprecision = 0.6d;
@@ -251,7 +251,7 @@ public final class ConfigHandler {
 			@Comment("Defines how to calculate the x offset")
 			public EnumHudAnchor v_anchor = EnumHudAnchor.START_ABSOULTE;
 		}
-		
+
 		public static class VampireBloodHUD {
 			@Comment("Should the vampire blood meter be completely removed?")
 			public boolean deactivate = false;

@@ -606,6 +606,9 @@ effect.revealing.desc=Dispels illusions
 effect.adders_kiss=Adder's Kiss
 effect.adders_kiss.desc=Damages pests, such as rabbits
 
+effect.deaths_ebb=Death's Ebb
+effect.deaths_ebb.desc=Summons a zombie at your location
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing
