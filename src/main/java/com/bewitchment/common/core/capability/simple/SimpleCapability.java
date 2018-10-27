@@ -81,6 +81,9 @@ public abstract class SimpleCapability {
 		Objects.requireNonNull(modId);
 		capInstance.id = nextId++;
 		capabilities.add(new Tuple<>(capInstance, capabilityObj));
+		if (capabilities.get(capInstance.id).getFirst() != capInstance) {
+			throw new IllegalStateException("SimpleCapability "+capabilityObj.getName()+" internal ID doesn't match the lookup id. Things won't work!");
+		}
 		CapabilityEventListener<C> cel = new CapabilityEventListener<C>(modId + capabilityClass.getName(), capabilityObj, capInstance);
 		MinecraftForge.EVENT_BUS.register(cel);
 	}
