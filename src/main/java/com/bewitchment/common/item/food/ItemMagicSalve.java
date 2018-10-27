@@ -25,7 +25,7 @@ import net.minecraft.world.World;
  * the MIT license.
  */
 
-//Todo: Make this expand ME only once
+//Todo: Make this expand ME only once, and make sure it's ME extension is working
 public class ItemMagicSalve extends ItemMod implements IMagicPowerExpander {
 
 	public ItemMagicSalve() {
