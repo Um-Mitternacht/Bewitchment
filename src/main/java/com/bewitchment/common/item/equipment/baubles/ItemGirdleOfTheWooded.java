@@ -1,26 +1,37 @@
 package com.bewitchment.common.item.equipment.baubles;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import org.lwjgl.opengl.GL11;
+
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
+import com.bewitchment.common.core.capability.simple.BarkCapability;
+import com.bewitchment.common.item.ItemMod;
+
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
-import com.bewitchment.common.core.capability.simple.BarkCapability;
-import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
@@ -30,10 +41,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 
@@ -51,22 +58,19 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	}
 
 	public static boolean buildBark(EntityPlayer player) {
-		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
-		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
-		int value = Math.min(possible, base);
-		if (value > 5) {
-			return false;
+		BarkCapability bark = player.getCapability(BarkCapability.CAPABILITY, null);
+		int oldAmount = bark.pieces;
+		bark.pieces++;
+		fixBark(player);
+		bark.markDirty();
+		if (oldAmount < bark.pieces) {
+			return true;
 		}
-		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value + 1;
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
-		return true;
+		return false;
 	}
 
 	public static int getBarkPieces(EntityPlayer player) {
-		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
-		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
-		int actual = Math.min(possible, base);
-		return actual;
+		return player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 	}
 
 	@Override
@@ -80,23 +84,25 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 			if (!(entity instanceof EntityPlayer)) {
 				return;
 			}
-			if (entity.getRNG().nextDouble() < 0.0008d) { // ~once a minute
-				EntityPlayer player = (EntityPlayer) entity;
+			EntityPlayer player = (EntityPlayer) entity;
+			if (isValidSpot(player) && entity.getRNG().nextDouble() < 0.0008d) { // ~once a minute
 				if (buildBark(player)) {
-					player.playSound(SoundEvents.BLOCK_CHORUS_FLOWER_GROW, 0.75F, 0.5F);// TODO Needs to be synced with server
+					player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 10, false, false));
+					player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CHORUS_FLOWER_GROW, SoundCategory.PLAYERS, 1f, 1f);
 				}
 			}
+			
 		}
 	}
 
-	private boolean destroyBark(EntityPlayer player) {
+	private boolean isValidSpot(EntityPlayer player) {
+		return player.world.getBlockState(player.getPosition().down()).getBlock() == Blocks.GRASS;
+	}
+
+	private void destroyBark(EntityPlayer player) {
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces -= 1;
+		fixBark(player);
 		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
-		if (player.getCapability(BarkCapability.CAPABILITY, null).pieces < 0) {
-			player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
-			return false;
-		}
-		return true;
 	}
 
 	@Override
@@ -115,6 +121,22 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
+	
+	public static void fixBark(EntityPlayer player) {
+		int value = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
+		int possible = Math.max((10 - (int) Math.ceil(ForgeHooks.getTotalArmorValue(player) / 2f)), 0);
+		if (ForgeHooks.getTotalArmorValue(player)==0) {
+			possible = 0;
+		}
+		possible = Math.min(possible, 4);
+		if (value > possible) {
+			value = possible;
+		}
+		if (value < 0) {
+			value = 0;
+		}
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value;
+	}
 
 	@Override
 	public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
@@ -124,7 +146,8 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
-		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 5 : 0;
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 10 : 0;
+		fixBark((EntityPlayer) player);
 		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 	}
 
@@ -138,7 +161,9 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	public void onPlayerDamaged(LivingHurtEvent evt) {
 		if (!evt.getEntityLiving().world.isRemote && evt.getAmount() > 2 && evt.getSource().getTrueSource() != null && evt.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) evt.getEntityLiving();
-			if (destroyBark(player)) {
+			fixBark(player);
+			if (player.getCapability(BarkCapability.CAPABILITY, null).pieces > 0) {
+				destroyBark(player);
 				evt.setCanceled(true);
 			}
 		}

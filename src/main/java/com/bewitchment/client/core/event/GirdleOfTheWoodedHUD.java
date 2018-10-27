@@ -41,8 +41,10 @@ public class GirdleOfTheWoodedHUD {
 			GL11.glPushMatrix();
 			GlStateManager.enableAlpha();
 			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			for (int i = 0; i < ItemGirdleOfTheWooded.getBarkPieces(Minecraft.getMinecraft().player); i++) {
-				renderTexture(evt.getResolution().getScaledWidth() / 2 - 91 + (8 * i), evt.getResolution().getScaledHeight() + 10 - GuiIngameForge.left_height, 9, 9, 0, 1);
+			int pieces = ItemGirdleOfTheWooded.getBarkPieces(Minecraft.getMinecraft().player);
+			int dx = 8 * (10 - pieces) - 91 + evt.getResolution().getScaledWidth() / 2;
+			for (int i = 0; i < pieces; i++) {
+				renderTexture(dx + (8 * i), evt.getResolution().getScaledHeight() + 10 - GuiIngameForge.left_height, 9, 9, 0, 1);
 			}
 			Minecraft.getMinecraft().renderEngine.bindTexture(ICONS);
 			GL11.glPopMatrix();
