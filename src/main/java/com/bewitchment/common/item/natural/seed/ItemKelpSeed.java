@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.natural.seed;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.Crop;
+import com.bewitchment.common.core.statics.ModCrops;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class ItemKelpSeed extends ItemSeed {
 
 	public ItemKelpSeed() {
-		super(LibItemName.SEED_KELP, ModBlocks.crop_kelp, Crop.KELP.getSoil());
+		super(LibItemName.SEED_KELP, ModBlocks.crop_kelp, ModCrops.KELP.getSoil());
 	}
 
 	@Override

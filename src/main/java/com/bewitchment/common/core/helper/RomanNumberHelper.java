@@ -5,7 +5,7 @@ package com.bewitchment.common.core.helper;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public final class RomanNumber {
+public final class RomanNumberHelper {
 
 	private static final String[] romans = {"", "I", "II", "III", "IV", "V", "V+"};
 

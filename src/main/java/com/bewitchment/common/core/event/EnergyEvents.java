@@ -1,9 +1,9 @@
 package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
-import com.bewitchment.common.core.capability.CapabilityUtils;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
+import com.bewitchment.common.core.helper.CapabilityHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EnergySync;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,8 +24,8 @@ public class EnergyEvents {
 	@SubscribeEvent
 	public static void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
 		if (event.isWasDeath()) {
-			CapabilityUtils.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
-			CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityMPExpansion.CAPABILITY);
+			CapabilityHelper.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
+			CapabilityHelper.copyDataOnPlayerRespawn(event, CapabilityMPExpansion.CAPABILITY);
 		}
 	}
 

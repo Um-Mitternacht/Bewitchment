@@ -3,7 +3,7 @@ package com.bewitchment.common.content.cauldron;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.cauldron.IBrewModifierList;
-import com.bewitchment.common.core.helper.RomanNumber;
+import com.bewitchment.common.core.helper.RomanNumberHelper;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -71,7 +71,7 @@ public abstract class SimpleModifier implements IBrewModifier {
 	@Override
 	public String getTooltipString(int lvl) {
 		if (hasMultipleLevels()) {
-			return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'), RomanNumber.getRoman(lvl));
+			return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'), RomanNumberHelper.getRoman(lvl));
 		}
 		return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'));
 	}

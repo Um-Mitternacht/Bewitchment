@@ -2,7 +2,7 @@ package com.bewitchment.common.item.magic;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.natural.BlockGemOre;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;

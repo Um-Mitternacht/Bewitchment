@@ -3,7 +3,7 @@ package com.bewitchment.client.core.hud;
 import com.bewitchment.api.transformation.IBloodReserve;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -56,55 +56,55 @@ public class BloodViewerHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.BLOOD_HUD.deactivate;
+		return !ModConfig.CLIENT.BLOOD_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.BLOOD_HUD.deactivate = hidden;
+		ModConfig.CLIENT.BLOOD_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.BLOOD_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.BLOOD_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.BLOOD_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.BLOOD_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.BLOOD_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.BLOOD_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.BLOOD_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.BLOOD_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.BLOOD_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.BLOOD_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.BLOOD_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.BLOOD_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.BLOOD_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.BLOOD_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.BLOOD_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.BLOOD_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.BLOOD_HUD.v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.BLOOD_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.BLOOD_HUD.x = 15;
-		ConfigHandler.CLIENT.BLOOD_HUD.y = 0;
-		ConfigHandler.CLIENT.BLOOD_HUD.deactivate = false;
+		ModConfig.CLIENT.BLOOD_HUD.v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.BLOOD_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.BLOOD_HUD.x = 15;
+		ModConfig.CLIENT.BLOOD_HUD.y = 0;
+		ModConfig.CLIENT.BLOOD_HUD.deactivate = false;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.BLOOD_HUD.h_anchor;
+		return ModConfig.CLIENT.BLOOD_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.BLOOD_HUD.v_anchor;
+		return ModConfig.CLIENT.BLOOD_HUD.v_anchor;
 	}
 }

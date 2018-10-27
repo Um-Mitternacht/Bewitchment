@@ -1,4 +1,4 @@
-package com.bewitchment.common.core;
+package com.bewitchment.common.core.util;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;

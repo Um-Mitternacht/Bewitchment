@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.food;
 
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 
 /**

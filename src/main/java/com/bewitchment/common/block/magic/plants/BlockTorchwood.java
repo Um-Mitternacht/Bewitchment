@@ -2,7 +2,7 @@ package com.bewitchment.common.block.magic.plants;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;

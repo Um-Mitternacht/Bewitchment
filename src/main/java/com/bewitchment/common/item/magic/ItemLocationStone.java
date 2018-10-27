@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.helper.DimensionalPosition;
+import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 

@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.client.core.IModelRegister;
-import com.bewitchment.common.core.ICrop;
+
 import net.minecraft.block.BlockCrops;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
+public class BlockCrop extends BlockCrops implements IModelRegister {
 
 	private int maxAge;
 	private Item seed;
@@ -44,7 +44,6 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 		return seed;
 	}
 
-	@Override
 	public void setSeed(Item seed) {
 		this.seed = seed;
 	}
@@ -54,7 +53,6 @@ public class BlockCrop extends BlockCrops implements ICrop, IModelRegister {
 		return crop;
 	}
 
-	@Override
 	public void setCrop(Item crop) {
 		this.crop = crop;
 	}

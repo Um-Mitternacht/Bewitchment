@@ -15,6 +15,18 @@ public class Log {
 	public static void e(String s) {
 		Bewitchment.logger.error(s);
 	}
+	
+	public static void i(Object s) {
+		Bewitchment.logger.info(s);
+	}
+
+	public static void w(Object s) {
+		Bewitchment.logger.warn(s);
+	}
+
+	public static void e(Object s) {
+		Bewitchment.logger.error(s);
+	}
 
 	public static void askForReport() {
 		StringBuilder sb = new StringBuilder();

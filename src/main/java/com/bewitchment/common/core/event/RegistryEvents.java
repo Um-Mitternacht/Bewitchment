@@ -1,9 +1,11 @@
 package com.bewitchment.common.core.event;
 
+import static com.bewitchment.common.core.statics.ModCrops.*;
+
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.crop.BlockCrop;
-import com.bewitchment.common.core.Crop;
-import com.bewitchment.common.core.CropRegistry;
+import com.bewitchment.common.core.helper.CropHelper;
+import com.bewitchment.common.core.statics.ModCrops;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.natural.crop.*;
 import com.bewitchment.common.item.natural.seed.ItemKelpSeed;
@@ -17,8 +19,6 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.bewitchment.common.core.Crop.*;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -69,14 +69,14 @@ public final class RegistryEvents {
 				, new ItemThistle(), LibItemName.SEED_THISTLE);
 		registerCrop(GINGER, ModBlocks.crop_ginger
 				, new ItemGinger(), LibItemName.SEED_GINGER);
-		CropRegistry.registerCrop(KELP, ModBlocks.crop_kelp
+		CropHelper.registerCrop(KELP, ModBlocks.crop_kelp
 				, new ItemKelp(), new ItemKelpSeed());
 
 		ModItems.register(event.getRegistry());
 	}
 
-	private static void registerCrop(Crop crop, BlockCrop placed, Item cropItem, String seedName) {
-		CropRegistry.registerCrop(crop, placed, cropItem, new ItemSeed(seedName, placed, crop.getSoil()));
+	private static void registerCrop(ModCrops crop, BlockCrop placed, Item cropItem, String seedName) {
+		CropHelper.registerCrop(crop, placed, cropItem, new ItemSeed(seedName, placed, crop.getSoil()));
 	}
 
 	@SubscribeEvent

@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 import java.util.stream.Stream;
 
-public class BlockStream {
+public class BlockStreamHelper {
 
 	public static Stream<BlockPos> ofPos(BlockPos start, BlockPos end) {
 		Stream.Builder<BlockPos> builder = Stream.builder();

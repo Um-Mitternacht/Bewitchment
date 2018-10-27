@@ -5,10 +5,10 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
-import com.bewitchment.common.core.helper.BlockStream;
-import com.bewitchment.common.core.helper.DimensionalPosition;
+import com.bewitchment.common.core.helper.BlockStreamHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.SmokeSpawn;
+import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemLocationStone;
 import com.bewitchment.common.tile.ModTileEntity;
@@ -199,7 +199,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		}
 
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
-		List<BlockPos> placedOnGround = BlockStream.ofPos(getPos().add(3, 0, 3), getPos().add(-3, 0, -3))
+		List<BlockPos> placedOnGround = BlockStreamHelper.ofPos(getPos().add(3, 0, 3), getPos().add(-3, 0, -3))
 				.filter(t -> (world.getTileEntity(t) instanceof TileEntityPlacedItem))
 				.collect(Collectors.toList());
 		ArrayList<ItemStack> recipe = new ArrayList<>();

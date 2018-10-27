@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.helper;
+package com.bewitchment.common.core.util;
 
 import java.util.function.Supplier;
 

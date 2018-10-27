@@ -3,7 +3,8 @@ package com.bewitchment.common.item.equipment;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;

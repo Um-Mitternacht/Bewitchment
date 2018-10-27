@@ -3,7 +3,7 @@ package com.bewitchment.common.block.tools;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;

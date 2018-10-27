@@ -1,7 +1,8 @@
 package com.bewitchment.common.content.ritual.rituals;
 
 import com.bewitchment.common.content.ritual.RitualImpl;
-import com.bewitchment.common.core.helper.EmptyTeleporter;
+import com.bewitchment.common.core.util.EmptyTeleporter;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

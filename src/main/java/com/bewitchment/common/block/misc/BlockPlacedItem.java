@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.misc;
 
 import com.bewitchment.common.block.BlockModTileEntity;
-import com.bewitchment.common.core.MaterialItemPlaced;
+import com.bewitchment.common.core.util.MaterialItemPlaced;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import net.minecraft.block.Block;

@@ -2,7 +2,8 @@ package com.bewitchment.common.content.crystalBall;
 
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
-import com.bewitchment.common.core.capability.CapabilityUtils;
+import com.bewitchment.common.core.helper.CapabilityHelper;
+
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -14,7 +15,7 @@ public class FortunesEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerRespawn(PlayerEvent.Clone event) {
-		CapabilityUtils.copyDataOnPlayerRespawn(event, CapabilityFortune.CAPABILITY);
+		CapabilityHelper.copyDataOnPlayerRespawn(event, CapabilityFortune.CAPABILITY);
 	}
 
 	@SubscribeEvent

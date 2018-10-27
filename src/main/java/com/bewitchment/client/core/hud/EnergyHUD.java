@@ -5,7 +5,7 @@ import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerUsingItem;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -59,7 +59,7 @@ public class EnergyHUD extends HudComponent {
 			if (energyChanged) {
 				shouldPulse = lastPulsed == 0;
 			}
-			if (energyChanged || isItemEnergyUsing() || !ConfigHandler.CLIENT.ENERGY_HUD.autoHide) {
+			if (energyChanged || isItemEnergyUsing() || !ModConfig.CLIENT.ENERGY_HUD.autoHide) {
 				oldEnergy = storage.getAmount();
 				oldMaxEnergy = storage.getMaxAmount();
 				oldInfusion = BewitchmentAPI.getAPI().getPlayerInfusion(Minecraft.getMinecraft().player).getTexture();
@@ -112,10 +112,10 @@ public class EnergyHUD extends HudComponent {
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.ENERGY_HUD.v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.ENERGY_HUD.h_anchor = EnumHudAnchor.START_ABSOULTE;
-		ConfigHandler.CLIENT.ENERGY_HUD.x = 10;
-		ConfigHandler.CLIENT.ENERGY_HUD.y = 0;
+		ModConfig.CLIENT.ENERGY_HUD.v_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.ENERGY_HUD.h_anchor = EnumHudAnchor.START_ABSOULTE;
+		ModConfig.CLIENT.ENERGY_HUD.x = 10;
+		ModConfig.CLIENT.ENERGY_HUD.y = 0;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
@@ -208,45 +208,45 @@ public class EnergyHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.ENERGY_HUD.deactivate;
+		return !ModConfig.CLIENT.ENERGY_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.ENERGY_HUD.deactivate = hidden;
+		ModConfig.CLIENT.ENERGY_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.ENERGY_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.ENERGY_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.ENERGY_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.ENERGY_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.ENERGY_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.ENERGY_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.ENERGY_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.ENERGY_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.ENERGY_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.ENERGY_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.ENERGY_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.ENERGY_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.ENERGY_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.ENERGY_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.ENERGY_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.ENERGY_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.ENERGY_HUD.h_anchor;
+		return ModConfig.CLIENT.ENERGY_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.ENERGY_HUD.v_anchor;
+		return ModConfig.CLIENT.ENERGY_HUD.v_anchor;
 	}
 
 }

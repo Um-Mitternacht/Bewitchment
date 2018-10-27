@@ -3,7 +3,7 @@ package com.bewitchment.common.item.magic;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.handler.ModSounds;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;

@@ -1,8 +1,8 @@
 package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
-import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.core.helper.MobHelper;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;

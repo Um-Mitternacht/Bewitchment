@@ -1,4 +1,4 @@
-package com.bewitchment.common.core;
+package com.bewitchment.common.core.statics;
 
 import com.bewitchment.common.block.ModBlocks;
 import net.minecraft.block.Block;
@@ -9,7 +9,7 @@ import net.minecraft.init.Blocks;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public enum Crop {
+public enum ModCrops {
 	ACONITUM(Blocks.FARMLAND, 20),
 	ASPHODEL(Blocks.FARMLAND),
 	BELLADONNA(Blocks.FARMLAND, 20),
@@ -33,12 +33,12 @@ public enum Crop {
 	private final Block soil;
 	private int mp_expansion_on_eat;
 
-	Crop(Block soil) {
+	ModCrops(Block soil) {
 		this.soil = soil;
 		mp_expansion_on_eat = 10;
 	}
 
-	Crop(Block soil, int magicValue) {
+	ModCrops(Block soil, int magicValue) {
 		this(soil);
 		mp_expansion_on_eat = magicValue;
 	}

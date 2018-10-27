@@ -4,7 +4,8 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.bewitchment.common.core.ModCreativeTabs;
+
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;

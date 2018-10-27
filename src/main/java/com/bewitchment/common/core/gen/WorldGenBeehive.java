@@ -1,7 +1,8 @@
 package com.bewitchment.common.core.gen;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +22,7 @@ public class WorldGenBeehive implements IWorldGenerator {
 	private static void generateBeehives(World world, Random random, int chunkX, int chunkZ) {
 		final BlockPos.MutableBlockPos variableBlockPos = new BlockPos.MutableBlockPos();
 
-		if (random.nextFloat() < ConfigHandler.WORLD_GEN.beehive.beehive_gen_chance / 33.0f) {
+		if (random.nextFloat() < ModConfig.WORLD_GEN.beehive.beehive_gen_chance / 33.0f) {
 			int x = chunkX + random.nextInt(16);
 			int z = chunkZ + random.nextInt(16);
 			int y = world.getHeight(x, z) - 1; // if there is a tree, world height will be just above the top leaves of the tree.

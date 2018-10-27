@@ -3,7 +3,7 @@ package com.bewitchment.common.content.ritual.rituals;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.content.ritual.RitualImpl;
-import com.bewitchment.common.core.helper.DimensionalPosition;
+import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemLocationStone;
 import net.minecraft.entity.EntityLivingBase;

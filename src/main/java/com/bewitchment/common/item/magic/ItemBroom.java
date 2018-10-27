@@ -2,7 +2,7 @@ package com.bewitchment.common.item.magic;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.tree.BlockModSapling.EnumSaplingType;
-import com.bewitchment.common.core.handler.ModSounds;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.entity.EntityFlyingBroom;
 import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

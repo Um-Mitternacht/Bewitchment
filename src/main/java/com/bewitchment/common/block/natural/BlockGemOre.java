@@ -20,9 +20,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-import java.util.Random;
 
-import static com.bewitchment.common.core.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
+import static com.bewitchment.common.core.statics.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
+
+import java.util.Random;
 
 /**
  * This class was created by <Arekkuusu> on 27/06/2017.

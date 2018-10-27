@@ -3,7 +3,7 @@ package com.bewitchment.client.core.hud;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.capability.ITransformationData;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -53,55 +53,55 @@ public class VampireBloodBarHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.VAMPIRE_METER_HUD.deactivate;
+		return !ModConfig.CLIENT.VAMPIRE_METER_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.deactivate = hidden;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.VAMPIRE_METER_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.VAMPIRE_METER_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.VAMPIRE_METER_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.VAMPIRE_METER_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.VAMPIRE_METER_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.VAMPIRE_METER_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.VAMPIRE_METER_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.VAMPIRE_METER_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.v_anchor = EnumHudAnchor.END_ABSOLUTE;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.x = 9 + getWidth() / 2;
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.y = 39 - getHeight();
-		ConfigHandler.CLIENT.VAMPIRE_METER_HUD.deactivate = false;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.v_anchor = EnumHudAnchor.END_ABSOLUTE;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.x = 9 + getWidth() / 2;
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.y = 39 - getHeight();
+		ModConfig.CLIENT.VAMPIRE_METER_HUD.deactivate = false;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.VAMPIRE_METER_HUD.h_anchor;
+		return ModConfig.CLIENT.VAMPIRE_METER_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.VAMPIRE_METER_HUD.v_anchor;
+		return ModConfig.CLIENT.VAMPIRE_METER_HUD.v_anchor;
 	}
 
 	@Override

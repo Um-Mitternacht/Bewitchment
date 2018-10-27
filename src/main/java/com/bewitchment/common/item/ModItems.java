@@ -5,8 +5,8 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.block.natural.fluid.Fluids;
-import com.bewitchment.common.core.CropRegistry;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.helper.CropHelper;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.block.ItemBlockMeta.EnumNameMode;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
@@ -205,8 +205,8 @@ public final class ModItems {
 	}
 
 	public static void register(final IForgeRegistry<Item> registry) {
-		CropRegistry.getFoods().forEach((crop, item) -> registry.register(item));
-		CropRegistry.getSeeds().forEach((crop, item) -> registry.register(item));
+		CropHelper.getFoods().forEach((crop, item) -> registry.register(item));
+		CropHelper.getSeeds().forEach((crop, item) -> registry.register(item));
 		for (final IFluidBlock fluidBlock : Fluids.MOD_FLUID_BLOCKS) {
 			registry.register(itemBlock((Block) fluidBlock));
 		}

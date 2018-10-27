@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.handler;
+package com.bewitchment.common.core.statics;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;

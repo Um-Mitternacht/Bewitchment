@@ -1,7 +1,7 @@
 package com.bewitchment.common.item.secrets;
 
 import com.bewitchment.client.core.ModelResourceLocations;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
 

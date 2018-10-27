@@ -8,8 +8,8 @@ import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
 import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
-import com.bewitchment.common.core.ModCreativeTabs;
-import com.bewitchment.common.core.helper.RomanNumber;
+import com.bewitchment.common.core.helper.RomanNumberHelper;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.client.gui.GuiScreen;
@@ -57,7 +57,7 @@ public class ItemBrew extends ItemMod {
 				String powerString = "";
 				String lengthString = "";
 				if (power.isPresent() && power.get() > 1) {
-					powerString = RomanNumber.getRoman(power.get());
+					powerString = RomanNumberHelper.getRoman(power.get());
 				}
 				lengthString = getLengthTTip(lengthMod, brewEntry.getPotion(), stack.getItem());
 

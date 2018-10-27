@@ -2,7 +2,7 @@ package com.bewitchment.common.item.natural.crop;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerExpander;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 
 import net.minecraft.entity.player.EntityPlayer;

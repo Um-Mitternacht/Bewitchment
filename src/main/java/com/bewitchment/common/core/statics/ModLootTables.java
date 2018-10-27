@@ -1,4 +1,4 @@
-package com.bewitchment.common.core;
+package com.bewitchment.common.core.statics;
 
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;

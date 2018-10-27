@@ -3,7 +3,7 @@ package com.bewitchment.client.core.hud;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -27,10 +27,10 @@ public class MoonHUD extends HudComponent {
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.MOON_HUD.v_anchor = EnumHudAnchor.START_ABSOULTE;
-		ConfigHandler.CLIENT.MOON_HUD.h_anchor = EnumHudAnchor.START_ABSOULTE;
-		ConfigHandler.CLIENT.MOON_HUD.x = 10;
-		ConfigHandler.CLIENT.MOON_HUD.y = 10;
+		ModConfig.CLIENT.MOON_HUD.v_anchor = EnumHudAnchor.START_ABSOULTE;
+		ModConfig.CLIENT.MOON_HUD.h_anchor = EnumHudAnchor.START_ABSOULTE;
+		ModConfig.CLIENT.MOON_HUD.x = 10;
+		ModConfig.CLIENT.MOON_HUD.y = 10;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
@@ -101,46 +101,46 @@ public class MoonHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.MOON_HUD.deactivate;
+		return !ModConfig.CLIENT.MOON_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.MOON_HUD.deactivate = hidden;
+		ModConfig.CLIENT.MOON_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.MOON_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.MOON_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.MOON_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.MOON_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.MOON_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.MOON_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.MOON_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.MOON_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.MOON_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.MOON_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.MOON_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.MOON_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.MOON_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.MOON_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.MOON_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.MOON_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.MOON_HUD.h_anchor;
+		return ModConfig.CLIENT.MOON_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.MOON_HUD.v_anchor;
+		return ModConfig.CLIENT.MOON_HUD.v_anchor;
 	}
 
 }

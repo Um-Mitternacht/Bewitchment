@@ -2,7 +2,7 @@ package com.bewitchment.client.core.hud;
 
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.common.content.actionbar.ModAbilities;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -18,54 +18,54 @@ public class SelectedActionHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.CURRENTACTION_HUD.deactivate;
+		return !ModConfig.CLIENT.CURRENTACTION_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.deactivate = hidden;
+		ModConfig.CLIENT.CURRENTACTION_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.CURRENTACTION_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.CURRENTACTION_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.CURRENTACTION_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.CURRENTACTION_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.CURRENTACTION_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.CURRENTACTION_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.CURRENTACTION_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.CURRENTACTION_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.CURRENTACTION_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.CURRENTACTION_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.CURRENTACTION_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.CURRENTACTION_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.v_anchor = EnumHudAnchor.START_RELATIVE;
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.x = 0;
-		ConfigHandler.CLIENT.CURRENTACTION_HUD.y = 0.25;
+		ModConfig.CLIENT.CURRENTACTION_HUD.v_anchor = EnumHudAnchor.START_RELATIVE;
+		ModConfig.CLIENT.CURRENTACTION_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.CURRENTACTION_HUD.x = 0;
+		ModConfig.CLIENT.CURRENTACTION_HUD.y = 0.25;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.CURRENTACTION_HUD.h_anchor;
+		return ModConfig.CLIENT.CURRENTACTION_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.CURRENTACTION_HUD.v_anchor;
+		return ModConfig.CLIENT.CURRENTACTION_HUD.v_anchor;
 	}
 
 	@Override
@@ -75,12 +75,12 @@ public class SelectedActionHUD extends HudComponent {
 
 	@Override
 	public int getWidth() {
-		return (int) (super.getWidth() * ConfigHandler.CLIENT.CURRENTACTION_HUD.scale);
+		return (int) (super.getWidth() * ModConfig.CLIENT.CURRENTACTION_HUD.scale);
 	}
 
 	@Override
 	public int getHeight() {
-		return (int) (super.getHeight() * ConfigHandler.CLIENT.CURRENTACTION_HUD.scale);
+		return (int) (super.getHeight() * ModConfig.CLIENT.CURRENTACTION_HUD.scale);
 	}
 
 	@Override

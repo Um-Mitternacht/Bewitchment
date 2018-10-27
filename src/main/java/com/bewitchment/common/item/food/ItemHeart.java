@@ -2,7 +2,7 @@ package com.bewitchment.common.item.food;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.mp.IMagicPowerExpander;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

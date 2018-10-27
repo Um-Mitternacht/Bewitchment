@@ -4,9 +4,9 @@ import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.handler.Keybinds;
 import com.bewitchment.common.content.actionbar.HotbarAction;
 import com.bewitchment.common.content.actionbar.ModAbilities;
-import com.bewitchment.common.core.handler.ConfigHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.PlayerUsedAbilityMessage;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -94,7 +94,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 
 	@SubscribeEvent
 	public void handRender(RenderHandEvent evt) {
-		if (isInExtraBar && ConfigHandler.CLIENT.ACTION_BAR_HUD.hideHandWithAbility) {
+		if (isInExtraBar && ModConfig.CLIENT.ACTION_BAR_HUD.hideHandWithAbility) {
 			evt.setCanceled(true);
 		}
 	}
@@ -109,7 +109,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 	@SubscribeEvent
 	public void scrollWheelHijacker(MouseEvent evt) {
 		int dir = evt.getDwheel() == 0 ? 0 : evt.getDwheel() > 0 ? -1 : 1;
-		if (dir == 0 || (!Minecraft.getMinecraft().player.isSneaking() && !ConfigHandler.CLIENT.ACTION_BAR_HUD.autoJumpToBar && !isInExtraBar))
+		if (dir == 0 || (!Minecraft.getMinecraft().player.isSneaking() && !ModConfig.CLIENT.ACTION_BAR_HUD.autoJumpToBar && !isInExtraBar))
 			return;
 		int curItm = Minecraft.getMinecraft().player.inventory.currentItem;
 		int max = actions.size();
@@ -188,7 +188,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			}
 		}
 		if (Keybinds.alwaysEnableBar.isPressed()) {
-			ConfigHandler.CLIENT.ACTION_BAR_HUD.autoJumpToBar = !ConfigHandler.CLIENT.ACTION_BAR_HUD.autoJumpToBar;
+			ModConfig.CLIENT.ACTION_BAR_HUD.autoJumpToBar = !ModConfig.CLIENT.ACTION_BAR_HUD.autoJumpToBar;
 			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_1) || Keyboard.isKeyDown(Keyboard.KEY_2) || Keyboard.isKeyDown(Keyboard.KEY_3) || Keyboard.isKeyDown(Keyboard.KEY_4) || Keyboard.isKeyDown(Keyboard.KEY_5) || Keyboard.isKeyDown(Keyboard.KEY_6) || Keyboard.isKeyDown(Keyboard.KEY_7) || Keyboard.isKeyDown(Keyboard.KEY_8) || Keyboard.isKeyDown(Keyboard.KEY_9)) {
@@ -215,55 +215,55 @@ public class ExtraBarButtonsHUD extends HudComponent {
 
 	@Override
 	public boolean isActive() {
-		return !ConfigHandler.CLIENT.ACTION_BAR_HUD.deactivate;
+		return !ModConfig.CLIENT.ACTION_BAR_HUD.deactivate;
 	}
 
 	@Override
 	public void setHidden(boolean hidden) {
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.deactivate = hidden;
+		ModConfig.CLIENT.ACTION_BAR_HUD.deactivate = hidden;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public double getX() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.ACTION_BAR_HUD.h_anchor.dataToPixel(ConfigHandler.CLIENT.ACTION_BAR_HUD.x, getWidth(), sr.getScaledWidth());
+		return ModConfig.CLIENT.ACTION_BAR_HUD.h_anchor.dataToPixel(ModConfig.CLIENT.ACTION_BAR_HUD.x, getWidth(), sr.getScaledWidth());
 	}
 
 	@Override
 	public double getY() {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		return ConfigHandler.CLIENT.ACTION_BAR_HUD.v_anchor.dataToPixel(ConfigHandler.CLIENT.ACTION_BAR_HUD.y, getHeight(), sr.getScaledHeight());
+		return ModConfig.CLIENT.ACTION_BAR_HUD.v_anchor.dataToPixel(ModConfig.CLIENT.ACTION_BAR_HUD.y, getHeight(), sr.getScaledHeight());
 	}
 
 	@Override
 	public void setRelativePosition(double x, double y, EnumHudAnchor horizontal, EnumHudAnchor vertical) {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.v_anchor = vertical;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.h_anchor = horizontal;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
+		ModConfig.CLIENT.ACTION_BAR_HUD.v_anchor = vertical;
+		ModConfig.CLIENT.ACTION_BAR_HUD.h_anchor = horizontal;
+		ModConfig.CLIENT.ACTION_BAR_HUD.x = horizontal.pixelToData(x, getWidth(), sr.getScaledWidth());
+		ModConfig.CLIENT.ACTION_BAR_HUD.y = vertical.pixelToData(y, getHeight(), sr.getScaledHeight());
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public void resetConfig() {
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.v_anchor = EnumHudAnchor.END_ABSOLUTE;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.x = 130;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.y = 2;
-		ConfigHandler.CLIENT.ACTION_BAR_HUD.deactivate = false;
+		ModConfig.CLIENT.ACTION_BAR_HUD.v_anchor = EnumHudAnchor.END_ABSOLUTE;
+		ModConfig.CLIENT.ACTION_BAR_HUD.h_anchor = EnumHudAnchor.CENTER_ABSOLUTE;
+		ModConfig.CLIENT.ACTION_BAR_HUD.x = 130;
+		ModConfig.CLIENT.ACTION_BAR_HUD.y = 2;
+		ModConfig.CLIENT.ACTION_BAR_HUD.deactivate = false;
 		ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorHorizontal() {
-		return ConfigHandler.CLIENT.ACTION_BAR_HUD.h_anchor;
+		return ModConfig.CLIENT.ACTION_BAR_HUD.h_anchor;
 	}
 
 	@Override
 	public EnumHudAnchor getAnchorVertical() {
-		return ConfigHandler.CLIENT.ACTION_BAR_HUD.v_anchor;
+		return ModConfig.CLIENT.ACTION_BAR_HUD.v_anchor;
 	}
 
 	@Override
@@ -296,8 +296,8 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			if (actionScroller[1] != null) {
 				actionScroller[1].render(getX() + 18, getY(), 16, 16, 0.4f);
 			}
-			if (slotSelected < 0 && actions.size() > 0 && ConfigHandler.CLIENT.ACTION_BAR_HUD.showArrowsInBar) {
-				arrows.render(getX(), getY(), 16, 16, ((Minecraft.getMinecraft().player.isSneaking() || ConfigHandler.CLIENT.ACTION_BAR_HUD.autoJumpToBar) ? 1 : 0.2f));
+			if (slotSelected < 0 && actions.size() > 0 && ModConfig.CLIENT.ACTION_BAR_HUD.showArrowsInBar) {
+				arrows.render(getX(), getY(), 16, 16, ((Minecraft.getMinecraft().player.isSneaking() || ModConfig.CLIENT.ACTION_BAR_HUD.autoJumpToBar) ? 1 : 0.2f));
 			}
 		}
 	}

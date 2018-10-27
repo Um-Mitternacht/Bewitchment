@@ -1,4 +1,4 @@
-package com.bewitchment.common.core;
+package com.bewitchment.common.core.statics;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.cauldron.BrewData;

@@ -6,7 +6,7 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package com.bewitchment.common.core.handler;
+package com.bewitchment.common.core.statics;
 
 import com.bewitchment.client.core.hud.HudComponent.EnumHudAnchor;
 import com.bewitchment.common.lib.LibMod;
@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @SuppressWarnings({"WeakerAccess"})
 @Config(modid = LibMod.MOD_ID)
 @Mod.EventBusSubscriber
-public final class ConfigHandler {
+public final class ModConfig {
 
 	@Comment("Change vein sizes, generation height and generation chance")
 	@Config.RequiresMcRestart

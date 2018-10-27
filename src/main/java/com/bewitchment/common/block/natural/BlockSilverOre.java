@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.natural;
 
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

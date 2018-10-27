@@ -3,7 +3,7 @@ package com.bewitchment.common.block.tools;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import net.minecraft.block.Block;
@@ -87,7 +87,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return super.getOffset(state, worldIn, pos).scale(ConfigHandler.CLIENT.glyphImprecision);
+		return super.getOffset(state, worldIn, pos).scale(ModConfig.CLIENT.glyphImprecision);
 	}
 
 	@Override

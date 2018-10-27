@@ -2,8 +2,8 @@ package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.handler.ModSounds;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;

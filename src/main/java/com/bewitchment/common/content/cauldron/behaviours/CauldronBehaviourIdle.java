@@ -4,7 +4,7 @@ import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
-import com.bewitchment.common.core.handler.ModSounds;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.util.CauldronFluidTank;

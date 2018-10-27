@@ -1,6 +1,6 @@
 package com.bewitchment.common.tile.tiles;
 
-import com.bewitchment.common.core.handler.ConfigHandler;
+import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import net.minecraft.block.Block;
@@ -31,7 +31,7 @@ class AltarScanHelper {
 			te.refreshUpgrades();
 			upgradeCheckScheduled = false;
 		}
-		for (int i = 0; i < ConfigHandler.altar_scan_blocks_per_tick; i++) {
+		for (int i = 0; i < ModConfig.altar_scan_blocks_per_tick; i++) {
 			getNextCycle();
 			performCurrentCycle();
 		}

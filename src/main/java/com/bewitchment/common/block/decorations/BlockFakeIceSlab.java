@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.decorations;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;

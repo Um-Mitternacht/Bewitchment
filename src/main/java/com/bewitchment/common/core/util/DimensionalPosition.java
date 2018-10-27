@@ -1,4 +1,4 @@
-package com.bewitchment.common.core.helper;
+package com.bewitchment.common.core.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;

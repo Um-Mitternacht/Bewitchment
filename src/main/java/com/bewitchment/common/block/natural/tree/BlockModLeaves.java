@@ -10,7 +10,7 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.ModCreativeTabs;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
