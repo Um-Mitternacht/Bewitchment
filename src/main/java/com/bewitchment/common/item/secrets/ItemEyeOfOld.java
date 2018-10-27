@@ -1,14 +1,14 @@
 package com.bewitchment.common.item.secrets;
 
+import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,33 +29,20 @@ public class ItemEyeOfOld extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModel() {
-		ModelBakery.registerItemVariants(this, new ModelResourceLocation(getRegistryName().toString()), new ModelResourceLocation(getRegistryName().toString())
-				, new ModelResourceLocation(LibMod.MOD_ID + ":haru"), new ModelResourceLocation(LibMod.MOD_ID + ":izu"));
+		ModelBakery.registerItemVariants(this, 
+				ModelResourceLocations.EYE_OF_OLD_NORMAL, 
+				ModelResourceLocations.EYE_OF_OLD_HARU,
+				ModelResourceLocations.EYE_OF_OLD_IZU);
 		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				ResourceLocation baseName = getRegistryName();
-				if (stack.getDisplayName().compareToIgnoreCase("Haru") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":haru");
+				if (stack.getDisplayName().equalsIgnoreCase("Haru") || stack.getDisplayName().equalsIgnoreCase("Haruspex") || stack.getDisplayName().equalsIgnoreCase("H4rv5p3x")) {
+					return ModelResourceLocations.EYE_OF_OLD_HARU;
 				}
-				if (stack.getDisplayName().compareToIgnoreCase("Haruspex") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":haru");
+				if (stack.getDisplayName().equalsIgnoreCase("Izuxe") || stack.getDisplayName().equalsIgnoreCase("Izu") || stack.getDisplayName().equalsIgnoreCase("Izuxe43ui520815")) {
+					return ModelResourceLocations.EYE_OF_OLD_IZU;
 				}
-				if (stack.getDisplayName().compareToIgnoreCase("H4rv5p3x") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":haru");
-				}
-				if (stack.getDisplayName().compareToIgnoreCase("Izuxe") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
-				}
-				if (stack.getDisplayName().compareToIgnoreCase("Izu") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
-				}
-				if (stack.getDisplayName().compareToIgnoreCase("Izuxe43ui520815") == 0) {
-					baseName = new ResourceLocation(LibMod.MOD_ID + ":izu");
-				} else {
-					return new ModelResourceLocation(baseName.toString());
-				}
-				return new ModelResourceLocation(baseName.toString());
+				return ModelResourceLocations.EYE_OF_OLD_NORMAL;
 			}
 		});
 	}

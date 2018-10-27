@@ -1,9 +1,17 @@
 package com.bewitchment.common.item.magic;
 
+import java.util.List;
+import java.util.Optional;
+
+import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
+
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -15,11 +23,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-import java.util.Optional;
 
 public class ItemLocationStone extends ItemMod {
 
@@ -111,5 +117,23 @@ public class ItemLocationStone extends ItemMod {
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return false;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelBakery.registerItemVariants(this, 
+				ModelResourceLocations.BOUND_LOCATION_STONE,
+				ModelResourceLocations.UNBOUND_LOCATION_STONE);
+		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
+			
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				if (isBound(stack)) {
+					return ModelResourceLocations.BOUND_LOCATION_STONE;
+				}
+				return ModelResourceLocations.UNBOUND_LOCATION_STONE;
+			}
+		});
 	}
 }
