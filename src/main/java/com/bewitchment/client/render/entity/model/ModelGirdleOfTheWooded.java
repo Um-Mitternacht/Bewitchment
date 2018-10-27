@@ -224,9 +224,6 @@ public class ModelGirdleOfTheWooded extends ModelBase {
 		if (barkPieces > 3) {
 			rootRight1.render(1);
 			rootLeft1.render(1);
-		}
-
-		if (barkPieces > 4) {
 			rootRight3.render(1);
 			rootLeft3.render(1);
 		}
