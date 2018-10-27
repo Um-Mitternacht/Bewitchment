@@ -16,8 +16,6 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import com.bewitchment.common.core.net.NetworkHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -39,6 +37,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
@@ -47,6 +46,12 @@ public abstract class SimpleCapability {
 	private static final HashMap<Class, Field[]> fieldCache = new HashMap<Class, Field[]>();
 	private static final ArrayList<Tuple<SimpleCapability, Capability<? extends SimpleCapability>>> capabilities = new ArrayList<>();
 	private static int nextId = 0;
+	private static SimpleNetworkWrapper net = null;
+	
+	//Call this somewhere during startup, passing your mods' network handler
+	public static void setup(SimpleNetworkWrapper netHandler) {
+		net = netHandler;
+	}
 
 	static {
 		map(byte.class, SimpleCapability::readByte, SimpleCapability::writeByte);
@@ -67,6 +72,8 @@ public abstract class SimpleCapability {
 
 	protected boolean dirty = false;
 	protected int id = -1;
+	
+	
 
 	public static <C extends SimpleCapability> void preInit(Class<C> capabilityClass) {
 		Objects.requireNonNull(capabilityClass);
@@ -433,7 +440,7 @@ public abstract class SimpleCapability {
 			if (!e.world.isRemote && e.hasCapability(capability, null) && evt.getEntityPlayer() instanceof EntityPlayerMP) {
 				NBTTagCompound tag = new NBTTagCompound();
 				e.getCapability(capability, null).writeSyncNBT(tag);
-				NetworkHandler.HANDLER.sendTo(new CapabilityMessage(default_instance.id, tag, e.getEntityId()), (EntityPlayerMP) evt.getEntityPlayer());
+				net.sendTo(new CapabilityMessage(default_instance.id, tag, e.getEntityId()), (EntityPlayerMP) evt.getEntityPlayer());
 			}
 		}
 
@@ -444,7 +451,7 @@ public abstract class SimpleCapability {
 				if (instance.dirty) {
 					NBTTagCompound tag = new NBTTagCompound();
 					evt.getEntityLiving().getCapability(capability, null).writeSyncNBT(tag);
-					NetworkHandler.HANDLER.sendToAllTracking(new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId()), evt.getEntityLiving());
+					net.sendToAllTracking(new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId()), evt.getEntityLiving());
 					instance.dirty = false;
 				}
 			}
@@ -456,7 +463,7 @@ public abstract class SimpleCapability {
 				EntityPlayerMP entity = (EntityPlayerMP) evt.getEntity();
 				NBTTagCompound tag = new NBTTagCompound();
 				evt.getEntity().getCapability(capability, null).writeSyncNBT(tag);
-				NetworkHandler.HANDLER.sendTo(new CapabilityMessage(this.default_instance.id, tag, entity.getEntityId()), entity);
+				net.sendTo(new CapabilityMessage(this.default_instance.id, tag, entity.getEntityId()), entity);
 			}
 		}
 

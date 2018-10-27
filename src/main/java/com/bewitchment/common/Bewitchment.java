@@ -100,6 +100,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(this);
 		ApiInstance.initAPI();
 		MobHelper.init();
+		SimpleCapability.setup(NetworkHandler.HANDLER);
 		CapabilityFortune.init();
 		InfusionCapability.init();
 		MagicPowerUsingItem.init();

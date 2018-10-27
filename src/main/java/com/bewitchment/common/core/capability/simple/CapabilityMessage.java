@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+//Register this in your mods' network handler, with Side.CLIENT
 public class CapabilityMessage extends SimpleMessage<CapabilityMessage> {
 
 	public NBTTagCompound tag;
