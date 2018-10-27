@@ -44,12 +44,9 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
-		SPIRITS.add(EntityBlaze.class.getName()); //Zabi, we discussed this in a past VC, and agreed these are spirits of sorts. As a result, they will stay.
-		SPIRITS.add(EntityGuardian.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("its_meow.betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
-		SPIRITS.add("com.jarhax.eerieentities.entities.EntityNetherKnight");
 		SPIRITS.add("com.jarhax.eerieentities.entities.EntityCursedArmor");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
