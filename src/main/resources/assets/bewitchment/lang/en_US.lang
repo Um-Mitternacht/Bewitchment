@@ -609,6 +609,9 @@ effect.adders_kiss.desc=Damages pests, such as rabbits
 effect.deaths_ebb=Death's Ebb
 effect.deaths_ebb.desc=Summons a zombie at your location
 
+effect.magickal_boon=Magickal Boon
+effect.magickal_boon.desc=Recharges your mind for more rituals
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing
