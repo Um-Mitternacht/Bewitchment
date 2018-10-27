@@ -696,6 +696,9 @@ item.talisman_adamantine_star_ring.name=Ring of the Adamantine Star
 item.talisman_emerald_pendant.name=Emerald Pendant
 item.talisman_ruby_orb.name=Scarlet Orb
 item.talisman_watching_eye.name=Everwatching Eye
+item.cursed_neckless.name=Cursed Amulet
+witch.tooltip.cursedNeckless_description.name=Great Power Is Flowing From This Amulet Why Don't I Put It On?
+
 
 //Trinket Descriptions
 witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
@@ -772,6 +775,7 @@ ritual.bewitchment.gateway.name=Ritual of the Gates
 ritual.bewitchment.shift_biome.name=Rite of the Falling Leaves
 ritual.bewitchment.nether_portal.name=Rite of the Profane Communion
 ritual.bewitchment.vampire_lair.name=Rite of Rising Darkness
+ritual.bewitchment.curse_amulet.name=Rite of Cursing
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong

@@ -25,7 +25,7 @@ public class ModRituals {
 			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair;
+			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, curse_amulet;
 
 	public static void init() {
 
@@ -213,6 +213,8 @@ public class ModRituals {
 		yew_broom = new RitualImpl(rl("yew_broom"), of(LibIngredients.logYew, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 2)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 3)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		cypress_broom = new RitualImpl(rl("cypress_broom"), of(LibIngredients.logCypress, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 4)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		vampire_lair = new RitualCreateVampireLair(rl("vampire_lair"), of(LibIngredients.bloodyRags, LibIngredients.bloodyRags, LibIngredients.anySapling, LibIngredients.blazePowder, LibIngredients.boline), ofs(), 200, circles(NORMAL, NETHER, NETHER), 5000, 5);
+		curse_amulet = new RitualCreateVampireLair(rl("curse_amulet"), of(LibIngredients.coldIronIngot,LibIngredients.fumeCloudyOil,LibIngredients.fumeReekOfDeath,LibIngredients.fumeBottledMagic), ofs(new ItemStack(ModItems.cursed_neckless)), 3500, circles(NETHER, NETHER, null), 10, 5);
+
 		registerAll();
 	}
 
@@ -222,7 +224,7 @@ public class ModRituals {
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
-				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair
+				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,curse_amulet
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));

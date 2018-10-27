@@ -179,6 +179,8 @@ public final class ModItems {
 	public static final Item wrathful_eye = null;
 	public static final Item mantle = null;
 	public static final Item pouch = null;
+	public static final Item cursed_neckless = null;
+
 
 	public static final Item magic_salve = null;
 
@@ -294,6 +296,7 @@ public final class ModItems {
 				new ItemNazar(),
 				new ItemHorseshoe(),
 				new ItemTriskelionAmulet(),
+				new ItemCursedNeckless("cursed_neckless"),
 				new ItemHellishBauble(),
 				new ItemWrathfulEye(),
 				new ItemTalisman(BaubleType.HEAD, 35, LibItemName.TALISMAN_AQUAMARINE_CROWN),

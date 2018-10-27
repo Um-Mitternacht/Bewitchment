@@ -459,7 +459,8 @@ item.amulet.name=Amulet
 item.trinket.name=Trinket
 item.crown.name=Crown
 item.charm.name=Charm
-
+item.cursed_neckless.name=Ehe Fancy
+witch.tooltip.cursedNeckless_description.name=OOOOOO me Tuch And Puot On The Preety Necktie
 //Books
 item.book_of_shadows.name=shady buuk
 item.dusty_grimoire.name=buuk dat is dusteh

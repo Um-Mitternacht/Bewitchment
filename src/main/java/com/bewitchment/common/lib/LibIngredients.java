@@ -83,5 +83,7 @@ public class LibIngredients {
 	public static Ingredient boline = Ingredient.fromItem(ModItems.boline);
 	public static Ingredient bloodyRags = Ingredient.fromItem(ModItems.sanguine_fabric);
 	public static Ingredient anySapling = new OreIngredient("treeSapling");
+	public static Ingredient coldIronIngot = Ingredient.fromItem(ModItems.cold_iron_ingot);
+
 
 }
