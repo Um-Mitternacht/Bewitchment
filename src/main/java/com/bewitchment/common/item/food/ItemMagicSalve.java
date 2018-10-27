@@ -1,5 +1,7 @@
 package com.bewitchment.common.item.food;
 
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
@@ -13,6 +15,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -21,7 +24,9 @@ import net.minecraft.world.World;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class ItemMagicSalve extends ItemMod {
+
+//Todo: Make this expand ME only once
+public class ItemMagicSalve extends ItemMod implements IMagicPowerExpander {
 
 	public ItemMagicSalve() {
 		super(LibItemName.MAGIC_SALVE);
@@ -41,7 +46,13 @@ public class ItemMagicSalve extends ItemMod {
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		player.setActiveHand(hand);
+		BewitchmentAPI.getAPI().expandPlayerMP(this, player);
 		return EnumActionResult.SUCCESS;
+	}
+
+	@Override
+	public ResourceLocation getID() {
+		return this.getRegistryName();
 	}
 
 	@Override
@@ -50,6 +61,11 @@ public class ItemMagicSalve extends ItemMod {
 		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 1000, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 1000, 1));
 		return new ItemStack(Items.GLASS_BOTTLE);
+	}
+
+	@Override
+	public int getExtraAmount() {
+		return 75;
 	}
 
 }
