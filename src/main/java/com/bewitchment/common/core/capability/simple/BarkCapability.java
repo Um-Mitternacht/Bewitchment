@@ -7,7 +7,7 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 
 public class BarkCapability extends SimpleCapability {
 
-	@CapabilityInject(value = BarkCapability.class)
+	@CapabilityInject(BarkCapability.class)
 	public static final Capability<BarkCapability> CAPABILITY = null;
 
 	public static final BarkCapability DEFAULT_INSTANCE = new BarkCapability();

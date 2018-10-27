@@ -54,12 +54,11 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		int base = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 		int possible = Math.min((ForgeHooks.getTotalArmorValue(player) / 2), 5);
 		int value = Math.min(possible, base);
-		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value + 1;
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 		if (value > 5) {
-			value = 5;
 			return false;
 		}
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value + 1;
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
 		return true;
 	}
 
@@ -76,26 +75,12 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	}
 
 	@Override
-	public boolean showDurabilityBar(ItemStack stack) {
-		return false;
-	}
-
-	@Override
-	public boolean isDamaged(ItemStack stack) {
-		return false;
-	}
-
-	@Override
-	public boolean isDamageable() {
-		return false;
-	}
-
-	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
 		if (!entity.world.isRemote) {
+			if (!(entity instanceof EntityPlayer)) {
+				return;
+			}
 			if (entity.getRNG().nextDouble() < 0.0008d) { // ~once a minute
-				if (!(entity instanceof EntityPlayer))
-					return;
 				EntityPlayer player = (EntityPlayer) entity;
 				if (buildBark(player)) {
 					player.playSound(SoundEvents.BLOCK_CHORUS_FLOWER_GROW, 0.75F, 0.5F);// TODO Needs to be synced with server

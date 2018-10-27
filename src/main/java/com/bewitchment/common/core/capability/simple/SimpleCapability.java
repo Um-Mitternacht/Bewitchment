@@ -6,6 +6,18 @@
 
 package com.bewitchment.common.core.capability.simple;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.UUID;
+
+import org.apache.commons.lang3.tuple.Pair;
+
+import com.bewitchment.common.core.net.NetworkHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,24 +39,14 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
-import java.util.function.Function;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
 
 	private static final HashMap<Class, Pair<Reader, Writer>> handlers = new HashMap<Class, Pair<Reader, Writer>>();
 	private static final HashMap<Class, Field[]> fieldCache = new HashMap<Class, Field[]>();
+	private static final ArrayList<Tuple<SimpleCapability, Capability<? extends SimpleCapability>>> capabilities = new ArrayList<>();
+	private static int nextId = 0;
 
 	static {
 		map(byte.class, SimpleCapability::readByte, SimpleCapability::writeByte);
@@ -64,15 +66,23 @@ public abstract class SimpleCapability {
 	}
 
 	protected boolean dirty = false;
+	protected int id = -1;
 
-	public static <C extends SimpleCapability> void preInit(Class<C> capabilityClass, String modId, Capability<C> capabilityObj, C capInstance) {
+	public static <C extends SimpleCapability> void preInit(Class<C> capabilityClass) {
+		Objects.requireNonNull(capabilityClass);
 		CapabilityManager.INSTANCE.register(capabilityClass, new SimpleStorage<C>(), () -> capabilityClass.newInstance());
+		
 	}
 
-	public static <C extends SimpleCapability, MSG extends IMessage> CapabilityEventListener<C, MSG> init(Class<C> capabilityClass, String modId, Capability<C> capabilityObj, C capInstance, SimpleNetworkWrapper modNetworkWrapper, Function<Tuple<Integer, NBTTagCompound>, MSG> messageFactory, Function<MSG, Tuple<Integer, NBTTagCompound>> messageDecoder) {
-		CapabilityEventListener<C, MSG> cel = new CapabilityEventListener<C, MSG>(modId + capabilityClass.getName(), capabilityObj, capInstance, modNetworkWrapper, messageFactory, messageDecoder);
+	public static <C extends SimpleCapability> void init(Class<C> capabilityClass, String modId, Capability<C> capabilityObj, C capInstance) {
+		Objects.requireNonNull(capabilityClass);
+		Objects.requireNonNull(capabilityObj);
+		Objects.requireNonNull(capInstance);
+		Objects.requireNonNull(modId);
+		capInstance.id = nextId++;
+		capabilities.add(new Tuple<>(capInstance, capabilityObj));
+		CapabilityEventListener<C> cel = new CapabilityEventListener<C>(modId + capabilityClass.getName(), capabilityObj, capInstance);
 		MinecraftForge.EVENT_BUS.register(cel);
-		return cel;
 	}
 
 	private static Vec3d readVec3d(NBTTagCompound tag, String name) {
@@ -394,29 +404,23 @@ public abstract class SimpleCapability {
 
 	}
 
-	public static class CapabilityEventListener<C extends SimpleCapability, MSG extends IMessage> implements IMessageHandler<MSG, IMessage> {
+	public static class CapabilityEventListener<C extends SimpleCapability> {
 
 		private final ResourceLocation name;
 		private final Capability<C> capability;
-		private final C default_instance;
-		private final SimpleNetworkWrapper net;
-		private final Function<Tuple<Integer, NBTTagCompound>, MSG> messageFactory;
-		private final Function<MSG, Tuple<Integer, NBTTagCompound>> messageDecoder;
+		private final SimpleCapability default_instance;
 
-		public CapabilityEventListener(String name, Capability<C> capability, C default_instance, SimpleNetworkWrapper modNetworkWrapper, Function<Tuple<Integer, NBTTagCompound>, MSG> messageFactory, Function<MSG, Tuple<Integer, NBTTagCompound>> messageDecoder) {
+		public CapabilityEventListener(String name, Capability<C> capability, SimpleCapability default_instance) {
 			this.name = new ResourceLocation(name);
 			this.capability = capability;
 			this.default_instance = default_instance;
-			this.net = modNetworkWrapper;
-			this.messageFactory = messageFactory;
-			this.messageDecoder = messageDecoder;
 		}
 
 
 		@SubscribeEvent
 		public void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 			if (default_instance.isRelevantFor(evt.getObject())) {
-				evt.addCapability(name, new SimpleProvider<C>(capability, default_instance));
+				evt.addCapability(name, new SimpleProvider(capability, default_instance));
 			}
 		}
 
@@ -426,7 +430,7 @@ public abstract class SimpleCapability {
 			if (!e.world.isRemote && e.hasCapability(capability, null) && evt.getEntityPlayer() instanceof EntityPlayerMP) {
 				NBTTagCompound tag = new NBTTagCompound();
 				e.getCapability(capability, null).writeSyncNBT(tag);
-				net.sendTo(messageFactory.apply(new Tuple<>(evt.getEntityLiving().getEntityId(), tag)), (EntityPlayerMP) evt.getEntityPlayer());
+				NetworkHandler.HANDLER.sendTo(new CapabilityMessage(default_instance.id, tag, e.getEntityId()), (EntityPlayerMP) evt.getEntityPlayer());
 			}
 		}
 
@@ -437,7 +441,7 @@ public abstract class SimpleCapability {
 				if (instance.dirty) {
 					NBTTagCompound tag = new NBTTagCompound();
 					evt.getEntityLiving().getCapability(capability, null).writeSyncNBT(tag);
-					net.sendToAllTracking(messageFactory.apply(new Tuple<>(evt.getEntityLiving().getEntityId(), tag)), evt.getEntityLiving());
+					NetworkHandler.HANDLER.sendToAllTracking(new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId()), evt.getEntityLiving());
 					instance.dirty = false;
 				}
 			}
@@ -445,27 +449,27 @@ public abstract class SimpleCapability {
 
 		@SubscribeEvent
 		public void onWorldJoin(EntityJoinWorldEvent evt) {
-			if (evt.getEntity() instanceof EntityPlayerMP && !evt.getEntity().world.isRemote) {
+			if (evt.getEntity() instanceof EntityPlayerMP) {
 				EntityPlayerMP entity = (EntityPlayerMP) evt.getEntity();
 				NBTTagCompound tag = new NBTTagCompound();
 				evt.getEntity().getCapability(capability, null).writeSyncNBT(tag);
-				net.sendTo(messageFactory.apply(new Tuple<>(evt.getEntity().getEntityId(), tag)), entity);
+				NetworkHandler.HANDLER.sendTo(new CapabilityMessage(this.default_instance.id, tag, entity.getEntityId()), entity);
 			}
 		}
 
-		@Override
-		public IMessage onMessage(MSG message, MessageContext ctx) {
-			// TODO investigate why this never gets called, but looks like it is
-			Tuple<Integer, NBTTagCompound> data = messageDecoder.apply(message);
-			if (data != null && Minecraft.getMinecraft().world != null) {
-				Entity e = Minecraft.getMinecraft().world.getEntityByID(data.getFirst());
+	}
+
+	public static void messageReceived(NBTTagCompound tag, int capabilityId, int entityID) {
+		Minecraft.getMinecraft().addScheduledTask(() -> {
+			if (Minecraft.getMinecraft().world != null) {
+				Capability capability = capabilities.get(capabilityId).getSecond();
+				Entity e = Minecraft.getMinecraft().world.getEntityByID(entityID);
 				if (e != null && e.hasCapability(capability, null)) {
-					e.getCapability(capability, null).readSyncNBT(data.getSecond());
+					((SimpleCapability) e.getCapability(capability, null)).readSyncNBT(tag);
 				}
 			}
-			return null;
 		}
-
+		);
 	}
 
 

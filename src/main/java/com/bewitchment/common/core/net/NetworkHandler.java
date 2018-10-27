@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.net;
 
 import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.common.core.capability.simple.CapabilityMessage;
 import com.bewitchment.common.core.net.messages.*;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.state.IBlockState;
@@ -38,6 +39,7 @@ public final class NetworkHandler {
 		registerSimpleMessage(EnergySync.class, next(), Side.CLIENT);
 		registerSimpleMessage(InfusionChangedMessage.class, next(), Side.CLIENT);
 		registerSimpleMessage(SmokeSpawn.class, next(), Side.CLIENT);
+		registerSimpleMessage(CapabilityMessage.class, next(), Side.CLIENT);
 
 		registerSimpleMessage(PlayerUsedAbilityMessage.class, next(), Side.SERVER);
 		registerSimpleMessage(WitchFireTP.class, next(), Side.SERVER);
