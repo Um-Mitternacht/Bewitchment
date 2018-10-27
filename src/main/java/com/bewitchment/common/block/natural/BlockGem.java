@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
-import static com.bewitchment.common.core.statics.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
-
 import javax.annotation.Nonnull;
+
+import static com.bewitchment.common.core.statics.ModCreativeTabs.BLOCKS_CREATIVE_TAB;
 
 
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExtO", modid = "thaumcraft")

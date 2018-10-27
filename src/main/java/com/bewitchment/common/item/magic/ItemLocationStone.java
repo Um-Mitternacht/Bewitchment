@@ -1,14 +1,10 @@
 package com.bewitchment.common.item.magic;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -26,6 +22,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ItemLocationStone extends ItemMod {
 
@@ -97,7 +96,7 @@ public class ItemLocationStone extends ItemMod {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (isBound(stack)) {
 			DimensionalPosition pos = getLocation(stack).get();
-			String dimName = "Dim "+pos.getDim(); // TODO transform this to the dimension name
+			String dimName = "Dim " + pos.getDim(); // TODO transform this to the dimension name
 			tooltip.add(I18n.format("item.location_stone.bound_to", pos.getX(), pos.getY(), pos.getZ(), dimName));
 		} else {
 			tooltip.add(I18n.format("item.location_stone.unbound"));
@@ -118,15 +117,15 @@ public class ItemLocationStone extends ItemMod {
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return false;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
-		ModelBakery.registerItemVariants(this, 
+		ModelBakery.registerItemVariants(this,
 				ModelResourceLocations.BOUND_LOCATION_STONE,
 				ModelResourceLocations.UNBOUND_LOCATION_STONE);
 		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
-			
+
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
 				if (isBound(stack)) {

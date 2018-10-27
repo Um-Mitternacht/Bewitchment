@@ -15,7 +15,7 @@ public class Log {
 	public static void e(String s) {
 		Bewitchment.logger.error(s);
 	}
-	
+
 	public static void i(Object s) {
 		Bewitchment.logger.info(s);
 	}

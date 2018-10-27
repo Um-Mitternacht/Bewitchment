@@ -2,7 +2,6 @@ package com.bewitchment.common.core.gen;
 
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.statics.ModConfig;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;

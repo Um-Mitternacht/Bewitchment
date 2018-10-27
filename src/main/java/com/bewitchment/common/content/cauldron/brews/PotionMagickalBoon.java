@@ -4,10 +4,6 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.content.cauldron.BrewMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
-
-import java.util.ArrayList;
 
 public class PotionMagickalBoon extends BrewMod {
 

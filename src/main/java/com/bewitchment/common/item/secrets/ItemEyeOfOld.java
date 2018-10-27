@@ -4,7 +4,6 @@ import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
-
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -29,8 +28,8 @@ public class ItemEyeOfOld extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModel() {
-		ModelBakery.registerItemVariants(this, 
-				ModelResourceLocations.EYE_OF_OLD_NORMAL, 
+		ModelBakery.registerItemVariants(this,
+				ModelResourceLocations.EYE_OF_OLD_NORMAL,
 				ModelResourceLocations.EYE_OF_OLD_HARU,
 				ModelResourceLocations.EYE_OF_OLD_IZU);
 		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {

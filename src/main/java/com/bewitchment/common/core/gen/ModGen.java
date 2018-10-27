@@ -3,7 +3,6 @@ package com.bewitchment.common.core.gen;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.core.statics.ModConfig;
-
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.GameRegistry;

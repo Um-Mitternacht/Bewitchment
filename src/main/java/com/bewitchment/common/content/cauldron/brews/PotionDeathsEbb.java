@@ -3,7 +3,6 @@ package com.bewitchment.common.content.cauldron.brews;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityZombie;
@@ -30,7 +29,7 @@ public class PotionDeathsEbb extends BrewMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase elb, int amplifier, double health) {
 		if (elb instanceof EntityZombie) {
@@ -47,7 +46,7 @@ public class PotionDeathsEbb extends BrewMod {
 			}
 		}
 	}
-	
+
 	private void setZombieAI(EntityLivingBase elb) {
 		//TODO
 	}
