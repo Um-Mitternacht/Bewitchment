@@ -78,13 +78,13 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
-		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
 		WEREWOLF_FOOD.add(EntityCow.class.getName());
@@ -94,7 +94,7 @@ public class MobHelper {
 		WEREWOLF_FOOD.add(EntityMule.class.getName());
 		WEREWOLF_FOOD.add(EntityLlama.class.getName());
 		WEREWOLF_FOOD.add(EntityMooshroom.class.getName());
-		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire"); //Todo: Get every single breed animania adds and support it ಠ_ಠ
+		WEREWOLF_FOOD.add("com.animania.common.entities.pigs.EntitySowYorkshire"); //Todo: Get every single breed animania adds for its animals and support it ಠ_ಠ
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {

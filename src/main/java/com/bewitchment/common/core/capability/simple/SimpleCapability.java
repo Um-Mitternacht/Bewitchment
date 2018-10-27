@@ -6,16 +6,6 @@
 
 package com.bewitchment.common.core.capability.simple;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
-
-import org.apache.commons.lang3.tuple.Pair;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -38,6 +28,11 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.*;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
@@ -47,11 +42,6 @@ public abstract class SimpleCapability {
 	private static final ArrayList<Tuple<SimpleCapability, Capability<? extends SimpleCapability>>> capabilities = new ArrayList<>();
 	private static int nextId = 0;
 	private static SimpleNetworkWrapper net = null;
-	
-	//Call this somewhere during startup, passing your mods' network handler
-	public static void setup(SimpleNetworkWrapper netHandler) {
-		net = netHandler;
-	}
 
 	static {
 		map(byte.class, SimpleCapability::readByte, SimpleCapability::writeByte);
@@ -72,13 +62,16 @@ public abstract class SimpleCapability {
 
 	protected boolean dirty = false;
 	protected int id = -1;
-	
-	
+
+	//Call this somewhere during startup, passing your mods' network handler
+	public static void setup(SimpleNetworkWrapper netHandler) {
+		net = netHandler;
+	}
 
 	public static <C extends SimpleCapability> void preInit(Class<C> capabilityClass) {
 		Objects.requireNonNull(capabilityClass);
 		CapabilityManager.INSTANCE.register(capabilityClass, new SimpleStorage<C>(), () -> capabilityClass.newInstance());
-		
+
 	}
 
 	public static <C extends SimpleCapability> void init(Class<C> capabilityClass, String modId, Capability<C> capabilityObj, C capInstance) {
@@ -89,7 +82,7 @@ public abstract class SimpleCapability {
 		capInstance.id = nextId++;
 		capabilities.add(new Tuple<>(capInstance, capabilityObj));
 		if (capabilities.get(capInstance.id).getFirst() != capInstance) {
-			throw new IllegalStateException("SimpleCapability "+capabilityObj.getName()+" internal ID doesn't match the lookup id. Things won't work!");
+			throw new IllegalStateException("SimpleCapability " + capabilityObj.getName() + " internal ID doesn't match the lookup id. Things won't work!");
 		}
 		CapabilityEventListener<C> cel = new CapabilityEventListener<C>(modId + capabilityClass.getName(), capabilityObj, capInstance);
 		MinecraftForge.EVENT_BUS.register(cel);
@@ -281,6 +274,19 @@ public abstract class SimpleCapability {
 		handlers.put(type, Pair.of(reader, writer));
 	}
 
+	public static void messageReceived(NBTTagCompound tag, int capabilityId, int entityID) {
+		Minecraft.getMinecraft().addScheduledTask(() -> {
+					if (Minecraft.getMinecraft().world != null) {
+						Capability capability = capabilities.get(capabilityId).getSecond();
+						Entity e = Minecraft.getMinecraft().world.getEntityByID(entityID);
+						if (e != null && e.hasCapability(capability, null)) {
+							((SimpleCapability) e.getCapability(capability, null)).readSyncNBT(tag);
+						}
+					}
+				}
+		);
+	}
+
 	private final void writeField(Field f, Class clazz, NBTTagCompound buf) throws IllegalArgumentException, IllegalAccessException {
 		Pair<Reader, Writer> handler = getHandler(clazz);
 		handler.getRight().write(f.get(this), buf, f.getName());
@@ -467,19 +473,6 @@ public abstract class SimpleCapability {
 			}
 		}
 
-	}
-
-	public static void messageReceived(NBTTagCompound tag, int capabilityId, int entityID) {
-		Minecraft.getMinecraft().addScheduledTask(() -> {
-			if (Minecraft.getMinecraft().world != null) {
-				Capability capability = capabilities.get(capabilityId).getSecond();
-				Entity e = Minecraft.getMinecraft().world.getEntityByID(entityID);
-				if (e != null && e.hasCapability(capability, null)) {
-					((SimpleCapability) e.getCapability(capability, null)).readSyncNBT(tag);
-				}
-			}
-		}
-		);
 	}
 
 

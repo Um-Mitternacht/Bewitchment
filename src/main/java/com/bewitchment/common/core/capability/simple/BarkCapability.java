@@ -10,7 +10,7 @@ public class BarkCapability extends SimpleCapability {
 	@CapabilityInject(BarkCapability.class)
 	public static final Capability<BarkCapability> CAPABILITY = null;
 	public static final BarkCapability DEFAULT_INSTANCE = new BarkCapability();
-	
+
 	public int pieces = 0;
 
 	@Override

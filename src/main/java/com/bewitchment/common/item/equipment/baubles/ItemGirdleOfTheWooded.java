@@ -1,21 +1,14 @@
 package com.bewitchment.common.item.equipment.baubles;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import org.lwjgl.opengl.GL11;
-
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
-import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
-import com.bewitchment.common.core.capability.simple.BarkCapability;
-import com.bewitchment.common.item.ItemMod;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.api.render.IRenderBauble;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWooded;
+import com.bewitchment.client.render.entity.model.ModelGirdleOfTheWoodedArmor;
+import com.bewitchment.common.core.capability.simple.BarkCapability;
+import com.bewitchment.common.item.ItemMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -41,6 +34,10 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBauble {
 
@@ -73,6 +70,22 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		return player.getCapability(BarkCapability.CAPABILITY, null).pieces;
 	}
 
+	public static void fixBark(EntityPlayer player) {
+		int value = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
+		int possible = Math.max((10 - (int) Math.ceil(ForgeHooks.getTotalArmorValue(player) / 2f)), 0);
+		if (ForgeHooks.getTotalArmorValue(player) == 0) {
+			possible = 0;
+		}
+		possible = Math.min(possible, 4);
+		if (value > possible) {
+			value = possible;
+		}
+		if (value < 0) {
+			value = 0;
+		}
+		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value;
+	}
+
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		return BAUBTYPE;
@@ -91,7 +104,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 					player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CHORUS_FLOWER_GROW, SoundCategory.PLAYERS, 1f, 1f);
 				}
 			}
-			
+
 		}
 	}
 
@@ -120,22 +133,6 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 				}
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-	}
-	
-	public static void fixBark(EntityPlayer player) {
-		int value = player.getCapability(BarkCapability.CAPABILITY, null).pieces;
-		int possible = Math.max((10 - (int) Math.ceil(ForgeHooks.getTotalArmorValue(player) / 2f)), 0);
-		if (ForgeHooks.getTotalArmorValue(player)==0) {
-			possible = 0;
-		}
-		possible = Math.min(possible, 4);
-		if (value > possible) {
-			value = possible;
-		}
-		if (value < 0) {
-			value = 0;
-		}
-		player.getCapability(BarkCapability.CAPABILITY, null).pieces = value;
 	}
 
 	@Override
