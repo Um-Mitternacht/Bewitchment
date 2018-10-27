@@ -1,6 +1,7 @@
-package com.bewitchment.common.item.food;
+package com.bewitchment.common.item.natural.crop;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
@@ -12,24 +13,25 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 /**
- * This class was created by Joseph on 02/03/2017.
+ * This class was created by Arekkuusu on 03/07/2017, and modified by Sunconure11 on 03/17/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class ItemHeart extends ItemModFood implements IMagicPowerExpander {
+public class ItemMandrake extends ItemCropFood implements IMagicPowerExpander {
 
-	public ItemHeart() {
-		super(LibItemName.HEART, 8, 1.6F, true);
-		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
+	public ItemMandrake() {
+		super(LibItemName.MANDRAKE, 1, 2F, false);
+		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setAlwaysEdible();
 	}
 
+	//Fixme?: This probably needs some adjustments, since there aren't many ways of telling if it worked
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
-		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
-		BewitchmentAPI.getAPI().expandPlayerMP(this, player);
+		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 35, 1));
+		IMagicPowerContainer playerMP = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
+		playerMP.fill(10);
 	}
 
 	@Override
@@ -39,6 +41,6 @@ public class ItemHeart extends ItemModFood implements IMagicPowerExpander {
 
 	@Override
 	public int getExtraAmount() {
-		return 40;
+		return 0;
 	}
 }

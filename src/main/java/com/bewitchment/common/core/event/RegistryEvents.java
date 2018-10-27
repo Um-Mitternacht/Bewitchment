@@ -40,7 +40,7 @@ public final class RegistryEvents {
 		registerCrop(SILPHIUM, ModBlocks.crop_silphium
 				, new ItemCropFood(LibItemName.SILPHIUM, 4, 6F, false), LibItemName.SEED_SILPHIUM);
 		registerCrop(MANDRAKE, ModBlocks.crop_mandrake_root
-				, new ItemCropFood(LibItemName.MANDRAKE, 4, 6F, false), LibItemName.SEED_MANDRAKE);
+				, new ItemMandrake(), LibItemName.SEED_MANDRAKE);
 		registerCrop(GARLIC, ModBlocks.crop_garlic
 				, new ItemCropFood(LibItemName.GARLIC, 4, 6F, false), LibItemName.SEED_GARLIC);
 		registerCrop(TULSI, ModBlocks.crop_tulsi
