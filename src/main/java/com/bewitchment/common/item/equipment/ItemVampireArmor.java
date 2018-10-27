@@ -2,7 +2,7 @@ package com.bewitchment.common.item.equipment;
 
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
+import com.bewitchment.client.render.entity.model.ModelVampireArmor;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,11 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
+public class ItemVampireArmor extends ItemArmor implements IModelRegister {
 
-	private final ModelWitchesArmor model = new ModelWitchesArmor();
+	private final ModelVampireArmor model = new ModelVampireArmor();
 
-	public ItemWitchesArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
+	public ItemVampireArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndex, equipmentSlotIn);
 		this.setMaxStackSize(1);
 		setRegistryName(id);
@@ -29,8 +29,6 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 	public void registerModel() {
 		ModelHandler.registerModel(this, 0);
 	}
-	
-	
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -38,8 +36,12 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 		if (itemStack != ItemStack.EMPTY) {
 			if (itemStack.getItem() instanceof ItemArmor) {
 
-				model.hat1.showModel = armorSlot == EntityEquipmentSlot.HEAD;
+				model.hatAnchor.showModel = armorSlot == EntityEquipmentSlot.HEAD;
 				model.body.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				model.capeCollarBack1.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				model.capeCollarRight1.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				model.capeCollarLeft1.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				model.capeBack1.showModel = armorSlot == EntityEquipmentSlot.CHEST;
 				model.armLeft.showModel = armorSlot == EntityEquipmentSlot.CHEST;
 				model.armRight.showModel = armorSlot == EntityEquipmentSlot.CHEST;
 				model.legLeft.showModel = armorSlot == EntityEquipmentSlot.LEGS;
@@ -55,8 +57,6 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 			}
 		}
 
-		
-		
 		return null;
 
 	}

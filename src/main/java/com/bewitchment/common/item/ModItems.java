@@ -10,6 +10,7 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.block.ItemBlockMeta.EnumNameMode;
 import com.bewitchment.common.item.equipment.ItemSilverArmor;
+import com.bewitchment.common.item.equipment.ItemVampireArmor;
 import com.bewitchment.common.item.equipment.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.*;
@@ -164,6 +165,9 @@ public final class ModItems {
 	public static final Item witches_hat = null;
 	public static final Item witches_robes = null;
 	public static final Item witches_pants = null;
+	public static final Item vampire_hat = null;
+	public static final Item vampire_vest = null;
+	public static final Item vampire_pants = null;
 
 	// Baubles
 	public static final Item nazar = null;
@@ -318,7 +322,10 @@ public final class ModItems {
 				new ItemWitchesArmor(LibItemName.WITCHES_HAT, ModMaterials.ARMOR_BEWITCHED_LEATHER, 1, EntityEquipmentSlot.HEAD),
 				new ItemWitchesArmor(LibItemName.WITCHES_ROBES, ModMaterials.ARMOR_BEWITCHED_LEATHER, 1, EntityEquipmentSlot.CHEST),
 				new ItemWitchesArmor(LibItemName.WITCHES_PANTS, ModMaterials.ARMOR_BEWITCHED_LEATHER, 2, EntityEquipmentSlot.LEGS),
-
+				new ItemVampireArmor(LibItemName.VAMPIRE_HAT, ModMaterials.ARMOR_VAMPIRE, 1, EntityEquipmentSlot.HEAD),
+				new ItemVampireArmor(LibItemName.VAMPIRE_VEST, ModMaterials.ARMOR_VAMPIRE, 2, EntityEquipmentSlot.CHEST),
+				new ItemVampireArmor(LibItemName.VAMPIRE_PANTS, ModMaterials.ARMOR_VAMPIRE, 2, EntityEquipmentSlot.LEGS),
+				
 				new ItemColdIronSword(),
 				new ItemColdIronAxe(),
 				new ItemColdIronHoe(),

@@ -149,7 +149,7 @@ public class ModelMantle extends ModelBiped {
 		this.capeRight2 = new ModelRenderer(this, 33, 1);
 		this.capeRight2.setRotationPoint(-5.0F, 0.0F, 1.0F);
 		this.capeRight2.addBox(-6.0F, 0.0F, -1.0F, 6, 20, 1, 0.0F);
-		this.setRotateAngle(capeRight2, 0.03490658503988659F, 1.5707963267948966F, 0.0F);
+		this.setRotateAngle(capeRight2, 0.03490658503988659F, 1.5707963267948966F, 0.06108652381F);
 		this.hoodTop2 = new ModelRenderer(this, 27, 31);
 		this.hoodTop2.setRotationPoint(-3.5F, -4.5F, 5.0F);
 		this.hoodTop2.addBox(0.0F, 0.0F, 0.0F, 4, 1, 9, 0.0F);
@@ -162,7 +162,7 @@ public class ModelMantle extends ModelBiped {
 		this.capeLeft2 = new ModelRenderer(this, 33, 1);
 		this.capeLeft2.setRotationPoint(-5.0F, 0.0F, -1.0F);
 		this.capeLeft2.addBox(-6.0F, 0.0F, 0.0F, 6, 20, 1, 0.0F);
-		this.setRotateAngle(capeLeft2, -0.03490658503988659F, -1.5707963267948966F, 0.0F);
+		this.setRotateAngle(capeLeft2, -0.03490658503988659F, -1.5707963267948966F, 0.06108652381F);
 		this.capeLeftFront1 = new ModelRenderer(this, 48, 1);
 		this.capeLeftFront1.setRotationPoint(-3.5F, -0.009999999776482582F, -1.5F);
 		this.capeLeftFront1.addBox(-2.5F, 0.0F, 2.299999952316284F, 5, 20, 1, 0.0F);
