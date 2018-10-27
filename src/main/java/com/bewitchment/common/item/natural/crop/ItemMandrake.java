@@ -1,10 +1,10 @@
 package com.bewitchment.common.item.natural.crop;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -25,13 +25,12 @@ public class ItemMandrake extends ItemCropFood implements IMagicPowerExpander {
 		this.setAlwaysEdible();
 	}
 
-	//Fixme?: This probably needs some adjustments, since there aren't many ways of telling if it worked
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 35, 1));
 		IMagicPowerContainer playerMP = player.getCapability(IMagicPowerContainer.CAPABILITY, null);
-		playerMP.fill(10);
+		playerMP.fill(25);
 	}
 
 	@Override
