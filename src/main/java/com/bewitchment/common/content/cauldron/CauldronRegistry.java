@@ -283,7 +283,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.volatility, Ingredient.fromItem(Items.GUNPOWDER));
 		registerCombinedBrewEffect(ModPotions.pulverize, Ingredient.fromItem(Item.getItemFromBlock(Blocks.COBBLESTONE)));
 		registerCombinedBrewEffect(ModPotions.love, Ingredient.fromItem(ModItems.seed_silphium));
-		registerCombinedBrewEffect(ModPotions.revealing, Ingredient.fromItem(Items.ENDER_EYE));
+		registerCombinedBrewEffect(ModPotions.revealing, eyes);
 		registerCombinedBrewEffect(ModPotions.adders_kiss, Ingredient.fromItem(ModItems.snake_venom));
 		registerCombinedBrewEffect(ModPotions.deaths_ebb, Ingredient.fromItem(ModItems.asphodel));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
