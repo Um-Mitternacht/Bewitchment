@@ -3,6 +3,7 @@ package com.bewitchment.client.core.event;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.render.entity.model.ModelWerewolf;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.werewolf.CapabilityWerewolfStatus;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -24,17 +25,19 @@ public class WerewolfEventHandler {
 	public void renderPlayer(RenderPlayerEvent.Pre evt) {
 		EntityPlayer p = evt.getEntityPlayer();
 		if (p.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
-			evt.setCanceled(true);
-			GlStateManager.pushMatrix();
-			Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);
-			GL11.glRotated(-p.rotationYaw, 0, 1, 0);
-			GL11.glRotated(0, 1, 0, 0);
-			GL11.glRotated(180, 1, 0, 0);
-			GL11.glTranslated(0.0, -1.25, -0.2);
-			GL11.glScaled(0.06, 0.06, 0.06);
-			GlStateManager.disableLighting();
-			WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, evt.getPartialRenderTick());
-			GlStateManager.popMatrix();
+			if (p.getCapability(CapabilityWerewolfStatus.CAPABILITY, null).currentForm == 2) {
+				evt.setCanceled(true);
+				GlStateManager.pushMatrix();
+				Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);
+				GL11.glRotated(-p.rotationYaw, 0, 1, 0);
+				GL11.glRotated(0, 1, 0, 0);
+				GL11.glRotated(180, 1, 0, 0);
+				GL11.glTranslated(0.0, -1.25, -0.2);
+				GL11.glScaled(0.06, 0.06, 0.06);
+				GlStateManager.disableLighting();
+				WW_MODEL.render(p, p.limbSwing, p.limbSwingAmount / 3, p.ticksExisted, 0, p.rotationPitch, evt.getPartialRenderTick());
+				GlStateManager.popMatrix();
+			}
 		}
 	}
 }

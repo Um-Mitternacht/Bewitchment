@@ -81,6 +81,19 @@ public class WerewolfAbilityHandler {
 				NetworkHandler.HANDLER.sendTo(new NightVisionStatus(newStatus), (EntityPlayerMP) evt.player);
 			}
 		}
+		if (evt.action == ModAbilities.WOLF_SHIFT) {
+			CapabilityWerewolfStatus cap = evt.player.getCapability(CapabilityWerewolfStatus.CAPABILITY, null);
+			if (evt.player.isSneaking()) {
+				cap.currentForm--;
+				if (cap.currentForm < 0) {
+					cap.currentForm = 2;
+				}
+			} else {
+				cap.currentForm++;
+			}
+			cap.currentForm = (byte) (cap.currentForm % 3);
+			cap.markDirty();
+		}
 	}
 
 }

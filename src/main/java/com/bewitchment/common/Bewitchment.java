@@ -18,6 +18,7 @@ import com.bewitchment.common.content.tarot.ModTarots;
 import com.bewitchment.common.content.transformation.ModTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
+import com.bewitchment.common.content.transformation.werewolf.CapabilityWerewolfStatus;
 import com.bewitchment.common.core.capability.energy.MagicPowerConsumer;
 import com.bewitchment.common.core.capability.energy.MagicPowerContainer;
 import com.bewitchment.common.core.capability.energy.MagicPowerUsingItem;
@@ -102,6 +103,7 @@ public class Bewitchment {
 		CapabilityMimicData.init();
 		CapabilityMPExpansion.init();
 		SimpleCapability.preInit(BarkCapability.class);
+		SimpleCapability.preInit(CapabilityWerewolfStatus.class);
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
@@ -124,6 +126,7 @@ public class Bewitchment {
 		proxy.init(event);
 		ModPotions.init();
 		SimpleCapability.init(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE);
+		SimpleCapability.init(CapabilityWerewolfStatus.class, LibMod.MOD_ID, CapabilityWerewolfStatus.CAPABILITY, CapabilityWerewolfStatus.DEFAULT_INSTANCE);
 		ModItems.init();
 		ModBlocks.init();
 		ModTarots.init();
