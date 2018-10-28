@@ -41,6 +41,8 @@ public class ModelVampireArmor extends ModelBiped {
 	public ModelRenderer capeCollarLeft2;
 	public ModelRenderer capeCollarRight2;
 	public ModelRenderer capeCollarBack2;
+	
+	public static final ModelVampireArmor INSTANCE = new ModelVampireArmor();
 
 	public ModelVampireArmor() {
 		this.textureWidth = 128;

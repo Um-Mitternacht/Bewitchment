@@ -1,12 +1,15 @@
 package com.bewitchment.api.hotbar;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public interface IHotbarAction {
 
@@ -14,10 +17,13 @@ public interface IHotbarAction {
 
 	public ResourceLocation getName();
 
+	@SideOnly(Side.CLIENT)
 	public int getIconIndexX();
 
+	@SideOnly(Side.CLIENT)
 	public int getIconIndexY();
 
+	@SideOnly(Side.CLIENT)
 	public ResourceLocation getIcon();
 
 	default void render(double d, double e, int width, int height, float alpha) {

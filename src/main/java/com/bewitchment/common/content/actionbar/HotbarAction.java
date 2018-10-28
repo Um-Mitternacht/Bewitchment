@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class HotbarAction implements IHotbarAction {
 
-	@SideOnly(Side.CLIENT)
 	public static final ResourceLocation DEFAULT_ICON_TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/gui/abilities.png");
 
 	private static final ArrayList<IHotbarAction> ACTIONS = new ArrayList<>();

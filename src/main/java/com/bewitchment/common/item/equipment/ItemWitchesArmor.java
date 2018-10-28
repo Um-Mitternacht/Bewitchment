@@ -4,6 +4,7 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -13,8 +14,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
-
-	private final ModelWitchesArmor model = new ModelWitchesArmor();
 
 	public ItemWitchesArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndex, equipmentSlotIn);
@@ -37,20 +36,20 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 		if (itemStack != ItemStack.EMPTY) {
 			if (itemStack.getItem() instanceof ItemArmor) {
 
-				model.hat1.showModel = armorSlot == EntityEquipmentSlot.HEAD;
-				model.body.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-				model.armLeft.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-				model.armRight.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-				model.legLeft.showModel = armorSlot == EntityEquipmentSlot.LEGS;
-				model.legRight.showModel = armorSlot == EntityEquipmentSlot.LEGS;
+				ModelWitchesArmor.INSTANCE.hat1.showModel = armorSlot == EntityEquipmentSlot.HEAD;
+				ModelWitchesArmor.INSTANCE.body.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				ModelWitchesArmor.INSTANCE.armLeft.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				ModelWitchesArmor.INSTANCE.armRight.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+				ModelWitchesArmor.INSTANCE.legLeft.showModel = armorSlot == EntityEquipmentSlot.LEGS;
+				ModelWitchesArmor.INSTANCE.legRight.showModel = armorSlot == EntityEquipmentSlot.LEGS;
 
-				model.isChild = _default.isChild;
-				model.isRiding = _default.isRiding;
-				model.isSneak = _default.isSneak;
-				model.rightArmPose = _default.rightArmPose;
-				model.leftArmPose = _default.leftArmPose;
+				ModelWitchesArmor.INSTANCE.isChild = _default.isChild;
+				ModelWitchesArmor.INSTANCE.isRiding = _default.isRiding;
+				ModelWitchesArmor.INSTANCE.isSneak = _default.isSneak;
+				ModelWitchesArmor.INSTANCE.rightArmPose = _default.rightArmPose;
+				ModelWitchesArmor.INSTANCE.leftArmPose = _default.leftArmPose;
 
-				return model;
+				return ModelWitchesArmor.INSTANCE;
 			}
 		}
 

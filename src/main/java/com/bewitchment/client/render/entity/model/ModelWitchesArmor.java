@@ -38,7 +38,8 @@ public class ModelWitchesArmor extends ModelBiped {
 	public ModelRenderer sleeveLeft;
 	public ModelRenderer legLeftTop;
 	public ModelRenderer legRightTop;
-
+	
+	public static final ModelWitchesArmor INSTANCE = new ModelWitchesArmor();
 
 	public ModelWitchesArmor() {
 		this.textureWidth = 64;
