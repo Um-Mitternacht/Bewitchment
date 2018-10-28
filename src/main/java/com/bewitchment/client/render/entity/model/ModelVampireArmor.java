@@ -247,6 +247,7 @@ public class ModelVampireArmor extends ModelBiped {
 			this.bipedRightLeg.setRotationPoint(-1.9F, 11.0F, 0.0F);
 			this.capeBack1.rotateAngleX = 0.26179938779F;
 			this.capeRightFront.rotateAngleY = -1.57079632679F;
+			this.capeLeftFront.rotateAngleY = 1.57079632679F;
 			
 			copyModelAngles(this.bipedHead, this.bipedHeadwear);
 		} else { 
@@ -254,6 +255,7 @@ public class ModelVampireArmor extends ModelBiped {
 				capeBack1.rotateAngleX = 0.08726646259971647F + limbSwingAmount; 
 				capeLeftFront.rotateAngleY = limbSwingAmount * 1.5F;
 				capeRightFront.rotateAngleY = -capeLeftFront.rotateAngleY;
+				//To do, make front bits rotate when an item is being held...
 				
 			}
 	}
