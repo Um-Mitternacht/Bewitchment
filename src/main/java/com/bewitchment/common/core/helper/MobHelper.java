@@ -73,12 +73,13 @@ public class MobHelper {
 		OWL_FOOD.add(EntityParrot.class.getName());
 		OWL_FOOD.add(EntityBat.class.getName());
 		OWL_FOOD.add(EntitySnake.class.getName());
+		OWL_FOOD.add("familiarfauna.entities.EntityTurkey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogBase");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
-		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
 		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
 		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
@@ -100,7 +101,8 @@ public class MobHelper {
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
+		SNAKE_FOOD.add("familiarfauna.entities.EntityTurkey");
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
 		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
 		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
