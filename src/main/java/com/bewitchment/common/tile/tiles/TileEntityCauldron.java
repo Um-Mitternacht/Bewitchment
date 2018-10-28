@@ -4,6 +4,7 @@ import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.behaviours.DefaultBehaviours;
 import com.bewitchment.common.content.cauldron.behaviours.ICauldronBehaviour;
+import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.tile.ModTileEntity;
@@ -12,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
@@ -76,6 +78,21 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 					markDirty();
 					syncToClient();
 				}
+			}
+		}
+		
+		if (heldItem.getItem() == Items.NAME_TAG) {
+			String oldname = this.name;
+			this.name = heldItem.getDisplayName();
+			CapabilityCauldronTeleport ctp = world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null);
+			if (ctp.put(world, pos)) {
+				markDirty();
+				syncToClient();
+				if (!playerIn.isCreative()) {
+					heldItem.shrink(1);
+				}
+			} else {
+				this.name = oldname;
 			}
 		}
 
