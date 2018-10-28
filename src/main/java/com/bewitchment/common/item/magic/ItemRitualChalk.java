@@ -86,10 +86,10 @@ public class ItemRitualChalk extends ItemMod {
 			IBlockState state = ModBlocks.ritual_glyphs.getExtendedState(ModBlocks.ritual_glyphs.getDefaultState(), worldIn, pos);
 			state = state.withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[(int) (Math.random() * 4)]);
 			state = state.withProperty(StateProperties.GLYPH_TYPE, EnumGlyphType.values()[type]);
-			worldIn.setBlockState(isReplacing ? pos : pos.up(), state, 2);
+			worldIn.setBlockState(isReplacing ? pos : pos.up(), state, 3);
 			worldIn.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.BLOCKS, 0.5f, 1f + 0.5f * player.getRNG().nextFloat());
 		}
-		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+		return EnumActionResult.SUCCESS;
 	}
 
 	@Override

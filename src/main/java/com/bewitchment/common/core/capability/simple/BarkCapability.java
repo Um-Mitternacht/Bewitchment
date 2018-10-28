@@ -18,4 +18,9 @@ public class BarkCapability extends SimpleCapability {
 		return object instanceof EntityPlayer;
 	}
 
+	@Override
+	public SimpleCapability getNewInstance() {
+		return new BarkCapability();
+	}
+
 }

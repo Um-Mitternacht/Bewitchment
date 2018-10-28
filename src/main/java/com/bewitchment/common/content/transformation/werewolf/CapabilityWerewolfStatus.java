@@ -21,4 +21,9 @@ public class CapabilityWerewolfStatus extends SimpleCapability {
 		return object instanceof EntityPlayer;
 	}
 
+	@Override
+	public SimpleCapability getNewInstance() {
+		return new CapabilityWerewolfStatus();
+	}
+
 }

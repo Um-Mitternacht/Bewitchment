@@ -2,6 +2,7 @@ package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.core.helper.PlayerHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.TarotMessage;
 import com.bewitchment.common.item.ModItems;
@@ -19,6 +20,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
+import java.util.UUID;
+
 import javax.annotation.Nonnull;
 
 public class TileEntityTarotsTable extends ModTileEntity {
@@ -35,7 +38,12 @@ public class TileEntityTarotsTable extends ModTileEntity {
 		if (!reader.world.isRemote) {
 			if (checkDeck(tarotDeck) && altarTracker.drainAltarFirst(reader, pos, world.provider.getDimension(), READ_COST)) {
 				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
-				NetworkHandler.HANDLER.sendTo(new TarotMessage(reader), (EntityPlayerMP) reader);
+				EntityPlayerMP readee = (EntityPlayerMP) PlayerHelper.getPlayerAcrossDimensions(UUID.fromString(tarotDeck.getTagCompound().getString("read_id")));
+				if (readee!=null) {
+					NetworkHandler.HANDLER.sendTo(new TarotMessage(readee), (EntityPlayerMP) reader);
+				} else {
+					reader.sendStatusMessage(new TextComponentTranslation("item.tarots.error_reading"), true);
+				}
 			} else {
 				reader.sendStatusMessage(new TextComponentTranslation("item.tarots.error_reading"), true);
 			}

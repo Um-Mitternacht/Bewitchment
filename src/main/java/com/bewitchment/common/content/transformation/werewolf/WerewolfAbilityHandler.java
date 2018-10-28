@@ -1,5 +1,7 @@
 package com.bewitchment.common.content.transformation.werewolf;
 
+import java.util.UUID;
+
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
@@ -10,6 +12,7 @@ import com.bewitchment.common.content.transformation.capability.ITransformationD
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.NightVisionStatus;
+
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -20,8 +23,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class WerewolfAbilityHandler {

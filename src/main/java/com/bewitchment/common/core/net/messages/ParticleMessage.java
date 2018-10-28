@@ -2,12 +2,13 @@ package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
+
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * This class was created by Arekkuusu on 04/04/2017.
@@ -80,11 +81,11 @@ public class ParticleMessage implements IMessage {
 
 		@Override
 		public IMessage onMessage(ParticleMessage message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) {
+			Minecraft.getMinecraft().addScheduledTask(() -> {
 				for (int i = 0; i < message.amount; i++) {
 					Bewitchment.proxy.spawnParticle(message.particleF, message.x, message.y, message.z, message.xSpeed, message.ySpeed, message.zSpeed, message.args);
 				}
-			}
+			});
 			return null;
 		}
 	}

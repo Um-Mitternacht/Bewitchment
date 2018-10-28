@@ -6,6 +6,7 @@ import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.common.content.actionbar.HotbarAction;
 import com.bewitchment.common.core.net.SimpleMessage;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
@@ -24,12 +25,14 @@ public class PlayerUsedAbilityMessage extends SimpleMessage<PlayerUsedAbilityMes
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		IHotbarAction action = HotbarAction.getFromRegistryName(ability);
-		HotbarActionCollectionEvent evt = new HotbarActionCollectionEvent(context.getServerHandler().player, context.getServerHandler().player.world);
-		MinecraftForge.EVENT_BUS.post(evt);
-		if (evt.getList().contains(action)) {
-			MinecraftForge.EVENT_BUS.post(new HotbarActionTriggeredEvent(action, context.getServerHandler().player, context.getServerHandler().player.world, context.getServerHandler().player.world.getEntityByID(entity)));
-		}
+		FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask( () -> {
+			IHotbarAction action = HotbarAction.getFromRegistryName(ability);
+			HotbarActionCollectionEvent evt = new HotbarActionCollectionEvent(context.getServerHandler().player, context.getServerHandler().player.world);
+			MinecraftForge.EVENT_BUS.post(evt);
+			if (evt.getList().contains(action)) {
+				MinecraftForge.EVENT_BUS.post(new HotbarActionTriggeredEvent(action, context.getServerHandler().player, context.getServerHandler().player.world, context.getServerHandler().player.world.getEntityByID(entity)));
+			}
+		});
 		return null;
 	}
 

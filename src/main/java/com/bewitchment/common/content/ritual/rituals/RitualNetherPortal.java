@@ -26,7 +26,7 @@ public class RitualNetherPortal extends RitualImpl {
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos circlePos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
 		world.getEntitiesWithinAABB(EntityPlayer.class, (new AxisAlignedBB(effectivePosition)).grow(5))
-				.parallelStream().forEach(p -> p.changeDimension(-1, tp));
+				.stream().forEach(p -> p.changeDimension(-1, tp));
 	}
 
 	@Override

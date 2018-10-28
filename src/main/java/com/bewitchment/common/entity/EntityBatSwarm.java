@@ -56,8 +56,10 @@ public class EntityBatSwarm extends Entity {
 
 	@Override
 	public void setDead() {
-		for (int i = 0; i < 30; i++) {
-			Bewitchment.proxy.spawnParticle(ParticleF.BAT, this.posX + rand.nextGaussian(), posY + rand.nextGaussian(), posZ + rand.nextGaussian(), 0, 0, 0, 1);
+		if (world.isRemote) {
+			for (int i = 0; i < 30; i++) {
+				Bewitchment.proxy.spawnParticle(ParticleF.BAT, this.posX + rand.nextGaussian(), posY + rand.nextGaussian(), posZ + rand.nextGaussian(), 0, 0, 0, 1);
+			}
 		}
 		this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_AMBIENT, SoundCategory.PLAYERS, 1f, 0.8f + 0.4f * rand.nextFloat());
 		this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.PLAYERS, 1f, 0.8f + 0.4f * rand.nextFloat());

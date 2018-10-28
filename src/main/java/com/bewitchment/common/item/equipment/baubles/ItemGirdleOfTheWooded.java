@@ -59,8 +59,8 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		int oldAmount = bark.pieces;
 		bark.pieces++;
 		fixBark(player);
-		bark.markDirty();
 		if (oldAmount < bark.pieces) {
+			bark.markDirty();
 			return true;
 		}
 		return false;
