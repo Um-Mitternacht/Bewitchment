@@ -16,6 +16,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -40,6 +41,9 @@ public class EntitySnake extends EntityFamiliar {
 	private static final String[] names = {};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
+	private static final int TIME_BETWEEN_MILK = 3600;
+
+	private int milkCooldown = 0;
 
 	public EntitySnake(World worldIn) {
 		super(worldIn);
@@ -103,8 +107,11 @@ public class EntitySnake extends EntityFamiliar {
 	}
 
 	@Override
-	public boolean canBePushed() {
-		return true;
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (milkCooldown>0) {
+			milkCooldown--;
+		}
 	}
 
 	@Override
@@ -112,12 +119,10 @@ public class EntitySnake extends EntityFamiliar {
 		return 6;
 	}
 
-	//Todo: Allow this snake to actually kill mobs properly
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		if (entity instanceof EntityLivingBase) {
-			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1));
-			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1));
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
 	}
@@ -143,47 +148,54 @@ public class EntitySnake extends EntityFamiliar {
 		}
 	}
 
-	//Todo: Add a cooldown to snake milking
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		{
-			ItemStack itemstack = player.getHeldItem(hand);
-
-			if (itemstack.getItem() == ModItems.glass_jar && this.getGrowingAge() >= 0 && !player.capabilities.isCreativeMode) {
-				itemstack.shrink(1);
-
-				if (itemstack.isEmpty()) {
-					player.setHeldItem(hand, new ItemStack(ModItems.snake_venom));
-				} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.snake_venom))) {
-					player.dropItem(new ItemStack(ModItems.snake_venom), false);
+		if (this.getAttackTarget() != null || this.getAttackTarget().isDead || this.getRevengeTarget() != null || this.getRevengeTarget().isDead) {
+			return false; //Don't interact when hostile
+		}
+		ItemStack itemstack = player.getHeldItem(hand);
+		if (itemstack.getItem() == ModItems.glass_jar) {
+			if (milkCooldown == 0 && getRNG().nextBoolean()) {
+				if (this.getGrowingAge() >= 0 && !player.capabilities.isCreativeMode) {
+					itemstack.shrink(1);
+					if (itemstack.isEmpty()) {
+						player.setHeldItem(hand, new ItemStack(ModItems.snake_venom));
+					} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.snake_venom))) {
+						player.dropItem(new ItemStack(ModItems.snake_venom), false);
+					}
+					milkCooldown = TIME_BETWEEN_MILK;
+					return true;
 				}
+			} else {
+				//if milk not ready, or randomly 1/2 of the times
+				this.setAttackTarget(player);
+				this.setRevengeTarget(player);
+			}
+		}
 
-				return true;
+		if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem())) {
+			if (!player.capabilities.isCreativeMode) {
+				itemstack.shrink(1);
 			}
 
-			if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem())) {
-				if (!player.capabilities.isCreativeMode) {
-					itemstack.shrink(1);
-				}
+			if (!this.isSilent()) {
+				this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_PARROT_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+			}
 
-				if (!this.isSilent()) {
-					this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_PARROT_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+			if (!this.world.isRemote) {
+				if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
+					this.setTamedBy(player);
+					this.playTameEffect(true);
+					this.world.setEntityState(this, (byte) 7);
+				} else {
+					this.playTameEffect(false);
+					this.world.setEntityState(this, (byte) 6);
 				}
-
-				if (!this.world.isRemote) {
-					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
-						this.setTamedBy(player);
-						this.playTameEffect(true);
-						this.world.setEntityState(this, (byte) 7);
-					} else {
-						this.playTameEffect(false);
-						this.world.setEntityState(this, (byte) 6);
-					}
-				}
-				return true;
 			}
 			return true;
 		}
+		return true;
+
 	}
 
 	@Override
@@ -220,5 +232,17 @@ public class EntitySnake extends EntityFamiliar {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntitySnake(world);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		milkCooldown = compound.getInteger("milkCooldown");
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("milkCooldown", milkCooldown);
 	}
 }
