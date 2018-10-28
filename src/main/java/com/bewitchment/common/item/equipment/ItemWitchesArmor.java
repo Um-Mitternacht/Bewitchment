@@ -29,8 +29,7 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 	public void registerModel() {
 		ModelHandler.registerModel(this, 0);
 	}
-	
-	
+
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -55,8 +54,7 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 			}
 		}
 
-		
-		
+
 		return null;
 
 	}

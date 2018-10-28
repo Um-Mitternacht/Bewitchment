@@ -43,5 +43,7 @@ public final class VanillaCrafting {
 		ModMaterials.TOOL_SILVER.setRepairItem(new ItemStack(ModItems.silver_ingot));
 		ModMaterials.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModItems.cold_iron_ingot));
 		ModMaterials.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModItems.cold_iron_ingot));
+		ModMaterials.ARMOR_BEWITCHED_LEATHER.setRepairItem(new ItemStack(ModItems.witches_stitching));
+		ModMaterials.ARMOR_VAMPIRE.setRepairItem(new ItemStack(ModItems.sanguine_fabric));
 	}
 }

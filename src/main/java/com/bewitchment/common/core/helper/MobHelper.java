@@ -73,18 +73,52 @@ public class MobHelper {
 		OWL_FOOD.add(EntityParrot.class.getName());
 		OWL_FOOD.add(EntityBat.class.getName());
 		OWL_FOOD.add(EntitySnake.class.getName());
+		OWL_FOOD.add("familiarfauna.entities.EntityTurkey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogBase");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
-		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
+		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickOrpington");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickLeghorn");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickRhodeIslandRed");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityRoosterPlymouthRock");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityRoosterWyandotte");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityRoosterOrpington");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityRoosterLeghorn");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityRoosterRhodeIslandRed");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityHenPlymouthRock");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityHenWyandotte");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityHenOrpington");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityHenLeghorn");
+		OWL_FOOD.add("com.animania.common.entities.chickens.EntityHenRhodeIslandRed");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all rabbit breeds from animania
+		SNAKE_FOOD.add("familiarfauna.entities.EntityTurkey");
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
+		SNAKE_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickOrpington");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickLeghorn");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickRhodeIslandRed");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityRoosterPlymouthRock");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityRoosterWyandotte");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityRoosterOrpington");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityRoosterLeghorn");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityRoosterRhodeIslandRed");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityHenPlymouthRock");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityHenWyandotte");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityHenOrpington");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityHenLeghorn");
+		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityHenRhodeIslandRed");
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
 		WEREWOLF_FOOD.add(EntityCow.class.getName());
