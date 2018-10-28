@@ -325,7 +325,7 @@ public final class ModItems {
 				new ItemVampireArmor(LibItemName.VAMPIRE_HAT, ModMaterials.ARMOR_VAMPIRE, 1, EntityEquipmentSlot.HEAD),
 				new ItemVampireArmor(LibItemName.VAMPIRE_VEST, ModMaterials.ARMOR_VAMPIRE, 2, EntityEquipmentSlot.CHEST),
 				new ItemVampireArmor(LibItemName.VAMPIRE_PANTS, ModMaterials.ARMOR_VAMPIRE, 2, EntityEquipmentSlot.LEGS),
-				
+
 				new ItemColdIronSword(),
 				new ItemColdIronAxe(),
 				new ItemColdIronHoe(),
