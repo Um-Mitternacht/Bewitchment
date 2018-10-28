@@ -287,6 +287,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.adders_kiss, Ingredient.fromItem(ModItems.snake_venom));
 		registerCombinedBrewEffect(ModPotions.deaths_ebb, Ingredient.fromItem(ModItems.asphodel));
 		registerCombinedBrewEffect(ModPotions.magickal_boon, Ingredient.fromItem(ModItems.mandrake_root));
+		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.garlic));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
 	}
