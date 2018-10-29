@@ -121,6 +121,27 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
 		OWL_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockWhite");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockBlue");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockTaupe");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockPurple");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockPeach");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockCharcoal");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockOpal");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlWhite");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlBlue");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlTaupe");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlPurple");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlPeach");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlCharcoal");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlOpal");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachicklWhite");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickBlue");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickTaupe");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPurple");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPeach");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickCharcoal");
+		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickOpal");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
@@ -169,6 +190,27 @@ public class MobHelper {
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockWhite");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockBlue");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockTaupe");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockPurple");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockPeach");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockCharcoal");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockOpal");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlWhite");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlBlue");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlTaupe");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlPurple");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlPeach");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlCharcoal");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeafowlOpal");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachicklWhite");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickBlue");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickTaupe");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPurple");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPeach");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickCharcoal");
+		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickOpal");
 
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
