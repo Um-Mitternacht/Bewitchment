@@ -11,6 +11,7 @@ import net.minecraft.entity.item.EntityArmorStand;
  * Created using Tabula 5.1.0
  */
 public class ModelWitchesArmor extends ModelBiped {
+	public static final ModelWitchesArmor INSTANCE = new ModelWitchesArmor();
 	public ModelRenderer legLeft;
 	public ModelRenderer legRight;
 	public ModelRenderer hat1;
@@ -38,8 +39,6 @@ public class ModelWitchesArmor extends ModelBiped {
 	public ModelRenderer sleeveLeft;
 	public ModelRenderer legLeftTop;
 	public ModelRenderer legRightTop;
-	
-	public static final ModelWitchesArmor INSTANCE = new ModelWitchesArmor();
 
 	public ModelWitchesArmor() {
 		this.textureWidth = 64;

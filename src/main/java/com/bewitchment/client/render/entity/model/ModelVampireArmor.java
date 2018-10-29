@@ -10,6 +10,7 @@ import net.minecraft.entity.item.EntityArmorStand;
  * Created using Tabula 5.1.0
  */
 public class ModelVampireArmor extends ModelBiped {
+	public static final ModelVampireArmor INSTANCE = new ModelVampireArmor();
 	public ModelRenderer hatAnchor;
 	public ModelRenderer body;
 	public ModelRenderer capeBack1;
@@ -41,8 +42,6 @@ public class ModelVampireArmor extends ModelBiped {
 	public ModelRenderer capeCollarLeft2;
 	public ModelRenderer capeCollarRight2;
 	public ModelRenderer capeCollarBack2;
-	
-	public static final ModelVampireArmor INSTANCE = new ModelVampireArmor();
 
 	public ModelVampireArmor() {
 		this.textureWidth = 128;
@@ -250,17 +249,17 @@ public class ModelVampireArmor extends ModelBiped {
 			this.capeBack1.rotateAngleX = 0.26179938779F;
 			this.capeRightFront.rotateAngleY = -1.57079632679F;
 			this.capeLeftFront.rotateAngleY = 1.57079632679F;
-			
+
 
 			copyModelAngles(this.bipedHead, this.bipedHeadwear);
 		} else {
 			super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-			capeBack1.rotateAngleX = 0.08726646259971647F + limbSwingAmount; 
+			capeBack1.rotateAngleX = 0.08726646259971647F + limbSwingAmount;
 			capeLeftFront.rotateAngleY = limbSwingAmount * 1.5F;
 			capeRightFront.rotateAngleY = -capeLeftFront.rotateAngleY;
-				//To do, make front bits rotate when an item is being held...
-				
-			}
+			//To do, make front bits rotate when an item is being held...
+
+		}
 
 	}
 

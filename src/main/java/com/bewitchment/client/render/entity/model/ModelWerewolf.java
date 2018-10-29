@@ -587,7 +587,7 @@ public class ModelWerewolf extends ModelBase {
 					bipedHead.rotateAngleX = 0.8853981633974483F + 0.1f * MathHelper.sin(transformation * 0.10471975512F + 0.5F);
 
 				} else if (transformation < 71) {
-					chest.rotateAngleX = 0.03182757F + 0.49177120559F * MathHelper.sin((transformation - 40) * 0.05235987756F) + 0.0174532925199432F * MathHelper.cos((time/0.10471975512F));
+					chest.rotateAngleX = 0.03182757F + 0.49177120559F * MathHelper.sin((transformation - 40) * 0.05235987756F) + 0.0174532925199432F * MathHelper.cos((time / 0.10471975512F));
 					bipedHead.rotateAngleX = 0.786221F;
 					bipedLeftArm.rotateAngleX = 0.14270538F - 0.49177123F * MathHelper.sin((transformation - 40) * 0.05235987756F);
 					bipedRightArm.rotateAngleX = bipedLeftArm.rotateAngleX;
@@ -603,7 +603,7 @@ public class ModelWerewolf extends ModelBase {
 			if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || howling != 0) { //Howling animation
 				howling++;
 				if (howling < 45) {
-					chest.rotateAngleX = 0.5235987755982988F + 0.5f + MathHelper.sin(howling * 0.10471975512F + 0.5F) + 0.0174532925199432F * MathHelper.cos((time/0.10471975512F));
+					chest.rotateAngleX = 0.5235987755982988F + 0.5f + MathHelper.sin(howling * 0.10471975512F + 0.5F) + 0.0174532925199432F * MathHelper.cos((time / 0.10471975512F));
 					bipedRightArm.rotateAngleX = -0.3490658503988659F - 0.5f - MathHelper.sin(howling * 0.10471975512F + 0.5F);
 					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
 					bipedHead.rotateAngleX = 0.0922922634F + 0.1f * MathHelper.sin(howling * 0.10471975512F + 0.5F);
@@ -619,7 +619,7 @@ public class ModelWerewolf extends ModelBase {
 					jawLower.rotateAngleX = 0.5235987755F;
 
 				} else if (howling < 194 && howling > 171) {
-					chest.rotateAngleX = 0.10067606F + 0.422922716F * MathHelper.sin(howling * 0.10471975512F) + 0.0174532925199432F * MathHelper.cos((time/0.10471975512F));
+					chest.rotateAngleX = 0.10067606F + 0.422922716F * MathHelper.sin(howling * 0.10471975512F) + 0.0174532925199432F * MathHelper.cos((time / 0.10471975512F));
 					bipedRightArm.rotateAngleX = 0.07385689F - 0.42292274F * MathHelper.sin(howling * 0.10471975512F);
 					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
 					bipedHead.rotateAngleX = 0.05235987755F + 0.733038286F * MathHelper.sin(howling * 0.10471975512F);

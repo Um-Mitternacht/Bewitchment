@@ -22,7 +22,7 @@ public class SmokeSpawn extends SimpleMessage<SmokeSpawn> {
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		Minecraft.getMinecraft().addScheduledTask( () -> {
+		Minecraft.getMinecraft().addScheduledTask(() -> {
 			Random r = new Random();
 			for (int i = 0; i < 5; i++) {
 				Minecraft.getMinecraft().world.spawnParticle(EnumParticleTypes.CLOUD, x + r.nextGaussian() * 0.2, y + r.nextDouble() * 0.2, z + r.nextGaussian() * 0.2, 0, 0.1, 0);

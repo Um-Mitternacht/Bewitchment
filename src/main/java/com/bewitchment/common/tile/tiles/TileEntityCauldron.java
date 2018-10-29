@@ -80,7 +80,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				}
 			}
 		}
-		
+
 		if (heldItem.getItem() == Items.NAME_TAG) {
 			String oldname = this.name;
 			this.name = heldItem.getDisplayName();

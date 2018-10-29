@@ -105,19 +105,19 @@ public class EntitySnake extends EntityFamiliar {
 	protected ResourceLocation getLootTable() {
 		return loot;
 	}
-	
+
 	@Override
-		protected void applyEntityAttributes() {
-			super.applyEntityAttributes();
-			this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-	        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
-	        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8d);
-		}
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8d);
+	}
 
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (milkCooldown>0) {
+		if (milkCooldown > 0) {
 			milkCooldown--;
 		}
 	}

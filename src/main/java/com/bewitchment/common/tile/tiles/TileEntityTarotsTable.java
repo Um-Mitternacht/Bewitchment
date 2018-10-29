@@ -20,9 +20,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
-import java.util.UUID;
-
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 public class TileEntityTarotsTable extends ModTileEntity {
 
@@ -39,7 +38,7 @@ public class TileEntityTarotsTable extends ModTileEntity {
 			if (checkDeck(tarotDeck) && altarTracker.drainAltarFirst(reader, pos, world.provider.getDimension(), READ_COST)) {
 				reader.openGui(Bewitchment.instance, LibGui.TAROT.ordinal(), reader.world, pos.getX(), pos.getY(), pos.getZ());
 				EntityPlayerMP readee = (EntityPlayerMP) PlayerHelper.getPlayerAcrossDimensions(UUID.fromString(tarotDeck.getTagCompound().getString("read_id")));
-				if (readee!=null) {
+				if (readee != null) {
 					NetworkHandler.HANDLER.sendTo(new TarotMessage(readee), (EntityPlayerMP) reader);
 				} else {
 					reader.sendStatusMessage(new TextComponentTranslation("item.tarots.error_reading"), true);

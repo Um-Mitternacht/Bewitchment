@@ -25,7 +25,7 @@ public class PlayerUsedAbilityMessage extends SimpleMessage<PlayerUsedAbilityMes
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask( () -> {
+		FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask(() -> {
 			IHotbarAction action = HotbarAction.getFromRegistryName(ability);
 			HotbarActionCollectionEvent evt = new HotbarActionCollectionEvent(context.getServerHandler().player, context.getServerHandler().player.world);
 			MinecraftForge.EVENT_BUS.post(evt);

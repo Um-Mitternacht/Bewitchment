@@ -6,6 +6,7 @@
 
 package com.bewitchment.common.core.capability.simple;
 
+import com.bewitchment.common.core.helper.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,15 +31,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.commons.lang3.tuple.Pair;
 
-import com.bewitchment.common.core.helper.Log;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
-	
+
 	private static final boolean sc_dbg = System.getProperty("simplecapabilitydebug") != null;
 
 	private static final HashMap<Class, Pair<Reader, Writer>> handlers = new HashMap<Class, Pair<Reader, Writer>>();
@@ -282,19 +281,25 @@ public abstract class SimpleCapability {
 		Minecraft.getMinecraft().addScheduledTask(() -> {
 			if (Minecraft.getMinecraft().world != null) {
 				Capability capability = capabilities.get(capabilityId).getSecond();
-				log("message received for  "+capability.getName()+", entity: "+entityID);
+				log("message received for  " + capability.getName() + ", entity: " + entityID);
 				Entity e = Minecraft.getMinecraft().world.getEntityByID(entityID);
 				try {
-					log("EntityName: "+e);
+					log("EntityName: " + e);
 				} catch (Exception ex) {
 				}
 				if (e != null && e.hasCapability(capability, null)) {
 					((SimpleCapability) e.getCapability(capability, null)).readSyncNBT(tag);
 				} else {
-					log("message dropped: "+e+", "+capability.getName());
+					log("message dropped: " + e + ", " + capability.getName());
 				}
 			}
 		});
+	}
+
+	private static void log(Object o) {
+		if (sc_dbg) {
+			Log.i(o);
+		}
 	}
 
 	private final void writeField(Field f, Class clazz, NBTTagCompound buf) throws IllegalArgumentException, IllegalAccessException {
@@ -369,6 +374,7 @@ public abstract class SimpleCapability {
 	}
 
 	public abstract boolean isRelevantFor(Entity object);
+
 	public abstract SimpleCapability getNewInstance();
 
 	public void markDirty() {
@@ -447,7 +453,7 @@ public abstract class SimpleCapability {
 		@SubscribeEvent
 		public void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> evt) {
 			if (default_instance.isRelevantFor(evt.getObject())) {
-				log("Capability "+this.name+" attached");
+				log("Capability " + this.name + " attached");
 				evt.addCapability(name, new SimpleProvider(capability, default_instance.getNewInstance()));
 			}
 		}
@@ -455,7 +461,7 @@ public abstract class SimpleCapability {
 		@SubscribeEvent
 		public void onEntityTracking(StartTracking evt) {
 			Entity e = evt.getTarget();
-			log("start tracking: "+e);
+			log("start tracking: " + e);
 			if (!e.world.isRemote && e.hasCapability(capability, null) && evt.getEntityPlayer() instanceof EntityPlayerMP) {
 				log("start tracking - succeded");
 				NBTTagCompound tag = new NBTTagCompound();
@@ -469,7 +475,7 @@ public abstract class SimpleCapability {
 			if (!evt.getEntityLiving().world.isRemote && evt.getEntityLiving().hasCapability(capability, null)) {
 				C instance = evt.getEntityLiving().getCapability(capability, null);
 				if (instance.dirty) {
-					log("Cleaning instance of "+capability.getName()+" for "+evt.getEntityLiving());
+					log("Cleaning instance of " + capability.getName() + " for " + evt.getEntityLiving());
 					NBTTagCompound tag = new NBTTagCompound();
 					evt.getEntityLiving().getCapability(capability, null).writeSyncNBT(tag);
 					CapabilityMessage msg = new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId());
@@ -493,12 +499,6 @@ public abstract class SimpleCapability {
 			}
 		}
 
-	}
-	
-	private static void log(Object o) {
-		if (sc_dbg) {
-			Log.i(o);
-		}
 	}
 
 }
