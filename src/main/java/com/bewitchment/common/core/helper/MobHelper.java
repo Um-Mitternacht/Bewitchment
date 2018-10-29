@@ -59,6 +59,7 @@ public class MobHelper {
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFeralWolf");
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFox");
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityCoyote");
+		CANIDS.add("elucent.mysticalworld.entity.EntityFox");
 
 		//Villagers are already included in the list
 		HUMANS.add(EntityWitch.class.getName());
