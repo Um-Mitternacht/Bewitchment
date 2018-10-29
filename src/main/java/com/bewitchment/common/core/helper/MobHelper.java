@@ -79,7 +79,7 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretWhite");
-		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
+		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
 		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
 		OWL_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
@@ -121,6 +121,7 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
 		OWL_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
+		OWL_FOOD.add("com.animania.common.entities.amphibians.EntityToad");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockWhite");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockBlue");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockTaupe");
@@ -142,6 +143,7 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPeach");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickCharcoal");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickOpal");
+		OWL_FOOD.add("its_meow.betteranimalsplus.common.entity.EntityFox");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
@@ -190,6 +192,7 @@ public class MobHelper {
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
+		SNAKE_FOOD.add("com.animania.common.entities.amphibians.EntityToad");
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockWhite");
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockBlue");
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeacockTaupe");
