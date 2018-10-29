@@ -48,6 +48,8 @@ public class MobHelper {
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("its_meow.betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
 		SPIRITS.add("com.jarhax.eerieentities.entities.EntityCursedArmor");
+		SPIRITS.add("familiarfauna.entities.EntityPixie");
+		SPIRITS.add("com.github.alexthe666.iceandfire.entity.EntityPixie");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
 		//DEMONS.add(EntityBlaze.class.getName());
@@ -74,7 +76,6 @@ public class MobHelper {
 		OWL_FOOD.add(EntityBat.class.getName());
 		OWL_FOOD.add(EntitySnake.class.getName());
 		OWL_FOOD.add("familiarfauna.entities.EntityTurkey");
-		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehog"); // This is a stupid check, but the codebase of Animania is weird. Really, really weird.
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogBase");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityHedgehogAlbino");
 		OWL_FOOD.add("com.animania.common.entities.rodents.EntityFerretGrey");
@@ -144,13 +145,16 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickCharcoal");
 		OWL_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickOpal");
 		OWL_FOOD.add("its_meow.betteranimalsplus.common.entity.EntityFox");
+		OWL_FOOD.add("elucent.mysticalworld.entity.EntityFox");
+		OWL_FOOD.add("elucent.mysticalworld.entity.EntityFrog");
+		OWL_FOOD.add("teamroots.roots.entity.EntityDeer");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
 		SNAKE_FOOD.add(EntityParrot.class.getName());
 		SNAKE_FOOD.add(EntityBat.class.getName());
 		SNAKE_FOOD.add("familiarfauna.entities.EntityTurkey");
-		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat"); //Todo: Get all peacock, rabbit, and other small animal breeds from Animania
+		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.EntityHamster");
 		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickPlymouthRock");
 		SNAKE_FOOD.add("com.animania.common.entities.chickens.EntityChickWyandotte");
@@ -214,6 +218,7 @@ public class MobHelper {
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickPeach");
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickCharcoal");
 		SNAKE_FOOD.add("com.animania.common.entities.peacocks.EntityPeachickOpal");
+		SNAKE_FOOD.add("elucent.mysticalworld.entity.EntityFrog");
 
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
