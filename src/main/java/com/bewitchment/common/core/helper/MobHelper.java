@@ -120,6 +120,7 @@ public class MobHelper {
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitBuckCottontail");
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		OWL_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
+		OWL_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
 
 		SNAKE_FOOD.add(EntityRabbit.class.getName());
 		SNAKE_FOOD.add(EntityChicken.class.getName());
@@ -167,6 +168,7 @@ public class MobHelper {
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitBuckCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitDoeCottontail");
 		SNAKE_FOOD.add("com.animania.common.entities.rodents.rabbits.EntityRabbitKitCottontail");
+		SNAKE_FOOD.add("com.animania.common.entities.amphibians.EntityFrogs");
 
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
