@@ -50,6 +50,7 @@ public class MobHelper {
 		SPIRITS.add("com.jarhax.eerieentities.entities.EntityCursedArmor");
 		SPIRITS.add("familiarfauna.entities.EntityPixie");
 		SPIRITS.add("com.github.alexthe666.iceandfire.entity.EntityPixie");
+		SPIRITS.add("teamroots.roots.entity.EntityFairy");
 
 		//Will be used for actual demons later on. Blazes are just fire elementals
 		//DEMONS.add(EntityBlaze.class.getName());
