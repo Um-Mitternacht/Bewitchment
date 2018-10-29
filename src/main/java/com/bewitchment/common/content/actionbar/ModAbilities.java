@@ -12,6 +12,8 @@ public class ModAbilities {
 	public static final HotbarAction BAT_SWARM = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "bat_swarm"), 2, 0);
 	public static final HotbarAction DRAIN_BLOOD = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "drain_blood"), 1, 0);
 	public static final HotbarAction HOWL = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "howl"), 1, 1);
+	public static final HotbarAction MESMERIZE = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "mesmerize"), 2, 1);
+	public static final HotbarAction HYPNOTIZE = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "hypnotize"), 2, 2);
 	public static final HotbarAction WOLF_SHIFT = new HotbarAction(new ResourceLocation(LibMod.MOD_ID, "wolf_shift"), 3, 0) {
 		@Override
 		@SideOnly(Side.CLIENT)

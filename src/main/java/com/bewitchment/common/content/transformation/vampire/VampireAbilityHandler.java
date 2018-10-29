@@ -1,5 +1,7 @@
 package com.bewitchment.common.content.transformation.vampire;
 
+import java.util.UUID;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -15,6 +17,7 @@ import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.world.biome.ModBiomes;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -39,8 +42,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {
@@ -196,8 +197,12 @@ public class VampireAbilityHandler {
 			} else {
 				data.setNightVision(false);
 			}
-			if (data.getLevel() > 6) {
+			if (data.getLevel() > 5) {
 				evt.getList().add(ModAbilities.BAT_SWARM);
+				evt.getList().add(ModAbilities.MESMERIZE);
+			}
+			if (data.getLevel() > 7) {
+				evt.getList().add(ModAbilities.HYPNOTIZE);
 			}
 		} else {
 			data.setNightVision(false);
@@ -234,14 +239,25 @@ public class VampireAbilityHandler {
 				evt.player.world.spawnEntity(bs);
 				evt.player.startRiding(bs);
 			}
+		} else if (evt.action == ModAbilities.MESMERIZE) {
+			if (evt.focusedEntity instanceof EntityLivingBase) {
+				if (BewitchmentAPI.getAPI().addVampireBlood(evt.player, -300)) {
+					((EntityLivingBase) evt.focusedEntity).addPotionEffect(new PotionEffect(ModPotions.mesmerized, 100, 0, false, true));
+				} else {
+					evt.focusedEntity.attackEntityFrom(DamageSource.causePlayerDamage(evt.player), 0.5f);
+				}
+			}
 		}
 	}
 
 	private static boolean canDrainBloodFrom(EntityPlayer player, EntityLivingBase entity) {
-		if (player.getLastAttackedEntity() == entity || entity.getAttackingEntity() == player)
+		if (entity.getActivePotionEffect(ModPotions.mesmerized)!=null) {
+			return true;
+		}
+		if (player.getLastAttackedEntity() == entity || entity.getAttackingEntity() == player) {
 			return false;
-		// TODO check if frontal, in case return false and damage the entity
-		return true;
+		}
+		return Math.abs(player.rotationYawHead - entity.rotationYawHead) < 30;
 	}
 
 	@SubscribeEvent

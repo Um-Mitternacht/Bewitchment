@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.content.cauldron.brews.*;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
+import com.bewitchment.common.potion.potions.PotionMesmerize;
 import com.bewitchment.common.potion.potions.PotionSunWard;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -9,7 +10,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class ModPotions {
 
 	// Normal effects
-	public static Potion bloodDrained, sun_ward;
+	public static Potion bloodDrained, sun_ward, mesmerized;
 
 	// Also brews
 	public static Potion wolfsbane, arrow_deflect, absence, plant, bane_arthropods, corruption, cursed_leaping, demons_bane;
@@ -71,6 +72,7 @@ public class ModPotions {
 		adders_kiss = new PotionAddersKiss();
 		deaths_ebb = new PotionDeathsEbb();
 		magickal_boon = new PotionMagickalBoon();
+		mesmerized = new PotionMesmerize();
 
 		ForgeRegistries.POTIONS.registerAll(//
 				bloodDrained, wolfsbane, arrow_deflect, absence, plant, //
@@ -81,7 +83,7 @@ public class ModPotions {
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
 				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare, //
 				volatility, pulverize, mowing, sun_ward, love, revealing, adders_kiss, //
-				deaths_ebb, magickal_boon
+				deaths_ebb, magickal_boon, mesmerized
 		);
 	}
 }
