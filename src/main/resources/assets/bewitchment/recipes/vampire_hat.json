@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "XXX",
+    "XSX"
+  ],
+  "key": {
+    "S": {
+      "item": "bewitchment:diabolic_vein",
+      "data": 0
+    },
+    "X": {
+      "item": "bewitchment:sanguine_fabric",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "bewitchment:vampire_hat",
+    "data": 0
+  }
+}
