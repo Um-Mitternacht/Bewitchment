@@ -1,5 +1,6 @@
 package com.bewitchment.common.content.transformation.vampire;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import com.bewitchment.api.BewitchmentAPI;
@@ -17,9 +18,13 @@ import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.world.biome.ModBiomes;
+import com.google.common.collect.Lists;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +37,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -285,6 +291,19 @@ public class VampireAbilityHandler {
 		}
 		if (data.getType() == DefaultTransformations.VAMPIRE) {
 			attack_speed.applyModifier(new AttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Vampire Atk Speed", evt.level / 10, AttributeModifierModeHelper.ADD));
+		}
+	}
+	
+	@SubscribeEvent
+	public static void onLivingJoinWorld(EntityJoinWorldEvent evt) {
+		if (evt.getEntity() instanceof EntityLiving) {
+			EntityLiving living = (EntityLiving) evt.getEntity();
+			ArrayList<EntityAITaskEntry> tasks = Lists.newArrayList();
+			living.tasks.taskEntries.stream()
+				.filter(t -> t.action instanceof EntityAIWatchClosest)
+				.forEach(t -> tasks.add(t));
+			tasks.forEach(t -> living.tasks.taskEntries.remove(t));
+			tasks.forEach(t -> living.tasks.taskEntries.add(living.tasks.new EntityAITaskEntry(t.priority, new AIWatchClosestWrapper((EntityAIWatchClosest) t.action))));
 		}
 	}
 
