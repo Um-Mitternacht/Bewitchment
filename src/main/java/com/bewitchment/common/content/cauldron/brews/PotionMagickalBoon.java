@@ -9,6 +9,7 @@ public class PotionMagickalBoon extends BrewMod {
 
 	//Todo: Someone tell me if this works right, I am still trying to figure out capabilities for these kinds of things
 	//Magickal Boost will be a temporary booster potion (temporarily increasing the ME cap), whereas magickal boon will restore a specific amount of ME
+	//There will also be brews that do the opposite
 	public PotionMagickalBoon() {
 		super("magickal_boon", false, 0x7851A9, true, 0);
 	}
