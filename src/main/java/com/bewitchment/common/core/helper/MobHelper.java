@@ -3,13 +3,12 @@ package com.bewitchment.common.core.helper;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,11 +27,8 @@ public class MobHelper {
 	public static final Set<String> SPIRITS = Sets.newHashSet(); //Spirits and discarnate undead
 	public static final Set<String> CANIDS = Sets.newHashSet(); //The entire canid family of carnivorans
 	public static final Set<String> DEMONS = Sets.newHashSet(); //Infernal beings
-	public static final Set<String> OWL_FOOD = Sets.newHashSet(); //Food for owls
-	public static final Set<String> SNAKE_FOOD = Sets.newHashSet(); //Food for sneks
 	public static final Set<String> UNDEAD_BODY = Sets.newHashSet(); //Corporeal undead, such as zombies and mummies
 	public static final Set<String> HUMANS = Sets.newHashSet(); //People
-	public static final Set<String> WEREWOLF_FOOD = Sets.newHashSet(); //Livestock targeted by werewolves
 
 	public static void init() {
 
@@ -41,6 +37,8 @@ public class MobHelper {
 		* Eg: endermen are not in any of these lists
 		* Less is more in this case
 		*/
+
+		//This class is to be used in extending certain brews/weapons/mechanics only. Things like mobs eating each other go in their own class.
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
@@ -52,7 +50,7 @@ public class MobHelper {
 		SPIRITS.add("com.github.alexthe666.iceandfire.entity.EntityPixie");
 		SPIRITS.add("teamroots.roots.entity.EntityFairy");
 
-		//Will be used for actual demons later on. Blazes are just fire elementals
+		//Will be used for actual demons later on.
 		//DEMONS.add(EntityBlaze.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
@@ -71,30 +69,6 @@ public class MobHelper {
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistKnight");
 
 		VILLAGERS.add("mca.entity.EntityVillagerMCA");
-
-		OWL_FOOD.add(EntityRabbit.class.getName());
-		OWL_FOOD.add(EntityChicken.class.getName());
-		OWL_FOOD.add(EntityParrot.class.getName());
-		OWL_FOOD.add(EntityBat.class.getName());
-		OWL_FOOD.add(EntitySnake.class.getName());
-		OWL_FOOD.add("familiarfauna.entities.EntityTurkey");
-		OWL_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
-		OWL_FOOD.add("its_meow.betteranimalsplus.common.entity.EntityFox");
-		OWL_FOOD.add("elucent.mysticalworld.entity.EntityFox");
-		OWL_FOOD.add("elucent.mysticalworld.entity.EntityFrog");
-		OWL_FOOD.add("teamroots.roots.entity.EntityDeer");
-
-		SNAKE_FOOD.add(EntityRabbit.class.getName());
-		SNAKE_FOOD.add(EntityChicken.class.getName());
-		SNAKE_FOOD.add(EntityParrot.class.getName());
-		SNAKE_FOOD.add(EntityBat.class.getName());
-		SNAKE_FOOD.add("familiarfauna.entities.EntityTurkey");
-		SNAKE_FOOD.add("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
-		SNAKE_FOOD.add("elucent.mysticalworld.entity.EntityFrog");
-
-
-		WEREWOLF_FOOD.add(EntitySheep.class.getName()); //Todo: Find some way of allowing werewolves to pick up on modded sheep and other livestock
-		WEREWOLF_FOOD.add(EntityRabbit.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
@@ -121,18 +95,6 @@ public class MobHelper {
 			return true;
 		}
 		return HUMANS.contains(entity.getClass().getName());
-	}
-
-	public static boolean isOwlFodder(EntityLivingBase entity) {
-		return OWL_FOOD.contains(entity.getClass().getName());
-	}
-
-	public static boolean isSnakeFodder(EntityLivingBase entity) {
-		return SNAKE_FOOD.contains(entity.getClass().getName());
-	}
-
-	public static boolean isWerewolfFood(EntityLivingBase entity) {
-		return WEREWOLF_FOOD.contains(entity.getClass().getName());
 	}
 
 	public static boolean isDemon(EntityLivingBase entity) {

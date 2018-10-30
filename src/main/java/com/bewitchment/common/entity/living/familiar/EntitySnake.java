@@ -1,7 +1,6 @@
 package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
-import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -9,7 +8,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -38,7 +40,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
-	private static final String[] names = {};
+	private static final String[] names = {""};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
@@ -48,6 +50,11 @@ public class EntitySnake extends EntityFamiliar {
 	public EntitySnake(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
+	}
+
+	public static boolean isSnakeFodder(Entity entity) {
+		String className = entity.getClass().getSimpleName();
+		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
 	}
 
 	@Override
@@ -96,7 +103,7 @@ public class EntitySnake extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, MobHelper::isSnakeFodder));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntitySnake::isSnakeFodder));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
