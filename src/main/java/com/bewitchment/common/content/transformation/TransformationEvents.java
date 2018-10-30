@@ -12,7 +12,6 @@ import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.PotionEffect;
@@ -51,7 +50,7 @@ public class TransformationEvents {
 			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), player);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void onStartTracking(StartTracking evt) {
 		if (evt.getEntity() instanceof EntityPlayer && evt.getEntityPlayer() instanceof EntityPlayerMP) {
@@ -59,7 +58,7 @@ public class TransformationEvents {
 			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) evt.getEntityPlayer());
 		}
 	}
-	
+
 	@SubscribeEvent
 	public static void livingTick(LivingUpdateEvent evt) {
 		if (evt.getEntityLiving() instanceof EntityPlayer && evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null).needsSync()) {

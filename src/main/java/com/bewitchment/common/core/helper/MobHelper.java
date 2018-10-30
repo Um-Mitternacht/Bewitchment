@@ -93,7 +93,7 @@ public class MobHelper {
 		SNAKE_FOOD.add("elucent.mysticalworld.entity.EntityFrog");
 
 
-		WEREWOLF_FOOD.add(EntitySheep.class.getName());
+		WEREWOLF_FOOD.add(EntitySheep.class.getName()); //Todo: Find some way of allowing werewolves to pick up on modded sheep and other livestock
 		WEREWOLF_FOOD.add(EntityRabbit.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {

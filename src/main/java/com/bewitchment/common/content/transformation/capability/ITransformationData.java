@@ -13,9 +13,9 @@ public interface ITransformationData {
 	public void setType(ITransformation type);
 
 	public int getLevel();
-	
+
 	public boolean needsSync();
-	
+
 	public void markAsSynced();
 
 	/**
