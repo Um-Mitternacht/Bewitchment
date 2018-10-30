@@ -14,6 +14,7 @@ public class CapabilityTransformationData implements ITransformationData {
 	ITransformation type = DefaultTransformations.NONE;
 	int level = 0, blood = 0;
 	boolean isNightVisionActive = false;
+	boolean isSyncDirty = false;
 
 	public CapabilityTransformationData() {
 	}
@@ -37,6 +38,9 @@ public class CapabilityTransformationData implements ITransformationData {
 	@Override
 	@SuppressWarnings("deprecation")
 	public void setType(ITransformation type) {
+		if (this.type != type) {
+			isSyncDirty = true;
+		}
 		this.type = type;
 		if (type != DefaultTransformations.VAMPIRE) {
 			blood = 0;
@@ -99,6 +103,16 @@ public class CapabilityTransformationData implements ITransformationData {
 	@Override
 	public void setNightVision(boolean flag) {
 		isNightVisionActive = flag;
+	}
+
+	@Override
+	public boolean needsSync() {
+		return isSyncDirty;
+	}
+
+	@Override
+	public void markAsSynced() {
+		isSyncDirty = false;
 	}
 
 }
