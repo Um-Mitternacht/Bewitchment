@@ -94,13 +94,7 @@ public class MobHelper {
 
 
 		WEREWOLF_FOOD.add(EntitySheep.class.getName());
-		WEREWOLF_FOOD.add(EntityCow.class.getName());
-		WEREWOLF_FOOD.add(EntityPig.class.getName());
-		WEREWOLF_FOOD.add(EntityHorse.class.getName());
-		WEREWOLF_FOOD.add(EntityDonkey.class.getName());
-		WEREWOLF_FOOD.add(EntityMule.class.getName());
-		WEREWOLF_FOOD.add(EntityLlama.class.getName());
-		WEREWOLF_FOOD.add(EntityMooshroom.class.getName());
+		WEREWOLF_FOOD.add(EntityRabbit.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
