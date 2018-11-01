@@ -1,6 +1,5 @@
 package com.bewitchment.common.content.cauldron.brews;
 
-import com.bewitchment.common.core.helper.MobHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityChicken;
