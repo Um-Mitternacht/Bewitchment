@@ -129,7 +129,7 @@ public class ItemHellishBauble extends ItemMod implements IBauble, IMagicPowerEx
 	}
 
 	@Override
-	public int getExtraAmount() {
+	public int getExtraAmount(EntityPlayer p) {
 		return 100;
 	}
 }

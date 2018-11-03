@@ -38,7 +38,7 @@ public class ItemMandrake extends ItemCropFood implements IMagicPowerExpander {
 	}
 
 	@Override
-	public int getExtraAmount() {
+	public int getExtraAmount(EntityPlayer p) {
 		return 0;
 	}
 }

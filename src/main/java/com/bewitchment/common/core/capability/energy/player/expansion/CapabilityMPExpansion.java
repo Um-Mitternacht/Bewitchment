@@ -1,6 +1,12 @@
 package com.bewitchment.common.core.capability.energy.player.expansion;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import com.bewitchment.api.mp.IMagicPowerExpander;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -9,10 +15,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.util.Constants.NBT;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class CapabilityMPExpansion {
 
@@ -26,8 +28,8 @@ public class CapabilityMPExpansion {
 		CapabilityManager.INSTANCE.register(CapabilityMPExpansion.class, new MagicPowerExpansionStorage(), () -> new CapabilityMPExpansion());
 	}
 
-	public void expand(IMagicPowerExpander exp) {
-		increaseMap.put(exp.getID().toString(), exp.getExtraAmount());
+	public void expand(IMagicPowerExpander exp, EntityPlayer player) {
+		increaseMap.put(exp.getID().toString(), exp.getExtraAmount(player));
 		dirty = true;
 	}
 

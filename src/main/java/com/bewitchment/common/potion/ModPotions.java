@@ -71,10 +71,10 @@ public class ModPotions {
 		revealing = new PotionRevealing();
 		adders_kiss = new PotionAddersKiss();
 		deaths_ebb = new PotionDeathsEbb();
-		magickal_boon = new PotionMagickalBoon();
-		magickal_drain = new PotionMagickalDrain();
-		magickal_boost = new PotionMagickalBoost();
-		magickal_dampening = new PotionMagickalDampening();
+		magickal_boon = new PotionPowerRegen();
+		magickal_drain = new PotionPowerDrain();
+		magickal_boost = new PotionPowerBoost();
+		magickal_dampening = new PotionPowerDampening();
 		mesmerized = new PotionMesmerize();
 
 		ForgeRegistries.POTIONS.registerAll(//

@@ -209,7 +209,7 @@ public class ApiInstance extends BewitchmentAPI {
 
 	@Override
 	public void expandPlayerMP(IMagicPowerExpander expander, EntityPlayer player) {
-		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).expand(expander);
+		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).expand(expander, player);
 		((PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null)).markDirty();
 	}
 
