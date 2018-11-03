@@ -187,6 +187,10 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.filet_of_fenny_snake), new AspectList().add(Aspect.DEATH, 4).add(Aspect.LIFE, 4).add(DEMON, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.snake_venom), new AspectList().add(Aspect.DEATH, 9).add(Aspect.CRYSTAL, 9));
 		evt.register.registerObjectTag(new ItemStack(ModItems.grilled_watermelon), new AspectList().add(Aspect.LIFE, 3).add(Aspect.DESIRE, 3));
+		//Todo: Dynamic aspects based on brew contents
+		evt.register.registerObjectTag(new ItemStack(ModItems.empty_brew_drink), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.CRYSTAL, 6).add(Aspect.VOID, 6));
+		evt.register.registerObjectTag(new ItemStack(ModItems.empty_brew_linger), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.CRYSTAL, 6).add(Aspect.AIR, 6).add(Aspect.VOID, 6));
+		evt.register.registerObjectTag(new ItemStack(ModItems.empty_brew_splash), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.CRYSTAL, 6).add(Aspect.EARTH, 6).add(Aspect.VOID, 6));
 
 		//Fumes
 		evt.register.registerObjectTag(new ItemStack(ModItems.fume), new AspectList().add(Aspect.EARTH, 11).add(Aspect.WATER, 11));
