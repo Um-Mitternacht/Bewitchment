@@ -615,6 +615,12 @@ effect.deaths_ebb.desc=Summons a zombie at your location
 effect.magickal_boon=Magickal Boon
 effect.magickal_boon.desc=Recharges your mind for more rituals
 
+effect.magickal_drain=Magickal Drain
+effect.magickal_drain.desc=Drains your energy and dampens your spirit
+
+effect.magickal_boost=Magickal Boost
+effect.magickal_boost.desc=Temporarily increases the amount of ME you have
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing

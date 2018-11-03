@@ -18,7 +18,7 @@ public class ModPotions {
 	public static Potion mending, flower_growth, harvest, holy_water, ice_world, outcasts_shame, infestation, ozymandias;
 	public static Potion purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, salted_earth, shell_armor;
 	public static Potion till_land, snow_trail, spider_nightmare, volatility, pulverize, mowing, love, revealing, adders_kiss;
-	public static Potion deaths_ebb, magickal_boon, magickal_boost;
+	public static Potion deaths_ebb, magickal_boon, magickal_boost, magickal_drain;
 
 	public static PotionFrostbite freezing;
 	public static PotionSinking sinking;
@@ -72,6 +72,8 @@ public class ModPotions {
 		adders_kiss = new PotionAddersKiss();
 		deaths_ebb = new PotionDeathsEbb();
 		magickal_boon = new PotionMagickalBoon();
+		magickal_drain = new PotionMagickalDrain();
+		magickal_boost = new PotionMagickalBoost();
 		mesmerized = new PotionMesmerize();
 
 		ForgeRegistries.POTIONS.registerAll(//
@@ -83,7 +85,7 @@ public class ModPotions {
 				purification, path_of_the_deep, prune_leaves, rotting, setehs_wastes, //
 				salted_earth, shell_armor, till_land, sinking, snow_trail, spider_nightmare, //
 				volatility, pulverize, mowing, sun_ward, love, revealing, adders_kiss, //
-				deaths_ebb, magickal_boon, mesmerized
+				deaths_ebb, magickal_boon, mesmerized, magickal_drain, magickal_boost
 		);
 	}
 }
