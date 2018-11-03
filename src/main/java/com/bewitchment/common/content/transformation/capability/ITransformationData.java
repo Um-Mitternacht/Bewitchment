@@ -14,10 +14,6 @@ public interface ITransformationData {
 
 	public int getLevel();
 
-	public boolean needsSync();
-
-	public void markAsSynced();
-
 	/**
 	 * Internal use only. Use the API's setTypeAndLevel
 	 */
