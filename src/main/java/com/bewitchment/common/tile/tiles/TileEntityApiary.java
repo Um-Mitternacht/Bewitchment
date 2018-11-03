@@ -1,218 +1,213 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.helper.ItemHandlerHelper;
-import com.bewitchment.common.core.statics.ModSounds;
+import com.bewitchment.common.content.cauldron.BrewData;
+import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
 import com.bewitchment.common.item.ModItems;
+import com.bewitchment.common.item.magic.ItemTaglock;
+import com.bewitchment.common.lib.LibDamageSources;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
+import com.google.common.collect.Lists;
+
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
-import javax.annotation.Nullable;
+public class TileEntityApiary extends ModTileEntity implements ITickable {
 
-/**
- * This class was created by Arekkuusu on 16/04/2017.
- * It's distributed as part of Bewitchment under
- * the MIT license.
- */
-@SuppressWarnings({"ConstantConditions", "NullableProblems"})
-public class TileEntityApiary extends ModTileEntity implements ITickable, IWorldNameable {
-	private static final String HANDLER_TOP_TAG = "handlerUp";
-	private static final String HANDLER_BOTTOM_TAG = "handlerDown";
-	private static final String CUSTOM_NAME_TAG = "customName";
+	public static final int ROWS = 3, COLUMNS = 6;
 
-	private static final int GEN = 200;
-	private String customName;
-	private int flowerCount;
-	private int tick;
-
-	private ItemStackHandler handlerUp, handlerDown;
-
-	public TileEntityApiary() {
-		handlerUp = new AutomatableInventory(1) {
-			@Override
-			public boolean isItemValidForSlot(int slot, ItemStack stack) {
-				return false;
-			}
-		};
-		handlerDown = new AutomatableInventory(18) {
-			@Override
-			public boolean isItemValidForSlot(int slot, ItemStack stack) {
-				return this.getStackInSlot(slot).isEmpty() && (stack.getItem() == ModItems.honeycomb || stack.getItem() == ModItems.empty_honeycomb || stack.getItem() == ModItems.honey);
-			}
-		};
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (playerIn.isSneaking()) {
-			return false;
-		}
-		if (worldIn.isRemote) {
-			return true;
+	private boolean hasBees = false;
+	private IMagicPowerConsumer mp_controller = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
+	private ApiaryInventory hives_inventory = new ApiaryInventory();
+	private AutomatableInventory modifiers_inventory = new AutomatableInventory(1) {
+		@Override
+		public boolean canInsertItemInSlot(int slot, ItemStack stack) {
+			Item i = stack.getItem();
+			return i == Items.SPIDER_EYE || i == Items.BLAZE_POWDER || i == ModItems.wool_of_bat || i == ModItems.brew_phial_linger;
 		}
 
-		ItemStack heldItem = playerIn.getHeldItem(hand);
-		if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-			this.customName = heldItem.getDisplayName();
-			this.markDirty();
-			this.syncToClient();
-			return true;
-		}
-
-		playerIn.openGui(Bewitchment.instance, LibGui.APIARY.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
-		return true;
-	}
-
-	@Override
-	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		if (worldIn.isRemote || player.isCreative()) {
-			return;
-		}
-
-		ItemHandlerHelper.dropItems(handlerUp, worldIn, pos);
-		ItemHandlerHelper.dropItems(handlerDown, worldIn, pos);
-		final EntityItem block = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.apiary));
-		world.spawnEntity(block);
-	}
+		@Override
+		public int getSlotLimit(int slot) {return 1;};
+	};
 
 	@Override
 	public void update() {
-		if (world.isRemote) {
-			return;
+		Item modifier = modifiers_inventory.getStackInSlot(0).getItem();
+		int time = 200;
+		if (modifier == Items.BLAZE_POWDER) {
+			time = 100;
 		}
-
-		++tick;
-		final ItemStack bee = handlerUp.getStackInSlot(0);
-		if (!bee.isEmpty() && bee.getItemDamage() < 35) {
-			lookForFlowers();
-			if (tick % 60 == 0 && world.rand.nextBoolean()) {
-				world.playSound(null, pos, ModSounds.BUZZ, SoundCategory.BLOCKS, 0.1F, 1F);
+		if (!world.isRemote && world.getTotalWorldTime() % time == 0) {
+			ApiaryInventory ai = new ApiaryInventory();
+			List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(5));
+			EntityLivingBase stingedEntity = null;
+			if (!list.isEmpty()) {
+				stingedEntity = list.get(world.rand.nextInt(list.size()));
 			}
-			if (flowerCount > 0) {
-				if (world.rand.nextInt(3) == 0 && tick % (GEN - flowerCount * 3) == 0) {
-					for (int i = 0; i < handlerDown.getSlots(); i++) {
-						if (!(handlerDown.getStackInSlot(i).getItem() == ModItems.honeycomb)) {
-							bee.attemptDamageItem(1, world.rand, null);
-							bonemealArea();
-							handlerDown.setStackInSlot(i, new ItemStack(ModItems.honeycomb));
-							break;
+			boolean shouldTaglock = modifier == ModItems.wool_of_bat;
+			if (modifier == ModItems.brew_phial_linger && stingedEntity != null) {
+				BrewData.fromStack(modifiers_inventory.getStackInSlot(0)).applyToEntity(stingedEntity, null, null, ApplicationType.LINGERING);
+			}
+			boolean hasHives = false;
+			for (int i = 0; i < COLUMNS*ROWS; i++) {
+				Item found = hives_inventory.getStackInSlot(i).getItem();
+				if (found == ModItems.honeycomb || found == ModItems.empty_honeycomb) {
+					hasHives = true;
+					ArrayList<Integer> neighbors = getNeighbors(i);
+					for (int s:neighbors) {
+						if (hives_inventory.getStackInSlot(s).isEmpty()) {
+							growSlot(s, ai, null);
 						}
 					}
+					growSlot(i, ai, shouldTaglock?stingedEntity:null);
 				}
-				flowerCount = 0;
+			}
+			
+			if (hasHives) {
+				for (int k = 0; k < ai.getSlots(); k++) {
+					if (!ai.getStackInSlot(k).isEmpty()) {
+						hives_inventory.setStackInSlot(k, ai.getStackInSlot(k));
+					}
+				}
+				if (stingedEntity != null) {
+					stingedEntity.attackEntityFrom(LibDamageSources.BEES, modifier == Items.BLAZE_POWDER ? 4f : 1f);
+				}
+			}
+			hasBees = hasHives;
+			syncToClient();
+			markDirty();
+		}
+	}
+
+	private void growSlot(int s, ApiaryInventory ai, EntityLivingBase taglocked) {
+		if (mp_controller.drainAltarFirst(null, pos, world.provider.getDimension(), world.rand.nextInt(1000))) {
+			Item found = hives_inventory.getStackInSlot(s).getItem();
+			if (found == Items.PAPER || found == Item.getItemFromBlock(Blocks.CARPET)) {
+				if (world.rand.nextInt(40)==0) {
+					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
+				}
+			} else if (found == Items.AIR) {
+				if (world.rand.nextInt(20)==0) {
+					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
+				}
+			} else if (found == ModItems.empty_honeycomb) {
+				if (world.rand.nextInt(20)==0) {
+					if (taglocked == null) {
+						ai.setStackInSlot(s, new ItemStack(ModItems.honeycomb));
+					} else {
+						ItemStack tl = new ItemStack(ModItems.taglock);
+						ItemTaglock.setVictim(tl, taglocked);
+						ai.setStackInSlot(s, tl);
+					}
+				}
 			}
 		}
 	}
 
-	private void lookForFlowers() {
-		getArea().forEach(
-				pos -> {
-					final Block block = world.getBlockState(pos).getBlock();
-					if ((block instanceof BlockCrops) || block == Blocks.RED_FLOWER || block == Blocks.YELLOW_FLOWER) {
-						if (++flowerCount > 200) flowerCount = 200;
-					}
-				}
-		);
-	}
-
-	private void bonemealArea() {
-		getArea().forEach(
-				pos -> {
-					final IBlockState state = world.getBlockState(pos);
-					if (state.getBlock() instanceof BlockCrops && world.rand.nextInt(400 - flowerCount) == 0) {
-						if (((BlockCrops) state.getBlock()).canGrow(world, pos, state, false)) {
-							((BlockCrops) state.getBlock()).grow(world, world.rand, pos, state);
-						}
-					}
-				}
-		);
-	}
-
-	private Iterable<BlockPos> getArea() {
-		final BlockPos posI = getPos().add(-5, -5, -5);
-		final BlockPos posF = getPos().add(5, 5, 5);
-		return BlockPos.getAllInBox(posI, posF);
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || capability == IMagicPowerConsumer.CAPABILITY) {
+			return true;
+		}
+		return super.hasCapability(capability, facing);
 	}
 
 	@Override
-	public String getName() {
-		return this.hasCustomName() ? this.customName : new TextComponentTranslation("container.apiary").getFormattedText();
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return this.customName != null && !this.customName.isEmpty();
-	}
-
-	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
-	}
-
-	@Nullable
-	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == IMagicPowerConsumer.CAPABILITY) {
+			return IMagicPowerConsumer.CAPABILITY.cast(mp_controller);
+		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if (facing == EnumFacing.UP) {
-				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);
-			}
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(hives_inventory);
 		}
 		return null;
 	}
 
-	@Override
-	protected void readAllModDataNBT(NBTTagCompound cmp) {
-		if (cmp.hasKey(CUSTOM_NAME_TAG, 8)) {
-			this.customName = cmp.getString(CUSTOM_NAME_TAG);
-		}
-		handlerUp.deserializeNBT((NBTTagCompound) cmp.getTag(HANDLER_TOP_TAG));
-		handlerDown.deserializeNBT((NBTTagCompound) cmp.getTag(HANDLER_BOTTOM_TAG));
+	private ArrayList<Integer> getNeighbors(int slot) {
+		int i = slot % COLUMNS;
+		int j = slot / COLUMNS;
+		ArrayList<Integer> res = Lists.newArrayList();
+		if (i > 0) res.add(slot - 1);
+		if (i < COLUMNS - 1) res.add(slot + 1);
+		if (j > 0) res.add(slot - COLUMNS);
+		if (j < ROWS - 1) res.add(slot + COLUMNS);
+		return res;
+	}
+
+	public AutomatableInventory getModifiersInventory() {
+		return modifiers_inventory;
 	}
 
 	@Override
-	protected void writeAllModDataNBT(NBTTagCompound cmp) {
-		if (this.hasCustomName()) {
-			cmp.setString(CUSTOM_NAME_TAG, this.customName);
-		}
-		cmp.setTag(HANDLER_TOP_TAG, handlerUp.serializeNBT());
-		cmp.setTag(HANDLER_BOTTOM_TAG, handlerDown.serializeNBT());
+	protected void readAllModDataNBT(NBTTagCompound tag) {
+		hives_inventory.deserializeNBT(tag.getCompoundTag("hives"));
+		modifiers_inventory.deserializeNBT(tag.getCompoundTag("modifiers"));
+		mp_controller.readFromNbt(tag.getCompoundTag("mp"));
+		readModSyncDataNBT(tag);
+	}
+
+	@Override
+	protected void writeAllModDataNBT(NBTTagCompound tag) {
+		tag.setTag("hives", hives_inventory.serializeNBT());
+		tag.setTag("modifiers", modifiers_inventory.serializeNBT());
+		tag.setTag("mp", mp_controller.writeToNbt());
+		writeModSyncDataNBT(tag);
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		if (this.hasCustomName()) {
-			tag.setString(CUSTOM_NAME_TAG, this.customName);
-		}
+		tag.setBoolean("hasbees", hasBees);
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
-			this.customName = tag.getString(CUSTOM_NAME_TAG);
+		hasBees = tag.getBoolean("hasbees");
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		playerIn.openGui(Bewitchment.instance, LibGui.APIARY.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+		return true;
+	}
+	
+	public boolean hasBees() {
+		return hasBees;
+	}
+
+	static class ApiaryInventory extends AutomatableInventory {
+
+		public ApiaryInventory() {
+			super(COLUMNS*ROWS);
 		}
+
+		@Override
+		public boolean canInsertItemInSlot(int slot, ItemStack stack) {
+			Item i = stack.getItem();
+			return i == Items.PAPER || i == Item.getItemFromBlock(Blocks.CARPET) || i == ModItems.empty_honeycomb;
+		}
+
+		@Override
+		public int getSlotLimit(int slot) {return 1;};
+
 	}
 }

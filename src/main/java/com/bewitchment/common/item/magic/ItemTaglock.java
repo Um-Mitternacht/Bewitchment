@@ -99,12 +99,12 @@ public class ItemTaglock extends ItemMod {
 				.findAny();
 	}
 
-	public void setVictim(ItemStack stack, EntityLivingBase victim) {
+	public static void setVictim(ItemStack stack, EntityLivingBase victim) {
 		NBTHelper.setUniqueID(stack, Bewitchment.TAGLOCK_ENTITY, victim.getUniqueID());
 		NBTHelper.setString(stack, Bewitchment.TAGLOCK_ENTITY_NAME, victim.getName());
 	}
 
-	public void removeVictim(ItemStack stack) {
+	public static void removeVictim(ItemStack stack) {
 		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY);
 		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME);
 	}

@@ -62,20 +62,20 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		this.random = new Random(100);
 		this.handlerUp = new AutomatableInventory(1) {
 			@Override
-			public boolean isItemValidForSlot(int slot, ItemStack stack) {
+			public boolean canInsertItemInSlot(int slot, ItemStack stack) {
 				return slot == 0 && OvenSmeltingRecipe.isSmeltable(stack);
 			}
 		};
 		this.handlerDown = new AutomatableInventory(2) {
 			@Override
-			public boolean isItemValidForSlot(int slot, ItemStack stack) {
+			public boolean canInsertItemInSlot(int slot, ItemStack stack) {
 				return slot == 0 || slot == 1;
 
 			}
 		};
 		this.handlerSide = new AutomatableInventory(2) {
 			@Override
-			public boolean isItemValidForSlot(int slot, ItemStack stack) {
+			public boolean canInsertItemInSlot(int slot, ItemStack stack) {
 				if (slot == 0) {
 					return TileEntityFurnace.isItemFuel(stack);
 				} else if (slot == 1) {
