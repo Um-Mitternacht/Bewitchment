@@ -578,7 +578,7 @@ public class ModelWerewolf extends ModelBase {
 
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || transformation != 0) { //Transformation?
 				transformation++;
-
+				System.out.println(transformation);
 				if (transformation < 40) { //Transformation animation
 
 					chest.rotateAngleX = 1.0235987755982988F + MathHelper.sin(transformation * 0.10471975512F + 0.5F);
@@ -603,7 +603,7 @@ public class ModelWerewolf extends ModelBase {
 			if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || howling != 0) { //Howling animation
 				howling++;
 				if (howling < 45) {
-					chest.rotateAngleX = 0.5235987755982988F + 0.5f + MathHelper.sin(howling * 0.10471975512F + 0.5F) + 0.0174532925199432F * MathHelper.cos((time / 0.10471975512F));
+					chest.rotateAngleX = 0.5235987755982988F + 0.5f + MathHelper.sin(howling * 0.10471975512F + 0.5F) + 0.0174532925199432F * MathHelper.cos(time);
 					bipedRightArm.rotateAngleX = -0.3490658503988659F - 0.5f - MathHelper.sin(howling * 0.10471975512F + 0.5F);
 					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
 					bipedHead.rotateAngleX = 0.0922922634F + 0.1f * MathHelper.sin(howling * 0.10471975512F + 0.5F);
@@ -619,7 +619,7 @@ public class ModelWerewolf extends ModelBase {
 					jawLower.rotateAngleX = 0.5235987755F;
 
 				} else if (howling < 194 && howling > 171) {
-					chest.rotateAngleX = 0.10067606F + 0.422922716F * MathHelper.sin(howling * 0.10471975512F) + 0.0174532925199432F * MathHelper.cos((time / 0.10471975512F));
+					chest.rotateAngleX = 0.10067606F + 0.422922716F * MathHelper.sin(howling * 0.10471975512F) + 0.0174532925199432F * MathHelper.cos(time);
 					bipedRightArm.rotateAngleX = 0.07385689F - 0.42292274F * MathHelper.sin(howling * 0.10471975512F);
 					bipedLeftArm.rotateAngleX = bipedRightArm.rotateAngleX;
 					bipedHead.rotateAngleX = 0.05235987755F + 0.733038286F * MathHelper.sin(howling * 0.10471975512F);
