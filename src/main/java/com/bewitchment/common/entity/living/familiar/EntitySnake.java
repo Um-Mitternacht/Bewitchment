@@ -44,7 +44,8 @@ public class EntitySnake extends EntityFamiliar {
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
-
+	
+	private int timerRef = 0; 
 	private int milkCooldown = 0;
 
 	public EntitySnake(World worldIn) {
@@ -170,6 +171,11 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION
+		//TODO
+		this.setTamedBy(player);
+		this.setSitting(!player.isSneaking());
+		//---- ^^^^ ----
 		if (this.getAttackTarget() == null || this.getAttackTarget().isDead || this.getRevengeTarget() == null || this.getRevengeTarget().isDead) {
 			ItemStack itemstack = player.getHeldItem(hand);
 			if (itemstack.getItem() == ModItems.glass_jar) {
@@ -262,5 +268,18 @@ public class EntitySnake extends EntityFamiliar {
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("milkCooldown", milkCooldown);
+	}
+	
+
+	public void resetTimer() {
+		timerRef = 0;
+	}
+	
+	public void addTimer(int n) {
+		timerRef+=n;
+	}
+	
+	public int getTimer() {
+		return timerRef;
 	}
 }
