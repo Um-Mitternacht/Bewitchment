@@ -621,6 +621,9 @@ effect.magickal_drain.desc=Drains your energy and dampens your spirit
 effect.magickal_boost=Magickal Boost
 effect.magickal_boost.desc=Temporarily increases the amount of ME you have
 
+effect.magickal_dampening=Magickal Dampening
+effect.magickal_dampening.desc=Temporarily decreases the amount of ME you have
+
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling
 bewitchment.subtitle.buzz=Bees buzzing
