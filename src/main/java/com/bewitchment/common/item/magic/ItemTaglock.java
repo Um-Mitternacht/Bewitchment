@@ -55,6 +55,16 @@ public class ItemTaglock extends ItemMod {
 		return Optional.ofNullable(victim);
 	}
 
+	public static void setVictim(ItemStack stack, EntityLivingBase victim) {
+		NBTHelper.setUniqueID(stack, Bewitchment.TAGLOCK_ENTITY, victim.getUniqueID());
+		NBTHelper.setString(stack, Bewitchment.TAGLOCK_ENTITY_NAME, victim.getName());
+	}
+
+	public static void removeVictim(ItemStack stack) {
+		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY);
+		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME);
+	}
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -97,15 +107,5 @@ public class ItemTaglock extends ItemMod {
 				.filter(player -> player.bedLocation != null)
 				.filter(player -> player.getBedLocation().equals(bed))
 				.findAny();
-	}
-
-	public static void setVictim(ItemStack stack, EntityLivingBase victim) {
-		NBTHelper.setUniqueID(stack, Bewitchment.TAGLOCK_ENTITY, victim.getUniqueID());
-		NBTHelper.setString(stack, Bewitchment.TAGLOCK_ENTITY_NAME, victim.getName());
-	}
-
-	public static void removeVictim(ItemStack stack) {
-		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY);
-		NBTHelper.removeTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME);
 	}
 }

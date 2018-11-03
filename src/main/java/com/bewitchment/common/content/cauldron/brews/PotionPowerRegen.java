@@ -2,7 +2,6 @@ package com.bewitchment.common.content.cauldron.brews;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.content.cauldron.BrewMod;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -17,7 +16,7 @@ public class PotionPowerRegen extends BrewMod {
 	public boolean isReady(int duration, int amplifier) {
 		return duration % 20 == 0;
 	}
-	
+
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
 		if (entity instanceof EntityPlayer) {
@@ -25,5 +24,5 @@ public class PotionPowerRegen extends BrewMod {
 			playerMP.fill(amplifier);
 		}
 	}
-	
+
 }

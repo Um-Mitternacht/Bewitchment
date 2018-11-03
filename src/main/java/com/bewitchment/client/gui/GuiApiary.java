@@ -17,7 +17,7 @@ public class GuiApiary extends GuiContainer {
 	public GuiApiary(InventoryPlayer playerInventory, TileEntityApiary tileApiary) {
 		super(new ContainerApiary(playerInventory, tileApiary));
 	}
-	
+
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		this.drawDefaultBackground();

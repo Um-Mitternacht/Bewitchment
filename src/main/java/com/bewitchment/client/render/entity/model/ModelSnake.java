@@ -118,33 +118,32 @@ public class ModelSnake extends ModelBase {
 		this.neck02.addChild(this.head);
 		this.neck01a.addChild(this.body01);
 	}
-	
-	
+
 
 	@Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
-		float time = (entity.ticksExisted* 0.2F);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
+		float time = (entity.ticksExisted * 0.2F);
 		float angle = 0.34906585039F;
 		//0.26179938779F
-		
+
 		this.neck01a.render(scale);
-		
+
 		//Fix childing and start from scratch
-		
-		
+
+
 		if (limbSwingAmount > 0.05) {
-		this.neck01a.offsetX = 0.3F*MathHelper.cos(time);
-		this.neck01a.rotateAngleY = angle*MathHelper.sin(time);
-		this.neck02.rotateAngleY = angle*MathHelper.sin(time-5);
-		this.body01.rotateAngleY = angle*MathHelper.sin(time+5);//angle*MathHelper.sin(time+10);
-		this.tail01.rotateAngleY = angle*MathHelper.sin(time+11);
-		this.tail02.rotateAngleY = angle*MathHelper.sin(time+4);
-		this.tail03.rotateAngleY = angle*MathHelper.sin(time+2);
-		this.tail04.rotateAngleY = angle*MathHelper.sin(time+3);
-		this.tail05.rotateAngleY = angle/4F*MathHelper.sin(time+2);
-		//this.tail04.rotateAngleY = 0.34906585039F*MathHelper.sin(time+30);
-		this.head.rotateAngleY = this.neck02.rotateAngleY;
-		this.head.rotateAngleZ = 0.174532925F*MathHelper.cos(time-5);
+			this.neck01a.offsetX = 0.3F * MathHelper.cos(time);
+			this.neck01a.rotateAngleY = angle * MathHelper.sin(time);
+			this.neck02.rotateAngleY = angle * MathHelper.sin(time - 5);
+			this.body01.rotateAngleY = angle * MathHelper.sin(time + 5);//angle*MathHelper.sin(time+10);
+			this.tail01.rotateAngleY = angle * MathHelper.sin(time + 11);
+			this.tail02.rotateAngleY = angle * MathHelper.sin(time + 4);
+			this.tail03.rotateAngleY = angle * MathHelper.sin(time + 2);
+			this.tail04.rotateAngleY = angle * MathHelper.sin(time + 3);
+			this.tail05.rotateAngleY = angle / 4F * MathHelper.sin(time + 2);
+			//this.tail04.rotateAngleY = 0.34906585039F*MathHelper.sin(time+30);
+			this.head.rotateAngleY = this.neck02.rotateAngleY;
+			this.head.rotateAngleZ = 0.174532925F * MathHelper.cos(time - 5);
 		}
 
 

@@ -24,7 +24,7 @@ public abstract class AutomatableInventory extends ItemStackHandler {
 		}
 		return stack;
 	}
-	
+
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
 		if (canExtractFromSlot(slot)) {
@@ -32,9 +32,9 @@ public abstract class AutomatableInventory extends ItemStackHandler {
 		}
 		return ItemStack.EMPTY;
 	}
-	
+
 	public abstract boolean canInsertItemInSlot(int slot, ItemStack stack);
-	
+
 	public boolean canExtractFromSlot(int slot) {
 		return true;
 	}

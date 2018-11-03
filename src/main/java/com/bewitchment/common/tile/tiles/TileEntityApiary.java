@@ -1,8 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.BrewData;
@@ -14,7 +11,6 @@ import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
 import com.google.common.collect.Lists;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +28,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TileEntityApiary extends ModTileEntity implements ITickable {
 
 	public static final int ROWS = 3, COLUMNS = 6;
@@ -47,7 +46,11 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		}
 
 		@Override
-		public int getSlotLimit(int slot) {return 1;};
+		public int getSlotLimit(int slot) {
+			return 1;
+		}
+
+		;
 	};
 
 	@Override
@@ -69,20 +72,20 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 				BrewData.fromStack(modifiers_inventory.getStackInSlot(0)).applyToEntity(stingedEntity, null, null, ApplicationType.LINGERING);
 			}
 			boolean hasHives = false;
-			for (int i = 0; i < COLUMNS*ROWS; i++) {
+			for (int i = 0; i < COLUMNS * ROWS; i++) {
 				Item found = hives_inventory.getStackInSlot(i).getItem();
 				if (found == ModItems.honeycomb || found == ModItems.empty_honeycomb) {
 					hasHives = true;
 					ArrayList<Integer> neighbors = getNeighbors(i);
-					for (int s:neighbors) {
+					for (int s : neighbors) {
 						if (hives_inventory.getStackInSlot(s).isEmpty()) {
 							growSlot(s, ai, null);
 						}
 					}
-					growSlot(i, ai, shouldTaglock?stingedEntity:null);
+					growSlot(i, ai, shouldTaglock ? stingedEntity : null);
 				}
 			}
-			
+
 			if (hasHives) {
 				for (int k = 0; k < ai.getSlots(); k++) {
 					if (!ai.getStackInSlot(k).isEmpty()) {
@@ -103,15 +106,15 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		if (mp_controller.drainAltarFirst(null, pos, world.provider.getDimension(), world.rand.nextInt(1000))) {
 			Item found = hives_inventory.getStackInSlot(s).getItem();
 			if (found == Items.PAPER || found == Item.getItemFromBlock(Blocks.CARPET)) {
-				if (world.rand.nextInt(40)==0) {
+				if (world.rand.nextInt(40) == 0) {
 					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
 				}
 			} else if (found == Items.AIR) {
-				if (world.rand.nextInt(20)==0) {
+				if (world.rand.nextInt(20) == 0) {
 					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
 				}
 			} else if (found == ModItems.empty_honeycomb) {
-				if (world.rand.nextInt(20)==0) {
+				if (world.rand.nextInt(20) == 0) {
 					if (taglocked == null) {
 						ai.setStackInSlot(s, new ItemStack(ModItems.honeycomb));
 					} else {
@@ -189,7 +192,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		playerIn.openGui(Bewitchment.instance, LibGui.APIARY.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
-	
+
 	public boolean hasBees() {
 		return hasBees;
 	}
@@ -197,7 +200,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	static class ApiaryInventory extends AutomatableInventory {
 
 		public ApiaryInventory() {
-			super(COLUMNS*ROWS);
+			super(COLUMNS * ROWS);
 		}
 
 		@Override
@@ -207,7 +210,11 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		}
 
 		@Override
-		public int getSlotLimit(int slot) {return 1;};
+		public int getSlotLimit(int slot) {
+			return 1;
+		}
+
+		;
 
 	}
 }
