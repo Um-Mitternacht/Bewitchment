@@ -119,32 +119,56 @@ public class ModelSnake extends ModelBase {
 		this.neck01a.addChild(this.body01);
 	}
 	
+	int timer = 0;
+	int coil_animation_length = 160;
 	
 
 	@Override
     public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
 		float time = (entity.ticksExisted* 0.2F);
 		float angle = 0.34906585039F;
-		//0.26179938779F
 		
 		this.neck01a.render(scale);
 		
-		//Fix childing and start from scratch
+		if (entity.motionZ == 0 && entity.motionX == 0 ) { //Change to entity.isSitting 
+			if (timer < coil_animation_length) {
+			timer++;	
+			this.neck01a.rotateAngleY = neck01a.rotateAngleY + (-0.09110618695F - neck01a.rotateAngleY)*timer/coil_animation_length;
+			this.neck02.rotateAngleY = neck02.rotateAngleY + (-1.27478848566F - neck02.rotateAngleY)*timer/coil_animation_length;
+			this.neck02.rotateAngleX = neck02.rotateAngleX + (-0.27314402793F - neck02.rotateAngleX)*timer/coil_animation_length;
+			this.body01.rotateAngleY = body01.rotateAngleY + (1.09397237515F - body01.rotateAngleY)*timer/coil_animation_length;
+			this.tail01.rotateAngleY = tail01.rotateAngleY + (0.95609136424F - tail01.rotateAngleY)*timer/coil_animation_length;
+			this.tail02.rotateAngleY = tail02.rotateAngleY + (1.27478848566F - tail02.rotateAngleY)*timer/coil_animation_length;
+			this.tail03.rotateAngleY = tail03.rotateAngleY + (0.81960661673F - tail03.rotateAngleY)*timer/coil_animation_length;
+			this.tail04.rotateAngleY = tail04.rotateAngleY + (1.54810704652F - tail04.rotateAngleY)*timer/coil_animation_length;
+			this.tail05.rotateAngleY = tail05.rotateAngleY + (1.59348560707F - tail05.rotateAngleY)*timer/coil_animation_length;
+			
+			this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX)*timer/coil_animation_length;
+			this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY)*timer/coil_animation_length;
+			this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ)*timer/coil_animation_length;
+			
+
+			}else {
+				this.neck01a.offsetX = -0.3F;
+			}
+		}
 		
-		
-		if (limbSwingAmount > 0.05) {
+		if (entity.motionZ > 0.05 || entity.motionX > 0.05) {
 		this.neck01a.offsetX = 0.3F*MathHelper.cos(time);
 		this.neck01a.rotateAngleY = angle*MathHelper.sin(time);
 		this.neck02.rotateAngleY = angle*MathHelper.sin(time-5);
-		this.body01.rotateAngleY = angle*MathHelper.sin(time+5);//angle*MathHelper.sin(time+10);
+		this.neck02.rotateAngleX = 0;
+		this.body01.rotateAngleY = angle*MathHelper.sin(time+5);
 		this.tail01.rotateAngleY = angle*MathHelper.sin(time+11);
 		this.tail02.rotateAngleY = angle*MathHelper.sin(time+4);
 		this.tail03.rotateAngleY = angle*MathHelper.sin(time+2);
 		this.tail04.rotateAngleY = angle*MathHelper.sin(time+3);
 		this.tail05.rotateAngleY = angle/4F*MathHelper.sin(time+2);
-		//this.tail04.rotateAngleY = 0.34906585039F*MathHelper.sin(time+30);
 		this.head.rotateAngleY = this.neck02.rotateAngleY;
 		this.head.rotateAngleZ = 0.174532925F*MathHelper.cos(time-5);
+		this.head.rotateAngleX = 0;
+		this.head.rotateAngleZ = 0;
+		timer = 0;
 		}
 
 
