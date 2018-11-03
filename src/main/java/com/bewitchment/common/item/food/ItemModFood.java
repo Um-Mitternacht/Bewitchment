@@ -38,7 +38,7 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 			}
 
 			@Override
-			public int getExtraAmount() {
+			public int getExtraAmount(EntityPlayer p) {
 				return amount;
 			}
 		};

@@ -118,14 +118,15 @@ public class ModelSnake extends ModelBase {
 		this.neck02.addChild(this.head);
 		this.neck01a.addChild(this.body01);
 	}
+
 	
 	int timer = 0;
 	int coil_animation_length = 160;
 	
 
 	@Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
-		float time = (entity.ticksExisted* 0.2F);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
+		float time = (entity.ticksExisted * 0.2F);
 		float angle = 0.34906585039F;
 		
 		this.neck01a.render(scale);
@@ -169,6 +170,7 @@ public class ModelSnake extends ModelBase {
 		this.head.rotateAngleX = 0;
 		this.head.rotateAngleZ = 0;
 		timer = 0;
+
 		}
 
 

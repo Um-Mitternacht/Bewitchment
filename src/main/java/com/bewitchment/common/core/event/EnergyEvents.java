@@ -61,6 +61,9 @@ public class EnergyEvents {
 			IMagicPowerContainer impc = p.getCapability(IMagicPowerContainer.CAPABILITY, null);
 			int energy = impc.getAmount();
 			int futureMaxAmount = PlayerMPContainer.STARTING_PLAYER_POWER + exps.getTotalIncrease();
+			if (futureMaxAmount < 0) {
+				futureMaxAmount = 0;
+			}
 			if (energy > futureMaxAmount) {
 				energy = futureMaxAmount;
 			}

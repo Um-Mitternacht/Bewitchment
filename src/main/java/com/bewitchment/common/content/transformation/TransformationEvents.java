@@ -12,12 +12,9 @@ import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
 import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
@@ -48,22 +45,6 @@ public class TransformationEvents {
 			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), player);
 			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), player);
 			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), player);
-		}
-	}
-
-	@SubscribeEvent
-	public static void onStartTracking(StartTracking evt) {
-		if (evt.getEntity() instanceof EntityPlayer && evt.getEntityPlayer() instanceof EntityPlayerMP) {
-			EntityPlayerMP player = (EntityPlayerMP) evt.getEntity();
-			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) evt.getEntityPlayer());
-		}
-	}
-
-	@SubscribeEvent
-	public static void livingTick(LivingUpdateEvent evt) {
-		if (evt.getEntityLiving() instanceof EntityPlayer && evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null).needsSync()) {
-			NetworkHandler.HANDLER.sendToAllTracking(new PlayerTransformationChangedMessage((EntityPlayer) evt.getEntityLiving()), evt.getEntityLiving());
-			evt.getEntityLiving().getCapability(CapabilityTransformationData.CAPABILITY, null).markAsSynced();
 		}
 	}
 }

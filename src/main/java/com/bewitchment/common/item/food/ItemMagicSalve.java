@@ -64,7 +64,7 @@ public class ItemMagicSalve extends ItemMod implements IMagicPowerExpander {
 	}
 
 	@Override
-	public int getExtraAmount() {
+	public int getExtraAmount(EntityPlayer p) {
 		return 75;
 	}
 

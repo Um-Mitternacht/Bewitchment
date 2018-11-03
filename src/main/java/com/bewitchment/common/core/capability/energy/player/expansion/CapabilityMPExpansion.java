@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.capability.energy.player.expansion;
 
 import com.bewitchment.api.mp.IMagicPowerExpander;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -26,8 +27,8 @@ public class CapabilityMPExpansion {
 		CapabilityManager.INSTANCE.register(CapabilityMPExpansion.class, new MagicPowerExpansionStorage(), () -> new CapabilityMPExpansion());
 	}
 
-	public void expand(IMagicPowerExpander exp) {
-		increaseMap.put(exp.getID().toString(), exp.getExtraAmount());
+	public void expand(IMagicPowerExpander exp, EntityPlayer player) {
+		increaseMap.put(exp.getID().toString(), exp.getExtraAmount(player));
 		dirty = true;
 	}
 

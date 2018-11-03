@@ -612,17 +612,17 @@ effect.adders_kiss.desc=Damages pests, such as rabbits
 effect.deaths_ebb=Death's Ebb
 effect.deaths_ebb.desc=Summons a zombie at your location
 
-effect.magickal_boon=Magickal Boon
-effect.magickal_boon.desc=Recharges your mind for more rituals
+effect.power_regen=Power Boon
+effect.power_regen.desc=Allows for increased MP recharge
 
-effect.magickal_drain=Magickal Drain
-effect.magickal_drain.desc=Drains your energy and dampens your spirit
+effect.power_drain=Power Drain
+effect.power_drain.desc=Drains your MP over time
 
-effect.magickal_boost=Magickal Boost
-effect.magickal_boost.desc=Temporarily increases the amount of ME you have
+effect.power_boost=Power Boost
+effect.power_boost.desc=Temporarily increases the amount of MP you have
 
-effect.magickal_dampening=Magickal Dampening
-effect.magickal_dampening.desc=Temporarily decreases the amount of ME you have
+effect.power_dampening=Power Dampening
+effect.power_dampening.desc=Temporarily decreases the amount of MP you have
 
 //Sound
 bewitchment.subtitle.boil=Cauldron boiling

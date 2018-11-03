@@ -46,7 +46,7 @@ public class EnchantmentExtraMP extends BaublesEnchantment {
 		}
 
 		@Override
-		public int getExtraAmount() {
+		public int getExtraAmount(EntityPlayer p) {
 			return amount;
 		}
 
