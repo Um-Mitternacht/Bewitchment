@@ -817,7 +817,20 @@ tarot.star.name=The Night Star
 tarot.moon.name=The Moon
 tarot.silver_sword.name=The Silver Sword
 tarot.hermit.name=The Hermit
-tarot.nitwit.name=The Nitwit
+tarot.nitwit.name=The Snow Golem
+tarot.ender_dragon.name=The Ender Dragon
+tarot.evoker.name=The Evoker
+tarot.guardian.name=The Guardian
+tarot.illusioner.name=The Illusioner
+tarot.stronghold.name=The Stronghold
+tarot.sun.name=The Sun
+tarot.mounts.name=The Mounts
+tarot.world.name=The World
+tarot.witch.name=The Witch
+tarot.wither.name=The Wither
+tarot.zombie.name=The Zombie
+
+tarot.
 
 //Death Messages
 death.attack.sun_on_vampire=You should not have walked outside
