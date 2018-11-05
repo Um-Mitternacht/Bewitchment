@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -13,6 +12,7 @@ import net.minecraft.util.math.MathHelper;
  * Created using Tabula 5.1.0
  */
 public class ModelSnake extends ModelBase {
+	private static final int COIL_ANIMATION_LENGTH = 160;
 	public ModelRenderer neck01a;
 	public ModelRenderer neck01b;
 	public ModelRenderer neck02;
@@ -33,6 +33,7 @@ public class ModelSnake extends ModelBase {
 	public ModelRenderer tail03b;
 	public ModelRenderer tail04;
 	public ModelRenderer tail05;
+
 
 	public ModelSnake() {
 		this.textureWidth = 64;
@@ -122,10 +123,6 @@ public class ModelSnake extends ModelBase {
 		this.neck01a.addChild(this.body01);
 	}
 
-
-	private static final int COIL_ANIMATION_LENGTH = 160;
-
-
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
 		float pticks = Minecraft.getMinecraft().getRenderPartialTicks();
@@ -136,35 +133,35 @@ public class ModelSnake extends ModelBase {
 			if (snek.getTimer() < COIL_ANIMATION_LENGTH) {
 				snek.addTimer(1);
 				int timer = snek.getTimer();
-				this.neck01a.rotateAngleY = neck01a.rotateAngleY + (-0.09110618695F - neck01a.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.neck02.rotateAngleY = neck02.rotateAngleY + (-1.27478848566F - neck02.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.neck02.rotateAngleX = neck02.rotateAngleX + (-0.27314402793F - neck02.rotateAngleX)*timer/COIL_ANIMATION_LENGTH;
-				this.body01.rotateAngleY = body01.rotateAngleY + (1.09397237515F - body01.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.tail01.rotateAngleY = tail01.rotateAngleY + (0.95609136424F - tail01.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.tail02.rotateAngleY = tail02.rotateAngleY + (1.27478848566F - tail02.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.tail03.rotateAngleY = tail03.rotateAngleY + (0.81960661673F - tail03.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.tail04.rotateAngleY = tail04.rotateAngleY + (1.54810704652F - tail04.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.tail05.rotateAngleY = tail05.rotateAngleY + (1.59348560707F - tail05.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
+				this.neck01a.rotateAngleY = neck01a.rotateAngleY + (-0.09110618695F - neck01a.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.neck02.rotateAngleY = neck02.rotateAngleY + (-1.27478848566F - neck02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.neck02.rotateAngleX = neck02.rotateAngleX + (-0.27314402793F - neck02.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
+				this.body01.rotateAngleY = body01.rotateAngleY + (1.09397237515F - body01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.tail01.rotateAngleY = tail01.rotateAngleY + (0.95609136424F - tail01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.tail02.rotateAngleY = tail02.rotateAngleY + (1.27478848566F - tail02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.tail03.rotateAngleY = tail03.rotateAngleY + (0.81960661673F - tail03.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.tail04.rotateAngleY = tail04.rotateAngleY + (1.54810704652F - tail04.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.tail05.rotateAngleY = tail05.rotateAngleY + (1.59348560707F - tail05.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
 
-				this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX)*timer/COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY)*timer/COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ)*timer/COIL_ANIMATION_LENGTH;
+				this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
+				this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ) * timer / COIL_ANIMATION_LENGTH;
 			} else {
 				this.neck01a.offsetX = -0.3F;
 			}
 		} else {
-			this.neck01a.offsetX = 0.3F*MathHelper.cos(time);
-			this.neck01a.rotateAngleY = angle*MathHelper.sin(time);
-			this.neck02.rotateAngleY = angle*MathHelper.sin(time-5);
+			this.neck01a.offsetX = 0.3F * MathHelper.cos(time);
+			this.neck01a.rotateAngleY = angle * MathHelper.sin(time);
+			this.neck02.rotateAngleY = angle * MathHelper.sin(time - 5);
 			this.neck02.rotateAngleX = 0;
-			this.body01.rotateAngleY = angle*MathHelper.sin(time+5);
-			this.tail01.rotateAngleY = angle*MathHelper.sin(time+11);
-			this.tail02.rotateAngleY = angle*MathHelper.sin(time+4);
-			this.tail03.rotateAngleY = angle*MathHelper.sin(time+2);
-			this.tail04.rotateAngleY = angle*MathHelper.sin(time+3);
-			this.tail05.rotateAngleY = angle/4F*MathHelper.sin(time+2);
+			this.body01.rotateAngleY = angle * MathHelper.sin(time + 5);
+			this.tail01.rotateAngleY = angle * MathHelper.sin(time + 11);
+			this.tail02.rotateAngleY = angle * MathHelper.sin(time + 4);
+			this.tail03.rotateAngleY = angle * MathHelper.sin(time + 2);
+			this.tail04.rotateAngleY = angle * MathHelper.sin(time + 3);
+			this.tail05.rotateAngleY = angle / 4F * MathHelper.sin(time + 2);
 			this.head.rotateAngleY = this.neck02.rotateAngleY;
-			this.head.rotateAngleZ = 0.174532925F*MathHelper.cos(time-5);
+			this.head.rotateAngleZ = 0.174532925F * MathHelper.cos(time - 5);
 			this.head.rotateAngleX = 0;
 			this.head.rotateAngleZ = 0;
 			snek.resetTimer();

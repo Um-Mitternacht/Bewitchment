@@ -44,8 +44,8 @@ public class EntitySnake extends EntityFamiliar {
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
-	
-	private int timerRef = 0; 
+
+	private int timerRef = 0;
 	private int milkCooldown = 0;
 
 	public EntitySnake(World worldIn) {
@@ -269,16 +269,16 @@ public class EntitySnake extends EntityFamiliar {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("milkCooldown", milkCooldown);
 	}
-	
+
 
 	public void resetTimer() {
 		timerRef = 0;
 	}
-	
+
 	public void addTimer(int n) {
-		timerRef+=n;
+		timerRef += n;
 	}
-	
+
 	public int getTimer() {
 		return timerRef;
 	}
