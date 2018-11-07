@@ -12,6 +12,7 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.core.statics.ModSounds;
+import com.bewitchment.common.entity.EntityBees;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 
@@ -58,6 +59,7 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 	@Override
 	public void onEndFalling(World world, BlockPos pos, IBlockState falling, IBlockState falling2) {
 		world.destroyBlock(pos, false);
+		world.spawnEntity(new EntityBees(world, 600, pos));
 	}
 	
 	@Override
