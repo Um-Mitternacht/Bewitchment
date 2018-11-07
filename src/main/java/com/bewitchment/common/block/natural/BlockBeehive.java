@@ -18,9 +18,11 @@ import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -52,6 +54,40 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 		setResistance(1F);
 		setHardness(1F);
 	}
+	
+	@Override
+	public void onEndFalling(World world, BlockPos pos, IBlockState falling, IBlockState falling2) {
+		world.destroyBlock(pos, false);
+	}
+	
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        if (!worldIn.isRemote) {
+            this.checkFallableHive(worldIn, pos);
+        }
+    }
+
+    private void checkFallableHive(World worldIn, BlockPos pos) {
+    	IBlockState above = worldIn.getBlockState(pos.up());
+        if (!above.getBlock().isLeaves(above, worldIn, pos.up()) && pos.getY() >= 0 && worldIn.isAirBlock(pos.down())) {
+            if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32))) {
+                if (!worldIn.isRemote) {
+                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+                    entityfallingblock.setHurtEntities(false);
+                    entityfallingblock.shouldDropItem = false;
+                    worldIn.spawnEntity(entityfallingblock);
+                }
+            } else {
+                IBlockState state = worldIn.getBlockState(pos);
+                worldIn.setBlockToAir(pos);
+                BlockPos blockpos;
+                for (blockpos = pos.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos))) && blockpos.getY() > 0; blockpos = blockpos.down());
+                if (blockpos.getY() > 0) {
+                    worldIn.setBlockState(blockpos.up(), state);
+                }
+            }
+        }
+    }
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -84,6 +120,11 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 		return false;
 	}
 
+	@Override
+		public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+			return BlockFaceShape.UNDEFINED;
+		}
+	
 	@Override
 	public int quantityDropped(Random random) {
 		return random.nextInt(5);
