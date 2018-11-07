@@ -2,7 +2,6 @@ package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.entity.EntityBees;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.entity.Render;

@@ -1,7 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
@@ -9,7 +7,6 @@ import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
 import com.google.common.collect.Lists;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -24,6 +21,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+
+import java.util.ArrayList;
 
 public class TileEntityApiary extends ModTileEntity implements ITickable {
 
@@ -57,7 +56,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0) {
 			boolean hasHives = false;
 			for (int i = 0; i < COLUMNS * ROWS; i++) {
-				if (rng.nextInt(chance)==0) {
+				if (rng.nextInt(chance) == 0) {
 					hives_inventory.setStackInSlot(i, growItem(i));
 				}
 			}
@@ -71,20 +70,20 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	private ItemStack growItem(int i) {
 		ItemStack is = hives_inventory.getStackInSlot(i);
 		Item item = is.getItem();
-		if (item == Items.AIR && rng.nextInt(3)==0) {
+		if (item == Items.AIR && rng.nextInt(3) == 0) {
 			if (getNeighbors(i).stream().anyMatch(n -> (hives_inventory.getStackInSlot(n).getItem() != Items.AIR))) {
 				return new ItemStack(ModItems.empty_honeycomb);
 			}
 		}
-		
+
 		if (item == ModItems.empty_honeycomb) {
 			return new ItemStack(ModItems.honeycomb);
 		}
-		
+
 		if (item == Items.PAPER || item == Item.getItemFromBlock(Blocks.CARPET)) {
-				return new ItemStack(ModItems.empty_honeycomb);
+			return new ItemStack(ModItems.empty_honeycomb);
 		}
-		
+
 		return is;
 	}
 

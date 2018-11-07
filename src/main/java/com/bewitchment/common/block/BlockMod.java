@@ -12,7 +12,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -33,7 +32,7 @@ public class BlockMod extends Block implements IModelRegister {
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
-	
+
 	public BlockMod(String id, Material material, SoundType sound) {
 		this(id, material);
 		this.setSoundType(sound);

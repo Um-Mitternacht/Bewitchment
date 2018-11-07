@@ -1,11 +1,5 @@
 package com.bewitchment.common.block.natural;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
@@ -17,7 +11,6 @@ import com.bewitchment.common.entity.EntityBees;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Lists;
-
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -44,6 +37,12 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
+
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
@@ -63,19 +62,19 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 		setResistance(1F);
 		setHardness(1F);
 	}
-	
+
 	@Override
 	public void onEndFalling(World world, BlockPos pos, IBlockState falling, IBlockState falling2) {
 		world.destroyBlock(pos, false);
 		world.spawnEntity(new EntityBees(world, 600, pos));
 	}
-	
+
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if (!worldIn.isRemote) {
-            this.checkFallableHive(worldIn, pos);
-        }
-    }
+		if (!worldIn.isRemote) {
+			this.checkFallableHive(worldIn, pos);
+		}
+	}
 
 	@Override
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
@@ -87,34 +86,35 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 			ArrayList<ItemStack> drops = Lists.newArrayList(new ItemStack(ModItems.empty_honeycomb, player.getRNG().nextInt(2 + EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack))));
 			harvesters.set(player);
 			ForgeEventFactory.fireBlockHarvesting(drops, worldIn, pos, state, EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack), 1, false, player);
-			for (ItemStack is:drops) {
+			for (ItemStack is : drops) {
 				spawnAsEntity(worldIn, pos, is);
 			}
 			harvesters.set(null);
 		}
 	}
-	
-    private void checkFallableHive(World worldIn, BlockPos pos) {
-    	IBlockState above = worldIn.getBlockState(pos.up());
-        if (!above.getBlock().isLeaves(above, worldIn, pos.up()) && pos.getY() >= 0 && worldIn.isAirBlock(pos.down())) {
-            if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32))) {
-                if (!worldIn.isRemote) {
-                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, worldIn.getBlockState(pos));
-                    entityfallingblock.setHurtEntities(false);
-                    entityfallingblock.shouldDropItem = false;
-                    worldIn.spawnEntity(entityfallingblock);
-                }
-            } else {
-                IBlockState state = worldIn.getBlockState(pos);
-                worldIn.setBlockToAir(pos);
-                BlockPos blockpos;
-                for (blockpos = pos.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos))) && blockpos.getY() > 0; blockpos = blockpos.down());
-                if (blockpos.getY() > 0) {
-                    worldIn.setBlockState(blockpos.up(), state);
-                }
-            }
-        }
-    }
+
+	private void checkFallableHive(World worldIn, BlockPos pos) {
+		IBlockState above = worldIn.getBlockState(pos.up());
+		if (!above.getBlock().isLeaves(above, worldIn, pos.up()) && pos.getY() >= 0 && worldIn.isAirBlock(pos.down())) {
+			if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32))) {
+				if (!worldIn.isRemote) {
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+					entityfallingblock.setHurtEntities(false);
+					entityfallingblock.shouldDropItem = false;
+					worldIn.spawnEntity(entityfallingblock);
+				}
+			} else {
+				IBlockState state = worldIn.getBlockState(pos);
+				worldIn.setBlockToAir(pos);
+				BlockPos blockpos;
+				for (blockpos = pos.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos))) && blockpos.getY() > 0; blockpos = blockpos.down())
+					;
+				if (blockpos.getY() > 0) {
+					worldIn.setBlockState(blockpos.up(), state);
+				}
+			}
+		}
+	}
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -148,10 +148,10 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 	}
 
 	@Override
-		public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-			return BlockFaceShape.UNDEFINED;
-		}
-	
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
+
 	@Override
 	public int quantityDropped(Random random) {
 		return random.nextInt(5);
