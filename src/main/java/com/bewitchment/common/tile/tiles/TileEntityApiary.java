@@ -50,9 +50,9 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		Item modifier = modifiers_inventory.getStackInSlot(0).getItem();
-		int chance = 100;
+		int chance = 150;
 		if (modifier == Items.BLAZE_POWDER) {
-			chance = 50;
+			chance = 100;
 		}
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0) {
 			boolean hasHives = false;

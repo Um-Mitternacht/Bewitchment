@@ -246,10 +246,8 @@ public class VampireAbilityHandler {
 			}
 		} else if (evt.action == ModAbilities.MESMERIZE) {
 			if (evt.focusedEntity instanceof EntityLivingBase) {
-				if (BewitchmentAPI.getAPI().addVampireBlood(evt.player, -300)) {
+				if (BewitchmentAPI.getAPI().addVampireBlood(evt.player, -150)) {
 					((EntityLivingBase) evt.focusedEntity).addPotionEffect(new PotionEffect(ModPotions.mesmerized, 100, 0, false, true));
-				} else {
-					evt.focusedEntity.attackEntityFrom(DamageSource.causePlayerDamage(evt.player), 0.5f);
 				}
 			}
 		}
