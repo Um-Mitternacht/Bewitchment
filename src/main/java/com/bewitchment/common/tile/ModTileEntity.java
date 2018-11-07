@@ -1,5 +1,7 @@
 package com.bewitchment.common.tile;
 
+import java.util.Random;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,6 +20,8 @@ import net.minecraft.world.World;
  * the MIT license.
  */
 public abstract class ModTileEntity extends TileEntity {
+	
+	protected static final Random rng = new Random();
 
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		return false;
