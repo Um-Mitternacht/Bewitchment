@@ -45,7 +45,7 @@ public class BlockCauldron extends BlockModTileEntity {
 	public BlockCauldron() {
 		super(LibBlockName.CAULDRON, Material.IRON);
 		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.BOTTOM));
-		setSound(SoundType.METAL);
+		setSoundType(SoundType.METAL);
 		setResistance(5F);
 		setHardness(5F);
 	}

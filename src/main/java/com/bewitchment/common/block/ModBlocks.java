@@ -196,7 +196,7 @@ public final class ModBlocks {
 				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_SCORNED_BRICK.getDefaultState(), Material.ROCK),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
-				new BlockBeehive(),
+				new BlockBeehive(LibBlockName.BEEHIVE, Material.GRASS),
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
 				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
@@ -212,14 +212,14 @@ public final class ModBlocks {
 		);
 		//Normal Blocks
 		registry.registerAll(
-				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
-				new BlockSilverChiselled(Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
-				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
-				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON).setSound(SoundType.METAL).setHardness(5.0F),
+				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockSilverChiselled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockGem(),
 				new BlockMod(LibBlockName.COQUINA, Material.ROCK).setHardness(5.0F),
-				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
-				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK).setSound(SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.EMBITTERED_BRICKS, Material.ROCK, SoundType.STONE).setHardness(5.0F),
+				new BlockMod(LibBlockName.SCORNED_BRICKS, Material.ROCK, SoundType.STONE).setHardness(5.0F),
 				new BlockGraveyardDirt()
 		);
 

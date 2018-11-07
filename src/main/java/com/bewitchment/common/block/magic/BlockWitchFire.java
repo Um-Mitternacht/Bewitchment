@@ -49,7 +49,7 @@ public class BlockWitchFire extends BlockMod {
 		setTickRandomly(false);
 		MinecraftForge.EVENT_BUS.register(this);
 		this.setDefaultState(blockState.getBaseState().withProperty(TYPE, EnumFireType.NORMAL));
-		this.setSound(new SoundType(0.6f, 0.9f, SoundEvents.BLOCK_FIRE_EXTINGUISH, null, null, null, null));
+		this.setSoundType(new SoundType(0.6f, 0.9f, SoundEvents.BLOCK_FIRE_EXTINGUISH, null, null, null, null));
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public abstract class BlockCandle extends BlockMod implements IInfusionStabilise
 
 	public BlockCandle(String id, boolean lit) {
 		super(id, Material.CLOTH);
-		setSound(SoundType.CLOTH);
+		setSoundType(SoundType.CLOTH);
 		this.setDefaultState(blockState.getBaseState().withProperty(Bewitchment.COLOR, EnumDyeColor.WHITE));
 		isLit = lit;
 		if (isLit) {

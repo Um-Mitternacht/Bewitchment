@@ -33,9 +33,10 @@ public class BlockMod extends Block implements IModelRegister {
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
-
-	public Block setSound(SoundType type) {
-		return super.setSoundType(type);
+	
+	public BlockMod(String id, Material material, SoundType sound) {
+		this(id, material);
+		this.setSoundType(sound);
 	}
 
 	@Override

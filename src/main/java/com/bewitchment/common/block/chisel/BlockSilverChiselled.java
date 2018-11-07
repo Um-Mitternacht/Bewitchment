@@ -3,6 +3,8 @@ package com.bewitchment.common.block.chisel;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.lib.LibBlockName;
+
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -16,8 +18,8 @@ public class BlockSilverChiselled extends BlockMod {
 
 	public static final PropertyEnum<BlockSilverVariant> VARIANT = PropertyEnum.create("variant", BlockSilverVariant.class);
 
-	public BlockSilverChiselled(Material material) {
-		super(LibBlockName.SILVER_BLOCK + "_chisel", material);
+	public BlockSilverChiselled(Material material, SoundType sound) {
+		super(LibBlockName.SILVER_BLOCK + "_chisel", material, sound);
 	}
 
 	@Override

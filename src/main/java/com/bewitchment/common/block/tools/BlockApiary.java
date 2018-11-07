@@ -36,7 +36,7 @@ public class BlockApiary extends BlockModTileEntity {
 	public BlockApiary() {
 		super(LibBlockName.APIARY, Material.WOOD);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		setSound(SoundType.WOOD);
+		setSoundType(SoundType.WOOD);
 		setResistance(2F);
 		setHardness(2F);
 	}

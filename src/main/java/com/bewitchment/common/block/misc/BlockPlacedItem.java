@@ -35,7 +35,7 @@ public class BlockPlacedItem extends BlockModTileEntity {
 		super(LibBlockName.PLACED_ITEM, MaterialItemPlaced.ITEM_MATERIAL);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.NORTH));
 		this.setHardness(0f);
-		this.setSound(SoundType.CLOTH);
+		this.setSoundType(SoundType.CLOTH);
 		this.setLightOpacity(0);
 	}
 

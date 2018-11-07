@@ -35,7 +35,7 @@ public class BlockBrazier extends BlockMod implements IInfusionStabiliserExt {
 	public BlockBrazier() {
 		super(LibBlockName.BRAZIER, Material.IRON);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HANGING, false));
-		setSound(SoundType.METAL);
+		setSoundType(SoundType.METAL);
 		setResistance(3F);
 		setHardness(3F);
 	}

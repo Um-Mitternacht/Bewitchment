@@ -23,7 +23,7 @@ public class BlockFakeIce extends BlockMod {
 
 	public BlockFakeIce() {
 		super(LibBlockName.FAKE_ICE, Material.ICE);
-		setSound(SoundType.STONE);
+		setSoundType(SoundType.STONE);
 		setResistance(2F);
 		setHardness(2F);
 		setDefaultSlipperiness(0.98F);

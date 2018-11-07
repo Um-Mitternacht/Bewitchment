@@ -1,11 +1,21 @@
 package com.bewitchment.common.block.natural;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.lib.LibBlockName;
+import com.bewitchment.common.lib.LibMod;
+
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -23,24 +33,22 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockBeehive extends BlockMod {
+public class BlockBeehive extends BlockFalling implements IModelRegister {
 
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.18F, 0, 0.18F, 0.82F, 1, 0.82F);
 
-	public BlockBeehive() {
-		super(LibBlockName.BEEHIVE, Material.GRASS);
-		setSound(SoundType.PLANT);
+	public BlockBeehive(String id, Material material) {
+		super(Material.GRASS);
+		setUnlocalizedName(id);
+		setDefaultState(blockState.getBaseState());
+		setRegistryName(LibMod.MOD_ID, id);
+		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setSoundType(SoundType.PLANT);
 		setResistance(1F);
 		setHardness(1F);
 	}
@@ -124,5 +132,11 @@ public class BlockBeehive extends BlockMod {
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		final EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw).getOpposite();
 		return this.getDefaultState().withProperty(FACING, enumfacing);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }
