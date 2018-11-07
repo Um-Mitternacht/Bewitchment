@@ -1,7 +1,11 @@
 package com.bewitchment.common.entity;
 
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,16 +45,30 @@ public class EntityBatSwarm extends Entity {
 	@Override
 	public void onEntityUpdate() {
 		super.onEntityUpdate();
-		if (this.rand.nextInt(7) == 0) {
-			this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_LOOP, SoundCategory.PLAYERS, 0.8f, 0.8f + 0.4f * rand.nextFloat());
-		}
-		this.move(MoverType.SELF, this.getLookVec().x, this.getLookVec().y, this.getLookVec().z);
-		if (this.collided || this.ticksExisted > 60) {
-			this.getPassengers().forEach(e -> e.dismountRidingEntity());
+		if (this.getPassengers().size() == 0) {
 			this.setDead();
-		}
-		if (this.getPassengers().isEmpty()) {
-			this.setDead();
+		} else {
+			EntityPlayer rider = (EntityPlayer) this.getPassengers().get(0);
+			if (rider.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()==DefaultTransformations.VAMPIRE) {
+				if (this.rand.nextInt(7) == 0) {
+					this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_LOOP, SoundCategory.PLAYERS, 0.8f, 0.8f + 0.4f * rand.nextFloat());
+				}
+				if (rider.isCreative() || BewitchmentAPI.getAPI().addVampireBlood(rider, -1)) {
+					this.move(MoverType.SELF, this.getLookVec().x, this.getLookVec().y, this.getLookVec().z);
+				} else {
+					rider.dismountRidingEntity();
+					this.setDead();
+					return;
+				}
+				if (this.collided || this.ticksExisted > 60) {
+					rider.dismountRidingEntity();
+					this.setDead();
+					return;
+				}
+			} else {
+				rider.dismountRidingEntity();
+				this.setDead();
+			}
 		}
 	}
 
