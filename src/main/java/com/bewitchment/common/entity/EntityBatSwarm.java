@@ -45,6 +45,9 @@ public class EntityBatSwarm extends Entity {
 	@Override
 	public void onEntityUpdate() {
 		super.onEntityUpdate();
+		if (this.rand.nextInt(7) == 0) {
+			this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_LOOP, SoundCategory.PLAYERS, 0.8f, 0.8f + 0.4f * rand.nextFloat());
+		}
 		if (this.getPassengers().size() == 0) {
 			this.setDead();
 		} else {
