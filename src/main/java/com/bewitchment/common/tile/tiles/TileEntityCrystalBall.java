@@ -1,17 +1,10 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.content.crystalBall.Fortune;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import com.bewitchment.common.tile.ModTileEntity;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TileEntityCrystalBall extends ModTileEntity {
 

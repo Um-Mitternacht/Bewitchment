@@ -242,7 +242,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.HASTE, Ingredient.fromItem(ModItems.lavender));
 		registerVanillaBrewEffect(MobEffects.GLOWING, Ingredient.fromItem(ModItems.spectral_dust));
 		registerVanillaBrewEffect(MobEffects.UNLUCK, Ingredient.fromItem(ModItems.adders_fork));
-		registerVanillaBrewEffect(MobEffects.LUCK, Ingredient.fromItem(ModItems.ginger));
+		registerVanillaBrewEffect(MobEffects.LUCK, Ingredient.fromItem(Items.RABBIT_FOOT));
 		//Resistance comes at a screwed up cost.
 		registerVanillaBrewEffect(MobEffects.RESISTANCE, Ingredient.fromItem(ModItems.heart), 100);
 		registerVanillaBrewEffect(MobEffects.LEVITATION, Ingredient.fromItem(Items.SHULKER_SHELL));
@@ -260,7 +260,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.ender_inhibition, Ingredient.fromItem(ModItems.dimensional_sand));
 		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
-		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
+		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(ModItems.ginger));
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
 		registerCombinedBrewEffect(ModPotions.mending, Ingredient.fromItem(Items.GOLDEN_APPLE));
 		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_FLOWER)));

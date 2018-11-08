@@ -5,7 +5,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,7 +51,7 @@ public class EntityBatSwarm extends Entity {
 			this.setDead();
 		} else {
 			EntityPlayer rider = (EntityPlayer) this.getPassengers().get(0);
-			if (rider.getCapability(CapabilityTransformationData.CAPABILITY, null).getType()==DefaultTransformations.VAMPIRE) {
+			if (rider.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 				if (this.rand.nextInt(7) == 0) {
 					this.world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_BAT_LOOP, SoundCategory.PLAYERS, 0.8f, 0.8f + 0.4f * rand.nextFloat());
 				}

@@ -1,19 +1,18 @@
 package com.bewitchment.common.entity;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -41,7 +40,7 @@ public final class ModEntities {
 		// Mob entities
 		EntityRegistry.registerModEntity(getResource("owl"), EntityOwl.class, "entity_owl", id++, Bewitchment.instance, 64, 1, true, 0xAF813F, 0x6E5127);
 		EntityRegistry.registerModEntity(getResource("snake"), EntitySnake.class, "entity_snake", id++, Bewitchment.instance, 64, 1, true, 0x8F9779, 0x696969);
-		
+
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE)).collect(Collectors.toList());
 		List<Biome> validSnake = Biome.REGISTRY.getKeys().stream()
