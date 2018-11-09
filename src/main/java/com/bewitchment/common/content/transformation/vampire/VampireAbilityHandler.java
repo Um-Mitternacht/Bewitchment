@@ -32,6 +32,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
@@ -250,6 +251,8 @@ public class VampireAbilityHandler {
 					((EntityLivingBase) evt.focusedEntity).addPotionEffect(new PotionEffect(ModPotions.mesmerized, 100, 0, false, true));
 				}
 			}
+		} else if (evt.action == ModAbilities.HYPNOTIZE) {
+			evt.player.sendStatusMessage(new TextComponentString("Hypnotize ability not available yet"), true);
 		}
 	}
 

@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
@@ -93,6 +94,9 @@ public class WerewolfAbilityHandler {
 			}
 			cap.currentForm = (byte) (cap.currentForm % 3);
 			cap.markDirty();
+		}
+		if (evt.action == ModAbilities.HOWL) {
+			evt.player.sendStatusMessage(new TextComponentString("Howl ability not available yet"), true);
 		}
 	}
 
