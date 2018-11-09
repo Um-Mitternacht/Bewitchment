@@ -2,7 +2,7 @@ package com.bewitchment.client.core.hud;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
@@ -57,7 +57,7 @@ public class MoonHUD extends HudComponent {
 	@Override
 	public void render(ScaledResolution resolution, float partialTicks, boolean renderDummy) {
 		World world = Minecraft.getMinecraft().world;
-		ITransformation t = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType();
+		ITransformation t = Minecraft.getMinecraft().player.getCapability(CapabilityTransformation.CAPABILITY, null).getType();
 		GlStateManager.pushMatrix();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(MOON);
 		if (renderDummy) {

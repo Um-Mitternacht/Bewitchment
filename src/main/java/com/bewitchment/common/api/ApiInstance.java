@@ -1,5 +1,7 @@
 package com.bewitchment.common.api;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
@@ -27,20 +29,19 @@ import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
 import com.bewitchment.common.content.ritual.ModRituals;
 import com.bewitchment.common.content.spell.Spell;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.content.transformation.vampire.CapabilityVampire;
 import com.bewitchment.common.content.transformation.vampire.blood.CapabilityBloodReserve;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
-import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.potion.ModPotions;
+
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -50,8 +51,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
-import java.util.function.Supplier;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -114,21 +114,20 @@ public class ApiInstance extends BewitchmentAPI {
 	 */
 	@Override
 	public boolean addVampireBlood(EntityPlayer player, int amount) {
-		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-		boolean flag = data.addVampireBlood(amount);
-		if (player instanceof EntityPlayerMP) {
-			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
-		}
-		return flag;
+		CapabilityVampire data = player.getCapability(CapabilityVampire.CAPABILITY, null);
+		return data.addVampireBlood(amount, player);
 	}
 
 	@Override
 	public void setTypeAndLevel(EntityPlayer player, ITransformation type, int level, boolean isClient) {
-		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		CapabilityTransformation data = player.getCapability(CapabilityTransformation.CAPABILITY, null);
 		IBloodReserve ibr = player.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+		ITransformation oldTransformation = data.getType();
 		data.setType(type);
 		data.setLevel(level);
-		data.setNightVision(data.isNightVisionActive() && (type == DefaultTransformations.WEREWOLF || type == DefaultTransformations.VAMPIRE));
+		if (oldTransformation != type && oldTransformation == DefaultTransformations.VAMPIRE) {
+			player.getCapability(CapabilityVampire.CAPABILITY, null).setNightVision(false);
+		}
 		if ((type == DefaultTransformations.SPECTRE || type == DefaultTransformations.VAMPIRE)) {
 			ibr.setMaxBlood(-1);
 			player.removePotionEffect(ModPotions.bloodDrained);
@@ -139,10 +138,7 @@ public class ApiInstance extends BewitchmentAPI {
 		if (isClient) {
 			HotbarAction.refreshActions(player, player.world);
 		} else {
-			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), (EntityPlayerMP) player);
-			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), (EntityPlayerMP) player);
 			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), (EntityPlayerMP) player);
-			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), (EntityPlayerMP) player);
 
 		}
 		MinecraftForge.EVENT_BUS.post(new TransformationModifiedEvent(player, type, level));
@@ -222,6 +218,19 @@ public class ApiInstance extends BewitchmentAPI {
 	public void removeMPExpansion(ResourceLocation expander, EntityPlayer player) {
 		player.getCapability(CapabilityMPExpansion.CAPABILITY, null).remove(expander);
 		((PlayerMPContainer) player.getCapability(IMagicPowerContainer.CAPABILITY, null)).markDirty();
+	}
+	
+	@Override
+	public void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity) {
+		IBloodReserve br = entity.getCapability(CapabilityBloodReserve.CAPABILITY, null);
+		CapabilityTransformation data = player.getCapability(CapabilityTransformation.CAPABILITY, null);
+		if (br.getBlood() > 0 && br.getMaxBlood() > 0) {
+			int transferred = (int) Math.min(br.getBlood(), br.getBlood() * 0.05 * data.getLevel());
+			if (transferred > 0 && (BewitchmentAPI.getAPI().addVampireBlood(player, transferred) || player.isSneaking())) {
+				br.setBlood(br.getBlood() - transferred);
+				NetworkHandler.HANDLER.sendToAllAround(new EntityInternalBloodChanged(entity), new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32));
+			}
+		}
 	}
 
 }

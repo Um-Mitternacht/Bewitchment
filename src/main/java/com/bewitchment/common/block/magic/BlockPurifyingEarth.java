@@ -4,7 +4,7 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -41,7 +41,7 @@ public class BlockPurifyingEarth extends BlockMod {
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
-		ITransformation transformation = ((EntityPlayer) entityIn).getCapability(CapabilityTransformationData.CAPABILITY, null).getType();
+		ITransformation transformation = ((EntityPlayer) entityIn).getCapability(CapabilityTransformation.CAPABILITY, null).getType();
 		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT || transformation == DefaultTransformations.VAMPIRE || transformation == DefaultTransformations.SPECTRE || transformation == DefaultTransformations.WEREWOLF) {
 			if (!entityIn.isBurning()) {
 				entityIn.setFire(1500);

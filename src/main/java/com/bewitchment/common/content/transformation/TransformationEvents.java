@@ -3,15 +3,12 @@ package com.bewitchment.common.content.transformation;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.actionbar.HotbarAction;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
-import com.bewitchment.common.core.helper.TransformationHelper;
+import com.bewitchment.common.content.transformation.vampire.CapabilityVampire;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
 import com.bewitchment.common.core.net.messages.PlayerTransformationChangedMessage;
-import com.bewitchment.common.core.net.messages.PlayerVampireBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -24,15 +21,16 @@ public class TransformationEvents {
 
 	@SubscribeEvent
 	public static void onPlayerRespawn(PlayerEvent.Clone event) {
-		ITransformationData data = event.getOriginal().getCapability(CapabilityTransformationData.CAPABILITY, null);
+		CapabilityTransformation data = event.getOriginal().getCapability(CapabilityTransformation.CAPABILITY, null);
 		BewitchmentAPI.getAPI().setTypeAndLevel(event.getEntityPlayer(), data.getType(), data.getLevel(), false);
 		if (event.isWasDeath()) {
-			TransformationHelper.setVampireBlood(event.getEntityPlayer(), (int) (data.getMaxBlood() * 0.1));
+			event.getEntityPlayer().getCapability(CapabilityVampire.CAPABILITY, null).setBlood(50);
 			if (data.getType() == DefaultTransformations.VAMPIRE) {
 				event.getEntityPlayer().addPotionEffect(new PotionEffect(ModPotions.sun_ward, 600, 0));
 			}
 		} else {
-			TransformationHelper.setVampireBlood(event.getEntityPlayer(), data.getMaxBlood());
+			int oldBlood = event.getOriginal().getCapability(CapabilityVampire.CAPABILITY, null).blood;
+			event.getEntityPlayer().getCapability(CapabilityVampire.CAPABILITY, null).setBlood(oldBlood);
 		}
 		HotbarAction.refreshActions(event.getEntityPlayer(), event.getEntityPlayer().world);
 	}
@@ -42,9 +40,7 @@ public class TransformationEvents {
 		if (evt.player instanceof EntityPlayerMP) {
 			EntityPlayerMP player = (EntityPlayerMP) evt.player;
 			NetworkHandler.HANDLER.sendTo(new PlayerTransformationChangedMessage(player), player);
-			NetworkHandler.HANDLER.sendTo(new PlayerVampireBloodChanged(player), player);
 			NetworkHandler.HANDLER.sendTo(new EntityInternalBloodChanged(player), player);
-			NetworkHandler.HANDLER.sendTo(new NightVisionStatus(player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()), player);
 		}
 	}
 }

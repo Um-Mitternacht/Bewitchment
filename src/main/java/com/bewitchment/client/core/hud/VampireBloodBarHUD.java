@@ -1,10 +1,13 @@
 package com.bewitchment.client.core.hud;
 
+import org.lwjgl.opengl.GL11;
+
 import com.bewitchment.api.transformation.DefaultTransformations;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.content.transformation.vampire.CapabilityVampire;
 import com.bewitchment.common.core.statics.ModConfig;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -19,7 +22,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class VampireBloodBarHUD extends HudComponent {
@@ -46,7 +48,7 @@ public class VampireBloodBarHUD extends HudComponent {
 
 	@SubscribeEvent
 	public void renderOverlay(RenderGameOverlayEvent.Pre event) {
-		if ((event.getType() == RenderGameOverlayEvent.ElementType.FOOD || event.getType() == RenderGameOverlayEvent.ElementType.AIR) && Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
+		if ((event.getType() == RenderGameOverlayEvent.ElementType.FOOD || event.getType() == RenderGameOverlayEvent.ElementType.AIR) && Minecraft.getMinecraft().player.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 			event.setCanceled(true);
 		}
 	}
@@ -126,11 +128,12 @@ public class VampireBloodBarHUD extends HudComponent {
 			blood = (System.currentTimeMillis() % 3000) / 3000d;
 			doRender = true;
 		} else {
-			ITransformationData data = Minecraft.getMinecraft().player.getCapability(CapabilityTransformationData.CAPABILITY, null);
-			if (data.getType() == DefaultTransformations.VAMPIRE) {
+			CapabilityTransformation t_data = Minecraft.getMinecraft().player.getCapability(CapabilityTransformation.CAPABILITY, null);
+			CapabilityVampire v_data = Minecraft.getMinecraft().player.getCapability(CapabilityVampire.CAPABILITY, null);
+			if (t_data.getType() == DefaultTransformations.VAMPIRE) {
 				doRender = true;
-				blood = data.getBlood() / (double) data.getMaxBlood();
-				level = data.getLevel();
+				blood = v_data.getBlood() / (double) v_data.getMaxBlood(Minecraft.getMinecraft().player);
+				level = t_data.getLevel();
 			}
 		}
 		if (doRender) {

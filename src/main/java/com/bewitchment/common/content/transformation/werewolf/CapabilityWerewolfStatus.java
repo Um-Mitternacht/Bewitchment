@@ -12,9 +12,34 @@ public class CapabilityWerewolfStatus extends SimpleCapability {
 	public static final Capability<CapabilityWerewolfStatus> CAPABILITY = null;
 	public static final CapabilityWerewolfStatus DEFAULT_INSTANCE = new CapabilityWerewolfStatus();
 
-	public byte currentForm = 0; // 0 = none, 1 = wolf, 2 = wolfman
+	public int currentWWForm = 0; // 0 = none, 1 = wolf, 2 = wolfman
 	public int texture = 0;
+	public boolean nightVision = false;
 
+	public void setNightVision(boolean b) {
+		boolean changed = false;
+		if (nightVision != b) {
+			changed = true;
+		}
+		nightVision = b;
+		if (changed) {
+			markDirty((byte) 1);
+		}
+	}
+	
+	public void changeForm(boolean backwards) {
+		if (backwards) {
+			if (currentWWForm==0) {
+				currentWWForm = 2;
+			} else {
+				currentWWForm = (currentWWForm - 1);
+			}
+		} else {
+			currentWWForm = (currentWWForm + 1) % 3;
+		}
+		markDirty((byte) 2);
+	}
+	
 	@Override
 	public boolean isRelevantFor(Entity object) {
 		return object instanceof EntityPlayer;

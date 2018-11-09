@@ -3,7 +3,7 @@ package com.bewitchment.common.block.magic;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.WitchFireTP;
 import com.bewitchment.common.core.util.CachedSupplier;
@@ -136,7 +136,7 @@ public class BlockWitchFire extends BlockMod {
 
 			AxisAlignedBB aa = new AxisAlignedBB(pos);
 			world.getEntitiesWithinAABB(EntityPlayer.class, aa).stream()
-					.filter(p -> p.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE)
+					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE)
 					.forEach(p -> p.attackEntityFrom(DamageSource.IN_FIRE, 1f));
 			switch (state.getValue(TYPE)) {
 				case NORMAL:

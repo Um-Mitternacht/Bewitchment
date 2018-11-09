@@ -2,16 +2,25 @@ package com.bewitchment.common.content.transformation.vampire.blood;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.IBloodReserve;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.messages.EntityInternalBloodChanged;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.potion.potions.PotionBloodDrained;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityDonkey;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityLlama;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
@@ -77,7 +86,7 @@ public class BloodEvents {
 			if (br.getMaxBlood() > br.getBlood() && ent.ticksExisted % 80 == 0) {
 				int baseIncrease = 20 / (int) ent.world.getEntitiesWithinAABB(EntityLivingBase.class, ent.getEntityBoundingBox().grow(10)).parallelStream().count();
 				if (ent instanceof EntityPlayer) {
-					ITransformationData data = ent.getCapability(CapabilityTransformationData.CAPABILITY, null);
+					CapabilityTransformation data = ent.getCapability(CapabilityTransformation.CAPABILITY, null);
 
 					if (data.getType() == DefaultTransformations.VAMPIRE || data.getType() == DefaultTransformations.SPECTRE) {
 						ignore = true;

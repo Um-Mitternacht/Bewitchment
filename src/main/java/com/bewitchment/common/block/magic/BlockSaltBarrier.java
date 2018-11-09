@@ -4,7 +4,7 @@ package com.bewitchment.common.block.magic;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
@@ -289,7 +289,7 @@ public class BlockSaltBarrier extends BlockMod {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 		}
 		if ((entityIn instanceof EntityPlayer) && !((EntityPlayer) entityIn).isCreative()) {
-			if (!entityIn.getCapability(CapabilityTransformationData.CAPABILITY, null).getType().canCrossSalt()) {
+			if (!entityIn.getCapability(CapabilityTransformation.CAPABILITY, null).getType().canCrossSalt()) {
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, wall);
 			}
 		}
@@ -323,7 +323,7 @@ public class BlockSaltBarrier extends BlockMod {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockBreaking(BlockEvent.BreakEvent event) {
-		if (!event.getPlayer().getCapability(CapabilityTransformationData.CAPABILITY, null).getType().canCrossSalt()) {
+		if (!event.getPlayer().getCapability(CapabilityTransformation.CAPABILITY, null).getType().canCrossSalt()) {
 			if (event.getState().getBlock() == this || event.getPlayer().world.getBlockState(event.getPos().up()).getBlock() == this) {
 				event.setCanceled(true);
 			}

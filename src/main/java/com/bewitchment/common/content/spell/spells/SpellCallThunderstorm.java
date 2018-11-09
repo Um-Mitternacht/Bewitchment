@@ -8,8 +8,8 @@ package com.bewitchment.common.content.spell.spells;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.spell.Spell;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -34,7 +34,7 @@ public class SpellCallThunderstorm extends Spell {
 	@Override
 	public boolean canBeUsed(World world, BlockPos pos, EntityLivingBase caster) {
 		if (caster instanceof EntityPlayer) {
-			ITransformationData data = ((EntityPlayer) caster).getCapability(CapabilityTransformationData.CAPABILITY, null);
+			CapabilityTransformation data = ((EntityPlayer) caster).getCapability(CapabilityTransformation.CAPABILITY, null);
 			return data.getType() == DefaultTransformations.VAMPIRE && data.getLevel() >= 9;
 		}
 		return false;

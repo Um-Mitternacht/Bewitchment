@@ -1,19 +1,18 @@
 package com.bewitchment.common.content.transformation.werewolf;
 
+import java.util.UUID;
+
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.actionbar.ModAbilities;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.helper.AttributeModifierModeHelper;
-import com.bewitchment.common.core.net.NetworkHandler;
-import com.bewitchment.common.core.net.messages.NightVisionStatus;
+
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextComponentString;
@@ -21,8 +20,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class WerewolfAbilityHandler {
@@ -46,11 +43,11 @@ public class WerewolfAbilityHandler {
 
 	@SubscribeEvent
 	public static void attachAbilities(HotbarActionCollectionEvent evt) {
-		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		CapabilityTransformation data = evt.player.getCapability(CapabilityTransformation.CAPABILITY, null);
 		if (data.getType() == DefaultTransformations.WEREWOLF) {
 			evt.getList().add(ModAbilities.WOLF_SHIFT);
 			if (data.getLevel() >= 2) {
-				evt.getList().add(ModAbilities.NIGHT_VISION);
+				evt.getList().add(ModAbilities.NIGHT_VISION_WEREWOLF);
 			}
 
 			if (data.getLevel() >= 5) {
@@ -61,9 +58,9 @@ public class WerewolfAbilityHandler {
 
 	@SubscribeEvent
 	public static void abilityHandler(PlayerTickEvent evt) {
-		if (evt.phase == Phase.START && !evt.player.world.isRemote && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
+		if (evt.phase == Phase.START && !evt.player.world.isRemote && evt.player.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
 			PotionEffect nv = evt.player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null).isNightVisionActive()) {
+			if ((nv == null || nv.getDuration() <= 220) && evt.player.getCapability(CapabilityWerewolfStatus.CAPABILITY, null).nightVision) {
 				evt.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, false));
 			}
 		}
@@ -71,29 +68,17 @@ public class WerewolfAbilityHandler {
 
 	@SubscribeEvent
 	public static void onHotbarAbilityToggled(HotbarActionTriggeredEvent evt) {
-		ITransformationData data = evt.player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		CapabilityTransformation data = evt.player.getCapability(CapabilityTransformation.CAPABILITY, null);
 		if (data.getType() != DefaultTransformations.WEREWOLF) {
 			return;
 		}
-		if (evt.action == ModAbilities.NIGHT_VISION) {
-			boolean newStatus = !data.isNightVisionActive();
-			data.setNightVision(newStatus);
-			if (evt.player instanceof EntityPlayerMP) {
-				NetworkHandler.HANDLER.sendTo(new NightVisionStatus(newStatus), (EntityPlayerMP) evt.player);
-			}
+		if (evt.action == ModAbilities.NIGHT_VISION_WEREWOLF) {
+			CapabilityWerewolfStatus ww = evt.player.getCapability(CapabilityWerewolfStatus.CAPABILITY, null);
+			ww.setNightVision(!ww.nightVision);
 		}
 		if (evt.action == ModAbilities.WOLF_SHIFT) {
 			CapabilityWerewolfStatus cap = evt.player.getCapability(CapabilityWerewolfStatus.CAPABILITY, null);
-			if (evt.player.isSneaking()) {
-				cap.currentForm--;
-				if (cap.currentForm < 0) {
-					cap.currentForm = 2;
-				}
-			} else {
-				cap.currentForm++;
-			}
-			cap.currentForm = (byte) (cap.currentForm % 3);
-			cap.markDirty();
+			cap.changeForm(evt.player.isSneaking());
 		}
 		if (evt.action == ModAbilities.HOWL) {
 			evt.player.sendStatusMessage(new TextComponentString("Howl ability not available yet"), true);
