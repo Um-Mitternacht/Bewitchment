@@ -5,7 +5,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;

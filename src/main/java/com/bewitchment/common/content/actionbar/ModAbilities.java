@@ -3,7 +3,6 @@ package com.bewitchment.common.content.actionbar;
 import com.bewitchment.common.content.transformation.vampire.CapabilityVampire;
 import com.bewitchment.common.content.transformation.werewolf.CapabilityWerewolfStatus;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -29,15 +28,15 @@ public class ModAbilities {
 		}
 	};
 	public static final HotbarAction NIGHT_VISION_VAMPIRE = new NightVisionAction("vampire") {
-		
+
 		@Override
 		protected boolean hasNightVision(EntityPlayer player) {
 			return player.getCapability(CapabilityVampire.CAPABILITY, null).nightVision;
 		}
 	};
-	
-public static final HotbarAction NIGHT_VISION_WEREWOLF = new NightVisionAction("werewolf") {
-		
+
+	public static final HotbarAction NIGHT_VISION_WEREWOLF = new NightVisionAction("werewolf") {
+
 		@Override
 		protected boolean hasNightVision(EntityPlayer player) {
 			return player.getCapability(CapabilityWerewolfStatus.CAPABILITY, null).nightVision;
@@ -49,13 +48,13 @@ public static final HotbarAction NIGHT_VISION_WEREWOLF = new NightVisionAction("
 
 	public static void dummyMethodToLoadClass() {
 	}
-	
+
 	public static abstract class NightVisionAction extends HotbarAction {
 
 		public NightVisionAction(String variant) {
-			super(new ResourceLocation(LibMod.MOD_ID, "night_vision_"+variant), 0, 0);
+			super(new ResourceLocation(LibMod.MOD_ID, "night_vision_" + variant), 0, 0);
 		}
-		
+
 		@Override
 		@SideOnly(Side.CLIENT)
 		public int getIconIndexY() {

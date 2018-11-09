@@ -1,8 +1,5 @@
 package com.bewitchment.common.content.transformation.vampire;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.event.HotbarActionCollectionEvent;
 import com.bewitchment.api.event.HotbarActionTriggeredEvent;
@@ -15,7 +12,6 @@ import com.bewitchment.common.entity.EntityBatSwarm;
 import com.bewitchment.common.potion.ModPotions;
 import com.bewitchment.common.world.biome.ModBiomes;
 import com.google.common.collect.Lists;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -44,6 +40,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.oredict.OreIngredient;
+
+import java.util.ArrayList;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class VampireAbilityHandler {

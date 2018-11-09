@@ -6,7 +6,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.crystalBall.capability.CapabilityFortune;
 import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
-
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.function.Predicate;

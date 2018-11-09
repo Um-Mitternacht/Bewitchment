@@ -9,7 +9,6 @@ package com.bewitchment.common.content.spell.spells;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.spell.Spell;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

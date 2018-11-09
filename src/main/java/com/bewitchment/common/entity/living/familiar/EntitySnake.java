@@ -87,7 +87,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public int getTotalVariants() {
-		return 5;
+		return 6;
 	}
 
 	@Override

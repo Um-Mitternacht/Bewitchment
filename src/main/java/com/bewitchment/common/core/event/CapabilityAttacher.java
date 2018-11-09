@@ -7,7 +7,6 @@ import com.bewitchment.common.core.capability.energy.player.PlayerMPContainerPro
 import com.bewitchment.common.core.capability.energy.player.expansion.MagicPowerExpansionProvider;
 import com.bewitchment.common.core.capability.mimic.MimicDataProvider;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

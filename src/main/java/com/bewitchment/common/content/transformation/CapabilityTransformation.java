@@ -4,7 +4,6 @@ import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.content.actionbar.HotbarAction;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +22,7 @@ public class CapabilityTransformation extends SimpleCapability {
 
 	public int level = 0;
 	public String type;
-	
+
 	public CapabilityTransformation() {
 		if (DefaultTransformations.NONE != null) {
 			type = DefaultTransformations.NONE.getRegistryName().toString();
@@ -57,7 +56,7 @@ public class CapabilityTransformation extends SimpleCapability {
 	public SimpleCapability getNewInstance() {
 		return new CapabilityTransformation();
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void onSyncMessage(byte mode) {

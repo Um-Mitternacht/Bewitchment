@@ -6,18 +6,7 @@
 
 package com.bewitchment.common.core.capability.simple;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
-
-import org.apache.commons.lang3.tuple.Pair;
-
 import com.bewitchment.common.core.helper.Log;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -42,6 +31,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.*;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class SimpleCapability {
@@ -383,16 +377,16 @@ public abstract class SimpleCapability {
 	}
 
 	public abstract boolean isRelevantFor(Entity object);
-	
+
 	@SideOnly(Side.CLIENT)
 	public void onSyncMessage(byte mode) {
 		//NO-OP
 	}
-	
+
 	public boolean shouldSyncToPlayersAround() {
 		return true;
 	}
-	
+
 	public boolean shouldSyncToOwnerPlayer() {
 		return true;
 	}

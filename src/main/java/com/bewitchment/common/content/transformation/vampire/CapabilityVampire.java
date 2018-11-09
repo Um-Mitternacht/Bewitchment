@@ -2,18 +2,17 @@ package com.bewitchment.common.content.transformation.vampire;
 
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 
 public class CapabilityVampire extends SimpleCapability {
-	
+
 	@CapabilityInject(CapabilityVampire.class)
 	public static final Capability<CapabilityVampire> CAPABILITY = null;
 	public static final CapabilityVampire DEFAULT_INSTANCE = new CapabilityVampire();
-	
+
 	public int blood = 0;
 	public boolean nightVision = false;
 
@@ -47,7 +46,7 @@ public class CapabilityVampire extends SimpleCapability {
 		markDirty((byte) 2);
 		return true;
 	}
-	
+
 
 	public int getBlood() {
 		return blood;
@@ -65,5 +64,5 @@ public class CapabilityVampire extends SimpleCapability {
 		this.blood = blood;
 		markDirty((byte) 2);
 	}
-	
+
 }

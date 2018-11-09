@@ -12,7 +12,6 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.transformation.ITransformation;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
@@ -108,7 +107,7 @@ public abstract class BewitchmentAPI {
 	public abstract void removeMPExpansion(IMagicPowerExpander expander, EntityPlayer player);
 
 	public abstract void removeMPExpansion(ResourceLocation expander, EntityPlayer player);
-	
+
 	public abstract void drainBloodFromEntity(EntityPlayer player, EntityLivingBase entity);
 
 }

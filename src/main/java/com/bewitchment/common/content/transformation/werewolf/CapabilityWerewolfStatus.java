@@ -26,10 +26,10 @@ public class CapabilityWerewolfStatus extends SimpleCapability {
 			markDirty((byte) 1);
 		}
 	}
-	
+
 	public void changeForm(boolean backwards) {
 		if (backwards) {
-			if (currentWWForm==0) {
+			if (currentWWForm == 0) {
 				currentWWForm = 2;
 			} else {
 				currentWWForm = (currentWWForm - 1);
@@ -39,7 +39,7 @@ public class CapabilityWerewolfStatus extends SimpleCapability {
 		}
 		markDirty((byte) 2);
 	}
-	
+
 	@Override
 	public boolean isRelevantFor(Entity object) {
 		return object instanceof EntityPlayer;
