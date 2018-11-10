@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.util;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 
@@ -13,6 +14,10 @@ public class DimensionalPosition {
 		y = yIn;
 		z = zIn;
 		dim = dimension;
+	}
+	
+	public DimensionalPosition(NBTTagCompound tag) {
+		this(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"), tag.getInteger("d"));
 	}
 
 	public DimensionalPosition(BlockPos pos, int dimension) {
@@ -57,5 +62,13 @@ public class DimensionalPosition {
 
 		return diffx * diffx + diffy * diffy + diffz * diffz;
 	}
-
+	
+	public NBTTagCompound writeToNBT() {
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("x", x);
+		tag.setInteger("y", y);
+		tag.setInteger("z", z);
+		tag.setInteger("d", dim);
+		return tag;
+	}
 }
