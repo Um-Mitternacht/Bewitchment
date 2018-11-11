@@ -147,6 +147,7 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
