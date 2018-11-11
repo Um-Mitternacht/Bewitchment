@@ -1,11 +1,11 @@
 {
-    "name": "Ritual #1",
-    "icon": "minecraft:blaze_powder",
-    "category": "base_rituals",
-    "pages": [
-        {
-            "type": "text",
-            "text": "This is a test entry, but it should show up!"
-        }
-    ]
+  "name": "Ritual #1",
+  "icon": "minecraft:blaze_powder",
+  "category": "base_rituals",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This is a test entry, but it should show up!"
+    }
+  ]
 }

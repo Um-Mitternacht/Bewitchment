@@ -1,8 +1,8 @@
 {
-	"name": "bewitchment.book.rites.name",
-	"landing_text": "bewitchment.book.rites.landing_text",
-	"version": 1,
-	"subtitle": "bewitchment.book.rites.subtitle",
-	"show_toasts": false,
-	"creative_tab": "bewitchment_items"
+  "name": "bewitchment.book.rites.name",
+  "landing_text": "bewitchment.book.rites.landing_text",
+  "version": 1,
+  "subtitle": "bewitchment.book.rites.subtitle",
+  "show_toasts": false,
+  "creative_tab": "bewitchment_items"
 }

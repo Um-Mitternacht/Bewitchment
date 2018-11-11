@@ -15,7 +15,7 @@ public class DimensionalPosition {
 		z = zIn;
 		dim = dimension;
 	}
-	
+
 	public DimensionalPosition(NBTTagCompound tag) {
 		this(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"), tag.getInteger("d"));
 	}
@@ -62,7 +62,7 @@ public class DimensionalPosition {
 
 		return diffx * diffx + diffy * diffy + diffz * diffz;
 	}
-	
+
 	public NBTTagCompound writeToNBT() {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("x", x);

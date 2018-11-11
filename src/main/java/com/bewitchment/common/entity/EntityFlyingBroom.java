@@ -1,15 +1,9 @@
 package com.bewitchment.common.entity;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,16 +29,18 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
+import javax.annotation.Nullable;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+
 @Mod.EventBusSubscriber
 public class EntityFlyingBroom extends Entity {
 
 	private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityFlyingBroom.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FUEL = EntityDataManager.<Integer>createKey(EntityFlyingBroom.class, DataSerializers.VARINT); //ONLY SYNCHRONIZED WHEN EMPTY OR FULL
 	private static final int MAX_FUEL = 100;
-
-	private DimensionalPosition orig_position;
-
 	Field isJumping = ReflectionHelper.findField(EntityLivingBase.class, "field_70703_bu", "isJumping");
+	private DimensionalPosition orig_position;
 
 	public EntityFlyingBroom(World world) {
 		super(world);
@@ -89,11 +85,11 @@ public class EntityFlyingBroom extends Entity {
 	}
 
 	private BlockPos getMountPos() {
-		return orig_position==null?null:orig_position.getPosition();
+		return orig_position == null ? null : orig_position.getPosition();
 	}
 
 	private int getMountDim() {
-		return orig_position==null?0:orig_position.getDim();
+		return orig_position == null ? 0 : orig_position.getDim();
 	}
 
 	public void setMountPos(BlockPos pos, int dim) {
