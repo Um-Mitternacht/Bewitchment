@@ -8,10 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +36,8 @@ public class EntityRaven extends EntityFamiliar {
 	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/raven");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.GOLD_NUGGET, ModItems.silver_nugget);
-	private static final String[] names = {"Huginn", "Muninn", "Morrigan", "Bhusunda"};
+	private static final Set<Item> FODDER_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS, Items.NETHER_WART, ModItems.seed_aconitum, ModItems.seed_asphodel, ModItems.seed_belladonna, ModItems.seed_chrysanthemum, ModItems.seed_garlic, ModItems.seed_ginger, ModItems.seed_hellebore, ModItems.seed_kelp, ModItems.seed_kenaf, ModItems.seed_lavender, ModItems.seed_mandrake, ModItems.seed_mint, ModItems.seed_sagebrush, ModItems.seed_silphium, ModItems.seed_thistle, ModItems.seed_tulsi, ModItems.seed_white_sage, ModItems.seed_wormwood);
+	private static final String[] names = {"Huginn", "Muninn", "Morrigan", "Bhusunda", "Pallas", "Qrow", "Nevermore", "Corvus", "Apollo", "Odin", "Badhbh", "Bran", "Crowe", "Scarecrow", "Santa Caws"}; //I'm trash lmao
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityRaven.class, DataSerializers.VARINT);
 
 	public EntityRaven(World worldIn) {
@@ -80,6 +78,7 @@ public class EntityRaven extends EntityFamiliar {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
@@ -160,7 +159,7 @@ public class EntityRaven extends EntityFamiliar {
 
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() == Items.PUMPKIN_SEEDS;
+		return stack.getItem() == FODDER_ITEMS;
 	}
 
 	@Override
