@@ -1,11 +1,8 @@
 package com.bewitchment.common.item.magic;
 
-import java.util.List;
-
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.tile.tiles.TileEntityTarotsTable;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,6 +15,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class ItemTarots extends ItemMod {
 

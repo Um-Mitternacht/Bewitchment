@@ -46,12 +46,12 @@ public final class ModEntities {
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
-				.peek(b -> Log.d("Valid owl biome found: "+b.getBiomeName()))
+				.peek(b -> Log.d("Valid owl biome found: " + b.getBiomeName()))
 				.collect(Collectors.toList());
 		List<Biome> validSnake = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS))
-				.peek(b -> Log.d("Valid snake biome found: "+b.getBiomeName()))
+				.peek(b -> Log.d("Valid snake biome found: " + b.getBiomeName()))
 				.collect(Collectors.toList());
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
