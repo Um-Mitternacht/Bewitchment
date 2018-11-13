@@ -1,6 +1,7 @@
 package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
+import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -25,6 +26,7 @@ import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -143,10 +145,10 @@ public class EntityRaven extends EntityFamiliar {
 	public void fall(float distance, float damageMultiplier) {
 	}
 
-//	@Override
-//	protected SoundEvent getAmbientSound() {
-//		return ModSounds.OWL_HOOT;
-//	}
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.RAVEN_CRY;
+	}
 //
 //	@Override
 //	protected float getSoundVolume() {
