@@ -80,7 +80,6 @@ public class EntityRaven extends EntityFamiliar {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
