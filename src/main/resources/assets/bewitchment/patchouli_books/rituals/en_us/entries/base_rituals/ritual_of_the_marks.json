@@ -1,0 +1,11 @@
+{
+  "name": "Ritual of the Marks",
+  "icon": "bewitchment:wood_ash",
+  "category": "base_rituals",
+  "pages": [
+    {
+      "type": "text",
+      "text": "You have found there are three variants of this ritual, and all of them use chalk held in your off-hand to draw a circle. Depending on the ritual used, it could be a small circle, a medium circle, or a large circle."
+    }
+  ]
+}

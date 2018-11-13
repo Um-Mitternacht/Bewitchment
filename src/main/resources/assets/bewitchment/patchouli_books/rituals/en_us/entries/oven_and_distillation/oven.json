@@ -1,0 +1,11 @@
+{
+  "name": "Oven",
+  "icon": "bewitchment:oven",
+  "category": "oven_and_distillation",
+  "pages": [
+    {
+      "type": "text",
+      "text": "The infamous witches oven, said to be used for cooking children alive, as to keep them in line. In your hands however, it serves a very different purpose, cooking items for their various byproducts."
+    }
+  ]
+}

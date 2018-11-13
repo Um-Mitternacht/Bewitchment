@@ -1,11 +1,11 @@
 {
-  "name": "Ritual #1",
-  "icon": "minecraft:ender_pearl",
+  "name": "Introduction to Rituals",
+  "icon": "bewitchment:pentacle",
   "category": "introduction",
   "pages": [
     {
       "type": "text",
-      "text": "This is a test $(#555555)entry, but it should show up!"
+      "text": "Something about rituals here."
     }
   ]
 }
