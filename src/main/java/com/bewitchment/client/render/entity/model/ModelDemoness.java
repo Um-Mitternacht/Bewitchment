@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * demoness - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelLilim extends ModelBase {
+public class ModelDemoness extends ModelBase {
 	public ModelRenderer bipedHead;
 	public ModelRenderer bipedBody;
 	public ModelRenderer bipedLeftArm;
@@ -67,7 +67,7 @@ public class ModelLilim extends ModelBase {
 	public ModelRenderer loincloth;
 	public ModelRenderer loincloth02;
 
-	public ModelLilim() {
+	public ModelDemoness() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.rWing04 = new ModelRenderer(this, 24, 55);
