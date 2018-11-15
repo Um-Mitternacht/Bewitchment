@@ -8,19 +8,19 @@
       "text": "Something about rituals here."
     },
     {
-    	"type": "multiblock",
-    	"name": "The small circle",
-    	"multiblock_id": "bewitchment:circle_small"
+      "type": "multiblock",
+      "name": "The small circle",
+      "multiblock_id": "bewitchment:circle_small"
     },
     {
-    	"type": "multiblock",
-    	"name": "The middle circle",
-    	"multiblock_id": "bewitchment:circle_medium"
+      "type": "multiblock",
+      "name": "The middle circle",
+      "multiblock_id": "bewitchment:circle_medium"
     },
     {
-    	"type": "multiblock",
-    	"name": "The greater circle",
-    	"multiblock_id": "bewitchment:circle_big"
+      "type": "multiblock",
+      "name": "The greater circle",
+      "multiblock_id": "bewitchment:circle_big"
     }
   ]
 }

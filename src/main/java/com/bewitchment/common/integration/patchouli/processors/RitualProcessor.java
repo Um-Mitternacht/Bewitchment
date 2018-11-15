@@ -1,15 +1,14 @@
 package com.bewitchment.common.integration.patchouli.processors;
 
-import java.util.Objects;
-
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.api.PatchouliAPI;
+
+import java.util.Objects;
 
 public class RitualProcessor implements IComponentProcessor {
 
@@ -40,7 +39,7 @@ public class RitualProcessor implements IComponentProcessor {
 			e.printStackTrace();
 			return "";
 		}
-		throw new RuntimeException("Unrecognized ritual value: "+val);
+		throw new RuntimeException("Unrecognized ritual value: " + val);
 	}
 
 	private String getOutput(String substring) {
@@ -66,6 +65,6 @@ public class RitualProcessor implements IComponentProcessor {
 		if ((ritual.getCircles() & 3) < index - 1) {
 			return "bewitchment:textures/gui/books/ritual/circle_center.png";
 		}
-		return "bewitchment:textures/gui/books/ritual/circle_"+EnumGlyphType.fromMeta((ritual.getCircles() >> (2*index)) & 3).name().toLowerCase()+"_"+index+".png";
+		return "bewitchment:textures/gui/books/ritual/circle_" + EnumGlyphType.fromMeta((ritual.getCircles() >> (2 * index)) & 3).name().toLowerCase() + "_" + index + ".png";
 	}
 }
