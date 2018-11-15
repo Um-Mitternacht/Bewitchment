@@ -38,6 +38,7 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
 import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
 import com.bewitchment.common.entity.ModEntities;
+import com.bewitchment.common.integration.patchouli.Patchouli;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
@@ -139,7 +140,7 @@ public class Bewitchment {
 		ModOvenSmeltingRecipes.init();
 		ModRituals.init();
 		ModBrewModifiers.init();
-
+		Patchouli.init();
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
