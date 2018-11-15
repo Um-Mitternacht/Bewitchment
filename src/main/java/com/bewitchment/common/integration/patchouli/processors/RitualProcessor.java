@@ -64,8 +64,8 @@ public class RitualProcessor implements IComponentProcessor {
 	private String getCircle(String substring) {
 		int index = Integer.parseInt(substring);
 		if ((ritual.getCircles() & 3) < index - 1) {
-			return "";
+			return "bewitchment:textures/gui/books/ritual/circle_center.png";
 		}
-		return "bewitchment:textures/gui/circle_"+EnumGlyphType.fromMeta((ritual.getCircles() << (2*index)) & 3).name().toLowerCase()+"_"+index+".png";
+		return "bewitchment:textures/gui/books/ritual/circle_"+EnumGlyphType.fromMeta((ritual.getCircles() >> (2*index)) & 3).name().toLowerCase()+"_"+index+".png";
 	}
 }

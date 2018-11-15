@@ -4,6 +4,7 @@
 		{
 			"type": "text",
 			"text": "#ritualname",
+			"x": 10,
 			"y": 8
 		},
 		{
@@ -14,7 +15,8 @@
 			"texture_width": 32,
 			"texture_height": 32,
 			"x": 20,
-			"y": 40
+			"y": 40,
+			"scale": 2
 		},
 		{
 			"type": "image",
@@ -24,7 +26,8 @@
 			"texture_width": 32,
 			"texture_height": 32,
 			"x": 20,
-			"y": 40
+			"y": 40,
+			"scale": 2
 		},
 		{
 			"type": "image",
@@ -34,17 +37,19 @@
 			"texture_width": 32,
 			"texture_height": 32,
 			"x": 20,
-			"y": 40
+			"y": 40,
+			"scale": 2
 		},
 		{
 			"type": "image",
-			"image": "bewitchment:textures/gui/circle_center.png",
+			"image": "bewitchment:textures/gui/books/ritual/circle_center.png",
 			"width": 32,
 			"height": 32,
 			"texture_width": 32,
 			"texture_height": 32,
 			"x": 20,
-			"y": 40
+			"y": 40,
+			"scale": 2
 		}
 	]
 }
