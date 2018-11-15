@@ -888,6 +888,7 @@ tc.aspect.sol=The Sun
 //Mobs
 entity.entity_owl.name=Owl
 entity.entity_snake.name=Snake
+entity.entity_raven.name=Raven
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning
