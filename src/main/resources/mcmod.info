@@ -11,8 +11,8 @@
   "credits": "To all contributors of the mod. Credit to Monospace for Nethersteel Textures. Credit to Dobroide and NewAgeSoup for some of the sounds.",
   "logoFile": "",
   "screenshots": [],
-  "requiredMods": [ "baubles", "forge" ],
-  "dependencies": [ "baubles", "forge" ],
+  "requiredMods": [ "baubles", "forge", "patchouli"],
+  "dependencies": [ "baubles", "forge", "patchouli"],
   "useDependencyInformation": true
 }
 ]

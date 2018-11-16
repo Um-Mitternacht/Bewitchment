@@ -2,7 +2,7 @@ package com.bewitchment.common.content.ritual.rituals;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.ritual.RitualImpl;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.world.BiomeChangingUtils.BiomeChangerWalker;
 import com.bewitchment.common.world.biome.ModBiomes;
@@ -68,7 +68,7 @@ public class RitualCreateVampireLair extends RitualImpl {
 
 	@Override
 	public boolean isValid(EntityPlayer player, World world, BlockPos mainGlyphPos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {
-		if (player.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() != DefaultTransformations.VAMPIRE || getAvailableBlocks(player) <= 0) {
+		if (player.getCapability(CapabilityTransformation.CAPABILITY, null).getType() != DefaultTransformations.VAMPIRE || getAvailableBlocks(player) <= 0) {
 			return false;
 		}
 		return super.isValid(player, world, mainGlyphPos, recipe, effectivePosition, covenSize);

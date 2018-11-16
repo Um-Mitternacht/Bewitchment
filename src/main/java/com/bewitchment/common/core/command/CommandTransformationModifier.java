@@ -52,8 +52,10 @@ public class CommandTransformationModifier extends CommandBase {
 				transf = DefaultTransformations.WEREWOLF;
 			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
 				transf = DefaultTransformations.HUNTER;
+				throw new WrongUsageException("Hunter not available yet");
 			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
 				transf = DefaultTransformations.SPECTRE;
+				throw new WrongUsageException("Spectre not available yet");
 			} else if (typeStr.equals("n")) {
 				transf = DefaultTransformations.NONE;
 			} else
@@ -64,8 +66,9 @@ public class CommandTransformationModifier extends CommandBase {
 					}
 				}
 
-			if (transf == null)
+			if (transf == null) {
 				throw new WrongUsageException("commands.set_transformation.usage.no_transformation");
+			}
 			int level = 0;
 			try {
 				if (transf != DefaultTransformations.NONE) {

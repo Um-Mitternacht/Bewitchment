@@ -67,7 +67,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 		int current = 0;
 		for (IFortune f : valid) {
 			int entries = f.getDrawingWeight();
-			if (current < draw && draw < current + entries) {
+			if (current <= draw && draw < current + entries) {
 				fortune = f;
 				break;
 			}

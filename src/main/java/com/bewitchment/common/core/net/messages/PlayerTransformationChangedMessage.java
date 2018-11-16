@@ -1,9 +1,8 @@
 package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.content.transformation.ModTransformations;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
 import com.bewitchment.common.core.net.SimpleMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +21,7 @@ public class PlayerTransformationChangedMessage extends SimpleMessage<PlayerTran
 	}
 
 	public PlayerTransformationChangedMessage(EntityPlayer player) {
-		ITransformationData data = player.getCapability(CapabilityTransformationData.CAPABILITY, null);
+		CapabilityTransformation data = player.getCapability(CapabilityTransformation.CAPABILITY, null);
 		type = data.getType().getRegistryName().toString();
 		level = data.getLevel();
 	}

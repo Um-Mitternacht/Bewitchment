@@ -29,6 +29,8 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.lang.reflect.Field;
@@ -63,7 +65,7 @@ public abstract class SimpleCapability {
 		map(Vec3d.class, SimpleCapability::readVec3d, SimpleCapability::writeVec3d);
 	}
 
-	protected boolean dirty = false;
+	protected byte dirty = 0;
 	protected int id = -1;
 
 	//Call this somewhere during startup, passing your mods' network handler
@@ -277,7 +279,7 @@ public abstract class SimpleCapability {
 		handlers.put(type, Pair.of(reader, writer));
 	}
 
-	public static void messageReceived(NBTTagCompound tag, int capabilityId, int entityID) {
+	public static void messageReceived(NBTTagCompound tag, int capabilityId, int entityID, byte dirt) {
 		Minecraft.getMinecraft().addScheduledTask(() -> {
 			if (Minecraft.getMinecraft().world != null) {
 				Capability capability = capabilities.get(capabilityId).getSecond();
@@ -289,6 +291,7 @@ public abstract class SimpleCapability {
 				}
 				if (e != null && e.hasCapability(capability, null)) {
 					((SimpleCapability) e.getCapability(capability, null)).readSyncNBT(tag);
+					((SimpleCapability) e.getCapability(capability, null)).onSyncMessage(dirt);
 				} else {
 					log("message dropped: " + e + ", " + capability.getName());
 				}
@@ -375,10 +378,23 @@ public abstract class SimpleCapability {
 
 	public abstract boolean isRelevantFor(Entity object);
 
+	@SideOnly(Side.CLIENT)
+	public void onSyncMessage(byte mode) {
+		//NO-OP
+	}
+
+	public boolean shouldSyncToPlayersAround() {
+		return true;
+	}
+
+	public boolean shouldSyncToOwnerPlayer() {
+		return true;
+	}
+
 	public abstract SimpleCapability getNewInstance();
 
-	public void markDirty() {
-		this.dirty = true;
+	public void markDirty(byte mode) {
+		this.dirty = mode;
 	}
 
 	public static interface Writer<T extends Object> {
@@ -460,13 +476,15 @@ public abstract class SimpleCapability {
 
 		@SubscribeEvent
 		public void onEntityTracking(StartTracking evt) {
-			Entity e = evt.getTarget();
-			log("start tracking: " + e);
-			if (!e.world.isRemote && e.hasCapability(capability, null) && evt.getEntityPlayer() instanceof EntityPlayerMP) {
-				log("start tracking - succeded");
-				NBTTagCompound tag = new NBTTagCompound();
-				e.getCapability(capability, null).writeSyncNBT(tag);
-				net.sendTo(new CapabilityMessage(default_instance.id, tag, e.getEntityId()), (EntityPlayerMP) evt.getEntityPlayer());
+			if (default_instance.shouldSyncToPlayersAround()) {
+				Entity e = evt.getTarget();
+				log("start tracking: " + e);
+				if (!e.world.isRemote && e.hasCapability(capability, null) && evt.getEntityPlayer() instanceof EntityPlayerMP) {
+					log("start tracking - succeded");
+					NBTTagCompound tag = new NBTTagCompound();
+					e.getCapability(capability, null).writeSyncNBT(tag);
+					net.sendTo(new CapabilityMessage(default_instance.id, tag, e.getEntityId(), (byte) 0), (EntityPlayerMP) evt.getEntityPlayer());
+				}
 			}
 		}
 
@@ -474,28 +492,32 @@ public abstract class SimpleCapability {
 		public void onEntityUpdate(LivingUpdateEvent evt) {
 			if (!evt.getEntityLiving().world.isRemote && evt.getEntityLiving().hasCapability(capability, null)) {
 				C instance = evt.getEntityLiving().getCapability(capability, null);
-				if (instance.dirty) {
+				if (instance.dirty != 0) {
 					log("Cleaning instance of " + capability.getName() + " for " + evt.getEntityLiving());
 					NBTTagCompound tag = new NBTTagCompound();
 					evt.getEntityLiving().getCapability(capability, null).writeSyncNBT(tag);
-					CapabilityMessage msg = new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId());
-					if (evt.getEntityLiving() instanceof EntityPlayerMP) {
+					CapabilityMessage msg = new CapabilityMessage(this.default_instance.id, tag, evt.getEntityLiving().getEntityId(), instance.dirty);
+					if (default_instance.shouldSyncToOwnerPlayer() && evt.getEntityLiving() instanceof EntityPlayerMP) {
 						net.sendTo(msg, (EntityPlayerMP) evt.getEntityLiving());
 					}
-					net.sendToAllTracking(msg, evt.getEntityLiving());
-					instance.dirty = false;
+					if (default_instance.shouldSyncToPlayersAround()) {
+						net.sendToAllTracking(msg, evt.getEntityLiving());
+					}
+					instance.dirty = 0;
 				}
 			}
 		}
 
 		@SubscribeEvent
 		public void onWorldJoin(EntityJoinWorldEvent evt) {
-			if (evt.getEntity() instanceof EntityPlayerMP) {
-				log("onWorldJoin - player");
-				EntityPlayerMP entity = (EntityPlayerMP) evt.getEntity();
-				NBTTagCompound tag = new NBTTagCompound();
-				evt.getEntity().getCapability(capability, null).writeSyncNBT(tag);
-				net.sendTo(new CapabilityMessage(this.default_instance.id, tag, entity.getEntityId()), entity);
+			if (default_instance.shouldSyncToOwnerPlayer()) {
+				if (evt.getEntity() instanceof EntityPlayerMP) {
+					log("onWorldJoin - player");
+					EntityPlayerMP entity = (EntityPlayerMP) evt.getEntity();
+					NBTTagCompound tag = new NBTTagCompound();
+					evt.getEntity().getCapability(capability, null).writeSyncNBT(tag);
+					net.sendTo(new CapabilityMessage(this.default_instance.id, tag, entity.getEntityId(), (byte) 0), entity);
+				}
 			}
 		}
 

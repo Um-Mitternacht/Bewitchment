@@ -251,7 +251,7 @@ public class ModelOwl extends ModelBase {
 			}
 		} else {
 			setFlyingStance();
-			float time = (owl.ticksExisted + partialTickTime) / (1.5F * ((float) Math.PI));
+			float time = (owl.ticksExisted + partialTickTime) / 4.71238898F;
 			wingRight01.rotateAngleY = 0.26179938779914943f + 1.047166666666666f * MathHelper.cos(time);
 			wingLeft01.rotateAngleY = -wingRight01.rotateAngleY;
 			wingRight02.rotateAngleY = -0.52359877559F + 0.34906585039f * MathHelper.sin(time);
@@ -264,14 +264,6 @@ public class ModelOwl extends ModelBase {
 			owlRightClaw.rotateAngleX = wingRight03.rotateAngleY / 4;
 			owlLeftClaw.rotateAngleX = owlRightClaw.rotateAngleX;
 
-			float angleAbs = Math.abs(0.2966972222f * MathHelper.sin(3.1415f * time / 0.4363194444f));
-			if (angleAbs > 0.1745277777f) {
-				angleAbs = 0.1745277777f;
-			}
-			wingLeft02.rotateAngleY = -angleAbs;
-			wingLeft03.rotateAngleY = -angleAbs;
-			wingRight02.rotateAngleY = angleAbs;
-			wingRight03.rotateAngleY = angleAbs;
 		}
 	}
 

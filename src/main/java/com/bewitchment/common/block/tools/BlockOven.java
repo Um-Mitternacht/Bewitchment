@@ -25,8 +25,8 @@ public class BlockOven extends BlockModTileEntity {
 
 	public BlockOven() {
 		super(LibBlockName.OVEN, Material.IRON);
-		setDefaultState(defaultState().withProperty(FACING, EnumFacing.NORTH));
-		setSound(SoundType.METAL);
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		setSoundType(SoundType.METAL);
 		setResistance(3F);
 		setHardness(3F);
 	}

@@ -38,8 +38,9 @@ public class ItemTarots extends ItemMod {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if (!playerIn.isSneaking()) {
 			if (target instanceof EntityPlayer) {
-				if (!stack.hasTagCompound())
+				if (!stack.hasTagCompound()) {
 					stack.setTagCompound(new NBTTagCompound());
+				}
 				stack.getTagCompound().setString("read_id", EntityPlayer.getUUID(((EntityPlayer) target).getGameProfile()).toString());
 				stack.getTagCompound().setString("read_name", ((EntityPlayer) target).getDisplayNameString());
 				return true;
@@ -52,8 +53,9 @@ public class ItemTarots extends ItemMod {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		if (playerIn.isSneaking()) {
 			ItemStack stack = playerIn.getHeldItem(handIn);
-			if (!stack.hasTagCompound())
+			if (!stack.hasTagCompound()) {
 				stack.setTagCompound(new NBTTagCompound());
+			}
 			stack.getTagCompound().setString("read_id", EntityPlayer.getUUID(playerIn.getGameProfile()).toString());
 			stack.getTagCompound().setString("read_name", playerIn.getDisplayNameString());
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);

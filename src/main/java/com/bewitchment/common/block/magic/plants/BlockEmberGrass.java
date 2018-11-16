@@ -35,7 +35,7 @@ public class BlockEmberGrass extends BlockMod implements IGrowable, IPlantable {
 		super(LibBlockName.EMBER_GRASS, Material.PLANTS);
 		setResistance(0.1F);
 		setHardness(0.1F);
-		setSound(SoundType.PLANT);
+		setSoundType(SoundType.PLANT);
 		this.setLightLevel(0.1F);
 		this.setTickRandomly(true);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);

@@ -1,0 +1,10 @@
+{
+  "name": "bewitchment.book.rites.name",
+  "landing_text": "Welcome to your own personal grimoire, detailing various rituals and other forms of magicks you have come across.",
+  "version": 3,
+  "subtitle": "bewitchment.book.rites.subtitle",
+  "book_texture": "bewitchment:textures/gui/book.png",
+  "show_toasts": false,
+  "creative_tab": "bewitchment_items",
+  "show_progress": false
+}

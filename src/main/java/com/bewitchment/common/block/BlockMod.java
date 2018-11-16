@@ -15,7 +15,6 @@ import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -29,17 +28,14 @@ public class BlockMod extends Block implements IModelRegister {
 	public BlockMod(String id, Material material) {
 		super(material);
 		setUnlocalizedName(id);
-		setDefaultState(defaultState());
+		setDefaultState(blockState.getBaseState());
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 	}
 
-	protected IBlockState defaultState() {
-		return blockState.getBaseState();
-	}
-
-	public Block setSound(SoundType type) {
-		return super.setSoundType(type);
+	public BlockMod(String id, Material material, SoundType sound) {
+		this(id, material);
+		this.setSoundType(sound);
 	}
 
 	@Override

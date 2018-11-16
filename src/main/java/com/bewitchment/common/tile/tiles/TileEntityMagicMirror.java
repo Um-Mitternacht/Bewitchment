@@ -4,8 +4,7 @@ import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.core.event.custom.MimicEvent;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
-import com.bewitchment.common.content.transformation.capability.ITransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.mimic.IMimicData;
 import com.bewitchment.common.core.helper.NBTHelper;
@@ -90,8 +89,8 @@ public class TileEntityMagicMirror extends ModTileEntity implements ITickable {
 			EntityPlayer closestPlayer = this.world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), SHADE_DISTANCE_3, false);
 			if (closestPlayer == null) {
 				activate(false, -1.0f);
-			} else if (closestPlayer.hasCapability(CapabilityTransformationData.CAPABILITY, null)) {
-				final ITransformationData capability = closestPlayer.getCapability(CapabilityTransformationData.CAPABILITY, null);
+			} else if (closestPlayer.hasCapability(CapabilityTransformation.CAPABILITY, null)) {
+				final CapabilityTransformation capability = closestPlayer.getCapability(CapabilityTransformation.CAPABILITY, null);
 				if (capability.getType() != DefaultTransformations.VAMPIRE) {
 					activate(true, closestPlayer.getDistanceSq(this.pos));
 				} else {

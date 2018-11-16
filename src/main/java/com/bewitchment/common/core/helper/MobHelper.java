@@ -2,7 +2,7 @@ package com.bewitchment.common.core.helper;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -109,7 +109,7 @@ public class MobHelper {
 		if (entity.getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT) {
 			return true;
 		}
-		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.SPECTRE) {
+		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.SPECTRE) {
 			return true;
 		}
 		return SPIRITS.contains(entity.getClass().getName());
@@ -120,7 +120,7 @@ public class MobHelper {
 		if (entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 			return true;
 		}
-		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
+		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE) {
 			return true;
 		}
 		return UNDEAD_BODY.contains(entity.getClass().getName());
@@ -128,7 +128,7 @@ public class MobHelper {
 
 	//For usage in aconite
 	public static boolean isCanid(EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
+		if (entity instanceof EntityPlayer && entity.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
 			return true;
 		}
 		return CANIDS.contains(entity.getClass().getName());

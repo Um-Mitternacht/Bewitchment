@@ -11,19 +11,21 @@ public class CapabilityMessage extends SimpleMessage<CapabilityMessage> {
 	public NBTTagCompound tag;
 	public int capabilityId;
 	public int entityID;
+	private byte dirt;
 
 	public CapabilityMessage() {
 	}
 
-	public CapabilityMessage(int capId, NBTTagCompound tag, int entityId) {
+	public CapabilityMessage(int capId, NBTTagCompound tag, int entityId, byte dirt) {
 		this.tag = tag;
 		this.capabilityId = capId;
 		this.entityID = entityId;
+		this.dirt = dirt;
 	}
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		SimpleCapability.messageReceived(tag, capabilityId, entityID);
+		SimpleCapability.messageReceived(tag, capabilityId, entityID, dirt);
 		return null;
 	}
 

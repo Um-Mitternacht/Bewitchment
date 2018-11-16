@@ -1,18 +1,31 @@
 package com.bewitchment.common.block.natural;
 
+import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.fx.ParticleF;
+import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.BlockMod;
+import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.core.statics.ModSounds;
+import com.bewitchment.common.entity.EntityBees;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.lib.LibBlockName;
+import com.bewitchment.common.lib.LibMod;
+import com.google.common.collect.Lists;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityFallingBlock;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
@@ -20,6 +33,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,15 +48,72 @@ import static net.minecraft.block.BlockHorizontal.FACING;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockBeehive extends BlockMod {
+public class BlockBeehive extends BlockFalling implements IModelRegister {
 
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.18F, 0, 0.18F, 0.82F, 1, 0.82F);
 
-	public BlockBeehive() {
-		super(LibBlockName.BEEHIVE, Material.GRASS);
-		setSound(SoundType.PLANT);
+	public BlockBeehive(String id, Material material) {
+		super(Material.GRASS);
+		setUnlocalizedName(id);
+		setDefaultState(blockState.getBaseState());
+		setRegistryName(LibMod.MOD_ID, id);
+		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
+		setSoundType(SoundType.PLANT);
 		setResistance(1F);
 		setHardness(1F);
+	}
+
+	@Override
+	public void onEndFalling(World world, BlockPos pos, IBlockState falling, IBlockState falling2) {
+		world.destroyBlock(pos, false);
+		world.spawnEntity(new EntityBees(world, 600, pos));
+	}
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		if (!worldIn.isRemote) {
+			this.checkFallableHive(worldIn, pos);
+		}
+	}
+
+	@Override
+	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		player.addStat(StatList.getBlockStats(this));
+		player.addExhaustion(0.005F);
+		if (stack.getItem() == ModItems.boline) {
+			spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.beehive));
+		} else {
+			ArrayList<ItemStack> drops = Lists.newArrayList(new ItemStack(ModItems.empty_honeycomb, player.getRNG().nextInt(2 + EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack))));
+			harvesters.set(player);
+			ForgeEventFactory.fireBlockHarvesting(drops, worldIn, pos, state, EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack), 1, false, player);
+			for (ItemStack is : drops) {
+				spawnAsEntity(worldIn, pos, is);
+			}
+			harvesters.set(null);
+		}
+	}
+
+	private void checkFallableHive(World worldIn, BlockPos pos) {
+		IBlockState above = worldIn.getBlockState(pos.up());
+		if (!above.getBlock().isLeaves(above, worldIn, pos.up()) && pos.getY() >= 0 && worldIn.isAirBlock(pos.down())) {
+			if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32))) {
+				if (!worldIn.isRemote) {
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+					entityfallingblock.setHurtEntities(false);
+					entityfallingblock.shouldDropItem = false;
+					worldIn.spawnEntity(entityfallingblock);
+				}
+			} else {
+				IBlockState state = worldIn.getBlockState(pos);
+				worldIn.setBlockToAir(pos);
+				BlockPos blockpos;
+				for (blockpos = pos.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos))) && blockpos.getY() > 0; blockpos = blockpos.down())
+					;
+				if (blockpos.getY() > 0) {
+					worldIn.setBlockState(blockpos.up(), state);
+				}
+			}
+		}
 	}
 
 	@SuppressWarnings("deprecation")
@@ -74,6 +145,12 @@ public class BlockBeehive extends BlockMod {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 	@Override
@@ -124,5 +201,11 @@ public class BlockBeehive extends BlockMod {
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		final EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw).getOpposite();
 		return this.getDefaultState().withProperty(FACING, enumfacing);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }

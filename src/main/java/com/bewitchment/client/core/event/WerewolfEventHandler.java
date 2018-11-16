@@ -2,7 +2,7 @@ package com.bewitchment.client.core.event;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.client.render.entity.model.ModelWerewolf;
-import com.bewitchment.common.content.transformation.capability.CapabilityTransformationData;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.content.transformation.werewolf.CapabilityWerewolfStatus;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
@@ -24,8 +24,8 @@ public class WerewolfEventHandler {
 	@SubscribeEvent
 	public void renderPlayer(RenderPlayerEvent.Pre evt) {
 		EntityPlayer p = evt.getEntityPlayer();
-		if (p.getCapability(CapabilityTransformationData.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
-			if (p.getCapability(CapabilityWerewolfStatus.CAPABILITY, null).currentForm == 2) {
+		if (p.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.WEREWOLF) {
+			if (p.getCapability(CapabilityWerewolfStatus.CAPABILITY, null).currentWWForm == 2) {
 				evt.setCanceled(true);
 				GlStateManager.pushMatrix();
 				Minecraft.getMinecraft().getTextureManager().bindTexture(WEREWOLF_SKIN);

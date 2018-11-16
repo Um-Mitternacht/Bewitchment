@@ -2,17 +2,12 @@ package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.content.cauldron.BrewData;
-import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
 import com.bewitchment.common.item.ModItems;
-import com.bewitchment.common.item.magic.ItemTaglock;
-import com.bewitchment.common.lib.LibDamageSources;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
 import com.google.common.collect.Lists;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -22,14 +17,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TileEntityApiary extends ModTileEntity implements ITickable {
 
@@ -56,44 +49,15 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		Item modifier = modifiers_inventory.getStackInSlot(0).getItem();
-		int time = 200;
+		int chance = 150;
 		if (modifier == Items.BLAZE_POWDER) {
-			time = 100;
+			chance = 100;
 		}
-		if (!world.isRemote && world.getTotalWorldTime() % time == 0) {
-			ApiaryInventory ai = new ApiaryInventory();
-			List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(5));
-			EntityLivingBase stingedEntity = null;
-			if (!list.isEmpty()) {
-				stingedEntity = list.get(world.rand.nextInt(list.size()));
-			}
-			boolean shouldTaglock = modifier == ModItems.wool_of_bat;
-			if (modifier == ModItems.brew_phial_linger && stingedEntity != null) {
-				BrewData.fromStack(modifiers_inventory.getStackInSlot(0)).applyToEntity(stingedEntity, null, null, ApplicationType.LINGERING);
-			}
+		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0) {
 			boolean hasHives = false;
 			for (int i = 0; i < COLUMNS * ROWS; i++) {
-				Item found = hives_inventory.getStackInSlot(i).getItem();
-				if (found == ModItems.honeycomb || found == ModItems.empty_honeycomb) {
-					hasHives = true;
-					ArrayList<Integer> neighbors = getNeighbors(i);
-					for (int s : neighbors) {
-						if (hives_inventory.getStackInSlot(s).isEmpty()) {
-							growSlot(s, ai, null);
-						}
-					}
-					growSlot(i, ai, shouldTaglock ? stingedEntity : null);
-				}
-			}
-
-			if (hasHives) {
-				for (int k = 0; k < ai.getSlots(); k++) {
-					if (!ai.getStackInSlot(k).isEmpty()) {
-						hives_inventory.setStackInSlot(k, ai.getStackInSlot(k));
-					}
-				}
-				if (stingedEntity != null) {
-					stingedEntity.attackEntityFrom(LibDamageSources.BEES, modifier == Items.BLAZE_POWDER ? 4f : 1f);
+				if (rng.nextInt(chance) == 0) {
+					hives_inventory.setStackInSlot(i, growItem(i));
 				}
 			}
 			hasBees = hasHives;
@@ -102,30 +66,27 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		}
 	}
 
-	private void growSlot(int s, ApiaryInventory ai, EntityLivingBase taglocked) {
-		if (mp_controller.drainAltarFirst(null, pos, world.provider.getDimension(), world.rand.nextInt(1000))) {
-			Item found = hives_inventory.getStackInSlot(s).getItem();
-			if (found == Items.PAPER || found == Item.getItemFromBlock(Blocks.CARPET)) {
-				if (world.rand.nextInt(40) == 0) {
-					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
-				}
-			} else if (found == Items.AIR) {
-				if (world.rand.nextInt(20) == 0) {
-					ai.setStackInSlot(s, new ItemStack(ModItems.empty_honeycomb));
-				}
-			} else if (found == ModItems.empty_honeycomb) {
-				if (world.rand.nextInt(20) == 0) {
-					if (taglocked == null) {
-						ai.setStackInSlot(s, new ItemStack(ModItems.honeycomb));
-					} else {
-						ItemStack tl = new ItemStack(ModItems.taglock);
-						ItemTaglock.setVictim(tl, taglocked);
-						ai.setStackInSlot(s, tl);
-					}
-				}
+
+	private ItemStack growItem(int i) {
+		ItemStack is = hives_inventory.getStackInSlot(i);
+		Item item = is.getItem();
+		if (item == Items.AIR && rng.nextInt(3) == 0) {
+			if (getNeighbors(i).stream().anyMatch(n -> (hives_inventory.getStackInSlot(n).getItem() != Items.AIR))) {
+				return new ItemStack(ModItems.empty_honeycomb);
 			}
 		}
+
+		if (item == ModItems.empty_honeycomb) {
+			return new ItemStack(ModItems.honeycomb);
+		}
+
+		if (item == Items.PAPER || item == Item.getItemFromBlock(Blocks.CARPET)) {
+			return new ItemStack(ModItems.empty_honeycomb);
+		}
+
+		return is;
 	}
+
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {

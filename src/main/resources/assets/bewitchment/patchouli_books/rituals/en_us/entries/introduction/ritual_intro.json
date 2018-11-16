@@ -1,0 +1,11 @@
+{
+  "name": "Introduction to Rituals",
+  "icon": "bewitchment:pentacle",
+  "category": "introduction",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Something about rituals here."
+    }
+  ]
+}

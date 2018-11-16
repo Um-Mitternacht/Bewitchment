@@ -242,7 +242,7 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.HASTE, Ingredient.fromItem(ModItems.lavender));
 		registerVanillaBrewEffect(MobEffects.GLOWING, Ingredient.fromItem(ModItems.spectral_dust));
 		registerVanillaBrewEffect(MobEffects.UNLUCK, Ingredient.fromItem(ModItems.adders_fork));
-		registerVanillaBrewEffect(MobEffects.LUCK, Ingredient.fromItem(ModItems.ginger));
+		registerVanillaBrewEffect(MobEffects.LUCK, Ingredient.fromItem(Items.RABBIT_FOOT));
 		//Resistance comes at a screwed up cost.
 		registerVanillaBrewEffect(MobEffects.RESISTANCE, Ingredient.fromItem(ModItems.heart), 100);
 		registerVanillaBrewEffect(MobEffects.LEVITATION, Ingredient.fromItem(Items.SHULKER_SHELL));
@@ -258,15 +258,15 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.projectile_resistance, Ingredient.fromItem(ModItems.silver_scales));
 		registerCombinedBrewEffect(ModPotions.disrobing, Ingredient.fromItem(ModItems.wax));
 		registerCombinedBrewEffect(ModPotions.ender_inhibition, Ingredient.fromItem(ModItems.dimensional_sand));
-		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.mint));
+		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.seed_mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
-		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.nethersteel)));
+		registerCombinedBrewEffect(ModPotions.fireworld, Ingredient.fromItem(ModItems.ginger));
 		registerCombinedBrewEffect(ModPotions.grace, Ingredient.fromItem(ModItems.wool_of_bat));
 		registerCombinedBrewEffect(ModPotions.mending, Ingredient.fromItem(Items.GOLDEN_APPLE));
 		registerCombinedBrewEffect(ModPotions.flower_growth, Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_FLOWER)));
 		registerCombinedBrewEffect(ModPotions.harvest, Ingredient.fromItem(Items.APPLE));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.white_sage));
-		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.seed_mint));
+		registerCombinedBrewEffect(ModPotions.ice_world, Ingredient.fromItem(ModItems.mint));
 		registerCombinedBrewEffect(ModPotions.outcasts_shame, Ingredient.fromItem(ModItems.carnivorous_tooth));
 		registerCombinedBrewEffect(ModPotions.infestation, Ingredient.fromItem(Item.getItemFromBlock(Blocks.MYCELIUM)));
 		registerCombinedBrewEffect(ModPotions.ozymandias, Ingredient.fromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));

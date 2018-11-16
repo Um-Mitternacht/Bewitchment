@@ -60,7 +60,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		bark.pieces++;
 		fixBark(player);
 		if (oldAmount < bark.pieces) {
-			bark.markDirty();
+			bark.markDirty((byte) 1);
 			return true;
 		}
 		return false;
@@ -115,7 +115,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	private void destroyBark(EntityPlayer player) {
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces -= 1;
 		fixBark(player);
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty((byte) 1);
 	}
 
 	@Override
@@ -145,13 +145,13 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 		player.playSound(SoundEvents.BLOCK_WOOD_STEP, 0.75F, 1.9f);
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces = ((EntityPlayer) player).isCreative() ? 10 : 0;
 		fixBark((EntityPlayer) player);
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty((byte) 1);
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		player.getCapability(BarkCapability.CAPABILITY, null).pieces = 0;
-		player.getCapability(BarkCapability.CAPABILITY, null).markDirty();
+		player.getCapability(BarkCapability.CAPABILITY, null).markDirty((byte) 1);
 	}
 
 	@SubscribeEvent
@@ -208,7 +208,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 			int possible = Math.min((ForgeHooks.getTotalArmorValue((EntityPlayer) evt.getEntityLiving()) / 2), 5);
 			int actual = Math.min(possible, base);
 			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).pieces = actual;
-			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).markDirty();
+			evt.getEntityLiving().getCapability(BarkCapability.CAPABILITY, null).markDirty((byte) 1);
 		}
 	}
 }

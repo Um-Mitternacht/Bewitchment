@@ -46,11 +46,6 @@ public class EntityOwl extends EntityFamiliar {
 		this.moveHelper = new EntityFlyHelper(this);
 	}
 
-	public static boolean isOwlFodder(Entity entity) {
-		String className = entity.getClass().getSimpleName();
-		return entity instanceof EntityRabbit || entity instanceof EntityBat || entity instanceof EntityChicken || entity instanceof EntityParrot || className.contains("Rat") || className.contains("Hedgehog") || className.contains("Hamster") || className.contains("Squirrel") || className.contains("Hare") || className.contains("Fox") || className.contains("Pigeon") || className.contains("Turkey") || className.contains("Mouse") || className.contains("Bat") || className.contains("Lizard") || className.contains("Frog") || className.contains("Toad") || className.contains("Beetle") || className.contains("Chinchilla") || className.contains("Cavy") || className.contains("GuineaPig") || className.contains("Crow") || className.contains("Raven") || className.contains("Rooster") || className.contains("Hen") || className.contains("Chick") || className.contains("Mole") || className.contains("Deer") || className.contains("Ferret") || className.contains("Chinchilla");
-	}
-
 	@Override
 	protected ResourceLocation getLootTable() {
 		return loot;
@@ -87,7 +82,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, EntityOwl::isOwlFodder));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityParrot));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 

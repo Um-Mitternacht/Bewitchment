@@ -28,8 +28,8 @@ public class BlockTarotTable extends BlockModTileEntity implements IInfusionStab
 
 	public BlockTarotTable() {
 		super(LibBlockName.TAROT_TABLE, Material.ROCK);
-		setDefaultState(defaultState().withProperty(FACING, EnumFacing.NORTH));
-		setSound(SoundType.STONE);
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		setSoundType(SoundType.STONE);
 		setResistance(3F);
 		setHardness(3F);
 	}

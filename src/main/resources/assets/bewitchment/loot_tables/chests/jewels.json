@@ -2,7 +2,7 @@
   "pools": [
     {
       "name": "jewels",
-      "rolls": 1,
+      "rolls": 2,
       "entries": [
         {
           "type": "item",
@@ -38,7 +38,7 @@
               }
             }
           ],
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "item",
@@ -67,168 +67,13 @@
             },
             {
               "function": "set_data",
-              "data": 0
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
+              "data": {
                 "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 1
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 2
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 3
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 4
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 5
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 6
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 7
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "bewitchment:gem",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 3
-              }
-            },
-            {
-              "function": "set_data",
-              "data": 8
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "minecraft:gold_nugget",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 4
+                "max": 8
               }
             }
           ],
-          "weight": 6
+          "weight": 8
         }
       ]
     }

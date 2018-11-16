@@ -34,6 +34,8 @@ public final class ModSounds {
 	public static final SoundEvent BROOM_SWEEP = createSoundEvent("broom_sweep");
 	@GameRegistry.ObjectHolder("owl_hoot")
 	public static final SoundEvent OWL_HOOT = createSoundEvent("owl_hoot");
+	@GameRegistry.ObjectHolder("raven_cry")
+	public static final SoundEvent RAVEN_CRY = createSoundEvent("raven_cry");
 
 	private ModSounds() {
 	}

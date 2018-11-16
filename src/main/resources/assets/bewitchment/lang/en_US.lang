@@ -650,19 +650,19 @@ witch.tooltip.seed_hellebore_description.name=Seed from a innocent-looking plant
 witch.tooltip.seed_chrysanthemum_description.name=Seed from a powerful flower
 witch.tooltip.seed_sagebrush_description.name=Seed from a hardy shrub
 
-witch.tooltip.aconitum_description.name=Poisonous, can prevent or revert shapeshifting, and wolves and therians have an aversion to it
+witch.tooltip.aconitum_description.name=A poisonous flower used to hunt Lycanthropes
 witch.tooltip.asphodel_description.name=Related to death and the afterlife, but not poisonous
 witch.tooltip.belladonna_description.name=A highly toxic plant, this is a prime component of flying ointment
-witch.tooltip.ginger_description.name=Meant to give energy and increased speed
-witch.tooltip.kelp_description.name=Related to water and protection overseas
-witch.tooltip.mint_description.name=Used for protection against magic
+witch.tooltip.ginger_description.name=An incredibly spicy root
+witch.tooltip.kelp_description.name=A tall algae, with connections to the sea
+witch.tooltip.mint_description.name=An herb with a cooling effect
 witch.tooltip.white_sage_description.name=Used as an aid in exorcisms
-witch.tooltip.mandrake_root_description.name=Used to amplify magical effects
+witch.tooltip.mandrake_root_description.name=Used to amplify magickal effects
 witch.tooltip.lavender_description.name=Associated with purity and grace
-witch.tooltip.thistle_description.name=A flower associated with strength and durability, and is the national flower of Scotland
-witch.tooltip.silphium_description.name=A rather large and unusual fennel prized by the romans for its many uses
-witch.tooltip.garlic_description.name=The bulb of a type of allium, it is rather smelly, and seems to keep undead at bay
-witch.tooltip.wormwood_description.name=A rather weedy herb which bugs do not seem to like
+witch.tooltip.thistle_description.name=A thorny but beautiful flower
+witch.tooltip.silphium_description.name=A strange and unusual fennel
+witch.tooltip.garlic_description.name=A common spice that keeps the undead at bay
+witch.tooltip.wormwood_description.name=An incredibly weedy herb
 witch.tooltip.kenaf_description.name=A tall plant with useful fibers
 witch.tooltip.tulsi_description.name=A small herb considered sacred by some
 witch.tooltip.hellebore_description.name=A beautiful and poisonous flower linked to demons
@@ -888,6 +888,7 @@ tc.aspect.sol=The Sun
 //Mobs
 entity.entity_owl.name=Owl
 entity.entity_snake.name=Snake
+entity.entity_raven.name=Raven
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning
@@ -902,3 +903,6 @@ enchantment.taglock_protection=Taglock Resistance
 gui.bwguicfg.pick=§a§l[Click]§r to pick, click again to place
 gui.bwguicfg.orig=§b§l[Alt+Click]§r to reset to the original position
 gui.bwguicfg.hide=§b§l[Shift+Click]§r to hide/show
+
+//Books
+bewitchment.book.rites.name=Book of Shadows
