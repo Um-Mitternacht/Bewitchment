@@ -1,6 +1,8 @@
 package com.bewitchment.api.entity;
 
 import com.bewitchment.common.core.helper.PlayerHelper;
+import com.bewitchment.common.entity.living.familiar.EntityOwl;
+import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +16,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public abstract class EntityFamiliar extends EntityTameable {
 
@@ -89,7 +92,16 @@ public abstract class EntityFamiliar extends EntityTameable {
 
 	public abstract int getTotalVariants();
 
-	public abstract String[] getRandomNames();
+    public String getRandomName(){
+        String names[];
+        if (this.getClass() == EntityOwl.class) names = EntityOwl.names;
+        else
+        if (this.getClass() == EntityOwl.class) names = EntitySnake.names;
+        else return "none!";
+        Random rand = new Random();
+        int  nom = rand.nextInt(names.length) + 1;
+        return names[nom];
+    }
 
 	@Nullable
 	public EntityPlayer getOwnerAcrossWorlds() {

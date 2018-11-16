@@ -37,7 +37,7 @@ public class EntityOwl extends EntityFamiliar {
 	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
-	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
+	public static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityOwl.class, DataSerializers.VARINT);
 
 	public EntityOwl(World worldIn) {
@@ -135,10 +135,7 @@ public class EntityOwl extends EntityFamiliar {
 		return 4;
 	}
 
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
+
 
 	@Override
 	public void fall(float distance, float damageMultiplier) {

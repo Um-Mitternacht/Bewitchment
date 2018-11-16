@@ -39,7 +39,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
-	private static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale"};
+	public static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
@@ -238,10 +238,6 @@ public class EntitySnake extends EntityFamiliar {
 		return super.isNoDespawnRequired() || isFamiliar();
 	}
 
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
 
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
