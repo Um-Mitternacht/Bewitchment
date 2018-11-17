@@ -1,11 +1,11 @@
 {
-  "name": "The ritual circles",
+  "name": "Ritual Circle Layout",
   "icon": "bewitchment:ritual_chalk",
   "category": "introduction",
   "pages": [
     {
       "type": "text",
-      "text": "Something about rituals here."
+      "text": "These are how your standard ritual circles are laid out."
     },
     {
       "type": "multiblock",

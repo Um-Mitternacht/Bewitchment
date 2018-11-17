@@ -1,7 +1,7 @@
 {
   "name": "Oven",
   "icon": "bewitchment:oven",
-  "category": "oven_and_distillation",
+  "category": "appliances",
   "pages": [
     {
       "type": "text",
