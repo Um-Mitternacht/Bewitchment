@@ -1,0 +1,15 @@
+{
+  "name": "Altar",
+  "icon": "bewitchment:altar",
+  "category": "base_rituals",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Writers, this is a TODO for you."
+    },
+    {
+      "type": "crafting",
+      "ritual": "bewitchment:altar"
+    }
+  ]
+}

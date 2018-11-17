@@ -1,7 +1,7 @@
 {
-  "name": "Introduction",
+  "name": "Placeholder",
   "icon": "bewitchment:pentacle",
-  "category": "introduction",
+  "category": "basic_bestiary",
   "pages": [
     {
       "type": "text",
