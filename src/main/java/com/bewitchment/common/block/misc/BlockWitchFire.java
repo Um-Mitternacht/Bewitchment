@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.misc;
 
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.Bewitchment;

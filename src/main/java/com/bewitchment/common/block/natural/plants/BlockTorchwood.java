@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.magic.plants;
+package com.bewitchment.common.block.natural.plants;
 
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;

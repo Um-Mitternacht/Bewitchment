@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.misc;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;

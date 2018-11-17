@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockWillOWisp extends BlockMod {
+public class BlockWitchesLight extends BlockMod {
 
 	private static final AxisAlignedBB EMPTY_AABB = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
 	private static final Material WISP_MATERIAL = new Material(MapColor.AIR) {
@@ -52,8 +52,8 @@ public class BlockWillOWisp extends BlockMod {
 		}
 	};
 
-	public BlockWillOWisp() {
-		super(LibBlockName.WILL_O_WISP, WISP_MATERIAL);
+	public BlockWitchesLight() {
+		super(LibBlockName.WITCHES_LIGHT, WISP_MATERIAL);
 		this.setLightOpacity(0);
 	}
 

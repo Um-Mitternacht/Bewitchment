@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.misc;
 
 import com.bewitchment.common.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -14,27 +14,28 @@ import java.util.Random;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class BlockCandleMedium extends BlockCandle {
 
-	private static final AxisAlignedBB MEDIUM_BOX = new AxisAlignedBB(0.31, 0, 0.31, 0.69, 0.75, 0.69);
+public class BlockCandleSmall extends BlockCandle {
 
-	public BlockCandleMedium(String id, boolean lit) {
+	private static final AxisAlignedBB SMALL_BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
+
+	public BlockCandleSmall(String id, boolean lit) {
 		super(id, lit);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return MEDIUM_BOX.offset(state.getOffset(source, pos));
+		return SMALL_BOX.offset(state.getOffset(source, pos));
 	}
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(ModBlocks.candle_medium);
+		return Item.getItemFromBlock(ModBlocks.candle_small);
 	}
 
 	@Override
 	public int getType() {
-		return 1;
+		return 0;
 	}
 }

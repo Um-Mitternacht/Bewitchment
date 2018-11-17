@@ -20,7 +20,7 @@ import com.bewitchment.client.render.tile.TileRenderGemBowl;
 import com.bewitchment.client.render.tile.TileRenderPlacedItem;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.magic.BlockWitchFire;
+import com.bewitchment.common.block.misc.BlockWitchFire;
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
 import com.bewitchment.common.core.net.GuiHandler;

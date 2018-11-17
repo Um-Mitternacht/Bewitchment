@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.tiles;
 
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.state.StateProperties;

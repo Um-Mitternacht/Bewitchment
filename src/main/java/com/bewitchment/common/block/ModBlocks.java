@@ -3,26 +3,28 @@ package com.bewitchment.common.block;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
-import com.bewitchment.common.block.magic.BlockGraveyardDirt;
-import com.bewitchment.common.block.magic.BlockPurifyingEarth;
-import com.bewitchment.common.block.magic.BlockSaltBarrier;
-import com.bewitchment.common.block.magic.BlockWitchFire;
-import com.bewitchment.common.block.magic.plants.BlockEmberGrass;
-import com.bewitchment.common.block.magic.plants.BlockTorchwood;
+import com.bewitchment.common.block.misc.BlockCandleMedium;
+import com.bewitchment.common.block.misc.BlockCandleSmall;
 import com.bewitchment.common.block.misc.BlockGoblet;
+import com.bewitchment.common.block.misc.BlockGraveyardDirt;
 import com.bewitchment.common.block.misc.BlockLantern;
 import com.bewitchment.common.block.misc.BlockPlacedItem;
-import com.bewitchment.common.block.misc.BlockWillOWisp;
+import com.bewitchment.common.block.misc.BlockPurifyingEarth;
+import com.bewitchment.common.block.misc.BlockSaltBarrier;
+import com.bewitchment.common.block.misc.BlockWitchFire;
+import com.bewitchment.common.block.misc.BlockWitchesLight;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
+import com.bewitchment.common.block.natural.plants.BlockEmberGrass;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.block.natural.plants.BlockMoss;
+import com.bewitchment.common.block.natural.plants.BlockTorchwood;
 import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
-import com.bewitchment.common.block.tools.*;
+import com.bewitchment.common.block.tiles.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
@@ -127,7 +129,7 @@ public final class ModBlocks {
 	public static final Block witchfire = null;
 	public static final Block revealing_lantern = null;
 	public static final Block lantern = null;
-	public static final Block will_o_wisp = null;
+	public static final Block witches_light = null;
 	public static final Block placed_item = null;
 
 	public static final Block silver_block_chisel = null;
@@ -206,7 +208,7 @@ public final class ModBlocks {
 				new BlockTarotTable(),
 				new BlockLantern(true),
 				new BlockLantern(false),
-				new BlockWillOWisp(),
+				new BlockWitchesLight(),
 				new BlockPurifyingEarth(),
 				new BlockPlacedItem()
 		);

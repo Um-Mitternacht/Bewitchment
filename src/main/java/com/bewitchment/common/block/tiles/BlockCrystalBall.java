@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.tiles;
 
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.tiles.TileEntityCrystalBall;

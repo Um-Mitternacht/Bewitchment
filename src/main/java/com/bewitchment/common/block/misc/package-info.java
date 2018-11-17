@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.misc;
 
 import mcp.MethodsReturnNonnullByDefault;
 

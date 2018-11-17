@@ -1,7 +1,7 @@
 package com.bewitchment.common.core.net.messages;
 
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.magic.BlockWitchFire;
+import com.bewitchment.common.block.misc.BlockWitchFire;
 import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.net.SimpleMessage;

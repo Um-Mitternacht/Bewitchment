@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package com.bewitchment.common.block.magic;
+package com.bewitchment.common.block.tiles;
 
 import mcp.MethodsReturnNonnullByDefault;
 

@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.tools;
+package com.bewitchment.common.block.tiles;
 
 import java.util.ArrayList;
 import java.util.Arrays;
