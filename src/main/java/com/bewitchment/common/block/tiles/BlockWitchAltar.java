@@ -1,11 +1,5 @@
 package com.bewitchment.common.block.tiles;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
@@ -14,7 +8,6 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -37,6 +30,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
@@ -275,7 +273,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 				return true;
 			}
 		}
-		
+
 		if (!worldIn.isRemote && (playerIn.getHeldItem(hand).getItem() == ModItems.athame || playerIn.getHeldItem(hand).getItem() == ModItems.boline || playerIn.getHeldItem(hand).getItem() == ModItems.silver_sword || playerIn.getHeldItem(hand).getItem() == ModItems.cold_iron_sword || playerIn.getHeldItem(hand).getItem() == ModItems.pentacle) && facing == EnumFacing.UP) {
 			worldIn.setBlockState(pos.up(), ModBlocks.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(playerIn.rotationYaw)), 3);
 			((TileEntityPlacedItem) worldIn.getTileEntity(pos.up())).setItem(playerIn.getHeldItem(hand).splitStack(1));
@@ -288,7 +286,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 					int newColor = playerIn.getHeldItem(hand).getMetadata();
 					int oldColor = ((TileEntityWitchAltar) worldIn.getTileEntity(getAltarTileFromMultiblock(worldIn, pos))).getColor().ordinal();
 					if (newColor != oldColor) {
-						Log.i(newColor+" "+oldColor);
+						Log.i(newColor + " " + oldColor);
 						setColor(worldIn, pos, newColor);
 						if (!playerIn.isCreative()) {
 							playerIn.getHeldItem(hand).shrink(1);

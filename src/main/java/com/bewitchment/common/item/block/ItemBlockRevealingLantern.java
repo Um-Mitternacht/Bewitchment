@@ -10,7 +10,6 @@ import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockWitchFire;
 import com.bewitchment.common.block.misc.BlockWitchFire.EnumFireType;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

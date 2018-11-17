@@ -3,16 +3,7 @@ package com.bewitchment.common.block;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled;
 import com.bewitchment.common.block.chisel.BlockSilverChiselled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
-import com.bewitchment.common.block.misc.BlockCandleMedium;
-import com.bewitchment.common.block.misc.BlockCandleSmall;
-import com.bewitchment.common.block.misc.BlockGoblet;
-import com.bewitchment.common.block.misc.BlockGraveyardDirt;
-import com.bewitchment.common.block.misc.BlockLantern;
-import com.bewitchment.common.block.misc.BlockPlacedItem;
-import com.bewitchment.common.block.misc.BlockPurifyingEarth;
-import com.bewitchment.common.block.misc.BlockSaltBarrier;
-import com.bewitchment.common.block.misc.BlockWitchFire;
-import com.bewitchment.common.block.misc.BlockWitchesLight;
+import com.bewitchment.common.block.misc.*;
 import com.bewitchment.common.block.natural.*;
 import com.bewitchment.common.block.natural.crop.*;
 import com.bewitchment.common.block.natural.fluid.Fluids;
@@ -213,9 +204,9 @@ public final class ModBlocks {
 				new BlockPurifyingEarth(),
 				new BlockPlacedItem()
 		);
-		
+
 		registry.register(new BlockDistillery(LibBlockName.DISTILLERY));
-		
+
 		//Normal Blocks
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
