@@ -1,6 +1,6 @@
 {
   "name": "Altar",
-  "icon": "bewitchment:altar",
+  "icon": "bewitchment:witch_altar",
   "category": "base_rituals",
   "pages": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "type": "crafting",
-      "ritual": "bewitchment:altar"
+      "ritual": "bewitchment:witch_altar"
     }
   ]
 }
