@@ -1,12 +1,20 @@
 package com.bewitchment.common.block.tools;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import com.bewitchment.common.tile.tiles.TileEntityWitchAltar;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -16,12 +24,10 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -31,11 +37,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
@@ -150,32 +151,32 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return state;
 	}
 
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-
-		if (isMBBase(worldIn, pos.north().north().east()))
-			if (tryFormMultiblock(worldIn, pos, pos.north().north().east())) return;
-		if (isMBBase(worldIn, pos.north().north().west()))
-			if (tryFormMultiblock(worldIn, pos, pos.north().north().west())) return;
-		if (isMBBase(worldIn, pos.north().east().east()))
-			if (tryFormMultiblock(worldIn, pos, pos.north().east().east())) return;
-		if (isMBBase(worldIn, pos.north().west().west()))
-			if (tryFormMultiblock(worldIn, pos, pos.north().west().west())) return;
-		if (isMBBase(worldIn, pos.south().south().east()))
-			if (tryFormMultiblock(worldIn, pos, pos.south().south().east())) return;
-		if (isMBBase(worldIn, pos.south().south().west()))
-			if (tryFormMultiblock(worldIn, pos, pos.south().south().west())) return;
-		if (isMBBase(worldIn, pos.south().east().east()))
-			if (tryFormMultiblock(worldIn, pos, pos.south().east().east())) return;
-		if (isMBBase(worldIn, pos.south().west().west()))
-			if (tryFormMultiblock(worldIn, pos, pos.south().west().west())) return;
-
-		if (tryFormMultiblock(worldIn, pos.east(), pos.south().west())) return;
-		if (tryFormMultiblock(worldIn, pos.east(), pos.north().west())) return;
-		if (tryFormMultiblock(worldIn, pos.north(), pos.south().west())) return;
-		if (tryFormMultiblock(worldIn, pos.north(), pos.south().east())) return;
-	}
+//	@Override
+//	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+//		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+//
+//		if (isMBBase(worldIn, pos.north().north().east()))
+//			if (tryFormMultiblock(worldIn, pos, pos.north().north().east())) return;
+//		if (isMBBase(worldIn, pos.north().north().west()))
+//			if (tryFormMultiblock(worldIn, pos, pos.north().north().west())) return;
+//		if (isMBBase(worldIn, pos.north().east().east()))
+//			if (tryFormMultiblock(worldIn, pos, pos.north().east().east())) return;
+//		if (isMBBase(worldIn, pos.north().west().west()))
+//			if (tryFormMultiblock(worldIn, pos, pos.north().west().west())) return;
+//		if (isMBBase(worldIn, pos.south().south().east()))
+//			if (tryFormMultiblock(worldIn, pos, pos.south().south().east())) return;
+//		if (isMBBase(worldIn, pos.south().south().west()))
+//			if (tryFormMultiblock(worldIn, pos, pos.south().south().west())) return;
+//		if (isMBBase(worldIn, pos.south().east().east()))
+//			if (tryFormMultiblock(worldIn, pos, pos.south().east().east())) return;
+//		if (isMBBase(worldIn, pos.south().west().west()))
+//			if (tryFormMultiblock(worldIn, pos, pos.south().west().west())) return;
+//
+//		if (tryFormMultiblock(worldIn, pos.east(), pos.south().west())) return;
+//		if (tryFormMultiblock(worldIn, pos.east(), pos.north().west())) return;
+//		if (tryFormMultiblock(worldIn, pos.north(), pos.south().west())) return;
+//		if (tryFormMultiblock(worldIn, pos.north(), pos.south().east())) return;
+//	}
 
 	private boolean tryFormMultiblock(World worldIn, BlockPos firstCorner, BlockPos secondCorner) {
 		ArrayList<BlockPos> blocks = new ArrayList<BlockPos>(6);
@@ -264,6 +265,17 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
+		if (!worldIn.isRemote && playerIn.getHeldItem(hand).getItem() == Item.getItemFromBlock(Blocks.CARPET) && state.getValue(ALTAR_TYPE) == AltarMultiblockType.UNFORMED && !playerIn.isSneaking()) {
+			if (tryFormAltar(worldIn, pos)) {
+				int newColor = playerIn.getHeldItem(hand).getMetadata();
+				setColor(worldIn, pos, newColor);
+				if (!playerIn.isCreative()) {
+					playerIn.getHeldItem(hand).shrink(1);
+				}
+				return true;
+			}
+		}
+		
 		if (!worldIn.isRemote && (playerIn.getHeldItem(hand).getItem() == ModItems.athame || playerIn.getHeldItem(hand).getItem() == ModItems.boline || playerIn.getHeldItem(hand).getItem() == ModItems.silver_sword || playerIn.getHeldItem(hand).getItem() == ModItems.cold_iron_sword || playerIn.getHeldItem(hand).getItem() == ModItems.pentacle) && facing == EnumFacing.UP) {
 			worldIn.setBlockState(pos.up(), ModBlocks.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(playerIn.rotationYaw)), 3);
 			((TileEntityPlacedItem) worldIn.getTileEntity(pos.up())).setItem(playerIn.getHeldItem(hand).splitStack(1));
@@ -274,7 +286,14 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			if (playerIn.getHeldItem(hand).getItem().equals(Item.getItemFromBlock(Blocks.CARPET)) && !playerIn.isSneaking()) {
 				if (!state.getValue(ALTAR_TYPE).equals(AltarMultiblockType.UNFORMED)) {
 					int newColor = playerIn.getHeldItem(hand).getMetadata();
-					setColor(worldIn, pos, newColor);
+					int oldColor = ((TileEntityWitchAltar) worldIn.getTileEntity(getAltarTileFromMultiblock(worldIn, pos))).getColor().ordinal();
+					if (newColor != oldColor) {
+						Log.i(newColor+" "+oldColor);
+						setColor(worldIn, pos, newColor);
+						if (!playerIn.isCreative()) {
+							playerIn.getHeldItem(hand).shrink(1);
+						}
+					}
 					return true;
 				}
 			} else if (!worldIn.isRemote && playerIn.getHeldItem(hand).isEmpty() && worldIn.getBlockState(pos).getValue(ALTAR_TYPE) != AltarMultiblockType.UNFORMED) {
@@ -287,6 +306,47 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 					return true;
 				}
 			}
+		}
+		return false;
+	}
+
+	private boolean tryFormAltar(World worldIn, BlockPos pos) {
+		if (isMBBase(worldIn, pos.north().north().east())) {
+			if (tryFormMultiblock(worldIn, pos, pos.north().north().east())) return true;
+		}
+		if (isMBBase(worldIn, pos.north().north().west())) {
+			if (tryFormMultiblock(worldIn, pos, pos.north().north().west())) return true;
+		}
+		if (isMBBase(worldIn, pos.north().east().east())) {
+			if (tryFormMultiblock(worldIn, pos, pos.north().east().east())) return true;
+		}
+		if (isMBBase(worldIn, pos.north().west().west())) {
+			if (tryFormMultiblock(worldIn, pos, pos.north().west().west())) return true;
+		}
+		if (isMBBase(worldIn, pos.south().south().east())) {
+			if (tryFormMultiblock(worldIn, pos, pos.south().south().east())) return true;
+		}
+		if (isMBBase(worldIn, pos.south().south().west())) {
+			if (tryFormMultiblock(worldIn, pos, pos.south().south().west())) return true;
+		}
+		if (isMBBase(worldIn, pos.south().east().east())) {
+			if (tryFormMultiblock(worldIn, pos, pos.south().east().east())) return true;
+		}
+		if (isMBBase(worldIn, pos.south().west().west())) {
+			if (tryFormMultiblock(worldIn, pos, pos.south().west().west())) return true;
+		}
+
+		if (tryFormMultiblock(worldIn, pos.east(), pos.south().west())) {
+			return true;
+		}
+		if (tryFormMultiblock(worldIn, pos.east(), pos.north().west())) {
+			return true;
+		}
+		if (tryFormMultiblock(worldIn, pos.north(), pos.south().west())) {
+			return true;
+		}
+		if (tryFormMultiblock(worldIn, pos.north(), pos.south().east())) {
+			return true;
 		}
 		return false;
 	}
