@@ -1,0 +1,11 @@
+{
+  "name": "Placeholder",
+  "icon": "bewitchment:pentacle",
+  "category": "mineralogy_and_gemology",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Introduction",
+  "icon": "bewitchment:pentacle",
+  "category": "introduction",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}

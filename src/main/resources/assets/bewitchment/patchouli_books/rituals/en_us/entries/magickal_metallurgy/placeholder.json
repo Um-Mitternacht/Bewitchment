@@ -1,0 +1,11 @@
+{
+  "name": "Placeholder",
+  "icon": "bewitchment:pentacle",
+  "category": "magickal_metallurgy",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}
