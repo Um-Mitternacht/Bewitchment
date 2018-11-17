@@ -9,7 +9,7 @@
     },
     {
       "type": "crafting",
-      "text": "Crafting an altar",	  
+      "text": "Crafting an altar",
       "recipe": "bewitchment:witch_altar"
     }
   ]
