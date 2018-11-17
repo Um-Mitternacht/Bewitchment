@@ -18,6 +18,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tileentity.TileEntity;
@@ -230,6 +231,9 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		int meta = state.getValue(StateProperties.GLYPH_TYPE).ordinal();
+		if (meta >= 4) {
+			return new ItemStack(Items.AIR);
+		}
 		return new ItemStack(ModItems.ritual_chalk, 1, meta);
 	}
 
