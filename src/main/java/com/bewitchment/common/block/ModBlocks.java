@@ -82,6 +82,7 @@ public final class ModBlocks {
 	public static final Block salt_barrier = null;
 	public static final Block beehive = null;
 	public static final Block oven = null;
+	public static final Block distillery = null;
 	public static final Block apiary = null;
 	public static final Block brazier = null;
 	public static final Block salt_ore = null;
@@ -212,6 +213,9 @@ public final class ModBlocks {
 				new BlockPurifyingEarth(),
 				new BlockPlacedItem()
 		);
+		
+		registry.register(new BlockDistillery(LibBlockName.DISTILLERY));
+		
 		//Normal Blocks
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),

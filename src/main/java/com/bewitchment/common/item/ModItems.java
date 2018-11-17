@@ -351,6 +351,7 @@ public final class ModItems {
 				itemBlock(ModBlocks.coquina),
 				itemBlock(ModBlocks.cauldron),
 				itemBlock(ModBlocks.oven),
+				itemBlock(ModBlocks.distillery),
 				itemBlock(ModBlocks.apiary),
 				itemBlock(ModBlocks.brazier),
 				itemBlock(ModBlocks.torchwood),
