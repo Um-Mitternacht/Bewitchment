@@ -1,5 +1,9 @@
 package com.bewitchment.common.entity;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
@@ -7,15 +11,13 @@ import com.bewitchment.common.entity.living.familiar.EntityRaven;
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
 import com.bewitchment.common.entity.living.familiar.EntityToad;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -55,10 +57,25 @@ public final class ModEntities {
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS))
 				.peek(b -> Log.d("Valid snake biome found: " + b.getBiomeName()))
 				.collect(Collectors.toList());
+		
+		Set<Biome> validToad = BiomeDictionary.getBiomes(Type.SWAMP);
+		validToad.forEach(b -> Log.d("Valid toad biome found: " + b.getBiomeName()));
+		
+		List<Biome> validRaven = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND))
+				.peek(b -> Log.d("Valid raven biome found: " + b.getBiomeName()))
+				.collect(Collectors.toList());
+		
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
-		EntityRegistry.addSpawn(EntityOwl.class, 8, 4, 4, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
-		EntityRegistry.addSpawn(EntitySnake.class, 5, 2, 2, EnumCreatureType.MONSTER, validSnake.toArray(biomesSnake));
+		Biome[] biomesToad = new Biome[validToad.size()];
+		Biome[] biomesRaven = new Biome[validRaven.size()];
+		
+		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
+		EntityRegistry.addSpawn(EntitySnake.class, 5, 1, 1, EnumCreatureType.MONSTER, validSnake.toArray(biomesSnake));
+		EntityRegistry.addSpawn(EntityToad.class, 2, 1, 1, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
+		EntityRegistry.addSpawn(EntityRaven.class, 3, 1, 1, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
 	}
 
 	private static ResourceLocation getResource(String name) {
