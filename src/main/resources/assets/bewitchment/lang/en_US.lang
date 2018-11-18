@@ -201,6 +201,7 @@ item.location_stone.unbound=Not bound
 item.pentacle.name=Pentacle
 item.wrathful_eye.name=Wrathful Eye
 item.sanguine_fabric.name=Bloody Rags
+item.toe_of_frog.name=Toe of Frog
 
 
 //fumes
@@ -889,6 +890,7 @@ tc.aspect.sol=The Sun
 entity.entity_owl.name=Owl
 entity.entity_snake.name=Snake
 entity.entity_raven.name=Raven
+entity.entity_toad.name=Toad
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning

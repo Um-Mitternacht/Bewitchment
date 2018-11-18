@@ -23,6 +23,7 @@ public final class ModTiles {
 	private static final ResourceLocation GEM_BOWL = new ResourceLocation(LibMod.MOD_ID, "gem_bowl");
 	private static final ResourceLocation MAGIC_MIRROR = new ResourceLocation(LibMod.MOD_ID, "magic_mirror");
 	private static final ResourceLocation PLACED_ITEM = new ResourceLocation(LibMod.MOD_ID, "placed_item");
+	private static final ResourceLocation DISTILLERY = new ResourceLocation(LibMod.MOD_ID, "distillery");
 
 	private ModTiles() {
 	}
@@ -39,5 +40,6 @@ public final class ModTiles {
 		GameRegistry.registerTileEntity(TileEntityGemBowl.class, GEM_BOWL);
 		GameRegistry.registerTileEntity(TileEntityMagicMirror.class, MAGIC_MIRROR);
 		GameRegistry.registerTileEntity(TileEntityPlacedItem.class, PLACED_ITEM);
+		GameRegistry.registerTileEntity(TileEntityDistillery.class, DISTILLERY);
 	}
 }

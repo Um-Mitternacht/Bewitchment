@@ -16,13 +16,17 @@
       "type": "multiblock",
       "name": "How to build",
       "multiblock": {
-      	"mapping": {
-      	  "A": "bewitchment:witch_altar[altar_multiblock=unformed]",
-      	  "0": "bewitchment:witch_altar[altar_multiblock=unformed]"
-      	},
-      	"pattern": [
-      	  [ "AAA", "A0A"]
-      	]
+        "mapping": {
+          "A": "bewitchment:witch_altar[altar_multiblock=unformed]",
+          "0": "bewitchment:witch_altar[altar_multiblock=unformed]"
+        },
+        "pattern": [
+          [
+            "AA",
+            "0A",
+            "AA"
+          ]
+        ]
       },
       "text": "The blocks around the altar must $(i)not$() be other altar blocks"
     },
@@ -30,13 +34,17 @@
       "type": "multiblock",
       "name": "The altar",
       "multiblock": {
-      	"mapping": {
-      	  "A": "bewitchment:witch_altar[altar_multiblock=side,color=14]",
-      	  "0": "bewitchment:witch_altar[altar_multiblock=side,color=14]"
-      	},
-      	"pattern": [
-      	  [ "AAA", "A0A"]
-      	]
+        "mapping": {
+          "A": "bewitchment:witch_altar[altar_multiblock=side,color=14]",
+          "0": "bewitchment:witch_altar[altar_multiblock=side,color=14]"
+        },
+        "pattern": [
+          [
+            "AA",
+            "0A",
+            "AA"
+          ]
+        ]
       },
       "enable_visualize": false,
       "text": "Any carpet can be used on the altar to form the final structure"

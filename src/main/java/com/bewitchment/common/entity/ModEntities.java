@@ -5,6 +5,7 @@ import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.entity.living.familiar.EntityRaven;
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
+import com.bewitchment.common.entity.living.familiar.EntityToad;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -43,6 +44,7 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("owl"), EntityOwl.class, "entity_owl", id++, Bewitchment.instance, 64, 1, true, 0xAF813F, 0x6E5127);
 		EntityRegistry.registerModEntity(getResource("snake"), EntitySnake.class, "entity_snake", id++, Bewitchment.instance, 64, 1, true, 0x8F9779, 0x696969);
 		EntityRegistry.registerModEntity(getResource("raven"), EntityRaven.class, "entity_raven", id++, Bewitchment.instance, 64, 1, true, 0x222222, 0x280638);
+		EntityRegistry.registerModEntity(getResource("toad"), EntityToad.class, "entity_toad", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))

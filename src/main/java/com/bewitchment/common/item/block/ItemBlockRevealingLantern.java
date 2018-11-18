@@ -8,8 +8,8 @@ package com.bewitchment.common.item.block;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.magic.BlockWitchFire;
-import com.bewitchment.common.block.magic.BlockWitchFire.EnumFireType;
+import com.bewitchment.common.block.misc.BlockWitchFire;
+import com.bewitchment.common.block.misc.BlockWitchFire.EnumFireType;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -88,7 +88,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 
 		if (lit) {
 			if (world.getBlockState(pos.offset(side)).getBlock().isReplaceable(world, pos.offset(side)) && player.getCapability(IMagicPowerContainer.CAPABILITY, null).drain(50)) {
-				world.setBlockState(pos.offset(side), ModBlocks.will_o_wisp.getDefaultState(), 3);
+				world.setBlockState(pos.offset(side), ModBlocks.witches_light.getDefaultState(), 3);
 				return EnumActionResult.SUCCESS;
 			}
 		}

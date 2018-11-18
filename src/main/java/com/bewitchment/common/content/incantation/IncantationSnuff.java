@@ -31,7 +31,7 @@ public class IncantationSnuff implements IIncantation {
 				world.setBlockState(pos, ModBlocks.candle_small.getDefaultState().withProperty(Bewitchment.COLOR, state.getValue(Bewitchment.COLOR)), 3);
 				flag = true;
 			}
-			if (state.getBlock() == ModBlocks.will_o_wisp) {
+			if (state.getBlock() == ModBlocks.witches_light) {
 				world.setBlockToAir(pos);
 			}
 			if (flag) {

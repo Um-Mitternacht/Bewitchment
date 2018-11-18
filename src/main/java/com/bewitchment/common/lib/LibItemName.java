@@ -129,6 +129,7 @@ public final class LibItemName {
 	public static final String GRAVEYARD_DUST = "graveyard_dust";
 	public static final String MAGIC_SALVE = "magic_salve";
 	public static final String PENTACLE = "pentacle";
+	public static final String TOE_OF_FROG = "toe_of_frog";
 
 	//Materials
 	public static final String SILVER = "silver";
