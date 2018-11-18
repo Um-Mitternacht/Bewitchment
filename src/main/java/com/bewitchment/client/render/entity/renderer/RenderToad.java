@@ -1,6 +1,5 @@
 package com.bewitchment.client.render.entity.renderer;
 
-import com.bewitchment.client.render.entity.model.ModelSnake;
 import com.bewitchment.client.render.entity.model.ModelToad;
 import com.bewitchment.common.entity.living.familiar.EntityToad;
 import com.bewitchment.common.lib.LibMod;
