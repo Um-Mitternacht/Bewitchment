@@ -1,10 +1,13 @@
 package com.bewitchment.common.entity.living.familiar;
 
+import java.util.Set;
+
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
@@ -13,7 +16,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIFollowOwnerFlying;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -33,8 +43,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-
-import java.util.Set;
 
 public class EntityRaven extends EntityFamiliar {
 
@@ -61,7 +69,7 @@ public class EntityRaven extends EntityFamiliar {
 		super.applyEntityAttributes();
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(maxHPWild);
-		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
+		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
 
@@ -81,19 +89,17 @@ public class EntityRaven extends EntityFamiliar {
 	protected void initEntityAI() {
 		this.tasks.addTask(0, new EntityAIPanic(this, 0.7D));
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
-		this.tasks.addTask(5, new EntityAILookIdle(this));
-		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
-		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
+		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
-		this.tasks.addTask(4, this.aiSit);
+		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
+		this.tasks.addTask(5, new EntityAILookIdle(this));
 	}
 
 	@Override
 	protected PathNavigate createNavigator(World worldIn) {
 		PathNavigateFlying pathnavigateflying = new PathNavigateFlying(this, worldIn);
 		pathnavigateflying.setCanOpenDoors(false);
-		pathnavigateflying.setCanFloat(true);
+		pathnavigateflying.setCanFloat(false);
 		pathnavigateflying.setCanEnterDoors(true);
 		return pathnavigateflying;
 	}
