@@ -157,12 +157,7 @@ public class EntityRaven extends EntityFamiliar {
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.RAVEN_CRY;
 	}
-//
-//	@Override
-//	protected float getSoundVolume() {
-//		return 0.5f;
-//	}
-
+	
 	@Override
 	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
 	}

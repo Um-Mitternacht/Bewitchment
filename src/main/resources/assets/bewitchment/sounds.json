@@ -36,4 +36,12 @@
     ],
     "subtitle": "bewitchment.subtitle.owl_hoot"
   }
+  ,
+  "raven_cry": {
+    "sounds": [
+      "bewitchment:raven_cry_1",
+      "bewitchment:raven_cry_2"
+    ],
+    "subtitle": "bewitchment.subtitle.raven_croaks"
+  }
 }
