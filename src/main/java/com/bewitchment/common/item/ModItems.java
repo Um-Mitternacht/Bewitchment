@@ -218,8 +218,8 @@ public final class ModItems {
 		}
 		registry.register(new ItemGem());
 		// registry.register(new ItemFume());
-		registry.register(new ItemFumes("fume"));
-		registry.register(new ItemGemPowder("powders"));
+		registry.register(new ItemFumes(LibItemName.FUME));
+		registry.register(new ItemGemPowder(LibItemName.GEM_POWDER));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
 		registry.register(new ItemMod(LibItemName.SILVER_POWDER));
 		registry.register(new ItemMod(LibItemName.SILVER_INGOT));

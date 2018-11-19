@@ -16,15 +16,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemGemPowder extends ItemMod {
 
 	public static final String[] names = new String[]{
-			"gem_powder_garnet", // 0
-			"gem_powder_nuummite", // 1
-			"gem_powder_tigers_eye", // 2
-			"gem_powder_tourmaline", // 3
-			"gem_powder_bloodstone", // 4
-			"gem_powder_jasper", // 5
-			"gem_powder_malachite", // 6
-			"gem_powder_amethyst", // 7
-			"gem_powder_alexandrite", // 8
+			"garnet", // 0
+			"nuummite", // 1
+			"tigers_eye", // 2
+			"tourmaline", // 3
+			"bloodstone", // 4
+			"jasper", // 5
+			"malachite", // 6
+			"amethyst", // 7
+			"alexandrite", // 8
 	};
 
 	public ItemGemPowder(String id) {
@@ -34,7 +34,9 @@ public class ItemGemPowder extends ItemMod {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata() >= names.length) return super.getUnlocalizedName(stack);
+		if (stack.getMetadata() >= names.length) {
+			return super.getUnlocalizedName(stack);
+		}
 		return super.getUnlocalizedName(stack) + "." + names[stack.getMetadata()];
 	}
 
