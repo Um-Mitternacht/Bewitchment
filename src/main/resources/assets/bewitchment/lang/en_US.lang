@@ -13,7 +13,8 @@ bewitchment.config.current_action_hud=Selected Ability HUD
 bewitchment.config.client=Client Settings
 
 //Actions
-bewitchment.night_vision=Night Vision
+bewitchment.night_vision_vampire=Night Vision
+bewitchment.night_vision_werewolf=Night Vision
 bewitchment.drain_blood=Drain Blood
 bewitchment.bat_swarm=Bat Swarm
 bewitchment.howl=Howl
