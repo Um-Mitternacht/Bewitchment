@@ -3,7 +3,6 @@ package com.bewitchment.common.tile.tiles;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.IOInventory;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -23,7 +22,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	public void update() {
 
 	}
-	
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
@@ -37,7 +36,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		}
 		return super.hasCapability(capability, facing);
 	}
-	
+
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {

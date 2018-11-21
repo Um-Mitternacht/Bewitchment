@@ -67,21 +67,36 @@ public final class ModEntities {
 		Set<Biome> validToad = BiomeDictionary.getBiomes(Type.SWAMP);
 		validToad.forEach(b -> Log.d("Valid toad biome found: " + b.getBiomeName()));
 
+		Set<Biome> validNewt = BiomeDictionary.getBiomes(Type.SWAMP);
+		validNewt.forEach(b -> Log.d("Valid newt biome found: " + b.getBiomeName()));
+
 		List<Biome> validRaven = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND))
 				.peek(b -> Log.d("Valid raven biome found: " + b.getBiomeName()))
 				.collect(Collectors.toList());
 
+		Set<Biome> validBlindworm = BiomeDictionary.getBiomes(Type.FOREST);
+		validBlindworm.forEach(b -> Log.d("Valid blindworm biome found: " + b.getBiomeName()));
+
+		Set<Biome> validLizard = BiomeDictionary.getBiomes(Type.FOREST);
+		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getBiomeName()));
+
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
 		Biome[] biomesToad = new Biome[validToad.size()];
 		Biome[] biomesRaven = new Biome[validRaven.size()];
+		Biome[] biomesBlindworm = new Biome[validBlindworm.size()];
+		Biome[] biomesNewt = new Biome[validNewt.size()];
+		Biome[] biomesLizard = new Biome[validLizard.size()];
 
 		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
 		EntityRegistry.addSpawn(EntitySnake.class, 5, 1, 1, EnumCreatureType.MONSTER, validSnake.toArray(biomesSnake));
 		EntityRegistry.addSpawn(EntityToad.class, 2, 1, 1, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
 		EntityRegistry.addSpawn(EntityRaven.class, 3, 1, 1, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
+		EntityRegistry.addSpawn(EntityBlindworm.class, 5, 1, 1, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
+		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
+		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
 	}
 
 	private static ResourceLocation getResource(String name) {

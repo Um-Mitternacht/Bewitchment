@@ -2,6 +2,8 @@ package com.bewitchment.common.entity.living.familiar;
 
 import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.common.core.statics.ModSounds;
+import com.bewitchment.common.entity.living.animals.EntityBlindworm;
+import com.bewitchment.common.entity.living.animals.EntityLizard;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
@@ -82,7 +84,7 @@ public class EntityOwl extends EntityFamiliar {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityParrot));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityParrot || e instanceof EntityBlindworm || e instanceof EntityLizard));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	}
 

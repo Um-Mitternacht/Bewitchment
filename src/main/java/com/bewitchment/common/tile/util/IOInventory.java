@@ -7,9 +7,9 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBTTagCompound> {
-	
+
 	ItemStackHandler inputs, outputs;
-	
+
 	public IOInventory(int inputsize, int outputsize) {
 		inputs = new ItemStackHandler(inputsize);
 		outputs = new ItemStackHandler(outputsize);
