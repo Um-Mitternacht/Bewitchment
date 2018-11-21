@@ -130,6 +130,9 @@ public final class LibItemName {
 	public static final String MAGIC_SALVE = "magic_salve";
 	public static final String PENTACLE = "pentacle";
 	public static final String TOE_OF_FROG = "toe_of_frog";
+	public static final String EYE_OF_NEWT = "eye_of_newt";
+	public static final String BLINDWORMS_STING = "blindworms_sting";
+	public static final String LIZARD_LEG = "lizard_leg";
 
 	//Materials
 	public static final String SILVER = "silver";

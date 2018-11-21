@@ -2,6 +2,9 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
+import com.bewitchment.common.entity.living.animals.EntityBlindworm;
+import com.bewitchment.common.entity.living.animals.EntityLizard;
+import com.bewitchment.common.entity.living.animals.EntityNewt;
 import com.bewitchment.common.entity.living.familiar.EntityOwl;
 import com.bewitchment.common.entity.living.familiar.EntityRaven;
 import com.bewitchment.common.entity.living.familiar.EntitySnake;
@@ -46,6 +49,10 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("snake"), EntitySnake.class, "entity_snake", id++, Bewitchment.instance, 64, 1, true, 0x8F9779, 0x696969);
 		EntityRegistry.registerModEntity(getResource("raven"), EntityRaven.class, "entity_raven", id++, Bewitchment.instance, 64, 1, true, 0x222222, 0x280638);
 		EntityRegistry.registerModEntity(getResource("toad"), EntityToad.class, "entity_toad", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
+		//Non-familiar animals
+		EntityRegistry.registerModEntity(getResource("blindworm"), EntityBlindworm.class, "entity_blindworm", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
+		EntityRegistry.registerModEntity(getResource("newt"), EntityNewt.class, "entity_newt", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
+		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
