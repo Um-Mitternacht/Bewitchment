@@ -35,7 +35,7 @@ import java.util.Set;
 public class EntityNewt extends EntityFamiliar {
 
 	private static final double maxHPWild = 8;
-	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/newt");
 	private static final String[] names = {""};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityNewt.class, DataSerializers.VARINT);
