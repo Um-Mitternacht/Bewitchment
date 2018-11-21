@@ -58,10 +58,10 @@ public class EntityFlyingBroom extends Entity {
 
 	@SubscribeEvent(receiveCanceled = false, priority = EventPriority.LOWEST)
 	public static void onUnmounting(EntityMountEvent evt) {
-		if (evt.getEntityBeingMounted() instanceof EntityFlyingBroom) {
+		if (evt.getEntityBeingMounted() instanceof EntityFlyingBroom && evt.isDismounting()) {
 			EntityFlyingBroom broom = (EntityFlyingBroom) evt.getEntityBeingMounted();
 			EntityPlayer source = (EntityPlayer) evt.getEntityMounting();
-			if (evt.isDismounting()) {
+			if (!source.isDead) {
 				if (broom.getType() == 3) {
 					BlockPos start = broom.getMountPos();
 					if (broom.world.provider.getDimension() == broom.getMountDim()) {
@@ -319,8 +319,13 @@ public class EntityFlyingBroom extends Entity {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (isEntityInvulnerable(source)) return false;
-		if (!world.isRemote && source.getTrueSource() instanceof EntityPlayer && !source.getTrueSource().equals(getControllingPassenger())) {
+		if (isEntityInvulnerable(source)) {
+			return false;
+		}
+		if (getControllingPassenger() != null) {
+			return false;
+		}
+		if (!world.isRemote && source.getTrueSource() instanceof EntityPlayer) {
 			EntityItem ei = new EntityItem(world, source.getTrueSource().posX, source.getTrueSource().posY, source.getTrueSource().posZ, new ItemStack(ModItems.broom, 1, getType()));
 			world.spawnEntity(ei);
 			this.setDead();
