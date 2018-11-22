@@ -1,4 +1,4 @@
-//CreativeTab
+﻿//CreativeTab
 itemGroup.bewitchment_plants=Bewitchment - Plants
 itemGroup.bewitchment_items=Bewitchment - Items
 itemGroup.bewitchment_blocks=Bewitchment - Blocks
@@ -893,6 +893,9 @@ entity.entity_owl.name=Owl
 entity.entity_snake.name=Snake
 entity.entity_raven.name=Raven
 entity.entity_toad.name=Toad
+entity.entity_lizard.name=Lizard
+entity.entity_blindworm.name=Blindworm
+entity.entity_newt.name=Newt
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning
@@ -910,3 +913,4 @@ gui.bwguicfg.hide=§b§l[Shift+Click]§r to hide/show
 
 //Books
 bewitchment.book.rites.name=Book of Shadows
+bewitchment.book.codex_infernalis.name=Codex Infernalis

@@ -1,0 +1,18 @@
+{
+  "name": "Blindworm",
+  "icon": "bewitchment:blindworms_sting",
+  "category": "basic_bestiary",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "entity",
+      "name": "Blindworm",
+      "entity": "bewitchment:blindworm",
+      "scale": 1.0,
+      "text": "TODO"
+    }
+  ]
+}

@@ -50,9 +50,9 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("raven"), EntityRaven.class, "entity_raven", id++, Bewitchment.instance, 64, 1, true, 0x222222, 0x280638);
 		EntityRegistry.registerModEntity(getResource("toad"), EntityToad.class, "entity_toad", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
 		//Non-familiar animals
-		EntityRegistry.registerModEntity(getResource("blindworm"), EntityBlindworm.class, "entity_blindworm", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
-		EntityRegistry.registerModEntity(getResource("newt"), EntityNewt.class, "entity_newt", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
-		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0xA9BA9D, 0xC3B091);
+		EntityRegistry.registerModEntity(getResource("blindworm"), EntityBlindworm.class, "entity_blindworm", id++, Bewitchment.instance, 64, 1, true, 0x826644, 0xD2B48C);
+		EntityRegistry.registerModEntity(getResource("newt"), EntityNewt.class, "entity_newt", id++, Bewitchment.instance, 64, 1, true, 0x000000, 0xFFD300);
+		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
