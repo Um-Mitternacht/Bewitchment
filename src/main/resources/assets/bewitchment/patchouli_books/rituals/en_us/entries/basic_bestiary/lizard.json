@@ -11,7 +11,7 @@
       "type": "entity",
       "name": "Lizard",
       "entity": "bewitchment:lizard",
-      "scale": 1.0,
+      "scale": 0.50,
       "text": "TODO"
     }
   ]

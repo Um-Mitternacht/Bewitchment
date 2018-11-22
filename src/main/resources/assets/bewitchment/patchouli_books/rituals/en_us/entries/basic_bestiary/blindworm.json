@@ -11,7 +11,7 @@
       "type": "entity",
       "name": "Blindworm",
       "entity": "bewitchment:blindworm",
-      "scale": 1.0,
+      "scale": 0.45,
       "text": "TODO"
     }
   ]
