@@ -1,7 +1,8 @@
 package com.bewitchment.common.content.cauldron.brews;
 
+import com.bewitchment.common.entity.living.animals.EntityBlindworm;
+import com.bewitchment.common.entity.living.animals.EntityLizard;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityRabbit;
 
@@ -15,7 +16,7 @@ public class PotionAddersKiss extends GenericBrewDamageVS {
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
 		String className = entity.getClass().getSimpleName();
-		return entity instanceof EntityRabbit || entity instanceof EntitySpider || entity instanceof EntityChicken || className.contains("Rat") || className.contains("Mouse") || className.contains("Hamster") || className.contains("Mole") || className.contains("Blindworm") || className.contains("Frog") || className.contains("Toad") || className.contains("Newt") || className.contains("Salamander") || className.contains("GuineaPig") || className.contains("Cavy") || className.contains("Chick") || className.contains("Chinchilla");
+		return entity instanceof EntityRabbit || entity instanceof EntityChicken || entity instanceof EntityBlindworm || entity instanceof EntityLizard || entity.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 	}
 
 	@Override
