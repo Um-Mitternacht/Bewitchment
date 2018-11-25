@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+@Deprecated
 public abstract class EntityFamiliar extends EntityTameable {
 
 	private static final float REDIRECTED_DAMAGE = 0.1f;
