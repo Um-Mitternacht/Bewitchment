@@ -25,7 +25,7 @@ public class RenderNewt extends RenderLiving<EntityNewt> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityNewt entity) {
-		return textures[entity.getFamiliarSkin()];
+		return textures[entity.getSkinIndex()];
 	}
 
 	@Override

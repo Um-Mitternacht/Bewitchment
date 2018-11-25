@@ -10,11 +10,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderBlindworm extends RenderLiving<EntityBlindworm> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[1];
+	private static final ResourceLocation texture = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/blindworm.png");
 
-	static {
-		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/blindworm.png");
-	}
 
 	public RenderBlindworm(RenderManager rendermanagerIn) {
 		super(rendermanagerIn, new ModelBlindworm(), 0.3f);
@@ -22,7 +19,7 @@ public class RenderBlindworm extends RenderLiving<EntityBlindworm> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBlindworm entity) {
-		return textures[entity.getFamiliarSkin()];
+		return texture;
 	}
 
 	@Override

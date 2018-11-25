@@ -1,21 +1,30 @@
 package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.api.entity.EntityFamiliar;
+import java.util.Set;
+
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityEndermite;
-import net.minecraft.entity.monster.EntitySilverfish;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -26,19 +35,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
 /**
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityLizard extends EntityFamiliar {
+public class EntityLizard extends EntityTameable {
 
-	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/lizard");
-	private static final String[] names = {""};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
-	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityLizard.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityNewt.class, DataSerializers.VARINT);
 
 	public EntityLizard(World worldIn) {
 		super(worldIn);
@@ -48,13 +53,13 @@ public class EntityLizard extends EntityFamiliar {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataManager.register(TINT, 0xFFFFFF);
 		this.aiSit = new EntityAISit(this);
+		this.dataManager.set(SKIN_TYPE, getRNG().nextInt(4));
+		this.dataManager.setDirty(SKIN_TYPE);
 	}
 
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
+	public int getSkinIndex() {
+		return dataManager.get(SKIN_TYPE);
 	}
 
 	@Override
@@ -79,22 +84,13 @@ public class EntityLizard extends EntityFamiliar {
 	}
 
 	@Override
-	public int getTotalVariants() {
-		return 4;
-	}
-
-	@Override
 	protected void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
+		this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.2f, 0.00001f));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(3, new EntityAIMate(this, 1d));
 		this.tasks.addTask(4, this.aiSit);
-		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityEndermite || e instanceof EntitySilverfish));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
 
 	@Override
@@ -174,25 +170,6 @@ public class EntityLizard extends EntityFamiliar {
 	}
 
 	@Override
-	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
-		if (forSpawnCount && isFamiliar()) {
-			return false;
-		}
-		return super.isCreatureType(type, forSpawnCount);
-	}
-
-
-	@Override
-	public boolean isNoDespawnRequired() {
-		return super.isNoDespawnRequired() || isFamiliar();
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
-
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.SPIDER_EYE;
 	}
@@ -200,5 +177,18 @@ public class EntityLizard extends EntityFamiliar {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityLizard(world);
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("skin", getSkinIndex());
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		dataManager.set(SKIN_TYPE, compound.getInteger("skin"));
+		dataManager.setDirty(SKIN_TYPE);
 	}
 }

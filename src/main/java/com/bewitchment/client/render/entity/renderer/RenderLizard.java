@@ -25,7 +25,7 @@ public class RenderLizard extends RenderLiving<EntityLizard> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityLizard entity) {
-		return textures[entity.getFamiliarSkin()];
+		return textures[entity.getSkinIndex()];
 	}
 
 	@Override
