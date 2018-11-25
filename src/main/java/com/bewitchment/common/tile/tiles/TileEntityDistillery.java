@@ -1,10 +1,13 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.IOInventory;
+
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -14,61 +17,77 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityDistillery extends ModTileEntity implements ITickable {
 
 	private IMagicPowerConsumer mp = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
-	private int progress = 0;
-	private String currentRecipe = null;
-	private FluidTank tank = new FluidTank(1000) {
-		@Override
-		protected void onContentsChanged() {
-			contentsChanged();
-		}
-
-		;
-	};
-	private IOInventory inventory = new IOInventory(7, 6) {
+	private IOInventory inventory = new IOInventory(6, 6) {
 		@Override
 		protected void inventoryChanged() {
 			contentsChanged();
 		}
 	};
+	private ItemStackHandler container = new ItemStackHandler(1) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			contentsChanged();
+		};
+	};
+	private FluidTank tank = new FluidTank(1000) {
+		@Override
+		protected void onContentsChanged() {
+			contentsChanged();
+		};
+	};
+	private int progress = 0;
+	private String currentRecipe = "";
 
 	@Override
 	public void update() {
-		if (currentRecipe != null) {
+		if (currentRecipe.length() > 0) {
 			if (progress > 0) {
-				if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
+				if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
 					progress--;
+					markDirty();
 				}
 			} else {
 				DistilleryRecipe recipe = ModDistilleryRecipes.REGISTRY.getValue(new ResourceLocation(currentRecipe));
 				if (recipe == null) {
-					currentRecipe = null;
+					currentRecipe = "";
 					progress = 0;
 				} else {
 					tank.setFluid(recipe.getRemainingFluidStack(tank.getFluid()));
-					for (int i = 1; i < inventory.getInputSlotsCount(); i++) {
+					for (int i = 0; i < inventory.getInputSlotsCount(); i++) {
 						if (!inventory.getStackInSlot(i).isEmpty()) {
 							inventory.getStackInSlot(i).shrink(1);
 						}
 					}
+					for (ItemStack is:recipe.getOutputs()) {
+						inventory.insertInOutputs(is, false);
+					}
+					checkRecipe();
 				}
+				markDirty();
 			}
 		}
 	}
 
 	protected void contentsChanged() {
+		Log.i("Contents changed, current recipe: "+currentRecipe);
 		checkRecipe();
 		this.markDirty();
+		Log.i("New recipe: "+currentRecipe);
 	}
 
 	private void checkRecipe() {
 		DistilleryRecipe recipe = ModDistilleryRecipes.REGISTRY.getValuesCollection().parallelStream()
-				.filter(dr -> dr.matches(inventory.getInputs(), inventory.getStackInSlot(0), tank.getFluid()))
-				.findFirst().orElse(null);
-		if (currentRecipe != recipe.getRegistryName().toString() && canOutputFit(recipe)) {
+			.filter(dr -> dr.matches(inventory.getInputs(), inventory.getStackInSlot(0), tank.getFluid()))
+			.findFirst().orElse(null);
+		if (recipe == null) {
+			currentRecipe = "";
+			progress = 0;
+		} else if (currentRecipe != recipe.getRegistryName().toString() && canOutputFit(recipe)) {
 			currentRecipe = recipe.getRegistryName().toString();
 			progress = recipe.getTime();
 		}
@@ -79,7 +98,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		// and everything else is full, and the recipe has at least two outputs.
 		// We need to instanciate a new copy-inventory, actually modify it and see
 		// with real stacks, not simulating.
-		for (ItemStack is : recipe.getOutputs()) {
+		for (ItemStack is:recipe.getOutputs()) {
 			if (!inventory.insertInOutputs(is, true).isEmpty()) {
 				return false;
 			}
@@ -107,6 +126,9 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
 		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (facing == world.getBlockState(pos).getValue(BlockHorizontal.FACING).getOpposite()) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(container);
+			}
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory);
 		}
 		if (capability == IMagicPowerConsumer.CAPABILITY) {
@@ -118,6 +140,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		inventory.deserializeNBT(tag.getCompoundTag("inv"));
+		container.deserializeNBT(tag.getCompoundTag("cont"));
 		tank.readFromNBT(tag.getCompoundTag("tank"));
 		mp.readFromNbt(tag.getCompoundTag("mp"));
 		progress = tag.getInteger("progress");
@@ -127,6 +150,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setTag("inv", inventory.serializeNBT());
+		tag.setTag("cont", container.serializeNBT());
 		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
 		tag.setTag("mp", mp.writeToNbt());
 		tag.setInteger("progress", progress);
