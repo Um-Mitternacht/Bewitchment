@@ -115,7 +115,6 @@ public class Bewitchment {
 		ModFortunes.init();
 		ModLootTables.registerLootTables();
 		FrostFireRecipe.init();
-		ModDistilleryRecipes.init();
 		proxy.preInit(event);
 		ThaumcraftCompatBridge.loadThaumcraftCompat();
 		EntityPlacementHelper.init();
@@ -136,6 +135,7 @@ public class Bewitchment {
 		ModBlocks.init();
 		ModTarots.init();
 		CauldronRegistry.init();
+		ModDistilleryRecipes.init();
 		CropHelper.initSeedDrops();
 		ModGen.init();
 		ModSpinningThreadRecipes.init();
