@@ -139,6 +139,9 @@ public final class ModItems {
 	public static final Item cold_iron_nugget = null;
 	public static final Item spanish_moss = null;
 
+	public static final Item quartz_powder = null;
+	public static final Item lapis_powder = null;
+
 	public static final Item sanguine_fabric = null;
 
 	public static final Item golden_thread = null;
@@ -289,6 +292,8 @@ public final class ModItems {
 				new ItemMod(LibItemName.BLINDWORMS_STING),
 				new ItemMod(LibItemName.LIZARD_LEG),
 				new ItemMod(LibItemName.EYE_OF_NEWT),
+				new ItemMod(LibItemName.QUARTZ_POWDER),
+				new ItemMod(LibItemName.LAPIS_POWDER),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemFilledBowl(),

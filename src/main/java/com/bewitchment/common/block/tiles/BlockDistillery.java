@@ -32,6 +32,7 @@ public class BlockDistillery extends BlockModTileEntity {
 		return new BlockStateContainer(this, FACING);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(FACING, EnumFacing.HORIZONTALS[meta & 3]);
@@ -42,11 +43,13 @@ public class BlockDistillery extends BlockModTileEntity {
 		return state.getValue(FACING).getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return BBOX;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BBOX;

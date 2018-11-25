@@ -92,6 +92,8 @@ item.gem_powder.jasper.name=Jasper Powder
 item.gem_powder.malachite.name=Malachite Powder
 item.gem_powder.amethyst.name=Amethyst Powder
 item.gem_powder.alexandrite.name=Alexandrite Powder
+item.quartz_powder.name=Quartz Powder
+item.lapis_powder.name=Lapis Powder
 
 //Resources and Tools
 item.wax.name=Wax

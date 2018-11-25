@@ -5,7 +5,6 @@ import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.IOInventory;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -19,26 +18,28 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class TileEntityDistillery extends ModTileEntity implements ITickable {
 
 	private IMagicPowerConsumer mp = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
+	private int progress = 0;
+	private String currentRecipe = null;
+	private FluidTank tank = new FluidTank(1000) {
+		@Override
+		protected void onContentsChanged() {
+			contentsChanged();
+		}
+
+		;
+	};
 	private IOInventory inventory = new IOInventory(7, 6) {
 		@Override
 		protected void inventoryChanged() {
 			contentsChanged();
 		}
 	};
-	private FluidTank tank = new FluidTank(1000) {
-		@Override
-		protected void onContentsChanged() {
-			contentsChanged();
-		};
-	};
-	private int progress = 0;
-	private String currentRecipe = null;
 
 	@Override
 	public void update() {
 		if (currentRecipe != null) {
 			if (progress > 0) {
-				if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
+				if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
 					progress--;
 				}
 			} else {
@@ -65,8 +66,8 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 
 	private void checkRecipe() {
 		DistilleryRecipe recipe = ModDistilleryRecipes.REGISTRY.getValuesCollection().parallelStream()
-			.filter(dr -> dr.matches(inventory.getInputs(), inventory.getStackInSlot(0), tank.getFluid()))
-			.findFirst().orElse(null);
+				.filter(dr -> dr.matches(inventory.getInputs(), inventory.getStackInSlot(0), tank.getFluid()))
+				.findFirst().orElse(null);
 		if (currentRecipe != recipe.getRegistryName().toString() && canOutputFit(recipe)) {
 			currentRecipe = recipe.getRegistryName().toString();
 			progress = recipe.getTime();
@@ -78,7 +79,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		// and everything else is full, and the recipe has at least two outputs.
 		// We need to instanciate a new copy-inventory, actually modify it and see
 		// with real stacks, not simulating.
-		for (ItemStack is:recipe.getOutputs()) {
+		for (ItemStack is : recipe.getOutputs()) {
 			if (!inventory.insertInOutputs(is, true).isEmpty()) {
 				return false;
 			}

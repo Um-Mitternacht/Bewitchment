@@ -1,16 +1,11 @@
 package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -44,7 +39,7 @@ public class EntityNewt extends EntityAnimal {
 		this.dataManager.set(SKIN_TYPE, getRNG().nextInt(4));
 		this.dataManager.setDirty(SKIN_TYPE);
 	}
-	
+
 	public int getSkinIndex() {
 		return dataManager.get(SKIN_TYPE);
 	}
@@ -107,13 +102,13 @@ public class EntityNewt extends EntityAnimal {
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityNewt(world);
 	}
-	
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("skin", getSkinIndex());
 	}
-	
+
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);

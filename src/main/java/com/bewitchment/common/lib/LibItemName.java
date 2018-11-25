@@ -166,6 +166,8 @@ public final class LibItemName {
 	public static final String COLD_IRON_DUST_SMALL = "cold_iron_dust_small";
 	public static final String LOCATION_STONE = "location_stone";
 	public static final String SANGUINE_FABRIC = "sanguine_fabric";
+	public static final String QUARTZ_POWDER = "quartz_powder";
+	public static final String LAPIS_POWDER = "lapis_powder";
 
 
 	private LibItemName() {
