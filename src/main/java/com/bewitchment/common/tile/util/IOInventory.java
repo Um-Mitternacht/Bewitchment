@@ -1,18 +1,43 @@
 package com.bewitchment.common.tile.util;
 
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBTTagCompound> {
 
-	ItemStackHandler inputs, outputs;
+	ItemStackHandlerRef inputs, outputs;
 
 	public IOInventory(int inputsize, int outputsize) {
-		inputs = new ItemStackHandler(inputsize);
-		outputs = new ItemStackHandler(outputsize);
+		inputs = new ItemStackHandlerRef(inputsize) {
+			@Override
+			protected void onContentsChanged(int slot) {
+				super.onContentsChanged(slot);
+				inventoryChanged();
+			}
+		};
+		outputs = new ItemStackHandlerRef(outputsize) {
+			@Override
+			protected void onContentsChanged(int slot) {
+				super.onContentsChanged(slot);
+				inventoryChanged();
+			}
+		};
+	}
+
+	protected void inventoryChanged() {
+		
+	}
+	
+	public int getInputSlotsCount() {
+		return inputs.getSlots();
 	}
 
 	@Override
@@ -62,6 +87,22 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 	public int getSlotLimit(int slot) {
 		return 64;
 	}
+	
+	public ItemStack insertInOutputs(ItemStack stack, boolean simulate) {
+		ItemStack remaining = stack.copy();
+		for (int i = 0; i < outputs.getSlots() && !remaining.isEmpty(); i++) {
+			remaining = outputs.insertItem(i, remaining, simulate);
+		} 
+		return remaining;
+	}
+	
+	public ItemStack insertInInputs(ItemStack stack, boolean simulate) {
+		ItemStack remaining = stack.copy();
+		for (int i = 0; i < inputs.getSlots() && !remaining.isEmpty(); i++) {
+			remaining = inputs.insertItem(i, remaining, simulate);
+		} 
+		return remaining;
+	}
 
 	@Override
 	public void setStackInSlot(int slot, ItemStack stack) {
@@ -70,5 +111,25 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 		} else {
 			outputs.setStackInSlot(slot - inputs.getSlots(), stack);
 		}
+	}
+	
+	public List<ItemStack> getInputs() {
+		return ImmutableList.copyOf(inputs.getStacks());
+	}
+	
+	public List<ItemStack> getOutputs() {
+		return ImmutableList.copyOf(outputs.getStacks());
+	}
+	
+	protected static class ItemStackHandlerRef extends ItemStackHandler {
+		
+		public ItemStackHandlerRef(int inputsize) {
+			super(inputsize);
+		}
+
+		public NonNullList<ItemStack> getStacks() {
+			return stacks;
+		}
+		
 	}
 }
