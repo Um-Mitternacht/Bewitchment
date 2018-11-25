@@ -56,31 +56,31 @@ public final class ModEntities {
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
-				.peek(b -> Log.d("Valid owl biome found: " + b.getBiomeName()))
+				.peek(b -> Log.d("Valid owl biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 		List<Biome> validSnake = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS))
-				.peek(b -> Log.d("Valid snake biome found: " + b.getBiomeName()))
+				.peek(b -> Log.d("Valid snake biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
 		Set<Biome> validToad = BiomeDictionary.getBiomes(Type.SWAMP);
-		validToad.forEach(b -> Log.d("Valid toad biome found: " + b.getBiomeName()));
+		validToad.forEach(b -> Log.d("Valid toad biome found: " + b.getRegistryName()));
 
 		Set<Biome> validNewt = BiomeDictionary.getBiomes(Type.SWAMP);
-		validNewt.forEach(b -> Log.d("Valid newt biome found: " + b.getBiomeName()));
+		validNewt.forEach(b -> Log.d("Valid newt biome found: " + b.getRegistryName()));
 
 		List<Biome> validRaven = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND))
-				.peek(b -> Log.d("Valid raven biome found: " + b.getBiomeName()))
+				.peek(b -> Log.d("Valid raven biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
 		Set<Biome> validBlindworm = BiomeDictionary.getBiomes(Type.FOREST);
-		validBlindworm.forEach(b -> Log.d("Valid blindworm biome found: " + b.getBiomeName()));
+		validBlindworm.forEach(b -> Log.d("Valid blindworm biome found: " + b.getRegistryName()));
 
 		Set<Biome> validLizard = BiomeDictionary.getBiomes(Type.FOREST);
-		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getBiomeName()));
+		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getRegistryName()));
 
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
