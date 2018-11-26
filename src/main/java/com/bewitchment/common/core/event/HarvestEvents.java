@@ -1,5 +1,6 @@
 package com.bewitchment.common.core.event;
 
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
@@ -32,6 +33,10 @@ public class HarvestEvents {
 			//Oak and dark oak -> apple gall
 			event.getDrops().clear();
 			event.getDrops().add(new ItemStack(ModItems.oak_apple_gall, 1));
+		} else if (((event.getState().getBlock() == ModBlocks.leaves_juniper))) {
+			//Juniper berry drops
+			event.getDrops().clear();
+			event.getDrops().add(new ItemStack(ModItems.juniper_berries, 1));
 		}
 	}
 }
