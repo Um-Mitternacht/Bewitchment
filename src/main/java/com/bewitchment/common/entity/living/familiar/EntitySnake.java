@@ -129,7 +129,7 @@ public class EntitySnake extends EntityFamiliar {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 6;
+		return 2;
 	}
 
 	@Override
