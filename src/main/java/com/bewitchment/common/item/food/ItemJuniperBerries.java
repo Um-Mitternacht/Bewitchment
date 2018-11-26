@@ -23,7 +23,7 @@ public class ItemJuniperBerries extends ItemModFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		setPotionEffect(new PotionEffect(MobEffects.POISON, 450, 0), 0.3F);
-		setPotionEffect(new PotionEffect(MobEffects.NAUSEA, 450, 0), 0.3F);
+		setPotionEffect(new PotionEffect(MobEffects.SATURATION, 150, 0), 1.0F);
+		setPotionEffect(new PotionEffect(MobEffects.POISON, 450, 0), 0.1F);
 	}
 }
