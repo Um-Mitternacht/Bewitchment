@@ -208,7 +208,7 @@ public class EntityOwl extends EntityFamiliar {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 4;
+		return 2;
 	}
 
 	@Override

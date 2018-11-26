@@ -78,7 +78,7 @@ public class EntityNewt extends EntityAnimal {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 6;
+		return 2;
 	}
 
 	@Override

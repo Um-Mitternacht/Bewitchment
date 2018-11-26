@@ -102,7 +102,7 @@ public class EntityLizard extends EntityTameable {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 6;
+		return 2;
 	}
 
 	@Override
