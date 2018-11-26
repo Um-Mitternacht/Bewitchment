@@ -46,6 +46,7 @@ public final class LibItemName {
 	public static final String SEED_CHRYSANTHEMUM = "seed_chrysanthemum";
 	public static final String INFESTED_WHEAT = "infested_wheat";
 	public static final String WITCHWEED = "witchweed";
+	public static final String JUNIPER_BERRIES = "juniper_berries";
 
 	//Tools
 	public static final String SILVER_PICKAXE = "silver_pickaxe";

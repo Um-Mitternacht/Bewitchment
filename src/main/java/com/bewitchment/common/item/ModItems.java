@@ -142,6 +142,8 @@ public final class ModItems {
 	public static final Item quartz_powder = null;
 	public static final Item lapis_powder = null;
 
+	public static final Item juniper_berries = null;
+
 	public static final Item sanguine_fabric = null;
 
 	public static final Item golden_thread = null;
@@ -296,6 +298,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.LAPIS_POWDER),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
+				new ItemJuniperBerries(),
 				new ItemFilledBowl(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
