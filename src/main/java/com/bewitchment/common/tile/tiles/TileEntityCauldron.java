@@ -43,7 +43,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private IMagicPowerConsumer powerManager = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	private DefaultBehaviours defaultBehaviours = new DefaultBehaviours();
-	private LinkedList<ICauldronBehaviour> decorators = new LinkedList<>();
+	private LinkedList<ICauldronBehaviour> behaviors = new LinkedList<>();
 	private ICauldronBehaviour currentBehaviour;
 
 	private String name;
@@ -108,13 +108,13 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				effectiveClientSideColor = ColorHelper.blendColor(effectiveClientSideColor, targetColorRGB, 0.92f);
 			}
 		} else {
-			decorators.forEach(d -> d.update(d == currentBehaviour));
-			if (decorators.stream().allMatch(d -> !d.shouldInputsBeBlocked())) {
+			behaviors.forEach(d -> d.update(d == currentBehaviour));
+			if (behaviors.stream().allMatch(d -> !d.shouldInputsBeBlocked())) {
 				ItemStack next = gatherNextItemFromTop();
 				if (!next.isEmpty()) {
 					ingredients.add(next);
 					setTankLock(false);
-					decorators.forEach(d -> d.statusChanged(d == currentBehaviour));
+					behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
 					if (targetColorRGB != currentBehaviour.getColor()) {
 						setColor(currentBehaviour.getColor());
 					}
@@ -130,7 +130,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	public void addBehaviour(ICauldronBehaviour b) {
-		decorators.add(b);
+		behaviors.add(b);
 	}
 
 	private ItemStack gatherNextItemFromTop() {
@@ -143,8 +143,14 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			ItemStack next = selectedEntityItem.getItem().splitStack(1);
 			if (selectedEntityItem.getItem().isEmpty()) {
 				selectedEntityItem.setDead();
-				world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f * Math.random() + 1));
 			}
+			ItemStack container = next.getItem().getContainerItem(next);
+			if (!container.isEmpty()) {
+				EntityItem res = new EntityItem(world, pos.getX()+0.5, pos.getY()+0.9, pos.getZ()+0.5, container);
+				res.addTag("cauldron_drop");
+				world.spawnEntity(res);
+			}
+			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f * Math.random() + 1));
 			return next;
 		}
 		return ItemStack.EMPTY;
@@ -190,7 +196,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	public void handleParticles() {
-		decorators.forEach(d -> d.handleParticles(d == currentBehaviour));
+		behaviors.forEach(d -> d.handleParticles(d == currentBehaviour));
 	}
 
 	@Override
@@ -201,7 +207,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		if (name != null) {
 			tag.setString("name", name);
 		}
-		decorators.forEach(d -> d.saveToNBT(tag));
+		behaviors.forEach(d -> d.saveToNBT(tag));
 		tag.setString("behaviour", currentBehaviour.getID());
 		tag.setTag("mp", powerManager.writeToNbt());
 	}
@@ -217,9 +223,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			name = null;
 		}
 		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
-		decorators.forEach(d -> d.loadFromNBT(tag));
+		behaviors.forEach(d -> d.loadFromNBT(tag));
 		String id = tag.getString("behaviour");
-		currentBehaviour = decorators.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
+		currentBehaviour = behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
 		powerManager.readFromNbt(tag.getCompoundTag("mp"));
 	}
 
@@ -231,7 +237,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 		if (name != null) {
 			tag.setString("name", name);
 		}
-		decorators.forEach(d -> d.saveToSyncNBT(tag));
+		behaviors.forEach(d -> d.saveToSyncNBT(tag));
 		tag.setString("behaviour", currentBehaviour.getID());
 	}
 
@@ -249,13 +255,13 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			name = null;
 		}
 		String id = tag.getString("behaviour");
-		currentBehaviour = decorators.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
-		decorators.forEach(d -> d.loadFromSyncNBT(tag));
+		currentBehaviour = behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
+		behaviors.forEach(d -> d.loadFromSyncNBT(tag));
 	}
 
 	public void clearItemInputs() {
 		ingredients.clear();
-		decorators.forEach(d -> d.statusChanged(d == currentBehaviour));
+		behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
 		markDirty();
 		syncToClient();
 	}
@@ -283,7 +289,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	}
 
 	public void onLiquidChange() {
-		decorators.forEach(d -> d.statusChanged(d == currentBehaviour));
+		behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
 		markDirty();
 		syncToClient();
 	}

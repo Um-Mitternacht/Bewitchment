@@ -6,7 +6,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityRabbit;
 
-//Todo: Make snake venom return glass bottles after being used in the cauldron
 public class PotionAddersKiss extends GenericBrewDamageVS {
 
 	public PotionAddersKiss() {
@@ -15,7 +14,6 @@ public class PotionAddersKiss extends GenericBrewDamageVS {
 
 	@Override
 	protected boolean shouldAffect(EntityLivingBase entity) {
-		String className = entity.getClass().getSimpleName();
 		return entity instanceof EntityRabbit || entity instanceof EntityChicken || entity instanceof EntityBlindworm || entity instanceof EntityLizard || entity.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat");
 	}
 

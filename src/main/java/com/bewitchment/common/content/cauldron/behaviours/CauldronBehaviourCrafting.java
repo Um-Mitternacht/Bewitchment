@@ -42,11 +42,6 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 	}
 
 	@Override
-	public boolean canAccept(EntityItem itemEntity) {
-		return ICauldronBehaviour.super.canAccept(itemEntity) && !itemEntity.getTags().contains("cauldron_drop");
-	}
-
-	@Override
 	public boolean canAccept(ItemStack stack) {
 		return true;
 	}

@@ -21,7 +21,7 @@ public interface ICauldronBehaviour {
 	}
 
 	default boolean canAccept(EntityItem itemEntity) {
-		return canAccept(itemEntity.getItem().copy().splitStack(1));
+		return canAccept(itemEntity.getItem().copy().splitStack(1)) && !itemEntity.getTags().contains("cauldron_drop");
 	}
 
 	public boolean canAccept(ItemStack stack);
