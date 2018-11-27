@@ -6,19 +6,25 @@
 
 package com.bewitchment.common.block.natural.tree;
 
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
@@ -31,10 +37,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
 
 public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
@@ -57,8 +59,8 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	@Override
 	protected void dropApple(World worldIn, BlockPos pos, IBlockState state, int chance) {
-		if (this.getBlockState().getBlock() == ModBlocks.leaves_elder && worldIn.rand.nextInt(chance) == 0) {
-			spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE)); // TODO drop of one of the extra fruits for one of the trees
+		if (this.getBlockState().getBlock() == ModBlocks.leaves_juniper && worldIn.rand.nextInt(chance) == 0) {
+			spawnAsEntity(worldIn, pos, new ItemStack(ModItems.juniper_berries));
 		}
 	}
 
