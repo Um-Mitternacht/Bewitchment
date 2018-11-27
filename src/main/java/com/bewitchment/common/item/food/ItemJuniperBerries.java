@@ -18,12 +18,12 @@ public class ItemJuniperBerries extends ItemModFood {
 	public ItemJuniperBerries() {
 		super(LibItemName.JUNIPER_BERRIES, 1, 0.5F, false);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
+		setPotionEffect(new PotionEffect(MobEffects.POISON, 450, 0), 0.1F);
 	}
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		setPotionEffect(new PotionEffect(MobEffects.SATURATION, 150, 0), 1.0F);
-		setPotionEffect(new PotionEffect(MobEffects.POISON, 450, 0), 0.1F);
+		player.getFoodStats().addStats(1, 0.2f);
 	}
 }
