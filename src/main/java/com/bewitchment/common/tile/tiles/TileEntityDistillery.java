@@ -1,7 +1,6 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
-import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.tile.ModTileEntity;
@@ -74,10 +73,8 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	}
 
 	protected void contentsChanged() {
-		Log.i("Contents changed, current recipe: "+currentRecipe);
 		checkRecipe();
 		this.markDirty();
-		Log.i("New recipe: "+currentRecipe);
 	}
 
 	private void checkRecipe() {
@@ -94,12 +91,12 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	}
 
 	private boolean canOutputFit(DistilleryRecipe recipe) {
-		// FIXME this will report an incorrect data when the first slot is empty 
-		// and everything else is full, and the recipe has at least two outputs.
-		// We need to instanciate a new copy-inventory, actually modify it and see
-		// with real stacks, not simulating.
+		IOInventory simulated = new IOInventory(0, 6);
+		for (int i = 0; i < inventory.getOutputs().size(); i++) {
+			simulated.setStackInSlot(i, inventory.getOutputs().get(i).copy());
+		}
 		for (ItemStack is:recipe.getOutputs()) {
-			if (!inventory.insertInOutputs(is, true).isEmpty()) {
+			if (!simulated.insertInOutputs(is, false).isEmpty()) {
 				return false;
 			}
 		}
