@@ -246,7 +246,6 @@ public class CauldronRegistry {
 		//Resistance comes at a screwed up cost.
 		registerVanillaBrewEffect(MobEffects.RESISTANCE, Ingredient.fromItem(ModItems.heart), 100);
 		registerVanillaBrewEffect(MobEffects.LEVITATION, Ingredient.fromItem(Items.SHULKER_SHELL));
-		registerVanillaBrewEffect(MobEffects.SATURATION, Ingredient.fromItem(ModItems.juniper_berries), 350);
 
 		registerCombinedBrewEffect(ModPotions.wolfsbane, Ingredient.fromItem(ModItems.aconitum));
 		registerCombinedBrewEffect(ModPotions.arrow_deflect, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal())));
@@ -290,7 +289,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.magickal_boon, Ingredient.fromItem(ModItems.mandrake_root));
 		registerCombinedBrewEffect(ModPotions.magickal_drain, Ingredient.fromItem(ModItems.filet_of_fenny_snake));
 		registerCombinedBrewEffect(ModPotions.magickal_dampening, Ingredient.fromItem(ModItems.graveyard_dust));
-		registerCombinedBrewEffect(ModPotions.magickal_boost, Ingredient.fromStacks(new ItemStack(ModItems.gem_powder, 1, 2)));
+		registerCombinedBrewEffect(ModPotions.magickal_boost, Ingredient.fromItem(ModItems.juniper_berries));
 		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.garlic));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
