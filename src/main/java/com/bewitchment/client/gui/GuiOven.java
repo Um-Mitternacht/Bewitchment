@@ -14,11 +14,13 @@ public class GuiOven extends GuiContainer {
 
 	private final InventoryPlayer playerInventory;
 	private final TileEntityOven tileOven;
+	private final ContainerOven containerOven;
 
-	public GuiOven(InventoryPlayer playerInventory, TileEntityOven tileOven) {
-		super(new ContainerOven(playerInventory, tileOven));
-		this.playerInventory = playerInventory;
-		this.tileOven = tileOven;
+	public GuiOven(ContainerOven container, InventoryPlayer inventory) {
+		super(container);
+		containerOven = container;
+		this.playerInventory = inventory;
+		this.tileOven = container.getTileEntity();
 	}
 
 	@Override
@@ -43,7 +45,7 @@ public class GuiOven extends GuiContainer {
 		final int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
-		if (tileOven.isBurning()) {
+		if (containerOven.gui_data[3]>0) {
 			int k = this.getBurnLeftScaled(13);
 			this.drawTexturedModalRect(i + 44, j + 50 - k, 176, 12 - k, 14, k + 1);
 		}
@@ -53,12 +55,12 @@ public class GuiOven extends GuiContainer {
 	}
 
 	public int getCookProgress(int pixels) {
-		return this.tileOven.getWork() * pixels / TileEntityOven.TOTAL_WORK;
+		return containerOven.gui_data[2] * pixels / TileEntityOven.TOTAL_WORK;
 	}
 
 	private int getBurnLeftScaled(int pixels) {
-		if (tileOven.getItemBurnTime() > 0) {
-			return (this.tileOven.getItemBurnTime() - this.tileOven.getBurnTime()) * pixels / this.tileOven.getItemBurnTime();
+		if (containerOven.gui_data[0] > 0) {
+			return (containerOven.gui_data[1] - containerOven.gui_data[0]) * pixels / containerOven.gui_data[1];
 		}
 		return 0;
 	}

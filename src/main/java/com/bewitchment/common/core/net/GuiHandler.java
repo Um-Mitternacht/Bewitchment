@@ -53,7 +53,7 @@ public class GuiHandler implements IGuiHandler {
 			case APIARY:
 				return tile instanceof TileEntityApiary ? new GuiApiary(player.inventory, (TileEntityApiary) tile) : null;
 			case OVEN:
-				return tile instanceof TileEntityOven ? new GuiOven(player.inventory, (TileEntityOven) tile) : null;
+				return tile instanceof TileEntityOven ? new GuiOven((ContainerOven) getServerGuiElement(ID, player, world, x, y, z), player.inventory) : null;
 			case THREAD_SPINNER:
 				return tile instanceof TileEntityThreadSpinner ? new GuiThreadSpinner(player.inventory, (TileEntityThreadSpinner) tile) : null;
 			case TAROT:

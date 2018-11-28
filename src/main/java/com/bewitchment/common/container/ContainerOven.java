@@ -19,18 +19,20 @@ import net.minecraftforge.items.IItemHandler;
  * Created by Joseph on 7/17/2017.
  */
 public class ContainerOven extends ModContainer<TileEntityOven> {
+	
+	public int[] gui_data = new int[4];
+	
 	public ContainerOven(InventoryPlayer playerInventory, TileEntityOven tileEntity) {
 		super(tileEntity);
 		IItemHandler handlerUp = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-		IItemHandler handlerSide = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 		IItemHandler handlerDown = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 		//input slot
 		this.addSlotToContainer(new ModSlot<>(tileEntity, handlerUp, 0, 44, 19));
 		//fuel slot
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 0, 44, 55, TileEntityFurnace::isItemFuel));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerUp, 1, 44, 55, TileEntityFurnace::isItemFuel));
 		//jar slot
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerSide, 1, 80, 55, stack -> stack.getItem() == ModItems.fume && stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerUp, 2, 80, 55, stack -> stack.getItem() == ModItems.fume && stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
 		//output slot
 		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 0, 116, 19));
 		//fume slot
@@ -65,5 +67,33 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 			slot.onTake(player, itemstack1);
 		}
 		return itemstack;
+	}
+	
+	@Override
+	public int getUpdatedFieldData(int id) {
+		if (id == 0) {
+			return this.getTileEntity().getBurnTime();
+		} else if (id == 1) {
+			return this.getTileEntity().getItemBurnTime();
+		} else if (id == 2) {
+			return this.getTileEntity().getWork();
+		} else if (id == 3) {
+			return this.getTileEntity().isBurning()?1:0;
+		}
+		return -1;
+	}
+	
+	private static int[] fields = {0, 1, 2, 3};
+	
+	@Override
+	protected int[] getFieldsToSync() {
+		return fields;
+	}
+	
+	@Override
+	protected void updateField(int id, int data) {
+		if (id >= 0 && id < 4) {
+			gui_data[id] = data;
+		}
 	}
 }
