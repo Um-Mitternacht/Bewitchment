@@ -33,6 +33,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
@@ -65,8 +69,8 @@ public abstract class SimpleCapability {
 		map(Vec3d.class, SimpleCapability::readVec3d, SimpleCapability::writeVec3d);
 	}
 
-	protected byte dirty = 0;
-	protected int id = -1;
+	@Ignore	protected byte dirty = 0;
+	@Ignore protected int id = -1;
 
 	//Call this somewhere during startup, passing your mods' network handler
 	public static void setup(SimpleNetworkWrapper netHandler) {
@@ -265,14 +269,14 @@ public abstract class SimpleCapability {
 
 	private static boolean acceptField(Field f, Class<?> type) {
 		int mods = f.getModifiers();
-		if (Modifier.isFinal(mods) || Modifier.isStatic(mods) || Modifier.isTransient(mods) || f.getName() == "dirty") {
+		if (f.isAnnotationPresent(Ignore.class) || Modifier.isFinal(mods) || Modifier.isStatic(mods) || Modifier.isTransient(mods)) {
 			return false;
 		}
 		return handlers.containsKey(type);
 	}
 
 	private static boolean syncField(Field f, Class<?> type) {
-		return acceptField(f, type) && !Modifier.isVolatile(f.getModifiers());
+		return acceptField(f, type) && !f.isAnnotationPresent(DontSync.class);
 	}
 
 	private static <T extends Object> void map(Class<T> type, Reader<T> reader, Writer<T> writer) {
@@ -523,4 +527,17 @@ public abstract class SimpleCapability {
 
 	}
 
+	/**
+	 * All fields marked with this interface will be kept server-side only
+	 */
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.FIELD)
+	public static @interface DontSync {}
+	
+	/**
+	 * All fields marked with this interface won't be serialized by the capability
+	 */
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.FIELD)
+	public static @interface Ignore {}
 }
