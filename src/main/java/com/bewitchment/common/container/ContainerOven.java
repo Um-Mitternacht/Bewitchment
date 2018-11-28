@@ -6,6 +6,7 @@ import com.bewitchment.common.container.slots.SlotOutput;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.tile.tiles.TileEntityOven;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
@@ -70,7 +71,7 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 	}
 	
 	@Override
-	public int getUpdatedFieldData(int id) {
+	public int getFieldFromTile(int id) {
 		if (id == 0) {
 			return this.getTileEntity().getBurnTime();
 		} else if (id == 1) {
@@ -83,15 +84,13 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		return -1;
 	}
 	
-	private static int[] fields = {0, 1, 2, 3};
-	
 	@Override
-	protected int[] getFieldsToSync() {
-		return fields;
+	protected int getFieldsToSync() {
+		return 4;
 	}
 	
 	@Override
-	protected void updateField(int id, int data) {
+	protected void onFieldUpdated(int id, int data) {
 		if (id >= 0 && id < 4) {
 			gui_data[id] = data;
 		}
