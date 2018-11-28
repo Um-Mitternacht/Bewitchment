@@ -28,6 +28,7 @@ import com.bewitchment.common.core.capability.mimic.CapabilityMimicData;
 import com.bewitchment.common.core.capability.simple.BarkCapability;
 import com.bewitchment.common.core.capability.simple.SimpleCapability;
 import com.bewitchment.common.core.command.*;
+import com.bewitchment.common.core.event.LootTableEventHandler;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.helper.CropHelper;
 import com.bewitchment.common.core.helper.MobHelper;
@@ -90,6 +91,7 @@ public class Bewitchment {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new LootTableEventHandler());
 		ApiInstance.initAPI();
 		MobHelper.init();
 		SimpleCapability.setup(NetworkHandler.HANDLER);
