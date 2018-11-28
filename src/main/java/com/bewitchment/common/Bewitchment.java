@@ -123,16 +123,6 @@ public class Bewitchment {
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
-		logger.info("And how you should not fall in love");
-		logger.info("With someone like me, anyway");
-		logger.info("Between the lines, people see signs");
-		logger.info("When they feel the sear, every day's fear");
-		logger.info("And one night their torches");
-		logger.info("Find the girl without a name");
-		logger.info("And the one who has her");
-		logger.info("Love is no more safe");
-
-		logger.info("And until I get my peace I'm but a shade");
 	}
 
 	@EventHandler
@@ -155,10 +145,6 @@ public class Bewitchment {
 		ModRituals.init();
 		ModBrewModifiers.init();
 		Patchouli.init();
-		logger.info("The sun lit the white mountain's snow covered peaks,");
-		logger.info("There I see you, amongst the good people, suffering");
-		logger.info("She is the one, the unwanted, decidedly so,");
-		logger.info("'Cause she makes our children cry.");
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
@@ -166,11 +152,6 @@ public class Bewitchment {
 
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");
-
-		logger.info("In my home town");
-		logger.info("No one's safe now");
-		logger.info("Young love's been forbidden");
-		logger.info("For five-fold kisses, my only love had to die");
 	}
 
 	@SuppressWarnings("deprecation")
