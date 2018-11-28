@@ -473,6 +473,7 @@ tile.thread_spinner.name=Loom
 tile.witch_altar.name=Witches Altar
 tile.crystal_ball.name=Crystal Ball
 tile.magic_mirror.name=Magic Mirror
+tile.distillery.name=Distillery
 
 //Fluid
 fluid.oil_mundane=Oil

@@ -123,7 +123,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
 		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if (facing == world.getBlockState(pos).getValue(BlockHorizontal.FACING).getOpposite()) {
+			if (facing == world.getBlockState(pos).getValue(BlockHorizontal.FACING)) {
 				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(container);
 			}
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory);
