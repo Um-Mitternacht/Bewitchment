@@ -5,7 +5,6 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.lib.LibGui;
@@ -13,12 +12,10 @@ import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -99,7 +96,9 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		ItemStack heldItem = playerIn.getHeldItem(hand);
 		if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
 			this.customName = heldItem.getDisplayName();
-			heldItem.shrink(1);
+			if (!playerIn.isCreative()) {
+				heldItem.shrink(1);
+			}
 			this.markDirty();
 			syncToClient();
 		} else {
@@ -107,38 +106,37 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		}
 		return true;
 	}
-
+	
 	@Override
-	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		if (world.isRemote || player.isCreative()) {
-			return;
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+		if (worldIn.getGameRules().getBoolean("doTileDrops")) {
+			ItemHandlerHelper.dropItems(handlerUp, world, pos);
+			ItemHandlerHelper.dropItems(handlerDown, world, pos);
 		}
-		ItemHandlerHelper.dropItems(handlerUp, world, pos);
-		ItemHandlerHelper.dropItems(handlerDown, world, pos);
-		final EntityItem item = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.oven));
-		world.spawnEntity(item);
 	}
-
+	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
 			if (isBurning) {
 				this.burnTime++;
-				if (burnTime >= itemBurnTime) {
-					this.burnTime = 0;
-					this.isBurning = false;
-				}
 				if (isWorking) {
 					this.work++;
 					if (this.work >= TOTAL_WORK) {
 						this.work = 0;
 						isWorking = false;
 						this.smelt();
+						checkRecipe();
 					}
 				}
-				if (this.burnTime >= this.itemBurnTime) {
-					this.isBurning = false;
+				if (burnTime >= itemBurnTime) {
 					this.burnTime = 0;
+					this.itemBurnTime = 0;
+					this.isBurning = false;
+					itemBurnTime = consumeFuel();
+					if (itemBurnTime > 0) {
+						isBurning = true;
+					}
 				}
 				this.markDirty();
 			}
@@ -147,39 +145,36 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 
 
 	protected void checkRecipe() {
-		if (!world.isRemote) {
-			if (isBurning) {
-				if (canSmelt()) {
-					if (!isWorking) {
-						isWorking = true;
-						markDirty();
-					}
-				} else {
-					if (isWorking) {
-						work = 0;
-						isWorking = false;
-						markDirty();
-					}
-				}
-			} else {
-				ItemStack fuel = handlerUp.getStackInSlot(1);
-				if (TileEntityFurnace.isItemFuel(fuel)) {
-					if (canSmelt()) {
-						itemBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
-						fuel.shrink(1);
-						isBurning = true;
-						isWorking = true;
-						markDirty();
-					}
-				} else if (isWorking) {
-					isWorking = false;
-					markDirty();
+		if (hasWorkToDo()) {
+			if (!isBurning) {
+				itemBurnTime = consumeFuel();
+				if (itemBurnTime > 0) {
+					isBurning = true;
 				}
 			}
+			if (isBurning) {
+				isWorking = true;
+			} else {
+				isWorking = false;
+			}
+		} else {
+			isWorking = false;
 		}
+		markDirty();
+	}
+	
+	
+	private int consumeFuel() {
+		ItemStack fuel = handlerUp.getStackInSlot(1);
+		if (TileEntityFurnace.isItemFuel(fuel)) {
+			int time = TileEntityFurnace.getItemBurnTime(fuel);
+			fuel.shrink(1);
+			return time;
+		}
+		return 0;
 	}
 
-	private boolean canSmelt() {
+	private boolean hasWorkToDo() {
 		ItemStack stackToBeSmelted = handlerUp.getStackInSlot(0);
 		if (!stackToBeSmelted.isEmpty()) {
 			OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stackToBeSmelted);

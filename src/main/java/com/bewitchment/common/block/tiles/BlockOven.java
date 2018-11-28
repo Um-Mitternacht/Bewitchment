@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -15,6 +16,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.Random;
 
 /**
  * This class was created by Joseph on 3/4/2017.
@@ -70,5 +73,15 @@ public class BlockOven extends BlockModTileEntity {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityOven();
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(this);
+	}
+	
+	@Override
+	public int quantityDropped(IBlockState state, int fortune, Random random) {
+		return 1;
 	}
 }
