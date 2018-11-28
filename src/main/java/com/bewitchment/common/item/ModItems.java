@@ -143,6 +143,7 @@ public final class ModItems {
 	public static final Item lapis_powder = null;
 
 	public static final Item juniper_berries = null;
+	public static final Item yew_aril = null;
 
 	public static final Item sanguine_fabric = null;
 
@@ -299,6 +300,7 @@ public final class ModItems {
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemJuniperBerries(),
+				new ItemYewAril(),
 				new ItemFilledBowl(),
 				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
 				new ItemRemedyTalisman(),
