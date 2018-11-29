@@ -1,12 +1,15 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.IOInventory;
 
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -46,9 +49,11 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	public void update() {
 		if (currentRecipe.length() > 0) {
 			if (progress > 0) {
-				if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
-					progress--;
-					markDirty();
+				if (isHeated()) {
+					if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
+						progress--;
+						markDirty();
+					}
 				}
 			} else {
 				DistilleryRecipe recipe = ModDistilleryRecipes.REGISTRY.getValue(new ResourceLocation(currentRecipe));
@@ -70,6 +75,11 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 				markDirty();
 			}
 		}
+	}
+
+	private boolean isHeated() {
+		IBlockState fire = world.getBlockState(getPos().down());
+		return fire.getBlock() == Blocks.FIRE || fire.getBlock() == ModBlocks.witchfire;
 	}
 
 	protected void contentsChanged() {
