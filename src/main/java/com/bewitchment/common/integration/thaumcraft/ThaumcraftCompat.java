@@ -191,6 +191,8 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.blindworms_sting), new AspectList().add(Aspect.BEAST, 4).add(Aspect.EARTH, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.lizard_leg), new AspectList().add(Aspect.MOTION, 4).add(Aspect.EARTH, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.grilled_watermelon), new AspectList().add(Aspect.LIFE, 3).add(Aspect.DESIRE, 3));
+		evt.register.registerObjectTag(new ItemStack(ModItems.yew_aril), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3));
+		evt.register.registerObjectTag(new ItemStack(ModItems.juniper_berries), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3));
 		//Todo: Dynamic aspects based on brew contents
 		evt.register.registerObjectTag(new ItemStack(ModItems.empty_brew_drink), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.CRYSTAL, 6).add(Aspect.VOID, 6));
 		evt.register.registerObjectTag(new ItemStack(ModItems.empty_brew_linger), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.CRYSTAL, 6).add(Aspect.AIR, 6).add(Aspect.VOID, 6));
