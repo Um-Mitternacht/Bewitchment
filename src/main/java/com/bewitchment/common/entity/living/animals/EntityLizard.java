@@ -37,7 +37,7 @@ public class EntityLizard extends EntityTameable {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/lizard");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
-	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityNewt.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityLizard.class, DataSerializers.VARINT);
 
 	public EntityLizard(World worldIn) {
 		super(worldIn);
@@ -48,7 +48,7 @@ public class EntityLizard extends EntityTameable {
 	protected void entityInit() {
 		super.entityInit();
 		this.aiSit = new EntityAISit(this);
-		this.dataManager.set(SKIN_TYPE, getRNG().nextInt(4));
+		this.dataManager.register(SKIN_TYPE, getRNG().nextInt(4));
 		this.dataManager.setDirty(SKIN_TYPE);
 	}
 

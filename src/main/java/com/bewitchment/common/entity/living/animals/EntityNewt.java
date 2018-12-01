@@ -19,6 +19,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 /**
  * Created by Joseph on 10/2/2018.
  */
@@ -36,7 +38,7 @@ public class EntityNewt extends EntityAnimal {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataManager.set(SKIN_TYPE, getRNG().nextInt(4));
+		this.dataManager.register(SKIN_TYPE, getRNG().nextInt(4));
 		this.dataManager.setDirty(SKIN_TYPE);
 	}
 
