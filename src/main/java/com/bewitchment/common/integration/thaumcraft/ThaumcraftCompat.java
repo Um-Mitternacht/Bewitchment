@@ -288,8 +288,8 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerEntityTag("entity_raven", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(Aspect.DARKNESS, 8));
 		ThaumcraftApi.registerEntityTag("entity_toad", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.ALCHEMY, 8));
 
-		ThaumcraftApi.registerEntityTag("entity_lizard", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(Aspect.SENSES, 8));
-		ThaumcraftApi.registerEntityTag("entity_newt", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.ALCHEMY, 8));
+		ThaumcraftApi.registerEntityTag("entity_lizard", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(SUN, 8));
+		ThaumcraftApi.registerEntityTag("entity_newt", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.MOTION, 8));
 		ThaumcraftApi.registerEntityTag("entity_blindworm", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(Aspect.SENSES, 8));
 
 	}

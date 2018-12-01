@@ -1,12 +1,7 @@
 package com.bewitchment.common.block.tiles;
 
-import static net.minecraft.block.BlockHorizontal.FACING;
-
-import java.util.Random;
-
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.tile.tiles.TileEntityDistillery;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -22,6 +17,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
+
+import static net.minecraft.block.BlockHorizontal.FACING;
 
 public class BlockDistillery extends BlockModTileEntity {
 

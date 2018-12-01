@@ -1,16 +1,11 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.AutomatableInventory;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -27,6 +22,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nullable;
+import java.util.Random;
 
 /**
  * Created by Joseph on 7/17/2017.
