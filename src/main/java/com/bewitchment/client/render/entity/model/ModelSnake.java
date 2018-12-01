@@ -180,23 +180,12 @@ public class ModelSnake extends ModelBase {
 				this.head.rotateAngleZ = 0;
 				snek.resetTimer();
 			} else {
-				this.neck01a.offsetX = 0;
-				this.neck01a.rotateAngleX = 0;
-				this.neck02.rotateAngleX = 0;
-				this.neck02.rotateAngleY = 0;
-				this.body01.rotateAngleY = 0;
-				this.tail01.rotateAngleY = 0;
-				this.tail02.rotateAngleY = 0;
-				this.tail03.rotateAngleY = 0;
-				this.tail04.rotateAngleY = 0;
-				this.tail05.rotateAngleY = 0;
-				this.head.rotateAngleX = 0;
-				this.head.rotateAngleY = 0;
-				this.head.rotateAngleZ = 0;
+				this.neck01b.addBox(-2.3F, -1.49F, -6.0F, 2, 3, 8, MathHelper.sin(time));
 
 			}
 		}
 		this.neck01a.render(scale);
+		this.head.rotateAngleY = 0.001F*MathHelper.sin(time);
 	}
 
 	/**

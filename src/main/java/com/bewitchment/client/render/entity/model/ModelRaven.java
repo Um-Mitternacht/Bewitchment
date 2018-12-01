@@ -221,21 +221,9 @@ public class ModelRaven extends ModelBase {
 			wingLeft2.rotateAngleZ = -wingRight2.rotateAngleZ;
 			wingRight3.rotateAngleZ = wingRight1.rotateAngleZ / 4;
 			wingLeft3.rotateAngleZ = -wingRight3.rotateAngleZ;
-			tail.rotateAngleX = -1.0471975511965976F + wingRight3.rotateAngleZ / 4;
-			tailRight.rotateAngleX = -0.8726646259971648F + tail.rotateAngleX + 1.0471975511965976F;
-			tailLeft.rotateAngleX = tailRight.rotateAngleX;
-			ravenRightLeg2.rotateAngleX = wingRight3.rotateAngleZ / 4;
+			ravenRightLeg2.rotateAngleX = 1.0471975511965976F + tail.rotateAngleX;
 			ravenLeftLeg2.rotateAngleX = ravenRightLeg2.rotateAngleX;
 			
-
-			/*float angleAbs = Math.abs(0.2966972222f * MathHelper.sin(3.1415f * time / 0.4363194444f));
-			if (angleAbs > 0.1745277777f) {
-				angleAbs = 0.1745277777f;
-			}
-			wingLeft2.rotateAngleZ = -angleAbs;
-			wingLeft3.rotateAngleZ = -angleAbs;
-			wingRight2.rotateAngleZ = angleAbs;
-			wingRight3.rotateAngleZ = angleAbs;*/
 		}
 	}
 
