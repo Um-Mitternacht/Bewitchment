@@ -71,7 +71,7 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 		if (slot < inputs.getSlots()) {
 			return inputs.insertItem(slot, stack, simulate);
 		}
-		return stack;
+		return outputs.insertItem(slot - inputs.getSlots(), stack, simulate);
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 		if (slot >= inputs.getSlots()) {
 			return outputs.extractItem(slot - inputs.getSlots(), amount, simulate);
 		}
-		return ItemStack.EMPTY;
+		return inputs.extractItem(slot, amount, simulate);
 	}
 
 	@Override
