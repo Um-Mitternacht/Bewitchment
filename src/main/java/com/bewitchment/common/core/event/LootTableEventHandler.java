@@ -24,7 +24,9 @@ public class LootTableEventHandler {
         if( evt.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON) ||
             evt.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT) ||
             evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_CORRIDOR) ||
-            evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_CROSSING)
+            evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_CROSSING) ||
+            evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE) ||
+            evt.getName().equals(LootTableList.CHESTS_WOODLAND_MANSION)
         ) { //Not sure if this is messy or better looking than the alternative.
             evt.getTable().addPool(new LootPool(new LootEntry[] {
                     new LootEntryTable(
