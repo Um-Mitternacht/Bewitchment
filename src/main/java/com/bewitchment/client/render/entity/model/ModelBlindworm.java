@@ -2,7 +2,9 @@ package com.bewitchment.client.render.entity.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import org.lwjgl.opengl.GL11;
 
 /**
  * blindworm - cybercat5555
@@ -97,6 +99,7 @@ public class ModelBlindworm extends ModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		GlStateManager.scale(0.5f, 1.0f, 0.6f);
 		this.neck01a.render(f5);
 	}
 

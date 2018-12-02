@@ -14,7 +14,7 @@ public class RenderBlindworm extends RenderLiving<EntityBlindworm> {
 
 
 	public RenderBlindworm(RenderManager rendermanagerIn) {
-		super(rendermanagerIn, new ModelBlindworm(), 0.3f);
+		super(rendermanagerIn, new ModelBlindworm(), 0.1f);
 	}
 
 	@Override
