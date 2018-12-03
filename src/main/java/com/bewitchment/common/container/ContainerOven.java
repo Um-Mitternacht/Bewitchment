@@ -19,9 +19,9 @@ import net.minecraftforge.items.IItemHandler;
  * Created by Joseph on 7/17/2017.
  */
 public class ContainerOven extends ModContainer<TileEntityOven> {
-	
+
 	public int[] gui_data = new int[4];
-	
+
 	public ContainerOven(InventoryPlayer playerInventory, TileEntityOven tileEntity) {
 		super(tileEntity);
 		IItemHandler handlerUp = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
@@ -68,7 +68,7 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		}
 		return itemstack;
 	}
-	
+
 	@Override
 	public int getFieldFromTile(int id) {
 		if (id == 0) {
@@ -78,16 +78,16 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		} else if (id == 2) {
 			return this.getTileEntity().getWork();
 		} else if (id == 3) {
-			return this.getTileEntity().isBurning()?1:0;
+			return this.getTileEntity().isBurning() ? 1 : 0;
 		}
 		return -1;
 	}
-	
+
 	@Override
 	protected int getFieldsToSync() {
 		return 4;
 	}
-	
+
 	@Override
 	protected void onFieldUpdated(int id, int data) {
 		if (id >= 0 && id < 4) {

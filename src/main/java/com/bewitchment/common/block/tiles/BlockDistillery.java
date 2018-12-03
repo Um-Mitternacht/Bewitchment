@@ -51,13 +51,13 @@ public class BlockDistillery extends BlockModTileEntity {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		return blockState.getValue(FACING).getAxis() == Axis.Z ? BBOX_X:BBOX_Z;
+		return blockState.getValue(FACING).getAxis() == Axis.Z ? BBOX_X : BBOX_Z;
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return state.getValue(FACING).getAxis() == Axis.Z ? BBOX_X:BBOX_Z;
+		return state.getValue(FACING).getAxis() == Axis.Z ? BBOX_X : BBOX_Z;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class BlockDistillery extends BlockModTileEntity {
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return false;
@@ -98,11 +98,11 @@ public class BlockDistillery extends BlockModTileEntity {
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
-	
+
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		final EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
-	
+
 }

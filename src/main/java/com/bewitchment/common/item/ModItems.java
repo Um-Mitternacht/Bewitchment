@@ -431,7 +431,7 @@ public final class ModItems {
 
 	public static void init() {
 		initOreDictionary();
-		
+
 		snake_venom.setContainerItem(glass_jar);
 	}
 
