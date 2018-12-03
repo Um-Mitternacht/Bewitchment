@@ -70,12 +70,14 @@ public class BlockDistillery extends BlockModTileEntity {
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -85,7 +87,8 @@ public class BlockDistillery extends BlockModTileEntity {
 	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return false;
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

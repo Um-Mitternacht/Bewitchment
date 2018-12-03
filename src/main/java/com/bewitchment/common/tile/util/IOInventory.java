@@ -112,12 +112,20 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 		}
 	}
 
-	public List<ItemStack> getInputs() {
+	public List<ItemStack> getInputStacks() {
 		return ImmutableList.copyOf(inputs.getStacks());
 	}
 
-	public List<ItemStack> getOutputs() {
+	public List<ItemStack> getOutputStacks() {
 		return ImmutableList.copyOf(outputs.getStacks());
+	}
+	
+	public ItemStackHandler getInputHandler() {
+		return inputs;
+	}
+	
+	public ItemStackHandler getOutputHandler() {
+		return outputs;
 	}
 
 	protected static class ItemStackHandlerRef extends ItemStackHandler {
