@@ -69,10 +69,8 @@ public abstract class SimpleCapability {
 		map(Vec3d.class, SimpleCapability::readVec3d, SimpleCapability::writeVec3d);
 	}
 
-	@Ignore
-	protected byte dirty = 0;
-	@Ignore
-	protected int id = -1;
+	@Ignore	protected byte dirty = 0;
+	@Ignore protected int id = -1;
 
 	//Call this somewhere during startup, passing your mods' network handler
 	public static void setup(SimpleNetworkWrapper netHandler) {
@@ -411,22 +409,6 @@ public abstract class SimpleCapability {
 		public T read(NBTTagCompound buf, String name);
 	}
 
-	/**
-	 * All fields marked with this interface will be kept server-side only
-	 */
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.FIELD)
-	public static @interface DontSync {
-	}
-
-	/**
-	 * All fields marked with this interface won't be serialized by the capability
-	 */
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.FIELD)
-	public static @interface Ignore {
-	}
-
 	public static class SimpleProvider<T extends SimpleCapability> implements ICapabilitySerializable<NBTBase> {
 
 		private Capability<T> capability;
@@ -544,4 +526,18 @@ public abstract class SimpleCapability {
 		}
 
 	}
+
+	/**
+	 * All fields marked with this interface will be kept server-side only
+	 */
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.FIELD)
+	public static @interface DontSync {}
+	
+	/**
+	 * All fields marked with this interface won't be serialized by the capability
+	 */
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.FIELD)
+	public static @interface Ignore {}
 }

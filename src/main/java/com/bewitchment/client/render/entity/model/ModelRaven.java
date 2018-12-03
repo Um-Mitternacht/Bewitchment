@@ -223,7 +223,7 @@ public class ModelRaven extends ModelBase {
 			wingLeft3.rotateAngleZ = -wingRight3.rotateAngleZ;
 			ravenRightLeg2.rotateAngleX = 1.0471975511965976F + tail.rotateAngleX;
 			ravenLeftLeg2.rotateAngleX = ravenRightLeg2.rotateAngleX;
-
+			
 		}
 	}
 

@@ -119,11 +119,11 @@ public class IOInventory implements IItemHandlerModifiable, INBTSerializable<NBT
 	public List<ItemStack> getOutputStacks() {
 		return ImmutableList.copyOf(outputs.getStacks());
 	}
-
+	
 	public ItemStackHandler getInputHandler() {
 		return inputs;
 	}
-
+	
 	public ItemStackHandler getOutputHandler() {
 		return outputs;
 	}

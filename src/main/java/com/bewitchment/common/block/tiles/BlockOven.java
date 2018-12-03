@@ -74,12 +74,12 @@ public class BlockOven extends BlockModTileEntity {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityOven();
 	}
-
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(this);
 	}
-
+	
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
 		return 1;

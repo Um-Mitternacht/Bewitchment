@@ -146,7 +146,7 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 			ItemStack container = next.getItem().getContainerItem(next);
 			if (!container.isEmpty()) {
-				EntityItem res = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, container);
+				EntityItem res = new EntityItem(world, pos.getX()+0.5, pos.getY()+0.9, pos.getZ()+0.5, container);
 				res.addTag("cauldron_drop");
 				world.spawnEntity(res);
 			}
