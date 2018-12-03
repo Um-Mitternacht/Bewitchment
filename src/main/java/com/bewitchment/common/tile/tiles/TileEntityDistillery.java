@@ -40,6 +40,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			contentsChanged();
 		}
 	};
+	
 	private ItemStackHandler container = new ItemStackHandler(1) {
 		@Override
 		protected void onContentsChanged(int slot) {
@@ -55,6 +56,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	private int progress = 0;
 	private String currentRecipe = "";
 	
+	private int startingProgress = -1;
 	private Fluid fluidType = null;
 
 	@Override
@@ -72,6 +74,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 				if (recipe == null) {
 					currentRecipe = "";
 					progress = 0;
+					startingProgress = -1;
 				} else {
 					tank.setFluid(recipe.getRemainingFluidStack(tank.getFluid()));
 					for (int i = 0; i < inventory.getInputSlotsCount(); i++) {
@@ -120,21 +123,23 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 
 	private void checkRecipe() {
 		DistilleryRecipe recipe = ModDistilleryRecipes.REGISTRY.getValuesCollection().parallelStream()
-			.filter(dr -> dr.matches(inventory.getInputs(), inventory.getStackInSlot(0), tank.getFluid()))
+			.filter(dr -> dr.matches(inventory.getInputStacks(), inventory.getStackInSlot(0), tank.getFluid()))
 			.findFirst().orElse(null);
 		if (recipe == null) {
 			currentRecipe = "";
 			progress = 0;
+			startingProgress = -1;
 		} else if (currentRecipe != recipe.getRegistryName().toString() && canOutputFit(recipe)) {
 			currentRecipe = recipe.getRegistryName().toString();
 			progress = recipe.getTime();
+			startingProgress = recipe.getTime();
 		}
 	}
 
 	private boolean canOutputFit(DistilleryRecipe recipe) {
 		IOInventory simulated = new IOInventory(0, 6);
-		for (int i = 0; i < inventory.getOutputs().size(); i++) {
-			simulated.setStackInSlot(i, inventory.getOutputs().get(i).copy());
+		for (int i = 0; i < inventory.getOutputStacks().size(); i++) {
+			simulated.setStackInSlot(i, inventory.getOutputStacks().get(i).copy());
 		}
 		for (ItemStack is:recipe.getOutputs()) {
 			if (!simulated.insertInOutputs(is, false).isEmpty()) {
@@ -142,6 +147,14 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			}
 		}
 		return true;
+	}
+	
+	public ItemStackHandler getInputInventory() {
+		return inventory.getInputHandler();
+	}
+	
+	public ItemStackHandler getOutputInventory() {
+		return inventory.getOutputHandler();
 	}
 
 	@Override
@@ -183,6 +196,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		mp.readFromNbt(tag.getCompoundTag("mp"));
 		progress = tag.getInteger("progress");
 		currentRecipe = tag.getString("recipe");
+		startingProgress = tag.getInteger("recipeTime");
 	}
 
 	@Override
@@ -193,6 +207,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		tag.setTag("mp", mp.writeToNbt());
 		tag.setInteger("progress", progress);
 		tag.setString("recipe", currentRecipe);
+		tag.setInteger("recipeTime", startingProgress);
 	}
 	
 	public int getProgress() {
@@ -222,6 +237,10 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	@SideOnly(Side.CLIENT)
 	public Fluid getCurrentFluid() {
 		return getCurrentFluid();
+	}
+
+	public int getStartingTime() {
+		return startingProgress;
 	}
 
 }

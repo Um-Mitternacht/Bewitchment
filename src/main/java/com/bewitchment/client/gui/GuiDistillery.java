@@ -16,11 +16,11 @@ public class GuiDistillery extends GuiContainer {
 
 	private final InventoryPlayer playerInventory;
 	private final TileEntityDistillery tileOven;
-	private final ContainerDistillery containerOven;
+	private final ContainerDistillery containerDistillery;
 
 	public GuiDistillery(ContainerDistillery container, InventoryPlayer inventory) {
 		super(container);
-		containerOven = container;
+		containerDistillery = container;
 		this.playerInventory = inventory;
 		this.tileOven = container.getTileEntity();
 	}
@@ -39,12 +39,13 @@ public class GuiDistillery extends GuiContainer {
 		final int i = (this.width - this.xSize) / 2;
 		final int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
-
-//		int l = this.getCookProgress(24);
-//		this.drawTexturedModalRect(i + 76, j + 19, 176, 14, l + 1, 16);
+		if (containerDistillery.totalTime >= 0) {
+			int l = this.getCookProgress(24);
+			this.drawTexturedModalRect(i + 84, j + 25, 176, 0, l + 1, 17);
+		}
 	}
 
 	public int getCookProgress(int pixels) {
-		return containerOven.progress * pixels / TileEntityOven.TOTAL_WORK;
+		return containerDistillery.progress * pixels / containerDistillery.totalTime;
 	}
 }
