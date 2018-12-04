@@ -122,6 +122,7 @@ public final class LibItemName {
 	public static final String FUME = "fume";
 	public static final String GRILLED_WATERMELON = "grilled_watermelon";
 	public static final String SPELL_PAGE = "spell_page";
+	public static final String KNOWLEDGE_FRAGMENT = "knowledge_fragment";
 	public static final String FILLED_BOWL = "stew";
 	public static final String OWLETS_WING = "owlets_wing";
 	public static final String ADDERS_FORK = "adders_fork";
