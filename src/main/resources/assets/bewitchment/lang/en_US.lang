@@ -928,3 +928,10 @@ gui.bwguicfg.hide=§b§l[Shift+Click]§r to hide/show
 //Books
 bewitchment.book.rites.name=Book of Shadows
 bewitchment.book.codex_infernalis.name=Codex Infernalis
+
+//Knowledge Fragments
+item.knowledge_fragment_untranslated.name=Untranslated Knowledge Fragment
+
+//Advancements - Knowledge
+bewitchment.advancements.knowledge.discovery=Knowledge
+bewitchment.advancements.knowledge.discovery.desc=Find a knowledge fragment.
