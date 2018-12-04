@@ -1,21 +1,18 @@
 package com.bewitchment.common.crafting;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
 
-	private FluidStack fluid = null;
 	private NonNullList<ItemStack> outputs = null;
 	private int time = -1;
 	private Ingredient container = null;
@@ -25,12 +22,10 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 
 	}
 
-	public boolean matches(List<ItemStack> inputsIn, ItemStack containerIn, FluidStack liquidIn) {
-		if (doesFluidMatch(liquidIn)) {
-			if (doesContainerMatch(containerIn)) {
-				if (doInputsMatch(inputsIn)) {
-					return true;
-				}
+	public boolean matches(List<ItemStack> inputsIn, ItemStack containerIn) {
+		if (doesContainerMatch(containerIn)) {
+			if (doInputsMatch(inputsIn)) {
+				return true;
 			}
 		}
 		return false;
@@ -71,32 +66,12 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		return container == null || container.apply(containerIn);
 	}
 
-	private boolean doesFluidMatch(FluidStack liquidIn) {
-		return fluid == null || (fluid.isFluidEqual(liquidIn) && fluid.amount <= liquidIn.amount);
-	}
-
 	public int getTime() {
 		return time;
 	}
 
 	public NonNullList<ItemStack> getOutputs() {
 		return outputs;
-	}
-
-	@Nullable
-	public FluidStack getRemainingFluidStack(FluidStack in) {
-		if (fluid == null) {
-			return in;
-		}
-		if (fluid.isFluidEqual(in)) {
-			if (in.amount > fluid.amount) {
-				return new FluidStack(in, in.amount - fluid.amount);
-			}
-			if (in.amount == fluid.amount) {
-				return null;
-			}
-		}
-		throw new RuntimeException("Fluid wasn't enough, this should never happen");
 	}
 
 	public static class Factory {
@@ -147,20 +122,6 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		public Factory setNoOutput() {
 			recipe.outputs = NonNullList.create();
 			return this;
-		}
-
-		public Factory setFluid(FluidStack stack) {
-			recipe.fluid = stack;
-			return this;
-		}
-
-		public Factory setAnyFluid() {
-			recipe.fluid = null;
-			return this;
-		}
-
-		public Factory setFluid(Fluid fluid, int amount) {
-			return setFluid(new FluidStack(fluid, amount));
 		}
 
 		public Factory setNoContainer() {

@@ -5,6 +5,7 @@ import com.bewitchment.common.container.ContainerDistillery;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class GuiDistillery extends GuiContainer {
 
@@ -31,7 +32,10 @@ public class GuiDistillery extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 		if (containerDistillery.totalTime >= 0) {
 			int l = this.getCookProgress(24);
-			this.drawTexturedModalRect(i + 84, j + 25, 176, 0, l + 1, 17);
+			this.drawTexturedModalRect(i + 75, j + 25, 176, 0, l + 1, 17);
+		}
+		if (containerDistillery.getTileEntity().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0).isEmpty()) {
+			this.drawTexturedModalRect(i + 61, j + 53, 176, 17, 16, 16);
 		}
 	}
 

@@ -15,7 +15,7 @@ public class ModDistilleryRecipes {
 
 	public static void init() {
 		REGISTRY.register(DistilleryRecipe.Factory.start("test")
-				.setAnyFluid().setAnyContainer()
+				.setAnyContainer()
 				.withBaseProcessingTime(200)
 				.withInput(LibIngredients.anyDye)
 				.withOutput(new ItemStack(ModItems.catechu))
