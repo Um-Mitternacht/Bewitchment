@@ -1,5 +1,11 @@
 package com.bewitchment.common.block.natural;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.handler.ModelHandler;
@@ -7,10 +13,10 @@ import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.core.statics.ModSounds;
-import com.bewitchment.common.entity.EntityBees;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Lists;
+
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -37,12 +43,6 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import static net.minecraft.block.BlockHorizontal.FACING;
-
 /**
  * This class was created by Joseph on 3/4/2017.
  * It's distributed as part of Bewitchment under
@@ -66,7 +66,7 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 	@Override
 	public void onEndFalling(World world, BlockPos pos, IBlockState falling, IBlockState falling2) {
 		world.destroyBlock(pos, false);
-		world.spawnEntity(new EntityBees(world, 600, pos));
+		//TODO damage and poison
 	}
 
 	@Override

@@ -236,7 +236,6 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityNewt.class, RenderNewt::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityBees.class, RenderBeeSwarm::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());
