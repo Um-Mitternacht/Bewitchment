@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.ItemStackHandler;
 
+@Deprecated
 public abstract class AutomatableInventory extends ItemStackHandler {
 
 	public AutomatableInventory() {
