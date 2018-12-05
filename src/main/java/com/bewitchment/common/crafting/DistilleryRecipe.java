@@ -63,7 +63,7 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 	}
 
 	private boolean doesContainerMatch(ItemStack containerIn) {
-		return container == null || container.apply(containerIn);
+		return (container == null && !containerIn.isEmpty()) || container.apply(containerIn);
 	}
 
 	public int getTime() {
