@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.magic;
 
-import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.lib.LibItemName;
@@ -38,7 +37,7 @@ public class ItemKnowledgeFragment extends ItemMod {
             int data = new Random().nextInt(Fragment.values().length - 1) + 1; //Don't translate to a blank page.
             heldItem = new ItemStack(this, 1, data);
         }
-        return new ActionResult(EnumActionResult.SUCCESS, heldItem);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
     }
 
     @Override
