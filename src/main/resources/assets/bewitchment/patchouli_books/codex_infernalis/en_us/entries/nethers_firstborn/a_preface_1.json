@@ -1,0 +1,16 @@
+{
+  "name": "A Preface on Netherborn 'Animals'",
+  "icon": "bewitchment:heart",
+  "category": "nethers_firstborn",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Native to The Infernal Planes are various horrible beasts, some of which are so terrible to look at, they drive some into insanity. While many of these lesser demons have been documented, only a few ever make it to Earth. Here, I catalogue the few that do."
+    },
+    {
+      "type": "crafting",
+      "text": "Creating the Boline",
+      "recipe": "bewitchment:boline"
+    }
+  ]
+}
