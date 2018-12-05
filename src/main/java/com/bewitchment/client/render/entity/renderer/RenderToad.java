@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.render.entity.model.ModelToad;
-import com.bewitchment.common.entity.living.familiar.EntityToad;
+import com.bewitchment.common.entity.living.animals.EntityToad;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -28,7 +28,7 @@ public class RenderToad extends RenderLiving<EntityToad> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityToad entity) {
-		return textures[entity.getFamiliarSkin()];
+		return textures[entity.getSkinIndex()];
 	}
 
 	@Override

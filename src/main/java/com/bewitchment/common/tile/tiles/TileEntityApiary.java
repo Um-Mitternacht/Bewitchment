@@ -1,12 +1,14 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.ArrayList;
+
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
-import com.bewitchment.common.tile.util.AutomatableInventory;
 import com.google.common.collect.Lists;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -21,8 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-
-import java.util.ArrayList;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityApiary extends ModTileEntity implements ITickable {
 
@@ -31,32 +32,13 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	private boolean hasBees = false;
 	private IMagicPowerConsumer mp_controller = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 	private ApiaryInventory hives_inventory = new ApiaryInventory();
-	private AutomatableInventory modifiers_inventory = new AutomatableInventory(1) {
-		@Override
-		public boolean canInsertItemInSlot(int slot, ItemStack stack) {
-			Item i = stack.getItem();
-			return i == Items.SPIDER_EYE || i == Items.BLAZE_POWDER || i == ModItems.wool_of_bat || i == ModItems.brew_phial_linger;
-		}
-
-		@Override
-		public int getSlotLimit(int slot) {
-			return 1;
-		}
-
-		;
-	};
 
 	@Override
 	public void update() {
-		Item modifier = modifiers_inventory.getStackInSlot(0).getItem();
-		int chance = 150;
-		if (modifier == Items.BLAZE_POWDER) {
-			chance = 100;
-		}
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0) {
 			boolean hasHives = false;
 			for (int i = 0; i < COLUMNS * ROWS; i++) {
-				if (rng.nextInt(chance) == 0) {
+				if (rng.nextInt(150) == 0) {
 					hives_inventory.setStackInSlot(i, growItem(i));
 				}
 			}
@@ -83,7 +65,6 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		if (item == Items.PAPER || item == Item.getItemFromBlock(Blocks.CARPET)) {
 			return new ItemStack(ModItems.empty_honeycomb);
 		}
-
 		return is;
 	}
 
@@ -118,14 +99,9 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		return res;
 	}
 
-	public AutomatableInventory getModifiersInventory() {
-		return modifiers_inventory;
-	}
-
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
 		hives_inventory.deserializeNBT(tag.getCompoundTag("hives"));
-		modifiers_inventory.deserializeNBT(tag.getCompoundTag("modifiers"));
 		mp_controller.readFromNbt(tag.getCompoundTag("mp"));
 		readModSyncDataNBT(tag);
 	}
@@ -133,7 +109,6 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
 		tag.setTag("hives", hives_inventory.serializeNBT());
-		tag.setTag("modifiers", modifiers_inventory.serializeNBT());
 		tag.setTag("mp", mp_controller.writeToNbt());
 		writeModSyncDataNBT(tag);
 	}
@@ -158,24 +133,24 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		return hasBees;
 	}
 
-	static class ApiaryInventory extends AutomatableInventory {
+	static class ApiaryInventory extends ItemStackHandler {
 
 		public ApiaryInventory() {
 			super(COLUMNS * ROWS);
 		}
-
+		
 		@Override
-		public boolean canInsertItemInSlot(int slot, ItemStack stack) {
+		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 			Item i = stack.getItem();
-			return i == Items.PAPER || i == Item.getItemFromBlock(Blocks.CARPET) || i == ModItems.empty_honeycomb;
+			if (i == Items.PAPER || i == Item.getItemFromBlock(Blocks.CARPET) || i == ModItems.empty_honeycomb) {
+				return super.insertItem(slot, stack, simulate);
+			}
+			return stack;
 		}
 
 		@Override
 		public int getSlotLimit(int slot) {
 			return 1;
 		}
-
-		;
-
 	}
 }

@@ -1,15 +1,26 @@
-package com.bewitchment.common.entity.living.familiar;
+package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.api.entity.EntityFamiliar;
-import com.bewitchment.common.entity.living.animals.EntityBlindworm;
-import com.bewitchment.common.entity.living.animals.EntityLizard;
+import java.util.Set;
+
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -31,17 +42,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
 /**
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntitySnake extends EntityFamiliar {
+public class EntitySnake extends EntityMultiSkin {
 
-	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
-	private static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale", "Vasuki", "Bakunawa", "Kaliya", "Karkotaka", "Manasa", "Mucalinda", "Padmavati", "Paravataksha", "Takshaka", "Ulupi", "Yulong", "Sir Booplesnoot", "Cobra", "Angus Snake", "Anguis", "Python", "Fafnir", "Echidna", "Anaconda", "Madame White Snake", "Meretseger", "Kaa", "Snape", "Solid Snake", "Apophis", "Ouroboros"};
+//	private static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale", "Vasuki", "Bakunawa", "Kaliya", "Karkotaka", "Manasa", "Mucalinda", "Padmavati", "Paravataksha", "Takshaka", "Ulupi", "Yulong", "Sir Booplesnoot", "Cobra", "Angus Snake", "Anguis", "Python", "Fafnir", "Echidna", "Anaconda", "Madame White Snake", "Meretseger", "Kaa", "Snape", "Solid Snake", "Apophis", "Ouroboros"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
@@ -59,11 +67,6 @@ public class EntitySnake extends EntityFamiliar {
 		super.entityInit();
 		dataManager.register(TINT, 0xFFFFFF);
 		this.aiSit = new EntityAISit(this);
-	}
-
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
 	}
 
 	@Override
@@ -85,11 +88,6 @@ public class EntitySnake extends EntityFamiliar {
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		return block instanceof BlockGrass && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
-	}
-
-	@Override
-	public int getTotalVariants() {
-		return 6;
 	}
 
 	@Override
@@ -227,25 +225,6 @@ public class EntitySnake extends EntityFamiliar {
 	}
 
 	@Override
-	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
-		if (forSpawnCount && isFamiliar()) {
-			return false;
-		}
-		return super.isCreatureType(type, forSpawnCount);
-	}
-
-
-	@Override
-	public boolean isNoDespawnRequired() {
-		return super.isNoDespawnRequired() || isFamiliar();
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
-
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
 	}
@@ -278,5 +257,10 @@ public class EntitySnake extends EntityFamiliar {
 
 	public int getTimer() {
 		return timerRef;
+	}
+
+	@Override
+	public int getSkinTypes() {
+		return 6;
 	}
 }

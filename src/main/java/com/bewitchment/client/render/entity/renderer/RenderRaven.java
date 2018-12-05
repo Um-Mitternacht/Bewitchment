@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.render.entity.model.ModelRaven;
-import com.bewitchment.common.entity.living.familiar.EntityRaven;
+import com.bewitchment.common.entity.living.animals.EntityRaven;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -22,7 +22,7 @@ public class RenderRaven extends RenderLiving<EntityRaven> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityRaven entity) {
-		return textures[entity.getFamiliarSkin()];
+		return textures[entity.getSkinIndex()];
 	}
 
 	@Override

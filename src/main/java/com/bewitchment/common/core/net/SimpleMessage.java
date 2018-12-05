@@ -46,6 +46,7 @@ public class SimpleMessage<REQ extends SimpleMessage> implements IMessage, IMess
 		map(ResourceLocation.class, SimpleMessage::readResourceLocation, SimpleMessage::writeResourceLocation);
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	private static Field[] getClassFields(Class<?> clazz) {
 		if (fieldCache.containsValue(clazz)) {
 			return fieldCache.get(clazz);

@@ -247,6 +247,7 @@ public abstract class SimpleCapability {
 		tag.setBoolean(name, bt);
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	private static Field[] getClassFields(Class<?> clazz) {
 		if (fieldCache.containsValue(clazz)) {
 			return fieldCache.get(clazz);

@@ -24,7 +24,6 @@ public class ContainerApiary extends ModContainer<TileEntityApiary> {
 				this.addSlotToContainer(new SlotOneItem(tileEntity, ih, j + i * 6, 62 + j * 18, 16 + i * 18));
 			}
 		}
-		this.addSlotToContainer(new SlotOneItem(tileEntity, tileEntity.getModifiersInventory(), 0, 26, 34));
 		this.addPlayerSlots(playerInventory);
 	}
 

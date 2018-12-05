@@ -1,13 +1,26 @@
-package com.bewitchment.common.entity.living.familiar;
+package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.api.entity.EntityFamiliar;
+import java.util.Set;
+
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -28,23 +41,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
 /**
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityToad extends EntityFamiliar {
+public class EntityToad extends EntityMultiSkin {
 
-	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
-	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor"};
+//	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
 
 	public EntityToad(World worldIn) {
 		super(worldIn);
-		setSize(1F, .3F);
+		setSize(1F, 0.3F);
 	}
 
 	@Override
@@ -52,11 +62,6 @@ public class EntityToad extends EntityFamiliar {
 		super.entityInit();
 		dataManager.register(TINT, 0xFFFFFF);
 		this.aiSit = new EntityAISit(this);
-	}
-
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
 	}
 
 	@Override
@@ -78,11 +83,6 @@ public class EntityToad extends EntityFamiliar {
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		return block instanceof BlockGrass && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
-	}
-
-	@Override
-	public int getTotalVariants() {
-		return 4;
 	}
 
 	@Override
@@ -189,25 +189,6 @@ public class EntityToad extends EntityFamiliar {
 	}
 
 	@Override
-	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
-		if (forSpawnCount && isFamiliar()) {
-			return false;
-		}
-		return super.isCreatureType(type, forSpawnCount);
-	}
-
-
-	@Override
-	public boolean isNoDespawnRequired() {
-		return super.isNoDespawnRequired() || isFamiliar();
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
-
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == ModItems.envenomed_fang;
 	}
@@ -215,5 +196,10 @@ public class EntityToad extends EntityFamiliar {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityToad(world);
+	}
+
+	@Override
+	public int getSkinTypes() {
+		return 4;
 	}
 }

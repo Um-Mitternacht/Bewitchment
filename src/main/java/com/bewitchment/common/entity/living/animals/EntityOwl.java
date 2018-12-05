@@ -1,18 +1,37 @@
-package com.bewitchment.common.entity.living.familiar;
+package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.api.entity.EntityFamiliar;
+import java.util.Set;
+
 import com.bewitchment.common.core.statics.ModSounds;
-import com.bewitchment.common.entity.living.animals.EntityBlindworm;
-import com.bewitchment.common.entity.living.animals.EntityLizard;
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIFleeSun;
+import net.minecraft.entity.ai.EntityAIFollowOwnerFlying;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWaterFlying;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.ai.EntityFlyHelper;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -32,14 +51,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Set;
+public class EntityOwl extends EntityMultiSkin {
 
-public class EntityOwl extends EntityFamiliar {
-
-	private static final double maxHPWild = 8;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
-	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
+//	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityOwl.class, DataSerializers.VARINT);
 
 	public EntityOwl(World worldIn) {
@@ -57,7 +73,7 @@ public class EntityOwl extends EntityFamiliar {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(maxHPWild);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
 		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
@@ -130,16 +146,6 @@ public class EntityOwl extends EntityFamiliar {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityOwl(world);
-	}
-
-	@Override
-	public int getTotalVariants() {
-		return 4;
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
 	}
 
 	@Override
@@ -230,21 +236,8 @@ public class EntityOwl extends EntityFamiliar {
 	}
 
 	@Override
-	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
-		if (forSpawnCount && isFamiliar()) {
-			return false;
-		}
-		return super.isCreatureType(type, forSpawnCount);
-	}
-
-	@Override
-	public boolean isNoDespawnRequired() {
-		return super.isNoDespawnRequired() || isFamiliar();
-	}
-
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
+	public int getSkinTypes() {
+		return 4;
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.render.entity.model.ModelOwl;
-import com.bewitchment.common.entity.living.familiar.EntityOwl;
+import com.bewitchment.common.entity.living.animals.EntityOwl;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -25,7 +25,7 @@ public class RenderOwl extends RenderLiving<EntityOwl> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityOwl entity) {
-		return textures[entity.getFamiliarSkin()];
+		return textures[entity.getSkinIndex()];
 	}
 
 	@Override
