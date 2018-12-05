@@ -159,7 +159,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		ItemStack fuel = handlerUp.getStackInSlot(1);
 		if (TileEntityFurnace.isItemFuel(fuel)) {
 			int time = TileEntityFurnace.getItemBurnTime(fuel);
-			fuel.shrink(1);
+			handlerUp.extractItem(1, 1, false);
 			return time;
 		}
 		return 0;
@@ -183,11 +183,11 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stack);
 		final ItemStack outputStack = recipe.getOutput();
 		final ItemStack fumesStack = recipe.getFumes();
-		handlerUp.getStackInSlot(0).shrink(1);
+		handlerUp.extractItem(0, 1, false);
 		handlerDown.insertItem(0, outputStack, false);
 		if (fumesStack != null && !handlerUp.getStackInSlot(2).isEmpty() && random.nextFloat() <= recipe.getFumeChance()) { // If there are jars
 			if (handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
-				handlerUp.getStackInSlot(2).shrink(1);
+				handlerUp.extractItem(2, 1, false);
 			}
 		}
 	}

@@ -7,6 +7,7 @@ import com.bewitchment.common.tile.tiles.TileEntityDistillery;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -15,19 +16,21 @@ public class ContainerDistillery extends ModContainer<TileEntityDistillery> {
 	
 	public int progress = 0;
 	public int totalTime = 1;
+	public int burnTime = 0;
 	
 	public ContainerDistillery(InventoryPlayer playerInventory, TileEntityDistillery tileEntity) {
 		super(tileEntity);
 		IItemHandler c = tileEntity.getGuiHandler();
 		for (int i = 0; i < 3; i++) {
-			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 0 + i*4, 26, 18*(i+1)-1));
-			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 1 + i*4, 116, 18*(i+1)-1));
-			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 2 + i*4, 44, 18*(i+1)-1));
-			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 3 + i*4, 134, 18*(i+1)-1));
+			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 0 + i*4, 18, 18*(i+1)-1));
+			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 1 + i*4, 124, 18*(i+1)-1));
+			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 2 + i*4, 36, 18*(i+1)-1));
+			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 3 + i*4, 142, 18*(i+1)-1));
 		}
 		
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, c, 12, 62, 53, is -> is.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)));
-		this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 13, 98, 53));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, c, 14, 80, 58, is -> is.getItem() == Items.BLAZE_POWDER));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, c, 12, 54, 53, is -> is.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)));
+		this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 13, 106, 53));
 		this.addPlayerSlots(playerInventory);
 	}
 
@@ -65,13 +68,15 @@ public class ContainerDistillery extends ModContainer<TileEntityDistillery> {
 			return this.getTileEntity().getStartingTime()-this.getTileEntity().getProgress();
 		} else if (id == 1) {
 			return this.getTileEntity().getStartingTime();
+		} else if (id == 2) {
+			return this.getTileEntity().getHeat();
 		}
 		return -1;
 	}
 	
 	@Override
 	protected int getFieldsToSync() {
-		return 2;
+		return 3;
 	}
 	
 	@Override
@@ -85,6 +90,9 @@ public class ContainerDistillery extends ModContainer<TileEntityDistillery> {
 				data = -1;
 			}
 			totalTime = data;
+			break;
+		case 2:
+			burnTime = data;
 			break;
 		default: break;
 		}
