@@ -3,6 +3,7 @@ package com.bewitchment.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.item.ItemStack;
@@ -63,7 +64,7 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 	}
 
 	private boolean doesContainerMatch(ItemStack containerIn) {
-		return (container == null && !containerIn.isEmpty()) || container.apply(containerIn);
+		return (container == null && !containerIn.isEmpty()) || (container != null && container.apply(containerIn));
 	}
 
 	public int getTime() {
@@ -135,10 +136,12 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		}
 
 		public Factory withContainer(Ingredient containerIn) {
+			Log.w("The container option for distillery recipes is broken, reverting to anyContainer");
 			if (containerIn.getMatchingStacks().length == 0) {
 				throw new RuntimeException("No valid stack found");
 			}
 			recipe.container = containerIn;
+			setAnyContainer();
 			return this;
 		}
 

@@ -36,7 +36,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	
-	public static final int BURN_TIME = 100;
+	public static final int BURN_TIME = 1200;
 
 	private IMagicPowerConsumer mp = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {

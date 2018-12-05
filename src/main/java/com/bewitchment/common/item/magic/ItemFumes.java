@@ -31,6 +31,16 @@ public class ItemFumes extends ItemMod {
 				tab.add(new ItemStack(this, 1, t.ordinal()));
 		}
 	}
+	
+	@Override
+	public boolean hasContainerItem(ItemStack stack) {
+		return stack.getMetadata() > 1;
+	}
+	
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack) {
+		return new ItemStack(this, 1, Type.empty_jar.ordinal());
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
