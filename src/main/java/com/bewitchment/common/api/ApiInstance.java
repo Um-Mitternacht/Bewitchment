@@ -1,10 +1,11 @@
 package com.bewitchment.common.api;
 
+import java.util.function.Supplier;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
-import com.bewitchment.api.entity.EntityFamiliar;
 import com.bewitchment.api.event.TransformationModifiedEvent;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
@@ -38,6 +39,7 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.potion.ModPotions;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -49,8 +51,6 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-
-import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class ApiInstance extends BewitchmentAPI {
@@ -172,19 +172,6 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public IBrewEffect getBrewFromPotion(Potion potion) {
 		return CauldronRegistry.getBrewFromPotion(potion);
-	}
-
-	@Override
-	public void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f) {
-		if (!f.isTamed() || !f.getOwnerAcrossWorlds().equals(p)) {
-			throw new IllegalStateException("Can't make a familiar if the entity is not tamed, or tamed by another player");
-		}
-		f.setFamiliar(true);
-		f.setEntitySkin(p.getRNG().nextInt(f.getTotalVariants())); // TODO add special variants
-		if (!f.hasCustomName()) {
-			f.setCustomNameTag(f.getRandomNames()[p.getRNG().nextInt(f.getRandomNames().length)]);
-		}
-		// TODO save that to player data
 	}
 
 	@Override
