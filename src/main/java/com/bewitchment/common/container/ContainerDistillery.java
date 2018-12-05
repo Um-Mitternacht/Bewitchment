@@ -9,7 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class ContainerDistillery extends ModContainer<TileEntityDistillery> {
@@ -19,21 +18,16 @@ public class ContainerDistillery extends ModContainer<TileEntityDistillery> {
 	
 	public ContainerDistillery(InventoryPlayer playerInventory, TileEntityDistillery tileEntity) {
 		super(tileEntity);
-		IItemHandler in = tileEntity.getInputInventory();
-		IItemHandler out = tileEntity.getOutputInventory();
-		IItemHandler container = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		IItemHandler c = tileEntity.getGuiHandler();
 		for (int i = 0; i < 3; i++) {
-			this.addSlotToContainer(new ModSlot<>(tileEntity, in, i*2, 26, 18*(i+1)-1));
-			this.addSlotToContainer(new ModSlot<>(tileEntity, in, 1 + i*2, 44, 18*(i+1)-1));
+			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 0 + i*4, 26, 18*(i+1)-1));
+			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 1 + i*4, 116, 18*(i+1)-1));
+			this.addSlotToContainer(new ModSlot<>(tileEntity, c, 2 + i*4, 44, 18*(i+1)-1));
+			this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 3 + i*4, 134, 18*(i+1)-1));
 		}
 		
-		for (int i = 0; i < 3; i++) {
-			this.addSlotToContainer(new SlotOutput<>(tileEntity, out, i*2, 116, 18*(i+1)-1));
-			this.addSlotToContainer(new SlotOutput<>(tileEntity, out, 1 + i*2, 134, 18*(i+1)-1));
-		}
-		
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, container, 0, 62, 53, is -> is.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)));
-		this.addSlotToContainer(new SlotOutput<>(tileEntity, container, 1, 98, 53));
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, c, 12, 62, 53, is -> is.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)));
+		this.addSlotToContainer(new SlotOutput<>(tileEntity, c, 13, 98, 53));
 		this.addPlayerSlots(playerInventory);
 	}
 
