@@ -65,6 +65,8 @@ public class LibIngredients {
 	public static Ingredient coal = Ingredient.fromItem(Items.COAL);
 	public static Ingredient whiteSage = Ingredient.fromItem(ModItems.white_sage);
 	public static Ingredient sagebrush = Ingredient.fromItem(ModItems.sagebrush);
+	public static Ingredient enderPearl = Ingredient.fromItem(Items.ENDER_PEARL);
+	public static Ingredient lapisPowder = Ingredient.fromItem(ModItems.lapis_powder);
 	public static Ingredient salt = Ingredient.fromItem(ModItems.salt);
 	public static Ingredient paper = Ingredient.fromItem(Items.PAPER);
 	public static Ingredient wax = Ingredient.fromItem(ModItems.wax);

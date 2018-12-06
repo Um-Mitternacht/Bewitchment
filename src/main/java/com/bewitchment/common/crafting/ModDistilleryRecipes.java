@@ -41,6 +41,16 @@ public class ModDistilleryRecipes {
 				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.emanation_of_dishonesty.ordinal()))
 				.build()
 				);
+		REGISTRY.register(DistilleryRecipe.Factory.start("otherworldy_tears")
+				.setAnyContainer()
+				.withBaseProcessingTime(300)
+				.withInput(LibIngredients.enderPearl, LibIngredients.fumeBottledMagic, LibIngredients.lapisPowder)
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()),
+						new ItemStack(ModItems.dimensional_sand, 2, 0)
+				)
+				.build()
+		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("cleansing_aura")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
