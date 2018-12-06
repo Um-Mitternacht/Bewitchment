@@ -13,11 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
-public class BlockSilverChiselled extends BlockMod {
+public class BlockSilverChiseled extends BlockMod {
 
 	public static final PropertyEnum<BlockSilverVariant> VARIANT = PropertyEnum.create("variant", BlockSilverVariant.class);
 
-	public BlockSilverChiselled(Material material, SoundType sound) {
+	public BlockSilverChiseled(Material material, SoundType sound) {
 		super(LibBlockName.SILVER_BLOCK + "_chisel", material, sound);
 	}
 
@@ -42,6 +42,11 @@ public class BlockSilverChiselled extends BlockMod {
 		for (int i = 0; i < BlockSilverVariant.values().length; i++) {
 			items.add(new ItemStack(this, 1, i));
 		}
+	}
+
+	@Override
+	public int damageDropped(IBlockState state) {
+		return getMetaFromState(state);
 	}
 
 	@Override

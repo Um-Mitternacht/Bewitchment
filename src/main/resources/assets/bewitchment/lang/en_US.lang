@@ -397,7 +397,7 @@ tile.gem_block_alexandrite.name=Alexandrite Block
 tile.gem_block_jasper.name=Jasper Block
 tile.gem_block_amethyst.name=Amethyst Block
 tile.silver_block.name=Silver Block
-tile.silver_block_chisel.name=Silver Block (Chiselled)
+tile.silver_block_chisel.name=Silver Block (Chiseled)
 tile.nethersteel.name=Nethersteel
 tile.gem_ore_jasper.name=Jasper Ore
 tile.gem_ore_tigers_eye.name=Tiger's Eye Ore
@@ -417,6 +417,7 @@ tile.scorned_bricks.name=Scorned Bricks
 tile.scorned_brick_fence.name=Scorned Brick Fence
 tile.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.cold_iron_block.name=Cold Iron Block
+tile.cold_iron_block_chisel.name=Cold Iron Block (Chiseled)
 tile.graveyard_dirt.name=Graveyard Dirt
 tile.purifying_earth.name=Purifying Earth
 tile.brazier.name=Brazier
@@ -444,6 +445,16 @@ bewitchment.silver_block_chisel.tooltip.variety.sword=Swords
 bewitchment.silver_block_chisel.tooltip.variety.pentacle=Pentacles
 bewitchment.silver_block_chisel.tooltip.variety.pentagram=Pentagram
 bewitchment.silver_block_chisel.tooltip.variety.bevel=Bevel
+
+bewitchment.cold_iron_block_chisel.tooltip.variety.symbol=Symbol
+bewitchment.cold_iron_block_chisel.tooltip.variety.sun=Sun
+bewitchment.cold_iron_block_chisel.tooltip.variety.moon=Moon
+bewitchment.cold_iron_block_chisel.tooltip.variety.cup=Cups
+bewitchment.cold_iron_block_chisel.tooltip.variety.wand=Wands
+bewitchment.cold_iron_block_chisel.tooltip.variety.sword=Swords
+bewitchment.cold_iron_block_chisel.tooltip.variety.pentacle=Pentacles
+bewitchment.cold_iron_block_chisel.tooltip.variety.pentagram=Pentagram
+bewitchment.cold_iron_block_chisel.tooltip.variety.bevel=Bevel
 
 //Spells
 item.spell_page.name=Forgotten Spell

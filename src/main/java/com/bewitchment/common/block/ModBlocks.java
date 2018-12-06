@@ -1,7 +1,8 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.chisel.BlockSilverChiselled;
-import com.bewitchment.common.block.chisel.BlockSilverChiselled.BlockSilverVariant;
+import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.block.chisel.BlockSilverChiseled;
+import com.bewitchment.common.block.chisel.BlockSilverChiseled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
 import com.bewitchment.common.block.misc.*;
 import com.bewitchment.common.block.natural.*;
@@ -125,6 +126,7 @@ public final class ModBlocks {
 	public static final Block placed_item = null;
 
 	public static final Block silver_block_chisel = null;
+	public static final Block cold_iron_block_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -210,7 +212,8 @@ public final class ModBlocks {
 		//Normal Blocks
 		registry.registerAll(
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
-				new BlockSilverChiselled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockSilverChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockColdIronChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockGem(),
