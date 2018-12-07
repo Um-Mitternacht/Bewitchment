@@ -1,12 +1,42 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.block.chisel.BlockColdIronChiseled.BlockColdIronVariant;
+import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled;
+import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
 import com.bewitchment.common.block.chisel.BlockSilverChiseled;
 import com.bewitchment.common.block.chisel.BlockSilverChiseled.BlockSilverVariant;
-import com.bewitchment.common.block.decorations.*;
-import com.bewitchment.common.block.misc.*;
-import com.bewitchment.common.block.natural.*;
-import com.bewitchment.common.block.natural.crop.*;
+import com.bewitchment.common.block.decorations.BlockFakeIce;
+import com.bewitchment.common.block.decorations.BlockFakeIceFence;
+import com.bewitchment.common.block.decorations.BlockFakeIceSlabDouble;
+import com.bewitchment.common.block.decorations.BlockFakeIceSlabHalf;
+import com.bewitchment.common.block.decorations.BlockFakeIceStairs;
+import com.bewitchment.common.block.decorations.BlockScornedBrickFence;
+import com.bewitchment.common.block.decorations.BlockScornedBrickStairs;
+import com.bewitchment.common.block.misc.BlockCandleMedium;
+import com.bewitchment.common.block.misc.BlockCandleSmall;
+import com.bewitchment.common.block.misc.BlockGoblet;
+import com.bewitchment.common.block.misc.BlockGraveyardDirt;
+import com.bewitchment.common.block.misc.BlockLantern;
+import com.bewitchment.common.block.misc.BlockPlacedItem;
+import com.bewitchment.common.block.misc.BlockPurifyingEarth;
+import com.bewitchment.common.block.misc.BlockSaltBarrier;
+import com.bewitchment.common.block.misc.BlockWitchFire;
+import com.bewitchment.common.block.misc.BlockWitchesLight;
+import com.bewitchment.common.block.natural.BlockBeehive;
+import com.bewitchment.common.block.natural.BlockGem;
+import com.bewitchment.common.block.natural.BlockGemOre;
+import com.bewitchment.common.block.natural.BlockInfestedFarmland;
+import com.bewitchment.common.block.natural.BlockSaltOre;
+import com.bewitchment.common.block.natural.BlockSilverOre;
+import com.bewitchment.common.block.natural.crop.BlockCrop;
+import com.bewitchment.common.block.natural.crop.CropBelladonna;
+import com.bewitchment.common.block.natural.crop.CropKelp;
+import com.bewitchment.common.block.natural.crop.CropKenaf;
+import com.bewitchment.common.block.natural.crop.CropMint;
+import com.bewitchment.common.block.natural.crop.CropSilphium;
+import com.bewitchment.common.block.natural.crop.CropThistle;
+import com.bewitchment.common.block.natural.crop.CropWormwood;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockEmberGrass;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
@@ -16,11 +46,23 @@ import com.bewitchment.common.block.natural.tree.BlockModLeaves;
 import com.bewitchment.common.block.natural.tree.BlockModLog;
 import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
-import com.bewitchment.common.block.tiles.*;
+import com.bewitchment.common.block.tiles.BlockApiary;
+import com.bewitchment.common.block.tiles.BlockBrazier;
+import com.bewitchment.common.block.tiles.BlockCauldron;
+import com.bewitchment.common.block.tiles.BlockCircleGlyph;
+import com.bewitchment.common.block.tiles.BlockCrystalBall;
+import com.bewitchment.common.block.tiles.BlockDistillery;
+import com.bewitchment.common.block.tiles.BlockGemBowl;
+import com.bewitchment.common.block.tiles.BlockMagicMirror;
+import com.bewitchment.common.block.tiles.BlockOven;
+import com.bewitchment.common.block.tiles.BlockTarotTable;
+import com.bewitchment.common.block.tiles.BlockThreadSpinner;
+import com.bewitchment.common.block.tiles.BlockWitchAltar;
 import com.bewitchment.common.crafting.VanillaCrafting;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -127,6 +169,7 @@ public final class ModBlocks {
 
 	public static final Block silver_block_chisel = null;
 	public static final Block cold_iron_block_chisel = null;
+	public static final Block nethersteel_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
@@ -214,6 +257,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockSilverChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockColdIronChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockNetherSteelChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockGem(),
@@ -251,8 +295,16 @@ public final class ModBlocks {
 		OreDictionary.registerOre("coquina", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("limestone", new ItemStack(ModBlocks.coquina));
 		OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block));
+		OreDictionary.registerOre("blockColdIron", new ItemStack(ModBlocks.cold_iron_block, 1, 0));
+		OreDictionary.registerOre("blockNethersteel", new ItemStack(ModBlocks.nethersteel, 1, 0));
 		for (BlockSilverVariant sv : BlockSilverVariant.values()) {
 			OreDictionary.registerOre("blockSilver", new ItemStack(ModBlocks.silver_block_chisel, 1, sv.ordinal()));
+		}
+		for (BlockColdIronVariant sv : BlockColdIronVariant.values()) {
+			OreDictionary.registerOre("blockColdIron", new ItemStack(ModBlocks.cold_iron_block_chisel, 1, sv.ordinal()));
+		}
+		for (BlockSteelVariant sv : BlockSteelVariant.values()) {
+			OreDictionary.registerOre("blockNethersteel", new ItemStack(ModBlocks.nethersteel_chisel, 1, sv.ordinal()));
 		}
 		OreDictionary.registerOre("blockGarnet", new ItemStack(ModBlocks.gem_block, 1, 0));
 		OreDictionary.registerOre("blockNuummite", new ItemStack(ModBlocks.gem_block, 1, 1));

@@ -1,0 +1,71 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all"
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ],
+    "variant": {
+      "sentient": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_sentient"
+        }
+      },
+      "polished": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_polished"
+        }
+      },
+      "skull": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_skull"
+        }
+      },
+      "pentacle": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_pentacle"
+        }
+      },
+      "pentagram": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_pentagram"
+        }
+      },
+      "eye_watching": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_eye_watching"
+        }
+      },
+      "symbol": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_symbol"
+        }
+      },
+      "eye": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_eye"
+        }
+      },
+      "bevel": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_bevel"
+        }
+      },
+      "hellish": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_hellish"
+        }
+      },
+      "hellish_watching": {
+        "textures": {
+          "all": "bewitchment:blocks/nethersteel_hellish_watching"
+        }
+      }
+    }
+  }
+}

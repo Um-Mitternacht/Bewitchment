@@ -399,6 +399,7 @@ tile.gem_block_amethyst.name=Amethyst Block
 tile.silver_block.name=Silver Block
 tile.silver_block_chisel.name=Silver Block (Chiseled)
 tile.nethersteel.name=Nethersteel
+tile.nethersteel_chisel.name=Nethersteel (Chiseled)
 tile.gem_ore_jasper.name=Jasper Ore
 tile.gem_ore_tigers_eye.name=Tiger's Eye Ore
 tile.gem_ore_serpentine.name=Serpentine ore
@@ -455,6 +456,18 @@ bewitchment.cold_iron_block_chisel.tooltip.variety.sword=Swords
 bewitchment.cold_iron_block_chisel.tooltip.variety.pentacle=Pentacles
 bewitchment.cold_iron_block_chisel.tooltip.variety.pentagram=Pentagram
 bewitchment.cold_iron_block_chisel.tooltip.variety.bevel=Bevel
+
+bewitchment.nethersteel_chisel.tooltip.variety.symbol=Symbol
+bewitchment.nethersteel_chisel.tooltip.variety.pentacle=Pentacles
+bewitchment.nethersteel_chisel.tooltip.variety.pentagram=Pentagram
+bewitchment.nethersteel_chisel.tooltip.variety.bevel=Bevel
+bewitchment.nethersteel_chisel.tooltip.variety.sentient=Sentient
+bewitchment.nethersteel_chisel.tooltip.variety.polished=Polished
+bewitchment.nethersteel_chisel.tooltip.variety.eye=Eye
+bewitchment.nethersteel_chisel.tooltip.variety.eye_watching=Watching Eye
+bewitchment.nethersteel_chisel.tooltip.variety.hellish=Hellish
+bewitchment.nethersteel_chisel.tooltip.variety.hellish_watching=Hellish (Watching)
+bewitchment.nethersteel_chisel.tooltip.variety.skull=Skull
 
 //Spells
 item.spell_page.name=Forgotten Spell
