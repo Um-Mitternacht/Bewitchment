@@ -23,41 +23,48 @@ public class ModDistilleryRecipes {
 		REGISTRY.register(DistilleryRecipe.Factory.start("everchanging_presence")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.anyDye, LibIngredients.fumeBottledMagic)
+				.withInput(LibIngredients.anyDye, LibIngredients.paper, LibIngredients.yewEssence)
 				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.everchanging_presence.ordinal()))
 				.build()
 				);
 		REGISTRY.register(DistilleryRecipe.Factory.start("undying_image")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.wax, LibIngredients.fumeBottledMagic)
+				.withInput(LibIngredients.wax, LibIngredients.fumeReekOfDeath)
 				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.undying_image.ordinal()))
 				.build()
 				);
 		REGISTRY.register(DistilleryRecipe.Factory.start("emanation_of_dishonesty")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.salt, LibIngredients.fumeBottledMagic)
+				.withInput(LibIngredients.graveyardDust, LibIngredients.blazePowder, LibIngredients.oakAppleGall, LibIngredients.fumeBottledMagic)
 				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.emanation_of_dishonesty.ordinal()))
 				.build()
 				);
 		REGISTRY.register(DistilleryRecipe.Factory.start("otherworldy_tears")
-				.setAnyContainer()
+				.setAnyContainer()//TODO: Make this take some water
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.enderPearl, LibIngredients.fumeBottledMagic, LibIngredients.lapisPowder)
+				.withInput(LibIngredients.enderPearl, LibIngredients.lapisPowder, LibIngredients.fumeReekOfDeath)
 				.withOutput(
 						new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()),
 						new ItemStack(ModItems.dimensional_sand, 2, 0)
 				)
 				.build()
 		);
+		REGISTRY.register(DistilleryRecipe.Factory.start("demonic_elixir")
+				.setAnyContainer()
+				.withBaseProcessingTime(300) //TODO: Add demon heart item
+				.withInput(LibIngredients.graveyardDust, LibIngredients.blazePowder, LibIngredients.eyes, LibIngredients.fumeCloudyOil)
+				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.demonic_dew.ordinal()))
+				.build()
+		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("cleansing_aura")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.anyGlass, LibIngredients.fumeBottledMagic)
+				.withInput(LibIngredients.whiteSage, LibIngredients.sagebrush, LibIngredients.tulsi, LibIngredients.acaciaResin)
 				.withOutput(
 						new ItemStack(ModItems.fume, 1, ItemFumes.Type.cleansing_aura.ordinal()),
-						new ItemStack(Items.SLIME_BALL)
+						new ItemStack(ModItems.wood_ash)
 						)
 				.build()
 				);
