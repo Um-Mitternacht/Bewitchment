@@ -1,0 +1,16 @@
+{
+  "name": "Athame",
+  "icon": "bewitchment:athame",
+  "category": "obw_the_tools_of_the_trade",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "crafting",
+      "text": "Creating the Athame",
+      "recipe": "bewitchment:athame"
+    }
+  ]
+}

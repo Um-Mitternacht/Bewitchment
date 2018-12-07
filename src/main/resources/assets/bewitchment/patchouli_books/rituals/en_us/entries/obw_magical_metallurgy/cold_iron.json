@@ -1,0 +1,11 @@
+{
+  "name": "Cold iron",
+  "icon": "bewitchment:cold_iron_ingot",
+  "category": "obw_magical_metallurgy",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}

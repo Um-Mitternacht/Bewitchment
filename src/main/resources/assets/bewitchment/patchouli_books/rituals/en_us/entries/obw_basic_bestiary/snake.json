@@ -1,0 +1,18 @@
+{
+  "name": "Snake",
+  "icon": "bewitchment:adders_fork",
+  "category": "obw_basic_bestiary",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "entity",
+      "name": "Snake",
+      "entity": "bewitchment:snake",
+      "scale": 0.43,
+      "text": "TODO"
+    }
+  ]
+}

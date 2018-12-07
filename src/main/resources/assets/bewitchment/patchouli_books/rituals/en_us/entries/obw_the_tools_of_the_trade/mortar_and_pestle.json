@@ -1,0 +1,21 @@
+{
+  "name": "Mortar and Pestle",
+  "icon": "bewitchment:mortar_and_pestle",
+  "category": "obw_the_tools_of_the_trade",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "crafting",
+      "text": "Creating a wooden Mortar and Pestle",
+      "recipe": "bewitchment:mortar_and_pestle"
+    },
+    {
+      "type": "crafting",
+      "text": "Creating a stone Mortar and Pestle",
+      "recipe": "bewitchment:mortar_and_pestle_stone"
+    }
+  ]
+}

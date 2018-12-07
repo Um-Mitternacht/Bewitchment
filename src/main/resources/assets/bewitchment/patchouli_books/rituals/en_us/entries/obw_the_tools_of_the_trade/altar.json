@@ -1,0 +1,48 @@
+{
+  "name": "Altar",
+  "icon": "bewitchment:witch_altar",
+  "category": "obw_the_tools_of_the_trade",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Writers, this is a TODO for you."
+    },
+    {
+      "type": "multiblock",
+      "name": "How to build",
+      "multiblock": {
+        "mapping": {
+          "A": "bewitchment:witch_altar[altar_multiblock=unformed]",
+          "0": "bewitchment:witch_altar[altar_multiblock=unformed]"
+        },
+        "pattern": [
+          [
+            "AA",
+            "0A",
+            "AA"
+          ]
+        ]
+      },
+      "text": "The blocks around the altar must $(i)not$() be other altar blocks"
+    },
+    {
+      "type": "multiblock",
+      "name": "The altar",
+      "multiblock": {
+        "mapping": {
+          "A": "bewitchment:witch_altar[altar_multiblock=side,color=14]",
+          "0": "bewitchment:witch_altar[altar_multiblock=side,color=14]"
+        },
+        "pattern": [
+          [
+            "AA",
+            "0A",
+            "AA"
+          ]
+        ]
+      },
+      "enable_visualize": false,
+      "text": "Any carpet can be used on the altar to form the final structure"
+    }
+  ]
+}

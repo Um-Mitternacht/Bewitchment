@@ -1,0 +1,11 @@
+{
+  "name": "Cypress",
+  "icon": "bewitchment:log_cypress",
+  "category": "obw_witchy_woodworking",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}

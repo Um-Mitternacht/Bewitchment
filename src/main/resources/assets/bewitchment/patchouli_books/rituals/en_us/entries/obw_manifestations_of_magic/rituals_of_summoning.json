@@ -1,0 +1,16 @@
+{
+  "name": "Rituals of Conjuration",
+  "icon": "minecraft:skull:1",
+    "sortnum": "4",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Writers, this is a TODO for you."
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_wither"
+    }
+  ]
+}

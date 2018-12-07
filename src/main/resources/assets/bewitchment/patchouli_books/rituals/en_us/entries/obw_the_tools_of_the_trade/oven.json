@@ -1,0 +1,16 @@
+{
+  "name": "Oven",
+  "icon": "bewitchment:oven",
+  "category": "obw_the_tools_of_the_trade",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "crafting",
+      "text": "Creating the Witches Oven",
+      "recipe": "bewitchment:oven"
+    }
+  ]
+}

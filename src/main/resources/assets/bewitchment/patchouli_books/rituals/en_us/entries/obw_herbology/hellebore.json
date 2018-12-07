@@ -1,0 +1,11 @@
+{
+  "name": "Hellebore",
+  "icon": "bewitchment:hellebore",
+  "category": "obw_herbology",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    }
+  ]
+}

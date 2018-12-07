@@ -1,0 +1,16 @@
+{
+  "name": "Loom",
+  "icon": "bewitchment:thread_spinner",
+  "category": "obw_the_tools_of_the_trade",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "crafting",
+      "text": "Creating the Loom",
+      "recipe": "bewitchment:thread_spinner"
+    }
+  ]
+}
