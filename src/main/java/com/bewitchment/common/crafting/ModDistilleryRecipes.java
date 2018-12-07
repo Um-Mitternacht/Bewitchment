@@ -44,7 +44,7 @@ public class ModDistilleryRecipes {
 		REGISTRY.register(DistilleryRecipe.Factory.start("otherworldy_tears")
 				.setAnyContainer()//TODO: Make this take some water
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.enderPearl, LibIngredients.lapisPowder, LibIngredients.fumeReekOfDeath)
+				.withInput(LibIngredients.enderPearl, LibIngredients.lapisPowder, LibIngredients.fumeBirchSoul)
 				.withOutput(
 						new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()),
 						new ItemStack(ModItems.dimensional_sand, 2, 0)
