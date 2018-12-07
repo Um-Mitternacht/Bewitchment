@@ -1,1 +1,3 @@
-gradlew.bat setupDecompWorkspace & gradlew.bat build
+@echo off
+call gradlew.bat setupDecompWorkspace & gradlew.bat build
+pause
