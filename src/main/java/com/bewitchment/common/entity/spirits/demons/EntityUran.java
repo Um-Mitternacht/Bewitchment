@@ -87,7 +87,7 @@ public class EntityUran extends EntityMultiSkin {
 		this.tasks.addTask(4, this.aiSit);
 		this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D, 0.0F));
 		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityChicken || e instanceof EntityBlindworm || e instanceof EntityLizard || e instanceof EntityCow || e instanceof EntitySheep || e instanceof EntityPig || e instanceof EntityVillager || e instanceof EntityPlayer || e instanceof EntityRaven || e instanceof EntityOwl || e instanceof EntityNewt || e instanceof EntityToad || e instanceof EntitySnake || e instanceof EntityLlama ||  e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityChicken || e instanceof EntityBlindworm || e instanceof EntityLizard || e instanceof EntityCow || e instanceof EntitySheep || e instanceof EntityPig || e instanceof EntityVillager || e instanceof EntityPlayer || e instanceof EntityRaven || e instanceof EntityOwl || e instanceof EntityNewt || e instanceof EntityToad || e instanceof EntitySnake || e instanceof EntityHorse || e instanceof EntityDonkey || e instanceof EntityMule || e instanceof EntityLlama ||  e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
