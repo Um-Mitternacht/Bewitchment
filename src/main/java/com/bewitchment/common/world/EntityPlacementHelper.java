@@ -1,12 +1,11 @@
 package com.bewitchment.common.world;
 
+import com.bewitchment.common.entity.living.animals.EntityOwl;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.List;
-
-import com.bewitchment.common.entity.living.animals.EntityOwl;
 
 /**
  * Created by Joseph on 8/28/2018.

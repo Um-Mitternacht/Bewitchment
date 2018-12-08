@@ -3,7 +3,6 @@ package com.bewitchment.client.gui;
 import com.bewitchment.client.ResourceLocations;
 import com.bewitchment.common.container.ContainerDistillery;
 import com.bewitchment.common.tile.tiles.TileEntityDistillery;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 

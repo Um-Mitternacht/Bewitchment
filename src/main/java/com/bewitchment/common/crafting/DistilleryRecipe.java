@@ -1,16 +1,15 @@
 package com.bewitchment.common.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
 

@@ -4,7 +4,6 @@ import com.bewitchment.common.container.slots.ModSlot;
 import com.bewitchment.common.container.slots.SlotFiltered;
 import com.bewitchment.common.container.slots.SlotOutput;
 import com.bewitchment.common.tile.tiles.TileEntityDistillery;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;

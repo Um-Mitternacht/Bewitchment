@@ -1,14 +1,13 @@
 package com.bewitchment.common.tile.util;
 
-import java.util.ArrayList;
-import java.util.function.Supplier;
-
 import com.bewitchment.common.core.helper.Log;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
+
+import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class JointInventoryWrapper implements IItemHandlerModifiable {
 	

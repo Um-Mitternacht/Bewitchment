@@ -1,8 +1,5 @@
 package com.bewitchment.common.tile.tiles;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.crafting.DistilleryRecipe;
@@ -12,7 +9,6 @@ import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.JointInventoryWrapper;
 import com.bewitchment.common.tile.util.JointInventoryWrapper.Mode;
 import com.google.common.collect.Lists;
-
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +29,9 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	

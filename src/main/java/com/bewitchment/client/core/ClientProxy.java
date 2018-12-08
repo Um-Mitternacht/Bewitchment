@@ -26,13 +26,8 @@ import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.entity.*;
-import com.bewitchment.common.entity.living.animals.EntityBlindworm;
-import com.bewitchment.common.entity.living.animals.EntityLizard;
-import com.bewitchment.common.entity.living.animals.EntityNewt;
-import com.bewitchment.common.entity.living.animals.EntityOwl;
-import com.bewitchment.common.entity.living.animals.EntityRaven;
-import com.bewitchment.common.entity.living.animals.EntitySnake;
-import com.bewitchment.common.entity.living.animals.EntityToad;
+import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemSpellPage;
 import com.bewitchment.common.lib.LibGui;
@@ -236,6 +231,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityNewt.class, RenderNewt::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityUran.class, RenderUran::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());

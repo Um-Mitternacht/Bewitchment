@@ -1,11 +1,11 @@
 package com.bewitchment.common.container.slots;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+
+import javax.annotation.Nonnull;
 
 public class ModSlot<T extends TileEntity> extends SlotItemHandler {
 	private T tileEntity;

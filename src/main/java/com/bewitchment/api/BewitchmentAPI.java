@@ -1,7 +1,5 @@
 package com.bewitchment.api;
 
-import java.util.function.Supplier;
-
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
@@ -13,7 +11,6 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.transformation.ITransformation;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,6 +19,8 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.function.Supplier;
 
 // TODO Javadocs
 public abstract class BewitchmentAPI {

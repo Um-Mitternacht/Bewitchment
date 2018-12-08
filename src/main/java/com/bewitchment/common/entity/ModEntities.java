@@ -2,13 +2,8 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
-import com.bewitchment.common.entity.living.animals.EntityBlindworm;
-import com.bewitchment.common.entity.living.animals.EntityLizard;
-import com.bewitchment.common.entity.living.animals.EntityNewt;
-import com.bewitchment.common.entity.living.animals.EntityOwl;
-import com.bewitchment.common.entity.living.animals.EntityRaven;
-import com.bewitchment.common.entity.living.animals.EntitySnake;
-import com.bewitchment.common.entity.living.animals.EntityToad;
+import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -52,6 +47,8 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("blindworm"), EntityBlindworm.class, "entity_blindworm", id++, Bewitchment.instance, 64, 1, true, 0x826644, 0xD2B48C);
 		EntityRegistry.registerModEntity(getResource("newt"), EntityNewt.class, "entity_newt", id++, Bewitchment.instance, 64, 1, true, 0x000000, 0xFFD300);
 		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
+		//Demons
+		EntityRegistry.registerModEntity(getResource("uran"), EntityUran.class, "entity_uran", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
