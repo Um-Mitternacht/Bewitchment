@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -46,7 +47,13 @@ public class EntityUran extends EntityMultiSkin {
 
 	public EntityUran(World worldIn) {
 		super(worldIn);
-		setSize(1F, .3F);
+		setSize(1F, .3F); //Todo: Figure out how to change the size of this properly
+		this.isImmuneToFire = true;
+		this.setPathPriority(PathNodeType.WATER, -1.0F);
+		this.setPathPriority(PathNodeType.LAVA, 8.0F);
+		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
+		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
+		this.experienceValue = 20;
 	}
 
 	@Override
@@ -105,9 +112,20 @@ public class EntityUran extends EntityMultiSkin {
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8d);
 	}
 
+	protected void updateAITasks() {
+		if (this.isWet()) {
+			this.attackEntityFrom(DamageSource.DROWN, 1.0F);
+		}
+	}
+
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
+	}
+
+	public float getBrightness()
+	{
+		return 0.3F;
 	}
 
 	@Override
