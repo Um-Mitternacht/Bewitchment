@@ -40,9 +40,9 @@ public class RenderUran extends RenderLiving<EntityUran> {
 	protected void preRenderCallback(EntityUran entitylivingbaseIn, float partialTickTime) {
 		super.preRenderCallback(entitylivingbaseIn, partialTickTime);
 		if (entitylivingbaseIn.isChild()) {
-			GlStateManager.scale(0.4d, 0.4d, 0.4d);
-		} else {
 			GlStateManager.scale(0.6d, 0.6d, 0.6d);
+		} else {
+			GlStateManager.scale(1.6d, 1.6d, 1.6d);
 		}
 	}
 

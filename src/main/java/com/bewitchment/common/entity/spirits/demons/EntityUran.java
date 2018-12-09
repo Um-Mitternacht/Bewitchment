@@ -12,10 +12,12 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
@@ -24,6 +26,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -49,7 +52,7 @@ public class EntityUran extends EntityMultiSkin {
 
 	public EntityUran(World worldIn) {
 		super(worldIn);
-		setSize(1F, .3F); //Todo: Figure out how to change the size of this properly
+		setSize(1.6F, 1.6F); //Todo: Figure out how to change the size of this properly
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
 		this.setPathPriority(PathNodeType.LAVA, 8.0F);
@@ -96,7 +99,7 @@ public class EntityUran extends EntityMultiSkin {
 		this.tasks.addTask(4, this.aiSit);
 		this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D, 0.0F));
 		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityChicken || e instanceof EntityBlindworm || e instanceof EntityLizard || e instanceof EntityCow || e instanceof EntitySheep || e instanceof EntityPig || e instanceof EntityVillager || e instanceof EntityPlayer || e instanceof EntityRaven || e instanceof EntityOwl || e instanceof EntityNewt || e instanceof EntityToad || e instanceof EntitySnake || e instanceof EntityHorse || e instanceof EntityDonkey || e instanceof EntityMule || e instanceof EntityLlama ||  e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityChicken || e instanceof EntityBlindworm || e instanceof EntityLizard || e instanceof EntityCow || e instanceof EntitySheep || e instanceof EntityPig || e instanceof EntityVillager || e instanceof EntityPlayer || e instanceof EntityRaven || e instanceof EntityOwl || e instanceof EntityNewt || e instanceof EntityToad || e instanceof EntitySnake || e instanceof EntityHorse || e instanceof EntityDonkey || e instanceof EntityMule || e instanceof EntityLlama || e instanceof EntityWolf || e instanceof EntityOcelot || e instanceof EntityPolarBear ||  e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 	}
