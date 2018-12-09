@@ -52,7 +52,7 @@ public class GuiHandler implements IGuiHandler {
 			case TAROT:
 				return tile instanceof TileEntityTarotsTable ? new GuiTarots() : null;
 			case DISTILLERY:
-				return tile instanceof TileEntityDistillery ?  new GuiDistillery((ContainerDistillery) getServerGuiElement(ID, player, world, x, y, z)) : null;
+				return tile instanceof TileEntityDistillery ? new GuiDistillery((ContainerDistillery) getServerGuiElement(ID, player, world, x, y, z)) : null;
 			default:
 				return null;
 		}

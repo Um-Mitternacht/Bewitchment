@@ -14,54 +14,54 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
 public class BlockColdIronChiseled extends BlockMod {
-    public static final PropertyEnum<BlockColdIronVariant> VARIANT = PropertyEnum.create("variant", BlockColdIronVariant.class);
+	public static final PropertyEnum<BlockColdIronVariant> VARIANT = PropertyEnum.create("variant", BlockColdIronVariant.class);
 
-    public BlockColdIronChiseled(Material material, SoundType sound) {
-        super(LibBlockName.COLD_IRON_BLOCK + "_chisel", material, sound);
-    }
+	public BlockColdIronChiseled(Material material, SoundType sound) {
+		super(LibBlockName.COLD_IRON_BLOCK + "_chisel", material, sound);
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(VARIANT).ordinal();
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(VARIANT).ordinal();
+	}
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, BlockColdIronVariant.values()[meta]);
-    }
+	@SuppressWarnings("deprecation")
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(VARIANT, BlockColdIronVariant.values()[meta]);
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, VARIANT);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, VARIANT);
+	}
 
-    @Override
-    public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-        for (int i = 0; i < BlockColdIronVariant.values().length; i++) {
-            items.add(new ItemStack(this, 1, i));
-        }
-    }
+	@Override
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
+		for (int i = 0; i < BlockColdIronVariant.values().length; i++) {
+			items.add(new ItemStack(this, 1, i));
+		}
+	}
 
-    @Override
-    public int damageDropped(IBlockState state) {
-        return getMetaFromState(state);
-    }
+	@Override
+	public int damageDropped(IBlockState state) {
+		return getMetaFromState(state);
+	}
 
-    @Override
-    public void registerModel() {
-        for (BlockColdIronChiseled.BlockColdIronVariant v : BlockColdIronChiseled.BlockColdIronVariant.values()) {
-            ModelHandler.registerForgeModel(this, v.ordinal(), "variant=" + v.getName());
-        }
-    }
+	@Override
+	public void registerModel() {
+		for (BlockColdIronChiseled.BlockColdIronVariant v : BlockColdIronChiseled.BlockColdIronVariant.values()) {
+			ModelHandler.registerForgeModel(this, v.ordinal(), "variant=" + v.getName());
+		}
+	}
 
-    public static enum BlockColdIronVariant implements IStringSerializable {
+	public static enum BlockColdIronVariant implements IStringSerializable {
 
-        SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM, BEVEL;
+		SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM, BEVEL;
 
-        @Override
-        public String getName() {
-            return name().toLowerCase();
-        }
-    }
+		@Override
+		public String getName() {
+			return name().toLowerCase();
+		}
+	}
 }

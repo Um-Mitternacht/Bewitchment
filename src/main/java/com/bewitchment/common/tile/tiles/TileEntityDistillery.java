@@ -34,31 +34,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TileEntityDistillery extends ModTileEntity implements ITickable {
-	
+
 	public static final int BURN_TIME = 1200;
 
 	private IMagicPowerConsumer mp = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
-	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int slot) {
-			contentsChanged();
-		};
-	};
-
-	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int slot) {
-			contentsChanged();
-		};
-	};
-
+	private int progress = 0;
+	private int heat = 0;
+	private String currentRecipe = "";
+	private int startingProgress = -1;
 	private ItemStackHandler fluid_container_and_fuel = new ItemStackHandler(3) {
 		@Override
 		protected void onContentsChanged(int slot) {
 			if (slot != 2) {
 				contentsChanged();
 			}
-		};
+		}
+
+		;
 
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
@@ -69,7 +61,9 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 				return stack;
 			}
 			return super.insertItem(slot, stack, simulate);
-		};
+		}
+
+		;
 
 		@Override
 		public int getSlotLimit(int slot) {
@@ -77,20 +71,32 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 				return 1;
 			}
 			return super.getSlotLimit(slot);
-		};
+		}
+
+		;
 	};
-	private int progress = 0;
-	private int heat = 0;
-	private String currentRecipe = "";
+	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			contentsChanged();
+		}
 
-	private int startingProgress = -1;
+		;
+	};
+	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			contentsChanged();
+		}
 
+		;
+	};
 	private JointInventoryWrapper ioSideWrapper = new JointInventoryWrapper();
 	private JointInventoryWrapper ioGuiWrapper = new JointInventoryWrapper();
 	private JointInventoryWrapper ioBackWrapper = new JointInventoryWrapper();
 
 	public TileEntityDistillery() {
-		for (int i=0;i<6;i++) {
+		for (int i = 0; i < 6; i++) {
 			ioSideWrapper.bind(() -> inventoryInput, i, Mode.INSERT);
 			ioSideWrapper.bind(() -> inventoryOutput, i, Mode.EXTRACT);
 			ioGuiWrapper.bind(() -> inventoryInput, i, Mode.BOTH);
@@ -117,7 +123,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			}
 			if (heat > 0) {
 				if (progress > 0) {
-					if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
+					if (mp.drainAltarFirst(world.getClosestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, false), getPos(), this.world.provider.getDimension(), 2)) {
 						progress--;
 						markDirty();
 					}
@@ -139,9 +145,9 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 							fluid_container_and_fuel.insertItem(1, containerItem(split), false);
 						}
 
-						for (ItemStack is:recipe.getOutputs()) {
+						for (ItemStack is : recipe.getOutputs()) {
 							ItemStack remaining = is.copy();
-							for (int i= 0; i < inventoryOutput.getSlots() && !remaining.isEmpty(); i++) {
+							for (int i = 0; i < inventoryOutput.getSlots() && !remaining.isEmpty(); i++) {
 								remaining = inventoryOutput.insertItem(i, remaining, false);
 							}
 						}
@@ -222,7 +228,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		for (int i = 0; i < inventoryOutput.getSlots(); i++) {
 			simulated.setStackInSlot(i, inventoryOutput.getStackInSlot(i).copy());
 		}
-		for (ItemStack is:recipe.getOutputs()) {
+		for (ItemStack is : recipe.getOutputs()) {
 			ItemStack remaining = is.copy();
 			for (int i = 0; i < simulated.getSlots() && !remaining.isEmpty(); i++) {
 				remaining = simulated.insertItem(i, remaining, false);

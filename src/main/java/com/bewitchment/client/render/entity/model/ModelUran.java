@@ -387,7 +387,7 @@ public class ModelUran extends ModelBase {
 			}
 		}
 		this.neck01a.render(scale);
-		this.head.rotateAngleY = 0.001F*MathHelper.sin(time);
+		this.head.rotateAngleY = 0.001F * MathHelper.sin(time);
 	}
 
 	/**

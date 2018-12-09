@@ -59,8 +59,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 	protected void dropApple(World worldIn, BlockPos pos, IBlockState state, int chance) {
 		if (this.getBlockState().getBlock() == ModBlocks.leaves_juniper && worldIn.rand.nextInt(chance) == 0) {
 			spawnAsEntity(worldIn, pos, new ItemStack(ModItems.juniper_berries));
-		}
-		else if (this.getBlockState().getBlock() == ModBlocks.leaves_yew && worldIn.rand.nextInt(chance) == 0) {
+		} else if (this.getBlockState().getBlock() == ModBlocks.leaves_yew && worldIn.rand.nextInt(chance) == 0) {
 			spawnAsEntity(worldIn, pos, new ItemStack(ModItems.yew_aril));
 		}
 	}

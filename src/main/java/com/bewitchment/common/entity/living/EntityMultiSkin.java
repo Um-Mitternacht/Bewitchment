@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class EntityMultiSkin extends EntityTameable {
-	
+
 	private static final DataParameter<Integer> SKIN = EntityDataManager.createKey(EntityMultiSkin.class, DataSerializers.VARINT);
 
 	public EntityMultiSkin(World worldIn) {
 		super(worldIn);
 	}
-	
+
 	@Override
 	protected void entityInit() {
 		super.entityInit();
@@ -29,7 +29,7 @@ public abstract class EntityMultiSkin extends EntityTameable {
 		this.setEntitySkinIndex(rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, livingdata);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public int getSkinIndex() {
 		return dataManager.get(SKIN);
@@ -42,7 +42,7 @@ public abstract class EntityMultiSkin extends EntityTameable {
 		dataManager.set(SKIN, type);
 		dataManager.setDirty(SKIN);
 	}
-	
+
 	public abstract int getSkinTypes();
-	
+
 }

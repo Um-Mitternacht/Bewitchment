@@ -1,7 +1,7 @@
 {
   "name": "Rituals of Conjuration",
   "icon": "minecraft:skull:1",
-    "sortnum": "4",
+  "sortnum": "4",
   "category": "obw_manifestations_of_magic",
   "pages": [
     {

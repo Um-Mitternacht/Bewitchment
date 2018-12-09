@@ -137,7 +137,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		public ApiaryInventory() {
 			super(COLUMNS * ROWS);
 		}
-		
+
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 			Item i = stack.getItem();

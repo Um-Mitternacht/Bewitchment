@@ -45,7 +45,7 @@ public class GuiOven extends GuiContainer {
 		final int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
-		if (containerOven.gui_data[3]>0) {
+		if (containerOven.gui_data[3] > 0) {
 			int k = this.getBurnLeftScaled(13);
 			this.drawTexturedModalRect(i + 44, j + 50 - k, 176, 12 - k, 14, k + 1);
 		}

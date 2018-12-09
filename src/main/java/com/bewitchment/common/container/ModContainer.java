@@ -46,7 +46,7 @@ public abstract class ModContainer<T extends TileEntity> extends Container {
 	public T getTileEntity() {
 		return tileEntity;
 	}
-	
+
 	/*
 	 * An array with the number of ids to sync to the client
 	 */

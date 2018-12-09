@@ -60,7 +60,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 				if ((slot == 0 && !OvenSmeltingRecipe.isSmeltable(stack)) || (slot == 1 && !TileEntityFurnace.isItemFuel(stack))) {
 					return stack;
-				} 
+				}
 				return super.insertItem(slot, stack, simulate);
 			}
 
@@ -68,7 +68,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			protected void onContentsChanged(int slot) {
 				if (slot != 2) {
 					checkRecipe();
-				};
+				}
+				;
 			}
 		};
 	}
@@ -95,7 +96,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		}
 		return true;
 	}
-	
+
 	@Override
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
 		if (worldIn.getGameRules().getBoolean("doTileDrops")) {
@@ -103,7 +104,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			ItemHandlerHelper.dropItems(handlerDown, world, pos);
 		}
 	}
-	
+
 	@Override
 	public void update() {
 		if (!world.isRemote) {
@@ -151,8 +152,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		}
 		markDirty();
 	}
-	
-	
+
+
 	private int consumeFuel() {
 		ItemStack fuel = handlerUp.getStackInSlot(1);
 		if (TileEntityFurnace.isItemFuel(fuel)) {
@@ -226,7 +227,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if  (facing == EnumFacing.DOWN) {
+			if (facing == EnumFacing.DOWN) {
 				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
 			}
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);

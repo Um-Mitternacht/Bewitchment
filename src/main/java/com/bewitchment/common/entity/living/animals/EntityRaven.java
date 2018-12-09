@@ -40,7 +40,7 @@ public class EntityRaven extends EntityMultiSkin {
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/raven");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.GOLD_NUGGET, ModItems.silver_nugget);
 	private static final Set<Item> FODDER_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS, Items.NETHER_WART, ModItems.seed_aconitum, ModItems.seed_asphodel, ModItems.seed_belladonna, ModItems.seed_chrysanthemum, ModItems.seed_garlic, ModItems.seed_ginger, ModItems.seed_hellebore, ModItems.seed_kelp, ModItems.seed_kenaf, ModItems.seed_lavender, ModItems.seed_mandrake, ModItems.seed_mint, ModItems.seed_sagebrush, ModItems.seed_silphium, ModItems.seed_thistle, ModItems.seed_tulsi, ModItems.seed_white_sage, ModItems.seed_wormwood);
-//	private static final String[] names = {"Huginn", "Muninn", "Morrigan", "Bhusunda", "Pallas", "Qrow", "Nevermore", "Corvus", "Apollo", "Odin", "Badhbh", "Bran", "Crowe", "Scarecrow", "Santa Caws", "Valravn", "Cain", "Mabel", "Grip", "Harbinger", "Shani", "Diablo", "Raven", "Charlie", "Unidan", "Yatagarasu", "Samjokgo", "Ischys"}; //I'm trash lmao
+	//	private static final String[] names = {"Huginn", "Muninn", "Morrigan", "Bhusunda", "Pallas", "Qrow", "Nevermore", "Corvus", "Apollo", "Odin", "Badhbh", "Bran", "Crowe", "Scarecrow", "Santa Caws", "Valravn", "Cain", "Mabel", "Grip", "Harbinger", "Shani", "Diablo", "Raven", "Charlie", "Unidan", "Yatagarasu", "Samjokgo", "Ischys"}; //I'm trash lmao
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityRaven.class, DataSerializers.VARINT);
 
 	public EntityRaven(World worldIn) {

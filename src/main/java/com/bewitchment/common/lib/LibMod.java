@@ -14,7 +14,7 @@ public final class LibMod {
 	public static final String MOD_NAME = "Bewitchment";
 
 	//Version of MOD
-	public static final String MOD_VER = "0.0.15";
+	public static final String MOD_VER = "0.0.16";
 
 	//Dependency
 	public static final String DEPENDENCIES = "required-after:forge@[14.23.4.2755,];"

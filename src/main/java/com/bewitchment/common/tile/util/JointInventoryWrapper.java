@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class JointInventoryWrapper implements IItemHandlerModifiable {
-	
+
 	//The index in the list is the outside slot, the integer is the wrapped handler slot
 	ArrayList<Tuple<Supplier<ItemStackHandler>, Integer>> bindings = new ArrayList<>();
 	ArrayList<Mode> modes = new ArrayList<>();
-	
+
 	@Override
 	public int getSlots() {
 		return bindings.size();
@@ -40,7 +40,7 @@ public class JointInventoryWrapper implements IItemHandlerModifiable {
 
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
-		if (slot >= bindings.size() || bindings.get(slot) == null|| !modes.get(slot).canExtract()) {
+		if (slot >= bindings.size() || bindings.get(slot) == null || !modes.get(slot).canExtract()) {
 			return ItemStack.EMPTY;
 		}
 		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
@@ -59,12 +59,12 @@ public class JointInventoryWrapper implements IItemHandlerModifiable {
 	@Override
 	public void setStackInSlot(int slot, ItemStack stack) {
 		if (slot >= bindings.size() || bindings.get(slot) == null) {
-			Log.w("Slot "+slot+" wasn't bound properly: "+stack);
+			Log.w("Slot " + slot + " wasn't bound properly: " + stack);
 		}
 		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
 		res.getFirst().get().setStackInSlot(res.getSecond(), stack);
 	}
-	
+
 	public JointInventoryWrapper bind(Supplier<ItemStackHandler> handler, int slot, Mode mode) {
 		this.bindings.add(new Tuple<Supplier<ItemStackHandler>, Integer>(handler, slot));
 		this.modes.add(mode);
@@ -72,20 +72,20 @@ public class JointInventoryWrapper implements IItemHandlerModifiable {
 	}
 
 	public static enum Mode {
-		
+
 		INSERT(true, false), EXTRACT(false, true), BOTH(true, true), NONE(false, false);
-	
+
 		private boolean r_in, r_out;
-		
+
 		Mode(boolean in, boolean out) {
 			r_in = in;
 			r_out = out;
 		}
-		
+
 		public boolean canInsert() {
 			return r_in;
 		}
-		
+
 		public boolean canExtract() {
 			return r_out;
 		}
