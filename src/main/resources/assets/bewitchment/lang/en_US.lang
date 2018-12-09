@@ -927,6 +927,7 @@ entity.entity_toad.name=Toad
 entity.entity_lizard.name=Lizard
 entity.entity_blindworm.name=Blindworm
 entity.entity_newt.name=Newt
+entity.entity_uran.name=Uran
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning

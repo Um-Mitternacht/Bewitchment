@@ -1,0 +1,19 @@
+{
+  "name": "Uran",
+  "icon": "minecraft:gold_ingot",
+  "category": "nethers_firstborn",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Vicious beasts born of malice and gluttony, their sole purpose is to find as much food as possible. Their hatred is strong enough at times to rip them into the mortal plane, putting livestock at their mercy."
+    },
+    {
+      "type": "entity",
+      "name": "Uran",
+      "entity": "bewitchment:uran",
+      "scale": 0.50,
+      "rotate": false,	  
+      "text": "Plural: Uranids"
+    }
+  ]
+}
