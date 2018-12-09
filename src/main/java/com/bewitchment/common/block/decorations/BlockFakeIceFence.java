@@ -142,7 +142,7 @@ public class BlockFakeIceFence extends BlockMod {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 		BlockFaceShape blockfaceshape = iblockstate.getBlockFaceShape(worldIn, pos, p_176524_3_);
 		Block block = iblockstate.getBlock();
-		boolean flag = blockfaceshape == BlockFaceShape.MIDDLE_POLE && (iblockstate.getMaterial() == this.blockMaterial || block instanceof BlockFenceGate);
+		boolean flag = blockfaceshape == BlockFaceShape.MIDDLE_POLE && (iblockstate.getMaterial() == this.material || block instanceof BlockFenceGate);
 		return !isExcepBlockForAttachWithPiston(block) && blockfaceshape == BlockFaceShape.SOLID || flag;
 	}
 
