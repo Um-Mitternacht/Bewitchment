@@ -84,10 +84,10 @@ public class ItemSpellPage extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("spell"))
-			return super.getUnlocalizedName(stack) + "." + stack.getTagCompound().getString("spell").replace(':', '.');
-		return super.getUnlocalizedName(stack);
+			return super.getTranslationKey(stack) + "." + stack.getTagCompound().getString("spell").replace(':', '.');
+		return super.getTranslationKey(stack);
 	}
 
 	public ItemStack getStackFor(ISpell s) {

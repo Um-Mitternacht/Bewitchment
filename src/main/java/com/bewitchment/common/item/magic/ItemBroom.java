@@ -36,9 +36,9 @@ public class ItemBroom extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		String ext = stack.getMetadata() == 0 ? "mundane" : EnumSaplingType.values()[stack.getMetadata() - 1].getName();
-		return super.getUnlocalizedName(stack) + "_" + ext;
+		return super.getTranslationKey(stack) + "_" + ext;
 	}
 
 	@Override

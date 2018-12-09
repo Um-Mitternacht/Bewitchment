@@ -31,7 +31,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	public BlockFakeIceSlab(String unlocalizedName) {
 		super(Material.ICE);
 		setResistance(2F);
-		this.setUnlocalizedName(unlocalizedName);
+		this.setTranslationKey(unlocalizedName);
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setHardness(2F);
@@ -59,8 +59,8 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	}
 
 	@Override
-	public String getUnlocalizedName(int meta) {
-		return this.getUnlocalizedName();
+	public String getTranslationKey(int meta) {
+		return this.getTranslationKey();
 	}
 
 	public IBlockState isDouble(int meta) {

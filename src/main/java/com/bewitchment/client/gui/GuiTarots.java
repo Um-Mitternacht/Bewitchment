@@ -73,7 +73,7 @@ public class GuiTarots extends GuiScreen {
 
 			for (int i = 0; i < this.buttons.size(); ++i) {
 				if (this.buttons.get(i).isMouseOver()) {
-					drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getUnlocalizedName()), mouseX, mouseY);
+					drawHoveringText(TextFormatting.LIGHT_PURPLE + I18n.format(data.get(i).getTranslationKey()), mouseX, mouseY);
 				}
 			}
 		} else {
@@ -112,7 +112,7 @@ public class GuiTarots extends GuiScreen {
 			mc.fontRenderer.drawString(num, left + ((252 - mc.fontRenderer.getStringWidth(num)) / 2), top + 139, 0xFCD71C, true);
 		}
 		GL11.glPopMatrix();
-		String name = I18n.format(t.getUnlocalizedName());
+		String name = I18n.format(t.getTranslationKey());
 		mc.fontRenderer.drawString(name, left + ((252 - mc.fontRenderer.getStringWidth(name)) / 2), top + 14, 0xFCD71C, true);
 
 

@@ -137,7 +137,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 			}
 			IHotbarAction current = refreshSelected();
 			if (current != null && current != lastSelected) {
-				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain() + "." + current.getName().getResourcePath()), true);
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getNamespace() + "." + current.getName().getPath()), true);
 			}
 		}
 	}
@@ -183,7 +183,7 @@ public class ExtraBarButtonsHUD extends HudComponent {
 				isInExtraBar = true;
 				IHotbarAction current = refreshSelected();
 				if (current != null && lastSelected != slotSelected) {
-					Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getResourceDomain() + "." + current.getName().getResourcePath()), true);
+					Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentTranslation(current.getName().getNamespace() + "." + current.getName().getPath()), true);
 				}
 			}
 		}

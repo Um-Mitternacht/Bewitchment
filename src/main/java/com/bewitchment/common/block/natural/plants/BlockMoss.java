@@ -36,7 +36,7 @@ public class BlockMoss extends BlockVine implements IModelRegister {
 	public BlockMoss(boolean terminal) {
 		String name = LibBlockName.SPANISH_MOSS + (terminal ? "_end" : "");
 		this.setRegistryName(LibMod.MOD_ID, name);
-		this.setUnlocalizedName(LibBlockName.SPANISH_MOSS);
+		this.setTranslationKey(LibBlockName.SPANISH_MOSS);
 		this.setSoundType(SoundType.PLANT);
 		this.setTickRandomly(!terminalPiece);
 		if (terminal) {

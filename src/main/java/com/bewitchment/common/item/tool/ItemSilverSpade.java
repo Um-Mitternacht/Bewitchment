@@ -34,7 +34,7 @@ public class ItemSilverSpade extends ItemSpade implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_SPADE);
-		setUnlocalizedName(LibItemName.SILVER_SPADE);
+		setTranslationKey(LibItemName.SILVER_SPADE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -53,7 +53,7 @@ public class ItemSilverSpade extends ItemSpade implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

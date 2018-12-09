@@ -18,7 +18,7 @@ public class ItemWitchesArmor extends ItemArmor implements IModelRegister {
 		super(materialIn, renderIndex, equipmentSlotIn);
 		this.setMaxStackSize(1);
 		setRegistryName(id);
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

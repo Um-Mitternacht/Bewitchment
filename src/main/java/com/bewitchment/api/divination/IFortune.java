@@ -54,7 +54,7 @@ public interface IFortune extends IForgeRegistryEntry<IFortune> {
 	/**
 	 * @return the unlocalized name for the card.
 	 */
-	default String getUnlocalizedName() {
-		return "fortunes." + this.getRegistryName().getResourceDomain() + "." + this.getRegistryName().getResourcePath() + ".name";
+	default String getTranslationKey() {
+		return "fortunes." + this.getRegistryName().getNamespace() + "." + this.getRegistryName().getPath() + ".name";
 	}
 }

@@ -25,7 +25,7 @@ public class ItemMod extends Item implements IModelRegister {
 	public ItemMod(String id) {
 		super();
 		setRegistryName(id);
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

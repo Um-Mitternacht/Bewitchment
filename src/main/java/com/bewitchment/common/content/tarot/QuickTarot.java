@@ -60,7 +60,7 @@ public class QuickTarot implements ITarot {
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return unlocalizedName;
 	}
 

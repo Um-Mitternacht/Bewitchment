@@ -34,7 +34,7 @@ public class ItemSeed extends ItemSeeds implements IModelRegister {
 	public ItemSeed(String id, Block crop, Block soil) {
 		super(crop, soil);
 		setRegistryName(id);
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.crop = crop;
 		this.soil = soil;
@@ -47,7 +47,7 @@ public class ItemSeed extends ItemSeeds implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

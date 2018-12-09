@@ -18,10 +18,10 @@ public class ItemFumes extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() >= Type.values().length)
-			return super.getUnlocalizedName(stack);
-		return super.getUnlocalizedName(stack) + "." + Type.values()[stack.getMetadata()].name();
+			return super.getTranslationKey(stack);
+		return super.getTranslationKey(stack) + "." + Type.values()[stack.getMetadata()].name();
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class ItemFumes extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
 		for (Type t : Type.values()) {
-			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getResourceDomain(), "fumes/" + this.getRegistryName().getResourcePath() + "_" + t.name());
+			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getNamespace(), "fumes/" + this.getRegistryName().getPath() + "_" + t.name());
 			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 			ModelLoader.setCustomModelResourceLocation(this, t.ordinal(), mrl);
 		}

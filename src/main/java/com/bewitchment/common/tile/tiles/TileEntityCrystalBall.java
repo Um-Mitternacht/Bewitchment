@@ -54,7 +54,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 
 		if (fortune != null) {
 
-			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", new TextComponentTranslation(fortune.getUnlocalizedName())), false);
+			messageRecpt.sendStatusMessage(new TextComponentTranslation("crystal_ball.error.already_told", new TextComponentTranslation(fortune.getTranslationKey())), false);
 			return false;
 		}
 		List<IFortune> valid = Fortune.REGISTRY.getValuesCollection().parallelStream().filter(f -> f.canBeUsedFor(endPlayer)).collect(Collectors.toList());
@@ -74,7 +74,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 			current += entries;
 		}
 		endPlayer.getCapability(CapabilityFortune.CAPABILITY, null).setFortune(fortune);
-		endPlayer.sendStatusMessage(new TextComponentTranslation(fortune.getUnlocalizedName()), true);
+		endPlayer.sendStatusMessage(new TextComponentTranslation(fortune.getTranslationKey()), true);
 		return true;
 	}
 

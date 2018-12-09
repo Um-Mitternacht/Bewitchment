@@ -39,7 +39,7 @@ public class BlockFluid extends BlockFluidClassic implements IModelRegister {
 
 	public BlockFluid(Fluid fluid, int flammability, boolean flammable, Material liquid) {
 		super(fluid, liquid);
-		setUnlocalizedName(fluid.getName());
+		setTranslationKey(fluid.getName());
 		setRegistryName(LibMod.MOD_ID, fluid.getName());
 		setDensity(fluid.getDensity());
 

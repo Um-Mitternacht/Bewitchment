@@ -88,7 +88,7 @@ public class ItemRemedyTalisman extends ItemMod implements IBauble {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

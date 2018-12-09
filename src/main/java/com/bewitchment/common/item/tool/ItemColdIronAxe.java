@@ -35,7 +35,7 @@ public class ItemColdIronAxe extends ItemAxe implements IModelRegister {
 		super(ModMaterials.TOOL_COLD_IRON, 8.0f, -3.1f);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.COLD_IRON_AXE);
-		setUnlocalizedName(LibItemName.COLD_IRON_AXE);
+		setTranslationKey(LibItemName.COLD_IRON_AXE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -54,7 +54,7 @@ public class ItemColdIronAxe extends ItemAxe implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

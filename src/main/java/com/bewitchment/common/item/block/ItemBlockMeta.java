@@ -41,15 +41,15 @@ public class ItemBlockMeta<T extends Item> extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (nMode == EnumNameMode.NAME) {
 			int meta = stack.getMetadata();
 			if (meta < 0 || meta >= itemVariants.length) {
 				meta = 0;
 			}
-			return super.getUnlocalizedName() + "_" + itemVariants[stack.getMetadata()].name().toLowerCase();
+			return super.getTranslationKey() + "_" + itemVariants[stack.getMetadata()].name().toLowerCase();
 		}
-		return super.getUnlocalizedName();
+		return super.getTranslationKey();
 	}
 
 	public static enum EnumNameMode {

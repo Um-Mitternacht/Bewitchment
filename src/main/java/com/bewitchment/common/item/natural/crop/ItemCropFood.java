@@ -46,7 +46,7 @@ public class ItemCropFood extends ItemModFood {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

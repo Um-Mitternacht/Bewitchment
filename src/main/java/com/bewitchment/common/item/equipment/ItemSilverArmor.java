@@ -38,13 +38,13 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 		super(materialIn, renderIndex, equipmentSlotIn);
 		this.setMaxStackSize(1);
 		setRegistryName(id);
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

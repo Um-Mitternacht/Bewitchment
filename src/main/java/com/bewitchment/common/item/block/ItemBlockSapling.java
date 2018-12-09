@@ -19,11 +19,11 @@ public class ItemBlockSapling extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() >= EnumSaplingType.values().length) {
-			return super.getUnlocalizedName(stack);
+			return super.getTranslationKey(stack);
 		}
-		return super.getUnlocalizedName(stack) + "_" + EnumSaplingType.values()[stack.getMetadata()].getName();
+		return super.getTranslationKey(stack) + "_" + EnumSaplingType.values()[stack.getMetadata()].getName();
 	}
 
 	@Override

@@ -60,7 +60,7 @@ public class CommandTransformationModifier extends CommandBase {
 				transf = DefaultTransformations.NONE;
 			} else
 				for (ITransformation tt : ModTransformations.REGISTRY) {
-					if (typeStr.equals(tt.getRegistryName().getResourcePath().toLowerCase()) || typeStr.equals(tt.getRegistryName().toString().toLowerCase())) {
+					if (typeStr.equals(tt.getRegistryName().getPath().toLowerCase()) || typeStr.equals(tt.getRegistryName().toString().toLowerCase())) {
 						transf = tt;
 						break;
 					}
@@ -95,7 +95,7 @@ public class CommandTransformationModifier extends CommandBase {
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
 		if (args.length == 1)
-			return ModTransformations.REGISTRY.getKeys().stream().map(t -> t.getResourcePath()).filter(s -> s.startsWith(args[args.length - 1].toLowerCase())).collect(Collectors.toList());
+			return ModTransformations.REGISTRY.getKeys().stream().map(t -> t.getPath()).filter(s -> s.startsWith(args[args.length - 1].toLowerCase())).collect(Collectors.toList());
 		return super.getTabCompletions(server, sender, args, targetPos);
 	}
 

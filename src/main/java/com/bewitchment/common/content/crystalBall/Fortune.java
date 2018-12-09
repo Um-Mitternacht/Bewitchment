@@ -82,8 +82,8 @@ public abstract class Fortune implements IFortune {
 	public abstract boolean isNegative();
 
 	@Override
-	public String getUnlocalizedName() {
-		return "fortunes." + this.getRegistryName().getResourceDomain() + "." + this.getRegistryName().getResourcePath() + ".name";
+	public String getTranslationKey() {
+		return "fortunes." + this.getRegistryName().getNamespace() + "." + this.getRegistryName().getPath() + ".name";
 	}
 
 	@Override

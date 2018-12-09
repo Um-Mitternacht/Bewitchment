@@ -35,7 +35,7 @@ public class ItemSilverPickaxe extends ItemPickaxe implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_PICKAXE);
-		setUnlocalizedName(LibItemName.SILVER_PICKAXE);
+		setTranslationKey(LibItemName.SILVER_PICKAXE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -54,7 +54,7 @@ public class ItemSilverPickaxe extends ItemPickaxe implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

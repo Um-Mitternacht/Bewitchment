@@ -427,10 +427,10 @@ public final class ModItems {
 			throw new LoaderException("[" + LibMod.MOD_NAME + "] Trying to register an ItemBlock for a null block");
 		}
 		if (block.getRegistryName() == null) {
-			throw new LoaderException("[" + LibMod.MOD_NAME + "] Trying to register an ItemBlock for a block with null name - " + block.getUnlocalizedName());
+			throw new LoaderException("[" + LibMod.MOD_NAME + "] Trying to register an ItemBlock for a block with null name - " + block.getTranslationKey());
 		}
 		if (block.getRegistryName().toString() == null) {
-			throw new LoaderException("[" + LibMod.MOD_NAME + "] There's something wrong with the registry implementation of " + block.getUnlocalizedName());
+			throw new LoaderException("[" + LibMod.MOD_NAME + "] There's something wrong with the registry implementation of " + block.getTranslationKey());
 		}
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}

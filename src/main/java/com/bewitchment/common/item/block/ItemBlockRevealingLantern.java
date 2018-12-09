@@ -40,11 +40,11 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() < 16 && stack.getMetadata() >= 0) {
-			return super.getUnlocalizedName(stack) + "." + EnumDyeColor.values()[stack.getMetadata()].name().toLowerCase();
+			return super.getTranslationKey(stack) + "." + EnumDyeColor.values()[stack.getMetadata()].name().toLowerCase();
 		}
-		return super.getUnlocalizedName(stack);
+		return super.getTranslationKey(stack);
 	}
 
 	@SideOnly(Side.CLIENT)

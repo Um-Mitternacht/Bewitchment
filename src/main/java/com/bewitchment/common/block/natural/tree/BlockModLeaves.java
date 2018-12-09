@@ -39,7 +39,7 @@ import java.util.Random;
 public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	public BlockModLeaves(String id) {
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));

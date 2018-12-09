@@ -12,7 +12,7 @@ public class BlockModFlower extends BlockBush implements IModelRegister {
 
 	public BlockModFlower(String name) {
 		this.setRegistryName(LibMod.MOD_ID, name);
-		this.setUnlocalizedName(name);
+		this.setTranslationKey(name);
 		this.setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

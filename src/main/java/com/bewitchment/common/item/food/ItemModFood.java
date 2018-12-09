@@ -25,7 +25,7 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 	public ItemModFood(String id, int amount, float saturation, boolean isWolfFood) {
 		super(amount, saturation, isWolfFood);
 		setRegistryName(id);
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

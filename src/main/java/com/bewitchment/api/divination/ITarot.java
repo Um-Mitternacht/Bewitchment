@@ -39,7 +39,7 @@ public interface ITarot extends IForgeRegistryEntry<ITarot> {
 	/**
 	 * @return the unlocalized name of this card
 	 */
-	public String getUnlocalizedName();
+	public String getTranslationKey();
 
 	/**
 	 * @param player the player whose cards are getting read

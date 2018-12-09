@@ -35,7 +35,7 @@ public class ItemColdIronPickaxe extends ItemPickaxe implements IModelRegister {
 		super(ModMaterials.TOOL_COLD_IRON);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.COLD_IRON_PICKAXE);
-		setUnlocalizedName(LibItemName.COLD_IRON_PICKAXE);
+		setTranslationKey(LibItemName.COLD_IRON_PICKAXE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -54,7 +54,7 @@ public class ItemColdIronPickaxe extends ItemPickaxe implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

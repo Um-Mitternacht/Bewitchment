@@ -30,7 +30,7 @@ public class ItemBrewArrow extends ItemArrow implements IModelRegister {
 	public ItemBrewArrow() {
 		super();
 		setRegistryName(LibItemName.BREW_ARROW);
-		setUnlocalizedName(LibItemName.BREW_ARROW);
+		setTranslationKey(LibItemName.BREW_ARROW);
 		setCreativeTab(ModCreativeTabs.BREW_CREATIVE_TAB);
 	}
 

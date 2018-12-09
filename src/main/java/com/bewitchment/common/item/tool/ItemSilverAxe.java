@@ -34,7 +34,7 @@ public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER, 8.0f, -3.1f);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_AXE);
-		setUnlocalizedName(LibItemName.SILVER_AXE);
+		setTranslationKey(LibItemName.SILVER_AXE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -53,7 +53,7 @@ public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

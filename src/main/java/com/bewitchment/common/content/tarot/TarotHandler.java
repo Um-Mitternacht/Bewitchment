@@ -90,8 +90,8 @@ public class TarotHandler {
 			return tarot.getTexture();
 		}
 
-		public String getUnlocalizedName() {
-			return tarot.getUnlocalizedName();
+		public String getTranslationKey() {
+			return tarot.getTranslationKey();
 		}
 
 		public String getRegistryName() {
@@ -100,7 +100,7 @@ public class TarotHandler {
 
 		@Override
 		public String toString() {
-			return I18n.format(getUnlocalizedName()) + ", " + number + (reversed ? ", reversed" : "");
+			return I18n.format(getTranslationKey()) + ", " + number + (reversed ? ", reversed" : "");
 		}
 	}
 

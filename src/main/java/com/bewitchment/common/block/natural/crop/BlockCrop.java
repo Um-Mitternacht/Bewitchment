@@ -19,7 +19,7 @@ public class BlockCrop extends BlockCrops implements IModelRegister {
 
 	public BlockCrop(String id) {
 		super();
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setRegistryName(id);
 		setCreativeTab(null);
 		this.maxAge = 7;
@@ -27,7 +27,7 @@ public class BlockCrop extends BlockCrops implements IModelRegister {
 
 	public BlockCrop(String id, int maxAge) {
 		super();
-		setUnlocalizedName(id);
+		setTranslationKey(id);
 		setRegistryName(id);
 		setCreativeTab(null);
 		this.maxAge = maxAge;

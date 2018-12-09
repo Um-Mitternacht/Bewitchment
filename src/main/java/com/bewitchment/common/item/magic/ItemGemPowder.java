@@ -33,11 +33,11 @@ public class ItemGemPowder extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() >= names.length) {
-			return super.getUnlocalizedName(stack);
+			return super.getTranslationKey(stack);
 		}
-		return super.getUnlocalizedName(stack) + "." + names[stack.getMetadata()];
+		return super.getTranslationKey(stack) + "." + names[stack.getMetadata()];
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class ItemGemPowder extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
 		for (int i = 0; i < names.length; i++) {
-			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getResourceDomain(), "powders/" + this.getRegistryName().getResourcePath() + "_" + names[i]);
+			ResourceLocation rl = new ResourceLocation(this.getRegistryName().getNamespace(), "powders/" + this.getRegistryName().getPath() + "_" + names[i]);
 			ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 			ModelLoader.setCustomModelResourceLocation(this, i, mrl);
 		}

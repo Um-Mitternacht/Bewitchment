@@ -25,7 +25,7 @@ public class ItemBlockColor extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "." + EnumDyeColor.byMetadata(stack.getMetadata());
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey() + "." + EnumDyeColor.byMetadata(stack.getMetadata());
 	}
 }

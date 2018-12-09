@@ -28,8 +28,8 @@ public class ItemGemBlock extends ItemBlock implements IModelRegister {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + BlockGemOre.Gem.values()[stack.getMetadata()].getName();
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey() + "_" + BlockGemOre.Gem.values()[stack.getMetadata()].getName();
 	}
 
 	@Override

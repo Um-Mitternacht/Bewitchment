@@ -34,7 +34,7 @@ public class ItemSilverSword extends ItemSword implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_SWORD);
-		setUnlocalizedName(LibItemName.SILVER_SWORD);
+		setTranslationKey(LibItemName.SILVER_SWORD);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -53,7 +53,7 @@ public class ItemSilverSword extends ItemSword implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

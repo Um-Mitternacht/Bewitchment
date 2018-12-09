@@ -47,7 +47,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 		setMaxDamage(600);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.ATHAME);
-		setUnlocalizedName(LibItemName.ATHAME);
+		setTranslationKey(LibItemName.ATHAME);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -66,7 +66,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override

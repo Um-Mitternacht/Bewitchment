@@ -30,8 +30,8 @@ public class ItemRitualChalk extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + "_" + EnumGlyphType.values()[stack.getMetadata()].name().toLowerCase();
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey(stack) + "_" + EnumGlyphType.values()[stack.getMetadata()].name().toLowerCase();
 	}
 
 	@Override

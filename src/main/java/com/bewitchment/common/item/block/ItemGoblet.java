@@ -17,11 +17,11 @@ public class ItemGoblet extends ItemBlock implements IModelRegister {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() != 1) {
-			return super.getUnlocalizedName(stack);
+			return super.getTranslationKey(stack);
 		}
-		return super.getUnlocalizedName(stack) + "_filled";
+		return super.getTranslationKey(stack) + "_filled";
 	}
 
 	@Override

@@ -31,11 +31,11 @@ public class ItemGem extends ItemMod {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		if (stack.getMetadata() < 0 || stack.getMetadata() >= BlockGemOre.Gem.values().length) {
-			return super.getUnlocalizedName(stack);
+			return super.getTranslationKey(stack);
 		}
-		return super.getUnlocalizedName(stack) + "_" + BlockGemOre.Gem.values()[stack.getMetadata()].getName();
+		return super.getTranslationKey(stack) + "_" + BlockGemOre.Gem.values()[stack.getMetadata()].getName();
 	}
 
 	@Override

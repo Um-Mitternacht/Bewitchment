@@ -34,7 +34,7 @@ public class ItemSilverHoe extends ItemHoe implements IModelRegister {
 		super(ModMaterials.TOOL_SILVER);
 		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.SILVER_HOE);
-		setUnlocalizedName(LibItemName.SILVER_HOE);
+		setTranslationKey(LibItemName.SILVER_HOE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 
@@ -53,7 +53,7 @@ public class ItemSilverHoe extends ItemHoe implements IModelRegister {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getUnlocalizedName().substring(5);
+		return getTranslationKey().substring(5);
 	}
 
 	@Override
