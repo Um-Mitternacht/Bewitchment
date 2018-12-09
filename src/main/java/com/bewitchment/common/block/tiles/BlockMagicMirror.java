@@ -71,7 +71,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	@Override
 	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.getHorizontal(meta)).withProperty(LOWER_HALF, (meta & 4) == 4);
+		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.byHorizontalIndex(meta)).withProperty(LOWER_HALF, (meta & 4) == 4);
 	}
 
 	@SuppressWarnings("deprecation")

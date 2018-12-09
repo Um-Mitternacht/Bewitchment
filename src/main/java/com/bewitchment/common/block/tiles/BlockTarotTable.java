@@ -37,7 +37,7 @@ public class BlockTarotTable extends BlockModTileEntity implements IInfusionStab
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		final EnumFacing facing = EnumFacing.getHorizontal(meta);
+		final EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
 		return getDefaultState().withProperty(FACING, facing);
 	}
 

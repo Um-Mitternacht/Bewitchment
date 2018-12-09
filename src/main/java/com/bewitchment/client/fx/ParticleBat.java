@@ -37,7 +37,7 @@ class ParticleBat extends Particle {
 		this.prevPosZ = this.posZ;
 
 		Vec3d movement = new Vec3d(motionX, motionY, motionZ);
-		double size = movement.lengthVector();
+		double size = movement.length();
 		movement = movement.add(acc).normalize().scale(size * decay);
 		motionX = movement.x;
 		motionY = movement.y;

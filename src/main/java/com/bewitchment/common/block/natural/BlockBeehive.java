@@ -118,7 +118,7 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		final EnumFacing facing = EnumFacing.getHorizontal(meta);
+		final EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
 		return getDefaultState().withProperty(FACING, facing);
 	}
 

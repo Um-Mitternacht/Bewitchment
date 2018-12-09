@@ -49,7 +49,7 @@ public class BlockBrazier extends BlockMod implements IInfusionStabiliserExt {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		final EnumFacing facing = EnumFacing.getHorizontal(meta & 0b11);
+		final EnumFacing facing = EnumFacing.byHorizontalIndex(meta & 0b11);
 		final boolean hanging = ((meta >> 2) & 1) == 1;
 		return getDefaultState().withProperty(FACING, facing).withProperty(HANGING, hanging);
 	}

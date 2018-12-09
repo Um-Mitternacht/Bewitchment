@@ -15,7 +15,7 @@ public class BiomeChangingUtils {
 
 	public static void changeWholeBiome(BlockPos pos, Biome newBiome, World world) {
 		int id = Biome.getIdForBiome(newBiome);
-		Chunk ch = world.getChunkFromBlockCoords(pos);
+		Chunk ch = world.getChunk(pos);
 		Object array = ch.getBiomeArray();
 		for (int i = 0; i < 255; i++) setArrayValue(array, id, i);
 		ch.markDirty();
@@ -112,7 +112,7 @@ public class BiomeChangingUtils {
 		 * @see BewitchmentAPI#IMMUTABLE
 		 */
 		public boolean visit(World world, BlockPos pos) {
-			return visit(world.getChunkFromBlockCoords(pos), pos);
+			return visit(world.getChunk(pos), pos);
 		}
 
 		/**
@@ -142,7 +142,7 @@ public class BiomeChangingUtils {
 		 * @see BewitchmentAPI#IMMUTABLE
 		 */
 		public boolean visitImmutable(World world, BlockPos pos) {
-			return visitImmutable(world.getChunkFromBlockCoords(pos), pos);
+			return visitImmutable(world.getChunk(pos), pos);
 		}
 
 		/**

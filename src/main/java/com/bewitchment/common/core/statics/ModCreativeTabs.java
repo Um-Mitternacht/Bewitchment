@@ -44,7 +44,7 @@ public final class ModCreativeTabs {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
-			return getIconItemStack();
+			return getIcon();
 		}
 	}
 
@@ -56,7 +56,7 @@ public final class ModCreativeTabs {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getIconItemStack() {
+		public ItemStack getIcon() {
 			return new ItemStack(ModItems.aconitum);
 		}
 	}
@@ -69,7 +69,7 @@ public final class ModCreativeTabs {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getIconItemStack() {
+		public ItemStack getIcon() {
 			return new ItemStack(ModItems.mortar_and_pestle);
 		}
 	}
@@ -82,7 +82,7 @@ public final class ModCreativeTabs {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getIconItemStack() {
+		public ItemStack getIcon() {
 			ItemStack stack = new ItemStack(ModItems.brew_phial_drink);
 			BrewData data = new BrewData();
 			data.addEntry(new BrewEntry(ModPotions.cursed_leaping, new BrewModifierListImpl()));
@@ -99,7 +99,7 @@ public final class ModCreativeTabs {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getIconItemStack() {
+		public ItemStack getIcon() {
 			return new ItemStack(ModBlocks.cauldron);
 		}
 	}
