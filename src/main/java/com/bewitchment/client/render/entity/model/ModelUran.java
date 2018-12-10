@@ -93,7 +93,7 @@ public class ModelUran extends ModelBase {
 		this.lHorn01b = new ModelRenderer(this, 42, 0);
 		this.lHorn01b.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.lHorn01b.addBox(-0.7F, -2.0F, -0.7F, 1, 2, 1, 0.0F);
-		this.neck01b = new ModelRenderer(this, 43, 23);
+		this.neck01b = new ModelRenderer(this, 43, 28);
 		this.neck01b.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.neck01b.addBox(-2.3F, -1.49F, -3.5F, 2, 3, 5, 0.0F);
 		this.rHorn02c = new ModelRenderer(this, 47, 6);
