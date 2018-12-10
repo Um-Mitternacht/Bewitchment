@@ -57,7 +57,7 @@ public class CropKelp extends BlockCrop {
 	}
 
 	@Override
-	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+	public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.setBlockState(pos, Blocks.WATER.getDefaultState(), 2);
 	}
 

@@ -32,7 +32,7 @@ public class BlockWitchesLight extends BlockMod {
 		}
 
 		@Override
-		public EnumPushReaction getMobilityFlag() {
+		public EnumPushReaction getPushReaction() {
 			return EnumPushReaction.DESTROY;
 		}
 

@@ -21,7 +21,7 @@ public class SpellLesserBlinking extends Spell {
 	@Override
 	public void performEffect(RayTraceResult rtrace, EntityLivingBase caster, World world) {
 		if (caster != null) {
-			BlockPos dest = new BlockPos(caster.getPositionVector().add(caster.getLookVec().scale(2).addVector(0, 1, 0)));
+			BlockPos dest = new BlockPos(caster.getPositionVector().add(caster.getLookVec().scale(2).add(0, 1, 0)));
 			if (!world.getBlockState(dest).causesSuffocation()) {
 				caster.setPositionAndUpdate(dest.getX(), dest.getY(), dest.getZ());
 			}

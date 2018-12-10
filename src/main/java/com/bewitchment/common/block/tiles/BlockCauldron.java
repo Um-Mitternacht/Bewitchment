@@ -60,7 +60,7 @@ public class BlockCauldron extends BlockModTileEntity {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = getDefaultState().withProperty(Bewitchment.HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
-		iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(5 - (meta & 3)));
+		iblockstate = iblockstate.withProperty(FACING, EnumFacing.byIndex(5 - (meta & 3)));
 		return iblockstate;
 	}
 

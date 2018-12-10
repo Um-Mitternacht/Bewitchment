@@ -124,7 +124,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public EnumPushReaction getMobilityFlag(IBlockState state) {
+	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.BLOCK;
 	}
 

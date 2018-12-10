@@ -161,7 +161,7 @@ public abstract class BlockCandle extends BlockMod implements IInfusionStabilise
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public EnumPushReaction getMobilityFlag(IBlockState state) {
+	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;
 	}
 
