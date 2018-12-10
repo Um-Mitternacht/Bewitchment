@@ -49,7 +49,7 @@ public class BlockThreadSpinner extends BlockModTileEntity {
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 

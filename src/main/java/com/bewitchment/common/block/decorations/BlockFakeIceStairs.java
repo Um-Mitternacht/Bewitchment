@@ -50,7 +50,7 @@ public class BlockFakeIceStairs extends BlockStairs implements IModelRegister {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 

@@ -88,7 +88,7 @@ public class BlockTorchwood extends BlockMod implements IGrowable, IPlantable {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

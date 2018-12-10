@@ -63,7 +63,7 @@ public class BlockCrystalBall extends BlockModTileEntity {
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
