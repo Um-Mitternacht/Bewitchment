@@ -169,7 +169,7 @@ public class ItemGirdleOfTheWooded extends ItemMod implements IBauble, IRenderBa
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.DARK_GREEN + I18n.format("witch.tooltip." + getTranslationKeyInefficiently(stack).substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.DARK_GREEN + I18n.format("witch.tooltip." + getUnlocalizedNameInefficiently(stack).substring(5) + "_description.name"));
 	}
 
 	@Override

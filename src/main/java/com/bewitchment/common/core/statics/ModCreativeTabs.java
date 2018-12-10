@@ -43,7 +43,7 @@ public final class ModCreativeTabs {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem() {
+		public ItemStack createIcon() {
 			return getIcon();
 		}
 	}
