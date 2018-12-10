@@ -1,7 +1,6 @@
 package com.bewitchment.common.block.misc;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
@@ -41,13 +40,19 @@ public class BlockPurifyingEarth extends BlockMod {
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		EnumCreatureAttribute attr = ((EntityLivingBase) entityIn).getCreatureAttribute();
-		ITransformation transformation = ((EntityPlayer) entityIn).getCapability(CapabilityTransformation.CAPABILITY, null).getType();
-		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT || transformation == DefaultTransformations.VAMPIRE || transformation == DefaultTransformations.SPECTRE || transformation == DefaultTransformations.WEREWOLF) {
+		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT || isTransformedPlayer(entityIn)) {
 			if (!entityIn.isBurning()) {
 				entityIn.setFire(1500);
 			}
-
 			super.onEntityWalk(worldIn, pos, entityIn);
 		}
+	}
+
+	private boolean isTransformedPlayer(Entity e) {
+		if (e instanceof EntityPlayer) {
+			ITransformation transformation = ((EntityPlayer) e).getCapability(CapabilityTransformation.CAPABILITY, null).getType();
+			return !transformation.canCrossSalt();
+		}
+		return false;
 	}
 }

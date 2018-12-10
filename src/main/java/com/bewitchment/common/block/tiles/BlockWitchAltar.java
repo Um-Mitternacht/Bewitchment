@@ -30,6 +30,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import vazkii.patchouli.common.multiblock.Multiblock;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -142,6 +143,9 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		if (worldIn instanceof Multiblock) {
+			return state.withProperty(COLOR, (int) (System.currentTimeMillis() / 1000) % 16);
+		}
 		if (state.getValue(ALTAR_TYPE) != AltarMultiblockType.UNFORMED) {
 			TileEntityWitchAltar tea = (TileEntityWitchAltar) worldIn.getTileEntity(getAltarTileFromMultiblock(worldIn, pos));
 			return state.withProperty(COLOR, tea.getColor().ordinal());
@@ -149,32 +153,6 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 		return state;
 	}
 
-//	@Override
-//	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-//		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-//
-//		if (isMBBase(worldIn, pos.north().north().east()))
-//			if (tryFormMultiblock(worldIn, pos, pos.north().north().east())) return;
-//		if (isMBBase(worldIn, pos.north().north().west()))
-//			if (tryFormMultiblock(worldIn, pos, pos.north().north().west())) return;
-//		if (isMBBase(worldIn, pos.north().east().east()))
-//			if (tryFormMultiblock(worldIn, pos, pos.north().east().east())) return;
-//		if (isMBBase(worldIn, pos.north().west().west()))
-//			if (tryFormMultiblock(worldIn, pos, pos.north().west().west())) return;
-//		if (isMBBase(worldIn, pos.south().south().east()))
-//			if (tryFormMultiblock(worldIn, pos, pos.south().south().east())) return;
-//		if (isMBBase(worldIn, pos.south().south().west()))
-//			if (tryFormMultiblock(worldIn, pos, pos.south().south().west())) return;
-//		if (isMBBase(worldIn, pos.south().east().east()))
-//			if (tryFormMultiblock(worldIn, pos, pos.south().east().east())) return;
-//		if (isMBBase(worldIn, pos.south().west().west()))
-//			if (tryFormMultiblock(worldIn, pos, pos.south().west().west())) return;
-//
-//		if (tryFormMultiblock(worldIn, pos.east(), pos.south().west())) return;
-//		if (tryFormMultiblock(worldIn, pos.east(), pos.north().west())) return;
-//		if (tryFormMultiblock(worldIn, pos.north(), pos.south().west())) return;
-//		if (tryFormMultiblock(worldIn, pos.north(), pos.south().east())) return;
-//	}
 
 	private boolean tryFormMultiblock(World worldIn, BlockPos firstCorner, BlockPos secondCorner) {
 		ArrayList<BlockPos> blocks = new ArrayList<BlockPos>(6);

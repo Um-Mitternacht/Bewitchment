@@ -171,6 +171,9 @@ public class ExtraBarButtonsHUD extends HudComponent {
 	public void setList(List<IHotbarAction> list) {
 		this.actions = list;
 		this.slotSelected = Math.min(slotSelected, list.size() - 1);
+		if (slotSelected < 0) {
+			isInExtraBar = false;
+		}
 		refreshSelected();
 	}
 

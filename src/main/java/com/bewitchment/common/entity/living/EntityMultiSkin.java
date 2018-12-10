@@ -45,18 +45,18 @@ public abstract class EntityMultiSkin extends EntityTameable {
 	}
 
 	public abstract int getSkinTypes();
-	
-	@Override 
-	public void writeEntityToNBT(NBTTagCompound compound) { 
-		super.writeEntityToNBT(compound); 
-		compound.setInteger("skin", dataManager.get(SKIN)); 
-	} 
-	 
-	@Override 
-	public void readEntityFromNBT(NBTTagCompound compound) { 
-		super.readEntityFromNBT(compound); 
-		dataManager.set(SKIN, compound.getInteger("skin")); 
-		dataManager.setDirty(SKIN); 
-	} 
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("skin", dataManager.get(SKIN));
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		dataManager.set(SKIN, compound.getInteger("skin"));
+		dataManager.setDirty(SKIN);
+	}
 
 }

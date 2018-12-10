@@ -90,11 +90,12 @@ public class SelectedActionHUD extends HudComponent {
 	@Override
 	public void render(ScaledResolution resolution, float partialTicks, boolean renderDummy) {
 		if (ExtraBarButtonsHUD.INSTANCE.isInExtraBar() || renderDummy) {
-			GlStateManager.pushMatrix();
 			IHotbarAction sel = renderDummy ? ModAbilities.NIGHT_VISION_VAMPIRE : ExtraBarButtonsHUD.INSTANCE.actionScroller[0];
-			sel.render(getX(), getY(), getWidth(), getHeight(), 0.4f);
-			GlStateManager.popMatrix();
+			if (sel != null) {
+				GlStateManager.pushMatrix();
+				sel.render(getX(), getY(), getWidth(), getHeight(), 0.4f);
+				GlStateManager.popMatrix();
+			}
 		}
 	}
-
 }
