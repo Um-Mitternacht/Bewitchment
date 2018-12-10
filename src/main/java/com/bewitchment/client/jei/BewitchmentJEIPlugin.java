@@ -36,7 +36,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
-		registry.addRecipeCategories(new SpinnerCategory(registry.getJeiHelpers().getGuiHelper()));
+		registry.addRecipeCategories(new LoomCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new OvenCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewingCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewModifierCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -49,9 +49,9 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.addRecipes(AdapterIRitual.REGISTRY.getValuesCollection().stream().sorted(BewitchmentJEIPlugin::compareRituals).collect(Collectors.toList()), RitualCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.ritual_chalk, 1, EnumGlyphType.GOLDEN.ordinal()), RitualCategory.UID);
 
-		registry.handleRecipes(SpinningThreadRecipe.class, i -> new SpinnerWrapper(i), SpinnerCategory.UID);
-		registry.addRecipes(SpinningThreadRecipe.REGISTRY.getValuesCollection(), SpinnerCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.thread_spinner), SpinnerCategory.UID);
+		registry.handleRecipes(SpinningThreadRecipe.class, i -> new LoomWrapper(i), LoomCategory.UID);
+		registry.addRecipes(SpinningThreadRecipe.REGISTRY.getValuesCollection(), LoomCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.thread_spinner), LoomCategory.UID);
 
 		registry.handleRecipes(OvenSmeltingRecipe.class, i -> new OvenWrapper(i), OvenCategory.UID);
 		registry.addRecipes(OvenSmeltingRecipe.REGISTRY.getValuesCollection(), OvenCategory.UID);

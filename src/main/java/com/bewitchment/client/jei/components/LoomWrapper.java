@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SpinnerWrapper implements IRecipeWrapper {
+public class LoomWrapper implements IRecipeWrapper {
 
 	Ingredient[] input;
 	ItemStack output;
 
-	public SpinnerWrapper(SpinningThreadRecipe recipe) {
+	public LoomWrapper(SpinningThreadRecipe recipe) {
 		input = recipe.getInputs();
 		output = recipe.getOutput();
 	}

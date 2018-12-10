@@ -11,12 +11,12 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
 
-public class SpinnerCategory implements IRecipeCategory<SpinnerWrapper> {
+public class LoomCategory implements IRecipeCategory<LoomWrapper> {
 
 	public static final String UID = LibMod.MOD_ID + ":spinner";
 	private IDrawable bg;
 
-	public SpinnerCategory(IGuiHelper igh) {
+	public LoomCategory(IGuiHelper igh) {
 		bg = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_spinner.png"), 0, 0, 90, 36).setTextureSize(90, 36).build();
 	}
 
@@ -41,7 +41,7 @@ public class SpinnerCategory implements IRecipeCategory<SpinnerWrapper> {
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, SpinnerWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, LoomWrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.length; i++) {
 			recipeLayout.getItemStacks().init(i + 1, true, (i % 2) * 18, (i / 2) * 18);
 			recipeLayout.getItemStacks().set(i + 1, Arrays.asList(recipeWrapper.input[i].getMatchingStacks()));
