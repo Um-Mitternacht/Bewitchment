@@ -389,6 +389,7 @@ public class ModelUran extends ModelBase {
 		this.neck01a.render(scale);
 		this.head.rotateAngleY = 0.001F * MathHelper.sin(time);
 	}
+
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
