@@ -66,7 +66,7 @@ public class ItemKnowledgeFragment extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
 	    /*For clarity, this code is more or less directly copied from ModelHandler.registerModel, but considering that
-          we may use quite a few different metadata values for these pages, it's best to do this rather than make a new
+	      we may use quite a few different metadata values for these pages, it's best to do this rather than make a new
           JSON file for each.*/
 		for (int i = 0; i < Fragment.values().length; i++) {
 			String variant;
