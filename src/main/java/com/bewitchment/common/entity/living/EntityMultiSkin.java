@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living;
 
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -44,5 +45,18 @@ public abstract class EntityMultiSkin extends EntityTameable {
 	}
 
 	public abstract int getSkinTypes();
+	
+	@Override 
+	public void writeEntityToNBT(NBTTagCompound compound) { 
+		super.writeEntityToNBT(compound); 
+		compound.setInteger("skin", dataManager.get(SKIN)); 
+	} 
+	 
+	@Override 
+	public void readEntityFromNBT(NBTTagCompound compound) { 
+		super.readEntityFromNBT(compound); 
+		dataManager.set(SKIN, compound.getInteger("skin")); 
+		dataManager.setDirty(SKIN); 
+	} 
 
 }
