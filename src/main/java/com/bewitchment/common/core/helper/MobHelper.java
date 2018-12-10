@@ -3,6 +3,7 @@ package com.bewitchment.common.core.helper;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -51,7 +52,7 @@ public class MobHelper {
 		SPIRITS.add("teamroots.roots.entity.EntityFairy");
 
 		//Will be used for actual demons later on.
-		//DEMONS.add(EntityBlaze.class.getName());
+		DEMONS.add(EntityUran.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
 		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
