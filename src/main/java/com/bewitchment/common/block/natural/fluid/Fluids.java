@@ -38,7 +38,7 @@ public final class Fluids {
 					.setDensity(1500).setViscosity(8000)
 			, fluid -> new BlockFluid(fluid, Material.WATER) {
 				@Override
-				public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+				public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 					if (entityIn instanceof EntityLivingBase)
 						((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60));
 				}
