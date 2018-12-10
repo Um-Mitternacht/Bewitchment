@@ -729,6 +729,8 @@ witch.tooltip.silver_helmet_description.name=Protects against undead
 witch.tooltip.silver_leggings_description.name=Protects against undead
 witch.tooltip.silver_boots_description.name=Protects against undead
 
+witch.tooltip.athame_description.name=This ceremonial dagger also allows you to obtain special loot from mobs.
+
 //Baubles
 item.shirt.name=Shirt
 item.ring.name=Ring
