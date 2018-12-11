@@ -42,8 +42,6 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 
 	//Todo: Rewrite code, and implement weaknesses to water. Also implement a special potion effect that upon killing a target, spawns more uranids.
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
-	//	private static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale", "Vasuki", "Bakunawa", "Kaliya", "Karkotaka", "Manasa", "Mucalinda", "Padmavati", "Paravataksha", "Takshaka", "Ulupi", "Yulong", "Sir Booplesnoot", "Cobra", "Angus Snake", "Anguis", "Python", "Fafnir", "Echidna", "Anaconda", "Madame White Snake", "Meretseger", "Kaa", "Snape", "Solid Snake", "Apophis", "Ouroboros"};
-	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN, Items.BEEF, Items.MUTTON, Items.PORKCHOP, Items.FISH, ModItems.heart);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
 	private int timerRef = 0;
 
@@ -153,18 +151,6 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 			}
 		}
 		return flag;
-	}
-
-	@Override
-	public boolean canMateWith(EntityAnimal otherAnimal) {
-		if (otherAnimal == this) {
-			return false;
-		} else if (!(otherAnimal instanceof EntityUran)) {
-			return false;
-		} else {
-			EntityUran entityUran = (EntityUran) otherAnimal;
-			return this.isInLove() && entityUran.isInLove();
-		}
 	}
 
 	@Override
