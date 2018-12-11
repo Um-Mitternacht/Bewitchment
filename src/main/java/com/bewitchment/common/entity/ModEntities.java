@@ -78,6 +78,9 @@ public final class ModEntities {
 		Set<Biome> validLizard = BiomeDictionary.getBiomes(Type.FOREST);
 		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getRegistryName()));
 
+		Set<Biome> validUran = BiomeDictionary.getBiomes(Type.PLAINS);
+		validUran.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
+
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
 		Biome[] biomesToad = new Biome[validToad.size()];
@@ -85,6 +88,7 @@ public final class ModEntities {
 		Biome[] biomesBlindworm = new Biome[validBlindworm.size()];
 		Biome[] biomesNewt = new Biome[validNewt.size()];
 		Biome[] biomesLizard = new Biome[validLizard.size()];
+		Biome[] biomesUran = new Biome[validUran.size()];
 
 		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
 		EntityRegistry.addSpawn(EntitySnake.class, 5, 1, 1, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
@@ -93,6 +97,7 @@ public final class ModEntities {
 		EntityRegistry.addSpawn(EntityBlindworm.class, 5, 1, 1, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
 		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
 		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
+		EntityRegistry.addSpawn(EntityUran.class, 1, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 	}
 
 	private static ResourceLocation getResource(String name) {
