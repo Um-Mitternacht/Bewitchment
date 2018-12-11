@@ -34,7 +34,7 @@ public class EntityHellhound extends EntityMultiSkin {
 		super.applyEntityAttributes();
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.80d);
 	}
@@ -56,6 +56,6 @@ public class EntityHellhound extends EntityMultiSkin {
 	@Nullable
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
+		return new EntityHellhound(world);
 	}
 }
