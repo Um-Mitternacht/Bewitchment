@@ -3,11 +3,8 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
-import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGrass;
 import net.minecraft.block.BlockNetherBrick;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -15,10 +12,7 @@ import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -30,12 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Set;
 
 /**
  * Created by Joseph on 10/2/2018.

@@ -1,10 +1,17 @@
 package com.bewitchment.common.entity.spirits.demons;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockNetherrack;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -15,6 +22,7 @@ import javax.annotation.Nullable;
 public class EntityHellhound extends EntityMultiSkin {
 	public EntityHellhound(World worldIn) {
 		super(worldIn);
+		setSize(1.6F, 1.6F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
 		this.setPathPriority(PathNodeType.LAVA, 8.0F);
@@ -30,6 +38,16 @@ public class EntityHellhound extends EntityMultiSkin {
 	}
 
 	@Override
+	public boolean getCanSpawnHere() {
+		int i = MathHelper.floor(this.posX);
+		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
+		int k = MathHelper.floor(this.posZ);
+		BlockPos blockpos = new BlockPos(i, j, k);
+		Block block = this.world.getBlockState(blockpos.down()).getBlock();
+		return block instanceof BlockNetherrack && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
+	}
+
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
@@ -41,7 +59,11 @@ public class EntityHellhound extends EntityMultiSkin {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 2;
+		return 4;
+	}
+
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.getAPI().DEMON;
 	}
 
 	public float getBrightness() {

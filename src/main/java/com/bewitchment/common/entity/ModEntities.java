@@ -3,6 +3,7 @@ package com.bewitchment.common.entity;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.EnumCreatureType;
@@ -49,6 +50,7 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 		//Demons
 		EntityRegistry.registerModEntity(getResource("uran"), EntityUran.class, "entity_uran", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
+		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
@@ -81,6 +83,9 @@ public final class ModEntities {
 		Set<Biome> validUran = BiomeDictionary.getBiomes(Type.NETHER);
 		validUran.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
 
+		Set<Biome> validHellhound = BiomeDictionary.getBiomes(Type.NETHER);
+		validHellhound.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
+
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
 		Biome[] biomesToad = new Biome[validToad.size()];
@@ -89,6 +94,7 @@ public final class ModEntities {
 		Biome[] biomesNewt = new Biome[validNewt.size()];
 		Biome[] biomesLizard = new Biome[validLizard.size()];
 		Biome[] biomesUran = new Biome[validUran.size()];
+		Biome[] biomesHellhound = new Biome[validHellhound.size()];
 
 		//Animals
 		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
@@ -100,6 +106,7 @@ public final class ModEntities {
 		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
 		//Demons
 		EntityRegistry.addSpawn(EntityUran.class, 2, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
+		EntityRegistry.addSpawn(EntityHellhound.class, 2, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
 	}
 
 	private static ResourceLocation getResource(String name) {
