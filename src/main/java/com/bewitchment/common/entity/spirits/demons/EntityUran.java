@@ -187,11 +187,6 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	}
 
 	@Override
-	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() == ModItems.heart;
-	}
-
-	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityUran(world);
 	}

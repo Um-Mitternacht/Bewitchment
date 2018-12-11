@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -26,6 +27,25 @@ public class EntityHellhound extends EntityMultiSkin {
 		if (this.isWet()) {
 			this.attackEntityFrom(DamageSource.DROWN, 1.0F);
 		}
+	}
+
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.80d);
+	}
+
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+
+	public float getBrightness() {
+		return 0.3F;
 	}
 
 	@Override
