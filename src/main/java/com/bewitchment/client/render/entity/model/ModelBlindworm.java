@@ -118,7 +118,7 @@ public class ModelBlindworm extends ModelBase {
 			this.head.rotateAngleX = 0;
 			this.head.rotateAngleZ = 0;
 		} else {
-	    	// TODO: This is the cause of the clipping. Additionally, boxes probably shouldn't be added during render() ... may be a memory leak.
+			// TODO: This is the cause of the clipping. Additionally, boxes probably shouldn't be added during render() ... may be a memory leak.
 			// this.neck01b.addBox(-2.3F, -1.49F, -6.0F, 2, 3, 8, MathHelper.sin(time));
 
 		}
