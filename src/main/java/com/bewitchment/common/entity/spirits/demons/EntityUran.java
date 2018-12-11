@@ -89,12 +89,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		for (Biome biome : Biome.REGISTRY) {
-			if (biome != null && BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
-				block = this.world.getBlockState(blockpos.down()).getBlock();
-			}
-		}
-		return block instanceof BlockNetherBrick && this.world.getLight(blockpos) < 8 && super.getCanSpawnHere();
+		return block instanceof BlockNetherBrick && this.world.getLight(blockpos) < 12 && super.getCanSpawnHere();
 	}
 
 	@Override

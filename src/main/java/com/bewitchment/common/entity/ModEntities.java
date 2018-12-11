@@ -90,6 +90,7 @@ public final class ModEntities {
 		Biome[] biomesLizard = new Biome[validLizard.size()];
 		Biome[] biomesUran = new Biome[validUran.size()];
 
+		//Animals
 		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
 		EntityRegistry.addSpawn(EntitySnake.class, 5, 1, 1, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
 		EntityRegistry.addSpawn(EntityToad.class, 2, 1, 1, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
@@ -97,6 +98,8 @@ public final class ModEntities {
 		EntityRegistry.addSpawn(EntityBlindworm.class, 5, 1, 1, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
 		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
 		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
+		//Demons
+		EntityRegistry.addSpawn(EntityUran.class, 2, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 	}
 
 	private static ResourceLocation getResource(String name) {
