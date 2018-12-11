@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class RenderToad extends RenderLiving<EntityToad> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[6];
+	private static final ResourceLocation[] textures = new ResourceLocation[4];
 
 	static {
 		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/animals/toad_1.png");
