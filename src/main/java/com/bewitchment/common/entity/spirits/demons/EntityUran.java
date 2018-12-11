@@ -8,6 +8,7 @@ import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
+import net.minecraft.block.BlockNetherBrick;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -28,6 +29,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -85,8 +88,13 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
-		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block instanceof BlockGrass && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
+		Block block = null;
+		for (Biome biome : Biome.REGISTRY) {
+			if (biome != null && BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
+				block = this.world.getBlockState(blockpos.down()).getBlock();
+			}
+		}
+		return block instanceof BlockNetherBrick && this.world.getLight(blockpos) < 8 && super.getCanSpawnHere();
 	}
 
 	@Override
