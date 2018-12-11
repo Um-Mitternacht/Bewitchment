@@ -46,7 +46,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	protected static final AxisAlignedBB FLAT_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0025D, 1.0D);
 
 	public BlockCircleGlyph(String id) {
-		super(id, Material.GRASS);
+		super(id, Material.CIRCUITS);
 		this.setDefaultState(this.blockState.getBaseState()
 				.withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH)
 				.withProperty(StateProperties.GLYPH_TYPE, EnumGlyphType.NORMAL)
