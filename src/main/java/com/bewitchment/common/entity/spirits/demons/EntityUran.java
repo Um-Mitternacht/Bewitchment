@@ -88,7 +88,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
-		Block block = null;
+		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		for (Biome biome : Biome.REGISTRY) {
 			if (biome != null && BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
 				block = this.world.getBlockState(blockpos.down()).getBlock();
