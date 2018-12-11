@@ -179,8 +179,8 @@ public class ModelSnake extends ModelBase {
 				this.head.rotateAngleZ = 0;
 				snek.resetTimer();
 			} else {
-				this.neck01b.addBox(-2.3F, -1.49F, -6.0F, 2, 3, 8, MathHelper.sin(time));
-
+	    		// TODO: This is the cause of the clipping. Additionally, boxes probably shouldn't be added during render() ... may be a memory leak.
+				//this.neck01b.addBox(-2.3F, -1.49F, -6.0F, 2, 3, 8, MathHelper.sin(time));
 			}
 		}
 		this.neck01a.render(scale);
