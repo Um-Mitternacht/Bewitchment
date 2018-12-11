@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockNetherrack;
 import net.minecraft.entity.*;
@@ -11,9 +12,13 @@ import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
@@ -25,6 +30,10 @@ import javax.annotation.Nullable;
  * Created by Joseph on 12/10/2018.
  */
 public class EntityHellhound extends EntityMultiSkin {
+
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
+	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
+
 	public EntityHellhound(World worldIn) {
 		super(worldIn);
 		setSize(1.6F, 1.6F);
@@ -114,6 +123,13 @@ public class EntityHellhound extends EntityMultiSkin {
 	@Override
 	public int getSkinTypes() {
 		return 6;
+	}
+
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataManager.register(TINT, 0xFFFFFF);
+		this.aiSit = new EntityAISit(this);
 	}
 
 	@Nullable
