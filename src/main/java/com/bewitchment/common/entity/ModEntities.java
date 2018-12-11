@@ -78,7 +78,7 @@ public final class ModEntities {
 		Set<Biome> validLizard = BiomeDictionary.getBiomes(Type.FOREST);
 		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getRegistryName()));
 
-		Set<Biome> validUran = BiomeDictionary.getBiomes(Type.PLAINS);
+		Set<Biome> validUran = BiomeDictionary.getBiomes(Type.NETHER);
 		validUran.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
 
 		Biome[] biomesOwl = new Biome[validOwl.size()];
@@ -97,7 +97,6 @@ public final class ModEntities {
 		EntityRegistry.addSpawn(EntityBlindworm.class, 5, 1, 1, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
 		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
 		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
-		EntityRegistry.addSpawn(EntityUran.class, 1, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 	}
 
 	private static ResourceLocation getResource(String name) {
