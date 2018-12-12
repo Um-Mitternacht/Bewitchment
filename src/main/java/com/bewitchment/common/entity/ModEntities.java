@@ -14,7 +14,6 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -56,6 +55,7 @@ public final class ModEntities {
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid owl biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
+
 		List<Biome> validSnake = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
@@ -76,7 +76,7 @@ public final class ModEntities {
 
 		List<Biome> validRaven = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
-				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND) || !BiomeDictionary.hasType(b, Type.NETHER ) || !BiomeDictionary.hasType(b, Type.VOID))
+				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid raven biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
