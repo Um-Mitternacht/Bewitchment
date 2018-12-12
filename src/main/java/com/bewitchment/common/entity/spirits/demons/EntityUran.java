@@ -80,7 +80,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block instanceof BlockNetherBrick && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
+		return block instanceof BlockNetherBrick && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || !this.world.canBlockSeeSky(new BlockPos(this));
 	}
 
 	@Override

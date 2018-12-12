@@ -118,7 +118,6 @@ public class Bewitchment {
 		FrostFireRecipe.init();
 		proxy.preInit(event);
 		ThaumcraftCompatBridge.loadThaumcraftCompat();
-		EntityPlacementHelper.init();
 
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
