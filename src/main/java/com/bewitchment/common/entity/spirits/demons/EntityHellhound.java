@@ -108,7 +108,7 @@ public class EntityHellhound extends EntityMultiSkin {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 4;
+		return 10;
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {

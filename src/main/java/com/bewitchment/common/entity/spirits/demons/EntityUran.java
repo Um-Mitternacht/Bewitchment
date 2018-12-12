@@ -127,7 +127,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 2;
+		return 10;
 	}
 
 	public float getBrightness() {
