@@ -53,38 +53,56 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
-				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE))
+				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid owl biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 		List<Biome> validSnake = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
-				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS))
+				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.HILLS) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid snake biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
-		Set<Biome> validToad = BiomeDictionary.getBiomes(Type.SWAMP);
-		validToad.forEach(b -> Log.d("Valid toad biome found: " + b.getRegistryName()));
+		List<Biome> validToad = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid toad biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
-		Set<Biome> validNewt = BiomeDictionary.getBiomes(Type.SWAMP);
-		validNewt.forEach(b -> Log.d("Valid newt biome found: " + b.getRegistryName()));
+		List<Biome> validNewt = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid newt biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
 		List<Biome> validRaven = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
-				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND))
+				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND) || !BiomeDictionary.hasType(b, Type.NETHER ) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid raven biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
-		Set<Biome> validBlindworm = BiomeDictionary.getBiomes(Type.FOREST);
-		validBlindworm.forEach(b -> Log.d("Valid blindworm biome found: " + b.getRegistryName()));
+		List<Biome> validBlindworm = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.FOREST) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid blindworm biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
-		Set<Biome> validLizard = BiomeDictionary.getBiomes(Type.FOREST);
-		validLizard.forEach(b -> Log.d("Valid lizard biome found: " + b.getRegistryName()));
+		List<Biome> validLizard = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.FOREST) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid lizard biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
-		Set<Biome> validUran = BiomeDictionary.getBiomes(Type.NETHER);
-		validUran.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
+		List<Biome> validUran = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid uran biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
-		Set<Biome> validHellhound = BiomeDictionary.getBiomes(Type.NETHER);
-		validHellhound.forEach(b -> Log.d("Valid uran biome found: " + b.getRegistryName()));
+		List<Biome> validHellhound = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid hellhound biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
 
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
