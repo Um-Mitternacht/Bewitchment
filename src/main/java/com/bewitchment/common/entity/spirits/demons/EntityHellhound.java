@@ -4,14 +4,11 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.lib.LibMod;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockNetherrack;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -20,9 +17,6 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -54,12 +48,7 @@ public class EntityHellhound extends EntityMultiSkin {
 
 	@Override
 	public boolean getCanSpawnHere() {
-		int i = MathHelper.floor(this.posX);
-		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
-		int k = MathHelper.floor(this.posZ);
-		BlockPos blockpos = new BlockPos(i, j, k);
-		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block instanceof BlockNetherrack && block == Blocks.NETHER_BRICK && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || this.world.provider.doesWaterVaporize() || this.world.provider.isNether() && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
+		return (this.world.provider.doesWaterVaporize() || this.world.provider.isNether()) && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
 	}
 
 	@Override
