@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -58,7 +59,7 @@ public class EntityHellhound extends EntityMultiSkin {
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block instanceof BlockNetherrack && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || !this.world.canBlockSeeSky(new BlockPos(this));
+		return block instanceof BlockNetherrack || block == Blocks.NETHER_BRICK || block != Blocks.NETHER_BRICK_FENCE || block != Blocks.NETHER_BRICK_STAIRS || block != Blocks.LAVA || block != Blocks.FLOWING_LAVA || block != Blocks.GRAVEL || block != Blocks.SOUL_SAND || block != Blocks.MAGMA || block != Blocks.QUARTZ_ORE || block != Blocks.BEDROCK || block != Blocks.GLOWSTONE && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || !this.world.canBlockSeeSky(new BlockPos(this));
 	}
 
 	@Override
