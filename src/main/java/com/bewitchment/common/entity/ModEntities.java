@@ -105,8 +105,8 @@ public final class ModEntities {
 		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
 		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
 		//Demons
-		EntityRegistry.addSpawn(EntityUran.class, 2, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
-		EntityRegistry.addSpawn(EntityHellhound.class, 2, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
+		EntityRegistry.addSpawn(EntityUran.class, 3, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
+		EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
 	}
 
 	private static ResourceLocation getResource(String name) {
