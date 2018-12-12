@@ -25,7 +25,8 @@ public class ModRituals {
 			draw_circle_small, draw_circle_medium, draw_circle_large, infusion_overworld,
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
-			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair;
+			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
+			spawn_hellhound;
 
 	public static void init() {
 
@@ -156,6 +157,20 @@ public class ModRituals {
 				circles(NETHER, NETHER, NETHER),
 				5000,
 				4);
+		spawn_hellhound = new RitualConjurationHellhound(
+				rl("conjure_hellhound"),
+				of(
+						LibIngredients.blazePowder,
+						LibIngredients.tongueOfDog,
+						LibIngredients.soulSand,
+						LibIngredients.hellebore
+
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				400,
+				circles(NETHER, NETHER, null),
+				1750,
+				3);
 		draw_circle_small = new RitualDrawing(
 				rl("draw_circle_small"),
 				of(
@@ -222,7 +237,7 @@ public class ModRituals {
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
-				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair
+				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
