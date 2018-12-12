@@ -81,7 +81,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		int k = MathHelper.floor(this.posZ);
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block instanceof BlockNetherBrick || block != Blocks.NETHER_BRICK_FENCE || block != Blocks.NETHER_BRICK_STAIRS || block != Blocks.LAVA || block != Blocks.FLOWING_LAVA || block != Blocks.GRAVEL || block != Blocks.SOUL_SAND || block != Blocks.NETHERRACK || block != Blocks.MAGMA || block != Blocks.QUARTZ_ORE || block != Blocks.BEDROCK || block != Blocks.GLOWSTONE && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || !this.world.canBlockSeeSky(new BlockPos(this));
+		return block instanceof BlockNetherBrick && super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL || this.world.provider.doesWaterVaporize() || this.world.provider.isNether() && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
 	}
 
 	@Override
