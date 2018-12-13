@@ -4,7 +4,6 @@ import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
