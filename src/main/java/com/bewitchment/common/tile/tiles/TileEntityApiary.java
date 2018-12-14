@@ -61,7 +61,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 			return new ItemStack(ModItems.honeycomb);
 		}
 
-		if (item == Items.PAPER || item == Item.getItemFromBlock(Blocks.CARPET)) {
+		if (item == Items.ITEM_FRAME) {
 			return new ItemStack(ModItems.empty_honeycomb);
 		}
 		return is;
@@ -141,7 +141,7 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 			Item i = stack.getItem();
-			if (i == Items.PAPER || i == Item.getItemFromBlock(Blocks.CARPET) || i == ModItems.empty_honeycomb) {
+			if (i == Items.ITEM_FRAME || i == ModItems.empty_honeycomb) {
 				return super.insertItem(slot, stack, simulate);
 			}
 			return stack;
