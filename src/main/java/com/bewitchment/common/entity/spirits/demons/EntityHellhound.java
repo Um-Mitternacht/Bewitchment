@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  */
 public class EntityHellhound extends EntityMultiSkin {
 
-	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
 
 	public EntityHellhound(World worldIn) {
