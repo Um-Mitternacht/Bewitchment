@@ -163,7 +163,8 @@ public class ModRituals {
 						LibIngredients.blazePowder,
 						LibIngredients.tongueOfDog,
 						LibIngredients.soulSand,
-						LibIngredients.hellebore
+						LibIngredients.hellebore,
+						LibIngredients.athame
 
 				),
 				ofs(new ItemStack(ModItems.athame)),
@@ -179,7 +180,8 @@ public class ModRituals {
 						LibIngredients.filetOfFennySnake,
 						LibIngredients.blindwormsSting,
 						LibIngredients.lizardLeg,
-						LibIngredients.hellebore
+						LibIngredients.hellebore,
+						LibIngredients.athame
 
 				),
 				ofs(new ItemStack(ModItems.athame)),
