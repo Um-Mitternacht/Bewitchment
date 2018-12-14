@@ -180,8 +180,6 @@ public class EntitySnake extends EntityMultiSkin {
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION
 		//TODO
-		this.setTamedBy(player);
-		this.setSitting(!player.isSneaking());
 		//---- ^^^^ ----
 		if (this.getAttackTarget() == null || this.getAttackTarget().isDead || this.getRevengeTarget() == null || this.getRevengeTarget().isDead) {
 			ItemStack itemstack = player.getHeldItem(hand);
