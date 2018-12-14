@@ -26,7 +26,7 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound;
+			spawn_hellhound, spawn_uranid;
 
 	public static void init() {
 
@@ -171,6 +171,22 @@ public class ModRituals {
 				circles(NETHER, NETHER, null),
 				1750,
 				3);
+		spawn_uranid = new RitualConjurationUranid(
+				rl("conjure_uranid"),
+				of(
+						LibIngredients.blazePowder,
+						LibIngredients.addersFork,
+						LibIngredients.filetOfFennySnake,
+						LibIngredients.blindwormsSting,
+						LibIngredients.lizardLeg,
+						LibIngredients.hellebore
+
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				600,
+				circles(NETHER, NETHER, null),
+				1850,
+				3);
 		draw_circle_small = new RitualDrawing(
 				rl("draw_circle_small"),
 				of(
@@ -237,7 +253,8 @@ public class ModRituals {
 				infusion_overworld, infusion_nether, infusion_end, infusion_dream,
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
-				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound
+				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
+				spawn_uranid
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));

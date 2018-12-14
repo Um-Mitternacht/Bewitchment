@@ -92,6 +92,10 @@ public class LibIngredients {
 	public static Ingredient oakAppleGall = Ingredient.fromItem(ModItems.oak_apple_gall);
 	public static Ingredient tongueOfDog = Ingredient.fromItem(ModItems.tongue_of_dog);
 	public static Ingredient hellebore = Ingredient.fromItem(ModItems.hellebore);
+	public static Ingredient filetOfFennySnake = Ingredient.fromItem(ModItems.filet_of_fenny_snake);
+	public static Ingredient addersFork = Ingredient.fromItem(ModItems.adders_fork);
+	public static Ingredient blindwormsSting = Ingredient.fromItem(ModItems.blindworms_sting);
+	public static Ingredient lizardLeg = Ingredient.fromItem(ModItems.lizard_leg);
 	public static Ingredient empty_jar = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()));
 
 }
