@@ -3,6 +3,8 @@ package com.bewitchment.common.item.tool;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
@@ -210,6 +212,36 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 
 				else if (event.getEntityLiving() instanceof EntityDonkey && rand.nextInt(4) <= 2 + 2 * looting)
 					addDrop(event, new ItemStack(ModItems.equine_tail, 1));
+
+				else if (event.getEntityLiving() instanceof EntitySnake && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.filet_of_fenny_snake, 3));
+
+				else if (event.getEntityLiving() instanceof EntitySnake && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.adders_fork, 3));
+
+				else if (event.getEntityLiving() instanceof EntityHellhound && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.tongue_of_dog, 1));
+
+				else if (event.getEntityLiving() instanceof EntityHellhound && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(Items.BLAZE_POWDER, 4));
+
+				else if (event.getEntityLiving() instanceof EntityBlindworm && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.blindworms_sting, 2));
+
+				else if (event.getEntityLiving() instanceof EntityLizard && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.lizard_leg, 4));
+
+				else if (event.getEntityLiving() instanceof EntityNewt && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.eye_of_newt, 2));
+
+				else if (event.getEntityLiving() instanceof EntityRaven && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.ravens_feather, 4));
+
+				else if (event.getEntityLiving() instanceof EntityToad && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.toe_of_frog, 4));
+
+				else if (event.getEntityLiving() instanceof EntityOwl && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.owlets_wing, 2));
 
 				else if (event.getEntityLiving() instanceof EntityPlayer && rand.nextInt(11) <= 1 + looting) {
 					ItemStack stack = new ItemStack(Items.SKULL, 1, 3);
