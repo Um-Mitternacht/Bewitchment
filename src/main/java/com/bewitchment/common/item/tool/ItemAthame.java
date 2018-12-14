@@ -223,7 +223,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 					addDrop(event, new ItemStack(ModItems.tongue_of_dog, 1));
 
 				else if (event.getEntityLiving() instanceof EntityHellhound && rand.nextInt(4) <= 2 + 2 * looting)
-					addDrop(event, new ItemStack(Items.BLAZE_POWDER, 4));
+					addDrop(event, new ItemStack(Items.BLAZE_POWDER, 4, 0));
 
 				else if (event.getEntityLiving() instanceof EntityBlindworm && rand.nextInt(4) <= 2 + 2 * looting)
 					addDrop(event, new ItemStack(ModItems.blindworms_sting, 2));

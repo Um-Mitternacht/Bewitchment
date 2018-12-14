@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.ritual.rituals;
 
 import com.bewitchment.common.content.ritual.RitualImpl;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.entity.IEntityLivingData;

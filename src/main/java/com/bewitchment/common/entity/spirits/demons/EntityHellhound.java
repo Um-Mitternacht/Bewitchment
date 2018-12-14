@@ -40,6 +40,11 @@ public class EntityHellhound extends EntityMultiSkin {
 		this.experienceValue = 20;
 	}
 
+	@Override
+	protected ResourceLocation getLootTable() {
+		return loot;
+	}
+
 	protected void updateAITasks() {
 		if (this.isWet()) {
 			this.attackEntityFrom(DamageSource.DROWN, 1.0F);
