@@ -40,7 +40,7 @@ import java.util.Set;
 public class EntityToad extends EntityMultiSkin {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
-	//	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden"};
+	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
 
