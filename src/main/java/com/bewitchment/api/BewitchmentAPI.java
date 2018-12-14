@@ -3,6 +3,7 @@ package com.bewitchment.api;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
+import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.infusion.IInfusion;
@@ -51,6 +52,8 @@ public abstract class BewitchmentAPI {
 	public abstract void registerIncantation(String name, IIncantation incantation);
 
 	public abstract void registerSpell(ISpell spell);
+
+	public abstract void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f);
 
 	public abstract void registerInfusion(IInfusion infusion);
 

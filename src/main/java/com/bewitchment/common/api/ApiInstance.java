@@ -5,6 +5,7 @@ import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifier;
 import com.bewitchment.api.divination.IFortune;
 import com.bewitchment.api.event.TransformationModifiedEvent;
+import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.api.incantation.IIncantation;
 import com.bewitchment.api.infusion.IInfusion;
@@ -98,6 +99,19 @@ public class ApiInstance extends BewitchmentAPI {
 	@Override
 	public void setPlayerInfusion(EntityPlayer player, IInfusion infusion) {
 		player.getCapability(InfusionCapability.CAPABILITY, null).setType(infusion);
+	}
+
+	@Override
+	public void bindFamiliarToPlayer(EntityPlayer p, EntityFamiliar f) {
+		if (!f.isTamed() || !f.getOwnerAcrossWorlds().equals(p)) {
+			throw new IllegalStateException("Can't make a familiar if the entity is not tamed, or tamed by another player");
+		}
+		f.setFamiliar(true);
+		f.setEntitySkin(p.getRNG().nextInt(f.getTotalVariants())); // TODO add special variants
+		if (!f.hasCustomName()) {
+			f.setCustomNameTag(f.getRandomNames()[p.getRNG().nextInt(f.getRandomNames().length)]);
+		}
+		// TODO save that to player data
 	}
 
 	/**
