@@ -48,8 +48,8 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("newt"), EntityNewt.class, "entity_newt", id++, Bewitchment.instance, 64, 1, true, 0x000000, 0xFFD300);
 		EntityRegistry.registerModEntity(getResource("lizard"), EntityLizard.class, "entity_lizard", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
 		//Demons
-		EntityRegistry.registerModEntity(getResource("uran"), EntityUran.class, "entity_uran", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
-		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x568203, 0x0070BB);
+		EntityRegistry.registerModEntity(getResource("uran"), EntityUran.class, "entity_uran", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xFF9966);
+		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))

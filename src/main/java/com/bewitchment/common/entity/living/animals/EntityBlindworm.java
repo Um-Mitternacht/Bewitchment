@@ -1,11 +1,13 @@
 package com.bewitchment.common.entity.living.animals;
 
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -62,6 +64,22 @@ public class EntityBlindworm extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.55d);
+	}
+
+	public void onStruckByLightning(EntityLightningBolt lightningBolt) {
+		if (!this.world.isRemote && !this.isDead) {
+			EntityUran entityuran = new EntityUran(this.world);
+			entityuran.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+			entityuran.setNoAI(this.isAIDisabled());
+
+			if (this.hasCustomName()) {
+				entityuran.setCustomNameTag(this.getCustomNameTag());
+				entityuran.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
+			}
+
+			this.world.spawnEntity(entityuran);
+			this.setDead();
+		}
 	}
 
 	@Override

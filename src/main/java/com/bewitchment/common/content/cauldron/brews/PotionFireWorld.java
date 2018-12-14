@@ -4,22 +4,38 @@ import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.content.cauldron.BrewMod;
+import com.bewitchment.common.entity.living.animals.EntityBlindworm;
+import com.bewitchment.common.entity.living.animals.EntitySnake;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import net.minecraft.block.*;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityZombieVillager;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.LoaderException;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Joseph on 4/14/2018.
@@ -61,6 +77,43 @@ public class PotionFireWorld extends BrewMod {
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entity, int amplifier, double health) {
 		entity.setFire((1 + amplifier) * 2);
+		{
+
+		}
+		if (entity instanceof EntitySnake) {
+			entity.setDead();
+			EntityUran entityUran = new EntityUran(entity.world);
+			entityUran.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+			entityUran.setHealth(entity.getHealth());
+			entityUran.renderYawOffset = entity.renderYawOffset;
+			if (entity.hasCustomName()) {
+				entityUran.setCustomNameTag(entity.getCustomNameTag());
+			}
+			entity.world.spawnEntity(entityUran);
+			entityUran.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+		} else if (entity instanceof EntityBlindworm) {
+			entity.setDead();
+			EntityUran entityUran = new EntityUran(entity.world);
+			entityUran.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+			entityUran.setHealth(entity.getHealth());
+			entityUran.renderYawOffset = entity.renderYawOffset;
+			if (entity.hasCustomName()) {
+				entityUran.setCustomNameTag(entity.getCustomNameTag());
+			}
+			entity.world.spawnEntity(entityUran);
+			entityUran.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+		} else if (entity instanceof EntityWolf) {
+			entity.setDead();
+			EntityHellhound entityHellhound = new EntityHellhound(entity.world);
+			entityHellhound.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+			entityHellhound.setHealth(entity.getHealth());
+			entityHellhound.renderYawOffset = entity.renderYawOffset;
+			if (entity.hasCustomName()) {
+				entityHellhound.setCustomNameTag(entity.getCustomNameTag());
+			}
+			entity.world.spawnEntity(entityHellhound);
+			entityHellhound.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+		}
 	}
 
 	@Override
