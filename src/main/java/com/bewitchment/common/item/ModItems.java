@@ -91,7 +91,6 @@ public final class ModItems {
 	public static final Item infested_wheat = null;
 	public static final Item witchweed = null;
 
-	public static final Item bee = null;
 	public static final Item glass_jar = null;
 
 	public static final Item brew_phial_drink = null;
@@ -246,7 +245,6 @@ public final class ModItems {
 				new ItemHoney(),
 				new ItemSalt(),
 				new ItemMod(LibItemName.WAX),
-				new ItemMod(LibItemName.BEE).setMaxDamage(35),
 				new ItemMod(LibItemName.HONEYCOMB),
 				new ItemMod(LibItemName.EMPTY_HONEYCOMB),
 				new ItemMod(LibItemName.MORTAR_AND_PESTLE),

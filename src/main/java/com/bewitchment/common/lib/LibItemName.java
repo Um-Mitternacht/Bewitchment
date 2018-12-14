@@ -92,7 +92,6 @@ public final class LibItemName {
 	public static final String MORTAR_AND_PESTLE_STONE = "mortar_and_pestle_stone";
 	public static final String WAX = "wax";
 	public static final String SALT = "salt";
-	public static final String BEE = "bee";
 	public static final String WOOL_OF_BAT = "wool_of_bat";
 	public static final String TONGUE_OF_DOG = "tongue_of_dog";
 	public static final String WOOD_ASH = "wood_ash";
