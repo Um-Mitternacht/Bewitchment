@@ -1,6 +1,7 @@
 package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -11,6 +12,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -80,6 +82,22 @@ public class EntitySnake extends EntityMultiSkin {
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		return block instanceof BlockGrass && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
+	}
+
+	public void onStruckByLightning(EntityLightningBolt lightningBolt) {
+		if (!this.world.isRemote && !this.isDead) {
+			EntityUran entityuran = new EntityUran(this.world);
+			entityuran.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+			entityuran.setNoAI(this.isAIDisabled());
+
+			if (this.hasCustomName()) {
+				entityuran.setCustomNameTag(this.getCustomNameTag());
+				entityuran.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
+			}
+
+			this.world.spawnEntity(entityuran);
+			this.setDead();
+		}
 	}
 
 	@Override

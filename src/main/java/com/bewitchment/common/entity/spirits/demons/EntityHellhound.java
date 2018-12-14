@@ -4,6 +4,7 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.lib.LibMod;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -100,6 +101,16 @@ public class EntityHellhound extends EntityMultiSkin {
 			super.collideWithEntity(entityIn);
 		}
 	}
+
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		if (potioneffectIn.getPotion() == MobEffects.WITHER || potioneffectIn.getPotion() == MobEffects.POISON || potioneffectIn.getPotion() == ModPotions.rotting) {
+			net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent event = new net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent(this, potioneffectIn);
+			net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+			return event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.ALLOW;
+		}
+		return super.isPotionApplicable(potioneffectIn);
+	}
+
 
 	@Override
 	public int getMaxSpawnedInChunk() {
