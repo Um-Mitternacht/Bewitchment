@@ -345,9 +345,9 @@ public class ModelUran extends ModelBase {
 				this.tail04.rotateAngleY = tail04.rotateAngleY + (1.54810704652F - tail04.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
 				this.tail05.rotateAngleY = tail05.rotateAngleY + (1.59348560707F - tail05.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
 
-				this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ) * timer / COIL_ANIMATION_LENGTH;
+				//this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
+				//this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				//this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ) * timer / COIL_ANIMATION_LENGTH;
 			} else {
 				this.neck01a.offsetX = -0.3F;
 				this.neck01a.rotateAngleY = -0.09110618695F;
@@ -360,9 +360,9 @@ public class ModelUran extends ModelBase {
 				this.tail04.rotateAngleY = 1.54810704652F;
 				this.tail05.rotateAngleY = 1.59348560707F;
 
-				this.head.rotateAngleX = 0.13665928043F;
-				this.head.rotateAngleY = -0.77405352325F;
-				this.head.rotateAngleZ = -0.18203784098F;
+				//this.head.rotateAngleX = 0.13665928043F;
+				//this.head.rotateAngleY = -0.77405352325F;
+				//this.head.rotateAngleZ = -0.18203784098F;
 			}
 		} else {
 			if (uran.motionX != 0 || uran.motionZ != 0) {
@@ -376,10 +376,10 @@ public class ModelUran extends ModelBase {
 				this.tail03.rotateAngleY = angle * MathHelper.sin(time + 2);
 				this.tail04.rotateAngleY = angle * MathHelper.sin(time + 3);
 				this.tail05.rotateAngleY = angle / 4F * MathHelper.sin(time + 2);
-				this.head.rotateAngleY = this.neck02.rotateAngleY;
-				this.head.rotateAngleZ = 0.174532925F * MathHelper.cos(time - 5);
-				this.head.rotateAngleX = 0;
-				this.head.rotateAngleZ = 0;
+				//this.head.rotateAngleY = this.neck02.rotateAngleY;
+				//this.head.rotateAngleZ = 0.174532925F * MathHelper.cos(time - 5);
+				//this.head.rotateAngleX = 0;
+				//this.head.rotateAngleZ = 0;
 				uran.resetTimer();
 			} else {
 				// TODO: This is the cause of the clipping. Additionally, boxes probably shouldn't be added during render() ... may be a memory leak.
@@ -388,7 +388,7 @@ public class ModelUran extends ModelBase {
 			}
 		}
 		this.neck01a.render(scale);
-		this.head.rotateAngleY = 0.001F * MathHelper.sin(time);
+		//this.head.rotateAngleY = 0.001F * MathHelper.sin(time);
 	}
 
 	/**
