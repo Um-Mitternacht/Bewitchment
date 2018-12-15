@@ -336,8 +336,8 @@ public class ModelUran extends ModelBase {
 				uran.addTimer(1);
 				int timer = uran.getTimer();
 				this.neck01a.rotateAngleY = neck01a.rotateAngleY + (-0.09110618695F - neck01a.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.neck02.rotateAngleY = neck02.rotateAngleY + (-1.27478848566F - neck02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.neck02.rotateAngleX = neck02.rotateAngleX + (-0.27314402793F - neck02.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
+				//this.neck02.rotateAngleY = neck02.rotateAngleY + (-1.27478848566F - neck02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
+				//this.neck02.rotateAngleX = neck02.rotateAngleX + (-0.27314402793F - neck02.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
 				this.body01.rotateAngleY = body01.rotateAngleY + (1.09397237515F - body01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
 				this.tail01.rotateAngleY = tail01.rotateAngleY + (0.95609136424F - tail01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
 				this.tail02.rotateAngleY = tail02.rotateAngleY + (1.27478848566F - tail02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
@@ -351,8 +351,8 @@ public class ModelUran extends ModelBase {
 			} else {
 				this.neck01a.offsetX = -0.3F;
 				this.neck01a.rotateAngleY = -0.09110618695F;
-				this.neck02.rotateAngleY = -1.27478848566F;
-				this.neck02.rotateAngleX = -0.27314402793F;
+				//this.neck02.rotateAngleY = -1.27478848566F;
+				//this.neck02.rotateAngleX = -0.27314402793F;
 				this.body01.rotateAngleY = 1.09397237515F;
 				this.tail01.rotateAngleY = 0.95609136424F;
 				this.tail02.rotateAngleY = 1.27478848566F;
@@ -368,8 +368,8 @@ public class ModelUran extends ModelBase {
 			if (uran.motionX != 0 || uran.motionZ != 0) {
 				this.neck01a.offsetX = 0.3F * MathHelper.cos(time);
 				this.neck01a.rotateAngleY = angle * MathHelper.sin(time);
-				this.neck02.rotateAngleY = angle * MathHelper.sin(time - 5);
-				this.neck02.rotateAngleX = 0;
+				//this.neck02.rotateAngleY = angle * MathHelper.sin(time - 5);
+				//this.neck02.rotateAngleX = 0;
 				this.body01.rotateAngleY = angle * MathHelper.sin(time + 5);
 				this.tail01.rotateAngleY = angle * MathHelper.sin(time + 11);
 				this.tail02.rotateAngleY = angle * MathHelper.sin(time + 4);
