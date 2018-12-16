@@ -73,7 +73,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.cauldron), CauldronCraftingCategory.UID);
 
 		registry.handleRecipes(ModDistilleryRecipes.class, i -> new DistilleryWrapper(i), DistilleryCategory.UID);
-		registry.addRecipes(ModDistilleryRecipes.REGISTRY.start(), DistilleryCategory.UID);
+		registry.addRecipes(ModDistilleryRecipes.REGISTRY, DistilleryCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.distillery), DistilleryCategory.UID);
 	}
 
