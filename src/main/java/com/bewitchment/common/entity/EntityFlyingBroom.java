@@ -2,11 +2,11 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.Bewitchment;
+import com.bewitchment.common.core.util.BewitchmentMethodHandles;
 import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,10 +27,8 @@ import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Field;
 import java.util.Arrays;
 
 @Mod.EventBusSubscriber
@@ -39,7 +37,6 @@ public class EntityFlyingBroom extends Entity {
 	private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityFlyingBroom.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FUEL = EntityDataManager.<Integer>createKey(EntityFlyingBroom.class, DataSerializers.VARINT); //ONLY SYNCHRONIZED WHEN EMPTY OR FULL
 	private static final int MAX_FUEL = 100;
-	Field isJumping = ReflectionHelper.findField(EntityLivingBase.class, "field_70703_bu", "isJumping");
 	private DimensionalPosition orig_position;
 
 	public EntityFlyingBroom(World world) {
@@ -142,7 +139,7 @@ public class EntityFlyingBroom extends Entity {
 			}
 			float front = rider.moveForward, strafe = rider.moveStrafing, up = 0;
 			try {
-				up = isJumping.getBoolean(rider) ? 1 : 0;
+				up = BewitchmentMethodHandles.isJumping(rider) ? 1 : 0;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
