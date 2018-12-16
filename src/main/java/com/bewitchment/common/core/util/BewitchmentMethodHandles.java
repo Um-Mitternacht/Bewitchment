@@ -13,7 +13,7 @@ public final class BewitchmentMethodHandles {
 	private static final MethodHandle ENTITY_IS_JUMPING;
 
 	static {
-		final MethodHandles.Lookup lookup = MethodHandles.publicLookup();
+		final MethodHandles.Lookup lookup = MethodHandles.lookup();
 		try {
 			ENTITY_IS_JUMPING = lookup.unreflectGetter(
 					BewitchmentMethodHandles.findField(EntityLivingBase.class, "field_70703_bu")
