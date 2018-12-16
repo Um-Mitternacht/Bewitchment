@@ -1,6 +1,8 @@
 package com.bewitchment.client.jei.components;
 
 import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
+import com.bewitchment.common.crafting.DistilleryRecipe;
+import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 
@@ -9,7 +11,7 @@ import mezz.jei.api.recipe.IRecipeWrapper;
  */
 public class DistilleryWrapper implements IRecipeWrapper {
 
-	CauldronCraftingRecipe recipe;
+	ModDistilleryRecipes recipe;
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
