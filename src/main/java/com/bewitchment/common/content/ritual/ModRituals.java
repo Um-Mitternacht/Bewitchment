@@ -170,7 +170,7 @@ public class ModRituals {
 				ofs(new ItemStack(ModItems.athame)),
 				400,
 				circles(NETHER, NETHER, null),
-				1750,
+				3750,
 				3);
 		spawn_uranid = new RitualConjurationUranid(
 				rl("conjure_uranid"),
@@ -187,7 +187,7 @@ public class ModRituals {
 				ofs(new ItemStack(ModItems.athame)),
 				600,
 				circles(NETHER, NETHER, null),
-				1850,
+				3850,
 				3);
 		draw_circle_small = new RitualDrawing(
 				rl("draw_circle_small"),
