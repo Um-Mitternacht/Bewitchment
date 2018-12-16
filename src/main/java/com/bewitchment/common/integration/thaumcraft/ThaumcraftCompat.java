@@ -292,5 +292,8 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerEntityTag("entity_newt", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.MOTION, 8));
 		ThaumcraftApi.registerEntityTag("entity_blindworm", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(Aspect.SENSES, 8));
 
+		ThaumcraftApi.registerEntityTag("entity_uran", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
+		ThaumcraftApi.registerEntityTag("entity_hellhound", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+
 	}
 }

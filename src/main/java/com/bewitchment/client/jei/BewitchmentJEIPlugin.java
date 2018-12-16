@@ -9,8 +9,6 @@ import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
-import com.bewitchment.common.crafting.DistilleryRecipe;
-import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.item.ModItems;

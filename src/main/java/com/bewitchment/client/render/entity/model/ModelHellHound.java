@@ -2,7 +2,6 @@ package com.bewitchment.client.render.entity.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 
 /**
@@ -302,36 +301,36 @@ public class ModelHellHound extends ModelBase {
 		this.head.render(f5);
 		this.lHindLeg.render(f5);
 		this.lFrontLeg.render(f5);
-	//	super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-	//	this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+		//	super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+		//	this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 //
-	//	if (this.isChild) {
-	//		float f = 2.0F;
-	//		GlStateManager.pushMatrix();
-	//		GlStateManager.translate(0.0F, 5.0F * scale, 2.0F * scale);
-	//		this.head.renderWithRotation(scale);
-	//		GlStateManager.popMatrix();
-	//		GlStateManager.pushMatrix();
-	//		GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	//		GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
-	//		this.body.render(scale);
-	//		this.rFrontLeg.render(scale);
-	//		this.lFrontLeg.render(scale);
-	//		this.rHindLeg.render(scale);
-	//		this.lHindLeg.render(scale);
-	//		this.tailThin01.renderWithRotation(scale);
-	//		this.mane.render(scale);
-	//		GlStateManager.popMatrix();
-	//	} else {
-	//		this.head.renderWithRotation(scale);
-	//		this.body.render(scale);
-	//		this.rFrontLeg.render(scale);
-	//		this.lFrontLeg.render(scale);
-	///		this.rFrontLeg.render(scale);
-	//		this.lFrontLeg.render(scale);
-	//		this.tailThin01.renderWithRotation(scale);
-	//		this.mane.render(scale);
-	//	}
+		//	if (this.isChild) {
+		//		float f = 2.0F;
+		//		GlStateManager.pushMatrix();
+		//		GlStateManager.translate(0.0F, 5.0F * scale, 2.0F * scale);
+		//		this.head.renderWithRotation(scale);
+		//		GlStateManager.popMatrix();
+		//		GlStateManager.pushMatrix();
+		//		GlStateManager.scale(0.5F, 0.5F, 0.5F);
+		//		GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+		//		this.body.render(scale);
+		//		this.rFrontLeg.render(scale);
+		//		this.lFrontLeg.render(scale);
+		//		this.rHindLeg.render(scale);
+		//		this.lHindLeg.render(scale);
+		//		this.tailThin01.renderWithRotation(scale);
+		//		this.mane.render(scale);
+		//		GlStateManager.popMatrix();
+		//	} else {
+		//		this.head.renderWithRotation(scale);
+		//		this.body.render(scale);
+		//		this.rFrontLeg.render(scale);
+		//		this.lFrontLeg.render(scale);
+		///		this.rFrontLeg.render(scale);
+		//		this.lFrontLeg.render(scale);
+		//		this.tailThin01.renderWithRotation(scale);
+		//		this.mane.render(scale);
+		//	}
 	}
 
 	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {

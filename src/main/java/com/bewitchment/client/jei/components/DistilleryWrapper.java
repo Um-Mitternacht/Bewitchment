@@ -1,7 +1,5 @@
 package com.bewitchment.client.jei.components;
 
-import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
-import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
