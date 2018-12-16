@@ -295,37 +295,43 @@ public class ModelHellHound extends ModelBase {
 		this.tailThin03.addChild(this.tailThin04);
 	}
 
-	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-
-		if (this.isChild) {
-			float f = 2.0F;
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(0.0F, 5.0F * scale, 2.0F * scale);
-			this.head.renderWithRotation(scale);
-			GlStateManager.popMatrix();
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(0.5F, 0.5F, 0.5F);
-			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
-			this.body.render(scale);
-			this.rFrontLeg.render(scale);
-			this.lFrontLeg.render(scale);
-			this.rHindLeg.render(scale);
-			this.lHindLeg.render(scale);
-			this.tailThin01.renderWithRotation(scale);
-			this.mane.render(scale);
-			GlStateManager.popMatrix();
-		} else {
-			this.head.renderWithRotation(scale);
-			this.body.render(scale);
-			this.rFrontLeg.render(scale);
-			this.lFrontLeg.render(scale);
-			this.rFrontLeg.render(scale);
-			this.lFrontLeg.render(scale);
-			this.tailThin01.renderWithRotation(scale);
-			this.mane.render(scale);
-		}
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.rHindLeg.render(f5);
+		this.rFrontLeg.render(f5);
+		this.body.render(f5);
+		this.head.render(f5);
+		this.lHindLeg.render(f5);
+		this.lFrontLeg.render(f5);
+	//	super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+	//	this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+//
+	//	if (this.isChild) {
+	//		float f = 2.0F;
+	//		GlStateManager.pushMatrix();
+	//		GlStateManager.translate(0.0F, 5.0F * scale, 2.0F * scale);
+	//		this.head.renderWithRotation(scale);
+	//		GlStateManager.popMatrix();
+	//		GlStateManager.pushMatrix();
+	//		GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	//		GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+	//		this.body.render(scale);
+	//		this.rFrontLeg.render(scale);
+	//		this.lFrontLeg.render(scale);
+	//		this.rHindLeg.render(scale);
+	//		this.lHindLeg.render(scale);
+	//		this.tailThin01.renderWithRotation(scale);
+	//		this.mane.render(scale);
+	//		GlStateManager.popMatrix();
+	//	} else {
+	//		this.head.renderWithRotation(scale);
+	//		this.body.render(scale);
+	//		this.rFrontLeg.render(scale);
+	//		this.lFrontLeg.render(scale);
+	///		this.rFrontLeg.render(scale);
+	//		this.lFrontLeg.render(scale);
+	//		this.tailThin01.renderWithRotation(scale);
+	//		this.mane.render(scale);
+	//	}
 	}
 
 	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
@@ -339,10 +345,10 @@ public class ModelHellHound extends ModelBase {
 	 * and legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how
 	 * "far" arms and legs can swing at most.
 	 */
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-		this.head.rotateAngleX = headPitch * 0.017453292F;
-		this.head.rotateAngleY = netHeadYaw * 0.017453292F;
-		this.tailThin01.rotateAngleX = ageInTicks;
-	}
+	//public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+	//	super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+	//	this.head.rotateAngleX = headPitch * 0.017453292F;
+	//	this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+	//	this.tailThin01.rotateAngleX = ageInTicks;
+	//}
 }
