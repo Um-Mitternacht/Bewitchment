@@ -9,6 +9,7 @@ import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.content.ritual.AdapterIRitual;
+import com.bewitchment.common.crafting.DistilleryRecipe;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.item.ModItems;
@@ -41,6 +42,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.addRecipeCategories(new BrewingCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewModifierCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new CauldronCraftingCategory(registry.getJeiHelpers().getGuiHelper()));
+		//registry.addRecipeCategories(new DistilleryCategory(registry.getJeiHelpers().getGuiHelper()));
 	}
 
 	@Override
@@ -68,6 +70,10 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 		registry.handleRecipes(CauldronCraftingRecipe.class, CauldronCraftingWrapper::new, CauldronCraftingCategory.UID);
 		registry.addRecipes(CauldronRegistry.CRAFTING_REGISTRY, CauldronCraftingCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.cauldron), CauldronCraftingCategory.UID);
+
+		//registry.handleRecipes(DistilleryRecipe.class, i -> new DistilleryWrapper(i), DistilleryCategory.UID);
+		//registry.addRecipes(DistilleryRecipe.Factory.start(), DistilleryCategory.UID);
+		//registry.addRecipeCatalyst(new ItemStack(ModBlocks.distillery), DistilleryCategory.UID);
 	}
 
 	@Override
