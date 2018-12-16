@@ -5,6 +5,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.client.resources.I18n;
 
 /**
  * Created by Joseph on 12/10/2018.
@@ -12,25 +13,26 @@ import mezz.jei.api.recipe.IRecipeCategory;
 public class DistilleryCategory implements IRecipeCategory<DistilleryWrapper> {
 
 	public static final String UID = LibMod.MOD_ID + ":distillation";
+	private IDrawable bg;
 
 	@Override
 	public String getUid() {
-		return null;
+		return UID;
 	}
 
 	@Override
 	public String getTitle() {
-		return null;
+		return I18n.format("jei.category.distillery");
 	}
 
 	@Override
 	public String getModName() {
-		return null;
+		return LibMod.MOD_ID;
 	}
 
 	@Override
 	public IDrawable getBackground() {
-		return null;
+		return bg;
 	}
 
 	@Override
