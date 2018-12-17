@@ -2,7 +2,6 @@ package com.bewitchment.common.entity;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.util.BewitchmentMethodHandles;
 import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibReflection;
@@ -29,7 +28,6 @@ import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
