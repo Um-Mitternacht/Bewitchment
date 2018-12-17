@@ -19,6 +19,7 @@ public class ModFortunes {
 	private static Fortune dog;
 	private static Fortune parrot;
 	private static Fortune yateveo;
+	private static Fortune yateveodos;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
@@ -34,6 +35,7 @@ public class ModFortunes {
 		dog = new FortuneMeetDog(5, "dog", LibMod.MOD_ID);
 		parrot = new FortuneMeetParrot(1, "meet_parrot", LibMod.MOD_ID);
 		yateveo = new FortuneISeeYou(1, "ya_te_veo", LibMod.MOD_ID);
+		yateveodos = new FortuneISeeYouTwo(1, "ya_te_veo_dos", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -51,7 +53,8 @@ public class ModFortunes {
 				dog,
 				parrot,
 				merchant,
-				yateveo
+				yateveo,
+				yateveodos
 		);
 	}
 }
