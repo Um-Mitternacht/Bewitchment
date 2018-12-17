@@ -2,8 +2,10 @@ package com.bewitchment.common.item.natural.crop;
 
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 /**
@@ -11,16 +13,16 @@ import net.minecraft.world.World;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class ItemMint extends ItemCropFood {
+public class ItemChrysanthemum extends ItemCropFood {
 
-	public ItemMint() {
-		super(LibItemName.MINT, 2, 0.2F, false);
+	public ItemChrysanthemum() {
+		super(LibItemName.CHRYSANTHEMUM, 2, 0.2F, false);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		player.extinguish();
+		player.addPotionEffect(new PotionEffect(ModPotions.absence, 0, 0));
 	}
 }
