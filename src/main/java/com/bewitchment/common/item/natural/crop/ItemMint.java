@@ -15,6 +15,7 @@ public class ItemMint extends ItemCropFood {
 
 	public ItemMint() {
 		super(LibItemName.MINT, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

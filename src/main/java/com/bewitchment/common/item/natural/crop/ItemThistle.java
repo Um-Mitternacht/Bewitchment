@@ -17,6 +17,7 @@ public class ItemThistle extends ItemCropFood {
 
 	public ItemThistle() {
 		super(LibItemName.THISTLE, 4, 0.8F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

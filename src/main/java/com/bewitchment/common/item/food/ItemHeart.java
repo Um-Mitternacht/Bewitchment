@@ -16,7 +16,7 @@ import net.minecraft.world.World;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
-public class ItemHeart extends ItemModFood implements IMagicPowerExpander {
+public class ItemHeart extends ItemModFood {
 
 	public ItemHeart() {
 		super(LibItemName.HEART, 8, 1.6F, true);
@@ -29,16 +29,5 @@ public class ItemHeart extends ItemModFood implements IMagicPowerExpander {
 		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
-		BewitchmentAPI.getAPI().expandPlayerMP(this, player);
-	}
-
-	@Override
-	public ResourceLocation getID() {
-		return this.getRegistryName();
-	}
-
-	@Override
-	public int getExtraAmount(EntityPlayer p) {
-		return 40;
 	}
 }

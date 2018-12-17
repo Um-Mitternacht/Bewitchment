@@ -17,6 +17,7 @@ public class ItemWhiteSage extends ItemCropFood {
 
 	public ItemWhiteSage() {
 		super(LibItemName.WHITE_SAGE, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

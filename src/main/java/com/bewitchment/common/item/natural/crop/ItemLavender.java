@@ -17,6 +17,7 @@ public class ItemLavender extends ItemCropFood {
 
 	public ItemLavender() {
 		super(LibItemName.LAVENDER, 1, 2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

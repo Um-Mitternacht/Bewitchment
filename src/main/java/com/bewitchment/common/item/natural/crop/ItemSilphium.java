@@ -17,6 +17,7 @@ public class ItemSilphium extends ItemCropFood {
 
 	public ItemSilphium() {
 		super(LibItemName.SILPHIUM, 1, 2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

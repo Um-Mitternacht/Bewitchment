@@ -17,6 +17,7 @@ public class ItemTulsi extends ItemCropFood {
 
 	public ItemTulsi() {
 		super(LibItemName.TULSI, 1, 2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
