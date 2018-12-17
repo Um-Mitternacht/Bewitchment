@@ -46,7 +46,7 @@ public final class RegistryEvents {
 		registerCrop(TULSI, ModBlocks.crop_tulsi
 				, new ItemTulsi(), LibItemName.SEED_TULSI);
 		registerCrop(KENAF, ModBlocks.crop_kenaf
-				, new ItemCropFood(LibItemName.KENAF, 4, 6F, false), LibItemName.SEED_KENAF);
+				, new ItemKenaf(), LibItemName.SEED_KENAF);
 		registerCrop(MINT, ModBlocks.crop_mint
 				, new ItemMint(), LibItemName.SEED_MINT);
 		registerCrop(HELLEBORE, ModBlocks.crop_hellebore,
