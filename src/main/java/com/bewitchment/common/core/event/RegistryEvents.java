@@ -52,7 +52,7 @@ public final class RegistryEvents {
 		registerCrop(HELLEBORE, ModBlocks.crop_hellebore,
 				new ItemHellebore(), LibItemName.SEED_HELLEBORE);
 		registerCrop(CHRYSANTHEMUM, ModBlocks.crop_chrysanthemum,
-				new ItemCropFood(LibItemName.CHRYSANTHEMUM, 2, 0.1F, false), LibItemName.SEED_CHRYSANTHEMUM);
+				new ItemChrysanthemum(), LibItemName.SEED_CHRYSANTHEMUM);
 		registerCrop(SAGEBRUSH, ModBlocks.crop_sagebrush,
 				new ItemCropFood(LibItemName.SAGEBRUSH, 2, 0.1F, false), LibItemName.SEED_SAGEBRUSH);
 		registerCrop(INFESTED_WHEAT, ModBlocks.crop_infested_wheat,
