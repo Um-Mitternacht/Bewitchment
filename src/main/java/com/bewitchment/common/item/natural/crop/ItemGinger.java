@@ -15,6 +15,7 @@ public class ItemGinger extends ItemCropFood {
 
 	public ItemGinger() {
 		super(LibItemName.GINGER, 4, 0.8F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

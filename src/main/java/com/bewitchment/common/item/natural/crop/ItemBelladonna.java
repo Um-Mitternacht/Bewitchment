@@ -17,6 +17,7 @@ public class ItemBelladonna extends ItemCropFood {
 
 	public ItemBelladonna() {
 		super(LibItemName.BELLADONNA, 2, 1.5F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

@@ -17,6 +17,7 @@ public class ItemGarlic extends ItemCropFood {
 
 	public ItemGarlic() {
 		super(LibItemName.GARLIC, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

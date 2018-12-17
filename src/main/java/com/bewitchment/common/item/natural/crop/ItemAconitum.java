@@ -18,6 +18,7 @@ public class ItemAconitum extends ItemCropFood {
 
 	public ItemAconitum() {
 		super(LibItemName.ACONITUM, 2, 0.6F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

@@ -17,6 +17,7 @@ public class ItemKelp extends ItemCropFood {
 
 	public ItemKelp() {
 		super(LibItemName.KELP, 3, 0.8F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

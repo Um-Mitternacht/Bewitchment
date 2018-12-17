@@ -17,6 +17,7 @@ public class ItemKenaf extends ItemCropFood {
 
 	public ItemKenaf() {
 		super(LibItemName.KENAF, 2, 0.8F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

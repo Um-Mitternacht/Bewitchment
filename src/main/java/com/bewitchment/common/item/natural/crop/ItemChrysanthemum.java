@@ -17,6 +17,7 @@ public class ItemChrysanthemum extends ItemCropFood {
 
 	public ItemChrysanthemum() {
 		super(LibItemName.CHRYSANTHEMUM, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

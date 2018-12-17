@@ -17,6 +17,7 @@ public class ItemInfestedWheat extends ItemCropFood {
 
 	public ItemInfestedWheat() {
 		super(LibItemName.INFESTED_WHEAT, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

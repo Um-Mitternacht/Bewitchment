@@ -17,6 +17,7 @@ public class ItemAsphodel extends ItemCropFood {
 
 	public ItemAsphodel() {
 		super(LibItemName.ASPHODEL, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

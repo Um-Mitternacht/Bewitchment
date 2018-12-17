@@ -17,6 +17,7 @@ public class ItemHellebore extends ItemCropFood {
 
 	public ItemHellebore() {
 		super(LibItemName.HELLEBORE, 2, 0.2F, false);
+		this.setAlwaysEdible();
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 
