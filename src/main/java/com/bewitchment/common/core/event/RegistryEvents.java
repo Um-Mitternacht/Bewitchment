@@ -36,7 +36,7 @@ public final class RegistryEvents {
 		registerCrop(WHITE_SAGE, ModBlocks.crop_white_sage
 				, new ItemWhiteSage(), LibItemName.SEED_WHITE_SAGE);
 		registerCrop(WORMWOOD, ModBlocks.crop_wormwood
-				, new ItemCropFood(LibItemName.WORMWOOD, 4, 0.8F, false), LibItemName.SEED_WORMWOOD);
+				, new ItemWormwood(), LibItemName.SEED_WORMWOOD);
 		registerCrop(SILPHIUM, ModBlocks.crop_silphium
 				, new ItemSilphium(), LibItemName.SEED_SILPHIUM);
 		registerCrop(MANDRAKE, ModBlocks.crop_mandrake_root
@@ -44,7 +44,7 @@ public final class RegistryEvents {
 		registerCrop(GARLIC, ModBlocks.crop_garlic
 				, new ItemGarlic(), LibItemName.SEED_GARLIC);
 		registerCrop(TULSI, ModBlocks.crop_tulsi
-				, new ItemCropFood(LibItemName.TULSI, 1, 0.4F, false), LibItemName.SEED_TULSI);
+				, new ItemTulsi(), LibItemName.SEED_TULSI);
 		registerCrop(KENAF, ModBlocks.crop_kenaf
 				, new ItemCropFood(LibItemName.KENAF, 4, 6F, false), LibItemName.SEED_KENAF);
 		registerCrop(MINT, ModBlocks.crop_mint
