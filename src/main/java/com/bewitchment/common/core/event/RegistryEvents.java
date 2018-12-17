@@ -34,11 +34,11 @@ public final class RegistryEvents {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		registerCrop(WHITE_SAGE, ModBlocks.crop_white_sage
-				, new ItemCropFood(LibItemName.WHITE_SAGE, 1, 0.4F, false), LibItemName.SEED_WHITE_SAGE);
+				, new ItemWhiteSage(), LibItemName.SEED_WHITE_SAGE);
 		registerCrop(WORMWOOD, ModBlocks.crop_wormwood
 				, new ItemCropFood(LibItemName.WORMWOOD, 4, 0.8F, false), LibItemName.SEED_WORMWOOD);
 		registerCrop(SILPHIUM, ModBlocks.crop_silphium
-				, new ItemCropFood(LibItemName.SILPHIUM, 4, 6F, false), LibItemName.SEED_SILPHIUM);
+				, new ItemSilphium(), LibItemName.SEED_SILPHIUM);
 		registerCrop(MANDRAKE, ModBlocks.crop_mandrake_root
 				, new ItemMandrake(), LibItemName.SEED_MANDRAKE);
 		registerCrop(GARLIC, ModBlocks.crop_garlic
@@ -54,7 +54,7 @@ public final class RegistryEvents {
 		registerCrop(CHRYSANTHEMUM, ModBlocks.crop_chrysanthemum,
 				new ItemChrysanthemum(), LibItemName.SEED_CHRYSANTHEMUM);
 		registerCrop(SAGEBRUSH, ModBlocks.crop_sagebrush,
-				new ItemCropFood(LibItemName.SAGEBRUSH, 2, 0.1F, false), LibItemName.SEED_SAGEBRUSH);
+				new ItemSageBrush(), LibItemName.SEED_SAGEBRUSH);
 		registerCrop(INFESTED_WHEAT, ModBlocks.crop_infested_wheat,
 				new ItemInfestedWheat(), LibItemName.WITCHWEED);
 		registerCrop(BELLADONNA, ModBlocks.crop_belladonna
