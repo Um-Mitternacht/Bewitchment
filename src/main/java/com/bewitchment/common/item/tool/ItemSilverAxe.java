@@ -2,6 +2,7 @@ package com.bewitchment.common.item.tool;
 
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
+import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
@@ -41,7 +42,7 @@ public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
 		if (!target.world.isRemote) {
-			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD && attacker instanceof EntityPlayer) {
+			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || MobHelper.isCorporealUndead(target) && attacker instanceof EntityPlayer) {
 				target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 12);
 				stack.damageItem(25, attacker);
 			} else {
