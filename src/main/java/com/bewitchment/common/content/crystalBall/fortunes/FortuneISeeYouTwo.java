@@ -2,7 +2,6 @@ package com.bewitchment.common.content.crystalBall.fortunes;
 
 import com.bewitchment.common.content.crystalBall.Fortune;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
-import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
