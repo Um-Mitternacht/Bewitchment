@@ -11,9 +11,9 @@
       "type": "entity",
       "name": "Hellhound",
       "entity": "bewitchment:hellhound",
-      "scale": 0.50,
-      "rotate": false,
-      "text": "Diabolic beast"
+      "scale": 0.75,
+      "rotate": true,
+      "text": "Diabolic Beast"
     },
     {
       "type": "ritual",

@@ -3,6 +3,7 @@ package com.bewitchment.common.core.helper;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
@@ -53,8 +54,10 @@ public class MobHelper {
 
 		//Will be used for actual demons later on.
 		DEMONS.add(EntityUran.class.getName());
+		DEMONS.add(EntityHellhound.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
+		CANIDS.add(EntityHellhound.class.getName());
 		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFeralWolf");
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFox");
