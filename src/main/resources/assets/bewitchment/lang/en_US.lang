@@ -815,16 +815,17 @@ ritual.bewitchment.infusion_dream.name=Infusion of the Spirits
 ritual.bewitchment.flames.name=Ritual of the Hungry Flames
 ritual.bewitchment.sanctuary.name=Ritual of the Sanctuary
 ritual.bewitchment.deck.name=Ritual of Engraving
-ritual.bewitchment.table.name=Ritual of Construction
-ritual.bewitchment.crystal_ball.name=Ritual of Construction
-ritual.bewitchment.cypress_broom.name=Riual of the Rising Twigs
-ritual.bewitchment.yew_broom.name=Riual of the Rising Twigs
-ritual.bewitchment.elder_broom.name=Riual of the Rising Twigs
-ritual.bewitchment.juniper_broom.name=Riual of the Rising Twigs
+ritual.bewitchment.table.name=Ritual of Construction (Tarot Table)
+ritual.bewitchment.crystal_ball.name=Ritual of Construction (Crystal Ball)
+ritual.bewitchment.cypress_broom.name=Riual of the Rising Twigs (Cypress)
+ritual.bewitchment.yew_broom.name=Riual of the Rising Twigs (Yew)
+ritual.bewitchment.elder_broom.name=Riual of the Rising Twigs (Elder)
+ritual.bewitchment.juniper_broom.name=Riual of the Rising Twigs (Juniper)
 ritual.bewitchment.gateway.name=Ritual of the Gates
 ritual.bewitchment.shift_biome.name=Rite of the Falling Leaves
 ritual.bewitchment.nether_portal.name=Rite of the Profane Communion
 ritual.bewitchment.vampire_lair.name=Rite of Rising Darkness
+ritual.bewitchment.solar_glory.name=Rite of Solar Glory
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
@@ -844,6 +845,7 @@ fortunes.bewitchment.shinies.name=Something glimmers in my sight.
 fortunes.bewitchment.iron.name=Scalding hot irons burn my retinas.
 fortunes.bewitchment.direwolf.name=A rabid beast will soon stumble upon you.
 fortunes.bewitchment.dog.name=You will soon encounter a new friend.
+fortunes.bewitchment.meet_parrot.name=You will soon encounter a new friend.
 fortunes.bewitchment.ya_te_veo.name=A lesser fire elemental has seen you scrying, and has emerged to fight you!
 fortunes.bewitchment.ya_te_veo_dos.name=A lesser demon has seen you scrying, and wishes to challenge you!
 //Tarots

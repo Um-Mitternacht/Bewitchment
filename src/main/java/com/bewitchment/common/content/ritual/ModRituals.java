@@ -26,12 +26,25 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound, spawn_uranid;
+			spawn_hellhound, spawn_uranid, day;
 
 	public static void init() {
 
 		night = new RitualHighMoon(
 				rl("high_moon"), //Reg name
+				of( //Recipe
+						LibIngredients.silverIngot,
+						LibIngredients.netherBrickItem
+				),
+				none, // Output
+				100, //Initial cast time
+				circles(NORMAL, null, null),
+				800, //Initial cost
+				0 //Cost per tick
+		);
+
+		day = new RitualHighMoon(
+				rl("solar_glory"), //Reg name
 				of( //Recipe
 						LibIngredients.goldIngot,
 						LibIngredients.netherBrickItem
@@ -256,7 +269,7 @@ public class ModRituals {
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
-				spawn_uranid
+				spawn_uranid, day
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));

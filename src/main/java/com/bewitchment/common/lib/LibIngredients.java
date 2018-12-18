@@ -73,6 +73,7 @@ public class LibIngredients {
 	public static Ingredient craftingTable = Ingredient.fromItem(Item.getItemFromBlock(Blocks.CRAFTING_TABLE));
 	public static Ingredient anyGlass = new OreIngredient("blockGlass");
 	public static Ingredient quartz = new OreIngredient("gemQuartz");
+	public static Ingredient silverIngot = new OreIngredient("ingotSilver");
 	public static Ingredient logCypress = Ingredient.fromStacks(new ItemStack(ModBlocks.log_cypress, 1, 0));
 	public static Ingredient logYew = Ingredient.fromStacks(new ItemStack(ModBlocks.log_yew, 1, 0));
 	public static Ingredient logJuniper = Ingredient.fromStacks(new ItemStack(ModBlocks.log_juniper, 1, 0));

@@ -1,0 +1,44 @@
+{
+  "name": "Utility Rituals",
+  "icon": "bewitchment:boline",
+  "sortnum": "4",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "text",
+      "text": "TODO"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:shift_biome"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:nether_portal"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:flames"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:high_moon"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:time_sands"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:perception"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:solar_glory"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:gateway"
+    }	
+  ]
+}
