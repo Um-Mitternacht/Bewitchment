@@ -25,6 +25,7 @@ public class CropKenaf extends BlockCrop {
 		super(LibBlockName.CROP_KENAF, 4);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return KENAF_AABB[getAge(state)];

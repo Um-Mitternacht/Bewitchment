@@ -24,6 +24,7 @@ public class CropBelladonna extends BlockCrop {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return CROPS_AABB[state.getValue(this.getAgeProperty())];
 	}

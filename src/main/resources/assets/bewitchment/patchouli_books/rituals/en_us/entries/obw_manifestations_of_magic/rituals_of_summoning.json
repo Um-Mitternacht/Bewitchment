@@ -11,6 +11,26 @@
     {
       "type": "ritual",
       "ritual": "bewitchment:conjure_wither"
-    }
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_ghast"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_vex"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_witch"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_blaze"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_magma_cube"
+    }		
   ]
 }

@@ -14,6 +14,10 @@
       "scale": 0.50,
       "rotate": false,
       "text": "Plural: Uranids"
-    }
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_uranid"
+    }	
   ]
 }

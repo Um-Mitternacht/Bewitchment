@@ -1,0 +1,55 @@
+{
+  "processor": "com.bewitchment.common.integration.patchouli.processors.RitualProcessor",
+  "components": [
+    {
+      "type": "text",
+      "text": "#ritualname",
+      "x": 10,
+      "y": 8
+    },
+    {
+      "type": "image",
+      "image": "#circle3",
+      "width": 32,
+      "height": 32,
+      "texture_width": 32,
+      "texture_height": 32,
+      "x": 20,
+      "y": 40,
+      "scale": 2
+    },
+    {
+      "type": "image",
+      "image": "#circle2",
+      "width": 32,
+      "height": 32,
+      "texture_width": 32,
+      "texture_height": 32,
+      "x": 20,
+      "y": 40,
+      "scale": 2
+    },
+    {
+      "type": "image",
+      "image": "#circle1",
+      "width": 32,
+      "height": 32,
+      "texture_width": 32,
+      "texture_height": 32,
+      "x": 20,
+      "y": 40,
+      "scale": 2
+    },
+    {
+      "type": "image",
+      "image": "bewitchment:textures/gui/books/ritual/circle_center.png",
+      "width": 32,
+      "height": 32,
+      "texture_width": 32,
+      "texture_height": 32,
+      "x": 20,
+      "y": 40,
+      "scale": 2
+    }
+  ]
+}
