@@ -1,0 +1,28 @@
+{
+  "name": "Infusion Rituals",
+  "icon": "minecraft:endstone",
+  "sortnum": "4",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Writers, this is a TODO for you."
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:infusion_overworld"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:infusion_nether"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:infusion_end"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:infusion_dream"
+    }		
+  ]
+}
