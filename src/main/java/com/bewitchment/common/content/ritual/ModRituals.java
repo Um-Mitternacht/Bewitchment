@@ -34,7 +34,8 @@ public class ModRituals {
 				rl("high_moon"), //Reg name
 				of( //Recipe
 						LibIngredients.silverIngot,
-						LibIngredients.netherBrickItem
+						LibIngredients.netherBrickItem,
+						LibIngredients.hellebore
 				),
 				none, // Output
 				100, //Initial cast time
@@ -47,7 +48,8 @@ public class ModRituals {
 				rl("solar_glory"), //Reg name
 				of( //Recipe
 						LibIngredients.goldIngot,
-						LibIngredients.netherBrickItem
+						LibIngredients.netherBrickItem,
+						LibIngredients.chrysanthemum
 				),
 				none, // Output
 				100, //Initial cast time
