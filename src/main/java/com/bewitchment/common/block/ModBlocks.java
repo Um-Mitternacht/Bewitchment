@@ -2,6 +2,7 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
 import com.bewitchment.common.block.chisel.BlockColdIronChiseled.BlockColdIronVariant;
+import com.bewitchment.common.block.chisel.BlockCoquinaChiseled;
 import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled;
 import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
 import com.bewitchment.common.block.chisel.BlockSilverChiseled;
@@ -218,6 +219,7 @@ public final class ModBlocks {
 				new BlockMod(LibBlockName.SILVER_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockSilverChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockColdIronChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockCoquinaChiseled(Material.ROCK, SoundType.STONE).setHardness(3.0F),
 				new BlockNetherSteelChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON, SoundType.METAL).setHardness(5.0F),
