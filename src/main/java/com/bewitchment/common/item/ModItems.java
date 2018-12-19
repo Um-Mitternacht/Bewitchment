@@ -3,6 +3,7 @@ package com.bewitchment.common.item;
 import baubles.api.BaubleType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.block.chisel.BlockCoquinaChiseled;
 import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled;
 import com.bewitchment.common.block.chisel.BlockSilverChiseled;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
@@ -417,7 +418,8 @@ public final class ModItems {
 		registry.registerAll(
 				new ItemBlockMeta<>(ModBlocks.silver_block_chisel, BlockSilverChiseled.BlockSilverVariant.values(), EnumNameMode.TOOLTIP),
 				new ItemBlockMeta<>(ModBlocks.cold_iron_block_chisel, BlockColdIronChiseled.BlockColdIronVariant.values(), EnumNameMode.TOOLTIP),
-				new ItemBlockMeta<>(ModBlocks.nethersteel_chisel, BlockNetherSteelChiseled.BlockSteelVariant.values(), EnumNameMode.TOOLTIP)
+				new ItemBlockMeta<>(ModBlocks.nethersteel_chisel, BlockNetherSteelChiseled.BlockSteelVariant.values(), EnumNameMode.TOOLTIP),
+				new ItemBlockMeta<>(ModBlocks.coquina_chisel, BlockCoquinaChiseled.BlockCoquinaVariant.values(), EnumNameMode.TOOLTIP)
 		);
 
 	}

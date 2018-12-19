@@ -132,6 +132,7 @@ public final class ModBlocks {
 	public static final Block silver_block_chisel = null;
 	public static final Block cold_iron_block_chisel = null;
 	public static final Block nethersteel_chisel = null;
+	public static final Block coquina_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
 	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
