@@ -422,6 +422,7 @@ tile.cold_iron_block_chisel.name=Cold Iron Block (Chiseled)
 tile.graveyard_dirt.name=Graveyard Dirt
 tile.purifying_earth.name=Purifying Earth
 tile.brazier.name=Brazier
+tile.coquina_chisel.name=Coquina (Chiseled)
 
 //Saplings and Trees
 tile.sapling_cypress.name=Cypress Sapling
@@ -468,6 +469,11 @@ bewitchment.nethersteel_chisel.tooltip.variety.eye_watching=Watching Eye
 bewitchment.nethersteel_chisel.tooltip.variety.hellish=Hellish
 bewitchment.nethersteel_chisel.tooltip.variety.hellish_watching=Hellish (Watching)
 bewitchment.nethersteel_chisel.tooltip.variety.skull=Skull
+
+bewitchment.coquina_chisel.tooltip.variety.bricks=Bricks
+bewitchment.coquina_chisel.tooltip.variety.chiseled=Chiseled
+bewitchment.coquina_chisel.tooltip.variety.shell=Shell
+bewitchment.coquina_chisel.tooltip.variety.smooth=Smooth
 
 //Spells
 item.spell_page.name=Forgotten Spell
