@@ -132,6 +132,8 @@ public class ModRituals {
 				of(
 						LibIngredients.anyLog,
 						LibIngredients.netherBrickItem,
+						LibIngredients.wormwood,
+						LibIngredients.hellebore,
 						LibIngredients.athame
 				),
 				ofs(new ItemStack(ModItems.athame)),
@@ -145,8 +147,8 @@ public class ModRituals {
 				rl("conjure_ghast"),
 				of(
 						LibIngredients.soulSand,
-						LibIngredients.soulSand,
-						LibIngredients.soulSand,
+						LibIngredients.wormwood,
+						LibIngredients.hellebore,
 						LibIngredients.ectoplasm,
 						LibIngredients.fumeReekOfDeath,
 						LibIngredients.glowstoneDust,
@@ -164,7 +166,10 @@ public class ModRituals {
 				of(
 						LibIngredients.athame,
 						LibIngredients.witherSkull,
-						LibIngredients.soulSand
+						LibIngredients.soulSand,
+						LibIngredients.wormwood,
+						LibIngredients.hellebore,
+						LibIngredients.ectoplasm
 
 				),
 				ofs(new ItemStack(ModItems.athame)),
