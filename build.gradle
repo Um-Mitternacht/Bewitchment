@@ -108,8 +108,7 @@ dependencies {
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
     compile "thaumcraft:Thaumcraft:1.12.2:${thaumcraft_version}"
     compile "vazkii.patchouli:Patchouli:${patchouli_version}"
-    compile "team.chisel.ctm:CTM:MC1.12-${ctm_version}:api"
-    runtime "team.chisel.ctm:CTM:MC1.12-${ctm_version}"
+    deobfCompile "team.chisel.ctm:CTM:MC1.12-0.3.3.22"
     deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.35"    
 }
 
