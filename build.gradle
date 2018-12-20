@@ -96,6 +96,9 @@ repositories {
     maven { 
       	url = 'https://maven.blamejared.com' 
     }
+    maven {
+        url "http://maven.tterrag.com/"
+    }    
 }
 
 dependencies {
