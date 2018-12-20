@@ -52,10 +52,10 @@ public class CommandTransformationModifier extends CommandBase {
 				transf = DefaultTransformations.WEREWOLF;
 			} else if (typeStr.equals("h") || typeStr.equals("hunt") || typeStr.equals("wh")) {
 				transf = DefaultTransformations.HUNTER;
-				throw new WrongUsageException("Hunter not available yet");
+				throw new WrongUsageException("Hunter not available yet, please wait");
 			} else if (typeStr.equals("s") || typeStr.equals("ghost") || typeStr.equals("phantom")) {
 				transf = DefaultTransformations.SPECTRE;
-				throw new WrongUsageException("Spectre not available yet");
+				throw new WrongUsageException("Spectre not available yet, please wait");
 			} else if (typeStr.equals("n")) {
 				transf = DefaultTransformations.NONE;
 			} else
