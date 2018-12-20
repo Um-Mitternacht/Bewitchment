@@ -107,6 +107,7 @@ dependencies {
     compile "vazkii.patchouli:Patchouli:${patchouli_version}"
     compile "team.chisel.ctm:CTM:MC1.12-${ctm_version}:api"
     runtime "team.chisel.ctm:CTM:MC1.12-${ctm_version}"
+    deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.35"    
 }
 
 tasks.withType(JavaCompile) {
