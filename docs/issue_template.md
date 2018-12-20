@@ -7,7 +7,7 @@
 ### Steps to Reproduce
 
 
-### Version of Minecraft, Bewitchment, Forge, and Baubles
+### Version of Minecraft, Bewitchment, Forge, Patchouli, and Baubles
 
 
 ### Screenshots encouraged
