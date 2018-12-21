@@ -2,23 +2,57 @@ package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
-import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.living.animals.EntityBlindworm;
+import com.bewitchment.common.entity.living.animals.EntityLizard;
+import com.bewitchment.common.entity.living.animals.EntityNewt;
+import com.bewitchment.common.entity.living.animals.EntityOwl;
+import com.bewitchment.common.entity.living.animals.EntityRaven;
+import com.bewitchment.common.entity.living.animals.EntitySnake;
+import com.bewitchment.common.entity.living.animals.EntityToad;
 import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityDonkey;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityLlama;
+import net.minecraft.entity.passive.EntityMule;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityRabbit;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -64,6 +98,11 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		}
 		if (this.aiSit != null) {
 			this.aiSit.setSitting(false);
+		}
+		if (!world.isRemote && source == DamageSource.DROWN && this.hurtTime == 1)
+		{
+			for (int i = 0; i < 20; i++) ((WorldServer)world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, false, this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY + this.rand.nextDouble() * this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, 1, (this.rand.nextDouble() - 0.5D) * 2, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2, 0);
+			this.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 1);
 		}
 		return super.attackEntityFrom(source, amount);
 	}
