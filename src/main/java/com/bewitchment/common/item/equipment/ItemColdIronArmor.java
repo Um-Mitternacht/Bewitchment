@@ -33,6 +33,15 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	private static boolean isSpirit(Entity e) {
+		if (e instanceof EntityLivingBase) {
+			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
@@ -45,6 +54,7 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
 	}
 
+	//Todo: Reduce the change at which thorns fire
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		DamageSource source = event.getSource();
@@ -56,6 +66,12 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 				if (!source.isProjectile())
 					living.attackEntityFrom(DamageSource.causeThornsDamage(attacked), EnchantmentThorns.getDamage(getArmorPieces(attacked), attacked.getRNG()));
 				event.setAmount(event.getAmount() * (1 - .05f * getArmorPieces(attacked)));
+			}
+			if (isSpirit(event.getSource().getTrueSource())) {
+				event.setAmount(event.getAmount() * 0.80F);
+			}
+			if (event.getSource().isFireDamage()) {
+				event.setAmount(event.getAmount() * 0.95F);
 			}
 		}
 	}
