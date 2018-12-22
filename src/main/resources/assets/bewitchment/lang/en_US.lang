@@ -134,6 +134,10 @@ item.silver_helmet.name=Silver Helmet
 item.silver_chestplate.name=Silver Chestplate
 item.silver_leggings.name=Silver Leggings
 item.silver_boots.name=Silver Boots
+item.cold_iron_helmet.name=Cold Iron Helmet
+item.cold_iron_chestplate.name=Cold Iron Chestplate
+item.cold_iron_leggings.name=Cold Iron Leggings
+item.cold_iron_boots.name=Cold Iron Boots
 item.witches_hat.name=Witches Hat
 item.witches_robes.name=Witches Robes
 item.witches_pants.name=Witches Pants
@@ -734,6 +738,11 @@ witch.tooltip.silver_chestplate_description.name=Protects against undead
 witch.tooltip.silver_helmet_description.name=Protects against undead
 witch.tooltip.silver_leggings_description.name=Protects against undead
 witch.tooltip.silver_boots_description.name=Protects against undead
+
+witch.tooltip.cold_iron_chestplate_description.name=fill later
+witch.tooltip.cold_iron_helmet_description.name=fill later
+witch.tooltip.cold_iron_leggings_description.name=fill later
+witch.tooltip.cold_iron_boots_description.name=fill later
 
 witch.tooltip.athame_description.name=This ceremonial dagger also allows you to obtain special loot from mobs.
 

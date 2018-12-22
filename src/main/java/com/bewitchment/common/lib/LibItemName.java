@@ -66,6 +66,10 @@ public final class LibItemName {
 	public static final String SILVER_CHESTPLATE = "silver_chestplate";
 	public static final String SILVER_LEGGINGS = "silver_leggings";
 	public static final String SILVER_BOOTS = "silver_boots";
+	public static final String COLD_IRON_HELMET = "cold_iron_helmet";
+	public static final String COLD_IRON_CHESTPLATE = "cold_iron_chestplate";
+	public static final String COLD_IRON_LEGGINGS = "cold_iron_leggings";
+	public static final String COLD_IRON_BOOTS = "cold_iron_boots";
 	public static final String WITCHES_HAT = "witches_hat";
 	public static final String WITCHES_ROBES = "witches_robes";
 	public static final String WITCHES_PANTS = "witches_pants";
