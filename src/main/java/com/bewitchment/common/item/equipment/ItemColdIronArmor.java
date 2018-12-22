@@ -51,7 +51,7 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getArmorMaterial().name() + "_armor" + "_description.name"));
 	}
 
 	//Todo: Reduce the chance at which thorns fire, and make it resist demon damage a bit as well

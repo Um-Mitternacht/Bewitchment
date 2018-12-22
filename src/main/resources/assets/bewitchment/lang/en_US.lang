@@ -722,27 +722,11 @@ tooltip.potion.data=Potion Data:
 
 tooltip.shift_for_info=<hold shift for details>
 
-witch.tooltip.silver_pickaxe_description.name=Deals extra damage to undead
-witch.tooltip.silver_axe_description.name=Deals extra damage to undead
-witch.tooltip.silver_spade_description.name=Deals extra damage to undead
-witch.tooltip.silver_hoe_description.name=Deals extra damage to undead
-witch.tooltip.silver_sword_description.name=Deals extra damage to undead
+witch.tooltip.silver_armor_description.name=Protects against undead
+witch.tooltip.silver_tool_description.name=Deals extra damage to undead
 
-witch.tooltip.cold_iron_pickaxe_description.name=Deals extra damage to spirits
-witch.tooltip.cold_iron_axe_description.name=Deals extra damage to spirits
-witch.tooltip.cold_iron_spade_description.name=Deals extra damage to spirits
-witch.tooltip.cold_iron_hoe_description.name=Deals extra damage to spirits
-witch.tooltip.cold_iron_sword_description.name=Deals extra damage to spirits
-
-witch.tooltip.silver_chestplate_description.name=Protects against undead
-witch.tooltip.silver_helmet_description.name=Protects against undead
-witch.tooltip.silver_leggings_description.name=Protects against undead
-witch.tooltip.silver_boots_description.name=Protects against undead
-
-witch.tooltip.cold_iron_chestplate_description.name=Protects against demons and spirits
-witch.tooltip.cold_iron_helmet_description.name=Protects against demons and spirits
-witch.tooltip.cold_iron_leggings_description.name=Protects against demons and spirits
-witch.tooltip.cold_iron_boots_description.name=Protects against demons and spirits
+witch.tooltip.cold_iron_armor_description.name=Protects against demons and spirits
+witch.tooltip.cold_iron_tool_description.name=Deals extra damage to spirits
 
 witch.tooltip.athame_description.name=This ceremonial dagger also allows you to obtain special loot from mobs.
 

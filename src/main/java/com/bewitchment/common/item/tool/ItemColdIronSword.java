@@ -55,7 +55,7 @@ public class ItemColdIronSword extends ItemSword implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getToolMaterialName() + "_tool" + "_description.name"));
 	}
 
 	@SideOnly(Side.CLIENT)
