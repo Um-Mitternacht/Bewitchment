@@ -54,7 +54,7 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
 	}
 
-	//Todo: Reduce the change at which thorns fire
+	//Todo: Reduce the chance at which thorns fire
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
 		DamageSource source = event.getSource();
