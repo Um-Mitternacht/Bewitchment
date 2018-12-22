@@ -7,13 +7,6 @@ package com.bewitchment.api.cauldron;
  */
 public class DefaultModifiers {
 
-	public static IBrewModifier POWER;
-	public static IBrewModifier DURATION;
-	public static IBrewModifier RADIUS;
-	public static IBrewModifier GAS_CLOUD_DURATION;
-	public static IBrewModifier SUPPRESS_ENTITY_EFFECT;
-	public static IBrewModifier SUPPRESS_IN_WORLD_EFFECT;
-	public static IBrewModifier COLOR;
-	public static IBrewModifier SUPPRESS_PARTICLES;
+	public static IBrewModifier POWER, DURATION, RADIUS, GAS_CLOUD_DURATION, SUPPRESS_ENTITY_EFFECT, SUPPRESS_IN_WORLD_EFFECT, COLOR, SUPPRESS_PARTICLES;
 }
 

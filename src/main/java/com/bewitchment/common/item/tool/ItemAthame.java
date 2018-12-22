@@ -47,7 +47,6 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 	public ItemAthame() {
 		super(ModMaterials.TOOL_RITUAL);
 		setMaxDamage(600);
-		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.ATHAME);
 		setTranslationKey(LibItemName.ATHAME);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
@@ -67,14 +66,10 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 		return true;
 	}
 
-	public String getNameInefficiently(ItemStack stack) {
-		return getTranslationKey().substring(5);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.YELLOW + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
+		tooltip.add(TextFormatting.YELLOW + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
 	}
 
 	//Todo: Rewrite in it's entirety. Use loot tables.

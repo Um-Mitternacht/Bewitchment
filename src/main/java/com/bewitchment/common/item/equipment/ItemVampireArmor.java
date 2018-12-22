@@ -16,7 +16,6 @@ public class ItemVampireArmor extends ItemArmor implements IModelRegister {
 
 	public ItemVampireArmor(String id, ArmorMaterial materialIn, int renderIndex, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndex, equipmentSlotIn);
-		this.setMaxStackSize(1);
 		setRegistryName(id);
 		setTranslationKey(id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);

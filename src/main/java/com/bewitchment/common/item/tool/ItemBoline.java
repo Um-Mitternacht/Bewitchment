@@ -33,7 +33,6 @@ public class ItemBoline extends ItemShears implements IModelRegister {
 	public ItemBoline() {
 		super();
 		setMaxDamage(600);
-		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.BOLINE);
 		setTranslationKey(LibItemName.BOLINE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);

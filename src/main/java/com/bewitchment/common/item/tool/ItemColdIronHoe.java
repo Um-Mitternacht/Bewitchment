@@ -33,7 +33,6 @@ public class ItemColdIronHoe extends ItemHoe implements IModelRegister {
 
 	public ItemColdIronHoe() {
 		super(ModMaterials.TOOL_COLD_IRON);
-		this.setMaxStackSize(1);
 		setRegistryName(LibItemName.COLD_IRON_HOE);
 		setTranslationKey(LibItemName.COLD_IRON_HOE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
@@ -53,14 +52,10 @@ public class ItemColdIronHoe extends ItemHoe implements IModelRegister {
 		return true;
 	}
 
-	public String getNameInefficiently(ItemStack stack) {
-		return getTranslationKey().substring(5);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getTranslationKey().substring(5) + "_description.name"));
 	}
 
 	@SideOnly(Side.CLIENT)
