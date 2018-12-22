@@ -1,6 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "bewitchment:blocks/tigers_eye_block"
+    "all": "bewitchment:blocks/tigers_eye_block",
+    "up": "bewitchment:blocks/tigers_eye_block_top",
+    "down": "bewitchment:blocks/tigers_eye_block_bottom"
   }
 }

@@ -1,6 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "bewitchment:blocks/alexandrite_block"
+    "all": "bewitchment:blocks/alexandrite_block",
+    "up": "bewitchment:blocks/alexandrite_block_top",
+    "down": "bewitchment:blocks/alexandrite_block_bottom"
   }
 }
