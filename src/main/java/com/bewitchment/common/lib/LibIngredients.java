@@ -109,5 +109,8 @@ public class LibIngredients {
 	public static Ingredient tourmaline = new OreIngredient("gemTourmaline");
 	public static Ingredient malachite = new OreIngredient("gemMalachite");
 	public static Ingredient nuummite = new OreIngredient("gemNuummite");
+	public static Ingredient lapis = new OreIngredient("gemLapis");
+	public static Ingredient quartzPowder = Ingredient.fromItem(ModItems.quartz_powder);
+	public static Ingredient diamond = new OreIngredient("gemDiamond");
 
 }
