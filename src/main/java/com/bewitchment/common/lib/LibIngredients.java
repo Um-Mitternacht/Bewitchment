@@ -112,5 +112,7 @@ public class LibIngredients {
 	public static Ingredient lapis = new OreIngredient("gemLapis");
 	public static Ingredient quartzPowder = Ingredient.fromItem(ModItems.quartz_powder);
 	public static Ingredient diamond = new OreIngredient("gemDiamond");
+	public static Ingredient uranidVenom = Ingredient.fromItem(ModItems.uranid_venom);
+	public static Ingredient magicStitching = Ingredient.fromItem(ModItems.witches_stitching);
 
 }
