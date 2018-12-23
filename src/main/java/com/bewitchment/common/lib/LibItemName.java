@@ -140,6 +140,7 @@ public final class LibItemName {
 	public static final String EYE_OF_NEWT = "eye_of_newt";
 	public static final String BLINDWORMS_STING = "blindworms_sting";
 	public static final String LIZARD_LEG = "lizard_leg";
+	public static final String URANID_VENOM = "uranid_venom";
 
 	//Materials
 	public static final String SILVER = "silver";

@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -12,12 +13,14 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -36,6 +39,8 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
 	private int timerRef = 0;
+	private int milkCooldown = 0;
+	private static final int TIME_BETWEEN_MILK = 6660;
 
 	public EntityUran(World worldIn) {
 		super(worldIn);
@@ -79,6 +84,35 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	@Override
 	public boolean getCanSpawnHere() {
 		return (this.world.provider.doesWaterVaporize() || this.world.provider.isNether()) && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
+	}
+
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION
+		//TODO
+		//---- ^^^^ ----
+		if (this.getAttackTarget() == null || this.getAttackTarget().isDead || this.getRevengeTarget() == null || this.getRevengeTarget().isDead) {
+			ItemStack itemstack = player.getHeldItem(hand);
+			if (itemstack.getItem() == ModItems.glass_jar) {
+				if (milkCooldown == 0 && getRNG().nextBoolean()) {
+					if (this.getGrowingAge() >= 0 && !player.capabilities.isCreativeMode) {
+						itemstack.shrink(1);
+						if (itemstack.isEmpty()) {
+							player.setHeldItem(hand, new ItemStack(ModItems.uranid_venom));
+						} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.snake_venom))) {
+							player.dropItem(new ItemStack(ModItems.uranid_venom), false);
+						}
+						milkCooldown = TIME_BETWEEN_MILK;
+						return true;
+					}
+				} else {
+					//if milk not ready, or randomly 1/2 of the times
+					this.setAttackTarget(player);
+					this.setRevengeTarget(player);
+				}
+			}
+		}
+		return false;
 	}
 
 	@Override

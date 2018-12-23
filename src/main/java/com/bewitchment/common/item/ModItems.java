@@ -212,6 +212,8 @@ public final class ModItems {
 	public static final Item lizard_leg = null;
 	public static final Item blindworms_sting = null;
 
+	public static final Item uranid_venom = null;
+
 	public static final Item pentacle = null;
 
 	public static final Item cold_iron_sword = null;
@@ -306,6 +308,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.EYE_OF_NEWT),
 				new ItemMod(LibItemName.QUARTZ_POWDER),
 				new ItemMod(LibItemName.LAPIS_POWDER),
+				new ItemMod(LibItemName.URANID_VENOM),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemJuniperBerries(),
