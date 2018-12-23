@@ -38,9 +38,9 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	//Todo: Rewrite code, and implement weaknesses to water. Also implement a special potion effect that upon killing a target, spawns more uranids.
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
+	private static final int TIME_BETWEEN_MILK = 6660;
 	private int timerRef = 0;
 	private int milkCooldown = 0;
-	private static final int TIME_BETWEEN_MILK = 6660;
 
 	public EntityUran(World worldIn) {
 		super(worldIn);

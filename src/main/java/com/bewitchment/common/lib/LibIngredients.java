@@ -100,5 +100,14 @@ public class LibIngredients {
 	public static Ingredient empty_jar = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()));
 	public static Ingredient chrysanthemum = Ingredient.fromItem(ModItems.chrysanthemum);
 	public static Ingredient snakeVenom = Ingredient.fromItem(ModItems.snake_venom);
+	public static Ingredient amethyst = new OreIngredient("gemAmethyst");
+	public static Ingredient bloodstone = new OreIngredient("gemBloodstone");
+	public static Ingredient garnet = new OreIngredient("gemGarnet");
+	public static Ingredient alexandrite = new OreIngredient("gemAlexandrite");
+	public static Ingredient jasper = new OreIngredient("gemJasper");
+	public static Ingredient tigersEye = new OreIngredient("gemTigersEye");
+	public static Ingredient tourmaline = new OreIngredient("gemTourmaline");
+	public static Ingredient malachite = new OreIngredient("gemMalachite");
+	public static Ingredient nuummite = new OreIngredient("gemNuummite");
 
 }
