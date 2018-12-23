@@ -99,5 +99,6 @@ public class LibIngredients {
 	public static Ingredient lizardLeg = Ingredient.fromItem(ModItems.lizard_leg);
 	public static Ingredient empty_jar = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()));
 	public static Ingredient chrysanthemum = Ingredient.fromItem(ModItems.chrysanthemum);
+	public static Ingredient snakeVenom = Ingredient.fromItem(ModItems.snake_venom);
 
 }

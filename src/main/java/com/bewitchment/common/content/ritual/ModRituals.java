@@ -183,6 +183,8 @@ public class ModRituals {
 						LibIngredients.blazePowder,
 						LibIngredients.tongueOfDog,
 						LibIngredients.soulSand,
+						LibIngredients.obsidian,
+						LibIngredients.snakeVenom,
 						LibIngredients.hellebore,
 						LibIngredients.athame
 
