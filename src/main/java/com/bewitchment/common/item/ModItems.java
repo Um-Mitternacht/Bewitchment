@@ -310,6 +310,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.QUARTZ_POWDER),
 				new ItemMod(LibItemName.LAPIS_POWDER),
 				new ItemMod(LibItemName.URANID_VENOM),
+				new ItemMod(LibItemName.HELLHOUND_HORN),
 				new ItemHeart(),
 				new ItemGrilledWatermelon(),
 				new ItemJuniperBerries(),
