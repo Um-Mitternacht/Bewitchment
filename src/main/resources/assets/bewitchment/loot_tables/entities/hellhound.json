@@ -7,7 +7,7 @@
         {
           "type": "item",
           "name": "bewitchment:tongue_of_dog",
-          "weight": 1,
+          "weight": 3,
           "functions": [
             {
               "function": "set_count",
@@ -33,9 +33,23 @@
             {
               "function": "set_count",
               "count": {
-                "min": 1,
+                "min": 0,
                 "max": 4
               }
+            },
+            {
+              "type": "item",
+              "name": "bewitchment:hellhound_horn",
+              "weight": 2,
+              "functions": [
+                {
+                  "function": "set_count",
+                  "count": {
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ]
         }
