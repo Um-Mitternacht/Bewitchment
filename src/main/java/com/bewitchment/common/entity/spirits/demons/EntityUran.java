@@ -57,14 +57,6 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		return BewitchmentAPI.getAPI().DEMON;
 	}
 
-
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		dataManager.register(TINT, 0xFFFFFF);
-		this.aiSit = new EntityAISit(this);
-	}
-
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
