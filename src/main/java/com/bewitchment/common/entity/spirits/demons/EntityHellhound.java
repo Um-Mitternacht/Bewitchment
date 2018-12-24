@@ -48,7 +48,7 @@ public class EntityHellhound extends EntityMultiSkin {
 
 	protected void updateAITasks() {
 		if (this.isWet()) {
-			this.attackEntityFrom(DamageSource.DROWN, 1.0F);
+			this.attackEntityFrom(DamageSource.DROWN, 2.5F);
 		}
 	}
 
