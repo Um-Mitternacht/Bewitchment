@@ -114,5 +114,6 @@ public class LibIngredients {
 	public static Ingredient diamond = new OreIngredient("gemDiamond");
 	public static Ingredient uranidVenom = Ingredient.fromItem(ModItems.uranid_venom);
 	public static Ingredient magicStitching = Ingredient.fromItem(ModItems.witches_stitching);
+	public static Ingredient hellhoundHorn = Ingredient.fromItem(ModItems.hellhound_horn);
 
 }

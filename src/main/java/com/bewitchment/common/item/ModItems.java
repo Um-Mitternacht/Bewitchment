@@ -213,6 +213,7 @@ public final class ModItems {
 	public static final Item blindworms_sting = null;
 
 	public static final Item uranid_venom = null;
+	public static final Item hellhound_horn = null;
 
 	public static final Item pentacle = null;
 
