@@ -5,6 +5,7 @@ import com.bewitchment.api.transformation.ITransformation;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.lib.LibBlockName;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -12,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -43,6 +45,8 @@ public class BlockPurifyingEarth extends BlockMod {
 		if (attr == EnumCreatureAttribute.UNDEAD || attr == BewitchmentAPI.getAPI().DEMON || attr == BewitchmentAPI.getAPI().SPIRIT || isTransformedPlayer(entityIn)) {
 			if (!entityIn.isBurning()) {
 				entityIn.setFire(1500);
+				((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.demons_bane, 1000, 1, false, false));
+				((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.holy_water, 1000, 1, false, false));
 			}
 			super.onEntityWalk(worldIn, pos, entityIn);
 		}
