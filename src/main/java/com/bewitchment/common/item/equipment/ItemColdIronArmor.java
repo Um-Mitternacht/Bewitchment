@@ -57,21 +57,24 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 	//Todo: Reduce the chance at which thorns fire, and make it resist demon damage a bit as well
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		DamageSource source = event.getSource();
-		Entity attacker = source.getTrueSource();
-		if (attacker instanceof EntityLivingBase) {
-			EntityLivingBase living = (EntityLivingBase) attacker;
-			EntityLivingBase attacked = event.getEntityLiving();
-			if (living.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
-				if (!source.isProjectile())
-					living.attackEntityFrom(DamageSource.causeThornsDamage(attacked), EnchantmentThorns.getDamage(getArmorPieces(attacked), attacked.getRNG()));
-				event.setAmount(event.getAmount() * (1 - .05f * getArmorPieces(attacked)));
-			}
-			if (isSpirit(event.getSource().getTrueSource())) {
-				event.setAmount(event.getAmount() * 0.80F);
-			}
-			if (event.getSource().isFireDamage()) {
-				event.setAmount(event.getAmount() * 0.95F);
+		if (getArmorPieces(event.getEntityLiving()) > 0)
+		{
+			DamageSource source = event.getSource();
+			Entity attacker = source.getTrueSource();
+			if (attacker instanceof EntityLivingBase) {
+				EntityLivingBase living = (EntityLivingBase) attacker;
+				EntityLivingBase attacked = event.getEntityLiving();
+				if (living.getCreatureAttribute() == BewitchmentAPI.getAPI().DEMON) {
+					if (!source.isProjectile())
+						living.attackEntityFrom(DamageSource.causeThornsDamage(attacked), EnchantmentThorns.getDamage(getArmorPieces(attacked), attacked.getRNG()));
+					event.setAmount(event.getAmount() * (1 - .05f * getArmorPieces(attacked)));
+				}
+				if (isSpirit(event.getSource().getTrueSource())) {
+					event.setAmount(event.getAmount() * 0.80F);
+				}
+				if (event.getSource().isFireDamage()) {
+					event.setAmount(event.getAmount() * 0.95F);
+				}
 			}
 		}
 	}
