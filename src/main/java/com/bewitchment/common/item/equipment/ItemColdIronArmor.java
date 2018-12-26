@@ -57,8 +57,7 @@ public class ItemColdIronArmor extends ItemArmor implements IModelRegister {
 	//Todo: Reduce the chance at which thorns fire, and make it resist demon damage a bit as well
 	@SubscribeEvent
 	public void onEntityDamage(LivingHurtEvent event) {
-		if (getArmorPieces(event.getEntityLiving()) > 0)
-		{
+		if (getArmorPieces(event.getEntityLiving()) > 0) {
 			DamageSource source = event.getSource();
 			Entity attacker = source.getTrueSource();
 			if (attacker instanceof EntityLivingBase) {
