@@ -21,7 +21,7 @@ public class ContainerApiary extends ModContainer<TileEntityApiary> {
 		IItemHandler ih = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		for (int i = 0; i < TileEntityApiary.ROWS; i++) {
 			for (int j = 0; j < TileEntityApiary.COLUMNS; j++) {
-				this.addSlotToContainer(new SlotOneItem(tileEntity, ih, j + i * 6, 62 + j * 18, 16 + i * 18));
+				this.addSlotToContainer(new SlotOneItem(tileEntity, ih, j + i * 6, 35 + j * 18, 16 + i * 18));
 			}
 		}
 		this.addPlayerSlots(playerInventory);
@@ -30,36 +30,6 @@ public class ContainerApiary extends ModContainer<TileEntityApiary> {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
 		return ItemStack.EMPTY;
-//		final Slot slot = inventorySlots.get(slotIndex);
-//		ItemStack copy = ItemStack.EMPTY;
-//
-//		if (slot != null && slot.getHasStack()) {
-//			final ItemStack original = slot.getStack();
-//			copy = original.copy();
-//
-//			if (slotIndex == 0) {
-//				if (!mergeItemStack(original, 19, 55, true)) return ItemStack.EMPTY;
-//				slot.onSlotChange(original, copy);
-//			} else if (slotIndex > 19) {
-//				if (original.getCount() == 1 && !mergeItemStack(original, 0, 1, false)) return ItemStack.EMPTY;
-//				slot.onSlotChange(original, copy);
-//			} else {
-//				if (!mergeItemStack(original, 19, 55, true)) return ItemStack.EMPTY;
-//				slot.onSlotChange(original, copy);
-//			}
-//
-//			if (original.getCount() == 0) {
-//				slot.putStack(ItemStack.EMPTY);
-//			} else {
-//				slot.onSlotChanged();
-//			}
-//
-//			if (original.getCount() == copy.getCount()) return ItemStack.EMPTY;
-//
-//			slot.onTake(player, original);
-//		}
-//
-//		return copy;
 	}
 
 	private class SlotOneItem extends SlotFiltered<TileEntityApiary> {
