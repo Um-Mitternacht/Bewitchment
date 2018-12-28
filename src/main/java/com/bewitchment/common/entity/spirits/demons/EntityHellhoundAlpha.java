@@ -10,7 +10,9 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -18,6 +20,8 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -29,6 +33,8 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhoundAlpha.class, DataSerializers.VARINT);
+
+	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 
 	public EntityHellhoundAlpha(World worldIn) {
 		super(worldIn);
@@ -50,6 +56,11 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 	@Override
 	public int getSkinTypes() {
 		return 6;
+	}
+
+	public void setCustomNameTag(String name) {
+		super.setCustomNameTag(name);
+		this.bossInfo.setName(this.getDisplayName());
 	}
 
 	@Override
@@ -95,6 +106,14 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		return flag;
 	}
 
+	protected void updateAITasks() {
+		if (this.ticksExisted % 20 == 0) {
+			this.heal(2.5F);
+		}
+
+		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+	}
+
 	@Override
 	protected void collideWithEntity(Entity entityIn) {
 		if (!entityIn.equals(getOwner())) {
@@ -109,6 +128,27 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 			return event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.ALLOW;
 		}
 		return super.isPotionApplicable(potioneffectIn);
+	}
+
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		if (this.hasCustomName()) {
+			this.bossInfo.setName(this.getDisplayName());
+		}
+	}
+
+	public void addTrackingPlayer(EntityPlayerMP player) {
+		super.addTrackingPlayer(player);
+		this.bossInfo.addPlayer(player);
+	}
+
+	public void removeTrackingPlayer(EntityPlayerMP player) {
+		super.removeTrackingPlayer(player);
+		this.bossInfo.removePlayer(player);
+	}
+
+	public boolean isNonBoss() {
+		return false;
 	}
 
 	@Override
