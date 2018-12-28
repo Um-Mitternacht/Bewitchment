@@ -1,6 +1,5 @@
 package com.bewitchment.client.render.entity.renderer;
 
-import com.bewitchment.client.render.entity.model.ModelHellHound;
 import com.bewitchment.client.render.entity.model.ModelHellHoundAlpha;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.lib.LibMod;
