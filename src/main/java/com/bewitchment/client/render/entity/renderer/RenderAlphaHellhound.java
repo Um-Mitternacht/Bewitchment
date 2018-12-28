@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.render.entity.model.ModelHellHound;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
+import com.bewitchment.client.render.entity.model.ModelHellHoundAlpha;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;
@@ -26,7 +26,7 @@ public class RenderAlphaHellhound extends RenderLiving<EntityHellhoundAlpha> {
 	}
 
 	public RenderAlphaHellhound(RenderManager rendermanagerIn) {
-		super(rendermanagerIn, new ModelHellHound(), 0.3f);
+		super(rendermanagerIn, new ModelHellHoundAlpha(), 0.3f);
 	}
 
 	@Override
