@@ -144,7 +144,7 @@ public final class ModEntities {
 		//Demons
 		EntityRegistry.addSpawn(EntityUran.class, 3, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 		EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
-		EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 1, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
+		EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 0, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
 		//Ghosts
 		EntityRegistry.addSpawn(EntityBlackDog.class, 2, 1, 3, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
 	}
