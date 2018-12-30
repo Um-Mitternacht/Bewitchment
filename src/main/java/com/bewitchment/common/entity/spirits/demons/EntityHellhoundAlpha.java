@@ -24,8 +24,6 @@ import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 /**
  * Created by Joseph on 12/28/2018.
  */
