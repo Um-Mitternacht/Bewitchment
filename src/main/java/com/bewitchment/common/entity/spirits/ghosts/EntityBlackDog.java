@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public class EntityBlackDog extends EntityMultiSkin {
 	public EntityBlackDog(World worldIn) {
 		super(worldIn);
+		setSize(1.4F, 1.4F);
 	}
 
 	@Override
@@ -23,6 +24,11 @@ public class EntityBlackDog extends EntityMultiSkin {
 
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.getAPI().SPIRIT;
+	}
+
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 10;
 	}
 
 	@Nullable
