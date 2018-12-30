@@ -68,6 +68,11 @@ public class EntityToad extends EntityMultiSkin {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return true;
+	}
+
+	@Override
 	public boolean getCanSpawnHere() {
 		int i = MathHelper.floor(this.posX);
 		int j = MathHelper.floor(this.getEntityBoundingBox().minY);

@@ -96,6 +96,11 @@ public class EntityNewt extends EntityAnimal {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return true;
+	}
+
+	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.SPIDER_EYE;
 	}

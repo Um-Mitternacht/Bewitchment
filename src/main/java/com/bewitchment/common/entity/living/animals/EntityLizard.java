@@ -129,6 +129,11 @@ public class EntityLizard extends EntityTameable {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return true;
+	}
+
+	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		{
 			ItemStack itemstack = player.getHeldItem(hand);

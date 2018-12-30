@@ -177,6 +177,11 @@ public class EntitySnake extends EntityMultiSkin {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return true;
+	}
+
+	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION
 		//TODO
