@@ -191,7 +191,7 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
-		return new EntityUran(world);
+		return null;
 	}
 
 	@Override

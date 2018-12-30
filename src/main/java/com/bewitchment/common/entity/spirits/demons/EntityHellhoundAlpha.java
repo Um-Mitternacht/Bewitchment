@@ -47,10 +47,9 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		this.experienceValue = 65;
 	}
 
-	@Nullable
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
-		return new EntityHellhoundAlpha(world);
+		return null;
 	}
 
 	@Override
