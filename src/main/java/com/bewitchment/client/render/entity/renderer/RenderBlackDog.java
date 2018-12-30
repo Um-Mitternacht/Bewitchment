@@ -1,8 +1,6 @@
 package com.bewitchment.client.render.entity.renderer;
 
 import com.bewitchment.client.render.entity.model.ModelBlackDog;
-import com.bewitchment.client.render.entity.model.ModelHellHound;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;
