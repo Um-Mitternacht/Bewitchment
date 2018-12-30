@@ -44,7 +44,7 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		this.setPathPriority(PathNodeType.LAVA, 8.0F);
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
-		this.experienceValue = 20;
+		this.experienceValue = 65;
 	}
 
 	@Nullable
