@@ -54,7 +54,7 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		EntityRegistry.registerModEntity(getResource("hellhound_alpha"), EntityHellhoundAlpha.class, "entity_hellhound_alpha", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		//Ghosts
-		EntityRegistry.registerModEntity(getResource("black_dog"), EntityBlackDog.class, "entity_black_dog", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
+		EntityRegistry.registerModEntity(getResource("black_dog"), EntityBlackDog.class, "entity_black_dog", id++, Bewitchment.instance, 64, 1, true, 0x000000, 0x000000);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
@@ -109,6 +109,18 @@ public final class ModEntities {
 				.peek(b -> Log.d("Valid hellhound biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
+		List<Biome> validHellhoundAlpha = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.SNOWY) || !BiomeDictionary.hasType(b, Type.COLD) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid hellhound alpha biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
+
+		List<Biome> validBlackDog = Biome.REGISTRY.getKeys().stream()
+				.map(rl -> Biome.REGISTRY.getObject(rl))
+				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND) || BiomeDictionary.hasType(b, Type.FOREST) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
+				.peek(b -> Log.d("Valid black dog biome found: " + b.getRegistryName()))
+				.collect(Collectors.toList());
+
 		Biome[] biomesOwl = new Biome[validOwl.size()];
 		Biome[] biomesSnake = new Biome[validSnake.size()];
 		Biome[] biomesToad = new Biome[validToad.size()];
@@ -118,6 +130,8 @@ public final class ModEntities {
 		Biome[] biomesLizard = new Biome[validLizard.size()];
 		Biome[] biomesUran = new Biome[validUran.size()];
 		Biome[] biomesHellhound = new Biome[validHellhound.size()];
+		Biome[] biomesHellhoundAlpha = new Biome[validHellhoundAlpha.size()];
+		Biome[] biomesBlackDog = new Biome[validBlackDog.size()];
 
 		//Animals
 		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
@@ -130,6 +144,9 @@ public final class ModEntities {
 		//Demons
 		EntityRegistry.addSpawn(EntityUran.class, 3, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 		EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
+		EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 1, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
+		//Ghosts
+		EntityRegistry.addSpawn(EntityBlackDog.class, 2, 1, 3, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
 	}
 
 	private static ResourceLocation getResource(String name) {

@@ -937,6 +937,7 @@ entity.entity_newt.name=Newt
 entity.entity_uran.name=Uran
 entity.entity_hellhound.name=Hellhound
 entity.entity_hellhound_alpha.name=Alpha Hellhound
+entity.entity_black_dog.name=Black Dog
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning
