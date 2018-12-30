@@ -38,9 +38,9 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 	protected void preRenderCallback(EntityBlackDog entitylivingbaseIn, float partialTickTime) {
 		super.preRenderCallback(entitylivingbaseIn, partialTickTime);
 		if (entitylivingbaseIn.isChild()) {
-			GlStateManager.scale(0.6d, 0.6d, 0.6d);
+			GlStateManager.scale(0.9d, 0.9d, 0.9d);
 		} else {
-			GlStateManager.scale(1.4d, 1.4d, 1.4d);
+			GlStateManager.scale(1.8d, 1.8d, 1.8d);
 		}
 	}
 

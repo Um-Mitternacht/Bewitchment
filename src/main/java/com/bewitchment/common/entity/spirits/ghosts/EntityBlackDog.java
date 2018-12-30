@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public class EntityBlackDog extends EntityMultiSkin {
 	public EntityBlackDog(World worldIn) {
 		super(worldIn);
-		setSize(1.4F, 1.4F);
+		setSize(1.8F, 1.8F);
 	}
 
 	@Override

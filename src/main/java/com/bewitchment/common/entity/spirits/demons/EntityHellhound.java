@@ -65,6 +65,7 @@ public class EntityHellhound extends EntityMultiSkin {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.85d);
+		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.25D);
 	}
 
 	@Override
