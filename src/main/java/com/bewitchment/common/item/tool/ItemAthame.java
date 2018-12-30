@@ -5,6 +5,8 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
+import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
@@ -240,6 +242,24 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 
 				else if (event.getEntityLiving() instanceof EntityOwl && rand.nextInt(4) <= 2 + 2 * looting)
 					addDrop(event, new ItemStack(ModItems.owlets_wing, 2));
+
+				else if (event.getEntityLiving() instanceof EntityBlackDog && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.ectoplasm, 4));
+
+				else if (event.getEntityLiving() instanceof EntityBlackDog && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.spectral_dust, 1));
+
+				else if (event.getEntityLiving() instanceof EntityBlackDog && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.tongue_of_dog, 1));
+
+				else if (event.getEntityLiving() instanceof EntityHellhoundAlpha && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.tongue_of_dog, 1));
+
+				else if (event.getEntityLiving() instanceof EntityHellhoundAlpha && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(Items.BLAZE_POWDER, 8, 0));
+
+				else if (event.getEntityLiving() instanceof EntityHellhoundAlpha && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.hellhound_horn, 4, 0));
 
 				else if (event.getEntityLiving() instanceof EntityPlayer && rand.nextInt(11) <= 1 + looting) {
 					ItemStack stack = new ItemStack(Items.SKULL, 1, 3);

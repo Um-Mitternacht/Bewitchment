@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirits.ghosts;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -14,6 +15,7 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -22,6 +24,9 @@ import javax.annotation.Nullable;
  * Created by Joseph on 12/29/2018.
  */
 public class EntityBlackDog extends EntityMultiSkin {
+
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/black_dog");
+
 	public EntityBlackDog(World worldIn) {
 		super(worldIn);
 		setSize(1.8F, 1.8F);
@@ -32,6 +37,11 @@ public class EntityBlackDog extends EntityMultiSkin {
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 35;
 		this.moveHelper = new EntityMoveHelper(this);
+	}
+
+	@Override
+	protected ResourceLocation getLootTable() {
+		return loot;
 	}
 
 	@Override
