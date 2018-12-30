@@ -104,6 +104,11 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		return flag;
 	}
 
+	@Override
+	public boolean canBePushed() {
+		return false;
+	}
+
 	protected void updateAITasks() {
 		if (this.ticksExisted % 20 == 0) {
 			this.heal(2.5F);

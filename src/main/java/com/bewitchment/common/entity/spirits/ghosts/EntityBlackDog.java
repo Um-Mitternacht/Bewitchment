@@ -96,6 +96,11 @@ public class EntityBlackDog extends EntityMultiSkin {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return false;
+	}
+
+	@Override
 	public int getSkinTypes() {
 		return 5;
 	}

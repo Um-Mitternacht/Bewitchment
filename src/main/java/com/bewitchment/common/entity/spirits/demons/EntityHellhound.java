@@ -111,6 +111,10 @@ public class EntityHellhound extends EntityMultiSkin {
 		return super.isPotionApplicable(potioneffectIn);
 	}
 
+	@Override
+	public boolean canBePushed() {
+		return false;
+	}
 
 	@Override
 	public int getMaxSpawnedInChunk() {

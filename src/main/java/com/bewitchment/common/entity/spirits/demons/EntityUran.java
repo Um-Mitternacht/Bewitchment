@@ -190,6 +190,11 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	}
 
 	@Override
+	public boolean canBePushed() {
+		return false;
+	}
+
+	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return null;
 	}
