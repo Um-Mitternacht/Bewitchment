@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
+import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -52,6 +53,8 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("uran"), EntityUran.class, "entity_uran", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xFF9966);
 		EntityRegistry.registerModEntity(getResource("hellhound"), EntityHellhound.class, "entity_hellhound", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		EntityRegistry.registerModEntity(getResource("hellhound_alpha"), EntityHellhoundAlpha.class, "entity_hellhound_alpha", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
+		//Ghosts
+		EntityRegistry.registerModEntity(getResource("black_dog"), EntityBlackDog.class, "entity_black_dog", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
