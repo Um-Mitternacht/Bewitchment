@@ -111,7 +111,7 @@ public class EntityBlackDog extends EntityMultiSkin {
 		}
 		return true;
 	}
-	
+
 	public void fall(float distance, float damageMultiplier)
 	{
 	}
