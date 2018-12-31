@@ -72,6 +72,7 @@ public class EntityBlackDog extends EntityMultiSkin {
 	}
 
 	protected void applyEntityAI() {
+		this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
@@ -96,6 +97,23 @@ public class EntityBlackDog extends EntityMultiSkin {
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		return entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F);
+	}
+
+	@Override
+	public boolean attackEntityFrom(DamageSource damageSource, float par2) {
+		if (!super.attackEntityFrom(damageSource, par2)) {
+			return false;
+		} else {
+			if (damageSource.getTrueSource() != null && !this.equals(damageSource.getTrueSource())) {
+				addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 20 * 5, 1));
+				addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20 * 5, 1));
+			}
+		}
+		return true;
+	}
+	
+	public void fall(float distance, float damageMultiplier)
+	{
 	}
 
 	public void onLivingUpdate() {
