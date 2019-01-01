@@ -86,6 +86,8 @@ public class EntityRaven extends EntityMultiSkin {
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
+		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
+		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
 	}
 
 	@Override

@@ -94,6 +94,8 @@ public class EntityToad extends EntityMultiSkin {
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityEndermite || e instanceof EntitySilverfish));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
+		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
+		this.tasks.addTask(4, new EntityAIWander(this, 0.8));
 	}
 
 	@Override
