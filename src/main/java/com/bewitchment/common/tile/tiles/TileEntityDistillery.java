@@ -42,6 +42,22 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	private int heat = 0;
 	private String currentRecipe = "";
 	private int startingProgress = -1;
+	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			contentsChanged();
+		}
+
+		;
+	};
+	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			contentsChanged();
+		}
+
+		;
+	};
 	private ItemStackHandler fluid_container_and_fuel = new ItemStackHandler(3) {
 		@Override
 		protected void onContentsChanged(int slot) {
@@ -71,22 +87,6 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 				return 1;
 			}
 			return super.getSlotLimit(slot);
-		}
-
-		;
-	};
-	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int slot) {
-			contentsChanged();
-		}
-
-		;
-	};
-	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int slot) {
-			contentsChanged();
 		}
 
 		;

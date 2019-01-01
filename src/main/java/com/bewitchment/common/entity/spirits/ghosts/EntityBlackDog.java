@@ -123,9 +123,17 @@ public class EntityBlackDog extends EntityMultiSkin {
 		super.onLivingUpdate();
 	}
 
-	public boolean getCanSpawnHere()
-	{
+	@Override
+	public boolean getCanSpawnHere() {
 		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && super.getCanSpawnHere();
+	}
+
+	public void onUpdate() {
+		super.onUpdate();
+
+		if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
+			this.setDead();
+		}
 	}
 
 	@Override

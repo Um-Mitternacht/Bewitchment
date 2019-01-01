@@ -105,6 +105,14 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		return flag;
 	}
 
+	public void onUpdate() {
+		super.onUpdate();
+
+		if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
+			this.setDead();
+		}
+	}
+
 	@Override
 	public boolean canBePushed() {
 		return false;

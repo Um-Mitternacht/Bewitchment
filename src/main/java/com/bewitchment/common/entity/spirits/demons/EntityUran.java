@@ -79,6 +79,14 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 		return (this.world.provider.doesWaterVaporize() || this.world.provider.isNether()) && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getDifficulty() != EnumDifficulty.PEACEFUL && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
 	}
 
+	public void onUpdate() {
+		super.onUpdate();
+
+		if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
+			this.setDead();
+		}
+	}
+
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION

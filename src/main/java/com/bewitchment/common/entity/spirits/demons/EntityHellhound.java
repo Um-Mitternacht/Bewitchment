@@ -58,6 +58,14 @@ public class EntityHellhound extends EntityMultiSkin {
 		return (this.world.provider.doesWaterVaporize() || this.world.provider.isNether()) && this.world.getDifficulty() != EnumDifficulty.PEACEFUL && this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.world.containsAnyLiquid(this.getEntityBoundingBox());
 	}
 
+	public void onUpdate() {
+		super.onUpdate();
+
+		if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL) {
+			this.setDead();
+		}
+	}
+
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
