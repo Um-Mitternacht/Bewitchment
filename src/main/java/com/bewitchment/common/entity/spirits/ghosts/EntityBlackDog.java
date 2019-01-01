@@ -16,6 +16,7 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -120,6 +121,11 @@ public class EntityBlackDog extends EntityMultiSkin {
 			this.setDead();
 		}
 		super.onLivingUpdate();
+	}
+
+	public boolean getCanSpawnHere()
+	{
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && super.getCanSpawnHere();
 	}
 
 	@Override
