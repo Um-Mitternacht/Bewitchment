@@ -84,6 +84,10 @@ public class Bewitchment {
 	@Instance(LibMod.MOD_ID)
 	public static Bewitchment instance;
 
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
+
 	@EventHandler
 	public void fingerprintViolation(FMLFingerprintViolationEvent evt) {
 		if (!"true".equals(System.getProperty("ignoreBewitchmentFingerprint"))) {
@@ -92,18 +96,6 @@ public class Bewitchment {
 			Log.w("WARNING: Bewitchment signature mismatch!");
 			Log.w("Ignoring as per launch option");
 		}
-	}
-
-	@SuppressWarnings("serial")
-	private static class FingerprintViolationException extends RuntimeException {
-		public FingerprintViolationException() {
-			super("\n\n!! WARNING:\n\nThe mod "+LibMod.MOD_NAME+" has an invalid signature, this is likely due to someone messing with the jar without permission.\nThe execution will be stopped in order to prevent damages to your system.\n"
-					+ "If you wish to continue executing, please add -DignoreBewitchmentFingerprint=true to your launch arguments\n\n");
-		}
-	}
-
-	static {
-		FluidRegistry.enableUniversalBucket();
 	}
 
 	@EventHandler
@@ -194,5 +186,13 @@ public class Bewitchment {
 	@EventHandler
 	public void setFlight(FMLServerStartedEvent evt) {
 		FMLCommonHandler.instance().getMinecraftServerInstance().setAllowFlight(true);
+	}
+
+	@SuppressWarnings("serial")
+	private static class FingerprintViolationException extends RuntimeException {
+		public FingerprintViolationException() {
+			super("\n\n!! WARNING:\n\nThe mod " + LibMod.MOD_NAME + " has an invalid signature, this is likely due to someone messing with the jar without permission.\nThe execution will be stopped in order to prevent damages to your system.\n"
+					+ "If you wish to continue executing, please add -DignoreBewitchmentFingerprint=true to your launch arguments\n\n");
+		}
 	}
 }
