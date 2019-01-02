@@ -30,14 +30,14 @@ import java.util.Random;
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliserExt {
 
-	public static final PropertyBool placed = PropertyBool.create("placed");
+	public static final PropertyBool PLACED = PropertyBool.create("placed");
 	private static ArrayList<Biome> validBiomesMoonBell = new ArrayList<Biome>();
 
 	public BlockMoonbell() {
 		super("moonbell");
 		MinecraftForge.EVENT_BUS.register(this);
-		this.setLightOpacity(16).setLightLevel(0.5f).setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(placed, false));
+		this.setLightOpacity(0).setLightLevel(0.5f).setTickRandomly(true);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(PLACED, false));
 		this.setSoundType(SoundType.PLANT);
 	}
 
@@ -53,23 +53,23 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(placed, meta == 0);
+		return getDefaultState().withProperty(PLACED, meta == 0);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		if (state.getValue(placed)) return 0;
+		if (state.getValue(PLACED)) return 0;
 		return 1;
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, placed);
+		return new BlockStateContainer(this, PLACED);
 	}
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return getStateFromMeta(0);
+		return getDefaultState().withProperty(PLACED, true);
 	}
 
 	@Override
@@ -81,13 +81,13 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 
 	@Override
 	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
-		if (player == null) return world.getBlockState(pos).getValue(placed);
-		return super.canHarvestBlock(world, pos, player) && ((!player.world.isDaytime() && player.world.getMoonPhase() == 4) || world.getBlockState(pos).getValue(placed));
+		if (player == null) return world.getBlockState(pos).getValue(PLACED);
+		return super.canHarvestBlock(world, pos, player) && ((!player.world.isDaytime() && player.world.getMoonPhase() == 4) || world.getBlockState(pos).getValue(PLACED));
 	}
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
-		if (!state.getValue(placed) && (world.isDaytime() || world.getMoonPhase() != 4)) {
+		if (!state.getValue(PLACED) && (world.isDaytime() || world.getMoonPhase() != 4)) {
 			world.setBlockToAir(pos);
 			for (int i = 0; i < 7; i++) {
 				world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, pos.getX() + r.nextDouble(), pos.getY() + r.nextDouble(), pos.getZ() + r.nextDouble(), r.nextGaussian() * 0.01, r.nextDouble() * 0.01, r.nextGaussian() * 0.01);
@@ -116,7 +116,7 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 		for (int dy = -5; dy <= 5; dy++) {
 			p.setY(oy + dy);
 			if ((w.isAirBlock(p) || w.getBlockState(p).getBlock().isReplaceable(w, p)) && w.getBlockState(p.down()).getBlock() == Blocks.DIRT) {
-				w.setBlockState(p, this.getDefaultState().withProperty(placed, false), 3);
+				w.setBlockState(p, this.getDefaultState().withProperty(PLACED, false), 3);
 				return;
 			}
 		}
@@ -131,7 +131,7 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
-		return 0;
+		return 2;
 	}
 
 }

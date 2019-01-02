@@ -25,6 +25,7 @@ import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.core.statemappers.AllDefaultModelStateMapper;
 import com.bewitchment.common.entity.*;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
@@ -37,6 +38,7 @@ import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.tiles.TileEntityGemBowl;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -54,6 +56,7 @@ import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -78,6 +81,13 @@ public class ClientProxy implements ISidedProxy {
 
 	@SubscribeEvent
 	public static void registerItemModels(ModelRegistryEvent event) {
+		unifyVariants(ModBlocks.ember_grass);
+		unifyVariants(ModBlocks.leaves_cypress);
+		unifyVariants(ModBlocks.leaves_elder);
+		unifyVariants(ModBlocks.leaves_juniper);
+		unifyVariants(ModBlocks.leaves_yew);
+		unifyVariants(ModBlocks.gem_bowl);
+		unifyVariants(ModBlocks.moonbell);
 		ModelHandler.registerModels();
 	}
 
@@ -105,6 +115,10 @@ public class ClientProxy implements ISidedProxy {
 		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderingHacks());
 		MinecraftForge.EVENT_BUS.register(new MiscEventHandler(Minecraft.getMinecraft()));
+	}
+
+	private static void unifyVariants(Block block) {
+		ModelLoader.setCustomStateMapper(block, new AllDefaultModelStateMapper(block));
 	}
 
 	@Override

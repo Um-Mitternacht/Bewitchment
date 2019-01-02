@@ -137,6 +137,6 @@ public class BlockBrazier extends BlockMod implements IInfusionStabiliserExt {
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
-		return 0;
+		return 8;
 	}
 }

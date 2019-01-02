@@ -84,6 +84,6 @@ public class BlockTarotTable extends BlockModTileEntity implements IInfusionStab
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
-		return 0;
+		return 6;
 	}
 }

@@ -200,7 +200,7 @@ public abstract class BlockCandle extends BlockMod implements IInfusionStabilise
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
-		return 0;
+		return 4;
 	}
 
 }

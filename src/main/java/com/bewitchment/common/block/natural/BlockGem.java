@@ -77,7 +77,7 @@ public class BlockGem extends BlockMod implements IInfusionStabiliserExt {
 	@Override
 	@Optional.Method(modid = "thaumcraft")
 	public float getStabilizationAmount(World world, BlockPos pos) {
-		return 0;
+		return 16;
 	}
 
 	public enum Gem implements IStringSerializable {
