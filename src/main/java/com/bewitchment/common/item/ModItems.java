@@ -2,10 +2,10 @@ package com.bewitchment.common.item;
 
 import baubles.api.BaubleType;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
-import com.bewitchment.common.block.chisel.BlockCoquinaChiseled;
-import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled;
-import com.bewitchment.common.block.chisel.BlockSilverChiseled;
+import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
+import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
+import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.helper.CropHelper;

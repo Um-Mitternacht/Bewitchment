@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.chisel;
+package com.bewitchment.common.integration.chisel;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
@@ -13,12 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
-public class BlockNetherSteelChiseled extends BlockMod {
+public class BlockSilverChiseled extends BlockMod {
 
-	public static final PropertyEnum<BlockSteelVariant> VARIANT = PropertyEnum.create("variant", BlockSteelVariant.class);
+	public static final PropertyEnum<BlockSilverVariant> VARIANT = PropertyEnum.create("variant", BlockSilverVariant.class);
 
-	public BlockNetherSteelChiseled(Material material, SoundType sound) {
-		super(LibBlockName.NETHERSTEEL + "_chisel", material, sound);
+	public BlockSilverChiseled(Material material, SoundType sound) {
+		super(LibBlockName.SILVER_BLOCK + "_chisel", material, sound);
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class BlockNetherSteelChiseled extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(VARIANT, BlockSteelVariant.values()[meta]);
+		return getDefaultState().withProperty(VARIANT, BlockSilverVariant.values()[meta]);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class BlockNetherSteelChiseled extends BlockMod {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (int i = 0; i < BlockSteelVariant.values().length; i++) {
+		for (int i = 0; i < BlockSilverVariant.values().length; i++) {
 			items.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -51,14 +51,14 @@ public class BlockNetherSteelChiseled extends BlockMod {
 
 	@Override
 	public void registerModel() {
-		for (BlockSteelVariant v : BlockSteelVariant.values()) {
+		for (BlockSilverVariant v : BlockSilverVariant.values()) {
 			ModelHandler.registerForgeModel(this, v.ordinal(), "variant=" + v.getName());
 		}
 	}
 
-	public static enum BlockSteelVariant implements IStringSerializable {
+	public static enum BlockSilverVariant implements IStringSerializable {
 
-		SYMBOL, SENTIENT, POLISHED, SKULL, PENTACLE, PENTAGRAM, BEVEL, EYE_WATCHING, EYE, HELLISH, HELLISH_WATCHING;
+		SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM, BEVEL;
 
 		@Override
 		public String getName() {

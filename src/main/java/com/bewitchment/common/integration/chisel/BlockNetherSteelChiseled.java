@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.chisel;
+package com.bewitchment.common.integration.chisel;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
@@ -13,11 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
-public class BlockCoquinaChiseled extends BlockMod {
-	public static final PropertyEnum<BlockCoquinaVariant> VARIANT = PropertyEnum.create("variant", BlockCoquinaVariant.class);
+public class BlockNetherSteelChiseled extends BlockMod {
 
-	public BlockCoquinaChiseled(Material material, SoundType sound) {
-		super(LibBlockName.COQUINA + "_chisel", material, sound);
+	public static final PropertyEnum<BlockSteelVariant> VARIANT = PropertyEnum.create("variant", BlockSteelVariant.class);
+
+	public BlockNetherSteelChiseled(Material material, SoundType sound) {
+		super(LibBlockName.NETHERSTEEL + "_chisel", material, sound);
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class BlockCoquinaChiseled extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(VARIANT, BlockCoquinaVariant.values()[meta]);
+		return getDefaultState().withProperty(VARIANT, BlockSteelVariant.values()[meta]);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class BlockCoquinaChiseled extends BlockMod {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (int i = 0; i < BlockCoquinaVariant.values().length; i++) {
+		for (int i = 0; i < BlockSteelVariant.values().length; i++) {
 			items.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -50,18 +51,19 @@ public class BlockCoquinaChiseled extends BlockMod {
 
 	@Override
 	public void registerModel() {
-		for (BlockCoquinaChiseled.BlockCoquinaVariant v : BlockCoquinaChiseled.BlockCoquinaVariant.values()) {
+		for (BlockSteelVariant v : BlockSteelVariant.values()) {
 			ModelHandler.registerForgeModel(this, v.ordinal(), "variant=" + v.getName());
 		}
 	}
 
-	public static enum BlockCoquinaVariant implements IStringSerializable {
+	public static enum BlockSteelVariant implements IStringSerializable {
 
-		BRICKS, CHISELED, SHELL, SMOOTH;
+		SYMBOL, SENTIENT, POLISHED, SKULL, PENTACLE, PENTAGRAM, BEVEL, EYE_WATCHING, EYE, HELLISH, HELLISH_WATCHING;
 
 		@Override
 		public String getName() {
 			return name().toLowerCase();
 		}
 	}
+
 }

@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.chisel;
+package com.bewitchment.common.integration.chisel;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;
@@ -13,12 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
-public class BlockSilverChiseled extends BlockMod {
+public class BlockCoquinaChiseled extends BlockMod {
+	public static final PropertyEnum<BlockCoquinaVariant> VARIANT = PropertyEnum.create("variant", BlockCoquinaVariant.class);
 
-	public static final PropertyEnum<BlockSilverVariant> VARIANT = PropertyEnum.create("variant", BlockSilverVariant.class);
-
-	public BlockSilverChiseled(Material material, SoundType sound) {
-		super(LibBlockName.SILVER_BLOCK + "_chisel", material, sound);
+	public BlockCoquinaChiseled(Material material, SoundType sound) {
+		super(LibBlockName.COQUINA + "_chisel", material, sound);
 	}
 
 	@Override
@@ -29,7 +28,7 @@ public class BlockSilverChiseled extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(VARIANT, BlockSilverVariant.values()[meta]);
+		return getDefaultState().withProperty(VARIANT, BlockCoquinaVariant.values()[meta]);
 	}
 
 	@Override
@@ -39,7 +38,7 @@ public class BlockSilverChiseled extends BlockMod {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (int i = 0; i < BlockSilverVariant.values().length; i++) {
+		for (int i = 0; i < BlockCoquinaVariant.values().length; i++) {
 			items.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -51,19 +50,18 @@ public class BlockSilverChiseled extends BlockMod {
 
 	@Override
 	public void registerModel() {
-		for (BlockSilverVariant v : BlockSilverVariant.values()) {
+		for (BlockCoquinaChiseled.BlockCoquinaVariant v : BlockCoquinaChiseled.BlockCoquinaVariant.values()) {
 			ModelHandler.registerForgeModel(this, v.ordinal(), "variant=" + v.getName());
 		}
 	}
 
-	public static enum BlockSilverVariant implements IStringSerializable {
+	public static enum BlockCoquinaVariant implements IStringSerializable {
 
-		SYMBOL, SUN, MOON, CUP, WAND, SWORD, PENTACLE, PENTAGRAM, BEVEL;
+		BRICKS, CHISELED, SHELL, SMOOTH;
 
 		@Override
 		public String getName() {
 			return name().toLowerCase();
 		}
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.chisel;
+package com.bewitchment.common.integration.chisel;
 
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.block.BlockMod;

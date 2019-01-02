@@ -1,12 +1,12 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.chisel.BlockColdIronChiseled;
-import com.bewitchment.common.block.chisel.BlockColdIronChiseled.BlockColdIronVariant;
-import com.bewitchment.common.block.chisel.BlockCoquinaChiseled;
-import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled;
-import com.bewitchment.common.block.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
-import com.bewitchment.common.block.chisel.BlockSilverChiseled;
-import com.bewitchment.common.block.chisel.BlockSilverChiseled.BlockSilverVariant;
+import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.integration.chisel.BlockColdIronChiseled.BlockColdIronVariant;
+import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
+import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
+import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
+import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
+import com.bewitchment.common.integration.chisel.BlockSilverChiseled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
 import com.bewitchment.common.block.misc.*;
 import com.bewitchment.common.block.natural.*;
