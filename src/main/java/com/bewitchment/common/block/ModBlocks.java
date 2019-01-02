@@ -1,12 +1,5 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
-import com.bewitchment.common.integration.chisel.BlockColdIronChiseled.BlockColdIronVariant;
-import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
-import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
-import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
-import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
-import com.bewitchment.common.integration.chisel.BlockSilverChiseled.BlockSilverVariant;
 import com.bewitchment.common.block.decorations.*;
 import com.bewitchment.common.block.misc.*;
 import com.bewitchment.common.block.natural.*;
@@ -22,6 +15,13 @@ import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
 import com.bewitchment.common.block.tiles.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
+import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.integration.chisel.BlockColdIronChiseled.BlockColdIronVariant;
+import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
+import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
+import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
+import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
+import com.bewitchment.common.integration.chisel.BlockSilverChiseled.BlockSilverVariant;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
@@ -31,6 +31,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -252,7 +253,39 @@ public final class ModBlocks {
 	public static void init() {
 		VanillaCrafting.blocks();
 		initOreDictionary();
+		//Silver is supported by default.
+		FMLInterModComms.sendMessage("chisel", "variation:add", "coquina|bewitchment:coquina|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "coquina|bewitchment:coquina_chisel|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "coquina|bewitchment:coquina_chisel|1");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "coquina|bewitchment:coquina_chisel|2");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "coquina|bewitchment:coquina_chisel|3");
+
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|1");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|2");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|3");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|4");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|5");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|6");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|7");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "cold_iron|bewitchment:cold_iron_block_chisel|8");
+
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|1");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|2");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|3");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|4");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|5");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|6");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|7");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|8");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|9");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|10");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|11");
 	}
+
 
 	private static void initOreDictionary() {
 		//Crystals, Minerals, and Metals
