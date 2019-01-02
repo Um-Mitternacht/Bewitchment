@@ -54,7 +54,7 @@
     {
       "type": "custom",
       "class": "com.bewitchment.common.integration.patchouli.components.ItemListComponent",
-   	  "slots": 6,
+      "slots": 6,
       "registry": "bewitchment:rituals",
       "name": "#ritual",
       "list_type": "output",
@@ -64,7 +64,7 @@
     {
       "type": "custom",
       "class": "com.bewitchment.common.integration.patchouli.components.ItemListComponent",
-   	  "slots": 6,
+      "slots": 6,
       "registry": "bewitchment:rituals",
       "name": "#ritual",
       "list_type": "input",
