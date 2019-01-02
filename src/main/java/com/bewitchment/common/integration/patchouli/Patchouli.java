@@ -40,7 +40,7 @@ public class Patchouli {
 
 	public static List<Ingredient> getInputsFromRegistry(String registry, String name, String type) {
 		try {
-			if ("covens:rituals".equals(registry)) {
+			if ("bewitchment:rituals".equals(registry)) {
 				AdapterIRitual ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(name));
 				if ("input".equals(type)) {
 					return ritual.getInput();
