@@ -54,6 +54,7 @@ minecraft {
     runDir = "run"
 
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
+	replace '@VERSION@', project.version	
 }
 
 processResources {

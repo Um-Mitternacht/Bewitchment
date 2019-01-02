@@ -14,7 +14,7 @@ public final class LibMod {
 	public static final String MOD_NAME = "Bewitchment";
 
 	//Version of MOD
-	public static final String MOD_VER = "0.0.16";
+	public static final String MOD_VER = "@VERSION@";
 
 	//Dependency
 	public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2796,];"
@@ -29,6 +29,9 @@ public final class LibMod {
 
 	//Server proxy location
 	public static final String PROXY_COMMON = "com.bewitchment.common.core.proxy.ServerProxy";
+
+	//SHA1 fingerprint
+	public static final String FINGERPRINT = "@FINGERPRINT@";
 
 	private LibMod() {
 	}

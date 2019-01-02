@@ -31,6 +31,7 @@ import com.bewitchment.common.core.command.*;
 import com.bewitchment.common.core.event.LootTableEventHandler;
 import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.helper.CropHelper;
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
@@ -68,7 +69,7 @@ import static com.bewitchment.common.lib.LibMod.MOD_NAME;
  * the MIT license.
  */
 @SuppressWarnings("WeakerAccess")
-@Mod(modid = LibMod.MOD_ID, name = MOD_NAME, version = LibMod.MOD_VER, dependencies = LibMod.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.13]", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = LibMod.MOD_ID, name = MOD_NAME, version = LibMod.MOD_VER, dependencies = LibMod.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.13]", certificateFingerprint = LibMod.FINGERPRINT)
 public class Bewitchment {
 
 	public static final Logger logger = LogManager.getLogger(MOD_NAME);
@@ -82,6 +83,24 @@ public class Bewitchment {
 	public static ISidedProxy proxy;
 	@Instance(LibMod.MOD_ID)
 	public static Bewitchment instance;
+
+	@EventHandler
+	public void fingerprintViolation(FMLFingerprintViolationEvent evt) {
+		if (!"true".equals(System.getProperty("ignoreBewitchmentFingerprint"))) {
+			throw new FingerprintViolationException();
+		} else {
+			Log.w("WARNING: Bewitchment signature mismatch!");
+			Log.w("Ignoring as per launch option");
+		}
+	}
+
+	@SuppressWarnings("serial")
+	private static class FingerprintViolationException extends RuntimeException {
+		public FingerprintViolationException() {
+			super("\n\n!! WARNING:\n\nThe mod "+LibMod.MOD_NAME+" has an invalid signature, this is likely due to someone messing with the jar without permission.\nThe execution will be stopped in order to prevent damages to your system.\n"
+					+ "If you wish to continue executing, please add -DignoreBewitchmentFingerprint=true to your launch arguments\n\n");
+		}
+	}
 
 	static {
 		FluidRegistry.enableUniversalBucket();
