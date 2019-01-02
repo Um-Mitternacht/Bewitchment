@@ -115,5 +115,9 @@ public class LibIngredients {
 	public static Ingredient uranidVenom = Ingredient.fromItem(ModItems.uranid_venom);
 	public static Ingredient magicStitching = Ingredient.fromItem(ModItems.witches_stitching);
 	public static Ingredient hellhoundHorn = Ingredient.fromItem(ModItems.hellhound_horn);
+	public static Ingredient kelp = Ingredient.fromItem(ModItems.kelp);
+	public static Ingredient coquina = Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina));
+	public static Ingredient stone = Ingredient.fromItem(Item.getItemFromBlock(Blocks.STONE));
+	public static Ingredient otherworldTears = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()));
 
 }

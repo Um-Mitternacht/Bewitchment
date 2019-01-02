@@ -4,6 +4,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -28,8 +29,8 @@ public class ModDistilleryRecipes {
 		REGISTRY.register(DistilleryRecipe.Factory.start("undying_image")
 				.setAnyContainer()
 				.withBaseProcessingTime(300)
-				.withInput(LibIngredients.wax, LibIngredients.fumeReekOfDeath)
-				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.undying_image.ordinal()))
+				.withInput(LibIngredients.ectoplasm, LibIngredients.fumeReekOfDeath, LibIngredients.yewEssence)
+				.withOutput(new ItemStack(ModItems.fume, 2, ItemFumes.Type.undying_image.ordinal()))
 				.build()
 		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("emanation_of_dishonesty")
@@ -41,11 +42,49 @@ public class ModDistilleryRecipes {
 		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("otherworldy_tears")
 				.setAnyContainer()//TODO: Make this take some water
-				.withBaseProcessingTime(300)
+				.withBaseProcessingTime(600)
 				.withInput(LibIngredients.enderPearl, LibIngredients.lapisPowder, LibIngredients.fumeBirchSoul)
 				.withOutput(
 						new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()),
 						new ItemStack(ModItems.dimensional_sand, 2, 0)
+				)
+				.build()
+		);
+		REGISTRY.register(DistilleryRecipe.Factory.start("zephyr_of_the_depths")
+				.setAnyContainer()//TODO: Make this take some water
+				.withBaseProcessingTime(900)
+				.withInput(LibIngredients.kelp, LibIngredients.coquina, LibIngredients.lapisPowder, LibIngredients.otherworldTears)
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.zephyr_of_the_depths.ordinal()),
+						new ItemStack(Items.SLIME_BALL, 2, 0)
+				)
+				.build()
+		);
+		REGISTRY.register(DistilleryRecipe.Factory.start("fiery_breeze")
+				.setAnyContainer()
+				.withBaseProcessingTime(900)
+				.withInput(LibIngredients.blazePowder, LibIngredients.woodAsh, LibIngredients.obsidian, LibIngredients.fumeCloudyOil)
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.fiery_breeze.ordinal()),
+						new ItemStack(ModItems.diabolic_vein, 2, 0)
+				)
+				.build()
+		);
+		REGISTRY.register(DistilleryRecipe.Factory.start("heavenly_winds")
+				.setAnyContainer()
+				.withBaseProcessingTime(900)
+				.withInput(LibIngredients.glowstoneDust, LibIngredients.quartzPowder, LibIngredients.jasper, LibIngredients.fumeBirchSoul)
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.heavenly_winds.ordinal())
+				)
+				.build()
+		);
+		REGISTRY.register(DistilleryRecipe.Factory.start("petrichor_odour")
+				.setAnyContainer()
+				.withBaseProcessingTime(900)
+				.withInput(LibIngredients.obsidian, LibIngredients.coquina, LibIngredients.stone, LibIngredients.fumeBottledMagic)
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.petrichor_odour.ordinal())
 				)
 				.build()
 		);
