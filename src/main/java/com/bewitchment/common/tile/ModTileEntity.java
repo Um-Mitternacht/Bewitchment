@@ -2,6 +2,7 @@ package com.bewitchment.common.tile;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -11,6 +12,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Random;
 
@@ -40,6 +42,17 @@ public abstract class ModTileEntity extends TileEntity {
 	protected abstract void writeModSyncDataNBT(NBTTagCompound tag);
 
 	protected abstract void readModSyncDataNBT(NBTTagCompound tag);
+
+	protected void dropInventory(ItemStackHandler handler) {
+		if (!this.getWorld().isRemote && this.getWorld().getGameRules().getBoolean("doTileDrops")) {
+			for (int i = 0; i < handler.getSlots(); i++) {
+				ItemStack is = handler.getStackInSlot(i);
+				if (!is.isEmpty()) {
+					InventoryHelper.spawnItemStack(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), is);
+				}
+			}
+		}
+	}
 
 	public void syncToClient() {
 		if (world != null) {

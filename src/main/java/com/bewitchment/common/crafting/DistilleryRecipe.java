@@ -1,6 +1,5 @@
 package com.bewitchment.common.crafting;
 
-import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -15,36 +14,26 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 
 	private NonNullList<ItemStack> outputs = null;
 	private int time = -1;
-	private Ingredient container = null;
 	private NonNullList<Ingredient> inputs = null;
 
 	private DistilleryRecipe() {
 
 	}
 
-	public boolean matches(List<ItemStack> inputsIn, ItemStack containerIn) {
-		if (doesContainerMatch(containerIn)) {
-			if (doInputsMatch(inputsIn)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private boolean doInputsMatch(List<ItemStack> list) {
+	public boolean matches(List<ItemStack> list) {
 		int nonEmpty = 0;
 		for (ItemStack is : list) {
 			if (is.getCount() > 0) {
 				nonEmpty++;
 			}
 		}
-		if (nonEmpty != inputs.size()) {
+		if (nonEmpty != this.inputs.size()) {
 			return false;
 		}
-		boolean[] found = new boolean[inputs.size()];
+		boolean[] found = new boolean[this.inputs.size()];
 		ArrayList<ItemStack> comp = new ArrayList<>(list);
-		for (int i = 0; i < inputs.size(); i++) {
-			Ingredient current = inputs.get(i);
+		for (int i = 0; i < this.inputs.size(); i++) {
+			Ingredient current = this.inputs.get(i);
 			for (int j = 0; j < comp.size(); j++) {
 				ItemStack is = comp.get(j);
 				if (current.apply(is)) {
@@ -62,16 +51,16 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		return true;
 	}
 
-	private boolean doesContainerMatch(ItemStack containerIn) {
-		return (container == null && !containerIn.isEmpty()) || (container != null && container.apply(containerIn));
-	}
-
 	public int getTime() {
-		return time;
+		return this.time;
 	}
 
 	public NonNullList<ItemStack> getOutputs() {
-		return outputs;
+		return this.outputs;
+	}
+
+	public List<Ingredient> getInputs() {
+		return this.inputs;
 	}
 
 	public static class Factory {
@@ -79,7 +68,7 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		private DistilleryRecipe recipe = new DistilleryRecipe();
 
 		private Factory(ResourceLocation registryName) {
-			recipe.setRegistryName(registryName);
+			this.recipe.setRegistryName(registryName);
 		}
 
 		public static Factory start(ResourceLocation registryName) {
@@ -92,69 +81,49 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 
 		public Factory withBaseProcessingTime(int time) {
 			if (time <= 0) {
-				throw new RuntimeException("Time must be a positive integer");
+				throw new IllegalArgumentException("Time must be a positive integer");
 			}
-			recipe.time = time;
+			this.recipe.time = time;
 			return this;
 		}
 
 		public Factory withOutput(ItemStack... stacks) {
 			if (stacks.length > 6) {
-				throw new RuntimeException("Too many outputs, you can only use 6 at most");
+				throw new IllegalArgumentException("Too many outputs, you can only use 6 at most");
 			}
-			recipe.outputs = NonNullList.from(ItemStack.EMPTY, stacks);
+			this.recipe.outputs = NonNullList.from(ItemStack.EMPTY, stacks);
 			return this;
 		}
 
 		public Factory withInput(Ingredient... stacks) {
 			if (stacks.length > 6) {
-				throw new RuntimeException("Recipes cannot have more than 6 ingredients");
+				throw new IllegalArgumentException("Recipes cannot have more than 6 ingredients");
 			}
 			for (Ingredient i : stacks) {
 				if (i.getMatchingStacks().length == 0) {
-					throw new RuntimeException("No valid stack found");
+					throw new IllegalArgumentException("No valid stack found");
 				}
 			}
-			recipe.inputs = NonNullList.from(Ingredient.EMPTY, stacks);
+			this.recipe.inputs = NonNullList.from(Ingredient.EMPTY, stacks);
 			return this;
 		}
 
 		public Factory setNoOutput() {
-			recipe.outputs = NonNullList.create();
-			return this;
-		}
-
-		public Factory setNoContainer() {
-			recipe.container = Ingredient.EMPTY;
-			return this;
-		}
-
-		public Factory setAnyContainer() {
-			recipe.container = null;
-			return this;
-		}
-
-		public Factory withContainer(Ingredient containerIn) {
-			Log.w("The container option for distillery recipes is broken, reverting to anyContainer");
-			if (containerIn.getMatchingStacks().length == 0) {
-				throw new RuntimeException("No valid stack found");
-			}
-			recipe.container = containerIn;
-			setAnyContainer();
+			this.recipe.outputs = NonNullList.create();
 			return this;
 		}
 
 		public DistilleryRecipe build() {
-			if (recipe.time <= 0) {
-				throw new RuntimeException("Time was not set properly");
+			if (this.recipe.time <= 0) {
+				throw new IllegalStateException("Time was not set properly");
 			}
-			if (recipe.inputs == null) {
-				throw new RuntimeException("Inputs were not set");
+			if (this.recipe.inputs == null) {
+				throw new IllegalStateException("Inputs were not set");
 			}
-			if (recipe.outputs == null) {
-				throw new RuntimeException("Outputs were not set");
+			if (this.recipe.outputs == null) {
+				throw new IllegalStateException("Outputs were not set");
 			}
-			return recipe;
+			return this.recipe;
 		}
 
 	}
