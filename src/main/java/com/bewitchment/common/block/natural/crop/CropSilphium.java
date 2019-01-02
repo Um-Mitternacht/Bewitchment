@@ -101,6 +101,6 @@ public class CropSilphium extends BlockCrop {
 
 	@Override
 	protected boolean canSustainBush(IBlockState state) {
-		return state.getBlock() == Blocks.FARMLAND || state.getBlock() == this;
+		return state.getBlock() == Blocks.FARMLAND || (state.getBlock() == this && isMaxAge(state));
 	}
 }

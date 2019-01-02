@@ -53,7 +53,7 @@ public class CropKelp extends BlockCrop {
 
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return worldIn.getBlockState(pos.up()).getBlock() == Blocks.WATER;
+		return worldIn.getBlockState(pos.up()).getMaterial() == Material.WATER;
 	}
 
 	@Override
@@ -63,20 +63,10 @@ public class CropKelp extends BlockCrop {
 
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		BlockPos I = pos.add(-1, 0, -1);
-		BlockPos F = pos.add(1, 1, 1);
-		for (BlockPos blockPos : BlockPos.getAllInBox(I, F)) {
-			Block block = worldIn.getBlockState(blockPos).getBlock();
-			if (block != this && block != Blocks.WATER && block != Blocks.FLOWING_WATER) {
-				checkAndDropBlock(worldIn, pos, state);
-				break;
-			}
-		}
-		if (!canBlockStay(worldIn, pos, state) || !canSustainBush(worldIn.getBlockState(pos.down()))) {
+		if (!canBlockStay(worldIn, pos, state)) {
 			checkAndDropBlock(worldIn, pos, state);
 		}
 	}
-
 
 	@Override
 	protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
@@ -88,13 +78,12 @@ public class CropKelp extends BlockCrop {
 
 	@Override
 	protected boolean canSustainBush(IBlockState state) {
-		return state.getBlock() == this;
+		return false;
 	}
 
 	@Override
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
-		state = worldIn.getBlockState(pos.down());
-		return state.getMaterial().isSolid() || state.getBlock() == this;
+		return worldIn.getBlockState(pos.down()).getMaterial().isSolid() || worldIn.getBlockState(pos.down()).getBlock() == this;
 	}
 
 	@Override
