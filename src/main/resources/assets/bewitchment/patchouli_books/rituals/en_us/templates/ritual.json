@@ -4,8 +4,8 @@
     {
       "type": "text",
       "text": "#ritualname",
-      "x": 10,
-      "y": 8
+      "x": 0,
+      "y": 0
     },
     {
       "type": "image",
@@ -50,6 +50,26 @@
       "x": 20,
       "y": 40,
       "scale": 2
+    },
+    {
+      "type": "custom",
+      "class": "com.bewitchment.common.integration.patchouli.components.ItemListComponent",
+   	  "slots": 6,
+      "registry": "bewitchment:rituals",
+      "name": "#ritual",
+      "list_type": "output",
+      "x": 2,
+      "y": 105
+    },
+    {
+      "type": "custom",
+      "class": "com.bewitchment.common.integration.patchouli.components.ItemListComponent",
+   	  "slots": 6,
+      "registry": "bewitchment:rituals",
+      "name": "#ritual",
+      "list_type": "input",
+      "x": 2,
+      "y": 20
     }
   ]
 }
