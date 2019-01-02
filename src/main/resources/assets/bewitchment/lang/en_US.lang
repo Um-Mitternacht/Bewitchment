@@ -788,6 +788,7 @@ jei.category.spinner=Thread Spinning
 jei.category.brewing=Brew Bottling
 jei.category.crafting=Cauldron Crafting
 jei.category.brew_modifiers=Brew Modifier
+jei.category.distillery=Distillation
 jei.ritual.power.flat=%d Altar Power
 jei.ritual.power.tick=%d Altar Power Per Second
 
