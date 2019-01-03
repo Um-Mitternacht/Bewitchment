@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "Writers, this is a TODO for you."
+      "text": "Many items exist in this world for you to craft, ranging from the standard broom, to crystal balls. However, all of these have one thing in common, they are crafted via ritual."
     },
     {
       "type": "ritual",
