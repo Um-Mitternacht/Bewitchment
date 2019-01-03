@@ -4,7 +4,7 @@
   "category": "obw_basic_bestiary",
   "pages": [
     {
-      "type": "text",
+      "type": "Found in denser forests, this bird is said to make a good familiar for those wishing to hone their skills in navigation.",
       "text": "TODO"
     },
     {
@@ -12,7 +12,7 @@
       "name": "Owl",
       "entity": "bewitchment:owl",
       "scale": 0.95,
-      "text": "TODO"
+      "text": "Hoot."
     }
   ]
 }

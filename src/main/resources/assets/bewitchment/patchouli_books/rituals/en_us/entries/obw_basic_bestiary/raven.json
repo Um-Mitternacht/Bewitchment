@@ -5,14 +5,14 @@
   "pages": [
     {
       "type": "text",
-      "text": "TODO"
+      "text": "A fairly common bird, it is said to make a good familiar for those wishing to hone their skills in spellcasting."
     },
     {
       "type": "entity",
       "name": "Raven",
       "entity": "bewitchment:raven",
       "scale": 1.0,
-      "text": "TODO"
+      "text": "Caw."
     }
   ]
 }
