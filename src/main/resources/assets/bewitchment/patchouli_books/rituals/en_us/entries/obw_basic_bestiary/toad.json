@@ -5,14 +5,14 @@
   "pages": [
     {
       "type": "text",
-      "text": "TODO"
+      "text": "An amphibian found throughout swamps, it is said they make good familiars for those wishing to practice their skills in brewing..."
     },
     {
       "type": "entity",
       "name": "Toad",
       "entity": "bewitchment:toad",
       "scale": 1.0,
-      "text": "TODO"
+      "text": "Ribbit."
     }
   ]
 }
