@@ -54,7 +54,7 @@ minecraft {
     runDir = "run"
 
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
-	replace '@VERSION@', project.version	
+    replace '@VERSION@', project.version
 }
 
 processResources {
@@ -94,12 +94,12 @@ repositories {
         name = "ModMaven"
         url = "modmaven.k-4u.nl"
     }
-    maven { 
-      	url = 'https://maven.blamejared.com' 
+    maven {
+        url = 'https://maven.blamejared.com'
     }
     maven {
         url "http://maven.tterrag.com/"
-    }    
+    }
 }
 
 dependencies {
@@ -110,7 +110,7 @@ dependencies {
     compile "thaumcraft:Thaumcraft:1.12.2:${thaumcraft_version}"
     compile "vazkii.patchouli:Patchouli:${patchouli_version}"
     deobfCompile "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
-    deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.35"    
+    deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.35"
 }
 
 tasks.withType(JavaCompile) {
