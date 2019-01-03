@@ -3,7 +3,7 @@
   "parent": "block/block",
   "variants": {
     "normal": {
-        "model": "bewitchment:moonbell"
+      "model": "bewitchment:moonbell"
     }
   }
 }

@@ -100,6 +100,10 @@ public class ClientProxy implements ISidedProxy {
 		event.getMap().registerSprite(ResourceLocations.BAT);
 	}
 
+	private static void unifyVariants(Block block) {
+		ModelLoader.setCustomStateMapper(block, new AllDefaultModelStateMapper(block));
+	}
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		registerRenders();
@@ -115,10 +119,6 @@ public class ClientProxy implements ISidedProxy {
 		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderingHacks());
 		MinecraftForge.EVENT_BUS.register(new MiscEventHandler(Minecraft.getMinecraft()));
-	}
-
-	private static void unifyVariants(Block block) {
-		ModelLoader.setCustomStateMapper(block, new AllDefaultModelStateMapper(block));
 	}
 
 	@Override
