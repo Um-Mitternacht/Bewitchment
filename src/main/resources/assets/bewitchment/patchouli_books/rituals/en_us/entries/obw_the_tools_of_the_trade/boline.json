@@ -4,8 +4,9 @@
   "category": "obw_the_tools_of_the_trade",
   "pages": [
     {
-      "type": "text",
-      "text": "TODO"
+      "type": "spotlight",
+      "item": "bewitchment:boline",	
+      "text": "A small sickle, you have found it indispensible for harvesting plant-based ingredients."
     },
     {
       "type": "crafting",

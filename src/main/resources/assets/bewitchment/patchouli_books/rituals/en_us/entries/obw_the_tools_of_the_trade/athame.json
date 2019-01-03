@@ -4,8 +4,9 @@
   "category": "obw_the_tools_of_the_trade",
   "pages": [
     {
-      "type": "text",
-      "text": "TODO"
+      "type": "spotlight",
+      "item": "bewitchment:athame",	  
+      "text": "A highly sacred and ceremonial dagger, you have found it to be indispensible in summoning rituals, and even in ingredient harvesting."
     },
     {
       "type": "crafting",
