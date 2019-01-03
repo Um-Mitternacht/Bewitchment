@@ -48,7 +48,6 @@ public class CommandTransformationModifier extends CommandBase {
 
 			if (typeStr.equals("v") || typeStr.equals("vamp")) {
 				transf = DefaultTransformations.VAMPIRE;
-				throw new WrongUsageException("Vampire not available yet, please wait");
 			} else if (typeStr.equals("w") || typeStr.equals("ww") || typeStr.equals("wolf")) {
 				transf = DefaultTransformations.WEREWOLF;
 				throw new WrongUsageException("Werewolf not available yet, please wait");

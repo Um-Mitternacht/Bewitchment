@@ -4,8 +4,9 @@
   "category": "obw_the_tools_of_the_trade",
   "pages": [
     {
-      "type": "text",
-      "text": "TODO"
+      "type": "spotlight",
+      "item": "bewitchment:mortar_and_pestle",	
+      "text": "A versatile instrument in grinding herbs and other materials into dusts that may be used by you."
     },
     {
       "type": "crafting",
