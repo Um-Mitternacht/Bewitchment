@@ -4,8 +4,9 @@
   "category": "obw_the_tools_of_the_trade",
   "pages": [
     {
-      "type": "text",
-      "text": "TODO"
+      "type": "spotlight",
+      "item": "bewitchment:thread_spinner",	
+      "text": "A tool used to spin various materials into fabrics, which can be, in turn, used for the crafting of other items."
     },
     {
       "type": "crafting",
