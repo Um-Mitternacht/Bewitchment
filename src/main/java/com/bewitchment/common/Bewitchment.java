@@ -92,9 +92,6 @@ public class Bewitchment {
 	public void fingerprintViolation(FMLFingerprintViolationEvent evt) {
 		if (!"true".equals(System.getProperty("ignoreBewitchmentFingerprint"))) {
 			Log.w("!! WARNING: The mod " + LibMod.MOD_NAME + " has an invalid signature, this is likely due to someone messing with the jar without permission!");
-		} else {
-			Log.w("WARNING: Bewitchment signature mismatch!");
-			Log.w("Ignoring as per launch option");
 		}
 	}
 
