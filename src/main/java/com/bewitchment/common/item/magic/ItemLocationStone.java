@@ -6,9 +6,6 @@ import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibItemName;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -37,16 +34,6 @@ public class ItemLocationStone extends ItemMod {
 
 	public static boolean isBound(ItemStack stack) {
 		return stack.getMetadata() == 1;
-	}
-
-	@Override
-	public int getDamage(ItemStack stack) {
-		return checkOrSetTag(stack).getInteger("damage");
-	}
-
-	@Override
-	public void setDamage(ItemStack stack, int damage) {
-		checkOrSetTag(stack).setInteger("damage", damage);
 	}
 
 	public static Optional<DimensionalPosition> getLocation(ItemStack stack) {
@@ -94,6 +81,16 @@ public class ItemLocationStone extends ItemMod {
 			Bewitchment.logger.warn("Stone was bound but had no location data attached");
 		}
 		return tag;
+	}
+
+	@Override
+	public int getDamage(ItemStack stack) {
+		return checkOrSetTag(stack).getInteger("damage");
+	}
+
+	@Override
+	public void setDamage(ItemStack stack, int damage) {
+		checkOrSetTag(stack).setInteger("damage", damage);
 	}
 
 	@Override
