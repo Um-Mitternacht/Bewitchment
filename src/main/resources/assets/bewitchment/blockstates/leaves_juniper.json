@@ -1,27 +1,7 @@
 {
-  "forge_marker": 1,
-  "parent": "block/block",
-  "defaults": {
+  "variants": {
     "normal": {
       "model": "bewitchment:leaves_juniper"
-    }
-  },
-  "variants": {
-    "check_decay": {
-      "true": {
-        "model": "bewitchment:leaves_juniper"
-      },
-      "false": {
-        "model": "bewitchment:leaves_juniper"
-      }
-    },
-    "decayable": {
-      "true": {
-        "model": "bewitchment:leaves_juniper"
-      },
-      "false": {
-        "model": "bewitchment:leaves_juniper"
-      }
     }
   }
 }
