@@ -96,8 +96,8 @@ public class ModBrewModifiers {
 			}
 		};
 
-		//Fixme: Get an actual implementation of this in game
-		DefaultModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(Items.DIAMOND)) {
+		//Fixme: Make sure this actually works
+		DefaultModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(ModItems.chromatic_quill)) {
 
 			@Override
 			public boolean canApply(IBrewEffect brew) {
