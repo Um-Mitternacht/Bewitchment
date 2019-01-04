@@ -4,6 +4,7 @@ import com.bewitchment.client.core.ModelResourceLocations;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.util.DimensionalPosition;
 import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -30,13 +31,22 @@ public class ItemLocationStone extends ItemMod {
 
 	public ItemLocationStone() {
 		super(LibItemName.LOCATION_STONE);
-		this.setMaxDamage(3);
 		this.setMaxStackSize(1);
-		this.setNoRepair();
+		this.setMaxDamage(3);
 	}
 
 	public static boolean isBound(ItemStack stack) {
-		return checkOrSetTag(stack).getBoolean("bound");
+		return stack.getMetadata() == 1;
+	}
+
+	@Override
+	public int getDamage(ItemStack stack) {
+		return checkOrSetTag(stack).getInteger("damage");
+	}
+
+	@Override
+	public void setDamage(ItemStack stack, int damage) {
+		checkOrSetTag(stack).setInteger("damage", damage);
 	}
 
 	public static Optional<DimensionalPosition> getLocation(ItemStack stack) {
@@ -60,15 +70,18 @@ public class ItemLocationStone extends ItemMod {
 		return odp;
 	}
 
-	public static void bind(ItemStack stack, DimensionalPosition pos) {
-		NBTTagCompound tag = checkOrSetTag(stack);
+	public static ItemStack bind(ItemStack stack, DimensionalPosition pos) {
+		ItemStack tempStack = stack.copy();
+		NBTTagCompound tag = checkOrSetTag(tempStack);
 		NBTTagCompound posTag = new NBTTagCompound();
 		posTag.setInteger("x", pos.getX());
 		posTag.setInteger("y", pos.getY());
 		posTag.setInteger("z", pos.getZ());
 		posTag.setInteger("d", pos.getDim());
 		tag.setTag("coords", posTag);
-		tag.setBoolean("bound", true);
+		ItemStack res = new ItemStack(ModItems.location_stone, tempStack.getCount(), 1);
+		res.setTagCompound(tempStack.getTagCompound());
+		return res;
 	}
 
 	private static NBTTagCompound checkOrSetTag(ItemStack stack) {
@@ -76,11 +89,8 @@ public class ItemLocationStone extends ItemMod {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		NBTTagCompound tag = stack.getTagCompound();
-		if (!tag.hasKey("bound")) {
-			tag.setBoolean("bound", false);
-		}
-		if (tag.getBoolean("bound") && !tag.hasKey("coords")) {
-			tag.setBoolean("bound", false);
+		tag.setInteger("damage", 0);
+		if (isBound(stack) && !tag.hasKey("coords")) {
 			Bewitchment.logger.warn("Stone was bound but had no location data attached");
 		}
 		return tag;
@@ -107,8 +117,7 @@ public class ItemLocationStone extends ItemMod {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		ItemStack stack = playerIn.getHeldItem(handIn);
 		if (!isBound(stack)) {
-			bind(stack, new DimensionalPosition(playerIn));
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, bind(stack, new DimensionalPosition(playerIn)));
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
 	}
@@ -121,18 +130,7 @@ public class ItemLocationStone extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {
-		ModelBakery.registerItemVariants(this,
-				ModelResourceLocations.BOUND_LOCATION_STONE,
-				ModelResourceLocations.UNBOUND_LOCATION_STONE);
-		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				if (isBound(stack)) {
-					return ModelResourceLocations.BOUND_LOCATION_STONE;
-				}
-				return ModelResourceLocations.UNBOUND_LOCATION_STONE;
-			}
-		});
+		ModelLoader.setCustomModelResourceLocation(this, 0, ModelResourceLocations.UNBOUND_LOCATION_STONE);
+		ModelLoader.setCustomModelResourceLocation(this, 1, ModelResourceLocations.BOUND_LOCATION_STONE);
 	}
 }

@@ -33,8 +33,7 @@ public class ItemFilledBowl extends ItemModFood {
 			stack.setTagCompound(new NBTTagCompound()); //not really supposed to happen ingame since you only get the stews with NBT values assigned but it prevents crashing
 		}
 		final FoodStats foodStats = player.getFoodStats();
-		foodStats.setFoodLevel(foodStats.getFoodLevel() + stack.getTagCompound().getInteger("hunger"));
-		foodStats.setFoodSaturationLevel(foodStats.getFoodLevel() + stack.getTagCompound().getFloat("saturation"));
+		foodStats.addStats(stack.getTagCompound().getInteger("hunger"), stack.getTagCompound().getFloat("saturation"));
 		player.addItemStackToInventory(new ItemStack(Items.BOWL, 1));
 	}
 

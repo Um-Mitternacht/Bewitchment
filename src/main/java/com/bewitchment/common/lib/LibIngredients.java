@@ -60,7 +60,7 @@ public class LibIngredients {
 	public static Ingredient soulSand = Ingredient.fromItem(Item.getItemFromBlock(Blocks.SOUL_SAND));
 	public static Ingredient woodAsh = Ingredient.fromItem(ModItems.wood_ash);
 	public static Ingredient clayBall = Ingredient.fromItem(Items.CLAY_BALL);
-	public static Ingredient locationStone = Ingredient.fromItem(ModItems.location_stone);
+	public static Ingredient locationStoneBound = Ingredient.fromStacks(new ItemStack(ModItems.location_stone, 1, 1));
 	public static Ingredient blazeRod = Ingredient.fromItem(Items.BLAZE_ROD);
 	public static Ingredient coal = Ingredient.fromItem(Items.COAL);
 	public static Ingredient whiteSage = Ingredient.fromItem(ModItems.white_sage);

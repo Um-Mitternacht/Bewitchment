@@ -248,7 +248,7 @@ public class ModRituals {
 				100,
 				0,
 				TileEntityGlyph.big);
-		gateway = new RitualGateway(rl("gateway"), of(LibIngredients.locationStone), ofs(), -1, circles(ENDER, NORMAL, ENDER), 4000, 8);
+		gateway = new RitualGateway(rl("gateway"), of(LibIngredients.locationStoneBound), ofs(), -1, circles(ENDER, NORMAL, ENDER), 4000, 8);
 		nether_portal = new RitualNetherPortal(rl("nether_portal"), of(LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.obsidian, LibIngredients.fire_charge), ofs(), 200, circles(NETHER, null, null), 4000, 1);
 
 		shift_biome = new RitualBiomeShift(rl("shift_biome"), of(LibIngredients.anyGlass, LibIngredients.boline), ofs(new ItemStack(ModItems.boline)), 400, circles(NORMAL, NORMAL, NORMAL), 2000, 8);
