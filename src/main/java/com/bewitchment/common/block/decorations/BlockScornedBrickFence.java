@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * the MIT license.
  */
 public class BlockScornedBrickFence extends BlockFence implements IModelRegister {
-	
+
 	public BlockScornedBrickFence() {
 		super(Material.ROCK, Material.ROCK.getMaterialMapColor());
 		setTranslationKey(LibBlockName.SCORNED_BRICK_FENCE);
@@ -26,7 +26,7 @@ public class BlockScornedBrickFence extends BlockFence implements IModelRegister
 		setHardness(5F);
 		useNeighborBrightness = true;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {

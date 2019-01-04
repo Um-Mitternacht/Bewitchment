@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * the MIT license.
  */
 public class BlockFakeIceFence extends BlockFence implements IModelRegister {
-	
+
 	public BlockFakeIceFence() {
 		super(Material.ICE, Material.ICE.getMaterialMapColor());
 		setTranslationKey(LibBlockName.FAKE_ICE_FENCE);
@@ -34,7 +34,7 @@ public class BlockFakeIceFence extends BlockFence implements IModelRegister {
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerModel() {

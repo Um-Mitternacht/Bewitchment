@@ -60,6 +60,7 @@ public final class LibItemName {
 	public static final String COLD_IRON_HOE = "cold_iron_hoe";
 	public static final String COLD_IRON_SPADE = "cold_iron_spade";
 	public static final String COLD_IRON_PICKAXE = "cold_iron_pickaxe";
+	public static final String HUDSON_BAT = "hudson_bat";
 
 	//Equipment
 	public static final String SILVER_HELMET = "silver_helmet";

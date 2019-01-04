@@ -53,13 +53,13 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			return super.insertItem(slot, stack, simulate);
 		}
 	};
-	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
+	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
 		@Override
 		protected void onContentsChanged(int slot) {
 			TileEntityDistillery.this.contentsChanged();
 		}
 	};
-	private ItemStackHandler inventoryOutput = new ItemStackHandler(6) {
+	private ItemStackHandler inventoryInput = new ItemStackHandler(6) {
 		@Override
 		protected void onContentsChanged(int slot) {
 			TileEntityDistillery.this.contentsChanged();

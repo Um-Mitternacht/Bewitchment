@@ -15,5 +15,7 @@ public class ModelResourceLocations {
 	public static final ModelResourceLocation EYE_OF_OLD_NORMAL = new ModelResourceLocation(new ResourceLocation(LibMod.MOD_ID, LibItemName.EYE_OF_OLD).toString());
 	public static final ModelResourceLocation EYE_OF_OLD_HARU = new ModelResourceLocation(LibMod.MOD_ID + ":haru");
 	public static final ModelResourceLocation EYE_OF_OLD_IZU = new ModelResourceLocation(LibMod.MOD_ID + ":izu");
+	public static final ModelResourceLocation COLD_IRON_SWORD_NORMAL = new ModelResourceLocation(new ResourceLocation(LibMod.MOD_ID, LibItemName.COLD_IRON_SWORD).toString());
+	public static final ModelResourceLocation HUDSON_BAT = new ModelResourceLocation(new ResourceLocation(LibMod.MOD_ID, LibItemName.HUDSON_BAT).toString());
 
 }
