@@ -1,27 +1,7 @@
 {
-  "forge_marker": 1,
-  "parent": "block/block",
-  "defaults": {
+  "variants": {
     "normal": {
       "model": "bewitchment:leaves_elder"
-    }
-  },
-  "variants": {
-    "check_decay": {
-      "true": {
-        "model": "bewitchment:leaves_elder"
-      },
-      "false": {
-        "model": "bewitchment:leaves_elder"
-      }
-    },
-    "decayable": {
-      "true": {
-        "model": "bewitchment:leaves_elder"
-      },
-      "false": {
-        "model": "bewitchment:leaves_elder"
-      }
     }
   }
 }
