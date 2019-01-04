@@ -55,7 +55,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState sideState = world.getBlockState(pos.offset(side));
 		Block block = sideState.getBlock();
-		return block != this && super.shouldSideBeRendered(state, world, pos, side);
+		return state != sideState ? true : block != this && super.shouldSideBeRendered(state, world, pos, side);
 	}
 
 	@Override
