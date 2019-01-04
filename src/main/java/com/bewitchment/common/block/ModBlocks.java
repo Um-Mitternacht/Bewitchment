@@ -137,8 +137,7 @@ public final class ModBlocks {
 	public static final Block coquina_chisel = null;
 
 	private static Block STAIRS_ICE = new Block(Material.ICE);
-	private static Block STAIRS_SCORNED_BRICK = new Block(Material.ROCK);
-	private static Block STAIRS_EMBITTERED_BRICK = new Block(Material.ROCK);
+	private static Block STAIRS_BW_STONE = new Block(Material.ROCK);
 
 	private ModBlocks() {
 
@@ -198,8 +197,8 @@ public final class ModBlocks {
 				new BlockFakeIceFence(),
 				new BlockScornedBrickFence(),
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
-				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_SCORNED_BRICK.getDefaultState(), Material.ROCK),
-				new BlockEmbitteredBrickStairs("embittered_brick_stairs", STAIRS_EMBITTERED_BRICK.getDefaultState(), Material.ROCK),
+				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
+				new BlockEmbitteredBrickStairs("embittered_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(LibBlockName.BEEHIVE, Material.GRASS),
