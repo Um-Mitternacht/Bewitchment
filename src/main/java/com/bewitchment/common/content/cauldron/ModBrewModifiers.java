@@ -34,6 +34,7 @@ public class ModBrewModifiers {
 		api.registerBrewModifier(DefaultModifiers.SUPPRESS_ENTITY_EFFECT);
 		api.registerBrewModifier(DefaultModifiers.SUPPRESS_IN_WORLD_EFFECT);
 		api.registerBrewModifier(DefaultModifiers.COLOR);
+		api.registerBrewModifier(DefaultModifiers.SUPPRESS_PARTICLES);
 	}
 
 	private static void initApiModifiers() {
@@ -61,7 +62,7 @@ public class ModBrewModifiers {
 			}
 		};
 
-		DefaultModifiers.GAS_CLOUD_DURATION = new SimpleModifier("gas_duration", Ingredient.fromItem(ModItems.hellebore)) {
+		DefaultModifiers.GAS_CLOUD_DURATION = new SimpleModifier("gas_duration", Ingredient.fromItem(ModItems.yew_aril)) {
 
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -69,7 +70,7 @@ public class ModBrewModifiers {
 			}
 		};
 
-		DefaultModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("suppress_entity", Ingredient.fromItem(Items.BRICK)) {
+		DefaultModifiers.SUPPRESS_ENTITY_EFFECT = new SimpleModifier("suppress_entity", Ingredient.fromItem(ModItems.toe_of_frog)) {
 
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -82,7 +83,7 @@ public class ModBrewModifiers {
 			}
 		};
 
-		DefaultModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("suppress_in_world", Ingredient.fromItem(Items.NETHERBRICK)) {
+		DefaultModifiers.SUPPRESS_IN_WORLD_EFFECT = new SimpleModifier("suppress_in_world", Ingredient.fromItem(ModItems.chrysanthemum)) {
 
 			@Override
 			public boolean canApply(IBrewEffect brew) {
@@ -95,6 +96,7 @@ public class ModBrewModifiers {
 			}
 		};
 
+		//Fixme: Get an actual implementation of this in game
 		DefaultModifiers.SUPPRESS_PARTICLES = new SimpleModifier("suppress_particles", Ingredient.fromItem(Items.DIAMOND)) {
 
 			@Override
