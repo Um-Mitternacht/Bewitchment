@@ -5,7 +5,6 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
