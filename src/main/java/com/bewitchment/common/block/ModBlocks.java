@@ -113,6 +113,7 @@ public final class ModBlocks {
 	public static final Block ritual_glyphs = null;
 	public static final Block crystal_ball = null;
 	public static final Block embittered_bricks = null;
+	public static final Block embittered_brick_fence = null;
 	public static final Block scorned_bricks = null;
 	public static final Block scorned_brick_fence = null;
 	public static final Block goblet = null;
@@ -196,6 +197,7 @@ public final class ModBlocks {
 				new BlockFakeIce(),
 				new BlockFakeIceFence(),
 				new BlockScornedBrickFence(),
+				new BlockEmbitteredBrickFence(),
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
 				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
 				new BlockEmbitteredBrickStairs("embittered_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),

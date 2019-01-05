@@ -424,6 +424,7 @@ tile.scorned_bricks.name=Scorned Bricks
 tile.scorned_brick_fence.name=Scorned Brick Fence
 tile.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.embittered_brick_stairs.name=Embittered Brick Stairs
+tile.embittered_brick_fence.name=Embittered Brick Fence
 tile.cold_iron_block.name=Cold Iron Block
 tile.cold_iron_block_chisel.name=Cold Iron Block (Chiseled)
 tile.graveyard_dirt.name=Graveyard Dirt
