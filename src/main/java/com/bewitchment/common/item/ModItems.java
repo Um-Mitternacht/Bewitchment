@@ -478,6 +478,9 @@ public final class ModItems {
 		OreDictionary.registerOre("materialBeeswax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("materialPressedWax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("itemBeeswax", new ItemStack(ModItems.wax));
+		OreDictionary.registerOre("wax", new ItemStack(ModItems.wax));
+		OreDictionary.registerOre("tallow", new ItemStack(ModItems.wax));
+		OreDictionary.registerOre("clumpWax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("foodSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("dustSalt", new ItemStack(ModItems.salt));
 		OreDictionary.registerOre("materialSalt", new ItemStack(ModItems.salt));
