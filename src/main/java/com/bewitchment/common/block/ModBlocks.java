@@ -137,8 +137,11 @@ public final class ModBlocks {
 	public static final Block nethersteel_chisel = null;
 	public static final Block coquina_chisel = null;
 
-	private static Block STAIRS_ICE = new Block(Material.ICE);
+	private static Block STAIRS_BW_ICE = new Block(Material.ICE);
 	private static Block STAIRS_BW_STONE = new Block(Material.ROCK);
+	private static Block STAIRS_BW_METAL = new Block(Material.IRON);
+	private static Block STAIRS_BW_GLASS = new Block(Material.GLASS);
+	private static Block STAIRS_BW_WOOD = new Block(Material.WOOD);
 
 	private ModBlocks() {
 
@@ -198,7 +201,7 @@ public final class ModBlocks {
 				new BlockFakeIceFence(),
 				new BlockScornedBrickFence(),
 				new BlockEmbitteredBrickFence(),
-				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_ICE.getDefaultState(), Material.ICE),
+				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_BW_ICE.getDefaultState(), Material.ICE),
 				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
 				new BlockEmbitteredBrickStairs("embittered_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
