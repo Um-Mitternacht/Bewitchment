@@ -12,6 +12,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
@@ -25,6 +27,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 	private static final DamageSource FAMILIAR_LINK = new DamageSource("familiar_link").setMagicDamage();
 	private static final DataParameter<Boolean> FAMILIAR_STATUS = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Integer> FAMILIAR_TYPE = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> SKIN = EntityDataManager.createKey(EntityFamiliar.class, DataSerializers.VARINT);
 
 	public EntityFamiliar(World worldIn) {
 		super(worldIn);
@@ -35,6 +38,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 		super.entityInit();
 		this.dataManager.register(FAMILIAR_STATUS, false);
 		this.dataManager.register(FAMILIAR_TYPE, 0);
+		this.dataManager.register(SKIN, 0);
 	}
 
 	@Override
@@ -75,6 +79,21 @@ public abstract class EntityFamiliar extends EntityTameable {
 		setFamiliarAttributes(flag);
 	}
 
+	@SideOnly(Side.CLIENT)
+	public int getSkinIndex() {
+		return dataManager.get(SKIN);
+	}
+
+	public void setEntitySkinIndex(int type) {
+		if (type >= getSkinTypes()) {
+			throw new IllegalArgumentException(String.format("Skin of index %d doesn't exist for %s", type, this.getClass().getName()));
+		}
+		dataManager.set(SKIN, type);
+		dataManager.setDirty(SKIN);
+	}
+
+	public abstract int getSkinTypes();
+
 	protected abstract void setFamiliarAttributes(boolean isFamiliar);
 
 	/**
@@ -85,13 +104,11 @@ public abstract class EntityFamiliar extends EntityTameable {
 	}
 
 	public void setEntitySkin(int type) {
-		if (type >= getTotalVariants()) {
+		if (type >= getSkinTypes()) {
 			throw new IllegalArgumentException(String.format("Skin of index %d doesn't exist for %s", type, this.getClass().getName()));
 		}
 		dataManager.set(FAMILIAR_TYPE, type);
 	}
-
-	public abstract int getTotalVariants();
 
 	public abstract String[] getRandomNames();
 
@@ -108,6 +125,7 @@ public abstract class EntityFamiliar extends EntityTameable {
 		super.writeEntityToNBT(compound);
 		compound.setBoolean("familiar", isFamiliar());
 		compound.setInteger("fam_type", getFamiliarSkin());
+		compound.setInteger("skin", dataManager.get(SKIN));
 	}
 
 	@Override
@@ -115,11 +133,13 @@ public abstract class EntityFamiliar extends EntityTameable {
 		super.readEntityFromNBT(compound);
 		setFamiliar(compound.getBoolean("familiar"));
 		setEntitySkin(compound.getInteger("fam_type"));
+		dataManager.set(SKIN, compound.getInteger("skin"));
+		dataManager.setDirty(SKIN);
 	}
 
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-		this.setEntitySkin(rand.nextInt(getTotalVariants()));
+		this.setEntitySkinIndex(rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, livingdata);
 	}
 
