@@ -69,7 +69,7 @@ public class LibIngredients {
 	public static Ingredient lapisPowder = Ingredient.fromItem(ModItems.lapis_powder);
 	public static Ingredient salt = Ingredient.fromItem(ModItems.salt);
 	public static Ingredient paper = Ingredient.fromItem(Items.PAPER);
-	public static Ingredient wax = Ingredient.fromItem(ModItems.wax);
+	public static Ingredient wax = Ingredient.fromItem(ModItems.wax); //Todo: Figure out why CompoundIngredient is protected
 	public static Ingredient craftingTable = Ingredient.fromItem(Item.getItemFromBlock(Blocks.CRAFTING_TABLE));
 	public static Ingredient anyGlass = new OreIngredient("blockGlass");
 	public static Ingredient quartz = new OreIngredient("gemQuartz");
