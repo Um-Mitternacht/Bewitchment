@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
-import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
