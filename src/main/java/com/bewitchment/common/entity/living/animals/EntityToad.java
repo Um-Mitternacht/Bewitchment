@@ -1,5 +1,7 @@
 package com.bewitchment.common.entity.living.animals;
 
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
@@ -37,16 +39,27 @@ import java.util.Set;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityToad extends EntityMultiSkin {
+public class EntityToad extends EntityFamiliar {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
 	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
+	private static final double maxHPWild = 8;
 
 	public EntityToad(World worldIn) {
 		super(worldIn);
 		setSize(1F, 0.3F);
+	}
+
+	@Override
+	public String[] getRandomNames() {
+		return names;
+	}
+
+	@Override
+	protected void setFamiliarAttributes(boolean isFamiliar) {
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
 	}
 
 	@Override
@@ -169,7 +182,9 @@ public class EntityToad extends EntityMultiSkin {
 				if (!this.world.isRemote) {
 					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
 						this.setTamedBy(player);
+						setFamiliar(true);
 						this.playTameEffect(true);
+						BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
 						this.world.setEntityState(this, (byte) 7);
 					} else {
 						this.playTameEffect(false);

@@ -1,5 +1,7 @@
 package com.bewitchment.common.entity.living.animals;
 
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.lib.LibMod;
@@ -35,12 +37,13 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class EntityOwl extends EntityMultiSkin {
+public class EntityOwl extends EntityFamiliar {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
 	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityOwl.class, DataSerializers.VARINT);
+	private static final double maxHPWild = 8;
 
 	public EntityOwl(World worldIn) {
 		super(worldIn);
@@ -118,7 +121,9 @@ public class EntityOwl extends EntityMultiSkin {
 				if (!this.world.isRemote) {
 					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
 						this.setTamedBy(player);
+						setFamiliar(true);
 						this.playTameEffect(true);
+						BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
 						this.world.setEntityState(this, (byte) 7);
 					} else {
 						this.playTameEffect(false);
@@ -226,6 +231,16 @@ public class EntityOwl extends EntityMultiSkin {
 	@Override
 	public int getSkinTypes() {
 		return 4;
+	}
+
+	@Override
+	protected void setFamiliarAttributes(boolean isFamiliar) {
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
+	}
+
+	@Override
+	public String[] getRandomNames() {
+		return names;
 	}
 
 }
