@@ -1,6 +1,7 @@
 package com.bewitchment.common.lib;
 
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.crafting.util.IngredientMultiOreDict;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.magic.ItemFumes;
 import net.minecraft.init.Blocks;
@@ -8,7 +9,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.oredict.OreIngredient;
+
+import java.util.Arrays;
 
 public class LibIngredients {
 
@@ -69,7 +73,7 @@ public class LibIngredients {
 	public static Ingredient lapisPowder = Ingredient.fromItem(ModItems.lapis_powder);
 	public static Ingredient salt = Ingredient.fromItem(ModItems.salt);
 	public static Ingredient paper = Ingredient.fromItem(Items.PAPER);
-	public static Ingredient wax = Ingredient.fromItem(ModItems.wax); //Todo: Figure out why CompoundIngredient is protected
+	public static Ingredient wax = new IngredientMultiOreDict("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax");
 	public static Ingredient craftingTable = Ingredient.fromItem(Item.getItemFromBlock(Blocks.CRAFTING_TABLE));
 	public static Ingredient anyGlass = new OreIngredient("blockGlass");
 	public static Ingredient quartz = new OreIngredient("gemQuartz");
@@ -115,7 +119,7 @@ public class LibIngredients {
 	public static Ingredient uranidVenom = Ingredient.fromItem(ModItems.uranid_venom);
 	public static Ingredient magicStitching = Ingredient.fromItem(ModItems.witches_stitching);
 	public static Ingredient hellhoundHorn = Ingredient.fromItem(ModItems.hellhound_horn);
-	public static Ingredient kelp = Ingredient.fromItem(ModItems.kelp);
+	public static Ingredient kelp = new IngredientMultiOreDict("kelp", "seaWeed", "cropSeaweed", "cropKelp");
 	public static Ingredient coquina = Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina));
 	public static Ingredient stone = Ingredient.fromItem(Item.getItemFromBlock(Blocks.STONE));
 	public static Ingredient otherworldTears = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()));

@@ -174,7 +174,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.SUGAR), 1, 0.5f);
 		registerFood(new IngredientMultiOreDict("cropGarlic"), 2, 0.8f);
 		registerFood(Ingredient.fromItem(ModItems.silphium), 3, 1.3f);
-		registerFood(new IngredientMultiOreDict("cropSeaweed", "cropKelp"), 4, 3.3f);
+		registerFood(new IngredientMultiOreDict("kelp", "seaWeed", "cropSeaweed", "cropKelp"), 4, 3.3f);
 		registerFood(Ingredient.fromItem(ModItems.salt), 1, 0.5f);
 		registerFood(Ingredient.fromItem(ModItems.mint), 1, 0.7f);
 		registerFood(Ingredient.fromItem(ModItems.tulsi), 1, 0.7f);
@@ -256,7 +256,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.cursed_leaping, Ingredient.fromItem(Items.CHORUS_FRUIT));
 		registerCombinedBrewEffect(ModPotions.demons_bane, Ingredient.fromItem(ModItems.hellebore));
 		registerCombinedBrewEffect(ModPotions.projectile_resistance, Ingredient.fromItem(ModItems.silver_scales));
-		registerCombinedBrewEffect(ModPotions.disrobing, Ingredient.fromItem(ModItems.wax));
+		registerCombinedBrewEffect(ModPotions.disrobing, new IngredientMultiOreDict("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax"));
 		registerCombinedBrewEffect(ModPotions.ender_inhibition, Ingredient.fromItem(ModItems.dimensional_sand));
 		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.seed_mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier
