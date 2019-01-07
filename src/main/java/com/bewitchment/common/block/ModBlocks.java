@@ -15,12 +15,9 @@ import com.bewitchment.common.block.natural.tree.BlockModSapling;
 import com.bewitchment.common.block.natural.tree.BlockPlanks;
 import com.bewitchment.common.block.tiles.*;
 import com.bewitchment.common.crafting.VanillaCrafting;
-import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
+import com.bewitchment.common.integration.chisel.*;
 import com.bewitchment.common.integration.chisel.BlockColdIronChiseled.BlockColdIronVariant;
-import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
-import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
 import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled.BlockSteelVariant;
-import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
 import com.bewitchment.common.integration.chisel.BlockSilverChiseled.BlockSilverVariant;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibBlockName;
@@ -136,6 +133,7 @@ public final class ModBlocks {
 	public static final Block cold_iron_block_chisel = null;
 	public static final Block nethersteel_chisel = null;
 	public static final Block coquina_chisel = null;
+	public static final Block scorned_bricks_chisel = null;
 
 	private static Block STAIRS_BW_ICE = new Block(Material.ICE);
 	private static Block STAIRS_BW_STONE = new Block(Material.ROCK);
@@ -230,6 +228,7 @@ public final class ModBlocks {
 				new BlockColdIronChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockCoquinaChiseled(Material.ROCK, SoundType.STONE).setHardness(3.0F),
 				new BlockNetherSteelChiseled(Material.IRON, SoundType.METAL).setHardness(5.0F),
+				new BlockScornedBricksChiseled(Material.ROCK, SoundType.STONE).setHardness(5.0F),
 				new BlockMod(LibBlockName.COLD_IRON_BLOCK, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockMod(LibBlockName.NETHERSTEEL, Material.IRON, SoundType.METAL).setHardness(5.0F),
 				new BlockGem(),

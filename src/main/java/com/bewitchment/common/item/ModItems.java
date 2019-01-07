@@ -6,10 +6,7 @@ import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.helper.CropHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
-import com.bewitchment.common.integration.chisel.BlockColdIronChiseled;
-import com.bewitchment.common.integration.chisel.BlockCoquinaChiseled;
-import com.bewitchment.common.integration.chisel.BlockNetherSteelChiseled;
-import com.bewitchment.common.integration.chisel.BlockSilverChiseled;
+import com.bewitchment.common.integration.chisel.*;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.block.ItemBlockMeta.EnumNameMode;
 import com.bewitchment.common.item.equipment.ItemColdIronArmor;
@@ -434,7 +431,8 @@ public final class ModItems {
 				new ItemBlockMeta<>(ModBlocks.silver_block_chisel, BlockSilverChiseled.BlockSilverVariant.values(), EnumNameMode.TOOLTIP),
 				new ItemBlockMeta<>(ModBlocks.cold_iron_block_chisel, BlockColdIronChiseled.BlockColdIronVariant.values(), EnumNameMode.TOOLTIP),
 				new ItemBlockMeta<>(ModBlocks.nethersteel_chisel, BlockNetherSteelChiseled.BlockSteelVariant.values(), EnumNameMode.TOOLTIP),
-				new ItemBlockMeta<>(ModBlocks.coquina_chisel, BlockCoquinaChiseled.BlockCoquinaVariant.values(), EnumNameMode.TOOLTIP)
+				new ItemBlockMeta<>(ModBlocks.coquina_chisel, BlockCoquinaChiseled.BlockCoquinaVariant.values(), EnumNameMode.TOOLTIP),
+				new ItemBlockMeta<>(ModBlocks.scorned_bricks_chisel, BlockScornedBricksChiseled.BlockScornVariant.values(), EnumNameMode.TOOLTIP)
 		);
 
 	}

@@ -48,8 +48,7 @@ public class EntityBlackDog extends EntityMultiSkin {
 		return loot;
 	}
 
-	protected void playStepSound(BlockPos pos, Block blockIn)
-	{
+	protected void playStepSound(BlockPos pos, Block blockIn) {
 		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.00F, 0.00F);
 	}
 

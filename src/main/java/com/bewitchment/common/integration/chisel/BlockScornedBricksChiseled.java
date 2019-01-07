@@ -58,7 +58,7 @@ public class BlockScornedBricksChiseled extends BlockMod {
 
 	public static enum BlockScornVariant implements IStringSerializable {
 
-		CRACKED, HELLISH, BEVELED, SYMBOL;
+		CRACKED, HELLISH, BEVELED, SYMBOL, RAW, SMOOTH_CRACKED, CIRCULAR;
 
 		@Override
 		public String getName() {

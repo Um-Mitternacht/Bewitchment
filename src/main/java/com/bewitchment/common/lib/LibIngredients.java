@@ -9,10 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.oredict.OreIngredient;
-
-import java.util.Arrays;
 
 public class LibIngredients {
 
