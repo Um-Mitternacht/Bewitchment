@@ -290,6 +290,15 @@ public final class ModBlocks {
 		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|9");
 		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|10");
 		FMLInterModComms.sendMessage("chisel", "variation:add", "nethersteel|bewitchment:nethersteel_chisel|11");
+
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|0");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|1");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|2");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|3");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|4");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|5");
+		FMLInterModComms.sendMessage("chisel", "variation:add", "scorn|bewitchment:scorned_bricks_chisel|6");
 	}
 
 
