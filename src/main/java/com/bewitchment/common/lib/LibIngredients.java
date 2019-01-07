@@ -71,7 +71,7 @@ public class LibIngredients {
 	public static Ingredient sagebrush = Ingredient.fromItem(ModItems.sagebrush);
 	public static Ingredient enderPearl = Ingredient.fromItem(Items.ENDER_PEARL);
 	public static Ingredient lapisPowder = Ingredient.fromItem(ModItems.lapis_powder);
-	public static Ingredient salt = Ingredient.fromItem(ModItems.salt);
+	public static Ingredient salt = new IngredientMultiOreDict("salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt");
 	public static Ingredient paper = Ingredient.fromItem(Items.PAPER);
 	public static Ingredient wax = new IngredientMultiOreDict("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax");
 	public static Ingredient craftingTable = Ingredient.fromItem(Item.getItemFromBlock(Blocks.CRAFTING_TABLE));
