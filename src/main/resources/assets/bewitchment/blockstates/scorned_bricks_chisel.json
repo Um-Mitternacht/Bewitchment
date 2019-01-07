@@ -41,7 +41,7 @@
           "all": "bewitchment:blocks/scorned_bricks_cracked"
         }
       },
-      "bevel": {
+      "beveled": {
         "textures": {
           "all": "bewitchment:blocks/scorned_bricks_bevel"
         }
