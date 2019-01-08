@@ -3,7 +3,6 @@ package com.bewitchment.client.render.entity.model;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -11,7 +10,7 @@ import net.minecraft.entity.Entity;
  * blackdog - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelBlackDog extends AdvancedModelBase{
+public class ModelBlackDog extends AdvancedModelBase {
 	public AdvancedModelRenderer lArm01;
 	public AdvancedModelRenderer body;
 	public AdvancedModelRenderer lHindLeg01;
@@ -141,6 +140,12 @@ public class ModelBlackDog extends AdvancedModelBase{
 		f = entity.ticksExisted;
 		f1 = 0.5f;
 
-		bob(body,1, 1, false, f, f1);
+		float globalSpeed = 1;
+		float globalHeight = 1;
+		float globalDegree = 1;
+
+		bob(body, 1 * globalSpeed, 1, false, f, f1);
+		walk(rArm01, 0.5f * globalSpeed, 0.5f *globalDegree, false, 0, 0.2f, f1, f2);
+		walk(lArm01, 0.5f * globalSpeed, 0.5f *globalDegree, true, 0, 0.2f, f1, f2);
 	}
 }
