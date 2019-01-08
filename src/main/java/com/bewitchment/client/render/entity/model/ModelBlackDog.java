@@ -137,15 +137,17 @@ public class ModelBlackDog extends AdvancedModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
 
-		f = entity.ticksExisted;
-		f1 = 0.5f;
+		//f = entity.ticksExisted;
+		//f1 = 0.5f;
 
 		float globalSpeed = 1;
 		float globalHeight = 1;
 		float globalDegree = 1;
 
-		bob(body, 1 * globalSpeed, 1, false, f, f1);
-		walk(rArm01, 0.5f * globalSpeed, 0.5f *globalDegree, false, 0, 0.2f, f1, f2);
-		walk(lArm01, 0.5f * globalSpeed, 0.5f *globalDegree, true, 0, 0.2f, f1, f2);
+		bob(body, 0.5f * globalSpeed, 1 * globalHeight, false, f, f1);
+		walk(rArm01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+		walk(lArm01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
+		walk(rHindLeg01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
+		walk(lHindLeg01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 	}
 }
