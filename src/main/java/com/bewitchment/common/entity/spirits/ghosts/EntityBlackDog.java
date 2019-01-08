@@ -132,7 +132,7 @@ public class EntityBlackDog extends EntityMultiSkin {
 
 	@Override
 	public boolean getCanSpawnHere() {
-		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && super.getCanSpawnHere();
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL != world.isDaytime() && super.getCanSpawnHere();
 	}
 
 	public void onUpdate() {
