@@ -91,6 +91,9 @@ repositories {
         url = "modmaven.k-4u.nl"
     }
     maven {
+        url "https://maven.mcmoddev.com/"
+    }
+    maven {
         name = "ModMaven"
         url = "modmaven.k-4u.nl"
     }
@@ -111,6 +114,7 @@ dependencies {
     compile "vazkii.patchouli:Patchouli:${patchouli_version}"
     deobfCompile "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
     deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.35"
+    compile "net.ilexiconn:llibrary:1.7.17-1.12.2:dev"	
 }
 
 tasks.withType(JavaCompile) {
