@@ -270,6 +270,7 @@ public class ModelHellHound extends AdvancedModelBase {
 		this.body.addChild(this.neck);
 		this.head.addChild(this.rHorn01);
 		this.head.addChild(this.lHorn01);
+		this.updateDefaultPose();
 	}
 
 	@Override
