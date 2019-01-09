@@ -324,6 +324,17 @@ public class ModelHellHound extends AdvancedModelBase {
 		animator.update(hellhound);
 		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
 
+		animator.update(hellhound);
+		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
+		animator.startKeyframe(15);
+		animator.endKeyframe();
+		animator.setStaticKeyframe(5);
+		animator.rotate(muzzle, 0.0f, 0.5f, 0.0f);
+		animator.startKeyframe(15);
+		animator.endKeyframe();
+		animator.setStaticKeyframe(5);
+		animator.rotate(lowerJaw, 0.0f, -0.5f, 0.0f);
+
 		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 	}
 }
