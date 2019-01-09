@@ -1,7 +1,11 @@
 package com.bewitchment.client.render.entity.model;
 
+import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
+import net.ilexiconn.llibrary.LLibrary;
+import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 /**
@@ -54,6 +58,8 @@ public class ModelHellHound extends AdvancedModelBase {
 	public AdvancedModelRenderer tail03;
 	public AdvancedModelRenderer tail04;
 	public AdvancedModelRenderer tail05;
+
+	private ModelAnimator animator;
 
 	public ModelHellHound() {
 		this.textureWidth = 64;
@@ -296,18 +302,28 @@ public class ModelHellHound extends AdvancedModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
+		EntityHellhound hellhound = (EntityHellhound) entity;
 
-		//f = entity.ticksExisted;
-		//f1 = 0.5f;
+		f = entity.ticksExisted;
+		f1 = 0.5f;
 
 		float globalSpeed = 1;
 		float globalHeight = 1;
 		float globalDegree = 1;
+		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 
 		bob(body, 0.5f * globalSpeed, 0.8f * globalHeight, false, f, f1);
 		walk(rArm01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 		walk(lArm01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(rHindLeg01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(lHindLeg01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+	}
+
+	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		EntityHellhound hellhound = (EntityHellhound) entity;
+		animator.update(hellhound);
+		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
+
+		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 	}
 }
