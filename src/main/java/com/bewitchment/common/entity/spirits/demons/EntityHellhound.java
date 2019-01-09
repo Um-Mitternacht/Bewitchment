@@ -105,7 +105,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 			this.applyEnchantments(this, entity);
 			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
 				{
-					setAnimation(ANIMATION_BITE);
+					this.setAnimation(ANIMATION_BITE);
 					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
 					entity.setFire(25);
 				}

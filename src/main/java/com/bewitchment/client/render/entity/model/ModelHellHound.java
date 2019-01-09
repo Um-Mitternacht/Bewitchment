@@ -321,13 +321,13 @@ public class ModelHellHound extends AdvancedModelBase {
 	}
 
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		EntityHellhound hellhound = (EntityHellhound) entity;
-		animator.update(hellhound);
-		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
+		this.resetToDefaultPose();
+		animator.update(entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 
 		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
-		animator.update(hellhound);
-		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
+		animator.update(entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 		animator.startKeyframe(15);
 		animator.endKeyframe();
 		animator.setStaticKeyframe(5);
@@ -336,6 +336,8 @@ public class ModelHellHound extends AdvancedModelBase {
 		animator.endKeyframe();
 		animator.setStaticKeyframe(5);
 		animator.rotate(lowerJaw, 0.0f, -0.5f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(10);
 
 		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 	}
