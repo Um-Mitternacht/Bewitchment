@@ -5,6 +5,7 @@ import net.ilexiconn.llibrary.LLibrary;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
@@ -312,7 +313,7 @@ public class ModelHellHound extends AdvancedModelBase {
 		float globalDegree = 1;
 		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 
-		bob(body, 0.5f * globalSpeed, 0.8f * globalHeight, false, f, f1);
+		bob(body, 0.5f * globalSpeed, 0.9f * globalHeight, false, f, f1);
 		walk(rArm01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 		walk(lArm01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(rHindLeg01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
@@ -324,6 +325,7 @@ public class ModelHellHound extends AdvancedModelBase {
 		animator.update(hellhound);
 		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
 
+		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
 		animator.update(hellhound);
 		setRotationAngles(f, f1, f2, f3, f4, f5, hellhound);
 		animator.startKeyframe(15);

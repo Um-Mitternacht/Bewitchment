@@ -32,7 +32,10 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhound.class, DataSerializers.VARINT);
-	public static final Animation ATTACK_ANIMATION = Animation.create(19);
+	public static Animation ANIMATION_BITE;
+	private int animationTick;
+	private Animation currentAnimation;
+
 
 	public EntityHellhound(World worldIn) {
 		super(worldIn);
@@ -43,6 +46,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 20;
+		ANIMATION_BITE = Animation.create(35);
 	}
 
 	@Override
@@ -99,12 +103,16 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		if (flag) {
 			this.applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
-				entity.setFire(25);
+			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
+				{
+					setAnimation(ANIMATION_BITE);
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
+					entity.setFire(25);
+				}
 			}
+			return flag;
 		}
-		return flag;
+		return false;
 	}
 
 	@Override
@@ -154,7 +162,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 
 	@Override
 	public int getAnimationTick() {
-		return 0;
+		return animationTick;
 	}
 
 	@Override
@@ -164,16 +172,16 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 
 	@Override
 	public Animation getAnimation() {
-		return null;
+		return currentAnimation;
 	}
 
 	@Override
 	public void setAnimation(Animation animation) {
-
+		currentAnimation = animation;
 	}
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[0];
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityHellhound.ANIMATION_BITE};
 	}
 }
