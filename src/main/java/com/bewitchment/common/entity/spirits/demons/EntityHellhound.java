@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -168,6 +169,11 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 	@Override
 	public void setAnimationTick(int tick) {
 
+	}
+
+	public void onLivingUpdate(){
+		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	@Override
