@@ -33,7 +33,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhound.class, DataSerializers.VARINT);
-	public static Animation ANIMATION_BITE;
+	public static final Animation ANIMATION_BITE = Animation.create(20);
 	private int animationTick;
 	private Animation currentAnimation;
 
@@ -47,7 +47,6 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 20;
-		ANIMATION_BITE = Animation.create(35);
 	}
 
 	@Override
@@ -171,6 +170,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 		animationTick = tick;
 	}
 
+	@Override
 	public void onLivingUpdate(){
 		super.onLivingUpdate();
 		AnimationHandler.INSTANCE.updateAnimations(this);
