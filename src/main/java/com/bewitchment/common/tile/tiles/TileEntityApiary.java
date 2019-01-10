@@ -6,6 +6,8 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.google.common.collect.Lists;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockFlower;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -21,31 +23,72 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TileEntityApiary extends ModTileEntity implements ITickable {
 
 	public static final int ROWS = 3, COLUMNS = 6;
 
-	private boolean hasBees = false;
 	private IMagicPowerConsumer mp_controller = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
-	private ApiaryInventory hives_inventory = new ApiaryInventory();
+	private ApiaryInventory hives_inventory = new ApiaryInventory(this);
+	private boolean hasBees = false;
 
 	@Override
 	public void update() {
-		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0) {
-			boolean hasHives = false;
-			for (int i = 0; i < COLUMNS * ROWS; i++) {
-				if (rng.nextInt(150) == 0) {
-					hives_inventory.setStackInSlot(i, growItem(i));
+		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0 && hasBees) {
+			List<BlockPos> crops = Lists.newArrayList();
+			List<BlockPos> flowers = Lists.newArrayList();
+			BlockPos.getAllInBox(getPos().add(-2, -2, -2), getPos().add(2, 2, 2)).forEach(pos -> {
+				IBlockState state = world.getBlockState(pos);
+				if (state.getBlock() instanceof BlockCrops) {
+					crops.add(pos);
+				}
+				if (state.getBlock() instanceof BlockFlower) {
+					flowers.add(pos);
+				}
+			});
+			if (flowers.isEmpty()) return;
+			IMagicPowerConsumer consumer = getCapability(IMagicPowerConsumer.CAPABILITY, null);
+			assert consumer != null;
+			for (BlockPos cropPos : crops) {
+				if (rng.nextInt(5) == 0) {
+					IBlockState state = world.getBlockState(cropPos);
+					BlockCrops cropBlock = (BlockCrops) state.getBlock();
+					if (cropBlock.canUseBonemeal(world, rng, cropPos, state) && consumer.drainAltarFirst(null, getPos(), world.provider.getDimension(), 50)) {
+						cropBlock.grow(world, rng, cropPos, state);
+					}
 				}
 			}
-			hasBees = hasHives;
-			syncToClient();
-			markDirty();
+			for (BlockPos flowerPos : flowers) {
+				if (rng.nextInt(100) == 0) {
+					IBlockState state = world.getBlockState(flowerPos);
+					BlockFlower cropFlower = (BlockFlower) state.getBlock();
+					EnumFacing facingOffset = EnumFacing.random(rng);
+					BlockPos flowerPosOffset = flowerPos.offset(facingOffset);
+					if (cropFlower.canPlaceBlockAt(world, flowerPosOffset) && consumer.drainAltarFirst(null, getPos(), world.provider.getDimension(), 30)) {
+						world.setBlockState(flowerPosOffset, state);
+					}
+				}
+			}
+			boolean update = false;
+			for (int i = 0; i < COLUMNS * ROWS; i++) {
+				if (rng.nextInt(100) == 0) {
+					ItemStack oldStack = hives_inventory.getStackInSlot(i);
+					ItemStack newStack = growItem(i);
+					if (oldStack != newStack && consumer.drainAltarFirst(null, getPos(), world.provider.getDimension(), 40)) {
+						hives_inventory.setStackInSlot(i, newStack);
+						update = true;
+					}
+				}
+			}
+			if (update) {
+				syncToClient();
+				markDirty();
+			}
 		}
 	}
-
 
 	private ItemStack growItem(int i) {
 		ItemStack is = hives_inventory.getStackInSlot(i);
@@ -55,17 +98,14 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 				return new ItemStack(ModItems.empty_honeycomb);
 			}
 		}
-
 		if (item == ModItems.empty_honeycomb) {
 			return new ItemStack(ModItems.honeycomb);
 		}
-
 		if (item == Items.ITEM_FRAME) {
 			return new ItemStack(ModItems.empty_honeycomb);
 		}
 		return is;
 	}
-
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -133,8 +173,17 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 
 	static class ApiaryInventory extends ItemStackHandler {
 
-		public ApiaryInventory() {
+		private final TileEntityApiary tile;
+
+		public ApiaryInventory(TileEntityApiary tile) {
 			super(COLUMNS * ROWS);
+			this.tile = tile;
+		}
+
+		@Override
+		public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+			Item item = stack.getItem();
+			return item == ModItems.empty_honeycomb || item == ModItems.honeycomb || item == Items.ITEM_FRAME;
 		}
 
 		@Override
@@ -144,6 +193,14 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 				return super.insertItem(slot, stack, simulate);
 			}
 			return stack;
+		}
+
+		@Override
+		protected void onContentsChanged(int slot) {
+			ItemStack stack = getStackInSlot(slot);
+			tile.hasBees = !stack.isEmpty();
+			tile.syncToClient();
+			tile.markDirty();
 		}
 
 		@Override
