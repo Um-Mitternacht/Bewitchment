@@ -283,7 +283,6 @@ public class ModelHellHound extends AdvancedModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.animate((IAnimatedEntity)entity, f, f1, f2, f3, f4, f5);
 		this.rHindLeg01.render(f5);
 		this.lHindLeg01.render(f5);
@@ -304,7 +303,6 @@ public class ModelHellHound extends AdvancedModelBase {
 	@Override
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		this.resetToDefaultPose();
 		EntityHellhound hellhound = (EntityHellhound) entity;
 
 		f = entity.ticksExisted;
@@ -323,20 +321,13 @@ public class ModelHellHound extends AdvancedModelBase {
 	}
 
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.resetToDefaultPose();
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 		this.resetToDefaultPose();
 		animator.update(entity);
-
 		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
-		animator.update(entity);
-		animator.startKeyframe(15);
-		animator.endKeyframe();
-		animator.setStaticKeyframe(5);
+		animator.startKeyframe(10);
 		animator.rotate(muzzle, 0.0f, 0.5f, 0.0f);
-		animator.startKeyframe(15);
-		animator.endKeyframe();
-		animator.setStaticKeyframe(5);
-		animator.rotate(lowerJaw, 0.0f, -0.5f, 0.0f);
 		animator.endKeyframe();
 		animator.resetKeyframe(10);
 
