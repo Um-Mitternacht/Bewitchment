@@ -326,10 +326,13 @@ public class ModelHellHound extends AdvancedModelBase {
 		this.resetToDefaultPose();
 		animator.update(entity);
 		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
-		animator.startKeyframe(10);
-		animator.rotate(muzzle, 0.0f, 0.5f, 0.0f);
+		animator.startKeyframe(20);
+		animator.rotate(muzzle, 0.25f, 0.0f, 0.0f);
+		animator.rotate(lowerJaw, -0.25f, 0.0f, 0.0f);
 		animator.endKeyframe();
-		animator.resetKeyframe(10);
+		animator.resetKeyframe(20);
+
+
 
 		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
 	}
