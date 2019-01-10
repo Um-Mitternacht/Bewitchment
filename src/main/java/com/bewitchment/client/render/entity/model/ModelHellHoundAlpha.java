@@ -1,6 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
@@ -457,7 +457,7 @@ public class ModelHellHoundAlpha extends AdvancedModelBase {
 		this.resetToDefaultPose();
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 		animator.update(entity);
-		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
+		animator.setAnimation(EntityHellhoundAlpha.ANIMATION_BITE);
 		animator.startKeyframe(20);
 		animator.rotate(muzzle, -0.30f, 0.0f, 0.0f);
 		animator.rotate(lowerJaw, 0.30f, 0.0f, 0.0f);
