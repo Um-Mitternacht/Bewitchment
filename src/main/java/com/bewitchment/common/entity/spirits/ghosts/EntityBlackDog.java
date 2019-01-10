@@ -4,6 +4,9 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -27,9 +30,12 @@ import javax.annotation.Nullable;
 /**
  * Created by Joseph on 12/29/2018.
  */
-public class EntityBlackDog extends EntityMultiSkin {
+public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity {
 
+	public static final Animation ANIMATION_BITE = Animation.create(20);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/black_dog");
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityBlackDog(World worldIn) {
 		super(worldIn);
@@ -103,8 +109,19 @@ public class EntityBlackDog extends EntityMultiSkin {
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity entityIn) {
-		return entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F);
+	public boolean attackEntityAsMob(Entity entity) {
+		super.attackEntityAsMob(entity);
+		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		if (flag) {
+			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
+				{
+					this.setAnimation(ANIMATION_BITE);
+					return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F);
+				}
+			}
+			return flag;
+		}
+		return false;
 	}
 
 	@Override
@@ -128,6 +145,7 @@ public class EntityBlackDog extends EntityMultiSkin {
 			this.setDead();
 		}
 		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	@Override
@@ -166,5 +184,30 @@ public class EntityBlackDog extends EntityMultiSkin {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return null;
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return animationTick;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+		animationTick = tick;
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return currentAnimation;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+		currentAnimation = animation;
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityBlackDog.ANIMATION_BITE};
 	}
 }

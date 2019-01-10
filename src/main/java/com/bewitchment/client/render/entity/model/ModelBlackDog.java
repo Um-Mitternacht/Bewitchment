@@ -1,8 +1,10 @@
 package com.bewitchment.client.render.entity.model;
 
+import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -111,11 +113,13 @@ public class ModelBlackDog extends AdvancedModelBase {
 		this.neck.addChild(this.mane01);
 		this.body.addChild(this.chest);
 		this.updateDefaultPose();
+		animator = ModelAnimator.create();
 	}
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.rHindLeg01.render(f5);
 		this.lArm01.render(f5);
 		this.lHindLeg01.render(f5);
@@ -144,10 +148,22 @@ public class ModelBlackDog extends AdvancedModelBase {
 		float globalHeight = 1;
 		float globalDegree = 1;
 
-		bob(body, 0.5f * globalSpeed, 1 * globalHeight, false, f, f1);
+		bob(body, 0.3f * globalSpeed, 0.8f * globalHeight, false, f, f1);
 		walk(rArm01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 		walk(lArm01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(rHindLeg01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(lHindLeg01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+	}
+
+	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.resetToDefaultPose();
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		animator.update(entity);
+		animator.setAnimation(EntityBlackDog.ANIMATION_BITE);
+		animator.startKeyframe(20);
+		animator.rotate(muzzle, -0.45f, 0.0f, 0.0f);
+		animator.rotate(lowerJaw, 0.45f, 0.0f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(10);
 	}
 }
