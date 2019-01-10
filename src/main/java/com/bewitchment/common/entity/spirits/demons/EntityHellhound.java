@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  */
 public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity {
 
+	public static final Animation ANIMATION_BITE = Animation.create(20);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhound.class, DataSerializers.VARINT);
-	public static final Animation ANIMATION_BITE = Animation.create(20);
 	private int animationTick;
 	private Animation currentAnimation;
 
@@ -171,7 +171,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 	}
 
 	@Override
-	public void onLivingUpdate(){
+	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		AnimationHandler.INSTANCE.updateAnimations(this);
 	}

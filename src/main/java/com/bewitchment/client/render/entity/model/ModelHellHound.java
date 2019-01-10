@@ -1,11 +1,9 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
-import net.ilexiconn.llibrary.LLibrary;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
-import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
@@ -284,7 +282,7 @@ public class ModelHellHound extends AdvancedModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		this.animate((IAnimatedEntity)entity, f, f1, f2, f3, f4, f5);
+		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.rHindLeg01.render(f5);
 		this.lHindLeg01.render(f5);
 		this.rArm01.render(f5);
@@ -331,7 +329,6 @@ public class ModelHellHound extends AdvancedModelBase {
 		animator.rotate(lowerJaw, 0.30f, 0.0f, 0.0f);
 		animator.endKeyframe();
 		animator.resetKeyframe(10);
-
 
 
 		//float frame = hellhound.frame + LLibrary.PROXY.getPartialTicks();
