@@ -168,7 +168,7 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity 
 
 	@Override
 	public void setAnimationTick(int tick) {
-
+		animationTick = tick;
 	}
 
 	public void onLivingUpdate(){
