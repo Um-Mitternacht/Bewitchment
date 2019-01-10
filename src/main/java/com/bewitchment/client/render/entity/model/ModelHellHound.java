@@ -288,6 +288,7 @@ public class ModelHellHound extends AdvancedModelBase {
 		this.rArm01.render(f5);
 		this.body.render(f5);
 		this.lArm01.render(f5);
+		animate((IAnimatedEntity)entity, f, f1, f2, f3, f4, f5);
 	}
 
 	/**
@@ -323,11 +324,11 @@ public class ModelHellHound extends AdvancedModelBase {
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.resetToDefaultPose();
 		animator.update(entity);
-		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (EntityHellhound) entity);
 
 		animator.setAnimation(EntityHellhound.ANIMATION_BITE);
 		animator.update(entity);
-		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		setRotationAngles(f, f1, f2, f3, f4, f5, (EntityHellhound) entity);
 		animator.startKeyframe(15);
 		animator.endKeyframe();
 		animator.setStaticKeyframe(5);
