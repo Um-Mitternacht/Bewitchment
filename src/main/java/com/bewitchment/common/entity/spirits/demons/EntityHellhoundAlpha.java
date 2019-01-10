@@ -5,6 +5,9 @@ import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -28,12 +31,14 @@ import net.minecraft.world.World;
 /**
  * Created by Joseph on 12/28/2018.
  */
-public class EntityHellhoundAlpha extends EntityMultiSkin {
+public class EntityHellhoundAlpha extends EntityMultiSkin implements IAnimatedEntity {
 
+	public static final Animation ANIMATION_BITE = Animation.create(20);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound_alpha");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhoundAlpha.class, DataSerializers.VARINT);
-
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityHellhoundAlpha(World worldIn) {
 		super(worldIn);
@@ -97,12 +102,22 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		if (flag) {
 			this.applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 3, false, false));
-				entity.setFire(125);
+			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
+				{
+					this.setAnimation(ANIMATION_BITE);
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 3, false, false));
+					entity.setFire(125);
+				}
 			}
+			return flag;
 		}
-		return flag;
+		return false;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	public void onUpdate() {
@@ -179,5 +194,30 @@ public class EntityHellhoundAlpha extends EntityMultiSkin {
 	@Override
 	protected ResourceLocation getLootTable() {
 		return loot;
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return animationTick;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+		animationTick = tick;
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return currentAnimation;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+		currentAnimation = animation;
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityHellhoundAlpha.ANIMATION_BITE};
 	}
 }

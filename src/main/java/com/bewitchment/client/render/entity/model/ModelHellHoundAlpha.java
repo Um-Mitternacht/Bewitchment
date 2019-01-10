@@ -1,7 +1,10 @@
 package com.bewitchment.client.render.entity.model;
 
+import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
+import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 /**
@@ -76,6 +79,8 @@ public class ModelHellHoundAlpha extends AdvancedModelBase {
 	public AdvancedModelRenderer tailThin03;
 	public AdvancedModelRenderer tailThin04;
 	public AdvancedModelRenderer tailThin05;
+
+	private ModelAnimator animator;
 
 	public ModelHellHoundAlpha() {
 		this.textureWidth = 64;
@@ -406,11 +411,13 @@ public class ModelHellHoundAlpha extends AdvancedModelBase {
 		this.rHornTop01.addChild(this.rHornTop02);
 		this.head.addChild(this.lEar);
 		this.updateDefaultPose();
+		animator = ModelAnimator.create();
 	}
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.lArm01.render(f5);
 		this.rHindLeg.render(f5);
 		this.lHindLeg01.render(f5);
@@ -444,5 +451,17 @@ public class ModelHellHoundAlpha extends AdvancedModelBase {
 		walk(lArm01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(rHindLeg, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
 		walk(lHindLeg01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+	}
+
+	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.resetToDefaultPose();
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		animator.update(entity);
+		animator.setAnimation(EntityHellhoundAlpha.ANIMATION_BITE);
+		animator.startKeyframe(20);
+		animator.rotate(muzzle, -0.30f, 0.0f, 0.0f);
+		animator.rotate(lowerJaw, 0.30f, 0.0f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(10);
 	}
 }
