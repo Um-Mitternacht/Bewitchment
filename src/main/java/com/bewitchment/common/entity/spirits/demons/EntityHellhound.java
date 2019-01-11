@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  */
 public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity {
 
-	public static final Animation ANIMATION_BITE = Animation.create(20);
+	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhound.class, DataSerializers.VARINT);
 	private int animationTick;

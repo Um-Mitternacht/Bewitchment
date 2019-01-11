@@ -33,7 +33,7 @@ import net.minecraft.world.World;
  */
 public class EntityHellhoundAlpha extends EntityMultiSkin implements IAnimatedEntity {
 
-	public static final Animation ANIMATION_BITE = Animation.create(20);
+	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound_alpha");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityHellhoundAlpha.class, DataSerializers.VARINT);
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);

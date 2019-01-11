@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  */
 public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity {
 
-	public static final Animation ANIMATION_BITE = Animation.create(20);
+	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/black_dog");
 	private int animationTick;
 	private Animation currentAnimation;
