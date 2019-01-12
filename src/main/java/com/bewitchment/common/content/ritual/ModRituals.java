@@ -1,43 +1,21 @@
 package com.bewitchment.common.content.ritual;
 
-import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
-import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
-import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
-
-import java.util.Arrays;
-
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.content.ritual.rituals.RitualBiomeShift;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationBlaze;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationGhast;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationHellhound;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationMagmaCube;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationUranid;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationVex;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationWitch;
-import com.bewitchment.common.content.ritual.rituals.RitualConjurationWither;
-import com.bewitchment.common.content.ritual.rituals.RitualCreateVampireLair;
-import com.bewitchment.common.content.ritual.rituals.RitualDrawing;
-import com.bewitchment.common.content.ritual.rituals.RitualFlames;
-import com.bewitchment.common.content.ritual.rituals.RitualFrenziedGrowth;
-import com.bewitchment.common.content.ritual.rituals.RitualGateway;
-import com.bewitchment.common.content.ritual.rituals.RitualHighMoon;
-import com.bewitchment.common.content.ritual.rituals.RitualInfusion;
-import com.bewitchment.common.content.ritual.rituals.RitualNetherPortal;
-import com.bewitchment.common.content.ritual.rituals.RitualPerception;
-import com.bewitchment.common.content.ritual.rituals.RitualSandsTime;
+import com.bewitchment.common.content.ritual.rituals.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+
+import static com.bewitchment.api.ritual.EnumGlyphType.*;
 
 public class ModRituals {
 
