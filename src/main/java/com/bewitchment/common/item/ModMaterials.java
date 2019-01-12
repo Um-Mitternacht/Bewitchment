@@ -20,8 +20,8 @@ public final class ModMaterials {
 	public static final ItemArmor.ArmorMaterial ARMOR_BEWITCHED_LEATHER = EnumHelper.addArmorMaterial(LibItemName.BEWITCHED_LEATHER, LibMod.MOD_ID + ":" + LibItemName.BEWITCHED_LEATHER, 24, new int[]{1, 4, 5, 1}, 22, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.5F);
 	public static final ItemArmor.ArmorMaterial ARMOR_VAMPIRE = EnumHelper.addArmorMaterial(LibItemName.VAMPIRE, LibMod.MOD_ID + ":" + LibItemName.VAMPIRE, 9, new int[]{2, 6, 7, 1}, 22, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.25F);
 
-	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial(LibItemName.COLD_IRON, 2, 850, 7.0F, 3.0F, 16);
-	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial(LibItemName.COLD_IRON, LibMod.MOD_ID + ":" + LibItemName.COLD_IRON, 15, new int[]{2, 6, 7, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.45F);
+	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial(LibItemName.COLD_IRON, 2, 850, 7.0F, 3.0F, 8);
+	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial(LibItemName.COLD_IRON, LibMod.MOD_ID + ":" + LibItemName.COLD_IRON, 18, new int[]{2, 6, 7, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.45F);
 
 	public static final Item.ToolMaterial TOOL_RITUAL = EnumHelper.addToolMaterial(LibItemName.RITUAL, 2, 300, 2F, 1.5F, 30);
 }
