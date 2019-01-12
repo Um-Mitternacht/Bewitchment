@@ -1,21 +1,43 @@
 package com.bewitchment.common.content.ritual;
 
+import static com.bewitchment.api.ritual.EnumGlyphType.ANY;
+import static com.bewitchment.api.ritual.EnumGlyphType.ENDER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NETHER;
+import static com.bewitchment.api.ritual.EnumGlyphType.NORMAL;
+
+import java.util.Arrays;
+
 import com.bewitchment.api.infusion.DefaultInfusions;
 import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.content.ritual.rituals.*;
+import com.bewitchment.common.content.ritual.rituals.RitualBiomeShift;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationBlaze;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationGhast;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationHellhound;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationMagmaCube;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationUranid;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationVex;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationWitch;
+import com.bewitchment.common.content.ritual.rituals.RitualConjurationWither;
+import com.bewitchment.common.content.ritual.rituals.RitualCreateVampireLair;
+import com.bewitchment.common.content.ritual.rituals.RitualDrawing;
+import com.bewitchment.common.content.ritual.rituals.RitualFlames;
+import com.bewitchment.common.content.ritual.rituals.RitualFrenziedGrowth;
+import com.bewitchment.common.content.ritual.rituals.RitualGateway;
+import com.bewitchment.common.content.ritual.rituals.RitualHighMoon;
+import com.bewitchment.common.content.ritual.rituals.RitualInfusion;
+import com.bewitchment.common.content.ritual.rituals.RitualNetherPortal;
+import com.bewitchment.common.content.ritual.rituals.RitualPerception;
+import com.bewitchment.common.content.ritual.rituals.RitualSandsTime;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.Arrays;
-
-import static com.bewitchment.api.ritual.EnumGlyphType.*;
 
 public class ModRituals {
 
@@ -26,7 +48,7 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound, spawn_uranid, day;
+			spawn_hellhound, spawn_uranid, day, frenzied_growth;
 
 	public static void init() {
 
@@ -268,6 +290,7 @@ public class ModRituals {
 		yew_broom = new RitualImpl(rl("yew_broom"), of(LibIngredients.logYew, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 2)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 3)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		cypress_broom = new RitualImpl(rl("cypress_broom"), of(LibIngredients.logCypress, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 4)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		vampire_lair = new RitualCreateVampireLair(rl("vampire_lair"), of(LibIngredients.bloodyRags, LibIngredients.bloodyRags, LibIngredients.anySapling, LibIngredients.blazePowder, LibIngredients.boline), ofs(), 200, circles(NORMAL, NETHER, NETHER), 5000, 5);
+		frenzied_growth = new RitualFrenziedGrowth(rl("frenzied_growth"), of(LibIngredients.wax), none, 40, circles(ANY, ANY, ANY), 100, 0);
 		registerAll();
 	}
 
@@ -278,7 +301,7 @@ public class ModRituals {
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
-				spawn_uranid, day
+				spawn_uranid, day, frenzied_growth
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
