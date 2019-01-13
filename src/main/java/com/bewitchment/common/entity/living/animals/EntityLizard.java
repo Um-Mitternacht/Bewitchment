@@ -3,6 +3,8 @@ package com.bewitchment.common.entity.living.animals;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.Entity;
@@ -33,7 +35,7 @@ import java.util.Set;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityLizard extends EntityTameable {
+public class EntityLizard extends EntityTameable implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/lizard");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
@@ -192,5 +194,30 @@ public class EntityLizard extends EntityTameable {
 		super.readEntityFromNBT(compound);
 		dataManager.set(SKIN_TYPE, compound.getInteger("skin"));
 		dataManager.setDirty(SKIN_TYPE);
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return null;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[0];
 	}
 }

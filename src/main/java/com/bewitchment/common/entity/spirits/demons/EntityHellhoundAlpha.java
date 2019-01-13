@@ -11,6 +11,7 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -31,7 +32,7 @@ import net.minecraft.world.World;
 /**
  * Created by Joseph on 12/28/2018.
  */
-public class EntityHellhoundAlpha extends EntityMultiSkin implements IAnimatedEntity {
+public class EntityHellhoundAlpha extends EntityMultiSkin implements IAnimatedEntity, IMob {
 
 	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/hellhound_alpha");

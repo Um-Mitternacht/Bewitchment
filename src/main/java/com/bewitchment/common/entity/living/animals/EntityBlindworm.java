@@ -2,6 +2,8 @@ package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.lib.LibMod;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.EntityAgeable;
@@ -17,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityBlindworm extends EntityAnimal {
+public class EntityBlindworm extends EntityAnimal implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/blindworm");
 
@@ -113,5 +115,30 @@ public class EntityBlindworm extends EntityAnimal {
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return new EntityBlindworm(world);
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return null;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[0];
 	}
 }

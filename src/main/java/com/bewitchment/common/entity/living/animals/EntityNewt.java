@@ -1,6 +1,8 @@
 package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.common.lib.LibMod;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.EntityAgeable;
@@ -23,7 +25,7 @@ import net.minecraft.world.World;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityNewt extends EntityAnimal {
+public class EntityNewt extends EntityAnimal implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/newt");
 	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityNewt.class, DataSerializers.VARINT);
@@ -123,5 +125,30 @@ public class EntityNewt extends EntityAnimal {
 		super.readEntityFromNBT(compound);
 		dataManager.set(SKIN_TYPE, compound.getInteger("skin"));
 		dataManager.setDirty(SKIN_TYPE);
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return null;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[0];
 	}
 }

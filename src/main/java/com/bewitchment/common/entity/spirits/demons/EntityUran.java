@@ -5,6 +5,8 @@ import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -33,7 +35,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityUran extends EntityMultiSkin implements IMob {
+public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity {
 
 
 	//Todo: Rewrite code, and implement weaknesses to water. Also implement a special potion effect that upon killing a target, spawns more uranids.
@@ -211,5 +213,30 @@ public class EntityUran extends EntityMultiSkin implements IMob {
 	@Override
 	public int getSkinTypes() {
 		return 9;
+	}
+
+	@Override
+	public int getAnimationTick() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return null;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[0];
 	}
 }

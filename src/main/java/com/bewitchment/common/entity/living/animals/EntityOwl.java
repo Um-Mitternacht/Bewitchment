@@ -5,6 +5,8 @@ import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.core.statics.ModSounds;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
@@ -36,7 +38,7 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class EntityOwl extends EntityFamiliar {
+public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
@@ -242,4 +244,28 @@ public class EntityOwl extends EntityFamiliar {
 		return names;
 	}
 
+	@Override
+	public int getAnimationTick() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return null;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[0];
+	}
 }
