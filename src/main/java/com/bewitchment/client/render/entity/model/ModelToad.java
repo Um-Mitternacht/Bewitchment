@@ -134,10 +134,7 @@ public class ModelToad extends ModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-
-
 		this.stomach.render(f5);
-
 	}
 
 	@Override
@@ -178,8 +175,6 @@ public class ModelToad extends ModelBase {
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
-				//System.out.println("25: " + this.stomach.rotateAngleX);
-
 			} else if (timer < 50) {
 				this.stomach.offsetY = this.stomach.offsetY + (0F - this.stomach.offsetY) * ((timer - 25) / 100);
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0.36651914291F - this.stomach.rotateAngleX) * ((timer - 24) / 100);
@@ -194,11 +189,8 @@ public class ModelToad extends ModelBase {
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
-				//System.out.println("50: " + this.stomach.rotateAngleX + " timer: " + timer);
-
 			} else if (timer < 75) {
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (-0.36651914291F - this.stomach.rotateAngleX) * ((timer - 49) / 100);
-				//System.out.println("70" + this.stomach.rotateAngleX);
 			} else {
 				timer = 0;
 				this.stomach.offsetY = 0;
