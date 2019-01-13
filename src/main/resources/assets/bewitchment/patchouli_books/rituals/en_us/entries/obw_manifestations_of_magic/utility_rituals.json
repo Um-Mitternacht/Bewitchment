@@ -39,6 +39,10 @@
     {
       "type": "ritual",
       "ritual": "bewitchment:gateway"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:frenzied_growth"
     }
   ]
 }

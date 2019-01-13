@@ -4,8 +4,9 @@
   "category": "obw_herbology",
   "pages": [
     {
-      "type": "text",
-      "text": "TODO"
+      "type": "spotlight",
+      "item": "bewitchment:hellebore",
+      "text": "An innocent looking flower, at first glance. However, it is toxic, and some say it may be useful in summoning demons. Ironically, some say it can also be used to keep witches at bay."
     }
   ]
 }

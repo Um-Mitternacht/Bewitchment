@@ -1,0 +1,12 @@
+{
+  "name": "Garlic",
+  "icon": "bewitchment:garlic",
+  "category": "obw_herbology",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "bewitchment:garlic",
+      "text": "A form of alliums, this pungent plant is often used as a flavoring in various foods. However, it is also poisonous to vampires, leading some to use it to deter them."
+    }
+  ]
+}
