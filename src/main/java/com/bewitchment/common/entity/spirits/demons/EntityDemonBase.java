@@ -1,9 +1,11 @@
 package com.bewitchment.common.entity.spirits.demons;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.World;
 
@@ -30,6 +32,10 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public void setAnimationTick(int tick) {
 
+	}
+
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.getAPI().DEMON;
 	}
 
 	@Override
