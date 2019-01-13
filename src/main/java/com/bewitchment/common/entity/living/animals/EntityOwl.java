@@ -45,6 +45,8 @@ public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
 	private static final String[] names = {"Owlmighty", "Owliver", "Owl Capone", "Owleister Crowley", "Owlie", "Owlivia", "Owlive", "Hedwig", "Archimedes", "Owlexander", "Robin Hoot", "Owlex", "Athena", "Strix", "Minerva", "Ascalaphus", "Lechuza", "Stolas", "Andras", "Kikiyaon", "Chickcharney", "Hootling"};
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityOwl.class, DataSerializers.VARINT);
 	private static final double maxHPWild = 8;
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityOwl(World worldIn) {
 		super(worldIn);

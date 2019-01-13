@@ -44,6 +44,8 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 	private static final int TIME_BETWEEN_MILK = 6660;
 	private int timerRef = 0;
 	private int milkCooldown = 0;
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityUran(World worldIn) {
 		super(worldIn);

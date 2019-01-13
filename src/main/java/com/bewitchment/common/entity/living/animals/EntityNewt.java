@@ -29,6 +29,8 @@ public class EntityNewt extends EntityAnimal implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/newt");
 	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityNewt.class, DataSerializers.VARINT);
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityNewt(World worldIn) {
 		super(worldIn);

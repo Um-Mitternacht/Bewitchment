@@ -46,6 +46,8 @@ public class EntityRaven extends EntityFamiliar implements IAnimatedEntity {
 	private static final String[] names = {"Huginn", "Muninn", "Morrigan", "Bhusunda", "Pallas", "Qrow", "Nevermore", "Corvus", "Apollo", "Odin", "Badhbh", "Bran", "Crowe", "Scarecrow", "Santa Caws", "Valravn", "Cain", "Mabel", "Grip", "Harbinger", "Shani", "Diablo", "Raven", "Charlie", "Unidan", "Yatagarasu", "Samjokgo", "Ischys"}; //I'm trash lmao
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityRaven.class, DataSerializers.VARINT);
 	private static final double maxHPWild = 8;
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityRaven(World worldIn) {
 		super(worldIn);

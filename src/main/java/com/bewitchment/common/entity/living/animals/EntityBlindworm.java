@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 public class EntityBlindworm extends EntityAnimal implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/blindworm");
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityBlindworm(World worldIn) {
 		super(worldIn);

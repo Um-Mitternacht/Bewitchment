@@ -40,6 +40,8 @@ public class EntityLizard extends EntityTameable implements IAnimatedEntity {
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/lizard");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> SKIN_TYPE = EntityDataManager.createKey(EntityLizard.class, DataSerializers.VARINT);
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityLizard(World worldIn) {
 		super(worldIn);

@@ -48,6 +48,8 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntitySnake.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 3600;
 	private static final double maxHPWild = 8;
+	private int animationTick;
+	private Animation currentAnimation;
 
 	private int timerRef = 0;
 	private int milkCooldown = 0;
