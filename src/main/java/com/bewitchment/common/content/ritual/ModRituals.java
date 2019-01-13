@@ -26,7 +26,7 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound, spawn_uranid, day, frenzied_growth;
+			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild;
 
 	public static void init() {
 
@@ -269,6 +269,7 @@ public class ModRituals {
 		cypress_broom = new RitualImpl(rl("cypress_broom"), of(LibIngredients.logCypress, LibIngredients.broomMundane, Ingredient.fromStacks(new ItemStack(ModBlocks.sapling, 1, 3)), LibIngredients.magicSalve, LibIngredients.elytra), ofs(new ItemStack(ModItems.broom, 1, 4)), 130, circles(NORMAL, NORMAL, ENDER), 1000, 4);
 		vampire_lair = new RitualCreateVampireLair(rl("vampire_lair"), of(LibIngredients.bloodyRags, LibIngredients.bloodyRags, LibIngredients.anySapling, LibIngredients.blazePowder, LibIngredients.boline), ofs(new ItemStack(ModItems.boline)), 200, circles(NORMAL, NETHER, NETHER), 5000, 5);
 		frenzied_growth = new RitualFrenziedGrowth(rl("frenzied_growth"), of(LibIngredients.oakAppleGall, LibIngredients.anyLeaf, LibIngredients.anyLog, LibIngredients.anySapling, LibIngredients.dimensionalSand), none, 135, circles(ANY, ANY, ANY), 1000, 3);
+		call_of_the_wild = new RitualCallOfTheWild(rl("call_of_the_wild"), of(LibIngredients.wax), none, 135, circles(ANY, ANY, ANY), 100, 0);
 		registerAll();
 	}
 
@@ -279,7 +280,7 @@ public class ModRituals {
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
-				spawn_uranid, day, frenzied_growth
+				spawn_uranid, day, frenzied_growth, call_of_the_wild
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
