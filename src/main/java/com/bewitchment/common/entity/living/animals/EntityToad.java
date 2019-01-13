@@ -2,10 +2,13 @@ package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
+import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.ilexiconn.llibrary.client.model.tools.ControlledAnimation;
+import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.Entity;
@@ -39,14 +42,17 @@ import java.util.Set;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityToad extends EntityFamiliar {
+public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 
+	public static final Animation ANIMATION_LEAP = Animation.create(105, 15);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
 	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
 	private static final double maxHPWild = 8;
 	private ControlledAnimation jump = new ControlledAnimation(15);
+	private int animationTick;
+	private Animation currentAnimation;
 
 	public EntityToad(World worldIn) {
 		super(worldIn);
@@ -55,23 +61,6 @@ public class EntityToad extends EntityFamiliar {
 
 	@Override
 	public void onUpdate() {
-		super.onUpdate();
-		this.jump.getAnimationFraction();
-		boolean isMoving = ((this.motionX * this.motionX) > 0.025) || ((this.motionZ * this.motionZ) > 0.025);
-		if (this.world.isRemote) {
-			if (isMoving || this.isJumping()) {
-				this.jump.increaseTimer();
-			}
-			if (this.jump.getTimer() >= this.jump.getTimer()) {
-				this.jump.setTimer(0);
-				this.setJumping(false);
-			}
-		}
-		if (isMoving && this.onGround) {
-			this.jump();
-			this.setJumping(true);
-		}
-
 	}
 
 	@Override
@@ -241,11 +230,32 @@ public class EntityToad extends EntityFamiliar {
 		return 4;
 	}
 
-	public boolean isJumping() {
-		return this.isJumping;
+	@Override
+	public int getAnimationTick() {
+		return animationTick;
 	}
 
-	public float getJumpProgress() {
-		return this.jump.getAnimationFraction();
+	@Override
+	public void setAnimationTick(int tick) {
+		animationTick = tick;
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return currentAnimation;
+	}
+
+	@Override
+	public void setAnimation(Animation animation) {
+		currentAnimation = animation;
+	}
+
+	@Override
+	public Animation[] getAnimations() {
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityToad.ANIMATION_LEAP};
+	}
+
+	public float getJumpProgress(float partialRenderTicks) {
+		return this.jump.getAnimationFraction(partialRenderTicks);
 	}
 }
