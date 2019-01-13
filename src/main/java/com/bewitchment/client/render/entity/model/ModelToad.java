@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.animals.EntityToad;
-import net.minecraft.client.model.ModelBase;
+import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +11,7 @@ import net.minecraft.util.math.MathHelper;
  * toad2 - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelToad extends ModelBase {
+public class ModelToad extends AdvancedModelBase {
 	public ModelRenderer stomach;
 	public ModelRenderer head01;
 	public ModelRenderer lArm01;
