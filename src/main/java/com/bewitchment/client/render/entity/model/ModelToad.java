@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.living.animals.EntityToad;
-import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +11,7 @@ import net.minecraft.util.math.MathHelper;
  * toad2 - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelToad extends AdvancedModelBase {
+public class ModelToad extends ModelBase {
 	public ModelRenderer stomach;
 	public ModelRenderer head01;
 	public ModelRenderer lArm01;
@@ -134,23 +134,10 @@ public class ModelToad extends AdvancedModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.stomach.render(f5);
-	}
 
-	public void resetAngles() {
-		this.stomach.rotateAngleX = -0.36651914291F;
-		this.lLeg01.rotateAngleX = -0.51225413546F;
-		this.lLeg02.rotateAngleX = 0.45378560551F;
-		this.lLeg03.rotateAngleX = 0.41887902047863906F;
-		this.rLeg01.rotateAngleX = this.lLeg01.rotateAngleX;
-		this.rLeg02.rotateAngleX = this.lLeg02.rotateAngleX;
-		this.rLeg03.rotateAngleX = this.lLeg03.rotateAngleX;
-		this.lArm01.rotateAngleX = -0.8159414253F;
-		this.lArm02.rotateAngleX = 0.45378560551F;
-		this.rArm01.rotateAngleX = this.lArm01.rotateAngleX;
-		this.rArm02.rotateAngleX = this.lArm02.rotateAngleX;
-		this.lLeg03.rotateAngleY = -0.6000000238418579F;
-		this.rLeg03.rotateAngleY = 0.6000000238418579F;
+
+		this.stomach.render(f5);
+
 	}
 
 	@Override
@@ -163,9 +150,9 @@ public class ModelToad extends AdvancedModelBase {
 	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
 		super.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTickTime);
 		float time = entitylivingbaseIn.ticksExisted * 0.2F;
-		EntityToad toad = (EntityToad) entitylivingbaseIn;
-		float jumpRate = toad.getJumpProgress();
 		this.jaw.rotationPointY = (float) (0.5F + 0.02 * MathHelper.sin(time));
+
+		EntityToad toad = (EntityToad) entitylivingbaseIn;
 
 		if (toad.isSitting()) {
 			lLeg03.rotateAngleY = 1.0471975512F;
@@ -175,9 +162,9 @@ public class ModelToad extends AdvancedModelBase {
 			rLeg03.rotateAngleY = 0.6000000238418579F;
 		}
 
-		this.resetAngles();
 		if (limbSwingAmount > 0.1 || timer != 0) {//This needs to be made so that the variable is stored on the actual entity or whatever
-			if (jumpRate < 0.3333334) {
+			timer++;
+			if (timer < 25) {
 				this.stomach.offsetY = this.stomach.offsetY + (-1.5F - this.stomach.offsetY) * (timer / 100);
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0 - this.stomach.rotateAngleX) * (timer / 100);
 				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (1.3962634016F - this.lLeg01.rotateAngleX) * (timer / 100);
@@ -191,7 +178,9 @@ public class ModelToad extends AdvancedModelBase {
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
-			} else if (jumpRate < 0.6666667) {
+				//System.out.println("25: " + this.stomach.rotateAngleX);
+
+			} else if (timer < 50) {
 				this.stomach.offsetY = this.stomach.offsetY + (0F - this.stomach.offsetY) * ((timer - 25) / 100);
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0.36651914291F - this.stomach.rotateAngleX) * ((timer - 24) / 100);
 				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (-0.51225413546F - this.lLeg01.rotateAngleX) * ((timer - 24) / 100);
@@ -205,8 +194,11 @@ public class ModelToad extends AdvancedModelBase {
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
+				//System.out.println("50: " + this.stomach.rotateAngleX + " timer: " + timer);
+
 			} else if (timer < 75) {
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (-0.36651914291F - this.stomach.rotateAngleX) * ((timer - 49) / 100);
+				//System.out.println("70" + this.stomach.rotateAngleX);
 			} else {
 				timer = 0;
 				this.stomach.offsetY = 0;
