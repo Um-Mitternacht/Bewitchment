@@ -831,6 +831,7 @@ ritual.bewitchment.nether_portal.name=Rite of the Profane Communion
 ritual.bewitchment.vampire_lair.name=Rite of Rising Darkness
 ritual.bewitchment.solar_glory.name=Rite of Solar Glory
 ritual.bewitchment.frenzied_growth.name=Ritual of Frenzied Growth
+ritual.bewitchment.call_of_the_wild.name=Call of the Wilderness
 
 //Fortunes
 crystal_ball.error.ingredients=The future refuses to be perceived, something's wrong
