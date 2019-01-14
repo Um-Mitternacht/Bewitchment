@@ -43,6 +43,10 @@
     {
       "type": "ritual",
       "ritual": "bewitchment:frenzied_growth"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:call_of_the_wild"
     }
   ]
 }
