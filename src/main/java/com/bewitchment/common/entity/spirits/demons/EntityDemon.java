@@ -17,6 +17,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 	public EntityDemon(World worldIn) {
 		super(worldIn);
 	}
+
 	@Override
 	public int getSkinTypes() {
 		return 0;
