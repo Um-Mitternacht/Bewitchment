@@ -236,8 +236,8 @@ public class CauldronRegistry {
 		registerVanillaBrewEffect(MobEffects.WATER_BREATHING, Ingredient.fromStacks(new ItemStack(Items.FISH, 1, 3)));
 		registerVanillaBrewEffect(MobEffects.STRENGTH, Ingredient.fromItem(Items.BLAZE_POWDER));
 		registerVanillaBrewEffect(MobEffects.WEAKNESS, Ingredient.fromItem(Items.RABBIT_HIDE));
-		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.ectoplasm));
-		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.belladonna));
+		registerVanillaBrewEffect(MobEffects.WITHER, Ingredient.fromItem(ModItems.belladonna));
+		registerVanillaBrewEffect(MobEffects.BLINDNESS, Ingredient.fromItem(ModItems.ectoplasm));
 		registerVanillaBrewEffect(MobEffects.NAUSEA, Ingredient.fromItem(ModItems.oak_apple_gall), 100);
 		registerVanillaBrewEffect(MobEffects.HASTE, Ingredient.fromItem(ModItems.lavender));
 		registerVanillaBrewEffect(MobEffects.GLOWING, Ingredient.fromItem(ModItems.spectral_dust));
