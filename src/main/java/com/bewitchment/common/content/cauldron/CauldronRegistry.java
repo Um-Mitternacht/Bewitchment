@@ -310,16 +310,16 @@ public class CauldronRegistry {
 
 	private static void registerCombinedBrewEffect(Potion potion, Ingredient ingredient) {
 		if (potion == null) {
-			throw new NullPointerException("Null potion cannot be registered");
+			throw new NullPointerException("Null potion cannot be registered!");
 		}
 		if (ingredient.getMatchingStacks().length == 0) {
-			throw new IllegalArgumentException("Ingredient for " + potion.getRegistryName() + " is empty");
+			throw new IllegalArgumentException("Ingredient for " + potion.getRegistryName() + " is empty!");
 		}
 		if (potion instanceof IBrewEffect) {
 			BewitchmentAPI.getAPI().registerBrewEffect((IBrewEffect) potion, potion, ingredient);
 			return;
 		}
-		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects");
+		throw new IllegalArgumentException(potion + " is not an IBrewEffect. Use BewitchmentAPI#registerBrewEffect to register them as separate objects!");
 	}
 
 	private static void registerFood(Ingredient ingredient, int hunger, float saturation) {
