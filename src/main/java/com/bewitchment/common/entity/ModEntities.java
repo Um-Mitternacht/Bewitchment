@@ -53,6 +53,7 @@ public final class ModEntities {
 		EntityRegistry.registerModEntity(getResource("hellhound_alpha"), EntityHellhoundAlpha.class, "entity_hellhound_alpha", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		EntityRegistry.registerModEntity(getResource("demon"), EntityDemon.class, "entity_demon", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		EntityRegistry.registerModEntity(getResource("demoness"), EntityDemoness.class, "entity_demoness", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
+		EntityRegistry.registerModEntity(getResource("imp"), EntityImp.class, "entity_imp", id++, Bewitchment.instance, 64, 1, true, 0x555555, 0xED2939);
 		//Ghosts
 		EntityRegistry.registerModEntity(getResource("black_dog"), EntityBlackDog.class, "entity_black_dog", id++, Bewitchment.instance, 64, 1, true, 0x000000, 0x000000);
 
