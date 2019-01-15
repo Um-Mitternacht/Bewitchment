@@ -28,6 +28,7 @@ import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.core.statemappers.AllDefaultModelStateMapper;
 import com.bewitchment.common.entity.*;
 import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityDemon;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
@@ -252,6 +253,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHellhoundAlpha.class, RenderAlphaHellhound::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
 		MinecraftForge.EVENT_BUS.register(new RenderBatSwarm.PlayerHider());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldron.class, new TileRenderCauldron());

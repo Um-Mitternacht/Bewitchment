@@ -19,11 +19,13 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	public EntityDemon(World worldIn) {
 		super(worldIn);
+		setSize(1.6F, 1.6F);
+		this.isImmuneToFire = true;
 	}
 
 	@Override
 	public int getSkinTypes() {
-		return 0;
+		return 4;
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {
