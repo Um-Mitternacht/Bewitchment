@@ -230,7 +230,7 @@ public class BlockWitchFire extends BlockMod {
 		NORMAL(11, 0xc032db, () -> Ingredient.EMPTY), //
 		ENDFIRE(2, 0x0B4D42, () -> Ingredient.fromItem(ModItems.dimensional_sand)), //
 		FROSTFIRE(7, 0xa4f8ff, () -> Ingredient.fromItem(Items.SNOWBALL)), //
-		SIGHTFIRE(15, 0xFFD700, () -> Ingredient.fromItem(Items.GLOWSTONE_DUST));
+		SIGHTFIRE(15, 0xFFD700, () -> Ingredient.fromItem(ModItems.ectoplasm));
 
 		private int light, color;
 		private CachedSupplier<Ingredient> ingredient;
