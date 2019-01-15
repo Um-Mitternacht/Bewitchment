@@ -19,6 +19,17 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	public EntityDemoness(World worldIn) {
 		super(worldIn);
+		setSize(1.6F, 1.6F);
+		this.isImmuneToFire = true;
+	}
+
+	@Override
+	public int getSkinTypes() {
+		return 4;
+	}
+
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.getAPI().DEMON;
 	}
 
 	@Override
@@ -41,10 +52,6 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		currentAnimation = animation;
 	}
 
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.getAPI().DEMON;
-	}
-
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[0];
@@ -56,3 +63,4 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		return null;
 	}
 }
+
