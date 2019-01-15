@@ -14,37 +14,35 @@ import javax.annotation.Nullable;
  * Created by Joseph on 1/14/2019.
  */
 public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, IMob {
+	private int animationTick;
+	private Animation currentAnimation;
+
 	public EntityDemoness(World worldIn) {
 		super(worldIn);
 	}
 
 	@Override
-	public int getSkinTypes() {
-		return 0;
-	}
-
-	@Override
 	public int getAnimationTick() {
-		return 0;
+		return animationTick;
 	}
 
 	@Override
 	public void setAnimationTick(int tick) {
-
-	}
-
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.getAPI().DEMON;
+		animationTick = tick;
 	}
 
 	@Override
 	public Animation getAnimation() {
-		return null;
+		return currentAnimation;
 	}
 
 	@Override
 	public void setAnimation(Animation animation) {
+		currentAnimation = animation;
+	}
 
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.getAPI().DEMON;
 	}
 
 	@Override

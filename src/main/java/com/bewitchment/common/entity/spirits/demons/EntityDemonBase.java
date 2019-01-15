@@ -15,6 +15,9 @@ import javax.annotation.Nullable;
  * Created by Joseph on 1/13/2019.
  */
 public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity, IMob {
+	private int animationTick;
+	private Animation currentAnimation;
+
 	public EntityDemonBase(World worldIn) {
 		super(worldIn);
 	}
@@ -24,28 +27,28 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 		return 0;
 	}
 
-	@Override
-	public int getAnimationTick() {
-		return 0;
-	}
-
-	@Override
-	public void setAnimationTick(int tick) {
-
-	}
-
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.getAPI().DEMON;
 	}
 
 	@Override
+	public int getAnimationTick() {
+		return animationTick;
+	}
+
+	@Override
+	public void setAnimationTick(int tick) {
+		animationTick = tick;
+	}
+
+	@Override
 	public Animation getAnimation() {
-		return null;
+		return currentAnimation;
 	}
 
 	@Override
 	public void setAnimation(Animation animation) {
-
+		currentAnimation = animation;
 	}
 
 	@Override
