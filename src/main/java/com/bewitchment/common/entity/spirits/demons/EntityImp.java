@@ -21,7 +21,7 @@ public class EntityImp extends EntityMultiSkin implements IAnimatedEntity, IMob 
 
 	public EntityImp(World worldIn) {
 		super(worldIn);
-		setSize(1.0F, 1.0F);
+		setSize(1.0F, 2.0F);
 		this.isImmuneToFire = true;
 	}
 
