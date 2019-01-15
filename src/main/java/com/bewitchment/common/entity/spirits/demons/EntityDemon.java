@@ -19,7 +19,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	public EntityDemon(World worldIn) {
 		super(worldIn);
-		setSize(1.6F, 1.6F);
+		setSize(1.8F, 4.6F);
 		this.isImmuneToFire = true;
 	}
 

@@ -44,7 +44,7 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 
 	public static final Animation ANIMATION_LEAP = Animation.create(20, 15);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
-	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden"};
+	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden", "Mercury", "Miércoles"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
 	private static final double maxHPWild = 8;
