@@ -34,7 +34,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	private static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(13.0f / 16.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 
 	public BlockMagicMirror() {
-		super(LibBlockName.MAGIC_MIRROR, Material.IRON);
+		super(LibBlockName.MAGIC_MIRROR, Material.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(MIRROR_VARIANTS, 0).withProperty(BlockHorizontal.FACING, EnumFacing.NORTH).withProperty(LOWER_HALF, true));
 		this.setLightOpacity(0);
 	}
