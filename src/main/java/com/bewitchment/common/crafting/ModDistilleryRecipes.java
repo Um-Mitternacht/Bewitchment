@@ -28,7 +28,11 @@ public class ModDistilleryRecipes {
 		REGISTRY.register(DistilleryRecipe.Factory.start("undying_image")
 				.withBaseProcessingTime(300)
 				.withInput(LibIngredients.ectoplasm, LibIngredients.fumeReekOfDeath, LibIngredients.yewEssence)
-				.withOutput(new ItemStack(ModItems.fume, 2, ItemFumes.Type.undying_image.ordinal()))
+				.withOutput(
+						new ItemStack(ModItems.fume, 1, ItemFumes.Type.undying_image.ordinal()),
+						new ItemStack(ModItems.ectoplasm, 2, 0)
+
+				)
 				.build()
 		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("emanation_of_dishonesty")
