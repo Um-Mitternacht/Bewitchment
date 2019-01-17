@@ -21,6 +21,14 @@ public class LootTableEventHandler {
 			);
 		}
 
+		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
+			evt.getTable().addPool(new LootPool(new LootEntry[]{
+					new LootEntryTable(
+							new ResourceLocation(LibMod.MOD_ID, "chests/infernal_books"), 5, 0, new LootCondition[0], "bewitchment_infernal_entry"
+					)
+			}, new LootCondition[0], new RandomValueRange(1), new RandomValueRange(0, 1), "bewitchment_infernal_pool"));
+		}
+
 		if (evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY)) {
 			//Here in my garage, just bought this new Lamborghini here. It’s fun to drive up here in the Hollywood hills.
 			// But you know what I like more than materialistic things? Knowledge.
