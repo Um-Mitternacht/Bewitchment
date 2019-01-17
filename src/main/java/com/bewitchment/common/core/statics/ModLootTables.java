@@ -13,10 +13,14 @@ public class ModLootTables {
 	public static final ResourceLocation JEWELS = new ResourceLocation(LibMod.MOD_ID, "chests/jewels");
 	public static final ResourceLocation METALS = new ResourceLocation(LibMod.MOD_ID, "chests/metals");
 	public static final ResourceLocation SAPLINGS = new ResourceLocation(LibMod.MOD_ID, "chests/saplings");
+	public static final ResourceLocation KNOWLEDGE = new ResourceLocation(LibMod.MOD_ID, "chests/knowledge");
+	public static final ResourceLocation INFERNAL_BOOKS = new ResourceLocation(LibMod.MOD_ID, "chests/infernal_books");
 
 	public static void registerLootTables() {
 		LootTableList.register(JEWELS);
 		LootTableList.register(METALS);
 		LootTableList.register(SAPLINGS);
+		LootTableList.register(KNOWLEDGE);
+		LootTableList.register(INFERNAL_BOOKS);
 	}
 }
