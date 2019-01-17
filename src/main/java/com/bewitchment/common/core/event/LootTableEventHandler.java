@@ -21,8 +21,7 @@ public class LootTableEventHandler {
 			);
 		}
 
-		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE) ||
-				evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY) || {
+		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
 			evt.getTable().addPool(new LootPool(new LootEntry[]{
 					new LootEntryTable(
 							new ResourceLocation(LibMod.MOD_ID, "chests/infernal_books"), 5, 0, new LootCondition[0], "bewitchment_infernal_entry"
