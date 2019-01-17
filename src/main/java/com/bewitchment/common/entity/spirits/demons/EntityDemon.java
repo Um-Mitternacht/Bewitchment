@@ -3,10 +3,12 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -22,6 +24,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		super(worldIn);
 		setSize(1.8F, 4.6F);
 		this.isImmuneToFire = true;
+		this.experienceValue = 165;
 	}
 
 	@Override
@@ -39,6 +42,23 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 	public int getSkinTypes() {
 		return 4;
 	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		super.attackEntityAsMob(entity);
+		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		if (flag) {
+			this.applyEnchantments(this, entity);
+			{
+				{
+					entity.setFire(400);
+				}
+			}
+			return flag;
+		}
+		return false;
+	}
+
 
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.getAPI().DEMON;
