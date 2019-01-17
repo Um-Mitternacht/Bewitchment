@@ -1,5 +1,6 @@
 package com.bewitchment.api.ritual;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -27,6 +28,14 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 */
 	public @Nonnull
 	NonNullList<Ingredient> getInput();
+	
+	/**
+	 * The input entities that trigger the ritual.
+	 *
+	 * @return the list of Entities to be sacrificed
+	 */
+	public @Nonnull
+	NonNullList<Entity> getSacrifices();
 
 	/**
 	 * @return the raw output without modifications. This is mainly used for showing the recipe in JEI
