@@ -3,11 +3,10 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -49,14 +48,12 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		if (flag) {
 			this.applyEnchantments(this, entity);
-			{
-				{
-					entity.setFire(400);
-				}
+			if (entity instanceof EntityLivingBase) {
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1, false, false));
+				setFire(500);
 			}
-			return flag;
 		}
-		return false;
+		return flag;
 	}
 
 
