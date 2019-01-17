@@ -24,7 +24,7 @@ public class LootTableEventHandler {
 		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
 			evt.getTable().addPool(new LootPool(new LootEntry[]{
 					new LootEntryTable(
-							new ResourceLocation(LibMod.MOD_ID, "chests/infernal_books"), 5, 0, new LootCondition[0], "bewitchment_knowledge_entry"
+							new ResourceLocation(LibMod.MOD_ID, "chests/infernal_books"), 5, 0, new LootCondition[0], "bewitchment_infernal_entry"
 					)
 			}, new LootCondition[0], new RandomValueRange(1), new RandomValueRange(0, 1), "bewitchment_infernal_pool"));
 		}
