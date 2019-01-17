@@ -18,7 +18,7 @@
             },
             {
               "function": "set_nbt",
-              "tag": "{bewitchment:codex_infernalis}"
+              "tag": ""{\"patchouli:book\": \"bewitchment:codex_infernalis\"}""
             }
           ]
         }
