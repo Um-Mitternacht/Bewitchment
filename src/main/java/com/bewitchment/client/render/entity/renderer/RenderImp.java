@@ -1,8 +1,6 @@
 package com.bewitchment.client.render.entity.renderer;
 
-import com.bewitchment.client.render.entity.model.ModelDemoness;
 import com.bewitchment.client.render.entity.model.ModelImp;
-import com.bewitchment.common.entity.spirits.demons.EntityDemoness;
 import com.bewitchment.common.entity.spirits.demons.EntityImp;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.client.renderer.GlStateManager;

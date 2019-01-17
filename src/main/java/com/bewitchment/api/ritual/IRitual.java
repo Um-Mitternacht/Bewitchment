@@ -28,7 +28,7 @@ public interface IRitual extends IForgeRegistryEntry<IRitual> {
 	 */
 	public @Nonnull
 	NonNullList<Ingredient> getInput();
-	
+
 	/**
 	 * The input entities that trigger the ritual.
 	 *

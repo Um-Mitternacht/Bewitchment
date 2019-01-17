@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.ritual;
 
 import com.bewitchment.api.ritual.IRitual;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -73,7 +72,7 @@ public class RitualImpl implements IRitual {
 		}
 		return copy;
 	}
-	
+
 	@Override
 	public NonNullList<Entity> getSacrifices() {
 		NonNullList<Entity> copy = NonNullList.<Entity>create();
