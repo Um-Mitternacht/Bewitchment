@@ -16,11 +16,11 @@ public class HarvestEvents {
 
 	@SubscribeEvent
 	public static void dropController(HarvestDropsEvent event) {
-		if (event.getState().getBlock() == Blocks.RED_FLOWER && event.getState().getValue(Blocks.RED_FLOWER.getTypeProperty()) == BlockFlower.EnumFlowerType.ALLIUM && event.getWorld().rand.nextInt(5) == 0) {
+		if (event.getState().getBlock() == Blocks.RED_FLOWER && event.getState().getValue(Blocks.RED_FLOWER.getTypeProperty()) == BlockFlower.EnumFlowerType.ALLIUM && event.getWorld().rand.nextInt(6) == 0) {
 			//Allium -> garlic seeds
 			event.getDrops().clear();
 			event.getDrops().add(new ItemStack(ModItems.seed_garlic, 1));
-		} else if ((event.getState().getBlock() == Blocks.DEADBUSH && event.getWorld().rand.nextInt(6) == 0)) {
+		} else if ((event.getState().getBlock() == Blocks.DEADBUSH && event.getWorld().rand.nextInt(8) == 0)) {
 			//Dead bush -> sage/sagebrush
 			event.getDrops().clear();
 			if (event.getWorld().rand.nextBoolean()) {
@@ -28,7 +28,7 @@ public class HarvestEvents {
 			} else {
 				event.getDrops().add(new ItemStack(ModItems.seed_white_sage, 1));
 			}
-		} else if (((event.getState().getBlock() == Blocks.LEAVES && event.getState().getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) || (event.getState().getBlock() == Blocks.LEAVES2 && event.getState().getValue(BlockNewLeaf.VARIANT) == BlockPlanks.EnumType.DARK_OAK)) && event.getWorld().rand.nextInt(6) == 0 && event.getState().getValue(BlockLeaves.DECAYABLE)) {
+		} else if (((event.getState().getBlock() == Blocks.LEAVES && event.getState().getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) || (event.getState().getBlock() == Blocks.LEAVES2 && event.getState().getValue(BlockNewLeaf.VARIANT) == BlockPlanks.EnumType.DARK_OAK)) && event.getWorld().rand.nextInt(24) == 0 && event.getState().getValue(BlockLeaves.DECAYABLE)) {
 			//Oak and dark oak -> apple gall
 			event.getDrops().clear();
 			event.getDrops().add(new ItemStack(ModItems.oak_apple_gall, 1));
