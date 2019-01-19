@@ -13,13 +13,14 @@ import net.minecraft.util.ResourceLocation;
  */
 public class RenderDemon extends RenderLiving<EntityDemon> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[4];
+	private static final ResourceLocation[] textures = new ResourceLocation[5];
 
 	static {
 		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/demon_1.png");
 		textures[1] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/demon_2.png");
 		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/demon_3.png");
 		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/demon_4.png");
+		textures[4] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/demon_5.png");
 	}
 
 	public RenderDemon(RenderManager rendermanagerIn) {

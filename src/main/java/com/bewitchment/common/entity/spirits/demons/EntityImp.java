@@ -40,7 +40,7 @@ public class EntityImp extends EntityMultiSkin implements IAnimatedEntity, IMob 
 
 	@Override
 	public int getSkinTypes() {
-		return 4;
+		return 5;
 	}
 
 	@Override

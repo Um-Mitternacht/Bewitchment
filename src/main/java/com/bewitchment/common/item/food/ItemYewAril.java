@@ -18,7 +18,7 @@ public class ItemYewAril extends ItemModFood {
 	public ItemYewAril() {
 		super(LibItemName.YEW_ARIL, 1, 0.5F, false);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
-		setPotionEffect(new PotionEffect(MobEffects.POISON, 450, 0), 0.1F);
+		setPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0), 0.1F);
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	@Override
 	public int getSkinTypes() {
-		return 4;
+		return 5;
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {
