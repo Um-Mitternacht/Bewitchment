@@ -39,7 +39,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	@Override
 	public int getSkinTypes() {
-		return 5;
+		return 6;
 	}
 
 	@Override

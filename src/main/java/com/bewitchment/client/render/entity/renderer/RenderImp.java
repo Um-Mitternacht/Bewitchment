@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class RenderImp extends RenderLiving<EntityImp> {
 
-	private static final ResourceLocation[] textures = new ResourceLocation[5];
+	private static final ResourceLocation[] textures = new ResourceLocation[6];
 
 	static {
 		textures[0] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/imp_1.png");
@@ -21,6 +21,7 @@ public class RenderImp extends RenderLiving<EntityImp> {
 		textures[2] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/imp_3.png");
 		textures[3] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/imp_4.png");
 		textures[4] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/imp_5.png");
+		textures[5] = new ResourceLocation(LibMod.MOD_ID, "textures/entity/mobs/spirits/imp_6.png");
 	}
 
 	public RenderImp(RenderManager rendermanagerIn) {
