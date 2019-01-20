@@ -1,7 +1,6 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.crafting.OvenSmeltingRecipe;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
@@ -30,7 +29,7 @@ import java.util.Random;
  */
 @SuppressWarnings("NullableProblems")
 public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNameable {
-	//Change to speed up smelting, lower = faster
+	// Change to speed up smelting, lower = faster
 	public static final int TOTAL_WORK = 100;
 	private static final String CUSTOM_NAME_TAG = "customName";
 	private static final String WORK_TIME_TAG = "work";
@@ -58,7 +57,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		this.handlerUp = new ItemStackHandler(3) {
 			@Override
 			public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-				if ((slot == 0 && !OvenSmeltingRecipe.isSmeltable(stack)) || (slot == 1 && !TileEntityFurnace.isItemFuel(stack))) {
+				if (((slot == 0) && !OvenSmeltingRecipe.isSmeltable(stack)) || ((slot == 1) && !TileEntityFurnace.isItemFuel(stack))) {
 					return stack;
 				}
 				return super.insertItem(slot, stack, simulate);
@@ -67,9 +66,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			@Override
 			protected void onContentsChanged(int slot) {
 				if (slot != 2) {
-					checkRecipe();
+					TileEntityOven.this.checkRecipe();
 				}
-				;
 			}
 		};
 	}
@@ -79,18 +77,18 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 		if (playerIn.isSneaking()) {
 			return false;
 		}
-		if (world.isRemote) {
-			return true;
-		}
+
 
 		ItemStack heldItem = playerIn.getHeldItem(hand);
-		if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
-			this.customName = heldItem.getDisplayName();
-			if (!playerIn.isCreative()) {
-				heldItem.shrink(1);
+		if (!heldItem.isEmpty() && (heldItem.getItem() == Items.NAME_TAG)) {
+			if (!this.world.isRemote) {
+				this.customName = heldItem.getDisplayName();
+				if (!playerIn.isCreative()) {
+					heldItem.shrink(1);
+				}
+				this.markDirty();
+				this.syncToClient();
 			}
-			this.markDirty();
-			syncToClient();
 		} else {
 			playerIn.openGui(Bewitchment.instance, LibGui.OVEN.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
@@ -99,78 +97,72 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 
 	@Override
 	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
-		if (worldIn.getGameRules().getBoolean("doTileDrops")) {
-			ItemHandlerHelper.dropItems(handlerUp, world, pos);
-			ItemHandlerHelper.dropItems(handlerDown, world, pos);
-		}
+		this.dropInventory(this.handlerDown);
+		this.dropInventory(this.handlerUp);
 	}
 
 	@Override
 	public void update() {
-		if (!world.isRemote) {
-			if (isBurning) {
-				this.burnTime++;
-				if (isWorking) {
-					this.work++;
-					if (this.work >= TOTAL_WORK) {
-						this.work = 0;
-						isWorking = false;
-						this.smelt();
-						checkRecipe();
-					}
+		if (!this.world.isRemote && this.isBurning) {
+			this.burnTime++;
+			if (this.isWorking) {
+				this.work++;
+				if (this.work >= TOTAL_WORK) {
+					this.work = 0;
+					this.isWorking = false;
+					this.smelt();
+					this.checkRecipe();
 				}
-				if (burnTime >= itemBurnTime) {
-					this.burnTime = 0;
-					this.itemBurnTime = 0;
-					this.isBurning = false;
-					itemBurnTime = consumeFuel();
-					if (itemBurnTime > 0) {
-						isBurning = true;
-					}
-				}
-				this.markDirty();
 			}
+			if (this.burnTime >= this.itemBurnTime) {
+				this.burnTime = 0;
+				this.itemBurnTime = 0;
+				this.isBurning = false;
+				this.itemBurnTime = this.consumeFuel();
+				if (this.itemBurnTime > 0) {
+					this.isBurning = true;
+				}
+			}
+			this.markDirty();
 		}
 	}
-
 
 	protected void checkRecipe() {
-		if (hasWorkToDo()) {
-			if (!isBurning) {
-				itemBurnTime = consumeFuel();
-				if (itemBurnTime > 0) {
-					isBurning = true;
+		if (this.hasWorkToDo()) {
+			if (!this.isBurning) {
+				this.itemBurnTime = this.consumeFuel();
+				if (this.itemBurnTime > 0) {
+					this.isBurning = true;
 				}
 			}
-			if (isBurning) {
-				isWorking = true;
+			if (this.isBurning) {
+				this.isWorking = true;
 			} else {
-				isWorking = false;
+				this.isWorking = false;
 			}
 		} else {
-			isWorking = false;
+			this.isWorking = false;
 		}
-		markDirty();
+		this.markDirty();
 	}
 
-
 	private int consumeFuel() {
-		ItemStack fuel = handlerUp.getStackInSlot(1);
+		ItemStack fuel = this.handlerUp.getStackInSlot(1);
 		if (TileEntityFurnace.isItemFuel(fuel)) {
 			int time = TileEntityFurnace.getItemBurnTime(fuel);
-			handlerUp.extractItem(1, 1, false);
+			this.handlerUp.extractItem(1, 1, false);
 			return time;
 		}
 		return 0;
 	}
 
 	private boolean hasWorkToDo() {
-		ItemStack stackToBeSmelted = handlerUp.getStackInSlot(0);
+		ItemStack stackToBeSmelted = this.handlerUp.getStackInSlot(0);
 		if (!stackToBeSmelted.isEmpty()) {
 			OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stackToBeSmelted);
 			if (recipe != null) {
 				ItemStack stackNewOutput = recipe.getOutput();
-				return handlerDown.insertItem(0, stackNewOutput, true).isEmpty();
+				return this.handlerDown.insertItem(0, stackNewOutput, true).isEmpty();
 			}
 		}
 		return false;
@@ -178,15 +170,15 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 
 	@SuppressWarnings("ConstantConditions")
 	private void smelt() {
-		ItemStack stack = handlerUp.getStackInSlot(0);
+		ItemStack stack = this.handlerUp.getStackInSlot(0);
 		OvenSmeltingRecipe recipe = OvenSmeltingRecipe.getRecipe(stack);
 		final ItemStack outputStack = recipe.getOutput();
 		final ItemStack fumesStack = recipe.getFumes();
-		handlerUp.extractItem(0, 1, false);
-		handlerDown.insertItem(0, outputStack, false);
-		if (fumesStack != null && !handlerUp.getStackInSlot(2).isEmpty() && random.nextFloat() <= recipe.getFumeChance()) { // If there are jars
-			if (handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
-				handlerUp.extractItem(2, 1, false);
+		this.handlerUp.extractItem(0, 1, false);
+		this.handlerDown.insertItem(0, outputStack, false);
+		if ((fumesStack != null) && !this.handlerUp.getStackInSlot(2).isEmpty() && (this.random.nextFloat() <= recipe.getFumeChance())) { // If there are jars
+			if (this.handlerDown.insertItem(1, fumesStack, false).isEmpty()) {// If the fumes output is full fumes will be lost
+				this.handlerUp.extractItem(2, 1, false);
 			}
 		}
 	}
@@ -198,58 +190,57 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 
 	@Override
 	public boolean hasCustomName() {
-		return this.customName != null && !this.customName.isEmpty();
+		return (this.customName != null) && !this.customName.isEmpty();
 	}
 
 	public int getWork() {
-		return work;
+		return this.work;
 	}
 
 	public boolean isBurning() {
-		return isBurning;
+		return this.isBurning;
 	}
 
 	public int getBurnTime() {
-		return burnTime;
+		return this.burnTime;
 	}
 
 	public int getItemBurnTime() {
-		return itemBurnTime;
+		return this.itemBurnTime;
 	}
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+		return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) || super.hasCapability(capability, facing);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			if (facing == EnumFacing.DOWN) {
-				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerDown);
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.handlerDown);
 			}
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handlerUp);
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.handlerUp);
 		}
 		return super.getCapability(capability, facing);
 	}
 
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		writeModSyncDataNBT(tag);
+		this.writeModSyncDataNBT(tag);
 		tag.setInteger(WORK_TIME_TAG, this.work);
 		tag.setInteger(BURN_TIME_TAG, this.burnTime);
 		tag.setInteger(ITEM_BURN_TIME_TAG, this.itemBurnTime);
 		tag.setBoolean(IS_BURNING_TAG, this.isBurning);
-		tag.setBoolean(IS_WORKING_TAG, isWorking);
+		tag.setBoolean(IS_WORKING_TAG, this.isWorking);
 		tag.setTag(HANDLER_UP_TAG, this.handlerUp.serializeNBT());
 		tag.setTag(HANDLER_DOWN_TAG, this.handlerDown.serializeNBT());
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
-		readModSyncDataNBT(tag);
+		this.readModSyncDataNBT(tag);
 		this.work = tag.getInteger(WORK_TIME_TAG);
 		this.burnTime = tag.getInteger(BURN_TIME_TAG);
 		this.itemBurnTime = tag.getInteger(ITEM_BURN_TIME_TAG);

@@ -18,7 +18,7 @@ public class GuiOven extends GuiContainer {
 
 	public GuiOven(ContainerOven container, InventoryPlayer inventory) {
 		super(container);
-		containerOven = container;
+		this.containerOven = container;
 		this.playerInventory = inventory;
 		this.tileOven = container.getTileEntity();
 	}
@@ -32,9 +32,9 @@ public class GuiOven extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = tileOven.getName();
-		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
+		String s = this.tileOven.getName();
+		this.fontRenderer.drawString(s, (this.xSize / 2) - (this.fontRenderer.getStringWidth(s) / 2), 6, 4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, (this.ySize - 96) + 2, 4210752);
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class GuiOven extends GuiContainer {
 		final int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
-		if (containerOven.gui_data[3] > 0) {
+		if (this.containerOven.gui_data[3] > 0) {
 			int k = this.getBurnLeftScaled(13);
-			this.drawTexturedModalRect(i + 44, j + 50 - k, 176, 12 - k, 14, k + 1);
+			this.drawTexturedModalRect(i + 44, (j + 50) - k, 176, 12 - k, 14, k + 1);
 		}
 
 		int l = this.getCookProgress(24);
@@ -55,12 +55,12 @@ public class GuiOven extends GuiContainer {
 	}
 
 	public int getCookProgress(int pixels) {
-		return containerOven.gui_data[2] * pixels / TileEntityOven.TOTAL_WORK;
+		return (this.containerOven.gui_data[2] * pixels) / TileEntityOven.TOTAL_WORK;
 	}
 
 	private int getBurnLeftScaled(int pixels) {
-		if (containerOven.gui_data[0] > 0) {
-			return (containerOven.gui_data[1] - containerOven.gui_data[0]) * pixels / containerOven.gui_data[1];
+		if (this.containerOven.gui_data[0] > 0) {
+			return ((this.containerOven.gui_data[1] - this.containerOven.gui_data[0]) * pixels) / this.containerOven.gui_data[1];
 		}
 		return 0;
 	}

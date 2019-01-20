@@ -27,15 +27,15 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 		IItemHandler handlerUp = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 		IItemHandler handlerDown = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
-		//input slot
+		// input slot
 		this.addSlotToContainer(new ModSlot<>(tileEntity, handlerUp, 0, 44, 19));
-		//fuel slot
+		// fuel slot
 		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerUp, 1, 44, 55, TileEntityFurnace::isItemFuel));
-		//jar slot
-		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerUp, 2, 80, 55, stack -> stack.getItem() == ModItems.fume && stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal()));
-		//output slot
+		// jar slot
+		this.addSlotToContainer(new SlotFiltered<>(tileEntity, handlerUp, 2, 80, 55, stack -> (stack.getItem() == ModItems.fume) && (stack.getMetadata() == ItemFumes.Type.empty_jar.ordinal())));
+		// output slot
 		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 0, 116, 19));
-		//fume slot
+		// fume slot
 		this.addSlotToContainer(new SlotOutput<>(tileEntity, handlerDown, 1, 116, 55));
 
 		this.addPlayerSlots(playerInventory);
@@ -44,13 +44,13 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = inventorySlots.get(index);
-		if (slot != null && slot.getHasStack()) {
+		Slot slot = this.inventorySlots.get(index);
+		if ((slot != null) && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size() - 2;
+			int containerSlots = this.inventorySlots.size() - player.inventory.mainInventory.size() - 2;
 			if (index < containerSlots) {
-				if (!this.mergeItemStack(itemstack1, containerSlots, inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(itemstack1, containerSlots, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			} else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false)) {
@@ -90,8 +90,8 @@ public class ContainerOven extends ModContainer<TileEntityOven> {
 
 	@Override
 	protected void onFieldUpdated(int id, int data) {
-		if (id >= 0 && id < 4) {
-			gui_data[id] = data;
+		if ((id >= 0) && (id < 4)) {
+			this.gui_data[id] = data;
 		}
 	}
 }
