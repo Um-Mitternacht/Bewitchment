@@ -1,0 +1,35 @@
+{
+  "name": "Demons and Demonesses",
+  "icon": "minecraft:blaze_powder",
+  "category": "demonic_nobility",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Some of the less notable feudal lords of Hell, they usually field large armies of Imps to go to war with one another, and to collect precious souls. They are very temperamental beings, and to the unskilled conjurer, may flat out kill them, adding them to their collection of souls to be traded with."
+    },
+    {
+      "type": "entity",
+      "name": "Demon",
+      "entity": "bewitchment:demon",
+      "scale": 0.95,
+      "rotate": true,
+	  "text": "One of the many dukes of hell"
+    },
+    {
+      "type": "entity",
+      "name": "Demoness",
+      "entity": "bewitchment:demoness",
+      "scale": 0.95,
+      "rotate": true,
+	  "text": "One of the many duchesses of hell"	  
+    },
+    {
+      "type": "entity",
+      "name": "Imp",
+      "entity": "bewitchment:imp",
+      "scale": 0.95,
+      "rotate": true,
+	  "text": "One of the many peasants of hell"	  
+    }		
+  ]
+}
