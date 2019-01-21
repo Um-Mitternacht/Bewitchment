@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
@@ -15,7 +16,7 @@ public class WorldGenCoquina implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		BlockPos position = world.getHeight(new BlockPos(chunkX * 16 + random.nextInt(16), 0, chunkZ * 16 + random.nextInt(16)));
-		if (world.getBiome(position) == Biomes.BEACH) {
+		if (world.getBiome(position) == BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH)) {
 			while (world.getBlockState(position.down()).getBlock() == Blocks.SAND) {
 				for (int i = 0; i < 3; i++) {
 					int x = random.nextInt(2);
