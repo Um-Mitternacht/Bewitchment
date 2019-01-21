@@ -45,7 +45,7 @@ public class WorldGenBlob implements IWorldGenerator
                     {
                         if (blockpos.distanceSq(position) <= f * f) world.setBlockState(blockpos, this.block.getDefaultState(), 4);
                     }
-                    position = position.add(random.nextInt(2)-1, 0 - random.nextInt(2), random.nextInt(2)-1);
+                    position = position.add(random.nextInt(2)-1, random.nextInt(2), random.nextInt(2)-1);
                 }
                 return;
             }
