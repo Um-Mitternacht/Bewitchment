@@ -37,9 +37,9 @@ public class WorldGenBlob implements IWorldGenerator
                 if (position.getY() <= 3) return;
                 for (int i = 0; i < 3; i++)
                 {
-                    int x = 0 + random.nextInt(2);
-                    int y = 0 + random.nextInt(2);
-                    int z = 0 + random.nextInt(2);
+                    int x = random.nextInt(2);
+                    int y = random.nextInt(2);
+                    int z = random.nextInt(2);
                     float f = (float)(x + y + z) * 0.333f + 0.5f;
                     for (BlockPos blockpos : BlockPos.getAllInBox(position.add(-x, -y, -z), position.add(x, y, z)))
                     {
