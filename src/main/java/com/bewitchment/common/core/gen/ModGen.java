@@ -4,7 +4,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.BlockGemOre;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.core.statics.ModConfig;
-
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
