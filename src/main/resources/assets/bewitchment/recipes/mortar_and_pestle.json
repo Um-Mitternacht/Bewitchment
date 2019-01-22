@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "pattern": [
     " T ",
     "S S",
@@ -7,8 +7,8 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:wooden_slab",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "slabWood"
     },
     "T": {
       "item": "minecraft:stick",
