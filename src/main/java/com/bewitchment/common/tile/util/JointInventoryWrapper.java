@@ -12,56 +12,57 @@ import java.util.function.Supplier;
 public class JointInventoryWrapper implements IItemHandlerModifiable {
 
 	//The index in the list is the outside slot, the integer is the wrapped handler slot
-	ArrayList<Tuple<Supplier<ItemStackHandler>, Integer>> bindings = new ArrayList<>();
-	ArrayList<Mode> modes = new ArrayList<>();
+
+	private ArrayList<Tuple<Supplier<ItemStackHandler>, Integer>> bindings = new ArrayList<>();
+	private ArrayList<Mode> modes = new ArrayList<>();
 
 	@Override
 	public int getSlots() {
-		return bindings.size();
+		return this.bindings.size();
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		if (slot >= bindings.size() || bindings.get(slot) == null) {
+		if ((slot >= this.bindings.size()) || (this.bindings.get(slot) == null)) {
 			return ItemStack.EMPTY;
 		}
-		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
+		Tuple<Supplier<ItemStackHandler>, Integer> res = this.bindings.get(slot);
 		return res.getFirst().get().getStackInSlot(res.getSecond());
 	}
 
 	@Override
 	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-		if (slot >= bindings.size() || bindings.get(slot) == null || !modes.get(slot).canInsert()) {
+		if ((slot >= this.bindings.size()) || (this.bindings.get(slot) == null) || !this.modes.get(slot).canInsert()) {
 			return stack;
 		}
-		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
+		Tuple<Supplier<ItemStackHandler>, Integer> res = this.bindings.get(slot);
 		return res.getFirst().get().insertItem(res.getSecond(), stack, simulate);
 	}
 
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
-		if (slot >= bindings.size() || bindings.get(slot) == null || !modes.get(slot).canExtract()) {
+		if ((slot >= this.bindings.size()) || (this.bindings.get(slot) == null) || !this.modes.get(slot).canExtract()) {
 			return ItemStack.EMPTY;
 		}
-		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
+		Tuple<Supplier<ItemStackHandler>, Integer> res = this.bindings.get(slot);
 		return res.getFirst().get().extractItem(res.getSecond(), amount, simulate);
 	}
 
 	@Override
 	public int getSlotLimit(int slot) {
-		if (slot >= bindings.size() || bindings.get(slot) == null) {
+		if ((slot >= this.bindings.size()) || (this.bindings.get(slot) == null)) {
 			return 0;
 		}
-		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
+		Tuple<Supplier<ItemStackHandler>, Integer> res = this.bindings.get(slot);
 		return res.getFirst().get().getSlotLimit(res.getSecond());
 	}
 
 	@Override
 	public void setStackInSlot(int slot, ItemStack stack) {
-		if (slot >= bindings.size() || bindings.get(slot) == null) {
+		if ((slot >= this.bindings.size()) || (this.bindings.get(slot) == null)) {
 			Log.w("Slot " + slot + " wasn't bound properly: " + stack);
 		}
-		Tuple<Supplier<ItemStackHandler>, Integer> res = bindings.get(slot);
+		Tuple<Supplier<ItemStackHandler>, Integer> res = this.bindings.get(slot);
 		res.getFirst().get().setStackInSlot(res.getSecond(), stack);
 	}
 
@@ -78,16 +79,16 @@ public class JointInventoryWrapper implements IItemHandlerModifiable {
 		private boolean r_in, r_out;
 
 		Mode(boolean in, boolean out) {
-			r_in = in;
-			r_out = out;
+			this.r_in = in;
+			this.r_out = out;
 		}
 
 		public boolean canInsert() {
-			return r_in;
+			return this.r_in;
 		}
 
 		public boolean canExtract() {
-			return r_out;
+			return this.r_out;
 		}
 	}
 }

@@ -13,7 +13,7 @@
       "entity": "bewitchment:demon",
       "scale": 0.95,
       "rotate": true,
-	  "text": "One of the many dukes of hell"
+      "text": "One of the many dukes of hell"
     },
     {
       "type": "entity",
@@ -21,7 +21,7 @@
       "entity": "bewitchment:demoness",
       "scale": 0.95,
       "rotate": true,
-	  "text": "One of the many duchesses of hell"	  
+      "text": "One of the many duchesses of hell"
     },
     {
       "type": "entity",
@@ -29,7 +29,7 @@
       "entity": "bewitchment:imp",
       "scale": 0.95,
       "rotate": true,
-	  "text": "One of the many peasants of hell"	  
-    }		
+      "text": "One of the many peasants of hell"
+    }
   ]
 }

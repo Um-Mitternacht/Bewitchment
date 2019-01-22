@@ -1,7 +1,6 @@
 package com.bewitchment.common.core.gen;
 
 import com.bewitchment.common.block.ModBlocks;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
