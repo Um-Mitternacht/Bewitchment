@@ -26,7 +26,7 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild;
+			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon, summon_imp;
 
 	public static void init() {
 
@@ -280,7 +280,7 @@ public class ModRituals {
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
-				spawn_uranid, day, frenzied_growth, call_of_the_wild
+				spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon, summon_imp
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
