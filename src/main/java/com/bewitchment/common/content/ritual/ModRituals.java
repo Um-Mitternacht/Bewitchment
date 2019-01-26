@@ -177,6 +177,24 @@ public class ModRituals {
 				circles(NETHER, NETHER, NETHER),
 				5000,
 				4);
+		summon_demon = new RitualSummonDemon(
+				rl("summon_demon"),
+				of(
+						LibIngredients.hellebore,
+						LibIngredients.hellhoundHorn,
+						LibIngredients.uranidVenom,
+						LibIngredients.heart,
+						LibIngredients.goldIngot,
+						LibIngredients.enderPearl,
+						LibIngredients.ghastTear,
+						LibIngredients.athame
+				),
+				ofs(new ItemStack(ModItems.athame)),
+				616,
+				circles(NETHER, ANY, NETHER),
+				4750,
+				10
+		);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(
@@ -212,24 +230,6 @@ public class ModRituals {
 				3750,
 				3);
 
-		summon_demon = new RitualSummonDemon(
-				rl("summon_demon"),
-				of(
-						LibIngredients.hellebore,
-						LibIngredients.hellhoundHorn,
-						LibIngredients.uranidVenom,
-						LibIngredients.heart,
-						LibIngredients.goldIngot,
-						LibIngredients.enderPearl,
-						LibIngredients.ghastTear,
-						LibIngredients.athame
-				),
-				ofs(new ItemStack(ModItems.athame)),
-				616,
-				circles(NETHER, ANY, NETHER),
-				4750,
-				10
-		);
 		draw_circle_small = new RitualDrawing(
 				rl("draw_circle_small"),
 				of(
