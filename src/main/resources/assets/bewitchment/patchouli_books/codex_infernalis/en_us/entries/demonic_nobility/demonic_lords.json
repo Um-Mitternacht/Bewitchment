@@ -30,6 +30,14 @@
       "scale": 0.95,
       "rotate": true,
       "text": "One of the many peasants of hell"
-    }
+    },
+    {
+      "type": "text",
+      "text": "While I outlie the rituals used for conjuring Imps and Demons here, one must be wary, as they are powerful beings, and even Imps view humans as lower than them. To command their respect, one must present a diabolic badge of office to them."
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:summon_demon"
+    }	
   ]
 }
