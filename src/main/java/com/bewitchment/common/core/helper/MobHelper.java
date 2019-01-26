@@ -3,14 +3,14 @@ package com.bewitchment.common.core.helper;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
-import com.bewitchment.common.entity.spirits.demons.EntityUran;
+import com.bewitchment.common.entity.spirits.demons.*;
 import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -45,6 +45,7 @@ public class MobHelper {
 
 		SPIRITS.add(EntityGhast.class.getName());
 		SPIRITS.add(EntityVex.class.getName());
+		SPIRITS.add(EntityBlackDog.class.getName());
 		SPIRITS.add("thaumcraft.common.entities.monster.EntityWisp"); // <-- Example of fully qualified name
 		SPIRITS.add("astralsorcery.common.entities.EntityFlare");
 		SPIRITS.add("its_meow.betteranimalsplus.common.entity.miniboss.hirschgeist.EntityHirschgeist");
@@ -56,6 +57,9 @@ public class MobHelper {
 		//Will be used for actual demons later on.
 		DEMONS.add(EntityUran.class.getName());
 		DEMONS.add(EntityHellhound.class.getName());
+		DEMONS.add(EntityDemon.class.getName());
+		DEMONS.add(EntityDemoness.class.getName());
+		DEMONS.add(EntityImp.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
 		CANIDS.add(EntityHellhound.class.getName());

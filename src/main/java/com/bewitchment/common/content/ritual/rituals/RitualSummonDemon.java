@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.ritual.rituals;
 
 import com.bewitchment.common.content.ritual.RitualImpl;
-import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.entity.spirits.demons.EntityDemon;
 import com.bewitchment.common.entity.spirits.demons.EntityDemoness;
 import net.minecraft.entity.Entity;
@@ -24,6 +23,8 @@ public class RitualSummonDemon extends RitualImpl {
 	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
+
+	//Todo: Only a max of 1 demon or demoness at a time. Takes anything listed as human or villager under MobHelper. Including Villagers and Players.
 
 	@Override
 	public void onFinish(@Nullable EntityPlayer player, TileEntity tile, World world, BlockPos mainGlyphPos, NBTTagCompound data, BlockPos effectivePosition, int covenSize) {
