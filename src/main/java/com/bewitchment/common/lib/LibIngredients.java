@@ -122,6 +122,7 @@ public class LibIngredients {
 	public static Ingredient kelp = new IngredientMultiOreDict("kelp", "seaWeed", "cropSeaweed", "cropKelp");
 	public static Ingredient coquina = Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.coquina));
 	public static Ingredient stone = Ingredient.fromItem(Item.getItemFromBlock(Blocks.STONE));
+	public static Ingredient heart = Ingredient.fromItem(ModItems.heart);
 	public static Ingredient moonbell = Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.moonbell));
 	public static Ingredient mushroom_red = Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM));
 	public static Ingredient mushroom_brown = Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM));

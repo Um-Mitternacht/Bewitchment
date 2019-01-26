@@ -211,6 +211,24 @@ public class ModRituals {
 				circles(NETHER, NETHER, null),
 				3750,
 				3);
+
+		summon_demon = new RitualSummonDemon(
+				rl("summon_demon"),
+				of(
+						LibIngredients.hellebore,
+						LibIngredients.hellhoundHorn,
+						LibIngredients.uranidVenom,
+						LibIngredients.heart,
+						LibIngredients.goldIngot,
+						LibIngredients.enderPearl,
+						LibIngredients.ghastTear
+				),
+				none,
+				616,
+				circles(NETHER, ANY, NETHER),
+				4750,
+				10
+		);
 		draw_circle_small = new RitualDrawing(
 				rl("draw_circle_small"),
 				of(
