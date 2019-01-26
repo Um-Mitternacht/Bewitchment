@@ -221,9 +221,10 @@ public class ModRituals {
 						LibIngredients.heart,
 						LibIngredients.goldIngot,
 						LibIngredients.enderPearl,
-						LibIngredients.ghastTear
+						LibIngredients.ghastTear,
+						LibIngredients.athame
 				),
-				none,
+				ofs(new ItemStack(ModItems.athame)),
 				616,
 				circles(NETHER, ANY, NETHER),
 				4750,
