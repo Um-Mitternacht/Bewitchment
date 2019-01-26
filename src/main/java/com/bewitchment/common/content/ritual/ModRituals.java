@@ -26,7 +26,8 @@ public class ModRituals {
 			infusion_nether, infusion_end, infusion_dream, flames, sanctuary, spawn_vex,
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
-			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon, summon_imp;
+			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon,
+			summon_imp;
 
 	public static void init() {
 
@@ -193,8 +194,7 @@ public class ModRituals {
 				616,
 				circles(NETHER, ANY, NETHER),
 				4750,
-				10
-		);
+				10);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(
@@ -299,7 +299,8 @@ public class ModRituals {
 				flames, sanctuary, spawn_vex, deck, table, crystal_ball, elder_broom,
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
-				spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon, summon_imp
+				spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon,
+				summon_imp
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));
