@@ -23,6 +23,10 @@ public class RitualSummonDemon extends RitualImpl {
 	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
+	
+	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<Entity> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
+	}
 
 	//Todo: Only a max of 1 demon or demoness at a time, if a demon or demoness has already been spawned, it will not try to summon another. Takes anything listed as human or villager under MobHelper. Including Villagers and Players.
 

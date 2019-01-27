@@ -4,6 +4,8 @@ import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import com.google.common.collect.Lists;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -117,6 +119,30 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 			return false;
 		}
 		return circles;
+	}
+	
+	public boolean isValidInput(List<ItemStack> ground, List<Entity> sacrifices, boolean circles)
+	{
+		if (!isValidInput(ground, circles)) return false;
+		List<Entity> checklist = new ArrayList<Entity>();
+		for (Entity e : sacrifices) checklist.add(e);
+		if (checklist.size() != ritual.getSacrifices().size()) return false;
+		List<Entity> removalList = new ArrayList<Entity>(ritual.getSacrifices());
+		for (Entity e : checklist)
+		{
+			Entity found = null;
+			for (Entity s : removalList)
+			{
+				if (s.equals(e))
+				{
+					found = s;
+					break;
+				}
+			}
+			if (found == null) return false;
+			removalList.remove(found);
+		}
+		return removalList.isEmpty();
 	}
 
 	public int getCircles() {

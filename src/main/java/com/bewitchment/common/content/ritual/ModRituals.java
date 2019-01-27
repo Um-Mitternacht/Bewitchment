@@ -8,6 +8,9 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -195,6 +198,17 @@ public class ModRituals {
 				circles(NETHER, ANY, NETHER),
 				4750,
 				10);
+		summon_imp = new RitualSummonDemon(
+				rl("summon_imp"),
+				of(
+						LibIngredients.hellebore
+				),
+				//ofe(EntityPig.class),
+				ofs(new ItemStack(ModItems.athame)),
+				616,
+				circles(NETHER, ANY, NETHER),
+				100,
+				10);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(
@@ -309,6 +323,12 @@ public class ModRituals {
 
 	public static NonNullList<Ingredient> of(Ingredient... list) {
 		return NonNullList.<Ingredient>from(Ingredient.EMPTY, list);
+	}
+	
+	// might want to check this, also won't work as of now
+	public static NonNullList<Class<? extends Entity>> ofe(Class<? extends Entity>... list)
+	{
+		return NonNullList.<Class<? extends Entity>>from(Entity.class, list);
 	}
 
 	public static NonNullList<ItemStack> ofs(ItemStack... list) {

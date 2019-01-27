@@ -199,6 +199,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 		}
 
 		List<EntityItem> itemsOnGround = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
+		List<Entity> entitiesOnGround = getWorld().getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(getPos()).grow(3, 0, 3));
 		List<BlockPos> placedOnGround = BlockStreamHelper.ofPos(getPos().add(3, 0, 3), getPos().add(-3, 0, -3))
 				.filter(t -> (world.getTileEntity(t) instanceof TileEntityPlacedItem))
 				.collect(Collectors.toList());
@@ -208,7 +209,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				.forEach(te -> recipe.add(te.getItem()));
 
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
-			if (rit.isValidInput(recipe, hasCircles(rit))) { // Check if circles and items match
+			if (rit.isValidInput(recipe, entitiesOnGround, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
 
 					if (altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
