@@ -195,7 +195,7 @@ public class ModRituals {
 						LibIngredients.ghastTear,
 						LibIngredients.athame
 				),
-				//ofe(MobHelper.HUMANS || MobHelper.VILLAGERS),
+				//ofe(MobHelper.HUMANS || MobHelper.VILLAGERS || EntityPlayer || EntityVillager),
 				ofs(new ItemStack(ModItems.athame)),
 				616,
 				circles(NETHER, ANY, NETHER),
