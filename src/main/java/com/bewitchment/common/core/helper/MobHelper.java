@@ -57,12 +57,14 @@ public class MobHelper {
 		//Will be used for actual demons later on.
 		DEMONS.add(EntityUran.class.getName());
 		DEMONS.add(EntityHellhound.class.getName());
+		CANIDS.add(EntityHellhoundAlpha.class.getName());
 		DEMONS.add(EntityDemon.class.getName());
 		DEMONS.add(EntityDemoness.class.getName());
 		DEMONS.add(EntityImp.class.getName());
 
 		CANIDS.add(EntityWolf.class.getName());
 		CANIDS.add(EntityHellhound.class.getName());
+		CANIDS.add(EntityHellhoundAlpha.class.getName());
 		CANIDS.add(EntityBlackDog.class.getName());
 		CANIDS.add("evilcraft.common.entity.monster.Werewolf");
 		CANIDS.add("its_meow.betteranimalsplus.common.entity.EntityFeralWolf");
