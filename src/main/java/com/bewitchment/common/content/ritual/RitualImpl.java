@@ -1,7 +1,6 @@
 package com.bewitchment.common.content.ritual;
 
 import com.bewitchment.api.ritual.IRitual;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -11,6 +10,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 
 import javax.annotation.Nonnull;
 
@@ -20,9 +20,9 @@ public class RitualImpl implements IRitual {
 	private int time, circles, altarStartingPower, tickPower;
 	private NonNullList<ItemStack> output;
 	private NonNullList<Ingredient> input;
-	private NonNullList<Entity> sacrifices;
+	private NonNullList<EntityEntry> sacrifices;
 
-	public RitualImpl(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<Entity> sacrifices, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+	public RitualImpl(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<EntityEntry> sacrifices, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		this.time = timeInTicks;
 		this.input = input;
 		this.sacrifices = sacrifices;
@@ -34,7 +34,7 @@ public class RitualImpl implements IRitual {
 	}
 
 	public RitualImpl(ResourceLocation registryName, @Nonnull NonNullList<Ingredient> input, @Nonnull NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
-		this(registryName, input, NonNullList.<Entity>create(), output, timeInTicks, circles, altarStartingPower, powerPerTick);
+		this(registryName, input, NonNullList.<EntityEntry>create(), output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 
 	@Override
@@ -74,9 +74,9 @@ public class RitualImpl implements IRitual {
 	}
 
 	@Override
-	public NonNullList<Entity> getSacrifices() {
-		NonNullList<Entity> copy = NonNullList.<Entity>create();
-		for (Entity e : sacrifices) {
+	public NonNullList<EntityEntry> getSacrifices() {
+		NonNullList<EntityEntry> copy = NonNullList.<EntityEntry>create();
+		for (EntityEntry e : sacrifices) {
 			copy.add(e);
 		}
 		return copy;

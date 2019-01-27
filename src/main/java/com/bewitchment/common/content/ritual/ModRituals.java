@@ -17,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.util.Arrays;
 
@@ -202,17 +204,17 @@ public class ModRituals {
 				4750,
 				10);
 
-		//summon_imp = new RitualSummonDemon(
-		//		rl("summon_imp"),
-		//		of(
-		//				LibIngredients.hellebore
-		//		),
-		//		//ofe(EntityPig.class),
-		//		ofs(new ItemStack(ModItems.athame)),
-		//		616,
-		//		circles(NETHER, ANY, NETHER),
-		//		100,
-		//		10);
+		summon_imp = new RitualSummonDemon(
+				rl("summon_imp"),
+				of(
+						LibIngredients.hellebore
+				),
+				ofe(EntityRegistry.getEntry(EntityPig.class)),
+				ofs(new ItemStack(ModItems.athame)),
+				616,
+				circles(NETHER, ANY, NETHER),
+				100,
+				10);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(
@@ -329,10 +331,9 @@ public class ModRituals {
 		return NonNullList.<Ingredient>from(Ingredient.EMPTY, list);
 	}
 	
-	// might want to check this, also won't work as of now
-	public static NonNullList<Class<? extends Entity>> ofe(Class<? extends Entity>... list)
+	public static NonNullList<EntityEntry> ofe(EntityEntry... list)
 	{
-		return NonNullList.<Class<? extends Entity>>from(Entity.class, list);
+		return NonNullList.<EntityEntry>from(EntityRegistry.getEntry(EntityPig.class), list);
 	}
 
 	public static NonNullList<ItemStack> ofs(ItemStack... list) {

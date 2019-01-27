@@ -16,6 +16,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -124,25 +126,8 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 	public boolean isValidInput(List<ItemStack> ground, List<Entity> sacrifices, boolean circles)
 	{
 		if (!isValidInput(ground, circles)) return false;
-		List<Entity> checklist = new ArrayList<Entity>();
-		for (Entity e : sacrifices) checklist.add(e);
-		if (checklist.size() != ritual.getSacrifices().size()) return false;
-		List<Entity> removalList = new ArrayList<Entity>(ritual.getSacrifices());
-		for (Entity e : checklist)
-		{
-			Entity found = null;
-			for (Entity s : removalList)
-			{
-				if (s.equals(e))
-				{
-					found = s;
-					break;
-				}
-			}
-			if (found == null) return false;
-			removalList.remove(found);
-		}
-		return removalList.isEmpty();
+		for (Entity e : sacrifices) if (ritual.getSacrifices().contains(EntityRegistry.getEntry(e.getClass()))) return true;
+		return false;
 	}
 
 	public int getCircles() {
@@ -159,6 +144,10 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
 	public NonNullList<Ingredient> getInput() {
 		return ritual.getInput();
+	}
+	
+	public NonNullList<EntityEntry> getSacrifices() {
+		return ritual.getSacrifices();
 	}
 
 	public List<List<ItemStack>> getJeiInput() {
