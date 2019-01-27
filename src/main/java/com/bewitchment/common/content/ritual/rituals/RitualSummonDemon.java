@@ -23,7 +23,7 @@ public class RitualSummonDemon extends RitualImpl {
 	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
-	
+
 	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<Entity> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
