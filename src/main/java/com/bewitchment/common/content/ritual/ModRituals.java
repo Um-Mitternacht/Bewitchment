@@ -13,6 +13,7 @@ import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -197,24 +198,24 @@ public class ModRituals {
 						LibIngredients.ghastTear,
 						LibIngredients.athame
 				),
-				//ofe(MobHelper.HUMANS || MobHelper.VILLAGERS || EntityPlayer || EntityVillager),
+				ofe(EntityRegistry.getEntry(EntityVillager.class)),
 				ofs(new ItemStack(ModItems.athame)),
 				616,
 				circles(NETHER, ANY, NETHER),
 				4750,
 				10);
 
-		summon_imp = new RitualSummonDemon(
-				rl("summon_imp"),
-				of(
-						LibIngredients.hellebore
-				),
-				ofe(EntityRegistry.getEntry(EntityPig.class)),
-				ofs(new ItemStack(ModItems.athame)),
-				616,
-				circles(NETHER, ANY, NETHER),
-				100,
-				10);
+	//	summon_imp = new RitualSummonDemon(
+	//			rl("summon_imp"),
+	//			of(
+	//					LibIngredients.hellebore
+	//			),
+	//			ofe(EntityRegistry.getEntry(EntityPig.class)),
+	//			ofs(new ItemStack(ModItems.athame)),
+	//			616,
+	//			circles(NETHER, ANY, NETHER),
+		//		100,
+		//		10);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(
