@@ -90,5 +90,10 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 	public EntityAgeable createChild(EntityAgeable ageable) {
 		return null;
 	}
+
+	@Override
+	public float getEyeHeight(){
+		return this.height * 0.75F;
+	}
 }
 
