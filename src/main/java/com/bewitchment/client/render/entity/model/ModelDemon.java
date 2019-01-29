@@ -290,10 +290,6 @@ public class ModelDemon extends AdvancedModelBase {
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.bipedBody.render(f5);
-		this.bipedRightArm.render(f5);
-		this.bipedLeftArm.render(f5);
-		this.bipedLeftLeg.render(f5);
-		this.bipedRightLeg.render(f5);
 	}
 
 	@Override
