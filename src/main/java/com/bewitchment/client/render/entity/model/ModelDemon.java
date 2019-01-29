@@ -307,8 +307,11 @@ public class ModelDemon extends AdvancedModelBase {
 		bob(bipedBody, 0.3f * globalSpeed, 0.8f * globalHeight, false, f, f1);
 		walk(bipedRightArm, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 		walk(bipedLeftArm, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
-		walk(rLeg03, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
-		walk(lLeg03, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+		walk(bipedRightLeg, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
+		walk(bipedLeftLeg, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+		swing(tail01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
+		flap(lWing01, 0.6f, 0.5f, true, 0, 0.2f, f, f1);
+		flap(rWing01, 0.6f, 0.5f, false, 0, 0.2f, f, f1);
 	}
 
 	/**
