@@ -4,7 +4,6 @@ import com.bewitchment.api.ritual.IRitual;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
 import com.google.common.collect.Lists;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -122,11 +121,11 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 		}
 		return circles;
 	}
-	
-	public boolean isValidInput(List<ItemStack> ground, List<Entity> sacrifices, boolean circles)
-	{
+
+	public boolean isValidInput(List<ItemStack> ground, List<Entity> sacrifices, boolean circles) {
 		if (!isValidInput(ground, circles)) return false;
-		for (Entity e : sacrifices) if (ritual.getSacrifices().contains(EntityRegistry.getEntry(e.getClass()))) return true;
+		for (Entity e : sacrifices)
+			if (ritual.getSacrifices().contains(EntityRegistry.getEntry(e.getClass()))) return true;
 		return false;
 	}
 
@@ -145,7 +144,7 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 	public NonNullList<Ingredient> getInput() {
 		return ritual.getInput();
 	}
-	
+
 	public NonNullList<EntityEntry> getSacrifices() {
 		return ritual.getSacrifices();
 	}

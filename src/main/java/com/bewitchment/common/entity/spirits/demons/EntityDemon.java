@@ -93,7 +93,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 	}
 
 	@Override
-	public float getEyeHeight(){
+	public float getEyeHeight() {
 		return this.height * 0.75F;
 	}
 }

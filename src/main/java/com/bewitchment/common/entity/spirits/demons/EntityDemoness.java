@@ -92,7 +92,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 	}
 
 	@Override
-	public float getEyeHeight(){
+	public float getEyeHeight() {
 		return this.height * 0.75F;
 	}
 }
