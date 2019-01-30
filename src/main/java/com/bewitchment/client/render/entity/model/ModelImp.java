@@ -1,5 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
+import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
@@ -65,6 +66,8 @@ public class ModelImp extends AdvancedModelBase {
 	public AdvancedModelRenderer lLeg03;
 	public AdvancedModelRenderer lLegFur;
 	public AdvancedModelRenderer lHoof;
+
+	private ModelAnimator animator;
 
 	public ModelImp() {
 		this.textureWidth = 64;
@@ -343,13 +346,20 @@ public class ModelImp extends AdvancedModelBase {
 		this.lWing02.addChild(this.lWingMembrane);
 		this.rLeg02.addChild(this.rLegFur);
 		this.bipedHead.addChild(this.lCheekFur);
+		this.updateDefaultPose();
+		animator = ModelAnimator.create();
 	}
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.bipedLeftLeg.render(f5);
+		this.bipedRightLeg.render(f5);
+		this.bipedRightArm.render(f5);
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.bipedBody.render(f5);
+		this.bipedHead.render(f5);
+		this.bipedLeftArm.render(f5);
 	}
 
 	@Override

@@ -2,11 +2,15 @@ package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -24,7 +28,33 @@ public class EntityImp extends EntityMultiSkin implements IAnimatedEntity, IMob 
 		super(worldIn);
 		setSize(1.0F, 2.0F);
 		this.isImmuneToFire = true;
+		this.setPathPriority(PathNodeType.WATER, -1.0F);
+		this.setPathPriority(PathNodeType.LAVA, 8.0F);
+		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
+		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 100;
+	}
+
+	@Override
+	protected void initEntityAI() {
+		this.tasks.addTask(1, new EntityAISwimming(this));
+		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
+		this.tasks.addTask(7, new EntityAILookIdle(this));
+		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
+		this.targetTasks.addTask(9, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
+		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityUran || e instanceof EntityHellhound || e instanceof EntityHellhoundAlpha));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+		this.tasks.addTask(8, new EntityAIAttackMelee(this, 1.0D, false));
+	}
+
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		if (potioneffectIn.getPotion() == MobEffects.WITHER || potioneffectIn.getPotion() == MobEffects.POISON || potioneffectIn.getPotion() == ModPotions.rotting) {
+			net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent event = new net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent(this, potioneffectIn);
+			net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+			return event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.ALLOW;
+		}
+		return super.isPotionApplicable(potioneffectIn);
 	}
 
 	@Override
