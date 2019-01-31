@@ -136,7 +136,7 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
 		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
+		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
 	}
 
 	@Override

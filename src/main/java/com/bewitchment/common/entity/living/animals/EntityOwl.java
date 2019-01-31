@@ -91,6 +91,7 @@ public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(2, new EntityAIFleeSun(this, 1d));
 		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.8));
+		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(3, new EntityAIMate(this, 0.8d));
 		this.tasks.addTask(4, this.aiSit);
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityParrot || e instanceof EntityBlindworm || e instanceof EntityLizard));
