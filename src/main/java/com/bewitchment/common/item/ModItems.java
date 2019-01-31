@@ -211,6 +211,7 @@ public final class ModItems {
 
 	public static final Item uranid_venom = null;
 	public static final Item hellhound_horn = null;
+	public static final Item demon_heart = null;
 
 	public static final Item pentacle = null;
 
@@ -271,6 +272,7 @@ public final class ModItems {
 				new ItemMod(LibItemName.WOOD_ASH),
 				new ItemMod(LibItemName.ECTOPLASM),
 				new ItemMod(LibItemName.SPECTRAL_DUST),
+				new ItemMod(LibItemName.DEMON_HEART),
 				new ItemMod(LibItemName.SILVER_SCALES),
 				new ItemEyeOfOld(),
 				new ItemMod(LibItemName.ENVENOMED_FANG),

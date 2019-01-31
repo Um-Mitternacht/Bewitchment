@@ -143,6 +143,7 @@ public final class LibItemName {
 	public static final String LIZARD_LEG = "lizard_leg";
 	public static final String URANID_VENOM = "uranid_venom";
 	public static final String HELLHOUND_HORN = "hellhound_horn";
+	public static final String DEMON_HEART = "demon_heart";
 
 	//Materials
 	public static final String SILVER = "silver";
