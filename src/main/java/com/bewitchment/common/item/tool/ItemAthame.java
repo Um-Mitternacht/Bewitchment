@@ -4,6 +4,8 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.EntityDemon;
+import com.bewitchment.common.entity.spirits.demons.EntityDemoness;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
 import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
 import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
@@ -260,6 +262,12 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 
 				else if (event.getEntityLiving() instanceof EntityHellhoundAlpha && rand.nextInt(4) <= 2 + 2 * looting)
 					addDrop(event, new ItemStack(ModItems.hellhound_horn, 4, 0));
+
+				else if (event.getEntityLiving() instanceof EntityDemon && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.demon_heart, 1, 0));
+
+				else if (event.getEntityLiving() instanceof EntityDemoness && rand.nextInt(4) <= 2 + 2 * looting)
+					addDrop(event, new ItemStack(ModItems.demon_heart, 1, 0));
 
 				else if (event.getEntityLiving() instanceof EntityPlayer && rand.nextInt(11) <= 1 + looting) {
 					ItemStack stack = new ItemStack(Items.SKULL, 1, 3);

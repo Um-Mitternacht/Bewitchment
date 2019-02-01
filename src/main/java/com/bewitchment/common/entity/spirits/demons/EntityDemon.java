@@ -1,6 +1,7 @@
 package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
@@ -12,6 +13,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -20,6 +22,7 @@ import javax.annotation.Nullable;
  * Created by Joseph on 1/14/2019.
  */
 public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMob {
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private int animationTick;
 	private Animation currentAnimation;
 
