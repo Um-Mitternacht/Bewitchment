@@ -34,6 +34,10 @@ checkstyle {
     configFile = new File(rootDir, "checkstyle/checkstyle.xml")
 }
 
+def username = "${mod_name}"
+if (project.hasProperty('dev_username'))
+    username = "${dev_username}"
+
 version = "${mc_version}-${bw_version}"
 group = "com.bewitchment" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Bewitchment"
@@ -49,12 +53,18 @@ class StructExtApi {
 }
 
 minecraft {
-    version = mc_forge_version
     mappings = mcp_mappings
     runDir = "run"
 
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
     replace '@VERSION@', project.version
+    version = "${mc_version}-${forge_version}"
+    runDir = "run"
+
+    replace "@VERSION@", project.version
+    replaceIn "BloodMagic.java"
+
+    clientRunArgs += "--username=${username}"
 }
 
 processResources {
@@ -123,13 +133,6 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-runClient {
-    if (project.hasProperty("mc_username") && project.hasProperty("mc_password")) {
-        args "--username=${project.mc_username}"
-        args "--password=${project.mc_password}"
-    }
-}
-
 task signJar(type: SignJar, dependsOn: reobfJar) {
 
     // Skips if the keyStore property is missing.
@@ -165,6 +168,7 @@ task apiJar(type: Jar) {
     classifier = 'api'
     from sourceSets.main.output //Save .class files
     from sourceSets.main.allJava //Save corresponding .java files
+    from sourceSets.api.allJava // MinecraftForge Sources
     include 'com/bewitchment/api/**/*' //Only include the api directory and subdirectory
 }
 
