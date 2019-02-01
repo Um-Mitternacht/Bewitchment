@@ -86,7 +86,7 @@ public class ModDistilleryRecipes {
 		);
 		REGISTRY.register(DistilleryRecipe.Factory.start("demonic_elixir")
 				.withBaseProcessingTime(300) //TODO: Add demon heart item
-				.withInput(LibIngredients.graveyardDust, LibIngredients.blazePowder, LibIngredients.eyes, LibIngredients.fumeCloudyOil)
+				.withInput(LibIngredients.graveyardDust, LibIngredients.blazePowder, LibIngredients.demonheart, LibIngredients.fumeCloudyOil)
 				.withOutput(new ItemStack(ModItems.fume, 1, ItemFumes.Type.demonic_dew.ordinal()))
 				.build()
 		);
