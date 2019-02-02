@@ -38,6 +38,8 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		super(LibBlockName.MAGIC_MIRROR, Material.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(MIRROR_VARIANTS, 0).withProperty(BlockHorizontal.FACING, EnumFacing.NORTH).withProperty(LOWER_HALF, true));
 		this.setLightOpacity(0);
+		setResistance(2F);
+		setHardness(2F);
 	}
 
 	@Override

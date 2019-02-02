@@ -206,7 +206,7 @@ public final class ModBlocks {
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(LibBlockName.BEEHIVE, Material.GRASS),
 				new BlockWitchAltar(LibBlockName.WITCH_ALTAR, Material.ROCK),
-				new BlockThreadSpinner(LibBlockName.THREAD_SPINNER),
+				new BlockLoom(LibBlockName.THREAD_SPINNER),
 				new BlockCircleGlyph(LibBlockName.GLYPHS),
 				new BlockCrystalBall(LibBlockName.CRYSTAL_BALL),
 				new BlockGoblet(LibBlockName.GOBLET),

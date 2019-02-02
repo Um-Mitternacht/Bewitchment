@@ -22,6 +22,8 @@ public class BlockGemBowl extends BlockModTileEntity implements IInfusionStabili
 		super(id, Material.ROCK);
 		this.setHarvestLevel("pickaxe", 0);
 		this.setLightOpacity(0);
+		setResistance(2F);
+		setHardness(2F);
 	}
 
 	@Override

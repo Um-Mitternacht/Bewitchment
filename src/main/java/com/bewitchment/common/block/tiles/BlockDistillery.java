@@ -31,6 +31,8 @@ public class BlockDistillery extends BlockModTileEntity {
 	public BlockDistillery(String id) {
 		super(id, Material.IRON);
 		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.SOUTH));
+		setResistance(5F);
+		setHardness(5F);
 	}
 
 	@Override

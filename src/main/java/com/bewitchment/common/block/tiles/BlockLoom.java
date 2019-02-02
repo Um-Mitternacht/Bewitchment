@@ -22,12 +22,14 @@ import net.minecraft.world.World;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
-public class BlockThreadSpinner extends BlockModTileEntity {
+public class BlockLoom extends BlockModTileEntity {
 
-	public BlockThreadSpinner(String id) {
+	public BlockLoom(String id) {
 		super(id, Material.WOOD);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.SOUTH));
 		this.setSoundType(SoundType.WOOD);
+		setResistance(3F);
+		setHardness(3F);
 	}
 
 	@Override

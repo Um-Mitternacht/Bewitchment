@@ -39,6 +39,8 @@ public class BlockLantern extends BlockMod {
 		this.setLightOpacity(0);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(Bewitchment.COLOR, EnumDyeColor.WHITE));
 		this.lit = lit;
+		setResistance(3F);
+		setHardness(3F);
 	}
 
 	@Override

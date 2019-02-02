@@ -21,6 +21,8 @@ public class BlockCrystalBall extends BlockModTileEntity {
 		super(id, Material.GLASS);
 		this.setLightOpacity(0);
 		this.setLightLevel(0.3f);
+		setResistance(1F);
+		setHardness(1F);
 	}
 
 	@SuppressWarnings("deprecation")
