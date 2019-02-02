@@ -68,6 +68,30 @@ import static com.bewitchment.common.lib.LibMod.MOD_NAME;
  * It's distributed as part of Bewitchment under
  * the MIT license.
  */
+
+//R DZH SVIV
+//HFMXLMFIV11
+//HKRMLHZFIFH111
+//MLGOVTZOGVMWVI
+//OVHLERPP
+//WZGFIZ
+//GSILFTS GSVHV ORMVH R WL WVXIVV
+//GSZG YB NVIVOB KFGGRMT NB MZNV RM
+//NB RMUOFVMXV TILDH, ZMW GSFH, R YVXLNV RNNLIGZO
+//XBYVIMVGRX DVY
+
+
+//GL HLNV, R ZN YFG Z HSZWV
+//YFG SVIV, R VCVIG KLDVI LEVI GSVN
+//R NZWV Z XZHGOV SVIV LM GSRH SROO
+//ZMW SZEV KFG NB UOZT RM GSV TILFMW
+//GSRH RH NB MVD DLIOW
+
+
+//HSLFOW GSV GIVHKZHHVIH LU GSV LOW DLIOW
+//ZIIREV SVIV, YVZIRMT SLHGRORGRVH
+//GSVB DROO YV NVG DRGS DIZGS
+
 @SuppressWarnings("WeakerAccess")
 @Mod(modid = LibMod.MOD_ID, name = MOD_NAME, version = LibMod.MOD_VER, dependencies = LibMod.DEPENDENCIES, acceptedMinecraftVersions = "[1.12,1.13]", certificateFingerprint = LibMod.FINGERPRINT)
 public class Bewitchment {
