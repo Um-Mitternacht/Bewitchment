@@ -44,103 +44,103 @@ public class ModelWitchesArmor extends ModelBiped {
 		this.textureWidth = 64;
 		this.textureHeight = 128;
 		this.tunicRightBack_1 = new ModelRenderer(this, 53, 77);
-		this.tunicRightBack_1.setRotationPoint(-0.009999999776482582F, 10.0F, -1.0F);
+		this.tunicRightBack_1.setRotationPoint(-0.01F, 10.0F, -1.0F);
 		this.tunicRightBack_1.addBox(0.0F, 0.0F, 0.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRightBack_1, 0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRightBack_1, 0.26F, 0.0F, 0.0F);
 		this.tunicFront = new ModelRenderer(this, 53, 77);
-		this.tunicFront.setRotationPoint(-0.009999999776482582F, 10.0F, -1.0F);
+		this.tunicFront.setRotationPoint(-0.01F, 10.0F, -1.0F);
 		this.tunicFront.addBox(0.0F, 0.0F, 0.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicFront, 0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicFront, 0.26F, 0.0F, 0.0F);
 		this.body = new ModelRenderer(this, 3, 81);
 		this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.body.addBox(-4.0F, -0.01F, -2.0F, 8, 12, 4, 0.05F);
+		this.body.addBox(-4.0F, -0.01F, -2.0F, 8, 12, 4, 0.3F);
 		this.legRight = new ModelRenderer(this, 0, 49);
 		this.legRight.mirror = true;
 		this.legRight.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.legRight.addBox(-2.0F, 0.0F, -2.0F, 0, 0, 0, 0.0F);
 		this.tunicRightFront_1 = new ModelRenderer(this, 53, 77);
-		this.tunicRightFront_1.setRotationPoint(-0.009999999776482582F, 10.0F, 0.9999998807907104F);
+		this.tunicRightFront_1.setRotationPoint(-0.01F, 10.0F, 1F);
 		this.tunicRightFront_1.addBox(0.0F, 0.0F, -1.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRightFront_1, -0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRightFront_1, -0.26F, 0.0F, 0.0F);
 		this.armRight = new ModelRenderer(this, 47, 81);
 		this.armRight.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.armRight.addBox(-3.0F, -1.9F, -2.0F, 4, 12, 4, 0.2F);
+		this.armRight.addBox(-3.0F, -1.9F, -2.0F, 4, 12, 4, 0.251F);
 		this.hat1 = new ModelRenderer(this, 2, 100);
 		this.hat1.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.hat1.addBox(-4.5F, -10.5F, -4.5F, 9, 5, 9, 0.01F);
 		this.tunicLeft = new ModelRenderer(this, 23, 65);
-		this.tunicLeft.setRotationPoint(-2.010000228881836F, 0.0F, -2.0999999046325684F);
+		this.tunicLeft.setRotationPoint(-2.51F, 0.0F, -2.1F);
 		this.tunicLeft.addBox(0.0F, 0.0F, -1.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicLeft, 0.12217304763960307F, -1.5707963267948966F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicLeft, 0.122F, -1.57F, 0.0F);
 		this.legLeft = new ModelRenderer(this, 3, 44);
 		this.legLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.legLeft.addBox(-2.0F, 0.0F, -2.0F, 0, 0, 0, 0.0F);
 		this.tunicLeftFront = new ModelRenderer(this, 53, 65);
-		this.tunicLeftFront.setRotationPoint(2.009999990463257F, 0.0F, -2.0999999046325684F);
+		this.tunicLeftFront.setRotationPoint(2.01F, 0.0F, -2.51F);
 		this.tunicLeftFront.addBox(0.0F, 0.0F, -1.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicLeftFront, -3.01941960595019F, 0.0F, 3.141592653589793F);
+		ModelHelper.setRotateAngle(this.tunicLeftFront, -3.02F, 0.0F, 3.141592653589793F);
 		this.tunicLeft_1 = new ModelRenderer(this, 23, 77);
-		this.tunicLeft_1.setRotationPoint(-0.009999999776482582F, 10.0F, -1.0F);
+		this.tunicLeft_1.setRotationPoint(-0.01F, 10.0F, -1.0F);
 		this.tunicLeft_1.addBox(0.0F, 0.0F, 0.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicLeft_1, 0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicLeft_1, 0.26F, 0.0F, 0.0F);
 		this.tunicRightFront = new ModelRenderer(this, 53, 65);
-		this.tunicRightFront.setRotationPoint(-1.9900000095367432F, 0.0F, -2.0999999046325684F);
+		this.tunicRightFront.setRotationPoint(-1.99F, 0.0F, -2.51F);
 		this.tunicRightFront.addBox(0.0F, 0.0F, 0.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRightFront, -0.12217304763960307F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRightFront, -0.122F, 0.0F, 0.0F);
 		this.hat2 = new ModelRenderer(this, 39, 107);
 		this.hat2.setRotationPoint(0.0F, -10.5F, -3.0F);
 		this.hat2.addBox(-3.0F, -4.0F, 0.0F, 6, 4, 6, 0.0F);
-		ModelHelper.setRotateAngle(hat2, -0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.hat2, -0.26F, 0.0F, 0.0F);
 		this.tunicRight_1 = new ModelRenderer(this, 23, 77);
-		this.tunicRight_1.setRotationPoint(-0.009999999776482582F, 10.0F, 0.9999998807907104F);
+		this.tunicRight_1.setRotationPoint(-0.01F, 10.0F, 1F);
 		this.tunicRight_1.addBox(0.0F, 0.0F, -1.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRight_1, -0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRight_1, -0.26F, 0.0F, 0.0F);
 		this.sleeveRight = new ModelRenderer(this, 49, 98);
 		this.sleeveRight.setRotationPoint(1.01F, 10.1F, 2.0F);
 		this.sleeveRight.addBox(-4.0F, -4.0F, 0.0F, 4, 4, 2, 0.2F);
-		ModelHelper.setRotateAngle(sleeveRight, 0.5235987755982988F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.sleeveRight, 0.524F, 0.0F, 0.0F);
 		this.hatWing = new ModelRenderer(this, 0, 115);
 		this.hatWing.setRotationPoint(0.0F, -6.0F, 0.0F);
 		this.hatWing.addBox(-6.0F, 0.0F, -6.0F, 12, 1, 12, 0.0F);
-		ModelHelper.setRotateAngle(hatWing, 0.03490658503988659F, 0.0F, 0.06981317007977318F);
+		ModelHelper.setRotateAngle(this.hatWing, 0.035F, 0.0F, 0.07F);
 		this.tunicRight = new ModelRenderer(this, 23, 65);
-		this.tunicRight.setRotationPoint(2.010000228881836F, 0.0F, -2.0999999046325684F);
+		this.tunicRight.setRotationPoint(2.51F, 0.0F, -2.1F);
 		this.tunicRight.addBox(0.0F, 0.0F, 0.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRight, -0.12217304763960307F, -1.5707963267948966F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRight, -0.122F, -1.57F, 0.0F);
 		this.shoulderRight = new ModelRenderer(this, 0, 64);
 		this.shoulderRight.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.shoulderRight.addBox(-1.5F, -2.5F, -2.5F, 5, 5, 5, 0.0F);
-		ModelHelper.setRotateAngle(shoulderRight, 0.0F, 3.141592653589793F, -0.08726646259971647F);
+		this.shoulderRight.addBox(-1.5F, -2.5F, -2.5F, 5, 5, 5, 0.251F);
+		ModelHelper.setRotateAngle(this.shoulderRight, 0.0F, 3.141592653589793F, -0.087F);
 		this.tunicLeftBack = new ModelRenderer(this, 53, 65);
-		this.tunicLeftBack.setRotationPoint(2.009999990463257F, 0.0F, 2.0999999046325684F);
+		this.tunicLeftBack.setRotationPoint(2.01F, 0.0F, 2.51F);
 		this.tunicLeftBack.addBox(0.0F, 0.0F, 0.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicLeftBack, 3.01941960595019F, 0.0F, 3.141592653589793F);
-		this.armLeft = new ModelRenderer(this, 47, 81);//25
+		ModelHelper.setRotateAngle(this.tunicLeftBack, 3.02F, 0.0F, 3.141592653589793F);
+		this.armLeft = new ModelRenderer(this, 47, 81);
 		this.armLeft.mirror = true;
 		this.armLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.armLeft.addBox(-1.0F, -1.9F, -2.0F, 4, 12, 4, 0.2F);
+		this.armLeft.addBox(-1.0F, -1.9F, -2.0F, 4, 12, 4, 0.251F);
 		this.hat3 = new ModelRenderer(this, 51, 118);
-		this.hat3.setRotationPoint(1.399999976158142F, -4.0F, 1.5F);
+		this.hat3.setRotationPoint(1.4F, -4.0F, 1.5F);
 		this.hat3.addBox(-3.0F, -4.0F, 0.0F, 3, 4, 3, 0.0F);
-		ModelHelper.setRotateAngle(hat3, -0.3490658503988659F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.hat3, -0.349F, 0.0F, 0.0F);
 		this.tunicLeftBack_1 = new ModelRenderer(this, 53, 77);
-		this.tunicLeftBack_1.setRotationPoint(-0.009999999776482582F, 10.0F, 0.9999998807907104F);
+		this.tunicLeftBack_1.setRotationPoint(-0.01F, 10.0F, 1F);
 		this.tunicLeftBack_1.addBox(0.0F, 0.0F, -1.0F, 4, 2, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicLeftBack_1, -0.2617993877991494F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicLeftBack_1, -0.262F, 0.0F, 0.0F);
 		this.tunicRightBack = new ModelRenderer(this, 53, 65);
-		this.tunicRightBack.setRotationPoint(-1.9900000095367432F, 0.0F, 2.0999999046325684F);
+		this.tunicRightBack.setRotationPoint(-1.99F, 0.0F, 2.51F);
 		this.tunicRightBack.addBox(0.0F, 0.0F, -1.0F, 4, 10, 1, 0.0F);
-		ModelHelper.setRotateAngle(tunicRightBack, 0.12217304763960307F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.tunicRightBack, 0.122F, 0.0F, 0.0F);
 		this.sleeveLeft = new ModelRenderer(this, 49, 98);
 		this.sleeveLeft.setRotationPoint(0.99F, 10.1F, 2.0F);
 		this.sleeveLeft.addBox(-2.0F, -4.0F, 0.0F, 4, 4, 2, 0.2F);
-		ModelHelper.setRotateAngle(sleeveLeft, 0.5235987755982988F, 0.0F, 0.0F);
+		ModelHelper.setRotateAngle(this.sleeveLeft, 0.524F, 0.0F, 0.0F);
 		this.shoulderLeft = new ModelRenderer(this, 0, 64);
 		this.shoulderLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.shoulderLeft.addBox(-1.5F, -2.5F, -2.5F, 5, 5, 5, 0.0F);
-		ModelHelper.setRotateAngle(shoulderLeft, 0.0F, 0.0F, 0.08726646259971647F);
+		this.shoulderLeft.addBox(-1.5F, -2.5F, -2.5F, 5, 5, 5, 0.251F);
+		ModelHelper.setRotateAngle(this.shoulderLeft, 0.0F, 0.0F, 0.087F);
 		this.legLeftTop = new ModelRenderer(this, 19, 93);
-		this.legLeftTop.setRotationPoint(-2.0F, -0.010000229F, -2.0F);
+		this.legLeftTop.setRotationPoint(-2.0F, -0.01F, -2.0F);
 		this.legLeftTop.addBox(0.0F, 0.0F, 0.0F, 4, 0, 4);
 		this.legRightTop = new ModelRenderer(this, 19, 93);
 		this.legRightTop.setRotationPoint(-2.0F, -0.01F, -2.0F);
@@ -148,7 +148,6 @@ public class ModelWitchesArmor extends ModelBiped {
 
 		this.bipedHead = new ModelRenderer(this);
 		this.bipedBody = new ModelRenderer(this);
-
 
 		this.legLeft.addChild(this.tunicLeftBack);
 		this.tunicLeftBack.addChild(this.tunicLeftBack_1);
@@ -158,7 +157,6 @@ public class ModelWitchesArmor extends ModelBiped {
 		this.tunicLeftFront.addChild(this.tunicFront);
 		this.legLeft.addChild(this.legLeftTop);
 		this.legRight.addChild(this.legRightTop);
-
 
 		this.legRight.addChild(this.tunicRight);
 		this.tunicRight.addChild(this.tunicRight_1);
@@ -192,7 +190,8 @@ public class ModelWitchesArmor extends ModelBiped {
 
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-		// this prevents helmets from always facing south, and the armor "breathing" on the stand
+		// this prevents helmets from always facing south, and the armor "breathing" on
+		// the stand
 		if (entityIn instanceof EntityArmorStand) {
 			EntityArmorStand entityarmorstand = (EntityArmorStand) entityIn;
 			this.bipedHead.rotateAngleX = 0.017453292F * entityarmorstand.getHeadRotation().getX();
@@ -222,7 +221,8 @@ public class ModelWitchesArmor extends ModelBiped {
 			this.bipedRightLeg.rotateAngleZ = 0.017453292F * entityarmorstand.getRightLegRotation().getZ();
 			this.bipedRightLeg.setRotationPoint(-1.9F, 11.0F, 0.0F);
 			copyModelAngles(this.bipedHead, this.bipedHeadwear);
-		} else
+		} else {
 			super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+		}
 	}
 }
