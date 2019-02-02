@@ -2,7 +2,12 @@ package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.client.core.IModelRegister;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -31,6 +36,12 @@ public class BlockCrop extends BlockCrops implements IModelRegister {
 		setRegistryName(id);
 		setCreativeTab(null);
 		this.maxAge = maxAge;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 	@Override

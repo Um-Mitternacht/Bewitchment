@@ -7,6 +7,7 @@ import com.bewitchment.common.tile.tiles.TileEntityMagicMirror;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -42,6 +43,12 @@ public class BlockMagicMirror extends BlockModTileEntity {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, MIRROR_VARIANTS, BlockHorizontal.FACING, LOWER_HALF);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 	@SuppressWarnings("deprecation")

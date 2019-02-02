@@ -5,6 +5,7 @@ import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.tiles.TileEntityTarotsTable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.crafting.IInfusionStabiliserExt;
@@ -45,6 +47,12 @@ public class BlockTarotTable extends BlockModTileEntity implements IInfusionStab
 	public int getMetaFromState(IBlockState state) {
 		final EnumFacing facing = state.getValue(FACING);
 		return facing.getHorizontalIndex();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 	@SuppressWarnings("deprecation")

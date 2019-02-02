@@ -53,6 +53,12 @@ public class BlockMoss extends BlockVine implements IModelRegister {
 		ModelHandler.registerModel(this, 0);
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
+
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote && !terminalPiece && worldIn.isAirBlock(pos.down())) {
