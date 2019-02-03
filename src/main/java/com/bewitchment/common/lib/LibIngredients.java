@@ -127,6 +127,9 @@ public class LibIngredients {
 	public static Ingredient moonbell = Ingredient.fromItem(Item.getItemFromBlock(ModBlocks.moonbell));
 	public static Ingredient mushroom_red = Ingredient.fromItem(Item.getItemFromBlock(Blocks.RED_MUSHROOM));
 	public static Ingredient mushroom_brown = Ingredient.fromItem(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM));
+	public static Ingredient silphium = Ingredient.fromItem(ModItems.silphium);
+	public static Ingredient kenaf = Ingredient.fromItem(ModItems.kenaf);
+	public static Ingredient grass = Ingredient.fromItem(Item.getItemFromBlock(Blocks.TALLGRASS));
 	public static Ingredient otherworldTears = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()));
 
 }
