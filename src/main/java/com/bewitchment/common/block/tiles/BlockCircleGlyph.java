@@ -117,6 +117,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return 100;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return PathNodeType.OPEN;
@@ -213,7 +214,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		if (pt == 1) {
 			TileEntityGlyph te = (TileEntityGlyph) worldIn.getTileEntity(pos);
 			if (te.hasRunningRitual()) {
-				te.spawnParticles();
 				double spreadX = rand.nextGaussian() * 0.4;
 				double spreadZ = rand.nextGaussian() * 0.4;
 				Minecraft.getMinecraft().effectRenderer.addEffect(

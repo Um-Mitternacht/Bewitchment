@@ -186,6 +186,8 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 					stopRitual(player);
 				}
 			}
+		} else if (world.isRemote && hasRunningRitual()) {
+			spawnParticles();
 		}
 	}
 

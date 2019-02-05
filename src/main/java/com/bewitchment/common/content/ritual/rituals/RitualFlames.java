@@ -84,12 +84,9 @@ public class RitualFlames extends RitualImpl {
 
 	@Override
 	public void onRandomDisplayTick(World world, BlockPos mainGlyphPos, BlockPos ep, Random rng) {
-		for (int i = 0; i < 30; i++) {
-			double sx = ep.getX() + 0.5 + rng.nextGaussian() * 2;
-			double sy = ep.getY() + rng.nextFloat() * 0.5;
-			double sz = ep.getZ() + 0.5 + rng.nextGaussian() * 2;
-			world.spawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.02 * rng.nextFloat(), 0.1 * rng.nextFloat(), 0.02 * rng.nextFloat());
-		}
+		double sx = ep.getX() + 0.5 + rng.nextGaussian() * 2;
+		double sy = ep.getY() + rng.nextFloat() * 0.5;
+		double sz = ep.getZ() + 0.5 + rng.nextGaussian() * 2;
+		world.spawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.02 * rng.nextFloat(), 0.1 * rng.nextFloat(), 0.02 * rng.nextFloat());
 	}
-
 }
