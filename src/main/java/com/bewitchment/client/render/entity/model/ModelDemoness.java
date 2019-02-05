@@ -1,6 +1,5 @@
 package com.bewitchment.client.render.entity.model;
 
-import com.bewitchment.common.entity.spirits.demons.EntityDemon;
 import com.bewitchment.common.entity.spirits.demons.EntityDemoness;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;

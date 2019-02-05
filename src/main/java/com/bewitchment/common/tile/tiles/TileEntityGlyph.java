@@ -209,7 +209,11 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				.filter(t -> (world.getTileEntity(t) instanceof TileEntityPlacedItem))
 				.collect(Collectors.toList());
 		ArrayList<ItemStack> recipe = new ArrayList<>();
-		itemsOnGround.stream().map(i -> i.getItem()).forEach(is -> recipe.add(is));
+		itemsOnGround.stream().map(i -> i.getItem().copy()).forEach(is -> {
+			while (!is.isEmpty()) {
+				recipe.add(is.splitStack(1));
+			}
+		});
 		placedOnGround.stream().map(t -> (TileEntityPlacedItem) world.getTileEntity(t))
 				.forEach(te -> recipe.add(te.getItem()));
 
