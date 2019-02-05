@@ -214,7 +214,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 				.forEach(te -> recipe.add(te.getItem()));
 
 		for (AdapterIRitual rit : AdapterIRitual.REGISTRY) { // Check every ritual
-			if (rit.isValidInput(recipe, entitiesOnGround, hasCircles(rit))) { // Check if circles and items match
+			if (rit.getSacrifices().isEmpty() ? rit.isValidInput(recipe, hasCircles(rit)) : rit.isValidInput(recipe, entitiesOnGround, hasCircles(rit))) { // Check if circles and items match
 				if (rit.isValid(player, world, pos, recipe, effPos, 1)) { // Checks of extra conditions are met
 
 					if (altarTracker.drainAltarFirst(player, pos, world.provider.getDimension(), (int) (rit.getRequiredStartingPower() * powerDrainMult))) { // Check if there is enough starting power (and uses it in case there is)
