@@ -1,5 +1,6 @@
 package com.bewitchment.client.render.entity.model;
 
+import com.bewitchment.common.entity.spirits.demons.EntityDemon;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
@@ -326,5 +327,12 @@ public class ModelDemon extends AdvancedModelBase {
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.resetToDefaultPose();
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		animator.update(entity);
+		animator.setAnimation(EntityDemon.ANIMATION_TOSS);
+		animator.startKeyframe(20);
+		animator.rotate(bipedLeftArm, -1.35f, 0.0f, 0.0f);
+		animator.rotate(bipedRightArm, -1.35f, 0.0f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(10);
 	}
 }
