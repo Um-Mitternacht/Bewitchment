@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Created by Joseph on 1/14/2019.
  */
 public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, IMob {
+
+	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private int animationTick;
 	private Animation currentAnimation;
@@ -81,12 +83,18 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		if (flag) {
 			this.applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1, false, false));
-				setFire(500);
+			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_TOSS) {
+				{
+					this.setAnimation(ANIMATION_TOSS);
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 1, false, false));
+					setFire(500);
+					entity.motionY += 0.6000000059604645D;
+					this.applyEnchantments(this, entity);
+				}
 			}
+			return flag;
 		}
-		return flag;
+		return false;
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {
@@ -115,7 +123,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[0];
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemoness.ANIMATION_TOSS};
 	}
 
 	@Nullable
@@ -128,5 +136,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 	public float getEyeHeight() {
 		return this.height * 0.75F;
 	}
+
+
 }
 
