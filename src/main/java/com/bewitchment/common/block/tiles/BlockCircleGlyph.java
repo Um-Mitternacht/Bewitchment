@@ -213,7 +213,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		}
 		if (pt == 1) {
 			TileEntityGlyph te = (TileEntityGlyph) worldIn.getTileEntity(pos);
-			if (te.hasRunningRitual()) {
+			if ((te != null) && te.hasRunningRitual()) {
 				double spreadX = rand.nextGaussian() * 0.4;
 				double spreadZ = rand.nextGaussian() * 0.4;
 				Minecraft.getMinecraft().effectRenderer.addEffect(
