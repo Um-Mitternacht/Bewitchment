@@ -4,6 +4,7 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -95,6 +96,12 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 			return flag;
 		}
 		return false;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {
