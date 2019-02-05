@@ -412,8 +412,8 @@ public class ModelDemoness extends AdvancedModelBase {
 		animator.update(entity);
 		animator.setAnimation(EntityDemoness.ANIMATION_TOSS);
 		animator.startKeyframe(20);
-		animator.rotate(bipedLeftArm, -1.35f, 0.0f, 0.0f);
-		animator.rotate(bipedRightArm, -1.35f, 0.0f, 0.0f);
+		animator.rotate(bipedLeftArm, -1.35F, 0.0f, 0.0f);
+		animator.rotate(bipedRightArm, -1.35F, 0.0f, 0.0f);
 		animator.endKeyframe();
 		animator.resetKeyframe(10);
 	}
