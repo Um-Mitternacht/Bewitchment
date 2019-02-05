@@ -17,6 +17,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -25,6 +27,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
@@ -87,6 +90,11 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 
 	public NonNullList<ItemStack> getOutput(NonNullList<ItemStack> input, NBTTagCompound data) {
 		return ritual.getOutput(input, data);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void spawnParticles(World world, BlockPos glyphPos, BlockPos effectivePos, Random rng) {
+		this.ritual.onRandomDisplayTick(world, glyphPos, effectivePos, rng);
 	}
 
 	public boolean isValidInput(List<ItemStack> ground, boolean circles) {

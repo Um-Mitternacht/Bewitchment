@@ -78,4 +78,17 @@ public class RitualGateway extends RitualImpl {
 		return true;
 	}
 
+	@Override
+	public void onRandomDisplayTick(World world, BlockPos mainGlyphPos, BlockPos ep, Random rng) {
+		for (int i = 0; i < 20; i++) {
+			double cx = ep.getX() + 0.5;
+			double cy = ep.getY() + 0.5;
+			double cz = ep.getZ() + 0.5;
+			double sx = cx + rng.nextGaussian() * 0.5;
+			double sy = cy + rng.nextGaussian() * 0.5;
+			double sz = cz + rng.nextGaussian() * 0.5;
+			world.spawnParticle(EnumParticleTypes.PORTAL, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
+		}
+	}
+
 }

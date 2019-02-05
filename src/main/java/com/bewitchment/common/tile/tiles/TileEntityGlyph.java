@@ -30,6 +30,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -455,11 +457,33 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
 		tag.setInteger("cooldown", cooldown); // cooldown > 0 --> Particles
+		if (this.ritual != null) {
+			tag.setString("ritual", this.ritual.getRegistryName().toString());
+		}
+		if (this.runningPos != null) {
+			NBTTagCompound rp = new NBTTagCompound();
+			rp.setInteger("x", this.runningPos.getX());
+			rp.setInteger("y", this.runningPos.getY());
+			rp.setInteger("z", this.runningPos.getZ());
+			tag.setTag("runningPos", rp);
+		}
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
 		cooldown = tag.getInteger("cooldown");
+		if (tag.hasKey("ritual")) {
+			this.ritual = AdapterIRitual.REGISTRY.getValue(new ResourceLocation(tag.getString("ritual")));
+		}
+		if (tag.hasKey("runningPos")) {
+			NBTTagCompound rp = tag.getCompoundTag("runningPos");
+			this.runningPos = new BlockPos(rp.getInteger("x"), rp.getInteger("y"), rp.getInteger("z"));
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void spawnParticles() {
+		ritual.spawnParticles(world, pos, runningPos != null ? runningPos : pos, rng);
 	}
 
 }

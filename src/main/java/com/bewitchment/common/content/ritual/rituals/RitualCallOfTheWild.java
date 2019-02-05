@@ -8,16 +8,31 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class RitualCallOfTheWild extends RitualImpl {
 	public RitualCallOfTheWild(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
+	}
+
+	@Override
+	public void onRandomDisplayTick(World world, BlockPos mainGlyphPos, BlockPos ep, Random rng) {
+		for (int i = 0; i < 20; i++) {
+			double cx = ep.getX() + 0.5;
+			double cy = ep.getY() + 0.5;
+			double cz = ep.getZ() + 0.5;
+			double sx = cx + rng.nextGaussian() * 0.5;
+			double sy = cy + rng.nextGaussian() * 0.5;
+			double sz = cz + rng.nextGaussian() * 0.5;
+			world.spawnParticle(EnumParticleTypes.FOOTSTEP, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
+		}
 	}
 
 	@Override
