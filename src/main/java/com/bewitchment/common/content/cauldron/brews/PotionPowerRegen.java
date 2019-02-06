@@ -9,7 +9,7 @@ public class PotionPowerRegen extends BrewMod {
 
 	public PotionPowerRegen() {
 		super("power_regen", false, 0x7851A9, false, 400);
-		this.setIconIndex(1, 2);
+		this.setIconIndex(3, 2);
 	}
 
 	@Override

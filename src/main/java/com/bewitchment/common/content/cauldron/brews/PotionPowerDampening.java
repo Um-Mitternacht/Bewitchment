@@ -12,7 +12,7 @@ public class PotionPowerDampening extends BrewMod implements IMagicPowerExpander
 
 	public PotionPowerDampening() {
 		super("power_dampening", true, 0xFADA5E, false, 3000);
-		this.setIconIndex(3, 2);
+		this.setIconIndex(2, 2);
 	}
 
 	@Override

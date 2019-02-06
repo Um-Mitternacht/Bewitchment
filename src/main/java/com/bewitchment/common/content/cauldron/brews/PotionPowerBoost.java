@@ -12,7 +12,7 @@ public class PotionPowerBoost extends BrewMod implements IMagicPowerExpander {
 
 	public PotionPowerBoost() {
 		super("power_boost", false, 0x66023C, false, 3000);
-		this.setIconIndex(4, 2);
+		this.setIconIndex(1, 2);
 	}
 
 	@Override

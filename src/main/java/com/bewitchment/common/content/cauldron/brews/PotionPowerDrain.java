@@ -9,7 +9,7 @@ public class PotionPowerDrain extends BrewMod {
 
 	public PotionPowerDrain() {
 		super("power_drain", true, 0xE8AC41, false, 400);
-		this.setIconIndex(2, 2);
+		this.setIconIndex(4, 2);
 	}
 
 	@Override
