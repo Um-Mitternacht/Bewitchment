@@ -52,6 +52,11 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 	}
 
 	@Override
+	protected ResourceLocation getLootTable() {
+		return loot;
+	}
+
+	@Override
 	public int getSkinTypes() {
 		return 6;
 	}

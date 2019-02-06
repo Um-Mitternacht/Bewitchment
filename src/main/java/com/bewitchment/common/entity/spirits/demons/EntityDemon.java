@@ -141,6 +141,11 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemon.ANIMATION_TOSS};
 	}
 
+	@Override
+	protected ResourceLocation getLootTable() {
+		return loot;
+	}
+
 	@Nullable
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
