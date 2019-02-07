@@ -1,8 +1,10 @@
 package com.bewitchment.client.render.entity.model;
 
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
+import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -67,6 +69,8 @@ public class ModelUran extends AdvancedModelBase {
 	public AdvancedModelRenderer rWing02;
 	public AdvancedModelRenderer rWing03;
 	public AdvancedModelRenderer rWing04;
+
+	private ModelAnimator animator;
 
 	public ModelUran() {
 		this.textureWidth = 64;
@@ -325,11 +329,33 @@ public class ModelUran extends AdvancedModelBase {
 		this.head.addChild(this.tongue);
 		this.lWing01.addChild(this.lWing02);
 		this.lHorn01a.addChild(this.lHorn01c);
+		this.updateDefaultPose();
+		animator = ModelAnimator.create();
 	}
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.neck01a.render(f5);
+	}
+
+	@Override
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.resetToDefaultPose();
+
+		AdvancedModelRenderer[] TORSO = new AdvancedModelRenderer[]{neck01a, neck01b, neck02, neck03, neck04, body01, tail01, tail01b, tail02, tail03, tail03b, tail04, tail05};
+
+		//f = entity.ticksExisted;
+		//f1 = 0.5f;
+
+		float globalSpeed = 1;
+		float globalHeight = 1;
+		float globalDegree = 1;
+
+		bob(head, 0.1f * globalSpeed, 0.8f * globalHeight, false, f, f1);
+		this.chainSwing(TORSO, 0.1f, 0.5f, 4, 0.3f, 1);
 	}
 
 	/**
@@ -339,5 +365,10 @@ public class ModelUran extends AdvancedModelBase {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+
+	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.resetToDefaultPose();
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 	}
 }
