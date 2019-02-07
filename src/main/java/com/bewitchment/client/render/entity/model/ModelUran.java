@@ -345,7 +345,7 @@ public class ModelUran extends AdvancedModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
 
-		AdvancedModelRenderer[] TORSO = new AdvancedModelRenderer[]{neck01a, neck01b, neck02, neck03, neck04, body01, tail01, tail01b, tail02, tail03, tail03b, tail04, tail05};
+		AdvancedModelRenderer[] TORSO = new AdvancedModelRenderer[]{neck01a, neck02, neck03, body01, tail01, tail02, tail03, tail04, tail05};
 
 		//f = entity.ticksExisted;
 		//f1 = 0.5f;
