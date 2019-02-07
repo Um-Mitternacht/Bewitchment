@@ -355,7 +355,7 @@ public class ModelUran extends AdvancedModelBase {
 		float globalDegree = 1;
 
 		bob(head, 0.1f * globalSpeed, 0.8f * globalHeight, false, f, f1);
-		this.chainSwing(TORSO, 0.1f, 0.5f, 4, 0.3f, 1);
+		this.chainSwing(TORSO, 0.3f, 0.5f, 4, 0.3f, 1);
 	}
 
 	/**
