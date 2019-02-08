@@ -98,14 +98,6 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		return false;
 	}
 
-	protected void collideWithEntity(Entity entityIn) {
-		{
-			this.setAttackTarget((EntityLivingBase) entityIn);
-		}
-
-		super.collideWithEntity(entityIn);
-	}
-
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
