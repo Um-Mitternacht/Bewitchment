@@ -355,13 +355,13 @@ public class ModelUran extends AdvancedModelBase {
 		float globalDegree = 1;
 
 		bob(head, 0.1f, 0.8f * globalHeight, false, f, f1);
-		swing(neck01a, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(body01, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(tail01, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(tail02, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(tail03, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(tail04, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
-		swing(tail05, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(neck01a, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(body01, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(tail01, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(tail02, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(tail03, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(tail04, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
+		swing(tail05, 0.1f, 0.8f * globalHeight, false, 0, 0, f, f1);
 	}
 
 	/**
