@@ -350,20 +350,18 @@ public class ModelUran extends AdvancedModelBase {
 		//f = entity.ticksExisted;
 		//f1 = 0.5f;
 
-		float globalSpeed = 0.1f;
+		float globalSpeed = 1;
 		float globalHeight = 1;
 		float globalDegree = 1;
 
 		bob(head, 0.1f, 0.8f * globalHeight, false, f, f1);
-		swing(neck01a, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(neck02, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(neck03, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(body01, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(tail01, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(tail02, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(tail03, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(tail04, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
-		swing(tail05, 0.1f, 0.8f * globalHeight, false, f, f1, 0.3f, 0.1f);
+		swing(neck01a, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(body01, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(tail01, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(tail02, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(tail03, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(tail04, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
+		swing(tail05, 0.1f, 0.8f * globalHeight, false, f, f1, entity.ticksExisted, 1);
 	}
 
 	/**
