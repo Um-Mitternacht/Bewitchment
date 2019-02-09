@@ -376,9 +376,9 @@ public class ModelUran extends AdvancedModelBase {
 		animator.update(entity);
 		animator.setAnimation(EntityUran.ANIMATION_BITE);
 		animator.startKeyframe(20);
-		animator.move(neck05,0.0f, 0.00f, 1.75f);
-		animator.move(neck04,0.0f, 0.00f, 1.75f);
-		animator.move(head, 0.0f, 1.75f, 0.0f);
+		animator.move(neck05,0.0f, 0.75f, 0.0f);
+		animator.move(neck04,0.0f, 0.55f, 0.0f);
+		animator.move(head, 0.0f, 0.85f, 0.0f);
 		animator.rotate(upperJawM, -0.45f, 0.0f, 0.0f);
 		animator.rotate(lowerJaw, 0.45f, 0.0f, 0.0f);
 		animator.endKeyframe();
