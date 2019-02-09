@@ -225,16 +225,16 @@ public class ModelLizard extends AdvancedModelBase {
 		float globalHeight = 1;
 		float globalDegree = 1;
 
-		bob(head, 0.1f, 0.6f * globalHeight, true, f, f1);
-		walk(lLeg01, 0.1f, 0.6f * globalHeight, true, 0, 0, f, f1);
-		walk(lLeg02, 0.1f, 0.6f * globalHeight, true, 0, 0, f, f1);
-		walk(rLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		walk(rLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(lLeg01, 0.1f, 0.6f * globalHeight, true, 0, 0, f, f1);
-		swing(lLeg02, 0.1f, 0.6f * globalHeight, true, 0, 0, f, f1);
-		swing(rLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(rLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		bob(head, 0.1f, 0.3f * globalHeight, true, f, f1);
+		walk(lArm02, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
+		walk(lArm01, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
+		walk(rArm01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
+		walk(rArm02, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
+		flap(lArm02, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
+		flap(lArm01, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
+		flap(rArm02, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
+		flap(rArm01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
+		swing(tail01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
 	}
 
 	/**
