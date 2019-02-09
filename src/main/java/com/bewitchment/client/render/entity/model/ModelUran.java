@@ -5,11 +5,8 @@ import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 
 /**
  * uran - cybercat5555
@@ -376,5 +373,15 @@ public class ModelUran extends AdvancedModelBase {
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.resetToDefaultPose();
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		animator.update(entity);
+		animator.setAnimation(EntityUran.ANIMATION_BITE);
+		animator.startKeyframe(20);
+		animator.move(neck05,0.0f, 0.00f, 1.75f);
+		animator.move(neck04,0.0f, 0.00f, 1.75f);
+		animator.move(head, 0.0f, 1.75f, 0.0f);
+		animator.rotate(upperJawM, -0.45f, 0.0f, 0.0f);
+		animator.rotate(lowerJaw, 0.45f, 0.0f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(10);
 	}
 }

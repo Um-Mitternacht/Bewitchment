@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -39,6 +40,7 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 
 
 	//Todo: Rewrite code, and implement weaknesses to water. Also implement a special potion effect that upon killing a target, spawns more uranids.
+	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);
 	private static final int TIME_BETWEEN_MILK = 6660;
@@ -176,11 +178,21 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		if (flag) {
 			this.applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 2000, 1, false, false));
+			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
+				{
+					this.setAnimation(ANIMATION_BITE);
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 2000, 3, false, false));
+				}
 			}
+			return flag;
 		}
-		return flag;
+		return false;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	@Override
@@ -219,26 +231,26 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 
 	@Override
 	public int getAnimationTick() {
-		return 0;
+		return animationTick;
 	}
 
 	@Override
 	public void setAnimationTick(int tick) {
-
+		animationTick = tick;
 	}
 
 	@Override
 	public Animation getAnimation() {
-		return null;
+		return currentAnimation;
 	}
 
 	@Override
 	public void setAnimation(Animation animation) {
-
+		currentAnimation = animation;
 	}
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[0];
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityUran.ANIMATION_BITE};
 	}
 }
