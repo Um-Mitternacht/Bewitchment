@@ -213,6 +213,26 @@ public class ModelLizard extends AdvancedModelBase {
 		this.body01.render(f5);
 	}
 
+	@Override
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.resetToDefaultPose();
+
+		//f = entity.ticksExisted;
+		//f1 = 0.5f;
+
+		float globalSpeed = 1;
+		float globalHeight = 1;
+		float globalDegree = 1;
+
+		bob(head, 0.1f, 0.6f * globalHeight, true, f, f1);
+		walk(lLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		walk(lLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		walk(rLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		walk(rLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		swing(tail01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+	}
+
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
