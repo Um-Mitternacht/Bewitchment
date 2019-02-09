@@ -27,7 +27,7 @@ public class ModSpells {
 		infuse_life = new SpellInfuseLife(5, 0xf6546a, EnumSpellType.PROJECTILE_ALL, "infuse_life", LibMod.MOD_ID);
 		self_heal = new SpellSelfHeal(4, 0xd20057, EnumSpellType.INSTANT, "self_heal", LibMod.MOD_ID);
 		call_storm = new SpellCallThunderstorm(15, 0x000033, EnumSpellType.INSTANT, "call_storm", LibMod.MOD_ID);
-		madness = new SpellMadness(45, 0xFADA5E, EnumSpellType.PROJECTILE_ENTITY, "madness", LibMod.MOD_ID);
+		madness = new SpellMadness(5, 0xFADA5E, EnumSpellType.PROJECTILE_ENTITY, "madness", LibMod.MOD_ID);
 		registerAll();
 	}
 
