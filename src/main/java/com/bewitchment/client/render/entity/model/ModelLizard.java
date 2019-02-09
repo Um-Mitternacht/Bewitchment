@@ -230,6 +230,10 @@ public class ModelLizard extends AdvancedModelBase {
 		walk(lLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
 		walk(rLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
 		walk(rLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		swing(lLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		swing(lLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		swing(rLeg01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		swing(rLeg02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
 		swing(tail01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
 	}
 
