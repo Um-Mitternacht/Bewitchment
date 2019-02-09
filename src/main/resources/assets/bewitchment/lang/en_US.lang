@@ -718,7 +718,7 @@ witch.tooltip.hellebore_description.name=A beautiful and poisonous flower linked
 witch.tooltip.chrysanthemum_description.name=A rather popular flower, it is often linked with nobility
 witch.tooltip.sagebrush_description.name=An herb associated with purification
 witch.tooltip.infested_wheat_description.name=An ill-looking crop
-witch.tooltip.witchweed_description.name=A small herb that grows on other crops
+witch.tooltip.witchweed_description.name=A small herb that grows over other crops
 
 item.tag_lock.empty=Empty Taglock
 
@@ -858,6 +858,7 @@ fortunes.bewitchment.ya_te_veo.name=A lesser fire elemental has seen you scrying
 fortunes.bewitchment.ya_te_veo_dos.name=A lesser demon has seen you scrying, and wishes to challenge you!
 fortunes.bewitchment.ya_te_veo_tres.name=A powerful duke has seen you scrying, and has taken an interest in you.
 fortunes.bewitchment.ya_te_veo_cuatro.name=A powerful duchess has seen you scrying, and has taken an interest in you.
+fortunes.bewitchment.vitality.name=Wounds heal in your time of need.
 //Tarots
 tarot.enderman.name=The Enderman
 tarot.diamonds.name=The Diamonds
