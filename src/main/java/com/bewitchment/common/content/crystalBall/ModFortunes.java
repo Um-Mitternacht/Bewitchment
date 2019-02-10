@@ -25,6 +25,8 @@ public class ModFortunes {
 	private static Fortune vitality;
 	private static Fortune illness;
 	private static Fortune cat;
+	private static Fortune good_luck;
+	private static Fortune bad_luck;
 
 	public static void init() {
 		zombie = new FortuneMeetZombie(10, "meet_zombie", LibMod.MOD_ID);
@@ -46,6 +48,8 @@ public class ModFortunes {
 		yateveocuatro = new FortuneISeeYouFour(1, "ya_te_veo_cuatro", LibMod.MOD_ID);
 		vitality = new FortuneVitality(3, "vitality", LibMod.MOD_ID);
 		illness = new FortuneIllness(3, "illness", LibMod.MOD_ID);
+		good_luck = new FortuneGoodLuck(3, "good_luck", LibMod.MOD_ID);
+		bad_luck = new FortuneBadLuck(3, "bad_luck", LibMod.MOD_ID);
 		registerAll();
 	}
 
@@ -69,7 +73,9 @@ public class ModFortunes {
 				yateveocuatro,
 				vitality,
 				illness,
-				cat
+				cat,
+				good_luck,
+				bad_luck
 		);
 	}
 }
