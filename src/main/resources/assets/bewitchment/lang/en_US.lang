@@ -862,6 +862,8 @@ fortunes.bewitchment.ya_te_veo_tres.name=A powerful duke has seen you scrying, a
 fortunes.bewitchment.ya_te_veo_cuatro.name=A powerful duchess has seen you scrying, and has taken an interest in you.
 fortunes.bewitchment.vitality.name=Wounds heal in your time of need.
 fortunes.bewitchment.illness.name=Weakness and misfortune dot your future.
+fortunes.bewitchment.good_luck.name=Your future looks very bright indeed.
+fortunes.bewitchment.bad_luck.name=Your future looks dim.
 //Tarots
 tarot.enderman.name=The Enderman
 tarot.diamonds.name=The Diamonds
