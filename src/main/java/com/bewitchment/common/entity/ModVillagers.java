@@ -15,6 +15,7 @@ public class ModVillagers {
 	public VillagerRegistry.VillagerProfession noble;
 	public VillagerRegistry.VillagerProfession brute;
 	public VillagerRegistry.VillagerProfession apocryphal_teacher;
+	public VillagerRegistry.VillagerProfession despot;
 
 	//Villager professions
 	public VillagerRegistry.VillagerProfession hedge_witch;

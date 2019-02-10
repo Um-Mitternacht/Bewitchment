@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -66,11 +67,11 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@SubscribeEvent
 	public static void onUpgradeChecked(AltarModifierCheckEvent evt) {
 		Block b = evt.getState().getBlock();
-		if (b == Blocks.DIAMOND_BLOCK || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle)) {
+		if (b == Blocks.DRAGON_EGG || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle)) {
 			evt.getController().use(EnumUpgradeClass.PENTACLES, evt.getPos());
 			return;
 		}
-		if (b == Blocks.FLOWER_POT || b == ModBlocks.goblet || b == ModBlocks.gem_bowl) {
+		if (b == Blocks.FLOWER_POT || b == ModBlocks.goblet || b == ModBlocks.gem_bowl || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.BUCKET)) {
 			evt.getController().use(EnumUpgradeClass.CUPS, evt.getPos());
 			return;
 		}
@@ -90,9 +91,9 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@SubscribeEvent
 	public static void setModifiers(AltarModifierCollectionEvent evt) {
 		Block b = evt.getState().getBlock();
-		if (b == Blocks.DIAMOND_BLOCK) {
-			evt.extraGain = 1000;
-			evt.multiplier = 200;
+		if (b == Blocks.DRAGON_EGG) {
+			evt.extraGain = 100;
+			evt.multiplier = 10;
 			return;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) {
@@ -157,6 +158,10 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			} else {
 				evt.multiplier = 0.05;
 			}
+			return;
+		}
+		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.BUCKET) {
+			evt.multiplier = 0.15;
 			return;
 		}
 		if (b == ModBlocks.gem_bowl) {
