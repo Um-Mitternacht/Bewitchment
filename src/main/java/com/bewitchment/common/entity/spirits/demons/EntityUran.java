@@ -181,7 +181,7 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 			if (entity instanceof EntityLivingBase && this.getAnimation() != ANIMATION_BITE) {
 				{
 					this.setAnimation(ANIMATION_BITE);
-					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 2000, 3, false, false));
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100, 0, false, false));
 				}
 			}
 			return flag;

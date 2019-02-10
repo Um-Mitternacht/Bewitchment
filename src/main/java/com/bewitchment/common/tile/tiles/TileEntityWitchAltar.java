@@ -81,7 +81,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		if (b == ModBlocks.placed_item) {
 			ItemStack is = ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem();
-			if (is.getItem() == ModItems.athame || is.getItem() == ModItems.boline || is.getItem() == ModItems.silver_sword || is.getItem() == ModItems.cold_iron_sword) {
+			if (is.getItem() == ModItems.athame || is.getItem() == ModItems.boline || is.getItem() == ModItems.silver_sword || is.getItem() == ModItems.cold_iron_sword || is.getItem() == Items.GOLDEN_SWORD || is.getItem() == Items.IRON_SWORD || is.getItem() == Items.DIAMOND_SWORD) {
 				evt.getController().use(EnumUpgradeClass.SWORDS, evt.getPos());
 				return;
 			}
