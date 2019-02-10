@@ -479,6 +479,15 @@ bewitchment.nethersteel_chisel.tooltip.variety.hellish=Hellish
 bewitchment.nethersteel_chisel.tooltip.variety.hellish_watching=Hellish (Watching)
 bewitchment.nethersteel_chisel.tooltip.variety.skull=Skull
 
+tile.scorned_bricks_chisel.name=Scorned Bricks (Chiseled)
+bewitchment.scorned_bricks_chisel.tooltip.variety.cracked=Cracked
+bewitchment.scorned_bricks_chisel.tooltip.variety.symbol=Symbol
+bewitchment.scorned_bricks_chisel.tooltip.variety.circular=Circular
+bewitchment.scorned_bricks_chisel.tooltip.variety.beveled=Beveled
+bewitchment.scorned_bricks_chisel.tooltip.variety.raw=Raw
+bewitchment.scorned_bricks_chisel.tooltip.variety.smooth_cracked=Smooth Cracked
+bewitchment.scorned_bricks_chisel.tooltip.variety.hellish=Hellish
+
 bewitchment.coquina_chisel.tooltip.variety.bricks=Bricks
 bewitchment.coquina_chisel.tooltip.variety.chiseled=Chiseled
 bewitchment.coquina_chisel.tooltip.variety.shell=Shell
