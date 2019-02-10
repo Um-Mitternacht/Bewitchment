@@ -296,6 +296,10 @@ public class ThaumcraftCompat {
 
 		ThaumcraftApi.registerEntityTag("entity_uran", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
 		ThaumcraftApi.registerEntityTag("entity_hellhound", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("entity_demon", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("entity_demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("entity_imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("entity_black_dog", new AspectList().add(Aspect.SOUL, 25).add(Aspect.BEAST, 25).add(Aspect.AVERSION, 16));
 
 	}
 }
