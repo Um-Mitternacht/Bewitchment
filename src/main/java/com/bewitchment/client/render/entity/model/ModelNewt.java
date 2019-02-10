@@ -3,7 +3,6 @@ package com.bewitchment.client.render.entity.model;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.Entity;
 
 /**
@@ -317,7 +316,7 @@ public class ModelNewt extends AdvancedModelBase {
 		this.tail02.addChild(this.tail03);
 		this.lFoot.addChild(this.lBToe02);
 		this.updateDefaultPose();
-		animator = ModelAnimator.create();		
+		animator = ModelAnimator.create();
 	}
 
 	@Override
@@ -356,5 +355,5 @@ public class ModelNewt extends AdvancedModelBase {
 		flap(rArm02, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
 		flap(rArm01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
 		swing(tail01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
-	}	
+	}
 }

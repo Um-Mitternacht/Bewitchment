@@ -854,12 +854,14 @@ fortunes.bewitchment.shinies.name=Something glimmers in my sight.
 fortunes.bewitchment.iron.name=Scalding hot irons burn my retinas.
 fortunes.bewitchment.direwolf.name=A rabid beast will soon stumble upon you.
 fortunes.bewitchment.dog.name=You will soon encounter a new friend.
+fortunes.bewitchment.cat.name=You will soon encounter a new friend.
 fortunes.bewitchment.meet_parrot.name=You will soon encounter a new friend.
 fortunes.bewitchment.ya_te_veo.name=A lesser fire elemental has seen you scrying, and has emerged to fight you!
 fortunes.bewitchment.ya_te_veo_dos.name=A lesser demon has seen you scrying, and wishes to challenge you!
 fortunes.bewitchment.ya_te_veo_tres.name=A powerful duke has seen you scrying, and has taken an interest in you.
 fortunes.bewitchment.ya_te_veo_cuatro.name=A powerful duchess has seen you scrying, and has taken an interest in you.
 fortunes.bewitchment.vitality.name=Wounds heal in your time of need.
+fortunes.bewitchment.illness.name=Weakness and misfortune dot your future.
 //Tarots
 tarot.enderman.name=The Enderman
 tarot.diamonds.name=The Diamonds
