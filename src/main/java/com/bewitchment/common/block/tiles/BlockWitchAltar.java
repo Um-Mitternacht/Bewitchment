@@ -253,7 +253,7 @@ public class BlockWitchAltar extends BlockMod implements ITileEntityProvider {
 			}
 		}
 
-		if (!worldIn.isRemote && (playerIn.getHeldItem(hand).getItem() == ModItems.athame || playerIn.getHeldItem(hand).getItem() == ModItems.boline || playerIn.getHeldItem(hand).getItem() == ModItems.silver_sword || playerIn.getHeldItem(hand).getItem() == ModItems.cold_iron_sword || playerIn.getHeldItem(hand).getItem() == ModItems.pentacle || playerIn.getHeldItem(hand).getItem() == Items.BUCKET || playerIn.getHeldItem(hand).getItem() == Items.GOLDEN_SWORD || playerIn.getHeldItem(hand).getItem() == Items.IRON_SWORD || playerIn.getHeldItem(hand).getItem() == Items.DIAMOND_SWORD) && facing == EnumFacing.UP) {
+		if (!worldIn.isRemote && (playerIn.getHeldItem(hand).getItem() == ModItems.athame || playerIn.getHeldItem(hand).getItem() == ModItems.boline || playerIn.getHeldItem(hand).getItem() == ModItems.silver_sword || playerIn.getHeldItem(hand).getItem() == ModItems.cold_iron_sword || playerIn.getHeldItem(hand).getItem() == ModItems.pentacle || playerIn.getHeldItem(hand).getItem() == Items.BUCKET || playerIn.getHeldItem(hand).getItem() == Items.GOLDEN_SWORD || playerIn.getHeldItem(hand).getItem() == Items.IRON_SWORD || playerIn.getHeldItem(hand).getItem() == Items.DIAMOND_SWORD) && facing == EnumFacing.UP || playerIn.getHeldItem(hand).getItem() == Items.GOLDEN_APPLE && facing == EnumFacing.UP) {
 			worldIn.setBlockState(pos.up(), ModBlocks.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(playerIn.rotationYaw)), 3);
 			((TileEntityPlacedItem) worldIn.getTileEntity(pos.up())).setItem(playerIn.getHeldItem(hand).splitStack(1));
 			return true;

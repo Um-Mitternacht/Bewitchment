@@ -67,7 +67,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@SubscribeEvent
 	public static void onUpgradeChecked(AltarModifierCheckEvent evt) {
 		Block b = evt.getState().getBlock();
-		if (b == Blocks.DRAGON_EGG || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle)) {
+		if (b == Blocks.DRAGON_EGG || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.GOLDEN_APPLE)) {
 			evt.getController().use(EnumUpgradeClass.PENTACLES, evt.getPos());
 			return;
 		}
@@ -93,7 +93,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		Block b = evt.getState().getBlock();
 		if (b == Blocks.DRAGON_EGG) {
 			evt.extraGain = 100;
-			evt.multiplier = 10;
+			evt.multiplier = 8;
 			return;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) {
@@ -162,6 +162,11 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.BUCKET) {
 			evt.multiplier = 0.15;
+			return;
+		}
+		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.GOLDEN_APPLE) {
+			evt.multiplier = 0.35;
+			evt.extraGain = 4;
 			return;
 		}
 		if (b == ModBlocks.gem_bowl) {
