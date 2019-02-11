@@ -34,6 +34,9 @@ public final class LibMod {
 	//SHA1 fingerprint
 	public static final String FINGERPRINT = "@FINGERPRINT@";
 
+	//Reference shenanigans
+	public static final String NAMES = MOD_ID + ":names/";
+
 	private LibMod() {
 	}
 }
