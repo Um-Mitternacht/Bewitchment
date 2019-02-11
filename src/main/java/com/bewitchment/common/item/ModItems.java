@@ -381,6 +381,10 @@ public final class ModItems {
 				itemBlock(ModBlocks.scorned_brick_stairs),
 				itemBlock(ModBlocks.embittered_brick_stairs),
 				itemBlock(ModBlocks.embittered_brick_fence),
+				itemBlock(ModBlocks.cypress_stairs),
+				itemBlock(ModBlocks.yew_stairs),
+				itemBlock(ModBlocks.juniper_stairs),
+				itemBlock(ModBlocks.elder_stairs),
 
 				new ItemGemOre(ModBlocks.gem_ore).setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB),
 				new ItemSlab(ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_half, (BlockSlab) ModBlocks.fake_ice_slab_double).setRegistryName(ModBlocks.fake_ice_slab_half.getRegistryName()),

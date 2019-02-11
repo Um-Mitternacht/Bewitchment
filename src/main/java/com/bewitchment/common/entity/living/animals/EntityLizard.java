@@ -84,6 +84,7 @@ public class EntityLizard extends EntityTameable implements IAnimatedEntity {
 
 	@Override
 	protected void initEntityAI() {
+		this.tasks.addTask(0, new EntityAIPanic(this, 0.7D));
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(5, new EntityAILookIdle(this));

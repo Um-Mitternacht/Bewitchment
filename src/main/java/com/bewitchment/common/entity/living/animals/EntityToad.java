@@ -102,6 +102,7 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 
 	@Override
 	protected void initEntityAI() {
+		this.tasks.addTask(0, new EntityAIPanic(this, 0.7D));
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
