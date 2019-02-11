@@ -19,7 +19,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.lang.ref.Reference;
 
 /**
  * Created by Joseph on 1/14/2019.
@@ -43,6 +42,17 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
+	}
+
+	private void init() {
+		String name = String.format("");
+		name += names[rand.nextInt(names.length)];
+		setCustomNameTag(name);
+	}
+
+	@Override
+	public String getCustomNameTag() {
+		return super.getCustomNameTag();
 	}
 
 	@Override

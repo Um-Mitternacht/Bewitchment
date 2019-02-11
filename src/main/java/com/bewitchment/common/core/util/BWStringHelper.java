@@ -1,20 +1,15 @@
 package com.bewitchment.common.core.util;
 
-import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.text.DecimalFormat;
 
 /**
  * Created by Joseph on 2/10/2019.
- *
+ * <p>
  * Original code created by matter overdrive dev
  */
 public class BWStringHelper {
