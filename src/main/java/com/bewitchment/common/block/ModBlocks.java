@@ -89,6 +89,10 @@ public final class ModBlocks {
 	public static final Block fake_ice_slab_double = null;
 	public static final Block scorned_brick_stairs = null;
 	public static final Block embittered_brick_stairs = null;
+	public static final Block elder_stairs = null;
+	public static final Block juniper_stairs = null;
+	public static final Block yew_stairs = null;
+	public static final Block cypress_stairs = null;
 	public static final Block torchwood = null;
 	public static final Block ember_grass = null;
 	public static final Block log_elder = null;
@@ -202,6 +206,10 @@ public final class ModBlocks {
 				new BlockFakeIceStairs("fake_ice_stairs", STAIRS_BW_ICE.getDefaultState(), Material.ICE),
 				new BlockScornedBrickStairs("scorned_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
 				new BlockEmbitteredBrickStairs("embittered_brick_stairs", STAIRS_BW_STONE.getDefaultState(), Material.ROCK),
+				new BlockWoodStairs("elder_stairs", STAIRS_BW_WOOD.getDefaultState(), Material.WOOD),
+				new BlockWoodStairs("juniper_stairs", STAIRS_BW_WOOD.getDefaultState(), Material.WOOD),
+				new BlockWoodStairs("yew_stairs", STAIRS_BW_WOOD.getDefaultState(), Material.WOOD),
+				new BlockWoodStairs("cypress_stairs", STAIRS_BW_WOOD.getDefaultState(), Material.WOOD),
 				new BlockFakeIceSlabDouble("fake_ice_slab_double"),
 				new BlockFakeIceSlabHalf("fake_ice_slab_half"),
 				new BlockBeehive(LibBlockName.BEEHIVE, Material.GRASS),

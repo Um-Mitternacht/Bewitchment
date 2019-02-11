@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "bewitchment:blocks/planks_cypress",
+    "top": "#bottom",
+    "side": "#bottom"
+  }
+}

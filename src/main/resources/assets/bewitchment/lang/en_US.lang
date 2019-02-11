@@ -447,6 +447,11 @@ tile.leaves_juniper.name=Juniper Leaves
 tile.leaves_yew.name=Yew Leaves
 tile.leaves_cypress.name=Cypress Leaves
 
+tile.elder_stairs.name=Elder Stairs
+tile.juniper_stairs.name=Juniper Stairs
+tile.yew_stairs.name=Yew Stairs
+tile.cypress_stairs.name=Cypress Stairs
+
 bewitchment.silver_block_chisel.tooltip.variety.symbol=Symbol
 bewitchment.silver_block_chisel.tooltip.variety.sun=Sun
 bewitchment.silver_block_chisel.tooltip.variety.moon=Moon
