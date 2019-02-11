@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, IMob {
 
 	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
-	private static final ResourceLocation demonNames = new ResourceLocation(LibMod.MOD_ID + "demon_names.txt");
+	private static final ResourceLocation demonNames = new ResourceLocation(LibMod.MOD_NAME + "demon_names.txt");
 	private static final String[] names = BWStringHelper.readTextFile(demonNames).split(",");
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private int animationTick;
