@@ -46,6 +46,7 @@ public class EntityLizard extends EntityTameable implements IAnimatedEntity {
 	public EntityLizard(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

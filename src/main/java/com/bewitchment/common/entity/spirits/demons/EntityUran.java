@@ -58,6 +58,7 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 20;
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {

@@ -54,6 +54,7 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 	public EntityToad(World worldIn) {
 		super(worldIn);
 		setSize(1F, 0.3F);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

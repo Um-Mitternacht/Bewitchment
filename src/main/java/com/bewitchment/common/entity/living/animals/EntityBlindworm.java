@@ -28,6 +28,7 @@ public class EntityBlindworm extends EntityAnimal implements IAnimatedEntity {
 	public EntityBlindworm(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

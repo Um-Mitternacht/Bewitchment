@@ -57,6 +57,7 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 	public EntitySnake(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

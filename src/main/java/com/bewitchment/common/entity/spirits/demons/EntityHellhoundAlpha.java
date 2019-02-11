@@ -50,6 +50,7 @@ public class EntityHellhoundAlpha extends EntityMultiSkin implements IAnimatedEn
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 65;
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

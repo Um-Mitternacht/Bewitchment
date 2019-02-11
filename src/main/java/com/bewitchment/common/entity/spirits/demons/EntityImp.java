@@ -33,6 +33,7 @@ public class EntityImp extends EntityMultiSkin implements IAnimatedEntity, IMob 
 		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 100;
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override

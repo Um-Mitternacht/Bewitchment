@@ -35,6 +35,7 @@ public class EntityNewt extends EntityAnimal implements IAnimatedEntity {
 	public EntityNewt(World worldIn) {
 		super(worldIn);
 		setSize(1F, .3F);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 
 	@Override
