@@ -12,6 +12,26 @@
       "type": "crafting",
       "text": "Creating the Cauldron",
       "recipe": "bewitchment:cauldron"
-    }
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:cauldron",
+      "text": "Cauldrons are great and all, but in order to use any of the crafting methods, one must fill it with fluid and put a heat source underneath it."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:glass_jar",
+      "text": "To make brews, simply throw in a piece of netherwart, and throw in more of your desired ingredients. Then, collect them with a bottle."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:bucket",
+      "text": "To craft items in the cauldron, fill it with water, honey, or oil, depending on the recipe, and then place the required ingredients in. If done correctly, the item should pop out."
+    },	
+    {
+      "type": "spotlight",
+      "item": "minecraft:bowl",
+      "text": "To craft stews in a cauldron, fill it with water, heat it, and drop in various food items. Up to ten items can be taken in by a stew."
+    }	
   ]
 }
