@@ -15,6 +15,8 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -26,8 +28,15 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
-	private static final String[] given_name = {"Bael", "Agares", "Vassago", "Samigina", "Marbas", "Valefor", "Amon", "Barbatos", "Paimon", "Buer", "Gusion", "Sitri", "Beleth", "Leraje", "Eligos", "Zepar", "Botis", "Bathin", "Sallos", "Purson", "Marax", "Ipos", "Aim", "Naberius", "Glasya-Labolas", "Buné", "Ronové", "Berith", "Astaroth", "Forneus", "Asmodeus", "Asmoday", "Gäap", "Furfur", "Marchosias", "Stolas", "Phenex", "Halphas", "Malphas", "Räum", "Focalor", "Vepar", "Sabnock", "Shax", "Viné", "Bifrons", "Vual", "Haagenti", "Crocell", "Furcas", "Balam", "Alloces", "Caim", "Murmur", "Orobas", "Gremory", "Ose", "Amy", "Orias", "Vapula", "Zagan", "Valac", "Andras", "Flauros", "Andrealphus", "Kimaris", "Amdusias", "Belial", "Decarabia", "Seere", "Dantalion", "Andromalius", "Amaymon", "Corson", "Ziminiar", "Moloch", "Pruflas", "Satanachia", "Sargatanas", "Beelzebub", "Agaliarept", "Tarihimal", "Qandisa", "Mbwiri", "Shezmu", "Ammit", "Apep", "Pañcika", "Hariti", "Mara", "Azazel", "Zalambur", "Al-‘Uzzá", "Pazuzu", "Asag", "Koka", "Vikoka", "Jalandhara", "Ravana", "Chedipe", "Kali", "Kalanemi", "Tārakāsura", "Durgamasur", "Bhandasura", "Arunasura", "Sumbha", "Nisumbha", "Yaldabaoth", "Horaios", "Elaios", "Adonaios", "Astaphanos", "Sabaoth", "Iao", "Aka-Manah", "Aeshma", "Bushyasta", "Angra-Mainyu", "Apaosha", "Jahi", "Div-e Sepid", "Zarik", "Ahriman", "Eisheth", "Bagdana", "Berith", "Baal", "Agrat bat Mahlat", "Abyzou", "A'arab Zaraq", "Naamah", "Šulak", "Tanin'iver", "Golachab", "Ghagiel", "Gha'agsheblah", "Gamaliel", "Sathariel", "Thagirion", "Thaumiel", "Odei", "Nasnas", "Guayota", "Nybbas", "Melchom", "Ukobach", "Zaebos", "Anamelech", "Adrammelech", "Zahhak", "Mamitu", "Lakhey", "Kroni", "Titivillus", "Belphegor", "Chort", "Anzû", "Grendel", "Dusios", "Alphito", "Ala", "Bies", "Boruta", "Bukavac", "Chernobog", "Reeri Yakseya", "Maha Sona", "Samca", "Seteh", "Baigujing", "Yin", "Xiong Shanjun", "Techu Shi", "Zhenyuanzi", "Hu A'qi", "Ruyi", "Sai Tai Sui", "Samyaza", "Yen Lo Wang", "Pipa Jing", "Jiutou Zhiji Jing", "Dzoavits", "Átahsaia", "Chullachaki", "Guahaioque", "Kigatilik", "Okeus", "Gualichu", "Sonneillon", "Gressil", "Verrine", "Rosier", "Oeillet", "Carnivale", "Carreau", "Olivier", "Luvart", "Verrier", "Mammon", "Legion", "Tartaruchi", "Demogorgon", "Alastor", "Surgat", "Asbeel", "Chazaqiel", "Iscaraon", "Madeste", "Zhuanlun", "Pingdeng", "Dushi", "Taishan", "Biancheng", "Yanluo", "Wuguan", "Songdi", "Chujiang", "Qinguang", "Ox-Head", "Horse-Face", "Saklas", "Wanyudo", "Bašmu", "Kulullû", "Kusarikku", "Lamashtu", "Mukīl rēš lemutti", "Mušmaḫḫū", "Ugallu", "Umū dabrūtu", "Uridimmu", "Ušumgallu", "Prahasta", "Kirmira", "Hidimba", "Hidimbi", "Bazil", "Azi-Dahaka", "Indrajit", "Khara", "Kumbhakarana", "Maricha", "Subahu", "Tataka", "Vibishana", "Vatapi", "Daruka", "Mandodari", "Apollyon", "Bakasura", "Kabandha", "Druj", "Caspiel", "Carnesiel", "Amenadiel", "Demoriel", "Pamersiel", "Garadiel", "Buriel", "Hydriel", "Barachus", "Symiel", "Raysiel", "Pirichiel", "Emoniel", "Icosiel", "Soleviel", "Menadiel", "Macariel", "Bidiel", "Dorochiel", "Malgaras", "Dorochiel", "Masaeriel", "Barmiel", "Gedial", "Asyriel", "Aseliel", "Camuel", "Padiel", "Ramiel", "Tamiel", "Kokabiel", "Arakiel", "Danel", "Chazaqiel", "Baraqiel", "Asahel", "Armaros", "Batariel", "Ananiel", "Zaqiel", "Shamsiel", "Turiel", "Yomiel", "Sariel", "Abraxas", "Chaigidel", "Gamchicoth", "Golachab", "Harab Serapel", "Urieus", "Egin", "Mahazael", "Nebro", "Lucifuge Rofocale", "Alrinach", "Bucon", "Tenebrion", "Verdelet", "Leges", "Mulciber", "Fleruty", "Abbadon", "Alastor", "Morax", "Baphomet", "Circle Guy", "Lair Guy", "Zozo", "Faust", "The Old Man", "The Smoke Man", "Mephistopheles", "Behemoth"};
-	private static final String[] prefixes = {"King", "President", "Duke", "Marquis", "Prince", "Count", "Knight", "Commander", "General", "Archduke", "Immortal", "Baron", "Grand Duke", "Grand Prince", "Margrave", "Count-Palatine", "Earl", "Viscount", "Baronet", "Esquire", "Sovereign Prince", "Emperor", "Admiral", "Lieutenant", "Chieftain", "Suzerain", "Sovereign", "Regent", "Commodore", "Captain", "Fool", "Scion", "Judge", "Lord", "Advisor", "Vice-President", "Archon", "Corrector", "Councillor", "Doctor", "Minister", "Governor", "Executor", "Sergeant", "Judicator", "Legate", "Warlord", "Berserker", "Thane", "Vassal", "High-King", "Overlord", "Consort"};
+	private static final String PREFIX = "entity.bewitchment.prefix.";
+	private static final String NAME = "entity.bewitchment.given_name.";
+
+	private static final int PREFIXES = 53;
+	private static final int NAMES = 326;
+
+	private final int prefix = rand.nextInt(PREFIXES);
+	private final int name = rand.nextInt(NAMES);
+
 	private int animationTick;
 	private Animation currentAnimation;
 
@@ -41,7 +50,11 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
-		this.setCustomNameTag((rand.nextInt(3) == 0 ? prefixes[rand.nextInt(prefixes.length)] + " " : "") + given_name[rand.nextInt(given_name.length)]);
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		return new TextComponentTranslation(PREFIX + prefix).appendSibling(new TextComponentTranslation(NAME + name));
 	}
 
 	@Override
