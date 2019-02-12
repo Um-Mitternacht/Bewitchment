@@ -1,0 +1,18 @@
+{
+  "name": "Black Dog",
+  "icon": "bewitchment:ectoplasm",
+  "category": "obw_advanced_bestiary",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A large, dog-like spirit, they roam the country-side at night, attacking anyone in their path, only to vanish during the day."
+    },
+    {
+      "type": "entity",
+      "name": "Black Dog",
+      "entity": "bewitchment:black_dog",
+      "scale": 1.0,
+      "text": "bamboozled again"
+    }
+  ]
+}
