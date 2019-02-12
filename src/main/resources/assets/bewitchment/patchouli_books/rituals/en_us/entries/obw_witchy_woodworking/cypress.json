@@ -4,7 +4,8 @@
   "category": "obw_witchy_woodworking",
   "pages": [
     {
-      "type": "text",
+      "type": "spotlight",
+      "item": "bewitchment:sapling_cypress",
       "text": "Cypress trees are often associated with death, and as a result, are often planted around graveyards. In your hands, you have managed to create an essence of sorts from it's saplings. Further investigation into this essence, or Ebb of Death, as you call it, is needed."
     }
   ]

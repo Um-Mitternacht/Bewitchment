@@ -4,7 +4,8 @@
   "category": "obw_witchy_woodworking",
   "pages": [
     {
-      "type": "text",
+      "type": "spotlight",
+      "item": "bewitchment:sapling_elder",
       "text": "The wisest of them all, these trees seem to be associated with knowledge. Furthermore, extracting an essence from one seems to bear some properties of interest which need further investigation."
     }
   ]

@@ -4,7 +4,8 @@
   "category": "obw_witchy_woodworking",
   "pages": [
     {
-      "type": "text",
+      "type": "spotlight",
+      "item": "bewitchment:sapling_yew",
       "text": "Yew trees are associated with life, and they seem to bear small berry-like structures, which seem edible to you. Furthermore, from it's saplings, you have derived an essence, which you have taken to calling Essence of Vitality. More investigation is needed into it's properties."
     }
   ]
