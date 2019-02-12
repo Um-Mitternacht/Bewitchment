@@ -89,7 +89,7 @@ public class LibIngredients {
 	public static Ingredient glowstoneDust = Ingredient.fromItem(Items.GLOWSTONE_DUST);
 	public static Ingredient boline = Ingredient.fromItem(ModItems.boline);
 	public static Ingredient bloodyRags = Ingredient.fromItem(ModItems.sanguine_fabric);
-	public static Ingredient eyes = Ingredient.fromStacks(new ItemStack(Items.ENDER_EYE, 1, 0), (new ItemStack(ModItems.eye_of_ancient, 1, 0)), (new ItemStack(ModItems.eye_of_old, 1, 0)));
+	public static Ingredient eyes = Ingredient.fromStacks(new ItemStack(Items.ENDER_EYE, 1, 0), (new ItemStack(ModItems.eye_of_ancient, 1, 0)), (new ItemStack(ModItems.eye_of_old, 1, 0)),  (new ItemStack(ModItems.eye_of_newt, 1, 0)));
 	public static Ingredient anySapling = new OreIngredient("treeSapling");
 	public static Ingredient acaciaResin = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.acacia_essence.ordinal()));
 	public static Ingredient yewEssence = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.vital_essence.ordinal()));
