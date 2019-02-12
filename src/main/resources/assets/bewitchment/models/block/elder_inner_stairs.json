@@ -2,7 +2,7 @@
   "parent": "block/inner_stairs",
   "textures": {
     "bottom": "bewitchment:blocks/planks_elder",
-    "top": "#bottom",
-    "side": "#bottom"
+    "top": "bewitchment:blocks/planks_elder",
+    "side": "bewitchment:blocks/planks_elder"
   }
 }

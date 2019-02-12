@@ -2,7 +2,7 @@
   "parent": "block/outer_stairs",
   "textures": {
     "bottom": "bewitchment:blocks/planks_yew",
-    "top": "#bottom",
-    "side": "#bottom"
+    "top": "bewitchment:blocks/planks_yew",
+    "side": "bewitchment:blocks/planks_yew"
   }
 }
