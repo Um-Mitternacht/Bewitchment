@@ -31,7 +31,17 @@
     {
       "type": "spotlight",
       "item": "minecraft:bowl",
-      "text": "To craft stews in a cauldron, fill it with water, heat it, and drop in various food items. Up to ten items can be taken in by a stew."
+      "text": "To craft stews in a cauldron, fill it with water, heat it, and drop in various food items. After a bit, pick up the contents with a wooden bowl. Up to ten items can be taken in by a stew. It is recommended to use a variety of items in a stew."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:coal",
+      "text": "Cauldrons are surprisingly heat-resistant, and can be used to act as a form of garbage disposal, by simply filling it with lava."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:pentacle",
+      "text": "Using the ignis incantation, and throwing dimensional sand into the resultant fire, one can teleport through a system of various cauldrons. However, one must have named the desired cauldron first, and then say it's name."
     }	
   ]
 }
