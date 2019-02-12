@@ -48,11 +48,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return new TextComponentTranslation(PREFIX + prefix).appendText(" ").appendSibling(new TextComponentTranslation(NAME + name));
+		if (!worldIn.isRemote && !this.hasCustomName()) this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation(PREFIX + prefix).appendText(" ") : new TextComponentTranslation("")).appendSibling(new TextComponentTranslation(NAME + name)).getFormattedText());
 	}
 
 	@Override
