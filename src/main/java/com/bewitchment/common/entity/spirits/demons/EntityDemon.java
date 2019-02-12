@@ -41,7 +41,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
-		this.setCustomNameTag(given_name[rand.nextInt(given_name.length)]);
+		this.setCustomNameTag((rand.nextInt(3) == 0 ? prefixes[rand.nextInt(prefixes.length)] + " " : "") + given_name[rand.nextInt(given_name.length)]);
 	}
 
 	@Override
