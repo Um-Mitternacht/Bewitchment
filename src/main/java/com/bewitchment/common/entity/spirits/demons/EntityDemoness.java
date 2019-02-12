@@ -52,7 +52,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TextComponentTranslation(PREFIX + prefix).appendSibling(new TextComponentTranslation(NAME + name));
+		return new TextComponentTranslation(PREFIX + prefix).appendText(" ").appendSibling(new TextComponentTranslation(NAME + name));
 	}
 
 	@Override
