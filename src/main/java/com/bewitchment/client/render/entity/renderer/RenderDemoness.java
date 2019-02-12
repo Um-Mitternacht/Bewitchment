@@ -34,6 +34,11 @@ public class RenderDemoness extends RenderLiving<EntityDemoness> {
 	}
 
 	@Override
+	protected boolean canRenderName(EntityDemoness entity) {
+		return true;
+	}
+
+	@Override
 	protected void preRenderCallback(EntityDemoness entitylivingbaseIn, float partialTickTime) {
 		super.preRenderCallback(entitylivingbaseIn, partialTickTime);
 		if (entitylivingbaseIn.isChild()) {

@@ -34,6 +34,11 @@ public class RenderDemon extends RenderLiving<EntityDemon> {
 	}
 
 	@Override
+	protected boolean canRenderName(EntityDemon entity) {
+		return true;
+	}
+
+	@Override
 	protected void preRenderCallback(EntityDemon entitylivingbaseIn, float partialTickTime) {
 		super.preRenderCallback(entitylivingbaseIn, partialTickTime);
 		if (entitylivingbaseIn.isChild()) {

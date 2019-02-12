@@ -32,11 +32,9 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	private static final int PREFIXES = 53;
 	private static final int NAMES = 326;
-
+	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private final int prefix = rand.nextInt(PREFIXES);
 	private final int name = rand.nextInt(NAMES);
-
-	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private int animationTick;
 	private Animation currentAnimation;
 
