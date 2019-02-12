@@ -1,0 +1,11 @@
+{
+  "name": "Juniper",
+  "icon": "bewitchment:log_juniper",
+  "category": "obw_witchy_woodworking",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Juniper trees are associated with magic, and berry-like structures often grow on this tree, which you have found to be rather tasty. You have derived an essence from it, called Bottled Witchcraft, which seems to bear lots of magical properties."
+    }
+  ]
+}
