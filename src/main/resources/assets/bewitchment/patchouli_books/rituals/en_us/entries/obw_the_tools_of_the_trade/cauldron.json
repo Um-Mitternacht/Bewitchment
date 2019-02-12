@@ -27,7 +27,7 @@
       "type": "spotlight",
       "item": "minecraft:bucket",
       "text": "To craft items in the cauldron, fill it with water, honey, or oil, depending on the recipe, and then place the required ingredients in. If done correctly, the item should pop out."
-    },	
+    },
     {
       "type": "spotlight",
       "item": "minecraft:bowl",
@@ -42,6 +42,6 @@
       "type": "spotlight",
       "item": "bewitchment:pentacle",
       "text": "Using the ignis incantation, and throwing dimensional sand into the resultant fire, one can teleport through a system of various cauldrons. However, one must have named the desired cauldron first, and then say it's name."
-    }	
+    }
   ]
 }
