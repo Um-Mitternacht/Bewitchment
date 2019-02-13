@@ -11,12 +11,10 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -51,7 +49,8 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
-		if (!worldIn.isRemote && !this.hasCustomName()) this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation(PREFIX + prefix).appendText(" ") : new TextComponentTranslation("")).appendSibling(new TextComponentTranslation(NAME + name)).getFormattedText());
+		if (!worldIn.isRemote && !this.hasCustomName())
+			this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation(PREFIX + prefix).appendText(" ") : new TextComponentTranslation("")).appendSibling(new TextComponentTranslation(NAME + name)).getFormattedText());
 	}
 
 	@Override
