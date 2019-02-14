@@ -102,6 +102,7 @@ public class LibIngredients {
 	public static Ingredient blindwormsSting = Ingredient.fromItem(ModItems.blindworms_sting);
 	public static Ingredient lizardLeg = Ingredient.fromItem(ModItems.lizard_leg);
 	public static Ingredient empty_jar = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.empty_jar.ordinal()));
+	public static Ingredient bonemeal = Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15));
 	public static Ingredient chrysanthemum = Ingredient.fromItem(ModItems.chrysanthemum);
 	public static Ingredient snakeVenom = Ingredient.fromItem(ModItems.snake_venom);
 	public static Ingredient amethyst = new OreIngredient("gemAmethyst");

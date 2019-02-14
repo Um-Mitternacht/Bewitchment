@@ -67,7 +67,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	@SubscribeEvent
 	public static void onUpgradeChecked(AltarModifierCheckEvent evt) {
 		Block b = evt.getState().getBlock();
-		if (b == Blocks.DRAGON_EGG || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.GOLDEN_APPLE)) {
+		if (b == Blocks.DRAGON_EGG || b == Blocks.SKULL || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.GOLDEN_APPLE || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.demon_heart || (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.heart)))) {
 			evt.getController().use(EnumUpgradeClass.PENTACLES, evt.getPos());
 			return;
 		}
@@ -75,7 +75,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.getController().use(EnumUpgradeClass.CUPS, evt.getPos());
 			return;
 		}
-		if (b == Blocks.TORCH || b instanceof BlockCandle || b instanceof BlockLantern) {
+		if (b == Blocks.TORCH || b instanceof BlockCandle || b instanceof BlockLantern || b == Blocks.GLOWSTONE) {
 			evt.getController().use(EnumUpgradeClass.WANDS, evt.getPos());
 			return;
 		}
@@ -130,8 +130,12 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		if (b == ModBlocks.lantern) {
 			evt.extraGain = 2;
 		}
-		if (b == ModBlocks.revealing_lantern) {
+		if (b == Blocks.GLOWSTONE) {
 			evt.extraGain = 3;
+			return;
+		}
+		if (b == ModBlocks.revealing_lantern) {
+			evt.extraGain = 4;
 		}
 		if (b instanceof BlockCandle) {
 			if (((BlockCandle) b).isLit()) {
@@ -167,6 +171,14 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.GOLDEN_APPLE) {
 			evt.multiplier = 0.35;
 			evt.extraGain = 4;
+			return;
+		}
+		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.demon_heart) {
+			evt.multiplier = 3.33;
+			return;
+		}
+		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.heart) {
+			evt.multiplier = 1.11;
 			return;
 		}
 		if (b == ModBlocks.gem_bowl) {
