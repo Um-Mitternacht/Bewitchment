@@ -33,6 +33,7 @@ import com.bewitchment.common.core.gen.ModGen;
 import com.bewitchment.common.core.helper.CropHelper;
 import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.core.helper.MobHelper;
+import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.core.statics.ModLootTables;
@@ -58,6 +59,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -172,6 +174,7 @@ public class Bewitchment {
 		ModGen.init();
 		ModSpinningThreadRecipes.init();
 		ModOvenSmeltingRecipes.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		ModRituals.init();
 		ModBrewModifiers.init();
 		Patchouli.init();

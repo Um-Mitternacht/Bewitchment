@@ -4,6 +4,9 @@ import com.bewitchment.common.content.crystalBall.Fortune;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+
+import java.util.Random;
 
 public class FortuneMeetMerchant extends Fortune {
 
@@ -30,6 +33,10 @@ public class FortuneMeetMerchant extends Fortune {
 				villager.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				villager.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(villager);
+				VillagerRegistry.setRandomProfession(villager, new Random());
+				if (villager.getProfessionForge().getRegistryName().getPath().equals("nitwit")) {
+					villager.setProfession(VillagerRegistry.FARMER);
+				}
 				return true;
 			}
 		}

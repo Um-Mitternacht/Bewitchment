@@ -23,7 +23,6 @@ import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.misc.BlockWitchFire;
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
-import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
 import com.bewitchment.common.core.statemappers.AllDefaultModelStateMapper;
 import com.bewitchment.common.entity.*;
@@ -63,7 +62,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 import java.awt.*;
@@ -205,8 +203,6 @@ public class ClientProxy implements ISidedProxy {
 		}, ModItems.brew_phial_drink, ModItems.brew_phial_linger, ModItems.brew_phial_splash, ModItems.brew_arrow);
 
 		items.registerItemColorHandler(ColorPropertyHandler.INSTANCE, Item.getItemFromBlock(ModBlocks.lantern), Item.getItemFromBlock(ModBlocks.revealing_lantern));
-
-		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 
 		ClientCommandHandler.instance.registerCommand(new ClientCommandGuiConfig());
 	}
