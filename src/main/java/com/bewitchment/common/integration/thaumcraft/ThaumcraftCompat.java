@@ -247,7 +247,7 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.salt_ore), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
 		for (int i = 0; i < 4; i++) {
-			evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina_chisel, 1,), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
+			evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina_chisel, 1, i), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
 		}
 		for (int i = 0; i < 11; i++) {
 			evt.register.registerObjectTag(new ItemStack(ModBlocks.nethersteel_chisel, 1, i), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.METAL, 5).add(DEMON, 10));
