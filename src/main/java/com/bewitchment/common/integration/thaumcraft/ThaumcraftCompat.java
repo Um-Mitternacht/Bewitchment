@@ -246,10 +246,18 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.beehive), new AspectList().add(Aspect.BEAST, 15).add(Aspect.DESIRE, 15).add(Aspect.PLANT, 13).add(SUN, 10));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.salt_ore), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina_chisel), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.nethersteel_chisel), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.METAL, 5).add(DEMON, 10));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.cold_iron_block_chisel), new AspectList().add(Aspect.AVERSION, 101).add(Aspect.COLD, 101).add(Aspect.METAL, 101));
-		evt.register.registerObjectTag(new ItemStack(ModBlocks.silver_block_chisel), new AspectList().add(Aspect.METAL, 67).add(Aspect.DESIRE, 33).add(MOON, 20));
+		for (int i = 0; i < 4; i++) {
+			evt.register.registerObjectTag(new ItemStack(ModBlocks.coquina_chisel), new AspectList().add(Aspect.EARTH, 4).add(Aspect.WATER, 4).add(Aspect.PROTECT, 4));
+		}
+		for (int i = 0; i < 11; i++) {
+			evt.register.registerObjectTag(new ItemStack(ModBlocks.nethersteel_chisel), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.METAL, 5).add(DEMON, 10));
+		}
+		for (int i = 0; i < 9; i++) {
+			evt.register.registerObjectTag(new ItemStack(ModBlocks.cold_iron_block_chisel), new AspectList().add(Aspect.AVERSION, 101).add(Aspect.COLD, 101).add(Aspect.METAL, 101));
+		}
+		for (int i = 0; i < 9; i++) {
+			evt.register.registerObjectTag(new ItemStack(ModBlocks.silver_block_chisel, 1, i), new AspectList().add(Aspect.METAL, 67).add(Aspect.DESIRE, 33).add(MOON, 20));
+		}
 
 		//Ores
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.gem_ore, 1, 0), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(Aspect.EARTH, 4).add(STAR, 4));
@@ -289,7 +297,6 @@ public class ThaumcraftCompat {
 		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.
 		//The same applies if you try and add aspects to items from other mods.
 		evt.register.registerObjectTag(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new AspectList().add(Aspect.PLANT, 5).add(Aspect.SENSES, 5).add(SUN, 3).add(Aspect.AIR, 1).add(Aspect.LIFE, 1));
-
 		evt.register.registerObjectTag(new ItemStack(Items.GOLD_INGOT), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 10).add(SUN, 5));
 
 		//Entities
