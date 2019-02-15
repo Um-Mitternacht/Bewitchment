@@ -160,6 +160,27 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		return this.height * 0.75F;
 	}
 
+	private int intFromProfesion(String prof) {
+		if (prof.contains("warlord")) {
+			return 0;
+		}
+		if (prof.contains("slaver")) {
+			return 1;
+		}
+		if (prof.contains("noble")) {
+			return 2;
+		}
+		if (prof.contains("brute")) {
+			return 3;
+		}
+		if (prof.contains("apocryphal_teacher")) {
+			return 4;
+		}
+		if (prof.contains("despot")) {
+			return 5;
+		}
+		return 0;
+	}
 
 }
 
