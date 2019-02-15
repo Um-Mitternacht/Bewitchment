@@ -256,6 +256,9 @@ public class ThaumcraftCompat {
 			evt.register.registerObjectTag(new ItemStack(ModBlocks.cold_iron_block_chisel, 1, i), new AspectList().add(Aspect.AVERSION, 101).add(Aspect.COLD, 101).add(Aspect.METAL, 101));
 			evt.register.registerObjectTag(new ItemStack(ModBlocks.silver_block_chisel, 1, i), new AspectList().add(Aspect.METAL, 67).add(Aspect.DESIRE, 33).add(MOON, 20));
 		}
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.graveyard_dirt), new AspectList().add(Aspect.EARTH, 5).add(Aspect.UNDEAD, 5));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.purifying_earth), new AspectList().add(Aspect.EARTH, 5).add(SUN, 5));
+		evt.register.registerObjectTag(new ItemStack(ModBlocks.infested_farmland), new AspectList().add(Aspect.EARTH, 5).add(Aspect.DEATH, 5));
 
 		//Ores
 		evt.register.registerObjectTag(new ItemStack(ModBlocks.gem_ore, 1, 0), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(Aspect.EARTH, 4).add(STAR, 4));
@@ -287,7 +290,7 @@ public class ThaumcraftCompat {
 
 		//Brooms
 		for (int i = 0; i < 5; i++) {
-			evt.register.registerObjectTag(new ItemStack(ModItems.broom, 1, i), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25));
+			evt.register.registerObjectTag(new ItemStack(ModItems.broom, 1, i), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		}
 
 		//Technical
