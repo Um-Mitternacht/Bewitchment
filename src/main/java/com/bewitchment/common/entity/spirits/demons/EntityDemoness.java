@@ -160,7 +160,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		return this.height * 0.75F;
 	}
 
-	private int intFromProfesion(String prof) {
+	private int intFromProfession(String prof) {
 		if (prof.contains("warlord")) {
 			return 0;
 		}
