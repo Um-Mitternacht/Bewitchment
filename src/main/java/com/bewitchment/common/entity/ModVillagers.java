@@ -33,6 +33,9 @@ public class ModVillagers {
 	public Map<Integer, VillagerRegistry.VillagerProfession> professions = Maps.newHashMap();
 
 	public void init() {
+		warlord = new VillagerRegistry.VillagerProfession("bewitchment:warlord", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
 
 	}
 
