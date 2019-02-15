@@ -6,6 +6,7 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -288,6 +289,8 @@ public class ThaumcraftCompat {
 		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.
 		//The same applies if you try and add aspects to items from other mods.
 		evt.register.registerObjectTag(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new AspectList().add(Aspect.PLANT, 5).add(Aspect.SENSES, 5).add(SUN, 3).add(Aspect.AIR, 1).add(Aspect.LIFE, 1));
+
+		evt.register.registerObjectTag(new ItemStack(Items.GOLD_INGOT), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 10).add(SUN, 5));
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("entity_owl", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(MOON, 8));
