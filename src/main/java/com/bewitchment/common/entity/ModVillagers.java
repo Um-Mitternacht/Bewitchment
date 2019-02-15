@@ -33,7 +33,24 @@ public class ModVillagers {
 	public Map<Integer, VillagerRegistry.VillagerProfession> professions = Maps.newHashMap();
 
 	public void init() {
+
+		//Demon professions
 		warlord = new VillagerRegistry.VillagerProfession("bewitchment:warlord", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		slaver = new VillagerRegistry.VillagerProfession("bewitchment:slaver", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		noble = new VillagerRegistry.VillagerProfession("bewitchment:noble", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		brute = new VillagerRegistry.VillagerProfession("bewitchment:brute", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		apocryphal_teacher = new VillagerRegistry.VillagerProfession("bewitchment:apocryphal_teacher", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		despot = new VillagerRegistry.VillagerProfession("bewitchment:despot", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{
 		}
 
