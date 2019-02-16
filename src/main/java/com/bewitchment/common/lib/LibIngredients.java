@@ -50,7 +50,7 @@ public class LibIngredients {
 	public static Ingredient fumeDropletOfWisdom = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.droplet_of_wisdom.ordinal()));
 	public static Ingredient ectoplasm = Ingredient.fromItem(ModItems.ectoplasm);
 	public static Ingredient graveyardDust = Ingredient.fromItem(ModItems.graveyard_dust);
-	public static Ingredient wormwood = Ingredient.fromItem(ModItems.wormwood);
+	public static Ingredient wormwood = new OreIngredient("cropWormwood");
 	public static Ingredient empty_honeycomb = Ingredient.fromItem(ModItems.empty_honeycomb);
 	public static Ingredient hoof = Ingredient.fromItem(ModItems.hoof);
 	public static Ingredient emptyGoblet = Ingredient.fromStacks(new ItemStack(ModBlocks.goblet, 1, 0));
