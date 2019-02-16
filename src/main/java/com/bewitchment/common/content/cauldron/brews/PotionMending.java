@@ -33,6 +33,7 @@ public class PotionMending extends BrewMod {
 
 	private Method startConverting;
 
+	@SuppressWarnings("deprecation")
 	public PotionMending() {
 		super("mending", false, 0x4CBB17, true, 0);
 		stateMap.put(Blocks.MYCELIUM, Blocks.GRASS.getDefaultState());

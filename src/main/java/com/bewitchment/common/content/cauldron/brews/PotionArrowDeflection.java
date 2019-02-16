@@ -18,6 +18,7 @@ public class PotionArrowDeflection extends BrewMod {
 	private final Field fieldInGround;
 	private final Method methodGetArrowStack;
 
+	@SuppressWarnings("deprecation")
 	public PotionArrowDeflection() {
 		super("arrow_deflection", false, 0xFFFACD, false, 2400);
 		try {

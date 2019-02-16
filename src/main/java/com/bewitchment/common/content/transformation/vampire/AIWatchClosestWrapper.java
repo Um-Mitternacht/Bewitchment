@@ -11,7 +11,9 @@ import java.lang.reflect.Field;
 
 public class AIWatchClosestWrapper extends EntityAIBase {
 
+	@SuppressWarnings("deprecation")
 	private static final Field entityClosest = ReflectionHelper.findField(EntityAIWatchClosest.class, "closestEntity", "field_75334_a", "b");
+	@SuppressWarnings("deprecation")
 	private static final Field entitySubject = ReflectionHelper.findField(EntityAIWatchClosest.class, "entity", "field_75332_b", "a");
 	private EntityAIWatchClosest wrapped;
 
