@@ -40,6 +40,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	}
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -51,6 +52,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState sideState = world.getBlockState(pos.offset(side));
@@ -107,11 +109,13 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isTopSolid(IBlockState state) {
 		return false;
