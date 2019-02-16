@@ -118,6 +118,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 		return super.getSaplingDropChance(state);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();

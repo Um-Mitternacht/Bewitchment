@@ -40,6 +40,7 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 
 
 	//Todo: Rewrite code, and implement weaknesses to water. Also implement a special potion effect that upon killing a target, spawns more uranids.
+	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityUran.class, DataSerializers.VARINT);

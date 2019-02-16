@@ -26,6 +26,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = LibMod.MOD_ID)
 public class MimicEventHandler {
 
+	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	private static final Field playerTextures = ReflectionHelper.findField(NetworkPlayerInfo.class, "playerTextures", LibReflection.NETWORK_PLAYER_INFO__PLAYER_TEXTURES);
 	@SideOnly(Side.CLIENT)

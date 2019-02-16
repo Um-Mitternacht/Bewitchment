@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  */
 public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, IMob {
 
+	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
 	private static final String PREFIX = "entity.bewitchment.prefix.";
 	private static final String NAME = "entity.bewitchment.given_name.";
