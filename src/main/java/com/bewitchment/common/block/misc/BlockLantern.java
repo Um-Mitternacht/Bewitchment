@@ -41,6 +41,7 @@ public class BlockLantern extends BlockMod {
 		this.lit = lit;
 		setResistance(3F);
 		setHardness(3F);
+		this.setHarvestLevel("pickaxe", 0);
 	}
 
 	@Override
