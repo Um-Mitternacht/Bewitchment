@@ -118,7 +118,7 @@ public final class ModConfig {
 
 		public static class Nuummite {
 			public int nuummite_min_vein = 1;
-			public int nuummite_max_vein = 2;
+			public int nuummite_max_vein = 6;
 			public int nuummite_min_height = 20;
 			public int nuummite_max_height = 65;
 			public int nuummite_gen_chance = 45;
