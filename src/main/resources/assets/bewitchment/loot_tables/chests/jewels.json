@@ -56,6 +56,20 @@
         },
         {
           "type": "item",
+          "name": "bewitchment:coquina",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 16
+              }
+            }
+          ],
+          "weight": 3
+        },		
+        {
+          "type": "item",
           "name": "bewitchment:gem",
           "functions": [
             {
