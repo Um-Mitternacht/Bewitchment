@@ -9,10 +9,7 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.integration.chisel.*;
 import com.bewitchment.common.item.block.*;
 import com.bewitchment.common.item.block.ItemBlockMeta.EnumNameMode;
-import com.bewitchment.common.item.equipment.ItemColdIronArmor;
-import com.bewitchment.common.item.equipment.ItemSilverArmor;
-import com.bewitchment.common.item.equipment.ItemVampireArmor;
-import com.bewitchment.common.item.equipment.ItemWitchesArmor;
+import com.bewitchment.common.item.equipment.*;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.magic.*;
@@ -363,6 +360,7 @@ public final class ModItems {
 				new ItemColdIronHoe(),
 				new ItemColdIronPickaxe(),
 				new ItemColdIronSpade(),
+				new ItemWitchesCowl(LibItemName.WITCHES_COWL, ModMaterials.ARMOR_BEWITCHED_LEATHER, 1, EntityEquipmentSlot.HEAD),
 				new ItemColdIronArmor(LibItemName.COLD_IRON_HELMET, ModMaterials.ARMOR_COLD_IRON, 1, EntityEquipmentSlot.HEAD),
 				new ItemColdIronArmor(LibItemName.COLD_IRON_CHESTPLATE, ModMaterials.ARMOR_COLD_IRON, 1, EntityEquipmentSlot.CHEST),
 				new ItemColdIronArmor(LibItemName.COLD_IRON_LEGGINGS, ModMaterials.ARMOR_COLD_IRON, 2, EntityEquipmentSlot.LEGS),

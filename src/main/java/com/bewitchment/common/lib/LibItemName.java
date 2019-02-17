@@ -74,6 +74,7 @@ public final class LibItemName {
 	public static final String WITCHES_HAT = "witches_hat";
 	public static final String WITCHES_ROBES = "witches_robes";
 	public static final String WITCHES_PANTS = "witches_pants";
+	public static final String WITCHES_COWL = "witches_cowl";
 	public static final String VAMPIRE_HAT = "vampire_hat";
 	public static final String VAMPIRE_VEST = "vampire_vest";
 	public static final String VAMPIRE_PANTS = "vampire_pants";
