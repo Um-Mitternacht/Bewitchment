@@ -24,7 +24,7 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 	}
 
 	public RenderBlackDog(RenderManager rendermanagerIn) {
-		super(rendermanagerIn, new ModelBlackDog(), 0.3f);
+		super(rendermanagerIn, new ModelBlackDog(), 1.0F);
 	}
 
 	@Override

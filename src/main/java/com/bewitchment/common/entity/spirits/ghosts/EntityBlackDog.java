@@ -88,9 +88,9 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 
 	protected void applyEntityAI() {
 		this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
-		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityVillager>(this, EntityVillager.class, false));
+		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityIronGolem>(this, EntityIronGolem.class, true));
 	}
 
 	@Override
@@ -131,8 +131,8 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 			return false;
 		} else {
 			if (damageSource.getTrueSource() != null && !this.equals(damageSource.getTrueSource())) {
-				addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 20 * 5, 1));
-				addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20 * 5, 1));
+				addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 20 * 5, 1, false, false));
+				addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20 * 5, 1, false, false));
 			}
 		}
 		return true;
@@ -142,7 +142,7 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 	}
 
 	public void onLivingUpdate() {
-		if (this.world.isDaytime() && !this.world.isRemote) {
+		if (this.isDaytime() && !this.world.isRemote) {
 			this.setDead();
 		}
 		super.onLivingUpdate();
@@ -151,7 +151,12 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 
 	@Override
 	public boolean getCanSpawnHere() {
-		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL != world.isDaytime() && super.getCanSpawnHere();
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && !this.isDaytime() && super.getCanSpawnHere();
+	}
+	
+	public boolean isDaytime() {
+		long time = this.world.getWorldTime() % 24000L; // Time can go over values of 24000, so divide and take the remainder
+		return !(time >= 13000L && time <= 23000L);
 	}
 
 	public void onUpdate() {
