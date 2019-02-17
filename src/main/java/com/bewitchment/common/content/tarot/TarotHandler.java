@@ -100,7 +100,7 @@ public class TarotHandler {
 
 		@Override
 		public String toString() {
-			return I18n.format(getTranslationKey()) + ", " + number + (reversed ? ", reversed" : "");
+			return this.getTranslationKey() + ", " + this.number + (this.reversed ? ", reversed" : "");
 		}
 	}
 

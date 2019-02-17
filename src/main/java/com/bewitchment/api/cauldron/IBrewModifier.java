@@ -2,6 +2,8 @@ package com.bewitchment.api.cauldron;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
@@ -16,6 +18,7 @@ public interface IBrewModifier extends IForgeRegistryEntry<IBrewModifier> {
 
 	public boolean hasMultipleLevels();
 
+	@SideOnly(Side.CLIENT)
 	public String getTooltipString(int lvl);
 
 	/**

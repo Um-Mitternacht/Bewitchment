@@ -9,6 +9,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class SimpleModifier implements IBrewModifier {
 
@@ -69,6 +71,7 @@ public abstract class SimpleModifier implements IBrewModifier {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getTooltipString(int lvl) {
 		if (hasMultipleLevels()) {
 			return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'), RomanNumberHelper.getRoman(lvl));
