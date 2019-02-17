@@ -134,6 +134,18 @@ public class ModelToad extends AdvancedModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.stomach.render(f5);
+		// Must reset the animations after rendering so it doesn't show up on all entities
+		this.stomach.offsetY = 0;
+		this.stomach.rotateAngleX = -0.36651914291F;
+		this.lLeg01.rotateAngleX = -0.51225413546F;
+		this.lLeg02.rotateAngleX = 0.45378560551F;
+		this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
+		this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+		this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
+		this.lArm01.rotateAngleX = -0.8159414253F;
+		this.lArm02.rotateAngleX = 0.45378560551F;
+		this.rArm01.rotateAngleX = lArm01.rotateAngleX;
+		this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 	}
 
 	@Override
@@ -162,7 +174,8 @@ public class ModelToad extends AdvancedModelBase {
 		if (limbSwingAmount > 0.1 || timer != 0) {
 			timer = toad.postIncAnimation();
 			if (timer < 25) {
-				this.stomach.offsetY = this.stomach.offsetY + (-1.5F - this.stomach.offsetY) * (timer / 100F);
+				this.stomach.offsetY = toad.getAnimationHeight() + (-1.5F - toad.getAnimationHeight()) * (timer / 100F);
+				toad.setAnimationHeight(this.stomach.offsetY);
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0 - this.stomach.rotateAngleX) * (timer / 100F);
 				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (1.3962634016F - this.lLeg01.rotateAngleX) * (timer / 100F);
 				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (-1.3962634016F - this.lLeg02.rotateAngleX) * (timer / 100F);
@@ -176,7 +189,8 @@ public class ModelToad extends AdvancedModelBase {
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
 			} else if (timer < 50) {
-				this.stomach.offsetY = this.stomach.offsetY + (0F - this.stomach.offsetY) * ((timer - 25) / 100);
+				this.stomach.offsetY = toad.getAnimationHeight() + (0F - toad.getAnimationHeight()) * ((timer - 25) / 100);
+				toad.setAnimationHeight(this.stomach.offsetY);
 				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0.36651914291F - this.stomach.rotateAngleX) * ((timer - 24F) / 100F);
 				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (-0.51225413546F - this.lLeg01.rotateAngleX) * ((timer - 24F) / 100F);
 				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (0.45378560551F - this.lLeg02.rotateAngleX) * ((timer - 24F) / 100F);
@@ -194,6 +208,7 @@ public class ModelToad extends AdvancedModelBase {
 			} else {
 				toad.resetAnimationTime();
 				this.stomach.offsetY = 0;
+				toad.resetAnimationHeight();
 				this.stomach.rotateAngleX = -0.36651914291F;
 				this.lLeg01.rotateAngleX = -0.51225413546F;
 				this.lLeg02.rotateAngleX = 0.45378560551F;
@@ -209,6 +224,7 @@ public class ModelToad extends AdvancedModelBase {
 		} else {
 			toad.resetAnimationTime();
 			this.stomach.offsetY = 0;
+			toad.resetAnimationHeight();
 		}
 
 	}
