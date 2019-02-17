@@ -153,7 +153,7 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 	public boolean getCanSpawnHere() {
 		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && !this.isDaytime() && super.getCanSpawnHere();
 	}
-	
+
 	public boolean isDaytime() {
 		long time = this.world.getWorldTime() % 24000L; // Time can go over values of 24000, so divide and take the remainder
 		return !(time >= 13000L && time <= 23000L);

@@ -70,13 +70,13 @@ public final class ModEntities {
 
 		List<Biome> validToad = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
-				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.SNOWY) || !BiomeDictionary.hasType(b, Type.COLD) || !BiomeDictionary.hasType(b, Type.VOID))
+				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.DRY) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.SNOWY) || !BiomeDictionary.hasType(b, Type.COLD) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid toad biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 
 		List<Biome> validNewt = Biome.REGISTRY.getKeys().stream()
 				.map(rl -> Biome.REGISTRY.getObject(rl))
-				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.SNOWY) || !BiomeDictionary.hasType(b, Type.COLD) || !BiomeDictionary.hasType(b, Type.VOID))
+				.filter(b -> BiomeDictionary.hasType(b, Type.SWAMP) || !BiomeDictionary.hasType(b, Type.DRY) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.SNOWY) || !BiomeDictionary.hasType(b, Type.COLD) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid newt biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
 

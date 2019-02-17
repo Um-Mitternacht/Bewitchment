@@ -334,7 +334,7 @@ public class ModelNewt extends AdvancedModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
-		this.lArm01.rotateAngleY = MathHelper.cos(f * 0.66F) * 1.4F * f1; 
+		this.lArm01.rotateAngleY = MathHelper.cos(f * 0.66F) * 1.4F * f1;
 		this.rArm01.rotateAngleY = -this.lArm01.rotateAngleY;
 		this.lLeg01.rotateAngleY = -this.lArm01.rotateAngleY;
 		this.rLeg01.rotateAngleY = this.lArm01.rotateAngleY;

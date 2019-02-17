@@ -1,31 +1,17 @@
 package com.bewitchment.common.entity.living.animals;
 
-import java.util.Set;
-
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
-import net.minecraft.entity.ai.EntityAIFollowParent;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISit;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITargetNonTamed;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest2;
-import net.minecraft.entity.ai.EntityMoveHelper;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -46,6 +32,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+import java.util.Set;
+
 /**
  * Created by Joseph on 10/2/2018.
  */
@@ -60,8 +48,8 @@ public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
 	private static final double maxHPWild = 8;
 	//private int animationTick;
 	//private Animation currentAnimation;
-	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT); 
-	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.<Float>createKey(EntityToad.class, DataSerializers.FLOAT); 
+	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.<Float>createKey(EntityToad.class, DataSerializers.FLOAT);
 
 	public EntityToad(World worldIn) {
 		super(worldIn);
@@ -237,33 +225,33 @@ public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
 	public int getSkinTypes() {
 		return 4;
 	}
-	
+
 	public float postIncAnimation() {
 		this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
 		return (float) this.dataManager.get(ANIMATION_TIME);
 	}
-	
+
 	public float getAnimationTime() {
 		return (float) this.dataManager.get(ANIMATION_TIME);
 	}
-	
+
 	public void resetAnimationTime() {
 		this.dataManager.set(ANIMATION_TIME, 0);
 	}
-	
+
 	public float getAnimationHeight() {
 		return (float) this.dataManager.get(ANIMATION_HEIGHT);
 	}
-	
+
 	public float setAnimationHeight(float in) {
 		this.dataManager.set(ANIMATION_HEIGHT, in);
 		return in;
 	}
-	
+
 	public void resetAnimationHeight() {
 		this.dataManager.set(ANIMATION_HEIGHT, 0.0F);
 	}
-	
+
 	// LLibrary stuff \/
 	/*
 	@Override

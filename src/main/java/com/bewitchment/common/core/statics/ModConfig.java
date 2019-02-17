@@ -78,66 +78,66 @@ public final class ModConfig {
 
 		public static class SilverOre {
 			public int silver_min_vein = 1;
-			public int silver_max_vein = 8;
+			public int silver_max_vein = 16;
 			public int silver_min_height = 10;
 			public int silver_max_height = 128;
-			public int silver_gen_chance = 25;
+			public int silver_gen_chance = 65;
 		}
 
 		public static class BloodstoneOre {
 			public int bloodStone_min_vein = 1;
 			public int bloodStone_max_vein = 6;
 			public int bloodStone_min_height = 20;
-			public int bloodStone_max_height = 80;
-			public int bloodStone_gen_chance = 25;
+			public int bloodStone_max_height = 65;
+			public int bloodStone_gen_chance = 45;
 		}
 
 		public static class Tourmaline {
 			public int tourmaline_min_vein = 1;
 			public int tourmaline_max_vein = 6;
 			public int tourmaline_min_height = 20;
-			public int tourmaline_max_height = 80;
-			public int tourmaline_gen_chance = 25;
+			public int tourmaline_max_height = 65;
+			public int tourmaline_gen_chance = 45;
 		}
 
 		public static class Malachite {
 			public int malachite_min_vein = 1;
 			public int malachite_max_vein = 6;
 			public int malachite_min_height = 20;
-			public int malachite_max_height = 80;
-			public int malachite_gen_chance = 25;
+			public int malachite_max_height = 65;
+			public int malachite_gen_chance = 45;
 		}
 
 		public static class TigersEye {
 			public int tigersEye_min_vein = 1;
 			public int tigersEye_max_vein = 6;
 			public int tigersEye_min_height = 20;
-			public int tigersEye_max_height = 80;
-			public int tigersEye_gen_chance = 25;
+			public int tigersEye_max_height = 65;
+			public int tigersEye_gen_chance = 45;
 		}
 
 		public static class Nuummite {
 			public int nuummite_min_vein = 1;
 			public int nuummite_max_vein = 2;
 			public int nuummite_min_height = 20;
-			public int nuummite_max_height = 80;
-			public int nuummite_gen_chance = 25;
+			public int nuummite_max_height = 65;
+			public int nuummite_gen_chance = 45;
 		}
 
 		public static class Garnet {
 			public int garnet_min_vein = 1;
 			public int garnet_max_vein = 6;
 			public int garnet_min_height = 20;
-			public int garnet_max_height = 80;
-			public int garnet_gen_chance = 25;
+			public int garnet_max_height = 65;
+			public int garnet_gen_chance = 45;
 		}
 
 		public static class Jasper {
 			public int jasper_min_vein = 1;
 			public int jasper_max_vein = 6;
 			public int jasper_min_height = 20;
-			public int jasper_max_height = 80;
-			public int jasper_gen_chance = 25;
+			public int jasper_max_height = 65;
+			public int jasper_gen_chance = 45;
 		}
 
 		public static class Salt {
@@ -145,15 +145,15 @@ public final class ModConfig {
 			public int salt_max_vein = 16;
 			public int salt_min_height = 20;
 			public int salt_max_height = 128;
-			public int salt_gen_chance = 25;
+			public int salt_gen_chance = 65;
 		}
 
 		public static class Amethyst {
 			public int amethyst_min_vein = 1;
 			public int amethyst_max_vein = 6;
 			public int amethyst_min_height = 20;
-			public int amethyst_max_height = 80;
-			public int amethyst_gen_chance = 25;
+			public int amethyst_max_height = 65;
+			public int amethyst_gen_chance = 45;
 		}
 
 		public static class Alexandrite {
@@ -161,19 +161,15 @@ public final class ModConfig {
 			public int alexandrite_max_vein = 6;
 			public int alexandrite_min_height = 20;
 			public int alexandrite_max_height = 65;
-			public int alexandrite_gen_chance = 25;
+			public int alexandrite_gen_chance = 45;
 		}
 
 		public static class Coquina {
-			public int coquina_min_vein = 1;
-			public int coquina_max_vein = 4;
-			public int coquina_min_height = 55;
-			public int coquina_max_height = 65;
 			public int coquina_gen_chance = 25;
 		}
 
 		public static class Beehive {
-			public int beehive_gen_chance = 12;
+			public int beehive_gen_chance = 15;
 		}
 	}
 
