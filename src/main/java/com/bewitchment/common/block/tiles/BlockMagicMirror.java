@@ -40,6 +40,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		this.setLightOpacity(0);
 		setResistance(2F);
 		setHardness(2F);
+		setHarvestLevel("pickaxe", 0);
 	}
 
 	@Override
