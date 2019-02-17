@@ -19,6 +19,8 @@ import java.util.Random;
  */
 public class CropSilphium extends BlockCrop {
 
+	//CANNOT GROW IN DESERTS, SLOW GROWING, TWO BLOCKS TALL
+
 	public CropSilphium() {
 		super(LibBlockName.CROP_SILPHIUM, 5);
 	}

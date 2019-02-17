@@ -18,6 +18,8 @@ import java.util.Random;
  */
 public class CropWormwood extends BlockCrop {
 
+	//SPREADS
+
 	public CropWormwood() {
 		super(LibBlockName.CROP_WORMWOOD);
 	}

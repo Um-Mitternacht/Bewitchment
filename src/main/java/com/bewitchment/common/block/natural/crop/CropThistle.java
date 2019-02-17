@@ -18,6 +18,8 @@ import java.util.Random;
  */
 public class CropThistle extends BlockCrop {
 
+	//SPREADS
+
 	public CropThistle() {
 		super(LibBlockName.CROP_THISTLE, 6);
 	}

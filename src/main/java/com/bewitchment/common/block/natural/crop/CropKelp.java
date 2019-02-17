@@ -21,6 +21,8 @@ import static net.minecraft.block.BlockLiquid.LEVEL;
  */
 public class CropKelp extends BlockCrop {
 
+	//GROWS TALL UNDERWATER
+
 	public CropKelp() {
 		super(LibBlockName.CROP_KELP);
 	}
