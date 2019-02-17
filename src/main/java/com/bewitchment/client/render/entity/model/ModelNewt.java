@@ -1,9 +1,9 @@
 package com.bewitchment.client.render.entity.model;
 
-import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * salamander - cybercat5555
@@ -57,8 +57,6 @@ public class ModelNewt extends AdvancedModelBase {
 	public AdvancedModelRenderer rFToe02;
 	public AdvancedModelRenderer rFToe03;
 	public AdvancedModelRenderer rFToe04;
-
-	private ModelAnimator animator;
 
 	public ModelNewt() {
 		this.textureWidth = 64;
@@ -316,7 +314,6 @@ public class ModelNewt extends AdvancedModelBase {
 		this.tail02.addChild(this.tail03);
 		this.lFoot.addChild(this.lBToe02);
 		this.updateDefaultPose();
-		animator = ModelAnimator.create();
 	}
 
 	@Override
@@ -337,23 +334,10 @@ public class ModelNewt extends AdvancedModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
-
-		//f = entity.ticksExisted;
-		//f1 = 0.5f;
-
-		float globalSpeed = 1;
-		float globalHeight = 1;
-		float globalDegree = 1;
-
-		bob(head, 0.1f, 0.3f * globalHeight, true, f, f1);
-		walk(lArm02, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
-		walk(lArm01, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
-		walk(rArm01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
-		walk(rArm02, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
-		flap(lArm02, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
-		flap(lArm01, 0.1f, 0.3f * globalHeight, true, 0, 0, f, f1);
-		flap(rArm02, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
-		flap(rArm01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
-		swing(tail01, 0.1f, 0.3f * globalHeight, false, 0, 0, f, f1);
+		this.lArm01.rotateAngleY = MathHelper.cos(f * 0.66F) * 1.4F * f1; 
+		this.rArm01.rotateAngleY = -this.lArm01.rotateAngleY;
+		this.lLeg01.rotateAngleY = -this.lArm01.rotateAngleY;
+		this.rLeg01.rotateAngleY = this.lArm01.rotateAngleY;
+		this.tail01.rotateAngleY = -this.lArm01.rotateAngleY / 3;
 	}
 }
