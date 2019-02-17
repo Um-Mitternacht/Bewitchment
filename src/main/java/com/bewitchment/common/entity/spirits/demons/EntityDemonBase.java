@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 1/13/2019.
- *
+ * <p>
  * Credit to AlexThe666 for bits and pieces of the code, so that I may create a merchant not based on a villager.
  */
 public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity, IMob, IMerchant {
