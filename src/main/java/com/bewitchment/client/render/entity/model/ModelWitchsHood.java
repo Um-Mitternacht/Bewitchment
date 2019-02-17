@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
  * Created using Tabula 5.1.0
  */
 public class ModelWitchsHood extends ModelBase {
+	public static final ModelWitchsHood INSTANCE = new ModelWitchsHood();
 	public ModelRenderer bipedRightArm;
 	public ModelRenderer bipedRightLeg;
 	public ModelRenderer bipedHead;
