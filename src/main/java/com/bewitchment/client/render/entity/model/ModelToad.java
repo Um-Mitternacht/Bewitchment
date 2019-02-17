@@ -170,7 +170,6 @@ public class ModelToad extends AdvancedModelBase {
 			rLeg03.rotateAngleY = 0.6000000238418579F;
 		}
 		float timer = toad.getAnimationTime();
-		System.out.println(timer);
 		if (limbSwingAmount > 0.1 || timer != 0) {
 			timer = toad.postIncAnimation();
 			if (timer < 25) {
