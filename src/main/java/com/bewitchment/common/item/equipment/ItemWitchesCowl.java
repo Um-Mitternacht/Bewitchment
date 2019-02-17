@@ -31,12 +31,9 @@ public class ItemWitchesCowl extends ItemArmor implements IModelRegister {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, EntityEquipmentSlot slot, ModelBiped biped)
-	{
-		if(stack != ItemStack.EMPTY)
-		{
-			if(stack.getItem() instanceof ItemArmor)
-			{
+	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, EntityEquipmentSlot slot, ModelBiped biped) {
+		if (stack != ItemStack.EMPTY) {
+			if (stack.getItem() instanceof ItemArmor) {
 				ModelWitchsHood armourModel = new ModelWitchsHood(slot);
 
 				armourModel.isSneak = biped.isSneak;
