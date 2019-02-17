@@ -1,10 +1,13 @@
 package com.bewitchment.common.entity.living.animals;
 
+import java.util.Set;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
+
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
@@ -13,7 +16,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -34,22 +48,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
 /**
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
+public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
 
-	public static final Animation ANIMATION_LEAP = Animation.create(20, 15);
+	//public static final Animation ANIMATION_LEAP = Animation.create(20, 15);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
 	private static final String[] names = {"Iron Henry", "Jimmy", "Kermit", "Frog-n-stein", "Prince Charming", "Heqet", "Hapi", "Aphrodite", "Physignathus", "Jiraiya", "Dat Boi", "Llamhigyn Y Dwr", "Michigan", "Wednesday", "Trevor", "Odin", "Woden", "Mercury", "Miércoles"};
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 	private static final DataParameter<Integer> TINT = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
 	private static final double maxHPWild = 8;
-	private int animationTick;
-	private Animation currentAnimation;
+	//private int animationTick;
+	//private Animation currentAnimation;
+	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT); 
 
 	public EntityToad(World worldIn) {
 		super(worldIn);
@@ -70,7 +83,8 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataManager.register(TINT, 0xFFFFFF);
+		this.dataManager.register(TINT, 0xFFFFFF);
+		this.dataManager.register(ANIMATION_TIME, Integer.valueOf(0));
 		this.aiSit = new EntityAISit(this);
 	}
 
@@ -224,7 +238,22 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 	public int getSkinTypes() {
 		return 4;
 	}
-
+	
+	public float postIncAnimation() {
+		this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
+	
+	public float getAnimationTime() {
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
+	
+	public void resetAnimationTime() {
+		this.dataManager.set(ANIMATION_TIME, 0);
+	}
+	
+	// LLibrary stuff \/
+	/*
 	@Override
 	public int getAnimationTick() {
 		return animationTick;
@@ -248,5 +277,5 @@ public class EntityToad extends EntityFamiliar implements IAnimatedEntity {
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityToad.ANIMATION_LEAP};
-	}
+	}*/
 }

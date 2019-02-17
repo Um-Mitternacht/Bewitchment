@@ -30,7 +30,6 @@ public class ModelToad extends AdvancedModelBase {
 	public ModelRenderer lLeg03;
 	public ModelRenderer rLeg02;
 	public ModelRenderer rLeg03;
-	float timer = 0;
 
 	public ModelToad() {
 		this.textureWidth = 64;
@@ -158,41 +157,42 @@ public class ModelToad extends AdvancedModelBase {
 			lLeg03.rotateAngleY = -0.6000000238418579F;
 			rLeg03.rotateAngleY = 0.6000000238418579F;
 		}
-
-		if (limbSwingAmount > 0.1 || timer != 0) {//This needs to be made so that the variable is stored on the actual entity or whatever
-			timer++;
+		float timer = toad.getAnimationTime();
+		System.out.println(timer);
+		if (limbSwingAmount > 0.1 || timer != 0) {
+			timer = toad.postIncAnimation();
 			if (timer < 25) {
-				this.stomach.offsetY = this.stomach.offsetY + (-1.5F - this.stomach.offsetY) * (timer / 100);
-				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0 - this.stomach.rotateAngleX) * (timer / 100);
-				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (1.3962634016F - this.lLeg01.rotateAngleX) * (timer / 100);
-				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (-1.3962634016F - this.lLeg02.rotateAngleX) * (timer / 100);
-				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (2.35619449019F - this.lLeg03.rotateAngleX) * (timer / 100);
+				this.stomach.offsetY = this.stomach.offsetY + (-1.5F - this.stomach.offsetY) * (timer / 100F);
+				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0 - this.stomach.rotateAngleX) * (timer / 100F);
+				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (1.3962634016F - this.lLeg01.rotateAngleX) * (timer / 100F);
+				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (-1.3962634016F - this.lLeg02.rotateAngleX) * (timer / 100F);
+				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (2.35619449019F - this.lLeg03.rotateAngleX) * (timer / 100F);
 				this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
 				this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
 				this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
-				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-2.35619449019F - this.lArm01.rotateAngleX) * (timer / 100);
-				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (1.3962634016F - this.lArm02.rotateAngleX) * (timer / 100);
+				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-2.35619449019F - this.lArm01.rotateAngleX) * (timer / 100F);
+				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (1.3962634016F - this.lArm02.rotateAngleX) * (timer / 100F);
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
 			} else if (timer < 50) {
 				this.stomach.offsetY = this.stomach.offsetY + (0F - this.stomach.offsetY) * ((timer - 25) / 100);
-				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0.36651914291F - this.stomach.rotateAngleX) * ((timer - 24) / 100);
-				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (-0.51225413546F - this.lLeg01.rotateAngleX) * ((timer - 24) / 100);
-				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (0.45378560551F - this.lLeg02.rotateAngleX) * ((timer - 24) / 100);
-				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (0.41887902047F - this.lLeg03.rotateAngleX) * ((timer - 24) / 100);
+				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (0.36651914291F - this.stomach.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (-0.51225413546F - this.lLeg01.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (0.45378560551F - this.lLeg02.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (0.41887902047F - this.lLeg03.rotateAngleX) * ((timer - 24F) / 100F);
 				this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
 				this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
 				this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
-				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-0.8159414253F - this.lArm01.rotateAngleX) * ((timer - 24) / 100);
-				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (0.45378560551F - this.lArm02.rotateAngleX) * ((timer - 24) / 100);
+				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-0.8159414253F - this.lArm01.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (0.45378560551F - this.lArm02.rotateAngleX) * ((timer - 24F) / 100F);
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
 
 			} else if (timer < 75) {
-				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (-0.36651914291F - this.stomach.rotateAngleX) * ((timer - 49) / 100);
+				this.stomach.rotateAngleX = this.stomach.rotateAngleX + (-0.36651914291F - this.stomach.rotateAngleX) * ((timer - 49F) / 100F);
 			} else {
-				timer = 0;
+				toad.resetAnimationTime();
 				this.stomach.offsetY = 0;
 				this.stomach.rotateAngleX = -0.36651914291F;
 				this.lLeg01.rotateAngleX = -0.51225413546F;
@@ -204,12 +204,10 @@ public class ModelToad extends AdvancedModelBase {
 				this.lArm02.rotateAngleX = 0.45378560551F;
 				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
 				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
-
-
 			}
 
 		} else {
-			timer = 0;
+			toad.resetAnimationTime();
 			this.stomach.offsetY = 0;
 		}
 
