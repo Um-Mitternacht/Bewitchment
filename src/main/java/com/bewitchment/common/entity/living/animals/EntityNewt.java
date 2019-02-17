@@ -61,14 +61,14 @@ public class EntityNewt extends EntityAnimal implements IAnimatedEntity {
 
 	@Override
 	protected void initEntityAI() {
-		this.tasks.addTask(0, new EntityAIPanic(this, 0.7D));
+		this.tasks.addTask(0, new EntityAIPanic(this, 0.5D));
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
-		this.tasks.addTask(3, new EntityAIMate(this, 1d));
-		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(3, new EntityAIMate(this, 0.3D));
+		this.tasks.addTask(4, new EntityAIFollowParent(this, 0.4D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.3D));
 	}
 
 	@Override
