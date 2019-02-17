@@ -21,6 +21,7 @@ public class ModSpinningThreadRecipes {
 		Ingredient soul_string = Ingredient.fromItem(ModItems.soul_string);
 		Ingredient kenaf = Ingredient.fromItem(ModItems.kenaf);
 		Ingredient demon_heart = Ingredient.fromItem(ModItems.demon_heart);
+		Ingredient diabolic_vein = Ingredient.fromItem(ModItems.diabolic_vein);
 
 		SpinningThreadRecipe.REGISTRY.registerAll(
 				new SpinningThreadRecipe(rl("spider_web"), new ItemStack(Blocks.WEB), string, string, string),
@@ -30,7 +31,8 @@ public class ModSpinningThreadRecipes {
 				new SpinningThreadRecipe(rl("diabolic_vein"), new ItemStack(ModItems.diabolic_vein, 4), soul_string, demon_heart, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 8)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 13))),
 				new SpinningThreadRecipe(rl("pure_filament"), new ItemStack(ModItems.pure_filament, 4), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7)), Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 7))),
 				new SpinningThreadRecipe(rl("soulstring"), new ItemStack(ModItems.soul_string, 2), stitching, stitching, Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, 10)), ectoplasm),
-				new SpinningThreadRecipe(rl("string"), new ItemStack(Items.STRING, 12, 0), kenaf, kenaf, kenaf, kenaf)
+				new SpinningThreadRecipe(rl("string"), new ItemStack(Items.STRING, 12, 0), kenaf, kenaf, kenaf, kenaf),
+				new SpinningThreadRecipe(rl("bloody_rags"), new ItemStack(ModItems.sanguine_fabric, 4, 0), diabolic_vein, diabolic_vein, diabolic_vein, diabolic_vein)
 		);
 	}
 

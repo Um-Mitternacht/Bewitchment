@@ -10,11 +10,10 @@ import net.minecraft.inventory.EntityEquipmentSlot;
  * WitchsHood - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelWitchsHood extends ModelBiped
-{
+public class ModelWitchsHood extends ModelBiped {
 	//public static final ModelWitchsHood INSTANCE = new ModelWitchsHood();
 	public final EntityEquipmentSlot slot;
-	
+
 	public ModelRenderer hood01;
 	public ModelRenderer hoodFringe01;
 	public ModelRenderer hoodFringeL01;
@@ -29,13 +28,12 @@ public class ModelWitchsHood extends ModelBiped
 	public ModelRenderer hoodPipe01;
 	public ModelRenderer hoodPipe02;
 
-	public ModelWitchsHood(EntityEquipmentSlot slot)
-	{
+	public ModelWitchsHood(EntityEquipmentSlot slot) {
 		this.slot = slot;
-		
+
 		this.textureWidth = 128;
 		this.textureHeight = 128;
-		
+
 		this.hoodFringeR01 = new ModelRenderer(this, 77, 24);
 		this.hoodFringeR01.mirror = true;
 		this.hoodFringeR01.setRotationPoint(-1.9F, -8.2F, 0.1F);
@@ -90,7 +88,7 @@ public class ModelWitchsHood extends ModelBiped
 		this.hoodFringeR02.setRotationPoint(-4.85F, -1.2F, 0.1F);
 		this.hoodFringeR02.addBox(-1.0F, -0.5F, -5.38F, 1, 2, 10, 0.0F);
 		this.setRotateAngle(hoodFringeR02, 0.0F, 0.0F, -0.20943951023931953F);
-		
+
 		this.hood01.addChild(this.hoodFringeR01);
 		this.hood01.addChild(this.hoodFringeL04);
 		this.hoodPipe01.addChild(this.hoodPipe02);
@@ -107,71 +105,62 @@ public class ModelWitchsHood extends ModelBiped
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
 		this.bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
-		
+
 		this.bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;
 		this.bipedRightArm.showModel = slot == EntityEquipmentSlot.CHEST;
 		this.bipedLeftArm.showModel = slot == EntityEquipmentSlot.CHEST;
-		
-		if(slot == EntityEquipmentSlot.LEGS)
-		{
+
+		if (slot == EntityEquipmentSlot.LEGS) {
 			this.bipedRightLeg.showModel = slot == EntityEquipmentSlot.LEGS;
 			this.bipedLeftLeg.showModel = slot == EntityEquipmentSlot.LEGS;
-		}
-		else
-		{
+		} else {
 			this.bipedRightLeg.showModel = slot == EntityEquipmentSlot.FEET;
 			this.bipedLeftLeg.showModel = slot == EntityEquipmentSlot.FEET;
 		}
-    	
-    	super.render(entity, f, f1, f2, f3, f4, f5);
+
+		super.render(entity, f, f1, f2, f3, f4, f5);
 	}
-	
+
 	@Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-    		float headPitch, float scaleFactor, Entity entity)
-    {
-    	if(entity instanceof EntityArmorStand)
-    	{
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+	                              float headPitch, float scaleFactor, Entity entity) {
+		if (entity instanceof EntityArmorStand) {
 			EntityArmorStand entityarmorstand = (EntityArmorStand) entity;
 			this.bipedHead.rotateAngleX = 0.017453292F * entityarmorstand.getHeadRotation().getX();
 			this.bipedHead.rotateAngleY = 0.017453292F * entityarmorstand.getHeadRotation().getY();
 			this.bipedHead.rotateAngleZ = 0.017453292F * entityarmorstand.getHeadRotation().getZ();
 			this.bipedHead.setRotationPoint(0.0F, 1.0F, 0.0F);
-			
+
 			this.bipedBody.rotateAngleX = 0.017453292F * entityarmorstand.getBodyRotation().getX();
 			this.bipedBody.rotateAngleY = 0.017453292F * entityarmorstand.getBodyRotation().getY();
 			this.bipedBody.rotateAngleZ = 0.017453292F * entityarmorstand.getBodyRotation().getZ();
-			
+
 			this.bipedLeftArm.rotateAngleX = 0.017453292F * entityarmorstand.getLeftArmRotation().getX();
 			this.bipedLeftArm.rotateAngleY = 0.017453292F * entityarmorstand.getLeftArmRotation().getY();
 			this.bipedLeftArm.rotateAngleZ = 0.017453292F * entityarmorstand.getLeftArmRotation().getZ();
-			
+
 			this.bipedRightArm.rotateAngleX = 0.017453292F * entityarmorstand.getRightArmRotation().getX();
 			this.bipedRightArm.rotateAngleY = 0.017453292F * entityarmorstand.getRightArmRotation().getY();
 			this.bipedRightArm.rotateAngleZ = 0.017453292F * entityarmorstand.getRightArmRotation().getZ();
-			
+
 			this.bipedLeftLeg.rotateAngleX = 0.017453292F * entityarmorstand.getLeftLegRotation().getX();
 			this.bipedLeftLeg.rotateAngleY = 0.017453292F * entityarmorstand.getLeftLegRotation().getY();
 			this.bipedLeftLeg.rotateAngleZ = 0.017453292F * entityarmorstand.getLeftLegRotation().getZ();
 			this.bipedLeftLeg.setRotationPoint(1.9F, 11.0F, 0.0F);
-			
+
 			this.bipedRightLeg.rotateAngleX = 0.017453292F * entityarmorstand.getRightLegRotation().getX();
 			this.bipedRightLeg.rotateAngleY = 0.017453292F * entityarmorstand.getRightLegRotation().getY();
 			this.bipedRightLeg.rotateAngleZ = 0.017453292F * entityarmorstand.getRightLegRotation().getZ();
 			this.bipedRightLeg.setRotationPoint(-1.9F, 11.0F, 0.0F);
-			
+
 			copyModelAngles(this.bipedHead, this.bipedHeadwear);
+		} else {
+			super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		}
-    	
-    	else
-    	{
-    		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
-    	}
-    }
+	}
 
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
