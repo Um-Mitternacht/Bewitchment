@@ -33,6 +33,7 @@ public class BlockDistillery extends BlockModTileEntity {
 		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.SOUTH));
 		setResistance(5F);
 		setHardness(5F);
+		setHarvestLevel("pickaxe", 0);
 	}
 
 	@Override

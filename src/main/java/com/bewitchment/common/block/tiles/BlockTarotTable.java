@@ -34,6 +34,7 @@ public class BlockTarotTable extends BlockModTileEntity implements IInfusionStab
 		setSoundType(SoundType.STONE);
 		setResistance(3F);
 		setHardness(3F);
+		setHarvestLevel("pickaxe", 0);
 	}
 
 	@SuppressWarnings("deprecation")

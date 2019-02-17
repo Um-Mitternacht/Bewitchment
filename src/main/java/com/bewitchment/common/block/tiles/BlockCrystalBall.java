@@ -23,6 +23,7 @@ public class BlockCrystalBall extends BlockModTileEntity {
 		this.setLightLevel(0.3f);
 		setResistance(1F);
 		setHardness(1F);
+		setHarvestLevel("pickaxe", 0);
 	}
 
 	@SuppressWarnings("deprecation")

@@ -30,6 +30,7 @@ public class BlockLoom extends BlockModTileEntity {
 		this.setSoundType(SoundType.WOOD);
 		setResistance(3F);
 		setHardness(3F);
+		setHarvestLevel("axe", 0);
 	}
 
 	@Override

@@ -40,6 +40,7 @@ public class BlockApiary extends BlockModTileEntity {
 		setSoundType(SoundType.WOOD);
 		setResistance(2F);
 		setHardness(2F);
+		setHarvestLevel("axe", 0);
 	}
 
 	@SuppressWarnings("deprecation")

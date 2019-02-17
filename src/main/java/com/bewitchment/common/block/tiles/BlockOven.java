@@ -34,6 +34,7 @@ public class BlockOven extends BlockModTileEntity {
 		setSoundType(SoundType.METAL);
 		setResistance(5F);
 		setHardness(5F);
+		setHarvestLevel("pickaxe", 0);
 	}
 
 	@SuppressWarnings("deprecation")
