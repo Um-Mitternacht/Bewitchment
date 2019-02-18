@@ -17,6 +17,7 @@ public final class ModMaterials {
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial(LibItemName.SILVER, 1, 215, 10.0F, 2.5F, 24);
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial(LibItemName.SILVER, LibMod.MOD_ID + ":" + LibItemName.SILVER, 12, new int[]{1, 4, 5, 2}, 22, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.5F);
 
+	public static final ItemArmor.ArmorMaterial ARMOR_BEWITCHED_HOOD = EnumHelper.addArmorMaterial(LibItemName.BEWITCHED_HOOD, LibMod.MOD_ID + ":" + LibItemName.BEWITCHED_HOOD, 24, new int[]{1, 4, 5, 1}, 22, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.5F);
 	public static final ItemArmor.ArmorMaterial ARMOR_BEWITCHED_LEATHER = EnumHelper.addArmorMaterial(LibItemName.BEWITCHED_LEATHER, LibMod.MOD_ID + ":" + LibItemName.BEWITCHED_LEATHER, 24, new int[]{1, 4, 5, 1}, 22, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.5F);
 	public static final ItemArmor.ArmorMaterial ARMOR_VAMPIRE = EnumHelper.addArmorMaterial(LibItemName.VAMPIRE, LibMod.MOD_ID + ":" + LibItemName.VAMPIRE, 9, new int[]{2, 6, 7, 1}, 22, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.25F);
 

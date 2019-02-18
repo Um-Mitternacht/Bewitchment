@@ -4,6 +4,7 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchsHood;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -34,15 +35,22 @@ public class ItemWitchesCowl extends ItemArmor implements IModelRegister {
 	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, EntityEquipmentSlot slot, ModelBiped biped) {
 		if (stack != ItemStack.EMPTY) {
 			if (stack.getItem() instanceof ItemArmor) {
-				ModelWitchsHood armourModel = new ModelWitchsHood(slot);
+				
+				ModelWitchsHood.INSTANCE.bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
+				//ModelWitchsHood.INSTANCE.bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
+				ModelWitchsHood.INSTANCE.bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;
+				ModelWitchsHood.INSTANCE.bipedLeftArm.showModel = slot == EntityEquipmentSlot.CHEST;
+				ModelWitchsHood.INSTANCE.bipedRightArm.showModel = slot == EntityEquipmentSlot.CHEST;
+				ModelWitchsHood.INSTANCE.bipedLeftLeg.showModel = slot == EntityEquipmentSlot.LEGS;
+				ModelWitchsHood.INSTANCE.bipedRightLeg.showModel = slot == EntityEquipmentSlot.LEGS;
 
-				armourModel.isSneak = biped.isSneak;
-				armourModel.isRiding = biped.isRiding;
-				armourModel.isChild = biped.isChild;
-				armourModel.rightArmPose = biped.rightArmPose;
-				armourModel.leftArmPose = biped.leftArmPose;
+				ModelWitchsHood.INSTANCE.isChild = biped.isChild;
+				ModelWitchsHood.INSTANCE.isRiding = biped.isRiding;
+				ModelWitchsHood.INSTANCE.isSneak = biped.isSneak;
+				ModelWitchsHood.INSTANCE.rightArmPose = biped.rightArmPose;
+				ModelWitchsHood.INSTANCE.leftArmPose = biped.leftArmPose;
 
-				return armourModel;
+				return ModelWitchsHood.INSTANCE;
 			}
 		}
 

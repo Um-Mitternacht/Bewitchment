@@ -149,6 +149,7 @@ public final class LibItemName {
 	//Materials
 	public static final String SILVER = "silver";
 	public static final String BEWITCHED_LEATHER = "bewitched_leather";
+	public static final String BEWITCHED_HOOD = "bewitched_hood";
 	public static final String VAMPIRE = "vampire";
 	public static final String RITUAL = "ritual";
 	public static final String COLD_IRON = "cold_iron";
