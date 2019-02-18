@@ -4,7 +4,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchsHood;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -35,7 +34,7 @@ public class ItemWitchesCowl extends ItemArmor implements IModelRegister {
 	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, EntityEquipmentSlot slot, ModelBiped biped) {
 		if (stack != ItemStack.EMPTY) {
 			if (stack.getItem() instanceof ItemArmor) {
-				
+
 				ModelWitchsHood.INSTANCE.bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
 				//ModelWitchsHood.INSTANCE.bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
 				ModelWitchsHood.INSTANCE.bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;
