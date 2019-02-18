@@ -38,6 +38,14 @@
     {
       "type": "ritual",
       "ritual": "bewitchment:summon_demon"
-    }
+    },
+    {
+      "type": "text",
+      "text": "Imps, despite viewing humans as lower than them, must be sated with the blood of a chicken in a ritual to summon them."
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:summon_imp"
+    }	
   ]
 }
