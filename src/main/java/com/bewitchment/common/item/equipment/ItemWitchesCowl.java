@@ -32,24 +32,19 @@ public class ItemWitchesCowl extends ItemArmor implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, EntityEquipmentSlot slot, ModelBiped biped) {
-		if (stack != ItemStack.EMPTY) {
-			if (stack.getItem() instanceof ItemArmor) {
+		if (stack != ItemStack.EMPTY)
+		{
+			if (stack.getItem() instanceof ItemArmor)
+			{
+				ModelWitchsHood armourModel = new ModelWitchsHood();
+				
+				armourModel.hood01.showModel = slot == EntityEquipmentSlot.HEAD;
+				
+				armourModel.isChild = biped.isChild;
+				armourModel.isRiding = biped.isRiding;
+				armourModel.isSneak = biped.isSneak;
 
-				ModelWitchsHood.INSTANCE.bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
-				//ModelWitchsHood.INSTANCE.bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
-				ModelWitchsHood.INSTANCE.bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;
-				ModelWitchsHood.INSTANCE.bipedLeftArm.showModel = slot == EntityEquipmentSlot.CHEST;
-				ModelWitchsHood.INSTANCE.bipedRightArm.showModel = slot == EntityEquipmentSlot.CHEST;
-				ModelWitchsHood.INSTANCE.bipedLeftLeg.showModel = slot == EntityEquipmentSlot.LEGS;
-				ModelWitchsHood.INSTANCE.bipedRightLeg.showModel = slot == EntityEquipmentSlot.LEGS;
-
-				ModelWitchsHood.INSTANCE.isChild = biped.isChild;
-				ModelWitchsHood.INSTANCE.isRiding = biped.isRiding;
-				ModelWitchsHood.INSTANCE.isSneak = biped.isSneak;
-				ModelWitchsHood.INSTANCE.rightArmPose = biped.rightArmPose;
-				ModelWitchsHood.INSTANCE.leftArmPose = biped.leftArmPose;
-
-				return ModelWitchsHood.INSTANCE;
+				return armourModel;
 			}
 		}
 
