@@ -53,7 +53,25 @@ public class ModVillagers {
 		despot = new VillagerRegistry.VillagerProfession("bewitchment:despot", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{
 		}
-
+		//Human professions
+		hedge_witch = new VillagerRegistry.VillagerProfession("bewitchment:warlord", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		rockhound = new VillagerRegistry.VillagerProfession("bewitchment:slaver", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		herbalist = new VillagerRegistry.VillagerProfession("bewitchment:noble", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		alchemist = new VillagerRegistry.VillagerProfession("bewitchment:brute", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		hunter = new VillagerRegistry.VillagerProfession("bewitchment:apocryphal_teacher", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
+		necromancer = new VillagerRegistry.VillagerProfession("bewitchment:despot", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+		}
 	}
 
 	public void setRandomProfession(EntityVillager entity, Random rand) {
