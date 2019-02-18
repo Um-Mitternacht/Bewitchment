@@ -76,18 +76,18 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
-		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
+		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.5D));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityPlayer || e instanceof EntityVillager || e instanceof EntityEvoker || e instanceof EntityVindicator || e instanceof EntityIllusionIllager || e instanceof EntitySpellcasterIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false));
+		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.applyEntityAI();
 	}
 
 	protected void applyEntityAI() {
-		this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
+		this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 0.5D, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityVillager>(this, EntityVillager.class, false));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityIronGolem>(this, EntityIronGolem.class, true));

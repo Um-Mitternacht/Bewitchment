@@ -42,11 +42,11 @@ public class EntityImp extends EntityMultiSkin implements IAnimatedEntity, IMob 
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		this.targetTasks.addTask(9, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityUran || e instanceof EntityHellhound || e instanceof EntityHellhoundAlpha));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(8, new EntityAIAttackMelee(this, 1.0D, false));
+		this.tasks.addTask(8, new EntityAIAttackMelee(this, 0.5D, false));
 	}
 
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
