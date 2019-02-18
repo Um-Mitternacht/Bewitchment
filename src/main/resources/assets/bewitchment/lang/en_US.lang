@@ -781,6 +781,7 @@ witch.tooltip.wrathful_eye_description.name=This trinket commands respect from d
 witch.tooltip.hellish_bauble_description.name=This oddly shaped trinket will allow you to tap into a small portion of demonic power
 
 //Commands
+commands.incantation.usage=/chant [incantation]
 commands.incantation.notFound=The powers you cast forth fizzle into nothingness
 commands.incantation.no_energy=You feel the pull of the enchantment, but lack the strength to cast it
 commands.set_transformation.usage=/setTransformation [type] [level]
