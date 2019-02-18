@@ -217,18 +217,6 @@ public class ModRituals {
 				circles(NETHER, ANY, NETHER),
 				4750,
 				10);
-
-		//	summon_imp = new RitualSummonDemon(
-		//			rl("summon_imp"),
-		//			of(
-		//					LibIngredients.hellebore
-		//			),
-		//			ofe(EntityRegistry.getEntry(EntityPig.class)),
-		//			ofs(new ItemStack(ModItems.athame)),
-		//			616,
-		//			circles(NETHER, ANY, NETHER),
-		//		100,
-		//		10);
 		spawn_hellhound = new RitualConjurationHellhound(
 				rl("conjure_hellhound"),
 				of(

@@ -17,7 +17,7 @@ public final class LibMod {
 	public static final String MOD_VER = "@VERSION@";
 
 	//Dependency
-	public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2796,];"
+	public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2814,];"
 			+ "required-after:patchouli@[1.0-6,]"
 			+ "after:jei@[4.9.1.168,];"
 			+ "after:waila@[1.8.24-B39_1.12,];"
