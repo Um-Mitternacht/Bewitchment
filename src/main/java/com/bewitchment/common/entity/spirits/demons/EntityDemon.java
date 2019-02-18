@@ -80,7 +80,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		this.targetTasks.addTask(9, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityUran || e instanceof EntityHellhound || e instanceof EntityHellhoundAlpha));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(8, new EntityAIAttackMelee(this, 0.5D, false));
+		this.tasks.addTask(8, new EntityAIAttackMelee(this, 0.3D, false));
 	}
 
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
