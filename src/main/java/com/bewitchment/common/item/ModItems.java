@@ -533,5 +533,7 @@ public final class ModItems {
 		OreDictionary.registerOre("toolMortarandpestle", new ItemStack(ModItems.mortar_and_pestle));
 		OreDictionary.registerOre("mortar_and_pestle", new ItemStack(ModItems.mortar_and_pestle));
 		OreDictionary.registerOre("pestleAndMortar", new ItemStack(ModItems.mortar_and_pestle));
+		OreDictionary.registerOre("materialWaxcomb", new ItemStack(ModItems.empty_honeycomb));
+		OreDictionary.registerOre("materialHoneycomb", new ItemStack(ModItems.honeycomb));
 	}
 }

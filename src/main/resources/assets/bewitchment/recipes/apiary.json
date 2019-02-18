@@ -11,8 +11,8 @@
       "ore": "plankWood"
     },
     "T": {
-      "item": "bewitchment:empty_honeycomb",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "materialWaxcomb"
     }
   },
   "result": {
