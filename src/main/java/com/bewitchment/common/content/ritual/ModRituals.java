@@ -8,7 +8,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.ItemStack;
@@ -32,7 +31,7 @@ public class ModRituals {
 			deck, table, crystal_ball, elder_broom, juniper_broom, yew_broom, cypress_broom, gateway,
 			nether_portal, spawn_blaze, spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair,
 			spawn_hellhound, spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon,
-			spawn_hellhound_alpha, summon_imp;
+			spawn_hellhound_alpha;
 
 	public static void init() {
 
@@ -183,22 +182,21 @@ public class ModRituals {
 				circles(NETHER, NETHER, NETHER),
 				5000,
 				4);
-		summon_imp = new RitualSummonImp(
-				rl("summon_imp"),
-				of(
-						LibIngredients.hellebore,
-						LibIngredients.hellhoundHorn,
-						LibIngredients.uranidVenom,
-						LibIngredients.heart,
-						LibIngredients.goldIngot,
-						LibIngredients.athame
-				),
-				ofe(EntityRegistry.getEntry(EntityChicken.class)),
-				ofs(new ItemStack(ModItems.athame)),
-				303,
-				circles(NETHER, ANY, NETHER),
-				3800,
-				10);
+		//summon_imp = new RitualSummonImp(
+		//		rl("summon_imp"),
+		//		of(
+		//				LibIngredients.hellebore,
+		//				LibIngredients.hellhoundHorn,
+		//				LibIngredients.uranidVenom,
+		//				LibIngredients.heart,
+		//				LibIngredients.goldIngot,
+		//				LibIngredients.athame
+		//		),
+		//		ofe(EntityRegistry.getEntry(EntityChicken.class)),
+		//		ofs(new ItemStack(ModItems.athame)),
+		//		303,
+		//		circles(NETHER, ANY, NETHER),
+		//		3800,
 		summon_demon = new RitualSummonDemon(
 				rl("summon_demon"),
 				of(
@@ -342,7 +340,7 @@ public class ModRituals {
 				juniper_broom, yew_broom, cypress_broom, gateway, nether_portal, spawn_blaze,
 				spawn_ghast, spawn_magma_cube, shift_biome, vampire_lair, spawn_hellhound,
 				spawn_uranid, day, frenzied_growth, call_of_the_wild, summon_demon,
-				spawn_hellhound_alpha, summon_imp
+				spawn_hellhound_alpha
 
 
 		).stream().map(r -> new AdapterIRitual(r)).forEach(r -> AdapterIRitual.REGISTRY.register(r));

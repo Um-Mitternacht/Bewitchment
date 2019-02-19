@@ -138,6 +138,15 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 	}
 
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		if (potioneffectIn.getPotion() == MobEffects.POISON) {
+			net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent event = new net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent(this, potioneffectIn);
+			net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+			return event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.ALLOW;
+		}
+		return super.isPotionApplicable(potioneffectIn);
+	}
+
 	@Override
 	protected ResourceLocation getLootTable() {
 		return loot;

@@ -1,7 +1,5 @@
 package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
@@ -108,6 +106,15 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(4, new EntityAIFollowParent(this, 0.4D));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.4D));
+	}
+
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		if (potioneffectIn.getPotion() == MobEffects.SLOWNESS) {
+			net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent event = new net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent(this, potioneffectIn);
+			net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+			return event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.ALLOW;
+		}
+		return super.isPotionApplicable(potioneffectIn);
 	}
 
 	@Override

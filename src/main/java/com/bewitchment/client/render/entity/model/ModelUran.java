@@ -345,7 +345,7 @@ public class ModelUran extends AdvancedModelBase {
 		AdvancedModelRenderer[] TAIL_PARTS = new AdvancedModelRenderer[]{tail01, tail02, tail03, tail04, tail05};
 		float globalSpeed = 0.5f;
 		float globalDegree = 0.6f;
-		
+
 		//the rootOffset arg determines how the parts move - 0 would be all together, 3 would be more snake-like
 		chainSwing(TAIL_PARTS, globalSpeed, globalDegree, -3, f, f1);
 	}
