@@ -51,7 +51,7 @@ public class LibIngredients {
 	public static Ingredient ectoplasm = Ingredient.fromItem(ModItems.ectoplasm);
 	public static Ingredient graveyardDust = Ingredient.fromItem(ModItems.graveyard_dust);
 	public static Ingredient wormwood = new OreIngredient("cropWormwood");
-	public static Ingredient empty_honeycomb = Ingredient.fromItem(ModItems.empty_honeycomb);
+	public static Ingredient empty_honeycomb = new OreIngredient("materialWaxcomb");
 	public static Ingredient hoof = Ingredient.fromItem(ModItems.hoof);
 	public static Ingredient emptyGoblet = Ingredient.fromStacks(new ItemStack(ModBlocks.goblet, 1, 0));
 	public static Ingredient diamondOre = new OreIngredient("oreDiamond");
