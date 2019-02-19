@@ -84,6 +84,20 @@
         },
         {
           "type": "item",
+          "name": "bewitchment:seed_silphium",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 12
+              }
+            }
+          ],
+          "weight": 3
+        },		
+        {
+          "type": "item",
           "name": "bewitchment:gem",
           "functions": [
             {
