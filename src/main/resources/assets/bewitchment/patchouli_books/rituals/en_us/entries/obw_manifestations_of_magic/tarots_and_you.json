@@ -1,0 +1,19 @@
+{
+  "name": "Tarots and You",
+  "icon": "bewitchment:tarots",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "text",
+      "text": "While originally created as a set of playing cards, that use for these cards has faded into obscurity. They are often associated with telling fortunes, and we will discuss the meanings of them here."
+    },
+    {
+      "type": "text",
+      "text": "The Enderman, a horrific spiritual entity. This card signifies that one may have some ties to the outer realms..."
+    },
+    {
+      "type": "text",
+      "text": "The Diamond, a priceless jewel, this signifies that one has been given a good fortune. If reversed however, one will run into bad luck."
+    }	
+  ]
+}
