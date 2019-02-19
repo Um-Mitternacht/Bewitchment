@@ -4,10 +4,10 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
@@ -60,7 +60,7 @@ public class ItemMagicSalve extends ItemMod implements IMagicPowerExpander {
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 1000, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 1000, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 1000, 1));
-		return new ItemStack(Items.GLASS_BOTTLE);
+		return new ItemStack(ModItems.glass_jar);
 	}
 
 	@Override
