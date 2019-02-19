@@ -1,4 +1,4 @@
-//package com.bewitchment.common.content.ritual.rituals;
+package com.bewitchment.common.content.ritual.rituals;
 
 //public class RitualSummonImp extends RitualImpl {
 //
