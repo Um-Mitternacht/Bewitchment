@@ -341,24 +341,13 @@ public class ModelUran extends AdvancedModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
-
 		AdvancedModelRenderer[] TORSO = new AdvancedModelRenderer[]{neck01a, neck02, neck03, body01, tail01, tail02, tail03, tail04, tail05};
-
-		//f = entity.ticksExisted;
-		//f1 = 0.5f;
-
-		float globalSpeed = 1;
-		float globalHeight = 1;
-		float globalDegree = 1;
-
-		bob(head, 0.1f, 0.6f * globalHeight, false, f, f1);
-		swing(neck01a, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(body01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail01, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail02, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail03, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail04, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
-		swing(tail05, 0.1f, 0.6f * globalHeight, false, 0, 0, f, f1);
+		AdvancedModelRenderer[] TAIL_PARTS = new AdvancedModelRenderer[]{tail01, tail02, tail03, tail04, tail05};
+		float globalSpeed = 0.5f;
+		float globalDegree = 0.6f;
+		
+		//the rootOffset arg determines how the parts move - 0 would be all together, 3 would be more snake-like
+		chainSwing(TAIL_PARTS, globalSpeed, globalDegree, -3, f, f1);
 	}
 
 	/**
