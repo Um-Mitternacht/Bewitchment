@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.living.animals;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
 import com.bewitchment.common.core.statics.ModSounds;
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -38,7 +39,8 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
+//ENTITYFAMILIAR
+public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/owl");
 	private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.RABBIT, Items.CHICKEN);
@@ -125,9 +127,7 @@ public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
 				if (!this.world.isRemote) {
 					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
 						this.setTamedBy(player);
-						setFamiliar(true);
 						this.playTameEffect(true);
-						BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
 						this.world.setEntityState(this, (byte) 7);
 					} else {
 						this.playTameEffect(false);
@@ -235,16 +235,6 @@ public class EntityOwl extends EntityFamiliar implements IAnimatedEntity {
 	@Override
 	public int getSkinTypes() {
 		return 4;
-	}
-
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
 	}
 
 	@Override

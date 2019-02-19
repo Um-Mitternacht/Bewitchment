@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.spirits.demons.EntityUran;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
@@ -40,7 +41,8 @@ import java.util.Set;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
+//ENTITYFAMILIAR
+public class EntitySnake extends EntityMultiSkin implements IAnimatedEntity {
 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/snake");
 	private static final String[] names = {"David Hisslehoff", "Strangles", "Julius Squeezer", "William Snakespeare", "Medusa", "Sir Hiss", "Nagini", "Naga", "Slithers", "Rumplesnakeskin", "Monty the Python", "Shesha", "Nagaraja", "Stheno", "Euryale", "Vasuki", "Bakunawa", "Kaliya", "Karkotaka", "Manasa", "Mucalinda", "Padmavati", "Paravataksha", "Takshaka", "Ulupi", "Yulong", "Sir Booplesnoot", "Cobra", "Angus Snake", "Anguis", "Python", "Fafnir", "Echidna", "Anaconda", "Madame White Snake", "Meretseger", "Kaa", "Snape", "Solid Snake", "Apophis", "Ouroboros"};
@@ -73,11 +75,6 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 	}
 
 	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
-	}
-
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
 			return false;
@@ -86,16 +83,6 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 			this.aiSit.setSitting(false);
 		}
 		return super.attackEntityFrom(source, amount);
-	}
-
-	@Override
-	public boolean isNoDespawnRequired() {
-		return super.isNoDespawnRequired() || isFamiliar();
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
 	}
 
 	@Override
@@ -208,14 +195,6 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 	}
 
 	@Override
-	public boolean isCreatureType(EnumCreatureType type, boolean forSpawnCount) {
-		if (forSpawnCount && isFamiliar()) {
-			return false;
-		}
-		return super.isCreatureType(type, forSpawnCount);
-	}
-
-	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		//DEV ONLY CODE -- REMOVE BEFORE COMPILATION
 		//TODO
@@ -253,9 +232,7 @@ public class EntitySnake extends EntityFamiliar implements IAnimatedEntity {
 				if (!this.world.isRemote) {
 					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
 						this.setTamedBy(player);
-						setFamiliar(true);
 						this.playTameEffect(true);
-						BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
 						this.world.setEntityState(this, (byte) 7);
 					} else {
 						this.playTameEffect(false);

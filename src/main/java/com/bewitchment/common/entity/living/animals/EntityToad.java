@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living.animals;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.familiars.EntityFamiliar;
+import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -38,7 +39,8 @@ import java.util.Set;
  * Created by Joseph on 10/2/2018.
  */
 
-public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
+//ENTITYFAMILIAR
+public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 
 	//public static final Animation ANIMATION_LEAP = Animation.create(20, 15);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
@@ -55,16 +57,6 @@ public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
 		super(worldIn);
 		setSize(1F, 0.3F);
 		this.moveHelper = new EntityMoveHelper(this);
-	}
-
-	@Override
-	public String[] getRandomNames() {
-		return names;
-	}
-
-	@Override
-	protected void setFamiliarAttributes(boolean isFamiliar) {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(isFamiliar ? 20 : maxHPWild);
 	}
 
 	@Override
@@ -189,9 +181,7 @@ public class EntityToad extends EntityFamiliar /*implements IAnimatedEntity*/ {
 				if (!this.world.isRemote) {
 					if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
 						this.setTamedBy(player);
-						setFamiliar(true);
 						this.playTameEffect(true);
-						BewitchmentAPI.getAPI().bindFamiliarToPlayer(player, this);
 						this.world.setEntityState(this, (byte) 7);
 					} else {
 						this.playTameEffect(false);
