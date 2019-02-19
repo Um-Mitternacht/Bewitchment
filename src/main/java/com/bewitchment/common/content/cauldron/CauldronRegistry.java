@@ -214,6 +214,7 @@ public class CauldronRegistry {
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.ember_grass, 2, 0), blazePowder, grass, wormwood, fumeFieryBreeze);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.torchwood, 2, 0), glowstoneDust, fumeBottledMagic, anyLog, anyLeaf);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.seed_kelp, 4, 0), sand, silphium, kenaf, dimensionalSand);
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.spanish_moss, 4, 0), grass, anyString, anyString, ectoplasm);
 		// Banner pattern removal
 		for (int i = 0; i < 16; i++) {
 			registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
