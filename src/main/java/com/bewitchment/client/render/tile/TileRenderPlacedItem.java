@@ -1,5 +1,6 @@
 package com.bewitchment.client.render.tile;
 
+import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.tile.tiles.TileEntityPlacedItem;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,7 @@ import org.lwjgl.opengl.GL11;
 public class TileRenderPlacedItem extends TileEntitySpecialRenderer<TileEntityPlacedItem> {
 	@Override
 	public void render(TileEntityPlacedItem te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-		if (!te.getItem().isEmpty()) {
+		if ((te.getWorld().getBlockState(te.getPos()).getBlock() == ModBlocks.placed_item) && !te.getItem().isEmpty()) {
 			ItemStack stack = te.getItem();
 			GlStateManager.enableRescaleNormal();
 			GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
@@ -26,7 +27,7 @@ public class TileRenderPlacedItem extends TileEntitySpecialRenderer<TileEntityPl
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(x + 0.5, y + 0.1625, z + 0.5);
 			float rot = te.getWorld().getBlockState(te.getPos()).getValue(BlockHorizontal.FACING).getHorizontalAngle();
-			if (rot == 0 || rot == 180) {
+			if ((rot == 0) || (rot == 180)) {
 				rot += 180;
 			}
 			GlStateManager.rotate(rot, 0, 1, 0);
