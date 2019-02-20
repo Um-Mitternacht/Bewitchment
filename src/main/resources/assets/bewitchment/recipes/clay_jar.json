@@ -11,7 +11,7 @@
       "ore": "slabWood"
     },
     "G": {
-      "item": "minecraft:clay",
+      "item": "minecraft:clay_ball",
       "data": 0
     }
   },
