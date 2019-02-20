@@ -11,8 +11,8 @@ import java.util.function.Supplier;
 
 public class JointInventoryWrapper implements IItemHandlerModifiable {
 
-	//The index in the list is the outside slot, the integer is the wrapped handler slot
-
+	// The index in the list is the outside slot, the integer is the wrapped handler
+	// slot
 	private ArrayList<Tuple<Supplier<ItemStackHandler>, Integer>> bindings = new ArrayList<>();
 	private ArrayList<Mode> modes = new ArrayList<>();
 
