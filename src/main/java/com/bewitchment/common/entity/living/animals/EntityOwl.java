@@ -17,6 +17,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -85,6 +86,7 @@ public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 
 	@Override
 	protected void initEntityAI() {
+		this.aiSit = new EntityAISit(this);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
@@ -222,15 +224,22 @@ public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 		}
 	}
 
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
 			return false;
+		} else {
+			Entity entity = source.getTrueSource();
+
+			if (this.aiSit != null) {
+				this.setSitting(false);
+			}
+
+			if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow)) {
+				amount = (amount + 1.0F) / 2.0F;
+			}
+
+			return super.attackEntityFrom(source, amount);
 		}
-		if (this.aiSit != null) {
-			this.aiSit.setSitting(false);
-		}
-		return super.attackEntityFrom(source, amount);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -66,15 +67,22 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 		this.aiSit = new EntityAISit(this);
 	}
 
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
 			return false;
+		} else {
+			Entity entity = source.getTrueSource();
+
+			if (this.aiSit != null) {
+				this.setSitting(false);
+			}
+
+			if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow)) {
+				amount = (amount + 1.0F) / 2.0F;
+			}
+
+			return super.attackEntityFrom(source, amount);
 		}
-		if (this.aiSit != null) {
-			this.aiSit.setSitting(false);
-		}
-		return super.attackEntityFrom(source, amount);
 	}
 
 	@Override
@@ -94,6 +102,7 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 
 	@Override
 	protected void initEntityAI() {
+		this.aiSit = new EntityAISit(this);
 		this.tasks.addTask(0, new EntityAIPanic(this, 0.4D));
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
@@ -124,6 +133,7 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 	protected ResourceLocation getLootTable() {
 		return loot;
 	}
+
 
 	@Override
 	protected void applyEntityAttributes() {
