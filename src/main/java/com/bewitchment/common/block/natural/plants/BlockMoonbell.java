@@ -87,7 +87,7 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
-		if (!state.getValue(PLACED) && (world.isDaytime() /*|| world.getMoonPhase() != 4)*/) {
+		if (!state.getValue(PLACED) && (world.isDaytime()) /*|| world.getMoonPhase() != 4)*/) {
 			world.setBlockToAir(pos);
 			for (int i = 0; i < 7; i++) {
 				world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, pos.getX() + r.nextDouble(), pos.getY() + r.nextDouble(), pos.getZ() + r.nextDouble(), r.nextGaussian() * 0.01, r.nextDouble() * 0.01, r.nextGaussian() * 0.01);
