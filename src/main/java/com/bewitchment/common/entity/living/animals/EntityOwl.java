@@ -97,6 +97,9 @@ public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityParrot || e instanceof EntityBlindworm || e instanceof EntityLizard));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(4, new EntityAIFollowParent(this, 0.5D));
+		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+		this.tasks.addTask(6, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
 	}
 
 	@Override

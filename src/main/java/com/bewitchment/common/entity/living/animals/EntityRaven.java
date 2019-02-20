@@ -94,6 +94,9 @@ public class EntityRaven extends EntityMultiSkin implements IAnimatedEntity {
 		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAIFollowParent(this, 0.5D));
+		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+		this.tasks.addTask(6, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
 	}
 
 	@Override
