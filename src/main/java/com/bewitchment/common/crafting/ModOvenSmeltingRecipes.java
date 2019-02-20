@@ -26,9 +26,6 @@ public class ModOvenSmeltingRecipes {
 				new OvenSmeltingRecipe(rl("sapling_4"), Ingredient.fromStacks(new ItemStack(Blocks.SAPLING, 1, 4)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.acacia_essence.ordinal()), 0.85f), //
 				new OvenSmeltingRecipe(rl("sapling_5"), Ingredient.fromStacks(new ItemStack(Blocks.SAPLING, 1, 5)), ash, new ItemStack(ModItems.fume, 1, ItemFumes.Type.oak_spirit.ordinal()), 0.85f), //
 				new OvenSmeltingRecipe(rl("rotten_flesh"), Ingredient.fromStacks(new ItemStack(Items.ROTTEN_FLESH)), new ItemStack(Items.LEATHER), new ItemStack(ModItems.ectoplasm, 3), 0.85f), //
-				new OvenSmeltingRecipe(rl("iron_ore"), Ingredient.fromStacks(new ItemStack(Blocks.IRON_ORE)), new ItemStack(Items.IRON_INGOT), new ItemStack(Items.IRON_NUGGET, 4), 0.85f), //
-				new OvenSmeltingRecipe(rl("gold_ore"), Ingredient.fromStacks(new ItemStack(Blocks.GOLD_ORE)), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 2), 0.85f), //
-				new OvenSmeltingRecipe(rl("silver_ore"), Ingredient.fromStacks(new ItemStack(ModBlocks.silver_ore)), new ItemStack(ModItems.silver_ingot), new ItemStack(ModItems.silver_nugget, 3), 0.85f), //
 				new OvenSmeltingRecipe(rl("log_0"), Ingredient.fromStacks(new ItemStack(Blocks.LOG)), new ItemStack(Items.COAL, 1, 1), ash, 0.85f), //
 				new OvenSmeltingRecipe(rl("log_1"), Ingredient.fromStacks(new ItemStack(Blocks.LOG, 1, 1)), new ItemStack(Items.COAL, 1, 1), ash, 0.85f), //
 				new OvenSmeltingRecipe(rl("log_2"), Ingredient.fromStacks(new ItemStack(Blocks.LOG, 1, 2)), new ItemStack(Items.COAL, 1, 1), ash, 0.85f), //
