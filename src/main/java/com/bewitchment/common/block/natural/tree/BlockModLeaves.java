@@ -114,7 +114,7 @@ public class BlockModLeaves extends BlockLeaves implements IModelRegister {
 
 	@Override
 	protected int getSaplingDropChance(IBlockState state) {
-		if (state.getBlock() == ModBlocks.leaves_juniper) return super.getSaplingDropChance(state) * 3;
+		if (state.getBlock() == ModBlocks.leaves_juniper) return super.getSaplingDropChance(state) * 5;
 		return super.getSaplingDropChance(state);
 	}
 

@@ -111,8 +111,8 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 					break;
 				case 1:
 				case 3://Wither skull and player skull
-					evt.extraGain = 2;
-					evt.multiplier = 0.2;
+					evt.extraGain = 3;
+					evt.multiplier = 0.3;
 					break;
 				case 5: //Dragon
 					evt.extraGain = 2;
