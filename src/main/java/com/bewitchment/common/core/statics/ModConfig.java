@@ -78,10 +78,10 @@ public final class ModConfig {
 
 		public static class SilverOre {
 			public int silver_min_vein = 1;
-			public int silver_max_vein = 16;
+			public int silver_max_vein = 8;
 			public int silver_min_height = 10;
 			public int silver_max_height = 128;
-			public int silver_gen_chance = 65;
+			public int silver_gen_chance = 25;
 		}
 
 		public static class BloodstoneOre {
