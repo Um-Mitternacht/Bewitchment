@@ -4,6 +4,7 @@ import com.bewitchment.common.tile.ModTileEntity;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -23,16 +24,15 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (worldIn.getTileEntity(pos) != null) {
+		if (hasTileEntity(state)) {
 			return ((ModTileEntity) worldIn.getTileEntity(pos)).onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 		}
 		return false;
 	}
 
-
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		if (worldIn.getTileEntity(pos) != null) {
+		if (hasTileEntity(state)) {
 			((ModTileEntity) worldIn.getTileEntity(pos)).onBlockBroken(worldIn, pos, state);
 		}
 		super.breakBlock(worldIn, pos, state);
@@ -40,13 +40,10 @@ public abstract class BlockModTileEntity extends BlockMod implements ITileEntity
 
 	@Override
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		((ModTileEntity) te).onBlockHarvested(worldIn, player, pos, state, te, stack);
+		if (hasTileEntity(state)) {
+			((ModTileEntity) te).onBlockHarvested(worldIn, player, pos, state, te, stack);
+		}
 		super.harvestBlock(worldIn, player, pos, state, te, stack);
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Items.AIR;
 	}
 
 	@Override
