@@ -1,34 +1,28 @@
 {
+  "forge_marker": 1,
+  "parent": "block/block",
   "variants": {
-    "facing=north,half=bottom": {
-      "model": "bewitchment:cauldron"
+    "facing": {
+      "north": {
+        "y": 0
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      },
+      "east": {
+        "y": 90
+      }
     },
-    "facing=south,half=bottom": {
-      "model": "bewitchment:cauldron",
-      "y": 180
-    },
-    "facing=east,half=bottom": {
-      "model": "bewitchment:cauldron",
-      "y": 90
-    },
-    "facing=west,half=bottom": {
-      "model": "bewitchment:cauldron",
-      "y": 270
-    },
-    "facing=north,half=top": {
-      "model": "bewitchment:cauldron_hanging"
-    },
-    "facing=south,half=top": {
-      "model": "bewitchment:cauldron_hanging",
-      "y": 180
-    },
-    "facing=east,half=top": {
-      "model": "bewitchment:cauldron_hanging",
-      "y": 90
-    },
-    "facing=west,half=top": {
-      "model": "bewitchment:cauldron_hanging",
-      "y": 270
+    "handle_down": {
+      "true": {
+        "model": "bewitchment:cauldron"
+      },
+      "false": {
+        "model": "bewitchment:cauldron_hanging"
+      }
     }
   }
 }
