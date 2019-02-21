@@ -2,7 +2,6 @@ package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.state.StateProperties;
-import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.content.cauldron.behaviours.DefaultBehaviours;
 import com.bewitchment.common.content.cauldron.behaviours.ICauldronBehaviour;
 import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
