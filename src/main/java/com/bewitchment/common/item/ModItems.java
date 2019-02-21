@@ -517,6 +517,7 @@ public final class ModItems {
 		OreDictionary.registerOre("cropTulsi", new ItemStack(ModItems.tulsi));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.tulsi));
 		OreDictionary.registerOre("cropKenaf", new ItemStack(ModItems.kenaf));
+		OreDictionary.registerOre("listAllfiber", new ItemStack(ModItems.kenaf));
 		OreDictionary.registerOre("cropSilphium", new ItemStack(ModItems.silphium));
 		OreDictionary.registerOre("listAllgreenveggie", new ItemStack(ModItems.silphium));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.silphium));
