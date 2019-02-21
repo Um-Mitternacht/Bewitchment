@@ -2,18 +2,14 @@ package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.Bewitchment;
-import com.bewitchment.common.block.ModBlocks;
-import com.bewitchment.common.core.helper.ItemHandlerHelper;
 import com.bewitchment.common.crafting.SpinningThreadRecipe;
 import com.bewitchment.common.lib.LibGui;
 import com.bewitchment.common.tile.ModTileEntity;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
@@ -42,8 +38,8 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	private IMagicPowerConsumer altarTracker = IMagicPowerConsumer.CAPABILITY.getDefaultInstance();
 
 	public TileEntityThreadSpinner() {
-		handler = new ItemStackHandler(5);
-		loadedRecipe = null;
+		this.handler = new ItemStackHandler(5);
+		this.loadedRecipe = null;
 	}
 
 	@Override
@@ -51,12 +47,10 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (playerIn.isSneaking()) {
 			return false;
 		}
-		if (worldIn.isRemote) {
-			return true;
-		}
+
 
 		ItemStack heldItem = playerIn.getHeldItem(hand);
-		if (!heldItem.isEmpty() && heldItem.getItem() == Items.NAME_TAG) {
+		if (!heldItem.isEmpty() && (heldItem.getItem() == Items.NAME_TAG)) {
 			if (!worldIn.isRemote) {
 				this.customName = heldItem.getDisplayName();
 				this.markDirty();
@@ -69,18 +63,13 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	}
 
 	@Override
-	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		if (worldIn.isRemote || player.isCreative()) {
-			return;
-		}
-		ItemHandlerHelper.dropItems(handler, world, pos);
-		final EntityItem item = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModBlocks.thread_spinner));
-		world.spawnEntity(item);
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+		this.dropInventory(this.handler);
 	}
 
 	@Override
 	public void update() {
-		if (world.isRemote) {
+		if (this.world.isRemote) {
 			return;
 		}
 		if (this.canProgress()) {
@@ -99,25 +88,28 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 	}
 
 	private boolean canProgress() {
-		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, handler.getStackInSlot(1), handler.getStackInSlot(2), handler.getStackInSlot(3), handler.getStackInSlot(4));
-		if (loadedRecipe == null || !loadedRecipe.matches(list)) {
-			loadedRecipe = SpinningThreadRecipe.getRecipe(list);
+		NonNullList<ItemStack> list = NonNullList.from(ItemStack.EMPTY, this.handler.getStackInSlot(1), this.handler.getStackInSlot(2), this.handler.getStackInSlot(3), this.handler.getStackInSlot(4));
+		if ((this.loadedRecipe == null) || !this.loadedRecipe.matches(list)) {
+			this.loadedRecipe = SpinningThreadRecipe.getRecipe(list);
 		}
-		return loadedRecipe != null && handler.insertItem(0, loadedRecipe.getOutput(), true).isEmpty() && altarTracker.drainAltarFirst(null, pos, world.provider.getDimension(), POWER_PER_TICK);
+		return (this.loadedRecipe != null) && this.handler.insertItem(0, this.loadedRecipe.getOutput(), true).isEmpty() && this.altarTracker.drainAltarFirst(null, this.pos, this.world.provider.getDimension(), POWER_PER_TICK);
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private void onFinished() {
-		if (handler.getStackInSlot(0).isEmpty()) handler.setStackInSlot(0, loadedRecipe.getOutput());
-		else {
-			handler.getStackInSlot(0).grow(loadedRecipe.getOutput().getCount());
+		if (this.handler.getStackInSlot(0).isEmpty()) {
+			this.handler.setStackInSlot(0, this.loadedRecipe.getOutput());
+		} else {
+			this.handler.getStackInSlot(0).grow(this.loadedRecipe.getOutput().getCount());
 		}
-		for (int i = 1; i < 5; i++) handler.getStackInSlot(i).shrink(1);
-		loadedRecipe = null;
+		for (int i = 1; i < 5; i++) {
+			this.handler.getStackInSlot(i).shrink(1);
+		}
+		this.loadedRecipe = null;
 	}
 
 	public int getWork() {
-		return work;
+		return this.work;
 	}
 
 	@Override
@@ -127,22 +119,21 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 
 	@Override
 	public boolean hasCustomName() {
-		return this.customName != null && !this.customName.isEmpty();
+		return (this.customName != null) && !this.customName.isEmpty();
 	}
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		return capability == IMagicPowerConsumer.CAPABILITY || capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+		return (capability == IMagicPowerConsumer.CAPABILITY) || (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) || super.hasCapability(capability, facing);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (capability == IMagicPowerConsumer.CAPABILITY) {
-			return IMagicPowerConsumer.CAPABILITY.cast(altarTracker);
+			return IMagicPowerConsumer.CAPABILITY.cast(this.altarTracker);
 		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handler);
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.handler);
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -152,9 +143,9 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (this.hasCustomName()) {
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
-		tag.setTag(HANDLER_TAG, handler.serializeNBT());
-		tag.setInteger(WORK_TAG, work);
-		tag.setTag("altar", altarTracker.writeToNbt());
+		tag.setTag(HANDLER_TAG, this.handler.serializeNBT());
+		tag.setInteger(WORK_TAG, this.work);
+		tag.setTag("altar", this.altarTracker.writeToNbt());
 	}
 
 	@Override
@@ -162,9 +153,9 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
-		altarTracker.readFromNbt(tag.getCompoundTag("altar"));
-		handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
-		work = tag.getInteger(WORK_TAG);
+		this.altarTracker.readFromNbt(tag.getCompoundTag("altar"));
+		this.handler.deserializeNBT(tag.getCompoundTag(HANDLER_TAG));
+		this.work = tag.getInteger(WORK_TAG);
 	}
 
 	@Override
@@ -172,7 +163,7 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (this.hasCustomName()) {
 			tag.setString(CUSTOM_NAME_TAG, this.customName);
 		}
-		tag.setInteger(WORK_TAG, work);
+		tag.setInteger(WORK_TAG, this.work);
 	}
 
 	@Override
@@ -180,6 +171,6 @@ public class TileEntityThreadSpinner extends ModTileEntity implements ITickable,
 		if (tag.hasKey(CUSTOM_NAME_TAG, 8)) {
 			this.customName = tag.getString(CUSTOM_NAME_TAG);
 		}
-		work = tag.getInteger(WORK_TAG);
+		this.work = tag.getInteger(WORK_TAG);
 	}
 }

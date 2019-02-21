@@ -1,19 +1,18 @@
 package com.bewitchment.common.tile.tiles;
 
-import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.tile.ModTileEntity;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.HashMap;
@@ -22,7 +21,6 @@ public class TileEntityGemBowl extends ModTileEntity {
 
 	private static final HashMap<String, Integer> gainMap = new HashMap<>();
 	private static final String GEM_TAG_NAME = "gem";
-	private static final String DIRECTION_TAG_NAME = "facing";
 
 	static {
 		gainMap.put("gemDiamond", 4);
@@ -127,13 +125,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 		gainMap.put("gemShadow", 1);
 	}
 
-	private ItemStack gem;
-	private EnumFacing direction;
-
-	public TileEntityGemBowl() {
-		gem = new ItemStack(Items.AIR);
-		direction = EnumFacing.UP;
-	}
+	private ItemStackHandler gemHandler = new ItemStackHandler(1);
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -143,35 +135,18 @@ public class TileEntityGemBowl extends ModTileEntity {
 		if (worldIn.isRemote) {
 			return true;
 		}
-
 		ItemStack held = playerIn.getHeldItem(hand);
-		if (held.isEmpty()) {
-			if (this.hasGem()) {
-				playerIn.setHeldItem(hand, gem);
-				gem = new ItemStack(Items.AIR);
-				direction = EnumFacing.UP;
-				this.markDirty();
-				this.syncToClient();
-			}
-		} else {
-			for (String acceptedName : gainMap.keySet()) {
-				for (int oreID : OreDictionary.getOreIDs(held)) {
-					if (OreDictionary.getOreName(oreID).equals(acceptedName)) {
-						ItemStack previousGem = gem;
-						if (held.getCount() == 1) {
-							gem = held;
-							playerIn.setHeldItem(hand, previousGem);
-						} else {
-							gem = new ItemStack(held.getItem(), 1, held.getMetadata());
-							held.setCount(held.getCount() - 1);
-							if (!previousGem.isEmpty()) {
-								ItemHandlerHelper.giveItemToPlayer(playerIn, previousGem);
-							}
-						}
-						direction = EnumFacing.fromAngle(playerIn.rotationYaw).getOpposite();
-						this.markDirty();
-						this.syncToClient();
-					}
+		if (held.isEmpty() && this.hasGem()) {
+			playerIn.setHeldItem(hand, this.gemHandler.extractItem(0, 1, false));
+			this.markDirty();
+			this.syncToClient();
+		} else if (!held.isEmpty() && !this.hasGem()) {
+			for (int oreID : OreDictionary.getOreIDs(held)) {
+				if (gainMap.keySet().contains(OreDictionary.getOreName(oreID))) {
+					this.gemHandler.insertItem(0, held.splitStack(1), false);
+					this.markDirty();
+					this.syncToClient();
+					break;
 				}
 			}
 		}
@@ -179,33 +154,36 @@ public class TileEntityGemBowl extends ModTileEntity {
 	}
 
 	@Override
-	public void onBlockHarvested(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		if (worldIn.isRemote || player.isCreative()) {
-			return;
-		}
-		EntityItem item = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), gem);
-		worldIn.spawnEntity(item);
-		EntityItem block = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.gem_bowl));
-		worldIn.spawnEntity(block);
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+		this.dropInventory(this.gemHandler);
 	}
 
 	public boolean hasGem() {
-		return !gem.isEmpty();
+		return !this.gemHandler.getStackInSlot(0).isEmpty();
 	}
 
 	public ItemStack getGem() {
-		return gem;
+		return this.gemHandler.getStackInSlot(0).copy();
 	}
 
-	public EnumFacing getDirection() {
-		return direction;
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) || super.hasCapability(capability, facing);
+	}
+
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.gemHandler);
+		}
+		return super.getCapability(capability, facing);
 	}
 
 	public int getGemValue() {
-		if (gem.isEmpty()) {
+		if (!this.hasGem()) {
 			return 0;
 		}
-		for (int oreID : OreDictionary.getOreIDs(gem)) {
+		for (int oreID : OreDictionary.getOreIDs(this.getGem())) {
 			String oreName = OreDictionary.getOreName(oreID);
 			if (gainMap.containsKey(oreName)) {
 				return gainMap.get(oreName);
@@ -216,25 +194,25 @@ public class TileEntityGemBowl extends ModTileEntity {
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound cmp) {
-		gem = new ItemStack(cmp.getCompoundTag(GEM_TAG_NAME));
-		direction = EnumFacing.byName(cmp.getString(DIRECTION_TAG_NAME));
+		this.gemHandler.deserializeNBT(cmp.getCompoundTag(GEM_TAG_NAME));
 	}
 
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound cmp) {
-		cmp.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
-		cmp.setString(DIRECTION_TAG_NAME, direction.getName());
+		cmp.setTag(GEM_TAG_NAME, this.gemHandler.serializeNBT());
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag(GEM_TAG_NAME, gem.writeToNBT(new NBTTagCompound()));
-		tag.setString(DIRECTION_TAG_NAME, direction.getName());
+		this.writeAllModDataNBT(tag);
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		gem = new ItemStack(tag.getCompoundTag(GEM_TAG_NAME));
-		direction = EnumFacing.byName(tag.getString(DIRECTION_TAG_NAME));
+		this.readAllModDataNBT(tag);
+	}
+
+	public EnumFacing getDirection() {
+		return this.world.getBlockState(this.pos).getValue(BlockHorizontal.FACING);
 	}
 }
