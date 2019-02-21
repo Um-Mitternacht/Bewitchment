@@ -25,18 +25,18 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 
 	@Override
 	public void setCauldron(TileEntityCauldron tile) {
-		cauldron = tile;
+		this.cauldron = tile;
 	}
 
 	@Override
 	public void handleParticles(boolean isActiveBehaviour) {
 		if (isActiveBehaviour) {
-			if (lowEnergy) {
-				Random r = cauldron.getWorld().rand;
-				cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_MOB, cauldron.getPos().getX() + 0.4 + 0.2 * r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2 * r.nextDouble(), 0xFF * (0.5 + 0.3 * cauldron.getWorld().rand.nextDouble() * 0.5), 0, 0);
-			} else if (validRecipe) {
-				Random r = cauldron.getWorld().rand;
-				cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_INSTANT, cauldron.getPos().getX() + 0.4 + 0.2 * r.nextDouble(), cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.4 + 0.2 * r.nextDouble(), 0, 0, 0);
+			if (this.lowEnergy) {
+				Random r = this.cauldron.getWorld().rand;
+				this.cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_MOB, this.cauldron.getPos().getX() + 0.4 + (0.2 * r.nextDouble()), this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.4 + (0.2 * r.nextDouble()), 0xFF * (0.5 + (0.3 * this.cauldron.getWorld().rand.nextDouble() * 0.5)), 0, 0);
+			} else if (this.validRecipe) {
+				Random r = this.cauldron.getWorld().rand;
+				this.cauldron.getWorld().spawnParticle(EnumParticleTypes.SPELL_INSTANT, this.cauldron.getPos().getX() + 0.4 + (0.2 * r.nextDouble()), this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.4 + (0.2 * r.nextDouble()), 0, 0, 0);
 			}
 		}
 	}
@@ -48,54 +48,52 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 
 	@Override
 	public boolean shouldInputsBeBlocked() {
-		return cauldron.getCurrentBehaviour() == this && validRecipe;
+		return (this.cauldron.getCurrentBehaviour() == this) && this.validRecipe;
 	}
 
 	@Override
 	public void statusChanged(boolean isActiveBehaviour) {
-		if (isActiveBehaviour) {
-			if (!cauldron.getInputs().isEmpty() && cauldron.getFluid().isPresent() && !validRecipe) {
-				validRecipe = CauldronRegistry.getCraftingResult(cauldron.getFluid().get(), cauldron.getInputs()).isPresent();
-				color = Color.getHSBColor(cauldron.getWorld().rand.nextFloat(), 0.6f + 0.4f * cauldron.getWorld().rand.nextFloat(), cauldron.getWorld().rand.nextFloat()).getRGB();
-				cauldron.markDirty();
-				cauldron.syncToClient();
-			}
+		if (isActiveBehaviour && !this.cauldron.getInputs().isEmpty() && this.cauldron.getFluid().isPresent() && !this.validRecipe) {
+			this.validRecipe = CauldronRegistry.getCraftingResult(this.cauldron.getFluid().get(), this.cauldron.getInputs()).isPresent();
+			this.color = Color.getHSBColor(this.cauldron.getWorld().rand.nextFloat(), 0.6f + (0.4f * this.cauldron.getWorld().rand.nextFloat()), this.cauldron.getWorld().rand.nextFloat()).getRGB();
+			this.cauldron.markDirty();
+			this.cauldron.syncToClient();
 		}
 	}
 
 	@Override
 	public void update(boolean isActiveBehaviour) {
 		if (isActiveBehaviour) {
-			boolean wasLowEnergy = lowEnergy;
-			if (validRecipe && craftTime < MAX_CRAFT_TIME) {
-				if (cauldron.getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(null, cauldron.getPos(), cauldron.getWorld().provider.getDimension(), POWER_PER_TICK)) {
-					lowEnergy = false;
+			boolean wasLowEnergy = this.lowEnergy;
+			if (this.validRecipe && (this.craftTime < MAX_CRAFT_TIME)) {
+				if (this.cauldron.getCapability(IMagicPowerConsumer.CAPABILITY, null).drainAltarFirst(null, this.cauldron.getPos(), this.cauldron.getWorld().provider.getDimension(), POWER_PER_TICK)) {
+					this.lowEnergy = false;
 				} else {
-					lowEnergy = true;
+					this.lowEnergy = true;
 				}
 
-				if (!lowEnergy) {
-					craftTime++;
+				if (!this.lowEnergy) {
+					this.craftTime++;
 				}
-				cauldron.markDirty();
-				if (wasLowEnergy != lowEnergy) {
-					cauldron.syncToClient();
+				this.cauldron.markDirty();
+				if (wasLowEnergy != this.lowEnergy) {
+					this.cauldron.syncToClient();
 				}
 			}
 
-			if (validRecipe && craftTime >= MAX_CRAFT_TIME) {
-				CauldronCraftingRecipe result = CauldronRegistry.getCraftingResult(cauldron.getFluid().get(), cauldron.getInputs()).get();
-				cauldron.setTankLock(true);
-				CauldronFluidTank tank = (CauldronFluidTank) cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			if (this.validRecipe && (this.craftTime >= MAX_CRAFT_TIME)) {
+				CauldronCraftingRecipe result = CauldronRegistry.getCraftingResult(this.cauldron.getFluid().get(), this.cauldron.getInputs()).get();
+				this.cauldron.setTankLock(true);
+				CauldronFluidTank tank = (CauldronFluidTank) this.cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 				tank.drain(result.getRequiredFluidAmount(), true);
 
 				if (result.hasItemOutput()) {
-					EntityItem e = new EntityItem(cauldron.getWorld(), cauldron.getPos().getX() + 0.5, cauldron.getPos().getY() + 0.5, cauldron.getPos().getZ() + 0.5, result.getItemResult());
+					EntityItem e = new EntityItem(this.cauldron.getWorld(), this.cauldron.getPos().getX() + 0.5, this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.5, result.getItemResult());
 					e.addTag("cauldron_drop");
 					e.motionY = 0.06;
 					e.motionX = 0;
 					e.motionZ = 0;
-					cauldron.getWorld().spawnEntity(e);
+					this.cauldron.getWorld().spawnEntity(e);
 
 				}
 
@@ -103,45 +101,45 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 					tank.setFluid(result.getFluidResult());
 				}
 
-				cauldron.setBehaviour(cauldron.getDefaultBehaviours().IDLE);
-				lowEnergy = false;
-				validRecipe = false;
-				craftTime = 0;
-				cauldron.clearItemInputs();//MD & StC called here
+				this.cauldron.setBehaviour(this.cauldron.getDefaultBehaviours().IDLE);
+				this.lowEnergy = false;
+				this.validRecipe = false;
+				this.craftTime = 0;
+				this.cauldron.clearItemInputs();// MD & StC called here
 			}
 		}
 	}
 
 	@Override
 	public int getColor() {
-		return color;
+		return this.color;
 	}
 
 	@Override
 	public void saveToNBT(NBTTagCompound tag) {
-		saveToSyncNBT(tag);
-		tag.setInteger("craftTime", craftTime);
+		this.saveToSyncNBT(tag);
+		tag.setInteger("craftTime", this.craftTime);
 
 	}
 
 	@Override
 	public void loadFromNBT(NBTTagCompound tag) {
-		loadFromSyncNBT(tag);
-		craftTime = tag.getInteger("craftTime");
+		this.loadFromSyncNBT(tag);
+		this.craftTime = tag.getInteger("craftTime");
 	}
 
 	@Override
 	public void saveToSyncNBT(NBTTagCompound tag) {
-		tag.setInteger("color_craft", color);
-		tag.setBoolean("hasRecipe", validRecipe);
-		tag.setBoolean("lowEnergy", lowEnergy);
+		tag.setInteger("color_craft", this.color);
+		tag.setBoolean("hasRecipe", this.validRecipe);
+		tag.setBoolean("lowEnergy", this.lowEnergy);
 	}
 
 	@Override
 	public void loadFromSyncNBT(NBTTagCompound tag) {
-		color = tag.getInteger("color_craft");
-		validRecipe = tag.getBoolean("hasRecipe");
-		lowEnergy = tag.getBoolean("lowEnergy");
+		this.color = tag.getInteger("color_craft");
+		this.validRecipe = tag.getBoolean("hasRecipe");
+		this.lowEnergy = tag.getBoolean("lowEnergy");
 	}
 
 	@Override
@@ -151,11 +149,11 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 
 	@Override
 	public void onDeactivation() {
-		validRecipe = false;
-		lowEnergy = false;
-		color = TileEntityCauldron.DEFAULT_COLOR;
-		craftTime = 0;
-		cauldron.markDirty();
+		this.validRecipe = false;
+		this.lowEnergy = false;
+		this.color = TileEntityCauldron.DEFAULT_COLOR;
+		this.craftTime = 0;
+		this.cauldron.markDirty();
 	}
 
 }
