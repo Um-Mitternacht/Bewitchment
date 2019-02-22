@@ -1,11 +1,10 @@
 package com.bewitchment.common.block.tiles;
 
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.handler.ModelHandler;
-import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockModTileEntity;
 import com.bewitchment.common.lib.LibBlockName;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
@@ -45,17 +44,11 @@ public class BlockCauldron extends BlockModTileEntity {
 
 	public BlockCauldron() {
 		super(LibBlockName.CAULDRON, Material.IRON);
-		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.BOTTOM));
-		setSoundType(SoundType.METAL);
-		setResistance(5F);
-		setHardness(5F);
-		setHarvestLevel("pickaxe", 0);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(StateProperties.HANDLE_DOWN, true));
+		this.setSoundType(SoundType.METAL);
+		this.setHarvestLevel("pickaxe", 0);
+		this.setResistance(5F);
+		this.setHardness(5F);
 	}
 
 	@Override
@@ -67,7 +60,7 @@ public class BlockCauldron extends BlockModTileEntity {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState iblockstate = getDefaultState().withProperty(Bewitchment.HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
+		IBlockState iblockstate = this.getDefaultState().withProperty(StateProperties.HANDLE_DOWN, (meta & 4) > 0 ? false : true);
 		iblockstate = iblockstate.withProperty(FACING, EnumFacing.byIndex(5 - (meta & 3)));
 		return iblockstate;
 	}
@@ -76,11 +69,11 @@ public class BlockCauldron extends BlockModTileEntity {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 
-		if (state.getValue(Bewitchment.HALF) == BlockStairs.EnumHalf.TOP) {
+		if (state.getValue(StateProperties.HANDLE_DOWN) == false) {
 			i |= 4;
 		}
 
-		i = i | 5 - state.getValue(FACING).getIndex();
+		i = i | (5 - state.getValue(FACING).getIndex());
 		return i;
 	}
 
@@ -119,16 +112,14 @@ public class BlockCauldron extends BlockModTileEntity {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, FACING, Bewitchment.HALF);
+		return new BlockStateContainer(this, FACING, StateProperties.HANDLE_DOWN);
 	}
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing());
-		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F) ?
-				iblockstate.withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.BOTTOM) :
-				iblockstate.withProperty(Bewitchment.HALF, BlockStairs.EnumHalf.TOP);
+		return (facing != EnumFacing.DOWN) && ((facing == EnumFacing.UP) || (hitY <= 0.5F)) ? iblockstate.withProperty(StateProperties.HANDLE_DOWN, true) : iblockstate.withProperty(StateProperties.HANDLE_DOWN, false);
 	}
 
 	@Override
@@ -143,6 +134,12 @@ public class BlockCauldron extends BlockModTileEntity {
 		if (tile != null) {
 			tile.handleParticles();
 		}
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

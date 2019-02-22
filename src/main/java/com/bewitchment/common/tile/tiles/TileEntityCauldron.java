@@ -1,7 +1,7 @@
 package com.bewitchment.common.tile.tiles;
 
 import com.bewitchment.api.mp.IMagicPowerConsumer;
-import com.bewitchment.common.Bewitchment;
+import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.content.cauldron.behaviours.DefaultBehaviours;
 import com.bewitchment.common.content.cauldron.behaviours.ICauldronBehaviour;
 import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
@@ -52,9 +52,9 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	private int effectiveClientSideColor = DEFAULT_COLOR;
 
 	public TileEntityCauldron() {
-		collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65D, 1);
-		tank = new CauldronFluidTank(this);
-		defaultBehaviours.init(this);
+		this.collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65D, 1);
+		this.tank = new CauldronFluidTank(this);
+		this.defaultBehaviours.init(this);
 	}
 
 	public static void giveItemToPlayer(EntityPlayer player, ItemStack toGive) {
@@ -68,26 +68,24 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (playerIn.isSneaking() && playerIn.getHeldItem(hand).isEmpty()) {
-			worldIn.setBlockState(pos, state.cycleProperty(Bewitchment.HALF), 3);
+			worldIn.setBlockState(pos, state.cycleProperty(StateProperties.HANDLE_DOWN), 3);
 		}
 		ItemStack heldItem = playerIn.getHeldItem(hand);
-		if (!playerIn.world.isRemote) {
-			if (ingredients.size() == 0 && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
-				FluidUtil.interactWithFluidHandler(playerIn, hand, tank);
-				if (playerIn.isCreative() && tank.isFull()) {
-					markDirty();
-					syncToClient();
-				}
+		if (!playerIn.world.isRemote && (this.ingredients.size() == 0) && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			FluidUtil.interactWithFluidHandler(playerIn, hand, this.tank);
+			if (playerIn.isCreative() && this.tank.isFull()) {
+				this.markDirty();
+				this.syncToClient();
 			}
 		}
 
 		if (heldItem.getItem() == Items.NAME_TAG) {
 			String oldname = this.name;
 			this.name = heldItem.getDisplayName();
-			CapabilityCauldronTeleport ctp = world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null);
-			if (ctp.put(world, pos)) {
-				markDirty();
-				syncToClient();
+			CapabilityCauldronTeleport ctp = this.world.getCapability(CapabilityCauldronTeleport.CAPABILITY, null);
+			if (ctp.put(this.world, pos)) {
+				this.markDirty();
+				this.syncToClient();
 				if (!playerIn.isCreative()) {
 					heldItem.shrink(1);
 				}
@@ -96,216 +94,215 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 		}
 
-		currentBehaviour.playerInteract(playerIn, hand);
+		this.currentBehaviour.playerInteract(playerIn, hand);
 
 		return true;
 	}
 
 	@Override
 	public void update() {
-		if (world.isRemote) {
-			if (effectiveClientSideColor != targetColorRGB) {
-				effectiveClientSideColor = ColorHelper.blendColor(effectiveClientSideColor, targetColorRGB, 0.92f);
+		if (this.world.isRemote) {
+			if (this.effectiveClientSideColor != this.targetColorRGB) {
+				this.effectiveClientSideColor = ColorHelper.blendColor(this.effectiveClientSideColor, this.targetColorRGB, 0.92f);
 			}
 		} else {
-			behaviors.forEach(d -> d.update(d == currentBehaviour));
-			if (behaviors.stream().allMatch(d -> !d.shouldInputsBeBlocked())) {
-				ItemStack next = gatherNextItemFromTop();
+			this.behaviors.forEach(d -> d.update(d == this.currentBehaviour));
+			if (this.behaviors.stream().allMatch(d -> !d.shouldInputsBeBlocked())) {
+				ItemStack next = this.gatherNextItemFromTop();
 				if (!next.isEmpty()) {
-					ingredients.add(next);
-					setTankLock(false);
-					behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
-					if (targetColorRGB != currentBehaviour.getColor()) {
-						setColor(currentBehaviour.getColor());
+					this.ingredients.add(next);
+					this.setTankLock(false);
+					this.behaviors.forEach(d -> d.statusChanged(d == this.currentBehaviour));
+					if (this.targetColorRGB != this.currentBehaviour.getColor()) {
+						this.setColor(this.currentBehaviour.getColor());
 					}
-					markDirty();
-					syncToClient();
+					this.markDirty();
+					this.syncToClient();
 				}
 			}
 		}
 	}
 
 	public NonNullList<ItemStack> getInputs() {
-		return ingredients;
+		return this.ingredients;
 	}
 
 	public void addBehaviour(ICauldronBehaviour b) {
-		behaviors.add(b);
+		this.behaviors.add(b);
 	}
 
 	private ItemStack gatherNextItemFromTop() {
-		List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, collectionZone.offset(getPos()));
+		List<EntityItem> list = this.world.getEntitiesWithinAABB(EntityItem.class, this.collectionZone.offset(this.getPos()));
 		if (list.isEmpty()) {
 			return ItemStack.EMPTY;
 		}
 		EntityItem selectedEntityItem = list.get(0);
-		if (currentBehaviour.canAccept(selectedEntityItem)) {
+		if (this.currentBehaviour.canAccept(selectedEntityItem)) {
 			ItemStack next = selectedEntityItem.getItem().splitStack(1);
 			if (selectedEntityItem.getItem().isEmpty()) {
 				selectedEntityItem.setDead();
 			}
 			ItemStack container = next.getItem().getContainerItem(next);
 			if (!container.isEmpty()) {
-				EntityItem res = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, container);
+				EntityItem res = new EntityItem(this.world, this.pos.getX() + 0.5, this.pos.getY() + 0.9, this.pos.getZ() + 0.5, container);
 				res.addTag("cauldron_drop");
-				world.spawnEntity(res);
+				this.world.spawnEntity(res);
 			}
-			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) (0.2f * Math.random() + 1));
+			this.world.playSound(null, this.pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1f, (float) ((0.2f * Math.random()) + 1));
 			return next;
 		}
 		return ItemStack.EMPTY;
 	}
 
 	public int getColorRGB() {
-		return effectiveClientSideColor;
+		return this.effectiveClientSideColor;
 	}
 
 	public boolean hasItemsInside() {
-		return !ingredients.isEmpty();
+		return !this.ingredients.isEmpty();
 	}
 
 	public Optional<FluidStack> getFluid() {
-		return tank.isEmpty() ? Optional.empty() : Optional.ofNullable(tank.getFluid());
+		return this.tank.isEmpty() ? Optional.empty() : Optional.ofNullable(this.tank.getFluid());
 	}
 
 	public void setColor(int color) {
-		targetColorRGB = color;
-		syncToClient();
-		markDirty();
+		this.targetColorRGB = color;
+		this.syncToClient();
+		this.markDirty();
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == IMagicPowerConsumer.CAPABILITY;
+		return (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) || (capability == IMagicPowerConsumer.CAPABILITY);
 	}
 
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
-			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
+			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(this.tank);
 		}
 		if (capability == IMagicPowerConsumer.CAPABILITY) {
-			return IMagicPowerConsumer.CAPABILITY.cast(powerManager);
+			return IMagicPowerConsumer.CAPABILITY.cast(this.powerManager);
 		}
 		return super.getCapability(capability, facing);
 	}
 
 	public void handleParticles() {
-		behaviors.forEach(d -> d.handleParticles(d == currentBehaviour));
+		this.behaviors.forEach(d -> d.handleParticles(d == this.currentBehaviour));
 	}
 
 	@Override
 	protected void writeAllModDataNBT(NBTTagCompound tag) {
-		tag.setInteger("color", targetColorRGB);
-		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
-		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), ingredients));
-		if (name != null) {
-			tag.setString("name", name);
+		tag.setInteger("color", this.targetColorRGB);
+		tag.setTag("tank", this.tank.writeToNBT(new NBTTagCompound()));
+		tag.setTag("ingredients", ItemStackHelper.saveAllItems(new NBTTagCompound(), this.ingredients));
+		if (this.name != null) {
+			tag.setString("name", this.name);
 		}
-		behaviors.forEach(d -> d.saveToNBT(tag));
-		tag.setString("behaviour", currentBehaviour.getID());
-		tag.setTag("mp", powerManager.writeToNbt());
+		this.behaviors.forEach(d -> d.saveToNBT(tag));
+		tag.setString("behaviour", this.currentBehaviour.getID());
+		tag.setTag("mp", this.powerManager.writeToNbt());
 	}
 
 	@Override
 	protected void readAllModDataNBT(NBTTagCompound tag) {
-		targetColorRGB = tag.getInteger("color");
-		tank.readFromNBT(tag.getCompoundTag("tank"));
-		ingredients.clear();
+		this.targetColorRGB = tag.getInteger("color");
+		this.tank.readFromNBT(tag.getCompoundTag("tank"));
+		this.ingredients.clear();
 		if (tag.hasKey("name")) {
-			name = tag.getString("name");
+			this.name = tag.getString("name");
 		} else {
-			name = null;
+			this.name = null;
 		}
-		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), ingredients);
-		behaviors.forEach(d -> d.loadFromNBT(tag));
+		ItemStackHelper.loadAllItems(tag.getCompoundTag("ingredients"), this.ingredients);
+		this.behaviors.forEach(d -> d.loadFromNBT(tag));
 		String id = tag.getString("behaviour");
-		currentBehaviour = behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
-		powerManager.readFromNbt(tag.getCompoundTag("mp"));
+		this.currentBehaviour = this.behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(this.defaultBehaviours.IDLE);
+		this.powerManager.readFromNbt(tag.getCompoundTag("mp"));
 	}
 
 	@Override
 	protected void writeModSyncDataNBT(NBTTagCompound tag) {
-		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
-		tag.setInteger("color", targetColorRGB);
-		tag.setBoolean("hasItemsInside", ingredients.size() > 0);
-		if (name != null) {
-			tag.setString("name", name);
+		tag.setTag("tank", this.tank.writeToNBT(new NBTTagCompound()));
+		tag.setInteger("color", this.targetColorRGB);
+		tag.setBoolean("hasItemsInside", this.ingredients.size() > 0);
+		if (this.name != null) {
+			tag.setString("name", this.name);
 		}
-		behaviors.forEach(d -> d.saveToSyncNBT(tag));
-		tag.setString("behaviour", currentBehaviour.getID());
+		this.behaviors.forEach(d -> d.saveToSyncNBT(tag));
+		tag.setString("behaviour", this.currentBehaviour.getID());
 	}
 
 	@Override
 	protected void readModSyncDataNBT(NBTTagCompound tag) {
-		tank.readFromNBT(tag.getCompoundTag("tank"));
-		targetColorRGB = tag.getInteger("color");
+		this.tank.readFromNBT(tag.getCompoundTag("tank"));
+		this.targetColorRGB = tag.getInteger("color");
 		if (tag.getBoolean("hasItemsInside")) {
-			ingredients.clear();
-			ingredients.add(ItemStack.EMPTY); // Makes the list not empty
+			this.ingredients.clear();
+			this.ingredients.add(ItemStack.EMPTY); // Makes the list not empty
 		}
 		if (tag.hasKey("name")) {
-			name = tag.getString("name");
+			this.name = tag.getString("name");
 		} else {
-			name = null;
+			this.name = null;
 		}
 		String id = tag.getString("behaviour");
-		currentBehaviour = behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(defaultBehaviours.IDLE);
-		behaviors.forEach(d -> d.loadFromSyncNBT(tag));
+		this.currentBehaviour = this.behaviors.stream().filter(d -> d.getID().equals(id)).findFirst().orElse(this.defaultBehaviours.IDLE);
+		this.behaviors.forEach(d -> d.loadFromSyncNBT(tag));
 	}
 
 	public void clearItemInputs() {
-		ingredients.clear();
-		behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
-		markDirty();
-		syncToClient();
+		this.ingredients.clear();
+		this.behaviors.forEach(d -> d.statusChanged(d == this.currentBehaviour));
+		this.markDirty();
+		this.syncToClient();
 	}
 
 	public void setTankLock(boolean canTransfer) {
-		tank.setCanDrain(canTransfer);
-		tank.setCanFill(canTransfer);
-		markDirty();
+		this.tank.setCanDrain(canTransfer);
+		this.tank.setCanFill(canTransfer);
+		this.markDirty();
 	}
 
 	public void setBehaviour(ICauldronBehaviour behaviour) {
 		if (behaviour == null) {
 			Log.w("null behaviour decorator for cauldron!");
 			Log.askForReport();
-			setBehaviour(defaultBehaviours.IDLE);
-		} else if (behaviour != currentBehaviour) {
-			if (currentBehaviour != null) {
-				currentBehaviour.onDeactivation();
+			this.setBehaviour(this.defaultBehaviours.IDLE);
+		} else if (behaviour != this.currentBehaviour) {
+			if (this.currentBehaviour != null) {
+				this.currentBehaviour.onDeactivation();
 			}
-			currentBehaviour = behaviour;
-			setColor(currentBehaviour.getColor());
-			markDirty();
-			syncToClient();
+			this.currentBehaviour = behaviour;
+			this.setColor(this.currentBehaviour.getColor());
+			this.markDirty();
+			this.syncToClient();
 		}
 	}
 
 	public void onLiquidChange() {
-		behaviors.forEach(d -> d.statusChanged(d == currentBehaviour));
-		markDirty();
-		syncToClient();
+		this.behaviors.forEach(d -> d.statusChanged(d == this.currentBehaviour));
+		this.markDirty();
+		this.syncToClient();
 	}
 
-
 	public void clearTanks() {
-		tank.setFluid(null);
-		setTankLock(true);
-		syncToClient();
+		this.tank.setFluid(null);
+		this.setTankLock(true);
+		this.syncToClient();
 	}
 
 	public DefaultBehaviours getDefaultBehaviours() {
-		return defaultBehaviours;
+		return this.defaultBehaviours;
 	}
 
 	public ICauldronBehaviour getCurrentBehaviour() {
-		return currentBehaviour;
+		return this.currentBehaviour;
 	}
 }

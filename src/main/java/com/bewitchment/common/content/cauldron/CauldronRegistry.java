@@ -219,6 +219,12 @@ public class CauldronRegistry {
 		for (int i = 0; i < 16; i++) {
 			registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.BANNER, 1, i), Ingredient.fromStacks(new ItemStack(Items.BANNER, 1, i)));
 		}
+		//Leather armor dye removal
+		//FIXME: Probably does not respect damage values, please fix
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_HELMET, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_CHESTPLATE, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
 
 		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
 		registerCauldronFluidCrafting(FluidRegistry.WATER, new FluidStack(Fluids.MUNDANE_OIL, Fluid.BUCKET_VOLUME), Ingredient.fromStacks(new ItemStack(Items.POTATO)), Ingredient.fromStacks(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)));

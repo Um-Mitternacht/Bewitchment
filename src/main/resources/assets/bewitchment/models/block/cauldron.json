@@ -2,10 +2,10 @@
   "parent": "block/block",
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "0": "blocks/cauldron_side",
-    "1": "blocks/cauldron_top",
-    "2": "blocks/cauldron_bottom",
-    "particle": "blocks/cauldron_side"
+    "0": "bewitchment:blocks/cauldron/cauldron_side",
+    "1": "bewitchment:blocks/cauldron/cauldron_top",
+    "2": "bewitchment:blocks/cauldron/cauldron_bottom",
+    "particle": "bewitchment:blocks/cauldron/cauldron_side"
   },
   "elements": [
     {

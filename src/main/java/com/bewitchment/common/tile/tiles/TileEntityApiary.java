@@ -36,6 +36,11 @@ public class TileEntityApiary extends ModTileEntity implements ITickable {
 	private boolean hasBees = false;
 
 	@Override
+	public void onBlockBroken(World worldIn, BlockPos pos, IBlockState state) {
+		this.dropInventory(this.hives_inventory);
+	}
+
+	@Override
 	public void update() {
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0 && hasBees) {
 			List<BlockPos> crops = Lists.newArrayList();
