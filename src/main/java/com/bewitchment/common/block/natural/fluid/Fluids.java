@@ -31,7 +31,7 @@ public final class Fluids {
 
 	public static final Set<IFluidBlock> MOD_FLUID_BLOCKS = new HashSet<>();
 
-	public static final Fluid BW_HONEY = createFluid("for.honey", false
+	public static final Fluid BW_HONEY = createFluid("honey", false
 			, fluid -> fluid.setLuminosity(10)
 					.setEmptySound(SoundEvents.ITEM_BUCKET_EMPTY_LAVA)
 					.setFillSound(SoundEvents.ITEM_BUCKET_FILL_LAVA)
