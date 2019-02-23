@@ -133,10 +133,6 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 					this.itemBurnTime = 0;
 					this.isBurning = false;
 					this.updateScheduled = true;
-					//this.itemBurnTime = this.consumeFuel();
-					//if (this.itemBurnTime > 0) {
-					//	this.isBurning = true;
-					//}
 				}
 				this.markDirty();
 			}
