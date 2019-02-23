@@ -52,12 +52,5 @@ public class CropMint extends BlockCrop {
 	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return true;
 	}
-
-	@Override
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		double x = rand.nextFloat();
-		double y = rand.nextFloat();
-		double z = rand.nextFloat();
-		worldIn.spawnParticle(EnumParticleTypes.END_ROD, x, y, z, 0, 0.05, 0);
-	}
+	
 }
