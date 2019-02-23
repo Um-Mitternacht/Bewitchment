@@ -52,5 +52,5 @@ public class CropMint extends BlockCrop {
 	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return true;
 	}
-	
+
 }
