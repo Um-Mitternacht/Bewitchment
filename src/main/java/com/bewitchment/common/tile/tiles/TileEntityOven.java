@@ -55,7 +55,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	@SuppressWarnings("ConstantConditions")
 	public TileEntityOven() {
 		this.random = new Random();
-		this.handlerDown = new ItemStackHandler(2){
+		this.handlerDown = new ItemStackHandler(2) {
 			@Override
 			protected void onContentsChanged(int slot) {
 				if (slot == 0) {

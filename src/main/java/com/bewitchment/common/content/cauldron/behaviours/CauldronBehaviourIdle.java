@@ -48,7 +48,7 @@ public class CauldronBehaviourIdle implements ICauldronBehaviour {
 		level = pos.getY() + 0.1F + level;
 		if (heat >= BOIL_THRESHOLD) {
 			Fluid fluid = tank.getInnerFluid();
-			if (fluid == FluidRegistry.WATER || fluid == Fluids.MUNDANE_OIL || fluid == Fluids.BW_HONEY) {
+			if (fluid == FluidRegistry.WATER || fluid == Fluids.MUNDANE_OIL || fluid == Fluids.HONEY) {
 				for (int i = 0; i < 2; i++) {
 					double posX = pos.getX() + 0.2D + world.rand.nextDouble() * 0.6D;
 					double posZ = pos.getZ() + 0.2D + world.rand.nextDouble() * 0.6D;
