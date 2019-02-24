@@ -468,7 +468,7 @@ public final class ModItems {
 		OreDictionary.registerOre("gemTigersEye", new ItemStack(ModItems.gem, 1, Gem.TIGERS_EYE.ordinal()));
 		OreDictionary.registerOre("gemJasper", new ItemStack(ModItems.gem, 1, Gem.JASPER.ordinal()));
 		OreDictionary.registerOre("gemMalachite", new ItemStack(ModItems.gem, 1, Gem.MALACHITE.ordinal()));
-		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, Gem.AMETHYST.ordinal()));
+		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, Gem.BW_AMETHYST.ordinal()));
 		OreDictionary.registerOre("gemAlexandrite", new ItemStack(ModItems.gem, 1, Gem.ALEXANDRITE.ordinal()));
 		OreDictionary.registerOre("nuggetSilver", new ItemStack(ModItems.silver_nugget));
 		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.silver_ingot));
