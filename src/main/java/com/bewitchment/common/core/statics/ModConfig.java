@@ -165,7 +165,7 @@ public final class ModConfig {
 		}
 
 		public static class Coquina {
-			public int coquina_gen_chance = 25;
+			public int coquina_gen_chance = 5;
 		}
 
 		public static class Beehive {
