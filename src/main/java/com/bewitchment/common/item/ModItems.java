@@ -232,7 +232,6 @@ public final class ModItems {
 			registry.register(itemBlock((Block) fluidBlock));
 		}
 		registry.register(new ItemGem());
-		// registry.register(new ItemFume());
 		registry.register(new ItemFumes(LibItemName.FUME));
 		registry.register(new ItemGemPowder(LibItemName.GEM_POWDER));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
