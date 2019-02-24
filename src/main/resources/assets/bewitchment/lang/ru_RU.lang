@@ -1,8 +1,8 @@
 //CreativeTab
-itemGroup.bewitchment_plants=Bewitchment - Plants
-itemGroup.bewitchment_items=Bewitchment - Items
-itemGroup.bewitchment_blocks=Bewitchment - Blocks
-itemGroup.bewitchment_brews=Bewitchment - Brews
+itemGroup.bewitchment_plants=Bewitchment - Растения
+itemGroup.bewitchment_items=Bewitchment - Предметы
+itemGroup.bewitchment_blocks=Bewitchment - Блоки
+itemGroup.bewitchment_brews=Bewitchment - Зелья
 
 //Config
 bewitchment.config.world_gen=World Gen
