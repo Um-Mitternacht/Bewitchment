@@ -353,24 +353,6 @@ public final class ModBlocks {
 			OreDictionary.registerOre("blockCandle", new ItemStack(ModBlocks.candle_medium, 1, i));
 		}
 
-		//Wool oredicts, used for coloring brews
-		OreDictionary.registerOre("blockWoolWHITE", new ItemStack(Blocks.WOOL, 1, 0));
-		OreDictionary.registerOre("blockWoolORANGE", new ItemStack(Blocks.WOOL, 1, 1));
-		OreDictionary.registerOre("blockWoolMAGENTA", new ItemStack(Blocks.WOOL, 1, 2));
-		OreDictionary.registerOre("blockWoolLIGHT_BLUE", new ItemStack(Blocks.WOOL, 1, 3));
-		OreDictionary.registerOre("blockWoolYELLOW", new ItemStack(Blocks.WOOL, 1, 4));
-		OreDictionary.registerOre("blockWoolLIME", new ItemStack(Blocks.WOOL, 1, 5));
-		OreDictionary.registerOre("blockWoolPINK", new ItemStack(Blocks.WOOL, 1, 6));
-		OreDictionary.registerOre("blockWoolGRAY", new ItemStack(Blocks.WOOL, 1, 7));
-		OreDictionary.registerOre("blockWoolSILVER", new ItemStack(Blocks.WOOL, 1, 8));
-		OreDictionary.registerOre("blockWoolCYAN", new ItemStack(Blocks.WOOL, 1, 9));
-		OreDictionary.registerOre("blockWoolPURPLE", new ItemStack(Blocks.WOOL, 1, 10));
-		OreDictionary.registerOre("blockWoolBLUE", new ItemStack(Blocks.WOOL, 1, 11));
-		OreDictionary.registerOre("blockWoolBROWN", new ItemStack(Blocks.WOOL, 1, 12));
-		OreDictionary.registerOre("blockWoolGREEN", new ItemStack(Blocks.WOOL, 1, 13));
-		OreDictionary.registerOre("blockWoolRED", new ItemStack(Blocks.WOOL, 1, 14));
-		OreDictionary.registerOre("blockWoolBLACK", new ItemStack(Blocks.WOOL, 1, 15));
-
 		//Imported oredicts
 		OreDictionary.registerOre("logWood", ModBlocks.log_elder);
 		OreDictionary.registerOre("logWood", ModBlocks.log_juniper);
@@ -385,6 +367,9 @@ public final class ModBlocks {
 		OreDictionary.registerOre("treeLeaves", ModBlocks.leaves_yew);
 		OreDictionary.registerOre("treeLeaves", ModBlocks.leaves_cypress);
 		OreDictionary.registerOre("treeSapling", ModBlocks.sapling);
+		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.sapling, 1, 1));
+		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.sapling, 1, 2));
+		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.sapling, 1, 3));
 
 		// Misc
 		OreDictionary.registerOre("kelp", ModItems.kelp);
