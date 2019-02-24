@@ -96,7 +96,7 @@ item.lapis_powder.name=Rough Lapis Powder
 
 //Resources and Tools
 item.wax.name=Wax
-item.honey.name=Honey
+item.bw_honey.name=Honey
 item.honeycomb.name=Honeycomb
 item.empty_honeycomb.name=Empty Honeycomb
 item.glass_jar.name=Glass Jar
