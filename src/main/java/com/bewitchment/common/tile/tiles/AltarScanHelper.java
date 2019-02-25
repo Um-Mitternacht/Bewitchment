@@ -121,6 +121,10 @@ class AltarScanHelper {
 			varietyMultiplier = 63;
 			radius_d += 1.2;
 		}
+		if (te.swordItem.getItem() == ModItems.athame) {
+			varietyMultiplier = 65;
+			radius_d += 1.4;
+		}
 		maxPower += (map.keySet().size() * varietyMultiplier); //Variety is the most important thing
 		maxPower *= te.multiplier;
 
