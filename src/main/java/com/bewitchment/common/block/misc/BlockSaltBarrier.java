@@ -63,7 +63,7 @@ public class BlockSaltBarrier extends BlockMod {
 	public BlockSaltBarrier() {
 		super(LibBlockName.SALT_BARRIER, Material.CIRCUITS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, BlockSaltBarrier.EnumAttachPosition.NONE).withProperty(EAST, BlockSaltBarrier.EnumAttachPosition.NONE).withProperty(SOUTH, BlockSaltBarrier.EnumAttachPosition.NONE).withProperty(WEST, BlockSaltBarrier.EnumAttachPosition.NONE));
-		setSoundType(SoundType.CLOTH);
+		setSoundType(SoundType.SAND);
 		setCreativeTab(null);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

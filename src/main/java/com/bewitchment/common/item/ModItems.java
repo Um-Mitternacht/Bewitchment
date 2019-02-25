@@ -97,7 +97,7 @@ public final class ModItems {
 	public static final Item empty_brew_linger = null;
 
 	public static final Item wax = null;
-	public static final Item honey = null;
+	public static final Item bw_honey = null;
 	public static final Item salt = null;
 	public static final Item wool_of_bat = null;
 	public static final Item tongue_of_dog = null;
@@ -228,7 +228,6 @@ public final class ModItems {
 		CropHelper.getFoods().forEach((crop, item) -> registry.register(item));
 		CropHelper.getSeeds().forEach((crop, item) -> registry.register(item));
 		registry.register(new ItemGem());
-		// registry.register(new ItemFume());
 		registry.register(new ItemFumes(LibItemName.FUME));
 		registry.register(new ItemGemPowder(LibItemName.GEM_POWDER));
 		registry.register(new ItemMod(LibItemName.COLD_IRON_INGOT));
@@ -464,14 +463,14 @@ public final class ModItems {
 		OreDictionary.registerOre("gemTigersEye", new ItemStack(ModItems.gem, 1, Gem.TIGERS_EYE.ordinal()));
 		OreDictionary.registerOre("gemJasper", new ItemStack(ModItems.gem, 1, Gem.JASPER.ordinal()));
 		OreDictionary.registerOre("gemMalachite", new ItemStack(ModItems.gem, 1, Gem.MALACHITE.ordinal()));
-		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, Gem.AMETHYST.ordinal()));
+		OreDictionary.registerOre("gemAmethyst", new ItemStack(ModItems.gem, 1, Gem.BW_AMETHYST.ordinal()));
 		OreDictionary.registerOre("gemAlexandrite", new ItemStack(ModItems.gem, 1, Gem.ALEXANDRITE.ordinal()));
 		OreDictionary.registerOre("nuggetSilver", new ItemStack(ModItems.silver_nugget));
 		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.silver_ingot));
-		OreDictionary.registerOre("honeyDrop", new ItemStack(ModItems.honey));
-		OreDictionary.registerOre("dropHoney", new ItemStack(ModItems.honey));
-		OreDictionary.registerOre("foodHoneydrop", new ItemStack(ModItems.honey));
-		OreDictionary.registerOre("listAllsugar", new ItemStack(ModItems.honey));
+		OreDictionary.registerOre("honeyDrop", new ItemStack(ModItems.bw_honey));
+		OreDictionary.registerOre("dropHoney", new ItemStack(ModItems.bw_honey));
+		OreDictionary.registerOre("foodHoneydrop", new ItemStack(ModItems.bw_honey));
+		OreDictionary.registerOre("listAllsugar", new ItemStack(ModItems.bw_honey));
 		OreDictionary.registerOre("materialWax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("materialBeeswax", new ItemStack(ModItems.wax));
 		OreDictionary.registerOre("materialPressedWax", new ItemStack(ModItems.wax));
@@ -532,6 +531,7 @@ public final class ModItems {
 		OreDictionary.registerOre("pestleAndMortar", new ItemStack(ModItems.mortar_and_pestle));
 		OreDictionary.registerOre("materialWaxcomb", new ItemStack(ModItems.empty_honeycomb));
 		OreDictionary.registerOre("materialHoneycomb", new ItemStack(ModItems.honeycomb));
-		OreDictionary.registerOre("itemHoney", new ItemStack(ModItems.honey));
+		OreDictionary.registerOre("itemHoney", new ItemStack(ModItems.honeycomb));
+		OreDictionary.registerOre("itemHoney", new ItemStack(ModItems.bw_honey));
 	}
 }

@@ -5,31 +5,31 @@ itemGroup.bewitchment_blocks=Bewitchment - Блоки
 itemGroup.bewitchment_brews=Bewitchment - Зелья
 
 //Config
-bewitchment.config.world_gen=Генерация в мире
-bewitchment.config.energy_hud=Графический интерфейс - Энергия
-bewitchment.config.blood_hud=Графический интерфейс - Просмотр крови
-bewitchment.config.moon_hud=Графический интерфейс - Лунное предупреждение
-bewitchment.config.current_action_hud=Графический интерфейс - Выбранная способность
-bewitchment.config.client=Настройки клиента
+bewitchment.config.world_gen=World Gen
+bewitchment.config.energy_hud=Energy HUD
+bewitchment.config.blood_hud=Blood Viewer HUD
+bewitchment.config.moon_hud=Moon Warning HUD
+bewitchment.config.current_action_hud=Selected Ability HUD
+bewitchment.config.client=Client Settings
 
 //Actions
 bewitchment.night_vision_vampire=Ночное зрение
 bewitchment.night_vision_werewolf=Ночное зрение
-bewitchment.drain_blood=Слив крови
+bewitchment.drain_blood=Питье крови
 bewitchment.bat_swarm=Рой летучих мышей
-bewitchment.howl=Вой
-bewitchment.wolf_shift=Преобразование
+bewitchment.howl=Волчий вой
+bewitchment.wolf_shift=Обращение
 
 //Gui
 container.apiary=Пасека
 container.oven=Печь
-container.thread_spinner=Поток круговорота
+container.thread_spinner=Ткацкий станок
 
 ////Names
 //Items
 item.seed_aconitum.name=Семена аконита
-item.seed_asphodel.name=Семена асфоделии
-item.seed_belladonna.name=Семена белладонны
+item.seed_asphodel.name=Семена златоцветника
+item.seed_belladonna.name=Семена беладонны
 item.seed_ginger.name=Семена имбиря
 item.seed_kelp.name=Споры ламинарии
 item.seed_mint.name=Семена мяты
@@ -38,18 +38,18 @@ item.seed_mandrake.name=Семена мандрагоры
 item.seed_lavender.name=Семена лаванды
 item.seed_thistle.name=Семена чертополоха
 item.seed_silphium.name=Семена сильфия
-item.seed_tulsi.name=Семена тулси
+item.seed_tulsi.name=Семена туласи
 item.seed_garlic.name=Семена чеснока
-item.seed_kenaf.name=Семена кенафа
-item.seed_wormwood.name=Семена полыни
+item.seed_kenaf.name=Семена гибискуса коноплёвого
+item.seed_wormwood.name=Семена горькой полыни
 item.seed_hellebore.name=Семена морозника
 item.seed_chrysanthemum.name=Семена хризантемы
-item.seed_sagebrush.name=Семена полыни
+item.seed_sagebrush.name=Семена обыкновенной полыни
 
 //Crops
 item.aconitum.name=Аконит
-item.asphodel.name=Асфодель
-item.belladonna.name=Белладонна
+item.asphodel.name=Златоцветник
+item.belladonna.name=Беладонна
 item.ginger.name=Имбирь
 item.kelp.name=Ламинария
 item.mint.name=Мята
@@ -58,41 +58,41 @@ item.mandrake_root.name=Корень мандрагоры
 item.lavender.name=Лаванда
 item.thistle.name=Чертополох
 item.silphium.name=Сильфий
-item.wormwood.name=Полынь
-item.kenaf.name=Кенаф
+item.wormwood.name=Горькая полынь
+item.kenaf.name=Гибискус коноплёвый
 item.garlic.name=Чеснок
-item.tulsi.name=Тусли
+item.tulsi.name=Туласи
 item.hellebore.name=Морозник
 item.chrysanthemum.name=Хризантема
-item.sagebrush.name=Полынь
+item.sagebrush.name=Обыкновенная полынь
 item.infested_wheat.name=Зараженная пшеница
-item.witchweed.name=Ведьмин сорняк
+item.witchweed.name=Стрига
 
 //Gemstones
 item.gem_garnet.name=Гранат
 item.gem_moldavite.name=Молдавит
-item.gem_nuummite.name=Нууммит
+item.gem_nuummite.name=Нуумит
 item.gem_tourmaline.name=Турмалин
 item.gem_tigers_eye.name=Тигровый глаз
-item.gem_bloodstone.name=Кровавый камень
+item.gem_bloodstone.name=Кровавая яшма
 item.gem_jasper.name=Яшма
 item.gem_malachite.name=Малахит
 item.gem_amethyst.name=Аметист
 item.gem_alexandrite.name=Александрит
 
 //Gemstone powders
-item.gem_powder.garnet.name=Гранатовая пыль
-item.gem_powder.moldavite.name=Молдавитовая пыль
-item.gem_powder.nuummite.name=Нууммитовая пыль
-item.gem_powder.tigers_eye.name=Пыль тигрового глаза
-item.gem_powder.tourmaline.name=Турмалиновая пыль
-item.gem_powder.bloodstone.name=Пыль кровавого камня
-item.gem_powder.jasper.name=Пыль яшмы
-item.gem_powder.malachite.name=Малахитовая пыль
-item.gem_powder.amethyst.name=Аметистовая пыль
-item.gem_powder.alexandrite.name=Александритовая пыль
-item.quartz_powder.name=Кварцевая пыль
-item.lapis_powder.name=Лазуритовая пыль
+item.gem_powder.garnet.name=Грубо растолченный гранат
+item.gem_powder.moldavite.name=Грубо растолченный молдавит
+item.gem_powder.nuummite.name=Грубо растолченный нуумит
+item.gem_powder.tigers_eye.name=Грубо растолченный тигровый Глаз
+item.gem_powder.tourmaline.name=Грубо растолченный турмалин
+item.gem_powder.bloodstone.name=Грубо Растолченная кровавая Яшма
+item.gem_powder.jasper.name=Грубо Растолченная яшма
+item.gem_powder.malachite.name=Грубо растолченный малахит
+item.gem_powder.amethyst.name=Грубо растолченный аметист
+item.gem_powder.alexandrite.name=Грубо растолченный александрит
+item.quartz_powder.name=Грубо растолченный кварц
+item.lapis_powder.name=Грубо растолченный лазурит
 
 //Resources and Tools
 item.wax.name=Воск
@@ -102,24 +102,24 @@ item.empty_honeycomb.name=Пустые соты
 item.glass_jar.name=Стеклянная банка
 item.wool_of_bat.name=Шерсть летучей мыши
 item.tongue_of_dog.name=Язык собаки
-item.wood_ash.name=Древесная зола
+item.wood_ash.name=Древесный пепел
 item.ectoplasm.name=Эктоплазма
 item.spectral_dust.name=Спектральная пыль
-item.silver_scales.name=Серебряные весы
-item.eye_of_old.name=Глаз старости
+item.silver_scales.name=Серебряные чешуйки
+item.eye_of_old.name=Глаз Старца
 item.heart.name=Сердце
-item.envenomed_fang.name=Отравленный клык
+item.envenomed_fang.name=Ядовитое жало
 item.dimensional_sand.name=Пространственный песок
-item.chromatic_quill.name=Хроматический вал
-item.carnivorous_tooth.name=Плотоядный зуб
-item.eye_of_ancient.name=Глаз древности
+item.chromatic_quill.name=Цветное Перо
+item.carnivorous_tooth.name=Клык
+item.eye_of_ancient.name=Глаз Древнего
 item.hoof.name=Копыто
-item.equine_tail.name=Хвост лошади
+item.equine_tail.name=Лошадиный хвост
 item.salt.name=Соль
-item.cold_iron_ingot.name=Холодный железный слиток
+item.cold_iron_ingot.name=Слиток холодного железа
 item.silver_ingot.name=Серебряный слиток
-item.silver_nugget.name=Серебряный самородок
-item.silver_powder.name=Серебряный порошок
+item.silver_nugget.name=Кусочек серебра
+item.silver_powder.name=Крупный порошок серебра
 item.silver_pickaxe.name=Серебряная кирка
 item.silver_sword.name=Серебряный меч
 item.silver_axe.name=Серебряный топор
@@ -138,138 +138,138 @@ item.cold_iron_helmet.name=Шлем из холодного железа
 item.cold_iron_chestplate.name=Нагрудник из холодного железа
 item.cold_iron_leggings.name=Поножи из холодного железа
 item.cold_iron_boots.name=Ботинки из холодного железа
-item.witches_cowl.name=Капюшон ведьмы
-item.witches_hat.name=Шляпа ведьмы
-item.witches_robes.name=Роба ведьмы
-item.witches_pants.name=Штаны ведьмы
+item.witches_cowl.name=Ведьмин капюшон
+item.witches_hat.name=Ведьмина шляпа
+item.witches_robes.name=Ведьмина роба
+item.witches_pants.name=Ведьмины штаны
 item.vampire_hat.name=Шляпа вампира
-item.vampire_vest.name=Жилет вампира
-item.vampire_pants.name=Штаны вампира
-item.athame.name=Асам
-item.boline.name=Боллин
+item.vampire_vest.name=Одеяние вампира
+item.vampire_pants.name=Брюки вампира
+item.athame.name=Аутэм
+item.boline.name=Болин
 item.mortar_and_pestle.name=Ступка и пестик
 item.mortar_and_pestle_stone.name=Каменная ступка и пестик
 item.brew_phial.name=Флакон для зелья
-item.brew_arrow.name=Покрытая стрела
-item.taglock.name=Набор меток
-item.wand.name=Жезл
+item.brew_arrow.name=Пропитанная стрела
+item.taglock.name=Образец
+item.wand.name=Палочка
 item.needle_bone.name=Костяная игла
 item.brew_phial_drink.name=Флакон для зелья
-item.brew_phial_splash.name=Взрывной флакон для зелья
-item.brew_phial_drink_lingering.name=Затяжной флакон для зелья
+item.brew_phial_splash.name=Флакон для взрывного зелья
+item.brew_phial_linger.name=Флакон для туманного зелья
 item.empty_brew_drink.name=Пустой флакон для зелья
-item.empty_brew_splash.name=Пустой взрывной флакон для зелья
-item.empty_brew_linger.name=Пустой затяжной флакон для зелья
-item.oak_apple_gall.name=Желчь дубового яблока
-item.grilled_watermelon.name=Жареный арбуз
-item.ritual_chalk_normal.name=Ритуальный мел
-item.ritual_chalk_nether.name=Огненный мел
-item.ritual_chalk_ender.name=Фазирующий мел
-item.ritual_chalk_golden.name=Фокусный мел
-item.stew.name=Чаша тушенки
-item.stew.description.generic=Сытная миска тушеного мяса.
-item.stew.description.precise=Восстанавливает голод на %d и насыщение на %f.
-item.stew.description.empty=Это просто горячая вода... Зачем ты это сделал?
-item.remedy_talisman.name=Знак защиты
-item.tarots.name=Колода таро
-item.tarots.read_to=Они восприимчивы к будущему %s
+item.empty_brew_splash.name=Пустой флакон для взрывного зелья
+item.empty_brew_linger.name=Пустой флакон для туманного зелья
+item.oak_apple_gall.name=Чернильный орешек
+item.grilled_watermelon.name=Жаренный арбуз
+item.ritual_chalk_normal.name=Ритуальный мелок
+item.ritual_chalk_nether.name=Пламенный мелок
+item.ritual_chalk_ender.name=Пространственный мелок
+item.ritual_chalk_golden.name=Фокальный мелок
+item.stew.name=Тушеное мясо
+item.stew.description.generic=Сытная миска тушенки
+item.stew.description.precise=Восполняет %d голода и %f насыщения.
+item.stew.description.empty=Это просто кипяток... Зачем ты его сделал?
+item.remedy_talisman.name=Жетон лекаря
+item.tarots.name=Карты таро
+item.tarots.read_to=Они связаны с будущим %s
 item.tarots.error_reading=Предсказания карт не имеют смысла
-item.girdle_of_the_wooded.name=Узловой пояс
+item.girdle_of_the_wooded.name=Пояс Дриад
 item.mantle.name=Мантия
-item.pouch.name=Мешочек ведьмы
+item.pouch.name=Ведьмина сумка
 item.broom_mundane.name=Метла
-item.broom_elder.name=Метла из бузины
-item.broom_juniper.name=Метла из можжевельника
-item.broom_yew.name=Метла из тиса
-item.broom_cypress.name=Метла из кипариса
-item.gem_powder.name=Пыль драгоценного камня
-item.cold_iron_nugget.name=Самородок холодного железа
-item.owlets_wing.name=Крыло совы
+item.broom_elder.name=Бузинная метла
+item.broom_juniper.name=Можжевеловая метла
+item.broom_yew.name=Тисовая метла
+item.broom_cypress.name=Кипарисовая метла
+item.gem_powder.name=Порошок из самоцветов
+item.cold_iron_nugget.name=Кусочек холодного железа
+item.owlets_wing.name=Совиное крыло
 item.ravens_feather.name=Воронье перо
-item.adders_fork.name=Вилка гадюки
-item.snake_venom.name=Змеиный яд
-item.filet_of_fenny_snake.name=Филе болотистой змеи
-item.cold_iron_dust.name=Пыль холодного железа
-item.cold_iron_dust_small.name=Кучка пыли холодного железа
-item.spanish_moss_stuffing.name=Испанская начинка из мха
+item.adders_fork.name=Хвост ужа
+item.snake_venom.name=Яд змеи
+item.filet_of_fenny_snake.name=Требуха болотной змеи
+item.cold_iron_dust.name=Грубо растолченное холодное железо
+item.cold_iron_dust_small.name=Пригоршня растолченного холодного железа
+item.spanish_moss_stuffing.name=Набивка из Испанского мха
 item.soul_string.name=Нить души
-item.pure_filament.name=Чистая нить
-item.diabolic_vein.name=Дьявольская вена
-item.witches_stitching.name=Ведьминское сшивание
+item.pure_filament.name=Чистое волокно
+item.diabolic_vein.name=Жила дьявола
+item.witches_stitching.name=Ведьмина тетева
 item.regal_silk.name=Королевский шелк
-item.golden_thread.name=Золотая нить
-item.hellish_bauble.name=Адская безделушка
-item.thorny_garment.name=Колючая одежда
+item.golden_thread.name=Золотая прядь
+item.hellish_bauble.name=Безделушка дьявола
+item.thorny_garment.name=Тернистый покров
 item.graveyard_dust.name=Кладбищенская пыль
 item.magic_salve.name=Волшебная мазь
 item.location_stone.bound_to=Привязан к %d %d %d (%s)
 item.location_stone.name=Путевой камень
 item.location_stone.unbound=Не привязан
-item.pentacle.name=Магическая фигура
+item.pentacle.name=Пентакль
 item.wrathful_eye.name=Гневный глаз
-item.sanguine_fabric.name=Кровавые тряпки
-item.toe_of_frog.name=Палец лягушки
-item.blindworms_sting.name=Жало слепого червя
-item.lizard_leg.name=Нога ящерицы
-item.eye_of_newt.name=Глаз тритона
-item.juniper_berries.name=Ягоды можжевельника
-item.yew_aril.name=Тисовая кожура
+item.sanguine_fabric.name=Кровавое тряпье
+item.toe_of_frog.name=Пясть лягушки
+item.blindworms_sting.name=Жало медянки
+item.lizard_leg.name=Варанья лапа
+item.eye_of_newt.name=Тритона глаз
+item.juniper_berries.name=Можжевеловые ягоды
+item.yew_aril.name=Тисовая кровелька
 item.uranid_venom.name=Жидкий гнев
-item.hellhound_horn.name=Адский рог
-item.demon_heart.name=Демоническое сердце
+item.hellhound_horn.name=Рог адской гончей
+item.demon_heart.name=Сердце демона
 
 
 //fumes
-item.fume.unfired_jar.name=Необожженный кувшин
-item.fume.empty_jar.name=Пустой кувшин
-item.fume.oak_spirit.name=Дух дуба
-item.fume.birch_soul.name=Душа березы
-item.fume.acacia_essence.name=Эссенция акации
-item.fume.spruce_heart.name=Сердце ели
-item.fume.cloudy_oil.name=Пасмурное масло
-item.fume.cleansing_aura.name=Очищающая аура
-item.fume.emanation_of_dishonesty.name=Эманация нечестности
-item.fume.everchanging_presence.name=Постоянное присутствие
-item.fume.undying_image.name=Вечный образ
-item.fume.demonic_dew.name=Демоническая Роса
-item.fume.fiery_breeze.name=Огненный бриз
-item.fume.heavenly_winds.name=Небесные ветры
-item.fume.otherworld_tears.name=Потусторонние слезы
-item.fume.petrichor_odour.name=Запах петригора
-item.fume.zephyr_of_the_depths.name=Зефир глубин
-item.fume.reek_of_death.name=Прилив смерти
-item.fume.vital_essence.name=Эссенция живучести
-item.fume.droplet_of_wisdom.name=Капелька мудрости
-item.fume.bottled_magic.name=Жидкое колдовство
+item.fume.unfired_jar.name=Необожжённый глиняный кувшин
+item.fume.empty_jar.name=Пустой глиняный кувшин
+item.fume.oak_spirit.name=Дубовый дух
+item.fume.birch_soul.name=Березовый лосьён
+item.fume.acacia_essence.name=Акации смола
+item.fume.spruce_heart.name=Еловое сердце
+item.fume.cloudy_oil.name=Мутное масло
+item.fume.cleansing_aura.name=Очищающие благовония
+item.fume.emanation_of_dishonesty.name=Экстракт нечестивости
+item.fume.everchanging_presence.name=Постоянный конденсат
+item.fume.undying_image.name=Вечный бальзам
+item.fume.demonic_dew.name=Демонический эликсир
+item.fume.fiery_breeze.name=Пылкая мазь
+item.fume.heavenly_winds.name=Райский настой
+item.fume.otherworld_tears.name=Потусторонние слёзы
+item.fume.petrichor_odour.name=Окаменелый ихор
+item.fume.zephyr_of_the_depths.name=Вихрь глубин
+item.fume.reek_of_death.name=Увядание смерти
+item.fume.vital_essence.name=Эссенция жизни
+item.fume.droplet_of_wisdom.name=Капля премудрости
+item.fume.bottled_magic.name=Квинтэссенция магии
 
 //Dyes
-item.catechu.name=Дубильный коричневый
-item.absinthe_green.name=Абсент зеленый
+item.catechu.name=Коричневый кашу
+item.absinthe_green.name=Абсентовый зеленый
 item.albedo.name=Алхимический белый
-item.iron_gall_ink.name=Железо-желчные чернила
+item.iron_gall_ink.name=Чернила чернильного орешка
 
 //Blocks
-tile.candle_small.white.name=Маленькая белая свеча
-tile.candle_small.orange.name=Маленькая оранжевая свеча
-tile.candle_small.magenta.name=Маленькая сиреневая свеча
-tile.candle_small.lightBlue.name=Маленькая светло-синяя свеча
-tile.candle_small.yellow.name=Маленькая желтая свеча
-tile.candle_small.lime.name=Маленькая лаймовая свеча
-tile.candle_small.pink.name=Маленькая розовая свеча
-tile.candle_small.gray.name=Маленькая серая свеча
-tile.candle_small.silver.name=Маленькая светло-серая свеча
-tile.candle_small.cyan.name=Маленькая бирюзовая свеча
-tile.candle_small.purple.name=Маленькая фиолетовая свеча
-tile.candle_small.blue.name=Маленькая синяя свеча
-tile.candle_small.brown.name=Маленькая коричневая свеча
-tile.candle_small.green.name=Маленькая зеленая свеча
-tile.candle_small.red.name=Маленькая красная свеча
-tile.candle_small.black.name=Маленькая черная свеча
+tile.candle_small.white.name=Малая белая свеча
+tile.candle_small.orange.name=Малая оранжевая свеча
+tile.candle_small.magenta.name=Малая пурпурная свеча
+tile.candle_small.lightBlue.name=Малая голубая свеча
+tile.candle_small.yellow.name=Малая желтая свеча
+tile.candle_small.lime.name=Малая лаймовая свеча
+tile.candle_small.pink.name=Малая розовая свеча
+tile.candle_small.gray.name=Малая серая свеча
+tile.candle_small.silver.name=Малая светло-серая свеча
+tile.candle_small.cyan.name=Малая бирюзовая свеча
+tile.candle_small.purple.name=Малая фиолетовая свеча
+tile.candle_small.blue.name=Малая синяя свеча
+tile.candle_small.brown.name=Малая коричневая свеча
+tile.candle_small.green.name=Малая зеленая свеча
+tile.candle_small.red.name=Малая красная свеча
+tile.candle_small.black.name=Малая черная свеча
 
 tile.candle_medium.white.name=Большая белая свеча
 tile.candle_medium.orange.name=Большая оранжевая свеча
-tile.candle_medium.magenta.name=Большая сиреневая свеча
-tile.candle_medium.lightBlue.name=Большая светло-синяя свеча
+tile.candle_medium.magenta.name=Большая пурпурная свеча
+tile.candle_medium.lightBlue.name=Большая голубая свеча
 tile.candle_medium.yellow.name=Большая желтая свеча
 tile.candle_medium.lime.name=Большая лаймовая свеча
 tile.candle_medium.pink.name=Большая розовая свеча
@@ -283,27 +283,27 @@ tile.candle_medium.green.name=Большая зеленая свеча
 tile.candle_medium.red.name=Большая красная свеча
 tile.candle_medium.black.name=Большая черная свеча
 
-tile.candle_small_lit.white.name=Маленькая белая свеча
-tile.candle_small_lit.orange.name=Маленькая оранжевая свеча
-tile.candle_small_lit.magenta.name=Маленькая сиреневая свеча
-tile.candle_small_lit.lightBlue.name=Маленькая светло-синяя свеча
-tile.candle_small_lit.yellow.name=Маленькая желтая свеча
-tile.candle_small_lit.lime.name=Маленькая лаймовая свеча
-tile.candle_small_lit.pink.name=Маленькая розовая свеча
-tile.candle_small_lit.gray.name=Маленькая серая свеча
-tile.candle_small_lit.silver.name=Маленькая светло-серая свеча
-tile.candle_small_lit.cyan.name=Маленькая бирюзовая свеча
-tile.candle_small_lit.purple.name=Маленькая фиолетовая свеча
-tile.candle_small_lit.blue.name=Маленькая синяя свеча
-tile.candle_small_lit.brown.name=Маленькая коричневая свеча
-tile.candle_small_lit.green.name=Маленькая зеленая свеча
-tile.candle_small_lit.red.name=Маленькая красная свеча
-tile.candle_small_lit.black.name=Маленькая черная свеча
+tile.candle_small_lit.white.name=Малая белая свеча
+tile.candle_small_lit.orange.name=Малая оранжевая свеча
+tile.candle_small_lit.magenta.name=Малая пурпурная свеча
+tile.candle_small_lit.lightBlue.name=Малая голубая свеча
+tile.candle_small_lit.yellow.name=Малая желтая свеча
+tile.candle_small_lit.lime.name=Малая лаймовая свеча
+tile.candle_small_lit.pink.name=Малая розовая свеча
+tile.candle_small_lit.gray.name=Малая серая свеча
+tile.candle_small_lit.silver.name=Малая светло-серая свеча
+tile.candle_small_lit.cyan.name=Малая бирюзовая свеча
+tile.candle_small_lit.purple.name=Малая фиолетовая свеча
+tile.candle_small_lit.blue.name=Малая синяя свеча
+tile.candle_small_lit.brown.name=Малая коричневая свеча
+tile.candle_small_lit.green.name=Малая зеленая свеча
+tile.candle_small_lit.red.name=Малая красная свеча
+tile.candle_small_lit.black.name=Малая черная свеча
 
 tile.candle_medium_lit.white.name=Большая белая свеча
 tile.candle_medium_lit.orange.name=Большая оранжевая свеча
-tile.candle_medium_lit.magenta.name=Большая сиреневая свеча
-tile.candle_medium_lit.lightBlue.name=Большая светло-синяя свеча
+tile.candle_medium_lit.magenta.name=Большая пурпурная свеча
+tile.candle_medium_lit.lightBlue.name=Большая голубая свеча
 tile.candle_medium_lit.yellow.name=Большая желтая свеча
 tile.candle_medium_lit.lime.name=Большая лаймовая свеча
 tile.candle_medium_lit.pink.name=Большая розовая свеча
@@ -318,102 +318,102 @@ tile.candle_medium_lit.red.name=Большая красная свеча
 tile.candle_medium_lit.black.name=Большая черная свеча
 
 tile.lantern.name=Фонарь
-tile.lantern.white.name=Фонарь (белый)
-tile.lantern.orange.name=Фонарь (оранжевый)
-tile.lantern.magenta.name=Фонарь (сиреневый)
-tile.lantern.light_blue.name=Фонарь (светло-синий)
-tile.lantern.yellow.name=Фонарь (желтый)
-tile.lantern.lime.name=Фонарь (лаймовый)
-tile.lantern.pink.name=Фонарь (розовый)
-tile.lantern.gray.name=Фонарь (серый)
-tile.lantern.silver.name=Фонарь (светло-серый)
-tile.lantern.cyan.name=Фонарь (бирюзовый)
-tile.lantern.purple.name=Фонарь (фиолетовый)
-tile.lantern.blue.name=Фонарь (синий)
-tile.lantern.brown.name=Фонарь (коричневый)
-tile.lantern.green.name=Фонарь (зеленый)
-tile.lantern.red.name=Фонарь (красный)
-tile.lantern.black.name=Фонарь (черный)
-tile.lantern.desc=Внутри нет воздуха для горения, вам нужен другой источник огня, чтобы зажечь фонарь
+tile.lantern.white.name=Фонарь (Белый)
+tile.lantern.orange.name=Фонарь (Оранжевый)
+tile.lantern.magenta.name=Фонарь (Пурпурный)
+tile.lantern.light_blue.name=Фонарь (Голубой)
+tile.lantern.yellow.name=Фонарь (Желтый)
+tile.lantern.lime.name=Фонарь (Лаймовый)
+tile.lantern.pink.name=Фонарь (Розовый)
+tile.lantern.gray.name=Фонарь (Серый)
+tile.lantern.silver.name=Фонарь (Светло-серый)
+tile.lantern.cyan.name=Фонарь (Бирюзовый)
+tile.lantern.purple.name=Фонарь (Фиолетовый)
+tile.lantern.blue.name=Фонарь (Синий)
+tile.lantern.brown.name=Фонарь (Коричневый)
+tile.lantern.green.name=Фонарь (Зеленый)
+tile.lantern.red.name=Фонарь (Красный)
+tile.lantern.black.name=Фонарь (Черный)
+tile.lantern.desc=Внутри нет воздуха для горения, для зажигания требуется другой источник огня
 
-tile.revealing_lantern.name=Вскрытый фонарь
-tile.revealing_lantern.white.name=Вскрытый фонарь (белый)
-tile.revealing_lantern.orange.name=Вскрытый фонарь (оранжевый)
-tile.revealing_lantern.magenta.name=Вскрытый фонарь (сиреневый)
-tile.revealing_lantern.light_blue.name=Вскрытый фонарь (светло-синий)
-tile.revealing_lantern.yellow.name=Вскрытый фонарь (желтый)
-tile.revealing_lantern.lime.name=Вскрытый фонарь (лаймовый)
-tile.revealing_lantern.pink.name=Вскрытый фонарь (розовый)
-tile.revealing_lantern.gray.name=Вскрытый фонарь (серый)
-tile.revealing_lantern.silver.name=Вскрытый фонарь (светло-серый)
-tile.revealing_lantern.cyan.name=Вскрытый фонарь (бирюзовый)
-tile.revealing_lantern.purple.name=Вскрытый фонарь (фиолетовый)
-tile.revealing_lantern.blue.name=Вскрытый фонарь (синий)
-tile.revealing_lantern.brown.name=Вскрытый фонарь (коричневый)
-tile.revealing_lantern.green.name=Вскрытый фонарь (зеленый)
-tile.revealing_lantern.red.name=Вскрытый фонарь (красный)
-tile.revealing_lantern.black.name=Вскрытый фонарь (черный)
+tile.revealing_lantern.name=Фонарь обнаружения
+tile.revealing_lantern.white.name=Фонарь обнаружения (Белый)
+tile.revealing_lantern.orange.name=Фонарь обнаружения (Оранжевый)
+tile.revealing_lantern.magenta.name=Фонарь обнаружения (Пурпурный)
+tile.revealing_lantern.light_blue.name=Фонарь обнаружения (Голубой)
+tile.revealing_lantern.yellow.name=Фонарь обнаружения (Желтый)
+tile.revealing_lantern.lime.name=Фонарь обнаружения (Лаймовый)
+tile.revealing_lantern.pink.name=Фонарь обнаружения (Розовый)
+tile.revealing_lantern.gray.name=Фонарь обнаружения (Серый)
+tile.revealing_lantern.silver.name=Фонарь обнаружения (Светло-серый)
+tile.revealing_lantern.cyan.name=Фонарь обнаружения (Бирюзовый)
+tile.revealing_lantern.purple.name=Фонарь обнаружения (Фиолетовый)
+tile.revealing_lantern.blue.name=Фонарь обнаружения (Синий)
+tile.revealing_lantern.brown.name=Фонарь обнаружения (Коричневый)
+tile.revealing_lantern.green.name=Фонарь обнаружения (Зеленый)
+tile.revealing_lantern.red.name=Фонарь обнаружения (Красный)
+tile.revealing_lantern.black.name=Фонарь обнаружения (Черный)
 
-tile.crop_aconitum.name=Урожай аконита
-tile.crop_asphodel.name=Урожай асфоделии
-tile.crop_belladonna.name=Урожай белладонны
-tile.crop_ginger.name=Урожай имбиря
-tile.crop_kelp.name=Урожай ламинарии
-tile.crop_mint.name=Урожай мяты
-tile.crop_white_sage.name=Урожай белого шалфея
-tile.crop_mandrake_root.name=Урожай мандрагоры
-tile.crop_lavender.name=Урожай лаванды
-tile.crop_thistle.name=Урожай чертополоха
-tile.crop_silphium.name=Урожай сильфия
-tile.crop_garlic.name=Урожай чеснока
-tile.crop_wormwood.name=Урожай полыни
-tile.crop_kenaf.name=Урожай кенафа
-tile.crop_tulsi.name=Урожай тусли
-tile.crop_chrysanthemum.name=Урожай хризантемы
-tile.crop_sagebrush.name=Урожай полыни
+tile.crop_aconitum.name=Посаженный аконит
+tile.crop_asphodel.name=Посаженный златоцветник
+tile.crop_belladonna.name=Посаженная беладонна
+tile.crop_ginger.name=Посаженный имбирь
+tile.crop_kelp.name=Посаженная ламинария
+tile.crop_mint.name=Посаженная мята
+tile.crop_white_sage.name=Посаженный шалфей
+tile.crop_mandrake_root.name=Посаженная мандрагора
+tile.crop_lavender.name=Посаженная лаванда
+tile.crop_thistle.name=Посаженный чертополох
+tile.crop_silphium.name=Посаженный сильфий
+tile.crop_garlic.name=Посаженный чеснок
+tile.crop_wormwood.name=Посаженная горькая полынь
+tile.crop_kenaf.name=Посаженный гибискус коноплёвый
+tile.crop_tulsi.name=Посаженный Туласи
+tile.crop_chrysanthemum.name=Посаженная хризантема
+tile.crop_sagebrush.name=Посаженная обыкновенная полынь
 tile.spanish_moss.name=Испанский мох
-tile.infested_farmland.name=Зараженная пашня
+tile.infested_farmland.name=Зараженная почва
 
 //Misc plants
-tile.moonbell.name=Цветок лунного колокольчика
-tile.raging_grass.name=Бешеная трава
+tile.moonbell.name=Лунный колокольчик
+tile.raging_grass.name=Пламенная трава
 
 
 tile.goblet.name=Кубок
-tile.goblet_filled.name=Полный кубок
-tile.gem_bowl.name=Чаша с драгоценными камнями
-tile.tarot_table.name=Таблица гадания
-tile.planks_juniper.name=Доски можжевельника
-tile.planks_elder.name=Доски бузины
+tile.goblet_filled.name=Наполненный кубок
+tile.gem_bowl.name=Инкрустированная чаша
+tile.tarot_table.name=Стол для предсказаний
+tile.planks_juniper.name=Можжевеловые доски
+tile.planks_elder.name=Бузинные доски
 tile.planks_yew.name=Тисовые доски
 tile.planks_cypress.name=Кипарисовые доски
 
 //Metals, Stones and Ores
 tile.silver_ore.name=Серебряная руда
 tile.gem_ore_moldavite.name=Молдавитовая руда
-tile.gem_ore_bloodstone.name=Руда кровавого камня
-tile.gem_ore_malachite.name=Руда малахита
-tile.gem_ore_tourmaline.name=Руда турмалина
+tile.gem_ore_bloodstone.name=Руда кровавой яшмы
+tile.gem_ore_malachite.name=Малахитовая руда
+tile.gem_ore_tourmaline.name=Турмалиновая руда
 tile.gem_block_tourmaline.name=Турмалиновый блок
 tile.gem_block_moldavite.name=Молдавитовый блок
-tile.gem_block_bloodstone.name=Блок кровавого камня
-tile.gem_block_tigers_eye.name=Блок тигрового глаза
+tile.gem_block_bloodstone.name=Блок из кровавой яшмы
+tile.gem_block_tigers_eye.name=Блок из тигриного глаза
 tile.gem_block_malachite.name=Малахитовый блок
-tile.gem_block_nuummite.name=Нууммитовый блок
+tile.gem_block_nuummite.name=Нуумитовый блок
 tile.gem_block_garnet.name=Гранатовый блок
 tile.gem_block_alexandrite.name=Александритовый блок
-tile.gem_block_jasper.name=Блок яшмы
+tile.gem_block_jasper.name=Ямшовый блок
 tile.gem_block_amethyst.name=Аметистовый блок
 tile.silver_block.name=Серебряный блок
-tile.silver_block_chisel.name=Серебряный блок (точеный)
-tile.nethersteel.name=Сталь нижнего мира
-tile.nethersteel_chisel.name=Сталь нижнего мира (точеная)
-tile.gem_ore_jasper.name=Руда яшмы
-tile.gem_ore_tigers_eye.name=Руда тигрового глаза
-tile.gem_ore_serpentine.name=Серпентиновая руда
-tile.gem_ore_nuummite.name=Нууммитовая руда
+tile.silver_block_chisel.name=Серебряный блок (Резной)
+tile.nethersteel.name=Блок из стали нижнего мира
+tile.nethersteel_chisel.name=Блок из стали нижнего мира (Резной)
+tile.gem_ore_jasper.name=Яшмовая руда
+tile.gem_ore_tigers_eye.name=Руда тигриного глаза
+tile.gem_ore_serpentine.name=Серпентинитовая руда
+tile.gem_ore_nuummite.name=Нуумитовая руда
 tile.gem_ore_garnet.name=Гранатовая руда
-tile.salt_ore.name=Соляная руда
+tile.salt_ore.name=Солевая руда
 tile.gem_ore_amethyst.name=Аметистовая руда
 tile.gem_ore_alexandrite.name=Александритовая руда
 tile.coquina.name=Ракушечник
@@ -421,93 +421,93 @@ tile.fake_ice.name=Вечный лед
 tile.fake_ice_fence.name=Забор из вечного льда
 tile.fake_ice_stairs.name=Ступеньки из вечного льда
 tile.fake_ice_slab_half.name=Плита из вечного льда
-tile.embittered_bricks.name=Озлобленные кирпичи
-tile.scorned_bricks.name=Презренные кирпичи
-tile.scorned_brick_fence.name=Забор из презренных кирпичей
-tile.scorned_brick_stairs.name=Ступеньки из презренных кирпичей
-tile.embittered_brick_stairs.name=Ступеньки из озлобленных кирпичей
-tile.embittered_brick_fence.name=Забор из озлобленных кирпичей
+tile.embittered_bricks.name=Озлобленный Кирпичи
+tile.scorned_bricks.name=Презренные Кирпичи
+tile.scorned_brick_fence.name=Забор из презренного кирпича
+tile.scorned_brick_stairs.name=Ступеньки из презренного кирпича
+tile.embittered_brick_stairs.name=Ступеньки из озлобленного кирпича
+tile.embittered_brick_fence.name=Забор из озлобленного кирпича
 tile.cold_iron_block.name=Блок холодного железа
-tile.cold_iron_block_chisel.name=Блок холодного железа (точеный)
+tile.cold_iron_block_chisel.name=Блок холодного железа (Резной)
 tile.graveyard_dirt.name=Кладбищенская земля
 tile.purifying_earth.name=Очищающая земля
-tile.brazier.name=Мангал
-tile.coquina_chisel.name=Ракушечник (точеный)
+tile.brazier.name=Жаровня
+tile.coquina_chisel.name=Ракушечник (Резной)
 
 //Saplings and Trees
-tile.sapling_cypress.name=Саженец кипариса
-tile.sapling_juniper.name=Саженец можжевельника
+tile.sapling_cypress.name=Саженец Кипариса
+tile.sapling_juniper.name=Саженец Можжевельника
 tile.sapling_elder.name=Саженец бузины
 tile.sapling_yew.name=Саженец тиса
 tile.log_yew.name=Тис
-tile.log_elder.name=Древнее дерево
+tile.log_elder.name=Бузина
 tile.log_juniper.name=Можжевельник
 tile.log_cypress.name=Кипарис
-tile.leaves_elder.name=Листва бузины
-tile.leaves_juniper.name=Листва можжевельника
-tile.leaves_yew.name=Листва тиса
-tile.leaves_cypress.name=Листва кипариса
+tile.leaves_elder.name=Бузиновые листья
+tile.leaves_juniper.name=Можжевеловые листья
+tile.leaves_yew.name=Тисовые листья
+tile.leaves_cypress.name=Кипарисовые листья
 
-tile.elder_stairs.name=Ступеньки из бузины
-tile.juniper_stairs.name=Ступеньки из можжевельника
-tile.yew_stairs.name=Ступеньки из тиса
-tile.cypress_stairs.name=Ступеньки из кипариса
+tile.elder_stairs.name=Бузиновые ступеньки
+tile.juniper_stairs.name=Можжевеловые ступеньки
+tile.yew_stairs.name=Тисовые ступеньки
+tile.cypress_stairs.name=Кипарисовые ступеньки
 
 bewitchment.silver_block_chisel.tooltip.variety.symbol=Символ
 bewitchment.silver_block_chisel.tooltip.variety.sun=Солнце
-bewitchment.silver_block_chisel.tooltip.variety.moon=Луна
-bewitchment.silver_block_chisel.tooltip.variety.cup=Чаши
-bewitchment.silver_block_chisel.tooltip.variety.wand=Жезлы
-bewitchment.silver_block_chisel.tooltip.variety.sword=Мечи
-bewitchment.silver_block_chisel.tooltip.variety.pentacle=Пентаграммы
+bewitchment.silver_block_chisel.tooltip.variety.moon=Месяц
+bewitchment.silver_block_chisel.tooltip.variety.cup=Чаша
+bewitchment.silver_block_chisel.tooltip.variety.wand=Палочка
+bewitchment.silver_block_chisel.tooltip.variety.sword=Меч
+bewitchment.silver_block_chisel.tooltip.variety.pentacle=Пентакль
 bewitchment.silver_block_chisel.tooltip.variety.pentagram=Пентаграмма
 bewitchment.silver_block_chisel.tooltip.variety.bevel=Скос
 
 bewitchment.cold_iron_block_chisel.tooltip.variety.symbol=Символ
 bewitchment.cold_iron_block_chisel.tooltip.variety.sun=Солнце
-bewitchment.cold_iron_block_chisel.tooltip.variety.moon=Луна
-bewitchment.cold_iron_block_chisel.tooltip.variety.cup=Чаши
-bewitchment.cold_iron_block_chisel.tooltip.variety.wand=Жезлы
-bewitchment.cold_iron_block_chisel.tooltip.variety.sword=Мечи
-bewitchment.cold_iron_block_chisel.tooltip.variety.pentacle=Пентаграммы
+bewitchment.cold_iron_block_chisel.tooltip.variety.moon=Месяц
+bewitchment.cold_iron_block_chisel.tooltip.variety.cup=Чаша
+bewitchment.cold_iron_block_chisel.tooltip.variety.wand=Палочка
+bewitchment.cold_iron_block_chisel.tooltip.variety.sword=Меч
+bewitchment.cold_iron_block_chisel.tooltip.variety.pentacle=Пентакль
 bewitchment.cold_iron_block_chisel.tooltip.variety.pentagram=Пентаграмма
 bewitchment.cold_iron_block_chisel.tooltip.variety.bevel=Скос
 
 bewitchment.nethersteel_chisel.tooltip.variety.symbol=Символ
-bewitchment.nethersteel_chisel.tooltip.variety.pentacle=Пентаграммы
+bewitchment.nethersteel_chisel.tooltip.variety.pentacle=Пентакль
 bewitchment.nethersteel_chisel.tooltip.variety.pentagram=Пентаграмма
 bewitchment.nethersteel_chisel.tooltip.variety.bevel=Скос
-bewitchment.nethersteel_chisel.tooltip.variety.sentient=Живая
-bewitchment.nethersteel_chisel.tooltip.variety.polished=Полированная
-bewitchment.nethersteel_chisel.tooltip.variety.eye=Глаз
-bewitchment.nethersteel_chisel.tooltip.variety.eye_watching=Наблюдающий глаз
-bewitchment.nethersteel_chisel.tooltip.variety.hellish=Адская
-bewitchment.nethersteel_chisel.tooltip.variety.hellish_watching=Адская (наблюдающий)
+bewitchment.nethersteel_chisel.tooltip.variety.sentient=Sentient
+bewitchment.nethersteel_chisel.tooltip.variety.polished=Полированный
+bewitchment.nethersteel_chisel.tooltip.variety.eye=Око
+bewitchment.nethersteel_chisel.tooltip.variety.eye_watching=Наблюдающее око
+bewitchment.nethersteel_chisel.tooltip.variety.hellish=Дьявол
+bewitchment.nethersteel_chisel.tooltip.variety.hellish_watching=Дьявол (Всевидящий)
 bewitchment.nethersteel_chisel.tooltip.variety.skull=Череп
 
-tile.scorned_bricks_chisel.name=Презренные кирпичи (точеные)
-bewitchment.scorned_bricks_chisel.tooltip.variety.cracked=Треснувшие
+tile.scorned_bricks_chisel.name=Презренные кирпичи (Резные)
+bewitchment.scorned_bricks_chisel.tooltip.variety.cracked=Потрескавшиеся
 bewitchment.scorned_bricks_chisel.tooltip.variety.symbol=Символ
-bewitchment.scorned_bricks_chisel.tooltip.variety.circular=Круг
-bewitchment.scorned_bricks_chisel.tooltip.variety.beveled=Скошенные
+bewitchment.scorned_bricks_chisel.tooltip.variety.circular=Колца
+bewitchment.scorned_bricks_chisel.tooltip.variety.beveled=Скос
 bewitchment.scorned_bricks_chisel.tooltip.variety.raw=Необработанный
-bewitchment.scorned_bricks_chisel.tooltip.variety.smooth_cracked=Гладкий треснувший
-bewitchment.scorned_bricks_chisel.tooltip.variety.hellish=Адские
+bewitchment.scorned_bricks_chisel.tooltip.variety.smooth_cracked=Гладкий потрескавшийся
+bewitchment.scorned_bricks_chisel.tooltip.variety.hellish=Дьявол
 
 bewitchment.coquina_chisel.tooltip.variety.bricks=Кирпичи
-bewitchment.coquina_chisel.tooltip.variety.chiseled=Точеные
+bewitchment.coquina_chisel.tooltip.variety.chiseled=Резной
 bewitchment.coquina_chisel.tooltip.variety.shell=Ракушка
 bewitchment.coquina_chisel.tooltip.variety.smooth=Гладкий
 
 //Spells
-item.spell_page.name=Забытое заклинание
-item.spell_page.bewitchment.magnet.name=Заклинание дальнего боя
+item.spell_page.name=Давно забытое заклинание
+item.spell_page.bewitchment.magnet.name=Заклинание дальней досягаемости
 item.spell_page.bewitchment.poke.name=Заклинание удара
-item.spell_page.bewitchment.water.name=Заклинание лужи
+item.spell_page.bewitchment.water.name=Заклинание лужицы
 item.spell_page.bewitchment.activation.name=Заклинание телекинеза
-item.spell_page.bewitchment.slowness.name=Заклинание затуманенных ног
+item.spell_page.bewitchment.slowness.name=Заклинание путанных ног
 item.spell_page.bewitchment.lesser_blink.name=Заклинание малого перемещения
-item.spell_page.bewitchment.blink.name=Заклинание перемещения
+item.spell_page.bewitchment.blink.name=Заклинение перемещения
 item.spell_page.bewitchment.explosion.name=Заклинание дестабилизации
 item.spell_page.bewitchment.disarming.name=Заклинание обезоруживания
 item.spell_page.bewitchment.infuse_life.name=Заклинание дара
@@ -517,229 +517,229 @@ item.spell_page.bewitchment.madness.name=Заклинание безумия
 
 
 //Mutant Plants
-tile.torchwood.name=Торчвуд
-tile.ember_grass.name=Янтарная трава
+tile.torchwood.name=Амирис
+tile.ember_grass.name=Огненная трава
 
 //Devices
-tile.cauldron.name=Ведьмин котел
+tile.cauldron.name=Ведьмовской котел
 tile.apiary.name=Пасека
 tile.beehive.name=Улей
 tile.oven.name=Печь
-tile.thread_spinner.name=Поток круговорота
-tile.witch_altar.name=Ведьмин алтарь
-tile.crystal_ball.name=Хрустальный шар
+tile.thread_spinner.name=Ткацкий станок
+tile.witch_altar.name=Ведьмовской алтарь
+tile.crystal_ball.name=Магический шар
 tile.magic_mirror.name=Магическое зеркало
-tile.distillery.name=Винокурня
+tile.distillery.name=Дистиллятор
 
 //Fluid
 fluid.oil_mundane=Масло
-fluid.for.honey=Мед
+fluid.for.honey=Мёд
 
 //Brew
-brew.instant=Мгновенное
+brew.instant=Взрывное
 
-effect.shell_armor=Покров
-effect.shell_armor.desc=Края вашей брони могут повредить тем, кто нападает на вас.
+effect.shell_armor=Панцирная броня
+effect.shell_armor.desc=Края вашего панциря могут навредить тем, кто вас атакует.
 
-effect.spider_nightmare=Паучий кошмар
-effect.spider_nightmare.desc=Окружите врага паутиной и пауками.
+effect.spider_nightmare=Кошмар арахнофобов
+effect.spider_nightmare.desc=Окружи своих врагов липкой паутиной.
 
 effect.frostbite=Обморожение
-effect.frostbite.desc=Затачивает цель в лед. Может иметь другие эффекты.
+effect.frostbite.desc=Покрывает цель льдом. Возможно имеет и другие эффекты.
 
-effect.extinguish_fires=Тушение
-effect.extinguish_fires.desc=Тушит любой огонь на вас.
+effect.extinguish_fire=Тушение
+effect.extinguish_fire.desc=Отводит от вас любое пламя.
 
-effect.mars_water=Мертвая вода
-effect.mars_water.desc=Наносит отрицательные дебаффы на цель.
+effect.mars_water=Воды марса
+effect.mars_water.desc=Заражает цель ужасными эффектами.
 
-effect.holy_water=Святая вода
-effect.holy_water.desc=Повреждает только нежить и демонов.
+effect.holy_water=Святая Вода
+effect.holy_water.desc=Наносит урон нежити, духам и демонам, но не оказывает эффекта на живых.
 
-effect.volatility=Изменчивость
-effect.volatility.desc=Заставляет вас взрываться при ударе.
+effect.volatility=Взрывоопасность
+effect.volatility.desc=Вы взрываетесь при попадании по вам.
 
-effect.till_land=Пашня
+effect.till_land=Паханная земля
 effect.till_land.desc=Превращает землю в пашню.
 
-effect.fertilize=Удобрение
-effect.fertilize.desc=Заставляет растения расти.
+effect.fertilize=Обогащение
+effect.fertilize.desc=Взращивает растения вокруг.
 
-effect.harvest=Сбор
-effect.harvest.desc=Собирает урожай.
+effect.harvest=Праздник урожая
+effect.harvest.desc=Срезает растения.
 
 effect.mowing=Покос
-effect.mowing.desc=Удаляет траву
+effect.mowing.desc=Скашивает траву
 
 effect.grow_flowers=Цветочная весна
-effect.grow_flowers.desc=Создает цветы.
+effect.grow_flowers.desc=Выращивает цветы.
 
-effect.ender_inhibition=Анти-Эндер
-effect.ender_inhibition.desc=Эндермены не смогут телепортироваться.
+effect.ender_inhibition=Подавление края
+effect.ender_inhibition.desc=Существа края не могут телепортироваться.
 
-effect.path_of_the_deep=Путь из бездны
-effect.path_of_the_deep.desc=Быстрое плаванье.
+effect.path_of_the_deep=Путь бездны
+effect.path_of_the_deep.desc=Вы плывете быстрее.
 
-effect.pulverize=Камнекрушитель
-effect.pulverize.desc=Превращает камень в гравий, а гравий в песок.
+effect.pulverize=Распыление
+effect.pulverize.desc=Распыляет камень в гравий, а гравий в песок.
 
-effect.prune_leaves=Очистка листвы
-effect.prune_leaves.desc=Убирает листву.
+effect.prune_leaves=Срезанная листва
+effect.prune_leaves.desc=Срезает листву.
 
-effect.plant=Посадка
-effect.plant.desc=Садит любое семя, которое находится на земле.
+effect.plant=Посадки
+effect.plant.desc=Сажает растения из семян на земле.
 
-effect.snow_trail=Снежная тропа
-effect.snow_trail.desc=Помещает снежный слой для моба или игрока.
+effect.snow_trail=Снежная поступь
+effect.snow_trail.desc=Создает снежный путь за существом.
 
-effect.skin_tint=Оттенок
-effect.skin_tint.desc=Окрашивает вашу кожу определенным цветом.
+effect.skin_tint=Цветная кожа
+effect.skin_tint.desc=Окрашивает вашу кожу любым цветом.
 
-effect.wolfsbane=Аконит
-effect.wolfsbane.desc=Наносит урон волкам и терианам.
+effect.wolfsbane=Волкобой
+effect.wolfsbane.desc=Наносит урон волкам и разным оборотням.
 
-effect.sinking=Погружение
-effect.sinking.desc=Заставляет существо утонуть и не позволяет прыгнуть.
+effect.sinking=Осадка
+effect.sinking.desc=Заставляет вас тонуть и немочь прыгать.
 
-effect.cursed_leaping=Проклятье прыжка
-effect.cursed_leaping.desc=Заставляет цель неудержимо прыгать.
+effect.cursed_leaping=Окаянные прыжки
+effect.cursed_leaping.desc=Заставляет цель терять силу прыжка.
 
 effect.bane_arthropods=Арахнофобия
-effect.bane_arthropods.desc=Повреждает членистоногих, полезно для борьбы с роями пауков.
+effect.bane_arthropods.desc=Наносит урон арахнидам, полезно при борьбе со стаями пауков.
 
-effect.outcasts_shame=Изгнание
-effect.outcasts_shame.desc=Наносит ущерб изгоям общества, таким, как вызыватели.
+effect.outcasts_shame=Позорное изгнание
+effect.outcasts_shame.desc=Изоняет цель из общества, такого как комунна жителей.
 
 effect.grace=Грация
-effect.grace.desc=Отрицает урон от падения.
+effect.grace.desc=Сводит на нет урон от падений.
 
 effect.purify=Очищение
-effect.purify.desc=Удаляет негативные эффекты.
+effect.purify.desc=Убирает отрицательные эффекты от зелий.
 
 effect.infestation=Заражение
-effect.infestation.desc=Превращает траву и землю в мицелий. Может иметь другие эффекты.
+effect.infestation.desc=Превращает траву и землю в мицелий. Возможно имеет и другие эффекты.
 
-effect.mending=Починка
-effect.mending.desc=Превращает мицелий в траву и землю. Может иметь другие эффекты.
+effect.mending=Исправление
+effect.mending.desc=Превращает мицелий в землю и траву. Очищает и усиливает существ.
 
-effect.ozymandias=Настой Озимандиса
-effect.ozymandias.desc=Посмотри на мою работу, ты могучий, и отчаяный!
+effect.ozymandias=Эликсир Озимандия
+effect.ozymandias.desc=Я — Озимандия! Я — царь царей! Взгляните! Сюда, о сильные, и головы склоните!
 
-effect.setehs_wastes=Пустынная жара
-effect.setehs_wastes.desc=Преобразует песок и песчаник в их красные варианты.
+effect.setehs_wastes=Пустоши Сета
+effect.setehs_wastes.desc=Превращает песок и песчаник в их красные виды.
 
-effect.fireworld=Огненный мир
-effect.fireworld.desc=Преобразует ваше окружение в ад.
+effect.fireworld=Мир пламенем объятый
+effect.fireworld.desc=Погружает мир вокруг вас в ад.
 
-effect.ice_world=Ледяной мир
-effect.ice_world.desc=Преобразует ваше окружение в зимнюю пустыню.
+effect.ice_world=Мир скованный во льдах
+effect.ice_world.desc=Погружает мир вокруг вас в ледяную пургу.
 
 effect.corruption=Разложение
-effect.corruption.desc=Удаляет все полезные эффекты.
+effect.corruption.desc=Убирает все полезные эффекты.
 
-effect.salted_earth=Соление
-effect.salted_earth.desc=Уничтожает посевы и делает их бесполезными.
+effect.salted_earth=Высаливание
+effect.salted_earth.desc=Уничтожает пашни и делает их бесполезными.
 
-effect.absence=Отсутствие
-effect.absence.desc=Удаляет все эффекты игрока.
+effect.absence=Опустошение
+effect.absence.desc=Удаляет все эффекты зелий у игрока.
 
-effect.bulletproof=Защита от снарядов
-effect.bulletproof.desc=Отрицает урон от снарядов.
+effect.bulletproof=Непробиваемый
+effect.bulletproof.desc=Сводит на нет урон от снарядов.
 
-effect.disrobing=Разоблачение
-effect.disrobing.desc=Имеет шанс сбить часть брони с цели.
+effect.disrobing=Раскрывающий
+effect.disrobing.desc=Имеет шанс снятия у цели части его брони.
 
-effect.rotting=Гниль
-effect.rotting.desc=Медлено ничтожает любых живых существ.
+effect.rotting=Выгнивание
+effect.rotting.desc=Любое живое существо, пораженное этим зельем будет медленно гнить..
 
-effect.arrow_deflection=Отклонение
-effect.arrow_deflection.desc=Отклоняет любую стрелу.
+effect.arrow_deflection=Отражение
+effect.arrow_deflection.desc=Отражает любые стрелы, пущенные в вас.
 
 effect.demons_bane=Бич демонов
-effect.demons_bane.desc=Повреждение демонов и адских мобов.
+effect.demons_bane.desc=Наносит урон демонам и адским отродьям.
 
-effect.freezing=Заморозка
-effect.freezing.desc=Замораживает существ в безвредный волшебный лёд.
+effect.freezing=Замерзание
+effect.freezing.desc=Заковывает вещи в безобидный магический лед.
 
-effect.paralysis=Паралиация
-effect.paralysis.desc=Парализует цель и не позволяет двигаться.
+effect.paralysis=Паралич
+effect.paralysis.desc=Парализует цель и сопротивляется ее движениям.
 
-effect.love=Влюбление
-effect.love.desc=Влюбляет животных.
+effect.love=Амуровы чары
+effect.love.desc=Ставит животных в любовную страсть.
 
-effect.revealing=Раскрытие
+effect.revealing=Обнаружение
 effect.revealing.desc=Рассеивает иллюзии.
 
 effect.adders_kiss=Поцелуй гадюки
-effect.adders_kiss.desc=Наносит вред вредителям, таким как кролики
+effect.adders_kiss.desc=Наносит урон вредителям, таким как кролики.
 
-effect.deaths_ebb=Отлив смерти
-effect.deaths_ebb.desc=Призывает зомби в вашем месте
+effect.deaths_ebb=Смертельный упадок
+effect.deaths_ebb.desc=Призывает зомби.
 
-effect.power_regen=Власть блага
-effect.power_regen.desc=Позволяет увеличить перезарядку MP
+effect.power_regen=Дар сил
+effect.power_regen.desc=Увеличивает восстановление магической силы.
 
-effect.power_drain=Утечка энергии
-effect.power_drain.desc=Истощает ваш MP с течением времени
+effect.power_drain=Истощение сил
+effect.power_drain.desc=Истощает вашу магическую силу.
 
-effect.power_boost=Повышение мощности
-effect.power_boost.desc=Временно увеличивает количество MP, которое у вас есть
+effect.power_boost=Расширение сил
+effect.power_boost.desc=Временно увеличивает количество магической силы у вас
 
-effect.power_dampening=Демпфирование мощности
-effect.power_dampening.desc=Временно уменьшает количество MP, которое у вас есть
+effect.power_dampening=Затухание сил
+effect.power_dampening.desc=Временно уменьшает количество магической силы у вас
 
 //Sound
-bewitchment.subtitle.boil=Кипящий котел
-bewitchment.subtitle.buzz=Жужжание пчел
-bewitchment.subtitle.chalk_scribble=Рисование мелом
+bewitchment.subtitle.boil=Котел кипит
+bewitchment.subtitle.buzz=Пчелы жужжат
+bewitchment.subtitle.chalk_scribble=Мелок чертит
 bewitchment.subtitle.owl_hoot=Сова ухает
 bewitchment.subtitle.raven_croaks=Ворон каркает
 
 ///ToolTips
-witch.tooltip.seed_aconitum_description.name=Семя из ядовитого растения
-witch.tooltip.seed_asphodel_description.name=Семя из растения мертвых
-witch.tooltip.seed_belladonna_description.name=Семя из травянистого растения
-witch.tooltip.seed_ginger_description.name=Семя из цветковых растений
+witch.tooltip.seed_aconitum_description.name=Семена из ядовитого растения
+witch.tooltip.seed_asphodel_description.name=Семена из растения смерти
+witch.tooltip.seed_belladonna_description.name=Семена из травянистого растения
+witch.tooltip.seed_ginger_description.name=Семена из цветущего растения
 witch.tooltip.seed_kelp_description.name=Споры из крупных водорослей
-witch.tooltip.seed_mint_description.name=Семя из травянистого растения
-witch.tooltip.seed_white_sage_description.name=Семя из вечнозелёного кустарника
-witch.tooltip.seed_mandrake_description.name=Семя из растения со странным корнем
-witch.tooltip.seed_lavender_description.name=Семя из цветковых растений
-witch.tooltip.seed_thistle_description.name=Семя из тернистого цветка
-witch.tooltip.seed_silphium_description.name=Семя из странного фенхеля
-witch.tooltip.seed_garlic_description.name=Семя из вонючего аллиума
-witch.tooltip.seed_wormwood_description.name=Семя из сорной травы
-witch.tooltip.seed_kenaf_description.name=Семя из бамбукового гибискуса
-witch.tooltip.seed_tulsi_description.name=Семя из маленькой травы
-witch.tooltip.seed_hellebore_description.name=Семя из невинно выглядящего растения
-witch.tooltip.seed_chrysanthemum_description.name=Семя из сильного цветка
-witch.tooltip.seed_sagebrush_description.name=Семя из выносливого куста
+witch.tooltip.seed_mint_description.name=Семена из травянистого растения
+witch.tooltip.seed_white_sage_description.name=Семена из вечнозеленого многолетнего куста
+witch.tooltip.seed_mandrake_description.name=Семена из растения со странным корнем
+witch.tooltip.seed_lavender_description.name=Семена из цветущего растения
+witch.tooltip.seed_thistle_description.name=Семена из колючего цветка
+witch.tooltip.seed_silphium_description.name=Семена из странного фенхеля
+witch.tooltip.seed_garlic_description.name=Семена из пахучей луковицы
+witch.tooltip.seed_wormwood_description.name=Семена из сорнякового растения
+witch.tooltip.seed_kenaf_description.name=Семена из бамбукоподобного гибискуса
+witch.tooltip.seed_tulsi_description.name=Семена из маленького растения
+witch.tooltip.seed_hellebore_description.name=Семена из невинно-выглядещего растения
+witch.tooltip.seed_chrysanthemum_description.name=Семена из мощного цветка
+witch.tooltip.seed_sagebrush_description.name=Семена из выносливого кустарника
 
-witch.tooltip.aconitum_description.name=Ядовитые, могут предотвратить или вернуться к изменчивости, а волки и терианцы отвращаются от него
-witch.tooltip.asphodel_description.name=Связаны со смертью и загробной жизнью, но не ядовиты
-witch.tooltip.belladonna_description.name=Высокотоксичные растения, это основной компонент летающей мази
-witch.tooltip.ginger_description.name=Предназначены для подачи энергии и увеличения скорости
-witch.tooltip.kelp_description.name=Защищеные и связанные с водой
-witch.tooltip.mint_description.name=Используются для защиты от магии
-witch.tooltip.white_sage_description.name=Используются в качестве помощи в экзорцизме
-witch.tooltip.mandrake_root_description.name=Используются для усиления магических эффектов
-witch.tooltip.lavender_description.name=Ассоциируются с чистотой и изяществом
-witch.tooltip.thistle_description.name=Цветки, связанные с прочностью и долговечностью, и являются национальным цветком Шотландии
-witch.tooltip.silphium_description.name=Довольно большой и необычный фенхель. Ценится римлянами за его множество применений
-witch.tooltip.garlic_description.name=Луковицы, как аллиум, довольно вонючие, и, кажется, держат нежить в страхе
-witch.tooltip.wormwood_description.name=Довольно потрепанные травы, которые, похоже, не нравится насекомым
-witch.tooltip.kenaf_description.name=Высокие растения с полезными волокнами
-witch.tooltip.tulsi_description.name=Небольшие травы, считающиеся священными
-witch.tooltip.hellebore_description.name=Красивые и ядовитые цветки, связанные с бесами
-witch.tooltip.chrysanthemum_description.name=Очень популярный цветок, он часто связан с благородством
-witch.tooltip.sagebrush_description.name=Трава, связанная с очищением
-witch.tooltip.infested_wheat_description.name=Плохо выглядящий урожай
-witch.tooltip.witchweed_description.name=Небольшая трава, которая растет над другими культурами
+witch.tooltip.aconitum_description.name=Ядовитый цветок, используемый при охоте на ликантропов
+witch.tooltip.asphodel_description.name=Связанный со смертью и загробной жизнью, но не ядовит
+witch.tooltip.belladonna_description.name=Высокотоксичный цветок, основной компонент летной мази
+witch.tooltip.ginger_description.name=Невероятно пряный корень
+witch.tooltip.kelp_description.name=Высокая водоросль, связанная с морем
+witch.tooltip.mint_description.name=Растение с охлаждающим эффектом
+witch.tooltip.white_sage_description.name=Используется как средство для экзорцизма
+witch.tooltip.mandrake_root_description.name=Используется для усиления магических эффектов
+witch.tooltip.lavender_description.name=Ассоциируется с чистотой и грацией
+witch.tooltip.thistle_description.name=Колючий, но красивый цветок
+witch.tooltip.silphium_description.name=Странный и необычный фенхель
+witch.tooltip.garlic_description.name=Обычная специя, держащая нежить в страхе
+witch.tooltip.wormwood_description.name=Невероятно сорняковая трава
+witch.tooltip.kenaf_description.name=Высокое растение с полезными волокнами
+witch.tooltip.tulsi_description.name=Священная трава, священная для некоторых
+witch.tooltip.hellebore_description.name=Красивый и ядовитый цветок, связанный с демонами
+witch.tooltip.chrysanthemum_description.name=Довольно известный цветок, связанный с благородством
+witch.tooltip.sagebrush_description.name=Растение, ассоциирующееся с чистотой
+witch.tooltip.infested_wheat_description.name=Болезненно-выглядящий урожай
+witch.tooltip.witchweed_description.name=Малая трава, растущая над другими культурами
 
-item.tag_lock.empty=Пустая банка
+item.tag_lock.empty=Пустой образец
 
-tooltip.brew.data=Данные о варке:
-tooltip.potion.data=Данные о зелье:
+tooltip.brew.data=Информация о готовке:
+tooltip.potion.data=Информация о зелье:
 
 tooltip.shift_for_info=<зажмите shift для деталей>
 
@@ -749,150 +749,150 @@ witch.tooltip.silver_tool_description.name=Наносит дополнитель
 witch.tooltip.cold_iron_armor_description.name=Защищает от демонов и духов
 witch.tooltip.cold_iron_tool_description.name=Наносит дополнительный урон духам
 
-witch.tooltip.athame_description.name=Этот церемониальный кинжал также позволяет получать особую добычу у мобов.
+witch.tooltip.athame_description.name=Этот церемониальный кинжал также даст вам дополнительную добычу с существ.
 
 //Baubles
-item.shirt.name=Рубашка
+item.shirt.name=Рубаха
 item.ring.name=Кольцо
-item.belt.name=Ремень
+item.belt.name=Пояс
 item.amulet.name=Амулет
 item.trinket.name=Брелок
 item.crown.name=Корона
-item.charm.name=Чарм
-item.nazar.name=Назар
+item.charm.name=Талисман
+item.nazar.name=Оберег
 item.horseshoe.name=Подкова
-item.triskelion_amulet.name=Амулет трискелиона 
+item.triskelion_amulet.name=Амулет с Трискелионом
 item.talisman_aquamarine_crown.name=Аквамариновая корона
 item.talisman_adamantine_star_ring.name=Кольцо адамантиевой звезды
 item.talisman_emerald_pendant.name=Изумрудный кулон
-item.talisman_ruby_orb.name=Алый шар
+item.talisman_ruby_orb.name=Алый палантир
 item.talisman_watching_eye.name=Всевидящее око
 
 //Trinket Descriptions
-witch.tooltip.nazar_description.name=Амулет, который держит неудачу в страхе и обеспечивает иммунитет к магическим атакм
-witch.tooltip.horseshoe_description.name=Подковы кажутся довольно удачливыми безделушками в целом. Духи кажутся вам неприязненными.
-witch.tooltip.triskelion_amulet_description.name=Этот амулет, кажется, дает силу против врагов, но немного истощает вас.
-witch.tooltip.talismans_description.name=Зачарованный брелок, его эффекты проявятся после зачарования
-witch.tooltip.remedy_talisman_description.name=Драгоценный камень в его сердцевине, кажется, поглощает болезни, но он довольно быстро истощается
-witch.tooltip.girdle_of_the_wooded_description.name=Этот пояс защищает пользователя от вреда, добавляя кору в качестве доспехов
-witch.tooltip.mantle_description.name=Простая мантия. Это стильно, хотя ...
-witch.tooltip.pouch_description.name=Какие секреты он держит?
-witch.tooltip.wrathful_eye_description.name=Эта безделушка вызывает уважение у демонов.
+witch.tooltip.nazar_description.name=Амулет, который держит неудачу в страхе и дает носителю некую магическую защиту.
+witch.tooltip.horseshoe_description.name=Подковы довольно счастливые вещицы. Духи смотрят на вас с неприязнью.
+witch.tooltip.triskelion_amulet_description.name=Этот амулет дает вам некую силу от врагов, но медленно вас истощает.
+witch.tooltip.talismans_description.name=Брелок можно зачаровать. Его эффекты проявятся после зачарования.
+witch.tooltip.remedy_talisman_description.name=Камень в сердцевине, кажется, поглощает болезни, но довольно быстро истощается.
+witch.tooltip.girdle_of_the_wooded_description.name=Этот пояс защищает владельца от вреда, покрывая его корой в качестве брони.
+witch.tooltip.mantle_description.name=Обычная мантия. Довольно стильная, хотя...
+witch.tooltip.pouch_description.name=Что за секрета она таит?
+witch.tooltip.wrathful_eye_description.name=Этот брелок вызывает уважение у демонов.
 witch.tooltip.hellish_bauble_description.name=Этот брелок странной формы позволит вам задействовать небольшую часть демонической силы.
 
 //Commands
 commands.incantation.usage=/chant [incantation]
-commands.incantation.notFound=Силы, которые Вы изгоняете, впадают в ничто
-commands.incantation.no_energy=Вы чувствуете прилив энергии, но вам не хватает сил использовать ее
-commands.set_transformation.usage=/setTransformation [тип] [уровень]
-commands.set_transformation.usage.no_transformation=Этот путь не существует
-commands.set_transformation.usage.invalid_level=Уровень отсутствует или не в радиусе [0-10]
-commands.set_transformation.success=Преобразование установлено к %s, уровня %d
-commands.enable_fortune.error.already_active=Фортуна уже активна
-commands.enable_fortune.error.no_fortune=Сначала используйте хрустальный шар
-commands.enable_fortune.success=Фортуна активна
-commands.set_fortune.error.no_fortune=Фортуна ненайдена
-commands.set_fortune.success=Фортуна установлена
+commands.incantation.notFound=Силы, что вы источаете выливаются в небытье
+commands.incantation.no_energy=Вы чувствуете влечение чар, но вам не хватает силы чтобы наложить их
+commands.set_transformation.usage=/setTransformation [type] [level]
+commands.set_transformation.usage.no_transformation=Этой трансформации не существует
+commands.set_transformation.usage.invalid_level=Нет уровня или уровень не в рамках [0-10]
+commands.set_transformation.success=Трансформация установлена на %s, уровень %d
+commands.enable_fortune.error.already_active=Предсказание уже сложено и сказано
+commands.enable_fortune.error.no_fortune=Сначала используйте магический шар
+commands.enable_fortune.success=Предсказание сбылось
+commands.set_fortune.error.no_fortune=Предсказание не найдено
+commands.set_fortune.success=Предсказание сложено
 commands.error.no_console=Эта команда не может быть выполнена из консоли
-commands.create_taglock.usage=/createTaglock <имя> <UUID>
-commands.create_taglock.no_player.usage=Не найдено ни одного игрока с таким именем.
+commands.create_taglock.usage=/createTaglock <name> <UUID>
+commands.create_taglock.no_player.usage=Не найдено игроков с таким именем.
 
 //Advancements
-achievement.bewitchment:craftMalachite=Давайте снова будем малахитом!
+achievement.bewitchment:craftMalachite=Давай снова станем Малахитом!
 achievement.bewitchment:craftMalachite.desc=Это между нами!
 
 //JEI
 jei.category.oven=Печь
 jei.category.rituals=Ритуалы
-jei.category.spinner=Прялка
-jei.category.brewing=Разлив зелий
+jei.category.spinner=Ткацкий станок
+jei.category.brewing=Создание зелий
 jei.category.crafting=Создание в котле
-jei.category.brew_modifiers=Модификация зелий
-jei.category.distillery=Дистилляция
-jei.ritual.power.flat=Сила алтаря %d
-jei.ritual.power.tick=Сила алтаря в секунду %d
+jei.category.brew_modifiers=Модифицирование зелий
+jei.category.distillery=Перегонка
+jei.ritual.power.flat=%d Силы алтаря
+jei.ritual.power.tick=%d Силы алтаря в секунду
 
 //Rituals
-ritual.failure.unknown=Вы никогда не слышали о таких обрядах
+ritual.failure.unknown=Вы никогда не слышали о таких ритуалах
 ritual.failure.power=Ваш источник магии недостаточно силен
 ritual.failure.precondition=Что-то не так
-ritual.bewitchment.high_moon.name=Ритуал высокой луны
+ritual.bewitchment.high_moon.name=Ритуал высшей луны
 ritual.bewitchment.time_sands.name=Ритуал песков времени
 ritual.bewitchment.perception.name=Ритуал восприятия
-ritual.bewitchment.conjure_wither.name=Ритуал заклинания (иссушитель)
-ritual.bewitchment.conjure_witch.name=Ритуал заклинания (ведьма)
-ritual.bewitchment.conjure_vex.name=Ритуал заклинания (досаждатель)
-ritual.bewitchment.conjure_blaze.name=Ритуал заклинания (ифрит)
-ritual.bewitchment.conjure_ghast.name=Ритуал заклинания (гаст)
-ritual.bewitchment.conjure_magma_cube.name=Ритуал заклинания (магмовый куб)
-ritual.bewitchment.conjure_hellhound.name=Ритуал заклинания (цербер)
-ritual.bewitchment.conjure_uranid.name=Ритуал заклинания (уранид)
+ritual.bewitchment.conjure_wither.name=Ритуал призыва (Иссушитель)
+ritual.bewitchment.conjure_witch.name=Ритуал призыва (Ведьма)
+ritual.bewitchment.conjure_vex.name=Ритуал призыва (Досаждатель)
+ritual.bewitchment.conjure_blaze.name=Ритуал призыва (Ифрит)
+ritual.bewitchment.conjure_ghast.name=Ритуал призыва (Гаст)
+ritual.bewitchment.conjure_magma_cube.name=Ритуал призыва (Лавовый куб)
+ritual.bewitchment.conjure_hellhound.name=Ритуал призыва (Адская гончая)
+ritual.bewitchment.conjure_uranid.name=Ритуал призыва (Ураниид)
 ritual.bewitchment.draw_circle_small.name=Ритуал малых знаков
 ritual.bewitchment.draw_circle_medium.name=Ритуал знаков
-ritual.bewitchment.draw_circle_large.name=Ритуал основных знаков
+ritual.bewitchment.draw_circle_large.name=Ритуах больших знаков
 ritual.bewitchment.infusion_overworld.name=Инфузия земли
-ritual.bewitchment.infusion_nether.name=Инфузия пламени
-ritual.bewitchment.infusion_end.name=Инфузия чужого 
-ritual.bewitchment.infusion_dream.name=Инфузия духов
-ritual.bewitchment.flames.name=Ритуал голодного пламени
+ritual.bewitchment.infusion_nether.name=Инфузия огня
+ritual.bewitchment.infusion_end.name=Инфузия иного
+ritual.bewitchment.infusion_dream.name=Инфузия душ
+ritual.bewitchment.flames.name=Ритуал ненасытного пламени
 ritual.bewitchment.sanctuary.name=Ритуал святилища
-ritual.bewitchment.deck.name=Ритуал гравировки
-ritual.bewitchment.table.name=Ритуал строительства (стол таро)
-ritual.bewitchment.crystal_ball.name=Ритуал строительства (хрустальный шар)
-ritual.bewitchment.cypress_broom.name=Ритуал восходящих веток (кипарис)
-ritual.bewitchment.yew_broom.name=Ритуал восходящих веток (тис)
-ritual.bewitchment.elder_broom.name=Ритуал восходящих веток (бузина)
-ritual.bewitchment.juniper_broom.name=Ритуал восходящих веток (можжевельник)
-ritual.bewitchment.gateway.name=Ритуал ворот
-ritual.bewitchment.shift_biome.name=Обряд падающих листьев
-ritual.bewitchment.nether_portal.name=Обряд мирского причастия
-ritual.bewitchment.vampire_lair.name=Обряд восходящей тьмы
-ritual.bewitchment.solar_glory.name=Обряд солнечной славы
+ritual.bewitchment.deck.name=Ритуал гравирования
+ritual.bewitchment.table.name=Ритуал создания (Стол для предсказания)
+ritual.bewitchment.crystal_ball.name=Ритуал создания (Магический шар)
+ritual.bewitchment.cypress_broom.name=Ритуал взмывающих ветвей (Кипарис)
+ritual.bewitchment.yew_broom.name=Ритуал взмывающих ветвей (Тис)
+ritual.bewitchment.elder_broom.name=Ритуал взмывающих ветвей (Бузина)
+ritual.bewitchment.juniper_broom.name=Ритуал взмывающих ветвей (Можжевельник)
+ritual.bewitchment.gateway.name=Ритуал прохода
+ritual.bewitchment.shift_biome.name=Ритуал листопада
+ritual.bewitchment.nether_portal.name=Ритуал мирского причастия
+ritual.bewitchment.vampire_lair.name=Ритуал покрывающей тьмы
+ritual.bewitchment.solar_glory.name=Ритуал триумфа солнца
 ritual.bewitchment.frenzied_growth.name=Ритуал бешеного роста
-ritual.bewitchment.call_of_the_wild.name=Зов пустыни
-ritual.bewitchment.summon_demon.name=Призвать демона
-ritual.bewitchment.summon_imp.name=Призвать беса
-ritual.bewitchment.conjure_hellhound_alpha.name=Призвать альфа цербера
+ritual.bewitchment.call_of_the_wild.name=Зов зверя
+ritual.bewitchment.summon_demon.name=Призыв демона
+ritual.bewitchment.summon_imp.name=Призыв беса
+ritual.bewitchment.conjure_hellhound_alpha.name=Призыв альфы адских гончих
 
 //Fortunes
-crystal_ball.error.ingredients=Будущее отказывается показываться, что-то не так.
-crystal_ball.error.no_power=Взгляд в будущее требует магии.
-crystal_ball.error.too_far=Подойдите к сфере, интересно.
-crystal_ball.error.already_told=Это будущее уже показано: %s.
-crystal_ball.error.no_available_fortunes=В этом мире нет секретов, ждите.
-crystal_ball.read.other=Вы можете увидеть будущее %2$s: %1$s.
-fortunes.bewitchment.meet_zombie.name=Те, кто лежит под землей, поднимутся.
-fortunes.bewitchment.meet_silverfish.name=Грязные паразиты прячутся на пути.
-fortunes.bewitchment.death.name=Путь впереди выглядит очень мрачным.
-fortunes.bewitchment.meet_witch.name=Что-то злобное приходит.
-fortunes.bewitchment.drop_bow.name=Пальцы не будут подчиняться, когда они больше всего нужны.
-fortunes.bewitchment.treasure.name=Вы можете быть очень богаты, очень скоро.
-fortunes.bewitchment.merchant.name=Вы наткнетесь на хорошее предложение.
-fortunes.bewitchment.shinies.name=Что-то мерцает в моих глазах.
-fortunes.bewitchment.iron.name=Свет горячего железа сжигает мои глаза
-fortunes.bewitchment.direwolf.name=Безумный зверь скоро найдет на вас.
-fortunes.bewitchment.dog.name=Вы скоро встретите нового друга.
-fortunes.bewitchment.cat.name=Вы скоро встретите нового друга.
-fortunes.bewitchment.meet_parrot.name=Вы скоро встретите нового друга.
-fortunes.bewitchment.ya_te_veo.name=Меньший огненный элементаль видел, как ты гадал, и появился, чтобы сражаться с тобой!
-fortunes.bewitchment.ya_te_veo_dos.name=Меньший демон видел, как ты гадал, и хочет бросить тебе вызов!
-fortunes.bewitchment.ya_te_veo_tres.name=Могущественный герцог видел, как ты прокричал, и заинтересовался тобой.
-fortunes.bewitchment.ya_te_veo_cuatro.name=Могущественная герцогиня видела, как ты гадал, и заинтересовалась тобой.
-fortunes.bewitchment.vitality.name=Раны заживают в трудную минуту.
-fortunes.bewitchment.illness.name=Слабость и несчастье определяют ваше будущее.
-fortunes.bewitchment.good_luck.name=Ваше будущее выглядит очень светлым.
-fortunes.bewitchment.bad_luck.name=Твое будущее кажется тусклым.
+crystal_ball.error.ingredients=Будущее не определяется, что-то не так
+crystal_ball.error.no_power=Прочтение пророчеств требует магию
+crystal_ball.error.too_far=Подойди ближе, любопытный глаз
+crystal_ball.error.already_told=Будущее %s уже было предначертано
+crystal_ball.error.no_available_fortunes=Мир не таит пока секретов
+crystal_ball.read.other=Ты можешь увидеть будущее %2$s: %1$s
+fortunes.bewitchment.meet_zombie.name=Те, кто таятся вглуби, будут пробуждены.
+fortunes.bewitchment.meet_silverfish.name=Темный вредитель стоит на пути.
+fortunes.bewitchment.death.name=Ждет мрачный путь вас впереди.
+fortunes.bewitchment.meet_witch.name=Нечто страшное грядет.
+fortunes.bewitchment.drop_item.name=В нужный момент ваши пальцы подведут вас.
+fortunes.bewitchment.treasure.name=Найдешь себе богаства.
+fortunes.bewitchment.merchant.name=Вам предложат сделку, от которой вы не сможете отказаться.
+fortunes.bewitchment.shinies.name=Что-то сверкает в моих глазах.
+fortunes.bewitchment.iron.name=Обжигающе-горячий металл сжигает мои глаза.
+fortunes.bewitchment.direwolf.name=Бешеный зверь за тобою придет.
+fortunes.bewitchment.dog.name=Встретишь ты нового друга.
+fortunes.bewitchment.cat.name=Встретишь ты нового друга.
+fortunes.bewitchment.meet_parrot.name=Встретишь ты нового друга.
+fortunes.bewitchment.ya_te_veo.name=Малый огненный элементаль заметил тебя через палантир. Вскоре он прибудет чтобы сразиться с тобой!
+fortunes.bewitchment.ya_te_veo_dos.name=Малый демон заметил тебя через палантир. Вскоре он прибудет чтобы бросить тебе вызов!
+fortunes.bewitchment.ya_te_veo_tres.name=Могущественный правитель заметил тебя через палантир. Он заинтересовался тобой.
+fortunes.bewitchment.ya_te_veo_cuatro.name=Могущественная правительница заметила тебя через палантир. Она заинтересовалась тобой.
+fortunes.bewitchment.vitality.name=Ты станешь крепче в нужный момент.
+fortunes.bewitchment.illness.name=Слабости и болезни предначертаны тебе на пути.
+fortunes.bewitchment.good_luck.name=Твое будущее выглядит очень светлым.
+fortunes.bewitchment.bad_luck.name=Твое будущее выглядит очень темным.
 //Tarots
-tarot.enderman.name=Эндермен
+tarot.enderman.name=Странник края
 tarot.diamonds.name=Алмазы
 tarot.iron_golem.name=Железный голем
-tarot.wither_skeleton.name=Скелет-иссушитель
+tarot.wither_skeleton.name=Скелет иссушитель
 tarot.star.name=Ночная звезда
 tarot.moon.name=Луна
 tarot.silver_sword.name=Серебряный меч
 tarot.hermit.name=Отшельник
-tarot.nitwit.name=Ничтожество
-tarot.ender_dragon.name=Дракон Края
+tarot.nitwit.name=Снежный голем
+tarot.ender_dragon.name=Дракон края
 tarot.evoker.name=Вызыватель
 tarot.guardian.name=Страж
 tarot.illusioner.name=Иллюзор
@@ -907,55 +907,55 @@ tarot.zombie.name=Зомби
 tarot.
 
 //Death Messages
-death.attack.sun_on_vampire=Вы не должны были выходить наружу
+death.attack.sun_on_vampire=Вы не должны были выходить из дома
 
 //Entities
 entity.broom.name=Летающая метла
 
 //Potion effects
-effect.blood_drain=Кровоток
-effect.sun_ward=Солнечная болезнь
+effect.blood_drain=Опустошен от крови
+effect.sun_ward=Защищенный солнцем
 
 //Vampire
-vampire.nightvision.low_blood=Вы чувствуете слабость и ваше видение запутывается
-vampire.bed_blocked=Это больше не комфортно для вас
+vampire.nightvision.low_blood=Вы чувствуете слабость и ваше зрение затуманивается
+vampire.bed_blocked=Здесь вы не чувствуете себя комфортно боле
 
 //Keys
 key.categories.bewitchment=Bewitchment
-key.description.jump_to_bar=Перейти к доп. индикатору
-key.description.enable_bar=Переключить доступность доп. индикатора
+key.description.jump_to_bar=Переключиться на дополнительные слоты
+key.description.enable_bar=Переключить доступность дополнительных слотов
 key.description.place_item=Разместить предмет
 
 //Brew misc
 brew.parameters.formatting= %s
-brew.parameters.none=Это не содержит новые свойства
+brew.parameters.none=Оно не несет в себе дополнительных сил
 brew.description.formatting=%s
 brew.effects.formatting=%s %s (%s)
 modifier.bewitchment.radius=Расширение %s
 modifier.bewitchment.power=Сила %s
-modifier.bewitchment.color=Окрашено, как #%s
-modifier.bewitchment.suppress_in_world=Нет мирового эффекта
-modifier.bewitchment.suppress_entity=Отсутствует эффект сущности
-modifier.bewitchment.suppress_particles=Невидимость
-modifier.bewitchment.gas_duration=Проникновение %s
-modifier.bewitchment.length=Прочность %s
+modifier.bewitchment.color=Окрашен в #%s
+modifier.bewitchment.suppress_in_world=Нет эффекта в мире
+modifier.bewitchment.suppress_entity=Нет эффекта на существах
+modifier.bewitchment.suppress_particles=Невидимо
+modifier.bewitchment.gas_duration=Испускается %s
+modifier.bewitchment.length=Истечет через %s
 
-modifier.description.bewitchment.radius=Радиус действия
-modifier.description.bewitchment.power=Сила действия
+modifier.description.bewitchment.radius=Радиус эффекта
+modifier.description.bewitchment.power=Сила эффекта
 modifier.description.bewitchment.color=Цвет зелья
 modifier.description.bewitchment.suppress_in_world=Подавление эффекта в мире
-modifier.description.bewitchment.suppress_entity=Подавление эффекта сущности
+modifier.description.bewitchment.suppress_entity=Подавление эффекта на существах
 modifier.description.bewitchment.suppress_particles=Подавление частиц
-modifier.description.bewitchment.gas_duration=Продолжительность осядания
+modifier.description.bewitchment.gas_duration=Усиление длительности облака
 modifier.description.bewitchment.length=Длительность эффекта
 
-moon.tooltip.0=Ты чувствуешь себя странно сегодня
-moon.tooltip.1=Ваше сердце бьется быстрее, ваши мысли выходят из-под контроля
-moon.tooltip.2=Как бы вы ни старались, вы не можете переключиться обратно
+moon.tooltip.0=Вы чувствуете себя странно сегодня
+moon.tooltip.1=Ваше сердце бьется быстрее, вы не контролируете своих мыслей
+moon.tooltip.2=Бещращлично как сильно вы пытаетесь, вы не можете вернуть все назад
 
 //Thaumcraft aspects
-tc.aspect.diabolus=Демон, Нечисть, Осквернение
-tc.aspect.stellae=Звезда, Созвездие, Астеризм
+tc.aspect.diabolus=Демон, Порочный, Нечестивый
+tc.aspect.stellae=Звезды, Созвездие, Астеризм
 tc.aspect.luna=Луна
 tc.aspect.sol=Солнце
 
@@ -963,38 +963,38 @@ tc.aspect.sol=Солнце
 entity.entity_owl.name=Сова
 entity.entity_snake.name=Змея
 entity.entity_raven.name=Ворон
-entity.entity_toad.name=Жаба
+entity.entity_toad.name=Лягушка
 entity.entity_lizard.name=Ящерица
-entity.entity_blindworm.name=Слепозмейка
+entity.entity_blindworm.name=Медянка
 entity.entity_newt.name=Тритон
 entity.entity_uran.name=Уран
-entity.entity_hellhound.name=Цербер
-entity.entity_hellhound_alpha.name=Альфа цербер
-entity.entity_black_dog.name=Черная собака
+entity.entity_hellhound.name=Адская гончая
+entity.entity_hellhound_alpha.name=Альфа адских гончих
+entity.entity_black_dog.name=Черный пес
 entity.entity_imp.name=Бес
-entity.entity_demoness.name=Демоница
+entity.entity_demoness.name=Демонесса
 entity.entity_demon.name=Демон
 
 //Enchantments
-enchantment.extra_mp=Естественное настраивание
-enchantment.protection_spirit=Защита от духа
-enchantment.protection_demon=Защита от демонов
-enchantment.potent_ward=Мощная опека
-enchantment.desperate_ward=Отчаянная опека
-enchantment.hex_protection=Сопротивление проклятию
+enchantment.extra_mp=Природное настраивание
+enchantment.protection_spirit=Потусторонняя защита
+enchantment.protection_demon=Демоническая защита
+enchantment.potent_ward=Могущественная палочка
+enchantment.desperate_ward=Отчаянная защита
+enchantment.hex_protection=Противодействие порче
 enchantment.occultation=Затенение
-enchantment.taglock_protection=Сопротивление привязки
-enchantment.bewitchment.taglock_protection.desc=Зачарование доспехов, которое помогает защитить владельца от привязки.
-enchantment.bewitchment.extra_mp.desc=Зачарование безделушек, расширяющее инфузионную панель владельца.
-enchantment.bewitchment.desperate_ward.desc=Зачарование безделушек, которые уменьшают (или сводят на нет) урон и потребляют инфузионную энергию.
-enchantment.bewitchment.potent_ward.desc=Зачарование безделушек, которые уменьшают (или сводят на нет) урон и потребляют инфузионную энергию.
-enchantment.bewitchment.protection_spirit.desc=Зачарование доспехов, защищающее владельца от духов.
-enchantment.bewitchment.hex_protection.desc=Зачарование доспехов, которое защищает владельца от проклятий.
-enchantment.bewitchment.protection_demon.desc=Зачарование доспехов, которое защищает владельца от демонов.
+enchantment.taglock_protection=Твердая кожа, крепкий волос
+enchantment.bewitchment.taglock_protection.desc=Зачарование для брони, противодействующее взятию образцов игрока.
+enchantment.bewitchment.extra_mp.desc=Зачарование на безделушки, расширяющее количество магической силы игрока.
+enchantment.bewitchment.desperate_ward.desc=Зачарование на безделушки, снижающее (или анулирующее) урон за счет магической энергии.
+enchantment.bewitchment.potent_ward.desc=Зачарование на безделушки, снижающее (или анулирующее) урон за счет магической энергии.
+enchantment.bewitchment.protection_spirit.desc=Зачарование для брони, защищающее носителя от духов.
+enchantment.bewitchment.hex_protection.desc=Зачарование для брони, защищающее носителя от порчи.
+enchantment.bewitchment.protection_demon.desc=Зачарование для брони, защищающее носителя от демонов.
 
-gui.bwguicfg.pick=§a§l[ЛКМ]§r, чтобы выбрать, нажмите еще раз, чтобы разместить
-gui.bwguicfg.orig=§b§l[Alt+ЛКМ]§r, чтобы сбросить в исходное положение
-gui.bwguicfg.hide=§b§l[Shift+ЛКМ]§r, чтобы скрыть/показать
+gui.bwguicfg.pick=§a§l[Click]§r чтобы поднять, click еще раз чтобы положить
+gui.bwguicfg.orig=§b§l[Alt+Click]§r сбросить в исходное положение
+gui.bwguicfg.hide=§b§l[Shift+Click]§r чтобы скрыть/показать
 
 //Books
 bewitchment.book.rites.name=Книга теней

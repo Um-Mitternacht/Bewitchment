@@ -3,7 +3,6 @@ package com.bewitchment.common.block.natural.crop;
 import com.bewitchment.common.lib.LibBlockName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -53,11 +52,4 @@ public class CropMint extends BlockCrop {
 		return true;
 	}
 
-	@Override
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		double x = rand.nextFloat();
-		double y = rand.nextFloat();
-		double z = rand.nextFloat();
-		worldIn.spawnParticle(EnumParticleTypes.END_ROD, x, y, z, 0, 0.05, 0);
-	}
 }
