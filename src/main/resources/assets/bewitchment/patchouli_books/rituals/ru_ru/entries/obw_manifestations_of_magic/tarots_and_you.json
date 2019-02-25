@@ -1,0 +1,62 @@
+{
+  "name": "Tarots and You",
+  "icon": "bewitchment:tarots",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "bewitchment:tarots",
+      "text": "While originally created as a set of playing cards, that use for these cards has faded into obscurity. They are often associated with telling fortunes, and we will discuss the meanings of them here."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:ender_eye",
+      "text": "The Enderman, a horrific spiritual entity. This card signifies that one may have some ties to the outer realms..."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:diamond",
+      "text": "The Diamond, a priceless jewel, this signifies that one has been given a good fortune. If reversed however, one will run into bad luck."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:iron_ingot",
+      "text": "The Iron Golem, a staunch protector of those in need, this card signifies that one may have great ties to the material world."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:netherrack",
+      "text": "The Wither Skeleton, the remains of a human soul, set to forever haunt the halls of former Demonic fortresses, often signifies that one may have ties with demons themselves..."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:nether_star",
+      "text": "The Star, a celestial body in the realms above, this signifies one may have ties to realms one can only dream of..."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:emerald",
+      "text": "The Nitwit, also known as the village idiot. This card, while being seemingly insulting, seems to be a gauge of sorts, for magical capacity."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:silver_nugget",
+      "text": "The Moon, a very potent celestial object, and often associated with silver, and femininity, this card may signify one is a creature of the night..."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:silver_sword",
+      "text": "The Silver Sword, a weapon often used to bring the supernatural and paranormal to it's knees, may suggest someone is after you..."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:witches_cowl",
+      "text": "The Hermit, a reclusive individual, seems to be associated with the unknown. If this card is in your deck, it may signify you or someone else is dead, and refuses to move on..."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:pentacle",
+      "text": "There are more cards in your deck, but you have yet to figure out all of their meanings..."
+    }
+  ]
+}

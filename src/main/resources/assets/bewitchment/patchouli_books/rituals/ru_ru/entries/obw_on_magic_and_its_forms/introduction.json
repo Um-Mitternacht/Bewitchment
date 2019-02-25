@@ -1,0 +1,20 @@
+{
+  "name": "Introduction",
+  "icon": "bewitchment:pentacle",
+  "sortnum": "1",
+  "category": "obw_on_magic_and_its_forms",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Magic is everywhere. It shapes the very world around us, and provides it with the fuel on which the world moves and transforms. $(br) $(br)As such, it's present in all things living (and some that are not), in the biggest of creatures and in the tiniest of plants, and thus, magic is a useful tool for those cunning enough to manipulate it at will. "
+    },
+    {
+      "type": "text",
+      "text": "Even though magic flows strong in the most majestics beings, such as the mythical dragon found at the End of Time, the art of witchcraft relies not on grandiosity nor mighty powerful spells, but rather on simple little things, that come together to create powerful charms or enchantments. Witchcraft leans on the occult, on cunning and mischief. In the words of the Witch King itself, Emoniph, $(o)' Witchcraft does not really resemble the flashy spell-casting performed by "
+    },
+    {
+      "type": "text",
+      "text": "$(o)wizards and their ilk. There are no lightning wands or spell books, enchanted armor or flaming swords; instead, a well tended witch's garden...' "
+    }
+  ]
+}
