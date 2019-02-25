@@ -40,12 +40,9 @@ public class ItemBrewDrinkable extends ItemBrew {
 		BrewData.fromStack(stack).applyToEntity(entityLiving, null, null, ApplicationType.GENERAL);
 		ItemStack res = ItemStack.EMPTY;
 		if ((entityLiving instanceof EntityPlayer)) {
-			if(((EntityPlayer) entityLiving).isCreative())
-			{
+			if (((EntityPlayer) entityLiving).isCreative()) {
 				res = stack;
-			}
-			else
-			{
+			} else {
 				EntityPlayer entityPlayer = (EntityPlayer) entityLiving;
 				entityPlayer.addItemStackToInventory(new ItemStack(ModItems.empty_brew_drink));
 			}
