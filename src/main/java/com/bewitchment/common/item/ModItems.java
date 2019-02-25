@@ -27,6 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
@@ -227,6 +228,9 @@ public final class ModItems {
 	public static void register(final IForgeRegistry<Item> registry) {
 		CropHelper.getFoods().forEach((crop, item) -> registry.register(item));
 		CropHelper.getSeeds().forEach((crop, item) -> registry.register(item));
+		for (final IFluidBlock fluidBlock : Fluids.MOD_FLUID_BLOCKS) {
+			registry.register(itemBlock((Block) fluidBlock));
+		}
 		registry.register(new ItemGem());
 		// registry.register(new ItemFume());
 		registry.register(new ItemFumes(LibItemName.FUME));

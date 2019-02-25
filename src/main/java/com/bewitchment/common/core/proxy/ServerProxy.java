@@ -1,15 +1,13 @@
 package com.bewitchment.common.core.proxy;
 
-import java.util.ArrayList;
-
 import com.bewitchment.api.hotbar.IHotbarAction;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.common.content.tarot.TarotHandler.TarotInfo;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import java.util.ArrayList;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -56,10 +54,5 @@ public class ServerProxy implements ISidedProxy {
 	@Override
 	public void stopMimicking(EntityPlayer p) {
 
-	}
-	
-	@Override
-	public void registerTexture(Fluid fluid)
-	{
 	}
 }
