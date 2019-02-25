@@ -27,7 +27,7 @@ public final class Fluids {
 	public static final List<Block> MOD_FLUID_BLOCKS = new ArrayList<>();
 	public static final List<Fluid> MOD_FLUIDS = new ArrayList<>();
 	
-	public static final Fluid BW_HONEY = registerFluid("honey", Material.WATER, 0, 10, 1500, 8000, true, false);
+	public static final Fluid HONEY = registerFluid("honey", Material.WATER, 0, 10, 1500, 8000, true, false);
 	public static final Fluid MUNDANE_OIL = registerFluid("honey", Material.WATER, 0, 0, 800, 4000, true, true);
 
 	private static Fluid registerFluid(String name, Material mat, int temperature, int luminosity, int density, int viscosity, boolean useBucket, boolean useFlowTexture)
@@ -56,7 +56,7 @@ public final class Fluids {
 		@SubscribeEvent
 		public void livingUpdate(LivingEvent.LivingUpdateEvent event)
 		{
-			if (event.getEntityLiving().world.getBlockState(event.getEntityLiving().getPosition()).getBlock() == BW_HONEY.getBlock())
+			if (event.getEntityLiving().world.getBlockState(event.getEntityLiving().getPosition()).getBlock() == HONEY.getBlock())
 			{
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60));
 			}
