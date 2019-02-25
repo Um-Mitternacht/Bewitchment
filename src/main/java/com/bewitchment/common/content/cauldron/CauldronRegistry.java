@@ -298,7 +298,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.magickal_drain, Ingredient.fromItem(ModItems.filet_of_fenny_snake));
 		registerCombinedBrewEffect(ModPotions.magickal_dampening, Ingredient.fromItem(ModItems.graveyard_dust));
 		registerCombinedBrewEffect(ModPotions.magickal_boost, Ingredient.fromItem(ModItems.juniper_berries));
-		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.garlic));
+		registerCombinedBrewEffect(ModPotions.holy_water, new IngredientMultiOreDict("cropGarlic"));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
 	}
