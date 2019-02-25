@@ -236,7 +236,7 @@ tile.oven.name=ovun
 
 //Fluid
 fluid.oil_mundane=Thick stuff
-fluid.for.honey=Hunny
+fluid.honey=Hunny
 fluid.stew=stoo
 
 //Brew

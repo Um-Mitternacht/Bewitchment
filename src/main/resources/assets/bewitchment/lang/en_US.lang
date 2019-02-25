@@ -533,7 +533,7 @@ tile.distillery.name=Distillery
 
 //Fluid
 fluid.oil_mundane=Oil
-fluid.for.honey=Honey
+fluid.honey=Honey
 
 //Brew
 brew.instant=Instant
