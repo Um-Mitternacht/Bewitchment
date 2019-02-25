@@ -27,7 +27,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
@@ -150,8 +149,8 @@ public final class ModBlocks {
 	}
 
 	public static void register(final IForgeRegistry<Block> registry) {
-		for (final IFluidBlock fluidBlock : Fluids.MOD_FLUID_BLOCKS) {
-			registry.register((Block) fluidBlock);
+		for (final Block fluidBlock : Fluids.MOD_FLUID_BLOCKS) {
+			registry.register(fluidBlock);
 		}
 		//Crops
 		//Todo: Make the rest of the crops flammable.

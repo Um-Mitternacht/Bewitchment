@@ -3,7 +3,6 @@ package com.bewitchment.common.item;
 import baubles.api.BaubleType;
 import com.bewitchment.common.block.ModBlocks;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
-import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.core.helper.CropHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.integration.chisel.*;
@@ -27,7 +26,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.LoaderException;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
@@ -228,9 +226,6 @@ public final class ModItems {
 	public static void register(final IForgeRegistry<Item> registry) {
 		CropHelper.getFoods().forEach((crop, item) -> registry.register(item));
 		CropHelper.getSeeds().forEach((crop, item) -> registry.register(item));
-		for (final IFluidBlock fluidBlock : Fluids.MOD_FLUID_BLOCKS) {
-			registry.register(itemBlock((Block) fluidBlock));
-		}
 		registry.register(new ItemGem());
 		// registry.register(new ItemFume());
 		registry.register(new ItemFumes(LibItemName.FUME));
