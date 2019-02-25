@@ -132,5 +132,7 @@ public class LibIngredients {
 	public static Ingredient kenaf = Ingredient.fromItem(ModItems.kenaf);
 	public static Ingredient grass = Ingredient.fromItem(Item.getItemFromBlock(Blocks.TALLGRASS));
 	public static Ingredient otherworldTears = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.otherworld_tears.ordinal()));
+	public static Ingredient anyHerb = new OreIngredient("listAllherb");
+	public static Ingredient anySpice = new OreIngredient("listAllspice");
 
 }
