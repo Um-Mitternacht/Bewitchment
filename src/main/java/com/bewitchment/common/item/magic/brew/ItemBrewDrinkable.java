@@ -2,6 +2,7 @@ package com.bewitchment.common.item.magic.brew;
 
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.cauldron.BrewData.ApplicationType;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,8 +39,16 @@ public class ItemBrewDrinkable extends ItemBrew {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		BrewData.fromStack(stack).applyToEntity(entityLiving, null, null, ApplicationType.GENERAL);
 		ItemStack res = ItemStack.EMPTY;
-		if ((entityLiving instanceof EntityPlayer) && ((EntityPlayer) entityLiving).isCreative()) {
-			res = stack;
+		if ((entityLiving instanceof EntityPlayer)) {
+			if(((EntityPlayer) entityLiving).isCreative())
+			{
+				res = stack;
+			}
+			else
+			{
+				EntityPlayer entityPlayer = (EntityPlayer) entityLiving;
+				entityPlayer.addItemStackToInventory(new ItemStack(ModItems.empty_brew_drink));
+			}
 		}
 		return res;
 	}

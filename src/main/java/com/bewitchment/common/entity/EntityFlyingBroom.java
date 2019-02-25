@@ -44,7 +44,7 @@ public class EntityFlyingBroom extends Entity {
 
 	public EntityFlyingBroom(World world) {
 		super(world);
-		this.setSize(1f, 1);
+		this.setSize(0.7f, 0.7f);
 	}
 
 	public EntityFlyingBroom(World world, double x, double y, double z, int type) {
@@ -174,11 +174,11 @@ public class EntityFlyingBroom extends Entity {
 			if (this.prevPosY == this.posY) motionY = 0;
 		}
 		if (this.isBeingRidden()) {
-			this.setSize(1f, 2f);// If a player is riding, account for the height of the player
+			this.setSize(0.7f, rider.height);// If a player is riding, account for the height of the player
 		}
 		this.move(MoverType.SELF, motionX, motionY, motionZ);
 		if (this.isBeingRidden()) {
-			this.setSize(1f, 1f);
+			this.setSize(0.7f, 0.7f);
 		}
 	}
 

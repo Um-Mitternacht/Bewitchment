@@ -1,5 +1,11 @@
 package com.bewitchment.common.tile.tiles;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.common.content.cauldron.behaviours.DefaultBehaviours;
@@ -7,8 +13,10 @@ import com.bewitchment.common.content.cauldron.behaviours.ICauldronBehaviour;
 import com.bewitchment.common.content.cauldron.teleportCapability.CapabilityCauldronTeleport;
 import com.bewitchment.common.core.helper.ColorHelper;
 import com.bewitchment.common.core.helper.Log;
+import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.tile.ModTileEntity;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +26,11 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -26,11 +38,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-
-import javax.annotation.Nullable;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
 
 public class TileEntityCauldron extends ModTileEntity implements ITickable {
 
@@ -77,6 +84,10 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 				this.markDirty();
 				this.syncToClient();
 			}
+		}
+		
+		if(!playerIn.isCreative() && this.tank.getFluidAmount() > 333 && ((heldItem.getItem() == ModItems.empty_brew_drink) || (heldItem.getItem() == ModItems.empty_brew_linger) || (heldItem.getItem() == ModItems.empty_brew_splash))) {
+			heldItem.shrink(1);
 		}
 
 		if (heldItem.getItem() == Items.NAME_TAG) {
