@@ -17,6 +17,34 @@
           "fluid": "oil_mundane"
         }
       }
+    ],
+    "oil_soothing": [
+      {
+        "custom": {
+          "fluid": "oil_soothing"
+        }
+      }
+    ],
+    "oil_spicy": [
+      {
+        "custom": {
+          "fluid": "oil_spicy"
+        }
+      }
+    ],
+    "oil_toxic": [
+      {
+        "custom": {
+          "fluid": "oil_toxic"
+        }
+      }
+    ],
+    "oil_magical": [
+      {
+        "custom": {
+          "fluid": "oil_magical"
+        }
+      }
     ]
   }
 }

@@ -1,14 +1,7 @@
 package com.bewitchment.common.block.natural.fluid;
 
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
-import java.util.List;
-
->>>>>>> parent of 6c9d480f... Revert "???"
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.MobEffects;
@@ -19,12 +12,9 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.List;
-=======
->>>>>>> parent of 6c9d480f... Revert "???"
 
 /**
  * This class was created by Arekkuusu on 03/05/2017.
@@ -33,7 +23,6 @@ import java.util.List;
  */
 public final class Fluids {
 
-<<<<<<< HEAD
 	public static final List<Block> MOD_FLUID_BLOCKS = new ArrayList<>();
 	public static final List<Fluid> MOD_FLUIDS = new ArrayList<>();
 
@@ -42,18 +31,6 @@ public final class Fluids {
 
 	private static Fluid registerFluid(String name, Material mat, int temperature, int luminosity, int density, int viscosity, boolean useBucket, boolean useFlowTexture) {
 		if (!FluidRegistry.isFluidRegistered(name)) {
-=======
-	public static final List<Fluid> MOD_FLUIDS = new ArrayList<>();
-	public static final List<Block> MOD_FLUID_BLOCKS = new ArrayList<>();
-
-	public static final Fluid BW_HONEY = registerFluid("honey", Material.WATER, 0, 10, 1500, 8000, true, false);
-	public static final Fluid MUNDANE_OIL = registerFluid("oil_mundane", Material.WATER, 0, 0, 800, 400, true, true);
-
-	private static Fluid registerFluid(String name, Material mat, int temperature, int luminosity, int density, int viscosity, boolean useBucket, boolean useFlowTexture)
-	{
-		if (!FluidRegistry.isFluidRegistered(name))
-		{
->>>>>>> parent of 6c9d480f... Revert "???"
 			Fluid fluid = new Fluid(name, new ResourceLocation(LibMod.MOD_ID, "blocks/fluid/" + name + "_still"), new ResourceLocation(LibMod.MOD_ID, "blocks/fluid/" + name + (useFlowTexture ? "_flowing" : "_still"))).setTemperature(temperature).setLuminosity(luminosity).setDensity(density).setViscosity(viscosity);
 			FluidRegistry.registerFluid(fluid);
 			Block block = new BlockFluidClassic(fluid, mat).setTemperature(temperature).setDensity(density).setRegistryName(new ResourceLocation(LibMod.MOD_ID, "fluid_" + name)).setTranslationKey(fluid.getUnlocalizedName());
@@ -65,7 +42,6 @@ public final class Fluids {
 		}
 		return FluidRegistry.getFluid(name);
 	}
-<<<<<<< HEAD
 
 	public static List<Fluid> init() {
 		return MOD_FLUIDS;
@@ -75,21 +51,6 @@ public final class Fluids {
 		@SubscribeEvent
 		public void livingUpdate(LivingEvent.LivingUpdateEvent event) {
 			if (event.getEntityLiving().world.getBlockState(event.getEntityLiving().getPosition()).getBlock() == HONEY.getBlock()) {
-=======
-	
-	public static List<Fluid> init()
-	{
-		return MOD_FLUIDS;
-	}
-	
-	public static class Handler
-	{
-		@SubscribeEvent
-		public void livingUpdate(LivingEvent.LivingUpdateEvent event)
-		{
-			if (event.getEntityLiving().world.getBlockState(event.getEntityLiving().getPosition()).getBlock() == BW_HONEY.getBlock())
-			{
->>>>>>> parent of 6c9d480f... Revert "???"
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60));
 			}
 		}
