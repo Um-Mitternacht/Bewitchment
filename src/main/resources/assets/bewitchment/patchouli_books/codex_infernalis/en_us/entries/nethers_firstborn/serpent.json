@@ -1,5 +1,5 @@
 {
-  "name": "Uran",
+  "name": "Serpent",
   "icon": "minecraft:gold_ingot",
   "category": "nethers_firstborn",
   "pages": [
@@ -9,11 +9,11 @@
     },
     {
       "type": "entity",
-      "name": "Uran",
+      "name": "Serpent",
       "entity": "bewitchment:uran",
       "scale": 0.50,
       "rotate": false,
-      "text": "Plural: Uranids"
+      "text": "Not your friend"
     },
     {
       "type": "ritual",
