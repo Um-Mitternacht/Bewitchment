@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class ItemHoney extends ItemModFood {
 
 	public ItemHoney() {
-		super(LibItemName.BW_HONEY, 2, 4F, false);
+		super(LibItemName.HONEY, 2, 4F, false);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

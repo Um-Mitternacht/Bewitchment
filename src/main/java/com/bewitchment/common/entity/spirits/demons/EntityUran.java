@@ -108,7 +108,7 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 						itemstack.shrink(1);
 						if (itemstack.isEmpty()) {
 							player.setHeldItem(hand, new ItemStack(ModItems.uranid_venom));
-						} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.uranid_venom))) {
+						} else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.snake_venom))) {
 							player.dropItem(new ItemStack(ModItems.uranid_venom), false);
 						}
 						milkCooldown = TIME_BETWEEN_MILK;

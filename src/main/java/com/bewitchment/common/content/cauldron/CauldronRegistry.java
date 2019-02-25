@@ -206,10 +206,10 @@ public class CauldronRegistry {
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.catechu, 3, 0), acaciaLog);
 		// Arcane recipes
 
-		registerCauldronItemCrafting(Fluids.HONEY, Fluid.BUCKET_VOLUME, new ItemStack(ModBlocks.goblet, 1, 1), LibIngredients.redstone, LibIngredients.redstone, LibIngredients.redstone, LibIngredients.fumeCloudyOil, LibIngredients.emptyGoblet, LibIngredients.ghastTear);
+		registerCauldronItemCrafting(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME, new ItemStack(ModBlocks.goblet, 1, 1), LibIngredients.redstone, LibIngredients.redstone, LibIngredients.redstone, LibIngredients.fumeCloudyOil, LibIngredients.emptyGoblet, LibIngredients.ghastTear);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), normalRitualChalk, normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), normalRitualChalk, normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand, fumeHeavenlyWind, fumeHeavenlyWind);
-		registerCauldronItemCrafting(Fluids.HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), normalRitualChalk, normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
+		registerCauldronItemCrafting(Fluids.BW_HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), normalRitualChalk, normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), ectoplasm, ectoplasm, graveyardDust, graveyardDust, wormwood, wormwood, dirt, dirt, dirt, dirt);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.ember_grass, 2, 0), blazePowder, grass, wormwood, fumeFieryBreeze);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.torchwood, 2, 0), glowstoneDust, fumeBottledMagic, anyLog, anyLeaf);
@@ -226,7 +226,7 @@ public class CauldronRegistry {
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
 
-		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
+		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.BW_HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
 		registerCauldronFluidCrafting(FluidRegistry.WATER, new FluidStack(Fluids.MUNDANE_OIL, Fluid.BUCKET_VOLUME), Ingredient.fromStacks(new ItemStack(Items.POTATO)), Ingredient.fromStacks(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)));
 
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);
@@ -298,7 +298,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.magickal_drain, Ingredient.fromItem(ModItems.filet_of_fenny_snake));
 		registerCombinedBrewEffect(ModPotions.magickal_dampening, Ingredient.fromItem(ModItems.graveyard_dust));
 		registerCombinedBrewEffect(ModPotions.magickal_boost, Ingredient.fromItem(ModItems.juniper_berries));
-		registerCombinedBrewEffect(ModPotions.holy_water, new IngredientMultiOreDict("cropGarlic"));
+		registerCombinedBrewEffect(ModPotions.holy_water, Ingredient.fromItem(ModItems.garlic));
 		registerCombinedBrewEffect(ModPotions.mowing, new CompoundIngredient(Arrays.asList(Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES)), Ingredient.fromItem(Item.getItemFromBlock(Blocks.LEAVES2)), new OreIngredient("leaves"))) {
 		});
 	}

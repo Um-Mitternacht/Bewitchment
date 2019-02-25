@@ -55,14 +55,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 	@SuppressWarnings("ConstantConditions")
 	public TileEntityOven() {
 		this.random = new Random();
-		this.handlerDown = new ItemStackHandler(2) {
-			@Override
-			protected void onContentsChanged(int slot) {
-				if (slot == 0) {
-					updateScheduled = true;
-				}
-			}
-		};
+		this.handlerDown = new ItemStackHandler(2);
 		this.handlerUp = new ItemStackHandler(3) {
 			@Override
 			public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
@@ -132,7 +125,10 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 					this.burnTime = 0;
 					this.itemBurnTime = 0;
 					this.isBurning = false;
-					this.updateScheduled = true;
+					this.itemBurnTime = this.consumeFuel();
+					if (this.itemBurnTime > 0) {
+						this.isBurning = true;
+					}
 				}
 				this.markDirty();
 			}
@@ -144,7 +140,6 @@ public class TileEntityOven extends ModTileEntity implements ITickable, IWorldNa
 			if (!this.isBurning) {
 				if (!lockFuel) {
 					lockFuel = true;
-					this.work = 0;
 					this.itemBurnTime = this.consumeFuel();
 					if (this.itemBurnTime > 0) {
 						this.isBurning = true;

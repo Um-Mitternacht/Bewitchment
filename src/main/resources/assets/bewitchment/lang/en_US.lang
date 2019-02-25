@@ -77,7 +77,7 @@ item.gem_tigers_eye.name=Tiger's Eye
 item.gem_bloodstone.name=Bloodstone
 item.gem_jasper.name=Jasper
 item.gem_malachite.name=Malachite
-item.gem_bw_amethyst.name=Amethyst
+item.gem_amethyst.name=Amethyst
 item.gem_alexandrite.name=Alexandrite
 
 //Gemstone powders
@@ -96,7 +96,7 @@ item.lapis_powder.name=Rough Lapis Powder
 
 //Resources and Tools
 item.wax.name=Wax
-item.bw_honey.name=Honey
+item.honey.name=Honey
 item.honeycomb.name=Honeycomb
 item.empty_honeycomb.name=Empty Honeycomb
 item.glass_jar.name=Glass Jar
@@ -403,7 +403,7 @@ tile.gem_block_nuummite.name=Nuummite Block
 tile.gem_block_garnet.name=Garnet Block
 tile.gem_block_alexandrite.name=Alexandrite Block
 tile.gem_block_jasper.name=Jasper Block
-tile.gem_block_bw_amethyst.name=Amethyst Block
+tile.gem_block_amethyst.name=Amethyst Block
 tile.silver_block.name=Silver Block
 tile.silver_block_chisel.name=Silver Block (Chiseled)
 tile.nethersteel.name=Nethersteel
@@ -414,7 +414,7 @@ tile.gem_ore_serpentine.name=Serpentine ore
 tile.gem_ore_nuummite.name=Nuummite Ore
 tile.gem_ore_garnet.name=Garnet Ore
 tile.salt_ore.name=Salt Ore
-tile.gem_ore_bw_amethyst.name=Amethyst Ore
+tile.gem_ore_amethyst.name=Amethyst Ore
 tile.gem_ore_alexandrite.name=Alexandrite Ore
 tile.coquina.name=Coquina
 tile.fake_ice.name=Perpetual Ice
@@ -533,7 +533,7 @@ tile.distillery.name=Distillery
 
 //Fluid
 fluid.oil_mundane=Oil
-fluid.honey=Honey
+fluid.for.honey=Honey
 
 //Brew
 brew.instant=Instant

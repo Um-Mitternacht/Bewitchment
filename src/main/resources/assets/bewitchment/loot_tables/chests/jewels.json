@@ -42,6 +42,20 @@
         },
         {
           "type": "item",
+          "name": "bewitchment:oak_apple_gall",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 6
+              }
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "type": "item",
           "name": "bewitchment:silver_ingot",
           "functions": [
             {
@@ -49,6 +63,20 @@
               "count": {
                 "min": 1,
                 "max": 2
+              }
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:coquina",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 16
               }
             }
           ],
