@@ -23,6 +23,7 @@ public class TileEntityGemBowl extends ModTileEntity {
 	private static final String GEM_TAG_NAME = "gem";
 
 	static {
+		gainMap.put("fossil", 1);
 		gainMap.put("gemDiamond", 4);
 		gainMap.put("gemEmerald", 4);
 		gainMap.put("gemPsi", 4);
