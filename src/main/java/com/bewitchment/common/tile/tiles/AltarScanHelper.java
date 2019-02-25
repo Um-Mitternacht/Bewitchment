@@ -119,7 +119,7 @@ class AltarScanHelper {
 		}
 		if (te.swordItem.getItem() == Items.DIAMOND_SWORD) {
 			varietyMultiplier = 63;
-			radius_d += 1.2;
+			radius_d -= 1.7;
 		}
 		if (te.swordItem.getItem() == ModItems.athame) {
 			varietyMultiplier = 65;
