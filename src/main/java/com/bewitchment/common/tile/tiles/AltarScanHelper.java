@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.IPlantable;
@@ -100,11 +101,29 @@ class AltarScanHelper {
 		te.refreshUpgrades();
 		int maxPower = map.values().parallelStream().reduce(0, (a, b) -> a + b);
 		int varietyMultiplier = 40;
+		int radius_d = TileEntityWitchAltar.RADIUS;
 		if (te.swordItem.getItem() == ModItems.silver_sword) {
 			varietyMultiplier = 51;
 		}
+		if (te.swordItem.getItem() == ModItems.cold_iron_sword) {
+			varietyMultiplier = 57;
+			radius_d -= 1;
+		}
+		if (te.swordItem.getItem() == Items.GOLDEN_SWORD) {
+			varietyMultiplier = 53;
+			radius_d += 1.5;
+		}
+		if (te.swordItem.getItem() == Items.IRON_SWORD) {
+			varietyMultiplier = 51;
+			radius_d -= 1;
+		}
+		if (te.swordItem.getItem() == Items.DIAMOND_SWORD) {
+			varietyMultiplier = 63;
+			radius_d += 1.2;
+		}
 		maxPower += (map.keySet().size() * varietyMultiplier); //Variety is the most important thing
 		maxPower *= te.multiplier;
+
 		te.storage.setMaxAmount(maxPower);
 		map.clear();
 		te.markDirty();
