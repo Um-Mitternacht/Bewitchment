@@ -68,7 +68,7 @@ public final class ModConfig {
 		@Comment("Salt Ore gen, this determines how much can spawn in a chunk, and how far up")
 		public Salt salt = new Salt();
 		@Comment("Amethyst Ore gen, this determines how much can spawn in a chunk, and how far up")
-		public Amethyst amethyst = new Amethyst();
+		public Amethyst bw_amethyst = new Amethyst();
 		@Comment("Alexandrite Ore gen, this determines how much can spawn in a chunk, and how far up")
 		public Alexandrite alexandrite = new Alexandrite();
 		@Comment("Coquina gen, this determines how much can spawn in a chunk, and how far up")

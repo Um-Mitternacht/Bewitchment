@@ -88,7 +88,7 @@ public class BlockGem extends BlockMod implements IInfusionStabiliserExt {
 		BLOODSTONE,
 		JASPER,
 		MALACHITE,
-		AMETHYST,
+		BW_AMETHYST,
 		ALEXANDRITE;
 
 		@Override

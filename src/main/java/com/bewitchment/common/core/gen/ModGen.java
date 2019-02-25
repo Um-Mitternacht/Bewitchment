@@ -38,9 +38,9 @@ public final class ModGen {
 		GameRegistry.registerWorldGenerator(new WorldGenOre(ModBlocks.gem_ore.getDefaultState().withProperty(BlockGemOre.GEM, Gem.JASPER),
 				ModConfig.WORLD_GEN.jasper.jasper_min_vein, ModConfig.WORLD_GEN.jasper.jasper_max_vein,
 				ModConfig.WORLD_GEN.jasper.jasper_min_height, ModConfig.WORLD_GEN.jasper.jasper_max_height, ModConfig.WORLD_GEN.jasper.jasper_gen_chance), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenOre(ModBlocks.gem_ore.getDefaultState().withProperty(BlockGemOre.GEM, Gem.AMETHYST),
-				ModConfig.WORLD_GEN.amethyst.amethyst_min_vein, ModConfig.WORLD_GEN.amethyst.amethyst_max_vein,
-				ModConfig.WORLD_GEN.amethyst.amethyst_min_height, ModConfig.WORLD_GEN.amethyst.amethyst_max_height, ModConfig.WORLD_GEN.amethyst.amethyst_gen_chance), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenOre(ModBlocks.gem_ore.getDefaultState().withProperty(BlockGemOre.GEM, Gem.BW_AMETHYST),
+				ModConfig.WORLD_GEN.bw_amethyst.amethyst_min_vein, ModConfig.WORLD_GEN.bw_amethyst.amethyst_max_vein,
+				ModConfig.WORLD_GEN.bw_amethyst.amethyst_min_height, ModConfig.WORLD_GEN.bw_amethyst.amethyst_max_height, ModConfig.WORLD_GEN.bw_amethyst.amethyst_gen_chance), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenOre(ModBlocks.gem_ore.getDefaultState().withProperty(BlockGemOre.GEM, Gem.ALEXANDRITE),
 				ModConfig.WORLD_GEN.alexandrite.alexandrite_min_vein, ModConfig.WORLD_GEN.alexandrite.alexandrite_max_vein,
 				ModConfig.WORLD_GEN.alexandrite.alexandrite_min_height, ModConfig.WORLD_GEN.alexandrite.alexandrite_max_height, ModConfig.WORLD_GEN.alexandrite.alexandrite_gen_chance), 0);

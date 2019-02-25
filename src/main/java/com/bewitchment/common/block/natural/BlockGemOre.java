@@ -113,7 +113,7 @@ public class BlockGemOre extends BlockMod {
 		BLOODSTONE,
 		JASPER,
 		MALACHITE,
-		AMETHYST,
+		BW_AMETHYST,
 		ALEXANDRITE;
 
 		@Override

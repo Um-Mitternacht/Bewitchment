@@ -140,7 +140,7 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.BLOODSTONE.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.LIFE, 4).add(SUN, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.JASPER.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.AVERSION, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.MALACHITE.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.EARTH, 4).add(Aspect.EXCHANGE, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.AMETHYST.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(MOON, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.BW_AMETHYST.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(MOON, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.gem, 1, Gem.ALEXANDRITE.ordinal()), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.MIND, 4).add(Aspect.PROTECT, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.glass_jar), new AspectList().add(Aspect.VOID, 6).add(Aspect.CRYSTAL, 6));
 		evt.register.registerObjectTag(new ItemStack(ModItems.spectral_dust), new AspectList().add(Aspect.VOID, 4).add(Aspect.SOUL, 4));

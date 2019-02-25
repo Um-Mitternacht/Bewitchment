@@ -54,7 +54,7 @@
           "overlay": "bewitchment:blocks/malachite_ore"
         }
       },
-      "amethyst": {
+      "bw_amethyst": {
         "textures": {
           "overlay": "bewitchment:blocks/amethyst_ore"
         }

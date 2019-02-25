@@ -105,7 +105,7 @@ public class LibIngredients {
 	public static Ingredient bonemeal = Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15));
 	public static Ingredient chrysanthemum = Ingredient.fromItem(ModItems.chrysanthemum);
 	public static Ingredient snakeVenom = Ingredient.fromItem(ModItems.snake_venom);
-	public static Ingredient amethyst = new OreIngredient("gemAmethyst");
+	public static Ingredient bw_amethyst = new OreIngredient("gemAmethyst");
 	public static Ingredient bloodstone = new OreIngredient("gemBloodstone");
 	public static Ingredient garnet = new OreIngredient("gemGarnet");
 	public static Ingredient alexandrite = new OreIngredient("gemAlexandrite");

@@ -23,7 +23,7 @@ public class ItemGemPowder extends ItemMod {
 			"bloodstone", // 4
 			"jasper", // 5
 			"malachite", // 6
-			"amethyst", // 7
+			"bw_amethyst", // 7
 			"alexandrite", // 8
 	};
 
