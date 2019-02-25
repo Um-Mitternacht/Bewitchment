@@ -92,7 +92,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 	public static void setModifiers(AltarModifierCollectionEvent evt) {
 		Block b = evt.getState().getBlock();
 		if (b == Blocks.DRAGON_EGG) {
-			evt.extraGain = 50;
+			evt.extraGain = 12;
 			evt.multiplier = 4.5;
 			return;
 		}
@@ -105,7 +105,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			evt.multiplier = -0.4;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.NETHER_STAR) {
-			evt.extraGain = 25;
+			evt.extraGain = 8;
 			evt.multiplier = 2.5;
 		}
 		if (b == Blocks.SKULL) {
