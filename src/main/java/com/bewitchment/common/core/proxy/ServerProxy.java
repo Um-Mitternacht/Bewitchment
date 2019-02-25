@@ -56,9 +56,8 @@ public class ServerProxy implements ISidedProxy {
 	public void stopMimicking(EntityPlayer p) {
 
 	}
-	
+
 	@Override
-	public void registerTexture(Fluid fluid)
-	{
+	public void registerTexture(Fluid fluid) {
 	}
 }
