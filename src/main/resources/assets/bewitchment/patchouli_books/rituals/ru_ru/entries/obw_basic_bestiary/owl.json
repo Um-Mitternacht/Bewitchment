@@ -1,0 +1,18 @@
+{
+  "name": "Сова",
+  "icon": "bewitchment:owlets_wing",
+  "category": "obw_basic_bestiary",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Говорят, что эта птица, обитающая в густых лесах, станет отличным фамильяром для тех, кто хочет быть мастером в полетах."
+    },
+    {
+      "type": "entity",
+      "name": "Сова",
+      "entity": "bewitchment:owl",
+      "scale": 0.95,
+      "text": "Ухууу."
+    }
+  ]
+}

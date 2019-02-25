@@ -1,0 +1,18 @@
+{
+  "name": "Лягушка",
+  "icon": "bewitchment:toe_of_frog",
+  "category": "obw_basic_bestiary",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Амфибия, обитающая в болотах. Является отличным фамильяром для тех, кто практикуется в зельеварении..."
+    },
+    {
+      "type": "entity",
+      "name": "Лягушка",
+      "entity": "bewitchment:toad",
+      "scale": 1.0,
+      "text": "Это среда, мои чуваки"
+    }
+  ]
+}

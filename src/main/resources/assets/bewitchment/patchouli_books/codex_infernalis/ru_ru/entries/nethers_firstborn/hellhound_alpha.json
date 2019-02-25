@@ -1,0 +1,23 @@
+{
+  "name": "Альфа адских гончих",
+  "icon": "bewitchment:hellhound_horn",
+  "category": "nethers_firstborn",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Некоторые Адские гончие, ближе к концу своей жизни становятся настолько сильны, что превращаются в кровожадного зверя, способного командовать легионами своих собратьев. Эта трансформация обычно проходит после того как гончая поглотит достаточно душ."
+    },
+    {
+      "type": "entity",
+      "name": "Альфа адских гончих",
+      "entity": "bewitchment:hellhound_alpha",
+      "scale": 0.75,
+      "rotate": true,
+      "text": "Демоническая тварь"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_hellhound_alpha"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Адская гончая",
+  "icon": "minecraft:blaze_powder",
+  "category": "nethers_firstborn",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Немного выше по рангу чем Аспиды, эти демонические отродья, выглядящие как псы, довольно распространены и агрессивны, их челюсти крошат камень и кости, их когди кромсают металл, их клыки пропитаны ядом, текущим по их венам, дающим им иммунитет к любому виду яда."
+    },
+    {
+      "type": "entity",
+      "name": "Адская гончая",
+      "entity": "bewitchment:hellhound",
+      "scale": 0.75,
+      "rotate": true,
+      "text": "Демоническая тварь"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_hellhound"
+    }
+  ]
+}

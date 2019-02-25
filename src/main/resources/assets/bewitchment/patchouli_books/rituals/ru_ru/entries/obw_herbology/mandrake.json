@@ -1,0 +1,12 @@
+{
+  "name": "Mandrake",
+  "icon": "bewitchment:mandrake_root",
+  "category": "obw_herbology",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "bewitchment:mandrake_root",
+      "text": "A form of nightshade named for it's eerily human-looking roots, contrary to belief, harvesting one does not require a complicated procedure involving a dog. It appears to have some potent magical properties, and you have utilized them in your brews."
+    }
+  ]
+}

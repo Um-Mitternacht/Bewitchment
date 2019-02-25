@@ -1,0 +1,36 @@
+{
+  "name": "Ритуалы призыва",
+  "icon": "minecraft:skull:1",
+  "sortnum": "4",
+  "category": "obw_manifestations_of_magic",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Вы смогли понять как призвать множество различных духов или даже другого мага."
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_wither"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_ghast"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_vex"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_witch"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_blaze"
+    },
+    {
+      "type": "ritual",
+      "ritual": "bewitchment:conjure_magma_cube"
+    }
+  ]
+}

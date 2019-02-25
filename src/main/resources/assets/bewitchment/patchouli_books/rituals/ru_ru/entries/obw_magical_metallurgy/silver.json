@@ -1,0 +1,12 @@
+{
+  "name": "Серебро",
+  "icon": "bewitchment:silver_ingot",
+  "category": "obw_magical_metallurgy",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "bewitchment:silver_ingot",
+      "text": "Драгоценный металл, часто выкапываемый из земли. Кажется, это единственный металл, способный убить множество различных тварей, особенно нежить, которой он противен."
+    }
+  ]
+}
