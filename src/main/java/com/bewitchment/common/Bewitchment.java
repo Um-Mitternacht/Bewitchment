@@ -2,6 +2,7 @@ package com.bewitchment.common;
 
 import com.bewitchment.common.api.ApiInstance;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.natural.fluid.Fluids;
 import com.bewitchment.common.block.natural.plants.BlockMoonbell;
 import com.bewitchment.common.content.actionbar.ModAbilities;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
@@ -167,6 +168,7 @@ public class Bewitchment {
 		SimpleCapability.init(CapabilityVampire.class, LibMod.MOD_ID, CapabilityVampire.CAPABILITY, CapabilityVampire.DEFAULT_INSTANCE);
 		ModItems.init();
 		ModBlocks.init();
+		Fluids.init();
 		ModTarots.init();
 		CauldronRegistry.init();
 		ModDistilleryRecipes.init();

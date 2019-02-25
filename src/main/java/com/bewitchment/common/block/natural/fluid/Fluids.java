@@ -8,18 +8,14 @@ import com.bewitchment.common.lib.LibMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * This class was created by Arekkuusu on 03/05/2017.
@@ -48,5 +44,22 @@ public final class Fluids {
 			MOD_FLUIDS.add(fluid);
 		}
 		return FluidRegistry.getFluid(name);
+	}
+	
+	public static List<Fluid> init()
+	{
+		return MOD_FLUIDS;
+	}
+	
+	public static class Handler
+	{
+		@SubscribeEvent
+		public void livingUpdate(LivingEvent.LivingUpdateEvent event)
+		{
+			if (event.getEntityLiving().world.getBlockState(event.getEntityLiving().getPosition()).getBlock() == BW_HONEY.getBlock())
+			{
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60));
+			}
+		}
 	}
 }
