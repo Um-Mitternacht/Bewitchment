@@ -1,6 +1,7 @@
 package com.bewitchment.common.core.event;
 
 import com.bewitchment.api.mp.IMagicPowerContainer;
+import com.bewitchment.common.content.infusion.capability.InfusionCapability;
 import com.bewitchment.common.core.capability.energy.player.PlayerMPContainer;
 import com.bewitchment.common.core.capability.energy.player.expansion.CapabilityMPExpansion;
 import com.bewitchment.common.core.helper.CapabilityHelper;
@@ -26,7 +27,7 @@ public class EnergyEvents {
 		if (event.isWasDeath()) {
 			CapabilityHelper.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
 			CapabilityHelper.copyDataOnPlayerRespawn(event, CapabilityMPExpansion.CAPABILITY);
-			CapabilityHelper.copyDataOnPlayerRespawn(event, InfusionCapability.CAPABILITY);			
+			CapabilityHelper.copyDataOnPlayerRespawn(event, InfusionCapability.CAPABILITY);
 		}
 	}
 
