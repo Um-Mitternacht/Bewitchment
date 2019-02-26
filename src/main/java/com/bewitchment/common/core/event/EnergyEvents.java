@@ -26,6 +26,7 @@ public class EnergyEvents {
 		if (event.isWasDeath()) {
 			CapabilityHelper.copyDataOnPlayerRespawn(event, IMagicPowerContainer.CAPABILITY);
 			CapabilityHelper.copyDataOnPlayerRespawn(event, CapabilityMPExpansion.CAPABILITY);
+			CapabilityHelper.copyDataOnPlayerRespawn(event, InfusionCapability.CAPABILITY);			
 		}
 	}
 
