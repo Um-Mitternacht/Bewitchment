@@ -149,6 +149,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.BAKED_POTATO), 5, 6f);
 		registerFood(Ingredient.fromItem(Items.BEETROOT), 1, 1.2f);
 		registerFood(Ingredient.fromItem(Items.BREAD), 5, 6f);
+		registerFood(Ingredient.fromItem(Items.WHEAT), 3, 3.6f);
 		registerFood(Ingredient.fromItem(Items.CARROT), 3, 3.6f);
 		registerFood(Ingredient.fromItem(Items.FISH), 2, 0.4f);
 		registerFood(Ingredient.fromItem(Items.COOKED_CHICKEN), 6, 7.2f);
