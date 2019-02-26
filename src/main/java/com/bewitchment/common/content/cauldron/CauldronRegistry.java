@@ -162,6 +162,7 @@ public class CauldronRegistry {
 		registerFood(Ingredient.fromItem(Items.GOLDEN_APPLE), 4, 9.6f);
 		registerFood(Ingredient.fromItem(Items.GOLDEN_CARROT), 6, 14.4f);
 		registerFood(Ingredient.fromItem(Items.MELON), 2, 1.2f);
+		registerFood(Ingredient.fromItem(ModItems.grilled_watermelon), 5, 6f);
 		registerFood(Ingredient.fromItem(Items.POTATO), 1, 0.6f);
 		registerFood(Ingredient.fromItem(Items.BEEF), 3, 1.8f);
 		registerFood(Ingredient.fromItem(Items.CHICKEN), 2, 1.2f);
@@ -196,6 +197,8 @@ public class CauldronRegistry {
 		registerFood(new IngredientMultiOreDict("listAllmuttoncooked"), 6, 9.6f);
 		registerFood(new IngredientMultiOreDict("listAllrabbitcooked"), 5, 6f);
 		registerFood(new IngredientMultiOreDict("listAllfishcooked"), 5, 6f);
+		registerFood(new IngredientMultiOreDict("listAllherb"), 3, 0.9f);
+		registerFood(new IngredientMultiOreDict("listAllspice"), 3, 0.9f);
 		//Todo: Support for more modded foods.
 
 		// Miscellaneous water-based recipes
