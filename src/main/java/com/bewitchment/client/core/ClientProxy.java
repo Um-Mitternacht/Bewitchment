@@ -5,7 +5,10 @@ import com.bewitchment.api.ritual.EnumGlyphType;
 import com.bewitchment.api.spell.ISpell;
 import com.bewitchment.api.state.StateProperties;
 import com.bewitchment.client.ResourceLocations;
-import com.bewitchment.client.core.event.*;
+import com.bewitchment.client.core.event.GirdleOfTheWoodedHUD;
+import com.bewitchment.client.core.event.MimicEventHandler;
+import com.bewitchment.client.core.event.MiscEventHandler;
+import com.bewitchment.client.core.event.RenderingHacks;
 import com.bewitchment.client.core.hud.*;
 import com.bewitchment.client.fx.ParticleF;
 import com.bewitchment.client.gui.GuiTarots;
@@ -119,7 +122,7 @@ public class ClientProxy implements ISidedProxy {
 		HudController.registerNewComponent(new VampireBloodBarHUD());
 
 		MinecraftForge.EVENT_BUS.register(new GirdleOfTheWoodedHUD());
-		MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
+		//MinecraftForge.EVENT_BUS.register(new WerewolfEventHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderingHacks());
 		MinecraftForge.EVENT_BUS.register(new MiscEventHandler(Minecraft.getMinecraft()));
 	}
