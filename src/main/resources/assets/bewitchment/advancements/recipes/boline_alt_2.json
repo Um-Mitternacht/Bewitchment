@@ -12,7 +12,7 @@
         "items": [
           {
             "type": "forge:ore_dict",
-			"ore": "ingotSilver"
+            "ore": "ingotSilver"
           }
         ]
       }

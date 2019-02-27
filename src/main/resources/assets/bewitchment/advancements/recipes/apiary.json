@@ -12,7 +12,7 @@
         "items": [
           {
             "type": "forge:ore_dict",
-			"ore": "materialWaxcomb"
+            "ore": "materialWaxcomb"
           }
         ]
       }

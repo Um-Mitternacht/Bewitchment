@@ -12,10 +12,10 @@
         "items": [
           {
             "item": "bewitchment:gem",
-			"count": {
+            "count": {
               "min": 9
             },
-			"data": 8
+            "data": 8
           }
         ]
       }

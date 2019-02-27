@@ -12,10 +12,10 @@
         "items": [
           {
             "item": "bewitchment:cold_iron_dust_small",
-			"count": {
+            "count": {
               "min": 9
             },
-			"data": 0
+            "data": 0
           }
         ]
       }

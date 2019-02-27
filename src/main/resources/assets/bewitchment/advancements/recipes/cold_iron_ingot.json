@@ -12,8 +12,8 @@
         "items": [
           {
             "type": "forge:ore_dict",
-			"ore": "nuggetColdIron",
-			"count": {
+            "ore": "nuggetColdIron",
+            "count": {
               "min": 9
             }
           }

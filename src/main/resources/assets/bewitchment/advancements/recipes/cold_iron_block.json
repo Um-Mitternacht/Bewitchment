@@ -12,8 +12,8 @@
         "items": [
           {
             "type": "forge:ore_dict",
-			"ore": "ingotColdIron",
-			"count": {
+            "ore": "ingotColdIron",
+            "count": {
               "min": 9
             }
           }

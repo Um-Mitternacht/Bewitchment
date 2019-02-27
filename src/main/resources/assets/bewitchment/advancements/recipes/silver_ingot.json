@@ -12,8 +12,8 @@
         "items": [
           {
             "type": "forge:ore_dict",
-			"ore": "nuggetSilver",
-			"count": {
+            "ore": "nuggetSilver",
+            "count": {
               "min": 9
             }
           }
