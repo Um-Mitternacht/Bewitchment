@@ -42,7 +42,7 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	public void register(IModRegistry registry) {
 		registry.handleRecipes(AdapterIRitual.class, new RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
 		registry.addRecipes(AdapterIRitual.REGISTRY.getValuesCollection().stream()
-				.sorted(Comparator.comparingInt(air -> (air.getInput().size()/3) + (air.getCircles() & 3)))
+				.sorted(Comparator.comparingInt(air -> (air.getInput().size() / 3) + (air.getCircles() & 3)))
 				.collect(Collectors.toList()), RitualCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.ritual_chalk, 1, EnumGlyphType.GOLDEN.ordinal()), RitualCategory.UID);
 
