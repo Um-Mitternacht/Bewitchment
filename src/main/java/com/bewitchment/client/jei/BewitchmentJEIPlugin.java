@@ -21,19 +21,11 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.item.ItemStack;
 
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 @JEIPlugin
 public class BewitchmentJEIPlugin implements IModPlugin {
-	protected static int compareRituals(AdapterIRitual a, AdapterIRitual b) {
-		if (a == b)
-			return 0;
-		int av = a.getInput().size() / 3;
-		int bv = b.getInput().size() / 3;
-		av += a.getCircles() & 3;
-		bv += b.getCircles() & 3;
-		return av > bv ? 1 : -1;
-	}
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -49,7 +41,9 @@ public class BewitchmentJEIPlugin implements IModPlugin {
 	@Override
 	public void register(IModRegistry registry) {
 		registry.handleRecipes(AdapterIRitual.class, new RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
-		registry.addRecipes(AdapterIRitual.REGISTRY.getValuesCollection().stream().sorted(BewitchmentJEIPlugin::compareRituals).collect(Collectors.toList()), RitualCategory.UID);
+		registry.addRecipes(AdapterIRitual.REGISTRY.getValuesCollection().stream()
+				.sorted(Comparator.comparingInt(air -> (air.getInput().size()/3) + (air.getCircles() & 3)))
+				.collect(Collectors.toList()), RitualCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.ritual_chalk, 1, EnumGlyphType.GOLDEN.ordinal()), RitualCategory.UID);
 
 		registry.handleRecipes(SpinningThreadRecipe.class, i -> new LoomWrapper(i), LoomCategory.UID);

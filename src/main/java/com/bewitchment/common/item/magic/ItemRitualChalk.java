@@ -32,6 +32,9 @@ public class ItemRitualChalk extends ItemMod {
 	@Override
 	public String getTranslationKey(ItemStack stack) {
 		return super.getTranslationKey(stack) + "_" + EnumGlyphType.values()[stack.getMetadata()].name().toLowerCase();
+		if (stack.getMetadata() < 0 || stack.getMetadata() > EnumGlyphType.values().length) {
+			return super.getTranslationKey();
+		}
 	}
 
 	@Override
