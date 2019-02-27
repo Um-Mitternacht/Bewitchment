@@ -11,7 +11,7 @@ public class CauldronLeatherArmorDyeRemovalRecipe extends CauldronItemCraftingRe
 	ItemStack result;
 
 	public CauldronLeatherArmorDyeRemovalRecipe(Fluid fluid, int fluidAmount, ItemStack output, ItemStack ingredient) {
-		super(fluid, fluidAmount, output, new Ingredient[] {Ingredient.fromStacks(ingredient)});
+		super(fluid, fluidAmount, output, new Ingredient[]{Ingredient.fromStacks(ingredient)});
 		result = output;
 	}
 
@@ -26,7 +26,7 @@ public class CauldronLeatherArmorDyeRemovalRecipe extends CauldronItemCraftingRe
 		}
 		return ingredients.get(0);
 	}
-	
+
 	@Override
 	public ItemStack getItemResult() {
 		return result.copy();
