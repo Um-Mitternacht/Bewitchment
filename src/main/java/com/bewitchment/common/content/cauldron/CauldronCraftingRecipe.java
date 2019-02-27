@@ -3,6 +3,7 @@ package com.bewitchment.common.content.cauldron;
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -105,6 +106,10 @@ public abstract class CauldronCraftingRecipe {
 	public abstract boolean hasFluidOutput();
 
 	public abstract ItemStack getItemResult();
+
+	public ItemStack getItemResult(NonNullList<ItemStack> ingredients) {
+		return getItemResult();
+	}
 
 	public abstract FluidStack getFluidResult();
 
