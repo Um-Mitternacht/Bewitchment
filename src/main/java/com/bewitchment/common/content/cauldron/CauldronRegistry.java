@@ -27,6 +27,7 @@ import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -69,6 +70,10 @@ public class CauldronRegistry {
 
 	public static void registerCauldronItemCrafting(Fluid fluid, int fluidAmount, ItemStack output, Ingredient... ingredients) {
 		CRAFTING_REGISTRY.add(new CauldronItemCraftingRecipe(fluid, fluidAmount, output, ingredients));
+	}
+
+	public static void registerCauldronLeatherArmorDyeRemoval(Fluid fluid, ItemStack output, ItemStack ingredient) {
+		CRAFTING_REGISTRY.add(new CauldronLeatherArmorDyeRemovalRecipe(fluid, Fluid.BUCKET_VOLUME / 4, output, ingredient));
 	}
 
 	public static void registerCauldronFluidCrafting(Fluid fluid, FluidStack output, Ingredient... ingredients) {
@@ -225,10 +230,10 @@ public class CauldronRegistry {
 		}
 		//Leather armor dye removal
 		//FIXME: Probably does not respect damage values, please fix
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_HELMET, 1, 0)));
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_CHESTPLATE, 1, 0)));
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS, 1, 0), Ingredient.fromStacks(new ItemStack(Items.LEATHER_LEGGINGS, 1, 0)));
+		registerCauldronLeatherArmorDyeRemoval(FluidRegistry.WATER, new ItemStack(Items.LEATHER_HELMET, 1, 0), new ItemStack(Items.LEATHER_HELMET, 1, OreDictionary.WILDCARD_VALUE));
+		registerCauldronLeatherArmorDyeRemoval(FluidRegistry.WATER, new ItemStack(Items.LEATHER_CHESTPLATE, 1, 0), new ItemStack(Items.LEATHER_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE));
+		registerCauldronLeatherArmorDyeRemoval(FluidRegistry.WATER, new ItemStack(Items.LEATHER_LEGGINGS, 1, 0), new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE));
+		registerCauldronLeatherArmorDyeRemoval(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS, 1, 0), new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE));
 
 		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
 		registerCauldronFluidCrafting(FluidRegistry.WATER, new FluidStack(Fluids.MUNDANE_OIL, Fluid.BUCKET_VOLUME), Ingredient.fromStacks(new ItemStack(Items.POTATO)), Ingredient.fromStacks(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)));

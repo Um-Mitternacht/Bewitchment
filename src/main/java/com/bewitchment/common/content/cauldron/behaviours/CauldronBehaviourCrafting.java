@@ -88,7 +88,7 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 				tank.drain(result.getRequiredFluidAmount(), true);
 
 				if (result.hasItemOutput()) {
-					EntityItem e = new EntityItem(this.cauldron.getWorld(), this.cauldron.getPos().getX() + 0.5, this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.5, result.getItemResult());
+					EntityItem e = new EntityItem(this.cauldron.getWorld(), this.cauldron.getPos().getX() + 0.5, this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.5, result.getItemResult(this.cauldron.getInputs()));
 					e.addTag("cauldron_drop");
 					e.motionY = 0.06;
 					e.motionX = 0;
