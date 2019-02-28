@@ -65,26 +65,22 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount >= potionAmountUsed) {
 					if (heldItem == ModItems.empty_brew_drink) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_drink)));
-						if(!player.isCreative())
-						{
+						if (!player.isCreative()) {
 							handStack.shrink(1);
 						}
 					} else if (heldItem == ModItems.empty_brew_linger) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_linger)));
-						if(!player.isCreative())
-						{
+						if (!player.isCreative()) {
 							handStack.shrink(1);
 						}
 					} else if (heldItem == ModItems.empty_brew_splash) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_splash)));
-						if(!player.isCreative())
-						{
+						if (!player.isCreative()) {
 							handStack.shrink(1);
 						}
 					} else if (heldItem == Items.ARROW) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_arrow)));
-						if(!player.isCreative())
-						{
+						if (!player.isCreative()) {
 							handStack.shrink(1);
 						}
 					}
