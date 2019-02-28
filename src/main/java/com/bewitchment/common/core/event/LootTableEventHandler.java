@@ -47,6 +47,9 @@ public class LootTableEventHandler {
 				evt.getName().equals(LootTableList.CHESTS_VILLAGE_BLACKSMITH) ||
 				evt.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE) ||
 				evt.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID) ||
+				evt.getName().equals(LootTableList.CHESTS_IGLOO_CHEST) ||
+				evt.getName().equals(LootTableList.CHESTS_END_CITY_TREASURE) ||
+				evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY) ||
 				evt.getName().equals(LootTableList.CHESTS_WOODLAND_MANSION)
 				) { //Not sure if this is messy or better looking than the alternative.
 			evt.getTable().addPool(new LootPool(new LootEntry[]{
