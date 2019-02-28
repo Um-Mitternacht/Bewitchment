@@ -81,10 +81,6 @@ public class TileEntityCauldron extends ModTileEntity implements ITickable {
 			}
 		}
 
-		if (!playerIn.isCreative() && this.tank.getFluidAmount() >= 333 && this.ingredients.size() > 0 && this.currentBehaviour instanceof CauldronBehaviourBrewing && ((heldItem.getItem() == ModItems.empty_brew_drink) || (heldItem.getItem() == ModItems.empty_brew_linger) || (heldItem.getItem() == ModItems.empty_brew_splash))) {
-			heldItem.shrink(1);
-		}
-
 		if (heldItem.getItem() == Items.NAME_TAG) {
 			String oldname = this.name;
 			this.name = heldItem.getDisplayName();

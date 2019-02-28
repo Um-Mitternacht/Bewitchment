@@ -51,6 +51,7 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 	public void playerInteract(EntityPlayer player, EnumHand hand) {
 		if (!player.world.isRemote) {
 			Item heldItem = player.getHeldItem(hand).getItem();
+			ItemStack handStack = player.getHeldItem(hand);
 			int potionAmountUsed = 500;
 
 			if (heldItem == Items.ARROW) {
@@ -64,12 +65,28 @@ public class CauldronBehaviourBrewing implements ICauldronBehaviour {
 				if (cauldron.getFluid().isPresent() && cauldron.getFluid().get().amount >= potionAmountUsed) {
 					if (heldItem == ModItems.empty_brew_drink) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_drink)));
+						if(!player.isCreative())
+						{
+							handStack.shrink(1);
+						}
 					} else if (heldItem == ModItems.empty_brew_linger) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_linger)));
+						if(!player.isCreative())
+						{
+							handStack.shrink(1);
+						}
 					} else if (heldItem == ModItems.empty_brew_splash) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_phial_splash)));
+						if(!player.isCreative())
+						{
+							handStack.shrink(1);
+						}
 					} else if (heldItem == Items.ARROW) {
 						TileEntityCauldron.giveItemToPlayer(player, getBrewStackFor(new ItemStack(ModItems.brew_arrow)));
+						if(!player.isCreative())
+						{
+							handStack.shrink(1);
+						}
 					}
 					cauldron.setTankLock(true);
 					cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).drain(potionAmountUsed, true);
