@@ -236,6 +236,7 @@ public class CauldronRegistry {
 		registerCauldronLeatherArmorDyeRemoval(FluidRegistry.WATER, new ItemStack(Items.LEATHER_BOOTS, 1, 0), new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE));
 
 		registerCauldronMixedCrafting(FluidRegistry.WATER, new FluidStack(Fluids.HONEY, Fluid.BUCKET_VOLUME), new ItemStack(ModItems.empty_honeycomb), Ingredient.fromItem(ModItems.honeycomb));
+		registerCauldronItemCrafting(Fluids.HONEY, new ItemStack(ModItems.honey, 4, 0), Ingredient.fromStacks(new ItemStack(Items.SUGAR)));
 		registerCauldronFluidCrafting(FluidRegistry.WATER, new FluidStack(Fluids.MUNDANE_OIL, Fluid.BUCKET_VOLUME), Ingredient.fromStacks(new ItemStack(Items.POTATO)), Ingredient.fromStacks(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)));
 
 		registerVanillaBrewEffect(MobEffects.ABSORPTION, Ingredient.fromStacks(new ItemStack(Items.GOLDEN_APPLE, 1, 0)), 600);
