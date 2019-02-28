@@ -12,6 +12,7 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public final class Fluids {
 			fluid.setBlock(block);
 			if (useBucket) FluidRegistry.addBucketForFluid(fluid);
 			Bewitchment.proxy.registerTexture(fluid);
-			MOD_FLUID_BLOCKS.add(block);
+			ForgeRegistries.BLOCKS.register(block);
 			MOD_FLUIDS.add(fluid);
 		}
 		return FluidRegistry.getFluid(name);
