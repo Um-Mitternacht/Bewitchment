@@ -42,6 +42,11 @@
       "type": "spotlight",
       "item": "bewitchment:pentacle",
       "text": "Using the ignis incantation, and throwing dimensional sand into the resultant fire, one can teleport through a system of various cauldrons. However, one must have named the desired cauldron first, and then say it's name."
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:wood_ash",
+      "text": "To clean out a cauldron, simply use wood ash."
     }
   ]
 }
