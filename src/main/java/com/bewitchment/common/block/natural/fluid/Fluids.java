@@ -27,7 +27,7 @@ public final class Fluids {
 	public static final List<Fluid> MOD_FLUIDS = new ArrayList<>();
 
 	public static final Fluid HONEY = registerFluid("honey", Material.WATER, 0, 10, 1500, 8000, true, false);
-	public static final Fluid MUNDANE_OIL = registerFluid("oil_mundane", Material.WATER, 0, 0, 800, 4000, true, true);
+	public static final Fluid MUNDANE_OIL = registerFluid("oil_mundane", Material.WATER, 0, 0, 800, 4000, true, false);
 
 	private static Fluid registerFluid(String name, Material mat, int temperature, int luminosity, int density, int viscosity, boolean useBucket, boolean useFlowTexture) {
 		if (!FluidRegistry.isFluidRegistered(name)) {

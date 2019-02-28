@@ -124,6 +124,7 @@ public class Bewitchment {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(new Fluids.Handler());
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new LootTableEventHandler());
 		ApiInstance.initAPI();
@@ -161,7 +162,6 @@ public class Bewitchment {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		MinecraftForge.EVENT_BUS.register(new Fluids.Handler());
 		ModPotions.init();
 		SimpleCapability.init(BarkCapability.class, LibMod.MOD_ID, BarkCapability.CAPABILITY, BarkCapability.DEFAULT_INSTANCE);
 		SimpleCapability.init(CapabilityWerewolfStatus.class, LibMod.MOD_ID, CapabilityWerewolfStatus.CAPABILITY, CapabilityWerewolfStatus.DEFAULT_INSTANCE);
