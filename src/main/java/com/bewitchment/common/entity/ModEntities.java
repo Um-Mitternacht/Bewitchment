@@ -135,19 +135,19 @@ public final class ModEntities {
 		Biome[] biomesBlackDog = new Biome[validBlackDog.size()];
 
 		//Animals
-		EntityRegistry.addSpawn(EntityOwl.class, 8, 1, 1, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
-		EntityRegistry.addSpawn(EntitySnake.class, 5, 1, 1, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
-		EntityRegistry.addSpawn(EntityToad.class, 2, 1, 1, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
-		EntityRegistry.addSpawn(EntityRaven.class, 3, 1, 1, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
-		EntityRegistry.addSpawn(EntityBlindworm.class, 5, 1, 1, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
-		EntityRegistry.addSpawn(EntityNewt.class, 2, 1, 1, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
-		EntityRegistry.addSpawn(EntityLizard.class, 4, 1, 1, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
+		EntityRegistry.addSpawn(EntityOwl.class, 20, 1, 4, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
+		EntityRegistry.addSpawn(EntitySnake.class, 20, 1, 4, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
+		EntityRegistry.addSpawn(EntityToad.class, 20, 1, 4, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
+		EntityRegistry.addSpawn(EntityRaven.class, 20, 1, 4, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
+		EntityRegistry.addSpawn(EntityBlindworm.class, 20, 1, 4, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
+		EntityRegistry.addSpawn(EntityNewt.class, 20, 1, 4, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
+		EntityRegistry.addSpawn(EntityLizard.class, 20, 1, 4, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
 		//Demons
-		EntityRegistry.addSpawn(EntityUran.class, 3, 1, 1, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
+		EntityRegistry.addSpawn(EntityUran.class, 6, 1, 4, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
 		EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
 		EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 0, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
 		//Ghosts
-		EntityRegistry.addSpawn(EntityBlackDog.class, 2, 0, 2, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
+		EntityRegistry.addSpawn(EntityBlackDog.class, 20, 0, 2, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
 	}
 
 	private static ResourceLocation getResource(String name) {
