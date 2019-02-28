@@ -505,10 +505,12 @@ public final class ModItems {
 		OreDictionary.registerOre("cropSpiceleaf", new ItemStack(ModItems.mint));
 		OreDictionary.registerOre("listAllgreenveggie", new ItemStack(ModItems.mint));
 		OreDictionary.registerOre("cropThistle", new ItemStack(ModItems.thistle));
+		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.thistle));
 		OreDictionary.registerOre("cropGarlic", new ItemStack(ModItems.garlic));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.garlic));
 		OreDictionary.registerOre("cropAconitum", new ItemStack(ModItems.aconitum));
 		OreDictionary.registerOre("cropWhiteSage", new ItemStack(ModItems.white_sage));
+		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.white_sage));
 		OreDictionary.registerOre("cropTulsi", new ItemStack(ModItems.tulsi));
 		OreDictionary.registerOre("listAllherb", new ItemStack(ModItems.tulsi));
 		OreDictionary.registerOre("cropKenaf", new ItemStack(ModItems.kenaf));
