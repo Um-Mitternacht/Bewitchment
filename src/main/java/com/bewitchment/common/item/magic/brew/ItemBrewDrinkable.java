@@ -38,7 +38,8 @@ public class ItemBrewDrinkable extends ItemBrew {
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		BrewData.fromStack(stack).applyToEntity(entityLiving, null, null, ApplicationType.GENERAL);
-		ItemStack res = ItemStack.EMPTY;
+		ItemStack res = stack.copy();
+		res.shrink(1);
 		if ((entityLiving instanceof EntityPlayer)) {
 			if (((EntityPlayer) entityLiving).isCreative()) {
 				res = stack;

@@ -81,13 +81,15 @@ public class BlockMoonbell extends BlockModFlower implements IInfusionStabiliser
 
 	@Override
 	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
-		if (player == null) return world.getBlockState(pos).getValue(PLACED);
-		return super.canHarvestBlock(world, pos, player) && ((!player.world.isDaytime() && player.world.getMoonPhase() == 4) || world.getBlockState(pos).getValue(PLACED));
+		if (player == null) {
+			return world.getBlockState(pos).getValue(PLACED);
+		}
+		return super.canHarvestBlock(world, pos, player) && ((!player.world.isDaytime() && (player.world.provider.getMoonPhase(player.world.getWorldTime()) == 4)) || world.getBlockState(pos).getValue(PLACED));
 	}
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
-		if (!state.getValue(PLACED) && (world.isDaytime()) /*|| world.getMoonPhase() != 4)*/) {
+		if (!state.getValue(PLACED) && (world.isDaytime() || (world.provider.getMoonPhase(world.getWorldTime()) != 4))) {
 			world.setBlockToAir(pos);
 			for (int i = 0; i < 7; i++) {
 				world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, pos.getX() + r.nextDouble(), pos.getY() + r.nextDouble(), pos.getZ() + r.nextDouble(), r.nextGaussian() * 0.01, r.nextDouble() * 0.01, r.nextGaussian() * 0.01);

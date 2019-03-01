@@ -32,7 +32,7 @@ public class ItemBrew extends ItemMod {
 
 	public ItemBrew(String id) {
 		super(id);
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(16);
 		this.setHasSubtypes(true);
 		this.setCreativeTab(ModCreativeTabs.BREW_CREATIVE_TAB);
 	}

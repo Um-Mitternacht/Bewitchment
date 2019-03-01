@@ -11,6 +11,7 @@ import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -23,6 +24,8 @@ import net.minecraftforge.oredict.OreIngredient;
 import java.util.Arrays;
 
 public class ModBrewModifiers {
+
+	public static final int[] dyeColors = {16383998, 16351261, 13061821, 3847130, 16701501, 8439583, 15961002, 4673362, 10329495, 1481884, 8991416, 3949738, 8606770, 6192150, 11546150, 1908001};
 
 	public static void init() {
 
@@ -147,7 +150,7 @@ public class ModBrewModifiers {
 			public ModifierResult acceptIngredient(IBrewEffect brew, ItemStack stack, IBrewModifierList currentModifiers) {
 				if (DyeUtils.isDye(stack)) {
 					int currentColor = currentModifiers.getLevel(this).orElse(TileEntityCauldron.DEFAULT_COLOR);
-					int newColor = DyeUtils.colorFromStack(stack).map(e -> e.getColorValue()).orElse(currentColor);
+					int newColor = DyeUtils.colorFromStack(stack).map(e -> getDyeColor(e)).orElse(currentColor);
 					return new ModifierResult(ColorHelper.blendColor(currentColor, newColor, 0.5f), ResultType.SUCCESS);
 				}
 				return new ModifierResult(ResultType.PASS);
@@ -164,5 +167,9 @@ public class ModBrewModifiers {
 				return I18n.format("modifier.bewitchment.color", String.format("%06X", lvl));
 			}
 		};
+	}
+
+	public static int getDyeColor(EnumDyeColor dye) {
+		return dyeColors[dye.ordinal()];
 	}
 }

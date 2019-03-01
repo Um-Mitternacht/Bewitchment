@@ -25,7 +25,11 @@ public class ItemBrewThrowable extends ItemBrew {
 			brew.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.5F, 1.0F);
 			worldIn.spawnEntity(brew);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.isCreative() ? playerIn.getHeldItem(handIn) : ItemStack.EMPTY);
+		ItemStack res = playerIn.getHeldItem(handIn);
+		if (!playerIn.isCreative()) {
+			res.shrink(1);
+		}
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, res);
 	}
 
 }
