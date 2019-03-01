@@ -216,9 +216,9 @@ public class CauldronRegistry {
 		// Arcane recipes
 
 		registerCauldronItemCrafting(Fluids.HONEY, Fluid.BUCKET_VOLUME, new ItemStack(ModBlocks.goblet, 1, 1), LibIngredients.redstone, LibIngredients.redstone, LibIngredients.redstone, LibIngredients.fumeCloudyOil, LibIngredients.emptyGoblet, LibIngredients.ghastTear);
-		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 2, 3), normalRitualChalk, normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);
-		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 2, 2), normalRitualChalk, normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand, fumeHeavenlyWind, fumeHeavenlyWind);
-		registerCauldronItemCrafting(Fluids.HONEY, new ItemStack(ModItems.ritual_chalk, 2, 1), normalRitualChalk, normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
+		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModItems.ritual_chalk, 1, 3), normalRitualChalk, blazePowder, blazePowder, blazePowder, blazePowder, fumeFieryBreeze, fumeFieryBreeze);
+		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModItems.ritual_chalk, 1, 2), normalRitualChalk, dimensionalSand, dimensionalSand, dimensionalSand, dimensionalSand, fumeHeavenlyWind, fumeHeavenlyWind);
+		registerCauldronItemCrafting(Fluids.HONEY, new ItemStack(ModItems.ritual_chalk, 1, 1), normalRitualChalk, goldNugget, goldNugget, goldNugget, goldNugget, fumeCleansingAura, fumeCleansingAura);
 		registerCauldronItemCrafting(FluidRegistry.WATER, new ItemStack(ModBlocks.graveyard_dirt, 8, 0), ectoplasm, ectoplasm, graveyardDust, graveyardDust, wormwood, wormwood, dirt, dirt, dirt, dirt);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.ember_grass, 2, 0), blazePowder, grass, wormwood, fumeFieryBreeze);
 		registerCauldronItemCrafting(Fluids.MUNDANE_OIL, new ItemStack(ModBlocks.torchwood, 2, 0), glowstoneDust, fumeBottledMagic, anyLog, anyLeaf);
