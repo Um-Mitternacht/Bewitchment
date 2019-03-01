@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.misc;
 
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.integration.optifine.Optifine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,6 +27,9 @@ public class BlockCandleSmall extends BlockCandle {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if (Optifine.isLoaded()) {
+			return SMALL_BOX;
+		}
 		return SMALL_BOX.offset(state.getOffset(source, pos));
 	}
 

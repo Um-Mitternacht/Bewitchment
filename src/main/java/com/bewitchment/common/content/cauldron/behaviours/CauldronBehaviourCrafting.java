@@ -3,12 +3,15 @@ package com.bewitchment.common.content.cauldron.behaviours;
 import com.bewitchment.api.mp.IMagicPowerConsumer;
 import com.bewitchment.common.content.cauldron.CauldronCraftingRecipe;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
+import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.tile.tiles.TileEntityCauldron;
 import com.bewitchment.common.tile.util.CauldronFluidTank;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import java.awt.*;
@@ -82,19 +85,31 @@ public class CauldronBehaviourCrafting implements ICauldronBehaviour {
 			}
 
 			if (this.validRecipe && (this.craftTime >= MAX_CRAFT_TIME)) {
-				CauldronCraftingRecipe result = CauldronRegistry.getCraftingResult(this.cauldron.getFluid().get(), this.cauldron.getInputs()).get();
+				CauldronCraftingRecipe result = CauldronRegistry.getCraftingResult(this.cauldron.getFluid().orElse(new FluidStack(FluidRegistry.WATER, 0)), this.cauldron.getInputs()).orElse(null);
+				if (result == null) {
+					Log.w("This shouldn't happen... Please report to Bewitchment\nCauldronBehaviourCrafting - update()\nRecipe output is null\nCauldron status:\ncurrent setting: " + this.cauldron.getCurrentBehaviour().getID() + "\nlow energy: " + this.lowEnergy + "\nvalid recipe: " + this.validRecipe + "\ncraft time: " + this.craftTime);
+					Log.w("Item inside:");
+					for (ItemStack stackInside : this.cauldron.getInputs()) {
+						Log.w(stackInside);
+					}
+					this.cauldron.setBehaviour(this.cauldron.getDefaultBehaviours().FAILING);
+					this.lowEnergy = false;
+					this.validRecipe = false;
+					this.craftTime = 0;
+					this.cauldron.markDirty();
+					return;
+				}
 				this.cauldron.setTankLock(true);
 				CauldronFluidTank tank = (CauldronFluidTank) this.cauldron.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 				tank.drain(result.getRequiredFluidAmount(), true);
 
 				if (result.hasItemOutput()) {
-					EntityItem e = new EntityItem(this.cauldron.getWorld(), this.cauldron.getPos().getX() + 0.5, this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.5, result.getItemResult(this.cauldron.getInputs()));
+					EntityItem e = new EntityItem(this.cauldron.getWorld(), this.cauldron.getPos().getX() + 0.5, this.cauldron.getPos().getY() + 0.5, this.cauldron.getPos().getZ() + 0.5, result.getItemResult());
 					e.addTag("cauldron_drop");
 					e.motionY = 0.06;
 					e.motionX = 0;
 					e.motionZ = 0;
 					this.cauldron.getWorld().spawnEntity(e);
-
 				}
 
 				if (result.hasFluidOutput()) {

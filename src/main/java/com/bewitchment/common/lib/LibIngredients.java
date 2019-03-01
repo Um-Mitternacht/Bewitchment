@@ -135,4 +135,10 @@ public class LibIngredients {
 	public static Ingredient anyHerb = new OreIngredient("listAllherb");
 	public static Ingredient anySpice = new OreIngredient("listAllspice");
 
+	static {
+		if (ModItems.fume == null) {
+			throw new IllegalStateException("The class LibIngredients is being loaded too early!");
+		}
+	}
+
 }

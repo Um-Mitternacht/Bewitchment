@@ -4,6 +4,7 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.block.BlockMod;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.integration.optifine.Optifine;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -176,6 +177,9 @@ public abstract class BlockCandle extends BlockMod implements IInfusionStabilise
 
 	@Override
 	public EnumOffsetType getOffsetType() {
+		if (Optifine.isLoaded()) {
+			return EnumOffsetType.NONE;
+		}
 		return EnumOffsetType.XZ;
 	}
 
