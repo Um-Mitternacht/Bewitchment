@@ -52,7 +52,12 @@ public class ItemBoline extends ItemShears implements IModelRegister {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("biome_id")) {
-			tooltip.add(Biome.getBiome(stack.getTagCompound().getInteger("biome_id")).getBiomeName());
+			Biome stored = Biome.getBiome(stack.getTagCompound().getInteger("biome_id"));
+			if (stored == null) {
+				stack.getTagCompound().removeTag("biome_id");
+			} else {
+				tooltip.add(stored.getBiomeName());
+			}
 		}
 	}
 
