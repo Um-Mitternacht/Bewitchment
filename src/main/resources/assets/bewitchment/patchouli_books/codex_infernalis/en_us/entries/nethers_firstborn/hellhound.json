@@ -5,15 +5,18 @@
   "pages": [
     {
       "type": "text",
-      "text": "Slightly higher ranking than Uranids, these demons, with the appearance of canids, are fairly common. And very aggressive. Their bites are strong enough to go through bone, and some say they inflict a terrible poison, and are immune to all poisons."
+      "text": "Slightly higher ranking than Serpents, these demons, with the appearance of canids, are fairly common. And very aggressive. Their bites are strong enough to go through bone, and some say they inflict a terrible poison, and are immune to all poisons."
     },
     {
-      "type": "entity",
-      "name": "Hellhound",
-      "entity": "bewitchment:hellhound",
-      "scale": 0.75,
-      "rotate": true,
-      "text": "Diabolic Beast"
+      "type": "image",
+      "image": "bewitchment:textures/gui/books/artwork/hellhound.png",
+      "width": 64,
+      "height": 64,
+      "texture_width": 64,
+      "texture_height": 64,
+      "x": 27,
+      "y": 45,
+      "scale": 1
     },
     {
       "type": "ritual",

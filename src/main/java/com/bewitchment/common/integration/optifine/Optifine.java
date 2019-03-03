@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Loader;
 
 /**
  * Created by Joseph on 3/1/2019.
- *
+ * <p>
  * Original code created by Zabi94
  */
 public class Optifine {
