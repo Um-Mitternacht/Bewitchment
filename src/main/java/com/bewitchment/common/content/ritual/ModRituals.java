@@ -50,7 +50,7 @@ public class ModRituals {
 				0 //Cost per tick
 		);
 
-		day = new RitualHighMoon(
+		day = new RitualSolarGlory(
 				rl("solar_glory"), //Reg name
 				of( //Recipe
 						LibIngredients.goldIngot,
