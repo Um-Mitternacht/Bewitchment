@@ -9,8 +9,11 @@
     },
     {
       "type": "image",
-      "images": ["bewitchment:textures/gui/books/codex_infernalis/hellhound.png"],
-	  "border": "true"
+      "images": [
+        "bewitchment:textures/gui/books/codex_infernalis/hellhound.png"
+      ],
+      "border": "false",
+      "text": "A sketch of one of these horrid fiends."
     },
     {
       "type": "ritual",
