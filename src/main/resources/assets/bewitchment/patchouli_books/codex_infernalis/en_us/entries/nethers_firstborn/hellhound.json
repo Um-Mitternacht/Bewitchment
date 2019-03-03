@@ -9,14 +9,7 @@
     },
     {
       "type": "image",
-      "image": "bewitchment:textures/gui/books/artwork/hellhound.png",
-      "width": 64,
-      "height": 64,
-      "texture_width": 64,
-      "texture_height": 64,
-      "x": 27,
-      "y": 45,
-      "scale": 1
+      "images": ["bewitchment:textures/gui/books/codex_infernalis/hellhound.png"]
     },
     {
       "type": "ritual",
