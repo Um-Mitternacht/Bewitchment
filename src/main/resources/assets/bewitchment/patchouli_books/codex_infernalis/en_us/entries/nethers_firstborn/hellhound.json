@@ -10,7 +10,7 @@
     {
       "type": "image",
       "images": [
-        "bewitchment:textures/gui/books/codex_infernalis/hellhound.png"
+        "bewitchment:textures/gui/books/codex_infernalis/hellhound_tiny.png"
       ],
       "border": "false",
       "text": "A sketch of one of these horrid fiends."
