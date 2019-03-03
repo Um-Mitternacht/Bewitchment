@@ -1,10 +1,14 @@
 package com.bewitchment.common.content.ritual.rituals;
 
+import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.ritual.RitualImpl;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -21,12 +25,17 @@ public class RitualSolarGlory extends RitualImpl {
 
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound tag, BlockPos effectivePosition, int covenSize) {
-		if (!world.isRemote) world.setWorldTime(6000);
+		if (!world.isRemote) {
+			world.playerEntities.stream()
+					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType()== DefaultTransformations.VAMPIRE)
+					.forEach(p -> p.addPotionEffect(new PotionEffect(ModPotions.sun_ward, 30*20)));
+			world.setWorldTime(6000);
+		}
 	}
 
 	@Override
 	public boolean isValid(EntityPlayer player, World world, BlockPos pos, List<ItemStack> recipe, BlockPos effectivePosition, int covenSize) {
-		return !world.isDaytime();
+		return !world.isDaytime() && player.getCapability(CapabilityTransformation.CAPABILITY, null).getType() != DefaultTransformations.VAMPIRE;
 	}
 
 	@Override
