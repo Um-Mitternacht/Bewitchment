@@ -1,10 +1,14 @@
 package com.bewitchment.common.content.ritual.rituals;
 
+import com.bewitchment.api.transformation.DefaultTransformations;
 import com.bewitchment.common.content.ritual.RitualImpl;
+import com.bewitchment.common.content.transformation.CapabilityTransformation;
+import com.bewitchment.common.potion.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +25,13 @@ public class RitualSolarGlory extends RitualImpl {
 
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound tag, BlockPos effectivePosition, int covenSize) {
-		if (!world.isRemote) world.setWorldTime(6000);
+		if (!world.isRemote) {
+			world.playerEntities.stream()
+					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE)
+					.filter(p -> p != player)
+					.forEach(p -> p.addPotionEffect(new PotionEffect(ModPotions.sun_ward, 20 * 60 * 5)));
+			world.setWorldTime(6000);
+		}
 	}
 
 	@Override
