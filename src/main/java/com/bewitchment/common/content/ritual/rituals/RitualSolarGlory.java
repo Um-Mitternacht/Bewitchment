@@ -27,8 +27,8 @@ public class RitualSolarGlory extends RitualImpl {
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound tag, BlockPos effectivePosition, int covenSize) {
 		if (!world.isRemote) {
 			world.playerEntities.stream()
-					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType()== DefaultTransformations.VAMPIRE)
-					.forEach(p -> p.addPotionEffect(new PotionEffect(ModPotions.sun_ward, 30*20)));
+					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE)
+					.forEach(p -> p.addPotionEffect(new PotionEffect(ModPotions.sun_ward, 30 * 20)));
 			world.setWorldTime(6000);
 		}
 	}
