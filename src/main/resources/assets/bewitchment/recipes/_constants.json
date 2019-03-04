@@ -1,0 +1,43 @@
+[
+  {
+    "name": "GENERIC_WAX",
+    "ingredient": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialBeeswax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialPressedWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "itemBeeswax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "wax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "tallow"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "clumpWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "beeswax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "itemWax"
+      }
+    ]
+  }
+]
