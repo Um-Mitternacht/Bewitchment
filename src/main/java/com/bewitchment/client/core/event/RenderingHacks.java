@@ -3,7 +3,6 @@ package com.bewitchment.client.core.event;
 import com.bewitchment.common.item.block.ItemBlockRevealingLantern;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.Tuple;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
