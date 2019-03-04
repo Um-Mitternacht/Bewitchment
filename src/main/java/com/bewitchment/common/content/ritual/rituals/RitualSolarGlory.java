@@ -30,7 +30,6 @@ public class RitualSolarGlory extends RitualImpl {
 					.filter(p -> p.getCapability(CapabilityTransformation.CAPABILITY, null).getType() == DefaultTransformations.VAMPIRE)
 					.forEach(p -> p.addPotionEffect(new PotionEffect(ModPotions.sun_ward, 30 * 20)));
 			world.setWorldTime(world.getWorldTime() + ((24000 + 6000) - (world.getWorldTime() % 24000)) % 24000);
-			//world.setWorldTime(6000);
 		}
 	}
 
