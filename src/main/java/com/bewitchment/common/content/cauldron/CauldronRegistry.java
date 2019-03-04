@@ -274,7 +274,7 @@ public class CauldronRegistry {
 		registerCombinedBrewEffect(ModPotions.cursed_leaping, Ingredient.fromItem(Items.CHORUS_FRUIT));
 		registerCombinedBrewEffect(ModPotions.demons_bane, Ingredient.fromItem(ModItems.hellebore));
 		registerCombinedBrewEffect(ModPotions.projectile_resistance, Ingredient.fromItem(ModItems.silver_scales));
-		registerCombinedBrewEffect(ModPotions.disrobing, new IngredientMultiOreDict("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax"));
+		registerCombinedBrewEffect(ModPotions.disrobing, LibIngredients.wax);
 		registerCombinedBrewEffect(ModPotions.ender_inhibition, Ingredient.fromItem(ModItems.dimensional_sand));
 		registerCombinedBrewEffect(ModPotions.extinguish_fires, Ingredient.fromItem(ModItems.seed_mint));
 		registerCombinedBrewEffect(ModPotions.fertilize, Ingredient.fromItem(ModItems.thistle)); // TODO make it bonemeal, but it will collide with the color modifier

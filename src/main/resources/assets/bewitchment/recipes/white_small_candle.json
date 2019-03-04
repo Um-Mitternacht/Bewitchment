@@ -10,8 +10,7 @@
       "item": "minecraft:string"
     },
     "T": {
-      "item": "bewitchment:wax",
-      "data": 0
+      "item": "#GENERIC_WAX"
     }
   },
   "result": {
