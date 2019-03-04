@@ -21,7 +21,9 @@ public class RitualHighMoon extends RitualImpl {
 
 	@Override
 	public void onFinish(EntityPlayer player, TileEntity tile, World world, BlockPos pos, NBTTagCompound tag, BlockPos effectivePosition, int covenSize) {
-		if (!world.isRemote) world.setWorldTime(17600);
+		if (!world.isRemote)
+			world.setWorldTime(world.getWorldTime() + ((24000 + 17600) - (world.getWorldTime() % 24000)) % 24000);
+			//world.setWorldTime(17600);
 	}
 
 	@Override
