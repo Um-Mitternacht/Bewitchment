@@ -1,6 +1,5 @@
 package com.bewitchment.common.entity;
 
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
