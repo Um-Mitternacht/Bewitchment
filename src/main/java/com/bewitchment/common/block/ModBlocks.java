@@ -338,6 +338,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("oreAmethyst", new ItemStack(ModBlocks.gem_ore, 1, 7));
 		OreDictionary.registerOre("oreAlexandrite", new ItemStack(ModBlocks.gem_ore, 1, 8));
 		OreDictionary.registerOre("oreSilver", new ItemStack(ModBlocks.silver_ore));
+		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.salt_ore));
 		OreDictionary.registerOre("oreBloodstone", new ItemStack(ModBlocks.gem_ore, 1, 4));
 		OreDictionary.registerOre("oreTourmaline", new ItemStack(ModBlocks.gem_ore, 1, 3));
 		OreDictionary.registerOre("oreMalachite", new ItemStack(ModBlocks.gem_ore, 1, 6));
