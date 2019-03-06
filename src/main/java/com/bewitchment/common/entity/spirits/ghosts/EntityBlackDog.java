@@ -1,6 +1,7 @@
 package com.bewitchment.common.entity.spirits.ghosts;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.entity.LargeEntityAIAttackMelee;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
@@ -74,7 +75,8 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 	protected void initEntityAI() {
 		this.tasks.addTask(0, new EntityAIBreakDoor(this));
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
+		//this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.3D, false));
+		this.tasks.addTask(3, new LargeEntityAIAttackMelee(this, 0.3D, false));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.5D));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
@@ -82,7 +84,8 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityPlayer || e instanceof EntityVillager || e instanceof EntityEvoker || e instanceof EntityVindicator || e instanceof EntityIllusionIllager || e instanceof EntitySpellcasterIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
+		//this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
+		this.tasks.addTask(3, new LargeEntityAIAttackMelee(this, 0.5D, false));
 		this.applyEntityAI();
 	}
 
