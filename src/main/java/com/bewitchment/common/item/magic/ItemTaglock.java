@@ -104,7 +104,7 @@ public class ItemTaglock extends ItemMod {
 
 	private Optional<EntityPlayer> getPlayerFromBed(World world, BlockPos bed, boolean inBed) {
 		return world.playerEntities.stream()
-				.filter(player -> player.bedLocation != null)
+				.filter(player -> player.getBedLocation() != null)
 				.filter(player -> player.getBedLocation().equals(bed))
 				.findAny();
 	}
