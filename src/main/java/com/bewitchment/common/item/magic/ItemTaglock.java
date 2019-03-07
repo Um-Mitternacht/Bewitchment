@@ -92,9 +92,9 @@ public class ItemTaglock extends ItemMod {
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock().isBed(state, world, pos, player)) {
-			Optional<EntityPlayer> victim = getPlayerFromBed(world, pos, state.getValue(BlockBed.OCCUPIED));
-			if (victim.isPresent()) {
-				setVictim(player.getHeldItem(hand), victim.get());
+			EntityPlayer victim = getPlayerFromBed(world, pos, state.getValue(BlockBed.OCCUPIED));
+			if (victim != null) {
+				setVictim(player.getHeldItem(hand), victim);
 				return EnumActionResult.SUCCESS;
 			}
 		}
@@ -102,10 +102,15 @@ public class ItemTaglock extends ItemMod {
 		return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
 	}
 
-	private Optional<EntityPlayer> getPlayerFromBed(World world, BlockPos bed, boolean inBed) {
-		return world.playerEntities.stream()
+	private EntityPlayer getPlayerFromBed(World world, BlockPos bed, boolean inBed) {
+		EntityPlayer result = null;
+
+		Object[] playersForBed = world.playerEntities.stream()
 				.filter(player -> player.getBedLocation() != null)
-				.filter(player -> player.getBedLocation().equals(bed))
-				.findAny();
+				.filter(player -> player.getBedLocation().equals(bed)).toArray();
+		if (playersForBed.length > 0) {
+			result = (EntityPlayer)playersForBed[world.rand.nextInt(playersForBed.length)];
+		}
+		return result;
 	}
 }
