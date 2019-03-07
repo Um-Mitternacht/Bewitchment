@@ -20,7 +20,7 @@ public class RenderingHacks {
 		if (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingLantern
 				|| evt.getEntityPlayer().getHeldItemOffhand().getItem() instanceof ItemBlockRevealingLantern) {
 			EnumHand raised = (evt.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemBlockRevealingLantern)
-								? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+					? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 			saveAndRaise(evt.getEntityPlayer(), raised);
 		}
 	}

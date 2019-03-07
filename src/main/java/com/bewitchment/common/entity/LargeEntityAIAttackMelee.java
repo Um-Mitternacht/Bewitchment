@@ -20,9 +20,8 @@ public class LargeEntityAIAttackMelee extends EntityAIAttackMelee {
 		if (this.attackTick <= 0 && distToEnemySqr <= d0) {
 			// call block raytrace from attacker's eyes, confirm hit if not looking at block
 			RayTraceResult trace = super.attacker.rayTrace(Math.sqrt(distToEnemySqr), 1.0f);
-			if(trace!=null
-					&&trace.typeOfHit==Type.MISS)
-			{
+			if (trace != null
+					&& trace.typeOfHit == Type.MISS) {
 				this.attackTick = 20;
 				this.attacker.swingArm(EnumHand.MAIN_HAND);
 				this.attacker.attackEntityAsMob(enemy);
