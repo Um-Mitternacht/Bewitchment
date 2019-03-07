@@ -52,7 +52,7 @@ public class RitualSummonDemon extends RitualImpl {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				BlockPos pos = effectivePosition.add(world.rand.nextInt(11) - 5, 1, world.rand.nextInt(11) - 5);
 				Entity e;
-				switch (world.rand.nextInt(7)) {
+				switch (world.rand.nextInt(2)) {
 					case 0:
 						e = new EntityDemon(world);
 						e.setPosition(pos.getX(), pos.getY(), pos.getZ());
