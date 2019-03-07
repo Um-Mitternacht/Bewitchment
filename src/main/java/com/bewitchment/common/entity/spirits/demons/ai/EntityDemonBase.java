@@ -11,6 +11,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -35,6 +36,7 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	private java.util.UUID lastBuyingPlayer;
 	private int careerId;
 	private int careerLevel;
+	private int wealth;
 
 	public EntityDemonBase(World worldIn) {
 		super(worldIn);
@@ -83,6 +85,17 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public void setCustomer(@Nullable EntityPlayer player) {
 		this.buyingPlayer = player;
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("Career", this.careerId);
+		tag.setInteger("CareerLevel", this.careerLevel);
+		tag.setInteger("Riches", this.wealth);
+		if (this.buyingList != null) {
+			tag.setTag("Offers", this.buyingList.getRecipiesAsTags());
+		}
 	}
 
 	@Nullable
