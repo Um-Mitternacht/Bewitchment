@@ -1,4 +1,4 @@
-package com.bewitchment.common.entity.spirits.demons.ai;
+package com.bewitchment.common.entity.ai;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;

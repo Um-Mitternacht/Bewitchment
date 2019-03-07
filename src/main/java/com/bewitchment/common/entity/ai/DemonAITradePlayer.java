@@ -1,4 +1,4 @@
-package com.bewitchment.common.entity.spirits.demons.ai;
+package com.bewitchment.common.entity.ai;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;

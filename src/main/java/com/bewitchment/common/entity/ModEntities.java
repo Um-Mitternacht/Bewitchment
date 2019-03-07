@@ -136,19 +136,30 @@ public final class ModEntities {
 		Biome[] biomesBlackDog = new Biome[validBlackDog.size()];
 
 		//Animals
-		if (ModConfig.MOB_GEN.spawn_owls) EntityRegistry.addSpawn(EntityOwl.class, 20, 1, 4, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
-		if (ModConfig.MOB_GEN.spawn_snakes) EntityRegistry.addSpawn(EntitySnake.class, 20, 1, 4, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
-		if (ModConfig.MOB_GEN.spawn_toads) EntityRegistry.addSpawn(EntityToad.class, 20, 1, 4, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
-		if (ModConfig.MOB_GEN.spawn_ravens) EntityRegistry.addSpawn(EntityRaven.class, 20, 1, 4, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
-		if (ModConfig.MOB_GEN.spawn_blindworms) EntityRegistry.addSpawn(EntityBlindworm.class, 20, 1, 4, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
-		if (ModConfig.MOB_GEN.spawn_newts) EntityRegistry.addSpawn(EntityNewt.class, 20, 1, 4, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
-		if (ModConfig.MOB_GEN.spawn_lizards) EntityRegistry.addSpawn(EntityLizard.class, 20, 1, 4, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
+		if (ModConfig.MOB_GEN.spawn_owls)
+			EntityRegistry.addSpawn(EntityOwl.class, 20, 1, 4, EnumCreatureType.CREATURE, validOwl.toArray(biomesOwl));
+		if (ModConfig.MOB_GEN.spawn_snakes)
+			EntityRegistry.addSpawn(EntitySnake.class, 20, 1, 4, EnumCreatureType.CREATURE, validSnake.toArray(biomesSnake));
+		if (ModConfig.MOB_GEN.spawn_toads)
+			EntityRegistry.addSpawn(EntityToad.class, 20, 1, 4, EnumCreatureType.CREATURE, validToad.toArray(biomesToad));
+		if (ModConfig.MOB_GEN.spawn_ravens)
+			EntityRegistry.addSpawn(EntityRaven.class, 20, 1, 4, EnumCreatureType.CREATURE, validRaven.toArray(biomesRaven));
+		if (ModConfig.MOB_GEN.spawn_blindworms)
+			EntityRegistry.addSpawn(EntityBlindworm.class, 20, 1, 4, EnumCreatureType.CREATURE, validBlindworm.toArray(biomesBlindworm));
+		if (ModConfig.MOB_GEN.spawn_newts)
+			EntityRegistry.addSpawn(EntityNewt.class, 20, 1, 4, EnumCreatureType.CREATURE, validNewt.toArray(biomesNewt));
+		if (ModConfig.MOB_GEN.spawn_lizards)
+			EntityRegistry.addSpawn(EntityLizard.class, 20, 1, 4, EnumCreatureType.CREATURE, validLizard.toArray(biomesLizard));
 		//Demons
-		if (ModConfig.MOB_GEN.spawn_urans) EntityRegistry.addSpawn(EntityUran.class, 6, 1, 4, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
-		if (ModConfig.MOB_GEN.spawn_hellhounds) EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
-		if (ModConfig.MOB_GEN.spawn_alpha_hellhounds) EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 0, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
+		if (ModConfig.MOB_GEN.spawn_serpents)
+			EntityRegistry.addSpawn(EntityUran.class, 6, 1, 4, EnumCreatureType.MONSTER, validUran.toArray(biomesUran));
+		if (ModConfig.MOB_GEN.spawn_hellhounds)
+			EntityRegistry.addSpawn(EntityHellhound.class, 6, 1, 4, EnumCreatureType.MONSTER, validHellhound.toArray(biomesHellhound));
+		if (ModConfig.MOB_GEN.spawn_alpha_hellhounds)
+			EntityRegistry.addSpawn(EntityHellhoundAlpha.class, 1, 0, 1, EnumCreatureType.MONSTER, validHellhoundAlpha.toArray(biomesHellhoundAlpha));
 		//Ghosts
-		if (ModConfig.MOB_GEN.spawn_black_dogs) EntityRegistry.addSpawn(EntityBlackDog.class, 20, 0, 2, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
+		if (ModConfig.MOB_GEN.spawn_black_dogs)
+			EntityRegistry.addSpawn(EntityBlackDog.class, 20, 0, 2, EnumCreatureType.MONSTER, validBlackDog.toArray(biomesBlackDog));
 	}
 
 	private static ResourceLocation getResource(String name) {
