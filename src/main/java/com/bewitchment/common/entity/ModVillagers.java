@@ -16,7 +16,8 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import java.util.Random;
 
 /**
- * Created by Joseph on 2/9/2019.
+ * Created by Joseph on 2/9/2019. Credit to Lfja, Pokefenn, and AlexThe666 for bits of the code.
+ * 
  */
 @Mod.EventBusSubscriber(modid = LibMod.MOD_ID)
 public class ModVillagers {
