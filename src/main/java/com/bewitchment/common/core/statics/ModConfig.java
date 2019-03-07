@@ -48,7 +48,7 @@ public final class ModConfig {
 			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 		}
 	}
-	
+
 	public static class MobGen {
 		@Comment("True if Owls should spawn, false otherwise")
 		public boolean spawn_owls = true;
@@ -64,8 +64,8 @@ public final class ModConfig {
 		public boolean spawn_newts = true;
 		@Comment("True if Lizards should spawn, false otherwise")
 		public boolean spawn_lizards = true;
-		@Comment("True if Urans should spawn, false otherwise")
-		public boolean spawn_urans = true;
+		@Comment("True if Serpents should spawn, false otherwise")
+		public boolean spawn_serpents = true;
 		@Comment("True if Hellhounds should spawn, false otherwise")
 		public boolean spawn_hellhounds = true;
 		@Comment("True if Alpha Hellhounds should spawn, false otherwise")

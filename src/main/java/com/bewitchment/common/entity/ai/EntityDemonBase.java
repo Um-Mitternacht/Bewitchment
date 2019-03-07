@@ -1,4 +1,4 @@
-package com.bewitchment.common.entity.spirits.demons;
+package com.bewitchment.common.entity.ai;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
@@ -11,6 +11,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -18,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 /**
  * Created by Joseph on 1/13/2019.
@@ -34,6 +36,7 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	private java.util.UUID lastBuyingPlayer;
 	private int careerId;
 	private int careerLevel;
+	private int wealth;
 
 	public EntityDemonBase(World worldIn) {
 		super(worldIn);
@@ -82,6 +85,17 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public void setCustomer(@Nullable EntityPlayer player) {
 		this.buyingPlayer = player;
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("Career", this.careerId);
+		tag.setInteger("CareerLevel", this.careerLevel);
+		tag.setInteger("Riches", this.wealth);
+		if (this.buyingList != null) {
+			tag.setTag("Offers", this.buyingList.getRecipiesAsTags());
+		}
 	}
 
 	@Nullable
@@ -150,5 +164,25 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public BlockPos getPos() {
 		return null;
+	}
+
+	public static class BasicTrade implements EntityVillager.ITradeList {
+		public ItemStack first;
+		public ItemStack second;
+		public EntityVillager.PriceInfo firstPrice;
+		public EntityVillager.PriceInfo secondPrice;
+
+		public BasicTrade(ItemStack first, ItemStack second, EntityVillager.PriceInfo firstPrice, EntityVillager.PriceInfo secondPrice) {
+			this.first = first;
+			this.second = second;
+			this.firstPrice = firstPrice;
+			this.secondPrice = secondPrice;
+		}
+
+		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+			int i = firstPrice.getPrice(random);
+			int j = secondPrice.getPrice(random);
+			recipeList.add(new MerchantRecipe(new ItemStack(first.getItem(), i, first.getItemDamage()), new ItemStack(second.getItem(), j, second.getItemDamage())));
+		}
 	}
 }

@@ -1,6 +1,8 @@
 package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.entity.LargeEntityAIAttackMelee;
+import com.bewitchment.common.entity.ai.EntityDemonBase;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -83,7 +85,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		this.targetTasks.addTask(9, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityUran || e instanceof EntityHellhound || e instanceof EntityHellhoundAlpha));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.tasks.addTask(8, new EntityAIAttackMelee(this, 0.3D, false));
+		this.tasks.addTask(3, new LargeEntityAIAttackMelee(this, 0.5D, false));
 	}
 
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
