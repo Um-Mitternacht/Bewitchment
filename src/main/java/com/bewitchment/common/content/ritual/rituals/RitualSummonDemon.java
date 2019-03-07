@@ -14,8 +14,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-
 import javax.annotation.Nullable;
 import java.util.Random;
 
@@ -27,7 +25,7 @@ public class RitualSummonDemon extends RitualImpl {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 
-	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<EntityEntry> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+	public RitualSummonDemon(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<Class<? extends Entity>> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, sacrifices, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 
@@ -52,7 +50,7 @@ public class RitualSummonDemon extends RitualImpl {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				BlockPos pos = effectivePosition.add(world.rand.nextInt(11) - 5, 1, world.rand.nextInt(11) - 5);
 				Entity e;
-				switch (world.rand.nextInt(7)) {
+				switch (world.rand.nextInt(2)) {
 					case 0:
 						e = new EntityDemon(world);
 						e.setPosition(pos.getX(), pos.getY(), pos.getZ());

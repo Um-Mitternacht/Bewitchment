@@ -29,7 +29,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -240,7 +239,7 @@ public class TileEntityGlyph extends ModTileEntity implements ITickable {
 							NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(bp.getX() + 0.5d, bp.getY() + 0.1, bp.getZ() + 0.5d), world.provider.getDimension());
 						});
 						for (Entity e : entitiesOnGround) {
-							if (rit.getSacrifices().contains(EntityRegistry.getEntry(e.getClass()))) {
+							if (rit.getSacrifices().contains(e.getClass())) {
 								e.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
 								NetworkHandler.HANDLER.sendToDimension(new SmokeSpawn(e.posX + 0.5d, e.posY + 0.1, e.posZ + 0.5d), world.provider.getDimension());
 								break;

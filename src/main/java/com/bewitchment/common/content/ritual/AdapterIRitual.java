@@ -15,8 +15,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -133,7 +131,7 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 	public boolean isValidInput(List<ItemStack> ground, List<Entity> sacrifices, boolean circles) {
 		if (!isValidInput(ground, circles)) return false;
 		for (Entity e : sacrifices)
-			if (ritual.getSacrifices().contains(EntityRegistry.getEntry(e.getClass()))) return true;
+			if (ritual.getSacrifices().contains(e.getClass())) return true;
 		return false;
 	}
 
@@ -153,7 +151,7 @@ public class AdapterIRitual implements IForgeRegistryEntry<AdapterIRitual> {
 		return ritual.getInput();
 	}
 
-	public NonNullList<EntityEntry> getSacrifices() {
+	public NonNullList<Class<? extends Entity>> getSacrifices() {
 		return ritual.getSacrifices();
 	}
 
