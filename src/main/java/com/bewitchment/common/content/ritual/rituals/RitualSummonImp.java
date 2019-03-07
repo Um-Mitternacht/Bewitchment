@@ -4,6 +4,7 @@ import com.bewitchment.common.content.ritual.RitualImpl;
 import com.bewitchment.common.entity.spirits.demons.EntityImp;
 import com.bewitchment.common.item.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -15,8 +16,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-
 import java.util.Optional;
 import java.util.Random;
 
@@ -26,7 +25,7 @@ public class RitualSummonImp extends RitualImpl {
 		super(registryName, input, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 
-	public RitualSummonImp(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<EntityEntry> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
+	public RitualSummonImp(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<Class<? extends Entity>> sacrifices, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
 		super(registryName, input, sacrifices, output, timeInTicks, circles, altarStartingPower, powerPerTick);
 	}
 

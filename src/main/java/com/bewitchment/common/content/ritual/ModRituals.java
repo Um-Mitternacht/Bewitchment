@@ -8,6 +8,8 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibIngredients;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.tile.tiles.TileEntityGlyph;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityVillager;
@@ -193,7 +195,7 @@ public class ModRituals {
 						LibIngredients.goldIngot,
 						LibIngredients.athame
 				),
-				ofe(EntityRegistry.getEntry(EntityChicken.class)),
+				ofe(EntityChicken.class),
 				ofs(new ItemStack(ModItems.athame)),
 				303,
 				circles(NETHER, ANY, NETHER),
@@ -212,7 +214,7 @@ public class ModRituals {
 						LibIngredients.ghastTear,
 						LibIngredients.athame
 				),
-				ofe(EntityRegistry.getEntry(EntityVillager.class)),
+				ofe(EntityVillager.class),
 				ofs(new ItemStack(ModItems.athame)),
 				616,
 				circles(NETHER, ANY, NETHER),
@@ -355,8 +357,9 @@ public class ModRituals {
 		return NonNullList.<Ingredient>from(Ingredient.EMPTY, list);
 	}
 
-	public static NonNullList<EntityEntry> ofe(EntityEntry... list) {
-		return NonNullList.<EntityEntry>from(EntityRegistry.getEntry(EntityPig.class), list);
+	@SafeVarargs
+	public static NonNullList<Class<? extends Entity>> ofe(Class<? extends Entity>... list) {
+		return NonNullList.from(Entity.class, list);
 	}
 
 	public static NonNullList<ItemStack> ofs(ItemStack... list) {
