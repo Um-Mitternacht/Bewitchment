@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.LargeEntityAIAttackMelee;
+import com.bewitchment.common.entity.spirits.demons.ai.EntityDemonBase;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
