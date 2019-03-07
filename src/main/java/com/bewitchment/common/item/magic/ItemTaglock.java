@@ -109,7 +109,7 @@ public class ItemTaglock extends ItemMod {
 				.filter(player -> player.getBedLocation() != null)
 				.filter(player -> player.getBedLocation().equals(bed)).toArray();
 		if (playersForBed.length > 0) {
-			result = (EntityPlayer)playersForBed[world.rand.nextInt(playersForBed.length)];
+			result = (EntityPlayer) playersForBed[world.rand.nextInt(playersForBed.length)];
 		}
 		return result;
 	}

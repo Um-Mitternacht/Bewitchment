@@ -146,26 +146,6 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 		}
 	}
 
-	public static class BasicTrade implements EntityVillager.ITradeList {
-		public ItemStack first;
-		public ItemStack second;
-		public EntityVillager.PriceInfo firstPrice;
-		public EntityVillager.PriceInfo secondPrice;
-
-		public BasicTrade(ItemStack first, ItemStack second, EntityVillager.PriceInfo firstPrice, EntityVillager.PriceInfo secondPrice) {
-			this.first = first;
-			this.second = second;
-			this.firstPrice = firstPrice;
-			this.secondPrice = secondPrice;
-		}
-
-		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-			int i = firstPrice.getPrice(random);
-			int j = secondPrice.getPrice(random);
-			recipeList.add(new MerchantRecipe(new ItemStack(first.getItem(), i, first.getItemDamage()), new ItemStack(second.getItem(), j, second.getItemDamage())));
-		}
-	}
-
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {
 
@@ -184,5 +164,25 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public BlockPos getPos() {
 		return null;
+	}
+
+	public static class BasicTrade implements EntityVillager.ITradeList {
+		public ItemStack first;
+		public ItemStack second;
+		public EntityVillager.PriceInfo firstPrice;
+		public EntityVillager.PriceInfo secondPrice;
+
+		public BasicTrade(ItemStack first, ItemStack second, EntityVillager.PriceInfo firstPrice, EntityVillager.PriceInfo secondPrice) {
+			this.first = first;
+			this.second = second;
+			this.firstPrice = firstPrice;
+			this.secondPrice = secondPrice;
+		}
+
+		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+			int i = firstPrice.getPrice(random);
+			int j = secondPrice.getPrice(random);
+			recipeList.add(new MerchantRecipe(new ItemStack(first.getItem(), i, first.getItemDamage()), new ItemStack(second.getItem(), j, second.getItemDamage())));
+		}
 	}
 }
