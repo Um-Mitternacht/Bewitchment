@@ -234,7 +234,7 @@ public class ModelHellHoundAlphaHead extends ModelBase {
 		this.rHorn03d.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.rHorn03d.addBox(-0.8F, -2.0F, -0.2F, 1, 2, 1, 0.0F);
 		this.head = new ModelRenderer(this, 0, 0);
-		this.head.setRotationPoint(0.0F, 21.0F, 8.0F);
+		this.head.setRotationPoint(0.0F, 0F, 0F);
 		this.head.addBox(-3.0F, -3.0F, -4.0F, 6, 6, 4, 0.0F);
 		this.rHorn05b = new ModelRenderer(this, 52, 12);
 		this.rHorn05b.mirror = true;
@@ -332,6 +332,7 @@ public class ModelHellHoundAlphaHead extends ModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.head.rotateAngleY = (float) Math.toRadians(f);
 		this.head.render(f5);
 	}
 

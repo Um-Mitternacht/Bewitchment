@@ -2,6 +2,7 @@ package com.bewitchment.common.item;
 
 import baubles.api.BaubleType;
 import com.bewitchment.common.block.ModBlocks;
+import com.bewitchment.common.block.head.HeadTypes;
 import com.bewitchment.common.block.natural.BlockGemOre.Gem;
 import com.bewitchment.common.core.helper.CropHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
@@ -433,7 +434,12 @@ public final class ModItems {
 				new ItemBlockMeta<>(ModBlocks.coquina_chisel, BlockCoquinaChiseled.BlockCoquinaVariant.values(), EnumNameMode.TOOLTIP),
 				new ItemBlockMeta<>(ModBlocks.scorned_bricks_chisel, BlockScornedBricksChiseled.BlockScornVariant.values(), EnumNameMode.TOOLTIP)
 		);
-
+		
+		
+		//Head ItemBlocks
+		for(HeadTypes type : HeadTypes.values()) {
+			registry.registerAll(type.getItemSet().toArray(new Item[0]));
+		}
 	}
 
 	private static Item itemBlock(Block block) {

@@ -453,6 +453,10 @@ tile.juniper_stairs.name=Juniper Stairs
 tile.yew_stairs.name=Yew Stairs
 tile.cypress_stairs.name=Cypress Stairs
 
+//Heads
+tile.hellhoundhead.name=Hellhound Head
+tile.alphahellhoundhead.name=Alpha Hellhound Head
+
 bewitchment.silver_block_chisel.tooltip.variety.symbol=Symbol
 bewitchment.silver_block_chisel.tooltip.variety.sun=Sun
 bewitchment.silver_block_chisel.tooltip.variety.moon=Moon
