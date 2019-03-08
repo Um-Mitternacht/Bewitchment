@@ -23,8 +23,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * @author its_meow
- *
- * Mar 7, 2019
+ *         <p>
+ *         Mar 7, 2019
  */
 public class BlockAnimalSkull extends BlockContainer {
 
@@ -43,8 +43,8 @@ public class BlockAnimalSkull extends BlockContainer {
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) { 
-		return false; 
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 
 	@Override
@@ -92,24 +92,22 @@ public class BlockAnimalSkull extends BlockContainer {
 	}
 
 	/**
-	 * @deprecated call via {@link IBlockState#getBoundingBox(IBlockAccess,BlockPos)} whenever possible.
+	 * @deprecated call via {@link IBlockState#getBoundingBox(IBlockAccess, BlockPos)} whenever possible.
 	 * Implementing/overriding is fine.
 	 */
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-	{
-		switch ((EnumFacing)state.getValue(FACING))
-		{
-		case UP:
-		default:
-			return DEFAULT_AABB;
-		case NORTH:
-			return NORTH_AABB;
-		case SOUTH:
-			return SOUTH_AABB;
-		case WEST:
-			return WEST_AABB;
-		case EAST:
-			return EAST_AABB;
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		switch ((EnumFacing) state.getValue(FACING)) {
+			case UP:
+			default:
+				return DEFAULT_AABB;
+			case NORTH:
+				return NORTH_AABB;
+			case SOUTH:
+				return SOUTH_AABB;
+			case WEST:
+				return WEST_AABB;
+			case EAST:
+				return EAST_AABB;
 		}
 	}
 
@@ -124,33 +122,32 @@ public class BlockAnimalSkull extends BlockContainer {
 	 * Convert the BlockState into the correct metadata value
 	 */
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, new IProperty[] {FACING});
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[]{FACING});
 	}
 
 	/**
 	 * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
 	 * blockstate.
+	 *
 	 * @deprecated call via {@link IBlockState#withRotation(Rotation)} whenever possible. Implementing/overriding is
 	 * fine.
 	 */
-	public IBlockState withRotation(IBlockState state, Rotation rot)
-	{
-		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+	public IBlockState withRotation(IBlockState state, Rotation rot) {
+		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
 
 	/**
 	 * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
 	 * blockstate.
+	 *
 	 * @deprecated call via {@link IBlockState#withMirror(Mirror)} whenever possible. Implementing/overriding is fine.
 	 */
-	public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-	{
-		return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+		return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
 	}
 
 	@Override

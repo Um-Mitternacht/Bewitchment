@@ -434,10 +434,10 @@ public final class ModItems {
 				new ItemBlockMeta<>(ModBlocks.coquina_chisel, BlockCoquinaChiseled.BlockCoquinaVariant.values(), EnumNameMode.TOOLTIP),
 				new ItemBlockMeta<>(ModBlocks.scorned_bricks_chisel, BlockScornedBricksChiseled.BlockScornVariant.values(), EnumNameMode.TOOLTIP)
 		);
-		
-		
+
+
 		//Head ItemBlocks
-		for(HeadTypes type : HeadTypes.values()) {
+		for (HeadTypes type : HeadTypes.values()) {
 			registry.registerAll(type.getItemSet().toArray(new Item[0]));
 		}
 	}

@@ -1,14 +1,13 @@
 package com.bewitchment.common.block.head;
 
 import com.bewitchment.common.core.statics.ModCreativeTabs;
-
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 /**
  * @author its_meow
- *
- * Mar 7, 2019
+ *         <p>
+ *         Mar 7, 2019
  */
 public class BlockGenericSkull extends BlockAnimalSkull {
 

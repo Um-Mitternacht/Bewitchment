@@ -1,23 +1,11 @@
 package com.bewitchment.common.entity.living.npcs;
 
-import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
-import net.minecraft.entity.IMerchant;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
-
-import java.util.Random;
 
 /**
  * Created by Joseph on 2/9/2019. Credit to Lfja, Pokefenn, and AlexThe666 for bits of the code.
- *
  */
 @Mod.EventBusSubscriber(modid = LibMod.MOD_ID)
 public class ModVillagers {

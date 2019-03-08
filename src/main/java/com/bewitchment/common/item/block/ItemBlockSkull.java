@@ -3,7 +3,6 @@ package com.bewitchment.common.item.block;
 import com.bewitchment.common.block.head.BlockAnimalSkull;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.tile.tiles.TileEntityHead;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -23,8 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * @author its_meow
- *
- * Mar 7, 2019
+ *         <p>
+ *         Mar 7, 2019
  */
 public class ItemBlockSkull extends ItemBlock {
 
@@ -33,7 +32,7 @@ public class ItemBlockSkull extends ItemBlock {
 
 	public ItemBlockSkull(Block block, boolean allowFloor, int typeNum) {
 		super(block);
-		if(block.getRegistryName() != null) {
+		if (block.getRegistryName() != null) {
 			this.setRegistryName(block.getRegistryName());
 		}
 		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
@@ -65,14 +64,14 @@ public class ItemBlockSkull extends ItemBlock {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
+	                                  EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if (side == EnumFacing.DOWN || (side == EnumFacing.UP && !this.allowFloor)) {
 			return EnumActionResult.FAIL;
 		} else {
 			BlockPos clickedPos = pos.offset(side);
 			IBlockState clickedState = world.getBlockState(clickedPos);
-			if(!clickedState.getBlock().isReplaceable(world, clickedPos)) {
+			if (!clickedState.getBlock().isReplaceable(world, clickedPos)) {
 				return EnumActionResult.FAIL;
 			}
 			if (!world.isRemote) {
@@ -81,18 +80,18 @@ public class ItemBlockSkull extends ItemBlock {
 				TileEntity tile = world.getTileEntity(clickedPos);
 				populateTile(stack, side, player, tile);
 			}
-			if(!player.capabilities.isCreativeMode) {
+			if (!player.capabilities.isCreativeMode) {
 				stack.shrink(1);
 			}
 			return EnumActionResult.SUCCESS;
 		}
-}
+	}
 
 	protected void populateTile(ItemStack stack, EnumFacing side, EntityPlayer player, TileEntity tile) {
-		if(tile instanceof TileEntityHead) {
+		if (tile instanceof TileEntityHead) {
 			TileEntityHead tileSkull = (TileEntityHead) tile;
 			float rotation = 0;
-			if(side == EnumFacing.UP || side == EnumFacing.DOWN) {
+			if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
 				rotation = EnumFacing.fromAngle(player.rotationYawHead).getHorizontalAngle();
 			} else {
 				rotation = (int) side.getHorizontalAngle();

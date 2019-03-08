@@ -7,16 +7,11 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IMerchant;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -26,7 +21,7 @@ import java.util.Random;
  * <p>
  * Credit to AlexThe666 for bits and pieces of the code, so that I may create a merchant not based on a villager.
  */
-public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity{
+public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity {
 	private int animationTick;
 	private Animation currentAnimation;
 
