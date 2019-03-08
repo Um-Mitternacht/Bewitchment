@@ -30,8 +30,10 @@ public class MimicEventHandler {
 	@SideOnly(Side.CLIENT)
 	private static final Field playerTextures = ReflectionHelper.findField(NetworkPlayerInfo.class, "playerTextures", LibReflection.NETWORK_PLAYER_INFO__PLAYER_TEXTURES);
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings("deprecation")
 	private static final HashMap<UUID, ResourceLocation> skinMap = new HashMap<>();
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings("deprecation")
 	private static final HashMap<UUID, String> modelType = new HashMap<>();
 
 	@SubscribeEvent
