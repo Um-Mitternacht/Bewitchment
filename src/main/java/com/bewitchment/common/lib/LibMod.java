@@ -16,6 +16,9 @@ public final class LibMod {
 	//Version of MOD
 	public static final String MOD_VER = "@VERSION@";
 
+	//Trying something here
+	public static final String PREFIX_MOD = "bewitchment:";
+
 	//Dependency
 	public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2814,];"
 			+ "required-after:patchouli@[1.0-6,]"
