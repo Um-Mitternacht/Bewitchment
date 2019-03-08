@@ -45,7 +45,7 @@ public class ModelHellHoundHead extends ModelBase {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.head = new ModelRenderer(this, 0, 0);
-		this.head.setRotationPoint(0.0F, 21.0F, 8.0F);
+		this.head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.head.addBox(-3.0F, -3.0F, -4.0F, 6, 6, 4, 0.0F);
 		this.lowerJaw = new ModelRenderer(this, 0, 43);
 		this.lowerJaw.setRotationPoint(0.0F, 2.0F, -3.8F);
@@ -197,6 +197,8 @@ public class ModelHellHoundHead extends ModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.head.rotateAngleY = (float) Math.toRadians(f);
+		//this.head.rotateAngleX = (float) Math.toRadians(f1);
 		this.head.render(f5);
 	}
 
