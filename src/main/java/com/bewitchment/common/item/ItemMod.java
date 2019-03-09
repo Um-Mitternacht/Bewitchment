@@ -29,7 +29,6 @@ public class ItemMod extends Item implements IModelRegister {
 		setRegistryName(id);
 		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
-		setMaxStackSize(1);
 	}
 
 	@Override
