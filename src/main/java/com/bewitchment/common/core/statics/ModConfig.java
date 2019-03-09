@@ -31,11 +31,11 @@ public final class ModConfig {
 	@Comment("Change vein sizes, generation height and generation chance")
 	@Config.LangKey("bewitchment.config.world_gen")
 	public static WorldGen WORLD_GEN = new WorldGen();
-	
+
 	@Comment("Customize the client-side only settings")
 	@Config.LangKey("bewitchment.config.client")
 	public static ClientConfig CLIENT = new ClientConfig();
-	
+
 	@Comment("The lower this number, the more time it takes for an altar to realize something has changed around it, the better the TPS")
 	@Config.RangeInt(min = 1, max = 46656)
 	//46656 is the max amount of blocks in altar range, meaning it will scan once per tick. More than that is useless

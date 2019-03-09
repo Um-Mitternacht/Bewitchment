@@ -5,7 +5,6 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.client.render.entity.model.ModelWitchesArmor;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;

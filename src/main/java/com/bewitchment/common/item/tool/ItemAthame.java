@@ -13,7 +13,6 @@ import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;

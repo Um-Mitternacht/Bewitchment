@@ -67,9 +67,9 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.bewitchment.common.lib.LibMod.MOD_NAME;
-
 import java.io.File;
+
+import static com.bewitchment.common.lib.LibMod.MOD_NAME;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -154,7 +154,7 @@ public class Bewitchment {
 		ModInfusions.init();
 		ModTransformations.init();
 		ModEntities.fillEntityContainers();
-		entityConfig = new Configuration(new File(event.getModConfigurationDirectory().getPath(), "bewitchment_entities.cfg")); 
+		entityConfig = new Configuration(new File(event.getModConfigurationDirectory().getPath(), "bewitchment_entities.cfg"));
 		EntityConfiguration.readConfig();
 		EntityConfiguration.initConfig(entityConfig);
 		ModSpells.init();
@@ -206,7 +206,7 @@ public class Bewitchment {
 		BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST).parallelStream().filter(b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE)).forEach(b -> {
 			BlockMoonbell.addValidMoonbellBiome(b);
 		});
-		if(entityConfig.hasChanged()){
+		if (entityConfig.hasChanged()) {
 			entityConfig.save();
 		}
 		CauldronRegistry.postInit();

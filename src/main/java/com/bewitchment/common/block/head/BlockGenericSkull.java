@@ -2,7 +2,6 @@ package com.bewitchment.common.block.head;
 
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 

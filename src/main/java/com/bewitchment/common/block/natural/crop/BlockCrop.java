@@ -2,7 +2,6 @@ package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;

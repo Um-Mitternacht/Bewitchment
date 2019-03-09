@@ -1,18 +1,18 @@
 package com.bewitchment.common.entity;
 
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
 
+import java.util.List;
+
 /**
  * @author its_meow
- *
- * Mar 8, 2019
+ *         <p>
+ *         Mar 8, 2019
  */
 public class ModEntityContainer {
-	
+
 	public Class<? extends Entity> entityClazz;
 	public String entityName;
 	public EnumCreatureType type;
@@ -24,7 +24,7 @@ public class ModEntityContainer {
 	public Biome[] spawnBiomes = {};
 	public boolean doRegister = true;
 	public boolean doSpawning = true;
-	
+
 	public ModEntityContainer(Class<? extends Entity> EntityClass, String entityNameIn, EnumCreatureType type, int solidColorIn, int spotColorIn, int prob, int min, int max, List<Biome> biomes) {
 		this.entityClazz = EntityClass;
 		this.entityName = entityNameIn;
@@ -34,15 +34,15 @@ public class ModEntityContainer {
 		this.minGroup = min;
 		this.maxGroup = max;
 		this.type = type;
-		
-		
+
+
 		// Convert biomes to single array
-		
+
 		try {
 			this.spawnBiomes = biomes.toArray(this.spawnBiomes);
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			this.spawnBiomes = new Biome[0];
 		}
 	}
-	
+
 }
