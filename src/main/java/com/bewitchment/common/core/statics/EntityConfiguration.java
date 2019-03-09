@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
-import com.bewitchment.common.entity.EntityContainer;
+import com.bewitchment.common.entity.ModEntityContainer;
 import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.lib.LibMod;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.common.config.Configuration;
  */
 public class EntityConfiguration {
 
-	public static HashMap<EntityContainer, EntityConfigurationSection> sections = new HashMap<EntityContainer, EntityConfigurationSection>();
+	public static HashMap<ModEntityContainer, EntityConfigurationSection> sections = new HashMap<ModEntityContainer, EntityConfigurationSection>();
 
 	public static void readConfig(){
 		Configuration cfg = Bewitchment.entityConfig;
@@ -40,7 +40,7 @@ public class EntityConfiguration {
 	}
 
 	public static void initConfig(Configuration cfg) {
-		for(EntityContainer container : ModEntities.entityList) {
+		for(ModEntityContainer container : ModEntities.entityList) {
 			String[] biomeStrings = new String[container.spawnBiomes.length];
 			for(int i = 0; i < container.spawnBiomes.length; i++) {
 				biomeStrings[i] = container.spawnBiomes[i].getRegistryName().toString();
@@ -48,7 +48,7 @@ public class EntityConfiguration {
 			EntityConfigurationSection configSection = new EntityConfigurationSection(container.entityClazz, container.entityName, container.minGroup, container.maxGroup, container.weight, biomeStrings);
 			sections.put(container, configSection);
 		}
-		for(EntityContainer container : sections.keySet()) {
+		for(ModEntityContainer container : sections.keySet()) {
 			EntityConfigurationSection section = sections.get(container);
 			container.maxGroup = section.max;
 			container.minGroup = section.min;
