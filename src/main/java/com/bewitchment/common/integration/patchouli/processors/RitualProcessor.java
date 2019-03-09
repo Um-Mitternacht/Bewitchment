@@ -33,7 +33,7 @@ public class RitualProcessor implements IComponentProcessor {
 				return this.getOutput(val.substring(6));
 			}
 			if ("ritualname".equals(val)) {
-				return I18n.format("ritual." + this.ritual.getRegistryName().toString().replace(':', '.') + ".name");
+				return I18n.format("ritual.bewitchment." + this.ritual.getRegistryName().getPath() + ".name");
 			}
 			if ("ritual".equals(val)) {
 				return this.ritual.getRegistryName().toString();

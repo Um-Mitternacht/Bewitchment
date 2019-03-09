@@ -100,7 +100,7 @@ public class ItemHellishBauble extends ItemMod implements IBauble, IMagicPowerEx
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.DARK_RED + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
+		tooltip.add(TextFormatting.DARK_RED + I18n.format("bewitchment.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 
 	@SubscribeEvent

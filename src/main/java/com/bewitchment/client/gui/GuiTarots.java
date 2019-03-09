@@ -77,7 +77,7 @@ public class GuiTarots extends GuiScreen {
 				}
 			}
 		} else {
-			String reading = I18n.format("tarots.reading");
+			String reading = I18n.format("tarots.bewitchment.reading");
 			ScaledResolution sr = new ScaledResolution(mc);
 			int x = ((sr.getScaledWidth() - mc.fontRenderer.getStringWidth(reading)) / 2);
 			int y = ((sr.getScaledHeight() - mc.fontRenderer.FONT_HEIGHT) / 2);

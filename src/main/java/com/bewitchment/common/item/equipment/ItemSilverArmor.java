@@ -47,7 +47,7 @@ public class ItemSilverArmor extends ItemArmor implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("witch.tooltip." + getArmorMaterial().name() + "_armor" + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("bewitchment.tooltip." + getArmorMaterial().name() + "_armor" + "_description.name"));
 	}
 
 	@SubscribeEvent

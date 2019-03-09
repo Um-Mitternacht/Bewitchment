@@ -43,13 +43,13 @@ public class ItemBrew extends ItemMod {
 			TextFormatting color = brewEntry.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.DARK_AQUA;
 			IBrewModifierList list = brewEntry.getModifierList();
 			if (GuiScreen.isShiftKeyDown()) {
-				tooltip.add(color + I18n.format(brewEntry.getPotion().getName()));
+				tooltip.add(color + I18n.format("bewitchment." + brewEntry.getPotion().getName()));
 				if (!list.getModifiers().isEmpty()) {
 					list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
-						tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("brew.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
+						tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("brew.bewitchment.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
 					});
 				} else {
-					tooltip.add(TextFormatting.DARK_GRAY.toString() + I18n.format("brew.parameters.none"));
+					tooltip.add(TextFormatting.DARK_GRAY.toString() + I18n.format("brew.bewitchment.parameters.none"));
 				}
 			} else {
 				Optional<Integer> power = list.getLevel(DefaultModifiers.POWER);
@@ -61,10 +61,10 @@ public class ItemBrew extends ItemMod {
 				}
 				lengthString = getLengthTTip(lengthMod, brewEntry.getPotion(), stack.getItem());
 
-				tooltip.add(color + I18n.format("brew.effects.formatting", I18n.format(brewEntry.getPotion().getName()), powerString, lengthString).replace("  ", " "));
+				tooltip.add(color + I18n.format("brew.bewitchment.effects.formatting", I18n.format("bewitchment." + brewEntry.getPotion().getName()), powerString, lengthString).replace("  ", " "));
 
-				String ref = TextFormatting.DARK_GRAY + I18n.format(brewEntry.getPotion().getName() + ".desc");
-				tooltip.add(I18n.format("brew.description.formatting", ref));
+				String ref = TextFormatting.DARK_GRAY + I18n.format("bewitchment." + brewEntry.getPotion().getName() + ".desc");
+				tooltip.add(I18n.format("brew.bewitchment.description.formatting", ref));
 			}
 		});
 	}
@@ -72,7 +72,7 @@ public class ItemBrew extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	private static String getLengthTTip(int lengthMod, Potion potion, Item item) {
 		if (potion.isInstant()) {
-			return I18n.format("brew.instant");
+			return I18n.format("brew.bewitchment.instant");
 		}
 		IBrewEffect effect = BewitchmentAPI.getAPI().getBrewFromPotion(potion);
 		int baseDuration = effect.getDefaultDuration();

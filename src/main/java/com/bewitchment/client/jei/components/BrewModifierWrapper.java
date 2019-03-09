@@ -26,7 +26,7 @@ public class BrewModifierWrapper implements IRecipeWrapper {
 
 	public BrewModifierWrapper(IBrewModifier modifier) {
 		in = modifier.getJEIStackRepresentative().getMatchingStacks();
-		name = "modifier.description." + modifier.getRegistryName().toString().replace(':', '.');
+		name = "modifier.bewitchment.description." + modifier.getRegistryName().toString().replace(':', '.');
 		CauldronRegistry.BREW_POTION_MAP.forEach((brew, potion) -> addStackFor(potion));
 	}
 

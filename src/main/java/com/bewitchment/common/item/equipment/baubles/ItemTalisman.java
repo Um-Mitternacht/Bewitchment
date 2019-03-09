@@ -48,7 +48,7 @@ public class ItemTalisman extends ItemMod implements IBauble {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
 		if (!stack.isItemEnchanted()) {
-			tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip.talismans_description.name"));
+			tooltip.add(TextFormatting.AQUA + I18n.format("bewitchment.tooltip.talismans_description.name"));
 		}
 	}
 

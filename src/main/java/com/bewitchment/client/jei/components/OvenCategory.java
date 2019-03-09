@@ -27,7 +27,7 @@ public class OvenCategory implements IRecipeCategory<OvenWrapper> {
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.oven");
+		return I18n.format("jei.bewitchment.category.oven");
 	}
 
 	@Override

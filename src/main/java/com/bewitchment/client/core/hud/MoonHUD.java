@@ -47,7 +47,7 @@ public class MoonHUD extends HudComponent {
 			} else {
 				warn = 1;
 			}
-			return I18n.format("moon.tooltip." + warn);
+			return I18n.format("moon.bewitchment.tooltip." + warn);
 		}
 		return null;
 	}

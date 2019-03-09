@@ -30,7 +30,7 @@ public class ItemTarots extends ItemMod {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("read_name")) {
 			String readFutureOf = stack.getTagCompound().getString("read_name");
-			tooltip.add(I18n.format(this.getTranslationKey() + ".read_to", readFutureOf));
+			tooltip.add(I18n.format("item.bewitchment." + this.getTranslationKey().substring(this.getTranslationKey().indexOf('.') + 1) + ".read_to", readFutureOf));
 		}
 	}
 

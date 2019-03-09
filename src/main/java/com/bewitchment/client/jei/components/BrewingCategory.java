@@ -33,7 +33,7 @@ public class BrewingCategory implements IRecipeCategory<BrewingWrapper> {
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.brewing");
+		return I18n.format("jei.bewitchment.category.brewing");
 	}
 
 	@Override

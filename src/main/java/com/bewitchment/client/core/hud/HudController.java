@@ -115,9 +115,9 @@ public class HudController {
 				if (isEditModeActive()) {
 					if (grabbed == null) {
 						GuiUtils.drawHoveringText(Arrays.asList(
-								I18n.format("gui.bwguicfg.pick"),
-								I18n.format("gui.bwguicfg.orig"),
-								I18n.format("gui.bwguicfg.hide")
+								I18n.format("gui.bewitchment.bwguicfg.pick"),
+								I18n.format("gui.bewitchment.bwguicfg.orig"),
+								I18n.format("gui.bewitchment.bwguicfg.hide")
 						), mouseX, mouseY, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth(), Minecraft.getMinecraft().fontRenderer);
 					}
 				} else {
