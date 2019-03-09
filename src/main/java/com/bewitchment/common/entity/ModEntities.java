@@ -146,7 +146,7 @@ public final class ModEntities {
 		registerWithEgg(EntityDemoness.class, "demoness", 0x555555, 0xED2939);
 		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939);
 		//Ghosts
-		entityList.add(new ModEntityContainer(EntityBlackDog.class, "entity_black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
+		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
 	}
 
 	public static int modEntities = 0;
