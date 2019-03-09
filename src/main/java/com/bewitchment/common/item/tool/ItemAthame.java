@@ -75,7 +75,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.YELLOW + I18n.format("bewitchment.tooltip." + getTranslationKey().substring(5) + "_description.name"));
+		tooltip.add(TextFormatting.YELLOW + I18n.format("tooltip." + getTranslationKey().substring(5) + "_description.name"));
 	}
 
 	//Todo: Rewrite in it's entirety. Use loot tables.

@@ -57,7 +57,7 @@ public class ItemColdIronHoe extends ItemHoe implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("bewitchment.tooltip." + getMaterialName() + "_tool" + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("tooltip.bewitchment." + getMaterialName() + "_tool" + "_description.name"));
 	}
 
 	@SideOnly(Side.CLIENT)
