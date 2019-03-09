@@ -19,7 +19,7 @@ public class BlockScornedBrickFence extends BlockFence implements IModelRegister
 
 	public BlockScornedBrickFence() {
 		super(Material.ROCK, Material.ROCK.getMaterialMapColor());
-		setTranslationKey(LibBlockName.SCORNED_BRICK_FENCE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.SCORNED_BRICK_FENCE);
 		setRegistryName(LibMod.MOD_ID, LibBlockName.SCORNED_BRICK_FENCE);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setResistance(5F);

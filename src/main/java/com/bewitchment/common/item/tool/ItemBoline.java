@@ -4,6 +4,8 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,7 +36,7 @@ public class ItemBoline extends ItemShears implements IModelRegister {
 		super();
 		setMaxDamage(600);
 		setRegistryName(LibItemName.BOLINE);
-		setTranslationKey(LibItemName.BOLINE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibItemName.BOLINE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

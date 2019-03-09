@@ -8,6 +8,8 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,7 +36,7 @@ public class ItemColdIronSpade extends ItemSpade implements IModelRegister {
 	public ItemColdIronSpade() {
 		super(ModMaterials.TOOL_COLD_IRON);
 		setRegistryName(LibItemName.COLD_IRON_SPADE);
-		setTranslationKey(LibItemName.COLD_IRON_SPADE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibItemName.COLD_IRON_SPADE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

@@ -29,7 +29,7 @@ public class BlockFakeIceStairs extends BlockStairs implements IModelRegister {
 
 	public BlockFakeIceStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
-		setTranslationKey(LibBlockName.FAKE_ICE_STAIRS);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.FAKE_ICE_STAIRS);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;

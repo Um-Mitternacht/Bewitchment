@@ -20,7 +20,7 @@ public class BlockFakeIceFence extends BlockFence implements IModelRegister {
 
 	public BlockFakeIceFence() {
 		super(Material.ICE, Material.ICE.getMaterialMapColor());
-		setTranslationKey(LibBlockName.FAKE_ICE_FENCE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.FAKE_ICE_FENCE);
 		setRegistryName(LibMod.MOD_ID, LibBlockName.FAKE_ICE_FENCE);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setResistance(2F);

@@ -6,6 +6,8 @@ import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,7 +36,7 @@ public class ItemSilverAxe extends ItemAxe implements IModelRegister {
 	public ItemSilverAxe() {
 		super(ModMaterials.TOOL_SILVER, 8.0f, -3.1f);
 		setRegistryName(LibItemName.SILVER_AXE);
-		setTranslationKey(LibItemName.SILVER_AXE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibItemName.SILVER_AXE);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

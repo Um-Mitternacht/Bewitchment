@@ -21,7 +21,7 @@ public class BlockEmbitteredBrickStairs extends BlockStairs implements IModelReg
 
 	public BlockEmbitteredBrickStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
-		setTranslationKey(LibBlockName.EMBITTERED_BRICK_STAIRS);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.EMBITTERED_BRICK_STAIRS);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;

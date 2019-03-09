@@ -19,7 +19,7 @@ public class BlockEmbitteredBrickFence extends BlockFence implements IModelRegis
 
 	public BlockEmbitteredBrickFence() {
 		super(Material.ROCK, Material.ROCK.getMaterialMapColor());
-		setTranslationKey(LibBlockName.EMBITTERED_BRICK_FENCE);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.EMBITTERED_BRICK_FENCE);
 		setRegistryName(LibMod.MOD_ID, LibBlockName.EMBITTERED_BRICK_FENCE);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setResistance(5F);

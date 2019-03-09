@@ -27,7 +27,7 @@ public class BlockMod extends Block implements IModelRegister {
 
 	public BlockMod(String id, Material material) {
 		super(material);
-		setTranslationKey(id);
+		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setDefaultState(blockState.getBaseState());
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
