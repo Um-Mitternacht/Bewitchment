@@ -40,6 +40,7 @@ public class ItemTaglock extends ItemMod {
 
 	public ItemTaglock() {
 		super(LibItemName.TAGLOCK);
+		this.setMaxStackSize(1);
 	}
 
 	//Todo: Make appearance change based on whether it has a taglock or not in it.
