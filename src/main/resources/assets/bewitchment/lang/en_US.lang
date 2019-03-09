@@ -536,7 +536,7 @@ fluid.oil_mundane=Oil
 fluid.honey=Honey
 
 //Brew
-brew.instant=Instant
+brew.bewitchment.instant=Instant
 
 effect.shell_armor=Shell Armor
 effect.shell_armor.desc=The edges of your shell may hurt those who attack you.
@@ -545,7 +545,7 @@ effect.spider_nightmare=Spider Nightmare
 effect.spider_nightmare.desc=Surround your enemy with webs and spiders.
 
 effect.frostbite=Frostbite
-effect.frostbite.desc=Encases a target in ice. May have other effects.
+effect.frostbite.desc=Encases a target in ice. May have other effects
 
 effect.extinguish_fire=Extinguish
 effect.extinguish_fire.desc=Puts out any fires on you.
@@ -614,10 +614,10 @@ effect.grace=Grace
 effect.grace.desc=Negates fall damage.
 
 effect.purify=Purification
-effect.purify.desc=Removes harmful brew effects.
+effect.purify.desc=Removes harmful brew effects
 
 effect.infestation=Infestation
-effect.infestation.desc=Turns grass and dirt into mycelium. May have other effects.
+effect.infestation.desc=Turns grass and dirt into mycelium. May have other effects
 
 effect.mending=Mending
 effect.mending.desc=Turns mycelium and dirt into grass. Cleans and boosts entities.
@@ -635,7 +635,7 @@ effect.ice_world=Ice World
 effect.ice_world.desc=Converts your surroundings to a wintery wonderland.
 
 effect.corruption=Corruption
-effect.corruption.desc=Removes all beneficial brew effects.
+effect.corruption.desc=Removes all beneficial brew effects
 
 effect.salted_earth=Salting
 effect.salted_earth.desc=Destroys farmland and renders it useless.
@@ -696,60 +696,60 @@ bewitchment.subtitle.owl_hoot=Owl hooting
 bewitchment.subtitle.raven_croaks=Raven croaking
 
 ///ToolTips
-witch.tooltip.seed_aconitum_description.name=Seed from a poisonous plant
-witch.tooltip.seed_asphodel_description.name=Seed from a plant of the dead
-witch.tooltip.seed_belladonna_description.name=Seed from a herbaceous plant
-witch.tooltip.seed_ginger_description.name=Seed from a flowering plant
-witch.tooltip.seed_kelp_description.name=Spore from a large algae
-witch.tooltip.seed_mint_description.name=Seed from a herbaceous plant
-witch.tooltip.seed_white_sage_description.name=Seed from an evergreen perennial shrub
-witch.tooltip.seed_mandrake_description.name=Seed from a plant with a strange root
-witch.tooltip.seed_lavender_description.name=Seed from a flowering plant
-witch.tooltip.seed_thistle_description.name=Seed from a thorny flower
-witch.tooltip.seed_silphium_description.name=Seed from a strange fennel
-witch.tooltip.seed_garlic_description.name=Seed from a smelly allium
-witch.tooltip.seed_wormwood_description.name=Seed from a weedy herb
-witch.tooltip.seed_kenaf_description.name=Seed from a bamboo-like hibiscus
-witch.tooltip.seed_tulsi_description.name=Seed from a small herb
-witch.tooltip.seed_hellebore_description.name=Seed from a innocent-looking plant
-witch.tooltip.seed_chrysanthemum_description.name=Seed from a powerful flower
-witch.tooltip.seed_sagebrush_description.name=Seed from a hardy shrub
+tooltip.bewitchment.seed_aconitum_description.name=Seed from a poisonous plant
+tooltip.bewitchment.seed_asphodel_description.name=Seed from a plant of the dead
+tooltip.bewitchment.seed_belladonna_description.name=Seed from a herbaceous plant
+tooltip.bewitchment.seed_ginger_description.name=Seed from a flowering plant
+tooltip.bewitchment.seed_kelp_description.name=Spore from a large algae
+tooltip.bewitchment.seed_mint_description.name=Seed from a herbaceous plant
+tooltip.bewitchment.seed_white_sage_description.name=Seed from an evergreen perennial shrub
+tooltip.bewitchment.seed_mandrake_description.name=Seed from a plant with a strange root
+tooltip.bewitchment.seed_lavender_description.name=Seed from a flowering plant
+tooltip.bewitchment.seed_thistle_description.name=Seed from a thorny flower
+tooltip.bewitchment.seed_silphium_description.name=Seed from a strange fennel
+tooltip.bewitchment.seed_garlic_description.name=Seed from a smelly allium
+tooltip.bewitchment.seed_wormwood_description.name=Seed from a weedy herb
+tooltip.bewitchment.seed_kenaf_description.name=Seed from a bamboo-like hibiscus
+tooltip.bewitchment.seed_tulsi_description.name=Seed from a small herb
+tooltip.bewitchment.seed_hellebore_description.name=Seed from a innocent-looking plant
+tooltip.bewitchment.seed_chrysanthemum_description.name=Seed from a powerful flower
+tooltip.bewitchment.seed_sagebrush_description.name=Seed from a hardy shrub
 
-witch.tooltip.aconitum_description.name=A poisonous flower used to hunt Lycanthropes
-witch.tooltip.asphodel_description.name=Related to death and the afterlife, but not poisonous
-witch.tooltip.belladonna_description.name=A highly toxic plant, this is a prime component of flying ointment
-witch.tooltip.ginger_description.name=An incredibly spicy root
-witch.tooltip.kelp_description.name=A tall algae, with connections to the sea
-witch.tooltip.mint_description.name=An herb with a cooling effect
-witch.tooltip.white_sage_description.name=Used as an aid in exorcisms
-witch.tooltip.mandrake_root_description.name=Used to amplify magical effects
-witch.tooltip.lavender_description.name=Associated with purity and grace
-witch.tooltip.thistle_description.name=A thorny but beautiful flower
-witch.tooltip.silphium_description.name=A strange and unusual fennel
-witch.tooltip.garlic_description.name=A common spice that keeps the undead at bay
-witch.tooltip.wormwood_description.name=An incredibly weedy herb
-witch.tooltip.kenaf_description.name=A tall plant with useful fibers
-witch.tooltip.tulsi_description.name=A small herb considered sacred by some
-witch.tooltip.hellebore_description.name=A beautiful and poisonous flower linked to demons
-witch.tooltip.chrysanthemum_description.name=A rather popular flower, it is often linked with nobility
-witch.tooltip.sagebrush_description.name=An herb associated with purification
-witch.tooltip.infested_wheat_description.name=An ill-looking crop
-witch.tooltip.witchweed_description.name=A small herb that grows over other crops
+tooltip.bewitchment.aconitum_description.name=A poisonous flower used to hunt Lycanthropes
+tooltip.bewitchment.asphodel_description.name=Related to death and the afterlife, but not poisonous
+tooltip.bewitchment.belladonna_description.name=A highly toxic plant, this is a prime component of flying ointment
+tooltip.bewitchment.ginger_description.name=An incredibly spicy root
+tooltip.bewitchment.kelp_description.name=A tall algae, with connections to the sea
+tooltip.bewitchment.mint_description.name=An herb with a cooling effect
+tooltip.bewitchment.white_sage_description.name=Used as an aid in exorcisms
+tooltip.bewitchment.mandrake_root_description.name=Used to amplify magical effects
+tooltip.bewitchment.lavender_description.name=Associated with purity and grace
+tooltip.bewitchment.thistle_description.name=A thorny but beautiful flower
+tooltip.bewitchment.silphium_description.name=A strange and unusual fennel
+tooltip.bewitchment.garlic_description.name=A common spice that keeps the undead at bay
+tooltip.bewitchment.wormwood_description.name=An incredibly weedy herb
+tooltip.bewitchment.kenaf_description.name=A tall plant with useful fibers
+tooltip.bewitchment.tulsi_description.name=A small herb considered sacred by some
+tooltip.bewitchment.hellebore_description.name=A beautiful and poisonous flower linked to demons
+tooltip.bewitchment.chrysanthemum_description.name=A rather popular flower, it is often linked with nobility
+tooltip.bewitchment.sagebrush_description.name=An herb associated with purification
+tooltip.bewitchment.infested_wheat_description.name=An ill-looking crop
+tooltip.bewitchment.witchweed_description.name=A small herb that grows over other crops
 
 item.bewitchment.tag_lock.empty=Empty Taglock
 
-tooltip.brew.data=Brew Data:
+tooltip.brew.bewitchment.data=Brew Data:
 tooltip.potion.data=Potion Data:
 
 tooltip.shift_for_info=<hold shift for details>
 
-witch.tooltip.silver_armor_description.name=Protects against undead
-witch.tooltip.silver_tool_description.name=Deals extra damage to undead
+tooltip.bewitchment.silver_armor_description.name=Protects against undead
+tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
 
-witch.tooltip.cold_iron_armor_description.name=Protects against demons and spirits
-witch.tooltip.cold_iron_tool_description.name=Deals extra damage to spirits
+tooltip.bewitchment.cold_iron_armor_description.name=Protects against demons and spirits
+tooltip.bewitchment.cold_iron_tool_description.name=Deals extra damage to spirits
 
-witch.tooltip.athame_description.name=This ceremonial dagger also allows you to obtain special loot from mobs.
+tooltip.bewitchment.athame_description.name=This ceremonial dagger also allows you to obtain special loot from mobs.
 
 //Baubles
 item.bewitchment.shirt.name=Shirt
@@ -769,16 +769,16 @@ item.bewitchment.talisman_ruby_orb.name=Scarlet Orb
 item.bewitchment.talisman_watching_eye.name=Everwatching Eye
 
 //Trinket Descriptions
-witch.tooltip.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
-witch.tooltip.horseshoe_description.name=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
-witch.tooltip.triskelion_amulet_description.name=This amulet seems to provide some strength against foes, but drains you slightly.
-witch.tooltip.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
-witch.tooltip.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
-witch.tooltip.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
-witch.tooltip.mantle_description.name=A plain mantle. It's stylish, though...
-witch.tooltip.pouch_description.name=What secrets does it hold?
-witch.tooltip.wrathful_eye_description.name=This trinket commands respect from demons.
-witch.tooltip.hellish_bauble_description.name=This oddly shaped trinket will allow you to tap into a small portion of demonic power
+tooltip.bewitchment.nazar_description.name=An amulet that keeps bad luck at bay and provides some immunity from magic attacks
+tooltip.bewitchment.horseshoe_description.name=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
+tooltip.bewitchment.triskelion_amulet_description.name=This amulet seems to provide some strength against foes, but drains you slightly.
+tooltip.bewitchment.talismans_description.name=An enchantable trinket, its effects will mainfest once enchanted
+tooltip.bewitchment.remedy_talisman_description.name=The gem in its core seems to absorb illnesses, but it depletes rather quickly
+tooltip.bewitchment.girdle_of_the_wooded_description.name=This belt protects the wearer from harm by growing pieces of bark as armor
+tooltip.bewitchment.mantle_description.name=A plain mantle. It's stylish, though...
+tooltip.bewitchment.pouch_description.name=What secrets does it hold?
+tooltip.bewitchment.wrathful_eye_description.name=This trinket commands respect from demons.
+tooltip.bewitchment.hellish_bauble_description.name=This oddly shaped trinket will allow you to tap into a small portion of demonic power
 
 //Commands
 commands.incantation.usage=/chant [incantation]
@@ -802,25 +802,25 @@ achievement.bewitchment:craftMalachite=Let's Be Malachite Again!
 achievement.bewitchment:craftMalachite.desc=This Is Between Us!
 
 //JEI
-jei.category.oven=Oven
-jei.category.rituals=Rituals
-jei.category.spinner=Thread Spinning
-jei.category.brewing=Brew Bottling
-jei.category.crafting=Cauldron Crafting
-jei.category.brew_modifiers=Brew Modifier
-jei.category.distillery=Distillation
-jei.ritual.power.flat=%d Altar Power
-jei.ritual.power.tick=%d Altar Power Per Second
+jei.bewitchment.category.oven=Oven
+jei.bewitchment.category.rituals=Rituals
+jei.bewitchment.category.spinner=Thread Spinning
+jei.bewitchment.category.brewing=Brew Bottling
+jei.bewitchment.category.crafting=Cauldron Crafting
+jei.bewitchment.category.brew_modifiers=Brew Modifier
+jei.bewitchment.category.distillery=Distillation
+jei.bewitchment.ritual.power.flat=%d Altar Power
+jei.bewitchment.ritual.power.tick=%d Altar Power Per Second
 
 //Rituals
 ritual.failure.unknown=You never heard of such rites
 ritual.failure.power=Your source of magic is not strong enough
 ritual.failure.precondition=Something's wrong
-ritual.bewitchment.high_moon.name=Ritual of the High Moon
+ritual.bewitchment.high_moon.bewitchment.name=Ritual of the High Moon
 ritual.bewitchment.time_sands.name=Ritual of the Sands of Time
 ritual.bewitchment.perception.name=Ritual of Perception
 ritual.bewitchment.conjure_wither.name=Ritual of Conjuration (Wither)
-ritual.bewitchment.conjure_witch.name=Ritual of Conjuration (Witch)
+ritual.bewitchment.conjure_bewitchment.name=Ritual of Conjuration (Witch)
 ritual.bewitchment.conjure_vex.name=Ritual of Conjuration (Vex)
 ritual.bewitchment.conjure_blaze.name=Ritual of Conjuration (Blaze)
 ritual.bewitchment.conjure_ghast.name=Ritual of Conjuration (Ghast)
@@ -864,7 +864,7 @@ crystal_ball.read.other=You can see %2$s's future: %1$s
 fortunes.bewitchment.meet_zombie.name=Those who lie underground will be awakened.
 fortunes.bewitchment.meet_silverfish.name=A foul vermin hides in the path.
 fortunes.bewitchment.death.name=The path ahead looks very bleak.
-fortunes.bewitchment.meet_witch.name=Something wicked this way comes.
+fortunes.bewitchment.meet_bewitchment.name=Something wicked this way comes.
 fortunes.bewitchment.drop_item.name=Fingers won't obey when they're most needed.
 fortunes.bewitchment.treasure.name=You might be very rich, very soon.
 fortunes.bewitchment.merchant.name=You will stumble upon some good deals.
@@ -883,28 +883,28 @@ fortunes.bewitchment.illness.name=Weakness and misfortune dot your future.
 fortunes.bewitchment.good_luck.name=Your future looks very bright indeed.
 fortunes.bewitchment.bad_luck.name=Your future looks dim.
 //Tarots
-tarot.enderman.name=The Enderman
-tarot.diamonds.name=The Diamonds
-tarot.iron_golem.name=The Iron Golem
-tarot.wither_skeleton.name=The Wither Skeleton
-tarot.star.name=The Night Star
-tarot.moon.name=The Moon
-tarot.silver_sword.name=The Silver Sword
-tarot.hermit.name=The Hermit
-tarot.nitwit.name=The Snow Golem
-tarot.ender_dragon.name=The Ender Dragon
-tarot.evoker.name=The Evoker
-tarot.guardian.name=The Guardian
-tarot.illusioner.name=The Illusioner
-tarot.stronghold.name=The Stronghold
-tarot.sun.name=The Sun
-tarot.mounts.name=The Mounts
-tarot.world.name=The World
-tarot.witch.name=The Witch
-tarot.wither.name=The Wither
-tarot.zombie.name=The Zombie
+tarot.bewitchment.enderman.name=The Enderman
+tarot.bewitchment.diamonds.name=The Diamonds
+tarot.bewitchment.iron_golem.name=The Iron Golem
+tarot.bewitchment.wither_skeleton.name=The Wither Skeleton
+tarot.bewitchment.star.name=The Night Star
+tarot.bewitchment.moon.bewitchment.name=The Moon
+tarot.bewitchment.silver_sword.name=The Silver Sword
+tarot.bewitchment.hermit.name=The Hermit
+tarot.bewitchment.nitwit.name=The Snow Golem
+tarot.bewitchment.ender_dragon.name=The Ender Dragon
+tarot.bewitchment.evoker.name=The Evoker
+tarot.bewitchment.guardian.name=The Guardian
+tarot.bewitchment.illusioner.name=The Illusioner
+tarot.bewitchment.stronghold.name=The Stronghold
+tarot.bewitchment.sun.name=The Sun
+tarot.bewitchment.mounts.name=The Mounts
+tarot.bewitchment.world.name=The World
+tarot.bewitchment.bewitchment.name=The Witch
+tarot.bewitchment.wither.name=The Wither
+tarot.bewitchment.zombie.name=The Zombie
 
-tarot.
+tarot.bewitchment.
 
 //Death Messages
 death.attack.sun_on_vampire=You should not have walked outside
@@ -927,10 +927,10 @@ key.description.enable_bar=Toggle extra bar reachability
 key.description.place_item=Place Item
 
 //Brew misc
-brew.parameters.formatting= %s
-brew.parameters.none=This does not carry additional powers
-brew.description.formatting=%s
-brew.effects.formatting=%s %s (%s)
+brew.bewitchment.parameters.formatting= %s
+brew.bewitchment.parameters.none=This does not carry additional powers
+brew.bewitchment.description.formatting=%s
+brew.bewitchment.effects.formatting=%s %s (%s)
 modifier.bewitchment.radius=Expanding %s
 modifier.bewitchment.power=Strength %s
 modifier.bewitchment.color=Colored as #%s
@@ -949,9 +949,9 @@ modifier.description.bewitchment.suppress_particles=Particle suppression
 modifier.description.bewitchment.gas_duration=Lingering cloud duration
 modifier.description.bewitchment.length=Effect duration
 
-moon.tooltip.0=You feel weird today
-moon.tooltip.1=Your heart is beating faster, your thoughts are slipping out of control
-moon.tooltip.2=No matter how hard you try, you cannot switch back
+moon.bewitchment.tooltip.0=You feel weird today
+moon.bewitchment.tooltip.1=Your heart is beating faster, your thoughts are slipping out of control
+moon.bewitchment.tooltip.2=No matter how hard you try, you cannot switch back
 
 //Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
@@ -960,20 +960,20 @@ tc.aspect.luna=The Moon
 tc.aspect.sol=The Sun
 
 //Mobs
-entity.entity_owl.name=Owl
-entity.entity_snake.name=Snake
-entity.entity_raven.name=Raven
-entity.entity_toad.name=Toad
-entity.entity_lizard.name=Lizard
-entity.entity_blindworm.name=Blindworm
-entity.entity_newt.name=Newt
-entity.entity_uran.name=Serpent
-entity.entity_hellhound.name=Hellhound
-entity.entity_hellhound_alpha.name=Alpha Hellhound
-entity.entity_black_dog.name=Black Dog
-entity.entity_imp.name=Imp
-entity.entity_demoness.name=Demoness
-entity.entity_demon.name=Demon
+entity.bewitchment.owl.name=Owl
+entity.bewitchment.snake.name=Snake
+entity.bewitchment.raven.name=Raven
+entity.bewitchment.toad.name=Toad
+entity.bewitchment.lizard.name=Lizard
+entity.bewitchment.blindworm.name=Blindworm
+entity.bewitchment.newt.name=Newt
+entity.bewitchment.uran.name=Serpent
+entity.bewitchment.hellhound.name=Hellhound
+entity.bewitchment.hellhound_alpha.name=Alpha Hellhound
+entity.bewitchment.black_dog.name=Black Dog
+entity.bewitchment.imp.name=Imp
+entity.bewitchment.demoness.name=Demoness
+entity.bewitchment.demon.name=Demon
 
 //Enchantments
 enchantment.extra_mp=Natural Attuning

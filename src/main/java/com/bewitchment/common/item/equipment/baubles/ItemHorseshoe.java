@@ -99,6 +99,6 @@ public class ItemHorseshoe extends ItemMod implements IBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.AQUA + I18n.format("bewitchment.tooltip." + getNameInefficiently(stack) + "_description.name"));
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 }

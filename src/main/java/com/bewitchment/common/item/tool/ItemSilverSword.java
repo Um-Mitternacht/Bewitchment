@@ -57,7 +57,7 @@ public class ItemSilverSword extends ItemSword implements IModelRegister {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.GRAY + I18n.format("bewitchment.tooltip." + getToolMaterialName() + "_tool" + "_description.name"));
+		tooltip.add(TextFormatting.GRAY + I18n.format("tooltip.bewitchment." + getToolMaterialName() + "_tool" + "_description.name"));
 	}
 
 	@SideOnly(Side.CLIENT)

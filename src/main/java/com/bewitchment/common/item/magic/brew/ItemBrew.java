@@ -1,17 +1,22 @@
 package com.bewitchment.common.item.magic.brew;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.cauldron.DefaultModifiers;
 import com.bewitchment.api.cauldron.IBrewEffect;
 import com.bewitchment.api.cauldron.IBrewModifierList;
 import com.bewitchment.common.content.cauldron.BrewData;
 import com.bewitchment.common.content.cauldron.BrewData.BrewEntry;
+import com.bewitchment.common.content.cauldron.BrewMod;
 import com.bewitchment.common.content.cauldron.BrewModifierListImpl;
 import com.bewitchment.common.content.cauldron.CauldronRegistry;
 import com.bewitchment.common.core.helper.RomanNumberHelper;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.item.ItemMod;
 import com.bewitchment.common.item.ModItems;
+
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -24,9 +29,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-import java.util.Optional;
 
 public class ItemBrew extends ItemMod {
 
@@ -43,7 +45,7 @@ public class ItemBrew extends ItemMod {
 			TextFormatting color = brewEntry.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.DARK_AQUA;
 			IBrewModifierList list = brewEntry.getModifierList();
 			if (GuiScreen.isShiftKeyDown()) {
-				tooltip.add(color + I18n.format("bewitchment." + brewEntry.getPotion().getName()));
+				tooltip.add(color + I18n.format(brewEntry.getPotion().getName()));
 				if (!list.getModifiers().isEmpty()) {
 					list.getModifiers().stream().filter(modifier -> list.getLevel(modifier).isPresent()).forEach(bm -> {
 						tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("brew.bewitchment.parameters.formatting", bm.getTooltipString(brewEntry.getModifierList().getLevel(bm).get())));
@@ -61,10 +63,11 @@ public class ItemBrew extends ItemMod {
 				}
 				lengthString = getLengthTTip(lengthMod, brewEntry.getPotion(), stack.getItem());
 
-				tooltip.add(color + I18n.format("brew.bewitchment.effects.formatting", I18n.format("bewitchment." + brewEntry.getPotion().getName()), powerString, lengthString).replace("  ", " "));
-
-				String ref = TextFormatting.DARK_GRAY + I18n.format("bewitchment." + brewEntry.getPotion().getName() + ".desc");
-				tooltip.add(I18n.format("brew.bewitchment.description.formatting", ref));
+				tooltip.add(color + I18n.format("brew.bewitchment.effects.formatting", I18n.format(brewEntry.getPotion().getName()), powerString, lengthString).replace("  ", " "));
+				if(brewEntry.getPotion() instanceof BrewMod) {
+					String ref = TextFormatting.DARK_GRAY + I18n.format(brewEntry.getPotion().getName() + ".desc");
+					tooltip.add(I18n.format("brew.bewitchment.description.formatting", ref));
+				}
 			}
 		});
 	}
