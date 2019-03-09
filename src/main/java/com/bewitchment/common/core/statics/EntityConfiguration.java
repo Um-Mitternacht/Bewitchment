@@ -1,29 +1,28 @@
 package com.bewitchment.common.core.statics;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.bewitchment.common.Bewitchment;
 import com.bewitchment.common.core.helper.Log;
-import com.bewitchment.common.entity.ModEntityContainer;
 import com.bewitchment.common.entity.ModEntities;
+import com.bewitchment.common.entity.ModEntityContainer;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.config.Configuration;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * @author its_meow
- *
- * Mar 8, 2019
+ *         <p>
+ *         Mar 8, 2019
  */
 public class EntityConfiguration {
 
 	public static HashMap<ModEntityContainer, EntityConfigurationSection> sections = new HashMap<ModEntityContainer, EntityConfigurationSection>();
 
-	public static void readConfig(){
+	public static void readConfig() {
 		Configuration cfg = Bewitchment.entityConfig;
 		try {
 			cfg.load();
@@ -33,22 +32,22 @@ public class EntityConfiguration {
 			e1.printStackTrace();
 			Log.e("Mod " + LibMod.MOD_ID + " failed to load configuration. Report this here: https://github.com/Um-Mitternacht/Bewitchment/issues/new\n\n");
 		} finally {
-			if(cfg.hasChanged()){
+			if (cfg.hasChanged()) {
 				cfg.save();
 			}
 		}
 	}
 
 	public static void initConfig(Configuration cfg) {
-		for(ModEntityContainer container : ModEntities.entityList) {
+		for (ModEntityContainer container : ModEntities.entityList) {
 			String[] biomeStrings = new String[container.spawnBiomes.length];
-			for(int i = 0; i < container.spawnBiomes.length; i++) {
+			for (int i = 0; i < container.spawnBiomes.length; i++) {
 				biomeStrings[i] = container.spawnBiomes[i].getRegistryName().toString();
 			}
 			EntityConfigurationSection configSection = new EntityConfigurationSection(container.entityClazz, container.entityName, container.minGroup, container.maxGroup, container.weight, biomeStrings);
 			sections.put(container, configSection);
 		}
-		for(ModEntityContainer container : sections.keySet()) {
+		for (ModEntityContainer container : sections.keySet()) {
 			EntityConfigurationSection section = sections.get(container);
 			container.maxGroup = section.max;
 			container.minGroup = section.min;
@@ -58,9 +57,9 @@ public class EntityConfiguration {
 
 			// Parse biomes
 			List<Biome> biomesList = new ArrayList<Biome>();
-			for(String biomeID : section.biomesList) {
+			for (String biomeID : section.biomesList) {
 				Biome biome = Biome.REGISTRY.getObject(new ResourceLocation(biomeID));
-				if(biome == null) { // Could not get biome with ID
+				if (biome == null) { // Could not get biome with ID
 					Log.e("Invalid biome configuration entered for entity \"" + container.entityName + "\" (biome was mistyped or a biome mod was removed?): " + biomeID);
 				} else { // Valid biome
 					biomesList.add(biome);
@@ -68,8 +67,7 @@ public class EntityConfiguration {
 			}
 			// Get as array
 			Biome[] biomes = new Biome[biomesList.size()];
-			for (int i = 0; i < biomesList.size(); i++)
-			{
+			for (int i = 0; i < biomesList.size(); i++) {
 				biomes[i] = biomesList.get(i);
 			}
 

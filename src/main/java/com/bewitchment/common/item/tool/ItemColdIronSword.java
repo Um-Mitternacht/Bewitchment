@@ -9,7 +9,6 @@ import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

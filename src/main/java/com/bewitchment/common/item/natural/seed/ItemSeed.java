@@ -4,7 +4,6 @@ import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

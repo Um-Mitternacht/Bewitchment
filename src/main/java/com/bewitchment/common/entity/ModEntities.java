@@ -1,26 +1,10 @@
 package com.bewitchment.common.entity;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.bewitchment.common.core.helper.Log;
-import com.bewitchment.common.entity.living.animals.EntityBlindworm;
-import com.bewitchment.common.entity.living.animals.EntityLizard;
-import com.bewitchment.common.entity.living.animals.EntityNewt;
-import com.bewitchment.common.entity.living.animals.EntityOwl;
-import com.bewitchment.common.entity.living.animals.EntityRaven;
-import com.bewitchment.common.entity.living.animals.EntitySnake;
-import com.bewitchment.common.entity.living.animals.EntityToad;
-import com.bewitchment.common.entity.spirits.demons.EntityDemon;
-import com.bewitchment.common.entity.spirits.demons.EntityDemoness;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhound;
-import com.bewitchment.common.entity.spirits.demons.EntityHellhoundAlpha;
-import com.bewitchment.common.entity.spirits.demons.EntityImp;
-import com.bewitchment.common.entity.spirits.demons.EntityUran;
+import com.bewitchment.common.entity.living.animals.*;
+import com.bewitchment.common.entity.spirits.demons.*;
 import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving.SpawnPlacementType;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -36,21 +20,29 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
  * It's distributed as part of Bewitchment under
  * the MIT license.
- * 
+ * <p>
  * Rewritten by its_meow on
  * March 8th, 2019 - Uses EntityEntry
  */
 public final class ModEntities {
 
+	private static final String LOCALIZE_PREFIX = LibMod.MOD_ID + ".";
+	public static int modEntities = 0;
+	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
+	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
 	private ModEntities() {
 	}
 
 	public static void fillEntityContainers() {
-		
+
 		/* Biome lists */
 		List<Biome> validOwl = BiomeDictionary.getBiomes(Type.FOREST).stream()
 				.filter(b -> BiomeDictionary.hasType(b, Type.DENSE) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
@@ -116,7 +108,7 @@ public final class ModEntities {
 				.filter(b -> BiomeDictionary.hasType(b, Type.PLAINS) || BiomeDictionary.hasType(b, Type.WASTELAND) || BiomeDictionary.hasType(b, Type.FOREST) || !BiomeDictionary.hasType(b, Type.NETHER) || !BiomeDictionary.hasType(b, Type.VOID))
 				.peek(b -> Log.d("Valid black dog biome found: " + b.getRegistryName()))
 				.collect(Collectors.toList());
-		
+
 		// Nonliving entities
 		register(EntitySpellCarrier.class, "spell_carrier");
 		register(EntityFlyingBroom.class, "broom");
@@ -127,7 +119,7 @@ public final class ModEntities {
 		register(EntityAoE.class, "brew_aoe_effect", 64, 100, false);
 
 		/* Living Entities */
-		
+
 		// Familiar Animals
 		entityList.add(new ModEntityContainer(EntityOwl.class, "owl", EnumCreatureType.CREATURE, 0xAF813F, 0x6e5127, 20, 1, 4, validOwl));
 		entityList.add(new ModEntityContainer(EntitySnake.class, "snake", EnumCreatureType.CREATURE, 0x8F9779, 0x696969, 20, 1, 4, validSnake));
@@ -149,23 +141,15 @@ public final class ModEntities {
 		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
 	}
 
-	public static int modEntities = 0;
-
-	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
-	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
-
-	private static final String LOCALIZE_PREFIX = LibMod.MOD_ID + ".";
-
-
-	public static void reg(ModEntityContainer c){
-		if(c.doSpawning) {
+	public static void reg(ModEntityContainer c) {
+		if (c.doSpawning) {
 			registerWithSpawnAndEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type, c.weight, c.minGroup, c.maxGroup, c.spawnBiomes);
 		} else {
 			registerWithEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot);
 		}
 	}
 
-	public static void registerWithSpawnAndEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn, EnumCreatureType typeIn, int prob, int min, int max, Biome[] biomes){
+	public static void registerWithSpawnAndEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn, EnumCreatureType typeIn, int prob, int min, int max, Biome[] biomes) {
 		EntityEntry entry = EntityEntryBuilder.create()
 				.entity(EntityClass)
 				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
@@ -174,13 +158,13 @@ public final class ModEntities {
 				.egg(solidColorIn, spotColorIn)
 				.spawn(typeIn, prob, min, max, biomes)
 				.build();
-		if(typeIn == EnumCreatureType.WATER_CREATURE) {
+		if (typeIn == EnumCreatureType.WATER_CREATURE) {
 			EntitySpawnPlacementRegistry.setPlacementType(EntityClass, SpawnPlacementType.IN_WATER);
 		}
 		entrySet.add(entry);
 	}
 
-	public static void registerWithEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn){
+	public static void registerWithEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn) {
 		EntityEntry entry = EntityEntryBuilder.create()
 				.entity(EntityClass)
 				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
@@ -191,7 +175,7 @@ public final class ModEntities {
 		entrySet.add(entry);
 	}
 
-	public static void register(Class<? extends Entity> EntityClass, String entityNameIn){
+	public static void register(Class<? extends Entity> EntityClass, String entityNameIn) {
 		EntityEntry entry = EntityEntryBuilder.create()
 				.entity(EntityClass)
 				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
@@ -202,7 +186,7 @@ public final class ModEntities {
 		entrySet.add(entry);
 	}
 
-	public static void register(Class<? extends Entity> EntityClass, String entityNameIn, int range, int updateFrequency, boolean sendVelocity){
+	public static void register(Class<? extends Entity> EntityClass, String entityNameIn, int range, int updateFrequency, boolean sendVelocity) {
 		EntityEntry entry = EntityEntryBuilder.create()
 				.entity(EntityClass)
 				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
@@ -214,24 +198,21 @@ public final class ModEntities {
 	}
 
 
-
 	//####################################################################################
 
 	@EventBusSubscriber(modid = LibMod.MOD_ID)
-	public static class RegistrationHandler
-	{
+	public static class RegistrationHandler {
 
 		@SubscribeEvent
-		public static void onEvent(final RegistryEvent.Register<EntityEntry> event)
-		{
+		public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
 			final IForgeRegistry<EntityEntry> registry = event.getRegistry();
 
-			for(ModEntityContainer container : entityList) {
-				if(container.doRegister)
+			for (ModEntityContainer container : entityList) {
+				if (container.doRegister)
 					reg(container);
 			}
 
-			if(!entrySet.isEmpty()) {
+			if (!entrySet.isEmpty()) {
 				for (final EntityEntry entityEntry : entrySet) {
 
 					registry.register(entityEntry);

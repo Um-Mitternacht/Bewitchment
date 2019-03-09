@@ -9,7 +9,6 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.entity.EntityBrewArrow;
 import com.bewitchment.common.lib.LibItemName;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;

@@ -6,7 +6,6 @@ import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.content.transformation.CapabilityTransformation;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.lib.LibMod;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
