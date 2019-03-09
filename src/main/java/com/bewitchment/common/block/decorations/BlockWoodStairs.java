@@ -16,7 +16,7 @@ public class BlockWoodStairs extends BlockStairs implements IModelRegister {
 
 	public BlockWoodStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
-		setTranslationKey(unlocalizedName);
+		setTranslationKey(LibMod.MOD_ID + "." + unlocalizedName);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;

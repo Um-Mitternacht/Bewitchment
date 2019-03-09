@@ -5,6 +5,8 @@ import com.bewitchment.api.mp.IMagicPowerExpander;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -25,7 +27,7 @@ public class ItemModFood extends ItemFood implements IModelRegister {
 	public ItemModFood(String id, int amount, float saturation, boolean isWolfFood) {
 		super(amount, saturation, isWolfFood);
 		setRegistryName(id);
-		setTranslationKey(id);
+		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setCreativeTab(ModCreativeTabs.PLANTS_CREATIVE_TAB);
 	}
 

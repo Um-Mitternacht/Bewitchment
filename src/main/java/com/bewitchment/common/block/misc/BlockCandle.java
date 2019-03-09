@@ -43,7 +43,7 @@ import java.util.Random;
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public abstract class BlockCandle extends BlockMod implements IInfusionStabiliserExt {
 
-	private boolean isLit;
+	private boolean isLit; // it's lit fam -its_meow
 
 	public BlockCandle(String id, boolean lit) {
 		super(id, Material.CLOTH);

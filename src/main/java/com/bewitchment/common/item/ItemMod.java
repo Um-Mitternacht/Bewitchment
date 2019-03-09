@@ -11,6 +11,8 @@ package com.bewitchment.common.item;
 import com.bewitchment.client.core.IModelRegister;
 import com.bewitchment.client.handler.ModelHandler;
 import com.bewitchment.common.core.statics.ModCreativeTabs;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,7 +27,7 @@ public class ItemMod extends Item implements IModelRegister {
 	public ItemMod(String id) {
 		super();
 		setRegistryName(id);
-		setTranslationKey(id);
+		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		setMaxStackSize(1);
 	}

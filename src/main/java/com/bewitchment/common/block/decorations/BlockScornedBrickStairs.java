@@ -21,7 +21,7 @@ public class BlockScornedBrickStairs extends BlockStairs implements IModelRegist
 
 	public BlockScornedBrickStairs(String unlocalizedName, IBlockState state, Material material) {
 		super(state);
-		setTranslationKey(LibBlockName.SCORNED_BRICK_STAIRS);
+		setTranslationKey(LibMod.MOD_ID + "." + LibBlockName.SCORNED_BRICK_STAIRS);
 		setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		useNeighborBrightness = true;

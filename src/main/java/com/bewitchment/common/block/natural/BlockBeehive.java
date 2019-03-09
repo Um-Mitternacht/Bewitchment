@@ -53,7 +53,7 @@ public class BlockBeehive extends BlockFalling implements IModelRegister {
 
 	public BlockBeehive(String id, Material material) {
 		super(Material.GRASS);
-		setTranslationKey(id);
+		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setDefaultState(blockState.getBaseState());
 		setRegistryName(LibMod.MOD_ID, id);
 		setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);

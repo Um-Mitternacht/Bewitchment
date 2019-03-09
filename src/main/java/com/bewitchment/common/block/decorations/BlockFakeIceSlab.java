@@ -31,7 +31,7 @@ public abstract class BlockFakeIceSlab extends BlockSlab {
 	public BlockFakeIceSlab(String unlocalizedName) {
 		super(Material.ICE);
 		setResistance(2F);
-		this.setTranslationKey(unlocalizedName);
+		setTranslationKey(LibMod.MOD_ID + "." + unlocalizedName);
 		this.setRegistryName(new ResourceLocation(LibMod.MOD_ID, unlocalizedName));
 		this.setCreativeTab(ModCreativeTabs.BLOCKS_CREATIVE_TAB);
 		setHardness(2F);

@@ -8,6 +8,8 @@ import com.bewitchment.common.core.statics.ModCreativeTabs;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -38,7 +40,7 @@ public class ItemColdIronSword extends ItemSword implements IModelRegister {
 	public ItemColdIronSword() {
 		super(ModMaterials.TOOL_COLD_IRON);
 		setRegistryName(LibItemName.COLD_IRON_SWORD);
-		setTranslationKey(LibItemName.COLD_IRON_SWORD);
+		setTranslationKey(LibMod.MOD_ID + "." + LibItemName.COLD_IRON_SWORD);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 	}
 

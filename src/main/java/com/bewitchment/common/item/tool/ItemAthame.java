@@ -12,6 +12,8 @@ import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.item.ModMaterials;
 import com.bewitchment.common.lib.LibItemName;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -52,7 +54,7 @@ public class ItemAthame extends ItemSword implements IModelRegister {
 		super(ModMaterials.TOOL_RITUAL);
 		setMaxDamage(600);
 		setRegistryName(LibItemName.ATHAME);
-		setTranslationKey(LibItemName.ATHAME);
+		setTranslationKey(LibMod.MOD_ID + "." + LibItemName.ATHAME);
 		setCreativeTab(ModCreativeTabs.ITEMS_CREATIVE_TAB);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

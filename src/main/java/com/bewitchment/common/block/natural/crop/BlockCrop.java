@@ -1,6 +1,8 @@
 package com.bewitchment.common.block.natural.crop;
 
 import com.bewitchment.client.core.IModelRegister;
+import com.bewitchment.common.lib.LibMod;
+
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +26,7 @@ public class BlockCrop extends BlockCrops implements IModelRegister {
 
 	public BlockCrop(String id) {
 		super();
-		setTranslationKey(id);
+		setTranslationKey(LibMod.MOD_ID + "." + id);
 		setRegistryName(id);
 		setCreativeTab(null);
 		this.maxAge = 7;
