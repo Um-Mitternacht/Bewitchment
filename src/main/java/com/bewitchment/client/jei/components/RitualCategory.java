@@ -27,7 +27,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.rituals");
+		return I18n.format("jei.bewitchment.category.rituals");
 	}
 
 	@Override

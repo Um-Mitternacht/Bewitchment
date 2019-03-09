@@ -51,7 +51,7 @@ public class ItemBlockRevealingLantern extends ItemBlock {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (!lit) {
-			tooltip.add(TextFormatting.GRAY + TextFormatting.ITALIC.toString() + I18n.format("tile.lantern.desc"));
+			tooltip.add(TextFormatting.GRAY + TextFormatting.ITALIC.toString() + I18n.format("tile.bewitchment.lantern.desc"));
 		}
 	}
 

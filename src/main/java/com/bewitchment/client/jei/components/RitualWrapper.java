@@ -31,7 +31,7 @@ public class RitualWrapper implements IRecipeWrapper {
 		circles = ritual.getCircles();
 		powerStart = ritual.getRequiredStartingPower();
 		powerTick = ritual.getRunningPower();
-		name = I18n.format("ritual." + ritual.getRegistryName().toString().replace(':', '.') + ".name");
+		name = I18n.format("ritual.bewitchment." + ritual.getRegistryName().getPath() + ".name");
 		if (centerGlyph == null) {
 			centerGlyph = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 			circle1 = igh.drawableBuilder(new ResourceLocation(LibMod.MOD_ID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();

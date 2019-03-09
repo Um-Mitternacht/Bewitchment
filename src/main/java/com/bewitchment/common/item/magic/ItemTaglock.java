@@ -83,7 +83,7 @@ public class ItemTaglock extends ItemMod {
 		if (NBTHelper.hasTag(stack, Bewitchment.TAGLOCK_ENTITY_NAME)) {
 			tooltip.add(TextFormatting.DARK_GRAY + NBTHelper.getString(stack, Bewitchment.TAGLOCK_ENTITY_NAME));
 		} else {
-			tooltip.add(TextFormatting.DARK_GRAY + I18n.format("item.tag_lock.empty"));
+			tooltip.add(TextFormatting.DARK_GRAY + I18n.format("item.bewitchment.tag_lock.empty"));
 		}
 	}
 

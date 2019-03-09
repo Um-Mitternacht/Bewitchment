@@ -19,7 +19,7 @@ public class QuickTarot implements ITarot {
 	public QuickTarot(String name, Predicate<EntityPlayer> apply, Predicate<EntityPlayer> reverse, Function<EntityPlayer, Integer> getNum) {
 		validateAll(name, apply);
 		this.name = name;
-		this.unlocalizedName = "tarot." + name + ".name";
+		this.unlocalizedName = "tarot.bewitchment." + name + ".name";
 		rl = new ResourceLocation(LibMod.MOD_ID, "textures/gui/tarots/" + name + ".png");
 		this.reverse = reverse;
 		if (reverse == null) {

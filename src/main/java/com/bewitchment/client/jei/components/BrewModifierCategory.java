@@ -28,7 +28,7 @@ public class BrewModifierCategory implements IRecipeCategory<BrewModifierWrapper
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.brew_modifiers");
+		return I18n.format("jei.bewitchment.category.brew_modifiers");
 	}
 
 	@Override

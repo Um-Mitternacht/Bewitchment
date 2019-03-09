@@ -44,15 +44,15 @@ public class ItemFilledBowl extends ItemModFood {
 			NBTTagCompound nbt = stack.getTagCompound();
 			if (nbt.getInteger("hunger") > 0) {
 				float roundedSaturation = Math.round(nbt.getFloat("saturation") * 10) / 10;
-				tooltip.add(I18n.format("item.stew.description.generic"));
+				tooltip.add(I18n.format("item.bewitchment.stew.description.generic"));
 				if (GuiScreen.isShiftKeyDown()) {
-					tooltip.add(I18n.format("item.stew.description.precise", nbt.getInteger("hunger"), roundedSaturation));
+					tooltip.add(I18n.format("item.bewitchment.stew.description.precise", nbt.getInteger("hunger"), roundedSaturation));
 				}
 			} else {
-				tooltip.add(I18n.format("item.stew.description.empty"));
+				tooltip.add(I18n.format("item.bewitchment.stew.description.empty"));
 			}
 		} else {
-			tooltip.add(I18n.format("item.stew.description.empty"));
+			tooltip.add(I18n.format("item.bewitchment.stew.description.empty"));
 		}
 	}
 }

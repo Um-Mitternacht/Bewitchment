@@ -76,13 +76,13 @@ public class ItemNazar extends ItemMod implements IBauble {
 	}
 
 	public String getNameInefficiently(ItemStack stack) {
-		return getTranslationKey().substring(5);
+		return getTranslationKey().substring(5); // from its_meow - I hate this and I hate this and I hate this and I hate this pls why use firstIndexOf '.'
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.AQUA + I18n.format("witch.tooltip." + getNameInefficiently(stack) + "_description.name"));
+		tooltip.add(TextFormatting.AQUA + I18n.format("bewitchment.tooltip." + getNameInefficiently(stack) + "_description.name"));
 	}
 
 	private boolean doesPlayerHaveAmulet(EntityPlayer e) {

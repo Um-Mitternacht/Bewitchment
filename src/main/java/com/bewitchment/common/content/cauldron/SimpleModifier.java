@@ -74,8 +74,8 @@ public abstract class SimpleModifier implements IBrewModifier {
 	@SideOnly(Side.CLIENT)
 	public String getTooltipString(int lvl) {
 		if (hasMultipleLevels()) {
-			return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'), RomanNumberHelper.getRoman(lvl));
+			return I18n.format("modifier.bewitchment." + getRegistryName().getPath(), RomanNumberHelper.getRoman(lvl));
 		}
-		return I18n.format("modifier." + getRegistryName().toString().replace(':', '.'));
+		return I18n.format("modifier.bewitchment." + getRegistryName().getPath());
 	}
 }

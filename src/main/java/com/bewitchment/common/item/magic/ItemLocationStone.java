@@ -104,9 +104,9 @@ public class ItemLocationStone extends ItemMod {
 		if (isBound(stack)) {
 			DimensionalPosition pos = getLocation(stack).get();
 			String dimName = "Dim " + pos.getDim(); // TODO transform this to the dimension name
-			tooltip.add(I18n.format("item.location_stone.bound_to", pos.getX(), pos.getY(), pos.getZ(), dimName));
+			tooltip.add(I18n.format("item.bewitchment.location_stone.bound_to", pos.getX(), pos.getY(), pos.getZ(), dimName));
 		} else {
-			tooltip.add(I18n.format("item.location_stone.unbound"));
+			tooltip.add(I18n.format("item.bewitchment.location_stone.unbound"));
 		}
 	}
 

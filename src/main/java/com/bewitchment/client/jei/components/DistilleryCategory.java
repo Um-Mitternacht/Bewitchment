@@ -30,7 +30,7 @@ public class DistilleryCategory implements IRecipeCategory<DistilleryWrapper> {
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.distillery");
+		return I18n.format("jei.bewitchment.category.distillery");
 	}
 
 	@Override

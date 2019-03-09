@@ -27,7 +27,7 @@ public class LoomCategory implements IRecipeCategory<LoomWrapper> {
 
 	@Override
 	public String getTitle() {
-		return I18n.format("jei.category.spinner");
+		return I18n.format("jei.bewitchment.category.spinner");
 	}
 
 	@Override
