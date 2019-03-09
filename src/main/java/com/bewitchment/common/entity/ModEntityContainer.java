@@ -11,7 +11,7 @@ import net.minecraft.world.biome.Biome;
  *
  * Mar 8, 2019
  */
-public class EntityContainer {
+public class ModEntityContainer {
 	
 	public Class<? extends Entity> entityClazz;
 	public String entityName;
@@ -25,7 +25,7 @@ public class EntityContainer {
 	public boolean doRegister = true;
 	public boolean doSpawning = true;
 	
-	public EntityContainer(Class<? extends Entity> EntityClass, String entityNameIn, EnumCreatureType type, int solidColorIn, int spotColorIn, int prob, int min, int max, List<Biome> biomes) {
+	public ModEntityContainer(Class<? extends Entity> EntityClass, String entityNameIn, EnumCreatureType type, int solidColorIn, int spotColorIn, int prob, int min, int max, List<Biome> biomes) {
 		this.entityClazz = EntityClass;
 		this.entityName = entityNameIn;
 		this.eggColorSolid = solidColorIn;
