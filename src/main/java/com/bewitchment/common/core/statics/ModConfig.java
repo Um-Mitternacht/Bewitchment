@@ -29,14 +29,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public final class ModConfig {
 
 	@Comment("Change vein sizes, generation height and generation chance")
-	@Config.RequiresMcRestart
-	@Config.LangKey("bewitchment.config.mob_gen")
-	public static MobGen MOB_GEN = new MobGen();
 	@Config.LangKey("bewitchment.config.world_gen")
 	public static WorldGen WORLD_GEN = new WorldGen();
+	
 	@Comment("Customize the client-side only settings")
 	@Config.LangKey("bewitchment.config.client")
 	public static ClientConfig CLIENT = new ClientConfig();
+	
 	@Comment("The lower this number, the more time it takes for an altar to realize something has changed around it, the better the TPS")
 	@Config.RangeInt(min = 1, max = 46656)
 	//46656 is the max amount of blocks in altar range, meaning it will scan once per tick. More than that is useless
@@ -47,31 +46,6 @@ public final class ModConfig {
 		if (evt.getModID().equals(LibMod.MOD_ID)) {
 			ConfigManager.sync(LibMod.MOD_ID, Type.INSTANCE);
 		}
-	}
-
-	public static class MobGen {
-		@Comment("True if Owls should spawn, false otherwise")
-		public boolean spawn_owls = true;
-		@Comment("True if Snakes should spawn, false otherwise")
-		public boolean spawn_snakes = true;
-		@Comment("True if Toads should spawn, false otherwise")
-		public boolean spawn_toads = true;
-		@Comment("True if Ravens should spawn, false otherwise")
-		public boolean spawn_ravens = true;
-		@Comment("True if Blindworms should spawn, false otherwise")
-		public boolean spawn_blindworms = true;
-		@Comment("True if Newts should spawn, false otherwise")
-		public boolean spawn_newts = true;
-		@Comment("True if Lizards should spawn, false otherwise")
-		public boolean spawn_lizards = true;
-		@Comment("True if Serpents should spawn, false otherwise")
-		public boolean spawn_serpents = true;
-		@Comment("True if Hellhounds should spawn, false otherwise")
-		public boolean spawn_hellhounds = true;
-		@Comment("True if Alpha Hellhounds should spawn, false otherwise")
-		public boolean spawn_alpha_hellhounds = true;
-		@Comment("True if Black Dogs should spawn, false otherwise")
-		public boolean spawn_black_dogs = true;
 	}
 
 	public static class WorldGen {

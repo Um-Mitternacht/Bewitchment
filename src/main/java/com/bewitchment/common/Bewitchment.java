@@ -37,6 +37,7 @@ import com.bewitchment.common.core.helper.MobHelper;
 import com.bewitchment.common.core.net.GuiHandler;
 import com.bewitchment.common.core.net.NetworkHandler;
 import com.bewitchment.common.core.proxy.ISidedProxy;
+import com.bewitchment.common.core.statics.EntityConfiguration;
 import com.bewitchment.common.core.statics.ModLootTables;
 import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
@@ -54,6 +55,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -66,6 +68,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static com.bewitchment.common.lib.LibMod.MOD_NAME;
+
+import java.io.File;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -111,6 +115,7 @@ public class Bewitchment {
 	public static ISidedProxy proxy;
 	@Instance(LibMod.MOD_ID)
 	public static Bewitchment instance;
+	public static Configuration entityConfig;
 
 	static {
 		FluidRegistry.enableUniversalBucket();
@@ -148,7 +153,10 @@ public class Bewitchment {
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
-		ModEntities.init();
+		ModEntities.fillEntityContainers();
+		entityConfig = new Configuration(new File(event.getModConfigurationDirectory().getPath(), "bewitchment_entities.cfg")); 
+		EntityConfiguration.readConfig();
+		EntityConfiguration.initConfig(entityConfig);
 		ModSpells.init();
 		ModFortunes.init();
 		ModLootTables.registerLootTables();
@@ -198,7 +206,9 @@ public class Bewitchment {
 		BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST).parallelStream().filter(b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE)).forEach(b -> {
 			BlockMoonbell.addValidMoonbellBiome(b);
 		});
-
+		if(entityConfig.hasChanged()){
+			entityConfig.save();
+		}
 		CauldronRegistry.postInit();
 	}
 
