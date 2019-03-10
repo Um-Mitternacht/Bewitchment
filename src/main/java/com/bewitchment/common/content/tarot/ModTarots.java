@@ -38,6 +38,7 @@ public class ModTarots {
 		TarotHandler.registerTarot(new QuickTarot("witch", random, null, null));
 		TarotHandler.registerTarot(new QuickTarot("wither", random, null, null));
 		TarotHandler.registerTarot(new QuickTarot("zombie", random, null, null));
+		TarotHandler.registerTarot(new QuickTarot("cat", random, null, null));
 	}
 
 }
