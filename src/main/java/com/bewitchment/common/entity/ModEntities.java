@@ -38,6 +38,7 @@ public final class ModEntities {
 	public static int modEntities = 0;
 	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
 	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
+
 	private ModEntities() {
 	}
 
@@ -137,6 +138,7 @@ public final class ModEntities {
 		registerWithEgg(EntityDemon.class, "demon", 0x555555, 0xED2939);
 		registerWithEgg(EntityDemoness.class, "demoness", 0x555555, 0xED2939);
 		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939);
+		registerWithEgg(EntityLeonard.class, "leonard", 0x000000, 0x000000);
 		//Ghosts
 		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
 	}
