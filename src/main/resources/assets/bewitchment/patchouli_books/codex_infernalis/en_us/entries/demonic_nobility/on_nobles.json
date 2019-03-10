@@ -1,0 +1,15 @@
+{
+  "name": "A Preface on Nobles",
+  "icon": "bewitchment:hellish_bauble",
+  "category": "demonic_nobility",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Leonard of the Gate, Herne of the Green, Lilith of the Starless Nignt, and Baphomet of the Beyond. These are but some of the titles of some of the four, most high ranking demons. Unlike most demonic nobles, they possess tremendous power, and could be seen as gods in their own right. Why they take an interest in mortal affairs is unknown, but many have tried to speculate."
+    },
+    {
+      "type": "text",
+      "text": "Some think they merely view mortals as their playthings, for instance. Others think they have more malicious plans in mind for mortals. But the truth is, these beings simply cannot be understood in the end."
+    }
+  ]
+}
