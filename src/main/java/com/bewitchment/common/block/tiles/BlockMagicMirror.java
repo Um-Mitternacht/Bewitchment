@@ -46,6 +46,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		return new BlockStateContainer(this, MIRROR_VARIANTS, BlockHorizontal.FACING, HALF);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		EnumFacing dir = EnumFacing.getDirectionFromEntityLiving(pos, placer);
@@ -69,11 +70,13 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex() | (state.getValue(HALF) ? 4 : 0);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.byHorizontalIndex(meta)).withProperty(HALF, (meta & 4) == 4);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntityMagicMirror magicMirror = (TileEntityMagicMirror) worldIn.getTileEntity(pos);
@@ -93,26 +96,31 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isBlockNormalCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		EnumFacing facing = state.getValue(BlockHorizontal.FACING);
@@ -134,6 +142,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		IBlockState neighborState = world.getBlockState(fromPos);
@@ -187,6 +196,7 @@ public class BlockMagicMirror extends BlockModTileEntity {
 		return BlockRenderLayer.CUTOUT;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;

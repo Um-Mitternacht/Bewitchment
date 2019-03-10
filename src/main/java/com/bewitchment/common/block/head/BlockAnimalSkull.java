@@ -42,11 +42,13 @@ public class BlockAnimalSkull extends BlockContainer {
 		this.setHardness(0.8F);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean hasTileEntity() {
 		return true;
@@ -57,6 +59,7 @@ public class BlockAnimalSkull extends BlockContainer {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -67,17 +70,20 @@ public class BlockAnimalSkull extends BlockContainer {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasCustomBreakingProgress(IBlockState state) {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState iblockstate = this.getDefaultState();
@@ -95,6 +101,7 @@ public class BlockAnimalSkull extends BlockContainer {
 	 * @deprecated call via {@link IBlockState#getBoundingBox(IBlockAccess, BlockPos)} whenever possible.
 	 * Implementing/overriding is fine.
 	 */
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		switch ((EnumFacing) state.getValue(FACING)) {
 			case UP:
@@ -114,6 +121,7 @@ public class BlockAnimalSkull extends BlockContainer {
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
+	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta));
 	}
@@ -136,6 +144,7 @@ public class BlockAnimalSkull extends BlockContainer {
 	 * @deprecated call via {@link IBlockState#withRotation(Rotation)} whenever possible. Implementing/overriding is
 	 * fine.
 	 */
+	@SuppressWarnings("deprecation")
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
@@ -146,6 +155,7 @@ public class BlockAnimalSkull extends BlockContainer {
 	 *
 	 * @deprecated call via {@link IBlockState#withMirror(Mirror)} whenever possible. Implementing/overriding is fine.
 	 */
+	@SuppressWarnings("deprecation")
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
 	}
