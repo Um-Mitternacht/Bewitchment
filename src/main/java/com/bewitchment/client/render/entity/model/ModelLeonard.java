@@ -1,6 +1,5 @@
 package com.bewitchment.client.render.entity.model;
 
-import com.bewitchment.common.entity.spirits.demons.EntityDemon;
 import com.bewitchment.common.entity.spirits.demons.EntityLeonard;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
@@ -388,5 +387,16 @@ public class ModelLeonard extends AdvancedModelBase {
 		AdvancedModelRenderer.rotateAngleX = x;
 		AdvancedModelRenderer.rotateAngleY = y;
 		AdvancedModelRenderer.rotateAngleZ = z;
+	}
+
+	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		this.resetToDefaultPose();
+		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
+		animator.update(entity);
+		animator.setAnimation(EntityLeonard.CAST_SPELL);
+		animator.startKeyframe(10);
+		animator.rotate(bipedLeftArm, -1.0f, 0.0f, 0.0f);
+		animator.endKeyframe();
+		animator.resetKeyframe(5);
 	}
 }

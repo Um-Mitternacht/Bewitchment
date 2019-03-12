@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
  */
 public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, IMob {
 
+	public static final Animation CAST_SPELL = Animation.create(20, 10);
 	private int animationTick;
 	private Animation currentAnimation;
 
@@ -68,6 +69,6 @@ public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, I
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[]{IAnimatedEntity.NO_ANIMATION};
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityLeonard.CAST_SPELL};
 	}
 }
