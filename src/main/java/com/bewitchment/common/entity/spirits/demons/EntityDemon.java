@@ -29,6 +29,8 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
+	public static final Animation FIELD_IMPS = Animation.create(21, 10);
+	public static final Animation CAST_SPELL = Animation.create(22, 10);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private static final String PREFIX = "entity.bewitchment.prefix.";
 	private static final String NAME = "entity.bewitchment.given_name.";
@@ -146,7 +148,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemon.ANIMATION_TOSS};
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemon.ANIMATION_TOSS, EntityDemon.FIELD_IMPS, EntityDemon.CAST_SPELL};
 	}
 
 	@Override

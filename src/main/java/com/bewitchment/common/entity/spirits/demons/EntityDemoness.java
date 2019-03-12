@@ -29,6 +29,8 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_TOSS = Animation.create(20, 10);
+	public static final Animation FIELD_IMPS = Animation.create(21, 10);
+	public static final Animation CAST_SPELL = Animation.create(22, 10);
 	private static final String PREFIX = "entity.bewitchment.prefix.";
 	private static final String NAME = "entity.bewitchment.given_name.";
 
@@ -149,7 +151,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemoness.ANIMATION_TOSS};
+		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemoness.ANIMATION_TOSS, EntityDemoness.FIELD_IMPS, EntityDemoness.CAST_SPELL};
 	}
 
 	@Nullable
