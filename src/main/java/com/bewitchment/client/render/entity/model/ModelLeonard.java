@@ -396,7 +396,7 @@ public class ModelLeonard extends AdvancedModelBase {
 		animator.update(entity);
 		animator.setAnimation(EntityLeonard.RUMINATE_IDLE);
 		animator.startKeyframe(10);
-		animator.rotate(muzzleUpper, -1.35f, 0.0f, 0.0f);
+		animator.rotate(muzzleUpper, 1.35f, 0.0f, 0.0f);
 		animator.rotate(muzzleLower, -1.35f, 0.0f, 0.0f);
 		animator.endKeyframe();
 		animator.resetKeyframe(5);

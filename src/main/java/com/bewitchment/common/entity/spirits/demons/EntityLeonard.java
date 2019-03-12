@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirits.demons;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -28,6 +29,12 @@ public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, I
 	@Override
 	public int getSkinTypes() {
 		return 1;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute() {
