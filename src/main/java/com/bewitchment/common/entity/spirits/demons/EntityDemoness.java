@@ -33,7 +33,7 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 	private static final String NAME = "entity.bewitchment.given_name.";
 
 	private static final int PREFIXES = 53;
-	private static final int NAMES = 326;
+	private static final int NAMES = 433;
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/demon");
 	private final int prefix = rand.nextInt(PREFIXES);
 	private final int name = rand.nextInt(NAMES);

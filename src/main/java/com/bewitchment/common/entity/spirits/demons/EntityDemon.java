@@ -34,7 +34,7 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 	private static final String NAME = "entity.bewitchment.given_name.";
 
 	private static final int PREFIXES = 53;
-	private static final int NAMES = 326;
+	private static final int NAMES = 433;
 
 	private final int prefix = rand.nextInt(PREFIXES);
 	private final int name = rand.nextInt(NAMES);
