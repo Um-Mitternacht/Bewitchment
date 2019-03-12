@@ -367,8 +367,8 @@ public class ModelLeonard extends AdvancedModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
 
-		f = entity.ticksExisted;
-		f1 = 0.5f;
+		//f = entity.ticksExisted;
+		//f1 = 0.5f;
 
 		float globalSpeed = 1;
 		float globalHeight = 1;
