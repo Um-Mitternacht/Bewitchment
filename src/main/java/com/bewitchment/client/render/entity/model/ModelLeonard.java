@@ -367,8 +367,8 @@ public class ModelLeonard extends AdvancedModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.resetToDefaultPose();
 
-		//f = entity.ticksExisted;
-		//f1 = 0.5f;
+		f = entity.ticksExisted;
+		f1 = 0.5f;
 
 		float globalSpeed = 1;
 		float globalHeight = 1;
@@ -388,17 +388,5 @@ public class ModelLeonard extends AdvancedModelBase {
 		AdvancedModelRenderer.rotateAngleX = x;
 		AdvancedModelRenderer.rotateAngleY = y;
 		AdvancedModelRenderer.rotateAngleZ = z;
-	}
-
-	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.resetToDefaultPose();
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
-		animator.update(entity);
-		animator.setAnimation(EntityLeonard.RUMINATE_IDLE);
-		animator.startKeyframe(10);
-		animator.rotate(muzzleUpper, 1.35f, 0.0f, 0.0f);
-		animator.rotate(muzzleLower, -1.35f, 0.0f, 0.0f);
-		animator.endKeyframe();
-		animator.resetKeyframe(5);
 	}
 }
