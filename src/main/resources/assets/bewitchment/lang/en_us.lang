@@ -813,8 +813,8 @@ jei.bewitchment.category.brewing=Brew Bottling
 jei.bewitchment.category.crafting=Cauldron Crafting
 jei.bewitchment.category.brew_modifiers=Brew Modifier
 jei.bewitchment.category.distillery=Distillation
-jei.bewitchment.ritual.power.flat=%d Altar Power
-jei.bewitchment.ritual.power.tick=%d Altar Power Per Second
+jei.ritual.power.flat=%d Altar Power
+jei.ritual.power.tick=%d Altar Power Per Second
 
 //Rituals
 ritual.failure.unknown=You never heard of such rites
