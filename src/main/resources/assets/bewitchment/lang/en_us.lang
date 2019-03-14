@@ -945,14 +945,14 @@ modifier.bewitchment.suppress_particles=Invisible
 modifier.bewitchment.gas_duration=Permeating %s
 modifier.bewitchment.length=Lasting %s
 
-modifier.description.bewitchment.radius=Effect radius
-modifier.description.bewitchment.power=Effect strength
-modifier.description.bewitchment.color=Potion color
-modifier.description.bewitchment.suppress_in_world=In-world effect suppression
-modifier.description.bewitchment.suppress_entity=Entity effect suppression
-modifier.description.bewitchment.suppress_particles=Particle suppression
-modifier.description.bewitchment.gas_duration=Lingering cloud duration
-modifier.description.bewitchment.length=Effect duration
+modifier.bewitchment.description.bewitchment.radius=Effect radius
+modifier.bewitchment.description.bewitchment.power=Effect strength
+modifier.bewitchment.description.bewitchment.color=Potion color
+modifier.bewitchment.description.bewitchment.suppress_in_world=In-world effect suppression
+modifier.bewitchment.description.bewitchment.suppress_entity=Entity effect suppression
+modifier.bewitchment.description.bewitchment.suppress_particles=Particle suppression
+modifier.bewitchment.description.bewitchment.gas_duration=Lingering cloud duration
+modifier.bewitchment.description.bewitchment.length=Effect duration
 
 moon.bewitchment.tooltip.0=You feel weird today
 moon.bewitchment.tooltip.1=Your heart is beating faster, your thoughts are slipping out of control
@@ -961,8 +961,8 @@ moon.bewitchment.tooltip.2=No matter how hard you try, you cannot switch back
 //Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
 tc.aspect.stellae=Stars, Constellation, Asterism
-tc.aspect.luna=The Moon
-tc.aspect.sol=The Sun
+tc.aspect.luna=The Moon, Luna, Night
+tc.aspect.sol=The Sun, Sol, Day
 
 //Mobs
 entity.bewitchment.owl.name=Owl
