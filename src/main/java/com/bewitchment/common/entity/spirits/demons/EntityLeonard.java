@@ -51,8 +51,7 @@ public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, I
 		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(30.0D);
 	}
 
-	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
-	{
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.STICK));
 	}
 
