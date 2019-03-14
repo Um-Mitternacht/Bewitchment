@@ -7,7 +7,10 @@ import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -24,6 +27,24 @@ public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, I
 	public EntityLeonard(World worldIn) {
 		super(worldIn);
 		setSize(1F, 3.5F);
+		this.isImmuneToFire = true;
+		this.experienceValue = 350;
+		this.setPathPriority(PathNodeType.WATER, -1.0F);
+		this.setPathPriority(PathNodeType.LAVA, 8.0F);
+		this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
+		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
+		this.moveHelper = new EntityMoveHelper(this);
+	}
+
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(350.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.95d);
+		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(30.0D);
 	}
 
 	@Override
