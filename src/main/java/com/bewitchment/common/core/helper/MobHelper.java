@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -31,6 +32,7 @@ public class MobHelper {
 	public static final Set<String> DEMONS = Sets.newHashSet(); //Infernal beings
 	public static final Set<String> UNDEAD_BODY = Sets.newHashSet(); //Corporeal undead, such as zombies and mummies
 	public static final Set<String> HUMANS = Sets.newHashSet(); //People
+	public static final Set<String> CAPRINES = Sets.newHashSet(); //Sheep, goat, and kin
 
 	public static void init() {
 
@@ -80,6 +82,9 @@ public class MobHelper {
 		HUMANS.add("thaumcraft.common.entities.monster.cult.EntityCultistKnight");
 
 		VILLAGERS.add("mca.entity.EntityVillagerMCA");
+
+		//Baaa
+		CAPRINES.add(EntitySheep.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
 			MinecraftForge.EVENT_BUS.register(new Object() {
