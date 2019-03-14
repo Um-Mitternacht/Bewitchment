@@ -166,7 +166,7 @@ public class EntityLizard extends EntityTameable implements IAnimatedEntity {
 				}
 				return true;
 			}
-			return true;
+			return super.processInteract(player, hand);
 		}
 	}
 

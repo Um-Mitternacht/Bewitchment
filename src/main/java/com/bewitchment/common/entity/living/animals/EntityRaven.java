@@ -134,7 +134,7 @@ public class EntityRaven extends EntityMultiSkin implements IAnimatedEntity {
 			}
 			return true;
 		}
-		return true;
+		return super.processInteract(player, hand);
 	}
 
 	@Override

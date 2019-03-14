@@ -60,7 +60,7 @@ public class RitualDrawing extends RitualImpl {
 				return false;
 		}
 
-		return player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk && player.getHeldItemOffhand().getMetadata() != 1 && (player.isCreative() || player.getHeldItemOffhand().getTagCompound().getInteger("usesLeft") >= coords.size());
+		return (player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk_normal || player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk_ender || player.getHeldItemOffhand().getItem() == ModItems.ritual_chalk_nether) && (player.isCreative() || player.getHeldItemOffhand().getTagCompound().getInteger("usesLeft") >= coords.size());
 	}
 
 	@Override

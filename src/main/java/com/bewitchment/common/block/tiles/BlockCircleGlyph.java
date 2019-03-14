@@ -235,7 +235,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		if (meta >= 4) {
 			return new ItemStack(Items.AIR);
 		}
-		return new ItemStack(ModItems.ritual_chalk, 1, meta);
+		return new ItemStack(ModItems.ritual_chalk_golden);
 	}
 
 	@Override

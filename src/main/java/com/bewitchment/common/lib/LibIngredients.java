@@ -35,7 +35,7 @@ public class LibIngredients {
 	public static Ingredient netherBrickItem = Ingredient.fromItem(Items.NETHERBRICK);
 	public static Ingredient sand = new OreIngredient("sand");
 	public static Ingredient dimensionalSand = Ingredient.fromItem(ModItems.dimensional_sand);
-	public static Ingredient normalRitualChalk = Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk));
+	public static Ingredient normalRitualChalk = Ingredient.fromStacks(new ItemStack(ModItems.ritual_chalk_normal));
 	public static Ingredient fumeOakSpirit = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.oak_spirit.ordinal()));
 	public static Ingredient fumeSpruceHeart = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.spruce_heart.ordinal()));
 	public static Ingredient fumeDishonesty = Ingredient.fromStacks(new ItemStack(ModItems.fume, 1, ItemFumes.Type.emanation_of_dishonesty.ordinal()));

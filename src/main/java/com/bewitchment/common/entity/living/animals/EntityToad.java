@@ -210,7 +210,7 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 				}
 				return true;
 			}
-			return true;
+			return super.processInteract(player, hand);
 		}
 	}
 

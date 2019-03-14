@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "bewitchment:ritual_chalk"
+      "bewitchment:ritual_chalk_normal"
     ]
   },
   "criteria": {
@@ -20,7 +20,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "bewitchment:ritual_chalk"
+        "recipe": "bewitchment:ritual_chalk_normal"
       }
     }
   },
