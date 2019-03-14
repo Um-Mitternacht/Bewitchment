@@ -157,10 +157,10 @@ public class ThaumcraftCompat {
 		evt.register.registerObjectTag(new ItemStack(ModItems.pure_filament), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.AURA, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.soul_string), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.SOUL, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.regal_silk), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.SENSES, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 1), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(SUN, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 2), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
-		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk, 1, 3), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(DEMON, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk_normal), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk_golden), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(SUN, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk_ender), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
+		evt.register.registerObjectTag(new ItemStack(ModItems.ritual_chalk_nether), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(DEMON, 4));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_hellebore), new AspectList().add(Aspect.PLANT, 1).add(DEMON, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_silphium), new AspectList().add(Aspect.PLANT, 1).add(Aspect.DESIRE, 1));
 		evt.register.registerObjectTag(new ItemStack(ModItems.seed_garlic), new AspectList().add(Aspect.PLANT, 1).add(Aspect.SENSES, 1).add(Aspect.AVERSION, 1));

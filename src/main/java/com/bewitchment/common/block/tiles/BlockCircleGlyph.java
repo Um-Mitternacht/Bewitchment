@@ -77,7 +77,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return floor.getBlock().canPlaceTorchOnTop(floor, worldIn, pos);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		//Dont change the actual bounding box to the offset, as that's only a visual thing.
@@ -96,7 +95,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return state.getValue(StateProperties.GLYPH_TYPE).equals(EnumGlyphType.GOLDEN);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		return new ArrayList<ItemStack>(0);
@@ -117,7 +115,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return 100;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return PathNodeType.OPEN;
@@ -128,7 +125,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return true;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return null;
@@ -145,26 +141,21 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState blockState, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 
-
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int color = meta & 3;
@@ -181,7 +172,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return (dir << 2) | color; //Bitwise that's DDCC, where DD is either 00=south, 01=... and CC is 00=normal, 01=golden...
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		int letter = Math.abs(pos.getX() + pos.getZ() * 2) % 6;
@@ -193,7 +183,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		return new BlockStateContainer(this, BlockHorizontal.FACING, StateProperties.GLYPH_TYPE, StateProperties.LETTER);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;
@@ -223,7 +212,6 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!this.canPlaceBlockAt(worldIn, pos)) worldIn.destroyBlock(pos, false);
@@ -235,7 +223,7 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 		if (meta >= 4) {
 			return new ItemStack(Items.AIR);
 		}
-		return new ItemStack(ModItems.ritual_chalk, 1, meta);
+		return new ItemStack(ModItems.ritual_chalk_golden);
 	}
 
 	@Override
@@ -247,6 +235,4 @@ public class BlockCircleGlyph extends BlockMod implements ITileEntityProvider {
 	public EnumOffsetType getOffsetType() {
 		return EnumOffsetType.XZ;
 	}
-
-
 }

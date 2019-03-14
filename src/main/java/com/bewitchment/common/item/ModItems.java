@@ -191,7 +191,10 @@ public final class ModItems {
 	public static final Item tarots = null;
 	public static final Item broom = null;
 	public static final Item spell_page = null;
-	public static final Item ritual_chalk = null;
+	public static final Item ritual_chalk_normal = null;
+	public static final Item ritual_chalk_golden = null;
+	public static final Item ritual_chalk_ender = null;
+	public static final Item ritual_chalk_nether = null;
 	public static final Item location_stone = null;
 	public static final Item knowledge_fragment = null;
 
@@ -307,7 +310,10 @@ public final class ModItems {
 				new ItemJuniperBerries(),
 				new ItemYewAril(),
 				new ItemFilledBowl(),
-				new ItemRitualChalk(LibItemName.RITUAL_CHALK),
+				new ItemRitualChalk(LibItemName.RITUAL_CHALK + "_normal"),
+				new ItemRitualChalk(LibItemName.RITUAL_CHALK + "_golden"),
+				new ItemRitualChalk(LibItemName.RITUAL_CHALK + "_ender"),
+				new ItemRitualChalk(LibItemName.RITUAL_CHALK + "_nether"),
 				new ItemRemedyTalisman(),
 				new ItemMagicSalve(),
 				new ItemLocationStone(),
