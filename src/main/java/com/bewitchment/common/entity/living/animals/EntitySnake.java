@@ -264,7 +264,7 @@ public class EntitySnake extends EntityMultiSkin implements IAnimatedEntity {
 				return true;
 			}
 		}
-		return false;
+		return super.processInteract(player, hand);
 	}
 
 	@Override
