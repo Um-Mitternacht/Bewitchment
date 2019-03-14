@@ -83,7 +83,8 @@ public class MobHelper {
 
 		VILLAGERS.add("mca.entity.EntityVillagerMCA");
 
-		//Baaa
+		//Baaa.
+		//Will be used in Leonard's ritual. Call this so any instance of a modded goat or sheep can be detected.
 		CAPRINES.add(EntitySheep.class.getName());
 
 		if (System.getProperty("stickdebug", "").equals("true")) {
