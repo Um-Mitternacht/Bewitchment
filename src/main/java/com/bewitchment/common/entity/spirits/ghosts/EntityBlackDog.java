@@ -38,6 +38,8 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/black_dog");
 	private int animationTick;
 	private Animation currentAnimation;
+	private final EntityAIBreakDoor breakDoor = new EntityAIBreakDoor(this);
+	private boolean isBreakDoorsTaskSet;
 
 	public EntityBlackDog(World worldIn) {
 		super(worldIn);
@@ -58,6 +60,32 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 
 	protected void playStepSound(BlockPos pos, Block blockIn) {
 		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.00F, 0.00F);
+	}
+
+	public boolean isBreakDoorsTaskSet()
+	{
+		return this.isBreakDoorsTaskSet;
+	}
+
+	/**
+	 * Sets or removes EntityAIBreakDoor task
+	 */
+	public void setBreakDoorsAItask(boolean enabled)
+	{
+		if (this.isBreakDoorsTaskSet != enabled)
+		{
+			this.isBreakDoorsTaskSet = enabled;
+			((PathNavigateGround)this.getNavigator()).setBreakDoors(enabled);
+
+			if (enabled)
+			{
+				this.tasks.addTask(1, this.breakDoor);
+			}
+			else
+			{
+				this.tasks.removeTask(this.breakDoor);
+			}
+		}
 	}
 
 	@Override

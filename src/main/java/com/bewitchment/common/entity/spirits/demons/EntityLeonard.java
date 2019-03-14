@@ -10,7 +10,11 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -45,6 +49,11 @@ public class EntityLeonard extends EntityMultiSkin implements IAnimatedEntity, I
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.95d);
 		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(30.0D);
+	}
+
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
+	{
+		this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.STICK));
 	}
 
 	@Override
