@@ -22,6 +22,7 @@ public class ItemRitualChalk extends ItemMod {
 	public ItemRitualChalk(String id) {
 		super(id);
 		this.setMaxStackSize(1);
+		this.setMaxDamage(40);
 		this.setNoRepair();
 	}
 
