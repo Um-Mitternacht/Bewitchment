@@ -98,11 +98,11 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.pentacle) {
 			evt.extraGain = 3;
-			evt.multiplier = -0.2;
+			evt.multiplier = 0.2;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.tarots) {
 			evt.extraGain = 5;
-			evt.multiplier = -0.4;
+			evt.multiplier = 0.4;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == Items.NETHER_STAR) {
 			evt.extraGain = 8;
@@ -195,7 +195,7 @@ public class TileEntityWitchAltar extends ModTileEntity implements ITickable {
 			return;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.demon_heart) {
-			evt.multiplier = 3.33;
+			evt.multiplier = 3.13;
 			return;
 		}
 		if (b == ModBlocks.placed_item && ((TileEntityPlacedItem) evt.getWorld().getTileEntity(evt.getPos())).getItem().getItem() == ModItems.heart) {
