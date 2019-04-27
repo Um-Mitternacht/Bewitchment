@@ -38,6 +38,7 @@ public final class ModEntities {
 	public static int modEntities = 0;
 	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
 	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
+
 	private ModEntities() {
 	}
 
@@ -164,7 +165,7 @@ public final class ModEntities {
 		entrySet.add(entry);
 	}
 
-	public static void registerWithEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn) {
+	public static void registerWithEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn, EnumCreatureType type) {
 		EntityEntry entry = EntityEntryBuilder.create()
 				.entity(EntityClass)
 				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
@@ -172,6 +173,9 @@ public final class ModEntities {
 				.tracker(64, 1, true)
 				.egg(solidColorIn, spotColorIn)
 				.build();
+		if (type == EnumCreatureType.WATER_CREATURE) {
+			EntitySpawnPlacementRegistry.setPlacementType(EntityClass, SpawnPlacementType.IN_WATER);
+		}
 		entrySet.add(entry);
 	}
 

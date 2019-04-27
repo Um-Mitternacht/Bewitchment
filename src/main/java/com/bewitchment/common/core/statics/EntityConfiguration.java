@@ -8,6 +8,7 @@ import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,6 +73,50 @@ public class EntityConfiguration {
 			}
 
 			container.spawnBiomes = biomes;
+		}
+	}
+
+	public static void worldLoadConfig(Configuration cfg) {
+		for (ModEntityContainer container : ModEntities.entityList) {
+			container.populateBiomes();
+			String[] biomeStrings = new String[container.spawnBiomes.length];
+			for (int i = 0; i < container.spawnBiomes.length; i++) {
+				biomeStrings[i] = container.spawnBiomes[i].getRegistryName().toString();
+			}
+			EntityConfigurationSection configSection = new EntityConfigurationSection(container.entityClazz, container.minGroup, container.maxGroup, container.weight, biomeStrings);
+			sections.put(container, configSection);
+		}
+		for (ModEntityContainer container : sections.keySet()) {
+			EntityConfigurationSection section = sections.get(container);
+			container.maxGroup = section.max;
+			container.minGroup = section.min;
+			container.weight = section.weight;
+			container.doRegister = section.doRegister;
+			container.doSpawning = section.doSpawning;
+
+			// Parse biomes
+			List<Biome> biomesList = new ArrayList<Biome>();
+			for (String biomeID : section.biomesList) {
+				Biome biome = Biome.REGISTRY.getObject(new ResourceLocation(biomeID));
+				if (biome == null) { // Could not get biome with ID
+					Bewitchment.logger.error("Invalid biome configuration entered for entity \"" + container.entityName + "\" (biome was mistyped or a biome mod was removed?): " + biomeID);
+				} else { // Valid biome
+					biomesList.add(biome);
+				}
+			}
+			// Get as array
+			Biome[] biomes = new Biome[biomesList.size()];
+			for (int i = 0; i < biomesList.size(); i++) {
+				biomes[i] = biomesList.get(i);
+			}
+
+			container.spawnBiomes = biomes;
+		}
+		for(ModEntityContainer container : ModEntities.entityList) {
+			for(Biome biome : container.spawnBiomes) {
+				Biome.SpawnListEntry entry = new Biome.SpawnListEntry(container.entityClazz, container.weight, container.minGroup, container.maxGroup);
+				biome.getSpawnableList(container.type).add(entry);
+			}
 		}
 	}
 
