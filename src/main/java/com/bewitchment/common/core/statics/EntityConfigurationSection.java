@@ -12,7 +12,6 @@ import static com.bewitchment.common.Bewitchment.entityConfig;
  */
 public class EntityConfigurationSection {
 
-	public final boolean doRegister = true;
 	public Class<? extends Entity> entityClazz;
 	public String categoryName;
 	public boolean doSpawning;
@@ -21,8 +20,8 @@ public class EntityConfigurationSection {
 	public int weight;
 	public String[] biomesList;
 
-	public EntityConfigurationSection(Class<? extends Entity> entity, String name, int min, int max, int weight, String[] biomesList) {
-		this.categoryName = name;
+	public EntityConfigurationSection(Class<? extends Entity> entity, int min, int max, int weight, String[] biomesList) {
+		this.categoryName = entity.getName();
 		entityConfig.addCustomCategoryComment(this.categoryName, "");
 		this.entityClazz = entity;
 		this.loadSpawning();
@@ -39,5 +38,4 @@ public class EntityConfigurationSection {
 		this.max = entityConfig.getInt("maxGroup", this.categoryName, max, 1, 9999, "Must be greater or equal to min value!");
 		this.biomesList = entityConfig.getStringList("spawnBiomes", this.categoryName, biomesList, "Enter biome Resource Locations. Supports modded biomes.");
 	}
-
 }

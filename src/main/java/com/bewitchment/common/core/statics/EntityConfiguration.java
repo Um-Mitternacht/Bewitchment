@@ -55,7 +55,6 @@ public class EntityConfiguration {
 			container.maxGroup = section.max;
 			container.minGroup = section.min;
 			container.weight = section.weight;
-			container.doRegister = section.doRegister;
 			container.doSpawning = section.doSpawning;
 
 			// Parse biomes
@@ -93,7 +92,6 @@ public class EntityConfiguration {
 			container.maxGroup = section.max;
 			container.minGroup = section.min;
 			container.weight = section.weight;
-			container.doRegister = section.doRegister;
 			container.doSpawning = section.doSpawning;
 
 			// Parse biomes
