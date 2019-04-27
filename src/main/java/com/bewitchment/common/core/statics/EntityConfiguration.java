@@ -23,18 +23,21 @@ public class EntityConfiguration {
 
 	public static HashMap<ModEntityContainer, EntityConfigurationSection> sections = new HashMap<ModEntityContainer, EntityConfigurationSection>();
 
-	public static void readConfig() {
-		Configuration cfg = Bewitchment.entityConfig;
-		try {
-			cfg.load();
-			initConfig(cfg);
-		} catch (Exception e1) {
-			Log.e("Mod " + LibMod.MOD_ID + " failed to load configuration. Report this here: https://github.com/Um-Mitternacht/Bewitchment/issues/new\n\n");
-			e1.printStackTrace();
-			Log.e("Mod " + LibMod.MOD_ID + " failed to load configuration. Report this here: https://github.com/Um-Mitternacht/Bewitchment/issues/new\n\n");
-		} finally {
-			if (cfg.hasChanged()) {
-				cfg.save();
+	public static void readConfig(boolean init) {
+		{
+			Configuration cfg = Bewitchment.entityConfig;
+			try {
+				cfg.load();
+				if (init) initLoadConfig(cfg);
+				else worldLoadConfig(cfg);
+			} catch (Exception e1) {
+				Log.e("Mod " + LibMod.MOD_ID + " failed to load configuration. Report this here: https://github.com/Um-Mitternacht/Bewitchment/issues/new\n\n");
+				e1.printStackTrace();
+				Log.e("Mod " + LibMod.MOD_ID + " failed to load configuration. Report this here: https://github.com/Um-Mitternacht/Bewitchment/issues/new\n\n");
+			} finally {
+				if (cfg.hasChanged()) {
+					cfg.save();
+				}
 			}
 		}
 	}
