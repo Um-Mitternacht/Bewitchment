@@ -39,7 +39,7 @@ public class EntityConfiguration {
 		}
 	}
 
-	public static void initConfig(Configuration cfg) {
+	public static void initLoadConfig(Configuration cfg) {
 		for (ModEntityContainer container : ModEntities.entityList) {
 			String[] biomeStrings = new String[container.spawnBiomes.length];
 			for (int i = 0; i < container.spawnBiomes.length; i++) {
@@ -77,7 +77,7 @@ public class EntityConfiguration {
 	}
 
 	public static void worldLoadConfig(Configuration cfg) {
-		for (ModEntityContainer container : ModEntities.entityList) {
+		for(ModEntityContainer container : ModEntities.entityList) {
 			container.populateBiomes();
 			String[] biomeStrings = new String[container.spawnBiomes.length];
 			for (int i = 0; i < container.spawnBiomes.length; i++) {
