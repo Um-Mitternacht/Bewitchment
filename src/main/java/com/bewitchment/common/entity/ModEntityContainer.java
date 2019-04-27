@@ -1,14 +1,10 @@
 package com.bewitchment.common.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author its_meow
@@ -17,7 +13,7 @@ import java.util.Set;
  */
 public class ModEntityContainer {
 
-	public Class<? extends EntityLiving> entityClazz;
+	public Class<? extends Entity> entityClazz;
 	public String entityName;
 	public EnumCreatureType type;
 	public int eggColorSolid;
@@ -28,10 +24,8 @@ public class ModEntityContainer {
 	public Biome[] spawnBiomes = {};
 	public boolean doRegister = true;
 	public boolean doSpawning = true;
-	public BiomeDictionary.Type[] types = {};
 
-	@SafeVarargs
-	public EntityContainer(Class<? extends EntityLiving> EntityClass, String entityNameIn, EnumCreatureType type, int solidColorIn, int spotColorIn, int prob, int min, int max, BiomeDictionary.Type... types) {
+	public ModEntityContainer(Class<? extends Entity> EntityClass, String entityNameIn, EnumCreatureType type, int solidColorIn, int spotColorIn, int prob, int min, int max, List<Biome> biomes) {
 		this.entityClazz = EntityClass;
 		this.entityName = entityNameIn;
 		this.eggColorSolid = solidColorIn;
@@ -41,17 +35,12 @@ public class ModEntityContainer {
 		this.maxGroup = max;
 		this.type = type;
 
-		this.types = types;
-	}
 
-	public void populateBiomes() {
-		Set<Biome> biomesetAdd = new HashSet<>();
-		for(BiomeDictionary.Type type : types) {
-			biomesetAdd.addAll(BiomeDictionary.getBiomes(type));
-		}
+		// Convert biomes to single array
+
 		try {
-			this.spawnBiomes = biomesetAdd.toArray(this.spawnBiomes);
-		} catch(NullPointerException e) {
+			this.spawnBiomes = biomes.toArray(this.spawnBiomes);
+		} catch (NullPointerException e) {
 			this.spawnBiomes = new Biome[0];
 		}
 	}
