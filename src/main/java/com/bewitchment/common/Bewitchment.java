@@ -155,7 +155,7 @@ public class Bewitchment {
 		ModTransformations.init();
 		ModEntities.fillEntityContainers();
 		entityConfig = new Configuration(new File(event.getModConfigurationDirectory().getPath(), "bewitchment_entities.cfg"));
-		EntityConfiguration.readConfig();
+		EntityConfiguration.readConfig(true);
 		EntityConfiguration.initConfig(entityConfig);
 		ModSpells.init();
 		ModFortunes.init();
@@ -220,6 +220,11 @@ public class Bewitchment {
 		event.registerServerCommand(new CommandFortuneActivator());
 		event.registerServerCommand(new CommandForceFortune());
 		event.registerServerCommand(new CommandCreateTaglock());
+	}
+
+	@EventHandler
+	public static void serverStart(FMLServerStartingEvent e) {
+		EntityConfiguration.readConfig(false);
 	}
 
 	@EventHandler
