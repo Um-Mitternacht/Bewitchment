@@ -122,6 +122,11 @@ public class Bewitchment {
 	}
 
 	@EventHandler
+	public static void serverStart(FMLServerStartingEvent e) {
+		EntityConfiguration.readConfig(false);
+	}
+
+	@EventHandler
 	public void fingerprintViolation(FMLFingerprintViolationEvent evt) {
 		if (!"true".equals(System.getProperty("ignoreBewitchmentFingerprint"))) {
 			Log.w("!! WARNING: The mod " + LibMod.MOD_NAME + " has an invalid signature, this is likely due to someone messing with the jar without permission!");
@@ -219,11 +224,6 @@ public class Bewitchment {
 		event.registerServerCommand(new CommandFortuneActivator());
 		event.registerServerCommand(new CommandForceFortune());
 		event.registerServerCommand(new CommandCreateTaglock());
-	}
-
-	@EventHandler
-	public static void serverStart(FMLServerStartingEvent e) {
-		EntityConfiguration.readConfig(false);
 	}
 
 	@EventHandler

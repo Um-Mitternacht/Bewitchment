@@ -8,7 +8,6 @@ import com.bewitchment.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,7 +79,7 @@ public class EntityConfiguration {
 	}
 
 	public static void worldLoadConfig(Configuration cfg) {
-		for(ModEntityContainer container : ModEntities.entityList) {
+		for (ModEntityContainer container : ModEntities.entityList) {
 			container.populateBiomes();
 			String[] biomeStrings = new String[container.spawnBiomes.length];
 			for (int i = 0; i < container.spawnBiomes.length; i++) {
@@ -115,8 +114,8 @@ public class EntityConfiguration {
 
 			container.spawnBiomes = biomes;
 		}
-		for(ModEntityContainer container : ModEntities.entityList) {
-			for(Biome biome : container.spawnBiomes) {
+		for (ModEntityContainer container : ModEntities.entityList) {
+			for (Biome biome : container.spawnBiomes) {
 				Biome.SpawnListEntry entry = new Biome.SpawnListEntry(container.entityClazz, container.weight, container.minGroup, container.maxGroup);
 				biome.getSpawnableList(container.type).add(entry);
 			}
