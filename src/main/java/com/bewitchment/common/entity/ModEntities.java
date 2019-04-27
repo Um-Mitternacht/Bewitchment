@@ -146,7 +146,7 @@ public final class ModEntities {
 		if (c.doSpawning) {
 			registerWithSpawnAndEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type, c.weight, c.minGroup, c.maxGroup, c.spawnBiomes);
 		} else {
-			registerWithEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot);
+			registerWithEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type);
 		}
 	}
 

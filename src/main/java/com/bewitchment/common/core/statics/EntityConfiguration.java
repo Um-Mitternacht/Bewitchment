@@ -47,7 +47,7 @@ public class EntityConfiguration {
 			for (int i = 0; i < container.spawnBiomes.length; i++) {
 				biomeStrings[i] = container.spawnBiomes[i].getRegistryName().toString();
 			}
-			EntityConfigurationSection configSection = new EntityConfigurationSection(container.entityClazz, container.entityName, container.minGroup, container.maxGroup, container.weight, biomeStrings);
+			EntityConfigurationSection configSection = new EntityConfigurationSection(container.entityClazz, container.minGroup, container.maxGroup, container.weight, biomeStrings);
 			sections.put(container, configSection);
 		}
 		for (ModEntityContainer container : sections.keySet()) {

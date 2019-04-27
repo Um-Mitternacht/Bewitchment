@@ -43,12 +43,12 @@ public class ModEntityContainer {
 
 	public void populateBiomes() {
 		Set<Biome> biomesetAdd = new HashSet<>();
-		for(BiomeDictionary.Type type : types) {
+		for (BiomeDictionary.Type type : types) {
 			biomesetAdd.addAll(BiomeDictionary.getBiomes(type));
 		}
 		try {
 			this.spawnBiomes = biomesetAdd.toArray(this.spawnBiomes);
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			this.spawnBiomes = new Biome[0];
 		}
 	}
