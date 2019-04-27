@@ -62,15 +62,15 @@ public final class CropHelper {
 	}
 
 	public static void initSeedDrops() {
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_belladonna), 8);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_thistle), 8);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_wormwood), 8);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_asphodel), 6);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_chrysanthemum), 6);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_aconitum), 6);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_mint), 6);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_lavender), 4);
-		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_mandrake), 4);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_belladonna), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_thistle), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_wormwood), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_asphodel), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_chrysanthemum), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_aconitum), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_mint), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_lavender), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_mandrake), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_tulsi), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_kenaf), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModItems.seed_hellebore), 3);

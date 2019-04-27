@@ -927,6 +927,9 @@ key.description.jump_to_bar=Jump to extra bar
 key.description.enable_bar=Toggle extra bar reachability
 key.description.place_item=Place Item
 
+//Tarots
+item.tarots.error_reading=Something is wrong with your set up.
+
 //Brew misc
 brew.bewitchment.parameters.formatting= %s
 brew.bewitchment.parameters.none=This does not carry additional powers
