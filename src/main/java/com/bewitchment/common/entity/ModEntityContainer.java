@@ -1,13 +1,11 @@
 package com.bewitchment.common.entity;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,12 +44,12 @@ public class ModEntityContainer {
 
 	public void populateBiomes() {
 		Set<Biome> biomesetAdd = new HashSet<>();
-		for(BiomeDictionary.Type type : types) {
+		for (BiomeDictionary.Type type : types) {
 			biomesetAdd.addAll(BiomeDictionary.getBiomes(type));
 		}
 		try {
 			this.spawnBiomes = biomesetAdd.toArray(this.spawnBiomes);
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			this.spawnBiomes = new Biome[0];
 		}
 	}
