@@ -38,7 +38,6 @@ public final class ModEntities {
 	public static int modEntities = 0;
 	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
 	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
-
 	private ModEntities() {
 	}
 
