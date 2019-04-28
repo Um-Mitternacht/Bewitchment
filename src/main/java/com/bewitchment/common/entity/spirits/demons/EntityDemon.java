@@ -154,12 +154,6 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		return loot;
 	}
 
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
-	}
-
 	@Override
 	public float getEyeHeight() {
 		return this.height * 0.75F;

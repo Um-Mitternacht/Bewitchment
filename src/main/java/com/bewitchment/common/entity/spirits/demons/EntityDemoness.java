@@ -152,12 +152,6 @@ public class EntityDemoness extends EntityDemonBase implements IAnimatedEntity, 
 		return new Animation[]{IAnimatedEntity.NO_ANIMATION, EntityDemoness.ANIMATION_TOSS};
 	}
 
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
-	}
-
 	@Override
 	public float getEyeHeight() {
 		return this.height * 0.75F;

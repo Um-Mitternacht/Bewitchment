@@ -122,24 +122,24 @@ public final class ModEntities {
 		/* Living Entities */
 
 		// Familiar Animals
-		entityList.add(new ModEntityContainer(EntityOwl.class, "owl", EnumCreatureType.CREATURE, 0xAF813F, 0x6e5127, 20, 1, 4, validOwl));
-		entityList.add(new ModEntityContainer(EntitySnake.class, "snake", EnumCreatureType.CREATURE, 0x8F9779, 0x696969, 20, 1, 4, validSnake));
-		entityList.add(new ModEntityContainer(EntityRaven.class, "raven", EnumCreatureType.CREATURE, 0x222222, 0x280638, 20, 1, 4, validRaven));
-		entityList.add(new ModEntityContainer(EntityToad.class, "toad", EnumCreatureType.CREATURE, 0xA9BA9D, 0xC3B091, 20, 1, 4, validToad));
+		entityList.add(new ModEntityContainer(EntityOwl.class, "owl", EnumCreatureType.CREATURE, 0xAF813F, 0x6e5127, 20, 1, 4, Type.FOREST, Type.DENSE, Type.SPOOKY, Type.SNOWY));
+		entityList.add(new ModEntityContainer(EntitySnake.class, "snake", EnumCreatureType.CREATURE, 0x8F9779, 0x696969, 20, 1, 4, Type.FOREST, Type.JUNGLE, Type.DENSE, Type.HILLS));
+		entityList.add(new ModEntityContainer(EntityRaven.class, "raven", EnumCreatureType.CREATURE, 0x222222, 0x280638, 20, 1, 4, Type.FOREST, Type.SPOOKY, Type.DEAD));
+		entityList.add(new ModEntityContainer(EntityToad.class, "toad", EnumCreatureType.CREATURE, 0xA9BA9D, 0xC3B091, 20, 1, 4, Type.SWAMP, Type.LUSH, Type.WET, Type.JUNGLE));
 		//Non-Familiar animals
-		entityList.add(new ModEntityContainer(EntityBlindworm.class, "blindworm", EnumCreatureType.CREATURE, 0x826644, 0xD2B48C, 20, 1, 4, validBlindworm));
-		entityList.add(new ModEntityContainer(EntityNewt.class, "newt", EnumCreatureType.CREATURE, 0x000000, 0xFFD300, 20, 1, 4, validNewt));
-		entityList.add(new ModEntityContainer(EntityLizard.class, "lizard", EnumCreatureType.CREATURE, 0x568203, 0x0070BB, 20, 1, 4, validLizard));
+		entityList.add(new ModEntityContainer(EntityBlindworm.class, "blindworm", EnumCreatureType.CREATURE, 0x826644, 0xD2B48C, 20, 1, 4, Type.FOREST));
+		entityList.add(new ModEntityContainer(EntityNewt.class, "newt", EnumCreatureType.CREATURE, 0x000000, 0xFFD300, 20, 1, 4, Type.SWAMP, Type.LUSH, Type.WET, Type.JUNGLE));
+		entityList.add(new ModEntityContainer(EntityLizard.class, "lizard", EnumCreatureType.CREATURE, 0x568203, 0x0070BB, 20, 1, 4, Type.FOREST, Type.JUNGLE));
 		//Naturally Spawning Demons
-		entityList.add(new ModEntityContainer(EntityUran.class, "uran", EnumCreatureType.MONSTER, 0x555555, 0xFF9966, 6, 1, 4, validUran));
-		entityList.add(new ModEntityContainer(EntityHellhound.class, "hellhound", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 6, 1, 4, validHellhound));
-		entityList.add(new ModEntityContainer(EntityHellhoundAlpha.class, "hellhound_alpha", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 1, 1, 1, validHellhoundAlpha));
+		entityList.add(new ModEntityContainer(EntityUran.class, "uran", EnumCreatureType.MONSTER, 0x555555, 0xFF9966, 6, 1, 4, Type.NETHER));
+		entityList.add(new ModEntityContainer(EntityHellhound.class, "hellhound", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 6, 1, 4, Type.NETHER));
+		entityList.add(new ModEntityContainer(EntityHellhoundAlpha.class, "hellhound_alpha", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 1, 1, 1, Type.NETHER));
 		//Non-Spawning Demons
 		registerWithEgg(EntityDemon.class, "demon", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
 		registerWithEgg(EntityDemoness.class, "demoness", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
 		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
 		//Ghosts
-		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
+		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 4, Type.PLAINS, Type.SPOOKY, Type.FOREST, Type.DEAD));
 	}
 
 	public static void reg(ModEntityContainer c) {
@@ -199,29 +199,5 @@ public final class ModEntities {
 				.build();
 
 		entrySet.add(entry);
-	}
-
-
-	//####################################################################################
-
-	@EventBusSubscriber(modid = LibMod.MOD_ID)
-	public static class RegistrationHandler {
-
-		@SubscribeEvent
-		public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
-			final IForgeRegistry<EntityEntry> registry = event.getRegistry();
-
-			for (ModEntityContainer container : entityList) {
-				if (container.doRegister)
-					reg(container);
-			}
-
-			if (!entrySet.isEmpty()) {
-				for (final EntityEntry entityEntry : entrySet) {
-
-					registry.register(entityEntry);
-				}
-			}
-		}
 	}
 }
