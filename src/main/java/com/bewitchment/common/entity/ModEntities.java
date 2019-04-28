@@ -146,14 +146,12 @@ public final class ModEntities {
 		public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
 			final IForgeRegistry<EntityEntry> registry = event.getRegistry();
 
-			for (ModEntityContainer container : entityList) {
-				if (container.doRegister)
-					reg(container);
+			for(ModEntityContainer container : entityList) {
+				reg(container);
 			}
 
 			if (!entrySet.isEmpty()) {
 				for (final EntityEntry entityEntry : entrySet) {
-
 					registry.register(entityEntry);
 				}
 			}
