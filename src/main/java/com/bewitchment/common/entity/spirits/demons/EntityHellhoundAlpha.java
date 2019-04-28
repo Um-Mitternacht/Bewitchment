@@ -43,8 +43,8 @@ public class EntityHellhoundAlpha extends EntityMultiSkinMonster implements IAni
 	private int animationTick;
 	private Animation currentAnimation;
 
-	public EntityHellhoundAlpha(World worldIn) {
-		super(worldIn);
+	public EntityHellhoundAlpha(World world) {
+		super(world);
 		setSize(1.6F, 1.6F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
@@ -73,7 +73,6 @@ public class EntityHellhoundAlpha extends EntityMultiSkinMonster implements IAni
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);

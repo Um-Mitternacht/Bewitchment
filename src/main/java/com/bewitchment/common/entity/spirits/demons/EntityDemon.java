@@ -42,8 +42,8 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 	private int animationTick;
 	private Animation currentAnimation;
 
-	public EntityDemon(World worldIn) {
-		super(worldIn);
+	public EntityDemon(World world) {
+		super(world);
 		setSize(1.8F, 4.6F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
@@ -52,14 +52,13 @@ public class EntityDemon extends EntityDemonBase implements IAnimatedEntity, IMo
 		this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.experienceValue = 165;
 		this.moveHelper = new EntityMoveHelper(this);
-		if (!worldIn.isRemote && !this.hasCustomName())
+		if (!world.isRemote && !this.hasCustomName())
 			this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation(PREFIX + prefix).appendText(" ") : new TextComponentTranslation("")).appendSibling(new TextComponentTranslation(NAME + name)).getFormattedText());
 	}
 
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);

@@ -25,8 +25,8 @@ public class EntityImp extends EntityMultiSkinMonster implements IAnimatedEntity
 	private int animationTick;
 	private Animation currentAnimation;
 
-	public EntityImp(World worldIn) {
-		super(worldIn);
+	public EntityImp(World world) {
+		super(world);
 		setSize(1.0F, 2.0F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
@@ -62,7 +62,6 @@ public class EntityImp extends EntityMultiSkinMonster implements IAnimatedEntity
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(90.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);

@@ -43,8 +43,8 @@ public class EntityBlackDog extends EntityMultiSkinMonster implements IAnimatedE
 	private int animationTick;
 	private Animation currentAnimation;
 
-	public EntityBlackDog(World worldIn) {
-		super(worldIn);
+	public EntityBlackDog(World world) {
+		super(world);
 		setSize(1.8F, 1.8F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);

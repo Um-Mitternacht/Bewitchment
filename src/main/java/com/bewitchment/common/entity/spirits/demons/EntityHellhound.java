@@ -38,8 +38,8 @@ public class EntityHellhound extends EntityMultiSkinMonster implements IAnimated
 	private Animation currentAnimation;
 
 
-	public EntityHellhound(World worldIn) {
-		super(worldIn);
+	public EntityHellhound(World world) {
+		super(world);
 		setSize(1.6F, 1.6F);
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
@@ -77,7 +77,6 @@ public class EntityHellhound extends EntityMultiSkinMonster implements IAnimated
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);

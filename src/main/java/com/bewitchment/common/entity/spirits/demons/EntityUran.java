@@ -51,8 +51,8 @@ public class EntityUran extends EntityMultiSkinMonster implements IMob, IAnimate
 
 	private int milkTimer;
 
-	public EntityUran(World worldIn) {
-		super(worldIn);
+	public EntityUran(World world) {
+		super(world);
 		setSize(1.6F, 1.6F); //Todo: Figure out how to change the size of this properly
 		this.isImmuneToFire = true;
 		this.setPathPriority(PathNodeType.WATER, -1.0F);
@@ -145,7 +145,6 @@ public class EntityUran extends EntityMultiSkinMonster implements IMob, IAnimate
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
