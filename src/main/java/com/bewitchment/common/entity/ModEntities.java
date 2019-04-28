@@ -1,6 +1,5 @@
 package com.bewitchment.common.entity;
 
-import com.bewitchment.common.core.helper.Log;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.entity.spirits.demons.*;
 import com.bewitchment.common.entity.spirits.ghosts.EntityBlackDog;
@@ -11,7 +10,6 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -21,10 +19,6 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.bewitchment.common.entity.ModEntities.reg;
 
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
@@ -146,7 +140,7 @@ public final class ModEntities {
 		public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
 			final IForgeRegistry<EntityEntry> registry = event.getRegistry();
 
-			for(ModEntityContainer container : entityList) {
+			for (ModEntityContainer container : entityList) {
 				reg(container);
 			}
 

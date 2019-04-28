@@ -113,11 +113,12 @@ public class EntityConfiguration {
 			container.spawnBiomes = biomes;
 		}
 		for (ModEntityContainer container : ModEntities.entityList) {
-			for (Biome biome : container.spawnBiomes) {
-				Biome.SpawnListEntry entry = new Biome.SpawnListEntry(container.entityClazz, container.weight, container.minGroup, container.maxGroup);
-				biome.getSpawnableList(container.type).add(entry);
+			if (container.doSpawning) {
+				for (Biome biome : container.spawnBiomes) {
+					Biome.SpawnListEntry entry = new Biome.SpawnListEntry(container.entityClazz, container.weight, container.minGroup, container.maxGroup);
+					biome.getSpawnableList(container.type).add(entry);
+				}
 			}
 		}
 	}
-
 }
