@@ -2,16 +2,22 @@ package com.bewitchment.common.entity.spirits.ghosts;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.LargeEntityAIAttackMelee;
-import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.entity.living.EntityMultiSkinMonster;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.Block;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.AbstractIllager;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -26,12 +32,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 /**
  * Created by Joseph on 12/29/2018.
  */
-public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, IMob {
+public class EntityBlackDog extends EntityMultiSkinMonster implements IAnimatedEntity, IMob {
 
 	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
@@ -81,8 +85,8 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.5D));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
-		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityPlayer || e instanceof EntityVillager || e instanceof EntityEvoker || e instanceof EntityVindicator || e instanceof EntityIllusionIllager || e instanceof EntitySpellcasterIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		//this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.tasks.addTask(3, new LargeEntityAIAttackMelee(this, 0.5D, false));
@@ -187,12 +191,6 @@ public class EntityBlackDog extends EntityMultiSkin implements IAnimatedEntity, 
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 10;
-	}
-
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
 	}
 
 	@Override
