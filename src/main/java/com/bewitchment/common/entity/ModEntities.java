@@ -139,22 +139,23 @@ public final class ModEntities {
 
 //####################################################################################
 
-@EventBusSubscriber(modid = LibMod.MOD_ID)
-public static class RegistrationHandler {
+	@EventBusSubscriber(modid = LibMod.MOD_ID)
+	public static class RegistrationHandler {
 
-	@SubscribeEvent
-	public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
-		final IForgeRegistry<EntityEntry> registry = event.getRegistry();
+		@SubscribeEvent
+		public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
+			final IForgeRegistry<EntityEntry> registry = event.getRegistry();
 
-		for (ModEntityContainer container : entityList) {
-			if (container.doRegister)
-				reg(container);
-		}
+			for (ModEntityContainer container : entityList) {
+				if (container.doRegister)
+					reg(container);
+			}
 
-		if (!entrySet.isEmpty()) {
-			for (final EntityEntry entityEntry : entrySet) {
+			if (!entrySet.isEmpty()) {
+				for (final EntityEntry entityEntry : entrySet) {
 
-				registry.register(entityEntry);
+					registry.register(entityEntry);
+				}
 			}
 		}
 	}
