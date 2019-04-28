@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.entity.living.EntityMultiSkinMonster;
 import com.bewitchment.common.entity.living.animals.*;
 import com.bewitchment.common.lib.LibMod;
 import com.bewitchment.common.potion.ModPotions;
@@ -30,7 +31,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Joseph on 12/10/2018.
  */
-public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity, IMob {
+public class EntityHellhound extends EntityMultiSkinMonster implements IAnimatedEntity, IMob {
 
 	@SuppressWarnings("deprecation")
 	public static final Animation ANIMATION_BITE = Animation.create(20, 10);
@@ -94,8 +95,8 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity,
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 5f, 1f));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
-		this.targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-		this.targetTasks.addTask(4, new EntityAITargetNonTamed<EntityLivingBase>(this, EntityLivingBase.class, false, e -> e instanceof EntityRabbit || e instanceof EntityChicken || e instanceof EntityBlindworm || e instanceof EntityLizard || e instanceof EntityCow || e instanceof EntityParrot || e instanceof EntitySheep || e instanceof EntityPig || e instanceof EntityVillager || e instanceof EntityPlayer || e instanceof EntityRaven || e instanceof EntityOwl || e instanceof EntityNewt || e instanceof EntityToad || e instanceof EntitySnake || e instanceof EntityHorse || e instanceof EntityDonkey || e instanceof EntityMule || e instanceof EntityLlama || e instanceof EntityWolf || e instanceof EntityOcelot || e instanceof EntityPolarBear || e instanceof EntityUran || e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat")));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityUran || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.getAPI().DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 	}
@@ -148,12 +149,6 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public int getSkinTypes() {
 		return 6;
-	}
-
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
 	}
 
 	@Override

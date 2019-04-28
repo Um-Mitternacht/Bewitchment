@@ -5,6 +5,7 @@ package com.bewitchment.common.entity.living;
  */
 
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class EntityMultiSkinMonster extends EntityTameable {
+public abstract class EntityMultiSkinMonster extends EntityMob {
 	private static final DataParameter<Integer> SKIN = EntityDataManager.createKey(EntityMultiSkinMonster.class, DataSerializers.VARINT);
 
 	public EntityMultiSkinMonster(World worldIn) {
