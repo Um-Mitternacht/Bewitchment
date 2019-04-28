@@ -135,9 +135,9 @@ public final class ModEntities {
 		entityList.add(new ModEntityContainer(EntityHellhound.class, "hellhound", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 6, 1, 4, validHellhound));
 		entityList.add(new ModEntityContainer(EntityHellhoundAlpha.class, "hellhound_alpha", EnumCreatureType.MONSTER, 0x555555, 0xED2939, 1, 1, 1, validHellhoundAlpha));
 		//Non-Spawning Demons
-		registerWithEgg(EntityDemon.class, "demon", 0x555555, 0xED2939);
-		registerWithEgg(EntityDemoness.class, "demoness", 0x555555, 0xED2939);
-		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939);
+		registerWithEgg(EntityDemon.class, "demon", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
+		registerWithEgg(EntityDemoness.class, "demoness", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
+		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
 		//Ghosts
 		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 2, validBlackDog));
 	}
