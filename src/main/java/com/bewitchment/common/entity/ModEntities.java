@@ -24,6 +24,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.bewitchment.common.entity.ModEntities.reg;
+
 /**
  * This class was created by <Arekkuusu> on 26/02/2017.
  * It's distributed as part of Bewitchment under
@@ -133,5 +135,27 @@ public final class ModEntities {
 				.build();
 
 		entrySet.add(entry);
+	}
+
+//####################################################################################
+
+@EventBusSubscriber(modid = LibMod.MOD_ID)
+public static class RegistrationHandler {
+
+	@SubscribeEvent
+	public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
+		final IForgeRegistry<EntityEntry> registry = event.getRegistry();
+
+		for (ModEntityContainer container : entityList) {
+			if (container.doRegister)
+				reg(container);
+		}
+
+		if (!entrySet.isEmpty()) {
+			for (final EntityEntry entityEntry : entrySet) {
+
+				registry.register(entityEntry);
+			}
+		}
 	}
 }
