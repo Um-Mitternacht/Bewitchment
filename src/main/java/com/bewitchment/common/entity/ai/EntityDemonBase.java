@@ -1,10 +1,9 @@
 package com.bewitchment.common.entity.ai;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.entity.living.EntityMultiSkinMonster;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.monster.IMob;
@@ -26,7 +25,7 @@ import java.util.Random;
  * <p>
  * Credit to AlexThe666 for bits and pieces of the code, so that I may create a merchant not based on a villager.
  */
-public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity, IMob, IMerchant {
+public class EntityDemonBase extends EntityMultiSkinMonster implements IAnimatedEntity, IMob, IMerchant {
 	private int animationTick;
 	private Animation currentAnimation;
 	@Nullable
@@ -74,12 +73,6 @@ public class EntityDemonBase extends EntityMultiSkin implements IAnimatedEntity,
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[0];
-	}
-
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
 	}
 
 	@Override

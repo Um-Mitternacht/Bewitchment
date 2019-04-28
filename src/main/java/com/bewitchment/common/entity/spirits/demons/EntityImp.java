@@ -1,12 +1,14 @@
 package com.bewitchment.common.entity.spirits.demons;
 
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.entity.living.EntityMultiSkin;
 import com.bewitchment.common.entity.living.EntityMultiSkinMonster;
 import com.bewitchment.common.potion.ModPotions;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +17,6 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 1/14/2019.
@@ -116,11 +116,5 @@ public class EntityImp extends EntityMultiSkinMonster implements IAnimatedEntity
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[0];
-	}
-
-	@Nullable
-	@Override
-	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
 	}
 }
