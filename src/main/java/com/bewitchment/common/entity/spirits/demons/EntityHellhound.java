@@ -118,13 +118,6 @@ public class EntityHellhound extends EntityMultiSkin implements IAnimatedEntity,
 		return false;
 	}
 
-	@Override
-	protected void collideWithEntity(Entity entityIn) {
-		if (!entityIn.equals(getOwner())) {
-			super.collideWithEntity(entityIn);
-		}
-	}
-
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
 		if (potioneffectIn.getPotion() == MobEffects.WITHER || potioneffectIn.getPotion() == MobEffects.POISON || potioneffectIn.getPotion() == ModPotions.rotting) {
 			net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent event = new net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent(this, potioneffectIn);

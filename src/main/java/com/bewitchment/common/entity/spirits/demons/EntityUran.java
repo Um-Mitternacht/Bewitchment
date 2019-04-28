@@ -206,13 +206,6 @@ public class EntityUran extends EntityMultiSkin implements IMob, IAnimatedEntity
 		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
-	@Override
-	protected void collideWithEntity(Entity entityIn) {
-		if (!entityIn.equals(getOwner())) {
-			super.collideWithEntity(entityIn);
-		}
-	}
-
 	public void resetTimer() {
 		timerRef = 0;
 	}
