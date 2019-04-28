@@ -143,10 +143,10 @@ public final class ModConfig {
 
 		public static class Salt {
 			public int salt_min_vein = 1;
-			public int salt_max_vein = 16;
+			public int salt_max_vein = 8;
 			public int salt_min_height = 10;
 			public int salt_max_height = 128;
-			public int salt_gen_chance = 65;
+			public int salt_gen_chance = 35;
 		}
 
 		public static class Amethyst {
