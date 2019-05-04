@@ -137,7 +137,7 @@ public class EntitySnake extends EntityMultiSkin implements IAnimatedEntity {
 		this.tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-		this.tasks.addTask(6, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
+		tasks.addTask(4, new EntityAIFollowOwner(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 2, 5));
 	}
 
 	@Override
@@ -263,6 +263,13 @@ public class EntitySnake extends EntityMultiSkin implements IAnimatedEntity {
 				}
 				return true;
 			}
+			if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(itemstack)) {
+				this.aiSit.setSitting(!this.isSitting());
+				this.isJumping = false;
+				this.navigator.clearPath();
+				this.setAttackTarget((EntityLivingBase) null);
+			}
+			return super.processInteract(player, hand);
 		}
 		return super.processInteract(player, hand);
 	}

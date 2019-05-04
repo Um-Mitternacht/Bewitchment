@@ -1,6 +1,6 @@
 package com.bewitchment.common.entity.living.animals;
 
-import com.bewitchment.common.entity.living.EntityMultiSkin;
+import com.bewitchment.common.entity.living.EntityMultiSkinTameable;
 import com.bewitchment.common.item.ModItems;
 import com.bewitchment.common.lib.LibMod;
 import com.google.common.collect.Sets;
@@ -39,7 +39,7 @@ import java.util.Set;
  */
 
 //ENTITYFAMILIAR
-public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
+public class EntityToad extends EntityMultiSkinTameable /*implements IAnimatedEntity*/ {
 
 	//public static final Animation ANIMATION_LEAP = Animation.create(20, 15);
 	private static final ResourceLocation loot = new ResourceLocation(LibMod.MOD_ID, "entities/toad");
@@ -52,8 +52,8 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT);
 	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.<Float>createKey(EntityToad.class, DataSerializers.FLOAT);
 
-	public EntityToad(World worldIn) {
-		super(worldIn);
+	public EntityToad(World world) {
+		super(world, new ResourceLocation(LibMod.MOD_ID, "entities/toad"), Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE, ModItems.silver_scales, ModItems.envenomed_fang);
 		setSize(1F, 0.3F);
 		this.moveHelper = new EntityMoveHelper(this);
 	}
@@ -117,7 +117,7 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 		this.tasks.addTask(5, new EntityAIWander(this, 0.4D));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-		this.tasks.addTask(6, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
+		tasks.addTask(4, new EntityAIFollowOwner(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 2, 5));
 	}
 
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
@@ -209,6 +209,12 @@ public class EntityToad extends EntityMultiSkin /*implements IAnimatedEntity*/ {
 					}
 				}
 				return true;
+			}
+			if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(itemstack)) {
+				this.aiSit.setSitting(!this.isSitting());
+				this.isJumping = false;
+				this.navigator.clearPath();
+				this.setAttackTarget((EntityLivingBase) null);
 			}
 			return super.processInteract(player, hand);
 		}

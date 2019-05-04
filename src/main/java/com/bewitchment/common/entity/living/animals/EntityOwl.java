@@ -101,7 +101,7 @@ public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 		this.tasks.addTask(4, new EntityAIFollowParent(this, 0.5D));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-		this.tasks.addTask(6, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
+		this.tasks.addTask(2, new EntityAIFollowOwnerFlying(this, 1.0D, 5.0F, 1.0F));
 	}
 
 	@Override
@@ -138,6 +138,12 @@ public class EntityOwl extends EntityMultiSkin implements IAnimatedEntity {
 					}
 				}
 				return true;
+			}
+			if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(itemstack)) {
+				this.aiSit.setSitting(!this.isSitting());
+				this.isJumping = false;
+				this.navigator.clearPath();
+				this.setAttackTarget((EntityLivingBase) null);
 			}
 			return super.processInteract(player, hand);
 		}
