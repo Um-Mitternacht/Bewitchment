@@ -38,7 +38,7 @@ public final class ModEntities {
 	private ModEntities() {
 	}
 
-	public static void fillEntityContainers() {
+	static {
 
 		// Nonliving entities
 		register(EntitySpellCarrier.class, "spell_carrier");
@@ -73,26 +73,7 @@ public final class ModEntities {
 	}
 
 	public static void reg(ModEntityContainer c) {
-		if (c.doSpawning) {
-			registerWithSpawnAndEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type, c.weight, c.minGroup, c.maxGroup, c.spawnBiomes);
-		} else {
-			registerWithEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type);
-		}
-	}
-
-	public static void registerWithSpawnAndEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn, EnumCreatureType typeIn, int prob, int min, int max, Biome[] biomes) {
-		EntityEntry entry = EntityEntryBuilder.create()
-				.entity(EntityClass)
-				.id(new ResourceLocation(LibMod.MOD_ID, entityNameIn), modEntities++)
-				.name(LOCALIZE_PREFIX + entityNameIn)
-				.tracker(64, 1, true)
-				.egg(solidColorIn, spotColorIn)
-				.spawn(typeIn, prob, min, max, biomes)
-				.build();
-		if (typeIn == EnumCreatureType.WATER_CREATURE) {
-			EntitySpawnPlacementRegistry.setPlacementType(EntityClass, SpawnPlacementType.IN_WATER);
-		}
-		entrySet.add(entry);
+		registerWithEgg(c.entityClazz, c.entityName, c.eggColorSolid, c.eggColorSpot, c.type);
 	}
 
 	public static void registerWithEgg(Class<? extends Entity> EntityClass, String entityNameIn, int solidColorIn, int spotColorIn, EnumCreatureType type) {

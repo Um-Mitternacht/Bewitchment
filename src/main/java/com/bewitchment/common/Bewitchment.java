@@ -123,7 +123,7 @@ public class Bewitchment {
 
 	@EventHandler
 	public static void serverStart(FMLServerStartingEvent e) {
-		EntityConfiguration.readConfig(false);
+		EntityConfiguration.readConfig();
 	}
 
 	@EventHandler
@@ -158,9 +158,7 @@ public class Bewitchment {
 		NetworkHandler.init();
 		ModInfusions.init();
 		ModTransformations.init();
-		ModEntities.fillEntityContainers();
 		entityConfig = new Configuration(new File(event.getModConfigurationDirectory().getPath(), "bewitchment_entities.cfg"));
-		EntityConfiguration.readConfig(true);
 		ModSpells.init();
 		ModFortunes.init();
 		ModLootTables.registerLootTables();
