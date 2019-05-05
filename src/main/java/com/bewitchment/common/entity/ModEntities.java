@@ -9,7 +9,6 @@ import net.minecraft.entity.EntityLiving.SpawnPlacementType;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -34,9 +33,6 @@ public final class ModEntities {
 	public static int modEntities = 0;
 	public static LinkedHashSet<EntityEntry> entrySet = new LinkedHashSet<EntityEntry>();
 	public static LinkedHashSet<ModEntityContainer> entityList = new LinkedHashSet<ModEntityContainer>();
-
-	private ModEntities() {
-	}
 
 	static {
 
@@ -70,6 +66,9 @@ public final class ModEntities {
 		registerWithEgg(EntityImp.class, "imp", 0x555555, 0xED2939, EnumCreatureType.MONSTER);
 		//Ghosts
 		entityList.add(new ModEntityContainer(EntityBlackDog.class, "black_dog", EnumCreatureType.MONSTER, 0x000000, 0x000000, 20, 1, 4, Type.PLAINS, Type.SPOOKY, Type.FOREST, Type.DEAD));
+	}
+
+	private ModEntities() {
 	}
 
 	public static void reg(ModEntityContainer c) {

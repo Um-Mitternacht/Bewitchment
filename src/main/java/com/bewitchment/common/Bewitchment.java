@@ -43,7 +43,6 @@ import com.bewitchment.common.crafting.FrostFireRecipe;
 import com.bewitchment.common.crafting.ModDistilleryRecipes;
 import com.bewitchment.common.crafting.ModOvenSmeltingRecipes;
 import com.bewitchment.common.crafting.ModSpinningThreadRecipes;
-import com.bewitchment.common.entity.ModEntities;
 import com.bewitchment.common.integration.optifine.Optifine;
 import com.bewitchment.common.integration.patchouli.Patchouli;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompatBridge;
