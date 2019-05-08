@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+	jcenter()
+	maven {url = "http://files.minecraftforge.net/maven"}
+    }
+    dependencies {
+	classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "1.12.2-0.0.20.1_rewrite11"
+group = "com.bewitchment"
+archivesBaseName = "bewitchment"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2768"
+    runDir = "run"
+    mappings = "stable_39"
+    clientRunArgs += "--username=Bewitchment"
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven {url = "http://dvs1.progwml6.com/files/maven"}
+    maven {url = "https://minecraft.curseforge.com/api/maven"}
+    maven {url "http://maven.tterrag.com"}
+    maven {url "https://maven.blamejared.com"}
+}
+
+dependencies {
+	deobfProvided "mezz.jei:jei_1.12.2:4.15.0.268"
+	deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
+	deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
+	deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
+	compile "baubles:Baubles:1.12:1.5.2"
+	compile "vazkii.patchouli:Patchouli:1.0-18.93"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
