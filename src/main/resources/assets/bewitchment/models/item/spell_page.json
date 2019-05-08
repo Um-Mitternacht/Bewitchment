@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer1": "bewitchment:items/spell_static",
-    "layer0": "bewitchment:items/spell_inside"
-  }
-}

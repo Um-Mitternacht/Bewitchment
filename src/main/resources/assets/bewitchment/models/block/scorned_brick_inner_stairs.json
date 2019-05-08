@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "bewitchment:blocks/scorned_bricks",
-    "top": "bewitchment:blocks/scorned_bricks",
-    "side": "bewitchment:blocks/scorned_bricks"
-  }
-}

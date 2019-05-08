@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "bewitchment:blocks/planks_elder",
-    "top": "bewitchment:blocks/planks_elder",
-    "side": "bewitchment:blocks/planks_elder"
-  }
-}

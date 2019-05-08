@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "bewitchment:blocks/tourmaline_block",
-    "up": "bewitchment:blocks/tourmaline_block_top",
-    "down": "bewitchment:blocks/tourmaline_block_bottom"
-  }
-}

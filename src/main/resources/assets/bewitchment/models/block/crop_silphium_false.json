@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "bewitchment:crop_silphium_false"
-  }
-}

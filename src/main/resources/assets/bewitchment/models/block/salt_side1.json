@@ -1,6 +1,0 @@
-{
-  "parent": "bewitchment:block/salt_side",
-  "textures": {
-    "line": "bewitchment:blocks/salt_dust_line1"
-  }
-}

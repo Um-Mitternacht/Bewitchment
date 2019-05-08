@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "bewitchment:blocks/planks_juniper",
-    "top": "bewitchment:blocks/planks_juniper",
-    "side": "bewitchment:blocks/planks_juniper"
-  }
-}

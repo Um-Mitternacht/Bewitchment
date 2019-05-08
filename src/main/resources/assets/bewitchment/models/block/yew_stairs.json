@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "bewitchment:blocks/planks_yew",
-    "top": "bewitchment:blocks/planks_yew",
-    "side": "bewitchment:blocks/planks_yew"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "bewitchment:blocks/embittered_bricks",
-    "top": "bewitchment:blocks/embittered_bricks",
-    "side": "bewitchment:blocks/embittered_bricks"
-  }
-}
