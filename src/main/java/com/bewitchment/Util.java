@@ -15,8 +15,9 @@ import net.minecraftforge.oredict.OreDictionary;
 @SuppressWarnings("deprecation")
 public class Util {
 	public static <T extends Block> T registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
-		block.setRegistryName(new ResourceLocation(Bewitchment.MODID, name));
-		block.setTranslationKey(block.getRegistryName().toString().replace(":", "."));
+		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
+		block.setRegistryName(loc);
+		block.setTranslationKey(loc.toString().replace(":", "."));
 		block.setCreativeTab(Bewitchment.proxy.tab);
 		ObfuscationReflectionHelper.setPrivateValue(Block.class, block, sound, "blockSoundType", "field_149762_H");
 		block.setHardness(hardness);
@@ -30,9 +31,9 @@ public class Util {
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
 		ForgeRegistries.BLOCKS.register(block);
 		if (/*!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && */ !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
-			Item item = new ItemBlock(block).setRegistryName(block.getRegistryName()).setTranslationKey(block.getTranslationKey());
+			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
-			Bewitchment.proxy.registerTexture(item, "normal");
+			Bewitchment.proxy.registerTexture(item, block instanceof BlockSapling ? "inventory" : "normal");
 		}
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
 		return block;
@@ -43,8 +44,9 @@ public class Util {
 	}
 
 	public static <T extends Item> T registerItem(T item, String name, String... oreDictionaryNames) {
-		item.setRegistryName(new ResourceLocation(Bewitchment.MODID, name));
-		item.setTranslationKey(item.getRegistryName().toString().replace(":", "."));
+		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
+		item.setRegistryName(loc);
+		item.setTranslationKey(loc.toString().replace(":", "."));
 		item.setCreativeTab(Bewitchment.proxy.tab);
 		ForgeRegistries.ITEMS.register(item);
 		Bewitchment.proxy.registerTexture(item, "normal");

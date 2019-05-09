@@ -14,12 +14,14 @@ import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions"})
 public class ModObjects {
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
@@ -107,11 +109,16 @@ public class ModObjects {
 	public static final Item cold_iron_nugget = Util.registerItem("cold_iron_nugget", "nuggetColdIron");
 	public static final Item salt = new ItemSalt();
 
-	public static final void preInit() {
-		Bewitchment.proxy.ignoreProperty(cypress_sapling, ModBlockSapling.READY);
-		Bewitchment.proxy.ignoreProperty(elder_sapling, ModBlockSapling.READY);
-		Bewitchment.proxy.ignoreProperty(juniper_sapling, ModBlockSapling.READY);
-		Bewitchment.proxy.ignoreProperty(yew_sapling, ModBlockSapling.READY);
+	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
+	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "elderberries");
+	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "juniper_berries");
+	public static final Item yew_aril = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "yew_aril");
+
+	public static void preInit() {
+		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
+		Bewitchment.proxy.ignoreProperty(elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
+		Bewitchment.proxy.ignoreProperty(juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
+		Bewitchment.proxy.ignoreProperty(yew_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(cypress_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(elder_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(juniper_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
