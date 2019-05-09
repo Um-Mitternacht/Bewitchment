@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "type": "forge:ore_dict",
+	  "ore": "blockSilver"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:silver_ingot",
+	"count": 9
+  }
+}

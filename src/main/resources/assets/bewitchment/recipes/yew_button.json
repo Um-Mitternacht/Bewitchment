@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:yew_planks"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:yew_button"
+  }
+}

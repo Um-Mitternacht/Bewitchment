@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"PP"
+  ],
+  "key": {
+	"P": {
+	  "item": "bewitchment:elder_planks"
+	}
+  },
+  "result": {
+	"item": "bewitchment:elder_pressure_plate"
+  }
+}
