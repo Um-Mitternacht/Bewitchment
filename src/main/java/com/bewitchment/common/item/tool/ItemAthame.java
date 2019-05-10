@@ -16,6 +16,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Random;
+
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class ItemAthame extends ItemSword {
 	public ItemAthame() {
@@ -39,15 +41,17 @@ public class ItemAthame extends ItemSword {
 	@SubscribeEvent
 	public void livingDrop(LivingDropsEvent event) {
 		if (event.isRecentlyHit() && event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getHeldItemMainhand().getItem() == ModObjects.athame && !BewitchmentAPI.getAthameLoot(event.getEntityLiving()).isEmpty()) {
-			for (ItemStack stack : BewitchmentAPI.getAthameLoot(event.getEntityLiving()))
-				if (event.getEntityLiving().getRNG().nextInt(5) <= 2 + (2 * event.getLootingLevel())) {
-					if (event.getEntityLiving() instanceof EntityPlayer && stack.getItem() instanceof ItemSkull) {
-						NBTTagCompound tag = new NBTTagCompound();
-						tag.setString("SkullOwner", event.getEntity().getName());
-						stack.setTagCompound(tag);
-					}
-					event.getDrops().add(new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX + 0.5, event.getEntityLiving().posY + 0.5, event.getEntityLiving().posZ + 0.5, stack));
+			for (ItemStack stack : BewitchmentAPI.getAthameLoot(event.getEntityLiving())) {
+				Random rand = event.getEntityLiving().getRNG();
+				ItemStack copy = stack.copy();
+				copy.setCount(rand.nextInt(stack.getCount()) + rand.nextInt(event.getLootingLevel() + 1));
+				if (event.getEntityLiving() instanceof EntityPlayer && copy.getItem() instanceof ItemSkull) {
+					NBTTagCompound tag = new NBTTagCompound();
+					tag.setString("SkullOwner", event.getEntity().getName());
+					copy.setTagCompound(tag);
 				}
+				event.getDrops().add(new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX + 0.5, event.getEntityLiving().posY + 0.5, event.getEntityLiving().posZ + 0.5, copy));
+			}
 		}
 	}
 }
