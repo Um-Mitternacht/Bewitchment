@@ -1,5 +1,6 @@
 package com.bewitchment.client;
 
+import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
@@ -11,11 +12,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import java.util.List;
 import java.util.function.Predicate;
 
+@SuppressWarnings("ConstantConditions")
 public class ClientProxy extends CommonProxy {
+	@Override
+	public void init(FMLInitializationEvent event) {
+		super.init(event);
+		MinecraftForge.EVENT_BUS.register(new ClientHandler());
+	}
+
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;

@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockSaltBarrier;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
+import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.util.ModItemAxe;
 import com.bewitchment.common.item.util.ModItemDoor;
 import com.bewitchment.common.item.util.ModItemPickaxe;
@@ -14,6 +15,7 @@ import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -29,6 +31,13 @@ public class ModObjects {
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 425, 7, 2.5f, 14);
 
+	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
+	public static final ModBlockCrops crop_belladonna = new ModBlockCrops("crop_belladonna");
+	public static final ModBlockCrops crop_garlic = new ModBlockCrops("crop_garlic");
+	public static final ModBlockCrops crop_hellebore = new ModBlockCrops("crop_hellebore");
+	public static final ModBlockCrops crop_mandrake = new ModBlockCrops("crop_mandrake");
+	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
+	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
 
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
@@ -109,6 +118,22 @@ public class ModObjects {
 	public static final Item cold_iron_nugget = Util.registerItem("cold_iron_nugget", "nuggetColdIron");
 	public static final Item salt = new ItemSalt();
 
+	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
+	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
+	public static final Item garlic = new ItemGarlic();
+	public static final Item hellebore = Util.registerItem("hellebore", "cropHellebore");
+	public static final Item mandrake_root = Util.registerItem("mandrake_root", "cropMandrake");
+	public static final Item white_sage = Util.registerItem("white_sage", "cropWhiteSage");
+	public static final Item wormwood = Util.registerItem("wormwood", "cropWormwood");
+
+	public static final Item aconitum_seeds = Util.registerItem(new ItemSeeds(crop_aconitum, Blocks.FARMLAND), "aconitum_seeds");
+	public static final Item belladonna_seeds = Util.registerItem(new ItemSeeds(crop_belladonna, Blocks.FARMLAND), "belladonna_seeds");
+	public static final Item garlic_seeds = Util.registerItem(new ItemSeeds(crop_garlic, Blocks.FARMLAND), "garlic_seeds");
+	public static final Item hellebore_seeds = Util.registerItem(new ItemSeeds(crop_hellebore, Blocks.FARMLAND), "hellebore_seeds");
+	public static final Item mandrake_seeds = Util.registerItem(new ItemSeeds(crop_mandrake, Blocks.FARMLAND), "mandrake_seeds");
+	public static final Item white_sage_seeds = Util.registerItem(new ItemSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds");
+	public static final Item wormwood_seeds = Util.registerItem(new ItemSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds");
+
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "juniper_berries");
@@ -131,6 +156,14 @@ public class ModObjects {
 		Bewitchment.proxy.ignoreProperty(elder_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(juniper_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(yew_fence_gate, BlockFenceGate.POWERED);
+
+		crop_aconitum.setItems(aconitum_seeds, aconitum);
+		crop_belladonna.setItems(belladonna_seeds, belladonna);
+		crop_garlic.setItems(garlic_seeds, garlic);
+		crop_hellebore.setItems(hellebore_seeds, hellebore);
+		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
+		crop_white_sage.setItems(white_sage_seeds, white_sage);
+		crop_wormwood.setItems(wormwood_seeds, wormwood);
 	}
 
 	private static Item[] registerArmor(ItemArmor.ArmorMaterial mat) {

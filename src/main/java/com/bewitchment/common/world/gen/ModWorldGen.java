@@ -8,6 +8,7 @@ import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderSurface;
@@ -17,6 +18,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
@@ -28,6 +30,14 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.proxy.config.amethystSize);
 	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), Bewitchment.proxy.config.garnetSize);
 	private final WorldGenerator moonstoneOre = new WorldGenMinable(ModObjects.moonstone_ore.getDefaultState(), Bewitchment.proxy.config.moonstoneSize);
+
+	public ModWorldGen() {
+		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.belladonna_seeds), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.hellebore_seeds), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.mandrake_seeds), 3);
+		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.wormwood_seeds), 3);
+	}
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
@@ -74,8 +84,7 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 
 	private void generateOre(World world, Random rand, WorldGenerator gen, int chunkX, int chunkZ, int chance, int minHeight, int maxHeight) {
-		int heightDiff = maxHeight - minHeight + 1;
 		for (int i = 0; i < chance; i++)
-			gen.generate(world, rand, new BlockPos(chunkX * 16 + rand.nextInt(16), rand.nextInt(heightDiff), chunkZ * 16 + rand.nextInt(16)));
+			gen.generate(world, rand, new BlockPos(chunkX * 16 + rand.nextInt(16), rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16 + rand.nextInt(16)));
 	}
 }
