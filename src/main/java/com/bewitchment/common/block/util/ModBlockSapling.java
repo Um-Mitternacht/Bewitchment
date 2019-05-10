@@ -11,9 +11,9 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
-@SuppressWarnings("NullableProblems")
 public class ModBlockSapling extends BlockSapling {
 	private final Class<? extends WorldGenModTree> gen;
 
@@ -29,7 +29,7 @@ public class ModBlockSapling extends BlockSapling {
 	}
 
 	@Override
-	public void generateTree(World world, BlockPos pos, IBlockState state, Random rand) {
+	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
 		WorldGenModTree generator = null;
 		try {generator = gen.getDeclaredConstructor(boolean.class).newInstance(false);}
 		catch (Exception e) {e.printStackTrace();}
