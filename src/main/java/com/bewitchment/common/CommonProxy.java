@@ -4,8 +4,10 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
+import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRecipes;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
@@ -34,8 +36,10 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		config = new ModConfig((event.getSuggestedConfigurationFile()));
+		ModSounds.preInit();
+		ModEntities.preInit();
 		ModObjects.preInit();
-		ModRecipes.furnacePreInit();
+		ModRecipes.preInit();
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -44,6 +48,7 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
+		ModRecipes.postInit();
 	}
 
 	public boolean isFancyGraphicsEnabled() {

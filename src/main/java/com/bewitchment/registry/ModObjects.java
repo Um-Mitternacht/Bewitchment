@@ -6,6 +6,9 @@ import com.bewitchment.common.block.BlockSaltBarrier;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.food.ItemGarlic;
+import com.bewitchment.common.item.food.ItemHeart;
+import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.util.ModItemAxe;
 import com.bewitchment.common.item.util.ModItemDoor;
 import com.bewitchment.common.item.util.ModItemPickaxe;
@@ -126,6 +129,9 @@ public class ModObjects {
 	public static final Item cold_iron_shovel = Util.registerItem(new ItemSpade(TOOL_COLD_IRON), "cold_iron_shovel");
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 
+	public static final Item athame = new ItemAthame();
+	public static final Item boline = new ItemBoline();
+
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
 	public static final Item moonstone = Util.registerItem("moonstone", "gemMoonstone", "gemAll");
@@ -151,10 +157,32 @@ public class ModObjects {
 	public static final Item white_sage_seeds = Util.registerItem(new ItemSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds");
 	public static final Item wormwood_seeds = Util.registerItem(new ItemSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds");
 
-	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "juniper_berries");
 	public static final Item yew_aril = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "yew_aril");
+
+	public static final Item lizard_leg = Util.registerItem("lizard_leg");
+	public static final Item eye_of_newt = Util.registerItem("eye_of_newt");
+	public static final Item owlets_wing = Util.registerItem("owlets_wing");
+	public static final Item ravens_feather = Util.registerItem("ravens_feather");
+	public static final Item adders_fork = Util.registerItem("adders_fork");
+	public static final Item toe_of_frog = Util.registerItem("toe_of_frog");
+	public static final Item hellhound_horn = Util.registerItem("hellhound_horn");
+	public static final Item heart = new ItemHeart();
+	public static final Item demon_heart = Util.registerItem("demon_heart");
+	public static final Item snake_venom = Util.registerItem("snake_venom");
+	public static final Item liquid_wroth = Util.registerItem("liquid_wroth");
+
+	public static final Item hoof = Util.registerItem("hoof");
+	public static final Item eye_of_old = Util.registerItem("eye_of_old");
+	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
+	public static final Item wool_of_bat = Util.registerItem("wool_of_bat");
+
+	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
+	public static final Item ectoplasm = Util.registerItem("ectoplasm");
+	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
+	public static final Item spectral_dust = Util.registerItem("spectral_dust");
+	public static final Item wood_ash = Util.registerItem("wood_ash");
 
 	public static void preInit() {
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);

@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"I",
+	"I",
+	"S"
+  ],
+  "key": {
+	"I": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotSilver"
+	},
+	"S": {
+	  "type": "forge:ore_dict",
+	  "ore": "gemAll"
+	}
+  },
+  "result": {
+	"item": "bewitchment:athame"
+  }
+}

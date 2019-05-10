@@ -1,18 +1,22 @@
 package com.bewitchment;
 
+import baubles.api.BaublesApi;
 import com.bewitchment.common.block.BlockSaltBarrier;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -66,5 +70,21 @@ public class Util {
 
 	public static Item registerItem(String name, String... oreDictionaryNames) {
 		return registerItem(new Item(), name, oreDictionaryNames);
+	}
+
+	public static List<ItemStack> getEntireInventory(EntityPlayer player) {
+		List<ItemStack> fin = new ArrayList<>();
+		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++)
+			fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
+		fin.addAll(player.inventory.mainInventory);
+		fin.addAll(player.inventory.armorInventory);
+		fin.addAll(player.inventory.offHandInventory);
+		return fin;
+	}
+
+	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
+		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
+		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
+		else if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
 	}
 }

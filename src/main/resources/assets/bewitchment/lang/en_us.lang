@@ -86,6 +86,9 @@ item.bewitchment.cold_iron_axe.name=Cold Iron Axe
 item.bewitchment.cold_iron_shovel.name=Cold Iron Shovel
 item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 
+item.bewitchment.athame.name=Athame
+item.bewitchment.boline.name=Boline
+
 item.bewitchment.amethyst.name=Amethyst
 item.bewitchment.garnet.name=Garnet
 item.bewitchment.moonstone.name=Moonstone
@@ -111,13 +114,37 @@ item.bewitchment.mandrake_seeds.name=Mandrake Seeds
 item.bewitchment.white_sage_seeds.name=White Sage Seeds
 item.bewitchment.wormwood_seeds.name=Wormwood Seeds
 
-item.bewitchment.oak_apple_gall.name=Oak Apple Gall
 item.bewitchment.elderberries.name=Elderberries
 item.bewitchment.juniper_berries.name=Juniper Berries
 item.bewitchment.yew_aril.name=Yew Aril
 
+item.bewitchment.lizard_leg.name=Lizard Leg
+item.bewitchment.eye_of_newt.name=Eye of Newt
+item.bewitchment.owlets_wing.name=Owlet's Wing
+item.bewitchment.ravens_feather.name=Raven's Feather
+item.bewitchment.adders_fork.name=Adder's Fork
+item.bewitchment.toe_of_frog.name=Toe of Frog
+item.bewitchment.hellhound_horn.name=Hellhound Horn
+item.bewitchment.heart.name=Heart
+item.bewitchment.demon_heart.name=Demon Heart
+item.bewitchment.snake_venom.name=Snake Venom
+item.bewitchment.liquid_wroth.name=Liquid Wroth
+
+item.bewitchment.hoof.name=Hoof
+item.bewitchment.eye_of_old.name=Eye of Old
+item.bewitchment.tongue_of_dog.name=Tongue of Dog
+item.bewitchment.wool_of_bat.name=Wool of Bat
+
+item.bewitchment.dimensional_sand.name=Dimensional Sand
+item.bewitchment.ectoplasm.name=Ectoplasm
+item.bewitchment.oak_apple_gall.name=Oak Apple Gall
+item.bewitchment.spectral_dust.name=Spectral Dust
+item.bewitchment.wood_ash.name=Wood Ash
+
 #INFO
 itemGroup.bewitchment=Bewitchment
+
+tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
 tooltip.bewitchment.belladonna=A highly toxic plant, this is a prime component of flying ointment

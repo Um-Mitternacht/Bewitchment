@@ -10,6 +10,6 @@ public class ClientHandler {
 	public void onTooltipAdd(ItemTooltipEvent event) {
 		Item item = event.getItemStack().getItem();
 		String tip = "tooltip." + item.getTranslationKey().substring(5);
-		if (!I18n.format(tip).equals(tip)) event.getToolTip().add(I18n.format(tip));
+		if (!I18n.format(tip).equals(tip)) event.getToolTip().add(1, I18n.format(tip));
 	}
 }

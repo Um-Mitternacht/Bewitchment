@@ -1,7 +1,14 @@
 package com.bewitchment.client;
 
 import com.bewitchment.client.handler.ClientHandler;
+import com.bewitchment.client.render.entity.living.*;
+import com.bewitchment.client.render.entity.spirit.demon.*;
+import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.common.CommonProxy;
+import com.bewitchment.common.entity.living.*;
+import com.bewitchment.common.entity.spirit.demon.*;
+import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
@@ -13,16 +20,51 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "unused"})
 public class ClientProxy extends CommonProxy {
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
+		//		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
+		//		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
+		//		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
+		//		RenderingRegistry.registerEntityRenderingHandler(EntityYewBroom.class, RenderYewBroom::new);
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityNewt.class, RenderNewt::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySnake.class, RenderSnake::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySerpent.class, RenderSerpent::new);
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
+
+		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
+		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
+	}
+
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
+		//		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((IBlockColor) (state, world, pos, tintIndex) -> {
+		//			GlyphType type = state.getValue(BlockGlyph.TYPE);
+		//			return type == GlyphType.GOLDEN ? 0xe3dc3c : type == GlyphType.NETHER ? 0xbb0000 : type == GlyphType.ENDER ? 0x770077 : 0xffffff;
+		//		}, ModObjects.glyph);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
 		MinecraftForge.EVENT_BUS.register(new ClientHandler());
 	}
 
