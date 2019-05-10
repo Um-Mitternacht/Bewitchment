@@ -6,13 +6,18 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
-@SuppressWarnings("deprecation")
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
+@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
 public class Util {
 	public static <T extends Block> T registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
@@ -43,15 +48,20 @@ public class Util {
 		return registerBlock(block, name, base.getDefaultState().getMaterial(), base.getSoundType(), base.getBlockHardness(null, null, null), base.getExplosionResistance(null) * 5, base.getHarvestTool(base.getDefaultState()), base.getHarvestLevel(base.getDefaultState()), oreDictionaryNames);
 	}
 
-	public static <T extends Item> T registerItem(T item, String name, String... oreDictionaryNames) {
+	public static <T extends Item> T registerItem(T item, String name, List<Predicate<ItemStack>> predicates, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		item.setRegistryName(loc);
 		item.setTranslationKey(loc.toString().replace(":", "."));
 		item.setCreativeTab(Bewitchment.proxy.tab);
 		ForgeRegistries.ITEMS.register(item);
-		Bewitchment.proxy.registerTexture(item, "normal");
+		if (predicates.isEmpty()) Bewitchment.proxy.registerTexture(item, "normal");
+		else Bewitchment.proxy.registerTextureVariant(item, predicates);
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, item);
 		return item;
+	}
+
+	public static Item registerItem(Item item, String name, String... oreDictionaryNames) {
+		return registerItem(item, name, Arrays.asList(), oreDictionaryNames);
 	}
 
 	public static Item registerItem(String name, String... oreDictionaryNames) {

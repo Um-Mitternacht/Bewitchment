@@ -23,7 +23,9 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
 
-@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions"})
+import java.util.Arrays;
+
+@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions", "ArraysAsListWithZeroOrOneArgument"})
 public class ModObjects {
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
@@ -104,10 +106,25 @@ public class ModObjects {
 	public static final Block juniper_button = new ModBlockButton("juniper_button", juniper_planks);
 	public static final Block yew_button = new ModBlockButton("yew_button", yew_planks);
 
-	public static final Item[] silver_armor = registerArmor(ARMOR_SILVER);
-	public static final Item[] cold_iron_armor = registerArmor(ARMOR_COLD_IRON);
-	public static final Item[] silver_tools = registerTools(TOOL_SILVER);
-	public static final Item[] cold_iron_tools = registerTools(TOOL_COLD_IRON);
+	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
+	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate");
+	public static final Item silver_leggings = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.LEGS), "silver_leggings");
+	public static final Item silver_boots = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.FEET), "silver_boots");
+	public static final Item cold_iron_helmet = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.HEAD), "cold_iron_helmet");
+	public static final Item cold_iron_chestplate = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.CHEST), "cold_iron_chestplate");
+	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
+	public static final Item cold_iron_boots = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.FEET), "cold_iron_boots");
+
+	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword");
+	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe");
+	public static final Item silver_axe = Util.registerItem(new ModItemAxe(TOOL_SILVER), "silver_axe");
+	public static final Item silver_shovel = Util.registerItem(new ItemSpade(TOOL_SILVER), "silver_shovel");
+	public static final Item silver_hoe = Util.registerItem(new ItemHoe(TOOL_SILVER), "silver_hoe");
+	public static final Item cold_iron_sword = Util.registerItem(new ItemSword(TOOL_COLD_IRON), "cold_iron_sword", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Hudson Bat") || s.getDisplayName().equalsIgnoreCase("Masashi Bat") || s.getDisplayName().equalsIgnoreCase("Emmanuel Bat") || s.getDisplayName().equalsIgnoreCase("Michael Bat") || s.getDisplayName().equalsIgnoreCase("Yoshihiro Bat") || s.getDisplayName().equalsIgnoreCase("Lewis Bat") || s.getDisplayName().equalsIgnoreCase("Katushiro Bat") || s.getDisplayName().equalsIgnoreCase("Ashley Bat")));
+	public static final Item cold_iron_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_COLD_IRON), "cold_iron_pickaxe");
+	public static final Item cold_iron_axe = Util.registerItem(new ModItemAxe(TOOL_COLD_IRON), "cold_iron_axe");
+	public static final Item cold_iron_shovel = Util.registerItem(new ItemSpade(TOOL_COLD_IRON), "cold_iron_shovel");
+	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
@@ -164,26 +181,5 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
-	}
-
-	private static Item[] registerArmor(ItemArmor.ArmorMaterial mat) {
-		Item[] ret = new Item[4];
-		String name = mat.name();
-		ret[0] = Util.registerItem(new ItemArmor(mat, 0, EntityEquipmentSlot.HEAD), name + "_helmet");
-		ret[1] = Util.registerItem(new ItemArmor(mat, 0, EntityEquipmentSlot.CHEST), name + "_chestplate");
-		ret[2] = Util.registerItem(new ItemArmor(mat, 0, EntityEquipmentSlot.LEGS), name + "_leggings");
-		ret[3] = Util.registerItem(new ItemArmor(mat, 0, EntityEquipmentSlot.FEET), name + "_boots");
-		return ret;
-	}
-
-	private static Item[] registerTools(Item.ToolMaterial mat) {
-		Item[] ret = new Item[5];
-		String name = mat.name();
-		ret[0] = Util.registerItem(new ItemSword(mat), name + "_sword");
-		ret[1] = Util.registerItem(new ModItemPickaxe(mat), name + "_pickaxe");
-		ret[2] = Util.registerItem(new ModItemAxe(mat), name + "_axe");
-		ret[3] = Util.registerItem(new ItemSpade(mat), name + "_shovel");
-		ret[4] = Util.registerItem(new ItemHoe(mat), name + "_hoe");
-		return ret;
 	}
 }
