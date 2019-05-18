@@ -32,9 +32,8 @@ public class BewitchmentAPI {
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
 
-	public static OvenRecipe registerOvenRecipe(OvenRecipe recipe) {
+	public static void registerOvenRecipe(OvenRecipe recipe) {
 		REGISTRY_OVEN.register(recipe);
-		return recipe;
 	}
 
 	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
