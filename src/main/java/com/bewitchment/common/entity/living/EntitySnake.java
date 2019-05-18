@@ -87,7 +87,8 @@ public class EntitySnake extends ModEntityTameable {
 						milkTimer = 3600;
 						return true;
 					}
-				} else {
+				}
+				else {
 					setAttackTarget(player);
 					setRevengeTarget(player);
 				}

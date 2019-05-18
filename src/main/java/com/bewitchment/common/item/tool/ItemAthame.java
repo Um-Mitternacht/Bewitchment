@@ -32,7 +32,8 @@ public class ItemAthame extends ItemSword {
 			if (target instanceof EntityEnderman && attacker instanceof EntityPlayer) {
 				target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 20);
 				stack.damageItem(50, attacker);
-			} else return super.hitEntity(stack, target, attacker);
+			}
+			else return super.hitEntity(stack, target, attacker);
 		}
 		return true;
 	}
@@ -43,11 +44,15 @@ public class ItemAthame extends ItemSword {
 			for (ItemStack stack : BewitchmentAPI.getAthameLoot(event.getEntityLiving())) {
 				Random rand = event.getEntityLiving().getRNG();
 				ItemStack copy = stack.copy();
-				copy.setCount(rand.nextInt(stack.getCount()) + rand.nextInt(event.getLootingLevel() + 1));
-				if (event.getEntityLiving() instanceof EntityPlayer && copy.getItem() instanceof ItemSkull) {
-					NBTTagCompound tag = new NBTTagCompound();
-					tag.setString("SkullOwner", event.getEntity().getName());
-					copy.setTagCompound(tag);
+				copy.setCount(rand.nextInt(stack.getCount() + 1) + rand.nextInt(event.getLootingLevel() + 1));
+				if (copy.getItem() instanceof ItemSkull) {
+					if (rand.nextFloat() <= 0.8f) copy.shrink(copy.getCount());
+					else copy.setCount(1 + (int) (rand.nextFloat() * event.getLootingLevel()) / 2);
+					if (copy.getCount() > 1 && event.getEntityLiving() instanceof EntityPlayer) {
+						NBTTagCompound tag = new NBTTagCompound();
+						tag.setString("SkullOwner", event.getEntity().getName());
+						copy.setTagCompound(tag);
+					}
 				}
 				event.getDrops().add(new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX + 0.5, event.getEntityLiving().posY + 0.5, event.getEntityLiving().posZ + 0.5, copy));
 			}

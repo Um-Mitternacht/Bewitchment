@@ -50,6 +50,6 @@ public class BlockDropHandler {
 		replaceDrop(event, s -> s.getBlock() == ModObjects.yew_leaves, new ItemStack(ModObjects.yew_aril), 1, 0, false);
 		replaceDrop(event, s -> s.getBlock() == Blocks.DEADBUSH, new ItemStack(ModObjects.white_sage_seeds), 15, 2, false);
 		replaceDrop(event, s -> s.getBlock() == Blocks.RED_FLOWER && s.getValue(Blocks.RED_FLOWER.getTypeProperty()) == BlockFlower.EnumFlowerType.ALLIUM, new ItemStack(ModObjects.garlic_seeds), 15, 2, false);
-		replaceDrop(event, s -> (s.getBlock() == Blocks.LEAVES && s.getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) || (s.getBlock() == Blocks.LEAVES2 && s.getValue(BlockNewLeaf.VARIANT) == BlockPlanks.EnumType.DARK_OAK), new ItemStack(ModObjects.oak_apple_gall), 5, 0, false);
+		replaceDrop(event, s -> (s.getBlock() == Blocks.LEAVES && s.getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) || (s.getBlock() == Blocks.LEAVES2 && s.getValue(BlockNewLeaf.VARIANT) == BlockPlanks.EnumType.DARK_OAK), new ItemStack(ModObjects.oak_apple_gall), 2, 0, false);
 	}
 }

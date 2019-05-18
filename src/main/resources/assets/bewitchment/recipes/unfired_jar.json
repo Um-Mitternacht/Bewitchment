@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"C C",
+	" C "
+  ],
+  "key": {
+	"C": {
+	  "item": "minecraft:clay_ball"
+	}
+  },
+  "result": {
+	"item": "bewitchment:unfired_jar",
+	"count": 3
+  }
+}

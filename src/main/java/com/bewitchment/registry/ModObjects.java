@@ -2,7 +2,9 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.common.block.BlockOven;
 import com.bewitchment.common.block.BlockSaltBarrier;
+import com.bewitchment.common.block.tile.entity.TileEntityOven;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.food.ItemGarlic;
@@ -24,7 +26,9 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Arrays;
 
@@ -44,6 +48,8 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
+
+	public static final Block oven = registerTileEntity(new BlockOven(), TileEntityOven.class);
 
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
@@ -141,6 +147,18 @@ public class ModObjects {
 	public static final Item cold_iron_nugget = Util.registerItem("cold_iron_nugget", "nuggetColdIron");
 	public static final Item salt = new ItemSalt();
 
+	public static final Item unfired_jar = Util.registerItem("unfired_jar");
+	public static final Item empty_jar = Util.registerItem("empty_jar");
+	public static final Item oak_spirit = Util.registerItem("oak_spirit");
+	public static final Item spruce_heart = Util.registerItem("spruce_heart");
+	public static final Item birch_soul = Util.registerItem("birch_soul");
+	public static final Item cloudy_oil = Util.registerItem("cloudy_oil");
+	public static final Item acacia_resin = Util.registerItem("acacia_resin");
+	public static final Item ebb_of_death = Util.registerItem("ebb_of_death");
+	public static final Item droplet_of_wisdom = Util.registerItem("droplet_of_wisdom");
+	public static final Item liquid_witchcraft = Util.registerItem("liquid_witchcraft");
+	public static final Item essence_of_vitality = Util.registerItem("essence_of_vitality");
+
 	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
 	public static final Item garlic = new ItemGarlic();
@@ -209,5 +227,10 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
+	}
+
+	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
+		GameRegistry.registerTileEntity(tile, block.getRegistryName());
+		return block;
 	}
 }

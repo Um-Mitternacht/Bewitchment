@@ -40,6 +40,9 @@ public class Bewitchment {
 
 	public static final Logger logger = LogManager.getLogger(NAME);
 
+	@Mod.Instance
+	public static Bewitchment instance;
+
 	@SidedProxy(serverSide = "com.bewitchment.common.CommonProxy", clientSide = "com.bewitchment.client.ClientProxy")
 	public static CommonProxy proxy;
 

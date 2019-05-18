@@ -70,13 +70,15 @@ public abstract class ModEntityTameable extends EntityTameable {
 					setTamedBy(player);
 					playTameEffect(true);
 					world.setEntityState(this, (byte) 7);
-				} else {
+				}
+				else {
 					playTameEffect(false);
 					world.setEntityState(this, (byte) 6);
 				}
 			}
 			return true;
-		} else if (!player.isSneaking() && isTamed()) setSitting(!isSitting());
+		}
+		else if (!player.isSneaking() && isTamed()) setSitting(!isSitting());
 		return super.processInteract(player, hand);
 	}
 

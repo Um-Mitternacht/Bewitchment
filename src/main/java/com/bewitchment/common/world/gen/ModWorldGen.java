@@ -57,8 +57,8 @@ public class ModWorldGen implements IWorldGenerator {
 
 	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, int chance, Predicate<Biome> predicate) {
 		if (chance != 0 && rand.nextInt(chance) == 0) {
-			int x = chunkX * 16 + rand.nextInt(16);
-			int z = chunkZ * 16 + rand.nextInt(16);
+			int x = chunkX * 16 + 8;
+			int z = chunkZ * 16 + 8;
 			BlockPos pos = new BlockPos(x, world.getHeight(x, z), z);
 			Biome biome = world.getBiome(pos);
 			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
@@ -85,6 +85,6 @@ public class ModWorldGen implements IWorldGenerator {
 
 	private void generateOre(World world, Random rand, WorldGenerator gen, int chunkX, int chunkZ, int chance, int minHeight, int maxHeight) {
 		for (int i = 0; i < chance; i++)
-			gen.generate(world, rand, new BlockPos(chunkX * 16 + rand.nextInt(16), rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16 + rand.nextInt(16)));
+			gen.generate(world, rand, new BlockPos(chunkX * 16, rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16));
 	}
 }

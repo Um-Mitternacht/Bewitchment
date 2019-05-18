@@ -1,13 +1,13 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-    {
-      "type": "forge:ore_dict",
-      "ore": "blockMoonstone"
-    }
+	{
+	  "type": "forge:ore_dict",
+	  "ore": "blockMoonstone"
+	}
   ],
   "result": {
-    "item": "bewitchment:moonstone",
-    "count": 9
+	"item": "bewitchment:moonstone",
+	"count": 9
   }
 }

@@ -82,6 +82,14 @@ public class Util {
 		return fin;
 	}
 
+	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
+		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
+	}
+
+	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
+		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+	}
+
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);

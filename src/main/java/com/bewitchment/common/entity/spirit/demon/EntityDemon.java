@@ -13,10 +13,8 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"WeakerAccess", "NullableProblems", "ConstantConditions"})
@@ -89,11 +87,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return 6;
 	}
 
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
-		return super.onInitialSpawn(difficulty, data);
-	}
+	//	@Override
+	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
+	//		return super.onInitialSpawn(difficulty, data);
+	//	}
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
