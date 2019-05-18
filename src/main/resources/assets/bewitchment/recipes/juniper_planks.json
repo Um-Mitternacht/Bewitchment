@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:juniper_wood"
-	}
+    {
+      "item": "bewitchment:juniper_wood"
+    }
   ],
   "result": {
-	"item": "bewitchment:juniper_planks",
-	"count": 4
+    "item": "bewitchment:juniper_planks",
+    "count": 4
   }
 }

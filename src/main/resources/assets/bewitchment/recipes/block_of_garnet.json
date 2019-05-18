@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemGarnet"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "gemGarnet"
+    }
   },
   "result": {
-	"item": "bewitchment:block_of_garnet"
+    "item": "bewitchment:block_of_garnet"
   }
 }

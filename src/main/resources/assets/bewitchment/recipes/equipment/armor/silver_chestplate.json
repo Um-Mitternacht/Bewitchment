@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"I I",
-	"III",
-	"III"
+    "I I",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    }
   },
   "result": {
-	"item": "bewitchment:silver_chestplate"
+    "item": "bewitchment:silver_chestplate"
   }
 }

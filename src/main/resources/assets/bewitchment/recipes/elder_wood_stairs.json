@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"I  ",
-	"II ",
-	"III"
+    "I  ",
+    "II ",
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:elder_planks"
-	}
+    "I": {
+      "item": "bewitchment:elder_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:elder_wood_stairs",
-	"count": 4
+    "item": "bewitchment:elder_wood_stairs",
+    "count": 4
   }
 }

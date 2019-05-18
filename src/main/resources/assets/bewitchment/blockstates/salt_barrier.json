@@ -1,189 +1,189 @@
 {
   "multipart": [
-	{
-	  "when": {
-		"OR": [
-		  {
-			"north": "none",
-			"south": "none",
-			"east": "none",
-			"west": "none"
-		  },
-		  {
-			"north": "side|up",
-			"east": "side|up"
-		  },
-		  {
-			"east": "side|up",
-			"south": "side|up"
-		  },
-		  {
-			"south": "side|up",
-			"west": "side|up"
-		  },
-		  {
-			"west": "side|up",
-			"north": "side|up"
-		  }
-		]
-	  },
-	  "apply": {
-		"model": "redstone_dot",
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_dot",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"OR": [
-		  {
-			"north": "side|up"
-		  },
-		  {
-			"north": "none",
-			"south": "side|up",
-			"east": "none",
-			"west": "none"
-		  }
-		]
-	  },
-	  "apply": {
-		"model": "redstone_side0",
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"OR": [
-		  {
-			"south": "side|up"
-		  },
-		  {
-			"north": "side|up",
-			"south": "none",
-			"east": "none",
-			"west": "none"
-		  }
-		]
-	  },
-	  "apply": {
-		"model": "redstone_side_alt0",
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"OR": [
-		  {
-			"east": "side|up"
-		  },
-		  {
-			"north": "none",
-			"south": "none",
-			"east": "none",
-			"west": "side|up"
-		  }
-		]
-	  },
-	  "apply": {
-		"model": "redstone_side_alt1",
-		"y": 270,
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line1",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"OR": [
-		  {
-			"west": "side|up"
-		  },
-		  {
-			"north": "none",
-			"south": "none",
-			"east": "side|up",
-			"west": "none"
-		  }
-		]
-	  },
-	  "apply": {
-		"model": "redstone_side1",
-		"y": 270,
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line1",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"north": "up"
-	  },
-	  "apply": {
-		"model": "redstone_up",
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"south": "up"
-	  },
-	  "apply": {
-		"model": "redstone_up",
-		"y": 180,
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"east": "up"
-	  },
-	  "apply": {
-		"model": "redstone_up",
-		"y": 90,
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	},
-	{
-	  "when": {
-		"west": "up"
-	  },
-	  "apply": {
-		"model": "redstone_up",
-		"y": 270,
-		"textures": {
-		  "particle": "bewitchment:blocks/salt_dot",
-		  "line": "bewitchment:blocks/salt_line0",
-		  "overlay": "bewitchment:blocks/salt_overlay"
-		}
-	  }
-	}
+    {
+      "when": {
+        "OR": [
+          {
+            "north": "none",
+            "south": "none",
+            "east": "none",
+            "west": "none"
+          },
+          {
+            "north": "side|up",
+            "east": "side|up"
+          },
+          {
+            "east": "side|up",
+            "south": "side|up"
+          },
+          {
+            "south": "side|up",
+            "west": "side|up"
+          },
+          {
+            "west": "side|up",
+            "north": "side|up"
+          }
+        ]
+      },
+      "apply": {
+        "model": "redstone_dot",
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_dot",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "north": "side|up"
+          },
+          {
+            "north": "none",
+            "south": "side|up",
+            "east": "none",
+            "west": "none"
+          }
+        ]
+      },
+      "apply": {
+        "model": "redstone_side0",
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "south": "side|up"
+          },
+          {
+            "north": "side|up",
+            "south": "none",
+            "east": "none",
+            "west": "none"
+          }
+        ]
+      },
+      "apply": {
+        "model": "redstone_side_alt0",
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "east": "side|up"
+          },
+          {
+            "north": "none",
+            "south": "none",
+            "east": "none",
+            "west": "side|up"
+          }
+        ]
+      },
+      "apply": {
+        "model": "redstone_side_alt1",
+        "y": 270,
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line1",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "west": "side|up"
+          },
+          {
+            "north": "none",
+            "south": "none",
+            "east": "side|up",
+            "west": "none"
+          }
+        ]
+      },
+      "apply": {
+        "model": "redstone_side1",
+        "y": 270,
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line1",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "north": "up"
+      },
+      "apply": {
+        "model": "redstone_up",
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "south": "up"
+      },
+      "apply": {
+        "model": "redstone_up",
+        "y": 180,
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "east": "up"
+      },
+      "apply": {
+        "model": "redstone_up",
+        "y": 90,
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    },
+    {
+      "when": {
+        "west": "up"
+      },
+      "apply": {
+        "model": "redstone_up",
+        "y": 270,
+        "textures": {
+          "particle": "bewitchment:blocks/salt_dot",
+          "line": "bewitchment:blocks/salt_line0",
+          "overlay": "bewitchment:blocks/salt_overlay"
+        }
+      }
+    }
   ]
 }

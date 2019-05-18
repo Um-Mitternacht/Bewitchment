@@ -31,8 +31,11 @@ public class ModBlockSapling extends BlockSapling {
 	@Override
 	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
 		WorldGenModTree generator = null;
-		try {generator = gen.getDeclaredConstructor(boolean.class).newInstance(false);}
-		catch (Exception e) {e.printStackTrace();}
+		try {
+			generator = gen.getDeclaredConstructor(boolean.class).newInstance(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
 	}
 }

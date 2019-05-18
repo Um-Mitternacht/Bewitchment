@@ -1,13 +1,13 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "blockAmethyst"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockAmethyst"
+    }
   ],
   "result": {
-	"item": "bewitchment:amethyst",
-	"count": 9
+    "item": "bewitchment:amethyst",
+    "count": 9
   }
 }
