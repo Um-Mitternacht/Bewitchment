@@ -10,6 +10,7 @@ import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.common.fortune.*;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -31,6 +32,7 @@ public class ModRecipes {
 	public static void preInit() {
 		furnacePreInit();
 		ovenPreInit();
+		fortunePreInit();
 
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
@@ -147,5 +149,24 @@ public class ModRecipes {
 				BewitchmentAPI.registerOvenRecipe(new OvenRecipe(loc, stack, FurnaceRecipes.instance().getSmeltingResult(stack), stack.getItem() instanceof ItemFood ? new ItemStack(ModObjects.cloudy_oil) : ItemStack.EMPTY, 0.85f));
 			}
 		}
+	}
+
+	private static void fortunePreInit() {
+		BewitchmentAPI.registerFortune(new FortuneBadLuck());
+		BewitchmentAPI.registerFortune(new FortuneGoodLuck());
+		BewitchmentAPI.registerFortune(new FortuneIllness());
+		BewitchmentAPI.registerFortune(new FortuneVitality());
+		BewitchmentAPI.registerFortune(new FortuneMeetPet());
+		BewitchmentAPI.registerFortune(new FortuneMeetMerchant());
+		BewitchmentAPI.registerFortune(new FortuneMeetDemon());
+		BewitchmentAPI.registerFortune(new FortuneMeetSerpent());
+		BewitchmentAPI.registerFortune(new FortuneMeetBlaze());
+		BewitchmentAPI.registerFortune(new FortuneMeetDireWolf());
+		BewitchmentAPI.registerFortune(new FortuneMeetSilverfish());
+		BewitchmentAPI.registerFortune(new FortuneMeetWitch());
+		BewitchmentAPI.registerFortune(new FortuneMeetZombie());
+		BewitchmentAPI.registerFortune(new FortuneDeath());
+		BewitchmentAPI.registerFortune(new FortuneDropItem());
+		BewitchmentAPI.registerFortune(new FortuneTreasure());
 	}
 }

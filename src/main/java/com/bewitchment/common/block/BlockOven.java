@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockOven extends ModBlockContainer {
 	public BlockOven() {
-		super(Bewitchment.instance, "oven", Material.IRON, SoundType.METAL, 5, 5, "pickaxe", 0, ModGui.OVEN.ordinal());
+		super(Bewitchment.instance, "oven", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 0, ModGui.OVEN.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH));
 	}
 

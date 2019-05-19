@@ -9,6 +9,7 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderSurface;
@@ -17,6 +18,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.IWorldGenerator;
@@ -37,6 +39,8 @@ public class ModWorldGen implements IWorldGenerator {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.hellebore_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.mandrake_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.wormwood_seeds), 3);
+
+		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
 	}
 
 	@Override

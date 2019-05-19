@@ -1,5 +1,6 @@
 #BLOCKS
 tile.bewitchment.oven.name=Oven
+tile.bewitchment.crystal_ball.name=Crystal Ball
 
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
 tile.bewitchment.block_of_garnet.name=Block of Garnet
@@ -172,8 +173,29 @@ entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demoness
 entity.bewitchment.imp.name=Imp
 
+#FORTUNE
+bewitchment.bad_luck=Your future looks dim.
+bewitchment.good_luck=Your future looks very bright indeed.
+bewitchment.illness=Weakness and misfortune dot your future.
+bewitchment.vitality=Wounds heal in your time of need.
+bewitchment.meet_pet=You will soon encounter a new friend.
+bewitchment.meet_merchant=You will stumble upon some good deals.
+bewitchment.meet_demon=A powerful duke has seen you scrying, and has taken an interest in you.
+bewitchment.meet_serpent=A lesser demon has seen you scrying, and wishes to challenge you!
+bewitchment.meet_blaze=A lesser fire elemental has seen you scrying, and has emerged to fight you!
+bewitchment.meet_dire_wolf=A rabid beast will soon stumble upon you.
+bewitchment.meet_silverfish=A foul vermin hides in the path.
+bewitchment.meet_witch=Something wicked this way comes.
+bewitchment.meet_zombie=Those who lie underground will be awakened.
+bewitchment.death=The path ahead looks very bleak.
+bewitchment.drop_item=Fingers won't obey when they're most needed.
+bewitchment.treasure=You might be very rich, very soon.
+
 #INFO
 itemGroup.bewitchment=Bewitchment
+
+fortune.has_fortune=This one's future has already been revealed: %s
+fortune.no_fortune=This world has no secrets awaiting
 
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 

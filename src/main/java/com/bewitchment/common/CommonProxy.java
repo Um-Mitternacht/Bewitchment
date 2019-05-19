@@ -2,6 +2,8 @@ package com.bewitchment.common;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
+import com.bewitchment.api.capability.ExtendedPlayer;
+import com.bewitchment.api.capability.ExtendedPlayerHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
@@ -16,6 +18,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -42,6 +45,9 @@ public class CommonProxy {
 		ModEntities.preInit();
 		ModObjects.preInit();
 		ModRecipes.preInit();
+
+		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
+		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 	}
 
 	public void init(FMLInitializationEvent event) {

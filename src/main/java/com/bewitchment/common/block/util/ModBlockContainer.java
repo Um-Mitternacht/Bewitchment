@@ -77,9 +77,12 @@ public abstract class ModBlockContainer extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (!player.isSneaking() && guiID > -1) {
-			player.openGui(modInstance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
-			return true;
+		if (!player.isSneaking()) {
+			if (guiID > -1) {
+				player.openGui(modInstance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
+				return true;
+			}
+			return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}

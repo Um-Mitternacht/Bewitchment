@@ -2,11 +2,14 @@ package com.bewitchment.common.block.tile.entity.util;
 
 import com.bewitchment.Util;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
@@ -51,6 +54,10 @@ public abstract class ModTileEntity extends TileEntity {
 
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{};
+	}
+
+	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+		return false;
 	}
 
 	public static boolean isEmpty(ItemStackHandler handler) {

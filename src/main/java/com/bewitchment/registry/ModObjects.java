@@ -2,8 +2,10 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.common.block.BlockCrystalBall;
 import com.bewitchment.common.block.BlockOven;
 import com.bewitchment.common.block.BlockSaltBarrier;
+import com.bewitchment.common.block.tile.entity.TileEntityCrystalBall;
 import com.bewitchment.common.block.tile.entity.TileEntityOven;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
@@ -50,6 +52,7 @@ public class ModObjects {
 	public static final Block salt_barrier = new BlockSaltBarrier();
 
 	public static final Block oven = registerTileEntity(new BlockOven(), TileEntityOven.class);
+	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
 
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
