@@ -1,8 +1,10 @@
 package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.api.registry.OvenRecipe;
+import com.bewitchment.api.registry.SpinningWheelRecipe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.item.ItemStack;
@@ -20,6 +22,8 @@ import java.util.Map;
 
 public class BewitchmentAPI {
 	private static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
+	private static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
+	private static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
 
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 
@@ -42,6 +46,24 @@ public class BewitchmentAPI {
 	 */
 	public static void registerOvenRecipe(OvenRecipe recipe) {
 		REGISTRY_OVEN.register(recipe);
+	}
+
+	/**
+	 * registers a new DistilleryRecipe
+	 *
+	 * @param recipe the recipe to register
+	 */
+	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
+		REGISTRY_DISTILLERY.register(recipe);
+	}
+
+	/**
+	 * registers a new SpinningWheelRecipe
+	 *
+	 * @param recipe the recipe to register
+	 */
+	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
+		REGISTRY_SPINNING_WHEEL.register(recipe);
 	}
 
 	/**

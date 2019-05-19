@@ -71,6 +71,6 @@ public class CommonProxy {
 	public void ignoreProperty(Block block, IProperty<?>... properties) {}
 
 	public enum ModGui {
-		DISTILLERY, LOOM, OVEN, TAROT
+		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT
 	}
 }

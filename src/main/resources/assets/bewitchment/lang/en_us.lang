@@ -1,5 +1,7 @@
 #BLOCKS
 tile.bewitchment.oven.name=Oven
+tile.bewitchment.distillery.name=Distillery
+tile.bewitchment.spinning_wheel.name=Spinning Wheel
 tile.bewitchment.crystal_ball.name=Crystal Ball
 
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
@@ -112,6 +114,19 @@ item.bewitchment.ebb_of_death.name=Ebb of Death
 item.bewitchment.droplet_of_wisdom.name=Droplet of Wisdom
 item.bewitchment.liquid_witchcraft.name=Liquid Witchcraft
 item.bewitchment.essence_of_vitality.name=Essence of Vitality
+
+item.bewitchment.cleansing_balm.name=Cleansing Balm
+item.bewitchment.demonic_elixir.name=Demonic Elixir
+item.bewitchment.everchanging_dew.name=Everchanging Dew
+item.bewitchment.fiery_unguent.name=Fiery Unguent
+item.bewitchment.heaven_extract.name=Heaven Extract
+item.bewitchment.stone_ichor.name=Stone Ichor
+item.bewitchment.undying_salve.name=Undying Salve
+
+item.bewitchment.diabolical_vein.name=Diabolical Vein
+item.bewitchment.golden_thread.name=Golden Thread
+item.bewitchment.pure_filament.name=Pure Filament
+item.bewitchment.witches_stitching.name=Witches' Stitching
 
 item.bewitchment.aconitum.name=Aconitum
 item.bewitchment.belladonna.name=Belladonna

@@ -1,11 +1,9 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.api.registry.OvenRecipe;
+import com.bewitchment.api.registry.SpinningWheelRecipe;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import com.bewitchment.registry.ModObjects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
@@ -15,52 +13,32 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
-public class TileEntityOven extends ModTileEntity implements ITickable {
-	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
+public class TileEntitySpinningWheel extends ModTileEntity implements ITickable {
+	private final ItemStackHandler inventory_down = new ItemStackHandler(1) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
 			return false;
 		}
 	};
-	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
-		@Override
-		public boolean isItemValid(int index, ItemStack stack) {
-			return index == 0 ? TileEntityFurnace.isItemFuel(stack) : index != 1 || stack.getItem() == ModObjects.empty_jar;
-		}
-
+	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
 		@Override
 		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
+			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
 
-	public int burnTime, fuelBurnTime, progress;
-	private OvenRecipe recipe;
+	public int progress;
+	private SpinningWheelRecipe recipe;
 
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (burnTime > -1) burnTime--;
-			else if (progress > 0) {
-				progress -= 2;
-				if (progress < 0) progress = 0;
-			}
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
-				if (burnTime > -1) {
-					progress++;
-					if (progress >= 199) {
-						progress = 0;
-						recipe.giveOutput(world.rand, inventory_up, inventory_down);
-					}
-				}
-				else {
-					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
-					if (time > 0) {
-						burnTime = time;
-						fuelBurnTime = burnTime;
-						inventory_up.extractItem(0, 1, false);
-					}
+				progress++;
+				if (progress >= 199) {
+					progress = 0;
+					recipe.giveOutput(inventory_up, inventory_down);
 				}
 			}
 		}
@@ -79,8 +57,6 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setInteger("burnTime", burnTime);
-		tag.setInteger("fuelBurnTime", fuelBurnTime);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
 	}
@@ -88,9 +64,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		burnTime = tag.getInteger("burnTime");
-		fuelBurnTime = tag.getInteger("fuelBurnTime");
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		progress = tag.getInteger("progress");
 	}
 

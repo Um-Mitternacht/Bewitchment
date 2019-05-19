@@ -9,11 +9,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
+@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
 	public static <T extends Block> T registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
@@ -82,8 +84,46 @@ public class Util {
 		return fin;
 	}
 
+	public static List<Ingredient> expandList(List<Ingredient> list) {
+		List<Ingredient> fin = new ArrayList<>();
+		for (Ingredient ing : list) {
+			List<ItemStack> newList = new ArrayList<>();
+			for (ItemStack stack : ing.getMatchingStacks()) {
+				ItemStack copy = stack.copy();
+				while (!copy.isEmpty()) newList.add(copy.splitStack(1));
+			}
+			fin.add(Ingredient.fromStacks(newList.toArray(new ItemStack[0])));
+		}
+		return fin;
+	}
+
 	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
 		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
+	}
+
+	public static boolean areISListsEqual(List<Ingredient> ings, List<ItemStack> stacks) {
+		List<ItemStack> checklist = new ArrayList<>();
+		for (ItemStack stack : stacks) checklist.add(stack.copy().splitStack(1));
+		if (ings.size() != checklist.size()) return false;
+		for (Ingredient ing : ings) {
+			boolean found = false;
+			for (ItemStack stack : checklist) {
+				if (ing.apply(stack)) {
+					found = true;
+					checklist.remove(stack);
+					break;
+				}
+			}
+			if (!found) return false;
+		}
+		return true;
+	}
+
+	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
+		List<ItemStack> checklist = new ArrayList<>();
+		for (int i = 0; i < handler.getSlots(); i++)
+			if (!handler.getStackInSlot(i).isEmpty()) checklist.add(handler.extractItem(i, 1, true));
+		return areISListsEqual(ings, checklist);
 	}
 
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {

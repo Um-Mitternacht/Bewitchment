@@ -2,11 +2,11 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.common.block.BlockCrystalBall;
-import com.bewitchment.common.block.BlockOven;
-import com.bewitchment.common.block.BlockSaltBarrier;
+import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.tile.entity.TileEntityCrystalBall;
+import com.bewitchment.common.block.tile.entity.TileEntityDistillery;
 import com.bewitchment.common.block.tile.entity.TileEntityOven;
+import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.food.ItemGarlic;
@@ -42,6 +42,7 @@ public class ModObjects {
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 425, 7, 2.5f, 14);
 
+	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
 	public static final ModBlockCrops crop_belladonna = new ModBlockCrops("crop_belladonna");
 	public static final ModBlockCrops crop_garlic = new ModBlockCrops("crop_garlic");
@@ -50,10 +51,12 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
-
+	//Tiles
 	public static final Block oven = registerTileEntity(new BlockOven(), TileEntityOven.class);
+	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
+	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
 	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
-
+	//Material Blocks
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
 	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockMoonstone");
@@ -67,7 +70,7 @@ public class ModObjects {
 	public static final Block salt_ore = new ModBlock("salt_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 0, "oreSalt");
 
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
-
+	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", WorldGenCypressTree.class, "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", WorldGenElderTree.class, "treeSapling");
 	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", WorldGenJuniperTree.class, "treeSapling");
@@ -84,7 +87,7 @@ public class ModObjects {
 	public static final Block elder_leaves = new ModBlockLeaves("elder_leaves", "treeLeaves");
 	public static final Block juniper_leaves = new ModBlockLeaves("juniper_leaves", "treeLeaves");
 	public static final Block yew_leaves = new ModBlockLeaves("yew_leaves", "treeLeaves");
-
+	//Decor
 	public static final ModItemDoor cypress_door = new ModItemDoor("cypress_door", cypress_planks);
 	public static final ModItemDoor elder_door = new ModItemDoor("elder_door", elder_planks);
 	public static final ModItemDoor juniper_door = new ModItemDoor("juniper_door", juniper_planks);
@@ -117,7 +120,7 @@ public class ModObjects {
 	public static final Block elder_button = new ModBlockButton("elder_button", elder_planks);
 	public static final Block juniper_button = new ModBlockButton("juniper_button", juniper_planks);
 	public static final Block yew_button = new ModBlockButton("yew_button", yew_planks);
-
+	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
 	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate");
 	public static final Item silver_leggings = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.LEGS), "silver_leggings");
@@ -126,7 +129,7 @@ public class ModObjects {
 	public static final Item cold_iron_chestplate = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.CHEST), "cold_iron_chestplate");
 	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
 	public static final Item cold_iron_boots = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.FEET), "cold_iron_boots");
-
+	//Tools
 	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword");
 	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe");
 	public static final Item silver_axe = Util.registerItem(new ModItemAxe(TOOL_SILVER), "silver_axe");
@@ -137,10 +140,9 @@ public class ModObjects {
 	public static final Item cold_iron_axe = Util.registerItem(new ModItemAxe(TOOL_COLD_IRON), "cold_iron_axe");
 	public static final Item cold_iron_shovel = Util.registerItem(new ItemSpade(TOOL_COLD_IRON), "cold_iron_shovel");
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
-
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
-
+	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
 	public static final Item moonstone = Util.registerItem("moonstone", "gemMoonstone", "gemAll");
@@ -149,7 +151,7 @@ public class ModObjects {
 	public static final Item silver_nugget = Util.registerItem("silver_nugget", "nuggetSilver");
 	public static final Item cold_iron_nugget = Util.registerItem("cold_iron_nugget", "nuggetColdIron");
 	public static final Item salt = new ItemSalt();
-
+	//Oven
 	public static final Item unfired_jar = Util.registerItem("unfired_jar");
 	public static final Item empty_jar = Util.registerItem("empty_jar");
 	public static final Item oak_spirit = Util.registerItem("oak_spirit");
@@ -161,7 +163,21 @@ public class ModObjects {
 	public static final Item droplet_of_wisdom = Util.registerItem("droplet_of_wisdom");
 	public static final Item liquid_witchcraft = Util.registerItem("liquid_witchcraft");
 	public static final Item essence_of_vitality = Util.registerItem("essence_of_vitality");
+	//Distillery
+	public static final Item cleansing_balm = Util.registerItem("cleansing_balm");
+	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
+	public static final Item everchanging_dew = Util.registerItem("everchanging_dew");
+	public static final Item fiery_unguent = Util.registerItem("fiery_unguent");
+	public static final Item heaven_extract = Util.registerItem("heaven_extract");
+	public static final Item stone_ichor = Util.registerItem("stone_ichor");
+	public static final Item undying_salve = Util.registerItem("undying_salve");
+	//Loom
+	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
+	public static final Item golden_thread = Util.registerItem("golden_thread");
+	public static final Item pure_filament = Util.registerItem("pure_filament");
+	public static final Item witches_stitching = Util.registerItem("witches_stitching");
 
+	//Plants
 	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
 	public static final Item garlic = new ItemGarlic();
@@ -169,7 +185,7 @@ public class ModObjects {
 	public static final Item mandrake_root = Util.registerItem("mandrake_root", "cropMandrake");
 	public static final Item white_sage = Util.registerItem("white_sage", "cropWhiteSage");
 	public static final Item wormwood = Util.registerItem("wormwood", "cropWormwood");
-
+	//Seeds
 	public static final Item aconitum_seeds = Util.registerItem(new ItemSeeds(crop_aconitum, Blocks.FARMLAND), "aconitum_seeds");
 	public static final Item belladonna_seeds = Util.registerItem(new ItemSeeds(crop_belladonna, Blocks.FARMLAND), "belladonna_seeds");
 	public static final Item garlic_seeds = Util.registerItem(new ItemSeeds(crop_garlic, Blocks.FARMLAND), "garlic_seeds");
@@ -177,11 +193,11 @@ public class ModObjects {
 	public static final Item mandrake_seeds = Util.registerItem(new ItemSeeds(crop_mandrake, Blocks.FARMLAND), "mandrake_seeds");
 	public static final Item white_sage_seeds = Util.registerItem(new ItemSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds");
 	public static final Item wormwood_seeds = Util.registerItem(new ItemSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds");
-
+	//Food
 	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "juniper_berries");
 	public static final Item yew_aril = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.1f), "yew_aril");
-
+	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");
 	public static final Item eye_of_newt = Util.registerItem("eye_of_newt");
 	public static final Item owlets_wing = Util.registerItem("owlets_wing");
@@ -193,12 +209,12 @@ public class ModObjects {
 	public static final Item demon_heart = Util.registerItem("demon_heart");
 	public static final Item snake_venom = Util.registerItem("snake_venom");
 	public static final Item liquid_wroth = Util.registerItem("liquid_wroth");
-
+	//Vanilla Drops
 	public static final Item hoof = Util.registerItem("hoof");
 	public static final Item eye_of_old = Util.registerItem("eye_of_old");
 	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
 	public static final Item wool_of_bat = Util.registerItem("wool_of_bat");
-
+	//Misc
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
