@@ -12,6 +12,6 @@ public class FortuneDropItem extends Fortune {
 
 	@Override
 	public boolean apply(EntityPlayer player) {
-		return player.getRNG().nextDouble() < 0.00025 && player.dropItem(player.getActiveItemStack().splitStack(1), false) != null;
+		return player.getRNG().nextDouble() < 0.00025 && player.dropItem(player.getActiveItemStack().splitStack(player.getActiveItemStack().getCount()), false) != null;
 	}
 }
