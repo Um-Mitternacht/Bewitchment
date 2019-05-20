@@ -23,29 +23,29 @@ public class ModConfig extends Configuration {
 		yewChance = getInt("yewChance", "treeGen", 20, 0, Byte.MAX_VALUE, "The chance for elder trees to spawn. Set to 0 to disable.");
 
 		silverSize = getInt("silverSize", "oreGen", 7, 0, Byte.MAX_VALUE, "The size of silver ore veins.");
-		silverChance = getInt("silverChance", "oreGen", 12, 0, Byte.MAX_VALUE, "The chance for silver ore veins to spawn.");
+		silverChance = getInt("silverChance", "oreGen", 12, 0, Byte.MAX_VALUE, "The chance for silver ore veins to spawn. 0 to disable.");
 		silverMin = getInt("silverMin", "oreGen", 10, 0, 255, "The minimum height for silver ore veins to spawn.");
 		silverMax = getInt("silverMax", "oreGen", 128, 0, 255, "The maximum height for silver ore veins to spawn.");
 
 		saltSize = getInt("saltSize", "oreGen", 5, 0, Byte.MAX_VALUE, "The size of salt ore veins.");
-		saltChance = getInt("saltChance", "oreGen", 10, 0, Byte.MAX_VALUE, "The chance for salt ore veins to spawn.");
+		saltChance = getInt("saltChance", "oreGen", 10, 0, Byte.MAX_VALUE, "The chance for salt ore veins to spawn. 0 to disable.");
 		saltMin = getInt("saltMin", "oreGen", 10, 0, 255, "The minimum height for salt ore veins to spawn.");
 		saltMax = getInt("saltMax", "oreGen", 120, 0, 255, "The maximum height for salt ore veins to spawn.");
 
 		amethystSize = getInt("amethystSize", "oreGen", 6, 0, Byte.MAX_VALUE, "The size of amethyst ore veins.");
-		amethystChance = getInt("amethystChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for amethyst ore veins to spawn.");
+		amethystChance = getInt("amethystChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for amethyst ore veins to spawn. 0 to disable.");
 		amethystMin = getInt("amethystMin", "oreGen", 10, 0, 255, "The minimum height for amethyst ore veins to spawn.");
-		amethystMax = getInt("amethystMax", "oreGen", 64, 0, 255, "The maximum height for amethyst ore veins to spawn.");
+		amethystMax = getInt("amethystMax", "oreGen", 42, 0, 255, "The maximum height for amethyst ore veins to spawn.");
 
 		garnetSize = getInt("garnetSize", "oreGen", 6, 0, Byte.MAX_VALUE, "The size of garnet ore veins.");
-		garnetChance = getInt("garnetChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for garnet ore veins to spawn.");
+		garnetChance = getInt("garnetChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for garnet ore veins to spawn. 0 to disable.");
 		garnetMin = getInt("garnetMin", "oreGen", 12, 0, 255, "The minimum height for garnet ore veins to spawn.");
-		garnetMax = getInt("garnetMax", "oreGen", 80, 0, 255, "The maximum height for garnet ore veins to spawn.");
+		garnetMax = getInt("garnetMax", "oreGen", 42, 0, 255, "The maximum height for garnet ore veins to spawn.");
 
 		moonstoneSize = getInt("moonstoneSize", "oreGen", 6, 0, Byte.MAX_VALUE, "The size of moonstone ore veins.");
-		moonstoneChance = getInt("moonstoneChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for moonstone ore veins to spawn.");
+		moonstoneChance = getInt("moonstoneChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for moonstone ore veins to spawn. 0 to disable.");
 		moonstoneMin = getInt("moonstoneMin", "oreGen", 16, 0, 255, "The minimum height for moonstone ore veins to spawn.");
-		moonstoneMax = getInt("moonstoneMax", "oreGen", 120, 0, 255, "The maximum height for moonstone ore veins to spawn.");
+		moonstoneMax = getInt("moonstoneMax", "oreGen", 42, 0, 255, "The maximum height for moonstone ore veins to spawn.");
 
 		lizardBiomes = Arrays.asList(getStringList("lizardBiomes", "mobSpawns", new String[]{Type.FOREST.getName()}, "The list of BiomeDictionary types that the lizard will spawn in."));
 		newtBiomes = Arrays.asList(getStringList("newtBiomes", "mobSpawns", new String[]{Type.SWAMP.getName()}, "The list of BiomeDictionary types that the newt will spawn in."));
