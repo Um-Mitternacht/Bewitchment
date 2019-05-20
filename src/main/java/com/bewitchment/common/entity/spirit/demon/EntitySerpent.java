@@ -78,7 +78,8 @@ public class EntitySerpent extends ModEntityMob {
 					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
 					milkTimer = 6660;
 					return true;
-				} else {
+				}
+				else {
 					setAttackTarget(player);
 					setRevengeTarget(player);
 				}

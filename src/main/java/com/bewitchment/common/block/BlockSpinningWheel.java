@@ -13,11 +13,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockSpinningWheel extends ModBlockContainer {
+	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(10 / 16d, 0, 0, 6 / 16d, 1, 1), BOX_Z = new AxisAlignedBB(0, 0, 10 / 16d, 1, 1, 6 / 16d);
+
 	public BlockSpinningWheel() {
 		super(Bewitchment.instance, "spinning_wheel", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, ModGui.SPINNING_WHEEL.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH));
@@ -26,6 +30,11 @@ public class BlockSpinningWheel extends ModBlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntitySpinningWheel();
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.getValue(BlockHorizontal.FACING).getAxis() == EnumFacing.Axis.X ? BOX_X : BOX_Z;
 	}
 
 	@Override

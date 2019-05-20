@@ -1,29 +1,29 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "cobblestone"
+	"model": "cobblestone"
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "facing=north": [
-      {}
-    ],
-    "facing=south": [
-      {
-        "y": 180
-      }
-    ],
-    "facing=east": [
-      {
-        "y": 90
-      }
-    ],
-    "facing=west": [
-      {
-        "y": 270
-      }
-    ]
+	"normal": [
+	  {}
+	],
+	"facing=north": [
+	  {}
+	],
+	"facing=south": [
+	  {
+		"y": 180
+	  }
+	],
+	"facing=east": [
+	  {
+		"y": 90
+	  }
+	],
+	"facing=west": [
+	  {
+		"y": 270
+	  }
+	]
   }
 }

@@ -52,7 +52,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 						progress = 0;
 						recipe.giveOutput(world.rand, inventory_up, inventory_down);
 					}
-				} else {
+				}
+				else {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
 						burnTime = time;

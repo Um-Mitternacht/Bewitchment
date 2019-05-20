@@ -26,8 +26,10 @@ public class TileEntityCrystalBall extends ModTileEntity {
 				if (!valid.isEmpty()) {
 					cap.fortune = valid.get(world.rand.nextInt(valid.size()));
 					player.sendStatusMessage(new TextComponentTranslation(cap.fortune.getRegistryName().toString().replace(":", ".")), true);
-				} else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
-			} else
+				}
+				else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
+			}
+			else
 				player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
 		}
 		return true;

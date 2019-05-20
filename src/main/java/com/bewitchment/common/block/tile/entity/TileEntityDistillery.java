@@ -52,7 +52,8 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 						progress = 0;
 						recipe.giveOutput(inventory_up, inventory_down);
 					}
-				} else {
+				}
+				else {
 					if (!ModTileEntity.isEmpty(inventory_side)) {
 						burnTime = 1200;
 						inventory_side.extractItem(0, 1, false);

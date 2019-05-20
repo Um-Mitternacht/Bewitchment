@@ -32,7 +32,8 @@ public class ItemAthame extends ItemSword {
 			if (target instanceof EntityEnderman && attacker instanceof EntityPlayer) {
 				target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 20);
 				stack.damageItem(50, attacker);
-			} else return super.hitEntity(stack, target, attacker);
+			}
+			else return super.hitEntity(stack, target, attacker);
 		}
 		return true;
 	}

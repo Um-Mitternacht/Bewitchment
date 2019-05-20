@@ -1,24 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "TST",
-    "SSS",
-    "SGS"
+	"TST",
+	"SSS",
+	"SGS"
   ],
   "key": {
-    "S": {
-      "type": "forge:ore_dict",
-      "ore": "ingotSilver"
-    },
-    "G": {
-      "type": "forge:ore_dict",
-      "ore": "gemAmethyst"
-    },
-    "T": {
-      "item": "bewitchment:empty_jar"
-    }
+	"S": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotSilver"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "gemAmethyst"
+	},
+	"T": {
+	  "item": "bewitchment:empty_jar"
+	}
   },
   "result": {
-    "item": "bewitchment:distillery"
+	"item": "bewitchment:distillery"
   }
 }

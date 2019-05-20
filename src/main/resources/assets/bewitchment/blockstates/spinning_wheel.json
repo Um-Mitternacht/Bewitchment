@@ -1,29 +1,30 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "oak_planks"
+	"model": "bewitchment:spinning_wheel"
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "facing=north": [
-      {}
-    ],
-    "facing=south": [
-      {
-        "y": 180
-      }
-    ],
-    "facing=east": [
-      {
-        "y": 90
-      }
-    ],
-    "facing=west": [
-      {
-        "y": 270
-      }
-    ]
+	"normal": [
+	  {}
+	],
+	"facing=north": [
+	  {
+		"y": 90
+	  }
+	],
+	"facing=south": [
+	  {
+		"y": 270
+	  }
+	],
+	"facing=east": [
+	  {
+		"y": 180
+	  }
+	],
+	"facing=west": [
+	  {
+	  }
+	]
   }
 }
