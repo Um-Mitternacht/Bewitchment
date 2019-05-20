@@ -48,7 +48,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 			else {
 				if (burnTime > -1) {
 					progress++;
-					if (progress >= 199) {
+					if (progress >= 200) {
 						progress = 0;
 						recipe.giveOutput(world.rand, inventory_up, inventory_down);
 					}

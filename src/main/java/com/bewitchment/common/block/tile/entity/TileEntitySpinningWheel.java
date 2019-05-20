@@ -35,7 +35,7 @@ public class TileEntitySpinningWheel extends ModTileEntity implements ITickable 
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
 				progress++;
-				if (progress >= 199) {
+				if (progress >= 200) {
 					progress = 0;
 					recipe.giveOutput(inventory_up, inventory_down);
 				}

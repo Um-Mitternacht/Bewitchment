@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
+@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
 public class Util {
 	public static <T extends Block> T registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
@@ -89,12 +89,10 @@ public class Util {
 	public static List<Ingredient> expandList(List<Ingredient> list) {
 		List<Ingredient> fin = new ArrayList<>();
 		for (Ingredient ing : list) {
-			List<ItemStack> newList = new ArrayList<>();
 			for (ItemStack stack : ing.getMatchingStacks()) {
 				ItemStack copy = stack.copy();
-				while (!copy.isEmpty()) newList.add(copy.splitStack(1));
+				while (!copy.isEmpty()) fin.add(Ingredient.fromStacks(copy.splitStack(1)));
 			}
-			fin.add(Ingredient.fromStacks(newList.toArray(new ItemStack[0])));
 		}
 		return fin;
 	}
@@ -103,10 +101,12 @@ public class Util {
 		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
 	}
 	
-	public static boolean areISListsEqual(List<Ingredient> ings, List<ItemStack> stacks) {
+	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
 		List<ItemStack> checklist = new ArrayList<>();
-		for (ItemStack stack : stacks)
-			checklist.add(stack.copy().splitStack(1));
+		for (int i = 0; i < handler.getSlots(); i++) {
+			ItemStack stack = handler.getStackInSlot(i);
+			if (!stack.isEmpty()) checklist.add(stack);
+		}
 		if (ings.size() != checklist.size()) return false;
 		for (Ingredient ing : ings) {
 			boolean found = false;
@@ -120,13 +120,6 @@ public class Util {
 			if (!found) return false;
 		}
 		return true;
-	}
-	
-	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
-		List<ItemStack> checklist = new ArrayList<>();
-		for (int i = 0; i < handler.getSlots(); i++)
-			if (!handler.getStackInSlot(i).isEmpty()) checklist.add(handler.extractItem(i, 1, true));
-		return areISListsEqual(ings, checklist);
 	}
 	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {

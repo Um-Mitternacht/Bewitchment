@@ -26,7 +26,7 @@ public class OvenRecipe extends IForgeRegistryEntry.Impl<OvenRecipe> {
 	}
 	
 	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {
-		return (byproduct.isEmpty() || !input.getStackInSlot(2).isEmpty()) && (output.getStackInSlot(0).isEmpty() || Util.canMerge(output.getStackInSlot(0), this.output)) && (output.getStackInSlot(1).isEmpty() || Util.canMerge(output.getStackInSlot(1), this.byproduct));
+		return (byproduct.isEmpty() || !input.getStackInSlot(2).isEmpty()) && Util.canMerge(output.getStackInSlot(0), this.output) && Util.canMerge(output.getStackInSlot(1), this.byproduct);
 	}
 	
 	public final void giveOutput(Random rand, ItemStackHandler input, ItemStackHandler output) {

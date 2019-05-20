@@ -39,12 +39,12 @@ public class BlockDropHandler {
 		replaceDrop(event, s -> s.getBlock() == ModObjects.amethyst_ore, new ItemStack(ModObjects.amethyst, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.garnet_ore, new ItemStack(ModObjects.garnet, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.moonstone_ore, new ItemStack(ModObjects.moonstone, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
-
+		
 		replaceDrop(event, s -> s.getBlock() == ModObjects.cypress_leaves, new ItemStack(ModObjects.cypress_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elder_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.yew_leaves, new ItemStack(ModObjects.yew_sapling), 5, 1, false);
-
+		
 		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elderberries), 1, 0, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_berries), 1, 0, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.yew_leaves, new ItemStack(ModObjects.yew_aril), 1, 0, false);
