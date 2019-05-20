@@ -24,6 +24,7 @@ package com.bewitchment;
 //GSVB DROO YV NVG DRGS DIZGS
 
 import com.bewitchment.common.CommonProxy;
+import com.bewitchment.common.compat.thaumcraft.ThaumcraftCompatBridge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -49,6 +50,7 @@ public class Bewitchment {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+		ThaumcraftCompatBridge.loadThaumcraftCompat();
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
 	}

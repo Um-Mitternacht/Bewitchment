@@ -2,16 +2,22 @@ package com.bewitchment.common.compat.thaumcraft;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.AspectRegistryEvent;
+import thaumcraft.common.entities.monster.*;
+import thaumcraft.common.entities.monster.boss.*;
+import thaumcraft.common.entities.monster.cult.EntityCultist;
+import thaumcraft.common.entities.monster.cult.EntityCultistPortalLesser;
+import thaumcraft.common.entities.monster.tainted.*;
 
 /**
  * Created by Joseph on 5/20/2019.
@@ -22,12 +28,51 @@ public class BewitchmentThaumcraft {
 	public static final Aspect MOON = getOrCreateAspect("luna", 0x808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/luna.png"));
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
+	private static final BewitchmentThaumcraft INSTANCE = new BewitchmentThaumcraft();
+	private static boolean registered = false;
 
 	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
 		Aspect a = Aspect.getAspect(tag);
 		if (a != null) return a;
 		return new Aspect(tag, color, components, image, 1);
 	}
+
+	@Deprecated
+	static boolean isEldritchMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden;
+	}
+
+	@Deprecated
+	static boolean isTCSpiritMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden;
+	}
+
+	@Deprecated
+	static boolean isCrimsonCultMob(Entity target) {
+		return target instanceof EntityCultistLeader || target instanceof EntityCultist || target instanceof EntityCultistPortalGreater || target instanceof EntityCultistPortalLesser;
+	}
+
+	@Deprecated
+	static boolean isThaumcraftMob(Entity target) {
+		return target instanceof EntityEldritchGuardian || target instanceof EntityEldritchCrab || target instanceof EntityFireBat || target instanceof EntityWisp || target instanceof EntityPech || target instanceof EntityMindSpider || target instanceof EntityEldritchGolem || target instanceof EntityEldritchWarden || target instanceof EntityCultistLeader || target instanceof EntityCultist || target instanceof EntityCultistPortalGreater || target instanceof EntityCultistPortalLesser || target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm || target instanceof EntityBrainyZombie || target instanceof EntityThaumicSlime;
+	}
+
+	@Deprecated
+	static boolean isTaintedMob(Entity target) {
+		return target instanceof EntityTaintacleGiant || target instanceof EntityTaintacle || target instanceof EntityTaintCrawler || target instanceof EntityTaintSeedPrime || target instanceof EntityTaintSeed || target instanceof EntityTaintSwarm || target instanceof EntityThaumicSlime;
+	}
+
+
+	@Deprecated
+	static void register() {
+		if (!registered) {
+			registered = true;
+			MinecraftForge.EVENT_BUS.register(INSTANCE);
+		} else {
+			throw new RuntimeException("You can only call BewitchmentThaumcraft.register() once");
+		}
+	}
+
 
 	@SubscribeEvent
 	public void aspectRegistrationEvent(AspectRegistryEvent event) {

@@ -1,4 +1,4 @@
-#BLOCKS
+﻿#BLOCKS
 tile.bewitchment.oven.name=Oven
 tile.bewitchment.distillery.name=Distillery
 tile.bewitchment.spinning_wheel.name=Spinning Wheel
@@ -612,3 +612,9 @@ entity.bewitchment.prefix.49=Vassal
 entity.bewitchment.prefix.50=High-King
 entity.bewitchment.prefix.51=Overlord
 entity.bewitchment.prefix.52=Consort
+
+//Thaumcraft aspects
+tc.aspect.diabolus=Demon, Unholy, Profane
+tc.aspect.stellae=Stars, Constellation, Asterism
+tc.aspect.luna=The Moon
+tc.aspect.sol=The Sun
