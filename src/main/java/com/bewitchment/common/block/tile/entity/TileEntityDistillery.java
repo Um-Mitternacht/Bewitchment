@@ -27,15 +27,14 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			return false;
 		}
 	};
+	public int burnTime, progress;
+	private DistilleryRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
 		@Override
 		protected void onContentsChanged(int index) {
 			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
-
-	public int burnTime, progress;
-	private DistilleryRecipe recipe;
 
 	@Override
 	public void update() {
@@ -53,8 +52,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 						progress = 0;
 						recipe.giveOutput(inventory_up, inventory_down);
 					}
-				}
-				else {
+				} else {
 					if (!ModTileEntity.isEmpty(inventory_side)) {
 						burnTime = 1200;
 						inventory_side.extractItem(0, 1, false);

@@ -20,15 +20,14 @@ public class TileEntitySpinningWheel extends ModTileEntity implements ITickable 
 			return false;
 		}
 	};
+	public int progress;
+	private SpinningWheelRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
 		@Override
 		protected void onContentsChanged(int index) {
 			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
-
-	public int progress;
-	private SpinningWheelRecipe recipe;
 
 	@Override
 	public void update() {

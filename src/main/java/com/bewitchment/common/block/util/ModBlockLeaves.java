@@ -49,8 +49,7 @@ public class ModBlockLeaves extends BlockLeaves {
 		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
 			player.addStat(StatList.getBlockStats(this));
 			spawnAsEntity(world, pos, new ItemStack(this));
-		}
-		else super.harvestBlock(world, player, pos, state, tile, stack);
+		} else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
 
 	@Override

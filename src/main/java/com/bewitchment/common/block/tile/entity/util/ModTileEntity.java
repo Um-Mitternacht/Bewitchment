@@ -16,6 +16,28 @@ import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public abstract class ModTileEntity extends TileEntity {
+	public static boolean isEmpty(ItemStackHandler handler) {
+		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
+		return true;
+	}
+
+	public static int getFirstEmptySlot(ItemStackHandler handler) {
+		return getFirstValidSlot(handler, ItemStack.EMPTY);
+	}
+
+	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
+		boolean hasEmpty = false;
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (Util.areStacksEqual(handler.getStackInSlot(i), stack)) return i;
+			if (handler.getStackInSlot(i).isEmpty()) hasEmpty = true;
+		}
+		return hasEmpty ? getFirstEmptySlot(handler) : -1;
+	}
+
+	public static void clear(ItemStackHandler handler) {
+		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
+	}
+
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return oldState.getBlock() != newState.getBlock();
@@ -58,27 +80,5 @@ public abstract class ModTileEntity extends TileEntity {
 
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		return false;
-	}
-
-	public static boolean isEmpty(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
-		return true;
-	}
-
-	public static int getFirstEmptySlot(ItemStackHandler handler) {
-		return getFirstValidSlot(handler, ItemStack.EMPTY);
-	}
-
-	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
-		boolean hasEmpty = false;
-		for (int i = 0; i < handler.getSlots(); i++) {
-			if (Util.areStacksEqual(handler.getStackInSlot(i), stack)) return i;
-			if (handler.getStackInSlot(i).isEmpty()) hasEmpty = true;
-		}
-		return hasEmpty ? getFirstEmptySlot(handler) : -1;
-	}
-
-	public static void clear(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
 }

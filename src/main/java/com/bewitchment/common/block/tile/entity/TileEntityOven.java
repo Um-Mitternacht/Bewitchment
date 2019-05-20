@@ -22,6 +22,8 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 			return false;
 		}
 	};
+	public int burnTime, fuelBurnTime, progress;
+	private OvenRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -33,9 +35,6 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
-
-	public int burnTime, fuelBurnTime, progress;
-	private OvenRecipe recipe;
 
 	@Override
 	public void update() {
@@ -53,8 +52,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 						progress = 0;
 						recipe.giveOutput(world.rand, inventory_up, inventory_down);
 					}
-				}
-				else {
+				} else {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
 						burnTime = time;
