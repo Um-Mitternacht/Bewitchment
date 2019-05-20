@@ -27,6 +27,11 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 public class ModWorldGen implements IWorldGenerator {
+	private final WorldGenerator cypressTree = new WorldGenCypressTree(true);
+	private final WorldGenerator elderTree = new WorldGenElderTree(true);
+	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
+	private final WorldGenerator yewTree = new WorldGenYewTree(true);
+
 	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), Bewitchment.proxy.config.silverSize);
 	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), Bewitchment.proxy.config.saltSize);
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.proxy.config.amethystSize);
@@ -46,10 +51,10 @@ public class ModWorldGen implements IWorldGenerator {
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
 		if (world.provider instanceof WorldProviderSurface) {
-			generateTree(world, rand, new WorldGenCypressTree(true), ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.proxy.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-			generateTree(world, rand, new WorldGenElderTree(true), ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.proxy.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
-			generateTree(world, rand, new WorldGenJuniperTree(true), ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.proxy.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
-			generateTree(world, rand, new WorldGenYewTree(true), ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.proxy.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
+			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.proxy.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
+			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.proxy.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
+			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.proxy.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.proxy.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 			generateCoquina(world, rand, chunkX, chunkZ);
 			generateOre(world, rand, silverOre, chunkX, chunkZ, Bewitchment.proxy.config.silverChance, Bewitchment.proxy.config.silverMin, Bewitchment.proxy.config.silverMax);
 			generateOre(world, rand, saltOre, chunkX, chunkZ, Bewitchment.proxy.config.saltChance, Bewitchment.proxy.config.saltMin, Bewitchment.proxy.config.saltMax);
