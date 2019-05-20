@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"III"
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:juniper_planks"
-	}
+    "I": {
+      "item": "bewitchment:juniper_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:juniper_wood_slab",
-	"data": 0,
-	"count": 6
+    "item": "bewitchment:juniper_wood_slab",
+    "data": 0,
+    "count": 6
   }
 }

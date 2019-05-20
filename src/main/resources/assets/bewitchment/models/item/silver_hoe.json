@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-	"layer0": "bewitchment:items/silver_hoe"
+    "layer0": "bewitchment:items/silver_hoe"
   }
 }

@@ -1,21 +1,21 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"uvlock": true,
-	"model": "pressure_plate_up",
-	"textures": {
-	  "texture": "bewitchment:blocks/cypress_planks"
-	}
+    "uvlock": true,
+    "model": "pressure_plate_up",
+    "textures": {
+      "texture": "bewitchment:blocks/cypress_planks"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"powered=false": {
-	  "model": "pressure_plate_up"
-	},
-	"powered=true": {
-	  "model": "pressure_plate_down"
-	}
+    "normal": [
+      {}
+    ],
+    "powered=false": {
+      "model": "pressure_plate_up"
+    },
+    "powered=true": {
+      "model": "pressure_plate_down"
+    }
   }
 }

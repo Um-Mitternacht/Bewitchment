@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-	"layer0": "bewitchment:items/athame"
+    "layer0": "bewitchment:items/athame"
   }
 }

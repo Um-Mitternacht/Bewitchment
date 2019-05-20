@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "salt"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "salt"
+    }
   },
   "result": {
-	"item": "bewitchment:block_of_salt"
+    "item": "bewitchment:block_of_salt"
   }
 }

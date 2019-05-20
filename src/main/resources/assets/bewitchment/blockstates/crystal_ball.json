@@ -1,11 +1,11 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:crystal_ball"
+    "model": "bewitchment:crystal_ball"
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

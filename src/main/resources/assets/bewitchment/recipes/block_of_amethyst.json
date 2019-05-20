@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemAmethyst"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "gemAmethyst"
+    }
   },
   "result": {
-	"item": "bewitchment:block_of_amethyst"
+    "item": "bewitchment:block_of_amethyst"
   }
 }

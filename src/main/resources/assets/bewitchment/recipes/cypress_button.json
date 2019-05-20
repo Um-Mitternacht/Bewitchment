@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:cypress_planks"
-	}
+    {
+      "item": "bewitchment:cypress_planks"
+    }
   ],
   "result": {
-	"item": "bewitchment:cypress_button"
+    "item": "bewitchment:cypress_button"
   }
 }

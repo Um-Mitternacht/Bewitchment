@@ -1,13 +1,13 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "blockGarnet"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockGarnet"
+    }
   ],
   "result": {
-	"item": "bewitchment:garnet",
-	"count": 9
+    "item": "bewitchment:garnet",
+    "count": 9
   }
 }

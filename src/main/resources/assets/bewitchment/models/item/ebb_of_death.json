@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/ebb_of_death"
+    "layer0": "bewitchment:items/ebb_of_death"
   }
 }
