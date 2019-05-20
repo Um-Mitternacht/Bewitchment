@@ -17,12 +17,12 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"WeakerAccess", "NullableProblems", "ConstantConditions"})
+@SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityDemon extends ModEntityMob implements IMerchant {
 	private MerchantRecipeList recipeList;
 	private EntityPlayer buyer;
 	private int careerID, careerLevel, wealth;
-
+	
 	public EntityDemon(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon"));
 		setSize(1.8f, 4.6f);
@@ -33,66 +33,66 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 165;
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
-
+	
 	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;
 	}
-
+	
 	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
-
+	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		return recipeList;
 	}
-
+	
 	@Override
 	public void setRecipes(MerchantRecipeList recipeList) {
 		this.recipeList = recipeList;
 	}
-
+	
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {
 	}
-
+	
 	@Override
 	public void verifySellingItem(ItemStack stack) {
 	}
-
+	
 	@Override
 	public World getWorld() {
 		return world;
 	}
-
+	
 	@Override
 	public BlockPos getPos() {
 		return getPosition();
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
 	}
-
+	
 	//	@Override
 	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
 	//		return super.onInitialSpawn(difficulty, data);
 	//	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
@@ -105,12 +105,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 		return flag;
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
@@ -119,16 +119,16 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		tag.setInteger("wealth", wealth);
 		if (recipeList != null) tag.setTag("recipeList", recipeList.getRecipiesAsTags());
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
-		careerID = tag.getInteger("careerID");
+		careerID    = tag.getInteger("careerID");
 		careerLevel = tag.getInteger("careerLevel");
-		wealth = tag.getInteger("wealth");
+		wealth      = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -138,7 +138,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

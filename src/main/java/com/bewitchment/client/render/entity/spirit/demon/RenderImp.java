@@ -13,16 +13,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderImp extends RenderLiving<EntityImp> {
 	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_3.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_4.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/imp_5.png")};
-
+	
 	public RenderImp(RenderManager manager) {
 		super(manager, new ModelImp(), 0.3f);
 	}
-
+	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityImp entity) {
 		return TEX[entity.getDataManager().get(EntityImp.SKIN)];
 	}
-
+	
 	@Override
 	protected void preRenderCallback(EntityImp entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);

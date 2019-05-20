@@ -25,48 +25,47 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class BlockSaltBarrier extends BlockRedstoneWire {
 	private static final AxisAlignedBB WALL = new AxisAlignedBB(0, -5, 0, 1, 5, 1);
-
+	
 	public BlockSaltBarrier() {
 		super();
 		Util.registerBlock(this, "salt_barrier", Material.CIRCUITS, SoundType.SAND, 0, 0, "", 0);
 		setCreativeTab(null);
 	}
-
+	
 	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return new ItemStack(getItemDropped(state, world.rand, 0));
 	}
-
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return ModObjects.salt;
 	}
-
+	
 	@Override
 	public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		return state.getBlock() == this;
 	}
-
+	
 	public int getStrongPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return 0;
 	}
-
+	
 	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return 0;
 	}
-
+	
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
 		if (entity instanceof EntityLivingBase) {
 			EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
-			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex)
-				addCollisionBoxToList(pos, box, boxes, WALL);
+			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex) addCollisionBoxToList(pos, box, boxes, WALL);
 		}
 	}
-
+	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
 		if (!world.isRemote && !canPlaceBlockAt(world, to)) {
@@ -74,11 +73,11 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 			world.setBlockToAir(to);
 		}
 	}
-
+	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 	}
-
+	
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
 	}

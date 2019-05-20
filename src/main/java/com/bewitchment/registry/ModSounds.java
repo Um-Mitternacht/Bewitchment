@@ -13,10 +13,10 @@ public class ModSounds {
 	public static final SoundEvent TOAD_DEATH = createSoundEvent("toad_death");
 	public static final SoundEvent TOAD_HURT = createSoundEvent("toad_hurt");
 	public static final SoundEvent TOAD_IDLE = createSoundEvent("toad_idle");
-
+	
 	public static void preInit() {
 	}
-
+	
 	private static SoundEvent createSoundEvent(String name) {
 		ResourceLocation id = new ResourceLocation(Bewitchment.MODID, name);
 		SoundEvent event = new SoundEvent(id).setRegistryName(id);

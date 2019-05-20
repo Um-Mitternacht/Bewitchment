@@ -31,23 +31,23 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator elderTree = new WorldGenElderTree(true);
 	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
 	private final WorldGenerator yewTree = new WorldGenYewTree(true);
-
+	
 	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), Bewitchment.proxy.config.silverSize);
 	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), Bewitchment.proxy.config.saltSize);
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.proxy.config.amethystSize);
 	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), Bewitchment.proxy.config.garnetSize);
 	private final WorldGenerator moonstoneOre = new WorldGenMinable(ModObjects.moonstone_ore.getDefaultState(), Bewitchment.proxy.config.moonstoneSize);
-
+	
 	public ModWorldGen() {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.belladonna_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.hellebore_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.mandrake_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.wormwood_seeds), 3);
-
+		
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
 	}
-
+	
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
 		if (world.provider instanceof WorldProviderSurface) {
@@ -63,7 +63,7 @@ public class ModWorldGen implements IWorldGenerator {
 			generateOre(world, rand, moonstoneOre, chunkX, chunkZ, Bewitchment.proxy.config.moonstoneChance, Bewitchment.proxy.config.moonstoneMin, Bewitchment.proxy.config.moonstoneMax);
 		}
 	}
-
+	
 	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, int chance, Predicate<Biome> predicate) {
 		if (chance != 0 && rand.nextInt(chance) == 0) {
 			int x = chunkX * 16 + 8;
@@ -73,7 +73,7 @@ public class ModWorldGen implements IWorldGenerator {
 			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
 		}
 	}
-
+	
 	private void generateCoquina(World world, Random rand, int chunkX, int chunkZ) {
 		BlockPos pos = world.getHeight(new BlockPos(chunkX * 16 + rand.nextInt(16), 0, chunkZ * 16 + rand.nextInt(16)));
 		if (BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH).contains(world.getBiome(pos)) || BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN).contains(world.getBiome(pos))) {
@@ -83,17 +83,16 @@ public class ModWorldGen implements IWorldGenerator {
 					int y = rand.nextInt(2);
 					int z = rand.nextInt(2);
 					for (BlockPos blockpos : BlockPos.getAllInBox(pos.add(-x, -y, -z), pos.add(x, y, z)))
-						if (blockpos.distanceSq(pos) <= Math.pow((x + y + z) * .333f + 0.5f, 2))
-							world.setBlockState(blockpos, ModObjects.coquina.getDefaultState(), 2);
+						if (blockpos.distanceSq(pos) <= Math.pow((x + y + z) * .333f + 0.5f, 2)) world.setBlockState(blockpos, ModObjects.coquina.getDefaultState(), 2);
 					pos = pos.add(rand.nextInt(2) - 1, -rand.nextInt(2), rand.nextInt(2) - 1);
 				}
 				pos = pos.down();
 			}
 		}
 	}
-
+	
 	private void generateOre(World world, Random rand, WorldGenerator gen, int chunkX, int chunkZ, int chance, int minHeight, int maxHeight) {
 		for (int i = 0; i < chance; i++)
-			gen.generate(world, rand, new BlockPos(chunkX * 16, rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16));
+		     gen.generate(world, rand, new BlockPos(chunkX * 16, rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16));
 	}
 }

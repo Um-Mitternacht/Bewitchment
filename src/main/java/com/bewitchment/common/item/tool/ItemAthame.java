@@ -25,7 +25,7 @@ public class ItemAthame extends ItemSword {
 		Util.registerItem(this, "athame");
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!target.world.isRemote) {
@@ -37,7 +37,7 @@ public class ItemAthame extends ItemSword {
 		}
 		return true;
 	}
-
+	
 	@SubscribeEvent
 	public void livingDrop(LivingDropsEvent event) {
 		if (event.isRecentlyHit() && event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getHeldItemMainhand().getItem() == ModObjects.athame && !BewitchmentAPI.getAthameLoot(event.getEntityLiving()).isEmpty()) {

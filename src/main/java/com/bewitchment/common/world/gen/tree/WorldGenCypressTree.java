@@ -7,11 +7,12 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+@SuppressWarnings("NullableProblems")
 public class WorldGenCypressTree extends WorldGenModTree {
 	public WorldGenCypressTree(boolean notify) {
 		super(notify);
 	}
-
+	
 	@Override
 	public boolean canSaplingGrow(World world, BlockPos pos) {
 		for (int x = -1; x < 2; x++) {
@@ -25,7 +26,7 @@ public class WorldGenCypressTree extends WorldGenModTree {
 		}
 		return true;
 	}
-
+	
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
 		int h = generateTrunk(world, ModObjects.cypress_wood.getDefaultState(), pos, rand, 5, 13);
@@ -36,8 +37,7 @@ public class WorldGenCypressTree extends WorldGenModTree {
 			for (int x = -1; x <= 1; x++) {
 				for (int z = -1; z <= 1; z++) {
 					BlockPos current = pos.up(h).add(x, y, z);
-					if (world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current) && (core && z == 0 && x == 0 || full || cross && (z == 0 || x == 0)))
-						world.setBlockState(current, ModObjects.cypress_leaves.getDefaultState());
+					if (world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current) && (core && z == 0 && x == 0 || full || cross && (z == 0 || x == 0))) world.setBlockState(current, ModObjects.cypress_leaves.getDefaultState());
 				}
 			}
 		}

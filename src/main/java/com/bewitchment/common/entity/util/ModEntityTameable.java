@@ -26,45 +26,44 @@ import java.util.Set;
 @SuppressWarnings("NullableProblems")
 public abstract class ModEntityTameable extends EntityTameable {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityTameable.class, DataSerializers.VARINT);
-
+	
 	private final Set<Item> tameItems;
-
+	
 	private final ResourceLocation lootTableLocation;
-
+	
 	public ModEntityTameable(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world);
-		this.tameItems = Sets.newHashSet(tameItems);
+		this.tameItems         = Sets.newHashSet(tameItems);
 		this.lootTableLocation = lootTableLocation;
 	}
-
+	
 	@Override
 	public abstract boolean isBreedingItem(ItemStack stack);
-
+	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, data);
 	}
-
+	
 	@Override
 	protected ResourceLocation getLootTable() {
 		return lootTableLocation;
 	}
-
+	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (isEntityInvulnerable(source)) return false;
 		if (aiSit != null) aiSit.setSitting(false);
 		return super.attackEntityFrom(source, amount);
 	}
-
+	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if (!isTamed() && tameItems.contains(stack.getItem())) {
 			if (!player.isCreative()) stack.shrink(1);
-			if (!isSilent())
-				world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PARROT_EAT, getSoundCategory(), 1, 1 + (rand.nextFloat() - rand.nextFloat()) * 0.2f);
+			if (!isSilent()) world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PARROT_EAT, getSoundCategory(), 1, 1 + (rand.nextFloat() - rand.nextFloat()) * 0.2f);
 			if (!world.isRemote) {
 				if (rand.nextInt(5) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
 					setTamedBy(player);
@@ -81,19 +80,19 @@ public abstract class ModEntityTameable extends EntityTameable {
 		else if (!player.isSneaking() && isTamed()) setSitting(!isSitting());
 		return super.processInteract(player, hand);
 	}
-
+	
 	@Override
 	protected void collideWithEntity(Entity entity) {
 		if (!entity.equals(getOwner())) super.collideWithEntity(entity);
 	}
-
+	
 	@Override
 	protected void entityInit() {
 		super.entityInit();
 		aiSit = new EntityAISit(this);
 		if (getSkinTypes() > 1) dataManager.register(SKIN, rand.nextInt(getSkinTypes()));
 	}
-
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
@@ -102,13 +101,13 @@ public abstract class ModEntityTameable extends EntityTameable {
 			dataManager.setDirty(SKIN);
 		}
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
 	}
-
+	
 	protected int getSkinTypes() {
 		return 1;
 	}

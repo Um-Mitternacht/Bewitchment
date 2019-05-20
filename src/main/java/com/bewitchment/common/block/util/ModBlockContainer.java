@@ -26,55 +26,55 @@ import net.minecraftforge.items.IItemHandler;
 public abstract class ModBlockContainer extends BlockContainer {
 	private final Object modInstance;
 	private final int guiID;
-
+	
 	public ModBlockContainer(Object modInstance, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, int guiID) {
 		super(mat);
 		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, level);
 		this.modInstance = modInstance;
-		this.guiID = guiID;
+		this.guiID       = guiID;
 	}
-
+	
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
-
+	
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
-
+	
 	@Override
 	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return state.getMaterial() == Material.WOOD;
 	}
-
+	
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isWood(IBlockAccess world, BlockPos pos) {
 		return world.getBlockState(pos).getMaterial() == Material.WOOD;
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking()) {
@@ -86,28 +86,28 @@ public abstract class ModBlockContainer extends BlockContainer {
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
-
+	
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
 	}
-
+	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops") && hasTileEntity(state) && world.getTileEntity(pos) instanceof ModTileEntity) {
 			ModTileEntity tile = (ModTileEntity) world.getTileEntity(pos);
 			for (IItemHandler inventory : tile.getInventories())
 				for (int i = 0; i < inventory.getSlots(); i++)
-					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+				     InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
 		}
 		super.breakBlock(world, pos, state);
 	}
-
+	
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		refreshAltarPos(world, pos);
 	}
-
+	
 	public void refreshAltarPos(World world, BlockPos pos) {
 		//		if (world.getTileEntity(pos) instanceof IAltarStorage)
 		//			((IAltarStorage) world.getTileEntity(pos)).setAltarPosition(BlockWitchesAltar.getNearestAltar(world, pos));

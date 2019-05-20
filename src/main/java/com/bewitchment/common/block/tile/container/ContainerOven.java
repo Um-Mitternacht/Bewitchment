@@ -15,7 +15,7 @@ import net.minecraftforge.items.IItemHandler;
 public class ContainerOven extends ModContainer {
 	private final TileEntityOven tile;
 	public int burnTime, fuelBurnTime, progress;
-
+	
 	public ContainerOven(InventoryPlayer inventory, TileEntityOven tile) {
 		this.tile = tile;
 		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
@@ -28,14 +28,14 @@ public class ContainerOven extends ModContainer {
 		addSlotToContainer(new ModSlot(down, di++, 116, 55));
 		addPlayerSlots(inventory);
 	}
-
+	
 	@Override
 	protected void sendToListener(IContainerListener listener) {
 		listener.sendWindowProperty(this, 0, tile.burnTime);
 		listener.sendWindowProperty(this, 1, tile.fuelBurnTime);
 		listener.sendWindowProperty(this, 2, tile.progress);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data) {

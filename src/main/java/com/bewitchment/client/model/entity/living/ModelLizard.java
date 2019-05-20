@@ -40,11 +40,11 @@ public class ModelLizard extends ModelBase {
 	public ModelRenderer rightArm01;
 	public ModelRenderer rightHand;
 	public ModelRenderer rfToes01;
-
+	
 	public ModelLizard() {
-		this.textureWidth = 64;
+		this.textureWidth  = 64;
 		this.textureHeight = 64;
-		this.leftfoot = new ModelRenderer(this, 17, 45);
+		this.leftfoot      = new ModelRenderer(this, 17, 45);
 		this.leftfoot.setRotationPoint(0.2f, 4.5f, 0.1f);
 		this.leftfoot.addBox(-1, -0.5f, -3, 2, 1, 4, 0);
 		this.setRotateAngle(leftfoot, 0, -0.52f, 0.31f);
@@ -56,7 +56,7 @@ public class ModelLizard extends ModelBase {
 		this.leftHand.setRotationPoint(0.1f, 2.6f, 0);
 		this.leftHand.addBox(-1, 0, -1.9f, 2, 1, 3, 0);
 		this.setRotateAngle(leftHand, 0.17f, 0, 0);
-		this.rightfoot = new ModelRenderer(this, 17, 45);
+		this.rightfoot        = new ModelRenderer(this, 17, 45);
 		this.rightfoot.mirror = true;
 		this.rightfoot.setRotationPoint(0.2f, 4.5f, -0.1f);
 		this.rightfoot.addBox(-1.5f, -0.5f, -3, 2, 1, 4, 0);
@@ -65,17 +65,17 @@ public class ModelLizard extends ModelBase {
 		this.leftfingers.setRotationPoint(0, 0.2f, -0.6f);
 		this.leftfingers.addBox(-1.5f, 0, -5, 3, 0, 5, 0);
 		this.setRotateAngle(leftfingers, 0.052f, 0, 0);
-		this.rightArm00 = new ModelRenderer(this, 0, 28);
+		this.rightArm00        = new ModelRenderer(this, 0, 28);
 		this.rightArm00.mirror = true;
 		this.rightArm00.setRotationPoint(-2.4f, -0.5f, -5.5f);
 		this.rightArm00.addBox(-3.5f, -1, -1, 4, 2, 2, 0);
 		this.setRotateAngle(rightArm00, 0, 0, -0.28f);
-		this.rightToes = new ModelRenderer(this, 13, 52);
+		this.rightToes        = new ModelRenderer(this, 13, 52);
 		this.rightToes.mirror = true;
 		this.rightToes.setRotationPoint(0, 0.4f, -0.6f);
 		this.rightToes.addBox(-2.4f, -0.6f, -5.2f, 4, 0, 6, 0);
 		this.setRotateAngle(rightToes, -0.017f, 0, 0);
-		this.rightHand = new ModelRenderer(this, 0, 42);
+		this.rightHand        = new ModelRenderer(this, 0, 42);
 		this.rightHand.mirror = true;
 		this.rightHand.setRotationPoint(-0.1f, 2.6f, 0);
 		this.rightHand.addBox(-1, 0, -1.9f, 2, 1, 3, 0);
@@ -104,7 +104,7 @@ public class ModelLizard extends ModelBase {
 		this.leftLeg00.setRotationPoint(2, -1.3f, 6.2f);
 		this.leftLeg00.addBox(-0.5f, -1, -1, 5, 2, 2, 0);
 		this.setRotateAngle(leftLeg00, 0, 0.17f, 0);
-		this.rightLeg00 = new ModelRenderer(this, 15, 29);
+		this.rightLeg00        = new ModelRenderer(this, 15, 29);
 		this.rightLeg00.mirror = true;
 		this.rightLeg00.setRotationPoint(-2, -1.3f, 6.2f);
 		this.rightLeg00.addBox(-4.5f, -1, -1, 5, 2, 2, 0);
@@ -117,12 +117,12 @@ public class ModelLizard extends ModelBase {
 		this.neck.setRotationPoint(0, -0.7f, -7.7f);
 		this.neck.addBox(-2, -2, -2.6f, 4, 4, 3, 0);
 		this.setRotateAngle(neck, 0.14f, 0, 0);
-		this.rightEye = new ModelRenderer(this, 37, 38);
+		this.rightEye        = new ModelRenderer(this, 37, 38);
 		this.rightEye.mirror = true;
 		this.rightEye.setRotationPoint(-1.5f, -0.2f, 0);
 		this.rightEye.addBox(-1.5f, -2, -1, 2, 2, 2, 0);
 		this.setRotateAngle(rightEye, 0, -0.12f, 0.19f);
-		this.rightArm01 = new ModelRenderer(this, 0, 33);
+		this.rightArm01        = new ModelRenderer(this, 0, 33);
 		this.rightArm01.mirror = true;
 		this.rightArm01.setRotationPoint(-2.7f, 0, 0);
 		this.rightArm01.addBox(-1, -0.8f, -1, 2, 4, 2, 0);
@@ -143,7 +143,7 @@ public class ModelLizard extends ModelBase {
 		this.tail02.setRotationPoint(0, 0, 4.8f);
 		this.tail02.addBox(-1, -1, -0.2f, 2, 2, 6, 0);
 		this.setRotateAngle(tail02, 0.052f, 0, 0);
-		this.rfToes01 = new ModelRenderer(this, 0, 48);
+		this.rfToes01        = new ModelRenderer(this, 0, 48);
 		this.rfToes01.mirror = true;
 		this.rfToes01.setRotationPoint(-0, 0.2f, -0.6f);
 		this.rfToes01.addBox(-1.5f, 0, -5, 3, 0, 5, 0);
@@ -167,7 +167,7 @@ public class ModelLizard extends ModelBase {
 		this.leftEye.setRotationPoint(1.5f, -0.2f, 0);
 		this.leftEye.addBox(-0.5f, -2, -1, 2, 2, 2, 0);
 		this.setRotateAngle(leftEye, 0, 0.12f, -0.19f);
-		this.rightLeg01 = new ModelRenderer(this, 17, 36);
+		this.rightLeg01        = new ModelRenderer(this, 17, 36);
 		this.rightLeg01.mirror = true;
 		this.rightLeg01.setRotationPoint(-3.5f, -0.3f, 0.1f);
 		this.rightLeg01.addBox(-1, -0.3f, -1, 2, 5, 2, 0);
@@ -202,12 +202,12 @@ public class ModelLizard extends ModelBase {
 		this.head.addChild(this.leftEye);
 		this.rightLeg00.addChild(this.rightLeg01);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body00.render(scale);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

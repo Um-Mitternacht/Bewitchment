@@ -13,23 +13,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiOven extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/oven.png");
-
+	
 	private final InventoryPlayer inventory;
 	private final ContainerOven container;
-
+	
 	public GuiOven(ContainerOven container, InventoryPlayer inventory) {
 		super(container);
 		this.container = container;
 		this.inventory = inventory;
 	}
-
+	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		renderHoveredToolTip(mouseX, mouseY);
 	}
-
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		mc.getTextureManager().bindTexture(TEX);
@@ -42,7 +42,7 @@ public class GuiOven extends GuiContainer {
 		}
 		this.drawTexturedModalRect(x + 76, y + 19, 176, 14, container.progress * 24 / 200 + 1, 16);
 	}
-
+	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String name = new TextComponentTranslation(ModObjects.oven.getTranslationKey() + ".name").getFormattedText();

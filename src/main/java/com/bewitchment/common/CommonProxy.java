@@ -39,42 +39,42 @@ public class CommonProxy {
 		}
 	};
 	public ModConfig config;
-
+	
 	public void preInit(FMLPreInitializationEvent event) {
 		config = new ModConfig((event.getSuggestedConfigurationFile()));
 		ModSounds.preInit();
 		ModEntities.preInit();
 		ModObjects.preInit();
 		ModRecipes.preInit();
-
+		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 	}
-
+	
 	public void init(FMLInitializationEvent event) {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 	}
-
+	
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.postInit();
 	}
-
+	
 	public boolean isFancyGraphicsEnabled() {
 		return false;
 	}
-
+	
 	public void registerTexture(Item item, String variant) {
 	}
-
+	
 	public void registerTextureVariant(Item item, List<Predicate<ItemStack>> predicates) {
 	}
-
+	
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 	}
-
+	
 	public enum ModGui {
 		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT
 	}

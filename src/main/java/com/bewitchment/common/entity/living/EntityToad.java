@@ -28,65 +28,64 @@ public class EntityToad extends ModEntityTameable {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
 		setSize(1, 0.3f);
 	}
-
+	
 	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = new EntityToad(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
 	}
-
+	
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.TOAD_IDLE;
 	}
-
+	
 	@Override
 	protected SoundEvent getDeathSound() {
 		return ModSounds.TOAD_DEATH;
 	}
-
+	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
 		return ModSounds.TOAD_HURT;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}
-
+	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
 			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase)
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
 	}
-
+	
 	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntityToad)) return false;
 		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.SLOWNESS && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -96,7 +95,7 @@ public class EntityToad extends ModEntityTameable {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

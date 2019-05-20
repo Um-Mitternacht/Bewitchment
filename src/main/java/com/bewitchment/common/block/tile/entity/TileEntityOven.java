@@ -29,13 +29,13 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 		public boolean isItemValid(int index, ItemStack stack) {
 			return index == 0 ? TileEntityFurnace.isItemFuel(stack) : index != 1 || stack.getItem() == ModObjects.empty_jar;
 		}
-
+		
 		@Override
 		protected void onContentsChanged(int index) {
 			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
-
+	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
@@ -56,7 +56,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 				else {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
-						burnTime = time;
+						burnTime     = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);
 					}
@@ -64,17 +64,17 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
 	}
-
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
@@ -83,16 +83,16 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		burnTime = tag.getInteger("burnTime");
+		recipe       = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		burnTime     = tag.getInteger("burnTime");
 		fuelBurnTime = tag.getInteger("fuelBurnTime");
-		progress = tag.getInteger("progress");
+		progress     = tag.getInteger("progress");
 	}
-
+	
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory_up, inventory_down};

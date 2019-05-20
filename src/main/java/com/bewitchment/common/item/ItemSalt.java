@@ -20,7 +20,7 @@ public class ItemSalt extends Item {
 		super();
 		Util.registerItem(this, "salt", "salt", "itemSalt", "dustSalt", "foodSalt", "listAllSalt", "ingredientSalt", "pinchSalt", "portionSalt", "lumpSalt", "materialSalt");
 	}
-
+	
 	@Override
 	@Nonnull
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {

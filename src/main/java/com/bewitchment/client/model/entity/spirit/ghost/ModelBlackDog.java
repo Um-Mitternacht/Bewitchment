@@ -27,11 +27,11 @@ public class ModelBlackDog extends ModelBase {
 	public ModelRenderer lowerJaw;
 	public ModelRenderer leftEar01;
 	public ModelRenderer rightEar01;
-
+	
 	public ModelBlackDog() {
-		this.textureWidth = 64;
+		this.textureWidth  = 64;
 		this.textureHeight = 64;
-		this.leftHindleg = new ModelRenderer(this, 0, 18);
+		this.leftHindleg   = new ModelRenderer(this, 0, 18);
 		this.leftHindleg.setRotationPoint(1.5f, 16, 6);
 		this.leftHindleg.addBox(-1, 0, -1, 2, 8, 2, 0);
 		this.tail = new ModelRenderer(this, 9, 18);
@@ -45,7 +45,7 @@ public class ModelBlackDog extends ModelBase {
 		this.muzzle = new ModelRenderer(this, 0, 10);
 		this.muzzle.setRotationPoint(0, 0.7f, -3.9f);
 		this.muzzle.addBox(-1.5f, -1, -3, 3, 2, 3, 0);
-		this.rightEar01 = new ModelRenderer(this, 39, 14);
+		this.rightEar01        = new ModelRenderer(this, 39, 14);
 		this.rightEar01.mirror = true;
 		this.rightEar01.setRotationPoint(-1.9f, -0.9f, 0);
 		this.rightEar01.addBox(-0.5f, -0.1f, -1, 1, 3, 2, 0);
@@ -68,7 +68,7 @@ public class ModelBlackDog extends ModelBase {
 		this.leftEar00.setRotationPoint(2, -2, -2);
 		this.leftEar00.addBox(0, -1, -1, 2, 1, 2, 0);
 		this.setRotateAngle(leftEar00, 0, 0, -0.55f);
-		this.rightforeleg = new ModelRenderer(this, 0, 18);
+		this.rightforeleg        = new ModelRenderer(this, 0, 18);
 		this.rightforeleg.mirror = true;
 		this.rightforeleg.setRotationPoint(-1.5f, 16, -4);
 		this.rightforeleg.addBox(-1, 0, -1, 2, 8, 2, 0);
@@ -76,12 +76,12 @@ public class ModelBlackDog extends ModelBase {
 		this.leftEar01.setRotationPoint(1.9f, -0.9f, 0);
 		this.leftEar01.addBox(-0.5f, -0.1f, -1, 1, 3, 2, 0);
 		this.setRotateAngle(leftEar01, 0, 0, 0.23f);
-		this.rightEar00 = new ModelRenderer(this, 16, 14);
+		this.rightEar00        = new ModelRenderer(this, 16, 14);
 		this.rightEar00.mirror = true;
 		this.rightEar00.setRotationPoint(-2, -2, -2);
 		this.rightEar00.addBox(-2, -1, -1, 2, 1, 2, 0);
 		this.setRotateAngle(rightEar00, 0, 0, 0.55f);
-		this.rightHindleg = new ModelRenderer(this, 0, 18);
+		this.rightHindleg        = new ModelRenderer(this, 0, 18);
 		this.rightHindleg.mirror = true;
 		this.rightHindleg.setRotationPoint(-1.5f, 16, 6);
 		this.rightHindleg.addBox(-1, 0, -1, 2, 8, 2, 0);
@@ -108,7 +108,7 @@ public class ModelBlackDog extends ModelBase {
 		this.neck.addChild(this.head);
 		this.head.addChild(this.lowerJaw);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.leftHindleg.render(scale);
@@ -117,7 +117,7 @@ public class ModelBlackDog extends ModelBase {
 		this.rightforeleg.render(scale);
 		this.rightHindleg.render(scale);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

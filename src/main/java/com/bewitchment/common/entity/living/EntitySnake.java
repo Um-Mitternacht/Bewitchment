@@ -29,52 +29,50 @@ import net.minecraft.world.World;
 @SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
 public class EntitySnake extends ModEntityTameable {
 	private int milkTimer = 0;
-
+	
 	public EntitySnake(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
 		setSize(1, 0.3f);
 	}
-
+	
 	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = new EntitySnake(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
 	}
-
+	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
 			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase)
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
 	}
-
+	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow))
-			amount = (amount + 1) / 2f;
+		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow)) amount = (amount + 1) / 2f;
 		return super.attackEntityFrom(source, amount);
 	}
-
+	
 	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntitySnake)) return false;
 		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
@@ -96,23 +94,23 @@ public class EntitySnake extends ModEntityTameable {
 		}
 		return super.processInteract(player, hand);
 	}
-
+	
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (milkTimer > 0) milkTimer--;
 	}
-
+	
 	@Override
 	public void onStruckByLightning(EntityLightningBolt bolt) {
 		if (!world.isRemote && !isDead) {
@@ -127,19 +125,19 @@ public class EntitySnake extends ModEntityTameable {
 			setDead();
 		}
 	}
-
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
 		tag.setInteger("milkTimer", milkTimer);
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		milkTimer = tag.getInteger("milkTimer");
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -149,7 +147,7 @@ public class EntitySnake extends ModEntityTameable {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

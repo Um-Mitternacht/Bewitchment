@@ -20,7 +20,7 @@ public class EntityNewt extends ModEntityAnimal {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/newt"));
 		setSize(1, 0.3f);
 	}
-
+	
 	@Override
 	@Nullable
 	public EntityAgeable createChild(EntityAgeable other) {
@@ -28,28 +28,28 @@ public class EntityNewt extends ModEntityAnimal {
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
 	}
-
+	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.SPIDER_EYE;
 	}
-
+	
 	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntityNewt)) return false;
 		return isInLove() && other.isInLove();
 	}
-
+	
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -59,7 +59,7 @@ public class EntityNewt extends ModEntityAnimal {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAIPanic(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));

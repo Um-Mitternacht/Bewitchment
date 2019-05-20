@@ -24,12 +24,12 @@ public class FortuneTreasure extends Fortune {
 		super(new ResourceLocation(Bewitchment.MODID, "treasure"));
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@Override
 	public boolean apply(EntityPlayer player) {
 		return false;
 	}
-
+	
 	@SubscribeEvent
 	public void onDig(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote) {

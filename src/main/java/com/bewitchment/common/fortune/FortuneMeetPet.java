@@ -11,7 +11,7 @@ public class FortuneMeetPet extends Fortune {
 	public FortuneMeetPet() {
 		super(new ResourceLocation(Bewitchment.MODID, "meet_pet"));
 	}
-
+	
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (player.getRNG().nextDouble() < 0.0001) {
@@ -20,8 +20,7 @@ public class FortuneMeetPet extends Fortune {
 			int rand = player.getRNG().nextInt(4);
 			if (rand == 0) entity = new EntityOcelot(player.world);
 			else if (rand == 1) entity = new EntityWolf(player.world);
-			else if (rand == 2)
-				entity = player.getRNG().nextBoolean() ? new EntityHorse(player.world) : new EntityDonkey(player.world);
+			else if (rand == 2) entity = player.getRNG().nextBoolean() ? new EntityHorse(player.world) : new EntityDonkey(player.world);
 			else if (rand == 3) entity = new EntityLlama(player.world);
 			else entity = new EntityParrot(player.world);
 			if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(entity)) {

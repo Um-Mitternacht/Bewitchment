@@ -12,31 +12,31 @@ import net.minecraft.world.World;
 
 public abstract class ModEntityAnimal extends EntityAnimal {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityAnimal.class, DataSerializers.VARINT);
-
+	
 	private final ResourceLocation lootTableLocation;
-
+	
 	public ModEntityAnimal(World world, ResourceLocation lootTableLocation) {
 		super(world);
 		this.lootTableLocation = lootTableLocation;
 	}
-
+	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, data);
 	}
-
+	
 	@Override
 	protected ResourceLocation getLootTable() {
 		return lootTableLocation;
 	}
-
+	
 	@Override
 	protected void entityInit() {
 		super.entityInit();
 		if (getSkinTypes() > 1) dataManager.register(SKIN, 0);
 	}
-
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
@@ -45,13 +45,13 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 			dataManager.setDirty(SKIN);
 		}
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
 	}
-
+	
 	protected int getSkinTypes() {
 		return 1;
 	}

@@ -49,11 +49,11 @@ public class Util {
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
 		return block;
 	}
-
+	
 	public static <T extends Block> T registerBlock(T block, String name, T base, String... oreDictionaryNames) {
 		return registerBlock(block, name, base.getDefaultState().getMaterial(), base.getSoundType(), base.getBlockHardness(null, null, null), base.getExplosionResistance(null) * 5, base.getHarvestTool(base.getDefaultState()), base.getHarvestLevel(base.getDefaultState()), oreDictionaryNames);
 	}
-
+	
 	public static <T extends Item> T registerItem(T item, String name, List<Predicate<ItemStack>> predicates, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		item.setRegistryName(loc);
@@ -65,25 +65,25 @@ public class Util {
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, item);
 		return item;
 	}
-
+	
 	public static Item registerItem(Item item, String name, String... oreDictionaryNames) {
 		return registerItem(item, name, Arrays.asList(), oreDictionaryNames);
 	}
-
+	
 	public static Item registerItem(String name, String... oreDictionaryNames) {
 		return registerItem(new Item(), name, oreDictionaryNames);
 	}
-
+	
 	public static List<ItemStack> getEntireInventory(EntityPlayer player) {
 		List<ItemStack> fin = new ArrayList<>();
 		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++)
-			fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
+		     fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
 		fin.addAll(player.inventory.mainInventory);
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
 		return fin;
 	}
-
+	
 	public static List<Ingredient> expandList(List<Ingredient> list) {
 		List<Ingredient> fin = new ArrayList<>();
 		for (Ingredient ing : list) {
@@ -96,11 +96,11 @@ public class Util {
 		}
 		return fin;
 	}
-
+	
 	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
 		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
 	}
-
+	
 	public static boolean areISListsEqual(List<Ingredient> ings, List<ItemStack> stacks) {
 		List<ItemStack> checklist = new ArrayList<>();
 		for (ItemStack stack : stacks) checklist.add(stack.copy().splitStack(1));
@@ -118,18 +118,18 @@ public class Util {
 		}
 		return true;
 	}
-
+	
 	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
 		List<ItemStack> checklist = new ArrayList<>();
 		for (int i = 0; i < handler.getSlots(); i++)
 			if (!handler.getStackInSlot(i).isEmpty()) checklist.add(handler.extractItem(i, 1, true));
 		return areISListsEqual(ings, checklist);
 	}
-
+	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
 		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
 	}
-
+	
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);

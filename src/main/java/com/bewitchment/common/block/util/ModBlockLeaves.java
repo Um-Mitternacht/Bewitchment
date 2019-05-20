@@ -27,23 +27,23 @@ public class ModBlockLeaves extends BlockLeaves {
 		Util.registerBlock(this, name, Material.LEAVES, SoundType.PLANT, 0.2f, 0, "shears", 0, oreDictionaryNames);
 		setDefaultState(this.getBlockState().getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
 	}
-
+	
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		return NonNullList.withSize(1, new ItemStack(this));
 	}
-
+	
 	@Override
 	public BlockPlanks.EnumType getWoodType(int meta) {
 		return null;
 	}
-
+	
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
 		return !this.leavesFancy;
 	}
-
+	
 	@Override
 	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile, ItemStack stack) {
 		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
@@ -52,12 +52,12 @@ public class ModBlockLeaves extends BlockLeaves {
 		}
 		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
 	}
-
+	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int meta = 0;
@@ -65,7 +65,7 @@ public class ModBlockLeaves extends BlockLeaves {
 		meta += (state.getValue(CHECK_DECAY) ? 2 : 1);
 		return meta;
 	}
-
+	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, DECAYABLE, CHECK_DECAY);

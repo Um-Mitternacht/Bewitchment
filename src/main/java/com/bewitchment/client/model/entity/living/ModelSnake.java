@@ -30,11 +30,11 @@ public class ModelSnake extends ModelBase {
 	public ModelRenderer eyes;
 	public ModelRenderer leftfang;
 	public ModelRenderer rightfang;
-
+	
 	public ModelSnake() {
-		this.textureWidth = 64;
+		this.textureWidth  = 64;
 		this.textureHeight = 64;
-		this.tail00b = new ModelRenderer(this, 46, 18);
+		this.tail00b       = new ModelRenderer(this, 46, 18);
 		this.tail00b.setRotationPoint(0, 0, 0);
 		this.tail00b.addBox(-2.3f, -1.5f, 0.5f, 2, 3, 7, 0);
 		this.neck00b = new ModelRenderer(this, 43, 28);
@@ -60,7 +60,7 @@ public class ModelSnake extends ModelBase {
 		this.leftUpperJaw.setRotationPoint(0.9f, -0.9f, -3);
 		this.leftUpperJaw.addBox(-0.5f, -1, -3.7f, 2, 2, 5, 0);
 		this.setRotateAngle(leftUpperJaw, 0, 0.19f, 0);
-		this.rightUpperJaw = new ModelRenderer(this, 17, 0);
+		this.rightUpperJaw        = new ModelRenderer(this, 17, 0);
 		this.rightUpperJaw.mirror = true;
 		this.rightUpperJaw.setRotationPoint(-1.9f, -0.9f, -3);
 		this.rightUpperJaw.addBox(-0.5f, -1, -4.07f, 2, 2, 5, 0);
@@ -118,12 +118,12 @@ public class ModelSnake extends ModelBase {
 		this.head.addChild(this.lowerJaw);
 		this.upperJaw.addChild(this.leftfang);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body.render(scale);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

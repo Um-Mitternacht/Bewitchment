@@ -58,24 +58,24 @@ public class ModelSerpent extends ModelBase {
 	public ModelRenderer rightWing01;
 	public ModelRenderer rightWing02;
 	public ModelRenderer rightWing03;
-
+	
 	public ModelSerpent() {
-		this.textureWidth = 64;
+		this.textureWidth  = 64;
 		this.textureHeight = 64;
-		this.tail00a = new ModelRenderer(this, 27, 22);
+		this.tail00a       = new ModelRenderer(this, 27, 22);
 		this.tail00a.setRotationPoint(0, 0, 6.7f);
 		this.tail00a.addBox(-0.7f, -1.5f, 0.6f, 3, 3, 7, 0);
-		this.rightHorn02 = new ModelRenderer(this, 52, 6);
+		this.rightHorn02        = new ModelRenderer(this, 52, 6);
 		this.rightHorn02.mirror = true;
 		this.rightHorn02.setRotationPoint(0, -1.8f, 0.1f);
 		this.rightHorn02.addBox(-0.5f, -0.7f, -0.5f, 1, 1, 1, 0);
 		this.setRotateAngle(rightHorn02, -0.35f, 0, 0.17f);
-		this.rightWing03 = new ModelRenderer(this, 28, 9);
+		this.rightWing03        = new ModelRenderer(this, 28, 9);
 		this.rightWing03.mirror = true;
 		this.rightWing03.setRotationPoint(0, -3.4f, -0.1f);
 		this.rightWing03.addBox(-0.5f, -4, -0.5f, 1, 4, 1, 0);
 		this.setRotateAngle(rightWing03, -1f, 0, 0);
-		this.rightUpperJaw = new ModelRenderer(this, 17, 0);
+		this.rightUpperJaw        = new ModelRenderer(this, 17, 0);
 		this.rightUpperJaw.mirror = true;
 		this.rightUpperJaw.setRotationPoint(-1.9f, -0.7f, -3);
 		this.rightUpperJaw.addBox(-0.5f, -1, -3.87f, 2, 2, 3, 0);
@@ -94,7 +94,7 @@ public class ModelSerpent extends ModelBase {
 		this.leftUpperJaw.setRotationPoint(0.9f, -0.7f, -3);
 		this.leftUpperJaw.addBox(-0.5f, -1, -3.5f, 2, 2, 3, 0);
 		this.setRotateAngle(leftUpperJaw, 0, 0.2f, 0);
-		this.rightWing02 = new ModelRenderer(this, 28, 9);
+		this.rightWing02        = new ModelRenderer(this, 28, 9);
 		this.rightWing02.mirror = true;
 		this.rightWing02.setRotationPoint(0, -2.7f, 0);
 		this.rightWing02.addBox(-0.5f, -3.8f, -0.5f, 1, 4, 1, 0);
@@ -103,7 +103,7 @@ public class ModelSerpent extends ModelBase {
 		this.leftWing00.setRotationPoint(1.2f, -1, 1.3f);
 		this.leftWing00.addBox(-0.5f, -3, -1, 1, 3, 2, 0);
 		this.setRotateAngle(leftWing00, -0.7f, 0, 0.44f);
-		this.leftHorn03 = new ModelRenderer(this, 57, 6);
+		this.leftHorn03        = new ModelRenderer(this, 57, 6);
 		this.leftHorn03.mirror = true;
 		this.leftHorn03.setRotationPoint(0, -0.6f, 0);
 		this.leftHorn03.addBox(-0.5f, -1.8f, -0.5f, 1, 2, 1, 0);
@@ -119,12 +119,12 @@ public class ModelSerpent extends ModelBase {
 		this.neck04.setRotationPoint(0, 0.1f, -3.1f);
 		this.neck04.addBox(-2, -1.5f, -3.3f, 4, 3, 4, 0);
 		this.setRotateAngle(neck04, 0.52f, 0, 0);
-		this.leftHorn01 = new ModelRenderer(this, 47, 6);
+		this.leftHorn01        = new ModelRenderer(this, 47, 6);
 		this.leftHorn01.mirror = true;
 		this.leftHorn01.setRotationPoint(0, -1.7f, 0);
 		this.leftHorn01.addBox(-0.5f, -1.8f, -0.5f, 1, 2, 1, 0);
 		this.setRotateAngle(leftHorn01, -0.35f, 0, -0.35f);
-		this.rightHornTop02 = new ModelRenderer(this, 52, 0);
+		this.rightHornTop02        = new ModelRenderer(this, 52, 0);
 		this.rightHornTop02.mirror = true;
 		this.rightHornTop02.setRotationPoint(0, -1.8f, 0);
 		this.rightHornTop02.addBox(-0.5f, -2.8f, -0.5f, 1, 3, 1, 0);
@@ -154,7 +154,7 @@ public class ModelSerpent extends ModelBase {
 		this.head.setRotationPoint(0, -0.4f, -1.3f);
 		this.head.addBox(-2.5f, -3.4f, -4, 5, 4, 4, 0);
 		this.setRotateAngle(head, 1.05f, 0, 0);
-		this.rightHornTop00a = new ModelRenderer(this, 42, 0);
+		this.rightHornTop00a        = new ModelRenderer(this, 42, 0);
 		this.rightHornTop00a.mirror = true;
 		this.rightHornTop00a.setRotationPoint(-1.3f, -2.7f, -1.2f);
 		this.rightHornTop00a.addBox(-0.3f, -2, -0.7f, 1, 2, 1, 0);
@@ -169,12 +169,12 @@ public class ModelSerpent extends ModelBase {
 		this.tongue = new ModelRenderer(this, 25, 0);
 		this.tongue.setRotationPoint(0, 0.3f, -1.9f);
 		this.tongue.addBox(-1.5f, 0, -5, 3, 0, 7, 0);
-		this.rightHornTop01 = new ModelRenderer(this, 47, 0);
+		this.rightHornTop01        = new ModelRenderer(this, 47, 0);
 		this.rightHornTop01.mirror = true;
 		this.rightHornTop01.setRotationPoint(0, -2, 0);
 		this.rightHornTop01.addBox(-0.5f, -1.8f, -0.5f, 1, 2, 1, 0);
 		this.setRotateAngle(rightHornTop01, -0.26f, 0, 0);
-		this.leftHorn00b = new ModelRenderer(this, 42, 6);
+		this.leftHorn00b        = new ModelRenderer(this, 42, 6);
 		this.leftHorn00b.mirror = true;
 		this.leftHorn00b.setRotationPoint(0, 0, 0);
 		this.leftHorn00b.addBox(-0.4f, -2, -0.3f, 1, 2, 1, 0);
@@ -182,12 +182,12 @@ public class ModelSerpent extends ModelBase {
 		this.leftWing0a.setRotationPoint(0, -2.6f, -0.1f);
 		this.leftWing0a.addBox(-0.49f, -3, -0.5f, 1, 3, 1, 0);
 		this.setRotateAngle(leftWing0a, 0.52f, 0, 0);
-		this.rightWing00 = new ModelRenderer(this, 20, 9);
+		this.rightWing00        = new ModelRenderer(this, 20, 9);
 		this.rightWing00.mirror = true;
 		this.rightWing00.setRotationPoint(-1.2f, -1, 1.3f);
 		this.rightWing00.addBox(-0.5f, -3, -1, 1, 3, 2, 0);
 		this.setRotateAngle(rightWing00, -0.7f, 0, -0.44f);
-		this.leftHorn00a = new ModelRenderer(this, 42, 6);
+		this.leftHorn00a        = new ModelRenderer(this, 42, 6);
 		this.leftHorn00a.mirror = true;
 		this.leftHorn00a.setRotationPoint(1.9f, -2, -1);
 		this.leftHorn00a.addBox(-0.4f, -2, -0.7f, 1, 2, 1, 0);
@@ -195,11 +195,11 @@ public class ModelSerpent extends ModelBase {
 		this.tail02b = new ModelRenderer(this, 22, 55);
 		this.tail02b.setRotationPoint(0, 0.5f, 0);
 		this.tail02b.addBox(-1.5f, 0, -1, 3, 1, 7, 0);
-		this.rightHornTop00b = new ModelRenderer(this, 42, 0);
+		this.rightHornTop00b        = new ModelRenderer(this, 42, 0);
 		this.rightHornTop00b.mirror = true;
 		this.rightHornTop00b.setRotationPoint(0, 0, 0);
 		this.rightHornTop00b.addBox(-0.7f, -2, -0.7f, 1, 2, 1, 0);
-		this.leftHorn02 = new ModelRenderer(this, 52, 6);
+		this.leftHorn02        = new ModelRenderer(this, 52, 6);
 		this.leftHorn02.mirror = true;
 		this.leftHorn02.setRotationPoint(0, -1.8f, 0.1f);
 		this.leftHorn02.addBox(-0.5f, -0.7f, -0.5f, 1, 1, 1, 0);
@@ -211,7 +211,7 @@ public class ModelSerpent extends ModelBase {
 		this.tail01 = new ModelRenderer(this, 0, 45);
 		this.tail01.setRotationPoint(0, 0, 7.4f);
 		this.tail01.addBox(-2, -1.49f, -0.5f, 4, 3, 7, 0);
-		this.rightWing01 = new ModelRenderer(this, 28, 9);
+		this.rightWing01        = new ModelRenderer(this, 28, 9);
 		this.rightWing01.mirror = true;
 		this.rightWing01.setRotationPoint(0, -2.6f, -0.1f);
 		this.rightWing01.addBox(-0.51f, -3, -0.5f, 1, 3, 1, 0);
@@ -299,12 +299,12 @@ public class ModelSerpent extends ModelBase {
 		this.leftWing02.addChild(this.leftWing03);
 		this.leftHornTop01.addChild(this.leftHornTop02);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.neck00a.render(scale);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

@@ -9,11 +9,12 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.Random;
 
+@SuppressWarnings("NullableProblems")
 public class WorldGenJuniperTree extends WorldGenModTree {
 	public WorldGenJuniperTree(boolean notify) {
 		super(notify);
 	}
-
+	
 	@Override
 	public boolean canSaplingGrow(World world, BlockPos pos) {
 		for (int x = -2; x < 3; x++) {
@@ -27,7 +28,7 @@ public class WorldGenJuniperTree extends WorldGenModTree {
 		}
 		return true;
 	}
-
+	
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
 		int h = generateTrunk(world, ModObjects.juniper_wood.getDefaultState(), pos, rand, 2, 4);
@@ -53,13 +54,11 @@ public class WorldGenJuniperTree extends WorldGenModTree {
 		for (BlockPos pos0 : logs) {
 			for (EnumFacing face : EnumFacing.VALUES) {
 				BlockPos pos1 = pos0.offset(face);
-				if (world.getBlockState(pos1).getBlock().canBeReplacedByLeaves(world.getBlockState(pos1), world, pos1))
-					world.setBlockState(pos1, ModObjects.juniper_leaves.getDefaultState());
+				if (world.getBlockState(pos1).getBlock().canBeReplacedByLeaves(world.getBlockState(pos1), world, pos1)) world.setBlockState(pos1, ModObjects.juniper_leaves.getDefaultState());
 				for (EnumFacing face0 : EnumFacing.VALUES) {
 					if (face0 != EnumFacing.DOWN) {
 						BlockPos pos2 = pos0.offset(face).offset(face0);
-						if (world.getBlockState(pos2).getBlock().canBeReplacedByLeaves(world.getBlockState(pos2), world, pos2) && rand.nextDouble() < 0.8)
-							world.setBlockState(pos2, ModObjects.juniper_leaves.getDefaultState());
+						if (world.getBlockState(pos2).getBlock().canBeReplacedByLeaves(world.getBlockState(pos2), world, pos2) && rand.nextDouble() < 0.8) world.setBlockState(pos2, ModObjects.juniper_leaves.getDefaultState());
 					}
 				}
 			}

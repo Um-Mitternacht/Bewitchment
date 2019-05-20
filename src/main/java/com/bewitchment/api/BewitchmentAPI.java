@@ -24,21 +24,21 @@ public class BewitchmentAPI {
 	private static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
 	private static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
 	private static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
-
+	
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
-
+	
 	private static final Map<EntityEntry, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
-
+	
 	/**
 	 * The Demon creature attribute.
 	 */
 	public static EnumCreatureAttribute DEMON = EnumHelper.addCreatureAttribute("DEMON");
-
+	
 	/**
 	 * The Spirit creature attribute.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
-
+	
 	/**
 	 * registers a new OvenRecipe
 	 *
@@ -47,7 +47,7 @@ public class BewitchmentAPI {
 	public static void registerOvenRecipe(OvenRecipe recipe) {
 		REGISTRY_OVEN.register(recipe);
 	}
-
+	
 	/**
 	 * registers a new DistilleryRecipe
 	 *
@@ -56,7 +56,7 @@ public class BewitchmentAPI {
 	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
 		REGISTRY_DISTILLERY.register(recipe);
 	}
-
+	
 	/**
 	 * registers a new SpinningWheelRecipe
 	 *
@@ -65,7 +65,7 @@ public class BewitchmentAPI {
 	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
 		REGISTRY_SPINNING_WHEEL.register(recipe);
 	}
-
+	
 	/**
 	 * registers a new fortune
 	 *
@@ -74,7 +74,7 @@ public class BewitchmentAPI {
 	public static void registerFortune(Fortune fortune) {
 		REGISTRY_FORTUNE.register(fortune);
 	}
-
+	
 	/**
 	 * registers new Athame loot
 	 *
@@ -84,7 +84,7 @@ public class BewitchmentAPI {
 	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
 		ATHAME_LOOT.put(EntityRegistry.getEntry(clazz), list);
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return the loot associated with the entity, if any

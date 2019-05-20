@@ -13,19 +13,19 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "NullableProblems"})
 public class ModBlockFenceGate extends BlockFenceGate {
 	public ModBlockFenceGate(String name, Block base, String... oreDictionaryNames) {
 		super(BlockPlanks.EnumType.OAK);
 		Util.registerBlock(this, name, base, oreDictionaryNames);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
-
+	
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);

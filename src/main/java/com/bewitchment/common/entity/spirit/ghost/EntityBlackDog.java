@@ -27,29 +27,29 @@ public class EntityBlackDog extends ModEntityMob {
 		setSize(1.08f, 1.53f);
 		experienceValue = 35;
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return !world.isDaytime();
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
 	}
-
+	
 	@Override
 	protected PathNavigate createNavigator(World world) {
 		PathNavigateGround path = new PathNavigateGround(this, world);
 		path.setBreakDoors(true);
 		return path;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 5;
 	}
-
+	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean flag = super.attackEntityFrom(source, amount);
@@ -59,13 +59,13 @@ public class EntityBlackDog extends ModEntityMob {
 		}
 		return flag;
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime()) setDead();
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -75,7 +75,7 @@ public class EntityBlackDog extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(25);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

@@ -26,12 +26,12 @@ public abstract class ModContainer extends Container {
 		}
 		return stack;
 	}
-
+	
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return !player.isSpectator();
 	}
-
+	
 	@Override
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
@@ -39,13 +39,13 @@ public abstract class ModContainer extends Container {
 			sendToListener(listener);
 		}
 	}
-
+	
 	protected void addPlayerSlots(InventoryPlayer inventory) {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++) addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 		for (int i = 0; i < 9; i++) addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
 	}
-
+	
 	protected void sendToListener(IContainerListener listener) {
 	}
 }

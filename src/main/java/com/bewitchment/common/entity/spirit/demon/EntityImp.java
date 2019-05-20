@@ -25,22 +25,22 @@ public class EntityImp extends ModEntityMob {
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 100;
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
@@ -52,17 +52,17 @@ public class EntityImp extends ModEntityMob {
 		}
 		return flag;
 	}
-
+	
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -72,7 +72,7 @@ public class EntityImp extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(90);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

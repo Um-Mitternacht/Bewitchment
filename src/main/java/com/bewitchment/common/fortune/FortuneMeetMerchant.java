@@ -13,7 +13,7 @@ public class FortuneMeetMerchant extends Fortune {
 	public FortuneMeetMerchant() {
 		super(new ResourceLocation(Bewitchment.MODID, "meet_merchant"));
 	}
-
+	
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (player.getRNG().nextDouble() < 0.0001) {
@@ -24,8 +24,7 @@ public class FortuneMeetMerchant extends Fortune {
 				villager.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(villager);
 				VillagerRegistry.setRandomProfession(villager, player.getRNG());
-				if (villager.getProfessionForge().getRegistryName().getPath().equals("nitwit"))
-					villager.setProfession(VillagerRegistry.FARMER);
+				if (villager.getProfessionForge().getRegistryName().getPath().equals("nitwit")) villager.setProfession(VillagerRegistry.FARMER);
 				return true;
 			}
 		}

@@ -11,7 +11,7 @@ public class FortuneGoodLuck extends Fortune {
 	public FortuneGoodLuck() {
 		super(new ResourceLocation(Bewitchment.MODID, "good_luck"));
 	}
-
+	
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (player.getRNG().nextDouble() < 0.00025) {

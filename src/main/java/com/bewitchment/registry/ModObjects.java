@@ -38,10 +38,10 @@ import java.util.Arrays;
 public class ModObjects {
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
-
+	
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 425, 7, 2.5f, 14);
-
+	
 	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
 	public static final ModBlockCrops crop_belladonna = new ModBlockCrops("crop_belladonna");
@@ -68,7 +68,7 @@ public class ModObjects {
 	public static final Block moonstone_ore = new ModBlock("moonstone_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreMoonstone");
 	public static final Block silver_ore = new ModBlock("silver_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreSilver");
 	public static final Block salt_ore = new ModBlock("salt_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 0, "oreSalt");
-
+	
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
@@ -178,7 +178,6 @@ public class ModObjects {
 	public static final Item golden_thread = Util.registerItem("golden_thread");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
 	public static final Item witches_stitching = Util.registerItem("witches_stitching");
-
 	//Plants
 	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
@@ -222,7 +221,7 @@ public class ModObjects {
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
-
+	
 	public static void preInit() {
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
@@ -240,7 +239,7 @@ public class ModObjects {
 		Bewitchment.proxy.ignoreProperty(elder_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(juniper_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(yew_fence_gate, BlockFenceGate.POWERED);
-
+		
 		crop_aconitum.setItems(aconitum_seeds, aconitum);
 		crop_belladonna.setItems(belladonna_seeds, belladonna);
 		crop_garlic.setItems(garlic_seeds, garlic);
@@ -249,7 +248,7 @@ public class ModObjects {
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
 	}
-
+	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
 		GameRegistry.registerTileEntity(tile, block.getRegistryName());
 		return block;

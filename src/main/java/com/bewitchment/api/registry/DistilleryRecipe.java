@@ -14,24 +14,24 @@ import java.util.List;
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
 	public final List<Ingredient> input;
 	public final List<ItemStack> output;
-
+	
 	public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
 		setRegistryName(name);
-		this.input = Util.expandList(input);
+		this.input  = Util.expandList(input);
 		this.output = output;
 		if (this.input.size() > 6)
 			throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
 	}
-
+	
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
-
+	
 	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {
 		for (ItemStack stack : this.output) if (ModTileEntity.getFirstValidSlot(output, stack) < 0) return false;
 		return true;
 	}
-
+	
 	public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
 		for (int i = 0; i < input.getSlots(); i++) input.extractItem(i, 1, false);
 		for (ItemStack stack : this.output)

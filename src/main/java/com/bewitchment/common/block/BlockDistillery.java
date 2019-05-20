@@ -22,27 +22,27 @@ public class BlockDistillery extends ModBlockContainer {
 		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 0, ModGui.DISTILLERY.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH));
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityDistillery();
 	}
-
+	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw));
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
 	}
-
+	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 	}
-
+	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, BlockHorizontal.FACING);

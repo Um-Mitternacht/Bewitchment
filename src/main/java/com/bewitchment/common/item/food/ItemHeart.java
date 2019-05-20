@@ -15,7 +15,7 @@ public class ItemHeart extends ItemFood {
 		Util.registerItem(this, "heart");
 		setAlwaysEdible();
 	}
-
+	
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);

@@ -39,11 +39,11 @@ public class ModelNewt extends ModelBase {
 	public ModelRenderer rightArm01;
 	public ModelRenderer rightHand;
 	public ModelRenderer rightfingers;
-
+	
 	public ModelNewt() {
-		this.textureWidth = 64;
+		this.textureWidth  = 64;
 		this.textureHeight = 64;
-		this.snout = new ModelRenderer(this, 31, 22);
+		this.snout         = new ModelRenderer(this, 31, 22);
 		this.snout.setRotationPoint(0, -0.4f, -1.4f);
 		this.snout.addBox(-2, -1, -2, 4, 2, 2, 0);
 		this.setRotateAngle(snout, 0.19f, 0, 0);
@@ -71,7 +71,7 @@ public class ModelNewt extends ModelBase {
 		this.head.setRotationPoint(0, 0, -2.9f);
 		this.head.addBox(-2.5f, -2, -2, 5, 3, 4, 0);
 		this.setRotateAngle(head, 0.14f, 0, 0);
-		this.rightLeg00 = new ModelRenderer(this, 17, 29);
+		this.rightLeg00        = new ModelRenderer(this, 17, 29);
 		this.rightLeg00.mirror = true;
 		this.rightLeg00.setRotationPoint(-2, -0.8f, 5.7f);
 		this.rightLeg00.addBox(-4.5f, -1.5f, -1.5f, 5, 3, 3, 0);
@@ -88,7 +88,7 @@ public class ModelNewt extends ModelBase {
 		this.tail01.setRotationPoint(0, 0, 3.8f);
 		this.tail01.addBox(-1.5f, -1.5f, -0.2f, 3, 3, 5, 0);
 		this.setRotateAngle(tail01, -0.09f, 0, 0);
-		this.rightArm01 = new ModelRenderer(this, 0, 33);
+		this.rightArm01        = new ModelRenderer(this, 0, 33);
 		this.rightArm01.mirror = true;
 		this.rightArm01.setRotationPoint(-2.7f, 0, 0);
 		this.rightArm01.addBox(-1, -0.8f, -1, 2, 5, 2, 0);
@@ -101,7 +101,7 @@ public class ModelNewt extends ModelBase {
 		this.body00.setRotationPoint(0, 20.5f, 1);
 		this.body00.addBox(-2.5f, -2.8f, -8, 5, 5, 8, 0);
 		this.setRotateAngle(body00, -0.07f, 0, 0);
-		this.rightfingers = new ModelRenderer(this, 0, 48);
+		this.rightfingers        = new ModelRenderer(this, 0, 48);
 		this.rightfingers.mirror = true;
 		this.rightfingers.setRotationPoint(-0, 0.7f, -0.6f);
 		this.rightfingers.addBox(-1.5f, 0, -3.3f, 3, 0, 4, 0);
@@ -114,12 +114,12 @@ public class ModelNewt extends ModelBase {
 		this.tail02.setRotationPoint(0, 0, 4.8f);
 		this.tail02.addBox(-1, -1.5f, -0.2f, 2, 3, 5, 0);
 		this.setRotateAngle(tail02, 0.05f, 0, 0);
-		this.rightArm00 = new ModelRenderer(this, 0, 28);
+		this.rightArm00        = new ModelRenderer(this, 0, 28);
 		this.rightArm00.mirror = true;
 		this.rightArm00.setRotationPoint(-2.4f, -0.7f, -5.5f);
 		this.rightArm00.addBox(-3.5f, -1, -1, 4, 2, 2, 0);
 		this.setRotateAngle(rightArm00, 0.07f, 0.09f, 0);
-		this.rightToes = new ModelRenderer(this, 12, 52);
+		this.rightToes        = new ModelRenderer(this, 12, 52);
 		this.rightToes.mirror = true;
 		this.rightToes.setRotationPoint(0, 0.4f, -0.6f);
 		this.rightToes.addBox(-2, -0.5f, -4.5f, 4, 0, 5, 0);
@@ -128,12 +128,12 @@ public class ModelNewt extends ModelBase {
 		this.leftEye.setRotationPoint(1.8f, -0.7f, 0.1f);
 		this.leftEye.addBox(-1, -2, -1, 2, 2, 2, 0);
 		this.setRotateAngle(leftEye, 0, 0.23f, 0.28f);
-		this.rightEye = new ModelRenderer(this, 37, 36);
+		this.rightEye        = new ModelRenderer(this, 37, 36);
 		this.rightEye.mirror = true;
 		this.rightEye.setRotationPoint(-1.8f, -0.7f, 0.1f);
 		this.rightEye.addBox(-1, -2, -1, 2, 2, 2, 0);
 		this.setRotateAngle(rightEye, 0, -0.23f, -0.28f);
-		this.rightHand = new ModelRenderer(this, 0, 42);
+		this.rightHand        = new ModelRenderer(this, 0, 42);
 		this.rightHand.mirror = true;
 		this.rightHand.setRotationPoint(-0.1f, 3.7f, 0);
 		this.rightHand.addBox(-1, 0, -1.9f, 2, 1, 3, 0);
@@ -142,7 +142,7 @@ public class ModelNewt extends ModelBase {
 		this.tail00.setRotationPoint(0, -0.4f, 7.7f);
 		this.tail00.addBox(-2, -2, -0.2f, 4, 4, 4, 0);
 		this.setRotateAngle(tail00, -0.09f, 0, 0);
-		this.rightLeg01 = new ModelRenderer(this, 17, 36);
+		this.rightLeg01        = new ModelRenderer(this, 17, 36);
 		this.rightLeg01.mirror = true;
 		this.rightLeg01.setRotationPoint(-3.1f, -0.7f, 0.1f);
 		this.rightLeg01.addBox(-1.5f, -0.3f, -1.5f, 3, 5, 3, 0);
@@ -155,7 +155,7 @@ public class ModelNewt extends ModelBase {
 		this.leftToes.setRotationPoint(0, 0.4f, -0.6f);
 		this.leftToes.addBox(-2, -0.5f, -4.5f, 4, 0, 5, 0);
 		this.setRotateAngle(leftToes, 0.09f, 0, 0);
-		this.rightfoot = new ModelRenderer(this, 17, 45);
+		this.rightfoot        = new ModelRenderer(this, 17, 45);
 		this.rightfoot.mirror = true;
 		this.rightfoot.setRotationPoint(-0.1f, 4.5f, 0.5f);
 		this.rightfoot.addBox(-1.5f, -0.5f, -3, 3, 1, 4, 0);
@@ -197,12 +197,12 @@ public class ModelNewt extends ModelBase {
 		this.leftArm00.addChild(this.leftArm01);
 		this.leftLeg01.addChild(this.leftfoot);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body00.render(scale);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

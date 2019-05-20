@@ -28,22 +28,22 @@ public class EntityHellhound extends ModEntityMob {
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 20;
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
@@ -55,23 +55,23 @@ public class EntityHellhound extends ModEntityMob {
 		}
 		return flag;
 	}
-
+	
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (isWet() && !isNonBoss()) attackEntityFrom(DamageSource.DROWN, 2.5f);
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -81,7 +81,7 @@ public class EntityHellhound extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

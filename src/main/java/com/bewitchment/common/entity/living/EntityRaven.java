@@ -30,25 +30,25 @@ public class EntityRaven extends ModEntityTameable {
 	public EntityRaven(World world) {
 		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, ModObjects.silver_nugget);
 	}
-
+	
 	protected EntityRaven(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world, lootTableLocation, tameItems);
 		setSize(0.4f, 0.4f);
 		moveHelper = new EntityFlyHelper(this);
 	}
-
+	
 	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = new EntityRaven(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
 	}
-
+	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() instanceof ItemSeeds;
 	}
-
+	
 	@Override
 	protected PathNavigate createNavigator(World world) {
 		PathNavigateFlying path = new PathNavigateFlying(this, world);
@@ -57,49 +57,48 @@ public class EntityRaven extends ModEntityTameable {
 		path.setCanOpenDoors(false);
 		return path;
 	}
-
+	
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.RAVEN_CRY;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 	}
-
+	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow))
-			amount = (amount + 1) / 2f;
+		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow)) amount = (amount + 1) / 2f;
 		return super.attackEntityFrom(source, amount);
 	}
-
+	
 	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntityRaven)) return false;
 		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
-
+	
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
-
+	
 	@Override
 	public void fall(float distance, float damageMultiplier) {
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!onGround && motionY <= 0) motionY *= 0.6;
 	}
-
+	
 	@Override
 	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -111,7 +110,7 @@ public class EntityRaven extends ModEntityTameable {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
 		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

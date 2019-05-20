@@ -22,40 +22,40 @@ public class EntityOwl extends EntityRaven {
 		setSize(0.4f, 0.9f);
 		moveHelper = new EntityFlyHelper(this);
 	}
-
+	
 	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = new EntityOwl(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
 	}
-
+	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
 	}
-
+	
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
-
+	
 	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntityOwl)) return false;
 		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
-
+	
 	@Override
 	protected float getSoundVolume() {
 		return 0.5f;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -65,7 +65,7 @@ public class EntityOwl extends EntityRaven {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
 		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.8);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();

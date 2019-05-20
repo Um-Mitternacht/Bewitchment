@@ -11,7 +11,7 @@ public class FortuneDeath extends Fortune {
 	public FortuneDeath() {
 		super(new ResourceLocation(Bewitchment.MODID, "death"), true);
 	}
-
+	
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (player.getRNG().nextDouble() < 0.00025) {

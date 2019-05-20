@@ -10,21 +10,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiSpinningWheel extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/spinning_wheel.png");
-
+	
 	private final ContainerSpinningWheel container;
-
+	
 	public GuiSpinningWheel(ContainerSpinningWheel container) {
 		super(container);
 		this.container = container;
 	}
-
+	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		renderHoveredToolTip(mouseX, mouseY);
 	}
-
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		mc.getTextureManager().bindTexture(TEX);

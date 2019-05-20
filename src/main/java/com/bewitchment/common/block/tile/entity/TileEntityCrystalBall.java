@@ -29,8 +29,7 @@ public class TileEntityCrystalBall extends ModTileEntity {
 				}
 				else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
 			}
-			else
-				player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
+			else player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
 		}
 		return true;
 	}

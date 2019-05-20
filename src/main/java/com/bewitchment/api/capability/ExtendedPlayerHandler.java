@@ -12,17 +12,17 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 @SuppressWarnings("ConstantConditions")
 public class ExtendedPlayerHandler {
 	private static final ResourceLocation LOC = new ResourceLocation(Bewitchment.MODID, "extended_player");
-
+	
 	@SubscribeEvent
 	public void attachCapability(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof EntityPlayer) event.addCapability(LOC, new ExtendedPlayer());
 	}
-
+	
 	@SubscribeEvent
 	public void clonePlayer(PlayerEvent.Clone event) {
 		event.getEntityPlayer().getCapability(ExtendedPlayer.CAPABILITY, null).deserializeNBT(event.getOriginal().getCapability(ExtendedPlayer.CAPABILITY, null).serializeNBT());
 	}
-
+	
 	@SubscribeEvent
 	public void playerTick(TickEvent.PlayerTickEvent event) {
 		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {

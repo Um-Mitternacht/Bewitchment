@@ -36,26 +36,26 @@ public class ClientProxy extends CommonProxy {
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityYewBroom.class, RenderYewBroom::new);
-
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNewt.class, RenderNewt::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySnake.class, RenderSnake::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
-
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySerpent.class, RenderSerpent::new);
-
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
-
+		
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 	}
-
+	
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
@@ -67,22 +67,22 @@ public class ClientProxy extends CommonProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
 		MinecraftForge.EVENT_BUS.register(new ClientHandler());
 	}
-
+	
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
-
+	
 	@Override
 	public void registerTexture(Item item, String variant) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), variant));
 	}
-
+	
 	@Override
 	public void registerTextureVariant(Item item, List<Predicate<ItemStack>> predicates) {
 		ResourceLocation[] names = new ResourceLocation[predicates.size() + 1];
 		for (int i = 0; i <= predicates.size(); i++)
-			names[i] = new ResourceLocation(item.getRegistryName().toString() + (i == 0 ? "" : "_variant" + (predicates.size() == 1 ? "" : (i - 1))));
+		     names[i] = new ResourceLocation(item.getRegistryName().toString() + (i == 0 ? "" : "_variant" + (predicates.size() == 1 ? "" : (i - 1))));
 		ModelBakery.registerItemVariants(item, names);
 		ModelLoader.setCustomMeshDefinition(item, stack -> {
 			for (int i = 0; i < predicates.size(); i++)
@@ -90,7 +90,7 @@ public class ClientProxy extends CommonProxy {
 			return new ModelResourceLocation(item.getRegistryName(), "inventory");
 		});
 	}
-
+	
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());

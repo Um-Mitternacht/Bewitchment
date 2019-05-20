@@ -37,7 +37,7 @@ public class ItemBoline extends ItemShears {
 		Util.registerItem(this, "boline");
 		setMaxDamage(ModObjects.TOOL_SILVER.getMaxUses());
 	}
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
@@ -45,7 +45,7 @@ public class ItemBoline extends ItemShears {
 		stack.getTagCompound().setInteger("biome_id", Biome.getIdForBiome(world.getBiome(player.getPosition())));
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
-
+	
 	@Override
 	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
 		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
@@ -55,13 +55,13 @@ public class ItemBoline extends ItemShears {
 		}
 		return multimap;
 	}
-
+	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!target.world.isRemote) stack.damageItem(1, attacker);
 		return super.hitEntity(stack, target, attacker);
 	}
-
+	
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase entity, EnumHand hand) {
 		if (!entity.world.isRemote) {
@@ -82,11 +82,10 @@ public class ItemBoline extends ItemShears {
 		}
 		return false;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("biome_id"))
-			tooltip.add(Biome.getBiome(stack.getTagCompound().getInteger("biome_id")).getBiomeName());
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("biome_id")) tooltip.add(Biome.getBiome(stack.getTagCompound().getInteger("biome_id")).getBiomeName());
 	}
 }

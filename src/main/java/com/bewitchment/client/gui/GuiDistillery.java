@@ -10,21 +10,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiDistillery extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/distillery.png");
-
+	
 	private final ContainerDistillery container;
-
+	
 	public GuiDistillery(ContainerDistillery container) {
 		super(container);
 		this.container = container;
 	}
-
+	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		renderHoveredToolTip(mouseX, mouseY);
 	}
-
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		mc.getTextureManager().bindTexture(TEX);

@@ -19,7 +19,7 @@ public class BlockDropHandler {
 	private static int getFortuneDropAmount(Random rand, int fortuneLevel) {
 		return fortuneLevel > 0 ? Math.max(1, rand.nextInt(fortuneLevel + 2)) : 1;
 	}
-
+	
 	/**
 	 * @param replaceFlag 0 means do not replace, 1 means always replace, 2 means replace if the random roll is successful
 	 */
@@ -32,19 +32,19 @@ public class BlockDropHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void harvestDrops(BlockEvent.HarvestDropsEvent event) {
 		replaceDrop(event, s -> s.getBlock() == ModObjects.salt_ore, new ItemStack(ModObjects.salt, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel()) + event.getWorld().rand.nextInt(4)), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.amethyst_ore, new ItemStack(ModObjects.amethyst, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.garnet_ore, new ItemStack(ModObjects.garnet, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.moonstone_ore, new ItemStack(ModObjects.moonstone, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
-
+		
 		replaceDrop(event, s -> s.getBlock() == ModObjects.cypress_leaves, new ItemStack(ModObjects.cypress_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elder_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_sapling), 5, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.yew_leaves, new ItemStack(ModObjects.yew_sapling), 5, 1, false);
-
+		
 		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elderberries), 1, 0, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_berries), 1, 0, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.yew_leaves, new ItemStack(ModObjects.yew_aril), 1, 0, false);

@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntitySerpent extends ModEntityMob {
 	private int milkTimer;
-
+	
 	public EntitySerpent(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"));
 		setSize(1, 0.85f);
@@ -36,22 +36,22 @@ public class EntitySerpent extends ModEntityMob {
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 20;
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	protected int getSkinTypes() {
 		return 9;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
@@ -62,12 +62,12 @@ public class EntitySerpent extends ModEntityMob {
 		}
 		return flag;
 	}
-
+	
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
-
+	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
@@ -87,12 +87,12 @@ public class EntitySerpent extends ModEntityMob {
 		}
 		return super.processInteract(player, hand);
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
@@ -100,24 +100,24 @@ public class EntitySerpent extends ModEntityMob {
 			attackEntityFrom(DamageSource.DROWN, 2.5f);
 			if (hurtTime == 1) {
 				for (int i = 0; i < 20; i++)
-					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
+				     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
 				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
 			}
 		}
 	}
-
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
 		tag.setInteger("milk_timer", milkTimer);
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		milkTimer = tag.getInteger("milk_timer");
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -126,7 +126,7 @@ public class EntitySerpent extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(25);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.65);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

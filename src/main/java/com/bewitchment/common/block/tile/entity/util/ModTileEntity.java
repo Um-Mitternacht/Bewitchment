@@ -20,11 +20,11 @@ public abstract class ModTileEntity extends TileEntity {
 		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
 		return true;
 	}
-
+	
 	public static int getFirstEmptySlot(ItemStackHandler handler) {
 		return getFirstValidSlot(handler, ItemStack.EMPTY);
 	}
-
+	
 	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
 		boolean hasEmpty = false;
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -33,51 +33,51 @@ public abstract class ModTileEntity extends TileEntity {
 		}
 		return hasEmpty ? getFirstEmptySlot(handler) : -1;
 	}
-
+	
 	public static void clear(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
-
+	
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return oldState.getBlock() != newState.getBlock();
 	}
-
+	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		return new SPacketUpdateTileEntity(getPos(), 0, writeToNBT(new NBTTagCompound()));
 	}
-
+	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
 	}
-
+	
 	@Override
 	public void markDirty() {
 		super.markDirty();
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		for (int i = 0; i < getInventories().length; i++)
-			tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
+		     tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
 		markDirty();
 		return super.writeToNBT(tag);
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		for (int i = 0; i < getInventories().length; i++)
-			getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
+		     getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
 	}
-
+	
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{};
 	}
-
+	
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		return false;
 	}

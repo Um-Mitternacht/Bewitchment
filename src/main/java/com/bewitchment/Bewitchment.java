@@ -37,22 +37,22 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION)
 public class Bewitchment {
 	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.20";
-
+	
 	public static final Logger logger = LogManager.getLogger(NAME);
-
+	
 	@Mod.Instance
 	public static Bewitchment instance;
-
+	
 	@SidedProxy(serverSide = "com.bewitchment.common.CommonProxy", clientSide = "com.bewitchment.client.ClientProxy")
 	public static CommonProxy proxy;
-
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
 	}
-
+	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
@@ -60,11 +60,11 @@ public class Bewitchment {
 		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
 		logger.info("And her magic brings dismay!");
-
+		
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");
 	}
-
+	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);

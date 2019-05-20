@@ -15,7 +15,7 @@ import net.minecraftforge.items.IItemHandler;
 public class ContainerSpinningWheel extends ModContainer {
 	private final TileEntitySpinningWheel tile;
 	public int progress;
-
+	
 	public ContainerSpinningWheel(InventoryPlayer inventory, TileEntitySpinningWheel tile) {
 		this.tile = tile;
 		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
@@ -28,12 +28,12 @@ public class ContainerSpinningWheel extends ModContainer {
 		addSlotToContainer(new ModSlot(down, di++, 116, 34));
 		addPlayerSlots(inventory);
 	}
-
+	
 	@Override
 	protected void sendToListener(IContainerListener listener) {
 		listener.sendWindowProperty(this, 0, tile.progress);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data) {

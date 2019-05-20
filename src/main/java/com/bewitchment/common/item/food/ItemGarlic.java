@@ -8,7 +8,7 @@ public class ItemGarlic extends ItemFood {
 		super(2, 0.2f, false);
 		Util.registerItem(this, "garlic", "cropGarlic", "listAllherb");
 	}
-
+	
 	//	@Override
 	//	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 	//		super.onFoodEaten(stack, world, player);

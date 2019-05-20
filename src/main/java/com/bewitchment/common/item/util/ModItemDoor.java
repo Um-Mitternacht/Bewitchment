@@ -19,38 +19,39 @@ import java.util.Random;
 
 public class ModItemDoor extends ItemDoor {
 	public final ModBlockDoor door;
-
+	
 	public ModItemDoor(String name, Block base, String... oreDictionaryNames) {
 		this(name, base, new ModBlockDoor("block_" + name, base), oreDictionaryNames);
 	}
-
+	
 	private ModItemDoor(String name, Block base, ModBlockDoor door, String... oreDictionaryNames) {
 		super(door);
 		Util.registerItem(this, name, oreDictionaryNames);
-		this.door = door;
+		this.door      = door;
 		this.door.drop = new ItemStack(this);
 	}
-
+	
+	@SuppressWarnings({"NullableProblems", "ConstantConditions"})
 	public static class ModBlockDoor extends BlockDoor {
-		public ItemStack drop;
-
-		public ModBlockDoor(String name, Block base) {
+		private ItemStack drop;
+		
+		private ModBlockDoor(String name, Block base) {
 			super(base.getDefaultState().getMaterial());
 			Util.registerBlock(this, name, base);
 			setCreativeTab(null);
 		}
-
+		
 		@Override
 		@SideOnly(Side.CLIENT)
 		public BlockRenderLayer getRenderLayer() {
 			return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 		}
-
+		
 		@Override
 		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 			return drop;
 		}
-
+		
 		@Override
 		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();

@@ -35,7 +35,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
-
+	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
@@ -62,17 +62,17 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
 	}
-
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
@@ -80,15 +80,15 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		recipe   = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
 	}
-
+	
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory_side, inventory_up, inventory_down};
