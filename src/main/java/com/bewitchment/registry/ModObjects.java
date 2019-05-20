@@ -72,6 +72,13 @@ public class ModObjects {
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
+	
+	public static final Block scorned_bricks = new ModBlock("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
+	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
+	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
+	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks);
+	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks);
+	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");

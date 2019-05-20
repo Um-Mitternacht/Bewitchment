@@ -20,6 +20,13 @@ tile.bewitchment.coquina.name=Coquina
 tile.bewitchment.coquina_bricks.name=Coquina Bricks
 tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 
+tile.bewitchment.scorned_bricks.name=Scorned Bricks
+tile.bewitchment.cracked_scorned_bricks.name=Cracked Scorned Bricks
+tile.bewitchment.chiseled_scorned_bricks.name=Chiseled Scorned Bricks
+tile.bewitchment.scorned_brick_stairs.name=Scorned Brick Stairs
+tile.bewitchment.scorned_bricks_slab.name=Scorned Bricks Slab
+tile.bewitchment.scorned_brick_fence.name=Scorned Brick Fence
+
 tile.bewitchment.cypress_sapling.name=Cypress Sapling
 tile.bewitchment.elder_sapling.name=Elder Sapling
 tile.bewitchment.juniper_sapling.name=Juniper Sapling
