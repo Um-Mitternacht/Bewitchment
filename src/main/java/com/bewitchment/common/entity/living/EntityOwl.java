@@ -47,16 +47,6 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected float getSoundVolume() {
-		return 0.5f;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 4;
-	}
-	
-	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.5);
@@ -71,5 +61,15 @@ public class EntityOwl extends EntityRaven {
 		super.initEntityAI();
 		tasks.addTask(1, new EntityAIFleeSun(this, 1));
 		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
+	}
+	
+	@Override
+	protected float getSoundVolume() {
+		return 0.5f;
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 4;
 	}
 }

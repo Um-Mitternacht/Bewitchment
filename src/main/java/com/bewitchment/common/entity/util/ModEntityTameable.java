@@ -38,7 +38,9 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	public abstract boolean isBreedingItem(ItemStack stack);
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
@@ -47,16 +49,14 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
-	}
-	
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (isEntityInvulnerable(source)) return false;
 		if (aiSit != null) aiSit.setSitting(false);
 		return super.attackEntityFrom(source, amount);
 	}
+	
+	@Override
+	public abstract boolean isBreedingItem(ItemStack stack);
 	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {

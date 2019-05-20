@@ -37,37 +37,13 @@ public class EntityToad extends ModEntityTameable {
 	}
 	
 	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.TOAD_IDLE;
-	}
-	
-	@Override
-	protected SoundEvent getDeathSound() {
-		return ModSounds.TOAD_DEATH;
-	}
-	
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return ModSounds.TOAD_HURT;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 4;
-	}
-	
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
-			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
-		}
-		return super.attackEntityAsMob(entity);
+	protected int getSkinTypes() {
+		return 4;
 	}
 	
 	@Override
@@ -82,18 +58,22 @@ public class EntityToad extends ModEntityTameable {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.TOAD_HURT;
 	}
 	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.5);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
+	protected SoundEvent getDeathSound() {
+		return ModSounds.TOAD_DEATH;
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
+			applyEnchantments(this, entity);
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
+		}
+		return super.attackEntityAsMob(entity);
 	}
 	
 	@Override
@@ -112,5 +92,25 @@ public class EntityToad extends ModEntityTameable {
 		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
 		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
 		targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityEndermite || e instanceof EntitySilverfish));
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.TOAD_IDLE;
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
 	}
 }

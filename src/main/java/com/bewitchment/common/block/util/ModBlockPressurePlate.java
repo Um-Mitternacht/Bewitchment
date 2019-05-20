@@ -20,13 +20,13 @@ public class ModBlockPressurePlate extends BlockPressurePlate {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 }

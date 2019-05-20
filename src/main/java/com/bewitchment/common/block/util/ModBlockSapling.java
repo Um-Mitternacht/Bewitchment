@@ -24,12 +24,12 @@ public class ModBlockSapling extends BlockSapling {
 	}
 	
 	@Override
-	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
-		list.add(new ItemStack(this));
+	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
+		if (generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
 	}
 	
 	@Override
-	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
-		if (generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
+		list.add(new ItemStack(this));
 	}
 }

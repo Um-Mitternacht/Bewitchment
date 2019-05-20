@@ -64,13 +64,13 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
 	}
 	
 	@Override

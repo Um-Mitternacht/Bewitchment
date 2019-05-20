@@ -41,13 +41,20 @@ public class EntityNewt extends ModEntityAnimal {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
+	protected int getSkinTypes() {
+		return 4;
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 4;
+	protected void initEntityAI() {
+		tasks.addTask(0, new EntityAIPanic(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
+		tasks.addTask(1, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));
+		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(2, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
 	}
 	
 	@Override
@@ -61,14 +68,7 @@ public class EntityNewt extends ModEntityAnimal {
 	}
 	
 	@Override
-	protected void initEntityAI() {
-		tasks.addTask(0, new EntityAIPanic(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
-		tasks.addTask(1, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));
-		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(2, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-		tasks.addTask(3, new EntityAILookIdle(this));
-		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
+	public int getMaxSpawnedInChunk() {
+		return 2;
 	}
 }

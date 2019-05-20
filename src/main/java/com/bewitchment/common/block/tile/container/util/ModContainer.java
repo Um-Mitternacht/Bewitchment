@@ -10,6 +10,14 @@ import net.minecraft.item.ItemStack;
 @SuppressWarnings("NullableProblems")
 public abstract class ModContainer extends Container {
 	@Override
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+		for (IContainerListener listener : listeners) {
+			sendToListener(listener);
+		}
+	}
+	
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slot = inventorySlots.get(index);
@@ -29,14 +37,6 @@ public abstract class ModContainer extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return !player.isSpectator();
-	}
-	
-	@Override
-	public void detectAndSendChanges() {
-		super.detectAndSendChanges();
-		for (IContainerListener listener : listeners) {
-			sendToListener(listener);
-		}
 	}
 	
 	protected void addPlayerSlots(InventoryPlayer inventory) {

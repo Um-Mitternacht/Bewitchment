@@ -21,6 +21,21 @@ public class ModBlockPillar extends BlockRotatedPillar {
 	}
 	
 	@Override
+	public boolean isFullCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
@@ -32,22 +47,7 @@ public class ModBlockPillar extends BlockRotatedPillar {
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
-	}
-	
-	@Override
 	public boolean isWood(IBlockAccess world, BlockPos pos) {
 		return world.getBlockState(pos).getMaterial() == Material.WOOD;
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
 	}
 }

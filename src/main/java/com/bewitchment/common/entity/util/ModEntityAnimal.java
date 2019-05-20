@@ -21,14 +21,14 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	}
 	
 	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
 	}
 	
 	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
 	}
 	
 	@Override

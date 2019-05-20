@@ -35,24 +35,19 @@ public abstract class ModBlockContainer extends BlockContainer {
 	}
 	
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-	
-	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
 	
 	@Override
-	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.getMaterial() == Material.WOOD;
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops") && hasTileEntity(state) && world.getTileEntity(pos) instanceof ModTileEntity) {
+			ModTileEntity tile = (ModTileEntity) world.getTileEntity(pos);
+			for (IItemHandler inventory : tile.getInventories())
+				for (int i = 0; i < inventory.getSlots(); i++)
+					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+		}
+		super.breakBlock(world, pos, state);
 	}
 	
 	@Override
@@ -66,13 +61,24 @@ public abstract class ModBlockContainer extends BlockContainer {
 	}
 	
 	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
+	}
+	
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
+	
+	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 	
 	@Override
-	public boolean isWood(IBlockAccess world, BlockPos pos) {
-		return world.getBlockState(pos).getMaterial() == Material.WOOD;
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 	
 	@Override
@@ -88,24 +94,18 @@ public abstract class ModBlockContainer extends BlockContainer {
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return super.shouldSideBeRendered(state, world, pos, face) && (state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS || world.getBlockState(pos.offset(face)).getBlock() != this);
-	}
-	
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops") && hasTileEntity(state) && world.getTileEntity(pos) instanceof ModTileEntity) {
-			ModTileEntity tile = (ModTileEntity) world.getTileEntity(pos);
-			for (IItemHandler inventory : tile.getInventories())
-				for (int i = 0; i < inventory.getSlots(); i++)
-					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
-		}
-		super.breakBlock(world, pos, state);
-	}
-	
-	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		refreshAltarPos(world, pos);
+	}
+	
+	@Override
+	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.getMaterial() == Material.WOOD;
+	}
+	
+	@Override
+	public boolean isWood(IBlockAccess world, BlockPos pos) {
+		return world.getBlockState(pos).getMaterial() == Material.WOOD;
 	}
 	
 	public void refreshAltarPos(World world, BlockPos pos) {

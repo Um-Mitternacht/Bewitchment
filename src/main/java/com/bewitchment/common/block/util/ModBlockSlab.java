@@ -44,8 +44,38 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
+	}
+	
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.doesSideBlockRendering(state, world, pos, face);
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return state.getMaterial() == Material.ICE || state.getMaterial() == Material.GLASS ? state != world.getBlockState(pos.offset(face)) || (world.getBlockState(pos.offset(face)).getBlock() != this || !isFullCube(world.getBlockState(pos.offset(face))) && super.shouldSideBeRendered(state, world, pos, face)) : super.shouldSideBeRendered(state, world, pos, face);
+	}
+	
+	@Override
 	public String getTranslationKey(int meta) {
 		return super.getTranslationKey();
+	}
+	
+	@Override
+	public boolean isDouble() {
+		return isDouble;
+	}
+	
+	@Override
+	public IProperty<?> getVariantProperty() {
+		return BlockPurpurSlab.VARIANT;
 	}
 	
 	@Override
@@ -54,8 +84,18 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
-	public IProperty<?> getVariantProperty() {
-		return BlockPurpurSlab.VARIANT;
+	public IBlockState getStateFromMeta(int meta) {
+		return isDouble() ? getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, meta == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(half);
 	}
 	
 	@Override
@@ -67,46 +107,6 @@ public class ModBlockSlab extends BlockSlab {
 	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return new ItemStack(half);
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(half);
-	}
-	
-	@Override
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.doesSideBlockRendering(state, world, pos, face);
-	}
-	
-	@Override
-	public boolean isDouble() {
-		return isDouble;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return state.getMaterial() == Material.ICE || state.getMaterial() == Material.GLASS ? state != world.getBlockState(pos.offset(face)) || (world.getBlockState(pos.offset(face)).getBlock() != this || !isFullCube(world.getBlockState(pos.offset(face))) && super.shouldSideBeRendered(state, world, pos, face)) : super.shouldSideBeRendered(state, world, pos, face);
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return isDouble() ? getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, meta == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
 	}
 	
 	@Override
