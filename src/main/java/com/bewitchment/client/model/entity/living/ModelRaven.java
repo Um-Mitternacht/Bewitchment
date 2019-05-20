@@ -43,16 +43,16 @@ public class ModelRaven extends ModelBase {
 	public ModelRenderer beak01b;
 	
 	public ModelRaven() {
-		this.textureWidth  = 64;
+		this.textureWidth = 64;
 		this.textureHeight = 64;
-		this.leftWing01b   = new ModelRenderer(this, 9, 49);
+		this.leftWing01b = new ModelRenderer(this, 9, 49);
 		this.leftWing01b.setRotationPoint(0, -0, 1.5f);
 		this.leftWing01b.addBox(0, 0, -1.5f, 6, 0, 10, 0);
-		this.rightWing00b        = new ModelRenderer(this, 0, 49);
+		this.rightWing00b = new ModelRenderer(this, 0, 49);
 		this.rightWing00b.mirror = true;
 		this.rightWing00b.setRotationPoint(0, 0, 4.1f);
 		this.rightWing00b.addBox(-5, 0.01f, -1.1f, 5, 0, 7, 0);
-		this.rightfoot        = new ModelRenderer(this, 33, 3);
+		this.rightfoot = new ModelRenderer(this, 33, 3);
 		this.rightfoot.mirror = true;
 		this.rightfoot.setRotationPoint(0, 2.9f, -0.2f);
 		this.rightfoot.addBox(-0.5f, 0, -2.3f, 1, 1, 3, 0);
@@ -92,12 +92,12 @@ public class ModelRaven extends ModelBase {
 		this.leftLeg00.setRotationPoint(1.5f, -0.5f, 2);
 		this.leftLeg00.addBox(-1, 0, -1, 2, 2, 2, 0);
 		this.setRotateAngle(leftLeg00, 0.31f, 0, 0);
-		this.rightWing01        = new ModelRenderer(this, 1, 11);
+		this.rightWing01 = new ModelRenderer(this, 1, 11);
 		this.rightWing01.mirror = true;
 		this.rightWing01.setRotationPoint(-5, 0, 0);
 		this.rightWing01.addBox(-6, -0.59f, 0, 6, 1, 3, 0);
 		this.setRotateAngle(rightWing01, 0, 0.49f, 0);
-		this.rightLeg01        = new ModelRenderer(this, 33, 8);
+		this.rightLeg01 = new ModelRenderer(this, 33, 8);
 		this.rightLeg01.mirror = true;
 		this.rightLeg01.setRotationPoint(0, 1.8f, 0);
 		this.rightLeg01.addBox(-0.5f, 0, -0.5f, 1, 3, 1, 0);
@@ -118,7 +118,7 @@ public class ModelRaven extends ModelBase {
 		this.leftWing00.setRotationPoint(3, -3, -4.7f);
 		this.leftWing00.addBox(0, -0.5f, 0, 5, 1, 4, 0);
 		this.setRotateAngle(leftWing00, -0.035f, -1.05f, 0);
-		this.rightWing00        = new ModelRenderer(this, 0, 0);
+		this.rightWing00 = new ModelRenderer(this, 0, 0);
 		this.rightWing00.mirror = true;
 		this.rightWing00.setRotationPoint(-3, -3, -4.7f);
 		this.rightWing00.addBox(-5, -0.5f, 0, 5, 1, 4, 0);
@@ -131,7 +131,7 @@ public class ModelRaven extends ModelBase {
 		this.body.setRotationPoint(0, 18.6f, 0);
 		this.body.addBox(-3, -6, -5, 6, 6, 10, 0);
 		this.setRotateAngle(body, -0.16f, 0, 0);
-		this.rightLeg00        = new ModelRenderer(this, 39, 1);
+		this.rightLeg00 = new ModelRenderer(this, 39, 1);
 		this.rightLeg00.mirror = true;
 		this.rightLeg00.setRotationPoint(-1.5f, -0.5f, 2);
 		this.rightLeg00.addBox(-1, 0, -1, 2, 2, 2, 0);
@@ -143,7 +143,7 @@ public class ModelRaven extends ModelBase {
 		this.leftWing01.setRotationPoint(5, 0, 0);
 		this.leftWing01.addBox(0, -0.59f, 0, 6, 1, 3, 0);
 		this.setRotateAngle(leftWing01, 0, -0.49f, 0);
-		this.rightWing02b        = new ModelRenderer(this, 23, 49);
+		this.rightWing02b = new ModelRenderer(this, 23, 49);
 		this.rightWing02b.mirror = true;
 		this.rightWing02b.setRotationPoint(0, -0, 1.5f);
 		this.rightWing02b.addBox(-12, 0.01f, -2.5f, 12, 0, 10, 0);
@@ -155,7 +155,7 @@ public class ModelRaven extends ModelBase {
 		this.neckfeathers01.setRotationPoint(0, 2.1f, 0.2f);
 		this.neckfeathers01.addBox(-2.5f, -1, -1, 5, 2, 4, 0);
 		this.setRotateAngle(neckfeathers01, -0.61f, 0, 0);
-		this.rightWing01b        = new ModelRenderer(this, 9, 49);
+		this.rightWing01b = new ModelRenderer(this, 9, 49);
 		this.rightWing01b.mirror = true;
 		this.rightWing01b.setRotationPoint(0, -0, 1.5f);
 		this.rightWing01b.addBox(-6, 0.01f, -1.5f, 6, 0, 10, 0);
@@ -166,7 +166,7 @@ public class ModelRaven extends ModelBase {
 		this.leftWing00b = new ModelRenderer(this, 0, 49);
 		this.leftWing00b.setRotationPoint(0, 0, 4.1f);
 		this.leftWing00b.addBox(0, 0.01f, -1.1f, 5, 0, 7, 0);
-		this.rightWing02        = new ModelRenderer(this, 23, 24);
+		this.rightWing02 = new ModelRenderer(this, 23, 24);
 		this.rightWing02.mirror = true;
 		this.rightWing02.setRotationPoint(-5.9f, 0, 1.1f);
 		this.rightWing02.addBox(-5, -0.59f, -1, 5, 1, 2, 0);

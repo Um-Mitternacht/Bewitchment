@@ -27,7 +27,7 @@ public class ModItemDoor extends ItemDoor {
 	private ModItemDoor(String name, Block base, ModBlockDoor door, String... oreDictionaryNames) {
 		super(door);
 		Util.registerItem(this, name, oreDictionaryNames);
-		this.door      = door;
+		this.door = door;
 		this.door.drop = new ItemStack(this);
 	}
 	

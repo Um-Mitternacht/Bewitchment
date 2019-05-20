@@ -19,8 +19,7 @@ public class WorldGenElderTree extends WorldGenModTree {
 			for (int z = -1; z < 2; z++) {
 				for (int y = 0; y < 1; y++) {
 					BlockPos current = pos.up(2).add(x, y, z);
-					if (!world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current))
-						return false;
+					if (!world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current)) return false;
 				}
 			}
 		}
@@ -34,7 +33,8 @@ public class WorldGenElderTree extends WorldGenModTree {
 			for (int z = -2; z < 3; z++) {
 				for (int y = -2; y < 1; y++) {
 					BlockPos current = pos.up(h).add(x, y, z);
-					if (world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current) && (Math.abs(z) != 2 || Math.abs(x) != 2 || rand.nextDouble() < 0.2) && (y < 0 || x < 2 && z < 2 && x > -2 && z > -2)) world.setBlockState(current, ModObjects.elder_leaves.getDefaultState());
+					if (world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current) && (Math.abs(z) != 2 || Math.abs(x) != 2 || rand.nextDouble() < 0.2) && (y < 0 || x < 2 && z < 2 && x > -2 && z > -2))
+						world.setBlockState(current, ModObjects.elder_leaves.getDefaultState());
 				}
 			}
 		}

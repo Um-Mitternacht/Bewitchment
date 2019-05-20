@@ -21,8 +21,7 @@ public class WorldGenJuniperTree extends WorldGenModTree {
 			for (int z = -2; z < 3; z++) {
 				for (int y = 0; y < 2; y++) {
 					BlockPos current = pos.up(2).add(x, y, z);
-					if (!world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current))
-						return false;
+					if (!world.getBlockState(current).getBlock().canBeReplacedByLeaves(world.getBlockState(current), world, current)) return false;
 				}
 			}
 		}

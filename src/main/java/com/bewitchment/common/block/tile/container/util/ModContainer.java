@@ -17,8 +17,7 @@ public abstract class ModContainer extends Container {
 			ItemStack stack0 = slot.getStack();
 			stack = stack0.copy();
 			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size();
-			if (index < containerSlots && !mergeItemStack(stack0, containerSlots, inventorySlots.size(), true) || !mergeItemStack(stack0, 0, containerSlots, false))
-				return ItemStack.EMPTY;
+			if (index < containerSlots && !mergeItemStack(stack0, containerSlots, inventorySlots.size(), true) || !mergeItemStack(stack0, 0, containerSlots, false)) return ItemStack.EMPTY;
 			if (stack0.getCount() == 0) slot.putStack(ItemStack.EMPTY);
 			else slot.onSlotChanged();
 			if (stack0.getCount() == stack.getCount()) return ItemStack.EMPTY;
@@ -42,8 +41,10 @@ public abstract class ModContainer extends Container {
 	
 	protected void addPlayerSlots(InventoryPlayer inventory) {
 		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 9; j++) addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-		for (int i = 0; i < 9; i++) addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
+			for (int j = 0; j < 9; j++)
+				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+		for (int i = 0; i < 9; i++)
+			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
 	}
 	
 	protected void sendToListener(IContainerListener listener) {

@@ -49,9 +49,9 @@ public class ModelHellhound extends ModelBase {
 	public ModelRenderer tail04;
 	
 	public ModelHellhound() {
-		this.textureWidth  = 64;
+		this.textureWidth = 64;
 		this.textureHeight = 64;
-		this.tail01        = new ModelRenderer(this, 26, 33);
+		this.tail01 = new ModelRenderer(this, 26, 33);
 		this.tail01.setRotationPoint(0, 3.3f, 0);
 		this.tail01.addBox(-0.5f, -0.1f, -0.5f, 1, 5, 1, 0);
 		this.setRotateAngle(tail01, 0.27f, 0, 0);
@@ -82,7 +82,7 @@ public class ModelHellhound extends ModelBase {
 		this.leftHorn02a.setRotationPoint(0, -1.5f, -0.1f);
 		this.leftHorn02a.addBox(-0.2f, -2, -0.8f, 1, 2, 1, 0);
 		this.setRotateAngle(leftHorn02a, -0.7f, 0.21f, 0);
-		this.rightHorn03a        = new ModelRenderer(this, 57, 6);
+		this.rightHorn03a = new ModelRenderer(this, 57, 6);
 		this.rightHorn03a.mirror = true;
 		this.rightHorn03a.setRotationPoint(0, -1.5f, -0.1f);
 		this.rightHorn03a.addBox(-0.7f, -3, -0.7f, 1, 3, 1, 0);
@@ -91,7 +91,7 @@ public class ModelHellhound extends ModelBase {
 		this.leftHorn04a.setRotationPoint(0, -2.5f, -0.1f);
 		this.leftHorn04a.addBox(-0.5f, -3, -0.7f, 1, 3, 1, 0);
 		this.setRotateAngle(leftHorn04a, -0.7f, 0.35f, 0);
-		this.rightforeleg        = new ModelRenderer(this, 0, 18);
+		this.rightforeleg = new ModelRenderer(this, 0, 18);
 		this.rightforeleg.mirror = true;
 		this.rightforeleg.setRotationPoint(-1.5f, 16, -4);
 		this.rightforeleg.addBox(-1, 0, -1, 2, 8, 2, 0);
@@ -107,11 +107,11 @@ public class ModelHellhound extends ModelBase {
 		this.tail03.setRotationPoint(0, 4.3f, 0);
 		this.tail03.addBox(-1, -0.1f, -0.5f, 2, 2, 1, 0);
 		this.setRotateAngle(tail03, 0.21f, 0, 0);
-		this.rightEar        = new ModelRenderer(this, 16, 14);
+		this.rightEar = new ModelRenderer(this, 16, 14);
 		this.rightEar.mirror = true;
 		this.rightEar.setRotationPoint(-2, -3, -2);
 		this.rightEar.addBox(-1, -2, -0.5f, 2, 2, 1, 0);
-		this.rightHorn00        = new ModelRenderer(this, 46, 0);
+		this.rightHorn00 = new ModelRenderer(this, 46, 0);
 		this.rightHorn00.mirror = true;
 		this.rightHorn00.setRotationPoint(-1.3f, -2.1f, -1.4f);
 		this.rightHorn00.addBox(-1, -3, -1, 2, 3, 2, 0);
@@ -119,15 +119,15 @@ public class ModelHellhound extends ModelBase {
 		this.leftHorn04b = new ModelRenderer(this, 52, 12);
 		this.leftHorn04b.setRotationPoint(0, 0, 0);
 		this.leftHorn04b.addBox(-0.5f, -3, -0.3f, 1, 3, 1, 0);
-		this.rightHindleg        = new ModelRenderer(this, 0, 18);
+		this.rightHindleg = new ModelRenderer(this, 0, 18);
 		this.rightHindleg.mirror = true;
 		this.rightHindleg.setRotationPoint(-1.5f, 16, 6);
 		this.rightHindleg.addBox(-1, 0, -1, 2, 8, 2, 0);
-		this.rightHorn03c        = new ModelRenderer(this, 57, 6);
+		this.rightHorn03c = new ModelRenderer(this, 57, 6);
 		this.rightHorn03c.mirror = true;
 		this.rightHorn03c.setRotationPoint(0, 0, 0);
 		this.rightHorn03c.addBox(-0.7f, -3, -0.3f, 1, 3, 1, 0);
-		this.rightHorn04a        = new ModelRenderer(this, 52, 12);
+		this.rightHorn04a = new ModelRenderer(this, 52, 12);
 		this.rightHorn04a.mirror = true;
 		this.rightHorn04a.setRotationPoint(0, -2.5f, -0.1f);
 		this.rightHorn04a.addBox(-0.5f, -3, -0.7f, 1, 3, 1, 0);
@@ -140,12 +140,12 @@ public class ModelHellhound extends ModelBase {
 		this.tail00.setRotationPoint(0, 6.8f, 2.2f);
 		this.tail00.addBox(-0.5f, -0.5f, -0.5f, 1, 4, 1, 0);
 		this.setRotateAngle(tail00, -1, 0, 0);
-		this.rightHorn05        = new ModelRenderer(this, 58, 13);
+		this.rightHorn05 = new ModelRenderer(this, 58, 13);
 		this.rightHorn05.mirror = true;
 		this.rightHorn05.setRotationPoint(0, -2.7f, 0);
 		this.rightHorn05.addBox(-0.5f, -3, -0.5f, 1, 3, 1, 0);
 		this.setRotateAngle(rightHorn05, -0.63f, 0, 0);
-		this.rightHorn02c        = new ModelRenderer(this, 52, 7);
+		this.rightHorn02c = new ModelRenderer(this, 52, 7);
 		this.rightHorn02c.mirror = true;
 		this.rightHorn02c.setRotationPoint(0, 0, 0);
 		this.rightHorn02c.addBox(-0.8f, -2, -0.2f, 1, 2, 1, 0);
@@ -170,11 +170,11 @@ public class ModelHellhound extends ModelBase {
 		this.body.setRotationPoint(0, 14, 1);
 		this.body.addBox(-3, -2, -3, 6, 9, 6, 0);
 		this.setRotateAngle(body, 1.57f, 0, 0);
-		this.rightHorn04b        = new ModelRenderer(this, 52, 12);
+		this.rightHorn04b = new ModelRenderer(this, 52, 12);
 		this.rightHorn04b.mirror = true;
 		this.rightHorn04b.setRotationPoint(0, 0, 0);
 		this.rightHorn04b.addBox(-0.5f, -3, -0.3f, 1, 3, 1, 0);
-		this.rightHorn02a        = new ModelRenderer(this, 52, 7);
+		this.rightHorn02a = new ModelRenderer(this, 52, 7);
 		this.rightHorn02a.mirror = true;
 		this.rightHorn02a.setRotationPoint(0, -1.5f, -0.1f);
 		this.rightHorn02a.addBox(-0.8f, -2, -0.8f, 1, 2, 1, 0);
@@ -186,7 +186,7 @@ public class ModelHellhound extends ModelBase {
 		this.leftHorn05.setRotationPoint(0, -2.7f, 0);
 		this.leftHorn05.addBox(-0.5f, -3, -0.5f, 1, 3, 1, 0);
 		this.setRotateAngle(leftHorn05, -0.63f, 0, 0);
-		this.rightHorn01        = new ModelRenderer(this, 55, 0);
+		this.rightHorn01 = new ModelRenderer(this, 55, 0);
 		this.rightHorn01.mirror = true;
 		this.rightHorn01.setRotationPoint(0, -2.5f, -0.1f);
 		this.rightHorn01.addBox(-1, -2, -1, 2, 2, 2, 0);

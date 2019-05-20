@@ -30,7 +30,7 @@ public class ModBlockSlab extends BlockSlab {
 		this(name, base, false);
 		ModBlockSlab double_slab = new ModBlockSlab(getRegistryName().getPath() + "_double", base, true);
 		double_slab.setCreativeTab(null);
-		this.half        = this;
+		this.half = this;
 		double_slab.half = this;
 		Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
 	}
@@ -39,7 +39,7 @@ public class ModBlockSlab extends BlockSlab {
 		super(base.getDefaultState().getMaterial());
 		Util.registerBlock(this, name, base);
 		this.setDefaultState(isDouble ? blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, EnumBlockHalf.BOTTOM));
-		this.isDouble  = isDouble;
+		this.isDouble = isDouble;
 		this.fullBlock = isDouble;
 	}
 	

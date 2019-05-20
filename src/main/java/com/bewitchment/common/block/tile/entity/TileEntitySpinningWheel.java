@@ -63,7 +63,7 @@ public class TileEntitySpinningWheel extends ModTileEntity implements ITickable 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		recipe   = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		progress = tag.getInteger("progress");
 	}
 	

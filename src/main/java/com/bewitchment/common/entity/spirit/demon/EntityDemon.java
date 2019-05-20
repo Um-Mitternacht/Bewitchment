@@ -123,9 +123,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
-		careerID    = tag.getInteger("careerID");
+		careerID = tag.getInteger("careerID");
 		careerLevel = tag.getInteger("careerLevel");
-		wealth      = tag.getInteger("wealth");
+		wealth = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
 	}
 	

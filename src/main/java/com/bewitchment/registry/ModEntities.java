@@ -73,7 +73,8 @@ public class ModEntities {
 	
 	private static EntityEntry createEntityEntry(Class<? extends Entity> clazz, String name, int solidColor, int spotColor, EnumCreatureType type, int weight, int min, int max, List<String> types) {
 		Set<Biome> biomes = new HashSet<>();
-		for (String typeName : types) biomes.addAll(BiomeDictionary.getBiomes(Type.getType(typeName)));
+		for (String typeName : types)
+			biomes.addAll(BiomeDictionary.getBiomes(Type.getType(typeName)));
 		EntityEntry entry = EntityEntryBuilder.create().entity(clazz).id(new ResourceLocation(Bewitchment.MODID, name), entity_id++).name(Bewitchment.MODID + "." + name).tracker(64, 1, true).egg(solidColor, spotColor).spawn(type, weight, min, max, biomes).build();
 		ForgeRegistries.ENTITIES.register(entry);
 		return entry;

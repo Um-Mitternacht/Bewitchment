@@ -49,9 +49,9 @@ public class ModelOwl extends ModelBase {
 	public ModelRenderer rightWing02c;
 	
 	public ModelOwl() {
-		this.textureWidth       = 64;
-		this.textureHeight      = 64;
-		this.rightWing02        = new ModelRenderer(this, 0, 49);
+		this.textureWidth = 64;
+		this.textureHeight = 64;
+		this.rightWing02 = new ModelRenderer(this, 0, 49);
 		this.rightWing02.mirror = true;
 		this.rightWing02.setRotationPoint(-6, 0, 0);
 		this.rightWing02.addBox(-6, 0, -1, 6, 2, 2, 0);
@@ -65,11 +65,11 @@ public class ModelOwl extends ModelBase {
 		this.leftWing01c = new ModelRenderer(this, 17, 42);
 		this.leftWing01c.setRotationPoint(1.1f, 1.3f, 0);
 		this.leftWing01c.addBox(-4.1f, 0, 0, 6, 8, 0, 0);
-		this.rightWing02b        = new ModelRenderer(this, 49, 60);
+		this.rightWing02b = new ModelRenderer(this, 49, 60);
 		this.rightWing02b.mirror = true;
 		this.rightWing02b.setRotationPoint(-3, 1.8f, 0);
 		this.rightWing02b.addBox(-3, 0, -0.5f, 6, 2, 1, 0);
-		this.rightWing01c        = new ModelRenderer(this, 17, 42);
+		this.rightWing01c = new ModelRenderer(this, 17, 42);
 		this.rightWing01c.mirror = true;
 		this.rightWing01c.setRotationPoint(1.1f, 1.3f, 0);
 		this.rightWing01c.addBox(-4.1f, 0, 0, 6, 8, 0, 0);
@@ -81,7 +81,7 @@ public class ModelOwl extends ModelBase {
 		this.leftWing00.setRotationPoint(6, -7, 0);
 		this.leftWing00.addBox(0, 0, -1, 6, 2, 2, 0);
 		this.setRotateAngle(leftWing00, 0.09f, -0.61f, 1.22f);
-		this.rightWing01b        = new ModelRenderer(this, 49, 57);
+		this.rightWing01b = new ModelRenderer(this, 49, 57);
 		this.rightWing01b.mirror = true;
 		this.rightWing01b.setRotationPoint(-3, 1.8f, 0);
 		this.rightWing01b.addBox(-3, 0, -0.5f, 6, 2, 1, 0);
@@ -93,7 +93,7 @@ public class ModelOwl extends ModelBase {
 		this.body.setRotationPoint(0, 16, 0);
 		this.body.addBox(-6, -8, -4, 12, 14, 8, 0);
 		this.setRotateAngle(body, 0.09f, 0, 0);
-		this.rightTail        = new ModelRenderer(this, 42, 40);
+		this.rightTail = new ModelRenderer(this, 42, 40);
 		this.rightTail.mirror = true;
 		this.rightTail.setRotationPoint(-2, 2.5f, 4);
 		this.rightTail.addBox(-4, 0, 0, 4, 2, 6, 0);
@@ -110,7 +110,7 @@ public class ModelOwl extends ModelBase {
 		this.leftTalon03.setRotationPoint(-0.7f, 1.2f, 0.5f);
 		this.leftTalon03.addBox(-0.5f, -1, 0, 1, 2, 3, 0);
 		this.setRotateAngle(leftTalon03, -0.17f, -0.07f, 0);
-		this.rightWing00b        = new ModelRenderer(this, 49, 54);
+		this.rightWing00b = new ModelRenderer(this, 49, 54);
 		this.rightWing00b.mirror = true;
 		this.rightWing00b.setRotationPoint(-3, 1.8f, 0);
 		this.rightWing00b.addBox(-3, 0, -0.5f, 6, 2, 1, 0);
@@ -122,7 +122,7 @@ public class ModelOwl extends ModelBase {
 		this.head.setRotationPoint(0, -12, 0);
 		this.head.addBox(-5, -4, -4, 10, 8, 8, 0);
 		this.setRotateAngle(head, -0.07f, 0, 0);
-		this.rightTalon03        = new ModelRenderer(this, 56, 0);
+		this.rightTalon03 = new ModelRenderer(this, 56, 0);
 		this.rightTalon03.mirror = true;
 		this.rightTalon03.setRotationPoint(0.7f, 1.2f, 0.5f);
 		this.rightTalon03.addBox(-0.5f, -1, 0, 1, 2, 3, 0);
@@ -130,7 +130,7 @@ public class ModelOwl extends ModelBase {
 		this.leftWing00c = new ModelRenderer(this, 16, 16);
 		this.leftWing00c.setRotationPoint(0.6f, 1.8f, 0);
 		this.leftWing00c.addBox(-3.6f, 0, 0, 6, 8, 0, 0);
-		this.rightTalon02        = new ModelRenderer(this, 56, 0);
+		this.rightTalon02 = new ModelRenderer(this, 56, 0);
 		this.rightTalon02.mirror = true;
 		this.rightTalon02.setRotationPoint(-0.7f, 1.2f, 0.5f);
 		this.rightTalon02.addBox(-0.5f, -1, 0, 1, 2, 3, 0);
@@ -154,12 +154,12 @@ public class ModelOwl extends ModelBase {
 		this.leftTail.setRotationPoint(2, 2.5f, 4);
 		this.leftTail.addBox(0, 0, 0, 4, 2, 6, 0);
 		this.setRotateAngle(leftTail, -0.6f, 0.47f, 0.4f);
-		this.rightEar        = new ModelRenderer(this, 27, 1);
+		this.rightEar = new ModelRenderer(this, 27, 1);
 		this.rightEar.mirror = true;
 		this.rightEar.setRotationPoint(-4, -3.4f, 0);
 		this.rightEar.addBox(-1, -4, -1, 2, 4, 2, 0);
 		this.setRotateAngle(rightEar, -0.35f, 0, -0.26f);
-		this.rightWing00        = new ModelRenderer(this, 0, 41);
+		this.rightWing00 = new ModelRenderer(this, 0, 41);
 		this.rightWing00.mirror = true;
 		this.rightWing00.setRotationPoint(-6, -7, 0);
 		this.rightWing00.addBox(-6, 0, -1, 6, 2, 2, 0);
@@ -168,11 +168,11 @@ public class ModelOwl extends ModelBase {
 		this.leftTalon00.setRotationPoint(0.7f, 1, -3.6f);
 		this.leftTalon00.addBox(-0.5f, -1, -3, 1, 2, 3, 0);
 		this.setRotateAngle(leftTalon00, -0.17f, -0.1f, 0);
-		this.rightWing02c        = new ModelRenderer(this, 0, 53);
+		this.rightWing02c = new ModelRenderer(this, 0, 53);
 		this.rightWing02c.mirror = true;
 		this.rightWing02c.setRotationPoint(-0.6f, 0.3f, 0);
 		this.rightWing02c.addBox(-8.4f, -2.9f, 0, 12, 11, 0, 0);
-		this.rightTalon00        = new ModelRenderer(this, 19, 8);
+		this.rightTalon00 = new ModelRenderer(this, 19, 8);
 		this.rightTalon00.mirror = true;
 		this.rightTalon00.setRotationPoint(-0.7f, 1, -3.6f);
 		this.rightTalon00.addBox(-0.5f, -1, -3, 1, 2, 3, 0);
@@ -180,7 +180,7 @@ public class ModelOwl extends ModelBase {
 		this.leftWing01b = new ModelRenderer(this, 49, 57);
 		this.leftWing01b.setRotationPoint(3, 1.8f, 0);
 		this.leftWing01b.addBox(-3, 0, -0.5f, 6, 2, 1, 0);
-		this.rightWing01        = new ModelRenderer(this, 0, 45);
+		this.rightWing01 = new ModelRenderer(this, 0, 45);
 		this.rightWing01.mirror = true;
 		this.rightWing01.setRotationPoint(-6, 0, 0);
 		this.rightWing01.addBox(-6, 0, -1, 6, 2, 2, 0);
@@ -193,12 +193,12 @@ public class ModelOwl extends ModelBase {
 		this.middleTail.setRotationPoint(-2, 2.5f, 4);
 		this.middleTail.addBox(0, 0, 0, 4, 2, 8, 0);
 		this.setRotateAngle(middleTail, -0.7f, 0, 0);
-		this.rightTalon01        = new ModelRenderer(this, 19, 8);
+		this.rightTalon01 = new ModelRenderer(this, 19, 8);
 		this.rightTalon01.mirror = true;
 		this.rightTalon01.setRotationPoint(0.7f, 1, -3.6f);
 		this.rightTalon01.addBox(-0.5f, -1, -3, 1, 2, 3, 0);
 		this.setRotateAngle(rightTalon01, -0.17f, -0.1f, 0);
-		this.rightWing00c        = new ModelRenderer(this, 16, 16);
+		this.rightWing00c = new ModelRenderer(this, 16, 16);
 		this.rightWing00c.mirror = true;
 		this.rightWing00c.setRotationPoint(0.6f, 1.8f, 0);
 		this.rightWing00c.addBox(-3.6f, 0, 0, 6, 8, 0, 0);

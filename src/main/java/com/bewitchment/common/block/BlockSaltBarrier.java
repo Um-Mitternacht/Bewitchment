@@ -62,7 +62,8 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
 		if (entity instanceof EntityLivingBase) {
 			EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
-			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex) addCollisionBoxToList(pos, box, boxes, WALL);
+			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex)
+				addCollisionBoxToList(pos, box, boxes, WALL);
 		}
 	}
 	

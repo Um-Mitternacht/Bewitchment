@@ -17,10 +17,9 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 	
 	public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
 		setRegistryName(name);
-		this.input  = Util.expandList(input);
+		this.input = Util.expandList(input);
 		this.output = output;
-		if (this.input.size() > 6)
-			throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
+		if (this.input.size() > 6) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
 	}
 	
 	public final boolean matches(ItemStackHandler input) {
@@ -28,12 +27,14 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 	}
 	
 	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {
-		for (ItemStack stack : this.output) if (ModTileEntity.getFirstValidSlot(output, stack) < 0) return false;
+		for (ItemStack stack : this.output)
+			if (ModTileEntity.getFirstValidSlot(output, stack) < 0) return false;
 		return true;
 	}
 	
 	public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
-		for (int i = 0; i < input.getSlots(); i++) input.extractItem(i, 1, false);
+		for (int i = 0; i < input.getSlots(); i++)
+			input.extractItem(i, 1, false);
 		for (ItemStack stack : this.output)
 			output.insertItem(ModTileEntity.getFirstValidSlot(output, stack), stack.copy(), false);
 	}

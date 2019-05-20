@@ -82,7 +82,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerTextureVariant(Item item, List<Predicate<ItemStack>> predicates) {
 		ResourceLocation[] names = new ResourceLocation[predicates.size() + 1];
 		for (int i = 0; i <= predicates.size(); i++)
-		     names[i] = new ResourceLocation(item.getRegistryName().toString() + (i == 0 ? "" : "_variant" + (predicates.size() == 1 ? "" : (i - 1))));
+			names[i] = new ResourceLocation(item.getRegistryName().toString() + (i == 0 ? "" : "_variant" + (predicates.size() == 1 ? "" : (i - 1))));
 		ModelBakery.registerItemVariants(item, names);
 		ModelLoader.setCustomMeshDefinition(item, stack -> {
 			for (int i = 0; i < predicates.size(); i++)

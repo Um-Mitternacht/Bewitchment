@@ -17,7 +17,8 @@ import net.minecraftforge.items.ItemStackHandler;
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public abstract class ModTileEntity extends TileEntity {
 	public static boolean isEmpty(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
+		for (int i = 0; i < handler.getSlots(); i++)
+			if (!handler.getStackInSlot(i).isEmpty()) return false;
 		return true;
 	}
 	
@@ -35,7 +36,8 @@ public abstract class ModTileEntity extends TileEntity {
 	}
 	
 	public static void clear(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
+		for (int i = 0; i < handler.getSlots(); i++)
+			handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
 	
 	@Override
@@ -62,7 +64,7 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		for (int i = 0; i < getInventories().length; i++)
-		     tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
+			tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
 		markDirty();
 		return super.writeToNBT(tag);
 	}
@@ -71,7 +73,7 @@ public abstract class ModTileEntity extends TileEntity {
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		for (int i = 0; i < getInventories().length; i++)
-		     getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
+			getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
 	}
 	
 	public ItemStackHandler[] getInventories() {

@@ -46,7 +46,8 @@ public class Util {
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockSapling ? "inventory" : "normal");
 		}
-		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
+		for (String ore : oreDictionaryNames)
+			OreDictionary.registerOre(ore, block);
 		return block;
 	}
 	
@@ -62,7 +63,8 @@ public class Util {
 		ForgeRegistries.ITEMS.register(item);
 		if (predicates.isEmpty()) Bewitchment.proxy.registerTexture(item, "normal");
 		else Bewitchment.proxy.registerTextureVariant(item, predicates);
-		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, item);
+		for (String ore : oreDictionaryNames)
+			OreDictionary.registerOre(ore, item);
 		return item;
 	}
 	
@@ -77,7 +79,7 @@ public class Util {
 	public static List<ItemStack> getEntireInventory(EntityPlayer player) {
 		List<ItemStack> fin = new ArrayList<>();
 		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++)
-		     fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
+			fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
 		fin.addAll(player.inventory.mainInventory);
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
@@ -103,7 +105,8 @@ public class Util {
 	
 	public static boolean areISListsEqual(List<Ingredient> ings, List<ItemStack> stacks) {
 		List<ItemStack> checklist = new ArrayList<>();
-		for (ItemStack stack : stacks) checklist.add(stack.copy().splitStack(1));
+		for (ItemStack stack : stacks)
+			checklist.add(stack.copy().splitStack(1));
 		if (ings.size() != checklist.size()) return false;
 		for (Ingredient ing : ings) {
 			boolean found = false;

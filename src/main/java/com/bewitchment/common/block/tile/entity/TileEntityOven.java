@@ -56,7 +56,7 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 				else {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
-						burnTime     = time;
+						burnTime = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);
 					}
@@ -87,10 +87,10 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		recipe       = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		burnTime     = tag.getInteger("burnTime");
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		burnTime = tag.getInteger("burnTime");
 		fuelBurnTime = tag.getInteger("fuelBurnTime");
-		progress     = tag.getInteger("progress");
+		progress = tag.getInteger("progress");
 	}
 	
 	@Override
