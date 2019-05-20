@@ -73,10 +73,10 @@ public class ModObjects {
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	//Trees
-	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", WorldGenCypressTree.class, "treeSapling");
-	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", WorldGenElderTree.class, "treeSapling");
-	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", WorldGenJuniperTree.class, "treeSapling");
-	public static final Block yew_sapling = new ModBlockSapling("yew_sapling", WorldGenYewTree.class, "treeSapling");
+	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
+	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
+	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", new WorldGenJuniperTree(false), "treeSapling");
+	public static final Block yew_sapling = new ModBlockSapling("yew_sapling", new WorldGenYewTree(false), "treeSapling");
 	public static final Block cypress_wood = new ModBlockPillar("cypress_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
 	public static final Block elder_wood = new ModBlockPillar("elder_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
 	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
