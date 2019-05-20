@@ -17,6 +17,8 @@ tile.bewitchment.silver_ore.name=Silver Ore
 tile.bewitchment.salt_ore.name=Salt Ore
 
 tile.bewitchment.coquina.name=Coquina
+tile.bewitchment.coquina_bricks.name=Coquina Bricks
+tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 
 tile.bewitchment.cypress_sapling.name=Cypress Sapling
 tile.bewitchment.elder_sapling.name=Elder Sapling

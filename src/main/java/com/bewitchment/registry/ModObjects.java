@@ -70,6 +70,8 @@ public class ModObjects {
 	public static final Block salt_ore = new ModBlock("salt_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 0, "oreSalt");
 
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
+	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
+	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", WorldGenCypressTree.class, "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", WorldGenElderTree.class, "treeSapling");
