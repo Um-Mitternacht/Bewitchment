@@ -20,6 +20,18 @@ tile.bewitchment.coquina.name=Coquina
 tile.bewitchment.coquina_bricks.name=Coquina Bricks
 tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 
+tile.bewitchment.perpetual_ice.name=Perpetual Ice
+tile.bewitchment.perpetual_ice_stairs.name=Perpetual Ice Stairs
+tile.bewitchment.perpetual_ice_slab.name=Perpetual Ice Slab
+tile.bewitchment.perpetual_ice_fence.name=Perpetual Ice Fence
+
+tile.bewitchment.embittered_bricks.name=Embittered Bricks
+tile.bewitchment.cracked_embittered_bricks.name=Cracked Embittered Bricks
+tile.bewitchment.chiseled_embittered_bricks.name=Chiseled Embittered Bricks
+tile.bewitchment.embittered_brick_stairs.name=Embittered Brick Stairs
+tile.bewitchment.embittered_bricks_slab.name=Embittered Bricks Slab
+tile.bewitchment.embittered_brick_fence.name=Embittered Brick Fence
+
 tile.bewitchment.scorned_bricks.name=Scorned Bricks
 tile.bewitchment.cracked_scorned_bricks.name=Cracked Scorned Bricks
 tile.bewitchment.chiseled_scorned_bricks.name=Chiseled Scorned Bricks

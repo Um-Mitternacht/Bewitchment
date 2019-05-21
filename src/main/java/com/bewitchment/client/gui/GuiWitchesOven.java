@@ -1,7 +1,7 @@
 package com.bewitchment.client.gui;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.block.tile.container.ContainerOven;
+import com.bewitchment.common.block.tile.container.ContainerWitchesOven;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiOven extends GuiContainer {
+public class GuiWitchesOven extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/witches_oven.png");
 	
 	private final InventoryPlayer inventory;
-	private final ContainerOven container;
+	private final ContainerWitchesOven container;
 	
-	public GuiOven(ContainerOven container, InventoryPlayer inventory) {
+	public GuiWitchesOven(ContainerWitchesOven container, InventoryPlayer inventory) {
 		super(container);
 		this.container = container;
 		this.inventory = inventory;

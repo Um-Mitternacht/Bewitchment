@@ -120,6 +120,7 @@ public class ModRecipes {
 		GameRegistry.addSmelting(ModObjects.silver_ore, new ItemStack(ModObjects.silver_ingot), 1);
 		GameRegistry.addSmelting(ModObjects.salt_ore, new ItemStack(ModObjects.salt), 1);
 		
+		GameRegistry.addSmelting(ModObjects.embittered_bricks, new ItemStack(ModObjects.cracked_embittered_bricks), 0.1f);
 		GameRegistry.addSmelting(ModObjects.scorned_bricks, new ItemStack(ModObjects.cracked_scorned_bricks), 0.1f);
 		
 		GameRegistry.addSmelting(ModObjects.cypress_wood, new ItemStack(Items.COAL, 1, 1), 0.15f);

@@ -12,11 +12,11 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 @SuppressWarnings("UnusedAssignment")
-public class ContainerOven extends ModContainer {
+public class ContainerWitchesOven extends ModContainer {
 	private final TileEntityWitchesOven tile;
 	public int burnTime, fuelBurnTime, progress;
 	
-	public ContainerOven(InventoryPlayer inventory, TileEntityWitchesOven tile) {
+	public ContainerWitchesOven(InventoryPlayer inventory, TileEntityWitchesOven tile) {
 		this.tile = tile;
 		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 		IItemHandler down = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);

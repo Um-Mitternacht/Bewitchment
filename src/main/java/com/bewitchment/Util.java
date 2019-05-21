@@ -4,6 +4,7 @@ import baubles.api.BaublesApi;
 import com.bewitchment.common.block.BlockSaltBarrier;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -124,6 +125,10 @@ public class Util {
 	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
 		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+	}
+	
+	public static boolean isTransparent(IBlockState state) {
+		return state.getMaterial() == Material.GLASS || state.getMaterial() == Material.ICE;
 	}
 	
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
