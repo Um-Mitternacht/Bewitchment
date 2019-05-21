@@ -8,6 +8,7 @@ import com.bewitchment.common.block.tile.entity.TileEntityDistillery;
 import com.bewitchment.common.block.tile.entity.TileEntityOven;
 import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.util.*;
+import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
@@ -30,12 +31,18 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import team.chisel.api.carving.CarvingUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions", "ArraysAsListWithZeroOrOneArgument"})
 public class ModObjects {
+	public static final List<Object> REGISTRY = new ArrayList<>();
+	
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 	
@@ -61,7 +68,9 @@ public class ModObjects {
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
 	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockMoonstone");
 	public static final Block block_of_silver = new ModBlock("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, "blockSilver");
+	public static final Block[] block_of_silver_chiseled = createChiselBlocks(block_of_silver, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
 	public static final Block block_of_cold_iron = new ModBlock("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, "blockColdIron");
+	public static final Block[] block_of_cold_iron_chiseled = createChiselBlocks(block_of_cold_iron, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
 	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
 	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlock("garnet_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreGarnet");
@@ -71,14 +80,16 @@ public class ModObjects {
 	
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
-	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
+	public static final Block[] coquina_chiseled = createChiselBlocks(coquina, "smooth", "bricks", "chiseled", "shell");
 	
 	public static final Block scorned_bricks = new ModBlock("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
 	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
-	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
+	public static final Block[] scorned_bricks_chiseled = createChiselBlocks(scorned_bricks, "raw", "raw_cracked", "cracked", "symbol", "bevel", "hellish", "circular", "braid", "dent", "french_1", "french_2", "layers", "ornate", "panel", "prism", "road", "small");
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks);
 	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
+	public static final Block nethersteel = new ModBlock("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 1, "blockNethersteel");
+	public static final Block[] nethersteel_chiseled = createChiselBlocks(nethersteel, "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
@@ -254,6 +265,22 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
+	}
+	
+	private static final Block[] createChiselBlocks(Block base, String... names) {
+		List<Block> list = new ArrayList<>();
+		if (Loader.isModLoaded("chisel")) {
+			String groupName = base.getRegistryName().toString();
+			if (!groupName.contains("silver"))
+				CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(base.getDefaultState(), 0));
+			for (String name : names) {
+				Block block = new ModBlockChisel(name, base);
+				if (!groupName.contains("silver"))
+					CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
+				list.add(block);
+			}
+		}
+		return list.toArray(new Block[list.size()]);
 	}
 	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
