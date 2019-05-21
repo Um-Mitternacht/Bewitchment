@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiOven extends GuiContainer {
-	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/oven.png");
+	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/witches_oven.png");
 	
 	private final InventoryPlayer inventory;
 	private final ContainerOven container;
@@ -32,7 +32,7 @@ public class GuiOven extends GuiContainer {
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String name = new TextComponentTranslation(ModObjects.oven.getTranslationKey() + ".name").getFormattedText();
+		String name = new TextComponentTranslation(ModObjects.witches_oven.getTranslationKey() + ".name").getFormattedText();
 		fontRenderer.drawString(name, xSize / 2 - fontRenderer.getStringWidth(name) / 2, 6, 0x404040);
 		fontRenderer.drawString(inventory.getDisplayName().getUnformattedText(), 8, ySize - 94, 0x404040);
 	}

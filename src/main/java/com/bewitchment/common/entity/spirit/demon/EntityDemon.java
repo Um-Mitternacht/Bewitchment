@@ -60,7 +60,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected int getSkinTypes() {
 		return 6;
-	}	@Override
+	}
+	
+	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;
 	}
@@ -91,7 +93,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}	@Override
+	}
+	
+	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
@@ -118,9 +122,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return recipeList;
 	}
 	
-
-	
-
 	
 	@Override
 	public void setRecipes(MerchantRecipeList recipeList) {

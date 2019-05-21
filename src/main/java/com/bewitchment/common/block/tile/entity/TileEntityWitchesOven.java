@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.api.registry.OvenRecipe;
+import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
-public class TileEntityOven extends ModTileEntity implements ITickable {
+public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -54,8 +55,10 @@ public class TileEntityOven extends ModTileEntity implements ITickable {
 					}
 				}
 				else {
+					if (world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
+						world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 						burnTime = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);

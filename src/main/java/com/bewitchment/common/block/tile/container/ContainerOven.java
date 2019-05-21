@@ -2,7 +2,7 @@ package com.bewitchment.common.block.tile.container;
 
 import com.bewitchment.common.block.tile.container.util.ModContainer;
 import com.bewitchment.common.block.tile.container.util.ModSlot;
-import com.bewitchment.common.block.tile.entity.TileEntityOven;
+import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.EnumFacing;
@@ -13,10 +13,10 @@ import net.minecraftforge.items.IItemHandler;
 
 @SuppressWarnings("UnusedAssignment")
 public class ContainerOven extends ModContainer {
-	private final TileEntityOven tile;
+	private final TileEntityWitchesOven tile;
 	public int burnTime, fuelBurnTime, progress;
 	
-	public ContainerOven(InventoryPlayer inventory, TileEntityOven tile) {
+	public ContainerOven(InventoryPlayer inventory, TileEntityWitchesOven tile) {
 		this.tile = tile;
 		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 		IItemHandler down = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
