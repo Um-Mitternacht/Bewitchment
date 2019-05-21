@@ -36,14 +36,16 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.OWL_HOOT;
-	}
-	
-	@Override
 	public boolean canMateWith(EntityAnimal other) {
 		if (other == this || !(other instanceof EntityOwl)) return false;
 		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
+	}
+	
+	@Override
+	protected void initEntityAI() {
+		super.initEntityAI();
+		tasks.addTask(1, new EntityAIFleeSun(this, 1));
+		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
 	}
 	
 	@Override
@@ -57,10 +59,8 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected void initEntityAI() {
-		super.initEntityAI();
-		tasks.addTask(1, new EntityAIFleeSun(this, 1));
-		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.OWL_HOOT;
 	}
 	
 	@Override

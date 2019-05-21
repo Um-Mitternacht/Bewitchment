@@ -74,19 +74,19 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setInteger("burnTime", burnTime);
-		tag.setInteger("progress", progress);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setInteger("burnTime", burnTime);
+		tag.setInteger("progress", progress);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

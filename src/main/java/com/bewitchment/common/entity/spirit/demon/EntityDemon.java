@@ -49,32 +49,20 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
-	}
-	
-	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		careerID = tag.getInteger("careerID");
 		careerLevel = tag.getInteger("careerLevel");
 		wealth = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
-	}
-	
-	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
+	}	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
 	}
 	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
-	}
-	
-	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
 	}
 	
 	@Override
@@ -88,11 +76,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			}
 		}
 		return flag;
-	}
-	
-	@Override
-	public void setRecipes(MerchantRecipeList recipeList) {
-		this.recipeList = recipeList;
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 	@Override
@@ -106,26 +92,16 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public void useRecipe(MerchantRecipe recipe) {
-	}
-	
-	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	public void verifySellingItem(ItemStack stack) {
+	}	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
 	}
 	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public World getWorld() {
-		return world;
 	}
 	
 	@Override
@@ -138,7 +114,31 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
+	}	@Override
+	public void setRecipes(MerchantRecipeList recipeList) {
+		this.recipeList = recipeList;
 	}
+	
+
+	
+	@Override
+	public void useRecipe(MerchantRecipe recipe) {
+	}
+	
+
+	
+	@Override
+	public void verifySellingItem(ItemStack stack) {
+	}
+	
+
+	
+	@Override
+	public World getWorld() {
+		return world;
+	}
+	
+
 	
 	@Override
 	public BlockPos getPos() {
