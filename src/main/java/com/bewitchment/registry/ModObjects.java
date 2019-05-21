@@ -271,12 +271,10 @@ public class ModObjects {
 		List<Block> list = new ArrayList<>();
 		if (Loader.isModLoaded("chisel")) {
 			String groupName = base.getRegistryName().toString();
-			if (!groupName.contains("silver"))
-				CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(base.getDefaultState(), 0));
+			if (!groupName.contains("silver")) CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(base.getDefaultState(), 0));
 			for (String name : names) {
 				Block block = new ModBlockChisel(name, base);
-				if (!groupName.contains("silver"))
-					CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
+				if (!groupName.contains("silver")) CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
 				list.add(block);
 			}
 		}
