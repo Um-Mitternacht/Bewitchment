@@ -44,7 +44,7 @@ public class GuiWitchesOven extends GuiContainer {
 		int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		if (container.burnTime > 0) {
-			int time = container.burnTime * 13 / container.fuelBurnTime;
+			int time = container.burnTime * 13 / Math.max(1, container.fuelBurnTime);
 			this.drawTexturedModalRect(x + 44, y + 50 - time, 176, 12 - time, 14, time + 1);
 		}
 		this.drawTexturedModalRect(x + 76, y + 19, 176, 14, container.progress * 24 / 200 + 1, 16);

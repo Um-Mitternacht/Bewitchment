@@ -40,10 +40,16 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (burnTime > -1) burnTime--;
-			else if (progress > 0) {
-				progress -= 2;
-				if (progress < 0) progress = 0;
+			if (burnTime > -1) {
+				burnTime--;
+				if (!world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
+			}
+			else {
+				if (progress > 0) {
+					progress -= 2;
+					if (progress < 0) progress = 0;
+				}
+				if (world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
 			}
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
@@ -55,10 +61,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 					}
 				}
 				else {
-					if (world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
-						world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 						burnTime = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);

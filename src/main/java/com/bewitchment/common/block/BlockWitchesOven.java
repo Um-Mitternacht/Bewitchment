@@ -11,13 +11,20 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockWitchesOven extends ModBlockContainer {
@@ -43,6 +50,36 @@ public class BlockWitchesOven extends ModBlockContainer {
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return state.getValue(LIT) ? 13 : 0;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state.getValue(LIT)) {
+			EnumFacing facing = state.getValue(BlockHorizontal.FACING);
+			double d0 = pos.getX() + 0.425d;
+			double d1 = pos.getY() + 0.3 + 0.75 * (rand.nextDouble() * 8 / 16d);
+			double d2 = pos.getZ() + 0.425d;
+			double d4 = rand.nextDouble() * 0.6d - 0.3d;
+			if (rand.nextDouble() < 0.1) world.playSound(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1, 1, false);
+			switch (facing) {
+				case WEST:
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52d, d1, d2 + d4, 0, 0, 0d);
+					world.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.52d, d1, d2 + d4, 0, 0, 0d);
+					break;
+				case EAST:
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52d, d1, d2 + d4, 0, 0, 0d);
+					world.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.52d, d1, d2 + d4, 0, 0, 0d);
+					break;
+				case NORTH:
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52d, 0, 0, 0d);
+					world.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52d, 0, 0, 0d);
+					break;
+				case SOUTH:
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52d, 0, 0, 0d);
+					world.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52d, 0, 0, 0d);
+			}
+		}
 	}
 	
 	@Override
