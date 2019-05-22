@@ -20,21 +20,6 @@ public class ModBlock extends Block {
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
-	}
-	
-	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
@@ -46,7 +31,22 @@ public class ModBlock extends Block {
 	}
 	
 	@Override
+	public boolean isFullCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isOpaqueCube(state);
+	}
+	
+	@Override
 	public boolean isWood(IBlockAccess world, BlockPos pos) {
 		return world.getBlockState(pos).getMaterial() == Material.WOOD;
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
 	}
 }

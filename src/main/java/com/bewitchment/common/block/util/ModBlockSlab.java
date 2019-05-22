@@ -43,23 +43,9 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isOpaqueCube(state);
-	}
-	
-	@Override
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return !Util.isTransparent(state) && super.doesSideBlockRendering(state, world, pos, face);
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isFullCube(state);
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 	
 	@Override
@@ -83,6 +69,36 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(half);
+	}
+	
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		return new ItemStack(half);
+	}
+	
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return !Util.isTransparent(state) && super.doesSideBlockRendering(state, world, pos, face);
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return !Util.isTransparent(state) && super.isFullCube(state);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return !Util.isTransparent(state) && super.isOpaqueCube(state);
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	}
+	
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return isDouble() ? getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, meta == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
 	}
@@ -90,22 +106,6 @@ public class ModBlockSlab extends BlockSlab {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(half);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-	
-	@Override
-	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-		return new ItemStack(half);
 	}
 	
 	@Override
