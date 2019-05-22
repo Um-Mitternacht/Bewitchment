@@ -4,11 +4,13 @@ import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.common.block.BlockDistillery;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -42,6 +44,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		if (!world.isRemote) {
 			if (progress > 0) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
 			else if (world.getBlockState(pos).getValue(BlockDistillery.IN_USE)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
+			if (progress == 1) world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
 			if (burnTime > -1) burnTime--;
 			else if (progress > 0) {
 				progress -= 2;
