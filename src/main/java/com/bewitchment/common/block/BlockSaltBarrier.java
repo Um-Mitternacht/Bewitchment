@@ -36,13 +36,12 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	}
 	
 	@Override
-	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-		return new ItemStack(getItemDropped(state, world.rand, 0));
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ModObjects.salt;
+	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
+		if (entity instanceof EntityLivingBase) {
+			EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
+			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex)
+				addCollisionBoxToList(pos, box, boxes, WALL);
+		}
 	}
 	
 	@Override
@@ -51,22 +50,7 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	}
 	
 	@Override
-	public int getStrongPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return 0;
-	}
-	
-	@Override
-	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return 0;
-	}
-	
-	@Override
-	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
-		if (entity instanceof EntityLivingBase) {
-			EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
-			if (attribute == EnumCreatureAttribute.UNDEAD || attribute == BewitchmentAPI.DEMON || attribute == BewitchmentAPI.SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityGhast || entity instanceof EntityVex)
-				addCollisionBoxToList(pos, box, boxes, WALL);
-		}
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
 	}
 	
 	@Override
@@ -82,6 +66,22 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	}
 	
 	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return ModObjects.salt;
+	}
+	
+	@Override
+	public int getStrongPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return 0;
+	}
+	
+	@Override
+	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return 0;
+	}
+	
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		return new ItemStack(getItemDropped(state, world.rand, 0));
 	}
 }

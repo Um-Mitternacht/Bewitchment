@@ -34,14 +34,27 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
+		return !this.leavesFancy;
+	}
+	
+	@Override
 	public BlockPlanks.EnumType getWoodType(int meta) {
 		return null;
 	}
 	
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
-		return !this.leavesFancy;
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		int meta = 0;
+		meta += (state.getValue(DECAYABLE) ? 1 : 0);
+		meta += (state.getValue(CHECK_DECAY) ? 2 : 1);
+		return meta;
 	}
 	
 	@Override
@@ -51,20 +64,6 @@ public class ModBlockLeaves extends BlockLeaves {
 			spawnAsEntity(world, pos, new ItemStack(this));
 		}
 		else super.harvestBlock(world, player, pos, state, tile, stack);
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
-	}
-	
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		int meta = 0;
-		meta += (state.getValue(DECAYABLE) ? 1 : 0);
-		meta += (state.getValue(CHECK_DECAY) ? 2 : 1);
-		return meta;
 	}
 	
 	@Override

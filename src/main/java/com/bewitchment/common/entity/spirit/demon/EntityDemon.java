@@ -63,11 +63,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
-	}
-	
-	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
@@ -78,6 +73,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			}
 		}
 		return flag;
+	}	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
 	}
 	
 	@Override
@@ -96,11 +94,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
-	}
-	
-	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
@@ -115,7 +108,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
+	
+
+	
+
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
