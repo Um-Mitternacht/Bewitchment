@@ -73,9 +73,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			}
 		}
 		return flag;
-	}	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
 	}
 	
 	@Override
@@ -86,6 +83,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
+	}	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
 	}
 	
 	@Override
@@ -108,14 +108,15 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 
 	
-
+	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
