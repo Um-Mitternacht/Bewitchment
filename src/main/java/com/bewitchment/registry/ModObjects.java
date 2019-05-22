@@ -244,6 +244,13 @@ public class ModObjects {
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
+	//Books
+	public static final Item grimoire_magia = Util.registerItem("grimoire_magia");
+	//Dyes
+	public static final Item catechu = Util.registerItem("catechu");
+	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink");
+	//Magickal gear
+	public static final Item waystone = Util.registerItem("waystone");
 	
 	public static void preInit() {
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
