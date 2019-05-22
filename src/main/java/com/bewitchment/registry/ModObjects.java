@@ -294,8 +294,6 @@ public class ModObjects {
 		}
 	}
 	
-}
-	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
 		GameRegistry.registerTileEntity(tile, block.getRegistryName());
 		return block;
