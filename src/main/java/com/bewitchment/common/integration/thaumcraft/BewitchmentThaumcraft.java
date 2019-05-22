@@ -127,6 +127,7 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.spectral_dust), new AspectList().add(Aspect.VOID, 4).add(Aspect.SOUL, 4));
 		//		event.register.registerObjectTag(new ItemStack(ModObjects.tallow), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8).add(SUN, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.wood_ash), new AspectList().add(Aspect.PLANT, 3).add(Aspect.ENTROPY, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.grimoire_magia), new AspectList().add(Aspect.MIND, 8).add(Aspect.MAGIC, 8).add(Aspect.AURA, 8));
 		
 		//Add some of our aspects to existing items in vanilla
 		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.
