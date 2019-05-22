@@ -27,13 +27,18 @@ public class EntityImp extends ModEntityMob {
 	}
 	
 	@Override
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -54,6 +59,11 @@ public class EntityImp extends ModEntityMob {
 	}
 	
 	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
@@ -61,16 +71,6 @@ public class EntityImp extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(90);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override

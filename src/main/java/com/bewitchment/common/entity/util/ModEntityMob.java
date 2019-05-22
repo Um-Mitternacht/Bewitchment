@@ -27,6 +27,31 @@ public abstract class ModEntityMob extends EntityMob {
 	protected abstract boolean isValidLightLevel();
 	
 	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 15728880 : super.getBrightnessForRender();
+	}
+	
+	@Override
+	public float getBrightness() {
+		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 0.3f : super.getBrightness();
+	}
+	
+	protected int getSkinTypes() {
+		return 1;
+	}
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
 	protected void entityInit() {
 		super.entityInit();
 		if (getSkinTypes() > 1) dataManager.register(SKIN, 0);
@@ -45,30 +70,5 @@ public abstract class ModEntityMob extends EntityMob {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
-	}
-	
-	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
-	}
-	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 15728880 : super.getBrightnessForRender();
-	}
-	
-	@Override
-	public float getBrightness() {
-		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 0.3f : super.getBrightness();
-	}
-	
-	protected int getSkinTypes() {
-		return 1;
 	}
 }

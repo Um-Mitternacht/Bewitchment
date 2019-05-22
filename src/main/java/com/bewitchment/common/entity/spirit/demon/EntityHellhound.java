@@ -40,19 +40,8 @@ public class EntityHellhound extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (isWet() && !isNonBoss()) attackEntityFrom(DamageSource.DROWN, 2.5f);
 	}
 	
 	@Override
@@ -70,6 +59,17 @@ public class EntityHellhound extends ModEntityMob {
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (isWet() && !isNonBoss()) attackEntityFrom(DamageSource.DROWN, 2.5f);
 	}
 	
 	@Override

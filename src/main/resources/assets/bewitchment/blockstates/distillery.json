@@ -1,28 +1,60 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "iron_block"
+	"model": "bewitchment:distillery"
   },
   "variants": {
 	"normal": [
 	  {}
 	],
-	"facing=north": [
-	  {}
-	],
-	"facing=south": [
-	  {
-		"y": 180
-	  }
-	],
-	"facing=east": [
+	"facing=north,in_use=false": [
 	  {
 		"y": 90
 	  }
 	],
-	"facing=west": [
+	"facing=north,in_use=true": [
+	  {
+		"y": 90,
+		"textures": {
+		  "particle": "bewitchment:blocks/distillery_in_use"
+		}
+	  }
+	],
+	"facing=south,in_use=false": [
 	  {
 		"y": 270
+	  }
+	],
+	"facing=south,in_use=true": [
+	  {
+		"y": 270,
+		"textures": {
+		  "particle": "bewitchment:blocks/distillery_in_use"
+		}
+	  }
+	],
+	"facing=east,in_use=false": [
+	  {
+		"y": 180
+	  }
+	],
+	"facing=east,in_use=true": [
+	  {
+		"y": 180,
+		"textures": {
+		  "particle": "bewitchment:blocks/distillery_in_use"
+		}
+	  }
+	],
+	"facing=west,in_use=false": [
+	  {
+	  }
+	],
+	"facing=west,in_use=true": [
+	  {
+		"textures": {
+		  "particle": "bewitchment:blocks/distillery_in_use"
+		}
 	  }
 	]
   }

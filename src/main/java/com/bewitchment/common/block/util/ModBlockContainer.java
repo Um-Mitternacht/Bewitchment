@@ -47,7 +47,7 @@ public abstract class ModBlockContainer extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
-		return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 	
 	@Override

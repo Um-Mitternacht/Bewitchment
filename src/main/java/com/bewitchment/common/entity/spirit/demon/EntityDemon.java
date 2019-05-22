@@ -40,6 +40,79 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
+	public World getWorld() {
+		return world;
+	}
+	
+	
+	@Override
+	public BlockPos getPos() {
+		return getPosition();
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
+	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		boolean flag = super.attackEntityAsMob(entity);
+		if (flag) {
+			if (entity instanceof EntityLivingBase) {
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 1, false, false));
+				entity.setFire(25);
+				entity.motionY += 0.6;
+			}
+		}
+		return flag;
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
+	}
+	
+	@Override
+	public void setRecipes(MerchantRecipeList recipeList) {
+		this.recipeList = recipeList;
+	}
+	
+	@Override
+	public void verifySellingItem(ItemStack stack) {
+	}
+	
+	@Override
+	public void useRecipe(MerchantRecipe recipe) {
+	}
+	
+	//	@Override
+	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
+	//		return super.onInitialSpawn(difficulty, data);
+	//	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
 		tag.setInteger("careerID", careerID);
@@ -58,29 +131,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
-	}
-	
-	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
-	}
-	
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		boolean flag = super.attackEntityAsMob(entity);
-		if (flag) {
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 1, false, false));
-				entity.setFire(25);
-				entity.motionY += 0.6;
-			}
-		}
-		return flag;
-	}
-	
-	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16);
@@ -88,21 +138,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -116,46 +151,4 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
 	}
-	
-	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
-	}
-	
-	
-	@Override
-	public void setRecipes(MerchantRecipeList recipeList) {
-		this.recipeList = recipeList;
-	}
-	
-	
-	@Override
-	public void useRecipe(MerchantRecipe recipe) {
-	}
-	
-	
-	@Override
-	public void verifySellingItem(ItemStack stack) {
-	}
-	
-	
-	@Override
-	public World getWorld() {
-		return world;
-	}
-	
-	
-	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
-	
-	
-	//	@Override
-	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
-	//		return super.onInitialSpawn(difficulty, data);
-	//	}
-	
-	
 }

@@ -30,8 +30,6 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
@@ -167,6 +165,8 @@ public class ModObjects {
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
+	//Books
+	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
@@ -235,22 +235,17 @@ public class ModObjects {
 	public static final Item liquid_wroth = Util.registerItem("liquid_wroth");
 	//Vanilla Drops
 	public static final Item hoof = Util.registerItem("hoof");
-	public static final Item eye_of_old = Util.registerItem("eye_of_old");
+	public static final Item eye_of_old = Util.registerItem(new Item(), "eye_of_old", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Haru") || s.getDisplayName().equalsIgnoreCase("Haruspex") || s.getDisplayName().equalsIgnoreCase("H4rv5p3x"), s -> s.getDisplayName().equalsIgnoreCase("Izuxe") || s.getDisplayName().equalsIgnoreCase("Izu") || s.getDisplayName().equalsIgnoreCase("Izuxe43ui520815")));
 	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
 	public static final Item wool_of_bat = Util.registerItem("wool_of_bat");
 	//Misc
+	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dyeBrown");
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
+	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dyeBlack");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
-	//Books
-	public static final Item grimoire_magia = Util.registerItem("grimoire_magia");
-	//Dyes
-	public static final Item catechu = Util.registerItem("catechu");
-	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink");
-	//Magickal gear
-	public static final Item waystone = Util.registerItem("waystone");
 	
 	public static void preInit() {
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
@@ -277,28 +272,6 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
-		
-		for (Object obj : REGISTRY) {
-			if (obj instanceof Block) {
-				Block block = (Block) obj;
-				if (!(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
-				//	Item itemBlock = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(block.getRegistryName()).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(block.getRegistryName()).setTranslationKey(block.getTranslationKey());
-				//	ForgeRegistries.ITEMS.register(itemBlock);
-				//	Bewitchment.proxy.registerTexture(itemBlock, block instanceof ModBlockBush ? "inventory" : "normal");
-				}
-			}
-			if (obj instanceof Item) {
-				Item item = (Item) obj;
-				ForgeRegistries.ITEMS.register(item);
-				if (obj == ModObjects.grimoire_magia) Bewitchment.proxy.registerTextureVariant(item, Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
-				else if (obj == ModObjects.cold_iron_sword)
-					Bewitchment.proxy.registerTextureVariant(item, Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Hudson Bat") || s.getDisplayName().equalsIgnoreCase("Masashi Bat") || s.getDisplayName().equalsIgnoreCase("Emmanuel Bat") || s.getDisplayName().equalsIgnoreCase("Michael Bat") || s.getDisplayName().equalsIgnoreCase("Yoshihiro Bat") || s.getDisplayName().equalsIgnoreCase("Lewis Bat") || s.getDisplayName().equalsIgnoreCase("Katushiro Bat") || s.getDisplayName().equalsIgnoreCase("Ashley Bat")));
-				else if (obj == ModObjects.waystone) Bewitchment.proxy.registerTextureVariant(item, Arrays.asList(s -> s.hasTagCompound() && s.getTagCompound().hasKey("location")));
-				else if (obj == ModObjects.eye_of_old)
-					Bewitchment.proxy.registerTextureVariant(item, Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Haru") || s.getDisplayName().equalsIgnoreCase("Haruspex") || s.getDisplayName().equalsIgnoreCase("H4rv5p3x"), s -> s.getDisplayName().equalsIgnoreCase("Izuxe") || s.getDisplayName().equalsIgnoreCase("Izu") || s.getDisplayName().equalsIgnoreCase("Izuxe43ui520815")));
-				else Bewitchment.proxy.registerTexture(item, "normal");
-			}
-		}
 	}
 	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {

@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
 
-@SuppressWarnings({"ConstantConditions", "NullableProblems"})
+@SuppressWarnings({"ConstantConditions", "NullableProblems", "unused"})
 public class ItemAthame extends ItemSword {
 	public ItemAthame() {
 		super(ModObjects.TOOL_SILVER);

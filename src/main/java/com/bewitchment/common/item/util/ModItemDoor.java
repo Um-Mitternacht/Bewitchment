@@ -3,7 +3,6 @@ package com.bewitchment.common.item.util;
 import com.bewitchment.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -42,8 +41,9 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
+		@SideOnly(Side.CLIENT)
+		public BlockRenderLayer getRenderLayer() {
+			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 		}
 		
 		@Override
@@ -52,9 +52,8 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
-		public BlockRenderLayer getRenderLayer() {
-			return getDefaultState().getMaterial() == Material.ICE || getDefaultState().getMaterial() == Material.GLASS ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
 		}
 	}
 }

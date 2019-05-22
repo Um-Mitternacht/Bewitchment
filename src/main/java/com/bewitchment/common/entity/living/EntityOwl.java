@@ -31,8 +31,13 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() == Items.RABBIT;
+	protected int getSkinTypes() {
+		return 4;
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.OWL_HOOT;
 	}
 	
 	@Override
@@ -42,10 +47,13 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected void initEntityAI() {
-		super.initEntityAI();
-		tasks.addTask(1, new EntityAIFleeSun(this, 1));
-		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
+	public boolean isBreedingItem(ItemStack stack) {
+		return stack.getItem() == Items.RABBIT;
+	}
+	
+	@Override
+	protected float getSoundVolume() {
+		return 0.5f;
 	}
 	
 	@Override
@@ -59,17 +67,9 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.OWL_HOOT;
-	}
-	
-	@Override
-	protected float getSoundVolume() {
-		return 0.5f;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 4;
+	protected void initEntityAI() {
+		super.initEntityAI();
+		tasks.addTask(1, new EntityAIFleeSun(this, 1));
+		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
 	}
 }

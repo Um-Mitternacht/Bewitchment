@@ -29,13 +29,13 @@ public class EntityBlackDog extends ModEntityMob {
 	}
 	
 	@Override
-	protected boolean isValidLightLevel() {
-		return !world.isDaytime();
+	protected int getSkinTypes() {
+		return 5;
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 5;
+	protected boolean isValidLightLevel() {
+		return !world.isDaytime();
 	}
 	
 	@Override
@@ -44,9 +44,10 @@ public class EntityBlackDog extends ModEntityMob {
 	}
 	
 	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime()) setDead();
+	protected PathNavigate createNavigator(World world) {
+		PathNavigateGround path = new PathNavigateGround(this, world);
+		path.setBreakDoors(true);
+		return path;
 	}
 	
 	@Override
@@ -57,6 +58,12 @@ public class EntityBlackDog extends ModEntityMob {
 			addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
 		}
 		return flag;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!world.isRemote && world.isDaytime()) setDead();
 	}
 	
 	@Override
@@ -80,12 +87,5 @@ public class EntityBlackDog extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
-	}
-	
-	@Override
-	protected PathNavigate createNavigator(World world) {
-		PathNavigateGround path = new PathNavigateGround(this, world);
-		path.setBreakDoors(true);
-		return path;
 	}
 }

@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.api.registry.DistilleryRecipe;
+import com.bewitchment.common.block.BlockDistillery;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -39,6 +40,8 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!world.isRemote) {
+			if (progress > 0) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
+			else if (world.getBlockState(pos).getValue(BlockDistillery.IN_USE)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
 			if (burnTime > -1) burnTime--;
 			else if (progress > 0) {
 				progress -= 2;
