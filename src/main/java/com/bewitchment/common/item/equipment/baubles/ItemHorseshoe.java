@@ -37,10 +37,7 @@ public class ItemHorseshoe extends ModItemBauble {
 	
 	private static boolean isSpirit(Entity e) {
 		if (e instanceof EntityLivingBase) {
-			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.SPIRIT) {
-				return true;
-			}
-			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.DEMON) {
+			if (((EntityLivingBase) e).getCreatureAttribute() == BewitchmentAPI.getAPI().SPIRIT) {
 				return true;
 			}
 		}
