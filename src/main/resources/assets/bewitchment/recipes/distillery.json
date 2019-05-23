@@ -1,21 +1,25 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"TST",
-	"SSS",
-	"SGS"
+	"JGJ",
+	"GGG",
+	"SAS"
   ],
   "key": {
+	"J": {
+	  "item": "bewitchment:empty_jar"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "glass"
+	},
 	"S": {
 	  "type": "forge:ore_dict",
 	  "ore": "ingotSilver"
 	},
-	"G": {
+	"A": {
 	  "type": "forge:ore_dict",
 	  "ore": "gemAmethyst"
-	},
-	"T": {
-	  "item": "bewitchment:empty_jar"
 	}
   },
   "result": {

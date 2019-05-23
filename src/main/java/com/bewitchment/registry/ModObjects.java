@@ -9,6 +9,7 @@ import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
+import com.bewitchment.common.item.equipment.baubles.ItemHorseshoe;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.tool.ItemAthame;
@@ -165,7 +166,8 @@ public class ModObjects {
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
-	//Books
+	//Baubles
+	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");

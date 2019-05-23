@@ -115,6 +115,8 @@ item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 item.bewitchment.athame.name=Athame
 item.bewitchment.boline.name=Boline
 
+item.bewitchment.horseshoe.name=Horseshoe
+
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 
 item.bewitchment.amethyst.name=Amethyst
@@ -238,6 +240,8 @@ fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting
 
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
+
+tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
 tooltip.bewitchment.belladonna=A highly toxic plant, this is a prime component of flying ointment

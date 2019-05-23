@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	" F ",
+	"N N",
+	"NNN"
+  ],
+  "key": {
+	"N": {
+	  "type": "forge:ore_dict",
+	  "ore": "nuggetColdIron"
+	},
+	"F": {
+	  "item": "bewitchment:cleansing_balm"
+	}
+  },
+  "result": {
+	"item": "bewitchment:horseshoe"
+  }
+}
