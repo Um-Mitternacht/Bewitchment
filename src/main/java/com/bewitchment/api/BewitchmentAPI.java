@@ -7,6 +7,9 @@ import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.api.registry.SpinningWheelRecipe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -20,6 +23,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+@SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
 	private static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
 	private static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
@@ -89,5 +93,21 @@ public class BewitchmentAPI {
 		EntityEntry entry = EntityRegistry.getEntry(entity.getClass());
 		if (ATHAME_LOOT.containsKey(entry)) fin.addAll(ATHAME_LOOT.get(entry));
 		return fin;
+	}
+	
+	public static boolean isVampire(EntityLivingBase living) {
+		return false;
+	}
+	
+	public static boolean isWerewolf(EntityLivingBase living) {
+		return false;
+	}
+	
+	public static boolean isWeakToColdIron(EntityLivingBase living) {
+		return living.getCreatureAttribute() == DEMON || living.getCreatureAttribute() == SPIRIT || living instanceof EntityBlaze || living instanceof EntityEnderman || living instanceof EntityVex;
+	}
+	
+	public static boolean isWeakToSilver(EntityLivingBase entity) {
+		return isWerewolf(entity) || isVampire(entity) || entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD;
 	}
 }

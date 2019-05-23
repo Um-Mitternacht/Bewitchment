@@ -9,9 +9,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -89,6 +88,17 @@ public class Util {
 		return fin;
 	}
 	
+	public static int getArmorPieces(EntityLivingBase living, ItemArmor.ArmorMaterial mat) {
+		int fin = 0;
+		for (ItemStack stack : living.getArmorInventoryList()) {
+			if (stack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) stack.getItem();
+				if (armor.getArmorMaterial() == mat) fin++;
+			}
+		}
+		return fin;
+	}
+	
 	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
@@ -135,6 +145,25 @@ public class Util {
 	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
 		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+	}
+	
+	public static boolean isRelated(ItemStack stack, String oreDictionaryEntry) {
+		for (ItemStack ore : OreDictionary.getOres(oreDictionaryEntry)) {
+			if (stack.getItem() instanceof ItemSword) {
+				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemSword.class, ((ItemSword) stack.getItem()), 1);
+				return mat.getRepairItemStack().getItem() == ore.getItem();
+			}
+			if (stack.getItem() instanceof ItemTool) {
+				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemTool.class, ((ItemTool) stack.getItem()), 4);
+				return mat.getRepairItemStack().getItem() == ore.getItem();
+			}
+			if (stack.getItem() instanceof ItemHoe) {
+				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemHoe.class, ((ItemHoe) stack.getItem()), 1);
+				return mat.getRepairItemStack().getItem() == ore.getItem();
+			}
+			if (stack.getItem() instanceof ItemArmor) return ((ItemArmor) stack.getItem()).getArmorMaterial().getRepairItemStack().getItem() == ore.getItem();
+		}
+		return false;
 	}
 	
 	public static boolean isTransparent(IBlockState state) {

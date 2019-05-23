@@ -4,14 +4,12 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.api.capability.ExtendedPlayer;
 import com.bewitchment.api.capability.ExtendedPlayerHandler;
+import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
-import com.bewitchment.registry.ModEntities;
-import com.bewitchment.registry.ModObjects;
-import com.bewitchment.registry.ModRecipes;
-import com.bewitchment.registry.ModSounds;
+import com.bewitchment.registry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
@@ -45,6 +43,7 @@ public class CommonProxy {
 		ModSounds.preInit();
 		ModEntities.preInit();
 		ModObjects.preInit();
+		ModEnchantments.preInit();
 		ModRecipes.preInit();
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
@@ -53,6 +52,7 @@ public class CommonProxy {
 	
 	public void init(FMLInitializationEvent event) {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
+		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
