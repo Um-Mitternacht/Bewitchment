@@ -1,6 +1,8 @@
-package com.bewitchment.common.enchantment.util;
+package com.bewitchment.common.enchantment;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.enchantment.util.ModEnchantment;
+import com.bewitchment.registry.ModEnchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -22,9 +24,9 @@ public class EnchantmentSpiritProtection extends ModEnchantment {
 	protected boolean canApplyTogether(Enchantment enchantment) {
 		if (enchantment instanceof EnchantmentProtection) {
 			EnchantmentProtection protection = (EnchantmentProtection) enchantment;
-			return protection.protectionType != EnchantmentProtection.Type.FALL;
+			return protection.protectionType == EnchantmentProtection.Type.FALL;
 		}
-		return super.canApplyTogether(enchantment);
+		return enchantment != ModEnchantments.magic_protection && super.canApplyTogether(enchantment);
 	}
 	
 	@SubscribeEvent
