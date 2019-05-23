@@ -44,16 +44,6 @@ public class ItemHorseshoe extends ModItemBauble {
 		}
 	}
 	
-	public String getNameInefficiently(ItemStack stack) {
-		return getTranslationKey().substring(5);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.DARK_GRAY + I18n.format("tooltip." + getNameInefficiently(stack) + "_description.name"));
-	}
-	
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
 		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.SPIRIT))
