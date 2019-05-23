@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"NCN",
+	"CGC",
+	"NCN"
+  ],
+  "key": {
+	"N": {
+	  "type": "forge:ore_dict",
+	  "ore": "nuggetSilver"
+	},
+	"C": {
+	  "type": "forge:ore_dict",
+	  "ore": "nuggetColdIron"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "gemAmethyst"
+	}
+  },
+  "result": {
+	"item": "bewitchment:token_of_remedies"
+  }
+}
