@@ -45,6 +45,5 @@ public class ItemWitchesArmor extends ItemArmor {
 	
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return Bewitchment.MODID + ":textures/models/armor/witches" + (this == ModObjects.witches_hat && stack.getDisplayName().toLowerCase().contains("faith") ? "_variant" : "") + ".png";
-		//		return this == ModObjects.witches_hat && stack.getDisplayName().toLowerCase().contains("faith") ? Bewitchment.MODID +  ":/textures/armor/witches.png" : null;
 	}
 }
