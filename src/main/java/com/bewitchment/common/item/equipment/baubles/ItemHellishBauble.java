@@ -5,7 +5,6 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.item.util.ModItemBauble;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,7 +25,7 @@ public class ItemHellishBauble extends ModItemBauble {
 	
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON) || event.getSource().isExplosion() || event.getSource().isFireDamage())
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON) || event.getSource().isExplosion() || event.getSource().isFireDamage())
 			event.setAmount(event.getAmount() * 0.8f);
 	}
 }
