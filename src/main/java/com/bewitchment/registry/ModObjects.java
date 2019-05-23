@@ -177,6 +177,7 @@ public class ModObjects {
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
+	public static final Item wrathful_eye = new ItemWrathfulEye();
 	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
