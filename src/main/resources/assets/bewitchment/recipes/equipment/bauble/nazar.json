@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"FPF",
+	"PGP",
+	"FPF"
+  ],
+  "key": {
+	"F": {
+	  "item": "bewitchment:cleansing_balm"
+	},
+	"P": {
+	  "item": "bewitchment:pure_filament"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "gemLapis"
+	}
+  },
+  "result": {
+	"item": "bewitchment:nazar"
+  }
+}
