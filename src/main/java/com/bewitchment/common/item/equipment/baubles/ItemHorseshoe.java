@@ -39,5 +39,7 @@ public class ItemHorseshoe extends ModItemBauble {
 	public void onHurt(LivingHurtEvent event) {
 		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.SPIRIT))
 			event.setAmount(event.getAmount() * 0.8f);
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON))
+			event.setAmount(event.getAmount() * 0.97f);
 	}
 }
