@@ -9,6 +9,7 @@ import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
+import com.bewitchment.common.item.equipment.baubles.ItemHellishBauble;
 import com.bewitchment.common.item.equipment.baubles.ItemHorseshoe;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
@@ -77,6 +78,7 @@ public class ModObjects {
 	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
+	public static final Block nethersteel = new ModBlock("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2);
 	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Material.ICE, SoundType.GLASS, 0.5f, 2.5f, "", 0);
 	public static final Block perpetual_ice_stairs = new ModBlockStairs("perpetual_ice_stairs", perpetual_ice);
 	public static final Block perpetual_ice_slab = new ModBlockSlab("perpetual_ice_slab", perpetual_ice);
@@ -167,6 +169,7 @@ public class ModObjects {
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
 	//Baubles
+	public static final Item hellish_bauble = new ItemHellishBauble();
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
 	//Materials

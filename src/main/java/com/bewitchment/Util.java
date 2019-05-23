@@ -1,10 +1,12 @@
 package com.bewitchment;
 
 import baubles.api.BaublesApi;
+import baubles.api.IBauble;
 import com.bewitchment.common.block.BlockSaltBarrier;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -85,6 +87,14 @@ public class Util {
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
 		return fin;
+	}
+	
+	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
+		if (living instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) living;
+			for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) if (BaublesApi.getBaublesHandler(player).getStackInSlot(i).getItem() == item) return true;
+		}
+		return false;
 	}
 	
 	public static List<Ingredient> expandList(List<Ingredient> list) {

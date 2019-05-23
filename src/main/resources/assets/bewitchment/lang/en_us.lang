@@ -20,6 +20,8 @@ tile.bewitchment.coquina.name=Coquina
 tile.bewitchment.coquina_bricks.name=Coquina Bricks
 tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 
+tile.bewitchment.nethersteel.name=Nethersteel
+
 tile.bewitchment.perpetual_ice.name=Perpetual Ice
 tile.bewitchment.perpetual_ice_stairs.name=Perpetual Ice Stairs
 tile.bewitchment.perpetual_ice_slab.name=Perpetual Ice Slab
@@ -115,6 +117,7 @@ item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 item.bewitchment.athame.name=Athame
 item.bewitchment.boline.name=Boline
 
+item.bewitchment.hellish_bauble.name=Hellish Bauble
 item.bewitchment.horseshoe.name=Horseshoe
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
@@ -241,6 +244,7 @@ fortune.no_fortune=This world has no secrets awaiting
 
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 
+tooltip.bewitchment.hellish_bauble=This oddly shaped trinket will allow you to tap into a small portion of demonic power.
 tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes

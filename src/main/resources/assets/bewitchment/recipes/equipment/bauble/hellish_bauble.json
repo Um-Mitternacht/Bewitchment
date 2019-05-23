@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"FSF",
+	"SNS",
+	"FSF"
+  ],
+  "key": {
+	"F": {
+	  "item": "bewitchment:demonic_elixir"
+	},
+	"S": {
+	  "item": "bewitchment:nethersteel"
+	},
+	"N": {
+	  "type": "forge:ore_dict",
+	  "ore": "nuggetGold"
+	}
+  },
+  "result": {
+	"item": "bewitchment:hellish_bauble"
+  }
+}
