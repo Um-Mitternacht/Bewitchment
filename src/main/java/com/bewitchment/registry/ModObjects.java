@@ -11,6 +11,7 @@ import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.equipment.baubles.ItemHellishBauble;
 import com.bewitchment.common.item.equipment.baubles.ItemHorseshoe;
+import com.bewitchment.common.item.equipment.baubles.ItemWitchesArmor;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.tool.ItemAthame;
@@ -44,6 +45,7 @@ public class ModObjects {
 	
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
+	public static final ItemArmor.ArmorMaterial ARMOR_WITCHES = EnumHelper.addArmorMaterial("witches", Bewitchment.MODID + ":witches", 8, new int[]{1, 2, 3, 1}, 20, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
 	
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 425, 7, 2.5f, 14);
@@ -155,6 +157,10 @@ public class ModObjects {
 	public static final Item cold_iron_chestplate = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.CHEST), "cold_iron_chestplate");
 	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
 	public static final Item cold_iron_boots = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.FEET), "cold_iron_boots");
+	public static final Item witches_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_cowl");
+	public static final Item witches_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_hat", Arrays.asList(s -> s.getDisplayName().toLowerCase().contains("faith")));
+	public static final Item witches_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST), "witches_robes");
+	public static final Item witches_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS), "witches_pants");
 	//Tools
 	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword");
 	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe");

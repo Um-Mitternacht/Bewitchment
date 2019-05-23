@@ -14,6 +14,9 @@ public class ArmorHandler {
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote) {
+			// Witches' Armor
+			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_WITCHES) / 2);
+			
 			// Cold Iron Armor
 			ModEnchantments.spirit_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON) / 2);
 			

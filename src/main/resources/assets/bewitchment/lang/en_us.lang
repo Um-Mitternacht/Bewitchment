@@ -102,6 +102,11 @@ item.bewitchment.cold_iron_chestplate.name=Cold Iron Chestplate
 item.bewitchment.cold_iron_leggings.name=Cold Iron Leggings
 item.bewitchment.cold_iron_boots.name=Cold Iron Boots
 
+item.bewitchment.witches_cowl.name=Witches' Cowl
+item.bewitchment.witches_hat.name=Witches' Hat
+item.bewitchment.witches_robes.name=Witches' Robes
+item.bewitchment.witches_pants.name=Witches' Pants
+
 item.bewitchment.silver_sword.name=Silver Sword
 item.bewitchment.silver_pickaxe.name=Silver Pickaxe
 item.bewitchment.silver_axe.name=Silver Axe
