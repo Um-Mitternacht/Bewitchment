@@ -29,7 +29,7 @@ public class BlockFrostfire extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
 	
 	public BlockFrostfire() {
-		super(null, "frostfire", Material.FIRE, SoundType.CLOTH, 0, 0, "", 0, -1);
+		super(null, "frostfire", Material.FIRE, SoundType.SNOW, 0, 0, "", 0, -1);
 		setLightLevel(7 / 15f);
 		setCreativeTab(null);
 	}

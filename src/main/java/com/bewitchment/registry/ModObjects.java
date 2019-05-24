@@ -14,6 +14,7 @@ import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.util.ModItemAxe;
+import com.bewitchment.common.item.util.ModItemBauble;
 import com.bewitchment.common.item.util.ModItemDoor;
 import com.bewitchment.common.item.util.ModItemPickaxe;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
@@ -173,7 +174,7 @@ public class ModObjects {
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
 	//Baubles
-	public static final Item girdle_of_the_dryads = new ItemGirdleOfTheDryads();
+	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final Item hellish_bauble = new ItemHellishBauble();
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
