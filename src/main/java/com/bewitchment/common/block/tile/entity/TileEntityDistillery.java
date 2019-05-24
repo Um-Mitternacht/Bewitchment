@@ -24,6 +24,12 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 			return stack.getItem() == Items.BLAZE_POWDER;
 		}
 	};
+	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int index) {
+			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
+		}
+	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(6) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -32,19 +38,20 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	};
 	public int burnTime, progress;
 	private DistilleryRecipe recipe;
-	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
-		}
-	};
+	private boolean inUse = false;
 	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (progress > 0) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
-			else if (world.getBlockState(pos).getValue(BlockDistillery.IN_USE)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
-			if (progress == 1) world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
+			if (progress == 1) {
+				world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
+				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
+				inUse = true;
+			}
+			else if (inUse && progress == 0) {
+				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
+				inUse = false;
+			}
 			if (burnTime > -1) burnTime--;
 			else if (progress > 0) {
 				progress -= 2;
@@ -83,6 +90,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		inUse = tag.getBoolean("inUse");
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
 	}
@@ -90,6 +98,7 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("inUse", inUse);
 		tag.setInteger("burnTime", burnTime);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);

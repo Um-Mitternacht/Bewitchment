@@ -17,14 +17,6 @@ import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
-	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
-		@Override
-		public boolean isItemValid(int index, ItemStack stack) {
-			return false;
-		}
-	};
-	public int burnTime, fuelBurnTime, progress;
-	private OvenRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -36,36 +28,51 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
+	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
+		@Override
+		public boolean isItemValid(int index, ItemStack stack) {
+			return false;
+		}
+	};
+	public int burnTime, fuelBurnTime, progress;
+	private OvenRecipe recipe;
+	private boolean burning = false;
 	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
+			if (burning && burnTime < 0) {
+				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
+				burning = false;
+			}
 			if (burnTime > -1) {
 				burnTime--;
-				if (!world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 			}
 			else {
 				if (progress > 0) {
 					progress -= 2;
 					if (progress < 0) progress = 0;
 				}
-				if (world.getBlockState(pos).getValue(BlockWitchesOven.LIT)) world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
 			}
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
-				if (burnTime > -1) {
-					progress++;
-					if (progress >= 200) {
-						progress = 0;
-						recipe.giveOutput(world.rand, inventory_up, inventory_down);
-					}
-				}
-				else {
+				if (burnTime < 0) {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) {
 						burnTime = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);
+						if (!burning) {
+							world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
+							burning = true;
+						}
+					}
+				}
+				else {
+					progress++;
+					if (progress >= 200) {
+						progress = 0;
+						recipe.giveOutput(world.rand, inventory_up, inventory_down);
 					}
 				}
 			}
@@ -86,6 +93,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		burning = tag.getBoolean("burning");
 		burnTime = tag.getInteger("burnTime");
 		fuelBurnTime = tag.getInteger("fuelBurnTime");
 		progress = tag.getInteger("progress");
@@ -94,6 +102,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("burning", burning);
 		tag.setInteger("burnTime", burnTime);
 		tag.setInteger("fuelBurnTime", fuelBurnTime);
 		tag.setInteger("progress", progress);

@@ -14,6 +14,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class TileEntitySpinningWheel extends ModTileEntity implements ITickable {
+	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
+		@Override
+		protected void onContentsChanged(int index) {
+			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
+		}
+	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(1) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -22,12 +28,6 @@ public class TileEntitySpinningWheel extends ModTileEntity implements ITickable 
 	};
 	public int progress;
 	private SpinningWheelRecipe recipe;
-	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
-		@Override
-		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
-		}
-	};
 	
 	@Override
 	public void update() {
