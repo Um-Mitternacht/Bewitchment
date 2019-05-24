@@ -2,6 +2,7 @@ package com.bewitchment;
 
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
+import com.bewitchment.common.block.BlockFrostfire;
 import com.bewitchment.common.block.BlockSaltBarrier;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -43,7 +44,7 @@ public class Util {
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
 		ForgeRegistries.BLOCKS.register(block);
-		if (/*!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && */ !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
+		if (/*!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && */ !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
 			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockSapling ? "inventory" : "normal");

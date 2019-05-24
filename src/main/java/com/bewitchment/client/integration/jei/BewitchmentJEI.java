@@ -31,7 +31,7 @@ public class BewitchmentJEI implements IModPlugin {
 	public void register(IModRegistry registry) {
 		registry.handleRecipes(FrostfireRecipe.class, FrostfireCategory.FrostfireWrapper::new, FrostfireCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(FrostfireRecipe.class).getValuesCollection(), FrostfireCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModObjects.frostfire), FrostfireCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModObjects.bottled_frostfire), FrostfireCategory.UID);
 		
 		registry.handleRecipes(OvenRecipe.class, WitchesOvenCategory.WitchesOvenWrapper::new, WitchesOvenCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection(), WitchesOvenCategory.UID);
