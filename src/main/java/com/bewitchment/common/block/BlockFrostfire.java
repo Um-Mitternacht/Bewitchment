@@ -26,7 +26,7 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
 public class BlockFrostfire extends ModBlockContainer {
-	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 1 / 512d, 1);
+	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
 	
 	public BlockFrostfire() {
 		super(null, "frostfire", Material.FIRE, SoundType.CLOTH, 0, 0, "", 0, -1);
