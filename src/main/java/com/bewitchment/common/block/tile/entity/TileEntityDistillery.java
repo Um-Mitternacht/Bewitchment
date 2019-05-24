@@ -45,13 +45,9 @@ public class TileEntityDistillery extends ModTileEntity implements ITickable {
 		if (!world.isRemote) {
 			if (progress == 1) {
 				world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
-				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
-				inUse = true;
+				inUse = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
 			}
-			else if (inUse && progress == 0) {
-				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
-				inUse = false;
-			}
+			else if (inUse && progress == 0) inUse = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
 			if (burnTime > -1) burnTime--;
 			else if (progress > 0) {
 				progress -= 2;

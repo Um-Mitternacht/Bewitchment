@@ -41,13 +41,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (burning && burnTime < 0) {
-				world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
-				burning = false;
-			}
-			if (burnTime > -1) {
-				burnTime--;
-			}
+			if (burning && burnTime < 0) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
+			if (burnTime > -1) burnTime--;
 			else {
 				if (progress > 0) {
 					progress -= 2;
@@ -62,10 +57,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 						burnTime = time;
 						fuelBurnTime = burnTime;
 						inventory_up.extractItem(0, 1, false);
-						if (!burning) {
-							world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
-							burning = true;
-						}
+						if (!burning) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 					}
 				}
 				else {
