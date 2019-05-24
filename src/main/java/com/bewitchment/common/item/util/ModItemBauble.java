@@ -57,4 +57,9 @@ public class ModItemBauble extends Item implements IBauble {
 	public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
 		return !EnchantmentHelper.hasBindingCurse(stack);
 	}
+	
+	@Override
+	public boolean willAutoSync(ItemStack stack, EntityLivingBase living) {
+		return true;
+	}
 }

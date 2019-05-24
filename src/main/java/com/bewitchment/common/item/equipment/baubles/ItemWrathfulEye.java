@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 @SuppressWarnings("unused")
 public class ItemWrathfulEye extends ModItemBauble {
-	
 	//This will be used for trading in the diabolic update, and also provide a minute amount of protection from fire. Not as good as the hellish bauble though.
 	public ItemWrathfulEye() {
 		super("wrathful_eye", BaubleType.AMULET);

@@ -1,4 +1,4 @@
-package com.bewitchment.common.item.equipment.baubles;
+package com.bewitchment.common.item.equipment.armor;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.armor.ModelWitchesArmor;

@@ -7,6 +7,7 @@ import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemBottledFrostfire;
 import com.bewitchment.common.item.ItemSalt;
+import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
