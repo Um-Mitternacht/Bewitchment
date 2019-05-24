@@ -44,13 +44,14 @@ public class CommonProxy {
 		ModEntities.preInit();
 		ModObjects.preInit();
 		ModEnchantments.preInit();
-		ModRecipes.preInit();
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 	}
 	
 	public void init(FMLInitializationEvent event) {
+		ModRecipes.init();
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());

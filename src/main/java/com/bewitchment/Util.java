@@ -107,15 +107,18 @@ public class Util {
 		return false;
 	}
 	
-	public static List<Ingredient> expandList(List<Ingredient> list) {
-		List<Ingredient> fin = new ArrayList<>();
-		for (Ingredient ing : list) {
-			for (ItemStack stack : ing.getMatchingStacks()) {
-				ItemStack copy = stack.copy();
-				while (!copy.isEmpty()) fin.add(Ingredient.fromStacks(copy.splitStack(1)));
-			}
-		}
-		return fin;
+	public static Ingredient fromOres(String... oreDictionaryEntries) {
+		List<ItemStack> stacks = new ArrayList<>();
+		for (String ore : oreDictionaryEntries) stacks.addAll(OreDictionary.getOres(ore));
+		return Ingredient.fromStacks(stacks.toArray(new ItemStack[0]));
+	}
+	
+	public static Ingredient get(Item item) {
+		return Ingredient.fromStacks(new ItemStack(item));
+	}
+	
+	public static Ingredient get(Block block) {
+		return Ingredient.fromStacks(new ItemStack(block));
 	}
 	
 	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {

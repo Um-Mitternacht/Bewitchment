@@ -3,11 +3,9 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
-import com.bewitchment.common.block.tile.entity.TileEntityCrystalBall;
-import com.bewitchment.common.block.tile.entity.TileEntityDistillery;
-import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
-import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
+import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
+import com.bewitchment.common.item.ItemBottledFrostfire;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
@@ -57,6 +55,7 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
+	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Tiles
 	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
@@ -179,6 +178,8 @@ public class ModObjects {
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
 	public static final Item wrathful_eye = new ItemWrathfulEye();
 	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
+	//Util
+	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");

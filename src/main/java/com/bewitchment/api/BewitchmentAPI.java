@@ -1,10 +1,7 @@
 package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.DistilleryRecipe;
-import com.bewitchment.api.registry.Fortune;
-import com.bewitchment.api.registry.OvenRecipe;
-import com.bewitchment.api.registry.SpinningWheelRecipe;
+import com.bewitchment.api.registry.*;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -25,6 +22,8 @@ import java.util.Map;
 
 @SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
+	private static final IForgeRegistry<FrostfireRecipe> REGISTRY_FROSTFIRE = new RegistryBuilder<FrostfireRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "frostfire_recipe")).setType(FrostfireRecipe.class).create();
+	
 	private static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
 	private static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
 	private static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
@@ -42,6 +41,14 @@ public class BewitchmentAPI {
 	 * The Spirit creature attribute.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+	
+	/**
+	 * registers a new FrostFireRecipe
+	 * @param recipe the recipe to register
+	 */
+	public static void registerFrostfireRecipe(FrostfireRecipe recipe) {
+		REGISTRY_FROSTFIRE.register(recipe);
+	}
 	
 	/**
 	 * registers a new OvenRecipe

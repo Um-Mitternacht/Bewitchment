@@ -9,16 +9,15 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 
-@SuppressWarnings("WeakerAccess")
 public class SpinningWheelRecipe extends IForgeRegistryEntry.Impl<SpinningWheelRecipe> {
 	public final List<Ingredient> input;
 	public final ItemStack output;
 	
 	public SpinningWheelRecipe(ResourceLocation name, List<Ingredient> input, ItemStack output) {
+		if (input.size() > 4) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 4 at most.");
 		setRegistryName(name);
-		this.input = Util.expandList(input);
+		this.input = input;
 		this.output = output;
-		if (this.input.size() > 4) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 4 at most.");
 	}
 	
 	public final boolean matches(ItemStackHandler input) {

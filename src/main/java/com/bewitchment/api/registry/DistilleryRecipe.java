@@ -10,16 +10,15 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 
-@SuppressWarnings("WeakerAccess")
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
 	public final List<Ingredient> input;
 	public final List<ItemStack> output;
 	
 	public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
+		if (input.size() > 6) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
 		setRegistryName(name);
-		this.input = Util.expandList(input);
+		this.input = input;
 		this.output = output;
-		if (this.input.size() > 6) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
 	}
 	
 	public final boolean matches(ItemStackHandler input) {
