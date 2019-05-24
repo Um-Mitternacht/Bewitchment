@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 //Todo: Everything.
 public class ItemGirdleOfTheDryads extends ModItemBauble {
-	protected ItemGirdleOfTheDryads(String name, BaubleType type) {
+	public ItemGirdleOfTheDryads() {
 		super("girdle_of_the_dryads", BaubleType.BELT);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

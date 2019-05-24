@@ -123,6 +123,7 @@ item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 item.bewitchment.athame.name=Athame
 item.bewitchment.boline.name=Boline
 
+item.bewitchment.girdle_of_the_dryads.name=Girdle of the Dryads
 item.bewitchment.hellish_bauble.name=Hellish Bauble
 item.bewitchment.horseshoe.name=Horseshoe
 item.bewitchment.nazar.name=Nazar
@@ -264,6 +265,7 @@ fortune.no_fortune=This world has no secrets awaiting
 
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 
+tooltip.bewitchment.girdle_of_the_dryads=This belt protects the wearer from harm by growing pieces of bark as armor.
 tooltip.bewitchment.hellish_bauble=This oddly shaped trinket will allow you to tap into a small portion of demonic power.
 tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.

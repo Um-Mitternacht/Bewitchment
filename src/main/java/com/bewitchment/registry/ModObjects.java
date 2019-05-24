@@ -172,6 +172,7 @@ public class ModObjects {
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
 	//Baubles
+	public static final Item girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final Item hellish_bauble = new ItemHellishBauble();
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
