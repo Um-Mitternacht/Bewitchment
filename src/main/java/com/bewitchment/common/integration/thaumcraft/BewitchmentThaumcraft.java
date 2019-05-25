@@ -122,6 +122,10 @@ public class BewitchmentThaumcraft {
 		
 		//Fumes
 		event.register.registerObjectTag(new ItemStack(ModObjects.demonic_elixir), new AspectList().add(DEMON, 6).add(Aspect.FIRE, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.cleansing_balm), new AspectList().add(Aspect.PROTECT, 6).add(Aspect.AURA, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.stone_ichor), new AspectList().add(Aspect.EARTH, 6).add(Aspect.MAGIC, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.undying_salve), new AspectList().add(Aspect.LIFE, 6).add(Aspect.EXCHANGE, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.ebb_of_death), new AspectList().add(Aspect.DEATH, 6).add(Aspect.ENTROPY, 6));
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
