@@ -75,10 +75,16 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 	
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
-		if (!event.getEntityLiving().world.isRemote && event.getAmount() > 2 && event.getSource().getTrueSource() != null && getBark(event.getEntityLiving()) > 0) {
-			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.BLOCK_WOOD_STEP, SoundCategory.PLAYERS, 0.75f, 1.9f);
-			setBark(getGirdle(event.getEntityLiving()), getBark(event.getEntityLiving()) - 1);
-			event.setCanceled(true);
+		if (!event.getEntityLiving().world.isRemote && getBark(event.getEntityLiving()) > 0) {
+			if (event.getSource().isFireDamage()) {
+				event.setAmount(event.getAmount() * 1.25f);
+				setBark(getGirdle(event.getEntityLiving()), getBark(event.getEntityLiving()) - 1);
+			}
+			if (!event.getSource().isMagicDamage() && event.getSource().getTrueSource() != null && event.getAmount() > 2) {
+				event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.BLOCK_WOOD_STEP, SoundCategory.PLAYERS, 0.75f, 1.9f);
+				setBark(getGirdle(event.getEntityLiving()), getBark(event.getEntityLiving()) - 1);
+				event.setCanceled(true);
+			}
 		}
 	}
 	

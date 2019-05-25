@@ -193,21 +193,21 @@ public class ModelGirdleOfTheDryad extends ModelBase {
 			this.belt4.render(scale);
 			int bark = ItemGirdleOfTheDryads.getBark(living);
 			if (bark > 0) {
-				barkBack1a.render(1);
-				barkfront1a.render(1);
+				barkBack1a.render(scale);
+				barkfront1a.render(scale);
 				if (bark > 1) {
-					barkfront2a.render(1);
-					barkBack2a.render(1);
-				}
-				if (bark > 2) {
-					barkfront3a.render(1);
-					barkBack3a.render(1);
-				}
-				if (bark > 3) {
-					rootRight1.render(1);
-					rootLeft1.render(1);
-					rootRight3.render(1);
-					rootLeft3.render(1);
+					barkfront2a.render(scale);
+					barkBack2a.render(scale);
+					if (bark > 2) {
+						barkfront3a.render(scale);
+						barkBack3a.render(scale);
+						if (bark > 3) {
+							rootRight1.render(scale);
+							rootLeft1.render(scale);
+							rootRight3.render(scale);
+							rootLeft3.render(scale);
+						}
+					}
 				}
 			}
 		}
