@@ -1,10 +1,12 @@
 package com.bewitchment.common.block.plants;
 
+import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -33,6 +35,7 @@ public class BlockTorchwood extends BlockBush implements IGrowable, IPlantable {
 		setResistance(0.3F);
 		setHardness(0.3F);
 		setSoundType(SoundType.WOOD);
+		Util.registerBlock(this, "torchwood", Material.WOOD, SoundType.WOOD, 0, 0, "shears", 0);
 	}
 	
 	@SuppressWarnings("deprecation")

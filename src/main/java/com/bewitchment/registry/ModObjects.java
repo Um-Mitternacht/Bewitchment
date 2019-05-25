@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
+import com.bewitchment.common.block.plants.BlockTorchwood;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemBottledFrostfire;
@@ -100,6 +101,7 @@ public class ModObjects {
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
 	//Plants
 	public static final Block embergrass = new BlockEmbergrass();
+	public static final Block torchwood = new BlockTorchwood();
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
