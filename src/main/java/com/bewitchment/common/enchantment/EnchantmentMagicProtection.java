@@ -11,7 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 public class EnchantmentMagicProtection extends ModEnchantment {
 	public EnchantmentMagicProtection() {
 		super("magic_protection", Rarity.VERY_RARE, 4, EnumEnchantmentType.ARMOR, EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET);
@@ -33,11 +33,11 @@ public class EnchantmentMagicProtection extends ModEnchantment {
 	}
 	
 	public void applyEnchantment(LivingHurtEvent event, int level) {
-		if (level > 0) event.setAmount(event.getAmount() * (1 - Math.min(20, calcModifierDamage(level, event.getSource())) / 25f));
+		if (level > 0) event.setAmount(event.getAmount() * (1 - Math.min(20, calcModifierDamage(level, event.getSource())) / 75f));
 	}
 	
 	@Override
 	public int calcModifierDamage(int level, DamageSource source) {
-		return source.canHarmInCreative() ? 0 : source == DamageSource.MAGIC ? level * 2 : 0;
+		return source.canHarmInCreative() ? 0 : source.isMagicDamage() ? level : 0;
 	}
 }
