@@ -18,13 +18,13 @@ public class BlockTorchwood extends BlockBush {
 	
 	public BlockTorchwood() {
 		super();
-		Util.registerBlock(this, "torchwood", Material.PLANTS, SoundType.WOOD, 0.3f, 0.3f, "", 0);
+		Util.registerBlock(this, "torchwood", Material.PLANTS, SoundType.WOOD, 0.3f, 0.3f, "shears", 0);
 		this.setLightLevel(0.7F);
 	}
 	
 	@Override
 	public boolean canSustainBush(IBlockState state) {
-		return state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND;
+		return super.canSustainBush(state) || state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND;
 	}
 	
 	@Override
