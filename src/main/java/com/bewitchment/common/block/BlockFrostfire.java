@@ -73,7 +73,7 @@ public class BlockFrostfire extends ModBlockContainer {
 	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!world.getBlockState(to.down()).isFullBlock()) world.destroyBlock(to, false);
+		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
 	}
 	
 	@Override
