@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
+import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
 import com.bewitchment.common.block.tile.entity.*;
@@ -52,7 +53,7 @@ public class ModObjects {
 	
 	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
-	public static final ModBlockCrops crop_belladonna = new ModBlockCrops("crop_belladonna");
+	public static final ModBlockCrops crop_belladonna = new BlockCropsSpreading("crop_belladonna");
 	public static final ModBlockCrops crop_garlic = new ModBlockCrops("crop_garlic");
 	public static final ModBlockCrops crop_hellebore = new ModBlockCrops("crop_hellebore");
 	public static final ModBlockCrops crop_mandrake = new ModBlockCrops("crop_mandrake");
@@ -269,6 +270,8 @@ public class ModObjects {
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	
 	public static void preInit() {
+		Bewitchment.proxy.ignoreProperty(embergrass, BlockEmbergrass.TIMES_SPREAD);
+		Bewitchment.proxy.ignoreProperty(torchwood, BlockEmbergrass.TIMES_SPREAD);
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);

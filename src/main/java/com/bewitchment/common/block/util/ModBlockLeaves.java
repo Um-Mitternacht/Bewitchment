@@ -58,7 +58,6 @@ public class ModBlockLeaves extends BlockLeaves {
 		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
 	}
 	
-	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int meta = 0;
