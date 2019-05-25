@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 @SuppressWarnings("NullableProblems")
 public class ItemHeart extends ItemFood {
 	public ItemHeart() {
-		super(8, 1.6f, true);
+		super(8, 0.8f, true);
 		Util.registerItem(this, "heart");
 		setAlwaysEdible();
 	}
