@@ -1,12 +1,15 @@
 package com.bewitchment.common.block.plants;
 
 import com.bewitchment.Util;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -25,6 +28,10 @@ public class BlockEmbergrass extends BlockBush {
 		super();
 		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0);
 		setDefaultState(getBlockState().getBaseState().withProperty(TIMES_SPREAD, 0));
+	}
+	
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && this == ModObjects.embergrass) entity.setFire(10);
 	}
 	
 	@Override
