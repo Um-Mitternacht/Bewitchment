@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+//Notice: The diabolic update WILL introduce more magic plants. Using this class for such plants may be ill-advised.
 @SuppressWarnings({"NullableProblems", "deprecation", "WeakerAccess"})
 public class BlockEmbergrass extends BlockBush {
 	public static final PropertyInteger TIMES_SPREAD = PropertyInteger.create("times_spread", 0, 4);
