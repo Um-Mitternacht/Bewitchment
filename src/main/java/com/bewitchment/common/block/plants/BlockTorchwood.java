@@ -4,6 +4,7 @@ import com.bewitchment.Util;
 import com.bewitchment.common.block.util.ModBlock;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
@@ -25,11 +26,9 @@ import java.util.Random;
 /**
  * Created by Joseph on 5/25/2019.
  */
-public class BlockTorchwood extends ModBlock implements IGrowable, IPlantable {
+public class BlockTorchwood extends BlockBush implements IGrowable, IPlantable {
 	
 	public BlockTorchwood() {
-		super();
-		Util.registerBlock(this, "torchwood", mat, sound, hardness, resistance, tool, level, oreDictionaryNames);
 	}
 	
 	@SuppressWarnings("deprecation")
