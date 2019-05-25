@@ -25,7 +25,6 @@ public class BlockEmbergrass extends BlockBush {
 		super();
 		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0);
 		setDefaultState(getBlockState().getBaseState().withProperty(TIMES_SPREAD, 0));
-		setLightLevel(0.7f);
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 public class BlockTorchwood extends BlockEmbergrass {
 	public BlockTorchwood() {
 		super("torchwood");
+		setLightLevel(0.7f);
 	}
 	
 	@Override
