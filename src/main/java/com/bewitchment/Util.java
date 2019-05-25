@@ -47,7 +47,7 @@ public class Util {
 		if (/*!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && */ !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
 			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
-			Bewitchment.proxy.registerTexture(item, block instanceof BlockSapling ? "inventory" : "normal");
+			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
 		}
 		for (String ore : oreDictionaryNames)
 			OreDictionary.registerOre(ore, block);

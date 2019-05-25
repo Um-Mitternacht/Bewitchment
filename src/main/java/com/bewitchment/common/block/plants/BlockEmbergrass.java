@@ -1,4 +1,4 @@
-package com.bewitchment.common.block;
+package com.bewitchment.common.block.plants;
 
 import com.bewitchment.Util;
 import net.minecraft.block.BlockBush;
