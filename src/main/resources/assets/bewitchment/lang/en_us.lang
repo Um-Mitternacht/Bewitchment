@@ -42,6 +42,8 @@ tile.bewitchment.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.bewitchment.scorned_bricks_slab.name=Scorned Bricks Slab
 tile.bewitchment.scorned_brick_fence.name=Scorned Brick Fence
 
+tile.bewitchment.embergrass.name=Embergrass
+
 tile.bewitchment.cypress_sapling.name=Cypress Sapling
 tile.bewitchment.elder_sapling.name=Elder Sapling
 tile.bewitchment.juniper_sapling.name=Juniper Sapling

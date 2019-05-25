@@ -97,6 +97,8 @@ public class ModObjects {
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks);
 	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
+	//Plants
+	public static final Block embergrass = new BlockEmbergrass();
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
