@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
+import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.item.ItemBottledFrostfire;
