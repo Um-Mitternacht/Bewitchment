@@ -1,6 +1,7 @@
 package com.bewitchment.api.capability.magicpower;
 
 import com.bewitchment.Util;
+import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -61,7 +62,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
 		if (amount == 0) return true;
-		//		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
+		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
 		if (player != null) {
 			for (ItemStack stack : Util.getEntireInventory(player)) {
 				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
