@@ -137,7 +137,9 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.cloudy_oil), new AspectList().add(Aspect.ENTROPY, 6).add(Aspect.DARKNESS, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.oak_spirit), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.unfired_jar), new AspectList().add(Aspect.VOID, 6).add(Aspect.EARTH, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.empty_jar), new AspectList().add(Aspect.VOID, 6).add(Aspect.EARTH, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.birch_soul), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
