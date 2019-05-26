@@ -1,9 +1,10 @@
 ﻿#BLOCKS
-tile.bewitchment.frostfire.name=Frostfire
+tile.bewitchment.stone_witches_altar.name=Stone Witches' Altar
 tile.bewitchment.witches_oven.name=Witches' Oven
 tile.bewitchment.distillery.name=Distillery
 tile.bewitchment.spinning_wheel.name=Spinning Wheel
 tile.bewitchment.crystal_ball.name=Crystal Ball
+tile.bewitchment.frostfire.name=Frostfire
 
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
 tile.bewitchment.block_of_garnet.name=Block of Garnet
@@ -274,6 +275,7 @@ tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in gen
 tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.
 tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses, but it depletes rather quickly.
 tooltip.bewitchment.wrathful_eye=This trinket commands respect from demons.
+tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
 tooltip.bewitchment.belladonna=A highly toxic plant, this is a prime component of flying ointment

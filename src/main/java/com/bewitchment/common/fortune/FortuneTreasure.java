@@ -1,7 +1,7 @@
 package com.bewitchment.common.fortune;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.capability.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;

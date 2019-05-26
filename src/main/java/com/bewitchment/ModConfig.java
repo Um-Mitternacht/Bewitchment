@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ModConfig extends Configuration {
+	public final int maxGrimoirePower;
+	
 	public final int cypressChance, elderChance, juniperChance, yewChance;
 	
 	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, moonstoneSize, moonstoneChance, moonstoneMin, moonstoneMax;
@@ -17,6 +19,8 @@ public class ModConfig extends Configuration {
 	public ModConfig(File file) {
 		super(file);
 		load();
+		maxGrimoirePower = getInt("maxGrimoirePower", "misc", 1000, 0, Integer.MAX_VALUE, "The maximum power a Grimoire Magia can have.");
+		
 		cypressChance = getInt("cypressChance", "treeGen", 20, 0, Byte.MAX_VALUE, "The chance for cypress trees to spawn. Set to 0 to disable.");
 		elderChance = getInt("elderChance", "treeGen", 20, 0, Byte.MAX_VALUE, "The chance for elder trees to spawn. Set to 0 to disable.");
 		juniperChance = getInt("juniperChance", "treeGen", 20, 0, Byte.MAX_VALUE, "The chance for juniper trees to spawn. Set to 0 to disable.");

@@ -21,18 +21,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BewitchmentJEI implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
-		registry.addRecipeCategories(new FrostfireCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new WitchesOvenCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new DistilleryCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new SpinningWheelCategory(registry.getJeiHelpers().getGuiHelper()));
+		registry.addRecipeCategories(new FrostfireCategory(registry.getJeiHelpers().getGuiHelper()));
 	}
 	
 	@Override
 	public void register(IModRegistry registry) {
-		registry.handleRecipes(FrostfireRecipe.class, FrostfireCategory.FrostfireWrapper::new, FrostfireCategory.UID);
-		registry.addRecipes(GameRegistry.findRegistry(FrostfireRecipe.class).getValuesCollection(), FrostfireCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModObjects.bottled_frostfire), FrostfireCategory.UID);
-		
 		registry.handleRecipes(OvenRecipe.class, WitchesOvenCategory.WitchesOvenWrapper::new, WitchesOvenCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection(), WitchesOvenCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.witches_oven), WitchesOvenCategory.UID);
@@ -44,5 +40,9 @@ public class BewitchmentJEI implements IModPlugin {
 		registry.handleRecipes(SpinningWheelRecipe.class, SpinningWheelCategory.SpinningWheelWrapper::new, SpinningWheelCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection(), SpinningWheelCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.spinning_wheel), SpinningWheelCategory.UID);
+		
+		registry.handleRecipes(FrostfireRecipe.class, FrostfireCategory.FrostfireWrapper::new, FrostfireCategory.UID);
+		registry.addRecipes(GameRegistry.findRegistry(FrostfireRecipe.class).getValuesCollection(), FrostfireCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModObjects.bottled_frostfire), FrostfireCategory.UID);
 	}
 }

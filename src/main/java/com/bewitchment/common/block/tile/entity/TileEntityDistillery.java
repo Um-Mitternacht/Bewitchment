@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.common.block.BlockDistillery;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
-public class TileEntityDistillery extends ModTileEntity implements ITickable {
+public class TileEntityDistillery extends TileEntityAltarStorage implements ITickable {
 	private final ItemStackHandler inventory_side = new ItemStackHandler(1) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {

@@ -17,15 +17,23 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+
 @SuppressWarnings("NullableProblems")
 public class ModItemBauble extends Item implements IBauble {
 	private final BaubleType type;
 	
-	protected ModItemBauble(String name, BaubleType type) {
+	protected ModItemBauble(String name, BaubleType type, List<Predicate<ItemStack>> predicates) {
 		super();
 		setMaxStackSize(1);
 		this.type = type;
-		Util.registerItem(this, name);
+		Util.registerItem(this, name, predicates);
+	}
+	
+	protected ModItemBauble(String name, BaubleType type) {
+		this(name, type, Collections.emptyList());
 	}
 	
 	@Override

@@ -1,7 +1,10 @@
 package com.bewitchment.common.block.util;
 
 import com.bewitchment.Util;
+import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,14 +25,21 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
-@SuppressWarnings({"deprecation", "NullableProblems", "WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"deprecation", "NullableProblems", "ConstantConditions"})
 public abstract class ModBlockContainer extends BlockContainer {
 	private final Object modInstance;
 	private final int guiID;
 	
-	public ModBlockContainer(Object modInstance, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, int guiID) {
+	protected ModBlockContainer(Object modInstance, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, int guiID) {
 		super(mat);
 		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, level);
+		this.modInstance = modInstance;
+		this.guiID = guiID;
+	}
+	
+	protected ModBlockContainer(Object modInstance, String name, Block base, int guiID) {
+		super(base.getDefaultState().getMaterial());
+		Util.registerBlock(this, name, base);
 		this.modInstance = modInstance;
 		this.guiID = guiID;
 	}
@@ -77,7 +87,7 @@ public abstract class ModBlockContainer extends BlockContainer {
 				player.openGui(modInstance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
 				return true;
 			}
-			return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
+			if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
@@ -109,7 +119,6 @@ public abstract class ModBlockContainer extends BlockContainer {
 	}
 	
 	public void refreshAltarPos(World world, BlockPos pos) {
-		//		if (world.getTileEntity(pos) instanceof IAltarStorage)
-		//			((IAltarStorage) world.getTileEntity(pos)).setAltarPosition(BlockWitchesAltar.getNearestAltar(world, pos));
+		if (world.getTileEntity(pos) instanceof TileEntityAltarStorage) ((TileEntityAltarStorage) world.getTileEntity(pos)).altarPos = BlockWitchesAltar.getNearestAltar(world, pos);
 	}
 }

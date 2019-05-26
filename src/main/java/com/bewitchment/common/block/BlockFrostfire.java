@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.tile.entity.TileEntityFrostfire;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
@@ -8,15 +9,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -69,6 +69,10 @@ public class BlockFrostfire extends ModBlockContainer {
 	@Override
 	public int quantityDropped(Random rand) {
 		return 0;
+	}
+	
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
 	}
 	
 	@Override

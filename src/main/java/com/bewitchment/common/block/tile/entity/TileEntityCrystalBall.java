@@ -1,8 +1,8 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.api.capability.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Fortune;
-import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("ConstantConditions")
-public class TileEntityCrystalBall extends ModTileEntity {
+public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	@Override
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!world.isRemote) {

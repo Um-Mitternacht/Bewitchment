@@ -1,7 +1,7 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.api.registry.SpinningWheelRecipe;
-import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -13,7 +13,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
-public class TileEntitySpinningWheel extends ModTileEntity implements ITickable {
+public class TileEntitySpinningWheel extends TileEntityAltarStorage implements ITickable {
 	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
 		@Override
 		protected void onContentsChanged(int index) {

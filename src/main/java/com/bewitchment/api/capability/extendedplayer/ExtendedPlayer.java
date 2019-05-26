@@ -1,4 +1,4 @@
-package com.bewitchment.api.capability;
+package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.nbt.NBTBase;

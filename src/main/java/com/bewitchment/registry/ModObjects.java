@@ -60,12 +60,13 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
-	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Tiles
+	public static final Block stone_witches_altar = registerTileEntity(new BlockWitchesAltar("stone_witches_altar", Blocks.STONE), TileEntityWitchesAltar.class);
 	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
 	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
 	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
+	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Material Blocks
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
@@ -186,7 +187,7 @@ public class ModObjects {
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
 	public static final Item wrathful_eye = new ItemWrathfulEye();
-	public static final Item grimoire_magia = Util.registerItem(new Item(), "grimoire_magia", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
+	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	//Util
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	//Materials

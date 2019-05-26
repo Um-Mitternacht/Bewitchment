@@ -2,8 +2,9 @@ package com.bewitchment.common;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
-import com.bewitchment.api.capability.ExtendedPlayer;
-import com.bewitchment.api.capability.ExtendedPlayerHandler;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
@@ -47,6 +48,7 @@ public class CommonProxy {
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
+		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
 	}
 	
 	public void init(FMLInitializationEvent event) {
