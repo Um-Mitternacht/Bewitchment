@@ -18,9 +18,8 @@ import net.minecraftforge.items.ItemStackHandler;
 public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
+		for (int i = 0; i < getInventories().length; i++) getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
 		super.readFromNBT(tag);
-		for (int i = 0; i < getInventories().length; i++)
-			getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
 	}
 	
 	@Override
@@ -34,17 +33,18 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public void markDirty() {
 		super.markDirty();
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 	}
 	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
-		return new SPacketUpdateTileEntity(getPos(), 0, writeToNBT(new NBTTagCompound()));
+		return new SPacketUpdateTileEntity(pos, 0, writeToNBT(new NBTTagCompound()));
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
+		markDirty();
 	}
 	
 	@Override

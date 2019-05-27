@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -118,7 +119,8 @@ public abstract class ModBlockContainer extends BlockContainer {
 		refreshAltarPos(world, pos);
 	}
 	
-	public void refreshAltarPos(World world, BlockPos pos) {
-		if (world.getTileEntity(pos) instanceof TileEntityAltarStorage) ((TileEntityAltarStorage) world.getTileEntity(pos)).altarPos = BlockWitchesAltar.getNearestAltar(world, pos);
+	public void refreshAltarPos(IBlockAccess world, BlockPos pos) {
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile instanceof TileEntityAltarStorage) ((TileEntityAltarStorage) tile).altarPos = BlockWitchesAltar.getNearestAltarPos(world, pos);
 	}
 }

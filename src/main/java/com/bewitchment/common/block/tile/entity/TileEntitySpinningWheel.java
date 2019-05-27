@@ -55,9 +55,9 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override

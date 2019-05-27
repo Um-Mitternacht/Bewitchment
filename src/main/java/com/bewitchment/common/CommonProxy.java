@@ -14,7 +14,6 @@ import com.bewitchment.registry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +33,7 @@ public class CommonProxy {
 	public final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
 		public ItemStack createIcon() {
-			return new ItemStack(Items.SNOWBALL);
+			return new ItemStack(ModObjects.stone_witches_altar);
 		}
 	};
 	public ModConfig config;

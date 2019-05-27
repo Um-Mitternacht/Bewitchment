@@ -85,11 +85,11 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		inUse = tag.getBoolean("inUse");
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override

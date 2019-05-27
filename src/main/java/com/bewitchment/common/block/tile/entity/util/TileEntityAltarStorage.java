@@ -8,8 +8,8 @@ public abstract class TileEntityAltarStorage extends ModTileEntity {
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
 		if (tag.hasKey("altarPos")) altarPos = BlockPos.fromLong(tag.getLong("altarPos"));
+		super.readFromNBT(tag);
 	}
 	
 	@Override

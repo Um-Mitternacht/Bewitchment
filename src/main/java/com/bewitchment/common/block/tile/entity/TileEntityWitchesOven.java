@@ -83,12 +83,12 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		burning = tag.getBoolean("burning");
 		burnTime = tag.getInteger("burnTime");
 		fuelBurnTime = tag.getInteger("fuelBurnTime");
 		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override
