@@ -26,9 +26,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions", "WeakerAccess"})
 public class BlockWitchesAltar extends ModBlockContainer {
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 2), COLOR = PropertyInteger.create("color", 0, 16);
@@ -58,11 +55,16 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		for (EnumFacing face : EnumFacing.HORIZONTALS) {
-			IBlockState state = world.getBlockState(pos.offset(face));
-			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+		int radius = 8;
+		for (int x = -radius; x <= radius; x++) {
+			for (int y = -radius; y <= radius; y++) {
+				for (int z = -radius; z <= radius; z++) {
+					IBlockState state = world.getBlockState(pos.add(x, y, z));
+					if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+				}
+			}
 		}
-		return true;
+		return super.canPlaceBlockAt(world, pos);
 	}
 	
 	@Override
@@ -146,46 +148,14 @@ public class BlockWitchesAltar extends ModBlockContainer {
 		return new BlockStateContainer(this, TYPE, COLOR);
 	}
 	
-	public boolean createAltar(World world, BlockPos pos, int color) {
-		BlockPattern.PatternHelper helper = altarPattern.match(world, pos);
-		if (helper != null) {
-			for (int i = 0; i < altarPattern.getPalmLength(); i++) {
-				for (int j = 0; j < altarPattern.getThumbLength(); j++) {
-					BlockPos pos0 = helper.translateOffset(i, j, 0).getPos();
-					if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
-						world.setBlockState(pos0, world.getBlockState(pos0).withProperty(TYPE, i == 2 && j == 2 ? 2 : 1), 2);
-						TileEntity tile = world.getTileEntity(pos0);
-						if (tile instanceof TileEntityWitchesAltar) {
-							TileEntityWitchesAltar altar = (TileEntityWitchesAltar) tile;
-							altar.color = color;
-							altar.markDirty();
-							refreshNearby(world, pos);
-						}
-					}
-				}
-			}
-			return true;
-		}
-		return false;
-	}
-	
 	public static TileEntityWitchesAltar getAltar(IBlockAccess world, BlockPos pos) {
-		for (BlockPos pos0 : getAltarPositions(world, pos)) {
-			TileEntity tile = world.getTileEntity(pos0);
-			if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
-		}
-		return null;
-	}
-	
-	private static List<BlockPos> getAltarPositions(IBlockAccess world, BlockPos pos) {
-		List<BlockPos> list = new ArrayList<>();
 		for (int x = -1; x <= 1; x++) {
 			for (int z = -1; z <= 1; z++) {
-				BlockPos pos0 = pos.add(x, 0, z);
-				if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) list.add(pos0);
+				TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
+				if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
 			}
 		}
-		return list;
+		return null;
 	}
 	
 	public static BlockPos getNearestAltarPos(IBlockAccess world, BlockPos pos) {
@@ -209,5 +179,28 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			Block block = world.getBlockState(pos0).getBlock();
 			if (block instanceof ModBlockContainer) ((ModBlockContainer) block).refreshAltarPos(world, pos0);
 		}
+	}
+	
+	public boolean createAltar(World world, BlockPos pos, int color) {
+		BlockPattern.PatternHelper helper = altarPattern.match(world, pos);
+		if (helper != null) {
+			for (int i = 1; i < helper.getWidth() - 1; i++) {
+				for (int j = 1; j < helper.getHeight() - 1; j++) {
+					BlockPos pos0 = helper.translateOffset(i, j, 0).getPos();
+					if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
+						world.setBlockState(pos0, world.getBlockState(pos0).withProperty(TYPE, i == 2 && j == 2 ? 2 : 1), 2);
+						TileEntity tile = world.getTileEntity(pos0);
+						if (tile instanceof TileEntityWitchesAltar) {
+							TileEntityWitchesAltar altar = (TileEntityWitchesAltar) tile;
+							altar.color = color;
+							altar.markDirty();
+							refreshNearby(world, pos0);
+						}
+					}
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 }
