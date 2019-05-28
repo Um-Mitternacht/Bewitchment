@@ -1,10 +1,14 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems"})
@@ -35,6 +39,11 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+		return super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
 	}
 	
 	@Override
