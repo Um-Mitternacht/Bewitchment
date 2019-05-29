@@ -54,12 +54,14 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		for (EnumFacing face : EnumFacing.HORIZONTALS) {
+		for (EnumFacing face : EnumFacing.VALUES) {
 			BlockPos pos0 = pos.offset(face);
 			IBlockState state = world.getBlockState(pos0);
 			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
-			state = world.getBlockState(pos0.offset(face.rotateY()));
-			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+			if (face.getAxis() != EnumFacing.Axis.Y) {
+				state = world.getBlockState(pos0.offset(face.rotateY()));
+				if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+			}
 		}
 		return super.canPlaceBlockAt(world, pos);
 	}
