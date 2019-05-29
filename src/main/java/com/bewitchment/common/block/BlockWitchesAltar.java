@@ -9,7 +9,6 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
-import net.minecraft.block.state.pattern.BlockStateMatcher;
 import net.minecraft.block.state.pattern.FactoryBlockPattern;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -30,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockWitchesAltar extends ModBlockContainer {
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 2), COLOR = PropertyInteger.create("color", 0, 16);
 	
-	private final BlockPattern altarPattern = FactoryBlockPattern.start().aisle("?AAA?", "ABBBA", "ABBBA", "?AAA?").where('?', s -> s != null && BlockStateMatcher.ANY.apply(s.getBlockState())).where('A', s -> s != null && !(s.getBlockState().getBlock() instanceof BlockWitchesAltar)).where('B', s -> s != null && s.getBlockState().getBlock() == this).build();
+	private final BlockPattern altarPattern = FactoryBlockPattern.start().aisle("AAAAA", "ABBBA", "ABBBA", "AAAAA").where('A', s -> s != null && !(s.getBlockState().getBlock() instanceof BlockWitchesAltar)).where('B', s -> s != null && s.getBlockState().getBlock() == this).build();
 	
 	public BlockWitchesAltar(String name, Block base) {
 		super(null, name, base, -1);
@@ -56,7 +55,10 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
-			IBlockState state = world.getBlockState(pos.offset(face));
+			BlockPos pos0 = pos.offset(face);
+			IBlockState state = world.getBlockState(pos0);
+			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+			state = world.getBlockState(pos0.offset(face.rotateY()));
 			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
 		}
 		return super.canPlaceBlockAt(world, pos);
