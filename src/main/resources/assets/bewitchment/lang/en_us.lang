@@ -1,11 +1,4 @@
 ﻿#BLOCKS
-tile.bewitchment.stone_witches_altar.name=Stone Witches' Altar
-tile.bewitchment.witches_oven.name=Witches' Oven
-tile.bewitchment.distillery.name=Distillery
-tile.bewitchment.spinning_wheel.name=Spinning Wheel
-tile.bewitchment.crystal_ball.name=Crystal Ball
-tile.bewitchment.frostfire.name=Frostfire
-
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
 tile.bewitchment.block_of_garnet.name=Block of Garnet
 tile.bewitchment.block_of_moonstone.name=Block of Moonstone
@@ -95,6 +88,18 @@ tile.bewitchment.cypress_button.name=Cypress Button
 tile.bewitchment.elder_button.name=Elder Button
 tile.bewitchment.juniper_button.name=Juniper Button
 tile.bewitchment.yew_button.name=Yew Button
+
+tile.bewitchment.stone_witches_altar.name=Stone Witches' Altar
+tile.bewitchment.nether_brick_witches_altar.name=Nether Brick Witches' Altar
+tile.bewitchment.obsidian_witches_altar.name=Obsidian Witches' Altar
+tile.bewitchment.coquina_witches_altar.name=Coquina Witches' Altar
+tile.bewitchment.embittered_brick_witches_altar.name=Embittered Brick Witches' Altar
+tile.bewitchment.scorned_brick_witches_altar.name=Scorned Brick Witches' Altar
+tile.bewitchment.witches_oven.name=Witches' Oven
+tile.bewitchment.distillery.name=Distillery
+tile.bewitchment.spinning_wheel.name=Spinning Wheel
+tile.bewitchment.crystal_ball.name=Crystal Ball
+tile.bewitchment.frostfire.name=Frostfire
 
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet

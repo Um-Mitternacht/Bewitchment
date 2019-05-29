@@ -33,7 +33,7 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public void markDirty() {
 		super.markDirty();
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
-		markDirty();
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
 	}
 	
 	@Override

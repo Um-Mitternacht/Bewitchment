@@ -45,7 +45,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
 	@Override
@@ -55,14 +55,9 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		int radius = 8;
-		for (int x = -radius; x <= radius; x++) {
-			for (int y = -radius; y <= radius; y++) {
-				for (int z = -radius; z <= radius; z++) {
-					IBlockState state = world.getBlockState(pos.add(x, y, z));
-					if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
-				}
-			}
+		for (EnumFacing face : EnumFacing.HORIZONTALS) {
+			IBlockState state = world.getBlockState(pos.offset(face));
+			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
 		}
 		return super.canPlaceBlockAt(world, pos);
 	}

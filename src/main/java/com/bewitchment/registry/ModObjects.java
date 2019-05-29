@@ -60,13 +60,6 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
-	//Tiles
-	public static final Block stone_witches_altar = registerTileEntity(new BlockWitchesAltar("stone_witches_altar", Blocks.STONE), TileEntityWitchesAltar.class);
-	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
-	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
-	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
-	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
-	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Material Blocks
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
@@ -94,7 +87,6 @@ public class ModObjects {
 	public static final Block embittered_brick_stairs = new ModBlockStairs("embittered_brick_stairs", embittered_bricks);
 	public static final Block embittered_bricks_slab = new ModBlockSlab("embittered_bricks_slab", embittered_bricks);
 	public static final Block embittered_brick_fence = new ModBlockFence("embittered_brick_fence", embittered_bricks);
-	
 	public static final Block scorned_bricks = new ModBlock("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
 	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
 	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
@@ -154,6 +146,19 @@ public class ModObjects {
 	public static final Block elder_button = new ModBlockButton("elder_button", elder_planks);
 	public static final Block juniper_button = new ModBlockButton("juniper_button", juniper_planks);
 	public static final Block yew_button = new ModBlockButton("yew_button", yew_planks);
+	//Tiles
+	public static final Block stone_witches_altar = registerTileEntity(new BlockWitchesAltar("stone_witches_altar", Blocks.STONE), TileEntityWitchesAltar.class);
+	public static final Block nether_brick_witches_altar = new BlockWitchesAltar("nether_brick_witches_altar", Blocks.NETHER_BRICK);
+	public static final Block obsidian_witches_altar = new BlockWitchesAltar("obsidian_witches_altar", Blocks.OBSIDIAN);
+	public static final Block coquina_witches_altar = new BlockWitchesAltar("coquina_witches_altar", coquina);
+	public static final Block embittered_brick_witches_altar = new BlockWitchesAltar("embittered_brick_witches_altar", embittered_bricks);
+	public static final Block scorned_brick_witches_altar = new BlockWitchesAltar("scorned_brick_witches_altar", scorned_bricks);
+	
+	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
+	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
+	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
+	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
+	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
 	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate");
