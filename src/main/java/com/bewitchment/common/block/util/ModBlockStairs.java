@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SuppressWarnings({"deprecation", "NullableProblems"})
+@SuppressWarnings({"NullableProblems"})
 public class ModBlockStairs extends BlockStairs {
 	public ModBlockStairs(String name, Block base, String... oreDictionaryNames) {
 		super(base.getDefaultState());
@@ -27,10 +27,5 @@ public class ModBlockStairs extends BlockStairs {
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return Util.isTransparent(world.getBlockState(pos.offset(face))) && super.doesSideBlockRendering(state, world, pos, face);
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
 	}
 }
