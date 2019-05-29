@@ -36,6 +36,26 @@ tile.bewitchment.scorned_brick_stairs.name=Scorned Brick Stairs
 tile.bewitchment.scorned_bricks_slab.name=Scorned Bricks Slab
 tile.bewitchment.scorned_brick_fence.name=Scorned Brick Fence
 
+tile.bewitchment.goblet.name=Goblet
+tile.bewitchment.filled_goblet.name=Filled Goblet
+
+tile.bewitchment.white_candle.name=White Candle
+tile.bewitchment.orange_candle.name=Orange Candle
+tile.bewitchment.magenta_candle.name=Magenta Candle
+tile.bewitchment.light_blue_candle.name=Light Blue Candle
+tile.bewitchment.yellow_candle.name=Yellow Candle
+tile.bewitchment.lime_candle.name=Lime Candle
+tile.bewitchment.pink_candle.name=Pink Candle
+tile.bewitchment.gray_candle.name=Gray Candle
+tile.bewitchment.light_gray_candle.name=Light Gray Candle
+tile.bewitchment.cyan_candle.name=Cyan Candle
+tile.bewitchment.purple_candle.name=Purple Candle
+tile.bewitchment.blue_candle.name=Blue Candle
+tile.bewitchment.brown_candle.name=Brown Candle
+tile.bewitchment.green_candle.name=Green Candle
+tile.bewitchment.red_candle.name=Red Candle
+tile.bewitchment.black_candle.name=Black Candle
+
 tile.bewitchment.embergrass.name=Embergrass
 tile.bewitchment.torchwood.name=Torchwood
 
@@ -220,6 +240,7 @@ item.bewitchment.ectoplasm.name=Ectoplasm
 item.bewitchment.iron_gall_ink.name=Iron Gall Ink
 item.bewitchment.oak_apple_gall.name=Oak Apple Gall
 item.bewitchment.spectral_dust.name=Spectral Dust
+item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
 #ENTITY

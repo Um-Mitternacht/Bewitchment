@@ -3,8 +3,6 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
-import com.bewitchment.common.block.altar.modifiers.BlockCandle;
-import com.bewitchment.common.block.altar.modifiers.BlockGoblet;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
@@ -95,6 +93,26 @@ public class ModObjects {
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks);
 	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
+	//Util Blocks
+	public static final Block goblet = new BlockGoblet(false);
+	public static final Block filled_goblet = new BlockGoblet(true);
+	//Candles
+	public static final Block white_candle = new BlockCandle("white_candle");
+	public static final Block orange_candle = new BlockCandle("orange_candle");
+	public static final Block magenta_candle = new BlockCandle("magenta_candle");
+	public static final Block light_blue_candle = new BlockCandle("light_blue_candle");
+	public static final Block yellow_candle = new BlockCandle("yellow_candle");
+	public static final Block lime_candle = new BlockCandle("lime_candle");
+	public static final Block pink_candle = new BlockCandle("pink_candle");
+	public static final Block gray_candle = new BlockCandle("gray_candle");
+	public static final Block light_gray_candle = new BlockCandle("light_gray_candle");
+	public static final Block cyan_candle = new BlockCandle("cyan_candle");
+	public static final Block purple_candle = new BlockCandle("purple_candle");
+	public static final Block blue_candle = new BlockCandle("blue_candle");
+	public static final Block brown_candle = new BlockCandle("brown_candle");
+	public static final Block green_candle = new BlockCandle("green_candle");
+	public static final Block red_candle = new BlockCandle("red_candle");
+	public static final Block black_candle = new BlockCandle("black_candle");
 	//Plants
 	public static final Block embergrass = new BlockEmbergrass();
 	public static final Block torchwood = new BlockTorchwood();
@@ -195,27 +213,8 @@ public class ModObjects {
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
 	public static final Item wrathful_eye = new ItemWrathfulEye();
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
-	//Util
+	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
-	public static final Block goblet = new BlockGoblet(false);
-	public static final Block filled_goblet = new BlockGoblet(true);
-	//Candles
-	public static final Block candle_white = new BlockCandle("candle_white");
-	public static final Block candle_orange = new BlockCandle("candle_orange");
-	public static final Block candle_magenta = new BlockCandle("candle_magenta");
-	public static final Block candle_light_blue = new BlockCandle("candle_light_blue");
-	public static final Block candle_yellow = new BlockCandle("candle_yellow");
-	public static final Block candle_lime = new BlockCandle("candle_lime");
-	public static final Block candle_pink = new BlockCandle("candle_pink");
-	public static final Block candle_gray = new BlockCandle("candle_gray");
-	public static final Block candle_light_gray = new BlockCandle("candle_light_gray");
-	public static final Block candle_cyan = new BlockCandle("candle_cyan");
-	public static final Block candle_purple = new BlockCandle("candle_purple");
-	public static final Block candle_blue = new BlockCandle("candle_blue");
-	public static final Block candle_brown = new BlockCandle("candle_brown");
-	public static final Block candle_green = new BlockCandle("candle_green");
-	public static final Block candle_red = new BlockCandle("candle_red");
-	public static final Block candle_black = new BlockCandle("candle_black");
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
@@ -294,6 +293,7 @@ public class ModObjects {
 	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dyeBlack");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
+	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	
 	public static void preInit() {

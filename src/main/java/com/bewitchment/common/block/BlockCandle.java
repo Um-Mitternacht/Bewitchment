@@ -1,8 +1,5 @@
-package com.bewitchment.common.block.altar.modifiers;
+package com.bewitchment.common.block;
 
-/**
- * Created by Joseph on 5/29/2019.
- */
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -24,7 +21,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockCandle extends BlockCandleBase {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
 	
@@ -54,7 +51,8 @@ public class BlockCandle extends BlockCandleBase {
 			world.setBlockState(pos, getDefaultState().withProperty(LIT, false));
 			world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5f, 2.6f + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8f, false);
 			return true;
-		} else {
+		}
+		else {
 			ItemStack stack = player.getHeldItem(hand);
 			if (stack.getItem() == Items.FLINT_AND_STEEL) {
 				stack.damageItem(1, player);
@@ -78,7 +76,6 @@ public class BlockCandle extends BlockCandleBase {
 	
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state.getValue(LIT))
-			world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
 	}
 }

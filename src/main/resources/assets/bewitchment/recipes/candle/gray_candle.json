@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"CD"
+  ],
+  "key": {
+	"C": {
+	  "item": "#CANDLE_ANY"
+	},
+	"D": {
+	  "type": "forge:ore_dict",
+	  "ore": "dyeGray"
+	}
+  },
+  "result": {
+	"item": "bewitchment:gray_candle"
+  }
+}

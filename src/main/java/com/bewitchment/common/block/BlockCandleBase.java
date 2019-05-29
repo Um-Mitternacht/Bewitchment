@@ -1,5 +1,6 @@
-package com.bewitchment.common.block.altar.modifiers;
+package com.bewitchment.common.block;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.common.block.util.ModBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,14 +15,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.crafting.IInfusionStabiliserExt;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "NullableProblems", "WeakerAccess"})
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public abstract class BlockCandleBase extends ModBlock implements IInfusionStabiliserExt {
-	public static final PropertyBool LIT = PropertyBool.create("lit");
+	protected static final PropertyBool LIT = PropertyBool.create("lit");
 	
-	public BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
+	protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
 		super(name, mat, sound, hardness, resistance, tool, level);
 		setLightOpacity(0);
+		Bewitchment.proxy.ignoreProperty(this, LIT);
 	}
 	
 	@Override

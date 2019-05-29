@@ -1,4 +1,4 @@
-package com.bewitchment.common.block.altar.modifiers;
+package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
 import net.minecraft.block.SoundType;
@@ -9,11 +9,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 /**
  * Created by Joseph on 5/29/2019.
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockGoblet extends ModBlock {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.375, 0, 0.375, 0.625, 0.375, 0.625);
 	private final boolean filled;
@@ -32,6 +33,11 @@ public class BlockGoblet extends ModBlock {
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+	
+	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
 	}
 	
 	@Override
