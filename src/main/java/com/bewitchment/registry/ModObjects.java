@@ -3,6 +3,8 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.*;
+import com.bewitchment.common.block.altar.modifiers.BlockCandle;
+import com.bewitchment.common.block.altar.modifiers.BlockGoblet;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
@@ -195,6 +197,25 @@ public class ModObjects {
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	//Util
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
+	public static final Block goblet = new BlockGoblet(false);
+	public static final Block filled_goblet = new BlockGoblet(true);
+	//Candles
+	public static final Block candle_white = new BlockCandle("candle_white");
+	public static final Block candle_orange = new BlockCandle("candle_orange");
+	public static final Block candle_magenta = new BlockCandle("candle_magenta");
+	public static final Block candle_light_blue = new BlockCandle("candle_light_blue");
+	public static final Block candle_yellow = new BlockCandle("candle_yellow");
+	public static final Block candle_lime = new BlockCandle("candle_lime");
+	public static final Block candle_pink = new BlockCandle("candle_pink");
+	public static final Block candle_gray = new BlockCandle("candle_gray");
+	public static final Block candle_light_gray = new BlockCandle("candle_light_gray");
+	public static final Block candle_cyan = new BlockCandle("candle_cyan");
+	public static final Block candle_purple = new BlockCandle("candle_purple");
+	public static final Block candle_blue = new BlockCandle("candle_blue");
+	public static final Block candle_brown = new BlockCandle("candle_brown");
+	public static final Block candle_green = new BlockCandle("candle_green");
+	public static final Block candle_red = new BlockCandle("candle_red");
+	public static final Block candle_black = new BlockCandle("candle_black");
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
