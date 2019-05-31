@@ -60,9 +60,9 @@ public class ModRecipes {
 	}
 	
 	private static void altarInit() {
-		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof IPlantable || s.getBlock() instanceof IGrowable || s.getBlock() instanceof BlockMelon || s.getBlock() instanceof BlockPumpkin, 30);
-		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLog || (s.getBlock() instanceof ModBlockPillar && s.getMaterial() == Material.WOOD), 15);
-		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLeaves, 7);
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof IPlantable || s.getBlock() instanceof IGrowable || s.getBlock() instanceof BlockMelon || s.getBlock() instanceof BlockPumpkin, 15);
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLog || (s.getBlock() instanceof ModBlockPillar && s.getMaterial() == Material.WOOD), 7);
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLeaves, 3);
 	}
 	
 	private static void athamePostInit() {
