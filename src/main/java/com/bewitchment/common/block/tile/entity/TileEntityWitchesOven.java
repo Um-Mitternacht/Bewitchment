@@ -36,7 +36,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	};
 	public int burnTime, fuelBurnTime, progress;
 	private OvenRecipe recipe;
-	private boolean burning = false;
+	private boolean burning;
 	
 	@Override
 	public void update() {

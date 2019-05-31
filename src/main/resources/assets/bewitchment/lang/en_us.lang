@@ -287,10 +287,8 @@ bewitchment.treasure=You might be very rich, very soon.
 #INFO
 itemGroup.bewitchment=Bewitchment
 
-jei.frostfire.minAmount=Min: %s
-jei.frostfire.maxAmount=Max: %s
-
-altar.powerinfo=%d/%d (%d)
+altar.power_info=%d/%d (%d)
+altar.no_power=Your source of magic is not strong enough
 
 fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting

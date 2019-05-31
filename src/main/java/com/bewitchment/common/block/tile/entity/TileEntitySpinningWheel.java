@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.SpinningWheelRecipe;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.item.ItemStack;
@@ -28,13 +29,15 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	};
 	public int progress;
 	private SpinningWheelRecipe recipe;
+	private boolean hasPower;
 	
 	@Override
 	public void update() {
 		if (!world.isRemote) {
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
-				progress++;
+				if (world.getTotalWorldTime() % 20 == 0) hasPower = altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), null, 20);
+				if (hasPower) progress++;
 				if (progress >= 200) {
 					progress = 0;
 					recipe.giveOutput(inventory_up, inventory_down);
@@ -56,6 +59,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		hasPower = tag.getBoolean("hasPower");
 		progress = tag.getInteger("progress");
 		super.readFromNBT(tag);
 	}
@@ -63,6 +67,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("hasPower", hasPower);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
 	}

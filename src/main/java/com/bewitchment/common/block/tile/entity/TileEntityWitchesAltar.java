@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -15,12 +16,17 @@ import net.minecraftforge.common.capabilities.Capability;
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
 	
-	public int color;
+	public int color, gain = 1;
+	private byte[] cachedValues = new byte[Short.MAX_VALUE];
+	private int counter;
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		magicPower.deserializeNBT(tag.getCompoundTag("magicPower"));
 		color = tag.getInteger("color");
+		if (tag.hasKey("gain")) gain = tag.getInteger("gain");
+		if (tag.hasKey("cachedValues")) cachedValues = tag.getByteArray("cachedValues");
+		counter = tag.getInteger("counter");
 		super.readFromNBT(tag);
 	}
 	
@@ -28,6 +34,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setTag("magicPower", magicPower.serializeNBT());
 		tag.setInteger("color", color);
+		tag.setInteger("gain", gain);
+		if (cachedValues != null) tag.setByteArray("cachedValues", cachedValues);
+		tag.setInteger("counter", counter);
 		return super.writeToNBT(tag);
 	}
 	
@@ -48,5 +57,28 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void update() {
+		if (!world.isRemote && cachedValues != null) {
+			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
+			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain);
+			for (int i = 0; i < 64; i++) {
+				counter = ++counter % Short.MAX_VALUE;
+				int x = counter & 31;
+				int y = (counter >> 5) & 31;
+				int z = (counter >> 10) & 31;
+				BlockPos check = new BlockPos(pos.getX() + x - 16, pos.getY() + y - 16, pos.getZ() + z - 16);
+				byte val = 0;
+				if (world.getBlockState(check).getBlock() instanceof IGrowable) val = 1;
+				if (val != cachedValues[counter]) {
+					magicPower.maxAmount -= cachedValues[counter];
+					cachedValues[counter] = val;
+					magicPower.maxAmount += val;
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void onLoad() {
+		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
 	}
 }

@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.common.block.BlockDistillery;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -39,7 +40,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	};
 	public int burnTime, progress;
 	private DistilleryRecipe recipe;
-	private boolean inUse = false;
+	private boolean hasPower, inUse;
 	
 	@Override
 	public void update() {
@@ -57,7 +58,8 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
 				if (burnTime > -1) {
-					progress++;
+					if (world.getTotalWorldTime() % 20 == 0) hasPower = altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), null, 20);
+					if (hasPower) progress++;
 					if (progress >= 200) {
 						progress = 0;
 						recipe.giveOutput(inventory_up, inventory_down);
@@ -86,6 +88,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		hasPower = tag.getBoolean("hasPower");
 		inUse = tag.getBoolean("inUse");
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
@@ -95,6 +98,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("hasPower", hasPower);
 		tag.setBoolean("inUse", inUse);
 		tag.setInteger("burnTime", burnTime);
 		tag.setInteger("progress", progress);

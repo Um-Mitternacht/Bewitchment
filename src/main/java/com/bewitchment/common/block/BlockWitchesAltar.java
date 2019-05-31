@@ -25,6 +25,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Random;
+
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions", "WeakerAccess"})
 public class BlockWitchesAltar extends ModBlockContainer {
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 2), COLOR = PropertyInteger.create("color", 0, 16);
@@ -101,8 +103,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 					TileEntityWitchesAltar tile = getAltar(world, pos);
 					if (tile != null) {
 						MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);
-						// replace 1 with gain
-						player.sendStatusMessage(new TextComponentTranslation("altar.powerinfo", cap.amount, cap.maxAmount, 1), true);
+						player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.amount, cap.maxAmount, tile.gain), true);
 					}
 				}
 			}
@@ -124,6 +125,11 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		world.notifyBlockUpdate(pos, state, state, 11);
 	}
 	
 	@Override

@@ -35,8 +35,8 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	@Override
 	public void readNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face, NBTBase nbt) {
 		NBTTagCompound tag = (NBTTagCompound) nbt;
-		amount = tag.getInteger("amount");
-		maxAmount = tag.getInteger("maxAmount");
+		instance.amount = tag.getInteger("amount");
+		instance.maxAmount = tag.getInteger("maxAmount");
 	}
 	
 	@Override
@@ -72,18 +72,12 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public boolean drain(int amount) {
-		if (this.amount - amount >= 0) {
-			this.amount = Math.max(0, this.amount - amount);
-			return true;
-		}
-		return false;
+		this.amount = Math.max(0, this.amount - amount);
+		return this.amount - amount >= 0;
 	}
 	
 	public boolean fill(int amount) {
-		if (this.amount <= this.maxAmount) {
-			this.amount = Math.min(this.amount + amount, this.maxAmount);
-			return true;
-		}
-		return false;
+		this.amount = Math.min(this.amount + amount, this.maxAmount);
+		return this.amount <= this.maxAmount;
 	}
 }
