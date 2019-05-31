@@ -7,6 +7,7 @@ import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.api.registry.FrostfireRecipe;
 import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.api.registry.SpinningWheelRecipe;
+import com.bewitchment.common.block.util.ModBlockPillar;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
@@ -16,6 +17,7 @@ import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.fortune.*;
 import com.google.common.collect.Sets;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -58,13 +60,9 @@ public class ModRecipes {
 	}
 	
 	private static void altarInit() {
-		for (Block block : ForgeRegistries.BLOCKS) {
-			byte power = 0;
-			if (block instanceof IPlantable || block instanceof IGrowable || block instanceof BlockMelon || block instanceof BlockPumpkin) power = 30;
-			if (block instanceof BlockLog) power = 15;
-			if (block instanceof BlockLeaves) power = 7;
-			if (power != 0) BewitchmentAPI.registerNatureValue(block, power);
-		}
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof IPlantable || s.getBlock() instanceof IGrowable || s.getBlock() instanceof BlockMelon || s.getBlock() instanceof BlockPumpkin, 30);
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLog || (s.getBlock() instanceof ModBlockPillar && s.getMaterial() == Material.WOOD), 15);
+		BewitchmentAPI.registerNatureValue(s -> s.getBlock() instanceof BlockLeaves, 7);
 	}
 	
 	private static void athamePostInit() {

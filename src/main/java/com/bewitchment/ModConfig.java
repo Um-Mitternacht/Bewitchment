@@ -21,7 +21,7 @@ public class ModConfig extends Configuration {
 	public ModConfig(File file) {
 		super(file);
 		load();
-		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, 4096, "The amount of blocks an altar should scan per tick.");
+		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, Short.MAX_VALUE, "The amount of blocks an altar should scan per tick.");
 		
 		maxGrimoirePower = getInt("maxGrimoirePower", "misc", 1000, 0, Integer.MAX_VALUE, "The maximum power a Grimoire Magia can have.");
 		
