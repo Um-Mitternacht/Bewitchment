@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ModConfig extends Configuration {
+	public final int altarScansPerTick;
+	
 	public final int maxGrimoirePower;
 	
 	public final int cypressChance, elderChance, juniperChance, yewChance;
@@ -19,6 +21,8 @@ public class ModConfig extends Configuration {
 	public ModConfig(File file) {
 		super(file);
 		load();
+		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, 4096, "The amount of blocks an altar should scan per tick.");
+		
 		maxGrimoirePower = getInt("maxGrimoirePower", "misc", 1000, 0, Integer.MAX_VALUE, "The maximum power a Grimoire Magia can have.");
 		
 		cypressChance = getInt("cypressChance", "treeGen", 20, 0, Byte.MAX_VALUE, "The chance for cypress trees to spawn. Set to 0 to disable.");

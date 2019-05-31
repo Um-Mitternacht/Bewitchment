@@ -287,7 +287,7 @@ bewitchment.treasure=You might be very rich, very soon.
 #INFO
 itemGroup.bewitchment=Bewitchment
 
-altar.power_info=%d/%d (%d)
+altar.power_info=%d/%d (x%d)
 altar.no_power=Your source of magic is not strong enough
 
 fortune.has_fortune=This one's future has already been revealed: %s

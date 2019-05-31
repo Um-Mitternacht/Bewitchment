@@ -15,8 +15,7 @@ import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.fortune.*;
 import com.google.common.collect.Sets;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockSapling;
+import net.minecraft.block.*;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -28,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -43,6 +43,7 @@ public class ModRecipes {
 		spinningWheelInit();
 		frostfireInit();
 		fortuneInit();
+		altarInit();
 		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
@@ -54,6 +55,16 @@ public class ModRecipes {
 		athamePostInit();
 		furnacePostInit();
 		ovenPostInit();
+	}
+	
+	private static void altarInit() {
+		for (Block block : ForgeRegistries.BLOCKS) {
+			byte power = 0;
+			if (block instanceof IPlantable || block instanceof IGrowable || block instanceof BlockMelon || block instanceof BlockPumpkin) power = 30;
+			if (block instanceof BlockLog) power = 15;
+			if (block instanceof BlockLeaves) power = 7;
+			if (power != 0) BewitchmentAPI.registerNatureValue(block, power);
+		}
 	}
 	
 	private static void athamePostInit() {
