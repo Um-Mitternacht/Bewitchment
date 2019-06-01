@@ -146,6 +146,9 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.cyan_candle), new AspectList().add(Aspect.LIFE, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.white_candle), new AspectList().add(Aspect.AURA, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.purple_candle), new AspectList().add(Aspect.MAGIC, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.blue_candle), new AspectList().add(Aspect.WATER, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_candle), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.pink_candle), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
