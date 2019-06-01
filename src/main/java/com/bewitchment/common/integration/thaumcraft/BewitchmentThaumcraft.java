@@ -148,7 +148,11 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.purple_candle), new AspectList().add(Aspect.MAGIC, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.blue_candle), new AspectList().add(Aspect.WATER, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.green_candle), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
-		event.register.registerObjectTag(new ItemStack(ModObjects.pink_candle), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.pink_candle), new AspectList().add(Aspect.PROTECT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.yellow_candle), new AspectList().add(Aspect.MIND, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.orange_candle), new AspectList().add(Aspect.FIRE, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.red_candle), new AspectList().add(DEMON, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.brown_candle), new AspectList().add(Aspect.EARTH, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
