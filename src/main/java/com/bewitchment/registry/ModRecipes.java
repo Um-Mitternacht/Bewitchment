@@ -130,6 +130,7 @@ public class ModRecipes {
 		GameRegistry.addSmelting(ModObjects.yew_wood, new ItemStack(Items.COAL, 1, 1), 0.15f);
 		
 		GameRegistry.addSmelting(ModObjects.unfired_jar, new ItemStack(ModObjects.empty_jar), 0.15f);
+		GameRegistry.addSmelting(ModObjects.golden_thread, new ItemStack(Items.GOLD_NUGGET, 1, 0), 0.65f);
 	}
 	
 	private static void furnacePostInit() {
