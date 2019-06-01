@@ -27,6 +27,7 @@ import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -35,6 +36,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -323,6 +325,17 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
+	}
+	
+	public static void init() {
+		initOreDictionary();
+	}
+	
+	//This likely needs to be moved to the proxy class. But for now, I will leave it as is.
+	private static void initOreDictionary() {
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, 4));
 	}
 	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
