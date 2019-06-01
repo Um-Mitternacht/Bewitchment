@@ -194,6 +194,9 @@ public class ModRecipes {
 	private static void frostfireInit() {
 		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.fromOres("oreIron"), new ItemStack(ModObjects.cold_iron_ingot)));
 		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.fromOres("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget_alternate_1"), Util.fromOres("dustIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget_alternate_2"), Util.fromOres("gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget_alternate_3"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
 	}
 	
 	private static void fortuneInit() {
