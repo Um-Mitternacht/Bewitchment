@@ -141,7 +141,7 @@ public class ModRecipes {
 	
 	private static void ovenInit() {
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit"), new ItemStack(Blocks.SAPLING, 1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
-		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit_alt"), new ItemStack(Blocks.SAPLING, 1, 5), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
+		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit_alt0"), new ItemStack(Blocks.SAPLING, 1, 5), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "spruce_heart"), new ItemStack(Blocks.SAPLING, 1, 1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.spruce_heart), 0.75f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "birch_soul"), new ItemStack(Blocks.SAPLING, 1, 2), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.birch_soul), 0.75f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil"), new ItemStack(Blocks.SAPLING, 1, 3), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.cloudy_oil), 0.75f));
@@ -154,12 +154,12 @@ public class ModRecipes {
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bread"), new ItemStack(Items.WHEAT), new ItemStack(Items.BREAD), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cactus_green"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "popped_chorus_fruit"), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModObjects.dimensional_sand, 2), 0.75f));
-		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash), new ItemStack(ModObjects.cloudy_oil), 0.85f));
+		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash), new ItemStack(ModObjects.cloudy_oil), 0.85f));
 		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm"), new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModObjects.ectoplasm, 3), 0.65f));
-		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f));
+		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt0"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f));
 		
-		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alternate"), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.ENDER_PEARL, 1, 0), new ItemStack(ModObjects.dimensional_sand, 4, 0), 0.35f));
-		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alternate_two"), new ItemStack(Items.SHULKER_SHELL), new ItemStack(Items.CHORUS_FRUIT_POPPED, 1, 0), new ItemStack(ModObjects.dimensional_sand, 2, 0), 0.45f));
+		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alternate0"), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.ENDER_PEARL, 1, 0), new ItemStack(ModObjects.dimensional_sand, 4, 0), 0.35f));
+		BewitchmentAPI.registerOvenRecipe(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alternate1"), new ItemStack(Items.SHULKER_SHELL), new ItemStack(Items.CHORUS_FRUIT_POPPED, 1, 0), new ItemStack(ModObjects.dimensional_sand, 2, 0), 0.45f));
 	}
 	
 	private static void ovenPostInit() {
@@ -195,9 +195,9 @@ public class ModRecipes {
 	private static void frostfireInit() {
 		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot"), Util.fromOres("oreIron"), new ItemStack(ModObjects.cold_iron_ingot)));
 		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.fromOres("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt1"), Util.fromOres("dustIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt2"), Util.fromOres("gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget_alt1"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt0"), Util.fromOres("dustIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt1"), Util.fromOres("gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget_alt0"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
 	}
 	
 	private static void fortuneInit() {
