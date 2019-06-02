@@ -24,6 +24,7 @@ package com.bewitchment;
 //GSVB DROO YV NVG DRGS DIZGS
 
 import com.bewitchment.common.CommonProxy;
+import com.bewitchment.registry.ModObjects;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -56,6 +57,7 @@ public class Bewitchment {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		ModObjects.init();
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");

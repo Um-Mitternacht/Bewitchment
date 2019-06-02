@@ -36,7 +36,8 @@ public class BewitchmentThaumcraft {
 		//		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
 		//		event.register.registerObjectTag(new ItemStack(ModObjects.tarots_deck), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10));
 		//Altar Blocks
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.VOID, 15));
+		event.register.registerObjectTag(new ItemStack(ModObjects.goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.VOID, 15));
+		event.register.registerObjectTag(new ItemStack(ModObjects.filled_goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15));
 		//Extra Blocks
 		//		event.register.registerObjectTag(new ItemStack(ModObjects.purifying_earth), new AspectList().add(Aspect.EARTH, 5).add(SUN, 5));
 		//Ores
@@ -141,13 +142,31 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.birch_soul), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
 		
+		//Candles
+		event.register.registerObjectTag(new ItemStack(ModObjects.black_candle), new AspectList().add(Aspect.DARKNESS, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.cyan_candle), new AspectList().add(Aspect.LIFE, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.white_candle), new AspectList().add(Aspect.AURA, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.purple_candle), new AspectList().add(Aspect.MAGIC, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.blue_candle), new AspectList().add(Aspect.WATER, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_candle), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.pink_candle), new AspectList().add(Aspect.PROTECT, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.yellow_candle), new AspectList().add(Aspect.MIND, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.orange_candle), new AspectList().add(Aspect.FIRE, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.red_candle), new AspectList().add(DEMON, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.brown_candle), new AspectList().add(Aspect.EARTH, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.gray_candle), new AspectList().add(Aspect.VOID, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.light_gray_candle), new AspectList().add(Aspect.COLD, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.magenta_candle), new AspectList().add(Aspect.EXCHANGE, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.lime_candle), new AspectList().add(Aspect.ALCHEMY, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.light_blue_candle), new AspectList().add(Aspect.AIR, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
+		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
 		event.register.registerObjectTag(new ItemStack(ModObjects.oak_apple_gall), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.ENTROPY, 2));
 		//		evt.register.registerObjectTag(new ItemStack(ModObjects.needle_bone), new AspectList().add(Aspect.DEATH, 2).add(Aspect.CRAFT, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.spectral_dust), new AspectList().add(Aspect.VOID, 4).add(Aspect.SOUL, 4));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.tallow), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8).add(SUN, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.tallow), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8).add(Aspect.BEAST, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.wood_ash), new AspectList().add(Aspect.PLANT, 3).add(Aspect.ENTROPY, 3));
 		
 		//Add some of our aspects to existing items in vanilla
