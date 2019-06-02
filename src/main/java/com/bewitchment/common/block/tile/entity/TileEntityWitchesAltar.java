@@ -25,10 +25,8 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	public int color, gain = 1;
 	private double multiplier = 1;
-	private int maxPower;
 	
-	private Map<IBlockState, Integer> statesFound = new HashMap<>();
-	private int[] cachedValues = new int[Short.MAX_VALUE];
+	private Map<IBlockState, Integer> map = new HashMap<>();
 	private int counter;
 	
 	@Override
@@ -37,8 +35,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		color = tag.getInteger("color");
 		if (tag.hasKey("gain")) gain = tag.getInteger("gain");
 		multiplier = tag.getDouble("multiplier");
-		maxPower = tag.getInteger("maxPower");
-		if (tag.hasKey("cachedValues")) cachedValues = tag.getIntArray("cachedValues");
 		counter = tag.getInteger("counter");
 		super.readFromNBT(tag);
 	}
@@ -49,8 +45,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		tag.setInteger("color", color);
 		tag.setInteger("gain", gain);
 		tag.setDouble("multiplier", multiplier);
-		tag.setInteger("maxPower", maxPower);
-		if (cachedValues != null) tag.setIntArray("cachedValues", cachedValues);
 		tag.setInteger("counter", counter);
 		return super.writeToNBT(tag);
 	}
@@ -72,7 +66,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void update() {
-		if (!world.isRemote && cachedValues != null) {
+		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
 			scan(Bewitchment.proxy.config.altarScansPerTick);
@@ -83,34 +77,33 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void onLoad() {
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
 		counter = 0;
-		scan(Short.MAX_VALUE);
+		magicPower.maxAmount = 0;
+		map.clear();
+		scan(4096);
 	}
 	
 	private void scan(int times) {
 		for (int i = 0; i < times; i++) {
-			counter = ++counter % Short.MAX_VALUE;
-			int x = counter & 31;
-			int y = (counter >> 5) & 31;
-			int z = (counter >> 10) & 31;
-			BlockPos check = new BlockPos(pos.getX() + x - 16, pos.getY() + y - 16, pos.getZ() + z - 16);
+			counter = ++counter % 4096;
+			int x = counter & 15;
+			int y = (counter >> 4) & 15;
+			int z = (counter >> 8) & 15;
+			BlockPos check = new BlockPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
 			IBlockState state = world.getBlockState(check);
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 			else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
-			int found = statesFound.getOrDefault(state, 0);
-			if (found < 1 + statesFound.size() / 2) {
-				int val = BewitchmentAPI.getNatureValue(state);
-				if (val != 0 && val != cachedValues[counter]) {
-					maxPower -= cachedValues[counter];
-					cachedValues[counter] = val;
-					maxPower += val;
-					statesFound.put(state, ++found);
-				}
+			int val = BewitchmentAPI.getNatureValue(state);
+			if (val != 0) {
+				int current = map.getOrDefault(state, 0);
+				if (current < 20) map.put(state, current + val);
 			}
-			if (counter == Short.MAX_VALUE - 1) {
-				magicPower.maxAmount = (int) (maxPower * multiplier);
-				maxPower = 0;
-				statesFound.clear();
+			if (counter == 4095) {
+				magicPower.maxAmount = 0;
+				for (int value : map.values()) magicPower.maxAmount += value;
+				magicPower.maxAmount += map.keySet().size() * 40;
+				magicPower.maxAmount *= multiplier;
+				map.clear();
 			}
 		}
 	}
