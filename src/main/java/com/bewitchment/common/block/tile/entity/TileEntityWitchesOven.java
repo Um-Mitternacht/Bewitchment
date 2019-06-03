@@ -4,6 +4,7 @@ import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -56,7 +57,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 					if (time > 0) {
 						burnTime = time;
 						fuelBurnTime = burnTime;
-						inventory_up.extractItem(0, 1, false);
+						ItemStack stack = inventory_up.extractItem(0, 1, false);
+						if (stack.getItem() == Items.LAVA_BUCKET) inventory_up.insertItem(0, new ItemStack(Items.BUCKET), false);
 						if (!burning) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 					}
 				}
