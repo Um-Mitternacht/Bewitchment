@@ -17,6 +17,14 @@ import net.minecraftforge.items.ItemStackHandler;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
+	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
+		@Override
+		public boolean isItemValid(int index, ItemStack stack) {
+			return false;
+		}
+	};
+	public int burnTime, fuelBurnTime, progress;
+	private OvenRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -28,14 +36,6 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
-	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
-		@Override
-		public boolean isItemValid(int index, ItemStack stack) {
-			return false;
-		}
-	};
-	public int burnTime, fuelBurnTime, progress;
-	private OvenRecipe recipe;
 	private boolean burning = false;
 	
 	@Override

@@ -49,6 +49,25 @@ public class BlockFrostfire extends ModBlockContainer {
 	}
 	
 	@Override
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
+	}
+	
+	@Override
+	public int quantityDropped(Random rand) {
+		return 0;
+	}
+	
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+	}
+	
+	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return world.getBlockState(pos.down()).getBlock().getItem(world, pos.down(), world.getBlockState(pos.down()));
 	}
@@ -64,24 +83,5 @@ public class BlockFrostfire extends ModBlockContainer {
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
-	public int quantityDropped(Random rand) {
-		return 0;
-	}
-	
-	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
-	}
-	
-	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
-	}
-	
-	@Override
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
 	}
 }

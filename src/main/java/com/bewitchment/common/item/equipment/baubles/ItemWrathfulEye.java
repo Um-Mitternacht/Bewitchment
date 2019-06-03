@@ -23,13 +23,13 @@ public class ItemWrathfulEye extends ModItemBauble {
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.WEAKNESS)) living.removePotionEffect(MobEffects.WEAKNESS);
 	}
 	
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.WEAKNESS)) living.removePotionEffect(MobEffects.WEAKNESS);
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		player.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
 	}
 	
 	@SubscribeEvent

@@ -36,6 +36,39 @@ public class BlockWitchesAltar extends ModBlockContainer {
 		setDefaultState(getBlockState().getBaseState().withProperty(TYPE, 0).withProperty(COLOR, 0));
 	}
 	
+	public static TileEntityWitchesAltar getAltar(IBlockAccess world, BlockPos pos) {
+		for (int x = -1; x <= 1; x++) {
+			for (int z = -1; z <= 1; z++) {
+				TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
+				if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
+			}
+		}
+		return null;
+	}
+	
+	public static BlockPos getNearestAltarPos(IBlockAccess world, BlockPos pos) {
+		if (world.getBlockState(pos).getBlock() instanceof BlockWitchesAltar) {
+			TileEntityWitchesAltar altar = getAltar(world, pos);
+			if (altar != null) return altar.getPos();
+		}
+		int radius = 8;
+		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
+			if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
+				TileEntityWitchesAltar altar = getAltar(world, pos0);
+				if (altar != null) return altar.getPos();
+			}
+		}
+		return null;
+	}
+	
+	private static void refreshNearby(IBlockAccess world, BlockPos pos) {
+		int radius = 8;
+		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
+			Block block = world.getBlockState(pos0).getBlock();
+			if (block instanceof ModBlockContainer) ((ModBlockContainer) block).refreshAltarPos(world, pos0);
+		}
+	}
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return meta == 2 ? new TileEntityWitchesAltar() : null;
@@ -45,30 +78,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
-	
-	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.BLOCK;
-	}
-	
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		for (EnumFacing face : EnumFacing.VALUES) {
-			BlockPos pos0 = pos.offset(face);
-			IBlockState state = world.getBlockState(pos0);
-			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
-			if (face.getAxis() != EnumFacing.Axis.Y) {
-				state = world.getBlockState(pos0.offset(face.rotateY()));
-				if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
-			}
-		}
-		return super.canPlaceBlockAt(world, pos);
-	}
-	
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		return false;
 	}
 	
 	@Override
@@ -127,12 +136,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		TileEntityWitchesAltar tile = getAltar(world, pos);
-		return tile == null ? state : state.withProperty(COLOR, tile.color);
-	}
-	
-	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(TYPE, meta);
 	}
@@ -143,41 +146,38 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		TileEntityWitchesAltar tile = getAltar(world, pos);
+		return tile == null ? state : state.withProperty(COLOR, tile.color);
+	}
+	
+	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		for (EnumFacing face : EnumFacing.VALUES) {
+			BlockPos pos0 = pos.offset(face);
+			IBlockState state = world.getBlockState(pos0);
+			if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+			if (face.getAxis() != EnumFacing.Axis.Y) {
+				state = world.getBlockState(pos0.offset(face.rotateY()));
+				if (state.getBlock() instanceof BlockWitchesAltar && state.getValue(TYPE) > 0) return false;
+			}
+		}
+		return super.canPlaceBlockAt(world, pos);
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.BLOCK;
+	}
+	
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, TYPE, COLOR);
 	}
 	
-	public static TileEntityWitchesAltar getAltar(IBlockAccess world, BlockPos pos) {
-		for (int x = -1; x <= 1; x++) {
-			for (int z = -1; z <= 1; z++) {
-				TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
-				if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
-			}
-		}
-		return null;
-	}
-	
-	public static BlockPos getNearestAltarPos(IBlockAccess world, BlockPos pos) {
-		if (world.getBlockState(pos).getBlock() instanceof BlockWitchesAltar) {
-			TileEntityWitchesAltar altar = getAltar(world, pos);
-			if (altar != null) return altar.getPos();
-		}
-		int radius = 8;
-		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
-			if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
-				TileEntityWitchesAltar altar = getAltar(world, pos0);
-				if (altar != null) return altar.getPos();
-			}
-		}
-		return null;
-	}
-	
-	private static void refreshNearby(IBlockAccess world, BlockPos pos) {
-		int radius = 8;
-		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
-			Block block = world.getBlockState(pos0).getBlock();
-			if (block instanceof ModBlockContainer) ((ModBlockContainer) block).refreshAltarPos(world, pos0);
-		}
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return false;
 	}
 	
 	public boolean createAltar(World world, BlockPos pos, int color) {

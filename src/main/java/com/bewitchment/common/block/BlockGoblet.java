@@ -26,6 +26,11 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
+	
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
 	}
@@ -41,18 +46,8 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return false;
-	}
-	
-	@Override
-	public boolean isFullBlock(IBlockState state) {
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state) {
-		return false;
+	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return filled ? 8 : 0;
 	}
 	
 	@Override
@@ -61,7 +56,12 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
-	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return filled ? 8 : 0;
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 }

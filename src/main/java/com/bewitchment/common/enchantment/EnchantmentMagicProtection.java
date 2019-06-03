@@ -18,15 +18,6 @@ public class EnchantmentMagicProtection extends ModEnchantment {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	@Override
-	protected boolean canApplyTogether(Enchantment enchantment) {
-		if (enchantment instanceof EnchantmentProtection) {
-			EnchantmentProtection protection = (EnchantmentProtection) enchantment;
-			return protection.protectionType == EnchantmentProtection.Type.FALL;
-		}
-		return enchantment != ModEnchantments.spirit_protection && super.canApplyTogether(enchantment);
-	}
-	
 	@SubscribeEvent
 	public void livingHurt(LivingHurtEvent event) {
 		applyEnchantment(event, getTotalLevelOnEntity(event.getEntityLiving()));
@@ -39,5 +30,14 @@ public class EnchantmentMagicProtection extends ModEnchantment {
 	@Override
 	public int calcModifierDamage(int level, DamageSource source) {
 		return source.canHarmInCreative() ? 0 : source.isMagicDamage() ? level : 0;
+	}
+	
+	@Override
+	protected boolean canApplyTogether(Enchantment enchantment) {
+		if (enchantment instanceof EnchantmentProtection) {
+			EnchantmentProtection protection = (EnchantmentProtection) enchantment;
+			return protection.protectionType == EnchantmentProtection.Type.FALL;
+		}
+		return enchantment != ModEnchantments.spirit_protection && super.canApplyTogether(enchantment);
 	}
 }
