@@ -1,9 +1,12 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
@@ -12,10 +15,12 @@ import net.minecraft.block.state.pattern.BlockPattern;
 import net.minecraft.block.state.pattern.FactoryBlockPattern;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -94,12 +99,22 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			ItemStack stack = player.getHeldItem(hand);
 			if (altarPattern.match(world, pos) != null) {
 				if (face == EnumFacing.UP && stack.getItem() == Item.getItemFromBlock(Blocks.CARPET)) {
+					TileEntityWitchesAltar tile = getAltar(world, pos);
+					ItemStack carpet = ItemStack.EMPTY;
+					if (tile != null) carpet = new ItemStack(Blocks.CARPET, 1, tile.color - 1);
 					if (createAltar(world, pos, stack.getMetadata() + 1)) {
 						if (!player.isCreative()) stack.shrink(1);
+						if (!carpet.isEmpty()) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), carpet);
 						return true;
 					}
 				}
-				else if (stack.isEmpty()) {
+				else if (face == EnumFacing.UP && !stack.isEmpty()) {
+					if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up()) && stack.getItem().onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ) == EnumActionResult.PASS && stack.getItem().onItemRightClick(world, player, hand).getType() == EnumActionResult.PASS) {
+						world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
+						((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
+					}
+				}
+				else {
 					TileEntityWitchesAltar tile = getAltar(world, pos);
 					if (tile != null) {
 						MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);

@@ -4,7 +4,9 @@ import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
+import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
 import com.bewitchment.common.CommonProxy;
+import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
@@ -20,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -53,7 +56,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
 		
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 	}
 	
 	@Override

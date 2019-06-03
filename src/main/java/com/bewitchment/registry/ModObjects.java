@@ -62,6 +62,7 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
+	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
 	//Material Blocks
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
@@ -294,6 +295,7 @@ public class ModObjects {
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
 	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dyeBlack");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
+	public static final Item pentacle = Util.registerItem("pentacle");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");

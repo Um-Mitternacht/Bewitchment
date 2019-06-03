@@ -3,10 +3,8 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.registry.DistilleryRecipe;
-import com.bewitchment.api.registry.FrostfireRecipe;
-import com.bewitchment.api.registry.OvenRecipe;
-import com.bewitchment.api.registry.SpinningWheelRecipe;
+import com.bewitchment.api.registry.*;
+import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
@@ -17,6 +15,7 @@ import com.bewitchment.common.fortune.*;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
+import net.minecraft.block.BlockTorch;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -27,6 +26,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -58,6 +58,14 @@ public class ModRecipes {
 	}
 	
 	private static void altarInit() {
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == Blocks.SKULL && s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 5, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 6, 1));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == Blocks.SKULL && s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 3, 1));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == Blocks.SKULL, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 1));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == ModObjects.goblet, new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.125));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == ModObjects.filled_goblet, new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.5));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 1, 1));
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 2, 1));
+		Util.registerAltarUpgradeItem(ModObjects.pentacle, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, -2, 1.6));
 	}
 	
 	private static void athamePostInit() {

@@ -2,8 +2,12 @@ package com.bewitchment;
 
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockFrostfire;
 import com.bewitchment.common.block.BlockSaltBarrier;
+import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -178,5 +182,9 @@ public class Util {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
 		else if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
+	}
+	
+	public static void registerAltarUpgradeItem(Item item, AltarUpgrade upgrade) {
+		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == item, upgrade);
 	}
 }

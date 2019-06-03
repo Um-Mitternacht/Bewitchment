@@ -2,6 +2,7 @@ package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.*;
+import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -9,6 +10,8 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -19,6 +22,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
@@ -32,6 +36,8 @@ public class BewitchmentAPI {
 	
 	private static final Map<EntityEntry, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
 	
+	private static final Map<Predicate<BlockWorldState>, AltarUpgrade> ALTAR_UPGRADES = new HashMap<>();
+	
 	/**
 	 * The Demon creature attribute.
 	 */
@@ -44,7 +50,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new OvenRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerOvenRecipe(OvenRecipe recipe) {
@@ -53,7 +58,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new DistilleryRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
@@ -62,7 +66,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new SpinningWheelRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
@@ -71,7 +74,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new FrostFireRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerFrostfireRecipe(FrostfireRecipe recipe) {
@@ -80,7 +82,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new fortune
-	 *
 	 * @param fortune the fortune to register
 	 */
 	public static void registerFortune(Fortune fortune) {
@@ -89,9 +90,8 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers new Athame loot
-	 *
 	 * @param clazz the entity class to be associated with the list
-	 * @param list  the list of ItemStacks to be dropped as loot
+	 * @param list the list of ItemStacks to be dropped as loot
 	 */
 	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
 		ATHAME_LOOT.put(EntityRegistry.getEntry(clazz), list);
@@ -106,6 +106,25 @@ public class BewitchmentAPI {
 		EntityEntry entry = EntityRegistry.getEntry(entity.getClass());
 		if (ATHAME_LOOT.containsKey(entry)) fin.addAll(ATHAME_LOOT.get(entry));
 		return fin;
+	}
+	
+	/**
+	 * registers a new altar upgrade
+	 * @param predicate the predicate to check
+	 * @param upgrade the upgrade to register
+	 */
+	public static void registerAltarUpgrade(Predicate<BlockWorldState> predicate, AltarUpgrade upgrade) {
+		ALTAR_UPGRADES.put(predicate, upgrade);
+	}
+	
+	/**
+	 * @param world the world
+	 * @param pos the block position to check
+	 * @return the upgrade associated with the state, or null
+	 */
+	public static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {
+		for (Predicate<BlockWorldState> predicate : ALTAR_UPGRADES.keySet()) if (predicate.test(new BlockWorldState(world, pos, true))) return ALTAR_UPGRADES.get(predicate);
+		return null;
 	}
 	
 	public static boolean isVampire(EntityLivingBase living) {

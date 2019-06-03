@@ -51,7 +51,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		tag.setInteger("careerLevel", careerLevel);
 		tag.setInteger("wealth", wealth);
 		if (recipeList != null) tag.setTag("recipeList", recipeList.getRecipiesAsTags());
-	}	@Override
+	}
+	
+	@Override
 	public World getWorld() {
 		return world;
 	}
@@ -63,7 +65,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		careerLevel = tag.getInteger("careerLevel");
 		wealth = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
-	}	@Override
+	}
+	
+	@Override
 	public BlockPos getPos() {
 		return getPosition();
 	}
@@ -89,7 +93,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-	}	@Override
+	}
+	
+	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
@@ -98,7 +104,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}	@Override
+	}
+	
+	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		return recipeList;
 	}
@@ -144,11 +152,5 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	//		return super.onInitialSpawn(difficulty, data);
 	//	}
 	
-
 	
-
-	
-
-	
-
 }

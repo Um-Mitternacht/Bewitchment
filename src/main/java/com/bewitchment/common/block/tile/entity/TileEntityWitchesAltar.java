@@ -1,7 +1,9 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.block.*;
@@ -26,8 +28,7 @@ import java.util.Map;
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
 	
-	public int color, gain = 1;
-	private double multiplier = 1;
+	public int color, gain;
 	
 	private Map<IBlockState, Integer> map = new HashMap<>();
 	private int counter;
@@ -36,9 +37,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound tag) {
 		magicPower.deserializeNBT(tag.getCompoundTag("magicPower"));
 		color = tag.getInteger("color");
-		if (tag.hasKey("gain")) gain = tag.getInteger("gain");
-		multiplier = tag.getDouble("multiplier");
-		counter = tag.getInteger("counter");
 		super.readFromNBT(tag);
 	}
 	
@@ -46,9 +44,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setTag("magicPower", magicPower.serializeNBT());
 		tag.setInteger("color", color);
-		tag.setInteger("gain", gain);
-		tag.setDouble("multiplier", multiplier);
-		tag.setInteger("counter", counter);
 		return super.writeToNBT(tag);
 	}
 	
@@ -110,6 +105,41 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				map.put(state, Math.max(map.keySet().size() * 2, map.get(state)));
 			}
 			if (counter == Short.MAX_VALUE - 1) {
+				boolean foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
+				gain = 1;
+				double multiplier = 1;
+				for (int cx = -1; cx <= 1; cx++) {
+					for (int cz = -1; cz <= 1; cz++) {
+						BlockPos pos0 = pos.add(cx, 0, cz);
+						if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
+							AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());
+							if (upgrade != null) {
+								AltarUpgrade.Type type = upgrade.type;
+								if (type == AltarUpgrade.Type.CUP && !foundCup) {
+									multiplier *= upgrade.multiplier;
+									gain += upgrade.gain;
+									foundCup = true;
+								}
+								if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
+									multiplier *= upgrade.multiplier;
+									gain += upgrade.gain;
+									foundPentacle = true;
+								}
+								if (type == AltarUpgrade.Type.SWORD && !foundSword) {
+									multiplier *= upgrade.multiplier;
+									gain += upgrade.gain;
+									foundSword = true;
+								}
+								if (type == AltarUpgrade.Type.WAND && !foundWand) {
+									multiplier *= upgrade.multiplier;
+									gain += upgrade.gain;
+									foundWand = true;
+								}
+							}
+						}
+					}
+				}
+				if (gain < 0) gain = 0;
 				int maxPower = 0;
 				for (int val : map.values()) maxPower += val;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
