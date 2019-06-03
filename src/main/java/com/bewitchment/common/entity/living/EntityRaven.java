@@ -45,44 +45,14 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	protected PathNavigate createNavigator(World world) {
-		PathNavigateFlying path = new PathNavigateFlying(this, world);
-		path.setCanEnterDoors(true);
-		path.setCanFloat(true);
-		path.setCanOpenDoors(false);
-		return path;
-	}
-	
-	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.RAVEN_CRY;
-	}
-	
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
-	}
-	
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow)) amount = (amount + 1) / 2f;
 		return super.attackEntityFrom(source, amount);
 	}
 	
 	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityRaven)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
-	}
-	
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() instanceof ItemSeeds;
-	}
-	
-	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
 	}
 	
 	@Override
@@ -92,7 +62,9 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public void fall(float distance, float damageMultiplier) {
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other instanceof EntityRaven)) return false;
+		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -100,15 +72,12 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
-		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 	}
 	
 	@Override
@@ -125,5 +94,36 @@ public class EntityRaven extends ModEntityTameable {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
 		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
+		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
+	}
+	
+	@Override
+	protected PathNavigate createNavigator(World world) {
+		PathNavigateFlying path = new PathNavigateFlying(this, world);
+		path.setCanEnterDoors(true);
+		path.setCanFloat(true);
+		path.setCanOpenDoors(false);
+		return path;
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.RAVEN_CRY;
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
 	}
 }

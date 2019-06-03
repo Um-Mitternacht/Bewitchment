@@ -38,34 +38,25 @@ public class EntitySerpent extends ModEntityMob {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 9;
-	}
-	
-	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
 	
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
+	protected int getSkinTypes() {
+		return 9;
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		boolean flag = super.attackEntityAsMob(entity);
-		if (flag) {
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100, 0, false, false));
-			}
-		}
-		return flag;
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("milk_timer", milkTimer);
 	}
 	
 	@Override
-	public boolean getCanSpawnHere() {
-		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		super.readEntityFromNBT(tag);
+		milkTimer = tag.getInteger("milk_timer");
 	}
 	
 	@Override
@@ -74,23 +65,8 @@ public class EntitySerpent extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
-			ItemStack stack = player.getHeldItem(hand);
-			if (stack.getItem() == Items.GLASS_BOTTLE) {
-				if (milkTimer == 0 && getRNG().nextBoolean()) {
-					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
-					milkTimer = 6660;
-					return true;
-				}
-				else {
-					setAttackTarget(player);
-					setRevengeTarget(player);
-				}
-			}
-		}
-		return super.processInteract(player, hand);
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -107,15 +83,19 @@ public class EntitySerpent extends ModEntityMob {
 	}
 	
 	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
-		tag.setInteger("milk_timer", milkTimer);
+	public boolean attackEntityAsMob(Entity entity) {
+		boolean flag = super.attackEntityAsMob(entity);
+		if (flag) {
+			if (entity instanceof EntityLivingBase) {
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100, 0, false, false));
+			}
+		}
+		return flag;
 	}
 	
 	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		super.readEntityFromNBT(tag);
-		milkTimer = tag.getInteger("milk_timer");
+	public boolean getCanSpawnHere() {
+		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
 	
 	@Override
@@ -137,5 +117,25 @@ public class EntitySerpent extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityAnimal || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)));
+	}
+	
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
+			ItemStack stack = player.getHeldItem(hand);
+			if (stack.getItem() == Items.GLASS_BOTTLE) {
+				if (milkTimer == 0 && getRNG().nextBoolean()) {
+					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
+					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
+					milkTimer = 6660;
+					return true;
+				}
+				else {
+					setAttackTarget(player);
+					setRevengeTarget(player);
+				}
+			}
+		}
+		return super.processInteract(player, hand);
 	}
 }

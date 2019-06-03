@@ -31,11 +31,6 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 4;
-	}
-	
-	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
@@ -49,11 +44,6 @@ public class EntityOwl extends EntityRaven {
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
-	}
-	
-	@Override
-	protected float getSoundVolume() {
-		return 0.5f;
 	}
 	
 	@Override
@@ -71,5 +61,15 @@ public class EntityOwl extends EntityRaven {
 		super.initEntityAI();
 		tasks.addTask(1, new EntityAIFleeSun(this, 1));
 		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit));
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 4;
+	}
+	
+	@Override
+	protected float getSoundVolume() {
+		return 0.5f;
 	}
 }

@@ -26,11 +26,6 @@ public abstract class ModEntityMob extends EntityMob {
 	@Override
 	protected abstract boolean isValidLightLevel();
 	
-	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
-	}
-	
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 15728880 : super.getBrightnessForRender();
@@ -43,12 +38,6 @@ public abstract class ModEntityMob extends EntityMob {
 	
 	protected int getSkinTypes() {
 		return 1;
-	}
-	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
 	}
 	
 	@Override
@@ -70,5 +59,16 @@ public abstract class ModEntityMob extends EntityMob {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
 	}
 }

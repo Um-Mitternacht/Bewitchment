@@ -41,9 +41,8 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
-		public BlockRenderLayer getRenderLayer() {
-			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
 		}
 		
 		@Override
@@ -52,8 +51,9 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
+		@SideOnly(Side.CLIENT)
+		public BlockRenderLayer getRenderLayer() {
+			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 		}
 	}
 }

@@ -44,6 +44,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new OvenRecipe
+	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerOvenRecipe(OvenRecipe recipe) {
@@ -52,6 +53,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new DistilleryRecipe
+	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
@@ -60,6 +62,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new SpinningWheelRecipe
+	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
@@ -68,6 +71,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new FrostFireRecipe
+	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerFrostfireRecipe(FrostfireRecipe recipe) {
@@ -76,6 +80,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new fortune
+	 *
 	 * @param fortune the fortune to register
 	 */
 	public static void registerFortune(Fortune fortune) {
@@ -84,8 +89,9 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers new Athame loot
+	 *
 	 * @param clazz the entity class to be associated with the list
-	 * @param list the list of ItemStacks to be dropped as loot
+	 * @param list  the list of ItemStacks to be dropped as loot
 	 */
 	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
 		ATHAME_LOOT.put(EntityRegistry.getEntry(clazz), list);

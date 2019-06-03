@@ -17,11 +17,6 @@ public class ItemTokenOfRemedies extends ModItemBauble {
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
-	}
-	
-	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		if (player.ticksExisted % 40 == 0 && (player.isPotionActive(MobEffects.BLINDNESS) || player.isPotionActive(MobEffects.NAUSEA) || player.isPotionActive(MobEffects.POISON) || player.isPotionActive(MobEffects.WEAKNESS) || player.isPotionActive(MobEffects.WITHER))) {
 			player.removePotionEffect(MobEffects.BLINDNESS);
@@ -31,5 +26,10 @@ public class ItemTokenOfRemedies extends ModItemBauble {
 			player.removePotionEffect(MobEffects.WITHER);
 			stack.damageItem(1, player);
 		}
+	}
+	
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 }

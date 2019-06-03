@@ -43,39 +43,14 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
-	}
-	
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
-			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
-		}
-		return super.attackEntityAsMob(entity);
-	}
-	
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow)) amount = (amount + 1) / 2f;
 		return super.attackEntityFrom(source, amount);
 	}
 	
 	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntitySnake)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
-	}
-	
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
 	}
 	
 	@Override
@@ -113,14 +88,34 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
+			applyEnchantments(this, entity);
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
+		}
+		return super.attackEntityAsMob(entity);
 	}
 	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (milkTimer > 0) milkTimer--;
+	}
+	
+	@Override
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other instanceof EntitySnake)) return false;
+		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -164,5 +159,10 @@ public class EntitySnake extends ModEntityTameable {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
 	}
 }

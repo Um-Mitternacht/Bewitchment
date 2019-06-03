@@ -50,6 +50,11 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+		return super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
+	}
+	
+	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
 		return capability == MagicPower.CAPABILITY || super.hasCapability(capability, face);
 	}
@@ -57,11 +62,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-		return super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
 	}
 	
 	@Override

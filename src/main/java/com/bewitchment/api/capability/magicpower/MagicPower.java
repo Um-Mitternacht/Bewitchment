@@ -23,6 +23,17 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public int amount, maxAmount;
 	
+	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
+		if (amount == 0) return true;
+		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
+		if (player != null) {
+			for (ItemStack stack : Util.getEntireInventory(player)) {
+				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
+			}
+		}
+		return false;
+	}
+	
 	@Nullable
 	@Override
 	public NBTBase writeNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face) {
@@ -58,17 +69,6 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	@Override
 	public void deserializeNBT(NBTTagCompound tag) {
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
-	}
-	
-	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
-		if (amount == 0) return true;
-		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
-		if (player != null) {
-			for (ItemStack stack : Util.getEntireInventory(player)) {
-				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
-			}
-		}
-		return false;
 	}
 	
 	public boolean drain(int amount) {

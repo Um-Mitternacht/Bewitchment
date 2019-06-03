@@ -45,29 +45,27 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("careerID", careerID);
+		tag.setInteger("careerLevel", careerLevel);
+		tag.setInteger("wealth", wealth);
+		if (recipeList != null) tag.setTag("recipeList", recipeList.getRecipiesAsTags());
+	}	@Override
 	public World getWorld() {
 		return world;
 	}
 	
-	
 	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		super.readEntityFromNBT(tag);
+		careerID = tag.getInteger("careerID");
+		careerLevel = tag.getInteger("careerLevel");
+		wealth = tag.getInteger("wealth");
+		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
+	}	@Override
 	public BlockPos getPos() {
 		return getPosition();
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
-	}
-	
-	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
 	}
 	
 	@Override
@@ -83,10 +81,43 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return flag;
 	}
 	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
 	//Todo: Make demons immune to more stuff except for a few brews
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@Override
+	protected void initEntityAI() {
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
+		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
 	}
 	
 	@Override
@@ -113,43 +144,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	//		return super.onInitialSpawn(difficulty, data);
 	//	}
 	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
-		tag.setInteger("careerID", careerID);
-		tag.setInteger("careerLevel", careerLevel);
-		tag.setInteger("wealth", wealth);
-		if (recipeList != null) tag.setTag("recipeList", recipeList.getRecipiesAsTags());
-	}
+
 	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		super.readEntityFromNBT(tag);
-		careerID = tag.getInteger("careerID");
-		careerLevel = tag.getInteger("careerLevel");
-		wealth = tag.getInteger("wealth");
-		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
-	}
+
 	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-	}
+
 	
-	@Override
-	protected void initEntityAI() {
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
-		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(3, new EntityAILookIdle(this));
-		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
-		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
-		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> !e.isImmuneToFire()));
-	}
+
 }
