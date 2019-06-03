@@ -8,6 +8,7 @@ import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
+import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.ItemBottledFrostfire;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
@@ -35,8 +36,10 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import team.chisel.api.carving.CarvingUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -299,6 +302,12 @@ public class ModObjects {
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
+	//Chisel
+	public static final Block[] scorned_bricks_chiseled = createChiselBlocks(scorned_bricks, "raw", "raw_cracked", "cracked", "symbol", "bevel", "hellish", "circular", "braid", "dent", "french_1", "french_2", "layers", "ornate", "panel", "prism", "road", "small");
+	public static final Block[] coquina_chiseled = createChiselBlocks(coquina, "smooth", "bricks", "chiseled", "shell");
+	public static final Block[] nethersteel_chiseled = createChiselBlocks(nethersteel, "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
+	public static final Block[] block_of_silver_chiseled = createChiselBlocks(block_of_silver, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
+	public static final Block[] block_of_cold_iron_chiseled = createChiselBlocks(block_of_cold_iron, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
 	
 	public static void preInit() {
 		Bewitchment.proxy.ignoreProperty(embergrass, BlockEmbergrass.TIMES_SPREAD);
@@ -327,6 +336,22 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
+	}
+	
+	private static final Block[] createChiselBlocks(Block base, String... names) {
+		List<Block> list = new ArrayList<>();
+		if (Loader.isModLoaded("chisel")) {
+			String groupName = base.getRegistryName().toString();
+			if (!groupName.contains("silver"))
+				CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(base.getDefaultState(), 0));
+			for (String name : names) {
+				Block block = new ModBlockChisel(name, base);
+				if (!groupName.contains("silver"))
+					CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
+				list.add(block);
+			}
+		}
+		return list.toArray(new Block[list.size()]);
 	}
 	
 	public static void init() {
