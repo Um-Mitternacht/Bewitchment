@@ -31,6 +31,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public int color, gain;
 	
 	private Map<IBlockState, Integer> map = new HashMap<>();
+	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
 	private int counter;
 	
 	@Override
@@ -88,14 +89,14 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		scan(Short.MAX_VALUE);
 	}
 	
-	private void scan(int times) {
+	public void scan(int times) {
 		for (int i = 0; i < times; i++) {
 			counter = ++counter % Short.MAX_VALUE;
 			int x = counter & 31;
 			int y = (counter >> 5) & 31;
 			int z = (counter >> 10) & 31;
-			BlockPos check = new BlockPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
-			IBlockState state = world.getBlockState(check);
+			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
+			IBlockState state = world.getBlockState(checking);
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
 			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);

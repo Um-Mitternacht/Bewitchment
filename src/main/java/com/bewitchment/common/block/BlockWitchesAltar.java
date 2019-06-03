@@ -143,6 +143,16 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		super.neighborChanged(state, world, to, block, from);
+		TileEntityWitchesAltar tile = getAltar(world, to);
+		if (tile != null) {
+			world.notifyBlockUpdate(tile.getPos(), state, state, 2);
+			tile.scan(Short.MAX_VALUE);
+		}
+	}
+	
+	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		world.notifyBlockUpdate(pos, state, state, 11);
 	}
