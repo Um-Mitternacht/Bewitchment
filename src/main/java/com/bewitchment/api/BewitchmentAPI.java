@@ -2,7 +2,6 @@ package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.*;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -20,7 +19,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.function.Predicate;
 
 @SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
@@ -33,8 +31,6 @@ public class BewitchmentAPI {
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 	
 	private static final Map<EntityEntry, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
-	
-	private static final Map<Predicate<IBlockState>, Integer> NATURE_VALUES = new HashMap<>();
 	
 	/**
 	 * The Demon creature attribute.
@@ -104,15 +100,6 @@ public class BewitchmentAPI {
 		EntityEntry entry = EntityRegistry.getEntry(entity.getClass());
 		if (ATHAME_LOOT.containsKey(entry)) fin.addAll(ATHAME_LOOT.get(entry));
 		return fin;
-	}
-	
-	public static void registerNatureValue(Predicate<IBlockState> predicate, int value) {
-		NATURE_VALUES.put(predicate, value);
-	}
-	
-	public static int getNatureValue(IBlockState state) {
-		for (Predicate<IBlockState> predicate : NATURE_VALUES.keySet()) if (predicate.test(state)) return NATURE_VALUES.getOrDefault(predicate, 0);
-		return 0;
 	}
 	
 	public static boolean isVampire(EntityLivingBase living) {

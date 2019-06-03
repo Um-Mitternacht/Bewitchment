@@ -1,19 +1,18 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockLog;
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
 
 import java.util.HashMap;
@@ -25,6 +24,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	public int color, gain = 1;
 	private double multiplier = 1;
+	private int maxPower;
 	
 	private Map<IBlockState, Integer> map = new HashMap<>();
 	private int counter;
@@ -68,7 +68,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void update() {
 		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
-			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
+			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
 			scan(Bewitchment.proxy.config.altarScansPerTick);
 		}
 	}
@@ -77,7 +77,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void onLoad() {
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
 		counter = 0;
-		magicPower.maxAmount = 0;
+		maxPower = 0;
 		map.clear();
 		scan(4096);
 	}
@@ -93,18 +93,25 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 			else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
-			int val = BewitchmentAPI.getNatureValue(state);
+			int val = getPowerValue(state);
 			if (val != 0) {
-				int current = map.getOrDefault(state, 0);
-				if (current < 20) map.put(state, current + val);
+				map.put(state, map.getOrDefault(state, 0) + 1);
+				maxPower++;
 			}
 			if (counter == 4095) {
-				magicPower.maxAmount = 0;
-				for (int value : map.values()) magicPower.maxAmount += value;
-				magicPower.maxAmount += map.keySet().size() * 40;
-				magicPower.maxAmount *= multiplier;
+				for (IBlockState toCheck : map.keySet()) if (map.get(toCheck) > 3) maxPower *= 1.2;
+				magicPower.maxAmount = (int) (maxPower / 5 * multiplier);
+				maxPower = 0;
 				map.clear();
 			}
 		}
+	}
+	
+	private int getPowerValue(IBlockState state) {
+		if (!(state.getBlock() instanceof BlockGrass)) {
+			if (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin) return 2;
+			if (state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD)) return 1;
+		}
+		return 0;
 	}
 }

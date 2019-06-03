@@ -28,7 +28,7 @@ public class WorldGenElderTree extends WorldGenModTree {
 	
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
-		int h = generateTrunk(world, ModObjects.elder_wood.getDefaultState(), pos, rand, 3, 5);
+		int h = generateTrunk(world, ModObjects.elder_wood.getDefaultState(), pos, rand, 4, 5);
 		for (int x = -2; x < 3; x++) {
 			for (int z = -2; z < 3; z++) {
 				for (int y = -2; y < 1; y++) {
