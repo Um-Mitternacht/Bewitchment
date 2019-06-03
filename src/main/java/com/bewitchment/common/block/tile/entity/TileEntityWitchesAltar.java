@@ -93,8 +93,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 			else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
-			int val = getPowerValue(state);
-			if (val != 0) {
+			if (isNatural(state)) {
 				map.put(state, map.getOrDefault(state, 0) + 1);
 				maxPower++;
 			}
@@ -107,11 +106,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 	}
 	
-	private int getPowerValue(IBlockState state) {
-		if (!(state.getBlock() instanceof BlockGrass)) {
-			if (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin) return 2;
-			if (state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD)) return 1;
-		}
-		return 0;
+	private boolean isNatural(IBlockState state) {
+		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
 	}
 }
