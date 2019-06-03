@@ -28,7 +28,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	public int color, gain = 1;
 	private double multiplier = 1;
-	private int maxPower;
 	
 	private Map<IBlockState, Integer> map = new HashMap<>();
 	private int counter;
@@ -81,7 +80,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void update() {
 		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
-			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
+			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
 			scan(Bewitchment.proxy.config.altarScansPerTick);
 		}
 	}
@@ -90,30 +89,30 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void onLoad() {
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
 		counter = 0;
-		maxPower = 0;
 		map.clear();
-		scan(4096);
+		scan(Short.MAX_VALUE);
 	}
 	
 	private void scan(int times) {
 		for (int i = 0; i < times; i++) {
-			counter = ++counter % 4096;
-			int x = counter & 15;
-			int y = (counter >> 4) & 15;
-			int z = (counter >> 8) & 15;
+			counter = ++counter % Short.MAX_VALUE;
+			int x = counter & 31;
+			int y = (counter >> 5) & 31;
+			int z = (counter >> 10) & 31;
 			BlockPos check = new BlockPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
 			IBlockState state = world.getBlockState(check);
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
+			else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
 			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 			else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
 			if (isNatural(state)) {
 				map.put(state, map.getOrDefault(state, 0) + 1);
-				maxPower++;
+				map.put(state, Math.max(map.keySet().size() * 2, map.get(state)));
 			}
-			if (counter == 4095) {
-				for (IBlockState toCheck : map.keySet()) if (map.get(toCheck) > 3) maxPower *= 1.2;
-				magicPower.maxAmount = (int) (maxPower / 5 * multiplier);
-				maxPower = 0;
+			if (counter == Short.MAX_VALUE - 1) {
+				int maxPower = 0;
+				for (int val : map.values()) maxPower += val;
+				magicPower.maxAmount = (int) (maxPower * multiplier);
 				map.clear();
 			}
 		}
