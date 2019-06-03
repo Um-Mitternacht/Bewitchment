@@ -198,10 +198,12 @@ public class ModRecipes {
 	
 	private static void frostfireInit() {
 		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot"), Util.fromOres("oreIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.fromOres("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt0"), Util.fromOres("dustIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt1"), Util.fromOres("gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
+		if (!Arrays.asList(Util.fromOres("clusterIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.fromOres("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
+		if (!Arrays.asList(Util.fromOres("dustIron", "gritIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt"), Util.fromOres("dustIron", "gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		if (!Arrays.asList(Util.fromOres("dustTinyIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
 	}
 	
 	private static void fortuneInit() {
