@@ -7,6 +7,9 @@ import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -14,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +55,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-		return super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
+		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
+		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
+		return flag;
 	}
 	
 	@Override
@@ -62,6 +68,13 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public ItemStackHandler[] getInventories() {
+		ItemStackHandler fin = new ItemStackHandler();
+		fin.insertItem(0, new ItemStack(Blocks.CARPET, 1, color - 1), false);
+		return new ItemStackHandler[]{fin};
 	}
 	
 	@Override
