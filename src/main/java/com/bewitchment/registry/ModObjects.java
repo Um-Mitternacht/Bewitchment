@@ -304,7 +304,7 @@ public class ModObjects {
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	//Chisel
 	//FIXME: I'm pretty sure some recent errors are related to these.
-	public static final Block[] scorned_bricks_chiseled = createChiselBlocks(scorned_bricks, "irregular", "raw_cracked", "cracked", "symbol", "bevel", "hellish", "circular", "braid", "dent", "french_1", "french_2", "layers", "ornate", "panel", "prism", "road", "small");
+	public static final Block[] scorned_bricks_chiseled = createChiselBlocks(scorned_bricks, "raw", "raw_cracked", "cracked", "symbol", "bevel", "hellish", "circular", "braid", "dent", "french_1", "french_2", "layers", "ornate", "panel", "prism", "road", "small");
 	public static final Block[] coquina_chiseled = createChiselBlocks(coquina, "smooth", "bricks", "chiseled", "shell");
 	public static final Block[] nethersteel_chiseled = createChiselBlocks(nethersteel, "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
 	public static final Block[] block_of_silver_chiseled = createChiselBlocks(block_of_silver, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
