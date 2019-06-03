@@ -93,6 +93,10 @@ public class Util {
 		return fin;
 	}
 	
+	public static final String[] toArray(List<String> list) {
+		return list.toArray(new String[list.size()]);
+	}
+	
 	public static int getArmorPieces(EntityLivingBase living, ItemArmor.ArmorMaterial mat) {
 		int fin = 0;
 		for (ItemStack stack : living.getArmorInventoryList()) {
