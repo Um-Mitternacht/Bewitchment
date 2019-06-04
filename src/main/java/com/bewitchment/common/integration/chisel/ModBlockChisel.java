@@ -1,9 +1,9 @@
 package com.bewitchment.common.integration.chisel;
 
+import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
 import com.bewitchment.common.block.util.ModBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -16,9 +16,9 @@ import java.util.List;
 public class ModBlockChisel extends ModBlock {
 	private final String name;
 	
-	public ModBlockChisel(String name, Block base) {
-		super(name, Material.CLOTH, SoundType.CLOTH, 1, 1, "", 0);
-		//Util.registerValues(this, base.getTranslationKey().substring(6 + Bewitchment.MODID.length()) + "_" + name, base, Util.toArray(base instanceof IOreDictionaryContainer ? ((IOreDictionaryContainer) base).getOreDictionaryNames() : Arrays.asList("")));
+	public ModBlockChisel(String name, Block base, String... oreDictionaryEntries) {
+		super(base.getDefaultState().getMaterial());
+		Util.registerBlock(this, base.getTranslationKey().substring(6 + Bewitchment.MODID.length()) + "_" + name, base, oreDictionaryEntries);
 		setTranslationKey(base.getTranslationKey().substring(5));
 		StringBuilder finalName = new StringBuilder();
 		for (String s : name.split("_")) finalName.append(s.replaceFirst(String.valueOf(s.charAt(0)), String.valueOf(s.charAt(0)).toUpperCase())).append(" ");

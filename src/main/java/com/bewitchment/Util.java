@@ -53,8 +53,7 @@ public class Util {
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
 		}
-		for (String ore : oreDictionaryNames)
-			OreDictionary.registerOre(ore, block);
+		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
 		return block;
 	}
 	
@@ -91,10 +90,6 @@ public class Util {
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
 		return fin;
-	}
-	
-	public static final String[] toArray(List<String> list) {
-		return list.toArray(new String[list.size()]);
 	}
 	
 	public static int getArmorPieces(EntityLivingBase living, ItemArmor.ArmorMaterial mat) {

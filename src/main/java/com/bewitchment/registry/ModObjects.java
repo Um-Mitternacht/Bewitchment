@@ -6,6 +6,7 @@ import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
+import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
@@ -67,38 +68,38 @@ public class ModObjects {
 	public static final Block salt_barrier = new BlockSaltBarrier();
 	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
 	//Material Blocks
-	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockAmethyst");
-	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockGarnet");
-	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Material.GLASS, SoundType.GLASS, 5, 30, "pickaxe", 2, "blockMoonstone");
-	public static final Block block_of_silver = new ModBlock("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, "blockSilver");
-	public static final Block block_of_cold_iron = new ModBlock("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, "blockColdIron");
+	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Blocks.DIAMOND_BLOCK, "blockAmethyst");
+	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Blocks.DIAMOND_BLOCK, "blockGarnet");
+	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Blocks.DIAMOND_BLOCK, "blockMoonstone");
+	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
+	public static final Block[] block_of_cold = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
-	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreAmethyst");
-	public static final Block garnet_ore = new ModBlock("garnet_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreGarnet");
-	public static final Block moonstone_ore = new ModBlock("moonstone_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreMoonstone");
-	public static final Block silver_ore = new ModBlock("silver_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 2, "oreSilver");
-	public static final Block salt_ore = new ModBlock("salt_ore", Material.ROCK, SoundType.STONE, 3, 15, "pickaxe", 0, "oreSalt");
+	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Blocks.IRON_ORE, "oreAmethyst");
+	public static final Block garnet_ore = new ModBlock("garnet_ore", Blocks.IRON_ORE, "oreGarnet");
+	public static final Block moonstone_ore = new ModBlock("moonstone_ore", Blocks.IRON_ORE, "oreMoonstone");
+	public static final Block silver_ore = new ModBlock("silver_ore", Blocks.IRON_ORE, "oreSilver");
+	public static final Block salt_ore = new ModBlock("salt_ore", Blocks.COAL_ORE, "oreSalt");
 	
-	public static final Block coquina = new ModBlock("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "coquina");
-	public static final Block coquina_bricks = new ModBlock("coquina_bricks", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
-	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0);
-	public static final Block nethersteel = new ModBlock("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2);
-	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Material.ICE, SoundType.GLASS, 0.5f, 2.5f, "", 0);
+	public static final Block[] coquina = createChiselBlocks("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, Arrays.asList("coquina"), "smooth", "shell");
+	public static final Block coquina_bricks = new ModBlock("coquina_bricks", coquina[0]);
+	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", coquina[0]);
+	public static final Block[] nethersteel = createChiselBlocks("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList(), "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
+	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Blocks.ICE);
 	public static final Block perpetual_ice_stairs = new ModBlockStairs("perpetual_ice_stairs", perpetual_ice);
 	public static final Block perpetual_ice_slab = new ModBlockSlab("perpetual_ice_slab", perpetual_ice);
 	public static final Block perpetual_ice_fence = new ModBlockFence("perpetual_ice_fence", perpetual_ice);
 	public static final Block embittered_bricks = new ModBlock("embittered_bricks", Material.PACKED_ICE, SoundType.STONE, 1.5f, 30, "pickaxe", 0);
-	public static final Block cracked_embittered_bricks = new ModBlock("cracked_embittered_bricks", Material.PACKED_ICE, SoundType.STONE, 1.5f, 30, "pickaxe", 0);
-	public static final Block chiseled_embittered_bricks = new ModBlock("chiseled_embittered_bricks", Material.PACKED_ICE, SoundType.STONE, 1.5f, 30, "pickaxe", 0);
+	public static final Block cracked_embittered_bricks = new ModBlock("cracked_embittered_bricks", embittered_bricks);
+	public static final Block chiseled_embittered_bricks = new ModBlock("chiseled_embittered_bricks", embittered_bricks);
 	public static final Block embittered_brick_stairs = new ModBlockStairs("embittered_brick_stairs", embittered_bricks);
 	public static final Block embittered_bricks_slab = new ModBlockSlab("embittered_bricks_slab", embittered_bricks);
 	public static final Block embittered_brick_fence = new ModBlockFence("embittered_brick_fence", embittered_bricks);
-	public static final Block scorned_bricks = new ModBlock("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
-	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
-	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2);
-	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks);
-	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks);
-	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks);
+	public static final Block[] scorned_bricks = createChiselBlocks("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2, Arrays.asList(), "symbol", "bevel", "hellish", "raw", "raw_cracked", "small", "soft", "small_tiles", "medium_tiles", "triple", "braid", "layers", "road", "ornate", "panel", "prism", "slanted");
+	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", scorned_bricks[0]);
+	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", scorned_bricks[0]);
+	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks[0]);
+	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks[0]);
+	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks[0]);
 	//Util Blocks
 	public static final Block goblet = new BlockGoblet(false);
 	public static final Block filled_goblet = new BlockGoblet(true);
@@ -127,14 +128,14 @@ public class ModObjects {
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
 	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", new WorldGenJuniperTree(false), "treeSapling");
 	public static final Block yew_sapling = new ModBlockSapling("yew_sapling", new WorldGenYewTree(false), "treeSapling");
-	public static final Block cypress_wood = new ModBlockPillar("cypress_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
-	public static final Block elder_wood = new ModBlockPillar("elder_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
-	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
-	public static final Block yew_wood = new ModBlockPillar("yew_wood", Material.WOOD, SoundType.WOOD, 2, 10, "axe", 0, "logWood");
-	public static final Block cypress_planks = new ModBlock("cypress_planks", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, "plankWood");
-	public static final Block elder_planks = new ModBlock("elder_planks", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, "plankWood");
-	public static final Block juniper_planks = new ModBlock("juniper_planks", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, "plankWood");
-	public static final Block yew_planks = new ModBlock("yew_planks", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, "plankWood");
+	public static final Block cypress_wood = new ModBlockPillar("cypress_wood", Blocks.LOG, "logWood");
+	public static final Block elder_wood = new ModBlockPillar("elder_wood", Blocks.LOG, "logWood");
+	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Blocks.LOG, "logWood");
+	public static final Block yew_wood = new ModBlockPillar("yew_wood", Blocks.LOG, "logWood");
+	public static final Block cypress_planks = new ModBlock("cypress_planks", Blocks.PLANKS, "plankWood");
+	public static final Block elder_planks = new ModBlock("elder_planks", Blocks.PLANKS, "plankWood");
+	public static final Block juniper_planks = new ModBlock("juniper_planks", Blocks.PLANKS, "plankWood");
+	public static final Block yew_planks = new ModBlock("yew_planks", Blocks.PLANKS, "plankWood");
 	public static final Block cypress_leaves = new ModBlockLeaves("cypress_leaves", "treeLeaves");
 	public static final Block elder_leaves = new ModBlockLeaves("elder_leaves", "treeLeaves");
 	public static final Block juniper_leaves = new ModBlockLeaves("juniper_leaves", "treeLeaves");
@@ -176,9 +177,9 @@ public class ModObjects {
 	public static final Block stone_witches_altar = registerTileEntity(new BlockWitchesAltar("stone_witches_altar", Blocks.STONE), TileEntityWitchesAltar.class);
 	public static final Block nether_brick_witches_altar = new BlockWitchesAltar("nether_brick_witches_altar", Blocks.NETHER_BRICK);
 	public static final Block obsidian_witches_altar = new BlockWitchesAltar("obsidian_witches_altar", Blocks.OBSIDIAN);
-	public static final Block coquina_witches_altar = new BlockWitchesAltar("coquina_witches_altar", coquina);
+	public static final Block coquina_witches_altar = new BlockWitchesAltar("coquina_witches_altar", coquina[0]);
 	public static final Block embittered_brick_witches_altar = new BlockWitchesAltar("embittered_brick_witches_altar", embittered_bricks);
-	public static final Block scorned_brick_witches_altar = new BlockWitchesAltar("scorned_brick_witches_altar", scorned_bricks);
+	public static final Block scorned_brick_witches_altar = new BlockWitchesAltar("scorned_brick_witches_altar", scorned_bricks[0]);
 	
 	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
@@ -302,17 +303,10 @@ public class ModObjects {
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
-	//Chisel
-	//FIXME: I'm pretty sure some recent errors are related to these.
-	public static final Block[] scorned_bricks_chiseled = createChiselBlocks(scorned_bricks, "raw", "raw_cracked", "cracked", "symbol", "bevel", "hellish", "circular", "braid", "dent", "french_1", "french_2", "layers", "ornate", "panel", "prism", "road", "small");
-	public static final Block[] coquina_chiseled = createChiselBlocks(coquina, "smooth", "bricks", "chiseled", "shell");
-	public static final Block[] nethersteel_chiseled = createChiselBlocks(nethersteel, "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
-	public static final Block[] block_of_silver_chiseled = createChiselBlocks(block_of_silver, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
-	public static final Block[] block_of_cold_iron_chiseled = createChiselBlocks(block_of_cold_iron, "symbol", "bevel", "sun", "moon", "sword", "cup", "wand", "pentacle", "pentagram");
 	
 	public static void preInit() {
-		Bewitchment.proxy.ignoreProperty(embergrass, BlockEmbergrass.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(torchwood, BlockEmbergrass.TIMES_SPREAD);
+		Bewitchment.proxy.ignoreProperty(embergrass, BlockBushSpreading.TIMES_SPREAD);
+		Bewitchment.proxy.ignoreProperty(torchwood, BlockBushSpreading.TIMES_SPREAD);
 		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
@@ -337,33 +331,32 @@ public class ModObjects {
 		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
-	}
-	
-	private static final Block[] createChiselBlocks(Block base, String... names) {
-		List<Block> list = new ArrayList<>();
-		if (Loader.isModLoaded("chisel")) {
-			String groupName = base.getRegistryName().toString();
-			if (!groupName.contains("silver"))
-				CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(base.getDefaultState(), 0));
-			for (String name : names) {
-				Block block = new ModBlockChisel(name, base);
-				if (!groupName.contains("silver"))
-					CarvingUtils.getChiselRegistry().addVariation(groupName, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
-				list.add(block);
-			}
-		}
-		return list.toArray(new Block[list.size()]);
+		
+		CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(coquina_bricks.getDefaultState(), 1));
+		CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(chiseled_coquina.getDefaultState(), 1));
+		CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(cracked_scorned_bricks.getDefaultState(), 1));
+		CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(chiseled_scorned_bricks.getDefaultState(), 1));
 	}
 	
 	public static void init() {
-		initOreDictionary();
-	}
-	
-	//This likely needs to be moved to the proxy class. But for now, I will leave it as is.
-	private static void initOreDictionary() {
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, 4));
+	}
+	
+	private static Block[] createChiselBlocks(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, List<String> oreDictionaryNames, String... names) {
+		List<Block> list = new ArrayList<>();
+		Block base = new ModBlock(name, mat, sound, hardness, resistance, tool, level, oreDictionaryNames.toArray(new String[0]));
+		list.add(base);
+		if (Loader.isModLoaded("chisel")) {
+			if (!name.contains("silver")) CarvingUtils.getChiselRegistry().addVariation(name, CarvingUtils.variationFor(base.getDefaultState(), 0));
+			for (String variant : names) {
+				Block block = new ModBlockChisel(variant, base, oreDictionaryNames.toArray(new String[0]));
+				if (!name.contains("silver")) CarvingUtils.getChiselRegistry().addVariation(name, CarvingUtils.variationFor(block.getDefaultState(), list.size() + 1));
+				if (block != base) list.add(block);
+			}
+		}
+		return list.toArray(new Block[0]);
 	}
 	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {

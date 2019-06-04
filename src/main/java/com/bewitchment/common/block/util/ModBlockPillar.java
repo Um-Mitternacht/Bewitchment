@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.util;
 
 import com.bewitchment.Util;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,6 +18,12 @@ public class ModBlockPillar extends BlockRotatedPillar {
 	public ModBlockPillar(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		super(mat);
 		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, level, oreDictionaryNames);
+		setDefaultState(getBlockState().getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
+	}
+	
+	public ModBlockPillar(String name, Block base, String... oreDictionaryNames) {
+		super(base.getDefaultState().getMaterial());
+		Util.registerBlock(this, name, base, oreDictionaryNames);
 		setDefaultState(getBlockState().getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
 	}
 	

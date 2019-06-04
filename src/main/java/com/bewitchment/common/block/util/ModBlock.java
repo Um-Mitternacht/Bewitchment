@@ -19,6 +19,15 @@ public class ModBlock extends Block {
 		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, level, oreDictionaryNames);
 	}
 	
+	public ModBlock(String name, Block base, String... oreDictionaryNames) {
+		super(base.getDefaultState().getMaterial());
+		Util.registerBlock(this, name, base, oreDictionaryNames);
+	}
+	
+	public ModBlock(Material mat) {
+		super(mat);
+	}
+	
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return state.getMaterial() != Material.ICE && state.getMaterial() != Material.GLASS && super.isFullCube(state);
