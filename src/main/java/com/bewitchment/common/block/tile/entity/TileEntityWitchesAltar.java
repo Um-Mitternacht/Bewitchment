@@ -75,7 +75,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public void onLoad() {
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
-		forceScan();
 	}
 	
 	@Override
