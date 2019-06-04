@@ -152,7 +152,8 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		world.notifyBlockUpdate(pos, state, state, 11);
-		forceScan(world, pos);
+		TileEntityWitchesAltar tile = getAltar(world, pos);
+		if (tile != null) tile.forceScan();
 	}
 	
 	@Override
@@ -237,6 +238,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	private void forceScan(World world, BlockPos pos) {
 		TileEntityWitchesAltar tile = getAltar(world, pos);
-		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), world.getBlockState(tile.getPos()).getBlock(), 10, 0);
+		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), world.getBlockState(tile.getPos()).getBlock(), 5, 0);
 	}
 }
