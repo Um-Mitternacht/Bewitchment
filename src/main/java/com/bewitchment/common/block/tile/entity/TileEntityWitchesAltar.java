@@ -51,7 +51,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
-		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
+		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.5, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
 		return flag;
 	}
 	
@@ -109,6 +109,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				boolean foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
+				if (gain < 0) gain = 0;
+				int maxPower = 0;
+				for (int val : map.values()) maxPower += val;
 				for (int cx = -1; cx <= 1; cx++) {
 					for (int cz = -1; cz <= 1; cz++) {
 						BlockPos pos0 = pos.add(cx, 0, cz);
@@ -117,32 +120,26 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 							if (upgrade != null) {
 								AltarUpgrade.Type type = upgrade.type;
 								if (type == AltarUpgrade.Type.CUP && !foundCup) {
-									multiplier *= upgrade.multiplier;
-									gain += upgrade.gain;
+									gain += upgrade.upgrade1;
+									multiplier *= upgrade.upgrade2;
 									foundCup = true;
 								}
 								if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
-									multiplier *= upgrade.multiplier;
-									gain += upgrade.gain;
+									gain += upgrade.upgrade1;
 									foundPentacle = true;
 								}
 								if (type == AltarUpgrade.Type.SWORD && !foundSword) {
-									multiplier *= upgrade.multiplier;
-									gain += upgrade.gain;
+									multiplier *= upgrade.upgrade2;
 									foundSword = true;
 								}
 								if (type == AltarUpgrade.Type.WAND && !foundWand) {
-									multiplier *= upgrade.multiplier;
-									gain += upgrade.gain;
+									maxPower += 128 * upgrade.upgrade2;
 									foundWand = true;
 								}
 							}
 						}
 					}
 				}
-				if (gain < 0) gain = 0;
-				int maxPower = 0;
-				for (int val : map.values()) maxPower += val;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
 				map.clear();
 			}
