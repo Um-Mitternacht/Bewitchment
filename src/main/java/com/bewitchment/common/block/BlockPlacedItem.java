@@ -2,10 +2,10 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -59,8 +59,16 @@ public class BlockPlacedItem extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing face) {
-		return face == EnumFacing.UP && world.getBlockState(pos.down()).getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID;
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!canPlaceBlockAt(world, to)) {
+			breakBlock(world, to, state);
+			world.destroyBlock(to, true);
+		}
 	}
 	
 	@Override

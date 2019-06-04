@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
@@ -26,11 +27,6 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
-	public boolean isFullBlock(IBlockState state) {
-		return false;
-	}
-	
-	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
 	}
@@ -46,11 +42,6 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
-	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return filled ? 8 : 0;
-	}
-	
-	@Override
 	public boolean canProvidePower(IBlockState state) {
 		return filled;
 	}
@@ -61,7 +52,22 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
+	
+	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
+	}
+	
+	@Override
+	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return filled ? 8 : 0;
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!canPlaceBlockAt(world, to)) world.destroyBlock(to, true);
 	}
 }
