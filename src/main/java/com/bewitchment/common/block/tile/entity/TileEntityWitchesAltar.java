@@ -95,7 +95,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			int x = counter & 31;
 			int y = (counter >> 5) & 31;
 			int z = (counter >> 10) & 31;
-			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
+			checking.setPos(pos.getX() + x - 16, pos.getY() + y - 16, pos.getZ() + z - 16);
 			IBlockState state = world.getBlockState(checking);
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
