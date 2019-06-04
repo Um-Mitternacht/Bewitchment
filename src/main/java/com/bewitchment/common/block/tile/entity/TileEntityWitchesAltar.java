@@ -109,7 +109,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				boolean foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
-				if (gain < 0) gain = 0;
 				int maxPower = 0;
 				for (int val : map.values()) maxPower += val;
 				for (int cx = -1; cx <= 1; cx++) {
@@ -140,6 +139,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 						}
 					}
 				}
+				if (gain < 0) gain = 0;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
 				map.clear();
 			}
