@@ -15,7 +15,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -92,25 +91,6 @@ public class Util {
 		return fin;
 	}
 	
-	public static int getArmorPieces(EntityLivingBase living, ItemArmor.ArmorMaterial mat) {
-		int fin = 0;
-		for (ItemStack stack : living.getArmorInventoryList()) {
-			if (stack.getItem() instanceof ItemArmor) {
-				ItemArmor armor = (ItemArmor) stack.getItem();
-				if (armor.getArmorMaterial() == mat) fin++;
-			}
-		}
-		return fin;
-	}
-	
-	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
-		if (living instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) living;
-			for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) if (BaublesApi.getBaublesHandler(player).getStackInSlot(i).getItem() == item) return true;
-		}
-		return false;
-	}
-	
 	public static Ingredient fromOres(String... oreDictionaryEntries) {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (String ore : oreDictionaryEntries) stacks.addAll(OreDictionary.getOres(ore));
@@ -123,10 +103,6 @@ public class Util {
 	
 	public static Ingredient get(Block block) {
 		return Ingredient.fromStacks(new ItemStack(block));
-	}
-	
-	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
-		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
 	}
 	
 	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
@@ -150,22 +126,34 @@ public class Util {
 		return true;
 	}
 	
+	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
+		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
+	}
+	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
 		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+	}
+	
+	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
+		if (living instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) living;
+			for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) if (BaublesApi.getBaublesHandler(player).getStackInSlot(i).getItem() == item) return true;
+		}
+		return false;
 	}
 	
 	public static boolean isRelated(ItemStack stack, String oreDictionaryEntry) {
 		for (ItemStack ore : OreDictionary.getOres(oreDictionaryEntry)) {
 			if (stack.getItem() instanceof ItemSword) {
-				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemSword.class, ((ItemSword) stack.getItem()), 1);
+				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemSword.class, ((ItemSword) stack.getItem()), 1);
 				return mat.getRepairItemStack().getItem() == ore.getItem();
 			}
 			if (stack.getItem() instanceof ItemTool) {
-				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemTool.class, ((ItemTool) stack.getItem()), 4);
+				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemTool.class, ((ItemTool) stack.getItem()), 4);
 				return mat.getRepairItemStack().getItem() == ore.getItem();
 			}
 			if (stack.getItem() instanceof ItemHoe) {
-				ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemHoe.class, ((ItemHoe) stack.getItem()), 1);
+				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemHoe.class, ((ItemHoe) stack.getItem()), 1);
 				return mat.getRepairItemStack().getItem() == ore.getItem();
 			}
 			if (stack.getItem() instanceof ItemArmor) return ((ItemArmor) stack.getItem()).getArmorMaterial().getRepairItemStack().getItem() == ore.getItem();
@@ -175,6 +163,17 @@ public class Util {
 	
 	public static boolean isTransparent(IBlockState state) {
 		return state.getMaterial() == Material.GLASS || state.getMaterial() == Material.ICE;
+	}
+	
+	public static int getArmorPieces(EntityLivingBase living, ItemArmor.ArmorMaterial mat) {
+		int fin = 0;
+		for (ItemStack stack : living.getArmorInventoryList()) {
+			if (stack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) stack.getItem();
+				if (armor.getArmorMaterial() == mat) fin++;
+			}
+		}
+		return fin;
 	}
 	
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {

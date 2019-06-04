@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.WitchesOvenWrapper> {
 	public static final String UID = ModObjects.witches_oven.getTranslationKey() + ".name";
 	
-	private IDrawable bg;
+	private final IDrawable bg;
 	
 	public WitchesOvenCategory(IGuiHelper helper) {
 		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_witches_oven.png"), 0, 0, 82, 54).setTextureSize(82, 54).build();

@@ -17,12 +17,6 @@ import net.minecraftforge.items.ItemStackHandler;
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public abstract class ModTileEntity extends TileEntity {
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		for (int i = 0; i < getInventories().length; i++) getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
-		super.readFromNBT(tag);
-	}
-	
-	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		for (int i = 0; i < getInventories().length; i++)
 			tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
@@ -31,9 +25,9 @@ public abstract class ModTileEntity extends TileEntity {
 	}
 	
 	@Override
-	public void markDirty() {
-		super.markDirty();
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
+	public void readFromNBT(NBTTagCompound tag) {
+		for (int i = 0; i < getInventories().length; i++) getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
+		super.readFromNBT(tag);
 	}
 	
 	@Override
@@ -50,6 +44,12 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return oldState.getBlock() != newState.getBlock();
+	}
+	
+	@Override
+	public void markDirty() {
+		super.markDirty();
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
 	}
 	
 	public ItemStackHandler[] getInventories() {

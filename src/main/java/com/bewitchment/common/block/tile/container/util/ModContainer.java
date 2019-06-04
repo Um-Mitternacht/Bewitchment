@@ -12,9 +12,7 @@ public abstract class ModContainer extends Container {
 	@Override
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
-		for (IContainerListener listener : listeners) {
-			sendToListener(listener);
-		}
+		for (IContainerListener listener : listeners) sendToListener(listener);
 	}
 	
 	@Override

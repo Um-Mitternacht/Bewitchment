@@ -38,48 +38,8 @@ public class EntitySerpent extends ModEntityMob {
 	}
 	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 9;
-	}
-	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
-		tag.setInteger("milk_timer", milkTimer);
-	}
-	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		super.readEntityFromNBT(tag);
-		milkTimer = tag.getInteger("milk_timer");
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
-	}
-	
-	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (isWet()) {
-			attackEntityFrom(DamageSource.DROWN, 2.5f);
-			if (hurtTime == 1) {
-				for (int i = 0; i < 20; i++)
-					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
-				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
-			}
-		}
 	}
 	
 	@Override
@@ -96,6 +56,54 @@ public class EntitySerpent extends ModEntityMob {
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
+			ItemStack stack = player.getHeldItem(hand);
+			if (stack.getItem() == Items.GLASS_BOTTLE) {
+				if (milkTimer == 0 && getRNG().nextBoolean()) {
+					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
+					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
+					milkTimer = 6660;
+					return true;
+				}
+				else {
+					setAttackTarget(player);
+					setRevengeTarget(player);
+				}
+			}
+		}
+		return super.processInteract(player, hand);
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 9;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (isWet()) {
+			attackEntityFrom(DamageSource.DROWN, 2.5f);
+			if (hurtTime == 1) {
+				for (int i = 0; i < 20; i++)
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
+				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
+			}
+		}
 	}
 	
 	@Override
@@ -120,22 +128,14 @@ public class EntitySerpent extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
-			ItemStack stack = player.getHeldItem(hand);
-			if (stack.getItem() == Items.GLASS_BOTTLE) {
-				if (milkTimer == 0 && getRNG().nextBoolean()) {
-					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
-					milkTimer = 6660;
-					return true;
-				}
-				else {
-					setAttackTarget(player);
-					setRevengeTarget(player);
-				}
-			}
-		}
-		return super.processInteract(player, hand);
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("milk_timer", milkTimer);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		super.readEntityFromNBT(tag);
+		milkTimer = tag.getInteger("milk_timer");
 	}
 }

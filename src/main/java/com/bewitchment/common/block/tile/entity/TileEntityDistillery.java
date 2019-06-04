@@ -76,23 +76,13 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		hasPower = tag.getBoolean("hasPower");
-		inUse = tag.getBoolean("inUse");
-		burnTime = tag.getInteger("burnTime");
-		progress = tag.getInteger("progress");
-		super.readFromNBT(tag);
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
@@ -103,6 +93,16 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 		tag.setInteger("burnTime", burnTime);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		hasPower = tag.getBoolean("hasPower");
+		inUse = tag.getBoolean("inUse");
+		burnTime = tag.getInteger("burnTime");
+		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override

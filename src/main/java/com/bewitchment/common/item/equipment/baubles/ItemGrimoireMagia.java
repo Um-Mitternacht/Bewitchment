@@ -30,20 +30,10 @@ public class ItemGrimoireMagia extends ModItemBauble {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		MagicPower cap = stack.getCapability(MagicPower.CAPABILITY, null);
-		tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", cap.amount, cap.maxAmount));
-	}
-	
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (isInCreativeTab(tab)) {
-			list.add(new ItemStack(this));
-			ItemStack full = new ItemStack(this);
-			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.proxy.config.maxGrimoirePower;
-			list.add(full);
-		}
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
+		MagicPower power = new MagicPower();
+		power.maxAmount = Bewitchment.proxy.config.maxGrimoirePower;
+		return power;
 	}
 	
 	@Override
@@ -59,10 +49,20 @@ public class ItemGrimoireMagia extends ModItemBauble {
 	}
 	
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
-		MagicPower power = new MagicPower();
-		power.maxAmount = Bewitchment.proxy.config.maxGrimoirePower;
-		return power;
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		MagicPower cap = stack.getCapability(MagicPower.CAPABILITY, null);
+		tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", cap.amount, cap.maxAmount));
+	}
+	
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (isInCreativeTab(tab)) {
+			list.add(new ItemStack(this));
+			ItemStack full = new ItemStack(this);
+			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.proxy.config.maxGrimoirePower;
+			list.add(full);
+		}
 	}
 	
 	@Override

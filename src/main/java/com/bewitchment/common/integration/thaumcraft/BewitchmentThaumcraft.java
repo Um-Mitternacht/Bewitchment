@@ -13,18 +13,12 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.AspectRegistryEvent;
 
-@SuppressWarnings({"deprecation", "WeakerAccess"})
+@SuppressWarnings({"deprecation", "WeakerAccess", "unused"})
 public class BewitchmentThaumcraft {
 	public static final Aspect SUN = getOrCreateAspect("sol", 0xffd300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/sol.png"));
 	public static final Aspect MOON = getOrCreateAspect("luna", 0x808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/luna.png"));
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
-	
-	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
-		Aspect a = Aspect.getAspect(tag);
-		if (a != null) return a;
-		return new Aspect(tag, color, components, image, 1);
-	}
 	
 	@SubscribeEvent
 	public void aspectRegistrationEvent(AspectRegistryEvent event) {
@@ -198,5 +192,11 @@ public class BewitchmentThaumcraft {
 		ThaumcraftApi.registerEntityTag("demon", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+	}
+	
+	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
+		Aspect a = Aspect.getAspect(tag);
+		if (a != null) return a;
+		return new Aspect(tag, color, components, image, 1);
 	}
 }

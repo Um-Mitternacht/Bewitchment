@@ -34,15 +34,15 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
 	}
 	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
-	}
-	
 	@Nullable
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
 		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
+	}
+	
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
+		return getCapability(capability, null) != null;
 	}
 	
 	@Override

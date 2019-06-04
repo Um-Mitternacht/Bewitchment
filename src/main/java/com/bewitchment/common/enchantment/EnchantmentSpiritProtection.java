@@ -20,20 +20,6 @@ public class EnchantmentSpiritProtection extends ModEnchantment {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	@SubscribeEvent
-	public void livingHurt(LivingHurtEvent event) {
-		applyEnchantment(event, getTotalLevelOnEntity(event.getEntityLiving()));
-	}
-	
-	public void applyEnchantment(LivingHurtEvent event, int level) {
-		if (level > 0) event.setAmount(event.getAmount() * (1 - Math.min(20, calcModifierDamage(level, event.getSource())) / 25f));
-	}
-	
-	@Override
-	public int calcModifierDamage(int level, DamageSource source) {
-		return source.canHarmInCreative() ? 0 : source.getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) source.getTrueSource()) ? level * 2 : 0;
-	}
-	
 	@Override
 	protected boolean canApplyTogether(Enchantment enchantment) {
 		if (enchantment instanceof EnchantmentProtection) {
@@ -41,5 +27,19 @@ public class EnchantmentSpiritProtection extends ModEnchantment {
 			return protection.protectionType == EnchantmentProtection.Type.FALL;
 		}
 		return enchantment != ModEnchantments.magic_protection && super.canApplyTogether(enchantment);
+	}
+	
+	@Override
+	public int calcModifierDamage(int level, DamageSource source) {
+		return source.canHarmInCreative() ? 0 : source.getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) source.getTrueSource()) ? level * 2 : 0;
+	}
+	
+	@SubscribeEvent
+	public void livingHurt(LivingHurtEvent event) {
+		applyEnchantment(event, getTotalLevelOnEntity(event.getEntityLiving()));
+	}
+	
+	public void applyEnchantment(LivingHurtEvent event, int level) {
+		if (level > 0) event.setAmount(event.getAmount() * (1 - Math.min(20, calcModifierDamage(level, event.getSource())) / 25f));
 	}
 }

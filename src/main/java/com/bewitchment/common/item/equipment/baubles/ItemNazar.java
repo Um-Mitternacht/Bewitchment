@@ -19,13 +19,13 @@ public class ItemNazar extends ModItemBauble {
 	}
 	
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.UNLUCK)) living.removePotionEffect(MobEffects.UNLUCK);
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.UNLUCK)) living.removePotionEffect(MobEffects.UNLUCK);
 	}
 	
 	@SubscribeEvent

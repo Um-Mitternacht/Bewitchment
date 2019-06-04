@@ -14,21 +14,6 @@ public class ArmorHandler {
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote) {
-			// Witches' Armor
-			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_WITCHES));
-			
-			// Cold Iron Armor
-			ModEnchantments.spirit_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON) / 2);
-			
-			// Cold Iron Tools
-			if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase) event.getSource().getTrueSource();
-				if (BewitchmentAPI.isWeakToColdIron(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotColdIron")) {
-					event.setAmount(event.getAmount() * 4);
-					event.getSource().getTrueSource().attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON));
-				}
-			}
-			
 			// Silver Armor
 			if (Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_SILVER) > 0) {
 				if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
@@ -44,6 +29,21 @@ public class ArmorHandler {
 				EntityLivingBase living = (EntityLivingBase) event.getSource().getTrueSource();
 				if (BewitchmentAPI.isWeakToSilver(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotSilver")) event.setAmount(event.getAmount() * 4);
 			}
+			
+			// Cold Iron Armor
+			ModEnchantments.spirit_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON) / 2);
+			
+			// Cold Iron Tools
+			if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
+				EntityLivingBase living = (EntityLivingBase) event.getSource().getTrueSource();
+				if (BewitchmentAPI.isWeakToColdIron(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotColdIron")) {
+					event.setAmount(event.getAmount() * 4);
+					event.getSource().getTrueSource().attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON));
+				}
+			}
+			
+			// Witches' Armor
+			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_WITCHES));
 		}
 	}
 }

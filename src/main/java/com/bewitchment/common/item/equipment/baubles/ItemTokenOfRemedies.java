@@ -6,14 +6,17 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 
 @SuppressWarnings("unused")
 public class ItemTokenOfRemedies extends ModItemBauble {
 	public ItemTokenOfRemedies() {
 		super("token_of_remedies", BaubleType.TRINKET);
 		setMaxDamage(8);
-		MinecraftForge.EVENT_BUS.register(this);
+	}
+	
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 	
 	@Override
@@ -26,10 +29,5 @@ public class ItemTokenOfRemedies extends ModItemBauble {
 			player.removePotionEffect(MobEffects.WITHER);
 			stack.damageItem(1, player);
 		}
-	}
-	
-	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 }

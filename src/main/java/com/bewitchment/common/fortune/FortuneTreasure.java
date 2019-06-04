@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "unused"})
 public class FortuneTreasure extends Fortune {
 	public FortuneTreasure() {
 		super(new ResourceLocation(Bewitchment.MODID, "treasure"));

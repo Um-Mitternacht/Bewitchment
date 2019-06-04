@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.FrostfireWrapper> {
 	public static final String UID = ModObjects.frostfire.getTranslationKey() + ".name";
 	
-	private IDrawable bg;
+	private final IDrawable bg;
 	
 	public FrostfireCategory(IGuiHelper helper) {
 		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_frostfire.png"), 0, 0, 64, 24).setTextureSize(64, 24).build();

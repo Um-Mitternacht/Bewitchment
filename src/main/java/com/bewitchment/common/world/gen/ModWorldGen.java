@@ -51,26 +51,16 @@ public class ModWorldGen implements IWorldGenerator {
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
 		if (world.provider instanceof WorldProviderSurface) {
-			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.proxy.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.proxy.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
-			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.proxy.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
-			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.proxy.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 			generateCoquina(world, rand, chunkX, chunkZ);
 			generateOre(world, rand, silverOre, chunkX, chunkZ, Bewitchment.proxy.config.silverChance, Bewitchment.proxy.config.silverMin, Bewitchment.proxy.config.silverMax);
 			generateOre(world, rand, saltOre, chunkX, chunkZ, Bewitchment.proxy.config.saltChance, Bewitchment.proxy.config.saltMin, Bewitchment.proxy.config.saltMax);
 			generateOre(world, rand, amethystOre, chunkX, chunkZ, Bewitchment.proxy.config.amethystChance, Bewitchment.proxy.config.amethystMin, Bewitchment.proxy.config.amethystMax);
 			generateOre(world, rand, garnetOre, chunkX, chunkZ, Bewitchment.proxy.config.garnetChance, Bewitchment.proxy.config.garnetMin, Bewitchment.proxy.config.garnetMax);
 			generateOre(world, rand, moonstoneOre, chunkX, chunkZ, Bewitchment.proxy.config.moonstoneChance, Bewitchment.proxy.config.moonstoneMin, Bewitchment.proxy.config.moonstoneMax);
-		}
-	}
-	
-	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, int chance, Predicate<Biome> predicate) {
-		if (chance != 0 && rand.nextInt(chance) == 0) {
-			int x = chunkX * 16 + 8;
-			int z = chunkZ * 16 + 8;
-			BlockPos pos = new BlockPos(x, world.getHeight(x, z), z);
-			Biome biome = world.getBiome(pos);
-			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
+			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.proxy.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
+			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.proxy.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
+			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.proxy.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.proxy.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 		}
 	}
 	
@@ -94,5 +84,15 @@ public class ModWorldGen implements IWorldGenerator {
 	private void generateOre(World world, Random rand, WorldGenerator gen, int chunkX, int chunkZ, int chance, int minHeight, int maxHeight) {
 		for (int i = 0; i < chance; i++)
 			gen.generate(world, rand, new BlockPos(chunkX * 16, rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16));
+	}
+	
+	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, int chance, Predicate<Biome> predicate) {
+		if (chance != 0 && rand.nextInt(chance) == 0) {
+			int x = chunkX * 16 + 8;
+			int z = chunkZ * 16 + 8;
+			BlockPos pos = new BlockPos(x, world.getHeight(x, z), z);
+			Biome biome = world.getBiome(pos);
+			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
+		}
 	}
 }

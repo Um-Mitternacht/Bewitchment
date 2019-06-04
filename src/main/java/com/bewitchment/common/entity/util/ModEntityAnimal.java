@@ -25,6 +25,10 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 		return lootTableLocation;
 	}
 	
+	protected int getSkinTypes() {
+		return 1;
+	}
+	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
@@ -50,9 +54,5 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
-	}
-	
-	protected int getSkinTypes() {
-		return 1;
 	}
 }

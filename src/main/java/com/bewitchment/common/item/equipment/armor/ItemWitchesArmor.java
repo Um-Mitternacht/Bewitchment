@@ -20,13 +20,13 @@ public class ItemWitchesArmor extends ItemArmor {
 		super(ModObjects.ARMOR_WITCHES, 0, slot);
 	}
 	
-	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return Bewitchment.MODID + ":textures/models/armor/witches" + (this == ModObjects.witches_hat && stack.getDisplayName().toLowerCase().contains("faith") ? "_variant" : "") + ".png";
-	}
-	
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped _default) {
 		return new ModelWitchesArmor(slot);
+	}
+	
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+		return Bewitchment.MODID + ":textures/models/armor/witches" + (this == ModObjects.witches_hat && stack.getDisplayName().toLowerCase().contains("faith") ? "_variant" : "") + ".png";
 	}
 }

@@ -35,6 +35,13 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	private int counter;
 	
 	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setTag("magicPower", magicPower.serializeNBT());
+		tag.setInteger("color", color);
+		return super.writeToNBT(tag);
+	}
+	
+	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		magicPower.deserializeNBT(tag.getCompoundTag("magicPower"));
 		color = tag.getInteger("color");
@@ -42,10 +49,13 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setTag("magicPower", magicPower.serializeNBT());
-		tag.setInteger("color", color);
-		return super.writeToNBT(tag);
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == MagicPower.CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
@@ -56,20 +66,18 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == MagicPower.CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
-	}
-	
-	@Override
 	public ItemStackHandler[] getInventories() {
 		ItemStackHandler fin = new ItemStackHandler();
 		fin.insertItem(0, new ItemStack(Blocks.CARPET, 1, color - 1), false);
 		return new ItemStackHandler[]{fin};
+	}
+	
+	@Override
+	public void onLoad() {
+		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
+		counter = 0;
+		map.clear();
+		scan(Short.MAX_VALUE);
 	}
 	
 	@Override
@@ -79,14 +87,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
 			scan(Bewitchment.proxy.config.altarScansPerTick);
 		}
-	}
-	
-	@Override
-	public void onLoad() {
-		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
-		counter = 0;
-		map.clear();
-		scan(Short.MAX_VALUE);
 	}
 	
 	public void scan(int times) {
@@ -146,7 +146,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 	}
 	
-	private boolean isNatural(IBlockState state) {
+	protected boolean isNatural(IBlockState state) {
 		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
 	}
 }

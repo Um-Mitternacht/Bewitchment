@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	/**
 	 * does the fortune produce negative effects
@@ -22,15 +22,15 @@ public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	
 	/**
 	 * @param player the player that has this fortune
-	 * @return true if the fortune successfully activated, false otherwise
-	 */
-	public abstract boolean apply(EntityPlayer player);
-	
-	/**
-	 * @param player the player that has this fortune
 	 * @return true if the fortune can be applied to the player, false otherwise
 	 */
 	public boolean isValid(EntityPlayer player) {
 		return true;
 	}
+	
+	/**
+	 * @param player the player that has this fortune
+	 * @return true if the fortune successfully activated, false otherwise
+	 */
+	public abstract boolean apply(EntityPlayer player);
 }

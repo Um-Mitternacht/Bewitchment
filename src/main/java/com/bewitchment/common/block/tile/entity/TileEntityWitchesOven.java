@@ -74,23 +74,13 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		burning = tag.getBoolean("burning");
-		burnTime = tag.getInteger("burnTime");
-		fuelBurnTime = tag.getInteger("fuelBurnTime");
-		progress = tag.getInteger("progress");
-		super.readFromNBT(tag);
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
@@ -101,6 +91,16 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 		tag.setInteger("fuelBurnTime", fuelBurnTime);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		burning = tag.getBoolean("burning");
+		burnTime = tag.getInteger("burnTime");
+		fuelBurnTime = tag.getInteger("fuelBurnTime");
+		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override

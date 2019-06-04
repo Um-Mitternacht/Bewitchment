@@ -34,7 +34,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
+			if (recipe == null || !recipe.isValid(inventory_down)) progress = 0;
 			else {
 				if (world.getTotalWorldTime() % 20 == 0) hasPower = altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), null, 20);
 				if (hasPower) progress++;
@@ -47,21 +47,13 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
-		hasPower = tag.getBoolean("hasPower");
-		progress = tag.getInteger("progress");
-		super.readFromNBT(tag);
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
@@ -70,6 +62,14 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 		tag.setBoolean("hasPower", hasPower);
 		tag.setInteger("progress", progress);
 		return super.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		hasPower = tag.getBoolean("hasPower");
+		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
 	}
 	
 	@Override

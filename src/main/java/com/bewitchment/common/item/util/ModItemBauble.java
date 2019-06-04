@@ -37,21 +37,6 @@ public class ModItemBauble extends Item implements IBauble {
 	}
 	
 	@Override
-	public BaubleType getBaubleType(ItemStack stack) {
-		return type;
-	}
-	
-	@Override
-	public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
-		return !EnchantmentHelper.hasBindingCurse(stack);
-	}
-	
-	@Override
-	public boolean willAutoSync(ItemStack stack, EntityLivingBase living) {
-		return true;
-	}
-	
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
 			IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
@@ -67,7 +52,22 @@ public class ModItemBauble extends Item implements IBauble {
 	}
 	
 	@Override
+	public BaubleType getBaubleType(ItemStack stack) {
+		return type;
+	}
+	
+	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return enchantment == Enchantments.BINDING_CURSE;
+	}
+	
+	@Override
+	public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
+		return !EnchantmentHelper.hasBindingCurse(stack);
+	}
+	
+	@Override
+	public boolean willAutoSync(ItemStack stack, EntityLivingBase living) {
+		return true;
 	}
 }

@@ -24,14 +24,14 @@ public class ModBlockCrops extends BlockCrops {
 	
 	@Override
 	@Nonnull
-	public Item getSeed() {
-		return seed;
+	public Item getCrop() {
+		return crop;
 	}
 	
 	@Override
 	@Nonnull
-	public Item getCrop() {
-		return crop;
+	public Item getSeed() {
+		return seed;
 	}
 	
 	@Override

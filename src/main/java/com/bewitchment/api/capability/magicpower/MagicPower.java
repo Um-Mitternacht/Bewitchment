@@ -23,17 +23,6 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public int amount, maxAmount;
 	
-	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
-		if (amount == 0) return true;
-		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
-		if (player != null) {
-			for (ItemStack stack : Util.getEntireInventory(player)) {
-				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
-			}
-		}
-		return false;
-	}
-	
 	@Nullable
 	@Override
 	public NBTBase writeNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face) {
@@ -50,15 +39,15 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		instance.maxAmount = tag.getInteger("maxAmount");
 	}
 	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
-	}
-	
 	@Nullable
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
 		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
+	}
+	
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
+		return getCapability(capability, null) != null;
 	}
 	
 	@Override
@@ -69,6 +58,17 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	@Override
 	public void deserializeNBT(NBTTagCompound tag) {
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
+	}
+	
+	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
+		if (amount == 0) return true;
+		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
+		if (player != null) {
+			for (ItemStack stack : Util.getEntireInventory(player)) {
+				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean drain(int amount) {

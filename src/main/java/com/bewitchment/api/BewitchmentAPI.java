@@ -127,18 +127,34 @@ public class BewitchmentAPI {
 		return null;
 	}
 	
-	public static boolean isVampire(EntityLivingBase living) {
+	/**
+	 * @param entity the entity to check
+	 * @return false always, vampires are not currently in the mod
+	 */
+	public static boolean isVampire(EntityLivingBase entity) {
 		return false;
 	}
 	
-	public static boolean isWerewolf(EntityLivingBase living) {
+	/**
+	 * @param entity the entity to check
+	 * @return false always, werewolves are not currently in the mod
+	 */
+	public static boolean isWerewolf(EntityLivingBase entity) {
 		return false;
 	}
 	
-	public static boolean isWeakToColdIron(EntityLivingBase living) {
-		return living.getCreatureAttribute() == DEMON || living.getCreatureAttribute() == SPIRIT || living instanceof EntityBlaze || living instanceof EntityEnderman || living instanceof EntityVex;
+	/**
+	 * @param entity the entity to check
+	 * @return true if the entity is weak to cold iron, false otherwise
+	 */
+	public static boolean isWeakToColdIron(EntityLivingBase entity) {
+		return entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityEnderman || entity instanceof EntityVex;
 	}
 	
+	/**
+	 * @param entity the entity to check
+	 * @return true if the entity is weak to silver, false otherwise
+	 */
 	public static boolean isWeakToSilver(EntityLivingBase entity) {
 		return isWerewolf(entity) || isVampire(entity) || entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD;
 	}

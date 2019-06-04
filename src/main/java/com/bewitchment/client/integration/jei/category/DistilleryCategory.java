@@ -23,7 +23,7 @@ import java.util.List;
 public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.DistilleryWrapper> {
 	public static final String UID = ModObjects.distillery.getTranslationKey() + ".name";
 	
-	private IDrawable bg;
+	private final IDrawable bg;
 	
 	public DistilleryCategory(IGuiHelper helper) {
 		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_distillery.png"), 0, 0, 93, 54).setTextureSize(93, 54).build();

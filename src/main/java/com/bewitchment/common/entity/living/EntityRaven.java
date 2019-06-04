@@ -12,7 +12,6 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
@@ -45,20 +44,22 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source.getTrueSource() != null && !(source.getTrueSource() instanceof EntityPlayer) && !(source.getTrueSource() instanceof EntityArrow)) amount = (amount + 1) / 2f;
-		return super.attackEntityFrom(source, amount);
+	protected PathNavigate createNavigator(World world) {
+		PathNavigateFlying path = new PathNavigateFlying(this, world);
+		path.setCanEnterDoors(true);
+		path.setCanFloat(true);
+		path.setCanOpenDoors(false);
+		return path;
 	}
 	
 	@Override
-	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() instanceof ItemSeeds;
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.RAVEN_CRY;
 	}
 	
 	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (!onGround && motionY <= 0) motionY *= 0.6;
+	public boolean attackEntityAsMob(Entity entity) {
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 	}
 	
 	@Override
@@ -68,7 +69,19 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
+	public boolean isBreedingItem(ItemStack stack) {
+		return stack.getItem() instanceof ItemSeeds;
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!onGround && motionY <= 0) motionY *= 0.6;
 	}
 	
 	@Override
@@ -76,8 +89,19 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
+	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
+		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
 	}
 	
 	@Override
@@ -94,36 +118,5 @@ public class EntityRaven extends ModEntityTameable {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
 		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
-		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
-	}
-	
-	@Override
-	protected PathNavigate createNavigator(World world) {
-		PathNavigateFlying path = new PathNavigateFlying(this, world);
-		path.setCanEnterDoors(true);
-		path.setCanFloat(true);
-		path.setCanOpenDoors(false);
-		return path;
-	}
-	
-	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.RAVEN_CRY;
-	}
-	
-	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
 	}
 }

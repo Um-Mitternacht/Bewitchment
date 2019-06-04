@@ -43,20 +43,11 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
-	}
-	
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (isEntityInvulnerable(source)) return false;
-		if (aiSit != null) aiSit.setSitting(false);
-		return super.attackEntityFrom(source, amount);
+		boolean flag = super.attackEntityFrom(source, amount);
+		if (flag && aiSit != null) aiSit.setSitting(false);
+		return flag;
 	}
-	
-	@Override
-	public abstract boolean isBreedingItem(ItemStack stack);
 	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -87,6 +78,12 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		if (getSkinTypes() > 1) dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
 	protected void entityInit() {
 		super.entityInit();
 		aiSit = new EntityAISit(this);
@@ -111,4 +108,7 @@ public abstract class ModEntityTameable extends EntityTameable {
 	protected int getSkinTypes() {
 		return 1;
 	}
+	
+	@Override
+	public abstract boolean isBreedingItem(ItemStack stack);
 }

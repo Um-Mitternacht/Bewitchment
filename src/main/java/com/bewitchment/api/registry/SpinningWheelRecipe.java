@@ -24,13 +24,12 @@ public class SpinningWheelRecipe extends IForgeRegistryEntry.Impl<SpinningWheelR
 		return Util.areISListsEqual(this.input, input);
 	}
 	
-	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {
+	public final boolean isValid(ItemStackHandler output) {
 		return Util.canMerge(output.getStackInSlot(0), this.output);
 	}
 	
 	public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
-		for (int i = 0; i < input.getSlots(); i++)
-			input.extractItem(i, 1, false);
+		for (int i = 0; i < input.getSlots(); i++) input.extractItem(i, 1, false);
 		output.insertItem(0, this.output.copy(), false);
 	}
 }

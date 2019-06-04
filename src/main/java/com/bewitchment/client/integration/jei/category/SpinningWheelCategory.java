@@ -23,7 +23,7 @@ import java.util.List;
 public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCategory.SpinningWheelWrapper> {
 	public static final String UID = ModObjects.spinning_wheel.getTranslationKey() + ".name";
 	
-	private IDrawable bg;
+	private final IDrawable bg;
 	
 	public SpinningWheelCategory(IGuiHelper helper) {
 		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_spinning_wheel.png"), 0, 0, 90, 36).setTextureSize(90, 36).build();

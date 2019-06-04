@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -21,6 +22,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -49,27 +52,13 @@ public class BlockFrostfire extends ModBlockContainer {
 	}
 	
 	@Override
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
-	}
-	
-	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
-	}
-	
-	@Override
-	public int quantityDropped(Random rand) {
-		return 0;
-	}
-	
-	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
-	}
-	
-	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return world.getBlockState(pos.down()).getBlock().getItem(world, pos.down(), world.getBlockState(pos.down()));
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Items.AIR;
 	}
 	
 	@Override
@@ -83,5 +72,21 @@ public class BlockFrostfire extends ModBlockContainer {
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
+	}
+	
+	@Override
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
 	}
 }

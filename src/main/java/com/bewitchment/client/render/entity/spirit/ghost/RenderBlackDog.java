@@ -42,6 +42,11 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 		}
 		
 		@Override
+		public boolean shouldCombineTextures() {
+			return false;
+		}
+		
+		@Override
 		public void doRenderLayer(EntityBlackDog entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
 			renderer.bindTexture(TEX[entity.getDataManager().get(EntityBlackDog.SKIN)]);
 			GlStateManager.enableBlend();
@@ -54,11 +59,6 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 			renderer.setLightmap(entity);
 			GlStateManager.disableBlend();
 			GlStateManager.enableAlpha();
-		}
-		
-		@Override
-		public boolean shouldCombineTextures() {
-			return false;
 		}
 	}
 }

@@ -34,14 +34,23 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
+	}
+	
+	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
 		return !this.leavesFancy;
 	}
 	
 	@Override
-	public BlockPlanks.EnumType getWoodType(int meta) {
-		return null;
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile, ItemStack stack) {
+		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
+			player.addStat(StatList.getBlockStats(this));
+			spawnAsEntity(world, pos, new ItemStack(this));
+		}
+		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
 	
 	@Override
@@ -55,15 +64,6 @@ public class ModBlockLeaves extends BlockLeaves {
 		meta += (state.getValue(DECAYABLE) ? 1 : 0);
 		meta += (state.getValue(CHECK_DECAY) ? 2 : 1);
 		return meta;
-	}
-	
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile, ItemStack stack) {
-		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
-			player.addStat(StatList.getBlockStats(this));
-			spawnAsEntity(world, pos, new ItemStack(this));
-		}
-		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
 	
 	@Override
