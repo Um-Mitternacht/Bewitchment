@@ -75,9 +75,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public void onLoad() {
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 10, 0);
-		counter = 0;
-		map.clear();
-		scan(Short.MAX_VALUE);
+		forceScan();
 	}
 	
 	@Override
@@ -89,13 +87,20 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 	}
 	
-	public void scan(int times) {
+	public void forceScan() {
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+		counter = 0;
+		map.clear();
+		scan(4096);
+	}
+	
+	protected void scan(int times) {
 		for (int i = 0; i < times; i++) {
 			counter = ++counter % Short.MAX_VALUE;
-			int x = counter & 31;
-			int y = (counter >> 5) & 31;
-			int z = (counter >> 10) & 31;
-			checking.setPos(pos.getX() + x - 16, pos.getY() + y - 16, pos.getZ() + z - 16);
+			int x = counter & 15;
+			int y = (counter >> 4) & 15;
+			int z = (counter >> 8) & 15;
+			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
 			IBlockState state = world.getBlockState(checking);
 			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 			else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
@@ -105,7 +110,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				map.put(state, map.getOrDefault(state, 0) + 1);
 				map.put(state, Math.max(map.keySet().size() * 2, map.get(state)));
 			}
-			if (counter == Short.MAX_VALUE - 1) {
+			if (counter == 4095) {
 				boolean foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
@@ -141,6 +146,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				}
 				if (gain < 0) gain = 0;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
+				counter = 0;
 				map.clear();
 			}
 		}

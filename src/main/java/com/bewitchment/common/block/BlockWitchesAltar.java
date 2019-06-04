@@ -112,6 +112,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 					if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up()) && stack.getItem().onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ) == EnumActionResult.PASS && stack.getItem().onItemRightClick(world, player, hand).getType() == EnumActionResult.PASS) {
 						world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
 						((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
+						forceScan(world, pos);
 					}
 				}
 				else {
@@ -145,16 +146,13 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
 		super.neighborChanged(state, world, to, block, from);
-		TileEntityWitchesAltar tile = getAltar(world, to);
-		if (tile != null) {
-			world.notifyBlockUpdate(tile.getPos(), state, state, 2);
-			tile.scan(Short.MAX_VALUE);
-		}
+		forceScan(world, to);
 	}
 	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		world.notifyBlockUpdate(pos, state, state, 11);
+		forceScan(world, pos);
 	}
 	
 	@Override
@@ -180,10 +178,13 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	public static TileEntityWitchesAltar getAltar(IBlockAccess world, BlockPos pos) {
 		for (int x = -1; x <= 1; x++) {
-			for (int z = -1; z <= 1; z++) {
-				TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
-				if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
+			for (int y = -1; y <= 1; y++) {
+				for (int z = -1; z <= 1; z++) {
+					TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
+					if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
+				}
 			}
+			
 		}
 		return null;
 	}
@@ -232,5 +233,10 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			return true;
 		}
 		return false;
+	}
+	
+	private void forceScan(World world, BlockPos pos) {
+		TileEntityWitchesAltar tile = getAltar(world, pos);
+		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), world.getBlockState(tile.getPos()).getBlock(), 10, 0);
 	}
 }
