@@ -56,7 +56,7 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.cracked_scorned_bricks), new AspectList().add(Aspect.FIRE, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10).add(DEMON, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.cracked_embittered_bricks), new AspectList().add(Aspect.COLD, 10).add(Aspect.MAGIC, 10).add(Aspect.DARKNESS, 10));
 		
-		for (Block block : ModObjects.block_of_cold) event.register.registerObjectTag(new ItemStack(block), new AspectList().add(Aspect.AVERSION, 30).add(Aspect.COLD, 20).add(Aspect.METAL, 67));
+		for (Block block : ModObjects.block_of_cold_iron) event.register.registerObjectTag(new ItemStack(block), new AspectList().add(Aspect.AVERSION, 30).add(Aspect.COLD, 20).add(Aspect.METAL, 67));
 		for (Block block : ModObjects.block_of_silver) event.register.registerObjectTag(new ItemStack(block), new AspectList().add(Aspect.METAL, 67).add(Aspect.DESIRE, 30).add(MOON, 20));
 		
 		//Plants

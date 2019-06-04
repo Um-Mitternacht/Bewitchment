@@ -72,7 +72,7 @@ public class ModObjects {
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Blocks.DIAMOND_BLOCK, "blockGarnet");
 	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Blocks.DIAMOND_BLOCK, "blockMoonstone");
 	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
-	public static final Block[] block_of_cold = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
+	public static final Block[] block_of_cold_iron = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
 	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Blocks.IRON_ORE, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlock("garnet_ore", Blocks.IRON_ORE, "oreGarnet");
