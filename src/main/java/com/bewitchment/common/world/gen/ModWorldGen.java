@@ -65,18 +65,20 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 	
 	private void generateCoquina(World world, Random rand, int chunkX, int chunkZ) {
-		BlockPos pos = world.getHeight(new BlockPos(chunkX * 16 + rand.nextInt(16), 0, chunkZ * 16 + rand.nextInt(16)));
-		if (BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH).contains(world.getBiome(pos)) || BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN).contains(world.getBiome(pos))) {
-			while (world.getBlockState(pos.down()).getBlock() == Blocks.SAND) {
-				for (int i = 0; i < 3; i++) {
-					int x = rand.nextInt(2);
-					int y = rand.nextInt(2);
-					int z = rand.nextInt(2);
-					for (BlockPos blockpos : BlockPos.getAllInBox(pos.add(-x, -y, -z), pos.add(x, y, z)))
-						if (blockpos.distanceSq(pos) <= Math.pow((x + y + z) * .333f + 0.5f, 2)) world.setBlockState(blockpos, ModObjects.coquina[0].getDefaultState(), 2);
-					pos = pos.add(rand.nextInt(2) - 1, -rand.nextInt(2), rand.nextInt(2) - 1);
+		if (rand.nextInt(6) == 0) {
+			BlockPos pos = world.getHeight(new BlockPos(chunkX * 16 + rand.nextInt(16), 0, chunkZ * 16 + rand.nextInt(16)));
+			if (BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH).contains(world.getBiome(pos)) || BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN).contains(world.getBiome(pos))) {
+				while (world.getBlockState(pos.down()).getBlock() == Blocks.SAND) {
+					for (int i = 0; i < 3; i++) {
+						int x = rand.nextInt(2);
+						int y = rand.nextInt(2);
+						int z = rand.nextInt(2);
+						for (BlockPos blockpos : BlockPos.getAllInBox(pos.add(-x, -y, -z), pos.add(x, y, z)))
+							if (blockpos.distanceSq(pos) <= Math.pow((x + y + z) * .333f + 0.5f, 2)) world.setBlockState(blockpos, ModObjects.coquina[0].getDefaultState(), 2);
+						pos = pos.add(rand.nextInt(2) - 1, -rand.nextInt(2), rand.nextInt(2) - 1);
+					}
+					pos = pos.down();
 				}
-				pos = pos.down();
 			}
 		}
 	}
