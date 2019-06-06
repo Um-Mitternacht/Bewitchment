@@ -332,10 +332,12 @@ public class ModObjects {
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
 		
-		CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(coquina_bricks.getDefaultState(), 1));
-		CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(chiseled_coquina.getDefaultState(), 1));
-		CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(cracked_scorned_bricks.getDefaultState(), 1));
-		CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(chiseled_scorned_bricks.getDefaultState(), 1));
+		if (Loader.isModLoaded("chisel")) {
+			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(coquina_bricks.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(chiseled_coquina.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(cracked_scorned_bricks.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(chiseled_scorned_bricks.getDefaultState(), 1));
+		}
 	}
 	
 	public static void init() {
