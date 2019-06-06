@@ -201,7 +201,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			TileEntityWitchesAltar altar = getAltar(world, pos);
 			if (altar != null) return altar.getPos();
 		}
-		int radius = 8;
+		int radius = 12;
 		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
 			if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
 				TileEntityWitchesAltar altar = getAltar(world, pos0);
@@ -212,7 +212,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	private static void refreshNearby(IBlockAccess world, BlockPos pos) {
-		int radius = 8;
+		int radius = 12;
 		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
 			Block block = world.getBlockState(pos0).getBlock();
 			if (block instanceof ModBlockContainer) ((ModBlockContainer) block).refreshAltarPos(world, pos0);
