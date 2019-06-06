@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -117,7 +118,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 							}
 						}
 						else {
-							if (stack.getItem() instanceof ItemBlock) return false;
+							if (stack.getItem() instanceof ItemBlock || stack.getItem() instanceof ItemSkull) return false;
 							else if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up())) {
 								world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
 								((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
