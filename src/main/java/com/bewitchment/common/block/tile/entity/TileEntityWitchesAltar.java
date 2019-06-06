@@ -100,11 +100,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			int y = (counter >> 4) & 15;
 			int z = (counter >> 8) & 15;
 			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
-			IBlockState state = world.getBlockState(checking);
-			if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
-			else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
-			else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
-			else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
+			IBlockState state = convert(world.getBlockState(checking));
 			if (isNatural(state)) {
 				map.put(state, map.getOrDefault(state, 0) + 1);
 				map.put(state, Math.max(map.keySet().size() * 2, map.get(state)));
@@ -153,5 +149,13 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	protected boolean isNatural(IBlockState state) {
 		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
+	}
+	
+	protected IBlockState convert(IBlockState state) {
+		if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
+		else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
+		else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
+		else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
+		return state;
 	}
 }
