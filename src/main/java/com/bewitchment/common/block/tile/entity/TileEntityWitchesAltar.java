@@ -61,7 +61,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
-		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.5, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
+		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
 		return flag;
 	}
 	

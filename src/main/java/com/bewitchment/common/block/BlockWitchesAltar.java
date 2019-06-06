@@ -17,10 +17,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -95,34 +95,39 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote && !player.isSneaking() && hand == EnumHand.MAIN_HAND) {
+		if (altarPattern.match(world, pos) != null) {
 			ItemStack stack = player.getHeldItem(hand);
-			if (altarPattern.match(world, pos) != null) {
-				if (face == EnumFacing.UP && stack.getItem() == Item.getItemFromBlock(Blocks.CARPET)) {
-					TileEntityWitchesAltar tile = getAltar(world, pos);
-					ItemStack carpet = ItemStack.EMPTY;
-					if (tile != null) carpet = new ItemStack(Blocks.CARPET, 1, tile.color - 1);
-					if (createAltar(world, pos, stack.getMetadata() + 1)) {
-						if (!player.isCreative()) stack.shrink(1);
-						if (!carpet.isEmpty()) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), carpet);
-						return true;
-					}
-				}
-				else if (face == EnumFacing.UP && !stack.isEmpty()) {
-					if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up()) && stack.getItem().onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ) == EnumActionResult.PASS && stack.getItem().onItemRightClick(world, player, hand).getType() == EnumActionResult.PASS) {
-						world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
-						((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
-						forceScan(world, pos);
-					}
-				}
-				else {
+			if (!world.isRemote) {
+				if (stack.isEmpty()) {
 					TileEntityWitchesAltar tile = getAltar(world, pos);
 					if (tile != null) {
 						MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);
 						player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.amount, cap.maxAmount, tile.gain), true);
 					}
 				}
+				else {
+					if (face == EnumFacing.UP) {
+						if (stack.getItem() == Item.getItemFromBlock(Blocks.CARPET)) {
+							TileEntityWitchesAltar tile = getAltar(world, pos);
+							ItemStack carpet = ItemStack.EMPTY;
+							if (tile != null) carpet = new ItemStack(Blocks.CARPET, 1, tile.color - 1);
+							if (createAltar(world, pos, stack.getMetadata() + 1)) {
+								if (!player.isCreative()) stack.shrink(1);
+								if (!carpet.isEmpty()) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), carpet);
+							}
+						}
+						else {
+							if (stack.getItem() instanceof ItemBlock) return false;
+							else if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up())) {
+								world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
+								((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
+								forceScan(world, pos);
+							}
+						}
+					}
+				}
 			}
+			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
