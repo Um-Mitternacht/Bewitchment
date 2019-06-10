@@ -12,6 +12,7 @@ import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.ItemBottledFrostfire;
 import com.bewitchment.common.item.ItemSalt;
+import com.bewitchment.common.item.ItemWaystone;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
@@ -66,6 +67,7 @@ public class ModObjects {
 	public static final ModBlockCrops crop_white_sage = new ModBlockCrops("crop_white_sage");
 	public static final ModBlockCrops crop_wormwood = new ModBlockCrops("crop_wormwood");
 	public static final Block salt_barrier = new BlockSaltBarrier();
+	public static final Block glyph = registerTileEntity(new BlockGlyph(), TileEntityGlyph.class);
 	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
 	//Material Blocks
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Blocks.DIAMOND_BLOCK, "blockAmethyst");
@@ -212,6 +214,11 @@ public class ModObjects {
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
+	public static final Item waystone = new ItemWaystone();
+	public static final Item ritual_chalk = Util.registerItem("ritual_chalk");
+	public static final Item focal_chalk = Util.registerItem("focal_chalk");
+	public static final Item fiery_chalk = Util.registerItem("fiery_chalk");
+	public static final Item phasing_chalk = Util.registerItem("phasing_chalk");
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final Item hellish_bauble = new ItemHellishBauble();

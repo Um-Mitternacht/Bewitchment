@@ -150,16 +150,33 @@ item.bewitchment.cold_iron_shovel.name=Cold Iron Shovel
 item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 
 item.bewitchment.athame.name=Athame
+tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 item.bewitchment.boline.name=Boline
 
+item.bewitchment.waystone.name=Waystone
+tooltip.bewitchment.waystone=Bound to %d %d %d (%s)
+tooltip.bewitchment.waystone.unbound=Not bound
+
+item.bewitchment.ritual_chalk.name=Ritual Chalk
+item.bewitchment.focal_chalk.name=Focal Chalk
+item.bewitchment.fiery_chalk.name=Fiery Chalk
+item.bewitchment.phasing_chalk.name=Phasing Chalk
+
 item.bewitchment.girdle_of_the_dryads.name=Girdle of the Dryads
+tooltip.bewitchment.girdle_of_the_dryads=This belt protects the wearer from harm by growing pieces of bark as armor.
 item.bewitchment.hellish_bauble.name=Hellish Bauble
+tooltip.bewitchment.hellish_bauble=This oddly shaped trinket will allow you to tap into a small portion of demonic power.
 item.bewitchment.horseshoe.name=Horseshoe
+tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 item.bewitchment.nazar.name=Nazar
+tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.
 item.bewitchment.token_of_remedies.name=Token of Remedies
+tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses, but it depletes rather quickly.
 item.bewitchment.wrathful_eye.name=Wrathful Eye
+tooltip.bewitchment.wrathful_eye=This trinket commands respect from demons.
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
+tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 
@@ -198,20 +215,34 @@ item.bewitchment.pure_filament.name=Pure Filament
 item.bewitchment.witches_stitching.name=Witches' Stitching
 
 item.bewitchment.aconitum.name=Aconitum
+tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
 item.bewitchment.belladonna.name=Belladonna
+tooltip.bewitchment.belladonna=A highly toxic plant, this is a prime component of flying ointment
 item.bewitchment.garlic.name=Garlic
+tooltip.bewitchment.garlic=A common spice that keeps the undead at bay
 item.bewitchment.hellebore.name=Hellebore
+tooltip.bewitchment.hellebore=A beautiful and poisonous flower linked to demons
 item.bewitchment.mandrake_root.name=Mandrake Root
+tooltip.bewitchment.mandrake_root=Used to amplify magical effects
 item.bewitchment.white_sage.name=White Sage
+tooltip.bewitchment.white_sage=Used as an aid in exorcisms
 item.bewitchment.wormwood.name=Wormwood
+tooltip.bewitchment.wormwood=An incredibly weedy herb
 
 item.bewitchment.aconitum_seeds.name=Aconitum Seeds
+tooltip.bewitchment.aconitum_seeds=Seed from a poisonous plant
 item.bewitchment.belladonna_seeds.name=Belladonna Seeds
+tooltip.bewitchment.belladonna_seeds=Seed from a herbaceous plant
 item.bewitchment.garlic_seeds.name=Garlic Seeds
+tooltip.bewitchment.garlic_seeds=Seed from a smelly allium
 item.bewitchment.hellebore_seeds.name=Hellebore Seeds
+tooltip.bewitchment.hellebore_seeds=Seed from a innocent-looking plant
 item.bewitchment.mandrake_seeds.name=Mandrake Seeds
+tooltip.bewitchment.mandrake_seeds=Seed from a plant with a strange root
 item.bewitchment.white_sage_seeds.name=White Sage Seeds
+tooltip.bewitchment.white_sage_seeds=Seed from an evergreen perennial shrub
 item.bewitchment.wormwood_seeds.name=Wormwood Seeds
+tooltip.bewitchment.wormwood_seeds=Seed from a weedy herb
 
 item.bewitchment.elderberries.name=Elderberries
 item.bewitchment.juniper_berries.name=Juniper Berries
@@ -293,32 +324,6 @@ altar.no_power=Your source of magic is not strong enough
 
 fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting
-
-tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
-
-tooltip.bewitchment.girdle_of_the_dryads=This belt protects the wearer from harm by growing pieces of bark as armor.
-tooltip.bewitchment.hellish_bauble=This oddly shaped trinket will allow you to tap into a small portion of demonic power.
-tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
-tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.
-tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses, but it depletes rather quickly.
-tooltip.bewitchment.wrathful_eye=This trinket commands respect from demons.
-tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
-
-tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
-tooltip.bewitchment.belladonna=A highly toxic plant, this is a prime component of flying ointment
-tooltip.bewitchment.garlic=A common spice that keeps the undead at bay
-tooltip.bewitchment.hellebore=A beautiful and poisonous flower linked to demons
-tooltip.bewitchment.mandrake_root=Used to amplify magical effects
-tooltip.bewitchment.white_sage=Used as an aid in exorcisms
-tooltip.bewitchment.wormwood=An incredibly weedy herb
-
-tooltip.bewitchment.aconitum_seeds=Seed from a poisonous plant
-tooltip.bewitchment.belladonna_seeds=Seed from a herbaceous plant
-tooltip.bewitchment.garlic_seeds=Seed from a smelly allium
-tooltip.bewitchment.hellebore_seeds=Seed from a innocent-looking plant
-tooltip.bewitchment.mandrake_seeds=Seed from a plant with a strange root
-tooltip.bewitchment.white_sage_seeds=Seed from an evergreen perennial shrub
-tooltip.bewitchment.wormwood_seeds=Seed from a weedy herb
 
 //DEMON NAMES AND TITLES
 entity.bewitchment.given_name.0=Bael
