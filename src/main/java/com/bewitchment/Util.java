@@ -84,15 +84,23 @@ public class Util {
 	
 	public static List<ItemStack> getEntireInventory(EntityPlayer player) {
 		List<ItemStack> fin = new ArrayList<>();
-		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++)
-			fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
+		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
 		fin.addAll(player.inventory.mainInventory);
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
 		return fin;
 	}
 	
-	public static Ingredient fromOres(String... oreDictionaryEntries) {
+	public static List<ItemStack> expandList(List<ItemStack> list) {
+		List<ItemStack> fin = new ArrayList<>();
+		for (ItemStack stack : list) {
+			ItemStack copy = stack.copy();
+			while (!copy.isEmpty()) fin.add(copy.splitStack(1));
+		}
+		return fin;
+	}
+	
+	public static Ingredient get(String... oreDictionaryEntries) {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (String ore : oreDictionaryEntries) stacks.addAll(OreDictionary.getOres(ore));
 		return Ingredient.fromStacks(stacks.toArray(new ItemStack[0]));

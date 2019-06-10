@@ -37,7 +37,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
-		tag.setLong("effectivePos", effectivePos.toLong());
+		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
 		tag.setInteger("effectiveDim", effectiveDim);
 		tag.setString("caster", caster == null ? "" : caster.toString());
 		tag.setInteger("time", time);
@@ -86,13 +86,14 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					caster = player.getPersistentID();
 					effectivePos = pos;
 					effectiveDim = world.provider.getDimension();
-					time = ritual.time;
+					time = 0;
 					ritual.onStarted(world, pos, player);
 					player.sendStatusMessage(new TextComponentTranslation(ritual.getRegistryName().toString().replace(":", ".")), true);
 					for (EntityItem item : items) {
 						world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 						if (world.isRemote) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition().getX(), item.getPosition().getY(), item.getPosition().getZ(), 0, 0, 0);
-						inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().splitStack(item.getItem().getCount()), false);
+						inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().copy(), false);
+						item.setDead();
 					}
 					if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 				}
@@ -105,8 +106,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	public void stopRitual(boolean finished) {
 		if (ritual != null) {
-			if (finished) ritual.onFinished(world, pos, world.getPlayerEntityByUUID(caster));
-			else ritual.onHalted(world, pos, world.getPlayerEntityByUUID(caster));
+			if (finished) ritual.onFinished(world, pos);
+			else ritual.onHalted(world, pos);
 		}
 		ritual = null;
 		caster = null;

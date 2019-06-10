@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandle;
+import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
@@ -38,12 +39,13 @@ import java.util.Collections;
 public class ModRecipes {
 	public static void init() {
 		furnaceInit();
+		altarInit();
+		ritualInit();
 		ovenInit();
 		distilleryInit();
 		spinningWheelInit();
 		frostfireInit();
 		fortuneInit();
-		altarInit();
 		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
@@ -74,6 +76,10 @@ public class ModRecipes {
 		Util.registerAltarUpgradeItem(Items.DIAMOND_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
 		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.5));
+	}
+	
+	private static void ritualInit() {
+		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "crystal_ball"), Arrays.asList(Util.get("blockGlass"), Util.get("blockGlass"), Util.get("blockGlass"), Util.get("gemQuartz"), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.crystal_ball)), 5, 350, 30, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1));
 	}
 	
 	private static void athamePostInit() {
@@ -188,31 +194,31 @@ public class ModRecipes {
 	
 	private static void distilleryInit() {
 		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "bottled_frostfire"), Arrays.asList(Util.get(Items.GLASS_BOTTLE), Util.get(ModObjects.perpetual_ice), Util.get(ModObjects.cleansing_balm), Util.get(Items.FIRE_CHARGE)), Collections.singletonList(new ItemStack(ModObjects.bottled_frostfire))));
-		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "cleansing_balm"), Arrays.asList(Util.get(ModObjects.acacia_resin), Util.fromOres("cropWhiteSage"), Util.fromOres("salt"), Util.fromOres("cropGarlic")), Arrays.asList(new ItemStack(ModObjects.cleansing_balm), new ItemStack(ModObjects.wood_ash))));
+		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "cleansing_balm"), Arrays.asList(Util.get(ModObjects.acacia_resin), Util.get("cropWhiteSage"), Util.get("salt"), Util.get("cropGarlic")), Arrays.asList(new ItemStack(ModObjects.cleansing_balm), new ItemStack(ModObjects.wood_ash))));
 		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "demonic_elixir"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.demon_heart), Util.get(ModObjects.spectral_dust)), Arrays.asList(new ItemStack(ModObjects.demonic_elixir, 2), new ItemStack(ModObjects.diabolical_vein))));
-		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "everchanging_dew"), Arrays.asList(Util.fromOres("dye"), Util.get(ModObjects.essence_of_vitality), Util.fromOres("paper")), Arrays.asList(new ItemStack(ModObjects.everchanging_dew), new ItemStack(Items.SLIME_BALL, 3))));
-		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_unguent"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.fromOres("obsidian"), Ingredient.fromStacks(new ItemStack(ModObjects.wood_ash))), Collections.singletonList(new ItemStack(ModObjects.fiery_unguent))));
-		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "heaven_extract"), Arrays.asList(Util.get(ModObjects.birch_soul), Util.fromOres("dustGlowstone"), Util.fromOres("gemGarnet"), Util.fromOres("gemQuartz")), Collections.singletonList(new ItemStack(ModObjects.heaven_extract))));
-		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "stone_ichor"), Arrays.asList(Util.fromOres("coquina"), Util.get(ModObjects.liquid_witchcraft), Util.fromOres("obsidian"), Util.fromOres("stone")), Arrays.asList(new ItemStack(ModObjects.stone_ichor), new ItemStack(ModObjects.salt, 3))));
+		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "everchanging_dew"), Arrays.asList(Util.get("dye"), Util.get(ModObjects.essence_of_vitality), Util.get("paper")), Arrays.asList(new ItemStack(ModObjects.everchanging_dew), new ItemStack(Items.SLIME_BALL, 3))));
+		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_unguent"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.get("obsidian"), Ingredient.fromStacks(new ItemStack(ModObjects.wood_ash))), Collections.singletonList(new ItemStack(ModObjects.fiery_unguent))));
+		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "heaven_extract"), Arrays.asList(Util.get(ModObjects.birch_soul), Util.get("dustGlowstone"), Util.get("gemGarnet"), Util.get("gemQuartz")), Collections.singletonList(new ItemStack(ModObjects.heaven_extract))));
+		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "stone_ichor"), Arrays.asList(Util.get("coquina"), Util.get(ModObjects.liquid_witchcraft), Util.get("obsidian"), Util.get("stone")), Arrays.asList(new ItemStack(ModObjects.stone_ichor), new ItemStack(ModObjects.salt, 3))));
 		BewitchmentAPI.registerDistilleryRecipe(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "undying_salve"), Arrays.asList(Util.get(ModObjects.ectoplasm), Util.get(ModObjects.ebb_of_death), Util.get(ModObjects.essence_of_vitality)), Arrays.asList(new ItemStack(ModObjects.ectoplasm, 2), new ItemStack(ModObjects.undying_salve, 2))));
 	}
 	
 	private static void spinningWheelInit() {
-		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "spider_web"), Arrays.asList(Util.fromOres("string"), Util.fromOres("string"), Util.fromOres("string")), new ItemStack(Blocks.WEB)));
+		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "spider_web"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get("string")), new ItemStack(Blocks.WEB)));
 		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "diabolical_vein"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.demon_heart), Util.get(ModObjects.ebb_of_death), Util.get(ModObjects.fiery_unguent)), new ItemStack(ModObjects.diabolical_vein, 4)));
-		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "golden_thread"), Arrays.asList(Util.fromOres("cropWheat"), Util.fromOres("cropWheat"), Util.get(Blocks.HAY_BLOCK), Util.get(ModObjects.everchanging_dew)), new ItemStack(ModObjects.golden_thread, 3)));
+		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "golden_thread"), Arrays.asList(Util.get("cropWheat"), Util.get("cropWheat"), Util.get(Blocks.HAY_BLOCK), Util.get(ModObjects.everchanging_dew)), new ItemStack(ModObjects.golden_thread, 3)));
 		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "pure_filament"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.witches_stitching), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.cleansing_balm)), new ItemStack(ModObjects.pure_filament, 4)));
-		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "witches_stitching"), Arrays.asList(Util.fromOres("string"), Util.fromOres("string"), Util.get(ModObjects.oak_spirit), Util.get(ModObjects.oak_spirit)), new ItemStack(ModObjects.witches_stitching, 4)));
+		BewitchmentAPI.registerSpinningWheelRecipe(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "witches_stitching"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get(ModObjects.oak_spirit), Util.get(ModObjects.oak_spirit)), new ItemStack(ModObjects.witches_stitching, 4)));
 	}
 	
 	private static void frostfireInit() {
-		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot"), Util.fromOres("oreIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		if (!Arrays.asList(Util.fromOres("clusterIron").getMatchingStacks()).isEmpty())
-			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.fromOres("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
-		if (!Arrays.asList(Util.fromOres("dustIron", "gritIron").getMatchingStacks()).isEmpty())
-			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt"), Util.fromOres("dustIron", "gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
-		if (!Arrays.asList(Util.fromOres("dustTinyIron").getMatchingStacks()).isEmpty())
-			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.fromOres("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
+		BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot"), Util.get("oreIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		if (!Arrays.asList(Util.get("clusterIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_cluster"), Util.get("clusterIron"), new ItemStack(ModObjects.cold_iron_nugget, 18)));
+		if (!Arrays.asList(Util.get("dustIron", "gritIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt"), Util.get("dustIron", "gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
+		if (!Arrays.asList(Util.get("dustTinyIron").getMatchingStacks()).isEmpty())
+			BewitchmentAPI.registerFrostfireRecipe(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.get("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
 	}
 	
 	private static void fortuneInit() {

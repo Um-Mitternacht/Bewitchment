@@ -30,11 +30,11 @@ import java.util.Random;
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
 public class BlockGlyph extends ModBlockContainer {
 	/**
-	 * 0 = any, 1 = golden, 2 = normal, 3 = nether, 4 = ender
+	 * 0 = golden, 1 = normal, 2 = nether, 3 = ender, 4 = any
 	 */
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 4);
 	
-	public static final int ANY = 0, GOLDEN = 1, NORMAL = 2, NETHER = 3, ENDER = 4;
+	public static final int GOLDEN = 0, NORMAL = 1, NETHER = 2, ENDER = 3, ANY = 4;
 	
 	private static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
 	

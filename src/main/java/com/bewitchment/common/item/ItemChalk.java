@@ -2,6 +2,8 @@ package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
+import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.BlockHorizontal;
@@ -32,7 +34,9 @@ public class ItemChalk extends Item {
 		if (!world.isRemote && (face == EnumFacing.UP && ModObjects.glyph.canPlaceBlockAt(world, pos.up()) || isReplacing)) {
 			ItemStack stack = player.getHeldItem(hand);
 			if (!player.isCreative()) stack.damageItem(1, player);
-			world.setBlockState(isReplacing ? pos : pos.up(), ModObjects.glyph.getDefaultState().withProperty(BlockGlyph.TYPE, stack.getItem() == ModObjects.focal_chalk ? BlockGlyph.GOLDEN : stack.getItem() == ModObjects.ritual_chalk ? BlockGlyph.NORMAL : stack.getItem() == ModObjects.fiery_chalk ? BlockGlyph.NETHER : BlockGlyph.ENDER).withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[player.getRNG().nextInt(4)]));
+			BlockPos toPlace = isReplacing ? pos : pos.up();
+			world.setBlockState(toPlace, ModObjects.glyph.getDefaultState().withProperty(BlockGlyph.TYPE, stack.getItem() == ModObjects.focal_chalk ? BlockGlyph.GOLDEN : stack.getItem() == ModObjects.ritual_chalk ? BlockGlyph.NORMAL : stack.getItem() == ModObjects.fiery_chalk ? BlockGlyph.NETHER : BlockGlyph.ENDER).withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[player.getRNG().nextInt(4)]));
+			if (world.getTileEntity(toPlace) instanceof TileEntityGlyph) ((ModBlockContainer) world.getBlockState(toPlace).getBlock()).refreshAltarPos(world, toPlace);
 			world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.BLOCKS, 0.5f, 1 + 0.5f * player.getRNG().nextFloat());
 		}
 		return EnumActionResult.SUCCESS;

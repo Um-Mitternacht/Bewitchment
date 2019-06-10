@@ -59,6 +59,10 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		circles[2] = big;
 	}
 	
+	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, int time, int startingPower, int runningPower, int small, int medium, int big) {
+		this(name, input, sacrificePredicate, output, true, time, startingPower, runningPower, small, medium, big);
+	}
+	
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster) {
 		return true;
 	}
@@ -66,26 +70,39 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onStarted(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileEntityGlyph) {
-			TileEntityGlyph glyph = (TileEntityGlyph) tile;
-			ItemStack athame = ItemStack.EMPTY;
-			for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) {
-				if (glyph.getInventories()[0].getStackInSlot(i).getItem() instanceof ItemAthame) athame = glyph.getInventories()[0].getStackInSlot(i).copy();
-				glyph.getInventories()[0].setStackInSlot(i, ItemStack.EMPTY);
+	public void onFinished(World world, BlockPos pos) {
+		if (!world.isRemote) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile instanceof TileEntityGlyph) {
+				TileEntityGlyph glyph = (TileEntityGlyph) tile;
+				ItemStack athame = ItemStack.EMPTY;
+				for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) {
+					if (glyph.getInventories()[0].getStackInSlot(i).getItem() instanceof ItemAthame) {
+						athame = glyph.getInventories()[0].getStackInSlot(i).copy();
+						break;
+					}
+				}
+				ModTileEntity.clear(glyph.getInventories()[0]);
+				for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack.copy());
+				if (!athame.isEmpty()) {
+					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), Byte.MAX_VALUE, false);
+					if (player != null) {
+						athame.damageItem(50, player);
+						InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, athame);
+					}
+				}
 			}
-			glyph.getInventories()[0].setStackInSlot(0, athame);
-			for (int i = 0; i < output.size(); i++) glyph.getInventories()[0].setStackInSlot(i + 1, output.get(i).copy());
 		}
 	}
 	
-	public void onHalted(World world, BlockPos pos, EntityPlayer caster) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileEntityGlyph) {
-			TileEntityGlyph glyph = (TileEntityGlyph) tile;
-			for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, glyph.getInventories()[0].getStackInSlot(i).copy());
-			ModTileEntity.clear(glyph.getInventories()[0]);
+	public void onHalted(World world, BlockPos pos) {
+		if (!world.isRemote) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile instanceof TileEntityGlyph) {
+				TileEntityGlyph glyph = (TileEntityGlyph) tile;
+				for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, glyph.getInventories()[0].getStackInSlot(i).copy());
+				ModTileEntity.clear(glyph.getInventories()[0]);
+			}
 		}
 	}
 	
@@ -121,6 +138,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		}
 		List<ItemStack> ground = new ArrayList<>();
 		for (EntityItem item : items) ground.add(item.getItem());
+		ground = Util.expandList(ground);
 		ItemStackHandler handler = new ItemStackHandler(ground.size());
 		for (int i = 0; i < handler.getSlots(); i++) handler.insertItem(i, ground.get(i).copy(), false);
 		if (Util.areISListsEqual(input, handler)) {
