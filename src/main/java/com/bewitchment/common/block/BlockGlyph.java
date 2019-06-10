@@ -27,14 +27,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-@SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
 public class BlockGlyph extends ModBlockContainer {
 	/**
-	 * 0 = any, 1 = normal, 2 = golden, 3 = nether, 4 = ender
+	 * 0 = any, 1 = golden, 2 = normal, 3 = nether, 4 = ender
 	 */
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 4);
 	
-	public static final int ANY = 0, NORMAL = 1, GOLDEN = 2, NETHER = 3, ENDER = 4;
+	public static final int ANY = 0, GOLDEN = 1, NORMAL = 2, NETHER = 3, ENDER = 4;
 	
 	private static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
 	

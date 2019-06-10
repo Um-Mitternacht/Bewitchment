@@ -6,6 +6,7 @@ import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
 import com.bewitchment.common.CommonProxy;
+import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.*;
@@ -62,10 +63,10 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		//		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((IBlockColor) (state, world, pos, tintIndex) -> {
-		//			GlyphType type = state.getValue(BlockGlyph.TYPE);
-		//			return type == GlyphType.GOLDEN ? 0xe3dc3c : type == GlyphType.NETHER ? 0xbb0000 : type == GlyphType.ENDER ? 0x770077 : 0xffffff;
-		//		}, ModObjects.glyph);
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
+			int type = state.getValue(BlockGlyph.TYPE);
+			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
+		}, ModObjects.glyph);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
 		MinecraftForge.EVENT_BUS.register(new ClientHandler());

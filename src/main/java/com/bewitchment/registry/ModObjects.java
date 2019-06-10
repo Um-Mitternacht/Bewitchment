@@ -11,6 +11,7 @@ import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.ItemBottledFrostfire;
+import com.bewitchment.common.item.ItemChalk;
 import com.bewitchment.common.item.ItemSalt;
 import com.bewitchment.common.item.ItemWaystone;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
@@ -215,10 +216,10 @@ public class ModObjects {
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
 	public static final Item waystone = new ItemWaystone();
-	public static final Item focal_chalk = Util.registerItem("focal_chalk");
-	public static final Item ritual_chalk = Util.registerItem("ritual_chalk");
-	public static final Item fiery_chalk = Util.registerItem("fiery_chalk");
-	public static final Item phasing_chalk = Util.registerItem("phasing_chalk");
+	public static final Item focal_chalk = new ItemChalk("focal_chalk");
+	public static final Item ritual_chalk = new ItemChalk("ritual_chalk");
+	public static final Item fiery_chalk = new ItemChalk("fiery_chalk");
+	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final Item hellish_bauble = new ItemHellishBauble();
