@@ -7,7 +7,6 @@ import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
-import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
@@ -16,6 +15,7 @@ import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockTorch;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
@@ -77,61 +77,54 @@ public class ModRecipes {
 	}
 	
 	private static void athamePostInit() {
-		BewitchmentAPI.registerAthameLoot(EntityPlayer.class, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(Items.SKULL, 1, 3)));
-		BewitchmentAPI.registerAthameLoot(EntityVillager.class, Sets.newHashSet(new ItemStack(ModObjects.heart)));
-		BewitchmentAPI.registerAthameLoot(EntityZombieVillager.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityPlayer, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(Items.SKULL, 1, 3)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityVillager, Sets.newHashSet(new ItemStack(ModObjects.heart)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityZombieVillager, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityWither.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 6)));
-		BewitchmentAPI.registerAthameLoot(EntityElderGuardian.class, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityWither, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 6)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityElderGuardian, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old, 3)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityZombie.class, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 2), new ItemStack(ModObjects.spectral_dust)));
-		BewitchmentAPI.registerAthameLoot(EntityPigZombie.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 3), new ItemStack(ModObjects.hoof, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityZombie && !(e instanceof EntityPigZombie), Sets.newHashSet(new ItemStack(Items.SKULL, 1, 2), new ItemStack(ModObjects.spectral_dust)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityPigZombie, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 3), new ItemStack(ModObjects.hoof, 2)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityHusk.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
-		BewitchmentAPI.registerAthameLoot(EntitySkeleton.class, Sets.newHashSet(new ItemStack(Items.SKULL), new ItemStack(ModObjects.spectral_dust)));
-		BewitchmentAPI.registerAthameLoot(EntityWitherSkeleton.class, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 1), new ItemStack(ModObjects.spectral_dust, 2)));
-		BewitchmentAPI.registerAthameLoot(EntityStray.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof AbstractSkeleton && !(e instanceof EntityWitherSkeleton), Sets.newHashSet(new ItemStack(Items.SKULL), new ItemStack(ModObjects.spectral_dust)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityWitherSkeleton, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 1), new ItemStack(ModObjects.spectral_dust, 2)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityCreeper.class, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityCreeper, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 4)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityBlaze.class, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
-		BewitchmentAPI.registerAthameLoot(EntityGhast.class, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityBlaze, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityGhast, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
 		
-		BewitchmentAPI.registerAthameLoot(EntitySilverfish.class, Sets.newHashSet(new ItemStack(ModObjects.silver_nugget, 2)));
-		BewitchmentAPI.registerAthameLoot(EntityEndermite.class, Sets.newHashSet(new ItemStack(ModObjects.dimensional_sand, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntitySilverfish, Sets.newHashSet(new ItemStack(ModObjects.silver_nugget, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityEndermite, Sets.newHashSet(new ItemStack(ModObjects.dimensional_sand, 2)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityEnderman.class, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
-		BewitchmentAPI.registerAthameLoot(EntityVex.class, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityEnderman, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityVex, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityGuardian.class, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityGuardian, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityPig.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityCow.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntitySheep.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityWolf.class, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog)));
-		BewitchmentAPI.registerAthameLoot(EntityRabbit.class, Sets.newHashSet(new ItemStack(Items.RABBIT_FOOT)));
-		BewitchmentAPI.registerAthameLoot(EntityHorse.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityDonkey.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityMule.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntitySkeletonHorse.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 2)));
-		BewitchmentAPI.registerAthameLoot(EntityLlama.class, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityZombieHorse.class, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
-		BewitchmentAPI.registerAthameLoot(EntityBat.class, Sets.newHashSet(new ItemStack(ModObjects.wool_of_bat, 3)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityPig, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityCow, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntitySheep, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityWolf, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityRabbit, Sets.newHashSet(new ItemStack(Items.RABBIT_FOOT)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof AbstractHorse, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof AbstractHorse && e.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityBat, Sets.newHashSet(new ItemStack(ModObjects.wool_of_bat, 3)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityLizard.class, Sets.newHashSet(new ItemStack(ModObjects.lizard_leg, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityNewt.class, Sets.newHashSet(new ItemStack(ModObjects.eye_of_newt, 2)));
-		BewitchmentAPI.registerAthameLoot(EntityOwl.class, Sets.newHashSet(new ItemStack(ModObjects.owlets_wing, 2)));
-		BewitchmentAPI.registerAthameLoot(EntityRaven.class, Sets.newHashSet(new ItemStack(ModObjects.ravens_feather, 4)));
-		BewitchmentAPI.registerAthameLoot(EntityToad.class, Sets.newHashSet(new ItemStack(ModObjects.toe_of_frog, 4)));
-		BewitchmentAPI.registerAthameLoot(EntitySnake.class, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityLizard, Sets.newHashSet(new ItemStack(ModObjects.lizard_leg, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityNewt, Sets.newHashSet(new ItemStack(ModObjects.eye_of_newt, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityOwl, Sets.newHashSet(new ItemStack(ModObjects.owlets_wing, 2)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityRaven && !(e instanceof EntityOwl), Sets.newHashSet(new ItemStack(ModObjects.ravens_feather, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityToad, Sets.newHashSet(new ItemStack(ModObjects.toe_of_frog, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntitySnake, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityBlackDog.class, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityBlackDog, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityHellhound.class, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.hellhound_horn, 2), new ItemStack(Items.BLAZE_POWDER, 4)));
-		BewitchmentAPI.registerAthameLoot(EntitySerpent.class, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityHellhound, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.hellhound_horn, 2), new ItemStack(Items.BLAZE_POWDER, 4)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntitySerpent, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
 		
-		BewitchmentAPI.registerAthameLoot(EntityDemon.class, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
-		BewitchmentAPI.registerAthameLoot(EntityDemoness.class, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
+		BewitchmentAPI.registerAthameLoot(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
 	}
 	
 	private static void furnaceInit() {

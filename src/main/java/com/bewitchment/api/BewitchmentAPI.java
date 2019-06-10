@@ -13,8 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
@@ -35,7 +33,7 @@ public class BewitchmentAPI {
 	
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 	
-	private static final Map<EntityEntry, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
+	private static final Map<Predicate<EntityLivingBase>, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
 	
 	private static final Map<Predicate<BlockWorldState>, AltarUpgrade> ALTAR_UPGRADES = new HashMap<>();
 	
@@ -99,11 +97,11 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers new Athame loot
-	 * @param clazz the entity class to be associated with the list
+	 * @param predicate the predicate to check
 	 * @param list the list of ItemStacks to be dropped as loot
 	 */
-	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
-		ATHAME_LOOT.put(EntityRegistry.getEntry(clazz), list);
+	public static void registerAthameLoot(Predicate<EntityLivingBase> predicate, Collection<ItemStack> list) {
+		ATHAME_LOOT.put(predicate, list);
 	}
 	
 	/**
@@ -112,8 +110,7 @@ public class BewitchmentAPI {
 	 */
 	public static Collection<ItemStack> getAthameLoot(EntityLivingBase entity) {
 		Collection<ItemStack> fin = new HashSet<>();
-		EntityEntry entry = EntityRegistry.getEntry(entity.getClass());
-		if (ATHAME_LOOT.containsKey(entry)) fin.addAll(ATHAME_LOOT.get(entry));
+		for (Predicate<EntityLivingBase> predicate : ATHAME_LOOT.keySet()) if (predicate.test(entity)) fin.addAll(ATHAME_LOOT.get(predicate));
 		return fin;
 	}
 	
