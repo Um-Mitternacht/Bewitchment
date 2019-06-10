@@ -325,6 +325,8 @@ altar.no_power=Your source of magic is not strong enough
 ritual.invalid=Something's wrong
 ritual.null=You have not heard of such rites
 
+bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
+
 fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting
 
