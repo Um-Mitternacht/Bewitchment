@@ -144,19 +144,11 @@ public class Util {
 	
 	public static boolean isRelated(ItemStack stack, String oreDictionaryEntry) {
 		for (ItemStack ore : OreDictionary.getOres(oreDictionaryEntry)) {
-			if (stack.getItem() instanceof ItemSword) {
-				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemSword.class, ((ItemSword) stack.getItem()), 1);
-				return mat.getRepairItemStack().getItem() == ore.getItem();
-			}
-			if (stack.getItem() instanceof ItemTool) {
-				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemTool.class, ((ItemTool) stack.getItem()), 4);
-				return mat.getRepairItemStack().getItem() == ore.getItem();
-			}
-			if (stack.getItem() instanceof ItemHoe) {
-				Item.ToolMaterial mat = ObfuscationReflectionHelper.getPrivateValue(ItemHoe.class, ((ItemHoe) stack.getItem()), 1);
-				return mat.getRepairItemStack().getItem() == ore.getItem();
-			}
-			if (stack.getItem() instanceof ItemArmor) return ((ItemArmor) stack.getItem()).getArmorMaterial().getRepairItemStack().getItem() == ore.getItem();
+			
+			if (stack.getItem() instanceof ItemSword && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemSword) stack.getItem()).getToolMaterialName().toLowerCase())) return true;
+			if (stack.getItem() instanceof ItemTool && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemTool) stack.getItem()).getToolMaterialName().toLowerCase())) return true;
+			if (stack.getItem() instanceof ItemHoe && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemHoe) stack.getItem()).getMaterialName().toLowerCase())) return true;
+			if (stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial().getRepairItemStack().getItem() == ore.getItem()) return true;
 		}
 		return false;
 	}
