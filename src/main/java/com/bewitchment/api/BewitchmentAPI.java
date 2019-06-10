@@ -31,6 +31,7 @@ public class BewitchmentAPI {
 	private static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
 	
 	private static final IForgeRegistry<FrostfireRecipe> REGISTRY_FROSTFIRE = new RegistryBuilder<FrostfireRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "frostfire_recipe")).setType(FrostfireRecipe.class).create();
+	private static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 	
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 	
@@ -50,7 +51,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new OvenRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerOvenRecipe(OvenRecipe recipe) {
@@ -59,7 +59,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new DistilleryRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
@@ -68,7 +67,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new SpinningWheelRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
@@ -76,8 +74,15 @@ public class BewitchmentAPI {
 	}
 	
 	/**
+	 * registers a new Ritual
+	 * @param ritual the ritual to register
+	 */
+	public static void registerRitual(Ritual ritual) {
+		REGISTRY_RITUAL.register(ritual);
+	}
+	
+	/**
 	 * registers a new FrostFireRecipe
-	 *
 	 * @param recipe the recipe to register
 	 */
 	public static void registerFrostfireRecipe(FrostfireRecipe recipe) {
@@ -85,8 +90,7 @@ public class BewitchmentAPI {
 	}
 	
 	/**
-	 * registers a new fortune
-	 *
+	 * registers a new Fortune
 	 * @param fortune the fortune to register
 	 */
 	public static void registerFortune(Fortune fortune) {
@@ -95,9 +99,8 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers new Athame loot
-	 *
 	 * @param clazz the entity class to be associated with the list
-	 * @param list  the list of ItemStacks to be dropped as loot
+	 * @param list the list of ItemStacks to be dropped as loot
 	 */
 	public static void registerAthameLoot(Class<? extends EntityLivingBase> clazz, Collection<ItemStack> list) {
 		ATHAME_LOOT.put(EntityRegistry.getEntry(clazz), list);
@@ -116,9 +119,8 @@ public class BewitchmentAPI {
 	
 	/**
 	 * registers a new altar upgrade
-	 *
 	 * @param predicate the predicate to check
-	 * @param upgrade   the upgrade to register
+	 * @param upgrade the upgrade to register
 	 */
 	public static void registerAltarUpgrade(Predicate<BlockWorldState> predicate, AltarUpgrade upgrade) {
 		ALTAR_UPGRADES.put(predicate, upgrade);
@@ -126,7 +128,7 @@ public class BewitchmentAPI {
 	
 	/**
 	 * @param world the world
-	 * @param pos   the block position to check
+	 * @param pos the block position to check
 	 * @return the upgrade associated with the state, or null
 	 */
 	public static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {

@@ -157,8 +157,8 @@ item.bewitchment.waystone.name=Waystone
 tooltip.bewitchment.waystone=Bound to %d %d %d (%s)
 tooltip.bewitchment.waystone.unbound=Not bound
 
-item.bewitchment.ritual_chalk.name=Ritual Chalk
 item.bewitchment.focal_chalk.name=Focal Chalk
+item.bewitchment.ritual_chalk.name=Ritual Chalk
 item.bewitchment.fiery_chalk.name=Fiery Chalk
 item.bewitchment.phasing_chalk.name=Phasing Chalk
 

@@ -215,8 +215,8 @@ public class ModObjects {
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
 	public static final Item waystone = new ItemWaystone();
-	public static final Item ritual_chalk = Util.registerItem("ritual_chalk");
 	public static final Item focal_chalk = Util.registerItem("focal_chalk");
+	public static final Item ritual_chalk = Util.registerItem("ritual_chalk");
 	public static final Item fiery_chalk = Util.registerItem("fiery_chalk");
 	public static final Item phasing_chalk = Util.registerItem("phasing_chalk");
 	//Baubles
