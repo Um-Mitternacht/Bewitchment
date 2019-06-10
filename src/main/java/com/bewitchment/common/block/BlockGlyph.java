@@ -61,7 +61,7 @@ public class BlockGlyph extends ModBlockContainer {
 			TileEntityGlyph tile = ((TileEntityGlyph) world.getTileEntity(pos));
 			ItemStack stack = player.getHeldItem(hand);
 			if (!world.isRemote && stack.isEmpty()) {
-				if (tile.ritual != null) tile.stopRitual(player, false);
+				if (tile.ritual != null) tile.stopRitual(false);
 				else tile.startRitual(player);
 			}
 			else if (stack.getItem() == ModObjects.waystone && stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {

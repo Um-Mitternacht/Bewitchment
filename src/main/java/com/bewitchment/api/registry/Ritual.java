@@ -2,13 +2,18 @@ package com.bewitchment.api.registry;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
+import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -59,20 +64,37 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		return true;
 	}
 	
+	public void onStarted(World world, BlockPos pos, EntityPlayer caster) {
+	}
+	
+	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile instanceof TileEntityGlyph) {
+			TileEntityGlyph glyph = (TileEntityGlyph) tile;
+			ItemStack athame = ItemStack.EMPTY;
+			for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) {
+				if (glyph.getInventories()[0].getStackInSlot(i).getItem() instanceof ItemAthame) athame = glyph.getInventories()[0].getStackInSlot(i).copy();
+				glyph.getInventories()[0].setStackInSlot(i, ItemStack.EMPTY);
+			}
+			glyph.getInventories()[0].setStackInSlot(0, athame);
+			for (int i = 0; i < output.size(); i++) glyph.getInventories()[0].setStackInSlot(i + 1, output.get(i).copy());
+		}
+	}
+	
+	public void onHalted(World world, BlockPos pos, EntityPlayer caster) {
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile instanceof TileEntityGlyph) {
+			TileEntityGlyph glyph = (TileEntityGlyph) tile;
+			for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, glyph.getInventories()[0].getStackInSlot(i).copy());
+			ModTileEntity.clear(glyph.getInventories()[0]);
+		}
+	}
+	
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
-	}
-	
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster) {
-	}
-	
-	public void onStopped(World world, BlockPos pos, EntityPlayer caster) {
-	}
-	
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
 	public final boolean matches(World world, BlockPos pos) {

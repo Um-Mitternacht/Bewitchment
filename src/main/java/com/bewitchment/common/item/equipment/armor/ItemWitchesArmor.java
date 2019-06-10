@@ -23,7 +23,9 @@ public class ItemWitchesArmor extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped _default) {
-		return new ModelWitchesArmor(slot);
+		ModelBiped model = new ModelWitchesArmor(slot, stack.getItem() == ModObjects.witches_hat);
+		model.setModelAttributes(_default);
+		return model;
 	}
 	
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
