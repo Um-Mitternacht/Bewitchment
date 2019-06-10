@@ -47,8 +47,8 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		this.time = time;
 		this.startingPower = startingPower;
 		this.runningPower = runningPower;
-		if (small == -1) throw new IllegalArgumentException("Cannot have the smaller circle missing");
-		if (medium == -1 && big != -1) throw new IllegalArgumentException("Cannot have missing middle circle when a big circle is present");
+		if (small < 0) throw new IllegalArgumentException("Cannot have the smaller circle missing");
+		if (medium < 0 && big > 0) throw new IllegalArgumentException("Cannot have missing middle circle when a big circle is present");
 		if (small == BlockGlyph.GOLDEN || medium == BlockGlyph.GOLDEN || big == BlockGlyph.GOLDEN) throw new IllegalArgumentException("No golden circles allowed");
 		circles[0] = small;
 		circles[1] = medium;
