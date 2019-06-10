@@ -15,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -97,7 +96,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
-	public final boolean matches(World world, BlockPos pos) {
+	public final boolean matches(World world, BlockPos pos, List<EntityItem> items, List<EntityLivingBase> livings) {
 		for (int x = 0; x < small.length; x++) {
 			for (int z = 0; z < small.length; z++) {
 				IBlockState state = world.getBlockState(pos.add(x - small.length / 2, 0, z - small.length / 2));
@@ -121,12 +120,12 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 			}
 		}
 		List<ItemStack> ground = new ArrayList<>();
-		for (EntityItem item : world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(5))) ground.add(item.getItem());
+		for (EntityItem item : items) ground.add(item.getItem());
 		ItemStackHandler handler = new ItemStackHandler(ground.size());
 		for (int i = 0; i < handler.getSlots(); i++) handler.insertItem(i, ground.get(i).copy(), false);
 		if (Util.areISListsEqual(input, handler)) {
 			if (sacrificePredicate != null) {
-				for (EntityLivingBase entity : new ArrayList<>(world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(5)))) if (sacrificePredicate.test(entity)) return true;
+				for (EntityLivingBase entity : livings) if (sacrificePredicate.test(entity)) return true;
 				return false;
 			}
 			return true;
