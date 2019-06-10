@@ -330,6 +330,10 @@ bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
 fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting
 
+jei.ritual=Ritual
+jei.ritual.startingPower=Starting Power: %d
+jei.ritual.runningPower=Running Power: %d
+
 //DEMON NAMES AND TITLES
 entity.bewitchment.given_name.0=Bael
 entity.bewitchment.given_name.1=Agares

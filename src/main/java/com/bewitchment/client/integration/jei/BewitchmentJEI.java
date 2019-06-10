@@ -1,13 +1,7 @@
 package com.bewitchment.client.integration.jei;
 
-import com.bewitchment.api.registry.DistilleryRecipe;
-import com.bewitchment.api.registry.FrostfireRecipe;
-import com.bewitchment.api.registry.OvenRecipe;
-import com.bewitchment.api.registry.SpinningWheelRecipe;
-import com.bewitchment.client.integration.jei.category.DistilleryCategory;
-import com.bewitchment.client.integration.jei.category.FrostfireCategory;
-import com.bewitchment.client.integration.jei.category.SpinningWheelCategory;
-import com.bewitchment.client.integration.jei.category.WitchesOvenCategory;
+import com.bewitchment.api.registry.*;
+import com.bewitchment.client.integration.jei.category.*;
 import com.bewitchment.registry.ModObjects;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -21,6 +15,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BewitchmentJEI implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
+		registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new WitchesOvenCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new DistilleryCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new SpinningWheelCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -29,6 +24,10 @@ public class BewitchmentJEI implements IModPlugin {
 	
 	@Override
 	public void register(IModRegistry registry) {
+		registry.handleRecipes(Ritual.class, new RitualCategory.RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
+		registry.addRecipes(GameRegistry.findRegistry(Ritual.class).getValuesCollection(), RitualCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModObjects.focal_chalk), RitualCategory.UID);
+		
 		registry.handleRecipes(OvenRecipe.class, WitchesOvenCategory.WitchesOvenWrapper::new, WitchesOvenCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection(), WitchesOvenCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.witches_oven), WitchesOvenCategory.UID);
