@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+//Todo: Locking/ownership functionality, double chest variant
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockJuniperChest extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375);
