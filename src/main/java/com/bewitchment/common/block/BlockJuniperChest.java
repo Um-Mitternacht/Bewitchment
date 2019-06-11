@@ -53,7 +53,7 @@ public class BlockJuniperChest extends ModBlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
-			player.openGui(Bewitchment.instance, CommonProxy.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) player.openGui(Bewitchment.instance, CommonProxy.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
