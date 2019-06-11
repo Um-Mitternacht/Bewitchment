@@ -61,8 +61,8 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 			recipeLayout.getItemStacks().set(i, recipeWrapper.input.get(i));
 		}
 		for (int i = 0; i < recipeWrapper.output.size(); i++) {
-			recipeLayout.getItemStacks().init(i + recipeWrapper.output.size(), false, 18 * i + (180 - 18 * recipeWrapper.output.size()) / 2, 78);
-			recipeLayout.getItemStacks().set(i + recipeWrapper.output.size(), recipeWrapper.output.get(i));
+			recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (180 - 18 * recipeWrapper.output.size()) / 2, 78);
+			recipeLayout.getItemStacks().set(i + recipeWrapper.input.size(), recipeWrapper.output.get(i));
 		}
 	}
 	
