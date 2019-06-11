@@ -60,13 +60,6 @@ public class BlockJuniperChest extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean eventReceived(IBlockState state, World world, BlockPos pos, int id, int type) {
-		super.eventReceived(state, world, pos, id, type);
-		TileEntity tileentity = world.getTileEntity(pos);
-		return tileentity != null && tileentity.receiveClientEvent(id, type);
-	}
-	
-	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
