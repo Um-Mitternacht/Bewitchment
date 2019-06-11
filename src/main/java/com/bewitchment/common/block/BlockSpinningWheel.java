@@ -5,11 +5,10 @@ import com.bewitchment.common.CommonProxy.ModGui;
 import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -23,7 +22,7 @@ public class BlockSpinningWheel extends ModBlockContainer {
 	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(10 / 16d, 0, 0, 6 / 16d, 1, 1), BOX_Z = new AxisAlignedBB(0, 0, 10 / 16d, 1, 1, 6 / 16d);
 	
 	public BlockSpinningWheel() {
-		super(Bewitchment.instance, "spinning_wheel", Material.WOOD, SoundType.WOOD, 2, 15, "axe", 0, ModGui.SPINNING_WHEEL.ordinal());
+		super(Bewitchment.instance, "spinning_wheel", Blocks.PLANKS, ModGui.SPINNING_WHEEL.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH));
 	}
 	

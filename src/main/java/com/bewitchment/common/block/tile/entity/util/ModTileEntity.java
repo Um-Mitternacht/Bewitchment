@@ -18,8 +18,7 @@ import net.minecraftforge.items.ItemStackHandler;
 public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		for (int i = 0; i < getInventories().length; i++)
-			tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
+		for (int i = 0; i < getInventories().length; i++) tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
 		markDirty();
 		return super.writeToNBT(tag);
 	}

@@ -78,6 +78,6 @@ public class CommonProxy {
 	}
 	
 	public enum ModGui {
-		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT
+		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT, JUNIPER_CHEST
 	}
 }

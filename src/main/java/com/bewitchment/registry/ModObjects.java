@@ -148,6 +148,7 @@ public class ModObjects {
 	public static final ModItemDoor elder_door = new ModItemDoor("elder_door", elder_planks);
 	public static final ModItemDoor juniper_door = new ModItemDoor("juniper_door", juniper_planks);
 	public static final ModItemDoor yew_door = new ModItemDoor("yew_door", yew_planks);
+	public static final Block juniper_chest = registerTileEntity(new BlockJuniperChest(), TileEntityJuniperChest.class);
 	public static final Block cypress_wood_stairs = new ModBlockStairs("cypress_wood_stairs", cypress_planks, "stairWood");
 	public static final Block elder_wood_stairs = new ModBlockStairs("elder_wood_stairs", elder_planks, "stairWood");
 	public static final Block juniper_wood_stairs = new ModBlockStairs("juniper_wood_stairs", juniper_planks, "stairWood");
