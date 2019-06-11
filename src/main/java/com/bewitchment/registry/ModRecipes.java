@@ -80,6 +80,7 @@ public class ModRecipes {
 	
 	private static void ritualInit() {
 		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "crystal_ball"), Arrays.asList(Util.get("blockGlass"), Util.get("blockGlass"), Util.get("blockGlass"), Util.get("gemQuartz"), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.crystal_ball)), 5, 350, 30, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1));
+		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "grimoire_magia"), Arrays.asList(Util.get("wax"), Util.get("dye"), Util.get("paper"), Util.get("leather"), Util.get(ModObjects.droplet_of_wisdom)), null, Collections.singletonList(new ItemStack(ModObjects.grimoire_magia)), 5, 150, 15, BlockGlyph.NORMAL, -1, -1));
 	}
 	
 	private static void athamePostInit() {

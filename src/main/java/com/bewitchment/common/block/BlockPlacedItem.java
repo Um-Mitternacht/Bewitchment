@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+//Todo: Port over old oredict definitions for gems, and allow them to be placed
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
 public class BlockPlacedItem extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.0625, 0.75);

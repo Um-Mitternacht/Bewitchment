@@ -1,13 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"PPP",
+	"PLP",
 	"PPP"
   ],
   "key": {
 	"P": {
 	  "item": "bewitchment:juniper_planks"
-	}
+	},
+	"L": {
+	  "item": "bewitchment:liquid_witchcraft"
+	}	
   },
   "result": {
 	"item": "bewitchment:juniper_trapdoor",
