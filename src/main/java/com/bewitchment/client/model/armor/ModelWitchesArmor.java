@@ -278,7 +278,6 @@ public class ModelWitchesArmor extends ModelArmor {
 		super.bipedLeftArm = bipedLeftArm;
 		super.bipedRightLeg = bipedRightLeg;
 		super.bipedLeftLeg = bipedLeftLeg;
-		
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}
 }
