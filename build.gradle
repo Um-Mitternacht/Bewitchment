@@ -40,7 +40,7 @@ dependencies {
 	deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
 	deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
 	deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
-	deobfCompile "dynamictrees:DynamicTrees:1.12.2:0.9.5"	
+	deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"	
 	compile "baubles:Baubles:1.12:1.5.2"
 	compile "vazkii.patchouli:Patchouli:1.0-18.93"
 }
