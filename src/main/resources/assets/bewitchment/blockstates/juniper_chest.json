@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "bewitchment:juniper_chest"
+  },
+  "variants": {
+	"normal": [
+	  {}
+	],
+	"facing=north": [
+	  {
+	  }
+	],
+	"facing=south": [
+	  {
+	  }
+	],
+	"facing=east": [
+	  {
+	  }
+	],
+	"facing=west": [
+	  {
+	  }
+	]
+  }
+}
