@@ -21,7 +21,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	@Override
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!world.isRemote) {
-			if (altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), null, 1000)) {
+			if (altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), player, 750)) {
 				ExtendedPlayer cap = player.getCapability(ExtendedPlayer.CAPABILITY, null);
 				if (cap.fortune == null) {
 					List<Fortune> valid = GameRegistry.findRegistry(Fortune.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());

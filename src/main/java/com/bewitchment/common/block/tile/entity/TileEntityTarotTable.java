@@ -22,7 +22,7 @@ public class TileEntityTarotTable extends TileEntityAltarStorage {
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!world.isRemote) {
 			if (!player.isSneaking() && player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
-				if (altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), null, 2000)) {
+				if (altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), player, 1000)) {
 					List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
 					if (!valid.isEmpty()) {
 						List<Tarot> toShow = new ArrayList<>();

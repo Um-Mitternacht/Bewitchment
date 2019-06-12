@@ -68,7 +68,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				if (world.isRemote) ritual.onClientUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
 				ritual.onUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (MagicPower.attemptDrain(world.getTileEntity(altarPos), null, ritual.runningPower)) time++;
+					if (MagicPower.attemptDrain(world.getTileEntity(altarPos), world.getPlayerEntityByUUID(caster), ritual.runningPower)) time++;
 					else stopRitual(false);
 					if (time >= ritual.time) stopRitual(true);
 				}
@@ -82,7 +82,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		ritual = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(world, pos, items, livings)).findFirst().orElse(null);
 		if (ritual != null) {
 			if (ritual.isValid(world, pos, player)) {
-				if (MagicPower.attemptDrain(world.getTileEntity(altarPos), null, ritual.startingPower)) {
+				if (MagicPower.attemptDrain(world.getTileEntity(altarPos), player, ritual.startingPower)) {
 					caster = player.getPersistentID();
 					effectivePos = pos;
 					effectiveDim = world.provider.getDimension();
