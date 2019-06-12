@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.SpinningWheelRecipe;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
@@ -9,7 +10,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -18,7 +18,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	private final ItemStackHandler inventory_up = new ItemStackHandler(4) {
 		@Override
 		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
+			recipe = BewitchmentAPI.REGISTRY_SPINNING_WHEEL.getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(1) {
@@ -66,7 +66,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		recipe = tag.getString("recipe").isEmpty() ? null : BewitchmentAPI.REGISTRY_SPINNING_WHEEL.getValue(new ResourceLocation(tag.getString("recipe")));
 		hasPower = tag.getBoolean("hasPower");
 		progress = tag.getInteger("progress");
 		super.readFromNBT(tag);

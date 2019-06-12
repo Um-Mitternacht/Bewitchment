@@ -16,7 +16,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "NullableProblems", "unused"})
 public class ItemAthame extends ItemSword {
@@ -40,8 +43,8 @@ public class ItemAthame extends ItemSword {
 	
 	@SubscribeEvent
 	public void livingDrop(LivingDropsEvent event) {
-		if (event.isRecentlyHit() && event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getHeldItemMainhand().getItem() == ModObjects.athame && !BewitchmentAPI.getAthameLoot(event.getEntityLiving()).isEmpty()) {
-			for (ItemStack stack : BewitchmentAPI.getAthameLoot(event.getEntityLiving())) {
+		if (event.isRecentlyHit() && event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getHeldItemMainhand().getItem() == ModObjects.athame && !getAthameLoot(event.getEntityLiving()).isEmpty()) {
+			for (ItemStack stack : getAthameLoot(event.getEntityLiving())) {
 				Random rand = event.getEntityLiving().getRNG();
 				ItemStack copy = stack.copy();
 				copy.setCount(rand.nextInt(stack.getCount() + 1) + rand.nextInt(event.getLootingLevel() + 1));
@@ -57,5 +60,11 @@ public class ItemAthame extends ItemSword {
 				event.getDrops().add(new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX + 0.5, event.getEntityLiving().posY + 0.5, event.getEntityLiving().posZ + 0.5, copy));
 			}
 		}
+	}
+	
+	private static Collection<ItemStack> getAthameLoot(EntityLivingBase entity) {
+		Collection<ItemStack> fin = new HashSet<>();
+		for (Predicate<EntityLivingBase> predicate : BewitchmentAPI.ATHAME_LOOT.keySet()) if (predicate.test(entity)) fin.addAll(BewitchmentAPI.ATHAME_LOOT.get(predicate));
+		return fin;
 	}
 }

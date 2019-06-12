@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Tarot;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
@@ -12,7 +13,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class TileEntityTarotTable extends TileEntityAltarStorage {
 					if (tag != null && tag.hasKey("readId")) {
 						EntityPlayer toFind = world.getPlayerEntityByUUID(UUID.fromString(tag.getString("readId")));
 						if (toFind != null) {
-							List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(toFind)).collect(Collectors.toList());
+							List<Tarot> valid = BewitchmentAPI.REGISTRY_TAROT.getValuesCollection().stream().filter(f -> f.isValid(toFind)).collect(Collectors.toList());
 							if (!valid.isEmpty()) {
 								List<Tarot> toShow = new ArrayList<>();
 								while (!valid.isEmpty() && toShow.size() < 5) {

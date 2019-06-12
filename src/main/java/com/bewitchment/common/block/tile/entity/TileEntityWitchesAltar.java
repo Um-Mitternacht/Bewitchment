@@ -11,6 +11,7 @@ import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -29,6 +30,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems"})
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
@@ -129,7 +131,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 								if (stack.getItem() instanceof ItemGrimoireMagia) MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f);
 							}
 							if (!foundStone) {
-								AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());
+								AltarUpgrade upgrade = getAltarUpgrade(world, pos0.up());
 								if (upgrade != null) {
 									AltarUpgrade.Type type = upgrade.type;
 									if (type == AltarUpgrade.Type.CUP && !foundCup) {
@@ -165,6 +167,11 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				map.clear();
 			}
 		}
+	}
+	
+	private static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {
+		for (Predicate<BlockWorldState> predicate : BewitchmentAPI.ALTAR_UPGRADES.keySet()) if (predicate.test(new BlockWorldState(world, pos, true))) return BewitchmentAPI.ALTAR_UPGRADES.get(predicate);
+		return null;
 	}
 	
 	protected IBlockState convert(IBlockState state) {

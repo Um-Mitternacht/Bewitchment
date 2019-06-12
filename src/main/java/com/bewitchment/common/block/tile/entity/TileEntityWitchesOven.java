@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -12,7 +13,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -26,7 +26,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 		
 		@Override
 		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
+			recipe = BewitchmentAPI.REGISTRY_OVEN.getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
@@ -95,7 +95,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
+		recipe = tag.getString("recipe").isEmpty() ? null : BewitchmentAPI.REGISTRY_OVEN.getValue(new ResourceLocation(tag.getString("recipe")));
 		burning = tag.getBoolean("burning");
 		burnTime = tag.getInteger("burnTime");
 		fuelBurnTime = tag.getInteger("fuelBurnTime");

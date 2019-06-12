@@ -10,33 +10,61 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 
 @SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
-	private static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
-	private static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
-	private static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
+	/**
+	 * the Oven registry
+	 */
+	public static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
+	/**
+	 * the Distillery registry
+	 */
+	public static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
+	/**
+	 * the Spinning Wheel registry
+	 */
+	public static final IForgeRegistry<SpinningWheelRecipe> REGISTRY_SPINNING_WHEEL = new RegistryBuilder<SpinningWheelRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "spinning_wheel_recipe")).setType(SpinningWheelRecipe.class).create();
 	
-	private static final IForgeRegistry<FrostfireRecipe> REGISTRY_FROSTFIRE = new RegistryBuilder<FrostfireRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "frostfire_recipe")).setType(FrostfireRecipe.class).create();
-	private static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
+	/**
+	 * the Frostfire registry
+	 */
+	public static final IForgeRegistry<FrostfireRecipe> REGISTRY_FROSTFIRE = new RegistryBuilder<FrostfireRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "frostfire_recipe")).setType(FrostfireRecipe.class).create();
+	/**
+	 * the Ritual registry
+	 */
+	public static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 	
-	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
-	private static final IForgeRegistry<Tarot> REGISTRY_TAROT = new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
+	/**
+	 * the Fortune registry
+	 */
+	public static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
+	/**
+	 * the Tarot registry
+	 */
+	public static final IForgeRegistry<Tarot> REGISTRY_TAROT = new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
 	
-	private static final Map<Predicate<EntityLivingBase>, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
+	/**
+	 * a Map of loot for mobs to drop when killed with the Athame
+	 */
+	public static final Map<Predicate<EntityLivingBase>, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
 	
-	private static final Map<Predicate<BlockWorldState>, AltarUpgrade> ALTAR_UPGRADES = new HashMap<>();
+	/**
+	 * a Map of AltarUpgrades for the Witches' Atlar to search for
+	 */
+	public static final Map<Predicate<BlockWorldState>, AltarUpgrade> ALTAR_UPGRADES = new HashMap<>();
+	
+	/**
+	 * A list of pets to be chosen for the meet pet fortune
+	 */
+	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
 	
 	/**
 	 * The Demon creature attribute.
@@ -47,100 +75,6 @@ public class BewitchmentAPI {
 	 * The Spirit creature attribute.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
-	
-	/**
-	 * registers a new OvenRecipe
-	 * @param recipe the recipe to register
-	 */
-	public static void registerOvenRecipe(OvenRecipe recipe) {
-		REGISTRY_OVEN.register(recipe);
-	}
-	
-	/**
-	 * registers a new DistilleryRecipe
-	 * @param recipe the recipe to register
-	 */
-	public static void registerDistilleryRecipe(DistilleryRecipe recipe) {
-		REGISTRY_DISTILLERY.register(recipe);
-	}
-	
-	/**
-	 * registers a new SpinningWheelRecipe
-	 * @param recipe the recipe to register
-	 */
-	public static void registerSpinningWheelRecipe(SpinningWheelRecipe recipe) {
-		REGISTRY_SPINNING_WHEEL.register(recipe);
-	}
-	
-	/**
-	 * registers a new Ritual
-	 * @param ritual the ritual to register
-	 */
-	public static void registerRitual(Ritual ritual) {
-		REGISTRY_RITUAL.register(ritual);
-	}
-	
-	/**
-	 * registers a new FrostFireRecipe
-	 * @param recipe the recipe to register
-	 */
-	public static void registerFrostfireRecipe(FrostfireRecipe recipe) {
-		REGISTRY_FROSTFIRE.register(recipe);
-	}
-	
-	/**
-	 * registers a new Fortune
-	 * @param fortune the fortune to register
-	 */
-	public static void registerFortune(Fortune fortune) {
-		REGISTRY_FORTUNE.register(fortune);
-	}
-	
-	/**
-	 * registers a new Tarot
-	 * @param tarot the tarot to register
-	 */
-	public static void registerTarot(Tarot tarot) {
-		REGISTRY_TAROT.register(tarot);
-	}
-	
-	/**
-	 * registers new Athame loot
-	 * @param predicate the predicate to check
-	 * @param list the list of ItemStacks to be dropped as loot
-	 */
-	public static void registerAthameLoot(Predicate<EntityLivingBase> predicate, Collection<ItemStack> list) {
-		ATHAME_LOOT.put(predicate, list);
-	}
-	
-	/**
-	 * @param entity the entity to check
-	 * @return the loot associated with the entity, if any
-	 */
-	public static Collection<ItemStack> getAthameLoot(EntityLivingBase entity) {
-		Collection<ItemStack> fin = new HashSet<>();
-		for (Predicate<EntityLivingBase> predicate : ATHAME_LOOT.keySet()) if (predicate.test(entity)) fin.addAll(ATHAME_LOOT.get(predicate));
-		return fin;
-	}
-	
-	/**
-	 * registers a new altar upgrade
-	 * @param predicate the predicate to check
-	 * @param upgrade the upgrade to register
-	 */
-	public static void registerAltarUpgrade(Predicate<BlockWorldState> predicate, AltarUpgrade upgrade) {
-		ALTAR_UPGRADES.put(predicate, upgrade);
-	}
-	
-	/**
-	 * @param world the world
-	 * @param pos the block position to check
-	 * @return the upgrade associated with the state, or null
-	 */
-	public static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {
-		for (Predicate<BlockWorldState> predicate : ALTAR_UPGRADES.keySet()) if (predicate.test(new BlockWorldState(world, pos, true))) return ALTAR_UPGRADES.get(predicate);
-		return null;
-	}
 	
 	/**
 	 * @param entity the entity to check

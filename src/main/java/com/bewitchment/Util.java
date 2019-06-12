@@ -184,6 +184,6 @@ public class Util {
 	}
 	
 	public static void registerAltarUpgradeItem(Item item, AltarUpgrade upgrade) {
-		BewitchmentAPI.registerAltarUpgrade(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == item, upgrade);
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == item, upgrade);
 	}
 }
