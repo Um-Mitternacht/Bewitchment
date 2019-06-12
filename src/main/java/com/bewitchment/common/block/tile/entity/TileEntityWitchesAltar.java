@@ -1,21 +1,25 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
@@ -81,6 +85,15 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void update() {
+		if (world.getTotalWorldTime() % 100 == 0) {
+			for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
+				for (ItemStack stack : Util.getEntireInventory(player))
+					if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100)) {
+						stack.getCapability(MagicPower.CAPABILITY, null).fill(25);
+						break;
+					}
+			}
+		}
 		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
