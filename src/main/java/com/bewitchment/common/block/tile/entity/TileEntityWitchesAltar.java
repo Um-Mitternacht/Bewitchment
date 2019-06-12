@@ -88,10 +88,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (world.getTotalWorldTime() % 100 == 0) {
 			for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
 				for (ItemStack stack : Util.getEntireInventory(player))
-					if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100)) {
-						stack.getCapability(MagicPower.CAPABILITY, null).fill(25);
-						break;
-					}
+					if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100) && stack.getCapability(MagicPower.CAPABILITY, null).fill(25)) break;
 			}
 		}
 		if (!world.isRemote) {
