@@ -348,9 +348,9 @@ tarot.bewitchment.zombie=sun name this
 #RITUAL
 ritual.null=You have not heard of such rites
 ritual.invalid=Something's wrong
-ritual.bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
-ritual.bewitchment.tarot_table=Ritual of Construction (Tarot Table)
-ritual.bewitchment.tarot_cards=Ritual of Engraving
+ritual.bewitchment.crystal_ball=sun name this
+ritual.bewitchment.tarot_table=sun name this
+ritual.bewitchment.tarot_cards=sun name this
 ritual.bewitchment.grimoire_magia=sun name this
 
 #INFO
@@ -362,6 +362,7 @@ fortune.no_fortune=This world has no secrets awaiting
 altar.power_info=%d/%d (x%d)
 altar.no_power=Your source of magic is not strong enough
 
+tarot.no_cards=You must be holding Tarot Cards to use this
 tarot.no_player=You must bind a player to the cards
 tarot.player_offline=%s is offline
 

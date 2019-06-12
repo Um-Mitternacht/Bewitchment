@@ -22,28 +22,31 @@ import java.util.stream.Collectors;
 public class TileEntityTarotTable extends TileEntityAltarStorage {
 	@Override
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (!player.isSneaking() && player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
-			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 1000)) {
-				NBTTagCompound tag = player.getHeldItem(hand).getTagCompound();
-				if (tag != null && tag.hasKey("readId")) {
-					EntityPlayer toFind = world.getPlayerEntityByUUID(UUID.fromString(tag.getString("readId")));
-					if (toFind != null) {
-						List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(toFind)).collect(Collectors.toList());
-						if (!valid.isEmpty()) {
-							List<Tarot> toShow = new ArrayList<>();
-							while (!valid.isEmpty() && toShow.size() < 5) {
-								int i = world.rand.nextInt(valid.size());
-								toShow.add(valid.get(i));
-								valid.remove(i);
+		if (!player.isSneaking()) {
+			if (player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
+				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 1000)) {
+					NBTTagCompound tag = player.getHeldItem(hand).getTagCompound();
+					if (tag != null && tag.hasKey("readId")) {
+						EntityPlayer toFind = world.getPlayerEntityByUUID(UUID.fromString(tag.getString("readId")));
+						if (toFind != null) {
+							List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(toFind)).collect(Collectors.toList());
+							if (!valid.isEmpty()) {
+								List<Tarot> toShow = new ArrayList<>();
+								while (!valid.isEmpty() && toShow.size() < 5) {
+									int i = world.rand.nextInt(valid.size());
+									toShow.add(valid.get(i));
+									valid.remove(i);
+								}
+								for (Tarot tarot : toShow) System.out.println(tarot.getRegistryName());
 							}
-							for (Tarot tarot : toShow) System.out.println(tarot.getRegistryName());
 						}
+						else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("tarot.player_offline", tag.getString("readName")), true);
 					}
-					else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("tarot.player_offline", tag.getString("readName")), true);
+					else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("tarot.no_player"), true);
 				}
-				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("tarot.no_player"), true);
+				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 			}
-			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
+			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("tarot.no_cards"), true);
 		}
 		return true;
 	}
