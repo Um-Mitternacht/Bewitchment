@@ -98,37 +98,37 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (altarPattern.match(world, pos) != null) {
 			ItemStack stack = player.getHeldItem(hand);
-			if (!world.isRemote) {
-				if (stack.isEmpty()) {
-					TileEntityWitchesAltar tile = getAltar(world, pos);
-					if (tile != null) {
-						MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);
-						player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.amount, cap.maxAmount, tile.gain), true);
-					}
+			if (stack.isEmpty()) {
+				TileEntityWitchesAltar tile = getAltar(world, pos);
+				if (tile != null) {
+					MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);
+					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.amount, cap.maxAmount, tile.gain), true);
 				}
-				else {
-					if (face == EnumFacing.UP) {
-						if (stack.getItem() == Item.getItemFromBlock(Blocks.CARPET)) {
-							TileEntityWitchesAltar tile = getAltar(world, pos);
-							ItemStack carpet = ItemStack.EMPTY;
-							if (tile != null) carpet = new ItemStack(Blocks.CARPET, 1, tile.color - 1);
-							if (createAltar(world, pos, stack.getMetadata() + 1)) {
-								if (!player.isCreative()) stack.shrink(1);
-								if (!carpet.isEmpty()) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), carpet);
-							}
+			}
+			else {
+				if (face == EnumFacing.UP) {
+					if (stack.getItem() == Item.getItemFromBlock(Blocks.CARPET)) {
+						TileEntityWitchesAltar tile = getAltar(world, pos);
+						ItemStack carpet = ItemStack.EMPTY;
+						if (tile != null) carpet = new ItemStack(Blocks.CARPET, 1, tile.color - 1);
+						if (createAltar(world, pos, stack.getMetadata() + 1)) {
+							if (!player.isCreative()) stack.shrink(1);
+							if (!world.isRemote && !carpet.isEmpty()) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), carpet);
+							return true;
 						}
-						else {
-							if (stack.getItem() instanceof ItemBlock || stack.getItem() instanceof ItemSkull) return false;
-							else if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up())) {
-								world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
-								((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
-								forceScan(world, pos);
-							}
+					}
+					else {
+						if (stack.getItem() instanceof ItemBlock || stack.getItem() instanceof ItemSkull) return false;
+						else if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up())) {
+							world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
+							((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
+							forceScan(world, pos);
+							return true;
 						}
 					}
 				}
 			}
-			return true;
+			return false;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}

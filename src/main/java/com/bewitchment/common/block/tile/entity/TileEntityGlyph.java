@@ -68,7 +68,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				if (world.isRemote) ritual.onClientUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
 				ritual.onUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (MagicPower.attemptDrain(world.getTileEntity(altarPos), world.getPlayerEntityByUUID(caster), ritual.runningPower)) time++;
+					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getPlayerEntityByUUID(caster), ritual.runningPower)) time++;
 					else stopRitual(false);
 					if (time >= ritual.time) stopRitual(true);
 				}
@@ -82,13 +82,13 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		ritual = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(world, pos, items, livings)).findFirst().orElse(null);
 		if (ritual != null) {
 			if (ritual.isValid(world, pos, player)) {
-				if (MagicPower.attemptDrain(world.getTileEntity(altarPos), player, ritual.startingPower)) {
+				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
 					caster = player.getPersistentID();
 					effectivePos = pos;
 					effectiveDim = world.provider.getDimension();
 					time = 0;
 					ritual.onStarted(world, pos, player);
-					player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 					for (EntityItem item : items) {
 						world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 						if (world.isRemote) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition().getX(), item.getPosition().getY(), item.getPosition().getZ(), 0, 0, 0);
@@ -97,11 +97,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					}
 					if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 				}
-				else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
+				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 			}
-			else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
+			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
 		}
-		else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
+		else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
 	}
 	
 	public void stopRitual(boolean finished) {

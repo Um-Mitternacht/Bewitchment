@@ -36,7 +36,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 		if (!world.isRemote) {
 			if (recipe == null || !recipe.isValid(inventory_down)) progress = 0;
 			else {
-				if (world.getTotalWorldTime() % 20 == 0) hasPower = altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 25, false), 20);
+				if (world.getTotalWorldTime() % 20 == 0) hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 25, false), 20);
 				if (hasPower) progress++;
 				if (progress >= 200) {
 					progress = 0;

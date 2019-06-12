@@ -16,7 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@SuppressWarnings({"ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"ConstantConditions"})
 public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<MagicPower> {
 	@CapabilityInject(MagicPower.class)
 	public static final Capability<MagicPower> CAPABILITY = null;
@@ -62,7 +62,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
 		if (amount == 0) return true;
-		if (tile instanceof TileEntityWitchesAltar) return tile.getCapability(CAPABILITY, null).drain(amount);
+		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount)) return true;
 		if (player != null) {
 			for (ItemStack stack : Util.getEntireInventory(player)) {
 				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
@@ -72,12 +72,18 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public boolean drain(int amount) {
-		this.amount = Math.max(0, this.amount - amount);
-		return this.amount - amount >= 0;
+		if (this.amount - amount >= 0) {
+			this.amount = Math.max(0, this.amount - amount);
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean fill(int amount) {
-		this.amount = Math.min(this.amount + amount, this.maxAmount);
-		return this.amount <= this.maxAmount;
+		if (this.amount < this.maxAmount) {
+			this.amount = Math.min(this.amount + amount, this.maxAmount);
+			return true;
+		}
+		return true;
 	}
 }

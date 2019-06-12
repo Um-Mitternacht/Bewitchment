@@ -20,22 +20,20 @@ import java.util.stream.Collectors;
 public class TileEntityTarotTable extends TileEntityAltarStorage {
 	@Override
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (!world.isRemote) {
-			if (!player.isSneaking() && player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
-				if (altarPos != null && MagicPower.attemptDrain(world.getTileEntity(altarPos), player, 1000)) {
-					List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
-					if (!valid.isEmpty()) {
-						List<Tarot> toShow = new ArrayList<>();
-						while (!valid.isEmpty() && toShow.size() < 5) {
-							int i = world.rand.nextInt(valid.size());
-							toShow.add(valid.get(i));
-							valid.remove(i);
-						}
-						for (Tarot tarot : toShow) System.out.println(tarot.getRegistryName());
+		if (!player.isSneaking() && player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
+			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 1000)) {
+				List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
+				if (!valid.isEmpty()) {
+					List<Tarot> toShow = new ArrayList<>();
+					while (!valid.isEmpty() && toShow.size() < 5) {
+						int i = world.rand.nextInt(valid.size());
+						toShow.add(valid.get(i));
+						valid.remove(i);
 					}
+					for (Tarot tarot : toShow) System.out.println(tarot.getRegistryName());
 				}
-				else player.sendStatusMessage(new TextComponentTranslation("altar.no_power", player.getDisplayName()), true);
 			}
+			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power", player.getDisplayName()), true);
 		}
 		return true;
 	}
