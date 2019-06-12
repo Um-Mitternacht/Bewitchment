@@ -32,6 +32,7 @@ public class BewitchmentAPI {
 	private static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 	
 	private static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
+	private static final IForgeRegistry<Tarot> REGISTRY_TAROT = new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
 	
 	private static final Map<Predicate<EntityLivingBase>, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
 	
@@ -93,6 +94,14 @@ public class BewitchmentAPI {
 	 */
 	public static void registerFortune(Fortune fortune) {
 		REGISTRY_FORTUNE.register(fortune);
+	}
+	
+	/**
+	 * registers a new Tarot
+	 * @param tarot the tarot to register
+	 */
+	public static void registerTarot(Tarot tarot) {
+		REGISTRY_TAROT.register(tarot);
 	}
 	
 	/**

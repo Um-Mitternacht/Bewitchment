@@ -10,10 +10,7 @@ import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
-import com.bewitchment.common.item.ItemBottledFrostfire;
-import com.bewitchment.common.item.ItemChalk;
-import com.bewitchment.common.item.ItemSalt;
-import com.bewitchment.common.item.ItemWaystone;
+import com.bewitchment.common.item.*;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
@@ -71,6 +68,8 @@ public class ModObjects {
 	public static final Block glyph = registerTileEntity(new BlockGlyph(), TileEntityGlyph.class);
 	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
 	//Material Blocks
+	public static final Block blessed_stone = new ModBlock("blessed_stone", Blocks.BEDROCK);
+	
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Blocks.DIAMOND_BLOCK, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Blocks.DIAMOND_BLOCK, "blockGarnet");
 	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Blocks.DIAMOND_BLOCK, "blockMoonstone");
@@ -189,6 +188,8 @@ public class ModObjects {
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
 	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
 	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
+	public static final Block tarot_table = registerTileEntity(new BlockTarotTable(), TileEntityTarotTable.class);
+	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");

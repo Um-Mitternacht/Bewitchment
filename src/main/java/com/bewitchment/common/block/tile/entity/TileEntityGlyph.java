@@ -88,7 +88,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					effectiveDim = world.provider.getDimension();
 					time = 0;
 					ritual.onStarted(world, pos, player);
-					player.sendStatusMessage(new TextComponentTranslation(ritual.getRegistryName().toString().replace(":", ".")), true);
+					player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 					for (EntityItem item : items) {
 						world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 						if (world.isRemote) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition().getX(), item.getPosition().getY(), item.getPosition().getZ(), 0, 0, 0);

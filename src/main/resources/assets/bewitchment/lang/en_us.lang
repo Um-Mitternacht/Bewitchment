@@ -1,4 +1,7 @@
 ﻿#BLOCKS
+tile.bewitchment.blessed_stone.name=Blessed Stone
+tooltip.bewitchment.blessed_stone=Gives infinite altar power. Creative only.
+
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
 tile.bewitchment.block_of_garnet.name=Block of Garnet
 tile.bewitchment.block_of_moonstone.name=Block of Moonstone
@@ -120,6 +123,9 @@ tile.bewitchment.witches_oven.name=Witches' Oven
 tile.bewitchment.distillery.name=Distillery
 tile.bewitchment.spinning_wheel.name=Spinning Wheel
 tile.bewitchment.crystal_ball.name=Crystal Ball
+tile.bewitchment.tarot_table.name=Tarot Table
+item.bewitchment.tarot_cards.name=Tarot Cards
+tooltip.bewitchment.tarot_cards=They are receptive to %s's future
 tile.bewitchment.frostfire.name=Frostfire
 
 #ITEMS
@@ -300,37 +306,40 @@ enchantment.bewitchment.spirit_protection=Spirit Protection
 enchantment.bewitchment.spirit_protection.desc=Reduces damage from spirits and demons.
 
 #FORTUNE
-bewitchment.bad_luck=Your future looks dim.
-bewitchment.good_luck=Your future looks very bright indeed.
-bewitchment.illness=Weakness and misfortune dot your future.
-bewitchment.vitality=Wounds heal in your time of need.
-bewitchment.meet_pet=You will soon encounter a new friend.
-bewitchment.meet_merchant=You will stumble upon some good deals.
-bewitchment.meet_demon=A powerful duke has seen you scrying, and has taken an interest in you.
-bewitchment.meet_serpent=A lesser demon has seen you scrying, and wishes to challenge you!
-bewitchment.meet_blaze=A lesser fire elemental has seen you scrying, and has emerged to fight you!
-bewitchment.meet_dire_wolf=A rabid beast will soon stumble upon you.
-bewitchment.meet_silverfish=A foul vermin hides in the path.
-bewitchment.meet_witch=Something wicked this way comes.
-bewitchment.meet_zombie=Those who lie underground will be awakened.
-bewitchment.death=The path ahead looks very bleak.
-bewitchment.drop_item=Fingers won't obey when they're most needed.
-bewitchment.treasure=You might be very rich, very soon.
+fortune.bewitchment.bad_luck=Your future looks dim.
+fortune.bewitchment.good_luck=Your future looks very bright indeed.
+fortune.bewitchment.illness=Weakness and misfortune dot your future.
+fortune.bewitchment.vitality=Wounds heal in your time of need.
+fortune.bewitchment.meet_pet=You will soon encounter a new friend.
+fortune.bewitchment.meet_merchant=You will stumble upon some good deals.
+fortune.bewitchment.meet_demon=A powerful duke has seen you scrying, and has taken an interest in you.
+fortune.bewitchment.meet_serpent=A lesser demon has seen you scrying, and wishes to challenge you!
+fortune.bewitchment.meet_blaze=A lesser fire elemental has seen you scrying, and has emerged to fight you!
+fortune.bewitchment.meet_dire_wolf=A rabid beast will soon stumble upon you.
+fortune.bewitchment.meet_silverfish=A foul vermin hides in the path.
+fortune.bewitchment.meet_witch=Something wicked this way comes.
+fortune.bewitchment.meet_zombie=Those who lie underground will be awakened.
+fortune.bewitchment.death=The path ahead looks very bleak.
+fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
+fortune.bewitchment.treasure=You might be very rich, very soon.
+
+
+#RITUAL
+ritual.null=You have not heard of such rites
+ritual.invalid=Something's wrong
+ritual.bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
+ritual.bewitchment.tarot_table=Ritual of Construction (Tarot Table)
+ritual.bewitchment.tarot_cards=Ritual of Engraving
+ritual.bewitchment.grimoire_magia=sun name this
 
 #INFO
 itemGroup.bewitchment=Bewitchment
 
-altar.power_info=%d/%d (x%d)
-altar.no_power=Your source of magic is not strong enough
-
-ritual.invalid=Something's wrong
-ritual.null=You have not heard of such rites
-
-bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
-bewitchment.grimoire_magia=Ritual of Construction (Grimoire Magia)
-
 fortune.has_fortune=This one's future has already been revealed: %s
 fortune.no_fortune=This world has no secrets awaiting
+
+altar.power_info=%d/%d (x%d)
+altar.no_power=Your source of magic is not strong enough
 
 jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d

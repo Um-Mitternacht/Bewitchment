@@ -80,6 +80,8 @@ public class ModRecipes {
 	
 	private static void ritualInit() {
 		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "crystal_ball"), Arrays.asList(Util.get("blockGlass"), Util.get("blockGlass"), Util.get("blockGlass"), Util.get("gemQuartz"), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.crystal_ball)), 5, 350, 30, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1));
+		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "tarot_table"), Arrays.asList(Util.get("string"), Util.get("dye"), Util.get("workbench"), Util.get(ModObjects.droplet_of_wisdom), Util.get(ModObjects.droplet_of_wisdom), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.tarot_table)), 7, 350, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1));
+		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "tarot_cards"), Arrays.asList(Util.get("dye"), Util.get("dye"), Util.get("paper"), Util.get(ModObjects.birch_soul), Util.get(ModObjects.droplet_of_wisdom), Util.get("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax")), null, Collections.singletonList(new ItemStack(ModObjects.tarot_cards)), 4, 300, 20, BlockGlyph.NORMAL, -1, -1));
 		BewitchmentAPI.registerRitual(new Ritual(new ResourceLocation(Bewitchment.MODID, "grimoire_magia"), Arrays.asList(Util.get("wax"), Util.get("dye"), Util.get("paper"), Util.get("leather"), Util.get(ModObjects.droplet_of_wisdom)), null, Collections.singletonList(new ItemStack(ModObjects.grimoire_magia)), 5, 150, 15, BlockGlyph.NORMAL, -1, -1));
 	}
 	

@@ -43,7 +43,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public final boolean canBePerformedRemotely;
 	
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, boolean canBePerformedRemotely, int time, int startingPower, int runningPower, int small, int medium, int big) {
-		this.setRegistryName(name);
+		setRegistryName(name);
 		this.input = input;
 		this.sacrificePredicate = sacrificePredicate;
 		this.output = output;

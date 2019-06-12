@@ -27,7 +27,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					List<Fortune> valid = GameRegistry.findRegistry(Fortune.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
 					if (!valid.isEmpty()) {
 						cap.fortune = valid.get(world.rand.nextInt(valid.size()));
-						player.sendStatusMessage(new TextComponentTranslation(cap.fortune.getRegistryName().toString().replace(":", ".")), true);
+						player.sendStatusMessage(new TextComponentTranslation("fortune." + cap.fortune.getRegistryName().toString().replace(":", ".")), true);
 					}
 					else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
 				}

@@ -6,6 +6,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
@@ -100,13 +102,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			int y = (counter >> 4) & 15;
 			int z = (counter >> 8) & 15;
 			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
-			IBlockState state = convert(world.getBlockState(checking));
-			if (isNatural(state)) {
-				map.put(state, map.getOrDefault(state, 0) + 1);
-				map.put(state, Math.max(map.keySet().size() * 2, map.get(state)));
-			}
+			registerToMap(world.getBlockState(checking));
 			if (counter == 4095) {
-				boolean foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
+				boolean foundStone = false, foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
 				int maxPower = 0;
@@ -115,29 +113,37 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 					for (int cz = -1; cz <= 1; cz++) {
 						BlockPos pos0 = pos.add(cx, 0, cz);
 						if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
-							AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());
-							if (upgrade != null) {
-								AltarUpgrade.Type type = upgrade.type;
-								if (type == AltarUpgrade.Type.CUP && !foundCup) {
-									gain += upgrade.upgrade1;
-									multiplier *= upgrade.upgrade2;
-									foundCup = true;
-								}
-								if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
-									gain += upgrade.upgrade1;
-									foundPentacle = true;
-								}
-								if (type == AltarUpgrade.Type.SWORD && !foundSword) {
-									multiplier *= upgrade.upgrade2;
-									foundSword = true;
-								}
-								if (type == AltarUpgrade.Type.WAND && !foundWand) {
-									maxPower += 128 * upgrade.upgrade2;
-									foundWand = true;
+							if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
+							if (!foundStone) {
+								AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());
+								if (upgrade != null) {
+									AltarUpgrade.Type type = upgrade.type;
+									if (type == AltarUpgrade.Type.CUP && !foundCup) {
+										gain += upgrade.upgrade1;
+										multiplier *= upgrade.upgrade2;
+										foundCup = true;
+									}
+									if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
+										gain += upgrade.upgrade1;
+										foundPentacle = true;
+									}
+									if (type == AltarUpgrade.Type.SWORD && !foundSword) {
+										multiplier *= upgrade.upgrade2;
+										foundSword = true;
+									}
+									if (type == AltarUpgrade.Type.WAND && !foundWand) {
+										maxPower += 128 * upgrade.upgrade2;
+										foundWand = true;
+									}
 								}
 							}
 						}
 					}
+				}
+				if (foundStone) {
+					gain = Short.MAX_VALUE;
+					maxPower = Short.MAX_VALUE;
+					multiplier = 1;
 				}
 				if (gain < 0) gain = 0;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
@@ -147,11 +153,27 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 	}
 	
+	protected void registerToMap(IBlockState state) {
+		if (isNatural(state)) {
+			int amount = 1;
+			IBlockState state0 = convert(state);
+			if (Loader.isModLoaded("dynamictrees")) {
+			}
+			map.put(state0, map.getOrDefault(state0, 0) + amount);
+			map.put(state0, Math.max(map.keySet().size() * 2, map.get(state0)));
+		}
+	}
+	
 	protected boolean isNatural(IBlockState state) {
+		if (Loader.isModLoaded("dynamictrees")) {
+		}
 		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
 	}
 	
 	protected IBlockState convert(IBlockState state) {
+		if (Loader.isModLoaded("dynamictrees")) {
+			return state;
+		}
 		if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 		else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
 		else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
