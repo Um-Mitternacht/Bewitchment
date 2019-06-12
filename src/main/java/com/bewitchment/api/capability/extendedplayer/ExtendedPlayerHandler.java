@@ -5,9 +5,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
@@ -28,6 +30,15 @@ public class ExtendedPlayerHandler {
 		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {
 			ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
 			if (cap.fortune != null && cap.fortune.apply(event.player)) cap.fortune = null;
+		}
+	}
+	
+	@SubscribeEvent
+	public void onLivingDeath(LivingDeathEvent event) {
+		if (!event.getEntityLiving().isNonBoss() && event.getSource().getTrueSource() instanceof EntityPlayer) {
+			ExtendedPlayer cap = event.getSource().getTrueSource().getCapability(ExtendedPlayer.CAPABILITY, null);
+			String name = EntityRegistry.getEntry(event.getEntityLiving().getClass()).getName();
+			if (!cap.uniqueDefeatedBosses.contains(name)) cap.uniqueDefeatedBosses.add(name);
 		}
 	}
 }

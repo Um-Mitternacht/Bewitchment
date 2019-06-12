@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"unused"})
 public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	/**
 	 * does the fortune produce negative effects

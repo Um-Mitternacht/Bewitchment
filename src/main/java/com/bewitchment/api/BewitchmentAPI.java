@@ -18,7 +18,6 @@ import net.minecraftforge.registries.RegistryBuilder;
 import java.util.*;
 import java.util.function.Predicate;
 
-@SuppressWarnings("WeakerAccess")
 public class BewitchmentAPI {
 	/**
 	 * the Oven registry
@@ -94,6 +93,22 @@ public class BewitchmentAPI {
 	
 	/**
 	 * @param entity the entity to check
+	 * @return false always, spectres are not currently in the mod
+	 */
+	public static boolean isSpectre(EntityLivingBase entity) {
+		return false;
+	}
+	
+	/**
+	 * @param entity the entity to check
+	 * @return false always, witch hunters are not currently in the mod
+	 */
+	public static boolean isWitchHunter(EntityLivingBase entity) {
+		return false;
+	}
+	
+	/**
+	 * @param entity the entity to check
 	 * @return true if the entity is weak to cold iron, false otherwise
 	 */
 	public static boolean isWeakToColdIron(EntityLivingBase entity) {
@@ -105,6 +120,6 @@ public class BewitchmentAPI {
 	 * @return true if the entity is weak to silver, false otherwise
 	 */
 	public static boolean isWeakToSilver(EntityLivingBase entity) {
-		return isWerewolf(entity) || isVampire(entity) || entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD;
+		return isWerewolf(entity) || entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD;
 	}
 }

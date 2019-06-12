@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+@SuppressWarnings("unused")
 public abstract class Tarot extends IForgeRegistryEntry.Impl<Tarot> {
 	public final ResourceLocation texture;
 	
@@ -12,5 +13,15 @@ public abstract class Tarot extends IForgeRegistryEntry.Impl<Tarot> {
 		this.texture = texture;
 	}
 	
-	public abstract boolean isValid(EntityPlayer player);
+	public boolean isCounted(EntityPlayer player) {
+		return true;
+	}
+	
+	public boolean isReversed(EntityPlayer player) {
+		return false;
+	}
+	
+	public int getNumber(EntityPlayer player) {
+		return -1;
+	}
 }

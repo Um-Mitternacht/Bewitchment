@@ -2,6 +2,7 @@ package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
@@ -84,6 +85,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		if (ritual != null) {
 			if (ritual.isValid(world, pos, player)) {
 				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
+					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
 					caster = player.getGameProfile().getId();
 					effectivePos = pos;
 					effectiveDim = world.provider.getDimension();
