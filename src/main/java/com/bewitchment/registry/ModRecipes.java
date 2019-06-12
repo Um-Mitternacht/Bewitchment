@@ -245,19 +245,121 @@ public class ModRecipes {
 	}
 	
 	private static void tarotInit() {
-		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test1"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test1.png")) {
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "cat"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/cat.png")) {
 			@Override
 			public boolean isValid(EntityPlayer player) {
 				return true;
 			}
 		});
-		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test2"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test2.png")) {
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/diamonds.png")) {
 			@Override
 			public boolean isValid(EntityPlayer player) {
 				return false;
 			}
 		});
-		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test3"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test3.png")) {
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "ender_dragon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/ender_dragon.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "enderman"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/enderman.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "evoker"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/evoker.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/guardian.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "illusioner"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/illusioner.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/iron_golem.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "moon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/moon.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "mounts"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/mounts.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "silver_sword"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/silver_sword.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "snow_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/snow_golem.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/star.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/stronghold.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/sun.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "witch"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/witch.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/wither.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither_skeleton"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/wither_skeleton.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/world.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "zombie"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/zombie.png")) {
 			@Override
 			public boolean isValid(EntityPlayer player) {
 				return true;

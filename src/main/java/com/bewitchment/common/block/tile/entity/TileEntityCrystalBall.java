@@ -32,7 +32,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 			}
 			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
 		}
-		else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power", player.getDisplayName()), true);
+		else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		return true;
 	}
 }

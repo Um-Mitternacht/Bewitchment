@@ -323,6 +323,27 @@ fortune.bewitchment.death=The path ahead looks very bleak.
 fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
 fortune.bewitchment.treasure=You might be very rich, very soon.
 
+#TAROT
+tarot.bewitchment.cat=sun name this
+tarot.bewitchment.diamonds=sun name this
+tarot.bewitchment.ender_dragon=sun name this
+tarot.bewitchment.enderman=sun name this
+tarot.bewitchment.evoker=sun name this
+tarot.bewitchment.guardian=sun name this
+tarot.bewitchment.illusioner=sun name this
+tarot.bewitchment.iron_golem=sun name this
+tarot.bewitchment.moon=sun name this
+tarot.bewitchment.mounts=sun name this
+tarot.bewitchment.silver_sword=sun name this
+tarot.bewitchment.snow_golem=sun name this
+tarot.bewitchment.star=sun name this
+tarot.bewitchment.stronghold=sun name this
+tarot.bewitchment.sun=sun name this
+tarot.bewitchment.witch=sun name this
+tarot.bewitchment.wither=sun name this
+tarot.bewitchment.wither_skeleton=sun name this
+tarot.bewitchment.world=sun name this
+tarot.bewitchment.zombie=sun name this
 
 #RITUAL
 ritual.null=You have not heard of such rites
@@ -340,6 +361,9 @@ fortune.no_fortune=This world has no secrets awaiting
 
 altar.power_info=%d/%d (x%d)
 altar.no_power=Your source of magic is not strong enough
+
+tarot.no_player=You must bind a player to the cards
+tarot.player_offline=%s is offline
 
 jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
