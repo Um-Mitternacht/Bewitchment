@@ -124,6 +124,10 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 						BlockPos pos0 = pos.add(cx, 0, cz);
 						if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
 							if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
+							if (world.getTileEntity(pos0.up()) instanceof TileEntityPlacedItem) {
+								ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
+								if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100)) stack.getCapability(MagicPower.CAPABILITY, null).fill(25);
+							}
 							if (!foundStone) {
 								AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());
 								if (upgrade != null) {
@@ -163,23 +167,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 	}
 	
-	protected void registerToMap(IBlockState state) {
-		if (isNatural(state)) {
-			int amount = 1;
-			IBlockState state0 = convert(state);
-			if (Loader.isModLoaded("dynamictrees")) {
-			}
-			map.put(state0, map.getOrDefault(state0, 0) + amount);
-			map.put(state0, Math.max(map.keySet().size() * 2, map.get(state0)));
-		}
-	}
-	
-	protected boolean isNatural(IBlockState state) {
-		if (Loader.isModLoaded("dynamictrees")) {
-		}
-		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
-	}
-	
 	protected IBlockState convert(IBlockState state) {
 		if (Loader.isModLoaded("dynamictrees")) {
 			return state;
@@ -189,5 +176,22 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 		else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
 		return state;
+	}
+	
+	protected boolean isNatural(IBlockState state) {
+		if (Loader.isModLoaded("dynamictrees")) {
+		}
+		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
+	}
+	
+	protected void registerToMap(IBlockState state) {
+		if (isNatural(state)) {
+			int amount = 1;
+			IBlockState state0 = convert(state);
+			if (Loader.isModLoaded("dynamictrees")) {
+			}
+			map.put(state0, map.getOrDefault(state0, 0) + amount);
+			map.put(state0, Math.max(map.keySet().size() * 2, map.get(state0)));
+		}
 	}
 }
