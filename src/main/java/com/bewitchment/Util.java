@@ -19,6 +19,8 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -28,6 +30,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
@@ -98,6 +101,14 @@ public class Util {
 			while (!copy.isEmpty()) fin.add(copy.splitStack(1));
 		}
 		return fin;
+	}
+	
+	public static EntityPlayer findPlayer(UUID uuid) {
+		for (WorldServer ws : DimensionManager.getWorlds()) {
+			EntityPlayer player = ws.getPlayerEntityByUUID(uuid);
+			if (player != null) return player;
+		}
+		return null;
 	}
 	
 	public static Ingredient get(String... oreDictionaryEntries) {

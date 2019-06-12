@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Ritual;
@@ -66,9 +67,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		if (ritual != null) {
 			if (caster != null) {
 				if (world.isRemote) ritual.onClientUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
-				ritual.onUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
+				ritual.onUpdate(world, effectivePos, Util.findPlayer(caster));
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getPlayerEntityByUUID(caster), ritual.runningPower)) time++;
+					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, Util.findPlayer(caster), ritual.runningPower)) time++;
 					else stopRitual(false);
 					if (time >= ritual.time) stopRitual(true);
 				}

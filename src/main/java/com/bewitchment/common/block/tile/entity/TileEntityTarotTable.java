@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Tarot;
@@ -27,7 +28,7 @@ public class TileEntityTarotTable extends TileEntityAltarStorage {
 				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 1000)) {
 					NBTTagCompound tag = player.getHeldItem(hand).getTagCompound();
 					if (tag != null && tag.hasKey("readId")) {
-						EntityPlayer toFind = world.getPlayerEntityByUUID(UUID.fromString(tag.getString("readId")));
+						EntityPlayer toFind = Util.findPlayer(UUID.fromString(tag.getString("readId")));
 						if (toFind != null) {
 							List<Tarot> valid = BewitchmentAPI.REGISTRY_TAROT.getValuesCollection().stream().filter(f -> f.isValid(toFind)).collect(Collectors.toList());
 							if (!valid.isEmpty()) {
