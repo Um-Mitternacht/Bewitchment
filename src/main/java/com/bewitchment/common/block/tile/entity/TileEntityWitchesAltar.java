@@ -88,7 +88,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (world.getTotalWorldTime() % 100 == 0) {
 			for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
 				for (ItemStack stack : Util.getEntireInventory(player))
-					if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100) && stack.getCapability(MagicPower.CAPABILITY, null).fill(25)) break;
+					if (stack.getItem() instanceof ItemGrimoireMagia && MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f)) break;
 			}
 		}
 		if (!world.isRemote) {
@@ -126,7 +126,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 							if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
 							if (world.getTileEntity(pos0.up()) instanceof TileEntityPlacedItem) {
 								ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
-								if (stack.getItem() instanceof ItemGrimoireMagia && magicPower.drain(100)) stack.getCapability(MagicPower.CAPABILITY, null).fill(25);
+								if (stack.getItem() instanceof ItemGrimoireMagia) MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f);
 							}
 							if (!foundStone) {
 								AltarUpgrade upgrade = BewitchmentAPI.getAltarUpgrade(world, pos0.up());

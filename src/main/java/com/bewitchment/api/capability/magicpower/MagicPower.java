@@ -16,7 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@SuppressWarnings({"ConstantConditions"})
+@SuppressWarnings({"ConstantConditions", "WeakerAccess"})
 public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<MagicPower> {
 	@CapabilityInject(MagicPower.class)
 	public static final Capability<MagicPower> CAPABILITY = null;
@@ -68,6 +68,11 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
 			}
 		}
+		return false;
+	}
+	
+	public static boolean transfer(MagicPower to, MagicPower from, int amount, float loss) {
+		if (to.amount - amount >= 0 && from.amount < from.maxAmount) return to.drain(amount) && from.fill((int) (amount * loss));
 		return false;
 	}
 	
