@@ -46,6 +46,7 @@ public class ModRecipes {
 		spinningWheelInit();
 		frostfireInit();
 		fortuneInit();
+		tarotInit();
 		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
@@ -241,5 +242,26 @@ public class ModRecipes {
 		BewitchmentAPI.registerFortune(new FortuneDeath());
 		BewitchmentAPI.registerFortune(new FortuneDropItem());
 		BewitchmentAPI.registerFortune(new FortuneTreasure());
+	}
+	
+	private static void tarotInit() {
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test1"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test1.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test2"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test2.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return false;
+			}
+		});
+		BewitchmentAPI.registerTarot(new Tarot(new ResourceLocation(Bewitchment.MODID, "test3"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/test3.png")) {
+			@Override
+			public boolean isValid(EntityPlayer player) {
+				return true;
+			}
+		});
 	}
 }
