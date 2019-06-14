@@ -124,7 +124,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	@Override
 	@Optional.Method(modid = "botania")
 	public int getBurnTime() {
-		return burnTime - 1;
+		return Math.max(0, burnTime - 1);
 	}
 	
 	@Override
