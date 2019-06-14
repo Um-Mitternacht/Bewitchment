@@ -18,7 +18,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import vazkii.botania.api.item.IExoflameHeatable;
 
-@SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"NullableProblems", "ConstantConditions"})
 @Optional.Interface(iface = "vazkii.botania.api.item.IExoflameHeatable", modid = "botania")
 public class TileEntityWitchesOven extends ModTileEntity implements ITickable, IExoflameHeatable {
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
@@ -105,7 +105,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 		return new ItemStackHandler[]{inventory_up, inventory_down};
 	}
 	
-	public void burnFuel(int time, boolean consume) {
+	private void burnFuel(int time, boolean consume) {
 		burnTime = time + 1;
 		fuelBurnTime = burnTime;
 		if (consume) {
