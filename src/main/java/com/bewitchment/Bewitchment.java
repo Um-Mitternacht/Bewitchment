@@ -30,6 +30,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,6 +46,8 @@ public class Bewitchment {
 	
 	@SidedProxy(serverSide = "com.bewitchment.common.CommonProxy", clientSide = "com.bewitchment.client.ClientProxy")
 	public static CommonProxy proxy;
+	
+	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

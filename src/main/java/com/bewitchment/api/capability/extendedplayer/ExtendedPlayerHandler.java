@@ -3,6 +3,8 @@ package com.bewitchment.api.capability.extendedplayer;
 import com.bewitchment.Bewitchment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -27,18 +29,23 @@ public class ExtendedPlayerHandler {
 	
 	@SubscribeEvent
 	public void playerTick(TickEvent.PlayerTickEvent event) {
-		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {
-			ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune != null && cap.fortune.apply(event.player)) cap.fortune = null;
-		}
+		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) if (ExtendedPlayer.getFortune(event.player) != null && ExtendedPlayer.getFortune(event.player).apply(event.player)) ExtendedPlayer.setFortune(event.player, null);
 	}
 	
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event) {
-		if (!event.getEntityLiving().isNonBoss() && event.getSource().getTrueSource() instanceof EntityPlayer) {
-			ExtendedPlayer cap = event.getSource().getTrueSource().getCapability(ExtendedPlayer.CAPABILITY, null);
+		if (!event.getEntityLiving().world.isRemote && !event.getEntityLiving().isNonBoss() && event.getSource().getTrueSource() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+			NBTTagList list = ExtendedPlayer.getUniqueDefeatedBosses(player);
 			String name = EntityRegistry.getEntry(event.getEntityLiving().getClass()).getName();
-			if (!cap.uniqueDefeatedBosses.contains(name)) cap.uniqueDefeatedBosses.add(name);
+			boolean found = false;
+			for (int i = 0; i < list.tagCount(); i++) {
+				if (list.getStringTagAt(i).equals(name)) {
+					found = true;
+					break;
+				}
+			}
+			if (!found) list.appendTag(new NBTTagString(name));
 		}
 	}
 }

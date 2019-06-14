@@ -291,12 +291,12 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "ancient_guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/ancient_guardian.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses.size() > 0;
+				return ExtendedPlayer.getUniqueDefeatedBosses(player).tagCount() > 0;
 			}
 			
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses.size();
+				return ExtendedPlayer.getUniqueDefeatedBosses(player).tagCount();
 			}
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "illusioner"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/illusioner.png")) {
@@ -349,12 +349,12 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_diamonds.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune != null;
+				return ExtendedPlayer.getFortune(player) != null;
 			}
 			
 			@Override
 			public boolean isReversed(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.isNegative;
+				return ExtendedPlayer.getFortune(player).isNegative;
 			}
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/iron_golem.png")) {
@@ -434,12 +434,12 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/stronghold.png")) {
 			@Override
 			public boolean isReversed(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast < 1;
+				return ExtendedPlayer.getRitualsCast(player) < 1;
 			}
 			
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
+				return ExtendedPlayer.getRitualsCast(player);
 			}
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_world.png")) {

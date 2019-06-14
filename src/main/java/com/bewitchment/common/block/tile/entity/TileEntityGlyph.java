@@ -1,9 +1,11 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.message.spawnparticle.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.block.state.IBlockState;
@@ -79,32 +81,34 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	public void startRitual(EntityPlayer player) {
-		List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3));
-		List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
-		ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, items, livings)).findFirst().orElse(null);
-		if (ritual != null) {
-			if (ritual.isValid(world, pos, player)) {
-				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
-					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
-					caster = player.getGameProfile().getId();
-					effectivePos = pos;
-					effectiveDim = world.provider.getDimension();
-					time = 0;
-					ritual.onStarted(world, pos, player);
-					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
-					for (EntityItem item : items) {
-						world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
-						if (world.isRemote) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition().getX(), item.getPosition().getY(), item.getPosition().getZ(), 0, 0, 0);
-						inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().copy(), false);
-						item.setDead();
+		if (!world.isRemote) {
+			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3));
+			List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
+			ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, items, livings)).findFirst().orElse(null);
+			if (ritual != null) {
+				if (ritual.isValid(world, pos, player)) {
+					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
+						ExtendedPlayer.setRitualsCast(player, ExtendedPlayer.getRitualsCast(player) + 1);
+						caster = player.getGameProfile().getId();
+						effectivePos = pos;
+						effectiveDim = world.provider.getDimension();
+						time = 0;
+						ritual.onStarted(world, pos, player);
+						player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+						for (EntityItem item : items) {
+							world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
+							Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition()), effectiveDim);
+							inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().copy(), false);
+							item.setDead();
+						}
+						if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 					}
-					if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
+					else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 				}
-				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
+				else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
 			}
-			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
+			else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
 		}
-		else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
 	}
 	
 	public void stopRitual(boolean finished) {

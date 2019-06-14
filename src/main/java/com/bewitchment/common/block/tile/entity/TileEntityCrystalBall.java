@@ -20,19 +20,20 @@ import java.util.stream.Collectors;
 public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	@Override
 	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 750)) {
-			ExtendedPlayer cap = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune == null) {
-				List<Fortune> valid = BewitchmentAPI.REGISTRY_FORTUNE.getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
-				if (!valid.isEmpty()) {
-					cap.fortune = valid.get(world.rand.nextInt(valid.size()));
-					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("fortune." + cap.fortune.getRegistryName().toString().replace(":", ".")), true);
+		if (!world.isRemote) {
+			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 750)) {
+				if (ExtendedPlayer.getFortune(player) == null) {
+					List<Fortune> valid = BewitchmentAPI.REGISTRY_FORTUNE.getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
+					if (!valid.isEmpty()) {
+						ExtendedPlayer.setFortune(player, valid.get(world.rand.nextInt(valid.size())));
+						player.sendStatusMessage(new TextComponentTranslation("fortune." + ExtendedPlayer.getFortune(player).getRegistryName().toString().replace(":", ".")), true);
+					}
+					else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
 				}
-				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
+				else player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
 			}
-			else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("fortune.has_fortune", player.getDisplayName()), true);
+			else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		}
-		else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		return true;
 	}
 }
