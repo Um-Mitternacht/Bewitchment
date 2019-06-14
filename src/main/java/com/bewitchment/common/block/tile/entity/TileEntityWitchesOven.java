@@ -13,11 +13,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import vazkii.botania.api.item.IExoflameHeatable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
-public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
+@Optional.Interface(iface = "vazkii.botania.api.item.IExoflameHeatable", modid = "botania")
+public class TileEntityWitchesOven extends ModTileEntity implements ITickable, IExoflameHeatable {
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -42,8 +45,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (burning && burnTime < 0) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
-			if (burnTime > -1) burnTime--;
+			if (burning && burnTime < 1) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
+			if (burnTime > 0) burnTime--;
 			else {
 				if (progress > 0) {
 					progress -= 2;
@@ -52,7 +55,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 			}
 			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
 			else {
-				if (burnTime < 0) {
+				if (burnTime < 1) {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) burnFuel(time, true);
 				}
@@ -103,12 +106,36 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	}
 	
 	public void burnFuel(int time, boolean consume) {
-		burnTime = time;
+		burnTime = time + 1;
 		fuelBurnTime = burnTime;
 		if (consume) {
 			ItemStack stack = inventory_up.extractItem(0, 1, false);
 			if (stack.getItem() == Items.LAVA_BUCKET) inventory_up.insertItem(0, new ItemStack(Items.BUCKET), false);
 		}
 		if (!burning) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
+	}
+	
+	@Override
+	@Optional.Method(modid = "botania")
+	public boolean canSmelt() {
+		return recipe != null && recipe.isValid(inventory_up, inventory_down);
+	}
+	
+	@Override
+	@Optional.Method(modid = "botania")
+	public int getBurnTime() {
+		return burnTime - 1;
+	}
+	
+	@Override
+	@Optional.Method(modid = "botania")
+	public void boostBurnTime() {
+		burnFuel(200, false);
+	}
+	
+	@Override
+	@Optional.Method(modid = "botania")
+	public void boostCookTime() {
+		progress++;
 	}
 }
