@@ -16,7 +16,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-@SuppressWarnings({"NullableProblems", "ConstantConditions"})
+@SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
 public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
@@ -54,13 +54,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 			else {
 				if (burnTime < 0) {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
-					if (time > 0) {
-						burnTime = time;
-						fuelBurnTime = burnTime;
-						ItemStack stack = inventory_up.extractItem(0, 1, false);
-						if (stack.getItem() == Items.LAVA_BUCKET) inventory_up.insertItem(0, new ItemStack(Items.BUCKET), false);
-						if (!burning) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
-					}
+					if (time > 0) burnFuel(time, true);
 				}
 				else {
 					progress++;
@@ -106,5 +100,15 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable {
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory_up, inventory_down};
+	}
+	
+	public void burnFuel(int time, boolean consume) {
+		burnTime = time;
+		fuelBurnTime = burnTime;
+		if (consume) {
+			ItemStack stack = inventory_up.extractItem(0, 1, false);
+			if (stack.getItem() == Items.LAVA_BUCKET) inventory_up.insertItem(0, new ItemStack(Items.BUCKET), false);
+		}
+		if (!burning) burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, true));
 	}
 }
