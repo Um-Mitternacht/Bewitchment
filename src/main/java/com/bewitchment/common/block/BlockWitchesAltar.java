@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
@@ -53,6 +54,11 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
+	}
+	
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.SOLID;
 	}
 	
 	@Override
@@ -121,7 +127,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 						if (stack.getItem() instanceof ItemBlock || stack.getItem() instanceof ItemSkull) return false;
 						else if (world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up())) {
 							world.setBlockState(pos.up(), ModObjects.placed_item.getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(player.rotationYaw)));
-							((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
+							if (world.getTileEntity(pos.up()) instanceof TileEntityPlacedItem) ((TileEntityPlacedItem) world.getTileEntity(pos.up())).getInventories()[0].insertItem(0, stack.splitStack(1), false);
 							forceScan(world, pos);
 							return true;
 						}

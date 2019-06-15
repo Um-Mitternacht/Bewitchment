@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -44,7 +45,7 @@ public class BlockCandle extends BlockCandleBase {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return Blocks.TORCH.canPlaceBlockAt(world, pos);
+		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 	
 	@Override

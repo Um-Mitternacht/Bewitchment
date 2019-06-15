@@ -8,10 +8,10 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tileentity.TileEntity;
@@ -105,12 +105,12 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return super.canPlaceBlockAt(world, pos) && Blocks.TORCH.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
+		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 	
 	@Override
-	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing face) {
-		return super.canPlaceBlockOnSide(world, pos, face) && face == EnumFacing.UP;
+	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
+		return (world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getValue(TYPE) != GOLDEN);
 	}
 	
 	@Override

@@ -30,7 +30,7 @@ public class ItemChalk extends Item {
 	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		boolean isReplacing = world.getBlockState(pos).getBlock() == ModObjects.glyph && world.getBlockState(pos).getValue(BlockGlyph.TYPE) != BlockGlyph.GOLDEN;
+		boolean isReplacing = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
 		if (!world.isRemote && (face == EnumFacing.UP && ModObjects.glyph.canPlaceBlockAt(world, pos.up()) || isReplacing)) {
 			ItemStack stack = player.getHeldItem(hand);
 			if (!player.isCreative()) stack.damageItem(1, player);
