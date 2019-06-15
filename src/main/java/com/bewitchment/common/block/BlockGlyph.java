@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tileentity.TileEntity;
@@ -104,7 +105,7 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
+		return super.canPlaceBlockAt(world, pos) && Blocks.TORCH.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
 	}
 	
 	@Override
