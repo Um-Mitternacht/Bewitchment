@@ -62,14 +62,19 @@ public class BlockPlacedItem extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
+		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!canPlaceBlockAt(world, to)) {
-			breakBlock(world, to, state);
-			world.destroyBlock(to, true);
+		world.scheduleUpdate(to, this, 0);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) {
+			breakBlock(world, pos, state);
+			world.destroyBlock(pos, true);
 		}
 	}
 	

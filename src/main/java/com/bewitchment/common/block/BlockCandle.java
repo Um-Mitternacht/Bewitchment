@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -45,7 +44,7 @@ public class BlockCandle extends BlockCandleBase {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
+		return world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos);
 	}
 	
 	@Override
@@ -74,7 +73,12 @@ public class BlockCandle extends BlockCandleBase {
 	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!canPlaceBlockAt(world, to)) world.destroyBlock(to, true);
+		world.scheduleUpdate(to, this, 0);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
 	}
 	
 	@Override

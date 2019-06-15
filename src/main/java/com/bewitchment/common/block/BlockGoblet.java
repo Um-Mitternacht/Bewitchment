@@ -12,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 /**
  * Created by Joseph on 5/29/2019.
  */
@@ -38,7 +40,7 @@ public class BlockGoblet extends ModBlock {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
+		return world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos);
 	}
 	
 	@Override
@@ -68,6 +70,11 @@ public class BlockGoblet extends ModBlock {
 	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!canPlaceBlockAt(world, to)) world.destroyBlock(to, true);
+		world.scheduleUpdate(to, this, 0);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
 	}
 }

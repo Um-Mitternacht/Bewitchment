@@ -3,6 +3,7 @@ package com.bewitchment.common.block;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -105,7 +106,7 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
+		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 	
 	@Override
@@ -123,6 +124,16 @@ public class BlockGlyph extends ModBlockContainer {
 			world.spawnParticle(EnumParticleTypes.PORTAL, x + rand.nextGaussian() / 3, y, z + rand.nextGaussian() / 3, 0, 0, 0);
 			world.spawnParticle(EnumParticleTypes.END_ROD, x + rand.nextGaussian() * 0.4, y, z + rand.nextGaussian() * 0.4, 0, 0.02 + 0.1 * rand.nextDouble(), 0);
 		}
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		world.scheduleUpdate(to, this, 0);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);
 	}
 	
 	@Override
