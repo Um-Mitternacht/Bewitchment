@@ -104,7 +104,7 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos);
+		return world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
 	}
 	
 	@Override

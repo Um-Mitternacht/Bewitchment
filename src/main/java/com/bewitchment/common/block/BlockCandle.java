@@ -44,7 +44,7 @@ public class BlockCandle extends BlockCandleBase {
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP);
+		return Blocks.TORCH.canPlaceBlockAt(world, pos);
 	}
 	
 	@Override
