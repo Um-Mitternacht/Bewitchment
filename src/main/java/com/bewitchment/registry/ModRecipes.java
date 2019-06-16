@@ -256,6 +256,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneDeath());
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneDropItem());
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneTreasure());
+		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneCatsAndDogs());
 	}
 	
 	private static void tarotInit() {
