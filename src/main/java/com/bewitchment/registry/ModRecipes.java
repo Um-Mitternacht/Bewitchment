@@ -355,7 +355,8 @@ public class ModRecipes {
 			
 			@Override
 			public boolean isReversed(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.isNegative;
+				Fortune fortune = player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune;
+				return fortune != null && fortune.isNegative;
 			}
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/iron_golem.png")) {
