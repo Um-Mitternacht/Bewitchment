@@ -48,7 +48,7 @@ public class SpawnParticle implements IMessage {
 		byteBuf.setInt(4, speedZ);
 	}
 	
-	public class Handler implements IMessageHandler<SpawnParticle, IMessage> {
+	public static class Handler implements IMessageHandler<SpawnParticle, IMessage> {
 		@Override
 		public IMessage onMessage(SpawnParticle message, MessageContext ctx) {
 			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().world.spawnParticle(message.type, message.pos.getX(), message.pos.getY(), message.pos.getZ(), message.speedX, message.speedY, message.speedZ);
