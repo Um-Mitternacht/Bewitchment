@@ -105,7 +105,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 							if (ritual.isValid(world, pos, player)) {
 								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
 									player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
-									//						ExtendedPlayer.syncToClient(player);
+									ExtendedPlayer.syncToClient(player);
 									caster = player.getGameProfile().getId();
 									effectivePos = pos;
 									effectiveDim = world.provider.getDimension();

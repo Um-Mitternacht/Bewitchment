@@ -15,7 +15,6 @@ public class SyncExtendedPlayer implements IMessage {
 	public NBTTagCompound tag;
 	
 	public SyncExtendedPlayer() {
-		tag = new NBTTagCompound();
 	}
 	
 	public SyncExtendedPlayer(NBTTagCompound tag) {
