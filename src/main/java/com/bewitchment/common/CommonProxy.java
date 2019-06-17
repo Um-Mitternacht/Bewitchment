@@ -5,10 +5,8 @@ import com.bewitchment.ModConfig;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.extendedplayer.ExtendedPlayerMessageHandler;
-import com.bewitchment.api.message.extendedplayer.SyncExtendedPlayer;
-import com.bewitchment.api.message.spawnparticle.SpawnParticle;
-import com.bewitchment.api.message.spawnparticle.SpawnParticleMessageHandler;
+import com.bewitchment.api.message.SpawnParticle;
+import com.bewitchment.api.message.SyncExtendedPlayer;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
@@ -59,8 +57,8 @@ public class CommonProxy {
 		ModRecipes.init();
 		
 		int id = -1;
-		Bewitchment.network.registerMessage(ExtendedPlayerMessageHandler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SpawnParticleMessageHandler.class, SpawnParticle.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());

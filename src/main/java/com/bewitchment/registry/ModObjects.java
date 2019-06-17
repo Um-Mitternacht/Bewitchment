@@ -304,10 +304,10 @@ public class ModObjects {
 	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
 	public static final Item wool_of_bat = Util.registerItem("wool_of_bat");
 	//Misc
-	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dyeBrown", "dye");
+	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dye", "dyeBrown");
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
-	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dyeBlack", "dye");
+	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dye", "dyeBlack");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item pentacle = Util.registerItem("pentacle");
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");

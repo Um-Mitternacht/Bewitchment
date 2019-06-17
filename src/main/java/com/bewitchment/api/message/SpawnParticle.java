@@ -1,9 +1,13 @@
-package com.bewitchment.api.message.spawnparticle;
+package com.bewitchment.api.message;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class SpawnParticle implements IMessage {
@@ -42,5 +46,13 @@ public class SpawnParticle implements IMessage {
 		byteBuf.setInt(2, speedX);
 		byteBuf.setInt(3, speedY);
 		byteBuf.setInt(4, speedZ);
+	}
+	
+	public class Handler implements IMessageHandler<SpawnParticle, IMessage> {
+		@Override
+		public IMessage onMessage(SpawnParticle message, MessageContext ctx) {
+			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().world.spawnParticle(message.type, message.pos.getX(), message.pos.getY(), message.pos.getZ(), message.speedX, message.speedY, message.speedZ);
+			return null;
+		}
 	}
 }

@@ -2,7 +2,7 @@ package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.message.extendedplayer.SyncExtendedPlayer;
+import com.bewitchment.api.message.SyncExtendedPlayer;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -90,6 +90,6 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	}
 	
 	public static void syncToClient(EntityPlayer player) {
-		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null)), ((EntityPlayerMP) player));
+		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
 	}
 }

@@ -5,7 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.spawnparticle.SpawnParticle;
+import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.block.state.IBlockState;
