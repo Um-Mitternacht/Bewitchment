@@ -19,36 +19,14 @@ import net.minecraftforge.common.util.Constants;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@SuppressWarnings({"ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"ConstantConditions"})
 public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<ExtendedPlayer> {
 	@CapabilityInject(ExtendedPlayer.class)
 	public static final Capability<ExtendedPlayer> CAPABILITY = null;
 	
-	private NBTTagList uniqueDefeatedBosses = new NBTTagList();
-	private Fortune fortune;
-	private int ritualsCast;
-	
-	public static NBTTagList getUniqueDefeatedBosses(EntityPlayer player) {
-		return player.getCapability(CAPABILITY, null).uniqueDefeatedBosses;
-	}
-	
-	public static Fortune getFortune(EntityPlayer player) {
-		return player.getCapability(CAPABILITY, null).fortune;
-	}
-	
-	public static void setFortune(EntityPlayer player, Fortune fortune) {
-		player.getCapability(CAPABILITY, null).fortune = fortune;
-		syncToClient(player);
-	}
-	
-	public static int getRitualsCast(EntityPlayer player) {
-		return player.getCapability(CAPABILITY, null).ritualsCast;
-	}
-	
-	public static void setRitualsCast(EntityPlayer player, int ritualsCast) {
-		player.getCapability(CAPABILITY, null).ritualsCast = ritualsCast;
-		syncToClient(player);
-	}
+	public NBTTagList uniqueDefeatedBosses = new NBTTagList();
+	public Fortune fortune;
+	public int ritualsCast;
 	
 	@Nullable
 	@Override

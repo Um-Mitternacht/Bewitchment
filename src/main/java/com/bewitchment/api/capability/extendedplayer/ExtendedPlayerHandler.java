@@ -29,14 +29,20 @@ public class ExtendedPlayerHandler {
 	
 	@SubscribeEvent
 	public void playerTick(TickEvent.PlayerTickEvent event) {
-		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) if (ExtendedPlayer.getFortune(event.player) != null && ExtendedPlayer.getFortune(event.player).apply(event.player)) ExtendedPlayer.setFortune(event.player, null);
+		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {
+			ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
+			if (cap.fortune != null && cap.fortune.apply(event.player)) {
+				cap.fortune = null;
+				ExtendedPlayer.syncToClient(event.player);
+			}
+		}
 	}
 	
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event) {
 		if (!event.getEntityLiving().world.isRemote && !event.getEntityLiving().isNonBoss() && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-			NBTTagList list = ExtendedPlayer.getUniqueDefeatedBosses(player);
+			NBTTagList list = player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses;
 			String name = EntityRegistry.getEntry(event.getEntityLiving().getClass()).getName();
 			boolean found = false;
 			for (int i = 0; i < list.tagCount(); i++) {

@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused", "ConstantConditions"})
 public class FortuneTreasure extends Fortune {
 	public FortuneTreasure() {
 		super(new ResourceLocation(Bewitchment.MODID, "treasure"));
@@ -33,7 +33,8 @@ public class FortuneTreasure extends Fortune {
 	@SubscribeEvent
 	public void onDig(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote) {
-			if (ExtendedPlayer.getFortune(event.getPlayer()) == this) {
+			ExtendedPlayer cap = event.getPlayer().getCapability(ExtendedPlayer.CAPABILITY, null);
+			if (cap.fortune == this) {
 				Block block = event.getState().getBlock();
 				if (block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.SAND || block == Blocks.MYCELIUM || block == Blocks.GRAVEL || block == Blocks.SOUL_SAND) {
 					LootTable table = event.getWorld().getLootTableManager().getLootTableFromLocation(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
@@ -44,7 +45,8 @@ public class FortuneTreasure extends Fortune {
 						entity.setNoPickupDelay();
 						event.getWorld().spawnEntity(entity);
 					}
-					ExtendedPlayer.setFortune(event.getPlayer(), null);
+					cap.fortune = null;
+					ExtendedPlayer.syncToClient(event.getPlayer());
 				}
 			}
 		}

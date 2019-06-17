@@ -8,7 +8,6 @@ import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -17,12 +16,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -109,11 +105,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
-	}
-	
-	public final boolean matches(World world, BlockPos pos, List<EntityItem> items, List<EntityLivingBase> livings) {
+	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler, List<EntityLivingBase> livings) {
 		for (int x = 0; x < small.length; x++) {
 			for (int z = 0; z < small.length; z++) {
 				IBlockState state = world.getBlockState(pos.add(x - small.length / 2, 0, z - small.length / 2));
@@ -136,11 +128,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 				}
 			}
 		}
-		List<ItemStack> ground = new ArrayList<>();
-		for (EntityItem item : items) ground.add(item.getItem());
-		ground = Util.expandList(ground);
-		ItemStackHandler handler = new ItemStackHandler(ground.size());
-		for (int i = 0; i < handler.getSlots(); i++) handler.insertItem(i, ground.get(i).copy(), false);
 		if (Util.areISListsEqual(input, handler)) {
 			if (sacrificePredicate != null) {
 				for (EntityLivingBase entity : livings) if (sacrificePredicate.test(entity)) return true;

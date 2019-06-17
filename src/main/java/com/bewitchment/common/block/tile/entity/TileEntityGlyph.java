@@ -14,13 +14,16 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.ItemStackHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +35,18 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public UUID caster;
 	public BlockPos effectivePos;
 	public int effectiveDim, time;
+	
+	private List<EntityItem> items = new ArrayList<>();
+	private NBTTagList tempList = new NBTTagList();
+	
+	public TileEntityGlyph() {
+		super();
+		for (int i = 0; i < tempList.tagCount(); i++) {
+			EntityItem item = new EntityItem(world);
+			item.deserializeNBT(tempList.getCompoundTagAt(i));
+			items.add(item);
+		}
+	}
 	
 	@Override
 	public ItemStackHandler[] getInventories() {
@@ -45,6 +60,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		tag.setInteger("effectiveDim", effectiveDim);
 		tag.setString("caster", caster == null ? "" : caster.toString());
 		tag.setInteger("time", time);
+		NBTTagList itemList = new NBTTagList();
+		for (EntityItem item : items) itemList.appendTag(item.serializeNBT());
+		tag.setTag("itemList", itemList);
 		return super.writeToNBT(tag);
 	}
 	
@@ -55,6 +73,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		effectiveDim = tag.getInteger("effectiveDim");
 		caster = tag.getString("caster").isEmpty() ? null : UUID.fromString(tag.getString("caster"));
 		time = tag.getInteger("time");
+		tempList = tag.getTagList("itemList", Constants.NBT.TAG_COMPOUND);
 		super.readFromNBT(tag);
 	}
 	
@@ -67,47 +86,55 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	@Override
 	public void update() {
-		if (ritual != null) {
-			if (caster != null) {
-				if (world.isRemote) ritual.onClientUpdate(world, effectivePos, world.getPlayerEntityByUUID(caster));
-				ritual.onUpdate(world, effectivePos, Util.findPlayer(caster));
-				if (world.getTotalWorldTime() % 20 == 0) {
-					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, Util.findPlayer(caster), ritual.runningPower)) time++;
-					else stopRitual(false);
-					if (time >= ritual.time) stopRitual(true);
+		if (!world.isRemote) {
+			if (!items.isEmpty()) {
+				if (time <= 20 && time % 20 == 0) {
+					EntityItem item = items.get(0);
+					world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
+					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition()), effectiveDim);
+					inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().splitStack(1), false);
+					items.remove(item);
+					if (items.isEmpty()) {
+						EntityPlayer player = Util.findPlayer(caster);
+						if (player != null) {
+							List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
+							ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
+							if (ritual != null) {
+								if (ritual.isValid(world, pos, player)) {
+									if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
+										player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
+										ExtendedPlayer.syncToClient(player);
+										effectivePos = pos;
+										effectiveDim = world.provider.getDimension();
+										ritual.onStarted(world, pos, player);
+										player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+										if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
+									}
+									else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
+								}
+								else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
+							}
+							else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
+						}
+					}
 				}
+				time++;
+			}
+			if (ritual != null && caster != null) {
+				if (time % 20 == 0 && !MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, Util.findPlayer(caster), ritual.runningPower)) stopRitual(false);
+				ritual.onUpdate(world, effectivePos, Util.findPlayer(caster));
+				if (time >= ritual.time) stopRitual(true);
+				time++;
 			}
 		}
 	}
 	
-	public void startRitual(EntityPlayer player) {
-		if (!world.isRemote) {
-			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3));
-			List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
-			ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, items, livings)).findFirst().orElse(null);
-			if (ritual != null) {
-				if (ritual.isValid(world, pos, player)) {
-					if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
-						ExtendedPlayer.setRitualsCast(player, ExtendedPlayer.getRitualsCast(player) + 1);
-						caster = player.getGameProfile().getId();
-						effectivePos = pos;
-						effectiveDim = world.provider.getDimension();
-						time = 0;
-						ritual.onStarted(world, pos, player);
-						player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
-						for (EntityItem item : items) {
-							world.playSound(null, item.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
-							Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.SMOKE_NORMAL, item.getPosition()), effectiveDim);
-							inventory.insertItem(getFirstEmptySlot(inventory), item.getItem().copy(), false);
-							item.setDead();
-						}
-						if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
-					}
-					else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
-				}
-				else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
-			}
-			else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
+	public void consumeItems(EntityPlayer player) {
+		if (!world.isRemote && items.isEmpty()) {
+			caster = player.getGameProfile().getId();
+			items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3));
+			for (EntityItem item : items) item.setInfinitePickupDelay();
+			time = -(20 * (items.size() + 1));
 		}
 	}
 	
@@ -121,5 +148,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		effectivePos = pos;
 		effectiveDim = world.provider.getDimension();
 		time = 0;
+		for (EntityItem item : items) item.setDefaultPickupDelay();
+		items.clear();
 	}
 }
