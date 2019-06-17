@@ -69,6 +69,11 @@ public abstract class ModTileEntity extends TileEntity {
 		return getFirstValidSlot(handler, ItemStack.EMPTY);
 	}
 	
+	public static int getLastNonEmptySlot(ItemStackHandler handler) {
+		for (int i = handler.getSlots() - 1; i >= 0; i--) if (!handler.getStackInSlot(i).isEmpty()) return i;
+		return -1;
+	}
+	
 	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
 		boolean hasEmpty = false;
 		for (int i = 0; i < handler.getSlots(); i++) {

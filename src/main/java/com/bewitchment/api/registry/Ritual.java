@@ -2,20 +2,20 @@ package com.bewitchment.api.registry;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
-import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -67,42 +67,19 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	public void onFinished(World world, BlockPos pos) {
-		if (!world.isRemote) {
-			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileEntityGlyph) {
-				TileEntityGlyph glyph = (TileEntityGlyph) tile;
-				ItemStack athame = ItemStack.EMPTY;
-				for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) {
-					if (glyph.getInventories()[0].getStackInSlot(i).getItem() instanceof ItemAthame) {
-						athame = glyph.getInventories()[0].getStackInSlot(i).copy();
-						break;
-					}
-				}
-				ModTileEntity.clear(glyph.getInventories()[0]);
-				for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack.copy());
-				if (!athame.isEmpty()) {
-					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), Byte.MAX_VALUE, false);
-					if (player != null) {
-						athame.damageItem(50, player);
-						InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, athame);
-					}
-				}
-			}
-		}
+		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
+		if (!world.isRemote) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
 	}
 	
 	public void onHalted(World world, BlockPos pos) {
-		if (!world.isRemote) {
-			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileEntityGlyph) {
-				TileEntityGlyph glyph = (TileEntityGlyph) tile;
-				for (int i = 0; i < glyph.getInventories()[0].getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, glyph.getInventories()[0].getStackInSlot(i).copy());
-				ModTileEntity.clear(glyph.getInventories()[0]);
-			}
-		}
+		world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.7f, 0.7f);
 	}
 	
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster) {
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
 	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler, List<EntityLivingBase> livings) {

@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
+import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
@@ -58,27 +59,6 @@ public class BlockGlyph extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (state.getValue(TYPE) == GOLDEN) {
-			TileEntityGlyph tile = ((TileEntityGlyph) world.getTileEntity(pos));
-			ItemStack stack = player.getHeldItem(hand);
-			if (!world.isRemote && stack.isEmpty()) {
-				if (tile.time != 0) tile.stopRitual(false);
-				else tile.consumeItems(player);
-			}
-			else if (stack.getItem() == ModObjects.waystone && stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-				if (tile.ritual != null && tile.ritual.canBePerformedRemotely) {
-					tile.effectivePos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-					tile.effectiveDim = stack.getTagCompound().getInteger("dimension");
-					stack.damageItem(1, player);
-				}
-			}
-			return true;
-		}
-		return false;
-	}
-	
-	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
 	}
@@ -112,6 +92,12 @@ public class BlockGlyph extends ModBlockContainer {
 	@Override
 	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
 		return (world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getValue(TYPE) != GOLDEN);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 	
 	@Override
