@@ -2,11 +2,8 @@ package com.bewitchment.common.fortune;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
-import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
