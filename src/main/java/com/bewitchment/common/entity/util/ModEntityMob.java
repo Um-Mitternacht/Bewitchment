@@ -18,7 +18,7 @@ public abstract class ModEntityMob extends EntityMob {
 	
 	private final ResourceLocation lootTableLocation;
 	
-	public ModEntityMob(World world, ResourceLocation lootTableLocation) {
+	protected ModEntityMob(World world, ResourceLocation lootTableLocation) {
 		super(world);
 		this.lootTableLocation = lootTableLocation;
 	}

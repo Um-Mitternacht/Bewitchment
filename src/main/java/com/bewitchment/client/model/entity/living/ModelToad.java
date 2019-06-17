@@ -10,24 +10,24 @@ import net.minecraft.entity.Entity;
  */
 @SuppressWarnings("WeakerAccess")
 public class ModelToad extends ModelBase {
-	public ModelRenderer body;
-	public ModelRenderer neck;
-	public ModelRenderer leftArm00;
-	public ModelRenderer rightArm00;
-	public ModelRenderer leftLeg00;
-	public ModelRenderer rightLeg00;
-	public ModelRenderer head;
-	public ModelRenderer jaw;
-	public ModelRenderer leftEye;
-	public ModelRenderer rightEye;
-	public ModelRenderer leftArm01;
-	public ModelRenderer leftHand;
-	public ModelRenderer rightArm01;
-	public ModelRenderer rightHand;
-	public ModelRenderer leftLeg01;
-	public ModelRenderer leftfoot;
-	public ModelRenderer rightLeg01;
-	public ModelRenderer rightfoot;
+	public final ModelRenderer body;
+	public final ModelRenderer neck;
+	public final ModelRenderer leftArm00;
+	public final ModelRenderer rightArm00;
+	public final ModelRenderer leftLeg00;
+	public final ModelRenderer rightLeg00;
+	public final ModelRenderer head;
+	public final ModelRenderer jaw;
+	public final ModelRenderer leftEye;
+	public final ModelRenderer rightEye;
+	public final ModelRenderer leftArm01;
+	public final ModelRenderer leftHand;
+	public final ModelRenderer rightArm01;
+	public final ModelRenderer rightHand;
+	public final ModelRenderer leftLeg01;
+	public final ModelRenderer leftfoot;
+	public final ModelRenderer rightLeg01;
+	public final ModelRenderer rightfoot;
 	
 	public ModelToad() {
 		this.textureWidth = 64;

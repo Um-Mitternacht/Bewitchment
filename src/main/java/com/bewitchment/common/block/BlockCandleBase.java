@@ -20,8 +20,8 @@ import thaumcraft.api.crafting.IInfusionStabiliserExt;
 public abstract class BlockCandleBase extends ModBlock implements IInfusionStabiliserExt {
 	protected static final PropertyBool LIT = PropertyBool.create("lit");
 	
-	protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
-		super(name, mat, sound, hardness, resistance, tool, level);
+	protected BlockCandleBase(String name) {
+		super(name, Material.CLOTH, SoundType.CLOTH, (float) 1, (float) 1, "", 0);
 		setLightOpacity(0);
 		Bewitchment.proxy.ignoreProperty(this, LIT);
 	}

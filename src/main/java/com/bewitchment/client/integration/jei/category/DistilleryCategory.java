@@ -62,8 +62,8 @@ public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.Di
 	}
 	
 	public static class DistilleryWrapper implements IRecipeWrapper {
-		private List<Ingredient> input;
-		private List<ItemStack> output;
+		private final List<Ingredient> input;
+		private final List<ItemStack> output;
 		
 		public DistilleryWrapper(DistilleryRecipe recipe) {
 			input = recipe.input;

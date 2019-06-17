@@ -21,7 +21,7 @@ public class BlockCrystalBall extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 12 / 16d, 13 / 16d);
 	
 	public BlockCrystalBall() {
-		super(null, "crystal_ball", Material.GLASS, SoundType.GLASS, 1, 2, "pickaxe", 0, -1);
+		super(null, "crystal_ball", Material.GLASS, SoundType.GLASS, 1, 2, "pickaxe", -1);
 	}
 	
 	@Override

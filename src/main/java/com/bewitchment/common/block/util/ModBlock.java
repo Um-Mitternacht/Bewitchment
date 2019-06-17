@@ -24,7 +24,7 @@ public class ModBlock extends Block {
 		Util.registerBlock(this, name, base, oreDictionaryNames);
 	}
 	
-	public ModBlock(Material mat) {
+	protected ModBlock(Material mat) {
 		super(mat);
 	}
 	

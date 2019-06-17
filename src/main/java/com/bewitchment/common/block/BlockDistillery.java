@@ -29,7 +29,7 @@ public class BlockDistillery extends ModBlockContainer {
 	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(12 / 16d, 0, 0, 4 / 16d, 15 / 16d, 1), BOX_Z = new AxisAlignedBB(0, 0, 12 / 16d, 1, 15 / 16d, 4 / 16d);
 	
 	public BlockDistillery() {
-		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 0, ModGui.DISTILLERY.ordinal());
+		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", ModGui.DISTILLERY.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(IN_USE, false));
 	}
 	

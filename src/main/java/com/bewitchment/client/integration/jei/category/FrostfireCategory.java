@@ -57,8 +57,8 @@ public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.Fros
 	}
 	
 	public static class FrostfireWrapper implements IRecipeWrapper {
-		private Ingredient input;
-		private ItemStack output;
+		private final Ingredient input;
+		private final ItemStack output;
 		
 		public FrostfireWrapper(FrostfireRecipe recipe) {
 			input = recipe.input;

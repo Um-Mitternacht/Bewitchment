@@ -25,7 +25,7 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 		return Util.areISListsEqual(this.input, input);
 	}
 	
-	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {
+	public final boolean isValid(ItemStackHandler output) {
 		for (ItemStack stack : this.output)
 			if (ModTileEntity.getFirstValidSlot(output, stack) < 0) return false;
 		return true;

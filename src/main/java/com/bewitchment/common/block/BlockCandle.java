@@ -1,9 +1,7 @@
 package com.bewitchment.common.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -28,7 +26,7 @@ public class BlockCandle extends BlockCandleBase {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
 	
 	public BlockCandle(String name) {
-		super(name, Material.CLOTH, SoundType.CLOTH, 1, 1, "", 0);
+		super(name);
 		Blocks.FIRE.setFireInfo(this, 0, 0);
 	}
 	

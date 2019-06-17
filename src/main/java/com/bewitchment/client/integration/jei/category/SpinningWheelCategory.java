@@ -60,8 +60,8 @@ public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCateg
 	}
 	
 	public static class SpinningWheelWrapper implements IRecipeWrapper {
-		private List<Ingredient> input;
-		private ItemStack output;
+		private final List<Ingredient> input;
+		private final ItemStack output;
 		
 		public SpinningWheelWrapper(SpinningWheelRecipe recipe) {
 			input = recipe.input;

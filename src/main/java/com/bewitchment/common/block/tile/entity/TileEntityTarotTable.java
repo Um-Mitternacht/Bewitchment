@@ -6,10 +6,8 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.CommonProxy;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import com.bewitchment.common.item.ItemTarotCards;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -19,7 +17,7 @@ import java.util.UUID;
 
 public class TileEntityTarotTable extends TileEntityAltarStorage {
 	@Override
-	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote && !player.isSneaking()) {
 			if (player.getHeldItem(hand).getItem() instanceof ItemTarotCards) {
 				if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 1000)) {

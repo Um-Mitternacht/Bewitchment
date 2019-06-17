@@ -35,7 +35,7 @@ import java.util.function.Predicate;
 
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
 public class Util {
-	public static <T extends Block> T registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
+	public static <T extends Block> void registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		block.setRegistryName(loc);
 		block.setTranslationKey(loc.toString().replace(":", "."));
@@ -57,11 +57,10 @@ public class Util {
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
 		}
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
-		return block;
 	}
 	
-	public static <T extends Block> T registerBlock(T block, String name, T base, String... oreDictionaryNames) {
-		return registerBlock(block, name, base.getDefaultState().getMaterial(), base.getSoundType(), base.getBlockHardness(null, null, null), base.getExplosionResistance(null) * 5, base.getHarvestTool(base.getDefaultState()), base.getHarvestLevel(base.getDefaultState()), oreDictionaryNames);
+	public static <T extends Block> void registerBlock(T block, String name, T base, String... oreDictionaryNames) {
+		registerBlock(block, name, base.getDefaultState().getMaterial(), base.getSoundType(), base.getBlockHardness(null, null, null), base.getExplosionResistance(null) * 5, base.getHarvestTool(base.getDefaultState()), base.getHarvestLevel(base.getDefaultState()), oreDictionaryNames);
 	}
 	
 	public static <T extends Item> T registerItem(T item, String name, List<Predicate<ItemStack>> predicates, String... oreDictionaryNames) {

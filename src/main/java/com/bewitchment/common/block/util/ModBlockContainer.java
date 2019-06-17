@@ -31,9 +31,9 @@ public abstract class ModBlockContainer extends BlockContainer {
 	private final Object modInstance;
 	private final int guiID;
 	
-	protected ModBlockContainer(Object modInstance, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, int guiID) {
+	protected ModBlockContainer(Object modInstance, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int guiID) {
 		super(mat);
-		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, level);
+		Util.registerBlock(this, name, mat, sound, hardness, resistance, tool, 0);
 		this.modInstance = modInstance;
 		this.guiID = guiID;
 	}
@@ -93,7 +93,7 @@ public abstract class ModBlockContainer extends BlockContainer {
 				player.openGui(modInstance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
 				return true;
 			}
-			if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
+			if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand);
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}

@@ -57,7 +57,9 @@ public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.
 	}
 	
 	public static class WitchesOvenWrapper implements IRecipeWrapper {
-		private ItemStack input, output, byproduct;
+		private final ItemStack input;
+		private final ItemStack output;
+		private final ItemStack byproduct;
 		
 		public WitchesOvenWrapper(OvenRecipe recipe) {
 			input = recipe.input;

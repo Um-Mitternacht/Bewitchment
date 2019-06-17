@@ -15,7 +15,7 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	
 	private final ResourceLocation lootTableLocation;
 	
-	public ModEntityAnimal(World world, ResourceLocation lootTableLocation) {
+	protected ModEntityAnimal(World world, ResourceLocation lootTableLocation) {
 		super(world);
 		this.lootTableLocation = lootTableLocation;
 	}

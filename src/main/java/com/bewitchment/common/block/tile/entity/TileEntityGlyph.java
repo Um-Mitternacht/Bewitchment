@@ -80,7 +80,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	@Override
-	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
 			if (player.isSneaking()) {
 				int last = getLastNonEmptySlot(inventory);

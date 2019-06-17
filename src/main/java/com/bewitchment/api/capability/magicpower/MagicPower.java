@@ -16,7 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@SuppressWarnings({"ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"ConstantConditions", "WeakerAccess", "SameReturnValue"})
 public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<MagicPower> {
 	@CapabilityInject(MagicPower.class)
 	public static final Capability<MagicPower> CAPABILITY = null;
@@ -89,6 +89,6 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 			this.amount = Math.min(this.amount + amount, this.maxAmount);
 			return true;
 		}
-		return true;
+		return false;
 	}
 }

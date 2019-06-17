@@ -44,7 +44,7 @@ public class BlockGlyph extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0.0025, 1);
 	
 	public BlockGlyph() {
-		super(null, "glyph", Material.CIRCUITS, SoundType.STONE, 5, 100, "", 0, -1);
+		super(null, "glyph", Material.CIRCUITS, SoundType.STONE, 5, 100, "", -1);
 		setCreativeTab(null);
 	}
 	
@@ -96,7 +96,7 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, state, pos, player, hand, face);
+		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand);
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 	

@@ -30,7 +30,7 @@ public class BlockPlacedItem extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.0625, 0.75);
 	
 	public BlockPlacedItem() {
-		super(null, "placed_item", Material.ROCK, SoundType.CLOTH, 0, 0, "", 0, -1);
+		super(null, "placed_item", Material.ROCK, SoundType.CLOTH, 0, 0, "", -1);
 		setCreativeTab(null);
 		setLightOpacity(0);
 	}

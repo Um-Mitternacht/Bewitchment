@@ -23,7 +23,7 @@ import java.util.Random;
 @SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class ModBlockSlab extends BlockSlab {
 	private final boolean isDouble;
-	public Block half;
+	private Block half;
 	
 	public ModBlockSlab(String name, Block base, String... oreDictionaryNames) {
 		this(name, base, false);

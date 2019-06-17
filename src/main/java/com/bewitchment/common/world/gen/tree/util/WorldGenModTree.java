@@ -8,7 +8,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import java.util.Random;
 
 public abstract class WorldGenModTree extends WorldGenAbstractTree {
-	public WorldGenModTree(boolean notify) {
+	protected WorldGenModTree(boolean notify) {
 		super(notify);
 	}
 	

@@ -55,7 +55,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 				progress -= 2;
 				if (progress < 0) progress = 0;
 			}
-			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
+			if (recipe == null || !recipe.isValid(inventory_down)) progress = 0;
 			else {
 				if (burnTime > -1) {
 					if (world.getTotalWorldTime() % 20 == 0) hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 25, false), 20);

@@ -10,23 +10,23 @@ import net.minecraft.entity.Entity;
  */
 @SuppressWarnings("WeakerAccess")
 public class ModelBlackDog extends ModelBase {
-	public ModelRenderer leftforeleg;
-	public ModelRenderer body;
-	public ModelRenderer leftHindleg;
-	public ModelRenderer rightHindleg;
-	public ModelRenderer rightforeleg;
-	public ModelRenderer mane00;
-	public ModelRenderer tail;
-	public ModelRenderer neck;
-	public ModelRenderer mane02;
-	public ModelRenderer mane01;
-	public ModelRenderer head;
-	public ModelRenderer leftEar00;
-	public ModelRenderer rightEar00;
-	public ModelRenderer muzzle;
-	public ModelRenderer lowerJaw;
-	public ModelRenderer leftEar01;
-	public ModelRenderer rightEar01;
+	public final ModelRenderer leftforeleg;
+	public final ModelRenderer body;
+	public final ModelRenderer leftHindleg;
+	public final ModelRenderer rightHindleg;
+	public final ModelRenderer rightforeleg;
+	public final ModelRenderer mane00;
+	public final ModelRenderer tail;
+	public final ModelRenderer neck;
+	public final ModelRenderer mane02;
+	public final ModelRenderer mane01;
+	public final ModelRenderer head;
+	public final ModelRenderer leftEar00;
+	public final ModelRenderer rightEar00;
+	public final ModelRenderer muzzle;
+	public final ModelRenderer lowerJaw;
+	public final ModelRenderer leftEar01;
+	public final ModelRenderer rightEar01;
 	
 	public ModelBlackDog() {
 		this.textureWidth = 64;

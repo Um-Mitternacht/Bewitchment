@@ -28,7 +28,7 @@ import java.util.List;
 public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	public static final String UID = "jei.ritual";
 	
-	private IDrawable bg;
+	private final IDrawable bg;
 	
 	public RitualCategory(IGuiHelper helper) {
 		bg = helper.createBlankDrawable(140, 100);
@@ -66,22 +66,21 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		}
 	}
 	
-	@SuppressWarnings({"ConstantConditions", "WeakerAccess"})
+	@SuppressWarnings({"WeakerAccess"})
 	public static class RitualWrapper implements IRecipeWrapper {
 		private static IDrawable center, small, medium, large;
 		
-		private int[] circles;
-		private List<List<ItemStack>> input;
-		private List<ItemStack> output;
-		private String name;
-		private int startingPower, runningPower;
+		private final int[] circles;
+		private final List<List<ItemStack>> input;
+		private final List<ItemStack> output;
+		private final int startingPower;
+		private final int runningPower;
 		
 		public RitualWrapper(Ritual ritual, IGuiHelper helper) {
 			circles = ritual.circles;
 			input = new ArrayList<>();
 			for (Ingredient ing : ritual.input) input.add(Arrays.asList(ing.getMatchingStacks()));
 			output = ritual.output;
-			name = I18n.format(ritual.getRegistryName().toString().replace(":", "."));
 			startingPower = ritual.startingPower;
 			runningPower = ritual.runningPower;
 			center = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
@@ -132,7 +131,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	}
 	
 	public static class RitualWrapperFactory implements IRecipeWrapperFactory<Ritual> {
-		private IGuiHelper helper;
+		private final IGuiHelper helper;
 		
 		public RitualWrapperFactory(IGuiHelper helper) {
 			this.helper = helper;

@@ -18,7 +18,7 @@ import net.minecraftforge.registries.RegistryBuilder;
 import java.util.*;
 import java.util.function.Predicate;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SameReturnValue"})
 public class BewitchmentAPI {
 	/**
 	 * the Oven registry

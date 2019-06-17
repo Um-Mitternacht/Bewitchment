@@ -38,7 +38,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.Arrays;
 import java.util.Collections;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "SameReturnValue"})
 public class ModRecipes {
 	public static void init() {
 		furnaceInit();

@@ -32,14 +32,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems"})
+@SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems", "StatementWithEmptyBody"})
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
-	public MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
+	public final MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
 	
 	public int color, gain;
 	
-	private Map<IBlockState, Integer> map = new HashMap<>();
-	private BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
+	private final Map<IBlockState, Integer> map = new HashMap<>();
+	private final BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
 	private int counter;
 	
 	@Override

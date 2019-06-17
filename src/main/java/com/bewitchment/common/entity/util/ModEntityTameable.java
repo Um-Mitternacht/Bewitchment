@@ -31,7 +31,7 @@ public abstract class ModEntityTameable extends EntityTameable {
 	
 	private final ResourceLocation lootTableLocation;
 	
-	public ModEntityTameable(World world, ResourceLocation lootTableLocation, Item... tameItems) {
+	protected ModEntityTameable(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world);
 		this.tameItems = Sets.newHashSet(tameItems);
 		this.lootTableLocation = lootTableLocation;

@@ -10,26 +10,26 @@ import net.minecraft.entity.Entity;
  */
 @SuppressWarnings("WeakerAccess")
 public class ModelSnake extends ModelBase {
-	public ModelRenderer body;
-	public ModelRenderer tail00;
-	public ModelRenderer neck00;
-	public ModelRenderer tail00b;
-	public ModelRenderer tail01;
-	public ModelRenderer tail02;
-	public ModelRenderer tail02b;
-	public ModelRenderer tail03;
-	public ModelRenderer tail04;
-	public ModelRenderer neck00b;
-	public ModelRenderer neck01;
-	public ModelRenderer head;
-	public ModelRenderer tongue;
-	public ModelRenderer upperJaw;
-	public ModelRenderer leftUpperJaw;
-	public ModelRenderer rightUpperJaw;
-	public ModelRenderer lowerJaw;
-	public ModelRenderer eyes;
-	public ModelRenderer leftfang;
-	public ModelRenderer rightfang;
+	public final ModelRenderer body;
+	public final ModelRenderer tail00;
+	public final ModelRenderer neck00;
+	public final ModelRenderer tail00b;
+	public final ModelRenderer tail01;
+	public final ModelRenderer tail02;
+	public final ModelRenderer tail02b;
+	public final ModelRenderer tail03;
+	public final ModelRenderer tail04;
+	public final ModelRenderer neck00b;
+	public final ModelRenderer neck01;
+	public final ModelRenderer head;
+	public final ModelRenderer tongue;
+	public final ModelRenderer upperJaw;
+	public final ModelRenderer leftUpperJaw;
+	public final ModelRenderer rightUpperJaw;
+	public final ModelRenderer lowerJaw;
+	public final ModelRenderer eyes;
+	public final ModelRenderer leftfang;
+	public final ModelRenderer rightfang;
 	
 	public ModelSnake() {
 		this.textureWidth = 64;

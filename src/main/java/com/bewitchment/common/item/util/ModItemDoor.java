@@ -20,10 +20,10 @@ public class ModItemDoor extends ItemDoor {
 	public final ModBlockDoor door;
 	
 	public ModItemDoor(String name, Block base, String... oreDictionaryNames) {
-		this(name, base, new ModBlockDoor("block_" + name, base), oreDictionaryNames);
+		this(name, new ModBlockDoor("block_" + name, base), oreDictionaryNames);
 	}
 	
-	private ModItemDoor(String name, Block base, ModBlockDoor door, String... oreDictionaryNames) {
+	private ModItemDoor(String name, ModBlockDoor door, String... oreDictionaryNames) {
 		super(door);
 		Util.registerItem(this, name, oreDictionaryNames);
 		this.door = door;

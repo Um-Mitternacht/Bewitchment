@@ -33,7 +33,7 @@ public class BlockWitchesOven extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(1 / 16d, 0, 1 / 16d, 15 / 16d, 1, 15 / 16d);
 	
 	public BlockWitchesOven() {
-		super(Bewitchment.instance, "witches_oven", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 0, ModGui.OVEN.ordinal());
+		super(Bewitchment.instance, "witches_oven", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", ModGui.OVEN.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(LIT, false));
 	}
 	

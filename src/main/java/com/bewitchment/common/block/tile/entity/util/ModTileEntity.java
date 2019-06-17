@@ -8,7 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -55,7 +54,7 @@ public abstract class ModTileEntity extends TileEntity {
 		return new ItemStackHandler[]{};
 	}
 	
-	public boolean activate(World world, IBlockState state, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
 		return false;
 	}
 	
