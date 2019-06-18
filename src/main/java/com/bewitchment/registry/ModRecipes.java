@@ -14,6 +14,7 @@ import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.ritual.RitualCallOfTheWild;
+import com.bewitchment.common.ritual.RitualLesserHellMouth;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -200,6 +201,7 @@ public class ModRecipes {
 	
 	private static void ritualInit() {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualCallOfTheWild());
+		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualLesserHellMouth());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "crystal_ball"), Arrays.asList(Util.get("blockGlass"), Util.get("blockGlass"), Util.get("blockGlass"), Util.get("gemQuartz"), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.crystal_ball)), 5, 350, 30, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "tarot_table"), Arrays.asList(Util.get("string"), Util.get("dye"), Util.get("workbench"), Util.get(ModObjects.droplet_of_wisdom), Util.get(ModObjects.droplet_of_wisdom), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.tarot_table)), 7, 350, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "tarot_cards"), Arrays.asList(Util.get("dye"), Util.get("dye"), Util.get("paper"), Util.get(ModObjects.birch_soul), Util.get(ModObjects.droplet_of_wisdom), Util.get("materialWax", "materialBeeswax", "wax", "tallow", "materialPressedWax", "itemBeeswax", "clumpWax", "beeswax", "itemWax")), null, Collections.singletonList(new ItemStack(ModObjects.tarot_cards)), 4, 300, 20, BlockGlyph.NORMAL, -1, -1));

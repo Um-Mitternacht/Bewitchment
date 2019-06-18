@@ -351,12 +351,13 @@ tarot.bewitchment.zombie=sun name this
 ritual.null=You have not heard of such rites
 ritual.invalid=Something's wrong
 
-ritual.bewitchment.call_of_the_wild=sun name this
-ritual.bewitchment.crystal_ball=sun name this
-ritual.bewitchment.tarot_table=sun name this
-ritual.bewitchment.tarot_cards=sun name this
-ritual.bewitchment.grimoire_magia=sun name this
-ritual.bewitchment.purifying_earth=sun name this
+ritual.bewitchment.call_of_the_wild=Call of the Wild
+ritual.bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
+ritual.bewitchment.tarot_table=Ritual of Construction (Table)
+ritual.bewitchment.tarot_cards=Ritual of Construction (Tarot Cards)
+ritual.bewitchment.grimoire_magia=Rite of Knowledge
+ritual.bewitchment.purifying_earth=Rite of Purification
+ritual.bewitchment.lesser_hellmouth=Lesser Hellmouth
 
 #INFO
 itemGroup.bewitchment=Bewitchment
