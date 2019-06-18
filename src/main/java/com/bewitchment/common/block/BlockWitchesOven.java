@@ -1,7 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.CommonProxy.ModGui;
+import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import net.minecraft.block.BlockHorizontal;

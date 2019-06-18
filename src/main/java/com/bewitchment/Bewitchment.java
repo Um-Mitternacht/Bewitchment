@@ -23,14 +23,34 @@ package com.bewitchment;
 //ZIIREV SVIV, YVZIRMT SLHGRORGRVH
 //GSVB DROO YV NVG DRGS DIZGS
 
-import com.bewitchment.common.CommonProxy;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
+import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.message.SpawnParticle;
+import com.bewitchment.api.message.SyncExtendedPlayer;
+import com.bewitchment.client.handler.ClientHandler;
+import com.bewitchment.common.ServerProxy;
+import com.bewitchment.common.handler.ArmorHandler;
+import com.bewitchment.common.handler.BlockDropHandler;
+import com.bewitchment.common.handler.GuiHandler;
+import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
+import com.bewitchment.common.world.gen.ModWorldGen;
+import com.bewitchment.registry.*;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,21 +64,38 @@ public class Bewitchment {
 	@Mod.Instance
 	public static Bewitchment instance;
 	
-	@SidedProxy(serverSide = "com.bewitchment.common.CommonProxy", clientSide = "com.bewitchment.client.ClientProxy")
-	public static CommonProxy proxy;
+	@SidedProxy(serverSide = "com.bewitchment.common.ServerProxy", clientSide = "com.bewitchment.client.ClientProxy")
+	public static ServerProxy proxy;
 	
 	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 	
+	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
+		@Override
+		public ItemStack createIcon() {
+			return new ItemStack(ModObjects.stone_witches_altar);
+		}
+	};
+	public static ModConfig config;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
+		
+		config = new ModConfig((event.getSuggestedConfigurationFile()));
+		proxy.registerEntityRenderers();
+		ModSounds.preInit();
+		ModEntities.preInit();
+		ModObjects.preInit();
+		ModEnchantments.preInit();
+		
+		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
+		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
+		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		proxy.init(event);
 		logger.info("It's a fact, she is exactly that!");
 		logger.info("A harbinger of death from the world of witchcraft,");
 		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
@@ -66,10 +103,25 @@ public class Bewitchment {
 		
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");
+		
+		proxy.registerColorOverrides();
+		
+		ModRecipes.init();
+		
+		int id = -1;
+		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
+		MinecraftForge.EVENT_BUS.register(new ClientHandler());
+		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
+		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
+		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		proxy.postInit(event);
+		ModRecipes.postInit();
 	}
 }

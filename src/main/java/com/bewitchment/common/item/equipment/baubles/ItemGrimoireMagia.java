@@ -32,7 +32,7 @@ public class ItemGrimoireMagia extends ModItemBauble {
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
 		MagicPower power = new MagicPower();
-		power.maxAmount = Bewitchment.proxy.config.maxGrimoirePower;
+		power.maxAmount = Bewitchment.config.maxGrimoirePower;
 		return power;
 	}
 	
@@ -60,7 +60,7 @@ public class ItemGrimoireMagia extends ModItemBauble {
 		if (isInCreativeTab(tab)) {
 			list.add(new ItemStack(this));
 			ItemStack full = new ItemStack(this);
-			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.proxy.config.maxGrimoirePower;
+			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.config.maxGrimoirePower;
 			list.add(full);
 		}
 	}

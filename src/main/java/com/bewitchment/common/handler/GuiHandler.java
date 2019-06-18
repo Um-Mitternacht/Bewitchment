@@ -1,7 +1,7 @@
 package com.bewitchment.common.handler;
 
 import com.bewitchment.client.gui.*;
-import com.bewitchment.common.CommonProxy.ModGui;
+import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.container.*;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.item.ItemTarotCards;

@@ -96,7 +96,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
-			scan(Bewitchment.proxy.config.altarScansPerTick);
+			scan(Bewitchment.config.altarScansPerTick);
 		}
 	}
 	

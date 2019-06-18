@@ -1,12 +1,11 @@
 package com.bewitchment.client;
 
-import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
 import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
-import com.bewitchment.common.CommonProxy;
+import com.bewitchment.common.ServerProxy;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
@@ -24,20 +23,31 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends ServerProxy {
 	@Override
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
+	public boolean isFancyGraphicsEnabled() {
+		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
+	}
+	
+	@Override
+	public void registerColorOverrides() {
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
+			int type = state.getValue(BlockGlyph.TYPE);
+			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
+		}, ModObjects.glyph);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
+	}
+	
+	@Override
+	public void registerEntityRenderers() {
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		//		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
@@ -61,23 +71,6 @@ public class ClientProxy extends CommonProxy {
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
-	}
-	
-	@Override
-	public void init(FMLInitializationEvent event) {
-		super.init(event);
-		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
-			int type = state.getValue(BlockGlyph.TYPE);
-			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
-		}, ModObjects.glyph);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
-		MinecraftForge.EVENT_BUS.register(new ClientHandler());
-	}
-	
-	@Override
-	public boolean isFancyGraphicsEnabled() {
-		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
 	
 	@Override

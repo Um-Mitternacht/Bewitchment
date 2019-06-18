@@ -39,7 +39,7 @@ public class Util {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		block.setRegistryName(loc);
 		block.setTranslationKey(loc.toString().replace(":", "."));
-		block.setCreativeTab(Bewitchment.proxy.tab);
+		block.setCreativeTab(Bewitchment.tab);
 		ObfuscationReflectionHelper.setPrivateValue(Block.class, block, sound, "blockSoundType", "field_149762_H");
 		block.setHardness(hardness);
 		block.setResistance(resistance);
@@ -67,7 +67,7 @@ public class Util {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		item.setRegistryName(loc);
 		item.setTranslationKey(loc.toString().replace(":", "."));
-		item.setCreativeTab(Bewitchment.proxy.tab);
+		item.setCreativeTab(Bewitchment.tab);
 		ForgeRegistries.ITEMS.register(item);
 		if (predicates.isEmpty()) Bewitchment.proxy.registerTexture(item, "normal");
 		else Bewitchment.proxy.registerTextureVariant(item, predicates);
