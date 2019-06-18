@@ -73,14 +73,16 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	@Override
 	public void update() {
-		if (ritual != null && caster != null) {
-			if (world.getTotalWorldTime() % 20 == 0) {
-				if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
-				else time++;
-			}
-			if (world.isRemote) ritual.onClientUpdate(world, effectivePos, caster);
-			ritual.onUpdate(world, effectivePos, caster);
+		if (ritual != null) {
 			if (time >= ritual.time) stopRitual(true);
+			if (world.isRemote) ritual.onClientUpdate(world, effectivePos);
+			if (caster != null) {
+				ritual.onUpdate(world, effectivePos, caster);
+				if (world.getTotalWorldTime() % 20 == 0) {
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
+					else time++;
+				}
+			}
 		}
 	}
 	

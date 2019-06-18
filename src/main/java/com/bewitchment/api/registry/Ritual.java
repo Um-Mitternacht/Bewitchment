@@ -93,7 +93,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
+	public void onClientUpdate(World world, BlockPos pos) {
 	}
 	
 	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler, List<EntityLivingBase> livings) {

@@ -56,7 +56,7 @@ public class RitualCallOfTheWild extends Ritual {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onClientUpdate(World world, BlockPos pos, EntityPlayer caster) {
+	public void onClientUpdate(World world, BlockPos pos) {
 		for (int i = 0; i < 20; i++) {
 			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
