@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.terraingen.TerrainGen;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -25,7 +26,7 @@ public class ModBlockSapling extends BlockSapling {
 	
 	@Override
 	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
-		if (generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
+		if (TerrainGen.saplingGrowTree(world, rand, pos) && generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
 	}
 	
 	@Override
