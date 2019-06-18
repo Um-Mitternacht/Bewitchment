@@ -29,7 +29,7 @@ public class RitualLesserHellMouth extends Ritual {
 	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
 		super.onFinished(world, pos, caster);
 		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
+			for (int i = 0; i < world.rand.nextInt(4) + 2; i++) {
 				EntityLiving entity;
 				entity = world.rand.nextBoolean() ? new EntityPigZombie(world) : new EntityMagmaCube(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
