@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
-//Todo: Find the old code for beeswarms so it can be used here. Also, a command is needed to make fortunes fire instantly.
+//Todo: Find the old code for beeswarms so it can be used here. Also, a command is needed to make fortunes fire instantly. And clean this clusterfuck up.
 public class FortuneCatsAndDogs extends Fortune {
 	public FortuneCatsAndDogs() {
 		super(new ResourceLocation(Bewitchment.MODID, "meet_cats_and_dogs"), true);
