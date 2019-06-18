@@ -60,9 +60,11 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 			recipeLayout.getItemStacks().init(i, true, 18 * i + (140 - 18 * recipeWrapper.input.size()) / 2, 0);
 			recipeLayout.getItemStacks().set(i, recipeWrapper.input.get(i));
 		}
-		for (int i = 0; i < recipeWrapper.output.size(); i++) {
-			recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (140 - 18 * recipeWrapper.output.size()) / 2, 58);
-			recipeLayout.getItemStacks().set(i + recipeWrapper.input.size(), recipeWrapper.output.get(i));
+		if (recipeWrapper.output != null) {
+			for (int i = 0; i < recipeWrapper.output.size(); i++) {
+				recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (140 - 18 * recipeWrapper.output.size()) / 2, 58);
+				recipeLayout.getItemStacks().set(i + recipeWrapper.input.size(), recipeWrapper.output.get(i));
+			}
 		}
 	}
 	
@@ -92,7 +94,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		@Override
 		public void getIngredients(IIngredients ingredients) {
 			ingredients.setInputLists(VanillaTypes.ITEM, input);
-			if (!output.isEmpty()) ingredients.setOutputs(VanillaTypes.ITEM, output);
+			if (output != null && !output.isEmpty()) ingredients.setOutputs(VanillaTypes.ITEM, output);
 		}
 		
 		@Override

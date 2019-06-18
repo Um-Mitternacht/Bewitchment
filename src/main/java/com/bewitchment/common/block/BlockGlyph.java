@@ -1,5 +1,6 @@
 package com.bewitchment.common.block;
 
+import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.block.util.ModBlockContainer;
@@ -119,6 +120,10 @@ public class BlockGlyph extends ModBlockContainer {
 	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
+			TileEntityGlyph tile = (TileEntityGlyph) world.getTileEntity(pos);
+			tile.caster = Util.findPlayer(tile.casterId);
+		}
 		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);
 	}
 	

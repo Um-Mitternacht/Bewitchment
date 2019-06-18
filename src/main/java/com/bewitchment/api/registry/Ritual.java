@@ -2,6 +2,8 @@ package com.bewitchment.api.registry;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
+import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,7 +24,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"unused", "WeakerAccess", "SameReturnValue", "EmptyMethod"})
+@SuppressWarnings({"unused", "WeakerAccess", "SameReturnValue", "EmptyMethod", "ConstantConditions"})
 public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public static final int[][] small = {{0, 0, 1, 1, 1, 0, 0}, {0, 1, 0, 0, 0, 1, 0}, {1, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 0, 0, 1, 0}, {0, 0, 1, 1, 1, 0, 0}};
 	public static final int[][] medium = {{0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0}, {0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0}};
@@ -66,13 +68,25 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onStarted(World world, BlockPos pos, EntityPlayer caster) {
 	}
 	
-	public void onFinished(World world, BlockPos pos) {
+	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
 		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
-		if (!world.isRemote) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
+		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
+			ItemStackHandler inventory = ((TileEntityGlyph) world.getTileEntity(pos)).getInventories()[0];
+			for (int i = 0; i < inventory.getSlots(); i++) {
+				ItemStack stack0 = inventory.getStackInSlot(i);
+				if (stack0.getItem() instanceof ItemAthame) stack0.damageItem(50, caster);
+				else inventory.extractItem(i, 1, false);
+			}
+		}
+		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
 	}
 	
-	public void onHalted(World world, BlockPos pos) {
+	public void onHalted(World world, BlockPos pos, EntityPlayer caster) {
 		world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.7f, 0.7f);
+		if (!world.isRemote && world.getTileEntity(pos) instanceof TileEntityGlyph) {
+			ItemStackHandler inventory = ((TileEntityGlyph) world.getTileEntity(pos)).getInventories()[0];
+			for (int i = 0; i < inventory.getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false));
+		}
 	}
 	
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster) {

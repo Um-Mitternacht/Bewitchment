@@ -6,7 +6,6 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
-import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,7 +29,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
 	
 	public Ritual ritual;
-	public UUID caster;
+	public UUID casterId;
+	public EntityPlayer caster;
 	public BlockPos effectivePos;
 	public int effectiveDim, time;
 	
@@ -44,7 +44,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
 		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
 		tag.setInteger("effectiveDim", effectiveDim);
-		tag.setString("caster", caster == null ? "" : caster.toString());
+		tag.setString("casterId", casterId == null ? "" : casterId.toString());
 		tag.setInteger("time", time);
 		return super.writeToNBT(tag);
 	}
@@ -54,7 +54,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		ritual = tag.getString("ritual").isEmpty() ? null : BewitchmentAPI.REGISTRY_RITUAL.getValue(new ResourceLocation(tag.getString("ritual")));
 		effectivePos = BlockPos.fromLong(tag.getLong("effectivePos"));
 		effectiveDim = tag.getInteger("effectiveDim");
-		caster = tag.getString("caster").isEmpty() ? null : UUID.fromString(tag.getString("caster"));
+		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
 		time = tag.getInteger("time");
 		super.readFromNBT(tag);
 	}
@@ -67,14 +67,19 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	@Override
+	public void onLoad() {
+		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 5, 0);
+	}
+	
+	@Override
 	public void update() {
 		if (ritual != null && caster != null) {
 			if (world.getTotalWorldTime() % 20 == 0) {
-				if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, Util.findPlayer(caster), ritual.runningPower)) stopRitual(false);
+				if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
 				else time++;
 			}
-			if (world.isRemote) ritual.onClientUpdate(world, effectivePos, Util.findPlayer(caster));
-			ritual.onUpdate(world, effectivePos, Util.findPlayer(caster));
+			if (world.isRemote) ritual.onClientUpdate(world, effectivePos, caster);
+			ritual.onUpdate(world, effectivePos, caster);
 			if (time >= ritual.time) stopRitual(true);
 		}
 	}
@@ -106,18 +111,15 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
 									player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
 									ExtendedPlayer.syncToClient(player);
-									caster = player.getGameProfile().getId();
+									casterId = player.getGameProfile().getId();
+									caster = Util.findPlayer(casterId);
 									effectivePos = pos;
 									effectiveDim = world.provider.getDimension();
 									time = 0;
 									ritual.onStarted(world, pos, player);
+									world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 									player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 									world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
-									for (int i = 0; i < inventory.getSlots(); i++) {
-										ItemStack stack0 = inventory.getStackInSlot(i);
-										if (stack0.getItem() instanceof ItemAthame) stack0.damageItem(50, player);
-										else inventory.extractItem(i, 1, false);
-									}
 									if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 								}
 								else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
@@ -133,14 +135,16 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	public void stopRitual(boolean finished) {
-		if (ritual != null) {
-			if (finished) ritual.onFinished(world, pos);
-			else ritual.onHalted(world, pos);
+		if (ritual != null && caster != null) {
+			if (finished) ritual.onFinished(world, pos, caster);
+			else ritual.onHalted(world, pos, caster);
 		}
 		ritual = null;
+		casterId = null;
 		caster = null;
 		effectivePos = pos;
 		effectiveDim = world.provider.getDimension();
 		time = 0;
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 	}
 }
