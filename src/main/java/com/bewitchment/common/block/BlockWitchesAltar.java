@@ -250,6 +250,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	private void forceScan(World world, BlockPos pos) {
 		TileEntityWitchesAltar tile = getAltar(world, pos);
-		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), world.getBlockState(tile.getPos()).getBlock(), 5, 0);
+		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), this, 5, 0);
 	}
 }
