@@ -14,6 +14,8 @@ tile.bewitchment.moonstone_ore.name=Moonstone Ore
 tile.bewitchment.silver_ore.name=Silver Ore
 tile.bewitchment.salt_ore.name=Salt Ore
 
+tile.bewitchment.purifying_earth.name=Purifying Earth
+
 tile.bewitchment.coquina.name=Coquina
 tile.bewitchment.coquina_bricks.name=Coquina Bricks
 tile.bewitchment.chiseled_coquina.name=Chiseled Coquina

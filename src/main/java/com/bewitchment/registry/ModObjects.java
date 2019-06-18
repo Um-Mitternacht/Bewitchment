@@ -82,6 +82,7 @@ public class ModObjects {
 	public static final Block silver_ore = new ModBlock("silver_ore", Blocks.IRON_ORE, "oreSilver");
 	public static final Block salt_ore = new ModBlock("salt_ore", Blocks.COAL_ORE, "oreSalt");
 	
+	public static final Block purifying_earth = new BlockPurifyingEarth();
 	public static final Block[] coquina = createChiselBlocks("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, Arrays.asList("coquina"), "smooth", "shell");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", coquina[0]);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", coquina[0]);
