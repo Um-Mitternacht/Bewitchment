@@ -122,7 +122,7 @@ public class BlockGlyph extends ModBlockContainer {
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
 			TileEntityGlyph tile = (TileEntityGlyph) world.getTileEntity(pos);
-			tile.caster = Util.findPlayer(tile.casterId);
+			if (tile.casterId != null) tile.caster = Util.findPlayer(tile.casterId);
 		}
 		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);
 	}
