@@ -356,6 +356,7 @@ ritual.bewitchment.crystal_ball=sun name this
 ritual.bewitchment.tarot_table=sun name this
 ritual.bewitchment.tarot_cards=sun name this
 ritual.bewitchment.grimoire_magia=sun name this
+ritual.bewitchment.purifying_earth=sun name this
 
 #INFO
 itemGroup.bewitchment=Bewitchment
