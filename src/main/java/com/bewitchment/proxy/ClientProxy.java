@@ -1,11 +1,10 @@
-package com.bewitchment.client;
+package com.bewitchment.proxy;
 
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
 import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
-import com.bewitchment.common.ServerProxy;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;

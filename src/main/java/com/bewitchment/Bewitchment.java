@@ -29,12 +29,12 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.message.SyncExtendedPlayer;
 import com.bewitchment.client.handler.ClientHandler;
-import com.bewitchment.common.ServerProxy;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
+import com.bewitchment.proxy.ServerProxy;
 import com.bewitchment.registry.*;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -64,7 +64,7 @@ public class Bewitchment {
 	@Mod.Instance
 	public static Bewitchment instance;
 	
-	@SidedProxy(serverSide = "com.bewitchment.common.ServerProxy", clientSide = "com.bewitchment.client.ClientProxy")
+	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
 	public static ServerProxy proxy;
 	
 	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);

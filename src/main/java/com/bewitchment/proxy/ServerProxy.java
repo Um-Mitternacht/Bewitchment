@@ -1,4 +1,4 @@
-package com.bewitchment.common;
+package com.bewitchment.proxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
