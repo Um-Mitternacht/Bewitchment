@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument"})
+@SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
 	public static <T extends Block> void registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
@@ -193,7 +193,15 @@ public class Util {
 		else if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
 	}
 	
+	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && Util.areStacksEqual(stack, ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0)), upgrade);
+	}
+	
 	public static void registerAltarUpgradeItem(Item item, AltarUpgrade upgrade) {
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == item, upgrade);
+		registerAltarUpgradeItemStack(new ItemStack(item), upgrade);
+	}
+	
+	public static void registerAltarUpgradeOreDict(String ore, AltarUpgrade upgrade) {
+		for (ItemStack stack : OreDictionary.getOres(ore)) registerAltarUpgradeItemStack(stack, upgrade);
 	}
 }
