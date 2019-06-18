@@ -360,7 +360,9 @@ ritual.bewitchment.purifying_earth=Rite of Purification
 ritual.bewitchment.lesser_hellmouth=Rite of Lesser Hellmouth
 ritual.bewitchment.hellmouth=Rite of Hellmouth
 ritual.bewitchment.greater_hellmouth=Rite of Greater Hellmouth
-
+ritual.bewitchment.draw_small=Ritual of the Lesser Marks
+ritual.bewitchment.draw_medium=Ritual of the Marks
+ritual.bewitchment.draw_large=Ritual of the Greater Marks
 
 #INFO
 itemGroup.bewitchment=Bewitchment
