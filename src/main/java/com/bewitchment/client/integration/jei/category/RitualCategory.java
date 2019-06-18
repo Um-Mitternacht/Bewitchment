@@ -31,7 +31,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	private final IDrawable bg;
 	
 	public RitualCategory(IGuiHelper helper) {
-		bg = helper.createBlankDrawable(140, 100);
+		bg = helper.createBlankDrawable(180, 110);
 	}
 	
 	@Override
@@ -57,18 +57,18 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, RitualWrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.size(); i++) {
-			recipeLayout.getItemStacks().init(i, true, 18 * i + (140 - 18 * recipeWrapper.input.size()) / 2, 0);
+			recipeLayout.getItemStacks().init(i, true, 18 * i + (180 - 18 * recipeWrapper.input.size()) / 2, 10);
 			recipeLayout.getItemStacks().set(i, recipeWrapper.input.get(i));
 		}
 		if (recipeWrapper.output != null) {
 			for (int i = 0; i < recipeWrapper.output.size(); i++) {
-				recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (140 - 18 * recipeWrapper.output.size()) / 2, 58);
+				recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (180 - 18 * recipeWrapper.output.size()) / 2, 68);
 				recipeLayout.getItemStacks().set(i + recipeWrapper.input.size(), recipeWrapper.output.get(i));
 			}
 		}
 	}
 	
-	@SuppressWarnings({"WeakerAccess"})
+	@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 	public static class RitualWrapper implements IRecipeWrapper {
 		private static IDrawable center, small, medium, large;
 		
@@ -77,6 +77,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		private final List<ItemStack> output;
 		private final int startingPower;
 		private final int runningPower;
+		private final String name;
 		
 		public RitualWrapper(Ritual ritual, IGuiHelper helper) {
 			circles = ritual.circles;
@@ -85,6 +86,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 			output = ritual.output;
 			startingPower = ritual.startingPower;
 			runningPower = ritual.runningPower;
+			name = I18n.format("ritual." + ritual.getRegistryName().toString().replace(":", "."));
 			center = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 			small = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 			medium = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_2.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
@@ -100,10 +102,11 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		@Override
 		public void drawInfo(Minecraft minecraft, int width, int height, int mouseX, int mouseY) {
 			FontRenderer font = minecraft.fontRenderer;
+			font.drawString(name, ((width - font.getStringWidth(name)) / 2), 0, 0);
 			String startingPower = I18n.format("jei.ritual.startingPower", this.startingPower), runningPower = I18n.format("jei.ritual.runningPower", this.runningPower);
 			if (this.startingPower > 0) font.drawString(startingPower, (width - font.getStringWidth(startingPower)) / 2, height - (this.runningPower > 0 ? 3 : 2) * font.FONT_HEIGHT * 4 / 5, 0);
 			if (this.runningPower > 0) font.drawString(runningPower, (width - font.getStringWidth(runningPower)) / 2, height - 2 * font.FONT_HEIGHT * 2 / 3, 0);
-			int x = 53, y = 18;
+			int x = 73, y = 24;
 			color(minecraft, BlockGlyph.GOLDEN);
 			center.draw(minecraft, x, y * 5 / 4);
 			color(minecraft, circles[0]);
