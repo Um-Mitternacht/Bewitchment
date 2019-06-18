@@ -57,7 +57,7 @@ public class RitualCallOfTheWild extends Ritual {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onClientUpdate(World world, BlockPos pos) {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 10; i++) {
 			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
 			world.spawnParticle(EnumParticleTypes.CLOUD, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));

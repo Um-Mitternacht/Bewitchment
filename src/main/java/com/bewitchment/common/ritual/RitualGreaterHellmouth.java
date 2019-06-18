@@ -4,10 +4,11 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -20,9 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 
-public class RitualLesserHellMouth extends Ritual {
-	public RitualLesserHellMouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "lesser_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone")), null, null, 25, 1000, 33, BlockGlyph.NETHER, -1, -1);
+public class RitualGreaterHellmouth extends Ritual {
+	public RitualGreaterHellmouth() {
+		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone"), Util.get("gunpowder"), Util.get(Items.MAGMA_CREAM), Util.get(Items.BLAZE_POWDER), Util.get("blockNethersteel")), null, null, 25, 2000, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override
@@ -31,7 +32,7 @@ public class RitualLesserHellMouth extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				EntityLiving entity;
-				entity = world.rand.nextBoolean() ? new EntityPigZombie(world) : new EntityMagmaCube(world);
+				entity = world.rand.nextBoolean() ? new EntityHellhound(world) : world.rand.nextBoolean() ? new EntityWitherSkeleton(world) : new EntityGhast(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
@@ -52,7 +53,7 @@ public class RitualLesserHellMouth extends Ritual {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onClientUpdate(World world, BlockPos pos) {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 20; i++) {
 			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
 			world.spawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
