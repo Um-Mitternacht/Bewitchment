@@ -2,6 +2,7 @@ package com.bewitchment.common.fortune;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -22,6 +23,18 @@ public class FortuneCatsAndDogs extends Fortune {
 				dog.setPosition(pos.getX() + 0.5, pos.getY() + 255, pos.getZ() + 0.5);
 				dog.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
 				player.world.spawnEntity(dog);
+				player.world.getWorldInfo().setCleanWeatherTime(0);
+				player.world.getWorldInfo().setRainTime(2000);
+				player.world.getWorldInfo().setThunderTime(3000);
+				player.world.getWorldInfo().setRaining(true);
+				player.world.getWorldInfo().setThundering(true);
+				return true;
+			}
+			EntityOcelot cat = new EntityOcelot(player.world);
+			if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(cat)) {
+				cat.setPosition(pos.getX() + 0.5, pos.getY() + 255, pos.getZ() + 0.5);
+				cat.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
+				player.world.spawnEntity(cat);
 				return true;
 			}
 		}
