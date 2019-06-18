@@ -352,9 +352,9 @@ ritual.null=You have not heard of such rites
 ritual.invalid=Something's wrong
 
 ritual.bewitchment.call_of_the_wild=Call of the Wild
-ritual.bewitchment.crystal_ball=Ritual of Construction (Crystal Ball)
-ritual.bewitchment.tarot_table=Ritual of Construction (Tarot Table)
-ritual.bewitchment.tarot_cards=Ritual of Construction (Tarot Cards)
+ritual.bewitchment.crystal_ball=Ritual of Foresight
+ritual.bewitchment.tarot_table=Ritual of Construction
+ritual.bewitchment.tarot_cards=Ritual of Engraving
 ritual.bewitchment.grimoire_magia=Rite of Knowledge
 ritual.bewitchment.purifying_earth=Rite of Purification
 ritual.bewitchment.lesser_hellmouth=Rite of Lesser Hellmouth
