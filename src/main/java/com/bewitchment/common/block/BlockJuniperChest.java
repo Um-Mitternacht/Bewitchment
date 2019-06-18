@@ -1,9 +1,9 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.ServerProxy;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.common.handler.GuiHandler;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -54,7 +54,7 @@ public class BlockJuniperChest extends ModBlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
-			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) player.openGui(Bewitchment.instance, ServerProxy.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);

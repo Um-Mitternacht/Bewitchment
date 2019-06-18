@@ -1,9 +1,9 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.common.handler.GuiHandler;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -33,7 +33,7 @@ public class BlockWitchesOven extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(1 / 16d, 0, 1 / 16d, 15 / 16d, 1, 15 / 16d);
 	
 	public BlockWitchesOven() {
-		super(Bewitchment.instance, "witches_oven", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", ModGui.OVEN.ordinal());
+		super(Bewitchment.instance, "witches_oven", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", GuiHandler.ModGui.OVEN.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(LIT, false));
 	}
 	

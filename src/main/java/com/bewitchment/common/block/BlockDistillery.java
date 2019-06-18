@@ -1,9 +1,9 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.entity.TileEntityDistillery;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.common.handler.GuiHandler;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -29,7 +29,7 @@ public class BlockDistillery extends ModBlockContainer {
 	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(12 / 16d, 0, 0, 4 / 16d, 15 / 16d, 1), BOX_Z = new AxisAlignedBB(0, 0, 12 / 16d, 1, 15 / 16d, 4 / 16d);
 	
 	public BlockDistillery() {
-		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", ModGui.DISTILLERY.ordinal());
+		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", GuiHandler.ModGui.DISTILLERY.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(IN_USE, false));
 	}
 	

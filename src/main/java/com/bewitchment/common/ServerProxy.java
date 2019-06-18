@@ -28,8 +28,4 @@ public class ServerProxy {
 	
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 	}
-	
-	public enum ModGui {
-		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST
-	}
 }

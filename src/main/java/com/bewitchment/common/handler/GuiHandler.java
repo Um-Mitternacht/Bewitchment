@@ -1,7 +1,6 @@
 package com.bewitchment.common.handler;
 
 import com.bewitchment.client.gui.*;
-import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.container.*;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.item.ItemTarotCards;
@@ -39,5 +38,9 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if (tile instanceof TileEntityJuniperChest) return new ContainerJuniperChest(player.inventory, (TileEntityJuniperChest) tile);
 		return null;
+	}
+	
+	public enum ModGui {
+		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST
 	}
 }

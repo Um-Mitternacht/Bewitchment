@@ -1,9 +1,9 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.ServerProxy.ModGui;
 import com.bewitchment.common.block.tile.entity.TileEntitySpinningWheel;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.common.handler.GuiHandler;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +22,7 @@ public class BlockSpinningWheel extends ModBlockContainer {
 	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(10 / 16d, 0, 0, 6 / 16d, 1, 1), BOX_Z = new AxisAlignedBB(0, 0, 10 / 16d, 1, 1, 6 / 16d);
 	
 	public BlockSpinningWheel() {
-		super(Bewitchment.instance, "spinning_wheel", Blocks.PLANKS, ModGui.SPINNING_WHEEL.ordinal());
+		super(Bewitchment.instance, "spinning_wheel", Blocks.PLANKS, GuiHandler.ModGui.SPINNING_WHEEL.ordinal());
 		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH));
 	}
 	
