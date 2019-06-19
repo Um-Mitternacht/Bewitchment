@@ -32,26 +32,27 @@ public class SpawnParticle implements IMessage {
 	
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
-		type = EnumParticleTypes.getParticleFromId(byteBuf.getInt(0));
-		pos = BlockPos.fromLong(byteBuf.getLong(1));
-		speedX = byteBuf.getInt(2);
-		speedY = byteBuf.getInt(3);
-		speedZ = byteBuf.getInt(4);
+		type = EnumParticleTypes.getParticleFromId(byteBuf.readInt());
+		pos = BlockPos.fromLong(byteBuf.readLong());
+		speedX = byteBuf.readInt();
+		speedY = byteBuf.readInt();
+		speedZ = byteBuf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf byteBuf) {
-		byteBuf.setInt(0, type.getParticleID());
-		byteBuf.setLong(1, pos.toLong());
-		byteBuf.setInt(2, speedX);
-		byteBuf.setInt(3, speedY);
-		byteBuf.setInt(4, speedZ);
+		byteBuf.writeInt(type.getParticleID());
+		byteBuf.writeLong(pos.toLong());
+		byteBuf.writeInt(speedX);
+		byteBuf.writeInt(speedY);
+		byteBuf.writeInt(speedZ);
 	}
 	
 	public static class Handler implements IMessageHandler<SpawnParticle, IMessage> {
 		@Override
 		public IMessage onMessage(SpawnParticle message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().world.spawnParticle(message.type, message.pos.getX(), message.pos.getY(), message.pos.getZ(), message.speedX, message.speedY, message.speedZ);
+			if (ctx.side == Side.CLIENT)
+				Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().world.spawnParticle(message.type, message.pos.getX(), message.pos.getY(), message.pos.getZ(), message.speedX, message.speedY, message.speedZ));
 			return null;
 		}
 	}

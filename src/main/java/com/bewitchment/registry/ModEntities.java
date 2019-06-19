@@ -2,6 +2,10 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.living.*;
+import com.bewitchment.common.entity.misc.EntityCypressBroom;
+import com.bewitchment.common.entity.misc.EntityElderBroom;
+import com.bewitchment.common.entity.misc.EntityJuniperBroom;
+import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import net.minecraft.entity.Entity;
@@ -19,14 +23,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
 public class ModEntities {
 	private static int entity_id = 0;
 	
-	//	public static EntityEntry cypress_broom = createEntityEntry(EntityCypressBroom.class, "cypress_broom");
-	//	public static EntityEntry elder_broom = createEntityEntry(EntityElderBroom.class, "elder_broom");
-	//	public static EntityEntry juniper_broom = createEntityEntry(EntityJuniperBroom.class, "juniper_broom");
-	//	public static EntityEntry yew_broom = createEntityEntry(EntityYewBroom.class, "yew_broom");
+	public static EntityEntry cypress_broom = createEntityEntry(EntityCypressBroom.class, "cypress_broom");
+	public static EntityEntry elder_broom = createEntityEntry(EntityElderBroom.class, "elder_broom");
+	public static EntityEntry juniper_broom = createEntityEntry(EntityJuniperBroom.class, "juniper_broom");
+	public static EntityEntry yew_broom = createEntityEntry(EntityYewBroom.class, "yew_broom");
 	
 	public static EntityEntry lizard = createEntityEntry(EntityLizard.class, "lizard", 0x568203, 0x0070bb, EnumCreatureType.CREATURE, 20, 1, 4, Bewitchment.config.lizardBiomes);
 	public static EntityEntry newt = createEntityEntry(EntityNewt.class, "newt", 0x000000, 0xffd300, EnumCreatureType.CREATURE, 20, 1, 4, Bewitchment.config.newtBiomes);

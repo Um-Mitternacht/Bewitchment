@@ -1,6 +1,10 @@
 package com.bewitchment.proxy;
 
 import com.bewitchment.client.render.entity.living.*;
+import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
+import com.bewitchment.client.render.entity.misc.RenderElderBroom;
+import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
+import com.bewitchment.client.render.entity.misc.RenderYewBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
@@ -9,6 +13,10 @@ import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.entity.living.*;
+import com.bewitchment.common.entity.misc.EntityCypressBroom;
+import com.bewitchment.common.entity.misc.EntityElderBroom;
+import com.bewitchment.common.entity.misc.EntityJuniperBroom;
+import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.registry.ModObjects;
@@ -47,10 +55,10 @@ public class ClientProxy extends ServerProxy {
 	
 	@Override
 	public void registerEntityRenderers() {
-		//		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
-		//		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
-		//		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
-		//		RenderingRegistry.registerEntityRenderingHandler(EntityYewBroom.class, RenderYewBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityYewBroom.class, RenderYewBroom::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNewt.class, RenderNewt::new);

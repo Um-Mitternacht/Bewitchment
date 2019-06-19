@@ -162,6 +162,12 @@ item.bewitchment.athame.name=Athame
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 item.bewitchment.boline.name=Boline
 
+item.bewitchment.broom.name=Broom
+item.bewitchment.cypress_broom.name=Cypress Broom
+item.bewitchment.elder_broom.name=Elder Broom
+item.bewitchment.juniper_broom.name=Juniper Broom
+item.bewitchment.yew_broom.name=Yew Broom
+
 item.bewitchment.waystone.name=Waystone
 tooltip.bewitchment.waystone=Bound to %d %d %d (%s)
 tooltip.bewitchment.waystone.unbound=Not bound
@@ -285,6 +291,11 @@ item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
 #ENTITY
+entity.bewitchment.cypress_broom.name=Cypress Broom
+entity.bewitchment.elder_broom.name=Elder Broom
+entity.bewitchment.juniper_broom.name=Juniper Broom
+entity.bewitchment.yew_broom.name=Yew Broom
+
 entity.bewitchment.lizard.name=Lizard
 entity.bewitchment.newt.name=Newt
 entity.bewitchment.owl.name=Owl

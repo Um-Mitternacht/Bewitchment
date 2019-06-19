@@ -3,6 +3,7 @@ package com.bewitchment;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockFrostfire;
 import com.bewitchment.common.block.BlockGlyph;
@@ -14,6 +15,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
@@ -195,6 +197,13 @@ public class Util {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
 		else if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
+	}
+	
+	public static void teleportPlayer(EntityPlayer player, double x, double y, double z) {
+		if (player instanceof EntityPlayerMP) {
+			((EntityPlayerMP) player).connection.setPlayerLocation(x, y, z, player.rotationYaw, player.rotationPitch);
+			Bewitchment.network.sendTo(new TeleportPlayerClient(x, y, z), (EntityPlayerMP) player);
+		}
 	}
 	
 	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {

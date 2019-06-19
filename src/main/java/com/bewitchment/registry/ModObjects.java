@@ -2,6 +2,7 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
@@ -218,6 +219,11 @@ public class ModObjects {
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
+	public static final Item broom = Util.registerItem(new ItemBroom(null), "broom");
+	public static final Item cypress_broom = Util.registerItem(new ItemBroom(ModEntities.cypress_broom), "cypress_broom");
+	public static final Item elder_broom = Util.registerItem(new ItemBroom(ModEntities.elder_broom), "elder_broom");
+	public static final Item juniper_broom = Util.registerItem(new ItemBroom(ModEntities.juniper_broom), "juniper_broom");
+	public static final Item yew_broom = Util.registerItem(new ItemBroom(ModEntities.yew_broom), "yew_broom");
 	public static final Item waystone = new ItemWaystone();
 	public static final Item focal_chalk = new ItemChalk("focal_chalk");
 	public static final Item ritual_chalk = new ItemChalk("ritual_chalk");
