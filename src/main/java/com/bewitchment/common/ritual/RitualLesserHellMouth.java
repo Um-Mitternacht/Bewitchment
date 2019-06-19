@@ -17,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
 
@@ -26,8 +27,8 @@ public class RitualLesserHellMouth extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
-		super.onFinished(world, pos, caster);
+	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, pos, caster, inventory);
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(4) + 2; i++) {
 				EntityLiving entity;

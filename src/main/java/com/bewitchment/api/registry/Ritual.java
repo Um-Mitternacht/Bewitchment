@@ -24,7 +24,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"unused", "WeakerAccess", "SameReturnValue", "EmptyMethod", "ConstantConditions"})
+@SuppressWarnings({"unused", "SameReturnValue", "EmptyMethod"})
 public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public static final int[][] small = {{0, 0, 1, 1, 1, 0, 0}, {0, 1, 0, 0, 0, 1, 0}, {1, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 0, 0, 1, 0}, {0, 0, 1, 1, 1, 0, 0}};
 	public static final int[][] medium = {{0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0}, {0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0}};
@@ -58,20 +58,20 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, int time, int startingPower, int runningPower, int small, int medium, int big) {
-		this(name, input, sacrificePredicate, output, true, time, startingPower, runningPower, small, medium, big);
+		this(name, input, sacrificePredicate, output, false, time, startingPower, runningPower, small, medium, big);
 	}
 	
-	public boolean isValid(World world, BlockPos pos, EntityPlayer caster) {
+	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		return true;
 	}
 	
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster) {
+	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 	}
 	
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster) {
+	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
 		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
-			ItemStackHandler inventory = ((TileEntityGlyph) world.getTileEntity(pos)).getInventories()[0];
 			for (int i = 0; i < inventory.getSlots(); i++) {
 				ItemStack stack0 = inventory.getStackInSlot(i);
 				if (stack0.getItem() instanceof ItemAthame) stack0.damageItem(50, caster);
@@ -81,15 +81,12 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
 	}
 	
-	public void onHalted(World world, BlockPos pos, EntityPlayer caster) {
+	public void onHalted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.7f, 0.7f);
-		if (!world.isRemote && world.getTileEntity(pos) instanceof TileEntityGlyph) {
-			ItemStackHandler inventory = ((TileEntityGlyph) world.getTileEntity(pos)).getInventories()[0];
-			for (int i = 0; i < inventory.getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false));
-		}
+		if (!world.isRemote) for (int i = 0; i < inventory.getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false));
 	}
 	
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster) {
+	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 	}
 	
 	@SideOnly(Side.CLIENT)

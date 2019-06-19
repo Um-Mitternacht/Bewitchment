@@ -116,12 +116,16 @@ public class Util {
 		return Ingredient.fromStacks(stacks.toArray(new ItemStack[0]));
 	}
 	
+	public static Ingredient get(ItemStack stack) {
+		return Ingredient.fromStacks(stack);
+	}
+	
 	public static Ingredient get(Item item) {
-		return Ingredient.fromStacks(new ItemStack(item));
+		return get(new ItemStack(item));
 	}
 	
 	public static Ingredient get(Block block) {
-		return Ingredient.fromStacks(new ItemStack(block));
+		return get(new ItemStack(block));
 	}
 	
 	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {

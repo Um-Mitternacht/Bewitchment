@@ -10,11 +10,13 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -79,10 +81,10 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
 					else time++;
 				}
-				ritual.onUpdate(world, effectivePos, caster);
+				ritual.onUpdate(world, effectivePos, caster, inventory);
 			}
 			if (world.isRemote) ritual.onClientUpdate(world, effectivePos);
-			if (time >= ritual.time) stopRitual(true);
+			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
 		}
 	}
 	
@@ -109,7 +111,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
 						ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
 						if (ritual != null) {
-							if (ritual.isValid(world, pos, player)) {
+							if (ritual.isValid(world, pos, player, inventory)) {
 								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
 									player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
 									ExtendedPlayer.syncToClient(player);
@@ -118,10 +120,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 									effectivePos = pos;
 									effectiveDim = world.provider.getDimension();
 									time = 0;
-									ritual.onStarted(world, pos, player);
+									ritual.onStarted(world, pos, player, inventory);
 									world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 									player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
-									world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 									if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 								}
 								else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
@@ -138,8 +139,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	public void stopRitual(boolean finished) {
 		if (ritual != null && caster != null) {
-			if (finished) ritual.onFinished(world, pos, caster);
-			else ritual.onHalted(world, pos, caster);
+			if (finished) ritual.onFinished(world, pos, caster, inventory);
+			else ritual.onHalted(world, pos, caster, inventory);
 		}
 		ritual = null;
 		casterId = null;
