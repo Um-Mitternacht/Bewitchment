@@ -30,6 +30,7 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.message.SyncExtendedPlayer;
 import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.client.handler.ClientHandler;
+import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
@@ -50,6 +51,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -128,5 +130,10 @@ public class Bewitchment {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.postInit();
+	}
+	
+	@EventHandler
+	public void serverStarting(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandFortune());
 	}
 }

@@ -426,6 +426,13 @@ tarot.no_cards=You must be holding Tarot Cards to use this
 tarot.no_player=You must bind a player to the cards
 tarot.player_offline=%s is offline
 
+commands.fortune.get=%s's fortune: %s
+commands.fortune.set=%s's fortune was set to %s
+commands.fortune.remove=%s's fortune has been removed
+commands.fortune.execute=%s's fortune has been applied
+commands.fortune.nofortune=%s does not have a fortune
+commands.fortune.null=%s is not a fortune
+
 jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
 jei.ritual.runningPower=Running Power: %d
