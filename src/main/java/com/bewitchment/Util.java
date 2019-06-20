@@ -123,7 +123,7 @@ public class Util {
 	}
 	
 	public static Ingredient get(Item item) {
-		return get(new ItemStack(item));
+		return get(new ItemStack(item, 1, item.isDamageable() ? Short.MAX_VALUE : 0));
 	}
 	
 	public static Ingredient get(Block block) {
