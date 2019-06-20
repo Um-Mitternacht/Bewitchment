@@ -9,6 +9,7 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -33,7 +34,7 @@ public class RitualCallOfTheWild extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				EntityLiving entity;
-				int rand = world.rand.nextInt(8);
+				int rand = world.rand.nextInt(9);
 				if (rand == 0) entity = new EntityLizard(world);
 				else if (rand == 1) entity = new EntityNewt(world);
 				else if (rand == 2) entity = new EntityOwl(world);
@@ -41,6 +42,7 @@ public class RitualCallOfTheWild extends Ritual {
 				else if (rand == 4) entity = new EntitySnake(world);
 				else if (rand == 5) entity = new EntityOcelot(world);
 				else if (rand == 6) entity = new EntityWolf(world);
+				else if (rand == 7) entity = new EntityParrot(world);
 				else entity = new EntityToad(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 				boolean valid = false;
