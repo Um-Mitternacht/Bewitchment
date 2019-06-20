@@ -96,17 +96,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				if (last > -1) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(last, inventory.getStackInSlot(last).getCount(), false));
 			}
 			else {
-				if (ritual != null) stopRitual(false);
-				else {
-					ItemStack stack = player.getHeldItem(hand);
-					if (stack.getItem() == ModObjects.waystone && stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-						if (ritual != null && ritual.canBePerformedRemotely) {
-							effectivePos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-							effectiveDim = stack.getTagCompound().getInteger("dimension");
-							stack.damageItem(1, player);
-						}
-					}
-					else if (!stack.isEmpty()) inventory.insertItem(getFirstEmptySlot(inventory), stack.splitStack(1), false);
+				ItemStack stack = player.getHeldItem(hand);
+				if (ritual == null) {
+					if (!stack.isEmpty()) inventory.insertItem(getFirstEmptySlot(inventory), stack.splitStack(1), false);
 					else {
 						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
 						ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
@@ -131,6 +123,17 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 						}
 						else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
 					}
+				}
+				else {
+					if (stack.getItem() == ModObjects.waystone && stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
+						if (ritual.canBePerformedRemotely) {
+							effectivePos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
+							effectiveDim = stack.getTagCompound().getInteger("dimension");
+							stack.damageItem(1, player);
+							world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+						}
+					}
+					else stopRitual(false);
 				}
 			}
 		}
