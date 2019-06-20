@@ -207,6 +207,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualLesserHellMouth());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualHellmouth());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualGreaterHellmouth());
+		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureWitch());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureWither());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureDemon());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureImp());
