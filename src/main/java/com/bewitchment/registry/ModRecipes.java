@@ -284,6 +284,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "elder_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.elder_wood), Util.get(ModObjects.elder_sapling), Util.get(ModObjects.flying_ointment), Util.get(Items.ELYTRA)), null, Collections.singletonList(new ItemStack(ModObjects.elder_broom)), 10, 1000, 35, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "juniper_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.juniper_wood), Util.get(ModObjects.juniper_sapling), Util.get(ModObjects.flying_ointment), Util.get(Items.ELYTRA)), null, Collections.singletonList(new ItemStack(ModObjects.juniper_broom)), 10, 1000, 35, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new Ritual(new ResourceLocation(Bewitchment.MODID, "yew_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.yew_wood), Util.get(ModObjects.yew_sapling), Util.get(ModObjects.flying_ointment), Util.get(Items.ELYTRA)), null, Collections.singletonList(new ItemStack(ModObjects.yew_broom)), 10, 1000, 35, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
+		if (Bewitchment.config.wednesday) BewitchmentAPI.REGISTRY_RITUAL.register(new RitualWednesday());
 	}
 	
 	private static void athamePostInit() {
@@ -442,7 +443,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneDeath());
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneDropItem());
 		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneTreasure());
-		BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneCatsAndDogs());
+		if (Bewitchment.config.enableCatsAndDogsFortune) BewitchmentAPI.REGISTRY_FORTUNE.register(new FortuneCatsAndDogs());
 	}
 	
 	private static void tarotInit() {

@@ -1,5 +1,6 @@
 package com.bewitchment.common.command;
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.command.CommandBase;
@@ -12,7 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class CommandFortune extends CommandBase {
 		if (args.length == 2) return Arrays.asList("get", "set", "remove", "execute");
 		if (args.length == 3 && args[1].equals("set")) {
 			List<String> fortunes = new ArrayList<>();
-			for (Fortune fortune : GameRegistry.findRegistry(Fortune.class)) fortunes.add(fortune.getRegistryName().toString());
+			for (Fortune fortune : BewitchmentAPI.REGISTRY_FORTUNE) fortunes.add(fortune.getRegistryName().toString());
 			return fortunes;
 		}
 		return Collections.emptyList();
@@ -63,7 +63,7 @@ public class CommandFortune extends CommandBase {
 			}
 			if (args[1].equals("set")) {
 				if (args.length == 3) {
-					Fortune fortune = GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(args[2]));
+					Fortune fortune = BewitchmentAPI.REGISTRY_FORTUNE.getValue(new ResourceLocation(args[2]));
 					if (fortune == null) throw new CommandException("commands.fortune.null");
 					else {
 						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = fortune;

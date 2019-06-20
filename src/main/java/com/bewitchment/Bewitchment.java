@@ -93,6 +93,7 @@ public class Bewitchment {
 		ModEntities.preInit();
 		ModObjects.preInit();
 		ModEnchantments.preInit();
+		ModPotions.preInit();
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());

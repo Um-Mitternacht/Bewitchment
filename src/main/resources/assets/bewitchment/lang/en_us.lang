@@ -340,6 +340,9 @@ enchantment.bewitchment.magic_protection.desc=Reduces damage from magic.
 enchantment.bewitchment.spirit_protection=Spirit Protection
 enchantment.bewitchment.spirit_protection.desc=Reduces damage from spirits and demons.
 
+#POTION
+bewitchment.wednesday=Wednesday
+
 #FORTUNE
 fortune.bewitchment.bad_luck=Your future looks dim.
 fortune.bewitchment.good_luck=Your future looks very bright indeed.
@@ -412,6 +415,7 @@ ritual.bewitchment.cypress_broom=Rite of the Rising Twigs
 ritual.bewitchment.elder_broom=Rite of the Rising Twigs
 ritual.bewitchment.juniper_broom=Rite of the Rising Twigs
 ritual.bewitchment.yew_broom=Rite of the Rising Twigs
+ritual.bewitchment.wednesday=Rite of Wednesday
 
 #INFO
 itemGroup.bewitchment=Bewitchment

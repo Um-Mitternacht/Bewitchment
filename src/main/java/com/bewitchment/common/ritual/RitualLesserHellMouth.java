@@ -36,7 +36,7 @@ public class RitualLesserHellMouth extends Ritual {
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(pos.getX() + world.rand.nextInt(11) - 1, pos.getY(), pos.getZ() + world.rand.nextInt(11) - 1)) {
+					if (entity.attemptTeleport(pos.getX() + world.rand.nextInt(12) - 6, pos.getY(), pos.getZ() + world.rand.nextInt(12) - 6)) {
 						entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
 						valid = true;
 						break;

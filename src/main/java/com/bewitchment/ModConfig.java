@@ -22,6 +22,10 @@ public class ModConfig extends Configuration {
 	
 	public final List<String> lizardBiomes, newtBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, serpentBiomes;
 	
+	public final boolean enableCatsAndDogsFortune;
+	
+	public final boolean wednesday;
+	
 	public ModConfig(File file) {
 		super(file);
 		load();
@@ -71,6 +75,8 @@ public class ModConfig extends Configuration {
 		hellhoundBiomes = Arrays.asList(getStringList("hellhoundBiomes", "mobSpawns", new String[]{Type.NETHER.getName()}, "The list of BiomeDictionary types that the hellhound will spawn in."));
 		serpentBiomes = Arrays.asList(getStringList("serpentBiomes", "mobSpawns", new String[]{Type.NETHER.getName()}, "The list of BiomeDictionary types that the serpent will spawn in."));
 		
+		enableCatsAndDogsFortune = getBoolean("enableCatsAndDogsFortune", "memes", false, "Decides whether or not the cats and dogs will be enabled");
+		wednesday = getBoolean("wednesday", "memes", false, "wednesday");
 		save();
 	}
 }
