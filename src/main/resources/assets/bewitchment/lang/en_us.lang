@@ -337,26 +337,26 @@ fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
 fortune.bewitchment.treasure=You might be very rich, very soon.
 
 #TAROT
-tarot.bewitchment.cat=sun name this
-tarot.bewitchment.diamonds=sun name this
-tarot.bewitchment.ender_dragon=sun name this
-tarot.bewitchment.enderman=sun name this
-tarot.bewitchment.evoker=sun name this
-tarot.bewitchment.guardian=sun name this
-tarot.bewitchment.illusioner=sun name this
-tarot.bewitchment.iron_golem=sun name this
-tarot.bewitchment.moon=sun name this
-tarot.bewitchment.mounts=sun name this
-tarot.bewitchment.silver_sword=sun name this
-tarot.bewitchment.snow_golem=sun name this
-tarot.bewitchment.star=sun name this
-tarot.bewitchment.stronghold=sun name this
-tarot.bewitchment.sun=sun name this
-tarot.bewitchment.witch=sun name this
-tarot.bewitchment.wither=sun name this
-tarot.bewitchment.wither_skeleton=sun name this
-tarot.bewitchment.world=sun name this
-tarot.bewitchment.zombie=sun name this
+tarot.bewitchment.cat=The Cat
+tarot.bewitchment.diamonds=The Diamonds
+tarot.bewitchment.ender_dragon=The Dragon
+tarot.bewitchment.enderman=The Enderman
+tarot.bewitchment.evoker=The Evoker
+tarot.bewitchment.guardian=The Guardian
+tarot.bewitchment.illusioner=The Illusioner
+tarot.bewitchment.iron_golem=The Iron Golem
+tarot.bewitchment.moon=The Moon
+tarot.bewitchment.mounts=The Mounts
+tarot.bewitchment.silver_sword=The Silver Sword
+tarot.bewitchment.snow_golem=The Snow Golem
+tarot.bewitchment.star=The Star
+tarot.bewitchment.stronghold=The Stronghold
+tarot.bewitchment.sun=The Sun
+tarot.bewitchment.witch=The Witch
+tarot.bewitchment.wither=The Wither
+tarot.bewitchment.wither_skeleton=The Wither Skeleton
+tarot.bewitchment.world=The World
+tarot.bewitchment.zombie=The Zombie
 
 #RITUAL
 ritual.null=You have not heard of such rites
