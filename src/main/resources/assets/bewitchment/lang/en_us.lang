@@ -61,6 +61,24 @@ tile.bewitchment.green_candle.name=Green Candle
 tile.bewitchment.red_candle.name=Red Candle
 tile.bewitchment.black_candle.name=Black Candle
 
+tile.bewitchment.white_lantern.name=White Lantern
+tile.bewitchment.orange_lantern.name=Orange Lantern
+tile.bewitchment.magenta_lantern.name=Magenta Lantern
+tile.bewitchment.light_blue_lantern.name=Light Blue Lantern
+tile.bewitchment.yellow_lantern.name=Yellow Lantern
+tile.bewitchment.lime_lantern.name=Lime Lantern
+tile.bewitchment.pink_lantern.name=Pink Lantern
+tile.bewitchment.gray_lantern.name=Gray Lantern
+tile.bewitchment.light_gray_lantern.name=Light Gray Lantern
+tile.bewitchment.cyan_lantern.name=Cyan Lantern
+tile.bewitchment.purple_lantern.name=Purple Lantern
+tile.bewitchment.blue_lantern.name=Blue Lantern
+tile.bewitchment.brown_lantern.name=Brown Lantern
+tile.bewitchment.green_lantern.name=Green Lantern
+tile.bewitchment.red_lantern.name=Red Lantern
+tile.bewitchment.black_lantern.name=Black Lantern
+tooltip.lantern_lit=Lit
+
 tile.bewitchment.embergrass.name=Embergrass
 tile.bewitchment.torchwood.name=Torchwood
 
@@ -369,6 +387,7 @@ ritual.bewitchment.deluge=Ritual of the Deluge
 ritual.bewitchment.perception=Ritual of Perception
 ritual.bewitchment.hungry_flames=Ritual of the Hungry Flames
 ritual.bewitchment.frenzied_growth=Ritual of Frenzied Growth
+ritual.bewitchment.revealing=Ritual of Revealing
 ritual.bewitchment.call_of_the_wild=Call of the Wild
 ritual.bewitchment.lesser_hellmouth=Rite of Lesser Hellmouth
 ritual.bewitchment.hellmouth=Rite of Hellmouth

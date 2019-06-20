@@ -7,6 +7,7 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
@@ -185,7 +186,6 @@ public class ModRecipes {
 		Util.registerAltarUpgradeOreDict("gemShadow", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemBlackTourmaline", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		
-		
 		Util.registerAltarUpgradeItem(ModObjects.athame, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.5));
 		Util.registerAltarUpgradeItem(ModObjects.silver_sword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.4));
 		Util.registerAltarUpgradeItem(ModObjects.cold_iron_sword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.625));
@@ -196,6 +196,7 @@ public class ModRecipes {
 		Util.registerAltarUpgradeItem(Items.DIAMOND_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.5));
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockLantern, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.75));
 	}
 	
 	private static void ritualInit() {
@@ -206,6 +207,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualPerception());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualHungryFlames());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualFrenziedGrowth());
+		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualRevealing());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualCallOfTheWild());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualLesserHellMouth());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualHellmouth());

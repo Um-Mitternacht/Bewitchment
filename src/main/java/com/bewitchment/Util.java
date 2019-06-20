@@ -5,10 +5,9 @@ import baubles.api.IBauble;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
-import com.bewitchment.common.block.BlockFrostfire;
-import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.BlockSaltBarrier;
+import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
+import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -53,8 +52,8 @@ public class Util {
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
 		ForgeRegistries.BLOCKS.register(block);
-		if (/*!(block instanceof BlockWitchesLight) && */ !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
-			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
+		if (!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
+			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
 		}
@@ -73,8 +72,7 @@ public class Util {
 		ForgeRegistries.ITEMS.register(item);
 		if (predicates.isEmpty()) Bewitchment.proxy.registerTexture(item, "normal");
 		else Bewitchment.proxy.registerTextureVariant(item, predicates);
-		for (String ore : oreDictionaryNames)
-			OreDictionary.registerOre(ore, item);
+		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, item);
 		return item;
 	}
 	
@@ -92,15 +90,6 @@ public class Util {
 		fin.addAll(player.inventory.mainInventory);
 		fin.addAll(player.inventory.armorInventory);
 		fin.addAll(player.inventory.offHandInventory);
-		return fin;
-	}
-	
-	public static List<ItemStack> expandList(List<ItemStack> list) {
-		List<ItemStack> fin = new ArrayList<>();
-		for (ItemStack stack : list) {
-			ItemStack copy = stack.copy();
-			while (!copy.isEmpty()) fin.add(copy.splitStack(1));
-		}
 		return fin;
 	}
 	

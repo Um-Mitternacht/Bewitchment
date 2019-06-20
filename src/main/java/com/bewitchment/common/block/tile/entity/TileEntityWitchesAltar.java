@@ -121,36 +121,33 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				double multiplier = 1;
 				int maxPower = 0;
 				for (int val : map.values()) maxPower += val;
-				for (int cx = -1; cx <= 1; cx++) {
-					for (int cz = -1; cz <= 1; cz++) {
-						BlockPos pos0 = pos.add(cx, 0, cz);
-						if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
-							if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
-							if (world.getTileEntity(pos0.up()) instanceof TileEntityPlacedItem) {
-								ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
-								if (stack.getItem() instanceof ItemGrimoireMagia) MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f);
-							}
-							if (!foundStone) {
-								AltarUpgrade upgrade = getAltarUpgrade(world, pos0.up());
-								if (upgrade != null) {
-									AltarUpgrade.Type type = upgrade.type;
-									if (type == AltarUpgrade.Type.CUP && !foundCup) {
-										gain += upgrade.upgrade1;
-										multiplier *= upgrade.upgrade2;
-										foundCup = true;
-									}
-									if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
-										gain += upgrade.upgrade1;
-										foundPentacle = true;
-									}
-									if (type == AltarUpgrade.Type.SWORD && !foundSword) {
-										multiplier *= upgrade.upgrade2;
-										foundSword = true;
-									}
-									if (type == AltarUpgrade.Type.WAND && !foundWand) {
-										maxPower += 128 * upgrade.upgrade2;
-										foundWand = true;
-									}
+				for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-1, 0, -1), pos.add(1, 0, 1))) {
+					if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
+						if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
+						if (world.getTileEntity(pos0.up()) instanceof TileEntityPlacedItem) {
+							ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
+							if (stack.getItem() instanceof ItemGrimoireMagia) MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f);
+						}
+						if (!foundStone) {
+							AltarUpgrade upgrade = getAltarUpgrade(world, pos0.up());
+							if (upgrade != null) {
+								AltarUpgrade.Type type = upgrade.type;
+								if (type == AltarUpgrade.Type.CUP && !foundCup) {
+									gain += upgrade.upgrade1;
+									multiplier *= upgrade.upgrade2;
+									foundCup = true;
+								}
+								if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
+									gain += upgrade.upgrade1;
+									foundPentacle = true;
+								}
+								if (type == AltarUpgrade.Type.SWORD && !foundSword) {
+									multiplier *= upgrade.upgrade2;
+									foundSword = true;
+								}
+								if (type == AltarUpgrade.Type.WAND && !foundWand) {
+									maxPower += 128 * upgrade.upgrade2;
+									foundWand = true;
 								}
 							}
 						}

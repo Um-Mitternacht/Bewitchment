@@ -1,0 +1,27 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"III",
+	"PCP",
+	"ILI"
+  ],
+  "key": {
+	"I": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotIron"
+	},
+	"P": {
+	  "type": "forge:ore_dict",
+	  "ore": "paneGlass"
+	},
+	"C": {
+	  "item": "bewitchment:purple_candle"
+	},
+	"L": {
+	  "item": "bewitchment:liquid_witchcraft"
+	}
+  },
+  "result": {
+	"item": "bewitchment:purple_lantern"
+  }
+}
