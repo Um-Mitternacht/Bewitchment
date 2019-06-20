@@ -4,14 +4,14 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.entity.spirit.demon.EntityDemon;
+import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -22,21 +22,20 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
 
-public class RitualConjureWither extends Ritual {
-	public RitualConjureWither() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(ModObjects.hellebore), Util.get(ModObjects.wormwood), Util.get(ModObjects.ectoplasm)), null, null, 25, 2250, 50, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+public class RitualConjureDemon extends Ritual {
+	public RitualConjureDemon() {
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.heart), Util.get(ModObjects.hellebore), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.liquid_wroth), Util.get("ingotGold"), Util.get(Items.ENDER_PEARL), Util.get(Items.GHAST_TEAR)), s -> s instanceof EntityVillager, null, 25, 2500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override
 	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, pos, caster, inventory);
 		if (!world.isRemote) {
-			EntityWither entity = new EntityWither(world);
+			EntityDemon entity = world.rand.nextBoolean() ? new EntityDemon(world) : new EntityDemoness(world);
 			entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 			entity.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), world.rand.nextInt(360), 0);
 			for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50))) CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
 			world.spawnEntity(entity);
-			entity.ignite();
 		}
 	}
 	
