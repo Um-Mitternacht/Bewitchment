@@ -38,7 +38,10 @@ public class RitualHungryFlames extends Ritual {
 				ItemStack stack = entity.getItem().copy();
 				if (!stack.getItem().hasContainerItem(stack)) {
 					if (world.rand.nextDouble() < 0.7) InventoryHelper.spawnItemStack(world, entity.posX, entity.posY, entity.posZ, FurnaceRecipes.instance().getSmeltingResult(stack.splitStack(1)).copy());
-					else world.spawnEntity(new EntityXPOrb(world, entity.posX, entity.posY, entity.posZ, 2));
+					else {
+						world.spawnEntity(new EntityXPOrb(world, entity.posX, entity.posY, entity.posZ, 2));
+						stack.shrink(1);
+					}
 				}
 				entity.setItem(stack);
 			}
