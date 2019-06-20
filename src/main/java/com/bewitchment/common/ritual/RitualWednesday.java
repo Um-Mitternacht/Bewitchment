@@ -22,10 +22,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class RitualWednesday extends Ritual {
 	public RitualWednesday() {
 		super(new ResourceLocation(Bewitchment.MODID, "wednesday"), Arrays.asList(Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.mandrake_root), Util.get("slimeball"), Util.get(ModObjects.liquid_witchcraft)), null, null, 10, 666, 66, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1);
+	}
+	
+	@Override
+	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		return new Date().toString().toLowerCase().contains("wed");
 	}
 	
 	@Override
