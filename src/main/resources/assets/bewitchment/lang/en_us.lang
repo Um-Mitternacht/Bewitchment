@@ -367,11 +367,6 @@ ritual.bewitchment.high_moon=Ritual of the High Moon
 ritual.bewitchment.sands_of_time=Ritual of the Sands of Time
 ritual.bewitchment.deluge=Ritual of the Deluge
 ritual.bewitchment.call_of_the_wild=Call of the Wild
-ritual.bewitchment.crystal_ball=Ritual of Foresight
-ritual.bewitchment.tarot_table=Ritual of Construction
-ritual.bewitchment.tarot_cards=Ritual of Engraving
-ritual.bewitchment.grimoire_magia=Rite of Knowledge
-ritual.bewitchment.purifying_earth=Rite of Purification
 ritual.bewitchment.lesser_hellmouth=Rite of Lesser Hellmouth
 ritual.bewitchment.hellmouth=Rite of Hellmouth
 ritual.bewitchment.greater_hellmouth=Rite of Greater Hellmouth
@@ -382,6 +377,11 @@ ritual.bewitchment.conjure_imp=Ritual of Conjuration (Imp)
 ritual.bewitchment.draw_small=Ritual of the Lesser Marks
 ritual.bewitchment.draw_medium=Ritual of the Marks
 ritual.bewitchment.draw_large=Ritual of the Greater Marks
+ritual.bewitchment.crystal_ball=Ritual of Foresight
+ritual.bewitchment.tarot_table=Ritual of Construction
+ritual.bewitchment.tarot_cards=Ritual of Engraving
+ritual.bewitchment.grimoire_magia=Rite of Knowledge
+ritual.bewitchment.purifying_earth=Rite of Purification
 
 #INFO
 itemGroup.bewitchment=Bewitchment
