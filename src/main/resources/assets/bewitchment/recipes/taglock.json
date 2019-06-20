@@ -1,0 +1,14 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "item": "minecraft:glass_bottle"
+	},
+	{
+	  "item": "bewitchment:needle_bone"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:taglock"
+  }
+}

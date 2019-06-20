@@ -1,0 +1,16 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "type": "forge:ore_dict",
+	  "ore": "bone"
+	},
+	{
+	  "item": "minecraft:flint"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:needle_bone",
+	"count": 6
+  }
+}

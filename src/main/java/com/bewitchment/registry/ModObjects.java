@@ -255,6 +255,8 @@ public class ModObjects {
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
+	public static final Item needle_bone = Util.registerItem("needle_bone");
+	public static final Item taglock = new ItemTaglock();
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
