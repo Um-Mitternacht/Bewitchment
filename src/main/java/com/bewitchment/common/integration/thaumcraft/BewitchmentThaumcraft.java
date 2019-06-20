@@ -28,13 +28,13 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_oven), new AspectList().add(Aspect.FIRE, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
 		event.register.registerObjectTag(new ItemStack(ModObjects.spinning_wheel), new AspectList().add(Aspect.PLANT, 30).add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.PLANT, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.tarots_deck), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.MIND, 25).add(Aspect.MAGIC, 25));
+		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_cards), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10).add(Aspect.MIND, 10));
 		//Altar Blocks
 		event.register.registerObjectTag(new ItemStack(ModObjects.goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.VOID, 15));
 		event.register.registerObjectTag(new ItemStack(ModObjects.filled_goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15));
 		//Extra Blocks
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.purifying_earth), new AspectList().add(Aspect.EARTH, 5).add(SUN, 5));
+		event.register.registerObjectTag(new ItemStack(ModObjects.purifying_earth), new AspectList().add(Aspect.EARTH, 5).add(SUN, 5));
 		//Ores
 		event.register.registerObjectTag(new ItemStack(ModObjects.amethyst_ore), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.EARTH, 4).add(Aspect.ALCHEMY, 4).add(Aspect.LIFE, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.garnet_ore), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.EARTH, 4).add(Aspect.PROTECT, 4).add(STAR, 4));
@@ -55,7 +55,7 @@ public class BewitchmentThaumcraft {
 		
 		//Plants
 		event.register.registerObjectTag(new ItemStack(ModObjects.embergrass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.AVERSION, 8));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
+		//event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		//Saplings
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
@@ -116,10 +116,10 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.tongue_of_dog), new AspectList().add(Aspect.SENSES, 4).add(Aspect.BEAST, 4).add(Aspect.DEATH, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.wool_of_bat), new AspectList().add(Aspect.BEAST, 4).add(Aspect.AIR, 4));
 		//Usable Misc
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.chalk_golden), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(SUN, 4));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.chalk_normal), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.chalk_nether), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(DEMON, 4));
-		//		event.register.registerObjectTag(new ItemStack(ModObjects.chalk_ender), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.focal_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(SUN, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.ritual_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.fiery_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(DEMON, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.phasing_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
 		//		event.register.registerObjectTag(new ItemStack(ModObjects.taglock), new AspectList().add(Aspect.SOUL, 8).add(Aspect.LIFE, 8));
 		
 		//Fumes
