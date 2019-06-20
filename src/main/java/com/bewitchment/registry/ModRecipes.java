@@ -208,7 +208,8 @@ public class ModRecipes {
 		Util.registerAltarUpgradeOreDict("gemChippedGarnetYellow", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemChippedGlass", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemChippedGreenSapphire", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
-		Util.registerAltarUpgradeOreDict("gemChippedGreenSapphire", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("gemChippedJasper", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("gemChippedLapis", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		
 		Util.registerAltarUpgradeItem(ModObjects.athame, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.5));
 		Util.registerAltarUpgradeItem(ModObjects.silver_sword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.4));
