@@ -332,6 +332,7 @@ public class ModObjects {
 	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dye", "dyeBrown");
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
+	public static final Item flying_ointment = Util.registerItem("flying_ointment");
 	public static final Item iron_gall_ink = Util.registerItem("iron_gall_ink", "dye", "dyeBlack");
 	public static final Item oak_apple_gall = Util.registerItem("oak_apple_gall");
 	public static final Item pentacle = Util.registerItem("pentacle");
