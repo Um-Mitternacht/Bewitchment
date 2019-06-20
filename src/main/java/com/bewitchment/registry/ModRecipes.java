@@ -225,6 +225,9 @@ public class ModRecipes {
 		Util.registerAltarUpgradeOreDict("gemChippedTopaz", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemChippedVinteum", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemAmetrine", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("gemAbalone", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("gemCowry", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("gemCowrie", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));		
 		//Addendum 2000-2: While making repairs to SRA units in Sector 3382 on
 		//??/??/????.2, Technician [DATA EXPUNGED] reported the discovery of
 		//human remains in an advanced state of decay. Analysis of clothing
