@@ -209,6 +209,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualGreaterHellmouth());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureWither());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureDemon());
+		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureImp());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_medium"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash)), 300, BlockGlyph.ANY, BlockGlyph.ANY, -1, Ritual.medium));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_large"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash), Util.get(ModObjects.wood_ash)), 450, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY, Ritual.large));
