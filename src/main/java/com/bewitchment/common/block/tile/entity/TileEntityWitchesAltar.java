@@ -9,6 +9,7 @@ import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
+import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockWorldState;
@@ -173,7 +174,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	protected IBlockState convert(IBlockState state) {
 		if (Loader.isModLoaded("dynamictrees")) {
-			return state;
+			if (state.getBlock() instanceof ITreePart) return state;
 		}
 		if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
 		else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
