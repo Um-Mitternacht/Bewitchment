@@ -101,10 +101,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					if (!stack.isEmpty()) inventory.insertItem(getFirstEmptySlot(inventory), stack.splitStack(1), false);
 					else {
 						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
-						ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
-						if (ritual != null) {
-							if (ritual.isValid(world, pos, player, inventory)) {
-								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, ritual.startingPower)) {
+						Ritual rit = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
+						if (rit != null) {
+							if (rit.isValid(world, pos, player, inventory)) {
+								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, rit.startingPower)) {
+									ritual = rit;
 									player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
 									ExtendedPlayer.syncToClient(player);
 									casterId = player.getGameProfile().getId();
