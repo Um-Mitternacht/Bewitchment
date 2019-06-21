@@ -190,14 +190,9 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	public static TileEntityWitchesAltar getAltar(IBlockAccess world, BlockPos pos) {
-		for (int x = -1; x <= 1; x++) {
-			for (int y = -1; y <= 1; y++) {
-				for (int z = -1; z <= 1; z++) {
-					TileEntity tile = world.getTileEntity(pos.add(x, 0, z));
-					if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
-				}
-			}
-			
+		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-1, 0, -1), pos.add(1, 0, 1))) {
+			TileEntity tile = world.getTileEntity(pos0);
+			if (tile instanceof TileEntityWitchesAltar) return (TileEntityWitchesAltar) tile;
 		}
 		return null;
 	}
@@ -207,7 +202,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			TileEntityWitchesAltar altar = getAltar(world, pos);
 			if (altar != null) return altar.getPos();
 		}
-		int radius = 12;
+		int radius = 24;
 		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
 			if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
 				TileEntityWitchesAltar altar = getAltar(world, pos0);
@@ -218,7 +213,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	private static void refreshNearby(IBlockAccess world, BlockPos pos) {
-		int radius = 12;
+		int radius = 24;
 		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
 			Block block = world.getBlockState(pos0).getBlock();
 			if (block instanceof ModBlockContainer) ((ModBlockContainer) block).refreshAltarPos(world, pos0);
