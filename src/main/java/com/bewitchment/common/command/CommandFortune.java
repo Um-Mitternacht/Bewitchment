@@ -64,7 +64,7 @@ public class CommandFortune extends CommandBase {
 			if (args[1].equals("set")) {
 				if (args.length == 3) {
 					Fortune fortune = BewitchmentAPI.REGISTRY_FORTUNE.getValue(new ResourceLocation(args[2]));
-					if (fortune == null) throw new CommandException("commands.fortune.null");
+					if (fortune == null) throw new CommandException("commands.fortune.null", args[2]);
 					else {
 						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = fortune;
 						sender.sendMessage(new TextComponentTranslation("commands.fortune.set", args[0], args[2]));

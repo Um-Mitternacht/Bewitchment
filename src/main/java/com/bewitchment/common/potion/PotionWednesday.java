@@ -20,10 +20,8 @@ public class PotionWednesday extends Potion {
 		super(false, 0x00ff00);
 		setRegistryName(new ResourceLocation(Bewitchment.MODID, "wednesday"));
 		setPotionName(getRegistryName().toString().replace(":", "."));
-		if (Bewitchment.config.wednesday) {
-			ForgeRegistries.POTIONS.register(this);
-			MinecraftForge.EVENT_BUS.register(this);
-		}
+		ForgeRegistries.POTIONS.register(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@SubscribeEvent
