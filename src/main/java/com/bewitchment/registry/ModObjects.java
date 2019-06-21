@@ -283,7 +283,6 @@ public class ModObjects {
 	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
 	public static final Item everchanging_dew = Util.registerItem("everchanging_dew");
 	public static final Item fiery_unguent = Util.registerItem("fiery_unguent");
-	public static final Item heaven_extract = Util.registerItem("heaven_extract");
 	public static final Item stone_ichor = Util.registerItem("stone_ichor");
 	public static final Item undying_salve = Util.registerItem("undying_salve");
 	//Loom
