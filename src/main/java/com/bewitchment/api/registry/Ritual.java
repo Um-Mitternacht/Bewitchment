@@ -42,6 +42,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, boolean canBePerformedRemotely, int time, int startingPower, int runningPower, int small, int medium, int big) {
 		setRegistryName(name);
+		if (input.size() > 12) throw new IllegalArgumentException("Rituals can only have at most 12 input items");
 		this.input = input;
 		this.sacrificePredicate = sacrificePredicate;
 		this.output = output;

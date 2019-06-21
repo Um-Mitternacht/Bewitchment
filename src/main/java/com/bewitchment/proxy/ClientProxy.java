@@ -7,9 +7,11 @@ import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
 import com.bewitchment.client.render.entity.misc.RenderYewBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
+import com.bewitchment.client.render.tile.RenderTileEntityGlyph;
 import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
 import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.entity.living.*;
@@ -77,6 +79,7 @@ public class ClientProxy extends ServerProxy {
 		
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlyph.class, new RenderTileEntityGlyph());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 	}
 	

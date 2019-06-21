@@ -28,7 +28,12 @@ import java.util.UUID;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable {
-	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
+	private final ItemStackHandler inventory = new ItemStackHandler(12) {
+		@Override
+		protected void onContentsChanged(int slot) {
+			markDirty();
+		}
+	};
 	
 	public Ritual ritual;
 	public UUID casterId;
@@ -98,7 +103,10 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 			else {
 				ItemStack stack = player.getHeldItem(hand);
 				if (ritual == null) {
-					if (!stack.isEmpty()) inventory.insertItem(getFirstEmptySlot(inventory), stack.splitStack(1), false);
+					if (!stack.isEmpty()) {
+						int slot = getFirstEmptySlot(inventory);
+						if (slot < 12) inventory.insertItem(slot, stack.splitStack(1), false);
+					}
 					else {
 						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
 						Ritual rit = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
