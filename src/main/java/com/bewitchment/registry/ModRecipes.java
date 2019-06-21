@@ -459,13 +459,7 @@ public class ModRecipes {
 	}
 	
 	private static void tarotInit() {
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_player"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_player.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return false; //find something for this
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_witch"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_witch.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "witch"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/witch.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when spells are added
@@ -488,7 +482,7 @@ public class ModRecipes {
 				return false; //change when infusions are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "ancient_guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/ancient_guardian.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/guardian.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses.tagCount() > 0;
@@ -512,7 +506,7 @@ public class ModRecipes {
 				return max;
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_companions"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_companions.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "companions"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/companions.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when familiars are added
@@ -523,7 +517,7 @@ public class ModRecipes {
 				return false; //change when familiars are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_mounts"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_mounts.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "mounts"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/mounts.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when familiars are added, and add compat for respawnable pets
@@ -540,13 +534,13 @@ public class ModRecipes {
 				return BewitchmentAPI.isWitchHunter(player);
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_evoker"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_evoker.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "evoker"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/evoker.png")) {
 			@Override
 			public boolean isReversed(EntityPlayer player) {
 				return BewitchmentAPI.isSpectre(player);
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_diamonds.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/diamonds.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune != null;
@@ -609,13 +603,13 @@ public class ModRecipes {
 				return false; //find something for this
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_star.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/star.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when dream infusion is added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_moon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_moon.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "moon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/moon.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return BewitchmentAPI.isVampire(player) || BewitchmentAPI.isWerewolf(player);
@@ -626,7 +620,7 @@ public class ModRecipes {
 				return BewitchmentAPI.isWerewolf(player);
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_sun.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/sun.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //find something for this
@@ -643,7 +637,7 @@ public class ModRecipes {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "the_world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/the_world.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/world.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //find something for this
