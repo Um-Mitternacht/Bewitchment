@@ -27,6 +27,11 @@ public class RitualLesserHellMouth extends Ritual {
 	}
 	
 	@Override
+	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		return !world.isRaining();
+	}
+	
+	@Override
 	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, pos, caster, inventory);
 		if (!world.isRemote) {
