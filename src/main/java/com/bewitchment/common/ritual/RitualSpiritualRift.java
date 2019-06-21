@@ -4,11 +4,11 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
+import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -22,18 +22,18 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
 
-public class RitualGreaterHellmouth extends Ritual {
-	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone"), Util.get("gunpowder"), Util.get(Items.MAGMA_CREAM), Util.get(Items.BLAZE_POWDER), Util.get("blockNethersteel")), null, null, 33, 2500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+public class RitualSpiritualRift extends Ritual {
+	public RitualSpiritualRift() {
+		super(new ResourceLocation(Bewitchment.MODID, "spiritual_rift"), Arrays.asList(Util.get("cropWormwood"), Util.get(ModObjects.needle_bone), Util.get(Items.ROTTEN_FLESH), Util.get(ModObjects.ebb_of_death), Util.get("bone")), null, null, 33, 1500, 66, BlockGlyph.ENDER, BlockGlyph.ENDER, -1);
 	}
 	
 	@Override
 	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, pos, caster, inventory);
 		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
+			for (int i = 0; i < world.rand.nextInt(4) + 2; i++) {
 				EntityLiving entity;
-				entity = world.rand.nextBoolean() ? new EntityHellhound(world) : world.rand.nextBoolean() ? new EntityWitherSkeleton(world) : new EntityGhast(world);
+				entity = world.rand.nextBoolean() ? new EntityVex(world) : world.rand.nextBoolean() ? new EntityBlackDog(world) : world.rand.nextBoolean() ? new EntitySkeleton(world) : new EntityZombie(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
@@ -54,10 +54,10 @@ public class RitualGreaterHellmouth extends Ritual {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onClientUpdate(World world, BlockPos pos) {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 5; i++) {
 			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
-			world.spawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
+			world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
 		}
 	}
 }

@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class RitualPerception extends Ritual {
 	public RitualPerception() {
-		super(new ResourceLocation(Bewitchment.MODID, "perception"), Arrays.asList(Util.get("glowstone"), Util.get(Items.GOLDEN_CARROT)), null, null, -1, 700, 25, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.NORMAL);
+		super(new ResourceLocation(Bewitchment.MODID, "perception"), Arrays.asList(Util.get("glowstone"), Util.get(Items.GOLDEN_CARROT)), null, null, -1, 725, 25, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.NORMAL);
 	}
 	
 	@Override

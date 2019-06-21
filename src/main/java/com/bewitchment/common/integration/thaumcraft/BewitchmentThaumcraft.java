@@ -161,6 +161,12 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.lime_candle), new AspectList().add(Aspect.ALCHEMY, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.light_blue_candle), new AspectList().add(Aspect.AIR, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
 		
+		//Brooms
+		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
+		event.register.registerObjectTag(new ItemStack(ModObjects.yew_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
+		event.register.registerObjectTag(new ItemStack(ModObjects.elder_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
+		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
+		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));

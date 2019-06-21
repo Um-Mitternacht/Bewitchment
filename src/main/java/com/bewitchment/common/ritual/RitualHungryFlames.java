@@ -27,7 +27,7 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class RitualHungryFlames extends Ritual {
 	public RitualHungryFlames() {
-		super(new ResourceLocation(Bewitchment.MODID, "hungry_flames"), Arrays.asList(Util.get(Items.BLAZE_ROD), Util.get(new ItemStack(Items.COAL, 1, Short.MAX_VALUE))), null, null, true, 180, 300, 20, BlockGlyph.NETHER, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "hungry_flames"), Arrays.asList(Util.get(Items.BLAZE_ROD), Util.get(new ItemStack(Items.COAL, 1, Short.MAX_VALUE))), null, null, true, 180, 333, 25, BlockGlyph.NETHER, -1, -1);
 	}
 	
 	@Override

@@ -22,7 +22,7 @@ import java.util.Arrays;
 
 public class RitualConjureImp extends Ritual {
 	public RitualConjureImp() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_imp"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.heart), Util.get(ModObjects.hellebore), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.liquid_wroth), Util.get("ingotGold")), s -> s instanceof EntityChicken, null, 25, 2250, 50, BlockGlyph.NETHER, BlockGlyph.ANY, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_imp"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.heart), Util.get(ModObjects.hellebore), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.liquid_wroth), Util.get("ingotGold")), s -> s instanceof EntityChicken, null, 66, 2350, 66, BlockGlyph.NETHER, BlockGlyph.ANY, BlockGlyph.NETHER);
 	}
 	
 	@Override
