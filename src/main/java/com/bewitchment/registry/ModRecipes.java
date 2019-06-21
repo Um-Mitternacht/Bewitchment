@@ -257,7 +257,7 @@ public class ModRecipes {
 		Util.registerAltarUpgradeItem(Items.GOLDEN_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.4));
 		Util.registerAltarUpgradeItem(Items.DIAMOND_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
 		
-		//Botania swords
+		//Botania stuff
 		if (Loader.isModLoaded("botania")) {
 			Util.registerAltarUpgradeItem(ModItems.manasteelSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.46));
 			Util.registerAltarUpgradeItem(ModItems.starSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.7));
@@ -266,6 +266,19 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ModItems.enderDagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.52));
 			Util.registerAltarUpgradeItem(ModItems.elementiumSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.56));
 			Util.registerAltarUpgradeItem(ModItems.terraSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
+			Util.registerAltarUpgradeItem(ModItems.cobbleRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.dirtRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.diviningRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.exchangeRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.fireRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.gravityRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.missileRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.rainbowRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.skyDirtRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.smeltRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.terraformRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.tornadoRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
+			Util.registerAltarUpgradeItem(ModItems.waterRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.65));
 		}
 		
 		//Thaumcraft stuff
