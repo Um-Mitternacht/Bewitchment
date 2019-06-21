@@ -52,7 +52,7 @@ public class Util {
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
 		ForgeRegistries.BLOCKS.register(block);
-		if (!(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
+		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
 			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
