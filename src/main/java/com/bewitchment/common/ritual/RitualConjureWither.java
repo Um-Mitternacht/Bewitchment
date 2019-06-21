@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class RitualConjureWither extends Ritual {
 	public RitualConjureWither() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(ModObjects.hellebore), Util.get(ModObjects.wormwood), Util.get(ModObjects.ectoplasm)), null, null, 100, 3750, 55, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(ModObjects.hellebore), Util.get(ModObjects.wormwood), Util.get(ModObjects.ectoplasm)), null, null, 15, 2500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

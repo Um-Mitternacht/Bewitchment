@@ -8,7 +8,9 @@ import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityVex;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -24,7 +26,7 @@ import java.util.Arrays;
 
 public class RitualSpiritualRift extends Ritual {
 	public RitualSpiritualRift() {
-		super(new ResourceLocation(Bewitchment.MODID, "spiritual_rift"), Arrays.asList(Util.get("cropWormwood"), Util.get(ModObjects.needle_bone), Util.get(Items.ROTTEN_FLESH), Util.get(ModObjects.ebb_of_death), Util.get("bone")), null, null, 33, 1500, 66, BlockGlyph.ENDER, BlockGlyph.ENDER, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "spiritual_rift"), Arrays.asList(Util.get("cropWormwood"), Util.get(ModObjects.needle_bone), Util.get(Items.ROTTEN_FLESH), Util.get(ModObjects.ebb_of_death), Util.get("bone")), null, null, 15, 1500, 66, BlockGlyph.ENDER, BlockGlyph.ENDER, -1);
 	}
 	
 	@Override

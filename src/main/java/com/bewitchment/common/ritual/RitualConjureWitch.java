@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class RitualConjureWitch extends Ritual {
 	public RitualConjureWitch() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_witch"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.APPLE), Util.get(ModObjects.pentacle), Util.get(Items.POISONOUS_POTATO)), null, null, 33, 1850, 33, BlockGlyph.NORMAL, BlockGlyph.ENDER, BlockGlyph.NORMAL);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_witch"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.APPLE), Util.get(ModObjects.pentacle), Util.get(Items.POISONOUS_POTATO)), null, null, 15, 1850, 50, BlockGlyph.NORMAL, BlockGlyph.ENDER, BlockGlyph.NORMAL);
 	}
 	
 	@Override

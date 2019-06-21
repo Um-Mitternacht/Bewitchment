@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 public class RitualLesserHellMouth extends Ritual {
 	public RitualLesserHellMouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "lesser_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone")), null, null, 33, 1500, 33, BlockGlyph.NETHER, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "lesser_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone")), null, null, 15, 1500, 33, BlockGlyph.NETHER, -1, -1);
 	}
 	
 	@Override

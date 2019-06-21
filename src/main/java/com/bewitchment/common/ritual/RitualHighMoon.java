@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class RitualHighMoon extends Ritual {
 	public RitualHighMoon() {
-		super(new ResourceLocation(Bewitchment.MODID, "high_moon"), Arrays.asList(Util.get("ingotSilver"), Util.get(Items.NETHERBRICK), Util.get(ModObjects.hellebore)), null, null, 15, 1000, 0, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "high_moon"), Arrays.asList(Util.get("ingotSilver"), Util.get(Items.NETHERBRICK), Util.get(ModObjects.hellebore)), null, null, 5, 500, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override
