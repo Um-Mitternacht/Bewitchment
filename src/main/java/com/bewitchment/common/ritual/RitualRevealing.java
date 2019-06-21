@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class RitualRevealing extends Ritual {
 	public RitualRevealing() {
-		super(new ResourceLocation(Bewitchment.MODID, "revealing"), Arrays.asList(Util.get(ModObjects.ectoplasm), Util.get(Items.ENDER_EYE), Util.get(ModObjects.spectral_dust)), null, null, 3, 500, 20, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "revealing"), Arrays.asList(Util.get(ModObjects.ectoplasm), Util.get(Items.ENDER_EYE), Util.get(ModObjects.spectral_dust)), null, null, 5, 550, 20, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
 	}
 	
 	@Override

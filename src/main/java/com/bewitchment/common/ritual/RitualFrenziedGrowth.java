@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class RitualFrenziedGrowth extends Ritual {
 	public RitualFrenziedGrowth() {
-		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get("treeLeaves"), Util.get("logWood"), Util.get("treeSapling"), Util.get(ModObjects.dimensional_sand)), null, null, 3, 500, 20, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get("treeLeaves"), Util.get("logWood"), Util.get("treeSapling"), Util.get(ModObjects.dimensional_sand)), null, null, 5, 550, 40, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
 	}
 	
 	@Override
