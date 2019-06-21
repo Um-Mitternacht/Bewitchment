@@ -23,10 +23,9 @@ public abstract class ModContainer extends Container {
 			ItemStack stack0 = slot.getStack();
 			stack = stack0.copy();
 			int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size();
-			if (index < containerSlots && !mergeItemStack(stack0, containerSlots, inventorySlots.size(), true) || !mergeItemStack(stack0, 0, containerSlots, false)) return ItemStack.EMPTY;
+			if (index < containerSlots && !mergeItemStack(stack0, containerSlots, inventorySlots.size(), true) || !mergeItemStack(stack0, 0, containerSlots, false)) stack = ItemStack.EMPTY;
 			if (stack0.getCount() == 0) slot.putStack(ItemStack.EMPTY);
-			else slot.onSlotChanged();
-			if (stack0.getCount() == stack.getCount()) return ItemStack.EMPTY;
+			if (stack0.getCount() == stack.getCount()) stack = ItemStack.EMPTY;
 			slot.onTake(player, stack0);
 		}
 		return stack;
