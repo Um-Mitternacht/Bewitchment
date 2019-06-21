@@ -19,7 +19,10 @@
 	{
 	  "item": "minecraft:red_flower",
 	  "data": 0
-	}
+	},
+	{
+	  "item": "#GENERIC_WAX"
+	}	
   ],
   "result": {
 	"item": "bewitchment:flying_ointment"
