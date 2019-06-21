@@ -360,7 +360,7 @@ fortune.bewitchment.meet_zombie=Those who lie underground will be awakened.
 fortune.bewitchment.death=The path ahead looks very bleak.
 fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
 fortune.bewitchment.treasure=You might be very rich, very soon.
-fortune.bewitchment.cats_and_dogs=It will rain cats and dogs
+fortune.bewitchment.cats_and_dogs=It will rain cats and dogs.
 
 #TAROT
 tarot.bewitchment.cat=The Cat
@@ -417,6 +417,7 @@ ritual.bewitchment.elder_broom=Rite of the Rising Twigs
 ritual.bewitchment.juniper_broom=Rite of the Rising Twigs
 ritual.bewitchment.yew_broom=Rite of the Rising Twigs
 ritual.bewitchment.wednesday=Rite of Wednesday
+ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
 
 #INFO
 itemGroup.bewitchment=Bewitchment

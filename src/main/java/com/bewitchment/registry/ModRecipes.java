@@ -33,9 +33,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import thaumcraft.api.items.ItemsTC;
+import vazkii.botania.common.item.ModItems;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -250,6 +253,27 @@ public class ModRecipes {
 		Util.registerAltarUpgradeItem(Items.IRON_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.2));
 		Util.registerAltarUpgradeItem(Items.GOLDEN_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.4));
 		Util.registerAltarUpgradeItem(Items.DIAMOND_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
+		
+		//Botania swords
+		if (Loader.isModLoaded("botania")) {
+			Util.registerAltarUpgradeItem(ModItems.manasteelSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.46));
+			Util.registerAltarUpgradeItem(ModItems.starSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.7));
+			Util.registerAltarUpgradeItem(ModItems.thunderSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.7));
+			Util.registerAltarUpgradeItem(ModItems.starSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.7));
+			Util.registerAltarUpgradeItem(ModItems.enderDagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.52));
+			Util.registerAltarUpgradeItem(ModItems.elementiumSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.56));
+			Util.registerAltarUpgradeItem(ModItems.terraSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.6));
+		}
+		
+		//Thaumcraft swords
+		if (Loader.isModLoaded("thaumcraft")) {
+			Util.registerAltarUpgradeItem(ItemsTC.thaumiumSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.46));
+			Util.registerAltarUpgradeItem(ItemsTC.voidSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.55));
+			Util.registerAltarUpgradeItem(ItemsTC.elementalSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.65));
+			Util.registerAltarUpgradeItem(ItemsTC.crimsonBlade, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.68));
+			Util.registerAltarUpgradeItem(ItemsTC.primalCrusher, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.7));
+		}
+		
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.5));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockLantern, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.75));
@@ -272,6 +296,7 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureWither());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureDemon());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualConjureImp());
+		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualSpiritualRift());
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_medium"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash)), 300, BlockGlyph.ANY, BlockGlyph.ANY, -1, Ritual.medium));
 		BewitchmentAPI.REGISTRY_RITUAL.register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_large"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash), Util.get(ModObjects.wood_ash)), 450, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY, Ritual.large));
