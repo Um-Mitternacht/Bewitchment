@@ -10,11 +10,16 @@ public class EntityElderBroom extends EntityBroom {
 	
 	@Override
 	protected float getSpeed() {
-		return 2;
+		return 2.25f;
 	}
 	
 	@Override
 	protected float getMaxSpeed() {
-		return 1.15f;
+		return 1.4f;
+	}
+	
+	@Override
+	protected int getMagicCost() {
+		return 1;
 	}
 }

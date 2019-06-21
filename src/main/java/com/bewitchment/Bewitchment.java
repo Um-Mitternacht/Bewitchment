@@ -34,7 +34,6 @@ import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
-import com.bewitchment.common.handler.MiscHandler;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
@@ -123,7 +122,6 @@ public class Bewitchment {
 		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
-		MinecraftForge.EVENT_BUS.register(new MiscHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 	}

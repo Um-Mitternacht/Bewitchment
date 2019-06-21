@@ -1,5 +1,6 @@
 package com.bewitchment.api.registry.entity;
 
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,17 +19,14 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
-	protected ItemStack item;
+	private ItemStack item;
+	
+	private boolean canFly;
 	
 	public EntityBroom(World world) {
 		super(world);
 		setSize(0.7f, 0.7f);
 		setNoGravity(true);
-	}
-	
-	@Override
-	public Entity getControllingPassenger() {
-		return getPassengers().size() == 0 ? null : getPassengers().get(0);
 	}
 	
 	@Override
@@ -43,8 +41,13 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
+	public Entity getControllingPassenger() {
+		return getPassengers().isEmpty() ? null : getPassengers().get(0);
+	}
+	
+	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) setDead();
+		if (getPassengers().isEmpty() && source.getTrueSource() instanceof EntityPlayer) setDead();
 		return super.attackEntityFrom(source, amount);
 	}
 	
@@ -55,7 +58,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean canBePushed() {
-		return true;
+		return canBeCollidedWith();
 	}
 	
 	@Override
@@ -75,18 +78,25 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		if (getControllingPassenger() != null && getControllingPassenger().isSneaking()) {
+			dismount();
+			return;
+		}
 		float friction = 0.98f;
 		if (onGround) friction = 0.4f;
 		motionX *= friction;
 		motionZ *= friction;
-		float speed = getSpeed();
-		float maxSpeed = getMaxSpeed();
 		Entity rider = getControllingPassenger();
-		if (rider != null) {
-			if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
-			if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
-			rotationYaw = rider.rotationYaw;
-			if (rider instanceof EntityLivingBase && getJump((EntityLivingBase) rider) && motionY < 1) motionY += 0.3f;
+		if (rider instanceof EntityPlayer) {
+			if (ticksExisted % 20 == 0) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
+			if (canFly) {
+				float speed = getSpeed();
+				float maxSpeed = getMaxSpeed();
+				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
+				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
+				rotationYaw = rider.rotationYaw;
+				if (getJump((EntityPlayer) rider) && motionY < 1) motionY += 0.3f;
+			}
 		}
 		if (collidedHorizontally) {
 			motionX = 0;
@@ -99,7 +109,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public void setDead() {
-		if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item);
+		if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 		super.setDead();
 	}
 	
@@ -124,6 +134,12 @@ public abstract class EntityBroom extends Entity {
 	protected abstract float getSpeed();
 	
 	protected abstract float getMaxSpeed();
+	
+	protected abstract int getMagicCost();
+	
+	protected void dismount() {
+		setDead();
+	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
 		return ObfuscationReflectionHelper.getPrivateValue(EntityLivingBase.class, rider, "isJumping", "field_70703_bu");

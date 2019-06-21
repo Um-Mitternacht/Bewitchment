@@ -21,7 +21,7 @@ public class ItemLantern extends ItemBlock {
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, EnumHand hand) {
 		if (player.isSneaking()) return super.onItemUseFirst(player, world, pos, face, hitX, hitY, hitZ, hand);
-		if (player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(hand).getTagCompound().getBoolean("lit") && world.getBlockState(pos.offset(face)).getBlock().isReplaceable(world, pos.offset(face)) && (player.isCreative() || MagicPower.attemptDrain(null, player, 50))) {
+		if (player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(hand).getTagCompound().getBoolean("lit") && world.getBlockState(pos.offset(face)).getBlock().isReplaceable(world, pos.offset(face)) && MagicPower.attemptDrain(null, player, 50)) {
 			world.setBlockState(pos.offset(face), ModObjects.witches_light.getDefaultState());
 			return EnumActionResult.SUCCESS;
 		}

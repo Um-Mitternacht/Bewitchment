@@ -1,7 +1,6 @@
 package com.bewitchment.api.registry.item;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -37,15 +36,10 @@ public class ItemBroom extends Item {
 			return EnumActionResult.SUCCESS;
 		}
 		else if (entry != null) {
-			Entity entity = entry.newInstance(world);
-			entity.processInitialInteract(player, hand);
 			if (!world.isRemote) {
+				Entity entity = entry.newInstance(world);
 				entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-				if (entity instanceof EntityYewBroom) {
-					EntityYewBroom broom = (EntityYewBroom) entity;
-					broom.originalPos = pos.up();
-					broom.originalDimension = world.provider.getDimension();
-				}
+				entity.processInitialInteract(player, hand);
 				world.spawnEntity(entity);
 			}
 			return EnumActionResult.SUCCESS;
