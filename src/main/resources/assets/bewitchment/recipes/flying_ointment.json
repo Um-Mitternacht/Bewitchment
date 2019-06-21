@@ -17,10 +17,6 @@
 	  "ore": "cropAconitum"
 	},
 	{
-	  "type": "forge:ore_dict",
-	  "ore": "materialWax"
-	},
-	{
 	  "item": "minecraft:red_flower",
 	  "data": 0
 	},
