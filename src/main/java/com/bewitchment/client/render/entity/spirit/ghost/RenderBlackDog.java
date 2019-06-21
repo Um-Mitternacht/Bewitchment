@@ -49,16 +49,13 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 		@Override
 		public void doRenderLayer(EntityBlackDog entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
 			renderer.bindTexture(TEX[entity.getDataManager().get(EntityBlackDog.SKIN)]);
+			GlStateManager.color(0.5f, 0.5f, 0.5f);
 			GlStateManager.enableBlend();
-			GlStateManager.disableAlpha();
-			if (entity.isInvisible()) GlStateManager.depthMask(false);
-			else GlStateManager.depthMask(true);
+			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
 			renderer.getMainModel().render(entity, limbSwing, limbSwingAmount, age, rotationYaw, rotationPitch, scale);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
-			renderer.setLightmap(entity);
 			GlStateManager.disableBlend();
-			GlStateManager.enableAlpha();
 		}
 	}
 }
