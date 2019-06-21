@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.BlockWitchesOven;
@@ -7,6 +8,7 @@ import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
@@ -53,7 +55,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 					if (progress < 0) progress = 0;
 				}
 			}
-			if (recipe == null || !recipe.isValid(inventory_up, inventory_down)) progress = 0;
+			if ((recipe == null || !recipe.isValid(inventory_up, inventory_down)) && !isFurnaceRecipe(inventory_up)) progress = 0;
 			else {
 				if (burnTime < 1) {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
@@ -63,7 +65,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 					progress++;
 					if (progress >= 200) {
 						progress = 0;
-						recipe.giveOutput(world.rand, inventory_up, inventory_down);
+						if (recipe == null) outputFurnace(inventory_up, inventory_down);
+						else recipe.giveOutput(world.rand, inventory_up, inventory_down);
 					}
 				}
 			}
@@ -118,7 +121,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	@Override
 	@Optional.Method(modid = "botania")
 	public boolean canSmelt() {
-		return recipe != null && recipe.isValid(inventory_up, inventory_down);
+		return (recipe != null && recipe.isValid(inventory_up, inventory_down)) || isFurnaceRecipe(inventory_up);
 	}
 	
 	@Override
@@ -137,5 +140,15 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	@Optional.Method(modid = "botania")
 	public void boostCookTime() {
 		progress++;
+	}
+	
+	private boolean isFurnaceRecipe(ItemStackHandler handler) {
+		ItemStack stack = FurnaceRecipes.instance().getSmeltingResult(handler.getStackInSlot(2));
+		return !stack.isEmpty() && Util.canMerge(inventory_down.getStackInSlot(0), stack);
+	}
+	
+	private void outputFurnace(ItemStackHandler input, ItemStackHandler output) {
+		output.insertItem(0, FurnaceRecipes.instance().getSmeltingResult(input.getStackInSlot(2)).copy(), false);
+		input.extractItem(2, 1, false);
 	}
 }

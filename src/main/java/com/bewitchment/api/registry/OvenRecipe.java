@@ -4,6 +4,7 @@ import com.bewitchment.Util;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Random;
@@ -22,7 +23,7 @@ public class OvenRecipe extends IForgeRegistryEntry.Impl<OvenRecipe> {
 	}
 	
 	public final boolean matches(ItemStack input) {
-		return Util.areStacksEqual(input, this.input);
+		return OreDictionary.itemMatches(input, this.input, true);
 	}
 	
 	public final boolean isValid(ItemStackHandler input, ItemStackHandler output) {

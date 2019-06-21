@@ -140,12 +140,8 @@ public class Util {
 		return true;
 	}
 	
-	public static boolean areStacksEqual(ItemStack stack0, ItemStack stack1) {
-		return stack0.getItem() == stack1.getItem() && (stack0.getMetadata() == stack1.getMetadata() || stack1.getMetadata() == Short.MAX_VALUE);
-	}
-	
 	public static boolean canMerge(ItemStack stack0, ItemStack stack1) {
-		return stack0.isEmpty() || (areStacksEqual(stack0, stack1) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+		return stack0.isEmpty() || (OreDictionary.itemMatches(stack0, stack1, true) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
 	}
 	
 	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
@@ -196,7 +192,7 @@ public class Util {
 	}
 	
 	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && Util.areStacksEqual(stack, ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0)), upgrade);
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && OreDictionary.itemMatches(stack, ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0), stack.isItemStackDamageable()), upgrade);
 	}
 	
 	public static void registerAltarUpgradeItem(Item item, AltarUpgrade upgrade) {
