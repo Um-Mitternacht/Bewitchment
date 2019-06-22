@@ -434,7 +434,7 @@ public class ModRecipes {
 			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {
 				Species species = family.getCommonSpecies();
 				String name = species.getSaplingName().toString().toLowerCase();
-				BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(species.getSaplingName(), new ItemStack(species.getSeed()), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
+				BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(species.getSaplingName(), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
 			}
 		}
 		
