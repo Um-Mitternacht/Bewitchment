@@ -45,6 +45,11 @@ public abstract class ModTileEntity extends TileEntity {
 	}
 	
 	@Override
+	public void onLoad() {
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+	}
+	
+	@Override
 	public void markDirty() {
 		super.markDirty();
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);

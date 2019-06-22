@@ -75,6 +75,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	@Override
 	public void onLoad() {
+		super.onLoad();
 		world.scheduleBlockUpdate(pos, world.getBlockState(pos).getBlock(), 5, 0);
 	}
 	
