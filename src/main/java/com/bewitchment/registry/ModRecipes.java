@@ -47,7 +47,7 @@ import vazkii.botania.common.item.ModItems;
 import java.util.Arrays;
 import java.util.Collections;
 
-@SuppressWarnings({"ConstantConditions", "SameReturnValue"})
+@SuppressWarnings({"ConstantConditions"})
 public class ModRecipes {
 	public static void init() {
 		furnaceInit();
