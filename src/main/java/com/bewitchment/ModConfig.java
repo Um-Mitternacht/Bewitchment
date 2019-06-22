@@ -31,7 +31,7 @@ public class ModConfig extends Configuration {
 		load();
 		broomSweepables = Arrays.asList(getStringList("broomSweepables", "misc", new String[]{Blocks.REDSTONE_WIRE.getTranslationKey(), "tile.bewitchment.glyph", "tile.bewitchment.salt_barrier"}, "The list of blocks that the broom will sweep when right clicked on"));
 		
-		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, 4096, "The amount of blocks an altar should scan per tick.");
+		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, Short.MAX_VALUE, "The amount of blocks an altar should scan per tick.");
 		
 		maxGrimoirePower = getInt("maxGrimoirePower", "misc", 1000, 0, Integer.MAX_VALUE, "The maximum power a Grimoire Magia can have.");
 		

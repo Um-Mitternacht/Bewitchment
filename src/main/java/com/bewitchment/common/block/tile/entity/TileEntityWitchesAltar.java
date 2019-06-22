@@ -29,8 +29,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems", "StatementWithEmptyBody"})
@@ -39,9 +39,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	public int color, gain;
 	
-	private final Map<IBlockState, Integer> map = new HashMap<>();
+	private final Set<IBlockState> uniqueStates = new HashSet<>();
 	private final BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
-	private int counter;
+	private int counter, maxPower;
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -104,24 +104,24 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public void forceScan() {
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 		counter = 0;
-		map.clear();
-		scan(4096);
+		maxPower = 0;
+		uniqueStates.clear();
+		scan(Short.MAX_VALUE);
 	}
 	
 	protected void scan(int times) {
 		for (int i = 0; i < times; i++) {
 			counter = ++counter % Short.MAX_VALUE;
-			int x = counter & 15;
-			int y = (counter >> 4) & 15;
-			int z = (counter >> 8) & 15;
+			int x = counter & 31;
+			int y = (counter >> 5) & 31;
+			int z = (counter >> 10) & 31;
 			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
 			registerToMap(world.getBlockState(checking));
-			if (counter == 4095) {
+			if (counter == Short.MAX_VALUE - 1) {
 				boolean foundStone = false, foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
-				int maxPower = 0;
-				for (int val : map.values()) maxPower += val;
+				maxPower *= Math.log10(uniqueStates.size() + 1) * 2 / 3d;
 				for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-1, 0, -1), pos.add(1, 0, 1))) {
 					if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
 						if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
@@ -161,8 +161,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				}
 				if (gain < 0) gain = 0;
 				magicPower.maxAmount = (int) (maxPower * multiplier);
+				maxPower = 0;
 				counter = 0;
-				map.clear();
+				uniqueStates.clear();
 			}
 		}
 	}
@@ -191,12 +192,9 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	protected void registerToMap(IBlockState state) {
 		if (isNatural(state)) {
-			int amount = 1;
 			IBlockState state0 = convert(state);
-			if (Loader.isModLoaded("dynamictrees")) {
-			}
-			map.put(state0, map.getOrDefault(state0, 0) + amount);
-			map.put(state0, Math.max(map.keySet().size() * 2, map.get(state0)));
+			uniqueStates.add(state0);
+			maxPower++;
 		}
 	}
 }
