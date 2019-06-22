@@ -9,7 +9,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.12.2-0.0.20.1_rewrite20"
+version = "1.12.2-0.0.20.1_rewrite21"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -37,14 +37,14 @@ repositories {
 
 dependencies {
 	deobfProvided "mezz.jei:jei_1.12.2:4.15.0.268"
-	deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
-	deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
-	deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
-	deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"	
-	deobfProvided "vazkii.botania:Botania:r1.10-361.69"
-	deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
-	compile "baubles:Baubles:1.12:1.5.2"
-	compile "vazkii.patchouli:Patchouli:1.0-18.93"
+    deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
+    deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
+    deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
+    deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"
+    deobfProvided "vazkii.botania:Botania:r1.10-361.69"
+    deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
+    compile "baubles:Baubles:1.12:1.5.2"
+    compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
 
 processResources {
