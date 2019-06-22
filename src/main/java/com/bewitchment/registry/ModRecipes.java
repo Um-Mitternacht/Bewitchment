@@ -15,6 +15,10 @@ import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.ritual.*;
+import com.ferreusveritas.dynamictrees.ModTrees;
+import com.ferreusveritas.dynamictrees.items.Seed;
+import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
 import com.google.common.collect.Sets;
 import net.minecraft.block.*;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -24,6 +28,7 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.Ingredient;
@@ -408,6 +413,9 @@ public class ModRecipes {
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
 		}
+		if (Loader.isModLoaded("dynamictrees")) for (Item item : ForgeRegistries.ITEMS)
+			if (item instanceof Seed && !item.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(item)).isEmpty())
+				GameRegistry.addSmelting(item, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
 	}
 	
 	private static void ovenInit() {
@@ -421,6 +429,14 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "droplet_of_wisdom"), new ItemStack(ModObjects.elder_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
 		BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
 		BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.yew_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
+		
+		if (Loader.isModLoaded("dynamictrees")) {
+			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {
+				Species species = family.getCommonSpecies();
+				String name = species.getSaplingName().toString().toLowerCase();
+				BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(species.getSaplingName(), new ItemStack(species.getSeed()), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
+			}
+		}
 		
 		BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bread"), new ItemStack(Items.WHEAT), new ItemStack(Items.BREAD), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cactus_green"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
