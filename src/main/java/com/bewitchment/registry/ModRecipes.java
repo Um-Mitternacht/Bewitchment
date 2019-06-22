@@ -64,13 +64,13 @@ public class ModRecipes {
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityWolf.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityHorse.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityDonkey.class));
+		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityMule.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityLlama.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityParrot.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityOwl.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityRaven.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntitySnake.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityToad.class));
-		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityMule.class));
 		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
