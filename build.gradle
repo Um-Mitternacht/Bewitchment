@@ -1,10 +1,10 @@
 buildscript {
     repositories {
-	jcenter()
-	maven {url = "http://files.minecraftforge.net/maven"}
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-	classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -29,14 +29,14 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    maven {url = "http://dvs1.progwml6.com/files/maven"}
-    maven {url = "https://minecraft.curseforge.com/api/maven"}
-    maven {url "http://maven.tterrag.com"}
-    maven {url "https://maven.blamejared.com"}
+    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "https://minecraft.curseforge.com/api/maven" }
+    maven { url "http://maven.tterrag.com" }
+    maven { url "https://maven.blamejared.com" }
 }
 
 dependencies {
-	deobfProvided "mezz.jei:jei_1.12.2:4.15.0.268"
+    deobfProvided "mezz.jei:jei_1.12.2:4.15.0.268"
     deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
     deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
@@ -52,7 +52,7 @@ processResources {
     inputs.property "mcversion", project.minecraft.version
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
