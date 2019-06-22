@@ -80,7 +80,7 @@ public class ModRecipes {
 	
 	private static void altarInit() {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockFlowerPot && s.getTileEntity() instanceof TileEntityFlowerPot && ((TileEntityFlowerPot) s.getTileEntity()).getFlowerItemStack().isEmpty(), new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.05));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockFlowerPot && s.getTileEntity() instanceof TileEntityFlowerPot && !((TileEntityFlowerPot) s.getTileEntity()).getFlowerItemStack().isEmpty(), new AltarUpgrade(AltarUpgrade.Type.CUP, 1, 1.15));
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockFlowerPot && s.getTileEntity() instanceof TileEntityFlowerPot && !((TileEntityFlowerPot) s.getTileEntity()).getFlowerItemStack().isEmpty(), new AltarUpgrade(AltarUpgrade.Type.CUP, 1, 1.175));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.goblet, new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.15));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.filled_goblet, new AltarUpgrade(AltarUpgrade.Type.CUP, 1, 1.27));
 		Util.registerAltarUpgradeItem(Items.GLASS_BOTTLE, new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.05));
