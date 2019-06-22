@@ -59,7 +59,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, int time, int startingPower, int runningPower, int small, int medium, int big) {
-		this(name, input, sacrificePredicate, output, false, time, startingPower, runningPower, small, medium, big);
+		this(name, input, sacrificePredicate, output, true, time, startingPower, runningPower, small, medium, big);
 	}
 	
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {

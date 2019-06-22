@@ -17,7 +17,7 @@ import java.util.Collections;
 
 public class RitualDeluge extends Ritual {
 	public RitualDeluge() {
-		super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get(Items.NETHERBRICK), Util.get("gemLapis")), null, Collections.singletonList(new ItemStack(Items.BUCKET)), 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get(Items.NETHERBRICK), Util.get("gemLapis")), null, Collections.singletonList(new ItemStack(Items.BUCKET)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override

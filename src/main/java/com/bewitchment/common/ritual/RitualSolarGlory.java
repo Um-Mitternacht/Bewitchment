@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class RitualSolarGlory extends Ritual {
 	public RitualSolarGlory() {
-		super(new ResourceLocation(Bewitchment.MODID, "solar_glory"), Arrays.asList(Util.get("ingotGold"), Util.get(Items.NETHERBRICK), Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, BlockFlower.EnumFlowerType.DANDELION.getMeta()))), null, null, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "solar_glory"), Arrays.asList(Util.get("ingotGold"), Util.get(Items.NETHERBRICK), Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, BlockFlower.EnumFlowerType.DANDELION.getMeta()))), null, null, false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override
