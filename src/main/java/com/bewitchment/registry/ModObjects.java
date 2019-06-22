@@ -44,9 +44,10 @@ import team.chisel.api.carving.CarvingUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions", "ArraysAsListWithZeroOrOneArgument"})
+@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions", "SameParameterValue"})
 public class ModObjects {
 	public static final ItemArmor.ArmorMaterial ARMOR_SILVER = EnumHelper.addArmorMaterial("silver", Bewitchment.MODID + ":silver", 11, new int[]{2, 4, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0);
 	public static final ItemArmor.ArmorMaterial ARMOR_COLD_IRON = EnumHelper.addArmorMaterial("cold_iron", Bewitchment.MODID + ":cold_iron", 18, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
@@ -73,8 +74,8 @@ public class ModObjects {
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Blocks.DIAMOND_BLOCK, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Blocks.DIAMOND_BLOCK, "blockGarnet");
 	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Blocks.DIAMOND_BLOCK, "blockMoonstone");
-	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
-	public static final Block[] block_of_cold_iron = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
+	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
+	public static final Block[] block_of_cold_iron = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
 	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Blocks.IRON_ORE, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlock("garnet_ore", Blocks.IRON_ORE, "oreGarnet");
@@ -83,10 +84,10 @@ public class ModObjects {
 	public static final Block salt_ore = new ModBlock("salt_ore", Blocks.COAL_ORE, "oreSalt");
 	
 	public static final Block purifying_earth = new BlockPurifyingEarth();
-	public static final Block[] coquina = createChiselBlocks("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, Arrays.asList("coquina"), "smooth", "shell");
+	public static final Block[] coquina = createChiselBlocks("coquina", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, Collections.singletonList("coquina"), "smooth", "shell");
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", coquina[0]);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", coquina[0]);
-	public static final Block[] nethersteel = createChiselBlocks("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Arrays.asList("blockNethersteel"), "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
+	public static final Block[] nethersteel = createChiselBlocks("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockNethersteel"), "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
 	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Blocks.ICE);
 	public static final Block perpetual_ice_stairs = new ModBlockStairs("perpetual_ice_stairs", perpetual_ice);
 	public static final Block perpetual_ice_slab = new ModBlockSlab("perpetual_ice_slab", perpetual_ice);
@@ -97,7 +98,7 @@ public class ModObjects {
 	public static final Block embittered_brick_stairs = new ModBlockStairs("embittered_brick_stairs", embittered_bricks);
 	public static final Block embittered_bricks_slab = new ModBlockSlab("embittered_bricks_slab", embittered_bricks);
 	public static final Block embittered_brick_fence = new ModBlockFence("embittered_brick_fence", embittered_bricks);
-	public static final Block[] scorned_bricks = createChiselBlocks("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2, Arrays.asList(), "symbol", "bevel", "hellish", "raw", "raw_cracked", "small", "soft", "small_tiles", "medium_tiles", "triple", "braid", "layers", "road", "ornate", "panel", "prism", "slanted");
+	public static final Block[] scorned_bricks = createChiselBlocks("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2, Collections.emptyList(), "symbol", "bevel", "hellish", "raw", "raw_cracked", "small", "soft", "small_tiles", "medium_tiles", "triple", "braid", "layers", "road", "ornate", "panel", "prism", "slanted");
 	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", scorned_bricks[0]);
 	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", scorned_bricks[0]);
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks[0]);
@@ -219,7 +220,7 @@ public class ModObjects {
 	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
 	public static final Item cold_iron_boots = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.FEET), "cold_iron_boots");
 	public static final Item witches_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_cowl");
-	public static final Item witches_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_hat", Arrays.asList(s -> s.getDisplayName().toLowerCase().contains("faith")));
+	public static final Item witches_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_hat", Collections.singletonList(s -> s.getDisplayName().toLowerCase().contains("faith")));
 	public static final Item witches_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST), "witches_robes");
 	public static final Item witches_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS), "witches_pants");
 	//Tools
@@ -228,7 +229,7 @@ public class ModObjects {
 	public static final Item silver_axe = Util.registerItem(new ModItemAxe(TOOL_SILVER), "silver_axe");
 	public static final Item silver_shovel = Util.registerItem(new ItemSpade(TOOL_SILVER), "silver_shovel");
 	public static final Item silver_hoe = Util.registerItem(new ItemHoe(TOOL_SILVER), "silver_hoe");
-	public static final Item cold_iron_sword = Util.registerItem(new ItemSword(TOOL_COLD_IRON), "cold_iron_sword", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Hudson Bat") || s.getDisplayName().equalsIgnoreCase("Masashi Bat") || s.getDisplayName().equalsIgnoreCase("Emmanuel Bat") || s.getDisplayName().equalsIgnoreCase("Michael Bat") || s.getDisplayName().equalsIgnoreCase("Yoshihiro Bat") || s.getDisplayName().equalsIgnoreCase("Lewis Bat") || s.getDisplayName().equalsIgnoreCase("Katushiro Bat") || s.getDisplayName().equalsIgnoreCase("Ashley Bat")));
+	public static final Item cold_iron_sword = Util.registerItem(new ItemSword(TOOL_COLD_IRON), "cold_iron_sword", Collections.singletonList(s -> s.getDisplayName().equalsIgnoreCase("Hudson Bat") || s.getDisplayName().equalsIgnoreCase("Masashi Bat") || s.getDisplayName().equalsIgnoreCase("Emmanuel Bat") || s.getDisplayName().equalsIgnoreCase("Michael Bat") || s.getDisplayName().equalsIgnoreCase("Yoshihiro Bat") || s.getDisplayName().equalsIgnoreCase("Lewis Bat") || s.getDisplayName().equalsIgnoreCase("Katushiro Bat") || s.getDisplayName().equalsIgnoreCase("Ashley Bat")));
 	public static final Item cold_iron_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_COLD_IRON), "cold_iron_pickaxe");
 	public static final Item cold_iron_axe = Util.registerItem(new ModItemAxe(TOOL_COLD_IRON), "cold_iron_axe");
 	public static final Item cold_iron_shovel = Util.registerItem(new ItemSpade(TOOL_COLD_IRON), "cold_iron_shovel");
