@@ -212,7 +212,7 @@ item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
-item.bewitchment.needle_bone.name=Needle Bone
+item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock
 tooltip.bewitchment.taglock=Contains a tag of %s
 
