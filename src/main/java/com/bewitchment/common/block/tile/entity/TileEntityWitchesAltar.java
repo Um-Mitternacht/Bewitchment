@@ -29,8 +29,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems", "StatementWithEmptyBody"})
@@ -39,7 +39,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	public int color, gain;
 	
-	private final Set<IBlockState> uniqueStates = new HashSet<>();
+	private final Map<IBlockState, Integer> map = new HashMap<>();
 	private final BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
 	private int counter, maxPower;
 	
@@ -96,7 +96,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		}
 		if (!world.isRemote) {
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
-			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 16);
+			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
 			scan(Bewitchment.config.altarScansPerTick);
 		}
 	}
@@ -105,7 +105,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 		counter = 0;
 		maxPower = 0;
-		uniqueStates.clear();
+		map.clear();
 		scan(Short.MAX_VALUE);
 	}
 	
@@ -121,7 +121,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				boolean foundStone = false, foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
 				gain = 1;
 				double multiplier = 1;
-				maxPower *= Math.log10(uniqueStates.size() + 1) * 2 / 3d;
 				for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-1, 0, -1), pos.add(1, 0, 1))) {
 					if (world.getBlockState(pos0).getBlock() instanceof BlockWitchesAltar) {
 						if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
@@ -147,7 +146,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 									foundSword = true;
 								}
 								if (type == AltarUpgrade.Type.WAND && !foundWand) {
-									maxPower += 128 * upgrade.upgrade2;
+									maxPower += 64 * upgrade.upgrade2;
 									foundWand = true;
 								}
 							}
@@ -163,7 +162,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				magicPower.maxAmount = (int) (maxPower * multiplier);
 				maxPower = 0;
 				counter = 0;
-				uniqueStates.clear();
+				map.clear();
 			}
 		}
 	}
@@ -193,8 +192,11 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	protected void registerToMap(IBlockState state) {
 		if (isNatural(state)) {
 			IBlockState state0 = convert(state);
-			uniqueStates.add(state0);
-			maxPower++;
+			int current = map.getOrDefault(state0, 0);
+			if (map.keySet().isEmpty() || current < 4 * map.keySet().size()) {
+				map.put(state0, ++current);
+				maxPower++;
+			}
 		}
 	}
 }
