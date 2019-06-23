@@ -88,14 +88,15 @@ public abstract class EntityBroom extends Entity {
 		motionZ *= friction;
 		Entity rider = getControllingPassenger();
 		if (rider instanceof EntityPlayer) {
-			if (ticksExisted % 20 == 0) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
+			boolean jump = getJump((EntityPlayer) rider);
+			if (ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 			if (canFly) {
 				float speed = getSpeed();
 				float maxSpeed = getMaxSpeed();
 				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
 				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
 				rotationYaw = rider.rotationYaw;
-				if (getJump((EntityPlayer) rider) && motionY < 1) motionY += 0.3f;
+				if (jump && motionY < 1) motionY += 0.3f;
 			}
 		}
 		if (collidedHorizontally) {
