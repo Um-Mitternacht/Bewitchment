@@ -373,15 +373,15 @@ public class ModelDemoness extends ModelBiped {
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
 		
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
-		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
-		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 1.4F * limbSwingAmount + -0.26f;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 1.4F * limbSwingAmount + -0.26f;
+		bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 1.4F * limbSwingAmount + -0.26f;
+		bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 1.4F * limbSwingAmount + -0.26f;
 		
-		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + 0f;
-		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + 0f;
-		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + 0f;
-		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + 0f;
+		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 1.4F * limbSwingAmount + 0f;
+		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 1.4F * limbSwingAmount + 0f;
+		bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 1.4F * limbSwingAmount + 0f;
+		bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 1.4F * limbSwingAmount + 0f;
 	}
 	
 	/**
