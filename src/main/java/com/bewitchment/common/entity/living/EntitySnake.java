@@ -27,11 +27,14 @@ import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
 public class EntitySnake extends ModEntityTameable {
+	
 	private int milkTimer = 0;
+	private int timerRef = 0;
 	
 	public EntitySnake(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
 		setSize(1, 0.3f);
+		this.moveHelper = new EntityMoveHelper(this);
 	}
 	
 	@Override
@@ -48,6 +51,18 @@ public class EntitySnake extends ModEntityTameable {
 			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
+	}
+	
+	public void resetTimer() {
+		timerRef = 0;
+	}
+	
+	public void addTimer(int n) {
+		timerRef += n;
+	}
+	
+	public int getTimer() {
+		return timerRef;
 	}
 	
 	@Override
