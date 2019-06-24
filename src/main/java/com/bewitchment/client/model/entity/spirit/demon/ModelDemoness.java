@@ -373,12 +373,10 @@ public class ModelDemoness extends ModelBiped {
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
 		
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
-		this.bipedRightLeg.rotateAngleX = -0.26f;
-		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
-		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
-		this.bipedLeftLeg.rotateAngleX = -0.26f;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
+		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
+		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount + -0.26f;
 		
 		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
 		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
