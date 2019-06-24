@@ -1,26 +1,30 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
+import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * demoness2 - cybercat5555
  * Created using Tabula 5.1.0
  */
 @SuppressWarnings("WeakerAccess")
-public class ModelDemoness extends ModelBase {
-	public final ModelRenderer body;
+public class ModelDemoness extends ModelBiped {
+	public final ModelRenderer bipedBody;
 	public final ModelRenderer tail00;
 	public final ModelRenderer leftWing00;
 	public final ModelRenderer rightWing00;
 	public final ModelRenderer boobs;
-	public final ModelRenderer head;
-	public final ModelRenderer leftArm;
-	public final ModelRenderer rightArm;
-	public final ModelRenderer lowerBody;
-	public final ModelRenderer leftLeg00;
-	public final ModelRenderer rightLeg00;
+	public final ModelRenderer bipedHead;
+	public final ModelRenderer bipedLeftArm;
+	public final ModelRenderer bipedRightArm;
+	public final ModelRenderer lowerbipedBody;
+	public final ModelRenderer bipedLeftLeg;
+	public final ModelRenderer bipedRightLeg;
 	public final ModelRenderer tail01;
 	public final ModelRenderer tail02;
 	public final ModelRenderer tail03;
@@ -97,16 +101,16 @@ public class ModelDemoness extends ModelBase {
 		this.rightWing02.setRotationPoint(-0.1f, -0.5f, 7.1f);
 		this.rightWing02.addBox(-1, 0, -1, 2, 8, 2, 0);
 		this.setRotateAngle(rightWing02, 0.21f, 0, 0);
-		this.body = new ModelRenderer(this, 19, 17);
-		this.body.setRotationPoint(0, -6, 0);
-		this.body.addBox(-4, 0, -2, 8, 6, 4, 0);
+		this.bipedBody = new ModelRenderer(this, 19, 17);
+		this.bipedBody.setRotationPoint(0, -6, 0);
+		this.bipedBody.addBox(-4, 0, -2, 8, 6, 4, 0);
 		this.rightHorn01d = new ModelRenderer(this, 0, 4);
 		this.rightHorn01d.mirror = true;
 		this.rightHorn01d.setRotationPoint(0, 0, 0);
 		this.rightHorn01d.addBox(-0.2f, -2, -0.2f, 1, 2, 1, 0);
-		this.lowerBody = new ModelRenderer(this, 19, 27);
-		this.lowerBody.setRotationPoint(0, 6, 0);
-		this.lowerBody.addBox(-3.5f, 0, -2, 7, 7, 4, 0);
+		this.lowerbipedBody = new ModelRenderer(this, 19, 27);
+		this.lowerbipedBody.setRotationPoint(0, 6, 0);
+		this.lowerbipedBody.addBox(-3.5f, 0, -2, 7, 7, 4, 0);
 		this.leftHorn02d = new ModelRenderer(this, 0, 4);
 		this.leftHorn02d.setRotationPoint(0, 0, 0);
 		this.leftHorn02d.addBox(-0.3f, -2, -0.3f, 1, 2, 1, 0);
@@ -139,14 +143,14 @@ public class ModelDemoness extends ModelBase {
 		this.leftHoof = new ModelRenderer(this, 0, 51);
 		this.leftHoof.setRotationPoint(0, 6.8f, 0);
 		this.leftHoof.addBox(-1.5f, 0, -2.9f, 3, 1, 4, 0);
-		this.head = new ModelRenderer(this, 0, 1);
-		this.head.setRotationPoint(0, 0, 0);
-		this.head.addBox(-4, -8, -4, 8, 8, 8, 0);
-		this.rightArm = new ModelRenderer(this, 44, 16);
-		this.rightArm.mirror = true;
-		this.rightArm.setRotationPoint(-5, 2, 0);
-		this.rightArm.addBox(-2, -2, -2, 3, 14, 4, 0);
-		this.setRotateAngle(rightArm, 0, 0, 0.1f);
+		this.bipedHead = new ModelRenderer(this, 0, 1);
+		this.bipedHead.setRotationPoint(0, 0, 0);
+		this.bipedHead.addBox(-4, -8, -4, 8, 8, 8, 0);
+		this.bipedRightArm = new ModelRenderer(this, 44, 16);
+		this.bipedRightArm.mirror = true;
+		this.bipedRightArm.setRotationPoint(-5, 2, 0);
+		this.bipedRightArm.addBox(-2, -2, -2, 3, 14, 4, 0);
+		this.setRotateAngle(bipedRightArm, 0, 0, 0.1f);
 		this.tail06 = new ModelRenderer(this, 25, 51);
 		this.tail06.setRotationPoint(0, 0.1f, 0.8f);
 		this.tail06.addBox(-1.5f, -0.5f, -0.5f, 2, 1, 2, 0);
@@ -194,11 +198,11 @@ public class ModelDemoness extends ModelBase {
 		this.rightHorn03.setRotationPoint(0, -1.7f, 0);
 		this.rightHorn03.addBox(-0.5f, -3, -0.5f, 1, 3, 1, 0);
 		this.setRotateAngle(rightHorn03, 0.052f, 0, -0.14f);
-		this.rightLeg00 = new ModelRenderer(this, 0, 17);
-		this.rightLeg00.mirror = true;
-		this.rightLeg00.setRotationPoint(-2.1f, 12.2f, 0.1f);
-		this.rightLeg00.addBox(-2, -1, -2.5f, 4, 8, 5, 0);
-		this.setRotateAngle(rightLeg00, -0.26f, 0, 0.1f);
+		this.bipedRightLeg = new ModelRenderer(this, 0, 17);
+		this.bipedRightLeg.mirror = true;
+		this.bipedRightLeg.setRotationPoint(-2.1f, 12.2f, 0.1f);
+		this.bipedRightLeg.addBox(-2, -1, -2.5f, 4, 8, 5, 0);
+		this.setRotateAngle(bipedRightLeg, -0.26f, 0, 0.1f);
 		this.rightWing01 = new ModelRenderer(this, 38, 52);
 		this.rightWing01.mirror = true;
 		this.rightWing01.setRotationPoint(-0.1f, 0.2f, 4.3f);
@@ -245,10 +249,10 @@ public class ModelDemoness extends ModelBase {
 		this.rightWingMembrane.setRotationPoint(0, 0, 0);
 		this.rightWingMembrane.addBox(0, 0.4f, -2.2f, 0, 14, 11, 0);
 		this.setRotateAngle(rightWingMembrane, -0.09f, 0, 0);
-		this.leftArm = new ModelRenderer(this, 44, 16);
-		this.leftArm.setRotationPoint(5, 2, -0);
-		this.leftArm.addBox(-1, -2, -2, 3, 14, 4, 0);
-		this.setRotateAngle(leftArm, 0, 0, -0.1f);
+		this.bipedLeftArm = new ModelRenderer(this, 44, 16);
+		this.bipedLeftArm.setRotationPoint(5, 2, -0);
+		this.bipedLeftArm.addBox(-1, -2, -2, 3, 14, 4, 0);
+		this.setRotateAngle(bipedLeftArm, 0, 0, -0.1f);
 		this.rightHorn00 = new ModelRenderer(this, 0, 0);
 		this.rightHorn00.mirror = true;
 		this.rightHorn00.setRotationPoint(-2.9f, -7.4f, -0.5f);
@@ -262,10 +266,10 @@ public class ModelDemoness extends ModelBase {
 		this.leftWing00.setRotationPoint(2.5f, 3.2f, 1.4f);
 		this.leftWing00.addBox(-1, -1.5f, 0, 2, 3, 5, 0);
 		this.setRotateAngle(leftWing00, 0.27f, 0.52f, 0);
-		this.leftLeg00 = new ModelRenderer(this, 0, 17);
-		this.leftLeg00.setRotationPoint(2.1f, 12.2f, 0.1f);
-		this.leftLeg00.addBox(-2, -1, -2.5f, 4, 8, 5, 0);
-		this.setRotateAngle(leftLeg00, -0.26f, 0, -0.1f);
+		this.bipedLeftLeg = new ModelRenderer(this, 0, 17);
+		this.bipedLeftLeg.setRotationPoint(2.1f, 12.2f, 0.1f);
+		this.bipedLeftLeg.addBox(-2, -1, -2.5f, 4, 8, 5, 0);
+		this.setRotateAngle(bipedLeftLeg, -0.26f, 0, -0.1f);
 		this.leftHorn01b = new ModelRenderer(this, 0, 4);
 		this.leftHorn01b.setRotationPoint(0, 0, 0);
 		this.leftHorn01b.addBox(-0.2f, -2, -0.8f, 1, 2, 1, 0);
@@ -306,55 +310,55 @@ public class ModelDemoness extends ModelBase {
 		this.setRotateAngle(rightWing03, -0.42f, 0, 0);
 		this.tail01.addChild(this.tail02);
 		this.rightHorn02a.addChild(this.rightHorn02b);
-		this.body.addChild(this.rightWing00);
-		this.lowerBody.addChild(this.loincloth00);
+		this.bipedBody.addChild(this.rightWing00);
+		this.lowerbipedBody.addChild(this.loincloth00);
 		this.tail02.addChild(this.tail03);
 		this.rightWing01.addChild(this.rightWing02);
 		this.rightHorn01a.addChild(this.rightHorn01d);
-		this.body.addChild(this.lowerBody);
+		this.bipedBody.addChild(this.lowerbipedBody);
 		this.leftHorn02a.addChild(this.leftHorn02d);
-		this.head.addChild(this.hair01);
+		this.bipedHead.addChild(this.hair01);
 		this.leftHorn03.addChild(this.leftHorn04);
 		this.rightLeg01.addChild(this.rightLeg02);
-		this.head.addChild(this.hair00);
+		this.bipedHead.addChild(this.hair00);
 		this.leftHorn01a.addChild(this.leftHorn02a);
 		this.leftHorn00.addChild(this.leftHorn01a);
 		this.leftLeg02.addChild(this.leftHoof);
-		this.body.addChild(this.head);
-		this.body.addChild(this.rightArm);
+		this.bipedBody.addChild(this.bipedHead);
+		this.bipedBody.addChild(this.bipedRightArm);
 		this.tail05.addChild(this.tail06);
 		this.leftHorn01a.addChild(this.leftHorn01c);
 		this.leftHorn01a.addChild(this.leftHorn01d);
 		this.rightHorn01a.addChild(this.rightHorn01c);
 		this.rightHorn02a.addChild(this.rightHorn02c);
 		this.rightHorn02a.addChild(this.rightHorn02d);
-		this.body.addChild(this.tail00);
-		this.body.addChild(this.boobs);
+		this.bipedBody.addChild(this.tail00);
+		this.bipedBody.addChild(this.boobs);
 		this.leftWing00.addChild(this.leftWing01);
 		this.leftWing01.addChild(this.leftWing02);
 		this.rightLeg02.addChild(this.rightHoof);
 		this.rightHorn02a.addChild(this.rightHorn03);
-		this.body.addChild(this.rightLeg00);
+		this.bipedBody.addChild(this.bipedRightLeg);
 		this.rightWing00.addChild(this.rightWing01);
 		this.leftHorn02a.addChild(this.leftHorn02c);
 		this.rightHorn03.addChild(this.rightHorn04);
 		this.leftHorn02a.addChild(this.leftHorn02b);
 		this.leftWing01.addChild(this.leftWingMembrane);
 		this.leftWing02.addChild(this.leftWing03);
-		this.leftLeg00.addChild(this.leftLeg01);
+		this.bipedLeftLeg.addChild(this.leftLeg01);
 		this.rightHorn01a.addChild(this.rightHorn02a);
 		this.leftHorn02a.addChild(this.leftHorn03);
-		this.head.addChild(this.leftHorn00);
+		this.bipedHead.addChild(this.leftHorn00);
 		this.rightWing01.addChild(this.rightWingMembrane);
-		this.body.addChild(this.leftArm);
-		this.head.addChild(this.rightHorn00);
+		this.bipedBody.addChild(this.bipedLeftArm);
+		this.bipedHead.addChild(this.rightHorn00);
 		this.tail03.addChild(this.tail04);
-		this.body.addChild(this.leftWing00);
-		this.body.addChild(this.leftLeg00);
+		this.bipedBody.addChild(this.leftWing00);
+		this.bipedBody.addChild(this.bipedLeftLeg);
 		this.leftHorn01a.addChild(this.leftHorn01b);
 		this.rightHorn00.addChild(this.rightHorn01a);
 		this.rightHorn01a.addChild(this.rightHorn01b);
-		this.rightLeg00.addChild(this.rightLeg01);
+		this.bipedRightLeg.addChild(this.rightLeg01);
 		this.tail00.addChild(this.tail01);
 		this.loincloth00.addChild(this.loincloth01);
 		this.leftLeg01.addChild(this.leftLeg02);
@@ -364,7 +368,24 @@ public class ModelDemoness extends ModelBase {
 	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
-		this.body.render(scale);
+		this.bipedBody.render(scale);
+	}
+	
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
+	{
+		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
+		bipedHead.rotateAngleY = headPitch / 57.29578F;
+		
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		
+		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
 	}
 	
 	/**
