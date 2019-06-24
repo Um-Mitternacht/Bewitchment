@@ -3,6 +3,8 @@ package com.bewitchment.client.model.entity.spirit.ghost;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * blackdog - cybercat5555
@@ -116,6 +118,17 @@ public class ModelBlackDog extends ModelBase {
 		this.body.render(scale);
 		this.rightforeleg.render(scale);
 		this.rightHindleg.render(scale);
+	}
+	
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		float swingModifier = 0.9f;
+		if (entity instanceof EntityLivingBase) {
+			this.leftHindleg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount - 0f;
+			this.rightHindleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingModifier * limbSwingAmount - 0f;
+			this.leftforeleg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F) * swingModifier * limbSwingAmount + 0f;
+			this.rightforeleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount + 0f;
+		}
 	}
 	
 	/**
