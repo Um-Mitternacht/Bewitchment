@@ -124,68 +124,8 @@ public class ModelSnake extends ModelBase {
 	}
 	
 	@Override
-	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
-		float pticks = Minecraft.getMinecraft().getRenderPartialTicks();
-		float time = ((entity.ticksExisted + pticks) * 0.2F);
-		float angle = 0.34906585039F;
-		EntitySnake snek = (EntitySnake) entity;
-		if (snek.isSitting()) { //Change to entity.isSitting
-			if (snek.getTimer() < COIL_ANIMATION_LENGTH) {
-				snek.addTimer(1);
-				int timer = snek.getTimer();
-				this.neck00.rotateAngleY = neck00.rotateAngleY + (-0.09110618695F - neck00.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.neck01.rotateAngleY = neck01.rotateAngleY + (-1.27478848566F - neck01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.neck01.rotateAngleX = neck01.rotateAngleX + (-0.27314402793F - neck01.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
-				this.body.rotateAngleY = body.rotateAngleY + (1.09397237515F - body.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.tail00.rotateAngleY = tail00.rotateAngleY + (0.95609136424F - tail00.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.tail01.rotateAngleY = tail01.rotateAngleY + (1.27478848566F - tail01.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.tail02.rotateAngleY = tail02.rotateAngleY + (0.81960661673F - tail02.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.tail03.rotateAngleY = tail03.rotateAngleY + (1.54810704652F - tail03.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.tail04.rotateAngleY = tail04.rotateAngleY + (1.59348560707F - tail04.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				
-				this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX) * timer / COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY) * timer / COIL_ANIMATION_LENGTH;
-				this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ) * timer / COIL_ANIMATION_LENGTH;
-			} else {
-				this.neck00.offsetX = -0.3F;
-				this.neck00.rotateAngleY = -0.09110618695F;
-				this.neck01.rotateAngleY = -1.27478848566F;
-				this.neck01.rotateAngleX = -0.27314402793F;
-				this.body.rotateAngleY = 1.09397237515F;
-				this.tail00.rotateAngleY = 0.95609136424F;
-				this.tail01.rotateAngleY = 1.27478848566F;
-				this.tail02.rotateAngleY = 0.81960661673F;
-				this.tail03.rotateAngleY = 1.54810704652F;
-				this.tail04.rotateAngleY = 1.59348560707F;
-				
-				this.head.rotateAngleX = 0.13665928043F;
-				this.head.rotateAngleY = -0.77405352325F;
-				this.head.rotateAngleZ = -0.18203784098F;
-			}
-		} else {
-			if (snek.motionX != 0 || snek.motionZ != 0) {
-				this.neck00.offsetX = 0.3F * MathHelper.cos(time);
-				this.neck00.rotateAngleY = angle * MathHelper.sin(time);
-				this.neck01.rotateAngleY = angle * MathHelper.sin(time - 5);
-				this.neck01.rotateAngleX = 0;
-				this.body.rotateAngleY = angle * MathHelper.sin(time + 5);
-				this.tail00.rotateAngleY = angle * MathHelper.sin(time + 11);
-				this.tail01.rotateAngleY = angle * MathHelper.sin(time + 4);
-				this.tail02.rotateAngleY = angle * MathHelper.sin(time + 2);
-				this.tail03.rotateAngleY = angle * MathHelper.sin(time + 3);
-				this.tail04.rotateAngleY = angle / 4F * MathHelper.sin(time + 2);
-				this.head.rotateAngleY = this.neck01.rotateAngleY;
-				this.head.rotateAngleZ = 0.174532925F * MathHelper.cos(time - 5);
-				this.head.rotateAngleX = 0;
-				this.head.rotateAngleZ = 0;
-				snek.resetTimer();
-			} else {
-				// TODO: This is the cause of the clipping. Additionally, boxes probably shouldn't be added during render() ... may be a memory leak.
-				//this.neck01b.addBox(-2.3F, -1.49F, -6.0F, 2, 3, 8, MathHelper.sin(time));
-			}
-		}
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body.render(scale);
-		this.head.rotateAngleY = 0.001F * MathHelper.sin(time);
 	}
 	
 	/**
