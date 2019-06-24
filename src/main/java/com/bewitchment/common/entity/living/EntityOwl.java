@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFleeSun;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.passive.*;
@@ -28,6 +29,12 @@ public class EntityOwl extends EntityRaven {
 		EntityAgeable entity = new EntityOwl(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.aiSit = new EntityAISit(this);
 	}
 	
 	@Override

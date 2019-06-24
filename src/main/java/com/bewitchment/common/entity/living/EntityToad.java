@@ -37,6 +37,12 @@ public class EntityToad extends ModEntityTameable {
 	}
 	
 	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.aiSit = new EntityAISit(this);
+	}
+	
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.TOAD_IDLE;
 	}

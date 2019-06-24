@@ -44,6 +44,12 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.aiSit = new EntityAISit(this);
+	}
+	
+	@Override
 	protected PathNavigate createNavigator(World world) {
 		PathNavigateFlying path = new PathNavigateFlying(this, world);
 		path.setCanEnterDoors(true);
