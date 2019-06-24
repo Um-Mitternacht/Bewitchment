@@ -375,8 +375,10 @@ public class ModelDemoness extends ModelBiped {
 		
 		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
 		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		this.bipedRightLeg.rotateAngleX = -0.26f;
 		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
 		bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
+		this.bipedLeftLeg.rotateAngleX = -0.26f;
 		
 		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
 		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.5662F) * 1.4F * limbSwingAmount;
