@@ -171,6 +171,7 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
+		this.aiSit = new EntityAISit(this);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(0, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
