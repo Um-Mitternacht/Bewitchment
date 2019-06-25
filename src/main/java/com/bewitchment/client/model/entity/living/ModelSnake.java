@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -126,6 +127,20 @@ public class ModelSnake extends ModelBase {
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body.render(scale);
+	}
+	
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		float swingModifier = 0.9f;
+		if (entity instanceof EntityLivingBase) {
+			this.body.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 1.4F * swingModifier * limbSwingAmount;
+			this.tail00.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 1.4F * swingModifier * limbSwingAmount;
+			this.tail01.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * -1.4F * swingModifier * limbSwingAmount;
+			this.tail02.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 1.4F * swingModifier * limbSwingAmount;
+			this.tail03.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * -1.4F * swingModifier * limbSwingAmount;
+			this.tail04.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 1.4F * swingModifier * limbSwingAmount;
+			this.neck00.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 1.4F * swingModifier * limbSwingAmount;
+		}
 	}
 	
 	/**
