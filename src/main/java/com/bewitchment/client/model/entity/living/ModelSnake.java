@@ -14,7 +14,6 @@ import net.minecraft.util.math.MathHelper;
  */
 @SuppressWarnings("WeakerAccess")
 public class ModelSnake extends ModelBase {
-	private static final int COIL_ANIMATION_LENGTH = 160;
 	public final ModelRenderer body;
 	public final ModelRenderer tail00;
 	public final ModelRenderer neck00;
