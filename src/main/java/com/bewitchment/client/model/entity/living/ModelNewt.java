@@ -3,6 +3,7 @@ package com.bewitchment.client.model.entity.living;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * newt - cybercat5555
@@ -201,6 +202,16 @@ public class ModelNewt extends ModelBase {
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body00.render(scale);
+	}
+	
+	@Override
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		this.leftArm00.rotateAngleY = MathHelper.cos(f * 0.66F) * 1.4F * f1;
+		this.rightArm00.rotateAngleY = -this.leftArm00.rotateAngleY;
+		this.leftLeg01.rotateAngleY = -this.leftArm00.rotateAngleY;
+		this.rightLeg01.rotateAngleY = this.leftArm00.rotateAngleY;
+		this.tail01.rotateAngleY = -this.leftArm00.rotateAngleY / 3;
 	}
 	
 	/**
