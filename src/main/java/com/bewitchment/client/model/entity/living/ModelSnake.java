@@ -138,8 +138,8 @@ public class ModelSnake extends ModelBase {
 			this.tail01.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * -0.6F * swingModifier * limbSwingAmount;
 			this.tail02.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 0.6F * swingModifier * limbSwingAmount;
 			this.tail03.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * -0.6F * swingModifier * limbSwingAmount;
-			this.tail04.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 0.6F * swingModifier * limbSwingAmount;
 			this.neck00.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * 0.6F * swingModifier * limbSwingAmount;
+			this.neck01.rotateAngleY = MathHelper.cos(limbSwing * 0.66F) * -0.6F * swingModifier * limbSwingAmount;
 		}
 	}
 	
