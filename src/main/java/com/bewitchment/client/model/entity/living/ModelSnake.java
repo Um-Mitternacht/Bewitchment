@@ -130,6 +130,20 @@ public class ModelSnake extends ModelBase {
 	
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+	    EntitySnake snake = (EntitySnake) entity;
+	    
+        float time = ((entity.ticksExisted + Minecraft.getMinecraft().getRenderPartialTicks()) * 0.4F);
+        float angle = (float) (0.40F * ((snake.motionX + snake.motionZ) * 50));
+        this.neck00.rotateAngleY =  (float) (Math.toRadians(15) + angle * MathHelper.sin((float) (time - 1)));
+        this.neck01.rotateAngleY =  (float) (Math.toRadians(-15) + angle * MathHelper.sin((float) (time + 1)));
+        this.neck00.rotateAngleX = (float) Math.toRadians(headPitch);
+        this.neck01.rotateAngleX = 0F;
+        this.body.rotateAngleY = (float) (angle * MathHelper.sin(time + 10) + Math.toRadians(netHeadYaw));
+        this.tail00.rotateAngleY = (float) (Math.toRadians(15) + angle * MathHelper.sin((float) (time + 0)));
+        this.tail01.rotateAngleY = (float) (Math.toRadians(15) + angle * MathHelper.sin((float) (time + 2)));
+        this.tail02.rotateAngleY = (float) (Math.toRadians(-30) + angle * MathHelper.sin((float) (time + 3)));
+        this.tail03.rotateAngleY = (float) (Math.toRadians(-15) + angle * MathHelper.sin((float) (time + 1)));
+        this.tail04.rotateAngleY = (float) (Math.toRadians(40) + angle * MathHelper.sin((float) (time - 0)));
 	}
 	
 	/**
