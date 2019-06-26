@@ -348,11 +348,11 @@ public class ModelImp extends ModelBiped {
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
 		
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 0.2F * limbSwingAmount + -0.26f;
-		bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 0.2F * limbSwingAmount + -0.26f;
+		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 0.25F * limbSwingAmount + -0.26f;
+		bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 0.25F * limbSwingAmount + -0.26f;
 		
-		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 0.2F * limbSwingAmount + 0f;
-		bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 0.2F * limbSwingAmount + 0f;
+		bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25f) * 0.25F * limbSwingAmount + 0f;
+		bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25f) * 0.25F * limbSwingAmount + 0f;
 		
 		tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 	}
