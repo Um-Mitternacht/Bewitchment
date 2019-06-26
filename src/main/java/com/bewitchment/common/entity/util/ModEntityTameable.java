@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.util;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -68,13 +69,25 @@ public abstract class ModEntityTameable extends EntityTameable {
 			}
 			return true;
 		}
-		else if (!player.isSneaking() && isTamed()) setSitting(!isSitting());
+		else if (!world.isRemote && isOwner(player) && isTamed() && aiSit != null) {
+			aiSit.setSitting(!isSitting());
+			isJumping = false;
+			navigator.clearPath();
+			setAttackTarget(null);
+		}
 		return super.processInteract(player, hand);
 	}
 	
 	@Override
 	protected void collideWithEntity(Entity entity) {
 		if (!entity.equals(getOwner())) super.collideWithEntity(entity);
+	}
+	
+	@Override
+	public void setTamed(boolean tamed) {
+		super.setTamed(tamed);
+		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getBaseValue() * 2);
+		else getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getBaseValue());
 	}
 	
 	@Override
