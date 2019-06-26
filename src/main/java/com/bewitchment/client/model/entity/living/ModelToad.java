@@ -1,8 +1,11 @@
 package com.bewitchment.client.model.entity.living;
 
+import com.bewitchment.common.entity.living.EntityToad;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * toad - cybercat5555
@@ -132,6 +135,79 @@ public class ModelToad extends ModelBase {
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body.render(scale);
+	}
+	
+	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
+		super.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTickTime);
+		float time = entitylivingbaseIn.ticksExisted * 0.2F;
+		this.jaw.rotationPointY = (float) (0.5F + 0.02 * MathHelper.sin(time));
+		
+		EntityToad toad = (EntityToad) entitylivingbaseIn;
+		
+		if (toad.isSitting()) {
+			lLeg03.rotateAngleY = 1.0471975512F;
+			rLeg03.rotateAngleY = -1.0471975512F;
+		} else {
+			lLeg03.rotateAngleY = -0.6000000238418579F;
+			rLeg03.rotateAngleY = 0.6000000238418579F;
+		}
+		float timer = toad.getAnimationTime();
+		if (limbSwingAmount > 0.1 || timer != 0) {
+			timer = toad.postIncAnimation();
+			if (timer < 25) {
+				this.body.offsetY = toad.getAnimationHeight() + (-1.5F - toad.getAnimationHeight()) * (timer / 100F);
+				toad.setAnimationHeight(this.body.offsetY);
+				this.body.rotateAngleX = this.body.rotateAngleX + (0 - this.body.rotateAngleX) * (timer / 100F);
+				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (1.3962634016F - this.lLeg01.rotateAngleX) * (timer / 100F);
+				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (-1.3962634016F - this.lLeg02.rotateAngleX) * (timer / 100F);
+				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (2.35619449019F - this.lLeg03.rotateAngleX) * (timer / 100F);
+				this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
+				this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+				this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
+				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-2.35619449019F - this.lArm01.rotateAngleX) * (timer / 100F);
+				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (1.3962634016F - this.lArm02.rotateAngleX) * (timer / 100F);
+				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
+				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
+				
+			} else if (timer < 50) {
+				this.body.offsetY = toad.getAnimationHeight() + (0F - toad.getAnimationHeight()) * ((timer - 25) / 100);
+				toad.setAnimationHeight(this.body.offsetY);
+				this.body.rotateAngleX = this.body.rotateAngleX + (0.36651914291F - this.body.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg01.rotateAngleX = this.lLeg01.rotateAngleX + (-0.51225413546F - this.lLeg01.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg02.rotateAngleX = this.lLeg02.rotateAngleX + (0.45378560551F - this.lLeg02.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lLeg03.rotateAngleX = this.lLeg03.rotateAngleX + (0.41887902047F - this.lLeg03.rotateAngleX) * ((timer - 24F) / 100F);
+				this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
+				this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+				this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
+				this.lArm01.rotateAngleX = this.lArm01.rotateAngleX + (-0.8159414253F - this.lArm01.rotateAngleX) * ((timer - 24F) / 100F);
+				this.lArm02.rotateAngleX = this.lArm02.rotateAngleX + (0.45378560551F - this.lArm02.rotateAngleX) * ((timer - 24F) / 100F);
+				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
+				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
+				
+			} else if (timer < 75) {
+				this.body.rotateAngleX = this.body.rotateAngleX + (-0.36651914291F - this.body.rotateAngleX) * ((timer - 49F) / 100F);
+			} else {
+				toad.resetAnimationTime();
+				this.body.offsetY = 0;
+				toad.resetAnimationHeight();
+				this.body.rotateAngleX = -0.36651914291F;
+				this.lLeg01.rotateAngleX = -0.51225413546F;
+				this.lLeg02.rotateAngleX = 0.45378560551F;
+				this.rLeg01.rotateAngleX = lLeg01.rotateAngleX;
+				this.rLeg02.rotateAngleX = lLeg02.rotateAngleX;
+				this.rLeg03.rotateAngleX = lLeg03.rotateAngleX;
+				this.lArm01.rotateAngleX = -0.8159414253F;
+				this.lArm02.rotateAngleX = 0.45378560551F;
+				this.rArm01.rotateAngleX = lArm01.rotateAngleX;
+				this.rArm02.rotateAngleX = lArm02.rotateAngleX;
+			}
+			
+		} else {
+			toad.resetAnimationTime();
+			this.body.offsetY = 0;
+			toad.resetAnimationHeight();
+		}
+		
 	}
 	
 	/**
