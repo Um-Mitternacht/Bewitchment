@@ -112,11 +112,12 @@ public class EntityRaven extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
+		this.aiSit = new EntityAISit(this);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(3, aiSit);
+		tasks.addTask(4, aiSit);
 		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
 		tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
 		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
