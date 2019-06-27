@@ -147,7 +147,8 @@ public class ModelToad extends ModelBase {
 		if (toad.isSitting()) {
 			leftfoot.rotateAngleY = 1.0471975512F;
 			rightfoot.rotateAngleY = -1.0471975512F;
-		} else {
+		}
+		else {
 			leftfoot.rotateAngleY = -0.6000000238418579F;
 			rightfoot.rotateAngleY = 0.6000000238418579F;
 		}
@@ -169,7 +170,8 @@ public class ModelToad extends ModelBase {
 				this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
 				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
 				
-			} else if (timer < 50) {
+			}
+			else if (timer < 50) {
 				this.body.offsetY = toad.getAnimationHeight() + (0F - toad.getAnimationHeight()) * ((timer - 25) / 100);
 				toad.setAnimationHeight(this.body.offsetY);
 				this.body.rotateAngleX = this.body.rotateAngleX + (0.36651914291F - this.body.rotateAngleX) * ((timer - 24F) / 100F);
@@ -184,9 +186,11 @@ public class ModelToad extends ModelBase {
 				this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
 				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
 				
-			} else if (timer < 75) {
+			}
+			else if (timer < 75) {
 				this.body.rotateAngleX = this.body.rotateAngleX + (-0.36651914291F - this.body.rotateAngleX) * ((timer - 49F) / 100F);
-			} else {
+			}
+			else {
 				toad.resetAnimationTime();
 				this.body.offsetY = 0;
 				toad.resetAnimationHeight();
@@ -202,7 +206,8 @@ public class ModelToad extends ModelBase {
 				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
 			}
 			
-		} else {
+		}
+		else {
 			toad.resetAnimationTime();
 			this.body.offsetY = 0;
 			toad.resetAnimationHeight();

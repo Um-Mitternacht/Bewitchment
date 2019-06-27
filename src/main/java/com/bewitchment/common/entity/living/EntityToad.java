@@ -25,11 +25,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"NullableProblems", "WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityToad extends ModEntityTameable {
 	
-	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT);
-	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.<Float>createKey(EntityToad.class, DataSerializers.FLOAT);
+	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.createKey(EntityToad.class, DataSerializers.FLOAT);
 	
 	public EntityToad(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
@@ -47,8 +47,8 @@ public class EntityToad extends ModEntityTameable {
 	protected void entityInit() {
 		super.entityInit();
 		this.aiSit = new EntityAISit(this);
-		this.dataManager.register(ANIMATION_TIME, Integer.valueOf(0));
-		this.dataManager.register(ANIMATION_HEIGHT, Float.valueOf(0.0F));
+		this.dataManager.register(ANIMATION_TIME, 0);
+		this.dataManager.register(ANIMATION_HEIGHT, 0f);
 	}
 	
 	@Override
@@ -115,7 +115,7 @@ public class EntityToad extends ModEntityTameable {
 	}
 	
 	public float getAnimationHeight() {
-		return (float) this.dataManager.get(ANIMATION_HEIGHT);
+		return this.dataManager.get(ANIMATION_HEIGHT);
 	}
 	
 	public float setAnimationHeight(float in) {

@@ -63,7 +63,8 @@ public class EntitySnake extends ModEntityTameable {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (this.isEntityInvulnerable(source)) {
 			return false;
-		} else {
+		}
+		else {
 			Entity entity = source.getTrueSource();
 			
 			if (this.aiSit != null) {
