@@ -24,6 +24,7 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
@@ -39,7 +40,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
-public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable {
+public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
 	private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
 	
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
@@ -53,8 +54,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	private static final int[] defaultColor = {0, 63, 255};
 	public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
-	private int heatTimer = 0;
+	private int heatTimer = 0, craftingTimer = 0;
 	private boolean hasPower;
+	private String name;
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -63,7 +65,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		tag.setIntArray("color", color);
 		tag.setIntArray("targetColor", targetColor);
 		tag.setInteger("heatTimer", heatTimer);
+		tag.setInteger("craftingTimer", craftingTimer);
 		tag.setBoolean("hasPower", hasPower);
+		tag.setString("name", name);
 		return super.writeToNBT(tag);
 	}
 	
@@ -74,7 +78,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		color = tag.getIntArray("color");
 		targetColor = tag.getIntArray("targetColor");
 		heatTimer = tag.getInteger("heatTimer");
+		craftingTimer = tag.getInteger("craftingTimer");
 		hasPower = tag.getBoolean("hasPower");
+		name = tag.hasKey("name") ? tag.getString("name") : "";
 		super.readFromNBT(tag);
 	}
 	
@@ -102,9 +108,13 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			if (color[1] != targetColor[1]) for (int i = 0; i < 6; i++) color[1] += color[1] < targetColor[1] ? 1 : -1;
 			if (color[2] != targetColor[2]) for (int i = 0; i < 6; i++) color[2] += color[2] < targetColor[2] ? 1 : -1;
 			if (mode > 2) {
-				if (world.getTotalWorldTime() % 20 == 0) setPower();
-				if (!hasPower) {
+				if (world.getTotalWorldTime() % 20 == 0) {
+					setPower();
+					if (mode == 5) craftingTimer++;
+				}
+				if (!hasPower || (mode == 5 && craftingTimer >= 20)) {
 					mode = 1;
+					craftingTimer = 0;
 					setTargetColor(0x604040);
 				}
 			}
@@ -147,17 +157,23 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!player.isSneaking()) {
-			if (!world.isRemote && (mode == 0 || mode == 3)) {
-				if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
-					world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-				else if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
-					if (tank.canDrainFluidType(tank.getFluid())) {
-						Util.giveAndConsumeItem(player, hand, createPotion());
-						tank.drain(Fluid.BUCKET_VOLUME / 3, true);
-						world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
-						if (tank.getFluidAmount() < 2) {
-							tank.drain(Fluid.BUCKET_VOLUME, true);
-							clear(inventory);
+			if (!world.isRemote) {
+				if (player.getHeldItem(hand).getItem() == Items.NAME_TAG) {
+					name = player.getHeldItem(hand).getDisplayName();
+					if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
+				}
+				else if (mode == 0 || mode == 3) {
+					if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
+						world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+					else if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
+						if (tank.canDrainFluidType(tank.getFluid())) {
+							Util.giveAndConsumeItem(player, hand, createPotion());
+							tank.drain(Fluid.BUCKET_VOLUME / 3, true);
+							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
+							if (tank.getFluidAmount() < 2) {
+								tank.drain(Fluid.BUCKET_VOLUME, true);
+								clear(inventory);
+							}
 						}
 					}
 				}
@@ -166,6 +182,16 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public String getName() {
+		return name;
+	}
+	
+	@Override
+	public boolean hasCustomName() {
+		return !getName().isEmpty();
 	}
 	
 	/**
@@ -252,6 +278,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 							if (valid) {
 								if (mode == 0) {
 									mode = 5;
+									craftingTimer = 0;
 									setTargetColor(0x7f00c4);
 								}
 								if (mode == 5) {
