@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SpawnBubble;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Brew;
@@ -52,6 +53,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int heatTimer = 0;
+	private boolean hasPower;
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -60,6 +62,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		tag.setIntArray("color", color);
 		tag.setIntArray("targetColor", targetColor);
 		tag.setInteger("heatTimer", heatTimer);
+		tag.setBoolean("hasPower", hasPower);
 		return super.writeToNBT(tag);
 	}
 	
@@ -70,6 +73,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		color = tag.getIntArray("color");
 		targetColor = tag.getIntArray("targetColor");
 		heatTimer = tag.getInteger("heatTimer");
+		hasPower = tag.getBoolean("hasPower");
 		super.readFromNBT(tag);
 	}
 	
@@ -96,6 +100,13 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			if (color[0] != targetColor[0]) for (int i = 0; i < 6; i++) color[0] += color[0] < targetColor[0] ? 1 : -1;
 			if (color[1] != targetColor[1]) for (int i = 0; i < 6; i++) color[1] += color[1] < targetColor[1] ? 1 : -1;
 			if (color[2] != targetColor[2]) for (int i = 0; i < 6; i++) color[2] += color[2] < targetColor[2] ? 1 : -1;
+			if (mode > 2) {
+				if (world.getTotalWorldTime() % 20 == 0) setPower();
+				if (!hasPower) {
+					mode = 1;
+					setTargetColor(0x604040);
+				}
+			}
 			boolean isLava = tank.getFluid() != null && tank.getFluid().getFluid().getTemperature() >= FluidRegistry.LAVA.getTemperature();
 			if (isLava) {
 				if (world.rand.nextInt(100) == 0) {
@@ -226,10 +237,11 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						clear(inventory);
 					}
 					else {
-						if (stack.getItem() == ModObjects.mandrake_root && mode == 0) mode = 3;
 						int slot = getFirstEmptySlot(inventory);
 						if (slot > -1) {
-							boolean valid = mode == 3 && isBrewItem(stack) && heatTimer >= 5;
+							setPower();
+							if (stack.getItem() == ModObjects.mandrake_root && mode == 0) mode = 3;
+							boolean valid = hasPower && mode == 3 && isBrewItem(stack) && heatTimer >= 5;
 							inventory.insertItem(slot, stack, false);
 							if (valid) {
 								if (mode == 3) {
@@ -275,5 +287,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		targetColor[0] = defaultColor[0];
 		targetColor[1] = defaultColor[1];
 		targetColor[2] = defaultColor[2];
+	}
+	
+	private void setPower() {
+		hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 16, false), 16 * Math.max(0, getFirstEmptySlot(inventory)));
 	}
 }
