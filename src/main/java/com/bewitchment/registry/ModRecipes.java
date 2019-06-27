@@ -416,7 +416,7 @@ public class ModRecipes {
 	
 	private static void athamePostInit() {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityPlayer, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(Items.SKULL, 1, 3)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVillager, Sets.newHashSet(new ItemStack(ModObjects.heart)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVillager || e instanceof EntityWitch || e instanceof AbstractIllager, Sets.newHashSet(new ItemStack(ModObjects.heart)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityZombieVillager, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityWither, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 6)));
