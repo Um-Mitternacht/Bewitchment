@@ -6,6 +6,7 @@ import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 
 public class RitualHighMoon extends Ritual {
 	public RitualHighMoon() {
-		super(new ResourceLocation(Bewitchment.MODID, "high_moon"), Arrays.asList(Util.get("ingotSilver"), Util.get(Items.NETHERBRICK), Util.get(ModObjects.hellebore)), null, null, false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "high_moon"), Arrays.asList(Util.get("ingotSilver"), Util.get(Blocks.RED_FLOWER), Util.get(ModObjects.ectoplasm), Util.get(Items.SPIDER_EYE)), null, null, false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override

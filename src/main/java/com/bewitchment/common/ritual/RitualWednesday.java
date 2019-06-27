@@ -26,7 +26,7 @@ import java.util.Date;
 
 public class RitualWednesday extends Ritual {
 	public RitualWednesday() {
-		super(new ResourceLocation(Bewitchment.MODID, "wednesday"), Arrays.asList(Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.mandrake_root), Util.get("slimeball"), Util.get(ModObjects.liquid_witchcraft)), null, null, 10, 666, 66, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "wednesday"), Arrays.asList(Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.mandrake_root), Util.get("slimeball"), Util.get(ModObjects.liquid_witchcraft)), null, null, 10, 666, 66, BlockGlyph.NORMAL, BlockGlyph.ENDER, -1);
 	}
 	
 	@Override

@@ -1,20 +1,27 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"FSF",
-	"SNS",
-	"FSF"
+	"HVH",
+	"NGN",
+	"NDN"
   ],
   "key": {
-	"F": {
-	  "item": "bewitchment:demonic_elixir"
+	"H": {
+	  "item": "bewitchment:hellhound_horn"
 	},
-	"S": {
-	  "item": "bewitchment:nethersteel"
+	"V": {
+	  "item": "bewitchment:diabolical_vein"
 	},
 	"N": {
 	  "type": "forge:ore_dict",
-	  "ore": "nuggetGold"
+	  "ore": "blockNethersteel"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotGold"
+	},
+	"D": {
+	  "item": "bewitchment:demonic_elixir"
 	}
   },
   "result": {

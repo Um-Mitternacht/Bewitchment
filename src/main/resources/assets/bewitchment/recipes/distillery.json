@@ -1,19 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"JGJ",
 	"GGG",
-	"SAS"
+	"G G",
+	"IAI"
   ],
   "key": {
-	"J": {
-	  "item": "bewitchment:empty_jar"
-	},
 	"G": {
 	  "type": "forge:ore_dict",
 	  "ore": "blockGlass"
 	},
-	"S": {
+	"I": {
 	  "type": "forge:ore_dict",
 	  "ore": "ingotSilver"
 	},

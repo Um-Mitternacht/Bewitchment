@@ -1,18 +1,18 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"FPF",
-	"PGP",
-	"FPF"
+	"PAP",
+	"PLP",
+	"L L"
   ],
   "key": {
-	"F": {
-	  "item": "bewitchment:cleansing_balm"
-	},
 	"P": {
 	  "item": "bewitchment:pure_filament"
 	},
-	"G": {
+	"A": {
+	  "item": "bewitchment:acacia_resin"
+	},
+	"L": {
 	  "type": "forge:ore_dict",
 	  "ore": "gemLapis"
 	}

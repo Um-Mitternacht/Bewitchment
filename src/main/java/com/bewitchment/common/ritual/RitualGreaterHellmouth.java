@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityGhast;
@@ -24,7 +25,7 @@ import java.util.Arrays;
 
 public class RitualGreaterHellmouth extends Ritual {
 	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone"), Util.get("gunpowder"), Util.get(Items.MAGMA_CREAM), Util.get(Items.BLAZE_POWDER), Util.get("blockNethersteel")), null, null, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.liquid_wroth), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, null, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

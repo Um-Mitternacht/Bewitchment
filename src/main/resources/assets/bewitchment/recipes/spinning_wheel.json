@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" SR",
-	"SFR",
+	" ST",
+	"SHT",
 	"PPP"
   ],
   "key": {
-	"P": {
-	  "type": "forge:ore_dict",
-	  "ore": "plankWood"
-	},
 	"S": {
 	  "type": "forge:ore_dict",
 	  "ore": "string"
 	},
-	"R": {
+	"T": {
 	  "type": "forge:ore_dict",
 	  "ore": "stickWood"
 	},
-	"F": {
+	"H": {
 	  "item": "bewitchment:spruce_heart"
+	},
+	"P": {
+	  "type": "forge:ore_dict",
+	  "ore": "plankWood"
 	}
   },
   "result": {

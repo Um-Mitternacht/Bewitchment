@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"CSC",
-	"SAS",
-	"CSC"
+	"N N",
+	"ISI",
+	"III"
   ],
   "key": {
-	"C": {
+	"N": {
 	  "type": "forge:ore_dict",
-	  "ore": "nuggetColdIron"
+	  "ore": "nuggetIron"
+	},
+	"I": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotIron"
 	},
 	"S": {
 	  "type": "forge:ore_dict",
-	  "ore": "nuggetSilver"
-	},
-	"A": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemAmethyst"
+	  "ore": "ingotSilver"
 	}
   },
   "result": {
-	"item": "bewitchment:token_of_remedies"
+	"item": "bewitchment:witches_cauldron"
   }
 }

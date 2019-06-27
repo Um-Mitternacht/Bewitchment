@@ -1,23 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SLS",
-	"FPF",
-	"SES"
+	"POP",
+	"OLO",
+	"POP"
   ],
   "key": {
-	"S": {
-	  "item": "bewitchment:stone_ichor"
-	},
-	"F": {
-	  "item": "bewitchment:undying_salve"
-	},
-	"E": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemEmerald"
-	},
 	"P": {
 	  "item": "bewitchment:pure_filament"
+	},
+	"O": {
+	  "item": "bewitchment:oak_spirit"
 	},
 	"L": {
 	  "type": "forge:ore_dict",

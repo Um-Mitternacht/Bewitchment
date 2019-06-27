@@ -5,10 +5,9 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +18,7 @@ import java.util.Arrays;
 
 public class RitualSolarGlory extends Ritual {
 	public RitualSolarGlory() {
-		super(new ResourceLocation(Bewitchment.MODID, "solar_glory"), Arrays.asList(Util.get("ingotGold"), Util.get(Items.NETHERBRICK), Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, BlockFlower.EnumFlowerType.DANDELION.getMeta()))), null, null, false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "solar_glory"), Arrays.asList(Util.get("ingotGold"), Util.get(new ItemStack(Blocks.DOUBLE_PLANT, 1, BlockDoublePlant.EnumPlantType.SUNFLOWER.getMeta())), Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, Short.MAX_VALUE), new ItemStack(Blocks.RED_FLOWER, 1, Short.MAX_VALUE)), Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, Short.MAX_VALUE), new ItemStack(Blocks.RED_FLOWER, 1, Short.MAX_VALUE))), null, null, false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override

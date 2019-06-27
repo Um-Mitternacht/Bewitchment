@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" F ",
-	"N N",
-	"NNN"
+	"C C",
+	"CAC",
+	"CCC"
   ],
   "key": {
-	"N": {
+	"C": {
 	  "type": "forge:ore_dict",
 	  "ore": "nuggetColdIron"
 	},
-	"F": {
-	  "item": "bewitchment:cleansing_balm"
+	"A": {
+	  "item": "bewitchment:acacia_resin"
 	}
   },
   "result": {

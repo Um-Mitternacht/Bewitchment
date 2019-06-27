@@ -1,18 +1,14 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"I I",
-	"ISI",
-	" I "
+	"N N",
+	"NNN",
+	" N "
   ],
   "key": {
-	"I": {
+	"N": {
 	  "type": "forge:ore_dict",
 	  "ore": "nuggetIron"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetSilver"
 	}
   },
   "result": {

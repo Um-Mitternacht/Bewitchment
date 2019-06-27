@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,7 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class RitualHungryFlames extends Ritual {
 	public RitualHungryFlames() {
-		super(new ResourceLocation(Bewitchment.MODID, "hungry_flames"), Arrays.asList(Util.get(Items.BLAZE_ROD), Util.get(new ItemStack(Items.COAL, 1, Short.MAX_VALUE))), null, null, 180, 333, 25, BlockGlyph.NETHER, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "hungry_flames"), Arrays.asList(Util.get(ModObjects.ectoplasm), Util.get(Items.BLAZE_POWDER), Util.get(new ItemStack(Items.COAL, 1, Short.MAX_VALUE))), null, null, 180, 333, 25, BlockGlyph.NETHER, -1, -1);
 	}
 	
 	@Override

@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public class RitualSandsOfTime extends Ritual {
 	public RitualSandsOfTime() {
-		super(new ResourceLocation(Bewitchment.MODID, "sands_of_time"), Arrays.asList(Util.get("sand"), Util.get("oreDiamond")), null, null, false, -1, 600, 50, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.NORMAL);
+		super(new ResourceLocation(Bewitchment.MODID, "sands_of_time"), Arrays.asList(Util.get("ingotGold"), Util.get("ingotSilver"), Util.get("sandstone"), Util.get("sand"), Util.get("sand")), null, null, false, -1, 600, 50, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.NORMAL);
 	}
 	
 	@Override

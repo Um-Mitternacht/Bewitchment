@@ -240,13 +240,9 @@ item.bewitchment.essence_of_vitality.name=Essence of Vitality
 
 item.bewitchment.cleansing_balm.name=Cleansing Balm
 item.bewitchment.demonic_elixir.name=Demonic Elixir
-item.bewitchment.everchanging_dew.name=Everchanging Dew
 item.bewitchment.fiery_unguent.name=Fiery Unguent
-item.bewitchment.stone_ichor.name=Stone Ichor
-item.bewitchment.undying_salve.name=Undying Salve
 
 item.bewitchment.diabolical_vein.name=Diabolical Vein
-item.bewitchment.golden_thread.name=Golden Thread
 item.bewitchment.pure_filament.name=Pure Filament
 item.bewitchment.witches_stitching.name=Witches' Stitching
 
@@ -379,6 +375,7 @@ bewitchment.enderference=Enderference
 bewitchment.revealing=Revealing
 bewitchment.disrobing=Disrobing
 bewitchment.sinking=Sinking
+bewitchment.cursed_leaps=Cursed Leaps
 
 #FORTUNE
 fortune.bewitchment.bad_luck=Your future looks dim.

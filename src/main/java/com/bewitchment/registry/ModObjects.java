@@ -283,13 +283,9 @@ public class ModObjects {
 	//Distillery
 	public static final Item cleansing_balm = Util.registerItem("cleansing_balm");
 	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
-	public static final Item everchanging_dew = Util.registerItem("everchanging_dew");
 	public static final Item fiery_unguent = Util.registerItem("fiery_unguent");
-	public static final Item stone_ichor = Util.registerItem("stone_ichor");
-	public static final Item undying_salve = Util.registerItem("undying_salve");
 	//Loom
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
-	public static final Item golden_thread = Util.registerItem("golden_thread");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
 	public static final Item witches_stitching = Util.registerItem("witches_stitching");
 	//Plants

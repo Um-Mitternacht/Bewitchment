@@ -13,6 +13,8 @@ import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +27,7 @@ import java.util.Arrays;
 
 public class RitualCallOfTheWild extends Ritual {
 	public RitualCallOfTheWild() {
-		super(new ResourceLocation(Bewitchment.MODID, "call_of_the_wild"), Arrays.asList(Util.get(ModObjects.oak_spirit), Util.get(ModObjects.spruce_heart), Util.get(ModObjects.birch_soul), Util.get("treeLeaves")), null, null, 10, 780, 30, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "call_of_the_wild"), Arrays.asList(Util.get(ModObjects.oak_spirit), Util.get(ModObjects.birch_soul), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1)), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1))), null, null, 10, 780, 30, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
 	}
 	
 	@Override

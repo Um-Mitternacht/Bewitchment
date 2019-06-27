@@ -42,7 +42,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, boolean canBePerformedRemotely, int time, int startingPower, int runningPower, int small, int medium, int big) {
 		setRegistryName(name);
-		if (input.size() > 12) throw new IllegalArgumentException("Rituals can only have at most 12 input items");
+		if (input.size() > 10) throw new IllegalArgumentException("Rituals can only have at most 10 input items");
 		this.input = input;
 		this.sacrificePredicate = sacrificePredicate;
 		this.output = output;
@@ -75,7 +75,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
 			for (int i = 0; i < inventory.getSlots(); i++) {
 				ItemStack stack0 = inventory.getStackInSlot(i);
-				if (stack0.getItem() instanceof ItemAthame) stack0.damageItem(50, caster);
+				if (stack0.getItem() instanceof ItemAthame) stack0.damageItem(20, caster);
 				else inventory.extractItem(i, 1, false);
 			}
 		}

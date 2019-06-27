@@ -5,12 +5,15 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +26,7 @@ import java.util.Arrays;
 
 public class RitualHellmouth extends Ritual {
 	public RitualHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone"), Util.get("gunpowder"), Util.get(Items.MAGMA_CREAM)), null, null, 15, 1250, 45, BlockGlyph.NETHER, BlockGlyph.NETHER, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("netherrack"), Util.get("netherrack"), Util.get(Blocks.MAGMA), Util.get(Blocks.MAGMA), Util.get("cropHellebore"), Util.get(ModObjects.snake_venom), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(new ItemStack(Items.COAL, 1, 1))), null, null, 15, 1250, 45, BlockGlyph.NETHER, BlockGlyph.NETHER, -1);
 	}
 	
 	@Override

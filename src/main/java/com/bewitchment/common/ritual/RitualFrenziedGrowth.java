@@ -9,6 +9,9 @@ import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -18,7 +21,7 @@ import java.util.Arrays;
 
 public class RitualFrenziedGrowth extends Ritual {
 	public RitualFrenziedGrowth() {
-		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get("treeLeaves"), Util.get("logWood"), Util.get("treeSapling"), Util.get(ModObjects.dimensional_sand)), null, null, 5, 550, 40, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("vine"), Util.get("vine"), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata())), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata()))), null, null, 5, 550, 40, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
 	}
 	
 	@Override

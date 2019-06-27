@@ -115,7 +115,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				if (ritual == null) {
 					if (!stack.isEmpty()) {
 						int slot = getFirstEmptySlot(inventory);
-						if (slot < 12 && slot > -1) inventory.insertItem(slot, stack.splitStack(1), false);
+						if (slot < 10 && slot > -1) inventory.insertItem(slot, stack.splitStack(1), false);
 					}
 					else {
 						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));

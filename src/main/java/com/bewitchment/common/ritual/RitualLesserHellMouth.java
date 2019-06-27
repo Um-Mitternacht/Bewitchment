@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityMagmaCube;
@@ -11,6 +12,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +25,7 @@ import java.util.Arrays;
 
 public class RitualLesserHellMouth extends Ritual {
 	public RitualLesserHellMouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "lesser_hellmouth"), Arrays.asList(Util.get("cropHellebore"), Util.get(Items.COAL), Util.get("bone")), null, null, 15, 1000, 33, BlockGlyph.NETHER, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "lesser_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("netherrack"), Util.get("cropHellebore"), Util.get(Items.BLAZE_POWDER), Util.get(new ItemStack(Items.COAL, 1, 1))), null, null, 15, 1000, 33, BlockGlyph.NETHER, -1, -1);
 	}
 	
 	@Override

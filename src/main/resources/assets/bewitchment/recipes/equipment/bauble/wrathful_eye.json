@@ -1,20 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"DFD",
-	"FGF",
-	"DFD"
+	"VNV",
+	"NGN",
+	"NDN"
   ],
   "key": {
-	"D": {
+	"V": {
 	  "item": "bewitchment:diabolical_vein"
 	},
-	"F": {
-	  "item": "bewitchment:demonic_elixir"
+	"N": {
+	  "type": "forge:ore_dict",
+	  "ore": "blockNethersteel"
 	},
 	"G": {
 	  "type": "forge:ore_dict",
-	  "ore": "gemGarnet"
+	  "ore": "ingotGold"
+	},
+	"D": {
+	  "item": "bewitchment:demonic_elixir"
 	}
   },
   "result": {
