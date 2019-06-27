@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 public class EntityImp extends ModEntityMob {
 	public EntityImp(World world) {
 		super(world, null);
-		setSize(1, 2);
+		setSize(0.8f, 1.6f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);
 		setPathPriority(PathNodeType.LAVA, 8);
@@ -66,10 +66,10 @@ public class EntityImp extends ModEntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.16);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(90);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
 	}
 	

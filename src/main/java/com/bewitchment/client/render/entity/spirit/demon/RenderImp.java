@@ -26,6 +26,6 @@ public class RenderImp extends RenderLiving<EntityImp> {
 	@Override
 	protected void preRenderCallback(EntityImp entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.6, 1.6, 1.6);
+		GlStateManager.scale(0.9, 0.9, 0.9);
 	}
 }
