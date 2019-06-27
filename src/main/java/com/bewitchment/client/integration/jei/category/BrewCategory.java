@@ -24,7 +24,7 @@ public class BrewCategory implements IRecipeCategory<BrewCategory.Wrapper> {
 	private final IDrawable bg;
 	
 	public BrewCategory(IGuiHelper helper) {
-		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_cauldron.png"), 0, 0, 128, 32).setTextureSize(128, 32).build();
+		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_brew.png"), 0, 0, 128, 32).setTextureSize(128, 32).build();
 	}
 	
 	@Override

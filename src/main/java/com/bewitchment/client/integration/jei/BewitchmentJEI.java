@@ -16,6 +16,7 @@ public class BewitchmentJEI implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
+		registry.addRecipeCategories(new CauldronCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new BrewCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new WitchesOvenCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new DistilleryCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -28,6 +29,10 @@ public class BewitchmentJEI implements IModPlugin {
 		registry.handleRecipes(Ritual.class, new RitualCategory.RitualWrapperFactory(registry.getJeiHelpers().getGuiHelper()), RitualCategory.UID);
 		registry.addRecipes(BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection(), RitualCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.focal_chalk), RitualCategory.UID);
+		
+		registry.handleRecipes(CauldronRecipe.class, CauldronCategory.Wrapper::new, CauldronCategory.UID);
+		registry.addRecipes(BewitchmentAPI.REGISTRY_CAULDRON.getValuesCollection(), CauldronCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModObjects.witches_cauldron), CauldronCategory.UID);
 		
 		registry.handleRecipes(Brew.class, BrewCategory.Wrapper::new, BrewCategory.UID);
 		registry.addRecipes(BewitchmentAPI.REGISTRY_BREW.getValuesCollection(), BrewCategory.UID);

@@ -455,6 +455,7 @@ jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
 jei.ritual.runningPower=Running Power: %d
 
+jei.cauldron=Cauldron
 jei.brew=Brew
 
 //DEMON NAMES AND TITLES

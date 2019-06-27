@@ -7,6 +7,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SpawnBubble;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Brew;
+import com.bewitchment.api.registry.CauldronRecipe;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
@@ -45,7 +46,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	private final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
 	
 	/**
-	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting
+	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
 	 */
 	private int mode = 0;
 	
@@ -122,7 +123,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				}
 				else {
 					living.extinguish();
-					if (heatTimer >= 5) living.attackEntityFrom(DamageSource.HOT_FLOOR, 1);
+					if (mode != 4 && heatTimer >= 5) living.attackEntityFrom(DamageSource.HOT_FLOOR, 1);
 				}
 			}
 			if (world.getTotalWorldTime() % 20 == 0) {
@@ -241,10 +242,35 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (slot > -1) {
 							setPower();
 							if (stack.getItem() == ModObjects.mandrake_root && mode == 0) mode = 3;
-							boolean valid = hasPower && mode == 3 && isBrewItem(stack) && heatTimer >= 5;
+							else if (stack.getItem() == ModObjects.dimensional_sand && mode == 0) {
+								mode = 4;
+								setTargetColor(0x7fc47f);
+								return;
+							}
+							boolean valid = hasPower && mode != 4 && (mode != 3 || isBrewItem(stack)) && heatTimer >= 5;
 							inventory.insertItem(slot, stack, false);
 							if (valid) {
-								if (mode == 3) {
+								if (mode == 0) {
+									mode = 5;
+									setTargetColor(0x7f00c4);
+								}
+								if (mode == 5) {
+									CauldronRecipe recipe = BewitchmentAPI.REGISTRY_CAULDRON.getValuesCollection().stream().filter(b -> b.matches(inventory)).findFirst().orElse(null);
+									if (recipe != null) {
+										for (ItemStack stack0 : recipe.output) {
+											EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack0.copy());
+											item.setNoGravity(true);
+											item.motionX = 0;
+											item.motionY = 0;
+											item.motionZ = 0;
+											world.spawnEntity(item);
+										}
+										tank.drain(Fluid.BUCKET_VOLUME, true);
+										clear(inventory);
+									}
+								}
+								else if (mode == 3) {
+									setTargetColor(PotionUtils.getColor(createPotion()));
 									Brew brew = BewitchmentAPI.REGISTRY_BREW.getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
 									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
 										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
@@ -255,7 +281,6 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 										world.spawnEntity(item);
 									}
 								}
-								setTargetColor(PotionUtils.getColor(createPotion()));
 							}
 							else {
 								mode = 1;

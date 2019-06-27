@@ -47,6 +47,11 @@ public class BewitchmentAPI {
 	public static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 	
 	/**
+	 * the CauldronRecipe registry
+	 */
+	public static final IForgeRegistry<CauldronRecipe> REGISTRY_CAULDRON = new RegistryBuilder<CauldronRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "cauldron_recipe")).setType(CauldronRecipe.class).create();
+	
+	/**
 	 * the Brew registry
 	 */
 	public static final IForgeRegistry<Brew> REGISTRY_BREW = new RegistryBuilder<Brew>().setName(new ResourceLocation(Bewitchment.MODID, "brew")).setType(Brew.class).create();
