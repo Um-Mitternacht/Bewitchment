@@ -231,7 +231,20 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (slot > -1) {
 							boolean valid = mode == 3 && isBrewItem(stack) && heatTimer >= 5;
 							inventory.insertItem(slot, stack, false);
-							if (valid) setTargetColor(PotionUtils.getColor(createPotion()));
+							if (valid) {
+								if (mode == 3) {
+									Brew brew = BewitchmentAPI.REGISTRY_BREW.getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
+									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
+										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
+										item.setNoGravity(true);
+										item.motionX = 0;
+										item.motionY = 0;
+										item.motionZ = 0;
+										world.spawnEntity(item);
+									}
+								}
+								setTargetColor(PotionUtils.getColor(createPotion()));
+							}
 							else {
 								mode = 1;
 								setTargetColor(0x604040);

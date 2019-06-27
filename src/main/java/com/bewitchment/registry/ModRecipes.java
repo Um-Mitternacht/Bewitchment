@@ -358,8 +358,8 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_health"), Util.get(Items.APPLE), new PotionEffect(MobEffects.INSTANT_HEALTH, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_damage"), Util.get(Items.SPIDER_EYE), new PotionEffect(MobEffects.INSTANT_DAMAGE, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "regeneration"), Util.get(Items.SPECKLED_MELON), new PotionEffect(MobEffects.REGENERATION, (20 * 20))));
-		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison"), Util.get(ModObjects.snake_venom, ModObjects.belladonna), new PotionEffect(MobEffects.POISON, (20 * 20))));
-		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "wither"), Util.get(ModObjects.liquid_wroth), new PotionEffect(MobEffects.WITHER, (20 * 15))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison"), Util.get(ModObjects.snake_venom, ModObjects.belladonna), s -> s.getItem() == ModObjects.snake_venom, new ItemStack(Items.GLASS_BOTTLE), new PotionEffect(MobEffects.POISON, (20 * 20))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "wither"), Util.get(ModObjects.liquid_wroth), new ItemStack(Items.GLASS_BOTTLE), new PotionEffect(MobEffects.WITHER, (20 * 15))));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "night_vision"), Util.get(Items.CARROT, ModObjects.eye_of_old), new PotionEffect(MobEffects.NIGHT_VISION, (20 * 120))));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "blindness"), Util.get(ModObjects.oak_apple_gall, ModObjects.iron_gall_ink, new ItemStack(Items.DYE, 1, EnumDyeColor.BLACK.getDyeDamage())), new PotionEffect(MobEffects.BLINDNESS, (20 * 10))));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "strength"), Util.get(Items.PORKCHOP, Items.BEEF, Items.MUTTON, Items.CHICKEN, Items.RABBIT), new PotionEffect(MobEffects.STRENGTH, (20 * 65))));
@@ -388,12 +388,12 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_weakness"), Util.get(ModObjects.juniper_berries), new PotionEffect(ModPotions.magic_weakness, (20 * 60))));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "hellworld"), Util.get(ModObjects.hellhound_horn), new PotionEffect(ModPotions.hellworld, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "iceworld"), Util.get(Blocks.ICE, Blocks.PACKED_ICE, Blocks.SNOW), new PotionEffect(ModPotions.iceworld, 1)));
-		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "rubedo"), Util.get(ModObjects.acacia_resin), new PotionEffect(ModPotions.rubedo, 1)));
-		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "citrinitas"), Util.get(ModObjects.birch_soul), new PotionEffect(ModPotions.citrinitas, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "rubedo"), Util.get(ModObjects.acacia_resin), new ItemStack(ModObjects.empty_jar), new PotionEffect(ModPotions.rubedo, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "citrinitas"), Util.get(ModObjects.birch_soul), new ItemStack(ModObjects.empty_jar), new PotionEffect(ModPotions.citrinitas, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "desertification"), Util.get(new ItemStack(Items.COAL, 1, Short.MAX_VALUE)), new PotionEffect(ModPotions.desertification, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "fertility"), Util.get(new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.BLUE_ORCHID.getMeta())), new PotionEffect(ModPotions.fertility, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "harvest"), Util.get(Blocks.PUMPKIN), new PotionEffect(ModPotions.harvest, 1)));
-		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "spore_cloud"), Util.get(Items.MUSHROOM_STEW), new PotionEffect(ModPotions.spore_cloud, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "spore_cloud"), Util.get(Items.MUSHROOM_STEW), new ItemStack(Items.BOWL), new PotionEffect(ModPotions.spore_cloud, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "blight"), Util.get(Items.ROTTEN_FLESH), new PotionEffect(ModPotions.blight, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "ruin"), Util.get(Blocks.CACTUS, Blocks.DEADBUSH), new PotionEffect(ModPotions.ruin, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "pesticide"), Util.get("cropWormwood"), new PotionEffect(ModPotions.pesticide, 1)));
