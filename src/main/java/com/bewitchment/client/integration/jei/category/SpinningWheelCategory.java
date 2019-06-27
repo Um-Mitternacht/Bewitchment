@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("NullableProblems")
-public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCategory.SpinningWheelWrapper> {
+public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCategory.Wrapper> {
 	public static final String UID = ModObjects.spinning_wheel.getTranslationKey() + ".name";
 	
 	private final IDrawable bg;
@@ -50,7 +50,7 @@ public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCateg
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, SpinningWheelWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.size(); i++) {
 			recipeLayout.getItemStacks().init(i + 1, true, (i % 2) * 18, (i / 2) * 18);
 			recipeLayout.getItemStacks().set(i + 1, Arrays.asList(recipeWrapper.input.get(i).getMatchingStacks()));
@@ -59,11 +59,11 @@ public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCateg
 		recipeLayout.getItemStacks().set(0, recipeWrapper.output);
 	}
 	
-	public static class SpinningWheelWrapper implements IRecipeWrapper {
+	public static class Wrapper implements IRecipeWrapper {
 		private final List<Ingredient> input;
 		private final ItemStack output;
 		
-		public SpinningWheelWrapper(SpinningWheelRecipe recipe) {
+		public Wrapper(SpinningWheelRecipe recipe) {
 			input = recipe.input;
 			output = recipe.output;
 		}

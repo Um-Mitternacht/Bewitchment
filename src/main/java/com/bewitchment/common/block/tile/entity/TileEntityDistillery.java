@@ -43,6 +43,41 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	private boolean hasPower, inUse;
 	
 	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("hasPower", hasPower);
+		tag.setBoolean("inUse", inUse);
+		tag.setInteger("burnTime", burnTime);
+		tag.setInteger("progress", progress);
+		return super.writeToNBT(tag);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		recipe = tag.getString("recipe").isEmpty() ? null : BewitchmentAPI.REGISTRY_DISTILLERY.getValue(new ResourceLocation(tag.getString("recipe")));
+		hasPower = tag.getBoolean("hasPower");
+		inUse = tag.getBoolean("inUse");
+		burnTime = tag.getInteger("burnTime");
+		progress = tag.getInteger("progress");
+		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	}
+	
+	@Override
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory_side, inventory_up, inventory_down};
+	}
+	
+	@Override
 	public void update() {
 		if (!world.isRemote) {
 			if (progress == 1) {
@@ -73,40 +108,5 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 				}
 			}
 		}
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setBoolean("hasPower", hasPower);
-		tag.setBoolean("inUse", inUse);
-		tag.setInteger("burnTime", burnTime);
-		tag.setInteger("progress", progress);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : BewitchmentAPI.REGISTRY_DISTILLERY.getValue(new ResourceLocation(tag.getString("recipe")));
-		hasPower = tag.getBoolean("hasPower");
-		inUse = tag.getBoolean("inUse");
-		burnTime = tag.getInteger("burnTime");
-		progress = tag.getInteger("progress");
-		super.readFromNBT(tag);
-	}
-	
-	@Override
-	public ItemStackHandler[] getInventories() {
-		return new ItemStackHandler[]{inventory_side, inventory_up, inventory_down};
 	}
 }

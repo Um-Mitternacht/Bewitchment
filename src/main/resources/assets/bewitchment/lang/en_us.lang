@@ -139,6 +139,7 @@ tile.bewitchment.obsidian_witches_altar.name=Obsidian Witches' Altar
 tile.bewitchment.coquina_witches_altar.name=Coquina Witches' Altar
 tile.bewitchment.embittered_brick_witches_altar.name=Embittered Brick Witches' Altar
 tile.bewitchment.scorned_brick_witches_altar.name=Scorned Brick Witches' Altar
+tile.bewitchment.witches_cauldron.name=Witches' Cauldron
 tile.bewitchment.witches_oven.name=Witches' Oven
 tile.bewitchment.distillery.name=Distillery
 tile.bewitchment.spinning_wheel.name=Spinning Wheel
@@ -340,7 +341,44 @@ enchantment.bewitchment.spirit_protection=Spirit Protection
 enchantment.bewitchment.spirit_protection.desc=Reduces damage from spirits and demons.
 
 #POTION
+potion.effect.empty=Witches' Brew
+splash_potion.effect.empty=Splash Witches' Brew
+lingering_potion.effect.empty=Lingering Witches' Brew
+tipped_arrow.effect.empty=Brew-Infused Arrow
+
+bewitchment.modifier.suppressed_particles=Suppressed Particles
+
 bewitchment.wednesday=Wednesday
+bewitchment.absence=Absence
+bewitchment.purification=Purification
+bewitchment.corruption=Corruption
+bewitchment.magic_resistance=Magic Resistance
+bewitchment.magic_weakness=Magic Weakness
+bewitchment.hellworld=Hellworld
+bewitchment.iceworld=Iceworld
+bewitchment.rubedo=Rubedo
+bewitchment.citrinitas=Citrinitas
+bewitchment.desertification=Desertification
+bewitchment.fertility=Fertility
+bewitchment.harvest=Harvest
+bewitchment.spore_cloud=Spore Cloud
+bewitchment.blight=Blight
+bewitchment.ruin=Ruin
+bewitchment.pesticide=Pesticide
+bewitchment.arachnophobia=Arachnophobia
+bewitchment.mending=Mending
+bewitchment.holy_water=Holy Water
+bewitchment.wolfsbane=Wolfsbane
+bewitchment.deviants_decomposure=Deviant's Decomposure
+bewitchment.sleeping=Sleeping
+bewitchment.volatility=Volatility
+bewitchment.grace=Grace
+bewitchment.shell_armor=Shell Armor
+bewitchment.deflection=Deflection
+bewitchment.enderference=Enderference
+bewitchment.revealing=Revealing
+bewitchment.disrobing=Disrobing
+bewitchment.sinking=Sinking
 
 #FORTUNE
 fortune.bewitchment.bad_luck=Your future looks dim.
@@ -419,6 +457,8 @@ commands.fortune.null=%s is not a fortune
 jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
 jei.ritual.runningPower=Running Power: %d
+
+jei.brew=Brew
 
 //DEMON NAMES AND TITLES
 entity.bewitchment.given_name.0=Bael

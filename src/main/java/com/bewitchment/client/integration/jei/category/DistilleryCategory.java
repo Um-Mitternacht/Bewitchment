@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("NullableProblems")
-public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.DistilleryWrapper> {
+public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.Wrapper> {
 	public static final String UID = ModObjects.distillery.getTranslationKey() + ".name";
 	
 	private final IDrawable bg;
@@ -50,7 +50,7 @@ public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.Di
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, DistilleryWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.size(); i++) {
 			recipeLayout.getItemStacks().init(i, true, (i % 2) * 18, (i / 2) * 18);
 			recipeLayout.getItemStacks().set(i, Arrays.asList(recipeWrapper.input.get(i).getMatchingStacks()));
@@ -61,11 +61,11 @@ public class DistilleryCategory implements IRecipeCategory<DistilleryCategory.Di
 		}
 	}
 	
-	public static class DistilleryWrapper implements IRecipeWrapper {
+	public static class Wrapper implements IRecipeWrapper {
 		private final List<Ingredient> input;
 		private final List<ItemStack> output;
 		
-		public DistilleryWrapper(DistilleryRecipe recipe) {
+		public Wrapper(DistilleryRecipe recipe) {
 			input = recipe.input;
 			output = recipe.output;
 		}

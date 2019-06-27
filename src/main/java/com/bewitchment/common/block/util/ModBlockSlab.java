@@ -22,6 +22,7 @@ import java.util.Random;
 
 @SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class ModBlockSlab extends BlockSlab {
+	public Block double_slab;
 	private final boolean isDouble;
 	private Block half;
 	
@@ -32,6 +33,7 @@ public class ModBlockSlab extends BlockSlab {
 		this.half = this;
 		double_slab.half = this;
 		Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
+		this.double_slab = double_slab;
 	}
 	
 	private ModBlockSlab(String name, Block base, boolean isDouble) {
@@ -105,6 +107,6 @@ public class ModBlockSlab extends BlockSlab {
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return isDouble() ? new BlockStateContainer(this, BlockPurpurSlab.VARIANT) : new BlockStateContainer(this, HALF, BlockPurpurSlab.VARIANT);
+		return new BlockStateContainer(this, HALF, BlockPurpurSlab.VARIANT);
 	}
 }

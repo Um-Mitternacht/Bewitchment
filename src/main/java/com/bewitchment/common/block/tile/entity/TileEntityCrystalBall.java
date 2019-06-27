@@ -6,6 +6,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("ConstantConditions")
 public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	@Override
-	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!world.isRemote) {
 			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, 750)) {
 				ExtendedPlayer cap = player.getCapability(ExtendedPlayer.CAPABILITY, null);

@@ -163,7 +163,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		world.notifyBlockUpdate(pos, state, state, 11);
+		world.notifyBlockUpdate(pos, state, state, 2);
 		TileEntityWitchesAltar tile = getAltar(world, pos);
 		if (tile != null) tile.forceScan();
 	}
@@ -232,7 +232,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 						if (tile instanceof TileEntityWitchesAltar) {
 							TileEntityWitchesAltar altar = (TileEntityWitchesAltar) tile;
 							altar.color = color;
-							altar.markDirty();
+							altar.syncToClient();
 							refreshNearby(world, pos0);
 						}
 					}

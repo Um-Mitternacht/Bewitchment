@@ -68,17 +68,17 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
-		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
-		return flag;
-	}
-	
-	@Override
 	public ItemStackHandler[] getInventories() {
 		ItemStackHandler fin = new ItemStackHandler();
 		fin.insertItem(0, new ItemStack(Blocks.CARPET, 1, color - 1), false);
 		return new ItemStackHandler[]{fin};
+	}
+	
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
+		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
+		return flag;
 	}
 	
 	@Override
@@ -103,7 +103,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	public void forceScan() {
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+		syncToClient();
 		counter = 0;
 		maxPower = 0;
 		map.clear();

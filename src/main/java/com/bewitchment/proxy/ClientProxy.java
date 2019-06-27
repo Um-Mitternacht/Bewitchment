@@ -7,13 +7,16 @@ import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
 import com.bewitchment.client.render.entity.misc.RenderYewBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
+import com.bewitchment.client.render.fx.ModParticleBubble;
 import com.bewitchment.client.render.tile.RenderTileEntityGlyph;
 import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
 import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
+import com.bewitchment.client.render.tile.RenderTileEntityWitchesCauldron;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
+import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
 import com.bewitchment.common.entity.misc.EntityElderBroom;
@@ -31,14 +34,19 @@ import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
 	@Override
 	public boolean isFancyGraphicsEnabled() {
@@ -56,7 +64,7 @@ public class ClientProxy extends ServerProxy {
 	}
 	
 	@Override
-	public void registerEntityRenderers() {
+	public void registerRenderers() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
@@ -77,9 +85,9 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
 		
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlyph.class, new RenderTileEntityGlyph());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 	}
 	
@@ -104,5 +112,11 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
+	}
+	
+	@SubscribeEvent
+	public static void stitch(TextureStitchEvent.Pre event) {
+		event.getMap().registerSprite(RenderTileEntityWitchesCauldron.TEX);
+		event.getMap().registerSprite(ModParticleBubble.TEX);
 	}
 }

@@ -26,7 +26,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"NullableProblems", "ConstantConditions", "WeakerAccess"})
+@SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntitySnake extends ModEntityTameable {
 	
 	private int milkTimer = 0;
@@ -146,17 +146,7 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	public void onStruckByLightning(EntityLightningBolt bolt) {
-		if (!world.isRemote && !isDead) {
-			EntitySerpent entity = new EntitySerpent(world);
-			entity.setLocationAndAngles(posX, posY, posZ, rotationYaw, rotationPitch);
-			entity.setNoAI(isAIDisabled());
-			if (hasCustomName()) {
-				entity.setCustomNameTag(getCustomNameTag());
-				entity.setAlwaysRenderNameTag(getAlwaysRenderNameTag());
-			}
-			world.spawnEntity(entity);
-			setDead();
-		}
+		Util.convertEntity(this, new EntitySerpent(world));
 	}
 	
 	@Override
@@ -178,7 +168,7 @@ public class EntitySnake extends ModEntityTameable {
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(4, this.aiSit);
 		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(4, new EntityAIFollowOwner(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 2, 5));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));

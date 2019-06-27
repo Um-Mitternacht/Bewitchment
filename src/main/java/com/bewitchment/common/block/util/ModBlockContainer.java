@@ -2,6 +2,7 @@ package com.bewitchment.common.block.util;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockWitchesAltar;
+import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import net.minecraft.block.Block;
@@ -93,7 +94,7 @@ public abstract class ModBlockContainer extends BlockContainer {
 				player.openGui(modInstance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
 				return true;
 			}
-			if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand);
+			if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
@@ -105,7 +106,7 @@ public abstract class ModBlockContainer extends BlockContainer {
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops") && hasTileEntity(state) && world.getTileEntity(pos) instanceof ModTileEntity) {
+		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops") && hasTileEntity(state) && world.getTileEntity(pos) instanceof ModTileEntity && !(world.getTileEntity(pos) instanceof TileEntityWitchesCauldron)) {
 			ModTileEntity tile = (ModTileEntity) world.getTileEntity(pos);
 			for (IItemHandler inventory : tile.getInventories())
 				for (int i = 0; i < inventory.getSlots(); i++)

@@ -17,7 +17,7 @@ public class ServerProxy {
 	public void registerColorOverrides() {
 	}
 	
-	public void registerEntityRenderers() {
+	public void registerRenderers() {
 	}
 	
 	public void registerTexture(Item item, String variant) {

@@ -32,31 +32,6 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	private boolean hasPower;
 	
 	@Override
-	public void update() {
-		if (!world.isRemote) {
-			if (recipe == null || !recipe.isValid(inventory_down)) progress = 0;
-			else {
-				if (world.getTotalWorldTime() % 20 == 0) hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 25, false), 20);
-				if (hasPower) progress++;
-				if (progress >= 200) {
-					progress = 0;
-					recipe.giveOutput(inventory_up, inventory_down);
-				}
-			}
-		}
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
 		tag.setBoolean("hasPower", hasPower);
@@ -73,7 +48,32 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	}
 	
 	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	}
+	
+	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory_up, inventory_down};
+	}
+	
+	@Override
+	public void update() {
+		if (!world.isRemote) {
+			if (recipe == null || !recipe.isValid(inventory_down)) progress = 0;
+			else {
+				if (world.getTotalWorldTime() % 20 == 0) hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 25, false), 20);
+				if (hasPower) progress++;
+				if (progress >= 200) {
+					progress = 0;
+					recipe.giveOutput(inventory_up, inventory_down);
+				}
+			}
+		}
 	}
 }

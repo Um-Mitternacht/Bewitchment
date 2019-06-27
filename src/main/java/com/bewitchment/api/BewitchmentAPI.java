@@ -8,6 +8,7 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityVex;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -24,10 +25,12 @@ public class BewitchmentAPI {
 	 * the Oven registry
 	 */
 	public static final IForgeRegistry<OvenRecipe> REGISTRY_OVEN = new RegistryBuilder<OvenRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "oven_recipe")).setType(OvenRecipe.class).create();
+	
 	/**
 	 * the Distillery registry
 	 */
 	public static final IForgeRegistry<DistilleryRecipe> REGISTRY_DISTILLERY = new RegistryBuilder<DistilleryRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "distillery_recipe")).setType(DistilleryRecipe.class).create();
+	
 	/**
 	 * the Spinning Wheel registry
 	 */
@@ -37,15 +40,22 @@ public class BewitchmentAPI {
 	 * the Frostfire registry
 	 */
 	public static final IForgeRegistry<FrostfireRecipe> REGISTRY_FROSTFIRE = new RegistryBuilder<FrostfireRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "frostfire_recipe")).setType(FrostfireRecipe.class).create();
+	
 	/**
 	 * the Ritual registry
 	 */
 	public static final IForgeRegistry<Ritual> REGISTRY_RITUAL = new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 	
 	/**
+	 * the Brew registry
+	 */
+	public static final IForgeRegistry<Brew> REGISTRY_BREW = new RegistryBuilder<Brew>().setName(new ResourceLocation(Bewitchment.MODID, "brew")).setType(Brew.class).create();
+	
+	/**
 	 * the Fortune registry
 	 */
 	public static final IForgeRegistry<Fortune> REGISTRY_FORTUNE = new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
+	
 	/**
 	 * the Tarot registry
 	 */
@@ -75,6 +85,15 @@ public class BewitchmentAPI {
 	 * The Spirit creature attribute.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+	
+	/**
+	 * @param entity the entity to check
+	 * @return true if the entity is a witch, false otherwise
+	 */
+	public static boolean isWitch(EntityLivingBase entity) {
+		//todo: check if players have the crafted altar advancement
+		return !isWitchHunter(entity) && entity instanceof EntityWitch;
+	}
 	
 	/**
 	 * @param entity the entity to check

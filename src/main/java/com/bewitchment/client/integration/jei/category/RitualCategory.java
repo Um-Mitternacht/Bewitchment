@@ -2,7 +2,7 @@ package com.bewitchment.client.integration.jei.category;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Ritual;
-import com.bewitchment.client.integration.jei.category.RitualCategory.RitualWrapper;
+import com.bewitchment.client.integration.jei.category.RitualCategory.Wrapper;
 import com.bewitchment.common.block.BlockGlyph;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("NullableProblems")
-public class RitualCategory implements IRecipeCategory<RitualWrapper> {
+public class RitualCategory implements IRecipeCategory<Wrapper> {
 	public static final String UID = "jei.ritual";
 	
 	private final IDrawable bg;
@@ -55,7 +55,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, RitualWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.size(); i++) {
 			recipeLayout.getItemStacks().init(i, true, 18 * i + (180 - 18 * recipeWrapper.input.size()) / 2, 10);
 			recipeLayout.getItemStacks().set(i, recipeWrapper.input.get(i));
@@ -69,7 +69,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 	}
 	
 	@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
-	public static class RitualWrapper implements IRecipeWrapper {
+	public static class Wrapper implements IRecipeWrapper {
 		private static IDrawable center, small, medium, large;
 		
 		private final int[] circles;
@@ -79,7 +79,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		private final int runningPower;
 		private final String name;
 		
-		public RitualWrapper(Ritual ritual, IGuiHelper helper) {
+		public Wrapper(Ritual ritual, IGuiHelper helper) {
 			circles = ritual.circles;
 			input = new ArrayList<>();
 			for (Ingredient ing : ritual.input) input.add(Arrays.asList(ing.getMatchingStacks()));
@@ -144,7 +144,7 @@ public class RitualCategory implements IRecipeCategory<RitualWrapper> {
 		
 		@Override
 		public IRecipeWrapper getRecipeWrapper(Ritual ritual) {
-			return new RitualWrapper(ritual, helper);
+			return new Wrapper(ritual, helper);
 		}
 	}
 }

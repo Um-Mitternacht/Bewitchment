@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.Arrays;
 
 @SuppressWarnings("NullableProblems")
-public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.WitchesOvenWrapper> {
+public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.Wrapper> {
 	public static final String UID = ModObjects.witches_oven.getTranslationKey() + ".name";
 	
 	private final IDrawable bg;
@@ -47,7 +47,7 @@ public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, WitchesOvenWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		recipeLayout.getItemStacks().init(0, true, 0, 0);
 		recipeLayout.getItemStacks().set(0, recipeWrapper.input);
 		recipeLayout.getItemStacks().init(1, false, 60, 4);
@@ -56,12 +56,12 @@ public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.
 		recipeLayout.getItemStacks().set(2, recipeWrapper.byproduct);
 	}
 	
-	public static class WitchesOvenWrapper implements IRecipeWrapper {
+	public static class Wrapper implements IRecipeWrapper {
 		private final ItemStack input;
 		private final ItemStack output;
 		private final ItemStack byproduct;
 		
-		public WitchesOvenWrapper(OvenRecipe recipe) {
+		public Wrapper(OvenRecipe recipe) {
 			input = recipe.input;
 			output = recipe.output;
 			byproduct = recipe.byproduct;

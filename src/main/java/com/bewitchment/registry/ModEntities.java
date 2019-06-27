@@ -2,10 +2,7 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.living.*;
-import com.bewitchment.common.entity.misc.EntityCypressBroom;
-import com.bewitchment.common.entity.misc.EntityElderBroom;
-import com.bewitchment.common.entity.misc.EntityJuniperBroom;
-import com.bewitchment.common.entity.misc.EntityYewBroom;
+import com.bewitchment.common.entity.misc.*;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import net.minecraft.entity.Entity;
@@ -49,6 +46,9 @@ public class ModEntities {
 	public static EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
 	
 	public static void preInit() {
+		ForgeRegistries.ENTITIES.register(EntityEntryBuilder.create().entity(ModEntityPotion.class).id(new ResourceLocation(Bewitchment.MODID, "potion"), entity_id++).name("ThrownPotion").tracker(64, 1, true).build());
+		ForgeRegistries.ENTITIES.register(EntityEntryBuilder.create().entity(ModEntityTippedArrow.class).id(new ResourceLocation(Bewitchment.MODID, "arrow"), entity_id++).name("Arrow").tracker(64, 1, true).build());
+		
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/newt"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/owl"));

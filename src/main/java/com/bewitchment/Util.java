@@ -12,6 +12,7 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -101,22 +102,16 @@ public class Util {
 		return null;
 	}
 	
-	public static Ingredient get(String... oreDictionaryEntries) {
-		List<ItemStack> stacks = new ArrayList<>();
-		for (String ore : oreDictionaryEntries) stacks.addAll(OreDictionary.getOres(ore));
-		return Ingredient.fromStacks(stacks.toArray(new ItemStack[0]));
-	}
-	
-	public static Ingredient get(ItemStack stack) {
-		return Ingredient.fromStacks(stack);
-	}
-	
-	public static Ingredient get(Item item) {
-		return get(new ItemStack(item, 1, item.isDamageable() ? Short.MAX_VALUE : 0));
-	}
-	
-	public static Ingredient get(Block block) {
-		return get(new ItemStack(block));
+	public static Ingredient get(Object... objects) {
+		List<Ingredient> list = new ArrayList<>();
+		for (Object obj : objects) {
+			if (obj instanceof String) for (ItemStack stack : OreDictionary.getOres((String) obj)) list.add(Ingredient.fromStacks(stack));
+			else if (obj instanceof ItemStack) list.add(Ingredient.fromStacks((ItemStack) obj));
+			else if (obj instanceof Item) list.add(Ingredient.fromStacks(new ItemStack((Item) obj, 1, ((Item) obj).isDamageable() ? Short.MAX_VALUE : 0)));
+			else if (obj instanceof Block) list.add(Ingredient.fromStacks(new ItemStack((Block) obj)));
+			else throw new IllegalArgumentException(obj + " is not a valid parameter.");
+		}
+		return Ingredient.merge(list);
 	}
 	
 	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
@@ -176,6 +171,19 @@ public class Util {
 			}
 		}
 		return fin;
+	}
+	
+	public static void convertEntity(EntityLiving to, EntityLiving from) {
+		if (!to.world.isRemote && !to.isDead) {
+			from.setLocationAndAngles(to.posX, to.posY, to.posZ, to.rotationYaw, to.rotationPitch);
+			from.setNoAI(to.isAIDisabled());
+			if (to.hasCustomName()) {
+				from.setCustomNameTag(to.getCustomNameTag());
+				from.setAlwaysRenderNameTag(to.getAlwaysRenderNameTag());
+			}
+			to.world.spawnEntity(from);
+			to.setDead();
+		}
 	}
 	
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {

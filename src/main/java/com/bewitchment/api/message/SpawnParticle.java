@@ -12,18 +12,28 @@ import net.minecraftforge.fml.relauncher.Side;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class SpawnParticle implements IMessage {
 	public EnumParticleTypes type;
-	public BlockPos pos;
+	public double x, y, z;
 	public int speedX, speedY, speedZ;
 	
 	public SpawnParticle() {
 	}
 	
-	public SpawnParticle(EnumParticleTypes type, BlockPos pos, int speedX, int speedY, int speedZ) {
+	public SpawnParticle(EnumParticleTypes type, double x, double y, double z, int speedX, int speedY, int speedZ) {
 		this.type = type;
-		this.pos = pos;
+		this.x = x;
+		this.y = y;
+		this.z = z;
 		this.speedX = speedX;
 		this.speedY = speedY;
 		this.speedZ = speedZ;
+	}
+	
+	public SpawnParticle(EnumParticleTypes type, double x, double y, double z) {
+		this(type, x, y, z, 0, 0, 0);
+	}
+	
+	public SpawnParticle(EnumParticleTypes type, BlockPos pos, int speedX, int speedY, int speedZ) {
+		this(type, pos.getX(), pos.getY(), pos.getZ(), speedX, speedY, speedZ);
 	}
 	
 	public SpawnParticle(EnumParticleTypes type, BlockPos pos) {
@@ -33,7 +43,9 @@ public class SpawnParticle implements IMessage {
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
 		type = EnumParticleTypes.getParticleFromId(byteBuf.readInt());
-		pos = BlockPos.fromLong(byteBuf.readLong());
+		x = byteBuf.readDouble();
+		y = byteBuf.readDouble();
+		z = byteBuf.readDouble();
 		speedX = byteBuf.readInt();
 		speedY = byteBuf.readInt();
 		speedZ = byteBuf.readInt();
@@ -42,7 +54,9 @@ public class SpawnParticle implements IMessage {
 	@Override
 	public void toBytes(ByteBuf byteBuf) {
 		byteBuf.writeInt(type.getParticleID());
-		byteBuf.writeLong(pos.toLong());
+		byteBuf.writeDouble(x);
+		byteBuf.writeDouble(y);
+		byteBuf.writeDouble(z);
 		byteBuf.writeInt(speedX);
 		byteBuf.writeInt(speedY);
 		byteBuf.writeInt(speedZ);
@@ -51,8 +65,7 @@ public class SpawnParticle implements IMessage {
 	public static class Handler implements IMessageHandler<SpawnParticle, IMessage> {
 		@Override
 		public IMessage onMessage(SpawnParticle message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT)
-				Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().world.spawnParticle(message.type, message.pos.getX(), message.pos.getY(), message.pos.getZ(), message.speedX, message.speedY, message.speedZ));
+			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().world.spawnParticle(message.type, message.x, message.y, message.z, message.speedX, message.speedY, message.speedZ));
 			return null;
 		}
 	}

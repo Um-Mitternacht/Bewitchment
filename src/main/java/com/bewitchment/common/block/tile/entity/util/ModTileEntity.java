@@ -8,10 +8,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.oredict.OreDictionary;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public abstract class ModTileEntity extends TileEntity {
@@ -36,7 +38,7 @@ public abstract class ModTileEntity extends TileEntity {
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
+		syncToClient();
 	}
 	
 	@Override
@@ -46,26 +48,28 @@ public abstract class ModTileEntity extends TileEntity {
 	
 	@Override
 	public void onLoad() {
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-	}
-	
-	@Override
-	public void markDirty() {
-		super.markDirty();
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 11);
+		syncToClient();
 	}
 	
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{};
 	}
 	
-	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+		return false;
+	}
+	
+	public void syncToClient() {
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+	}
+	
+	public static boolean contains(ItemStackHandler handler, ItemStack stack) {
+		for (int i = 0; i < handler.getSlots(); i++) if (OreDictionary.itemMatches(handler.getStackInSlot(i), stack, true)) return true;
 		return false;
 	}
 	
 	public static boolean isEmpty(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++)
-			if (!handler.getStackInSlot(i).isEmpty()) return false;
+		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
 		return true;
 	}
 	
@@ -88,7 +92,6 @@ public abstract class ModTileEntity extends TileEntity {
 	}
 	
 	public static void clear(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++)
-			handler.setStackInSlot(i, ItemStack.EMPTY);
+		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
 }

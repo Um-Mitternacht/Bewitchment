@@ -2,25 +2,20 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.SpawnParticle;
+import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
-public class PotionWednesday extends Potion {
+public class PotionWednesday extends ModPotion {
 	public PotionWednesday() {
-		super(false, 0x00ff00);
-		setRegistryName(new ResourceLocation(Bewitchment.MODID, "wednesday"));
-		setPotionName(getRegistryName().toString().replace(":", "."));
-		ForgeRegistries.POTIONS.register(this);
+		super("wednesday", false, 0x00ff00);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	

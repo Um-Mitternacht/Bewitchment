@@ -18,7 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.Arrays;
 
 @SuppressWarnings("NullableProblems")
-public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.FrostfireWrapper> {
+public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.Wrapper> {
 	public static final String UID = ModObjects.frostfire.getTranslationKey() + ".name";
 	
 	private final IDrawable bg;
@@ -48,7 +48,7 @@ public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.Fros
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, FrostfireWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		recipeLayout.getItemStacks().init(0, false, 4, 3);
 		recipeLayout.getItemStacks().set(0, Arrays.asList(recipeWrapper.input.getMatchingStacks()));
 		
@@ -56,11 +56,11 @@ public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.Fros
 		recipeLayout.getItemStacks().set(1, recipeWrapper.output);
 	}
 	
-	public static class FrostfireWrapper implements IRecipeWrapper {
+	public static class Wrapper implements IRecipeWrapper {
 		private final Ingredient input;
 		private final ItemStack output;
 		
-		public FrostfireWrapper(FrostfireRecipe recipe) {
+		public Wrapper(FrostfireRecipe recipe) {
 			input = recipe.input;
 			output = recipe.output;
 		}

@@ -9,7 +9,7 @@ import net.minecraft.util.math.MathHelper;
  * demoness2 - cybercat5555
  * Created using Tabula 5.1.0
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelDemoness extends ModelBiped {
 	public final ModelRenderer bipedBody;
 	public final ModelRenderer tail00;

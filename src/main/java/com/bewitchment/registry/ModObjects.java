@@ -96,13 +96,13 @@ public class ModObjects {
 	public static final Block cracked_embittered_bricks = new ModBlock("cracked_embittered_bricks", embittered_bricks);
 	public static final Block chiseled_embittered_bricks = new ModBlock("chiseled_embittered_bricks", embittered_bricks);
 	public static final Block embittered_brick_stairs = new ModBlockStairs("embittered_brick_stairs", embittered_bricks);
-	public static final Block embittered_bricks_slab = new ModBlockSlab("embittered_bricks_slab", embittered_bricks);
+	public static final ModBlockSlab embittered_bricks_slab = new ModBlockSlab("embittered_bricks_slab", embittered_bricks);
 	public static final Block embittered_brick_fence = new ModBlockFence("embittered_brick_fence", embittered_bricks);
 	public static final Block[] scorned_bricks = createChiselBlocks("scorned_bricks", Material.ROCK, SoundType.STONE, 25.2f, 1001, "pickaxe", 2, Collections.emptyList(), "symbol", "bevel", "hellish", "raw", "raw_cracked", "small", "soft", "small_tiles", "medium_tiles", "triple", "braid", "layers", "road", "ornate", "panel", "prism", "slanted");
 	public static final Block cracked_scorned_bricks = new ModBlock("cracked_scorned_bricks", scorned_bricks[0]);
 	public static final Block chiseled_scorned_bricks = new ModBlock("chiseled_scorned_bricks", scorned_bricks[0]);
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks[0]);
-	public static final Block scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks[0]);
+	public static final ModBlockSlab scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks[0]);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks[0]);
 	//Util Blocks
 	public static final Block goblet = new BlockGoblet(false);
@@ -203,6 +203,7 @@ public class ModObjects {
 	public static final Block embittered_brick_witches_altar = new BlockWitchesAltar("embittered_brick_witches_altar", embittered_bricks);
 	public static final Block scorned_brick_witches_altar = new BlockWitchesAltar("scorned_brick_witches_altar", scorned_bricks[0]);
 	
+	public static final Block witches_cauldron = registerTileEntity(new BlockWitchesCauldron(), TileEntityWitchesCauldron.class);
 	public static final Block witches_oven = registerTileEntity(new BlockWitchesOven(), TileEntityWitchesOven.class);
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
 	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);

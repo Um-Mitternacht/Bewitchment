@@ -28,11 +28,17 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.PotionTypes;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.RecipeTippedArrow;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.ResourceLocation;
@@ -47,12 +53,13 @@ import vazkii.botania.common.item.ModItems;
 import java.util.Arrays;
 import java.util.Collections;
 
-@SuppressWarnings({"ConstantConditions"})
+@SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class ModRecipes {
 	public static void init() {
 		furnaceInit();
 		altarInit();
 		ritualInit();
+		cauldronInit();
 		ovenInit();
 		distilleryInit();
 		spinningWheelInit();
@@ -76,6 +83,15 @@ public class ModRecipes {
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 		ModObjects.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.ARMOR_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
+		
+		ForgeRegistries.RECIPES.register(new RecipeTippedArrow() {
+			@Override
+			public ItemStack getCraftingResult(InventoryCrafting inv) {
+				ItemStack stack = super.getCraftingResult(inv);
+				if (PotionUtils.getPotionFromItem(stack) == PotionTypes.EMPTY) stack.getTagCompound().setInteger("CustomPotionColor", PotionUtils.getPotionColorFromEffectList(PotionUtils.getFullEffectsFromItem(stack)));
+				return stack;
+			}
+		}.setRegistryName("minecraft", "tippedarrow"));
 	}
 	
 	public static void postInit() {
@@ -339,6 +355,65 @@ public class ModRecipes {
 		if (Bewitchment.config.wednesday) BewitchmentAPI.REGISTRY_RITUAL.register(new RitualWednesday());
 	}
 	
+	private static void cauldronInit() {
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_health"), Util.get(Items.APPLE), new PotionEffect(MobEffects.INSTANT_HEALTH, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_damage"), Util.get(Items.SPIDER_EYE), new PotionEffect(MobEffects.INSTANT_DAMAGE, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "regeneration"), Util.get(Items.SPECKLED_MELON), new PotionEffect(MobEffects.REGENERATION, (20 * 20))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison"), Util.get(ModObjects.snake_venom, ModObjects.belladonna), new PotionEffect(MobEffects.POISON, (20 * 20))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "wither"), Util.get(ModObjects.liquid_wroth), new PotionEffect(MobEffects.WITHER, (20 * 15))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "night_vision"), Util.get(Items.CARROT, ModObjects.eye_of_old), new PotionEffect(MobEffects.NIGHT_VISION, (20 * 120))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "blindness"), Util.get(ModObjects.oak_apple_gall, ModObjects.iron_gall_ink, new ItemStack(Items.DYE, 1, EnumDyeColor.BLACK.getDyeDamage())), new PotionEffect(MobEffects.BLINDNESS, (20 * 10))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "strength"), Util.get(Items.PORKCHOP, Items.BEEF, Items.MUTTON, Items.CHICKEN, Items.RABBIT), new PotionEffect(MobEffects.STRENGTH, (20 * 65))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "weakness"), Util.get(ModObjects.hellebore), new PotionEffect(MobEffects.WEAKNESS, (20 * 45))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "resistance"), Util.get(Items.COOKED_PORKCHOP, Items.COOKED_BEEF, Items.COOKED_MUTTON, Items.COOKED_CHICKEN, Items.COOKED_RABBIT), new PotionEffect(MobEffects.RESISTANCE, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "fire_resistance"), Util.get(ModObjects.embergrass), new PotionEffect(MobEffects.FIRE_RESISTANCE, (20 * 150))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "absorption"), Util.get("treeSapling"), new PotionEffect(MobEffects.ABSORPTION, (20 * 35))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "jump_boost"), Util.get(Items.RABBIT_HIDE, ModObjects.hoof), new PotionEffect(MobEffects.JUMP_BOOST, (20 * 45))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "speed"), Util.get(Items.SUGAR), new PotionEffect(MobEffects.SPEED, (20 * 45))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "slowness"), Util.get(Blocks.BROWN_MUSHROOM, "slimeball"), new PotionEffect(MobEffects.SLOWNESS, (20 * 40))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "haste"), Util.get("sugarcane"), new PotionEffect(MobEffects.HASTE, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "mining_fatigue"), Util.get(ModObjects.lizard_leg), new PotionEffect(MobEffects.MINING_FATIGUE, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "luck"), Util.get(Items.RABBIT_FOOT), new PotionEffect(MobEffects.LUCK, (20 * 120))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "unluck"), Util.get(ModObjects.adders_fork), new PotionEffect(MobEffects.UNLUCK, (20 * 120))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "water_breathing"), Util.get(Items.FISH, ModObjects.eye_of_old), new PotionEffect(MobEffects.WATER_BREATHING, (20 * 150))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "invisibility"), Util.get(ModObjects.ectoplasm), new PotionEffect(MobEffects.INVISIBILITY, (20 * 25))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "hunger"), Util.get(ModObjects.tongue_of_dog), new PotionEffect(MobEffects.HUNGER, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "nausea"), Util.get(Blocks.RED_MUSHROOM), new PotionEffect(MobEffects.NAUSEA, (20 * 10))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "glowing"), Util.get(ModObjects.spectral_dust), new PotionEffect(MobEffects.GLOWING, (20 * 40))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "levitation"), Util.get(Items.CHORUS_FRUIT), new PotionEffect(MobEffects.LEVITATION, (20 * 4))));
+		
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "absence"), Util.get(Items.MILK_BUCKET), new PotionEffect(ModPotions.absence, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "purification"), Util.get(Items.MELON), new PotionEffect(ModPotions.purification, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "corruption"), Util.get(Items.FERMENTED_SPIDER_EYE), new PotionEffect(ModPotions.corruption, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_resistance"), Util.get(ModObjects.yew_aril), new PotionEffect(ModPotions.magic_resistance, (20 * 60))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_weakness"), Util.get(ModObjects.juniper_berries), new PotionEffect(ModPotions.magic_weakness, (20 * 60))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "hellworld"), Util.get(ModObjects.hellhound_horn), new PotionEffect(ModPotions.hellworld, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "iceworld"), Util.get(Blocks.ICE, Blocks.PACKED_ICE, Blocks.SNOW), new PotionEffect(ModPotions.iceworld, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "rubedo"), Util.get(ModObjects.acacia_resin), new PotionEffect(ModPotions.rubedo, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "citrinitas"), Util.get(ModObjects.birch_soul), new PotionEffect(ModPotions.citrinitas, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "desertification"), Util.get(Items.COAL, new ItemStack(Items.COAL, 1, 1)), new PotionEffect(ModPotions.desertification, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "fertility"), Util.get(new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.BLUE_ORCHID.getMeta())), new PotionEffect(ModPotions.fertility, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "harvest"), Util.get(Blocks.PUMPKIN), new PotionEffect(ModPotions.harvest, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "spore_cloud"), Util.get(Items.MUSHROOM_STEW), new PotionEffect(ModPotions.spore_cloud, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "blight"), Util.get(Items.ROTTEN_FLESH), new PotionEffect(ModPotions.blight, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "ruin"), Util.get(Blocks.CACTUS, Blocks.DEADBUSH), new PotionEffect(ModPotions.ruin, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "pesticide"), Util.get("cropWormwood"), new PotionEffect(ModPotions.pesticide, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "arachnophobia"), Util.get(Blocks.WEB), new PotionEffect(ModPotions.arachnophobia, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "mending"), Util.get(Items.GOLDEN_APPLE, new ItemStack(Items.GOLDEN_APPLE, 1, 1)), new PotionEffect(ModPotions.mending, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "holy_water"), Util.get("cropWhiteSage", "cropGarlic", new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.ALLIUM.getMeta())), new PotionEffect(ModPotions.holy_water, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "wolfsbane"), Util.get("cropAconitum"), new PotionEffect(ModPotions.wolfsbane, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "deviants_decomposure"), Util.get(ModObjects.elderberries), new PotionEffect(ModPotions.deviants_decomposure, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "sleeping"), Util.get(Blocks.RED_FLOWER), new PotionEffect(ModPotions.sleeping, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "volatility"), Util.get(Items.FIRE_CHARGE), new PotionEffect(ModPotions.volatility, (20 * 45))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "grace"), Util.get("feather"), new PotionEffect(ModPotions.grace, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "shell_armor"), Util.get("coquina"), new PotionEffect(ModPotions.shell_armor, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "deflection"), Util.get(Items.CHORUS_FRUIT_POPPED), new PotionEffect(ModPotions.deflection, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "enderference"), Util.get(ModObjects.dimensional_sand), new PotionEffect(ModPotions.enderference, (20 * 30))));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "revealing"), Util.get(ModObjects.eye_of_newt), new PotionEffect(ModPotions.revealing, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "disrobing"), Util.get(ModObjects.tallow), new PotionEffect(ModPotions.disrobing, 1)));
+		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "sinking"), Util.get("nuggetGold", "nuggetIron", "nuggetColdIron", "nuggetCopper", "nuggetTin", "nuggetBronze", "nuggetLead"), new PotionEffect(ModPotions.sinking, (20 * 20))));
+	}
+	
 	private static void athamePostInit() {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityPlayer, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(Items.SKULL, 1, 3)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVillager, Sets.newHashSet(new ItemStack(ModObjects.heart)));
@@ -434,7 +509,8 @@ public class ModRecipes {
 			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {
 				Species species = family.getCommonSpecies();
 				String name = species.getSaplingName().toString().toLowerCase();
-				BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(species.getSaplingName(), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
+				name = name.substring(name.indexOf(":") + 1);
+				BewitchmentAPI.REGISTRY_OVEN.register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
 			}
 		}
 		

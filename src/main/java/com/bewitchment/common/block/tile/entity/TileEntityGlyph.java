@@ -13,25 +13,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"WeakerAccess", "ConstantConditions", "NullableProblems"})
 public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable {
 	private final ItemStackHandler inventory = new ItemStackHandler(12) {
 		@Override
 		protected void onContentsChanged(int slot) {
-			markDirty();
+			syncToClient();
 		}
 	};
 	
@@ -40,11 +39,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public EntityPlayer caster;
 	public BlockPos effectivePos;
 	public int effectiveDim, time;
-	
-	@Override
-	public ItemStackHandler[] getInventories() {
-		return new ItemStackHandler[]{inventory};
-	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -64,6 +58,21 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
 		time = tag.getInteger("time");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : super.getCapability(capability, face);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	}
+	
+	@Override
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory};
 	}
 	
 	@Override
@@ -95,7 +104,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	@Override
-	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand) {
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (!world.isRemote) {
 			if (player.isSneaking()) {
 				int last = getLastNonEmptySlot(inventory);
@@ -123,7 +132,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 									effectiveDim = world.provider.getDimension();
 									time = 0;
 									ritual.onStarted(world, pos, player, inventory);
-									world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+									syncToClient();
 									player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 									if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
 								}
@@ -140,7 +149,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 							effectivePos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
 							effectiveDim = stack.getTagCompound().getInteger("dimension");
 							stack.damageItem(1, player);
-							world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+							syncToClient();
 						}
 					}
 					else stopRitual(false);
@@ -161,6 +170,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		effectivePos = pos;
 		effectiveDim = world.provider.getDimension();
 		time = 0;
-		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+		syncToClient();
 	}
 }
