@@ -16,6 +16,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +27,10 @@ import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess", "ConstantConditions"})
 public class EntityToad extends ModEntityTameable {
+	
+	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.<Integer>createKey(EntityToad.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.<Float>createKey(EntityToad.class, DataSerializers.FLOAT);
+	
 	public EntityToad(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
 		setSize(1, 0.3f);
@@ -40,6 +47,8 @@ public class EntityToad extends ModEntityTameable {
 	protected void entityInit() {
 		super.entityInit();
 		this.aiSit = new EntityAISit(this);
+		this.dataManager.register(ANIMATION_TIME, Integer.valueOf(0));
+		this.dataManager.register(ANIMATION_HEIGHT, Float.valueOf(0.0F));
 	}
 	
 	@Override
@@ -92,6 +101,32 @@ public class EntityToad extends ModEntityTameable {
 		return 4;
 	}
 	
+	public float postIncAnimation() {
+		this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
+	
+	public float getAnimationTime() {
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
+	
+	public void resetAnimationTime() {
+		this.dataManager.set(ANIMATION_TIME, 0);
+	}
+	
+	public float getAnimationHeight() {
+		return (float) this.dataManager.get(ANIMATION_HEIGHT);
+	}
+	
+	public float setAnimationHeight(float in) {
+		this.dataManager.set(ANIMATION_HEIGHT, in);
+		return in;
+	}
+	
+	public void resetAnimationHeight() {
+		this.dataManager.set(ANIMATION_HEIGHT, 0.0F);
+	}
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -104,11 +139,12 @@ public class EntityToad extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
+		this.aiSit = new EntityAISit(this);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(0, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(1, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(2, aiSit);
+		tasks.addTask(4, aiSit);
 		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
 		tasks.addTask(3, new EntityAILookIdle(this));
