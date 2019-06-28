@@ -5,28 +5,33 @@
   "pages": [
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ore; harmful to undead; related to the moon",
 	  "item": "bewitchment:silver_ingot"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ore; barricades undead",
 	  "item": "bewitchment:salt"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ore; related to general magic",
 	  "item": "bewitchment:amethyst"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ore; related to protection magic",
 	  "item": "bewitchment:garnet"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ore; related to moonlight",
 	  "item": "bewitchment:moonstone"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "found on beaches; related to spirits",
+	  "item": "bewitchment:coquina"
 	}
   ]
 }

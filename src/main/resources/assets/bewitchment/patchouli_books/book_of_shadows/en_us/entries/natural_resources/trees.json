@@ -5,22 +5,22 @@
   "pages": [
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "found in cold forests, related to death",
 	  "item": "bewitchment:cypress_sapling"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "found in forests, related to knowledge",
 	  "item": "bewitchment:elder_sapling"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "found in savahnnas, related to magic",
 	  "item": "bewitchment:juniper_sapling"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "found in dense forests, related to life and longevity, grows 2x2",
 	  "item": "bewitchment:yew_sapling"
 	}
   ]

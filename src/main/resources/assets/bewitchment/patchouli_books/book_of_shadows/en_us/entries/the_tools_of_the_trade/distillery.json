@@ -1,0 +1,40 @@
+{
+  "name": "Distillery",
+  "category": "the_tools_of_the_trade",
+  "icon": "bewitchment:distillery",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "consumes blaze powder; consume altar power; 6x2 input and output; makes fumes"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:distillery"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:cleansing_balm",
+	  "text": "related to purity and banishment of the undead"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:demonic_elixir",
+	  "text": "related to demons"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:fiery_unguent",
+	  "text": "related to fire"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:bottled_frostfire",
+	  "text": "purified flames, creates cold iron"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:cold_iron_ingot",
+	  "text": "harmful to spirits"
+	}
+  ]
+}

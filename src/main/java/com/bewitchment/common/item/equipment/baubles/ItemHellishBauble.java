@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.item.util.ModItemBauble;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,9 +24,14 @@ public class ItemHellishBauble extends ModItemBauble {
 		player.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
 	}
 	
+	@Override
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.NAUSEA)) living.removePotionEffect(MobEffects.NAUSEA);
+	}
+	
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && ((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON) || event.getSource().isExplosion() || event.getSource().isFireDamage())
-			event.setAmount(event.getAmount() * 0.8f);
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && (((EntityLivingBase) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON) || event.getSource().isExplosion() || event.getSource().isFireDamage()))
+			event.setAmount(event.getAmount() * 0.85f);
 	}
 }

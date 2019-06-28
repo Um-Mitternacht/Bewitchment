@@ -253,7 +253,6 @@ public class ModObjects {
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
-	public static final Item wrathful_eye = new ItemWrathfulEye();
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
@@ -324,7 +323,6 @@ public class ModObjects {
 	public static final Item hoof = Util.registerItem("hoof");
 	public static final Item eye_of_old = Util.registerItem(new Item(), "eye_of_old", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Haru") || s.getDisplayName().equalsIgnoreCase("Haruspex") || s.getDisplayName().equalsIgnoreCase("H4rv5p3x"), s -> s.getDisplayName().equalsIgnoreCase("Izuxe") || s.getDisplayName().equalsIgnoreCase("Izu") || s.getDisplayName().equalsIgnoreCase("Izuxe43ui520815")));
 	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
-	public static final Item wool_of_bat = Util.registerItem("wool_of_bat");
 	//Misc
 	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dye", "dyeBrown");
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
@@ -365,9 +363,10 @@ public class ModObjects {
 		crop_white_sage.setItems(white_sage_seeds, white_sage);
 		crop_wormwood.setItems(wormwood_seeds, wormwood);
 		
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.QUARTZ));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, 4));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()));
 		
 		if (Loader.isModLoaded("chisel")) {
 			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(coquina_bricks.getDefaultState(), 1));

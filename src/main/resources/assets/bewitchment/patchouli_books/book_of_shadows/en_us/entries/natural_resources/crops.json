@@ -5,37 +5,37 @@
   "pages": [
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "harmful to canines",
 	  "item": "bewitchment:aconitum"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "toxic in general",
 	  "item": "bewitchment:belladonna"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "harmful to undead",
 	  "item": "bewitchment:garlic"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "related to demons",
 	  "item": "bewitchment:hellebore"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "ampfilies magic",
 	  "item": "bewitchment:mandrake_root"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "cleansing",
 	  "item": "bewitchment:white_sage"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "communicate with spirits; bugs hate it",
 	  "item": "bewitchment:wormwood"
 	}
   ]

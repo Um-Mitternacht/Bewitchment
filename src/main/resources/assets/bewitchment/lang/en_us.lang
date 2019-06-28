@@ -199,15 +199,13 @@ item.bewitchment.phasing_chalk.name=Phasing Chalk
 item.bewitchment.girdle_of_the_dryads.name=Girdle of the Dryads
 tooltip.bewitchment.girdle_of_the_dryads=This belt protects the wearer from harm by growing pieces of bark as armor.
 item.bewitchment.hellish_bauble.name=Hellish Bauble
-tooltip.bewitchment.hellish_bauble=This oddly shaped trinket will allow you to tap into a small portion of demonic power.
+tooltip.bewitchment.hellish_bauble=This trinket commands respect from demons, and provides some innate resistance to fire and explosions.
 item.bewitchment.horseshoe.name=Horseshoe
 tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in general. Spirits seem averse to you.
 item.bewitchment.nazar.name=Nazar
 tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.
 item.bewitchment.token_of_remedies.name=Token of Remedies
 tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses, but it depletes rather quickly.
-item.bewitchment.wrathful_eye.name=Wrathful Eye
-tooltip.bewitchment.wrathful_eye=This trinket commands respect from demons.
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
@@ -295,7 +293,6 @@ item.bewitchment.liquid_wroth.name=Liquid Wroth
 item.bewitchment.hoof.name=Hoof
 item.bewitchment.eye_of_old.name=Eye of Old
 item.bewitchment.tongue_of_dog.name=Tongue of Dog
-item.bewitchment.wool_of_bat.name=Wool of Bat
 
 item.bewitchment.catechu_brown.name=Catechu Brown
 item.bewitchment.dimensional_sand.name=Dimensional Sand

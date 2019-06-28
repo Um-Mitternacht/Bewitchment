@@ -5,7 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "needs text"
+	  "text": "only appears at night; targets humanoid mobs; disappears during the day; drops tongue of dog, ectoplasm, spectral dust; turns invisible when hit"
 	},
 	{
 	  "type": "entity",

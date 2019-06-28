@@ -1,0 +1,78 @@
+{
+  "name": "Witches' Oven",
+  "category": "the_tools_of_the_trade",
+  "icon": "bewitchment:witches_oven",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "used to create certain fumes and other objects via burning"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:witches_oven"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:unfired_jar"
+	},
+	{
+	  "type": "smelting",
+	  "recipe": "bewitchment:unfired_jar"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:oak_spirit",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:spruce_heart",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:birch_soul",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:cloudy_oil",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:acacia_resin",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:ebb_of_death",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:droplet_of_wisdom",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:liquid_witchcraft",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:essence_of_vitality",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:dimensional_sand",
+	  "text": "needs text"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:ectoplasm",
+	  "text": "needs text"
+	}
+  ]
+}

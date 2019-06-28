@@ -19,6 +19,7 @@ public class ItemBroom extends Item {
 	public ItemBroom(EntityEntry entry) {
 		super();
 		this.entry = entry;
+		if (entry != null) setMaxStackSize(1);
 	}
 	
 	@Override

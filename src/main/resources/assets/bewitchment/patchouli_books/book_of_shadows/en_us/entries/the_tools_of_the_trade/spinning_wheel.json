@@ -1,0 +1,35 @@
+{
+  "name": "Spinning Wheel",
+  "category": "the_tools_of_the_trade",
+  "icon": "bewitchment:spinning_wheel",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "consumes altar power; 2x2 input; 1 slot output; makes threads"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:spinning_wheel"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "minecraft:web",
+	  "text": "generic cobweb woven from string"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:diabolical_vein",
+	  "text": "demonic thread"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:pure_filament",
+	  "text": "purified thread"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:witches_stitching",
+	  "text": "magical thread"
+	}
+  ]
+}

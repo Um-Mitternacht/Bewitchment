@@ -4,9 +4,27 @@
   "icon": "bewitchment:stone_witches_altar",
   "pages": [
 	{
-	  "type": "spotlight",
-	  "text": "needs text",
-	  "item": "bewitchment:stone_witches_altar"
+	  "type": "text",
+	  "title": "Witches' Altar",
+	  "text": "used to store and provide magic power to things that use it; allows upgrades on top; has 32x32x32 search radius; more plant variety is better more plant quantity, form altar using carpet"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Stone, Nether",
+	  "recipe": "bewitchment:stone_witches_altar",
+	  "recipe2": "bewitchment:nether_brick_witches_altar"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Obsidian, Coquina",
+	  "recipe": "bewitchment:obsidian_witches_altar",
+	  "recipe2": "bewitchment:coquina_witches_altar"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Embittered, Scorned",
+	  "recipe": "bewitchment:embittered_brick_witches_altar",
+	  "recipe2": "bewitchment:scorned_brick_witches_altar"
 	},
 	{
 	  "type": "multiblock",
@@ -28,22 +46,22 @@
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "central chalk; used for activating rituals",
 	  "item": "bewitchment:focal_chalk"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "normal chalk",
 	  "item": "bewitchment:ritual_chalk"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "chalk related to fire and/or demons",
 	  "item": "bewitchment:fiery_chalk"
 	},
 	{
 	  "type": "spotlight",
-	  "text": "needs text",
+	  "text": "chalk related to the end and/or teleportation",
 	  "item": "bewitchment:phasing_chalk"
 	},
 	{
