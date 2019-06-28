@@ -52,7 +52,7 @@ public class PotionHellworld extends ModPotion {
 			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
 				if (world.rand.nextInt(3) == 0) {
 					Block block = world.getBlockState(pos0).getBlock();
-					if (block instanceof BlockStone) {
+					if (block instanceof BlockStone || block == ModObjects.perpetual_ice) {
 						world.setBlockState(pos0, Blocks.NETHERRACK.getDefaultState());
 						flag = true;
 					}
@@ -60,7 +60,7 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.SOUL_SAND.getDefaultState());
 						flag = true;
 					}
-					else if (block == Blocks.BRICK_BLOCK) {
+					else if (block == Blocks.BRICK_BLOCK || block instanceof BlockStoneBrick || block == ModObjects.embittered_bricks) {
 						world.setBlockState(pos0, Blocks.NETHER_BRICK.getDefaultState());
 						flag = true;
 					}
@@ -80,24 +80,20 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.NETHER_BRICK_STAIRS.getDefaultState());
 						flag = true;
 					}
-					else if (block instanceof BlockStoneBrick || block == ModObjects.embittered_bricks) {
-						world.setBlockState(pos0, ModObjects.scorned_bricks[0].getDefaultState());
-						flag = true;
-					}
 					else if (block instanceof BlockFence) {
 						world.setBlockState(pos0, Blocks.NETHER_BRICK_FENCE.getDefaultState());
 						flag = true;
 					}
 					else if (block == Blocks.DOUBLE_STONE_SLAB || block == Blocks.DOUBLE_STONE_SLAB2 || block == ModObjects.embittered_bricks_slab.double_slab) {
-						world.setBlockState(pos0, ModObjects.scorned_bricks_slab.double_slab.getDefaultState());
+						world.setBlockState(pos0, Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.NETHERBRICK));
 						flag = true;
 					}
 					else if (block == Blocks.STONE_SLAB || block == Blocks.STONE_SLAB2 || block == ModObjects.embittered_bricks_slab) {
-						world.setBlockState(pos0, ModObjects.scorned_bricks_slab.getDefaultState().withProperty(BlockSlab.HALF, world.getBlockState(pos0).getValue(BlockSlab.HALF)));
+						world.setBlockState(pos0, Blocks.STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.NETHERBRICK).withProperty(BlockSlab.HALF, world.getBlockState(pos0).getValue(BlockSlab.HALF)));
 						flag = true;
 					}
 					else if (block == Blocks.STONE_BRICK_STAIRS || block == ModObjects.embittered_brick_stairs) {
-						world.setBlockState(pos0, ModObjects.scorned_brick_stairs.getDefaultState().withProperty(BlockStairs.HALF, world.getBlockState(pos0).getValue(BlockStairs.HALF)).withProperty(BlockStairs.FACING, world.getBlockState(pos0).getValue(BlockStairs.FACING)).withProperty(BlockStairs.SHAPE, world.getBlockState(pos0).getValue(BlockStairs.SHAPE)));
+						world.setBlockState(pos0, Blocks.NETHER_BRICK_STAIRS.getDefaultState().withProperty(BlockStairs.HALF, world.getBlockState(pos0).getValue(BlockStairs.HALF)).withProperty(BlockStairs.FACING, world.getBlockState(pos0).getValue(BlockStairs.FACING)).withProperty(BlockStairs.SHAPE, world.getBlockState(pos0).getValue(BlockStairs.SHAPE)));
 						flag = true;
 					}
 					else if (!world.isAirBlock(pos0)) {
@@ -107,6 +103,7 @@ public class PotionHellworld extends ModPotion {
 								if (OreDictionary.getOreName(i).substring(0, 3).equals("ore")) {
 									world.setBlockState(pos0, Blocks.QUARTZ_ORE.getDefaultState());
 									flag = true;
+									break;
 								}
 							}
 						}

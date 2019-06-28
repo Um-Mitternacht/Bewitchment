@@ -49,7 +49,7 @@ public class PotionIceworld extends ModPotion {
 			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
 				if (world.rand.nextInt(3) == 0) {
 					Block block = world.getBlockState(pos0).getBlock();
-					if (block instanceof BlockStone) {
+					if (block instanceof BlockStone || block instanceof BlockNetherrack) {
 						world.setBlockState(pos0, ModObjects.perpetual_ice.getDefaultState());
 						flag = true;
 					}
@@ -57,15 +57,11 @@ public class PotionIceworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.ICE.getDefaultState());
 						flag = true;
 					}
-					else if (block instanceof BlockIce) {
+					else if (block instanceof BlockIce || block instanceof BlockLog) {
 						world.setBlockState(pos0, Blocks.PACKED_ICE.getDefaultState());
 						flag = true;
 					}
-					else if (block instanceof BlockLog) {
-						world.setBlockState(pos0, Blocks.PACKED_ICE.getDefaultState());
-						flag = true;
-					}
-					else if (block instanceof BlockStoneBrick || block == ModObjects.scorned_bricks[0]) {
+					else if (block instanceof BlockStoneBrick || block instanceof BlockNetherBrick || block == ModObjects.scorned_bricks[0]) {
 						world.setBlockState(pos0, ModObjects.embittered_bricks.getDefaultState());
 						flag = true;
 					}

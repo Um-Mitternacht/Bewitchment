@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class RitualGreaterHellmouth extends Ritual {
 	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.liquid_wroth), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, null, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.liquid_wroth), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, null, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

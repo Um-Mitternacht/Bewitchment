@@ -365,21 +365,13 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "tallow"), Arrays.asList(Util.get(Items.ROTTEN_FLESH), Util.get(Items.ROTTEN_FLESH)), Collections.singletonList(new ItemStack(ModObjects.tallow))));
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "slimeball"), Collections.singletonList(Util.get(ModObjects.hoof)), Collections.singletonList(new ItemStack(Items.SLIME_BALL))));
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "iron_gall_ink"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("nuggetIron")), Collections.singletonList(new ItemStack(ModObjects.iron_gall_ink, 3))));
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu_brown"), Collections.singletonList(Util.get("logWood")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
 		
-		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu"), Collections.singletonList(Util.get("log")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
-		
-		//Leather armor dye removal
-		//FIXME: Probably does not respect damage values, please fix
-		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_helm_cleaning"), Collections.singletonList(Util.get(Items.LEATHER_HELMET)), Collections.singletonList(new ItemStack(Items.LEATHER_HELMET))));
-		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_tunic_cleaning"), Collections.singletonList(Util.get(Items.LEATHER_CHESTPLATE)), Collections.singletonList(new ItemStack(Items.LEATHER_CHESTPLATE))));
-		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_pants_cleaning"), Collections.singletonList(Util.get(Items.LEATHER_LEGGINGS)), Collections.singletonList(new ItemStack(Items.LEATHER_LEGGINGS))));
-		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_boots_cleaning"), Collections.singletonList(Util.get(Items.LEATHER_BOOTS)), Collections.singletonList(new ItemStack(Items.LEATHER_BOOTS))));
-		
-		// Banner pattern removal
-		//FIXME: This likely needs some fixes
-		for (int i = 0; i < 16; i++) {
-			BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(Items.BANNER)), Collections.singletonList(new ItemStack(Items.BANNER))));
-		}
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_helmet_cleaning"), Collections.singletonList(Util.get(new ItemStack(Items.LEATHER_HELMET, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.LEATHER_HELMET))));
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_chestplate_cleaning"), Collections.singletonList(Util.get(new ItemStack(Items.LEATHER_CHESTPLATE, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.LEATHER_CHESTPLATE))));
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_leggings_cleaning"), Collections.singletonList(Util.get(new ItemStack(Items.LEATHER_LEGGINGS, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.LEATHER_LEGGINGS))));
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_boots_cleaning"), Collections.singletonList(Util.get(new ItemStack(Items.LEATHER_BOOTS, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.LEATHER_BOOTS))));
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getMetadata()))));
 		
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_health"), Util.get(Items.APPLE), new PotionEffect(MobEffects.INSTANT_HEALTH, 1)));
 		BewitchmentAPI.REGISTRY_BREW.register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_damage"), Util.get(Items.SPIDER_EYE), new PotionEffect(MobEffects.INSTANT_DAMAGE, 1)));
