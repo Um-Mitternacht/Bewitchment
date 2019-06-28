@@ -61,7 +61,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		return true;
+		return sacrificePredicate == null;
 	}
 	
 	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
@@ -88,7 +88,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 	}
 	
-	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler, List<EntityLivingBase> livings) {
+	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler) {
 		for (int x = 0; x < small.length; x++) {
 			for (int z = 0; z < small.length; z++) {
 				IBlockState state = world.getBlockState(pos.add(x - small.length / 2, 0, z - small.length / 2));
@@ -111,13 +111,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 				}
 			}
 		}
-		if (Util.areISListsEqual(input, handler)) {
-			if (sacrificePredicate != null) {
-				for (EntityLivingBase entity : livings) if (sacrificePredicate.test(entity)) return true;
-				return false;
-			}
-			return true;
-		}
-		return false;
+		return Util.areISListsEqual(input, handler);
 	}
 }

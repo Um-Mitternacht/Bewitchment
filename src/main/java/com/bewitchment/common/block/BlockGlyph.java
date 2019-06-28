@@ -1,6 +1,8 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.block.util.ModBlockContainer;
@@ -14,6 +16,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
@@ -26,12 +29,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-@SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
+@SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions", "unused"})
 public class BlockGlyph extends ModBlockContainer {
 	/**
 	 * 0 = golden, 1 = normal, 2 = nether, 3 = ender, 4 = any
@@ -47,6 +53,7 @@ public class BlockGlyph extends ModBlockContainer {
 	public BlockGlyph() {
 		super(null, "glyph", Material.CIRCUITS, SoundType.STONE, 5, 100, "", -1);
 		setCreativeTab(null);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
@@ -145,5 +152,23 @@ public class BlockGlyph extends ModBlockContainer {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, TYPE, BlockHorizontal.FACING, LETTER);
+	}
+	
+	@SubscribeEvent
+	public void livingDeath(LivingDeathEvent event) {
+		EntityLivingBase living = event.getEntityLiving();
+		if (!living.world.isRemote) {
+			BlockPos pos = living.getPosition();
+			EntityPlayer player = living.world.getClosestPlayer(living.posX, living.posY, living.posZ, 10, false);
+			if (player != null) {
+				for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-2, -2, -2), pos.add(2, 2, 2))) {
+					if (living.world.getTileEntity(pos0) instanceof TileEntityGlyph) {
+						TileEntityGlyph tile = (TileEntityGlyph) living.world.getTileEntity(pos0);
+						Ritual ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(living.world, pos0, tile.getInventories()[0])).findFirst().orElse(null);
+						if (ritual != null && ritual.sacrificePredicate.test(living)) tile.startRitual(player, ritual);
+					}
+				}
+			}
+		}
 	}
 }

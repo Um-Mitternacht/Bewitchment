@@ -8,13 +8,14 @@ import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
@@ -22,7 +23,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.List;
 import java.util.UUID;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions", "NullableProblems"})
@@ -117,26 +117,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 						if (slot < 10 && slot > -1) inventory.insertItem(slot, stack.splitStack(1), false);
 					}
 					else {
-						List<EntityLivingBase> livings = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(3));
-						Ritual rit = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory, livings)).findFirst().orElse(null);
+						Ritual rit = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory)).findFirst().orElse(null);
 						if (rit != null) {
-							if (rit.isValid(world, pos, player, inventory)) {
-								if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, rit.startingPower)) {
-									ritual = rit;
-									player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
-									ExtendedPlayer.syncToClient(player);
-									casterId = player.getGameProfile().getId();
-									caster = Util.findPlayer(casterId);
-									effectivePos = pos;
-									effectiveDim = world.provider.getDimension();
-									time = 0;
-									ritual.onStarted(world, pos, player, inventory);
-									syncToClient();
-									player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
-									if (ritual.sacrificePredicate != null) for (EntityLivingBase living : livings) if (ritual.sacrificePredicate.test(living) && living.attackEntityFrom(DamageSource.MAGIC, Float.MAX_VALUE)) break;
-								}
-								else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
-							}
+							if (rit.isValid(world, pos, player, inventory)) startRitual(player, rit);
 							else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
 						}
 						else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
@@ -156,6 +139,25 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 			}
 		}
 		return true;
+	}
+	
+	public void startRitual(EntityPlayer player, Ritual rit) {
+		if (!player.world.isRemote) {
+			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, rit.startingPower)) {
+				ritual = rit;
+				player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
+				ExtendedPlayer.syncToClient(player);
+				casterId = player.getGameProfile().getId();
+				caster = Util.findPlayer(casterId);
+				effectivePos = pos;
+				effectiveDim = world.provider.getDimension();
+				time = 0;
+				ritual.onStarted(world, pos, player, inventory);
+				syncToClient();
+				player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+			}
+			else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
+		}
 	}
 	
 	public void stopRitual(boolean finished) {
