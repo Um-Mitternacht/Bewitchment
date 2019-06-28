@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -60,8 +61,20 @@ public class PotionIceworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.PACKED_ICE.getDefaultState());
 						flag = true;
 					}
+					else if (block instanceof BlockLog) {
+						world.setBlockState(pos0, Blocks.PACKED_ICE.getDefaultState());
+						flag = true;
+					}
 					else if (block instanceof BlockStoneBrick || block == ModObjects.scorned_bricks[0]) {
 						world.setBlockState(pos0, ModObjects.embittered_bricks.getDefaultState());
+						flag = true;
+					}
+					else if (block == Blocks.WOOL) {
+						world.setBlockState(pos0, Blocks.WOOL.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.LIGHT_BLUE));
+						flag = true;
+					}
+					else if (block instanceof BlockFence) {
+						world.setBlockState(pos0, ModObjects.perpetual_ice_fence.getDefaultState());
 						flag = true;
 					}
 					else if (block == Blocks.DOUBLE_STONE_SLAB || block == Blocks.DOUBLE_STONE_SLAB2 || block == ModObjects.scorned_bricks_slab.double_slab) {

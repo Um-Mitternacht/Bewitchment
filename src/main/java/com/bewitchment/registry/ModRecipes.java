@@ -280,6 +280,7 @@ public class ModRecipes {
 		
 		//Botania stuff
 		if (Loader.isModLoaded("botania")) {
+			Util.registerAltarUpgradeItem(ModItems.twigWand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 			Util.registerAltarUpgradeItem(ModItems.manasteelSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.23));
 			Util.registerAltarUpgradeItem(ModItems.starSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.375));
 			Util.registerAltarUpgradeItem(ModItems.thunderSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.375));
