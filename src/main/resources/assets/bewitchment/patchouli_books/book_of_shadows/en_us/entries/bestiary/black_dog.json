@@ -1,0 +1,17 @@
+{
+  "name": "Black Dog",
+  "category": "bestiary",
+  "icon": "bewitchment:tongue_of_dog",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:black_dog",
+	  "text": "needs text",
+	  "scale": 0.5
+	}
+  ]
+}

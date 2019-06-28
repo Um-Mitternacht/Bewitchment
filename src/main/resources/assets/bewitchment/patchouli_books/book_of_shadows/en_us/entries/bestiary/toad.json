@@ -1,0 +1,17 @@
+{
+  "name": "Toad",
+  "category": "bestiary",
+  "icon": "bewitchment:toe_of_frog",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:toad",
+	  "text": "needs text",
+	  "scale": 0.75
+	}
+  ]
+}

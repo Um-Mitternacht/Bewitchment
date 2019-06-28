@@ -1,0 +1,27 @@
+{
+  "name": "Trees",
+  "category": "natural_resources",
+  "icon": "bewitchment:elder_wood",
+  "pages": [
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:cypress_sapling"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:elder_sapling"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:juniper_sapling"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:yew_sapling"
+	}
+  ]
+}

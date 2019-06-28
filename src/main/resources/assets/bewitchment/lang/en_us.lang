@@ -308,6 +308,11 @@ item.bewitchment.spectral_dust.name=Spectral Dust
 item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
+item.bewitchment.book_of_shadows.name=Book of Shadows
+tooltip.bewitchment.book_of_shadows=this needs text
+item.bewitchment.codex_infernalis.name=Codex Infernalis
+tooltip.bewitchment.codex_infernalis=this needs text
+
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom
 entity.bewitchment.elder_broom.name=Elder Broom

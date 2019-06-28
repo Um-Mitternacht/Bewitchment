@@ -1,0 +1,17 @@
+{
+  "name": "Snake",
+  "category": "bestiary",
+  "icon": "bewitchment:adders_fork",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:snake",
+	  "text": "needs text",
+	  "scale": 0.425
+	}
+  ]
+}

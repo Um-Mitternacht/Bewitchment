@@ -1,0 +1,17 @@
+{
+  "name": "Raven",
+  "category": "bestiary",
+  "icon": "bewitchment:ravens_feather",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:raven",
+	  "text": "needs text",
+	  "scale": 0.75
+	}
+  ]
+}

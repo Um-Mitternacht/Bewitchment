@@ -1,0 +1,32 @@
+{
+  "name": "Materials",
+  "category": "natural_resources",
+  "icon": "bewitchment:silver_ingot",
+  "pages": [
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:silver_ingot"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:salt"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:amethyst"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:garnet"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:moonstone"
+	}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Owl",
+  "category": "bestiary",
+  "icon": "bewitchment:owlets_wing",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:owl",
+	  "text": "needs text",
+	  "scale": 0.75
+	}
+  ]
+}

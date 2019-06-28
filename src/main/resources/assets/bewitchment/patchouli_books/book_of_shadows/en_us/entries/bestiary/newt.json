@@ -1,0 +1,17 @@
+{
+  "name": "Newt",
+  "category": "bestiary",
+  "icon": "bewitchment:eye_of_newt",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:newt",
+	  "text": "needs text",
+	  "scale": 0.5
+	}
+  ]
+}

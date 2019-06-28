@@ -1,0 +1,17 @@
+{
+  "name": "Lizard",
+  "category": "bestiary",
+  "icon": "bewitchment:lizard_leg",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:lizard",
+	  "text": "needs text",
+	  "scale": 0.5
+	}
+  ]
+}

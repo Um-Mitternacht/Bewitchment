@@ -1,0 +1,42 @@
+{
+  "name": "Crops",
+  "category": "natural_resources",
+  "icon": "bewitchment:mandrake_root",
+  "pages": [
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:aconitum"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:belladonna"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:garlic"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:hellebore"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:mandrake_root"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:white_sage"
+	},
+	{
+	  "type": "spotlight",
+	  "text": "needs text",
+	  "item": "bewitchment:wormwood"
+	}
+  ]
+}
