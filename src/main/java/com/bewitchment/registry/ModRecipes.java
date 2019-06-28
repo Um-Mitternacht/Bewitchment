@@ -366,6 +366,8 @@ public class ModRecipes {
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "slimeball"), Collections.singletonList(Util.get(ModObjects.hoof)), Collections.singletonList(new ItemStack(Items.SLIME_BALL))));
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "iron_gall_ink"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("nuggetIron")), Collections.singletonList(new ItemStack(ModObjects.iron_gall_ink, 3))));
 		
+		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu"), Collections.singletonList(Util.get("log")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
+		
 		//Leather armor dye removal
 		//FIXME: Probably does not respect damage values, please fix
 		BewitchmentAPI.REGISTRY_CAULDRON.register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "leather_helm_cleaning"), Collections.singletonList(Util.get(Items.LEATHER_HELMET)), Collections.singletonList(new ItemStack(Items.LEATHER_HELMET))));
