@@ -25,6 +25,7 @@ public class RenderTileEntityWitchesCauldron extends TileEntitySpecialRenderer<T
 	
 	@Override
 	public void render(TileEntityWitchesCauldron tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+		if (tile.hasCustomName()) drawNameplate(tile, tile.getName(), x, y - 0.25, z, 3);
 		FluidTank tank = (FluidTank) tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		if (tank.getFluid() != null) {
 			FluidStack stack = tank.getFluid();

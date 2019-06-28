@@ -49,14 +49,14 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
 	 */
-	private int mode = 0;
+	public int mode = 0;
 	
 	private static final int[] defaultColor = {0, 63, 255};
 	public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int heatTimer = 0, craftingTimer = 0;
 	private boolean hasPower;
-	private String name;
+	private String name = "";
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {

@@ -16,6 +16,9 @@ public class TeleportPlayerClient implements IMessage {
 	}
 	
 	public TeleportPlayerClient(double x, double y, double z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
 	}
 	
 	@Override

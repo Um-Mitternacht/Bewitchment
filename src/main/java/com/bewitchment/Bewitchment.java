@@ -25,11 +25,10 @@ package com.bewitchment;
 
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorldHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.SpawnBubble;
-import com.bewitchment.api.message.SpawnParticle;
-import com.bewitchment.api.message.SyncExtendedPlayer;
-import com.bewitchment.api.message.TeleportPlayerClient;
+import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.ArmorHandler;
@@ -98,6 +97,8 @@ public class Bewitchment {
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
+		CapabilityManager.INSTANCE.register(ExtendedWorld.class, new ExtendedWorld(), ExtendedWorld::new);
+		MinecraftForge.EVENT_BUS.register(new ExtendedWorldHandler());
 		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
 	}
 	
@@ -120,6 +121,7 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
