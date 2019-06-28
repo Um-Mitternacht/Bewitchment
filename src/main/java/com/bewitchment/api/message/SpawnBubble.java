@@ -7,7 +7,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class SpawnBubble implements IMessage {
@@ -60,8 +59,8 @@ public class SpawnBubble implements IMessage {
 	public static class Handler implements IMessageHandler<SpawnBubble, IMessage> {
 		@Override
 		public IMessage onMessage(SpawnBubble message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT)
-				Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().effectRenderer.addEffect(new ModParticleBubble.Factory().createParticle(0, Minecraft.getMinecraft().world, message.x, message.y, message.z, message.colorX, message.colorY, message.colorZ)));
+			if (ctx.side.isClient())
+				Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().effectRenderer.addEffect(new ModParticleBubble.Factory().createParticle(0, Minecraft.getMinecraft().player.world, message.x, message.y, message.z, message.colorX, message.colorY, message.colorZ)));
 			return null;
 		}
 	}

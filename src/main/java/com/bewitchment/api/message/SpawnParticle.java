@@ -7,18 +7,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class SpawnParticle implements IMessage {
 	public EnumParticleTypes type;
-	public double x, y, z;
-	public int speedX, speedY, speedZ;
+	public double x, y, z, speedX, speedY, speedZ;
 	
 	public SpawnParticle() {
 	}
 	
-	public SpawnParticle(EnumParticleTypes type, double x, double y, double z, int speedX, int speedY, int speedZ) {
+	public SpawnParticle(EnumParticleTypes type, double x, double y, double z, double speedX, double speedY, double speedZ) {
 		this.type = type;
 		this.x = x;
 		this.y = y;
@@ -46,9 +44,9 @@ public class SpawnParticle implements IMessage {
 		x = byteBuf.readDouble();
 		y = byteBuf.readDouble();
 		z = byteBuf.readDouble();
-		speedX = byteBuf.readInt();
-		speedY = byteBuf.readInt();
-		speedZ = byteBuf.readInt();
+		speedX = byteBuf.readDouble();
+		speedY = byteBuf.readDouble();
+		speedZ = byteBuf.readDouble();
 	}
 	
 	@Override
@@ -57,15 +55,15 @@ public class SpawnParticle implements IMessage {
 		byteBuf.writeDouble(x);
 		byteBuf.writeDouble(y);
 		byteBuf.writeDouble(z);
-		byteBuf.writeInt(speedX);
-		byteBuf.writeInt(speedY);
-		byteBuf.writeInt(speedZ);
+		byteBuf.writeDouble(speedX);
+		byteBuf.writeDouble(speedY);
+		byteBuf.writeDouble(speedZ);
 	}
 	
 	public static class Handler implements IMessageHandler<SpawnParticle, IMessage> {
 		@Override
 		public IMessage onMessage(SpawnParticle message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().world.spawnParticle(message.type, message.x, message.y, message.z, message.speedX, message.speedY, message.speedZ));
+			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().world.spawnParticle(message.type, message.x, message.y, message.z, message.speedX, message.speedY, message.speedZ));
 			return null;
 		}
 	}

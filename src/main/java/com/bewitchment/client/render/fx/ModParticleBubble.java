@@ -50,7 +50,6 @@ public class ModParticleBubble extends Particle {
 	}
 	
 	@SuppressWarnings("NullableProblems")
-	@SideOnly(Side.CLIENT)
 	public static class Factory implements IParticleFactory {
 		public Factory() {
 		}

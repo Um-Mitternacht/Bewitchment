@@ -78,7 +78,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		boolean flag = super.shouldRefresh(world, pos, oldState, newState);
-		if (flag) stopRitual(false);
+		if (!world.isRemote && flag) stopRitual(false);
 		return flag;
 	}
 	
@@ -90,7 +90,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	@Override
 	public void update() {
-		if (ritual != null) {
+		if (!world.isRemote && ritual != null) {
 			if (caster != null) {
 				if (world.getTotalWorldTime() % 20 == 0) {
 					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
@@ -98,7 +98,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				}
 				ritual.onUpdate(world, effectivePos, caster, inventory);
 			}
-			if (world.isRemote) ritual.onClientUpdate(world, effectivePos);
 			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
 		}
 	}

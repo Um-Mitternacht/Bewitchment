@@ -16,8 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -88,10 +86,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 	
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public void onClientUpdate(World world, BlockPos pos) {
 	}
 	
 	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler, List<EntityLivingBase> livings) {

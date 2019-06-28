@@ -2,6 +2,7 @@ package com.bewitchment.common.ritual;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.entity.living.EntityToad;
@@ -17,8 +18,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
@@ -64,7 +63,12 @@ public class RitualWednesday extends Ritual {
 	
 	@Override
 	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		if (!world.isRemote && world.getTotalWorldTime() % 10 == 0) {
+		for (int i = 0; i < 10; i++) {
+			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
+			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
+			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.SLIME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
+		}
+		if (world.getTotalWorldTime() % 10 == 0) {
 			if (world.rand.nextInt(6) == 0) {
 				EntityLiving entity = new EntityToad(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
@@ -86,16 +90,6 @@ public class RitualWednesday extends Ritual {
 					entity.motionZ += ((world.rand.nextFloat() * 2 - world.rand.nextFloat()) - world.rand.nextFloat()) / 2;
 				}
 			}
-		}
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void onClientUpdate(World world, BlockPos pos) {
-		for (int i = 0; i < 10; i++) {
-			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
-			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
-			world.spawnParticle(EnumParticleTypes.SLIME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz));
 		}
 	}
 }
