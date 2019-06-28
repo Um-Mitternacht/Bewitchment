@@ -44,11 +44,11 @@ public class BlockGlyph extends ModBlockContainer {
 	 */
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 4);
 	
-	public static final int GOLDEN = 0, NORMAL = 1, NETHER = 2, ENDER = 3, ANY = 4;
-	
 	private static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
 	
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0.0025, 1);
+	
+	public static final int GOLDEN = 0, NORMAL = 1, NETHER = 2, ENDER = 3, ANY = 4;
 	
 	public BlockGlyph() {
 		super(null, "glyph", Material.CIRCUITS, SoundType.STONE, 5, 100, "", -1);
@@ -129,6 +129,7 @@ public class BlockGlyph extends ModBlockContainer {
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
 			TileEntityGlyph tile = (TileEntityGlyph) world.getTileEntity(pos);
+			tile.syncToClient();
 			if (tile.casterId != null) tile.caster = Util.findPlayer(tile.casterId);
 		}
 		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);

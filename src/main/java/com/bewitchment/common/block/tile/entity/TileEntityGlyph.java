@@ -153,24 +153,26 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 				effectiveDim = world.provider.getDimension();
 				time = 0;
 				ritual.onStarted(world, pos, player, inventory);
-				syncToClient();
 				player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+				syncToClient();
 			}
 			else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		}
 	}
 	
 	public void stopRitual(boolean finished) {
-		if (ritual != null && caster != null) {
-			if (finished) ritual.onFinished(world, pos, caster, inventory);
-			else ritual.onHalted(world, pos, caster, inventory);
+		if (!world.isRemote) {
+			if (ritual != null && caster != null) {
+				if (finished) ritual.onFinished(world, pos, caster, inventory);
+				else ritual.onHalted(world, pos, caster, inventory);
+			}
+			ritual = null;
+			casterId = null;
+			caster = null;
+			effectivePos = pos;
+			effectiveDim = world.provider.getDimension();
+			time = 0;
+			syncToClient();
 		}
-		ritual = null;
-		casterId = null;
-		caster = null;
-		effectivePos = pos;
-		effectiveDim = world.provider.getDimension();
-		time = 0;
-		syncToClient();
 	}
 }
