@@ -63,10 +63,6 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.NETHER_BRICK.getDefaultState());
 						flag = true;
 					}
-					else if (block == Blocks.WOOL) {
-						world.setBlockState(pos0, Blocks.WOOL.getDefaultState());
-						flag = true;
-					}
 					else if (block == Blocks.BRICK_STAIRS) {
 						world.setBlockState(pos0, Blocks.NETHER_BRICK_STAIRS.getDefaultState());
 						flag = true;
