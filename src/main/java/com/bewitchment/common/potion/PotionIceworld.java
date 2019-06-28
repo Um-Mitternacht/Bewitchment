@@ -73,6 +73,10 @@ public class PotionIceworld extends ModPotion {
 						world.setBlockState(pos0, ModObjects.perpetual_ice_fence.getDefaultState());
 						flag = true;
 					}
+					else if (block instanceof BlockLeaves) {
+						world.setBlockState(pos0, ModObjects.perpetual_ice.getDefaultState());
+						flag = true;
+					}
 					else if (block == Blocks.DOUBLE_STONE_SLAB || block == Blocks.DOUBLE_STONE_SLAB2 || block == ModObjects.scorned_bricks_slab.double_slab) {
 						world.setBlockState(pos0, ModObjects.embittered_bricks_slab.double_slab.getDefaultState());
 						flag = true;
