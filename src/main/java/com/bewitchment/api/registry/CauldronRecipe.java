@@ -15,6 +15,8 @@ public class CauldronRecipe extends IForgeRegistryEntry.Impl<CauldronRecipe> {
 	
 	public CauldronRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
 		setRegistryName(name);
+		if (input.size() > 10) throw new IllegalArgumentException("CauldronRecipes can only have at most 10 input items");
+		if (output.size() > 3) throw new IllegalArgumentException("CauldronRecipes can only have at most 3 output items");
 		this.input = input;
 		this.output = output;
 	}

@@ -12,23 +12,23 @@
 	  "recipe": "bewitchment:spinning_wheel"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "minecraft:web",
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:cobweb",
 	  "text": "generic cobweb woven from string"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:diabolical_vein",
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:diabolical_vein",
 	  "text": "demonic thread"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:pure_filament",
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:pure_filament",
 	  "text": "purified thread"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:witches_stitching",
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:witches_stitching",
 	  "text": "magical thread"
 	}
   ]

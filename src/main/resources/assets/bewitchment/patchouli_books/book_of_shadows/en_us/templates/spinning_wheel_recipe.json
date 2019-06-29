@@ -1,0 +1,49 @@
+{
+  "processor": "com.bewitchment.common.integration.patchouli.ProcessorSpinningWheel",
+  "components": [
+	{
+	  "type": "item",
+	  "item": "#input0",
+	  "x": 20,
+	  "y": 4
+	},
+	{
+	  "type": "item",
+	  "item": "#input1",
+	  "x": 39,
+	  "y": 4
+	},
+	{
+	  "type": "item",
+	  "item": "#input2",
+	  "x": 20,
+	  "y": 23
+	},
+	{
+	  "type": "item",
+	  "item": "#input3",
+	  "x": 39,
+	  "y": 23
+	},
+	{
+	  "type": "item",
+	  "item": "#output",
+	  "x": 76,
+	  "y": 15
+	},
+	{
+	  "type": "text",
+	  "text": "#text",
+	  "x": 0,
+	  "y": 44
+	},
+	{
+	  "type": "image",
+	  "image": "bewitchment:textures/gui/patchouli.png",
+	  "x": 16,
+	  "u": 156,
+	  "width": 80,
+	  "height": 43
+	}
+  ]
+}
