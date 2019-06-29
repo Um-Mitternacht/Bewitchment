@@ -1,5 +1,7 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
+import com.bewitchment.common.entity.living.EntityToad;
+import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -288,6 +290,9 @@ public class ModelDemon extends ModelBiped {
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+		
+		EntityDemon demon = (EntityDemon) entityIn;
+		
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
 		
@@ -298,6 +303,11 @@ public class ModelDemon extends ModelBiped {
 		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
 		
 		tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
+		
+		if (demon.attackEntityAsMob(entityIn)) {
+			bipedLeftArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25F + (float) Math.PI) * 0.45F * limbSwingAmount - 0.26F;
+			bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.45F * limbSwingAmount - 0.26F;
+		}
 	}
 	
 	/**
