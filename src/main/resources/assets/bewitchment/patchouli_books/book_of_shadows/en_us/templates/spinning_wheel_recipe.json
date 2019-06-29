@@ -5,42 +5,47 @@
 	  "type": "item",
 	  "item": "#input0",
 	  "x": 20,
-	  "y": 4
+	  "y": 13
 	},
 	{
 	  "type": "item",
 	  "item": "#input1",
 	  "x": 39,
-	  "y": 4
+	  "y": 13
 	},
 	{
 	  "type": "item",
 	  "item": "#input2",
 	  "x": 20,
-	  "y": 23
+	  "y": 32
 	},
 	{
 	  "type": "item",
 	  "item": "#input3",
 	  "x": 39,
-	  "y": 23
+	  "y": 32
 	},
 	{
 	  "type": "item",
 	  "item": "#output",
 	  "x": 76,
-	  "y": 15
+	  "y": 24
 	},
 	{
 	  "type": "text",
 	  "text": "#text",
-	  "x": 0,
-	  "y": 44
+	  "y": 56
+	},
+	{
+	  "type": "header",
+	  "text": "#name",
+	  "x": -1
 	},
 	{
 	  "type": "image",
 	  "image": "bewitchment:textures/gui/patchouli.png",
 	  "x": 16,
+	  "y": 9,
 	  "u": 156,
 	  "width": 80,
 	  "height": 43

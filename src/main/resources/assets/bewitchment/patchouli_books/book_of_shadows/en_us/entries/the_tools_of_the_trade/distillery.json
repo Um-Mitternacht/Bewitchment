@@ -12,23 +12,23 @@
 	  "recipe": "bewitchment:distillery"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:cleansing_balm",
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:cleansing_balm",
 	  "text": "related to purity and banishment of the undead"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:demonic_elixir",
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:demonic_elixir",
 	  "text": "related to demons"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:fiery_unguent",
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:fiery_unguent",
 	  "text": "related to fire"
 	},
 	{
-	  "type": "spotlight",
-	  "item": "bewitchment:bottled_frostfire",
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:bottled_frostfire",
 	  "text": "purified flames, creates cold iron"
 	},
 	{
