@@ -68,6 +68,10 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.WOOL.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED));
 						flag = true;
 					}
+					else if (block == ModObjects.embittered_bricks) {
+						world.setBlockState(pos0, ModObjects.scorned_bricks[0].getDefaultState());
+						flag = true;
+					}
 					else if (block == Blocks.GRASS_PATH) {
 						world.setBlockState(pos0, Blocks.RED_NETHER_BRICK.getDefaultState());
 						flag = true;
