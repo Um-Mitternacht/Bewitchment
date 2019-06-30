@@ -37,16 +37,6 @@
 	  "type": "spotlight",
 	  "item": "bewitchment:wormwood",
 	  "text": "An herbaceous plant that often grows in and near Tall Grass. Wormwood is used to help communicate with spirits. Some groups are known to use this plant to brew potent alcohols."
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:embergrass",
-	  "text": "An alchemically created plant. It emits burning cinders that ignite those who touch it. This plant will also spread, making it great for base defence."
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:torchwood",
-	  "text": "An alchemically created plant. It emits light from the bulb at the end of its woody stem. Just as natural plants do, the Torchwood spreads."
 	}
   ]
 }

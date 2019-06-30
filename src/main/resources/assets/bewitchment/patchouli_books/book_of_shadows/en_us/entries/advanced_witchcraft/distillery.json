@@ -1,0 +1,35 @@
+{
+  "name": "Distillery",
+  "category": "advanced_witchcraft",
+  "icon": "bewitchment:distillery",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Used to make higher-tier fumes than what the Witch’s Oven can produce alone. Certain other compounds can also be created with this device. The distillery requires magic energy and must use Blaze Powder as a fuel."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:distillery"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:cleansing_balm",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:demonic_elixir",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:fiery_unguent",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:bottled_frostfire",
+	  "text": "needs text"
+	}
+  ]
+}

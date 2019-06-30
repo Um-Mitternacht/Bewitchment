@@ -11,6 +11,16 @@
 	  "type": "entity",
 	  "entity": "bewitchment:imp",
 	  "scale": 0.75
+	},
+	{
+	  "type": "text",
+	  "title": "Summoning",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:conjure_imp",
+	  "name": "Conjure Imp"
 	}
   ]
 }

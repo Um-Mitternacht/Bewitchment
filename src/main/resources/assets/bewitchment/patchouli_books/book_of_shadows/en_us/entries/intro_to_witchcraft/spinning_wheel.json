@@ -1,8 +1,16 @@
 {
-  "name": "Threads",
+  "name": "Spinning Wheel",
   "category": "intro_to_witchcraft",
-  "icon": "bewitchment:witches_stitching",
+  "icon": "bewitchment:spinning_wheel",
   "pages": [
+	{
+	  "type": "text",
+	  "text": "Used to create magical threads and strings. Requires magic energy to function."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:spinning_wheel"
+	},
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:cobweb",

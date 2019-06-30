@@ -31,15 +31,6 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Flying Ointment",
-	  "text": "A fairly grotesque mixture of tallow of the dead along with many toxic and aromatic plants with known psychoactive properties, brooms can be anointed with this mixture in order to imbue it with magic to allow it to fly. This ointment is also said to be used at certain black masses, often when a powerful demon is present."
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:flying_ointment"
-	},
-	{
-	  "type": "text",
 	  "title": "Nazar",
 	  "text": "A charm made to resemble an eye used to protect from magic damage, and keeps bad luck at bay."
 	},
@@ -49,39 +40,12 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Token of Remedies",
-	  "text": "A golden charm with an Amethyst in its core. This will cure the wearer of a variety of negative status effects at the cost of magic energy."
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:equipment/bauble/token_of_remedies"
-	},
-	{
-	  "type": "text",
 	  "title": "Girdle of the Dryads",
 	  "text": "A special belt that will grow magic wood all over the wearer, completely protection them from damage, so long as it isn't fire or magic. However the user must be on grass in order to grow the wood."
 	},
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:equipment/bauble/girdle_of_the_dryads"
-	},
-	{
-	  "type": "text",
-	  "title": "Horseshoe",
-	  "text": "While more commonly attached to a horse’s hoof to protect its hooves from wear and tear, the horseshoe also protects from spirits that may harm the owner."
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:equipment/bauble/horseshoe"
-	},
-	{
-	  "type": "text",
-	  "title": "Grimoire Magia",
-	  "text": "Despite the fact you contain ME in your own body, your soul prevents it from leaving, also preventing it from being used. Instead, the Grimoire Magia can be used for on-the-go magic. It must be placed on an Altar to charge it with ME."
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:grimoire_magia"
 	},
 	{
 	  "type": "text",
