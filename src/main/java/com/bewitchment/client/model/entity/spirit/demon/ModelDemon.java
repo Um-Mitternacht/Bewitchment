@@ -1,6 +1,7 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -288,11 +289,8 @@ public class ModelDemon extends ModelBiped {
 		this.body.render(scale);
 	}
 	
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-		
-		EntityDemon demon = (EntityDemon) entityIn;
-		
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
 		
@@ -303,17 +301,16 @@ public class ModelDemon extends ModelBiped {
 		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
 		
 		tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
+		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
-	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
-		
-		EntityDemon demon = (EntityDemon) entitylivingbaseIn;
-		
-		if (demon.attackEntityAsMob(entitylivingbaseIn)) {
-			bipedLeftArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25F + (float) Math.PI) * 0.45F * limbSwingAmount - 0.26F;
-			bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.45F * limbSwingAmount - 0.26F;
+	public void setLivingAnimations(EntityLivingBase living, float limbSwing, float limbSwingAmount, float partialTickTime) {
+		EntityDemon demon = (EntityDemon) living;
+		int i = demon.attackTimer;
+		if (i > 0) {
+			bipedRightArm.rotateAngleX = -2 + 1.5f * this.triangleWave((float) i - partialTickTime, 10);
+			bipedLeftArm.rotateAngleX = -2 + 1.5f * this.triangleWave((float) i - partialTickTime, 10);
 		}
-		
 	}
 	
 	/**
@@ -323,5 +320,9 @@ public class ModelDemon extends ModelBiped {
 		renderer.rotateAngleX = x;
 		renderer.rotateAngleY = y;
 		renderer.rotateAngleZ = z;
+	}
+	
+	private float triangleWave(float x, float y) {
+		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 }

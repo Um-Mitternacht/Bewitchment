@@ -6,9 +6,11 @@ import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
@@ -22,6 +24,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	private MerchantRecipeList recipeList;
 	private EntityPlayer buyer;
 	private int careerID, careerLevel, wealth;
+	public int attackTimer = 0;
 	
 	public EntityDemon(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon"));
@@ -73,10 +76,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
+			attackTimer = 10;
+			world.setEntityState(this, (byte) 4);
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 1, false, false));
 				entity.setFire(25);
 				entity.motionY += 0.6;
+				if (entity instanceof EntityPlayer) ((EntityPlayerMP) entity).connection.sendPacket(new SPacketEntityVelocity(entity));
 			}
 		}
 		return flag;
@@ -111,6 +117,19 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
 	//		return super.onInitialSpawn(difficulty, data);
 	//	}
+	
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (attackTimer > 0) attackTimer--;
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
+	}
 	
 	@Override
 	protected void applyEntityAttributes() {
