@@ -50,6 +50,286 @@
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:banner_pattern_removal",
 	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:instant_health",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:instant_damage",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:regeneration",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:poison",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:wither",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:night_vision",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:blindness",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:strength",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:weakness",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:resistance",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:fire_resistance",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:absorption",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:jump_boost",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:speed",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:slowness",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:haste",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:mining_fatigue",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:luck",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:unluck",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:water_breathing",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:invisibility",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:hunger",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:nausea",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:glowing",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:levitation",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:absence",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:purification",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:corruption",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:magic_resistance",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:magic_weakness",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:hellworld",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:iceworld",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:rubedo",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:citrinitas",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:desertification",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:fertility",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:harvest",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:spore_cloud",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:blight",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:ruin",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:pesticide",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:arachnophobia",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:mending",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:holy_water",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:wolfsbane",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:deviants_decomposure",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:sleeping",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:volatility",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:grace",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:shell_armor",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:deflection",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:enderference",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:revealing",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:disrobing",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:sinking",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:cursed_leaps",
+	  "text": "needs text"
 	}
   ]
 }
