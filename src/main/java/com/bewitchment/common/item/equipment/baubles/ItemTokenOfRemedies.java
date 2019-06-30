@@ -1,8 +1,10 @@
 package com.bewitchment.common.item.equipment.baubles;
 
 import baubles.api.BaubleType;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.item.util.ModItemBauble;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -11,7 +13,6 @@ import net.minecraft.item.ItemStack;
 public class ItemTokenOfRemedies extends ModItemBauble {
 	public ItemTokenOfRemedies() {
 		super("token_of_remedies", BaubleType.TRINKET);
-		setMaxDamage(8);
 	}
 	
 	@Override
@@ -20,14 +21,13 @@ public class ItemTokenOfRemedies extends ModItemBauble {
 	}
 	
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase player) {
-		if (player.ticksExisted % 40 == 0 && (player.isPotionActive(MobEffects.BLINDNESS) || player.isPotionActive(MobEffects.NAUSEA) || player.isPotionActive(MobEffects.POISON) || player.isPotionActive(MobEffects.WEAKNESS) || player.isPotionActive(MobEffects.WITHER))) {
-			player.removePotionEffect(MobEffects.BLINDNESS);
-			player.removePotionEffect(MobEffects.NAUSEA);
-			player.removePotionEffect(MobEffects.POISON);
-			player.removePotionEffect(MobEffects.WEAKNESS);
-			player.removePotionEffect(MobEffects.WITHER);
-			stack.damageItem(1, player);
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living instanceof EntityPlayer && (living.isPotionActive(MobEffects.BLINDNESS) || living.isPotionActive(MobEffects.NAUSEA) || living.isPotionActive(MobEffects.POISON) || living.isPotionActive(MobEffects.WEAKNESS) || living.isPotionActive(MobEffects.WITHER)) && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
+			living.removePotionEffect(MobEffects.BLINDNESS);
+			living.removePotionEffect(MobEffects.NAUSEA);
+			living.removePotionEffect(MobEffects.POISON);
+			living.removePotionEffect(MobEffects.WEAKNESS);
+			living.removePotionEffect(MobEffects.WITHER);
 		}
 	}
 }

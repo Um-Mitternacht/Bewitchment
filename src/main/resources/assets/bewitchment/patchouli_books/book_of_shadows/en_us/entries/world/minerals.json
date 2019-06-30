@@ -1,0 +1,69 @@
+{
+  "name": "Minerals",
+  "category": "world",
+  "icon": "bewitchment:amethyst",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs description"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Coquina",
+	  "text": "A type of sedimentary stone found on Beaches. This stone has a powerful connection to the oceans and is in fact composed of the remains of shellfish."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Amethyst",
+	  "text": "An incredibly popular purple crystal. It is used to help boost offensive magics."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Garnet",
+	  "text": "A gemstone with a deep red-purple hue. This gem is very good at protecting from evil magics."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Moonstone",
+	  "text": "A milky blue-white gem. Historically, it was believed to be solidified moonbeams, and has a powerful connection to night and darkness."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Salt",
+	  "text": "A mineral found fairly shallow underground. While seeming rather inconspicuous, salt is used to protect against all forms of supernatural creatures, acting as a physical barrier of sorts towards them."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Silver",
+	  "text": "A brilliant metal, next to only gold. Representing the moon as well as purity, silver is a coveted metal used in many magical devices. It also finds widespread use in slaying supernatural beings, commonly werewolves, but vampires and other undead are also harmed by it."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	}
+  ]
+}

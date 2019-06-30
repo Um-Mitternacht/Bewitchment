@@ -1,0 +1,96 @@
+{
+  "name": "Plants",
+  "category": "world",
+  "icon": "bewitchment:hellebore",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs description"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Aconitum",
+	  "text": "A toxic flower whose seeds can be found in tall grass. It is especially harmful to wolves and other canids, including lycanthropes. While toxic, other creatures aren’t affected by it as much."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Belladonna",
+	  "text": "A beautiful but poisonous flower, seeds are commonly found in tall grass. This plant is known for its psychoactive properties, and is the main ingredient of Flying Ointment."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Garlic",
+	  "text": "A type of Allium, with an edible bulb. However, vampires are known to avoid this plant, and is commonly used to protect against them. Other forms of undead also appear to have an aversion to it."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Hellebore",
+	  "text": "A harmless and gorgeous flower commonly cultivated for gardens. Its seeds can easily be found in overgrown grasses. This flower is also known for its connection to demons."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Mandrake",
+	  "text": "A strange plant with both psychoactive properties and an uncanny appearance. Its root contains great magical powers. Seeds of this plant can be found in grass."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "White Sage",
+	  "text": "A plant adapted to arid lands, its seeds often get stuck in Dead Bushes. This plant has the power to ward away demons and other dark spirits."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Wormwood",
+	  "text": "An herbaceous plant that often grows in and near Tall Grass. Wormwood is used to help communicate with spirits. Some groups are known to use this plant to brew potent alcohols."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Embergrass",
+	  "text": "An alchemically created plant. It emits burning cinders that ignite those who touch it. This plant will also spread, making it great for base defence."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Torchwood",
+	  "text": "An alchemically created plant. It emits light from the bulb at the end of its single woody stem. Just as natural plants do, the Torchwood will spread naturally."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	}
+  ]
+}

@@ -24,14 +24,14 @@ public class ItemHorseshoe extends ModItemBauble {
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
+	public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
+		living.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
 	}
 	
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase player) {
-		if (player.ticksExisted % 40 == 0) {
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0) {
+			living.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
 		}
 	}
 	

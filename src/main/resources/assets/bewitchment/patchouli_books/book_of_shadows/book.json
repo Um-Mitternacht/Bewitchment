@@ -1,7 +1,7 @@
 {
-  "name": "item.bewitchment.book_of_shadows.name",
-  "subtitle": "tooltip.bewitchment.book_of_shadows",
-  "landing_text": "tooltip.bewitchment.book_of_shadows",
+  "name": "Book of Shadows",
+  "subtitle": "needs tooltip",
+  "landing_text": "needs text",
   "model": "bewitchment:book_of_shadows",
   "book_texture": "bewitchment:textures/gui/book.png",
   "show_toasts": false,

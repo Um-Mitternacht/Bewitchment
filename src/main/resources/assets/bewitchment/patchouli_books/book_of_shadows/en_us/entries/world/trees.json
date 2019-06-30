@@ -1,0 +1,63 @@
+{
+  "name": "Trees",
+  "category": "world",
+  "icon": "bewitchment:elder_sapling",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs description"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Cypress",
+	  "text": "A tall and dark tree found in coniferous settings, such as Taigas. This tree is associated with death and the afterlife, and is vital to creating the Ebb of Death fume. Despite this, brooms made from its wood give the rider temporary resistance when in flight."
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/cypress.png"
+	  ],
+	  "border": true
+	},
+	{
+	  "type": "text",
+	  "title": "Elder",
+	  "text": "Elder is a tree that is commonly seen in lush forests, including common Forests and Birch Forests. This tree is associated with wisdom and its saplings produce the Drop of Wisdom fume. Magic brooms made from this tree's wood are among the fastest. This tree also produces juicy berries, which your father smelt of."
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/elder.png"
+	  ],
+	  "border": true
+	},
+	{
+	  "type": "text",
+	  "title": "Juniper",
+	  "text": "A tree mostly found in arid settings, most commonly in the Savanna. This tree is renowned for its great magic powers, and extracts from young trees are used to make Liquid Witchcraft. Brooms of this wood type have innate magic powers, and do not need ME to fly. It produces small blue berry-like cones that are a popular spice."
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/juniper.png"
+	  ],
+	  "border": true
+	},
+	{
+	  "type": "text",
+	  "title": "Yew",
+	  "text": "A large, 2x2 sized tree found only in the densest of old-growth forests, such as Roofed Forests. It produces toxic fleshy cones known as arils. Yew is a very long-lived tree, and burning saplings of it yield Essence of Vitality. Its brooms have the unique ability to teleport the user back to the where they first mounted it."
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/yew.png"
+	  ],
+	  "border": true
+	}
+  ]
+}

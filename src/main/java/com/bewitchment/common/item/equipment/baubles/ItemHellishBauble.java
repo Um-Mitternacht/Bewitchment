@@ -20,8 +20,8 @@ public class ItemHellishBauble extends ModItemBauble {
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		player.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
+	public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
+		living.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
 	}
 	
 	@Override

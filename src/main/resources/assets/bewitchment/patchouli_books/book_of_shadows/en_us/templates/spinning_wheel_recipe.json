@@ -43,7 +43,7 @@
 	},
 	{
 	  "type": "image",
-	  "image": "bewitchment:textures/gui/patchouli.png",
+	  "image": "bewitchment:textures/gui/patchouli/gui.png",
 	  "x": 16,
 	  "y": 9,
 	  "u": 156,

@@ -38,12 +38,12 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 	}
 	
 	@Override
-	public void onEquipped(ItemStack stack, EntityLivingBase player) {
-		player.playSound(SoundEvents.BLOCK_WOOD_STEP, .75F, 1.9f);
+	public void onEquipped(ItemStack stack, EntityLivingBase living) {
+		living.playSound(SoundEvents.BLOCK_WOOD_STEP, .75F, 1.9f);
 	}
 	
 	@Override
-	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
+	public void onUnequipped(ItemStack stack, EntityLivingBase living) {
 		setBark(stack, 0);
 	}
 	
@@ -58,17 +58,17 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
+	public void onPlayerBaubleRender(ItemStack stack, EntityPlayer living, RenderType type, float partialTicks) {
 		if (type == RenderType.BODY) {
-			ModelBase model = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty() ? new ModelGirdleOfTheDryad() : new ModelGirdleOfTheDryadArmor();
+			ModelBase model = living.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty() ? new ModelGirdleOfTheDryad() : new ModelGirdleOfTheDryadArmor();
 			GlStateManager.pushMatrix();
-			IRenderBauble.Helper.rotateIfSneaking(player);
+			IRenderBauble.Helper.rotateIfSneaking(living);
 			GlStateManager.rotate(180, 1, 0, 0);
 			GlStateManager.translate(0, 0, 0.02);
 			GlStateManager.scale(0.12, 0.12, 0.12);
 			IRenderBauble.Helper.translateToChest();
 			IRenderBauble.Helper.defaultTransforms();
-			model.render(player, player.limbSwing, player.limbSwingAmount, player.ticksExisted, player.prevRotationYaw, player.rotationPitch, 1);
+			model.render(living, living.limbSwing, living.limbSwingAmount, living.ticksExisted, living.prevRotationYaw, living.rotationPitch, 1);
 			GlStateManager.popMatrix();
 		}
 	}

@@ -1,0 +1,25 @@
+{
+  "name": "Spirits",
+  "category": "world",
+  "icon": "bewitchment:spectral_dust",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "The physical world is often visited by beings of a metaphysical nature, either to act as guardians and protectors, or to cause mischief, and in some cases, with malevolent purposes. Regardless of their nature, Cold Iron is the de-facto tool to use against them."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Black Dog",
+	  "text": "Black dogs resemble a massive shadowy canid, and are known to haunt the countryside, tormenting the people who live there. If attacked, Black Dogs may turn invisible, with only the glow of their eyes visible."
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:black_dog",
+	  "scale": 0.5
+	}
+  ]
+}

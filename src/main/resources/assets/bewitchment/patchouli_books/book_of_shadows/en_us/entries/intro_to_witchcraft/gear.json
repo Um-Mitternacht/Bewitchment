@@ -1,0 +1,93 @@
+{
+  "name": "Gear",
+  "category": "intro_to_witchcraft",
+  "icon": "bewitchment:athame",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Witchcraft is known to have many tools and equipment used in its practice, from helping to amplify magic, or to defend against opposing forces."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Athame",
+	  "text": "A sacred ritual dagger, which traditionally has a black handle.When creatures are slain by an Athame, they may drop unique reagents. The Athame is also used as an aid in conjurings."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/tool/athame"
+	},
+	{
+	  "type": "text",
+	  "title": "Boline",
+	  "text": "A sickle that usually has a white handle. The Boline can harmlessly harvest items from creatures, such as feathers from a raven, or string from a sheep. It is also used when conducting more nature-oriented rituals."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/tool/boline"
+	},
+	{
+	  "type": "text",
+	  "title": "Nazar",
+	  "text": "A charm made to resemble an eye used to protect from magic damage, and keeps bad luck at bay."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/bauble/nazar"
+	},
+	{
+	  "type": "text",
+	  "title": "Token of Remedies",
+	  "text": "A golden charm with an Amethyst in its core. This will cure the wearer of a variety of negative status effects at the cost of magic energy."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/bauble/token_of_remedies"
+	},
+	{
+	  "type": "text",
+	  "title": "Girdle of the Dryads",
+	  "text": "A special belt that will grow magic wood all over the wearer, completely protection them from damage, so long as it isn't fire or magic. However the user must be on grass in order to grow the wood."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/bauble/girdle_of_the_dryads"
+	},
+	{
+	  "type": "text",
+	  "title": "Horseshoe",
+	  "text": "While more commonly attached to a horse’s hoof to protect its hooves from wear and tear, the horseshoe also protects from spirits that may harm the owner."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/bauble/horseshoe"
+	},
+	{
+	  "type": "text",
+	  "title": "Grimoire Magia",
+	  "text": "Despite the fact you contain ME in your own body, your soul prevents it from leaving, also preventing it from being used. Instead, the Grimoire Magia can be used for on-the-go magic. It must be placed on an Altar to charge it with ME."
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:grimoire_magia"
+	},
+	{
+	  "type": "text",
+	  "title": "Witches' Robes",
+	  "text": "Witch’s Robes are the preferred clothing for practitioners of Witchcraft, and provide innate magic resistance."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/armor/witches_hat",
+	  "recipe2": "bewitchment:equipment/armor/witches_cowl"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/armor/witches_robes",
+	  "recipe2": "bewitchment:equipment/armor/witches_pants"
+	}
+  ]
+}
