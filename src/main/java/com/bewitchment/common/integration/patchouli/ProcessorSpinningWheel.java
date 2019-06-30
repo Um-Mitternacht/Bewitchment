@@ -19,7 +19,7 @@ public class ProcessorSpinningWheel implements IComponentProcessor {
 	@Override
 	public String process(String key) {
 		if (recipe == null) return null;
-		else if (key.contains("input")) {
+		else if (key.startsWith("input")) {
 			int id = Integer.parseInt(key.substring(5));
 			if (recipe.input.size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.input.get(id));
 		}
