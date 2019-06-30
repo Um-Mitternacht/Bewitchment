@@ -1,0 +1,15 @@
+{
+  "name": "Demonic Nobles",
+  "category": "greater_demons",
+  "icon": "bewitchment:hellish_bauble",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Nobles of hell include Leonard of the Gate, Herne of the Green, Lilith of the Starless Night, and Baphomet of the Beyond. Unlike the lesser demons, these mighty nobles are known to visit the earthly plane to interact with mortals, but their reasons are unknown and incomprehensible."
+	},
+	{
+	  "type": "text",
+	  "text": "Despite this, no one has discovered how to invoke and summon these powerful beings, most of those who have claimed to have conjured them often go mad, and usually cannot repeat the process. Perhaps you will be the first to figure it out, and come back just as you went in…"
+	}
+  ]
+}

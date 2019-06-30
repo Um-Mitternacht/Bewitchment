@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityTameable;
+import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.state.IBlockState;
@@ -13,12 +14,15 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -29,6 +33,8 @@ public class EntityRaven extends ModEntityTameable {
 	public EntityRaven(World world) {
 		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, ModObjects.silver_nugget);
 	}
+	
+	protected int shearTimer;
 	
 	protected EntityRaven(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world, lootTableLocation, tameItems);
@@ -41,12 +47,6 @@ public class EntityRaven extends ModEntityTameable {
 		EntityAgeable entity = new EntityRaven(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.aiSit = new EntityAISit(this);
 	}
 	
 	@Override
@@ -80,6 +80,16 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && player.getHeldItem(hand).getItem() instanceof ItemBoline && shearTimer == 0 && !(this instanceof EntityOwl)) {
+			InventoryHelper.spawnItemStack(world, posX, posY, posZ, new ItemStack(ModObjects.ravens_feather, 1 + world.rand.nextInt(3)));
+			shearTimer = 12000;
+			return true;
+		}
+		else return super.processInteract(player, hand);
+	}
+	
+	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
@@ -88,6 +98,7 @@ public class EntityRaven extends ModEntityTameable {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!onGround && motionY <= 0) motionY *= 0.6;
+		if (shearTimer > 0) shearTimer--;
 	}
 	
 	@Override
@@ -96,6 +107,18 @@ public class EntityRaven extends ModEntityTameable {
 	
 	@Override
 	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("shearTimer", shearTimer);
+		super.writeEntityToNBT(tag);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		shearTimer = tag.getInteger("shearTimer");
+		super.readEntityFromNBT(tag);
 	}
 	
 	@Override

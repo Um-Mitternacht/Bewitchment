@@ -1,0 +1,27 @@
+{
+  "name": "Threads",
+  "category": "intro_to_witchcraft",
+  "icon": "bewitchment:witches_stitching",
+  "pages": [
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:cobweb",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:witches_stitching",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:diabolical_vein",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:pure_filament",
+	  "text": "needs text"
+	}
+  ]
+}

@@ -6,9 +6,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFleeSun;
-import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
-import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.passive.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -16,12 +14,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-@SuppressWarnings("WeakerAccess")
 public class EntityOwl extends EntityRaven {
 	public EntityOwl(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN);
 		setSize(0.4f, 0.9f);
-		moveHelper = new EntityFlyHelper(this);
 	}
 	
 	@Override
@@ -29,12 +25,6 @@ public class EntityOwl extends EntityRaven {
 		EntityAgeable entity = new EntityOwl(world);
 		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.aiSit = new EntityAISit(this);
 	}
 	
 	@Override

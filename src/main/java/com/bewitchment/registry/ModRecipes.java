@@ -546,9 +546,9 @@ public class ModRecipes {
 	
 	private static void spinningWheelInit() {
 		BewitchmentAPI.REGISTRY_SPINNING_WHEEL.register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "cobweb"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get("string")), new ItemStack(Blocks.WEB)));
+		BewitchmentAPI.REGISTRY_SPINNING_WHEEL.register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "witches_stitching"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.liquid_witchcraft)), new ItemStack(ModObjects.witches_stitching, 2)));
 		BewitchmentAPI.REGISTRY_SPINNING_WHEEL.register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "diabolical_vein"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.witches_stitching), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.heart)), new ItemStack(ModObjects.diabolical_vein, 2)));
 		BewitchmentAPI.REGISTRY_SPINNING_WHEEL.register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "pure_filament"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.witches_stitching), Util.get(ModObjects.acacia_resin), Util.get("cropWhiteSage")), new ItemStack(ModObjects.pure_filament, 2)));
-		BewitchmentAPI.REGISTRY_SPINNING_WHEEL.register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "witches_stitching"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.liquid_witchcraft)), new ItemStack(ModObjects.witches_stitching, 2)));
 	}
 	
 	private static void frostfireInit() {

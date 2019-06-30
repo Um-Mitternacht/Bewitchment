@@ -46,7 +46,6 @@ public class EntityToad extends ModEntityTameable {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.aiSit = new EntityAISit(this);
 		this.dataManager.register(ANIMATION_TIME, 0);
 		this.dataManager.register(ANIMATION_HEIGHT, 0f);
 	}
@@ -70,7 +69,7 @@ public class EntityToad extends ModEntityTameable {
 	public boolean attackEntityAsMob(Entity entity) {
 		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
 			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2000, 1, false, false));
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
 	}

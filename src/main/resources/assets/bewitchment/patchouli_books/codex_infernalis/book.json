@@ -1,7 +1,7 @@
 {
   "name": "Codex Infernalis",
-  "subtitle": "needs tooltip",
-  "landing_text": "needs text",
+  "version": "616",
+  "landing_text": "Simply holding this book feels wrong… do you dare proceed?",
   "book_texture": "bewitchment:textures/gui/book.png",
   "show_toasts": false,
   "creative_tab": "bewitchment",

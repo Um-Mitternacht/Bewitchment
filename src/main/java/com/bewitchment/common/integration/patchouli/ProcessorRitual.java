@@ -25,9 +25,9 @@ public class ProcessorRitual implements IComponentProcessor {
 		}
 		else if (key.contains("output")) {
 			int id = Integer.parseInt(key.substring(6));
-			if (recipe.output.size() > id) return PatchouliAPI.instance.serializeItemStack(recipe.output.get(id));
+			if (recipe.output != null && recipe.output.size() > id) return PatchouliAPI.instance.serializeItemStack(recipe.output.get(id));
 		}
-		else if (key.equals("name")) return recipe.output.get(0).getDisplayName();
+		else if (key.equals("name") && recipe.output != null) return recipe.output.get(0).getDisplayName();
 		return null;
 	}
 }

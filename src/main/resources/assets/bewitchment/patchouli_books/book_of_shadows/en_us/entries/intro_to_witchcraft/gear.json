@@ -14,7 +14,7 @@
 	{
 	  "type": "text",
 	  "title": "Athame",
-	  "text": "A sacred ritual dagger, which traditionally has a black handle.When creatures are slain by an Athame, they may drop unique reagents. The Athame is also used as an aid in conjurings."
+	  "text": "A sacred ritual dagger, which traditionally has a black handle. When creatures are slain by an Athame, they may drop unique reagents. The Athame is also used as an aid in conjurings."
 	},
 	{
 	  "type": "crafting",
@@ -28,6 +28,15 @@
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:equipment/tool/boline"
+	},
+	{
+	  "type": "text",
+	  "title": "Flying Ointment",
+	  "text": "A fairly grotesque mixture of tallow of the dead along with many toxic and aromatic plants with known psychoactive properties, brooms can be anointed with this mixture in order to imbue it with magic to allow it to fly. This ointment is also said to be used at certain black masses, often when a powerful demon is present."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:flying_ointment"
 	},
 	{
 	  "type": "text",

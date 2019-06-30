@@ -1,0 +1,16 @@
+{
+  "name": "Imp",
+  "category": "lesser_demons",
+  "icon": "bewitchment:heart",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Imps are low ranking demons, often serving under a demonic lord, and form the backbone of demonic society, as they are the most common of the lesser demons with some modicum of intelligence, roughly equivalent to demonic peasants."
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:imp",
+	  "scale": 0.75
+	}
+  ]
+}

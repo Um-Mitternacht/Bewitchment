@@ -1,0 +1,110 @@
+{
+  "name": "Fumes",
+  "category": "intro_to_witchcraft",
+  "icon": "bewitchment:oak_spirit",
+  "pages": [
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:oak_spirit",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:oak_spirit_alt"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:spruce_heart",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:birch_soul",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:cloudy_oil",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:cloudy_oil_alt0"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:cloudy_oil_alt1"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:cloudy_oil_alt2"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:acacia_resin",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:ebb_of_death",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:droplet_of_wisdom",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:liquid_witchcraft",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:essence_of_vitality",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:ectoplasm",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:ectoplasm_alt"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:dimensional_sand",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:dimensional_sand_alt0"
+	},
+	{
+	  "type": "bewitchment:oven_recipe",
+	  "recipe": "bewitchment:dimensional_sand_alt1"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:cleansing_balm",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:demonic_elixir",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:fiery_unguent",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:bottled_frostfire",
+	  "text": "needs text"
+	}
+  ]
+}

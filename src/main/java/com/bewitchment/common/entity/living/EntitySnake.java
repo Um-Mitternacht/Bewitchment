@@ -13,7 +13,6 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -46,37 +45,12 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.aiSit = new EntityAISit(this);
-	}
-	
-	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
 			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 2000, 1, false, false));
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0, false, false));
 		}
 		return super.attackEntityAsMob(entity);
-	}
-	
-	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (this.isEntityInvulnerable(source)) {
-			return false;
-		}
-		else {
-			Entity entity = source.getTrueSource();
-			
-			if (this.aiSit != null) {
-				this.setSitting(false);
-			}
-			
-			if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow)) {
-				amount = (amount + 1.0F) / 2.0F;
-			}
-			
-			return super.attackEntityFrom(source, amount);
-		}
 	}
 	
 	public void resetTimer() {
