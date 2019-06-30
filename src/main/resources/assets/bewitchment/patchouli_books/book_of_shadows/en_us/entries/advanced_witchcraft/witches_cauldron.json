@@ -52,6 +52,11 @@
 	  "text": "needs text"
 	},
 	{
+	  "type": "text",
+	  "title": "Brews",
+	  "text": "needs text"
+	},
+	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_health",
 	  "text": "needs text"
