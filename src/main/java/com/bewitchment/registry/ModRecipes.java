@@ -773,8 +773,8 @@ public class ModRecipes {
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/world.png")) {
 			@Override
-			public int getNumber(EntityPlayer player) {
-				return 0;
+			public boolean isCounted(EntityPlayer player) {
+				return false; //find something for this
 			}
 		});
 	}
