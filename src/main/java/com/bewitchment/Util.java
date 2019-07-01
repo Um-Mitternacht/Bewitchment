@@ -189,7 +189,11 @@ public class Util {
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
-		else if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
+		else giveItem(player, stack);
+	}
+	
+	public static void giveItem(EntityPlayer player, ItemStack stack) {
+		if (!player.inventory.addItemStackToInventory(stack)) player.dropItem(stack, false);
 	}
 	
 	public static void teleportPlayer(EntityPlayer player, double x, double y, double z) {
