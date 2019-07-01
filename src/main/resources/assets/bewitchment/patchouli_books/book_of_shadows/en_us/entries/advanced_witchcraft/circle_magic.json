@@ -1,0 +1,277 @@
+{
+  "name": "Circle Magic",
+  "category": "advanced_witchcraft",
+  "icon": "bewitchment:focal_chalk",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:ritual_chalk",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:focal_chalk",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:fiery_chalk",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:phasing_chalk",
+	  "text": "needs text"
+	},
+	{
+	  "type": "multiblock",
+	  "name": "Small Glyph Setup",
+	  "multiblock": {
+		"mapping": {
+		  "G": "bewitchment:glyph[type=1]",
+		  "0": "bewitchment:glyph[type=0]"
+		},
+		"pattern": [
+		  [
+			"__GGG__",
+			"_G___G_",
+			"G_____G",
+			"G__0__G",
+			"G_____G",
+			"_G___G_",
+			"__GGG__"
+		  ]
+		]
+	  }
+	},
+	{
+	  "type": "multiblock",
+	  "name": "Medium Glyph Setup",
+	  "multiblock": {
+		"mapping": {
+		  "G": "bewitchment:glyph[type=1]",
+		  "0": "bewitchment:glyph[type=0]"
+		},
+		"pattern": [
+		  [
+			"___GGGGG___",
+			"__G_____G__",
+			"_G_______G_",
+			"G_________G",
+			"G_________G",
+			"G____0____G",
+			"G_________G",
+			"G_________G",
+			"_G_______G_",
+			"__G_____G__",
+			"___GGGGG___"
+		  ]
+		]
+	  }
+	},
+	{
+	  "type": "multiblock",
+	  "name": "Large Glyph Setup",
+	  "multiblock": {
+		"mapping": {
+		  "G": "bewitchment:glyph[type=1]",
+		  "0": "bewitchment:glyph[type=0]"
+		},
+		"pattern": [
+		  [
+			"____GGGGGGG____",
+			"___G_______G___",
+			"__G_________G__",
+			"_G___________G_",
+			"G_____________G",
+			"G_____________G",
+			"G_____________G",
+			"G______0______G",
+			"G_____________G",
+			"G_____________G",
+			"G_____________G",
+			"_G___________G_",
+			"__G_________G__",
+			"___G_______G___",
+			"____GGGGGGG____"
+		  ]
+		]
+	  }
+	},
+	{
+	  "type": "text",
+	  "title": "Lesser Marks",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:draw_small"
+	},
+	{
+	  "type": "text",
+	  "title": "Marks",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:draw_medium"
+	},
+	{
+	  "type": "text",
+	  "title": "Greater Marks",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:draw_large"
+	},
+	{
+	  "type": "text",
+	  "title": "Solar Glory",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:solar_glory"
+	},
+	{
+	  "type": "text",
+	  "title": "High Moon",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:high_moon"
+	},
+	{
+	  "type": "text",
+	  "title": "Sands of Time",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:sands_of_time"
+	},
+	{
+	  "type": "text",
+	  "title": "Deluge",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:deluge"
+	},
+	{
+	  "type": "text",
+	  "title": "Perception",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:perception"
+	},
+	{
+	  "type": "text",
+	  "title": "Hungry Flames",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:hungry_flames"
+	},
+	{
+	  "type": "text",
+	  "title": "Frenzied Growth",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:frenzied_growth"
+	},
+	{
+	  "type": "text",
+	  "title": "Revealing",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:revealing"
+	},
+	{
+	  "type": "text",
+	  "title": "Call of the Wild",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:call_of_the_wild"
+	},
+	{
+	  "type": "text",
+	  "title": "Conjure Witch",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:conjure_witch"
+	},
+	{
+	  "type": "text",
+	  "title": "Spiritual Rift",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:spiritual_rift"
+	},
+	{
+	  "type": "text",
+	  "title": "Purification",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:purifying_earth"
+	},
+	{
+	  "type": "text",
+	  "title": "Rising Twigs",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:cypress_broom"
+	},
+	{
+	  "type": "text",
+	  "title": "Rising Twigs",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:elder_broom"
+	},
+	{
+	  "type": "text",
+	  "title": "Rising Twigs",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:juniper_broom"
+	},
+	{
+	  "type": "text",
+	  "title": "Rising Twigs",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:yew_broom"
+	}
+  ]
+}

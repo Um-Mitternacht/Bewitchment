@@ -1,15 +1,37 @@
 {
-  "name": "Crystal Ball",
+  "name": "Fortunes and Tarots",
   "category": "advanced_witchcraft",
   "icon": "bewitchment:crystal_ball",
   "pages": [
 	{
 	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Crystal Ball",
 	  "text": "Crystal balls are rather magical in general. They are most commonly used to predict the future and give out fortunes, but some claim they can be used for other things, such as remote viewing. The witches who claim to be able to do this usually can't prove it…"
 	},
 	{
 	  "type": "bewitchment:ritual",
 	  "recipe": "bewitchment:crystal_ball"
+	},
+	{
+	  "type": "text",
+	  "title": "Tarots",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_table"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_cards"
 	}
   ]
 }

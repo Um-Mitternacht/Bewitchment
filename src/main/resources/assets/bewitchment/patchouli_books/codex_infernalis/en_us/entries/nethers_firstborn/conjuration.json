@@ -1,0 +1,51 @@
+{
+  "name": "Conjuration",
+  "category": "nethers_firstborn",
+  "icon": "minecraft:blaze_powder",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "needs text"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Lesser Hellmouth",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:lesser_hellmouth"
+	},
+	{
+	  "type": "text",
+	  "title": "Hellmouth",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:hellmouth"
+	},
+	{
+	  "type": "text",
+	  "title": "Greater Hellmouth",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:greater_hellmouth"
+	},
+	{
+	  "type": "text",
+	  "title": "Conjure Wither",
+	  "text": "needs text"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:conjure_wither"
+	}
+  ]
+}
