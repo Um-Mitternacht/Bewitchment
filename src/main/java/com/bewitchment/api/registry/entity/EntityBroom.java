@@ -1,6 +1,7 @@
 package com.bewitchment.api.registry.entity;
 
 import com.bewitchment.api.capability.magicpower.MagicPower;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -110,7 +111,15 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public void setDead() {
-		if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+		if (!world.isRemote) {
+			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) getControllingPassenger();
+				player.inventory.addItemStackToInventory(item.copy());
+			}
+			else {
+				InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+			}
+		}
 		super.setDead();
 	}
 	
