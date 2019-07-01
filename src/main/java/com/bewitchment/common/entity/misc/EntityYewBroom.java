@@ -32,6 +32,11 @@ public class EntityYewBroom extends EntityBroom {
 	}
 	
 	@Override
+	protected float getThrust() {
+		return 0.125f;
+	}
+	
+	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		originalPos = getPosition();
 		originalDimension = dimension;

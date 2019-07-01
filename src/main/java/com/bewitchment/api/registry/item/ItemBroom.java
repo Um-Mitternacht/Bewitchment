@@ -19,6 +19,7 @@ public class ItemBroom extends Item {
 	public ItemBroom(EntityEntry entry) {
 		super();
 		this.entry = entry;
+		this.setMaxStackSize(1);
 	}
 	
 	@Override
@@ -39,6 +40,8 @@ public class ItemBroom extends Item {
 			if (!world.isRemote) {
 				Entity entity = entry.newInstance(world);
 				entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+				entity.rotationYaw = player.rotationYaw;
+				entity.rotationPitch = player.rotationPitch;
 				entity.processInitialInteract(player, hand);
 				world.spawnEntity(entity);
 			}

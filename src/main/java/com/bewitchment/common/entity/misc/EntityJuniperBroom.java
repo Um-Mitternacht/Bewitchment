@@ -23,4 +23,9 @@ public class EntityJuniperBroom extends EntityBroom {
 		return 0;
 	}
 	
+	@Override
+	protected float getThrust() {
+		return 0.1f;
+	}
+	
 }

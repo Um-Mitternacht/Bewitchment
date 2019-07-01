@@ -22,4 +22,9 @@ public class EntityElderBroom extends EntityBroom {
 	protected int getMagicCost() {
 		return 1;
 	}
+	
+	@Override
+	protected float getThrust() {
+		return 0.15f;
+	}
 }
