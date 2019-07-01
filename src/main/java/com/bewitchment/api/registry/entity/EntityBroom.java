@@ -136,9 +136,9 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract float getMaxSpeed();
 	
-	protected abstract int getMagicCost();
-	
 	protected abstract float getThrust();
+	
+	protected abstract int getMagicCost();
 	
 	protected void dismount() {
 		setDead();

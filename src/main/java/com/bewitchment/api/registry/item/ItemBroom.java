@@ -19,7 +19,7 @@ public class ItemBroom extends Item {
 	public ItemBroom(EntityEntry entry) {
 		super();
 		this.entry = entry;
-		this.setMaxStackSize(1);
+		setMaxStackSize(1);
 	}
 	
 	@Override

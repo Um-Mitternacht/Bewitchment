@@ -19,12 +19,12 @@ public class EntityElderBroom extends EntityBroom {
 	}
 	
 	@Override
-	protected int getMagicCost() {
-		return 1;
+	protected float getThrust() {
+		return 0.15f;
 	}
 	
 	@Override
-	protected float getThrust() {
-		return 0.15f;
+	protected int getMagicCost() {
+		return 1;
 	}
 }

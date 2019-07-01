@@ -19,13 +19,12 @@ public class EntityJuniperBroom extends EntityBroom {
 	}
 	
 	@Override
-	protected int getMagicCost() {
-		return 0;
-	}
-	
-	@Override
 	protected float getThrust() {
 		return 0.1f;
 	}
 	
+	@Override
+	protected int getMagicCost() {
+		return 0;
+	}
 }

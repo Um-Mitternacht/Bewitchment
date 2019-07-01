@@ -27,6 +27,12 @@ public class ProcessorRitual implements IComponentProcessor {
 			int id = Integer.parseInt(key.substring(6));
 			if (recipe.output != null && recipe.output.size() > id) return PatchouliAPI.instance.serializeItemStack(recipe.output.get(id));
 		}
+		else if (key.equals("foci")) return "bewitchment:textures/gui/patchouli/circle/foci.png";
+		else if (key.startsWith("circle")) {
+			int id = Integer.parseInt(key.substring(6));
+			if (recipe.circles[id] > -1) return "bewitchment:textures/gui/patchouli/circle/circle" + recipe.circles[id] + id + ".png";
+			else return "bewitchment:textures/gui/patchouli/circle/foci.png";
+		}
 		else if (key.equals("name") && recipe.output != null) return recipe.output.get(0).getDisplayName();
 		return null;
 	}

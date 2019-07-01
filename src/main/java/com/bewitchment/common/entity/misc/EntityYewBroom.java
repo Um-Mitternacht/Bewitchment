@@ -27,13 +27,13 @@ public class EntityYewBroom extends EntityBroom {
 	}
 	
 	@Override
-	protected int getMagicCost() {
-		return 1;
+	protected float getThrust() {
+		return 0.125f;
 	}
 	
 	@Override
-	protected float getThrust() {
-		return 0.125f;
+	protected int getMagicCost() {
+		return 1;
 	}
 	
 	@Override
