@@ -1,6 +1,7 @@
 package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,8 +9,11 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.passive.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -41,6 +45,16 @@ public class EntityOwl extends EntityRaven {
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
+	}
+	
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && player.getHeldItem(hand).getItem() instanceof ItemBoline && shearTimer == 0) {
+			InventoryHelper.spawnItemStack(world, posX, posY, posZ, new ItemStack(Items.FEATHER, 1 + world.rand.nextInt(3)));
+			shearTimer = 12000;
+			return true;
+		}
+		else return super.processInteract(player, hand);
 	}
 	
 	@Override
