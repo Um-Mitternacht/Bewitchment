@@ -695,8 +695,8 @@ public class ModRecipes {
 		});
 		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/stronghold.png")) {
 			@Override
-			public boolean isReversed(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast < 1;
+			public boolean isCounted(EntityPlayer player) {
+				return getNumber(player) > 0;
 			}
 			
 			@Override

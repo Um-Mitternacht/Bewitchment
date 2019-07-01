@@ -40,7 +40,7 @@
 	  ],
 	  "border": true,
 	  "title": "Player",
-	  "text": "needs text"
+	  "text": "The player is a witch"
 	},
 	{
 	  "type": "image",
@@ -49,7 +49,7 @@
 	  ],
 	  "border": true,
 	  "title": "Witch",
-	  "text": "needs text"
+	  "text": "The player owns spells, and how many"
 	},
 	{
 	  "type": "image",
@@ -58,7 +58,7 @@
 	  ],
 	  "border": true,
 	  "title": "Iron Golem",
-	  "text": "needs text"
+	  "text": "The player has the Overworld Infusion"
 	},
 	{
 	  "type": "image",
@@ -67,7 +67,7 @@
 	  ],
 	  "border": true,
 	  "title": "Wither Skeleton",
-	  "text": "needs text"
+	  "text": "The player has the Nether Infusion"
 	},
 	{
 	  "type": "image",
@@ -76,7 +76,7 @@
 	  ],
 	  "border": true,
 	  "title": "Enderman",
-	  "text": "needs text"
+	  "text": "The player has the End Infusion"
 	},
 	{
 	  "type": "image",
@@ -85,7 +85,7 @@
 	  ],
 	  "border": true,
 	  "title": "Star",
-	  "text": "needs text"
+	  "text": "The player has the Dream Infusion"
 	},
 	{
 	  "type": "image",
@@ -94,7 +94,7 @@
 	  ],
 	  "border": true,
 	  "title": "Cat",
-	  "text": "needs text"
+	  "text": "The player is infused"
 	},
 	{
 	  "type": "image",
@@ -103,7 +103,7 @@
 	  ],
 	  "border": true,
 	  "title": "Sun",
-	  "text": "needs text"
+	  "text": "The player is blessed, or cursed if reversed"
 	},
 	{
 	  "type": "image",
@@ -112,7 +112,7 @@
 	  ],
 	  "border": true,
 	  "title": "Moon",
-	  "text": "needs text"
+	  "text": "The player is a vampire, or werewolf if reversed"
 	},
 	{
 	  "type": "image",
@@ -121,7 +121,7 @@
 	  ],
 	  "border": true,
 	  "title": "Evoker",
-	  "text": "needs text"
+	  "text": "If reversed, the player is a spectre"
 	},
 	{
 	  "type": "image",
@@ -130,7 +130,7 @@
 	  ],
 	  "border": true,
 	  "title": "Silver Sword",
-	  "text": "needs text"
+	  "text": "If reversed, the player is a witch hunter"
 	},
 	{
 	  "type": "image",
@@ -139,7 +139,7 @@
 	  ],
 	  "border": true,
 	  "title": "Guardian",
-	  "text": "needs text"
+	  "text": "The player has killed a boss, and how many unique bosses killed"
 	},
 	{
 	  "type": "image",
@@ -148,7 +148,7 @@
 	  ],
 	  "border": true,
 	  "title": "Illusioner",
-	  "text": "needs text"
+	  "text": "The player has a potion active, and the highest level"
 	},
 	{
 	  "type": "image",
@@ -157,7 +157,7 @@
 	  ],
 	  "border": true,
 	  "title": "Diamonds",
-	  "text": "needs text"
+	  "text": "The player has a fortune active, reversed if the fortune is negative"
 	},
 	{
 	  "type": "image",
@@ -166,9 +166,8 @@
 	  ],
 	  "border": true,
 	  "title": "Stronghold",
-	  "text": "needs text"
+	  "text": "The player has cast a ritual, and the amount cast"
 	},
-
 	{
 	  "type": "image",
 	  "images": [
@@ -176,7 +175,7 @@
 	  ],
 	  "border": true,
 	  "title": "Companions",
-	  "text": "needs text"
+	  "text": "The player has a familiar, reversed if the familiar is not nearby"
 	},
 	{
 	  "type": "image",
@@ -185,7 +184,7 @@
 	  ],
 	  "border": true,
 	  "title": "Mounts",
-	  "text": "needs text"
+	  "text": "The player has pets that aren't familiars, and the amount of pets"
 	},
 	{
 	  "type": "image",
@@ -194,7 +193,7 @@
 	  ],
 	  "border": true,
 	  "title": "Zombie",
-	  "text": "needs text"
+	  "text": "The player has at least one protection poppet, and the amount of poppets"
 	},
 	{
 	  "type": "image",
@@ -203,7 +202,7 @@
 	  ],
 	  "border": true,
 	  "title": "Villager",
-	  "text": "needs text"
+	  "text": "The player is in a coven, and how many members"
 	},
 	{
 	  "type": "image",
@@ -212,7 +211,7 @@
 	  ],
 	  "border": true,
 	  "title": "Wither",
-	  "text": "needs text"
+	  "text": "The player has a contract with a spirit, and how many contracts"
 	},
 	{
 	  "type": "image",
@@ -221,7 +220,7 @@
 	  ],
 	  "border": true,
 	  "title": "Ender Dragon",
-	  "text": "needs text"
+	  "text": "The player has killed at least 50 mobs, and the amount of mobs killed / 50"
 	},
 	{
 	  "type": "image",
@@ -230,7 +229,7 @@
 	  ],
 	  "border": true,
 	  "title": "World",
-	  "text": "needs text"
+	  "text": "I AM ERROR"
 	}
   ]
 }
