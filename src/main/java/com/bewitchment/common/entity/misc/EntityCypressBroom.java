@@ -27,6 +27,11 @@ public class EntityCypressBroom extends EntityBroom {
 	}
 	
 	@Override
+	protected float getThrust() {
+		return 0.125f;
+	}
+	
+	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		if (!world.isRemote && getControllingPassenger() instanceof EntityLivingBase && !((EntityLivingBase) getControllingPassenger()).isPotionActive(MobEffects.RESISTANCE))

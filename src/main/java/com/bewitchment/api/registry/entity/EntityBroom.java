@@ -96,7 +96,7 @@ public abstract class EntityBroom extends Entity {
 				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
 				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
 				rotationYaw = rider.rotationYaw;
-				if (jump && motionY < 1) motionY += 0.3f;
+				if (jump && motionY < 1) motionY += (0.1f + getThrust());
 			}
 		}
 		if (collidedHorizontally) {
@@ -137,6 +137,8 @@ public abstract class EntityBroom extends Entity {
 	protected abstract float getMaxSpeed();
 	
 	protected abstract int getMagicCost();
+	
+	protected abstract float getThrust();
 	
 	protected void dismount() {
 		setDead();
