@@ -32,6 +32,177 @@
 	{
 	  "type": "bewitchment:ritual",
 	  "recipe": "bewitchment:tarot_cards"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/cat.png"
+	  ],
+	  "border": true,
+	  "title": "Cat",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/diamonds.png"
+	  ],
+	  "border": true,
+	  "title": "Diamonds",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/ender_dragon.png"
+	  ],
+	  "border": true,
+	  "title": "Ender Dragon",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/enderman.png"
+	  ],
+	  "border": true,
+	  "title": "Endermna",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/evoker.png"
+	  ],
+	  "border": true,
+	  "title": "Evoker",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/guardian.png"
+	  ],
+	  "border": true,
+	  "title": "Guardian",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/illusioner.png"
+	  ],
+	  "border": true,
+	  "title": "Illusioner",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/iron_golem.png"
+	  ],
+	  "border": true,
+	  "title": "Iron Golem",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/moon.png"
+	  ],
+	  "border": true,
+	  "title": "Moon",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/mounts.png"
+	  ],
+	  "border": true,
+	  "title": "Mounts",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/silver_sword.png"
+	  ],
+	  "border": true,
+	  "title": "Silver Sword",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/star.png"
+	  ],
+	  "border": true,
+	  "title": "Star",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/stronghold.png"
+	  ],
+	  "border": true,
+	  "title": "Stronghold",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/sun.png"
+	  ],
+	  "border": true,
+	  "title": "Sun",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/witch.png"
+	  ],
+	  "border": true,
+	  "title": "Witch",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/wither.png"
+	  ],
+	  "border": true,
+	  "title": "Wither",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/wither_skeleton.png"
+	  ],
+	  "border": true,
+	  "title": "Wither Skeleton",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/world.png"
+	  ],
+	  "border": true,
+	  "title": "World",
+	  "text": "needs text"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/tarot/zombie.png"
+	  ],
+	  "border": true,
+	  "title": "Zombie",
+	  "text": "needs text"
 	}
   ]
 }

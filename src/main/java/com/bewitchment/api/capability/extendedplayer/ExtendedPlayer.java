@@ -26,7 +26,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public NBTTagList uniqueDefeatedBosses = new NBTTagList();
 	public Fortune fortune;
-	public int ritualsCast;
+	public int ritualsCast, mobsKilled;
 	
 	@Nullable
 	@Override
@@ -35,6 +35,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
 		tag.setInteger("ritualsCast", instance.ritualsCast);
+		tag.setInteger("mobsKilled", instance.mobsKilled);
 		return tag;
 	}
 	
@@ -44,6 +45,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : BewitchmentAPI.REGISTRY_FORTUNE.getValue(new ResourceLocation(tag.getString("fortune")));
 		instance.ritualsCast = tag.getInteger("ritualsCast");
+		instance.mobsKilled = tag.getInteger("mobsKilled");
 	}
 	
 	@Nullable

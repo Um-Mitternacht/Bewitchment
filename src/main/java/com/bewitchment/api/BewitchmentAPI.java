@@ -9,6 +9,7 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -96,8 +97,7 @@ public class BewitchmentAPI {
 	 * @return true if the entity is a witch, false otherwise
 	 */
 	public static boolean isWitch(EntityLivingBase entity) {
-		//todo: check if players have the crafted altar advancement
-		return !isWitchHunter(entity) && entity instanceof EntityWitch;
+		return !isWitchHunter(entity) && (entity instanceof EntityWitch || (entity instanceof EntityPlayer && Bewitchment.proxy.doesPlayerHaveAdvancement((EntityPlayer) entity, new ResourceLocation(Bewitchment.MODID, "crafted_altar"))));
 	}
 	
 	/**

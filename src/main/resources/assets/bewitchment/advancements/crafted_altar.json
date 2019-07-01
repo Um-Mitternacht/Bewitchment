@@ -1,0 +1,26 @@
+{
+  "display": {
+	"icon": {
+	  "item": "bewitchment:stone_witches_altar"
+	},
+	"title": {
+	  "translate": "advancements.bewitchment.crafted_altar.title"
+	},
+	"description": {
+	  "translate": "advancements.bewitchment.crafted_altar.description"
+	}
+  },
+  "parent": "minecraft:story/root",
+  "criteria": {
+	"altar": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:stone_witches_altar"
+		  }
+		]
+	  }
+	}
+  }
+}

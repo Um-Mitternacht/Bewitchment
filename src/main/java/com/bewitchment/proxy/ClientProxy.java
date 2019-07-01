@@ -25,12 +25,17 @@ import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -39,6 +44,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -48,6 +54,18 @@ import java.util.function.Predicate;
 @SuppressWarnings({"ConstantConditions", "unused"})
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
+	public boolean doesPlayerHaveAdvancement(EntityPlayer player, ResourceLocation name) {
+		if (player instanceof EntityPlayerSP) {
+			ClientAdvancementManager manager = ((EntityPlayerSP) player).connection.getAdvancementManager();
+			Advancement adv = manager.getAdvancementList().getAdvancement(name);
+			if (adv != null) {
+				AdvancementProgress progress = ObfuscationReflectionHelper.getPrivateValue(ClientAdvancementManager.class, manager, "advancementToProgress", "field_192803_d");
+				return progress != null && progress.isDone();
+			}
+		}
+		return super.doesPlayerHaveAdvancement(player, name);
+	}
+	
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;

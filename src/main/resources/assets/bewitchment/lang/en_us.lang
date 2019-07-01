@@ -441,6 +441,9 @@ tarot.no_cards=You must be holding Tarot Cards to use this
 tarot.no_player=You must bind a player to the cards
 tarot.player_offline=%s is offline
 
+advancements.bewitchment.crafted_altar.title=Witchworker
+advancements.bewitchment.crafted_altar.description=Craft a Stone Witches' Altar
+
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
 commands.fortune.remove=%s's fortune has been removed

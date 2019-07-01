@@ -2,6 +2,7 @@ package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
@@ -40,18 +41,27 @@ public class ExtendedPlayerHandler {
 	
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event) {
-		if (!event.getEntityLiving().world.isRemote && !event.getEntityLiving().isNonBoss() && event.getSource().getTrueSource() instanceof EntityPlayer) {
+		if (!event.getEntityLiving().world.isRemote && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-			NBTTagList list = player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses;
-			String name = EntityRegistry.getEntry(event.getEntityLiving().getClass()).getName();
-			boolean found = false;
-			for (int i = 0; i < list.tagCount(); i++) {
-				if (list.getStringTagAt(i).equals(name)) {
-					found = true;
-					break;
+			if (!event.getEntityLiving().isNonBoss()) {
+				NBTTagList list = player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses;
+				String name = EntityRegistry.getEntry(event.getEntityLiving().getClass()).getName();
+				boolean found = false;
+				for (int i = 0; i < list.tagCount(); i++) {
+					if (list.getStringTagAt(i).equals(name)) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					list.appendTag(new NBTTagString(name));
+					ExtendedPlayer.syncToClient(player);
 				}
 			}
-			if (!found) list.appendTag(new NBTTagString(name));
+			if (event.getEntityLiving() instanceof EntityMob) {
+				player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled++;
+				ExtendedPlayer.syncToClient(player);
+			}
 		}
 	}
 }
