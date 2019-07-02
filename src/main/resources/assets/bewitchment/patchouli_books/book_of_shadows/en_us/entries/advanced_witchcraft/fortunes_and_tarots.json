@@ -36,7 +36,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/player.png"
+		"bewitchment:textures/gui/patchouli/tarot/00player.png"
 	  ],
 	  "border": true,
 	  "title": "Player",
@@ -45,7 +45,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/witch.png"
+		"bewitchment:textures/gui/patchouli/tarot/01witch.png"
 	  ],
 	  "border": true,
 	  "title": "Witch",
@@ -54,25 +54,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/iron_golem.png"
-	  ],
-	  "border": true,
-	  "title": "Iron Golem",
-	  "text": "The player has the Overworld Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/wither_skeleton.png"
-	  ],
-	  "border": true,
-	  "title": "Wither Skeleton",
-	  "text": "The player has the Nether Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/enderman.png"
+		"bewitchment:textures/gui/patchouli/tarot/02enderman.png"
 	  ],
 	  "border": true,
 	  "title": "Enderman",
@@ -81,16 +63,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/star.png"
-	  ],
-	  "border": true,
-	  "title": "Star",
-	  "text": "The player has the Dream Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/cat.png"
+		"bewitchment:textures/gui/patchouli/tarot/03cat.png"
 	  ],
 	  "border": true,
 	  "title": "Cat",
@@ -99,43 +72,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/sun.png"
-	  ],
-	  "border": true,
-	  "title": "Sun",
-	  "text": "The player is blessed, or cursed if reversed"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/moon.png"
-	  ],
-	  "border": true,
-	  "title": "Moon",
-	  "text": "The player is a vampire, or werewolf if reversed"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/evoker.png"
-	  ],
-	  "border": true,
-	  "title": "Evoker",
-	  "text": "If reversed, the player is a spectre"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/silver_sword.png"
-	  ],
-	  "border": true,
-	  "title": "Silver Sword",
-	  "text": "If reversed, the player is a witch hunter"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/guardian.png"
+		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
 	  ],
 	  "border": true,
 	  "title": "Guardian",
@@ -144,7 +81,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/illusioner.png"
+		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
 	  ],
 	  "border": true,
 	  "title": "Illusioner",
@@ -153,25 +90,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/diamonds.png"
-	  ],
-	  "border": true,
-	  "title": "Diamonds",
-	  "text": "The player has a fortune active, reversed if the fortune is negative"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/stronghold.png"
-	  ],
-	  "border": true,
-	  "title": "Stronghold",
-	  "text": "The player has cast a ritual, and the amount cast"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/companions.png"
+		"bewitchment:textures/gui/patchouli/tarot/06companions.png"
 	  ],
 	  "border": true,
 	  "title": "Companions",
@@ -180,7 +99,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/mounts.png"
+		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
 	  ],
 	  "border": true,
 	  "title": "Mounts",
@@ -189,7 +108,43 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/zombie.png"
+		"bewitchment:textures/gui/patchouli/tarot/08silver_sword.png"
+	  ],
+	  "border": true,
+	  "title": "Silver Sword",
+	  "text": "If reversed, the player is a witch hunter"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/09evoker.png"
+	  ],
+	  "border": true,
+	  "title": "Evoker",
+	  "text": "If reversed, the player is a spectre"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
+	  ],
+	  "border": true,
+	  "title": "Diamonds",
+	  "text": "The player has a fortune active, reversed if the fortune is negative"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/11iron_golem.png"
+	  ],
+	  "border": true,
+	  "title": "Iron Golem",
+	  "text": "The player has the Overworld Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/12zombie.png"
 	  ],
 	  "border": true,
 	  "title": "Zombie",
@@ -198,7 +153,16 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/villager.png"
+		"bewitchment:textures/gui/patchouli/tarot/13wither_skeleton.png"
+	  ],
+	  "border": true,
+	  "title": "Wither Skeleton",
+	  "text": "The player has the Nether Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/14villager.png"
 	  ],
 	  "border": true,
 	  "title": "Villager",
@@ -207,7 +171,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/wither.png"
+		"bewitchment:textures/gui/patchouli/tarot/15wither.png"
 	  ],
 	  "border": true,
 	  "title": "Wither",
@@ -216,7 +180,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/ender_dragon.png"
+		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
 	  ],
 	  "border": true,
 	  "title": "Ender Dragon",
@@ -225,7 +189,43 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/world.png"
+		"bewitchment:textures/gui/patchouli/tarot/17star.png"
+	  ],
+	  "border": true,
+	  "title": "Star",
+	  "text": "The player has the Dream Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/18moon.png"
+	  ],
+	  "border": true,
+	  "title": "Moon",
+	  "text": "The player is a vampire, or werewolf if reversed"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
+	  ],
+	  "border": true,
+	  "title": "Sun",
+	  "text": "The player is blessed, or cursed if reversed"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
+	  ],
+	  "border": true,
+	  "title": "Stronghold",
+	  "text": "The player has cast a ritual, and the amount cast"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/21world.png"
 	  ],
 	  "border": true,
 	  "title": "World",

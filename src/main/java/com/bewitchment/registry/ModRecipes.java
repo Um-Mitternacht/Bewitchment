@@ -582,43 +582,25 @@ public class ModRecipes {
 	}
 	
 	private static void tarotInit() {
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "player"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/player.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "player"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/00player.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return BewitchmentAPI.isWitch(player);
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "witch"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/witch.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "witch"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/01witch.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when spells are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/iron_golem.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return false; //change when overworld infusion is added
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither_skeleton"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/wither_skeleton.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return false; //change when nether infusion is added
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "enderman"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/enderman.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "enderman"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/02enderman.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when end infusion is added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/star.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return false; //change when dream infusion is added
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "cat"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/cat.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "cat"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/03cat.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when infusions are added
@@ -629,36 +611,7 @@ public class ModRecipes {
 				return false; //change when infusions are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/sun.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return false; //change when curses are added
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "moon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/moon.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return BewitchmentAPI.isVampire(player) || BewitchmentAPI.isWerewolf(player);
-			}
-			
-			@Override
-			public boolean isReversed(EntityPlayer player) {
-				return BewitchmentAPI.isWerewolf(player);
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "evoker"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/evoker.png")) {
-			@Override
-			public boolean isReversed(EntityPlayer player) {
-				return BewitchmentAPI.isSpectre(player);
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "silver_sword"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/silver_sword.png")) {
-			@Override
-			public boolean isReversed(EntityPlayer player) {
-				return BewitchmentAPI.isWitchHunter(player);
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/guardian.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "guardian"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/04guardian.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return getNumber(player) > 0;
@@ -669,7 +622,7 @@ public class ModRecipes {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses.tagCount();
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "illusioner"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/illusioner.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "illusioner"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/05illusioner.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return !player.getActivePotionEffects().isEmpty();
@@ -682,29 +635,7 @@ public class ModRecipes {
 				return max;
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/diamonds.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune != null;
-			}
-			
-			@Override
-			public boolean isReversed(EntityPlayer player) {
-				return isCounted(player) && player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.isNegative;
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/stronghold.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return getNumber(player) > 0;
-			}
-			
-			@Override
-			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
-			}
-		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "companions"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/companions.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "companions"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/06companions.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when familiars are added
@@ -715,7 +646,7 @@ public class ModRecipes {
 				return false; //change when familiars are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "mounts"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/mounts.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "mounts"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/07mounts.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when familiars are added, and add compat for respawnable pets
@@ -726,7 +657,36 @@ public class ModRecipes {
 				return 0; //change when familiars are added, and add compat for respawnable pets
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "zombie"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/zombie.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "silver_sword"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/08silver_sword.png")) {
+			@Override
+			public boolean isReversed(EntityPlayer player) {
+				return BewitchmentAPI.isWitchHunter(player);
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "evoker"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/09evoker.png")) {
+			@Override
+			public boolean isReversed(EntityPlayer player) {
+				return BewitchmentAPI.isSpectre(player);
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/10diamonds.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune != null;
+			}
+			
+			@Override
+			public boolean isReversed(EntityPlayer player) {
+				return isCounted(player) && player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.isNegative;
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/11iron_golem.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return false; //change when overworld infusion is added
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "zombie"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/12zombie.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when protection poppets are added
@@ -737,8 +697,13 @@ public class ModRecipes {
 				return 0; //change when protection poppets are added
 			}
 		});
-		
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "villager"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/villager.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither_skeleton"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/13wither_skeleton.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return false; //change when nether infusion is added
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "villager"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/14villager.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when covens are added
@@ -749,7 +714,7 @@ public class ModRecipes {
 				return 0; //change when covens are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/wither.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "wither"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/15wither.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //change when pacts are added
@@ -760,7 +725,7 @@ public class ModRecipes {
 				return 0; //change when pacts are added
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "ender_dragon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/ender_dragon.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "ender_dragon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/16ender_dragon.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return getNumber(player) > 0;
@@ -771,7 +736,41 @@ public class ModRecipes {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled / 50;
 			}
 		});
-		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/world.png")) {
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/17star.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return false; //change when dream infusion is added
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "moon"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/18moon.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return BewitchmentAPI.isVampire(player) || BewitchmentAPI.isWerewolf(player);
+			}
+			
+			@Override
+			public boolean isReversed(EntityPlayer player) {
+				return BewitchmentAPI.isWerewolf(player);
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/19sun.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return false; //change when curses are added
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/20stronghold.png")) {
+			@Override
+			public boolean isCounted(EntityPlayer player) {
+				return getNumber(player) > 0;
+			}
+			
+			@Override
+			public int getNumber(EntityPlayer player) {
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
+			}
+		});
+		BewitchmentAPI.REGISTRY_TAROT.register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/21world.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
 				return false; //find something for this
