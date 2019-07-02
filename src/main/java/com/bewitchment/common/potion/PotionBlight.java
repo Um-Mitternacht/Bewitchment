@@ -11,7 +11,8 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.DamageSource;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -36,7 +37,10 @@ public class PotionBlight extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		if (living instanceof EntityMooshroom) Util.convertEntity((EntityLiving) living, new EntityCow(living.world));
-		if (living.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && living.getCreatureAttribute() != BewitchmentAPI.DEMON && living.getCreatureAttribute() != BewitchmentAPI.SPIRIT) living.attackEntityFrom(DamageSource.MAGIC, 4 * (amplifier + 1));
+		if (living.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && living.getCreatureAttribute() != BewitchmentAPI.DEMON && living.getCreatureAttribute() != BewitchmentAPI.SPIRIT) {
+			living.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (20 * (6 * (amplifier + 1))), 1));
+			living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (20 * (6 * (amplifier + 1))), 1));
+		}
 	}
 	
 	@Override

@@ -1,10 +1,11 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.util.ModPotion;
-import net.minecraft.block.BlockCrops;
-import net.minecraft.block.BlockPumpkin;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -35,6 +36,10 @@ public class PotionHarvest extends ModPotion {
 				if (world.getBlockState(pos0).getBlock() instanceof BlockCrops) {
 					world.getBlockState(pos0).getBlock().dropBlockAsItem(world, pos0, world.getBlockState(pos0), amplifier);
 					world.setBlockState(pos0, world.getBlockState(pos0).getBlock().getDefaultState());
+					flag = true;
+				}
+				else if (world.rand.nextInt(10) == 0 && world.getBlockState(pos0).getBlock() == Blocks.LEAVES && world.getBlockState(pos0).getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) {
+					InventoryHelper.spawnItemStack(world, pos0.getX(), pos0.getY(), pos0.getZ(), new ItemStack(Items.APPLE));
 					flag = true;
 				}
 				else if (world.rand.nextInt(4) == 0 && world.getBlockState(pos0).getBlock() instanceof IGrowable && world.getBlockState(pos0).getBlock().isReplaceable(world, pos0)) {
