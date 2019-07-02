@@ -36,7 +36,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/player.png"
+		"bewitchment:textures/gui/patchouli/tarot/player.png"
 	  ],
 	  "border": true,
 	  "title": "Player",
@@ -45,7 +45,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/witch.png"
+		"bewitchment:textures/gui/patchouli/tarot/witch.png"
 	  ],
 	  "border": true,
 	  "title": "Witch",
@@ -54,7 +54,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/iron_golem.png"
+		"bewitchment:textures/gui/patchouli/tarot/iron_golem.png"
 	  ],
 	  "border": true,
 	  "title": "Iron Golem",
@@ -63,7 +63,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/wither_skeleton.png"
+		"bewitchment:textures/gui/patchouli/tarot/wither_skeleton.png"
 	  ],
 	  "border": true,
 	  "title": "Wither Skeleton",
@@ -72,7 +72,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/enderman.png"
+		"bewitchment:textures/gui/patchouli/tarot/enderman.png"
 	  ],
 	  "border": true,
 	  "title": "Enderman",
@@ -81,7 +81,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/star.png"
+		"bewitchment:textures/gui/patchouli/tarot/star.png"
 	  ],
 	  "border": true,
 	  "title": "Star",
@@ -90,7 +90,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/cat.png"
+		"bewitchment:textures/gui/patchouli/tarot/cat.png"
 	  ],
 	  "border": true,
 	  "title": "Cat",
@@ -99,7 +99,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/sun.png"
+		"bewitchment:textures/gui/patchouli/tarot/sun.png"
 	  ],
 	  "border": true,
 	  "title": "Sun",
@@ -108,7 +108,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/moon.png"
+		"bewitchment:textures/gui/patchouli/tarot/moon.png"
 	  ],
 	  "border": true,
 	  "title": "Moon",
@@ -117,7 +117,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/evoker.png"
+		"bewitchment:textures/gui/patchouli/tarot/evoker.png"
 	  ],
 	  "border": true,
 	  "title": "Evoker",
@@ -126,7 +126,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/silver_sword.png"
+		"bewitchment:textures/gui/patchouli/tarot/silver_sword.png"
 	  ],
 	  "border": true,
 	  "title": "Silver Sword",
@@ -135,7 +135,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/guardian.png"
+		"bewitchment:textures/gui/patchouli/tarot/guardian.png"
 	  ],
 	  "border": true,
 	  "title": "Guardian",
@@ -144,7 +144,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/illusioner.png"
+		"bewitchment:textures/gui/patchouli/tarot/illusioner.png"
 	  ],
 	  "border": true,
 	  "title": "Illusioner",
@@ -153,7 +153,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/diamonds.png"
+		"bewitchment:textures/gui/patchouli/tarot/diamonds.png"
 	  ],
 	  "border": true,
 	  "title": "Diamonds",
@@ -162,7 +162,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/stronghold.png"
+		"bewitchment:textures/gui/patchouli/tarot/stronghold.png"
 	  ],
 	  "border": true,
 	  "title": "Stronghold",
@@ -171,7 +171,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/companions.png"
+		"bewitchment:textures/gui/patchouli/tarot/companions.png"
 	  ],
 	  "border": true,
 	  "title": "Companions",
@@ -180,7 +180,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/mounts.png"
+		"bewitchment:textures/gui/patchouli/tarot/mounts.png"
 	  ],
 	  "border": true,
 	  "title": "Mounts",
@@ -189,7 +189,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/zombie.png"
+		"bewitchment:textures/gui/patchouli/tarot/zombie.png"
 	  ],
 	  "border": true,
 	  "title": "Zombie",
@@ -198,7 +198,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/villager.png"
+		"bewitchment:textures/gui/patchouli/tarot/villager.png"
 	  ],
 	  "border": true,
 	  "title": "Villager",
@@ -207,7 +207,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/wither.png"
+		"bewitchment:textures/gui/patchouli/tarot/wither.png"
 	  ],
 	  "border": true,
 	  "title": "Wither",
@@ -216,7 +216,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/ender_dragon.png"
+		"bewitchment:textures/gui/patchouli/tarot/ender_dragon.png"
 	  ],
 	  "border": true,
 	  "title": "Ender Dragon",
@@ -225,7 +225,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/tarot/world.png"
+		"bewitchment:textures/gui/patchouli/tarot/world.png"
 	  ],
 	  "border": true,
 	  "title": "World",
