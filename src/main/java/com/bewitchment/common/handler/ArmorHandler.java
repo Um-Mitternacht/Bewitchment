@@ -15,10 +15,11 @@ public class ArmorHandler {
 	public void onLivingHurt(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote) {
 			// Silver Armor
-			if (Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_SILVER) > 0) {
+			int silverArmor = Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_SILVER);
+			if (silverArmor > 0) {
 				if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
 					if (BewitchmentAPI.isWeakToSilver((EntityLivingBase) event.getSource().getTrueSource())) {
-						event.setAmount(event.getAmount() * 0.9f);
+						event.setAmount(event.getAmount() * (1 - Math.min(20, silverArmor * 2) / 25f));
 						event.getSource().getTrueSource().attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_SILVER));
 					}
 				}
@@ -27,7 +28,7 @@ public class ArmorHandler {
 			// Silver Tools
 			if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase living = (EntityLivingBase) event.getSource().getTrueSource();
-				if (BewitchmentAPI.isWeakToSilver(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotSilver")) event.setAmount(event.getAmount() * 4);
+				if (BewitchmentAPI.isWeakToSilver(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotSilver")) event.setAmount(event.getAmount() * 2.75f);
 			}
 			
 			// Cold Iron Armor
@@ -37,7 +38,7 @@ public class ArmorHandler {
 			if (event.getSource().getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase living = (EntityLivingBase) event.getSource().getTrueSource();
 				if (BewitchmentAPI.isWeakToColdIron(event.getEntityLiving()) && Util.isRelated(living.getHeldItemMainhand(), "ingotColdIron")) {
-					event.setAmount(event.getAmount() * 4);
+					event.setAmount(event.getAmount() * 2.75f);
 					event.getSource().getTrueSource().attackEntityFrom(DamageSource.causeThornsDamage(event.getEntityLiving()), Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_COLD_IRON));
 				}
 			}
