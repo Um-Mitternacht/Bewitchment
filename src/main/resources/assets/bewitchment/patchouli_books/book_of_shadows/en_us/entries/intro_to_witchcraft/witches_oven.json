@@ -14,7 +14,7 @@
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:oak_spirit",
-	  "text": "needs text"
+	  "text": "One of the most vital of all extracts, made from any type of oak sapling"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
@@ -23,17 +23,17 @@
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:spruce_heart",
-	  "text": "needs text"
+	  "text": "Essence of spruce trees, and vital to the Spinning Wheel"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:birch_soul",
-	  "text": "needs text"
+	  "text": "A light and airy fume derived from young birch"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:cloudy_oil",
-	  "text": "needs text"
+	  "text": "A common oil produced from cooking meats and herbs, and often used as a base oil for more advanced fumes"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
@@ -50,32 +50,32 @@
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:acacia_resin",
-	  "text": "needs text"
+	  "text": "A rather hard to find fume with great powers in healing"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:ebb_of_death",
-	  "text": "needs text"
+	  "text": "A foul oil that reeks of death and decay, derived from the Cypress tree"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:droplet_of_wisdom",
-	  "text": "needs text"
+	  "text": "An extract from Elder trees that is said to imbued knowledge on the user"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:liquid_witchcraft",
-	  "text": "needs text"
+	  "text": "An extract from young Juniper trees that just hums with magical energy"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:essence_of_vitality",
-	  "text": "needs text"
+	  "text": "A life-giving residue obtained from burned Yew saplings"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:ectoplasm",
-	  "text": "needs text"
+	  "text": "Who you gonna call?"
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
@@ -84,7 +84,7 @@
 	{
 	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:dimensional_sand",
-	  "text": "needs text"
+	  "text": "A green-blue material you can feel resonating with aetheric energy, along with a powerful connection to the Ender."
 	},
 	{
 	  "type": "bewitchment:oven_recipe",

@@ -23,6 +23,6 @@ public class PotionSleeping extends ModPotion {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (20 * 10) * (amplifier + 1), 3));
 		living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, (20 * 10) * (amplifier + 1), 3));
-		if (living.getHealth() <= 2) living.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
+		if (living.getHealth() <= 4) living.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
 	}
 }

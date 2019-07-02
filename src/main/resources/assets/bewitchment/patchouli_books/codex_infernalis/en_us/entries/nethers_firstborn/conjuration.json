@@ -5,7 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "needs text"
+	  "text": "The nether is full of lesser demonic creatures, ones that can even be manipulated by mere mortals."
 	},
 	{
 	  "type": "empty",
@@ -14,7 +14,7 @@
 	{
 	  "type": "text",
 	  "title": "Lesser Hellmouth",
-	  "text": "needs text"
+	  "text": "A small rift to hell, allowing Pigmen and Magma Cubes to escape"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -23,7 +23,7 @@
 	{
 	  "type": "text",
 	  "title": "Hellmouth",
-	  "text": "needs text"
+	  "text": "A larger portal to hell, allowing Blazes and Serpents to ascend on the world"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -32,7 +32,7 @@
 	{
 	  "type": "text",
 	  "title": "Greater Hellmouth",
-	  "text": "needs text"
+	  "text": "Opens the largest possible tear to the nether, bringing forth Hellhounds, Ghasts, and Wither Skeletons"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -41,7 +41,7 @@
 	{
 	  "type": "text",
 	  "title": "Conjure Wither",
-	  "text": "needs text"
+	  "text": "Open a unique hellmouth, summoning a powerful Wither to blight this world"
 	},
 	{
 	  "type": "bewitchment:ritual",

@@ -14,22 +14,22 @@
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:cobweb",
-	  "text": "needs text"
+	  "text": "Those spiders don’t got anything on you"
 	},
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:witches_stitching",
-	  "text": "needs text"
+	  "text": "You got to pick up every stitch, must be the season of the Witch"
 	},
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:diabolical_vein",
-	  "text": "needs text"
+	  "text": "A thread that has been seared in fire and then soaked in heartblood. Ew."
 	},
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:pure_filament",
-	  "text": "needs text"
+	  "text": "A shining silver thread, blessed and purified"
 	}
   ]
 }

@@ -14,7 +14,7 @@
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:filled_goblet",
-	  "text": "needs text"
+	  "text": "When filled with this magical mixture, the Goblet will give more power to altars, as well as emit a redstone signal."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
@@ -29,312 +29,316 @@
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:tallow",
-	  "text": "needs text"
+	  "text": "Rendered fat of the dead. Used for candles and more."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:slimeball",
-	  "text": "needs text"
+	  "text": "Sticky."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:iron_gall_ink",
-	  "text": "needs text"
+	  "text": "A cruelty-free substitute for Ink Sacs. Some claim it is vital in the creation of demonic contracts…"
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:catechu_brown",
-	  "text": "needs text"
+	  "text": "A wood-derived alternative to cocoa beans for brown dye."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:banner_pattern_removal",
-	  "text": "needs text"
+	  "text": "A more mundane use of the cauldron is to clean dye from banners."
 	},
 	{
 	  "type": "text",
 	  "title": "Brews",
-	  "text": "needs text"
+	  "text": "In order to designate cauldron tomfoolery as a brew, a Mandrake Root must be thrown in first before any other reagents. After that, throw in the other reagents you wish, however the more you add, the more expensive the brew will be, ME-wise."
+	},
+	{
+	  "type": "text",
+	  "text": "Including redstone will increase the duration of the brew, up to a certain amount. Glowstone has the same effect on potency. Gunpowder may also be thrown in to create a splash brew, and if an Owlet's Wing is thrown in as well, it becomes a lingering brew."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_health",
-	  "text": "needs text"
+	  "text": "Heals the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_damage",
-	  "text": "needs text"
+	  "text": "Damages the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:regeneration",
-	  "text": "needs text"
+	  "text": "Grants regeneration"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:poison",
-	  "text": "needs text"
+	  "text": "Poisons the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:wither",
-	  "text": "needs text"
+	  "text": "Like poison but nastier"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:night_vision",
-	  "text": "needs text"
+	  "text": "Lets you see what hides in the dark"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:blindness",
-	  "text": "needs text"
+	  "text": "Hey, who turned out the lights?"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:strength",
-	  "text": "needs text"
+	  "text": "Get stronk"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:weakness",
-	  "text": "needs text"
+	  "text": "Noodle arms McGee"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:resistance",
-	  "text": "needs text"
+	  "text": "Take less damage"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:fire_resistance",
-	  "text": "needs text"
+	  "text": "Better than asbestos"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:absorption",
-	  "text": "needs text"
+	  "text": "Gives extra health temporarily"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:jump_boost",
-	  "text": "needs text"
+	  "text": "Boing!"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:speed",
-	  "text": "needs text"
+	  "text": "Gotta go fast"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:slowness",
-	  "text": "needs text"
+	  "text": "Tsaf og attog"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:haste",
-	  "text": "needs text"
+	  "text": "Diggy diggy hole"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:mining_fatigue",
-	  "text": "needs text"
+	  "text": "Mine with the grace of an armless man"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:luck",
-	  "text": "needs text"
+	  "text": "Up all night to get lucky"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:unluck",
-	  "text": "needs text"
+	  "text": "Nautical treasure is harder to acquire"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:water_breathing",
-	  "text": "needs text"
+	  "text": "Praise Dagon"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:invisibility",
-	  "text": "needs text"
+	  "text": "You can’t see me!"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:hunger",
-	  "text": "needs text"
+	  "text": "A bad case of the munchies"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:nausea",
-	  "text": "needs text"
+	  "text": "Hey, why is the room melting?"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:glowing",
-	  "text": "needs text"
+	  "text": "Everyone can see you"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:levitation",
-	  "text": "needs text"
+	  "text": "You STOLE Fizzy Lifting Drinks!"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:absence",
-	  "text": "needs text"
+	  "text": "Gets rid of all those pesky potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:purification",
-	  "text": "needs text"
+	  "text": "Gets rid of only the negative potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:corruption",
-	  "text": "needs text"
+	  "text": "Gets rid of only the positive potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:magic_resistance",
-	  "text": "needs text"
+	  "text": "Take less damage from magical sources"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:magic_weakness",
-	  "text": "needs text"
+	  "text": "Take more damage from magical sources"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:hellworld",
-	  "text": "needs text"
+	  "text": "I am the God of Hellfire, and I bring you…"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:iceworld",
-	  "text": "needs text"
+	  "text": "Walkin’ in a winter wonderland~"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:rubedo",
-	  "text": "needs text"
+	  "text": "Makes things red, perfect for comrades"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:citrinitas",
-	  "text": "needs text"
+	  "text": "Mellow-yellow everything"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:desertification",
-	  "text": "needs text"
+	  "text": "Heed the path that led me to that place, yellow desert stream"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:fertility",
-	  "text": "needs text"
+	  "text": "Causes plants to grow and animals to breed"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:harvest",
-	  "text": "needs text"
+	  "text": "Instantly harvests and re-plants seeds, also may make leaves drop apples and cause pumpkins to grow"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:spore_cloud",
-	  "text": "needs text"
+	  "text": "Causes mushrooms, mycelium, ferns, and moss to grow. I hope you don’t have allergies…"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:blight",
-	  "text": "needs text"
+	  "text": "Kills plants and crops, and weakens living creatures"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:ruin",
-	  "text": "needs text"
+	  "text": "All I see turns to brown, As the sun burns the ground, And my eyes fill with sand"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:pesticide",
-	  "text": "needs text"
+	  "text": "Perfect for dealing with all those gross creepy-crawlies"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:arachnophobia",
-	  "text": "needs text"
+	  "text": "Wraps the target in spider webs, and summons hungry spiders to attack them"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:mending",
-	  "text": "needs text"
+	  "text": "Turn dirt and mycelium to grass, and cure zombie villagers"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:holy_water",
-	  "text": "needs text"
+	  "text": "Next only to the Holy Hand Grenade! Damages unholy creatures"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:wolfsbane",
-	  "text": "needs text"
+	  "text": "Damages wolves and other canids"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:deviants_decomposure",
-	  "text": "needs text"
+	  "text": "Teach all those weird outcasts, such as illagers and witches, a lesson"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:sleeping",
-	  "text": "needs text"
+	  "text": "You are getting sleepy...very sleepy...so sleepy you may not ever wake up…"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:volatility",
-	  "text": "needs text"
+	  "text": "KABOOM. Explode upon taking damage. Does not affect blocks"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:grace",
-	  "text": "needs text"
+	  "text": "Take less fall damage"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:shell_armor",
-	  "text": "needs text"
+	  "text": "Damages those who attack you"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:deflection",
-	  "text": "needs text"
+	  "text": "Ting! Reflects arrows and other projectiles away from you"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:enderference",
-	  "text": "needs text"
+	  "text": "Damages ender-beings, as well as squenches teleportation"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:revealing",
-	  "text": "needs text"
+	  "text": "Shows the hidden"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:disrobing",
-	  "text": "needs text"
+	  "text": "Takes off the armour and baubles of a target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:sinking",
-	  "text": "needs text"
+	  "text": "It becomes harder to jump, to the point of preventing jumping at stronger potencies"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:cursed_leaps",
-	  "text": "needs text"
+	  "text": "Throws the target into the air, making them unable to act and then taking fall damage"
 	}
   ]
 }

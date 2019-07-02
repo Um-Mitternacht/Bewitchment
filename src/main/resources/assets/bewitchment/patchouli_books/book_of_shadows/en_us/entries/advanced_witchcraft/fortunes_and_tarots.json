@@ -5,7 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "needs text"
+	  "text": "Scrying of all sorts"
 	},
 	{
 	  "type": "empty",
@@ -23,7 +23,7 @@
 	{
 	  "type": "text",
 	  "title": "Tarots",
-	  "text": "needs text"
+	  "text": "Originally simple playing cards, yet many have discovered the magical powers these cards possess in revealing secrets and predicting the future"
 	},
 	{
 	  "type": "bewitchment:ritual",

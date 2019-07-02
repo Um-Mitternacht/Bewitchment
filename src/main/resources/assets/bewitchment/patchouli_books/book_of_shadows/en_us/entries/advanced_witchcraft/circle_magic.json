@@ -10,22 +10,22 @@
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:ritual_chalk",
-	  "text": "needs text"
+	  "text": "The first form of chalk, both used on its own and as a base for the other chalks."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:focal_chalk",
-	  "text": "needs text"
+	  "text": "The heart of any circle ritual."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:fiery_chalk",
-	  "text": "needs text"
+	  "text": "Used for rituals of a more diabolic nature."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:phasing_chalk",
-	  "text": "needs text"
+	  "text": "Used for rituals that require communication with other dimensions or across large areas."
 	},
 	{
 	  "type": "multiblock",
@@ -105,7 +105,7 @@
 	{
 	  "type": "text",
 	  "title": "Lesser Marks",
-	  "text": "needs text"
+	  "text": "Instantly draws a small circle according to the chalk type held in the off-hand"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -114,7 +114,7 @@
 	{
 	  "type": "text",
 	  "title": "Marks",
-	  "text": "needs text"
+	  "text": "Instantly draws a medium circle according to the chalk type held in the off-hand"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -123,7 +123,7 @@
 	{
 	  "type": "text",
 	  "title": "Greater Marks",
-	  "text": "needs text"
+	  "text": "Instantly draws a large circle according to the chalk type held in the off-hand"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -132,7 +132,7 @@
 	{
 	  "type": "text",
 	  "title": "Solar Glory",
-	  "text": "needs text"
+	  "text": "Turns it to day"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -141,7 +141,7 @@
 	{
 	  "type": "text",
 	  "title": "High Moon",
-	  "text": "needs text"
+	  "text": "Turns it to night"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -150,7 +150,7 @@
 	{
 	  "type": "text",
 	  "title": "Sands of Time",
-	  "text": "needs text"
+	  "text": "Manipulates time to speed up the daylight cycle"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -159,7 +159,7 @@
 	{
 	  "type": "text",
 	  "title": "Deluge",
-	  "text": "needs text"
+	  "text": "Causes a downpour"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -168,7 +168,7 @@
 	{
 	  "type": "text",
 	  "title": "Perception",
-	  "text": "needs text"
+	  "text": "Causes entities nearby to glow"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -177,7 +177,7 @@
 	{
 	  "type": "text",
 	  "title": "Hungry Flames",
-	  "text": "needs text"
+	  "text": "Summons flames from below to cook and smelt any items in the circle, but some items may be burned to XP"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -186,7 +186,7 @@
 	{
 	  "type": "text",
 	  "title": "Frenzied Growth",
-	  "text": "needs text"
+	  "text": "Charges vanilla trees with magic to mutate them into their more witchy counterpart"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -195,7 +195,7 @@
 	{
 	  "type": "text",
 	  "title": "Revealing",
-	  "text": "needs text"
+	  "text": "Fills lanterns with a magical light"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -204,7 +204,7 @@
 	{
 	  "type": "text",
 	  "title": "Call of the Wild",
-	  "text": "needs text"
+	  "text": "Summon forth several animals from the wilds"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -213,7 +213,7 @@
 	{
 	  "type": "text",
 	  "title": "Conjure Witch",
-	  "text": "needs text"
+	  "text": "Summons a fellow practitioner. However they may not always be happy you did so…"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -222,7 +222,7 @@
 	{
 	  "type": "text",
 	  "title": "Spiritual Rift",
-	  "text": "needs text"
+	  "text": "Makes a temporary tear in the veil, allowings beings of a spiritual nature to walk the Earth once more"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -231,7 +231,7 @@
 	{
 	  "type": "text",
 	  "title": "Purification",
-	  "text": "needs text"
+	  "text": "Blesses dirt into a version that smites undead beings"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -240,7 +240,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "needs text"
+	  "text": "Transforms a mundane broom into its magical equivalent, Cypress in this case"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -249,7 +249,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "needs text"
+	  "text": "Transforms a mundane broom into its magical equivalent, Elder in this case"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -258,7 +258,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "needs text"
+	  "text": "Transforms a mundane broom into its magical equivalent, Juniper in this case"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -267,7 +267,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "needs text"
+	  "text": "Transforms a mundane broom into its magical equivalent, Yew in this case"
 	},
 	{
 	  "type": "bewitchment:ritual",

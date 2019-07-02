@@ -14,22 +14,22 @@
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:cleansing_balm",
-	  "text": "needs text"
+	  "text": "A salve with purifying powers"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:demonic_elixir",
-	  "text": "needs text"
+	  "text": "A foul mixture infused with the essence of a demons"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:fiery_unguent",
-	  "text": "needs text"
+	  "text": "Get your spicy memes here"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:bottled_frostfire",
-	  "text": "needs text"
+	  "text": "A strange anti-fire that is cold to the touch. When placed, it can smelt iron ore into Cold Iron when thrown in"
 	}
   ]
 }
