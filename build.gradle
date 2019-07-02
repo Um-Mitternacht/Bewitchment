@@ -9,7 +9,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.12.2-0.0.20.1_rewrite26"
+version = "1.12.2-0.0.20.1_rewrite27"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
