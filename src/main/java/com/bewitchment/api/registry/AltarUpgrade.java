@@ -7,7 +7,7 @@ public class AltarUpgrade {
 	
 	/**
 	 * @param type the type of upgrade
-	 * @param upgrade1 for cups and pentacles, this means gain. has no effect on swords and wands
+	 * @param upgrade1 for cups and pentacles, this means gain. has no effect on swords wands, and books
 	 * @param upgrade2 for cups and swords, this means the total multiplier. for wands, this means the flat bonus multiplier. has no effect on pentacles
 	 */
 	public AltarUpgrade(Type type, int upgrade1, double upgrade2) {

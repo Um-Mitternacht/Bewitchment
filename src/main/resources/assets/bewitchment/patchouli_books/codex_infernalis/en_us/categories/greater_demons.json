@@ -1,6 +1,6 @@
 {
   "name": "Greater Demons",
   "description": "As demons mostly operate under a pseudo-feudalistic system, there are of course equivalents to infernal kings and queens.",
-  "icon": "bewitchment:hellish_bauble",
-  "sortnum": 2
+  "icon": "bewitchment:demon_heart",
+  "sortnum": 3
 }

@@ -249,7 +249,7 @@ public class ModObjects {
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
-	public static final Item hellish_bauble = new ItemHellishBauble();
+	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
