@@ -26,7 +26,7 @@ import java.util.Arrays;
 
 public class RitualCallOfTheWild extends Ritual {
 	public RitualCallOfTheWild() {
-		super(new ResourceLocation(Bewitchment.MODID, "call_of_the_wild"), Arrays.asList(Util.get(ModObjects.oak_spirit), Util.get(ModObjects.birch_soul), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1)), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1))), null, null, 10, 780, 30, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "call_of_the_wild"), Arrays.asList(Util.get(ModObjects.oak_spirit), Util.get(ModObjects.birch_soul), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1)), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1))), null, null, 10, 780, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
 	}
 	
 	@Override

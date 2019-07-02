@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 public class RitualFrenziedGrowth extends Ritual {
 	public RitualFrenziedGrowth() {
-		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("vine"), Util.get("vine"), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata())), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata()))), null, null, 5, 550, 40, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY);
+		super(new ResourceLocation(Bewitchment.MODID, "frenzied_growth"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("vine"), Util.get("vine"), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata())), Util.get(new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getMetadata()))), null, null, 5, 550, 40, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
 	}
 	
 	@Override
