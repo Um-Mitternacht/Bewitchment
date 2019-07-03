@@ -79,10 +79,6 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		/*if (getControllingPassenger() != null && getControllingPassenger().isSneaking()) {
-			dismount();
-			return;
-		}*/
 		float friction = 0.98f;
 		if (onGround) friction = 0.4f;
 		motionX *= friction;
