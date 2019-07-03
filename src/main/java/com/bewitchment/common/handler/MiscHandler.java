@@ -1,5 +1,6 @@
 package com.bewitchment.common.handler;
 
+import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
@@ -47,5 +49,10 @@ public class MiscHandler {
 				event.setCanceled(true);
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void dismount(EntityMountEvent event) {
+		if (event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
 	}
 }

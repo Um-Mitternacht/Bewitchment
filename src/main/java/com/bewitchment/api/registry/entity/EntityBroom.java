@@ -147,7 +147,7 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
-	protected void dismount() {
+	public void dismount() {
 		setDead();
 	}
 	
