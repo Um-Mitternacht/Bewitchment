@@ -1,9 +1,12 @@
 package com.bewitchment.api.capability.magicpower;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.message.SyncGrimoire;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
-import com.bewitchment.registry.ModObjects;
+import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,6 +18,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "SameReturnValue"})
 public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<MagicPower> {
@@ -60,12 +64,21 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
 	}
 	
+	public static void syncToClient(EntityPlayer player, int slot) {
+		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncGrimoire(Util.getEntireInventory(player).get(slot).getCapability(CAPABILITY, null).serializeNBT(), slot), (EntityPlayerMP) player);
+	}
+	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
 		if (amount == 0) return true;
 		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount)) return true;
 		if (player != null) {
-			for (ItemStack stack : Util.getEntireInventory(player)) {
-				if (stack.getItem() == ModObjects.grimoire_magia && stack.getCapability(CAPABILITY, null).drain(amount)) return true;
+			List<ItemStack> inv = Util.getEntireInventory(player);
+			for (int i = 0; i < inv.size(); i++) {
+				ItemStack stack = inv.get(i);
+				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount)) {
+					syncToClient(player, i);
+					return true;
+				}
 			}
 		}
 		return false;

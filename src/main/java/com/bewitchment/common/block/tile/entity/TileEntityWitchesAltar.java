@@ -30,6 +30,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
@@ -89,13 +90,19 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	
 	@Override
 	public void update() {
-		if (world.getTotalWorldTime() % 100 == 0) {
-			for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
-				for (ItemStack stack : Util.getEntireInventory(player))
-					if (stack.getItem() instanceof ItemGrimoireMagia && MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f)) break;
-			}
-		}
 		if (!world.isRemote) {
+			if (world.getTotalWorldTime() % 100 == 0) {
+				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
+					List<ItemStack> inv = Util.getEntireInventory(player);
+					for (int i = 0; i < inv.size(); i++) {
+						ItemStack stack = inv.get(i);
+						if (stack.getItem() instanceof ItemGrimoireMagia && MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 50, 0.5f)) {
+							MagicPower.syncToClient(player, i);
+							break;
+						}
+					}
+				}
+			}
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
 			scan(Bewitchment.config.altarScansPerTick);
