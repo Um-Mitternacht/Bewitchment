@@ -79,10 +79,10 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (getControllingPassenger() != null && getControllingPassenger().isSneaking()) {
+		/*if (getControllingPassenger() != null && getControllingPassenger().isSneaking()) {
 			dismount();
 			return;
-		}
+		}*/
 		float friction = 0.98f;
 		if (onGround) friction = 0.4f;
 		motionX *= friction;
@@ -90,7 +90,7 @@ public abstract class EntityBroom extends Entity {
 		Entity rider = getControllingPassenger();
 		if (rider instanceof EntityPlayer) {
 			boolean jump = getJump((EntityPlayer) rider);
-			if (ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
+			if (rider.ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 			if (canFly) {
 				float speed = getSpeed();
 				float maxSpeed = getMaxSpeed();
