@@ -44,7 +44,7 @@ public class EntityYewBroom extends EntityBroom {
 	}
 	
 	@Override
-	protected void dismount() {
+	public void dismount() {
 		if (!world.isRemote && dimension == originalDimension && originalPos != null && getControllingPassenger() instanceof EntityPlayer) {
 			double x = originalPos.getX() + 0.5;
 			double y = originalPos.getY() + 0.5;
