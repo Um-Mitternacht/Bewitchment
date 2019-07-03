@@ -163,9 +163,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 					if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 				}
 				else if (mode == 0 || mode == 3) {
-					if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
-						world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-					else if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
+					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
 						if (tank.canDrainFluidType(tank.getFluid())) {
 							Util.giveAndConsumeItem(player, hand, createPotion());
 							tank.drain(Fluid.BUCKET_VOLUME / 3, true);
@@ -176,6 +174,8 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 							}
 						}
 					}
+					else if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
+						world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 				}
 				syncToClient();
 			}
