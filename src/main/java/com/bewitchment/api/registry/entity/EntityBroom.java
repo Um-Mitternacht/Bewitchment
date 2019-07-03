@@ -48,7 +48,16 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (getPassengers().isEmpty() && source.getTrueSource() instanceof EntityPlayer) setDead();
+		if (getPassengers().isEmpty() && source.getTrueSource() instanceof EntityPlayer) {
+			if (!world.isRemote) {
+				if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+					EntityPlayer player = (EntityPlayer) getControllingPassenger();
+					Util.giveItem(player, item.copy());
+				}
+				else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+			}
+			setDead();
+		}
 		return super.attackEntityFrom(source, amount);
 	}
 	
@@ -106,18 +115,6 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void setDead() {
-		if (!world.isRemote) {
-			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) getControllingPassenger();
-				Util.giveItem(player, item.copy());
-			}
-			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-		}
-		super.setDead();
-	}
-	
-	@Override
 	protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
 	}
 	
@@ -144,7 +141,6 @@ public abstract class EntityBroom extends Entity {
 	protected abstract int getMagicCost();
 	
 	public void dismount() {
-		setDead();
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
