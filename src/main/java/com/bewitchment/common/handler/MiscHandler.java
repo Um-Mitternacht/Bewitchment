@@ -53,6 +53,6 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void dismount(EntityMountEvent event) {
-		if (!event.getWorldObj().isRemote & event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
+		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
 	}
 }

@@ -2,6 +2,7 @@ package com.bewitchment.api.registry.entity;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -48,7 +49,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (getPassengers().isEmpty() && source.getTrueSource() instanceof EntityPlayer) {
+		if (getPassengers().isEmpty() && source.getImmediateSource() instanceof EntityPlayer) {
 			if (!world.isRemote) {
 				if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer) getControllingPassenger();
@@ -59,6 +60,11 @@ public abstract class EntityBroom extends Entity {
 			setDead();
 		}
 		return super.attackEntityFrom(source, amount);
+	}
+	
+	@Override
+	public void setDead() {
+		if (getPassengers().isEmpty()) super.setDead();
 	}
 	
 	@Override
