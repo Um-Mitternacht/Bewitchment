@@ -9,6 +9,7 @@ import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModRegistries;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -52,7 +53,6 @@ public class Util {
 		if (mat == Material.TNT || mat == Material.VINE) Blocks.FIRE.setFireInfo(block, 15, 100);
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
-		ForgeRegistries.BLOCKS.register(block);
 		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock)) {
 			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			ForgeRegistries.ITEMS.register(item);
@@ -70,10 +70,8 @@ public class Util {
 		item.setRegistryName(loc);
 		item.setTranslationKey(loc.toString().replace(":", "."));
 		item.setCreativeTab(Bewitchment.tab);
-		ForgeRegistries.ITEMS.register(item);
-		if (predicates.isEmpty()) Bewitchment.proxy.registerTexture(item, "normal");
-		else Bewitchment.proxy.registerTextureVariant(item, predicates);
-		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, item);
+		ModRegistries.MODEL_PREDICATES.put(item, predicates);
+		ModRegistries.ORE_DICTIONARY_ENTRIES.put(item, oreDictionaryNames);
 		return item;
 	}
 	

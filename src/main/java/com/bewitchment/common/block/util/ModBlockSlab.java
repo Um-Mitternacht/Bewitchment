@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.util;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPurpurSlab;
@@ -15,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,8 +34,11 @@ public class ModBlockSlab extends BlockSlab {
 		double_slab.setCreativeTab(null);
 		this.half = this;
 		double_slab.half = this;
-		Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
+		Item item_slab = Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
+		ForgeRegistries.ITEMS.register(item_slab);
+		Bewitchment.proxy.registerTexture(item_slab, "normal");
 		this.double_slab = double_slab;
+		ForgeRegistries.BLOCKS.register(double_slab);
 	}
 	
 	private ModBlockSlab(String name, Block base, boolean isDouble) {

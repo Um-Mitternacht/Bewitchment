@@ -7,7 +7,6 @@ import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
 import com.bewitchment.common.block.plants.BlockTorchwood;
-import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
@@ -26,10 +25,10 @@ import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
 import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -39,7 +38,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import team.chisel.api.carving.CarvingUtils;
 
 import java.util.ArrayList;
@@ -336,43 +334,11 @@ public class ModObjects {
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	
 	public static void preInit() {
-		Bewitchment.proxy.ignoreProperty(embergrass, BlockBushSpreading.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(torchwood, BlockBushSpreading.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
-		Bewitchment.proxy.ignoreProperty(elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
-		Bewitchment.proxy.ignoreProperty(juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
-		Bewitchment.proxy.ignoreProperty(yew_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
-		Bewitchment.proxy.ignoreProperty(cypress_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
-		Bewitchment.proxy.ignoreProperty(elder_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
-		Bewitchment.proxy.ignoreProperty(juniper_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
-		Bewitchment.proxy.ignoreProperty(yew_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
-		Bewitchment.proxy.ignoreProperty(cypress_door.door, BlockDoor.POWERED);
-		Bewitchment.proxy.ignoreProperty(elder_door.door, BlockDoor.POWERED);
-		Bewitchment.proxy.ignoreProperty(juniper_door.door, BlockDoor.POWERED);
-		Bewitchment.proxy.ignoreProperty(yew_door.door, BlockDoor.POWERED);
-		Bewitchment.proxy.ignoreProperty(cypress_fence_gate, BlockFenceGate.POWERED);
-		Bewitchment.proxy.ignoreProperty(elder_fence_gate, BlockFenceGate.POWERED);
-		Bewitchment.proxy.ignoreProperty(juniper_fence_gate, BlockFenceGate.POWERED);
-		Bewitchment.proxy.ignoreProperty(yew_fence_gate, BlockFenceGate.POWERED);
-		
-		crop_aconitum.setItems(aconitum_seeds, aconitum);
-		crop_belladonna.setItems(belladonna_seeds, belladonna);
-		crop_garlic.setItems(garlic_seeds, garlic);
-		crop_hellebore.setItems(hellebore_seeds, hellebore);
-		crop_mandrake.setItems(mandrake_seeds, mandrake_root);
-		crop_white_sage.setItems(white_sage_seeds, white_sage);
-		crop_wormwood.setItems(wormwood_seeds, wormwood);
-		
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.QUARTZ));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()));
-		
 		if (Loader.isModLoaded("chisel")) {
-			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(coquina_bricks.getDefaultState(), 1));
-			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(chiseled_coquina.getDefaultState(), 1));
-			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(cracked_scorned_bricks.getDefaultState(), 1));
-			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(chiseled_scorned_bricks.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(ModObjects.coquina_bricks.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("coquina", CarvingUtils.variationFor(ModObjects.chiseled_coquina.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.cracked_scorned_bricks.getDefaultState(), 1));
+			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.chiseled_scorned_bricks.getDefaultState(), 1));
 		}
 	}
 	

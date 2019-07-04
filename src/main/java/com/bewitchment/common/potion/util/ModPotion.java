@@ -7,7 +7,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ModPotion extends Potion {
@@ -15,7 +14,6 @@ public class ModPotion extends Potion {
 		super(isNegative, color);
 		setRegistryName(new ResourceLocation(Bewitchment.MODID, name));
 		setPotionName(getRegistryName().toString().replace(":", "."));
-		ForgeRegistries.POTIONS.register(this);
 	}
 	
 	@Override

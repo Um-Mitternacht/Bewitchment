@@ -3,7 +3,6 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 @SuppressWarnings("EmptyMethod")
 public class ModSounds {
@@ -15,13 +14,8 @@ public class ModSounds {
 	public static final SoundEvent TOAD_HURT = createSoundEvent("toad_hurt");
 	public static final SoundEvent TOAD_IDLE = createSoundEvent("toad_idle");
 	
-	public static void preInit() {
-	}
-	
 	private static SoundEvent createSoundEvent(String name) {
 		ResourceLocation id = new ResourceLocation(Bewitchment.MODID, name);
-		SoundEvent event = new SoundEvent(id).setRegistryName(id);
-		ForgeRegistries.SOUND_EVENTS.register(event);
-		return event;
+		return new SoundEvent(id).setRegistryName(id);
 	}
 }

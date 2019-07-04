@@ -37,7 +37,4 @@ public class ModPotions {
 	public static Potion disrobing = new PotionDisrobing();
 	public static Potion sinking = new PotionSinking();
 	public static Potion cursed_leaps = new PotionCursedLeaps();
-	
-	public static void preInit() {
-	}
 }

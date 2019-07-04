@@ -7,7 +7,4 @@ import com.bewitchment.common.enchantment.EnchantmentSpiritProtection;
 public class ModEnchantments {
 	public static final EnchantmentMagicProtection magic_protection = new EnchantmentMagicProtection();
 	public static final EnchantmentSpiritProtection spirit_protection = new EnchantmentSpiritProtection();
-	
-	public static void preInit() {
-	}
 }

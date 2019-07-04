@@ -8,9 +8,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-@SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"unused", "ConstantConditions"})
 public class ModEnchantment extends Enchantment {
 	private final int maxLevel;
 	
@@ -19,7 +18,6 @@ public class ModEnchantment extends Enchantment {
 		setRegistryName(new ResourceLocation(Bewitchment.MODID, name));
 		setName(getRegistryName().toString().replace(":", "."));
 		this.maxLevel = maxLevel;
-		ForgeRegistries.ENCHANTMENTS.register(this);
 	}
 	
 	@Override

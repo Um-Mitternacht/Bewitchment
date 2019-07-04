@@ -38,7 +38,8 @@ import com.bewitchment.common.handler.MiscHandler;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
-import com.bewitchment.registry.*;
+import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModRecipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -89,17 +90,22 @@ public class Bewitchment {
 		
 		config = new ModConfig((event.getSuggestedConfigurationFile()));
 		proxy.registerRenderers();
-		ModSounds.preInit();
-		ModEntities.preInit();
 		ModObjects.preInit();
-		ModEnchantments.preInit();
-		ModPotions.preInit();
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 		CapabilityManager.INSTANCE.register(ExtendedWorld.class, new ExtendedWorld(), ExtendedWorld::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedWorldHandler());
 		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
+		
+		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
+		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
+		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
+		MinecraftForge.EVENT_BUS.register(new MiscHandler());
+		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
 	
 	@EventHandler
@@ -123,14 +129,6 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
-		
-		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
-		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
-		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
-		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
-		MinecraftForge.EVENT_BUS.register(new MiscHandler());
-		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 	}
 	
 	@EventHandler

@@ -1,6 +1,5 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.common.block.util.ModBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -23,7 +22,6 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
 		super(name, mat, sound, hardness, resistance, tool, level);
 		setLightOpacity(0);
-		Bewitchment.proxy.ignoreProperty(this, LIT);
 	}
 	
 	@Override

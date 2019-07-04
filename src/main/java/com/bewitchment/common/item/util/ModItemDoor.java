@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -28,6 +29,7 @@ public class ModItemDoor extends ItemDoor {
 		Util.registerItem(this, name, oreDictionaryNames);
 		this.door = door;
 		this.door.drop = new ItemStack(this);
+		ForgeRegistries.BLOCKS.register(door);
 	}
 	
 	@SuppressWarnings({"NullableProblems", "ConstantConditions"})
