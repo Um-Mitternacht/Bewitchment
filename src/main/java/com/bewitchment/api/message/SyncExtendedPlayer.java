@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused"})
 public class SyncExtendedPlayer implements IMessage {
@@ -35,7 +34,7 @@ public class SyncExtendedPlayer implements IMessage {
 	public static class Handler implements IMessageHandler<SyncExtendedPlayer, IMessage> {
 		@Override
 		public IMessage onMessage(SyncExtendedPlayer message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().player.getCapability(ExtendedPlayer.CAPABILITY, null).deserializeNBT(message.tag));
+			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().player.getCapability(ExtendedPlayer.CAPABILITY, null).deserializeNBT(message.tag));
 			return null;
 		}
 	}

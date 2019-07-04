@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused"})
 public class CauldronTeleport implements IMessage {
@@ -39,7 +38,7 @@ public class CauldronTeleport implements IMessage {
 	public static class Handler implements IMessageHandler<CauldronTeleport, IMessage> {
 		@Override
 		public IMessage onMessage(CauldronTeleport message, MessageContext ctx) {
-			if (ctx.side == Side.SERVER) {
+			if (ctx.side.isServer()) {
 				EntityPlayer player = ctx.getServerHandler().player;
 				ExtendedWorld cap = player.world.getCapability(ExtendedWorld.CAPABILITY, null);
 				for (long l : cap.storedCauldrons) {

@@ -6,7 +6,6 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused"})
 public class TeleportPlayerClient implements IMessage {
@@ -38,7 +37,7 @@ public class TeleportPlayerClient implements IMessage {
 	public static class Handler implements IMessageHandler<TeleportPlayerClient, IMessage> {
 		@Override
 		public IMessage onMessage(TeleportPlayerClient message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) {
+			if (ctx.side.isClient()) {
 				Minecraft.getMinecraft().addScheduledTask(() -> {
 					EntityPlayerSP player = Minecraft.getMinecraft().player;
 					player.setLocationAndAngles(message.x, message.y, message.z, player.rotationYaw, player.rotationPitch);

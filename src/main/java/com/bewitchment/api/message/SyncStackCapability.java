@@ -9,17 +9,16 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class SyncGrimoire implements IMessage {
+public class SyncStackCapability implements IMessage {
 	public NBTTagCompound tag;
 	public int slot;
 	
-	public SyncGrimoire() {
+	public SyncStackCapability() {
 	}
 	
-	public SyncGrimoire(NBTTagCompound tag, int slot) {
+	public SyncStackCapability(NBTTagCompound tag, int slot) {
 		this.tag = tag;
 		this.slot = slot;
 	}
@@ -37,10 +36,10 @@ public class SyncGrimoire implements IMessage {
 	}
 	
 	@SuppressWarnings("ConstantConditions")
-	public static class Handler implements IMessageHandler<SyncGrimoire, IMessage> {
+	public static class Handler implements IMessageHandler<SyncStackCapability, IMessage> {
 		@Override
-		public IMessage onMessage(SyncGrimoire message, MessageContext ctx) {
-			if (ctx.side == Side.CLIENT) Minecraft.getMinecraft().addScheduledTask(() -> Util.getEntireInventory(Minecraft.getMinecraft().player).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
+		public IMessage onMessage(SyncStackCapability message, MessageContext ctx) {
+			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Util.getEntireInventory(Minecraft.getMinecraft().player).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
 			return null;
 		}
 	}

@@ -1,5 +1,6 @@
 package com.bewitchment.api.registry.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -135,19 +136,15 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
-	/*
-	 * If it's working flawlessly, we'll re-enable the commented out code in here. I'll let you decide whether or not it's flawlessly
-	 * working, Moriya.
-	 */
 	public void dismount() {
-		/*if (!world.isRemote) {
+		if (!world.isRemote) {
 			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) getControllingPassenger();
 				Util.giveItem(player, item.copy());
 			}
 			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 		}
-		setDead();*/
+		setDead();
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
