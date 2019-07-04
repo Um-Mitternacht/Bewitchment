@@ -1,6 +1,5 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.DistilleryRecipe;
 import com.bewitchment.common.block.BlockDistillery;
@@ -15,6 +14,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -29,7 +29,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
 		@Override
 		protected void onContentsChanged(int index) {
-			recipe = BewitchmentAPI.REGISTRY_DISTILLERY.getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
+			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(6) {
@@ -54,7 +54,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		recipe = tag.getString("recipe").isEmpty() ? null : BewitchmentAPI.REGISTRY_DISTILLERY.getValue(new ResourceLocation(tag.getString("recipe")));
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		hasPower = tag.getBoolean("hasPower");
 		inUse = tag.getBoolean("inUse");
 		burnTime = tag.getInteger("burnTime");

@@ -2,7 +2,6 @@ package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SpawnBubble;
 import com.bewitchment.api.message.SpawnParticle;
@@ -32,6 +31,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.ArrayList;
@@ -219,7 +219,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		int duration = 1, potency = 1;
 		LinkedHashSet<PotionEffect> effects = new LinkedHashSet<>();
 		for (int i = 0; i < inventory.getSlots(); i++) {
-			for (Brew brew : BewitchmentAPI.REGISTRY_BREW.getValuesCollection()) if (brew.input.apply(inventory.getStackInSlot(i))) effects.add(brew.effect);
+			for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection()) if (brew.input.apply(inventory.getStackInSlot(i))) effects.add(brew.effect);
 			if (inventory.getStackInSlot(i).getItem() == Items.REDSTONE) duration++;
 			else if (inventory.getStackInSlot(i).getItem() == Items.GLOWSTONE_DUST) potency++;
 		}
@@ -282,7 +282,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 									setTargetColor(0x7f00c4);
 								}
 								if (mode == 5) {
-									CauldronRecipe recipe = BewitchmentAPI.REGISTRY_CAULDRON.getValuesCollection().stream().filter(b -> b.matches(inventory)).findFirst().orElse(null);
+									CauldronRecipe recipe = GameRegistry.findRegistry(CauldronRecipe.class).getValuesCollection().stream().filter(b -> b.matches(inventory)).findFirst().orElse(null);
 									if (recipe != null) {
 										for (ItemStack stack0 : recipe.output) {
 											EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack0.copy());
@@ -298,7 +298,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 								}
 								else if (mode == 3) {
 									setTargetColor(PotionUtils.getColor(createPotion()));
-									Brew brew = BewitchmentAPI.REGISTRY_BREW.getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
+									Brew brew = GameRegistry.findRegistry(Brew.class).getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
 									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
 										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
 										item.setNoGravity(true);
@@ -322,7 +322,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	}
 	
 	private boolean isBrewItem(ItemStack stack) {
-		for (Brew brew : BewitchmentAPI.REGISTRY_BREW.getValuesCollection()) if (brew.input.apply(stack)) return true;
+		for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection()) if (brew.input.apply(stack)) return true;
 		return stack.getItem() == ModObjects.mandrake_root || stack.getItem() == ModObjects.ravens_feather || stack.getItem() == Items.GUNPOWDER || stack.getItem() == ModObjects.owlets_wing || stack.getItem() == Items.REDSTONE || stack.getItem() == Items.GLOWSTONE_DUST;
 	}
 	

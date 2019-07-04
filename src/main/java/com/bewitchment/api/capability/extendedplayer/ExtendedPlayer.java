@@ -1,7 +1,6 @@
 package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.message.SyncExtendedPlayer;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +14,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -43,7 +43,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public void readNBT(Capability<ExtendedPlayer> capability, ExtendedPlayer instance, EnumFacing face, NBTBase nbt) {
 		NBTTagCompound tag = (NBTTagCompound) nbt;
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
-		instance.fortune = tag.getString("fortune").isEmpty() ? null : BewitchmentAPI.REGISTRY_FORTUNE.getValue(new ResourceLocation(tag.getString("fortune")));
+		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");
 	}

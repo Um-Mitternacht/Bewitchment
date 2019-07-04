@@ -1,7 +1,6 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -32,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -165,7 +165,7 @@ public class BlockGlyph extends ModBlockContainer {
 				for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-2, -2, -2), pos.add(2, 2, 2))) {
 					if (living.world.getTileEntity(pos0) instanceof TileEntityGlyph) {
 						TileEntityGlyph tile = (TileEntityGlyph) living.world.getTileEntity(pos0);
-						Ritual ritual = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(living.world, pos0, tile.getInventories()[0])).findFirst().orElse(null);
+						Ritual ritual = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(living.world, pos0, tile.getInventories()[0])).findFirst().orElse(null);
 						if (ritual != null && ritual.sacrificePredicate.test(living)) tile.startRitual(player, ritual);
 					}
 				}

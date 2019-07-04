@@ -1,7 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Ritual;
@@ -20,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -52,7 +52,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		ritual = tag.getString("ritual").isEmpty() ? null : BewitchmentAPI.REGISTRY_RITUAL.getValue(new ResourceLocation(tag.getString("ritual")));
+		ritual = tag.getString("ritual").isEmpty() ? null : GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
 		effectivePos = BlockPos.fromLong(tag.getLong("effectivePos"));
 		effectiveDim = tag.getInteger("effectiveDim");
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
@@ -117,7 +117,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 						if (slot < 10 && slot > -1) inventory.insertItem(slot, stack.splitStack(1), false);
 					}
 					else {
-						Ritual rit = BewitchmentAPI.REGISTRY_RITUAL.getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory)).findFirst().orElse(null);
+						Ritual rit = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory)).findFirst().orElse(null);
 						if (rit != null) {
 							if (rit.isValid(world, pos, player, inventory)) startRitual(player, rit);
 							else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);

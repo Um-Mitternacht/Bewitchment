@@ -1,8 +1,8 @@
 package com.bewitchment.common.integration.patchouli;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.CauldronRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.api.PatchouliAPI;
@@ -13,7 +13,7 @@ public class ProcessorCauldron implements IComponentProcessor {
 	
 	@Override
 	public void setup(IVariableProvider<String> provider) {
-		recipe = BewitchmentAPI.REGISTRY_CAULDRON.getValue(new ResourceLocation(provider.get("recipe")));
+		recipe = GameRegistry.findRegistry(CauldronRecipe.class).getValue(new ResourceLocation(provider.get("recipe")));
 	}
 	
 	@Override

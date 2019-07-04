@@ -4,7 +4,6 @@ import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -64,8 +63,6 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void dismount(EntityMountEvent event) {
-		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) {
-			((EntityBroom) event.getEntityBeingMounted()).dismount();
-		}
+		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
 	}
 }

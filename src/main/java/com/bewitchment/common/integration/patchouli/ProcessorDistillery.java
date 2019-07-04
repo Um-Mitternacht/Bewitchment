@@ -1,8 +1,8 @@
 package com.bewitchment.common.integration.patchouli;
 
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.DistilleryRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.api.PatchouliAPI;
@@ -13,7 +13,7 @@ public class ProcessorDistillery implements IComponentProcessor {
 	
 	@Override
 	public void setup(IVariableProvider<String> provider) {
-		recipe = BewitchmentAPI.REGISTRY_DISTILLERY.getValue(new ResourceLocation(provider.get("recipe")));
+		recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(provider.get("recipe")));
 	}
 	
 	@Override
