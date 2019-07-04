@@ -18,14 +18,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.UUID;
 
-@SuppressWarnings({"WeakerAccess", "ConstantConditions", "NullableProblems"})
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable {
 	private final ItemStackHandler inventory = new ItemStackHandler(12) {
 		@Override
@@ -58,16 +56,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
 		time = tag.getInteger("time");
 		super.readFromNBT(tag);
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
