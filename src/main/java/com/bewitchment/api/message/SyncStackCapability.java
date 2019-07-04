@@ -1,6 +1,6 @@
 package com.bewitchment.api.message;
 
-import com.bewitchment.Util;
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -39,7 +39,7 @@ public class SyncStackCapability implements IMessage {
 	public static class Handler implements IMessageHandler<SyncStackCapability, IMessage> {
 		@Override
 		public IMessage onMessage(SyncStackCapability message, MessageContext ctx) {
-			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Util.getEntireInventory(Minecraft.getMinecraft().player).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
+			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Bewitchment.proxy.getEntireInventory(null).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
 			return null;
 		}
 	}

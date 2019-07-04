@@ -1,7 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
@@ -93,7 +92,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (!world.isRemote) {
 			if (world.getTotalWorldTime() % 100 == 0) {
 				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
-					List<ItemStack> inv = Util.getEntireInventory(player);
+					List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
 					for (int i = 0; i < inv.size(); i++) {
 						ItemStack stack = inv.get(i);
 						if (stack.getItem() instanceof ItemGrimoireMagia && MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 50, 0.5f)) {

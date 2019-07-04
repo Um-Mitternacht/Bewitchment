@@ -1,7 +1,6 @@
 package com.bewitchment.api.capability.magicpower;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.message.SyncStackCapability;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
@@ -65,14 +64,14 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public static void syncToClient(EntityPlayer player, int slot) {
-		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncStackCapability(Util.getEntireInventory(player).get(slot).getCapability(CAPABILITY, null).serializeNBT(), slot), (EntityPlayerMP) player);
+		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncStackCapability(Bewitchment.proxy.getEntireInventory(player).get(slot).getCapability(CAPABILITY, null).serializeNBT(), slot), (EntityPlayerMP) player);
 	}
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
 		if (amount == 0) return true;
 		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount)) return true;
 		if (player != null) {
-			List<ItemStack> inv = Util.getEntireInventory(player);
+			List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
 			for (int i = 0; i < inv.size(); i++) {
 				ItemStack stack = inv.get(i);
 				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount)) {
