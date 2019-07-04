@@ -1,12 +1,15 @@
 package com.bewitchment.api.registry.entity;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.message.DismountPlayer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,7 +51,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (getPassengers().isEmpty() && source.getTrueSource() instanceof EntityPlayer) {
+		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) {
 			if (!world.isRemote) {
 				if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer) getControllingPassenger();
@@ -57,6 +60,7 @@ public abstract class EntityBroom extends Entity {
 				else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 			}
 			setDead();
+			return true;
 		}
 		return super.attackEntityFrom(source, amount);
 	}
@@ -119,6 +123,11 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
+	public void setDead() {
+		if (getControllingPassenger() == null) super.setDead();
+	}
+	
+	@Override
 	protected void entityInit() {
 	}
 	
@@ -141,6 +150,7 @@ public abstract class EntityBroom extends Entity {
 	protected abstract int getMagicCost();
 	
 	public void dismount() {
+		if (getControllingPassenger() instanceof EntityPlayerMP) Bewitchment.network.sendTo(new DismountPlayer(), (EntityPlayerMP) getControllingPassenger());
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
