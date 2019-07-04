@@ -1,15 +1,12 @@
 package com.bewitchment.api.registry.entity;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.DismountPlayer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,6 +14,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -102,9 +100,8 @@ public abstract class EntityBroom extends Entity {
 			if (rider.ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 			if (canFly) {
 				float speed = getSpeed();
-				float maxSpeed = getMaxSpeed();
-				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
-				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
+				motionX += rider.motionX * speed;
+				motionZ += rider.motionZ * speed;
 				rotationYaw = rider.rotationYaw;
 				if (jump && motionY < 1) motionY += (0.1f + getThrust());
 			}
@@ -115,16 +112,14 @@ public abstract class EntityBroom extends Entity {
 		}
 		motionY -= 0.1f;
 		motionY *= 0.75f;
+		float maxSpeed = getMaxSpeed();
+		motionX = MathHelper.clamp(motionX, -maxSpeed, maxSpeed);
+		motionZ = MathHelper.clamp(motionZ, -maxSpeed, maxSpeed);
 		move(MoverType.SELF, motionX, motionY, motionZ);
 	}
 	
 	@Override
 	protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
-	}
-	
-	@Override
-	public void setDead() {
-		if (getControllingPassenger() == null) super.setDead();
 	}
 	
 	@Override
@@ -150,7 +145,6 @@ public abstract class EntityBroom extends Entity {
 	protected abstract int getMagicCost();
 	
 	public void dismount() {
-		if (getControllingPassenger() instanceof EntityPlayerMP) Bewitchment.network.sendTo(new DismountPlayer(), (EntityPlayerMP) getControllingPassenger());
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
