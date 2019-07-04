@@ -1,7 +1,6 @@
 package com.bewitchment.api.registry.entity;
 
 import com.bewitchment.api.capability.magicpower.MagicPower;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
