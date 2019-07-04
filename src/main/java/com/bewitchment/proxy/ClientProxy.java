@@ -1,6 +1,5 @@
 package com.bewitchment.proxy;
 
-import baubles.api.BaublesApi;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderElderBroom;
@@ -49,7 +48,6 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -58,13 +56,7 @@ import java.util.function.Predicate;
 public class ClientProxy extends ServerProxy {
 	@Override
 	public List<ItemStack> getEntireInventory(EntityPlayer unused) {
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		List<ItemStack> fin = new ArrayList<>();
-		for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) fin.add(BaublesApi.getBaublesHandler(player).getStackInSlot(i));
-		fin.addAll(player.inventory.mainInventory);
-		fin.addAll(player.inventory.armorInventory);
-		fin.addAll(player.inventory.offHandInventory);
-		return fin;
+		return super.getEntireInventory(Minecraft.getMinecraft().player);
 	}
 	
 	public boolean doesPlayerHaveAdvancement(EntityPlayer player, ResourceLocation name) {
