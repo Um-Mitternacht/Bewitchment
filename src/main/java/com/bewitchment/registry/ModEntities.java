@@ -64,7 +64,7 @@ public class ModEntities {
 	}
 	
 	private static EntityEntry createEntityEntry(Class<? extends Entity> clazz, String name) {
-		EntityEntry entry = EntityEntryBuilder.create().entity(clazz).id(new ResourceLocation(Bewitchment.MODID, name), entity_id++).name(Bewitchment.MODID + "." + name).tracker(64, 1, true).build();
+		EntityEntry entry = EntityEntryBuilder.create().entity(clazz).id(new ResourceLocation(Bewitchment.MODID, name), entity_id++).name(Bewitchment.MODID + "." + name).tracker(64, 20, true).build();
 		ForgeRegistries.ENTITIES.register(entry);
 		return entry;
 	}

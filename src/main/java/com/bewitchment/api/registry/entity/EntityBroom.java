@@ -1,15 +1,12 @@
 package com.bewitchment.api.registry.entity;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.DismountPlayer;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,7 +21,6 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
 	private ItemStack item;
-	
 	private boolean canFly;
 	
 	public EntityBroom(World world) {
@@ -53,11 +49,7 @@ public abstract class EntityBroom extends Entity {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) {
 			if (!world.isRemote) {
-				if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-					EntityPlayer player = (EntityPlayer) getControllingPassenger();
-					Util.giveItem(player, item.copy());
-				}
-				else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+				InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 			}
 			setDead();
 			return true;
@@ -123,11 +115,6 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void setDead() {
-		if (getControllingPassenger() == null) super.setDead();
-	}
-	
-	@Override
 	protected void entityInit() {
 	}
 	
@@ -149,8 +136,19 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
+	/*
+	 * If it's working flawlessly, we'll re-enable the commented out code in here. I'll let you decide whether or not it's flawlessly
+	 * working, Moriya.
+	 */
 	public void dismount() {
-		if (getControllingPassenger() instanceof EntityPlayerMP) Bewitchment.network.sendTo(new DismountPlayer(), (EntityPlayerMP) getControllingPassenger());
+		/*if (!world.isRemote) {
+			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) getControllingPassenger();
+				Util.giveItem(player, item.copy());
+			}
+			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+		}
+		setDead();*/
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {

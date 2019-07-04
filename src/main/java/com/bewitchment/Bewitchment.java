@@ -1,5 +1,8 @@
 package com.bewitchment;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 //R DZH SVIV
 //HFMXLMFIV11
 //HKRMLHZFIFH111
@@ -28,7 +31,12 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorldHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.*;
+import com.bewitchment.api.message.CauldronTeleport;
+import com.bewitchment.api.message.SpawnBubble;
+import com.bewitchment.api.message.SpawnParticle;
+import com.bewitchment.api.message.SyncExtendedPlayer;
+import com.bewitchment.api.message.SyncGrimoire;
+import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.ArmorHandler;
@@ -38,7 +46,13 @@ import com.bewitchment.common.handler.MiscHandler;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
-import com.bewitchment.registry.*;
+import com.bewitchment.registry.ModEnchantments;
+import com.bewitchment.registry.ModEntities;
+import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModPotions;
+import com.bewitchment.registry.ModRecipes;
+import com.bewitchment.registry.ModSounds;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,8 +70,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION)
@@ -123,7 +135,6 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
-		Bewitchment.network.registerMessage(DismountPlayer.Handler.class, DismountPlayer.class, ++id, Side.CLIENT);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
