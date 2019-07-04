@@ -1,7 +1,7 @@
 package com.bewitchment.api.registry.entity;
 
-import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,7 +14,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -22,7 +21,6 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
 	private ItemStack item;
-	
 	private boolean canFly;
 	
 	public EntityBroom(World world) {
@@ -51,11 +49,7 @@ public abstract class EntityBroom extends Entity {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) {
 			if (!world.isRemote) {
-				if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-					EntityPlayer player = (EntityPlayer) getControllingPassenger();
-					Util.giveItem(player, item.copy());
-				}
-				else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+				InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 			}
 			setDead();
 			return true;
@@ -100,8 +94,9 @@ public abstract class EntityBroom extends Entity {
 			if (rider.ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 			if (canFly) {
 				float speed = getSpeed();
-				motionX += rider.motionX * speed;
-				motionZ += rider.motionZ * speed;
+				float maxSpeed = getMaxSpeed();
+				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
+				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
 				rotationYaw = rider.rotationYaw;
 				if (jump && motionY < 1) motionY += (0.1f + getThrust());
 			}
@@ -112,9 +107,6 @@ public abstract class EntityBroom extends Entity {
 		}
 		motionY -= 0.1f;
 		motionY *= 0.75f;
-		float maxSpeed = getMaxSpeed();
-		motionX = MathHelper.clamp(motionX, -maxSpeed, maxSpeed);
-		motionZ = MathHelper.clamp(motionZ, -maxSpeed, maxSpeed);
 		move(MoverType.SELF, motionX, motionY, motionZ);
 	}
 	
@@ -144,7 +136,19 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
+	/*
+	 * If it's working flawlessly, we'll re-enable the commented out code in here. I'll let you decide whether or not it's flawlessly
+	 * working, Moriya.
+	 */
 	public void dismount() {
+		/*if (!world.isRemote) {
+			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) getControllingPassenger();
+				Util.giveItem(player, item.copy());
+			}
+			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+		}
+		setDead();*/
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {

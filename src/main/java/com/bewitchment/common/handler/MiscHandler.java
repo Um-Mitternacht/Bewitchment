@@ -4,8 +4,10 @@ import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Items;
@@ -16,6 +18,7 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -52,7 +55,17 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
+	public void onPlayerTick(PlayerTickEvent event) {
+		if (event.player instanceof EntityPlayerMP) {
+			EntityPlayerMP player = (EntityPlayerMP) event.player;
+			if (player.isSneaking()) player.dismountRidingEntity();
+		}
+	}
+	
+	@SubscribeEvent
 	public void dismount(EntityMountEvent event) {
-		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
+		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) {
+			((EntityBroom) event.getEntityBeingMounted()).dismount();
+		}
 	}
 }
