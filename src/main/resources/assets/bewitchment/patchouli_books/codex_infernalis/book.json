@@ -2,6 +2,7 @@
   "name": "Codex Infernalis",
   "version": "616",
   "landing_text": "Simply holding this book feels wrong… do you dare proceed?",
+  "model": "bewitchment:book_of_shadows",
   "book_texture": "bewitchment:textures/gui/book.png",
   "show_toasts": false,
   "creative_tab": "bewitchment",
