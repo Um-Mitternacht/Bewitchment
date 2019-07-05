@@ -81,6 +81,6 @@ public class EntityOwl extends EntityRaven {
 	protected void initEntityAI() {
 		super.initEntityAI();
 		tasks.addTask(1, new EntityAIFleeSun(this, 1));
-		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit || e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat") ||  e.getClass().getName().equals("alexthe666.rats.server.entity.EntityRat")));
+		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit || e.getClass().getName().equals("seraphaestus.historicizedmedicine.Mob.Rat.EntityRat") ||  e.getClass().getName().equals("com.github.alexthe666.rats.server.entity.EntityRat")));
 	}
 }
