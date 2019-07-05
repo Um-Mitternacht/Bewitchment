@@ -24,7 +24,6 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 public abstract class EntityBroom extends Entity {
 	private ItemStack item;
 	private boolean canFly = true;
-	public double mx = 0, mz = 0;
 	
 	public EntityBroom(World world) {
 		super(world);
@@ -86,20 +85,17 @@ public abstract class EntityBroom extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		Entity rider = getControllingPassenger();
-		if (rider instanceof EntityPlayer) {
-			rotationYaw = rider.rotationYaw;
-			if (world.isRemote) Bewitchment.network.sendToServer(new ControlBroom(getEntityId(), rider.motionX, rider.motionZ));
-			else {
+		if (world.isRemote) {
+			if (rider instanceof EntityPlayer) {
+				rotationYaw = rider.rotationYaw;
 				boolean jump = getJump((EntityPlayer) rider);
 				if (rider.ticksExisted % 20 == 0 && (!onGround || jump)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 				if (canFly) {
-					motionX += mx * getSpeed();
-					motionZ += mz * getSpeed();
+					motionX += rider.motionX * getSpeed();
+					motionZ += rider.motionZ * getSpeed();
 					if (jump && motionY < 1) motionY += (0.1f + getThrust());
 				}
 			}
-		}
-		if (!world.isRemote) {
 			float friction = 0.98f;
 			if (onGround) friction = 0.4f;
 			motionX *= friction;
@@ -112,6 +108,7 @@ public abstract class EntityBroom extends Entity {
 			motionY *= 0.75f;
 			motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
 			motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
+			Bewitchment.network.sendToServer(new ControlBroom(getEntityId(), motionX, motionY, motionZ));
 		}
 		move(MoverType.SELF, motionX, motionY, motionZ);
 	}

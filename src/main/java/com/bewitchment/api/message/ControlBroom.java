@@ -10,14 +10,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ControlBroom implements IMessage {
 	public int id;
-	public double motionX, motionZ;
+	public double motionX, motionY, motionZ;
 	
 	public ControlBroom() {
 	}
 	
-	public ControlBroom(int id, double motionX, double motionZ) {
+	public ControlBroom(int id, double motionX, double motionY, double motionZ) {
 		this.id = id;
 		this.motionX = motionX;
+		this.motionY = motionY;
 		this.motionZ = motionZ;
 	}
 	
@@ -25,6 +26,7 @@ public class ControlBroom implements IMessage {
 	public void fromBytes(ByteBuf byteBuf) {
 		id = byteBuf.readInt();
 		motionX = byteBuf.readDouble();
+		motionY = byteBuf.readDouble();
 		motionZ = byteBuf.readDouble();
 	}
 	
@@ -32,6 +34,7 @@ public class ControlBroom implements IMessage {
 	public void toBytes(ByteBuf byteBuf) {
 		byteBuf.writeInt(id);
 		byteBuf.writeDouble(motionX);
+		byteBuf.writeDouble(motionY);
 		byteBuf.writeDouble(motionZ);
 	}
 	
@@ -42,8 +45,9 @@ public class ControlBroom implements IMessage {
 				Entity entity = ctx.getServerHandler().player.world.getEntityByID(message.id);
 				if (entity instanceof EntityBroom) {
 					EntityBroom broom = (EntityBroom) entity;
-					broom.mx = message.motionX;
-					broom.mz = message.motionZ;
+					broom.motionX = message.motionX;
+					broom.motionY = message.motionY;
+					broom.motionZ = message.motionZ;
 				}
 			}
 			return null;
