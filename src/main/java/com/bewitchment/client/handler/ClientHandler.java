@@ -7,7 +7,7 @@ import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.common.item.ItemTarotCards;
 import com.bewitchment.common.item.ItemWaystone;
-import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
+import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;

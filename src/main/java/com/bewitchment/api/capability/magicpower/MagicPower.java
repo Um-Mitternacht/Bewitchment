@@ -3,7 +3,7 @@ package com.bewitchment.api.capability.magicpower;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.SyncStackCapability;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
-import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
+import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;

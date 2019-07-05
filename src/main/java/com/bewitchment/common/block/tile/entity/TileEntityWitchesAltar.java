@@ -6,7 +6,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import com.bewitchment.common.item.equipment.baubles.ItemGrimoireMagia;
+import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import net.minecraft.block.*;
