@@ -84,8 +84,8 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		Entity rider = getControllingPassenger();
 		if (world.isRemote) {
+			Entity rider = getControllingPassenger();
 			if (rider instanceof EntityPlayer) {
 				rotationYaw = rider.rotationYaw;
 				boolean jump = getJump((EntityPlayer) rider);
