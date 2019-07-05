@@ -16,6 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,6 +34,17 @@ public class ItemGrimoireMagia extends Item {
 		MagicPower power = new MagicPower();
 		power.maxAmount = Bewitchment.config.maxGrimoirePower;
 		return power;
+	}
+	
+	@Nullable
+	@Override
+	public NBTTagCompound getNBTShareTag(ItemStack stack) {
+		return stack.getCapability(MagicPower.CAPABILITY, null).serializeNBT();
+	}
+	
+	@Override
+	public void readNBTShareTag(ItemStack stack, @Nullable NBTTagCompound nbt) {
+		if (nbt != null) stack.getCapability(MagicPower.CAPABILITY, null).deserializeNBT(nbt);
 	}
 	
 	@Override
