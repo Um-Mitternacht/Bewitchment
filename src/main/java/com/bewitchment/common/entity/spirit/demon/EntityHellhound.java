@@ -10,10 +10,13 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
@@ -69,7 +72,14 @@ public class EntityHellhound extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (isWet() && !isNonBoss()) attackEntityFrom(DamageSource.DROWN, 2.5f);
+		if (isWet()) {
+			attackEntityFrom(DamageSource.DROWN, 2.5f);
+			if (hurtTime == 1) {
+				for (int i = 0; i < 20; i++)
+					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
+				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
+			}
+		}
 	}
 	
 	@Override
