@@ -51,7 +51,6 @@ public class PotionCitrinitas extends ModPotion {
             }
         });
 	}
-	//also do that with item stacks and dyeable armor
 	
 	@Override
 	public boolean onImpact(World world, BlockPos pos, int amplifier) {
