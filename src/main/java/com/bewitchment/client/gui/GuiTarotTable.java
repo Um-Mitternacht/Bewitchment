@@ -40,33 +40,39 @@ public class GuiTarotTable extends GuiContainer {
 			GlStateManager.color(1, 1, 1);
 			Tarot tarot = container.toRead.get(i);
 			mc.getTextureManager().bindTexture(tarot.texture);
-			int cx = x + (i % 2 == 0 ? 24 : 102);
-			int cy = y + (i / 2 == 0 ? 12 : 90);
+			int cx = x + (i % 2 == 0 ? 48 : 126);
+			int cy = y + (i / 2 == 0 ? 44 : 122);
 			GlStateManager.pushMatrix();
 			if (tarot.isReversed(container.player)) {
-				//todo reverse the card
+				GlStateManager.rotate(180, 0, 0, 1);
+				drawCard(-cx, -cy, 48, 64);
+			} else {
+				drawCard(cx, cy, 48, 64);
 			}
-			drawCard(cx, cy, 48, 64);
 			GlStateManager.popMatrix();
 			mc.getTextureManager().bindTexture(tarot.getNumber(container.player) < 0 ? TEX_FRAME : TEX_FRAME_NUMBER);
 			drawCard(cx, cy, 50, 66);
 			GlStateManager.popMatrix();
 			if (tarot.getNumber(container.player) > -1) {
 				int num = tarot.getNumber(container.player);
-				String number = Math.min(99, num) + (num > 99 ? "+" : "");
+				String number = num > 99 ? "99+" : ""+num;
 				drawCenteredString(mc.fontRenderer, number, cx + 25, cy + 57, 0x7f7f7f);
 			}
 		}
 	}
 	
-	private void drawCard(int x, int y, int sizeX, int sizeY) {
+	private void drawCard(int xCenter, int yCenter, int sizeX, int sizeY) {
 		Tessellator tessellator = Tessellator.getInstance();
+		int xStart = xCenter - sizeX/2;
+		int xEnd = xCenter + sizeX/2;
+		int yStart = yCenter - sizeY/2;
+		int yEnd = yCenter + sizeY/2;
 		BufferBuilder buff = tessellator.getBuffer();
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		buff.pos(x, y + sizeY, 0).tex(0, 1).endVertex();
-		buff.pos(x + sizeX, y + sizeY, 0).tex(1, 1).endVertex();
-		buff.pos(x + sizeX, y, 0).tex(1, 0).endVertex();
-		buff.pos(x, y, 0).tex(0, 0).endVertex();
+		buff.pos(xStart, yEnd, 0).tex(0, 1).endVertex();
+		buff.pos(xEnd, yEnd, 0).tex(1, 1).endVertex();
+		buff.pos(xEnd, yStart, 0).tex(1, 0).endVertex();
+		buff.pos(xStart, yStart, 0).tex(0, 0).endVertex();
 		tessellator.draw();
 	}
 }
