@@ -18,6 +18,7 @@ import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 @SuppressWarnings({"unused"})
 public class PotionRubedo extends ModPotion {
@@ -38,7 +39,7 @@ public class PotionRubedo extends ModPotion {
 		for (ItemStack stack : living.getArmorInventoryList()) {
 			if (stack.getItem() instanceof ItemArmor) {
 				ItemArmor armor = (ItemArmor) stack.getItem();
-				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) armor.setColor(stack, EnumDyeColor.RED.getMetadata());
+				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) armor.setColor(stack, ObfuscationReflectionHelper.getPrivateValue(EnumDyeColor.class, EnumDyeColor.RED, "colorValue", "field_193351_w"));
 			}
 		}
 	}
