@@ -26,11 +26,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -174,8 +173,15 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 							}
 						}
 					}
-					else if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
-						world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+					else if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+						IFluidHandlerItem cap = player.getHeldItem(hand).getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+						if (cap instanceof FluidBucketWrapper) {
+							FluidBucketWrapper wrapper = (FluidBucketWrapper) cap;
+							FluidStack fluid = wrapper.getFluid();
+							if ((fluid == null || (fluid != null && (fluid.getFluid() == FluidRegistry.WATER || fluid.getFluid() == FluidRegistry.LAVA))) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
+								world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+						}
+					}
 				}
 				syncToClient();
 			}
