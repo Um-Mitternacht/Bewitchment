@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class ModItemBauble extends Item implements IBauble {
 	private final BaubleType type;
 	

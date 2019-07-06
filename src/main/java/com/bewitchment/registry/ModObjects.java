@@ -17,6 +17,7 @@ import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.item.util.ModItemAxe;
 import com.bewitchment.common.item.util.ModItemBauble;
 import com.bewitchment.common.item.util.ModItemDoor;
@@ -251,6 +252,7 @@ public class ModObjects {
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
+	//Misc Equipment
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();

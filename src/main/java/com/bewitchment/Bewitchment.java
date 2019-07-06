@@ -129,6 +129,7 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
+		Bewitchment.network.registerMessage(ControlBroom.Handler.class, ControlBroom.class, ++id, Side.SERVER);
 	}
 	
 	@EventHandler

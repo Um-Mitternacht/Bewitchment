@@ -1,7 +1,8 @@
 package com.bewitchment.api.registry.entity;
 
-import com.bewitchment.Util;
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.message.ControlBroom;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,6 +15,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -21,7 +23,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
 	private ItemStack item;
-	private boolean canFly;
+	private boolean canFly = true;
 	
 	public EntityBroom(World world) {
 		super(world);
@@ -48,9 +50,7 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) {
-			if (!world.isRemote) {
-				InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-			}
+			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 			setDead();
 			return true;
 		}
@@ -84,34 +84,42 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		float friction = 0.98f;
-		if (onGround) friction = 0.4f;
-		motionX *= friction;
-		motionZ *= friction;
-		Entity rider = getControllingPassenger();
-		if (rider instanceof EntityPlayer) {
-			boolean jump = getJump((EntityPlayer) rider);
-			if (rider.ticksExisted % 20 == 0 && (jump || !onGround)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
-			if (canFly) {
-				float speed = getSpeed();
-				float maxSpeed = getMaxSpeed();
-				if (Math.abs(motionX) < maxSpeed) motionX += rider.motionX * speed;
-				if (Math.abs(motionZ) < maxSpeed) motionZ += rider.motionZ * speed;
+		if (world.isRemote) {
+			Entity rider = getControllingPassenger();
+			if (rider instanceof EntityPlayer) {
 				rotationYaw = rider.rotationYaw;
-				if (jump && motionY < 1) motionY += (0.1f + getThrust());
+				boolean jump = getJump((EntityPlayer) rider);
+				if (rider.ticksExisted % 20 == 0 && (!onGround || jump)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
+				if (canFly) {
+					motionX += rider.motionX * getSpeed();
+					motionZ += rider.motionZ * getSpeed();
+					if (jump && motionY < 1) motionY += (0.1f + getThrust());
+				}
 			}
+			float friction = 0.98f;
+			if (onGround) friction = 0.4f;
+			motionX *= friction;
+			motionZ *= friction;
+			if (collidedHorizontally) {
+				motionX = 0;
+				motionZ = 0;
+			}
+			motionY -= 0.1f;
+			motionY *= 0.75f;
+			motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
+			motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
+			Bewitchment.network.sendToServer(new ControlBroom(getEntityId(), motionX, motionY, motionZ));
 		}
-		if (collidedHorizontally) {
-			motionX = 0;
-			motionZ = 0;
-		}
-		motionY -= 0.1f;
-		motionY *= 0.75f;
 		move(MoverType.SELF, motionX, motionY, motionZ);
 	}
 	
 	@Override
 	protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
+	}
+	
+	@Override
+	public void setDead() {
+		if (getControllingPassenger() == null) super.setDead();
 	}
 	
 	@Override
@@ -121,11 +129,13 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound tag) {
 		if (item != null) tag.setTag("item", item.serializeNBT());
+		tag.setBoolean("canFly", canFly);
 	}
 	
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {
 		item = tag.hasKey("item") ? new ItemStack(tag.getCompoundTag("item")) : ItemStack.EMPTY;
+		canFly = tag.getBoolean("canFly");
 	}
 	
 	protected abstract float getSpeed();
@@ -137,14 +147,14 @@ public abstract class EntityBroom extends Entity {
 	protected abstract int getMagicCost();
 	
 	public void dismount() {
-		if (!world.isRemote) {
-			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) getControllingPassenger();
-				Util.giveItem(player, item.copy());
-			}
-			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-		}
-		setDead();
+		//		if (!world.isRemote) {
+		//			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+		//				EntityPlayer player = (EntityPlayer) getControllingPassenger();
+		//				Util.giveItem(player, item.copy());
+		//			}
+		//			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+		//		}
+		//		setDead();
 	}
 	
 	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
