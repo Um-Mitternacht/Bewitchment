@@ -19,8 +19,6 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
 
-import java.util.function.Consumer;
-
 @SuppressWarnings({"unused"})
 public class PotionCitrinitas extends ModPotion {
 	public PotionCitrinitas() {
@@ -37,19 +35,12 @@ public class PotionCitrinitas extends ModPotion {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		if (living instanceof EntitySheep) ((EntitySheep) living).setFleeceColor(EnumDyeColor.YELLOW);
         else if (living instanceof EntityWolf) ((EntityWolf)living).setCollarColor(EnumDyeColor.YELLOW);
-
-        living.getArmorInventoryList().forEach(new Consumer<ItemStack>() {
-            @Override
-            public void accept(ItemStack itemStack) {
-                if (itemStack.getItem() instanceof ItemArmor){
-                    try {
-                        ((ItemArmor) itemStack.getItem()).setColor(itemStack, EnumDyeColor.YELLOW.getColorValue());
-                    }catch (UnsupportedOperationException e){
-                        //nothing
-                    }
-                }
-            }
-        });
+		for (ItemStack stack : living.getArmorInventoryList()) {
+			if (stack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) stack.getItem();
+				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) armor.setColor(stack, EnumDyeColor.YELLOW.getMetadata());
+			}
+		}
 	}
 	
 	@Override
