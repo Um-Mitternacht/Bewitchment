@@ -45,7 +45,7 @@ public class PotionCitrinitas extends ModPotion {
                     try {
                         ((ItemArmor) itemStack.getItem()).setColor(itemStack, EnumDyeColor.YELLOW.getColorValue());
                     }catch (UnsupportedOperationException e){
-                        //blank
+                        //nothing
                     }
                 }
             }
