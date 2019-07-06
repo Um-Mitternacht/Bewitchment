@@ -1,8 +1,6 @@
 package com.bewitchment.api.registry.entity;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.magicpower.MagicPower;
-import com.bewitchment.api.message.ControlBroom;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,10 +16,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import java.lang.reflect.Field;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
+	private static final Field jumping = ReflectionHelper.findField(EntityLivingBase.class, "isJumping", "field_70703_bu");
+	
 	private ItemStack item;
 	private boolean canFly = true;
 	
@@ -68,6 +70,11 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
+	public boolean canPassengerSteer() {
+		return true;
+	}
+	
+	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		if (item == null) {
 			item = player.getHeldItem(hand).splitStack(1);
@@ -82,34 +89,33 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		if (world.isRemote) {
-			Entity rider = getControllingPassenger();
-			if (rider instanceof EntityPlayer) {
-				rotationYaw = rider.rotationYaw;
-				boolean jump = getJump((EntityPlayer) rider);
-				if (rider.ticksExisted % 20 == 0 && (!onGround || jump)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
-				if (canFly) {
-					motionX += rider.motionX * getSpeed();
-					motionZ += rider.motionZ * getSpeed();
-					if (jump && motionY < 1) motionY += (0.1f + getThrust());
-				}
+	public void onEntityUpdate() {
+		super.onEntityUpdate();
+		Entity rider = getControllingPassenger();
+		if (rider instanceof EntityPlayer) {
+			rotationYaw = rider.rotationYaw;
+			boolean jump = false;
+			try {jump = jumping.getBoolean(rider);}
+			catch (IllegalAccessException e) {e.printStackTrace();}
+			if (world.getTotalWorldTime() % 20 == 0 && (!onGround || jump)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
+			if (canFly) {
+				motionX += rider.motionX * getSpeed();
+				motionZ += rider.motionZ * getSpeed();
+				if (jump && motionY < 1) motionY += (0.1f + getThrust());
 			}
-			float friction = 0.98f;
-			if (onGround) friction = 0.4f;
-			motionX *= friction;
-			motionZ *= friction;
-			if (collidedHorizontally) {
-				motionX = 0;
-				motionZ = 0;
-			}
-			motionY -= 0.1f;
-			motionY *= 0.75f;
-			motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
-			motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
-			Bewitchment.network.sendToServer(new ControlBroom(getEntityId(), motionX, motionY, motionZ));
 		}
+		float friction = 0.98f;
+		if (onGround) friction = 0.4f;
+		motionX *= friction;
+		motionZ *= friction;
+		if (collidedHorizontally) {
+			motionX = 0;
+			motionZ = 0;
+		}
+		motionY -= 0.1f;
+		motionY *= 0.75f;
+		motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
+		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
 	}
 	
@@ -155,9 +161,5 @@ public abstract class EntityBroom extends Entity {
 		//			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 		//		}
 		//		setDead();
-	}
-	
-	private static boolean getJump(EntityLivingBase rider) throws IllegalArgumentException {
-		return ObfuscationReflectionHelper.getPrivateValue(EntityLivingBase.class, rider, "isJumping", "field_70703_bu");
 	}
 }

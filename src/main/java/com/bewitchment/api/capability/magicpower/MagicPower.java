@@ -68,13 +68,19 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
+		boolean flag = attemptDrain(tile, player, amount, true);
+		if (flag && !player.world.isRemote) attemptDrain(tile, player, amount, false);
+		return flag;
+	}
+	
+	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount, boolean simulate) {
 		if (amount == 0) return true;
-		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount)) return true;
+		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount, simulate)) return true;
 		if (player != null) {
 			List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
 			for (int i = 0; i < inv.size(); i++) {
 				ItemStack stack = inv.get(i);
-				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount)) {
+				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount, simulate)) {
 					syncToClient(player, i);
 					return true;
 				}
@@ -89,16 +95,24 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public boolean drain(int amount) {
+		return drain(amount, false);
+	}
+	
+	public boolean drain(int amount, boolean simulate) {
 		if (this.amount - amount >= 0) {
-			this.amount = Math.max(0, this.amount - amount);
+			if (!simulate) this.amount = Math.max(0, this.amount - amount);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean fill(int amount) {
+		return fill(amount, false);
+	}
+	
+	public boolean fill(int amount, boolean simulate) {
 		if (this.amount < this.maxAmount) {
-			this.amount = Math.min(this.amount + amount, this.maxAmount);
+			if (!simulate) this.amount = Math.min(this.amount + amount, this.maxAmount);
 			return true;
 		}
 		return false;

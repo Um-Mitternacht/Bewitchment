@@ -18,10 +18,14 @@ import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import java.lang.reflect.Field;
 
 @SuppressWarnings({"unused"})
 public class PotionRubedo extends ModPotion {
+	private static final Field color = ReflectionHelper.findField(EnumDyeColor.class, "colorValue", "field_193351_w");
+	
 	public PotionRubedo() {
 		super("rubedo", false, 0xff0000);
 	}
@@ -39,7 +43,10 @@ public class PotionRubedo extends ModPotion {
 		for (ItemStack stack : living.getArmorInventoryList()) {
 			if (stack.getItem() instanceof ItemArmor) {
 				ItemArmor armor = (ItemArmor) stack.getItem();
-				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) armor.setColor(stack, ObfuscationReflectionHelper.getPrivateValue(EnumDyeColor.class, EnumDyeColor.RED, "colorValue", "field_193351_w"));
+				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) {
+					try {armor.setColor(stack, color.getInt(EnumDyeColor.RED));}
+					catch (IllegalAccessException e) {e.printStackTrace();}
+				}
 			}
 		}
 	}
