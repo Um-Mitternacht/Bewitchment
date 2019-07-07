@@ -41,42 +41,49 @@
 	  "type": "item",
 	  "item": "#output0",
 	  "x": 73,
-	  "y": 13
+	  "y": 13,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output1",
 	  "x": 92,
-	  "y": 13
+	  "y": 13,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output2",
 	  "x": 73,
-	  "y": 32
+	  "y": 32,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output3",
 	  "x": 92,
-	  "y": 32
+	  "y": 32,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output4",
 	  "x": 73,
-	  "y": 51
+	  "y": 51,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output5",
 	  "x": 92,
-	  "y": 51
+	  "y": 51,
+      "link_recipe": true
 	},
 	{
 	  "type": "text",
 	  "text": "#text",
-	  "y": 76
+	  "y": 76,
+      "link_recipe": true
 	},
 	{
 	  "type": "header",

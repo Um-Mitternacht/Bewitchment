@@ -65,19 +65,22 @@
 	  "type": "item",
 	  "item": "#output0",
 	  "x": 48,
-	  "y": 73
+	  "y": 73,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output1",
 	  "x": 29,
-	  "y": 73
+	  "y": 73,
+      "link_recipe": true
 	},
 	{
 	  "type": "item",
 	  "item": "#output2",
 	  "x": 67,
-	  "y": 73
+	  "y": 73,
+      "link_recipe": true
 	},
 	{
 	  "type": "text",
