@@ -29,7 +29,8 @@
 	  "type": "item",
 	  "item": "#output",
 	  "x": 76,
-	  "y": 24
+	  "y": 24,
+      "link_recipe": true
 	},
 	{
 	  "type": "text",
