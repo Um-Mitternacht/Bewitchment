@@ -1,7 +1,5 @@
 package com.bewitchment.common.potion;
 
-import com.bewitchment.common.entity.living.EntityOwl;
-import com.bewitchment.common.entity.living.EntityToad;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -12,7 +10,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityBed;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -21,11 +18,14 @@ import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import java.util.function.Consumer;
+import java.lang.reflect.Field;
 
 @SuppressWarnings({"unused"})
 public class PotionRubedo extends ModPotion {
+	private static final Field color = ReflectionHelper.findField(EnumDyeColor.class, "colorValue", "field_193351_w");
+	
 	public PotionRubedo() {
 		super("rubedo", false, 0xff0000);
 	}
@@ -40,19 +40,15 @@ public class PotionRubedo extends ModPotion {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		if (living instanceof EntitySheep) ((EntitySheep) living).setFleeceColor(EnumDyeColor.RED);
 		else if (living instanceof EntityWolf) ((EntityWolf)living).setCollarColor(EnumDyeColor.RED);
-
-		living.getArmorInventoryList().forEach(new Consumer<ItemStack>() {
-            @Override
-            public void accept(ItemStack itemStack) {
-                if (itemStack.getItem() instanceof ItemArmor){
-                    try {
-                        ((ItemArmor) itemStack.getItem()).setColor(itemStack, EnumDyeColor.RED.getColorValue());
-                    }catch (UnsupportedOperationException e){
-                        //blank
-                    }
-                }
-            }
-        });
+		for (ItemStack stack : living.getArmorInventoryList()) {
+			if (stack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) stack.getItem();
+				if (armor.getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER || armor.hasColor(stack)) {
+					try {armor.setColor(stack, color.getInt(EnumDyeColor.RED));}
+					catch (IllegalAccessException e) {e.printStackTrace();}
+				}
+			}
+		}
 	}
 	
 	@Override
