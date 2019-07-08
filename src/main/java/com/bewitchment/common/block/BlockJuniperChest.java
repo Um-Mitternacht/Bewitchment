@@ -1,33 +1,38 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.common.handler.GuiHandler;
+import com.bewitchment.common.item.tool.ItemJuniperKey;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-//Todo: Locking/ownership functionality, double chest variant
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockJuniperChest extends ModBlockContainer {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375);
 	
 	public BlockJuniperChest() {
 		super(null, "juniper_chest", Blocks.CHEST, -1);
+		setResistance(Integer.MAX_VALUE);
 	}
 	
 	@Override
@@ -54,10 +59,25 @@ public class BlockJuniperChest extends ModBlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
-			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) {
+				if (ItemJuniperKey.canAccess(world, pos, world.provider.getDimension(), player.getHeldItem(hand))) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
+			}
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+		for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return super.getPlayerRelativeBlockHardness(state, player, world, pos);
+		return -1;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
+		if (placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
 	}
 	
 	@Override

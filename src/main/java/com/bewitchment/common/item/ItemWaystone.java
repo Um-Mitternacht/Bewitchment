@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -38,15 +39,21 @@ public class ItemWaystone extends Item {
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
 			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setLong("location", player.getPosition().toLong());
+			stack.getTagCompound().setLong("location", pos.toLong());
 			stack.getTagCompound().setInteger("dimension", player.dimension);
 			stack.getTagCompound().setString("dimensionName", world.provider.getDimensionType().getName());
-			return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+			return EnumActionResult.SUCCESS;
 		}
+		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		
 		return super.onItemRightClick(world, player, hand);
 	}
 	

@@ -210,6 +210,9 @@ tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnes
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
+item.bewitchment.juniper_key.name=Juniper Key
+tooltip.bewitchment.juniper_key=Grants access to %d, %d, %d, %s
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock
@@ -440,6 +443,8 @@ altar.no_power=Your source of magic is not strong enough
 tarot.no_cards=You must be holding Tarot Cards to use this
 tarot.no_player=You must bind a player to the cards
 tarot.player_offline=%s is offline
+
+juniper_key.invalid=You must hold a valid Juniper Key to use this block
 
 advancements.bewitchment.crafted_altar.title=Witchworker
 advancements.bewitchment.crafted_altar.description=Craft a Stone Witches' Altar

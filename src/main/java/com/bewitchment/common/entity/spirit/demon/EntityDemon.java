@@ -90,7 +90,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return flag;
 	}
 	
-	//Todo: Make demons immune to more stuff except for a few brews
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);

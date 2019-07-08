@@ -6,7 +6,6 @@ import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Items;
@@ -55,10 +54,10 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event) {
-		if (event.player instanceof EntityPlayerMP) {
-			EntityPlayerMP player = (EntityPlayerMP) event.player;
-			if (player.isSneaking()) player.dismountRidingEntity();
-		}
+		//		if (event.player instanceof EntityPlayerMP) {
+		//			EntityPlayerMP player = (EntityPlayerMP) event.player;
+		//			if (player.isSneaking()) player.dismountRidingEntity();
+		//		}
 	}
 	
 	@SubscribeEvent
