@@ -375,12 +375,13 @@ public class ModelDemoness extends ModelBiped {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
 		bipedHead.rotateAngleY = headPitch / 57.29578F;
-		
-		bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
-		bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
-		
-		bipedLeftArm.rotateAngleX = MathHelper.sin(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
-		bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.25F + (float) Math.PI) * 0.25F * limbSwingAmount - 0.26F;
+		float swingMod = 0.8F;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
+        
+        this.bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
+        this.loincloth00.rotateAngleX = Math.abs(this.bipedLeftLeg.rotateAngleX / 10F) - 0.23f - 0.026F;
 		
 		tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
@@ -390,8 +391,8 @@ public class ModelDemoness extends ModelBiped {
 		EntityDemon demon = (EntityDemon) living;
 		int i = demon.attackTimer;
 		if (i > 0) {
-			bipedRightArm.rotateAngleX = -2 + 1.5f * this.triangleWave((float) i - partialTickTime, 10);
-			bipedLeftArm.rotateAngleX = -2 + 1.5f * this.triangleWave((float) i - partialTickTime, 10);
+			bipedRightArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
+			bipedLeftArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
 		}
 	}
 	
@@ -404,7 +405,7 @@ public class ModelDemoness extends ModelBiped {
 		renderer.rotateAngleZ = z;
 	}
 	
-	private float triangleWave(float x, float y) {
+	private static float triangleWave(float x, float y) {
 		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 }
