@@ -216,6 +216,16 @@ public class ModelRaven extends ModelBase {
     @Override
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
         boolean show = true;
+        boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+        float e = 1.0F;
+        if(flag) {
+            e = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+            e = e / 0.2F;
+            e = e * e * e;
+        }
+        if(e < 1.0F) {
+            e = 1.0F;
+        }
         if(entity instanceof EntityRaven) {
             EntityRaven bird = (EntityRaven) entity;
             if(bird.world != null && bird.world.isBlockLoaded(bird.getPosition().down()) && bird.world.getBlockState(bird.getPosition().down()).getBlockFaceShape(bird.world, bird.getPosition().down(), EnumFacing.UP) == BlockFaceShape.UNDEFINED) {
@@ -242,25 +252,24 @@ public class ModelRaven extends ModelBase {
                 this.leftWing00.rotateAngleZ = -this.rightWing00.rotateAngleZ;
                 this.rightWing01.rotateAngleZ = this.rightWing00.rotateAngleZ * 0.5F;
                 this.leftWing01.rotateAngleZ = -this.rightWing00.rotateAngleZ * 0.5F;
+                this.setRotateAngle(head, 0.54f, 0, 0);
+                if(bird.isSitting()) {
+                    this.head.rotateAngleX = (float) Math.toRadians(75F);
+                }
+                
                 show = false;
             } else {
+                this.setRotateAngle(head, 0.54f, 0, 0);
                 this.setRotateAngle(rightWing00, -0.035f, 1.05f, 0);
                 this.setRotateAngle(leftWing00, -0.035f, -1.05f, 0);
                 this.setRotateAngle(rightWing01, 0, 0.49f, 0);
                 this.setRotateAngle(leftWing01, 0, -0.49f, 0);
                 this.body.rotateAngleX = -0.16f;
-                boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
-                float e = 1.0F;
-                if(flag) {
-                    e = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
-                    e = e / 0.2F;
-                    e = e * e * e;
-                }
-                if(e < 1.0F) {
-                    e = 1.0F;
-                }
                 this.rightLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / e + 0.31f;
                 this.leftLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / e + 0.31f;
+                
+
+                
                 show = true;
             }
             this.leftLeg00.showModel = show;
@@ -269,6 +278,15 @@ public class ModelRaven extends ModelBase {
             this.rightLeg01.showModel = show;
             this.leftfoot.showModel = show;
             this.rightfoot.showModel = show;
+            
+            if(bird.isSitting()) {
+                this.body.rotateAngleX = -0.35f;
+                this.body.offsetY = 0.15F;
+                this.rightLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / e - 0.5f;
+                this.leftLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / e - 0.5F;
+            } else {
+                this.body.offsetY = 0F;
+            }
         }
     }
 
