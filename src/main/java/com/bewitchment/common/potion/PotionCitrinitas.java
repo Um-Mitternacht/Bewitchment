@@ -39,7 +39,7 @@ public class PotionCitrinitas extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		if (living instanceof EntitySheep) ((EntitySheep) living).setFleeceColor(EnumDyeColor.YELLOW);
-        else if (living instanceof EntityWolf) ((EntityWolf)living).setCollarColor(EnumDyeColor.YELLOW);
+		else if (living instanceof EntityWolf) ((EntityWolf) living).setCollarColor(EnumDyeColor.YELLOW);
 		for (ItemStack stack : living.getArmorInventoryList()) {
 			if (stack.getItem() instanceof ItemArmor) {
 				ItemArmor armor = (ItemArmor) stack.getItem();
@@ -80,7 +80,7 @@ public class PotionCitrinitas extends ModPotion {
 						world.setBlockState(pos0, Blocks.SANDSTONE_STAIRS.getDefaultState().withProperty(BlockStairs.HALF, world.getBlockState(pos0).getValue(BlockStairs.HALF)).withProperty(BlockStairs.FACING, world.getBlockState(pos0).getValue(BlockStairs.FACING)).withProperty(BlockStairs.SHAPE, world.getBlockState(pos0).getValue(BlockStairs.SHAPE)));
 						flag = true;
 					}
-					else if(block instanceof BlockColored) {
+					else if (block instanceof BlockColored) {
 						world.setBlockState(pos0, block.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW));
 					}
 				}

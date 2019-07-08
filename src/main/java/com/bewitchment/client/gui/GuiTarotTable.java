@@ -46,7 +46,8 @@ public class GuiTarotTable extends GuiContainer {
 			if (tarot.isReversed(container.player)) {
 				GlStateManager.rotate(180, 0, 0, 1);
 				drawCard(-cx, -cy, 48, 64);
-			} else {
+			}
+			else {
 				drawCard(cx, cy, 48, 64);
 			}
 			GlStateManager.popMatrix();
@@ -55,7 +56,7 @@ public class GuiTarotTable extends GuiContainer {
 			GlStateManager.popMatrix();
 			if (tarot.getNumber(container.player) > -1) {
 				int num = tarot.getNumber(container.player);
-				String number = num > 99 ? "99+" : ""+num;
+				String number = num > 99 ? "99+" : "" + num;
 				drawCenteredString(mc.fontRenderer, number, cx + 25, cy + 57, 0x7f7f7f);
 			}
 		}
@@ -63,10 +64,10 @@ public class GuiTarotTable extends GuiContainer {
 	
 	private void drawCard(int xCenter, int yCenter, int sizeX, int sizeY) {
 		Tessellator tessellator = Tessellator.getInstance();
-		int xStart = xCenter - sizeX/2;
-		int xEnd = xCenter + sizeX/2;
-		int yStart = yCenter - sizeY/2;
-		int yEnd = yCenter + sizeY/2;
+		int xStart = xCenter - sizeX / 2;
+		int xEnd = xCenter + sizeX / 2;
+		int yStart = yCenter - sizeY / 2;
+		int yEnd = yCenter + sizeY / 2;
 		BufferBuilder buff = tessellator.getBuffer();
 		buff.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
 		buff.pos(xStart, yEnd, 0).tex(0, 1).endVertex();

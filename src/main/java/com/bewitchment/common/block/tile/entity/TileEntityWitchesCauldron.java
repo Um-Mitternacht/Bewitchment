@@ -41,22 +41,22 @@ import java.util.List;
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
     private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
-
+    
     private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
     private final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
-
+    
     /**
      * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
      */
     public int mode = 0;
-
+    
     private static final int[] defaultColor = {0, 63, 255};
     public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
     private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
     private int heatTimer = 0, craftingTimer = 0;
     private boolean hasPower;
     private String name = "";
-
+    
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound tag) {
         tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
@@ -69,7 +69,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         tag.setString("name", name);
         return super.writeToNBT(tag);
     }
-
+    
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         tank.readFromNBT(tag.getCompoundTag("tank"));
@@ -82,22 +82,22 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         name = tag.hasKey("name") ? tag.getString("name") : "";
         super.readFromNBT(tag);
     }
-
+    
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing face) {
         return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank) : super.getCapability(capability, face);
     }
-
+    
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing face) {
         return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, face);
     }
-
+    
     @Override
     public ItemStackHandler[] getInventories() {
         return new ItemStackHandler[]{inventory};
     }
-
+    
     @Override
     public void update() {
         if (color.length == 0 || targetColor.length == 0) return;
@@ -152,7 +152,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
             if (mode != 2 && world.getTotalWorldTime() % 5 == 0 && (heatTimer >= 5 || isLava)) insertNextItem(isLava);
         }
     }
-
+    
     @Override
     public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
         if (!player.isSneaking()) {
@@ -189,17 +189,17 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         }
         return false;
     }
-
+    
     @Override
     public String getName() {
         return name;
     }
-
+    
     @Override
     public boolean hasCustomName() {
         return !getName().isEmpty();
     }
-
+    
     /**
      * arg == 1 = splash, arg == 2 = lingering, else normal
      */
@@ -214,11 +214,11 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         stack.getTagCompound().setBoolean("bewitchment_brew", true);
         return stack;
     }
-
+    
     public double getLiquidHeight() {
         return ((((double) tank.getFluidAmount() / Fluid.BUCKET_VOLUME) - 1) * (2 / 5d)) + (3 / 5d);
     }
-
+    
     private ItemStack createPotion() {
         List<PotionEffect> finalEffects = new ArrayList<>();
         boolean noParticles = contains(inventory, new ItemStack(ModObjects.ravens_feather)), splash = contains(inventory, new ItemStack(Items.GUNPOWDER)), lingering = contains(inventory, new ItemStack(ModObjects.owlets_wing)) && splash;
@@ -252,7 +252,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         finalEffects.addAll(toEnd);
         return createPotion(finalEffects, lingering ? 2 : splash ? 1 : 0);
     }
-
+    
     private void insertNextItem(boolean isLava) {
         if (!world.isRemote && tank.getFluid() != null) {
             List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, collectionZone.offset(getPos()));
@@ -326,18 +326,18 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
             syncToClient();
         }
     }
-
+    
     private boolean isBrewItem(ItemStack stack) {
         for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection()) if (brew.input.apply(stack)) return true;
         return stack.getItem() == ModObjects.mandrake_root || stack.getItem() == ModObjects.ravens_feather || stack.getItem() == Items.GUNPOWDER || stack.getItem() == ModObjects.owlets_wing || stack.getItem() == Items.REDSTONE || stack.getItem() == Items.GLOWSTONE_DUST;
     }
-
+    
     private void setTargetColor(int color) {
         targetColor[0] = ((color >> 16) & 255);
         targetColor[1] = ((color >> 8) & 255);
         targetColor[2] = (color & 255);
     }
-
+    
     private void resetColor() {
         color[0] = defaultColor[0];
         color[1] = defaultColor[1];
@@ -346,7 +346,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
         targetColor[1] = defaultColor[1];
         targetColor[2] = defaultColor[2];
     }
-
+    
     private void setPower() {
         hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 16, false), 16 * Math.max(0, getFirstEmptySlot(inventory)));
     }
