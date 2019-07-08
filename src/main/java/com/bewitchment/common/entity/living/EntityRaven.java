@@ -14,7 +14,6 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
@@ -93,21 +92,6 @@ public class EntityRaven extends ModEntityTameable {
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
-	}
-	
-	@Override
-	protected float playFlySound(float p_191954_1_) {
-		this.playSound(SoundEvents.ENTITY_PARROT_FLY, 0.15F, 1.0F);
-		return p_191954_1_;
-	}
-	
-	public boolean isFlying() {
-		return !this.onGround;
-	}
-	
-	@Override
-	protected boolean makeFlySound() {
-		return true;
 	}
 	
 	@Override
