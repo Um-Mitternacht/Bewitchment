@@ -9,7 +9,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.12.2-0.0.20.1_rewrite27"
+version = "1.12.2-0.0.20.1_rewrite28"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -19,7 +19,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2768"
+    version = "1.12.2-14.23.5.2772"
     runDir = "run"
     mappings = "stable_39"
     clientRunArgs += "--username=Bewitchment"
@@ -33,6 +33,7 @@ repositories {
     maven { url = "https://minecraft.curseforge.com/api/maven" }
     maven { url "http://maven.tterrag.com" }
     maven { url "https://maven.blamejared.com" }
+    maven { url "https://maven.mcmoddev.com/" }
 }
 
 dependencies {
@@ -43,6 +44,7 @@ dependencies {
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"
     deobfProvided "vazkii.botania:Botania:r1.10-361.69"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
+    deobfCompile "net.ilexiconn:llibrary:1.7.19-1.12.2:dev"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
