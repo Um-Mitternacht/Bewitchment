@@ -283,6 +283,9 @@ public class ModelOwl extends ModelBase {
                 this.rightWing00.rotateAngleZ = 0F;
                 this.leftWing00.rotateAngleZ = 0F;
                 this.head.rotateAngleX = -(float) Math.toRadians(55F);
+                if(bird.isSitting()) {
+                    this.head.rotateAngleX = -(float) Math.toRadians(25F);
+                }
                 show = false;
             } else {
                 this.setRotateAngle(head, -0.07f, 0, 0);
@@ -301,14 +304,11 @@ public class ModelOwl extends ModelBase {
                 if(e < 1.0F) {
                     e = 1.0F;
                 }
-                //this.rightLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / e + 0.31f;
-                //this.leftLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / e + 0.31f;
+                if(bird.isSitting()) {
+                    this.head.rotateAngleX = (float) Math.toRadians(10F);
+                }
                 show = true;
             }
-            //this.leftLeg00.showModel = show;
-            //this.leftLeg01.showModel = show;
-            //this.rightLeg00.showModel = show;
-            //this.rightLeg01.showModel = show;
             this.leftfoot.showModel = show;
             this.rightfoot.showModel = show;
         }
