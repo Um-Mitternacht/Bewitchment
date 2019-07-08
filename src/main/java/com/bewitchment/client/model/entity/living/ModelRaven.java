@@ -1,8 +1,11 @@
 package com.bewitchment.client.model.entity.living;
 
+import com.bewitchment.common.entity.living.EntityRaven;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * raven - Ingoleth, Cybercat5555
@@ -204,16 +207,80 @@ public class ModelRaven extends ModelBase {
 	}
 	
 	@Override
-	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
-		this.body.render(scale);
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		boolean show = true;
+		if (entity instanceof EntityRaven) {
+			EntityRaven bird = (EntityRaven) entity;
+			if (bird.isFlying()) {
+				this.rightWing01.rotateAngleY = 0F;
+				this.leftWing01.rotateAngleY = 0F;
+				this.rightWing02.rotateAngleY = 0F;
+				this.leftWing02.rotateAngleY = 0F;
+				
+				this.rightWing01.rotateAngleX = 0F;
+				this.leftWing01.rotateAngleX = 0F;
+				this.rightWing02.rotateAngleX = 0F;
+				this.leftWing02.rotateAngleX = 0F;
+				
+				this.rightLeg00.rotateAngleX = 0.2617993877991494F;
+				this.leftLeg00.rotateAngleX = 0.2617993877991494F;
+				
+				this.rightWing01.rotateAngleZ = MathHelper.cos(f2) * (float) Math.PI / 5F;
+				if ((Math.abs(bird.motionY) > 0 && (Math.abs(bird.motionX) > 0.05 || Math.abs(bird.motionZ) > 0.05)) || Math.abs(bird.motionY) > 0.25) {
+					float rotX = -((float) Math.atan(bird.motionY / Math.sqrt(Math.pow(bird.motionX, 2) + Math.pow(bird.motionZ, 2))) / 1.5F);
+					if (rotX < 0) {
+						rotX /= 3;
+					}
+					this.body.rotateAngleX = rotX - 0.2617993877991494F;
+				} else {
+					this.body.rotateAngleX = -0.2617993877991494F;
+				}
+				
+				this.leftWing01.rotateAngleZ = -this.rightWing01.rotateAngleZ;
+				this.rightWing02.rotateAngleZ = this.rightWing01.rotateAngleZ * 0.5F;
+				this.leftWing02.rotateAngleZ = -this.rightWing01.rotateAngleZ * 0.5F;
+				show = false;
+			} else {
+				this.setRotateAngle(rightWing01, 0.0F, 1.0821041362364843F, -0.9424777960769379F);
+				this.setRotateAngle(leftWing01, 0.0F, -1.0821041362364843F, 0.9424777960769379F);
+				this.setRotateAngle(rightWing02, -0.3665191429188092F, 0.5235987755982988F, 0.0F);
+				this.setRotateAngle(leftWing02, -0.3665191429188092F, -0.5235987755982988F, 0.0F);
+				this.body.rotateAngleX = -0.2617993877991494F;
+				
+				boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+				float e = 1.0F;
+				
+				if (flag) {
+					e = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+					e = e / 0.2F;
+					e = e * e * e;
+				}
+				
+				if (e < 1.0F) {
+					e = 1.0F;
+				}
+				
+				this.rightLeg00.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1 / e + 0.2617993877991494F;
+				this.leftLeg00.rotateAngleX = MathHelper.cos(f * 0.6662F + (float) Math.PI) * 1.4F * f1 / e + 0.2617993877991494F;
+				show = true;
+			}
+			this.leftLeg00.showModel = show;
+			this.leftLeg01.showModel = show;
+			this.rightLeg00.showModel = show;
+			this.rightLeg01.showModel = show;
+			this.leftfoot.showModel = show;
+			this.rightfoot.showModel = show;
+		}
+		
+		this.body.render(f5);
 	}
 	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer renderer, float x, float y, float z) {
-		renderer.rotateAngleX = x;
-		renderer.rotateAngleY = y;
-		renderer.rotateAngleZ = z;
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
 	}
 }
