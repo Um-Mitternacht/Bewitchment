@@ -2,6 +2,7 @@ package com.bewitchment.client.model.entity.living;
 
 import com.bewitchment.common.entity.living.EntityRaven;
 
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -217,7 +218,7 @@ public class ModelRaven extends ModelBase {
         boolean show = true;
         if(entity instanceof EntityRaven) {
             EntityRaven bird = (EntityRaven) entity;
-            if(bird.world != null && bird.world.isBlockLoaded(bird.getPosition().down()) && !bird.world.getBlockState(bird.getPosition().down()).isSideSolid(bird.world, bird.getPosition().down(), EnumFacing.UP)) {
+            if(bird.world != null && bird.world.isBlockLoaded(bird.getPosition().down()) && bird.world.getBlockState(bird.getPosition().down()).getBlockFaceShape(bird.world, bird.getPosition().down(), EnumFacing.UP) == BlockFaceShape.UNDEFINED) {
                 this.rightWing00.rotateAngleY = 0F;
                 this.leftWing00.rotateAngleY = 0F;
                 this.rightWing01.rotateAngleY = 0F;
