@@ -1,5 +1,6 @@
 package com.bewitchment.api.registry.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -154,13 +155,13 @@ public abstract class EntityBroom extends Entity {
 	protected abstract int getMagicCost();
 	
 	public void dismount() {
-		//		if (!world.isRemote) {
-		//			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-		//				EntityPlayer player = (EntityPlayer) getControllingPassenger();
-		//				Util.giveItem(player, item.copy());
-		//			}
-		//			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-		//		}
-		//		setDead();
+		if (!world.isRemote) {
+			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) getControllingPassenger();
+				Util.giveItem(player, item.copy());
+			}
+			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+		}
+		setDead();
 	}
 }

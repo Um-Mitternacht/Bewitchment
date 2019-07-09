@@ -15,7 +15,7 @@ public class EntityElderBroom extends EntityBroom {
 	
 	@Override
 	protected float getMaxSpeed() {
-		return 1.4f;
+		return 1.3f;
 	}
 	
 	@Override

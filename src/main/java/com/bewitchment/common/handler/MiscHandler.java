@@ -16,7 +16,6 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -50,14 +49,6 @@ public class MiscHandler {
 				event.setCanceled(true);
 			}
 		}
-	}
-	
-	@SubscribeEvent
-	public void onPlayerTick(PlayerTickEvent event) {
-		//		if (event.player instanceof EntityPlayerMP) {
-		//			EntityPlayerMP player = (EntityPlayerMP) event.player;
-		//			if (player.isSneaking()) player.dismountRidingEntity();
-		//		}
 	}
 	
 	@SubscribeEvent
