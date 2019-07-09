@@ -199,7 +199,7 @@ item.bewitchment.phasing_chalk.name=Gesso Transizionale
 item.bewitchment.girdle_of_the_dryads.name=Cinta delle Driadi
 tooltip.bewitchment.girdle_of_the_dryads=Questa cintura protegge dai danni chi la indossa coprendolo di pezzi di corteccia.
 item.bewitchment.hellish_bauble.name=Ciondolo Infernale
-tooltip.bewitchment.hellish_bauble=Questo amuleto esige rispetto dai Demoni, e garantisce una qualche innata resistenza al fuoco e alle esplosioni.
+tooltip.bewitchment.hellish_bauble=Questo ciondolo esige rispetto dai Demoni, e garantisce una qualche innata resistenza al fuoco e alle esplosioni.
 item.bewitchment.horseshoe.name=Ferro di cavallo
 tooltip.bewitchment.horseshoe=I ferri di cavallo generalmente portano fortuna. Gli Spiriti sembrano evitarti.
 item.bewitchment.nazar.name=Nazar
@@ -209,6 +209,9 @@ tooltip.bewitchment.token_of_remedies=La gemma che ne costituisce il nucleo semb
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magia all'interno: %d / %d
+
+item.bewitchment.juniper_key.name=Chiave di Ginepro
+tooltip.bewitchment.juniper_key=Ti permette di accedere a %d, %d, %d, %s
 
 item.bewitchment.bottled_frostfire.name=Fuoco Gelido in bottiglia
 item.bewitchment.bone_needle.name=Ago d'osso
@@ -440,6 +443,8 @@ altar.no_power=La tua fonte di potere non è abbastanza forte
 tarot.no_cards=Devi avere in mano dei Tarocchi per usarlo
 tarot.no_player=Devi collegare un giocatore alle carte
 tarot.player_offline=%s è offline
+
+juniper_key.invalid=Devi avere in mano la giusta Chiave di Ginepro per usare questo blocco
 
 advancements.bewitchment.crafted_altar.title=Praticante dell'Arte
 advancements.bewitchment.crafted_altar.description=Hai costruito un Altare delle Streghe di pietra
@@ -777,8 +782,8 @@ entity.bewitchment.given_name.314=Abbadon
 entity.bewitchment.given_name.315=Alastor
 entity.bewitchment.given_name.316=Morax
 entity.bewitchment.given_name.317=Baphomet
-entity.bewitchment.given_name.318=Il Tizio del Cerchio
-entity.bewitchment.given_name.319=Il Tizio della Tana
+entity.bewitchment.given_name.318=Quello del Cerchio
+entity.bewitchment.given_name.319=Quello della Tana
 entity.bewitchment.given_name.320=Zozo
 entity.bewitchment.given_name.321=Faust
 entity.bewitchment.given_name.322=Il Vecchio
