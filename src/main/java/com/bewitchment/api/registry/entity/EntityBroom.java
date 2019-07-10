@@ -100,10 +100,10 @@ public abstract class EntityBroom extends Entity {
 			catch (IllegalAccessException e) {e.printStackTrace();}
 			if (world.getTotalWorldTime() % 20 == 0 && (!onGround || jump)) canFly = MagicPower.attemptDrain(null, (EntityPlayer) rider, getMagicCost());
 			if (canFly) {
-				motionX += rider.motionX * getSpeed();
-				motionZ += rider.motionZ * getSpeed();
 				if (jump && motionY < 1) motionY += (0.1f + getThrust());
 			}
+			motionX += rider.motionX * getSpeed();
+			motionZ += rider.motionZ * getSpeed();
 		}
 		float friction = 0.98f;
 		if (onGround) friction = 0.4f;
