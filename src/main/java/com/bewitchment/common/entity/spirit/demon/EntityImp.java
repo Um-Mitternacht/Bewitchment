@@ -8,13 +8,18 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityImp extends ModEntityMob {
+	
+	public int attackTimer = 0;
+	
 	public EntityImp(World world) {
 		super(world, null);
 		setSize(0.8f, 1.6f);
@@ -35,12 +40,28 @@ public class EntityImp extends ModEntityMob {
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
+			attackTimer = 10;
+			world.setEntityState(this, (byte) 4);
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 100, 1, false, false));
 				entity.setFire(20);
+				entity.motionY += 0.4;
+				if (entity instanceof EntityPlayer) ((EntityPlayerMP) entity).connection.sendPacket(new SPacketEntityVelocity(entity));
 			}
 		}
 		return flag;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (attackTimer > 0) attackTimer--;
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	@Override
