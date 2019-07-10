@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.CauldronTeleport;
 import com.bewitchment.common.block.BlockWitchesCauldron;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.common.item.ItemTarotCards;
 import com.bewitchment.common.item.ItemWaystone;
@@ -16,9 +17,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ClientChatEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -41,6 +44,14 @@ public class ClientHandler {
 					break;
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void renderPlayerPre(RenderPlayerEvent.Pre event) {
+		if (event.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemLantern || event.getEntityPlayer().getHeldItemOffhand().getItem() instanceof ItemLantern) {
+			event.getEntityPlayer().swingProgress = 0.18f;
+			event.getEntityPlayer().swingingHand = event.getEntityPlayer().getHeldItemMainhand().getItem() instanceof ItemLantern ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 		}
 	}
 	
