@@ -2,37 +2,18 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
-@SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class EntityNewt extends ModEntityAnimal {
 	public EntityNewt(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/newt"));
 		setSize(1, 0.3f);
-	}
-	
-	@Override
-	@Nullable
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntityNewt(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityNewt)) return false;
-		return isInLove() && other.isInLove();
 	}
 	
 	@Override

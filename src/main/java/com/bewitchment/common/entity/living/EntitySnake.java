@@ -6,12 +6,13 @@ import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -25,23 +26,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"NullableProblems", "ConstantConditions"})
+@SuppressWarnings({"ConstantConditions"})
 public class EntitySnake extends ModEntityTameable {
 	
 	private int milkTimer = 0;
-	private int timerRef = 0;
 	
 	public EntitySnake(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
 		setSize(1, 0.3f);
-		this.moveHelper = new EntityMoveHelper(this);
-	}
-	
-	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntitySnake(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
 	}
 	
 	@Override
@@ -51,24 +43,6 @@ public class EntitySnake extends ModEntityTameable {
 			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0, false, false));
 		}
 		return super.attackEntityAsMob(entity);
-	}
-	
-	public void resetTimer() {
-		timerRef = 0;
-	}
-	
-	public void addTimer(int n) {
-		timerRef += n;
-	}
-	
-	public int getTimer() {
-		return timerRef;
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntitySnake)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -136,7 +110,7 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
-		this.aiSit = new EntityAISit(this);
+		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(0, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
@@ -155,13 +129,13 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
 		tag.setInteger("milkTimer", milkTimer);
+		super.writeEntityToNBT(tag);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
-		super.readEntityFromNBT(tag);
 		milkTimer = tag.getInteger("milkTimer");
+		super.readEntityFromNBT(tag);
 	}
 }

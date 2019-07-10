@@ -4,14 +4,11 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntitySilverfish;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -25,7 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"NullableProblems", "ConstantConditions"})
+@SuppressWarnings({"ConstantConditions"})
 public class EntityToad extends ModEntityTameable {
 	
 	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
@@ -34,13 +31,6 @@ public class EntityToad extends ModEntityTameable {
 	public EntityToad(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
 		setSize(1, 0.3f);
-	}
-	
-	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntityToad(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
 	}
 	
 	@Override
@@ -72,12 +62,6 @@ public class EntityToad extends ModEntityTameable {
 			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
 		}
 		return super.attackEntityAsMob(entity);
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityToad)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -138,7 +122,7 @@ public class EntityToad extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
-		this.aiSit = new EntityAISit(this);
+		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(0, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(1, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));

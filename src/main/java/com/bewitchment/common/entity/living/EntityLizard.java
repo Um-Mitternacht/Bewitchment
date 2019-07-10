@@ -2,34 +2,18 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class EntityLizard extends ModEntityAnimal {
 	public EntityLizard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		setSize(1, 0.3f);
-	}
-	
-	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntityLizard(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityLizard)) return false;
-		return isInLove() && other.isInLove();
 	}
 	
 	@Override

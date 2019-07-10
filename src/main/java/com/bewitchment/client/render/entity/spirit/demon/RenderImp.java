@@ -3,6 +3,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelImp;
 import com.bewitchment.common.entity.spirit.demon.EntityImp;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -20,7 +21,7 @@ public class RenderImp extends RenderLiving<EntityImp> {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityImp entity) {
-		return TEX[entity.getDataManager().get(EntityImp.SKIN)];
+		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelHellhound;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +20,6 @@ public class RenderHellhound extends RenderLiving<EntityHellhound> {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityHellhound entity) {
-		return TEX[entity.getDataManager().get(EntityHellhound.SKIN)];
+		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
 }

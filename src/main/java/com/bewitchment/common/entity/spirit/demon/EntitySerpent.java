@@ -129,13 +129,13 @@ public class EntitySerpent extends ModEntityMob {
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
 		tag.setInteger("milk_timer", milkTimer);
+		super.writeEntityToNBT(tag);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
-		super.readEntityFromNBT(tag);
 		milkTimer = tag.getInteger("milk_timer");
+		super.readEntityFromNBT(tag);
 	}
 }

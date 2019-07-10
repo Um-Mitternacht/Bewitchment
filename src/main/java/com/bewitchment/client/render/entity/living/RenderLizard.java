@@ -3,6 +3,7 @@ package com.bewitchment.client.render.entity.living;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.living.ModelLizard;
 import com.bewitchment.common.entity.living.EntityLizard;
+import com.bewitchment.common.entity.util.ModEntityAnimal;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -20,7 +21,7 @@ public class RenderLizard extends RenderLiving<EntityLizard> {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityLizard entity) {
-		return TEX[entity.getDataManager().get(EntityLizard.SKIN)];
+		return TEX[entity.getDataManager().get(ModEntityAnimal.SKIN)];
 	}
 	
 	@Override

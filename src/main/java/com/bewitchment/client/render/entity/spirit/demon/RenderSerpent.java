@@ -3,6 +3,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelSerpent;
 import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +20,6 @@ public class RenderSerpent extends RenderLiving<EntitySerpent> {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntitySerpent entity) {
-		return TEX[entity.getDataManager().get(EntitySerpent.SKIN)];
+		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
 }

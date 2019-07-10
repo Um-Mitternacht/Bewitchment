@@ -3,12 +3,14 @@ package com.bewitchment.common.entity.living;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModSounds;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
@@ -26,21 +28,8 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntityOwl(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
-	}
-	
-	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityOwl)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override

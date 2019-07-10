@@ -7,11 +7,8 @@ import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
@@ -43,13 +40,6 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		EntityAgeable entity = new EntityRaven(world);
-		entity.getDataManager().set(SKIN, world.rand.nextBoolean() ? getDataManager().get(SKIN) : other.getDataManager().get(SKIN));
-		return entity;
-	}
-	
-	@Override
 	protected PathNavigate createNavigator(World world) {
 		PathNavigateFlying path = new PathNavigateFlying(this, world);
 		path.setCanEnterDoors(true);
@@ -66,12 +56,6 @@ public class EntityRaven extends ModEntityTameable {
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other instanceof EntityRaven)) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -135,7 +119,7 @@ public class EntityRaven extends ModEntityTameable {
 	
 	@Override
 	protected void initEntityAI() {
-		this.aiSit = new EntityAISit(this);
+		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));

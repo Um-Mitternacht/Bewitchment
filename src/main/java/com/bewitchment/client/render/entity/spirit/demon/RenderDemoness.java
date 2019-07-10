@@ -3,7 +3,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelDemoness;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
-import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +19,6 @@ public class RenderDemoness extends RenderDemon {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityDemon entity) {
-		return TEX[entity.getDataManager().get(EntityDemoness.SKIN)];
+		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
 }

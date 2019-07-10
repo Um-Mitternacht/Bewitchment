@@ -13,6 +13,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+
+@SuppressWarnings("EntityConstructor")
 public abstract class ModEntityMob extends EntityMob {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityMob.class, DataSerializers.VARINT);
 	
@@ -43,7 +46,7 @@ public abstract class ModEntityMob extends EntityMob {
 	}
 	
 	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, data);
 	}
@@ -51,22 +54,20 @@ public abstract class ModEntityMob extends EntityMob {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		if (getSkinTypes() > 1) dataManager.register(SKIN, 0);
+		dataManager.register(SKIN, 0);
 	}
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("skin", dataManager.get(SKIN));
+		dataManager.setDirty(SKIN);
 		super.writeEntityToNBT(tag);
-		if (getSkinTypes() > 1) {
-			tag.setInteger("skin", dataManager.get(SKIN));
-			dataManager.setDirty(SKIN);
-		}
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
+		dataManager.set(SKIN, tag.getInteger("skin"));
 		super.readEntityFromNBT(tag);
-		if (getSkinTypes() > 1) dataManager.set(SKIN, tag.getInteger("skin"));
 	}
 	
 	@Override
