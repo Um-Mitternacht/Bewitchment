@@ -13,12 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -127,30 +125,6 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void setPosition(double x, double y, double z) {
-		posX = x;
-		posY = y;
-		posZ = z;
-		float f = width / 2f;
-		float f1 = height;
-		setEntityBoundingBox(new AxisAlignedBB(x - f, y, z - f, x + f, y + f1, z + f));
-	}
-	
-	@Override
-	public void setPositionAndUpdate(double x, double y, double z) {
-		ObfuscationReflectionHelper.setPrivateValue(Entity.class, this, true, "isPositionDirty", "field_184237_aG");
-		setLocationAndAngles(x, y, z, rotationYaw, rotationPitch);
-	}
-	
-	@Override
-	public void resetPositionToBB() {
-		AxisAlignedBB aabb = getEntityBoundingBox();
-		posX = (aabb.minX + aabb.maxX) / 2d;
-		posY = aabb.minY;
-		posZ = (aabb.minZ + aabb.maxZ) / 2d;
-	}
-	
-	@Override
 	protected void entityInit() {
 	}
 	
@@ -176,7 +150,7 @@ public abstract class EntityBroom extends Entity {
 	
 	public void dismount() {
 		if (!world.isRemote) {
-			if (getRidingEntity() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+			if (this.getControllingPassenger() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) getControllingPassenger();
 				Util.giveItem(player, item.copy());
 			}
