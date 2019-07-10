@@ -60,7 +60,14 @@ public class BlockJuniperChest extends ModBlockContainer {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
 			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) {
-				if (ItemJuniperKey.canAccess(world, pos, world.provider.getDimension(), player.getHeldItem(hand))) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+				boolean found = false;
+				for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) {
+					if (ItemJuniperKey.canAccess(world, pos, world.provider.getDimension(), stack)) {
+						found = true;
+						break;
+					}
+				}
+				if (found) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
 				else if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
 			}
 			return true;

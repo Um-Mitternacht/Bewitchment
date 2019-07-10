@@ -77,9 +77,18 @@ public class ModItemDoor extends ItemDoor {
 		
 		@Override
 		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-			if (this == ModObjects.juniper_door.door && !ItemJuniperKey.canAccess(world, pos, world.provider.getDimension(), player.getHeldItem(hand))) {
-				if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
-				return true;
+			if (this == ModObjects.juniper_door.door) {
+				boolean found = false;
+				for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) {
+					if (ItemJuniperKey.canAccess(world, pos, world.provider.getDimension(), stack)) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
+					return true;
+				}
 			}
 			return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 		}
