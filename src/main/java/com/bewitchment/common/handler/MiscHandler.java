@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -65,5 +66,12 @@ public class MiscHandler {
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
 		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+	}
+	
+	@SubscribeEvent
+	public void breakSpeed(PlayerEvent.BreakSpeed event) {
+		World world = event.getEntityPlayer().world;
+		BlockPos pos = event.getPos();
+		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setNewSpeed(0);
 	}
 }
