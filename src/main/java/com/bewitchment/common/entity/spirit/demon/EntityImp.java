@@ -45,7 +45,7 @@ public class EntityImp extends ModEntityMob {
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 100, 1, false, false));
 				entity.setFire(20);
-				entity.motionY += 0.4;
+				entity.motionY += 0.2;
 				if (entity instanceof EntityPlayer) ((EntityPlayerMP) entity).connection.sendPacket(new SPacketEntityVelocity(entity));
 			}
 		}
