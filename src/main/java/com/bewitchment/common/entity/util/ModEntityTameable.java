@@ -92,8 +92,8 @@ public abstract class ModEntityTameable extends EntityTameable {
 			}
 			return true;
 		}
-		else if (!world.isRemote && isOwner(player) && isTamed()) {
-			if (aiSit != null) aiSit.setSitting(!isSitting());
+		if (!world.isRemote && isOwner(player) && isTamed() && !isBreedingItem(stack)) {
+			aiSit.setSitting(!isSitting());
 			isJumping = false;
 			navigator.clearPath();
 			setAttackTarget(null);
