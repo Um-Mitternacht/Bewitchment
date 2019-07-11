@@ -132,7 +132,7 @@
 	{
 	  "type": "text",
 	  "title": "Solar Glory",
-	  "text": "Turns it to day"
+	  "text": "Turns it to day. Only works at night"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -141,7 +141,7 @@
 	{
 	  "type": "text",
 	  "title": "High Moon",
-	  "text": "Turns it to night"
+	  "text": "Turns it to night. Only works during the day"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -222,7 +222,7 @@
 	{
 	  "type": "text",
 	  "title": "Spiritual Rift",
-	  "text": "Makes a temporary tear in the veil, allowings beings of a spiritual nature to walk the Earth once more"
+	  "text": "Makes a temporary tear in the veil, allowings beings of a spiritual nature to walk the Earth once more. Only works at night"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -240,7 +240,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "Transforms a mundane broom into its magical equivalent, Cypress in this case"
+	  "text": "Transforms a mundane broom into its magical equivalent, Cypress in this case. Brooms, including the mundane one, can also be used to sweep up various dusts."
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -249,7 +249,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "Transforms a mundane broom into its magical equivalent, Elder in this case"
+	  "text": "Transforms a mundane broom into its magical equivalent, Elder in this case. Brooms, including the mundane one, can also be used to sweep up various dusts."
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -258,7 +258,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "Transforms a mundane broom into its magical equivalent, Juniper in this case"
+	  "text": "Transforms a mundane broom into its magical equivalent, Juniper in this case. Brooms, including the mundane one, can also be used to sweep up various dusts."
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -267,7 +267,7 @@
 	{
 	  "type": "text",
 	  "title": "Rising Twigs",
-	  "text": "Transforms a mundane broom into its magical equivalent, Yew in this case"
+	  "text": "Transforms a mundane broom into its magical equivalent, Yew in this case. Brooms, including the mundane one, can also be used to sweep up various dusts."
 	},
 	{
 	  "type": "bewitchment:ritual",
