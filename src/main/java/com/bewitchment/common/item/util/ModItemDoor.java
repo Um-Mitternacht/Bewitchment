@@ -44,7 +44,11 @@ public class ModItemDoor extends ItemDoor {
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		EnumActionResult flag = super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
-		if (flag != EnumActionResult.FAIL && this == ModObjects.juniper_door) Util.giveItem(player, ItemJuniperKey.setTags(world, pos.offset(face), new ItemStack(ModObjects.juniper_key)));
+		if (flag != EnumActionResult.FAIL && this == ModObjects.juniper_door) {
+			BlockPos pos0 = pos;
+			while (world.getBlockState(pos0).getBlock() != ModObjects.juniper_door.door) pos0 = pos0.up();
+			Util.giveItem(player, ItemJuniperKey.setTags(world, pos0, new ItemStack(ModObjects.juniper_key)));
+		}
 		return flag;
 	}
 	
@@ -101,6 +105,11 @@ public class ModItemDoor extends ItemDoor {
 				return -1;
 			}
 			return val;
+		}
+		
+		@Override
+		public void toggleDoor(World world, BlockPos pos, boolean open) {
+			if (this != ModObjects.juniper_door.door) super.toggleDoor(world, pos, open);
 		}
 	}
 }
