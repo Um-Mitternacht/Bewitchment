@@ -19,7 +19,7 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
@@ -62,10 +62,12 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
-	public void breakBlock(BlockEvent.BreakEvent event) {
+	public void explode(ExplosionEvent.Detonate event) {
 		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) {
+			BlockPos pos = event.getAffectedBlocks().get(i);
+			if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.getAffectedBlocks().remove(i);
+		}
 	}
 	
 	@SubscribeEvent
