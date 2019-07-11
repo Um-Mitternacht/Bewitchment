@@ -66,7 +66,7 @@ public class MiscHandler {
 		World world = event.getWorld();
 		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) {
 			BlockPos pos = event.getAffectedBlocks().get(i);
-			if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.getAffectedBlocks().remove(i);
+			if (world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.getAffectedBlocks().remove(i);
 		}
 	}
 	
