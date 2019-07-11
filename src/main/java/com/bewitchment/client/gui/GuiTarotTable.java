@@ -47,9 +47,7 @@ public class GuiTarotTable extends GuiContainer {
 				GlStateManager.rotate(180, 0, 0, 1);
 				drawCard(-cx, -cy, 48, 64);
 			}
-			else {
-				drawCard(cx, cy, 48, 64);
-			}
+			else drawCard(cx, cy, 48, 64);
 			GlStateManager.popMatrix();
 			mc.getTextureManager().bindTexture(tarot.getNumber(container.player) < 0 ? TEX_FRAME : TEX_FRAME_NUMBER);
 			drawCard(cx, cy, 50, 66);
@@ -57,7 +55,7 @@ public class GuiTarotTable extends GuiContainer {
 			if (tarot.getNumber(container.player) > -1) {
 				int num = tarot.getNumber(container.player);
 				String number = num > 99 ? "99+" : "" + num;
-				drawCenteredString(mc.fontRenderer, number, cx + 25, cy + 57, 0x7f7f7f);
+				drawCenteredString(mc.fontRenderer, number, cx, cy + 24, 0x7f7f7f);
 			}
 		}
 	}
