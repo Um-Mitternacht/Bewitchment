@@ -4,6 +4,7 @@ import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityPotion;
@@ -12,9 +13,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
@@ -54,5 +58,12 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void dismount(EntityMountEvent event) {
 		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
+	}
+	
+	@SubscribeEvent
+	public void breakBlock(BlockEvent.BreakEvent event) {
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
 	}
 }
