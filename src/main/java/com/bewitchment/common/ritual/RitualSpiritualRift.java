@@ -38,7 +38,11 @@ public class RitualSpiritualRift extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(4) + 2; i++) {
 				EntityLiving entity;
-				entity = world.rand.nextBoolean() ? new EntityVex(world) : world.rand.nextBoolean() ? new EntityBlackDog(world) : world.rand.nextBoolean() ? new EntitySkeleton(world) : new EntityZombie(world);
+				int rand = world.rand.nextInt(4);
+				if (rand == 0) entity = new EntityVex(world);
+				else if (rand == 1) entity = new EntityBlackDog(world);
+				else if (rand == 2) entity = new EntitySkeleton(world);
+				else entity = new EntityZombie(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
