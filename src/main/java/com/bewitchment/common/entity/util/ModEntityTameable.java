@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 import java.util.UUID;
 
-@SuppressWarnings({"NullableProblems", "EntityConstructor", "ConstantConditions"})
+@SuppressWarnings({"NullableProblems", "EntityConstructor", "ConstantConditions", "WeakerAccess"})
 public abstract class ModEntityTameable extends EntityTameable {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityTameable.class, DataSerializers.VARINT);
 	
@@ -84,6 +84,7 @@ public abstract class ModEntityTameable extends EntityTameable {
 					setTamedBy(player);
 					playTameEffect(true);
 					world.setEntityState(this, (byte) 7);
+					heal(getMaxHealth());
 				}
 				else {
 					playTameEffect(false);
@@ -104,9 +105,7 @@ public abstract class ModEntityTameable extends EntityTameable {
 	@Override
 	public void setTamed(boolean tamed) {
 		super.setTamed(tamed);
-		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(BOOST_HEALTH);
-		else getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).removeModifier(BOOST_HEALTH);
-		heal(getMaxHealth());
+		boostHealth(tamed);
 	}
 	
 	@Override
@@ -124,6 +123,12 @@ public abstract class ModEntityTameable extends EntityTameable {
 	protected void entityInit() {
 		super.entityInit();
 		dataManager.register(SKIN, 0);
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		boostHealth(isTamed());
 	}
 	
 	@Override
@@ -145,4 +150,8 @@ public abstract class ModEntityTameable extends EntityTameable {
 	
 	@Override
 	public abstract boolean isBreedingItem(ItemStack stack);
+	
+	protected void boostHealth(boolean tamed) {
+		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(BOOST_HEALTH);
+	}
 }
