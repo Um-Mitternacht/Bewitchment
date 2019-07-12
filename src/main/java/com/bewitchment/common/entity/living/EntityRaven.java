@@ -112,7 +112,6 @@ public class EntityRaven extends ModEntityTameable {
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
 		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
 	}
@@ -121,10 +120,10 @@ public class EntityRaven extends ModEntityTameable {
 	protected void initEntityAI() {
 		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, aiSit);
 		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
 		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(4, aiSit);
 		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
 		tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
 		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));

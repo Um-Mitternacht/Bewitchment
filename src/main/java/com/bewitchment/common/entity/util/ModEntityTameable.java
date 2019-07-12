@@ -6,7 +6,6 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISit;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,13 +27,10 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import javax.annotation.Nullable;
 import java.util.Set;
-import java.util.UUID;
 
 @SuppressWarnings({"NullableProblems", "EntityConstructor", "ConstantConditions", "WeakerAccess"})
 public abstract class ModEntityTameable extends EntityTameable {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityTameable.class, DataSerializers.VARINT);
-	
-	private static final AttributeModifier BOOST_HEALTH = new AttributeModifier(UUID.fromString("78a34748-46be-445a-8de6-d5f2436a6d6b"), "boostHealth", 2, 1);
 	
 	private final Set<Item> tameItems;
 	
@@ -152,6 +148,7 @@ public abstract class ModEntityTameable extends EntityTameable {
 	public abstract boolean isBreedingItem(ItemStack stack);
 	
 	protected void boostHealth(boolean tamed) {
-		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(BOOST_HEALTH);
+		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
+		else getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
 	}
 }
