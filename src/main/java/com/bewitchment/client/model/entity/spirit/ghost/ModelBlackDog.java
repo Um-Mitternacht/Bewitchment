@@ -128,6 +128,8 @@ public class ModelBlackDog extends ModelBase {
 			this.rightHindleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingModifier * limbSwingAmount - 0f;
 			this.leftforeleg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F) * swingModifier * limbSwingAmount + 0f;
 			this.rightforeleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount + 0f;
+			
+			tail.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 		}
 	}
 	
