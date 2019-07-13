@@ -19,6 +19,7 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -59,6 +60,27 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void dismount(EntityMountEvent event) {
 		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityBroom && event.isDismounting()) ((EntityBroom) event.getEntityBeingMounted()).dismount();
+	}
+	
+	@SubscribeEvent
+	public void neighborNotify(BlockEvent.NeighborNotifyEvent event) {
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		if (world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+	}
+	
+	@SubscribeEvent
+	public void placeBlock(BlockEvent.PlaceEvent event) {
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+	}
+	
+	@SubscribeEvent
+	public void breakBlock(BlockEvent.BreakEvent event) {
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
 	}
 	
 	@SubscribeEvent

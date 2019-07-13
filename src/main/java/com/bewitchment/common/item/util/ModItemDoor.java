@@ -6,6 +6,7 @@ import com.bewitchment.common.item.tool.ItemJuniperKey;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -67,6 +68,11 @@ public class ModItemDoor extends ItemDoor {
 		@SideOnly(Side.CLIENT)
 		public BlockRenderLayer getRenderLayer() {
 			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+		}
+		
+		@Override
+		public EnumPushReaction getPushReaction(IBlockState state) {
+			return state.getBlock() == ModObjects.juniper_door.door ? EnumPushReaction.BLOCK : super.getPushReaction(state);
 		}
 		
 		@Override
