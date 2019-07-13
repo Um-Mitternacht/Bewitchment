@@ -8,10 +8,10 @@
   "key": {
 	"I": {
 	  "type": "forge:ore_dict",
-	  "ore": "gemMoonstone"
+	  "ore": "gemOpal"
 	}
   },
   "result": {
-	"item": "bewitchment:block_of_moonstone"
+	"item": "bewitchment:block_of_opal"
   }
 }

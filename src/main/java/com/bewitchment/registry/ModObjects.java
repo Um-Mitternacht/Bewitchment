@@ -73,13 +73,13 @@ public class ModObjects {
 	
 	public static final Block block_of_amethyst = new ModBlock("block_of_amethyst", Blocks.DIAMOND_BLOCK, "blockAmethyst");
 	public static final Block block_of_garnet = new ModBlock("block_of_garnet", Blocks.DIAMOND_BLOCK, "blockGarnet");
-	public static final Block block_of_moonstone = new ModBlock("block_of_moonstone", Blocks.DIAMOND_BLOCK, "blockMoonstone");
+	public static final Block block_of_opal = new ModBlock("block_of_opal", Blocks.DIAMOND_BLOCK, "blockOpal");
 	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block[] block_of_cold_iron = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
 	public static final Block amethyst_ore = new ModBlock("amethyst_ore", Blocks.IRON_ORE, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlock("garnet_ore", Blocks.IRON_ORE, "oreGarnet");
-	public static final Block moonstone_ore = new ModBlock("moonstone_ore", Blocks.IRON_ORE, "oreMoonstone");
+	public static final Block opal_ore = new ModBlock("opal_ore", Blocks.IRON_ORE, "oreOpal");
 	public static final Block silver_ore = new ModBlock("silver_ore", Blocks.IRON_ORE, "oreSilver");
 	public static final Block salt_ore = new ModBlock("salt_ore", Blocks.COAL_ORE, "oreSalt");
 	
@@ -263,7 +263,7 @@ public class ModObjects {
 	//Materials
 	public static final Item amethyst = Util.registerItem("amethyst", "gemAmethyst", "gemAll");
 	public static final Item garnet = Util.registerItem("garnet", "gemGarnet", "gemAll");
-	public static final Item moonstone = Util.registerItem("moonstone", "gemMoonstone", "gemAll");
+	public static final Item opal = Util.registerItem("opal", "gemOpal", "gemAll");
 	public static final Item silver_ingot = Util.registerItem("silver_ingot", "ingotSilver");
 	public static final Item cold_iron_ingot = Util.registerItem("cold_iron_ingot", "ingotColdIron");
 	public static final Item silver_nugget = Util.registerItem("silver_nugget", "nuggetSilver");

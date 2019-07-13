@@ -4,7 +4,7 @@
 	"model": "bewitchment:cube_overlay",
 	"textures": {
 	  "base": "blocks/stone",
-	  "overlay": "bewitchment:blocks/moonstone_ore"
+	  "overlay": "bewitchment:blocks/opal_ore"
 	}
   },
   "variants": {

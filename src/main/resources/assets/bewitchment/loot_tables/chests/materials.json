@@ -56,20 +56,6 @@
 		},
 		{
 		  "type": "item",
-		  "name": "bewitchment:cold_iron_ingot",
-		  "weight": 1,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 1,
-				"max": 2
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
 		  "name": "bewitchment:amethyst",
 		  "weight": 8,
 		  "functions": [
@@ -98,7 +84,7 @@
 		},
 		{
 		  "type": "item",
-		  "name": "bewitchment:moonstone",
+		  "name": "bewitchment:opal",
 		  "weight": 8,
 		  "functions": [
 			{

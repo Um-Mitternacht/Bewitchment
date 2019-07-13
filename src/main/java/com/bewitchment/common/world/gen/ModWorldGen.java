@@ -36,7 +36,7 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), Bewitchment.config.saltSize);
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.config.amethystSize);
 	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), Bewitchment.config.garnetSize);
-	private final WorldGenerator moonstoneOre = new WorldGenMinable(ModObjects.moonstone_ore.getDefaultState(), Bewitchment.config.moonstoneSize);
+	private final WorldGenerator opalOre = new WorldGenMinable(ModObjects.opal_ore.getDefaultState(), Bewitchment.config.opalSize);
 	
 	public ModWorldGen() {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
@@ -57,7 +57,7 @@ public class ModWorldGen implements IWorldGenerator {
 			generateOre(world, rand, saltOre, chunkX, chunkZ, Bewitchment.config.saltChance, Bewitchment.config.saltMin, Bewitchment.config.saltMax);
 			generateOre(world, rand, amethystOre, chunkX, chunkZ, Bewitchment.config.amethystChance, Bewitchment.config.amethystMin, Bewitchment.config.amethystMax);
 			generateOre(world, rand, garnetOre, chunkX, chunkZ, Bewitchment.config.garnetChance, Bewitchment.config.garnetMin, Bewitchment.config.garnetMax);
-			generateOre(world, rand, moonstoneOre, chunkX, chunkZ, Bewitchment.config.moonstoneChance, Bewitchment.config.moonstoneMin, Bewitchment.config.moonstoneMax);
+			generateOre(world, rand, opalOre, chunkX, chunkZ, Bewitchment.config.opalChance, Bewitchment.config.opalMin, Bewitchment.config.opalMax);
 			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
 			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
 			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));

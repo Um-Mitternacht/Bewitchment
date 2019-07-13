@@ -3,11 +3,11 @@
   "ingredients": [
 	{
 	  "type": "forge:ore_dict",
-	  "ore": "blockMoonstone"
+	  "ore": "blockOpal"
 	}
   ],
   "result": {
-	"item": "bewitchment:moonstone",
+	"item": "bewitchment:opal",
 	"count": 9
   }
 }

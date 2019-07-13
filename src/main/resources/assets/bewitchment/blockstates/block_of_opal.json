@@ -3,7 +3,7 @@
   "defaults": {
 	"model": "cube_all",
 	"textures": {
-	  "all": "bewitchment:blocks/block_of_moonstone"
+	  "all": "bewitchment:blocks/block_of_opal"
 	}
   },
   "variants": {

@@ -49,13 +49,13 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Moonstone",
-	  "text": "A milky blue-white gem. Historically, it was believed to be solidified moonbeams, and has a powerful connection to night and darkness."
+	  "title": "Opal",
+	  "text": "needs text"
 	},
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/moonstone.png"
+		"bewitchment:textures/gui/patchouli/opal.png"
 	  ],
 	  "border": true
 	},

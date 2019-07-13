@@ -20,7 +20,7 @@ public class ModConfig extends Configuration {
 	
 	public final int cypressChance, elderChance, juniperChance, yewChance;
 	
-	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, moonstoneSize, moonstoneChance, moonstoneMin, moonstoneMax;
+	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, opalSize, opalChance, opalMin, opalMax;
 	
 	public final List<String> lizardBiomes, newtBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, serpentBiomes;
 	
@@ -64,10 +64,10 @@ public class ModConfig extends Configuration {
 		garnetMin = getInt("garnetMin", "oreGen", 12, 0, 255, "The minimum height for garnet ore veins to spawn.");
 		garnetMax = getInt("garnetMax", "oreGen", 42, 0, 255, "The maximum height for garnet ore veins to spawn.");
 		
-		moonstoneSize = getInt("moonstoneSize", "oreGen", 6, 0, Byte.MAX_VALUE, "The size of moonstone ore veins.");
-		moonstoneChance = getInt("moonstoneChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for moonstone ore veins to spawn. 0 to disable.");
-		moonstoneMin = getInt("moonstoneMin", "oreGen", 16, 0, 255, "The minimum height for moonstone ore veins to spawn.");
-		moonstoneMax = getInt("moonstoneMax", "oreGen", 42, 0, 255, "The maximum height for moonstone ore veins to spawn.");
+		opalSize = getInt("opalSize", "oreGen", 6, 0, Byte.MAX_VALUE, "The size of opal ore veins.");
+		opalChance = getInt("opalChance", "oreGen", 2, 0, Byte.MAX_VALUE, "The chance for opal ore veins to spawn. 0 to disable.");
+		opalMin = getInt("opalMin", "oreGen", 16, 0, 255, "The minimum height for opal ore veins to spawn.");
+		opalMax = getInt("opalMax", "oreGen", 42, 0, 255, "The maximum height for opal ore veins to spawn.");
 		
 		lizardBiomes = Arrays.asList(getStringList("lizardBiomes", "mobSpawns", new String[]{Type.FOREST.getName()}, "The list of BiomeDictionary types that the lizard will spawn in."));
 		newtBiomes = Arrays.asList(getStringList("newtBiomes", "mobSpawns", new String[]{Type.SWAMP.getName()}, "The list of BiomeDictionary types that the newt will spawn in."));
