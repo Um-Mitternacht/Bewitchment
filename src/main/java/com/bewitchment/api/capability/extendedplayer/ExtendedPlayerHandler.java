@@ -5,8 +5,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -35,6 +37,21 @@ public class ExtendedPlayerHandler {
 			if (cap.fortune != null && cap.fortune.apply(event.player)) {
 				cap.fortune = null;
 				ExtendedPlayer.syncToClient(event.player);
+			}
+			if (event.player.ticksExisted % 20 == 0) {
+				NBTTagList list = cap.exploredChunks;
+				long pos = ChunkPos.asLong(event.player.chunkCoordX, event.player.chunkCoordZ);
+				boolean found = false;
+				for (int i = 0; i < list.tagCount(); i++) {
+					if (((NBTTagLong) list.get(i)).getLong() == pos) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					list.appendTag(new NBTTagLong(pos));
+					ExtendedPlayer.syncToClient(event.player);
+				}
 			}
 		}
 	}

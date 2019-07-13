@@ -184,7 +184,7 @@
 	  ],
 	  "border": true,
 	  "title": "Ender Dragon",
-	  "text": "The player has killed at least 50 mobs, and the amount of mobs killed / 50"
+	  "text": "The player has killed at least 100 mobs, and the amount of mobs killed / 100"
 	},
 	{
 	  "type": "image",
@@ -229,7 +229,7 @@
 	  ],
 	  "border": true,
 	  "title": "World",
-	  "text": "I AM ERROR"
+	  "text": "The player has explored at least 100 chunks, and the amount of chunks / 100"
 	}
   ]
 }

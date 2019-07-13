@@ -24,7 +24,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	@CapabilityInject(ExtendedPlayer.class)
 	public static final Capability<ExtendedPlayer> CAPABILITY = null;
 	
-	public NBTTagList uniqueDefeatedBosses = new NBTTagList();
+	public NBTTagList uniqueDefeatedBosses = new NBTTagList(), exploredChunks = new NBTTagList();
 	public Fortune fortune;
 	public int ritualsCast, mobsKilled;
 	
@@ -33,6 +33,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public NBTBase writeNBT(Capability<ExtendedPlayer> capability, ExtendedPlayer instance, EnumFacing face) {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
+		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
@@ -43,6 +44,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public void readNBT(Capability<ExtendedPlayer> capability, ExtendedPlayer instance, EnumFacing face, NBTBase nbt) {
 		NBTTagCompound tag = (NBTTagCompound) nbt;
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
+		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");

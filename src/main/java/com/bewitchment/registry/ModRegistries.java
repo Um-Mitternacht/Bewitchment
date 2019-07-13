@@ -530,7 +530,7 @@ public class ModRegistries {
 			
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled / 50;
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled / 100;
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/17star.png")) {
@@ -570,7 +570,12 @@ public class ModRegistries {
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/21world.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return false; //find something for this
+				return getNumber(player) > 0;
+			}
+			
+			@Override
+			public int getNumber(EntityPlayer player) {
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).exploredChunks.tagCount() / 100;
 			}
 		});
 	}
