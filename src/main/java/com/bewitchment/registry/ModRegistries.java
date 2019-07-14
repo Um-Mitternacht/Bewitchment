@@ -300,7 +300,7 @@ public class ModRegistries {
 		//Fixme: Allow this to use blazing trail from Rustic
 		//SPONGE BOI ME BOB I ATE FRIED OYSTER SKINS AND NOW ME ASS BE SHOOTING FIRE ARG ARG ARG ARG
 		if (Loader.isModLoaded("rustic")) {
-			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionBlazingTrail.getPotionById(), 1)));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(Potion.getPotionFromResourceLocation("blazing_trail"), 100)));
 		}
 	}
 	
