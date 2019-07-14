@@ -2,12 +2,15 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
+		maven { url "https://plugins.gradle.org/m2/" }		
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath 'com.wynprice.cursemaven:CurseMaven:1.1.0'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.wynprice.cursemaven'
 
 version = "1.12.2-0.0.20.1_rewrite30"
 group = "com.bewitchment"
@@ -44,6 +47,7 @@ dependencies {
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"
     deobfProvided "vazkii.botania:Botania:r1.10-361.69"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
+    deobfProvided curse.resolve("rustic", "2670073")
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
