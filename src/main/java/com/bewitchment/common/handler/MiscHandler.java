@@ -13,7 +13,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
@@ -64,10 +63,8 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
-	public void neighborNotify(BlockEvent.NeighborNotifyEvent event) {
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		if (world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+	public void explode(ExplosionEvent.Detonate event) {
+		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) if (isNextToJuniperDoor(event.getWorld(), event.getAffectedBlocks().get(i))) event.getAffectedBlocks().remove(i);
 	}
 	
 	@SubscribeEvent
@@ -76,17 +73,11 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
-	public void explode(ExplosionEvent.Detonate event) {
-		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) if (isNextToJuniperDoor(event.getWorld(), event.getAffectedBlocks().get(i))) event.getAffectedBlocks().remove(i);
-	}
-	
-	@SubscribeEvent
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
 	}
 	
 	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
-		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door) for (EnumFacing face : EnumFacing.VALUES) if (world.getBlockState(pos.offset(face)).getBlock() == ModObjects.juniper_door.door) return true;
-		return false;
+		return world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door;
 	}
 }
