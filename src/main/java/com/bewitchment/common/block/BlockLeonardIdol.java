@@ -8,7 +8,7 @@ import net.minecraft.block.material.Material;
  * Created by Joseph on 7/13/2019.
  */
 public class BlockLeonardIdol extends ModBlock {
-	public BlockLeonardIdol() {
-		super("leonard_idol", Material.ROCK, SoundType.STONE, 1, 3, "pickaxe", 0);
+	public BlockLeonardIdol(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
+		super(name, Material.ROCK, SoundType.STONE, 1, 3, "pickaxe", 0);
 	}
 }
