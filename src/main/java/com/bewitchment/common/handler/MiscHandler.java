@@ -13,6 +13,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
@@ -70,32 +71,22 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
-	public void placeBlock(BlockEvent.PlaceEvent event) {
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
-	}
-	
-	@SubscribeEvent
 	public void breakBlock(BlockEvent.BreakEvent event) {
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setCanceled(true);
+		if (isNextToJuniperDoor(event.getWorld(), event.getPos())) event.setCanceled(true);
 	}
 	
 	@SubscribeEvent
 	public void explode(ExplosionEvent.Detonate event) {
-		World world = event.getWorld();
-		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) {
-			BlockPos pos = event.getAffectedBlocks().get(i);
-			if (world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.getAffectedBlocks().remove(i);
-		}
+		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) if (isNextToJuniperDoor(event.getWorld(), event.getAffectedBlocks().get(i))) event.getAffectedBlocks().remove(i);
 	}
 	
 	@SubscribeEvent
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
-		World world = event.getEntityPlayer().world;
-		BlockPos pos = event.getPos();
-		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door) event.setNewSpeed(0);
+		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
+	}
+	
+	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
+		if (world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door) for (EnumFacing face : EnumFacing.VALUES) if (world.getBlockState(pos.offset(face)).getBlock() == ModObjects.juniper_door.door) return true;
+		return false;
 	}
 }
