@@ -128,7 +128,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				if (tank.getFluid() != null && Bewitchment.config.heatSources.contains(world.getBlockState(pos.down()).getBlock().getTranslationKey()) && heatTimer <= 5) heatTimer++;
 				else if (heatTimer > 0) heatTimer--;
 			}
-			if (heatTimer >= 5) {
+			if (heatTimer >= 5 && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 				double height = pos.getY() + getLiquidHeight();
 				if (height > pos.getY() + 0.2) for (int i = 0; i < 6; i++)
 					Bewitchment.network.sendToDimension(new SpawnBubble(getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), world.provider.getDimension());
@@ -152,7 +152,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				}
 				else if (mode == 0 || mode == 3) {
 					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
-						if (tank.canDrainFluidType(tank.getFluid())) {
+						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 							Util.giveAndConsumeItem(player, hand, createPotion());
 							tank.drain(Fluid.BUCKET_VOLUME / 3, true);
 							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
