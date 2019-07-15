@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.item.ItemBroom;
+import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
@@ -256,6 +257,12 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
+	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
+	public static final Item clay_leonard_idol = createIdol("clay_leonard_idol", Blocks.HARDENED_CLAY);
+	public static final Item gold_leonard_idol = createIdol("gold_leonard_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
+	public static final Item nethersteel_leonard_idol = createIdol("nethersteel_leonard_idol", nethersteel[0]);
+	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	public static final Item bone_needle = Util.registerItem("bone_needle");
@@ -344,6 +351,10 @@ public class ModObjects {
 			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.cracked_scorned_bricks.getDefaultState(), 1));
 			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.chiseled_scorned_bricks.getDefaultState(), 1));
 		}
+	}
+	
+	private static Item createIdol(String name, Block base) {
+		return Util.registerItem(new ItemIdol(name, base), name);
 	}
 	
 	private static Block[] createChiselBlocks(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, List<String> oreDictionaryNames, String... names) {

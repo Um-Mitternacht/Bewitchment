@@ -86,7 +86,7 @@ public class Bewitchment {
 		logger.info("Kin is different in some ways?");
 		
 		config = new ModConfig((event.getSuggestedConfigurationFile()));
-		proxy.registerRenderers();
+		proxy.registerRendersPreInit();
 		ModObjects.preInit();
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
@@ -115,7 +115,7 @@ public class Bewitchment {
 		logger.info("I hear her in the wind, the bane of our town");
 		logger.info("Come with me, father, I'm to expose a heathen");
 		
-		proxy.registerColorOverrides();
+		proxy.registerRendersInit();
 		
 		ModRecipes.init();
 		

@@ -40,10 +40,10 @@ public class ServerProxy {
 		return false;
 	}
 	
-	public void registerColorOverrides() {
+	public void registerRendersInit() {
 	}
 	
-	public void registerRenderers() {
+	public void registerRendersPreInit() {
 	}
 	
 	public void registerTexture(Item item, String variant) {

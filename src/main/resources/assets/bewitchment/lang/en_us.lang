@@ -213,6 +213,13 @@ tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 item.bewitchment.juniper_key.name=Juniper Key
 tooltip.bewitchment.juniper_key=Grants access to %d, %d, %d, %s
 
+item.bewitchment.stone_leonard_idol.name=Stone Leonard Idol
+item.bewitchment.clay_leonard_idol.name=Clay Leonard Idol
+item.bewitchment.gold_leonard_idol.name=Gold Leonard Idol
+item.bewitchment.nether_brick_leonard_idol.name=Nether Brick Leonard Idol
+item.bewitchment.nethersteel_leonard_idol.name=Nethersteel Leonard Idol
+item.bewitchment.scorned_brick_leonard_idol.name=Scorned Brick Leonard Idol
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock

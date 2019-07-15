@@ -1,5 +1,7 @@
 package com.bewitchment.proxy;
 
+import com.bewitchment.Bewitchment;
+import com.bewitchment.client.model.block.ModelLeonardIdol;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderElderBroom;
@@ -8,15 +10,9 @@ import com.bewitchment.client.render.entity.misc.RenderYewBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.fx.ModParticleBubble;
-import com.bewitchment.client.render.tile.RenderTileEntityGlyph;
-import com.bewitchment.client.render.tile.RenderTileEntityJuniperChest;
-import com.bewitchment.client.render.tile.RenderTileEntityPlacedItem;
-import com.bewitchment.client.render.tile.RenderTileEntityWitchesCauldron;
+import com.bewitchment.client.render.tile.*;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityJuniperChest;
-import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
-import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
 import com.bewitchment.common.entity.misc.EntityElderBroom;
@@ -31,6 +27,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -48,12 +45,17 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
+@SuppressWarnings({"ConstantConditions", "unused", "WeakerAccess"})
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
+	public static final Map<Item, ModelBase> IDOL_MODELS = new HashMap<>();
+	public static final Map<Item, ResourceLocation> IDOL_TEXTURES = new HashMap<>();
+	
 	@Override
 	public List<ItemStack> getEntireInventory(EntityPlayer unused) {
 		return super.getEntireInventory(Minecraft.getMinecraft().player);
@@ -77,17 +79,7 @@ public class ClientProxy extends ServerProxy {
 	}
 	
 	@Override
-	public void registerColorOverrides() {
-		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
-			int type = state.getValue(BlockGlyph.TYPE);
-			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
-		}, ModObjects.glyph);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
-	}
-	
-	@Override
-	public void registerRenderers() {
+	public void registerRendersPreInit() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
@@ -112,6 +104,25 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
+	}
+	
+	@Override
+	public void registerRendersInit() {
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
+			int type = state.getValue(BlockGlyph.TYPE);
+			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
+		}, ModObjects.glyph);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
+		
+		ModelBase lenny = new ModelLeonardIdol();
+		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
+		registerIdol(ModObjects.clay_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/clay.png"));
+		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
+		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
+		registerIdol(ModObjects.nethersteel_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nethersteel.png"));
+		registerIdol(ModObjects.scorned_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/scorned_brick.png"));
 	}
 	
 	@Override
@@ -141,5 +152,10 @@ public class ClientProxy extends ServerProxy {
 	public static void stitch(TextureStitchEvent.Pre event) {
 		event.getMap().registerSprite(RenderTileEntityWitchesCauldron.TEX);
 		event.getMap().registerSprite(ModParticleBubble.TEX);
+	}
+	
+	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
+		IDOL_MODELS.put(item, model);
+		IDOL_TEXTURES.put(item, texture);
 	}
 }
