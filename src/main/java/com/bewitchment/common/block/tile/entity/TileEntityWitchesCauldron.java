@@ -25,7 +25,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
@@ -43,7 +42,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
 	
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
-	private final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
+	public final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
 	
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
@@ -81,16 +80,6 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		hasPower = tag.getBoolean("hasPower");
 		name = tag.hasKey("name") ? tag.getString("name") : "";
 		super.readFromNBT(tag);
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
@@ -178,7 +167,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (cap instanceof FluidBucketWrapper) {
 							FluidBucketWrapper wrapper = (FluidBucketWrapper) cap;
 							FluidStack fluid = wrapper.getFluid();
-							if ((fluid == null || (fluid != null && (fluid.getFluid() == FluidRegistry.WATER || fluid.getFluid() == FluidRegistry.LAVA))) && FluidUtil.interactWithFluidHandler(player, hand, world, pos, face))
+							if ((fluid == null || (fluid != null && (fluid.getFluid() == FluidRegistry.WATER || fluid.getFluid() == FluidRegistry.LAVA))) && FluidUtil.interactWithFluidHandler(player, hand, tank))
 								world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 						}
 					}

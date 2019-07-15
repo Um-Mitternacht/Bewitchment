@@ -13,12 +13,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-@SuppressWarnings("ConstantConditions")
 @SideOnly(Side.CLIENT)
 public class RenderTileEntityWitchesCauldron extends TileEntitySpecialRenderer<TileEntityWitchesCauldron> {
 	public static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "blocks/fluid/gray_fluid");
@@ -26,7 +24,7 @@ public class RenderTileEntityWitchesCauldron extends TileEntitySpecialRenderer<T
 	@Override
 	public void render(TileEntityWitchesCauldron tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		if (tile.hasCustomName()) drawNameplate(tile, tile.getName(), x, y - 0.25, z, 3);
-		FluidTank tank = (FluidTank) tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		FluidTank tank = tile.tank;
 		if (tank.getFluid() != null) {
 			FluidStack stack = tank.getFluid();
 			GlStateManager.pushMatrix();
