@@ -38,7 +38,7 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.RegistryBuilder;
 import rustic.common.items.ModItems;
-import rustic.common.potions.PotionBlazingTrail;
+import rustic.common.potions.PotionsRustic;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -300,7 +300,7 @@ public class ModRegistries {
 		//Fixme: Allow this to use blazing trail from Rustic
 		//SPONGE BOI ME BOB I ATE FRIED OYSTER SKINS AND NOW ME ASS BE SHOOTING FIRE ARG ARG ARG ARG
 		if (Loader.isModLoaded("rustic")) {
-			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(Potion.getPotionFromResourceLocation("blazing_trail"), 100)));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, 100)));
 		}
 	}
 	
