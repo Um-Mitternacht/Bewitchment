@@ -123,7 +123,7 @@ public class EntitySnake extends ModEntityTameable {
 		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
 		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
 		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityPlayer.class, false, p -> p.getDistanceSq(this) < 1));
-		targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityRabbit || e instanceof EntityParrot || e.getClass().getName().contains("Rat")));
+		targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityRabbit || e instanceof EntityParrot || e.getClass().getName().contains("EntityRat")));
 	}
 	
 	@Override
