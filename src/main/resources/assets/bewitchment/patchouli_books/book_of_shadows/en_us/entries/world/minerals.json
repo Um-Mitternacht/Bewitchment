@@ -26,7 +26,7 @@
 	{
 	  "type": "text",
 	  "title": "Amethyst",
-	  "text": "An incredibly popular purple crystal. It is used to help boost offensive magics."
+	  "text": "An incredibly popular purple crystal. It is used to help boost offensive magics, and some claim it can affect health positively."
 	},
 	{
 	  "type": "image",
@@ -38,7 +38,7 @@
 	{
 	  "type": "text",
 	  "title": "Garnet",
-	  "text": "A gemstone with a deep red-purple hue. This gem is very good at protecting from evil magics."
+	  "text": "A gemstone with a deep red-purple hue. This gem is very good at protecting from evil magics, and as such, has defensive properties."
 	},
 	{
 	  "type": "image",
@@ -50,7 +50,7 @@
 	{
 	  "type": "text",
 	  "title": "Opal",
-	  "text": "needs text"
+	  "text": "A whitish gem known for its “play of colour” or “fire”, a brilliant light show that changes based on how its held. This gem aids support-based magic, such as enhancing powers."
 	},
 	{
 	  "type": "image",
