@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
@@ -68,8 +69,11 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
+		World world;
+		if (player != null) world = player.world;
+		else world = tile.getWorld();
 		boolean flag = attemptDrain(tile, player, amount, true);
-		if (flag && !player.world.isRemote) attemptDrain(tile, player, amount, false);
+		if (flag && !world.isRemote) attemptDrain(tile, player, amount, false);
 		return flag;
 	}
 	
