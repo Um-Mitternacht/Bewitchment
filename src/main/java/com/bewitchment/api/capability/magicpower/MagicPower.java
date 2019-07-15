@@ -69,9 +69,10 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	}
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
-		World world;
+		World world = null;
 		if (player != null) world = player.world;
-		else world = tile.getWorld();
+		else if (tile != null) world = tile.getWorld();
+		if (world == null) return false;
 		boolean flag = attemptDrain(tile, player, amount, true);
 		if (flag && !world.isRemote) attemptDrain(tile, player, amount, false);
 		return flag;
