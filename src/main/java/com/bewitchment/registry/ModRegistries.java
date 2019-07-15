@@ -298,7 +298,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "cursed_leaps"), Util.get(ModObjects.toe_of_frog), new PotionEffect(ModPotions.cursed_leaps, 1)));
 		
 		if (Loader.isModLoaded("rustic")) {
-			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, 100)));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
 		}
 	}
 	
