@@ -34,7 +34,7 @@
 	  "multiblock": {
 		"mapping": {
 		  "G": "bewitchment:glyph",
-		  "0": "bewitchment:glyph[type=0]"
+		  "0": "bewitchment:glyph"
 		},
 		"pattern": [
 		  [
@@ -56,7 +56,7 @@
 	  "multiblock": {
 		"mapping": {
 		  "G": "bewitchment:glyph",
-		  "0": "bewitchment:glyph[type=0]"
+		  "0": "bewitchment:glyph]"
 		},
 		"pattern": [
 		  [
@@ -82,7 +82,7 @@
 	  "multiblock": {
 		"mapping": {
 		  "G": "bewitchment:glyph",
-		  "0": "bewitchment:glyph[type=0]"
+		  "0": "bewitchment:glyph"
 		},
 		"pattern": [
 		  [
