@@ -30,9 +30,10 @@
 	{
 	  "type": "multiblock",
 	  "name": "Small Glyph Setup",
+	  "text": "The outer glyphs can be any type except gold",
 	  "multiblock": {
 		"mapping": {
-		  "G": "bewitchment:glyph[type=1]",
+		  "G": "bewitchment:glyph",
 		  "0": "bewitchment:glyph[type=0]"
 		},
 		"pattern": [
@@ -51,9 +52,10 @@
 	{
 	  "type": "multiblock",
 	  "name": "Medium Glyph Setup",
+	  "text": "The outer glyphs can be any type except gold",
 	  "multiblock": {
 		"mapping": {
-		  "G": "bewitchment:glyph[type=1]",
+		  "G": "bewitchment:glyph",
 		  "0": "bewitchment:glyph[type=0]"
 		},
 		"pattern": [
@@ -76,9 +78,10 @@
 	{
 	  "type": "multiblock",
 	  "name": "Large Glyph Setup",
+	  "text": "The outer glyphs can be any type except gold",
 	  "multiblock": {
 		"mapping": {
-		  "G": "bewitchment:glyph[type=1]",
+		  "G": "bewitchment:glyph",
 		  "0": "bewitchment:glyph[type=0]"
 		},
 		"pattern": [
