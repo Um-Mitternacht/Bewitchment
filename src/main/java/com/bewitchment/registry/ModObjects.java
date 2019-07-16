@@ -258,7 +258,7 @@ public class ModObjects {
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
 	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
-	public static final Item clay_leonard_idol = createIdol("clay_leonard_idol", Blocks.HARDENED_CLAY);
+	public static final Item terracotta_leonard_idol = createIdol("terracotta_leonard_idol", Blocks.HARDENED_CLAY);
 	public static final Item gold_leonard_idol = createIdol("gold_leonard_idol", Blocks.GOLD_BLOCK);
 	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_leonard_idol = createIdol("nethersteel_leonard_idol", nethersteel[0]);

@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"F F",
+	"FDF",
+	"FRF"
+  ],
+  "key": {
+	"F": {
+	  "type": "forge:ore_dict",
+	  "ore": "blockNethersteel"
+	},
+	"D": {
+	  "type": "forge:ore_dict",
+	  "ore": "cropHellebore"
+	},
+	"R": {
+	  "item": "minecraft:mutton"
+	}
+  },
+  "result": {
+	"item": "bewitchment:nethersteel_leonard_idol"
+  }
+}

@@ -32,8 +32,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Random;
-
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions", "WeakerAccess"})
 public class BlockWitchesAltar extends ModBlockContainer {
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 2), COLOR = PropertyInteger.create("color", 0, 16);
@@ -162,13 +160,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		world.notifyBlockUpdate(pos, state, state, 2);
-		TileEntityWitchesAltar tile = getAltar(world, pos);
-		if (tile != null) tile.forceScan();
-	}
-	
-	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		TileEntityWitchesAltar tile = getAltar(world, pos);
 		return tile == null ? state : state.withProperty(COLOR, tile.color);
@@ -245,6 +236,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	
 	private void forceScan(World world, BlockPos pos) {
 		TileEntityWitchesAltar tile = getAltar(world, pos);
-		if (tile != null) world.scheduleBlockUpdate(tile.getPos(), this, 5, 0);
+		if (tile != null) tile.forceScan();
 	}
 }

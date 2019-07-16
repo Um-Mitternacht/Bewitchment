@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"F F",
+	"FDF",
+	"FRF"
+  ],
+  "key": {
+	"F": {
+	  "type": "forge:ore_dict",
+	  "ore": "stone"
+	},
+	"D": {
+	  "type": "forge:ore_dict",
+	  "ore": "cropHellebore"
+	},
+	"R": {
+	  "item": "minecraft:mutton"
+	}
+  },
+  "result": {
+	"item": "bewitchment:stone_leonard_idol"
+  }
+}

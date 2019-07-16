@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -45,7 +46,10 @@ public class ItemIdol extends Item {
 			world.setBlockState(pos0, block.getStateForPlacement(world, pos, face, hitX, hitY, hitZ, 0, player, hand));
 			world.setBlockToAir(pos0.up());
 			TileEntity tile = world.getTileEntity(pos0);
-			if (tile instanceof TileEntityIdol) ((TileEntityIdol) tile).stack = stack.copy();
+			if (tile instanceof TileEntityIdol) {
+				((TileEntityIdol) tile).getInventories()[0].insertItem(0, stack.copy().splitStack(1), false);
+				((TileEntityIdol) tile).syncToClient();
+			}
 			stack.shrink(1);
 			world.playSound(null, pos, block.getSoundType().getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
 			return EnumActionResult.SUCCESS;
@@ -55,7 +59,7 @@ public class ItemIdol extends Item {
 	
 	@SuppressWarnings({"NullableProblems", "deprecation"})
 	public static class BlockIdol extends ModBlockContainer {
-		private static final AxisAlignedBB BOX = FULL_BLOCK_AABB.grow(0, 1, 0);
+		private static final AxisAlignedBB BOX = FULL_BLOCK_AABB.expand(0, 1, 0);
 		
 		private final Item item;
 		
@@ -78,12 +82,12 @@ public class ItemIdol extends Item {
 		
 		@Override
 		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-			return new ItemStack(getItemDropped(state, world.rand, 0));
+			return new ItemStack(item);
 		}
 		
 		@Override
 		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-			return item;
+			return Items.AIR;
 		}
 		
 		@Override

@@ -214,7 +214,7 @@ item.bewitchment.juniper_key.name=Juniper Key
 tooltip.bewitchment.juniper_key=Grants access to %d, %d, %d, %s
 
 item.bewitchment.stone_leonard_idol.name=Stone Leonard Idol
-item.bewitchment.clay_leonard_idol.name=Clay Leonard Idol
+item.bewitchment.terracotta_leonard_idol.name=Terracotta Leonard Idol
 item.bewitchment.gold_leonard_idol.name=Gold Leonard Idol
 item.bewitchment.nether_brick_leonard_idol.name=Nether Brick Leonard Idol
 item.bewitchment.nethersteel_leonard_idol.name=Nethersteel Leonard Idol

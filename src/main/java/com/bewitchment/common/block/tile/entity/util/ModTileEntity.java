@@ -33,23 +33,22 @@ public abstract class ModTileEntity extends TileEntity {
 	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
-		return new SPacketUpdateTileEntity(pos, 0, writeToNBT(new NBTTagCompound()));
+		return new SPacketUpdateTileEntity(pos, 3, getUpdateTag());
+	}
+	
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		return writeToNBT(new NBTTagCompound());
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
-		readFromNBT(packet.getNbtCompound());
-		syncToClient();
+		handleUpdateTag(packet.getNbtCompound());
 	}
 	
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return oldState.getBlock() != newState.getBlock();
-	}
-	
-	@Override
-	public void onLoad() {
-		syncToClient();
 	}
 	
 	public ItemStackHandler[] getInventories() {
@@ -61,7 +60,10 @@ public abstract class ModTileEntity extends TileEntity {
 	}
 	
 	public void syncToClient() {
+		world.markBlockRangeForRenderUpdate(pos, pos);
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+		world.scheduleBlockUpdate(pos, blockType, 0, 0);
+		markDirty();
 	}
 	
 	public static boolean contains(ItemStackHandler handler, ItemStack stack) {

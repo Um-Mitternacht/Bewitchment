@@ -1,0 +1,68 @@
+{
+  "name": "Infernal Tiles",
+  "category": "demonic_gear",
+  "icon": "bewitchment:nethersteel",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "On top of wearable apparel, there are also many blocks and other such items connected to demons."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Nethersteel",
+	  "text": "A strange semi-metallic material. It feels warm, almost as if alive… This material is too... capricious to be shaped into tools, but can often be shaped into decorative blocks and idols. It’s also critical in creating many demonic baubles. This dubious substance is created as follows:"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:nethersteel"
+	},
+	{
+	  "type": "text",
+	  "title": "Scorned Bricks",
+	  "text": "No matter the climate, this red-tinted slaty stone is always as cold as the night. If you press your ear to it, you can swear you hear cries and screams… This material is believed to be used by demons to build their great palaces hidden beyond the angles of time, and can be created using the Hellworld brew on Embittered Bricks, as well as follows:"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:scorned_bricks"
+	},
+	{
+	  "type": "text",
+	  "title": "Idols",
+	  "text": "Idols are small, crude figures of major demons. They can be placed on altars, acting as both a Pentacle, as well as attracting the positive attention (a rare commodity) of the demon they depict. So far, only the way to only create the idol of Master Leonard is known, and is as follows:"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Stone",
+	  "recipe": "bewitchment:stone_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Gold",
+	  "recipe": "bewitchment:gold_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Terracotta",
+	  "recipe": "bewitchment:terracotta_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Nether Brick",
+	  "recipe": "bewitchment:nether_brick_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Nethersteel",
+	  "recipe": "bewitchment:nethersteel_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Scorned Brick",
+	  "recipe": "bewitchment:scorned_brick_leonard_idol"
+	}
+  ]
+}

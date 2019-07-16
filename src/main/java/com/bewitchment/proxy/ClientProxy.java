@@ -118,7 +118,7 @@ public class ClientProxy extends ServerProxy {
 		
 		ModelBase lenny = new ModelLeonardIdol();
 		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
-		registerIdol(ModObjects.clay_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/clay.png"));
+		registerIdol(ModObjects.terracotta_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/clay.png"));
 		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
 		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
 		registerIdol(ModObjects.nethersteel_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nethersteel.png"));

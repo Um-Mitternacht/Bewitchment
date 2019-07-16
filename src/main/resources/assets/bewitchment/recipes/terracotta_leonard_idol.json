@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"F F",
+	"FDF",
+	"FRF"
+  ],
+  "key": {
+	"F": {
+	  "item": "minecraft:hardened_clay"
+	},
+	"D": {
+	  "type": "forge:ore_dict",
+	  "ore": "cropHellebore"
+	},
+	"R": {
+	  "item": "minecraft:mutton"
+	}
+  },
+  "result": {
+	"item": "bewitchment:terracotta_leonard_idol"
+  }
+}

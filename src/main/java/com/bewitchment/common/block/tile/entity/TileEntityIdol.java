@@ -1,21 +1,13 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityIdol extends ModTileEntity {
-	public ItemStack stack = ItemStack.EMPTY;
+	private final ItemStackHandler inventory = new ItemStackHandler(1);
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setTag("stack", stack.serializeNBT());
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		stack.deserializeNBT(tag.getCompoundTag("stack"));
-		super.readFromNBT(tag);
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory};
 	}
 }
