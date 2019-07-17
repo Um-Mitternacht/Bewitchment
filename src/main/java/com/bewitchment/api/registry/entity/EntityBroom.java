@@ -10,12 +10,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -35,29 +32,8 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public EnumActionResult applyPlayerInteraction(EntityPlayer player, Vec3d vec, EnumHand hand) {
-		if (!player.isRiding() && !player.isSneaking()) {
-			player.rotationYaw = rotationYaw;
-			player.rotationPitch = rotationPitch;
-			player.startRiding(this);
-			return EnumActionResult.SUCCESS;
-		}
-		return super.applyPlayerInteraction(player, vec, hand);
-	}
-	
-	@Override
 	public Entity getControllingPassenger() {
 		return getPassengers().isEmpty() ? null : getPassengers().get(0);
-	}
-	
-	@Override
-	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (getControllingPassenger() == null && source.getTrueSource() instanceof EntityPlayer) {
-			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-			setDead();
-			return true;
-		}
-		return super.attackEntityFrom(source, amount);
 	}
 	
 	@Override
@@ -77,6 +53,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && !isBeingRidden()) player.startRiding(this);
 		if (item == null) {
 			item = player.getHeldItem(hand).splitStack(1);
 			return true;
@@ -155,7 +132,7 @@ public abstract class EntityBroom extends Entity {
 				Util.giveItem(player, item.copy());
 			}
 			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+			setDead();
 		}
-		setDead();
 	}
 }
