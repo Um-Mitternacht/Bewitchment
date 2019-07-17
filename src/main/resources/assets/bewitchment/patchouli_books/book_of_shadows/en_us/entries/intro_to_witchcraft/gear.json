@@ -49,6 +49,16 @@
 	},
 	{
 	  "type": "text",
+	  "title": "Taglock",
+	  "text": "A phial that can contain the essence of a creature. Some say that one could also obtain this essence from a desired host's resting place..."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:bone_needle",
+	  "recipe2": "bewitchment:taglock"
+	},
+	{
+	  "type": "text",
 	  "title": "Witches' Robes",
 	  "text": "Witch’s Robes are the preferred clothing for practitioners of Witchcraft, and provide innate magic resistance."
 	},
