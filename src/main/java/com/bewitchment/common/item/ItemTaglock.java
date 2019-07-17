@@ -64,7 +64,7 @@ public class ItemTaglock extends Item {
 		if (!stack.getTagCompound().hasKey("boundName")) {
 			ItemStack copy = stack.copy();
 			copy.setCount(1);
-			copy.getTagCompound().setString("boundId", target instanceof EntityPlayer ? ((EntityPlayer) target).getGameProfile().getId().toString() : target.getPersistentID().toString());
+			copy.getTagCompound().setString("boundId", target.getPersistentID().toString());
 			copy.getTagCompound().setString("boundName", target.getName());
 			Util.giveAndConsumeItem(player, hand, copy);
 		}

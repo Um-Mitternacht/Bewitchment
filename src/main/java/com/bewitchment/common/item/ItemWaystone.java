@@ -42,7 +42,7 @@ public class ItemWaystone extends Item {
 		ItemStack stack = player.getHeldItem(hand);
 		if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
 			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setLong("location", pos.toLong());
+			stack.getTagCompound().setLong("location", pos.offset(face).toLong());
 			stack.getTagCompound().setInteger("dimension", player.dimension);
 			stack.getTagCompound().setString("dimensionName", world.provider.getDimensionType().getName());
 			return EnumActionResult.SUCCESS;

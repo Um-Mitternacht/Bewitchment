@@ -170,6 +170,15 @@
 	},
 	{
 	  "type": "text",
+	  "title": "sun name this",
+	  "text": "Teleports every entity in a small radius around the center glyph to either the Waystone's or entity's location, depending on the item used. This will only work if the target is in the same dimension"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:teleport"
+	},
+	{
+	  "type": "text",
 	  "title": "Perception",
 	  "text": "Causes entities nearby to glow"
 	},

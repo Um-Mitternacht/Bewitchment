@@ -196,6 +196,7 @@ public class ModRegistries {
 		event.getRegistry().register(new RitualHighMoon());
 		event.getRegistry().register(new RitualSandsOfTime());
 		event.getRegistry().register(new RitualDeluge());
+		event.getRegistry().register(new RitualTeleport());
 		event.getRegistry().register(new RitualPerception());
 		event.getRegistry().register(new RitualHungryFlames());
 		event.getRegistry().register(new RitualFrenziedGrowth());
