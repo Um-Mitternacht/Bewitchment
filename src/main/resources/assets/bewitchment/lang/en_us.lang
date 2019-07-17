@@ -205,7 +205,7 @@ tooltip.bewitchment.horseshoe=Horseshoes seem to be rather lucky trinkets in gen
 item.bewitchment.nazar.name=Nazar
 tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some immunity from magic attacks.
 item.bewitchment.token_of_remedies.name=Token of Remedies
-tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses, but it depletes rather quickly.
+tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses.
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d

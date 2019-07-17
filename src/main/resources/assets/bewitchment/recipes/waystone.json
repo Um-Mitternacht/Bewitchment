@@ -1,14 +1,14 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"GSG",
 	"SPS",
-	"GSG"
+	"SGS",
+	" S "
   ],
   "key": {
 	"G": {
 	  "type": "forge:ore_dict",
-	  "ore": "gemAmethyst"
+	  "ore": "gemOpal"
 	},
 	"S": {
 	  "type": "forge:ore_dict",

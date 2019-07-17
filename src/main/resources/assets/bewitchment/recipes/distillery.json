@@ -16,7 +16,7 @@
 	},
 	"A": {
 	  "type": "forge:ore_dict",
-	  "ore": "gemAmethyst"
+	  "ore": "gemOpal"
 	}
   },
   "result": {

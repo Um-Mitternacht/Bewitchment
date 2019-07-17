@@ -2,8 +2,8 @@
   "type": "forge:ore_shaped",
   "pattern": [
 	"POP",
-	"OLO",
-	"POP"
+	"OGO",
+	"LOL"
   ],
   "key": {
 	"P": {
@@ -15,6 +15,10 @@
 	"L": {
 	  "type": "forge:ore_dict",
 	  "ore": "logWood"
+	},
+	"G": {
+	  "type": "forge:ore_dict",
+	  "ore": "gemGarnet"
 	}
   },
   "result": {
