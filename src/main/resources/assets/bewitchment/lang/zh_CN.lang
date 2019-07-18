@@ -6,7 +6,7 @@ tile.bewitchment.block_of_amethyst.name=Amethyst块
 tile.bewitchment.block_of_garnet.name=Garnet块
 tile.bewitchment.block_of_opal.name=Opal块
 tile.bewitchment.block_of_silver.name=银块
-tile.bewitchment.block_of_cold_iron.name=Cold Iron块
+tile.bewitchment.block_of_cold_iron.name=冷铁块
 tile.bewitchment.block_of_salt.name=Salt块
 tile.bewitchment.amethyst_ore.name=Amethyst矿石
 tile.bewitchment.garnet_ore.name=Garnet矿石
@@ -155,10 +155,10 @@ item.bewitchment.silver_chestplate.name=银胸甲
 item.bewitchment.silver_leggings.name=银护腿
 item.bewitchment.silver_boots.name=银靴子
 
-item.bewitchment.cold_iron_helmet.name=Cold Iron头盔
-item.bewitchment.cold_iron_chestplate.name=Cold Iron胸甲
-item.bewitchment.cold_iron_leggings.name=Cold Iron护腿
-item.bewitchment.cold_iron_boots.name=Cold Iron靴子
+item.bewitchment.cold_iron_helmet.name=冷铁头盔
+item.bewitchment.cold_iron_chestplate.name=冷铁胸甲
+item.bewitchment.cold_iron_leggings.name=冷铁护腿
+item.bewitchment.cold_iron_boots.name=冷铁靴子
 
 item.bewitchment.witches_cowl.name=女巫的Cowl
 item.bewitchment.witches_hat.name=女巫的帽子
@@ -171,11 +171,11 @@ item.bewitchment.silver_axe.name=银斧
 item.bewitchment.silver_shovel.name=银锹
 item.bewitchment.silver_hoe.name=银锄
 
-item.bewitchment.cold_iron_sword.name=Cold Iron剑
-item.bewitchment.cold_iron_pickaxe.name=Cold Iron镐
-item.bewitchment.cold_iron_axe.name=Cold Iron斧
-item.bewitchment.cold_iron_shovel.name=Cold Iron锹
-item.bewitchment.cold_iron_hoe.name=Cold Iron锄
+item.bewitchment.cold_iron_sword.name=冷铁剑
+item.bewitchment.cold_iron_pickaxe.name=冷铁镐
+item.bewitchment.cold_iron_axe.name=冷铁斧
+item.bewitchment.cold_iron_shovel.name=冷铁锹
+item.bewitchment.cold_iron_hoe.name=冷铁锄
 
 item.bewitchment.athame.name=Athame
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
@@ -229,9 +229,9 @@ item.bewitchment.amethyst.name=Amethyst
 item.bewitchment.garnet.name=Garnet
 item.bewitchment.opal.name=Opal
 item.bewitchment.silver_ingot.name=银锭
-item.bewitchment.cold_iron_ingot.name=Cold Iron锭
+item.bewitchment.cold_iron_ingot.name=冷铁锭
 item.bewitchment.silver_nugget.name=银粒
-item.bewitchment.cold_iron_nugget.name=Cold Iron粒
+item.bewitchment.cold_iron_nugget.name=冷铁粒
 item.bewitchment.salt.name=Salt
 
 item.bewitchment.unfired_jar.name=Unfired Jar
@@ -325,7 +325,7 @@ entity.bewitchment.lizard.name=Lizard
 entity.bewitchment.newt.name=Newt
 entity.bewitchment.owl.name=Owl
 entity.bewitchment.raven.name=Raven
-entity.bewitchment.snake.name=Snake
+entity.bewitchment.snake.name=蛇
 entity.bewitchment.toad.name=Toad
 
 entity.bewitchment.black_dog.name=Black Dog
