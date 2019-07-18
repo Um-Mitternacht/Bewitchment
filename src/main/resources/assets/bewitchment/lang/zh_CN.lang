@@ -2,17 +2,17 @@
 tile.bewitchment.blessed_stone.name=Blessed Stone
 tooltip.bewitchment.blessed_stone=Gives infinite altar power. Creative only.
 
-tile.bewitchment.block_of_amethyst.name=Amethyst块
-tile.bewitchment.block_of_garnet.name=Garnet块
-tile.bewitchment.block_of_opal.name=Opal块
+tile.bewitchment.block_of_amethyst.name=紫水晶块
+tile.bewitchment.block_of_garnet.name=石榴石块
+tile.bewitchment.block_of_opal.name=蛋白石块
 tile.bewitchment.block_of_silver.name=银块
 tile.bewitchment.block_of_cold_iron.name=冷铁块
-tile.bewitchment.block_of_salt.name=Salt块
-tile.bewitchment.amethyst_ore.name=Amethyst矿石
-tile.bewitchment.garnet_ore.name=Garnet矿石
-tile.bewitchment.opal_ore.name=Opal矿石
+tile.bewitchment.block_of_salt.name=盐块
+tile.bewitchment.amethyst_ore.name=紫水晶矿石
+tile.bewitchment.garnet_ore.name=石榴石矿石
+tile.bewitchment.opal_ore.name=蛋白石矿石
 tile.bewitchment.silver_ore.name=银矿石
-tile.bewitchment.salt_ore.name=Salt矿石
+tile.bewitchment.salt_ore.name=盐矿石
 
 tile.bewitchment.purifying_earth.name=Purifying Earth
 
@@ -225,22 +225,22 @@ item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock
 tooltip.bewitchment.taglock=Contains a tag of %s
 
-item.bewitchment.amethyst.name=Amethyst
-item.bewitchment.garnet.name=Garnet
-item.bewitchment.opal.name=Opal
+item.bewitchment.amethyst.name=紫水晶
+item.bewitchment.garnet.name=石榴石
+item.bewitchment.opal.name=蛋白石
 item.bewitchment.silver_ingot.name=银锭
 item.bewitchment.cold_iron_ingot.name=冷铁锭
 item.bewitchment.silver_nugget.name=银粒
 item.bewitchment.cold_iron_nugget.name=冷铁粒
-item.bewitchment.salt.name=Salt
+item.bewitchment.salt.name=盐
 
 item.bewitchment.unfired_jar.name=Unfired Jar
 item.bewitchment.empty_jar.name=Empty Jar
-item.bewitchment.oak_spirit.name=Oak Spirit
-item.bewitchment.spruce_heart.name=Spruce Heart
-item.bewitchment.birch_soul.name=Birch Soul
+item.bewitchment.oak_spirit.name=橡木Spirit
+item.bewitchment.spruce_heart.name=云杉心
+item.bewitchment.birch_soul.name=白桦Soul
 item.bewitchment.cloudy_oil.name=Cloudy Oil
-item.bewitchment.acacia_resin.name=Acacia Resin
+item.bewitchment.acacia_resin.name=金合欢Resin
 item.bewitchment.ebb_of_death.name=Ebb of Death
 item.bewitchment.droplet_of_wisdom.name=Droplet of Wisdom
 item.bewitchment.liquid_witchcraft.name=Liquid Witchcraft
@@ -269,19 +269,19 @@ tooltip.bewitchment.white_sage=Used as an aid in exorcisms
 item.bewitchment.wormwood.name=Wormwood
 tooltip.bewitchment.wormwood=An incredibly weedy herb
 
-item.bewitchment.aconitum_seeds.name=Aconitum Seeds
+item.bewitchment.aconitum_seeds.name=Aconitum种子
 tooltip.bewitchment.aconitum_seeds=Seed from a poisonous plant
-item.bewitchment.belladonna_seeds.name=Belladonna Seeds
+item.bewitchment.belladonna_seeds.name=Belladonna种子
 tooltip.bewitchment.belladonna_seeds=Seed from a herbaceous plant
-item.bewitchment.garlic_seeds.name=Garlic Seeds
+item.bewitchment.garlic_seeds.name=Garlic种子
 tooltip.bewitchment.garlic_seeds=Seed from a smelly allium
-item.bewitchment.hellebore_seeds.name=Hellebore Seeds
+item.bewitchment.hellebore_seeds.name=Hellebore种子
 tooltip.bewitchment.hellebore_seeds=Seed from a innocent-looking plant
-item.bewitchment.mandrake_seeds.name=Mandrake Seeds
+item.bewitchment.mandrake_seeds.name=Mandrake种子
 tooltip.bewitchment.mandrake_seeds=Seed from a plant with a strange root
-item.bewitchment.white_sage_seeds.name=White Sage Seeds
+item.bewitchment.white_sage_seeds.name=White Sage种子
 tooltip.bewitchment.white_sage_seeds=Seed from an evergreen perennial shrub
-item.bewitchment.wormwood_seeds.name=Wormwood Seeds
+item.bewitchment.wormwood_seeds.name=Wormwood种子
 tooltip.bewitchment.wormwood_seeds=Seed from a weedy herb
 
 item.bewitchment.elderberries.name=Elderberries
@@ -297,7 +297,7 @@ item.bewitchment.toe_of_frog.name=Toe of Frog
 item.bewitchment.hellhound_horn.name=Hellhound Horn
 item.bewitchment.heart.name=心臟
 item.bewitchment.demon_heart.name=Demon Heart
-item.bewitchment.snake_venom.name=Snake Venom
+item.bewitchment.snake_venom.name=蛇Venom
 item.bewitchment.liquid_wroth.name=Liquid Wroth
 
 item.bewitchment.hoof.name=Hoof
@@ -468,7 +468,7 @@ jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
 jei.ritual.runningPower=Running Power: %d
 
-jei.cauldron=Cauldron
+jei.cauldron=炼药锅
 jei.brew=Brew
 
 #DEMON NAMES AND TITLES
