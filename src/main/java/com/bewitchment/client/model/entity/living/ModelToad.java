@@ -1,5 +1,6 @@
 package com.bewitchment.client.model.entity.living;
 
+import com.bewitchment.common.entity.living.EntityRaven;
 import com.bewitchment.common.entity.living.EntityToad;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -138,85 +139,81 @@ public class ModelToad extends ModelBase {
 	}
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-		this.body.offsetY = 0;
-	}
-	
-	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
-		super.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTickTime);
-		float time = entitylivingbaseIn.ticksExisted * 0.2F;
+		
+		float time = entity.ticksExisted * 0.2F;
 		this.jaw.rotationPointY = (float) (0.5F + 0.02 * MathHelper.sin(time));
 		
-		EntityToad toad = (EntityToad) entitylivingbaseIn;
-		
-		if (toad.isSitting()) {
-			leftfoot.rotateAngleY = 1.0471975512F;
-			rightfoot.rotateAngleY = -1.0471975512F;
-		}
-		else {
-			leftfoot.rotateAngleY = -0.6000000238418579F;
-			rightfoot.rotateAngleY = 0.6000000238418579F;
-		}
-		float timer = toad.getAnimationTime();
-		if (limbSwingAmount > 0.1 || timer != 0) {
-			timer = toad.postIncAnimation();
-			if (timer < 25) {
-				this.body.offsetY = toad.getAnimationHeight() + (-1.5F - toad.getAnimationHeight()) * (timer / 75F);
-				toad.setAnimationHeight(this.body.offsetY);
-				this.body.rotateAngleX = this.body.rotateAngleX + (0 - this.body.rotateAngleX) * (timer / 75F);
-				this.leftLeg00.rotateAngleX = this.leftLeg00.rotateAngleX + (1.3962634016F - this.leftLeg00.rotateAngleX) * (timer / 75F);
-				this.leftLeg01.rotateAngleX = this.leftLeg01.rotateAngleX + (-1.3962634016F - this.leftLeg01.rotateAngleX) * (timer / 75F);
-				this.leftfoot.rotateAngleX = this.leftfoot.rotateAngleX + (2.35619449019F - this.leftfoot.rotateAngleX) * (timer / 75F);
-				this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
-				this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
-				this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
-				this.leftArm00.rotateAngleX = this.leftArm00.rotateAngleX + (-2.35619449019F - this.leftArm00.rotateAngleX) * (timer / 75F);
-				this.leftArm01.rotateAngleX = this.leftArm01.rotateAngleX + (1.3962634016F - this.leftArm01.rotateAngleX) * (timer / 75F);
-				this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
-				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
-				
+		if (entity instanceof EntityToad) {
+			EntityToad toad = (EntityToad) entity;
+			if (toad.isSitting()) {
+				leftfoot.rotateAngleY = 1.0471975512F;
+				rightfoot.rotateAngleY = -1.0471975512F;
 			}
-			else if (timer < 50) {
-				this.body.offsetY = toad.getAnimationHeight() + (0F - toad.getAnimationHeight()) * ((timer - 25) / 75);
-				toad.setAnimationHeight(this.body.offsetY);
-				this.body.rotateAngleX = this.body.rotateAngleX + (0.36651914291F - this.body.rotateAngleX) * ((timer - 24F) / 75F);
-				this.leftLeg00.rotateAngleX = this.leftLeg00.rotateAngleX + (-0.51225413546F - this.leftLeg00.rotateAngleX) * ((timer - 24F) / 75F);
-				this.leftLeg01.rotateAngleX = this.leftLeg01.rotateAngleX + (0.45378560551F - this.leftLeg01.rotateAngleX) * ((timer - 24F) / 75F);
-				this.leftfoot.rotateAngleX = this.leftfoot.rotateAngleX + (0.41887902047F - this.leftfoot.rotateAngleX) * ((timer - 24F) / 75F);
-				this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
-				this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
-				this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
-				this.leftArm00.rotateAngleX = this.leftArm00.rotateAngleX + (-0.8159414253F - this.leftArm00.rotateAngleX) * ((timer - 24F) / 75F);
-				this.leftArm01.rotateAngleX = this.leftArm01.rotateAngleX + (0.45378560551F - this.leftArm01.rotateAngleX) * ((timer - 24F) / 75F);
-				this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
-				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
-				
+			else {
+				leftfoot.rotateAngleY = -0.6000000238418579F;
+				rightfoot.rotateAngleY = 0.6000000238418579F;
 			}
-			else if (timer < 75) {
-				this.body.rotateAngleX = this.body.rotateAngleX + (-0.36651914291F - this.body.rotateAngleX) * ((timer - 49F) / 75F);
+			float timer = toad.getAnimationTime();
+			if (limbSwingAmount > 0.1 || timer != 0) {
+				timer = toad.postIncAnimation();
+				if (timer < 25) {
+					this.body.offsetY = toad.getAnimationHeight() + (-1.5F - toad.getAnimationHeight()) * (timer / 75F);
+					toad.setAnimationHeight(this.body.offsetY);
+					this.body.rotateAngleX = this.body.rotateAngleX + (0 - this.body.rotateAngleX) * (timer / 75F);
+					this.leftLeg00.rotateAngleX = this.leftLeg00.rotateAngleX + (1.3962634016F - this.leftLeg00.rotateAngleX) * (timer / 75F);
+					this.leftLeg01.rotateAngleX = this.leftLeg01.rotateAngleX + (-1.3962634016F - this.leftLeg01.rotateAngleX) * (timer / 75F);
+					this.leftfoot.rotateAngleX = this.leftfoot.rotateAngleX + (2.35619449019F - this.leftfoot.rotateAngleX) * (timer / 75F);
+					this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
+					this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
+					this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
+					this.leftArm00.rotateAngleX = this.leftArm00.rotateAngleX + (-2.35619449019F - this.leftArm00.rotateAngleX) * (timer / 75F);
+					this.leftArm01.rotateAngleX = this.leftArm01.rotateAngleX + (1.3962634016F - this.leftArm01.rotateAngleX) * (timer / 75F);
+					this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
+					this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
+					
+				}
+				else if (timer < 50) {
+					this.body.offsetY = toad.getAnimationHeight() + (0F - toad.getAnimationHeight()) * ((timer - 25) / 75);
+					toad.setAnimationHeight(this.body.offsetY);
+					this.body.rotateAngleX = this.body.rotateAngleX + (0.36651914291F - this.body.rotateAngleX) * ((timer - 24F) / 75F);
+					this.leftLeg00.rotateAngleX = this.leftLeg00.rotateAngleX + (-0.51225413546F - this.leftLeg00.rotateAngleX) * ((timer - 24F) / 75F);
+					this.leftLeg01.rotateAngleX = this.leftLeg01.rotateAngleX + (0.45378560551F - this.leftLeg01.rotateAngleX) * ((timer - 24F) / 75F);
+					this.leftfoot.rotateAngleX = this.leftfoot.rotateAngleX + (0.41887902047F - this.leftfoot.rotateAngleX) * ((timer - 24F) / 75F);
+					this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
+					this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
+					this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
+					this.leftArm00.rotateAngleX = this.leftArm00.rotateAngleX + (-0.8159414253F - this.leftArm00.rotateAngleX) * ((timer - 24F) / 75F);
+					this.leftArm01.rotateAngleX = this.leftArm01.rotateAngleX + (0.45378560551F - this.leftArm01.rotateAngleX) * ((timer - 24F) / 75F);
+					this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
+					this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
+					
+				}
+				else if (timer < 75) {
+					this.body.rotateAngleX = this.body.rotateAngleX + (-0.36651914291F - this.body.rotateAngleX) * ((timer - 49F) / 75F);
+				}
+				else {
+					toad.resetAnimationTime();
+					this.body.offsetY = 0;
+					toad.resetAnimationHeight();
+					this.body.rotateAngleX = -0.36651914291F;
+					this.leftLeg00.rotateAngleX = -0.51225413546F;
+					this.leftLeg01.rotateAngleX = 0.45378560551F;
+					this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
+					this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
+					this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
+					this.leftArm00.rotateAngleX = -0.8159414253F;
+					this.leftArm01.rotateAngleX = 0.45378560551F;
+					this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
+					this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
+				}
+				
 			}
 			else {
 				toad.resetAnimationTime();
 				this.body.offsetY = 0;
 				toad.resetAnimationHeight();
-				this.body.rotateAngleX = -0.36651914291F;
-				this.leftLeg00.rotateAngleX = -0.51225413546F;
-				this.leftLeg01.rotateAngleX = 0.45378560551F;
-				this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
-				this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
-				this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
-				this.leftArm00.rotateAngleX = -0.8159414253F;
-				this.leftArm01.rotateAngleX = 0.45378560551F;
-				this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
-				this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
 			}
-			
 		}
-		else {
-			toad.resetAnimationTime();
-			this.body.offsetY = 0;
-			toad.resetAnimationHeight();
-		}
-		
 	}
 	
 	/**
