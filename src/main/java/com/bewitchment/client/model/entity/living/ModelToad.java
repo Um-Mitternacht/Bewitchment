@@ -148,10 +148,6 @@ public class ModelToad extends ModelBase {
 		
 		EntityToad toad = (EntityToad) entitylivingbaseIn;
 		
-		toad.resetAnimationTime();
-		this.body.offsetY = 0;
-		toad.resetAnimationHeight();
-		
 		if (toad.isSitting()) {
 			leftfoot.rotateAngleY = 1.0471975512F;
 			rightfoot.rotateAngleY = -1.0471975512F;
