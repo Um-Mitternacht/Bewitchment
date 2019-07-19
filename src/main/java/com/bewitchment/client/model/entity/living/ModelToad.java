@@ -190,9 +190,6 @@ public class ModelToad extends ModelBase {
 					this.body.rotateAngleX = this.body.rotateAngleX + (-0.36651914291F - this.body.rotateAngleX) * ((timer - 49F) / 75F);
 				}
 				else {
-					toad.resetAnimationTime();
-					this.body.offsetY = 0;
-					toad.resetAnimationHeight();
 					this.body.rotateAngleX = -0.36651914291F;
 					this.leftLeg00.rotateAngleX = -0.51225413546F;
 					this.leftLeg01.rotateAngleX = 0.45378560551F;
@@ -203,6 +200,9 @@ public class ModelToad extends ModelBase {
 					this.leftArm01.rotateAngleX = 0.45378560551F;
 					this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
 					this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
+					toad.resetAnimationTime();
+					this.body.offsetY = 0;
+					toad.resetAnimationHeight();
 				}
 				
 			}
