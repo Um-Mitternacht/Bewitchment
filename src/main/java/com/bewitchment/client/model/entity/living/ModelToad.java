@@ -134,6 +134,18 @@ public class ModelToad extends ModelBase {
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.body.render(scale);
+		this.body.rotateAngleX = -0.36651914291F;
+		this.leftLeg00.rotateAngleX = -0.51225413546F;
+		this.leftLeg01.rotateAngleX = 0.45378560551F;
+		this.rightLeg00.rotateAngleX = leftLeg00.rotateAngleX;
+		this.rightLeg01.rotateAngleX = leftLeg01.rotateAngleX;
+		this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
+		this.leftArm00.rotateAngleX = -0.8159414253F;
+		this.leftArm01.rotateAngleX = 0.45378560551F;
+		this.rightArm00.rotateAngleX = leftArm00.rotateAngleX;
+		this.rightArm01.rotateAngleX = leftArm01.rotateAngleX;
+		this.leftfoot.rotateAngleX = this.leftfoot.rotateAngleX + (0.41887902047F - this.leftfoot.rotateAngleX);
+		this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
 	}
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
