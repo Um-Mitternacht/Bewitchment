@@ -137,12 +137,20 @@ public class ModelToad extends ModelBase {
 		this.body.render(scale);
 	}
 	
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		this.body.offsetY = 0;
+	}
+	
 	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
 		super.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTickTime);
 		float time = entitylivingbaseIn.ticksExisted * 0.2F;
 		this.jaw.rotationPointY = (float) (0.5F + 0.02 * MathHelper.sin(time));
 		
 		EntityToad toad = (EntityToad) entitylivingbaseIn;
+		
+		toad.resetAnimationTime();
+		this.body.offsetY = 0;
+		toad.resetAnimationHeight();
 		
 		if (toad.isSitting()) {
 			leftfoot.rotateAngleY = 1.0471975512F;
