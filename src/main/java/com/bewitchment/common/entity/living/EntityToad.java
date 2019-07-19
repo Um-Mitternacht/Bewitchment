@@ -24,20 +24,9 @@ import net.minecraft.world.World;
 
 @SuppressWarnings({"ConstantConditions"})
 public class EntityToad extends ModEntityTameable {
-	
-	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
-	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.createKey(EntityToad.class, DataSerializers.FLOAT);
-	
 	public EntityToad(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
 		setSize(1, 0.3f);
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(ANIMATION_TIME, 0);
-		this.dataManager.register(ANIMATION_HEIGHT, 0f);
 	}
 	
 	@Override
@@ -82,32 +71,6 @@ public class EntityToad extends ModEntityTameable {
 	@Override
 	protected int getSkinTypes() {
 		return 4;
-	}
-	
-	public float postIncAnimation() {
-		this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
-		return (float) this.dataManager.get(ANIMATION_TIME);
-	}
-	
-	public float getAnimationTime() {
-		return (float) this.dataManager.get(ANIMATION_TIME);
-	}
-	
-	public void resetAnimationTime() {
-		this.dataManager.set(ANIMATION_TIME, 0);
-	}
-	
-	public float getAnimationHeight() {
-		return this.dataManager.get(ANIMATION_HEIGHT);
-	}
-	
-	public float setAnimationHeight(float in) {
-		this.dataManager.set(ANIMATION_HEIGHT, in);
-		return in;
-	}
-	
-	public void resetAnimationHeight() {
-		this.dataManager.set(ANIMATION_HEIGHT, 0.0F);
 	}
 	
 	@Override
