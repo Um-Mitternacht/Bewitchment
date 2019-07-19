@@ -50,6 +50,12 @@ public class EntityBlackDog extends ModEntityMob {
 		return flag;
 	}
 	
+	//Todo: Make regeneration and healing harm it, since it's a ghost
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return !world.isDaytime();
