@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
@@ -60,7 +61,27 @@ public class PotionCitrinitas extends ModPotion {
 			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
 				if (world.rand.nextInt(3) == 0) {
 					Block block = world.getBlockState(pos0).getBlock();
-					if (block instanceof BlockSand) {
+					if (block instanceof BlockCarpet)
+					{
+						world.setBlockState(pos0, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.YELLOW));
+						flag = true;
+					}
+					else if (block instanceof BlockHardenedClay)
+					{
+						world.setBlockState(pos0, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockStainedHardenedClay.COLOR, EnumDyeColor.YELLOW));
+						flag = true;
+					}
+					else if (block instanceof BlockGlass || block instanceof BlockStainedGlass)
+					{
+						world.setBlockState(pos0, Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.YELLOW));
+						flag = true;
+					}
+					else if ((block instanceof BlockPane && block.getDefaultState().getMaterial() == Material.GLASS) || block instanceof BlockStainedGlassPane)
+					{
+						world.setBlockState(pos0, Blocks.STAINED_GLASS_PANE.getDefaultState().withProperty(BlockStainedGlassPane.COLOR, EnumDyeColor.YELLOW));
+						flag = true;
+					}
+					else if (block instanceof BlockSand) {
 						world.setBlockState(pos0, Blocks.SAND.getDefaultState().withProperty(BlockSand.VARIANT, BlockSand.EnumType.SAND));
 						flag = true;
 					}

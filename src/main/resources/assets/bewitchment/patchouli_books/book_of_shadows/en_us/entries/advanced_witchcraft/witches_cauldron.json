@@ -29,7 +29,7 @@
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:tallow",
-	  "text": "Rendered fat of the dead. Used for candles and more."
+	  "text": "Boiled fat of the dead. Used for candles and more."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
@@ -53,6 +53,15 @@
 	},
 	{
 	  "type": "text",
+	  "title": "Teleporting",
+	  "text": "A cauldron with Dimensional Sand thrown into it allows a user standing inside to teleport to other cauldrons that have been named via Name Tag by saying its name in chat."
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
 	  "title": "Brews",
 	  "text": "In order to designate cauldron tomfoolery as a brew, a Mandrake Root must be thrown in first before any other reagents. After that, throw in the other reagents you wish, however the more you add, the more expensive the brew will be, ME-wise."
 	},
@@ -63,177 +72,177 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_health",
-	  "text": "Heals the target"
+	  "text": "Heals the target if they are alive, or damages them if undead"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_damage",
-	  "text": "Damages the target"
+	  "text": "Damages the target if they are alive, or heals them if undead"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:regeneration",
-	  "text": "Grants regeneration"
+	  "text": "Grants regeneration if the target is alive, does nothing otherwise"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:poison",
-	  "text": "Poisons the target"
+	  "text": "Poisons the target if they are alive, does nothing otherwise"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:wither",
-	  "text": "Like poison but nastier"
+	  "text": "Similar to poison but the capacity to kill, and damages undead as well"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:night_vision",
-	  "text": "Lets you see what hides in the dark"
+	  "text": "Allows the target to see clearly in low light areas"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:blindness",
-	  "text": "Hey, who turned out the lights?"
+	  "text": "Obscures the target's vision, and prevents them from sprinting"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:strength",
-	  "text": "Get stronk"
+	  "text": "Strengthens the target's arms, allowing them to deal more melee damage"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:weakness",
-	  "text": "Noodle arms McGee"
+	  "text": "Weakens the target's arms, forcing them to deal less melee damage"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:resistance",
-	  "text": "Take less damage"
+	  "text": "Toughens the target's skin to receive less damage from non magical sources"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:fire_resistance",
-	  "text": "Better than asbestos"
+	  "text": "Grants the target immunity to fire and lava"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:absorption",
-	  "text": "Gives extra health temporarily"
+	  "text": "Gives a temporarily boost to health"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:jump_boost",
-	  "text": "Boing!"
+	  "text": "Strengthens the target's legs, allowing them to jump higher"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:speed",
-	  "text": "Gotta go fast"
+	  "text": "Strengthens the target's legs, allowing them to move faster"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:slowness",
-	  "text": "Tsaf og attog"
+	  "text": "Weakens the target's legs, forcing them to move slower"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:haste",
-	  "text": "Diggy diggy hole"
+	  "text": "Strengthens the target's arms, allowing them to mine and attack faster"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:mining_fatigue",
-	  "text": "Mine with the grace of an armless man"
+	  "text": "Weakens the target's arms, forcing them to mine and attack slower"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:luck",
-	  "text": "Up all night to get lucky"
+	  "text": "Gives the target a better chance at obtaining good loot"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:unluck",
-	  "text": "Nautical treasure is harder to acquire"
+	  "text": "Gives the target a worse chance at obtaining good loot"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:water_breathing",
-	  "text": "Praise Dagon"
+	  "text": "Causes the target the grow a temporary set of gills, allowing them to breath while submerged in liquid"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:invisibility",
-	  "text": "You can’t see me!"
+	  "text": "Causes all light to refract off of the target, rendering them invisible. Does not apply to the target's armor and held items, however"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:hunger",
-	  "text": "A bad case of the munchies"
+	  "text": "Causes the target to think too much about their next meal"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:nausea",
-	  "text": "Hey, why is the room melting?"
+	  "text": "Disorients the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:glowing",
-	  "text": "Everyone can see you"
+	  "text": "Causes the target to glow"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:levitation",
-	  "text": "You STOLE Fizzy Lifting Drinks!"
+	  "text": "Slowly raises the target into the air"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:absence",
-	  "text": "Gets rid of all those pesky potion effects"
+	  "text": "Purges the target of all potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:purification",
-	  "text": "Gets rid of only the negative potion effects"
+	  "text": "Purges the target of negative potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:corruption",
-	  "text": "Gets rid of only the positive potion effects"
+	  "text": "Purges the target of positive potion effects"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:magic_resistance",
-	  "text": "Take less damage from magical sources"
+	  "text": "Allows the target to take less damage from magical sources"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:magic_weakness",
-	  "text": "Take more damage from magical sources"
+	  "text": "Makes the target take more damage from magical sources"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:hellworld",
-	  "text": "I am the God of Hellfire, and I bring you…"
+	  "text": "Converts the surrounding area into a Nether-like landscape, and sets some of the land and all entities unfortunate enough to be hit by the splash on fire"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:iceworld",
-	  "text": "Walkin’ in a winter wonderland~"
+	  "text": "Converts the surrounding area into a winter wonderland, and extinguishes fires both on the ground and on entities"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:rubedo",
-	  "text": "Makes things red, perfect for comrades"
+	  "text": "Converts sand and colored blocks to their red counterpart"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:citrinitas",
-	  "text": "Mellow-yellow everything"
+	  "text": "Converts red sand and colored blocks to their yellow counterpart"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:desertification",
-	  "text": "Heed the path that led me to that place, yellow desert stream"
+	  "text": "Converts various and plants into their desert counterpart"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -243,7 +252,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:harvest",
-	  "text": "Instantly harvests and re-plants seeds, also may make leaves drop apples and cause pumpkins to grow"
+	  "text": "Instantly harvests and re-plants seeds, and may make leaves drop apples and cause pumpkins to grow"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -258,12 +267,12 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:ruin",
-	  "text": "All I see turns to brown, As the sun burns the ground, And my eyes fill with sand"
+	  "text": "Causes various blocks to decay or break down"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:pesticide",
-	  "text": "Perfect for dealing with all those gross creepy-crawlies"
+	  "text": "Damages arthropods"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -278,7 +287,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:holy_water",
-	  "text": "Next only to the Holy Hand Grenade! Damages unholy creatures"
+	  "text": "Next only to the Holy Hand Grenade! Damages unholy creatures, such as undead or demons"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -288,12 +297,12 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:deviants_decomposure",
-	  "text": "Teach all those weird outcasts, such as illagers and witches, a lesson"
+	  "text": "Damages outcasts of society, such as pillagers or witches. Has no effect on witch hunters"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:sleeping",
-	  "text": "You are getting sleepy...very sleepy...so sleepy you may not ever wake up…"
+	  "text": "Blinds and slows the target, and may kill them if they are on low enough health"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -303,27 +312,22 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:grace",
-	  "text": "Take less fall damage"
+	  "text": "Causes the target to take less fall damage"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:shell_armor",
-	  "text": "Damages those who attack you"
+	  "text": "Damages those who attack the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:deflection",
-	  "text": "Ting! Reflects arrows and other projectiles away from you"
-	},
-	{
-	  "type": "bewitchment:brew",
-	  "recipe": "bewitchment:enderference",
-	  "text": "Damages ender-beings, as well as squenches teleportation"
+	  "text": "Ting! Reflects arrows and other projectiles away from the target"
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:revealing",
-	  "text": "Shows the hidden"
+	  "text": "Purges invisibility from hit entities"
 	},
 	{
 	  "type": "bewitchment:brew",
