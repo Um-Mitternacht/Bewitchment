@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 public class RitualSpiritualRift extends Ritual {
 	public RitualSpiritualRift() {
-		super(new ResourceLocation(Bewitchment.MODID, "spiritual_rift"), Arrays.asList(Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get("enderpearl"), Util.get("enderpearl"), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.ectoplasm)), null, null, 15, 1250, 66, BlockGlyph.ENDER, BlockGlyph.ENDER, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "spiritual_rift"), Arrays.asList(Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.spectral_dust), Util.get("enderpearl")), null, null, 15, 1250, 66, BlockGlyph.ENDER, BlockGlyph.ENDER, -1);
 	}
 	
 	@Override

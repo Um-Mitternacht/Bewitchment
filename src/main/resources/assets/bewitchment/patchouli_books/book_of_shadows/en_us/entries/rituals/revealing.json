@@ -1,0 +1,15 @@
+{
+  "name": "Revealing",
+  "category": "rituals",
+  "icon": "bewitchment:white_lantern",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Fills placed lanterns nearby with a magical light, that allows a witch to place lights at the cost of ME that are invisible to those who do not carry a lantern themselves"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:revealing"
+	}
+  ]
+}

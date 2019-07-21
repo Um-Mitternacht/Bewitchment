@@ -1,0 +1,31 @@
+{
+  "name": "Rising Twigs",
+  "category": "rituals",
+  "icon": "bewitchment:broom",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Transforms a mundane broom into its magical equivalent. Brooms, including the mundane one, can also be used to sweep up various dusts."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:broom"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:cypress_broom"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:elder_broom"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:juniper_broom"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:yew_broom"
+	}
+  ]
+}

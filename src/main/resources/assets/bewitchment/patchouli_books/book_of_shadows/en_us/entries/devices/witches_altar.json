@@ -1,7 +1,8 @@
 {
-  "name": "Magic Energy",
-  "category": "intro_to_witchcraft",
+  "name": "Witches' Altar",
+  "category": "devices",
   "icon": "bewitchment:stone_witches_altar",
+  "priority": true,
   "pages": [
 	{
 	  "type": "text",
