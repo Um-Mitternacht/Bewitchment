@@ -1,7 +1,5 @@
 package com.bewitchment.common.potion;
 
-import com.bewitchment.common.block.BlockWitchesAltar;
-import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -13,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -64,23 +61,19 @@ public class PotionRubedo extends ModPotion {
 			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
 				if (world.rand.nextInt(3) == 0) {
 					Block block = world.getBlockState(pos0).getBlock();
-					if (block instanceof BlockCarpet)
-					{
+					if (block instanceof BlockCarpet) {
 						world.setBlockState(pos0, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED));
 						flag = true;
 					}
-					else if (block instanceof BlockHardenedClay)
-					{
+					else if (block instanceof BlockHardenedClay) {
 						world.setBlockState(pos0, Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockStainedHardenedClay.COLOR, EnumDyeColor.RED));
 						flag = true;
 					}
-					else if (block instanceof BlockGlass || block instanceof BlockStainedGlass)
-					{
+					else if (block instanceof BlockGlass || block instanceof BlockStainedGlass) {
 						world.setBlockState(pos0, Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.RED));
 						flag = true;
 					}
-					else if ((block instanceof BlockPane && block.getDefaultState().getMaterial() == Material.GLASS) || block instanceof BlockStainedGlassPane)
-					{
+					else if ((block instanceof BlockPane && block.getDefaultState().getMaterial() == Material.GLASS) || block instanceof BlockStainedGlassPane) {
 						world.setBlockState(pos0, Blocks.STAINED_GLASS_PANE.getDefaultState().withProperty(BlockStainedGlassPane.COLOR, EnumDyeColor.RED));
 						flag = true;
 					}
