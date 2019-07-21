@@ -172,7 +172,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:invisibility",
-	  "text": "Causes all light to refract off of the target, rendering them invisible. Does not apply to the target's armor and held items, however"
+	  "text": "Causes all light to pass through the target, rendering them invisible. Does not apply to the target's armor and held items, however"
 	},
 	{
 	  "type": "bewitchment:brew",
