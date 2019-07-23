@@ -2,7 +2,6 @@ package com.bewitchment.api.registry.entity;
 
 import java.lang.reflect.Field;
 
-import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 
 import net.minecraft.block.state.IBlockState;
@@ -10,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -18,8 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
