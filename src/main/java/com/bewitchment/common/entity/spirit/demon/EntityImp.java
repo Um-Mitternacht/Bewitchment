@@ -56,6 +56,7 @@ public class EntityImp extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
+		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
 	}
 	
 	@Override

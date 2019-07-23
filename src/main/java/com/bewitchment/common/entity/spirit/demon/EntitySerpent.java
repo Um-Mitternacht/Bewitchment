@@ -103,6 +103,9 @@ public class EntitySerpent extends ModEntityMob {
 					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
 				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
 			}
+			else if (isInLava()) {
+				if (ticksExisted % 20 == 0 && isInLava()) heal(2);
+			}
 		}
 	}
 	

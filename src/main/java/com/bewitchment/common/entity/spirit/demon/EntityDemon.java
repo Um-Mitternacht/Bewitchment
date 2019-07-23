@@ -124,6 +124,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
+		if (ticksExisted % 20 == 0 && isInLava()) heal(6);
 	}
 	
 	@Override
