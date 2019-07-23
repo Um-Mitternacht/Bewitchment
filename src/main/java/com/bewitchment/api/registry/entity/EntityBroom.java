@@ -1,11 +1,14 @@
 package com.bewitchment.api.registry.entity;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.message.SyncBroom;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -116,6 +119,11 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
+	}
+	
+	@Override
+	public void addTrackingPlayer(EntityPlayerMP player) {
+		if (!world.isRemote) Bewitchment.network.sendTo(new SyncBroom(getEntityId(), posX, posY, posZ), player);
 	}
 	
 	@Override
