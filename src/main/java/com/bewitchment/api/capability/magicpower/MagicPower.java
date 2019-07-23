@@ -27,6 +27,10 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public int amount, maxAmount;
 	
+	public MagicPower() {
+		maxAmount = Bewitchment.config.maxGrimoirePower;
+	}
+	
 	@Nullable
 	@Override
 	public NBTBase writeNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face) {

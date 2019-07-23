@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.client.resources.I18n;
@@ -11,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -26,14 +24,11 @@ public class ItemGrimoireMagia extends Item {
 		super();
 		setMaxStackSize(1);
 		Util.registerItem(this, "grimoire_magia", Collections.singletonList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
-		MagicPower power = new MagicPower();
-		power.maxAmount = Bewitchment.config.maxGrimoirePower;
-		return power;
+		return new MagicPower();
 	}
 	
 	@Nullable
@@ -71,7 +66,8 @@ public class ItemGrimoireMagia extends Item {
 		if (isInCreativeTab(tab)) {
 			list.add(new ItemStack(this));
 			ItemStack full = new ItemStack(this);
-			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.config.maxGrimoirePower;
+			MagicPower cap = full.getCapability(MagicPower.CAPABILITY, null);
+			cap.amount = cap.maxAmount;
 			list.add(full);
 		}
 	}
