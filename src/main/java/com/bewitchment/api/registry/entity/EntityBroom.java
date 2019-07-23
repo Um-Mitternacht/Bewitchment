@@ -141,5 +141,4 @@ public abstract class EntityBroom extends Entity {
 	protected abstract float getThrust();
 	
 	protected abstract int getMagicCost();
-	
 }
