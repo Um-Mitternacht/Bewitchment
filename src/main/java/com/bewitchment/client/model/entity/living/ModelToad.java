@@ -148,6 +148,7 @@ public class ModelToad extends ModelBase {
 		this.rightfoot.rotateAngleX = leftfoot.rotateAngleX;
 	}
 	
+	//Fixme: Barely noticable gliding
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		
 		float time = entity.ticksExisted * 0.2F;
