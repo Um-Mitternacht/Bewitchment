@@ -29,7 +29,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public int attackTimer = 0;
 	
 	public EntityDemon(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon"));
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon" + world.rand.nextInt(4)));
 		setSize(1.425f, 3.8f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);

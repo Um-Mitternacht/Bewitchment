@@ -1,5 +1,6 @@
 package com.bewitchment.common.entity.spirit.demon;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.Entity;
@@ -13,6 +14,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
@@ -21,7 +23,7 @@ public class EntityImp extends ModEntityMob {
 	public int attackTimer = 0;
 	
 	public EntityImp(World world) {
-		super(world, null);
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/imp"));
 		setSize(0.8f, 1.6f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);
