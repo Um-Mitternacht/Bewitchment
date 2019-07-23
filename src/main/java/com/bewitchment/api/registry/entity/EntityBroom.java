@@ -1,21 +1,22 @@
 package com.bewitchment.api.registry.entity;
 
-import java.lang.reflect.Field;
-
-import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import java.lang.reflect.Field;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
@@ -33,6 +34,16 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public Entity getControllingPassenger() {
 		return getPassengers().isEmpty() ? null : getPassengers().get(0);
+	}
+	
+	@Override
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		if (source.getImmediateSource() != null) {
+			setDead();
+			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+			return true;
+		}
+		return super.attackEntityFrom(source, amount);
 	}
 	
 	@Override
@@ -67,7 +78,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public void setDead() {
-		this.getPassengers().forEach(e -> e.dismountRidingEntity());
+		this.getPassengers().forEach(Entity::dismountRidingEntity);
 		super.setDead();
 	}
 	
