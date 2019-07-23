@@ -73,7 +73,7 @@ public abstract class EntityBroom extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		Entity rider = getControllingPassenger();
-		if (rider instanceof EntityPlayer && rider.canPassengerSteer()) {
+		if (rider instanceof EntityPlayer) {
 			rotationYaw = rider.rotationYaw;
 			boolean jump = false;
 			try {jump = jumping.getBoolean(rider);}
