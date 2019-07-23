@@ -39,7 +39,7 @@ public class SyncStackCapability implements IMessage {
 	public static class Handler implements IMessageHandler<SyncStackCapability, IMessage> {
 		@Override
 		public IMessage onMessage(SyncStackCapability message, MessageContext ctx) {
-			if (ctx.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> Bewitchment.proxy.getEntireInventory(null).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
+			Minecraft.getMinecraft().addScheduledTask(() -> Bewitchment.proxy.getEntireInventory(null).get(message.slot).getCapability(MagicPower.CAPABILITY, null).deserializeNBT(message.tag));
 			return null;
 		}
 	}
