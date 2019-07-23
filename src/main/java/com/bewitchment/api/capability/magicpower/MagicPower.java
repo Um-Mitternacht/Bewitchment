@@ -105,7 +105,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	
 	public boolean drain(int amount, boolean simulate) {
 		if (this.amount - amount >= 0) {
-			if (!simulate) this.amount = Math.max(0, this.amount - amount);
+			if (!simulate) this.amount -= amount;
 			return true;
 		}
 		return false;
