@@ -1,13 +1,13 @@
 {
   "pools": [
 	{
-	  "rolls": 1,
-	  "name": "black_dog",
+	  "rolls": 3,
+	  "name": "imp",
 	  "entries": [
 		{
 		  "type": "item",
-		  "name": "bewitchment:tongue_of_dog",
-		  "weight": 3,
+		  "name": "bewitchment:heart",
+		  "weight": 1,
 		  "functions": [
 			{
 			  "function": "set_count",
@@ -27,8 +27,29 @@
 		},
 		{
 		  "type": "item",
-		  "name": "bewitchment:ectoplasm",
-		  "weight": 2,
+		  "name": "bewitchment:hellhound_horn",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 1
+			  }
+			},
+			{
+			  "function": "looting_enchant",
+			  "count": {
+				"min": 0,
+				"max": 1
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "minecraft:blaze_powder",
+		  "weight": 1,
 		  "functions": [
 			{
 			  "function": "set_count",
@@ -48,14 +69,14 @@
 		},
 		{
 		  "type": "item",
-		  "name": "bewitchment:spectral_dust",
+		  "name": "minecraft:quartz",
 		  "weight": 1,
 		  "functions": [
 			{
 			  "function": "set_count",
 			  "count": {
 				"min": 0,
-				"max": 1
+				"max": 2
 			  }
 			},
 			{
