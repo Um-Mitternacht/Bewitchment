@@ -8,7 +8,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -115,15 +114,11 @@ public abstract class EntityBroom extends Entity {
 		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
 		this.markVelocityChanged();
+		if (!world.isRemote) Bewitchment.network.sendToDimension(new SyncBroom(getEntityId(), posX, posY, posZ), dimension);
 	}
 	
 	@Override
 	protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
-	}
-	
-	@Override
-	public void addTrackingPlayer(EntityPlayerMP player) {
-		if (!world.isRemote) Bewitchment.network.sendTo(new SyncBroom(getEntityId(), posX, posY, posZ), player);
 	}
 	
 	@Override
