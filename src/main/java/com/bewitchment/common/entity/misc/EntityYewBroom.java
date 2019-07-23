@@ -43,7 +43,6 @@ public class EntityYewBroom extends EntityBroom {
 		return super.processInitialInteract(player, hand);
 	}
 	
-	@Override
 	public void dismount() {
 		if (!world.isRemote && dimension == originalDimension && originalPos != null && getControllingPassenger() instanceof EntityPlayer) {
 			double x = originalPos.getX() + 0.5;
@@ -52,7 +51,6 @@ public class EntityYewBroom extends EntityBroom {
 			setPositionAndUpdate(x, y, z);
 			Util.teleportPlayer((EntityPlayer) getControllingPassenger(), x, y, z);
 		}
-		super.dismount();
 	}
 	
 	@Override

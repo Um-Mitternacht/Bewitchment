@@ -66,6 +66,12 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
+	public void setDead() {
+		this.getPassengers().forEach(e -> e.dismountRidingEntity());
+		super.setDead();
+	}
+	
+	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		Entity rider = getControllingPassenger();
@@ -124,14 +130,4 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
-	public void dismount() {
-		if (!world.isRemote) {
-			if (this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) getControllingPassenger();
-				Util.giveItem(player, item.copy());
-			}
-			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-			setDead();
-		}
-	}
 }
