@@ -1,5 +1,7 @@
 package com.bewitchment.api.registry.entity;
 
+import java.lang.reflect.Field;
+
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.block.state.IBlockState;
@@ -7,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -15,8 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-
-import java.lang.reflect.Field;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
@@ -67,6 +66,12 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
+	public void setDead() {
+		this.getPassengers().forEach(e -> e.dismountRidingEntity());
+		super.setDead();
+	}
+	
+	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		Entity rider = getControllingPassenger();
@@ -95,6 +100,7 @@ public abstract class EntityBroom extends Entity {
 		motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
 		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
+		this.markVelocityChanged();
 	}
 	
 	@Override
@@ -125,14 +131,4 @@ public abstract class EntityBroom extends Entity {
 	
 	protected abstract int getMagicCost();
 	
-	public void dismount() {
-		if (!world.isRemote) {
-			if (this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) getControllingPassenger();
-				Util.giveItem(player, item.copy());
-			}
-			else InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-			setDead();
-		}
-	}
 }
