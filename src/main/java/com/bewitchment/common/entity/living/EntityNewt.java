@@ -32,6 +32,12 @@ public class EntityNewt extends ModEntityAnimal {
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (ticksExisted % 20 == 0 && isWet()) heal(1);
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);

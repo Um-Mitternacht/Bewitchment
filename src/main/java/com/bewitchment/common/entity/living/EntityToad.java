@@ -65,6 +65,12 @@ public class EntityToad extends ModEntityTameable {
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (ticksExisted % 20 == 0 && isWet()) heal(1);
+	}
+	
+	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
 	}
