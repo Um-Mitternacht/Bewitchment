@@ -86,7 +86,10 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 			for (int i = 0; i < inv.size(); i++) {
 				ItemStack stack = inv.get(i);
 				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount, simulate)) {
-					syncToClient(player, i);
+					if (!simulate) {
+						player.inventory.markDirty();
+						syncToClient(player, i);
+					}
 					return true;
 				}
 			}
