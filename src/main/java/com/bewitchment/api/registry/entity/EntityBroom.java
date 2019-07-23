@@ -1,7 +1,10 @@
 package com.bewitchment.api.registry.entity;
 
+import java.lang.reflect.Field;
+
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,8 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-
-import java.lang.reflect.Field;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
@@ -67,10 +70,10 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void onEntityUpdate() {
-		super.onEntityUpdate();
+	public void onUpdate() {
+		super.onUpdate();
 		Entity rider = getControllingPassenger();
-		if (rider instanceof EntityPlayer) {
+		if (rider instanceof EntityPlayer && rider.canPassengerSteer()) {
 			rotationYaw = rider.rotationYaw;
 			boolean jump = false;
 			try {jump = jumping.getBoolean(rider);}
