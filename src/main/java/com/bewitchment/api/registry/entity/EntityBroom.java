@@ -100,6 +100,7 @@ public abstract class EntityBroom extends Entity {
 		motionX = MathHelper.clamp(motionX, -getMaxSpeed(), getMaxSpeed());
 		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
+		this.markVelocityChanged();
 	}
 	
 	@Override
