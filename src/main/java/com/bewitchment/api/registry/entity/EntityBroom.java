@@ -116,7 +116,10 @@ public abstract class EntityBroom extends Entity {
 		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
 		this.markVelocityChanged();
-		if (!world.isRemote) Bewitchment.network.sendToAll(new SyncBroom(getEntityId(), motionX, motionY, motionZ));
+		for (EntityPlayer player : world.playerEntities)
+		{
+			if (!world.isRemote && player instanceof EntityPlayerMP && player != getControllingPassenger()) Bewitchment.network.sendTo(new SyncBroom(this), (EntityPlayerMP) player);
+		}
 	}
 	
 	@Override

@@ -1,9 +1,9 @@
 package com.bewitchment.api.message;
 
+import com.bewitchment.api.registry.entity.EntityBroom;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.MoverType;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -16,12 +16,12 @@ public class SyncBroom implements IMessage {
 	public SyncBroom() {
 	}
 	
-	public SyncBroom(int id, double x, double y, double z) {
-		this.id = id;
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
+	public SyncBroom(EntityBroom broom) {
+        this.id = broom.getEntityId();
+        this.x = broom.posX;
+        this.y = broom.posY;
+        this.z = broom.posZ;
+    }
 	
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
@@ -44,14 +44,8 @@ public class SyncBroom implements IMessage {
 		public IMessage onMessage(SyncBroom message, MessageContext ctx) {
 			if (ctx.side.isClient()) {
 				Minecraft.getMinecraft().addScheduledTask(() -> {
-					Entity entity = Minecraft.getMinecraft().player.world.getEntityByID(message.id);
-					if (entity != null) 
-					{
-						entity.motionX = message.x;
-						entity.motionY = message.y;
-						entity.motionZ = message.z;
-						//entity.setLocationAndAngles(message.x, message.y, message.z, entity.rotationYaw, entity.rotationPitch);
-					}
+					EntityBroom entity = (EntityBroom) Minecraft.getMinecraft().player.world.getEntityByID(message.id);
+					if (entity != null) entity.setLocationAndAngles(message.x, message.y, message.z, entity.rotationYaw, entity.rotationPitch);
 				});
 			}
 			return null;
