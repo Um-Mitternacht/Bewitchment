@@ -348,8 +348,15 @@ public class ModelImp extends ModelBiped {
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
-		bipedHead.rotateAngleX = scaleFactor / 57.29578F;
-		bipedHead.rotateAngleY = headPitch / 57.29578F;
+		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
+		
+		if (flag) {
+			this.bipedHead.rotateAngleX = -((float) Math.PI / 4F);
+		}
+		else {
+			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
+		}
 		float swingMod = 0.6F;
 		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
 		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
