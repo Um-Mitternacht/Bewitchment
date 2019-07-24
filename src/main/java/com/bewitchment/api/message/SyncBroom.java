@@ -3,6 +3,7 @@ package com.bewitchment.api.message;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.MoverType;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -44,7 +45,13 @@ public class SyncBroom implements IMessage {
 			if (ctx.side.isClient()) {
 				Minecraft.getMinecraft().addScheduledTask(() -> {
 					Entity entity = Minecraft.getMinecraft().player.world.getEntityByID(message.id);
-					if (entity != null) entity.setLocationAndAngles(message.x, message.y, message.z, entity.rotationYaw, entity.rotationPitch);
+					if (entity != null) 
+					{
+						entity.motionX = message.x;
+						entity.motionY = message.y;
+						entity.motionZ = message.z;
+						//entity.setLocationAndAngles(message.x, message.y, message.z, entity.rotationYaw, entity.rotationPitch);
+					}
 				});
 			}
 			return null;
