@@ -71,4 +71,9 @@ public class ModBlockTrapdoor extends BlockTrapDoor {
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 		if (this == ModObjects.juniper_trapdoor && placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
 	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (this != ModObjects.juniper_trapdoor) super.neighborChanged(state, world, to, block, from);
+	}
 }

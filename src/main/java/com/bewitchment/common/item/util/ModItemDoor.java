@@ -117,5 +117,43 @@ public class ModItemDoor extends ItemDoor {
 		public void toggleDoor(World world, BlockPos pos, boolean open) {
 			if (this != ModObjects.juniper_door.door) super.toggleDoor(world, pos, open);
 		}
+		
+		@Override
+		public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+			if (state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER) {
+				BlockPos pos = to.down();
+				IBlockState state0 = world.getBlockState(pos);
+				if (state0.getBlock() != this) world.setBlockToAir(to);
+				else if (block != this) state0.neighborChanged(world, pos, block, from);
+			}
+			else {
+				boolean flag0 = false;
+				BlockPos pos0 = to.up();
+				IBlockState state0 = world.getBlockState(pos0);
+				if (state0.getBlock() != this) {
+					world.setBlockToAir(to);
+					flag0 = true;
+				}
+				if (!world.getBlockState(to.down()).isSideSolid(world, to.down(), EnumFacing.UP)) {
+					world.setBlockToAir(to);
+					flag0 = true;
+					if (state0.getBlock() == this) world.setBlockToAir(pos0);
+				}
+				if (flag0) {
+					if (!world.isRemote) this.dropBlockAsItem(world, to, state, 0);
+				}
+				else if (this != ModObjects.juniper_door.door) {
+					boolean flag1 = world.isBlockPowered(to) || world.isBlockPowered(pos0);
+					if (block != this && (flag1 || block.getDefaultState().canProvidePower()) && flag1 != state0.getValue(POWERED)) {
+						world.setBlockState(pos0, state0.withProperty(POWERED, flag1), 2);
+						if (flag1 != state.getValue(OPEN)) {
+							world.setBlockState(to, state.withProperty(OPEN, flag1), 2);
+							world.markBlockRangeForRenderUpdate(to, to);
+							world.playEvent(null, flag1 ? 1006 : 1012, to, 0);
+						}
+					}
+				}
+			}
+		}
 	}
 }
