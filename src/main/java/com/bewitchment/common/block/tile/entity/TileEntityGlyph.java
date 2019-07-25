@@ -145,8 +145,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public void stopRitual(boolean finished) {
 		if (!world.isRemote) {
 			if (ritual != null && caster != null) {
-				if (finished) ritual.onFinished(world, pos, caster, inventory);
-				else ritual.onHalted(world, pos, caster, inventory);
+				if (finished) ritual.onFinished(world, effectivePos, caster, inventory);
+				else ritual.onHalted(world, effectivePos, caster, inventory);
 			}
 			ritual = null;
 			casterId = null;
