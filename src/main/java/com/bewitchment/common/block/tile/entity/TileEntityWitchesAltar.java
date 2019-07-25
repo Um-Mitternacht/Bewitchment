@@ -92,11 +92,15 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			if (world.getTotalWorldTime() % 100 == 0) {
 				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
 					List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
-					for (int i = 0; i < inv.size(); i++) {
-						ItemStack stack = inv.get(i);
-						if (stack.getItem() instanceof ItemGrimoireMagia && MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 50, 0.5f)) {
-							MagicPower.syncToClient(player, i);
-							break;
+					for (ItemStack stack : inv) {
+						if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
+							MagicPower temp = new MagicPower();
+							temp.amount = stack.getTagCompound().getInteger("amount");
+							temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
+							if (MagicPower.transfer(magicPower, temp, 50, 0.5f)) {
+								stack.getTagCompound().setInteger("amount", temp.amount);
+								break;
+							}
 						}
 					}
 				}

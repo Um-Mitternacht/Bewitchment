@@ -1,11 +1,9 @@
 package com.bewitchment.api.capability.magicpower;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.message.SyncStackCapability;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -66,10 +64,6 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	@Override
 	public void deserializeNBT(NBTTagCompound tag) {
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
-	}
-	
-	public static void syncToClient(EntityPlayer player, int slot) {
-		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncStackCapability(Bewitchment.proxy.getEntireInventory(player).get(slot).getCapability(CAPABILITY, null).serializeNBT(), slot), (EntityPlayerMP) player);
 	}
 	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {

@@ -121,7 +121,6 @@ public class Bewitchment {
 		
 		int id = -1;
 		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SyncStackCapability.Handler.class, SyncStackCapability.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
