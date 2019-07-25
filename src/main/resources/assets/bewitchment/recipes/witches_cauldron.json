@@ -2,8 +2,8 @@
   "type": "forge:ore_shaped",
   "pattern": [
 	"N N",
-	"ISI",
-	"III"
+	"I I",
+	"ISI"
   ],
   "key": {
 	"N": {
