@@ -80,10 +80,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (progress == 1) {
-				world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
-				inUse = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
-			}
+			if (progress == 1) inUse = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, true));
 			else if (inUse && progress == 0) inUse = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockDistillery.IN_USE, false));
 			if (burnTime > -1) burnTime--;
 			else if (progress > 0) {
@@ -96,6 +93,7 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 					if (world.getTotalWorldTime() % 20 == 0) hasPower = MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 16, false), 20);
 					if (hasPower) progress++;
 					if (progress >= 200) {
+						world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1, 1);
 						progress = 0;
 						recipe.giveOutput(inventory_up, inventory_down);
 					}
