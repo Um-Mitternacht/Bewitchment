@@ -227,7 +227,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:iceworld",
-	  "text": "Converts the surrounding area into a winter wonderland, and extinguishes fires both on the ground and on entities"
+	  "text": "Converts the surrounding area into a winter wonderland, and extinguishes fires both on the ground and on entities. Perpetual Ice, a form of ice that does not melt, may appear, and may be crafted into Embittered Bricks similar to Stone Bricks"
 	},
 	{
 	  "type": "bewitchment:brew",
