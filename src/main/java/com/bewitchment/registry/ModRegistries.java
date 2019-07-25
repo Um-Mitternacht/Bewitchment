@@ -130,13 +130,6 @@ public class ModRegistries {
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
 		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.hellebore_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.wormwood_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.aconitum_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.belladonna_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.garlic_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.white_sage_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.mandrake_seeds));
 	}
 	
 	@SubscribeEvent
