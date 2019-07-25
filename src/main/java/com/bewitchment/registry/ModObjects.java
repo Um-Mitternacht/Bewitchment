@@ -305,13 +305,13 @@ public class ModObjects {
 	public static final Item white_sage = Util.registerItem("white_sage", "cropWhiteSage");
 	public static final Item wormwood = Util.registerItem("wormwood", "cropWormwood");
 	//Seeds
-	public static final Item aconitum_seeds = Util.registerItem(new ItemSeeds(crop_aconitum, Blocks.FARMLAND), "aconitum_seeds");
-	public static final Item belladonna_seeds = Util.registerItem(new ItemSeeds(crop_belladonna, Blocks.FARMLAND), "belladonna_seeds");
-	public static final Item garlic_seeds = Util.registerItem(new ItemSeeds(crop_garlic, Blocks.FARMLAND), "garlic_seeds");
-	public static final Item hellebore_seeds = Util.registerItem(new ItemSeeds(crop_hellebore, Blocks.FARMLAND), "hellebore_seeds");
-	public static final Item mandrake_seeds = Util.registerItem(new ItemSeeds(crop_mandrake, Blocks.FARMLAND), "mandrake_seeds");
-	public static final Item white_sage_seeds = Util.registerItem(new ItemSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds");
-	public static final Item wormwood_seeds = Util.registerItem(new ItemSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds");
+	public static final Item aconitum_seeds = Util.registerItem(new ItemSeeds(crop_aconitum, Blocks.FARMLAND), "aconitum_seeds", "listAllseed");
+	public static final Item belladonna_seeds = Util.registerItem(new ItemSeeds(crop_belladonna, Blocks.FARMLAND), "belladonna_seeds", "listAllseed");
+	public static final Item garlic_seeds = Util.registerItem(new ItemSeeds(crop_garlic, Blocks.FARMLAND), "garlic_seeds", "listAllseed");
+	public static final Item hellebore_seeds = Util.registerItem(new ItemSeeds(crop_hellebore, Blocks.FARMLAND), "hellebore_seeds", "listAllseed");
+	public static final Item mandrake_seeds = Util.registerItem(new ItemSeeds(crop_mandrake, Blocks.FARMLAND), "mandrake_seeds", "listAllseed");
+	public static final Item white_sage_seeds = Util.registerItem(new ItemSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds", "listAllseed");
+	public static final Item wormwood_seeds = Util.registerItem(new ItemSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds", "listAllseed");
 	//Food
 	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false), "juniper_berries");

@@ -107,19 +107,6 @@ public class ModRegistries {
 		ModObjects.crop_mandrake.setItems(ModObjects.mandrake_seeds, ModObjects.mandrake_root);
 		ModObjects.crop_white_sage.setItems(ModObjects.white_sage_seeds, ModObjects.white_sage);
 		ModObjects.crop_wormwood.setItems(ModObjects.wormwood_seeds, ModObjects.wormwood);
-		
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.QUARTZ));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
-		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()));
-		
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.hellebore_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.wormwood_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.aconitum_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.belladonna_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.garlic_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.white_sage_seeds));
-		OreDictionary.registerOre("listAllseed", new ItemStack(ModObjects.mandrake_seeds));
 	}
 	
 	@SubscribeEvent
@@ -138,6 +125,11 @@ public class ModRegistries {
 		}
 		catch (Exception ignored) {}
 		for (Item item : ORE_DICTIONARY_ENTRIES.keySet()) for (String ore : ORE_DICTIONARY_ENTRIES.get(item)) OreDictionary.registerOre(ore, item);
+		
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.QUARTZ));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.DIAMOND));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.EMERALD));
+		OreDictionary.registerOre("gemAll", new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()));
 	}
 	
 	@SubscribeEvent
