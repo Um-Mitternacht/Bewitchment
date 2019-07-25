@@ -60,7 +60,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		this(name, input, sacrificePredicate, output, true, time, startingPower, runningPower, small, medium, big);
 	}
 	
-	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
 		return sacrificePredicate == null;
 	}
 	
@@ -68,22 +68,23 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 	}
 	
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		world.playSound(null, altarPos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
+		world.playSound(null, effectivePos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			ItemStack stack = inventory.getStackInSlot(i);
 			if (stack.getItem() instanceof ItemAthame) stack.damageItem(20, caster);
 			else inventory.extractItem(i, 1, false);
 		}
-		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
+		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, altarPos.getX(), altarPos.getY(), altarPos.getZ(), stack.copy());
 	}
 	
-	public void onHalted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.7f, 0.7f);
-		if (!world.isRemote) for (int i = 0; i < inventory.getSlots(); i++) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false));
+	public void onHalted(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		world.playSound(null, altarPos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.7f, 0.7f);
+		if (!world.isRemote) for (int i = 0; i < inventory.getSlots(); i++) InventoryHelper.spawnItemStack(world, altarPos.getX(), altarPos.getY(), altarPos.getZ(), inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false));
 	}
 	
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 	}
 	
 	public final boolean matches(World world, BlockPos pos, ItemStackHandler handler) {

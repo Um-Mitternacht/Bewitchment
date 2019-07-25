@@ -25,10 +25,10 @@ public class RitualFrenziedGrowth extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-16, -16, -16), pos.add(16, 16, 16))) {
+			for (BlockPos pos0 : BlockPos.getAllInBoxMutable(effectivePos.add(-16, -16, -16), effectivePos.add(16, 16, 16))) {
 				if (world.getBlockState(pos0).getBlock() == Blocks.SAPLING) {
 					BlockPlanks.EnumType type = world.getBlockState(pos0).getValue(BlockSapling.TYPE);
 					if (type == BlockPlanks.EnumType.OAK || type == BlockPlanks.EnumType.BIRCH) world.setBlockState(pos0, ModObjects.elder_sapling.getDefaultState());

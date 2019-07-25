@@ -78,7 +78,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
 					else time++;
 				}
-				ritual.onUpdate(world, effectivePos, caster, inventory);
+				ritual.onUpdate(world, pos, effectivePos, caster, inventory);
 			}
 			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
 		}
@@ -145,8 +145,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public void stopRitual(boolean finished) {
 		if (!world.isRemote) {
 			if (ritual != null && caster != null) {
-				if (finished) ritual.onFinished(world, effectivePos, caster, inventory);
-				else ritual.onHalted(world, effectivePos, caster, inventory);
+				if (finished) ritual.onFinished(world, pos, effectivePos, caster, inventory);
+				else ritual.onHalted(world, pos, effectivePos, caster, inventory);
 			}
 			ritual = null;
 			casterId = null;

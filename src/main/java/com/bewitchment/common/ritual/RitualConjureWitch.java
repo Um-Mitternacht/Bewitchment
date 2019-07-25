@@ -27,12 +27,12 @@ public class RitualConjureWitch extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
 			EntityWitch entity = new EntityWitch(world);
-			entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
-			entity.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), world.rand.nextInt(360), 0);
+			entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
+			entity.setLocationAndAngles(effectivePos.getX(), effectivePos.getY(), effectivePos.getZ(), world.rand.nextInt(360), 0);
 			for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50))) CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
 			world.spawnEntity(entity);
 			if (world.rand.nextFloat() < 0.1f) entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 6000, 2, false, false));
@@ -40,9 +40,9 @@ public class RitualConjureWitch extends Ritual {
 	}
 	
 	@Override
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		for (int i = 0; i < 15; i++) {
-			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
+			double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
 			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
 		}

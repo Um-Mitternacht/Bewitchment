@@ -33,16 +33,16 @@ public class RitualGreaterHellmouth extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				EntityLiving entity;
 				entity = world.rand.nextBoolean() ? new EntityHellhound(world) : world.rand.nextBoolean() ? new EntityWitherSkeleton(world) : new EntityGhast(world);
-				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(pos.getX() + world.rand.nextInt(12) - 6, pos.getY(), pos.getZ() + world.rand.nextInt(12) - 6)) {
+					if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
 						entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
 						valid = true;
 						break;
@@ -57,9 +57,9 @@ public class RitualGreaterHellmouth extends Ritual {
 	}
 	
 	@Override
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		for (int i = 0; i < 20; i++) {
-			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
+			double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
 			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
 		}

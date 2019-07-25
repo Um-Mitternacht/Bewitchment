@@ -27,8 +27,8 @@ public class RitualSolarGlory extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) world.setWorldTime(world.getWorldTime() + (30000 - (world.getWorldTime() % 24000)) % 24000);
 	}
 }

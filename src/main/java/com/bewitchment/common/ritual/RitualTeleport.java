@@ -41,11 +41,11 @@ public class RitualTeleport extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		world.playSound(null, effectivePos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
 		BlockPos pos0 = null;
 		int dimension = 0;
-		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
+		if (world.getTileEntity(effectivePos) instanceof TileEntityGlyph) {
 			for (int i = 0; i < inventory.getSlots(); i++) {
 				ItemStack stack = inventory.getStackInSlot(i);
 				if (stack.getItem() instanceof ItemWaystone) {
@@ -67,7 +67,7 @@ public class RitualTeleport extends Ritual {
 			}
 		}
 		if (pos0 == null || dimension != world.provider.getDimension()) return;
-		for (Entity entity : world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(pos).grow(3))) {
+		for (Entity entity : world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(effectivePos).grow(3))) {
 			world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
 			if (entity instanceof EntityPlayer) Util.teleportPlayer((EntityPlayer) entity, pos0.getX() + 0.5, pos0.getY(), pos0.getZ() + 0.5);
 			else entity.setPositionAndUpdate(pos0.getX() + 0.5, pos0.getY(), pos0.getZ() + 0.5);

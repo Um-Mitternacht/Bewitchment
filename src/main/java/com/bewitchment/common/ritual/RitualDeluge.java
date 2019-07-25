@@ -21,8 +21,8 @@ public class RitualDeluge extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
 			world.getWorldInfo().setRaining(true);
 			world.getWorldInfo().setRainTime(world.rand.nextInt(20 * 60 * 7) + (20 * 60 * 3));

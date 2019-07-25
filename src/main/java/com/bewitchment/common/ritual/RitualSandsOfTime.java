@@ -19,7 +19,7 @@ public class RitualSandsOfTime extends Ritual {
 	}
 	
 	@Override
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		if (!world.isRemote) world.setWorldTime(world.getWorldTime() + 5);
 	}
 	

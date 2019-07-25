@@ -31,10 +31,10 @@ public class RitualHungryFlames extends Ritual {
 	}
 	
 	@Override
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5 + world.rand.nextGaussian() * 2, pos.getY() + world.rand.nextFloat() * 0.5, pos.getZ() + 0.5 + world.rand.nextGaussian() * 2, 0.05 * world.rand.nextFloat(), 0.1 * world.rand.nextFloat(), 0.05 * world.rand.nextFloat()), world.provider.getDimension());
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, effectivePos.getX() + 0.5 + world.rand.nextGaussian() * 2, effectivePos.getY() + world.rand.nextFloat() * 0.5, effectivePos.getZ() + 0.5 + world.rand.nextGaussian() * 2, 0.05 * world.rand.nextFloat(), 0.1 * world.rand.nextFloat(), 0.05 * world.rand.nextFloat()), world.provider.getDimension());
 		if (world.getTotalWorldTime() % 40 == 0) {
-			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(3), entity -> !FurnaceRecipes.instance().getSmeltingResult(entity.getItem()).isEmpty());
+			List<EntityItem> smeltables = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(effectivePos).grow(3), entity -> !FurnaceRecipes.instance().getSmeltingResult(entity.getItem()).isEmpty());
 			for (EntityItem entity : smeltables) {
 				ItemStack stack = entity.getItem().copy();
 				if (!stack.getItem().hasContainerItem(stack)) {

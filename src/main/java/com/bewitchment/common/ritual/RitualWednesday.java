@@ -34,15 +34,15 @@ public class RitualWednesday extends Ritual {
 	}
 	
 	@Override
-	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, pos, caster, inventory);
+	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(128) + 64; i++) {
 				EntityLiving entity = new EntityToad(world);
-				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(pos.getX() + (world.rand.nextInt(12) - 6), pos.getY(), pos.getZ() + (world.rand.nextInt(12) - 6))) {
+					if (entity.attemptTeleport(effectivePos.getX() + (world.rand.nextInt(12) - 6), effectivePos.getY(), effectivePos.getZ() + (world.rand.nextInt(12) - 6))) {
 						entity.setLocationAndAngles(entity.posX, entity.posY + 2 + world.rand.nextInt(6), entity.posZ, world.rand.nextInt(360), 0);
 						valid = true;
 						break;
@@ -62,19 +62,19 @@ public class RitualWednesday extends Ritual {
 	}
 	
 	@Override
-	public void onUpdate(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		for (int i = 0; i < 10; i++) {
-			double cx = pos.getX() + 0.5, cy = pos.getY() + 0.5, cz = pos.getZ() + 0.5;
+			double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
 			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.SLIME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
 		}
 		if (world.getTotalWorldTime() % 10 == 0) {
 			if (world.rand.nextInt(6) == 0) {
 				EntityLiving entity = new EntityToad(world);
-				entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(pos.getX() + (world.rand.nextInt(12) - 6), pos.getY(), pos.getZ() + (world.rand.nextInt(12) - 6))) {
+					if (entity.attemptTeleport(effectivePos.getX() + (world.rand.nextInt(12) - 6), effectivePos.getY(), effectivePos.getZ() + (world.rand.nextInt(12) - 6))) {
 						entity.setLocationAndAngles(entity.posX, entity.posY + 2 + world.rand.nextInt(6), entity.posZ, world.rand.nextInt(360), 0);
 						valid = true;
 						break;
