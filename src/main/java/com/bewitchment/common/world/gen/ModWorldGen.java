@@ -73,7 +73,7 @@ public class ModWorldGen implements IWorldGenerator {
 						int x = rand.nextInt(2);
 						int y = rand.nextInt(2);
 						int z = rand.nextInt(2);
-						for (BlockPos blockpos : BlockPos.getAllInBox(pos.add(-x, -y, -z), pos.add(x, y, z)))
+						for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-x, -y, -z), pos.add(x, y, z)))
 							if (blockpos.distanceSq(pos) <= Math.pow((x + y + z) * .333f + 0.5f, 2)) world.setBlockState(blockpos, ModObjects.coquina[0].getDefaultState(), 2);
 						pos = pos.add(rand.nextInt(2) - 1, -rand.nextInt(2), rand.nextInt(2) - 1);
 					}
