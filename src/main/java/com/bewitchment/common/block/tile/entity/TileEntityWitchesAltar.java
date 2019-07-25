@@ -136,7 +136,12 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 						if (world.getBlockState(pos0.up()).getBlock() == ModObjects.blessed_stone) foundStone = true;
 						if (world.getTileEntity(pos0.up()) instanceof TileEntityPlacedItem) {
 							ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
-							if (stack.getItem() instanceof ItemGrimoireMagia) MagicPower.transfer(magicPower, stack.getCapability(MagicPower.CAPABILITY, null), 100, 0.25f);
+							if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
+								MagicPower temp = new MagicPower();
+								temp.amount = stack.getTagCompound().getInteger("amount");
+								temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
+								if (MagicPower.transfer(magicPower, temp, 100, 0.25f)) stack.getTagCompound().setInteger("amount", temp.amount);
+							}
 						}
 						if (!foundStone) {
 							AltarUpgrade upgrade = getAltarUpgrade(world, pos0.up());
