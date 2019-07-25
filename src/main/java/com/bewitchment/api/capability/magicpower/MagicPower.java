@@ -87,14 +87,16 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		if (tile instanceof TileEntityWitchesAltar && tile.getCapability(CAPABILITY, null).drain(amount, simulate)) return true;
 		if (player != null) {
 			List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
-			for (int i = 0; i < inv.size(); i++) {
-				ItemStack stack = inv.get(i);
-				if (stack.getItem() instanceof ItemGrimoireMagia && stack.getCapability(CAPABILITY, null).drain(amount, simulate)) {
-					if (!simulate) {
-						player.inventory.markDirty();
-						syncToClient(player, i);
+			for (ItemStack stack : inv) {
+				if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
+					NBTTagCompound tag = stack.getTagCompound();
+					MagicPower cap = new MagicPower();
+					cap.amount = tag.getInteger("amount");
+					cap.maxAmount = tag.getInteger("maxAmount");
+					if (cap.drain(amount, simulate)) {
+						if (!simulate) tag.setInteger("amount", cap.amount);
+						return true;
 					}
-					return true;
 				}
 			}
 		}

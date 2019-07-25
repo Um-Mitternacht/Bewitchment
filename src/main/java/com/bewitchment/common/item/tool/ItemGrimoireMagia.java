@@ -1,7 +1,8 @@
 package com.bewitchment.common.item.tool;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,11 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,48 +26,47 @@ public class ItemGrimoireMagia extends Item {
 	}
 	
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
-		return new MagicPower();
-	}
-	
-	@Nullable
-	@Override
-	public NBTTagCompound getNBTShareTag(ItemStack stack) {
-		return stack.getCapability(MagicPower.CAPABILITY, null).serializeNBT();
-	}
-	
-	@Override
-	public void readNBTShareTag(ItemStack stack, @Nullable NBTTagCompound nbt) {
-		if (nbt != null) stack.getCapability(MagicPower.CAPABILITY, null).deserializeNBT(nbt);
-	}
-	
-	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
-		MagicPower cap = stack.getCapability(MagicPower.CAPABILITY, null);
-		return cap.amount < cap.maxAmount;
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return tag.getInteger("amount") < tag.getInteger("maxAmount");
+		}
+		return super.showDurabilityBar(stack);
 	}
 	
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
-		MagicPower cap = stack.getCapability(MagicPower.CAPABILITY, null);
-		return 1 - (double) cap.amount / cap.maxAmount;
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return 1 - (double) tag.getInteger("amount") / tag.getInteger("maxAmount");
+		}
+		return super.getDurabilityForDisplay(stack);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		MagicPower cap = stack.getCapability(MagicPower.CAPABILITY, null);
-		tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", cap.amount, cap.maxAmount));
+		int amount = 0, maxAmount = 0;
+		if (stack.hasTagCompound()) {
+			amount = stack.getTagCompound().getInteger("amount");
+			maxAmount = stack.getTagCompound().getInteger("maxAmount");
+		}
+		tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", amount, maxAmount));
 	}
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
 		if (isInCreativeTab(tab)) {
-			list.add(new ItemStack(this));
-			ItemStack full = new ItemStack(this);
-			MagicPower cap = full.getCapability(MagicPower.CAPABILITY, null);
-			cap.amount = cap.maxAmount;
-			list.add(full);
+			list.add(create(0));
+			list.add(create(Bewitchment.config.maxGrimoirePower));
 		}
+	}
+	
+	public static ItemStack create(int amount) {
+		ItemStack stack = new ItemStack(ModObjects.grimoire_magia);
+		stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setInteger("maxAmount", Bewitchment.config.maxGrimoirePower);
+		stack.getTagCompound().setInteger("amount", amount);
+		return stack;
 	}
 }
