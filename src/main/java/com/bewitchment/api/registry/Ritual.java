@@ -2,7 +2,6 @@ package com.bewitchment.api.registry;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
@@ -71,12 +70,10 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	
 	public void onFinished(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.7f, 0.7f);
-		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
-			for (int i = 0; i < inventory.getSlots(); i++) {
-				ItemStack stack = inventory.getStackInSlot(i);
-				if (stack.getItem() instanceof ItemAthame) stack.damageItem(20, caster);
-				else inventory.extractItem(i, 1, false);
-			}
+		for (int i = 0; i < inventory.getSlots(); i++) {
+			ItemStack stack = inventory.getStackInSlot(i);
+			if (stack.getItem() instanceof ItemAthame) stack.damageItem(20, caster);
+			else inventory.extractItem(i, 1, false);
 		}
 		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
 	}
