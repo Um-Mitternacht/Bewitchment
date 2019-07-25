@@ -5,6 +5,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class ModConfig extends Configuration {
 	
 	public final int maxGrimoirePower;
 	
+	public final List<Integer> worldGenWhitelist;
 	public final int cypressChance, elderChance, juniperChance, yewChance;
 	
 	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, opalSize, opalChance, opalMin, opalMax;
@@ -40,6 +42,8 @@ public class ModConfig extends Configuration {
 		
 		maxGrimoirePower = getInt("maxGrimoirePower", "misc", 1000, 0, Integer.MAX_VALUE, "The maximum power a Grimoire Magia can have.");
 		
+		worldGenWhitelist = new ArrayList<>();
+		for (int i : get("worldGenWhitelist", "worldGen", new int[]{0}, "The dimensions that trees, ores, and coquina are allowed to spawn in.").getIntList()) worldGenWhitelist.add(i);
 		cypressChance = getInt("cypressChance", "worldGen/tree", 20, 0, Byte.MAX_VALUE, "The chance for cypress trees to spawn. Set to 0 to disable.");
 		elderChance = getInt("elderChance", "worldGen/tree", 20, 0, Byte.MAX_VALUE, "The chance for elder trees to spawn. Set to 0 to disable.");
 		juniperChance = getInt("juniperChance", "worldGen/tree", 20, 0, Byte.MAX_VALUE, "The chance for juniper trees to spawn. Set to 0 to disable.");

@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
@@ -51,7 +50,7 @@ public class ModWorldGen implements IWorldGenerator {
 	
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-		if (world.provider instanceof WorldProviderSurface) {
+		if (Bewitchment.config.worldGenWhitelist.contains(world.provider.getDimension())) {
 			generateCoquina(world, rand, chunkX, chunkZ);
 			generateOre(world, rand, silverOre, chunkX, chunkZ, Bewitchment.config.silverChance, Bewitchment.config.silverMin, Bewitchment.config.silverMax);
 			generateOre(world, rand, saltOre, chunkX, chunkZ, Bewitchment.config.saltChance, Bewitchment.config.saltMin, Bewitchment.config.saltMax);
