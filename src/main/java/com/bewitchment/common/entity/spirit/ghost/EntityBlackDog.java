@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirit.ghost;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -13,11 +14,13 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @SuppressWarnings("NullableProblems")
@@ -48,6 +51,11 @@ public class EntityBlackDog extends ModEntityMob {
 			addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
 		}
 		return flag;
+	}
+	
+	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) {
+		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.0F, 0.0F);
 	}
 	
 	//Todo: Make regeneration and healing harm it, since it's a ghost
