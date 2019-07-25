@@ -1,7 +1,6 @@
 package com.bewitchment.api.message;
 
 import com.bewitchment.api.registry.entity.EntityBroom;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -17,11 +16,11 @@ public class SyncBroom implements IMessage {
 	}
 	
 	public SyncBroom(EntityBroom broom) {
-        this.id = broom.getEntityId();
-        this.x = broom.posX;
-        this.y = broom.posY;
-        this.z = broom.posZ;
-    }
+		this.id = broom.getEntityId();
+		this.x = broom.posX;
+		this.y = broom.posY;
+		this.z = broom.posZ;
+	}
 	
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {

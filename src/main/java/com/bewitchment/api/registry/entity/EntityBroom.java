@@ -1,11 +1,8 @@
 package com.bewitchment.api.registry.entity;
 
-import java.lang.reflect.Field;
-
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SyncBroom;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,6 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+import java.lang.reflect.Field;
 
 @SuppressWarnings({"NullableProblems"})
 public abstract class EntityBroom extends Entity {
@@ -116,8 +115,7 @@ public abstract class EntityBroom extends Entity {
 		motionZ = MathHelper.clamp(motionZ, -getMaxSpeed(), getMaxSpeed());
 		move(MoverType.SELF, motionX, motionY, motionZ);
 		this.markVelocityChanged();
-		for (EntityPlayer player : world.playerEntities)
-		{
+		for (EntityPlayer player : world.playerEntities) {
 			if (!world.isRemote && player instanceof EntityPlayerMP && player != getControllingPassenger()) Bewitchment.network.sendTo(new SyncBroom(this), (EntityPlayerMP) player);
 		}
 	}

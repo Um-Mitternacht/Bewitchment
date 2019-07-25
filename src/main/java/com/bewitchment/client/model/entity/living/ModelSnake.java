@@ -145,21 +145,21 @@ public class ModelSnake extends ModelBase {
 		this.tail04.rotateAngleY = (float) (Math.toRadians(40) + angle * MathHelper.sin(time - 0));
 		
 		if (snake.isSitting()) { //Change to entity.isSitting
-				this.neck00.rotateAngleY = neck00.rotateAngleY + (-0.09110618695F - neck00.rotateAngleY);
-				this.neck01.rotateAngleY = neck01.rotateAngleY + (-1.27478848566F - neck01.rotateAngleY);
-				this.neck01.rotateAngleX = neck01.rotateAngleX + (-0.27314402793F - neck01.rotateAngleX);
-				this.body.rotateAngleY = body.rotateAngleY + (1.09397237515F - body.rotateAngleY);
-				this.tail00.rotateAngleY = tail00.rotateAngleY + (0.95609136424F - tail00.rotateAngleY);
-				this.tail01.rotateAngleY = tail01.rotateAngleY + (1.27478848566F - tail01.rotateAngleY);
-				this.tail02.rotateAngleY = tail02.rotateAngleY + (0.81960661673F - tail02.rotateAngleY);
-				this.tail03.rotateAngleY = tail03.rotateAngleY + (1.54810704652F - tail03.rotateAngleY);
-				this.tail04.rotateAngleY = tail04.rotateAngleY + (1.59348560707F - tail04.rotateAngleY);
-				
-				this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX);
-				this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY);
-				this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ);
-			}
+			this.neck00.rotateAngleY = neck00.rotateAngleY + (-0.09110618695F - neck00.rotateAngleY);
+			this.neck01.rotateAngleY = neck01.rotateAngleY + (-1.27478848566F - neck01.rotateAngleY);
+			this.neck01.rotateAngleX = neck01.rotateAngleX + (-0.27314402793F - neck01.rotateAngleX);
+			this.body.rotateAngleY = body.rotateAngleY + (1.09397237515F - body.rotateAngleY);
+			this.tail00.rotateAngleY = tail00.rotateAngleY + (0.95609136424F - tail00.rotateAngleY);
+			this.tail01.rotateAngleY = tail01.rotateAngleY + (1.27478848566F - tail01.rotateAngleY);
+			this.tail02.rotateAngleY = tail02.rotateAngleY + (0.81960661673F - tail02.rotateAngleY);
+			this.tail03.rotateAngleY = tail03.rotateAngleY + (1.54810704652F - tail03.rotateAngleY);
+			this.tail04.rotateAngleY = tail04.rotateAngleY + (1.59348560707F - tail04.rotateAngleY);
+			
+			this.head.rotateAngleX = head.rotateAngleX + (0.13665928043F - head.rotateAngleX);
+			this.head.rotateAngleY = head.rotateAngleY + (-0.77405352325F - head.rotateAngleY);
+			this.head.rotateAngleZ = head.rotateAngleZ + (-0.18203784098F - head.rotateAngleZ);
 		}
+	}
 	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts

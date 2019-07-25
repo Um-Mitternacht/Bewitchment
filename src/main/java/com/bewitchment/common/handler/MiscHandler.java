@@ -1,6 +1,5 @@
 package com.bewitchment.common.handler;
 
-import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
