@@ -47,7 +47,7 @@ dependencies {
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"
     deobfProvided "vazkii.botania:Botania:r1.10-361.69"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
-    deobfProvided curse.resolve("rustic", "2670073")
+    deobfProvided curse.resolve("rustic", "2746408")
     compile "baubles:Baubles:1.12:1.5.2"
 	compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
