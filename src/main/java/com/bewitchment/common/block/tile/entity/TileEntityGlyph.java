@@ -75,7 +75,10 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 			for (BlockPos pos0 : new BlockPos[]{pos, effectivePos}) if (world.rand.nextInt(16) == 0) Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
 			if (caster != null) {
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) stopRitual(false);
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
+						stopRitual(false);
+						return;
+					}
 					else time++;
 				}
 				ritual.onUpdate(world, pos, effectivePos, caster, inventory);
