@@ -384,6 +384,9 @@ bewitchment.sinking=Sinking
 bewitchment.cursed_leaps=Cursed Leaps
 
 #FORTUNE
+fortune.has_fortune=%s's future has already been revealed: %s
+fortune.no_fortune=This world has no secrets awaiting
+
 fortune.bewitchment.bad_luck=Your future looks dim.
 fortune.bewitchment.good_luck=Your future looks very bright indeed.
 fortune.bewitchment.illness=Weakness and misfortune dot your future.
@@ -440,9 +443,6 @@ ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
 
 #INFO
 itemGroup.bewitchment=Bewitchment
-
-fortune.has_fortune=This one's future has already been revealed: %s
-fortune.no_fortune=This world has no secrets awaiting
 
 altar.power_info=%d/%d (x%d)
 altar.no_power=Your source of magic is not strong enough
