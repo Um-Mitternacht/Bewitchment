@@ -194,11 +194,11 @@ public class Util {
 	}
 	
 	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && OreDictionary.itemMatches(stack, ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0), stack.isItemStackDamageable()), upgrade);
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() == ModObjects.placed_item && s.getTileEntity() instanceof TileEntityPlacedItem && OreDictionary.itemMatches(stack, ((TileEntityPlacedItem) s.getTileEntity()).getInventories()[0].getStackInSlot(0), stack.getHasSubtypes()), upgrade);
 	}
 	
 	public static void registerAltarUpgradeItem(Item item, AltarUpgrade upgrade) {
-		registerAltarUpgradeItemStack(new ItemStack(item), upgrade);
+		registerAltarUpgradeItemStack(new ItemStack(item, 1, item.isDamageable() ? Short.MAX_VALUE : 0), upgrade);
 	}
 	
 	public static void registerAltarUpgradeOreDict(String ore, AltarUpgrade upgrade) {
