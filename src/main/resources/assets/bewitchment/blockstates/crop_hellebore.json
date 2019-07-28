@@ -52,7 +52,7 @@
 	"age=6": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_hellebore_2"
+		  "cross": "bewitchment:blocks/crop/crop_hellebore_2"
 		}
 	  }
 	],
