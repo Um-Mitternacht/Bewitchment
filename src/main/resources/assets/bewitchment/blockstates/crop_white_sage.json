@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "crop",
+	"model": "cross",
 	"textures": {
 	  "crop": "bewitchment:blocks/crop/crop_white_sage_0"
 	}
