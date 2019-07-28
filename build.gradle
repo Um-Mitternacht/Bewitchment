@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 
-version = "1.12.2-0.0.20.3"
+version = "1.12.2-0.0.20.4"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -49,7 +49,7 @@ dependencies {
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:6.0.3"
     deobfProvided curse.resolve("rustic", "2746408")
     compile "baubles:Baubles:1.12:1.5.2"
-	compile "vazkii.patchouli:Patchouli:1.0-20.99"
+    compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
 
 processResources {
