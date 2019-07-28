@@ -25,7 +25,7 @@ import java.lang.reflect.Field;
 public abstract class EntityBroom extends Entity {
 	private static final Field jumping = ReflectionHelper.findField(EntityLivingBase.class, "isJumping", "field_70703_bu");
 	
-	private ItemStack item;
+	public ItemStack item;
 	private boolean canFly = true;
 	
 	public EntityBroom(World world) {
@@ -41,7 +41,7 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source.getImmediateSource() != null) {
+		if (source.getImmediateSource() != null && getControllingPassenger() == null) {
 			setDead();
 			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
 			return true;
@@ -66,9 +66,8 @@ public abstract class EntityBroom extends Entity {
 	
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && !isBeingRidden()) player.startRiding(this);
-		if (item == null) {
-			item = player.getHeldItem(hand).splitStack(1);
+		if (!world.isRemote && !isBeingRidden()) {
+			player.startRiding(this);
 			return true;
 		}
 		return super.processInitialInteract(player, hand);

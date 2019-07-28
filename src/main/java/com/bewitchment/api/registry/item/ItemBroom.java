@@ -1,10 +1,10 @@
 package com.bewitchment.api.registry.item;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.*;
@@ -38,11 +38,11 @@ public class ItemBroom extends Item {
 		}
 		else if (entry != null) {
 			if (!world.isRemote) {
-				Entity entity = entry.newInstance(world);
+				EntityBroom entity = (EntityBroom) entry.newInstance(world);
 				entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
 				entity.rotationYaw = player.rotationYaw;
 				entity.rotationPitch = player.rotationPitch;
-				entity.processInitialInteract(player, hand);
+				entity.item = player.getHeldItem(hand).splitStack(1);
 				world.spawnEntity(entity);
 			}
 			return EnumActionResult.SUCCESS;
