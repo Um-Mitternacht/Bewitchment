@@ -29,6 +29,11 @@ public class RitualTeleport extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.invalid_location";
+	}
+	
+	@Override
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
 			for (int i = 0; i < inventory.getSlots(); i++) {

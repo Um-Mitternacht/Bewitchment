@@ -28,6 +28,11 @@ public class RitualSpiritualRift extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.no_day";
+	}
+	
+	@Override
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		return !world.isDaytime();
 	}

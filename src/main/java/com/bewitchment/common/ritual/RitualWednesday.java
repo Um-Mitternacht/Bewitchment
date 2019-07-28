@@ -29,6 +29,11 @@ public class RitualWednesday extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.wednesday";
+	}
+	
+	@Override
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		return new Date().toString().toLowerCase().contains("wed");
 	}

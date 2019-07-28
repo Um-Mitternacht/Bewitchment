@@ -28,6 +28,11 @@ public class RitualGreaterHellmouth extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.no_rain";
+	}
+	
+	@Override
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		return !world.isRaining();
 	}

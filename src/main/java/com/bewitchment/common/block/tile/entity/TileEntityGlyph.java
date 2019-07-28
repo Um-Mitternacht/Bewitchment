@@ -105,7 +105,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 						Ritual rit = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(world, pos, inventory)).findFirst().orElse(null);
 						if (rit != null) {
 							if (rit.isValid(world, pos, player, inventory)) startRitual(player, rit);
-							else player.sendStatusMessage(new TextComponentTranslation("ritual.invalid"), true);
+							else player.sendStatusMessage(new TextComponentTranslation(rit.getPreconditionMessage()), true);
 						}
 						else player.sendStatusMessage(new TextComponentTranslation("ritual.null"), true);
 					}

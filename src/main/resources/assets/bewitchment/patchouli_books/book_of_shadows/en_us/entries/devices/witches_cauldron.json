@@ -98,7 +98,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:night_vision",
-	  "text": "Allows the target to see clearly in low light areas"
+	  "text": "Allows the target to see clearly in low light areas. The Eye of Old will give this in addition to Water Breathing"
 	},
 	{
 	  "type": "bewitchment:brew",
@@ -168,7 +168,7 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:water_breathing",
-	  "text": "Causes the target the grow a temporary set of gills, allowing them to breath while submerged in liquid"
+	  "text": "Causes the target the grow a temporary set of gills, allowing them to breath while submerged in liquid. The Eye of Old will give this in addition to Night Vision"
 	},
 	{
 	  "type": "bewitchment:brew",

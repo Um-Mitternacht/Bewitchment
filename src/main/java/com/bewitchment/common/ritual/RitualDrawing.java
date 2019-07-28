@@ -22,6 +22,11 @@ public class RitualDrawing extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.drawing";
+	}
+	
+	@Override
 	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
 		int amount = 0;
 		for (int x = 0; x < circle.length; x++) {

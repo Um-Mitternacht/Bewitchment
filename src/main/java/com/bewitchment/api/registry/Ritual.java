@@ -60,6 +60,10 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		this(name, input, sacrificePredicate, output, true, time, startingPower, runningPower, small, medium, big);
 	}
 	
+	public String getPreconditionMessage() {
+		return "ritual.precondition.empty";
+	}
+	
 	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
 		return sacrificePredicate == null;
 	}

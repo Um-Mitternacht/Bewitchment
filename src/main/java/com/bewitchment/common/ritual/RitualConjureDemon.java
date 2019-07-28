@@ -27,6 +27,11 @@ public class RitualConjureDemon extends Ritual {
 	}
 	
 	@Override
+	public String getPreconditionMessage() {
+		return "ritual.precondition.sacrifice";
+	}
+	
+	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
