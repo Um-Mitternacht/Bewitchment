@@ -11,13 +11,21 @@ public abstract class Fortune extends IForgeRegistryEntry.Impl<Fortune> {
 	 */
 	public final boolean isNegative;
 	
-	public Fortune(ResourceLocation name, boolean isNegative) {
+	/**
+	 * the maximum time in seconds it takes for the fortune to activate
+	 */
+	public final int maxTime;
+	
+	/**
+	 * the minimum time in seconds it takes for the fortune to activate
+	 */
+	public final int minTime;
+	
+	public Fortune(ResourceLocation name, boolean isNegative, int minTime, int maxTime) {
 		setRegistryName(name);
 		this.isNegative = isNegative;
-	}
-	
-	public Fortune(ResourceLocation name) {
-		this(name, false);
+		this.minTime = minTime;
+		this.maxTime = maxTime;
 	}
 	
 	/**

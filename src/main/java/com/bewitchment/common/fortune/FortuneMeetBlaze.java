@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class FortuneMeetBlaze extends Fortune {
 	public FortuneMeetBlaze() {
-		super(new ResourceLocation(Bewitchment.MODID, "meet_blaze"), true);
+		super(new ResourceLocation(Bewitchment.MODID, "meet_blaze"), true, (60), (60 * 3));
 	}
 	
 	@Override

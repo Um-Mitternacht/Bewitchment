@@ -15,12 +15,12 @@ import net.minecraft.world.World;
 
 public class FortuneCatsAndDogs extends Fortune {
 	public FortuneCatsAndDogs() {
-		super(new ResourceLocation(Bewitchment.MODID, "cats_and_dogs"), true);
+		super(new ResourceLocation(Bewitchment.MODID, "cats_and_dogs"), true, (60 * 5), (60 * 15));
 	}
 	
 	@Override
 	public boolean apply(EntityPlayer player) {
-		if (!player.world.isRemote && player.getRNG().nextDouble() < 0.0001) {
+		if (!player.world.isRemote) {
 			World world = player.world;
 			world.getWorldInfo().setCleanWeatherTime(0);
 			world.getWorldInfo().setRainTime(2000);
@@ -45,8 +45,7 @@ public class FortuneCatsAndDogs extends Fortune {
 					entity.addPotionEffect(new PotionEffect(ModPotions.wednesday, (20 * 3)));
 				}
 			}
-			return true;
 		}
-		return false;
+		return true;
 	}
 }

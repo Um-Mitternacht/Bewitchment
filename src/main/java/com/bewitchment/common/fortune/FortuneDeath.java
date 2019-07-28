@@ -9,15 +9,12 @@ import net.minecraft.util.ResourceLocation;
 
 public class FortuneDeath extends Fortune {
 	public FortuneDeath() {
-		super(new ResourceLocation(Bewitchment.MODID, "death"), true);
+		super(new ResourceLocation(Bewitchment.MODID, "death"), true, (60 * 20), (60 * 180));
 	}
 	
 	@Override
 	public boolean apply(EntityPlayer player) {
-		if (player.getRNG().nextDouble() < 0.00025) {
-			player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
-			return true;
-		}
-		return false;
+		player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
+		return true;
 	}
 }

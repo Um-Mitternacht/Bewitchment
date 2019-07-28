@@ -34,9 +34,13 @@ public class ExtendedPlayerHandler {
 	public void playerTick(TickEvent.PlayerTickEvent event) {
 		if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {
 			ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune != null && cap.fortune.apply(event.player)) {
-				cap.fortune = null;
-				ExtendedPlayer.syncToClient(event.player);
+			if (cap.fortune != null) {
+				if (event.player.world.getTotalWorldTime() % 20 == 0) cap.fortuneTime--;
+				if (cap.fortuneTime == 0) {
+					if (cap.fortune.apply(event.player)) cap.fortune = null;
+					else cap.fortuneTime = (event.player.getRNG().nextInt(cap.fortune.maxTime - cap.fortune.minTime) + cap.fortune.minTime);
+					ExtendedPlayer.syncToClient(event.player);
+				}
 			}
 			if (event.player.ticksExisted % 20 == 0) {
 				NBTTagList list = cap.exploredChunks;

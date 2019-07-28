@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class FortuneMeetDemon extends Fortune {
 	public FortuneMeetDemon() {
-		super(new ResourceLocation(Bewitchment.MODID, "meet_demon"), true);
+		super(new ResourceLocation(Bewitchment.MODID, "meet_demon"), true, (60), (60 * 3));
 	}
 	
 	@Override

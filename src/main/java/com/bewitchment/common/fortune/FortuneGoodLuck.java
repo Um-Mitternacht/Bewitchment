@@ -9,15 +9,12 @@ import net.minecraft.util.ResourceLocation;
 
 public class FortuneGoodLuck extends Fortune {
 	public FortuneGoodLuck() {
-		super(new ResourceLocation(Bewitchment.MODID, "good_luck"));
+		super(new ResourceLocation(Bewitchment.MODID, "good_luck"), false, (60 * 2), (60 * 10));
 	}
 	
 	@Override
 	public boolean apply(EntityPlayer player) {
-		if (player.getRNG().nextDouble() < 0.00025) {
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 415, 1 + player.world.getDifficulty().ordinal(), false, false));
-			return true;
-		}
-		return false;
+		player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 415, 1 + player.world.getDifficulty().ordinal(), false, false));
+		return true;
 	}
 }

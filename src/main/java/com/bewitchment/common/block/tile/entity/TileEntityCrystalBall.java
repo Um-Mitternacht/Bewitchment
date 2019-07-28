@@ -25,7 +25,8 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				if (cap.fortune == null) {
 					List<Fortune> valid = GameRegistry.findRegistry(Fortune.class).getValuesCollection().stream().filter(f -> f.isValid(player)).collect(Collectors.toList());
 					if (!valid.isEmpty()) {
-						cap.fortune = valid.get(world.rand.nextInt(valid.size()));
+						cap.fortune = valid.get(player.getRNG().nextInt(valid.size()));
+						cap.fortuneTime = (player.getRNG().nextInt(cap.fortune.maxTime - cap.fortune.minTime) + cap.fortune.minTime);
 						ExtendedPlayer.syncToClient(player);
 						player.sendStatusMessage(new TextComponentTranslation("fortune." + cap.fortune.getRegistryName().toString().replace(":", ".")), true);
 					}
