@@ -3,63 +3,63 @@
   "defaults": {
 	"model": "cross",
 	"textures": {
-	  "crop": "bewitchment:blocks/crop/crop_mandrake_0"
+	  "cross": "bewitchment:blocks/crop/crop_mandrake_0"
 	}
   },
   "variants": {
 	"age=0": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_0"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_0"
 		}
 	  }
 	],
 	"age=1": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_1"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_1"
 		}
 	  }
 	],
 	"age=2": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_1"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_1"
 		}
 	  }
 	],
 	"age=3": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_1"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_1"
 		}
 	  }
 	],
 	"age=4": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_2"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_2"
 		}
 	  }
 	],
 	"age=5": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_2"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_2"
 		}
 	  }
 	],
 	"age=6": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_2"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_2"
 		}
 	  }
 	],
 	"age=7": [
 	  {
 		"textures": {
-		  "crop": "bewitchment:blocks/crop/crop_mandrake_3"
+		  "cross": "bewitchment:blocks/crop/crop_mandrake_3"
 		}
 	  }
 	]
