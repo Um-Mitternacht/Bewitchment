@@ -25,7 +25,7 @@
 	{
 	  "type": "text",
 	  "title": "Altar Modifiers",
-	  "text": "Cups provide a small boost to both gain and multiplier. Includes goblets, skulls, and flower pots. Swords increase a multiplier. Includes the athame, boline, and other blades. Wands give a boost to max altar power. Includes torches, candles, and end rods. Pentacles increase gain. Includes gems and pentacles."
+	  "text": "Cups provide a small boost to both gain and multiplier. Includes goblets, bottles, and flower pots. Swords increase a multiplier. Includes the athame, boline, and other blades. Wands give a boost to max altar power. Includes torches, candles, and end rods. Pentacles increase gain. Includes skulls, gems, and pentacles."
 	},
 	{
 	  "type": "multiblock",
