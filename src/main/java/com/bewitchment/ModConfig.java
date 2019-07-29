@@ -36,7 +36,7 @@ public class ModConfig extends Configuration {
 		load();
 		broomSweepables = Arrays.asList(getStringList("broomSweepables", "misc", new String[]{Blocks.REDSTONE_WIRE.getTranslationKey(), "tile.bewitchment.glyph", "tile.bewitchment.salt_barrier"}, "The list of blocks that the broom will sweep when right clicked on"));
 		
-		heatSources = Arrays.asList(getStringList("heatSources", "misc", new String[]{Blocks.FIRE.getTranslationKey(), Blocks.LAVA.getTranslationKey(), Blocks.MAGMA.getTranslationKey()}, "The list of blocks that the broom will sweep when right clicked on"));
+		heatSources = Arrays.asList(getStringList("heatSources", "misc", new String[]{Blocks.FIRE.getTranslationKey(), Blocks.LAVA.getTranslationKey(), Blocks.MAGMA.getTranslationKey()}, "The list of blocks that the witches' cauldron will count as heat sources"));
 		
 		altarScansPerTick = getInt("altarScansPerTick", "misc", 64, 0, Short.MAX_VALUE, "The amount of blocks an altar should scan per tick.");
 		
