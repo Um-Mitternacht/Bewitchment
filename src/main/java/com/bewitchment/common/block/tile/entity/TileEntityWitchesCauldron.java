@@ -106,6 +106,11 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 					setTargetColor(0x604040);
 				}
 			}
+			if (mode == 4) {
+				double height = pos.getY() + getLiquidHeight();
+				if (height > pos.getY() + 0.2) for (int i = 0; i < 6; i++)
+					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.REDSTONE, getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), world.provider.getDimension());
+			}
 			boolean isLava = tank.getFluid() != null && tank.getFluid().getFluid().getTemperature() >= FluidRegistry.LAVA.getTemperature();
 			if (isLava) {
 				if (world.rand.nextInt(100) == 0) {
