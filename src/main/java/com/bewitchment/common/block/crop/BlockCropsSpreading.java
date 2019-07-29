@@ -1,8 +1,8 @@
 package com.bewitchment.common.block.crop;
 
 import com.bewitchment.common.block.util.ModBlockCrops;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -21,7 +21,8 @@ public class BlockCropsSpreading extends ModBlockCrops {
 		if (isMaxAge(state) && rand.nextInt(10) <= 3) {
 			int i = rand.nextInt(4);
 			BlockPos pos0 = i == 0 ? pos.north() : i == 1 ? pos.south() : i == 2 ? pos.east() : pos.west();
-			if (world.getBlockState(pos0.down()).getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this) && world.getBlockState(pos0.down()).getBlock() == Blocks.FARMLAND && world.isAirBlock(pos0)) world.setBlockState(pos0, getDefaultState());
+			if (world.getBlockState(pos0.down()).getBlock().canSustainPlant(state, world, pos0.down(), EnumFacing.UP, this) && world.getBlockState(pos0.down()).getBlock() instanceof BlockFarmland && world.isAirBlock(pos0))
+				world.setBlockState(pos0, getDefaultState());
 		}
 	}
 }

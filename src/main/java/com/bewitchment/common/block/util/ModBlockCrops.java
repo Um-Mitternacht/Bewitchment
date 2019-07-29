@@ -3,10 +3,10 @@ package com.bewitchment.common.block.util;
 import com.bewitchment.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -38,7 +38,7 @@ public class ModBlockCrops extends BlockCrops {
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
 		super.neighborChanged(state, world, to, block, from);
 		world.notifyBlockUpdate(to, state, state, 3);
-		if (world.getBlockState(to.down()).getBlock() != Blocks.FARMLAND) {
+		if (!(world.getBlockState(to.down()).getBlock() instanceof BlockFarmland)) {
 			dropBlockAsItem(world, to, state, 0);
 			world.setBlockToAir(to);
 		}
