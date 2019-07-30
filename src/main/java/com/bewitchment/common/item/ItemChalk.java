@@ -23,7 +23,7 @@ public class ItemChalk extends Item {
 	public ItemChalk(String name) {
 		super();
 		setMaxStackSize(1);
-		setMaxDamage(40);
+		setMaxDamage(84);
 		setNoRepair();
 		Util.registerItem(this, name);
 	}
