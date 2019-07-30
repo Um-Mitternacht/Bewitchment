@@ -21,7 +21,7 @@ import java.util.List;
 @SuppressWarnings({"unused", "ConstantConditions"})
 public class FortuneTreasure extends Fortune {
 	public FortuneTreasure() {
-		super(new ResourceLocation(Bewitchment.MODID, "treasure"), false, 420, 420);
+		super(new ResourceLocation(Bewitchment.MODID, "treasure"), false, 69, 420);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
