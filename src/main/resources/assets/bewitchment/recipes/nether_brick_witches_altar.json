@@ -10,8 +10,7 @@
 	  "item": "bewitchment:empty_jar"
 	},
 	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "salt"
+	  "item": "#GENERIC_SALT"
 	},
 	"B": {
 	  "item": "minecraft:nether_brick"

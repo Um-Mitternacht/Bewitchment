@@ -41,6 +41,51 @@
 	]
   },
   {
+	"name": "GENERIC_SALT",
+	"ingredient": [
+	  {
+		"type": "forge:ore_dict",
+		"ore": "salt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "itemSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "dustSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "foodSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "listAllsalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "ingredientSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "pinchSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "portionSalt"
+	  },
+	  {
+		"type": "forge:ore_dict",
+		"ore": "lumpSalt"
+	  },	  
+	  {
+		"type": "forge:ore_dict",
+		"ore": "materialSalt"
+	  }
+	]
+  },  
+  {
 	"name": "CANDLE_ANY",
 	"ingredient": [
 	  {
