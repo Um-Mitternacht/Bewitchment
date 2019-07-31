@@ -37,6 +37,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 165;
+		enablePersistence();
 	}
 	
 	@Override
