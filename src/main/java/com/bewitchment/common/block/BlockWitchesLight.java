@@ -32,7 +32,7 @@ public class BlockWitchesLight extends BlockAir {
 	
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return 10;
+		return 15;
 	}
 	
 	@Override
