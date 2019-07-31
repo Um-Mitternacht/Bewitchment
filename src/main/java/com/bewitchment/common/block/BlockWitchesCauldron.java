@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -51,13 +52,25 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 	
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		world.getCapability(ExtendedWorld.CAPABILITY, null).storedCauldrons.add(pos.toLong());
+		NBTTagCompound cauldron = new NBTTagCompound();
+		cauldron.setLong("position", pos.toLong());
+		cauldron.setInteger("dimension", placer.dimension);
+		ExtendedWorld ext = ExtendedWorld.get(world);
+		ext.storedCauldrons.add(cauldron);
+		ext.markDirty();
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		world.getCapability(ExtendedWorld.CAPABILITY, null).storedCauldrons.remove(pos.toLong());
+		ExtendedWorld ext = ExtendedWorld.get(world);
+		for (NBTTagCompound cauldron : ext.storedCauldrons) {
+			if (cauldron.getInteger("dimension") == world.provider.getDimension() && cauldron.getLong("position") == pos.toLong()) {
+				ext.storedCauldrons.remove(cauldron);
+				ext.markDirty();
+				break;
+			}
+		}
 		super.breakBlock(world, pos, state);
 	}
 	

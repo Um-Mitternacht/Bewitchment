@@ -25,8 +25,6 @@ package com.bewitchment;
 
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
-import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
-import com.bewitchment.api.capability.extendedworld.ExtendedWorldHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
@@ -91,8 +89,6 @@ public class Bewitchment {
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
-		CapabilityManager.INSTANCE.register(ExtendedWorld.class, new ExtendedWorld(), ExtendedWorld::new);
-		MinecraftForge.EVENT_BUS.register(new ExtendedWorldHandler());
 		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
 		
 		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());

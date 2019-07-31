@@ -1,62 +1,45 @@
 package com.bewitchment.api.capability.extendedworld;
 
-import net.minecraft.nbt.NBTBase;
+import com.bewitchment.Bewitchment;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagLong;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraft.world.World;
+import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"ConstantConditions", "SameReturnValue"})
-public class ExtendedWorld implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<ExtendedWorld> {
-	@CapabilityInject(ExtendedWorld.class)
-	public static final Capability<ExtendedWorld> CAPABILITY = null;
+@SuppressWarnings({"ConstantConditions", "SameReturnValue", "NullableProblems", "WeakerAccess"})
+public class ExtendedWorld extends WorldSavedData {
+	private static final String TAG = Bewitchment.MODID + ".world_data";
 	
-	public final List<Long> storedCauldrons = new ArrayList<>();
+	public final List<NBTTagCompound> storedCauldrons = new ArrayList<>();
 	
-	@Nullable
-	@Override
-	public NBTBase writeNBT(Capability<ExtendedWorld> capability, ExtendedWorld instance, EnumFacing face) {
-		NBTTagCompound tag = new NBTTagCompound();
-		NBTTagList cauldrons = new NBTTagList();
-		for (long l : instance.storedCauldrons) cauldrons.appendTag(new NBTTagLong(l));
-		tag.setTag("cauldrons", cauldrons);
-		return tag;
+	public ExtendedWorld(String name) {
+		super(name);
 	}
 	
 	@Override
-	public void readNBT(Capability<ExtendedWorld> capability, ExtendedWorld instance, EnumFacing face, NBTBase nbt) {
-		NBTTagCompound tag = (NBTTagCompound) nbt;
-		NBTTagList list = tag.getTagList("cauldrons", Constants.NBT.TAG_LONG);
-		for (int i = 0; i < list.tagCount(); i++) instance.storedCauldrons.add(((NBTTagLong) list.get(i)).getLong());
-	}
-	
-	@Nullable
-	@Override
-	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
-		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		NBTTagList storedCauldrons = new NBTTagList();
+		for (NBTTagCompound cauldron : this.storedCauldrons) storedCauldrons.appendTag(cauldron);
+		nbt.setTag("storedCauldrons", storedCauldrons);
+		return nbt;
 	}
 	
 	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
+	public void readFromNBT(NBTTagCompound nbt) {
+		NBTTagList storedCauldrons = nbt.getTagList("storedCauldrons", Constants.NBT.TAG_COMPOUND);
+		for (int i = 0; i < storedCauldrons.tagCount(); i++) this.storedCauldrons.add(storedCauldrons.getCompoundTagAt(i));
 	}
 	
-	@Override
-	public NBTTagCompound serializeNBT() {
-		return (NBTTagCompound) CAPABILITY.getStorage().writeNBT(CAPABILITY, this, null);
-	}
-	
-	@Override
-	public void deserializeNBT(NBTTagCompound tag) {
-		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
+	public static ExtendedWorld get(World world) {
+		ExtendedWorld data = (ExtendedWorld) world.getMapStorage().getOrLoadData(ExtendedWorld.class, TAG);
+		if (data == null) {
+			data = new ExtendedWorld(TAG);
+			world.getMapStorage().setData(TAG, data);
+		}
+		return data;
 	}
 }
