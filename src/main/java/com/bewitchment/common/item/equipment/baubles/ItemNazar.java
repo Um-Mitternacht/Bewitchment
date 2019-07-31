@@ -2,8 +2,10 @@ package com.bewitchment.common.item.equipment.baubles;
 
 import baubles.api.BaubleType;
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.item.util.ModItemBauble;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -25,11 +27,12 @@ public class ItemNazar extends ModItemBauble {
 	
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.UNLUCK)) living.removePotionEffect(MobEffects.UNLUCK);
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.UNLUCK) && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) living.removePotionEffect(MobEffects.UNLUCK);
 	}
 	
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (Util.hasBauble(event.getEntityLiving(), this) && event.getSource().isMagicDamage()) event.setAmount(event.getAmount() * 0.9f);
+		if (Util.hasBauble(event.getEntityLiving(), this) && event.getSource().isMagicDamage() && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
+			event.setAmount(event.getAmount() * 0.9f);
 	}
 }

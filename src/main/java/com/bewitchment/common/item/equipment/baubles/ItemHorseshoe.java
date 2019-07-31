@@ -3,8 +3,10 @@ package com.bewitchment.common.item.equipment.baubles;
 import baubles.api.BaubleType;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.item.util.ModItemBauble;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -30,14 +32,14 @@ public class ItemHorseshoe extends ModItemBauble {
 	
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0) {
+		if (living.ticksExisted % 40 == 0 && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
 			living.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
 		}
 	}
 	
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) event.getSource().getTrueSource())))
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) event.getSource().getTrueSource())) && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
 			event.setAmount(event.getAmount() * 0.9f);
 	}
 }

@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.render.IRenderBauble;
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.client.model.bauble.ModelGirdleOfTheDryad;
 import com.bewitchment.client.model.bauble.ModelGirdleOfTheDryadArmor;
 import com.bewitchment.common.item.util.ModItemBauble;
@@ -49,7 +50,7 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 	
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (!living.world.isRemote && living.getRNG().nextDouble() < 0.0008 && living.world.getBlockState(living.getPosition().down()).getBlock() instanceof BlockGrass && getBark(living) > -1 && getBark(living) < 4) {
+		if (!living.world.isRemote && living.getRNG().nextDouble() < 0.0008 && living.world.getBlockState(living.getPosition().down()).getBlock() instanceof BlockGrass && getBark(living) > -1 && getBark(living) < 4 && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
 			living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 10, false, false));
 			living.world.playSound(null, living.getPosition(), SoundEvents.BLOCK_CHORUS_FLOWER_GROW, SoundCategory.PLAYERS, 1, 1);
 			setBark(getGirdle(living), getBark(living) + 1);
