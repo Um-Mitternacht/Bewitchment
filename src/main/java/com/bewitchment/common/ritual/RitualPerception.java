@@ -25,8 +25,12 @@ public class RitualPerception extends Ritual {
 	
 	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		if (!world.isRemote && world.getTotalWorldTime() % 100 == 0)
-			for (EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(effectivePos).grow(20))) entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 110, 0, false, false));
+		if (!world.isRemote && world.getTotalWorldTime() % 100 == 0) {
+			for (EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(effectivePos).grow(20))) {
+				entity.removePotionEffect(MobEffects.INVISIBILITY);
+				entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 110, 0, false, false));
+			}
+		}
 	}
 	
 	@Override
