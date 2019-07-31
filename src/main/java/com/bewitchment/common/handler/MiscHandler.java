@@ -1,5 +1,6 @@
 package com.bewitchment.common.handler;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
@@ -13,8 +14,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.*;
+import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -25,6 +30,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
+	@SubscribeEvent
+	public void lootLoad(LootTableLoadEvent evt) {
+		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
+			evt.getTable().addPool(new LootPool(new LootEntry[]{new LootEntryTable(new ResourceLocation(Bewitchment.MODID, "chests/books"), 5, 0, new LootCondition[0], "bewitchment_books_entry")}, new LootCondition[0], new RandomValueRange(1), new RandomValueRange(0, 1), "bewitchment_books_pool"));
+		}
+		if (evt.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON) || evt.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT) || evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_CORRIDOR) || evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_CROSSING) || evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE) || evt.getName().equals(LootTableList.CHESTS_VILLAGE_BLACKSMITH) || evt.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE) || evt.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID) || evt.getName().equals(LootTableList.CHESTS_IGLOO_CHEST) || evt.getName().equals(LootTableList.CHESTS_END_CITY_TREASURE) || evt.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY) || evt.getName().equals(LootTableList.CHESTS_WOODLAND_MANSION)) { //Not sure if this is messy or better looking than the alternative.
+			evt.getTable().addPool(new LootPool(new LootEntry[]{new LootEntryTable(new ResourceLocation(Bewitchment.MODID, "chests/materials"), 5, 0, new LootCondition[0], "bewitchment_materials_entry")}, new LootCondition[0], new RandomValueRange(1), new RandomValueRange(0, 1), "bewitchment_materials_pool"));
+		}
+	}
+	
 	@SubscribeEvent
 	public void attemptBrew(PotionBrewEvent.Pre event) {
 		for (int i = 0; i < event.getLength() - 1; i++) {

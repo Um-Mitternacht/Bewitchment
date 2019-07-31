@@ -31,7 +31,6 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
-import com.bewitchment.common.events.LootTableEventHandler;
 import com.bewitchment.common.handler.ArmorHandler;
 import com.bewitchment.common.handler.BlockDropHandler;
 import com.bewitchment.common.handler.GuiHandler;
@@ -89,7 +88,6 @@ public class Bewitchment {
 		config = new ModConfig((event.getSuggestedConfigurationFile()));
 		proxy.registerRendersPreInit();
 		ModObjects.preInit();
-		MinecraftForge.EVENT_BUS.register(new LootTableEventHandler());
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
 		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
