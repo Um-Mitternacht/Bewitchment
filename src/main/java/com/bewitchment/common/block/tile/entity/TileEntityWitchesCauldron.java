@@ -100,7 +100,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 					setPower();
 					if (mode == 5) craftingTimer++;
 				}
-				if (!hasPower || (mode == 5 && craftingTimer >= 20)) {
+				if (mode != 4 && !hasPower || (mode == 5 && craftingTimer >= 20)) {
 					mode = 1;
 					craftingTimer = 0;
 					setTargetColor(0x604040);
@@ -271,6 +271,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 							else if (stack.getItem() == ModObjects.dimensional_sand && mode == 0) {
 								mode = 4;
 								setTargetColor(0x7fc47f);
+								clear(inventory);
 								return;
 							}
 							boolean valid = hasPower && mode != 4 && (mode != 3 || isBrewItem(stack)) && heatTimer >= 5;
