@@ -5,12 +5,10 @@ import com.bewitchment.common.item.ItemLantern;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,18 +19,8 @@ import java.util.Random;
 public class BlockWitchesLight extends BlockAir {
 	public BlockWitchesLight() {
 		super();
+		setLightLevel(1);
 		Util.registerBlock(this, "witches_light", Blocks.AIR);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
-		return true;
-	}
-	
-	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return 15;
 	}
 	
 	@Override
