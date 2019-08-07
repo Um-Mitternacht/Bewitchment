@@ -234,6 +234,8 @@ item.bewitchment.silver_nugget.name=Silver Nugget
 item.bewitchment.cold_iron_nugget.name=Cold Iron Nugget
 item.bewitchment.salt.name=Salt
 
+item.bewitchment.stew_of_the_grotesque.name=Stew of the Grotesque
+
 item.bewitchment.unfired_jar.name=Unfired Jar
 item.bewitchment.empty_jar.name=Empty Jar
 item.bewitchment.oak_spirit.name=Oak Spirit

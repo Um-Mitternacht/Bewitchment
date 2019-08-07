@@ -15,6 +15,7 @@ import com.bewitchment.common.item.*;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
+import com.bewitchment.common.item.food.ItemGrotesqueStew;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
@@ -316,6 +317,7 @@ public class ModObjects {
 	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false), "juniper_berries");
 	public static final Item yew_aril = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.POISON, 100), 0.5f), "yew_aril");
+	public static final Item stew_of_the_grotesque = new ItemGrotesqueStew();
 	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");
 	public static final Item eye_of_newt = Util.registerItem("eye_of_newt");

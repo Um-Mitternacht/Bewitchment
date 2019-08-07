@@ -1,0 +1,35 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "item": "minecraft:mutton"
+	},
+	{
+	  "item": "bewitchment:adders_fork"
+	},
+	{
+	  "item": "bewitchment:toe_of_frog"
+	},	
+	{
+	  "item": "bewitchment:lizard_leg"
+	},		
+	{
+	  "item": "bewitchment:belladonna"
+	},		
+	{
+	  "item": "bewitchment:eye_of_newt"
+	},	
+	{
+	  "item": "bewitchment:demonic_elixir"
+	},		
+	{
+	  "item": "bewitchment:heart"
+	},
+	{
+	  "item": "minecraft:bowl"
+	}	
+  ],
+  "result": {
+	"item": "bewitchment:stew_of_the_grotesque"
+  }
+}
