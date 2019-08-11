@@ -47,8 +47,8 @@ public class EntityBlackDog extends ModEntityMob {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean flag = super.attackEntityFrom(source, amount);
 		if (flag) {
-			addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 100, 1, false, false));
-			addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
+			addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 50, 1, false, false));
+			addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 50, 1, false, false));
 		}
 		return flag;
 	}
