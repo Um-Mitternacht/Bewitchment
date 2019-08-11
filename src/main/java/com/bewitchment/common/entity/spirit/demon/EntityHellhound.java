@@ -43,7 +43,7 @@ public class EntityHellhound extends ModEntityMob {
 		if (flag) {
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
-				entity.setFire(5);
+				entity.setFire(3);
 			}
 		}
 		return flag;
@@ -88,7 +88,7 @@ public class EntityHellhound extends ModEntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.25);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30);
