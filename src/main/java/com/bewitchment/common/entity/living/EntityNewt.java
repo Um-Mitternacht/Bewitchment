@@ -57,5 +57,6 @@ public class EntityNewt extends ModEntityAnimal {
 		tasks.addTask(2, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
 	}
 }
