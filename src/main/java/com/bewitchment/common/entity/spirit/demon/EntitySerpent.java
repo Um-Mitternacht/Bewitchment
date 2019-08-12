@@ -121,7 +121,7 @@ public class EntitySerpent extends ModEntityMob {
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D, 0.0F));
+		tasks.addTask(7, new EntityAIWanderAvoidWater(this, 0.4D, 0.0F));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
