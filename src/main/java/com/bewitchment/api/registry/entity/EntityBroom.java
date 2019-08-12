@@ -79,12 +79,6 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public void setDead() {
-		this.getPassengers().forEach(Entity::dismountRidingEntity);
-		super.setDead();
-	}
-	
-	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		Entity rider = getControllingPassenger();
