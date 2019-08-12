@@ -21,7 +21,7 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 			recipe = GameRegistry.findRegistry(SpinningWheelRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
 		}
 	};
-	private final ItemStackHandler inventory_down = new ItemStackHandler(1) {
+	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
 			return false;

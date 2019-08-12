@@ -27,9 +27,16 @@
 	},
 	{
 	  "type": "item",
-	  "item": "#output",
+	  "item": "#output0",
 	  "x": 76,
-	  "y": 24,
+	  "y": 13,
+	  "link_recipe": true
+	},
+	{
+	  "type": "item",
+	  "item": "#output1",
+	  "x": 76,
+	  "y": 32,
 	  "link_recipe": true
 	},
 	{

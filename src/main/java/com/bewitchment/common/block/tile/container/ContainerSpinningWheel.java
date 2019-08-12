@@ -25,7 +25,8 @@ public class ContainerSpinningWheel extends ModContainer {
 		addSlotToContainer(new ModSlot(up, ui++, 44, 43));
 		addSlotToContainer(new ModSlot(up, ui++, 62, 25));
 		addSlotToContainer(new ModSlot(up, ui++, 62, 43));
-		addSlotToContainer(new ModSlot(down, di++, 116, 34));
+		addSlotToContainer(new ModSlot(down, di++, 116, 25));
+		addSlotToContainer(new ModSlot(down, di++, 116, 43));
 		addPlayerSlots(inventory);
 	}
 	

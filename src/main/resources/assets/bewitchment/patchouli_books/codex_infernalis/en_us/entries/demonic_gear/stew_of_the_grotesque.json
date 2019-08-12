@@ -1,0 +1,12 @@
+{
+  "name": "Stew of the Grotesque",
+  "category": "demonic_gear",
+  "icon": "bewitchment:stew_of_the_grotesque",
+  "pages": [
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:stew_of_the_grotesque",
+	  "text": "needs text"
+	}
+  ]
+}

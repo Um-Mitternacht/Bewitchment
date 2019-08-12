@@ -9,8 +9,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 @SuppressWarnings("NullableProblems")
-public class ItemGrotesqueStew extends ItemFood {
-	public ItemGrotesqueStew() {
+public class ItemStewOfTheGrotesque extends ItemFood {
+	public ItemStewOfTheGrotesque() {
 		super(8, 1.25f, false);
 		Util.registerItem(this, "stew_of_the_grotesque");
 		setAlwaysEdible();

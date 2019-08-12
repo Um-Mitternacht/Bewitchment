@@ -25,7 +25,7 @@ public class CauldronCategory implements IRecipeCategory<CauldronCategory.Wrappe
 	private final IDrawable bg;
 	
 	public CauldronCategory(IGuiHelper helper) {
-		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_cauldron.png"), 0, 0, 128, 64).setTextureSize(128, 64).build();
+		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_cauldron.png"), 0, 0, 160, 64).setTextureSize(160, 64).build();
 	}
 	
 	@Override
@@ -51,12 +51,12 @@ public class CauldronCategory implements IRecipeCategory<CauldronCategory.Wrappe
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
 		for (int i = 0; i < recipeWrapper.input.size(); i++) {
-			recipeLayout.getItemStacks().init(i, true, 18 * i + (128 - 18 * recipeWrapper.input.size()) / 2, 2);
+			recipeLayout.getItemStacks().init(i, true, 18 * i + (160 - 18 * recipeWrapper.input.size()) / 2, 2);
 			recipeLayout.getItemStacks().set(i, recipeWrapper.input.get(i));
 		}
 		if (recipeWrapper.output != null) {
 			for (int i = 0; i < recipeWrapper.output.size(); i++) {
-				recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (128 - 18 * recipeWrapper.output.size()) / 2, 44);
+				recipeLayout.getItemStacks().init(i + recipeWrapper.input.size(), false, 18 * i + (160 - 18 * recipeWrapper.output.size()) / 2, 44);
 				recipeLayout.getItemStacks().set(i + recipeWrapper.input.size(), recipeWrapper.output.get(i));
 			}
 		}
