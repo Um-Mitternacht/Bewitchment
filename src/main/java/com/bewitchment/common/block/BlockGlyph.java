@@ -116,7 +116,6 @@ public class BlockGlyph extends ModBlockContainer {
 		if (type == NETHER) world.spawnParticle(EnumParticleTypes.FLAME, x + rand.nextGaussian() / 3, y, z + rand.nextGaussian() / 3, 0, 0, 0);
 		if (type == ENDER) {
 			world.spawnParticle(EnumParticleTypes.PORTAL, x + rand.nextGaussian() / 3, y, z + rand.nextGaussian() / 3, 0, 0, 0);
-			world.spawnParticle(EnumParticleTypes.END_ROD, x + rand.nextGaussian() * 0.4, y, z + rand.nextGaussian() * 0.4, 0, 0.02 + 0.1 * rand.nextDouble(), 0);
 		}
 	}
 	
