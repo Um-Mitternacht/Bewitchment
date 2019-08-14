@@ -52,7 +52,7 @@ public class ItemTarotCards extends Item {
 	private boolean setTags(ItemStack stack, EntityLivingBase target) {
 		if (target instanceof EntityPlayer) {
 			if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setString("readId", ((EntityPlayer) target).getGameProfile().getId().toString());
+			stack.getTagCompound().setString("readId", target.getPersistentID().toString());
 			stack.getTagCompound().setString("readName", target.getName());
 			return true;
 		}
