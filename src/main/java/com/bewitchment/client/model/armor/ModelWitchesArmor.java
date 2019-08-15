@@ -270,7 +270,8 @@ public class ModelWitchesArmor extends ModelArmor {
 		bipedLeftArm.showModel = slot == EntityEquipmentSlot.CHEST;
 		bipedRightLeg.showModel = slot == EntityEquipmentSlot.LEGS;
 		bipedLeftLeg.showModel = slot == EntityEquipmentSlot.LEGS;
-		bipedHeadwear.showModel = false;
+		super.bipedHeadwear.showModel = false;
+		super.bipedHeadwear.isHidden = true;
 		
 		super.bipedHead = hat ? hat1 : hood01;
 		super.bipedBody = robeBody;
