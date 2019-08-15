@@ -137,13 +137,16 @@ public class Util {
 		return false;
 	}
 	
-	public static boolean isRelated(ItemStack stack, String oreDictionaryEntry) {
-		for (ItemStack ore : OreDictionary.getOres(oreDictionaryEntry)) {
-			
-			if (stack.getItem() instanceof ItemSword && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemSword) stack.getItem()).getToolMaterialName().toLowerCase())) return true;
-			if (stack.getItem() instanceof ItemTool && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemTool) stack.getItem()).getToolMaterialName().toLowerCase())) return true;
-			if (stack.getItem() instanceof ItemHoe && ore.getDisplayName().toLowerCase().replaceAll(" ", "_").contains(((ItemHoe) stack.getItem()).getMaterialName().toLowerCase())) return true;
-			if (stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial().getRepairItemStack().getItem() == ore.getItem()) return true;
+	public static boolean isRelated(boolean armor, Item item, String... names) {
+		for (String name : names) {
+			if (armor) {
+				if (item instanceof ItemArmor && ((ItemArmor) item).getArmorMaterial().getName().toLowerCase().contains(name)) return true;
+			}
+			else {
+				if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().toLowerCase().contains(name)) return true;
+				if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().toLowerCase().contains(name)) return true;
+				if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().toLowerCase().contains(name)) return true;
+			}
 		}
 		return false;
 	}

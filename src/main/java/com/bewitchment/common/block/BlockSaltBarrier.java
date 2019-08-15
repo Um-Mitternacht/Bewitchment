@@ -10,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -60,8 +59,7 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
 		if (entity instanceof EntityLivingBase) {
-			EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
-			if (attribute == EnumCreatureAttribute.UNDEAD || BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) addCollisionBoxToList(pos, box, boxes, WALL);
+			if ((BewitchmentAPI.getSilverWeakness((EntityLivingBase) entity) > 1 && !BewitchmentAPI.isWerewolf((EntityLivingBase) entity)) || BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) addCollisionBoxToList(pos, box, boxes, WALL);
 		}
 	}
 	

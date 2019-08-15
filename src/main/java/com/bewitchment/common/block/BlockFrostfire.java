@@ -81,7 +81,7 @@ public class BlockFrostfire extends ModBlockContainer {
 	
 	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.isWeakToColdIron((EntityLivingBase) entity)) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) entity.attackEntityFrom(DamageSource.MAGIC, 2);
 	}
 	
 	@Override
