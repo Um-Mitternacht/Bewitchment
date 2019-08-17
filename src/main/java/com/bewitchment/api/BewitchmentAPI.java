@@ -6,7 +6,6 @@ import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
@@ -85,19 +84,21 @@ public class BewitchmentAPI {
 		return false;
 	}
 	
-	/**
-	 * @param entity the entity to check
-	 * @return true if the entity is weak to cold iron, false otherwise
-	 */
-	public static boolean isWeakToColdIron(EntityLivingBase entity) {
-		return entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityEnderman || entity instanceof EntityVex;
+	public static float getSilverWeakness(EntityLivingBase entity) {
+		float fin = 1;
+		if (isVampire(entity) || isWerewolf(entity) || entity.isEntityUndead()) {
+			fin = 1.5f;
+			if (entity instanceof EntityPlayer) fin *= 1.5f;
+		}
+		return fin;
 	}
 	
-	/**
-	 * @param entity the entity to check
-	 * @return true if the entity is weak to silver, false otherwise
-	 */
-	public static boolean isWeakToSilver(EntityLivingBase entity) {
-		return isWerewolf(entity) || entity.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD;
+	public static float getColdIronWeakness(EntityLivingBase entity) {
+		float fin = 1;
+		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityVex) {
+			fin = 1.5f;
+			if (entity instanceof EntityPlayer) fin *= 1.5f;
+		}
+		return fin;
 	}
 }

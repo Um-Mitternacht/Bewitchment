@@ -342,8 +342,6 @@ entity.bewitchment.imp.name=Imp
 #ENCHANTMENT
 enchantment.bewitchment.magic_protection=Magic Protection
 enchantment.bewitchment.magic_protection.desc=Reduces damage from magic.
-enchantment.bewitchment.spirit_protection=Spirit Protection
-enchantment.bewitchment.spirit_protection.desc=Reduces damage from spirits and demons.
 
 #POTION
 potion.effect.empty=Witches' Brew

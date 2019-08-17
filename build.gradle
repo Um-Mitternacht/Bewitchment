@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 
-version = "1.12.2-0.0.20.6"
+version = "1.12.2-0.0.20.8-test1"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -62,8 +62,4 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-sourceSets {
-    main { output.resourcesDir = output.classesDir }
 }
