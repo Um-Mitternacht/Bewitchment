@@ -1,0 +1,490 @@
+﻿#БЛОКИ
+tile.bewitchment.blessed_stone.name=Благословленный камень
+tooltip.bewitchment.blessed_stone=Даёт бесконечную силу алтаря. Только творческий режим.
+
+tile.bewitchment.block_of_amethyst.name=Блок аметиста
+tile.bewitchment.block_of_garnet.name=Блок граната
+tile.bewitchment.block_of_opal.name=Блок опала
+tile.bewitchment.block_of_silver.name=Блок серебра
+tile.bewitchment.block_of_cold_iron.name=Блок хладного железа
+tile.bewitchment.block_of_salt.name=Блок соли
+tile.bewitchment.amethyst_ore.name=Аметистовая руда
+tile.bewitchment.garnet_ore.name=Гранатовая руда
+tile.bewitchment.opal_ore.name=Опаловая руда
+tile.bewitchment.silver_ore.name=Серебряная руда
+tile.bewitchment.salt_ore.name=Соляная руда
+
+tile.bewitchment.purifying_earth.name=Очищающая земля
+
+tile.bewitchment.coquina.name=Ракушечник
+tile.bewitchment.coquina_bricks.name=Кирпичи из ракушечника
+tile.bewitchment.chiseled_coquina.name=Резной ракушечник
+
+tile.bewitchment.nethersteel.name=Незер-сталь
+
+tile.bewitchment.perpetual_ice.name=Вечный лёд
+tile.bewitchment.perpetual_ice_stairs.name=Ступеньки из вечного льда
+tile.bewitchment.perpetual_ice_slab.name=Плита из вечного льда
+tile.bewitchment.perpetual_ice_fence.name=Забор из вечного льда
+
+tile.bewitchment.embittered_bricks.name=Озлобленные кирпичи
+tile.bewitchment.cracked_embittered_bricks.name=Потрескавшиеся озлобленные кирпичи
+tile.bewitchment.chiseled_embittered_bricks.name=Резные озлобленные кирпичи
+tile.bewitchment.embittered_brick_stairs.name=Ступеньки из озлобленного кирпича
+tile.bewitchment.embittered_bricks_slab.name=Плита из озлобленного кирпича
+tile.bewitchment.embittered_brick_fence.name=Забор из озлобленного кирпича
+
+tile.bewitchment.scorned_bricks.name=Презренные кирпичи
+tile.bewitchment.cracked_scorned_bricks.name=Потрескавшиеся презренные кирпичи
+tile.bewitchment.chiseled_scorned_bricks.name=Резные презренные кирпичи
+tile.bewitchment.scorned_brick_stairs.name=Ступеньки из презренного кирпича
+tile.bewitchment.scorned_bricks_slab.name=Плита из презренного кирпича
+tile.bewitchment.scorned_brick_fence.name=Забор из презренного кирпича
+
+tile.bewitchment.goblet.name=Кубок
+tile.bewitchment.filled_goblet.name=Наполненный кубок
+
+tile.bewitchment.white_candle.name=Белая свеча
+tile.bewitchment.orange_candle.name=Оранжевая свеча
+tile.bewitchment.magenta_candle.name=Пурпурная свеча
+tile.bewitchment.light_blue_candle.name=Голубая свеча
+tile.bewitchment.yellow_candle.name=Жёлтая свеча
+tile.bewitchment.lime_candle.name=Лаймовая свеча
+tile.bewitchment.pink_candle.name=Розовая свеча
+tile.bewitchment.gray_candle.name=Серая свеча
+tile.bewitchment.light_gray_candle.name=Светло-серая свеча
+tile.bewitchment.cyan_candle.name=Бирюзовая свеча
+tile.bewitchment.purple_candle.name=Фиолетовая свеча
+tile.bewitchment.blue_candle.name=Синяя свеча
+tile.bewitchment.brown_candle.name=Коричневая свеча
+tile.bewitchment.green_candle.name=Зелёная свеча
+tile.bewitchment.red_candle.name=Красная свеча
+tile.bewitchment.black_candle.name=Чёрная свеча
+
+tile.bewitchment.white_lantern.name=Белый фонарь
+tile.bewitchment.orange_lantern.name=Оранжевый фонарь
+tile.bewitchment.magenta_lantern.name=Пурпурный фонарь
+tile.bewitchment.light_blue_lantern.name=Голубой фонарь
+tile.bewitchment.yellow_lantern.name=Жёлтый фонарь
+tile.bewitchment.lime_lantern.name=Лаймовый фонарь
+tile.bewitchment.pink_lantern.name=Розовый фонарь
+tile.bewitchment.gray_lantern.name=Серый фонарь
+tile.bewitchment.light_gray_lantern.name=Светло-серый фонарь
+tile.bewitchment.cyan_lantern.name=Бирюзовый фонарь
+tile.bewitchment.purple_lantern.name=Фиолетовый фонарь
+tile.bewitchment.blue_lantern.name=Синий фонарь
+tile.bewitchment.brown_lantern.name=Коричневый фонарь
+tile.bewitchment.green_lantern.name=Зелёный фонарь
+tile.bewitchment.red_lantern.name=Красный фонарь
+tile.bewitchment.black_lantern.name=Чёрный фонарь
+tooltip.lantern_lit=Светится
+
+tile.bewitchment.embergrass.name=Искроцвет
+tile.bewitchment.torchwood.name=Светокорень
+
+tile.bewitchment.cypress_sapling.name=Саженец кипариса
+tile.bewitchment.elder_sapling.name=Саженец бузины
+tile.bewitchment.juniper_sapling.name=Саженец можжевельника
+tile.bewitchment.yew_sapling.name=Саженец тиса
+tile.bewitchment.cypress_wood.name=Кипарис
+tile.bewitchment.elder_wood.name=Бузина
+tile.bewitchment.juniper_wood.name=Можжевельник
+tile.bewitchment.yew_wood.name=Тис
+tile.bewitchment.cypress_planks.name=Кипарисовые доски
+tile.bewitchment.elder_planks.name=Бузиновые доски
+tile.bewitchment.juniper_planks.name=Доски из можжевельника
+tile.bewitchment.yew_planks.name=Тисовые доски
+tile.bewitchment.cypress_leaves.name=Листва кипариса
+tile.bewitchment.elder_leaves.name=Листва бузины
+tile.bewitchment.juniper_leaves.name=Листва можжевельника
+tile.bewitchment.yew_leaves.name=Листва тиса
+
+item.bewitchment.cypress_door.name=Кипарисовая дверь
+item.bewitchment.elder_door.name=Бузиновая дверь
+item.bewitchment.juniper_door.name=Дверь из можжевельника
+item.bewitchment.yew_door.name=Тисовая дверь
+tile.bewitchment.juniper_chest.name=Сундук из можжевельника
+tile.bewitchment.cypress_wood_stairs.name=Кипарисовые ступеньки
+tile.bewitchment.elder_wood_stairs.name=Бузиновые доски
+tile.bewitchment.juniper_wood_stairs.name=Ступеньки из можжевельника
+tile.bewitchment.yew_wood_stairs.name=Тисовые ступеньки
+tile.bewitchment.cypress_wood_slab.name=Кипарисовая плита
+tile.bewitchment.elder_wood_slab.name=Бузиновая плита
+tile.bewitchment.juniper_wood_slab.name=Плита из можжевельника
+tile.bewitchment.yew_wood_slab.name=Тисовая плита
+tile.bewitchment.cypress_trapdoor.name=Кипарисовый люк
+tile.bewitchment.elder_trapdoor.name=Бузиновый люк
+tile.bewitchment.juniper_trapdoor.name=Люк из можжевельника
+tile.bewitchment.yew_trapdoor.name=Тисовый люк
+tile.bewitchment.cypress_fence_gate.name=Кипарисовая калитка
+tile.bewitchment.elder_fence_gate.name=Бузиновая калитка
+tile.bewitchment.juniper_fence_gate.name=Калитка из можжевельника
+tile.bewitchment.yew_fence_gate.name=Тисовая калитка
+tile.bewitchment.cypress_fence.name=Кипарисовый забор
+tile.bewitchment.elder_fence.name=Бузиновый забор
+tile.bewitchment.juniper_fence.name=Забор из можжевельника
+tile.bewitchment.yew_fence.name=Тисовый забор
+tile.bewitchment.cypress_pressure_plate.name=Кипарисовая нажимная плита
+tile.bewitchment.elder_pressure_plate.name=Бузиновая нажимная плита
+tile.bewitchment.juniper_pressure_plate.name=Нажимная плита из можжевельника
+tile.bewitchment.yew_pressure_plate.name=Тисовая нажимная плита
+tile.bewitchment.cypress_button.name=Кипарисовая кнопка
+tile.bewitchment.elder_button.name=Бузиновая кнопка
+tile.bewitchment.juniper_button.name=Кнопка из можжевельника
+tile.bewitchment.yew_button.name=Тисовая кнопка
+
+tile.bewitchment.stone_witches_altar.name=Ведьмин алтарь из камня
+tile.bewitchment.nether_brick_witches_altar.name=Ведьмин алтарь из незеритового кирпича
+tile.bewitchment.obsidian_witches_altar.name=Ведьмин алтарь из обсидиана
+tile.bewitchment.coquina_witches_altar.name=Ведьмин алтарь из ракушечника
+tile.bewitchment.embittered_brick_witches_altar.name=Ведьмин алтарь из озлобленного кирпича
+tile.bewitchment.scorned_brick_witches_altar.name=Ведьмин алтарь из презренного кирпича
+tile.bewitchment.witches_cauldron.name=Ведьмин котёл
+tile.bewitchment.witches_oven.name=Ведьмина печь
+tile.bewitchment.distillery.name=Перегонный куб
+tile.bewitchment.spinning_wheel.name=Прялка
+tile.bewitchment.crystal_ball.name=Хрустальный шар
+tile.bewitchment.tarot_table.name=Стол таро
+item.bewitchment.tarot_cards.name=Карты таро
+tooltip.bewitchment.tarot_cards=Следят за судьбой %s
+tile.bewitchment.frostfire.name=Ледяное пламя
+
+#ПРЕДМЕТИКИ
+item.bewitchment.silver_helmet.name=Серебряный шлем
+item.bewitchment.silver_chestplate.name=Серебряный нагрудник
+item.bewitchment.silver_leggings.name=Серебряные поножи
+item.bewitchment.silver_boots.name=Серебряные ботинки
+
+item.bewitchment.cold_iron_helmet.name=Шлем из хладного железа
+item.bewitchment.cold_iron_chestplate.name=Нагрудник из хладного железа
+item.bewitchment.cold_iron_leggings.name=Поножи из хладного железа
+item.bewitchment.cold_iron_boots.name=Ботинки из хладного железа
+
+item.bewitchment.witches_cowl.name=Ведьминский капюшон
+item.bewitchment.witches_hat.name=Ведьминская шляпа
+item.bewitchment.witches_robes.name=Ведьминская роба
+item.bewitchment.witches_pants.name=Ведьминские штаны
+
+item.bewitchment.silver_sword.name=Серебряный меч
+item.bewitchment.silver_pickaxe.name=Серебряная кирка
+item.bewitchment.silver_axe.name=Серебряный топор
+item.bewitchment.silver_shovel.name=Серебряная лопата
+item.bewitchment.silver_hoe.name=Серебряная мотыга
+
+item.bewitchment.cold_iron_sword.name=Меч из хладного железа
+item.bewitchment.cold_iron_pickaxe.name=Кирка из хладного железа
+item.bewitchment.cold_iron_axe.name=Топор из хладного железа
+item.bewitchment.cold_iron_shovel.name=Лопата из хладного железа
+item.bewitchment.cold_iron_hoe.name=Мотыга из хладного железа
+
+item.bewitchment.athame.name=Атейм
+tooltip.bewitchment.athame=Этот церемониальный кинжал также позволяет получать особый лут с мобов
+item.bewitchment.boline.name=Боллин
+
+item.bewitchment.broom.name=Метла
+item.bewitchment.cypress_broom.name=Кипарисовая метла
+item.bewitchment.elder_broom.name=Бузиновая метла
+item.bewitchment.juniper_broom.name=Метла из можжевельника
+item.bewitchment.yew_broom.name=Тисовая метла
+
+item.bewitchment.waystone.name=Путевой камень
+tooltip.bewitchment.waystone=Привязан к %d %d %d (%s)
+tooltip.bewitchment.waystone.unbound=Не привязан
+
+item.bewitchment.focal_chalk.name=Фокусный мел
+item.bewitchment.ritual_chalk.name=Ритуальный мел
+item.bewitchment.fiery_chalk.name=Огненный мел
+item.bewitchment.phasing_chalk.name=Phasing Chalk
+
+item.bewitchment.girdle_of_the_dryads.name=Пояс Дриад
+tooltip.bewitchment.girdle_of_the_dryads=Этот пояс защищает от бед, выращивая кору в качестве брони.
+item.bewitchment.hellish_bauble.name=Адский брелок
+tooltip.bewitchment.hellish_bauble=Эта побрякушка вызывает уважение демонов и обеспечивает природное сопротивление огню и взрывам.
+item.bewitchment.horseshoe.name=Подкова
+tooltip.bewitchment.horseshoe=Подкова на удачу. Духи избегают вас.
+item.bewitchment.nazar.name=Назар
+tooltip.bewitchment.nazar=Амулет, отваживающий неудачи и дающий некоторый иммунитет к магическим атакам.
+item.bewitchment.token_of_remedies.name=Токен исцеления
+tooltip.bewitchment.token_of_remedies=Кажется, камень в его сердцевине впитывает болезни.
+
+item.bewitchment.grimoire_magia.name=Grimoire Magia
+tooltip.bewitchment.grimoire_magia=Запас магии: %d / %d
+
+item.bewitchment.juniper_key.name=Можжевеловый ключ
+tooltip.bewitchment.juniper_key=Даёт доступ к %d, %d, %d, %s
+
+item.bewitchment.stone_leonard_idol.name=Каменный идол Леонарда
+item.bewitchment.terracotta_leonard_idol.name=Терракотовый идол Леонарда
+item.bewitchment.gold_leonard_idol.name=Золотой идол Леонарда
+item.bewitchment.nether_brick_leonard_idol.name=Идол Леонарда из незеритового кирпича
+item.bewitchment.nethersteel_leonard_idol.name=Идол Леонарда из незер-стали
+item.bewitchment.scorned_brick_leonard_idol.name=Идол Леонарда из презренного кирпича
+
+item.bewitchment.bottled_frostfire.name=Ледяное пламя в бутылке
+item.bewitchment.bone_needle.name=Костяная игла
+item.bewitchment.taglock.name=Набор для сбора ДНК
+tooltip.bewitchment.taglock=Содержит ДНК %s
+
+item.bewitchment.amethyst.name=Аметист
+item.bewitchment.garnet.name=Гранат
+item.bewitchment.opal.name=Опал
+item.bewitchment.silver_ingot.name=Серебряный слиток
+item.bewitchment.cold_iron_ingot.name=Слиток хладного железа
+item.bewitchment.silver_nugget.name=Кусочек серебра
+item.bewitchment.cold_iron_nugget.name=Кусочек хладного железа
+item.bewitchment.salt.name=Соль
+
+item.bewitchment.stew_of_the_grotesque.name=Гротескное рагу
+
+item.bewitchment.unfired_jar.name=Сырой кувшин
+item.bewitchment.empty_jar.name=Пустой кувшин
+item.bewitchment.oak_spirit.name=Дубовый дух
+item.bewitchment.spruce_heart.name=Еловое сердце
+item.bewitchment.birch_soul.name=Берёзовая душа
+item.bewitchment.cloudy_oil.name=Мутное масло
+item.bewitchment.acacia_resin.name=Резина акации
+item.bewitchment.ebb_of_death.name=Прилив смерти
+item.bewitchment.droplet_of_wisdom.name=Капля мудрости
+item.bewitchment.liquid_witchcraft.name=Жидкое колдовство
+item.bewitchment.essence_of_vitality.name=Эссенция жизненной силы
+
+item.bewitchment.cleansing_balm.name=Очищающий бальзам
+item.bewitchment.demonic_elixir.name=Демонический эликсир
+item.bewitchment.fiery_unguent.name=Огненная мазь
+
+item.bewitchment.diabolical_vein.name=Вена дьявола
+item.bewitchment.pure_filament.name=Чистая нить
+item.bewitchment.witches_stitching.name=Ведьмина пряжа
+
+item.bewitchment.aconitum.name=Аконит
+tooltip.bewitchment.aconitum=Ядовитый цветок, используемый в охоте на оборотней
+item.bewitchment.belladonna.name=Белладонна
+tooltip.bewitchment.belladonna=Очень токсичное растение, главный компонент мази полёта
+item.bewitchment.garlic.name=Чеснок
+tooltip.bewitchment.garlic=Распространённая приправа. Отваживает нежить
+item.bewitchment.hellebore.name=Морозник
+tooltip.bewitchment.hellebore=Связанный с демонами красивый и ядовитый цветок
+item.bewitchment.mandrake_root.name=Корень мандрагоры
+tooltip.bewitchment.mandrake_root=Используется для усиления магических эффектов
+item.bewitchment.white_sage.name=Белый шалфей
+tooltip.bewitchment.white_sage=Используется в качестве помощи при экзорцизме.
+item.bewitchment.wormwood.name=Горькая полынь
+tooltip.bewitchment.wormwood=Невероятно живучий сорняк
+
+item.bewitchment.aconitum_seeds.name=Семена аконита
+tooltip.bewitchment.aconitum_seeds=Семена ядовитого растения
+item.bewitchment.belladonna_seeds.name=Семена белладонны
+tooltip.bewitchment.belladonna_seeds=Семена травянистого растения
+item.bewitchment.garlic_seeds.name=Семена чеснока
+tooltip.bewitchment.garlic_seeds=Похожи на маленькие зубчики, но это не они
+item.bewitchment.hellebore_seeds.name=Семена морозника
+tooltip.bewitchment.hellebore_seeds=Семена невинно выглядящей травы
+item.bewitchment.mandrake_seeds.name=Семена мандрагоры
+tooltip.bewitchment.mandrake_seeds=Семена растения, имеющего странный корень
+item.bewitchment.white_sage_seeds.name=Семена белого шалфея
+tooltip.bewitchment.white_sage_seeds=Семена вечнозелёного многолетнего кустарника
+item.bewitchment.wormwood_seeds.nameСемена горькой полыни
+tooltip.bewitchment.wormwood_seeds=Семена пахучего сорняка
+
+item.bewitchment.elderberries.name=Ягоды бузины
+item.bewitchment.juniper_berries.name=Ягоды можжевельника
+item.bewitchment.yew_aril.name=Тисовые ягоды
+
+item.bewitchment.lizard_leg.name=Нога ящерицы
+item.bewitchment.eye_of_newt.name=Глаз тритона
+item.bewitchment.owlets_wing.name=Крыло совы
+item.bewitchment.ravens_feather.name=Перо вороны
+item.bewitchment.adders_fork.name=Язык гадюки
+item.bewitchment.toe_of_frog.name=Палец лягушки
+item.bewitchment.hellhound_horn.name=Адский рог
+item.bewitchment.heart.name=Сердце
+item.bewitchment.demon_heart.name=Сердце демона
+item.bewitchment.snake_venom.name=Змеиный яд
+item.bewitchment.liquid_wroth.name=Жидкий гнев
+
+item.bewitchment.hoof.name=Копыто
+# item.bewitchment.eye_of_old.name=Eye of Old
+item.bewitchment.tongue_of_dog.name=Язык собаки
+
+item.bewitchment.catechu_brown.name=Дубильный коричневый
+item.bewitchment.dimensional_sand.name=Потусторонний песок
+item.bewitchment.ectoplasm.name=Эктоплазма
+item.bewitchment.flying_ointment.name=Мазь полёта
+item.bewitchment.iron_gall_ink.name=Чернила из желчи и железа
+item.bewitchment.oak_apple_gall.name=Желчь дубового яблока
+item.bewitchment.pentacle.name=Пентакль
+item.bewitchment.spectral_dust.name=Спектральная пыль
+item.bewitchment.tallow.name=Жир
+item.bewitchment.wood_ash.name=Древесный пепел
+
+#ENTITY
+entity.bewitchment.cypress_broom.name=Кипарисовая метла
+entity.bewitchment.elder_broom.name=Бузиновая метла
+entity.bewitchment.juniper_broom.name=Можжевеловая метла
+entity.bewitchment.yew_broom.name=Тисовая метла
+
+entity.bewitchment.lizard.name=Ящерица
+entity.bewitchment.newt.name=Тритон
+entity.bewitchment.owl.name=Сова
+entity.bewitchment.raven.name=Ворона
+entity.bewitchment.snake.name=Змея
+entity.bewitchment.toad.name=Жаба
+
+entity.bewitchment.black_dog.name=Чёрный пёс
+
+entity.bewitchment.hellhound.name=Адская гончая
+entity.bewitchment.serpent.name=Адский змей
+
+entity.bewitchment.demon.name=Демон
+entity.bewitchment.demoness.name=Демонесса
+entity.bewitchment.imp.name=Имп
+
+#ЗАЧАРОВАНИЕ
+enchantment.bewitchment.magic_protection=Магическая защита
+enchantment.bewitchment.magic_protection.desc=Снижает урон от магии.
+enchantment.bewitchment.spirit_protection=Защита от духов
+enchantment.bewitchment.spirit_protection.desc=Снижает урон от духов и демонов.
+
+#ЗЕЛЬЕ
+potion.effect.empty=Ведьмино варево
+splash_potion.effect.empty=Взрывное ведьмино варево
+lingering_potion.effect.empty=Туманное ведьмино варево
+tipped_arrow.effect.empty=Пропитанная варевом стрела
+
+bewitchment.modifier.suppressed_particles=Скрытие частиц
+
+#wednesday=Wednesday. не трогать
+bewitchment.absence=Отсутствие
+bewitchment.purification=Очищение
+bewitchment.corruption=Осквернение
+bewitchment.magic_resistance=Магическое сопротивление
+bewitchment.magic_weakness=Магическая слабость
+#bewitchment.hellworld=Hellworld
+#bewitchment.iceworld=Iceworld
+bewitchment.rubedo=Рубедо
+bewitchment.citrinitas=Цитринитас
+bewitchment.desertification=Опустошение
+bewitchment.fertility=Плодовитость
+bewitchment.harvest=Сбор
+bewitchment.spore_cloud=Облако спор
+bewitchment.blight=Порча
+bewitchment.ruin=Руина
+bewitchment.pesticide=Пестицид
+bewitchment.arachnophobia=Арахнофобия
+bewitchment.mending=Починка
+bewitchment.holy_water=Святая вода
+bewitchment.wolfsbane=Волчья кара
+#bewitchment.deviants_decomposure=Deviant's Decomposure
+bewitchment.sleeping=Сон
+bewitchment.volatility=Непостоянство
+bewitchment.grace=Слава
+bewitchment.shell_armor=Панцирь-щит
+bewitchment.deflection=Отклонение
+bewitchment.revealing=Обнаружение
+bewitchment.disrobing=Разоблачение
+bewitchment.sinking=Утопление
+bewitchment.cursed_leaps=Проклятие прыгучести
+
+#ПРЕДСКАЗАНИЯ
+fortune.has_fortune=Будущее %s уже известно: %s
+fortune.no_fortune=В будущем нет секретов.
+
+fortune.bewitchment.bad_luck=Твоё будущее выглядит тусклым.
+fortune.bewitchment.good_luck=Твоё будущее выглядит очень ярким.
+fortune.bewitchment.illness=Твоё будущее омрачено слабостью и неудачей.
+fortune.bewitchment.vitality=Раны излечатся в момент нужды.
+fortune.bewitchment.meet_pet=Ты скоро встретишь нового друга.
+fortune.bewitchment.meet_merchant=Ты сможешь заключить пару выгодных сделок.
+fortune.bewitchment.meet_demon=Могущественный аристократ узнал о твоих гаданиях. Он заинтересован тобой.
+fortune.bewitchment.meet_serpent=Младший демон увидел твой интерес к будущему. Он желает бросить тебе вызов!
+fortune.bewitchment.meet_blaze=Малый элементаль огня увидел тебя за гаданием. Скоро он прибудет сразиться с тобой!
+fortune.bewitchment.meet_dire_wolf=Ты попадёшься бешеному зверю.
+fortune.bewitchment.meet_silverfish=В пути прячется грязный паразит.
+fortune.bewitchment.meet_witch=К тебе приближается злое создание.
+fortune.bewitchment.meet_zombie=Лежащие под землёй будут разбужены...
+fortune.bewitchment.death=Твой путь... выглядит очень мрачным.
+fortune.bewitchment.drop_item=Руки ослушаются тебя, когда будут нужны больше всего.
+fortune.bewitchment.treasure=Очень скоро ты можешь разбогатеть.
+fortune.bewitchment.cats_and_dogs=Пойдёт дождь из собак и кошек. 
+
+#RITUAL
+ritual.null=Вы не слышали о таком ритуале...
+
+ritual.precondition.empty=Что-то не так.
+ritual.precondition.no_day=Этот ритуал нельзя проводить днём.
+ritual.precondition.no_night=Этот ритуал нельзя проводить ночью.
+ritual.precondition.no_rain=Этот ритуал нельзя проводить в дождь.
+ritual.precondition.drawing=Или вы не держите правильный мел во второй руке, или вокруг мало места.
+ritual.precondition.sacrifice=Для этого ритуала требуется подходящая жертва.
+ritual.precondition.invalid_location=Не найдено целевое место
+# Не трогать Rite of Wednesday. Никогда.
+
+ritual.bewitchment.solar_glory=Ритуал солнечной славы
+ritual.bewitchment.high_moon=Ритуал торжества Луны
+ritual.bewitchment.sands_of_time=Ритуал Песков времени
+ritual.bewitchment.deluge=Ритуал наводнения
+ritual.bewitchment.teleport=Ритуал открытого пути
+ritual.bewitchment.perception=Ритуал восприятия
+ritual.bewitchment.hungry_flames=Ритуал голодного пламени
+ritual.bewitchment.frenzied_growth=Ритуал бешеного роста
+ritual.bewitchment.revealing=Ритуал обнаружения
+ritual.bewitchment.call_of_the_wild=Зов дикой природы
+ritual.bewitchment.lesser_hellmouth=Rite of Lesser Hellmouth
+ritual.bewitchment.hellmouth=Rite of Hellmouth
+ritual.bewitchment.greater_hellmouth=Rite of Greater Hellmouth
+ritual.bewitchment.conjure_witch=Ритуал призыва (Ведьма)
+ritual.bewitchment.conjure_wither=Ритуал призыва (Иссушитель)
+ritual.bewitchment.conjure_demon=Ритуал призыва (Демон)
+ritual.bewitchment.conjure_imp=Ритуал призыва (Имп)
+ritual.bewitchment.draw_small=Ритуал малого круга
+ritual.bewitchment.draw_medium=Ритуал среднего круга
+ritual.bewitchment.draw_large=Ритуал большого круга
+ritual.bewitchment.crystal_ball=Ритуал предвидения
+ritual.bewitchment.tarot_table=Ритуал конструирования
+ritual.bewitchment.tarot_cards=Ритуал гравировки
+ritual.bewitchment.grimoire_magia=Ритуал Знания
+ritual.bewitchment.purifying_earth=Ритуал очищения
+ritual.bewitchment.cypress_broom=Ритуал невесомых прутьев
+ritual.bewitchment.elder_broom=Ритуал невесомых прутьев
+ritual.bewitchment.juniper_broom=Ритуал невесомых прутьев
+ritual.bewitchment.yew_broom=Ритуал невесомых прутьев
+# Повторяю, Rite of Wednesday не переводится.
+ritual.bewitchment.spiritual_rift=Ритуал разрыва реальности
+
+#INFO
+itemGroup.bewitchment=Bewitchment
+
+altar.power_info=%d/%d (x%d)
+altar.no_power=В вашем источнике магии недостаточно силы
+
+tarot.no_cards=Вы должны держать карты таро в руке
+tarot.no_player=Вы должны привязать карты к игроку
+tarot.player_offline=%s не в сети
+
+juniper_key.invalid=Вы должны использовать подходящий можжевеловый ключ для этого блока
+
+advancements.bewitchment.crafted_altar.title=Колдовское ремесло
+advancements.bewitchment.crafted_altar.description=Создайте Ведьмин алтарь из камня
+
+commands.fortune.get=Предсказание %s: %s
+commands.fortune.set=Предсказание %s изменено на %s
+commands.fortune.remove=Предсказание %s отменено
+commands.fortune.execute=Предсказание для %s применено
+commands.fortune.nofortune=%s не имеет предсказания
+commands.fortune.null=%s не является предсказанием (вводите bewichery:id_предсказания)
+
+jei.ritual=Ритуал
+jei.ritual.startingPower=Начальная сила: %d
+jei.ritual.runningPower=Сила на поддержание: %d
+
+jei.cauldron=Ведьмин котёл
+jei.brew=Варево
+
+#ТИТУЛЫ И ИМЕНА ДЕМОНОВ будут здесь
+
+
+#Thaumcraft aspects
+tc.aspect.diabolus=Демон, несвятое, светское
+tc.aspect.stellae=Звёзды, созвездие
+tc.aspect.luna=Луна
+tc.aspect.sol=Солнце
