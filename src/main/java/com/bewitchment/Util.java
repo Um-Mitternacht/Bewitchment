@@ -140,7 +140,7 @@ public class Util {
 	public static boolean isRelated(boolean armor, Item item, String... names) {
 		for (String name : names) {
 			if (armor) {
-				if (item instanceof ItemArmor && ((ItemArmor) item).getArmorMaterial().getName().toLowerCase().contains(name)) return true;
+				if (item instanceof ItemArmor && ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name)) return true;
 			}
 			else {
 				if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().toLowerCase().contains(name)) return true;
