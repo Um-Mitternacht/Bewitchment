@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.item.ItemBroom;
+import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
@@ -280,15 +281,15 @@ public class ModObjects {
 	//Oven
 	public static final Item unfired_jar = Util.registerItem("unfired_jar");
 	public static final Item empty_jar = Util.registerItem("empty_jar");
-	public static final Item oak_spirit = Util.registerItem("oak_spirit");
-	public static final Item spruce_heart = Util.registerItem("spruce_heart");
-	public static final Item birch_soul = Util.registerItem("birch_soul");
-	public static final Item cloudy_oil = Util.registerItem("cloudy_oil");
-	public static final Item acacia_resin = Util.registerItem("acacia_resin");
-	public static final Item ebb_of_death = Util.registerItem("ebb_of_death");
-	public static final Item droplet_of_wisdom = Util.registerItem("droplet_of_wisdom");
-	public static final Item liquid_witchcraft = Util.registerItem("liquid_witchcraft");
-	public static final Item essence_of_vitality = Util.registerItem("essence_of_vitality");
+	public static final Item oak_spirit = Util.registerItem(new ItemFume(), "oak_spirit");
+	public static final Item spruce_heart = Util.registerItem(new ItemFume(), "spruce_heart");
+	public static final Item birch_soul = Util.registerItem(new ItemFume(), "birch_soul");
+	public static final Item cloudy_oil = Util.registerItem(new ItemFume(), "cloudy_oil");
+	public static final Item acacia_resin = Util.registerItem(new ItemFume(), "acacia_resin");
+	public static final Item ebb_of_death = Util.registerItem(new ItemFume(), "ebb_of_death");
+	public static final Item droplet_of_wisdom = Util.registerItem(new ItemFume(), "droplet_of_wisdom");
+	public static final Item liquid_witchcraft = Util.registerItem(new ItemFume(), "liquid_witchcraft");
+	public static final Item essence_of_vitality = Util.registerItem(new ItemFume(), "essence_of_vitality");
 	//Distillery
 	public static final Item cleansing_balm = Util.registerItem("cleansing_balm");
 	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
