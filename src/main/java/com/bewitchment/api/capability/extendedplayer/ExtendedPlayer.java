@@ -26,7 +26,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public NBTTagList uniqueDefeatedBosses = new NBTTagList(), exploredChunks = new NBTTagList();
 	public Fortune fortune;
-	public int fortuneTime, ritualsCast, mobsKilled;
+	public int fortuneTime, ritualsCast, mobsKilled, pets;
 	
 	@Nullable
 	@Override
@@ -38,6 +38,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setInteger("fortuneTime", fortuneTime);
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
+		tag.setInteger("pets", instance.pets);
 		return tag;
 	}
 	
@@ -50,6 +51,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.fortuneTime = tag.getInteger("fortuneTime");
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");
+		instance.pets = tag.getInteger("pets");
 	}
 	
 	@Nullable
