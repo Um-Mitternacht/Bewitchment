@@ -405,6 +405,31 @@ fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
 fortune.bewitchment.treasure=You might be very rich, very soon.
 fortune.bewitchment.cats_and_dogs=It will rain cats and dogs.
 
+#TAROT
+tarot.no_tarot=You can't quite figure out what's in the crystal ball...
+tarot.is_infused=%s is infused.
+tarot.not_infused=%s does not have any ties to other worlds.
+tarot.has_pets=%s has some loyal companions.
+tarot.no_pets=%s seems lonely.
+tarot.good_fortune=%s has luck waiting.
+tarot.bad_fortune=%s is rather unlucky.
+tarot.no_fortune=%s has no fortune to be revealed.
+tarot.is_hunter=%s seeks false justice.
+tarot.not_hunter=%s doesn't seek vengence.
+tarot.is_spectre=%s wants to move on.
+tarot.not_spectre=%s seems worldly like normal.
+tarot.is_vampire=%s is kindred to bats and moths.
+tarot.not_vampire=%s enjoys a picnic on a sunny day.
+tarot.is_wolf=%s is kinred to wolves.
+tarot.not_wolf=%s sleeps well on a full moon.
+tarot.is_protected=%s is well protected.
+tarot.not_protected=%s has rather mundane protection.
+tarot.has_effect=%s has something brewing...
+tarot.no_effect=%s has no effects.
+tarot.mobkills=%1$s slayed %2$s monster(s).
+tarot.has_boss=%s laughed in the face of danger.
+tarot.no_boss=%s hasn't conquered any great creatures, yet.
+
 #RITUAL
 ritual.null=You have not heard of such rites
 
@@ -456,7 +481,7 @@ altar.power_info=%d/%d (x%d)
 altar.no_power=Your source of magic is not strong enough
 
 tarot.no_cards=You must be holding Tarot Cards to use this
-tarot.no_player=You must bind a player to the cards
+tarot.no_player=You must bind a player to the taglock
 tarot.player_offline=%s is offline
 
 juniper_key.invalid=You must hold a valid Juniper Key to use this block
