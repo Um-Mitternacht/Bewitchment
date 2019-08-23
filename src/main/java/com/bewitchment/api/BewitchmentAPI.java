@@ -79,14 +79,6 @@ public class BewitchmentAPI {
 	}
 
 	/**
-	 * @param entity the EntityPlayer to check
-	 * @return false always, has pet check WIP
-	 */
-	public static boolean hasPets(EntityPlayer entity) {
-		return (entity.getCapability(ExtendedPlayer.CAPABILITY, null)).pets > 0;
-	}
-
-	/**
 	 * @param entity the entity to check
 	 * @return if player defeated at least one boss
 	 */

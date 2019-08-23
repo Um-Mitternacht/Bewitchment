@@ -180,9 +180,17 @@ public class Util {
 	}
 	
 	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
-		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
-		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
-		else giveItem(player, stack);
+		if (!player.isCreative()) {
+			if(player.getHeldItem(hand).getCount() != 1) {
+				player.getHeldItem(hand).shrink(1);
+				giveItem(player, stack);
+			} else {
+				giveItem(player, stack);
+				player.getHeldItem(hand).setCount(0);
+			}
+		} else {
+			giveItem(player, stack);
+		}
 	}
 	
 	public static void giveItem(EntityPlayer player, ItemStack stack) {

@@ -53,7 +53,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
-		switch(tagPlayer.getRNG().nextInt(12)) {
+		switch(tagPlayer.getRNG().nextInt(11)) {
 			case 0:
 				// Check if player is WitchHunter
 				if(BewitchmentAPI.isWitchHunter(tagPlayer)){
@@ -99,14 +99,6 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				break;
 			case 6:
-				// Check if player has pets *WIP*
-				if(BewitchmentAPI.hasPets(tagPlayer)){
-					player.sendStatusMessage(new TextComponentTranslation("tarot.has_pets", tagPlayer.getDisplayName()), true);
-				} else {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.no_pets", tagPlayer.getDisplayName()), true);
-				}
-				break;
-			case 7:
 				// Check for good/back/no fortune on player
 				if(cap.fortune != null) {
 					if(cap.fortune.isNegative) {
@@ -114,7 +106,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					} else player.sendStatusMessage(new TextComponentTranslation("tarot.good_fortune", tagPlayer.getDisplayName()), true);
 				} else player.sendStatusMessage(new TextComponentTranslation("tarot.no_fortune", tagPlayer.getDisplayName()), true);
 				break;
-			case 8:
+			case 7:
 				// Check if player has protection poppet
 				if(BewitchmentAPI.hasPoppets(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
@@ -122,18 +114,18 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
 				break;
-			case 9:
+			case 8:
 				// Check if player has non-passive effects on
 				if(BewitchmentAPI.hasEffects(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_effect", tagPlayer.getDisplayName()), true);
 				} else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_effect", tagPlayer.getDisplayName()), true);
 				}
-			case 10:
+			case 9:
 				// Display how many mobs the player has killed.
 				player.sendStatusMessage(new TextComponentTranslation("tarot.mobkills",tagPlayer.getDisplayName(), cap.mobsKilled), true);
 				break;
-			case 11:
+			case 10:
 				if(BewitchmentAPI.defeatedBoss(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_boss", tagPlayer.getDisplayName()), true);
 				} else {
