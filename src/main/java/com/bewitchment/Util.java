@@ -188,6 +188,8 @@ public class Util {
 				giveItem(player, stack);
 				player.getHeldItem(hand).setCount(0);
 			}
+		} else {
+			giveItem(player, stack);
 		}
 	}
 	
