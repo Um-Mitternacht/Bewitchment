@@ -51,7 +51,7 @@ public class ItemTaglock extends Item {
 	
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
-		if (target != null) {
+		if (!player.world.isRemote && target != null) {
 			setTags(player, hand, target);
 			return true;
 		}
