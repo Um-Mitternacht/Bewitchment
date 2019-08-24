@@ -3,7 +3,7 @@ package com.bewitchment.common.potion;
 import com.bewitchment.Util;
 import com.bewitchment.common.entity.living.EntitySnake;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
-import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
@@ -39,7 +39,7 @@ public class PotionHellworld extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		if (living instanceof EntityWolf) Util.convertEntity((EntityLiving) living, new EntityHellhound(living.world));
-		if (living instanceof EntitySnake) Util.convertEntity((EntityLiving) living, new EntitySerpent(living.world));
+		if (living instanceof EntitySnake) Util.convertEntity((EntityLiving) living, new EntityFeuerwurm(living.world));
 		living.setFire(15);
 	}
 	

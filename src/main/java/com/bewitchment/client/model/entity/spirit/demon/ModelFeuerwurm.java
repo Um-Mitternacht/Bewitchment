@@ -1,6 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.MathHelper;
  * Created using Tabula 5.1.0
  */
 @SuppressWarnings("WeakerAccess")
-public class ModelSerpent extends ModelBase {
+public class ModelFeuerwurm extends ModelBase {
 	public ModelRenderer body;
 	public ModelRenderer tail00;
 	public ModelRenderer leftWing00;
@@ -59,7 +59,7 @@ public class ModelSerpent extends ModelBase {
 	public ModelRenderer rightHorn01;
 	public ModelRenderer rightHorn02;
 	
-	public ModelSerpent() {
+	public ModelFeuerwurm() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.lowerJaw = new ModelRenderer(this, 0, 8);
@@ -286,7 +286,7 @@ public class ModelSerpent extends ModelBase {
 	
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-		EntitySerpent serpent = (EntitySerpent) entity;
+		EntityFeuerwurm serpent = (EntityFeuerwurm) entity;
 		
 		float time = ((entity.ticksExisted + Minecraft.getMinecraft().getRenderPartialTicks()) * 0.4F);
 		float angle = (float) (0.40F * ((serpent.motionX + serpent.motionZ) * 50));

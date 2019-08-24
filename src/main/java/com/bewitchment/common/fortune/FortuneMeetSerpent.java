@@ -2,7 +2,7 @@ package com.bewitchment.common.fortune;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
-import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -17,7 +17,7 @@ public class FortuneMeetSerpent extends Fortune {
 	@Override
 	public boolean apply(EntityPlayer player) {
 		BlockPos pos = new BlockPos(player.posX + player.getRNG().nextGaussian() * 4, player.posY, player.posZ + player.getRNG().nextGaussian() * 4);
-		EntitySerpent serpent = new EntitySerpent(player.world);
+		EntityFeuerwurm serpent = new EntityFeuerwurm(player.world);
 		if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(serpent)) {
 			serpent.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 			serpent.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);

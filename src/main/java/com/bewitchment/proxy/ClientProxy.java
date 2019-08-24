@@ -94,7 +94,7 @@ public class ClientProxy extends ServerProxy {
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntitySerpent.class, RenderSerpent::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityFeuerwurm.class, RenderFeuerwurm::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
