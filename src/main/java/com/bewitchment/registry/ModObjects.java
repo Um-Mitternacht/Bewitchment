@@ -152,18 +152,22 @@ public class ModObjects {
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
 	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", new WorldGenJuniperTree(false), "treeSapling");
 	public static final Block yew_sapling = new ModBlockSapling("yew_sapling", new WorldGenYewTree(false), "treeSapling");
+	public static final Block dragons_blood_sapling = new ModBlockSapling("dragons_blood_sapling", new WorldGenYewTree(false), "treeSapling");
 	public static final Block cypress_wood = new ModBlockPillar("cypress_wood", Blocks.LOG, "logWood");
 	public static final Block elder_wood = new ModBlockPillar("elder_wood", Blocks.LOG, "logWood");
 	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Blocks.LOG, "logWood");
 	public static final Block yew_wood = new ModBlockPillar("yew_wood", Blocks.LOG, "logWood");
+	public static final Block dragons_blood_wood = new ModBlockPillar("dragons_blood_wood", Blocks.LOG, "logWood");
 	public static final Block cypress_planks = new ModBlock("cypress_planks", Blocks.PLANKS, "plankWood");
 	public static final Block elder_planks = new ModBlock("elder_planks", Blocks.PLANKS, "plankWood");
 	public static final Block juniper_planks = new ModBlock("juniper_planks", Blocks.PLANKS, "plankWood");
 	public static final Block yew_planks = new ModBlock("yew_planks", Blocks.PLANKS, "plankWood");
+	public static final Block dragons_blood_planks = new ModBlock("dragons_blood_planks", Blocks.PLANKS, "plankWood");
 	public static final Block cypress_leaves = new ModBlockLeaves("cypress_leaves", "treeLeaves");
 	public static final Block elder_leaves = new ModBlockLeaves("elder_leaves", "treeLeaves");
 	public static final Block juniper_leaves = new ModBlockLeaves("juniper_leaves", "treeLeaves");
 	public static final Block yew_leaves = new ModBlockLeaves("yew_leaves", "treeLeaves");
+	public static final Block dragons_blood_leaves = new ModBlockLeaves("dragons_blood_leaves", "treeLeaves");
 	//Decor
 	public static final ModItemDoor cypress_door = new ModItemDoor("cypress_door", cypress_planks);
 	public static final ModItemDoor elder_door = new ModItemDoor("elder_door", elder_planks);

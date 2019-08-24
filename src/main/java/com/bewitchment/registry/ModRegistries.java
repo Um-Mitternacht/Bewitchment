@@ -86,10 +86,12 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.yew_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
+		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.yew_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
+		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_door.door, BlockDoor.POWERED);
