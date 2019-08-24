@@ -44,7 +44,7 @@ public class ModWorldGen implements IWorldGenerator {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.mandrake_seeds), 3);
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.wormwood_seeds), 3);
 		
-		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/books"));
+		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/nether_materials"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
 	}
 	
