@@ -380,7 +380,7 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneMeetPet());
 		event.getRegistry().register(new FortuneMeetMerchant());
 		event.getRegistry().register(new FortuneMeetDemon());
-		event.getRegistry().register(new FortuneMeetSerpent());
+		event.getRegistry().register(new FortuneMeetFeuerwurm());
 		event.getRegistry().register(new FortuneMeetBlaze());
 		event.getRegistry().register(new FortuneMeetDireWolf());
 		event.getRegistry().register(new FortuneMeetSilverfish());

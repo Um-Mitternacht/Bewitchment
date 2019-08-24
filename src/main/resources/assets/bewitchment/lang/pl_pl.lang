@@ -333,7 +333,7 @@ entity.bewitchment.toad.name=Ropucha
 entity.bewitchment.black_dog.name=Ponurak
 
 entity.bewitchment.hellhound.name=Piekielny Ogar
-entity.bewitchment.serpent.name=Diabelna Żmija
+entity.bewitchment.feuerwurm.name=Diabelna Żmija
 
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demonica
@@ -394,7 +394,7 @@ fortune.bewitchment.vitality=Wounds heal in your time of need.
 fortune.bewitchment.meet_pet=You will soon encounter a new friend.
 fortune.bewitchment.meet_merchant=You will stumble upon some good deals.
 fortune.bewitchment.meet_demon=A powerful duke has seen you scrying, and has taken an interest in you.
-fortune.bewitchment.meet_serpent=A lesser demon has seen you scrying, and wishes to challenge you soon!
+fortune.bewitchment.meet_feuerwurm=A lesser demon has seen you scrying, and wishes to challenge you soon!
 fortune.bewitchment.meet_blaze=A lesser fire elemental has seen you scrying, and will emerge to fight you soon!
 fortune.bewitchment.meet_dire_wolf=A rabid beast will soon stumble upon you.
 fortune.bewitchment.meet_silverfish=A foul vermin hides in the path.

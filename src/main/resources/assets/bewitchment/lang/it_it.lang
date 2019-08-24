@@ -290,7 +290,7 @@ item.bewitchment.toe_of_frog.name=Zampa di Rana
 item.bewitchment.hellhound_horn.name=Corno di Mastino Infernale
 item.bewitchment.heart.name=Cuore
 item.bewitchment.demon_heart.name=Cuore di Demone
-item.bewitchment.snake_venom.name=Veleno di Serpente
+item.bewitchment.snake_venom.name=Veleno di Feuerwurme
 item.bewitchment.liquid_wroth.name=Ira Liquida
 
 item.bewitchment.hoof.name=Zoccolo
@@ -318,13 +318,13 @@ entity.bewitchment.lizard.name=Lucertola
 entity.bewitchment.newt.name=Tritone
 entity.bewitchment.owl.name=Gufo
 entity.bewitchment.raven.name=Corvo
-entity.bewitchment.snake.name=Serpente
+entity.bewitchment.snake.name=Feuerwurme
 entity.bewitchment.toad.name=Rana
 
 entity.bewitchment.black_dog.name=Cane Nero
 
 entity.bewitchment.hellhound.name=Mastino Infernale
-entity.bewitchment.serpent.name=Serpe
+entity.bewitchment.feuerwurm.name=Serpe
 
 entity.bewitchment.demon.name=Demone
 entity.bewitchment.demoness.name=Demone
@@ -385,7 +385,7 @@ fortune.bewitchment.vitality=Le ferite guariranno al momento del bisogno.
 fortune.bewitchment.meet_pet=Presto incontrerai un nuovo amico.
 fortune.bewitchment.meet_merchant=Farai dei buoni affari.
 fortune.bewitchment.meet_demon=Un Duca potente ti ha visto sbirciare nel futuro e ha deciso di interessarsi a te.
-fortune.bewitchment.meet_serpent=Un Demone Minore ti ha visto sbirciare nel futuro e vuole sfidarti!
+fortune.bewitchment.meet_feuerwurm=Un Demone Minore ti ha visto sbirciare nel futuro e vuole sfidarti!
 fortune.bewitchment.meet_blaze=Un Elementale del Fuoco ti ha visto sbirciare nel futuro ed emerge per combattere!
 fortune.bewitchment.meet_dire_wolf=Una Bestia rabbiosa ti incontrerà sul suo cammino.
 fortune.bewitchment.meet_silverfish=Un Verme insidioso si nasconde sul tuo cammino.

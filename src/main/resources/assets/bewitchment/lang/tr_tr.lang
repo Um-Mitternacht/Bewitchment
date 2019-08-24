@@ -324,7 +324,7 @@ entity.bewitchment.toad.name=Karakurbağası
 entity.bewitchment.black_dog.name=Kara Köpek
 
 entity.bewitchment.hellhound.name=Zebani
-entity.bewitchment.serpent.name=Cehennem Yılanı
+entity.bewitchment.feuerwurm.name=Cehennem Yılanı
 
 entity.bewitchment.demon.name=İblis
 entity.bewitchment.demoness.name=İblis(Dişi)
@@ -385,7 +385,7 @@ fortune.bewitchment.vitality=Yaraların ihtiyacın olduğu vakit iyileşecek.
 fortune.bewitchment.meet_pet=Çok yakında yeni bir arkadaşla karşılaşacaksın.
 fortune.bewitchment.meet_merchant=Birkaç tane iyi anlaşmada ayağın tökezlicek.
 fortune.bewitchment.meet_demon=Güçlü bir dük seni keşfetti, ve senle ilgilenmeye başladı.
-fortune.bewitchment.meet_serpent=Daha küçük bir iblis seni keşfetti, ve sana kafa tutuyor.
+fortune.bewitchment.meet_feuerwurm=Daha küçük bir iblis seni keşfetti, ve sana kafa tutuyor.
 fortune.bewitchment.meet_blaze=Daha küçük bir ateş elementali seni keşfetti, ve senle dövüşmek için ortaya çıktı.
 fortune.bewitchment.meet_dire_wolf=Kuduz bir canavar yakında seni tökezletecek.
 fortune.bewitchment.meet_silverfish=İğrenç bir haşarat gizleniyor yolunda.

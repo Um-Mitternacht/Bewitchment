@@ -333,7 +333,7 @@ entity.bewitchment.toad.name=Жаба
 entity.bewitchment.black_dog.name=Чёрный пёс
 
 entity.bewitchment.hellhound.name=Адская гончая
-entity.bewitchment.serpent.name=Адский змей
+entity.bewitchment.feuerwurm.name=Адский змей
 
 entity.bewitchment.demon.name=Демон
 entity.bewitchment.demoness.name=Демонесса
@@ -396,7 +396,7 @@ fortune.bewitchment.vitality=Раны излечатся в момент нуж�
 fortune.bewitchment.meet_pet=Ты скоро встретишь нового друга.
 fortune.bewitchment.meet_merchant=Ты сможешь заключить пару выгодных сделок.
 fortune.bewitchment.meet_demon=Могущественный аристократ узнал о твоих гаданиях. Он заинтересован тобой.
-fortune.bewitchment.meet_serpent=Младший демон увидел твой интерес к будущему. Он желает бросить тебе вызов!
+fortune.bewitchment.meet_feuerwurm=Младший демон увидел твой интерес к будущему. Он желает бросить тебе вызов!
 fortune.bewitchment.meet_blaze=Малый элементаль огня увидел тебя за гаданием. Скоро он прибудет сразиться с тобой!
 fortune.bewitchment.meet_dire_wolf=Ты попадёшься бешеному зверю.
 fortune.bewitchment.meet_silverfish=В пути прячется грязный паразит.

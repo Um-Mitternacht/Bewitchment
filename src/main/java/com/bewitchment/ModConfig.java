@@ -24,8 +24,8 @@ public class ModConfig extends Configuration {
 	
 	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, opalSize, opalChance, opalMin, opalMax;
 	
-	public final List<String> lizardBiomes, newtBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, serpentBiomes;
-	public final int lizardWeight, lizardMin, lizardMax, newtWeight, newtMin, newtMax, owlWeight, owlMin, owlMax, ravenWeight, ravenMin, ravenMax, snakeWeight, snakeMin, snakeMax, toadWeight, toadMin, toadMax, blackDogWeight, blackDogMin, blackDogMax, hellhoundWeight, hellhoundMin, hellhoundMax, serpentWeight, serpentMin, serpentMax;
+	public final List<String> lizardBiomes, newtBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, feuerwurmBiomes;
+	public final int lizardWeight, lizardMin, lizardMax, newtWeight, newtMin, newtMax, owlWeight, owlMin, owlMax, ravenWeight, ravenMin, ravenMax, snakeWeight, snakeMin, snakeMax, toadWeight, toadMin, toadMax, blackDogWeight, blackDogMin, blackDogMax, hellhoundWeight, hellhoundMin, hellhoundMax, feuerwurmWeight, feuerwurmMin, feuerwurmMax;
 	
 	public final boolean enableCatsAndDogsFortune;
 	
@@ -114,10 +114,10 @@ public class ModConfig extends Configuration {
 		hellhoundMin = getInt("hellhoundMin", "mobSpawns/hellhound", 1, 0, Byte.MAX_VALUE, "The minimum amount of hellhounds to spawn at once");
 		hellhoundMax = getInt("hellhoundMax", "mobSpawns/hellhound", 4, 0, Byte.MAX_VALUE, "The maximum amount of hellhounds to spawn at once");
 		
-		serpentBiomes = Arrays.asList(getStringList("serpentBiomes", "mobSpawns/serpent", new String[]{Type.NETHER.getName()}, "The list of BiomeDictionary types that the serpent will spawn in."));
-		serpentWeight = getInt("serpentWeight", "mobSpawns/serpent", 6, 0, Byte.MAX_VALUE, "The weight chance for serpents to spawn");
-		serpentMin = getInt("serpentMin", "mobSpawns/serpent", 1, 0, Byte.MAX_VALUE, "The minimum amount of serpents to spawn at once");
-		serpentMax = getInt("serpentMax", "mobSpawns/serpent", 4, 0, Byte.MAX_VALUE, "The maximum amount of serpents to spawn at once");
+		feuerwurmBiomes = Arrays.asList(getStringList("feuerwurmBiomes", "mobSpawns/feuerwurm", new String[]{Type.NETHER.getName()}, "The list of BiomeDictionary types that the feuerwurm will spawn in."));
+		feuerwurmWeight = getInt("feuerwurmWeight", "mobSpawns/feuerwurm", 6, 0, Byte.MAX_VALUE, "The weight chance for feuerwurms to spawn");
+		feuerwurmMin = getInt("feuerwurmMin", "mobSpawns/feuerwurm", 1, 0, Byte.MAX_VALUE, "The minimum amount of feuerwurms to spawn at once");
+		feuerwurmMax = getInt("feuerwurmMax", "mobSpawns/feuerwurm", 4, 0, Byte.MAX_VALUE, "The maximum amount of feuerwurms to spawn at once");
 		
 		enableCatsAndDogsFortune = getBoolean("enableCatsAndDogsFortune", "memes", false, "Decides whether or not the cats and dogs will be enabled");
 		wednesday = getBoolean("wednesday", "memes", false, "wednesday");

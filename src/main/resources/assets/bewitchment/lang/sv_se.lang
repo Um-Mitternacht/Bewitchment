@@ -331,7 +331,7 @@ entity.bewitchment.toad.name=Padda
 entity.bewitchment.black_dog.name=Svart Hund
 
 entity.bewitchment.hellhound.name=Helveteshund
-entity.bewitchment.serpent.name=Orm
+entity.bewitchment.feuerwurm.name=Orm
 
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demoninna
@@ -391,7 +391,7 @@ fortune.bewitchment.vitality=Skador kommer att läka i din stund av nöd
 fortune.bewitchment.meet_pet=Du kommer snart träffa på en ny vän
 fortune.bewitchment.meet_merchant=Du kommer snubbla på ett par bra erbjudanden
 fortune.bewitchment.meet_demon=En mäktig hertig har sett dig spå, och har tagit intresse i dig
-fortune.bewitchment.meet_serpent=En mindre demon har sett dig spå, och önskar utmana dig!
+fortune.bewitchment.meet_feuerwurm=En mindre demon har sett dig spå, och önskar utmana dig!
 fortune.bewitchment.meet_blaze=En mindre eldelemental har sett dig spå, och har dykt upp för att slåss mot dig!
 fortune.bewitchment.meet_dire_wolf=En ursinning best kommer snart att snubbla på dig
 fortune.bewitchment.meet_silverfish=Ett fult skadedjur gömmer sig i vägen

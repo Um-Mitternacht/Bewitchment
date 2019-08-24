@@ -330,7 +330,7 @@ entity.bewitchment.toad.name=Krastača
 
 entity.bewitchment.black_dog.name=Črni pes
 entity.bewitchment.hellhound.name=Peklenski pes
-entity.bewitchment.serpent.name=Peklenska kača
+entity.bewitchment.feuerwurm.name=Peklenska kača
 
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demonka
@@ -390,7 +390,7 @@ fortune.bewitchment.vitality=Rane se ti celijo v težavah.
 fortune.bewitchment.meet_pet=Kmalu boš spoznal novega prijatelja.
 fortune.bewitchment.meet_merchant=Imel boš srečo pri trgovanju.
 fortune.bewitchment.meet_demon=Mogočno bitje te je zaznalo in kaže zanimanje zate.
-fortune.bewitchment.meet_serpent=Nižji demon te je zaznal in se hoče boriti s tabo!
+fortune.bewitchment.meet_feuerwurm=Nižji demon te je zaznal in se hoče boriti s tabo!
 fortune.bewitchment.meet_blaze=Duh ognja te je zaznal in se hoče boriti s tabo!
 fortune.bewitchment.meet_dire_wolf=Krvoločna zver te bo kmalu našla.
 fortune.bewitchment.meet_silverfish=Majhna nadloga to stoji na poti.

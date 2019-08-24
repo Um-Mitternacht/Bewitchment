@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 /**
- * serpent - cybercat5555
+ * feuerwurm - cybercat5555
  * Created using Tabula 5.1.0
  */
 @SuppressWarnings("WeakerAccess")
@@ -286,10 +286,10 @@ public class ModelFeuerwurm extends ModelBase {
 	
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-		EntityFeuerwurm serpent = (EntityFeuerwurm) entity;
+		EntityFeuerwurm feuerwurm = (EntityFeuerwurm) entity;
 		
 		float time = ((entity.ticksExisted + Minecraft.getMinecraft().getRenderPartialTicks()) * 0.4F);
-		float angle = (float) (0.40F * ((serpent.motionX + serpent.motionZ) * 50));
+		float angle = (float) (0.40F * ((feuerwurm.motionX + feuerwurm.motionZ) * 50));
 		this.neck00.rotateAngleY = (float) (Math.toRadians(15) + angle * MathHelper.sin(time - 1));
 		this.neck01.rotateAngleY = (float) (Math.toRadians(-15) + angle * MathHelper.sin(time + 1));
 		//this line could possibly be pulled

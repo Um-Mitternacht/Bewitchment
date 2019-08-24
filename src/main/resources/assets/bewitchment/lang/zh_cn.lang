@@ -333,7 +333,7 @@ entity.bewitchment.toad.name=蟾蜍
 entity.bewitchment.black_dog.name=黑狗
 
 entity.bewitchment.hellhound.name=地狱之犬
-entity.bewitchment.serpent.name=蛇
+entity.bewitchment.feuerwurm.name=蛇
 
 entity.bewitchment.demon.name=恶魔
 entity.bewitchment.demoness.name=女恶魔
@@ -396,7 +396,7 @@ fortune.bewitchment.vitality=伤口会在你需要的时候愈合。
 fortune.bewitchment.meet_pet=你很快就会遇到一位新朋友。
 fortune.bewitchment.meet_merchant=你会偶然发现一些好交易。
 fortune.bewitchment.meet_demon=一位强大的恶魔看到了你的占卜，对你很感兴趣。
-fortune.bewitchment.meet_serpent=一个弱小的恶魔看到了你的占卜，想要马上挑战你!
+fortune.bewitchment.meet_feuerwurm=一个弱小的恶魔看到了你的占卜，想要马上挑战你!
 fortune.bewitchment.meet_blaze=一个弱小的火元素看到了你的占卜，将马上出现与你战斗!
 fortune.bewitchment.meet_dire_wolf=一只狂暴的野兽很快就会碰到你。
 fortune.bewitchment.meet_silverfish=一条肮脏的害虫藏在路上。

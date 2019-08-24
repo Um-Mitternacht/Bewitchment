@@ -331,7 +331,7 @@ entity.bewitchment.toad.name=Padde
 entity.bewitchment.black_dog.name=Svart Hund
 
 entity.bewitchment.hellhound.name=Hellhound
-entity.bewitchment.serpent.name=Infernal Serpent
+entity.bewitchment.feuerwurm.name=Infernal Feuerwurm
 
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demoness
@@ -391,7 +391,7 @@ fortune.bewitchment.vitality=Sår leges i din behovstid.
 fortune.bewitchment.meet_pet=Du vil snart møte en ny venn.
 fortune.bewitchment.meet_merchant=Du vil snuble over noen gode tilbud.
 fortune.bewitchment.meet_demon=En mektig hertug har sett deg spå, og interessert deg.
-fortune.bewitchment.meet_serpent=En mindre demon har sett deg spå, og ønsker å utfordre deg!
+fortune.bewitchment.meet_feuerwurm=En mindre demon har sett deg spå, og ønsker å utfordre deg!
 fortune.bewitchment.meet_blaze=En mindre ildelement har sett deg spå, og dukket opp for å kjempe mot deg!
 fortune.bewitchment.meet_dire_wolf=Et rabiat beist vil snart snuble over deg.
 fortune.bewitchment.meet_silverfish=Et stygt skadedyr gjemmer seg i stien.
