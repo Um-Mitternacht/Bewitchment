@@ -158,6 +158,7 @@ public class ModObjects {
 	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Blocks.LOG, "logWood");
 	public static final Block yew_wood = new ModBlockPillar("yew_wood", Blocks.LOG, "logWood");
 	public static final Block dragons_blood_wood = new ModBlockPillar("dragons_blood_wood", Blocks.LOG, "logWood");
+	public static final Block dragons_blood_wood_full = new ModBlockPillar("dragons_blood_wood_full", Blocks.LOG, "logWood");
 	public static final Block cypress_planks = new ModBlock("cypress_planks", Blocks.PLANKS, "plankWood");
 	public static final Block elder_planks = new ModBlock("elder_planks", Blocks.PLANKS, "plankWood");
 	public static final Block juniper_planks = new ModBlock("juniper_planks", Blocks.PLANKS, "plankWood");
