@@ -40,7 +40,7 @@ public class ModEntities {
 	public static final EntityEntry black_dog = createEntityEntry(EntityBlackDog.class, "black_dog", 0x000000, 0x000000, EnumCreatureType.MONSTER, Bewitchment.config.blackDogWeight, Bewitchment.config.blackDogMin, Bewitchment.config.blackDogMax, Bewitchment.config.blackDogBiomes);
 	
 	public static final EntityEntry hellhound = createEntityEntry(EntityHellhound.class, "hellhound", 0x555555, 0xed2939, EnumCreatureType.MONSTER, Bewitchment.config.hellhoundWeight, Bewitchment.config.hellhoundMin, Bewitchment.config.hellhoundMax, Bewitchment.config.hellhoundBiomes);
-	public static final EntityEntry serpent = createEntityEntry(EntitySerpent.class, "serpent", 0x555555, 0xff9966, EnumCreatureType.MONSTER, Bewitchment.config.serpentWeight, Bewitchment.config.serpentMin, Bewitchment.config.serpentMax, Bewitchment.config.serpentBiomes);
+	public static final EntityEntry serpent = createEntityEntry(EntityFeuerwurm.class, "serpent", 0x555555, 0xff9966, EnumCreatureType.MONSTER, Bewitchment.config.serpentWeight, Bewitchment.config.serpentMin, Bewitchment.config.serpentMax, Bewitchment.config.serpentBiomes);
 	
 	public static final EntityEntry demon = createEntityEntry(EntityDemon.class, "demon", 0x555555, 0xed2939);
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);

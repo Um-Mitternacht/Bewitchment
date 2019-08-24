@@ -23,10 +23,10 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
-public class EntitySerpent extends ModEntityMob {
+public class EntityFeuerwurm extends ModEntityMob {
 	private int milkTimer;
 	
-	public EntitySerpent(World world) {
+	public EntityFeuerwurm(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"));
 		setSize(1, 0.85f);
 		isImmuneToFire = true;

@@ -2,7 +2,7 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
@@ -95,7 +95,7 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	public void onStruckByLightning(EntityLightningBolt bolt) {
-		Util.convertEntity(this, new EntitySerpent(world));
+		Util.convertEntity(this, new EntityFeuerwurm(world));
 	}
 	
 	@Override

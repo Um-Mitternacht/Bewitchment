@@ -5,7 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.entity.spirit.demon.EntitySerpent;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
@@ -44,7 +44,7 @@ public class RitualHellmouth extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(4) + 1; i++) {
 				EntityLiving entity;
-				entity = world.rand.nextBoolean() ? new EntityBlaze(world) : new EntitySerpent(world);
+				entity = world.rand.nextBoolean() ? new EntityBlaze(world) : new EntityFeuerwurm(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
