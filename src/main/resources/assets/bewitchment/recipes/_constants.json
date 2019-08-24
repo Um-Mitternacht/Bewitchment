@@ -78,13 +78,13 @@
 	  {
 		"type": "forge:ore_dict",
 		"ore": "lumpSalt"
-	  },	  
+	  },
 	  {
 		"type": "forge:ore_dict",
 		"ore": "materialSalt"
 	  }
 	]
-  },  
+  },
   {
 	"name": "CANDLE_ANY",
 	"ingredient": [

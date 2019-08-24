@@ -21,6 +21,20 @@
 			  "tag": "{\"patchouli:book\": \"bewitchment:codex_infernalis\"}"
 			}
 		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:dragons_blood_sapling",
+		  "weight": 3,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			}
+		  ]
 		}
 	  ]
 	}
