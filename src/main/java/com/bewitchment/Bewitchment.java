@@ -29,10 +29,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
-import com.bewitchment.common.handler.BlockDropHandler;
-import com.bewitchment.common.handler.GuiHandler;
-import com.bewitchment.common.handler.MaterialHandler;
-import com.bewitchment.common.handler.MiscHandler;
+import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
@@ -131,6 +128,10 @@ public class Bewitchment {
 			if (Util.isRelated(true, item, "cold_iron")) MaterialHandler.COLD_IRON_ARMOR.add(item);
 			if (Util.isRelated(false, item, "cold_iron")) MaterialHandler.COLD_IRON_TOOLS.add(item);
 		}
+
+		/*Village*/
+		VillagerAlchemistHandler.initAlchemistHouse();
+		VillagerAlchemistHandler.initAlchemistTrades();
 	}
 	
 	@EventHandler
