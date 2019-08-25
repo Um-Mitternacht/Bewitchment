@@ -96,10 +96,12 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.yew_door.door, BlockDoor.POWERED);
+		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.yew_fence_gate, BlockFenceGate.POWERED);
+		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_fence_gate, BlockFenceGate.POWERED);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
 		ModObjects.crop_belladonna.setItems(ModObjects.belladonna_seeds, ModObjects.belladonna);

@@ -193,7 +193,7 @@ public class TradeHandler {
                     itemStack = null;
                     break;
             }
-            if (random.nextInt(10) >= 5) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
+            if (random.nextInt(10) >= 5 && itemStack != null) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
             return itemStack;
         }
     }

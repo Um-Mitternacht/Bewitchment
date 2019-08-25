@@ -39,6 +39,6 @@ public class VillagerHedgeWitchHandler {
                 new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.heart), new EntityVillager.PriceInfo(3, 6), new EntityVillager.PriceInfo(1, 2)),
                 new TradeHandler.RandomPlantsforEmeralds(new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(2, 5)));
         career_witch.addTrade(5,
-                new TradeHandler.RandomBaublesforEmeralds(new EntityVillager.PriceInfo(5, 8)));
+                new TradeHandler.RandomBaublesforEmeralds(new EntityVillager.PriceInfo(8, 16)));
     }
 }
