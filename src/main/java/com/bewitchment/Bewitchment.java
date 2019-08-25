@@ -32,6 +32,8 @@ import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.world.gen.ModWorldGen;
+import com.bewitchment.common.village.VillagerAlchemistHandler;
+import com.bewitchment.common.village.VillagerHedgeWitchHandler;
 import com.bewitchment.proxy.ServerProxy;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRecipes;
@@ -132,6 +134,8 @@ public class Bewitchment {
 		/*Village*/
 		VillagerAlchemistHandler.initAlchemistHouse();
 		VillagerAlchemistHandler.initAlchemistTrades();
+		VillagerHedgeWitchHandler.initHedgeWitchHouse();
+		VillagerHedgeWitchHandler.initHedgeWitchTrades();
 	}
 	
 	@EventHandler
