@@ -66,7 +66,7 @@ public class ItemTaglock extends Item {
 			copy.setCount(1);
 			copy.getTagCompound().setString("boundId", target.getPersistentID().toString());
 			copy.getTagCompound().setString("boundName", target.getName());
-			Util.giveAndConsumeItem(player, hand, copy);
+			Util.makeTaglock(player, hand, copy);
 		}
 	}
 }

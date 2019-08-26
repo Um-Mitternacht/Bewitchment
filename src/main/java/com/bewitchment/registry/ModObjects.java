@@ -341,6 +341,8 @@ public class ModObjects {
 	public static final Item demon_heart = Util.registerItem("demon_heart");
 	public static final Item snake_venom = Util.registerItem("snake_venom");
 	public static final Item liquid_wroth = Util.registerItem("liquid_wroth");
+	public static final Item bottle_of_blood = Util.registerItem("bottle_of_blood");
+	public static final Item bottle_of_vampire_blood = Util.registerItem("bottle_of_vampire_blood");
 	//Vanilla Drops
 	public static final Item hoof = Util.registerItem("hoof");
 	public static final Item eye_of_old = Util.registerItem(new Item(), "eye_of_old", Arrays.asList(s -> s.getDisplayName().equalsIgnoreCase("Haru") || s.getDisplayName().equalsIgnoreCase("Haruspex") || s.getDisplayName().equalsIgnoreCase("H4rv5p3x"), s -> s.getDisplayName().equalsIgnoreCase("Izuxe") || s.getDisplayName().equalsIgnoreCase("Izu") || s.getDisplayName().equalsIgnoreCase("Izuxe43ui520815")));
