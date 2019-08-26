@@ -50,18 +50,18 @@ public class WorldGenDragonTree extends WorldGenModTree {
         for(int y = 0; y < ymax; y++) {
             for(int i = 0; i < 4; i++) {
                 BlockPos current = treetop.offset(EnumFacing.HORIZONTALS[i], y+1).up(y);
-                setBlocks(world, current, ModObjects.dragons_blood_wood.getDefaultState());
+                setBlocks(world, current, ModObjects.dragons_blood_wood_full.getDefaultState());
             }
             BlockPos trunk = treetop.up(y);
             setBlocks(world, trunk, ModObjects.dragons_blood_wood.getDefaultState());
             BlockPos diagonal = treetop.add(y, y, y);
-            setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getDefaultState());
+            setBlocks(world, diagonal, ModObjects.dragons_blood_wood_full.getDefaultState());
             diagonal = treetop.add(y, y, -y);
-            setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getDefaultState());
+            setBlocks(world, diagonal, ModObjects.dragons_blood_wood_full.getDefaultState());
             diagonal = treetop.add(-y, y, y);
-            setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getDefaultState());
+            setBlocks(world, diagonal, ModObjects.dragons_blood_wood_full.getDefaultState());
             diagonal = treetop.add(-y, y, -y);
-            setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getDefaultState());
+            setBlocks(world, diagonal, ModObjects.dragons_blood_wood_full.getDefaultState());
         }
         return ymax;
     }

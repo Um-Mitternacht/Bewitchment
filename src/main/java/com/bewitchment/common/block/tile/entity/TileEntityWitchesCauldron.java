@@ -158,7 +158,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				else if (mode == 0 || mode == 3) {
 					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
 						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
-							Util.giveAndConsumeItem(player, hand, createPotion());
+							Util.replaceAndConsumeItem(player, hand, createPotion());
 							tank.drain(Fluid.BUCKET_VOLUME / 3, true);
 							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
 							if (tank.getFluidAmount() < 2) {

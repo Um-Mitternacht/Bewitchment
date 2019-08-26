@@ -75,7 +75,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 			if (stack.getItem() == Items.GLASS_BOTTLE) {
 				if (milkTimer == 0 && getRNG().nextBoolean()) {
 					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-					Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
+					Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
 					milkTimer = 6660;
 					return true;
 				}

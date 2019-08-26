@@ -27,7 +27,7 @@ public class ItemBottledFrostfire extends Item {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
 		if (player.canPlayerEdit(pos0, face, player.getHeldItem(hand)) && world.mayPlace(world.getBlockState(pos0).getBlock(), pos0, false, face, player) && world.getBlockState(pos0.down()).isOpaqueCube()) {
-			Util.giveAndConsumeItem(player, hand, new ItemStack(Items.GLASS_BOTTLE));
+			Util.replaceAndConsumeItem(player, hand, new ItemStack(Items.GLASS_BOTTLE));
 			world.setBlockState(pos0, ModObjects.frostfire.getDefaultState());
 			world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1, 1);
 			return EnumActionResult.SUCCESS;

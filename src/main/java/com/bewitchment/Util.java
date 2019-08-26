@@ -179,14 +179,14 @@ public class Util {
 		}
 	}
 	
-	public static void makeTaglock(EntityPlayer player, EnumHand hand, ItemStack stack) {
+	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		giveItem(player, stack);
 		if (!player.isCreative()) {
 			player.getHeldItem(hand).shrink(1);
 		}
 	}
 
-	public static void giveAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
+	public static void replaceAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);
 		else giveItem(player, stack);

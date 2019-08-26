@@ -65,7 +65,7 @@ public class BlockFrostfire extends ModBlockContainer {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (!player.isSneaking() && player.getHeldItem(hand).getItem() == Items.GLASS_BOTTLE) {
 			if (!world.isRemote) {
-				Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.bottled_frostfire));
+				Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.bottled_frostfire));
 				world.setBlockToAir(pos);
 				world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1, 1.75f);
 			}

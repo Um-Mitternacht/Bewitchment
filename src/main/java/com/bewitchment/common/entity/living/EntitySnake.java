@@ -63,7 +63,7 @@ public class EntitySnake extends ModEntityTameable {
 				if (milkTimer == 0 && getRNG().nextBoolean()) {
 					if (getGrowingAge() >= 0) {
 						world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-						Util.giveAndConsumeItem(player, hand, new ItemStack(ModObjects.snake_venom));
+						Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.snake_venom));
 						milkTimer = 3600;
 						return true;
 					}

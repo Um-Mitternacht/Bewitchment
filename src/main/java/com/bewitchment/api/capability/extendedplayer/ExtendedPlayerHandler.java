@@ -94,7 +94,7 @@ public class ExtendedPlayerHandler {
 			// This should probably go somewhere else
 			if (event.getEntityLiving() instanceof EntityAnimal || event.getEntityLiving() instanceof EntityPlayer || event.getEntityLiving() instanceof EntityVillager) {
 				if(player.getHeldItem(EnumHand.MAIN_HAND).getItem() == ModObjects.athame && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Items.GLASS_BOTTLE) {
-					Util.giveAndConsumeItem(player, EnumHand.OFF_HAND, new ItemStack(ModObjects.bottle_of_blood));
+					Util.replaceAndConsumeItem(player, EnumHand.OFF_HAND, new ItemStack(ModObjects.bottle_of_blood));
 				}
 			}
 		}
