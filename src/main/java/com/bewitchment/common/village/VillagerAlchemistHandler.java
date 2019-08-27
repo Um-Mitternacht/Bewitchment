@@ -33,7 +33,7 @@ public class VillagerAlchemistHandler {
                 //new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.stone_ichor), new EntityVillager.PriceInfo(2, 4), new EntityVillager.PriceInfo(1, 3)),
                 new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.fiery_unguent), new EntityVillager.PriceInfo(4, 6), new EntityVillager.PriceInfo(1, 3)));
         career_alchemist.addTrade(3,
-                //new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.dragons_blood_resin), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(3, 5)),
+                new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.dragons_blood_resin), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(3, 5)),
                 //new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.moonstone), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(2, 5)),
                 new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.bottled_frostfire), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(3, 5)),
                 new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.amethyst), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(2, 5)),

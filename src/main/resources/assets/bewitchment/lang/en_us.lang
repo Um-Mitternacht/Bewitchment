@@ -92,7 +92,6 @@ tile.bewitchment.elder_wood.name=Elder Wood
 tile.bewitchment.juniper_wood.name=Juniper Wood
 tile.bewitchment.yew_wood.name=Yew Wood
 tile.bewitchment.dragons_blood_wood.name=Dragons Blood Wood
-tile.bewitchment.dragons_blood_wood_full.name=Dragons Blood Wood
 tile.bewitchment.cypress_planks.name=Cypress Planks
 tile.bewitchment.elder_planks.name=Elder Planks
 tile.bewitchment.juniper_planks.name=Juniper Planks
@@ -268,6 +267,7 @@ item.bewitchment.fiery_unguent.name=Fiery Unguent
 item.bewitchment.diabolical_vein.name=Diabolical Vein
 item.bewitchment.pure_filament.name=Pure Filament
 item.bewitchment.witches_stitching.name=Witches' Stitching
+item.bewitchment.sanguine_cloth.name=Sanguine Cloth
 
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
@@ -302,6 +302,7 @@ tooltip.bewitchment.wormwood_seeds=Seed from a weedy herb
 item.bewitchment.elderberries.name=Elderberries
 item.bewitchment.juniper_berries.name=Juniper Berries
 item.bewitchment.yew_aril.name=Yew Aril
+item.bewitchment.dragons_blood_resin.name=Dragon's Blood Resin
 
 item.bewitchment.lizard_leg.name=Lizard Leg
 item.bewitchment.eye_of_newt.name=Eye of Newt

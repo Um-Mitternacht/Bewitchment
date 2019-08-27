@@ -150,12 +150,11 @@ public class ModObjects {
 	public static final Block juniper_sapling = new ModBlockSapling("juniper_sapling", new WorldGenJuniperTree(false), "treeSapling");
 	public static final Block yew_sapling = new ModBlockSapling("yew_sapling", new WorldGenYewTree(false), "treeSapling");
 	public static final Block dragons_blood_sapling = new ModBlockSapling("dragons_blood_sapling", new WorldGenDragonTree(false), "treeSapling");
-	public static final Block cypress_wood = new ModBlockLog("cypress_wood", Blocks.LOG, "logWood");
-	public static final Block elder_wood = new ModBlockLog("elder_wood", Blocks.LOG, "logWood");
-	public static final Block juniper_wood = new ModBlockLog("juniper_wood", Blocks.LOG, "logWood");
-	public static final Block yew_wood = new ModBlockLog("yew_wood", Blocks.LOG, "logWood");
+	public static final Block cypress_wood = new ModBlockPillar("cypress_wood", Blocks.LOG, "logWood");
+	public static final Block elder_wood = new ModBlockPillar("elder_wood", Blocks.LOG, "logWood");
+	public static final Block juniper_wood = new ModBlockPillar("juniper_wood", Blocks.LOG, "logWood");
+	public static final Block yew_wood = new ModBlockPillar("yew_wood", Blocks.LOG, "logWood");
 	public static final Block dragons_blood_wood = new ModBlockLog("dragons_blood_wood", Blocks.LOG, "logWood");
-	public static final Block dragons_blood_wood_full = new ModBlockLog("dragons_blood_wood_full", Blocks.LOG, "logWood");
 	public static final Block cypress_planks = new ModBlock("cypress_planks", Blocks.PLANKS, "plankWood");
 	public static final Block elder_planks = new ModBlock("elder_planks", Blocks.PLANKS, "plankWood");
 	public static final Block juniper_planks = new ModBlock("juniper_planks", Blocks.PLANKS, "plankWood");
@@ -308,6 +307,7 @@ public class ModObjects {
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
 	public static final Item witches_stitching = Util.registerItem("witches_stitching");
+	public static final Item sanguine_cloth = Util.registerItem("sanguine_cloth");
 	//Plants
 	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
@@ -358,6 +358,7 @@ public class ModObjects {
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
+	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
 	
 	public static void preInit() {
 		if (Loader.isModLoaded("chisel")) {

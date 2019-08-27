@@ -2,21 +2,28 @@ package com.bewitchment.common.block.util;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class ModBlockLog extends BlockLog {
@@ -26,6 +33,7 @@ public class ModBlockLog extends BlockLog {
 	public ModBlockLog(String name, Block base, String... oreDictionaryNames) {
 		super();
 		Util.registerBlock(this, name, base, oreDictionaryNames);
+		setTickRandomly(true);
 		setDefaultState(getBlockState().getBaseState().withProperty(LOG_AXIS, EnumAxis.Y).withProperty(IS_NATURAL, true).withProperty(IS_SLASHED, false));
 	}
 	
@@ -62,11 +70,21 @@ public class ModBlockLog extends BlockLog {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if(playerIn.getHeldItem(hand).getItem() instanceof ItemBoline && state.getValue(IS_NATURAL) && !state.getValue(IS_SLASHED)) {
+		if(playerIn.getHeldItem(hand).getItem() instanceof ItemBoline && state.getValue(IS_NATURAL).equals(true) && state.getValue(IS_SLASHED).equals(false)) {
 			worldIn.setBlockState(pos, state.withProperty(IS_SLASHED, true));
+			playerIn.getHeldItem(hand).damageItem(1, playerIn);
+			if(worldIn.isRemote) worldIn.playSound(playerIn, pos, SoundEvents.ENTITY_ENDERDRAGON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		BlockPos dropPos = pos.offset(EnumFacing.HORIZONTALS[rand.nextInt(4)],1);
+		if(worldIn.isAreaLoaded(pos, 1) && state.getValue(IS_SLASHED).equals(true) && rand.nextInt(100) <= 7) {
+			worldIn.spawnEntity(new EntityItem(worldIn, dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModObjects.dragons_blood_resin)));
+		}
 	}
 
 	@Override
