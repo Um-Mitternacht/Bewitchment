@@ -185,7 +185,7 @@ public class Util {
 			player.getHeldItem(hand).shrink(1);
 		}
 	}
-
+	
 	public static void replaceAndConsumeItem(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
 		if (player.getHeldItem(hand).isEmpty()) player.setHeldItem(hand, stack);

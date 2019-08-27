@@ -8,16 +8,62 @@
 	}
   },
   "variants": {
-	  "normal": [
-		  {}
-	  ],
-	  "axis=y,is_slashed=true": [{"textures": {"side": "bewitchment:blocks/dragons_blood_log_cut"}}],
-	  "axis=y,is_slashed=false":[{}],
-	  "axis=x,is_slashed=true": [{"textures": {"side": "bewitchment:blocks/dragons_blood_log_cut"}, "x": 90,"y": 90}],
-	  "axis=x,is_slashed=false":[{"x": 90,"y": 90}],
-	  "axis=z,is_slashed=true": [{"textures": {"side": "bewitchment:blocks/dragons_blood_log_cut"}, "x": 90}],
-	  "axis=z,is_slashed=false":[{"x": 90}],
-	  "axis=none,is_slashed=true": [{"textures": {"side": "bewitchment:blocks/dragons_blood_log_cut", "end": "bewitchment:blocks/dragons_blood_log_cut"}}],
-	  "axis=none,is_slashed=false":[{"textures": {"side": "bewitchment:blocks/dragons_blood_log_side", "end": "bewitchment:blocks/dragons_blood_log_side"}}]
+	"normal": [
+	  {}
+	],
+	"axis=y,is_slashed=true": [
+	  {
+		"textures": {
+		  "side": "bewitchment:blocks/dragons_blood_log_cut"
+		}
+	  }
+	],
+	"axis=y,is_slashed=false": [
+	  {}
+	],
+	"axis=x,is_slashed=true": [
+	  {
+		"textures": {
+		  "side": "bewitchment:blocks/dragons_blood_log_cut"
+		},
+		"x": 90,
+		"y": 90
+	  }
+	],
+	"axis=x,is_slashed=false": [
+	  {
+		"x": 90,
+		"y": 90
+	  }
+	],
+	"axis=z,is_slashed=true": [
+	  {
+		"textures": {
+		  "side": "bewitchment:blocks/dragons_blood_log_cut"
+		},
+		"x": 90
+	  }
+	],
+	"axis=z,is_slashed=false": [
+	  {
+		"x": 90
+	  }
+	],
+	"axis=none,is_slashed=true": [
+	  {
+		"textures": {
+		  "side": "bewitchment:blocks/dragons_blood_log_cut",
+		  "end": "bewitchment:blocks/dragons_blood_log_cut"
+		}
+	  }
+	],
+	"axis=none,is_slashed=false": [
+	  {
+		"textures": {
+		  "side": "bewitchment:blocks/dragons_blood_log_side",
+		  "end": "bewitchment:blocks/dragons_blood_log_side"
+		}
+	  }
+	]
   }
 }

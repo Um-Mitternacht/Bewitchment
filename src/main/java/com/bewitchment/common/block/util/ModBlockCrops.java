@@ -35,8 +35,8 @@ public class ModBlockCrops extends BlockCrops {
 	
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if(!this.canBlockStay(world, to, state)) {
-			this.dropBlockAsItem(world, to, state, 0 );
+		if (!this.canBlockStay(world, to, state)) {
+			this.dropBlockAsItem(world, to, state, 0);
 			world.removeTileEntity(to);
 			world.setBlockToAir(to);
 		}
