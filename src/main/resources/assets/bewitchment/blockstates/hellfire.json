@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "fire_floor1",
+    "textures": {
+      "particle": "blocks/fire_layer_1",
+      "fire": "blocks/fire_layer_1"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ]
+  }
+}

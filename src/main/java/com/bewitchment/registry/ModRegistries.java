@@ -288,7 +288,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "absence"), Util.get(Items.MILK_BUCKET), new PotionEffect(ModPotions.absence, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "purification"), Util.get(Items.MELON), new PotionEffect(ModPotions.purification, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "corruption"), Util.get(Items.FERMENTED_SPIDER_EYE), new PotionEffect(ModPotions.corruption, 1)));
-		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_resistance"), Util.get(ModObjects.yew_aril), new PotionEffect(ModPotions.magic_resistance, (20 * 60))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_resistance"), Util.get(ModObjects.dragons_blood_resin), new PotionEffect(ModPotions.magic_resistance, (20 * 60))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "magic_weakness"), Util.get(ModObjects.juniper_berries), new PotionEffect(ModPotions.magic_weakness, (20 * 60))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "hellworld"), Util.get(ModObjects.hellhound_horn), new PotionEffect(ModPotions.hellworld, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iceworld"), Util.get(Blocks.ICE, Blocks.PACKED_ICE, Blocks.SNOW), new PotionEffect(ModPotions.iceworld, 1)));
@@ -332,8 +332,8 @@ public class ModRegistries {
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "acacia_resin"), new ItemStack(Blocks.SAPLING, 1, 4), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.acacia_resin), 0.75f));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ebb_of_death"), new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.ebb_of_death), 0.75f));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "droplet_of_wisdom"), new ItemStack(ModObjects.elder_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.yew_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		
 		if (Loader.isModLoaded("dynamictrees")) {
 			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {

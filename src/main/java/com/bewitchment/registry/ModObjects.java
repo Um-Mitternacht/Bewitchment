@@ -223,6 +223,8 @@ public class ModObjects {
 	public static final Block tarot_table = registerTileEntity(new BlockTarotTable(), TileEntityTarotTable.class);
 	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
+	public static final Block hellfire = new BlockHellfire();
+
 	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
 	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate");
@@ -276,6 +278,7 @@ public class ModObjects {
 	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
+	public static final Item bottled_hellfire = new ItemBottledHellfire();
 	public static final Item bone_needle = Util.registerItem("bone_needle");
 	public static final Item taglock = new ItemTaglock();
 	//Materials

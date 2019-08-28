@@ -160,6 +160,7 @@ tile.bewitchment.tarot_table.name=Tarot Table
 item.bewitchment.tarot_cards.name=Tarot Cards
 tooltip.bewitchment.tarot_cards=They are receptive to %s's future
 tile.bewitchment.frostfire.name=Frostfire
+tile.bewitchment.hellfire.name=Hellfire
 
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
@@ -233,6 +234,7 @@ item.bewitchment.nethersteel_leonard_idol.name=Nethersteel Leonard Idol
 item.bewitchment.scorned_brick_leonard_idol.name=Scorned Brick Leonard Idol
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
+item.bewitchment.bottled_hellfire.name=Bottled Hellfire
 item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock
 tooltip.bewitchment.taglock=Contains a tag of %s
