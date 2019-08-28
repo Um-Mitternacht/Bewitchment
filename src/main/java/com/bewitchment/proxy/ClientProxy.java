@@ -117,7 +117,7 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x717d39 : 0xffffff, ModObjects.liquid_wroth);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x9e0000 : 0xffffff, ModObjects.bottle_of_blood);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
-
+		
 		ModelBase lenny = new ModelLeonardIdol();
 		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
 		registerIdol(ModObjects.terracotta_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/clay.png"));

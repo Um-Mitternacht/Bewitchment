@@ -77,7 +77,7 @@ public class BewitchmentAPI {
 	public static boolean isSpectre(EntityLivingBase entity) {
 		return false;
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return if player defeated at least one boss
@@ -85,8 +85,8 @@ public class BewitchmentAPI {
 	public static boolean defeatedBoss(EntityPlayer entity) {
 		return !(entity.getCapability(ExtendedPlayer.CAPABILITY, null)).uniqueDefeatedBosses.isEmpty();
 	}
-
-
+	
+	
 	/**
 	 * @param entity the entity to check
 	 * @return false always, infusion is not currently in the mod
@@ -94,18 +94,18 @@ public class BewitchmentAPI {
 	public static boolean isInfused(EntityPlayer entity) {
 		return false;
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return true when there's active effect not provided by beacon, vice versa
 	 */
 	public static boolean hasEffects(EntityPlayer entity) {
-		for(PotionEffect potion: entity.getActivePotionEffects()) {
-			if(!potion.getIsAmbient()) return true;
+		for (PotionEffect potion : entity.getActivePotionEffects()) {
+			if (!potion.getIsAmbient()) return true;
 		}
 		return false;
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return false always, poppets are not currently in the mod

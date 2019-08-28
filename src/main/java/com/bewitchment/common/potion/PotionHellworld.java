@@ -2,8 +2,8 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.entity.living.EntitySnake;
-import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
+import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;

@@ -158,12 +158,13 @@ public class ModItemDoor extends ItemDoor {
 				}
 			}
 		}
-
+		
 		@Override
 		public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
-			if(this == ModObjects.juniper_door.door && entity instanceof EntityZombie) {
+			if (this == ModObjects.juniper_door.door && entity instanceof EntityZombie) {
 				return false;
-			} else return super.canEntityDestroy(state, world, pos, entity);
+			}
+			else return super.canEntityDestroy(state, world, pos, entity);
 		}
 	}
 }
