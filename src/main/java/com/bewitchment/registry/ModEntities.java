@@ -31,7 +31,6 @@ public class ModEntities {
 	public static final EntityEntry yew_broom = createEntityEntry(EntityYewBroom.class, "yew_broom");
 	
 	public static final EntityEntry lizard = createEntityEntry(EntityLizard.class, "lizard", 0x568203, 0x0070bb, EnumCreatureType.CREATURE, Bewitchment.config.lizardWeight, Bewitchment.config.lizardMin, Bewitchment.config.lizardMax, Bewitchment.config.lizardBiomes);
-	public static final EntityEntry newt = createEntityEntry(EntityNewt.class, "newt", 0x000000, 0xffd300, EnumCreatureType.CREATURE, Bewitchment.config.newtWeight, Bewitchment.config.newtMin, Bewitchment.config.newtMax, Bewitchment.config.newtBiomes);
 	public static final EntityEntry owl = createEntityEntry(EntityOwl.class, "owl", 0xaf813f, 0x6e5127, EnumCreatureType.CREATURE, Bewitchment.config.owlWeight, Bewitchment.config.owlMin, Bewitchment.config.owlMax, Bewitchment.config.owlBiomes);
 	public static final EntityEntry raven = createEntityEntry(EntityRaven.class, "raven", 0x222222, 0x280638, EnumCreatureType.CREATURE, Bewitchment.config.ravenWeight, Bewitchment.config.ravenMin, Bewitchment.config.ravenMax, Bewitchment.config.ravenBiomes);
 	public static final EntityEntry snake = createEntityEntry(EntitySnake.class, "snake", 0xfF9779, 0x696969, EnumCreatureType.CREATURE, Bewitchment.config.snakeWeight, Bewitchment.config.snakeMin, Bewitchment.config.snakeMax, Bewitchment.config.snakeBiomes);

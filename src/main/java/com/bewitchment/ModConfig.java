@@ -24,8 +24,8 @@ public class ModConfig extends Configuration {
 	
 	public final int silverSize, silverChance, silverMin, silverMax, saltSize, saltChance, saltMin, saltMax, amethystSize, amethystChance, amethystMin, amethystMax, garnetSize, garnetChance, garnetMin, garnetMax, opalSize, opalChance, opalMin, opalMax;
 	
-	public final List<String> lizardBiomes, newtBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, feuerwurmBiomes;
-	public final int lizardWeight, lizardMin, lizardMax, newtWeight, newtMin, newtMax, owlWeight, owlMin, owlMax, ravenWeight, ravenMin, ravenMax, snakeWeight, snakeMin, snakeMax, toadWeight, toadMin, toadMax, blackDogWeight, blackDogMin, blackDogMax, hellhoundWeight, hellhoundMin, hellhoundMax, feuerwurmWeight, feuerwurmMin, feuerwurmMax;
+	public final List<String> lizardBiomes, owlBiomes, ravenBiomes, snakeBiomes, toadBiomes, blackDogBiomes, hellhoundBiomes, feuerwurmBiomes;
+	public final int lizardWeight, lizardMin, lizardMax, owlWeight, owlMin, owlMax, ravenWeight, ravenMin, ravenMax, snakeWeight, snakeMin, snakeMax, toadWeight, toadMin, toadMax, blackDogWeight, blackDogMin, blackDogMax, hellhoundWeight, hellhoundMin, hellhoundMax, feuerwurmWeight, feuerwurmMin, feuerwurmMax;
 	
 	public final boolean enableCatsAndDogsFortune;
 	
@@ -78,11 +78,6 @@ public class ModConfig extends Configuration {
 		lizardWeight = getInt("lizardWeight", "mobSpawns/lizard", 20, 0, Byte.MAX_VALUE, "The weight chance for lizards to spawn");
 		lizardMin = getInt("lizardMin", "mobSpawns/lizard", 1, 0, Byte.MAX_VALUE, "The minimum amount of lizards to spawn at once");
 		lizardMax = getInt("lizardMax", "mobSpawns/lizard", 4, 0, Byte.MAX_VALUE, "The maximum amount of lizards to spawn at once");
-		
-		newtBiomes = Arrays.asList(getStringList("newtBiomes", "mobSpawns/newt", new String[]{Type.SWAMP.getName()}, "The list of BiomeDictionary types that the newt will spawn in."));
-		newtWeight = getInt("newtWeight", "mobSpawns/newt", 20, 0, Byte.MAX_VALUE, "The weight chance for newts to spawn");
-		newtMin = getInt("newtMin", "mobSpawns/newt", 1, 0, Byte.MAX_VALUE, "The minimum amount of newts to spawn at once");
-		newtMax = getInt("newtMax", "mobSpawns/newt", 4, 0, Byte.MAX_VALUE, "The maximum amount of newts to spawn at once");
 		
 		owlBiomes = Arrays.asList(getStringList("owlBiomes", "mobSpawns/owl", new String[]{Type.FOREST.getName(), Type.DENSE.getName()}, "The list of BiomeDictionary types that the owl will spawn in."));
 		owlWeight = getInt("owlWeight", "mobSpawns/owl", 20, 0, Byte.MAX_VALUE, "The weight chance for owls to spawn");
