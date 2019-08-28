@@ -334,7 +334,6 @@ public class ModObjects {
 	public static final Item stew_of_the_grotesque = new ItemStewOfTheGrotesque();
 	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");
-	public static final Item eye_of_newt = Util.registerItem("eye_of_newt");
 	public static final Item owlets_wing = Util.registerItem("owlets_wing");
 	public static final Item ravens_feather = Util.registerItem("ravens_feather");
 	public static final Item adders_fork = Util.registerItem("adders_fork");
