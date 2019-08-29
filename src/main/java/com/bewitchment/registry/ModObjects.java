@@ -145,7 +145,8 @@ public class ModObjects {
 	//Plants
 	public static final Block embergrass = new BlockEmbergrass();
 	public static final Block torchwood = new BlockTorchwood();
-	public static final Block spanish_moss = new BlockSpanishMoss();
+	public static final Block spanish_moss = new BlockSpanishMoss(false);
+	public static final Block spanish_moss_end = new BlockSpanishMoss(true);
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
