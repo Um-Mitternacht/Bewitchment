@@ -6,10 +6,13 @@ import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,16 +20,27 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Random;
+import java.util.function.Predicate;
+
+import static com.bewitchment.common.block.plants.BlockSpanishMoss.TERMINAL;
+import static net.minecraft.block.BlockVine.*;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -90,6 +104,37 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
+	}
+
+	@SubscribeEvent
+	public void vineGen(PopulateChunkEvent.Pre event) {
+		Chunk chunk = event.getWorld().getChunk(event.getChunkX(), event.getChunkZ());
+		Biome biome = event.getWorld().getBiome(new BlockPos(event.getChunkX() * 16 + 8, 64, event.getChunkZ() * 16 + 8));
+		Predicate<Biome> predicate = b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP);
+		if(!predicate.test(biome)) return;
+		Block fromBlock = Blocks.VINE;
+		Block toBlock = ModObjects.spanish_moss;
+		Random rand = new Random();
+		for (ExtendedBlockStorage storage : chunk.getBlockStorageArray()) {
+			if (storage != null) {
+				for (int x = 0; x < 16; ++x) {
+					for (int y = 0; y < 16; ++y) {
+						for (int z = 0; z < 16; ++z) {
+							if (storage.get(x, y, z).getBlock() == fromBlock && rand.nextDouble() < 0.1) {
+								boolean north = storage.get(x, y, z).getValue(NORTH);
+								boolean south = storage.get(x, y, z).getValue(SOUTH);
+								boolean east = storage.get(x, y, z).getValue(EAST);
+								boolean west = storage.get(x, y, z).getValue(WEST);
+								boolean up = storage.get(x, y, z).getValue(UP);
+								IBlockState toBlockState = toBlock.getBlockState().getBaseState().withProperty(NORTH, north).withProperty(SOUTH, south).withProperty(EAST, east).withProperty(WEST, west).withProperty(UP, up).withProperty(TERMINAL, false);
+								storage.set(x, y, z, toBlockState);
+							}
+						}
+					}
+				}
+			}
+		}
+		chunk.setModified(true);
 	}
 	
 	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
