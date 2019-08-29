@@ -65,11 +65,6 @@
 	  "type": "text",
 	  "title": "Newt",
 	  "text": "While superficially resembling a lizard, newts are actually a form of amphibian. They tend to live in lush biomes, especially near water. Newts feed upon invertebrates."
-	},
-	{
-	  "type": "entity",
-	  "entity": "bewitchment:newt",
-	  "scale": 0.5
 	}
   ]
 }
