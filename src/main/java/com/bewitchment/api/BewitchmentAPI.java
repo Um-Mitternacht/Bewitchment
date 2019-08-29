@@ -6,9 +6,7 @@ import com.bewitchment.api.registry.AltarUpgrade;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityVex;
-import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -37,14 +35,19 @@ public class BewitchmentAPI {
 	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
 	
 	/**
-	 * The Demon creature attribute.
+	 * The Demon creature attribute. Used for well, demons.
 	 */
 	public static EnumCreatureAttribute DEMON = EnumHelper.addCreatureAttribute("DEMON");
 	
 	/**
-	 * The Spirit creature attribute.
+	 * The Spirit creature attribute. Used for ghosts and pretty much most spirits that aren't demons or fae.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+	
+	/**
+	 * The Fairy creature attribute. This is for future usage ATM.
+	 */
+	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
 	
 	/**
 	 * @param entity the entity to check
@@ -133,7 +136,7 @@ public class BewitchmentAPI {
 	
 	public static float getColdIronWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityVex) {
+		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman || entity.getClass().getName().endsWith("EntityPixie") || entity.getClass().getName().endsWith("EntityHirschgeist") || entity.getClass().getName().endsWith("EntityFairy")) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}
