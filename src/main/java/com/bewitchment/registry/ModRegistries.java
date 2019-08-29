@@ -156,7 +156,6 @@ public class ModRegistries {
 		event.getRegistry().register(EntityEntryBuilder.create().entity(ModEntityTippedArrow.class).id(new ResourceLocation(Bewitchment.MODID, "arrow"), ModEntities.entity_id++).name("Arrow").tracker(64, 1, true).build());
 		
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
-		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/newt"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/owl"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/snake"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/raven"));
