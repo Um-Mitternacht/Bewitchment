@@ -37,14 +37,19 @@ public class BewitchmentAPI {
 	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
 	
 	/**
-	 * The Demon creature attribute.
+	 * The Demon creature attribute. Used for well, demons.
 	 */
 	public static EnumCreatureAttribute DEMON = EnumHelper.addCreatureAttribute("DEMON");
 	
 	/**
-	 * The Spirit creature attribute.
+	 * The Spirit creature attribute. Used for ghosts and pretty much most spirits that aren't demons or fae.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
+	
+	/**
+	 * The Fairy creature attribute. This is for future usage ATM.
+	 */
+	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
 	
 	/**
 	 * @param entity the entity to check
@@ -133,7 +138,7 @@ public class BewitchmentAPI {
 	
 	public static float getColdIronWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity instanceof EntityBlaze || entity instanceof EntityVex) {
+		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}
