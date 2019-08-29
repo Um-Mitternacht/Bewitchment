@@ -8,11 +8,15 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 @SuppressWarnings({"NullableProblems","WeakerAccess"})
@@ -42,6 +46,13 @@ public class BlockSpanishMoss extends BlockVine {
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+    }
+
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack) {
+        if (!worldIn.isRemote && stack.getItem() == ModObjects.boline) {
+            spawnAsEntity(worldIn, pos, new ItemStack(ModObjects.spanish_moss, 1, 0));
+        }
     }
 
     @Override

@@ -7,8 +7,11 @@ import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockVine;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -24,6 +27,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 import java.util.function.Predicate;
+
+import static com.bewitchment.common.block.plants.BlockSpanishMoss.TERMINAL;
 
 public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator cypressTree = new WorldGenCypressTree(true);
@@ -61,6 +66,7 @@ public class ModWorldGen implements IWorldGenerator {
 			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
 			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
 			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
+			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
 	}
 	
@@ -95,6 +101,28 @@ public class ModWorldGen implements IWorldGenerator {
 			BlockPos pos = new BlockPos(x, world.getHeight(x, z), z);
 			Biome biome = world.getBiome(pos);
 			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
+		}
+	}
+
+	private void generateMoss(World world, Random rand, int chunkX, int chunkZ, Predicate<Biome> predicate) {
+		BlockPos position = new BlockPos(chunkX * 16 + 8, world.getHeight(chunkX * 16 + 8, chunkZ * 16 + 8) - 7, chunkZ * 16 + 8 );
+		Biome biome = world.getBiome(position);
+		if (!predicate.test(biome)) return;
+		for(; position.getY() < 128; position = position.up()) {
+			if (world.isAirBlock(position)) {
+				EnumFacing[] var4 = EnumFacing.Plane.HORIZONTAL.facings();
+				int var5 = var4.length;
+				for(int var6 = 0; var6 < var5; ++var6) {
+					EnumFacing enumfacing = var4[var6];
+					if (ModObjects.spanish_moss.canPlaceBlockOnSide(world, position, enumfacing)) {
+						IBlockState iblockstate = ModObjects.spanish_moss.getDefaultState().withProperty(BlockVine.SOUTH, enumfacing == EnumFacing.NORTH).withProperty(BlockVine.WEST, enumfacing == EnumFacing.EAST).withProperty(BlockVine.NORTH, enumfacing == EnumFacing.SOUTH).withProperty(BlockVine.EAST, enumfacing == EnumFacing.WEST).withProperty(TERMINAL, false);
+						world.setBlockState(position, iblockstate, 2);
+						break;
+					}
+				}
+			} else {
+				position = position.add(rand.nextInt(4) - rand.nextInt(4), 0, rand.nextInt(4) - rand.nextInt(4));
+			}
 		}
 	}
 }

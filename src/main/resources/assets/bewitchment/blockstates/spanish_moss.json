@@ -22,6 +22,9 @@
     "east=true,north=true,south=false,terminal=false,up=false,west=false": {
       "model": "bewitchment:spanish_moss_2"
     },
+    "east=true,north=true,south=false,terminal=false,up=false,west=true": {
+      "model": "bewitchment:spanish_moss_2"
+    },
     "east=true,north=false,south=true,terminal=false,up=false,west=false": {
       "model": "bewitchment:spanish_moss_2",
       "y": 90
