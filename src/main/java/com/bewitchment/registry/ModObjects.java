@@ -8,6 +8,7 @@ import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.BlockEmbergrass;
+import com.bewitchment.common.block.plants.BlockSpanishMoss;
 import com.bewitchment.common.block.plants.BlockTorchwood;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
@@ -144,6 +145,7 @@ public class ModObjects {
 	//Plants
 	public static final Block embergrass = new BlockEmbergrass();
 	public static final Block torchwood = new BlockTorchwood();
+	public static final Block spanish_moss = new BlockSpanishMoss();
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
