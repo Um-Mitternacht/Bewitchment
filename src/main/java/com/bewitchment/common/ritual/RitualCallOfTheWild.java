@@ -37,7 +37,7 @@ public class RitualCallOfTheWild extends Ritual {
 				EntityLiving entity;
 				int rand = world.rand.nextInt(9);
 				if (rand == 0) entity = new EntityLizard(world);
-				else if (rand == 1) entity = new EntityNewt(world);
+				else if (rand == 1) entity = new EntityLizard(world);
 				else if (rand == 2) entity = new EntityOwl(world);
 				else if (rand == 3) entity = new EntityRaven(world);
 				else if (rand == 4) entity = new EntitySnake(world);

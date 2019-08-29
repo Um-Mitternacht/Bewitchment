@@ -156,7 +156,6 @@ public class ModRegistries {
 		event.getRegistry().register(EntityEntryBuilder.create().entity(ModEntityTippedArrow.class).id(new ResourceLocation(Bewitchment.MODID, "arrow"), ModEntities.entity_id++).name("Arrow").tracker(64, 1, true).build());
 		
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
-		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/newt"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/owl"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/snake"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/raven"));
@@ -254,7 +253,7 @@ public class ModRegistries {
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getDyeDamage()))));
 		
 		//There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
-		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(ModObjects.eye_of_newt), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
 	}
 	
 	@SubscribeEvent
@@ -311,7 +310,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "grace"), Util.get("feather"), new PotionEffect(ModPotions.grace, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "shell_armor"), Util.get("coquina"), new PotionEffect(ModPotions.shell_armor, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "deflection"), Util.get(Items.CHORUS_FRUIT_POPPED), new PotionEffect(ModPotions.deflection, (20 * 30))));
-		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "revealing"), Util.get(ModObjects.eye_of_newt), new PotionEffect(ModPotions.revealing, 1)));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "revealing"), Util.get(Items.ENDER_PEARL, ModObjects.eye_of_old), new PotionEffect(ModPotions.revealing, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "disrobing"), Util.get(ModObjects.tallow), new PotionEffect(ModPotions.disrobing, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sinking"), Util.get("nuggetGold", "nuggetIron", "nuggetColdIron", "nuggetCopper", "nuggetTin", "nuggetBronze", "nuggetLead"), new PotionEffect(ModPotions.sinking, (20 * 20))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "cursed_leaps"), Util.get(ModObjects.toe_of_frog), new PotionEffect(ModPotions.cursed_leaps, 1)));
