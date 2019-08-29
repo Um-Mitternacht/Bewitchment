@@ -6,9 +6,7 @@ import com.bewitchment.api.registry.AltarUpgrade;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityVex;
-import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -138,7 +136,7 @@ public class BewitchmentAPI {
 	
 	public static float getColdIronWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex) {
+		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}
