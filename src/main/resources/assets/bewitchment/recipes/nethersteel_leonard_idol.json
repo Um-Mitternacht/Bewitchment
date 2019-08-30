@@ -11,11 +11,10 @@
 	  "ore": "blockNethersteel"
 	},
 	"D": {
-	  "type": "forge:ore_dict",
-	  "ore": "cropHellebore"
+	  "item": "bewitchment:dragons_blood_resin"
 	},
 	"R": {
-	  "item": "minecraft:mutton"
+	  "item": "bewitchment:stew_of_the_grotesque"
 	}
   },
   "result": {

@@ -55,13 +55,23 @@ public class BewitchmentThaumcraft {
 		
 		//Plants
 		event.register.registerObjectTag(new ItemStack(ModObjects.embergrass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.AVERSION, 8));
-		//event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
+		event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		//Saplings
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MIND, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MAGIC, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.yew_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.EXCHANGE, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.FIRE, 5).add(Aspect.ENERGY, 3));
+		//Resins, logs, barks, etc
+		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_resin), new AspectList().add(Aspect.PLANT, 3).add(Aspect.FIRE, 3).add(Aspect.ENERGY, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.FIRE, 10).add(Aspect.ENERGY, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.yew_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.EXCHANGE, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.MAGIC, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.elder_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.MIND, 10));
+		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.DEATH, 10));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_key), new AspectList().add(Aspect.PLANT, 3).add(Aspect.LIFE, 3).add(Aspect.MAGIC, 3));
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.aconitum), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DEATH, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.belladonna), new AspectList().add(Aspect.PLANT, 2).add(Aspect.DEATH, 2).add(Aspect.MAGIC, 2));
@@ -86,6 +96,7 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.diabolical_vein), new AspectList().add(Aspect.CRAFT, 4).add(DEMON, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.pure_filament), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.AURA, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_stitching), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.MAGIC, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sanguine_cloth), new AspectList().add(Aspect.CRAFT, 4).add(DEMON, 4));
 		//Materials
 		event.register.registerObjectTag(new ItemStack(ModObjects.amethyst), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(Aspect.LIFE, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.garnet), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(STAR, 4));
@@ -133,8 +144,12 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.oak_spirit), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.unfired_jar), new AspectList().add(Aspect.VOID, 6).add(Aspect.EARTH, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.empty_jar), new AspectList().add(Aspect.VOID, 6).add(Aspect.EARTH, 6));
-		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6).add(Aspect.EXCHANGE, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_hellfire), new AspectList().add(Aspect.FIRE, 6).add(DEMON, 6).add(Aspect.DARKNESS, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.birch_soul), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.hellfire), new AspectList().add(Aspect.FIRE, 6).add(DEMON, 6).add(Aspect.DARKNESS, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6).add(Aspect.EXCHANGE, 6));
 		
 		//Candles
 		event.register.registerObjectTag(new ItemStack(ModObjects.black_candle), new AspectList().add(Aspect.DARKNESS, 10).add(Aspect.LIGHT, 10).add(Aspect.CRAFT, 10));
@@ -168,6 +183,8 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.spectral_dust), new AspectList().add(Aspect.VOID, 4).add(Aspect.SOUL, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.tallow), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.ALCHEMY, 8).add(Aspect.BEAST, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.wood_ash), new AspectList().add(Aspect.PLANT, 3).add(Aspect.ENTROPY, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.LIFE, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_vampire_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 3).add(DEMON, 3));
 		
 		//Add some of our aspects to existing items in vanilla
 		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.

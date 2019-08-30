@@ -73,7 +73,7 @@ public class ModBlockLog extends BlockLog {
 		if (playerIn.getHeldItem(hand).getItem() instanceof ItemBoline && state.getValue(IS_NATURAL).equals(true) && state.getValue(IS_SLASHED).equals(false)) {
 			worldIn.setBlockState(pos, state.withProperty(IS_SLASHED, true));
 			playerIn.getHeldItem(hand).damageItem(1, playerIn);
-			if (worldIn.isRemote) worldIn.playSound(playerIn, pos, SoundEvents.ENTITY_ENDERDRAGON_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			if (worldIn.isRemote) worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_WOOD_HIT, SoundCategory.BLOCKS, 1.0F, 1.0F);
 			return true;
 		}
 		return false;

@@ -359,6 +359,8 @@ public class ModRegistries {
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "cleansing_balm"), Arrays.asList(Util.get(ModObjects.acacia_resin), Util.get("cropWhiteSage"), Util.get("salt"), Util.get("cropGarlic")), Arrays.asList(new ItemStack(ModObjects.cleansing_balm), new ItemStack(ModObjects.wood_ash))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "demonic_elixir"), Arrays.asList(Util.get(ModObjects.demon_heart), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.empty_jar), Util.get(ModObjects.empty_jar)), Collections.singletonList(new ItemStack(ModObjects.demonic_elixir, 3))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_unguent"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.get("wax")), Collections.singletonList(new ItemStack(ModObjects.fiery_unguent))));
+		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "blood_from_hearts"), Arrays.asList(Util.get(ModObjects.heart), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE)), Collections.singletonList(new ItemStack(ModObjects.bottle_of_blood, 3))));
+		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "bottled_hellfire"), Arrays.asList(Util.get(Items.GLASS_BOTTLE), Util.get("wax"), Util.get("wax"), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.dragons_blood_resin)), Arrays.asList(new ItemStack(ModObjects.bottled_hellfire), new ItemStack(ModObjects.empty_jar, 1))));
 	}
 	
 	@SubscribeEvent
