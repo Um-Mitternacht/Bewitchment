@@ -233,6 +233,27 @@ item.bewitchment.nether_brick_leonard_idol.name=Nether Brick Leonard Idol
 item.bewitchment.nethersteel_leonard_idol.name=Nethersteel Leonard Idol
 item.bewitchment.scorned_brick_leonard_idol.name=Scorned Brick Leonard Idol
 
+item.bewitchment.stone_lilith_idol.name=Stone Lilith Idol
+item.bewitchment.terracotta_lilith_idol.name=Terracotta Lilith Idol
+item.bewitchment.gold_lilith_idol.name=Gold Lilith Idol
+item.bewitchment.nether_brick_lilith_idol.name=Nether Brick Lilith Idol
+item.bewitchment.nethersteel_lilith_idol.name=Nethersteel Lilith Idol
+item.bewitchment.scorned_brick_lilith_idol.name=Scorned Brick Lilith Idol
+
+item.bewitchment.stone_baphomet_idol.name=Stone Baphomet Idol
+item.bewitchment.terracotta_baphomet_idol.name=Terracotta Baphomet Idol
+item.bewitchment.gold_baphomet_idol.name=Gold Baphomet Idol
+item.bewitchment.nether_brick_baphomet_idol.name=Nether Brick Baphomet Idol
+item.bewitchment.nethersteel_baphomet_idol.name=Nethersteel Baphomet Idol
+item.bewitchment.scorned_brick_baphomet_idol.name=Scorned Brick Baphomet Idol
+
+item.bewitchment.stone_herne_idol.name=Stone Herne Idol
+item.bewitchment.terracotta_herne_idol.name=Terracotta Herne Idol
+item.bewitchment.gold_herne_idol.name=Gold Herne Idol
+item.bewitchment.nether_brick_herne_idol.name=Nether Brick Herne Idol
+item.bewitchment.nethersteel_herne_idol.name=Nethersteel Herne Idol
+item.bewitchment.scorned_brick_herne_idol.name=Scorned Brick Herne Idol
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire
 item.bewitchment.bone_needle.name=Bone Needle

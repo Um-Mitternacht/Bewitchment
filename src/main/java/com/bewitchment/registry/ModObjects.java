@@ -273,12 +273,39 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
+
+	//Lenny Idol
 	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
 	public static final Item terracotta_leonard_idol = createIdol("terracotta_leonard_idol", Blocks.HARDENED_CLAY);
 	public static final Item gold_leonard_idol = createIdol("gold_leonard_idol", Blocks.GOLD_BLOCK);
 	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_leonard_idol = createIdol("nethersteel_leonard_idol", nethersteel[0]);
 	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
+
+	//Lilith Idol
+	public static final Item stone_lilith_idol = createIdol("stone_lilith_idol", Blocks.STONE);
+	public static final Item terracotta_lilith_idol = createIdol("terracotta_lilith_idol", Blocks.HARDENED_CLAY);
+	public static final Item gold_lilith_idol = createIdol("gold_lilith_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_lilith_idol = createIdol("nether_brick_lilith_idol", Blocks.NETHER_BRICK);
+	public static final Item nethersteel_lilith_idol = createIdol("nethersteel_lilith_idol", nethersteel[0]);
+	public static final Item scorned_brick_lilith_idol = createIdol("scorned_brick_lilith_idol", scorned_bricks[0]);
+
+	//Baphomet Idol
+	public static final Item stone_baphomet_idol = createIdol("stone_baphomet_idol", Blocks.STONE);
+	public static final Item terracotta_baphomet_idol = createIdol("terracotta_baphomet_idol", Blocks.HARDENED_CLAY);
+	public static final Item gold_baphomet_idol = createIdol("gold_baphomet_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_baphomet_idol = createIdol("nether_brick_baphomet_idol", Blocks.NETHER_BRICK);
+	public static final Item nethersteel_baphomet_idol = createIdol("nethersteel_baphomet_idol", nethersteel[0]);
+	public static final Item scorned_brick_baphomet_idol = createIdol("scorned_brick_baphomet_idol", scorned_bricks[0]);
+
+	//Herne Idol
+	public static final Item stone_herne_idol = createIdol("stone_herne_idol", Blocks.STONE);
+	public static final Item terracotta_herne_idol = createIdol("terracotta_herne_idol", Blocks.HARDENED_CLAY);
+	public static final Item gold_herne_idol = createIdol("gold_herne_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_herne_idol = createIdol("nether_brick_herne_idol", Blocks.NETHER_BRICK);
+	public static final Item nethersteel_herne_idol = createIdol("nethersteel_herne_idol", nethersteel[0]);
+	public static final Item scorned_brick_herne_idol = createIdol("scorned_brick_herne_idol", scorned_bricks[0]);
+
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	public static final Item bottled_hellfire = new ItemBottledHellfire();
