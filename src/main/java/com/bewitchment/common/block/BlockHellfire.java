@@ -26,61 +26,61 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockHellfire extends Block {
-    private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
-
-    public BlockHellfire() {
-        super(Material.FIRE);
-        setTickRandomly(true);
-        setLightLevel(15 / 15f);
-        Util.registerBlock(this, "hellfire", Blocks.FIRE);
-    }
-
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return BOX;
-    }
-
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return NULL_AABB;
-    }
-
-    @Override
-    public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-        return world.getBlockState(pos.down()).getBlock().getItem(world, pos.down(), world.getBlockState(pos.down()));
-    }
-
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Items.AIR;
-    }
-
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-        if (!player.isSneaking() && player.getHeldItem(hand).getItem() == Items.GLASS_BOTTLE) {
-            if (!world.isRemote) {
-                Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.bottled_hellfire));
-                world.setBlockToAir(pos);
-                world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1, 1.75f);
-            }
-            return true;
-        }
-        return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-    }
-
-    @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-        if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
-    }
-
-    @Override
-    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-        if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) entity.attackEntityFrom(DamageSource.MAGIC, 2);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-        if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
-    }
+	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
+	
+	public BlockHellfire() {
+		super(Material.FIRE);
+		setTickRandomly(true);
+		setLightLevel(15 / 15f);
+		Util.registerBlock(this, "hellfire", Blocks.FIRE);
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return BOX;
+	}
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return NULL_AABB;
+	}
+	
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		return world.getBlockState(pos.down()).getBlock().getItem(world, pos.down(), world.getBlockState(pos.down()));
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Items.AIR;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (!player.isSneaking() && player.getHeldItem(hand).getItem() == Items.GLASS_BOTTLE) {
+			if (!world.isRemote) {
+				Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.bottled_hellfire));
+				world.setBlockToAir(pos);
+				world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1, 1.75f);
+			}
+			return true;
+		}
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
+	}
+	
+	@Override
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
+	}
 }

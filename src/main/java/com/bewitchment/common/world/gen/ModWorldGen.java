@@ -103,10 +103,10 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 
 	private void generateMoss(World world, Random rand, int chunkX, int chunkZ, Predicate<Biome> predicate) {
-		BlockPos position = new BlockPos(chunkX * 16 + 8, 64, chunkZ * 16 + 8 );
+		BlockPos position = new BlockPos(chunkX * 16 + 8, 64, chunkZ * 16 + 8);
 		Biome biome = world.getBiome(position);
 		if (!predicate.test(biome)) return;
-		for(; position.getY() < 128; position = position.up()) {
+		for (; position.getY() < 128; position = position.up()) {
 			if (world.isAirBlock(position) && world.isAirBlock(position.down(1))) {
 				for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL.facings()) {
 					if (ModObjects.spanish_moss.canPlaceBlockOnSide(world, position, enumfacing)) {
@@ -115,7 +115,8 @@ public class ModWorldGen implements IWorldGenerator {
 						break;
 					}
 				}
-			} else {
+			}
+			else {
 				position = position.add(rand.nextInt(4) - rand.nextInt(4), 0, rand.nextInt(4) - rand.nextInt(4));
 			}
 		}
