@@ -8,6 +8,8 @@ import net.minecraft.entity.Entity;
  * idol_baphomet - cybercat5555
  * Created using Tabula 7.0.1
  */
+
+@SuppressWarnings("WeakerAccess")
 public class ModelBaphometIdol extends ModelBase {
     public ModelRenderer plith;
     public ModelRenderer bottom;

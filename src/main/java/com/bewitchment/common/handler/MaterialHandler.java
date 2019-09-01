@@ -4,14 +4,19 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModEnchantments;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -73,5 +78,14 @@ public class MaterialHandler {
 				ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_WITCHES));
 			}
 		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void materialToolTip (ItemTooltipEvent event) {
+		if(SILVER_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if(SILVER_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if(COLD_IRON_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if(COLD_IRON_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
 	}
 }
