@@ -46,7 +46,7 @@ public class WorldGenWickerman extends WorldGenerator {
             if(!burned) {
                 // Spawn Villager
                 EntityVillager villager = new EntityVillager(worldIn);
-                villager.setPosition(position.getX() + 6, position.getY() + 10, position.getZ() + 3);
+                villager.setPosition(position.getX() + 6, position.getY() + 11, position.getZ() + 3);
                 worldIn.spawnEntity(villager);
                 // Spawn Random Animals
                 int amount = rand.nextInt(4);
