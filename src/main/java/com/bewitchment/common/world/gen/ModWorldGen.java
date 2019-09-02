@@ -1,6 +1,7 @@
 package com.bewitchment.common.world.gen;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.common.world.gen.structures.WorldGenMenhir;
 import com.bewitchment.common.world.gen.structures.WorldGenStonecircle;
 import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
@@ -11,6 +12,7 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockVine;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -18,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeTaiga;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -50,6 +53,11 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator burnedWickerman = new WorldGenWickerman(true);
 	private final WorldGenerator stonecircle1 = new WorldGenStonecircle(1);
 	private final WorldGenerator stonecircle2 = new WorldGenStonecircle(2);
+	private final WorldGenerator menhir1 = new WorldGenMenhir(1);
+	private final WorldGenerator menhir2 = new WorldGenMenhir(2);
+	private final WorldGenerator menhirtaiga = new WorldGenMenhir(3);
+	private final WorldGenerator menhirmegataiga = new WorldGenMenhir(4);
+	private final WorldGenerator menhircoldtaiga = new WorldGenMenhir(5);
 	
 	public ModWorldGen() {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
@@ -81,8 +89,15 @@ public class ModWorldGen implements IWorldGenerator {
 		if(world.provider.getDimension() == 0) { 	//Overworld Gen
 			generateStructure(wickerman, world, rand, 0.006, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
-			generateStructure(stonecircle1, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
-			generateStructure(stonecircle2, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
+			generateStructure(stonecircle1, world, rand, 0.004, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
+			generateStructure(stonecircle2, world, rand, 0.004, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
+			generateStructure(menhir1, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) &&
+					b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhir2, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) &&
+					b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhirtaiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.TAIGA || BiomeDictionary.hasType(b, BiomeDictionary.Type.CONIFEROUS));
+			generateStructure(menhirmegataiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.REDWOOD_TAIGA || b == Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhircoldtaiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.COLD_TAIGA || b == Biomes.COLD_TAIGA_HILLS);
 		}
 	}
 	
