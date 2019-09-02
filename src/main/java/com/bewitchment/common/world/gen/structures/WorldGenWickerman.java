@@ -42,7 +42,7 @@ public class WorldGenWickerman extends WorldGenerator {
             PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE)
                     .setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null)
                     .setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
-            template.addBlocksToWorld(worldIn, position, placementsettings);
+            template.addBlocksToWorld(worldIn, burned ? position : position.add(0, 1, 0), placementsettings);
             if(!burned) {
                 // Spawn Villager
                 EntityVillager villager = new EntityVillager(worldIn);

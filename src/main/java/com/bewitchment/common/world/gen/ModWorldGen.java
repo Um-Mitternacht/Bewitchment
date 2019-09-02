@@ -1,6 +1,7 @@
 package com.bewitchment.common.world.gen;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.common.world.gen.structures.WorldGenStonecircle;
 import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
@@ -31,19 +32,24 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 public class ModWorldGen implements IWorldGenerator {
+	//Trees
 	private final WorldGenerator cypressTree = new WorldGenCypressTree(true);
 	private final WorldGenerator elderTree = new WorldGenElderTree(true);
 	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
 	private final WorldGenerator yewTree = new WorldGenYewTree(true);
-	
+
+	//Ores
 	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), Bewitchment.config.silverSize);
 	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), Bewitchment.config.saltSize);
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.config.amethystSize);
 	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), Bewitchment.config.garnetSize);
 	private final WorldGenerator opalOre = new WorldGenMinable(ModObjects.opal_ore.getDefaultState(), Bewitchment.config.opalSize);
 
+	//Structures
 	private final WorldGenerator wickerman = new WorldGenWickerman(false);
 	private final WorldGenerator burnedWickerman = new WorldGenWickerman(true);
+	private final WorldGenerator stonecircle1 = new WorldGenStonecircle(1);
+	private final WorldGenerator stonecircle2 = new WorldGenStonecircle(2);
 	
 	public ModWorldGen() {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
@@ -72,9 +78,11 @@ public class ModWorldGen implements IWorldGenerator {
 			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
 
-		if(world.provider.getDimension() == 0) {
-			generateStructure(wickerman, world, rand, 0.007, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
+		if(world.provider.getDimension() == 0) { 	//Overworld Gen
+			generateStructure(wickerman, world, rand, 0.006, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
+			generateStructure(stonecircle1, world, rand, 0.01, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
+			generateStructure(stonecircle2, world, rand, 0.01, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
 		}
 	}
 	
