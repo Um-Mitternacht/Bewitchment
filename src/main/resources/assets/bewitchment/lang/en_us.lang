@@ -427,6 +427,7 @@ bewitchment.revealing=Revealing
 bewitchment.disrobing=Disrobing
 bewitchment.sinking=Sinking
 bewitchment.cursed_leaps=Cursed Leaps
+bewitchment.hellfire=Hell Fire
 
 #FORTUNE
 fortune.has_fortune=%s's future has already been revealed: %s

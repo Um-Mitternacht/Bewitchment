@@ -14,7 +14,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SuppressWarnings("deprecation")
 public class PotionHellfire extends ModPotion {
+    private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/hellfire.png");
 
     public PotionHellfire() {
         super("hellfire", true, 0);
@@ -28,16 +30,15 @@ public class PotionHellfire extends ModPotion {
     @Override
     @SideOnly(Side.CLIENT)
     public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-        mc.getTextureManager().bindTexture(new ResourceLocation(Bewitchment.MODID, "textures/gui/potionhellfire.png"));
+        mc.getTextureManager().bindTexture(icon);
         Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
     }
 
-    @SubscribeEvent
-    public void playerFireDamage (LivingHurtEvent event) {
-        if (event.getSource().isFireDamage() && event.getEntityLiving().getActivePotionEffect(ModPotions.hellfire) != null) {
-            int amp = event.getEntityLiving().getActivePotionEffect(ModPotions.hellfire).getAmplifier();
-            float mod = 1.5f + amp * amp * 0.5f;
-            event.setAmount(event.getAmount() * mod);
-        }
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha)
+    {
+        mc.getTextureManager().bindTexture(icon);
+        Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
     }
 }

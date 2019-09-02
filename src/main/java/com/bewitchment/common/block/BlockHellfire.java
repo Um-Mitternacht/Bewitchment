@@ -3,7 +3,10 @@ package com.bewitchment.common.block;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModPotions;
+import ibxm.Player;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -14,45 +17,27 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Objects;
 import java.util.Random;
 
-@SuppressWarnings({"NullableProblems", "deprecation"})
-public class BlockHellfire extends Block {
+@SuppressWarnings({"NullableProblems"})
+public class BlockHellfire extends BlockFire {
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
 	
 	public BlockHellfire() {
-		super(Material.FIRE);
-		setTickRandomly(true);
-		setLightLevel(15 / 15f);
+		super();
 		Util.registerBlock(this, "hellfire", Blocks.FIRE);
-	}
-	
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return BOX;
-	}
-	
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return NULL_AABB;
-	}
-	
-	@Override
-	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-		return world.getBlockState(pos.down()).getBlock().getItem(world, pos.down(), world.getBlockState(pos.down()));
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Items.AIR;
 	}
 	
 	@Override
@@ -75,9 +60,18 @@ public class BlockHellfire extends Block {
 	
 	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+		if (!world.isRemote && entity instanceof EntityLivingBase) {
+			entity.attackEntityFrom(DamageSource.IN_FIRE, 2);
+			entity.setFire(5);
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0));
+		}
 	}
-	
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {

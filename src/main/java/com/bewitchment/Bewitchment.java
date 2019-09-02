@@ -29,10 +29,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
-import com.bewitchment.common.handler.BlockDropHandler;
-import com.bewitchment.common.handler.GuiHandler;
-import com.bewitchment.common.handler.MaterialHandler;
-import com.bewitchment.common.handler.MiscHandler;
+import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.village.VillagerAlchemistHandler;
 import com.bewitchment.common.village.VillagerHedgeWitchHandler;
@@ -99,6 +96,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new MaterialHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 		MinecraftForge.EVENT_BUS.register(new MiscHandler());
+		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		

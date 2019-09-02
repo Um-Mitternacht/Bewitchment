@@ -1,20 +1,27 @@
 package com.bewitchment.common.handler;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.*;
@@ -24,9 +31,12 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Objects;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -90,6 +100,30 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
+	}
+
+	@SubscribeEvent
+	public void onCollectFire(PlayerInteractEvent.RightClickBlock event) {
+		Block block = event.getWorld().getBlockState(event.getPos().offset(Objects.requireNonNull(event.getFace()))).getBlock();
+		EntityPlayer player = event.getEntityPlayer();
+		if(block == ModObjects.hellfire) {
+			if (!player.isSneaking() && player.getHeldItem(event.getHand()).getItem() == Items.GLASS_BOTTLE) {
+				if (!event.getWorld().isRemote) {
+					Util.replaceAndConsumeItem(player, event.getHand(), new ItemStack(ModObjects.bottled_hellfire));
+					event.getWorld().setBlockToAir(event.getPos().offset(event.getFace()));
+					event.getWorld().playSound(null, event.getPos().offset(event.getFace()), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1.75f);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void extinguishFire(PlayerInteractEvent.LeftClickBlock event) {
+		BlockPos pos = event.getPos().offset(event.getFace());
+		if (event.getWorld().getBlockState(pos).getBlock() == ModObjects.hellfire) {
+			event.getWorld().playEvent(event.getEntityPlayer(), 1009, pos, 0);
+			event.getWorld().setBlockToAir(pos);
+		}
 	}
 	
 	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
