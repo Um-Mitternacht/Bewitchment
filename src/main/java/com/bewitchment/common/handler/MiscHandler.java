@@ -6,13 +6,16 @@ import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
+import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
+import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -30,10 +33,12 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Objects;
@@ -128,5 +133,17 @@ public class MiscHandler {
 	
 	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
 		return world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door;
+	}
+
+	@SubscribeEvent
+	public void handleMobSpawn(LivingSpawnEvent.CheckSpawn event) {
+		for(BlockPos pos : WorldGenWickerman.LOCATIONS) {
+			if (pos.getDistance((int) event.getX(), (int)event.getY(), (int)event.getZ()) < 8) {
+				event.setResult(Event.Result.DENY);
+				Entity entity = new EntityWitherSkeleton(event.getWorld());
+				entity.setPosition(event.getX(), event.getY(), event.getZ());
+				event.getWorld().spawnEntity(entity);
+			}
+		}
 	}
 }
