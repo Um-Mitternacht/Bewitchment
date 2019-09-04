@@ -384,26 +384,26 @@ bewitchment.sinking=Opadanie
 bewitchment.cursed_leaps=Klątwa Lewitacji
 
 #FORTUNE
-fortune.has_fortune=%s's future has already been revealed: %s
-fortune.no_fortune=This world has no secrets awaiting
+fortune.has_fortune=%s'ego przyszłość już została ujawniona: %s
+fortune.no_fortune=Ten świat nie ma już żadnych sekretów
 
-fortune.bewitchment.bad_luck=Your future looks dim.
-fortune.bewitchment.good_luck=Your future looks very bright indeed.
-fortune.bewitchment.illness=Weakness and misfortune dot your future.
-fortune.bewitchment.vitality=Wounds heal in your time of need.
-fortune.bewitchment.meet_pet=You will soon encounter a new friend.
-fortune.bewitchment.meet_merchant=You will stumble upon some good deals.
-fortune.bewitchment.meet_demon=A powerful duke has seen you scrying, and has taken an interest in you.
-fortune.bewitchment.meet_feuerwurm=A lesser demon has seen you scrying, and wishes to challenge you soon!
-fortune.bewitchment.meet_blaze=A lesser fire elemental has seen you scrying, and will emerge to fight you soon!
-fortune.bewitchment.meet_dire_wolf=A rabid beast will soon stumble upon you.
-fortune.bewitchment.meet_silverfish=A foul vermin hides in the path.
-fortune.bewitchment.meet_witch=Something wicked this way comes.
-fortune.bewitchment.meet_zombie=Those who lie underground will be awakened.
-fortune.bewitchment.death=The path ahead looks very bleak.
-fortune.bewitchment.drop_item=Fingers won't obey when they're most needed.
-fortune.bewitchment.treasure=You might be very rich, very soon.
-fortune.bewitchment.cats_and_dogs=It will rain cats and dogs.
+fortune.bewitchment.bad_luck=Twoja przyszłość wygląda ciemno.
+fortune.bewitchment.good_luck=Twoja przyszłość wygląda bardzo jasno.
+fortune.bewitchment.illness=Bezsilność i nieszczęście prześladują Twą przyszłość.
+fortune.bewitchment.vitality=Rany goją się w czasie potrzeby.
+fortune.bewitchment.meet_pet=Napotkasz wkrótce nowego przyjaciela.
+fortune.bewitchment.meet_merchant=Znajdziesz dobry interes.
+fortune.bewitchment.meet_demon=Potężny książe widział, że wróżyłeś, i zainteresował się w Tobie.
+fortune.bewitchment.meet_feuerwurm=Młodszy demon widział, że wróżyłeś, i życzy Cię wyzwać do walki!
+fortune.bewitchment.meet_blaze=Młodszy żywiołowy ognia widział, że wróżyłeś, i ukazał się by cię powstrzymać!
+fortune.bewitchment.meet_dire_wolf=Wściekła bestia wkrótce Cię znajdzie.
+fortune.bewitchment.meet_silverfish=Niecne robactwo kryje się na drodze.
+fortune.bewitchment.meet_witch=Coś złego tędy idzie.
+fortune.bewitchment.meet_zombie=Ci, którzy leżą pod ziemią będą rozbudzeni.
+fortune.bewitchment.death=Droga przed nami wygląda dość nieciekawie.
+fortune.bewitchment.drop_item=Palce nie będą posłuszne kiedy będą najpotrzebniejsze.
+fortune.bewitchment.treasure=Możesz być wkrótce bardzo bogaty.
+fortune.bewitchment.cats_and_dogs=Będzie padało kotami i psami.
 
 #RITUAL
 ritual.null=Nie kojarzysz takiego rytuału
