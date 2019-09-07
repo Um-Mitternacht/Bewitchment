@@ -1,13 +1,11 @@
 package com.bewitchment.api.registry;
-
+import com.google.common.base.Predicate;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import java.util.function.Predicate;
 
 public class Brew extends IForgeRegistryEntry.Impl<Brew> {
 	public final Ingredient input;

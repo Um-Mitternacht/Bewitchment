@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import net.minecraft.client.resources.I18n;
@@ -32,7 +32,7 @@ public class ItemGrimoireMagia extends Item {
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound tag) {
 		MagicPower power = new MagicPower();
-		power.maxAmount = Bewitchment.config.maxGrimoirePower;
+		power.maxAmount = ModConfig.misc.maxGrimoirePower;
 		return power;
 	}
 	
@@ -71,7 +71,7 @@ public class ItemGrimoireMagia extends Item {
 		if (isInCreativeTab(tab)) {
 			list.add(new ItemStack(this));
 			ItemStack full = new ItemStack(this);
-			full.getCapability(MagicPower.CAPABILITY, null).amount = Bewitchment.config.maxGrimoirePower;
+			full.getCapability(MagicPower.CAPABILITY, null).amount = ModConfig.misc.maxGrimoirePower;
 			list.add(full);
 		}
 	}

@@ -1,7 +1,9 @@
 package com.bewitchment.api.registry.item;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.registry.ModSounds;
+import com.sun.tools.javac.util.ArrayUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -11,6 +13,8 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+
+import java.util.Arrays;
 
 @SuppressWarnings("NullableProblems")
 public class ItemBroom extends Item {
@@ -26,7 +30,7 @@ public class ItemBroom extends Item {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
-		if (Bewitchment.config.broomSweepables.contains(block.getTranslationKey())) {
+		if (Arrays.asList(ModConfig.misc.broomSweepables).contains(block.getTranslationKey())) {
 			if (!world.isRemote) {
 				block.dropBlockAsItem(world, pos, state, 0);
 				world.setBlockToAir(pos);

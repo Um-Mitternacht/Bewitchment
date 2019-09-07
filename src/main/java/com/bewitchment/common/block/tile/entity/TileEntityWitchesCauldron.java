@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.SpawnBubble;
@@ -33,10 +34,7 @@ import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
@@ -136,7 +134,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
                 }
             }
             if (world.getTotalWorldTime() % 20 == 0) {
-                if (tank.getFluid() != null && Bewitchment.config.heatSources.contains(world.getBlockState(pos.down()).getBlock().getTranslationKey()) && heatTimer <= 5) heatTimer++;
+                if (tank.getFluid() != null && Arrays.asList(ModConfig.misc.heatSources).contains(world.getBlockState(pos.down()).getBlock().getTranslationKey()) && heatTimer <= 5) heatTimer++;
                 else if (heatTimer > 0) heatTimer--;
             }
             if (heatTimer >= 5) {

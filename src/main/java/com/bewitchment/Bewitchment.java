@@ -60,7 +60,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.20";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.20", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	
 	public static final Logger logger = LogManager.getLogger(NAME);
 	
@@ -78,14 +78,11 @@ public class Bewitchment {
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
 	};
-	public static ModConfig config;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
-		
-		config = new ModConfig((event.getSuggestedConfigurationFile()));
 		proxy.registerRenderers();
 		ModObjects.preInit();
 		

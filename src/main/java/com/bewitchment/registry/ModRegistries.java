@@ -1,6 +1,7 @@
 package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
@@ -216,7 +217,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "elder_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.elder_wood), Util.get(ModObjects.elder_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.droplet_of_wisdom)), null, Collections.singletonList(new ItemStack(ModObjects.elder_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "juniper_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.juniper_wood), Util.get(ModObjects.juniper_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.juniper_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "yew_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.yew_wood), Util.get(ModObjects.yew_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.essence_of_vitality)), null, Collections.singletonList(new ItemStack(ModObjects.yew_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
-		if (Bewitchment.config.wednesday) event.getRegistry().register(new RitualWednesday());
+		if (ModConfig.memes.wednesday) event.getRegistry().register(new RitualWednesday());
 	}
 	
 	@SubscribeEvent
@@ -374,7 +375,7 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneDeath());
 		event.getRegistry().register(new FortuneDropItem());
 		event.getRegistry().register(new FortuneTreasure());
-		if (Bewitchment.config.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
+		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
 	}
 	
 	@SubscribeEvent
