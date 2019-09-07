@@ -362,6 +362,23 @@ item.bewitchment.spectral_dust.name=Spectral Dust
 item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
+item.bewitchment.poppet.name=Poppet
+item.bewitchment.poppet_armor.name=Armor Poppet
+item.bewitchment.poppet_binding.name=Poppet of Binding
+item.bewitchment.poppet_clumsy.name=Poppet of Clumsiness
+item.bewitchment.poppet_deathprotection.name=Death Protection Poppet
+item.bewitchment.poppet_earthprotection.name=Earth Protection Poppet
+item.bewitchment.poppet_flameprotection.name=Flame Protection Poppet
+item.bewitchment.poppet_hungerprotection.name=Hunger Protection Poppet
+item.bewitchment.poppet_judgement.name=Poppet of Judgement
+item.bewitchment.poppet_spiritbane.name=Poppet of Spirit's Bane
+item.bewitchment.poppet_tool.name=Tool Poppet
+item.bewitchment.poppet_vampiric.name=Vampiric Poppet
+item.bewitchment.poppet_voodoo.name=Voodoo Poppet
+item.bewitchment.poppet_voodooprotection.name=Voodoo Protection Poppet
+item.bewitchment.poppet_wasting.name=Poppet of Wasting
+item.bewitchment.poppet_waterprotection.name=Water Protection Poppet
+
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom
 entity.bewitchment.elder_broom.name=Elder Broom
