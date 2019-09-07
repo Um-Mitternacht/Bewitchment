@@ -296,6 +296,7 @@ item.bewitchment.diabolical_vein.name=Diabolical Vein
 item.bewitchment.pure_filament.name=Pure Filament
 item.bewitchment.witches_stitching.name=Witches' Stitching
 item.bewitchment.sanguine_cloth.name=Sanguine Cloth
+item.bewitchment.spirit_string.name=Spirit String
 
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
@@ -378,6 +379,7 @@ item.bewitchment.poppet_voodoo.name=Voodoo Poppet
 item.bewitchment.poppet_voodooprotection.name=Voodoo Protection Poppet
 item.bewitchment.poppet_wasting.name=Poppet of Wasting
 item.bewitchment.poppet_waterprotection.name=Water Protection Poppet
+tooltip.bewitchment.poppet.bound=Bound to %s
 
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom

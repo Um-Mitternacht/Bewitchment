@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LSL",
+    "NST",
+    "L L"
+  ],
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "leather"
+    },
+    "S": {
+      "item": "bewitchment:spanish_moss"
+    },
+    "N": {
+      "item": "bewitchment:bone_needle"
+    },
+    "T": {
+      "item": "bewitchment:spirit_string"
+    }
+  },
+  "result": {
+    "item": "bewitchment:poppet",
+    "count": 1
+  }
+}
