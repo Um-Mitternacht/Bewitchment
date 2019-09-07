@@ -34,7 +34,7 @@ public class RenderDruden extends RenderLiving<EntityDruden> {
 	}
 	
 	private static class LayerEyes implements LayerRenderer<EntityDruden> {
-		private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/drude_eyes.png")};
+		private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/drude_eyes.png");
 		
 		private final RenderDruden renderer;
 		
@@ -49,7 +49,7 @@ public class RenderDruden extends RenderLiving<EntityDruden> {
 		
 		@Override
 		public void doRenderLayer(EntityDruden entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
-			renderer.bindTexture(TEX[entity.getDataManager().get(ModEntityMob.SKIN)]);
+			renderer.bindTexture(TEX);
 			GlStateManager.color(0.5f, 0.5f, 0.5f);
 			GlStateManager.enableBlend();
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
