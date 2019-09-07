@@ -27,7 +27,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 	private int milkTimer;
 	
 	public EntityFeuerwurm(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"));
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/feuerwurm"));
 		setSize(1, 0.85f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);

@@ -43,7 +43,7 @@ public class ModelHerneIdol extends ModelBase {
 	public ModelRenderer rAntler06;
 	public ModelRenderer lEarb;
 	public ModelRenderer rEarb;
-
+	
 	public ModelHerneIdol() {
 		this.textureWidth = 64;
 		this.textureHeight = 32;
@@ -220,13 +220,13 @@ public class ModelHerneIdol extends ModelBase {
 		this.rAntler02.addChild(this.rAntler03);
 		this.lEar.addChild(this.lEarb);
 	}
-
+	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.plith.render(f5);
 		this.body.render(f5);
 	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

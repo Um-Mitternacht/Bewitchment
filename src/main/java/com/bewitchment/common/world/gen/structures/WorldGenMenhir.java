@@ -20,38 +20,36 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import java.util.Random;
 
 public class WorldGenMenhir extends WorldGenerator {
-    private int type;
+	private int type;
 
-    /**
-     * @param type has 5 possible values:
-     *             1. default variant1
-     *             2. default variant2
-     *             3. regular taiga variant
-     *             4. megataiga (redwood) variant
-     *             5. cold taiga variant
-     */
+	/**
+	 * @param type has 5 possible values:
+	 *             1. default variant1
+	 *             2. default variant2
+	 *             3. regular taiga variant
+	 *             4. megataiga (redwood) variant
+	 *             5. cold taiga variant
+	 */
 
-    public WorldGenMenhir(int type) {
-        super();
-        this.type = type;
-    }
+	public WorldGenMenhir(int type) {
+		super();
+		this.type = type;
+	}
 
-    @Override
-    public boolean generate(World worldIn, Random rand, BlockPos position) {
-        WorldServer worldServer = (WorldServer) worldIn;
-        MinecraftServer minecraftServer = worldIn.getMinecraftServer();
-        TemplateManager templateManager = worldServer.getStructureTemplateManager();
-        Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID+ ":menhir" + type));
+	@Override
+	public boolean generate(World worldIn, Random rand, BlockPos position) {
+		WorldServer worldServer = (WorldServer) worldIn;
+		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
+		TemplateManager templateManager = worldServer.getStructureTemplateManager();
+		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":menhir" + type));
 
-        if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
-            IBlockState iBlockState = worldIn.getBlockState(position);
-            worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
-            PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE)
-                    .setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null)
-                    .setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
-            template.addBlocksToWorld(worldIn, position.add(0, -1, 0), placementsettings);
-            return true;
-        }
-        return false;
-    }
+		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
+			IBlockState iBlockState = worldIn.getBlockState(position);
+			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
+			PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null).setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
+			template.addBlocksToWorld(worldIn, position.add(0, -1, 0), placementsettings);
+			return true;
+		}
+		return false;
+	}
 }

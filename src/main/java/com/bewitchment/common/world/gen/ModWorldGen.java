@@ -85,15 +85,13 @@ public class ModWorldGen implements IWorldGenerator {
 			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
 
-		if(world.provider.getDimension() == 0) { 	//Overworld Gen
+		if (world.provider.getDimension() == 0) {    //Overworld Gen
 			generateStructure(wickerman, world, rand, 0.006, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(stonecircle1, world, rand, 0.004, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
 			generateStructure(stonecircle2, world, rand, 0.004, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
-			generateStructure(menhir1, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) &&
-					b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
-			generateStructure(menhir2, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) &&
-					b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhir1, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhir2, world, rand, 0.005, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
 			generateStructure(menhirtaiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.TAIGA || BiomeDictionary.hasType(b, BiomeDictionary.Type.CONIFEROUS));
 			generateStructure(menhirmegataiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.REDWOOD_TAIGA || b == Biomes.REDWOOD_TAIGA_HILLS);
 			generateStructure(menhircoldtaiga, world, rand, 0.1, chunkX, chunkZ, 0, 0, b -> b == Biomes.COLD_TAIGA || b == Biomes.COLD_TAIGA_HILLS);
@@ -156,17 +154,16 @@ public class ModWorldGen implements IWorldGenerator {
 
 	private void generateStructure(WorldGenerator structure, World world, Random rand, double chance, int chunkX, int chunkz, int xOffset, int zOffset, Predicate<Biome> biomes) {
 		BlockPos pos = new BlockPos(chunkX * 16 + xOffset, getGround(world, chunkX * 16 + xOffset, chunkz * 16 + zOffset), chunkz * 16 + zOffset);
-		if(rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) structure.generate(world, rand, pos);
+		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) structure.generate(world, rand, pos);
 	}
 
-	private static int getGround(World world, int x, int z)
-	{
+	private static int getGround(World world, int x, int z) {
 		int y = world.getHeight(x, z);
 		boolean foundGround = false;
-		while(!foundGround && y-- >= 31) {
-			Block blockAt = world.getBlockState(new BlockPos(x,y,z)).getBlock();
-			foundGround =  blockAt == Blocks.GRASS || blockAt == Blocks.SAND || blockAt == Blocks.SNOW || blockAt == Blocks.SNOW_LAYER || blockAt == Blocks.GLASS||blockAt == Blocks.MYCELIUM;
-			if(blockAt == Blocks.FLOWING_WATER || blockAt == Blocks.WATER) {		//Prevent spawning in lakes/rivers
+		while (!foundGround && y-- >= 31) {
+			Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+			foundGround = blockAt == Blocks.GRASS || blockAt == Blocks.SAND || blockAt == Blocks.SNOW || blockAt == Blocks.SNOW_LAYER || blockAt == Blocks.GLASS || blockAt == Blocks.MYCELIUM;
+			if (blockAt == Blocks.FLOWING_WATER || blockAt == Blocks.WATER) {        //Prevent spawning in lakes/rivers
 				y = -1;
 				break;
 			}
@@ -174,8 +171,7 @@ public class ModWorldGen implements IWorldGenerator {
 		return y;
 	}
 
-	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround)
-	{
+	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround) {
 		int zwidth = template.getSize().getZ();
 		int xwidth = template.getSize().getX();
 		// check all the corners to see which ones are replaceable
@@ -185,8 +181,7 @@ public class ModWorldGen implements IWorldGenerator {
 		return posAboveGround.getY() > 31 && corner1 && corner2;
 	}
 
-	private static boolean isCornerValid(World world, BlockPos pos)
-	{
+	private static boolean isCornerValid(World world, BlockPos pos) {
 		int variation = 2;
 		int highestBlock = getGround(world, pos.getX(), pos.getZ());
 		return highestBlock > pos.getY() - variation && highestBlock < pos.getY() + variation;

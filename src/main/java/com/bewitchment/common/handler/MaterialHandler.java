@@ -82,10 +82,10 @@ public class MaterialHandler {
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public void materialToolTip (ItemTooltipEvent event) {
-		if(SILVER_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
-		if(SILVER_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
-		if(COLD_IRON_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
-		if(COLD_IRON_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+	public void materialToolTip(ItemTooltipEvent event) {
+		if (SILVER_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if (SILVER_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.silver_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if (COLD_IRON_TOOLS.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_tool_description.name", TextFormatting.BLUE, TextFormatting.RESET));
+		if (COLD_IRON_ARMOR.contains(event.getItemStack().getItem())) event.getToolTip().add(I18n.format("tooltip.bewitchment.cold_iron_armor_description.name", TextFormatting.BLUE, TextFormatting.RESET));
 	}
 }

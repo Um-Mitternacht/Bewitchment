@@ -15,14 +15,11 @@ import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
-import net.minecraft.entity.projectile.EntityWitherSkull;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -111,7 +108,7 @@ public class MiscHandler {
 	public void onCollectFire(PlayerInteractEvent.RightClickBlock event) {
 		Block block = event.getWorld().getBlockState(event.getPos().offset(Objects.requireNonNull(event.getFace()))).getBlock();
 		EntityPlayer player = event.getEntityPlayer();
-		if(block == ModObjects.hellfire) {
+		if (block == ModObjects.hellfire) {
 			if (!player.isSneaking() && player.getHeldItem(event.getHand()).getItem() == Items.GLASS_BOTTLE) {
 				if (!event.getWorld().isRemote) {
 					Util.replaceAndConsumeItem(player, event.getHand(), new ItemStack(ModObjects.bottled_hellfire));
@@ -137,8 +134,8 @@ public class MiscHandler {
 
 	@SubscribeEvent
 	public void handleMobSpawn(LivingSpawnEvent.CheckSpawn event) {
-		for(BlockPos pos : WorldGenWickerman.LOCATIONS) {
-			if (pos.getDistance((int) event.getX(), (int)event.getY(), (int)event.getZ()) < 8) {
+		for (BlockPos pos : WorldGenWickerman.LOCATIONS) {
+			if (pos.getDistance((int) event.getX(), (int) event.getY(), (int) event.getZ()) < 8) {
 				event.setResult(Event.Result.DENY);
 				Entity entity = new EntityWitherSkeleton(event.getWorld());
 				entity.setPosition(event.getX(), event.getY(), event.getZ());

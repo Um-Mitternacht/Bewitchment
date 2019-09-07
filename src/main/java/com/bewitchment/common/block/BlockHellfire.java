@@ -1,13 +1,10 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
-import ibxm.Player;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,20 +12,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Objects;
 import java.util.Random;
 
 @SuppressWarnings({"NullableProblems"})

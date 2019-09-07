@@ -20,29 +20,27 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import java.util.Random;
 
 public class WorldGenStonecircle extends WorldGenerator {
-    private int type;
+	private int type;
 
-    public WorldGenStonecircle(int type) {
-        super();
-        this.type = type;
-    }
+	public WorldGenStonecircle(int type) {
+		super();
+		this.type = type;
+	}
 
-    @Override
-    public boolean generate(World worldIn, Random rand, BlockPos position) {
-        WorldServer worldServer = (WorldServer) worldIn;
-        MinecraftServer minecraftServer = worldIn.getMinecraftServer();
-        TemplateManager templateManager = worldServer.getStructureTemplateManager();
-        Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID+ ":stonecircle" + type));
+	@Override
+	public boolean generate(World worldIn, Random rand, BlockPos position) {
+		WorldServer worldServer = (WorldServer) worldIn;
+		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
+		TemplateManager templateManager = worldServer.getStructureTemplateManager();
+		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":stonecircle" + type));
 
-        if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
-            IBlockState iBlockState = worldIn.getBlockState(position);
-            worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
-            PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE)
-                    .setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null)
-                    .setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
-            template.addBlocksToWorld(worldIn, position.add(0, -1, 0), placementsettings);
-            return true;
-        }
-        return false;
-    }
+		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
+			IBlockState iBlockState = worldIn.getBlockState(position);
+			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
+			PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null).setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
+			template.addBlocksToWorld(worldIn, position.add(0, -1, 0), placementsettings);
+			return true;
+		}
+		return false;
+	}
 }

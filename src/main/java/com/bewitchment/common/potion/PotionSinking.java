@@ -41,8 +41,7 @@ public class PotionSinking extends ModPotion {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha)
-	{
+	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
 	}
