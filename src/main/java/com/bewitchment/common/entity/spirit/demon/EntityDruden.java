@@ -16,7 +16,7 @@ public class EntityDruden extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/drude"));
 		setSize(1.425f, 4.0f);
 		isImmuneToFire = false;
-		experienceValue = 20;
+		experienceValue = 35;
 	}
 	
 	@Override

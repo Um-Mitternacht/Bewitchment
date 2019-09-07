@@ -30,7 +30,7 @@ public class RenderDruden extends RenderLiving<EntityDruden> {
 	@Override
 	protected void preRenderCallback(EntityDruden entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.6, 1.6, 1.6);
+		GlStateManager.scale(1.2, 1.2, 1.2);
 	}
 	
 	private static class LayerEyes implements LayerRenderer<EntityDruden> {
