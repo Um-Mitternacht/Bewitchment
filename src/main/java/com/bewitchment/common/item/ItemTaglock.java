@@ -1,6 +1,7 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockBed;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -59,14 +60,13 @@ public class ItemTaglock extends Item {
 	}
 	
 	private void setTags(EntityPlayer player, EnumHand hand, EntityLivingBase target) {
-		ItemStack stack = player.getHeldItem(hand);
-		if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
-		if (!stack.getTagCompound().hasKey("boundName")) {
-			ItemStack copy = stack.copy();
-			copy.setCount(1);
-			copy.getTagCompound().setString("boundId", target.getPersistentID().toString());
-			copy.getTagCompound().setString("boundName", target.getName());
-			Util.giveAndConsumeItem(player, hand, copy);
+		ItemStack playerHeldItem = player.getHeldItem(hand);
+		if (!playerHeldItem.hasTagCompound()) {
+			ItemStack stack = new ItemStack(ModObjects.taglock, 1);
+			stack.setTagCompound(new NBTTagCompound());
+			stack.getTagCompound().setString("boundId", target.getPersistentID().toString());
+			stack.getTagCompound().setString("boundName", target.getName());
+			Util.giveAndConsumeItem(player, hand, stack);
 		}
 	}
 }

@@ -312,7 +312,7 @@ item.bewitchment.white_sage.name=White Sage
 tooltip.bewitchment.white_sage=Used as an aid in exorcisms
 item.bewitchment.wormwood.name=Wormwood
 tooltip.bewitchment.wormwood=An incredibly weedy herb
-item.bewitchment.spanish_moss.name=Spanish Moss
+tile.bewitchment.spanish_moss.name=Spanish Moss
 
 item.bewitchment.aconitum_seeds.name=Aconitum Seeds
 tooltip.bewitchment.aconitum_seeds=Seed from a poisonous plant

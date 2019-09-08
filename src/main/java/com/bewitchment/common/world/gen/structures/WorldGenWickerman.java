@@ -24,7 +24,6 @@ import java.util.Random;
 @SuppressWarnings("NullableProblems")
 public class WorldGenWickerman extends WorldGenerator {
 	private boolean burned;
-	public static ArrayList<BlockPos> LOCATIONS = new ArrayList<>();
 
 	public WorldGenWickerman(boolean burned) {
 		super();
@@ -54,7 +53,6 @@ public class WorldGenWickerman extends WorldGenerator {
 					spawnAnimal(worldIn, position.getX() + 6, position.getY() + 7, position.getZ() + 3, rand);
 				}
 			}
-			LOCATIONS.add(position.add(6, 0, 3));
 			return true;
 		}
 		return false;

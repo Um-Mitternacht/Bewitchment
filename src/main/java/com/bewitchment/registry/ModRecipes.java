@@ -1,8 +1,10 @@
 package com.bewitchment.registry;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.api.registry.RecipePoppet;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
@@ -68,6 +70,8 @@ public class ModRecipes {
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
+
+		ForgeRegistries.RECIPES.register(new RecipePoppet().setRegistryName(Bewitchment.MODID, "poppet"));
 	}
 	
 	public static void postInit() {

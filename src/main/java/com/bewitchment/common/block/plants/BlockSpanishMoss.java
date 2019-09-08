@@ -33,6 +33,10 @@ public class BlockSpanishMoss extends BlockVine {
 		this.terminalPiece = terminal;
 	}
 
+	public boolean isTerminalPiece() {
+		return terminalPiece;
+	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
