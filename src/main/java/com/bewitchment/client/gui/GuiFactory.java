@@ -9,23 +9,23 @@ import net.minecraftforge.fml.client.config.GuiConfig;
 import java.util.Set;
 
 public class GuiFactory implements IModGuiFactory {
-    public GuiFactory() {
-    }
+	public GuiFactory() {
+	}
 
-    public void initialize(Minecraft minecraftInstance) {
-    }
+	public void initialize(Minecraft minecraftInstance) {
+	}
 
-    public boolean hasConfigGui() {
-        return true;
-    }
+	public boolean hasConfigGui() {
+		return true;
+	}
 
 
-    @Override
-    public GuiScreen createConfigGui(GuiScreen parentScreen) {
-        return new GuiConfig(parentScreen, Bewitchment.MODID, Bewitchment.NAME);
-    }
+	@Override
+	public GuiScreen createConfigGui(GuiScreen parentScreen) {
+		return new GuiConfig(parentScreen, Bewitchment.MODID, Bewitchment.NAME);
+	}
 
-    public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
-        return null;
-    }
+	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
+		return null;
+	}
 }

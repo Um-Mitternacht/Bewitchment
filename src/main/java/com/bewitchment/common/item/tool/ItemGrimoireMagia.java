@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;

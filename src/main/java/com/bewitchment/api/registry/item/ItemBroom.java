@@ -1,6 +1,5 @@
 package com.bewitchment.api.registry.item;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.registry.ModSounds;

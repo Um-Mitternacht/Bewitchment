@@ -41,14 +41,14 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator elderTree = new WorldGenElderTree(true);
 	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
 	private final WorldGenerator yewTree = new WorldGenYewTree(true);
-
+	
 	//Ores
 	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), ModConfig.worldGen.oreGen.silverSize);
 	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), ModConfig.worldGen.oreGen.saltSize);
 	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), ModConfig.worldGen.oreGen.amethystSize);
 	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), ModConfig.worldGen.oreGen.garnetSize);
 	private final WorldGenerator opalOre = new WorldGenMinable(ModObjects.opal_ore.getDefaultState(), ModConfig.worldGen.oreGen.opalSize);
-
+	
 	//Structures
 	private final WorldGenerator wickerman = new WorldGenWickerman(false);
 	private final WorldGenerator burnedWickerman = new WorldGenWickerman(true);
@@ -86,7 +86,7 @@ public class ModWorldGen implements IWorldGenerator {
 			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
-
+		
 		if (world.provider.getDimension() == 0) {    //Overworld Gen
 			generateStructure(wickerman, world, rand, 0.006, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
@@ -133,7 +133,7 @@ public class ModWorldGen implements IWorldGenerator {
 			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
 		}
 	}
-
+	
 	private void generateMoss(World world, Random rand, int chunkX, int chunkZ, Predicate<Biome> predicate) {
 		BlockPos position = new BlockPos(chunkX * 16 + 8, 64, chunkZ * 16 + 8);
 		Biome biome = world.getBiome(position);
@@ -153,12 +153,12 @@ public class ModWorldGen implements IWorldGenerator {
 			}
 		}
 	}
-
+	
 	private void generateStructure(WorldGenerator structure, World world, Random rand, double chance, int chunkX, int chunkz, int xOffset, int zOffset, Predicate<Biome> biomes) {
 		BlockPos pos = new BlockPos(chunkX * 16 + xOffset, getGround(world, chunkX * 16 + xOffset, chunkz * 16 + zOffset), chunkz * 16 + zOffset);
 		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) structure.generate(world, rand, pos);
 	}
-
+	
 	private static int getGround(World world, int x, int z) {
 		int y = world.getHeight(x, z);
 		boolean foundGround = false;
@@ -172,7 +172,7 @@ public class ModWorldGen implements IWorldGenerator {
 		}
 		return y;
 	}
-
+	
 	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround) {
 		int zwidth = template.getSize().getZ();
 		int xwidth = template.getSize().getX();
@@ -182,7 +182,7 @@ public class ModWorldGen implements IWorldGenerator {
 		// if Y > 31 and all corners pass the test, it's okay to spawn the structure
 		return posAboveGround.getY() > 31 && corner1 && corner2;
 	}
-
+	
 	private static boolean isCornerValid(World world, BlockPos pos) {
 		int variation = 2;
 		int highestBlock = getGround(world, pos.getX(), pos.getZ());

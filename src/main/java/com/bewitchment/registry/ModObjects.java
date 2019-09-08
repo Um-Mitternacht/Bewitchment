@@ -227,7 +227,7 @@ public class ModObjects {
 	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	public static final Block hellfire = new BlockHellfire();
-
+	
 	//Poppet Shelves
 	public static final Block oak_poppet_shelf = new BlockPoppetShelf("oak");
 	public static final Block spruce_poppet_shelf = new BlockPoppetShelf("spruce");

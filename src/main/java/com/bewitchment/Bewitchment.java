@@ -82,7 +82,7 @@ public class Bewitchment {
 	public void preInit(FMLPreInitializationEvent event) {
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
-
+		
 		proxy.registerRendersPreInit();
 		ModObjects.preInit();
 		

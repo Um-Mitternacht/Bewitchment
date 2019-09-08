@@ -7,7 +7,6 @@ import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
-import com.bewitchment.common.block.plants.BlockSpanishMoss;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.registry.ModObjects;

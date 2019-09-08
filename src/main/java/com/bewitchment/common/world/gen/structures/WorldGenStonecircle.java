@@ -21,19 +21,19 @@ import java.util.Random;
 
 public class WorldGenStonecircle extends WorldGenerator {
 	private int type;
-
+	
 	public WorldGenStonecircle(int type) {
 		super();
 		this.type = type;
 	}
-
+	
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
 		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":stonecircle" + type));
-
+		
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
 			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);

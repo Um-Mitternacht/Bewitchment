@@ -70,7 +70,7 @@ public class ModRecipes {
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
-
+		
 		ForgeRegistries.RECIPES.register(new RecipePoppet().setRegistryName(Bewitchment.MODID, "poppet"));
 	}
 	

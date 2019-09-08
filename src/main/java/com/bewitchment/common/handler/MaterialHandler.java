@@ -79,7 +79,7 @@ public class MaterialHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void materialToolTip(ItemTooltipEvent event) {
