@@ -9,6 +9,7 @@ import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
+import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockLog;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
@@ -71,6 +72,7 @@ public class ModRegistries {
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		GameRegistry.registerTileEntity(TileEntityIdol.class, new ResourceLocation(Bewitchment.MODID, "idol"));
+		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
 		try {
 			for (Field f : ModObjects.class.getFields()) {
 				Object obj = f.get(null);

@@ -227,6 +227,14 @@ public class ModObjects {
 	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	public static final Block hellfire = new BlockHellfire();
+
+	//Poppet Shelves
+	public static final Block oak_poppet_shelf = new BlockPoppetShelf("oak");
+	public static final Block spruce_poppet_shelf = new BlockPoppetShelf("spruce");
+	public static final Block dark_oak_poppet_shelf = new BlockPoppetShelf("dark_oak");
+	public static final Block jungle_poppet_shelf = new BlockPoppetShelf("jungle");
+	public static final Block birch_poppet_shelf = new BlockPoppetShelf("birch");
+	public static final Block acacia_poppet_shelf = new BlockPoppetShelf("acacia");
 	
 	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
