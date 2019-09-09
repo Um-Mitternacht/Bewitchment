@@ -159,6 +159,7 @@ public class ModConfig {
 		public final BlackDog blackDog = new BlackDog();
 		public final Hellhound hellhound = new Hellhound();
 		public final Feuerwurm feuerwurm = new Feuerwurm();
+		public final Druden druden = new Druden();
 		
 		public static class Lizard {
 			@Config.Comment("The list of BiomeDictionary types that the lizard will spawn in.")
@@ -294,6 +295,23 @@ public class ModConfig {
 			@Config.Comment("The maximum amount of feuerwurms to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int feuerwurmMax = 4;
+		}
+		
+		public static class Druden {
+			@Config.Comment("The list of BiomeDictionary types that the druden will spawn in.")
+			public String[] drudenBiomes = {Type.FOREST.getName(), Type.DENSE.getName()};
+			
+			@Config.Comment("The weight chance for druden to spawn.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int drudenWeight = 1;
+			
+			@Config.Comment("The minimum amount of druden to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int drudenMin = 0;
+			
+			@Config.Comment("The maximum amount of druden to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int drudenMax = 1;
 		}
 	}
 	
