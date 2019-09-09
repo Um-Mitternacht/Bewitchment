@@ -45,7 +45,7 @@ public class EntityDruden extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(125);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.2);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
 	}
 	
 	@Override
