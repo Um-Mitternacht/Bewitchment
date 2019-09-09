@@ -1,7 +1,6 @@
 package com.bewitchment.client.render.tile;
 
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
-import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;

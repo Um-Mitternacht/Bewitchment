@@ -2,7 +2,6 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
 import com.bewitchment.common.entity.misc.EntityElderBroom;

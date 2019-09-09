@@ -16,6 +16,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
@@ -32,10 +35,12 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	protected int shearTimer;
+	protected static final DataParameter<Integer> PECK_TIME = EntityDataManager.<Integer>createKey(EntityRaven.class, DataSerializers.VARINT);
 	
 	protected EntityRaven(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world, lootTableLocation, tameItems);
 		setSize(0.4f, 0.4f);
+		this.setPeckTime(this.getNewPeck());
 		moveHelper = new EntityFlyHelper(this);
 	}
 	
@@ -46,6 +51,10 @@ public class EntityRaven extends ModEntityTameable {
 		path.setCanFloat(true);
 		path.setCanOpenDoors(false);
 		return path;
+	}
+	
+	private int getNewPeck() {
+		return this.rand.nextInt(600) + 30;
 	}
 	
 	@Override
@@ -83,6 +92,31 @@ public class EntityRaven extends ModEntityTameable {
 		super.onLivingUpdate();
 		if (!onGround && motionY <= 0) motionY *= 0.6;
 		if (shearTimer > 0) shearTimer--;
+		
+		if (!this.onGround || this.getMoveHelper().isUpdating()) {
+			if (this.getPeckTime() <= 61) {
+				this.setPeckTime(80);
+			}
+		}
+		
+		if (!this.world.isRemote && this.setPeckTime(this.getPeckTime() - 1) <= 0) {
+			this.setPeckTime(this.getNewPeck());
+		}
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(PECK_TIME, Integer.valueOf(0));
+	}
+	
+	public int getPeckTime() {
+		return this.dataManager.get(PECK_TIME).intValue();
+	}
+	
+	public int setPeckTime(int time) {
+		this.dataManager.set(PECK_TIME, Integer.valueOf(time));
+		return time;
 	}
 	
 	@Override
