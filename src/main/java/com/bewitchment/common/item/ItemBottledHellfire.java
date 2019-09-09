@@ -21,7 +21,7 @@ public class ItemBottledHellfire extends Item {
 		super();
 		Util.registerItem(this, "bottled_hellfire");
 	}
-
+	
 	@Override
 	@Nonnull
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {

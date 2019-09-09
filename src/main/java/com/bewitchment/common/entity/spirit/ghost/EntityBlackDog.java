@@ -58,6 +58,8 @@ public class EntityBlackDog extends ModEntityMob {
 		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.0F, 0.0F);
 	}
 	
+	//Todo: Make it so they become more powerful if hit by lightning
+	
 	//Todo: Make regeneration and healing harm it, since it's a ghost
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {

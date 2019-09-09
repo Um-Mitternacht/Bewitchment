@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings({"unused", "ConstantConditions"})
 public class PotionMagicWeakness extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/magic_weakness.png");
-
+	
 	public PotionMagicWeakness() {
 		super("magic_weakness", true, 0x7f00c0);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -25,14 +25,14 @@ public class PotionMagicWeakness extends ModPotion {
 	public void onDamage(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving().isPotionActive(this) && event.getSource().isMagicDamage()) event.setAmount(event.getAmount() + 3 * (event.getEntityLiving().getActivePotionEffect(this).getAmplifier() + 1));
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {

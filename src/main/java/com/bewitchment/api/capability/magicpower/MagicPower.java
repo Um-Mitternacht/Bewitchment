@@ -1,6 +1,7 @@
 package com.bewitchment.api.capability.magicpower;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	public int amount, maxAmount;
 	
 	public MagicPower() {
-		maxAmount = Bewitchment.config.maxGrimoirePower;
+		maxAmount = ModConfig.misc.maxGrimoirePower;
 	}
 	
 	@Nullable

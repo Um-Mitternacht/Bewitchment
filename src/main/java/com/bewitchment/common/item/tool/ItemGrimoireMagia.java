@@ -1,6 +1,6 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
@@ -58,14 +58,14 @@ public class ItemGrimoireMagia extends Item {
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
 		if (isInCreativeTab(tab)) {
 			list.add(create(0));
-			list.add(create(Bewitchment.config.maxGrimoirePower));
+			list.add(create(ModConfig.misc.maxGrimoirePower));
 		}
 	}
 	
 	public static ItemStack create(int amount) {
 		ItemStack stack = new ItemStack(ModObjects.grimoire_magia);
 		stack.setTagCompound(new NBTTagCompound());
-		stack.getTagCompound().setInteger("maxAmount", Bewitchment.config.maxGrimoirePower);
+		stack.getTagCompound().setInteger("maxAmount", ModConfig.misc.maxGrimoirePower);
 		stack.getTagCompound().setInteger("amount", amount);
 		return stack;
 	}

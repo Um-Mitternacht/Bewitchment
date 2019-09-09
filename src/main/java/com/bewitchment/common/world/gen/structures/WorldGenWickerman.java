@@ -18,25 +18,24 @@ import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 @SuppressWarnings("NullableProblems")
 public class WorldGenWickerman extends WorldGenerator {
 	private boolean burned;
-
+	
 	public WorldGenWickerman(boolean burned) {
 		super();
 		this.burned = burned;
 	}
-
+	
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
 		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + (burned ? ":burnedwickerman" : ":wickerman")));
-
+		
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
 			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
@@ -57,7 +56,7 @@ public class WorldGenWickerman extends WorldGenerator {
 		}
 		return false;
 	}
-
+	
 	private void spawnAnimal(World world, int x, int y, int z, Random random) {
 		EntityAnimal spawn;
 		switch (random.nextInt(4)) {

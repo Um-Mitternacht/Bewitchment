@@ -1,6 +1,7 @@
 package com.bewitchment.common.world.gen;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.common.world.gen.structures.WorldGenMenhir;
 import com.bewitchment.common.world.gen.structures.WorldGenStonecircle;
 import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
@@ -30,6 +31,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.function.Predicate;
 
@@ -39,14 +41,14 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator elderTree = new WorldGenElderTree(true);
 	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
 	private final WorldGenerator yewTree = new WorldGenYewTree(true);
-
+	
 	//Ores
-	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), Bewitchment.config.silverSize);
-	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), Bewitchment.config.saltSize);
-	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), Bewitchment.config.amethystSize);
-	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), Bewitchment.config.garnetSize);
-	private final WorldGenerator opalOre = new WorldGenMinable(ModObjects.opal_ore.getDefaultState(), Bewitchment.config.opalSize);
-
+	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), ModConfig.worldGen.oreGen.silverSize);
+	private final WorldGenerator saltOre = new WorldGenMinable(ModObjects.salt_ore.getDefaultState(), ModConfig.worldGen.oreGen.saltSize);
+	private final WorldGenerator amethystOre = new WorldGenMinable(ModObjects.amethyst_ore.getDefaultState(), ModConfig.worldGen.oreGen.amethystSize);
+	private final WorldGenerator garnetOre = new WorldGenMinable(ModObjects.garnet_ore.getDefaultState(), ModConfig.worldGen.oreGen.garnetSize);
+	private final WorldGenerator opalOre = new WorldGenMinable(ModObjects.opal_ore.getDefaultState(), ModConfig.worldGen.oreGen.opalSize);
+	
 	//Structures
 	private final WorldGenerator wickerman = new WorldGenWickerman(false);
 	private final WorldGenerator burnedWickerman = new WorldGenWickerman(true);
@@ -71,20 +73,20 @@ public class ModWorldGen implements IWorldGenerator {
 	
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-		if (Bewitchment.config.worldGenWhitelist.contains(world.provider.getDimension())) {
+		if (Arrays.asList(ModConfig.worldGen.worldGenWhitelist).contains(world.provider.getDimension())) {
 			generateCoquina(world, rand, chunkX, chunkZ);
-			generateOre(world, rand, silverOre, chunkX, chunkZ, Bewitchment.config.silverChance, Bewitchment.config.silverMin, Bewitchment.config.silverMax);
-			generateOre(world, rand, saltOre, chunkX, chunkZ, Bewitchment.config.saltChance, Bewitchment.config.saltMin, Bewitchment.config.saltMax);
-			generateOre(world, rand, amethystOre, chunkX, chunkZ, Bewitchment.config.amethystChance, Bewitchment.config.amethystMin, Bewitchment.config.amethystMax);
-			generateOre(world, rand, garnetOre, chunkX, chunkZ, Bewitchment.config.garnetChance, Bewitchment.config.garnetMin, Bewitchment.config.garnetMax);
-			generateOre(world, rand, opalOre, chunkX, chunkZ, Bewitchment.config.opalChance, Bewitchment.config.opalMin, Bewitchment.config.opalMax);
-			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, Bewitchment.config.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, Bewitchment.config.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
-			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, Bewitchment.config.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
-			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, Bewitchment.config.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
+			generateOre(world, rand, silverOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.silverChance, ModConfig.worldGen.oreGen.silverMin, ModConfig.worldGen.oreGen.silverMax);
+			generateOre(world, rand, saltOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.saltChance, ModConfig.worldGen.oreGen.saltMin, ModConfig.worldGen.oreGen.saltMax);
+			generateOre(world, rand, amethystOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.amethystChance, ModConfig.worldGen.oreGen.amethystMin, ModConfig.worldGen.oreGen.amethystMax);
+			generateOre(world, rand, garnetOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.garnetChance, ModConfig.worldGen.oreGen.garnetMin, ModConfig.worldGen.oreGen.garnetMax);
+			generateOre(world, rand, opalOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.opalChance, ModConfig.worldGen.oreGen.opalMin, ModConfig.worldGen.oreGen.opalMax);
+			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
+			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
+			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
-
+		
 		if (world.provider.getDimension() == 0) {    //Overworld Gen
 			generateStructure(wickerman, world, rand, 0.006, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
@@ -131,7 +133,7 @@ public class ModWorldGen implements IWorldGenerator {
 			if (predicate.test(biome) && block.canPlaceBlockAt(world, pos)) gen.generate(world, rand, pos);
 		}
 	}
-
+	
 	private void generateMoss(World world, Random rand, int chunkX, int chunkZ, Predicate<Biome> predicate) {
 		BlockPos position = new BlockPos(chunkX * 16 + 8, 64, chunkZ * 16 + 8);
 		Biome biome = world.getBiome(position);
@@ -151,12 +153,12 @@ public class ModWorldGen implements IWorldGenerator {
 			}
 		}
 	}
-
+	
 	private void generateStructure(WorldGenerator structure, World world, Random rand, double chance, int chunkX, int chunkz, int xOffset, int zOffset, Predicate<Biome> biomes) {
 		BlockPos pos = new BlockPos(chunkX * 16 + xOffset, getGround(world, chunkX * 16 + xOffset, chunkz * 16 + zOffset), chunkz * 16 + zOffset);
 		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) structure.generate(world, rand, pos);
 	}
-
+	
 	private static int getGround(World world, int x, int z) {
 		int y = world.getHeight(x, z);
 		boolean foundGround = false;
@@ -170,7 +172,7 @@ public class ModWorldGen implements IWorldGenerator {
 		}
 		return y;
 	}
-
+	
 	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround) {
 		int zwidth = template.getSize().getZ();
 		int xwidth = template.getSize().getX();
@@ -180,7 +182,7 @@ public class ModWorldGen implements IWorldGenerator {
 		// if Y > 31 and all corners pass the test, it's okay to spawn the structure
 		return posAboveGround.getY() > 31 && corner1 && corner2;
 	}
-
+	
 	private static boolean isCornerValid(World world, BlockPos pos) {
 		int variation = 2;
 		int highestBlock = getGround(world, pos.getX(), pos.getZ());

@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class WorldGenMenhir extends WorldGenerator {
 	private int type;
-
+	
 	/**
 	 * @param type has 5 possible values:
 	 *             1. default variant1
@@ -30,19 +30,19 @@ public class WorldGenMenhir extends WorldGenerator {
 	 *             4. megataiga (redwood) variant
 	 *             5. cold taiga variant
 	 */
-
+	
 	public WorldGenMenhir(int type) {
 		super();
 		this.type = type;
 	}
-
+	
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
 		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":menhir" + type));
-
+		
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
 			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);

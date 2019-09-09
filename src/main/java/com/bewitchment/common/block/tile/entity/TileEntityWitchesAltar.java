@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
@@ -107,7 +108,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			}
 			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
-			scan(Bewitchment.config.altarScansPerTick);
+			scan(ModConfig.misc.altarScansPerTick);
 		}
 	}
 	

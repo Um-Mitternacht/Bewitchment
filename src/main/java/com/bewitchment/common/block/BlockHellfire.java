@@ -58,12 +58,12 @@ public class BlockHellfire extends BlockFire {
 			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0));
 		}
 	}
-
+	
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-
+	
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
