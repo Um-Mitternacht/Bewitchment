@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings({"unused", "ConstantConditions", "deprecation"})
 public class PotionDeflection extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/deflect.png");
-
+	
 	public PotionDeflection() {
 		super("deflection", false, 0xc000ff);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -32,14 +32,14 @@ public class PotionDeflection extends ModPotion {
 			event.setCanceled(true);
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {

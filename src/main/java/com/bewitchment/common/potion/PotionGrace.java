@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings({"unused", "ConstantConditions"})
 public class PotionGrace extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/grace.png");
-
+	
 	public PotionGrace() {
 		super("grace", false, 0xc6c6c6);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -26,14 +26,14 @@ public class PotionGrace extends ModPotion {
 	public void onDamage(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving().isPotionActive(this) && event.getSource() == DamageSource.FALL) event.setAmount(event.getAmount() / (event.getEntityLiving().getActivePotionEffect(this).getAmplifier() + 2));
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {

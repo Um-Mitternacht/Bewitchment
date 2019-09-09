@@ -17,7 +17,7 @@ public class ItemPoppet extends Item {
 		setMaxStackSize(1);
 		setMaxDamage(oneTimeUse ? 1 : 50);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {

@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings({"unused", "ConstantConditions"})
 public class PotionSinking extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/sinking.png");
-
+	
 	public PotionSinking() {
 		super("sinking", true, 0x4000c0);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -31,14 +31,14 @@ public class PotionSinking extends ModPotion {
 			if (event.getEntityLiving() instanceof EntityPlayer) ((EntityPlayerMP) event.getEntityLiving()).connection.sendPacket(new SPacketEntityVelocity(event.getEntityLiving()));
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
