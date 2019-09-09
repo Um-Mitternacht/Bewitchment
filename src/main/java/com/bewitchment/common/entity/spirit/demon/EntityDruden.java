@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -17,6 +18,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**
@@ -40,9 +42,9 @@ public class EntityDruden extends ModEntityMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(75);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(125);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.2);
 	}
 	
@@ -54,9 +56,14 @@ public class EntityDruden extends ModEntityMob {
 			if (hurtTime == 1) {
 				for (int i = 0; i < 20; i++)
 					world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);
-				world.playSound(null, getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.HOSTILE, 1, 1);
+				world.playSound(null, getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.HOSTILE, 1.3F, 1);
 			}
 		}
+	}
+	
+	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) {
+		this.playSound(SoundEvents.ENTITY_STRAY_STEP, 0.0F, 0.0F);
 	}
 	
 	@Override
