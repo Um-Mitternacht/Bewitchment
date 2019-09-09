@@ -47,7 +47,7 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 		if (poppet != null && taglock != null) {
 			ItemStack returnItem = poppet.copy();
 			returnItem.setTagCompound(new NBTTagCompound());
-			returnItem.getTagCompound().setString("boundID", taglock.getTagCompound().getString("boundID"));
+			returnItem.getTagCompound().setString("boundId", taglock.getTagCompound().getString("boundId"));
 			returnItem.getTagCompound().setString("boundName", taglock.getTagCompound().getString("boundName"));
 			return returnItem;
 		}

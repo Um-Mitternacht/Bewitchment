@@ -15,6 +15,7 @@ public class ExtendedWorld extends WorldSavedData {
 	private static final String TAG = Bewitchment.MODID + ".world_data";
 	
 	public final List<NBTTagCompound> storedCauldrons = new ArrayList<>();
+	public final List<NBTTagCompound> storedPoppetShelves = new ArrayList<>();
 	
 	public ExtendedWorld(String name) {
 		super(name);
@@ -23,15 +24,20 @@ public class ExtendedWorld extends WorldSavedData {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		NBTTagList storedCauldrons = new NBTTagList();
+		NBTTagList storedPoppetShelves = new NBTTagList();
 		for (NBTTagCompound cauldron : this.storedCauldrons) storedCauldrons.appendTag(cauldron);
+		for (NBTTagCompound poppet : this.storedPoppetShelves) storedPoppetShelves.appendTag(poppet);
 		nbt.setTag("storedCauldrons", storedCauldrons);
+		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
 		return nbt;
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		NBTTagList storedCauldrons = nbt.getTagList("storedCauldrons", Constants.NBT.TAG_COMPOUND);
+		NBTTagList storedPoppetShelves = nbt.getTagList("storedPoppetShelves", Constants.NBT.TAG_COMPOUND);
 		for (int i = 0; i < storedCauldrons.tagCount(); i++) this.storedCauldrons.add(storedCauldrons.getCompoundTagAt(i));
+		for (int i = 0; i < storedPoppetShelves.tagCount(); i++) this.storedPoppetShelves.add(storedPoppetShelves.getCompoundTagAt(i));
 	}
 	
 	public static ExtendedWorld get(World world) {

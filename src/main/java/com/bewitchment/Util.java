@@ -3,11 +3,13 @@ package com.bewitchment;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
+import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRegistries;
@@ -21,13 +23,18 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -201,6 +208,50 @@ public class Util {
 			((EntityPlayerMP) player).connection.setPlayerLocation(x, y, z, player.rotationYaw, player.rotationPitch);
 			Bewitchment.network.sendTo(new TeleportPlayerClient(x, y, z), (EntityPlayerMP) player);
 		}
+	}
+
+	/**
+	 * @param entity the entity to check
+	 * @param poppet the poppet variant to find
+	 * @return false always, poppets are not currently in the mod
+	 */
+	public static boolean hasPoppet(EntityPlayer entity, Item poppet) {
+		World world = entity.getEntityWorld();
+		ExtendedWorld ext = ExtendedWorld.get(world);
+
+		for (int i = 0; i < entity.inventory.getSizeInventory(); i++) {
+			ItemStack stack = entity.inventory.getStackInSlot(i);
+			if (stack.getItem() == poppet) {
+				String uuid = stack.getTagCompound().getString("boundId");
+				if(entity.getUniqueID().toString().equals(uuid)) {
+					if (stack.getItemDamage() == 0)
+						stack.damageItem(2, entity);
+					else stack.damageItem(1, entity);
+					return true;
+				}
+			}
+		}
+
+		for (NBTTagCompound poppetShelves : ext.storedPoppetShelves) {
+			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
+			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
+				TileEntityPoppetShelf te = (TileEntityPoppetShelf) world.getTileEntity(pos);
+				if (te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+					IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+					for (int slot = 0; slot < handler.getSlots(); slot++) {
+						ItemStack itemStack = handler.getStackInSlot(slot);
+						if (itemStack.getItem() == poppet) {
+							String uuid = itemStack.getTagCompound().getString("boundId");
+							if(entity.getUniqueID().toString().equals(uuid)) {
+								te.damageSlot(entity, slot);
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {

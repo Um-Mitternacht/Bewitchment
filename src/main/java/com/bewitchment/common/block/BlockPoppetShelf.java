@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -71,12 +73,22 @@ public class BlockPoppetShelf extends ModBlockContainer {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
         int gridPos = getGridPosition(state, hitX, hitY, hitZ);
-        Bewitchment.logger.info("Clicked On Grid" + gridPos);
         if (!world.isRemote && hand == EnumHand.MAIN_HAND && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
             TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
             tile.interact(player, gridPos);
         }
         return true;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        NBTTagCompound poppet = new NBTTagCompound();
+        poppet.setLong("position", pos.toLong());
+        poppet.setInteger("dimension", placer.dimension);
+        ExtendedWorld ext = ExtendedWorld.get(world);
+        ext.storedPoppetShelves.add(poppet);
+        ext.markDirty();
+        super.onBlockPlacedBy(world, pos, state, placer, stack);
     }
 
     @Override
@@ -86,6 +98,14 @@ public class BlockPoppetShelf extends ModBlockContainer {
         for(int slot = 0; slot < handler.getSlots(); slot++) {
             ItemStack stack = handler.getStackInSlot(slot);
             InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+        }
+        ExtendedWorld ext = ExtendedWorld.get(world);
+        for (NBTTagCompound poppet : ext.storedPoppetShelves) {
+            if (poppet.getInteger("dimension") == world.provider.getDimension() && poppet.getLong("position") == pos.toLong()) {
+                ext.storedPoppetShelves.remove(poppet);
+                ext.markDirty();
+                break;
+            }
         }
         super.breakBlock(world, pos, state);
     }

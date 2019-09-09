@@ -40,6 +40,7 @@ import com.bewitchment.registry.ModRecipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -95,6 +96,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 		MinecraftForge.EVENT_BUS.register(new MiscHandler());
 		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
+		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		

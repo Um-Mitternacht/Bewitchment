@@ -45,7 +45,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T)this.handler;
+        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.handler;
         return super.getCapability(capability, facing);
     }
 
@@ -70,10 +70,9 @@ public class TileEntityPoppetShelf extends ModTileEntity {
     }
 
     public void interact(EntityPlayer player, int slot) {
-        ItemStack heldItem = player.getHeldItemMainhand();
         // completely empty -> insert current item into input
-        if(handler.getStackInSlot(slot).isEmpty() && heldItem.getItem() instanceof ItemPoppet) {
-            ItemStack stack = player.inventory.decrStackSize(player.inventory.currentItem, 1);
+        if(handler.getStackInSlot(slot).isEmpty()) {
+            ItemStack stack = player.inventory.decrStackSize(player.inventory.currentItem, 64);
             handler.setStackInSlot(slot, stack);
             markDirty();
             IBlockState state = world.getBlockState(pos);
@@ -88,11 +87,20 @@ public class TileEntityPoppetShelf extends ModTileEntity {
         }
     }
 
-    public void writeUpdateTag(NBTTagCompound tag) {
+    public void damageSlot(EntityPlayer player, int slot) {
+        ItemStack stack = handler.getStackInSlot(slot);
+        if (stack.getItemDamage() == 0) stack.damageItem(2, player);
+        else stack.damageItem(1, player);
+        markDirty();
+        IBlockState state = world.getBlockState(pos);
+        world.notifyBlockUpdate(pos, state, state, 3);
+    }
+
+    private void writeUpdateTag(NBTTagCompound tag) {
         tag.setTag("ItemStackHandler", this.handler.serializeNBT());
     }
 
-    public void readUpdateTag(NBTTagCompound tag) {
+    private void readUpdateTag(NBTTagCompound tag) {
         this.handler.deserializeNBT(tag.getCompoundTag("ItemStackHandler"));
     }
 }

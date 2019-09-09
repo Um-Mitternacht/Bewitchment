@@ -395,7 +395,7 @@ public class ModObjects {
 	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");
 	public static final Item owlets_wing = Util.registerItem("owlets_wing");
-	public static final Item ravens_feather = Util.registerItem("ravens_feather");
+	public static final Item ravens_feather = Util.registerItem("ravens_feather", "feather");
 	public static final Item adders_fork = Util.registerItem("adders_fork");
 	public static final Item toe_of_frog = Util.registerItem("toe_of_frog");
 	public static final Item hellhound_horn = Util.registerItem("hellhound_horn");

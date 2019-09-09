@@ -122,13 +122,13 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				break;
 			case 7:
 				// Check if player has protection poppet
-				if (BewitchmentAPI.hasPoppets(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
-				}
-				else {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
-				}
-				break;
+//				if (BewitchmentAPI.hasPoppets(tagPlayer)) {
+//					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+//				}
+//				else {
+//					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
+//				}
+//				break;
 			case 8:
 				// Check if player has non-passive effects on
 				if (BewitchmentAPI.hasEffects(tagPlayer)) {
