@@ -235,6 +235,10 @@ public class ModObjects {
 	public static final Block jungle_poppet_shelf = new BlockPoppetShelf("jungle");
 	public static final Block birch_poppet_shelf = new BlockPoppetShelf("birch");
 	public static final Block acacia_poppet_shelf = new BlockPoppetShelf("acacia");
+	public static final Block juniper_poppet_shelf = new BlockPoppetShelf("juniper");
+	public static final Block cypress_poppet_shelf = new BlockPoppetShelf("cypress");
+	public static final Block elder_poppet_shelf = new BlockPoppetShelf("elder");
+	public static final Block dragons_blood_poppet_shelf = new BlockPoppetShelf("dragons_blood");
 	
 	//Armor
 	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");

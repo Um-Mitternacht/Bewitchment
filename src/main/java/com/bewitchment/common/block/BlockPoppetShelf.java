@@ -1,12 +1,16 @@
 package com.bewitchment.common.block;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -14,6 +18,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockPoppetShelf extends ModBlockContainer {
@@ -60,5 +66,42 @@ public class BlockPoppetShelf extends ModBlockContainer {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, BlockHorizontal.FACING);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+        int gridPos = getGridPosition(state, hitX, hitY, hitZ);
+        Bewitchment.logger.info("Clicked On Grid" + gridPos);
+        if (!world.isRemote && hand == EnumHand.MAIN_HAND && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
+            TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
+            IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+            tile.interact(player, gridPos);
+        }
+        return true;
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
+        IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        for(int slot = 0; slot < handler.getSlots(); slot++) {
+            ItemStack stack = handler.getStackInSlot(slot);
+            InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+        }
+        super.breakBlock(world, pos, state);
+    }
+
+    private int getGridPosition(IBlockState state, float hitX, float hitY, float hitZ) {
+        final int[][] GRID = {{6, 7, 8}, {3, 4, 5}, {0, 1, 2}};
+        float x = 0, y = 0;
+        switch(state.getValue(BlockHorizontal.FACING).getHorizontalIndex()) {
+            case 0: x = hitX; y = hitY; break;
+            case 2: x = 1 - hitX; y = hitY; break;
+            case 1: x = hitZ; y = hitY; break;
+            case 3: x = 1 - hitZ; y = hitY; break;
+        }
+        int xPos = (int) Math.floor((double) x * 3);
+        int yPos = (int) Math.floor((double) y * 3);
+        return GRID[yPos][xPos];
     }
 }
