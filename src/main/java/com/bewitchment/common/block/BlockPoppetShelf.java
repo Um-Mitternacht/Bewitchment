@@ -74,7 +74,6 @@ public class BlockPoppetShelf extends ModBlockContainer {
         Bewitchment.logger.info("Clicked On Grid" + gridPos);
         if (!world.isRemote && hand == EnumHand.MAIN_HAND && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
             TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
-            IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
             tile.interact(player, gridPos);
         }
         return true;
@@ -102,6 +101,8 @@ public class BlockPoppetShelf extends ModBlockContainer {
         }
         int xPos = (int) Math.floor((double) x * 3);
         int yPos = (int) Math.floor((double) y * 3);
+        if(xPos >= 2) xPos = 2;
+        if(yPos >= 2) yPos = 2;
         return GRID[yPos][xPos];
     }
 }
