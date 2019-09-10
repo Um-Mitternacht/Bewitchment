@@ -2,7 +2,6 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -10,9 +9,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class PoppetHandler {
     @SubscribeEvent
@@ -73,8 +70,9 @@ public class PoppetHandler {
     public void hungerProtection (LivingDamageEvent event) {
         if (event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.STARVE) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            if (Util.hasPoppet(player, ModObjects.poppet_flameprotection)) {
+            if (Util.hasPoppet(player, ModObjects.poppet_hungerprotection)) {
                 event.setAmount(0);
+                player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 100, 1));
             }
         }
     }
