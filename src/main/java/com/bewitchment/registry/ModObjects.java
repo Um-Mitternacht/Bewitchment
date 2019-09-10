@@ -335,6 +335,7 @@ public class ModObjects {
 	public static final Item cleansing_balm = Util.registerItem("cleansing_balm");
 	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
 	public static final Item fiery_unguent = Util.registerItem("fiery_unguent");
+	public static final Item swirl_of_depths = Util.registerItem("swirl_of_depths");
 	//Loom
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
@@ -357,7 +358,7 @@ public class ModObjects {
 	public static final Item poppet_voodooprotection = Util.registerItem(new ItemPoppet(false), "poppet_voodooprotection");
 	public static final Item poppet_voodoo = Util.registerItem(new ItemPoppet(false), "poppet_voodoo");
 	public static final Item poppet_wasting = Util.registerItem(new ItemPoppet(false), "poppet_wasting");
-	public static final Item poppet_waterprotection = Util.registerItem(new ItemPoppet(false), "poppet_waterprotection");
+	public static final Item poppet_waterprotection = Util.registerItem(new ItemPoppet(true), "poppet_waterprotection");
 	//Plants
 	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");

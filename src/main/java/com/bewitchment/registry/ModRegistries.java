@@ -358,6 +358,7 @@ public class ModRegistries {
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_unguent"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.get("wax")), Collections.singletonList(new ItemStack(ModObjects.fiery_unguent))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "blood_from_hearts"), Arrays.asList(Util.get(ModObjects.heart), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE)), Collections.singletonList(new ItemStack(ModObjects.bottle_of_blood, 3))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "bottled_hellfire"), Arrays.asList(Util.get(Items.GLASS_BOTTLE), Util.get("wax"), Util.get("wax"), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.dragons_blood_resin)), Arrays.asList(new ItemStack(ModObjects.bottled_hellfire), new ItemStack(ModObjects.empty_jar, 1))));
+		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "swirl_of_depths"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get(Items.FISH), Util.get(ModObjects.coquina), Util.get(new ItemStack(Items.POTIONITEM, 1, 0))), Arrays.asList(new ItemStack(ModObjects.swirl_of_depths), new ItemStack(Items.GLASS_BOTTLE, 1))));
 	}
 	
 	@SubscribeEvent
