@@ -61,12 +61,10 @@ public class BewitchmentThaumcraft {
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MIND, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MAGIC, 3));
-		event.register.registerObjectTag(new ItemStack(ModObjects.yew_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.EXCHANGE, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.FIRE, 5).add(Aspect.ENERGY, 3));
 		//Resins, logs, barks, etc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_resin), new AspectList().add(Aspect.PLANT, 3).add(Aspect.FIRE, 3).add(Aspect.ENERGY, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.FIRE, 10).add(Aspect.ENERGY, 10));
-		event.register.registerObjectTag(new ItemStack(ModObjects.yew_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.EXCHANGE, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.MAGIC, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.MIND, 10));
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_wood), new AspectList().add(Aspect.PLANT, 10).add(Aspect.LIFE, 10).add(Aspect.DEATH, 10));
@@ -107,7 +105,6 @@ public class BewitchmentThaumcraft {
 		//Food
 		event.register.registerObjectTag(new ItemStack(ModObjects.elderberries), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_berries), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3));
-		event.register.registerObjectTag(new ItemStack(ModObjects.yew_aril), new AspectList().add(Aspect.PLANT, 3).add(Aspect.EXCHANGE, 3));
 		//Mob Drops
 		event.register.registerObjectTag(new ItemStack(ModObjects.lizard_leg), new AspectList().add(Aspect.MOTION, 4).add(Aspect.EARTH, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.owlets_wing), new AspectList().add(Aspect.BEAST, 3).add(Aspect.AIR, 2).add(MOON, 2));
@@ -171,7 +168,6 @@ public class BewitchmentThaumcraft {
 		
 		//Brooms
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
-		event.register.registerObjectTag(new ItemStack(ModObjects.yew_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		

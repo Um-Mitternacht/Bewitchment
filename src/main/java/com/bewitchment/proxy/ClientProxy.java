@@ -9,7 +9,6 @@ import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderElderBroom;
 import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
-import com.bewitchment.client.render.entity.misc.RenderYewBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.fx.ModParticleBubble;
@@ -20,7 +19,6 @@ import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
 import com.bewitchment.common.entity.misc.EntityElderBroom;
 import com.bewitchment.common.entity.misc.EntityJuniperBroom;
-import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.registry.ModObjects;
@@ -86,7 +84,6 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityYewBroom.class, RenderYewBroom::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);

@@ -6,7 +6,6 @@ import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
 import com.bewitchment.common.entity.misc.EntityElderBroom;
 import com.bewitchment.common.entity.misc.EntityJuniperBroom;
-import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import net.minecraft.entity.Entity;
@@ -30,7 +29,6 @@ public class ModEntities {
 	public static final EntityEntry cypress_broom = createEntityEntry(EntityCypressBroom.class, "cypress_broom");
 	public static final EntityEntry elder_broom = createEntityEntry(EntityElderBroom.class, "elder_broom");
 	public static final EntityEntry juniper_broom = createEntityEntry(EntityJuniperBroom.class, "juniper_broom");
-	public static final EntityEntry yew_broom = createEntityEntry(EntityYewBroom.class, "yew_broom");
 	
 	public static final EntityEntry lizard = createEntityEntry(EntityLizard.class, "lizard", 0x568203, 0x0070bb, EnumCreatureType.CREATURE, ModConfig.mobSpawns.lizard.lizardWeight, ModConfig.mobSpawns.lizard.lizardMin, ModConfig.mobSpawns.lizard.lizardMax, Arrays.asList(ModConfig.mobSpawns.lizard.lizardBiomes));
 	public static final EntityEntry owl = createEntityEntry(EntityOwl.class, "owl", 0xaf813f, 0x6e5127, EnumCreatureType.CREATURE, ModConfig.mobSpawns.owl.owlWeight, ModConfig.mobSpawns.owl.owlMin, ModConfig.mobSpawns.owl.owlMax, Arrays.asList(ModConfig.mobSpawns.owl.owlBiomes));

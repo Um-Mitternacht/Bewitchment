@@ -56,10 +56,6 @@ public class ModConfig {
 			@Config.Comment("The chance for juniper trees to spawn. Set to 0 to disable.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int juniperChance = 20;
-			
-			@Config.Comment("The chance for yew trees to spawn. Set to 0 to disable.")
-			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int yewChance = 20;
 		}
 		
 		public static class OreGen {

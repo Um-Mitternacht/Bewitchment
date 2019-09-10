@@ -34,7 +34,6 @@ public class RitualFrenziedGrowth extends Ritual {
 					if (type == BlockPlanks.EnumType.OAK || type == BlockPlanks.EnumType.BIRCH) world.setBlockState(pos0, ModObjects.elder_sapling.getDefaultState());
 					if (type == BlockPlanks.EnumType.SPRUCE || type == BlockPlanks.EnumType.JUNGLE) world.setBlockState(pos0, ModObjects.cypress_sapling.getDefaultState());
 					if (type == BlockPlanks.EnumType.ACACIA) world.setBlockState(pos0, ModObjects.juniper_sapling.getDefaultState());
-					if (type == BlockPlanks.EnumType.DARK_OAK) world.setBlockState(pos0, ModObjects.yew_sapling.getDefaultState());
 				}
 			}
 		}

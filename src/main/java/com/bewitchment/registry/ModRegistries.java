@@ -90,26 +90,21 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
-		Bewitchment.proxy.ignoreProperty(ModObjects.yew_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
-		Bewitchment.proxy.ignoreProperty(ModObjects.yew_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_leaves, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_door.door, BlockDoor.POWERED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.yew_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_door.door, BlockDoor.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_fence_gate, BlockFenceGate.POWERED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.yew_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_fence_gate, BlockFenceGate.POWERED);
 		
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.yew_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, ModBlockLog.IS_NATURAL);
@@ -236,7 +231,6 @@ public class ModRegistries {
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "cypress_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.cypress_wood), Util.get(ModObjects.cypress_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.ebb_of_death)), null, Collections.singletonList(new ItemStack(ModObjects.cypress_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "elder_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.elder_wood), Util.get(ModObjects.elder_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.droplet_of_wisdom)), null, Collections.singletonList(new ItemStack(ModObjects.elder_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "juniper_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.juniper_wood), Util.get(ModObjects.juniper_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.liquid_witchcraft)), null, Collections.singletonList(new ItemStack(ModObjects.juniper_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
-		event.getRegistry().register(new Ritual(new ResourceLocation(Bewitchment.MODID, "yew_broom"), Arrays.asList(Util.get(ModObjects.broom), Util.get(ModObjects.yew_wood), Util.get(ModObjects.yew_sapling), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.essence_of_vitality)), null, Collections.singletonList(new ItemStack(ModObjects.yew_broom)), 10, 1250, 60, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.ENDER));
 		if (ModConfig.memes.wednesday) event.getRegistry().register(new RitualWednesday());
 	}
 	

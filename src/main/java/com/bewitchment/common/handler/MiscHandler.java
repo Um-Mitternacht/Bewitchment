@@ -3,7 +3,6 @@ package com.bewitchment.common.handler;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
-import com.bewitchment.common.entity.misc.EntityYewBroom;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.registry.ModObjects;
@@ -27,7 +26,6 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -80,10 +78,10 @@ public class MiscHandler {
 		}
 	}
 	
-	@SubscribeEvent
-	public void dismount(EntityMountEvent event) {
-		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityYewBroom && event.isDismounting()) ((EntityYewBroom) event.getEntityBeingMounted()).dismount();
-	}
+//	@SubscribeEvent
+//	public void dismount(EntityMountEvent event) {
+//		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityYewBroom && event.isDismounting()) ((EntityYewBroom) event.getEntityBeingMounted()).dismount();
+//	}
 	
 	@SubscribeEvent
 	public void explode(ExplosionEvent.Detonate event) {

@@ -8,7 +8,6 @@ import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
 import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
-import com.bewitchment.common.world.gen.tree.WorldGenYewTree;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockVine;
@@ -40,7 +39,6 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator cypressTree = new WorldGenCypressTree(true);
 	private final WorldGenerator elderTree = new WorldGenElderTree(true);
 	private final WorldGenerator juniperTree = new WorldGenJuniperTree(true);
-	private final WorldGenerator yewTree = new WorldGenYewTree(true);
 	
 	//Ores
 	private final WorldGenerator silverOre = new WorldGenMinable(ModObjects.silver_ore.getDefaultState(), ModConfig.worldGen.oreGen.silverSize);
@@ -83,7 +81,6 @@ public class ModWorldGen implements IWorldGenerator {
 			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
 			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
 			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
-			generateTree(world, rand, yewTree, ModObjects.yew_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.yewChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && BiomeDictionary.hasType(b, BiomeDictionary.Type.DENSE));
 			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 		}
 		
