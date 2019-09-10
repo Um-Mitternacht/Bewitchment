@@ -51,6 +51,14 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.function.Predicate;
 
+import static vazkii.quark.misc.feature.ExtraPotions.dangerSight;
+import static vazkii.quark.world.feature.Biotite.biotite;
+import static vazkii.quark.world.feature.CaveRoots.*;
+import static vazkii.quark.world.feature.Crabs.crabShell;
+import static vazkii.quark.world.feature.Crabs.resilience;
+import static vazkii.quark.world.feature.Frogs.gildedFrogLeg;
+import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
+
 @SuppressWarnings({"ConstantConditions", "unused"})
 @Mod.EventBusSubscriber
 public class ModRegistries {
@@ -315,6 +323,17 @@ public class ModRegistries {
 		if (Loader.isModLoaded("rustic")) {
 			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
 			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
+		}
+		
+		if (Loader.isModLoaded("quark")) {
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "prismarine_haste"), Util.get(Items.PRISMARINE_CRYSTALS), new PotionEffect(MobEffects.HASTE, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "frog_boost"), Util.get(gildedFrogLeg), new PotionEffect(MobEffects.JUMP_BOOST, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "biotite_resistance"), Util.get(biotite), new PotionEffect(MobEffects.RESISTANCE, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "danger_sight"), Util.get(glowshroom), new PotionEffect(dangerSight, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blueberry"),  Util.get(new ItemStack(root_flower, 1, 0)), new PotionEffect(blue_effect, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blackening"),Util.get(new ItemStack(root_flower, 1, 1)), new PotionEffect(black_effect, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "whitening"), Util.get(new ItemStack(root_flower, 1, 2)), new PotionEffect(white_effect, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "stability"), Util.get(crabShell), new PotionEffect(resilience, (20 * 30))));
 		}
 	}
 	

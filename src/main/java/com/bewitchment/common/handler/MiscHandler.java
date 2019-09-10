@@ -78,10 +78,10 @@ public class MiscHandler {
 		}
 	}
 	
-//	@SubscribeEvent
-//	public void dismount(EntityMountEvent event) {
-//		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityYewBroom && event.isDismounting()) ((EntityYewBroom) event.getEntityBeingMounted()).dismount();
-//	}
+	//	@SubscribeEvent
+	//	public void dismount(EntityMountEvent event) {
+	//		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityYewBroom && event.isDismounting()) ((EntityYewBroom) event.getEntityBeingMounted()).dismount();
+	//	}
 	
 	@SubscribeEvent
 	public void explode(ExplosionEvent.Detonate event) {
@@ -97,7 +97,7 @@ public class MiscHandler {
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
 	}
-
+	
 	@SubscribeEvent
 	public void onCollectFire(PlayerInteractEvent.RightClickBlock event) {
 		Block block = event.getWorld().getBlockState(event.getPos().offset(Objects.requireNonNull(event.getFace()))).getBlock();
@@ -112,7 +112,7 @@ public class MiscHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void extinguishFire(PlayerInteractEvent.LeftClickBlock event) {
 		BlockPos pos = event.getPos().offset(event.getFace());

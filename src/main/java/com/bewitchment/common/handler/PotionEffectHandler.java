@@ -5,7 +5,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionEffectHandler {
-
+	
 	@SubscribeEvent
 	public void playerFireDamage(LivingHurtEvent event) {
 		if (event.getSource().isFireDamage() && event.getEntityLiving().getActivePotionEffect(ModPotions.hellfire) != null) {

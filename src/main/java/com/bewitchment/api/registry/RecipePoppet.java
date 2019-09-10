@@ -31,7 +31,7 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 		}
 		return true;
 	}
-
+	
 	/**
 	 * Returns an Item that is the result of this recipe
 	 */
@@ -53,7 +53,7 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 		}
 		return ItemStack.EMPTY;
 	}
-
+	
 	/**
 	 * Get the result of this recipe, usually for display purposes (e.g. recipe book). If your recipe has more than one
 	 * possible result (e.g. it's dynamic and depends on its inputs), then return an empty stack.
@@ -61,11 +61,11 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 	public ItemStack getRecipeOutput() {
 		return ItemStack.EMPTY;
 	}
-
+	
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
 		return NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 	}
-
+	
 	/**
 	 * If true, this recipe does not appear in the recipe book and does not respect recipe unlocking (and the
 	 * doLimitedCrafting gamerule)
@@ -73,7 +73,7 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 	public boolean isDynamic() {
 		return true;
 	}
-
+	
 	/**
 	 * Used to determine if this recipe can fit in a grid of the given width/height
 	 */

@@ -24,25 +24,25 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class BlockSpanishMoss extends BlockVine {
-
+	
 	boolean terminalPiece;
-
+	
 	public BlockSpanishMoss(boolean terminal) {
 		Util.registerBlock(this, "spanish_moss" + (terminal ? "_end" : ""), Blocks.VINE);
 		this.setTickRandomly(!terminalPiece);
 		this.terminalPiece = terminal;
 	}
-
+	
 	public boolean isTerminalPiece() {
 		return terminalPiece;
 	}
-
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
+	
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote && !terminalPiece && worldIn.isAirBlock(pos.down())) {
@@ -55,7 +55,7 @@ public class BlockSpanishMoss extends BlockVine {
 			worldIn.setBlockState(pos.down(), newState, 3);
 		}
 	}
-
+	
 	@Override
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack) {
 		if (!worldIn.isRemote && stack.getItem() == ModObjects.boline && !terminalPiece) {
@@ -63,11 +63,11 @@ public class BlockSpanishMoss extends BlockVine {
 			spawnAsEntity(worldIn, pos, new ItemStack(ModObjects.spanish_moss, 1, 0));
 		}
 	}
-
+	
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!worldIn.isRemote) {
-
+			
 			IBlockState newState = state;
 			boolean foundValidAttachment = false, changed = false;
 			IBlockState upper = worldIn.getBlockState(pos.up());
@@ -104,10 +104,10 @@ public class BlockSpanishMoss extends BlockVine {
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-
+		
 		if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
 			for (EnumFacing f : EnumFacing.HORIZONTALS) {
 				if (canAttachTo(worldIn, pos.offset(f), f.getOpposite())) {
@@ -118,10 +118,10 @@ public class BlockSpanishMoss extends BlockVine {
 		if (side == EnumFacing.DOWN) {
 			return worldIn.getBlockState(pos.up()).getBlock() == ModObjects.spanish_moss;
 		}
-
+		
 		return this.canAttachTo(worldIn, pos.offset(side.getOpposite()), side);
 	}
-
+	
 	@Override
 	public boolean canAttachTo(World world, BlockPos blockToAttachTo, EnumFacing comingFrom) {
 		if (world.getBlockState(blockToAttachTo).getBlockFaceShape(world, blockToAttachTo, comingFrom) != BlockFaceShape.SOLID) {
@@ -129,12 +129,12 @@ public class BlockSpanishMoss extends BlockVine {
 		}
 		return !isExceptBlockForAttaching(world.getBlockState(blockToAttachTo).getBlock());
 	}
-
+	
 	@Override
 	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return true;
 	}
-
+	
 	@Override
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState state = ModObjects.spanish_moss.getDefaultState();
@@ -149,7 +149,7 @@ public class BlockSpanishMoss extends BlockVine {
 		}
 		return state;
 	}
-
+	
 	@Override
 	public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 		return false;

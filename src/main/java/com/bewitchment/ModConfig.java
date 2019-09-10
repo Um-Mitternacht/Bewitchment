@@ -324,7 +324,7 @@ public class ModConfig {
 		@Config.Comment("it is wednesday my dudes")
 		public boolean wednesday = false;
 	}
-
+	
 	@Mod.EventBusSubscriber(modid = Bewitchment.MODID)
 	private static class SyncConfig {
 		@SubscribeEvent

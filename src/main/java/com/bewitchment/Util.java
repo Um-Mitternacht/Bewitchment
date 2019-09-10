@@ -209,7 +209,7 @@ public class Util {
 			Bewitchment.network.sendTo(new TeleportPlayerClient(x, y, z), (EntityPlayerMP) player);
 		}
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @param poppet the poppet variant to find
@@ -218,20 +218,19 @@ public class Util {
 	public static boolean hasPoppet(EntityPlayer entity, Item poppet) {
 		World world = entity.getEntityWorld();
 		ExtendedWorld ext = ExtendedWorld.get(world);
-
+		
 		for (int i = 0; i < entity.inventory.getSizeInventory(); i++) {
 			ItemStack stack = entity.inventory.getStackInSlot(i);
 			if (stack.getItem() == poppet) {
 				String uuid = stack.getTagCompound().getString("boundId");
-				if(entity.getUniqueID().toString().equals(uuid)) {
-					if (stack.getItemDamage() == 0)
-						stack.damageItem(2, entity);
+				if (entity.getUniqueID().toString().equals(uuid)) {
+					if (stack.getItemDamage() == 0) stack.damageItem(2, entity);
 					else stack.damageItem(1, entity);
 					return true;
 				}
 			}
 		}
-
+		
 		for (NBTTagCompound poppetShelves : ext.storedPoppetShelves) {
 			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
 			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
@@ -242,7 +241,7 @@ public class Util {
 						ItemStack itemStack = handler.getStackInSlot(slot);
 						if (itemStack.getItem() == poppet) {
 							String uuid = itemStack.getTagCompound().getString("boundId");
-							if(entity.getUniqueID().toString().equals(uuid)) {
+							if (entity.getUniqueID().toString().equals(uuid)) {
 								te.damageSlot(entity, slot);
 								return true;
 							}

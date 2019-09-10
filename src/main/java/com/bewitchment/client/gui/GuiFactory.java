@@ -11,20 +11,20 @@ import java.util.Set;
 public class GuiFactory implements IModGuiFactory {
 	public GuiFactory() {
 	}
-
+	
 	public void initialize(Minecraft minecraftInstance) {
 	}
-
+	
 	public boolean hasConfigGui() {
 		return true;
 	}
-
-
+	
+	
 	@Override
 	public GuiScreen createConfigGui(GuiScreen parentScreen) {
 		return new GuiConfig(parentScreen, Bewitchment.MODID, Bewitchment.NAME);
 	}
-
+	
 	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
 		return null;
 	}

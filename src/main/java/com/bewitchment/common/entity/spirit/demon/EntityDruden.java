@@ -79,6 +79,11 @@ public class EntityDruden extends ModEntityMob {
 	}
 	
 	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}

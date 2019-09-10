@@ -230,7 +230,8 @@ public class ModelRaven extends ModelBase {
 			float peckTime = bird.getPeckTime();
 			if (peckTime <= 60) {
 				this.neck.rotateAngleX = (float) Math.toRadians((peckTime % (60F / peckTime))) * 6F + (float) Math.toRadians(30);
-			} else {
+			}
+			else {
 				this.neck.rotateAngleX = headPitch * 0f;
 			}
 			if (bird.world != null && bird.world.isBlockLoaded(bird.getPosition().down()) && bird.world.getBlockState(bird.getPosition().down()).getBlockFaceShape(bird.world, bird.getPosition().down(), EnumFacing.UP) == BlockFaceShape.UNDEFINED) {
