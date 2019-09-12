@@ -6,6 +6,16 @@
   "variants": {
     "normal": [
       {}
+    ],
+    "hanging=true": [
+      {
+        "model": "bewitchment:brazier_hanging"
+      }
+    ],
+    "hanging=false": [
+      {
+        "model": "bewitchment:brazier"
+      }
     ]
   }
 }

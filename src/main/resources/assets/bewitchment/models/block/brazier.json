@@ -1,5 +1,6 @@
 {
   "credit": "Model made by Ingoleth",
+  "parent": "minecraft:block/block",
   "textures": {
     "0": "bewitchment:blocks/brazier",
     "particle": "blocks/stonebrick"

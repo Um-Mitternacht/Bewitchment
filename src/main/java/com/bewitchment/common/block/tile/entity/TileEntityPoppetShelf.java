@@ -69,7 +69,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 	}
 	
 	public void interact(EntityPlayer player, int slot) {
-		// completely empty -> insert current item into input
+		// completely empty -> insert current item into slot
 		if (handler.getStackInSlot(slot).isEmpty()) {
 			ItemStack stack = player.inventory.decrStackSize(player.inventory.currentItem, 64);
 			handler.setStackInSlot(slot, stack);
@@ -78,7 +78,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 			world.notifyBlockUpdate(pos, state, state, 3);
 		}
 		else {
-			// take out of stack 1 if something is in there, 0 otherwise
+			// take out the stack if something is in there, 0 otherwise
 			ItemHandlerHelper.giveItemToPlayer(player, handler.getStackInSlot(slot));
 			handler.setStackInSlot(slot, ItemStack.EMPTY);
 			markDirty();
