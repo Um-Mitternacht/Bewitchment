@@ -17,6 +17,9 @@ import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
+import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
+import com.bobmowzie.mowziesmobs.server.item.ItemNagaFang;
+import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import com.ferreusveritas.dynamictrees.ModTrees;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
@@ -323,6 +326,10 @@ public class ModRegistries {
 		if (Loader.isModLoaded("rustic")) {
 			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
 			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
+		}
+		
+		if (Loader.isModLoaded("mowziesmobs")) {
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (20 * 30))));
 		}
 	}
 	
