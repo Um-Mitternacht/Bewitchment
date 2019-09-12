@@ -10,14 +10,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import vazkii.quark.base.module.ConfigHelper;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.world.feature.*;
-import vazkii.quark.world.world.underground.UndergroundBiome;
-import vazkii.quark.world.world.underground.UndergroundBiomeGlowshroom;
 
-import static vazkii.quark.misc.feature.ExtraPotions.dangerSight;
-import static vazkii.quark.misc.feature.ExtraPotions.enableDangerSight;
+import static vazkii.quark.misc.feature.ExtraPotions.*;
 import static vazkii.quark.world.feature.Biotite.biotite;
 import static vazkii.quark.world.feature.CaveRoots.*;
 import static vazkii.quark.world.feature.Crabs.crabShell;

@@ -218,6 +218,7 @@ public class ModObjects {
 	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	public static final Block hellfire = new BlockHellfire();
+	public static final Block brazier = registerTileEntity(new BlockBrazier(), TileEntityBrazier.class);
 	
 	//Poppet Shelves
 	public static final Block oak_poppet_shelf = new BlockPoppetShelf("oak");
@@ -339,6 +340,10 @@ public class ModObjects {
 	public static final Item demonic_elixir = Util.registerItem("demonic_elixir");
 	public static final Item fiery_unguent = Util.registerItem("fiery_unguent");
 	public static final Item swirl_of_depths = Util.registerItem("swirl_of_depths");
+	public static final Item oil_of_vitriol = Util.registerItem("oil_of_vitriol");
+	public static final Item otherworldly_tears = Util.registerItem("otherworldly_tears");
+	public static final Item aetherial_substance = Util.registerItem("aetherial_substance");
+	public static final Item heaven_extract = Util.registerItem("heaven_extract");
 	//Loom
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
 	public static final Item pure_filament = Util.registerItem("pure_filament");

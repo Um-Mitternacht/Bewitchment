@@ -290,6 +290,10 @@ item.bewitchment.cleansing_balm.name=Cleansing Balm
 item.bewitchment.demonic_elixir.name=Demonic Elixir
 item.bewitchment.fiery_unguent.name=Fiery Unguent
 item.bewitchment.swirl_of_depths.name=Swirl of the Depths
+item.bewitchment.oil_of_vitriol.name=Oil of Vitriol
+item.bewitchment.otherworldly_tears.name=Otherworldly Tears
+item.bewitchment.aetherial_substance.name=Aetherial Substance
+item.bewitchment.heaven_extract.name=Heaven Extract
 
 item.bewitchment.diabolical_vein.name=Diabolical Vein
 item.bewitchment.pure_filament.name=Pure Filament
