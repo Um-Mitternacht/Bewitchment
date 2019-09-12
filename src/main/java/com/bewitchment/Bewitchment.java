@@ -30,6 +30,7 @@ import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
+import com.bewitchment.common.integration.BewitchmentQuark;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.village.VillagerAlchemistHandler;
 import com.bewitchment.common.village.VillagerHedgeWitchHandler;
@@ -97,6 +98,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
+		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new BewitchmentQuark());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
