@@ -89,8 +89,8 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 	
 	public void damageSlot(EntityPlayer player, int slot) {
 		ItemStack stack = handler.getStackInSlot(slot);
-		if (stack.getItemDamage() == 0) stack.damageItem(2, player);
-		else stack.damageItem(1, player);
+		stack.damageItem(1, player);
+		if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, player);
 		markDirty();
 		IBlockState state = world.getBlockState(pos);
 		world.notifyBlockUpdate(pos, state, state, 3);

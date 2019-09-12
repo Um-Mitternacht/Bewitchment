@@ -221,11 +221,11 @@ public class Util {
 		
 		for (int i = 0; i < entity.inventory.getSizeInventory(); i++) {
 			ItemStack stack = entity.inventory.getStackInSlot(i);
-			if (stack.getItem() == poppet) {
+			if (stack.getItem() == poppet && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
 				String uuid = stack.getTagCompound().getString("boundId");
 				if (entity.getUniqueID().toString().equals(uuid)) {
-					if (stack.getItemDamage() == 0) stack.damageItem(2, entity);
-					else stack.damageItem(1, entity);
+					stack.damageItem(1, entity);
+					if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, entity);
 					return true;
 				}
 			}
@@ -239,7 +239,7 @@ public class Util {
 					IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 					for (int slot = 0; slot < handler.getSlots(); slot++) {
 						ItemStack itemStack = handler.getStackInSlot(slot);
-						if (itemStack.getItem() == poppet) {
+						if (itemStack.getItem() == poppet && itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("boundId")) {
 							String uuid = itemStack.getTagCompound().getString("boundId");
 							if (entity.getUniqueID().toString().equals(uuid)) {
 								te.damageSlot(entity, slot);
