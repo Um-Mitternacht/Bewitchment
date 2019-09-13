@@ -3,7 +3,6 @@ package com.bewitchment.common.block;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.util.ModBlockContainer;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -39,6 +38,7 @@ public class BlockBrazier extends ModBlockContainer {
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return new AxisAlignedBB(3/16d, 0, 3/16d, 13/16d, 1, 13/16d);
     }
+
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
         return getDefaultState().withProperty(HANGING, face == EnumFacing.DOWN);

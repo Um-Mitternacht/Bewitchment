@@ -5,6 +5,8 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -31,6 +33,19 @@ public class PoppetHandler {
 			if (Util.hasPoppet(player, ModObjects.poppet_binding)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 				source.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 2));
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void clumsy(LivingDamageEvent event) {
+		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			if (Util.hasPoppet(player, ModObjects.poppet_clumsy)) {
+				EntityPlayer source = (EntityPlayer) event.getSource().getTrueSource();
+				ItemStack held = source.getHeldItemMainhand();
+				InventoryHelper.spawnItemStack(source.getEntityWorld(), source.posX, source.posY, source.posZ, held);
+				source.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
 			}
 		}
 	}
@@ -88,4 +103,6 @@ public class PoppetHandler {
 			}
 		}
 	}
+
+
 }

@@ -270,7 +270,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "instant_damage"), Util.get(Items.SPIDER_EYE), new PotionEffect(MobEffects.INSTANT_DAMAGE, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "regeneration"), Util.get(Items.SPECKLED_MELON), new PotionEffect(MobEffects.REGENERATION, (20 * 20))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison"), Util.get(ModObjects.snake_venom, ModObjects.belladonna), s -> s.getItem() == ModObjects.snake_venom, new ItemStack(Items.GLASS_BOTTLE), new PotionEffect(MobEffects.POISON, (20 * 20))));
-		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "wither"), Util.get(ModObjects.liquid_wroth), new ItemStack(Items.GLASS_BOTTLE), new PotionEffect(MobEffects.WITHER, (20 * 15))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "wither"), Util.get(ModObjects.bottle_of_blood), new ItemStack(Items.GLASS_BOTTLE), new PotionEffect(MobEffects.WITHER, (20 * 15))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "night_vision"), Util.get(Items.CARROT, ModObjects.eye_of_old), new PotionEffect(MobEffects.NIGHT_VISION, (20 * 120))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blindness"), Util.get(ModObjects.iron_gall_ink, new ItemStack(Items.DYE, 1, EnumDyeColor.BLACK.getDyeDamage())), new PotionEffect(MobEffects.BLINDNESS, (20 * 10))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "strength"), Util.get(Items.PORKCHOP, Items.BEEF, Items.MUTTON, Items.CHICKEN, Items.RABBIT), new PotionEffect(MobEffects.STRENGTH, (20 * 65))));

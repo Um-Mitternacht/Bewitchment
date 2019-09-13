@@ -69,26 +69,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && (getAttackTarget() == null || getAttackTarget().isDead || getRevengeTarget() == null || getRevengeTarget().isDead)) {
-			ItemStack stack = player.getHeldItem(hand);
-			if (stack.getItem() == Items.GLASS_BOTTLE) {
-				if (milkTimer == 0 && getRNG().nextBoolean()) {
-					world.playSound(null, getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-					Util.replaceAndConsumeItem(player, hand, new ItemStack(ModObjects.liquid_wroth));
-					milkTimer = 6660;
-					return true;
-				}
-				else {
-					setAttackTarget(player);
-					setRevengeTarget(player);
-				}
-			}
-		}
-		return super.processInteract(player, hand);
-	}
-	
-	@Override
 	protected int getSkinTypes() {
 		return 9;
 	}

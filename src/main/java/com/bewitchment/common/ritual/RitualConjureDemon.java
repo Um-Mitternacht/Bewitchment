@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 public class RitualConjureDemon extends Ritual {
 	public RitualConjureDemon() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.liquid_wroth), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityPlayer, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.bottle_of_blood), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityPlayer, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override
