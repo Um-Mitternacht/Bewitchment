@@ -50,8 +50,8 @@ dependencies {
     deobfProvided curse.resolve("rustic", "2746408")
     deobfProvided curse.resolve("quark", "2759240")
     deobfProvided curse.resolve("autoreglib", "2746011")
-    deobfProvided curse.resolve("mowzies-mobs", "2699705")	
-    deobfProvided curse.resolve("llibrary", "2704186")	
+    deobfProvided curse.resolve("mowzies-mobs", "2699705")
+    deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
 }
