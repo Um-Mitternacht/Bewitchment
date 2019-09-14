@@ -18,7 +18,6 @@ import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
-import com.bobmowzie.mowziesmobs.server.item.ItemNagaFang;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import com.ferreusveritas.dynamictrees.ModTrees;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -53,14 +52,6 @@ import rustic.common.potions.PotionsRustic;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.function.Predicate;
-
-import static vazkii.quark.misc.feature.ExtraPotions.dangerSight;
-import static vazkii.quark.world.feature.Biotite.biotite;
-import static vazkii.quark.world.feature.CaveRoots.*;
-import static vazkii.quark.world.feature.Crabs.crabShell;
-import static vazkii.quark.world.feature.Crabs.resilience;
-import static vazkii.quark.world.feature.Frogs.gildedFrogLeg;
-import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 @Mod.EventBusSubscriber

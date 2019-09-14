@@ -23,13 +23,8 @@ public class BlockDropHandler {
 		replaceDrop(event, s -> s.getBlock() == ModObjects.garnet_ore, new ItemStack(ModObjects.garnet, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.opal_ore, new ItemStack(ModObjects.opal, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
 		
-		replaceDrop(event, s -> s.getBlock() == ModObjects.cypress_leaves, new ItemStack(ModObjects.cypress_sapling), 5, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elder_sapling), 5, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_sapling), 5, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.dragons_blood_leaves, new ItemStack(ModObjects.dragons_blood_sapling), 3, 1, false);
-		
-		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elderberries), 1, 0, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_berries), 1, 0, false);
+		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elderberries), 2, 0, false);
+		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_berries), 2, 0, false);
 		replaceDrop(event, s -> s.getBlock() == Blocks.DEADBUSH, new ItemStack(ModObjects.white_sage_seeds), 15, 2, false);
 		replaceDrop(event, s -> s.getBlock() == Blocks.RED_FLOWER && s.getValue(Blocks.RED_FLOWER.getTypeProperty()) == BlockFlower.EnumFlowerType.ALLIUM, new ItemStack(ModObjects.garlic_seeds), 15, 2, false);
 		replaceDrop(event, s -> (s.getBlock() == Blocks.LEAVES && s.getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK) || (s.getBlock() == Blocks.LEAVES2 && s.getValue(BlockNewLeaf.VARIANT) == BlockPlanks.EnumType.DARK_OAK), new ItemStack(ModObjects.oak_apple_gall), 2, 0, false);

@@ -2,6 +2,7 @@ package com.bewitchment.common.block.util;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
@@ -9,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -19,6 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings({"deprecation", "NullableProblems", "ConstantConditions"})
 public class ModBlockLeaves extends BlockLeaves {
@@ -52,7 +55,16 @@ public class ModBlockLeaves extends BlockLeaves {
 		}
 		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
-	
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		if (this == ModObjects.cypress_leaves) return Item.getItemFromBlock(ModObjects.cypress_sapling);
+		if (this == ModObjects.juniper_leaves) return Item.getItemFromBlock(ModObjects.juniper_sapling);
+		if (this == ModObjects.elder_leaves) return Item.getItemFromBlock(ModObjects.elder_sapling);
+		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
+		return super.getItemDropped(state, rand, fortune);
+	}
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
