@@ -160,6 +160,7 @@ item.bewitchment.tarot_cards.name=Tarot Cards
 tooltip.bewitchment.tarot_cards=They are receptive to %s's future
 tile.bewitchment.frostfire.name=Frostfire
 tile.bewitchment.hellfire.name=Hellfire
+tile.bewitchment.brazier.name=Brazier
 
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
@@ -300,6 +301,7 @@ item.bewitchment.pure_filament.name=Pure Filament
 item.bewitchment.witches_stitching.name=Witches' Stitching
 item.bewitchment.sanguine_cloth.name=Sanguine Cloth
 item.bewitchment.spirit_string.name=Spirit String
+item.bewitchment.golden_thread.name=Golden Thread
 
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes

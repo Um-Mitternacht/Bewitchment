@@ -350,6 +350,7 @@ public class ModObjects {
 	public static final Item witches_stitching = Util.registerItem("witches_stitching");
 	public static final Item sanguine_cloth = Util.registerItem("sanguine_cloth");
 	public static final Item spirit_string = Util.registerItem("spirit_string");
+	public static final Item golden_thread = Util.registerItem("golden_thread");
 	//Poppets
 	public static final Item poppet = Util.registerItem("poppet");
 	public static final Item poppet_armor = Util.registerItem(new ItemPoppet(true), "poppet_armor");

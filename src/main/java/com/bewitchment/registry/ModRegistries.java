@@ -378,6 +378,7 @@ public class ModRegistries {
 		event.getRegistry().register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "pure_filament"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.witches_stitching), Util.get(ModObjects.acacia_resin), Util.get("cropWhiteSage")), Arrays.asList(new ItemStack(ModObjects.pure_filament, 2), new ItemStack(ModObjects.empty_jar))));
 		event.getRegistry().register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "sanguine_cloth"), Arrays.asList(Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 15)), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 15)), Util.get(ModObjects.bottle_of_blood), Util.get(ModObjects.diabolical_vein)), Arrays.asList(new ItemStack(ModObjects.sanguine_cloth, 2), new ItemStack(Items.GLASS_BOTTLE))));
 		event.getRegistry().register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "spirit_string"), Arrays.asList(Util.get(ModObjects.witches_stitching), Util.get(ModObjects.witches_stitching), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.spanish_moss)), Collections.singletonList(new ItemStack(ModObjects.spirit_string, 2))));
+		event.getRegistry().register(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "golden_thread"), Arrays.asList(Util.get("nuggetGold"), Util.get("cropWheat"), Util.get("cropWheat"), Util.get(ModObjects.liquid_witchcraft)), Arrays.asList(new ItemStack(ModObjects.golden_thread), new ItemStack(ModObjects.empty_jar))));
 	}
 	
 	@SubscribeEvent
