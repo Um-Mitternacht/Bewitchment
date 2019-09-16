@@ -1,21 +1,21 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "bewitchment:brazier"
+	"model": "bewitchment:brazier"
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "hanging=true": [
-      {
-        "model": "bewitchment:brazier_hanging"
-      }
-    ],
-    "hanging=false": [
-      {
-        "model": "bewitchment:brazier"
-      }
-    ]
+	"normal": [
+	  {}
+	],
+	"hanging=true": [
+	  {
+		"model": "bewitchment:brazier_hanging"
+	  }
+	],
+	"hanging=false": [
+	  {
+		"model": "bewitchment:brazier"
+	  }
+	]
   }
 }

@@ -55,7 +55,7 @@ public class ModBlockLeaves extends BlockLeaves {
 		}
 		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
-
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		if (this == ModObjects.cypress_leaves) return Item.getItemFromBlock(ModObjects.cypress_sapling);
@@ -64,7 +64,7 @@ public class ModBlockLeaves extends BlockLeaves {
 		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
 		return super.getItemDropped(state, rand, fortune);
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(DECAYABLE, ((meta) & 1) == 1).withProperty(CHECK_DECAY, ((meta) & 2) > 0);
