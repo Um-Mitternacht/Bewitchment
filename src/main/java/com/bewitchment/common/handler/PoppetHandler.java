@@ -36,7 +36,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void clumsy(LivingDamageEvent event) {
 		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
@@ -103,6 +103,6 @@ public class PoppetHandler {
 			}
 		}
 	}
-
-
+	
+	
 }
