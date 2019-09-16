@@ -344,7 +344,7 @@ public class ModObjects {
 	public static final Item otherworldly_tears = Util.registerItem("otherworldly_tears");
 	public static final Item aetherial_substance = Util.registerItem("aetherial_substance");
 	public static final Item heaven_extract = Util.registerItem("heaven_extract");
-	//Loom
+	//Spinning Wheel
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
 	public static final Item witches_stitching = Util.registerItem("witches_stitching");

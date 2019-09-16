@@ -27,7 +27,7 @@ public class SpinningWheelRecipe extends IForgeRegistryEntry.Impl<SpinningWheelR
 	}
 	
 	public final boolean isValid(ItemStackHandler output) {
-		return Util.canMerge(output.getStackInSlot(0), this.output.get(0)) && Util.canMerge(output.getStackInSlot(1), this.output.get(1));
+		return Util.canMerge(output.getStackInSlot(0), this.output.get(0)) && ((this.output.size() < 2) || Util.canMerge(output.getStackInSlot(1), this.output.get(1)));
 	}
 	
 	public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {

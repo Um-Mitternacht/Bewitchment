@@ -16,7 +16,6 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 
 public class TileEntityPoppetShelf extends ModTileEntity {
-	
 	private ItemStackHandler handler;
 	
 	public TileEntityPoppetShelf() {
