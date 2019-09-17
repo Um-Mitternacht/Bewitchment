@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.equipment.armor;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.armor.ModelWitchesArmor;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.model.ModelBiped;

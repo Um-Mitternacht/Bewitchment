@@ -8,12 +8,11 @@ import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BewitchmentMowzies {
-    @SubscribeEvent
-    public void registerBrew(RegistryEvent.Register<Brew> event) {
-        event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
-    }
+	@SubscribeEvent
+	public void registerBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
+	}
 }
