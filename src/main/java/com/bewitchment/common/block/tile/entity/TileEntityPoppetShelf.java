@@ -64,7 +64,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
-		return super.getUpdateTag();
+		return tag;
 	}
 	
 	public void interact(EntityPlayer player, int slot) {

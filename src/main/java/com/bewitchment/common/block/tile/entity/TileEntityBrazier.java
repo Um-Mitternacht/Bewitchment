@@ -73,7 +73,7 @@ public class TileEntityBrazier extends ModTileEntity {
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound tag = super.getUpdateTag();
         writeUpdateTag(tag);
-        return super.getUpdateTag();
+        return tag;
     }
 
     private void writeUpdateTag(NBTTagCompound tag) {

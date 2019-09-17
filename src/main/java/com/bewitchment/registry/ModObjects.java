@@ -241,10 +241,22 @@ public class ModObjects {
 	public static final Item cold_iron_chestplate = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.CHEST), "cold_iron_chestplate");
 	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
 	public static final Item cold_iron_boots = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.FEET), "cold_iron_boots");
-	public static final Item witches_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_cowl");
-	public static final Item witches_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD), "witches_hat", Collections.singletonList(s -> s.getDisplayName().toLowerCase().contains("faith")));
-	public static final Item witches_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST), "witches_robes");
-	public static final Item witches_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS), "witches_pants");
+	public static final Item witches_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/witches"), "witches_cowl");
+	public static final Item witches_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/witches"), "witches_hat", Collections.singletonList(s -> s.getDisplayName().toLowerCase().contains("faith")));
+	public static final Item witches_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST,Bewitchment.MODID + ":textures/models/armor/witches"), "witches_robes");
+	public static final Item witches_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS,Bewitchment.MODID + ":textures/models/armor/witches"), "witches_pants");
+	public static final Item besmirched_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/besmirched_cloak"), "besmirched_hood");
+	public static final Item besmirched_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/besmirched_cloak"), "besmirched_hat");
+	public static final Item besmirched_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST,Bewitchment.MODID + ":textures/models/armor/besmirched_cloak"), "besmirched_robes");
+	public static final Item besmirched_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS,Bewitchment.MODID + ":textures/models/armor/besmirched_cloak"), "besmirched_pants");
+	public static final Item alchemist_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/alchemists_attire"), "alchemist_hood");
+	public static final Item alchemist_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/alchemists_attire"), "alchemist_hat");
+	public static final Item alchemist_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST,Bewitchment.MODID + ":textures/models/armor/alchemists_attire"), "alchemist_robes");
+	public static final Item alchemist_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS,Bewitchment.MODID + ":textures/models/armor/alchemists_attire"), "alchemist_pants");
+	public static final Item green_witch_cowl = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_hood");
+	public static final Item green_witch_hat = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.HEAD,Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_hat");
+	public static final Item green_witch_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST,Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_robes");
+	public static final Item green_witch_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS,Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_pants");
 	//Tools
 	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword");
 	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe");
@@ -276,7 +288,6 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
-	
 	//Lenny Idol
 	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
 	public static final Item terracotta_leonard_idol = createIdol("terracotta_leonard_idol", Blocks.HARDENED_CLAY);
@@ -284,7 +295,6 @@ public class ModObjects {
 	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_leonard_idol = createIdol("nethersteel_leonard_idol", nethersteel[0]);
 	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
-	
 	//Lilith Idol
 	public static final Item stone_lilith_idol = createIdol("stone_lilith_idol", Blocks.STONE);
 	public static final Item terracotta_lilith_idol = createIdol("terracotta_lilith_idol", Blocks.HARDENED_CLAY);
@@ -292,7 +302,6 @@ public class ModObjects {
 	public static final Item nether_brick_lilith_idol = createIdol("nether_brick_lilith_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_lilith_idol = createIdol("nethersteel_lilith_idol", nethersteel[0]);
 	public static final Item scorned_brick_lilith_idol = createIdol("scorned_brick_lilith_idol", scorned_bricks[0]);
-	
 	//Baphomet Idol
 	public static final Item stone_baphomet_idol = createIdol("stone_baphomet_idol", Blocks.STONE);
 	public static final Item terracotta_baphomet_idol = createIdol("terracotta_baphomet_idol", Blocks.HARDENED_CLAY);
@@ -300,7 +309,6 @@ public class ModObjects {
 	public static final Item nether_brick_baphomet_idol = createIdol("nether_brick_baphomet_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_baphomet_idol = createIdol("nethersteel_baphomet_idol", nethersteel[0]);
 	public static final Item scorned_brick_baphomet_idol = createIdol("scorned_brick_baphomet_idol", scorned_bricks[0]);
-	
 	//Herne Idol
 	public static final Item stone_herne_idol = createIdol("stone_herne_idol", Blocks.STONE);
 	public static final Item terracotta_herne_idol = createIdol("terracotta_herne_idol", Blocks.HARDENED_CLAY);
@@ -308,7 +316,6 @@ public class ModObjects {
 	public static final Item nether_brick_herne_idol = createIdol("nether_brick_herne_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_herne_idol = createIdol("nethersteel_herne_idol", nethersteel[0]);
 	public static final Item scorned_brick_herne_idol = createIdol("scorned_brick_herne_idol", scorned_bricks[0]);
-	
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	public static final Item bottled_hellfire = new ItemBottledHellfire();
