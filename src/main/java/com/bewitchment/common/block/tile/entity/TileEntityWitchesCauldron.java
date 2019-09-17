@@ -156,8 +156,15 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				else if (mode == 0 || mode == 3) {
 					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
 						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
-							Util.replaceAndConsumeItem(player, hand, createPotion());
-							tank.drain(Fluid.BUCKET_VOLUME / 3, true);
+							int bottles = 3;
+							boolean boosted = false;
+							if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl)
+									&& player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
+								bottles++;
+								boosted = true;
+							}
+							Util.replaceAndConsumeItem(player, hand, createPotion(boosted));
+							tank.drain(Fluid.BUCKET_VOLUME / bottles, true);
 							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
 							if (tank.getFluidAmount() < 2) {
 								tank.drain(Fluid.BUCKET_VOLUME, true);
@@ -211,10 +218,10 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		return ((((double) tank.getFluidAmount() / Fluid.BUCKET_VOLUME) - 1) * (2 / 5d)) + (3 / 5d);
 	}
 	
-	private ItemStack createPotion() {
+	private ItemStack createPotion(boolean boosted) {
 		List<PotionEffect> finalEffects = new ArrayList<>();
 		boolean noParticles = contains(inventory, new ItemStack(ModObjects.ravens_feather)), splash = contains(inventory, new ItemStack(Items.GUNPOWDER)), lingering = contains(inventory, new ItemStack(ModObjects.owlets_wing)) && splash;
-		int duration = 1, potency = 1;
+		int duration = 1, potency = boosted ? 2 : 1;
 		LinkedHashSet<PotionEffect> effects = new LinkedHashSet<>();
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection()) if (brew.input.apply(inventory.getStackInSlot(i))) effects.add(brew.effect);
@@ -296,7 +303,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 									}
 								}
 								else if (mode == 3) {
-									setTargetColor(PotionUtils.getColor(createPotion()));
+									setTargetColor(PotionUtils.getColor(createPotion(false)));
 									Brew brew = GameRegistry.findRegistry(Brew.class).getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
 									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
 										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
