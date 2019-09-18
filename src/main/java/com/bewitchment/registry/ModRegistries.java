@@ -17,8 +17,6 @@ import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
-import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
-import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import com.ferreusveritas.dynamictrees.ModTrees;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;

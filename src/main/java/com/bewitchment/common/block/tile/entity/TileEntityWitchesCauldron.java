@@ -158,8 +158,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 							int bottles = 3;
 							boolean boosted = false;
-							if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl)
-									&& player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
+							if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl) && player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
 								bottles++;
 								boosted = true;
 							}
