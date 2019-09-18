@@ -37,6 +37,11 @@
 	  "type": "spotlight",
 	  "item": "bewitchment:wormwood",
 	  "text": "An herbaceous plant that often grows in and near Tall Grass. Wormwood is used to help communicate with spirits. Some groups are known to use this plant to brew potent alcohols."
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:spanish_moss",
+	  "text": "A hanging plant found in swampy areas. Despite its name, Spanish Moss is not actually a moss, and is rather a flowing plant, but its flowers are often too small to see. Spanish Moss has a strong connection to the spirit world and thus the soul, and is a vital part of Poppets due to this."
 	}
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "name": "Green Witch Robes",
+  "category": "gear",
+  "icon": "bewitchment:green_witch_hat",
+  "pages": [
+    {
+      "type": "text",
+      "text": "By using Witch’s Stitches and stitching silver wool impregnated with elemental fumes onto normal robes, it increases the wearer’s proficiency with brews, both boosting their own brews, and decreasing negative effects from potions inflicted on the wearer."
+    },
+    {
+      "type": "bewitchment:spinning_wheel_recipe",
+      "recipe": "bewitchment:green_witch_hat"
+    },
+    {
+      "type": "bewitchment:spinning_wheel_recipe",
+      "recipe": "bewitchment:green_witch_hood"
+    },
+    {
+      "type": "bewitchment:spinning_wheel_recipe",
+      "recipe": "bewitchment:green_witch_robes"
+    },
+    {
+      "type": "bewitchment:spinning_wheel_recipe",
+      "recipe": "bewitchment:green_witch_pants"
+    }
+  ]
+}

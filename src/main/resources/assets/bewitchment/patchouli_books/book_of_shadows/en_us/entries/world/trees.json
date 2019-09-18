@@ -46,6 +46,18 @@
 		"bewitchment:textures/gui/patchouli/juniper.png"
 	  ],
 	  "border": true
+	},
+	{
+	  "type": "text",
+	  "title": "Dragon's Blood",
+	  "text": "A rare tree valued for its resin, having many uses but most commonly used for Sigils. This tree is extinct in the wild, however certain Alchemists are known to cultivate this tree in private, and may give out saplings to those they trust. Slashing a mature log with a Boline taps it, allowing its blood-red resin to leak out. Brooms made from this rare tree are faster than all but Elder brooms, but in turn they can have Sigils applied to them, which it will then apply to the rider."
+	},
+	{
+	  "type": "image",
+	  "images": [
+		  "bewitchment:textures/gui/patchouli/dragons_blood.png"
+	  ],
+	  "border": true
 	}
   ]
 }

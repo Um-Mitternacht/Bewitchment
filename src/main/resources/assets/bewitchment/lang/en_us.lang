@@ -177,6 +177,18 @@ item.bewitchment.witches_cowl.name=Witches' Cowl
 item.bewitchment.witches_hat.name=Witches' Hat
 item.bewitchment.witches_robes.name=Witches' Robes
 item.bewitchment.witches_pants.name=Witches' Pants
+item.bewitchment.alchemist_hood.name=Alchemist's Hood
+item.bewitchment.alchemist_hat.name=Alchemist's Hat
+item.bewitchment.alchemist_robes.name=Alchemist's Robes
+item.bewitchment.alchemist_pants.name=Alchemist's Pants
+item.bewitchment.green_witch_hood.name=Green Witch Hood
+item.bewitchment.green_witch_hat.name=Green Witch Hat
+item.bewitchment.green_witch_robes.name=Green Witch Robes
+item.bewitchment.green_witch_pants.name=Green Witch Pants
+item.bewitchment.besmirched_hood.name=Besmirched Hood
+item.bewitchment.besmirched_hat.name=Besmirched Hat
+item.bewitchment.besmirched_robes.name=Besmirched Robes
+item.bewitchment.besmirched_pants.name=Besmirched Pants
 
 item.bewitchment.silver_sword.name=Silver Sword
 item.bewitchment.silver_pickaxe.name=Silver Pickaxe
@@ -295,6 +307,7 @@ item.bewitchment.oil_of_vitriol.name=Oil of Vitriol
 item.bewitchment.otherworldly_tears.name=Otherworldly Tears
 item.bewitchment.aetherial_substance.name=Aetherial Substance
 item.bewitchment.heaven_extract.name=Heaven Extract
+item.bewitchment.stone_ichor.name=Stone Ichor
 
 item.bewitchment.diabolical_vein.name=Diabolical Vein
 item.bewitchment.pure_filament.name=Pure Filament

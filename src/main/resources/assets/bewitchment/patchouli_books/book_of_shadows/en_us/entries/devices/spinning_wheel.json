@@ -5,7 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "Used to create magical threads and strings. Requires magic energy to function."
+	  "text": "Used to create magical threads and strings, can also be used to make more specialised forms of Witch’s Robes."
 	},
 	{
 	  "type": "crafting",
@@ -27,6 +27,7 @@
 	  "text": "A thread that has been seared in fire and then soaked in heartblood. Ew."
 	},
 	{
+	  "anchor": "pure_fillament",
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:pure_filament",
 	  "text": "A shining silver thread, blessed and purified"
