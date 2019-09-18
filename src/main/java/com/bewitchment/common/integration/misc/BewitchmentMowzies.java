@@ -1,4 +1,4 @@
-package com.bewitchment.common.integration;
+package com.bewitchment.common.integration.misc;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
