@@ -61,6 +61,9 @@ public class EntityDruden extends ModEntityMob {
 		}
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	protected void playStepSound(BlockPos pos, Block blockIn) {
 		this.playSound(SoundEvents.ENTITY_STRAY_STEP, 0.0F, 0.0F);

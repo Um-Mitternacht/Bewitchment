@@ -53,6 +53,9 @@ public class EntityBlackDog extends ModEntityMob {
 		return flag;
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	protected void playStepSound(BlockPos pos, Block blockIn) {
 		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.0F, 0.0F);

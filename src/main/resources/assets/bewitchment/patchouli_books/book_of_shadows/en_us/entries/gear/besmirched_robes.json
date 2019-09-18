@@ -3,25 +3,25 @@
   "category": "gear",
   "icon": "bewitchment:besmirched_hat",
   "pages": [
-    {
-      "type": "text",
-      "text": "An upgrade to the mundane Witch’s Robes, created by stitching blood-soaked… (the page seems to be ripped up and charred, and is illegible)"
-    },
-    {
-      "type": "bewitchment:spinning_wheel_recipe",
-      "recipe": "bewitchment:besmirched_hat"
-    },
-    {
-      "type": "bewitchment:spinning_wheel_recipe",
-      "recipe": "bewitchment:besmirched_hood"
-    },
-    {
-      "type": "bewitchment:spinning_wheel_recipe",
-      "recipe": "bewitchment:besmirched_robes"
-    },
-    {
-      "type": "bewitchment:spinning_wheel_recipe",
-      "recipe": "bewitchment:besmirched_pants"
-    }
+	{
+	  "type": "text",
+	  "text": "An upgrade to the mundane Witch’s Robes, created by stitching blood-soaked… (the page seems to be ripped up and charred, and is illegible)"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_hat"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_hood"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_robes"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_pants"
+	}
   ]
 }

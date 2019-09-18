@@ -88,6 +88,9 @@ public class EntityFeuerwurm extends ModEntityMob {
 		}
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
