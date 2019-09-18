@@ -63,8 +63,7 @@ public class EntityDruden extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean attackEntityFrom(DamageSource source, float amount)
-	{
+	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return super.attackEntityFrom(source, amount * (source.getImmediateSource() instanceof EntityLivingBase && ((EntityLivingBase) source.getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemAxe ? 3 : 1));
 	}
 	
