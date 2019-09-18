@@ -404,7 +404,6 @@ entity.bewitchment.elder_broom.name=Elder Broom
 entity.bewitchment.juniper_broom.name=Juniper Broom
 
 entity.bewitchment.lizard.name=Lizard
-entity.bewitchment.newt.name=Newt
 entity.bewitchment.owl.name=Owl
 entity.bewitchment.raven.name=Raven
 entity.bewitchment.snake.name=Snake
@@ -418,6 +417,7 @@ entity.bewitchment.feuerwurm.name=Feuerwurm
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demoness
 entity.bewitchment.imp.name=Imp
+entity.bewitchment.druden.name=Druden
 
 #ENCHANTMENT
 enchantment.bewitchment.magic_protection=Magic Protection
