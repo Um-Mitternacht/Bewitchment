@@ -61,7 +61,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild3", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild4", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	
 	public static final Logger logger = LogManager.getLogger(NAME);
 	
