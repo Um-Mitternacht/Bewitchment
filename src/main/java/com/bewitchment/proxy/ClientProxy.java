@@ -11,6 +11,7 @@ import com.bewitchment.client.render.entity.misc.RenderElderBroom;
 import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
+import com.bewitchment.client.render.entity.spirit.ghost.RenderGhost;
 import com.bewitchment.client.render.fx.ModParticleBubble;
 import com.bewitchment.client.render.tile.*;
 import com.bewitchment.common.block.BlockGlyph;
@@ -21,6 +22,7 @@ import com.bewitchment.common.entity.misc.EntityElderBroom;
 import com.bewitchment.common.entity.misc.EntityJuniperBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -92,6 +94,8 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGhost.class, RenderGhost::new);
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityFeuerwurm.class, RenderFeuerwurm::new);
 		

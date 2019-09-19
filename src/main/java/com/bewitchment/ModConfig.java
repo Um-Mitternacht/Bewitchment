@@ -157,6 +157,7 @@ public class ModConfig {
 		public final Snek snake = new Snek();
 		public final Toad toad = new Toad();
 		public final BlackDog blackDog = new BlackDog();
+		public final Ghost ghost = new Ghost();
 		public final Hellhound hellhound = new Hellhound();
 		public final Feuerwurm feuerwurm = new Feuerwurm();
 		public final Druden druden = new Druden();
@@ -261,6 +262,24 @@ public class ModConfig {
 			@Config.Comment("The maximum amount of black dogs to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int blackDogMax = 4;
+		}
+		
+		
+		public static class Ghost {
+			@Config.Comment("The list of BiomeDictionary types that the ghost will spawn in.")
+			public String[] ghostBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.FOREST.getName(), Type.SPOOKY.getName()};
+			
+			@Config.Comment("The weight chance for ghosts to spawn.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int ghostWeight = 10;
+			
+			@Config.Comment("The minimum amount of ghosts to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int ghostMin = 1;
+			
+			@Config.Comment("The maximum amount of ghosts to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int ghostMax = 8;
 		}
 		
 		public static class Hellhound {

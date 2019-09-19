@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 public class EntityDruden extends ModEntityMob {
 	
 	public EntityDruden(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/drude"));
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/druden"));
 		setSize(1.425f, 4.0f);
 		isImmuneToFire = false;
 		experienceValue = 45;
@@ -45,7 +45,7 @@ public class EntityDruden extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(125);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
 	}
 	
