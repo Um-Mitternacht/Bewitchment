@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @SuppressWarnings("ConstantConditions")
 public class ItemWitchesArmor extends ItemArmor {
 	private final String texture;
-
+	
 	public ItemWitchesArmor(EntityEquipmentSlot slot, String texture) {
 		super(ModObjects.ARMOR_WITCHES, 0, slot);
 		this.texture = texture;
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped _default) {
@@ -29,7 +29,7 @@ public class ItemWitchesArmor extends ItemArmor {
 		model.setModelAttributes(_default);
 		return model;
 	}
-
+	
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return texture + (this == ModObjects.witches_hat && stack.getDisplayName().toLowerCase().contains("faith") ? "_variant" : "") + ".png";
 	}

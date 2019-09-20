@@ -23,38 +23,38 @@ import javax.annotation.Nullable;
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockBrazier extends ModBlockContainer {
 	public static final PropertyBool HANGING = PropertyBool.create("hanging");
-
+	
 	public BlockBrazier() {
 		super(Bewitchment.instance, "brazier", Material.IRON, SoundType.STONE, 5, 30, "pickaxe", -1);
 		setDefaultState(getBlockState().getBaseState().withProperty(HANGING, false));
 	}
-
+	
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityBrazier();
 	}
-
+	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 1, 13 / 16d);
 	}
-
+	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 		return getDefaultState().withProperty(HANGING, face == EnumFacing.DOWN);
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(HANGING, meta > 0);
 	}
-
+	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(HANGING) ? 1 : 0;
 	}
-
+	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, HANGING);

@@ -54,6 +54,9 @@ public class EntityImp extends ModEntityMob {
 		return flag;
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();

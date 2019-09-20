@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 public class EntityDruden extends ModEntityMob {
 	
 	public EntityDruden(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/drude"));
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/druden"));
 		setSize(1.425f, 4.0f);
 		isImmuneToFire = false;
 		experienceValue = 45;
@@ -44,7 +45,7 @@ public class EntityDruden extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(125);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
 	}
 	
@@ -59,6 +60,14 @@ public class EntityDruden extends ModEntityMob {
 				world.playSound(null, getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.HOSTILE, 1.3F, 1);
 			}
 		}
+	}
+	
+	@Override
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		return super.attackEntityFrom(source, amount * (source.getImmediateSource() instanceof EntityLivingBase && ((EntityLivingBase) source.getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemAxe ? 3 : 1));
+	}
+	
+	public void fall(float distance, float damageMultiplier) {
 	}
 	
 	@Override

@@ -49,6 +49,9 @@ public class EntityHellhound extends ModEntityMob {
 		return flag;
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
