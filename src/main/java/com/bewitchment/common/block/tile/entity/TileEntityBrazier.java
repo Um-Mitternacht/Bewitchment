@@ -1,33 +1,62 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.api.registry.IncenseRecipe;
+import com.bewitchment.api.registry.Incense;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
 public class TileEntityBrazier extends ModTileEntity {
 	private ItemStackHandler handler;
-	private String incense;
-	private IncenseRecipe recipe;
+	private Incense incense;
 	
 	public TileEntityBrazier() {
-		this.handler = new ItemStackHandler(9) {
-			@Override
-			protected void onContentsChanged(int index) {
-				recipe = GameRegistry.findRegistry(IncenseRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
-			}
-		};
-		this.incense = "none";
+		this.handler = new ItemStackHandler(9);
+		this.incense = null;
 	}
-	
+
+	public void getIncense() {
+		this.incense = GameRegistry.findRegistry(Incense.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
+	}
+
+	public boolean interact(EntityPlayer player, EnumHand hand) {
+		if (!player.isSneaking()) {
+			ItemStack itemStack = player.getHeldItem(hand);
+			int slot = getFirstEmptySlot(handler);
+			if (slot != -1) {
+				handler.setStackInSlot(slot, new ItemStack(itemStack.getItem(), 1));
+				player.inventory.decrStackSize(player.inventory.currentItem, 1);
+				markDirty();
+				IBlockState state = world.getBlockState(pos);
+				world.notifyBlockUpdate(pos, state, state, 3);
+				return true;
+			}
+		} else {
+			int slot = getLastNonEmptySlot(handler);
+			if (slot != -1) {
+				ItemHandlerHelper.giveItemToPlayer(player, handler.getStackInSlot(slot));
+				handler.setStackInSlot(slot, ItemStack.EMPTY);
+				markDirty();
+				IBlockState state = world.getBlockState(pos);
+				world.notifyBlockUpdate(pos, state, state, 3);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -75,13 +104,12 @@ public class TileEntityBrazier extends ModTileEntity {
 	}
 	
 	private void writeUpdateTag(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setString("incense", this.incense);
+		tag.setString("incense", incense == null ? "" : incense.getRegistryName().toString());
 		tag.setTag("ItemStackHandler", this.handler.serializeNBT());
 	}
 	
 	private void readUpdateTag(NBTTagCompound tag) {
-		this.incense = tag.getString("incense");
+		this.incense = tag.getString("incense").isEmpty() ? null : GameRegistry.findRegistry(Incense.class).getValue(new ResourceLocation(tag.getString("incense")));
 		this.handler.deserializeNBT(tag.getCompoundTag("ItemStackHandler"));
 	}
 	

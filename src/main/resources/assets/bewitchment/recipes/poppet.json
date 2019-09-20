@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "pattern": [
 	"LSL",
 	"NST",
@@ -7,8 +7,7 @@
   ],
   "key": {
 	"L": {
-	  "type": "forge:ore_dict",
-	  "ore": "leather"
+	  "item": "minecraft:leather"
 	},
 	"S": {
 	  "item": "bewitchment:spanish_moss"

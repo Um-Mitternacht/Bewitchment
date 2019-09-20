@@ -9,6 +9,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -57,5 +58,11 @@ public class BlockBrazier extends ModBlockContainer {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, HANGING);
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
+		return te.interact(player, hand);
 	}
 }

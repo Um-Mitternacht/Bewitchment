@@ -9,17 +9,23 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 
-public class IncenseRecipe extends IForgeRegistryEntry.Impl<IncenseRecipe> {
+public class Incense extends IForgeRegistryEntry.Impl<Incense> {
 	public final List<Ingredient> input;
-	public final List<PotionEffect> incense;
+	public final List<PotionEffect> effects;
 	
-	public IncenseRecipe(ResourceLocation name, List<Ingredient> input, List<PotionEffect> incense) {
+	public Incense(ResourceLocation name, List<Ingredient> input, List<PotionEffect> effects) {
+		if (input.size() > 8) throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 8 at most.");
 		setRegistryName(name);
+		this.effects = effects;
 		this.input = input;
-		this.incense = incense;
 	}
 	
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
+
+	public void onUpdate() {
+
+	}
+
 }

@@ -419,6 +419,8 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneTreasure());
 		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
 	}
+
+
 	
 	@SubscribeEvent
 	public static void registerTarots(RegistryEvent.Register<Tarot> event) {
