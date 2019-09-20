@@ -7,14 +7,24 @@
 	"normal": [
 	  {}
 	],
-	"hanging=true": [
+	"hanging=false,lit=false": [
+	  {
+		"model": "bewitchment:brazier"
+	  }
+	],
+	"hanging=false,lit=true": [
+	  {
+		"model": "bewitchment:brazier"
+	  }
+	],
+	"hanging=true,lit=true": [
 	  {
 		"model": "bewitchment:brazier_hanging"
 	  }
 	],
-	"hanging=false": [
+	"hanging=true,lit=false": [
 	  {
-		"model": "bewitchment:brazier"
+		"model": "bewitchment:brazier_hanging"
 	  }
 	]
   }

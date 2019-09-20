@@ -13,12 +13,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockBrazier extends ModBlockContainer {
@@ -68,5 +72,11 @@ public class BlockBrazier extends ModBlockContainer {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
 		return te.interact(player, hand);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
+		if (stateIn.getValue(LIT) && rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + rand.nextDouble(), pos.getY() + 0.5, pos.getZ() + rand.nextDouble(), 0, 0, 0);
 	}
 }
