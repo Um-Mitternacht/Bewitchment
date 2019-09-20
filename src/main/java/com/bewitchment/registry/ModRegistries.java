@@ -404,22 +404,25 @@ public class ModRegistries {
 	public static void registerIncenses(RegistryEvent.Register<Incense> event) {
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "vitality"),
 				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.essence_of_vitality), Util.get(ModObjects.catechu_brown), Util.get("nuggetIron")),
-				Arrays.asList(new PotionEffect(MobEffects.RESISTANCE, 20 * 600, 0), new PotionEffect(MobEffects.STRENGTH, 20*600, 0)), 600));
+				Arrays.asList(MobEffects.RESISTANCE, MobEffects.STRENGTH), 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "deftness"),
 				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(Items.SUGAR), Util.get("feather"), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.essence_of_vitality)),
-				Arrays.asList(new PotionEffect(MobEffects.JUMP_BOOST, 20 * 600, 0), new PotionEffect(MobEffects.SPEED, 20*600, 0)), 600));
+				Arrays.asList(MobEffects.JUMP_BOOST, MobEffects.SPEED), 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "invigorating"),
 				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(Items.SUGAR), Util.get(Items.POTATO), Util.get(Blocks.YELLOW_FLOWER), Util.get(ModObjects.juniper_berries)),
-				Arrays.asList(new PotionEffect(MobEffects.HASTE, 20 * 600, 0), new PotionEffect(MobEffects.ABSORPTION, 20*600, 0)), 600));
+				Arrays.asList(MobEffects.HASTE, MobEffects.ABSORPTION), 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "cats_eye"),
 				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(Items.GLOWSTONE_DUST), Util.get(Blocks.RED_FLOWER), Util.get(Items.CARROT)),
-				Collections.singletonList(new PotionEffect(MobEffects.NIGHT_VISION, 20 * 600, 0)), 600));
+				Collections.singletonList(MobEffects.NIGHT_VISION), 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "fullness"),
 				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.elderberries), Util.get(ModObjects.salt), Util.get(Items.POTATO), Util.get(Blocks.YELLOW_FLOWER)),
-				Arrays.asList(new PotionEffect(MobEffects.ABSORPTION, 20 * 600, 0), new PotionEffect(MobEffects.SATURATION, 20*600, 0)), 600));
-//		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "intensity"),
-//				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.GLOWSTONE_DUST), Util.get(ModObjects.juniper_berries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)),
-//				Arrays.asList(new PotionEffect(MobEffects.RESISTANCE, 20 * 600, 0), new PotionEffect(MobEffects.STRENGTH, 20*600, 0)), 600));
+				Arrays.asList(MobEffects.ABSORPTION, MobEffects.SATURATION), 600));
+		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "intensity"),
+				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.GLOWSTONE_DUST), Util.get(ModObjects.juniper_berries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)),
+				null, 600));
+		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "concentration"),
+				Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.REDSTONE), Util.get(ModObjects.elderberries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)),
+				null, 600));
 	}
 	
 	@SubscribeEvent

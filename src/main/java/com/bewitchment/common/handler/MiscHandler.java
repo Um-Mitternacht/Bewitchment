@@ -2,6 +2,8 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.common.block.BlockBrazier;
+import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
@@ -16,6 +18,8 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -28,11 +32,16 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import static com.bewitchment.common.block.BlockBrazier.LIT;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -119,6 +128,37 @@ public class MiscHandler {
 		if (event.getWorld().getBlockState(pos).getBlock() == ModObjects.hellfire) {
 			event.getWorld().playEvent(event.getEntityPlayer(), 1009, pos, 0);
 			event.getWorld().setBlockToAir(pos);
+		}
+	}
+
+	@SubscribeEvent
+	public void wakeUp(PlayerWakeUpEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+		World world = player.getEntityWorld();
+		BlockPos pos = player.getPosition();
+		List<Potion> potions = new ArrayList<>();
+		int length = 600, strength = 0;
+		for (int x = -2; x < 3; x++) {
+			for (int z = -2; z < 3; z++) {
+				for (int y = -2; y < 3; y++) {
+					BlockPos temp = new BlockPos(pos.getX()+x, pos.getY()+y, pos.getZ()+z);
+					if(world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(LIT)) {
+						TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
+						if(te.incense != null) {
+							if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
+								strength++;
+							} else if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
+								length = 1200;
+							} else {
+								potions.addAll(te.incense.effects);
+							}
+						}
+					}
+				}
+			}
+		}
+		for(Potion potion : potions) {
+			player.addPotionEffect(new PotionEffect(potion, 20*length, strength));
 		}
 	}
 	

@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
 import static com.bewitchment.common.block.BlockBrazier.LIT;
 
 public class TileEntityBrazier extends ModTileEntity implements ITickable {
-	private ItemStackHandler handler;
-	private Incense incense;
+	public ItemStackHandler handler;
+	public Incense incense;
 	private int litTime;
 	
 	public TileEntityBrazier() {
@@ -45,8 +45,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		if(incense != null) {
 			this.incense = incense;
 			this.litTime = 0;
-			clear(handler);
 		}
+		clear(handler);
 		markDirty();
 	}
 
@@ -61,7 +61,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 					ItemStack itemStack = player.getHeldItem(hand);
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
-						handler.setStackInSlot(slot, new ItemStack(itemStack.getItem(), 1));
+						handler.setStackInSlot(slot, new ItemStack(itemStack.getItem(), 1, itemStack.getItemDamage()));
 						player.inventory.decrStackSize(player.inventory.currentItem, 1);
 						markDirty();
 						world.notifyBlockUpdate(pos, state, state, 3);
@@ -148,12 +148,6 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			if (world.getTotalWorldTime() % 20 == 0) {
 				this.litTime++;
 				if (this.litTime > incense.time) stopBurning();
-				else {
-					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5d, false);
-					if (player != null && player.isPlayerSleeping()) {
-						for(PotionEffect incenseEffect: incense.effects) player.addPotionEffect(incenseEffect);
-					}
-				}
 			}
 		}
 	}
