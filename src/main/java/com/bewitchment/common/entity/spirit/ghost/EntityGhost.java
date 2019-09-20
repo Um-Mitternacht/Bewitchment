@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 public class EntityGhost extends ModEntityMob {
 	protected EntityGhost(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/ghost"));
+		isImmuneToFire = true;
 	}
 	
 	@Override
