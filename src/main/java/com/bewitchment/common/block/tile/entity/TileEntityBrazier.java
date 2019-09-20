@@ -1,20 +1,15 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.Util;
 import com.bewitchment.api.registry.Incense;
-import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFlintAndSteel;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
@@ -39,17 +34,17 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		this.incense = null;
 		this.litTime = 0;
 	}
-
+	
 	private void getIncense() {
 		Incense incense = GameRegistry.findRegistry(Incense.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
-		if(incense != null) {
+		if (incense != null) {
 			this.incense = incense;
 			this.litTime = 0;
 		}
 		clear(handler);
 		markDirty();
 	}
-
+	
 	public boolean interact(EntityPlayer player, EnumHand hand) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
@@ -57,7 +52,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel && !isEmpty(handler)) {
 					world.setBlockState(pos, state.withProperty(LIT, true));
 					getIncense();
-				} else {
+				}
+				else {
 					ItemStack itemStack = player.getHeldItem(hand);
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
@@ -68,7 +64,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 						return true;
 					}
 				}
-			} else {
+			}
+			else {
 				int slot = getLastNonEmptySlot(handler);
 				if (slot != -1) {
 					ItemHandlerHelper.giveItemToPlayer(player, handler.getStackInSlot(slot));
@@ -78,7 +75,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 					return true;
 				}
 			}
-		} else if (player.getHeldItem(hand).getItem() instanceof ItemSpade) {
+		}
+		else if (player.getHeldItem(hand).getItem() instanceof ItemSpade) {
 			stopBurning();
 			return true;
 		}
@@ -141,17 +139,17 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		this.litTime = tag.getInteger("time");
 		this.handler.deserializeNBT(tag.getCompoundTag("ItemStackHandler"));
 	}
-
+	
 	@Override
 	public void update() {
-		if(this.incense != null) {
+		if (this.incense != null) {
 			if (world.getTotalWorldTime() % 20 == 0) {
 				this.litTime++;
 				if (this.litTime > incense.time) stopBurning();
 			}
 		}
 	}
-
+	
 	private void stopBurning() {
 		this.litTime = 0;
 		this.incense = null;

@@ -130,7 +130,7 @@ public class MiscHandler {
 			event.getWorld().setBlockToAir(pos);
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void wakeUp(PlayerWakeUpEvent event) {
 		EntityPlayer player = event.getEntityPlayer();
@@ -141,15 +141,17 @@ public class MiscHandler {
 		for (int x = -2; x < 3; x++) {
 			for (int z = -2; z < 3; z++) {
 				for (int y = -2; y < 3; y++) {
-					BlockPos temp = new BlockPos(pos.getX()+x, pos.getY()+y, pos.getZ()+z);
-					if(world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(LIT)) {
+					BlockPos temp = new BlockPos(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+					if (world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(LIT)) {
 						TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
-						if(te.incense != null) {
+						if (te.incense != null) {
 							if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
 								strength++;
-							} else if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
+							}
+							else if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
 								length = 1200;
-							} else {
+							}
+							else {
 								potions.addAll(te.incense.effects);
 							}
 						}
@@ -157,8 +159,8 @@ public class MiscHandler {
 				}
 			}
 		}
-		for(Potion potion : potions) {
-			player.addPotionEffect(new PotionEffect(potion, 20*length, strength));
+		for (Potion potion : potions) {
+			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
 	
