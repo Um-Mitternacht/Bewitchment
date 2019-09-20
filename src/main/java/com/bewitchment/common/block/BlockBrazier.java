@@ -23,10 +23,11 @@ import javax.annotation.Nullable;
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockBrazier extends ModBlockContainer {
 	public static final PropertyBool HANGING = PropertyBool.create("hanging");
+	public static final PropertyBool LIT = PropertyBool.create("lit");
 	
 	public BlockBrazier() {
 		super(Bewitchment.instance, "brazier", Material.IRON, SoundType.STONE, 5, 30, "pickaxe", -1);
-		setDefaultState(getBlockState().getBaseState().withProperty(HANGING, false));
+		setDefaultState(getBlockState().getBaseState().withProperty(HANGING, false).withProperty(LIT, false));
 	}
 	
 	@Nullable
@@ -47,17 +48,20 @@ public class BlockBrazier extends ModBlockContainer {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(HANGING, meta > 0);
+		return getDefaultState().withProperty(HANGING, (meta & 1) > 0).withProperty(LIT, (meta & 2) > 0);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(HANGING) ? 1 : 0;
+		int meta = 0;
+		meta |= state.getValue(HANGING) ? 1 : 0;
+		meta |= state.getValue(LIT) ? 2 : 0;
+		return meta;
 	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, HANGING);
+		return new BlockStateContainer(this, HANGING, LIT);
 	}
 
 	@Override

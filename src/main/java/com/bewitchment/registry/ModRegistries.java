@@ -66,6 +66,7 @@ public class ModRegistries {
 		new RegistryBuilder<Ritual>().setName(new ResourceLocation(Bewitchment.MODID, "ritual")).setType(Ritual.class).create();
 		new RegistryBuilder<CauldronRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "cauldron_recipe")).setType(CauldronRecipe.class).create();
 		new RegistryBuilder<Brew>().setName(new ResourceLocation(Bewitchment.MODID, "brew")).setType(Brew.class).create();
+		new RegistryBuilder<Incense>().setName(new ResourceLocation(Bewitchment.MODID, "incense")).setType(Incense.class).create();
 		new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 		new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
 	}
@@ -397,6 +398,11 @@ public class ModRegistries {
 			event.getRegistry().register(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_ingot_alt"), Util.get("dustIron", "gritIron"), new ItemStack(ModObjects.cold_iron_ingot)));
 		if (!Arrays.asList(Util.get("dustTinyIron").getMatchingStacks()).isEmpty())
 			event.getRegistry().register(new FrostfireRecipe(new ResourceLocation(Bewitchment.MODID, "cold_iron_nugget"), Util.get("dustTinyIron"), new ItemStack(ModObjects.cold_iron_nugget)));
+	}
+
+	@SubscribeEvent
+	public static void registerIncenses(RegistryEvent.Register<Incense> event) {
+		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "vitality"), Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.essence_of_vitality), Util.get(ModObjects.catechu_brown), Util.get("nuggetIron")), Arrays.asList(new PotionEffect(MobEffects.RESISTANCE, 20 * 600, 0), new PotionEffect(MobEffects.STRENGTH, 20*600, 0)), 600));
 	}
 	
 	@SubscribeEvent
