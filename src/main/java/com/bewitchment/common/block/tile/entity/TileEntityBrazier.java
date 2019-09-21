@@ -47,8 +47,10 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 
 	private void getCurse() {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
-		EntityPlayer target = Curse.getPlayerFromTaglock(handler);
-		if(curse.isValid(target)) curse.apply(target);
+		if (curse != null) {
+			EntityPlayer target = Curse.getPlayerFromTaglock(handler);
+			curse.apply(target);
+		}
 	}
 	
 	public boolean interact(EntityPlayer player, EnumHand hand) {
@@ -66,8 +68,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 					ItemStack itemStack = player.getHeldItem(hand);
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
-						handler.setStackInSlot(slot, new ItemStack(itemStack.getItem(), 1, itemStack.getItemDamage()));
-						player.inventory.decrStackSize(player.inventory.currentItem, 1);
+						ItemStack tempStack = player.inventory.decrStackSize(player.inventory.currentItem, 1);
+						handler.setStackInSlot(slot, tempStack);
 						markDirty();
 						world.notifyBlockUpdate(pos, state, state, 3);
 						return true;

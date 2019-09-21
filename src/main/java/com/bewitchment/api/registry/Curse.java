@@ -3,11 +3,13 @@ package com.bewitchment.api.registry;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.common.curse.CurseReturnToSender;
 import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -30,11 +32,11 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return Util.areISListsEqual(this.input, input);
 	}
 
-	public boolean isValid(EntityPlayer player) {
+	private boolean isValid(EntityPlayer player) {
 		if (this.isLesser) {
-			NBTTagList curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).curses;
-			for(int i = 0; i < curses.tagCount(); i++) {
-				if(curses.getStringTagAt(i).equals(new ResourceLocation(Bewitchment.MODID, "return_to_sender").toString())) {
+			List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).curses;
+			for (Curse curs : curses) {
+				if (curs instanceof CurseReturnToSender) {
 					return false;
 				}
 			}
@@ -53,5 +55,16 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return null;
 	}
 
-	public abstract boolean apply(@Nullable EntityPlayer player);
+	public boolean apply(@Nullable EntityPlayer player) {
+		if(player != null && isValid(player)) {
+			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
+				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+				ep.curses.add(this);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public abstract boolean doCurse(@Nullable EntityPlayer player);
 }

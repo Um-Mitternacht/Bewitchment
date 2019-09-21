@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"ConstantConditions"})
 public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<ExtendedPlayer> {
@@ -27,7 +30,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public NBTTagList uniqueDefeatedBosses = new NBTTagList(), exploredChunks = new NBTTagList();
 	public Fortune fortune;
-	public NBTTagList curses = new NBTTagList();
+	public List<Curse> curses = new ArrayList<>();
 	public int fortuneTime, ritualsCast, mobsKilled;
 	
 	@Nullable
@@ -37,7 +40,9 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
-		tag.setTag("curses", instance.curses);
+		NBTTagList cursesList = new NBTTagList();
+		for(Curse curse : curses) cursesList.appendTag(new NBTTagString(curse.getRegistryName().toString()));
+		tag.setTag("curses", cursesList);
 		tag.setInteger("fortuneTime", fortuneTime);
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
@@ -50,7 +55,12 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
-		instance.curses = tag.getTagList("curses", Constants.NBT.TAG_STRING);
+		List<Curse> cursesList = new ArrayList<>();
+		NBTTagList cursesTags = tag.getTagList("curses", Constants.NBT.TAG_STRING);
+		for(int i = 0; i < cursesTags.tagCount(); i++) {
+			cursesList.add(GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(cursesTags.getStringTagAt(i))));
+		}
+		instance.curses = cursesList;
 		instance.fortuneTime = tag.getInteger("fortuneTime");
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");

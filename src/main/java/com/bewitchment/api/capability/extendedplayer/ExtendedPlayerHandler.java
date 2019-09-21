@@ -2,6 +2,7 @@ package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
@@ -47,6 +48,11 @@ public class ExtendedPlayerHandler {
 					if (cap.fortune.apply(event.player)) cap.fortune = null;
 					else cap.fortuneTime = (event.player.getRNG().nextInt(cap.fortune.maxTime - cap.fortune.minTime) + cap.fortune.minTime);
 					ExtendedPlayer.syncToClient(event.player);
+				}
+			}
+			if(cap.curses != null) {
+				for(Curse curse : cap.curses) {
+					curse.doCurse(event.player);
 				}
 			}
 			if (event.player.ticksExisted % 20 == 0) {

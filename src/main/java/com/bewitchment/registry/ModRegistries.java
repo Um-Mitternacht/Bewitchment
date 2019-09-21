@@ -12,6 +12,7 @@ import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockLog;
+import com.bewitchment.common.curse.CurseReturnToSender;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
@@ -69,6 +70,7 @@ public class ModRegistries {
 		new RegistryBuilder<Incense>().setName(new ResourceLocation(Bewitchment.MODID, "incense")).setType(Incense.class).create();
 		new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 		new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
+		new RegistryBuilder<Curse>().setName(new ResourceLocation(Bewitchment.MODID, "curse")).setType(Curse.class).create();
 	}
 	
 	@SubscribeEvent
@@ -430,6 +432,11 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneDropItem());
 		event.getRegistry().register(new FortuneTreasure());
 		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
+	}
+
+	@SubscribeEvent
+	public static void registerCurses(RegistryEvent.Register<Curse> event) {
+		event.getRegistry().register(new CurseReturnToSender());
 	}
 	
 	
