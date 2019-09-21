@@ -12,7 +12,6 @@ import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockLog;
-import com.bewitchment.common.curse.CurseReturnToSender;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
@@ -444,7 +443,6 @@ public class ModRegistries {
 				}
 			}
 		} catch(Exception ignored){}
-		event.getRegistry().register(new CurseReturnToSender());
 	}
 	
 	
