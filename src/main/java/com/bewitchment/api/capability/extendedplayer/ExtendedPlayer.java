@@ -2,6 +2,7 @@ package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.SyncExtendedPlayer;
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -26,6 +27,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public NBTTagList uniqueDefeatedBosses = new NBTTagList(), exploredChunks = new NBTTagList();
 	public Fortune fortune;
+	public NBTTagList curses = new NBTTagList();
 	public int fortuneTime, ritualsCast, mobsKilled;
 	
 	@Nullable
@@ -35,6 +37,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
+		tag.setTag("curses", instance.curses);
 		tag.setInteger("fortuneTime", fortuneTime);
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
@@ -47,6 +50,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
+		instance.curses = tag.getTagList("curses", Constants.NBT.TAG_STRING);
 		instance.fortuneTime = tag.getInteger("fortuneTime");
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");

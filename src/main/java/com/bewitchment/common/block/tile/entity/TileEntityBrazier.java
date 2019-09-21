@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.block.state.IBlockState;
@@ -41,8 +42,13 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			this.incense = incense;
 			this.litTime = 0;
 		}
-		clear(handler);
 		markDirty();
+	}
+
+	private void getCurse() {
+		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
+		EntityPlayer target = Curse.getPlayerFromTaglock(handler);
+		if(curse.isValid(target)) curse.apply(target);
 	}
 	
 	public boolean interact(EntityPlayer player, EnumHand hand) {
@@ -52,6 +58,9 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel && !isEmpty(handler)) {
 					world.setBlockState(pos, state.withProperty(LIT, true));
 					getIncense();
+					if (incense == null) getCurse();
+					clear(handler);
+					markDirty();
 				}
 				else {
 					ItemStack itemStack = player.getHeldItem(hand);
