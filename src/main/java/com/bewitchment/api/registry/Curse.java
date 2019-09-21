@@ -1,6 +1,5 @@
 package com.bewitchment.api.registry;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.common.curse.CurseReturnToSender;
@@ -8,8 +7,6 @@ import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -21,11 +18,13 @@ import java.util.UUID;
 public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	final List<Ingredient> input;
 	final boolean isLesser;
+	final CurseCondition condition;
 
-	public Curse (ResourceLocation name, List<Ingredient> input, boolean isLesser) {
+	public Curse (ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
 		setRegistryName(name);
 		this.input = input;
 		this.isLesser = isLesser;
+		this.condition = condition;
 	}
 
 	public final boolean matches(ItemStackHandler input) {
@@ -34,7 +33,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 
 	private boolean isValid(EntityPlayer player) {
 		if (this.isLesser) {
-			List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).curses;
+			List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses();
 			for (Curse curs : curses) {
 				if (curs instanceof CurseReturnToSender) {
 					return false;
@@ -59,7 +58,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		if(player != null && isValid(player)) {
 			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-				ep.curses.add(this);
+				ep.addCurse(this, 7);
 				return true;
 			}
 		}
@@ -67,4 +66,12 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	}
 
 	public abstract boolean doCurse(@Nullable EntityPlayer player);
+
+	public CurseCondition getCurseCondition(){
+		return condition;
+	}
+
+	public static enum CurseCondition{
+		EXIST //add other conditions like SLEEP or so for curses that are only active in certain conditions
+	}
 }

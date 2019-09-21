@@ -1,6 +1,8 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.registry.ModCurses;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +14,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,6 +39,7 @@ public class ItemTarotCards extends Item {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		player.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(ModCurses.curseReturnToSender, player.isSneaking() ? 2 : 4);
 		if (player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			setTags(stack, player);

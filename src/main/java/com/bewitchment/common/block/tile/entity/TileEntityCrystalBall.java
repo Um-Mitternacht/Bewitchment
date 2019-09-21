@@ -46,7 +46,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 						cap.fortune = valid.get(player.getRNG().nextInt(valid.size()));
 						cap.fortuneTime = (player.getRNG().nextInt(cap.fortune.maxTime - cap.fortune.minTime) + cap.fortune.minTime);
 						ExtendedPlayer.syncToClient(player);
-						player.sendStatusMessage(new TextComponentTranslation("fortune." + cap.fortune.getRegistryName().toString().replace(":", ".")), true);
+						player.sendStatusMessage(new TextComponentTranslation("fortune." + cap.fortune.getRegistryName().toString().replace(":", ".")), true); //maybe replace that true with false so that the message can be re-read?
 					}
 					else player.sendStatusMessage(new TextComponentTranslation("fortune.no_fortune"), true);
 				}

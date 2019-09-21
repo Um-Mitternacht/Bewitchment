@@ -1,6 +1,7 @@
 package com.bewitchment.api.message;
 
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.google.common.util.concurrent.ListenableFuture;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;

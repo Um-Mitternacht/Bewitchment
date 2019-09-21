@@ -50,9 +50,14 @@ public class ExtendedPlayerHandler {
 					ExtendedPlayer.syncToClient(event.player);
 				}
 			}
-			if(cap.curses != null) {
-				for(Curse curse : cap.curses) {
-					curse.doCurse(event.player);
+			if(cap.curses != null) { //check "curse condition"
+				for(Curse curse : cap.getCurses()) {
+					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST)
+						curse.doCurse(event.player);
+					if (event.player.world.getTotalWorldTime() % 24000 == 0){
+						System.out.println("Day passed");
+						cap.updateCurses();
+					}
 				}
 			}
 			if (event.player.ticksExisted % 20 == 0) {

@@ -436,6 +436,14 @@ public class ModRegistries {
 
 	@SubscribeEvent
 	public static void registerCurses(RegistryEvent.Register<Curse> event) {
+		try {
+			for (Field f : ModCurses.class.getFields()) {
+				Object obj = f.get(null);
+				if (obj instanceof Curse) {
+					event.getRegistry().register((Curse) obj);
+				}
+			}
+		} catch(Exception ignored){}
 		event.getRegistry().register(new CurseReturnToSender());
 	}
 	
