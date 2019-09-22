@@ -39,6 +39,7 @@ public class ItemTaglock extends Item {
 	
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
+		//todo get the bed also from the bottom block
 		if (player.isSneaking() && world.getBlockState(pos).getBlock() instanceof BlockBed) {
 			for (EntityPlayer player0 : world.playerEntities) {
 				if (player0.getBedLocation() != null && player0.getBedLocation().equals(pos)) {

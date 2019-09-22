@@ -99,11 +99,25 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	}
 	
 	public void addCurse(Curse curse, int days) {
-		curses.putIfAbsent(curse.getRegistryName().toString(), days);
+		curses.putIfAbsent(curse.getRegistryName().toString(), days * 24000);
 	}
-	
+
+	public boolean hasCurse(Curse curse) {
+		return getCurses().contains(curse);
+	}
+
+	public boolean removeCurse(Curse curse){
+		if(getCurses().contains(curse)){
+			curses.remove(curse);
+			return true;
+		}
+		return false;
+	}
+
+	//called every second
 	public void updateCurses() {
 		for (String curs : curses.keySet()) {
+			curses.replace(curs, curses.get(curs), curses.get(curs) - 20);
 			if (curses.get(curs) <= 0) {
 				curses.remove(curs);
 			}

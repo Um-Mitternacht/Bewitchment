@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -27,7 +28,12 @@ public class ItemLantern extends ItemBlock {
 		}
 		return super.onItemUseFirst(player, world, pos, face, hitX, hitY, hitZ, hand);
 	}
-	
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		return super.onItemRightClick(worldIn, playerIn, handIn);
+	}
+
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return (stack.hasTagCompound() && stack.getTagCompound().getBoolean("lit")) || super.hasEffect(stack);

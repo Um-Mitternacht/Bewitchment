@@ -1,5 +1,6 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.api.event.CurseEvent;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -15,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -45,11 +47,16 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		markDirty();
 	}
 	
-	private void getCurse() {
+	private void curse(EntityPlayer caster) {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
 		if (curse != null) {
 			EntityPlayer target = Curse.getPlayerFromTaglock(handler);
-			curse.apply(target);
+			if (target != null){
+				int days = 7;
+				CurseEvent.PlayerCursedEvent event = new CurseEvent.PlayerCursedEvent(target, caster, curse, days);
+				MinecraftForge.EVENT_BUS.post(event);
+				if (!event.isCanceled()) event.getCurse().apply(event.getTarget(), event.getCurseDuration());
+			}
 		}
 	}
 	
@@ -57,19 +64,20 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
 			if (!player.isSneaking()) {
-				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel && !isEmpty(handler)) {
-					world.setBlockState(pos, state.withProperty(LIT, true));
-					getIncense();
-					if (incense == null) getCurse();
-					clear(handler);
-					markDirty();
+				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel) {
+				    if (!isEmpty(handler)) {
+                        world.setBlockState(pos, state.withProperty(LIT, true));
+                        getIncense();
+                        if (incense == null) curse(player);
+                        clear(handler);
+                        markDirty();
+                    }
+                    return false;
 				}
 				else {
-					ItemStack itemStack = player.getHeldItem(hand);
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
-						ItemStack tempStack = player.inventory.decrStackSize(player.inventory.currentItem, 1);
-						handler.setStackInSlot(slot, tempStack);
+						player.inventory.setItemStack(handler.insertItem(slot, player.inventory.decrStackSize(player.inventory.currentItem, 1), false));
 						markDirty();
 						world.notifyBlockUpdate(pos, state, state, 3);
 						return true;

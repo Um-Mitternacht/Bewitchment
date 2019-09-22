@@ -99,6 +99,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
+		MinecraftForge.EVENT_BUS.register(new CurseHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new BewitchmentQuark());
 		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new BewitchmentMowzies());
