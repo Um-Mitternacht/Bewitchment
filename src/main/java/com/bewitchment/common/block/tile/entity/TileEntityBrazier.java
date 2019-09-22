@@ -44,7 +44,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		}
 		markDirty();
 	}
-
+	
 	private void getCurse() {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
 		if (curse != null) {

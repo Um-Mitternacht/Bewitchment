@@ -41,11 +41,11 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
-
+		
 		NBTTagList cursesList = new NBTTagList();
 		tag.setTag("curses", cursesList);
 		instance.curses.entrySet().stream().forEach(entry -> this.addNewCouple(entry, cursesList));
-
+		
 		tag.setInteger("fortuneTime", fortuneTime);
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
@@ -58,10 +58,10 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
-
+		
 		instance.curses.clear();
 		tag.getTagList("curses", Constants.NBT.TAG_COMPOUND).forEach(s -> this.loadCouple(instance, s));
-
+		
 		instance.fortuneTime = tag.getInteger("fortuneTime");
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");
@@ -91,32 +91,32 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public static void syncToClient(EntityPlayer player) {
 		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
 	}
-
-	public List<Curse> getCurses(){
+	
+	public List<Curse> getCurses() {
 		List<Curse> curseList = new ArrayList<>();
 		curses.keySet().forEach(s -> curseList.add(GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(s))));
 		return curseList;
 	}
-
-	public void addCurse(Curse curse, int days){
+	
+	public void addCurse(Curse curse, int days) {
 		curses.putIfAbsent(curse.getRegistryName().toString(), days);
 	}
-
-	public void updateCurses(){
-		for (String curs : curses.keySet()){
-			if (curses.get(curs) <= 0){
+	
+	public void updateCurses() {
+		for (String curs : curses.keySet()) {
+			if (curses.get(curs) <= 0) {
 				curses.remove(curs);
 			}
 		}
 	}
-
+	
 	private void addNewCouple(Map.Entry<String, Integer> entry, NBTTagList list) {
 		NBTTagCompound couple = new NBTTagCompound();
 		couple.setString("curseId", entry.getKey());
 		couple.setInteger("daysLeft", entry.getValue());
 		list.appendTag(couple);
 	}
-
+	
 	private void loadCouple(ExtendedPlayer instance, NBTBase s) {
 		NBTTagCompound tag = (NBTTagCompound) s;
 		instance.curses.put(tag.getString("curseId"), tag.getInteger("daysLeft"));

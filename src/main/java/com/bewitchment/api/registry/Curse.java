@@ -19,18 +19,18 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	final List<Ingredient> input;
 	final boolean isLesser;
 	final CurseCondition condition;
-
-	public Curse (ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
+	
+	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
 		setRegistryName(name);
 		this.input = input;
 		this.isLesser = isLesser;
 		this.condition = condition;
 	}
-
+	
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
-
+	
 	private boolean isValid(EntityPlayer player) {
 		if (this.isLesser) {
 			List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses();
@@ -42,10 +42,10 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		}
 		return true;
 	}
-
+	
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
-		for(int i = 0; i < handler.getSlots(); i++) {
+		for (int i = 0; i < handler.getSlots(); i++) {
 			ItemStack temp = handler.getStackInSlot(i);
 			if (temp.getItem() instanceof ItemTaglock && temp.hasTagCompound() && temp.getTagCompound().hasKey("boundId")) {
 				return Util.findPlayer(UUID.fromString(temp.getTagCompound().getString("boundId")));
@@ -53,9 +53,9 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		}
 		return null;
 	}
-
+	
 	public boolean apply(@Nullable EntityPlayer player) {
-		if(player != null && isValid(player)) {
+		if (player != null && isValid(player)) {
 			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
 				ep.addCurse(this, 7);
@@ -64,14 +64,14 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		}
 		return false;
 	}
-
+	
 	public abstract boolean doCurse(@Nullable EntityPlayer player);
-
-	public CurseCondition getCurseCondition(){
+	
+	public CurseCondition getCurseCondition() {
 		return condition;
 	}
-
-	public static enum CurseCondition{
+	
+	public static enum CurseCondition {
 		EXIST //add other conditions like SLEEP or so for curses that are only active in certain conditions
 	}
 }

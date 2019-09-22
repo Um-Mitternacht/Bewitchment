@@ -50,13 +50,12 @@ public class ExtendedPlayerHandler {
 					ExtendedPlayer.syncToClient(event.player);
 				}
 			}
-			if(cap.curses != null) { //check "curse condition"
-				for(Curse curse : cap.getCurses()) {
-					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST)
-						curse.doCurse(event.player);
-
+			if (cap.curses != null) { //check "curse condition"
+				for (Curse curse : cap.getCurses()) {
+					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST) curse.doCurse(event.player);
+					
 				}
-				if (event.player.world.getWorldTime() % 24000 == 0){ //todo, instead of updating days like this, make a checked days field or so idk
+				if (event.player.world.getWorldTime() % 24000 == 0) { //todo, instead of updating days like this, make a checked days field or so idk
 					System.out.println("Day passed");
 					cap.updateCurses();
 				}

@@ -432,7 +432,7 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneTreasure());
 		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
 	}
-
+	
 	@SubscribeEvent
 	public static void registerCurses(RegistryEvent.Register<Curse> event) {
 		try {
@@ -442,7 +442,8 @@ public class ModRegistries {
 					event.getRegistry().register((Curse) obj);
 				}
 			}
-		} catch(Exception ignored){}
+		}
+		catch (Exception ignored) {}
 	}
 	
 	
