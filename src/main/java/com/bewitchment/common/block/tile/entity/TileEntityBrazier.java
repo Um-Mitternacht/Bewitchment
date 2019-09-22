@@ -59,7 +59,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
+
+	//todo, all sorts of clay jars, taglocks etc. should be returned empty, and not be consumed
 	public boolean interact(EntityPlayer player, EnumHand hand) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
