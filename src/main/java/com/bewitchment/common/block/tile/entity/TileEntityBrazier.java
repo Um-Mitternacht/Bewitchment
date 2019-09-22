@@ -4,6 +4,7 @@ import com.bewitchment.api.event.CurseEvent;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFlintAndSteel;
@@ -70,7 +71,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
                         world.setBlockState(pos, state.withProperty(LIT, true));
                         getIncense();
                         if (incense == null) curse(player);
-                        clear(handler);
+                        clearBrazier();
                         markDirty();
                     }
                     return false;
@@ -176,4 +177,17 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		world.setBlockState(pos, world.getBlockState(pos).withProperty(LIT, false));
 		markDirty();
 	}
+
+	private void clearBrazier(){
+		for (int i = 0; i < handler.getSlots(); i++){
+			if (handler.getStackInSlot(i).getItem() instanceof ItemTaglock){
+				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem(), handler.getStackInSlot(i).getCount()));
+			}else if (handler.getStackInSlot(i).getItem().hasContainerItem(handler.getStackInSlot(i))){
+				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem().getContainerItem(), handler.getStackInSlot(i).getCount()));
+			}else{
+				handler.setStackInSlot(i, ItemStack.EMPTY);
+			}
+		}
+	}
+
 }

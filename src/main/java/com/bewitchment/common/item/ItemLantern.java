@@ -1,5 +1,6 @@
 package com.bewitchment.common.item;
 
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
@@ -31,6 +32,7 @@ public class ItemLantern extends ItemBlock {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		System.out.println(playerIn.getCapability(ExtendedPlayer.CAPABILITY, null).curses);
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
