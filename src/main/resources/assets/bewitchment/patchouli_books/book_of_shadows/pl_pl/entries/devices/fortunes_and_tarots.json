@@ -23,8 +23,7 @@
 	{
 	  "type": "text",
 	  "title": "Karty Tarota",
-	  "text": "Originally simple playing cards, yet many have discovered the magical powers these cards possess in revealing secrets and predicting the future"
-    "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które te karty "
+    	  "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które posiadają w ujawnianiu sekretów i przepowiadania przyszłości"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -40,8 +39,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/00player.png"
 	  ],
 	  "border": true,
-	  "title": "Player",
-	  "text": "The player is a witch"
+	  "title": "Gracz",
+	  "text": "Gracz jest czarownikiem"
 	},
 	{
 	  "type": "image",
@@ -49,8 +48,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/01witch.png"
 	  ],
 	  "border": true,
-	  "title": "Witch",
-	  "text": "The player owns spells, and how many"
+	  "title": "Czarownik",
+	  "text": "Gracz posiada czary, i to ile"
 	},
 	{
 	  "type": "image",
@@ -59,7 +58,7 @@
 	  ],
 	  "border": true,
 	  "title": "Enderman",
-	  "text": "The player has the End Infusion"
+	  "text": "Gracz ma infuzję Endu"
 	},
 	{
 	  "type": "image",
@@ -67,8 +66,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/03cat.png"
 	  ],
 	  "border": true,
-	  "title": "Cat",
-	  "text": "The player is infused"
+	  "title": "Kot",
+	  "text": "Gracz ma infuzje"
 	},
 	{
 	  "type": "image",
@@ -76,8 +75,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
 	  ],
 	  "border": true,
-	  "title": "Guardian",
-	  "text": "The player has killed a boss, and how many unique bosses killed"
+	  "title": "Strażnik",
+	  "text": "Gracz zabił bossa, albo wielu"
 	},
 	{
 	  "type": "image",
@@ -85,8 +84,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
 	  ],
 	  "border": true,
-	  "title": "Illusioner",
-	  "text": "The player has a potion active, and the highest level"
+	  "title": "Iluzjoner",
+	  "text": "Gracz jest pod efektem eliksiru, najwyższego poziomu"
 	},
 	{
 	  "type": "image",
@@ -94,8 +93,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/06companions.png"
 	  ],
 	  "border": true,
-	  "title": "Companions",
-	  "text": "The player has a familiar, reversed if the familiar is not nearby"
+	  "title": "Kompani",
+	  "text": "Gracz ma chowańca, odwrócone jeśli nie jest blisko"
 	},
 	{
 	  "type": "image",
@@ -103,8 +102,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
 	  ],
 	  "border": true,
-	  "title": "Mounts",
-	  "text": "The player has pets that aren't familiars, and the amount of pets"
+	  "title": "Wierzchowce",
+	  "text": "Gracz ma ulubieńca, a ilość"
 	},
 	{
 	  "type": "image",
@@ -112,8 +111,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/08silver_sword.png"
 	  ],
 	  "border": true,
-	  "title": "Silver Sword",
-	  "text": "If reversed, the player is a witch hunter"
+	  "title": "Srebrny Miecz",
+	  "text": "Jak odwrócone, to gracz jest łowcą czarownic"
 	},
 	{
 	  "type": "image",
@@ -121,8 +120,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/09evoker.png"
 	  ],
 	  "border": true,
-	  "title": "Evoker",
-	  "text": "If reversed, the player is a spectre"
+	  "title": "Przywoływacz",
+	  "text": "Jak odwrócone, to gracz jest widmem"
 	},
 	{
 	  "type": "image",
@@ -130,8 +129,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
 	  ],
 	  "border": true,
-	  "title": "Diamonds",
-	  "text": "The player has a fortune active, reversed if the fortune is negative"
+	  "title": "Diamenty",
+	  "text": "Gracz jest pod efektem fortuny, odwrócone jak fortuna jest zła"
 	},
 	{
 	  "type": "image",
@@ -140,7 +139,7 @@
 	  ],
 	  "border": true,
 	  "title": "Iron Golem",
-	  "text": "The player has the Overworld Infusion"
+	  "text": "Gracz ma infuzje świata"
 	},
 	{
 	  "type": "image",
@@ -148,8 +147,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/12zombie.png"
 	  ],
 	  "border": true,
-	  "title": "Zombie",
-	  "text": "The player has at least one protection poppet, and the amount of poppets"
+	  "title": "Zombi",
+	  "text": "Gracz ma conajmniej jedną lalkę, a ilość"
 	},
 	{
 	  "type": "image",
@@ -157,8 +156,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/13wither_skeleton.png"
 	  ],
 	  "border": true,
-	  "title": "Wither Skeleton",
-	  "text": "The player has the Nether Infusion"
+	  "title": "Witherowy Szkielet",
+	  "text": "Gracz ma infuzje netheru"
 	},
 	{
 	  "type": "image",
@@ -166,8 +165,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/14villager.png"
 	  ],
 	  "border": true,
-	  "title": "Villager",
-	  "text": "The player is in a coven, and how many members"
+	  "title": "Osadnik",
+	  "text": "Gracz jest w sabacie, a ilość członków"
 	},
 	{
 	  "type": "image",
@@ -176,7 +175,7 @@
 	  ],
 	  "border": true,
 	  "title": "Wither",
-	  "text": "The player has a contract with a spirit, and how many contracts"
+	  "text": "Gracz ma kontrakt z widmem, a ilość kontaktów"
 	},
 	{
 	  "type": "image",
@@ -184,8 +183,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
 	  ],
 	  "border": true,
-	  "title": "Ender Dragon",
-	  "text": "The player has killed at least 100 mobs, and the amount of mobs killed / 100"
+	  "title": "Smok Endu",
+	  "text": "Gracz zabił conajmniej sto istot, a ilość set"
 	},
 	{
 	  "type": "image",
@@ -193,8 +192,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/17star.png"
 	  ],
 	  "border": true,
-	  "title": "Star",
-	  "text": "The player has the Dream Infusion"
+	  "title": "Gwiazda",
+	  "text": "Gracz ma infuzję snu"
 	},
 	{
 	  "type": "image",
@@ -202,8 +201,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/18moon.png"
 	  ],
 	  "border": true,
-	  "title": "Moon",
-	  "text": "The player is a vampire, or werewolf if reversed"
+	  "title": "Księżyc",
+	  "text": "Gracz jest vampirem, lub wilkołakiem, jak odwrócone"
 	},
 	{
 	  "type": "image",
@@ -211,8 +210,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
 	  ],
 	  "border": true,
-	  "title": "Sun",
-	  "text": "The player is blessed, or cursed if reversed"
+	  "title": "Słońce",
+	  "text": "Gracz jest błogosławiony, lub przeklęty jak odwrócone"
 	},
 	{
 	  "type": "image",
@@ -220,8 +219,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
 	  ],
 	  "border": true,
-	  "title": "Stronghold",
-	  "text": "The player has cast a ritual, and the amount cast"
+	  "title": "Twierdza",
+	  "text": "Gracz wywołał rytuał, a ilość"
 	},
 	{
 	  "type": "image",
@@ -229,8 +228,8 @@
 		"bewitchment:textures/gui/patchouli/tarot/21world.png"
 	  ],
 	  "border": true,
-	  "title": "World",
-	  "text": "The player has explored at least 100 chunks, and the amount of chunks / 100"
+	  "title": "Świat",
+	  "text": "Gracz zeksplorował co najmniej sto chunków, a ilość set"
 	}
   ]
 }
