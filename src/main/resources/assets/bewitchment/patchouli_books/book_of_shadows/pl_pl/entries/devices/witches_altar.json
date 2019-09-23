@@ -19,17 +19,17 @@
 	},
 	{
 	  "type": "crafting",
-	  "title": "Altar Crafting",
+	  "title": "Konstruowanie Ołtarza",
 	  "recipe": "bewitchment:stone_witches_altar"
 	},
 	{
 	  "type": "text",
-	  "title": "Altar Modifiers",
-	  "text": "Cups provide a small boost to both gain and multiplier. Includes goblets, bottles, and flower pots. Swords increase a multiplier. Includes the athame, boline, and other blades. Wands give a boost to max altar power. Includes torches, candles, and end rods. Pentacles increase gain. Includes skulls, gems, and pentacles."
+	  "title": "Modyfikatory Ołtarza",
+	  "text": "Kubki (kielichy, butelki, doniczki) lekko powiększają i przybytek i mnożnik. Miecze (athame, boline, i inne ostrza) powiększają mnożnik. Pręty (pochodnie, świece, słupki endu) powiększają pojemność Ołtarza. Pentagramy (czaszki, klejnoty, pentagramy) powiekszają przybytek."
 	},
 	{
 	  "type": "multiblock",
-	  "name": "How to Build",
+	  "name": "Jak Zbudować",
 	  "multiblock": {
 		"mapping": {
 		  "A": "bewitchment:stone_witches_altar[type=0]",
@@ -43,7 +43,7 @@
 		  ]
 		]
 	  },
-	  "text": "The blocks around the altar must $(i)not$() be other altar blocks"
+	   "text": "Bloki wokół Ołtarza nie mogą być innymi blokami Ołtarzowymi"
 	}
   ]
 }
