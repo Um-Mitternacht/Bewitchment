@@ -6,7 +6,6 @@
 	{
 	  "type": "text",
     	  "text": "Używana do ekstrakcji oparów wyższego rzędu których Piec Czarownicy nie może wyprodukować sam. Niektóre inne związki również mogą być stworzone w tym urządzeniu. Destylarnia potrzebuje magicznej energii i musi użyć Płomienny Proszek jako paliwo."
-	  "text": "Used to make higher-tier fumes than what the Witch’s Oven can produce alone. Certain other compounds can also be created with this device. The distillery requires magic energy and must use Blaze Powder as a fuel."
 	},
 	{
 	  "type": "crafting",
@@ -15,22 +14,23 @@
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:cleansing_balm",
-	  "text": "A salve with purifying powers"
+	  "text": "Maść z mocą oczyszczającą"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:demonic_elixir",
-	  "text": "A foul mixture infused with the essence of a demon"
+	  "text": "Nieczysta mikstura nasycona esencją demona"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:fiery_unguent",
-	  "text": "Get your spicy memes here"
+	  "text": "Tutaj znajć swe pikantne memy"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:bottled_frostfire",
 	  "text": "A strange anti-fire that is cold to the touch. When placed, it can smelt iron ore into Cold Iron when thrown in"
+	  "text": "Dziwny anty-ogień, zimny w dotyku. Gdy jest postawiony, może wytopić z żelaza Zimne Żelazo"
 	}
   ]
 }
