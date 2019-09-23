@@ -1,7 +1,6 @@
 {
   "name": "Przyrządy",
-  "description": "Jest wiele przyrządów które czarownice mogą stwierdzić za użyteczne w swoich dziełach.",
-  "description": "There are many utility blocks that witches may find useful in their practices, which are detailed here.",
+  "description": "Jest wiele przyrządów które czarownice mogą stwierdzić za użyteczne w swoich dziełach. Są one opisane tutaj.",
   "icon": "bewitchment:witches_oven",
   "sortnum": 1
 }
