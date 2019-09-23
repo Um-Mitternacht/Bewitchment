@@ -1,0 +1,236 @@
+{
+  "name": "Fortunes and Tarots",
+  "category": "devices",
+  "icon": "bewitchment:crystal_ball",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Wróżenie wszelkiego rodzaju"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Szklana Kula",
+    "text": "Szklane kule są ogólnie dość magiczne. Najczęściej są używane do przepowiadnania przyszłości i rozdawanie fortun, ale niektórzy twierdzą iż mogą być używane do innych czynów, jak zdalny podgląd. Czarownice które to twierdzą zwykle nie umieją tego udowodnić…"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:crystal_ball"
+	},
+	{
+	  "type": "text",
+	  "title": "Karty Tarota",
+	  "text": "Originally simple playing cards, yet many have discovered the magical powers these cards possess in revealing secrets and predicting the future"
+    "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które te karty "
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_table"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_cards"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/00player.png"
+	  ],
+	  "border": true,
+	  "title": "Player",
+	  "text": "The player is a witch"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/01witch.png"
+	  ],
+	  "border": true,
+	  "title": "Witch",
+	  "text": "The player owns spells, and how many"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/02enderman.png"
+	  ],
+	  "border": true,
+	  "title": "Enderman",
+	  "text": "The player has the End Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/03cat.png"
+	  ],
+	  "border": true,
+	  "title": "Cat",
+	  "text": "The player is infused"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
+	  ],
+	  "border": true,
+	  "title": "Guardian",
+	  "text": "The player has killed a boss, and how many unique bosses killed"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
+	  ],
+	  "border": true,
+	  "title": "Illusioner",
+	  "text": "The player has a potion active, and the highest level"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/06companions.png"
+	  ],
+	  "border": true,
+	  "title": "Companions",
+	  "text": "The player has a familiar, reversed if the familiar is not nearby"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
+	  ],
+	  "border": true,
+	  "title": "Mounts",
+	  "text": "The player has pets that aren't familiars, and the amount of pets"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/08silver_sword.png"
+	  ],
+	  "border": true,
+	  "title": "Silver Sword",
+	  "text": "If reversed, the player is a witch hunter"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/09evoker.png"
+	  ],
+	  "border": true,
+	  "title": "Evoker",
+	  "text": "If reversed, the player is a spectre"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
+	  ],
+	  "border": true,
+	  "title": "Diamonds",
+	  "text": "The player has a fortune active, reversed if the fortune is negative"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/11iron_golem.png"
+	  ],
+	  "border": true,
+	  "title": "Iron Golem",
+	  "text": "The player has the Overworld Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/12zombie.png"
+	  ],
+	  "border": true,
+	  "title": "Zombie",
+	  "text": "The player has at least one protection poppet, and the amount of poppets"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/13wither_skeleton.png"
+	  ],
+	  "border": true,
+	  "title": "Wither Skeleton",
+	  "text": "The player has the Nether Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/14villager.png"
+	  ],
+	  "border": true,
+	  "title": "Villager",
+	  "text": "The player is in a coven, and how many members"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/15wither.png"
+	  ],
+	  "border": true,
+	  "title": "Wither",
+	  "text": "The player has a contract with a spirit, and how many contracts"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
+	  ],
+	  "border": true,
+	  "title": "Ender Dragon",
+	  "text": "The player has killed at least 100 mobs, and the amount of mobs killed / 100"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/17star.png"
+	  ],
+	  "border": true,
+	  "title": "Star",
+	  "text": "The player has the Dream Infusion"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/18moon.png"
+	  ],
+	  "border": true,
+	  "title": "Moon",
+	  "text": "The player is a vampire, or werewolf if reversed"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
+	  ],
+	  "border": true,
+	  "title": "Sun",
+	  "text": "The player is blessed, or cursed if reversed"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
+	  ],
+	  "border": true,
+	  "title": "Stronghold",
+	  "text": "The player has cast a ritual, and the amount cast"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/21world.png"
+	  ],
+	  "border": true,
+	  "title": "World",
+	  "text": "The player has explored at least 100 chunks, and the amount of chunks / 100"
+	}
+  ]
+}
