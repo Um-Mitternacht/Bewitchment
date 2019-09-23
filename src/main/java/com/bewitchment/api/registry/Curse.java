@@ -29,7 +29,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
-
+	
 	private boolean isValid(EntityPlayer player) {
 		return player != null;
 	}
@@ -55,17 +55,17 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		}
 		return false;
 	}
-
+	
 	public boolean isLesser() {
 		return isLesser;
 	}
-
+	
 	public abstract boolean doCurse(@Nullable EntityPlayer player);
 	
 	public CurseCondition getCurseCondition() {
 		return condition;
 	}
-
+	
 	/**
 	 * EXIST - the curse is active every tick the player exists
 	 * REACTION - the curse is not active on its own; must be used manually

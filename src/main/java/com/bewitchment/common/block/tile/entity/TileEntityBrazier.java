@@ -52,7 +52,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
 		if (curse != null) {
 			EntityPlayer target = Curse.getPlayerFromTaglock(handler);
-			if (target != null){
+			if (target != null) {
 				int days = 7;
 				CurseEvent.PlayerCursedEvent event = new CurseEvent.PlayerCursedEvent(target, caster, curse, days);
 				MinecraftForge.EVENT_BUS.post(event);
@@ -60,21 +60,21 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-
+	
 	//todo, all sorts of clay jars, taglocks etc. should be returned empty, and not be consumed
 	public boolean interact(EntityPlayer player, EnumHand hand) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
 			if (!player.isSneaking()) {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel) {
-				    if (!isEmpty(handler)) {
-                        world.setBlockState(pos, state.withProperty(LIT, true));
-                        getIncense();
-                        if (incense == null) curse(player);
-                        clearBrazier();
-                        markDirty();
-                    }
-                    return false;
+					if (!isEmpty(handler)) {
+						world.setBlockState(pos, state.withProperty(LIT, true));
+						getIncense();
+						if (incense == null) curse(player);
+						clearBrazier();
+						markDirty();
+					}
+					return false;
 				}
 				else {
 					int slot = getFirstEmptySlot(handler);
@@ -177,17 +177,19 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		world.setBlockState(pos, world.getBlockState(pos).withProperty(LIT, false));
 		markDirty();
 	}
-
-	private void clearBrazier(){
-		for (int i = 0; i < handler.getSlots(); i++){
-			if (handler.getStackInSlot(i).getItem() instanceof ItemTaglock){
+	
+	private void clearBrazier() {
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (handler.getStackInSlot(i).getItem() instanceof ItemTaglock) {
 				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem(), handler.getStackInSlot(i).getCount()));
-			}else if (handler.getStackInSlot(i).getItem().hasContainerItem(handler.getStackInSlot(i))){
+			}
+			else if (handler.getStackInSlot(i).getItem().hasContainerItem(handler.getStackInSlot(i))) {
 				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem().getContainerItem(), handler.getStackInSlot(i).getCount()));
-			}else{
+			}
+			else {
 				handler.setStackInSlot(i, ItemStack.EMPTY);
 			}
 		}
 	}
-
+	
 }
