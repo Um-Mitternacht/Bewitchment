@@ -38,24 +38,8 @@ public class ModBlockLog extends BlockLog {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-	
-	@Override
 	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return state.getMaterial() == Material.WOOD;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isFullCube(state);
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isOpaqueCube(state);
 	}
 	
 	@Override
@@ -64,8 +48,32 @@ public class ModBlockLog extends BlockLog {
 	}
 	
 	@Override
+	public boolean isFullCube(IBlockState state) {
+		return !Util.isTransparent(state) && super.isFullCube(state);
+	}
+	
+	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return !Util.isTransparent(state) && super.isOpaqueCube(state);
+	}
+	
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		BlockPos dropPos = pos.offset(EnumFacing.HORIZONTALS[rand.nextInt(4)], 1);
+		if (worldIn.isAreaLoaded(pos, 1) && state.getValue(IS_SLASHED).equals(true) && rand.nextInt(100) <= 7) {
+			worldIn.spawnEntity(new EntityItem(worldIn, dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModObjects.dragons_blood_resin)));
+		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 	
 	@Override
@@ -77,14 +85,6 @@ public class ModBlockLog extends BlockLog {
 			return true;
 		}
 		return false;
-	}
-	
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		BlockPos dropPos = pos.offset(EnumFacing.HORIZONTALS[rand.nextInt(4)], 1);
-		if (worldIn.isAreaLoaded(pos, 1) && state.getValue(IS_SLASHED).equals(true) && rand.nextInt(100) <= 7) {
-			worldIn.spawnEntity(new EntityItem(worldIn, dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModObjects.dragons_blood_resin)));
-		}
 	}
 	
 	@Override

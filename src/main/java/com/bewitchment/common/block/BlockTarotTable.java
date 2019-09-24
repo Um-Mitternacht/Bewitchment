@@ -31,19 +31,9 @@ public class BlockTarotTable extends ModBlockContainer {
 	}
 	
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.getValue(BlockHorizontal.FACING).getAxis() == EnumFacing.Axis.X ? BOX_X : BOX_Z;
-	}
-	
-	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
 	
 	@Override
@@ -57,7 +47,17 @@ public class BlockTarotTable extends ModBlockContainer {
 	}
 	
 	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.getValue(BlockHorizontal.FACING).getAxis() == EnumFacing.Axis.X ? BOX_X : BOX_Z;
+	}
+	
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, BlockHorizontal.FACING);
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
 }

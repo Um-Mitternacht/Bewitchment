@@ -33,18 +33,6 @@ public class CommandFortune extends CommandBase {
 	}
 	
 	@Override
-	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
-		if (args.length == 1) return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
-		if (args.length == 2) return Arrays.asList("get", "set", "remove", "execute");
-		if (args.length == 3 && args[1].equals("set")) {
-			List<String> fortunes = new ArrayList<>();
-			for (Fortune fortune : GameRegistry.findRegistry(Fortune.class)) fortunes.add(fortune.getRegistryName().toString());
-			return fortunes;
-		}
-		return Collections.emptyList();
-	}
-	
-	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if (args.length == 0) throw new WrongUsageException(getUsage(sender));
 		EntityPlayer player = null;
@@ -94,5 +82,17 @@ public class CommandFortune extends CommandBase {
 				else throw new CommandException("commands.generic.syntax");
 			}
 		}
+	}
+	
+	@Override
+	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
+		if (args.length == 1) return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+		if (args.length == 2) return Arrays.asList("get", "set", "remove", "execute");
+		if (args.length == 3 && args[1].equals("set")) {
+			List<String> fortunes = new ArrayList<>();
+			for (Fortune fortune : GameRegistry.findRegistry(Fortune.class)) fortunes.add(fortune.getRegistryName().toString());
+			return fortunes;
+		}
+		return Collections.emptyList();
 	}
 }

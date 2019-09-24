@@ -29,6 +29,11 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
+	
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
 	}
@@ -39,8 +44,23 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		world.scheduleUpdate(to, this, 0);
+	}
+	
+	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		return world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos);
+	}
+	
+	@Override
+	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return filled ? 8 : 0;
 	}
 	
 	@Override
@@ -54,27 +74,7 @@ public class BlockGoblet extends ModBlock {
 	}
 	
 	@Override
-	public boolean isFullBlock(IBlockState state) {
-		return false;
-	}
-	
-	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
-	}
-	
-	@Override
-	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return filled ? 8 : 0;
-	}
-	
-	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		world.scheduleUpdate(to, this, 0);
-	}
-	
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
 	}
 }

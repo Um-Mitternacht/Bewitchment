@@ -37,12 +37,15 @@ import java.util.function.Predicate;
 @SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems", "StatementWithEmptyBody"})
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public final MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
-	
-	public int color, gain;
-	
 	private final Map<IBlockState, Integer> map = new HashMap<>();
 	private final BlockPos.MutableBlockPos checking = new BlockPos.MutableBlockPos();
+	public int color, gain;
 	private int counter, maxPower;
+	
+	private static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {
+		for (Predicate<BlockWorldState> predicate : BewitchmentAPI.ALTAR_UPGRADES.keySet()) if (predicate.test(new BlockWorldState(world, pos, true))) return BewitchmentAPI.ALTAR_UPGRADES.get(predicate);
+		return null;
+	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -59,13 +62,10 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == MagicPower.CAPABILITY || super.hasCapability(capability, face);
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
+		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
+		return flag;
 	}
 	
 	@Override
@@ -76,15 +76,18 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-		boolean flag = super.shouldRefresh(world, pos, oldState, newState) || !newState.getValue(BlockWitchesAltar.TYPE).equals(oldState.getValue(BlockWitchesAltar.TYPE));
-		if (!world.isRemote && flag) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY() + 0.75, pos.getZ(), new ItemStack(Blocks.CARPET, 1, color - 1));
-		return flag;
+	public void onLoad() {
+		forceScan();
 	}
 	
 	@Override
-	public void onLoad() {
-		forceScan();
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == MagicPower.CAPABILITY || super.hasCapability(capability, face);
+	}
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == MagicPower.CAPABILITY ? MagicPower.CAPABILITY.cast(magicPower) : super.getCapability(capability, face);
 	}
 	
 	@Override
@@ -181,11 +184,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				map.clear();
 			}
 		}
-	}
-	
-	private static AltarUpgrade getAltarUpgrade(World world, BlockPos pos) {
-		for (Predicate<BlockWorldState> predicate : BewitchmentAPI.ALTAR_UPGRADES.keySet()) if (predicate.test(new BlockWorldState(world, pos, true))) return BewitchmentAPI.ALTAR_UPGRADES.get(predicate);
-		return null;
 	}
 	
 	protected IBlockState convert(IBlockState state) {

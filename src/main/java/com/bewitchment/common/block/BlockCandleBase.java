@@ -25,24 +25,12 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	}
 	
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
-	}
-	
-	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return false;
-	}
-	
-	@Override
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return false;
-	}
+	public abstract int getLightValue(IBlockState state);
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
@@ -55,8 +43,23 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	}
 	
 	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
+	
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, LIT);
+	}
+	
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 	
 	@Override
@@ -70,7 +73,4 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	public float getStabilizationAmount(World world, BlockPos pos) {
 		return 0.5f;
 	}
-	
-	@Override
-	public abstract int getLightValue(IBlockState state);
 }

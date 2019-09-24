@@ -29,6 +29,15 @@ public class ItemTaglock extends Item {
 	}
 	
 	@Override
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
+		if (!player.world.isRemote && target != null) {
+			setTags(player, hand, target);
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundName")) {
@@ -49,15 +58,6 @@ public class ItemTaglock extends Item {
 			}
 		}
 		return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
-	}
-	
-	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
-		if (!player.world.isRemote && target != null) {
-			setTags(player, hand, target);
-			return true;
-		}
-		return false;
 	}
 	
 	private void setTags(EntityPlayer player, EnumHand hand, EntityLivingBase target) {

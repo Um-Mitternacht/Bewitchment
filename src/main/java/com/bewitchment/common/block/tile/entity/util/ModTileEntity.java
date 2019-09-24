@@ -17,18 +17,50 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public abstract class ModTileEntity extends TileEntity {
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		for (int i = 0; i < getInventories().length; i++) tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
-		markDirty();
-		syncToClient();
-		return super.writeToNBT(tag);
+	public static boolean contains(ItemStackHandler handler, ItemStack stack) {
+		for (int i = 0; i < handler.getSlots(); i++) if (OreDictionary.itemMatches(handler.getStackInSlot(i), stack, true)) return true;
+		return false;
+	}
+	
+	public static boolean isEmpty(ItemStackHandler handler) {
+		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
+		return true;
+	}
+	
+	public static int getFirstEmptySlot(ItemStackHandler handler) {
+		return getFirstValidSlot(handler, ItemStack.EMPTY);
+	}
+	
+	public static int getLastNonEmptySlot(ItemStackHandler handler) {
+		for (int i = handler.getSlots() - 1; i >= 0; i--) if (!handler.getStackInSlot(i).isEmpty()) return i;
+		return -1;
+	}
+	
+	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
+		boolean hasEmpty = false;
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (Util.canMerge(handler.getStackInSlot(i), stack)) return i;
+			if (handler.getStackInSlot(i).isEmpty()) hasEmpty = true;
+		}
+		return hasEmpty ? getFirstEmptySlot(handler) : -1;
+	}
+	
+	public static void clear(ItemStackHandler handler) {
+		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		for (int i = 0; i < getInventories().length; i++) getInventories()[i].deserializeNBT(tag.getCompoundTag("inventory_" + i));
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		for (int i = 0; i < getInventories().length; i++) tag.setTag("inventory_" + i, getInventories()[i].serializeNBT());
+		markDirty();
+		syncToClient();
+		return super.writeToNBT(tag);
 	}
 	
 	@Override
@@ -64,37 +96,5 @@ public abstract class ModTileEntity extends TileEntity {
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
 		world.scheduleBlockUpdate(pos, blockType, 0, 0);
 		markDirty();
-	}
-	
-	public static boolean contains(ItemStackHandler handler, ItemStack stack) {
-		for (int i = 0; i < handler.getSlots(); i++) if (OreDictionary.itemMatches(handler.getStackInSlot(i), stack, true)) return true;
-		return false;
-	}
-	
-	public static boolean isEmpty(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) if (!handler.getStackInSlot(i).isEmpty()) return false;
-		return true;
-	}
-	
-	public static int getFirstEmptySlot(ItemStackHandler handler) {
-		return getFirstValidSlot(handler, ItemStack.EMPTY);
-	}
-	
-	public static int getLastNonEmptySlot(ItemStackHandler handler) {
-		for (int i = handler.getSlots() - 1; i >= 0; i--) if (!handler.getStackInSlot(i).isEmpty()) return i;
-		return -1;
-	}
-	
-	public static int getFirstValidSlot(ItemStackHandler handler, ItemStack stack) {
-		boolean hasEmpty = false;
-		for (int i = 0; i < handler.getSlots(); i++) {
-			if (Util.canMerge(handler.getStackInSlot(i), stack)) return i;
-			if (handler.getStackInSlot(i).isEmpty()) hasEmpty = true;
-		}
-		return hasEmpty ? getFirstEmptySlot(handler) : -1;
-	}
-	
-	public static void clear(ItemStackHandler handler) {
-		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
 }

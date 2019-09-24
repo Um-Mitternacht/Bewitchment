@@ -27,6 +27,12 @@ public class ItemBloodBottle extends Item {
 	}
 	
 	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		playerIn.setActiveHand(handIn);
+		return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+	}
+	
+	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase living) {
 		EntityPlayer entityplayer = living instanceof EntityPlayer ? (EntityPlayer) living : null;
 		
@@ -58,11 +64,5 @@ public class ItemBloodBottle extends Item {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
-	}
-	
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		playerIn.setActiveHand(handIn);
-		return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 	}
 }

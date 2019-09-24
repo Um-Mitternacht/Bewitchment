@@ -64,21 +64,17 @@ public class Bewitchment {
 	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild4", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	
 	public static final Logger logger = LogManager.getLogger(NAME);
-	
-	@Mod.Instance
-	public static Bewitchment instance;
-	
-	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
-	public static ServerProxy proxy;
-	
-	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
-	
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
 		public ItemStack createIcon() {
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
 	};
+	@Mod.Instance
+	public static Bewitchment instance;
+	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
+	public static ServerProxy proxy;
+	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

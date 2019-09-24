@@ -43,12 +43,12 @@ public class ItemChalk extends Item {
 	}
 	
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return false;
+	public boolean canItemEditBlocks() {
+		return true;
 	}
 	
 	@Override
-	public boolean canItemEditBlocks() {
-		return true;
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return false;
 	}
 }

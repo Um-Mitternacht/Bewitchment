@@ -27,25 +27,6 @@ public class ItemJuniperKey extends Item {
 		Util.registerItem(this, "juniper_key");
 	}
 	
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		ItemStack stack = player.getHeldItem(hand);
-		if (player.isCreative() && (world.getBlockState(pos).getBlock() instanceof BlockJuniperChest || world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door)) {
-			setTags(world, pos, stack);
-			return EnumActionResult.SUCCESS;
-		}
-		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
-		}
-	}
-	
 	public static ItemStack setTags(World world, BlockPos pos, ItemStack stack) {
 		if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
 			stack.setTagCompound(new NBTTagCompound());
@@ -64,5 +45,24 @@ public class ItemJuniperKey extends Item {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player.isCreative() && (world.getBlockState(pos).getBlock() instanceof BlockJuniperChest || world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door)) {
+			setTags(world, pos, stack);
+			return EnumActionResult.SUCCESS;
+		}
+		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
+			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
+		}
 	}
 }

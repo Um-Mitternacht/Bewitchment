@@ -18,6 +18,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityHellhound extends ModEntityMob {
@@ -32,34 +34,14 @@ public class EntityHellhound extends ModEntityMob {
 		experienceValue = 20;
 	}
 	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		boolean flag = super.attackEntityAsMob(entity);
-		if (flag) {
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
-				entity.setFire(3);
-			}
-		}
-		return flag;
-	}
-	
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
-	public boolean getCanSpawnHere() {
-		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	protected int getSkinTypes() {
+		return 6;
 	}
 	
 	@Override
@@ -68,8 +50,16 @@ public class EntityHellhound extends ModEntityMob {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -86,6 +76,23 @@ public class EntityHellhound extends ModEntityMob {
 				if (ticksExisted % 20 == 0 && isInLava()) heal(2);
 			}
 		}
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		boolean flag = super.attackEntityAsMob(entity);
+		if (flag) {
+			if (entity instanceof EntityLivingBase) {
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
+				entity.setFire(3);
+			}
+		}
+		return flag;
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
 	
 	@Override

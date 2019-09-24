@@ -69,13 +69,6 @@ public class TradeHandler {
 			this.itemPriceInfo = itemPriceInfo;
 		}
 		
-		@Override
-		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomSapling(random, itemPriceInfo.getPrice(random));
-			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
-			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
-		}
-		
 		private ItemStack getRandomSapling(Random random, int amount) {
 			ItemStack itemStack;
 			switch (random.nextInt(4)) {
@@ -94,6 +87,15 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
+			ItemStack itemStack = getRandomSapling(random, itemPriceInfo.getPrice(random));
+			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
+			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
+		}
+		
+
 	}
 	
 	public static class RandomPlantsforEmeralds implements EntityVillager.ITradeList {
@@ -102,13 +104,6 @@ public class TradeHandler {
 		public RandomPlantsforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo, EntityVillager.PriceInfo itemPriceInfo) {
 			this.emeraldPriceInfo = emeraldPriceInfo;
 			this.itemPriceInfo = itemPriceInfo;
-		}
-		
-		@Override
-		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomPlant(random, itemPriceInfo.getPrice(random));
-			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
-			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
 		private ItemStack getRandomPlant(Random random, int amount) {
@@ -126,6 +121,15 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
+			ItemStack itemStack = getRandomPlant(random, itemPriceInfo.getPrice(random));
+			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
+			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
+		}
+		
+
 	}
 	
 	public static class RandomBaublesforEmeralds implements EntityVillager.ITradeList {
@@ -133,13 +137,6 @@ public class TradeHandler {
 		
 		public RandomBaublesforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo) {
 			this.emeraldPriceInfo = emeraldPriceInfo;
-		}
-		
-		@Override
-		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomBauble(random, 1);
-			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
-			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
 		private ItemStack getRandomBauble(Random random, int amount) {
@@ -160,6 +157,15 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
+			ItemStack itemStack = getRandomBauble(random, 1);
+			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
+			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
+		}
+		
+
 	}
 	
 	public static class RandomWeaponsforEmeralds implements EntityVillager.ITradeList {
@@ -167,13 +173,6 @@ public class TradeHandler {
 		
 		public RandomWeaponsforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo) {
 			this.emeraldPriceInfo = emeraldPriceInfo;
-		}
-		
-		@Override
-		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomWeapon(random);
-			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
-			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
 		private ItemStack getRandomWeapon(Random random) {
@@ -192,5 +191,14 @@ public class TradeHandler {
 			if (random.nextInt(10) >= 5 && itemStack != null) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
 			return itemStack;
 		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
+			ItemStack itemStack = getRandomWeapon(random);
+			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
+			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
+		}
+		
+
 	}
 }

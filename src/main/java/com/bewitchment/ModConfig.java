@@ -42,11 +42,10 @@ public class ModConfig {
 	}
 	
 	public static class WorldGen {
-		@Config.Comment("The dimensions that trees, ores, and coquina are allowed to spawn in.")
-		public int[] worldGenWhitelist = {0};
-		
 		public final TreeGen treeGen = new TreeGen();
 		public final OreGen oreGen = new OreGen();
+		@Config.Comment("The dimensions that trees, ores, and coquina are allowed to spawn in.")
+		public int[] worldGenWhitelist = {0};
 		
 		public static class TreeGen {
 			@Config.Comment("The chance for cypress trees to spawn. Set to 0 to disable.")

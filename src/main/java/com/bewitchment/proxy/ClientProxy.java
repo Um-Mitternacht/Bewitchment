@@ -59,6 +59,17 @@ public class ClientProxy extends ServerProxy {
 	public static final Map<Item, ModelBase> IDOL_MODELS = new HashMap<>();
 	public static final Map<Item, ResourceLocation> IDOL_TEXTURES = new HashMap<>();
 	
+	@SubscribeEvent
+	public static void stitch(TextureStitchEvent.Pre event) {
+		event.getMap().registerSprite(RenderTileEntityWitchesCauldron.TEX);
+		event.getMap().registerSprite(ModParticleBubble.TEX);
+	}
+	
+	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
+		IDOL_MODELS.put(item, model);
+		IDOL_TEXTURES.put(item, texture);
+	}
+	
 	@Override
 	public List<ItemStack> getEntireInventory(EntityPlayer unused) {
 		return super.getEntireInventory(Minecraft.getMinecraft().player);
@@ -79,38 +90,6 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
-	}
-	
-	@Override
-	public void registerRendersPreInit() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntitySnake.class, RenderSnake::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityGhost.class, RenderGhost::new);
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityFeuerwurm.class, RenderFeuerwurm::new);
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityDruden.class, RenderDruden::new);
-		
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlyph.class, new RenderTileEntityGlyph());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
 	}
 	
 	@Override
@@ -161,6 +140,38 @@ public class ClientProxy extends ServerProxy {
 	}
 	
 	@Override
+	public void registerRendersPreInit() {
+		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityLizard.class, RenderLizard::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityOwl.class, RenderOwl::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityRaven.class, RenderRaven::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySnake.class, RenderSnake::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityToad.class, RenderToad::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityBlackDog.class, RenderBlackDog::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGhost.class, RenderGhost::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, RenderHellhound::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityFeuerwurm.class, RenderFeuerwurm::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityDemon.class, RenderDemon::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDemoness.class, RenderDemoness::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityImp.class, RenderImp::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityDruden.class, RenderDruden::new);
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlyph.class, new RenderTileEntityGlyph());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
+	}
+	
+	@Override
 	public void registerTexture(Item item, String variant) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), variant));
 	}
@@ -181,16 +192,5 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
-	}
-	
-	@SubscribeEvent
-	public static void stitch(TextureStitchEvent.Pre event) {
-		event.getMap().registerSprite(RenderTileEntityWitchesCauldron.TEX);
-		event.getMap().registerSprite(ModParticleBubble.TEX);
-	}
-	
-	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
-		IDOL_MODELS.put(item, model);
-		IDOL_TEXTURES.put(item, texture);
 	}
 }

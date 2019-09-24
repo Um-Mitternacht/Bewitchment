@@ -366,6 +366,10 @@ public class ModelDemoness extends ModelBiped {
 		this.rightWing02.addChild(this.rightWing03);
 	}
 	
+	private static float triangleWave(float x, float y) {
+		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
+	}
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.bipedBody.render(scale);
@@ -410,9 +414,5 @@ public class ModelDemoness extends ModelBiped {
 		renderer.rotateAngleX = x;
 		renderer.rotateAngleY = y;
 		renderer.rotateAngleZ = z;
-	}
-	
-	private static float triangleWave(float x, float y) {
-		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 }

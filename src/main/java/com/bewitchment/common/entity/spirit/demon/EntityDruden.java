@@ -39,14 +39,12 @@ public class EntityDruden extends ModEntityMob {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -67,7 +65,14 @@ public class EntityDruden extends ModEntityMob {
 		return super.attackEntityFrom(source, amount * (source.getImmediateSource() instanceof EntityLivingBase && ((EntityLivingBase) source.getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemAxe ? 3 : 1));
 	}
 	
-	public void fall(float distance, float damageMultiplier) {
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
 	}
 	
 	@Override
@@ -95,11 +100,6 @@ public class EntityDruden extends ModEntityMob {
 	@Override
 	protected int getSkinTypes() {
 		return 4;
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override

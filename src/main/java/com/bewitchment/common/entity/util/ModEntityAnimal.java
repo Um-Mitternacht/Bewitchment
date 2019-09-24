@@ -31,6 +31,12 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	}
 	
 	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
 		entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
@@ -38,25 +44,13 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	}
 	
 	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
-		return isInLove() && other.isInLove();
+	protected void entityInit() {
+		super.entityInit();
+		dataManager.register(SKIN, 0);
 	}
 	
 	protected int getSkinTypes() {
 		return 1;
-	}
-	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		dataManager.register(SKIN, 0);
 	}
 	
 	@Override
@@ -70,5 +64,11 @@ public abstract class ModEntityAnimal extends EntityAnimal {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		dataManager.set(SKIN, tag.getInteger("skin"));
 		super.readEntityFromNBT(tag);
+	}
+	
+	@Override
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
+		return isInLove() && other.isInLove();
 	}
 }

@@ -26,15 +26,6 @@ public class ItemTarotCards extends Item {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("readName")) {
-			String readName = stack.getTagCompound().getString("readName");
-			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), readName));
-		}
-	}
-	
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
@@ -47,6 +38,15 @@ public class ItemTarotCards extends Item {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		return !player.isSneaking() && setTags(stack, target);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("readName")) {
+			String readName = stack.getTagCompound().getString("readName");
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), readName));
+		}
 	}
 	
 	private boolean setTags(ItemStack stack, EntityLivingBase target) {

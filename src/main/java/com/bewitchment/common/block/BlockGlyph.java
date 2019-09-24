@@ -43,12 +43,9 @@ public class BlockGlyph extends ModBlockContainer {
 	 * 0 = golden, 1 = normal, 2 = nether, 3 = ender, 4 = any
 	 */
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 4);
-	
-	private static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
-	
-	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0.0025, 1);
-	
 	public static final int GOLDEN = 0, NORMAL = 1, NETHER = 2, ENDER = 3, ANY = 4;
+	private static final PropertyInteger LETTER = PropertyInteger.create("letter", 0, 5);
+	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0.0025, 1);
 	
 	public BlockGlyph() {
 		super(null, "glyph", Material.CIRCUITS, SoundType.STONE, 5, 100, "", -1);
@@ -62,8 +59,29 @@ public class BlockGlyph extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean hasTileEntity(IBlockState state) {
-		return state.getValue(TYPE) == GOLDEN;
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(TYPE, meta & 3).withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[(meta >> 2) & 3]);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(TYPE) | (state.getValue(BlockHorizontal.FACING).getHorizontalIndex() << 2);
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.withProperty(LETTER, Math.abs(pos.getX() + pos.getZ() * 2) % 6);
+	}
+	
+	@Override
+	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
+		return (world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getValue(TYPE) != GOLDEN);
 	}
 	
 	@Override
@@ -77,35 +95,13 @@ public class BlockGlyph extends ModBlockContainer {
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
-	@Override
-	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return PathNodeType.OPEN;
-	}
-	
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult result, World world, BlockPos pos, EntityPlayer player) {
-		int type = state.getValue(TYPE);
-		return new ItemStack(type == NORMAL ? ModObjects.ritual_chalk : type == GOLDEN ? ModObjects.focal_chalk : type == NETHER ? ModObjects.fiery_chalk : ModObjects.phasing_chalk);
-	}
-	
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
-	}
-	
-	@Override
-	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
-		return (world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getValue(TYPE) != GOLDEN);
-	}
-	
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
-		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
+			TileEntityGlyph tile = (TileEntityGlyph) world.getTileEntity(pos);
+			if (tile.casterId != null) tile.caster = Util.findPlayer(tile.casterId);
+			tile.syncToClient();
+		}
+		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);
 	}
 	
 	@Override
@@ -125,33 +121,34 @@ public class BlockGlyph extends ModBlockContainer {
 	}
 	
 	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (world.getTileEntity(pos) instanceof TileEntityGlyph) {
-			TileEntityGlyph tile = (TileEntityGlyph) world.getTileEntity(pos);
-			if (tile.casterId != null) tile.caster = Util.findPlayer(tile.casterId);
-			tile.syncToClient();
-		}
-		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) world.destroyBlock(pos, true);
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
 	
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.withProperty(LETTER, Math.abs(pos.getX() + pos.getZ() * 2) % 6);
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(TYPE, meta & 3).withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[(meta >> 2) & 3]);
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(TYPE) | (state.getValue(BlockHorizontal.FACING).getHorizontalIndex() << 2);
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, TYPE, BlockHorizontal.FACING, LETTER);
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state) {
+		return state.getValue(TYPE) == GOLDEN;
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult result, World world, BlockPos pos, EntityPlayer player) {
+		int type = state.getValue(TYPE);
+		return new ItemStack(type == NORMAL ? ModObjects.ritual_chalk : type == GOLDEN ? ModObjects.focal_chalk : type == NETHER ? ModObjects.fiery_chalk : ModObjects.phasing_chalk);
+	}
+	
+	@Override
+	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return PathNodeType.OPEN;
 	}
 	
 	@SubscribeEvent

@@ -37,31 +37,29 @@ public class BlockSpanishMoss extends BlockVine {
 		return terminalPiece;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
+		
+		if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
+			for (EnumFacing f : EnumFacing.HORIZONTALS) {
+				if (canAttachTo(worldIn, pos.offset(f), f.getOpposite())) {
+					return true;
+				}
+			}
+		}
+		if (side == EnumFacing.DOWN) {
+			return worldIn.getBlockState(pos.up()).getBlock() == ModObjects.spanish_moss;
+		}
+		
+		return this.canAttachTo(worldIn, pos.offset(side.getOpposite()), side);
 	}
 	
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!worldIn.isRemote && !terminalPiece && worldIn.isAirBlock(pos.down())) {
-			IBlockState newState = (rand.nextInt(3) == 0 ? ModObjects.spanish_moss_end : ModObjects.spanish_moss).getDefaultState();
-			newState = newState.withProperty(UP, state.getValue(UP));
-			newState = newState.withProperty(NORTH, state.getValue(NORTH));
-			newState = newState.withProperty(SOUTH, state.getValue(SOUTH));
-			newState = newState.withProperty(EAST, state.getValue(EAST));
-			newState = newState.withProperty(WEST, state.getValue(WEST));
-			worldIn.setBlockState(pos.down(), newState, 3);
+	public boolean canAttachTo(World world, BlockPos blockToAttachTo, EnumFacing comingFrom) {
+		if (world.getBlockState(blockToAttachTo).getBlockFaceShape(world, blockToAttachTo, comingFrom) != BlockFaceShape.SOLID) {
+			return false;
 		}
-	}
-	
-	@Override
-	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack) {
-		if (!worldIn.isRemote && stack.getItem() == ModObjects.boline && !terminalPiece) {
-			player.addStat(Objects.requireNonNull(StatList.getBlockStats(this)));
-			spawnAsEntity(worldIn, pos, new ItemStack(ModObjects.spanish_moss, 1, 0));
-		}
+		return !isExceptBlockForAttaching(world.getBlockState(blockToAttachTo).getBlock());
 	}
 	
 	@Override
@@ -106,33 +104,16 @@ public class BlockSpanishMoss extends BlockVine {
 	}
 	
 	@Override
-	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		
-		if (side == EnumFacing.UP || side == EnumFacing.DOWN) {
-			for (EnumFacing f : EnumFacing.HORIZONTALS) {
-				if (canAttachTo(worldIn, pos.offset(f), f.getOpposite())) {
-					return true;
-				}
-			}
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		if (!worldIn.isRemote && !terminalPiece && worldIn.isAirBlock(pos.down())) {
+			IBlockState newState = (rand.nextInt(3) == 0 ? ModObjects.spanish_moss_end : ModObjects.spanish_moss).getDefaultState();
+			newState = newState.withProperty(UP, state.getValue(UP));
+			newState = newState.withProperty(NORTH, state.getValue(NORTH));
+			newState = newState.withProperty(SOUTH, state.getValue(SOUTH));
+			newState = newState.withProperty(EAST, state.getValue(EAST));
+			newState = newState.withProperty(WEST, state.getValue(WEST));
+			worldIn.setBlockState(pos.down(), newState, 3);
 		}
-		if (side == EnumFacing.DOWN) {
-			return worldIn.getBlockState(pos.up()).getBlock() == ModObjects.spanish_moss;
-		}
-		
-		return this.canAttachTo(worldIn, pos.offset(side.getOpposite()), side);
-	}
-	
-	@Override
-	public boolean canAttachTo(World world, BlockPos blockToAttachTo, EnumFacing comingFrom) {
-		if (world.getBlockState(blockToAttachTo).getBlockFaceShape(world, blockToAttachTo, comingFrom) != BlockFaceShape.SOLID) {
-			return false;
-		}
-		return !isExceptBlockForAttaching(world.getBlockState(blockToAttachTo).getBlock());
-	}
-	
-	@Override
-	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return true;
 	}
 	
 	@Override
@@ -151,7 +132,26 @@ public class BlockSpanishMoss extends BlockVine {
 	}
 	
 	@Override
+	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack) {
+		if (!worldIn.isRemote && stack.getItem() == ModObjects.boline && !terminalPiece) {
+			player.addStat(Objects.requireNonNull(StatList.getBlockStats(this)));
+			spawnAsEntity(worldIn, pos, new ItemStack(ModObjects.spanish_moss, 1, 0));
+		}
+	}
+	
+	@Override
 	public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 		return false;
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
+	
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return true;
 	}
 }

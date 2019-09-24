@@ -34,6 +34,10 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public Map<String, Integer> curses = new HashMap<>(); //curse id-days left
 	public int fortuneTime, ritualsCast, mobsKilled;
 	
+	public static void syncToClient(EntityPlayer player) {
+		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
+	}
+	
 	@Nullable
 	@Override
 	public NBTBase writeNBT(Capability<ExtendedPlayer> capability, ExtendedPlayer instance, EnumFacing face) {
@@ -67,15 +71,15 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.mobsKilled = tag.getInteger("mobsKilled");
 	}
 	
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
+		return getCapability(capability, null) != null;
+	}
+	
 	@Nullable
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
 		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
-	}
-	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
 	}
 	
 	@Override
@@ -86,10 +90,6 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	@Override
 	public void deserializeNBT(NBTTagCompound tag) {
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
-	}
-	
-	public static void syncToClient(EntityPlayer player) {
-		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
 	}
 	
 	public List<Curse> getCurses() {

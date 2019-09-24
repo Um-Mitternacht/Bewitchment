@@ -21,6 +21,17 @@ public class ItemLantern extends ItemBlock {
 	}
 	
 	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		System.out.println(playerIn.getCapability(ExtendedPlayer.CAPABILITY, null).curses);
+		return super.onItemRightClick(worldIn, playerIn, handIn);
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return (stack.hasTagCompound() && stack.getTagCompound().getBoolean("lit")) || super.hasEffect(stack);
+	}
+	
+	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, EnumHand hand) {
 		if (player.isSneaking()) return super.onItemUseFirst(player, world, pos, face, hitX, hitY, hitZ, hand);
 		if (player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(hand).getTagCompound().getBoolean("lit") && world.getBlockState(pos.offset(face)).getBlock().isReplaceable(world, pos.offset(face)) && MagicPower.attemptDrain(null, player, 50)) {
@@ -28,16 +39,5 @@ public class ItemLantern extends ItemBlock {
 			return EnumActionResult.SUCCESS;
 		}
 		return super.onItemUseFirst(player, world, pos, face, hitX, hitY, hitZ, hand);
-	}
-
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		System.out.println(playerIn.getCapability(ExtendedPlayer.CAPABILITY, null).curses);
-		return super.onItemRightClick(worldIn, playerIn, handIn);
-	}
-
-	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return (stack.hasTagCompound() && stack.getTagCompound().getBoolean("lit")) || super.hasEffect(stack);
 	}
 }

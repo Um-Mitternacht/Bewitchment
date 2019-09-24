@@ -31,6 +31,21 @@ public class BlockPoppetShelf extends ModBlockContainer {
 	}
 	
 	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityPoppetShelf();
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+	}
+	
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		switch (state.getValue(BlockHorizontal.FACING).getHorizontalIndex()) {
 			case 0:
@@ -46,28 +61,13 @@ public class BlockPoppetShelf extends ModBlockContainer {
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityPoppetShelf();
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, BlockHorizontal.FACING);
 	}
 	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
-	}
-	
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, BlockHorizontal.FACING);
 	}
 	
 	@Override
@@ -78,17 +78,6 @@ public class BlockPoppetShelf extends ModBlockContainer {
 			tile.interact(player, gridPos);
 		}
 		return true;
-	}
-	
-	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		NBTTagCompound poppet = new NBTTagCompound();
-		poppet.setLong("position", pos.toLong());
-		poppet.setInteger("dimension", placer.dimension);
-		ExtendedWorld ext = ExtendedWorld.get(world);
-		ext.storedPoppetShelves.add(poppet);
-		ext.markDirty();
-		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}
 	
 	@Override
@@ -108,6 +97,17 @@ public class BlockPoppetShelf extends ModBlockContainer {
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		NBTTagCompound poppet = new NBTTagCompound();
+		poppet.setLong("position", pos.toLong());
+		poppet.setInteger("dimension", placer.dimension);
+		ExtendedWorld ext = ExtendedWorld.get(world);
+		ext.storedPoppetShelves.add(poppet);
+		ext.markDirty();
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}
 	
 	private int getGridPosition(IBlockState state, float hitX, float hitY, float hitZ) {

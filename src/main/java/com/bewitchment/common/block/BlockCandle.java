@@ -38,8 +38,19 @@ public class BlockCandle extends BlockCandleBase {
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		world.scheduleUpdate(to, this, 0);
 	}
 	
 	@Override
@@ -67,23 +78,12 @@ public class BlockCandle extends BlockCandleBase {
 	}
 	
 	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
+	
+	@Override
 	public int getLightValue(IBlockState state) {
 		return state.getValue(LIT) ? 9 : 0;
-	}
-	
-	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		world.scheduleUpdate(to, this, 0);
-	}
-	
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
 	}
 }

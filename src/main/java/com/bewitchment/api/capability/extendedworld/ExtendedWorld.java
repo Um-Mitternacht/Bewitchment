@@ -21,15 +21,13 @@ public class ExtendedWorld extends WorldSavedData {
 		super(name);
 	}
 	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		NBTTagList storedCauldrons = new NBTTagList();
-		NBTTagList storedPoppetShelves = new NBTTagList();
-		for (NBTTagCompound cauldron : this.storedCauldrons) storedCauldrons.appendTag(cauldron);
-		for (NBTTagCompound poppet : this.storedPoppetShelves) storedPoppetShelves.appendTag(poppet);
-		nbt.setTag("storedCauldrons", storedCauldrons);
-		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
-		return nbt;
+	public static ExtendedWorld get(World world) {
+		ExtendedWorld data = (ExtendedWorld) world.getMapStorage().getOrLoadData(ExtendedWorld.class, TAG);
+		if (data == null) {
+			data = new ExtendedWorld(TAG);
+			world.getMapStorage().setData(TAG, data);
+		}
+		return data;
 	}
 	
 	@Override
@@ -40,12 +38,14 @@ public class ExtendedWorld extends WorldSavedData {
 		for (int i = 0; i < storedPoppetShelves.tagCount(); i++) this.storedPoppetShelves.add(storedPoppetShelves.getCompoundTagAt(i));
 	}
 	
-	public static ExtendedWorld get(World world) {
-		ExtendedWorld data = (ExtendedWorld) world.getMapStorage().getOrLoadData(ExtendedWorld.class, TAG);
-		if (data == null) {
-			data = new ExtendedWorld(TAG);
-			world.getMapStorage().setData(TAG, data);
-		}
-		return data;
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		NBTTagList storedCauldrons = new NBTTagList();
+		NBTTagList storedPoppetShelves = new NBTTagList();
+		for (NBTTagCompound cauldron : this.storedCauldrons) storedCauldrons.appendTag(cauldron);
+		for (NBTTagCompound poppet : this.storedPoppetShelves) storedPoppetShelves.appendTag(poppet);
+		nbt.setTag("storedCauldrons", storedCauldrons);
+		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
+		return nbt;
 	}
 }

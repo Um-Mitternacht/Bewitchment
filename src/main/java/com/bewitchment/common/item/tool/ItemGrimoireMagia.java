@@ -25,22 +25,12 @@ public class ItemGrimoireMagia extends Item {
 		Util.registerItem(this, "grimoire_magia", Collections.singletonList(s -> s.getDisplayName().equalsIgnoreCase("The Grimoire of Alice") || s.getDisplayName().equalsIgnoreCase("Grimoire of Alice")));
 	}
 	
-	@Override
-	public boolean showDurabilityBar(ItemStack stack) {
-		if (stack.hasTagCompound()) {
-			NBTTagCompound tag = stack.getTagCompound();
-			return tag.getInteger("amount") < tag.getInteger("maxAmount");
-		}
-		return super.showDurabilityBar(stack);
-	}
-	
-	@Override
-	public double getDurabilityForDisplay(ItemStack stack) {
-		if (stack.hasTagCompound()) {
-			NBTTagCompound tag = stack.getTagCompound();
-			return 1 - (double) tag.getInteger("amount") / tag.getInteger("maxAmount");
-		}
-		return super.getDurabilityForDisplay(stack);
+	public static ItemStack create(int amount) {
+		ItemStack stack = new ItemStack(ModObjects.grimoire_magia);
+		stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setInteger("maxAmount", ModConfig.misc.maxGrimoirePower);
+		stack.getTagCompound().setInteger("amount", amount);
+		return stack;
 	}
 	
 	@Override
@@ -62,11 +52,21 @@ public class ItemGrimoireMagia extends Item {
 		}
 	}
 	
-	public static ItemStack create(int amount) {
-		ItemStack stack = new ItemStack(ModObjects.grimoire_magia);
-		stack.setTagCompound(new NBTTagCompound());
-		stack.getTagCompound().setInteger("maxAmount", ModConfig.misc.maxGrimoirePower);
-		stack.getTagCompound().setInteger("amount", amount);
-		return stack;
+	@Override
+	public boolean showDurabilityBar(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return tag.getInteger("amount") < tag.getInteger("maxAmount");
+		}
+		return super.showDurabilityBar(stack);
+	}
+	
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return 1 - (double) tag.getInteger("amount") / tag.getInteger("maxAmount");
+		}
+		return super.getDurabilityForDisplay(stack);
 	}
 }

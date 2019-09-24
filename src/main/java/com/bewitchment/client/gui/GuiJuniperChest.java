@@ -28,16 +28,16 @@ public class GuiJuniperChest extends GuiContainer {
 	}
 	
 	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		this.fontRenderer.drawString(I18n.format(ModObjects.juniper_chest.getTranslationKey() + ".name"), 8, 6, 0x404040);
+		fontRenderer.drawString(inventory.getDisplayName().getUnformattedText(), 7, ySize - 93, 0x404040);
+	}
+	
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		mc.getTextureManager().bindTexture(TEX);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-	}
-	
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRenderer.drawString(I18n.format(ModObjects.juniper_chest.getTranslationKey() + ".name"), 8, 6, 0x404040);
-		fontRenderer.drawString(inventory.getDisplayName().getUnformattedText(), 7, ySize - 93, 0x404040);
 	}
 }

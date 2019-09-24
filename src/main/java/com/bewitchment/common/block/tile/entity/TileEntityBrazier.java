@@ -117,25 +117,6 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-		return super.hasCapability(capability, facing);
-	}
-	
-	@Nullable
-	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.handler;
-		return super.getCapability(capability, facing);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
-		NBTTagCompound tag = packet.getNbtCompound();
-		readUpdateTag(tag);
-	}
-	
-	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeUpdateTag(tag);
@@ -147,6 +128,25 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
 		return tag;
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
+		NBTTagCompound tag = packet.getNbtCompound();
+		readUpdateTag(tag);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
+		return super.hasCapability(capability, facing);
+	}
+	
+	@Nullable
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.handler;
+		return super.getCapability(capability, facing);
 	}
 	
 	private void writeUpdateTag(NBTTagCompound tag) {

@@ -37,8 +37,12 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
-	public BlockPlanks.EnumType getWoodType(int meta) {
-		return null;
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		if (this == ModObjects.cypress_leaves) return Item.getItemFromBlock(ModObjects.cypress_sapling);
+		if (this == ModObjects.juniper_leaves) return Item.getItemFromBlock(ModObjects.juniper_sapling);
+		if (this == ModObjects.elder_leaves) return Item.getItemFromBlock(ModObjects.elder_sapling);
+		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
+		return super.getItemDropped(state, rand, fortune);
 	}
 	
 	@Override
@@ -48,21 +52,8 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile, ItemStack stack) {
-		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
-			player.addStat(StatList.getBlockStats(this));
-			spawnAsEntity(world, pos, new ItemStack(this));
-		}
-		else super.harvestBlock(world, player, pos, state, tile, stack);
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		if (this == ModObjects.cypress_leaves) return Item.getItemFromBlock(ModObjects.cypress_sapling);
-		if (this == ModObjects.juniper_leaves) return Item.getItemFromBlock(ModObjects.juniper_sapling);
-		if (this == ModObjects.elder_leaves) return Item.getItemFromBlock(ModObjects.elder_sapling);
-		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
-		return super.getItemDropped(state, rand, fortune);
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
 	}
 	
 	@Override
@@ -76,6 +67,15 @@ public class ModBlockLeaves extends BlockLeaves {
 		meta += (state.getValue(DECAYABLE) ? 1 : 0);
 		meta += (state.getValue(CHECK_DECAY) ? 2 : 1);
 		return meta;
+	}
+	
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile, ItemStack stack) {
+		if (!world.isRemote && stack.getItem() instanceof ItemShears) {
+			player.addStat(StatList.getBlockStats(this));
+			spawnAsEntity(world, pos, new ItemStack(this));
+		}
+		else super.harvestBlock(world, player, pos, state, tile, stack);
 	}
 	
 	@Override

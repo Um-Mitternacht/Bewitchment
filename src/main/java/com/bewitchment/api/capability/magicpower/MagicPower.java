@@ -30,43 +30,6 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		maxAmount = ModConfig.misc.maxGrimoirePower;
 	}
 	
-	@Nullable
-	@Override
-	public NBTBase writeNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face) {
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("amount", instance.amount);
-		tag.setInteger("maxAmount", instance.maxAmount);
-		return tag;
-	}
-	
-	@Override
-	public void readNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face, NBTBase nbt) {
-		NBTTagCompound tag = (NBTTagCompound) nbt;
-		instance.amount = tag.getInteger("amount");
-		instance.maxAmount = tag.getInteger("maxAmount");
-	}
-	
-	@Nullable
-	@Override
-	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
-		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
-	}
-	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
-	}
-	
-	@Override
-	public NBTTagCompound serializeNBT() {
-		return (NBTTagCompound) CAPABILITY.getStorage().writeNBT(CAPABILITY, this, null);
-	}
-	
-	@Override
-	public void deserializeNBT(NBTTagCompound tag) {
-		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
-	}
-	
 	public static boolean attemptDrain(TileEntity tile, EntityPlayer player, int amount) {
 		World world = null;
 		if (player != null) world = player.world;
@@ -101,6 +64,43 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 	public static boolean transfer(MagicPower to, MagicPower from, int amount, float loss) {
 		if (to.amount - amount >= 0 && from.amount < from.maxAmount) return to.drain(amount) && from.fill((int) (amount * loss));
 		return false;
+	}
+	
+	@Nullable
+	@Override
+	public NBTBase writeNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face) {
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("amount", instance.amount);
+		tag.setInteger("maxAmount", instance.maxAmount);
+		return tag;
+	}
+	
+	@Override
+	public void readNBT(Capability<MagicPower> capability, MagicPower instance, EnumFacing face, NBTBase nbt) {
+		NBTTagCompound tag = (NBTTagCompound) nbt;
+		instance.amount = tag.getInteger("amount");
+		instance.maxAmount = tag.getInteger("maxAmount");
+	}
+	
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
+		return getCapability(capability, null) != null;
+	}
+	
+	@Nullable
+	@Override
+	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
+		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
+	}
+	
+	@Override
+	public NBTTagCompound serializeNBT() {
+		return (NBTTagCompound) CAPABILITY.getStorage().writeNBT(CAPABILITY, this, null);
+	}
+	
+	@Override
+	public void deserializeNBT(NBTTagCompound tag) {
+		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
 	}
 	
 	public boolean drain(int amount) {

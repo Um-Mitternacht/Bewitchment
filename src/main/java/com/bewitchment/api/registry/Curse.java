@@ -26,14 +26,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.condition = condition;
 	}
 	
-	public final boolean matches(ItemStackHandler input) {
-		return Util.areISListsEqual(this.input, input);
-	}
-	
-	private boolean isValid(EntityPlayer player) {
-		return player != null;
-	}
-	
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -43,6 +35,14 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 			}
 		}
 		return null;
+	}
+	
+	public final boolean matches(ItemStackHandler input) {
+		return Util.areISListsEqual(this.input, input);
+	}
+	
+	private boolean isValid(EntityPlayer player) {
+		return player != null;
 	}
 	
 	public boolean apply(@Nullable EntityPlayer player, int days) {

@@ -37,22 +37,8 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
-			applyEnchantments(this, entity);
-			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0, false, false));
-		}
-		return super.attackEntityAsMob(entity);
-	}
-	
-	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
 	}
 	
 	@Override
@@ -78,36 +64,6 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 6;
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (milkTimer > 0) milkTimer--;
-	}
-	
-	@Override
-	public void onStruckByLightning(EntityLightningBolt bolt) {
-		Util.convertEntity(this, new EntityFeuerwurm(world));
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
-	}
-	
-	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -128,6 +84,15 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
+	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		tag.setInteger("milkTimer", milkTimer);
 		super.writeEntityToNBT(tag);
@@ -137,5 +102,40 @@ public class EntitySnake extends ModEntityTameable {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		milkTimer = tag.getInteger("milkTimer");
 		super.readEntityFromNBT(tag);
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
+			applyEnchantments(this, entity);
+			if (entity instanceof EntityLivingBase) ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0, false, false));
+		}
+		return super.attackEntityAsMob(entity);
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (milkTimer > 0) milkTimer--;
+	}
+	
+	@Override
+	public void onStruckByLightning(EntityLightningBolt bolt) {
+		Util.convertEntity(this, new EntityFeuerwurm(world));
 	}
 }

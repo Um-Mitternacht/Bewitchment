@@ -43,21 +43,10 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
-	}
-	
-	@Override
 	public EntityAgeable createChild(EntityAgeable other) {
 		EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
 		entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
 		return entity;
-	}
-	
-	@Override
-	public boolean canMateWith(EntityAnimal other) {
-		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
-		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
 	}
 	
 	@Override
@@ -68,6 +57,9 @@ public abstract class ModEntityTameable extends EntityTameable {
 		if (flag && aiSit != null) aiSit.setSitting(false);
 		return flag;
 	}
+	
+	@Override
+	public abstract boolean isBreedingItem(ItemStack stack);
 	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -99,9 +91,25 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	public void setTamed(boolean tamed) {
-		super.setTamed(tamed);
-		boostHealth(tamed);
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
+		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
+	}
+	
+	@Override
+	protected void initEntityAI() {
+		aiSit = new EntityAISit(this);
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		boostHealth(isTamed());
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
 	}
 	
 	@Override
@@ -111,20 +119,9 @@ public abstract class ModEntityTameable extends EntityTameable {
 	}
 	
 	@Override
-	protected void initEntityAI() {
-		aiSit = new EntityAISit(this);
-	}
-	
-	@Override
 	protected void entityInit() {
 		super.entityInit();
 		dataManager.register(SKIN, 0);
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		boostHealth(isTamed());
 	}
 	
 	@Override
@@ -140,12 +137,15 @@ public abstract class ModEntityTameable extends EntityTameable {
 		super.readEntityFromNBT(tag);
 	}
 	
+	@Override
+	public void setTamed(boolean tamed) {
+		super.setTamed(tamed);
+		boostHealth(tamed);
+	}
+	
 	protected int getSkinTypes() {
 		return 1;
 	}
-	
-	@Override
-	public abstract boolean isBreedingItem(ItemStack stack);
 	
 	protected void boostHealth(boolean tamed) {
 		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);

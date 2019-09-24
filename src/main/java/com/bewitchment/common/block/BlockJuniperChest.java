@@ -41,19 +41,8 @@ public class BlockJuniperChest extends ModBlockContainer {
 	}
 	
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return BOX;
-	}
-	
-	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasCustomBreakingProgress(IBlockState state) {
-		return true;
 	}
 	
 	@Override
@@ -76,20 +65,9 @@ public class BlockJuniperChest extends ModBlockContainer {
 	}
 	
 	@Override
-	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-		for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return super.getPlayerRelativeBlockHardness(state, player, world, pos);
-		return -1;
-	}
-	
-	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 		if (placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
-	}
-	
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
 	
 	@Override
@@ -103,7 +81,29 @@ public class BlockJuniperChest extends ModBlockContainer {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasCustomBreakingProgress(IBlockState state) {
+		return true;
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return BOX;
+	}
+	
+	@Override
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+		for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return super.getPlayerRelativeBlockHardness(state, player, world, pos);
+		return -1;
+	}
+	
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, BlockHorizontal.FACING);
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
 }
