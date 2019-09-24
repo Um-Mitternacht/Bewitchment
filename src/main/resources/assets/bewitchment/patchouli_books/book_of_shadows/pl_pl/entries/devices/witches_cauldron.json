@@ -39,27 +39,27 @@
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:iron_gall_ink",
-	  "text": "A cruelty-free substitute for Ink Sacs. Some claim it is vital in the creation of demonic contracts…"
+	  "text": "Substytut atramentu wolny od okrucieństwa. Niektórzy twierdzą, iż jest kluczowy w tworzeniu demonicznych kontraktów…"
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:catechu_brown",
-	  "text": "A wood-derived alternative to cocoa beans for brown dye."
+	  "text": "Drewnopochodny substytut do kakao jako brązowy barwnik."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:banner_pattern_removal",
-	  "text": "A more mundane use of the cauldron is to clean dye from banners."
+	  "text": "Bardziej przyziemny użytek Kotła jest oczyszczanie sztandarów od barwników."
 	},
 	{
 	  "type": "text",
-	  "title": "Teleporting",
-	  "text": "A cauldron with Dimensional Sand thrown into it allows a user standing inside to teleport to other cauldrons that have been named via Name Tag by saying its name in chat."
+	  "title": "Teleportacja",
+	  "text": "Kocioł z wrzóconym wymiarowym piaskiem pozwala czarownicy stojącej w środku teleportować się do innych Kotłów które zostały nazwane używając znacznika przez mówienie ich nazwy w chacie."
 	},
 	{
 	  "type": "text",
-	  "title": "Disposal",
-	  "text": "A cauldron that contains Lava will destroy any item thrown into it, as well as set any living entities on fire if they stand in it."
+	  "title": "Niszczenie",
+	  "text": "Kocioł napełniony Lawą zniszczy każdą wrzóconą rzecz, oraz podpali wszelkie żywe istoty które na nim staną."
 	},
 	{
 	  "type": "text",
