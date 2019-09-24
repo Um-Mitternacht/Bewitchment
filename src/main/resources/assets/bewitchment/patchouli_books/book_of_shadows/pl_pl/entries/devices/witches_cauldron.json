@@ -5,8 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "Najczęściej używany do tworzenia zawansowanych eliksirów których proste Statywy Alchemiczne nie są w stanie storzyć"
-	  "text": "Used most commonly for creating advanced brews that mundane Brewing Stands simply can’t match. Certain other items can be boiled down and combined in the cauldron to create new ones. Cauldrons require magic energy and need a fire under them to work. At any point, Wood Ash can be thrown in to clear the cauldron."
+	  "text": "Najczęściej używany do tworzenia zawansowanych eliksirów do których proste Statywy Alchemiczne nie są w stanie dorównać. Niektóre inne rzeczy mogą być ugotowane w Kociole by stowrzyć nowe. Kotły potrzebują Magiczną Energję oraz płomień pod nimi by funkcjonować. Popiół Drzewny może być wrzócony w każdym momencie żeby oczyścić Kocioł."
 	},
 	{
 	  "type": "crafting",
