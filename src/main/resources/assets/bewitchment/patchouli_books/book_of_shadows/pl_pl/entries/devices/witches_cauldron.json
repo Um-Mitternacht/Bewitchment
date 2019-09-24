@@ -14,27 +14,27 @@
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:filled_goblet",
-	  "text": "When filled with this magical mixture, the Goblet will give more power to altars, as well as emit a redstone signal."
+	  "text": "Napełniony tą magiczną miksturą, Kielich da więcej mocy Ołtarzowi, i będzię wydawał sygnał redstonowy."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:embergrass",
-	  "text": "An alchemically created plant. It emits burning cinders that ignite those who touch it. This plant will also spread, making it great for base defence."
+	  "text": "Alchemicznie stworzona roślina. Wydziela palący się popiół który podpala tych, którzy ją dotkneli. Ta roślina będzię się rozprzestrzeniać jak chwast, więc jest dobra do obrony bazy."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:torchwood",
-	  "text": "An alchemically created plant. It emits light from the bulb at the end of its woody stem. Just as natural plants do, the Torchwood spreads."
+	  "text": "Alchemicznie stworzona roślina. Emituję światło z cebulki na końcu jej drewnianej łodygi. Tak jak naturalne rośliny, rozprzestrzenia się."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:tallow",
-	  "text": "Boiled fat of the dead. Used for candles and more."
+	  "text": "Gotowany tłuszcz zmarłych. Używany do świec i innych rzeczy."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
 	  "recipe": "bewitchment:slimeball",
-	  "text": "Sticky."
+	  "text": "Lepka."
 	},
 	{
 	  "type": "bewitchment:cauldron_recipe",
