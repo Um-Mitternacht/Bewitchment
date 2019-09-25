@@ -143,27 +143,27 @@
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:slowness",
-	  "text": "Weakens the target's legs, forcing them to move slower"
+	  "text": "Osłabia nogi celu, sprawiając że wolniej się porusza."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:haste",
-	  "text": "Strengthens the target's arms, allowing them to mine and attack faster"
+	  "text": "Wzmacnia ręcę celu, sprawiając że szybciej może kopać i uderzać."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:mining_fatigue",
-	  "text": "Weakens the target's arms, forcing them to mine and attack slower"
+	  "text": "Osłabia nogi celu, sprawiając że wolniej będzie kopać i uderzać."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:luck",
-	  "text": "Gives the target a better chance at obtaining good loot"
+	  "text": "Daję celowi większą szansę zdobycia lepszego łupu."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:unluck",
-	  "text": "Gives the target a worse chance at obtaining good loot"
+	  "text": "Daję celowi słabszą szansę zdobycia lepszego łupu."
 	},
 	{
 	  "type": "bewitchment:brew",
