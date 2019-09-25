@@ -68,78 +68,77 @@
 	},
 	{
 	  "type": "text",
-	  "text": "Dodatek redstonu wydłuższy trwanie efektu eliksiru, do pewnego stopnia. Jasnopył ma ten sam efekt na potęge czaru, a pióro kruka zapobiega pojawianiu się cząsteczek. Proch również może być wrzócony aby stworzyć "
-	  "text": "Including redstone will increase the duration of the brew, up to a certain amount. Glowstone has the same effect on potency, and a Raven's Feather will prevent particles from appearing. Gunpowder may also be thrown in to create a splash brew, and if an Owlet's Wing is thrown in as well, it becomes a lingering brew."
+	  "text": "Dodatek redstonu wydłuższy trwanie efektu eliksiru, do pewnego stopnia. Jasnopył ma ten sam efekt na potęge czaru, a pióro kruka zapobiega pojawianiu się cząsteczek. Proch również może być wrzócony aby stworzyć miksturę miotaną, a jak także zostanie wrzócone skrzydełko sowy, to eliksir stanie się trwale miotany."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_health",
-	  "text": "Heals the target if they are alive, or damages them if undead"
+	  "text": "Uzdrawia cel jak jest żywy, a krzywdzi nieumarłych."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:instant_damage",
-	  "text": "Damages the target if they are alive, or heals them if undead"
+	  "text": "Krzywdzi cel jak jest żywy, a uzdrawia nieumarłych."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:regeneration",
-	  "text": "Grants regeneration if the target is alive, does nothing otherwise"
+	  "text": "Regeneruję żywe cele, na inne nie ma efektu."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:poison",
-	  "text": "Poisons the target if they are alive, does nothing otherwise"
+	  "text": "Zatruwa cel jak jest żywy, inaczej nie ma efektu."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:wither",
-	  "text": "Similar to poison but the capacity to kill, and damages undead as well"
+	  "text": "Tak jak trucizna ale ma zdolność zabić, również krzywdzi nieumarłe cele."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:night_vision",
-	  "text": "Allows the target to see clearly in low light areas. The Eye of Old will give this in addition to Water Breathing"
+	  "text": "Pozwala celowi widzieć wyrażnie w obszarach słabego oświetlenia. Starożytne Oko da ten efekt oprócz Oddychania Pod Wodą."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:blindness",
-	  "text": "Obscures the target's vision, and prevents them from sprinting"
+	  "text": "Przyciemnia wzrok celu, i uniemożliwia go do biegania."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:strength",
-	  "text": "Strengthens the target's arms, allowing them to deal more melee damage"
+	  "text": "Wzmacnia ręcę celu, pozwalając mu zadać więcej szkód w walce."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:weakness",
-	  "text": "Weakens the target's arms, forcing them to deal less melee damage"
+	  "text": "Osłabia ręcę celu, zmuszając je do zadawania mniej szkód w walce."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:resistance",
-	  "text": "Toughens the target's skin to receive less damage from non magical sources"
+	  "text": "Utwardza skóre celu, aby ponosiła mniej szkód od ataków pochodzenia nie magicznego."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:fire_resistance",
-	  "text": "Grants the target immunity to fire and lava"
+	  "text": "Udziela cel odporny na ogień i lawę."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:absorption",
-	  "text": "Gives a temporarily boost to health"
+	  "text": "Daję tymczasowe doładowanie zdrowia."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:jump_boost",
-	  "text": "Strengthens the target's legs, allowing them to jump higher"
+	  "text": "Wzmacnia nogi celu, pozwalając im wyżej skakać."
 	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:speed",
-	  "text": "Strengthens the target's legs, allowing them to move faster"
+	  "text": "Wzmacnia nogi celu, pozwalając im szybciej się poruszać."
 	},
 	{
 	  "type": "bewitchment:brew",
