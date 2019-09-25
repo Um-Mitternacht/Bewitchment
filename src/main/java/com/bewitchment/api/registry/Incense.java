@@ -27,7 +27,7 @@ public class Incense extends IForgeRegistryEntry.Impl<Incense> {
 	}
 	
 	public void onUpdate() {
-
+	
 	}
 	
 }

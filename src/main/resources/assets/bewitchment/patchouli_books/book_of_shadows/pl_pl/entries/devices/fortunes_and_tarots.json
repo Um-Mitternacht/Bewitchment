@@ -14,7 +14,7 @@
 	{
 	  "type": "text",
 	  "title": "Szklana Kula",
-    "text": "Szklane kule są ogólnie dość magiczne. Najczęściej są używane do przepowiadnania przyszłości i rozdawanie fortun, ale niektórzy twierdzą iż mogą być używane do innych czynów, jak zdalny podgląd. Czarownice które to twierdzą zwykle nie umieją tego udowodnić…"
+	  "text": "Szklane kule są ogólnie dość magiczne. Najczęściej są używane do przepowiadnania przyszłości i rozdawanie fortun, ale niektórzy twierdzą iż mogą być używane do innych czynów, jak zdalny podgląd. Czarownice które to twierdzą zwykle nie umieją tego udowodnić…"
 	},
 	{
 	  "type": "bewitchment:ritual",
@@ -23,7 +23,7 @@
 	{
 	  "type": "text",
 	  "title": "Karty Tarota",
-    	  "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które posiadają w ujawnianiu sekretów i przepowiadania przyszłości"
+	  "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które posiadają w ujawnianiu sekretów i przepowiadania przyszłości"
 	},
 	{
 	  "type": "bewitchment:ritual",

@@ -32,7 +32,7 @@ import net.minecraft.world.World;
 public class EntityRaven extends ModEntityTameable {
 	protected static final DataParameter<Integer> PECK_TIME = EntityDataManager.<Integer>createKey(EntityRaven.class, DataSerializers.VARINT);
 	protected int shearTimer;
-
+	
 	public EntityRaven(World world) {
 		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, ModObjects.silver_nugget);
 	}

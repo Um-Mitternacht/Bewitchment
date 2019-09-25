@@ -6,7 +6,7 @@
   "pages": [
 	{
 	  "type": "text",
-    	  "text": "Magiczna Energia, lub ME, istnieje we wszystkich formach życia, od najmniejszej sadzonki po wielkiego Smoka na Końcu Czasu. Inni mogą zwać to “Vis” lub “Magan” albo coś podobnego, ale w samej istocie to jet wszystko jedno i to samo - surowa energia życia i natury. Flora musi być posadzona blisko Ołtarzu by produkować ME, gdyż ME płynie swobodnie przez roślinny i fungi."
+	  "text": "Magiczna Energia, lub ME, istnieje we wszystkich formach życia, od najmniejszej sadzonki po wielkiego Smoka na Końcu Czasu. Inni mogą zwać to “Vis” lub “Magan” albo coś podobnego, ale w samej istocie to jet wszystko jedno i to samo - surowa energia życia i natury. Flora musi być posadzona blisko Ołtarzu by produkować ME, gdyż ME płynie swobodnie przez roślinny i fungi."
 	},
 	{
 	  "type": "text",
@@ -43,7 +43,7 @@
 		  ]
 		]
 	  },
-	   "text": "Bloki wokół Ołtarza nie mogą być innymi blokami Ołtarzowymi"
+	  "text": "Bloki wokół Ołtarza nie mogą być innymi blokami Ołtarzowymi"
 	}
   ]
 }
