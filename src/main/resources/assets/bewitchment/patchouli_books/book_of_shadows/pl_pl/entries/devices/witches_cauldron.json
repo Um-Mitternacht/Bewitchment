@@ -64,10 +64,11 @@
 	{
 	  "type": "text",
 	  "title": "Brews",
-	  "text": "In order to designate cauldron tomfoolery as a brew, a Mandrake Root must be thrown in first before any other reagents. After that, throw in the other reagents you wish, however the more you add, the more expensive the brew will be, ME-wise."
+	  "text": "Aby wyznaczyć wygłupstwo w Kotle jako eliksir, Korzeń Mandragory musi być wrzócony przed wszelkimi innymi reagentami. Po tym , wrzóć resztę reagentów. Tym więcej dodasz, tym droższy stanie się eliksir, pod względem ME."
 	},
 	{
 	  "type": "text",
+	  "text": "Dodatek redstonu wydłuższy trwanie efektu eliksiru, do pewnego stopnia. Jasno"
 	  "text": "Including redstone will increase the duration of the brew, up to a certain amount. Glowstone has the same effect on potency, and a Raven's Feather will prevent particles from appearing. Gunpowder may also be thrown in to create a splash brew, and if an Owlet's Wing is thrown in as well, it becomes a lingering brew."
 	},
 	{
