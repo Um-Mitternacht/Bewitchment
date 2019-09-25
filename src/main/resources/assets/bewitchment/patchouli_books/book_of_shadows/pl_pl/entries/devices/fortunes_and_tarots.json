@@ -1,0 +1,235 @@
+{
+  "name": "Fortunes and Tarots",
+  "category": "devices",
+  "icon": "bewitchment:crystal_ball",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Wróżenie wszelkiego rodzaju"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "Szklana Kula",
+    "text": "Szklane kule są ogólnie dość magiczne. Najczęściej są używane do przepowiadnania przyszłości i rozdawanie fortun, ale niektórzy twierdzą iż mogą być używane do innych czynów, jak zdalny podgląd. Czarownice które to twierdzą zwykle nie umieją tego udowodnić…"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:crystal_ball"
+	},
+	{
+	  "type": "text",
+	  "title": "Karty Tarota",
+    	  "text": "Oryginalnie proste karty do gry, lecz wielu odkryło magiczną moc które posiadają w ujawnianiu sekretów i przepowiadania przyszłości"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_table"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_cards"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/00player.png"
+	  ],
+	  "border": true,
+	  "title": "Gracz",
+	  "text": "Gracz jest czarownikiem"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/01witch.png"
+	  ],
+	  "border": true,
+	  "title": "Czarownik",
+	  "text": "Gracz posiada czary, i to ile"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/02enderman.png"
+	  ],
+	  "border": true,
+	  "title": "Enderman",
+	  "text": "Gracz ma infuzję Endu"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/03cat.png"
+	  ],
+	  "border": true,
+	  "title": "Kot",
+	  "text": "Gracz ma infuzje"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
+	  ],
+	  "border": true,
+	  "title": "Strażnik",
+	  "text": "Gracz zabił bossa, albo wielu"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
+	  ],
+	  "border": true,
+	  "title": "Iluzjoner",
+	  "text": "Gracz jest pod efektem eliksiru, najwyższego poziomu"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/06companions.png"
+	  ],
+	  "border": true,
+	  "title": "Kompani",
+	  "text": "Gracz ma chowańca, odwrócone jeśli nie jest blisko"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
+	  ],
+	  "border": true,
+	  "title": "Wierzchowce",
+	  "text": "Gracz ma ulubieńca, a ilość"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/08silver_sword.png"
+	  ],
+	  "border": true,
+	  "title": "Srebrny Miecz",
+	  "text": "Jak odwrócone, to gracz jest łowcą czarownic"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/09evoker.png"
+	  ],
+	  "border": true,
+	  "title": "Przywoływacz",
+	  "text": "Jak odwrócone, to gracz jest widmem"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
+	  ],
+	  "border": true,
+	  "title": "Diamenty",
+	  "text": "Gracz jest pod efektem fortuny, odwrócone jak fortuna jest zła"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/11iron_golem.png"
+	  ],
+	  "border": true,
+	  "title": "Iron Golem",
+	  "text": "Gracz ma infuzje świata"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/12zombie.png"
+	  ],
+	  "border": true,
+	  "title": "Zombi",
+	  "text": "Gracz ma conajmniej jedną lalkę, a ilość"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/13wither_skeleton.png"
+	  ],
+	  "border": true,
+	  "title": "Witherowy Szkielet",
+	  "text": "Gracz ma infuzje netheru"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/14villager.png"
+	  ],
+	  "border": true,
+	  "title": "Osadnik",
+	  "text": "Gracz jest w sabacie, a ilość członków"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/15wither.png"
+	  ],
+	  "border": true,
+	  "title": "Wither",
+	  "text": "Gracz ma kontrakt z widmem, a ilość kontaktów"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
+	  ],
+	  "border": true,
+	  "title": "Smok Endu",
+	  "text": "Gracz zabił conajmniej sto istot, a ilość set"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/17star.png"
+	  ],
+	  "border": true,
+	  "title": "Gwiazda",
+	  "text": "Gracz ma infuzję snu"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/18moon.png"
+	  ],
+	  "border": true,
+	  "title": "Księżyc",
+	  "text": "Gracz jest vampirem, lub wilkołakiem, jak odwrócone"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
+	  ],
+	  "border": true,
+	  "title": "Słońce",
+	  "text": "Gracz jest błogosławiony, lub przeklęty jak odwrócone"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
+	  ],
+	  "border": true,
+	  "title": "Twierdza",
+	  "text": "Gracz wywołał rytuał, a ilość"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/21world.png"
+	  ],
+	  "border": true,
+	  "title": "Świat",
+	  "text": "Gracz zeksplorował co najmniej sto chunków, a ilość set"
+	}
+  ]
+}

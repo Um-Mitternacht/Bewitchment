@@ -1,0 +1,49 @@
+{
+  "name": "Ołtarz Czarownicy",
+  "category": "devices",
+  "icon": "bewitchment:stone_witches_altar",
+  "priority": true,
+  "pages": [
+	{
+	  "type": "text",
+    	  "text": "Magiczna Energia, lub ME, istnieje we wszystkich formach życia, od najmniejszej sadzonki po wielkiego Smoka na Końcu Czasu. Inni mogą zwać to “Vis” lub “Magan” albo coś podobnego, ale w samej istocie to jet wszystko jedno i to samo - surowa energia życia i natury. Flora musi być posadzona blisko Ołtarzu by produkować ME, gdyż ME płynie swobodnie przez roślinny i fungi."
+	},
+	{
+	  "type": "text",
+	  "text": "Podczas gdy ME też istnieje w zwierzęciach, nie może być z nich wykorzystany, gdyż ich dusza uniemożliwia wyjścia z ciała dopóki ta dusza w nich siedzi. Jakkolwiek, niektóre części zwierząt (i ludzi), rezonują ME, nie wystarczająco by być używanym przez Ołtarz, lecz wystarczająco by działać jako reagenty w rytuałach."
+	},
+	{
+	  "type": "text",
+	  "title": "Ołtarz",
+	  "text": "Serce układu każdej czarownicy, Ołtarz może wykorzystać moc lokalnej flory w formie której inne użądzenia mogą użyć, większość użądzeń muszą być ustawionę w pobliżu Ołtarza by były użyteczne. Ołtarze mogą być zrobione z wielu materiałów, od Kamienia po Cegłę Netherową, i może być zfinalizowanę przez umieszczenie dywanu jakiegokolwiek koloru na czóbku. Ołtarz może też być uwydatniony używając specjalnych rzeczy. Informacja o modyfikatorach znajduję się na następnych stronach."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Konstruowanie Ołtarza",
+	  "recipe": "bewitchment:stone_witches_altar"
+	},
+	{
+	  "type": "text",
+	  "title": "Modyfikatory Ołtarza",
+	  "text": "Kubki (kielichy, butelki, doniczki) lekko powiększają i przybytek i mnożnik. Miecze (athame, boline, i inne ostrza) powiększają mnożnik. Pręty (pochodnie, świece, słupki endu) powiększają pojemność Ołtarza. Pentagramy (czaszki, klejnoty, pentagramy) powiekszają przybytek."
+	},
+	{
+	  "type": "multiblock",
+	  "name": "Jak Zbudować",
+	  "multiblock": {
+		"mapping": {
+		  "A": "bewitchment:stone_witches_altar[type=0]",
+		  "0": "bewitchment:stone_witches_altar[type=0]"
+		},
+		"pattern": [
+		  [
+			"AA",
+			"0A",
+			"AA"
+		  ]
+		]
+	  },
+	   "text": "Bloki wokół Ołtarza nie mogą być innymi blokami Ołtarzowymi"
+	}
+  ]
+}

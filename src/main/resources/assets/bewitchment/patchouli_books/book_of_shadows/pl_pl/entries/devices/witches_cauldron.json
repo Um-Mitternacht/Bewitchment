@@ -1,0 +1,349 @@
+{
+  "name": "Kocioł Czarownicy",
+  "category": "devices",
+  "icon": "bewitchment:witches_cauldron",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Najczęściej używany do tworzenia zawansowanych eliksirów do których proste Statywy Alchemiczne nie są w stanie dorównać. Niektóre inne rzeczy mogą być ugotowane w Kociole by stowrzyć nowe. Kotły potrzebują Magiczną Energję oraz płomień pod nimi by funkcjonować. Popiół Drzewny może być wrzócony w każdym momencie żeby oczyścić Kocioł."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:witches_cauldron"
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:filled_goblet",
+	  "text": "Napełniony tą magiczną miksturą, Kielich da więcej mocy Ołtarzowi, i będzię wydawał sygnał redstonowy."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:embergrass",
+	  "text": "Alchemicznie stworzona roślina. Wydziela palący się popiół który podpala tych, którzy ją dotkneli. Ta roślina będzię się rozprzestrzeniać jak chwast, więc jest dobra do obrony bazy."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:torchwood",
+	  "text": "Alchemicznie stworzona roślina. Emituję światło z cebulki na końcu jej drewnianej łodygi. Tak jak naturalne rośliny, rozprzestrzenia się."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:tallow",
+	  "text": "Gotowany tłuszcz zmarłych. Używany do świec i innych rzeczy."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:slimeball",
+	  "text": "Lepka."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:iron_gall_ink",
+	  "text": "Substytut atramentu wolny od okrucieństwa. Niektórzy twierdzą, iż jest kluczowy w tworzeniu demonicznych kontraktów…"
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:catechu_brown",
+	  "text": "Drewnopochodny substytut do kakao jako brązowy barwnik."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:banner_pattern_removal",
+	  "text": "Bardziej przyziemny użytek Kotła jest oczyszczanie sztandarów od barwników."
+	},
+	{
+	  "type": "text",
+	  "title": "Teleportacja",
+	  "text": "Kocioł z wrzóconym wymiarowym piaskiem pozwala czarownicy stojącej w środku teleportować się do innych Kotłów które zostały nazwane używając znacznika przez mówienie ich nazwy w chacie."
+	},
+	{
+	  "type": "text",
+	  "title": "Niszczenie",
+	  "text": "Kocioł napełniony Lawą zniszczy każdą wrzóconą rzecz, oraz podpali wszelkie żywe istoty które na nim staną."
+	},
+	{
+	  "type": "text",
+	  "title": "Brews",
+	  "text": "Aby wyznaczyć wygłupstwo w Kotle jako eliksir, Korzeń Mandragory musi być wrzócony przed wszelkimi innymi reagentami. Po tym , wrzóć resztę reagentów. Tym więcej dodasz, tym droższy stanie się eliksir, pod względem ME."
+	},
+	{
+	  "type": "text",
+	  "text": "Dodatek redstonu wydłuższy trwanie efektu eliksiru, do pewnego stopnia. Jasnopył ma ten sam efekt na potęge czaru, a pióro kruka zapobiega pojawianiu się cząsteczek. Proch również może być wrzócony aby stworzyć miksturę miotaną, a jak także zostanie wrzócone skrzydełko sowy, to eliksir stanie się trwale miotany."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:instant_health",
+	  "text": "Uzdrawia cel jak jest żywy, a krzywdzi nieumarłych."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:instant_damage",
+	  "text": "Krzywdzi cel jak jest żywy, a uzdrawia nieumarłych."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:regeneration",
+	  "text": "Regeneruję żywe cele, na inne nie ma efektu."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:poison",
+	  "text": "Zatruwa cel jak jest żywy, inaczej nie ma efektu."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:wither",
+	  "text": "Tak jak trucizna ale ma zdolność zabić, również krzywdzi nieumarłe cele."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:night_vision",
+	  "text": "Pozwala celowi widzieć wyrażnie w obszarach słabego oświetlenia. Starożytne Oko da ten efekt oprócz Oddychania Pod Wodą."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:blindness",
+	  "text": "Przyciemnia wzrok celu, i uniemożliwia go do biegania."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:strength",
+	  "text": "Wzmacnia ręcę celu, pozwalając mu zadać więcej szkód w walce."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:weakness",
+	  "text": "Osłabia ręcę celu, zmuszając je do zadawania mniej szkód w walce."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:resistance",
+	  "text": "Utwardza skóre celu, aby ponosiła mniej szkód od ataków pochodzenia nie magicznego."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:fire_resistance",
+	  "text": "Udziela cel odporny na ogień i lawę."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:absorption",
+	  "text": "Daję tymczasowe doładowanie zdrowia."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:jump_boost",
+	  "text": "Wzmacnia nogi celu, pozwalając im wyżej skakać."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:speed",
+	  "text": "Wzmacnia nogi celu, pozwalając im szybciej się poruszać."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:slowness",
+	  "text": "Osłabia nogi celu, sprawiając że wolniej się porusza."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:haste",
+	  "text": "Wzmacnia ręcę celu, sprawiając że szybciej może kopać i uderzać."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:mining_fatigue",
+	  "text": "Osłabia nogi celu, sprawiając że wolniej będzie kopać i uderzać."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:luck",
+	  "text": "Daję celowi większą szansę zdobycia lepszego łupu."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:unluck",
+	  "text": "Daję celowi słabszą szansę zdobycia lepszego łupu."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:water_breathing",
+	  "text": "Causes the target the grow a temporary set of gills, allowing them to breath while submerged in liquid. The Eye of Old will give this in addition to Night Vision"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:invisibility",
+	  "text": "Causes all light to pass through the target, rendering them invisible. Does not apply to the target's armor and held items, however"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:hunger",
+	  "text": "Causes the target to think too much about their next meal"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:nausea",
+	  "text": "Disorients the target"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:glowing",
+	  "text": "Causes the target to glow"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:levitation",
+	  "text": "Slowly raises the target into the air"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:absence",
+	  "text": "Purges the target of all potion effects"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:purification",
+	  "text": "Purges the target of negative potion effects"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:corruption",
+	  "text": "Purges the target of positive potion effects"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:magic_resistance",
+	  "text": "Allows the target to take less damage from magical sources"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:magic_weakness",
+	  "text": "Makes the target take more damage from magical sources"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:hellworld",
+	  "text": "Converts the surrounding area into a Nether-like landscape, and sets some of the land and all entities unfortunate enough to be hit by the splash on fire"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:iceworld",
+	  "text": "Converts the surrounding area into a winter wonderland, and extinguishes fires both on the ground and on entities. Perpetual Ice, a form of ice that does not melt, may appear, and may be crafted into Embittered Bricks similar to Stone Bricks"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:rubedo",
+	  "text": "Converts sand and colored blocks to their red counterpart"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:citrinitas",
+	  "text": "Converts red sand and colored blocks to their yellow counterpart"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:desertification",
+	  "text": "Converts various and plants into their desert counterpart"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:fertility",
+	  "text": "Causes plants to grow and animals to breed"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:harvest",
+	  "text": "Instantly harvests and re-plants seeds, and may make leaves drop apples and cause pumpkins to grow"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:spore_cloud",
+	  "text": "Causes mushrooms, mycelium, ferns, and moss to grow. I hope you don’t have allergies…"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:blight",
+	  "text": "Kills plants and crops, and weakens living creatures"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:ruin",
+	  "text": "Causes various blocks to decay or break down"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:pesticide",
+	  "text": "Damages arthropods"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:arachnophobia",
+	  "text": "Wraps the target in spider webs, and summons hungry spiders to attack them"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:mending",
+	  "text": "Turn dirt and mycelium to grass, and cure zombie villagers"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:holy_water",
+	  "text": "Next only to the Holy Hand Grenade! Damages unholy creatures, such as undead or demons"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:wolfsbane",
+	  "text": "Damages wolves and other canids"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:deviants_decomposure",
+	  "text": "Damages outcasts of society, such as illagers or witches. Has no effect on witch hunters"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:sleeping",
+	  "text": "Blinds and slows the target, and may kill them if they are on low enough health"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:volatility",
+	  "text": "KABOOM. Explode upon taking damage. Does not affect blocks"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:grace",
+	  "text": "Causes the target to take less fall damage"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:shell_armor",
+	  "text": "Damages those who attack the target"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:deflection",
+	  "text": "Ting! Reflects arrows and other projectiles away from the target"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:revealing",
+	  "text": "Purges invisibility from hit entities"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:disrobing",
+	  "text": "Takes off the armour and baubles of a target"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:sinking",
+	  "text": "It becomes harder to jump, to the point of preventing jumping at stronger potencies"
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:cursed_leaps",
+	  "text": "Throws the target into the air, making them unable to act and then taking fall damage"
+	}
+  ]
+}
