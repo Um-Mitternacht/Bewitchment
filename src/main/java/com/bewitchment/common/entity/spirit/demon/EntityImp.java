@@ -16,6 +16,8 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityImp extends ModEntityMob {
@@ -33,9 +35,26 @@ public class EntityImp extends ModEntityMob {
 		experienceValue = 100;
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
+	}
+	
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (attackTimer > 0) attackTimer--;
+		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
 	}
 	
 	@Override
@@ -54,40 +73,9 @@ public class EntityImp extends ModEntityMob {
 		return flag;
 	}
 	
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (attackTimer > 0) attackTimer--;
-		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
-	}
-	
-	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
-	}
-	
 	@Override
 	public boolean getCanSpawnHere() {
 		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
-	}
-	
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 6;
 	}
 	
 	@Override
@@ -101,6 +89,19 @@ public class EntityImp extends ModEntityMob {
 	}
 	
 	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
@@ -110,5 +111,11 @@ public class EntityImp extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityHellhound || e instanceof EntityFeuerwurm));
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 }

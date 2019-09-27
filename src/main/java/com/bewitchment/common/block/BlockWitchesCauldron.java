@@ -45,20 +45,18 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
-		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
+		addCollisionBoxToList(pos, box, boxes, AABB_LEGS);
+		addCollisionBoxToList(pos, box, boxes, AABB_WALL_WEST);
+		addCollisionBoxToList(pos, box, boxes, AABB_WALL_NORTH);
+		addCollisionBoxToList(pos, box, boxes, AABB_WALL_EAST);
+		addCollisionBoxToList(pos, box, boxes, AABB_WALL_SOUTH);
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		NBTTagCompound cauldron = new NBTTagCompound();
-		cauldron.setLong("position", pos.toLong());
-		cauldron.setInteger("dimension", placer.dimension);
-		ExtendedWorld ext = ExtendedWorld.get(world);
-		ext.storedCauldrons.add(cauldron);
-		ext.markDirty();
-		super.onBlockPlacedBy(world, pos, state, placer, stack);
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 	
 	@Override
@@ -75,11 +73,13 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 	}
 	
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
-		addCollisionBoxToList(pos, box, boxes, AABB_LEGS);
-		addCollisionBoxToList(pos, box, boxes, AABB_WALL_WEST);
-		addCollisionBoxToList(pos, box, boxes, AABB_WALL_NORTH);
-		addCollisionBoxToList(pos, box, boxes, AABB_WALL_EAST);
-		addCollisionBoxToList(pos, box, boxes, AABB_WALL_SOUTH);
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		NBTTagCompound cauldron = new NBTTagCompound();
+		cauldron.setLong("position", pos.toLong());
+		cauldron.setInteger("dimension", placer.dimension);
+		ExtendedWorld ext = ExtendedWorld.get(world);
+		ext.storedCauldrons.add(cauldron);
+		ext.markDirty();
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}
 }

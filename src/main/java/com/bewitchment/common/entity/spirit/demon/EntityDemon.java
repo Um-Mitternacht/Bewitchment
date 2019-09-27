@@ -20,13 +20,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityDemon extends ModEntityMob implements IMerchant {
+	public int attackTimer = 0;
 	private MerchantRecipeList recipeList;
 	private EntityPlayer buyer;
 	private int careerID, careerLevel, wealth;
-	public int attackTimer = 0;
 	
 	public EntityDemon(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon" + world.rand.nextInt(4)));
@@ -41,8 +43,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	public void fall(float distance, float damageMultiplier) {
 	}
 	
 	@Override
@@ -51,28 +56,25 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (attackTimer > 0) attackTimer--;
+		if (ticksExisted % 20 == 0 && isInLava()) heal(6);
+	}
+	
+	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		return recipeList;
-	}
-	
-	@Override
-	public World getWorld() {
-		return world;
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 6;
 	}
 	
 	@Override
@@ -92,46 +94,8 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
-	}
-	
-	@Override
-	public void setRecipes(MerchantRecipeList recipeList) {
-		this.recipeList = recipeList;
-	}
-	
-	@Override
-	public void verifySellingItem(ItemStack stack) {
-	}
-	
-	@Override
-	public void useRecipe(MerchantRecipe recipe) {
-	}
-	
-	//	@Override
-	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
-	//		return super.onInitialSpawn(difficulty, data);
-	//	}
-	
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (attackTimer > 0) attackTimer--;
-		if (ticksExisted % 20 == 0 && isInLava()) heal(6);
-	}
-	
-	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
+	public World getWorld() {
+		return world;
 	}
 	
 	@Override
@@ -155,7 +119,25 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> Util.hasBauble(e, ModObjects.hellish_bauble) ? world.rand.nextInt(4) == 0 : !e.isImmuneToFire()));
 	}
 	
-	public void fall(float distance, float damageMultiplier) {
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 6;
+	}
+	
+	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
 	}
 	
 	@Override
@@ -168,6 +150,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	public void setRecipes(MerchantRecipeList recipeList) {
+		this.recipeList = recipeList;
+	}
+	
+	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		careerID = tag.getInteger("careerID");
 		careerLevel = tag.getInteger("careerLevel");
@@ -175,4 +162,25 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
 		super.readEntityFromNBT(tag);
 	}
+	
+	@Override
+	public void verifySellingItem(ItemStack stack) {
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
+	public void useRecipe(MerchantRecipe recipe) {
+	}
+	
+	//	@Override
+	//	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+	//		setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
+	//		return super.onInitialSpawn(difficulty, data);
+	//	}
+	
+	
 }

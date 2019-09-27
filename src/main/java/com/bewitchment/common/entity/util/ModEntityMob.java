@@ -1,6 +1,5 @@
 package com.bewitchment.common.entity.util;
 
-import com.bewitchment.api.BewitchmentAPI;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,8 +9,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
@@ -26,29 +23,8 @@ public abstract class ModEntityMob extends EntityMob {
 		this.lootTableLocation = lootTableLocation;
 	}
 	
-	@Override
-	protected ResourceLocation getLootTable() {
-		return lootTableLocation;
-	}
-	
-	@Override
-	public float getBrightness() {
-		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 0.3f : super.getBrightness();
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return getCreatureAttribute() == BewitchmentAPI.DEMON ? 15728880 : super.getBrightnessForRender();
-	}
-	
 	protected int getSkinTypes() {
 		return 1;
-	}
-	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-		return super.onInitialSpawn(difficulty, data);
 	}
 	
 	@Override
@@ -68,6 +44,17 @@ public abstract class ModEntityMob extends EntityMob {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		dataManager.set(SKIN, tag.getInteger("skin"));
 		super.readEntityFromNBT(tag);
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
 	}
 	
 	@Override

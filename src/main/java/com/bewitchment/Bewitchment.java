@@ -61,24 +61,20 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild4", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild5", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	
 	public static final Logger logger = LogManager.getLogger(NAME);
-	
-	@Mod.Instance
-	public static Bewitchment instance;
-	
-	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
-	public static ServerProxy proxy;
-	
-	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
-	
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
 		public ItemStack createIcon() {
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
 	};
+	@Mod.Instance
+	public static Bewitchment instance;
+	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
+	public static ServerProxy proxy;
+	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -99,6 +95,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
+		MinecraftForge.EVENT_BUS.register(new CurseHandler());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new BewitchmentQuark());
 		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new BewitchmentMowzies());

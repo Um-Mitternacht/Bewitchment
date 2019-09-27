@@ -1,8 +1,6 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
-import com.bewitchment.registry.ModCurses;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,17 +26,7 @@ public class ItemTarotCards extends Item {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("readName")) {
-			String readName = stack.getTagCompound().getString("readName");
-			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), readName));
-		}
-	}
-	
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-		player.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(ModCurses.curseReturnToSender, player.isSneaking() ? 2 : 4);
 		if (player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			setTags(stack, player);
@@ -50,6 +38,15 @@ public class ItemTarotCards extends Item {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		return !player.isSneaking() && setTags(stack, target);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("readName")) {
+			String readName = stack.getTagCompound().getString("readName");
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), readName));
+		}
 	}
 	
 	private boolean setTags(ItemStack stack, EntityLivingBase target) {

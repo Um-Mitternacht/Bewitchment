@@ -26,12 +26,6 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 			return stack.getItem() == Items.BLAZE_POWDER;
 		}
 	};
-	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
-		@Override
-		protected void onContentsChanged(int index) {
-			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
-		}
-	};
 	private final ItemStackHandler inventory_down = new ItemStackHandler(6) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -40,6 +34,12 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	};
 	public int burnTime, progress;
 	private DistilleryRecipe recipe;
+	private final ItemStackHandler inventory_up = new ItemStackHandler(6) {
+		@Override
+		protected void onContentsChanged(int index) {
+			recipe = GameRegistry.findRegistry(DistilleryRecipe.class).getValuesCollection().stream().filter(p -> p.matches(this)).findFirst().orElse(null);
+		}
+	};
 	private boolean hasPower, inUse;
 	
 	@Override
@@ -63,13 +63,13 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	}
 	
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
 	
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : face == EnumFacing.UP ? inventory_up : inventory_side) : super.getCapability(capability, face);
 	}
 	
 	@Override

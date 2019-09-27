@@ -24,6 +24,12 @@ public class RitualPerception extends Ritual {
 	}
 	
 	@Override
+	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onStarted(world, pos, caster, inventory);
+		ModTileEntity.clear(inventory);
+	}
+	
+	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		if (!world.isRemote && world.getTotalWorldTime() % 100 == 0) {
 			for (EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(effectivePos).grow(20))) {
@@ -31,11 +37,5 @@ public class RitualPerception extends Ritual {
 				entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 110, 0, false, false));
 			}
 		}
-	}
-	
-	@Override
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onStarted(world, pos, caster, inventory);
-		ModTileEntity.clear(inventory);
 	}
 }

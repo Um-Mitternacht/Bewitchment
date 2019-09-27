@@ -1,0 +1,36 @@
+{
+  "name": "Kołowrotek",
+  "category": "devices",
+  "icon": "bewitchment:spinning_wheel",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Używany do tworzenia magicznych nici i strun, może też być użyty by stworzyć bardziej wyspecjalizowaną Szatę Czarownicy."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:spinning_wheel"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:cobweb",
+	  "text": "Te pająki nic przeciw tobie nie mają"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:witches_stitching",
+	  "text": "Musisz podnieść każdy szew, jest sezon czarownicy"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:diabolical_vein",
+	  "text": "Nic która została przypalona a następnie zamoczona w krwi serca. Fuj"
+	},
+	{
+	  "anchor": "pure_fillament",
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:pure_filament",
+	  "text": "Błyszcząca srebrna nić, błogosławiona i oczyszczona"
+	}
+  ]
+}

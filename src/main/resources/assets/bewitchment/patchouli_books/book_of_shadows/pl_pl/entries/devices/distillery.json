@@ -1,0 +1,36 @@
+{
+  "name": "Destylarnia",
+  "category": "devices",
+  "icon": "bewitchment:distillery",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "Używana do ekstrakcji oparów wyższego rzędu których Piec Czarownicy nie może wyprodukować sam. Niektóre inne związki również mogą być stworzone w tym urządzeniu. Destylarnia potrzebuje magicznej energii i musi użyć Płomienny Proszek jako paliwo."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:distillery"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:cleansing_balm",
+	  "text": "Maść z mocą oczyszczającą"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:demonic_elixir",
+	  "text": "Nieczysta mikstura nasycona esencją demona"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:fiery_unguent",
+	  "text": "Tutaj znajć swe pikantne memy"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:bottled_frostfire",
+	  "text": "A strange anti-fire that is cold to the touch. When placed, it can smelt iron ore into Cold Iron when thrown in"
+	  "text": "Dziwny anty-ogień, zimny w dotyku. Gdy jest postawiony, może wytopić z żelaza Zimne Żelazo"
+	}
+  ]
+}

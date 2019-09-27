@@ -52,13 +52,13 @@ public class ModItemBauble extends Item implements IBauble {
 	}
 	
 	@Override
-	public BaubleType getBaubleType(ItemStack stack) {
-		return type;
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return enchantment == Enchantments.BINDING_CURSE;
 	}
 	
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment == Enchantments.BINDING_CURSE;
+	public BaubleType getBaubleType(ItemStack stack) {
+		return type;
 	}
 	
 	@Override

@@ -20,6 +20,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityFeuerwurm extends ModEntityMob {
@@ -37,39 +39,43 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		boolean flag = super.attackEntityAsMob(entity);
-		if (flag) {
-			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100, 0, false, false));
-			}
-		}
-		return flag;
-	}
-	
-	@Override
-	public boolean getCanSpawnHere() {
-		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
-	}
-	
-	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && super.isPotionApplicable(effect);
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
 	}
 	
 	@Override
 	protected int getSkinTypes() {
 		return 9;
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("milk_timer", milkTimer);
+		super.writeEntityToNBT(tag);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		milkTimer = tag.getInteger("milk_timer");
+		super.readEntityFromNBT(tag);
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
 	}
 	
 	@Override
@@ -88,7 +94,20 @@ public class EntityFeuerwurm extends ModEntityMob {
 		}
 	}
 	
-	public void fall(float distance, float damageMultiplier) {
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		boolean flag = super.attackEntityAsMob(entity);
+		if (flag) {
+			if (entity instanceof EntityLivingBase) {
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100, 0, false, false));
+			}
+		}
+		return flag;
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
 	
 	@Override
@@ -112,17 +131,5 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)));
-	}
-	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		tag.setInteger("milk_timer", milkTimer);
-		super.writeEntityToNBT(tag);
-	}
-	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		milkTimer = tag.getInteger("milk_timer");
-		super.readEntityFromNBT(tag);
 	}
 }

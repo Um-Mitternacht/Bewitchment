@@ -76,31 +76,6 @@ public class ItemIdol extends Item {
 		}
 		
 		@Override
-		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-			return BOX;
-		}
-		
-		@Override
-		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-			return new ItemStack(item);
-		}
-		
-		@Override
-		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-			return Items.AIR;
-		}
-		
-		@Override
-		public boolean canPlaceBlockAt(World world, BlockPos pos) {
-			return super.canPlaceBlockAt(world, pos) && super.canPlaceBlockAt(world, pos.up());
-		}
-		
-		@Override
-		public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-			return false;
-		}
-		
-		@Override
 		public boolean isFullBlock(IBlockState state) {
 			return false;
 		}
@@ -108,11 +83,6 @@ public class ItemIdol extends Item {
 		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
-		}
-		
-		@Override
-		public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 		}
 		
 		@Override
@@ -126,8 +96,38 @@ public class ItemIdol extends Item {
 		}
 		
 		@Override
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+			return BOX;
+		}
+		
+		@Override
+		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+			return Items.AIR;
+		}
+		
+		@Override
+		public boolean canPlaceBlockAt(World world, BlockPos pos) {
+			return super.canPlaceBlockAt(world, pos) && super.canPlaceBlockAt(world, pos.up());
+		}
+		
+		@Override
+		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+			return new ItemStack(item);
+		}
+		
+		@Override
 		protected BlockStateContainer createBlockState() {
 			return new BlockStateContainer(this, BlockHorizontal.FACING);
+		}
+		
+		@Override
+		public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return false;
+		}
+		
+		@Override
+		public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 		}
 	}
 }

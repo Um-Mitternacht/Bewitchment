@@ -31,6 +31,13 @@ public class GuiWitchesOven extends GuiContainer {
 	}
 	
 	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		String name = new TextComponentTranslation(ModObjects.witches_oven.getTranslationKey() + ".name").getFormattedText();
+		fontRenderer.drawString(name, xSize / 2 - fontRenderer.getStringWidth(name) / 2, 6, 0x404040);
+		fontRenderer.drawString(inventory.getDisplayName().getUnformattedText(), 7, ySize - 93, 0x404040);
+	}
+	
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		mc.getTextureManager().bindTexture(TEX);
 		int x = (width - xSize) / 2;
@@ -41,12 +48,5 @@ public class GuiWitchesOven extends GuiContainer {
 			this.drawTexturedModalRect(x + 44, y + 50 - time, 176, 12 - time, 14, time + 1);
 		}
 		this.drawTexturedModalRect(x + 76, y + 19, 176, 14, container.progress * 24 / 200 + 1, 16);
-	}
-	
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String name = new TextComponentTranslation(ModObjects.witches_oven.getTranslationKey() + ".name").getFormattedText();
-		fontRenderer.drawString(name, xSize / 2 - fontRenderer.getStringWidth(name) / 2, 6, 0x404040);
-		fontRenderer.drawString(inventory.getDisplayName().getUnformattedText(), 7, ySize - 93, 0x404040);
 	}
 }

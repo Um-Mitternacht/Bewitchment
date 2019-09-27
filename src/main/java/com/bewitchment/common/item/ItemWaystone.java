@@ -28,16 +28,6 @@ public class ItemWaystone extends Item {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
-		}
-		else tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5) + ".unbound"));
-	}
-	
-	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
@@ -48,6 +38,16 @@ public class ItemWaystone extends Item {
 			return EnumActionResult.SUCCESS;
 		}
 		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
+			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
+		}
+		else tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5) + ".unbound"));
 	}
 	
 	@Override

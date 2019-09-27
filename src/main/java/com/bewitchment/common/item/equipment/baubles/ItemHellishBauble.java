@@ -22,13 +22,13 @@ public class ItemHellishBauble extends ModItemBauble {
 	}
 	
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
-		living.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.NAUSEA)) living.removePotionEffect(MobEffects.NAUSEA);
 	}
 	
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.NAUSEA)) living.removePotionEffect(MobEffects.NAUSEA);
+	public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
+		living.playSound(SoundEvents.ENTITY_BLAZE_AMBIENT, .75F, 1.9f);
 	}
 	
 	@SubscribeEvent

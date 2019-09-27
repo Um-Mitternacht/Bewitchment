@@ -22,21 +22,8 @@ public class EntityLizard extends ModEntityAnimal {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
-	}
-	
-	@Override
 	protected int getSkinTypes() {
 		return 4;
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(6);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
 	
 	@Override
@@ -49,5 +36,18 @@ public class EntityLizard extends ModEntityAnimal {
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.5D));
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(6);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
 	}
 }

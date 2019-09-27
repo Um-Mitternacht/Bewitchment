@@ -24,8 +24,8 @@ import java.util.Random;
 
 @SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class ModBlockSlab extends BlockSlab {
-	public Block double_slab;
 	private final boolean isDouble;
+	public Block double_slab;
 	private Block half;
 	
 	public ModBlockSlab(String name, Block base, String... oreDictionaryNames) {
@@ -50,37 +50,6 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-	
-	@Override
-	public Comparable<?> getTypeForItem(ItemStack stack) {
-		return BlockPurpurSlab.Variant.DEFAULT;
-	}
-	
-	@Override
-	public IProperty<?> getVariantProperty() {
-		return BlockPurpurSlab.VARIANT;
-	}
-	
-	@Override
-	public String getTranslationKey(int meta) {
-		return super.getTranslationKey();
-	}
-	
-	@Override
-	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-		return new ItemStack(half);
-	}
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(half);
-	}
-	
-	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return !Util.isTransparent(state) && super.isOpaqueCube(state);
 	}
@@ -96,8 +65,23 @@ public class ModBlockSlab extends BlockSlab {
 	}
 	
 	@Override
+	public String getTranslationKey(int meta) {
+		return super.getTranslationKey();
+	}
+	
+	@Override
 	public boolean isDouble() {
 		return isDouble;
+	}
+	
+	@Override
+	public IProperty<?> getVariantProperty() {
+		return BlockPurpurSlab.VARIANT;
+	}
+	
+	@Override
+	public Comparable<?> getTypeForItem(ItemStack stack) {
+		return BlockPurpurSlab.Variant.DEFAULT;
 	}
 	
 	@Override
@@ -108,6 +92,22 @@ public class ModBlockSlab extends BlockSlab {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(half);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+	}
+	
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		return new ItemStack(half);
 	}
 	
 	@Override

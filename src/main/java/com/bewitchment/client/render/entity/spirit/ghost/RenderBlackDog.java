@@ -43,11 +43,6 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 		}
 		
 		@Override
-		public boolean shouldCombineTextures() {
-			return false;
-		}
-		
-		@Override
 		public void doRenderLayer(EntityBlackDog entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
 			renderer.bindTexture(TEX[entity.getDataManager().get(ModEntityMob.SKIN)]);
 			GlStateManager.color(0.5f, 0.5f, 0.5f);
@@ -57,6 +52,11 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 			renderer.getMainModel().render(entity, limbSwing, limbSwingAmount, age, rotationYaw, rotationPitch, scale);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
 			GlStateManager.disableBlend();
+		}
+		
+		@Override
+		public boolean shouldCombineTextures() {
+			return false;
 		}
 	}
 }

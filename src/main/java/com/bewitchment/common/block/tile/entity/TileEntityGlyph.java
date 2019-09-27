@@ -58,11 +58,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	@Override
-	public ItemStackHandler[] getInventories() {
-		return new ItemStackHandler[]{inventory};
-	}
-	
-	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		boolean flag = super.shouldRefresh(world, pos, oldState, newState);
 		if (!world.isRemote && flag) stopRitual(false);
@@ -70,21 +65,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	}
 	
 	@Override
-	public void update() {
-		if (!world.isRemote && ritual != null) {
-			for (BlockPos pos0 : new BlockPos[]{pos, effectivePos}) if (world.rand.nextInt(16) == 0) Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
-			if (caster != null) {
-				if (world.getTotalWorldTime() % 20 == 0) {
-					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
-						stopRitual(false);
-						return;
-					}
-					else time++;
-				}
-				ritual.onUpdate(world, pos, effectivePos, caster, inventory);
-			}
-			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
-		}
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory};
 	}
 	
 	@Override
@@ -124,6 +106,24 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public void update() {
+		if (!world.isRemote && ritual != null) {
+			for (BlockPos pos0 : new BlockPos[]{pos, effectivePos}) if (world.rand.nextInt(16) == 0) Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
+			if (caster != null) {
+				if (world.getTotalWorldTime() % 20 == 0) {
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
+						stopRitual(false);
+						return;
+					}
+					else time++;
+				}
+				ritual.onUpdate(world, pos, effectivePos, caster, inventory);
+			}
+			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
+		}
 	}
 	
 	public void startRitual(EntityPlayer player, Ritual rit) {

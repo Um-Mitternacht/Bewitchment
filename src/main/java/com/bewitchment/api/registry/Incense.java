@@ -21,13 +21,13 @@ public class Incense extends IForgeRegistryEntry.Impl<Incense> {
 		this.input = input;
 		this.time = time;
 	}
-
+	
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
-
+	
 	public void onUpdate() {
-
+	
 	}
-
+	
 }

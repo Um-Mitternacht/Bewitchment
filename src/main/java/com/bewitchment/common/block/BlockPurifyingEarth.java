@@ -21,17 +21,17 @@ public class BlockPurifyingEarth extends ModBlock {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		for (int i = 0; i < 16; i++) if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 1, 1, 1);
+	}
+	
+	@Override
 	public void onEntityWalk(World world, BlockPos pos, Entity entity) {
 		if (entity instanceof EntityLivingBase) {
 			EntityLivingBase living = (EntityLivingBase) entity;
 			EnumCreatureAttribute att = living.getCreatureAttribute();
 			if ((BewitchmentAPI.getSilverWeakness(living) > 1 && !BewitchmentAPI.isWerewolf(living)) || BewitchmentAPI.getColdIronWeakness(living) > 1 && !living.isBurning()) living.setFire(25);
 		}
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		for (int i = 0; i < 16; i++) if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 1, 1, 1);
 	}
 }

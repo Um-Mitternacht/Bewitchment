@@ -28,14 +28,24 @@ public class ModBlockTrapdoor extends BlockTrapDoor {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+		float val = super.getPlayerRelativeBlockHardness(state, player, world, pos);
+		if (this == ModObjects.juniper_trapdoor) {
+			for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return val;
+			return -1;
+		}
+		return val;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
+		if (this == ModObjects.juniper_trapdoor && placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
 	}
 	
 	@Override
@@ -57,23 +67,13 @@ public class ModBlockTrapdoor extends BlockTrapDoor {
 	}
 	
 	@Override
-	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-		float val = super.getPlayerRelativeBlockHardness(state, player, world, pos);
-		if (this == ModObjects.juniper_trapdoor) {
-			for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return val;
-			return -1;
-		}
-		return val;
-	}
-	
-	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		super.onBlockPlacedBy(world, pos, state, placer, stack);
-		if (this == ModObjects.juniper_trapdoor && placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
-	}
-	
-	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
 		if (this != ModObjects.juniper_trapdoor) super.neighborChanged(state, world, to, block, from);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
 }

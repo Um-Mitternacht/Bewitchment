@@ -23,6 +23,14 @@ import vazkii.botania.api.item.IExoflameHeatable;
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 @Optional.Interface(iface = "vazkii.botania.api.item.IExoflameHeatable", modid = "botania")
 public class TileEntityWitchesOven extends ModTileEntity implements ITickable, IExoflameHeatable {
+	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
+		@Override
+		public boolean isItemValid(int index, ItemStack stack) {
+			return false;
+		}
+	};
+	public int burnTime, fuelBurnTime, progress;
+	private OvenRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
 		@Override
 		public boolean isItemValid(int index, ItemStack stack) {
@@ -34,14 +42,6 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 			recipe = GameRegistry.findRegistry(OvenRecipe.class).getValuesCollection().stream().filter(p -> p.matches(getStackInSlot(2))).findFirst().orElse(null);
 		}
 	};
-	private final ItemStackHandler inventory_down = new ItemStackHandler(2) {
-		@Override
-		public boolean isItemValid(int index, ItemStack stack) {
-			return false;
-		}
-	};
-	public int burnTime, fuelBurnTime, progress;
-	private OvenRecipe recipe;
 	private boolean burning;
 	
 	@Override
@@ -65,8 +65,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	}
 	
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory_up, inventory_down};
 	}
 	
 	@Override
@@ -75,8 +75,8 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	}
 	
 	@Override
-	public ItemStackHandler[] getInventories() {
-		return new ItemStackHandler[]{inventory_up, inventory_down};
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(face == EnumFacing.DOWN ? inventory_down : inventory_up) : super.getCapability(capability, face);
 	}
 	
 	@Override

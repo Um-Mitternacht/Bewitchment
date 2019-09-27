@@ -55,8 +55,7 @@ public class ExtendedPlayerHandler {
 					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST) curse.doCurse(event.player);
 					
 				}
-				if (event.player.world.getWorldTime() % 24000 == 0) { //todo, instead of updating days like this, make a checked days field or so idk
-					System.out.println("Day passed");
+				if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
 					cap.updateCurses();
 				}
 			}

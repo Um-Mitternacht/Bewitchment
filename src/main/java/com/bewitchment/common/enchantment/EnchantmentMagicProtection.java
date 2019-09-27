@@ -18,17 +18,17 @@ public class EnchantmentMagicProtection extends ModEnchantment {
 	}
 	
 	@Override
+	public int calcModifierDamage(int level, DamageSource source) {
+		return source.canHarmInCreative() ? 0 : source.isMagicDamage() ? level : 0;
+	}
+	
+	@Override
 	protected boolean canApplyTogether(Enchantment enchantment) {
 		if (enchantment instanceof EnchantmentProtection) {
 			EnchantmentProtection protection = (EnchantmentProtection) enchantment;
 			return protection.protectionType == EnchantmentProtection.Type.FALL;
 		}
 		return super.canApplyTogether(enchantment);
-	}
-	
-	@Override
-	public int calcModifierDamage(int level, DamageSource source) {
-		return source.canHarmInCreative() ? 0 : source.isMagicDamage() ? level : 0;
 	}
 	
 	@SubscribeEvent

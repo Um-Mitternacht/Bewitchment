@@ -38,14 +38,33 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	@Override
-	public void onEquipped(ItemStack stack, EntityLivingBase living) {
-		living.playSound(SoundEvents.BLOCK_WOOD_STEP, .75F, 1.9f);
+	public static ItemStack getGirdle(EntityLivingBase living) {
+		if (Util.hasBauble(living, ModObjects.girdle_of_the_dryads)) {
+			EntityPlayer player = (EntityPlayer) living;
+			for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) {
+				ItemStack bauble = BaublesApi.getBaublesHandler(player).getStackInSlot(i);
+				if (bauble.getItem() == ModObjects.girdle_of_the_dryads) return bauble;
+			}
+		}
+		return ItemStack.EMPTY;
 	}
 	
-	@Override
-	public void onUnequipped(ItemStack stack, EntityLivingBase living) {
-		setBark(stack, 0);
+	public static int getBark(EntityLivingBase living) {
+		if (Util.hasBauble(living, ModObjects.girdle_of_the_dryads)) {
+			ItemStack stack = getGirdle(living);
+			if (!stack.isEmpty()) {
+				if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
+				return stack.getTagCompound().getInteger("bark");
+			}
+		}
+		return -1;
+	}
+	
+	public static void setBark(ItemStack stack, int amount) {
+		if (!stack.isEmpty()) {
+			if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
+			stack.getTagCompound().setInteger("bark", amount);
+		}
 	}
 	
 	@Override
@@ -55,6 +74,16 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 			living.world.playSound(null, living.getPosition(), SoundEvents.BLOCK_CHORUS_FLOWER_GROW, SoundCategory.PLAYERS, 1, 1);
 			setBark(getGirdle(living), getBark(living) + 1);
 		}
+	}
+	
+	@Override
+	public void onEquipped(ItemStack stack, EntityLivingBase living) {
+		living.playSound(SoundEvents.BLOCK_WOOD_STEP, .75F, 1.9f);
+	}
+	
+	@Override
+	public void onUnequipped(ItemStack stack, EntityLivingBase living) {
+		setBark(stack, 0);
 	}
 	
 	@Override
@@ -86,35 +115,6 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 				setBark(getGirdle(event.getEntityLiving()), getBark(event.getEntityLiving()) - 1);
 				event.setCanceled(true);
 			}
-		}
-	}
-	
-	public static ItemStack getGirdle(EntityLivingBase living) {
-		if (Util.hasBauble(living, ModObjects.girdle_of_the_dryads)) {
-			EntityPlayer player = (EntityPlayer) living;
-			for (int i = 0; i < BaublesApi.getBaublesHandler(player).getSlots(); i++) {
-				ItemStack bauble = BaublesApi.getBaublesHandler(player).getStackInSlot(i);
-				if (bauble.getItem() == ModObjects.girdle_of_the_dryads) return bauble;
-			}
-		}
-		return ItemStack.EMPTY;
-	}
-	
-	public static int getBark(EntityLivingBase living) {
-		if (Util.hasBauble(living, ModObjects.girdle_of_the_dryads)) {
-			ItemStack stack = getGirdle(living);
-			if (!stack.isEmpty()) {
-				if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
-				return stack.getTagCompound().getInteger("bark");
-			}
-		}
-		return -1;
-	}
-	
-	public static void setBark(ItemStack stack, int amount) {
-		if (!stack.isEmpty()) {
-			if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setInteger("bark", amount);
 		}
 	}
 }

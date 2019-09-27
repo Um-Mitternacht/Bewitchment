@@ -68,27 +68,6 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
-		public BlockRenderLayer getRenderLayer() {
-			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-		}
-		
-		@Override
-		public EnumPushReaction getPushReaction(IBlockState state) {
-			return state.getBlock() == ModObjects.juniper_door.door ? EnumPushReaction.BLOCK : super.getPushReaction(state);
-		}
-		
-		@Override
-		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-			return drop;
-		}
-		
-		@Override
-		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
-		}
-		
-		@Override
 		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 			if (this == ModObjects.juniper_door.door) {
 				boolean found = false;
@@ -104,16 +83,6 @@ public class ModItemDoor extends ItemDoor {
 				}
 			}
 			return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-		}
-		
-		@Override
-		public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-			float val = super.getPlayerRelativeBlockHardness(state, player, world, pos);
-			if (this == ModObjects.juniper_door.door) {
-				for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return val;
-				return -1;
-			}
-			return val;
 		}
 		
 		@Override
@@ -157,6 +126,37 @@ public class ModItemDoor extends ItemDoor {
 					}
 				}
 			}
+		}
+		
+		@Override
+		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+			return state.getValue(HALF) == EnumDoorHalf.UPPER ? Items.AIR : drop.getItem();
+		}
+		
+		@Override
+		public EnumPushReaction getPushReaction(IBlockState state) {
+			return state.getBlock() == ModObjects.juniper_door.door ? EnumPushReaction.BLOCK : super.getPushReaction(state);
+		}
+		
+		@Override
+		public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+			return drop;
+		}
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		public BlockRenderLayer getRenderLayer() {
+			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+		}
+		
+		@Override
+		public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+			float val = super.getPlayerRelativeBlockHardness(state, player, world, pos);
+			if (this == ModObjects.juniper_door.door) {
+				for (ItemStack stack : Bewitchment.proxy.getEntireInventory(player)) if (ItemJuniperKey.canAccess(world, pos, player.dimension, stack)) return val;
+				return -1;
+			}
+			return val;
 		}
 		
 		@Override

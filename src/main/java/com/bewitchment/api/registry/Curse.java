@@ -2,7 +2,6 @@ package com.bewitchment.api.registry;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
-import com.bewitchment.common.curse.CurseReturnToSender;
 import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -27,22 +26,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.condition = condition;
 	}
 	
-	public final boolean matches(ItemStackHandler input) {
-		return Util.areISListsEqual(this.input, input);
-	}
-	
-	private boolean isValid(EntityPlayer player) {
-		if (this.isLesser) {
-			List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses();
-			for (Curse curs : curses) {
-				if (curs instanceof CurseReturnToSender) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -54,15 +37,27 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return null;
 	}
 	
-	public boolean apply(@Nullable EntityPlayer player) {
-		if (player != null && isValid(player)) {
+	public final boolean matches(ItemStackHandler input) {
+		return Util.areISListsEqual(this.input, input);
+	}
+	
+	private boolean isValid(EntityPlayer player) {
+		return player != null;
+	}
+	
+	public boolean apply(@Nullable EntityPlayer player, int days) {
+		if (isValid(player)) {
 			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-				ep.addCurse(this, 7);
+				ep.addCurse(this, days);
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean isLesser() {
+		return isLesser;
 	}
 	
 	public abstract boolean doCurse(@Nullable EntityPlayer player);
@@ -71,7 +66,12 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return condition;
 	}
 	
+	/**
+	 * EXIST - the curse is active every tick the player exists
+	 * REACTION - the curse is not active on its own; must be used manually
+	 */
 	public static enum CurseCondition {
-		EXIST //add other conditions like SLEEP or so for curses that are only active in certain conditions
+		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
+		REACTION
 	}
 }

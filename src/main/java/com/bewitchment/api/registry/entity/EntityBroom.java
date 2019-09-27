@@ -35,47 +35,7 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	public Entity getControllingPassenger() {
-		return getPassengers().isEmpty() ? null : getPassengers().get(0);
-	}
-	
-	@Override
-	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source.getImmediateSource() != null && getControllingPassenger() == null) {
-			setDead();
-			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
-			return true;
-		}
-		return super.attackEntityFrom(source, amount);
-	}
-	
-	@Override
-	public boolean canBeCollidedWith() {
-		return !isDead;
-	}
-	
-	@Override
-	public boolean canBePushed() {
-		return canBeCollidedWith();
-	}
-	
-	@Override
-	public boolean canPassengerSteer() {
-		return true;
-	}
-	
-	@Override
-	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && !isBeingRidden()) {
-			player.startRiding(this);
-			return true;
-		}
-		return super.processInitialInteract(player, hand);
-	}
-	
-	@Override
-	public double getMountedYOffset() {
-		return 0.4;
+	protected void entityInit() {
 	}
 	
 	@Override
@@ -118,7 +78,29 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	protected void entityInit() {
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		if (source.getImmediateSource() != null && getControllingPassenger() == null) {
+			setDead();
+			if (!world.isRemote) InventoryHelper.spawnItemStack(world, posX, posY, posZ, item.copy());
+			return true;
+		}
+		return super.attackEntityFrom(source, amount);
+	}
+	
+	@Override
+	public boolean canBeCollidedWith() {
+		return !isDead;
+	}
+	
+	@Override
+	public boolean canBePushed() {
+		return canBeCollidedWith();
+	}
+	
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound tag) {
+		item = tag.hasKey("item") ? new ItemStack(tag.getCompoundTag("item")) : ItemStack.EMPTY;
+		canFly = tag.getBoolean("canFly");
 	}
 	
 	@Override
@@ -128,9 +110,27 @@ public abstract class EntityBroom extends Entity {
 	}
 	
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound tag) {
-		item = tag.hasKey("item") ? new ItemStack(tag.getCompoundTag("item")) : ItemStack.EMPTY;
-		canFly = tag.getBoolean("canFly");
+	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote && !isBeingRidden()) {
+			player.startRiding(this);
+			return true;
+		}
+		return super.processInitialInteract(player, hand);
+	}
+	
+	@Override
+	public double getMountedYOffset() {
+		return 0.4;
+	}
+	
+	@Override
+	public Entity getControllingPassenger() {
+		return getPassengers().isEmpty() ? null : getPassengers().get(0);
+	}
+	
+	@Override
+	public boolean canPassengerSteer() {
+		return true;
 	}
 	
 	protected abstract float getSpeed();

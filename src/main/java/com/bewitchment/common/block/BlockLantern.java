@@ -39,29 +39,8 @@ public class BlockLantern extends BlockCandleBase {
 	}
 	
 	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult result, World world, BlockPos pos, EntityPlayer player) {
-		ItemStack stack = new ItemStack(this);
-		if (state.getValue(LIT)) {
-			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setBoolean("lit", true);
-		}
-		return stack;
-	}
-	
-	@Override
-	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		drops.add(getPickBlock(state, null, null, null, null));
-	}
-	
-	@Override
-	public int getLightValue(IBlockState state) {
-		return state.getValue(LIT) ? 15 : 0;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().getBoolean("lit")) tooltip.add(new TextComponentTranslation("tooltip.lantern_lit").getFormattedText());
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 0, 0, 0);
 	}
 	
 	@Override
@@ -75,12 +54,33 @@ public class BlockLantern extends BlockCandleBase {
 	}
 	
 	@Override
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 0, 0, 0);
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().getBoolean("lit")) tooltip.add(new TextComponentTranslation("tooltip.lantern_lit").getFormattedText());
+	}
+	
+	@Override
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		drops.add(getPickBlock(state, null, null, null, null));
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult result, World world, BlockPos pos, EntityPlayer player) {
+		ItemStack stack = new ItemStack(this);
+		if (state.getValue(LIT)) {
+			stack.setTagCompound(new NBTTagCompound());
+			stack.getTagCompound().setBoolean("lit", true);
+		}
+		return stack;
 	}
 	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 		return getDefaultState().withProperty(LIT, living.getHeldItem(hand).hasTagCompound() && living.getHeldItem(hand).getTagCompound().getBoolean("lit"));
+	}
+	
+	@Override
+	public int getLightValue(IBlockState state) {
+		return state.getValue(LIT) ? 15 : 0;
 	}
 }

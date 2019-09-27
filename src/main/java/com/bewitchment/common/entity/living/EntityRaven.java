@@ -30,12 +30,12 @@ import net.minecraft.world.World;
 
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class EntityRaven extends ModEntityTameable {
+	protected static final DataParameter<Integer> PECK_TIME = EntityDataManager.<Integer>createKey(EntityRaven.class, DataSerializers.VARINT);
+	protected int shearTimer;
+	
 	public EntityRaven(World world) {
 		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, ModObjects.silver_nugget);
 	}
-	
-	protected int shearTimer;
-	protected static final DataParameter<Integer> PECK_TIME = EntityDataManager.<Integer>createKey(EntityRaven.class, DataSerializers.VARINT);
 	
 	protected EntityRaven(World world, ResourceLocation lootTableLocation, Item... tameItems) {
 		super(world, lootTableLocation, tameItems);
@@ -53,18 +53,18 @@ public class EntityRaven extends ModEntityTameable {
 		return path;
 	}
 	
-	private int getNewPeck() {
-		return this.rand.nextInt(600) + 30;
-	}
-	
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.RAVEN_CRY;
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	private int getNewPeck() {
+		return this.rand.nextInt(600) + 30;
 	}
 	
 	@Override
@@ -83,8 +83,48 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
+	protected void initEntityAI() {
+		super.initEntityAI();
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, aiSit);
+		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
+		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));
+		tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
+		tasks.addTask(4, new EntityAIFollowOwnerFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue(), 10, 2));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
+		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
+		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(PECK_TIME, Integer.valueOf(0));
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("shearTimer", shearTimer);
+		super.writeEntityToNBT(tag);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		shearTimer = tag.getInteger("shearTimer");
+		super.readEntityFromNBT(tag);
 	}
 	
 	@Override
@@ -104,12 +144,6 @@ public class EntityRaven extends ModEntityTameable {
 		}
 	}
 	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(PECK_TIME, Integer.valueOf(0));
-	}
-	
 	public int getPeckTime() {
 		return this.dataManager.get(PECK_TIME).intValue();
 	}
@@ -120,49 +154,15 @@ public class EntityRaven extends ModEntityTameable {
 	}
 	
 	@Override
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
 	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
 	}
 	
 	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		tag.setInteger("shearTimer", shearTimer);
-		super.writeEntityToNBT(tag);
+	public void fall(float distance, float damageMultiplier) {
 	}
 	
 	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		shearTimer = tag.getInteger("shearTimer");
-		super.readEntityFromNBT(tag);
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.5);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
-		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1);
-	}
-	
-	@Override
-	protected void initEntityAI() {
-		super.initEntityAI();
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, aiSit);
-		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
-		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));
-		tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
-		tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
-		tasks.addTask(4, new EntityAIFollowOwnerFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue(), 10, 2));
-		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
-		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
-		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
+	public boolean attackEntityAsMob(Entity entity) {
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 	}
 }

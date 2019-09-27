@@ -41,16 +41,6 @@ public class BlockBrazier extends ModBlockContainer {
 	}
 	
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 1, 13 / 16d);
-	}
-	
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-		return getDefaultState().withProperty(HANGING, face == EnumFacing.DOWN);
-	}
-	
-	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(HANGING, (meta & 1) > 0).withProperty(LIT, (meta & 2) > 0);
 	}
@@ -64,19 +54,29 @@ public class BlockBrazier extends ModBlockContainer {
 	}
 	
 	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, HANGING, LIT);
-	}
-	
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
-		return te.interact(player, hand);
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 1, 13 / 16d);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		if (stateIn.getValue(LIT) && rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + rand.nextDouble(), pos.getY() + 0.5, pos.getZ() + rand.nextDouble(), 0, 0, 0);
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, HANGING, LIT);
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(HANGING, face == EnumFacing.DOWN);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
+		return te.interact(player, hand);
 	}
 }

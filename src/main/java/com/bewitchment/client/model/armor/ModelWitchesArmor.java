@@ -10,8 +10,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
  */
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelWitchesArmor extends ModelArmor {
-	private final boolean hat;
-	
 	public final ModelRenderer bipedRightArm;
 	public final ModelRenderer bipedRightLeg;
 	public final ModelRenderer bipedHead;
@@ -54,6 +52,7 @@ public class ModelWitchesArmor extends ModelArmor {
 	public final ModelRenderer tunicDroopLeftFront;
 	public final ModelRenderer tunicDroopLeftMiddle;
 	public final ModelRenderer tunicDroopLeftBack;
+	private final boolean hat;
 	
 	public ModelWitchesArmor(EntityEquipmentSlot slot, boolean hat) {
 		super(slot);

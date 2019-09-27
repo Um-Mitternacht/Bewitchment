@@ -31,6 +31,12 @@ public class RitualHungryFlames extends Ritual {
 	}
 	
 	@Override
+	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		super.onStarted(world, pos, caster, inventory);
+		ModTileEntity.clear(inventory);
+	}
+	
+	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, effectivePos.getX() + 0.5 + world.rand.nextGaussian() * 2, effectivePos.getY() + world.rand.nextFloat() * 0.5, effectivePos.getZ() + 0.5 + world.rand.nextGaussian() * 2, 0.05 * world.rand.nextFloat(), 0.1 * world.rand.nextFloat(), 0.05 * world.rand.nextFloat()), world.provider.getDimension());
 		if (world.getTotalWorldTime() % 40 == 0) {
@@ -47,11 +53,5 @@ public class RitualHungryFlames extends Ritual {
 				entity.setItem(stack);
 			}
 		}
-	}
-	
-	@Override
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onStarted(world, pos, caster, inventory);
-		ModTileEntity.clear(inventory);
 	}
 }

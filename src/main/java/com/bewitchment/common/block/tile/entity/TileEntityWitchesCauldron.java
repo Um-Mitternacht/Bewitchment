@@ -38,21 +38,33 @@ import java.util.*;
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
 	private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
-	
-	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
+	private static final int[] defaultColor = {0, 63, 255};
 	public final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
-	
+	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
 	 */
 	public int mode = 0;
-	
-	private static final int[] defaultColor = {0, 63, 255};
 	public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int heatTimer = 0, craftingTimer = 0;
 	private boolean hasPower;
 	private String name = "";
+	
+	/**
+	 * arg == 1 = splash, arg == 2 = lingering, else normal
+	 */
+	public static ItemStack createPotion(Collection<PotionEffect> effects, int arg) {
+		ItemStack stack;
+		if (arg == 1) stack = new ItemStack(Items.SPLASH_POTION);
+		else if (arg == 2) stack = new ItemStack(Items.LINGERING_POTION);
+		else stack = new ItemStack(Items.POTIONITEM);
+		PotionUtils.appendEffects(stack, effects);
+		if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setInteger("CustomPotionColor", PotionUtils.getPotionColorFromEffectList(effects));
+		stack.getTagCompound().setBoolean("bewitchment_brew", true);
+		return stack;
+	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -83,6 +95,49 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory};
+	}
+	
+	@Override
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+		if (!player.isSneaking()) {
+			if (!world.isRemote) {
+				if (player.getHeldItem(hand).getItem() == Items.NAME_TAG) {
+					name = player.getHeldItem(hand).getDisplayName();
+					if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
+				}
+				else if (mode == 0 || mode == 3) {
+					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
+						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
+							int bottles = 3;
+							boolean boosted = false;
+							if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl) && player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
+								bottles++;
+								boosted = true;
+							}
+							Util.replaceAndConsumeItem(player, hand, createPotion(boosted));
+							tank.drain(Fluid.BUCKET_VOLUME / bottles, true);
+							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
+							if (tank.getFluidAmount() < 2) {
+								tank.drain(Fluid.BUCKET_VOLUME, true);
+								clear(inventory);
+							}
+						}
+					}
+					else if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+						IFluidHandlerItem cap = player.getHeldItem(hand).getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+						if (cap instanceof FluidBucketWrapper) {
+							FluidBucketWrapper wrapper = (FluidBucketWrapper) cap;
+							FluidStack fluid = wrapper.getFluid();
+							if ((fluid == null || (fluid != null && (fluid.getFluid() == FluidRegistry.WATER || fluid.getFluid() == FluidRegistry.LAVA))) && FluidUtil.interactWithFluidHandler(player, hand, tank))
+								world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+						}
+					}
+				}
+				syncToClient();
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
@@ -146,49 +201,6 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	}
 	
 	@Override
-	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (!player.isSneaking()) {
-			if (!world.isRemote) {
-				if (player.getHeldItem(hand).getItem() == Items.NAME_TAG) {
-					name = player.getHeldItem(hand).getDisplayName();
-					if (!player.isCreative()) player.getHeldItem(hand).shrink(1);
-				}
-				else if (mode == 0 || mode == 3) {
-					if (player.getHeldItem(hand).getItem() instanceof ItemGlassBottle) {
-						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
-							int bottles = 3;
-							boolean boosted = false;
-							if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl) && player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
-								bottles++;
-								boosted = true;
-							}
-							Util.replaceAndConsumeItem(player, hand, createPotion(boosted));
-							tank.drain(Fluid.BUCKET_VOLUME / bottles, true);
-							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
-							if (tank.getFluidAmount() < 2) {
-								tank.drain(Fluid.BUCKET_VOLUME, true);
-								clear(inventory);
-							}
-						}
-					}
-					else if (isEmpty(inventory) && player.getHeldItem(hand).hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
-						IFluidHandlerItem cap = player.getHeldItem(hand).getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-						if (cap instanceof FluidBucketWrapper) {
-							FluidBucketWrapper wrapper = (FluidBucketWrapper) cap;
-							FluidStack fluid = wrapper.getFluid();
-							if ((fluid == null || (fluid != null && (fluid.getFluid() == FluidRegistry.WATER || fluid.getFluid() == FluidRegistry.LAVA))) && FluidUtil.interactWithFluidHandler(player, hand, tank))
-								world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-						}
-					}
-				}
-				syncToClient();
-			}
-			return true;
-		}
-		return false;
-	}
-	
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -196,21 +208,6 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	@Override
 	public boolean hasCustomName() {
 		return !getName().isEmpty();
-	}
-	
-	/**
-	 * arg == 1 = splash, arg == 2 = lingering, else normal
-	 */
-	public static ItemStack createPotion(Collection<PotionEffect> effects, int arg) {
-		ItemStack stack;
-		if (arg == 1) stack = new ItemStack(Items.SPLASH_POTION);
-		else if (arg == 2) stack = new ItemStack(Items.LINGERING_POTION);
-		else stack = new ItemStack(Items.POTIONITEM);
-		PotionUtils.appendEffects(stack, effects);
-		if (!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
-		stack.getTagCompound().setInteger("CustomPotionColor", PotionUtils.getPotionColorFromEffectList(effects));
-		stack.getTagCompound().setBoolean("bewitchment_brew", true);
-		return stack;
 	}
 	
 	public double getLiquidHeight() {

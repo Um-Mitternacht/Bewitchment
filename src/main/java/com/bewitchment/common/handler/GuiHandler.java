@@ -16,17 +16,6 @@ import java.util.UUID;
 @SuppressWarnings("ConstantConditions")
 public class GuiHandler implements IGuiHandler {
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
-		if (tile instanceof TileEntityWitchesOven) return new GuiWitchesOven((ContainerWitchesOven) getServerGuiElement(ModGui.OVEN.ordinal(), player, world, x, y, z), player.inventory);
-		if (tile instanceof TileEntityDistillery) return new GuiDistillery((ContainerDistillery) getServerGuiElement(ModGui.DISTILLERY.ordinal(), player, world, x, y, z));
-		if (tile instanceof TileEntitySpinningWheel) return new GuiSpinningWheel((ContainerSpinningWheel) getServerGuiElement(ModGui.SPINNING_WHEEL.ordinal(), player, world, x, y, z));
-		if (tile instanceof TileEntityTarotTable) return new GuiTarotTable((ContainerTarotTable) getServerGuiElement(ModGui.TAROT_TABLE.ordinal(), player, world, x, y, z));
-		if (tile instanceof TileEntityJuniperChest) return new GuiJuniperChest((ContainerJuniperChest) getServerGuiElement(ModGui.JUNIPER_CHEST.ordinal(), player, world, x, y, z), player.inventory);
-		return null;
-	}
-	
-	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
 		if (tile instanceof TileEntityWitchesOven) return new ContainerWitchesOven(player.inventory, (TileEntityWitchesOven) tile);
@@ -37,6 +26,17 @@ public class GuiHandler implements IGuiHandler {
 			if (stack.getItem() instanceof ItemTarotCards && stack.hasTagCompound() && stack.getTagCompound().hasKey("readId")) return new ContainerTarotTable(UUID.fromString(stack.getTagCompound().getString("readId")));
 		}
 		if (tile instanceof TileEntityJuniperChest) return new ContainerJuniperChest(player.inventory, (TileEntityJuniperChest) tile);
+		return null;
+	}
+	
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		if (tile instanceof TileEntityWitchesOven) return new GuiWitchesOven((ContainerWitchesOven) getServerGuiElement(ModGui.OVEN.ordinal(), player, world, x, y, z), player.inventory);
+		if (tile instanceof TileEntityDistillery) return new GuiDistillery((ContainerDistillery) getServerGuiElement(ModGui.DISTILLERY.ordinal(), player, world, x, y, z));
+		if (tile instanceof TileEntitySpinningWheel) return new GuiSpinningWheel((ContainerSpinningWheel) getServerGuiElement(ModGui.SPINNING_WHEEL.ordinal(), player, world, x, y, z));
+		if (tile instanceof TileEntityTarotTable) return new GuiTarotTable((ContainerTarotTable) getServerGuiElement(ModGui.TAROT_TABLE.ordinal(), player, world, x, y, z));
+		if (tile instanceof TileEntityJuniperChest) return new GuiJuniperChest((ContainerJuniperChest) getServerGuiElement(ModGui.JUNIPER_CHEST.ordinal(), player, world, x, y, z), player.inventory);
 		return null;
 	}
 	

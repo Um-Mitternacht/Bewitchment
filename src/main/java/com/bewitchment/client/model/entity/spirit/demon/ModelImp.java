@@ -341,6 +341,10 @@ public class ModelImp extends ModelBiped {
 		this.bipedRightLeg.addChild(this.rightLeg01);
 	}
 	
+	private static float triangleWave(float x, float y) {
+		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
+	}
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
 		this.bipedBody.render(scale);
@@ -375,10 +379,6 @@ public class ModelImp extends ModelBiped {
 			bipedRightArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
 			bipedLeftArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
 		}
-	}
-	
-	private static float triangleWave(float x, float y) {
-		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 	
 	/**

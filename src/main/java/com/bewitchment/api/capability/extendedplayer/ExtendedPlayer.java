@@ -34,6 +34,10 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public Map<String, Integer> curses = new HashMap<>(); //curse id-days left
 	public int fortuneTime, ritualsCast, mobsKilled;
 	
+	public static void syncToClient(EntityPlayer player) {
+		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
+	}
+	
 	@Nullable
 	@Override
 	public NBTBase writeNBT(Capability<ExtendedPlayer> capability, ExtendedPlayer instance, EnumFacing face) {
@@ -67,15 +71,15 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.mobsKilled = tag.getInteger("mobsKilled");
 	}
 	
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
+		return getCapability(capability, null) != null;
+	}
+	
 	@Nullable
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing face) {
 		return capability == CAPABILITY ? CAPABILITY.cast(this) : null;
-	}
-	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing face) {
-		return getCapability(capability, null) != null;
 	}
 	
 	@Override
@@ -88,10 +92,6 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		CAPABILITY.getStorage().readNBT(CAPABILITY, this, null, tag);
 	}
 	
-	public static void syncToClient(EntityPlayer player) {
-		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
-	}
-	
 	public List<Curse> getCurses() {
 		List<Curse> curseList = new ArrayList<>();
 		curses.keySet().forEach(s -> curseList.add(GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(s))));
@@ -99,11 +99,25 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	}
 	
 	public void addCurse(Curse curse, int days) {
-		curses.putIfAbsent(curse.getRegistryName().toString(), days);
+		curses.putIfAbsent(curse.getRegistryName().toString(), days * 24000);
 	}
 	
+	public boolean hasCurse(Curse curse) {
+		return getCurses().contains(curse);
+	}
+	
+	public boolean removeCurse(Curse curse) {
+		if (getCurses().contains(curse)) {
+			curses.remove(curse);
+			return true;
+		}
+		return false;
+	}
+	
+	//called every second
 	public void updateCurses() {
 		for (String curs : curses.keySet()) {
+			curses.replace(curs, curses.get(curs), curses.get(curs) - 20);
 			if (curses.get(curs) <= 0) {
 				curses.remove(curs);
 			}

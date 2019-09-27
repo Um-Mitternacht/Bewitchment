@@ -46,11 +46,6 @@ public class BlockHellfire extends BlockFire {
 	}
 	
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
-	}
-	
-	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (!world.isRemote && entity instanceof EntityLivingBase) {
 			entity.attackEntityFrom(DamageSource.IN_FIRE, 2);
@@ -62,6 +57,11 @@ public class BlockHellfire extends BlockFire {
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 	
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!world.getBlockState(to.down()).isOpaqueCube()) world.destroyBlock(to, false);
 	}
 	
 	@Override

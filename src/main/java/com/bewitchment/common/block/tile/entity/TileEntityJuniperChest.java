@@ -17,16 +17,6 @@ public class TileEntityJuniperChest extends ModTileEntity implements ITickable {
 	public int using;
 	
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : super.getCapability(capability, face);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
-	}
-	
-	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory};
 	}
@@ -51,5 +41,15 @@ public class TileEntityJuniperChest extends ModTileEntity implements ITickable {
 			return true;
 		}
 		return super.receiveClientEvent(id, type);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+	}
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : super.getCapability(capability, face);
 	}
 }

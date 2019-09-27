@@ -20,6 +20,12 @@ public class BewitchmentThaumcraft {
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
 	
+	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
+		Aspect a = Aspect.getAspect(tag);
+		if (a != null) return a;
+		return new Aspect(tag, color, components, image, 1);
+	}
+	
 	@SubscribeEvent
 	public void aspectRegistrationEvent(AspectRegistryEvent event) {
 		//Technical
@@ -203,11 +209,7 @@ public class BewitchmentThaumcraft {
 		ThaumcraftApi.registerEntityTag("demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
-	}
-	
-	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
-		Aspect a = Aspect.getAspect(tag);
-		if (a != null) return a;
-		return new Aspect(tag, color, components, image, 1);
+		
+		ThaumcraftApi.registerEntityTag("ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
 	}
 }

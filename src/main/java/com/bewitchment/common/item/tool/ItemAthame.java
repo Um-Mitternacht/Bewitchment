@@ -29,6 +29,12 @@ public class ItemAthame extends ItemSword {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
+	private static Collection<ItemStack> getAthameLoot(EntityLivingBase entity) {
+		Collection<ItemStack> fin = new HashSet<>();
+		for (Predicate<EntityLivingBase> predicate : BewitchmentAPI.ATHAME_LOOT.keySet()) if (predicate.test(entity)) fin.addAll(BewitchmentAPI.ATHAME_LOOT.get(predicate));
+		return fin;
+	}
+	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!target.world.isRemote) {
@@ -60,11 +66,5 @@ public class ItemAthame extends ItemSword {
 				event.getDrops().add(new EntityItem(event.getEntityLiving().world, event.getEntityLiving().posX + 0.5, event.getEntityLiving().posY + 0.5, event.getEntityLiving().posZ + 0.5, copy));
 			}
 		}
-	}
-	
-	private static Collection<ItemStack> getAthameLoot(EntityLivingBase entity) {
-		Collection<ItemStack> fin = new HashSet<>();
-		for (Predicate<EntityLivingBase> predicate : BewitchmentAPI.ATHAME_LOOT.keySet()) if (predicate.test(entity)) fin.addAll(BewitchmentAPI.ATHAME_LOOT.get(predicate));
-		return fin;
 	}
 }

@@ -32,15 +32,40 @@ public class EntityBlackDog extends ModEntityMob {
 	}
 	
 	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) {
+		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.0F, 0.0F);
+	}
+	
+	//Todo: Make regeneration and healing harm it, since it's a ghost
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
 	}
 	
 	@Override
-	protected PathNavigate createNavigator(World world) {
-		PathNavigateGround path = new PathNavigateGround(this, world);
-		path.setBreakDoors(true);
-		return path;
+	protected int getSkinTypes() {
+		return 5;
+	}
+	
+	//Todo: Make it so they become more powerful if hit by lightning
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return !world.isDaytime();
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining()) setDead();
 	}
 	
 	@Override
@@ -51,38 +76,6 @@ public class EntityBlackDog extends ModEntityMob {
 			addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 50, 1, false, false));
 		}
 		return flag;
-	}
-	
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
-	protected void playStepSound(BlockPos pos, Block blockIn) {
-		this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.0F, 0.0F);
-	}
-	
-	//Todo: Make it so they become more powerful if hit by lightning
-	
-	//Todo: Make regeneration and healing harm it, since it's a ghost
-	@Override
-	public boolean isPotionApplicable(PotionEffect effect) {
-		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return !world.isDaytime();
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 5;
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && !world.isRaining()) setDead();
 	}
 	
 	@Override
@@ -107,5 +100,12 @@ public class EntityBlackDog extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	@Override
+	protected PathNavigate createNavigator(World world) {
+		PathNavigateGround path = new PathNavigateGround(this, world);
+		path.setBreakDoors(true);
+		return path;
 	}
 }
