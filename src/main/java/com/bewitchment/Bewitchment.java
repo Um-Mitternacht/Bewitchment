@@ -92,7 +92,6 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new MaterialHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
 		MinecraftForge.EVENT_BUS.register(new MiscHandler());
-		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new CurseHandler());

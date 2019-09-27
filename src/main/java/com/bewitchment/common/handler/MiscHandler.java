@@ -145,10 +145,10 @@ public class MiscHandler {
 					if (world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(LIT)) {
 						TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
 						if (te.incense != null) {
-							if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
+							if (length == 600 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
 								strength++;
 							}
-							else if (te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
+							else if (strength == 0 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
 								length = 1200;
 							}
 							else {
@@ -159,6 +159,7 @@ public class MiscHandler {
 				}
 			}
 		}
+		strength = Math.min(strength, 2);
 		for (Potion potion : potions) {
 			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}

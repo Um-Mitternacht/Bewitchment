@@ -1,6 +1,5 @@
 package com.bewitchment.common.potion;
 
-import com.bewitchment.common.handler.PotionEffectHandler;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
