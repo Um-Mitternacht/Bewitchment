@@ -22,6 +22,7 @@ public class BewitchmentJEI implements IModPlugin {
 		registry.addRecipeCategories(new DistilleryCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new SpinningWheelCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeCategories(new FrostfireCategory(registry.getJeiHelpers().getGuiHelper()));
+		registry.addRecipeCategories(new IncenseCategory(registry.getJeiHelpers().getGuiHelper()));
 	}
 	
 	@Override
@@ -53,5 +54,9 @@ public class BewitchmentJEI implements IModPlugin {
 		registry.handleRecipes(FrostfireRecipe.class, FrostfireCategory.Wrapper::new, FrostfireCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(FrostfireRecipe.class).getValuesCollection(), FrostfireCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.bottled_frostfire), FrostfireCategory.UID);
+
+		registry.handleRecipes(Incense.class, IncenseCategory.Wrapper::new, IncenseCategory.UID);
+		registry.addRecipes(GameRegistry.findRegistry(Incense.class).getValuesCollection(), IncenseCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModObjects.brazier), IncenseCategory.UID);
 	}
 }
