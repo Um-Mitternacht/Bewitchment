@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -43,15 +44,38 @@ public class RenderDruden extends RenderLiving<EntityDruden> {
 		}
 		
 		@Override
-		public void doRenderLayer(EntityDruden entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
-			renderer.bindTexture(TEX);
-			GlStateManager.color(0.5f, 0.5f, 0.5f);
-			GlStateManager.enableBlend();
-			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-			Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
-			renderer.getMainModel().render(entity, limbSwing, limbSwingAmount, age, rotationYaw, rotationPitch, scale);
-			Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
-			GlStateManager.disableBlend();
+		public void doRenderLayer(EntityDruden entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+			if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.isChild()) {
+				this.renderer.bindTexture(TEX);
+				
+				GlStateManager.enableBlend();
+				GlStateManager.disableAlpha();
+				GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+				
+				if (entitylivingbaseIn.isInvisible()) {
+					GlStateManager.depthMask(false);
+				}
+				else {
+					GlStateManager.depthMask(true);
+				}
+				
+				int i = 61680;
+				int j = i % 65536;
+				int k = i / 65536;
+				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
+				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+				Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
+				this.renderer.getMainModel().render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+				Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
+				i = entitylivingbaseIn.getBrightnessForRender();
+				j = i % 65536;
+				k = i / 65536;
+				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
+				this.renderer.setLightmap(entitylivingbaseIn);
+				GlStateManager.disableBlend();
+				GlStateManager.enableAlpha();
+				
+			}
 		}
 		
 		@Override

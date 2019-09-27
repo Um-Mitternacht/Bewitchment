@@ -209,5 +209,7 @@ public class BewitchmentThaumcraft {
 		ThaumcraftApi.registerEntityTag("demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
+		
+		ThaumcraftApi.registerEntityTag("ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
 	}
 }
