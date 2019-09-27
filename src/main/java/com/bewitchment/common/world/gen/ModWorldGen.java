@@ -94,9 +94,8 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 	
 	private static boolean isCornerValid(World world, BlockPos pos) {
-		int variation = 2;
 		int highestBlock = getGround(world, pos.getX(), pos.getZ());
-		return highestBlock > pos.getY() && highestBlock < pos.getY() + variation;
+		return highestBlock > pos.getY() - 1 && highestBlock < pos.getY() + 3;
 	}
 	
 	@Override
@@ -115,12 +114,12 @@ public class ModWorldGen implements IWorldGenerator {
 		}
 		
 		if (world.provider.getDimension() == 0) {    //Overworld Gen
-			generateStructure(wickerman, world, rand, 0.001, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
-			generateStructure(burnedWickerman, world, rand, 0.001, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
-			generateStructure(stonecircle1, world, rand, 0.001, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
-			generateStructure(stonecircle2, world, rand, 0.001, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SANDY));
-			generateStructure(menhir1, world, rand, 0.001, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
-			generateStructure(menhir2, world, rand, 0.001, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(wickerman, world, rand, 0.002, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
+			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
+			generateStructure(stonecircle1, world, rand, 0.002, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST));
+			generateStructure(stonecircle2, world, rand, 0.002, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST));
+			generateStructure(menhir1, world, rand, 0.002, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
+			generateStructure(menhir2, world, rand, 0.002, chunkX, chunkZ, 0, 0, b -> (BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MOUNTAIN)) && b != Biomes.TAIGA && b != Biomes.TAIGA_HILLS && b != Biomes.COLD_TAIGA && b != Biomes.COLD_TAIGA_HILLS && b != Biomes.REDWOOD_TAIGA && b != Biomes.REDWOOD_TAIGA_HILLS);
 			generateStructure(menhirtaiga, world, rand, 0.01, chunkX, chunkZ, 0, 0, b -> b == Biomes.TAIGA || BiomeDictionary.hasType(b, BiomeDictionary.Type.CONIFEROUS));
 			generateStructure(menhirmegataiga, world, rand, 0.01, chunkX, chunkZ, 0, 0, b -> b == Biomes.REDWOOD_TAIGA || b == Biomes.REDWOOD_TAIGA_HILLS);
 			generateStructure(menhircoldtaiga, world, rand, 0.01, chunkX, chunkZ, 0, 0, b -> b == Biomes.COLD_TAIGA || b == Biomes.COLD_TAIGA_HILLS);
@@ -183,6 +182,8 @@ public class ModWorldGen implements IWorldGenerator {
 	
 	private void generateStructure(WorldGenerator structure, World world, Random rand, double chance, int chunkX, int chunkz, int xOffset, int zOffset, Predicate<Biome> biomes) {
 		BlockPos pos = new BlockPos(chunkX * 16 + xOffset, getGround(world, chunkX * 16 + xOffset, chunkz * 16 + zOffset), chunkz * 16 + zOffset);
-		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) structure.generate(world, rand, pos);
+		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) {
+			structure.generate(world, rand, pos);
+		}
 	}
 }

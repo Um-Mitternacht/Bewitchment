@@ -1,8 +1,11 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
+import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -10,6 +13,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -20,6 +25,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -78,5 +85,21 @@ public class BlockBrazier extends ModBlockContainer {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
 		return te.interact(player, hand);
+	}
+
+	@Override
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		if(world.getTileEntity(pos) instanceof TileEntityBrazier) {
+			TileEntityBrazier tile = (TileEntityBrazier) world.getTileEntity(pos);
+			if(tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+				IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+				for (int slot = 0; slot < handler.getSlots(); slot++) {
+					ItemStack stack = handler.getStackInSlot(slot);
+					if (!(stack.getItem() instanceof ItemTaglock || stack.getItem() instanceof ItemFume))
+						InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				}
+			}
+		}
+		super.breakBlock(world, pos, state);
 	}
 }

@@ -1,12 +1,16 @@
 package com.bewitchment.common.block.tile.entity;
 
+import com.bewitchment.Util;
 import com.bewitchment.api.event.CurseEvent;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
+import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.ItemTaglock;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemFlintAndSteel;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
@@ -79,23 +83,16 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 				else {
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
+						Item heldItem = player.getHeldItem(hand).getItem();
+						if (heldItem instanceof ItemFume) Util.giveItem(player, new ItemStack(ModObjects.empty_jar));
+						else if (heldItem instanceof ItemTaglock) Util.giveItem(player, new ItemStack(ModObjects.taglock));
 						player.inventory.setItemStack(handler.insertItem(slot, player.inventory.decrStackSize(player.inventory.currentItem, 1), false));
 						markDirty();
 						world.notifyBlockUpdate(pos, state, state, 3);
 						return true;
 					}
 				}
-			}
-			else {
-				int slot = getLastNonEmptySlot(handler);
-				if (slot != -1) {
-					ItemHandlerHelper.giveItemToPlayer(player, handler.getStackInSlot(slot));
-					handler.setStackInSlot(slot, ItemStack.EMPTY);
-					markDirty();
-					world.notifyBlockUpdate(pos, state, state, 3);
-					return true;
-				}
-			}
+			} else return false;
 		}
 		else if (player.getHeldItem(hand).getItem() instanceof ItemSpade) {
 			stopBurning();
