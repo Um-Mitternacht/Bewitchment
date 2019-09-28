@@ -62,7 +62,7 @@ public class CommandFortune extends CommandBase {
 			}
 			if (args[1].equals("remove")) {
 				if (args.length == 2) {
-					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null) throw new CommandException("commands.fortune.nofortune");
+					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null) throw new CommandException("commands.fortune.nofortune", player.getDisplayNameString());
 					else {
 						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;
 						sender.sendMessage(new TextComponentTranslation("commands.fortune.remove", args[0]));
@@ -72,7 +72,7 @@ public class CommandFortune extends CommandBase {
 			}
 			if (args[1].equals("execute")) {
 				if (args.length == 2) {
-					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null) throw new CommandException("commands.fortune.nofortune");
+					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null) throw new CommandException("commands.fortune.nofortune", player.getDisplayNameString());
 					else {
 						while (!player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.apply(player)) ;
 						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;

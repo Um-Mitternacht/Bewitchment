@@ -53,7 +53,7 @@ public class ExtendedPlayerHandler {
 			if (cap.curses != null) { //check "curse condition"
 				for (Curse curse : cap.getCurses()) {
 					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST) curse.doCurse(event.player);
-					
+					else if (curse.getCurseCondition() == Curse.CurseCondition.RANDOM && event.player.getRNG().nextDouble() < curse.chance) curse.doCurse(event.player);
 				}
 				if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
 					cap.updateCurses();

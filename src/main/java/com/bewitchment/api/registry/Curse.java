@@ -18,12 +18,18 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	final List<Ingredient> input;
 	final boolean isLesser;
 	final CurseCondition condition;
+	public final double chance;
 	
 	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
+		this(name, input, isLesser, condition, 0);
+	}
+
+	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition, double chance) {
 		setRegistryName(name);
 		this.input = input;
 		this.isLesser = isLesser;
 		this.condition = condition;
+		this.chance = chance;
 	}
 	
 	@Nullable
@@ -60,7 +66,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return isLesser;
 	}
 	
-	public abstract boolean doCurse(@Nullable EntityPlayer player);
+	public abstract boolean doCurse(EntityPlayer player);
 	
 	public CurseCondition getCurseCondition() {
 		return condition;
@@ -70,8 +76,9 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	 * EXIST - the curse is active every tick the player exists
 	 * REACTION - the curse is not active on its own; must be used manually
 	 */
-	public static enum CurseCondition {
+	public enum CurseCondition {
 		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
-		REACTION
+		REACTION,
+		RANDOM
 	}
 }

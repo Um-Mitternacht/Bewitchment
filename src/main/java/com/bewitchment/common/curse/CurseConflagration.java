@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
-import javax.annotation.Nullable;
 import java.util.Arrays;
 
 public class CurseConflagration extends Curse {
@@ -22,7 +21,7 @@ public class CurseConflagration extends Curse {
 	//replace diamond with charcoal, which is coal with  meta 1
 	
 	@Override
-	public boolean doCurse(@Nullable EntityPlayer player) {
+	public boolean doCurse(EntityPlayer player) {
 		if (player.ticksExisted % 20 == 0) {
 			player.addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0, false, false));
 		}
