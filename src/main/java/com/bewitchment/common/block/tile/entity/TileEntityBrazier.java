@@ -10,6 +10,7 @@ import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFlintAndSteel;
 import net.minecraft.item.ItemSpade;
@@ -17,10 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -53,13 +51,15 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	
 	private void curse(EntityPlayer caster) {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
+		//todo when there's covens, set curse level here
+		int level = 0;
 		if (curse != null) {
 			EntityPlayer target = Curse.getPlayerFromTaglock(handler);
 			if (target != null) {
 				int days = 7;
 				CurseEvent.PlayerCursedEvent event = new CurseEvent.PlayerCursedEvent(target, caster, curse, days);
 				MinecraftForge.EVENT_BUS.post(event);
-				if (!event.isCanceled()) event.getCurse().apply(event.getTarget(), event.getCurseDuration());
+				if (!event.isCanceled()) event.getCurse().apply(event.getTarget(), event.getCurseDuration(), level);
 			}
 		}
 	}
@@ -71,6 +71,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel) {
 					if (!isEmpty(handler)) {
 						world.setBlockState(pos, state.withProperty(LIT, true));
+						if (player.world.isRemote) player.world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						getIncense();
 						if (incense == null) curse(player);
 						clearBrazier();
@@ -82,7 +83,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 					int slot = getFirstEmptySlot(handler);
 					if (slot != -1) {
 						Item heldItem = player.getHeldItem(hand).getItem();
-						if (heldItem instanceof ItemFume) Util.giveItem(player, new ItemStack(ModObjects.empty_jar));
+						if (heldItem.getContainerItem() != null) Util.giveItem(player, new ItemStack(heldItem.getContainerItem()));
 						else if (heldItem instanceof ItemTaglock) Util.giveItem(player, new ItemStack(ModObjects.taglock));
 						player.inventory.setItemStack(handler.insertItem(slot, player.inventory.decrStackSize(player.inventory.currentItem, 1), false));
 						markDirty();

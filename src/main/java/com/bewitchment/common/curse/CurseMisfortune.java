@@ -22,9 +22,9 @@ public class CurseMisfortune extends Curse {
 	}
 
 	@Override
-	public boolean doCurse(EntityPlayer player) {
-		Random rand = player.getRNG();
-		player.addPotionEffect(new PotionEffect(getRandomNegativePotion(rand), (rand.nextInt(20) + 10) * 20, rand.nextInt(1)));
+	public boolean doCurse(EntityPlayer target) {
+		Random rand = target.getRNG();
+		target.addPotionEffect(new PotionEffect(getRandomNegativePotion(rand), (rand.nextInt(20) + 10) * 20, rand.nextInt(1)));
 		return false;
 	}
 

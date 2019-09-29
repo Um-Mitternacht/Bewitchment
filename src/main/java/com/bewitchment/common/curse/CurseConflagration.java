@@ -21,9 +21,9 @@ public class CurseConflagration extends Curse {
 	//replace diamond with charcoal, which is coal with  meta 1
 	
 	@Override
-	public boolean doCurse(EntityPlayer player) {
-		if (player.ticksExisted % 20 == 0) {
-			player.addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0, false, false));
+	public boolean doCurse(EntityPlayer target) {
+		if (target.ticksExisted % 20 == 0) {
+			target.addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0, false, false));
 		}
 		return true;
 	}

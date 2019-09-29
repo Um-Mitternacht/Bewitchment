@@ -35,6 +35,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -404,7 +405,7 @@ public class ModObjects {
 	public static final Item hellhound_horn = Util.registerItem("hellhound_horn");
 	public static final Item heart = new ItemHeart();
 	public static final Item demon_heart = Util.registerItem("demon_heart");
-	public static final Item snake_venom = Util.registerItem("snake_venom");
+	public static final Item snake_venom = Util.registerItem("snake_venom").setContainerItem(Items.GLASS_BOTTLE);
 	public static final Item bottle_of_blood = Util.registerItem(new ItemBloodBottle(), "bottle_of_blood");
 	public static final Item bottle_of_vampire_blood = Util.registerItem("bottle_of_vampire_blood");
 	//Vanilla Drops

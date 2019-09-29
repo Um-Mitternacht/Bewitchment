@@ -95,7 +95,7 @@ public class BlockBrazier extends ModBlockContainer {
 				IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 				for (int slot = 0; slot < handler.getSlots(); slot++) {
 					ItemStack stack = handler.getStackInSlot(slot);
-					if (!(stack.getItem() instanceof ItemTaglock || stack.getItem() instanceof ItemFume))
+					if (!(stack.getItem() instanceof ItemTaglock || stack.getItem().getContainerItem() != null))
 						InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 				}
 			}

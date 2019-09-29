@@ -19,6 +19,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	final boolean isLesser;
 	final CurseCondition condition;
 	public final double chance;
+	private int level;
 	
 	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
 		this(name, input, isLesser, condition, 0);
@@ -31,7 +32,11 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.condition = condition;
 		this.chance = chance;
 	}
-	
+
+	public int getLevel() {
+		return this.level;
+	}
+
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -51,10 +56,11 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return player != null;
 	}
 	
-	public boolean apply(@Nullable EntityPlayer player, int days) {
+	public boolean apply(@Nullable EntityPlayer player, int days, int level) {
 		if (isValid(player)) {
 			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+				this.level = level;
 				ep.addCurse(this, days);
 				return true;
 			}
@@ -66,7 +72,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return isLesser;
 	}
 	
-	public abstract boolean doCurse(EntityPlayer player);
+	public abstract boolean doCurse(EntityPlayer target);
 	
 	public CurseCondition getCurseCondition() {
 		return condition;

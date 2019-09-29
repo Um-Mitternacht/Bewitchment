@@ -18,9 +18,9 @@ public class CurseReturnToSender extends Curse {
 	}
 	
 	@Override
-	public boolean doCurse(@Nullable EntityPlayer player) {
+	public boolean doCurse(@Nullable EntityPlayer target) {
 		System.out.println("Lorem ipsum docet"); //this is a test
-		System.out.println(player.getCapability(ExtendedPlayer.CAPABILITY, null).curses);
+		System.out.println(target.getCapability(ExtendedPlayer.CAPABILITY, null).curses);
 		return true;
 	}
 }
