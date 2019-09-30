@@ -32,6 +32,9 @@ public class RenderGhost extends RenderLiving<EntityGhost> {
 	
 	@Override
 	public void doRender(EntityGhost entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		
+		GlStateManager.pushMatrix();
+		
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.25F);
 		GlStateManager.depthMask(false);
 		GlStateManager.enableBlend();
@@ -44,6 +47,7 @@ public class RenderGhost extends RenderLiving<EntityGhost> {
 		GlStateManager.disableBlend();
 		GlStateManager.alphaFunc(256, 0.1F);
 		GlStateManager.depthMask(true);
+		GlStateManager.popMatrix();
 	}
 	
 	@Override
