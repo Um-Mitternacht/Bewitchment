@@ -13,9 +13,11 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemAxe;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -28,6 +30,8 @@ import net.minecraft.world.World;
  * Created by Joseph on 9/7/2019.
  */
 public class EntityDruden extends ModEntityMob {
+	
+	public int attackTimer = 0;
 	
 	public EntityDruden(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/druden"));
@@ -52,6 +56,7 @@ public class EntityDruden extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		if (attackTimer > 0) attackTimer--;
 		if (isBurning()) {
 			attackEntityFrom(DamageSource.ON_FIRE, 6.66f);
 			if (hurtTime == 1) {
@@ -71,11 +76,19 @@ public class EntityDruden extends ModEntityMob {
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
+			attackTimer = 10;
+			world.setEntityState(this, (byte) 4);
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.fear, 100, 0, false, false));
 			}
 		}
 		return flag;
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	@Override
