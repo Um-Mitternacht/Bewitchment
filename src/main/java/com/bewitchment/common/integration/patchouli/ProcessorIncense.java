@@ -11,12 +11,12 @@ import vazkii.patchouli.api.PatchouliAPI;
 @SuppressWarnings("unused")
 public class ProcessorIncense implements IComponentProcessor {
 	private Incense recipe;
-
+	
 	@Override
 	public void setup(IVariableProvider<String> provider) {
 		recipe = GameRegistry.findRegistry(Incense.class).getValue(new ResourceLocation(provider.get("recipe")));
 	}
-
+	
 	@Override
 	public String process(String key) {
 		if (recipe == null) return null;

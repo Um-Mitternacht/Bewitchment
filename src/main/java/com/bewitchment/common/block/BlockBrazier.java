@@ -1,9 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
-import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.block.SoundType;
@@ -86,17 +84,16 @@ public class BlockBrazier extends ModBlockContainer {
 		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
 		return te.interact(player, hand);
 	}
-
+	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		if(world.getTileEntity(pos) instanceof TileEntityBrazier) {
+		if (world.getTileEntity(pos) instanceof TileEntityBrazier) {
 			TileEntityBrazier tile = (TileEntityBrazier) world.getTileEntity(pos);
-			if(tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+			if (tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
 				IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 				for (int slot = 0; slot < handler.getSlots(); slot++) {
 					ItemStack stack = handler.getStackInSlot(slot);
-					if (!(stack.getItem() instanceof ItemTaglock || stack.getItem().getContainerItem() != null))
-						InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+					if (!(stack.getItem() instanceof ItemTaglock || stack.getItem().getContainerItem() != null)) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 				}
 			}
 		}

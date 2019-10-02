@@ -14,17 +14,17 @@ public class PotionFear extends ModPotion {
 		super("fear", true, 0x10c440);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@Override
 	public boolean isInstant() {
 		return false;
 	}
-
+	
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 	}
-
+	
 	@SubscribeEvent
 	public void movePlayer(TickEvent.PlayerTickEvent event) {
 		if (event.player.isPotionActive(this) && event.phase == TickEvent.Phase.END) {

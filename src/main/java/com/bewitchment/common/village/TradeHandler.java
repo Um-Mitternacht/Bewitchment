@@ -87,7 +87,7 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
-
+		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = getRandomSapling(random, itemPriceInfo.getPrice(random));
@@ -95,7 +95,7 @@ public class TradeHandler {
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
-
+		
 	}
 	
 	public static class RandomPlantsforEmeralds implements EntityVillager.ITradeList {
@@ -121,7 +121,7 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
-
+		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = getRandomPlant(random, itemPriceInfo.getPrice(random));
@@ -129,7 +129,7 @@ public class TradeHandler {
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
-
+		
 	}
 	
 	public static class RandomBaublesforEmeralds implements EntityVillager.ITradeList {
@@ -157,7 +157,7 @@ public class TradeHandler {
 			}
 			return itemStack;
 		}
-
+		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = getRandomBauble(random, 1);
@@ -165,7 +165,7 @@ public class TradeHandler {
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
-
+		
 	}
 	
 	public static class RandomWeaponsforEmeralds implements EntityVillager.ITradeList {
@@ -191,7 +191,7 @@ public class TradeHandler {
 			if (random.nextInt(10) >= 5 && itemStack != null) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
 			return itemStack;
 		}
-
+		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = getRandomWeapon(random);
@@ -199,6 +199,6 @@ public class TradeHandler {
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
-
+		
 	}
 }

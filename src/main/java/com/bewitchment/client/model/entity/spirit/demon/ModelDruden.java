@@ -1,6 +1,5 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;

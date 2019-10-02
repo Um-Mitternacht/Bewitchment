@@ -22,7 +22,7 @@ public class CurseSolarHatred extends Curse {
 	@Override
 	public boolean doCurse(EntityPlayer target) {
 		int level = this.getLevel();
-		if(!target.world.isRemote && hasSunlight(target)) {
+		if (!target.world.isRemote && hasSunlight(target)) {
 			target.setFire(2);
 			switch (level) {
 				case 3:
@@ -39,7 +39,7 @@ public class CurseSolarHatred extends Curse {
 
 	private boolean hasSunlight(EntityPlayer player) {
 		BlockPos pos = player.getPosition();
-		if(player.world.provider.hasSkyLight()) {
+		if (player.world.provider.hasSkyLight()) {
 			int i = player.world.getLightFor(EnumSkyBlock.SKY, pos) - player.world.getSkylightSubtracted() - 15;
 			return i == 0;
 		}

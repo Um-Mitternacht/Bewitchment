@@ -4,7 +4,6 @@ import com.bewitchment.Util;
 import com.bewitchment.api.event.CurseEvent;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
-import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.registry.ModObjects;
@@ -63,7 +62,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-
+	
 	public boolean interact(EntityPlayer player, EnumHand hand) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
@@ -91,7 +90,8 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 						return true;
 					}
 				}
-			} else return false;
+			}
+			else return false;
 		}
 		else if (player.getHeldItem(hand).getItem() instanceof ItemSpade) {
 			stopBurning();
