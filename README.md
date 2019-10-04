@@ -5,10 +5,6 @@ A mod inspired by Witchery
 [![Build Status](https://travis-ci.org/Um-Mitternacht/Bewitchment.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Bewitchment)  
 ![Minecraft Version](https://img.shields.io/badge/minecraft_version-1.12.2+-red.svg?longCache=true&style=flat)
 
-
-WIP. Very heavily WIP.  
-Please, don't ask for ETAs or release dates, we don't know!  
-
 ## Links
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/9cPD9b4)
