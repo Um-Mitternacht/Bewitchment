@@ -19,6 +19,9 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -29,11 +32,14 @@ import net.minecraft.world.World;
 @SuppressWarnings({"ConstantConditions"})
 public class EntitySnake extends ModEntityTameable {
 	
+	protected static final DataParameter<Integer> HISS_TIME = EntityDataManager.<Integer>createKey(EntitySnake.class, DataSerializers.VARINT);
+	
 	private int milkTimer = 0;
 	
 	public EntitySnake(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
 		setSize(1, 0.3f);
+		this.setHissTime(this.getNewHiss());
 	}
 	
 	@Override
@@ -61,6 +67,16 @@ public class EntitySnake extends ModEntityTameable {
 			}
 		}
 		return super.processInteract(player, hand);
+	}
+	
+	private int getNewHiss() {
+		return this.rand.nextInt(600) + 30;
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(HISS_TIME, Integer.valueOf(0));
 	}
 	
 	@Override
@@ -132,6 +148,26 @@ public class EntitySnake extends ModEntityTameable {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (milkTimer > 0) milkTimer--;
+		if (!onGround && motionY <= 0) motionY *= 0.6;
+		
+		if (!this.onGround || this.getMoveHelper().isUpdating()) {
+			if (this.getHissTime() <= 61) {
+				this.setHissTime(80);
+			}
+		}
+		
+		if (!this.world.isRemote && this.setHissTime(this.getHissTime() - 1) <= 0) {
+			this.setHissTime(this.getNewHiss());
+		}
+	}
+	
+	public int getHissTime() {
+		return this.dataManager.get(HISS_TIME).intValue();
+	}
+	
+	public int setHissTime(int time) {
+		this.dataManager.set(HISS_TIME, Integer.valueOf(time));
+		return time;
 	}
 	
 	@Override

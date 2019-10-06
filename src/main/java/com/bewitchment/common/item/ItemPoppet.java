@@ -26,7 +26,7 @@ public class ItemPoppet extends Item {
 			tooltip.add(I18n.format("tooltip.bewitchment.poppet.bound", boundName));
 		}
 	}
-
+	
 	@Override
 	public boolean isEnchantable(ItemStack stack) {
 		return false;

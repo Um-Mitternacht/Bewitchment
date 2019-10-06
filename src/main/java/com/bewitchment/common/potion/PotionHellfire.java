@@ -21,7 +21,7 @@ public class PotionHellfire extends ModPotion {
 		super("hellfire", true, 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@SubscribeEvent
 	public void playerFireDamage(LivingHurtEvent event) {
 		if (event.getSource().isFireDamage() && event.getEntityLiving().isPotionActive(this)) {

@@ -6,13 +6,13 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-	classpath 'com.wynprice.cursemaven:CurseMaven:1.2.2'
+	classpath 'com.wynprice.cursemaven:CurseMaven:1.2.3'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 
-version = "1.12.2-0.0.21-testbuild5"
+version = "1.12.2-0.0.21-testbuild6"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 

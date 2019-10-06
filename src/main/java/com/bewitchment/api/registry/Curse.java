@@ -25,7 +25,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
 		this(name, input, isLesser, condition, 0);
 	}
-
+	
 	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition, double chance) {
 		setRegistryName(name);
 		this.input = input;
@@ -33,11 +33,11 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.condition = condition;
 		this.chance = chance;
 	}
-
+	
 	public int getLevel() {
 		return this.level;
 	}
-
+	
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -85,7 +85,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	 */
 	public enum CurseCondition {
 		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
-		REACTION,
-		RANDOM
+		REACTION, RANDOM
 	}
 }
