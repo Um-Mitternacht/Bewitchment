@@ -1,6 +1,5 @@
 package com.bewitchment.client.model.entity.living;
 
-import com.bewitchment.common.entity.living.EntityRaven;
 import com.bewitchment.common.entity.living.EntitySnake;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
