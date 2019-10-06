@@ -147,10 +147,12 @@ public class ModelSnake extends ModelBase {
 		if (entity instanceof EntitySnake) {
 			float hissTime = snake.getHissTime();
 			if (hissTime <= 60) {
-				this.tongue.offsetY = 0.50f;
+				this.tongue.offsetX = 0.50f;
+				this.body.offsetX = -0.50f;
 			}
 			else {
-				this.tongue.offsetY = 0f;
+				this.tongue.offsetX = 0f;
+				this.body.offsetX = 0f;
 			}
 			
 			if (snake.isSitting()) { //Change to entity.isSitting
