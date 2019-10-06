@@ -583,6 +583,14 @@ commands.fortune.execute=%s's fortune has been applied
 commands.fortune.nofortune=%s does not have a fortune
 commands.fortune.null=%s is not a fortune
 
+commands.curse.get=%s's curse(s): %s
+commands.curse.add=%s is added to %s's curses
+commands.curse.remove=%s has been removed from %s
+commands.curse.nocurse=%s does not have the curse %s
+commands.curse.null=%s is not a curse
+commands.curse.clear=Took all curses from %s
+commands.curse.empty=%s does not have any curses active
+
 jei.ritual=Ritual
 jei.ritual.startingPower=Starting Power: %d
 jei.ritual.runningPower=Running Power: %d

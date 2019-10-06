@@ -28,6 +28,7 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
 import com.bewitchment.client.handler.ClientHandler;
+import com.bewitchment.common.command.CommandCurse;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.misc.BewitchmentMowzies;
@@ -147,6 +148,7 @@ public class Bewitchment {
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(new CommandFortune());
+		event.registerServerCommand(new CommandCurse());
 	}
 	
 	@EventHandler

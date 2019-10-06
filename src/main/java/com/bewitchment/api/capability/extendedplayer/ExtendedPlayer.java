@@ -108,7 +108,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public boolean removeCurse(Curse curse) {
 		if (getCurses().contains(curse)) {
-			curses.remove(curse);
+			curses.remove(curse.getRegistryName().toString());
 			return true;
 		}
 		return false;
