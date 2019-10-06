@@ -20,6 +20,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	final CurseCondition condition;
 	public final double chance;
 	private int level;
+	private int curseTime;
 	
 	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
 		this(name, input, isLesser, condition, 0);

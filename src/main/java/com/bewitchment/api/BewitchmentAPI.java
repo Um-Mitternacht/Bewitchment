@@ -3,17 +3,21 @@ package com.bewitchment.api;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.items.ItemStackHandler;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -115,6 +119,32 @@ public class BewitchmentAPI {
 	 */
 	public static boolean isWitchHunter(EntityLivingBase entity) {
 		return false;
+	}
+
+	/**
+	 * @param entity the entity to check
+	 * @return true if player has full set of besmirched gear
+	 */
+	public static boolean hasBesmirched(EntityLivingBase entity) {
+		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
+		List<Item> armorItem = new ArrayList<>();
+		for(ItemStack is : armor) {
+			armorItem.add(is.getItem());
+		}
+		return (armorItem.contains(ModObjects.besmirched_cowl) || armorItem.contains(ModObjects.besmirched_hat)) && armorItem.contains(ModObjects.besmirched_robes) && armorItem.contains(ModObjects.besmirched_pants);
+	}
+
+	/**
+	 * @param entity the entity to check
+	 * @return true if player has full set of alchemist gear
+	 */
+	public static boolean hasAlchemist(EntityLivingBase entity) {
+		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
+		List<Item> armorItem = new ArrayList<>();
+		for(ItemStack is : armor) {
+			armorItem.add(is.getItem());
+		}
+		return (armorItem.contains(ModObjects.alchemist_cowl) || armorItem.contains(ModObjects.alchemist_hat)) && armorItem.contains(ModObjects.alchemist_robes) && armorItem.contains(ModObjects.alchemist_pants);
 	}
 	
 	public static float getSilverWeakness(EntityLivingBase entity) {
