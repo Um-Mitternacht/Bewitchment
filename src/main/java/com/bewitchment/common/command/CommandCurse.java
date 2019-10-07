@@ -47,10 +47,10 @@ public class CommandCurse extends CommandBase {
 				if (args.length == 2) {
 					List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses();
 					List<String> cursesStrings = new ArrayList<>();
-					for(Curse curse : curses) {
+					for (Curse curse : curses) {
 						cursesStrings.add(curse.getRegistryName().toString());
 					}
-					if(!cursesStrings.isEmpty()) sender.sendMessage(new TextComponentTranslation("commands.curse.get", player.getDisplayNameString(), cursesStrings.toString()));
+					if (!cursesStrings.isEmpty()) sender.sendMessage(new TextComponentTranslation("commands.curse.get", player.getDisplayNameString(), cursesStrings.toString()));
 					else throw new CommandException("commands.curse.empty", player.getDisplayNameString());
 				}
 				else throw new CommandException("commands.generic.syntax");
@@ -81,7 +81,7 @@ public class CommandCurse extends CommandBase {
 			if (args[1].equals("clear")) {
 				if (args.length == 2) {
 					List<Curse> curses = player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses();
-					if(!curses.isEmpty()) {
+					if (!curses.isEmpty()) {
 						for (Curse curse : curses) {
 							player.getCapability(ExtendedPlayer.CAPABILITY, null).removeCurse(curse);
 						}
