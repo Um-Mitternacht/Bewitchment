@@ -34,25 +34,30 @@ public class RenderGhost extends RenderLiving<EntityGhost> {
 	public void doRender(EntityGhost entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		
 		GlStateManager.pushMatrix();
+		GlStateManager.enableAlpha();
+		GlStateManager.enableBlend();
 		
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.25F);
 		GlStateManager.depthMask(false);
-		GlStateManager.enableBlend();
+
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-		GlStateManager.alphaFunc(256, 0.003921569F);
+		//GlStateManager.alphaFunc(256, 0.003921569F);
 		
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
-		
-		GlStateManager.enableLighting();
+
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+
+		//GlStateManager.enableLighting();
+		//GlStateManager.alphaFunc(256, 0.1F);
+		GlStateManager.disableAlpha();
 		GlStateManager.disableBlend();
-		GlStateManager.alphaFunc(256, 0.1F);
-		GlStateManager.depthMask(true);
+
 		GlStateManager.popMatrix();
 	}
 	
 	@Override
 	protected void preRenderCallback(EntityGhost entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.6, 1.6, 1.6);
+		//GlStateManager.scale(1.6, 1.6, 1.6);
 	}
 }
