@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
-    deobfProvided "mezz.jei:jei_1.12.2:4.15.0.289"
+    deobfProvided "mezz.jei:jei_1.12.2:4.15.0.291"
     deobfProvided "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
     deobfProvided "team.chisel:Chisel:MC1.12.2-0.2.1.35"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
