@@ -11,4 +11,5 @@ public class ModCurses {
 	public static Curse curseOverheating = new CurseOverheating();
 	public static Curse curseHydrophobia = new CurseHydrophobia();
 	public static Curse curseLightningRod = new CurseLightningRod();
+	public static Curse curseDarkness = new CurseDarkness();
 }

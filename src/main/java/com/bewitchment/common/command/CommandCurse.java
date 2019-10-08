@@ -101,7 +101,7 @@ public class CommandCurse extends CommandBase {
 		if (args.length == 3 && (args[1].equals("add") || args[1].equals("remove"))) {
 			List<String> curses = new ArrayList<>();
 			for (Curse curse : GameRegistry.findRegistry(Curse.class)) curses.add(curse.getRegistryName().toString());
-			return curses;
+			return getListOfStringsMatchingLastWord(args, curses);
 		}
 		return Collections.emptyList();
 	}
