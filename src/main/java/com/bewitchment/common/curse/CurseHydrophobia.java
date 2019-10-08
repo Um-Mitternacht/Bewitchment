@@ -23,7 +23,7 @@ public class CurseHydrophobia extends Curse {
 
 	@SubscribeEvent
 	public void onAquaticDamage(LivingDamageEvent event) {
-		if (!event.getEntity().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer) {
+		if (!event.getEntity().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().isWet()) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (player.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
 				event.setAmount(event.getAmount() * (1.5f + this.getLevel() / 5f));
