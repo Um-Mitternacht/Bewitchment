@@ -32,6 +32,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.isLesser = isLesser;
 		this.condition = condition;
 		this.chance = chance;
+		this.level = 0;
 	}
 	
 	public int getLevel() {

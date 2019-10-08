@@ -3,7 +3,6 @@ package com.bewitchment.common.entity.spirit.ghost;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -38,7 +37,6 @@ public class EntityGhost extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		fallDistance = 0;
 		if (!world.isRemote && world.isDaytime()) setDead();
 	}
 
@@ -61,15 +59,15 @@ public class EntityGhost extends ModEntityMob {
 	}
 
 	@Override
-	protected void updateAITasks() {
+	protected void initEntityAI() {
 		super.initEntityAI();
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(0, new EntityAIAttackMelee(this, 0.5, false));
-		this.tasks.addTask(8, new AIMoveRandom());
-		this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F, 1.0F));
-		this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityGhost.class));
-		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+		this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0, false));
+		this.tasks.addTask(3, new AIMoveRandom());
+		this.tasks.addTask(3, new EntityAILookIdle(this));
+		this.tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true, EntityGhost.class));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
 	}
 
 	@Override
@@ -96,18 +94,21 @@ public class EntityGhost extends ModEntityMob {
 			this.setMutexBits(1);
 		}
 
+		@Override
 		public boolean shouldExecute() {
 			return !EntityGhost.this.getMoveHelper().isUpdating() && EntityGhost.this.rand.nextInt(7) == 0;
 		}
 
+		@Override
 		public boolean shouldContinueExecuting() {
 			return false;
 		}
 
+		@Override
 		public void updateTask() {
 			BlockPos blockpos = new BlockPos(EntityGhost.this);
 			for(int i = 0; i < 3; ++i) {
-				BlockPos blockpos1 = blockpos.add(EntityGhost.this.rand.nextInt(15) - 7, EntityGhost.this.rand.nextInt(11) - 5, EntityGhost.this.rand.nextInt(15) - 7);
+				BlockPos blockpos1 = blockpos.add(EntityGhost.this.rand.nextInt(15) - 7, EntityGhost.this.rand.nextInt(7) - 3, EntityGhost.this.rand.nextInt(15) - 7);
 				if (EntityGhost.this.world.isAirBlock(blockpos1)) {
 					EntityGhost.this.moveHelper.setMoveTo((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 0.25D);
 					if (EntityGhost.this.getAttackTarget() == null) {
@@ -116,7 +117,6 @@ public class EntityGhost extends ModEntityMob {
 					break;
 				}
 			}
-
 		}
 	}
 
@@ -125,6 +125,7 @@ public class EntityGhost extends ModEntityMob {
 			super(ghost);
 		}
 
+		@Override
 		public void onUpdateMoveHelper() {
 			if (this.action == Action.MOVE_TO) {
 				double d0 = this.posX - EntityGhost.this.posX;
@@ -161,5 +162,4 @@ public class EntityGhost extends ModEntityMob {
 			}
 		}
 	}
-
 }
