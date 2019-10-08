@@ -39,19 +39,19 @@ public class RenderGhost extends RenderLiving<EntityGhost> {
 		
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.25F);
 		GlStateManager.depthMask(false);
-
+		
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 		//GlStateManager.alphaFunc(256, 0.003921569F);
 		
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
-
+		
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
-
+		
 		//GlStateManager.enableLighting();
 		//GlStateManager.alphaFunc(256, 0.1F);
 		GlStateManager.disableAlpha();
 		GlStateManager.disableBlend();
-
+		
 		GlStateManager.popMatrix();
 	}
 	
