@@ -1,10 +1,12 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,7 +26,7 @@ public class PotionHellfire extends ModPotion {
 	
 	@SubscribeEvent
 	public void playerFireDamage(LivingHurtEvent event) {
-		if (event.getSource().isFireDamage() && event.getEntityLiving().isPotionActive(this)) {
+		if (!event.getEntity().world.isRemote && event.getEntityLiving().isPotionActive(this) && (event.getSource().isFireDamage() || (event.getSource().getTrueSource() instanceof EntityLiving && ((EntityLiving) event.getSource().getTrueSource()).getCreatureAttribute() == BewitchmentAPI.DEMON))) {
 			int amp = event.getEntityLiving().getActivePotionEffect(ModPotions.hellfire).getAmplifier();
 			float mod = 1.5f + amp * amp * 0.5f;
 			event.setAmount(event.getAmount() * mod);

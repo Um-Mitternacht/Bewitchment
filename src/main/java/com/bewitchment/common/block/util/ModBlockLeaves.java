@@ -10,15 +10,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
@@ -44,13 +48,23 @@ public class ModBlockLeaves extends BlockLeaves {
 		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
 		return super.getItemDropped(state, rand, fortune);
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Blocks.LEAVES.getRenderLayer();
+	}
+
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		this.leavesFancy = Bewitchment.proxy.isFancyGraphicsEnabled();
-		return !this.leavesFancy;
+		return Blocks.LEAVES.isOpaqueCube(state);
 	}
-	
+
+	@Override
+	public void setGraphicsLevel(boolean fancy) {
+		super.setGraphicsLevel(fancy);
+	}
+
 	@Override
 	public BlockPlanks.EnumType getWoodType(int meta) {
 		return null;
