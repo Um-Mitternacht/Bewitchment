@@ -28,6 +28,48 @@
 		},
 		{
 		  "type": "item",
+		  "name": "bewitchment:juniper_sapling",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+				}
+			}
+		  ]
+		},	
+		{
+		  "type": "item",
+		  "name": "bewitchment:elder_sapling",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+				}
+			}
+		  ]
+		},	
+		{
+		  "type": "item",
+		  "name": "bewitchment:cypress_sapling",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+				}
+			}
+		  ]
+		},			
+		{
+		  "type": "item",
 		  "name": "minecraft:gold_ingot",
 		  "weight": 2,
 		  "functions": [

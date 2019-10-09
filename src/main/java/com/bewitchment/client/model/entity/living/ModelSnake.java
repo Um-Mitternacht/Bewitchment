@@ -147,8 +147,8 @@ public class ModelSnake extends ModelBase {
 		if (entity instanceof EntitySnake) {
 			float hissTime = snake.getHissTime();
 			if (hissTime <= 60) {
-				this.tongue.offsetZ = 0.50f;
-				this.body.offsetZ = -0.50f;
+				this.tongue.offsetZ = 0.70f;
+				this.body.offsetZ = -0.70f;
 			}
 			else {
 				this.tongue.offsetZ = 0f;
