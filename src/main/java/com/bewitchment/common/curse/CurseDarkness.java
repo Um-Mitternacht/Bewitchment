@@ -22,7 +22,7 @@ public class CurseDarkness extends Curse {
 	@Override
 	public boolean doCurse(EntityPlayer target) {
 		target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
-		List<EntityLiving> entities = target.world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(target.posX - 4, target.posY - 4, target.posZ -4, target.posX + 4, target.posY + 4, target.posZ + 4));
+		List<EntityLiving> entities = target.world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(target.posX - 4, target.posY - 4, target.posZ - 4, target.posX + 4, target.posY + 4, target.posZ + 4));
 		for (EntityLiving e : entities) e.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200));
 		return false;
 	}
