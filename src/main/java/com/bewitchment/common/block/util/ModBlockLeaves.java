@@ -1,6 +1,5 @@
 package com.bewitchment.common.block.util;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockLeaves;

@@ -33,7 +33,7 @@ public class CurseHydrophobia extends Curse {
 
 	@Override
 	public boolean doCurse(EntityPlayer target) {
-		if(target.isWet()) {
+		if (target.isWet()) {
 			target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1));
 		}
 		return false;

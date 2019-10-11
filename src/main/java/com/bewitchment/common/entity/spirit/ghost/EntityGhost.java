@@ -39,7 +39,7 @@ public class EntityGhost extends ModEntityMob {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime()) setDead();
 	}
-
+	
 	@Override
 	public void onUpdate() {
 		this.noClip = true;
@@ -47,7 +47,7 @@ public class EntityGhost extends ModEntityMob {
 		this.noClip = false;
 		this.setNoGravity(true);
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -57,7 +57,7 @@ public class EntityGhost extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.5);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();
@@ -69,7 +69,7 @@ public class EntityGhost extends ModEntityMob {
 		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true, EntityGhost.class));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
 	}
-
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
@@ -82,49 +82,49 @@ public class EntityGhost extends ModEntityMob {
 	protected boolean isValidLightLevel() {
 		return !world.isDaytime();
 	}
-
+	
 	@Override
 	public boolean shouldRenderInPass(int pass) {
-		if(pass == 1) return true;
+		if (pass == 1) return true;
 		return super.shouldRenderInPass(pass);
 	}
-
+	
 	class AIMoveRandom extends EntityAIBase {
 		public AIMoveRandom() {
 			this.setMutexBits(1);
 		}
-
+		
 		@Override
 		public boolean shouldExecute() {
 			return !EntityGhost.this.getMoveHelper().isUpdating() && EntityGhost.this.rand.nextInt(7) == 0;
 		}
-
+		
 		@Override
 		public boolean shouldContinueExecuting() {
 			return false;
 		}
-
+		
 		@Override
 		public void updateTask() {
 			BlockPos blockpos = new BlockPos(EntityGhost.this);
-			for(int i = 0; i < 3; ++i) {
+			for (int i = 0; i < 3; ++i) {
 				BlockPos blockpos1 = blockpos.add(EntityGhost.this.rand.nextInt(15) - 7, EntityGhost.this.rand.nextInt(7) - 3, EntityGhost.this.rand.nextInt(15) - 7);
 				if (EntityGhost.this.world.isAirBlock(blockpos1)) {
-					EntityGhost.this.moveHelper.setMoveTo((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 0.25D);
+					EntityGhost.this.moveHelper.setMoveTo((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.5D, (double) blockpos1.getZ() + 0.5D, 0.25D);
 					if (EntityGhost.this.getAttackTarget() == null) {
-						EntityGhost.this.getLookHelper().setLookPosition((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 180.0F, 20.0F);
+						EntityGhost.this.getLookHelper().setLookPosition((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 0.5D, (double) blockpos1.getZ() + 0.5D, 180.0F, 20.0F);
 					}
 					break;
 				}
 			}
 		}
 	}
-
+	
 	class AIMoveControl extends EntityMoveHelper {
 		public AIMoveControl(EntityGhost ghost) {
 			super(ghost);
 		}
-
+		
 		@Override
 		public void onUpdateMoveHelper() {
 			if (this.action == Action.MOVE_TO) {
@@ -142,7 +142,8 @@ public class EntityGhost extends ModEntityMob {
 					tempGhost.motionY *= 0.5D;
 					tempGhost = EntityGhost.this;
 					tempGhost.motionZ *= 0.5D;
-				} else {
+				}
+				else {
 					tempGhost = EntityGhost.this;
 					tempGhost.motionX += d0 / d3 * 0.05D * this.speed;
 					tempGhost = EntityGhost.this;
@@ -150,12 +151,13 @@ public class EntityGhost extends ModEntityMob {
 					tempGhost = EntityGhost.this;
 					tempGhost.motionZ += d2 / d3 * 0.05D * this.speed;
 					if (EntityGhost.this.getAttackTarget() == null) {
-						EntityGhost.this.rotationYaw = -((float)MathHelper.atan2(EntityGhost.this.motionX, EntityGhost.this.motionZ)) * 57.295776F;
+						EntityGhost.this.rotationYaw = -((float) MathHelper.atan2(EntityGhost.this.motionX, EntityGhost.this.motionZ)) * 57.295776F;
 						EntityGhost.this.renderYawOffset = EntityGhost.this.rotationYaw;
-					} else {
+					}
+					else {
 						double d4 = EntityGhost.this.getAttackTarget().posX - EntityGhost.this.posX;
 						double d5 = EntityGhost.this.getAttackTarget().posZ - EntityGhost.this.posZ;
-						EntityGhost.this.rotationYaw = -((float)MathHelper.atan2(d4, d5)) * 57.295776F;
+						EntityGhost.this.rotationYaw = -((float) MathHelper.atan2(d4, d5)) * 57.295776F;
 						EntityGhost.this.renderYawOffset = EntityGhost.this.rotationYaw;
 					}
 				}

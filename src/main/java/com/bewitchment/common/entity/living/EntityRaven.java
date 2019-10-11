@@ -34,7 +34,7 @@ public class EntityRaven extends ModEntityTameable {
 	protected int shearTimer;
 	
 	public EntityRaven(World world) {
-		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, ModObjects.silver_nugget);
+		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, Items.IRON_NUGGET, ModObjects.cold_iron_nugget, ModObjects.silver_nugget);
 	}
 	
 	protected EntityRaven(World world, ResourceLocation lootTableLocation, Item... tameItems) {

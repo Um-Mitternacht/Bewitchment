@@ -26,12 +26,12 @@ public class CommandCurse extends CommandBase {
 	public String getName() {
 		return "curse";
 	}
-
+	
 	@Override
 	public String getUsage(ICommandSender iCommandSender) {
 		return "/curse <player> <get/add/remove/clear>";
 	}
-
+	
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if (args.length == 0) throw new WrongUsageException(getUsage(sender));
@@ -93,7 +93,7 @@ public class CommandCurse extends CommandBase {
 			}
 		}
 	}
-
+	
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
 		if (args.length == 1) return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());

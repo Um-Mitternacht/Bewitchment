@@ -3,7 +3,7 @@ tile.bewitchment.blessed_stone.name=Błogosławiony Kamień
 tooltip.bewitchment.blessed_stone=Daje ołtarzowi nieskończoną moc. Tylko kreatywny
 
 tile.bewitchment.block_of_amethyst.name=Blok Ametystu
-tile.bewitchment.block_of_garnet.name=Block Granatu
+tile.bewitchment.block_of_garnet.name=Blok Granatu
 tile.bewitchment.block_of_opal.name=Blok Opalu
 tile.bewitchment.block_of_silver.name=Blok Srebra
 tile.bewitchment.block_of_cold_iron.name=Blok Zimnego Żelaza
@@ -232,7 +232,7 @@ tooltip.bewitchment.hellish_bauble=Ten bibelot nakazuje szacunek wśród demonó
 item.bewitchment.horseshoe.name=Podkowa
 tooltip.bewitchment.horseshoe=Podkowy wydają się być ogólnie szczęśliwymi błyskotkami. Duchy wydają się niechętne.
 item.bewitchment.nazar.name=Nazar
-tooltip.bewitchment.nazar=Amulet, który wypędza niefart i zapewnia pewną odporność przeciwko magicznymi atakami.
+tooltip.bewitchment.nazar=Amulet, który odpędza pecha i zapewnia do pewnego stopnia odporność przeciwko magicznymi atakami.
 item.bewitchment.token_of_remedies.name=Znak Uzdrowienia
 tooltip.bewitchment.token_of_remedies=Klejnot w jego wnętrzu wydaje się pochłaniać choroby.
 
@@ -463,6 +463,14 @@ bewitchment.sinking=Opadanie
 bewitchment.cursed_leaps=Klątwa Lewitacji
 bewitchment.hellfire=Ogień Piekielny
 
+incense.bewitchment.vitality=Witalność
+incense.bewitchment.deftness=Zręczność
+incense.bewitchment.invigorating=Krzepkość
+incense.bewitchment.cats_eye=Kocie Oko
+incense.bewitchment.fullness=Sytość
+incense.bewitchment.intensity=Intensywność
+incense.bewitchment.concentration=Koncentracja
+
 #FORTUNE
 fortune.has_fortune=%s'ego przyszłość już została ujawniona: %s
 fortune.no_fortune=Ten świat nie ma już żadnych sekretów
@@ -473,17 +481,17 @@ fortune.bewitchment.illness=Bezsilność i nieszczęście prześladują Twą prz
 fortune.bewitchment.vitality=Rany goją się w czasie potrzeby.
 fortune.bewitchment.meet_pet=Napotkasz wkrótce nowego przyjaciela.
 fortune.bewitchment.meet_merchant=Znajdziesz dobry interes.
-fortune.bewitchment.meet_demon=Potężny książe widział, że wróżyłeś, i zainteresował się w Tobie.
-fortune.bewitchment.meet_feuerwurm=Młodszy demon widział, że wróżyłeś, i życzy Cię wyzwać do walki!
-fortune.bewitchment.meet_blaze=Młodszy żywiołowy ognia widział, że wróżyłeś, i ukazał się by cię powstrzymać!
-fortune.bewitchment.meet_dire_wolf=Wściekła bestia wkrótce Cię znajdzie.
+fortune.bewitchment.meet_demon=Potężny książe widział, że wróżyłeś i zainteresował się Tobą.
+fortune.bewitchment.meet_feuerwurm=Młodszy demon widział, że wróżyłeś i życzy sobie wyzwać Cię do walki!
+fortune.bewitchment.meet_blaze=Młodszy żywiołak ognia widział, że wróżyłeś i ukazał się by cię powstrzymać!
+fortune.bewitchment.meet_dire_wolf=Wściekła bestia wkrótce Cię na Ciebie natknie.
 fortune.bewitchment.meet_silverfish=Niecne robactwo kryje się na drodze.
 fortune.bewitchment.meet_witch=Coś złego tędy idzie.
-fortune.bewitchment.meet_zombie=Ci, którzy leżą pod ziemią będą rozbudzeni.
-fortune.bewitchment.death=Droga przed nami wygląda dość nieciekawie.
-fortune.bewitchment.drop_item=Palce nie będą posłuszne kiedy będą najpotrzebniejsze.
+fortune.bewitchment.meet_zombie=Ci, którzy leżą pod ziemią zostaną obudzeni.
+fortune.bewitchment.death=Droga przed nami wygląda nieciekawie.
+fortune.bewitchment.drop_item=Palce nie będą posłuszne w chwili potrzeby.
 fortune.bewitchment.treasure=Możesz być wkrótce bardzo bogaty.
-fortune.bewitchment.cats_and_dogs=Będzie padało kotami i psami.
+fortune.bewitchment.cats_and_dogs=Będzie lało jak z cebra.
 
 #TAROT
 tarot.no_tarot=Nie możesz do końca zrozumieć, co jest w kryształowej kuli...
@@ -574,6 +582,14 @@ commands.fortune.remove=Przyszłość %s została usunięta
 commands.fortune.execute=Przyszłość %s została wykonana wykonana
 commands.fortune.nofortune=%s nie ma przepowiedzianej przyszłości
 commands.fortune.null=%s nie jest przyszłością
+
+commands.curse.get=klątwa(y): %s
+commands.curse.add=%s został(a) dodana do klątw 
+commands.curse.remove=klątwa została zdjęta z %s
+commands.curse.nocurse=%s nie ma żadnej klątwy
+commands.curse.null=%s nie jest klątwą
+commands.curse.clear=Zabrano wszystkie klątwy z %s
+commands.curse.empty=%s Nie ma żadnych aktywnych klątw
 
 jei.ritual=Rytuał
 jei.ritual.startingPower=Starting Power: %d

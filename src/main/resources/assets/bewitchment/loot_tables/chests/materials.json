@@ -36,10 +36,10 @@
 			  "count": {
 				"min": 0,
 				"max": 2
-				}
+			  }
 			}
 		  ]
-		},	
+		},
 		{
 		  "type": "item",
 		  "name": "bewitchment:elder_sapling",
@@ -50,10 +50,10 @@
 			  "count": {
 				"min": 0,
 				"max": 2
-				}
+			  }
 			}
 		  ]
-		},	
+		},
 		{
 		  "type": "item",
 		  "name": "bewitchment:cypress_sapling",
@@ -64,10 +64,10 @@
 			  "count": {
 				"min": 0,
 				"max": 2
-				}
+			  }
 			}
 		  ]
-		},			
+		},
 		{
 		  "type": "item",
 		  "name": "minecraft:gold_ingot",
