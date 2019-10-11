@@ -5,9 +5,13 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.pathfinding.Path;
+import net.minecraft.pathfinding.PathPoint;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -21,7 +25,8 @@ public class CurseInsanity extends Curse {
 
 	@Override
 	public boolean doCurse(EntityPlayer target) {
-		target.world.spawnEntity(getRandomFakeMob(target.getRNG(), target));
+		EntityLiving fake = getRandomFakeMob(target.getRNG(), target);
+		target.world.spawnEntity(fake);
 		return true;
 	}
 
@@ -42,19 +47,143 @@ public class CurseInsanity extends Curse {
 		int z = (int) target.posZ + rand.nextInt(6) - 5;
 		temp.setPosition(x, world.getHeight(x, z), z);
 		temp.setEntityInvulnerable(true);
-//		List<EntityAIBase> toRemove = new ArrayList<>();
-//		for (EntityAITasks.EntityAITaskEntry task : temp.tasks.taskEntries) {
-//			if (task.action instanceof EntityAIAttackMelee || task.action instanceof EntityAIAttackRanged || task.action instanceof EntityAIAttackRangedBow)
-//				toRemove.add(task.action);
-//		}
-//		for(EntityAIBase remove : toRemove) {
-//			temp.tasks.removeTask(remove);
-//		}
-//		temp.tasks.addTask(1, new EntityAIFollow(temp, 1d, 0f, 5f));
-		temp.addTag("fake");
+		List<EntityAIBase> toRemove = new ArrayList<>();
+		for (EntityAITasks.EntityAITaskEntry task : temp.tasks.taskEntries) {
+			toRemove.add(task.action);
+		}
+		for(EntityAIBase remove : toRemove) {
+			temp.tasks.removeTask(remove);
+		}
+		temp.tasks.addTask(1, new EntityAIFakeAttack(temp, 1.0, false));
 		temp.setAttackTarget(target);
-		temp.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0);
-		//temp.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).applyModifier(new AttributeModifier(UUID.fromString("cc64aa1a-727f-4750-b0cf-aabd5d8de354"), "noDamage", 0, 0));
 		return temp;
+	}
+
+	static class EntityAIFakeAttack extends EntityAIBase {
+		World world;
+		EntityLiving attacker;
+		int attackTick;
+		double speedTowardsTarget;
+		boolean longMemory;
+		Path path;
+		private int delayCounter;
+		private double targetX;
+		private double targetY;
+		private double targetZ;
+		int survivalTime;
+		private int failedPathFindingPenalty = 0;
+		private boolean canPenalize = false;
+
+		EntityAIFakeAttack(EntityLiving creature, double speedIn, boolean useLongMemory) {
+			this.attacker = creature;
+			this.world = creature.world;
+			this.speedTowardsTarget = speedIn;
+			this.longMemory = useLongMemory;
+			this.survivalTime = creature.getRNG().nextInt(20) + 30;
+			this.setMutexBits(3);
+		}
+
+		public boolean shouldExecute() {
+			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
+			if (entitylivingbase == null) {
+				return false;
+			} else if (!entitylivingbase.isEntityAlive()) {
+				return false;
+			} else if (this.canPenalize) {
+				if (--this.delayCounter <= 0) {
+					this.path = this.attacker.getNavigator().getPathToEntityLiving(entitylivingbase);
+					this.delayCounter = 4 + this.attacker.getRNG().nextInt(7);
+					return this.path != null;
+				} else {
+					return true;
+				}
+			} else {
+				this.path = this.attacker.getNavigator().getPathToEntityLiving(entitylivingbase);
+				if (this.path != null) {
+					return true;
+				} else {
+					return this.getAttackReachSqr(entitylivingbase) >= this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
+				}
+			}
+		}
+
+		public boolean shouldContinueExecuting() {
+			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
+			if (entitylivingbase == null) {
+				return false;
+			} else if (!entitylivingbase.isEntityAlive()) {
+				return false;
+			} else if (!this.longMemory) {
+				return !this.attacker.getNavigator().noPath();
+			} else {
+				return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative();
+			}
+		}
+
+		public void startExecuting() {
+			this.attacker.getNavigator().setPath(this.path, this.speedTowardsTarget);
+			this.delayCounter = 0;
+		}
+
+		public void resetTask() {
+			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
+			if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer)entitylivingbase).isSpectator() || ((EntityPlayer)entitylivingbase).isCreative())) {
+				this.attacker.setAttackTarget((EntityLivingBase)null);
+			}
+			this.attacker.getNavigator().clearPath();
+		}
+
+		public void updateTask() {
+			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
+			this.attacker.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
+			double d0 = this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
+			--this.delayCounter;
+			if ((this.longMemory || this.attacker.getEntitySenses().canSee(entitylivingbase)) && this.delayCounter <= 0 && (this.targetX == 0.0D && this.targetY == 0.0D && this.targetZ == 0.0D || entitylivingbase.getDistanceSq(this.targetX, this.targetY, this.targetZ) >= 1.0D || this.attacker.getRNG().nextFloat() < 0.05F)) {
+				this.targetX = entitylivingbase.posX;
+				this.targetY = entitylivingbase.getEntityBoundingBox().minY;
+				this.targetZ = entitylivingbase.posZ;
+				this.delayCounter = 4 + this.attacker.getRNG().nextInt(7);
+				if (this.canPenalize) {
+					this.delayCounter += this.failedPathFindingPenalty;
+					if (this.attacker.getNavigator().getPath() != null) {
+						PathPoint finalPathPoint = this.attacker.getNavigator().getPath().getFinalPathPoint();
+						if (finalPathPoint != null && entitylivingbase.getDistanceSq((double)finalPathPoint.x, (double)finalPathPoint.y, (double)finalPathPoint.z) < 1.0D) {
+							this.failedPathFindingPenalty = 0;
+						} else {
+							this.failedPathFindingPenalty += 10;
+						}
+					} else {
+						this.failedPathFindingPenalty += 10;
+					}
+				}
+				if (d0 > 1024.0D) {
+					this.delayCounter += 10;
+				} else if (d0 > 256.0D) {
+					this.delayCounter += 5;
+				}
+				if (!this.attacker.getNavigator().tryMoveToEntityLiving(entitylivingbase, this.speedTowardsTarget)) {
+					this.delayCounter += 15;
+				}
+			}
+			this.attackTick = Math.max(this.attackTick - 1, 0);
+			this.checkAndPerformAttack(entitylivingbase, d0);
+		}
+
+		void checkAndPerformAttack(EntityLivingBase enemy, double distToEnemySqr) {
+			double d0 = this.getAttackReachSqr(enemy);
+			if (distToEnemySqr <= 5) {
+				this.survivalTime--;
+				if (this.survivalTime <= 0) {
+					attacker.setDead();
+				}
+			}
+			if (distToEnemySqr <= d0 && this.attackTick <= 0) {
+				this.attackTick = 20;
+				this.attacker.swingArm(EnumHand.MAIN_HAND);
+			}
+		}
+		double getAttackReachSqr(EntityLivingBase attackTarget) {
+			return (this.attacker.width * 2.0F * this.attacker.width * 2.0F + attackTarget.width);
+		}
 	}
 }
