@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("WeakerAccess")
 @SideOnly(Side.CLIENT)
 public class RenderGhost extends RenderLiving<EntityGhost> {
-	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_3.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_4.png")};
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_3.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_4.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/ghost_5.png")};
 	
 	public RenderGhost(RenderManager manager) {
 		this(manager, new ModelGhost());
