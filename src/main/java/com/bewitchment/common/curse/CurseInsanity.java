@@ -28,14 +28,14 @@ public class CurseInsanity extends Curse {
 	public CurseInsanity() {
 		super(new ResourceLocation(Bewitchment.MODID, "insanity"), Arrays.asList(Util.get(Blocks.RED_MUSHROOM), Util.get(ModObjects.belladonna), Util.get(ModObjects.elderberries), Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.spanish_moss), Util.get(ModObjects.taglock)), false, CurseCondition.RANDOM, 0.01);
 	}
-
+	
 	@Override
 	public boolean doCurse(EntityPlayer target) {
 		EntityLiving fake = getRandomFakeMob(target.getRNG(), target);
 		target.world.spawnEntity(fake);
 		return true;
 	}
-
+	
 	private EntityLiving getRandomFakeMob(Random rand, EntityPlayer target) {
 		World world = target.world;
 		List<Biome.SpawnListEntry> spawns = world.getBiome(target.getPosition()).getSpawnableList(EnumCreatureType.MONSTER);
@@ -66,7 +66,7 @@ public class CurseInsanity extends Curse {
 		temp.setAttackTarget(target);
 		return temp;
 	}
-
+	
 	static class EntityAIFakeAttack extends EntityAIBase {
 		World world;
 		EntityLiving attacker;
@@ -81,7 +81,7 @@ public class CurseInsanity extends Curse {
 		int survivalTime;
 		private int failedPathFindingPenalty = 0;
 		private boolean canPenalize = false;
-
+		
 		EntityAIFakeAttack(EntityLiving creature, double speedIn, boolean useLongMemory) {
 			this.attacker = creature;
 			this.world = creature.world;
@@ -90,7 +90,7 @@ public class CurseInsanity extends Curse {
 			this.survivalTime = creature.getRNG().nextInt(20) + 30;
 			this.setMutexBits(3);
 		}
-
+		
 		public boolean shouldExecute() {
 			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 			if (entitylivingbase == null) {
@@ -119,7 +119,7 @@ public class CurseInsanity extends Curse {
 				}
 			}
 		}
-
+		
 		public boolean shouldContinueExecuting() {
 			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 			if (entitylivingbase == null) {
@@ -135,12 +135,12 @@ public class CurseInsanity extends Curse {
 				return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer) entitylivingbase).isSpectator() && !((EntityPlayer) entitylivingbase).isCreative();
 			}
 		}
-
+		
 		public void startExecuting() {
 			this.attacker.getNavigator().setPath(this.path, this.speedTowardsTarget);
 			this.delayCounter = 0;
 		}
-
+		
 		public void resetTask() {
 			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 			if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer) entitylivingbase).isSpectator() || ((EntityPlayer) entitylivingbase).isCreative())) {
@@ -148,7 +148,7 @@ public class CurseInsanity extends Curse {
 			}
 			this.attacker.getNavigator().clearPath();
 		}
-
+		
 		public void updateTask() {
 			EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 			this.attacker.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
@@ -187,7 +187,7 @@ public class CurseInsanity extends Curse {
 			this.attackTick = Math.max(this.attackTick - 1, 0);
 			this.checkAndPerformAttack(entitylivingbase, d0);
 		}
-
+		
 		void checkAndPerformAttack(EntityLivingBase enemy, double distToEnemySqr) {
 			double d0 = this.getAttackReachSqr(enemy);
 			if (distToEnemySqr <= 5) {
@@ -201,7 +201,7 @@ public class CurseInsanity extends Curse {
 				this.attacker.swingArm(EnumHand.MAIN_HAND);
 			}
 		}
-
+		
 		double getAttackReachSqr(EntityLivingBase attackTarget) {
 			return (this.attacker.width * 2.0F * this.attacker.width * 2.0F + attackTarget.width);
 		}
