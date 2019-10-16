@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:poppet"
+	},
+	{
+	  "item": "bewitchment:aconitum"
+	},
+	{
+	  "item": "bewitchment:garlic"
+	},
+	{
+	  "item": "bewitchment:white_sage"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:poppet_judgement",
+	"count": 1
+  }
+}

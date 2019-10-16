@@ -137,5 +137,22 @@
 		"item": "bewitchment:black_candle"
 	  }
 	]
+  },
+  {
+	"name": "MEAT_ANY",
+	"ingredient": [
+	  {
+		"item": "minecraft:chicken"
+	  },
+	  {
+		"item": "minecraft:beef"
+	  },
+	  {
+		"item": "minecraft:porkchop"
+	  },
+	  {
+		"item": "minecraft:mutton"
+	  }
+	]
   }
 ]

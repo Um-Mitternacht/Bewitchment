@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:poppet"
+	},
+	{
+	  "item": "bewitchment:bottle_of_blood"
+	},
+	{
+	  "item": "bewitchment:bone_needle"
+	},
+	{
+	  "item": "bewitchment:hellebore"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:poppet_voodoo",
+	"count": 1
+  }
+}
