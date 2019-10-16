@@ -16,6 +16,7 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 	/**
 	 * Used to check if a recipe matches current crafting inventory
 	 */
+	@Override
 	public boolean matches(InventoryCrafting inv, World worldIn) {
 		List<ItemStack> items = new ArrayList<>();
 		for (int i = 0; i < inv.getWidth(); ++i) {
@@ -24,17 +25,19 @@ public class RecipePoppet extends net.minecraftforge.registries.IForgeRegistryEn
 				if (!itemstack.isEmpty()) items.add(itemstack);
 			}
 		}
+		if(items.size() > 2) return false;
+		boolean taglock = false, poppet = false;
 		for (ItemStack item : items) {
-			if (!(item.getItem() instanceof ItemTaglock || item.getItem() instanceof ItemPoppet)) return false;
-			if (item.getItem() instanceof ItemTaglock && !item.hasTagCompound()) return false;
-			if (item.getItem() instanceof ItemPoppet && item.hasTagCompound()) return false;
+			if (item.getItem() instanceof ItemTaglock && item.hasTagCompound()) taglock = !taglock;
+			if (item.getItem() instanceof ItemPoppet && !item.hasTagCompound()) poppet = !poppet;
 		}
-		return true;
+		return taglock && poppet;
 	}
 	
 	/**
 	 * Returns an Item that is the result of this recipe
 	 */
+	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv) {
 		ItemStack taglock = null, poppet = null;
 		for (int i = 0; i < inv.getWidth(); ++i) {
