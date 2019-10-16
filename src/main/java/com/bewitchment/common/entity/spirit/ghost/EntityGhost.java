@@ -31,7 +31,7 @@ public class EntityGhost extends ModEntityMob {
 	
 	@Override
 	protected int getSkinTypes() {
-		return 4;
+		return 5;
 	}
 	
 	@Override

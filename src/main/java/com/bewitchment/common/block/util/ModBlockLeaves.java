@@ -47,23 +47,23 @@ public class ModBlockLeaves extends BlockLeaves {
 		if (this == ModObjects.dragons_blood_leaves) return Item.getItemFromBlock(ModObjects.dragons_blood_sapling);
 		return super.getItemDropped(state, rand, fortune);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return Blocks.LEAVES.getRenderLayer();
 	}
-
+	
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return Blocks.LEAVES.isOpaqueCube(state);
 	}
-
+	
 	@Override
 	public void setGraphicsLevel(boolean fancy) {
 		super.setGraphicsLevel(fancy);
 	}
-
+	
 	@Override
 	public BlockPlanks.EnumType getWoodType(int meta) {
 		return null;

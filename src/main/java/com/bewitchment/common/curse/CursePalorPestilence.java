@@ -19,13 +19,13 @@ public class CursePalorPestilence extends Curse {
 	@Override
 	public boolean doCurse(EntityPlayer target) {
 		int level = this.getLevel();
-		if(!target.world.isRemote) {
+		if (!target.world.isRemote) {
 			switch (target.getRNG().nextInt(2)) {
 				case 0:
-					target.addPotionEffect(new PotionEffect(MobEffects.WITHER, (level+1)*300));
+					target.addPotionEffect(new PotionEffect(MobEffects.WITHER, (level + 1) * 300));
 					break;
 				case 1:
-					target.addPotionEffect(new PotionEffect(MobEffects.POISON, (level+1)*300));
+					target.addPotionEffect(new PotionEffect(MobEffects.POISON, (level + 1) * 300));
 			}
 			return true;
 		}
