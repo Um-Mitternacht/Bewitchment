@@ -105,4 +105,9 @@ public class CommandCurse extends CommandBase {
 		}
 		return Collections.emptyList();
 	}
+
+	@Override
+	public int getRequiredPermissionLevel() {
+		return 2;
+	}
 }
