@@ -1,6 +1,6 @@
 package com.bewitchment.common.handler;
 
-import com.bewitchment.registry.ModObjects;
+import com.bewitchment.api.BewitchmentAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -12,7 +12,7 @@ public class ArmorHandler {
 	public void reducePotionDamage(LivingDamageEvent event) {
 		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if (event.getSource().getDamageType().equals("indirectMagic") && (player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl) && player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
+			if (event.getSource().getDamageType().equals("indirectMagic") && BewitchmentAPI.hasAlchemist(player)) {
 				event.setAmount(event.getAmount() * 0.5f);
 			}
 		}
@@ -22,7 +22,7 @@ public class ArmorHandler {
 	public void reduceNegativeEffectLevel(LivingEvent.LivingUpdateEvent event) {
 		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if ((player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_hat || player.inventory.armorItemInSlot(3).getItem() == ModObjects.alchemist_cowl) && player.inventory.armorItemInSlot(2).getItem() == ModObjects.alchemist_robes && player.inventory.armorItemInSlot(1).getItem() == ModObjects.alchemist_pants) {
+			if (BewitchmentAPI.hasAlchemist(player)) {
 				for (PotionEffect effect : player.getActivePotionEffects()) {
 					if (effect.getPotion().isBadEffect() && effect.getAmplifier() > 0) {
 						PotionEffect newEffect = new PotionEffect(effect.getPotion(), effect.getDuration(), 0);

@@ -2,6 +2,7 @@ package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.*;
@@ -12,8 +13,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 
 import java.util.*;
@@ -174,6 +177,7 @@ public class CurseInsanity extends Curse {
 			if (distToEnemySqr <= 5) {
 				this.survivalTime--;
 				if (this.survivalTime <= 0) {
+					((WorldServer)world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, false, attacker.posX, attacker.posY, attacker.posZ, 100, 1, 2, 1, 0.05, 0);
 					attacker.setDead();
 				}
 			}

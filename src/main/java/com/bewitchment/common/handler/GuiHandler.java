@@ -11,10 +11,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
-import java.util.UUID;
+import java.util.Collections;
 
 @SuppressWarnings("ConstantConditions")
 public class GuiHandler implements IGuiHandler {
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
@@ -23,7 +24,9 @@ public class GuiHandler implements IGuiHandler {
 		if (tile instanceof TileEntitySpinningWheel) return new ContainerSpinningWheel(player.inventory, (TileEntitySpinningWheel) tile);
 		if (tile instanceof TileEntityTarotTable) {
 			ItemStack stack = player.getHeldItemMainhand();
-			if (stack.getItem() instanceof ItemTarotCards && stack.hasTagCompound() && stack.getTagCompound().hasKey("readId")) return new ContainerTarotTable(UUID.fromString(stack.getTagCompound().getString("readId")));
+			if (stack.getItem() instanceof ItemTarotCards && stack.hasTagCompound() && stack.getTagCompound().hasKey("readId")) {
+				return new ContainerTarotTable(Collections.emptyList());
+			}
 		}
 		if (tile instanceof TileEntityJuniperChest) return new ContainerJuniperChest(player.inventory, (TileEntityJuniperChest) tile);
 		return null;

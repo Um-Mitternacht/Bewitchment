@@ -2,6 +2,7 @@ package com.bewitchment.proxy;
 
 import baubles.api.BaublesApi;
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.message.TarotInfo;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
@@ -34,6 +35,9 @@ public class ServerProxy {
 			return advancement != null && ((EntityPlayerMP) player).getAdvancements().getProgress(advancement).isDone();
 		}
 		return false;
+	}
+
+	public void handleTarot(List<TarotInfo> infoList) {
 	}
 	
 	public boolean isFancyGraphicsEnabled() {

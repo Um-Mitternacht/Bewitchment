@@ -1,7 +1,7 @@
 package com.bewitchment.client.gui;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.Tarot;
+import com.bewitchment.api.message.TarotInfo;
 import com.bewitchment.common.block.tile.container.ContainerTarotTable;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -10,6 +10,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
+import java.util.List;
 
 public class GuiTarotTable extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot_table.png");
@@ -35,25 +37,25 @@ public class GuiTarotTable extends GuiContainer {
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		for (int i = 0; i < container.toRead.size(); i++) {
+		for (int i = 0; i < container.infoList.size(); i++) {
 			GlStateManager.pushMatrix();
 			GlStateManager.color(1, 1, 1);
-			Tarot tarot = container.toRead.get(i);
-			mc.getTextureManager().bindTexture(tarot.texture);
+			TarotInfo tarot = container.infoList.get(i);
+			mc.getTextureManager().bindTexture(tarot.getTexture());
 			int cx = x + (i % 2 == 0 ? 48 : 126);
 			int cy = y + (i / 2 == 0 ? 44 : 122);
 			GlStateManager.pushMatrix();
-			if (tarot.isReversed(container.player)) {
+			if (tarot.isReversed()) {
 				GlStateManager.rotate(180, 0, 0, 1);
 				drawCard(-cx, -cy, 48, 64);
 			}
 			else drawCard(cx, cy, 48, 64);
 			GlStateManager.popMatrix();
-			mc.getTextureManager().bindTexture(tarot.getNumber(container.player) < 0 ? TEX_FRAME : TEX_FRAME_NUMBER);
+			mc.getTextureManager().bindTexture(tarot.getNumber() < 0 ? TEX_FRAME : TEX_FRAME_NUMBER);
 			drawCard(cx, cy, 50, 66);
 			GlStateManager.popMatrix();
-			if (tarot.getNumber(container.player) > -1) {
-				int num = tarot.getNumber(container.player);
+			if (tarot.getNumber() > -1) {
+				int num = tarot.getNumber();
 				String number = num > 99 ? "99+" : "" + num;
 				drawCenteredString(mc.fontRenderer, number, cx, cy + 24, 0x7f7f7f);
 			}
@@ -73,5 +75,9 @@ public class GuiTarotTable extends GuiContainer {
 		buff.pos(xEnd, yStart, 0).tex(1, 0).endVertex();
 		buff.pos(xStart, yStart, 0).tex(0, 0).endVertex();
 		tessellator.draw();
+	}
+
+	public void loadData(List<TarotInfo> infoList) {
+		this.container.infoList = infoList;
 	}
 }

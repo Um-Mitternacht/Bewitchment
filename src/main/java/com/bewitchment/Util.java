@@ -98,6 +98,10 @@ public class Util {
 		}
 		return null;
 	}
+
+	public static EntityPlayer findPlayer(String uuid) {
+		return findPlayer(UUID.fromString(uuid));
+	}
 	
 	public static Ingredient get(Object... objects) {
 		List<Ingredient> list = new ArrayList<>();

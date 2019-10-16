@@ -1,6 +1,8 @@
 package com.bewitchment.proxy;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.message.TarotInfo;
+import com.bewitchment.client.gui.GuiTarotTable;
 import com.bewitchment.client.model.block.ModelBaphometIdol;
 import com.bewitchment.client.model.block.ModelHerneIdol;
 import com.bewitchment.client.model.block.ModelLeonardIdol;
@@ -15,6 +17,7 @@ import com.bewitchment.client.render.entity.spirit.ghost.RenderGhost;
 import com.bewitchment.client.render.fx.ModParticleBubble;
 import com.bewitchment.client.render.tile.*;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.block.tile.container.ContainerTarotTable;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.misc.EntityCypressBroom;
@@ -23,6 +26,7 @@ import com.bewitchment.common.entity.misc.EntityJuniperBroom;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
+import com.bewitchment.common.handler.GuiHandler;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -192,5 +196,18 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
+	}
+
+	@Override
+	public void handleTarot(List<TarotInfo> infoList) {
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
+		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
+			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
+		} else {
+			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
+			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
+			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
+		}
 	}
 }
