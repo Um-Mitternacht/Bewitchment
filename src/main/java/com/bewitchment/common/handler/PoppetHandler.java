@@ -1,6 +1,7 @@
 package com.bewitchment.common.handler;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,6 +10,7 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -39,13 +41,13 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void clumsy(LivingDamageEvent event) {
-		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
+		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if (Util.hasPoppet(player, ModObjects.poppet_clumsy)) {
-				EntityPlayer source = (EntityPlayer) event.getSource().getTrueSource();
-				ItemStack held = source.getHeldItemMainhand();
+			EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
+			ItemStack held = source.getHeldItemMainhand();
+			if (held != ItemStack.EMPTY && Util.hasPoppet(player, ModObjects.poppet_clumsy)) {
 				InventoryHelper.spawnItemStack(source.getEntityWorld(), source.posX, source.posY, source.posZ, held);
-				source.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
+				source.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
 			}
 		}
 	}
@@ -76,7 +78,7 @@ public class PoppetHandler {
 		if (event.getEntityLiving() instanceof EntityPlayer && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE)) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_flameprotection)) {
-				event.setAmount(event.getAmount() * 80 / 100);
+				event.setAmount(event.getAmount() * 0.6f);
 			}
 		}
 	}
@@ -103,6 +105,26 @@ public class PoppetHandler {
 			}
 		}
 	}
-	
-	
+
+	@SubscribeEvent
+	public void judgement(LivingDamageEvent event) {
+		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			if (Util.hasPoppet(player, ModObjects.poppet_judgement) && (BewitchmentAPI.isWerewolf(attacker) || BewitchmentAPI.isVampire(attacker))) {
+				event.setAmount(event.getAmount() * 0.6f);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void spiritProtection(LivingDamageEvent event) {
+		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			if (Util.hasPoppet(player, ModObjects.poppet_spiritbane) && BewitchmentAPI.isSpirit(attacker)) {
+				event.setAmount(event.getAmount() * 0.6f);
+			}
+		}
+	}
 }

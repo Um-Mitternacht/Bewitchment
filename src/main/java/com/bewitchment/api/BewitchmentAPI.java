@@ -82,6 +82,14 @@ public class BewitchmentAPI {
 	public static boolean isSpectre(EntityLivingBase entity) {
 		return false;
 	}
+
+	/**
+	 * @param entity the entity to check
+	 * @return if entity is a spirit
+	 */
+	public static boolean isSpirit(EntityLivingBase entity) {
+		return entity.getCreatureAttribute() == SPIRIT;
+	}
 	
 	/**
 	 * @param entity the entity to check
