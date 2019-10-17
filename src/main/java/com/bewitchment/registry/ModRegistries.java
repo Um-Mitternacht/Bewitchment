@@ -70,6 +70,7 @@ public class ModRegistries {
 		new RegistryBuilder<Fortune>().setName(new ResourceLocation(Bewitchment.MODID, "fortune")).setType(Fortune.class).create();
 		new RegistryBuilder<Tarot>().setName(new ResourceLocation(Bewitchment.MODID, "tarot")).setType(Tarot.class).create();
 		new RegistryBuilder<Curse>().setName(new ResourceLocation(Bewitchment.MODID, "curse")).setType(Curse.class).create();
+		new RegistryBuilder<SigilRecipe>().setName(new ResourceLocation(Bewitchment.MODID, "sigil")).setType(SigilRecipe.class).create();
 	}
 	
 	@SubscribeEvent
