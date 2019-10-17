@@ -7,11 +7,11 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandleBase;
+import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
-import com.bewitchment.common.block.util.ModBlockLog;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
@@ -105,11 +105,8 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_fence_gate, BlockFenceGate.POWERED);
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_fence_gate, BlockFenceGate.POWERED);
-		
-		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.elder_wood, ModBlockLog.IS_NATURAL, ModBlockLog.IS_SLASHED);
-		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, ModBlockLog.IS_NATURAL);
+
+		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, BlockDragonsBloodLog.NATURAL);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
 		ModObjects.crop_belladonna.setItems(ModObjects.belladonna_seeds, ModObjects.belladonna);

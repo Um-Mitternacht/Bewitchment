@@ -27,14 +27,11 @@ import java.util.Random;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class ModBlockLog extends BlockLog {
-	public static final PropertyBool IS_NATURAL = PropertyBool.create("is_natural");
-	public static final PropertyBool IS_SLASHED = PropertyBool.create("is_slashed");
-	
+
 	public ModBlockLog(String name, Block base, String... oreDictionaryNames) {
 		super();
 		Util.registerBlock(this, name, base, oreDictionaryNames);
-		setTickRandomly(true);
-		setDefaultState(getBlockState().getBaseState().withProperty(LOG_AXIS, EnumAxis.Y).withProperty(IS_NATURAL, true).withProperty(IS_SLASHED, false));
+		setDefaultState(getBlockState().getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
 	}
 	
 	@Override
@@ -63,30 +60,11 @@ public class ModBlockLog extends BlockLog {
 	}
 	
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		BlockPos dropPos = pos.offset(EnumFacing.HORIZONTALS[rand.nextInt(4)], 1);
-		if (worldIn.isAreaLoaded(pos, 1) && state.getValue(IS_SLASHED).equals(true) && rand.nextInt(100) <= 7) {
-			worldIn.spawnEntity(new EntityItem(worldIn, dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModObjects.dragons_blood_resin)));
-		}
-	}
-	
-	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
-	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (playerIn.getHeldItem(hand).getItem() instanceof ItemBoline && state.getValue(IS_NATURAL).equals(true) && state.getValue(IS_SLASHED).equals(false)) {
-			worldIn.setBlockState(pos, state.withProperty(IS_SLASHED, true));
-			playerIn.getHeldItem(hand).damageItem(1, playerIn);
-			if (worldIn.isRemote) worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_WOOD_HIT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			return true;
-		}
-		return false;
-	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();
@@ -102,18 +80,6 @@ public class ModBlockLog extends BlockLog {
 				break;
 			default:
 				iblockstate = iblockstate.withProperty(LOG_AXIS, EnumAxis.NONE);
-		}
-		if ((meta & 1) == 0) {
-			iblockstate = iblockstate.withProperty(IS_NATURAL, false);
-		}
-		else {
-			iblockstate = iblockstate.withProperty(IS_NATURAL, true);
-		}
-		if ((meta & 2) == 0) {
-			iblockstate = iblockstate.withProperty(IS_SLASHED, false);
-		}
-		else {
-			iblockstate = iblockstate.withProperty(IS_SLASHED, true);
 		}
 		return iblockstate;
 	}
@@ -131,13 +97,6 @@ public class ModBlockLog extends BlockLog {
 			case NONE:
 				i |= 12;
 		}
-		if (state.getValue(IS_NATURAL)) i |= 1;
-		if (state.getValue(IS_SLASHED)) i |= 2;
 		return i;
-	}
-	
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, IS_NATURAL, IS_SLASHED, LOG_AXIS);
 	}
 }

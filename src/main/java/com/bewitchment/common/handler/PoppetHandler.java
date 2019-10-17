@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PoppetHandler {
 	@SubscribeEvent
 	public void deathProtection(LivingDeathEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_deathprotection)) {
 				event.setCanceled(true);
@@ -30,7 +30,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void binding(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_binding)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
@@ -41,11 +41,11 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void clumsy(LivingDamageEvent event) {
-		if (!event.getEntityLiving().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 			ItemStack held = source.getHeldItemMainhand();
-			if (held != ItemStack.EMPTY && Util.hasPoppet(player, ModObjects.poppet_clumsy)) {
+			if (!held.isEmpty() && Util.hasPoppet(player, ModObjects.poppet_clumsy)) {
 				InventoryHelper.spawnItemStack(source.getEntityWorld(), source.posX, source.posY, source.posZ, held);
 				source.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
 			}
@@ -54,7 +54,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void wasting(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_wasting)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
@@ -65,7 +65,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void earthProtection(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.FALL) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.FALL) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_earthprotection)) {
 				event.setAmount(event.getAmount() / 4);
@@ -75,7 +75,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void fireProtection(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE)) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE)) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_flameprotection)) {
 				event.setAmount(event.getAmount() * 0.6f);
@@ -85,7 +85,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void hungerProtection(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.STARVE) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.STARVE) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_hungerprotection)) {
 				event.setAmount(0);
@@ -96,7 +96,7 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void waterProtection(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.DROWN) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.DROWN) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_waterprotection)) {
 				event.setAmount(0);
@@ -108,7 +108,7 @@ public class PoppetHandler {
 
 	@SubscribeEvent
 	public void judgement(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_judgement) && (BewitchmentAPI.isWerewolf(attacker) || BewitchmentAPI.isVampire(attacker))) {
@@ -119,7 +119,7 @@ public class PoppetHandler {
 
 	@SubscribeEvent
 	public void spiritProtection(LivingDamageEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.hasPoppet(player, ModObjects.poppet_spiritbane) && BewitchmentAPI.isSpirit(attacker)) {

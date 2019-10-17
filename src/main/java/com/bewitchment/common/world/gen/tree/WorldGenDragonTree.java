@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-import static com.bewitchment.common.block.util.ModBlockLog.IS_SLASHED;
+import static com.bewitchment.common.block.BlockDragonsBloodLog.SLASHED;
 import static net.minecraft.block.BlockLog.LOG_AXIS;
 
 @SuppressWarnings({"NullableProblems", "SuspiciousNameCombination"})
@@ -43,7 +43,7 @@ public class WorldGenDragonTree extends WorldGenModTree {
 	private void generateBottom(World world, BlockPos pos) {
 		for (int i = 0; i < 4; i++) {
 			BlockPos current = pos.offset(EnumFacing.HORIZONTALS[i]);
-			setBlocks(world, current, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+			setBlocks(world, current, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 		}
 	}
 	
@@ -53,18 +53,18 @@ public class WorldGenDragonTree extends WorldGenModTree {
 		for (int y = 0; y < ymax; y++) {
 			for (int i = 0; i < 4; i++) {
 				BlockPos current = treetop.offset(EnumFacing.HORIZONTALS[i], y + 1).up(y);
-				setBlocks(world, current, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+				setBlocks(world, current, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 			}
 			BlockPos trunk = treetop.up(y);
 			setBlocks(world, trunk, ModObjects.dragons_blood_wood.getDefaultState());
 			BlockPos diagonal = treetop.add(y, y, y);
-			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 			diagonal = treetop.add(y, y, -y);
-			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 			diagonal = treetop.add(-y, y, y);
-			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 			diagonal = treetop.add(-y, y, -y);
-			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(IS_SLASHED, false));
+			setBlocks(world, diagonal, ModObjects.dragons_blood_wood.getBlockState().getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE).withProperty(SLASHED, false));
 		}
 		return ymax;
 	}
