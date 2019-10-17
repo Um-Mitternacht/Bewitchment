@@ -25,7 +25,7 @@ public class ItemPoppet extends Item {
 		setMaxStackSize(1);
 		setMaxDamage(oneTimeUse ? 1 : 50);
 	}
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		EnumHand otherHand = hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
@@ -42,7 +42,7 @@ public class ItemPoppet extends Item {
 		}
 		return super.onItemRightClick(world, player, hand);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
@@ -56,7 +56,7 @@ public class ItemPoppet extends Item {
 	public boolean isEnchantable(ItemStack stack) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return stack.hasTagCompound();

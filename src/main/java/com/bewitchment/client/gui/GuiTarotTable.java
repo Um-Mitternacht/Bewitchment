@@ -76,7 +76,7 @@ public class GuiTarotTable extends GuiContainer {
 		buff.pos(xStart, yStart, 0).tex(0, 0).endVertex();
 		tessellator.draw();
 	}
-
+	
 	public void loadData(List<TarotInfo> infoList) {
 		this.container.infoList = infoList;
 	}

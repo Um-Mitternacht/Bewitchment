@@ -409,6 +409,7 @@ entity.bewitchment.snake.name=Snake
 entity.bewitchment.toad.name=Toad
 
 entity.bewitchment.black_dog.name=Black Dog
+entity.bewitchment.ghost.name=Ghost
 
 entity.bewitchment.hellhound.name=Hellhound
 entity.bewitchment.feuerwurm.name=Feuerwurm
