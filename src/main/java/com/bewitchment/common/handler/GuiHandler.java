@@ -29,6 +29,7 @@ public class GuiHandler implements IGuiHandler {
 			}
 		}
 		if (tile instanceof TileEntityJuniperChest) return new ContainerJuniperChest(player.inventory, (TileEntityJuniperChest) tile);
+		if (tile instanceof TileEntitySigilTable) return new ContainerSigilTable(player.inventory, (TileEntitySigilTable) tile);
 		return null;
 	}
 	
@@ -40,10 +41,11 @@ public class GuiHandler implements IGuiHandler {
 		if (tile instanceof TileEntitySpinningWheel) return new GuiSpinningWheel((ContainerSpinningWheel) getServerGuiElement(ModGui.SPINNING_WHEEL.ordinal(), player, world, x, y, z));
 		if (tile instanceof TileEntityTarotTable) return new GuiTarotTable((ContainerTarotTable) getServerGuiElement(ModGui.TAROT_TABLE.ordinal(), player, world, x, y, z));
 		if (tile instanceof TileEntityJuniperChest) return new GuiJuniperChest((ContainerJuniperChest) getServerGuiElement(ModGui.JUNIPER_CHEST.ordinal(), player, world, x, y, z), player.inventory);
+		if (tile instanceof TileEntitySigilTable) return new GuiSigilTable((ContainerSigilTable) getServerGuiElement(ModGui.SIGIL_TABLE.ordinal(), player, world, x, y, z));
 		return null;
 	}
 	
 	public enum ModGui {
-		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST
+		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST, SIGIL_TABLE
 	}
 }

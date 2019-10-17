@@ -11,17 +11,17 @@
 	"normal": [
 	  {}
 	],
-	"axis=y,is_slashed=true": [
+	"axis=y,slashed=true": [
 	  {
 		"textures": {
 		  "side": "bewitchment:blocks/dragons_blood_log_cut"
 		}
 	  }
 	],
-	"axis=y,is_slashed=false": [
+	"axis=y,slashed=false": [
 	  {}
 	],
-	"axis=x,is_slashed=true": [
+	"axis=x,slashed=true": [
 	  {
 		"textures": {
 		  "side": "bewitchment:blocks/dragons_blood_log_cut"
@@ -30,13 +30,13 @@
 		"y": 90
 	  }
 	],
-	"axis=x,is_slashed=false": [
+	"axis=x,slashed=false": [
 	  {
 		"x": 90,
 		"y": 90
 	  }
 	],
-	"axis=z,is_slashed=true": [
+	"axis=z,slashed=true": [
 	  {
 		"textures": {
 		  "side": "bewitchment:blocks/dragons_blood_log_cut"
@@ -44,12 +44,12 @@
 		"x": 90
 	  }
 	],
-	"axis=z,is_slashed=false": [
+	"axis=z,slashed=false": [
 	  {
 		"x": 90
 	  }
 	],
-	"axis=none,is_slashed=true": [
+	"axis=none,slashed=true": [
 	  {
 		"textures": {
 		  "side": "bewitchment:blocks/dragons_blood_log_cut",
@@ -57,7 +57,7 @@
 		}
 	  }
 	],
-	"axis=none,is_slashed=false": [
+	"axis=none,slashed=false": [
 	  {
 		"textures": {
 		  "side": "bewitchment:blocks/dragons_blood_log_side",

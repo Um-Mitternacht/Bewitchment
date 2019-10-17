@@ -19,9 +19,10 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+@SuppressWarnings({"NullableProblems"})
 public class BlockDragonsBloodLog extends ModBlockLog {
-	public static final PropertyBool NATURAL = PropertyBool.create("is_natural");
-	public static final PropertyBool SLASHED = PropertyBool.create("is_slashed");
+	public static final PropertyBool NATURAL = PropertyBool.create("natural");
+	public static final PropertyBool SLASHED = PropertyBool.create("slashed");
 
 	public BlockDragonsBloodLog() {
 		super("dragons_blood_wood", Blocks.LOG, "logWood");

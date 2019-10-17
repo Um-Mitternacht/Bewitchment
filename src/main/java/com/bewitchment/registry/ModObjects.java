@@ -220,6 +220,7 @@ public class ModObjects {
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	public static final Block hellfire = new BlockHellfire();
 	public static final Block brazier = registerTileEntity(new BlockBrazier(), TileEntityBrazier.class);
+	public static final Block sigil_table = registerTileEntity(new BlockSigilTable(), TileEntitySigilTable.class);
 	
 	//Poppet Shelves
 	public static final Block oak_poppet_shelf = new BlockPoppetShelf("oak");

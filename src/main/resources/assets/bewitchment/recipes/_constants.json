@@ -154,5 +154,38 @@
 		"item": "minecraft:mutton"
 	  }
 	]
+  },
+  {
+	"name": "SLAB_STONE",
+	"ingredient": [
+	  {
+		"item": "minecraft:stone_slab",
+		"data": 0
+	  },
+	  {
+		"item": "minecraft:stone_slab",
+		"data": 1
+	  },
+	  {
+		"item": "minecraft:stone_slab",
+		"data": 3
+	  },
+	  {
+		"item": "minecraft:stone_slab",
+		"data": 7
+	  },
+	  {
+		"item": "minecraft:stone_slab",
+		"data": 5
+	  },
+	  {
+		"item": "minecraft:stone_slab2",
+		"data": 0
+	  },
+	  {
+		"item": "bewitchment:scorned_bricks_slab",
+		"data": 0
+	  }
+	]
   }
 ]
