@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 
-version = "1.12.2-0.0.21-testbuild7"
+version = "1.12.2-0.0.21-testbuild8"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
