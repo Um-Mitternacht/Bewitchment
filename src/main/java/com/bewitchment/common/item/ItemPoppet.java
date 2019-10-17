@@ -1,5 +1,6 @@
 package com.bewitchment.common.item;
 
+import com.bewitchment.Util;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +37,7 @@ public class ItemPoppet extends Item {
 			result.getTagCompound().setString("boundId", taglock.getTagCompound().getString("boundId"));
 			result.getTagCompound().setString("boundName", taglock.getTagCompound().getString("boundName"));
 			player.setHeldItem(hand, result);
-			player.inventory.decrStackSize(player.inventory.currentItem, 1);
+			player.getHeldItem(otherHand).shrink(1);
 			if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 			return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 		}
