@@ -29,7 +29,7 @@ public class ItemPoppet extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		EnumHand otherHand = hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
-		if(!player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(otherHand).getItem() instanceof ItemTaglock && player.getHeldItem(otherHand).hasTagCompound() && player.getHeldItem(otherHand).getTagCompound().hasKey("boundId") && player.getHeldItem(otherHand).getTagCompound().hasKey("boundName")) {
+		if (!player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(otherHand).getItem() instanceof ItemTaglock && player.getHeldItem(otherHand).hasTagCompound() && player.getHeldItem(otherHand).getTagCompound().hasKey("boundId") && player.getHeldItem(otherHand).getTagCompound().hasKey("boundName")) {
 			ItemStack result = player.getHeldItem(hand);
 			ItemStack taglock = player.getHeldItem(otherHand);
 			result.setTagCompound(new NBTTagCompound());

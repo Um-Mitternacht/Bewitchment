@@ -105,7 +105,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void judgement(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
@@ -116,7 +116,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void spiritProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {

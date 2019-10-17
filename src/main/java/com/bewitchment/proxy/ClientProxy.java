@@ -197,14 +197,15 @@ public class ClientProxy extends ServerProxy {
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
 	}
-
+	
 	@Override
 	public void handleTarot(List<TarotInfo> infoList) {
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
 		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
 			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
-		} else {
+		}
+		else {
 			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
 			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
 			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));

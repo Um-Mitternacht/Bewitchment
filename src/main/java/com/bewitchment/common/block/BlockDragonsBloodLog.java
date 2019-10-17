@@ -23,13 +23,13 @@ import java.util.Random;
 public class BlockDragonsBloodLog extends ModBlockLog {
 	public static final PropertyBool NATURAL = PropertyBool.create("natural");
 	public static final PropertyBool SLASHED = PropertyBool.create("slashed");
-
+	
 	public BlockDragonsBloodLog() {
 		super("dragons_blood_wood", Blocks.LOG, "logWood");
 		setTickRandomly(true);
 		setDefaultState(getBlockState().getBaseState().withProperty(LOG_AXIS, EnumAxis.Y).withProperty(NATURAL, true).withProperty(SLASHED, false));
 	}
-
+	
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		BlockPos dropPos = pos.offset(EnumFacing.HORIZONTALS[rand.nextInt(4)], 1);
@@ -37,7 +37,7 @@ public class BlockDragonsBloodLog extends ModBlockLog {
 			worldIn.spawnEntity(new EntityItem(worldIn, dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModObjects.dragons_blood_resin)));
 		}
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (playerIn.getHeldItem(hand).getItem() instanceof ItemBoline && state.getValue(NATURAL).equals(true) && state.getValue(SLASHED).equals(false)) {
@@ -48,7 +48,7 @@ public class BlockDragonsBloodLog extends ModBlockLog {
 		}
 		return false;
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();
@@ -79,7 +79,7 @@ public class BlockDragonsBloodLog extends ModBlockLog {
 		}
 		return iblockstate;
 	}
-
+	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
@@ -97,7 +97,7 @@ public class BlockDragonsBloodLog extends ModBlockLog {
 		if (state.getValue(SLASHED)) i |= 2;
 		return i;
 	}
-
+	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, NATURAL, SLASHED, LOG_AXIS);

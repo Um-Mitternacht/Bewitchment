@@ -12,35 +12,35 @@ public class TarotInfo {
 	private ResourceLocation texture;
 	private boolean isReversed;
 	private int number;
-
+	
 	public TarotInfo(Tarot tarot, EntityPlayer player) {
 		this.texture = tarot.texture;
 		this.isReversed = tarot.isReversed(player);
 		this.number = tarot.getNumber(player);
 	}
-
+	
 	private TarotInfo(ResourceLocation tarot, boolean isReversed, int number) {
 		this.texture = tarot;
 		this.isReversed = isReversed;
 		this.number = number;
 	}
-
+	
 	public ResourceLocation getTexture() {
 		return texture;
 	}
-
+	
 	public boolean isReversed() {
 		return isReversed;
 	}
-
+	
 	public int getNumber() {
 		return number;
 	}
-
+	
 	public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
 		ArrayList<TarotInfo> result = new ArrayList<>();
 		int size = buf.readInt();
-		for(int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) {
 			String res = ByteBufUtils.readUTF8String(buf);
 			boolean reversed = buf.readBoolean();
 			int num = buf.readInt();

@@ -8,12 +8,12 @@ import net.minecraft.util.ResourceLocation;
 public class GuiSigilTable extends GuiContainer {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/gui/sigil_table.png");
 	private final ContainerSigilTable container;
-
+	
 	public GuiSigilTable(ContainerSigilTable container) {
 		super(container);
 		this.container = container;
 	}
-
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float v, int i, int i1) {
 		mc.getTextureManager().bindTexture(TEX);

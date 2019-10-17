@@ -1,14 +1,10 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
-import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -17,7 +13,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("ConstantConditions")

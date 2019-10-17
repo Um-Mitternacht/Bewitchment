@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class ModBlockLog extends BlockLog {
-
+	
 	public ModBlockLog(String name, Block base, String... oreDictionaryNames) {
 		super();
 		Util.registerBlock(this, name, base, oreDictionaryNames);
@@ -51,7 +51,7 @@ public class ModBlockLog extends BlockLog {
 	public BlockRenderLayer getRenderLayer() {
 		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();

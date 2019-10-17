@@ -36,7 +36,7 @@ public class ServerProxy {
 		}
 		return false;
 	}
-
+	
 	public void handleTarot(List<TarotInfo> infoList) {
 	}
 	

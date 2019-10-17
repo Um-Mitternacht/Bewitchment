@@ -2,7 +2,6 @@ package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLiving;
@@ -196,7 +195,7 @@ public class CurseInsanity extends Curse {
 			if (distToEnemySqr <= 5) {
 				this.survivalTime--;
 				if (this.survivalTime <= 0) {
-					((WorldServer)world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, false, attacker.posX, attacker.posY, attacker.posZ, 100, 1, 2, 1, 0.05, 0);
+					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, false, attacker.posX, attacker.posY, attacker.posZ, 100, 1, 2, 1, 0.05, 0);
 					attacker.setDead();
 				}
 			}
