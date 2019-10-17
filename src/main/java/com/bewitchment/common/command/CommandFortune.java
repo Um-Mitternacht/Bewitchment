@@ -95,7 +95,7 @@ public class CommandFortune extends CommandBase {
 		}
 		return Collections.emptyList();
 	}
-
+	
 	@Override
 	public int getRequiredPermissionLevel() {
 		return 2;

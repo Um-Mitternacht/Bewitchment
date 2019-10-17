@@ -99,7 +99,7 @@ public class Util {
 		}
 		return null;
 	}
-
+	
 	public static EntityPlayer findPlayer(String uuid) {
 		return findPlayer(UUID.fromString(uuid));
 	}

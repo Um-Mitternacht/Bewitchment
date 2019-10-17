@@ -42,7 +42,7 @@ public class ModRecipes {
 	public static void init() {
 		furnaceInit();
 		altarInit();
-
+		
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityOcelot.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityWolf.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityHorse.class));
@@ -54,28 +54,27 @@ public class ModRecipes {
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityRaven.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntitySnake.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityToad.class));
-
+		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 		ModObjects.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.ARMOR_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
-
+		
 		ForgeRegistries.RECIPES.register(new RecipeTippedArrow() {
 			@Override
 			public ItemStack getCraftingResult(InventoryCrafting inv) {
 				ItemStack stack = super.getCraftingResult(inv);
-				if (PotionUtils.getPotionFromItem(stack) == PotionTypes.EMPTY)
-					stack.getTagCompound().setInteger("CustomPotionColor", PotionUtils.getPotionColorFromEffectList(PotionUtils.getFullEffectsFromItem(stack)));
+				if (PotionUtils.getPotionFromItem(stack) == PotionTypes.EMPTY) stack.getTagCompound().setInteger("CustomPotionColor", PotionUtils.getPotionColorFromEffectList(PotionUtils.getFullEffectsFromItem(stack)));
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
 	}
-
+	
 	public static void postInit() {
 		athamePostInit();
 		furnacePostInit();
 	}
-
+	
 	private static void altarInit() {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityFlowerPot && ((TileEntityFlowerPot) s.getTileEntity()).getFlowerItemStack().isEmpty(), new AltarUpgrade(AltarUpgrade.Type.CUP, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityFlowerPot && !((TileEntityFlowerPot) s.getTileEntity()).getFlowerItemStack().isEmpty(), new AltarUpgrade(AltarUpgrade.Type.CUP, 1, 1.1));
@@ -99,7 +98,7 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.nethersteel_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		Util.registerAltarUpgradeItem(ModObjects.scorned_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.scorned_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-
+		
 		Util.registerAltarUpgradeOreDict("fossil", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemDiamond", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		Util.registerAltarUpgradeOreDict("gemEmerald", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
@@ -254,12 +253,12 @@ public class ModRecipes {
 		//were discovered nearby, although a genetic match could not be
 		//established. The following note was recovered from a hermetically
 		//sealed plastic document sleeve.
-
+		
 		//Why did we have to build this thing?
 		//When did we do it?
 		//How long have we been doing it?
 		//Do we even know?!
-
+		
 		Util.registerAltarUpgradeItem(ModObjects.athame, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.325));
 		Util.registerAltarUpgradeItem(ModObjects.silver_sword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.3));
 		Util.registerAltarUpgradeItem(ModObjects.cold_iron_sword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.35));
@@ -268,7 +267,7 @@ public class ModRecipes {
 		Util.registerAltarUpgradeItem(Items.IRON_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.225));
 		Util.registerAltarUpgradeItem(Items.GOLDEN_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.3));
 		Util.registerAltarUpgradeItem(Items.DIAMOND_SWORD, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.325));
-
+		
 		//Botania stuff
 		if (Loader.isModLoaded("botania")) {
 			Util.registerAltarUpgradeItem(ModItems.twigWand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
@@ -292,7 +291,7 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ModItems.tornadoRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 			Util.registerAltarUpgradeItem(ModItems.waterRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
 		}
-
+		
 		//Thaumcraft stuff
 		if (Loader.isModLoaded("thaumcraft")) {
 			Util.registerAltarUpgradeItem(ItemsTC.thaumiumSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.25));
@@ -304,7 +303,7 @@ public class ModRecipes {
 			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockNitor, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.225));
 			Util.registerAltarUpgradeItem(ItemsTC.pechWand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.35));
 		}
-
+		
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockRedstoneTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
@@ -312,34 +311,34 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockEndRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.325));
 		Util.registerAltarUpgradeItem(Items.BLAZE_ROD, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
 	}
-
+	
 	private static void athamePostInit() {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityPlayer, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(Items.SKULL, 1, 3)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVillager || e instanceof EntityWitch || e instanceof AbstractIllager, Sets.newHashSet(new ItemStack(ModObjects.heart)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityZombieVillager, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityWither, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 6)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityElderGuardian, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old, 3)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityZombie && !(e instanceof EntityPigZombie), Sets.newHashSet(new ItemStack(Items.SKULL, 1, 2), new ItemStack(ModObjects.spectral_dust)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityPigZombie, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 3), new ItemStack(ModObjects.hoof, 2)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof AbstractSkeleton && !(e instanceof EntityWitherSkeleton), Sets.newHashSet(new ItemStack(Items.SKULL), new ItemStack(ModObjects.spectral_dust)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityWitherSkeleton, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 1), new ItemStack(ModObjects.spectral_dust, 2)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityCreeper, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 4)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBlaze, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGhast, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 8)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntitySilverfish, Sets.newHashSet(new ItemStack(ModObjects.silver_nugget, 2)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityEndermite, Sets.newHashSet(new ItemStack(ModObjects.dimensional_sand, 2)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityEnderman, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVex, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGuardian, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityPig, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityCow, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntitySheep, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
@@ -347,44 +346,43 @@ public class ModRecipes {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityRabbit, Sets.newHashSet(new ItemStack(Items.RABBIT_FOOT)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof AbstractHorse, Sets.newHashSet(new ItemStack(ModObjects.hoof, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof AbstractHorse && e.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD, Sets.newHashSet(new ItemStack(ModObjects.spectral_dust, 2)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityLizard, Sets.newHashSet(new ItemStack(ModObjects.lizard_leg, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityOwl, Sets.newHashSet(new ItemStack(ModObjects.owlets_wing, 2)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityRaven && !(e instanceof EntityOwl), Sets.newHashSet(new ItemStack(ModObjects.ravens_feather, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityToad, Sets.newHashSet(new ItemStack(ModObjects.toe_of_frog, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntitySnake, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBlackDog, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityHellhound, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.hellhound_horn, 2), new ItemStack(Items.BLAZE_POWDER, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityFeuerwurm, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
-
+		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
 	}
-
+	
 	private static void furnaceInit() {
 		GameRegistry.addSmelting(ModObjects.amethyst_ore, new ItemStack(ModObjects.amethyst), 0.85f);
 		GameRegistry.addSmelting(ModObjects.garnet_ore, new ItemStack(ModObjects.garnet), 0.85f);
 		GameRegistry.addSmelting(ModObjects.opal_ore, new ItemStack(ModObjects.opal), 0.85f);
 		GameRegistry.addSmelting(ModObjects.silver_ore, new ItemStack(ModObjects.silver_ingot), 0.65f);
 		GameRegistry.addSmelting(ModObjects.salt_ore, new ItemStack(ModObjects.salt), 0.35f);
-
+		
 		GameRegistry.addSmelting(ModObjects.embittered_bricks, new ItemStack(ModObjects.cracked_embittered_bricks), 0.1f);
 		GameRegistry.addSmelting(ModObjects.scorned_bricks[0], new ItemStack(ModObjects.cracked_scorned_bricks), 0.1f);
-
+		
 		GameRegistry.addSmelting(ModObjects.cypress_wood, new ItemStack(Items.COAL, 1, 1), 0.15f);
 		GameRegistry.addSmelting(ModObjects.elder_wood, new ItemStack(Items.COAL, 1, 1), 0.15f);
 		GameRegistry.addSmelting(ModObjects.juniper_wood, new ItemStack(Items.COAL, 1, 1), 0.15f);
-
+		
 		GameRegistry.addSmelting(ModObjects.unfired_jar, new ItemStack(ModObjects.empty_jar), 0.15f);
-
+		
 		GameRegistry.addSmelting(ModObjects.golden_thread, new ItemStack(Items.GOLD_NUGGET), 0.15f);
 	}
-
+	
 	private static void furnacePostInit() {
 		for (Block block : ForgeRegistries.BLOCKS) {
-			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty())
-				GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
+			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
 		}
 		if (Loader.isModLoaded("dynamictrees")) for (Item item : ForgeRegistries.ITEMS)
 			if (item instanceof Seed && !item.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(item)).isEmpty())

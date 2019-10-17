@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 
 public class TarotMessage implements IMessage {
 	private List<TarotInfo> infoList = new ArrayList<>();
-
+	
 	public TarotMessage() { }
-
+	
 	public TarotMessage(EntityPlayer player) {
 		List<Tarot> valid = GameRegistry.findRegistry(Tarot.class).getValuesCollection().stream().filter(f -> f.isCounted(player)).collect(Collectors.toList());
 		if (!valid.isEmpty()) {
@@ -29,12 +29,12 @@ public class TarotMessage implements IMessage {
 			}
 		}
 	}
-
+	
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
 		infoList = TarotInfo.fromBuffer(byteBuf);
 	}
-
+	
 	@Override
 	public void toBytes(ByteBuf byteBuf) {
 		byteBuf.writeInt(infoList.size());
@@ -44,7 +44,7 @@ public class TarotMessage implements IMessage {
 			byteBuf.writeInt(info.getNumber());
 		}
 	}
-
+	
 	public static class Handler implements IMessageHandler<TarotMessage, IMessage> {
 		@Override
 		public IMessage onMessage(TarotMessage message, MessageContext ctx) {
