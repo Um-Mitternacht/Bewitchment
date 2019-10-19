@@ -12,6 +12,7 @@ public class GuiSigilTable extends GuiContainer {
 	public GuiSigilTable(ContainerSigilTable container) {
 		super(container);
 		this.container = container;
+		ySize = 192;
 	}
 	
 	@Override
@@ -20,5 +21,12 @@ public class GuiSigilTable extends GuiContainer {
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		drawDefaultBackground();
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		renderHoveredToolTip(mouseX, mouseY);
 	}
 }

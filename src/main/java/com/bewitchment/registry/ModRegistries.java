@@ -409,6 +409,16 @@ public class ModRegistries {
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "intensity"), Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.GLOWSTONE_DUST), Util.get(ModObjects.juniper_berries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)), null, 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "concentration"), Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.REDSTONE), Util.get(ModObjects.elderberries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)), null, 600));
 	}
+
+	@SubscribeEvent
+	public static void registerSigilRecipes(RegistryEvent.Register<SigilRecipe> event) {
+		final Ingredient resin = Util.get(ModObjects.dragons_blood_resin);
+		final Ingredient paper = Util.get(Items.PAPER);
+		final Ingredient green_dye = Util.get("dyeGreen");
+		final Ingredient elderberries = Util.get(ModObjects.elderberries);
+		final Ingredient ebb_of_death = Util.get(ModObjects.ebb_of_death);
+		event.getRegistry().register(new SigilRecipe(new ResourceLocation(Bewitchment.MODID, "smelly"), Arrays.asList(paper, resin, green_dye, resin, paper, resin, green_dye, ebb_of_death, green_dye, resin, paper, ebb_of_death, elderberries, ebb_of_death, paper, resin, green_dye, ebb_of_death, green_dye, resin, paper, resin, green_dye, resin, paper), new ItemStack(ModObjects.heaven_extract)));
+	}
 	
 	@SubscribeEvent
 	public static void registerFortunes(RegistryEvent.Register<Fortune> event) {
