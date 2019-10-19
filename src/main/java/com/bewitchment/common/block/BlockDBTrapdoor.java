@@ -22,13 +22,13 @@ public class BlockDBTrapdoor extends ModBlockTrapdoor implements ITileEntityProv
 	public BlockDBTrapdoor() {
 		super("dragons_blood_trapdoor", ModObjects.dragons_blood_planks);
 	}
-
+	
 	@Nullable
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 		return new TileEntityDragonsBlood();
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
@@ -37,13 +37,13 @@ public class BlockDBTrapdoor extends ModBlockTrapdoor implements ITileEntityProv
 			if (!te.handler.getStackInSlot(0).isEmpty()) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
 		}
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (world.getTileEntity(pos) instanceof TileEntityDragonsBlood) ((TileEntityDragonsBlood) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
-
+	
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {

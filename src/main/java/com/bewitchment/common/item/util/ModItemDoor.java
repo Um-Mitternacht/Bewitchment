@@ -170,20 +170,20 @@ public class ModItemDoor extends ItemDoor {
 			}
 			else return super.canEntityDestroy(state, world, pos, entity);
 		}
-
+		
 		@Nullable
 		@Override
 		public TileEntity createNewTileEntity(World world, int i) {
 			return new TileEntityDragonsBlood();
 		}
-
+		
 		@Nullable
 		@Override
 		public TileEntity createTileEntity(World world, IBlockState state) {
 			if (state.getBlock() == ModObjects.dragons_blood_door.door) return new TileEntityDragonsBlood();
 			return super.createTileEntity(world, state);
 		}
-
+		
 		@Override
 		@SideOnly(Side.CLIENT)
 		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {

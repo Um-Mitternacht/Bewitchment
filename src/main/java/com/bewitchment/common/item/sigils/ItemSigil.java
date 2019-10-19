@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.sigils;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 

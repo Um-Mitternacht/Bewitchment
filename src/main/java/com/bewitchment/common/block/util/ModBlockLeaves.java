@@ -64,7 +64,7 @@ public class ModBlockLeaves extends BlockLeaves {
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return true;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setGraphicsLevel(boolean fancy) {

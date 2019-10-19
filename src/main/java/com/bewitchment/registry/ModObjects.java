@@ -431,7 +431,7 @@ public class ModObjects {
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
-
+	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil() {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
@@ -441,7 +441,7 @@ public class ModObjects {
 	public static final Item sigil_judgement = Util.registerItem(new ItemSigil() {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-
+		
 		}
 	}, "sigil_judgement");
 	public static final Item sigil_ruin = Util.registerItem(new ItemSigil() {

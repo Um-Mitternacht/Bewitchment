@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerSigilTable extends ModContainer {
 	private final TileEntitySigilTable tile;
-
+	
 	public ContainerSigilTable(InventoryPlayer inventory, TileEntitySigilTable tile) {
 		this.tile = tile;
 		for (int y = 0; y < 5; y++) {
@@ -29,7 +29,7 @@ public class ContainerSigilTable extends ModContainer {
 			public boolean isItemValid(ItemStack stack) {
 				return false;
 			}
-
+			
 			@Override
 			public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
 				tile.decreaseStackAmount(1);
@@ -37,7 +37,7 @@ public class ContainerSigilTable extends ModContainer {
 			}
 		});
 	}
-
+	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		if (index == 61) {
@@ -45,9 +45,10 @@ public class ContainerSigilTable extends ModContainer {
 			tile.decreaseStackAmount(maxStackSize);
 			Util.giveItem(player, new ItemStack(tile.output.getStackInSlot(0).getItem(), maxStackSize));
 			return ItemStack.EMPTY;
-		} else return super.transferStackInSlot(player, index);
+		}
+		else return super.transferStackInSlot(player, index);
 	}
-
+	
 	private int getMaxCraftableAmount() {
 		int min = tile.matrix.getStackInSlot(0).getCount();
 		for (int i = 0; i < tile.matrix.getSlots(); i++) {

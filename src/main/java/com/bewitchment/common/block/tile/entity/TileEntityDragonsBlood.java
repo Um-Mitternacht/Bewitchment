@@ -23,39 +23,39 @@ public class TileEntityDragonsBlood extends ModTileEntity {
 			return stack.getItem() instanceof ItemSigil;
 		}
 	};
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		this.writeUpdateTag(tag);
 		return super.writeToNBT(tag);
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		this.readUpdateTag(tag);
 		super.readFromNBT(tag);
 	}
-
+	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeUpdateTag(tag);
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
 		return tag;
 	}
-
+	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		NBTTagCompound tag = packet.getNbtCompound();
 		readUpdateTag(tag);
 	}
-
+	
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (world.getBlockState(pos).getBlock() == ModObjects.dragons_blood_door.door) {
@@ -66,18 +66,21 @@ public class TileEntityDragonsBlood extends ModTileEntity {
 					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
 					return true;
 				}
-			} else {
+			}
+			else {
 				ItemSigil sigil = door1.handler.getStackInSlot(0).isEmpty() ? (ItemSigil) door2.handler.getStackInSlot(0).getItem() : (ItemSigil) door1.handler.getStackInSlot(0).getItem();
 				sigil.applyEffects(player);
 				return true;
 			}
-		} else {
+		}
+		else {
 			if (isEmpty(handler)) {
 				if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
 					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
 					return true;
 				}
-			} else {
+			}
+			else {
 				if (handler.getStackInSlot(0).getItem() instanceof ItemSigil) {
 					((ItemSigil) handler.getStackInSlot(0).getItem()).applyEffects(player);
 					return true;
@@ -86,11 +89,11 @@ public class TileEntityDragonsBlood extends ModTileEntity {
 		}
 		return super.activate(world, pos, player, hand, face);
 	}
-
+	
 	private void writeUpdateTag(NBTTagCompound tag) {
 		tag.setTag("handler", this.handler.serializeNBT());
 	}
-
+	
 	private void readUpdateTag(NBTTagCompound tag) {
 		this.handler.deserializeNBT(tag.getCompoundTag("handler"));
 	}

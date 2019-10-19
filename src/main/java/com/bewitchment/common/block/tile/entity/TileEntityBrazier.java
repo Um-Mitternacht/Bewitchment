@@ -64,7 +64,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		IBlockState state = world.getBlockState(pos);
@@ -103,7 +103,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		}
 		return super.activate(world, pos, player, hand, face);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		this.writeUpdateTag(tag);

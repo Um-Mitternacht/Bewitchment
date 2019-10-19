@@ -409,7 +409,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "intensity"), Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.GLOWSTONE_DUST), Util.get(ModObjects.juniper_berries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)), null, 600));
 		event.getRegistry().register(new Incense(new ResourceLocation(Bewitchment.MODID, "concentration"), Arrays.asList(Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(Items.REDSTONE), Util.get(ModObjects.elderberries), Util.get(new ItemStack(Items.COAL, 1, 1)), Util.get(ModObjects.salt)), null, 600));
 	}
-
+	
 	@SubscribeEvent
 	public static void registerSigilRecipes(RegistryEvent.Register<SigilRecipe> event) {
 		final Ingredient resin = Util.get(ModObjects.dragons_blood_resin);
