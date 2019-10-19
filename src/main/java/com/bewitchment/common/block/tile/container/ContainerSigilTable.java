@@ -41,14 +41,14 @@ public class ContainerSigilTable extends ModContainer {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		if (index == 61) {
-			int maxStackSize = findMaxStack();
+			int maxStackSize = getMaxCraftableAmount();
 			tile.decreaseStackAmount(maxStackSize);
 			Util.giveItem(player, new ItemStack(tile.output.getStackInSlot(0).getItem(), maxStackSize));
 			return ItemStack.EMPTY;
 		} else return super.transferStackInSlot(player, index);
 	}
 
-	private int findMaxStack() {
+	private int getMaxCraftableAmount() {
 		int min = tile.matrix.getStackInSlot(0).getCount();
 		for (int i = 0; i < tile.matrix.getSlots(); i++) {
 			if (tile.matrix.getStackInSlot(i).getCount() < min) min = tile.matrix.getStackInSlot(i).getCount();

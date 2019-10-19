@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -67,10 +68,12 @@ public class TileEntitySigilTable extends ModTileEntity {
 	}
 
 	private void writeUpdateTag(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
 		tag.setTag("matrix", this.matrix.serializeNBT());
 	}
 
 	private void readUpdateTag(NBTTagCompound tag) {
+		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SigilRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		this.matrix.deserializeNBT(tag.getCompoundTag("matrix"));
 	}
 }

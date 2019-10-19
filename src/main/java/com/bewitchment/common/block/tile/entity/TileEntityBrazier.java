@@ -18,6 +18,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -62,19 +64,21 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			}
 		}
 	}
-	
-	public boolean interact(EntityPlayer player, EnumHand hand) {
+
+	@Override
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
 			if (!player.isSneaking()) {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel) {
 					if (!isEmpty(handler)) {
 						world.setBlockState(pos, state.withProperty(LIT, true));
-						if (player.world.isRemote) player.world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						if (player.world.isRemote) player.world.playSound(player, pos, SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						getIncense();
 						if (incense == null) curse(player);
 						clearBrazier();
 						markDirty();
+						return true;
 					}
 					return false;
 				}
@@ -97,9 +101,9 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			stopBurning();
 			return true;
 		}
-		return false;
+		return super.activate(world, pos, player, hand, face);
 	}
-	
+
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		this.writeUpdateTag(tag);
@@ -148,13 +152,13 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	private void writeUpdateTag(NBTTagCompound tag) {
 		tag.setString("incense", incense == null ? "" : incense.getRegistryName().toString());
 		tag.setInteger("time", this.litTime);
-		tag.setTag("ItemStackHandler", this.handler.serializeNBT());
+		tag.setTag("handler", this.handler.serializeNBT());
 	}
 	
 	private void readUpdateTag(NBTTagCompound tag) {
 		this.incense = tag.getString("incense").isEmpty() ? null : GameRegistry.findRegistry(Incense.class).getValue(new ResourceLocation(tag.getString("incense")));
 		this.litTime = tag.getInteger("time");
-		this.handler.deserializeNBT(tag.getCompoundTag("ItemStackHandler"));
+		this.handler.deserializeNBT(tag.getCompoundTag("handler"));
 	}
 	
 	@Override
@@ -176,15 +180,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	
 	private void clearBrazier() {
 		for (int i = 0; i < handler.getSlots(); i++) {
-			if (handler.getStackInSlot(i).getItem() instanceof ItemTaglock) {
-				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem(), handler.getStackInSlot(i).getCount()));
-			}
-			else if (handler.getStackInSlot(i).getItem().hasContainerItem(handler.getStackInSlot(i))) {
-				handler.setStackInSlot(i, new ItemStack(handler.getStackInSlot(i).getItem().getContainerItem(), handler.getStackInSlot(i).getCount()));
-			}
-			else {
-				handler.setStackInSlot(i, ItemStack.EMPTY);
-			}
+			handler.setStackInSlot(i, ItemStack.EMPTY);
 		}
 	}
 	

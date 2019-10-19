@@ -19,6 +19,7 @@ import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
+import com.bewitchment.common.item.sigils.ItemSigil;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
@@ -34,6 +35,7 @@ import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -185,7 +187,7 @@ public class ModObjects {
 	public static final Block cypress_trapdoor = new ModBlockTrapdoor("cypress_trapdoor", cypress_planks);
 	public static final Block elder_trapdoor = new ModBlockTrapdoor("elder_trapdoor", elder_planks);
 	public static final Block juniper_trapdoor = new ModBlockTrapdoor("juniper_trapdoor", juniper_planks);
-	public static final Block dragons_blood_trapdoor = new ModBlockTrapdoor("dragons_blood_trapdoor", dragons_blood_planks);
+	public static final Block dragons_blood_trapdoor = registerTileEntity(new BlockDBTrapdoor(), TileEntityDBDoor.class);
 	public static final Block cypress_fence_gate = new ModBlockFenceGate("cypress_fence_gate", cypress_planks, "fenceGateWood");
 	public static final Block elder_fence_gate = new ModBlockFenceGate("elder_fence_gate", elder_planks, "fenceGateWood");
 	public static final Block juniper_fence_gate = new ModBlockFenceGate("juniper_fence_gate", juniper_planks, "fenceGateWood");
@@ -425,6 +427,13 @@ public class ModObjects {
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
+
+	public static final Item sigil_mending = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 0));
+		}
+	}, "sigil_mending");
 	
 	public static void preInit() {
 		if (Loader.isModLoaded("chisel")) {
