@@ -1,6 +1,6 @@
 package com.bewitchment.common.block;
 
-import com.bewitchment.common.block.tile.entity.TileEntityDBDoor;
+import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.util.ModBlockTrapdoor;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.ITileEntityProvider;
@@ -26,27 +26,27 @@ public class BlockDBTrapdoor extends ModBlockTrapdoor implements ITileEntityProv
 	@Nullable
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityDBDoor();
+		return new TileEntityDragonsBlood();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		if (worldIn.getTileEntity(pos) instanceof TileEntityDBDoor) {
-			TileEntityDBDoor te = (TileEntityDBDoor) worldIn.getTileEntity(pos);
+		if (worldIn.getTileEntity(pos) instanceof TileEntityDragonsBlood) {
+			TileEntityDragonsBlood te = (TileEntityDragonsBlood) worldIn.getTileEntity(pos);
 			if (!te.handler.getStackInSlot(0).isEmpty()) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
 		}
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (world.getTileEntity(pos) instanceof TileEntityDBDoor) ((TileEntityDBDoor) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
+		if (world.getTileEntity(pos) instanceof TileEntityDragonsBlood) ((TileEntityDragonsBlood) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
-		return new TileEntityDBDoor();
+		return new TileEntityDragonsBlood();
 	}
 }

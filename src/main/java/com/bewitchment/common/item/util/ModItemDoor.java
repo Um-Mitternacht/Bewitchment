@@ -2,10 +2,12 @@ package com.bewitchment.common.item.util;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.item.tool.ItemJuniperKey;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -15,10 +17,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
@@ -27,6 +27,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 @SuppressWarnings("NullableProblems")
@@ -57,7 +58,7 @@ public class ModItemDoor extends ItemDoor {
 	}
 	
 	@SuppressWarnings({"NullableProblems", "ConstantConditions", "deprecation"})
-	public static class ModBlockDoor extends BlockDoor {
+	public static class ModBlockDoor extends BlockDoor implements ITileEntityProvider {
 		private ItemStack drop;
 		
 		private ModBlockDoor(String name, Block base) {
@@ -81,6 +82,9 @@ public class ModItemDoor extends ItemDoor {
 					if (!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
 					return true;
 				}
+			}
+			if (this == ModObjects.dragons_blood_door.door) {
+				((TileEntityDragonsBlood) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
 			}
 			return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 		}
@@ -165,6 +169,28 @@ public class ModItemDoor extends ItemDoor {
 				return false;
 			}
 			else return super.canEntityDestroy(state, world, pos, entity);
+		}
+
+		@Nullable
+		@Override
+		public TileEntity createNewTileEntity(World world, int i) {
+			return new TileEntityDragonsBlood();
+		}
+
+		@Nullable
+		@Override
+		public TileEntity createTileEntity(World world, IBlockState state) {
+			if (state.getBlock() == ModObjects.dragons_blood_door.door) return new TileEntityDragonsBlood();
+			return super.createTileEntity(world, state);
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+			if (worldIn.getTileEntity(pos) instanceof TileEntityDragonsBlood) {
+				TileEntityDragonsBlood te = (TileEntityDragonsBlood) worldIn.getTileEntity(pos);
+				if (!te.handler.getStackInSlot(0).isEmpty()) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
+			}
 		}
 	}
 }

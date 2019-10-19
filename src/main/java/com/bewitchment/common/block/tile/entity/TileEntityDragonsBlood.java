@@ -2,6 +2,7 @@ package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.sigils.ItemSigil;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +16,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
-public class TileEntityDBDoor extends ModTileEntity {
+public class TileEntityDragonsBlood extends ModTileEntity {
 	public ItemStackHandler handler = new ItemStackHandler(1) {
 		@Override
 		public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
@@ -57,15 +58,30 @@ public class TileEntityDBDoor extends ModTileEntity {
 
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (isEmpty(handler)) {
-			if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
-				handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
+		if (world.getBlockState(pos).getBlock() == ModObjects.dragons_blood_door.door) {
+			TileEntityDragonsBlood door1 = (TileEntityDragonsBlood) world.getTileEntity(pos);
+			TileEntityDragonsBlood door2 = world.getTileEntity(pos.down()) instanceof TileEntityDragonsBlood ? (TileEntityDragonsBlood) world.getTileEntity(pos.down()) : (TileEntityDragonsBlood) world.getTileEntity(pos.up());
+			if (isEmpty(door1.handler) && isEmpty(door2.handler)) {
+				if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
+					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
+					return true;
+				}
+			} else {
+				ItemSigil sigil = door1.handler.getStackInSlot(0).isEmpty() ? (ItemSigil) door2.handler.getStackInSlot(0).getItem() : (ItemSigil) door1.handler.getStackInSlot(0).getItem();
+				sigil.applyEffects(player);
 				return true;
 			}
 		} else {
-			if (handler.getStackInSlot(0).getItem() instanceof ItemSigil) {
-				((ItemSigil) handler.getStackInSlot(0).getItem()).applyEffects(player);
-				return true;
+			if (isEmpty(handler)) {
+				if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
+					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
+					return true;
+				}
+			} else {
+				if (handler.getStackInSlot(0).getItem() instanceof ItemSigil) {
+					((ItemSigil) handler.getStackInSlot(0).getItem()).applyEffects(player);
+					return true;
+				}
 			}
 		}
 		return super.activate(world, pos, player, hand, face);

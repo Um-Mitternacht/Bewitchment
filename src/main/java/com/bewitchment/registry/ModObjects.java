@@ -2,6 +2,8 @@ package com.bewitchment.registry;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.api.registry.item.ItemIdol;
@@ -36,6 +38,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -53,6 +56,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SuppressWarnings({"unused", "WeakerAccess", "ConstantConditions", "SameParameterValue"})
 public class ModObjects {
@@ -187,7 +191,7 @@ public class ModObjects {
 	public static final Block cypress_trapdoor = new ModBlockTrapdoor("cypress_trapdoor", cypress_planks);
 	public static final Block elder_trapdoor = new ModBlockTrapdoor("elder_trapdoor", elder_planks);
 	public static final Block juniper_trapdoor = new ModBlockTrapdoor("juniper_trapdoor", juniper_planks);
-	public static final Block dragons_blood_trapdoor = registerTileEntity(new BlockDBTrapdoor(), TileEntityDBDoor.class);
+	public static final Block dragons_blood_trapdoor = registerTileEntity(new BlockDBTrapdoor(), TileEntityDragonsBlood.class);
 	public static final Block cypress_fence_gate = new ModBlockFenceGate("cypress_fence_gate", cypress_planks, "fenceGateWood");
 	public static final Block elder_fence_gate = new ModBlockFenceGate("elder_fence_gate", elder_planks, "fenceGateWood");
 	public static final Block juniper_fence_gate = new ModBlockFenceGate("juniper_fence_gate", juniper_planks, "fenceGateWood");
@@ -434,6 +438,56 @@ public class ModObjects {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 0));
 		}
 	}, "sigil_mending");
+	public static final Item sigil_judgement = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+
+		}
+	}, "sigil_judgement");
+	public static final Item sigil_ruin = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 160, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 160, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 160, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 160, 0));
+		}
+	}, "sigil_ruin");
+	public static final Item sigil_binding = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 5));
+		}
+	}, "sigil_binding");
+	public static final Item sigil_cleansing = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			List<PotionEffect> result = entity.getActivePotionEffects().stream().filter(p -> !p.getPotion().isBadEffect()).collect(Collectors.toList());
+			entity.clearActivePotions();
+			for (PotionEffect effect : result) {
+				entity.addPotionEffect(effect);
+			}
+		}
+	}, "sigil_cleansing");
+	public static final Item sigil_failure = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			//todo cancel ritual on sigil effect (attach to extended player)
+		}
+	}, "sigil_failure");
+	public static final Item sigil_purity = Util.registerItem(new ItemSigil() {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			if (entity instanceof EntityPlayer) {
+				ExtendedPlayer ep = entity.getCapability(ExtendedPlayer.CAPABILITY, null);
+				List<Curse> weakerCurses = ep.getCurses().stream().filter(Curse::isLesser).collect(Collectors.toList());
+				for (Curse curse : weakerCurses) {
+					// 70% chance to remove curse for each lesser curse
+					if (entity.getRNG().nextDouble() < 0.7) ep.removeCurse(curse);
+				}
+			}
+		}
+	}, "sigil_purity");
 	
 	public static void preInit() {
 		if (Loader.isModLoaded("chisel")) {
