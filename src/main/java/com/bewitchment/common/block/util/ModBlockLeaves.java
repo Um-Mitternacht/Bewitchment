@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -60,6 +61,12 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void setGraphicsLevel(boolean fancy) {
 		super.setGraphicsLevel(fancy);
 	}
