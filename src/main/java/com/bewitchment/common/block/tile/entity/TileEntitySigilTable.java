@@ -28,50 +28,50 @@ public class TileEntitySigilTable extends ModTileEntity {
 			markDirty();
 		}
 	};
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		readUpdateTag(tag);
 		super.readFromNBT(tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		writeUpdateTag(tag);
 		return super.writeToNBT(tag);
 	}
-
+	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeUpdateTag(tag);
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
 		return tag;
 	}
-
+	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		NBTTagCompound tag = packet.getNbtCompound();
 		readUpdateTag(tag);
 	}
-
+	
 	public void decreaseStackAmount(int amount) {
-		for(int i = 0; i < matrix.getSlots(); i++) {
+		for (int i = 0; i < matrix.getSlots(); i++) {
 			matrix.extractItem(i, amount, false);
 		}
 	}
-
+	
 	private void writeUpdateTag(NBTTagCompound tag) {
 		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
 		tag.setTag("matrix", this.matrix.serializeNBT());
 	}
-
+	
 	private void readUpdateTag(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SigilRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		this.matrix.deserializeNBT(tag.getCompoundTag("matrix"));
