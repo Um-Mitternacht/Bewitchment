@@ -2,8 +2,10 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.client.gui.*;
 import com.bewitchment.common.block.tile.container.*;
+import com.bewitchment.common.block.tile.container.ContainerDBChest;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.item.ItemTarotCards;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -29,6 +31,7 @@ public class GuiHandler implements IGuiHandler {
 			}
 		}
 		if (tile instanceof TileEntityJuniperChest) return new ContainerJuniperChest(player.inventory, (TileEntityJuniperChest) tile);
+		if (tile instanceof TileEntityDBChest) return new ContainerDBChest(player.inventory, (TileEntityDBChest) tile);
 		if (tile instanceof TileEntitySigilTable) return new ContainerSigilTable(player.inventory, (TileEntitySigilTable) tile);
 		return null;
 	}
@@ -42,10 +45,11 @@ public class GuiHandler implements IGuiHandler {
 		if (tile instanceof TileEntityTarotTable) return new GuiTarotTable((ContainerTarotTable) getServerGuiElement(ModGui.TAROT_TABLE.ordinal(), player, world, x, y, z));
 		if (tile instanceof TileEntityJuniperChest) return new GuiJuniperChest((ContainerJuniperChest) getServerGuiElement(ModGui.JUNIPER_CHEST.ordinal(), player, world, x, y, z), player.inventory);
 		if (tile instanceof TileEntitySigilTable) return new GuiSigilTable((ContainerSigilTable) getServerGuiElement(ModGui.SIGIL_TABLE.ordinal(), player, world, x, y, z));
+		if (tile instanceof TileEntityDBChest) return new GuiDragonsBloodChest((ContainerDBChest) getServerGuiElement(ModGui.DRAGONS_BLOOD_CHEST.ordinal(), player, world, x, y, z), player.inventory);
 		return null;
 	}
 	
 	public enum ModGui {
-		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST, SIGIL_TABLE
+		OVEN, DISTILLERY, SPINNING_WHEEL, TAROT_TABLE, JUNIPER_CHEST, DRAGONS_BLOOD_CHEST, SIGIL_TABLE
 	}
 }

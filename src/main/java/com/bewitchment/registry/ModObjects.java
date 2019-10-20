@@ -183,6 +183,7 @@ public class ModObjects {
 	public static final ModItemDoor juniper_door = new ModItemDoor("juniper_door", juniper_planks);
 	public static final ModItemDoor dragons_blood_door = new ModItemDoor("dragons_blood_door", dragons_blood_planks);
 	public static final Block juniper_chest = registerTileEntity(new BlockJuniperChest(), TileEntityJuniperChest.class);
+	public static final Block dragons_blood_chest = registerTileEntity(new BlockDBChest(), TileEntityDBChest.class);
 	public static final Block cypress_wood_stairs = new ModBlockStairs("cypress_wood_stairs", cypress_planks, "stairWood");
 	public static final Block elder_wood_stairs = new ModBlockStairs("elder_wood_stairs", elder_planks, "stairWood");
 	public static final Block juniper_wood_stairs = new ModBlockStairs("juniper_wood_stairs", juniper_planks, "stairWood");
@@ -519,7 +520,8 @@ public class ModObjects {
 	public static final Item sigil_shrieking = Util.registerItem(new ItemSigil(0, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 20.0F, 1.0F);
+			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 60.0F, 1.0F);
+			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 60, 2));
 		}
 	}, "sigil_shrieking");
 	public static final Item sigil_sentinel = Util.registerItem(new ItemSigil(600, false) {
