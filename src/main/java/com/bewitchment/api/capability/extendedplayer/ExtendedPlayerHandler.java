@@ -59,6 +59,14 @@ public class ExtendedPlayerHandler {
 					cap.updateCurses();
 				}
 			}
+			if (cap.ritualDisabledTime > 0) {
+				cap.ritualDisabledTime--;
+				cap.canRitual = false;
+				ExtendedPlayer.syncToClient(event.player);
+			} else {
+				cap.canRitual = true;
+				ExtendedPlayer.syncToClient(event.player);
+			}
 			if (event.player.ticksExisted % 20 == 0) {
 				NBTTagList list = cap.exploredChunks;
 				long pos = ChunkPos.asLong(event.player.chunkCoordX, event.player.chunkCoordZ);

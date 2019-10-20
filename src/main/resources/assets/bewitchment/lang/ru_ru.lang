@@ -488,3 +488,5 @@ tc.aspect.diabolus=Демон, несвятое, светское
 tc.aspect.stellae=Звёзды, созвездие
 tc.aspect.luna=Луна
 tc.aspect.sol=Солнце
+
+ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.

@@ -189,7 +189,7 @@ public class ModItemDoor extends ItemDoor {
 		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 			if (worldIn.getTileEntity(pos) instanceof TileEntityDragonsBlood) {
 				TileEntityDragonsBlood te = (TileEntityDragonsBlood) worldIn.getTileEntity(pos);
-				if (!te.handler.getStackInSlot(0).isEmpty()) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
+				if (te.sigil != null) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
 			}
 		}
 	}

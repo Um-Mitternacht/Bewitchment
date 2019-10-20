@@ -21,7 +21,7 @@ import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
-import com.bewitchment.common.item.sigils.ItemSigil;
+import com.bewitchment.common.item.ItemSigil;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
@@ -47,6 +47,9 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -191,7 +194,7 @@ public class ModObjects {
 	public static final Block cypress_trapdoor = new ModBlockTrapdoor("cypress_trapdoor", cypress_planks);
 	public static final Block elder_trapdoor = new ModBlockTrapdoor("elder_trapdoor", elder_planks);
 	public static final Block juniper_trapdoor = new ModBlockTrapdoor("juniper_trapdoor", juniper_planks);
-	public static final Block dragons_blood_trapdoor = registerTileEntity(new BlockDBTrapdoor(), TileEntityDragonsBlood.class);
+	public static final Block dragons_blood_trapdoor = new BlockDBTrapdoor();
 	public static final Block cypress_fence_gate = new ModBlockFenceGate("cypress_fence_gate", cypress_planks, "fenceGateWood");
 	public static final Block elder_fence_gate = new ModBlockFenceGate("elder_fence_gate", elder_planks, "fenceGateWood");
 	public static final Block juniper_fence_gate = new ModBlockFenceGate("juniper_fence_gate", juniper_planks, "fenceGateWood");
@@ -432,34 +435,34 @@ public class ModObjects {
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
 
-	public static final Item sigil_mending = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 0));
 		}
 	}, "sigil_mending");
-	public static final Item sigil_judgement = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_judgement = Util.registerItem(new ItemSigil(0, true) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
 
 		}
 	}, "sigil_judgement");
-	public static final Item sigil_ruin = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_ruin = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 160, 0));
-			entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 160, 0));
-			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 160, 0));
-			entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 160, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 0));
 		}
 	}, "sigil_ruin");
-	public static final Item sigil_binding = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_binding = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 5));
+			entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 300, 5));
 		}
 	}, "sigil_binding");
-	public static final Item sigil_cleansing = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_cleansing = Util.registerItem(new ItemSigil(1200, true) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
 			List<PotionEffect> result = entity.getActivePotionEffects().stream().filter(p -> !p.getPotion().isBadEffect()).collect(Collectors.toList());
@@ -469,16 +472,22 @@ public class ModObjects {
 			}
 		}
 	}, "sigil_cleansing");
-	public static final Item sigil_failure = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_failure = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			//todo cancel ritual on sigil effect (attach to extended player)
+			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
+				ExtendedPlayer ep = entity.getCapability(ExtendedPlayer.CAPABILITY, null);
+				ep.canRitual = false;
+				ep.ritualDisabledTime = 24000;
+				ExtendedPlayer.syncToClient((EntityPlayer) entity);
+				((WorldServer) entity.world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, false, entity.posX, entity.posY, entity.posZ, 100, 0.5, 1, 0.5, 0.05);
+			}
 		}
 	}, "sigil_failure");
-	public static final Item sigil_purity = Util.registerItem(new ItemSigil() {
+	public static final Item sigil_purity = Util.registerItem(new ItemSigil(6000, true) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			if (entity instanceof EntityPlayer) {
+			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
 				ExtendedPlayer ep = entity.getCapability(ExtendedPlayer.CAPABILITY, null);
 				List<Curse> weakerCurses = ep.getCurses().stream().filter(Curse::isLesser).collect(Collectors.toList());
 				for (Curse curse : weakerCurses) {
@@ -488,6 +497,37 @@ public class ModObjects {
 			}
 		}
 	}, "sigil_purity");
+	public static final Item sigil_luck = Util.registerItem(new ItemSigil(6000, true) {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(MobEffects.LUCK, 6000, 0));
+		}
+	}, "sigil_luck");
+	public static final Item sigil_battle = Util.registerItem(new ItemSigil(3000, true) {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 0));
+			entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1200, 0));
+		}
+	}, "sigil_battle");
+	public static final Item sigil_disorientation = Util.registerItem(new ItemSigil(600, false) {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			entity.addPotionEffect(new PotionEffect(ModPotions.fear, 300));
+		}
+	}, "sigil_disorientation");
+	public static final Item sigil_shrieking = Util.registerItem(new ItemSigil(0, false) {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 20.0F, 1.0F);
+		}
+	}, "sigil_shrieking");
+	public static final Item sigil_sentinel = Util.registerItem(new ItemSigil(600, false) {
+		@Override
+		public void applyEffects(EntityLivingBase entity) {
+			//todo spawn random spirits here
+		}
+	}, "sigil_sentinel");
 	
 	public static void preInit() {
 		if (Loader.isModLoaded("chisel")) {

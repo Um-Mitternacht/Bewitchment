@@ -986,3 +986,5 @@ tc.aspect.diabolus=Demon, Unholy, Profane
 tc.aspect.stellae=Stars, Constellation, Asterism
 tc.aspect.luna=The Moon
 tc.aspect.sol=The Sun
+
+ritual.cannot_start=You don't feel anything happening...

@@ -1,28 +1,33 @@
 package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
-import com.bewitchment.common.item.sigils.ItemSigil;
+import com.bewitchment.common.item.ItemSigil;
+import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import javax.annotation.Nonnull;
+import java.util.HashSet;
+import java.util.Set;
 
-public class TileEntityDragonsBlood extends ModTileEntity {
-	public ItemStackHandler handler = new ItemStackHandler(1) {
-		@Override
-		public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-			return stack.getItem() instanceof ItemSigil;
-		}
-	};
+public class TileEntityDragonsBlood extends ModTileEntity implements ITickable {
+	public ItemSigil sigil;
+	public int cooldown = 0;
+	public boolean whiteList;
+	public Set<String> playerUUIDSet = new HashSet<>();
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
@@ -58,40 +63,56 @@ public class TileEntityDragonsBlood extends ModTileEntity {
 
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (world.getBlockState(pos).getBlock() == ModObjects.dragons_blood_door.door) {
-			TileEntityDragonsBlood door1 = (TileEntityDragonsBlood) world.getTileEntity(pos);
-			TileEntityDragonsBlood door2 = world.getTileEntity(pos.down()) instanceof TileEntityDragonsBlood ? (TileEntityDragonsBlood) world.getTileEntity(pos.down()) : (TileEntityDragonsBlood) world.getTileEntity(pos.up());
-			if (isEmpty(door1.handler) && isEmpty(door2.handler)) {
-				if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
-					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
-					return true;
-				}
-			} else {
-				ItemSigil sigil = door1.handler.getStackInSlot(0).isEmpty() ? (ItemSigil) door2.handler.getStackInSlot(0).getItem() : (ItemSigil) door1.handler.getStackInSlot(0).getItem();
-				sigil.applyEffects(player);
+		TileEntityDragonsBlood te = this;
+		if (world.getBlockState(pos).getBlock() == ModObjects.dragons_blood_door.door) te = world.getTileEntity(pos.down()) instanceof TileEntityDragonsBlood ? (TileEntityDragonsBlood) world.getTileEntity(pos.down()) : this;
+		if (te.sigil == null) {
+			if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
+				te.sigil = (ItemSigil) player.inventory.decrStackSize(player.inventory.currentItem, 1).getItem();
+				te.whiteList = te.sigil.positive;
+				te.playerUUIDSet.add(player.getUniqueID().toString());
+				markDirty();
 				return true;
 			}
-		} else {
-			if (isEmpty(handler)) {
-				if (player.getHeldItem(hand).getItem() instanceof ItemSigil) {
-					handler.insertItem(0, player.inventory.decrStackSize(player.inventory.currentItem, 1), false);
-					return true;
-				}
-			} else {
-				if (handler.getStackInSlot(0).getItem() instanceof ItemSigil) {
-					((ItemSigil) handler.getStackInSlot(0).getItem()).applyEffects(player);
-					return true;
-				}
-			}
+		} else if (player.getHeldItem(hand).getItem() instanceof ItemTaglock && player.getHeldItem(hand).hasTagCompound()) {
+			te.playerUUIDSet.add(player.getHeldItem(hand).getTagCompound().getString("boundId"));
+			markDirty();
+			return true;
+		} else if (te.cooldown <= 0 && (isPlayerOnList(te, player) == te.whiteList)){
+			te.sigil.applyEffects(player);
+			te.cooldown = te.sigil.cooldown;
+			markDirty();
+			return true;
 		}
 		return super.activate(world, pos, player, hand, face);
 	}
 
 	private void writeUpdateTag(NBTTagCompound tag) {
-		tag.setTag("handler", this.handler.serializeNBT());
+		tag.setString("sigil", sigil == null ? "" : sigil.getRegistryName().toString());
+		tag.setInteger("cooldown", cooldown);
+		tag.setBoolean("whitelist", whiteList);
+		NBTTagList playerList = new NBTTagList();
+		for (String s : playerUUIDSet) {
+			playerList.appendTag(new NBTTagString(s));
+		}
+		tag.setTag("playerList", playerList);
 	}
 
 	private void readUpdateTag(NBTTagCompound tag) {
-		this.handler.deserializeNBT(tag.getCompoundTag("handler"));
+		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(tag.getString("sigil")));
+		cooldown = tag.getInteger("cooldown");
+		whiteList = tag.getBoolean("whitelist");
+		NBTTagList playerList = tag.getTagList("playerList", Constants.NBT.TAG_STRING);
+		for (int i = 0; i < playerList.tagCount(); i++) {
+			playerUUIDSet.add(playerList.getStringTagAt(i));
+		}
+	}
+
+	private boolean isPlayerOnList(TileEntityDragonsBlood te, EntityPlayer player) {
+		return te.playerUUIDSet.contains(player.getUniqueID().toString());
+	}
+
+	@Override
+	public void update() {
+		if (cooldown > 0) cooldown--;
 	}
 }

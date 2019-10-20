@@ -856,3 +856,4 @@ tc.aspect.diabolus=Demon, Uhellig, Vanhelliget
 tc.aspect.stellae=Stjerne, Constellation, Asterism
 tc.aspect.luna=Månen
 tc.aspect.sol=Solen
+ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.

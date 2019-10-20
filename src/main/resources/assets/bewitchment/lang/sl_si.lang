@@ -855,3 +855,5 @@ tc.aspect.diabolus=Demon, Preklet, Profano
 tc.aspect.stellae=Zvezde, Ozvezdja
 tc.aspect.luna=Luna
 tc.aspect.sol=Sonce
+
+ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.

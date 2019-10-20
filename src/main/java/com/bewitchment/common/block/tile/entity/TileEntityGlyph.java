@@ -129,17 +129,20 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public void startRitual(EntityPlayer player, Ritual rit) {
 		if (!player.world.isRemote) {
 			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, rit.startingPower)) {
-				ritual = rit;
-				player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
-				ExtendedPlayer.syncToClient(player);
-				casterId = player.getGameProfile().getId();
-				caster = Util.findPlayer(casterId);
-				effectivePos = pos;
-				effectiveDim = world.provider.getDimension();
-				time = 0;
-				ritual.onStarted(world, pos, player, inventory);
-				player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
-				syncToClient();
+				if (player.getCapability(ExtendedPlayer.CAPABILITY, null).canRitual) {
+					ritual = rit;
+					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
+					ExtendedPlayer.syncToClient(player);
+					casterId = player.getGameProfile().getId();
+					caster = Util.findPlayer(casterId);
+					effectivePos = pos;
+					effectiveDim = world.provider.getDimension();
+					time = 0;
+					ritual.onStarted(world, pos, player, inventory);
+					player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
+					syncToClient();
+				}
+				else player.sendStatusMessage(new TextComponentTranslation("ritual.cannot_start"), true);
 			}
 			else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		}

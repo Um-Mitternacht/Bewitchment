@@ -10,6 +10,7 @@ import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
+import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
@@ -77,6 +78,7 @@ public class ModRegistries {
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		GameRegistry.registerTileEntity(TileEntityIdol.class, new ResourceLocation(Bewitchment.MODID, "idol"));
 		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
+		GameRegistry.registerTileEntity(TileEntityDragonsBlood.class, new ResourceLocation(Bewitchment.MODID, "dragons_blood"));
 		try {
 			for (Field f : ModObjects.class.getFields()) {
 				Object obj = f.get(null);

@@ -32,7 +32,8 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public NBTTagList uniqueDefeatedBosses = new NBTTagList(), exploredChunks = new NBTTagList();
 	public Fortune fortune;
 	public Map<String, Integer> curses = new HashMap<>(); //curse id-days left
-	public int fortuneTime, ritualsCast, mobsKilled;
+	public boolean canRitual = true;
+	public int ritualDisabledTime, fortuneTime, ritualsCast, mobsKilled;
 	
 	public static void syncToClient(EntityPlayer player) {
 		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
@@ -45,7 +46,9 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
-		
+
+		tag.setBoolean("canRitual", instance.canRitual);
+
 		NBTTagList cursesList = new NBTTagList();
 		tag.setTag("curses", cursesList);
 		instance.curses.entrySet().stream().forEach(entry -> this.addNewCouple(entry, cursesList));
@@ -53,6 +56,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setInteger("fortuneTime", fortuneTime);
 		tag.setInteger("ritualsCast", instance.ritualsCast);
 		tag.setInteger("mobsKilled", instance.mobsKilled);
+		tag.setInteger("ritualDisabledTime", instance.ritualDisabledTime);
 		return tag;
 	}
 	
@@ -62,13 +66,16 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
-		
+
+		instance.canRitual = tag.getBoolean("canRitual");
+
 		instance.curses.clear();
 		tag.getTagList("curses", Constants.NBT.TAG_COMPOUND).forEach(s -> this.loadCouple(instance, s));
 		
 		instance.fortuneTime = tag.getInteger("fortuneTime");
 		instance.ritualsCast = tag.getInteger("ritualsCast");
 		instance.mobsKilled = tag.getInteger("mobsKilled");
+		instance.ritualDisabledTime = tag.getInteger("ritualDisabledTime");
 	}
 	
 	@Override

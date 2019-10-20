@@ -984,3 +984,5 @@ tc.aspect.diabolus=Demon, Bezbożnik, Bezcześcić
 tc.aspect.stellae=Gwiazdy, Konstelacja, Asteryzm
 tc.aspect.luna=Księżyc
 tc.aspect.sol=Słońce
+
+ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.

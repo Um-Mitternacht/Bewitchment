@@ -961,3 +961,5 @@ tarot.no_effect=%s has no effects.
 tarot.mobkills=%1$s slayed %2$s monster(s).
 tarot.has_boss=%s laughed in the face of danger.
 tarot.no_boss=%s hasn't conquered any great creatures, yet.
+
+ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.
