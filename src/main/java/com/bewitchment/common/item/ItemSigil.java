@@ -1,5 +1,6 @@
 package com.bewitchment.common.item;
 
+import com.bewitchment.common.block.tile.entity.TileEntitySigil;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,10 +26,12 @@ public abstract class ItemSigil extends Item {
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		boolean isReplacing = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
-		if (!world.isRemote && (face == EnumFacing.UP && ModObjects.sigil.canPlaceBlockAt(world, pos.up()) || isReplacing)) {
+		if (!world.isRemote && ModObjects.sigil.canPlaceBlockAt(world, pos.offset(face))) {
 			ItemStack stack = player.getHeldItem(hand);
-			BlockPos toPlace = isReplacing ? pos : pos.up();
+			BlockPos toPlace = isReplacing ? pos : pos.offset(face);
 			world.setBlockState(toPlace, ModObjects.sigil.getStateForPlacement(world, pos, face, hitX, hitY, hitZ, 0, player, hand));
+			((TileEntitySigil) world.getTileEntity(toPlace)).setupTileEntity(this);
+			((TileEntitySigil) world.getTileEntity(toPlace)).whiteListUUIDSet.add(player.getUniqueID().toString());
 			world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.BLOCKS, 0.5f, 1 + 0.5f * player.getRNG().nextFloat());
 			if (!player.isCreative()) stack.shrink(1);
 		}

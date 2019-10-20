@@ -14,6 +14,7 @@ import com.bewitchment.common.block.plants.BlockSpanishMoss;
 import com.bewitchment.common.block.plants.BlockTorchwood;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
+import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.*;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
@@ -522,13 +523,21 @@ public class ModObjects {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
 			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 60.0F, 1.0F);
-			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 60, 2));
+			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 80, 0));
 		}
 	}, "sigil_shrieking");
 	public static final Item sigil_sentinel = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			//todo spawn random spirits here
+			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
+				int amount = entity.getRNG().nextInt(3) + 1;
+				EntityGhost temp = new EntityGhost(entity.world);
+				temp.setAttackTarget(entity);
+				for (int i = 0; i < amount; i++) {
+					temp.setPosition(entity.posX + entity.getRNG().nextGaussian() * 5, entity.posY + 3, entity.posZ + entity.getRNG().nextGaussian() * 5);
+					entity.world.spawnEntity(temp);
+				}
+			}
 		}
 	}, "sigil_sentinel");
 	
