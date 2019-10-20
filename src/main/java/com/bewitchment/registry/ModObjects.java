@@ -82,6 +82,7 @@ public class ModObjects {
 	public static final Block glyph = registerTileEntity(new BlockGlyph(), TileEntityGlyph.class);
 	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
 	public static final Block witches_light = new BlockWitchesLight();
+	public static final Block sigil = registerTileEntity(new BlockSigil(), TileEntitySigil.class);
 	//Material Blocks
 	public static final Block blessed_stone = new ModBlock("blessed_stone", Blocks.BEDROCK);
 	
@@ -442,12 +443,12 @@ public class ModObjects {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 0));
 		}
 	}, "sigil_mending");
-	public static final Item sigil_judgement = Util.registerItem(new ItemSigil(0, true) {
-		@Override
-		public void applyEffects(EntityLivingBase entity) {
-
-		}
-	}, "sigil_judgement");
+//	public static final Item sigil_judgement = Util.registerItem(new ItemSigil(0, true) {
+//		@Override
+//		public void applyEffects(EntityLivingBase entity) {
+//
+//		}
+//	}, "sigil_judgement");
 	public static final Item sigil_ruin = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {

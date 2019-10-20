@@ -1,0 +1,60 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "bewitchment:glyph"
+  },
+  "variants": {
+	"variation": {
+	  "0": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_0"
+		}
+	  },
+	  "1": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_1"
+		}
+	  },
+	  "2": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_2"
+		}
+	  },
+	  "3": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_3"
+		}
+	  },
+	  "4": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_4"
+		}
+	  },
+	  "5": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_5"
+		}
+	  },
+	  "6": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_6"
+		}
+	  },
+	  "7": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_7"
+		}
+	  },
+	  "8": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_8"
+		}
+	  },
+	  "9": {
+		"textures": {
+		  "texture": "bewitchment:blocks/sigil/sigil_9"
+		}
+	  }
+	}
+  }
+}
