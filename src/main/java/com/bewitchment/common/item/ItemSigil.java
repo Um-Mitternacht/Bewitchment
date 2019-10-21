@@ -25,10 +25,9 @@ public abstract class ItemSigil extends Item {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		boolean isReplacing = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
-		if (!world.isRemote && ModObjects.sigil.canPlaceBlockAt(world, pos.offset(face))) {
+		BlockPos toPlace = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
+		if (!world.isRemote && ModObjects.sigil.canPlaceBlockOnSide(world, toPlace, face)) {
 			ItemStack stack = player.getHeldItem(hand);
-			BlockPos toPlace = isReplacing ? pos : pos.offset(face);
 			world.setBlockState(toPlace, ModObjects.sigil.getStateForPlacement(world, pos, face, hitX, hitY, hitZ, 0, player, hand));
 			((TileEntitySigil) world.getTileEntity(toPlace)).setupTileEntity(this);
 			((TileEntitySigil) world.getTileEntity(toPlace)).whiteListUUIDSet.add(player.getUniqueID().toString());

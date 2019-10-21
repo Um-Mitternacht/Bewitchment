@@ -109,7 +109,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		return super.canPlaceBlockOnSide(worldIn, pos, side) &&  worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
+		return super.canPlaceBlockOnSide(worldIn, pos, side) && worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
 	}
 
 	@Override

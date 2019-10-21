@@ -296,6 +296,7 @@ public class ModObjects {
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();
+	public static final Item fortunes_favor = new ItemFortuneFavor();
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
@@ -472,12 +473,6 @@ public class ModObjects {
 			entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 0));
 		}
 	}, "sigil_mending");
-//	public static final Item sigil_judgement = Util.registerItem(new ItemSigil(0, true) {
-//		@Override
-//		public void applyEffects(EntityLivingBase entity) {
-//
-//		}
-//	}, "sigil_judgement");
 	public static final Item sigil_ruin = Util.registerItem(new ItemSigil(600, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {

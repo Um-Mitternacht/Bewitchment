@@ -239,6 +239,9 @@ tooltip.bewitchment.nazar=An amulet that keeps bad luck at bay and provides some
 item.bewitchment.token_of_remedies.name=Token of Remedies
 tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnesses.
 
+item.bewitchment.fortunes_favor.name=Fortune's Favor
+tooltip.bewitchment.fortunes_favor=A pair of enchanted gloves that boost mining speed and give more drops from ores.
+
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
