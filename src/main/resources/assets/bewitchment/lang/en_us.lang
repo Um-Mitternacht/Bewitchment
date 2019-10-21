@@ -162,6 +162,8 @@ tooltip.bewitchment.tarot_cards=They are receptive to %s's future
 tile.bewitchment.frostfire.name=Frostfire
 tile.bewitchment.hellfire.name=Hellfire
 tile.bewitchment.brazier.name=Brazier
+tile.bewitchment.sigil_table.name=Sigil Table
+tile.bewitchment.sigil.name=Placed Sigil
 
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
@@ -397,6 +399,18 @@ item.bewitchment.poppet_voodooprotection.name=Voodoo Protection Poppet
 item.bewitchment.poppet_wasting.name=Poppet of Wasting
 item.bewitchment.poppet_waterprotection.name=Water Protection Poppet
 tooltip.bewitchment.poppet.bound=Bound to %s
+
+item.bewitchment.sigil_mending.name=Sigil of Mending
+item.bewitchment.sigil_ruin.name=Sigil of Ruin
+item.bewitchment.sigil_binding.name=Sigil of Binding
+item.bewitchment.sigil_cleansing.name=Sigil of Cleansing
+item.bewitchment.sigil_failure.name=Sigil of Failure
+item.bewitchment.sigil_purity.name=Sigil of Purity
+item.bewitchment.sigil_luck.name=Sigil of Luck
+item.bewitchment.sigil_battle.name=Sigil of Battle
+item.bewitchment.sigil_disorientation.name=Sigil of Disorientation
+item.bewitchment.sigil_shrieking.name=Sigil of Shrieking
+item.bewitchment.sigil_sentinel.name=Sigil of Sentinel
 
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom

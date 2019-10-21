@@ -16,6 +16,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -24,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -182,5 +184,13 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 3, pos.getY(), pos.getZ() + rand.nextGaussian() / 3, 0, 0, 0);
+	}
+
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		if (world.getTileEntity(pos) instanceof TileEntitySigil) {
+			return new ItemStack(((TileEntitySigil) world.getTileEntity(pos)).sigil);
+		}
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 }

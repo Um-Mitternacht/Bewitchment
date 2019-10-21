@@ -1,0 +1,68 @@
+{
+  "name": "Sigil Table",
+  "category": "devices",
+  "icon": "bewitchment:sigil_table",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "A seemingly inconspicuous writing table, treated with Dragon’s Blood Resin, thus giving it a crimson tint. This fancy writing table is used to draw sigils. It also contains a unique 5x5 grid in which to draw them, to allow for a lot of freedom and space when drawing."
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:sigil_table"
+	},
+	{
+	  "type": "text",
+	  "title": "Sigils",
+	  "text": "Sigils are special symbols created by a witch in order to create certain effects or to protect certain areas. Sigils must be drawn using Dragon’s Blood Resin, though other similar compounds such as dyes may also be required depending on the specific sigil."
+	},
+	{
+	  "type": "text",
+	  "text": "Sigils may be applied on mobs, blocks, as well as on chests and doors made from the wood of a Dragon’s Blood tree, and will apply the sigil to those who interact with it. When applied to a target, the sigil will last for about a day, but it can passively feed off ME, though once it has no magic to feed off of, it will fade away."
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:mending"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:ruin"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:binding"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:cleansing"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:failure"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:purity"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:luck"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:battle"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:disorientation"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:shrieking"
+	},
+	{
+	  "type": "bewitchment:sigil_recipe",
+	  "recipe": "bewitchment:sentinel"
+	}
+  ]
+}

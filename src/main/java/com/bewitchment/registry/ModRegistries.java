@@ -414,12 +414,23 @@ public class ModRegistries {
 	
 	@SubscribeEvent
 	public static void registerSigilRecipes(RegistryEvent.Register<SigilRecipe> event) {
+		event.getRegistry().register(getSigilRecipe("mending", Util.get("dyePurple"), Util.get(ModObjects.essence_of_vitality), Util.get(ModObjects.oak_apple_gall), new ItemStack(ModObjects.sigil_mending)));
+		event.getRegistry().register(getSigilRecipe("ruin", Util.get(ModObjects.snake_venom), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), new ItemStack(ModObjects.sigil_ruin)));
+		event.getRegistry().register(getSigilRecipe("binding", Util.get("slimeball"), Util.get("string"), Util.get(ModObjects.belladonna), new ItemStack(ModObjects.sigil_binding)));
+		event.getRegistry().register(getSigilRecipe("cleansing", Util.get("dyeWhite"), Util.get(ModObjects.cleansing_balm), Util.get("dyeGreen"), new ItemStack(ModObjects.sigil_cleansing)));
+		event.getRegistry().register(getSigilRecipe("failure", Util.get("dyeBlack"), Util.get(ModObjects.oil_of_vitriol), Util.get("dyeRed"), new ItemStack(ModObjects.sigil_failure)));
+		event.getRegistry().register(getSigilRecipe("purity", Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.juniper_berries), Util.get(ModObjects.white_sage), new ItemStack(ModObjects.sigil_purity)));
+		event.getRegistry().register(getSigilRecipe("luck", Util.get("dyeGreen"), Util.get("dyeRed"), Util.get("dyeRed"), new ItemStack(ModObjects.sigil_luck)));
+		event.getRegistry().register(getSigilRecipe("battle", Util.get(ModObjects.bottle_of_blood), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.bottle_of_blood), new ItemStack(ModObjects.sigil_battle)));
+		event.getRegistry().register(getSigilRecipe("disorientation", Util.get(ModObjects.iron_gall_ink), Util.get("dyePurple"), Util.get(ModObjects.ectoplasm), new ItemStack(ModObjects.sigil_disorientation)));
+		event.getRegistry().register(getSigilRecipe("shrieking", Util.get("dyeRed"), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.toe_of_frog), new ItemStack(ModObjects.sigil_shrieking)));
+		event.getRegistry().register(getSigilRecipe("sentinel", Util.get("dyeWhite"), Util.get(ModObjects.spruce_heart), Util.get(ModObjects.ectoplasm), new ItemStack(ModObjects.sigil_sentinel)));
+	}
+
+	private static SigilRecipe getSigilRecipe(String name, Ingredient dye, Ingredient cross, Ingredient center, ItemStack result) {
 		final Ingredient resin = Util.get(ModObjects.dragons_blood_resin);
 		final Ingredient paper = Util.get(Items.PAPER);
-		final Ingredient green_dye = Util.get("dyeGreen");
-		final Ingredient elderberries = Util.get(ModObjects.elderberries);
-		final Ingredient ebb_of_death = Util.get(ModObjects.ebb_of_death);
-		event.getRegistry().register(new SigilRecipe(new ResourceLocation(Bewitchment.MODID, "smelly"), Arrays.asList(paper, resin, green_dye, resin, paper, resin, green_dye, ebb_of_death, green_dye, resin, paper, ebb_of_death, elderberries, ebb_of_death, paper, resin, green_dye, ebb_of_death, green_dye, resin, paper, resin, green_dye, resin, paper), new ItemStack(ModObjects.heaven_extract)));
+		return new SigilRecipe(new ResourceLocation(Bewitchment.MODID, name), Arrays.asList(paper, resin, dye, resin, paper, resin, dye, cross, dye, resin, paper, cross, center, cross, paper, resin, dye, cross, dye, resin, paper, resin, dye, resin, paper), result);
 	}
 	
 	@SubscribeEvent
