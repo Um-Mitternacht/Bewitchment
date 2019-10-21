@@ -330,6 +330,34 @@ public class ModObjects {
 	public static final Item nether_brick_herne_idol = createIdol("nether_brick_herne_idol", Blocks.NETHER_BRICK);
 	public static final Item nethersteel_herne_idol = createIdol("nethersteel_herne_idol", nethersteel[0]);
 	public static final Item scorned_brick_herne_idol = createIdol("scorned_brick_herne_idol", scorned_bricks[0]);
+	//Lenny Statue
+	public static final Item stone_leonard_statue = createIdol("stone_leonard_statue", Blocks.STONE);
+	public static final Item diorite_leonard_statue = createIdol("diorite_leonard_statue", Blocks.STONE);
+	public static final Item granite_leonard_statue = createIdol("granite_leonard_statue", Blocks.STONE);
+	public static final Item nether_brick_leonard_statue = createIdol("nether_brick_leonard_statue", Blocks.NETHER_BRICK);
+	public static final Item andesite_leonard_statue = createIdol("andesite_leonard_statue", Blocks.STONE);
+	public static final Item scorned_brick_leonard_statue = createIdol("scorned_brick_leonard_statue", scorned_bricks[0]);
+	//Lilith Statue
+	public static final Item stone_lilith_statue = createIdol("stone_lilith_statue", Blocks.STONE);
+	public static final Item diorite_lilith_statue = createIdol("diorite_lilith_statue", Blocks.STONE);
+	public static final Item granite_lilith_statue = createIdol("granite_lilith_statue", Blocks.STONE);
+	public static final Item nether_brick_lilith_statue = createIdol("nether_brick_lilith_statue", Blocks.NETHER_BRICK);
+	public static final Item andesite_lilith_statue = createIdol("andesite_lilith_statue", Blocks.STONE);
+	public static final Item scorned_brick_lilith_statue = createIdol("scorned_brick_lilith_statue", scorned_bricks[0]);
+	//Baphomet Statue
+	public static final Item stone_baphomet_statue = createIdol("stone_baphomet_statue", Blocks.STONE);
+	public static final Item diorite_baphomet_statue = createIdol("diorite_baphomet_statue", Blocks.STONE);
+	public static final Item granite_baphomet_statue = createIdol("granite_baphomet_statue", Blocks.STONE);
+	public static final Item nether_brick_baphomet_statue = createIdol("nether_brick_baphomet_statue", Blocks.NETHER_BRICK);
+	public static final Item andesite_baphomet_statue = createIdol("andesite_baphomet_statue", Blocks.STONE);
+	public static final Item scorned_brick_baphomet_statue = createIdol("scorned_brick_baphomet_statue", scorned_bricks[0]);
+	//Herne Statue
+	public static final Item stone_herne_statue = createIdol("stone_herne_statue", Blocks.STONE);
+	public static final Item diorite_herne_statue = createIdol("diorite_herne_statue", Blocks.STONE);
+	public static final Item granite_herne_statue = createIdol("granite_herne_statue", Blocks.STONE);
+	public static final Item nether_brick_herne_statue = createIdol("nether_brick_herne_statue", Blocks.NETHER_BRICK);
+	public static final Item andesite_herne_statue = createIdol("andesite_herne_statue", Blocks.STONE);
+	public static final Item scorned_brick_herne_statue = createIdol("scorned_brick_herne_statue", scorned_bricks[0]);
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	public static final Item bottled_hellfire = new ItemBottledHellfire();
