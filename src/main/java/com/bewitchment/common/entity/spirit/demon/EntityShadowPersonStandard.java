@@ -11,8 +11,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Joseph on 10/21/2019.
