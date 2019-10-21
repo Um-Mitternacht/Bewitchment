@@ -25,7 +25,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityFeuerwurm extends ModEntityMob {
-	private int milkTimer;
 	
 	public EntityFeuerwurm(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/feuerwurm"));
@@ -63,13 +62,11 @@ public class EntityFeuerwurm extends ModEntityMob {
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
-		tag.setInteger("milk_timer", milkTimer);
 		super.writeEntityToNBT(tag);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
-		milkTimer = tag.getInteger("milk_timer");
 		super.readEntityFromNBT(tag);
 	}
 	
