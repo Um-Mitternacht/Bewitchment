@@ -89,6 +89,20 @@ public class ClientProxy extends ServerProxy {
 	}
 	
 	@Override
+	public void handleTarot(List<TarotInfo> infoList) {
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
+		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
+			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
+		}
+		else {
+			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
+			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
+			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
+		}
+	}
+	
+	@Override
 	public boolean isFancyGraphicsEnabled() {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
@@ -138,7 +152,7 @@ public class ClientProxy extends ServerProxy {
 		registerIdol(ModObjects.nether_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
 		registerIdol(ModObjects.nethersteel_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
-
+		
 		// Register lenny model
 		ModelBase slenny = new ModelLeonardStatue();
 		registerIdol(ModObjects.stone_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/stone.png"));
@@ -147,7 +161,7 @@ public class ClientProxy extends ServerProxy {
 		registerIdol(ModObjects.nether_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/nether_brick.png"));
 		registerIdol(ModObjects.andesite_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/scorned_brick.png"));
-
+		
 		// Register lilith model
 		ModelBase slilith = new ModelLilithStatue();
 		registerIdol(ModObjects.stone_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/stone.png"));
@@ -156,7 +170,7 @@ public class ClientProxy extends ServerProxy {
 		registerIdol(ModObjects.nether_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/nether_brick.png"));
 		registerIdol(ModObjects.andesite_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/scorned_brick.png"));
-
+		
 		// Register baphomet model
 		ModelBase sbaphomet = new ModelBaphometStatue();
 		registerIdol(ModObjects.stone_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/stone.png"));
@@ -165,7 +179,7 @@ public class ClientProxy extends ServerProxy {
 		registerIdol(ModObjects.nether_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/nether_brick.png"));
 		registerIdol(ModObjects.andesite_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/scorned_brick.png"));
-
+		
 		// Register herne model
 		ModelBase sherne = new ModelHerneStatue();
 		registerIdol(ModObjects.stone_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/stone.png"));
@@ -230,19 +244,5 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
-	}
-	
-	@Override
-	public void handleTarot(List<TarotInfo> infoList) {
-		EntityPlayer p = Minecraft.getMinecraft().player;
-		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
-		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
-			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
-		}
-		else {
-			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
-			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
-			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
-		}
 	}
 }

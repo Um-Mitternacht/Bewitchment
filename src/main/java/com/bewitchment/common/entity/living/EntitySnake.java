@@ -69,16 +69,6 @@ public class EntitySnake extends ModEntityTameable {
 		return super.processInteract(player, hand);
 	}
 	
-	private int getNewHiss() {
-		return this.rand.nextInt(600) + 30;
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(HISS_TIME, Integer.valueOf(0));
-	}
-	
 	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();
@@ -109,6 +99,12 @@ public class EntitySnake extends ModEntityTameable {
 	}
 	
 	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(HISS_TIME, Integer.valueOf(0));
+	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		tag.setInteger("milkTimer", milkTimer);
 		super.writeEntityToNBT(tag);
@@ -123,6 +119,10 @@ public class EntitySnake extends ModEntityTameable {
 	@Override
 	protected int getSkinTypes() {
 		return 6;
+	}
+	
+	private int getNewHiss() {
+		return this.rand.nextInt(600) + 30;
 	}
 	
 	@Override

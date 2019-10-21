@@ -53,12 +53,12 @@ public class ItemPoppet extends Item {
 	}
 	
 	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return false;
+	public boolean hasEffect(ItemStack stack) {
+		return stack.hasTagCompound();
 	}
 	
 	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return stack.hasTagCompound();
+	public boolean isEnchantable(ItemStack stack) {
+		return false;
 	}
 }

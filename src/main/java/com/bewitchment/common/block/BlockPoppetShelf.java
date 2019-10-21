@@ -71,16 +71,6 @@ public class BlockPoppetShelf extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		int gridPos = getGridPosition(state, hitX, hitY, hitZ);
-		if (!world.isRemote && hand == EnumHand.MAIN_HAND && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
-			TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
-			tile.interact(player, gridPos);
-		}
-		return true;
-	}
-	
-	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
 		IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -97,6 +87,16 @@ public class BlockPoppetShelf extends ModBlockContainer {
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		int gridPos = getGridPosition(state, hitX, hitY, hitZ);
+		if (!world.isRemote && hand == EnumHand.MAIN_HAND && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
+			TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
+			tile.interact(player, gridPos);
+		}
+		return true;
 	}
 	
 	@Override

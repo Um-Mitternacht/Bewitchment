@@ -54,12 +54,6 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
-		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		ExtendedWorld ext = ExtendedWorld.get(world);
 		for (NBTTagCompound cauldron : ext.storedCauldrons) {
@@ -70,6 +64,12 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (world.getTileEntity(pos) instanceof ModTileEntity) return ((ModTileEntity) world.getTileEntity(pos)).activate(world, pos, player, hand, face);
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 	
 	@Override

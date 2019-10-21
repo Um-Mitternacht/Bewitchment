@@ -80,14 +80,19 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.SOLID;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		for (EnumFacing face : EnumFacing.HORIZONTALS) {
+			BlockPos offset = pos.offset(face);
+			if (world.getBlockState(offset).getBlock() instanceof BlockWitchesAltar) {
+				int type = world.getBlockState(offset).getValue(TYPE);
+				if (type > 0) {
+					world.setBlockState(offset, getDefaultState().withProperty(TYPE, 0));
+					if (type == 2) refreshNearby(world, pos);
+					breakBlock(world, offset, world.getBlockState(offset));
+				}
+			}
+		}
+		super.breakBlock(world, pos, state);
 	}
 	
 	@Override
@@ -101,8 +106,19 @@ public class BlockWitchesAltar extends ModBlockContainer {
 	}
 	
 	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.SOLID;
+	}
+	
+	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return true;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
 	@Override
@@ -142,22 +158,6 @@ public class BlockWitchesAltar extends ModBlockContainer {
 			return false;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		for (EnumFacing face : EnumFacing.HORIZONTALS) {
-			BlockPos offset = pos.offset(face);
-			if (world.getBlockState(offset).getBlock() instanceof BlockWitchesAltar) {
-				int type = world.getBlockState(offset).getValue(TYPE);
-				if (type > 0) {
-					world.setBlockState(offset, getDefaultState().withProperty(TYPE, 0));
-					if (type == 2) refreshNearby(world, pos);
-					breakBlock(world, offset, world.getBlockState(offset));
-				}
-			}
-		}
-		super.breakBlock(world, pos, state);
 	}
 	
 	@Override

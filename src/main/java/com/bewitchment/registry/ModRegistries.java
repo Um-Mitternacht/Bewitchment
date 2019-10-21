@@ -426,7 +426,7 @@ public class ModRegistries {
 		event.getRegistry().register(getSigilRecipe("shrieking", Util.get("dyeRed"), Util.get(ModObjects.ectoplasm), Util.get(ModObjects.toe_of_frog), new ItemStack(ModObjects.sigil_shrieking)));
 		event.getRegistry().register(getSigilRecipe("sentinel", Util.get("dyeWhite"), Util.get(ModObjects.spruce_heart), Util.get(ModObjects.ectoplasm), new ItemStack(ModObjects.sigil_sentinel)));
 	}
-
+	
 	private static SigilRecipe getSigilRecipe(String name, Ingredient dye, Ingredient cross, Ingredient center, ItemStack result) {
 		final Ingredient resin = Util.get(ModObjects.dragons_blood_resin);
 		final Ingredient paper = Util.get(Items.PAPER);

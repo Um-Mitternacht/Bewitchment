@@ -43,16 +43,6 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 	private boolean hasPower, inUse;
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setBoolean("hasPower", hasPower);
-		tag.setBoolean("inUse", inUse);
-		tag.setInteger("burnTime", burnTime);
-		tag.setInteger("progress", progress);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(DistilleryRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		hasPower = tag.getBoolean("hasPower");
@@ -60,6 +50,16 @@ public class TileEntityDistillery extends TileEntityAltarStorage implements ITic
 		burnTime = tag.getInteger("burnTime");
 		progress = tag.getInteger("progress");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("hasPower", hasPower);
+		tag.setBoolean("inUse", inUse);
+		tag.setInteger("burnTime", burnTime);
+		tag.setInteger("progress", progress);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

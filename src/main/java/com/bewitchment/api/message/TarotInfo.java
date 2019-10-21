@@ -25,18 +25,6 @@ public class TarotInfo {
 		this.number = number;
 	}
 	
-	public ResourceLocation getTexture() {
-		return texture;
-	}
-	
-	public boolean isReversed() {
-		return isReversed;
-	}
-	
-	public int getNumber() {
-		return number;
-	}
-	
 	public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
 		ArrayList<TarotInfo> result = new ArrayList<>();
 		int size = buf.readInt();
@@ -47,5 +35,17 @@ public class TarotInfo {
 			result.add(new TarotInfo(new ResourceLocation(res), reversed, num));
 		}
 		return result;
+	}
+	
+	public ResourceLocation getTexture() {
+		return texture;
+	}
+	
+	public boolean isReversed() {
+		return isReversed;
+	}
+	
+	public int getNumber() {
+		return number;
 	}
 }

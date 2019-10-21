@@ -66,6 +66,38 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		this.readUpdateTag(tag);
+		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		this.writeUpdateTag(tag);
+		return super.writeToNBT(tag);
+	}
+	
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeUpdateTag(tag);
+		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
+	}
+	
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		NBTTagCompound tag = super.getUpdateTag();
+		writeUpdateTag(tag);
+		return tag;
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
+		NBTTagCompound tag = packet.getNbtCompound();
+		readUpdateTag(tag);
+	}
+	
+	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		IBlockState state = world.getBlockState(pos);
 		if (!state.getValue(LIT)) {
@@ -102,38 +134,6 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 			return true;
 		}
 		return super.activate(world, pos, player, hand, face);
-	}
-	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		this.writeUpdateTag(tag);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		this.readUpdateTag(tag);
-		super.readFromNBT(tag);
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound tag = new NBTTagCompound();
-		this.writeUpdateTag(tag);
-		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
-	}
-	
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound tag = super.getUpdateTag();
-		writeUpdateTag(tag);
-		return tag;
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
-		NBTTagCompound tag = packet.getNbtCompound();
-		readUpdateTag(tag);
 	}
 	
 	@Override

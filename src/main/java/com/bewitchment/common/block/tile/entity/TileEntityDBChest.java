@@ -32,15 +32,10 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 	public int cooldown = 0;
 	public boolean whiteList;
 	public Set<String> playerUUIDSet = new HashSet<>();
-
+	
 	public float lidAngle, prevLidAngle;
 	public int using;
-
-	@Override
-	public ItemStackHandler[] getInventories() {
-		return new ItemStackHandler[]{inventory};
-	}
-
+	
 	@Override
 	public void update() {
 		prevLidAngle = lidAngle;
@@ -54,7 +49,7 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 		}
 		if (cooldown > 0) cooldown--;
 	}
-
+	
 	@Override
 	public boolean receiveClientEvent(int id, int type) {
 		if (id == 1) {
@@ -63,49 +58,54 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 		}
 		return super.receiveClientEvent(id, type);
 	}
-
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing face) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : super.getCapability(capability, face);
 	}
-
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		this.writeUpdateTag(tag);
-		return super.writeToNBT(tag);
-	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		this.readUpdateTag(tag);
 		super.readFromNBT(tag);
 	}
-
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		this.writeUpdateTag(tag);
+		return super.writeToNBT(tag);
+	}
+	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeUpdateTag(tag);
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
 		return tag;
 	}
-
+	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		NBTTagCompound tag = packet.getNbtCompound();
 		readUpdateTag(tag);
 	}
-
+	
+	@Override
+	public ItemStackHandler[] getInventories() {
+		return new ItemStackHandler[]{inventory};
+	}
+	
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (sigil == null) {
@@ -116,11 +116,13 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 				markDirty();
 				return true;
 			}
-		} else if (player.getHeldItem(hand).getItem() instanceof ItemTaglock && player.getHeldItem(hand).hasTagCompound()) {
+		}
+		else if (player.getHeldItem(hand).getItem() instanceof ItemTaglock && player.getHeldItem(hand).hasTagCompound()) {
 			modifyList(this, player.getHeldItem(hand).getTagCompound().getString("boundId"));
 			markDirty();
 			return true;
-		} else if (cooldown <= 0 && (isPlayerOnList(this, player) == whiteList)){
+		}
+		else if (cooldown <= 0 && (isPlayerOnList(this, player) == whiteList)) {
 			sigil.applyEffects(player);
 			cooldown = sigil.cooldown;
 			markDirty();
@@ -128,7 +130,7 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 		player.openGui(Bewitchment.instance, GuiHandler.ModGui.DRAGONS_BLOOD_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
-
+	
 	private void writeUpdateTag(NBTTagCompound tag) {
 		tag.setString("sigil", sigil == null ? "" : sigil.getRegistryName().toString());
 		tag.setTag("inventory", inventory.serializeNBT());
@@ -140,7 +142,7 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 		}
 		tag.setTag("playerList", playerList);
 	}
-
+	
 	private void readUpdateTag(NBTTagCompound tag) {
 		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(tag.getString("sigil")));
 		inventory.deserializeNBT(tag.getCompoundTag("inventory"));
@@ -151,11 +153,11 @@ public class TileEntityDBChest extends ModTileEntity implements ITickable {
 			playerUUIDSet.add(playerList.getStringTagAt(i));
 		}
 	}
-
+	
 	private boolean isPlayerOnList(TileEntityDBChest te, EntityPlayer player) {
 		return te.playerUUIDSet.contains(player.getUniqueID().toString());
 	}
-
+	
 	private void modifyList(TileEntityDBChest te, String uuid) {
 		if (te.playerUUIDSet.contains(uuid)) te.playerUUIDSet.remove(uuid);
 		else te.playerUUIDSet.add(uuid);

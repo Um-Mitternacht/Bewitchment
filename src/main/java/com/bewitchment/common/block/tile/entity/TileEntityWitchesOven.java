@@ -45,16 +45,6 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	private boolean burning;
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setBoolean("burning", burning);
-		tag.setInteger("burnTime", burnTime);
-		tag.setInteger("fuelBurnTime", fuelBurnTime);
-		tag.setInteger("progress", progress);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(OvenRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		burning = tag.getBoolean("burning");
@@ -62,6 +52,16 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 		fuelBurnTime = tag.getInteger("fuelBurnTime");
 		progress = tag.getInteger("progress");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("burning", burning);
+		tag.setInteger("burnTime", burnTime);
+		tag.setInteger("fuelBurnTime", fuelBurnTime);
+		tag.setInteger("progress", progress);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

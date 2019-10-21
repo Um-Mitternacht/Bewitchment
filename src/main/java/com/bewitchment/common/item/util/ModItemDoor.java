@@ -153,6 +153,21 @@ public class ModItemDoor extends ItemDoor {
 			return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
 		}
 		
+		@Nullable
+		@Override
+		public TileEntity createNewTileEntity(World world, int i) {
+			return new TileEntityDragonsBlood();
+		}
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+			if (worldIn.getTileEntity(pos) instanceof TileEntityDragonsBlood) {
+				TileEntityDragonsBlood te = (TileEntityDragonsBlood) worldIn.getTileEntity(pos);
+				if (te.sigil != null) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
+			}
+		}
+		
 		@Override
 		public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
 			float val = super.getPlayerRelativeBlockHardness(state, player, world, pos);
@@ -163,20 +178,6 @@ public class ModItemDoor extends ItemDoor {
 			return val;
 		}
 		
-		@Override
-		public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
-			if (this == ModObjects.juniper_door.door && entity instanceof EntityZombie) {
-				return false;
-			}
-			else return super.canEntityDestroy(state, world, pos, entity);
-		}
-		
-		@Nullable
-		@Override
-		public TileEntity createNewTileEntity(World world, int i) {
-			return new TileEntityDragonsBlood();
-		}
-		
 		@Nullable
 		@Override
 		public TileEntity createTileEntity(World world, IBlockState state) {
@@ -185,12 +186,11 @@ public class ModItemDoor extends ItemDoor {
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
-		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-			if (worldIn.getTileEntity(pos) instanceof TileEntityDragonsBlood) {
-				TileEntityDragonsBlood te = (TileEntityDragonsBlood) worldIn.getTileEntity(pos);
-				if (te.sigil != null) worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX(), pos.getY(), pos.getZ(), 1, 0, 0);
+		public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
+			if (this == ModObjects.juniper_door.door && entity instanceof EntityZombie) {
+				return false;
 			}
+			else return super.canEntityDestroy(state, world, pos, entity);
 		}
 	}
 }

@@ -95,6 +95,11 @@ public class CommandCurse extends CommandBase {
 	}
 	
 	@Override
+	public int getRequiredPermissionLevel() {
+		return 2;
+	}
+	
+	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
 		if (args.length == 1) return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
 		if (args.length == 2) return getListOfStringsMatchingLastWord(args, Arrays.asList("get", "add", "remove", "clear"));
@@ -104,10 +109,5 @@ public class CommandCurse extends CommandBase {
 			return getListOfStringsMatchingLastWord(args, curses);
 		}
 		return Collections.emptyList();
-	}
-	
-	@Override
-	public int getRequiredPermissionLevel() {
-		return 2;
 	}
 }

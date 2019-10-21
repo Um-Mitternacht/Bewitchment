@@ -63,7 +63,8 @@ public class ExtendedPlayerHandler {
 				cap.ritualDisabledTime--;
 				cap.canRitual = false;
 				ExtendedPlayer.syncToClient(event.player);
-			} else {
+			}
+			else {
 				cap.canRitual = true;
 				ExtendedPlayer.syncToClient(event.player);
 			}

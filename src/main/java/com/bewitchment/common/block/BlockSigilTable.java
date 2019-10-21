@@ -42,14 +42,14 @@ public class BlockSigilTable extends ModBlockContainer {
 		return new BlockStateContainer(this, BlockHorizontal.FACING);
 	}
 
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
+	}
+
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
 		return new TileEntitySigilTable();
-	}
-
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 	}
 }
