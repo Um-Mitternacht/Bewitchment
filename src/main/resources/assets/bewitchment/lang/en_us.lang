@@ -218,6 +218,7 @@ item.bewitchment.broom.name=Broom
 item.bewitchment.cypress_broom.name=Cypress Broom
 item.bewitchment.elder_broom.name=Elder Broom
 item.bewitchment.juniper_broom.name=Juniper Broom
+item.bewitchment.dragons_blood_broom.name=Dragon's Blood Broom
 
 item.bewitchment.waystone.name=Waystone
 tooltip.bewitchment.waystone=Bound to %d %d %d (%s)
@@ -365,6 +366,20 @@ item.bewitchment.wormwood.name=Wormwood
 tooltip.bewitchment.wormwood=An incredibly weedy herb
 tile.bewitchment.spanish_moss.name=Spanish Moss
 
+tile.bewitchment.flower_siphoning_allium.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_azure_bluet.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_blue_orchid.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_dandelion.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_oxeye_daisy.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_poppy.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_tulip_orange.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_tulip_red.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_tulip_pink.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_tulip_white.name=Siphoning Flower
+
+tile.bewitchment.blue_ink_cap.name=Blue Ink Cap
+tile.bewitchment.frostflower.name=Frost Flower
+
 item.bewitchment.aconitum_seeds.name=Aconitum Seeds
 tooltip.bewitchment.aconitum_seeds=Seed from a poisonous plant
 item.bewitchment.belladonna_seeds.name=Belladonna Seeds
@@ -447,6 +462,7 @@ item.bewitchment.sigil_sentinel.name=Sigil of Sentinel
 entity.bewitchment.cypress_broom.name=Cypress Broom
 entity.bewitchment.elder_broom.name=Elder Broom
 entity.bewitchment.juniper_broom.name=Juniper Broom
+entity.bewitchment.dragons_blood_broom.name=Dragon's Blood Broom
 
 entity.bewitchment.lizard.name=Lizard
 entity.bewitchment.owl.name=Owl

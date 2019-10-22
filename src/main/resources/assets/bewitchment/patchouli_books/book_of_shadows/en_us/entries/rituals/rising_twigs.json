@@ -40,12 +40,12 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Yew Broom",
-	  "text": "Yew Brooms cost magic power from a Grimoire Magia to maintain flight. They will also teleport the rider and itself back to where they first mounted it upon dismounting."
+	  "title": "Dragon's Blood Broom",
+	  "text": "A broom made from a dragon’s blood tree, a sigil can be applied to the broom, and its effects will be applied to you while in flight. Also flies a bit faster than a normal broom, but not as fast as an Elder broom"
 	},
 	{
 	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:yew_broom"
+	  "recipe": "bewitchment:dragons_blood_broom"
 	}
   ]
 }

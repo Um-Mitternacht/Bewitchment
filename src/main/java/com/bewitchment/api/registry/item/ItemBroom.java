@@ -2,17 +2,28 @@ package com.bewitchment.api.registry.item;
 
 import com.bewitchment.ModConfig;
 import com.bewitchment.api.registry.entity.EntityBroom;
+import com.bewitchment.common.entity.misc.EntityDragonsBloodBroom;
+import com.bewitchment.common.item.ItemSigil;
+import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class ItemBroom extends Item {
@@ -44,11 +55,29 @@ public class ItemBroom extends Item {
 				entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
 				entity.rotationYaw = player.rotationYaw;
 				entity.rotationPitch = player.rotationPitch;
+				if (this == ModObjects.dragons_blood_broom && player.getHeldItem(hand).hasTagCompound()) {
+					String boundSigil = player.getHeldItem(hand).getTagCompound().getString("sigil");
+					((EntityDragonsBloodBroom) entity).sigil = (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(boundSigil));
+				}
 				entity.item = player.getHeldItem(hand).splitStack(1);
 				world.spawnEntity(entity);
 			}
 			return EnumActionResult.SUCCESS;
 		}
 		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("sigil")) {
+			String sigilName = stack.getTagCompound().getString("sigil");
+			tooltip.add(new TextComponentTranslation(sigilName).getUnformattedComponentText());
+		}
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return stack.hasTagCompound();
 	}
 }

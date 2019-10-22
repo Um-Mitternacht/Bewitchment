@@ -161,6 +161,7 @@ public class ModObjects {
 	public static final Block spanish_moss = new BlockSpanishMoss(false);
 	public static final Block spanish_moss_end = new BlockSpanishMoss(true);
 	public static final Block blue_ink_cap = new BlockBlueInkCap();
+	public static final Block frostflower = new BlockFrostFlower();
 
 	public static final Block flower_siphoning_allium = new BlockSiphoningFlower("allium");
 	public static final Block flower_siphoning_blue_orchid = new BlockSiphoningFlower("blue_orchid");
@@ -299,6 +300,7 @@ public class ModObjects {
 	public static final Item cypress_broom = Util.registerItem(new ItemBroom(ModEntities.cypress_broom), "cypress_broom");
 	public static final Item elder_broom = Util.registerItem(new ItemBroom(ModEntities.elder_broom), "elder_broom");
 	public static final Item juniper_broom = Util.registerItem(new ItemBroom(ModEntities.juniper_broom), "juniper_broom");
+	public static final Item dragons_blood_broom = Util.registerItem(new ItemBroom(ModEntities.dragons_blood_broom), "dragons_blood_broom");
 	public static final Item waystone = new ItemWaystone();
 	public static final Item focal_chalk = new ItemChalk("focal_chalk");
 	public static final Item ritual_chalk = new ItemChalk("ritual_chalk");

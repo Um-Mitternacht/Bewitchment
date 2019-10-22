@@ -52,6 +52,25 @@
 	  "text": "A more mundane use of the cauldron is to clean dye from banners."
 	},
 	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:flower_siphoning_poppy",
+	  "text": "While looking like any other innocent flower, the alchemical-created Siphoning Flower is covered with tiny barbs and spines, and will take a sample of blood from those who touch it."
+	},
+	{
+	  "type": "text",
+	  "text": "This sample can be harvested by using a boline on the flower while an Empty Taglock is held in the offhand. This recipe is applicable to all vanilla flowers."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:blue_ink_cap",
+	  "text": "An alchemically created mushroom. This mushroom produces a rich blue pigment in its gelatinous gleba, allowing it to be used as a substitute for blue dye."
+	},
+	{
+	  "type": "bewitchment:cauldron_recipe",
+	  "recipe": "bewitchment:frostflower",
+	  "text": "While seeming as a living contradiction, this alchemically created flower’s fluids freeze on contact with the air, and can be crafted into a snowball."
+	},
+	{
 	  "type": "text",
 	  "title": "Teleporting",
 	  "text": "A cauldron with Dimensional Sand thrown into it allows a user standing inside to teleport to other cauldrons that have been named via Name Tag by saying its name in chat."
