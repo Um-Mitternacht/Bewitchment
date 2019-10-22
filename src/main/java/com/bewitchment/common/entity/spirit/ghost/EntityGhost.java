@@ -51,23 +51,21 @@ public class EntityGhost extends ModEntityMob {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime()) setDead();
 	}
-	
+
 	@Override
-	public void onUpdate() {
-		this.noClip = true;
-		super.onUpdate();
-		this.noClip = false;
-		this.setNoGravity(true);
+	public void travel(float strafe, float vertical, float forward) {
+		setNoGravity(true);
+		noClip = true;
+		super.travel(strafe, vertical, forward);
 	}
-	
+
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.5);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.25);
 	}
 	
 	@Override
@@ -79,7 +77,7 @@ public class EntityGhost extends ModEntityMob {
 		this.tasks.addTask(3, new EntityAILookIdle(this));
 		this.tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
 		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true, EntityGhost.class));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 	}
 	
 	@Override
@@ -89,7 +87,12 @@ public class EntityGhost extends ModEntityMob {
 	
 	public void fall(float distance, float damageMultiplier) {
 	}
-	
+
+	@Override
+	public boolean isOnLadder() {
+		return false;
+	}
+
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
@@ -226,7 +229,5 @@ public class EntityGhost extends ModEntityMob {
 				}
 			}
 		}
-		
-		
 	}
 }
