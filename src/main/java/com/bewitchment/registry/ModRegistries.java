@@ -13,6 +13,7 @@ import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
+import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
 import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
@@ -79,6 +80,7 @@ public class ModRegistries {
 		GameRegistry.registerTileEntity(TileEntityIdol.class, new ResourceLocation(Bewitchment.MODID, "idol"));
 		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
 		GameRegistry.registerTileEntity(TileEntityDragonsBlood.class, new ResourceLocation(Bewitchment.MODID, "dragons_blood"));
+		GameRegistry.registerTileEntity(TileEntitySiphoningFlower.class, new ResourceLocation(Bewitchment.MODID, "siphoning_flower"));
 		try {
 			for (Field f : ModObjects.class.getFields()) {
 				Object obj = f.get(null);
@@ -92,6 +94,7 @@ public class ModRegistries {
 		catch (Exception ignored) {}
 		Bewitchment.proxy.ignoreProperty(ModObjects.embergrass, BlockBushSpreading.TIMES_SPREAD);
 		Bewitchment.proxy.ignoreProperty(ModObjects.torchwood, BlockBushSpreading.TIMES_SPREAD);
+		Bewitchment.proxy.ignoreProperty(ModObjects.blue_ink_cap, BlockBushSpreading.TIMES_SPREAD);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
@@ -250,7 +253,18 @@ public class ModRegistries {
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu_brown"), Collections.singletonList(Util.get("logWood")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
 		
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getDyeDamage()))));
-		
+
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_allium"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 2)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_allium))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_azure_bluet"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 3)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_azure_bluet))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_blue_orchid"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 1)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_blue_orchid))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_dandelion"), Arrays.asList(Util.get(new ItemStack(Blocks.YELLOW_FLOWER, 1, 0)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_dandelion))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_oxeye_daisy"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 8)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_oxeye_daisy))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_orange"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 5)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_orange))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_pink"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 7)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_pink))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_red"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 4)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_red))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_white"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 6)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_white))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_poppy"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 0)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_poppy))));
+
 		//There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
 	}

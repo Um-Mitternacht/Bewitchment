@@ -16,9 +16,9 @@ import java.util.Random;
 public class BlockBushSpreading extends BlockBush {
 	public static final PropertyInteger TIMES_SPREAD = PropertyInteger.create("times_spread", 0, 4);
 	
-	protected BlockBushSpreading(String name) {
+	protected BlockBushSpreading(String name, String... oreDictionaryName) {
 		super();
-		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0);
+		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0, oreDictionaryName);
 		setDefaultState(getBlockState().getBaseState().withProperty(TIMES_SPREAD, 0));
 	}
 	

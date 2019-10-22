@@ -9,9 +9,8 @@ import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
-import com.bewitchment.common.block.plants.BlockEmbergrass;
-import com.bewitchment.common.block.plants.BlockSpanishMoss;
-import com.bewitchment.common.block.plants.BlockTorchwood;
+import com.bewitchment.common.block.plants.*;
+import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
@@ -162,6 +161,19 @@ public class ModObjects {
 	public static final Block torchwood = new BlockTorchwood();
 	public static final Block spanish_moss = new BlockSpanishMoss(false);
 	public static final Block spanish_moss_end = new BlockSpanishMoss(true);
+	public static final Block blue_ink_cap = new BlockBlueInkCap();
+
+	public static final Block flower_siphoning_allium = new BlockSiphoningFlower("allium");
+	public static final Block flower_siphoning_blue_orchid = new BlockSiphoningFlower("blue_orchid");
+	public static final Block flower_siphoning_dandelion = new BlockSiphoningFlower("dandelion");
+	public static final Block flower_siphoning_azure_bluet = new BlockSiphoningFlower("azure_bluet");
+	public static final Block flower_siphoning_oxeye_daisy = new BlockSiphoningFlower("oxeye_daisy");
+	public static final Block flower_siphoning_tulip_orange = new BlockSiphoningFlower("tulip_orange");
+	public static final Block flower_siphoning_tulip_pink = new BlockSiphoningFlower("tulip_pink");
+	public static final Block flower_siphoning_tulip_red = new BlockSiphoningFlower("tulip_red");
+	public static final Block flower_siphoning_tulip_white = new BlockSiphoningFlower("tulip_white");
+	public static final Block flower_siphoning_poppy = new BlockSiphoningFlower("poppy");
+
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
