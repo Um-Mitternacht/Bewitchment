@@ -525,6 +525,7 @@ bewitchment.disrobing=Disrobing
 bewitchment.sinking=Sinking
 bewitchment.cursed_leaps=Cursed Leaps
 bewitchment.hellfire=Hell Fire
+bewitchment.fear=Fear
 
 incense.bewitchment.vitality=Vitality
 incense.bewitchment.deftness=Deftness
@@ -621,6 +622,7 @@ ritual.bewitchment.purifying_earth=Rite of Purification
 ritual.bewitchment.cypress_broom=Rite of the Rising Twigs
 ritual.bewitchment.elder_broom=Rite of the Rising Twigs
 ritual.bewitchment.juniper_broom=Rite of the Rising Twigs
+ritual.bewitchment.dragons_blood_broom=Rite of the Rising Twigs
 ritual.bewitchment.wednesday=Rite of Wednesday
 ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
 
