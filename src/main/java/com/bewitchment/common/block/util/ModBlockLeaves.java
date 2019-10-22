@@ -50,19 +50,8 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Blocks.LEAVES.getRenderLayer();
-	}
-	
-	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return Blocks.LEAVES.isOpaqueCube(state);
-	}
-	
-	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return true;
 	}
 	
 	@Override
@@ -72,8 +61,19 @@ public class ModBlockLeaves extends BlockLeaves {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Blocks.LEAVES.getRenderLayer();
+	}
+	
+	@Override
 	public BlockPlanks.EnumType getWoodType(int meta) {
 		return null;
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return true;
 	}
 	
 	@Override

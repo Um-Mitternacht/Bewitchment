@@ -76,11 +76,11 @@ public class CurseInsanity extends Curse {
 		double speedTowardsTarget;
 		boolean longMemory;
 		Path path;
+		int survivalTime;
 		private int delayCounter;
 		private double targetX;
 		private double targetY;
 		private double targetZ;
-		int survivalTime;
 		private int failedPathFindingPenalty = 0;
 		private boolean canPenalize = false;
 		

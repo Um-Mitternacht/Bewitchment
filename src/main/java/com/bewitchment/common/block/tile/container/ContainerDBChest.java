@@ -10,7 +10,7 @@ import net.minecraftforge.items.IItemHandler;
 
 public class ContainerDBChest extends ModContainer {
 	private final TileEntityDBChest tile;
-
+	
 	public ContainerDBChest(InventoryPlayer inventory, TileEntityDBChest tile) {
 		this.tile = tile;
 		tile.using++;
@@ -23,7 +23,7 @@ public class ContainerDBChest extends ModContainer {
 		}
 		addPlayerSlots(inventory);
 	}
-
+	
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);

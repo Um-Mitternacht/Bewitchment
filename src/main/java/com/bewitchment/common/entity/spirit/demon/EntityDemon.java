@@ -51,18 +51,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
-	
-	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -70,11 +65,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
 		if (ticksExisted % 20 == 0 && isInLava()) heal(6);
-	}
-	
-	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
 	}
 	
 	@Override
@@ -94,8 +84,8 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public World getWorld() {
-		return world;
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 	@Override
@@ -120,6 +110,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
+	}
+	
+	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
 		else super.handleStatusUpdate(id);
@@ -131,13 +126,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
+	public World getWorld() {
+		return world;
 	}
 	
 	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
+	protected int getSkinTypes() {
+		return 6;
 	}
 	
 	@Override
@@ -150,11 +145,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public void setRecipes(MerchantRecipeList recipeList) {
-		this.recipeList = recipeList;
-	}
-	
-	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		careerID = tag.getInteger("careerID");
 		careerLevel = tag.getInteger("careerLevel");
@@ -164,13 +154,27 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public void verifySellingItem(ItemStack stack) {
-	}
-	
-	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
+	
+	
+	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
+	}
+	
+	
+	@Override
+	public void setRecipes(MerchantRecipeList recipeList) {
+		this.recipeList = recipeList;
+	}
+	
+	
+	@Override
+	public void verifySellingItem(ItemStack stack) {
+	}
+	
 	
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {

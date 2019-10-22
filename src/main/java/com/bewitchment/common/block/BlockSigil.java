@@ -53,46 +53,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		setDefaultState(getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		switch (state.getValue(FACING)) {
-			case EAST:
-				return EAST_AABB;
-			case WEST:
-				return WEST_AABB;
-			case SOUTH:
-				return SOUTH_AABB;
-			case NORTH:
-				return NORTH_AABB;
-			case UP:
-				return UP_AABB;
-			case DOWN:
-				return DOWN_AABB;
-		}
-		return UP_AABB;
-	}
-
-	@Nullable
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		return null;
-	}
-
-	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		if (state.getValue(FACING).getAxis() == EnumFacing.Axis.Y) {
-			if (!canPlaceOnTop(worldIn, pos)) {
-				worldIn.setBlockToAir(pos);
-			}
-		} else {
-			EnumFacing enumfacing = state.getValue(FACING);
-			if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()){
-				worldIn.setBlockToAir(pos);
-			}
-		}
-		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
-	}
-
-	private boolean canPlaceOnTop(IBlockAccess world, BlockPos pos){
+	private boolean canPlaceOnTop(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos.down());
 		return state.isTopSolid() || state.getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID;
 	}
@@ -108,45 +69,9 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		return super.canPlaceBlockOnSide(worldIn, pos, side) && worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
-	}
-
-	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
-	}
-
-	@Override
-	public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return false;
-	}
-
-	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-
-	@Nullable
-	@Override
-	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EntityLiving entity) {
-		return PathNodeType.OPEN;
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
-	}
-
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.withProperty(VARIATION, Math.abs(pos.getX() + pos.getZ() * 2) % 10);
-	}
-
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, VARIATION, FACING);
 	}
 
 	/**
@@ -165,19 +90,37 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return getDefaultState().withProperty(FACING, facing);
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.withProperty(VARIATION, Math.abs(pos.getX() + pos.getZ() * 2) % 10);
+	}
+
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		switch (state.getValue(FACING)) {
+			case EAST:
+				return EAST_AABB;
+			case WEST:
+				return WEST_AABB;
+			case SOUTH:
+				return SOUTH_AABB;
+			case NORTH:
+				return NORTH_AABB;
+			case UP:
+				return UP_AABB;
+			case DOWN:
+				return DOWN_AABB;
+		}
+		return UP_AABB;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 	@Nullable
 	@Override
-	public TileEntity createNewTileEntity(World world, int i) {
-		return new TileEntitySigil();
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		return ((TileEntitySigil) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return null;
 	}
 
 	@Override
@@ -187,10 +130,68 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	}
 
 	@Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+		if (state.getValue(FACING).getAxis() == EnumFacing.Axis.Y) {
+			if (!canPlaceOnTop(worldIn, pos)) {
+				worldIn.setBlockToAir(pos);
+			}
+		}
+		else {
+			EnumFacing enumfacing = state.getValue(FACING);
+			if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
+				worldIn.setBlockToAir(pos);
+			}
+		}
+		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+	}
+
+	@Override
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
+		return super.canPlaceBlockOnSide(worldIn, pos, side) && worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		return ((TileEntitySigil) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);
+	}
+
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
+
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, VARIATION, FACING);
+	}
+
+	@Override
+	public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return false;
+	}
+
+	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		if (world.getTileEntity(pos) instanceof TileEntitySigil) {
 			return new ItemStack(((TileEntitySigil) world.getTileEntity(pos)).sigil);
 		}
 		return super.getPickBlock(state, target, world, pos, player);
+	}
+
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		return getDefaultState().withProperty(FACING, facing);
+	}
+
+	@Nullable
+	@Override
+	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EntityLiving entity) {
+		return PathNodeType.OPEN;
+	}
+
+	@Nullable
+	@Override
+	public TileEntity createNewTileEntity(World world, int i) {
+		return new TileEntitySigil();
 	}
 }

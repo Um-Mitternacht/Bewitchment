@@ -80,12 +80,6 @@ public class BlockBrazier extends ModBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
-		return te.activate(world, pos, player, hand, face);
-	}
-	
-	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		if (world.getTileEntity(pos) instanceof TileEntityBrazier) {
 			TileEntityBrazier tile = (TileEntityBrazier) world.getTileEntity(pos);
@@ -98,5 +92,11 @@ public class BlockBrazier extends ModBlockContainer {
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(pos);
+		return te.activate(world, pos, player, hand, face);
 	}
 }

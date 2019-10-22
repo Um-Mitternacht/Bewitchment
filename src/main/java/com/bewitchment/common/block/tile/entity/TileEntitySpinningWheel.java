@@ -32,19 +32,19 @@ public class TileEntitySpinningWheel extends TileEntityAltarStorage implements I
 	private boolean hasPower;
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
-		tag.setBoolean("hasPower", hasPower);
-		tag.setInteger("progress", progress);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		recipe = tag.getString("recipe").isEmpty() ? null : GameRegistry.findRegistry(SpinningWheelRecipe.class).getValue(new ResourceLocation(tag.getString("recipe")));
 		hasPower = tag.getBoolean("hasPower");
 		progress = tag.getInteger("progress");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("recipe", recipe == null ? "" : recipe.getRegistryName().toString());
+		tag.setBoolean("hasPower", hasPower);
+		tag.setInteger("progress", progress);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

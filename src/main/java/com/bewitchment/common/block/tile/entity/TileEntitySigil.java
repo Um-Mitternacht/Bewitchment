@@ -30,45 +30,54 @@ public class TileEntitySigil extends ModTileEntity implements ITickable {
 	public int timer = 24000 * 7;
 	public boolean whiteList;
 	public Set<String> whiteListUUIDSet = new HashSet<>();
-
+	
 	public void setupTileEntity(ItemSigil sigil) {
 		this.sigil = sigil;
 		this.cooldown = sigil.cooldown;
 		this.whiteList = sigil.positive;
 	}
-
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		this.writeUpdateTag(tag);
-		return super.writeToNBT(tag);
-	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		this.readUpdateTag(tag);
 		super.readFromNBT(tag);
 	}
-
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		this.writeUpdateTag(tag);
+		return super.writeToNBT(tag);
+	}
+	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeUpdateTag(tag);
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
 		writeUpdateTag(tag);
 		return tag;
 	}
-
+	
 	@Override
 	public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
 		NBTTagCompound tag = packet.getNbtCompound();
 		readUpdateTag(tag);
 	}
-
+	
+	@Override
+	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
+		if (player.getHeldItem(hand).getItem() instanceof ItemTaglock && player.getHeldItem(hand).hasTagCompound()) {
+			modifyList(player.getHeldItem(hand).getTagCompound().getString("boundId"));
+			return true;
+		}
+		return super.activate(world, pos, player, hand, face);
+	}
+	
 	private void writeUpdateTag(NBTTagCompound tag) {
 		tag.setString("sigil", sigil == null ? "" : sigil.getRegistryName().toString());
 		tag.setInteger("cooldown", cooldown);
@@ -80,7 +89,7 @@ public class TileEntitySigil extends ModTileEntity implements ITickable {
 		tag.setTag("playerList", playerList);
 		tag.setInteger("timer", timer);
 	}
-
+	
 	private void readUpdateTag(NBTTagCompound tag) {
 		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(tag.getString("sigil")));
 		cooldown = tag.getInteger("cooldown");
@@ -91,39 +100,31 @@ public class TileEntitySigil extends ModTileEntity implements ITickable {
 		}
 		timer = tag.getInteger("timer");
 	}
-
-	@Override
-	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
-		if (player.getHeldItem(hand).getItem() instanceof ItemTaglock && player.getHeldItem(hand).hasTagCompound()) {
-			modifyList(player.getHeldItem(hand).getTagCompound().getString("boundId"));
-			return true;
-		}
-		return super.activate(world, pos, player, hand, face);
-	}
-
+	
 	private boolean isEntityOnList(EntityLivingBase player) {
 		return whiteListUUIDSet.contains(player.getUniqueID().toString());
 	}
-
+	
 	private void modifyList(String uuid) {
 		if (whiteListUUIDSet.contains(uuid)) whiteListUUIDSet.remove(uuid);
 		else whiteListUUIDSet.add(uuid);
 	}
-
+	
 	@Override
 	public void update() {
 		if (timer > 0) {
 			timer--;
 			if (cooldown > 0) cooldown--;
 			else if (sigil != null) {
-				List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX() - 6, pos.getY() - 3, pos.getZ()-6, pos.getX() + 6, pos.getY() + 3, pos.getZ() + 6)).stream().filter(p -> isEntityOnList(p) == whiteList).collect(Collectors.toList());
+				List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX() - 6, pos.getY() - 3, pos.getZ() - 6, pos.getX() + 6, pos.getY() + 3, pos.getZ() + 6)).stream().filter(p -> isEntityOnList(p) == whiteList).collect(Collectors.toList());
 				for (EntityLivingBase living : entities) {
 					sigil.applyEffects(living);
 				}
 				cooldown = sigil.cooldown;
 			}
-		} else {
-			if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY(), pos.getZ(), 100, world.rand.nextGaussian() / 3,0, world.rand.nextGaussian() / 3, 0);
+		}
+		else {
+			if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY(), pos.getZ(), 100, world.rand.nextGaussian() / 3, 0, world.rand.nextGaussian() / 3, 0);
 			world.setBlockToAir(pos);
 		}
 	}

@@ -23,15 +23,15 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		this.writeUpdateTag(tag);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		this.readUpdateTag(tag);
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		this.writeUpdateTag(tag);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

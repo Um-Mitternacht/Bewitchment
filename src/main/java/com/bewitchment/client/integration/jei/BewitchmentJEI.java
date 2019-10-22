@@ -59,7 +59,7 @@ public class BewitchmentJEI implements IModPlugin {
 		registry.handleRecipes(Incense.class, IncenseCategory.Wrapper::new, IncenseCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(Incense.class).getValuesCollection(), IncenseCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.brazier), IncenseCategory.UID);
-
+		
 		registry.handleRecipes(SigilRecipe.class, SigilCategory.Wrapper::new, SigilCategory.UID);
 		registry.addRecipes(GameRegistry.findRegistry(SigilRecipe.class).getValuesCollection(), SigilCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModObjects.sigil_table), SigilCategory.UID);

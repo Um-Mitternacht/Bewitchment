@@ -20,7 +20,7 @@ public class ItemFortuneFavor extends ModItemBauble {
 		super("fortunes_favor", BaubleType.CHARM);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
 		if (Util.hasBauble(event.getHarvester(), this)) {
@@ -34,7 +34,7 @@ public class ItemFortuneFavor extends ModItemBauble {
 			}
 		}
 	}
-
+	
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 100, 0));

@@ -46,9 +46,9 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setTag("uniqueDefeatedBosses", instance.uniqueDefeatedBosses);
 		tag.setTag("exploredChunks", instance.exploredChunks);
 		tag.setString("fortune", instance.fortune == null ? "" : instance.fortune.getRegistryName().toString());
-
+		
 		tag.setBoolean("canRitual", instance.canRitual);
-
+		
 		NBTTagList cursesList = new NBTTagList();
 		tag.setTag("curses", cursesList);
 		instance.curses.entrySet().stream().forEach(entry -> this.addNewCouple(entry, cursesList));
@@ -66,9 +66,9 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.uniqueDefeatedBosses = tag.getTagList("uniqueDefeatedBosses", Constants.NBT.TAG_STRING);
 		instance.exploredChunks = tag.getTagList("exploredChunks", Constants.NBT.TAG_LONG);
 		instance.fortune = tag.getString("fortune").isEmpty() ? null : GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(tag.getString("fortune")));
-
+		
 		instance.canRitual = tag.getBoolean("canRitual");
-
+		
 		instance.curses.clear();
 		tag.getTagList("curses", Constants.NBT.TAG_COMPOUND).forEach(s -> this.loadCouple(instance, s));
 		

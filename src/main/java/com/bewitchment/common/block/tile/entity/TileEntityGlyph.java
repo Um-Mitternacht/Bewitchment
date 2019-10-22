@@ -38,16 +38,6 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	public int effectiveDim, time;
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
-		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
-		tag.setInteger("effectiveDim", effectiveDim);
-		tag.setString("casterId", casterId == null ? "" : casterId.toString());
-		tag.setInteger("time", time);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		ritual = tag.getString("ritual").isEmpty() ? null : GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
 		effectivePos = BlockPos.fromLong(tag.getLong("effectivePos"));
@@ -55,6 +45,16 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
 		time = tag.getInteger("time");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
+		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
+		tag.setInteger("effectiveDim", effectiveDim);
+		tag.setString("casterId", casterId == null ? "" : casterId.toString());
+		tag.setInteger("time", time);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

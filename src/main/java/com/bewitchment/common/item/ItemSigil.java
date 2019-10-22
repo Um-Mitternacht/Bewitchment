@@ -17,12 +17,12 @@ import net.minecraft.world.World;
 public abstract class ItemSigil extends Item {
 	public int cooldown;
 	public boolean positive;
-
+	
 	public ItemSigil(int cooldown, boolean positive) {
 		this.cooldown = cooldown;
 		this.positive = positive;
 	}
-
+	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		BlockPos toPlace = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
@@ -36,6 +36,6 @@ public abstract class ItemSigil extends Item {
 		}
 		return EnumActionResult.SUCCESS;
 	}
-
+	
 	public abstract void applyEffects(EntityLivingBase entity);
 }

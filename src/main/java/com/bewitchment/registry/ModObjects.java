@@ -21,7 +21,6 @@ import com.bewitchment.common.item.equipment.baubles.*;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
-import com.bewitchment.common.item.ItemSigil;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
@@ -478,7 +477,7 @@ public class ModObjects {
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
-
+	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {

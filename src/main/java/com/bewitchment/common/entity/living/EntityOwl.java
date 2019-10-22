@@ -48,19 +48,19 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
+	protected void initEntityAI() {
+		super.initEntityAI();
+		tasks.addTask(1, new EntityAIFleeSun(this, 1));
+		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit || e.getClass().getName().endsWith("Rat")));
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.5);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
 		getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.8);
-	}
-	
-	@Override
-	protected void initEntityAI() {
-		super.initEntityAI();
-		tasks.addTask(1, new EntityAIFleeSun(this, 1));
-		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit || e.getClass().getName().endsWith("Rat")));
 	}
 	
 	@Override

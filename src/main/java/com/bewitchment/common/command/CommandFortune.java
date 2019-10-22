@@ -85,6 +85,11 @@ public class CommandFortune extends CommandBase {
 	}
 	
 	@Override
+	public int getRequiredPermissionLevel() {
+		return 2;
+	}
+	
+	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
 		if (args.length == 1) return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
 		if (args.length == 2) return Arrays.asList("get", "set", "remove", "execute");
@@ -94,10 +99,5 @@ public class CommandFortune extends CommandBase {
 			return fortunes;
 		}
 		return Collections.emptyList();
-	}
-	
-	@Override
-	public int getRequiredPermissionLevel() {
-		return 2;
 	}
 }

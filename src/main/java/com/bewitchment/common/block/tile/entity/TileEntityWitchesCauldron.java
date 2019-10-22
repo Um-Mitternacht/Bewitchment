@@ -68,19 +68,6 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
-		tag.setInteger("mode", mode);
-		tag.setIntArray("color", color);
-		tag.setIntArray("targetColor", targetColor);
-		tag.setInteger("heatTimer", heatTimer);
-		tag.setInteger("craftingTimer", craftingTimer);
-		tag.setBoolean("hasPower", hasPower);
-		tag.setString("name", name);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		tank.readFromNBT(tag.getCompoundTag("tank"));
 		mode = tag.getInteger("mode");
@@ -91,6 +78,19 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		hasPower = tag.getBoolean("hasPower");
 		name = tag.hasKey("name") ? tag.getString("name") : "";
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
+		tag.setInteger("mode", mode);
+		tag.setIntArray("color", color);
+		tag.setIntArray("targetColor", targetColor);
+		tag.setInteger("heatTimer", heatTimer);
+		tag.setInteger("craftingTimer", craftingTimer);
+		tag.setBoolean("hasPower", hasPower);
+		tag.setString("name", name);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

@@ -421,6 +421,10 @@ public class ModelDruden extends ModelBase {
 		this.rAntler03.addChild(this.rAntler05a);
 	}
 	
+	private static float triangleWave(float x, float y) {
+		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
+	}
+	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.bipedBody.render(f5);
@@ -446,10 +450,6 @@ public class ModelDruden extends ModelBase {
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
 		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
-	}
-	
-	private static float triangleWave(float x, float y) {
-		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 	
 	public void setLivingAnimations(EntityLivingBase living, float limbSwing, float limbSwingAmount, float partialTickTime) {

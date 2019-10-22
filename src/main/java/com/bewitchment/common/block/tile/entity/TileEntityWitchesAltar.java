@@ -48,17 +48,17 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setTag("magicPower", magicPower.serializeNBT());
-		tag.setInteger("color", color);
-		return super.writeToNBT(tag);
-	}
-	
-	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		magicPower.deserializeNBT(tag.getCompoundTag("magicPower"));
 		color = tag.getInteger("color");
 		super.readFromNBT(tag);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		tag.setTag("magicPower", magicPower.serializeNBT());
+		tag.setInteger("color", color);
+		return super.writeToNBT(tag);
 	}
 	
 	@Override

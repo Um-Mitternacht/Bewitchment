@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
+	public final double chance;
 	final List<Ingredient> input;
 	final boolean isLesser;
 	final CurseCondition condition;
-	public final double chance;
 	private int level;
 	private int curseTime;
 	
@@ -34,10 +34,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		this.chance = chance;
 	}
 	
-	public int getLevel() {
-		return this.level;
-	}
-	
 	@Nullable
 	public static EntityPlayer getPlayerFromTaglock(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) {
@@ -47,6 +43,10 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 			}
 		}
 		return null;
+	}
+	
+	public int getLevel() {
+		return this.level;
 	}
 	
 	public final boolean matches(ItemStackHandler input) {

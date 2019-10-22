@@ -13,13 +13,13 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 
 public class TileEntitySigilTable extends ModTileEntity {
-	public SigilRecipe recipe;
 	public final ItemStackHandler output = new ItemStackHandler(1) {
 		@Override
 		public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
 			return false;
 		}
 	};
+	public SigilRecipe recipe;
 	public final ItemStackHandler matrix = new ItemStackHandler(25) {
 		@Override
 		protected void onContentsChanged(int slot) {
