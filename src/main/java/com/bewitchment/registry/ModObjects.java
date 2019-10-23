@@ -306,6 +306,7 @@ public class ModObjects {
 	public static final Item ritual_chalk = new ItemChalk("ritual_chalk");
 	public static final Item fiery_chalk = new ItemChalk("fiery_chalk");
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
+	public static final Item caduceus = new ItemCaduceus();
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();

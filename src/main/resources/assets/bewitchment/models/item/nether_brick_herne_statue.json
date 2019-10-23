@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/stone_herne_statue"
+	"layer0": "bewitchment:items/nether_brick_herne_statue"
   }
 }
