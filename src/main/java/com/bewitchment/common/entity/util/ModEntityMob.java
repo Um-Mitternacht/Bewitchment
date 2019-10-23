@@ -11,9 +11,9 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nullable;
+import java.util.UUID;
 
 @SuppressWarnings("EntityConstructor")
 public abstract class ModEntityMob extends EntityMob {
@@ -23,7 +23,7 @@ public abstract class ModEntityMob extends EntityMob {
 	
 	public boolean limitedLifeSpan = false;
 	public int lifeTimeTicks = 0;
-	public EntityPlayer summoner;
+	public UUID summoner;
 	
 	protected ModEntityMob(World world, ResourceLocation lootTableLocation) {
 		super(world);
@@ -39,11 +39,15 @@ public abstract class ModEntityMob extends EntityMob {
 		super.onUpdate();
 		if (this.limitedLifeSpan && lifeTimeTicks <= 0) {
 			setDead();
-			if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 30, 0, 2, 0, 0d);
-		}
-		else lifeTimeTicks--;
-		if (summoner != null && this.getAttackTarget() == summoner) {
-			this.setAttackTarget(summoner.getAttackingEntity() == null ? summoner.getLastAttackedEntity() : summoner.getAttackingEntity());
+			for (int i = 0; i < 128; i++) {
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
+			}
+		} else lifeTimeTicks--;
+		if (summoner != null) {
+			EntityPlayer player = world.getPlayerEntityByUUID(summoner);
+			if (player != null && this.getAttackTarget() == player) {
+				this.setAttackTarget(player.getAttackingEntity() == null ? player.getLastAttackedEntity() : player.getAttackingEntity());
+			}
 		}
 	}
 	
@@ -61,6 +65,7 @@ public abstract class ModEntityMob extends EntityMob {
 		tag.setInteger("skin", dataManager.get(SKIN));
 		tag.setBoolean("limitedLifeSpan", limitedLifeSpan);
 		tag.setInteger("lifeTimeTick", lifeTimeTicks);
+		tag.setString("summoner", summoner == null ? "" : summoner.toString());
 		dataManager.setDirty(SKIN);
 		super.writeEntityToNBT(tag);
 	}
@@ -70,6 +75,7 @@ public abstract class ModEntityMob extends EntityMob {
 		dataManager.set(SKIN, tag.getInteger("skin"));
 		lifeTimeTicks = tag.getInteger("lifeTimeTick");
 		limitedLifeSpan = tag.getBoolean("limitedLifeSpan");
+		summoner = tag.getString("summoner").equals("") ? null : UUID.fromString(tag.getString("summoner"));
 		super.readEntityFromNBT(tag);
 	}
 	

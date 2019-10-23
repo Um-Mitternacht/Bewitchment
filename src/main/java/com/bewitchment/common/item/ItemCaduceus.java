@@ -43,7 +43,7 @@ public class ItemCaduceus extends Item {
 				EntityFeuerwurm temp = new EntityFeuerwurm(world);
 				temp.limitedLifeSpan = true;
 				temp.lifeTimeTicks = 400;
-				temp.summoner = player;
+				temp.summoner = player.getPersistentID();
 				temp.setAttackTarget(target);
 				temp.setPosition(pos.getX() + itemRand.nextGaussian() * 0.8, pos.getY() + 1, pos.getZ() + itemRand.nextGaussian() * 0.8);
 				world.spawnEntity(temp);
@@ -68,7 +68,6 @@ public class ItemCaduceus extends Item {
 				event.setCanceled(true);
 				player.setHealth(8);
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 0));
-				if (player.world.isRemote) event.getEntityLiving().world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY + 2, player.posZ, 0, 0, 0);
 				stack.damageItem(16, event.getEntityLiving());
 			}
 		}

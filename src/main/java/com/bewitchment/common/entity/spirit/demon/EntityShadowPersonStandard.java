@@ -5,7 +5,6 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractIllager;
@@ -13,25 +12,21 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 10/21/2019.
  */
 public class EntityShadowPersonStandard extends ModEntityMob {
-	
-	private int livingTimer = 0;
-	
-	
+
 	public EntityShadowPersonStandard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
 		setSize(1, 0.85f);
 		isImmuneToFire = true;
+		limitedLifeSpan = true;
+		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
 	}
 	
 	public void fall(float distance, float damageMultiplier) {
@@ -45,8 +40,6 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		livingTimer--;
-		if (livingTimer <= 0) setDead();
 	}
 	
 	@Override
@@ -80,23 +73,5 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
-	}
-	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		tag.setInteger("livingTimer", livingTimer);
-		super.writeEntityToNBT(tag);
-	}
-	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound tag) {
-		if (tag.hasKey("livingTimer")) livingTimer = tag.getInteger("livingTimer");
-		super.readEntityFromNBT(tag);
-	}
-	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		livingTimer = 3600;
-		return super.onInitialSpawn(difficulty, data);
 	}
 }
