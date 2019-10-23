@@ -15,7 +15,7 @@ import net.minecraft.world.WorldServer;
 
 public class TileEntitySiphoningFlower extends ModTileEntity {
 	public String boundId = "", boundName = "", ownerId;
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		boundId = tag.getString("boundId");
@@ -23,7 +23,7 @@ public class TileEntitySiphoningFlower extends ModTileEntity {
 		ownerId = tag.getString("ownerId");
 		super.readFromNBT(tag);
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag.setString("boundId", boundId);
@@ -31,15 +31,7 @@ public class TileEntitySiphoningFlower extends ModTileEntity {
 		tag.setString("ownerId", ownerId);
 		return super.writeToNBT(tag);
 	}
-
-	public boolean isBound() {
-		return !boundId.equals("");
-	}
-
-	public boolean isOwner(EntityPlayer player) {
-		return Util.findPlayer(ownerId) == player;
-	}
-
+	
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		if (player.isSneaking() && player.getHeldItem(EnumHand.MAIN_HAND).isEmpty() && isBound() && isOwner(player)) {
@@ -62,5 +54,13 @@ public class TileEntitySiphoningFlower extends ModTileEntity {
 			return true;
 		}
 		return super.activate(world, pos, player, hand, face);
+	}
+	
+	public boolean isBound() {
+		return !boundId.equals("");
+	}
+	
+	public boolean isOwner(EntityPlayer player) {
+		return Util.findPlayer(ownerId) == player;
 	}
 }

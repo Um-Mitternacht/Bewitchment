@@ -1,6 +1,5 @@
 package com.bewitchment.api.message;
 
-import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.entity.misc.EntityDragonsBloodBroom;
 import com.bewitchment.common.item.ItemSigil;
 import io.netty.buffer.ByteBuf;

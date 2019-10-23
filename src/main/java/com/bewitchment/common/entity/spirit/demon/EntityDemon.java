@@ -56,11 +56,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
-	
-	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
@@ -84,11 +79,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
-	}
-	
-	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16);
@@ -96,6 +86,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -110,11 +103,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
-	}
-	
-	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
 		else super.handleStatusUpdate(id);
@@ -126,13 +114,16 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public World getWorld() {
-		return world;
+	protected int getSkinTypes() {
+		return 6;
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
+	protected boolean isValidLightLevel() {
+		return true;
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 	@Override
@@ -153,9 +144,19 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		super.readEntityFromNBT(tag);
 	}
 	
+
+	
+
+	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
+	}
+	
+	
+	@Override
+	public World getWorld() {
+		return world;
 	}
 	
 	

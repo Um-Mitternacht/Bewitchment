@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "houstonia" }
-    }
+  "variants": {
+	"normal": {
+	  "model": "houstonia"
+	}
+  }
 }
