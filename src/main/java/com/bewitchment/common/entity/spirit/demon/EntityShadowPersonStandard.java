@@ -52,6 +52,7 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
 	}
 	
 	@Override
@@ -92,7 +93,7 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		livingTimer = 600;
+		livingTimer = 3600;
 		return super.onInitialSpawn(difficulty, data);
 	}
 }

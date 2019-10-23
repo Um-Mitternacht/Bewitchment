@@ -86,9 +86,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(175);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
@@ -100,6 +97,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> ((Util.hasBauble(e, ModObjects.hellish_bauble) ? world.rand.nextInt(4) == 0 : !e.isImmuneToFire())) && (!BewitchmentAPI.hasBesmirched(e))));
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -121,9 +121,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	@Override
@@ -142,11 +139,15 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		wealth = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
 		super.readEntityFromNBT(tag);
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 
 	
 
+	
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {

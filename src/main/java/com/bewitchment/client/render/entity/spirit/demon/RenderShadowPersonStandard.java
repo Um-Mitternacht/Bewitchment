@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("WeakerAccess")
 @SideOnly(Side.CLIENT)
 public class RenderShadowPersonStandard extends RenderLiving<EntityShadowPersonStandard> {
-	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson"), new ResourceLocation("textures/entity/shadowperson_hatdemon")};
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson.png"), new ResourceLocation("textures/entity/shadowperson_hatdemon.png")};
 	
 	public RenderShadowPersonStandard(RenderManager manager) {
 		this(manager, new ModelShadowPersonClassic());
