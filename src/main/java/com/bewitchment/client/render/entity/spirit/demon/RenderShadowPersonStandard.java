@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("WeakerAccess")
 @SideOnly(Side.CLIENT)
 public class RenderShadowPersonStandard extends RenderLiving<EntityShadowPersonStandard> {
-	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson"), new ResourceLocation("textures/entity/shadowperson")};
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson"), new ResourceLocation("textures/entity/shadowperson_hatdemon")};
 	
 	public RenderShadowPersonStandard(RenderManager manager) {
 		this(manager, new ModelShadowPersonClassic());
@@ -29,11 +29,6 @@ public class RenderShadowPersonStandard extends RenderLiving<EntityShadowPersonS
 	protected ResourceLocation getEntityTexture(EntityShadowPersonStandard entity) {
 		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
-	
-	//	@Override
-	//	protected boolean canRenderName(EntityDemon entity) {
-	//		return true;
-	//	}
 	
 	@Override
 	protected void preRenderCallback(EntityShadowPersonStandard entity, float partialTickTime) {

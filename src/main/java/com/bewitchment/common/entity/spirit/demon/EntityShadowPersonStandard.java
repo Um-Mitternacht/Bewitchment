@@ -69,6 +69,11 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 	}
 	
 	@Override
+	protected int getSkinTypes() {
+		return 2;
+	}
+	
+	@Override
 	protected boolean isValidLightLevel() {
 		return !world.isDaytime();
 	}
