@@ -97,15 +97,15 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> ((Util.hasBauble(e, ModObjects.hellish_bauble) ? world.rand.nextInt(4) == 0 : !e.isImmuneToFire())) && (!BewitchmentAPI.hasBesmirched(e))));
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
 		else super.handleStatusUpdate(id);
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -139,14 +139,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		wealth = tag.getInteger("wealth");
 		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
 		super.readEntityFromNBT(tag);
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 
 	
-
+	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
 	
 	
 	@Override

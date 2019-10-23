@@ -46,8 +46,6 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.RegistryBuilder;
-import rustic.common.items.ModItems;
-import rustic.common.potions.PotionsRustic;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -332,11 +330,6 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "disrobing"), Util.get(ModObjects.tallow), new PotionEffect(ModPotions.disrobing, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sinking"), Util.get("nuggetGold", "nuggetIron", "nuggetColdIron", "nuggetCopper", "nuggetTin", "nuggetBronze", "nuggetLead"), new PotionEffect(ModPotions.sinking, (20 * 20))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "cursed_leaps"), Util.get(ModObjects.toe_of_frog), new PotionEffect(ModPotions.cursed_leaps, 1)));
-		
-		if (Loader.isModLoaded("rustic")) {
-			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
-			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
-		}
 	}
 	
 	@SubscribeEvent

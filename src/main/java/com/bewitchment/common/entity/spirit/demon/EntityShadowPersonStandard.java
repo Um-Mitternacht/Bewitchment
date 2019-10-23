@@ -34,12 +34,12 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 		isImmuneToFire = true;
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	public void fall(float distance, float damageMultiplier) {
 	}
 	
 	@Override
