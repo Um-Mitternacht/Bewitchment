@@ -11,7 +11,7 @@ public class BlockFrostFlower extends BlockBushSpreading {
 	public BlockFrostFlower() {
 		super("frostflower");
 	}
-
+	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (world.getWorldTime() >= 12500) {

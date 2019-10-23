@@ -61,6 +61,11 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
 	}
@@ -68,11 +73,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
 	}
 	
 	@Override

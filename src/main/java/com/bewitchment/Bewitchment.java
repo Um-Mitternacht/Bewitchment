@@ -33,6 +33,7 @@ import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.misc.BewitchmentMowzies;
 import com.bewitchment.common.integration.misc.BewitchmentQuark;
+import com.bewitchment.common.integration.rustic.BewitchmentRustic;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
 import com.bewitchment.common.village.VillagerAlchemistHandler;
 import com.bewitchment.common.village.VillagerHedgeWitchHandler;
@@ -62,7 +63,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild8", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild9", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	
 	public static final Logger logger = LogManager.getLogger(NAME);
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
@@ -99,6 +100,7 @@ public class Bewitchment {
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
 		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new BewitchmentQuark());
 		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new BewitchmentMowzies());
+		if (Loader.isModLoaded("rustic")) MinecraftForge.EVENT_BUS.register(new BewitchmentRustic());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());

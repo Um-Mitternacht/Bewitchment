@@ -51,14 +51,7 @@ public class EntityGhost extends ModEntityMob {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime()) setDead();
 	}
-
-	@Override
-	public void travel(float strafe, float vertical, float forward) {
-		setNoGravity(true);
-		noClip = true;
-		super.travel(strafe, vertical, forward);
-	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -85,17 +78,24 @@ public class EntityGhost extends ModEntityMob {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
 	
-	public void fall(float distance, float damageMultiplier) {
-	}
-
 	@Override
 	public boolean isOnLadder() {
 		return false;
 	}
-
+	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
+	}
+	
+	@Override
+	public void travel(float strafe, float vertical, float forward) {
+		setNoGravity(true);
+		noClip = true;
+		super.travel(strafe, vertical, forward);
 	}
 	
 	@Override

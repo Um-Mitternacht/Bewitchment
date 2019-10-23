@@ -66,7 +66,7 @@ public class ItemBroom extends Item {
 		}
 		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
@@ -75,7 +75,7 @@ public class ItemBroom extends Item {
 			tooltip.add(new TextComponentTranslation(sigilName).getUnformattedComponentText());
 		}
 	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return stack.hasTagCompound();

@@ -56,11 +56,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
-	
-	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
@@ -81,11 +76,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			}
 		}
 		return flag;
-	}
-	
-	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	@Override
@@ -110,14 +100,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
-	}
-	
-	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
 		else super.handleStatusUpdate(id);
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -126,13 +114,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
-	public World getWorld() {
-		return world;
+	protected int getSkinTypes() {
+		return 6;
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 6;
+	protected boolean isValidLightLevel() {
+		return true;
 	}
 	
 	@Override
@@ -153,9 +141,23 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		super.readEntityFromNBT(tag);
 	}
 	
+
+	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
+	
+	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		return recipeList;
+	}
+	
+	
+	@Override
+	public World getWorld() {
+		return world;
 	}
 	
 	

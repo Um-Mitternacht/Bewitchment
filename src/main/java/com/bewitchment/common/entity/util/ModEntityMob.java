@@ -1,6 +1,5 @@
 package com.bewitchment.common.entity.util;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +20,7 @@ public abstract class ModEntityMob extends EntityMob {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityMob.class, DataSerializers.VARINT);
 	
 	private final ResourceLocation lootTableLocation;
-
+	
 	public boolean limitedLifeSpan = false;
 	public int lifeTimeTicks = 0;
 	public EntityPlayer summoner;
@@ -34,19 +33,23 @@ public abstract class ModEntityMob extends EntityMob {
 	protected int getSkinTypes() {
 		return 1;
 	}
-
+	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		if (this.limitedLifeSpan && lifeTimeTicks <= 0) {
 			setDead();
-			if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ,  30, 0, 2, 0, 0d);
-		} else lifeTimeTicks--;
+			if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 30, 0, 2, 0, 0d);
+		}
+		else lifeTimeTicks--;
 		if (summoner != null && this.getAttackTarget() == summoner) {
 			this.setAttackTarget(summoner.getAttackingEntity() == null ? summoner.getLastAttackedEntity() : summoner.getAttackingEntity());
 		}
 	}
-
+	
+	@Override
+	protected abstract boolean isValidLightLevel();
+	
 	@Override
 	protected void entityInit() {
 		super.entityInit();
@@ -80,7 +83,4 @@ public abstract class ModEntityMob extends EntityMob {
 		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
 		return super.onInitialSpawn(difficulty, data);
 	}
-	
-	@Override
-	protected abstract boolean isValidLightLevel();
 }
