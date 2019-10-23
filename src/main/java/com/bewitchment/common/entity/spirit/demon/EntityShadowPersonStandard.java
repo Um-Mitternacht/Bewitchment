@@ -39,6 +39,9 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 		return BewitchmentAPI.DEMON;
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
