@@ -15,11 +15,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-
 /**
  * Created by Joseph on 10/21/2019.
  */
 public class EntityShadowPersonStandard extends ModEntityMob {
+	public boolean slim;
 
 	public EntityShadowPersonStandard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
@@ -27,6 +27,7 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 		isImmuneToFire = true;
 		limitedLifeSpan = true;
 		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
+		slim = rand.nextBoolean();
 	}
 	
 	public void fall(float distance, float damageMultiplier) {

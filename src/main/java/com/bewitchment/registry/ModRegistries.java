@@ -224,6 +224,8 @@ public class ModRegistries {
 		event.getRegistry().register(new RitualConjureDemon());
 		event.getRegistry().register(new RitualConjureImp());
 		event.getRegistry().register(new RitualSpiritualRift());
+		event.getRegistry().register(new RitualCurseCleansing(true));
+		event.getRegistry().register(new RitualCurseCleansing(false));
 		event.getRegistry().register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));
 		event.getRegistry().register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_medium"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash)), 300, BlockGlyph.ANY, BlockGlyph.ANY, -1, Ritual.medium));
 		event.getRegistry().register(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_large"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash), Util.get(ModObjects.wood_ash)), 450, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY, Ritual.large));

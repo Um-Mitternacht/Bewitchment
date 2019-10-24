@@ -1,6 +1,7 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.registry.Tarot;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.enchantment.Enchantment;
@@ -13,7 +14,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,7 +35,7 @@ public class ItemCaduceus extends Item {
 	}
 
 	@Override
-	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			EntityLivingBase target = player.getAttackingEntity();
 			int random = itemRand.nextInt(3) + 1;
@@ -51,7 +51,7 @@ public class ItemCaduceus extends Item {
 			player.getHeldItem(hand).damageItem(1, player);
 			return EnumActionResult.SUCCESS;
 		}
-		return super.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+		return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
 	}
 
 	@Override

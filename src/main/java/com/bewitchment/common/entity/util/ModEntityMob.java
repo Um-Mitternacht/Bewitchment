@@ -37,12 +37,14 @@ public abstract class ModEntityMob extends EntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (this.limitedLifeSpan && lifeTimeTicks <= 0) {
-			setDead();
-			for (int i = 0; i < 128; i++) {
-				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
-			}
-		} else lifeTimeTicks--;
+		if (this.limitedLifeSpan) {
+			if (lifeTimeTicks <= 0) {
+				setDead();
+				for (int i = 0; i < 128; i++) {
+					world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
+				}
+			} else lifeTimeTicks--;
+		}
 		if (summoner != null) {
 			EntityPlayer player = world.getPlayerEntityByUUID(summoner);
 			if (player != null && this.getAttackTarget() == player) {

@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelFeuerwurm;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
