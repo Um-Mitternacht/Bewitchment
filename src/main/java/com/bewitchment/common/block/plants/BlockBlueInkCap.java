@@ -11,7 +11,7 @@ public class BlockBlueInkCap extends BlockBushSpreading {
 	public BlockBlueInkCap() {
 		super("blue_ink_cap", "dyeBlue");
 	}
-
+	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (world.getWorldTime() >= 12500) {

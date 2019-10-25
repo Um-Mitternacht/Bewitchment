@@ -19,7 +19,7 @@ public class RenderShadowPerson extends RenderLiving<EntityShadowPerson> {
 	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson_hatdemon.png")};
 	private static final ModelBase slimModel = new ModelShadowPersonSlim();
 	private static final ModelBase regModel = new ModelShadowPersonClassic();
-
+	
 	public RenderShadowPerson(RenderManager manager) {
 		this(manager, new ModelShadowPersonClassic());
 	}
@@ -38,12 +38,13 @@ public class RenderShadowPerson extends RenderLiving<EntityShadowPerson> {
 		super.preRenderCallback(entity, partialTickTime);
 		GlStateManager.scale(1.05, 1.05, 1.05);
 	}
-
+	
 	@Override
 	public void doRender(EntityShadowPerson entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (entity.getDataManager().get(ModEntityMob.SKIN) >= 2) {
 			this.mainModel = slimModel;
-		} else this.mainModel = regModel;
+		}
+		else this.mainModel = regModel;
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}
 }

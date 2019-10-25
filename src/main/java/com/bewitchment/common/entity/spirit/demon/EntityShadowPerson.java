@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class EntityShadowPerson extends ModEntityMob {
-
+	
 	public EntityShadowPerson(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
 		setSize(1, 2.25f);

@@ -29,11 +29,6 @@ public class ItemCaduceus extends Item {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return false;
-	}
-
-	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			EntityLivingBase target = player.getAttackingEntity();
@@ -50,6 +45,11 @@ public class ItemCaduceus extends Item {
 			player.getHeldItem(hand).damageItem(1, player);
 		}
 		return EnumActionResult.SUCCESS;
+	}
+
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return false;
 	}
 
 	@Override

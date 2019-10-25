@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -23,15 +22,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RitualCurseCleansing extends Ritual {
-	private boolean lesser;
 	private static final List<Ingredient> lesser_input = Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.birch_soul), Util.get(Items.WATER_BUCKET));
 	private static final List<Ingredient> greater_input = Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.birch_soul), Util.get(Items.WATER_BUCKET), Util.get(ModObjects.garlic), Util.get(ModObjects.silver_ingot));
-
+	private boolean lesser;
+	
 	public RitualCurseCleansing(boolean lesser) {
 		super(new ResourceLocation(Bewitchment.MODID, (lesser ? "lesser" : "greater") + "_curse_cleansing"), lesser ? lesser_input : greater_input, null, Collections.singletonList(new ItemStack(Items.BUCKET)), 15, lesser ? 500 : 1000, 10, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
 		this.lesser = lesser;
 	}
-
+	
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);

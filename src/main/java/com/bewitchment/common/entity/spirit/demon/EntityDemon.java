@@ -103,14 +103,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
 		else super.handleStatusUpdate(id);
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return 15728880;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -142,6 +142,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 
+	
 	
 	@Override
 	public EntityPlayer getCustomer() {

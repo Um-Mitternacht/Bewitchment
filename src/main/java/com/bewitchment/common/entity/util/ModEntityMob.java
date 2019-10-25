@@ -43,7 +43,8 @@ public abstract class ModEntityMob extends EntityMob {
 				for (int i = 0; i < 128; i++) {
 					world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
 				}
-			} else lifeTimeTicks--;
+			}
+			else lifeTimeTicks--;
 		}
 		if (summoner != null) {
 			EntityPlayer player = world.getPlayerEntityByUUID(summoner);

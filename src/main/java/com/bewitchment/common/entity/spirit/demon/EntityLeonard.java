@@ -20,17 +20,17 @@ public class EntityLeonard extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		setSize(0.8f, 2.6f);
 	}
-
+	
 	@Override
 	protected boolean isValidLightLevel() {
 		return false;
 	}
-
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -39,7 +39,7 @@ public class EntityLeonard extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
 	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
