@@ -1,7 +1,6 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.registry.Tarot;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.enchantment.Enchantment;
@@ -49,9 +48,8 @@ public class ItemCaduceus extends Item {
 				world.spawnEntity(temp);
 			}
 			player.getHeldItem(hand).damageItem(1, player);
-			return EnumActionResult.SUCCESS;
 		}
-		return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+		return EnumActionResult.SUCCESS;
 	}
 
 	@Override

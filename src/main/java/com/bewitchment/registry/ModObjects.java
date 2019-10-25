@@ -306,6 +306,7 @@ public class ModObjects {
 	public static final Item fiery_chalk = new ItemChalk("fiery_chalk");
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	public static final Item caduceus = new ItemCaduceus();
+	public static final Item leonards_wand = new ItemLeonardsWand();
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();
@@ -313,6 +314,7 @@ public class ModObjects {
 	public static final Item horseshoe = new ItemHorseshoe();
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
+	public static final ModItemBauble hecates_visage = new ItemHecatesVisage();
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();

@@ -15,9 +15,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-/**
- * Created by Joseph on 10/21/2019.
- */
 public class EntityShadowPerson extends ModEntityMob {
 
 	public EntityShadowPerson(World world) {
@@ -34,11 +31,6 @@ public class EntityShadowPerson extends ModEntityMob {
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
 	}
 	
 	@Override

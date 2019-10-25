@@ -3,6 +3,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelLeonard;
 import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -20,5 +21,11 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 	@Override
 	protected ResourceLocation getEntityTexture(EntityLeonard entityLeonard) {
 		return TEX;
+	}
+
+	@Override
+	protected void preRenderCallback(EntityLeonard entity, float partialTickTime) {
+		super.preRenderCallback(entity, partialTickTime);
+		GlStateManager.scale(1.1, 1.1, 1.1);
 	}
 }

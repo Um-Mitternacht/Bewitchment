@@ -128,7 +128,9 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 	
 	public void startRitual(EntityPlayer player, Ritual rit) {
 		if (!player.world.isRemote) {
-			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, rit.startingPower)) {
+			int power = rit.startingPower;
+			if (Util.hasBauble(player, ModObjects.hecates_visage)) power *= 0.85;
+			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, power)) {
 				if (player.getCapability(ExtendedPlayer.CAPABILITY, null).canRitual) {
 					ritual = rit;
 					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;

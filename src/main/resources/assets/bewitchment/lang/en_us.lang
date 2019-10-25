@@ -243,6 +243,9 @@ tooltip.bewitchment.token_of_remedies=The gem in its core seems to absorb illnes
 item.bewitchment.fortunes_favor.name=Fortune's Favor
 tooltip.bewitchment.fortunes_favor=A pair of enchanted gloves that boost mining speed and give more drops from ores.
 
+item.bewitchment.hecates_visage.name=Hecate's Visage
+tooltip.bewitchment.hecates_visage=Lowers the cost of starting a ritual.
+
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 
