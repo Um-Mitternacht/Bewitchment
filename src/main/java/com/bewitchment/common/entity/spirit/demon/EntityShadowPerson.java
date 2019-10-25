@@ -18,16 +18,14 @@ import net.minecraft.world.World;
 /**
  * Created by Joseph on 10/21/2019.
  */
-public class EntityShadowPersonStandard extends ModEntityMob {
-	public boolean slim;
+public class EntityShadowPerson extends ModEntityMob {
 
-	public EntityShadowPersonStandard(World world) {
+	public EntityShadowPerson(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
-		setSize(1, 0.85f);
+		setSize(1, 2.25f);
 		isImmuneToFire = true;
 		limitedLifeSpan = true;
 		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
-		slim = rand.nextBoolean();
 	}
 	
 	public void fall(float distance, float damageMultiplier) {
@@ -68,7 +66,7 @@ public class EntityShadowPersonStandard extends ModEntityMob {
 	
 	@Override
 	protected int getSkinTypes() {
-		return 2;
+		return 4;
 	}
 	
 	@Override
