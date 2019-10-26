@@ -1,6 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * leonard - cybercat5555
  * Created using Tabula 7.0.1
  */
-public class ModelLeonard extends ModelBase {
+public class ModelLeonard extends ModelBiped {
 	public ModelRenderer bipedBody;
 	public ModelRenderer chestFur01;
 	public ModelRenderer chestFur02;
