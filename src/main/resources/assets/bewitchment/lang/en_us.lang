@@ -1017,6 +1017,26 @@ entity.bewitchment.given_name.341=Pennywise
 entity.bewitchment.given_name.342=The Crimson King
 entity.bewitchment.given_name.343=Dandelo
 
+entity.bewitchment.given_name.344=Jyggalag
+entity.bewitchment.given_name.345=Sheogorath
+entity.bewitchment.given_name.346=Azura
+entity.bewitchment.given_name.347=Boethiah
+entity.bewitchment.given_name.348=Clavicus Vile
+entity.bewitchment.given_name.349=Hermaeus Mora
+entity.bewitchment.given_name.350=Hircine
+entity.bewitchment.given_name.351=Malacath
+entity.bewitchment.given_name.352=Mehrunes Dagon
+entity.bewitchment.given_name.353=Meridia
+entity.bewitchment.given_name.354=Mephala
+entity.bewitchment.given_name.355=Molag Bal
+entity.bewitchment.given_name.356=Namira
+entity.bewitchment.given_name.357=Sanguine
+entity.bewitchment.given_name.358=Nocturnal
+entity.bewitchment.given_name.359=Peryite
+entity.bewitchment.given_name.360=Vaermina
+entity.bewitchment.given_name.361=Velehk Sain
+entity.bewitchment.given_name.362=The Ruddy Man
+
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
 entity.bewitchment.prefix.2=Duke
