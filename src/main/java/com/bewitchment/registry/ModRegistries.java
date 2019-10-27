@@ -6,6 +6,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.*;
+import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockGlyph;
@@ -112,6 +113,8 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_fence_gate, BlockFenceGate.POWERED);
 		
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, BlockDragonsBloodLog.NATURAL);
+
+		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemIdol.BlockFiller.HEIGHT);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
 		ModObjects.crop_belladonna.setItems(ModObjects.belladonna_seeds, ModObjects.belladonna);

@@ -173,7 +173,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return 15728880;
-	}	@Override
+	}
+
+	@Override
 	public BlockPos getPos() {
 		return getPosition();
 	}
@@ -236,7 +238,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(375)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
-	}	@Override
+	}
+
+	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		if (this.recipeList == null) this.populateBuyingList();
 		return this.recipeList;
@@ -244,7 +248,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return DemonTradeHandler.INSTANCE.demon;
-	}	@Override
+	}
+
+	@Override
 	public World getWorld() {
 		return world;
 	}
@@ -267,14 +273,18 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
 			if (j <= 3) trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
-	}	@Override
+	}
+
+	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;
 	}
 	
 	public boolean isTrading() {
 		return this.buyer != null;
-	}	@Override
+	}
+
+	@Override
 	public void setRecipes(MerchantRecipeList recipeList) {
 		this.recipeList = recipeList;
 	}
@@ -322,11 +332,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		public void updateTask() {
 			this.demon.getNavigator().clearPath();
 		}
-	}	@Override
+	}
+
+	@Override
 	public void verifySellingItem(ItemStack stack) {
 	}
-	
-	
+
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {
 		recipe.incrementToolUses();
@@ -342,19 +353,4 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.world.spawnEntity(new EntityXPOrb(this.world, this.posX + 0.5d, this.posY, this.posZ, i));
 		}
 	}
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	
-
-	
-
 }
