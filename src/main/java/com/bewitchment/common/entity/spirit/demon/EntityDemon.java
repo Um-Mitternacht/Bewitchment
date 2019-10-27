@@ -234,7 +234,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(368)).getFormattedText());
+		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(374)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
 	}	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {

@@ -1043,6 +1043,13 @@ entity.bewitchment.given_name.365=Cake Guy
 entity.bewitchment.given_name.366=Vanir
 entity.bewitchment.given_name.367=Pax
 
+entity.bewitchment.given_name.368=The Scarlet King
+entity.bewitchment.given_name.369=Ambassador of Alagadda
+entity.bewitchment.given_name.370=Black Lord
+entity.bewitchment.given_name.371=White Lord
+entity.bewitchment.given_name.372=Yellow Lord
+entity.bewitchment.given_name.373=Red Lord
+
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
 entity.bewitchment.prefix.2=Duke
