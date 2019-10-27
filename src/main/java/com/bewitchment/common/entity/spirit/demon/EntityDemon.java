@@ -41,8 +41,8 @@ import java.util.List;
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityDemon extends ModEntityMob implements IMerchant {
 	public int attackTimer = 0;
-	private MerchantRecipeList recipeList;
 	public EntityPlayer buyer, lastBuyer;
+	private MerchantRecipeList recipeList;
 	private int careerId, careerLevel, timeUntilReset;
 	private boolean needsInitilization;
 	
@@ -115,7 +115,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> ((Util.hasBauble(e, ModObjects.hellish_bauble) ? world.rand.nextInt(4) == 0 : !e.isImmuneToFire())) && (!BewitchmentAPI.hasBesmirched(e))));
 	}
-
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
+	}
+	
 	@Override
 	protected void updateAITasks() {
 		if (!this.isTrading() && this.timeUntilReset > 0) {
@@ -135,21 +141,63 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 		super.updateAITasks();
 	}
-
+	
 	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		ItemStack itemstack = player.getHeldItem(hand);
+		if (itemstack.getItem() == Items.NAME_TAG || itemstack.getItem() == Items.LEAD) {
+			itemstack.interactWithEntity(player, this, hand);
+			return true;
+		}
+		else if (this.isEntityAlive() && !this.isTrading() && !this.isChild() && !player.isSneaking()) {
+			if (!world.isRemote) this.setCustomer(player);
+			if (this.recipeList == null) {
+				this.populateBuyingList();
+			}
+			if (hand == EnumHand.MAIN_HAND) {
+				player.addStat(StatList.TALKED_TO_VILLAGER);
+			}
+			if (!this.world.isRemote && !this.recipeList.isEmpty()) {
+				player.displayVillagerTradeGui(this);
+			}
+			else if (this.recipeList.isEmpty()) {
+				return super.processInteract(player, hand);
+			}
+			return true;
+		}
+		else {
+			return super.processInteract(player, hand);
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return 15728880;
-	}
-
-	@Override
+	}	@Override
 	public BlockPos getPos() {
 		return getPosition();
+	}
+	
+	public ITextComponent getDisplayName() {
+		Team team = this.getTeam();
+		String s = this.getCustomNameTag();
+		
+		if (s != null && !s.isEmpty()) {
+			TextComponentString textcomponentstring = new TextComponentString(ScorePlayerTeam.formatPlayerName(team, s));
+			textcomponentstring.getStyle().setHoverEvent(this.getHoverEvent());
+			textcomponentstring.getStyle().setInsertion(this.getCachedUniqueIdString());
+			return textcomponentstring;
+		}
+		else {
+			TextComponentString itextcomponent = new TextComponentString(this.getName());
+			itextcomponent.getStyle().setHoverEvent(this.getHoverEvent());
+			itextcomponent.getStyle().setInsertion(this.getCachedUniqueIdString());
+			
+			if (team != null) {
+				itextcomponent.getStyle().setColor(team.getColor());
+			}
+			return itextcomponent;
+		}
 	}
 	
 	@Override
@@ -179,40 +227,102 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.recipeList = new MerchantRecipeList(compound);
 		}
 		super.readEntityFromNBT(tag);
-	}
-
-	@Override
+	}	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
 	
-	
 	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
+		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(340)).getFormattedText());
+		return super.onInitialSpawn(difficulty, data);
+	}	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		if (this.recipeList == null) this.populateBuyingList();
 		return this.recipeList;
 	}
 	
-	
-	@Override
+	public VillagerRegistry.VillagerProfession getProfessionForge() {
+		return DemonTradeHandler.INSTANCE.demon;
+	}	@Override
 	public World getWorld() {
 		return world;
 	}
 	
-	
-	@Override
+	private void populateBuyingList() {
+		if (this.careerId != 0 && this.careerLevel != 0) {
+			++this.careerLevel;
+		}
+		else {
+			this.careerId = this.getProfessionForge().getRandomCareer(this.rand) + 1;
+			this.careerLevel = 1;
+		}
+		if (this.recipeList == null) {
+			this.recipeList = new MerchantRecipeList();
+		}
+		int i = this.careerId - 1;
+		int j = this.careerLevel - 1;
+		List<EntityVillager.ITradeList> trades = this.getProfessionForge().getCareer(i).getTrades(j);
+		if (trades != null) {
+			trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
+			if (j <= 3) trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
+		}
+	}	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;
 	}
 	
-	
-	@Override
+	public boolean isTrading() {
+		return this.buyer != null;
+	}	@Override
 	public void setRecipes(MerchantRecipeList recipeList) {
 		this.recipeList = recipeList;
 	}
 	
-	
-	@Override
+	private class DemonAITradePlayer extends EntityAIBase {
+		private final EntityDemon demon;
+		
+		public DemonAITradePlayer(EntityDemon demon) {
+			this.demon = demon;
+			this.setMutexBits(4);
+		}
+		
+		public boolean shouldExecute() {
+			if (!this.demon.isEntityAlive()) {
+				return false;
+			}
+			else if (this.demon.isInWater()) {
+				return false;
+			}
+			else if (!this.demon.onGround) {
+				return false;
+			}
+			else if (this.demon.velocityChanged) {
+				return false;
+			}
+			else {
+				EntityPlayer entityplayer = this.demon.getCustomer();
+				
+				if (entityplayer == null) {
+					return false;
+				}
+				else if (this.demon.getDistanceSq(entityplayer) > 16.0D) {
+					return false;
+				}
+				else {
+					return entityplayer.openContainer != null;
+				}
+			}
+		}
+		
+		public void resetTask() {
+			this.demon.setCustomer(null);
+		}
+		
+		public void updateTask() {
+			this.demon.getNavigator().clearPath();
+		}
+	}	@Override
 	public void verifySellingItem(ItemStack stack) {
 	}
 	
@@ -232,123 +342,19 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.world.spawnEntity(new EntityXPOrb(this.world, this.posX + 0.5d, this.posY, this.posZ, i));
 		}
 	}
+	
 
-	public VillagerRegistry.VillagerProfession getProfessionForge() {
-		return DemonTradeHandler.INSTANCE.demon;
-	}
+	
 
-	private void populateBuyingList() {
-		if (this.careerId != 0 && this.careerLevel != 0) {
-			++this.careerLevel;
-		} else {
-			this.careerId = this.getProfessionForge().getRandomCareer(this.rand) + 1;
-			this.careerLevel = 1;
-		}
-		if (this.recipeList == null) {
-			this.recipeList = new MerchantRecipeList();
-		}
-		int i = this.careerId - 1;
-		int j = this.careerLevel - 1;
-		List<EntityVillager.ITradeList> trades = this.getProfessionForge().getCareer(i).getTrades(j);
-		if (trades != null) {
-			trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
-			if (j <= 3) trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
-		}
-	}
+	
 
-	public ITextComponent getDisplayName() {
-		Team team = this.getTeam();
-		String s = this.getCustomNameTag();
+	
 
-		if (s != null && !s.isEmpty()) {
-			TextComponentString textcomponentstring = new TextComponentString(ScorePlayerTeam.formatPlayerName(team, s));
-			textcomponentstring.getStyle().setHoverEvent(this.getHoverEvent());
-			textcomponentstring.getStyle().setInsertion(this.getCachedUniqueIdString());
-			return textcomponentstring;
-		} else {
-			TextComponentString itextcomponent = new TextComponentString(this.getName());
-			itextcomponent.getStyle().setHoverEvent(this.getHoverEvent());
-			itextcomponent.getStyle().setInsertion(this.getCachedUniqueIdString());
+	
 
-			if (team != null) {
-				itextcomponent.getStyle().setColor(team.getColor());
-			}
-			return itextcomponent;
-		}
-	}
+	
+	
 
-	public boolean isTrading() {
-		return this.buyer != null;
-	}
+	
 
-	@Override
-	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		ItemStack itemstack = player.getHeldItem(hand);
-		if (itemstack.getItem() == Items.NAME_TAG || itemstack.getItem() == Items.LEAD) {
-			itemstack.interactWithEntity(player, this, hand);
-			return true;
-		} else if(this.isEntityAlive() && !this.isTrading() && !this.isChild() && !player.isSneaking()) {
-			if (!world.isRemote) this.setCustomer(player);
-			if (this.recipeList == null) {
-				this.populateBuyingList();
-			}
-			if (hand == EnumHand.MAIN_HAND) {
-				player.addStat(StatList.TALKED_TO_VILLAGER);
-			}
-			if (!this.world.isRemote && !this.recipeList.isEmpty()) {
-				player.displayVillagerTradeGui(this);
-			} else if (this.recipeList.isEmpty()) {
-				return super.processInteract(player, hand);
-			}
-			return true;
-		} else {
-			return super.processInteract(player, hand);
-		}
-	}
-
-
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(326)).getFormattedText());
-		return super.onInitialSpawn(difficulty, data);
-	}
-
-	private class DemonAITradePlayer extends EntityAIBase {
-		private final EntityDemon demon;
-
-		public DemonAITradePlayer(EntityDemon demon) {
-			this.demon = demon;
-			this.setMutexBits(4);
-		}
-
-		public boolean shouldExecute() {
-			if (!this.demon.isEntityAlive()) {
-				return false;
-			} else if (this.demon.isInWater()) {
-				return false;
-			} else if (!this.demon.onGround) {
-				return false;
-			} else if (this.demon.velocityChanged) {
-				return false;
-			} else {
-				EntityPlayer entityplayer = this.demon.getCustomer();
-
-				if (entityplayer == null) {
-					return false;
-				} else if (this.demon.getDistanceSq(entityplayer) > 16.0D) {
-					return false;
-				} else {
-					return entityplayer.openContainer != null;
-				}
-			}
-		}
-
-		public void updateTask() {
-			this.demon.getNavigator().clearPath();
-		}
-
-		public void resetTask() {
-			this.demon.setCustomer(null);
-		}
-	}
 }

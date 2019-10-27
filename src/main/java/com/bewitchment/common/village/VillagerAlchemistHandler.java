@@ -21,14 +21,8 @@ public class VillagerAlchemistHandler {
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(PROF_ALCHEMIST);
 		
 		VillagerRegistry.VillagerCareer career_alchemist = new VillagerRegistry.VillagerCareer(PROF_ALCHEMIST, Bewitchment.MODID + ".alchemist");
-		career_alchemist.addTrade(1,
-				new TradeHandler.ItemstackForEmerald(new ItemStack(Items.GLASS_BOTTLE), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(5, 9)),
-				new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.silver_ingot), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(2, 5)),
-				new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.salt), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(10, 16)),
-				new TradeHandler.EmeraldforItemstack(new ItemStack(Items.GOLD_INGOT), new EntityVillager.PriceInfo(1, 2), new EntityVillager.PriceInfo(10, 16)));
-		career_alchemist.addTrade(2,
-				new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.stone_ichor), new EntityVillager.PriceInfo(2, 4), new EntityVillager.PriceInfo(1, 3)),
-				new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.fiery_unguent), new EntityVillager.PriceInfo(4, 6), new EntityVillager.PriceInfo(1, 3)));
+		career_alchemist.addTrade(1, new TradeHandler.ItemstackForEmerald(new ItemStack(Items.GLASS_BOTTLE), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(5, 9)), new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.silver_ingot), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(2, 5)), new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.salt), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(10, 16)), new TradeHandler.EmeraldforItemstack(new ItemStack(Items.GOLD_INGOT), new EntityVillager.PriceInfo(1, 2), new EntityVillager.PriceInfo(10, 16)));
+		career_alchemist.addTrade(2, new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.stone_ichor), new EntityVillager.PriceInfo(2, 4), new EntityVillager.PriceInfo(1, 3)), new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.fiery_unguent), new EntityVillager.PriceInfo(4, 6), new EntityVillager.PriceInfo(1, 3)));
 		career_alchemist.addTrade(3, new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.dragons_blood_resin), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(3, 5)),
 				//new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.moonstone), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(2, 5)),
 				new TradeHandler.ItemstackForEmerald(new ItemStack(ModObjects.bottled_frostfire), new EntityVillager.PriceInfo(3, 5), new EntityVillager.PriceInfo(3, 5)), new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.amethyst), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(2, 5)), new TradeHandler.EmeraldforItemstack(new ItemStack(ModObjects.garnet), new EntityVillager.PriceInfo(1, 3), new EntityVillager.PriceInfo(2, 5)));

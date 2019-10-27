@@ -8,11 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 public class DemonTradeHandler {
-
+	
 	public static final DemonTradeHandler INSTANCE = new DemonTradeHandler();
-
+	
 	public VillagerRegistry.VillagerProfession demon;
-
+	
 	public void init() {
 		demon = new VillagerRegistry.VillagerProfession("bewitchment:demon", "minecraft:textures/entity/zombie_villager/zombie_farmer.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{

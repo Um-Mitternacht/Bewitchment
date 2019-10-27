@@ -996,6 +996,22 @@ entity.bewitchment.given_name.322=The Old Man
 entity.bewitchment.given_name.323=The Smoke Man
 entity.bewitchment.given_name.324=Mephistopheles
 entity.bewitchment.given_name.325=Behemoth
+
+entity.bewitchment.given_name.326=Teridax
+entity.bewitchment.given_name.327=Makuta
+entity.bewitchment.given_name.328=Icarax
+entity.bewitchment.given_name.329=Miserix
+entity.bewitchment.given_name.330=Antroz
+entity.bewitchment.given_name.331=Bitil
+entity.bewitchment.given_name.332=Chirox
+entity.bewitchment.given_name.333=Gorast
+entity.bewitchment.given_name.334=Kojol
+entity.bewitchment.given_name.335=Krika
+entity.bewitchment.given_name.336=Mutran
+entity.bewitchment.given_name.337=Spiriah
+entity.bewitchment.given_name.338=Tridax
+entity.bewitchment.given_name.339=Vamprah
+
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
 entity.bewitchment.prefix.2=Duke
