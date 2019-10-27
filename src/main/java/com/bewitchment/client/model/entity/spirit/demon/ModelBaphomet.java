@@ -1,6 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * baphomet - cybercat5555
  * Created using Tabula 7.0.1
  */
-public class ModelBaphomet extends ModelBase {
+public class ModelBaphomet extends ModelBiped {
 	public ModelRenderer bodyChest;
 	public ModelRenderer boobLeft;
 	public ModelRenderer boobRight;
