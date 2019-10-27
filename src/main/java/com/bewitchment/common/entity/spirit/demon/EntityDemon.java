@@ -42,8 +42,9 @@ import java.util.List;
 public class EntityDemon extends ModEntityMob implements IMerchant {
 	public int attackTimer = 0;
 	private MerchantRecipeList recipeList;
-	private EntityPlayer buyer;
-	private int careerId, careerLevel;
+	public EntityPlayer buyer, lastBuyer;
+	private int careerId, careerLevel, timeUntilReset;
+	private boolean needsInitilization;
 	
 	public EntityDemon(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/demon" + world.rand.nextInt(4)));
@@ -106,7 +107,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(0, new DemonAITradePlayer(this));
+		tasks.addTask(2, new DemonAITradePlayer(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
@@ -114,7 +115,27 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> ((Util.hasBauble(e, ModObjects.hellish_bauble) ? world.rand.nextInt(4) == 0 : !e.isImmuneToFire())) && (!BewitchmentAPI.hasBesmirched(e))));
 	}
-	
+
+	@Override
+	protected void updateAITasks() {
+		if (!this.isTrading() && this.timeUntilReset > 0) {
+			--this.timeUntilReset;
+			if (this.timeUntilReset <= 0) {
+				if (this.needsInitilization) {
+					for (MerchantRecipe merchantrecipe : this.recipeList) {
+						if (merchantrecipe.isRecipeDisabled()) {
+							merchantrecipe.increaseMaxTradeUses(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
+						}
+					}
+					this.populateBuyingList();
+					this.needsInitilization = false;
+				}
+				this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 0));
+			}
+		}
+		super.updateAITasks();
+	}
+
 	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 10;
@@ -153,7 +174,10 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		careerId = tag.getInteger("careerId");
 		careerLevel = tag.getInteger("careerLevel");
-		if (tag.hasKey("recipeList")) recipeList.readRecipiesFromTags((NBTTagCompound) tag.getTag("recipeList"));
+		if (tag.hasKey("recipeList")) {
+			NBTTagCompound compound = tag.getCompoundTag("recipeList");
+			this.recipeList = new MerchantRecipeList(compound);
+		}
 		super.readEntityFromNBT(tag);
 	}
 
@@ -165,7 +189,8 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		return recipeList;
+		if (this.recipeList == null) this.populateBuyingList();
+		return this.recipeList;
 	}
 	
 	
@@ -196,6 +221,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public void useRecipe(MerchantRecipe recipe) {
 		recipe.incrementToolUses();
 		int i = 3 + this.rand.nextInt(4);
+		if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0) {
+			this.timeUntilReset = 40;
+			this.needsInitilization = true;
+			if (this.buyer != null) this.lastBuyer = this.buyer;
+			else this.lastBuyer = null;
+			i += 5;
+		}
 		if (recipe.getRewardsExp()) {
 			this.world.spawnEntity(new EntityXPOrb(this.world, this.posX + 0.5d, this.posY, this.posZ, i));
 		}
@@ -218,11 +250,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		int i = this.careerId - 1;
 		int j = this.careerLevel - 1;
 		List<EntityVillager.ITradeList> trades = this.getProfessionForge().getCareer(i).getTrades(j);
-
 		if (trades != null) {
-			for (EntityVillager.ITradeList tradeList : trades) {
-				tradeList.addMerchantRecipe(this, this.recipeList, this.rand);
-			}
+			trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
+			if (j <= 3) trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
 	}
 
@@ -236,9 +266,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			textcomponentstring.getStyle().setInsertion(this.getCachedUniqueIdString());
 			return textcomponentstring;
 		} else {
-			if (this.recipeList == null) {
-				this.populateBuyingList();
-			}
 			TextComponentString itextcomponent = new TextComponentString(this.getName());
 			itextcomponent.getStyle().setHoverEvent(this.getHoverEvent());
 			itextcomponent.getStyle().setInsertion(this.getCachedUniqueIdString());
@@ -246,7 +273,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			if (team != null) {
 				itextcomponent.getStyle().setColor(team.getColor());
 			}
-
 			return itextcomponent;
 		}
 	}
@@ -258,12 +284,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack itemstack = player.getHeldItem(hand);
-
-		boolean flag = itemstack.getItem() == Items.NAME_TAG || itemstack.getItem() == Items.LEAD;
-		if (flag) {
+		if (itemstack.getItem() == Items.NAME_TAG || itemstack.getItem() == Items.LEAD) {
 			itemstack.interactWithEntity(player, this, hand);
 			return true;
 		} else if(this.isEntityAlive() && !this.isTrading() && !this.isChild() && !player.isSneaking()) {
+			if (!world.isRemote) this.setCustomer(player);
 			if (this.recipeList == null) {
 				this.populateBuyingList();
 			}
@@ -271,7 +296,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 				player.addStat(StatList.TALKED_TO_VILLAGER);
 			}
 			if (!this.world.isRemote && !this.recipeList.isEmpty()) {
-				this.setCustomer(player);
 				player.displayVillagerTradeGui(this);
 			} else if (this.recipeList.isEmpty()) {
 				return super.processInteract(player, hand);
@@ -285,8 +309,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("demon_prefix_" + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("demon_name_" + rand.nextInt(326)).getFormattedText());
-		this.populateBuyingList();
+		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(326)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
 	}
 
@@ -295,12 +318,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 
 		public DemonAITradePlayer(EntityDemon demon) {
 			this.demon = demon;
-			this.setMutexBits(5);
+			this.setMutexBits(4);
 		}
 
-		/**
-		 * Returns whether the EntityAIBase should begin execution.
-		 */
 		public boolean shouldExecute() {
 			if (!this.demon.isEntityAlive()) {
 				return false;
@@ -327,9 +347,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.demon.getNavigator().clearPath();
 		}
 
-		/**
-		 * Reset the task's internal state. Called when this task is interrupted by another one
-		 */
 		public void resetTask() {
 			this.demon.setCustomer(null);
 		}
