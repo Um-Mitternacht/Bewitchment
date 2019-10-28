@@ -3,8 +3,10 @@ package com.bewitchment.common.item.equipment.baubles;
 import baubles.api.BaubleType;
 import com.bewitchment.Util;
 import com.bewitchment.common.item.util.ModItemBauble;
-import net.minecraft.block.BlockOre;
+import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -27,7 +29,9 @@ public class ItemFortuneFavor extends ModItemBauble {
 			List<ItemStack> drops = new ArrayList<>(event.getDrops());
 			event.getDrops().clear();
 			for (ItemStack stack : drops) {
-				if (event.getState().getBlock() instanceof BlockOre) {
+				Block block = event.getState().getBlock();
+				if (block == Blocks.COAL_ORE || block == Blocks.DIAMOND_ORE || block == Blocks.EMERALD_ORE || block == Blocks.LAPIS_BLOCK || block == ModObjects.salt_ore || block == ModObjects.amethyst_ore
+					|| block == ModObjects.garnet_ore || block == ModObjects.opal_ore) {
 					stack.setCount(stack.getCount() + itemRand.nextInt(2));
 				}
 				event.getDrops().add(stack);

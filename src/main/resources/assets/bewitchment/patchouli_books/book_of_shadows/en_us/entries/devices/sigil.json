@@ -18,7 +18,7 @@
 	},
 	{
 	  "type": "text",
-	  "text": "Sigils may be applied on mobs, blocks, as well as on chests and doors made from the wood of a Dragon’s Blood tree, and will apply the sigil to those who interact with it. When applied to a target, the sigil will last for about a day, but it can passively feed off ME, though once it has no magic to feed off of, it will fade away."
+	  "text": "Sigils may be applied on mobs, blocks, as well as on chests and doors made from the wood of a Dragon’s Blood tree, and will apply the sigil to those who interact with it. When applied to a regular block, it will periodically apply the effect to entities range and fade away after a week"
 	},
 	{
 	  "type": "bewitchment:sigil_recipe",

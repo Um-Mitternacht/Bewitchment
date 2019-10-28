@@ -270,7 +270,7 @@ public class ModConfig {
 			
 			@Config.Comment("The weight chance for ghosts to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int ghostWeight = 10;
+			public int ghostWeight = 6;
 			
 			@Config.Comment("The minimum amount of ghosts to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)

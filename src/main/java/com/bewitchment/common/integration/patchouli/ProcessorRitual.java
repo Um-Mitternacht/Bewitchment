@@ -1,6 +1,7 @@
 package com.bewitchment.common.integration.patchouli;
 
 import com.bewitchment.api.registry.Ritual;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.patchouli.api.IComponentProcessor;
@@ -33,7 +34,7 @@ public class ProcessorRitual implements IComponentProcessor {
 			if (recipe.circles[id] > -1) return "bewitchment:textures/gui/patchouli/circle/circle" + recipe.circles[id] + id + ".png";
 			else return "bewitchment:textures/gui/patchouli/circle/foci.png";
 		}
-		else if (key.equals("name") && recipe.output != null) return recipe.output.get(0).getDisplayName();
+		else if (key.equals("name")) return I18n.format("ritual." + recipe.getRegistryName().toString().replace(":", "."));
 		return null;
 	}
 }

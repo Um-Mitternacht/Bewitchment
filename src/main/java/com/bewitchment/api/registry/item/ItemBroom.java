@@ -8,13 +8,13 @@ import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -72,7 +72,7 @@ public class ItemBroom extends Item {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("sigil")) {
 			String sigilName = stack.getTagCompound().getString("sigil");
-			tooltip.add(new TextComponentTranslation(sigilName).getUnformattedComponentText());
+			tooltip.add(I18n.format(sigilName));
 		}
 	}
 	

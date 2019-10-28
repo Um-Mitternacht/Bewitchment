@@ -7,12 +7,14 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -53,6 +55,7 @@ public class ItemTaglock extends Item {
 			for (EntityPlayer player0 : world.playerEntities) {
 				if (player0.getBedLocation() != null && player0.getBedLocation().equals(pos)) {
 					setTags(player, hand, player0);
+					if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 					return EnumActionResult.SUCCESS;
 				}
 			}

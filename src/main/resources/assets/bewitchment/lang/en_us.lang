@@ -631,6 +631,8 @@ ritual.bewitchment.juniper_broom=Rite of the Rising Twigs
 ritual.bewitchment.dragons_blood_broom=Rite of the Rising Twigs
 ritual.bewitchment.wednesday=Rite of Wednesday
 ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
+ritual.bewitchment.lesser_curse_cleansing=Rite of Lesser Curse Cleansing
+ritual.bewitchment.greater_curse_cleansing=Rite of Greater Curse Cleansing
 
 #INFO
 itemGroup.bewitchment=Bewitchment
@@ -668,6 +670,7 @@ jei.ritual.runningPower=Running Power: %d
 
 jei.cauldron=Cauldron
 jei.brew=Brew
+jei.incense=Incense
 
 #DEMON NAMES AND TITLES
 entity.bewitchment.given_name.0=Bael

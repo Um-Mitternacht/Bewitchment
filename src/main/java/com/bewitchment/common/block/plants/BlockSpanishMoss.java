@@ -25,12 +25,12 @@ import java.util.Random;
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class BlockSpanishMoss extends BlockVine {
 	
-	boolean terminalPiece;
+	private boolean terminalPiece;
 	
 	public BlockSpanishMoss(boolean terminal) {
-		Util.registerBlock(this, "spanish_moss" + (terminal ? "_end" : ""), Blocks.VINE);
 		this.setTickRandomly(!terminalPiece);
 		this.terminalPiece = terminal;
+		Util.registerBlock(this, "spanish_moss" + (terminal ? "_end" : ""), Blocks.VINE);
 	}
 	
 	public boolean isTerminalPiece() {

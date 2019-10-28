@@ -32,6 +32,7 @@ import java.util.Random;
 @SuppressWarnings("deprecation")
 public class ItemIdol extends Item {
 	private final BlockIdol block;
+	private final int height;
 	
 	public ItemIdol(String blockName, Block base) {
 		super();
@@ -40,6 +41,7 @@ public class ItemIdol extends Item {
 			if (blockName.contains("herne") || blockName.contains("lilith")) height = 4;
 			if (blockName.contains("leonard")) height = 3;
 		}
+		this.height = height;
 		BlockIdol block = new BlockIdol("block_" + blockName, base, this, height);
 		this.block = block;
 		ForgeRegistries.BLOCKS.register(block);
@@ -50,7 +52,7 @@ public class ItemIdol extends Item {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
 		ItemStack stack = player.getHeldItem(hand);
-		if (player.canPlayerEdit(pos0, face, stack) && world.mayPlace(world.getBlockState(pos0).getBlock(), pos0, false, face, player) && block.canPlaceBlockAt(world, pos0)) {
+		if (canPlace(player, world, pos, face, hand)) {
 			world.setBlockState(pos0, block.getStateForPlacement(world, pos, face, hitX, hitY, hitZ, 0, player, hand));
 			for (int i = 0; i < block.height - 1; i++) {
 				world.setBlockState(pos0.up().up(i), ModObjects.filler.getStateFromMeta(i));
@@ -65,6 +67,17 @@ public class ItemIdol extends Item {
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;
+	}
+
+	private boolean canPlace(EntityPlayer player, World world, BlockPos pos, EnumFacing face, EnumHand hand) {
+		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
+		ItemStack stack = player.getHeldItem(hand);
+		for (int i = 0; i < this.height - 1; i++) {
+			if (!(player.canPlayerEdit(pos0.up(i), face, stack) && world.mayPlace(world.getBlockState(pos0.up(i)).getBlock(), pos0, false, face, player) && block.canPlaceBlockAt(world, pos0.up(i)))) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	@SuppressWarnings({"NullableProblems", "deprecation"})
