@@ -195,14 +195,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			}
 			return itextcomponent;
 		}
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
 	protected int getSkinTypes() {
 		return 6;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -237,9 +237,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return DemonTradeHandler.INSTANCE.demon;
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	private void populateBuyingList() {
@@ -265,9 +262,8 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public boolean isTrading() {
 		return this.buyer != null;
 	}	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		if (this.recipeList == null) this.populateBuyingList();
-		return this.recipeList;
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 	private class DemonAITradePlayer extends EntityAIBase {
@@ -315,26 +311,33 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 	}
 	
+
+	
+	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		if (this.recipeList == null) this.populateBuyingList();
+		return this.recipeList;
+	}
+	
+
+	
 	@Override
 	public World getWorld() {
 		return world;
 	}
 	
-
 	
 	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;
 	}
 	
-
 	
 	@Override
 	public void setRecipes(MerchantRecipeList recipeList) {
 		this.recipeList = recipeList;
 	}
 	
-
 	
 	@Override
 	public void verifySellingItem(ItemStack stack) {
