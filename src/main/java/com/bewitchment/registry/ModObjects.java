@@ -374,7 +374,7 @@ public class ModObjects {
 	public static final Item nether_brick_herne_statue = createIdol("nether_brick_herne_statue", Blocks.NETHER_BRICK);
 	public static final Item andesite_herne_statue = createIdol("andesite_herne_statue", Blocks.STONE);
 	public static final Item scorned_brick_herne_statue = createIdol("scorned_brick_herne_statue", scorned_bricks[0]);
-
+	
 	public static final Block filler = new ItemIdol.BlockFiller();
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();

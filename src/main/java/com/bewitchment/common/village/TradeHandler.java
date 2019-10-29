@@ -228,7 +228,9 @@ public class TradeHandler {
 					return new ItemStack(Items.MAGMA_CREAM, (int) (magmaPriceInfo.getPrice(random) * (reduced ? 0.5 : 1)));
 			}
 			return ItemStack.EMPTY;
-		}		@Override
+		}
+		
+		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = new ItemStack(sellingItem.getItem(), sellingPrice.getPrice(random), sellingItem.getMetadata());
 			boolean reduced = false;
@@ -242,7 +244,7 @@ public class TradeHandler {
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
 		
-
+		
 	}
 	
 	public static class EnchantedItemForDemon implements EntityVillager.ITradeList {

@@ -100,6 +100,19 @@ public class ItemIdol extends Item {
 		}
 
 		@Override
+		public IBlockState getStateFromMeta(int meta) {
+			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
+		}
+		
+		@Override
+		public void breakBlock(World world, BlockPos pos, IBlockState state) {
+			for (int i = 0; i < this.height; i++) {
+				world.setBlockToAir(pos.up(i));
+			}
+			super.breakBlock(world, pos, state);
+		}
+		
+		@Override
 		public boolean isFullBlock(IBlockState state) {
 			return false;
 		}
@@ -107,21 +120,14 @@ public class ItemIdol extends Item {
 		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
-		}
-		
-		@Override
-		public IBlockState getStateFromMeta(int meta) {
-			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
-		}
-		
-		@Override
+		}		@Override
 		public int getMetaFromState(IBlockState state) {
 			return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 		}
 		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-			return FULL_BLOCK_AABB.expand(0, height-1, 0);
+			return FULL_BLOCK_AABB.expand(0, height - 1, 0);
 		}
 		
 		@Override
@@ -154,13 +160,7 @@ public class ItemIdol extends Item {
 			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 		}
 
-		@Override
-		public void breakBlock(World world, BlockPos pos, IBlockState state) {
-			for (int i = 0; i < this.height; i++) {
-				world.setBlockToAir(pos.up(i));
-			}
-			super.breakBlock(world, pos, state);
-		}
+
 	}
 
 	public static class BlockFiller extends ModBlock {
@@ -171,24 +171,37 @@ public class ItemIdol extends Item {
 		}
 
 		@Override
+		public boolean isOpaqueCube(IBlockState state) {
+			return false;
+		}		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.INVISIBLE;
 		}
 
-		@Override
+		private int getHeightAbove(BlockPos pos) {
+			int height = 0;
+			BlockPos pos0 = pos;
+			while (Minecraft.getMinecraft().world.getBlockState(pos0.up()).getBlock() instanceof BlockFiller) {
+				height++;
+				pos0 = pos0.up();
+			}
+			return height;
+		}		@Override
 		public int quantityDropped(Random random) {
 			return 0;
 		}
 
-		@Override
+		private BlockPos getIdol(World world, BlockPos pos) {
+			for (int i = 0; i < 5; i++) {
+				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol) return pos.down(i);
+			}
+			return null;
+		}		@Override
 		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 			return false;
 		}
 
-		@Override
-		public boolean isOpaqueCube(IBlockState state) {
-			return false;
-		}
+
 
 		@Override
 		public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
@@ -210,23 +223,9 @@ public class ItemIdol extends Item {
 			return new BlockStateContainer(this, HEIGHT);
 		}
 
-		private int getHeightAbove(BlockPos pos) {
-			int height = 0;
-			BlockPos pos0 = pos;
-			while (Minecraft.getMinecraft().world.getBlockState(pos0.up()).getBlock() instanceof BlockFiller) {
-				height++;
-				pos0 = pos0.up();
-			}
-			return height;
-		}
 
-		private BlockPos getIdol(World world, BlockPos pos) {
-			for (int i = 0; i < 5; i++) {
-				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol)
-					return pos.down(i);
-			}
-			return null;
-		}
+
+
 
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
@@ -239,7 +238,8 @@ public class ItemIdol extends Item {
 			BlockPos idol = getIdol(world, pos);
 			if (idol != null) {
 				world.getBlockState(idol).getBlock().breakBlock(world, idol, world.getBlockState(idol));
-			} else super.breakBlock(world, pos, state);
+			}
+			else super.breakBlock(world, pos, state);
 		}
 	}
 }
