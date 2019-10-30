@@ -1,29 +1,32 @@
 package com.bewitchment.common.village;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
+import com.bewitchment.common.item.util.ModItemBauble;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
+import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
+@SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class TradeHandler {
 	public static class ItemstackForEmerald implements EntityVillager.ITradeList {
 		public ItemStack sellingItem;
 		public EntityVillager.PriceInfo emeraldPriceInfo, itemPriceInfo;
-		
-		public ItemstackForEmerald(Item par1Item, EntityVillager.PriceInfo emeraldPriceInfo, EntityVillager.PriceInfo itemPriceInfo) {
-			this.sellingItem = new ItemStack(par1Item);
-			this.emeraldPriceInfo = emeraldPriceInfo;
-			this.itemPriceInfo = itemPriceInfo;
-		}
 		
 		public ItemstackForEmerald(ItemStack stack, EntityVillager.PriceInfo emeraldPriceInfo, EntityVillager.PriceInfo itemPriceInfo) {
 			this.sellingItem = stack;
@@ -80,12 +83,8 @@ public class TradeHandler {
 				case 1:
 					itemStack = new ItemStack(ModObjects.juniper_sapling, amount);
 					break;
-				case 2:
-					itemStack = new ItemStack(ModObjects.elder_sapling, amount);
-					break;
 				default:
-					itemStack = null;
-					break;
+					itemStack = new ItemStack(ModObjects.elder_sapling, amount);
 			}
 			return itemStack;
 		}
@@ -96,8 +95,6 @@ public class TradeHandler {
 			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
-		
-		
 	}
 	
 	public static class RandomPlantsforEmeralds implements EntityVillager.ITradeList {
@@ -110,7 +107,7 @@ public class TradeHandler {
 		
 		private ItemStack getRandomPlant(Random random, int amount) {
 			ItemStack itemStack;
-			switch (random.nextInt(2)) {
+			switch (random.nextInt(3)) {
 				case 0:
 					itemStack = new ItemStack(ModObjects.embergrass, amount);
 					break;
@@ -118,8 +115,7 @@ public class TradeHandler {
 					itemStack = new ItemStack(ModObjects.torchwood, amount);
 					break;
 				default:
-					itemStack = null;
-					break;
+					itemStack = new ItemStack(ModObjects.spanish_moss, amount);
 			}
 			return itemStack;
 		}
@@ -141,28 +137,15 @@ public class TradeHandler {
 			this.emeraldPriceInfo = emeraldPriceInfo;
 		}
 		
-		private ItemStack getRandomBauble(Random random, int amount) {
-			ItemStack itemStack;
-			switch (random.nextInt(3)) {
-				case 0:
-					itemStack = new ItemStack(ModObjects.girdle_of_the_dryads, amount);
-					break;
-				case 1:
-					itemStack = new ItemStack(ModObjects.nazar, amount);
-					break;
-				case 2:
-					itemStack = new ItemStack(ModObjects.token_of_remedies, amount);
-					break;
-				default:
-					itemStack = null;
-					break;
-			}
-			return itemStack;
+		private ItemStack getRandomBauble(Random random) {
+			List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
+			if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
+			return new ItemStack(ModObjects.girdle_of_the_dryads);
 		}
 		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomBauble(random, 1);
+			ItemStack itemStack = getRandomBauble(random);
 			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
@@ -179,18 +162,12 @@ public class TradeHandler {
 		
 		private ItemStack getRandomWeapon(Random random) {
 			ItemStack itemStack;
-			switch (random.nextInt(2)) {
-				case 0:
-					itemStack = new ItemStack(ModObjects.athame);
-					break;
-				case 1:
-					itemStack = new ItemStack(ModObjects.boline);
-					break;
-				default:
-					itemStack = null;
-					break;
+			if (random.nextInt(2) == 0) {
+				itemStack = new ItemStack(ModObjects.athame);
+			} else {
+				itemStack = new ItemStack(ModObjects.boline);
 			}
-			if (random.nextInt(10) >= 5 && itemStack != null) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
+			if (random.nextInt(10) >= 5) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
 			return itemStack;
 		}
 		
@@ -202,7 +179,7 @@ public class TradeHandler {
 		}
 	}
 	
-	public static class DemonItemForItems implements EntityVillager.ITradeList {
+	public static class ItemsForDemon implements EntityVillager.ITradeList {
 		private static final EntityVillager.PriceInfo goldPriceInfo = new EntityVillager.PriceInfo(15, 30);
 		private static final EntityVillager.PriceInfo diamondPriceInfo = new EntityVillager.PriceInfo(5, 7);
 		private static final EntityVillager.PriceInfo blazePriceInfo = new EntityVillager.PriceInfo(4, 15);
@@ -211,7 +188,7 @@ public class TradeHandler {
 		public ItemStack sellingItem;
 		public EntityVillager.PriceInfo sellingPrice;
 		
-		public DemonItemForItems(ItemStack sellingItem, EntityVillager.PriceInfo sellingPrice) {
+		public ItemsForDemon(ItemStack sellingItem, EntityVillager.PriceInfo sellingPrice) {
 			this.sellingItem = sellingItem;
 			this.sellingPrice = sellingPrice;
 		}
@@ -224,13 +201,15 @@ public class TradeHandler {
 					return new ItemStack(Items.DIAMOND, (int) (diamondPriceInfo.getPrice(random) * (reduced ? 0.5 : 1)));
 				case 2:
 					return new ItemStack(Items.GOLD_INGOT, (int) (goldPriceInfo.getPrice(random) * (reduced ? 0.5 : 1)));
-				case 3:
+				default:
 					return new ItemStack(Items.MAGMA_CREAM, (int) (magmaPriceInfo.getPrice(random) * (reduced ? 0.5 : 1)));
 			}
-			return ItemStack.EMPTY;
-		}		@Override
+		}
+
+		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = new ItemStack(sellingItem.getItem(), sellingPrice.getPrice(random), sellingItem.getMetadata());
+			if (sellingItem.getItem() instanceof ItemBow || sellingItem.getItem() instanceof ItemEnchantedBook) itemStack = sellingItem;
 			boolean reduced = false;
 			if (iMerchant.getCustomer() != null && BewitchmentAPI.hasBesmirched(iMerchant.getCustomer())) {
 				reduced = true;
@@ -241,24 +220,42 @@ public class TradeHandler {
 			ItemStack itemStack1 = getRandomDemonPrice(random, reduced);
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
-		
-
 	}
 	
 	public static class EnchantedItemForDemon implements EntityVillager.ITradeList {
 		public ItemStack enchantedItemStack;
 		public EntityVillager.PriceInfo priceInfo;
 		public int enchantmentLevel;
-		
+
 		public EnchantedItemForDemon(Item item, EntityVillager.PriceInfo priceSelling, int enchantmentLevel) {
 			this.enchantedItemStack = new ItemStack(item);
 			this.priceInfo = priceSelling;
 			this.enchantmentLevel = enchantmentLevel;
 		}
-		
+
 		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-			ItemStack itemstack = DemonItemForItems.getRandomDemonPrice(random, false);
+			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
 			ItemStack itemstack1 = EnchantmentHelper.addRandomEnchantment(random, new ItemStack(this.enchantedItemStack.getItem(), 1, this.enchantedItemStack.getMetadata()), enchantmentLevel, false);
+			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
+		}
+	}
+
+	public static class RandomIdolForDemon implements EntityVillager.ITradeList {
+
+		public RandomIdolForDemon() {
+		}
+
+		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
+			final String[] demons = {"leonard", "baphomet", "lilith", "herne"};
+			final String[] idol_variants = {"stone", "terracotta", "gold", "nether_brick", "scorned_bick"};
+			final String[] statue_variants = {"stone", "diorite", "granite", "nether_brick", "andesite", "scorned_brick"};
+			String idol = random.nextBoolean() ? "idol" : "statue";
+			String demon = demons[random.nextInt(demons.length)];
+			String variant = idol.equals("idol") ? idol_variants[random.nextInt(idol_variants.length)] : statue_variants[random.nextInt(statue_variants.length)];
+			Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_" + idol));
+			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_idol);
+			if (item != null) itemstack1 = new ItemStack(item);
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
 		}
 	}

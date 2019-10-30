@@ -487,6 +487,9 @@ entity.bewitchment.demoness.name=Demoness
 entity.bewitchment.imp.name=Imp
 entity.bewitchment.druden.name=Druden
 
+entity.Villager.bewitchment.alchemist=Alchemist
+entity.Villager.bewitchment.witch=Hedge Witch
+
 #ENCHANTMENT
 enchantment.bewitchment.magic_protection=Magic Protection
 enchantment.bewitchment.magic_protection.desc=Reduces damage from magic.

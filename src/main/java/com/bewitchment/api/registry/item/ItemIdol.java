@@ -24,6 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -210,12 +212,11 @@ public class ItemIdol extends Item {
 			return new BlockStateContainer(this, HEIGHT);
 		}
 
-		private int getHeightAbove(BlockPos pos) {
+		private int getHeightAbove(BlockPos pos, World world) {
 			int height = 0;
-			BlockPos pos0 = pos;
-			while (Minecraft.getMinecraft().world.getBlockState(pos0.up()).getBlock() instanceof BlockFiller) {
+			while (world.getBlockState(pos.up()).getBlock() instanceof BlockFiller) {
 				height++;
-				pos0 = pos0.up();
+				pos = pos.up();
 			}
 			return height;
 		}
@@ -230,7 +231,7 @@ public class ItemIdol extends Item {
 
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-			int height = getHeightAbove(pos);
+			int height = getHeightAbove(pos, (World) source);
 			return new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
 		}
 

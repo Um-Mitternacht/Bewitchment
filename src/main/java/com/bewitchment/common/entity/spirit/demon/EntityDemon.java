@@ -36,6 +36,8 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
@@ -269,9 +271,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		int i = this.careerId - 1;
 		int j = this.careerLevel - 1;
 		List<EntityVillager.ITradeList> trades = this.getProfessionForge().getCareer(i).getTrades(j);
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int t = 0; t < trades.size(); t++) list.add(t);
+		Collections.shuffle(list);
 		if (trades != null) {
-			trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
-			if (j <= 3) trades.get(rand.nextInt(trades.size())).addMerchantRecipe(this, this.recipeList, this.rand);
+			trades.get(list.get(0)).addMerchantRecipe(this, this.recipeList, this.rand);
+			if (j <= 3 && list.size() > 1) trades.get(list.get(1)).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
 	}
 
