@@ -55,7 +55,7 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/dragons_blood.png"
+		"bewitchment:textures/gui/patchouli/dragonsblood.png"
 	  ],
 	  "border": true
 	}

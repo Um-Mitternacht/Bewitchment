@@ -176,11 +176,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public int getBrightnessForRender() {
 		return 15728880;
 	}
-
-	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
 	
 	public ITextComponent getDisplayName() {
 		Team team = this.getTeam();
@@ -207,6 +202,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected int getSkinTypes() {
 		return 6;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -231,9 +229,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.recipeList = new MerchantRecipeList(compound);
 		}
 		super.readEntityFromNBT(tag);
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	@Override
@@ -241,20 +236,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(53)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(375)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
 	}
-
-	@Override
-	public MerchantRecipeList getRecipes(EntityPlayer player) {
-		if (this.recipeList == null) this.populateBuyingList();
-		return this.recipeList;
-	}
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return DemonTradeHandler.INSTANCE.demon;
-	}
-
-	@Override
-	public World getWorld() {
-		return world;
 	}
 	
 	private void populateBuyingList() {
@@ -279,19 +263,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			if (j <= 3 && list.size() > 1) trades.get(list.get(1)).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
 	}
-
-	@Override
-	public void setCustomer(EntityPlayer player) {
-		buyer = player;
-	}
 	
 	public boolean isTrading() {
 		return this.buyer != null;
-	}
-
-	@Override
-	public void setRecipes(MerchantRecipeList recipeList) {
-		this.recipeList = recipeList;
+	}	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
 	}
 	
 	private class DemonAITradePlayer extends EntityAIBase {
@@ -338,11 +315,39 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.demon.getNavigator().clearPath();
 		}
 	}
+	
 
+	
+	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer player) {
+		if (this.recipeList == null) this.populateBuyingList();
+		return this.recipeList;
+	}
+	
+
+	
+	@Override
+	public World getWorld() {
+		return world;
+	}
+	
+	
+	@Override
+	public void setCustomer(EntityPlayer player) {
+		buyer = player;
+	}
+	
+	
+	@Override
+	public void setRecipes(MerchantRecipeList recipeList) {
+		this.recipeList = recipeList;
+	}
+	
+	
 	@Override
 	public void verifySellingItem(ItemStack stack) {
 	}
-
+	
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {
 		recipe.incrementToolUses();

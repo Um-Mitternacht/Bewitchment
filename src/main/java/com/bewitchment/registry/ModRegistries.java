@@ -113,7 +113,7 @@ public class ModRegistries {
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_fence_gate, BlockFenceGate.POWERED);
 		
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, BlockDragonsBloodLog.NATURAL);
-
+		
 		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemIdol.BlockFiller.HEIGHT);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
