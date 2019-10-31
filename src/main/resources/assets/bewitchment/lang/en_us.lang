@@ -1116,6 +1116,7 @@ entity.bewitchment.prefix.49=Vassal
 entity.bewitchment.prefix.50=High-King
 entity.bewitchment.prefix.51=Overlord
 entity.bewitchment.prefix.52=Consort
+entity.bewitchment.prefix.53=Viceroy
 
 #Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
