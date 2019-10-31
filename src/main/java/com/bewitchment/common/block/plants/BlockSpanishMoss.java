@@ -39,7 +39,7 @@ public class BlockSpanishMoss extends BlockVine {
 	}
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!worldIn.isRemote && worldIn.rand.nextInt(4) == 0 && worldIn.isAreaLoaded(pos, 4) && !terminalPiece) {
+		if (!worldIn.isRemote && worldIn.rand.nextInt(4) == 0 && worldIn.isAreaLoaded(pos, 4)) {
 			int j = 5;
 			boolean flag = false;
 			for (int k = -4; k <= 4; ++k) {
@@ -104,7 +104,7 @@ public class BlockSpanishMoss extends BlockVine {
 					iblockstate = worldIn.getBlockState(blockpos3);
 					block = iblockstate.getBlock();
 					IBlockState iblockstate4;
-					if (block.isAir(iblockstate, worldIn, blockpos3)) {
+					if (block.isAir(iblockstate, worldIn, blockpos3) && !terminalPiece) {
 						iblockstate4 = state;
 						for (EnumFacing facing : EnumFacing.Plane.HORIZONTAL) {
 							if (rand.nextBoolean()) {
@@ -112,7 +112,7 @@ public class BlockSpanishMoss extends BlockVine {
 							}
 						}
 						if (iblockstate4.getValue(NORTH) || iblockstate4.getValue(EAST) || iblockstate4.getValue(SOUTH) || iblockstate4.getValue(WEST)) {
-							if (rand.nextBoolean()) iblockstate4 = ModObjects.spanish_moss_end.getDefaultState().withProperty(NORTH, iblockstate4.getValue(NORTH)).withProperty(SOUTH, iblockstate4.getValue(SOUTH)).withProperty(EAST, iblockstate4.getValue(EAST)).withProperty(WEST, iblockstate4.getValue(WEST));
+							if (rand.nextDouble() < 0.25) iblockstate4 = ModObjects.spanish_moss_end.getDefaultState().withProperty(NORTH, iblockstate4.getValue(NORTH)).withProperty(SOUTH, iblockstate4.getValue(SOUTH)).withProperty(EAST, iblockstate4.getValue(EAST)).withProperty(WEST, iblockstate4.getValue(WEST));
 							worldIn.setBlockState(blockpos3, iblockstate4, 2);
 						}
 					} else if (block == this) {

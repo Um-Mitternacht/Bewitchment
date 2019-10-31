@@ -165,11 +165,15 @@ public class ModWorldGen implements IWorldGenerator {
 		Biome biome = world.getBiome(position);
 		if (!predicate.test(biome)) return;
 		for (; position.getY() < 128; position = position.up()) {
-			if (world.isAirBlock(position) && world.isAirBlock(position.down(1))) {
+			if (world.isAirBlock(position)) {
 				for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL.facings()) {
 					if (ModObjects.spanish_moss.canPlaceBlockOnSide(world, position, enumfacing)) {
 						IBlockState iblockstate = ModObjects.spanish_moss.getDefaultState().withProperty(BlockVine.SOUTH, enumfacing == EnumFacing.NORTH).withProperty(BlockVine.WEST, enumfacing == EnumFacing.EAST).withProperty(BlockVine.NORTH, enumfacing == EnumFacing.SOUTH).withProperty(BlockVine.EAST, enumfacing == EnumFacing.WEST);
-						world.setBlockState(position, iblockstate, 2);
+						int i = 5;
+						for (BlockPos pos = position; world.isAirBlock(pos) && i > 0; --i) {
+							world.setBlockState(pos, iblockstate, 3);
+							pos = position.down();
+						}
 						break;
 					}
 				}
