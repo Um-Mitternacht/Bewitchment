@@ -114,7 +114,7 @@ public class ModRegistries {
 		
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, BlockDragonsBloodLog.NATURAL);
 		
-		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemIdol.BlockFiller.HEIGHT);
+		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemIdol.BlockFiller.HEIGHT, ItemIdol.BlockFiller.IDOL);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
 		ModObjects.crop_belladonna.setItems(ModObjects.belladonna_seeds, ModObjects.belladonna);

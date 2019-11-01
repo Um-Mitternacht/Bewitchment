@@ -2,7 +2,6 @@ package com.bewitchment.common.village;
 
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;

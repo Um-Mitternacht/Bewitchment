@@ -6,10 +6,10 @@ import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,8 +24,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -43,6 +41,7 @@ public class ItemIdol extends Item {
 			if (blockName.contains("herne") || blockName.contains("lilith")) height = 4;
 			if (blockName.contains("leonard")) height = 3;
 		}
+		if (blockName.contains("baphomet_idol")) height = 1;
 		this.height = height;
 		BlockIdol block = new BlockIdol("block_" + blockName, base, this, height);
 		this.block = block;
@@ -57,7 +56,7 @@ public class ItemIdol extends Item {
 		if (canPlace(player, world, pos, face, hand)) {
 			world.setBlockState(pos0, block.getStateForPlacement(world, pos, face, hitX, hitY, hitZ, 0, player, hand));
 			for (int i = 0; i < block.height - 1; i++) {
-				world.setBlockState(pos0.up().up(i), ModObjects.filler.getStateFromMeta(i));
+				world.setBlockState(pos0.up().up(i), ModObjects.filler.getDefaultState().withProperty(BlockFiller.HEIGHT, i).withProperty(BlockFiller.IDOL, block.idol));
 			}
 			TileEntity tile = world.getTileEntity(pos0);
 			if (tile instanceof TileEntityIdol) {
@@ -85,7 +84,7 @@ public class ItemIdol extends Item {
 	@SuppressWarnings({"NullableProblems", "deprecation"})
 	public static class BlockIdol extends ModBlockContainer {
 		private final Item item;
-
+		private final boolean idol;
 		public int height;
 		
 		private BlockIdol(String name, Block base, Item item, int height) {
@@ -93,6 +92,7 @@ public class ItemIdol extends Item {
 			setLightOpacity(0);
 			this.item = item;
 			this.height = height;
+			this.idol = name.contains("idol");
 		}
 		
 		@Nullable
@@ -123,7 +123,7 @@ public class ItemIdol extends Item {
 		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-			return FULL_BLOCK_AABB.expand(0, height-1, 0);
+			return idol ? new AxisAlignedBB(4/16f, 0, 4/16f, 12/16f, 1, 12/16f).expand(0, height-1, 0) : FULL_BLOCK_AABB.expand(0, height-1, 0);
 		}
 		
 		@Override
@@ -166,10 +166,12 @@ public class ItemIdol extends Item {
 	}
 
 	public static class BlockFiller extends ModBlock {
-		public static final PropertyInteger HEIGHT = PropertyInteger.create("height", 0, 5);
+		public static final PropertyInteger HEIGHT = PropertyInteger.create("height", 0, 3);
+		public static final PropertyBool IDOL = PropertyBool.create("idol");
 
 		public BlockFiller() {
 			super("filler", Blocks.STONE);
+			setDefaultState(getBlockState().getBaseState().withProperty(HEIGHT, 0).withProperty(IDOL, false));
 		}
 
 		@Override
@@ -193,23 +195,18 @@ public class ItemIdol extends Item {
 		}
 
 		@Override
-		public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-			super.getSubBlocks(itemIn, items);
-		}
-
-		@Override
 		public IBlockState getStateFromMeta(int meta) {
-			return getDefaultState().withProperty(HEIGHT, meta);
+			return getDefaultState().withProperty(HEIGHT, meta & 3).withProperty(IDOL, (meta & 8) > 0);
 		}
 
 		@Override
 		public int getMetaFromState(IBlockState state) {
-			return state.getValue(HEIGHT);
+			return state.getValue(HEIGHT) | (state.getValue(IDOL) ? 8 : 0);
 		}
 
 		@Override
 		protected BlockStateContainer createBlockState() {
-			return new BlockStateContainer(this, HEIGHT);
+			return new BlockStateContainer(this, HEIGHT, IDOL);
 		}
 
 		private int getHeightAbove(BlockPos pos, World world) {
@@ -232,7 +229,7 @@ public class ItemIdol extends Item {
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			int height = getHeightAbove(pos, (World) source);
-			return new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
+			return state.getValue(IDOL) ? new AxisAlignedBB(4/16f, -state.getValue(HEIGHT) - 1, 4/16f, 12/16f, height + 1, 12/16f) : new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
 		}
 
 		@Override

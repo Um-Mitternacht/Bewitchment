@@ -436,6 +436,9 @@ item.bewitchment.spectral_dust.name=Spectral Dust
 item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
+item.bewitchment.box_of_sealed_evil.name=Box of Sealed Evil
+tooltip.bewitchment.box_of_sealed_evil=Suprise Mechanics~
+
 item.bewitchment.poppet.name=Poppet
 item.bewitchment.poppet_armor.name=Armor Poppet
 item.bewitchment.poppet_binding.name=Poppet of Binding
@@ -657,6 +660,28 @@ juniper_key.invalid=You must hold a valid Juniper Key to use this block
 
 advancements.bewitchment.crafted_altar.title=Witchworker
 advancements.bewitchment.crafted_altar.description=Craft a Stone Witches' Altar
+advancements.bewitchment.consumed_stew.title=Drink the Kool-Aid
+advancements.bewitchment.consumed_stew.description=Ingest a disgusting Stew of the Grotesque
+advancements.bewitchment.mined_amethyst.title=Not Intoxicated
+advancements.bewitchment.mined_amethyst.description=Mine amethyst
+advancements.bewitchment.mined_opal.title=Play Of Color
+advancements.bewitchment.mined_opal.description=Mine opal
+advancements.bewitchment.mined_garnet.title=Pomegranate
+advancements.bewitchment.mined_garnet.description=Mine garnet
+advancements.bewitchment.mined_salt.title=All these flavors, and you chose to be salty
+advancements.bewitchment.mined_salt.description=Mine salt
+advancements.bewitchment.mined_silver.title=Lunar Metal
+advancements.bewitchment.mined_silver.description=Mine silver
+advancements.bewitchment.mined_coquina.title=Bane of Cannons
+advancements.bewitchment.mined_coquina.description=Mine coquina
+advancements.bewitchment.wore_alchemist_set.title=Philosopher’s Stone
+advancements.bewitchment.wore_alchemist_set.description=Wear a full set of the Alchemist’s Attire
+advancements.bewitchment.wore_besmirched_set.title=God of Hellfire
+advancements.bewitchment.wore_besmirched_set.description=Wear a full set of the Besmirched Robes and a Hellish Bauble
+advancements.bewitchment.wore_green_witch_set.title=Druid
+advancements.bewitchment.wore_green_witch_set.description=Wear a full set of the Greenwitch Robes and a Girdle of the Dryads
+advancements.bewitchment.obtained_box.title=Suprise Mechanics
+advancements.bewitchment.obtained_box.description=Obtain a Box of Sealed Evil, it's in the game
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

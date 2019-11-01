@@ -10,9 +10,9 @@
 	  "translate": "advancements.bewitchment.crafted_altar.description"
 	}
   },
-  "parent": "minecraft:story/root",
+  "parent": "bewitchment:root",
   "criteria": {
-	"altar": {
+	"stone": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
@@ -21,6 +21,66 @@
 		  }
 		]
 	  }
+	},
+	"nether_brick": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:nether_brick_witches_altar"
+		  }
+		]
+	  }
+	},
+	"embittered_brick": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:embittered_brick_witches_altar"
+		  }
+		]
+	  }
+	},
+	"obsidian": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:obsidian_witches_altar"
+		  }
+		]
+	  }
+	},
+	"coquina": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:coquina_witches_altar"
+		  }
+		]
+	  }
+	},
+	"scorned": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:scorned_brick_witches_altar"
+		  }
+		]
+	  }
 	}
-  }
+  },
+  "requirements": [
+	[
+	  "stone",
+	  "nether_brick",
+	  "embittered_brick",
+	  "obsidian",
+	  "coquina",
+	  "scorned"
+	]
+  ]
 }

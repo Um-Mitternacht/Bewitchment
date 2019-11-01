@@ -1,0 +1,42 @@
+{
+  "display": {
+	"icon": {
+	  "item": "bewitchment:alchemist_robes"
+	},
+	"title": {
+	  "translate": "advancements.bewitchment.wore_alchemist_set.title"
+	},
+	"description": {
+	  "translate": "advancements.bewitchment.wore_alchemist_set.description"
+	}
+  },
+  "parent": "bewitchment:crafted_altar",
+  "criteria": {
+	"hat": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {"item": "bewitchment:alchemist_robes"},
+		  {"item": "bewitchment:alchemist_hat"},
+		  {"item": "bewitchment:alchemist_pants"}
+		]
+	  }
+	},
+	"hood": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {"item": "bewitchment:alchemist_robes"},
+		  {"item": "bewitchment:alchemist_hood"},
+		  {"item": "bewitchment:alchemist_pants"}
+		]
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "hat",
+	  "hood"
+	]
+  ]
+}

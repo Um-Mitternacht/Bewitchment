@@ -152,7 +152,7 @@ public class ClientProxy extends ServerProxy {
 		registerIdol(ModObjects.terracotta_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/clay.png"));
 		registerIdol(ModObjects.gold_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/gold.png"));
 		registerIdol(ModObjects.nether_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
-		registerIdol(ModObjects.nethersteel_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/andesite.png"));
+		registerIdol(ModObjects.nethersteel_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nethersteel.png"));
 		registerIdol(ModObjects.scorned_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
 		
 		// Register lenny model

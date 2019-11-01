@@ -1,7 +1,5 @@
 package com.bewitchment.common.entity.util;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.api.message.SpawnParticle;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
