@@ -46,6 +46,8 @@ public class ModConfig {
 		public final OreGen oreGen = new OreGen();
 		@Config.Comment("The dimensions that trees, ores, and coquina are allowed to spawn in.")
 		public Integer[] worldGenWhitelist = {0};
+		@Config.Comment("Allow bewitchment structures to be generated in the OverWorld")
+		public boolean enableStructures = true;
 		
 		public static class TreeGen {
 			@Config.Comment("The chance for cypress trees to spawn. Set to 0 to disable.")

@@ -15,7 +15,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,8 +24,6 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems"})
 public class BlockHellfire extends BlockFire {
-	private static final AxisAlignedBB BOX = new AxisAlignedBB(0, 0, 0, 1, 0, 1);
-	
 	public BlockHellfire() {
 		super();
 		Util.registerBlock(this, "hellfire", Blocks.FIRE);

@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.block.tile.entity.TileEntityIdol;
@@ -36,6 +37,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
 import vazkii.botania.common.item.ModItems;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class ModRecipes {
@@ -86,19 +90,11 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 5 && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeItem(ModObjects.pentacle, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 3, 0));
-		Util.registerAltarUpgradeItem(ModObjects.stone_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.stone_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		Util.registerAltarUpgradeItem(ModObjects.terracotta_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.terracotta_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		Util.registerAltarUpgradeItem(ModObjects.gold_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.gold_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		Util.registerAltarUpgradeItem(ModObjects.nether_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.nether_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		Util.registerAltarUpgradeItem(ModObjects.nethersteel_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.nethersteel_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		Util.registerAltarUpgradeItem(ModObjects.scorned_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == ModObjects.scorned_brick_leonard_idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-		
+		List<Item> idols = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemIdol).collect(Collectors.toList());
+		for (Item idol : idols) {
+			Util.registerAltarUpgradeItem(idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
+			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
+		}
 		Util.registerAltarUpgradeOreDict("fossil", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemDiamond", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		Util.registerAltarUpgradeOreDict("gemEmerald", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));

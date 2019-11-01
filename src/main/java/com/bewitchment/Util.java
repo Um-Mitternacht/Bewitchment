@@ -218,9 +218,9 @@ public class Util {
 	/**
 	 * @param entity the entity to check
 	 * @param poppet the poppet variant to find
-	 * @return false always, poppets are not currently in the mod
+	 * @return true if poppet found and damaged
 	 */
-	public static boolean hasPoppet(EntityPlayer entity, Item poppet) {
+	public static boolean attemptDamagePoppet(EntityPlayer entity, Item poppet) {
 		World world = entity.getEntityWorld();
 		ExtendedWorld ext = ExtendedWorld.get(world);
 		
@@ -240,7 +240,7 @@ public class Util {
 			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
 			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
 				TileEntityPoppetShelf te = (TileEntityPoppetShelf) world.getTileEntity(pos);
-				if (te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+				if (te != null && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
 					IItemHandler handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 					for (int slot = 0; slot < handler.getSlots(); slot++) {
 						ItemStack itemStack = handler.getStackInSlot(slot);

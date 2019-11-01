@@ -10,6 +10,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -73,7 +75,7 @@ public class ItemIdol extends Item {
 	private boolean canPlace(EntityPlayer player, World world, BlockPos pos, EnumFacing face, EnumHand hand) {
 		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
 		ItemStack stack = player.getHeldItem(hand);
-		for (int i = 0; i < this.height - 1; i++) {
+		for (int i = 0; i < this.height; i++) {
 			if (!(player.canPlayerEdit(pos0.up(i), face, stack) && world.mayPlace(world.getBlockState(pos0.up(i)).getBlock(), pos0, false, face, player) && block.canPlaceBlockAt(world, pos0.up(i)))) {
 				return false;
 			}
@@ -129,11 +131,6 @@ public class ItemIdol extends Item {
 		@Override
 		public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 			return Items.AIR;
-		}
-		
-		@Override
-		public boolean canPlaceBlockAt(World world, BlockPos pos) {
-			return super.canPlaceBlockAt(world, pos) && super.canPlaceBlockAt(world, pos.up());
 		}
 		
 		@Override
@@ -238,6 +235,15 @@ public class ItemIdol extends Item {
 			if (idol != null) {
 				world.getBlockState(idol).getBlock().breakBlock(world, idol, world.getBlockState(idol));
 			} else super.breakBlock(world, pos, state);
+		}
+
+		@Override
+		public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+			BlockPos idolPos = getIdol(worldIn, pos);
+			if (idolPos != null) {
+				return new ItemStack(((BlockIdol) worldIn.getBlockState(idolPos).getBlock()).item);
+			}
+			return ItemStack.EMPTY;
 		}
 	}
 }

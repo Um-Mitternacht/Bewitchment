@@ -53,11 +53,6 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		setDefaultState(getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	
-	private boolean canPlaceOnTop(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos.down());
-		return state.isTopSolid() || state.getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID;
-	}
-	
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -73,18 +68,12 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
-	
-	/**
-	 * Convert the given metadata into a BlockState for this Block
-	 */
+
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.byIndex(meta);
 		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
-	
-	/**
-	 * Convert the BlockState into the correct metadata value
-	 */
+
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(FACING).getIndex();
 	}
@@ -126,21 +115,33 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 3, pos.getY(), pos.getZ() + rand.nextGaussian() / 3, 0, 0, 0);
+		EnumFacing facing = state.getValue(FACING);
+		switch (facing) {
+			case UP:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY(), pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				break;
+			case DOWN:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + 0.8, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				break;
+			case EAST:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				break;
+			case WEST:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 1, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				break;
+			case SOUTH:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ(), 0, 0, 0);
+				break;
+			case NORTH:
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + 1, 0, 0, 0);
+		}
 	}
 	
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		if (state.getValue(FACING).getAxis() == EnumFacing.Axis.Y) {
-			if (!canPlaceOnTop(worldIn, pos)) {
-				worldIn.setBlockToAir(pos);
-			}
-		}
-		else {
-			EnumFacing enumfacing = state.getValue(FACING);
-			if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
-				worldIn.setBlockToAir(pos);
-			}
+		EnumFacing enumfacing = state.getValue(FACING);
+		if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid()) {
+			worldIn.setBlockToAir(pos);
 		}
 		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
 	}

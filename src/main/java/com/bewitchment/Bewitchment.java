@@ -35,9 +35,7 @@ import com.bewitchment.common.integration.misc.BewitchmentMowzies;
 import com.bewitchment.common.integration.misc.BewitchmentQuark;
 import com.bewitchment.common.integration.rustic.BewitchmentRustic;
 import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
-import com.bewitchment.common.village.DemonTradeHandler;
-import com.bewitchment.common.village.VillagerAlchemistHandler;
-import com.bewitchment.common.village.VillagerHedgeWitchHandler;
+import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
 import com.bewitchment.registry.ModObjects;
@@ -139,11 +137,7 @@ public class Bewitchment {
 		}
 
 		/*Village*/
-		VillagerAlchemistHandler.initAlchemistHouse();
-		VillagerAlchemistHandler.initAlchemistTrades();
-		VillagerHedgeWitchHandler.initHedgeWitchHouse();
-		VillagerHedgeWitchHandler.initHedgeWitchTrades();
-		DemonTradeHandler.INSTANCE.init();
+		VillagerTradeHandler.INSTANCE.init();
 	}
 	
 	@EventHandler

@@ -1,6 +1,6 @@
 package com.bewitchment.common.world.gen.village;
 
-import com.bewitchment.common.village.VillagerAlchemistHandler;
+import com.bewitchment.common.village.VillagerTradeHandler;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -33,7 +33,7 @@ public class VillageAlchemistHouse extends StructureVillagePieces.Village {
 	
 	@Override
 	protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, VillagerRegistry.VillagerProfession prof) {
-		return VillagerAlchemistHandler.PROF_ALCHEMIST;
+		return VillagerTradeHandler.INSTANCE.alchemist;
 	}
 	
 	public static class Manager implements VillagerRegistry.IVillageCreationHandler {

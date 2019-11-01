@@ -1,6 +1,6 @@
 package com.bewitchment.common.world.gen.village;
 
-import com.bewitchment.common.village.VillagerHedgeWitchHandler;
+import com.bewitchment.common.village.VillagerTradeHandler;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -28,7 +28,7 @@ public class VillageHedgeWitchHouse extends StructureVillagePieces.Village {
 	
 	@Override
 	protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, VillagerRegistry.VillagerProfession prof) {
-		return VillagerHedgeWitchHandler.PROF_HEDGEWITCH;
+		return VillagerTradeHandler.INSTANCE.hedgewitch;
 	}
 	
 	public static class Manager implements VillagerRegistry.IVillageCreationHandler {

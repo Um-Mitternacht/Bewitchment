@@ -4,7 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import com.bewitchment.common.village.DemonTradeHandler;
+import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -238,7 +238,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
-		return DemonTradeHandler.INSTANCE.demon;
+		return VillagerTradeHandler.INSTANCE.demon;
 	}
 	
 	private void populateBuyingList() {
