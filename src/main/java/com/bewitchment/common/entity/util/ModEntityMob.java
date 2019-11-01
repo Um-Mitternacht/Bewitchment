@@ -18,16 +18,17 @@ import java.util.UUID;
 @SuppressWarnings("EntityConstructor")
 public abstract class ModEntityMob extends EntityMob {
 	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityMob.class, DataSerializers.VARINT);
+	public static final DataParameter<Boolean> SPECTRAL = EntityDataManager.createKey(ModEntityMob.class, DataSerializers.BOOLEAN);
 	
 	private final ResourceLocation lootTableLocation;
-	
-	public boolean limitedLifeSpan = false;
+
 	public int lifeTimeTicks = 0;
 	public UUID summoner;
 	
 	protected ModEntityMob(World world, ResourceLocation lootTableLocation) {
 		super(world);
 		this.lootTableLocation = lootTableLocation;
+		dataManager.set(SPECTRAL, false);
 	}
 	
 	protected int getSkinTypes() {
@@ -37,19 +38,21 @@ public abstract class ModEntityMob extends EntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (this.limitedLifeSpan) {
-			if (lifeTimeTicks <= 0) {
-				setDead();
-				for (int i = 0; i < 128; i++) {
-					world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
+		if (!world.isRemote) {
+			if (dataManager.get(SPECTRAL)) {
+				if (lifeTimeTicks <= 0) {
+					setDead();
+					for (int i = 0; i < 128; i++) {
+						world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
+					}
 				}
+				else lifeTimeTicks--;
 			}
-			else lifeTimeTicks--;
-		}
-		if (summoner != null) {
-			EntityPlayer player = world.getPlayerEntityByUUID(summoner);
-			if (player != null && this.getAttackTarget() == player) {
-				this.setAttackTarget(player.getAttackingEntity() == null ? player.getLastAttackedEntity() : player.getAttackingEntity());
+			if (summoner != null) {
+				EntityPlayer player = world.getPlayerEntityByUUID(summoner);
+				if (player != null && this.getAttackTarget() == player) {
+					this.setAttackTarget(player.getAttackingEntity() == null ? player.getLastAttackedEntity() : player.getAttackingEntity());
+				}
 			}
 		}
 	}
@@ -61,23 +64,25 @@ public abstract class ModEntityMob extends EntityMob {
 	protected void entityInit() {
 		super.entityInit();
 		dataManager.register(SKIN, 0);
+		dataManager.register(SPECTRAL, false);
 	}
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		tag.setInteger("skin", dataManager.get(SKIN));
-		tag.setBoolean("limitedLifeSpan", limitedLifeSpan);
+		tag.setBoolean("spectral", dataManager.get(SPECTRAL));
 		tag.setInteger("lifeTimeTick", lifeTimeTicks);
 		tag.setString("summoner", summoner == null ? "" : summoner.toString());
 		dataManager.setDirty(SKIN);
+		dataManager.setDirty(SPECTRAL);
 		super.writeEntityToNBT(tag);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		dataManager.set(SKIN, tag.getInteger("skin"));
+		dataManager.set(SPECTRAL, tag.getBoolean("spectral"));
 		lifeTimeTicks = tag.getInteger("lifeTimeTick");
-		limitedLifeSpan = tag.getBoolean("limitedLifeSpan");
 		summoner = tag.getString("summoner").equals("") ? null : UUID.fromString(tag.getString("summoner"));
 		super.readEntityFromNBT(tag);
 	}

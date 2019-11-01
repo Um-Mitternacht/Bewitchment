@@ -20,8 +20,8 @@ public class EntityShadowPerson extends ModEntityMob {
 	public EntityShadowPerson(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
 		setSize(1, 2.25f);
+		dataManager.set(SPECTRAL, true);
 		isImmuneToFire = true;
-		limitedLifeSpan = true;
 		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
 	}
 	

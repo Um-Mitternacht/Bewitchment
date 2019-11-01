@@ -2,8 +2,11 @@ package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
+import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -34,8 +37,8 @@ public class ItemCaduceus extends Item {
 			EntityLivingBase target = player.getAttackingEntity();
 			int random = itemRand.nextInt(3) + 1;
 			for (int i = 0; i < random; i++) {
-				EntityFeuerwurm temp = new EntityFeuerwurm(world);
-				temp.limitedLifeSpan = true;
+				ModEntityMob temp = (ModEntityMob) ModEntities.feuerwurm.newInstance(world);
+				temp.getDataManager().set(ModEntityMob.SPECTRAL, true);
 				temp.lifeTimeTicks = 400;
 				temp.summoner = player.getPersistentID();
 				temp.setAttackTarget(target);

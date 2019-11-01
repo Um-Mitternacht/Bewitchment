@@ -369,6 +369,7 @@ tooltip.bewitchment.white_sage=Used as an aid in exorcisms
 item.bewitchment.wormwood.name=Wormwood
 tooltip.bewitchment.wormwood=An incredibly weedy herb
 tile.bewitchment.spanish_moss.name=Spanish Moss
+tile.bewitchment.spanish_moss_end.name=Spanish Moss
 
 tile.bewitchment.flower_siphoning_allium.name=Siphoning Flower
 tile.bewitchment.flower_siphoning_azure_bluet.name=Siphoning Flower
