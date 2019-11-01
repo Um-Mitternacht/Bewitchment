@@ -27,6 +27,7 @@ public class RenderFeuerwurm extends RenderLiving<EntityFeuerwurm> {
 	@Override
 	public void doRender(EntityFeuerwurm entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (entity.getDataManager().get(ModEntityMob.SPECTRAL)) {
+			shadowSize = 0;
 			GlStateManager.pushMatrix();
 			GlStateManager.enableAlpha();
 			GlStateManager.enableBlend();

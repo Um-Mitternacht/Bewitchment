@@ -1,5 +1,7 @@
 package com.bewitchment.common.entity.util;
 
+import com.bewitchment.Bewitchment;
+import com.bewitchment.api.message.SpawnParticle;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +13,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
@@ -41,10 +44,8 @@ public abstract class ModEntityMob extends EntityMob {
 		if (!world.isRemote) {
 			if (dataManager.get(SPECTRAL)) {
 				if (lifeTimeTicks <= 0) {
+					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX, posY, posZ, 20, rand.nextGaussian()/3, rand.nextGaussian()/3, rand.nextGaussian()/3, 0);
 					setDead();
-					for (int i = 0; i < 128; i++) {
-						world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX - 0.25 + world.rand.nextDouble() * width, posY + world.rand.nextDouble() * height, posZ - 0.25 + world.rand.nextDouble() * width, 0, 0, 0);
-					}
 				}
 				else lifeTimeTicks--;
 			}
