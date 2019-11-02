@@ -23,7 +23,7 @@ import java.util.Random;
 
 @SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class BlockSaltBarrier extends BlockRedstoneWire {
-	private static final AxisAlignedBB WALL = new AxisAlignedBB(0, -5, 0, 1, 5, 1);
+	private static final AxisAlignedBB WALL = new AxisAlignedBB(0, -16, 0, 1, 16, 1);
 	
 	public BlockSaltBarrier() {
 		super();
