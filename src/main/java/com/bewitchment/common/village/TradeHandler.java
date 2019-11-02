@@ -164,7 +164,8 @@ public class TradeHandler {
 			ItemStack itemStack;
 			if (random.nextInt(2) == 0) {
 				itemStack = new ItemStack(ModObjects.athame);
-			} else {
+			}
+			else {
 				itemStack = new ItemStack(ModObjects.boline);
 			}
 			if (random.nextInt(10) >= 5) EnchantmentHelper.addRandomEnchantment(random, itemStack, random.nextInt(31), false);
@@ -205,7 +206,7 @@ public class TradeHandler {
 					return new ItemStack(Items.MAGMA_CREAM, (int) (magmaPriceInfo.getPrice(random) * (reduced ? 0.5 : 1)));
 			}
 		}
-
+		
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = new ItemStack(sellingItem.getItem(), sellingPrice.getPrice(random), sellingItem.getMetadata());
@@ -226,25 +227,25 @@ public class TradeHandler {
 		public ItemStack enchantedItemStack;
 		public EntityVillager.PriceInfo priceInfo;
 		public int enchantmentLevel;
-
+		
 		public EnchantedItemForDemon(Item item, EntityVillager.PriceInfo priceSelling, int enchantmentLevel) {
 			this.enchantedItemStack = new ItemStack(item);
 			this.priceInfo = priceSelling;
 			this.enchantmentLevel = enchantmentLevel;
 		}
-
+		
 		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
 			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
 			ItemStack itemstack1 = EnchantmentHelper.addRandomEnchantment(random, new ItemStack(this.enchantedItemStack.getItem(), 1, this.enchantedItemStack.getMetadata()), enchantmentLevel, false);
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
 		}
 	}
-
+	
 	public static class RandomIdolForDemon implements EntityVillager.ITradeList {
-
+		
 		public RandomIdolForDemon() {
 		}
-
+		
 		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
 			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
 			final String[] demons = {"leonard", "baphomet", "lilith", "herne"};

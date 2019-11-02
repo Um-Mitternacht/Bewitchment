@@ -68,7 +68,7 @@ public class ItemIdol extends Item {
 		}
 		return EnumActionResult.FAIL;
 	}
-
+	
 	private boolean canPlace(EntityPlayer player, World world, BlockPos pos, EnumFacing face, EnumHand hand) {
 		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);
 		ItemStack stack = player.getHeldItem(hand);
@@ -99,7 +99,20 @@ public class ItemIdol extends Item {
 		public TileEntity createNewTileEntity(World world, int meta) {
 			return new TileEntityIdol();
 		}
-
+		
+		@Override
+		public IBlockState getStateFromMeta(int meta) {
+			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
+		}
+		
+		@Override
+		public void breakBlock(World world, BlockPos pos, IBlockState state) {
+			for (int i = 0; i < this.height; i++) {
+				world.setBlockToAir(pos.up(i));
+			}
+			super.breakBlock(world, pos, state);
+		}
+		
 		@Override
 		public boolean isFullBlock(IBlockState state) {
 			return false;
@@ -108,21 +121,14 @@ public class ItemIdol extends Item {
 		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
-		}
-		
-		@Override
-		public IBlockState getStateFromMeta(int meta) {
-			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
-		}
-		
-		@Override
+		}		@Override
 		public int getMetaFromState(IBlockState state) {
 			return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 		}
 		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-			return idol ? new AxisAlignedBB(4/16f, 0, 4/16f, 12/16f, 1, 12/16f).expand(0, height-1, 0) : FULL_BLOCK_AABB.expand(0, height-1, 0);
+			return idol ? new AxisAlignedBB(4 / 16f, 0, 4 / 16f, 12 / 16f, 1, 12 / 16f).expand(0, height - 1, 0) : FULL_BLOCK_AABB.expand(0, height - 1, 0);
 		}
 		
 		@Override
@@ -149,60 +155,27 @@ public class ItemIdol extends Item {
 		public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
 			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 		}
+		
 
-		@Override
-		public void breakBlock(World world, BlockPos pos, IBlockState state) {
-			for (int i = 0; i < this.height; i++) {
-				world.setBlockToAir(pos.up(i));
-			}
-			super.breakBlock(world, pos, state);
-		}
 	}
-
+	
 	public static class BlockFiller extends ModBlock {
 		public static final PropertyInteger HEIGHT = PropertyInteger.create("height", 0, 3);
 		public static final PropertyBool IDOL = PropertyBool.create("idol");
-
+		
 		public BlockFiller() {
 			super("filler", Blocks.STONE);
 			setDefaultState(getBlockState().getBaseState().withProperty(HEIGHT, 0).withProperty(IDOL, false));
 		}
-
-		@Override
-		public EnumBlockRenderType getRenderType(IBlockState state) {
-			return EnumBlockRenderType.INVISIBLE;
-		}
-
-		@Override
-		public int quantityDropped(Random random) {
-			return 0;
-		}
-
-		@Override
-		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
-			return false;
-		}
-
+		
 		@Override
 		public boolean isOpaqueCube(IBlockState state) {
 			return false;
+		}		@Override
+		public EnumBlockRenderType getRenderType(IBlockState state) {
+			return EnumBlockRenderType.INVISIBLE;
 		}
-
-		@Override
-		public IBlockState getStateFromMeta(int meta) {
-			return getDefaultState().withProperty(HEIGHT, meta & 3).withProperty(IDOL, (meta & 8) > 0);
-		}
-
-		@Override
-		public int getMetaFromState(IBlockState state) {
-			return state.getValue(HEIGHT) | (state.getValue(IDOL) ? 8 : 0);
-		}
-
-		@Override
-		protected BlockStateContainer createBlockState() {
-			return new BlockStateContainer(this, HEIGHT, IDOL);
-		}
-
+		
 		private int getHeightAbove(BlockPos pos, World world) {
 			int height = 0;
 			while (world.getBlockState(pos.up()).getBlock() instanceof BlockFiller) {
@@ -210,30 +183,57 @@ public class ItemIdol extends Item {
 				pos = pos.up();
 			}
 			return height;
+		}		@Override
+		public int quantityDropped(Random random) {
+			return 0;
 		}
-
+		
 		private BlockPos getIdol(World world, BlockPos pos) {
 			for (int i = 0; i < 5; i++) {
-				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol)
-					return pos.down(i);
+				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol) return pos.down(i);
 			}
 			return null;
+		}		@Override
+		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+			return false;
 		}
+		
 
+		
+		@Override
+		public IBlockState getStateFromMeta(int meta) {
+			return getDefaultState().withProperty(HEIGHT, meta & 3).withProperty(IDOL, (meta & 8) > 0);
+		}
+		
+		@Override
+		public int getMetaFromState(IBlockState state) {
+			return state.getValue(HEIGHT) | (state.getValue(IDOL) ? 8 : 0);
+		}
+		
+		@Override
+		protected BlockStateContainer createBlockState() {
+			return new BlockStateContainer(this, HEIGHT, IDOL);
+		}
+		
+
+		
+
+		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			int height = getHeightAbove(pos, (World) source);
-			return state.getValue(IDOL) ? new AxisAlignedBB(4/16f, -state.getValue(HEIGHT) - 1, 4/16f, 12/16f, height + 1, 12/16f) : new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
+			return state.getValue(IDOL) ? new AxisAlignedBB(4 / 16f, -state.getValue(HEIGHT) - 1, 4 / 16f, 12 / 16f, height + 1, 12 / 16f) : new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
 		}
-
+		
 		@Override
 		public void breakBlock(World world, BlockPos pos, IBlockState state) {
 			BlockPos idol = getIdol(world, pos);
 			if (idol != null) {
 				world.getBlockState(idol).getBlock().breakBlock(world, idol, world.getBlockState(idol));
-			} else super.breakBlock(world, pos, state);
+			}
+			else super.breakBlock(world, pos, state);
 		}
-
+		
 		@Override
 		public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 			BlockPos idolPos = getIdol(worldIn, pos);

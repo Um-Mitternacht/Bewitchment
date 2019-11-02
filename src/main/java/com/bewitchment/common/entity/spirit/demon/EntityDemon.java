@@ -202,14 +202,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected int getSkinTypes() {
 		return 6;
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -266,9 +266,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public boolean isTrading() {
 		return this.buyer != null;
-	}	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	private class DemonAITradePlayer extends EntityAIBase {
@@ -316,7 +313,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 	}
 	
+	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
 
+	
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
@@ -324,7 +327,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return this.recipeList;
 	}
 	
-
 	
 	@Override
 	public World getWorld() {

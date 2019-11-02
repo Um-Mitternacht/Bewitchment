@@ -23,7 +23,7 @@ public class RenderFeuerwurm extends RenderLiving<EntityFeuerwurm> {
 	protected ResourceLocation getEntityTexture(EntityFeuerwurm entity) {
 		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
-
+	
 	@Override
 	public void doRender(EntityFeuerwurm entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (entity.getDataManager().get(ModEntityMob.SPECTRAL)) {

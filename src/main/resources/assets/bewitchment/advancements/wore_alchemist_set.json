@@ -16,9 +16,15 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:alchemist_robes"},
-		  {"item": "bewitchment:alchemist_hat"},
-		  {"item": "bewitchment:alchemist_pants"}
+		  {
+			"item": "bewitchment:alchemist_robes"
+		  },
+		  {
+			"item": "bewitchment:alchemist_hat"
+		  },
+		  {
+			"item": "bewitchment:alchemist_pants"
+		  }
 		]
 	  }
 	},
@@ -26,9 +32,15 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:alchemist_robes"},
-		  {"item": "bewitchment:alchemist_hood"},
-		  {"item": "bewitchment:alchemist_pants"}
+		  {
+			"item": "bewitchment:alchemist_robes"
+		  },
+		  {
+			"item": "bewitchment:alchemist_hood"
+		  },
+		  {
+			"item": "bewitchment:alchemist_pants"
+		  }
 		]
 	  }
 	}

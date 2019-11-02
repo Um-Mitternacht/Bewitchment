@@ -68,12 +68,12 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
-
+	
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.byIndex(meta);
 		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
-
+	
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(FACING).getIndex();
 	}

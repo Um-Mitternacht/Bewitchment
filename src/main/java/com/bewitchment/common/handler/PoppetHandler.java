@@ -130,7 +130,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void vampiric(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer) {
@@ -151,7 +151,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	private Entity getEntity(World world, String uuid) {
 		return world.getLoadedEntityList().stream().filter(e -> e.getPersistentID().toString().equals(uuid)).findFirst().orElse(null);
 	}

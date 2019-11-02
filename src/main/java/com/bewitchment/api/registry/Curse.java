@@ -71,7 +71,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	 */
 	public enum CurseCondition {
 		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
-		REACTION,
-		BLOCK_BREAK
+		REACTION, BLOCK_BREAK
 	}
 }
