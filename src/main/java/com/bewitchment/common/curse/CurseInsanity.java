@@ -28,7 +28,7 @@ import java.util.Random;
 
 public class CurseInsanity extends Curse {
 	public CurseInsanity() {
-		super(new ResourceLocation(Bewitchment.MODID, "insanity"), Arrays.asList(Util.get(Blocks.RED_MUSHROOM), Util.get(ModObjects.belladonna), Util.get(ModObjects.elderberries), Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.spanish_moss), Util.get(ModObjects.taglock)), false, CurseCondition.RANDOM, 0.01);
+		super(new ResourceLocation(Bewitchment.MODID, "insanity"), Arrays.asList(Util.get(Blocks.RED_MUSHROOM), Util.get(ModObjects.belladonna), Util.get(ModObjects.elderberries), Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.spanish_moss), Util.get(ModObjects.taglock)), false, CurseCondition.EXIST, 0.01);
 	}
 	
 	@Override

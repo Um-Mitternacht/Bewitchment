@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class CurseLightningRod extends Curse {
 	public CurseLightningRod() {
-		super(new ResourceLocation(Bewitchment.MODID, "lightning_rod"), Arrays.asList(Util.get("nuggetIron"), Util.get("nuggetGold"), Util.get("dustRedstone"), Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.taglock)), false, CurseCondition.RANDOM, 0.002);
+		super(new ResourceLocation(Bewitchment.MODID, "lightning_rod"), Arrays.asList(Util.get("nuggetIron"), Util.get("nuggetGold"), Util.get("dustRedstone"), Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.taglock)), false, CurseCondition.EXIST, 0.002);
 	}
 
 	@Override

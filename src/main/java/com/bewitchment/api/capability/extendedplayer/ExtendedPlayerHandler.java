@@ -1,20 +1,13 @@
 package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.registry.Curse;
-import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -50,10 +43,9 @@ public class ExtendedPlayerHandler {
 					ExtendedPlayer.syncToClient(event.player);
 				}
 			}
-			if (cap.curses != null) { //check "curse condition"
+			if (cap.curses != null) {  //check "curse conditions"
 				for (Curse curse : cap.getCurses()) {
-					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST) curse.doCurse(event.player);
-					else if (curse.getCurseCondition() == Curse.CurseCondition.RANDOM && event.player.getRNG().nextDouble() < curse.chance) curse.doCurse(event.player);
+					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST && event.player.getRNG().nextDouble() < curse.chance) curse.doCurse(event.player);
 				}
 				if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
 					cap.updateCurses();
@@ -108,13 +100,6 @@ public class ExtendedPlayerHandler {
 			if (event.getEntityLiving() instanceof EntityMob) {
 				player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled++;
 				ExtendedPlayer.syncToClient(player);
-			}
-			
-			// This should probably go somewhere else
-			if (event.getEntityLiving() instanceof EntityAnimal || event.getEntityLiving() instanceof EntityPlayer || event.getEntityLiving() instanceof EntityVillager) {
-				if (player.getHeldItem(EnumHand.MAIN_HAND).getItem() == ModObjects.athame && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Items.GLASS_BOTTLE) {
-					Util.replaceAndConsumeItem(player, EnumHand.OFF_HAND, new ItemStack(ModObjects.bottle_of_blood));
-				}
 			}
 		}
 	}

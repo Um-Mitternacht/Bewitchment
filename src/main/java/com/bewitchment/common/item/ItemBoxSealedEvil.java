@@ -47,9 +47,8 @@ public class ItemBoxSealedEvil extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
 		Random rand = player.getRNG();
-		int selection = rand.nextInt(24);
 		if (!player.isSneaking() && !worldIn.isRemote) {
-			switch(selection) {
+			switch(rand.nextInt(24)) {
 				case 0:
 					LootTable table = worldIn.getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_DESERT_PYRAMID);
 					LootContext ctx = new LootContext.Builder((WorldServer) worldIn).withLuck(player.getLuck()).build();
@@ -216,10 +215,7 @@ public class ItemBoxSealedEvil extends Item {
 			}
 			player.inventory.decrStackSize(player.inventory.currentItem, 1);
 		}
-		if (worldIn.isRemote) {
-			if (selection < 12) worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 5, 1);
-			else worldIn.playSound(player, player.getPosition(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 5, 1);
-		}
+		if (worldIn.isRemote) worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
 		return super.onItemRightClick(worldIn, player, handIn);
 	}
 

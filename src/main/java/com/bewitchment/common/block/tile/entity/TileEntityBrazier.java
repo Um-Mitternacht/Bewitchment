@@ -4,6 +4,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.event.CurseEvent;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.Incense;
+import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.ItemTaglock;
 import com.bewitchment.registry.ModObjects;
@@ -27,8 +28,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
-
-import static com.bewitchment.common.block.BlockBrazier.LIT;
 
 public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	public ItemStackHandler handler;
@@ -55,7 +54,11 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		//todo when there's covens, set curse level here
 		int level = 0;
 		if (curse != null) {
-			EntityPlayer target = Curse.getPlayerFromTaglock(handler);
+			EntityPlayer target = null;
+			for (int i = 0; i < handler.getSlots(); i++) {
+				target = ItemTaglock.getPlayerFromTaglock(handler.getStackInSlot(i));
+				if (target != null) break;
+			}
 			if (target != null) {
 				int days = 7;
 				CurseEvent.PlayerCursedEvent event = new CurseEvent.PlayerCursedEvent(target, caster, curse, days);
@@ -100,11 +103,11 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	@Override
 	public boolean activate(World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing face) {
 		IBlockState state = world.getBlockState(pos);
-		if (!state.getValue(LIT)) {
+		if (!state.getValue(BlockBrazier.LIT)) {
 			if (!player.isSneaking()) {
 				if (player.getHeldItem(hand).getItem() instanceof ItemFlintAndSteel) {
 					if (!isEmpty(handler)) {
-						world.setBlockState(pos, state.withProperty(LIT, true));
+						world.setBlockState(pos, state.withProperty(BlockBrazier.LIT, true));
 						if (player.world.isRemote) player.world.playSound(player, pos, SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						getIncense();
 						if (incense == null) curse(player);
@@ -174,7 +177,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	private void stopBurning() {
 		this.litTime = 0;
 		this.incense = null;
-		world.setBlockState(pos, world.getBlockState(pos).withProperty(LIT, false));
+		world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockBrazier.LIT, false));
 		markDirty();
 	}
 	
@@ -182,6 +185,6 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		for (int i = 0; i < handler.getSlots(); i++) {
 			handler.setStackInSlot(i, ItemStack.EMPTY);
 		}
+		markDirty();
 	}
-	
 }

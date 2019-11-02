@@ -11,6 +11,8 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityTippedArrow;
@@ -21,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -30,6 +33,7 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -40,8 +44,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.bewitchment.common.block.BlockBrazier.LIT;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
@@ -87,11 +89,6 @@ public class MiscHandler {
 		}
 	}
 	
-	//	@SubscribeEvent
-	//	public void dismount(EntityMountEvent event) {
-	//		if (!event.getWorldObj().isRemote && event.getEntityBeingMounted() instanceof EntityYewBroom && event.isDismounting()) ((EntityYewBroom) event.getEntityBeingMounted()).dismount();
-	//	}
-	
 	@SubscribeEvent
 	public void explode(ExplosionEvent.Detonate event) {
 		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) if (isNextToJuniperDoor(event.getWorld(), event.getAffectedBlocks().get(i))) event.getAffectedBlocks().remove(i);
@@ -105,6 +102,10 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
+	}
+
+	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
+		return world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door;
 	}
 	
 	@SubscribeEvent
@@ -138,23 +139,18 @@ public class MiscHandler {
 		BlockPos pos = player.getPosition();
 		List<Potion> potions = new ArrayList<>();
 		int length = 600, strength = 0;
-		for (int x = -2; x < 3; x++) {
-			for (int z = -2; z < 3; z++) {
-				for (int y = -2; y < 3; y++) {
-					BlockPos temp = new BlockPos(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
-					if (world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(LIT)) {
-						TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
-						if (te.incense != null) {
-							if (length == 600 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
-								strength++;
-							}
-							else if (strength == 0 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
-								length = 1200;
-							}
-							else {
-								potions.addAll(te.incense.effects);
-							}
-						}
+		for (BlockPos temp: BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
+			if (world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(BlockBrazier.LIT)) {
+				TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
+				if (te.incense != null) {
+					if (length == 600 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "intensity"))) {
+						strength++;
+					}
+					else if (strength == 0 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
+						length = 1200;
+					}
+					else {
+						potions.addAll(te.incense.effects);
 					}
 				}
 			}
@@ -164,8 +160,15 @@ public class MiscHandler {
 			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
-	
-	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
-		return world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door;
+
+	public void takeBlood(LivingDeathEvent event) {
+		if (!event.getEntityLiving().world.isRemote && event.getSource().getTrueSource() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+			if (event.getEntityLiving() instanceof EntityAnimal || event.getEntityLiving() instanceof EntityPlayer || event.getEntityLiving() instanceof EntityVillager) {
+				if (player.getHeldItem(EnumHand.MAIN_HAND).getItem() == ModObjects.athame && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Items.GLASS_BOTTLE) {
+					Util.replaceAndConsumeItem(player, EnumHand.OFF_HAND, new ItemStack(ModObjects.bottle_of_blood));
+				}
+			}
+		}
 	}
 }

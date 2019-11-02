@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CurseDarkness extends Curse {
 	public CurseDarkness() {
-		super(new ResourceLocation(Bewitchment.MODID, "darkness"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.belladonna), Util.get(ModObjects.aconitum), Util.get(ModObjects.taglock)), true, CurseCondition.RANDOM, 0.0005);
+		super(new ResourceLocation(Bewitchment.MODID, "darkness"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.belladonna), Util.get(ModObjects.aconitum), Util.get(ModObjects.taglock)), true, CurseCondition.EXIST, 0.0005);
 	}
 
 	@Override

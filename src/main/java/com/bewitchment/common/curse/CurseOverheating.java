@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class CurseOverheating extends Curse {
 	public CurseOverheating() {
-		super(new ResourceLocation(Bewitchment.MODID, "overheating"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.tallow), Util.get(Items.BONE), Util.get(Items.BONE), Util.get(ModObjects.taglock)), true, CurseCondition.RANDOM, 0.001);
+		super(new ResourceLocation(Bewitchment.MODID, "overheating"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.tallow), Util.get(Items.BONE), Util.get(Items.BONE), Util.get(ModObjects.taglock)), true, CurseCondition.EXIST, 0.001);
 	}
 
 	@Override
