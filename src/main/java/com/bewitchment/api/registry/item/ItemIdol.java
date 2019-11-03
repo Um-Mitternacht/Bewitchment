@@ -121,7 +121,9 @@ public class ItemIdol extends Item {
 		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
-		}		@Override
+		}
+		
+		@Override
 		public int getMetaFromState(IBlockState state) {
 			return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 		}
@@ -156,7 +158,7 @@ public class ItemIdol extends Item {
 			return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
 		}
 		
-
+		
 	}
 	
 	public static class BlockFiller extends ModBlock {
@@ -171,9 +173,6 @@ public class ItemIdol extends Item {
 		@Override
 		public boolean isOpaqueCube(IBlockState state) {
 			return false;
-		}		@Override
-		public EnumBlockRenderType getRenderType(IBlockState state) {
-			return EnumBlockRenderType.INVISIBLE;
 		}
 		
 		private int getHeightAbove(BlockPos pos, World world) {
@@ -184,8 +183,8 @@ public class ItemIdol extends Item {
 			}
 			return height;
 		}		@Override
-		public int quantityDropped(Random random) {
-			return 0;
+		public EnumBlockRenderType getRenderType(IBlockState state) {
+			return EnumBlockRenderType.INVISIBLE;
 		}
 		
 		private BlockPos getIdol(World world, BlockPos pos) {
@@ -193,12 +192,20 @@ public class ItemIdol extends Item {
 				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol) return pos.down(i);
 			}
 			return null;
-		}		@Override
+		}
+		
+		@Override
+		public int quantityDropped(Random random) {
+			return 0;
+		}
+		
+
+		
+		@Override
 		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 			return false;
 		}
 		
-
 		
 		@Override
 		public IBlockState getStateFromMeta(int meta) {
@@ -215,9 +222,6 @@ public class ItemIdol extends Item {
 			return new BlockStateContainer(this, HEIGHT, IDOL);
 		}
 		
-
-		
-
 		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
