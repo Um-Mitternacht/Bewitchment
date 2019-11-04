@@ -5,6 +5,7 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -14,40 +15,30 @@ import java.util.List;
 public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	public final double chance;
 	private final List<Ingredient> input;
-	private final boolean isLesser;
+	private final boolean lesser, positive;
 	private final CurseCondition condition;
-	private int level;
-	private int curseTime;
 	
-	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition) {
-		this(name, input, isLesser, condition, 1);
+	public Curse(ResourceLocation name, List<Ingredient> input, boolean lesser, boolean positive, CurseCondition condition) {
+		this(name, input, lesser, positive, condition, 1);
 	}
 	
-	public Curse(ResourceLocation name, List<Ingredient> input, boolean isLesser, CurseCondition condition, double chance) {
+	public Curse(ResourceLocation name, List<Ingredient> input, boolean lesser, boolean positive, CurseCondition condition, double chance) {
 		setRegistryName(name);
 		this.input = input;
-		this.isLesser = isLesser;
+		this.lesser = lesser;
+		this.positive = positive;
 		this.condition = condition;
 		this.chance = chance;
-	}
-	
-	public int getLevel() {
-		return this.level;
 	}
 	
 	public final boolean matches(ItemStackHandler input) {
 		return Util.areISListsEqual(this.input, input);
 	}
 	
-	private boolean isValid(EntityPlayer player) {
-		return player != null;
-	}
-	
-	public boolean apply(@Nullable EntityPlayer player, int days, int level) {
-		if (isValid(player)) {
+	public boolean apply(@Nullable EntityPlayer player, int days) {
+		if (player != null) {
 			if (player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-				this.level = level;
 				ep.addCurse(this, days);
 				return true;
 			}
@@ -55,15 +46,13 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		return false;
 	}
 	
-	public boolean isLesser() {
-		return isLesser;
-	}
+	public boolean isLesser() { return lesser; }
+
+	public boolean isPositive() { return positive; }
 	
-	public abstract boolean doCurse(EntityPlayer target);
+	public abstract boolean doCurse(Event event, EntityPlayer target);
 	
-	public CurseCondition getCurseCondition() {
-		return condition;
-	}
+	public CurseCondition getCurseCondition() { return condition; }
 	
 	/**
 	 * EXIST - the curse is active every tick the player exists
@@ -72,6 +61,10 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	public enum CurseCondition {
 		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
 		REACTION,
-		BLOCK_BREAK
+		BLOCK_BREAK,
+		BLOCK_DROP,
+		KILL,
+		DAMAGE,
+		HURT
 	}
 }

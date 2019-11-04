@@ -23,7 +23,7 @@ public class BlockDropHandler {
 	/**
 	 * @param replaceFlag 0 means do not replace, 1 means always replace, 2 means replace if the random roll is successful
 	 */
-	private static void replaceDrop(BlockEvent.HarvestDropsEvent event, Predicate<IBlockState> predicate, ItemStack out, int chance, int replaceFlag, boolean ignoreSilkTouch) {
+	public static void replaceDrop(BlockEvent.HarvestDropsEvent event, Predicate<IBlockState> predicate, ItemStack out, int chance, int replaceFlag, boolean ignoreSilkTouch) {
 		if (predicate.test(event.getState()) && (ignoreSilkTouch || !event.isSilkTouching())) {
 			if (replaceFlag == 1) event.getDrops().clear();
 			if (event.getWorld().rand.nextInt(100) < chance) {

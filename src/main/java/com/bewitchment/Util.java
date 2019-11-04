@@ -117,6 +117,7 @@ public class Util {
 	}
 	
 	public static boolean areISListsEqual(List<Ingredient> ings, ItemStackHandler handler) {
+		if (ings == null) return false;
 		List<ItemStack> checklist = new ArrayList<>();
 		for (int i = 0; i < handler.getSlots(); i++) {
 			ItemStack stack = handler.getStackInSlot(i);

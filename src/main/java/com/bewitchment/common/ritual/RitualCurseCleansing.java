@@ -36,9 +36,9 @@ public class RitualCurseCleansing extends Ritual {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (caster.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 			ExtendedPlayer ep = caster.getCapability(ExtendedPlayer.CAPABILITY, null);
-			List<Curse> curses = ep.getCurses().stream().filter(p -> !lesser || p.isLesser()).collect(Collectors.toList());
+			List<Curse> curses = ep.getCurses().stream().filter(p -> !p.isPositive() && (lesser == p.isLesser())).collect(Collectors.toList());
 			for (Curse curse : curses) {
-				if (caster.getRNG().nextDouble() < (lesser ? 0.5 : 0.9)) ep.removeCurse(curse);
+				if (caster.getRNG().nextDouble() < (lesser ? 0.6 : 0.9)) ep.removeCurse(curse);
 			}
 		}
 	}

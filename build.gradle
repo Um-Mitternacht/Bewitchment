@@ -54,6 +54,7 @@ dependencies {
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
+    implementation 'org.jetbrains:annotations:15.0'
 }
 
 processResources {

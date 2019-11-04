@@ -202,7 +202,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	@Override
 	protected int getSkinTypes() {
 		return 6;
-	}	@Override
+	}
+
+	@Override
 	public BlockPos getPos() {
 		return getPosition();
 	}
@@ -255,10 +257,10 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		int i = this.careerId - 1;
 		int j = this.careerLevel - 1;
 		List<EntityVillager.ITradeList> trades = this.getProfessionForge().getCareer(i).getTrades(j);
-		ArrayList<Integer> list = new ArrayList<>();
-		for (int t = 0; t < trades.size(); t++) list.add(t);
-		Collections.shuffle(list);
-		if (trades != null) {
+		if (trades != null && !trades.isEmpty()) {
+			ArrayList<Integer> list = new ArrayList<>();
+			for (int t = 0; t < trades.size(); t++) list.add(t);
+			Collections.shuffle(list);
 			trades.get(list.get(0)).addMerchantRecipe(this, this.recipeList, this.rand);
 			if (j <= 3 && list.size() > 1) trades.get(list.get(1)).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
@@ -266,7 +268,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public boolean isTrading() {
 		return this.buyer != null;
-	}	@Override
+	}
+
+	@Override
 	public EntityPlayer getCustomer() {
 		return buyer;
 	}
@@ -315,7 +319,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.demon.getNavigator().clearPath();
 		}
 	}
-	
+
 
 	
 	@Override
@@ -323,15 +327,14 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		if (this.recipeList == null) this.populateBuyingList();
 		return this.recipeList;
 	}
-	
 
-	
+
+
 	@Override
 	public World getWorld() {
 		return world;
 	}
-	
-	
+
 	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;

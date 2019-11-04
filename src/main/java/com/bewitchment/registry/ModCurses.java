@@ -14,4 +14,12 @@ public class ModCurses {
 	public static Curse curseDarkness = new CurseDarkness();
 	public static Curse cursePalorPestilence = new CursePalorPestilence();
 	//public static Curse curseInsanity = new CurseInsanity();
+
+	// Contracts
+	public static Curse contractBeserker = new ContractBerserker();
+	public static Curse contractDesiccation = new ContractDesiccation();
+	public static Curse contractDevouringRage = new ContractDevouringRage();
+	public static Curse contractIgnition = new ContractIgnition();
+	public static Curse contractSalamandrineTolerance = new ContractSalamandrineTolerance();
+	public static Curse contractEverflame = new ContractEverflame();
 }

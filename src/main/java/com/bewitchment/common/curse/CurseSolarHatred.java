@@ -11,27 +11,22 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.Arrays;
 
 public class CurseSolarHatred extends Curse {
 	public CurseSolarHatred() {
-		super(new ResourceLocation(Bewitchment.MODID, "solar_hatred"), Arrays.asList(Util.get(ModObjects.snake_venom), Util.get("nuggetGold"), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.salt), Util.get(Items.ROTTEN_FLESH), Util.get(ModObjects.taglock)), false, CurseCondition.EXIST);
+		super(new ResourceLocation(Bewitchment.MODID, "solar_hatred"), Arrays.asList(Util.get(ModObjects.snake_venom), Util.get("nuggetGold"), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.salt), Util.get(Items.ROTTEN_FLESH), Util.get(ModObjects.taglock)), false, false, CurseCondition.EXIST);
 	}
 
 	@Override
-	public boolean doCurse(EntityPlayer target) {
-		int level = this.getLevel();
+	public boolean doCurse(Event event, EntityPlayer target) {
 		if (!target.world.isRemote && hasSunlight(target)) {
 			target.setFire(2);
-			switch (level) {
-				case 3:
-					target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1));
-				case 2:
-					target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100, 1));
-				case 1:
-					target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100, 1));
-			}
+			target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1));
+			target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100, 1));
+			target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100, 1));
 			return true;
 		}
 		return false;

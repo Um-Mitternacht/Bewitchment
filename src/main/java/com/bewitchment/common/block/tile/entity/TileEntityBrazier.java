@@ -51,8 +51,6 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 	
 	private void curse(EntityPlayer caster) {
 		Curse curse = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(p -> p.matches(handler)).findFirst().orElse(null);
-		//todo when there's covens, set curse level here
-		int level = 0;
 		if (curse != null) {
 			EntityPlayer target = null;
 			for (int i = 0; i < handler.getSlots(); i++) {
@@ -63,7 +61,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 				int days = 7;
 				CurseEvent.PlayerCursedEvent event = new CurseEvent.PlayerCursedEvent(target, caster, curse, days);
 				MinecraftForge.EVENT_BUS.post(event);
-				if (!event.isCanceled()) event.getCurse().apply(event.getTarget(), event.getCurseDuration(), level);
+				if (!event.isCanceled()) event.getCurse().apply(event.getTarget(), event.getCurseDuration());
 			}
 		}
 	}
