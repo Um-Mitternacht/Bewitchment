@@ -103,7 +103,7 @@ public class MiscHandler {
 	public void breakSpeed(PlayerEvent.BreakSpeed event) {
 		if (isNextToJuniperDoor(event.getEntityPlayer().world, event.getPos())) event.setNewSpeed(0);
 	}
-
+	
 	private boolean isNextToJuniperDoor(World world, BlockPos pos) {
 		return world.getBlockState(pos).getBlock() != ModObjects.juniper_door.door && world.getBlockState(pos.up()).getBlock() == ModObjects.juniper_door.door;
 	}
@@ -139,7 +139,7 @@ public class MiscHandler {
 		BlockPos pos = player.getPosition();
 		List<Potion> potions = new ArrayList<>();
 		int length = 600, strength = 0;
-		for (BlockPos temp: BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
+		for (BlockPos temp : BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
 			if (world.getBlockState(temp).getBlock() instanceof BlockBrazier && world.getBlockState(temp).getValue(BlockBrazier.LIT)) {
 				TileEntityBrazier te = (TileEntityBrazier) world.getTileEntity(temp);
 				if (te.incense != null) {
@@ -160,7 +160,7 @@ public class MiscHandler {
 			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
-
+	
 	public void takeBlood(LivingDeathEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();

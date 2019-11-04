@@ -16,10 +16,18 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:green_witch_robes"},
-		  {"item": "bewitchment:green_witch_hat"},
-		  {"item": "bewitchment:green_witch_pants"},
-		  {"item": "bewitchment:girdle_of_the_dryads"}
+		  {
+			"item": "bewitchment:green_witch_robes"
+		  },
+		  {
+			"item": "bewitchment:green_witch_hat"
+		  },
+		  {
+			"item": "bewitchment:green_witch_pants"
+		  },
+		  {
+			"item": "bewitchment:girdle_of_the_dryads"
+		  }
 		]
 	  }
 	},
@@ -27,10 +35,18 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:green_witch_robes"},
-		  {"item": "bewitchment:green_witch_hood"},
-		  {"item": "bewitchment:green_witch_pants"},
-		  {"item": "bewitchment:girdle_of_the_dryads"}
+		  {
+			"item": "bewitchment:green_witch_robes"
+		  },
+		  {
+			"item": "bewitchment:green_witch_hood"
+		  },
+		  {
+			"item": "bewitchment:green_witch_pants"
+		  },
+		  {
+			"item": "bewitchment:girdle_of_the_dryads"
+		  }
 		]
 	  }
 	}

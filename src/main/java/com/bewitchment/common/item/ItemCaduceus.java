@@ -28,7 +28,7 @@ public class ItemCaduceus extends Item {
 		setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
@@ -47,17 +47,17 @@ public class ItemCaduceus extends Item {
 		}
 		return EnumActionResult.SUCCESS;
 	}
-
+	
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return false;
 	}
-
+	
 	@SubscribeEvent
 	public void onPlayerDeath(LivingDeathEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer) {

@@ -41,14 +41,14 @@ import java.util.stream.Collectors;
 public class ItemBoxSealedEvil extends Item {
 	public ItemBoxSealedEvil() {
 		super();
-		Util.registerItem(this,"box_of_sealed_evil");
+		Util.registerItem(this, "box_of_sealed_evil");
 	}
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
 		Random rand = player.getRNG();
 		if (!player.isSneaking() && !worldIn.isRemote) {
-			switch(rand.nextInt(24)) {
+			switch (rand.nextInt(24)) {
 				case 0:
 					LootTable table = worldIn.getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_DESERT_PYRAMID);
 					LootContext ctx = new LootContext.Builder((WorldServer) worldIn).withLuck(player.getLuck()).build();
@@ -195,7 +195,7 @@ public class ItemBoxSealedEvil extends Item {
 					worldIn.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
 					break;
 				default:
-					for (BlockPos pos1: BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
+					for (BlockPos pos1 : BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
 						if (worldIn.getBlockState(pos1).getBlock().isReplaceable(worldIn, pos1)) {
 							worldIn.setBlockState(pos1, Blocks.WEB.getDefaultState());
 						}
@@ -218,7 +218,7 @@ public class ItemBoxSealedEvil extends Item {
 		if (worldIn.isRemote) worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
 		return super.onItemRightClick(worldIn, player, handIn);
 	}
-
+	
 	private ItemStack getRandomBauble(Random random) {
 		List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
 		if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));

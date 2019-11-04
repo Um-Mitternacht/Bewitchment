@@ -22,7 +22,7 @@ public abstract class ModEntityMob extends EntityMob {
 	public static final DataParameter<Boolean> SPECTRAL = EntityDataManager.createKey(ModEntityMob.class, DataSerializers.BOOLEAN);
 	
 	private final ResourceLocation lootTableLocation;
-
+	
 	public int lifeTimeTicks = 0;
 	public UUID summoner;
 	
@@ -42,7 +42,7 @@ public abstract class ModEntityMob extends EntityMob {
 		if (!world.isRemote) {
 			if (dataManager.get(SPECTRAL)) {
 				if (lifeTimeTicks <= 0) {
-					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX, posY, posZ, 20, rand.nextGaussian()/3, rand.nextGaussian()/3, rand.nextGaussian()/3, 0);
+					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX, posY, posZ, 20, rand.nextGaussian() / 3, rand.nextGaussian() / 3, rand.nextGaussian() / 3, 0);
 					setDead();
 				}
 				else lifeTimeTicks--;

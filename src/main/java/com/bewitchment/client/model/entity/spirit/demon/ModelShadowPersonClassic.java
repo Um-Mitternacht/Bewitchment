@@ -100,13 +100,13 @@ public class ModelShadowPersonClassic extends ModelBiped {
 		else {
 			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
 		}
-		float swingMod = 0.6F;
+		float swingMod = 0.3F;
 		
 		this.bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
 		
-		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F) * swingMod * limbSwingAmount + 0f;
-		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount + 0f;
+		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
+		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
 		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}

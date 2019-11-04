@@ -19,9 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.ItemStackHandler;
 
-import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -31,6 +29,13 @@ public class ItemTaglock extends Item {
 	public ItemTaglock() {
 		super();
 		Util.registerItem(this, "taglock", Collections.singletonList(s -> s.hasTagCompound() && s.getTagCompound().hasKey("boundName")));
+	}
+	
+	public static EntityPlayer getPlayerFromTaglock(ItemStack stack) {
+		if (stack.getItem() instanceof ItemTaglock && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
+			return Util.findPlayer(UUID.fromString(stack.getTagCompound().getString("boundId")));
+		}
+		return null;
 	}
 	
 	@Override
@@ -75,12 +80,5 @@ public class ItemTaglock extends Item {
 			stack.getTagCompound().setString("boundName", target.getName());
 			Util.giveAndConsumeItem(player, hand, stack);
 		}
-	}
-
-	public static EntityPlayer getPlayerFromTaglock(ItemStack stack) {
-		if (stack.getItem() instanceof ItemTaglock && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
-			return Util.findPlayer(UUID.fromString(stack.getTagCompound().getString("boundId")));
-		}
-		return null;
 	}
 }

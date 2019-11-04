@@ -16,10 +16,18 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:besmirched_robes"},
-		  {"item": "bewitchment:besmirched_hat"},
-		  {"item": "bewitchment:besmirched_pants"},
-		  {"item": "bewitchment:hellish_bauble"}
+		  {
+			"item": "bewitchment:besmirched_robes"
+		  },
+		  {
+			"item": "bewitchment:besmirched_hat"
+		  },
+		  {
+			"item": "bewitchment:besmirched_pants"
+		  },
+		  {
+			"item": "bewitchment:hellish_bauble"
+		  }
 		]
 	  }
 	},
@@ -27,10 +35,18 @@
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
-		  {"item": "bewitchment:besmirched_robes"},
-		  {"item": "bewitchment:besmirched_hood"},
-		  {"item": "bewitchment:besmirched_pants"},
-		  {"item": "bewitchment:hellish_bauble"}
+		  {
+			"item": "bewitchment:besmirched_robes"
+		  },
+		  {
+			"item": "bewitchment:besmirched_hood"
+		  },
+		  {
+			"item": "bewitchment:besmirched_pants"
+		  },
+		  {
+			"item": "bewitchment:hellish_bauble"
+		  }
 		]
 	  }
 	}
