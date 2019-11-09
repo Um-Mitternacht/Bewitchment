@@ -53,7 +53,7 @@ public class BlockHellfire extends BlockFire {
 	
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-	
+
 	}
 	
 	@Override

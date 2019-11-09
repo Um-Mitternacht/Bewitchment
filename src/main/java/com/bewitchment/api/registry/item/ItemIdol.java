@@ -189,13 +189,14 @@ public class ItemIdol extends Item {
 				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol) return pos.down(i);
 			}
 			return null;
-		}		@Override
+		}
+
+		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.INVISIBLE;
 		}
 		
 
-		
 		@Override
 		public int quantityDropped(Random random) {
 			return 0;
