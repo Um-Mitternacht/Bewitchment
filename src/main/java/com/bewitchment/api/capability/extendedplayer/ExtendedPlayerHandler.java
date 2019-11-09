@@ -2,7 +2,6 @@ package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Curse;
-import com.bewitchment.common.handler.BlockDropHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
