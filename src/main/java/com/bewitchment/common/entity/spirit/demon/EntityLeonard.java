@@ -14,6 +14,8 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityLeonard extends ModEntityMob {
 	protected EntityLeonard(World world) {
@@ -29,6 +31,11 @@ public class EntityLeonard extends ModEntityMob {
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
 	}
 	
 	@Override
