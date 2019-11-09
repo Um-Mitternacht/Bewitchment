@@ -215,9 +215,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		tag.setInteger("careerLevel", careerLevel);
 		if (recipeList != null) tag.setTag("recipeList", recipeList.getRecipiesAsTags());
 		super.writeEntityToNBT(tag);
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
@@ -229,6 +226,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.recipeList = new MerchantRecipeList(compound);
 		}
 		super.readEntityFromNBT(tag);
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	@Override
@@ -314,6 +314,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 
+	
 	
 	@Override
 	public EntityPlayer getCustomer() {
