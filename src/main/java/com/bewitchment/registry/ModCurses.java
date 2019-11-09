@@ -14,7 +14,7 @@ public class ModCurses {
 	public static Curse curseDarkness = new CurseDarkness();
 	public static Curse cursePalorPestilence = new CursePalorPestilence();
 	//public static Curse curseInsanity = new CurseInsanity();
-
+	
 	// Contracts
 	public static Curse contractBeserker = new ContractBerserker();
 	public static Curse contractDesiccation = new ContractDesiccation();

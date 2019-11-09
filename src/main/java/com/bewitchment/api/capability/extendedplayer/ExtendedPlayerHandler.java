@@ -111,7 +111,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote && event.getPlayer().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
@@ -123,7 +123,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
 		if (!event.getWorld().isRemote && event.getHarvester() != null && event.getHarvester().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
@@ -135,7 +135,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote) {

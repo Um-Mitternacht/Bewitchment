@@ -226,15 +226,15 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.recipeList = new MerchantRecipeList(compound);
 		}
 		super.readEntityFromNBT(tag);
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(54)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(375)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {

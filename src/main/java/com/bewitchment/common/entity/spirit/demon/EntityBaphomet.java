@@ -12,12 +12,18 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBaphomet extends ModEntityMob {
+	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
+	
 	protected EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		setSize(0.8f, 2.6f);
@@ -26,6 +32,14 @@ public class EntityBaphomet extends ModEntityMob {
 	@Override
 	protected boolean isValidLightLevel() {
 		return false;
+	}
+	
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		
+		if (this.hasCustomName()) {
+			this.bossInfo.setName(this.getDisplayName());
+		}
 	}
 	
 	@Override
@@ -38,13 +52,32 @@ public class EntityBaphomet extends ModEntityMob {
 		return 15728880;
 	}
 	
+	public boolean isNonBoss() {
+		return false;
+	}
+	
+	public void setCustomNameTag(String name) {
+		super.setCustomNameTag(name);
+		this.bossInfo.setName(this.getDisplayName());
+	}
+	
+	public void addTrackingPlayer(EntityPlayerMP player) {
+		super.addTrackingPlayer(player);
+		this.bossInfo.addPlayer(player);
+	}
+	
+	public void removeTrackingPlayer(EntityPlayerMP player) {
+		super.removeTrackingPlayer(player);
+		this.bossInfo.removePlayer(player);
+	}
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(666);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.66);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
 	
 	@Override
@@ -59,5 +92,9 @@ public class EntityBaphomet extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	protected void updateAITasks() {
+		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
 	}
 }

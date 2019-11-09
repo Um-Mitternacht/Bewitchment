@@ -183,26 +183,26 @@ public class ItemIdol extends Item {
 			}
 			return height;
 		}
-
+		
 		private BlockPos getIdol(World world, BlockPos pos) {
 			for (int i = 0; i < 5; i++) {
 				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockIdol) return pos.down(i);
 			}
 			return null;
 		}
-
+		
 		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.INVISIBLE;
 		}
 		
-
+		
 		@Override
 		public int quantityDropped(Random random) {
 			return 0;
 		}
 		
-
+		
 		@Override
 		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 			return false;
