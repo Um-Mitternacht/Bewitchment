@@ -452,7 +452,7 @@ item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
 
 item.bewitchment.box_of_sealed_evil.name=Box of Sealed Evil
-tooltip.bewitchment.box_of_sealed_evil=Suprise Mechanics~
+tooltip.bewitchment.box_of_sealed_evil=Surprise Mechanics~
 
 item.bewitchment.poppet.name=Poppet
 item.bewitchment.poppet_armor.name=Armor Poppet
@@ -695,7 +695,7 @@ advancements.bewitchment.wore_besmirched_set.title=God of Hellfire
 advancements.bewitchment.wore_besmirched_set.description=Wear a full set of the Besmirched Robes and a Hellish Bauble
 advancements.bewitchment.wore_green_witch_set.title=Druid
 advancements.bewitchment.wore_green_witch_set.description=Wear a full set of the Greenwitch Robes and a Girdle of the Dryads
-advancements.bewitchment.obtained_box.title=Suprise Mechanics
+advancements.bewitchment.obtained_box.title=Surprise Mechanics
 advancements.bewitchment.obtained_box.description=Obtain a Box of Sealed Evil, it's in the game
 
 commands.fortune.get=%s's fortune: %s
