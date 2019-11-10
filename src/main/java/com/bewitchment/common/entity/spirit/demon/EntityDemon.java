@@ -232,13 +232,13 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
 		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(54)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(375)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return VillagerTradeHandler.INSTANCE.demon;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	private void populateBuyingList() {

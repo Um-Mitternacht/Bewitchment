@@ -42,6 +42,9 @@ public class EntityBaphomet extends ModEntityMob {
 		}
 	}
 	
+	public void fall(float distance, float damageMultiplier) {
+	}
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
