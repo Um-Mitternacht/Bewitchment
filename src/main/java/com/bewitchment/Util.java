@@ -260,7 +260,7 @@ public class Util {
 		}
 		return false;
 	}
-
+	
 	public static ItemStack getRandomContract(Random rand) {
 		List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(c -> c instanceof Contract).collect(Collectors.toList());
 		Contract contract = (Contract) contracts.get(rand.nextInt(contracts.size()));

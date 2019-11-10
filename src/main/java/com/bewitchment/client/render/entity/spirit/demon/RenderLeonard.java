@@ -26,6 +26,6 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 	@Override
 	protected void preRenderCallback(EntityLeonard entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.1, 1.1, 1.1);
+		GlStateManager.scale(1.6, 1.6, 1.6);
 	}
 }

@@ -15,7 +15,7 @@ public class ContractSalamandrineTolerance extends Contract {
 	public ContractSalamandrineTolerance() {
 		super(new ResourceLocation(Bewitchment.MODID, "salamandrine_tolerance"), true, true, CurseCondition.HURT, null, Arrays.asList(Items.BLAZE_ROD, Items.GHAST_TEAR));
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		LivingHurtEvent event0 = (LivingHurtEvent) event;

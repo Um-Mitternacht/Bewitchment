@@ -2,7 +2,6 @@ package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Contract;
-import com.bewitchment.api.registry.Curse;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -18,7 +17,7 @@ public class ContractDesiccation extends Contract {
 	public ContractDesiccation() {
 		super(new ResourceLocation(Bewitchment.MODID, "desiccation"), true, true, CurseCondition.BLOCK_BREAK, null, Arrays.asList(Items.FERMENTED_SPIDER_EYE, Items.POISONOUS_POTATO));
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		BlockEvent.BreakEvent event0 = (BlockEvent.BreakEvent) event;

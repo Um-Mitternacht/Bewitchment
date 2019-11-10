@@ -16,7 +16,7 @@ public class CursePalorPestilence extends Curse {
 	public CursePalorPestilence() {
 		super(new ResourceLocation(Bewitchment.MODID, "palor_pestilence"), Arrays.asList(Util.get(ModObjects.aconitum), Util.get(ModObjects.hellebore), Util.get(ModObjects.snake_venom), Util.get(ModObjects.belladonna), Util.get(ModObjects.taglock)), false, false, CurseCondition.EXIST, 0.0004);
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		if (!target.world.isRemote) {

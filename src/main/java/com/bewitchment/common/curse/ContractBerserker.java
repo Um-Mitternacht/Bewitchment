@@ -10,9 +10,9 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class ContractBerserker extends Contract {
 	public ContractBerserker() {
-		super(new ResourceLocation(Bewitchment.MODID, "beserker"),  true, true, CurseCondition.DAMAGE, e -> e instanceof EntityVillager || e instanceof EntityPlayer, null);
+		super(new ResourceLocation(Bewitchment.MODID, "beserker"), true, true, CurseCondition.DAMAGE, e -> e instanceof EntityVillager || e instanceof EntityPlayer, null);
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		LivingHurtEvent event0 = (LivingHurtEvent) event;

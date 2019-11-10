@@ -13,7 +13,9 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
@@ -27,7 +29,7 @@ public class EntityLeonard extends ModEntityMob {
 	protected EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
-		setSize(1.0f, 3.2f);
+		setSize(1.0f, 3.6f);
 	}
 	
 	@Override
@@ -49,6 +51,16 @@ public class EntityLeonard extends ModEntityMob {
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
+	}
+	
+	//Todo: Get this functional. Sleep is kind of fucked.
+	public void onLivingUpdate()
+	{
+		if (this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth());
+		{
+			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
+		}
+		super.onLivingUpdate();
 	}
 	
 	@SideOnly(Side.CLIENT)

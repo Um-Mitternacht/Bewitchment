@@ -22,9 +22,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -134,7 +132,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote && event.getPlayer().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
@@ -146,7 +144,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
 		if (!event.getWorld().isRemote && event.getHarvester() != null && event.getHarvester().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
@@ -158,7 +156,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote) {
@@ -182,7 +180,7 @@ public class ExtendedPlayerHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void pickUpItems(EntityItemPickupEvent event) {
 		EntityPlayer player = event.getEntityPlayer();

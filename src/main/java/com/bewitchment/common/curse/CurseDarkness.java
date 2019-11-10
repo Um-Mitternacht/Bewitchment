@@ -19,7 +19,7 @@ public class CurseDarkness extends Curse {
 	public CurseDarkness() {
 		super(new ResourceLocation(Bewitchment.MODID, "darkness"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.belladonna), Util.get(ModObjects.aconitum), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST, 0.0005);
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));

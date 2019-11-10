@@ -21,7 +21,7 @@ public class CurseHydrophobia extends Curse {
 		super(new ResourceLocation(Bewitchment.MODID, "hydrophobia"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.tallow), Util.get("bone"), Util.get("bone"), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@SubscribeEvent
 	public void onAquaticDamage(LivingDamageEvent event) {
 		if (!event.getEntity().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().isWet()) {
@@ -31,7 +31,7 @@ public class CurseHydrophobia extends Curse {
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		if (target.isWet()) {

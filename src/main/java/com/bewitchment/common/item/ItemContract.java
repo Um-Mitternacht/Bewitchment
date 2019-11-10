@@ -33,7 +33,7 @@ public class ItemContract extends Item {
 		Util.registerItem(this, "contract", Collections.singletonList(s -> s.hasTagCompound() && s.getTagCompound().hasKey("boundName")));
 		setMaxStackSize(1);
 	}
-
+	
 	public boolean complete(ItemStack stack) {
 		if (stack.getItem() instanceof ItemContract && stack.hasTagCompound()) {
 			NBTTagCompound tag = stack.getTagCompound();
@@ -52,22 +52,7 @@ public class ItemContract extends Item {
 		}
 		return false;
 	}
-
-	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return false;
-	}
-
-	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return false;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-		return false;
-	}
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack heldItem = player.getHeldItem(hand);
@@ -79,7 +64,8 @@ public class ItemContract extends Item {
 				player.setHeldItem(hand, heldItem);
 				if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 				return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
-			} else if (heldItem.getTagCompound().hasKey("boundId") && Util.findPlayer(heldItem.getTagCompound().getString("boundId")) == player && complete(heldItem) && player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
+			}
+			else if (heldItem.getTagCompound().hasKey("boundId") && Util.findPlayer(heldItem.getTagCompound().getString("boundId")) == player && complete(heldItem) && player.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 				if (temp != null) {
 					ItemStack offhand = player.getHeldItem(hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
 					if (temp.isPositive()) {
@@ -89,7 +75,8 @@ public class ItemContract extends Item {
 							player.getHeldItem(hand).shrink(1);
 						}
 						return new ActionResult<>(EnumActionResult.PASS, ItemStack.EMPTY);
-					} else if (offhand.getItem() instanceof ItemTaglock && offhand.hasTagCompound() && offhand.getTagCompound().hasKey("boundId")) {
+					}
+					else if (offhand.getItem() instanceof ItemTaglock && offhand.hasTagCompound() && offhand.getTagCompound().hasKey("boundId")) {
 						EntityPlayer target = Util.findPlayer(offhand.getTagCompound().getString("boundId"));
 						if (target != null && target.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
 							target.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(temp, 7);
@@ -102,7 +89,7 @@ public class ItemContract extends Item {
 		}
 		return super.onItemRightClick(world, player, hand);
 	}
-
+	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound()) {
@@ -127,9 +114,24 @@ public class ItemContract extends Item {
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return complete(stack);
+	}
+	
+	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return false;
+	}
+	
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+		return false;
+	}
+	
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return false;
 	}
 }

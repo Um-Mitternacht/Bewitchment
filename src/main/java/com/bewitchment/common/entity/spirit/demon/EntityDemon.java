@@ -237,9 +237,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return VillagerTradeHandler.INSTANCE.demon;
-	}	@Override
-	public BlockPos getPos() {
-		return getPosition();
 	}
 	
 	private void populateBuyingList() {
@@ -263,6 +260,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			trades.get(list.get(0)).addMerchantRecipe(this, this.recipeList, this.rand);
 			if (j <= 3 && list.size() > 1) trades.get(list.get(1)).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	public boolean isTrading() {

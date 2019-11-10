@@ -3,8 +3,6 @@ package com.bewitchment.common.village;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.api.registry.Contract;
-import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.item.util.ModItemBauble;
 import com.bewitchment.registry.ModObjects;
@@ -16,14 +14,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import scala.util.control.TailCalls;
 
 import java.util.List;
 import java.util.Random;
@@ -267,12 +261,12 @@ public class TradeHandler {
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
 		}
 	}
-
+	
 	public static class RandomContractForDemon implements EntityVillager.ITradeList {
-
+		
 		public RandomContractForDemon() {
 		}
-
+		
 		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
 			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
 			ItemStack itemstack1 = Util.getRandomContract(random);

@@ -47,7 +47,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	}
 	
 	public boolean isLesser() { return lesser; }
-
+	
 	public boolean isPositive() { return positive; }
 	
 	public abstract boolean doCurse(Event event, EntityPlayer target);
@@ -60,12 +60,6 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	 */
 	public enum CurseCondition {
 		EXIST, //add other conditions like SLEEP or so for curses that are only active in certain conditions
-		REACTION,
-		BLOCK_BREAK,
-		BLOCK_DROP,
-		KILL,
-		DAMAGE,
-		HURT,
-		INSTANT
+		REACTION, BLOCK_BREAK, BLOCK_DROP, KILL, DAMAGE, HURT, INSTANT
 	}
 }

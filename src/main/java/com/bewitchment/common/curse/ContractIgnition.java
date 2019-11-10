@@ -19,7 +19,7 @@ public class ContractIgnition extends Contract {
 	public ContractIgnition() {
 		super(new ResourceLocation(Bewitchment.MODID, "ignition"), true, true, CurseCondition.BLOCK_DROP, null, Arrays.asList(Items.BLAZE_ROD, Items.MAGMA_CREAM));
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		BlockEvent.HarvestDropsEvent event0 = (BlockEvent.HarvestDropsEvent) event;
