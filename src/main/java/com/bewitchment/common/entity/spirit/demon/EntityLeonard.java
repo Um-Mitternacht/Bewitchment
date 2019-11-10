@@ -27,7 +27,7 @@ public class EntityLeonard extends ModEntityMob {
 	protected EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
-		setSize(0.8f, 2.6f);
+		setSize(0.8f, 3.2f);
 	}
 	
 	@Override

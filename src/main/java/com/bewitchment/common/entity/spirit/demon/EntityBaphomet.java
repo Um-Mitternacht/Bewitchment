@@ -27,7 +27,7 @@ public class EntityBaphomet extends ModEntityMob {
 	protected EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
-		setSize(0.8f, 2.6f);
+		setSize(0.8f, 3.5f);
 	}
 	
 	@Override
