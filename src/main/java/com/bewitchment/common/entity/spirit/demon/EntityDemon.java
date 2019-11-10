@@ -309,12 +309,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		public void updateTask() {
 			this.demon.getNavigator().clearPath();
 		}
-	}	@Override
+	}
+	
+	@Override
 	public BlockPos getPos() {
 		return getPosition();
 	}
-	
-
 	
 	
 	@Override
