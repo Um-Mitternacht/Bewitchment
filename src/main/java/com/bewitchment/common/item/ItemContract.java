@@ -85,7 +85,7 @@ public class ItemContract extends Item {
 					if (temp.isPositive()) {
 						player.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(temp, 7);
 						if (!world.isRemote) {
-							for (int i = 0; i < 64; i++) Bewitchment.network.sendTo(new SpawnParticle(EnumParticleTypes.FLAME, player.posX, player.posY + 1.8, player.posZ), (EntityPlayerMP) player);
+							for (int i = 0; i < 128; i++) Bewitchment.network.sendTo(new SpawnParticle(EnumParticleTypes.FLAME, player.posX + world.rand.nextGaussian() / 4, player.posY + 1.6, player.posZ + world.rand.nextGaussian() / 4), (EntityPlayerMP) player);
 							player.getHeldItem(hand).shrink(1);
 						}
 						return new ActionResult<>(EnumActionResult.PASS, ItemStack.EMPTY);

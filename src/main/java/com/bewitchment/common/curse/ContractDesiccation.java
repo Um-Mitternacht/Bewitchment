@@ -2,7 +2,6 @@ package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Contract;
-import com.bewitchment.api.registry.Curse;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
