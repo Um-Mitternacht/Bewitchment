@@ -29,7 +29,7 @@ public class EntityLeonard extends ModEntityMob {
 	protected EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
-		setSize(1.0f, 3.6f);
+		setSize(1.0f, 3.8f);
 	}
 	
 	@Override
@@ -53,9 +53,9 @@ public class EntityLeonard extends ModEntityMob {
 		return BewitchmentAPI.DEMON;
 	}
 	
-	//Todo: Get this functional. Sleep is kind of fucked.
+	//Todo: Get this functional. Sleep is kind of fucked. Effects will be applied based on conditions.
 	public void onLivingUpdate() {
-		if (this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth()) ;
+		if (this.getMaxHealth() < this.getHealth()) ;
 		{
 			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
 		}
