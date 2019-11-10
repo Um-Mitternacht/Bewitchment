@@ -54,13 +54,21 @@ public class EntityLeonard extends ModEntityMob {
 	}
 	
 	//Todo: Get this functional. Sleep is kind of fucked.
-	public void onLivingUpdate()
-	{
-		if (this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth());
+	public void onLivingUpdate() {
+		if (this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth()) ;
 		{
 			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
 		}
 		super.onLivingUpdate();
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(500);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -85,15 +93,6 @@ public class EntityLeonard extends ModEntityMob {
 	public void removeTrackingPlayer(EntityPlayerMP player) {
 		super.removeTrackingPlayer(player);
 		this.bossInfo.removePlayer(player);
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(500);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
 	
 	@Override

@@ -49,7 +49,17 @@ public class ItemCaduceus extends Item {
 	}
 	
 	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return false;
+	}
+	
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return false;
+	}
+	
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 		return false;
 	}
 	
