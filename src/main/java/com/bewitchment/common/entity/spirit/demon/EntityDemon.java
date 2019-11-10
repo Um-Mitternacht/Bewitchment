@@ -204,11 +204,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	protected int getSkinTypes() {
 		return 6;
 	}
-
-	@Override
-	public BlockPos getPos() {
-		return getPosition();
-	}
 	
 	@Override
 	protected boolean isValidLightLevel() {
@@ -242,6 +237,9 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public VillagerRegistry.VillagerProfession getProfessionForge() {
 		return VillagerTradeHandler.INSTANCE.demon;
+	}	@Override
+	public BlockPos getPos() {
+		return getPosition();
 	}
 	
 	private void populateBuyingList() {
@@ -269,11 +267,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	public boolean isTrading() {
 		return this.buyer != null;
-	}
-
-	@Override
-	public EntityPlayer getCustomer() {
-		return buyer;
 	}
 	
 	private class DemonAITradePlayer extends EntityAIBase {
@@ -320,22 +313,28 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			this.demon.getNavigator().clearPath();
 		}
 	}
+	
 
-
+	
+	
+	@Override
+	public EntityPlayer getCustomer() {
+		return buyer;
+	}
+	
 	
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer player) {
 		if (this.recipeList == null) this.populateBuyingList();
 		return this.recipeList;
 	}
-
-
-
+	
+	
 	@Override
 	public World getWorld() {
 		return world;
 	}
-
+	
 	@Override
 	public void setCustomer(EntityPlayer player) {
 		buyer = player;

@@ -7,7 +7,7 @@ A mod inspired by Witchery
 
 ## Links
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/9cPD9b4)
+[![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/YtXMC4S)
 [![Curseforge](https://img.shields.io/badge/Curseforge-Project%20page!-A54C2D.svg?longCache=true&style=for-the-badge)](https://minecraft.curseforge.com/projects/bewitchment)
 
 ## Donations

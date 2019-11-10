@@ -17,7 +17,7 @@ public class ContractEverflame extends Curse {
 
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
-		for (BlockPos temp: BlockPos.getAllInBoxMutable(target.getPosition().add(-2, -2, -2), target.getPosition().add(2, 2, 2))) {
+		for (BlockPos temp : BlockPos.getAllInBoxMutable(target.getPosition().add(-2, -2, -2), target.getPosition().add(2, 2, 2))) {
 			if (target.getRNG().nextDouble() < 0.1) {
 				if (target.world.isAirBlock(temp) && target.world.getBlockState(temp.down()).getBlock().isFlammable(target.world, temp.down(), EnumFacing.UP) && target.canPlayerEdit(temp, EnumFacing.DOWN, ItemStack.EMPTY)) {
 					target.world.setBlockState(temp, Blocks.FIRE.getDefaultState());
