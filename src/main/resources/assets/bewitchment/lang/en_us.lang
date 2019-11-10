@@ -315,6 +315,21 @@ item.bewitchment.bone_needle.name=Bone Needle
 item.bewitchment.taglock.name=Taglock
 tooltip.bewitchment.taglock=Contains a tag of %s
 
+item.bewitchment.contract.name=Demon Contract
+
+tooltip.bewitchment.beserker_entities=%d/%d Villagers/Players Killed
+tooltip.bewitchment.devouring_rage_entities=%d/%d Livestocks Killed
+
+tooltip.bewitchment.contract_bound=Bound to %s
+tooltip.bewitchment.contract_items=%d/%d %s Obtained
+
+bewitchment.berserker=Pact: Berserker
+bewitchment.desiccation=Pact: Desiccation
+bewitchment.devouring_rage=Pact: Devouring Rage
+bewitchment.everflame=Curse: Everflame
+bewitchment.ignition=Pact: Ignition
+bewitchment.salamandrine_tolerance=Pact: Salamandrine Tolerance
+
 item.bewitchment.amethyst.name=Amethyst
 item.bewitchment.garnet.name=Garnet
 item.bewitchment.opal.name=Opal

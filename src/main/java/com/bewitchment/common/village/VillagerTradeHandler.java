@@ -59,7 +59,7 @@ public class VillagerTradeHandler {
 			//career.addTrade(4, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.diabolical_vein), new EntityVillager.PriceInfo(1, 3)));
 			career.addTrade(4, new TradeHandler.RandomIdolForDemon());
 			career.addTrade(5, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.fortunes_favor), new EntityVillager.PriceInfo(1, 1)));
-			//career.addTrade(5, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.diabolical_vein), new EntityVillager.PriceInfo(1, 3)));
+			career.addTrade(5, new TradeHandler.RandomContractForDemon());
 			//career.addTrade(5, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.sigil_of_the_steed), new EntityVillager.PriceInfo(1, 3)));
 		}
 		{
@@ -84,7 +84,7 @@ public class VillagerTradeHandler {
 			career.addTrade(4, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.demon_heart), new EntityVillager.PriceInfo(1, 1)));
 			career.addTrade(4, new TradeHandler.EnchantedItemForDemon(Items.DIAMOND_SWORD, new EntityVillager.PriceInfo(1, 1), 30));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.bottled_hellfire), new EntityVillager.PriceInfo(1, 3)));
-			//career.addTrade(5, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.tongue_of_dog), new EntityVillager.PriceInfo(5, 7)));
+			career.addTrade(5, new TradeHandler.RandomContractForDemon());
 			//career.addTrade(5, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.tongue_of_dog), new EntityVillager.PriceInfo(5, 7)));
 		}
 		{
@@ -108,6 +108,7 @@ public class VillagerTradeHandler {
 			ItemStack fire_aspect = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(Enchantments.FIRE_ASPECT, 2));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(fire_aspect, new EntityVillager.PriceInfo(1, 1)));
 			career.addTrade(5, new TradeHandler.RandomIdolForDemon());
+			career.addTrade(5, new TradeHandler.RandomContractForDemon());
 		}
 	}
 }

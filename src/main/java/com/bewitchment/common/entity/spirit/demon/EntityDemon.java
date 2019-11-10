@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.common.item.ItemContract;
 import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.*;
@@ -131,7 +132,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			if (this.timeUntilReset <= 0) {
 				if (this.needsInitilization) {
 					for (MerchantRecipe merchantrecipe : this.recipeList) {
-						if (merchantrecipe.isRecipeDisabled()) {
+						if (!(merchantrecipe.getItemToSell().getItem() instanceof ItemContract) && merchantrecipe.isRecipeDisabled()) {
 							merchantrecipe.increaseMaxTradeUses(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
 						}
 					}

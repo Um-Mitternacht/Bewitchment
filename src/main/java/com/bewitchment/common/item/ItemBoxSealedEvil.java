@@ -90,6 +90,7 @@ public class ItemBoxSealedEvil extends Item {
 				case 7:
 					Util.giveItem(player, new ItemStack(ModObjects.bottle_of_blood));
 					Util.giveItem(player, new ItemStack(ModObjects.heart));
+					Util.giveItem(player, Util.getRandomContract(rand));
 					Util.giveItem(player, new ItemStack(Items.SKULL, 1, rand.nextInt(6)));
 					break;
 				case 8:
@@ -195,7 +196,7 @@ public class ItemBoxSealedEvil extends Item {
 					worldIn.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
 					break;
 				default:
-					for (BlockPos pos1 : BlockPos.getAllInBoxMutable(player.getPosition().add(-2, -2, -2), player.getPosition().add(2, 2, 2))) {
+					for (BlockPos pos1 : BlockPos.getAllInBoxMutable(player.getPosition().add(-1, 0, -1), player.getPosition().add(1, 2, 1))) {
 						if (worldIn.getBlockState(pos1).getBlock().isReplaceable(worldIn, pos1)) {
 							worldIn.setBlockState(pos1, Blocks.WEB.getDefaultState());
 						}

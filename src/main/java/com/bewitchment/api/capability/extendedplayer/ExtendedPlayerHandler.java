@@ -1,24 +1,34 @@
 package com.bewitchment.api.capability.extendedplayer;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
+import com.bewitchment.api.registry.Contract;
 import com.bewitchment.api.registry.Curse;
-import com.bewitchment.common.handler.BlockDropHandler;
+import com.bewitchment.common.item.ItemContract;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
@@ -106,6 +116,18 @@ public class ExtendedPlayerHandler {
 					if (curse.getCurseCondition() == Curse.CurseCondition.KILL) curse.doCurse(event, player);
 				}
 			}
+			for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+				ItemStack stack = player.inventory.getStackInSlot(i);
+				if (stack.getItem() instanceof ItemContract && !((ItemContract) stack.getItem()).complete(stack) && stack.hasTagCompound() && stack.getTagCompound().hasKey("mobsTotal") && stack.getTagCompound().hasKey("mobsComplete") && stack.getTagCompound().hasKey("boundId")) {
+					if (Util.findPlayer(stack.getTagCompound().getString("boundId")) == player) {
+						Contract contract = (Contract) GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(stack.getTagCompound().getString("contract")));
+						if (contract.entities.test(event.getEntityLiving())) {
+							stack.getTagCompound().setInteger("mobsComplete", stack.getTagCompound().getInteger("mobsComplete") + 1);
+							break;
+						}
+					}
+				}
+			}
 			if (event.getEntityLiving() instanceof EntityMob) {
 				player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled++;
 				ExtendedPlayer.syncToClient(player);
@@ -156,6 +178,33 @@ public class ExtendedPlayerHandler {
 					for (Curse curse : ep.getCurses()) {
 						if (curse.getCurseCondition() == Curse.CurseCondition.HURT) curse.doCurse(event, (EntityPlayer) event.getSource().getTrueSource());
 					}
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void pickUpItems(EntityItemPickupEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+			ItemStack stack = player.inventory.getStackInSlot(i);
+			boolean found = false;
+			if (stack.getItem() instanceof ItemContract && stack.hasTagCompound() && stack.getTagCompound().hasKey("contract") && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("items") && !((ItemContract) stack.getItem()).complete(stack)) {
+				if (Util.findPlayer(stack.getTagCompound().getString("boundId")) == player) {
+					NBTTagList list = stack.getTagCompound().getTagList("items", Constants.NBT.TAG_COMPOUND);
+					for (int t = 0; t < list.tagCount(); t++) {
+						NBTTagCompound tag = list.getCompoundTagAt(t);
+						if (event.getItem().getItem().getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item")))) {
+							int complete = tag.getInteger("amountComplete");
+							int gained = event.getItem().getItem().getCount();
+							int toShrink = Math.min(tag.getInteger("amountTotal") - complete, gained);
+							event.getItem().getItem().shrink(toShrink);
+							tag.setInteger("amountComplete", complete + toShrink);
+							if (toShrink > 0) found = true;
+							break;
+						}
+					}
+					if (found) break;
 				}
 			}
 		}

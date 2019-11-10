@@ -484,6 +484,7 @@ public class ModObjects {
 	public static final Item wood_ash = Util.registerItem("wood_ash");
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin");
 	public static final Item box_of_sealed_evil = new ItemBoxSealedEvil();
+	public static final Item contract = new ItemContract();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
@@ -572,7 +573,7 @@ public class ModObjects {
 		public void applyEffects(EntityLivingBase entity) {
 			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
 				int amount = entity.getRNG().nextInt(3) + 1;
-				EntityGhost temp = new EntityGhost(entity.world);
+				EntityGhost temp = (EntityGhost) ModEntities.ghost.newInstance(entity.world);
 				temp.setAttackTarget(entity);
 				for (int i = 0; i < amount; i++) {
 					temp.setPosition(entity.posX + entity.getRNG().nextGaussian() * 5, entity.posY + 3, entity.posZ + entity.getRNG().nextGaussian() * 5);

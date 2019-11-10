@@ -1,16 +1,19 @@
 package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.Curse;
+import com.bewitchment.api.registry.Contract;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class ContractSalamandrineTolerance extends Curse {
+import java.util.Arrays;
+
+public class ContractSalamandrineTolerance extends Contract {
 	public ContractSalamandrineTolerance() {
-		super(new ResourceLocation(Bewitchment.MODID, "salamandrine_tolerance"), null, true, true, CurseCondition.HURT);
+		super(new ResourceLocation(Bewitchment.MODID, "salamandrine_tolerance"), true, true, CurseCondition.HURT, null, Arrays.asList(Items.BLAZE_ROD, Items.GHAST_TEAR));
 	}
 
 	@Override

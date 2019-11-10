@@ -1,15 +1,16 @@
 package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.Curse;
+import com.bewitchment.api.registry.Contract;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class ContractBerserker extends Curse {
+public class ContractBerserker extends Contract {
 	public ContractBerserker() {
-		super(new ResourceLocation(Bewitchment.MODID, "beserker"), null, true, true, CurseCondition.DAMAGE);
+		super(new ResourceLocation(Bewitchment.MODID, "beserker"),  true, true, CurseCondition.DAMAGE, e -> e instanceof EntityVillager || e instanceof EntityPlayer, null);
 	}
 
 	@Override

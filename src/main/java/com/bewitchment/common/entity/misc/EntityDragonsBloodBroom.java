@@ -26,7 +26,7 @@ public class EntityDragonsBloodBroom extends EntityBroom {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (sigil != null && getControllingPassenger() instanceof EntityPlayer && world.getWorldTime() % 20 == 0) {
+		if (world.getWorldTime() % 100 == 0 && sigil != null && getControllingPassenger() instanceof EntityPlayer && world.getWorldTime() % 20 == 0) {
 			sigil.applyEffects((EntityPlayer) getControllingPassenger());
 		}
 		if (!world.isRemote) for (EntityPlayer player : world.playerEntities) Bewitchment.network.sendTo(new SyncDragonsBloodBroom(this, sigil), (EntityPlayerMP) player);

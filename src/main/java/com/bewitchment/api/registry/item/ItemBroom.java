@@ -71,8 +71,7 @@ public class ItemBroom extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("sigil")) {
-			String sigilName = stack.getTagCompound().getString("sigil");
-			tooltip.add(I18n.format(sigilName));
+			tooltip.add(I18n.format("item." + stack.getTagCompound().getString("sigil").replace(":", ".") + ".name"));
 		}
 	}
 	

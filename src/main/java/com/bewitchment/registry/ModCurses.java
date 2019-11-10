@@ -1,5 +1,6 @@
 package com.bewitchment.registry;
 
+import com.bewitchment.api.registry.Contract;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.curse.*;
 
@@ -16,10 +17,10 @@ public class ModCurses {
 	//public static Curse curseInsanity = new CurseInsanity();
 
 	// Contracts
-	public static Curse contractBeserker = new ContractBerserker();
-	public static Curse contractDesiccation = new ContractDesiccation();
-	public static Curse contractDevouringRage = new ContractDevouringRage();
-	public static Curse contractIgnition = new ContractIgnition();
-	public static Curse contractSalamandrineTolerance = new ContractSalamandrineTolerance();
-	public static Curse contractEverflame = new ContractEverflame();
+	public static Contract contractBeserker = new ContractBerserker();
+	public static Contract contractDesiccation = new ContractDesiccation();
+	public static Contract contractDevouringRage = new ContractDevouringRage();
+	public static Contract contractIgnition = new ContractIgnition();
+	public static Contract contractSalamandrineTolerance = new ContractSalamandrineTolerance();
+	//public static Curse contractEverflame = new ContractEverflame();
 }

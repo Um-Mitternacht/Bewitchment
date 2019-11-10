@@ -6,6 +6,8 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.api.registry.Contract;
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.BlockSpanishMoss;
@@ -25,6 +27,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -34,16 +37,15 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
@@ -257,6 +259,30 @@ public class Util {
 			}
 		}
 		return false;
+	}
+
+	public static ItemStack getRandomContract(Random rand) {
+		List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(c -> c instanceof Contract).collect(Collectors.toList());
+		Contract contract = (Contract) contracts.get(rand.nextInt(contracts.size()));
+		ItemStack itemstack = new ItemStack(ModObjects.contract);
+		itemstack.setTagCompound(new NBTTagCompound());
+		itemstack.getTagCompound().setString("contract", contract.getRegistryName().toString());
+		int mobCount = 6;
+		if (contract.requiresEntities()) itemstack.getTagCompound().setInteger("mobsTotal", mobCount);
+		if (contract.requiresEntities()) itemstack.getTagCompound().setInteger("mobsComplete", 0);
+		if (contract.requiresItems()) {
+			NBTTagList list = new NBTTagList();
+			for (Item item : contract.items) {
+				NBTTagCompound couple = new NBTTagCompound();
+				int amount = 6 + rand.nextInt(6);
+				couple.setString("item", item.getRegistryName().toString());
+				couple.setInteger("amountTotal", amount);
+				couple.setInteger("amountComplete", 0);
+				list.appendTag(couple);
+			}
+			itemstack.getTagCompound().setTag("items", list);
+		}
+		return itemstack;
 	}
 	
 	public static void registerAltarUpgradeItemStack(ItemStack stack, AltarUpgrade upgrade) {

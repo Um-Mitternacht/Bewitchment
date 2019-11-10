@@ -65,6 +65,7 @@ public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 		BLOCK_DROP,
 		KILL,
 		DAMAGE,
-		HURT
+		HURT,
+		INSTANT
 	}
 }

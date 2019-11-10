@@ -1,7 +1,7 @@
 package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.registry.Curse;
+import com.bewitchment.api.registry.Contract;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -11,9 +11,9 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 
-public class ContractDevouringRage extends Curse {
+public class ContractDevouringRage extends Contract {
 	public ContractDevouringRage() {
-		super(new ResourceLocation(Bewitchment.MODID, "devouring_rage"), null, true, true, CurseCondition.KILL);
+		super(new ResourceLocation(Bewitchment.MODID, "devouring_rage"),true, true, CurseCondition.KILL, e -> e instanceof EntityAnimal, null);
 	}
 
 	@Override

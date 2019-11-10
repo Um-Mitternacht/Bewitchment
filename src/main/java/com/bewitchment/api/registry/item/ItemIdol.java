@@ -225,7 +225,8 @@ public class ItemIdol extends Item {
 		
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-			int height = getHeightAbove(pos, (World) source);
+			int height = 1;
+			if (source instanceof World) height = getHeightAbove(pos, (World) source);
 			return state.getValue(IDOL) ? new AxisAlignedBB(4 / 16f, -state.getValue(HEIGHT) - 1, 4 / 16f, 12 / 16f, height + 1, 12 / 16f) : new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
 		}
 		
