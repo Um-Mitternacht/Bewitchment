@@ -37,8 +37,8 @@ public class PotionFear extends ModPotion {
 	@SubscribeEvent
 	public void movePlayer(TickEvent.PlayerTickEvent event) {
 		if (event.player.isPotionActive(this) && event.phase == TickEvent.Phase.END) {
-			event.player.motionX += (event.player.getRNG().nextDouble() / 3d) - (event.player.getRNG().nextDouble() / 3d);
-			event.player.motionZ += (event.player.getRNG().nextDouble() / 3d) - (event.player.getRNG().nextDouble() / 3d);
+			event.player.motionX += event.player.getRNG().nextGaussian() / 4d;
+			event.player.motionZ += event.player.getRNG().nextGaussian() / 4d;
 			if (!event.player.world.isRemote) ((EntityPlayerMP) event.player).connection.sendPacket(new SPacketEntityVelocity(event.player));
 		}
 	}

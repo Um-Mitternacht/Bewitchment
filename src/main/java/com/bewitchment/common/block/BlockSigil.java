@@ -80,7 +80,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.withProperty(VARIATION, Math.abs(pos.getX() + pos.getZ() * 2) % 10);
+		return state.withProperty(VARIATION, Math.abs(pos.getX() + pos.getY() + pos.getZ() * 2) % 10);
 	}
 	
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
