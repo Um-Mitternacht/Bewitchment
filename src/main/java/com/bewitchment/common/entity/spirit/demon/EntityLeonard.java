@@ -54,8 +54,9 @@ public class EntityLeonard extends ModEntityMob {
 	}
 	
 	//Todo: Get this functional. Sleep is kind of fucked. Effects will be applied based on conditions.
+	//Okay, regen works now. Will try it with other scenarios later.
 	public void onLivingUpdate() {
-		if (this.getHealth() < this.getMaxHealth()) ;
+		if (this.getHealth() < this.getMaxHealth())
 		{
 			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
 		}
