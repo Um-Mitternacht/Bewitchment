@@ -1,6 +1,6 @@
 package com.bewitchment.client.render.tile;
 
-import com.bewitchment.common.block.tile.entity.TileEntityIdol;
+import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.proxy.ClientProxy;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.client.model.ModelBase;
@@ -13,9 +13,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderTileEntityIdol extends TileEntitySpecialRenderer<TileEntityIdol> {
+public class RenderTileEntityIdol extends TileEntitySpecialRenderer<TileEntityStatue> {
 	@Override
-	public void render(TileEntityIdol tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+	public void render(TileEntityStatue tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		ItemStack stack = tile.getInventories()[0].getStackInSlot(0);
 		ResourceLocation loc = ClientProxy.IDOL_TEXTURES.get(stack.getItem());
 		ModelBase model = ClientProxy.IDOL_MODELS.get(stack.getItem());

@@ -3,10 +3,10 @@ package com.bewitchment.registry;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.AltarUpgrade;
-import com.bewitchment.api.registry.item.ItemIdol;
+import com.bewitchment.api.registry.item.ItemStatue;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockLantern;
-import com.bewitchment.common.block.tile.entity.TileEntityIdol;
+import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
@@ -90,10 +90,10 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 5 && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeItem(ModObjects.pentacle, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 3, 0));
-		List<Item> idols = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemIdol).collect(Collectors.toList());
-		for (Item idol : idols) {
-			Util.registerAltarUpgradeItem(idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityIdol && ((TileEntityIdol) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == idol, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
+		List<Item> statues = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemStatue).collect(Collectors.toList());
+		for (Item statue : statues) {
+			Util.registerAltarUpgradeItem(statue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
+			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityStatue && ((TileEntityStatue) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == statue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		}
 		Util.registerAltarUpgradeOreDict("fossil", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemDiamond", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));

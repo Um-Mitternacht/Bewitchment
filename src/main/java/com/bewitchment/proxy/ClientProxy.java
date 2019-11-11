@@ -120,34 +120,6 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
 		
 		// Register lenny model
-		ModelBase ilenny = new ModelLeonardIdol();
-		registerIdol(ModObjects.stone_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
-		registerIdol(ModObjects.gold_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
-		registerIdol(ModObjects.nether_brick_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/scorned_brick.png"));
-		
-		// Register lilith model
-		ModelBase ililith = new ModelLilithIdol();
-		registerIdol(ModObjects.stone_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/stone.png"));
-		registerIdol(ModObjects.gold_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/gold.png"));
-		registerIdol(ModObjects.nether_brick_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/scorned_brick.png"));
-		
-		// Register baphomet model
-		ModelBase ibaphomet = new ModelBaphometIdol();
-		registerIdol(ModObjects.stone_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/stone.png"));
-		registerIdol(ModObjects.gold_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/gold.png"));
-		registerIdol(ModObjects.nether_brick_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/scorned_brick.png"));
-		
-		// Register herne model
-		ModelBase iherne = new ModelHerneIdol();
-		registerIdol(ModObjects.stone_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/stone.png"));
-		registerIdol(ModObjects.gold_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/gold.png"));
-		registerIdol(ModObjects.nether_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
-		
-		// Register lenny model
 		ModelBase slenny = new ModelLeonardStatue();
 		registerIdol(ModObjects.stone_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/stone.png"));
 		registerIdol(ModObjects.gold_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/gold.png"));
@@ -208,7 +180,7 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDBChest.class, new RenderTileEntityDBChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityIdol());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
 	}
 	

@@ -251,11 +251,10 @@ public class TradeHandler {
 			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
 			final String[] demons = {"leonard", "baphomet", "lilith", "herne"};
 			final String[] variants = {"stone", "gold", "nether_brick", "scorned_brick"};
-			String idol = random.nextBoolean() ? "idol" : "statue";
 			String demon = demons[random.nextInt(demons.length)];
 			String variant = variants[random.nextInt(variants.length)];
-			Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_" + idol));
-			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_idol);
+			Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_statue"));
+			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_statue);
 			if (item != null) itemstack1 = new ItemStack(item);
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
 		}

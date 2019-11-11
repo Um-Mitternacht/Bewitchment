@@ -3,7 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityIdol extends ModTileEntity {
+public class TileEntityStatue extends ModTileEntity {
 	private final ItemStackHandler inventory = new ItemStackHandler(1);
 	
 	@Override

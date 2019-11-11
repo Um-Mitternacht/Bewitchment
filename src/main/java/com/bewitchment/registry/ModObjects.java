@@ -6,7 +6,7 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.api.registry.item.ItemFume;
-import com.bewitchment.api.registry.item.ItemIdol;
+import com.bewitchment.api.registry.item.ItemStatue;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.*;
@@ -318,26 +318,7 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
-	//Lenny Idol
-	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
-	public static final Item gold_leonard_idol = createIdol("gold_leonard_idol", Blocks.GOLD_BLOCK);
-	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
-	//Lilith Idol
-	public static final Item stone_lilith_idol = createIdol("stone_lilith_idol", Blocks.STONE);
-	public static final Item gold_lilith_idol = createIdol("gold_lilith_idol", Blocks.GOLD_BLOCK);
-	public static final Item nether_brick_lilith_idol = createIdol("nether_brick_lilith_idol", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_lilith_idol = createIdol("scorned_brick_lilith_idol", scorned_bricks[0]);
-	//Baphomet Idol
-	public static final Item stone_baphomet_idol = createIdol("stone_baphomet_idol", Blocks.STONE);
-	public static final Item gold_baphomet_idol = createIdol("gold_baphomet_idol", Blocks.GOLD_BLOCK);
-	public static final Item nether_brick_baphomet_idol = createIdol("nether_brick_baphomet_idol", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_baphomet_idol = createIdol("scorned_brick_baphomet_idol", scorned_bricks[0]);
-	//Herne Idol
-	public static final Item stone_herne_idol = createIdol("stone_herne_idol", Blocks.STONE);
-	public static final Item gold_herne_idol = createIdol("gold_herne_idol", Blocks.GOLD_BLOCK);
-	public static final Item nether_brick_herne_idol = createIdol("nether_brick_herne_idol", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_herne_idol = createIdol("scorned_brick_herne_idol", scorned_bricks[0]);
+
 	//Lenny Statue
 	public static final Item stone_leonard_statue = createIdol("stone_leonard_statue", Blocks.STONE);
 	public static final Item nether_brick_leonard_statue = createIdol("nether_brick_leonard_statue", Blocks.NETHER_BRICK);
@@ -359,7 +340,7 @@ public class ModObjects {
 	public static final Item scorned_brick_herne_statue = createIdol("scorned_brick_herne_statue", scorned_bricks[0]);
 	public static final Item gold_herne_statue = createIdol("gold_herne_statue", Blocks.GOLD_BLOCK);
 
-	public static final Block filler = new ItemIdol.BlockFiller();
+	public static final Block filler = new ItemStatue.BlockFiller();
 
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
@@ -578,7 +559,7 @@ public class ModObjects {
 	}
 	
 	private static Item createIdol(String name, Block base) {
-		return Util.registerItem(new ItemIdol(name, base), name);
+		return Util.registerItem(new ItemStatue(name, base), name);
 	}
 	
 	private static Block[] createChiselBlocks(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, List<String> oreDictionaryNames, String... names) {

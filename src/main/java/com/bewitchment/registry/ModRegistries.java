@@ -6,13 +6,13 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.*;
-import com.bewitchment.api.registry.item.ItemIdol;
+import com.bewitchment.api.registry.item.ItemStatue;
 import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
-import com.bewitchment.common.block.tile.entity.TileEntityIdol;
+import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
 import com.bewitchment.common.entity.misc.ModEntityPotion;
@@ -76,7 +76,7 @@ public class ModRegistries {
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		GameRegistry.registerTileEntity(TileEntityIdol.class, new ResourceLocation(Bewitchment.MODID, "idol"));
+		GameRegistry.registerTileEntity(TileEntityStatue.class, new ResourceLocation(Bewitchment.MODID, "idol"));
 		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
 		GameRegistry.registerTileEntity(TileEntityDragonsBlood.class, new ResourceLocation(Bewitchment.MODID, "dragons_blood"));
 		GameRegistry.registerTileEntity(TileEntitySiphoningFlower.class, new ResourceLocation(Bewitchment.MODID, "siphoning_flower"));
@@ -114,7 +114,7 @@ public class ModRegistries {
 		
 		Bewitchment.proxy.ignoreProperty(ModObjects.dragons_blood_wood, BlockDragonsBloodLog.NATURAL);
 		
-		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemIdol.BlockFiller.HEIGHT, ItemIdol.BlockFiller.IDOL);
+		Bewitchment.proxy.ignoreProperty(ModObjects.filler, ItemStatue.BlockFiller.HEIGHT);
 		
 		ModObjects.crop_aconitum.setItems(ModObjects.aconitum_seeds, ModObjects.aconitum);
 		ModObjects.crop_belladonna.setItems(ModObjects.belladonna_seeds, ModObjects.belladonna);
