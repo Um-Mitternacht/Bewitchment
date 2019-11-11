@@ -13,7 +13,9 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
@@ -52,13 +54,13 @@ public class EntityLeonard extends ModEntityMob {
 	}
 	
 	//Todo: Get this functional. Sleep is kind of fucked. Effects will be applied based on conditions.
-	//public void onLivingUpdate() {
-	//if (this.getMaxHealth() > this.getHealth()) ;
-	//{
-	//	this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
-	//	}
-	//	super.onLivingUpdate();
-	//}
+	public void onLivingUpdate() {
+	if (this.getHealth() < this.getMaxHealth()) ;
+	{
+		this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
+		}
+		super.onLivingUpdate();
+	}
 	
 	@Override
 	protected void applyEntityAttributes() {
