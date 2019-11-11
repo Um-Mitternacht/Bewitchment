@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"F F",
+	"FDF",
+	"FRF"
+  ],
+  "key": {
+	"F": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotGold"
+	},
+	"D": {
+	  "item": "bewitchment:dragons_blood_resin"
+	},
+	"R": {
+	  "item": "bewitchment:pentacle"
+	}
+  },
+  "result": {
+	"item": "bewitchment:gold_baphomet_idol"
+  }
+}

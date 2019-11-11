@@ -202,10 +202,10 @@ item.bewitchment.cold_iron_axe.name=Siekiera z Zimnego Żelaza
 item.bewitchment.cold_iron_shovel.name=Łopata z Zimnego Żelaza
 item.bewitchment.cold_iron_hoe.name=Motyka z Zimnego Żelaza
 
-tooltip.bewitchment.silver_armor_description.name=%1$sChroni przeciwko nieumarłymi%2$s
-tooltip.bewitchment.silver_tool_description.name=%1$sZadaje dodatkowe obrażenia nieumarłym%2$s
-tooltip.bewitchment.cold_iron_armor_description.name=%1$sChroni przeciwko demonom i duchom%2$s
-tooltip.bewitchment.cold_iron_tool_description.name=%1$sZadaje dodatkowe obrażenia demonom i duchom%2$s
+tooltip.bewitchment.silver_armor_description.name=Chroni przeciwko nieumarłymi
+tooltip.bewitchment.silver_tool_description.name=Zadaje dodatkowe obrażenia nieumarłym
+tooltip.bewitchment.cold_iron_armor_description.name=Chroni przeciwko demonom i duchom
+tooltip.bewitchment.cold_iron_tool_description.name=Zadaje dodatkowe obrażenia demonom i duchom
 
 item.bewitchment.athame.name=Athame
 tooltip.bewitchment.athame=Ten ceremonialny sztylet pozwala również na zdobycie specjalnych przedmiotów z istot

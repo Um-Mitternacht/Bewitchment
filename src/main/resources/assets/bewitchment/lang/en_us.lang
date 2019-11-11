@@ -206,10 +206,10 @@ item.bewitchment.cold_iron_axe.name=Cold Iron Axe
 item.bewitchment.cold_iron_shovel.name=Cold Iron Shovel
 item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 
-tooltip.bewitchment.silver_armor_description.name=%1$sProtects against undead%2$s
-tooltip.bewitchment.silver_tool_description.name=%1$sDeals extra damage to undead%2$s
-tooltip.bewitchment.cold_iron_armor_description.name=%1$sProtects against demons and spirits%2$s
-tooltip.bewitchment.cold_iron_tool_description.name=%1$sDeals extra damage to spirits%2$s
+tooltip.bewitchment.silver_armor_description.name=Protects against undead
+tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
+tooltip.bewitchment.cold_iron_armor_description.name=Protects against demons and spirits
+tooltip.bewitchment.cold_iron_tool_description.name=Deals extra damage to spirits
 
 item.bewitchment.athame.name=Athame
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs

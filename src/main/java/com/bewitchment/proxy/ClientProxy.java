@@ -122,73 +122,57 @@ public class ClientProxy extends ServerProxy {
 		// Register lenny model
 		ModelBase ilenny = new ModelLeonardIdol();
 		registerIdol(ModObjects.stone_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
-		registerIdol(ModObjects.terracotta_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/clay.png"));
 		registerIdol(ModObjects.gold_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
 		registerIdol(ModObjects.nether_brick_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
-		registerIdol(ModObjects.nethersteel_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nethersteel.png"));
 		registerIdol(ModObjects.scorned_brick_leonard_idol, ilenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/scorned_brick.png"));
 		
 		// Register lilith model
 		ModelBase ililith = new ModelLilithIdol();
 		registerIdol(ModObjects.stone_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/stone.png"));
-		registerIdol(ModObjects.terracotta_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/clay.png"));
 		registerIdol(ModObjects.gold_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/gold.png"));
 		registerIdol(ModObjects.nether_brick_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/nether_brick.png"));
-		registerIdol(ModObjects.nethersteel_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/nethersteel.png"));
 		registerIdol(ModObjects.scorned_brick_lilith_idol, ililith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/scorned_brick.png"));
 		
 		// Register baphomet model
 		ModelBase ibaphomet = new ModelBaphometIdol();
 		registerIdol(ModObjects.stone_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/stone.png"));
-		registerIdol(ModObjects.terracotta_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/clay.png"));
 		registerIdol(ModObjects.gold_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/gold.png"));
 		registerIdol(ModObjects.nether_brick_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/nether_brick.png"));
-		registerIdol(ModObjects.nethersteel_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/nethersteel.png"));
 		registerIdol(ModObjects.scorned_brick_baphomet_idol, ibaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/scorned_brick.png"));
 		
 		// Register herne model
 		ModelBase iherne = new ModelHerneIdol();
 		registerIdol(ModObjects.stone_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/stone.png"));
-		registerIdol(ModObjects.terracotta_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/clay.png"));
 		registerIdol(ModObjects.gold_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/gold.png"));
 		registerIdol(ModObjects.nether_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
-		registerIdol(ModObjects.nethersteel_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nethersteel.png"));
 		registerIdol(ModObjects.scorned_brick_herne_idol, iherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
 		
 		// Register lenny model
 		ModelBase slenny = new ModelLeonardStatue();
 		registerIdol(ModObjects.stone_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/stone.png"));
-		registerIdol(ModObjects.diorite_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/diorite.png"));
-		registerIdol(ModObjects.granite_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/granite.png"));
+		registerIdol(ModObjects.gold_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/gold.png"));
 		registerIdol(ModObjects.nether_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/nether_brick.png"));
-		registerIdol(ModObjects.andesite_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/scorned_brick.png"));
 		
 		// Register lilith model
 		ModelBase slilith = new ModelLilithStatue();
 		registerIdol(ModObjects.stone_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/stone.png"));
-		registerIdol(ModObjects.diorite_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/diorite.png"));
-		registerIdol(ModObjects.granite_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/granite.png"));
+		registerIdol(ModObjects.gold_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/gold.png"));
 		registerIdol(ModObjects.nether_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/nether_brick.png"));
-		registerIdol(ModObjects.andesite_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/scorned_brick.png"));
 		
 		// Register baphomet model
 		ModelBase sbaphomet = new ModelBaphometStatue();
 		registerIdol(ModObjects.stone_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/stone.png"));
-		registerIdol(ModObjects.diorite_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/diorite.png"));
-		registerIdol(ModObjects.granite_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/granite.png"));
+		registerIdol(ModObjects.gold_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/gold.png"));
 		registerIdol(ModObjects.nether_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/nether_brick.png"));
-		registerIdol(ModObjects.andesite_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/scorned_brick.png"));
 		
 		// Register herne model
 		ModelBase sherne = new ModelHerneStatue();
 		registerIdol(ModObjects.stone_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/stone.png"));
-		registerIdol(ModObjects.diorite_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/diorite.png"));
-		registerIdol(ModObjects.granite_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/granite.png"));
+		registerIdol(ModObjects.gold_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/gold.png"));
 		registerIdol(ModObjects.nether_brick_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/nether_brick.png"));
-		registerIdol(ModObjects.andesite_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/andesite.png"));
 		registerIdol(ModObjects.scorned_brick_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/scorned_brick.png"));
 	}
 	
