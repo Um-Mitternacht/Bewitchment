@@ -318,7 +318,7 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
-
+	
 	//Lenny Statue
 	public static final Item stone_leonard_statue = createIdol("stone_leonard_statue", Blocks.STONE);
 	public static final Item nether_brick_leonard_statue = createIdol("nether_brick_leonard_statue", Blocks.NETHER_BRICK);
@@ -339,9 +339,9 @@ public class ModObjects {
 	public static final Item nether_brick_herne_statue = createIdol("nether_brick_herne_statue", Blocks.NETHER_BRICK);
 	public static final Item scorned_brick_herne_statue = createIdol("scorned_brick_herne_statue", scorned_bricks[0]);
 	public static final Item gold_herne_statue = createIdol("gold_herne_statue", Blocks.GOLD_BLOCK);
-
+	
 	public static final Block filler = new ItemStatue.BlockFiller();
-
+	
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
 	public static final Item bottled_hellfire = new ItemBottledHellfire();

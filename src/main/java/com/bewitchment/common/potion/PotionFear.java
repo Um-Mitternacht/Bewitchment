@@ -30,10 +30,24 @@ public class PotionFear extends ModPotion {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
+		mc.getTextureManager().bindTexture(icon);
+		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
+		mc.getTextureManager().bindTexture(icon);
+		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
+	}
+
+	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 	}
-	
+
 	@SubscribeEvent
 	public void movePlayer(TickEvent.PlayerTickEvent event) {
 		if (event.player.isPotionActive(this) && event.phase == TickEvent.Phase.END) {
@@ -41,19 +55,5 @@ public class PotionFear extends ModPotion {
 			event.player.motionZ += event.player.getRNG().nextGaussian() / 4d;
 			if (!event.player.world.isRemote) ((EntityPlayerMP) event.player).connection.sendPacket(new SPacketEntityVelocity(event.player));
 		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
 	}
 }
