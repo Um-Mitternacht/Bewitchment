@@ -14,9 +14,11 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
@@ -57,7 +59,12 @@ public class EntityLeonard extends ModEntityMob {
 	//Okay, regen works now. Will try it with other scenarios later.
 	public void onLivingUpdate() {
 		if (this.getHealth() < this.getMaxHealth()) {
-			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 0, false, true));
+			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 50, 0, false, true));
+			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 1, 1);
+		}
+		if (this.getHealth() <= this.getMaxHealth() / 2.0F) {
+			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, true));
+			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 1, 1);
 		}
 		super.onLivingUpdate();
 	}
