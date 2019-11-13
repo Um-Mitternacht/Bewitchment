@@ -259,6 +259,7 @@ item.bewitchment.granite_leonard_statue.name=Granite Leonard Statue
 item.bewitchment.nether_brick_leonard_statue.name=Nether Brick Leonard Statue
 item.bewitchment.andesite_leonard_statue.name=Andesite Leonard Statue
 item.bewitchment.scorned_brick_leonard_statue.name=Scorned Brick Leonard Statue
+item.bewitchment.gold_leonard_statue.name=Gold Leonard Statue
 
 item.bewitchment.stone_baphomet_statue.name=Stone Baphomet Statue
 item.bewitchment.diorite_baphomet_statue.name=Diorite Baphomet Statue
@@ -266,6 +267,7 @@ item.bewitchment.granite_baphomet_statue.name=Granite Baphomet Statue
 item.bewitchment.nether_brick_baphomet_statue.name=Nether Brick Baphomet Statue
 item.bewitchment.andesite_baphomet_statue.name=Andesite Baphomet Statue
 item.bewitchment.scorned_brick_baphomet_statue.name=Scorned Brick Baphomet Statue
+item.bewitchment.gold_baphomet_statue.name=Gold Baphomet Statue
 
 item.bewitchment.stone_herne_statue.name=Stone Herne Statue
 item.bewitchment.diorite_herne_statue.name=Diorite Herne Statue
@@ -273,6 +275,7 @@ item.bewitchment.granite_herne_statue.name=Granite Herne Statue
 item.bewitchment.nether_brick_herne_statue.name=Nether Brick Herne Statue
 item.bewitchment.andesite_herne_statue.name=Andesite Herne Statue
 item.bewitchment.scorned_brick_herne_statue.name=Scorned Brick Herne Statue
+item.bewitchment.gold_herne_statue.name=Gold Herne Statue
 
 item.bewitchment.stone_lilith_statue.name=Stone Lilith Statue
 item.bewitchment.diorite_lilith_statue.name=Diorite Lilith Statue
@@ -280,6 +283,7 @@ item.bewitchment.granite_lilith_statue.name=Granite Lilith Statue
 item.bewitchment.nether_brick_lilith_statue.name=Nether Brick Lilith Statue
 item.bewitchment.andesite_lilith_statue.name=Andesite Lilith Statue
 item.bewitchment.scorned_brick_lilith_statue.name=Scorned Brick Lilith Statue
+item.bewitchment.gold_lilith_statue.name=Gold Lilith Statue
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire

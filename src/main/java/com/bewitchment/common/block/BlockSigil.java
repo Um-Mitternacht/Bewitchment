@@ -48,7 +48,6 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public BlockSigil() {
 		super(Material.CIRCUITS);
 		Util.registerBlock(this, "sigil", Blocks.WOOL);
-		setLightLevel(12);
 		setLightOpacity(0);
 		setDefaultState(getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
@@ -111,7 +110,12 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return null;
 	}
-	
+
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 4;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
