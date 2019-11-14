@@ -8,7 +8,8 @@ import com.bewitchment.api.message.TeleportPlayerClient;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Contract;
 import com.bewitchment.api.registry.Curse;
-import com.bewitchment.api.registry.item.ItemStatue;
+import com.bewitchment.client.render.tile.RenderTileEntityStatue;
+import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.BlockSpanishMoss;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
@@ -19,6 +20,7 @@ import com.bewitchment.registry.ModRegistries;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,10 +66,11 @@ public class Util {
 		if (mat == Material.TNT || mat == Material.VINE) Blocks.FIRE.setFireInfo(block, 15, 100);
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
-		if (!(block instanceof ItemStatue.BlockStatue) && !(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof ItemStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
+		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof BlockStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
 			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
+			if (block instanceof BlockStatue) item.setTileEntityItemStackRenderer(new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance));
 			ForgeRegistries.ITEMS.register(item);
-			Bewitchment.proxy.registerTexture(item, block instanceof BlockBush ? "inventory" : "normal");
+			Bewitchment.proxy.registerTexture(item, (block instanceof BlockBush || block instanceof BlockStatue) ? "inventory" : "normal");
 		}
 		for (String ore : oreDictionaryNames) OreDictionary.registerOre(ore, block);
 	}

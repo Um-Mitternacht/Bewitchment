@@ -3,9 +3,9 @@ package com.bewitchment.registry;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.AltarUpgrade;
-import com.bewitchment.api.registry.item.ItemStatue;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockLantern;
+import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
@@ -89,11 +89,11 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 5, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 6, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() == 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 5 && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityStatue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		Util.registerAltarUpgradeItem(ModObjects.pentacle, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 3, 0));
-		List<Item> statues = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemStatue).collect(Collectors.toList());
-		for (Item statue : statues) {
-			Util.registerAltarUpgradeItem(statue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
-			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityStatue && ((TileEntityStatue) s.getTileEntity()).getInventories()[0].getStackInSlot(0).getItem() == statue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
+		List<Block> statues = GameRegistry.findRegistry(Block.class).getValuesCollection().stream().filter(i -> i instanceof BlockStatue).collect(Collectors.toList());
+		for (Block statue : statues) {
+			Util.registerAltarUpgradeItem(Item.getItemFromBlock(statue), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		}
 		Util.registerAltarUpgradeOreDict("fossil", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemDiamond", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
