@@ -65,9 +65,14 @@ public class EntityBlackDog extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && !world.isRaining()) setDead();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) despawnEntity();
 	}
-	
+
+	@Override
+	protected boolean canDespawn() {
+		return hasCustomName();
+	}
+
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean flag = super.attackEntityFrom(source, amount);
@@ -91,7 +96,6 @@ public class EntityBlackDog extends ModEntityMob {
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(0, new EntityAIBreakDoor(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));

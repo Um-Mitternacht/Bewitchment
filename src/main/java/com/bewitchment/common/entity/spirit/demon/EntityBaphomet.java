@@ -3,6 +3,8 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModEntities;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -13,17 +15,30 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBaphomet extends ModEntityMob {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-	
+
+	private int mobSpawnTicks = 0;
+	private int pullCooldown = 0;
+
 	protected EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
@@ -37,13 +52,18 @@ public class EntityBaphomet extends ModEntityMob {
 	
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
-		
+		this.mobSpawnTicks = compound.getInteger("mobSpawnTicks");
+		this.pullCooldown = compound.getInteger("pullCooldown");
 		if (this.hasCustomName()) {
 			this.bossInfo.setName(this.getDisplayName());
 		}
 	}
-	
-	public void fall(float distance, float damageMultiplier) {
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("mobSpawnTicks", mobSpawnTicks);
+		tag.setInteger("pullCooldown", pullCooldown);
 	}
 	
 	@Override
@@ -83,11 +103,15 @@ public class EntityBaphomet extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-	
+
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(0, new EntityAIBreakDoor(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
@@ -100,5 +124,66 @@ public class EntityBaphomet extends ModEntityMob {
 	
 	protected void updateAITasks() {
 		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (getAttackTarget() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) getAttackTarget();
+			boolean buffed = ticksExisted % 600 > 5;
+			if (!buffed) {
+				if (!world.isRemote) {
+					((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 100, width, height+1, width, 0.1);
+					world.playSound(null, posX, posY, posZ, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.HOSTILE, 5, 1);
+				}
+				this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300));
+				this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 300));
+				this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300));
+				return;
+			}
+			boolean lowHealth = getHealth() / getMaxHealth() < 0.2;
+			if (lowHealth && mobSpawnTicks <= 0) {
+				EntityFeuerwurm temp = (EntityFeuerwurm) ModEntities.feuerwurm.newInstance(world);
+				temp.setAttackTarget(player);
+				temp.getDataManager().set(SKIN, rand.nextInt(temp.getSkinTypes()));
+				temp.setPosition(posX + rand.nextGaussian() * 0.8, posY + 0.5, posZ + rand.nextGaussian() * 0.8);
+				world.spawnEntity(temp);
+				if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height+1, temp.width, 0.1);
+				mobSpawnTicks = 180;
+			} else if (mobSpawnTicks > 0){
+				mobSpawnTicks--;
+			}
+			if (getDistance(player) > 10 && pullCooldown <= 0) {
+				player.motionX += (posX - getAttackTarget().posX) / 20;
+				player.motionZ += (posZ - getAttackTarget().posZ) / 20;
+				if (!world.isRemote) ((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));
+				pullCooldown = 50;
+			} else if (pullCooldown > 0) {
+				pullCooldown--;
+			}
+			boolean launchFireball = ticksExisted % 100 > 5;
+			if (!launchFireball && getDistance(player) > 5) {
+				double d0 = getDistanceSq(player);
+				double d1 = player.posX - this.posX;
+				double d2 = player.getEntityBoundingBox().minY + (double)(player.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+				double d3 = player.posZ - this.posZ;
+				float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
+				world.playEvent(null, 1018, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
+				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double)f, d2, d3 + this.getRNG().nextGaussian() * (double)f);
+				entitysmallfireball.posY = posY + (double)(height / 2.0F) + 0.5D;
+				world.spawnEntity(entitysmallfireball);
+			}
+		}
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entityIn) {
+		if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 40, 0));
+			this.heal(2);
+		}
+		return super.attackEntityAsMob(entityIn);
 	}
 }

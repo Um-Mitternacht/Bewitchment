@@ -273,7 +273,7 @@ public class ModelWitchesArmor extends ModelArmor {
 		super.bipedHeadwear.isHidden = true;
 		
 		super.bipedHead = hat ? hat1 : hood01;
-		super.bipedBody = robeBody;
+		super.bipedBody = bipedBody;
 		super.bipedRightArm = bipedRightArm;
 		super.bipedLeftArm = bipedLeftArm;
 		super.bipedRightLeg = bipedRightLeg;

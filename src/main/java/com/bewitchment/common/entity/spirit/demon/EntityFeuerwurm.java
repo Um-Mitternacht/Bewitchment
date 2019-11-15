@@ -56,7 +56,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
+	public int getSkinTypes() {
 		return 9;
 	}
 	
