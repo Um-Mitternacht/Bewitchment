@@ -293,7 +293,7 @@ tooltip.bewitchment.taglock=Contains a tag of %s
 
 item.bewitchment.contract.name=Demon Contract
 
-tooltip.bewitchment.beserker_entities=%d/%d Villagers/Players Killed
+tooltip.bewitchment.berserker_entities=%d/%d Villagers/Players Killed
 tooltip.bewitchment.devouring_rage_entities=%d/%d Livestocks Killed
 
 tooltip.bewitchment.contract_bound=Bound to %s

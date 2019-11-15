@@ -57,6 +57,10 @@ public class ExtendedPlayerHandler {
 			if (cap.curses != null) {  //check "curse conditions"
 				for (Curse curse : cap.getCurses()) {
 					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST && event.player.getRNG().nextDouble() < curse.chance) curse.doCurse(event, event.player);
+					if (curse.getCurseCondition() == Curse.CurseCondition.INSTANT) {
+						curse.doCurse(event, event.player);
+						cap.removeCurse(curse);
+					}
 				}
 				if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
 					cap.updateCurses();
@@ -174,7 +178,7 @@ public class ExtendedPlayerHandler {
 				ExtendedPlayer ep = event.getEntityLiving().getCapability(ExtendedPlayer.CAPABILITY, null);
 				if (ep.curses != null) {
 					for (Curse curse : ep.getCurses()) {
-						if (curse.getCurseCondition() == Curse.CurseCondition.HURT) curse.doCurse(event, (EntityPlayer) event.getSource().getTrueSource());
+						if (curse.getCurseCondition() == Curse.CurseCondition.HURT) curse.doCurse(event, (EntityPlayer) event.getEntityLiving());
 					}
 				}
 			}

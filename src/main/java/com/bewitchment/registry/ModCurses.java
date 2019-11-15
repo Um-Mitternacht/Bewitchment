@@ -23,4 +23,5 @@ public class ModCurses {
 	public static Contract contractIgnition = new ContractIgnition();
 	public static Contract contractSalamandrineTolerance = new ContractSalamandrineTolerance();
 	//public static Curse contractEverflame = new ContractEverflame();
+	public static Contract contractMahapadma = new ContractMahapadma();
 }

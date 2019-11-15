@@ -68,7 +68,12 @@ public class EntityLeonard extends ModEntityMob {
 		}
 		super.onLivingUpdate();
 	}
-	
+
+	@Override
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		return !potioneffectIn.getPotion().isBadEffect();
+	}
+
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
