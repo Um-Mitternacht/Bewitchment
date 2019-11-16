@@ -35,6 +35,8 @@ public class ProcessorRitual implements IComponentProcessor {
 			else return "bewitchment:textures/gui/patchouli/circle/foci.png";
 		}
 		else if (key.equals("name")) return I18n.format("ritual." + recipe.getRegistryName().toString().replace(":", "."));
+		else if (key.equals("startingCost")) return "Starting Cost: " + recipe.startingPower;
+		else if (key.equals("runningCost")) return "Running Cost: " + recipe.runningPower;
 		return null;
 	}
 }

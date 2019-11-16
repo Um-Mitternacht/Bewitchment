@@ -6,7 +6,8 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.api.registry.item.ItemFume;
-import com.bewitchment.api.registry.item.ItemStatue;
+import com.bewitchment.client.misc.Statues;
+import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.*;
@@ -320,27 +321,27 @@ public class ModObjects {
 	public static final Item juniper_key = new ItemJuniperKey();
 	
 	//Lenny Statue
-	public static final Item stone_leonard_statue = createIdol("stone_leonard_statue", Blocks.STONE);
-	public static final Item nether_brick_leonard_statue = createIdol("nether_brick_leonard_statue", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_leonard_statue = createIdol("scorned_brick_leonard_statue", scorned_bricks[0]);
-	public static final Item gold_leonard_statue = createIdol("gold_leonard_statue", Blocks.GOLD_BLOCK);
+	public static final Block stone_leonard_statue = new BlockStatue(Statues.stone_leonard_statue);
+	public static final Block nether_brick_leonard_statue = new BlockStatue(Statues.nether_brick_leonard_statue);
+	public static final Block scorned_brick_leonard_statue = new BlockStatue(Statues.scorned_brick_leonard_statue);
+	public static final Block gold_leonard_statue = new BlockStatue(Statues.gold_leonard_statue);
 	//Lilith Statue
-	public static final Item stone_lilith_statue = createIdol("stone_lilith_statue", Blocks.STONE);
-	public static final Item nether_brick_lilith_statue = createIdol("nether_brick_lilith_statue", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_lilith_statue = createIdol("scorned_brick_lilith_statue", scorned_bricks[0]);
-	public static final Item gold_lilith_statue = createIdol("gold_lilith_statue", Blocks.GOLD_BLOCK);
+	public static final Block stone_lilith_statue = new BlockStatue(Statues.stone_lilith_statue);
+	public static final Block nether_brick_lilith_statue = new BlockStatue(Statues.nether_brick_lilith_statue);
+	public static final Block scorned_brick_lilith_statue = new BlockStatue(Statues.scorned_brick_lilith_statue);
+	public static final Block gold_lilith_statue = new BlockStatue(Statues.gold_lilith_statue);
 	//Baphomet Statue
-	public static final Item stone_baphomet_statue = createIdol("stone_baphomet_statue", Blocks.STONE);
-	public static final Item nether_brick_baphomet_statue = createIdol("nether_brick_baphomet_statue", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_baphomet_statue = createIdol("scorned_brick_baphomet_statue", scorned_bricks[0]);
-	public static final Item gold_baphomet_statue = createIdol("gold_baphomet_statue", Blocks.GOLD_BLOCK);
+	public static final Block stone_baphomet_statue = new BlockStatue(Statues.stone_baphomet_statue);
+	public static final Block nether_brick_baphomet_statue = new BlockStatue(Statues.nether_brick_baphomet_statue);
+	public static final Block scorned_brick_baphomet_statue = new BlockStatue(Statues.scorned_brick_baphomet_statue);
+	public static final Block gold_baphomet_statue = new BlockStatue(Statues.gold_baphomet_statue);
 	//Herne Statue
-	public static final Item stone_herne_statue = createIdol("stone_herne_statue", Blocks.STONE);
-	public static final Item nether_brick_herne_statue = createIdol("nether_brick_herne_statue", Blocks.NETHER_BRICK);
-	public static final Item scorned_brick_herne_statue = createIdol("scorned_brick_herne_statue", scorned_bricks[0]);
-	public static final Item gold_herne_statue = createIdol("gold_herne_statue", Blocks.GOLD_BLOCK);
+	public static final Block stone_herne_statue = new BlockStatue(Statues.stone_herne_statue);
+	public static final Block nether_brick_herne_statue = new BlockStatue(Statues.nether_brick_herne_statue);
+	public static final Block scorned_brick_herne_statue = new BlockStatue(Statues.scorned_brick_herne_statue);
+	public static final Block gold_herne_statue = new BlockStatue(Statues.gold_herne_statue);
 	
-	public static final Block filler = new ItemStatue.BlockFiller();
+	public static final Block filler = new BlockStatue.BlockFiller();
 	
 	//Util Items
 	public static final Item bottled_frostfire = new ItemBottledFrostfire();
@@ -556,10 +557,6 @@ public class ModObjects {
 			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.cracked_scorned_bricks.getDefaultState(), 1));
 			CarvingUtils.getChiselRegistry().addVariation("scorned_bricks", CarvingUtils.variationFor(ModObjects.chiseled_scorned_bricks.getDefaultState(), 1));
 		}
-	}
-	
-	private static Item createIdol(String name, Block base) {
-		return Util.registerItem(new ItemStatue(name, base), name);
 	}
 	
 	private static Block[] createChiselBlocks(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, List<String> oreDictionaryNames, String... names) {

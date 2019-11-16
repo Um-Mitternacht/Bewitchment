@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -56,7 +57,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
+	public int getSkinTypes() {
 		return 9;
 	}
 	
@@ -128,5 +129,13 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && (!BewitchmentAPI.hasBesmirched(p))));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirched(e)));
+	}
+
+	@Override
+	public boolean shouldRenderInPass(int pass) {
+		 if (getDataManager().get(ModEntityMob.SPECTRAL)){
+		 	return pass == 1;
+		}
+		return pass == 0;
 	}
 }

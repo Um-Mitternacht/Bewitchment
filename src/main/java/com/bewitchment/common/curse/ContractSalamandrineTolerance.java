@@ -19,8 +19,8 @@ public class ContractSalamandrineTolerance extends Contract {
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		LivingHurtEvent event0 = (LivingHurtEvent) event;
-		if (event0.getSource() == DamageSource.IN_FIRE || event0.getSource() == DamageSource.ON_FIRE) {
-			event0.setAmount(event0.getAmount() / 2);
+		if (event0.getSource() == DamageSource.IN_FIRE || event0.getSource() == DamageSource.ON_FIRE || event0.getSource() == DamageSource.LAVA) {
+			event0.setAmount(event0.getAmount() / 3);
 			return true;
 		}
 		return false;

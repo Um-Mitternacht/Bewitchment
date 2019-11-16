@@ -3,10 +3,6 @@ package com.bewitchment.proxy;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.TarotInfo;
 import com.bewitchment.client.gui.GuiTarotTable;
-import com.bewitchment.client.model.block.ModelBaphometStatue;
-import com.bewitchment.client.model.block.ModelHerneStatue;
-import com.bewitchment.client.model.block.ModelLeonardStatue;
-import com.bewitchment.client.model.block.ModelLilithStatue;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderDragonsBloodBroom;
@@ -41,6 +37,8 @@ import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,18 +60,11 @@ import java.util.function.Predicate;
 @SuppressWarnings({"ConstantConditions", "unused", "WeakerAccess"})
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
-	public static final Map<Item, ModelBase> IDOL_MODELS = new HashMap<>();
-	public static final Map<Item, ResourceLocation> IDOL_TEXTURES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void stitch(TextureStitchEvent.Pre event) {
 		event.getMap().registerSprite(RenderTileEntityWitchesCauldron.TEX);
 		event.getMap().registerSprite(ModParticleBubble.TEX);
-	}
-	
-	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
-		IDOL_MODELS.put(item, model);
-		IDOL_TEXTURES.put(item, texture);
 	}
 	
 	@Override
@@ -121,34 +112,8 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x9e0000 : 0xffffff, ModObjects.bottle_of_blood);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
-		
-		// Register lenny model
-		ModelBase slenny = new ModelLeonardStatue();
-		registerIdol(ModObjects.stone_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/stone.png"));
-		registerIdol(ModObjects.gold_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/gold.png"));
-		registerIdol(ModObjects.nether_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_leonard_statue, slenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/scorned_brick.png"));
-		
-		// Register lilith model
-		ModelBase slilith = new ModelLilithStatue();
-		registerIdol(ModObjects.stone_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/stone.png"));
-		registerIdol(ModObjects.gold_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/gold.png"));
-		registerIdol(ModObjects.nether_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_lilith_statue, slilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/lilith/scorned_brick.png"));
-		
-		// Register baphomet model
-		ModelBase sbaphomet = new ModelBaphometStatue();
-		registerIdol(ModObjects.stone_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/stone.png"));
-		registerIdol(ModObjects.gold_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/gold.png"));
-		registerIdol(ModObjects.nether_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_baphomet_statue, sbaphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/baphomet/scorned_brick.png"));
-		
-		// Register herne model
-		ModelBase sherne = new ModelHerneStatue();
-		registerIdol(ModObjects.stone_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/stone.png"));
-		registerIdol(ModObjects.gold_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/gold.png"));
-		registerIdol(ModObjects.nether_brick_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_herne_statue, sherne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/scorned_brick.png"));
+
+        TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
 	}
 	
 	@Override
@@ -183,7 +148,7 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuniperChest.class, new RenderTileEntityJuniperChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDBChest.class, new RenderTileEntityDBChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityIdol());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityStatue());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
 	}
 	

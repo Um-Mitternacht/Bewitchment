@@ -173,11 +173,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	public ITextComponent getDisplayName() {
 		Team team = this.getTeam();
 		String s = this.getCustomNameTag();

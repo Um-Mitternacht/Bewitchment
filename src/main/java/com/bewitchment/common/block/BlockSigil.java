@@ -48,8 +48,8 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public BlockSigil() {
 		super(Material.CIRCUITS);
 		Util.registerBlock(this, "sigil", Blocks.WOOL);
-		setLightLevel(12);
-		setLightOpacity(0);
+		this.useNeighborBrightness = true;
+		this.setLightOpacity(0);
 		setDefaultState(getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	
@@ -111,29 +111,34 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return null;
 	}
-	
+
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 4;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		EnumFacing facing = state.getValue(FACING);
 		switch (facing) {
 			case UP:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY(), pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY(), pos.getZ() + rand.nextGaussian() / 5, 0, 0, 0);
 				break;
 			case DOWN:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + 0.8, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY() + 0.8, pos.getZ() + rand.nextGaussian() / 5, 0, 0, 0);
 				break;
 			case EAST:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ() + rand.nextGaussian() / 5, 0, 0, 0);
 				break;
 			case WEST:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 1, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + rand.nextGaussian() / 4, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 1, pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ() + rand.nextGaussian() / 5, 0, 0, 0);
 				break;
 			case SOUTH:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ(), 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ(), 0, 0, 0);
 				break;
 			case NORTH:
-				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 4, pos.getY() + rand.nextGaussian() / 4 + 0.5, pos.getZ() + 1, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ() + 1, 0, 0, 0);
 		}
 	}
 	

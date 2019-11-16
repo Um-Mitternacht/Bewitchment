@@ -1,6 +1,8 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
@@ -20,6 +22,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import static com.bewitchment.common.entity.util.ModEntityMob.SKIN;
+
 public class ItemCaduceus extends Item {
 	public ItemCaduceus() {
 		super();
@@ -35,11 +39,13 @@ public class ItemCaduceus extends Item {
 			EntityLivingBase target = player.getAttackingEntity();
 			int random = itemRand.nextInt(3) + 1;
 			for (int i = 0; i < random; i++) {
-				ModEntityMob temp = (ModEntityMob) ModEntities.feuerwurm.newInstance(world);
+				EntityFeuerwurm temp = (EntityFeuerwurm) ModEntities.feuerwurm.newInstance(world);
 				temp.getDataManager().set(ModEntityMob.SPECTRAL, true);
+				temp.getDataManager().set(ModEntityMob.SKIN, itemRand.nextInt(temp.getSkinTypes()));
 				temp.lifeTimeTicks = 400;
 				temp.summoner = player.getPersistentID();
 				temp.setAttackTarget(target);
+
 				temp.setPosition(pos.getX() + itemRand.nextGaussian() * 0.8, pos.getY() + 1, pos.getZ() + itemRand.nextGaussian() * 0.8);
 				world.spawnEntity(temp);
 			}

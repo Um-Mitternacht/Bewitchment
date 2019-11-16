@@ -39,6 +39,7 @@ public class ModBlockSlab extends BlockSlab {
 		Bewitchment.proxy.registerTexture(item_slab, "normal");
 		this.double_slab = double_slab;
 		ForgeRegistries.BLOCKS.register(double_slab);
+		this.useNeighborBrightness = true;
 	}
 	
 	private ModBlockSlab(String name, Block base, boolean isDouble) {
@@ -47,21 +48,6 @@ public class ModBlockSlab extends BlockSlab {
 		this.setDefaultState(isDouble ? blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, EnumBlockHalf.BOTTOM));
 		this.isDouble = isDouble;
 		this.fullBlock = isDouble;
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isOpaqueCube(state);
-	}
-	
-	@Override
-	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return !Util.isTransparent(state) && super.doesSideBlockRendering(state, world, pos, face);
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state) {
-		return !Util.isTransparent(state) && super.isFullCube(state);
 	}
 	
 	@Override
