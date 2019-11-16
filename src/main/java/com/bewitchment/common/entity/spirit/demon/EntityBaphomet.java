@@ -4,10 +4,8 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModEntities;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import com.bewitchment.registry.ModObjects;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractIllager;
 import net.minecraft.entity.monster.EntityIronGolem;
@@ -18,6 +16,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.potion.PotionEffect;
@@ -26,12 +26,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.BossInfo;
-import net.minecraft.world.BossInfoServer;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.*;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class EntityBaphomet extends ModEntityMob {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
@@ -100,7 +99,7 @@ public class EntityBaphomet extends ModEntityMob {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(666);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
 
@@ -124,6 +123,18 @@ public class EntityBaphomet extends ModEntityMob {
 	
 	protected void updateAITasks() {
 		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+	}
+
+	@Override
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+		super.setEquipmentBasedOnDifficulty(difficulty);
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.caduceus));
+	}
+
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		this.setEquipmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
 	}
 
 	@Override
@@ -155,15 +166,15 @@ public class EntityBaphomet extends ModEntityMob {
 				mobSpawnTicks--;
 			}
 			if (getDistance(player) > 10 && pullCooldown <= 0) {
-				player.motionX += (posX - getAttackTarget().posX) / 20;
-				player.motionZ += (posZ - getAttackTarget().posZ) / 20;
+				player.motionX += (posX - getAttackTarget().posX) / 10;
+				player.motionZ += (posZ - getAttackTarget().posZ) / 10;
 				if (!world.isRemote) ((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));
 				pullCooldown = 50;
 			} else if (pullCooldown > 0) {
 				pullCooldown--;
 			}
-			boolean launchFireball = ticksExisted % 100 > 5;
-			if (!launchFireball && getDistance(player) > 5) {
+			boolean launchFireball = ticksExisted % 80 > 5;
+			if (!launchFireball && getDistance(player) > 2) {
 				double d0 = getDistanceSq(player);
 				double d1 = player.posX - this.posX;
 				double d2 = player.getEntityBoundingBox().minY + (double)(player.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
