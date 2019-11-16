@@ -17,6 +17,7 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
@@ -42,6 +43,7 @@ public class EntityBaphomet extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
 		setSize(1.0f, 4.8f);
+		inventoryHandsDropChances[0] = 1;
 	}
 	
 	@Override
@@ -106,6 +108,11 @@ public class EntityBaphomet extends ModEntityMob {
 	@Override
 	protected boolean canDespawn() {
 		return false;
+	}
+
+	@Override
+	protected boolean canDropLoot() {
+		return true;
 	}
 
 	@Override

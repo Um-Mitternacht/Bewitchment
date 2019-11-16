@@ -38,6 +38,7 @@ public class EntityLeonard extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
 		setSize(1.0f, 3.8f);
+		inventoryHandsDropChances[0] = 1;
 	}
 	
 	@Override
@@ -66,7 +67,7 @@ public class EntityLeonard extends ModEntityMob {
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 6, 1);
 			this.swingArm(EnumHand.MAIN_HAND);
 		}
-		if (this.getHealth() / this.getMaxHealth() < 0.4) {
+		if (this.getHealth() / this.getMaxHealth() < 0.4 && !(ticksExisted % 200 > 5)) {
 			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, true));
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 6, 1);
 			this.swingArm(EnumHand.MAIN_HAND);
@@ -114,7 +115,12 @@ public class EntityLeonard extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-	
+
+	@Override
+	protected boolean canDropLoot() {
+		return true;
+	}
+
 	public boolean isNonBoss() {
 		return false;
 	}
