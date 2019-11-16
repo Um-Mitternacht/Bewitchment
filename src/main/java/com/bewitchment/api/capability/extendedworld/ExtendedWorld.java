@@ -50,9 +50,7 @@ public class ExtendedWorld extends WorldSavedData {
 		NBTTagList storedPoppetShelves = nbt.getTagList("storedPoppetShelves", Constants.NBT.TAG_COMPOUND);
 		for (int i = 0; i < storedCauldrons.tagCount(); i++) this.storedCauldrons.add(storedCauldrons.getCompoundTagAt(i));
 		for (int i = 0; i < storedPoppetShelves.tagCount(); i++) this.storedPoppetShelves.add(storedPoppetShelves.getCompoundTagAt(i));
-		//todo properly store NBT
-		nbt.getTagList("demonPledges", Constants.NBT.TAG_COMPOUND).forEach(tag -> readPledges(demonPledgedPlayers, (NBTTagCompound) tag));
-		//demonPledgedPlayers.put("bapy", Arrays.asList(UUID.fromString("cc6d4703-5257-360a-b167-332b467f63af")));
+		nbt.getTagList("demonPledges", Constants.NBT.TAG_COMPOUND).forEach(tag -> readPledge(demonPledgedPlayers, (NBTTagCompound) tag));
 	}
 	
 	@Override
@@ -62,7 +60,7 @@ public class ExtendedWorld extends WorldSavedData {
 		NBTTagList demonPledges = new NBTTagList();
 		for (NBTTagCompound cauldron : this.storedCauldrons) storedCauldrons.appendTag(cauldron);
 		for (NBTTagCompound poppet : this.storedPoppetShelves) storedPoppetShelves.appendTag(poppet);
-		demonPledgedPlayers.entrySet().stream().forEach(entry -> this.writePledges(entry, demonPledges));
+		demonPledgedPlayers.entrySet().forEach(entry -> this.writePledge(entry, demonPledges));
 		nbt.setTag("storedCauldrons", storedCauldrons);
 		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
 		nbt.setTag("demonPledges", demonPledges);
@@ -70,24 +68,22 @@ public class ExtendedWorld extends WorldSavedData {
 		return nbt;
 	}
 
-	private void writePledges(Map.Entry<String, Collection<UUID>> entry, NBTTagList list) {
+	private void writePledge(Map.Entry<String, Collection<UUID>> entry, NBTTagList list) {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setString("demon", entry.getKey());
-		NBTTagCompound players = new NBTTagCompound();
+		NBTTagList players = new NBTTagList();
 		for(UUID uuid : entry.getValue()){
-			players.setString(uuid.toString(), uuid.toString());
+			players.appendTag(new NBTTagString(uuid.toString()));
 		}
 		data.setTag("players", players);
 		list.appendTag(data);
 	}
 
-	private void readPledges(Map<String, Collection<UUID>> map, NBTTagCompound tag){
+	private void readPledge(Map<String, Collection<UUID>> map, NBTTagCompound tag){
 		List<UUID> players = new ArrayList<>();
-		tag.getCompoundTag("players").getKeySet().forEach(key -> {
-			System.out.println(key);
-			players.add(UUID.fromString(tag.getCompoundTag("players").getString(key)));
-		});
-		map.put(tag.getString("demon"), players);
-		System.out.println(tag);
+		String demon = tag.getString("demon");
+		for (NBTBase player : tag.getTagList("players", Constants.NBT.TAG_STRING))
+			players.add(UUID.fromString(((NBTTagString) player).getString()));
+		map.put(demon, players);
 	}
 }
