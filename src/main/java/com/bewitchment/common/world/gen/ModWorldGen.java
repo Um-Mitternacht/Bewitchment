@@ -107,10 +107,12 @@ public class ModWorldGen implements IWorldGenerator {
 			generateOre(world, rand, amethystOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.amethystChance, ModConfig.worldGen.oreGen.amethystMin, ModConfig.worldGen.oreGen.amethystMax);
 			generateOre(world, rand, garnetOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.garnetChance, ModConfig.worldGen.oreGen.garnetMin, ModConfig.worldGen.oreGen.garnetMax);
 			generateOre(world, rand, opalOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.opalChance, ModConfig.worldGen.oreGen.opalMin, ModConfig.worldGen.oreGen.opalMax);
-			generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-			generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
-			generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
-			generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
+			if (!Arrays.asList(ModConfig.worldGen.treeGen.treeGenBlacklist).contains(Biome.getIdForBiome(world.getBiome(new BlockPos(chunkX * 16 + 8, world.getHeight(), chunkZ * 16 + 8))))) {
+				generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
+				generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
+				generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+				generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
+			}
 		}
 		
 		if (ModConfig.worldGen.enableStructures && world.provider.getDimension() == 0) {    //Overworld Gen

@@ -192,7 +192,7 @@ public class ExtendedPlayerHandler {
 			ItemStack stack = player.inventory.getStackInSlot(i);
 			boolean found = false;
 			if (stack.getItem() instanceof ItemContract && stack.hasTagCompound() && stack.getTagCompound().hasKey("contract") && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("items") && !((ItemContract) stack.getItem()).complete(stack)) {
-				if (Util.findPlayer(stack.getTagCompound().getString("boundId")) == player) {
+				if (stack.getTagCompound().getString("boundId").equals(player.getPersistentID().toString())) {
 					NBTTagList list = stack.getTagCompound().getTagList("items", Constants.NBT.TAG_COMPOUND);
 					for (int t = 0; t < list.tagCount(); t++) {
 						NBTTagCompound tag = list.getCompoundTagAt(t);
