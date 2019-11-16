@@ -4,14 +4,11 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelBaphomet;
 import com.bewitchment.common.entity.spirit.demon.EntityBaphomet;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -43,7 +40,7 @@ public class RenderBaphomet extends RenderLiving<EntityBaphomet> {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static class LayerHeldWeapon implements LayerRenderer<EntityLivingBase> {
+	private static class LayerHeldWeapon implements LayerRenderer<EntityLivingBase> {
 
 		final RenderLivingBase<?> livingEntityRenderer;
 
@@ -59,38 +56,25 @@ public class RenderBaphomet extends RenderLiving<EntityBaphomet> {
 			if (!itemstack.isEmpty() || !itemstack1.isEmpty()) {
 				GlStateManager.pushMatrix();
 				if (this.livingEntityRenderer.getMainModel().isChild) {
-					float f = 0.5F;
 					GlStateManager.translate(0.0F, 0.75F, 0.0F);
 					GlStateManager.scale(0.5F, 0.5F, 0.5F);
 				}
-				this.renderHeldItem(entitylivingbaseIn, itemstack1, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, EnumHandSide.RIGHT);
-				this.renderHeldItem(entitylivingbaseIn, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, EnumHandSide.LEFT);
+				this.renderHeldItem(entitylivingbaseIn, itemstack1);
 				GlStateManager.popMatrix();
 			}
 		}
 
-		private void renderHeldItem(EntityLivingBase entityLivingBase, ItemStack itemStack, ItemCameraTransforms.TransformType transformType, EnumHandSide handSide)
-		{
+		private void renderHeldItem(EntityLivingBase entityLivingBase, ItemStack itemStack) {
 			if (!itemStack.isEmpty()) {
 				GlStateManager.pushMatrix();
-				if (entityLivingBase.isSneaking()) {
-					GlStateManager.translate(0.0F, 0.2F, 0.0F);
-				}
-				this.translateToHand(handSide);
+				GlStateManager.translate(-0.5, -0.125F, -0.125);
 				GlStateManager.rotate(200.0F, 1.0F, 0.0F, 0.0F);
-				boolean flag = handSide == EnumHandSide.LEFT;
-				GlStateManager.translate((float)(flag ? -1 : -0.25) / 4, -0.125F, 1 / 8F);
-				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entityLivingBase, itemStack, transformType, flag);
+				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entityLivingBase, itemStack, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, false);
 				GlStateManager.popMatrix();
 			}
 		}
 
-		void translateToHand(EnumHandSide p_191361_1_) {
-			((ModelBiped)this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F, p_191361_1_);
-		}
-
-		public boolean shouldCombineTextures()
-		{
+		public boolean shouldCombineTextures() {
 			return false;
 		}
 	}
