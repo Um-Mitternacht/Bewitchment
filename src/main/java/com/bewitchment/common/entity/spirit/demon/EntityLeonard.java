@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
@@ -31,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class EntityLeonard extends ModEntityMob {
+public class EntityLeonard extends ModEntityMob implements IPledgeable{
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 	
 	protected EntityLeonard(World world) {
@@ -175,5 +176,10 @@ public class EntityLeonard extends ModEntityMob {
 	
 	protected void updateAITasks() {
 		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+	}
+
+	@Override
+	public String getPledgeName() {
+		return "leonard";
 	}
 }
