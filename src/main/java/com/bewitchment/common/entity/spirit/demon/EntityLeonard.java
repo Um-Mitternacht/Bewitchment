@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class EntityLeonard extends ModEntityMob implements IPledgeable{
+public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 	
 	protected EntityLeonard(World world) {
@@ -53,11 +53,6 @@ public class EntityLeonard extends ModEntityMob implements IPledgeable{
 		if (this.hasCustomName()) {
 			this.bossInfo.setName(this.getDisplayName());
 		}
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 
 	@Override
@@ -120,10 +115,6 @@ public class EntityLeonard extends ModEntityMob implements IPledgeable{
 	@Override
 	protected boolean canDropLoot() {
 		return true;
-	}
-
-	public boolean isNonBoss() {
-		return false;
 	}
 	
 	public void setCustomNameTag(@NotNull String name) {

@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class EntityBaphomet extends ModEntityMob implements IPledgeable{
+public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 
 	private int mobSpawnTicks = 0;
@@ -75,10 +75,6 @@ public class EntityBaphomet extends ModEntityMob implements IPledgeable{
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return 15728880;
-	}
-	
-	public boolean isNonBoss() {
-		return false;
 	}
 	
 	public void setCustomNameTag(String name) {
