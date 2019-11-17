@@ -36,7 +36,7 @@ public class RenderBaphomet extends RenderLiving<EntityBaphomet> {
 	@Override
 	protected void preRenderCallback(EntityBaphomet entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.6, 1.6, 1.6);
+		GlStateManager.scale(1.25, 1.25, 1.25);
 	}
 
 	@SideOnly(Side.CLIENT)

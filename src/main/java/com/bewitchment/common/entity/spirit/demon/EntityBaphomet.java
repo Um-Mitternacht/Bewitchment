@@ -42,7 +42,7 @@ public class EntityBaphomet extends ModEntityMob implements IPledgeable{
 	protected EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
-		setSize(1.0f, 4.8f);
+		setSize(1.0f, 3.6f);
 		inventoryHandsDropChances[0] = 1;
 	}
 	

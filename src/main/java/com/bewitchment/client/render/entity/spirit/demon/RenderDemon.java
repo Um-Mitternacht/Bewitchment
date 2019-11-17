@@ -30,14 +30,9 @@ public class RenderDemon extends RenderLiving<EntityDemon> {
 		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
 	}
 	
-	//	@Override
-	//	protected boolean canRenderName(EntityDemon entity) {
-	//		return true;
-	//	}
-	
 	@Override
 	protected void preRenderCallback(EntityDemon entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(1.6, 1.6, 1.6);
+		GlStateManager.scale(1.4, 1.4, 1.4);
 	}
 }
