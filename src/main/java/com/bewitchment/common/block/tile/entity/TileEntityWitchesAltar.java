@@ -1,6 +1,5 @@
 package com.bewitchment.common.block.tile.entity;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
@@ -30,7 +29,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
@@ -95,14 +93,16 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (!world.isRemote) {
 			if (world.getTotalWorldTime() % 100 == 0) {
 				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
-					List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
-					for (ItemStack stack : inv) {
+					for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+						ItemStack stack = player.inventory.getStackInSlot(i);
 						if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
 							MagicPower temp = new MagicPower();
 							temp.amount = stack.getTagCompound().getInteger("amount");
 							temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
 							if (MagicPower.transfer(magicPower, temp, 50, 0.5f)) {
 								stack.getTagCompound().setInteger("amount", temp.amount);
+								player.inventory.setInventorySlotContents(i, stack);
+								player.inventory.markDirty();
 								break;
 							}
 						}
