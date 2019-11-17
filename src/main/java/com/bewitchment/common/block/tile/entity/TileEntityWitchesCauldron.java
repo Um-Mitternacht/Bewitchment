@@ -5,6 +5,7 @@ import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.api.message.SpawnBubble;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Brew;
@@ -27,6 +28,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
@@ -111,16 +113,23 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 							int bottles = 3;
 							boolean boosted = false;
-							if (BewitchmentAPI.hasAlchemist(player)) {
+							/*if (BewitchmentAPI.hasAlchemist(player)) {
 								bottles++;
 								boosted = true;
-							}
-							Util.replaceAndConsumeItem(player, hand, createPotion(boosted));
-							tank.drain(Fluid.BUCKET_VOLUME / bottles, true);
-							world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
-							if (tank.getFluidAmount() < 2) {
-								tank.drain(Fluid.BUCKET_VOLUME, true);
-								clear(inventory);
+							}*/
+							WitchesCauldronEvent.CreatePotionEvent createPotion = new WitchesCauldronEvent.CreatePotionEvent(this, player, bottles, boosted);
+							if (!MinecraftForge.EVENT_BUS.post(createPotion)) {
+								ItemStack createdPotion = createPotion(createPotion.isBoosted());
+								WitchesCauldronEvent.PotionCreatedEvent potionCreated = new WitchesCauldronEvent.PotionCreatedEvent(this, createPotion.getUser(), createPotion.getBottles(), createdPotion);
+								if (!MinecraftForge.EVENT_BUS.post(potionCreated)) {
+									Util.replaceAndConsumeItem(potionCreated.getUser(), hand, potionCreated.getPotionStack());
+								}
+								tank.drain(Fluid.BUCKET_VOLUME / potionCreated.getBottles(), true);
+								world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1, 1);
+								if (tank.getFluidAmount() < 2) {
+									tank.drain(Fluid.BUCKET_VOLUME, true);
+									clear(inventory);
+								}
 							}
 						}
 					}

@@ -64,7 +64,6 @@ public class ExtendedWorld extends WorldSavedData {
 		nbt.setTag("storedCauldrons", storedCauldrons);
 		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
 		nbt.setTag("demonPledges", demonPledges);
-		System.out.println(demonPledges);
 		return nbt;
 	}
 
@@ -72,9 +71,7 @@ public class ExtendedWorld extends WorldSavedData {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setString("demon", entry.getKey());
 		NBTTagList players = new NBTTagList();
-		for(UUID uuid : entry.getValue()){
-			players.appendTag(new NBTTagString(uuid.toString()));
-		}
+		for(UUID uuid : entry.getValue()) players.appendTag(new NBTTagString(uuid.toString()));
 		data.setTag("players", players);
 		list.appendTag(data);
 	}

@@ -2,6 +2,8 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
@@ -47,6 +49,14 @@ import java.util.Objects;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
+	@SubscribeEvent
+	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent evt){
+		if (BewitchmentAPI.hasAlchemist(evt.getUser())){
+			evt.setBoosted(true);
+			evt.setBottles(evt.getBottles() + 1);
+		}
+	}
+
 	@SubscribeEvent
 	public void lootLoad(LootTableLoadEvent evt) {
 		if (evt.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE)) {
