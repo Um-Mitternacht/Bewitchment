@@ -9,7 +9,6 @@ import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.client.misc.Statues;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.*;
-import com.bewitchment.common.block.crop.BlockCropsSpreading;
 import com.bewitchment.common.block.plants.*;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
@@ -71,7 +70,7 @@ public class ModObjects {
 	
 	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
-	public static final ModBlockCrops crop_belladonna = new BlockCropsSpreading("crop_belladonna");
+	public static final ModBlockCrops crop_belladonna = new ModBlockCrops("crop_belladonna");
 	public static final ModBlockCrops crop_garlic = new ModBlockCrops("crop_garlic");
 	public static final ModBlockCrops crop_hellebore = new ModBlockCrops("crop_hellebore");
 	public static final ModBlockCrops crop_mandrake = new ModBlockCrops("crop_mandrake");
