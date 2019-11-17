@@ -11,7 +11,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 	classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
-        classpath "org.spongepowered:mixingradle:0.7.11-SNAPSHOT"	
+        classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -61,7 +61,7 @@ dependencies {
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
-    compile 'org.spongepowered:mixin:0.7.11-SNAPSHOT'    
+    compile 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
     implementation 'org.jetbrains:annotations:15.0'
 }
 
