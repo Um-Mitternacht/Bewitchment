@@ -65,12 +65,12 @@ public class EntityBlackDog extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) despawnEntity();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
 	}
 
 	@Override
 	protected boolean canDespawn() {
-		return hasCustomName();
+		return !hasCustomName();
 	}
 
 	@Override
