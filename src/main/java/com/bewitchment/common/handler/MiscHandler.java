@@ -81,25 +81,6 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
-	public void joinWorld(EntityJoinWorldEvent event) {
-		if (!event.getWorld().isRemote) {
-			if (event.getEntity() instanceof EntityPotion && !(event.getEntity() instanceof ModEntityPotion)) {
-				ModEntityPotion entity = new ModEntityPotion(event.getWorld());
-				entity.deserializeNBT(event.getEntity().serializeNBT());
-				event.getWorld().spawnEntity(entity);
-				event.setCanceled(true);
-			}
-			else if (event.getEntity() instanceof EntityTippedArrow && !(event.getEntity() instanceof ModEntityTippedArrow)) {
-				Entity shooter = ((EntityTippedArrow) event.getEntity()).shootingEntity;
-				ModEntityTippedArrow entity = shooter instanceof EntityLivingBase ? new ModEntityTippedArrow(event.getWorld(), (EntityLivingBase) shooter) : new ModEntityTippedArrow(event.getWorld());
-				entity.deserializeNBT(event.getEntity().serializeNBT());
-				event.getWorld().spawnEntity(entity);
-				event.setCanceled(true);
-			}
-		}
-	}
-	
-	@SubscribeEvent
 	public void explode(ExplosionEvent.Detonate event) {
 		for (int i = event.getAffectedBlocks().size() - 1; i >= 0; i--) if (isNextToJuniperDoor(event.getWorld(), event.getAffectedBlocks().get(i))) event.getAffectedBlocks().remove(i);
 	}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.bewitchment.common.mixin",
+  "minVersion": "0.7.11",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinEntityTippedArrow",
+    "MixinEntityPotion"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

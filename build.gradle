@@ -2,7 +2,7 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
-	maven { url "https://plugins.gradle.org/m2/" }	
+	    maven { url "https://plugins.gradle.org/m2/" }
         maven {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/maven'
@@ -10,13 +10,13 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-	classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
+	    classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
-apply plugin: "org.spongepowered.mixin"
+apply plugin: 'org.spongepowered.mixin'
 
 version = "1.12.2-0.0.21-testbuild13"
 group = "com.bewitchment"
@@ -31,7 +31,9 @@ minecraft {
     version = "1.12.2-14.23.5.2838"
     runDir = "run"
     mappings = "stable_39"
-    clientRunArgs += "--username=Bewitchment"
+    clientRunArgs += "--username=Samaritans"
+    clientJvmArgs += "-Dfml.coreMods.load=com.bewitchment.core.BewitchmentFMLLoadingPlugin"
+    serverJvmArgs += "-Dfml.coreMods.load=com.bewitchment.core.BewitchmentFMLLoadingPlugin"
 }
 
 repositories {
@@ -61,8 +63,26 @@ dependencies {
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
-    compile 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
+    implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude module: "asm-commons"
+        exclude module: "asm-tree"
+        exclude module: "launchwrapper"
+        exclude module: "guava"
+        exclude module: "log4j-core"
+        exclude module: "gson"
+        exclude module: "commons-io"
+    }
     implementation 'org.jetbrains:annotations:15.0'
+}
+
+jar {
+    manifest.attributes(
+            'FMLAT': "bewitchment_at.cfg",
+            'FMLCorePlugin': 'com.bewitchment.core.BewitchmentFMLLoadingPlugin',
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': 'mixins.bewitchment.json',
+            'FMLCorePluginContainsFMLMod': 'true'
+    )
 }
 
 processResources {
