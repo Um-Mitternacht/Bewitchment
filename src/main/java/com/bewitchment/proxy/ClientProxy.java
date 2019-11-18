@@ -174,4 +174,9 @@ public class ClientProxy extends ServerProxy {
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
 	}
+
+	@Override
+	public void setStatueTEISR(Item item) {
+		item.setTileEntityItemStackRenderer(new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance));
+	}
 }

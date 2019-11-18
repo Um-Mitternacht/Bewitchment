@@ -376,7 +376,7 @@ public class ModRegistries {
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_unguent"), Arrays.asList(Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.cloudy_oil), Util.get("wax")), Collections.singletonList(new ItemStack(ModObjects.fiery_unguent))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "blood_from_hearts"), Arrays.asList(Util.get(ModObjects.heart), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE), Util.get(Items.GLASS_BOTTLE)), Collections.singletonList(new ItemStack(ModObjects.bottle_of_blood, 3))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "bottled_hellfire"), Arrays.asList(Util.get(Items.GLASS_BOTTLE), Util.get("wax"), Util.get("wax"), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.dragons_blood_resin)), Arrays.asList(new ItemStack(ModObjects.bottled_hellfire), new ItemStack(ModObjects.empty_jar, 1))));
-		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "swirl_of_depths"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get(Items.FISH), Util.get(ModObjects.coquina), Util.get(new ItemStack(Items.POTIONITEM, 1, 0))), Arrays.asList(new ItemStack(ModObjects.swirl_of_depths), new ItemStack(Items.GLASS_BOTTLE, 1))));
+		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "swirl_of_depths"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get(Items.FISH), Util.get("coquina"), Util.get(new ItemStack(Items.POTIONITEM, 1, 0))), Arrays.asList(new ItemStack(ModObjects.swirl_of_depths), new ItemStack(Items.GLASS_BOTTLE, 1))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "oil_of_vitriol"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get("nuggetIron"), Util.get("gunpowder"), Util.get(ModObjects.dragons_blood_resin)), Arrays.asList(new ItemStack(ModObjects.oil_of_vitriol), new ItemStack(ModObjects.empty_jar))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "otherworld_tears"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.dimensional_sand), Util.get("enderpearl"), Util.get("dustGlowstone")), Arrays.asList(new ItemStack(ModObjects.otherworldly_tears), new ItemStack(ModObjects.empty_jar))));
 		event.getRegistry().register(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "stone_ichor"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get("stone"), Util.get("nuggetIron"), Util.get("gravel")), Arrays.asList(new ItemStack(ModObjects.stone_ichor), new ItemStack(ModObjects.empty_jar))));
@@ -660,7 +660,12 @@ public class ModRegistries {
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/19sun.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return false; //change when curses are added
+				return !player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.isEmpty();
+			}
+
+			@Override
+			public int getNumber(EntityPlayer player) {
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.size();
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/20stronghold.png")) {

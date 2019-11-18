@@ -77,7 +77,6 @@ dependencies {
 
 jar {
     manifest.attributes(
-            'FMLAT': "bewitchment_at.cfg",
             'FMLCorePlugin': 'com.bewitchment.core.BewitchmentFMLLoadingPlugin',
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': 'mixins.bewitchment.json',

@@ -58,4 +58,7 @@ public class ServerProxy {
 	
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 	}
+
+	public void setStatueTEISR(Item item) {
+	}
 }

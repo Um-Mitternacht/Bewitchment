@@ -69,7 +69,7 @@ public class Util {
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
 		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof BlockStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
 			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
-			if (block instanceof BlockStatue) item.setTileEntityItemStackRenderer(new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance));
+			if (block instanceof BlockStatue) Bewitchment.proxy.setStatueTEISR(item);
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, (block instanceof BlockBush || block instanceof BlockStatue) ? "inventory" : "normal");
 		}
