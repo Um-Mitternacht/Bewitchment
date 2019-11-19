@@ -55,6 +55,10 @@ public class EntityDruden extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
+		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
+			this.heal(1);
+			world.playSound(null, getPosition(), SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.HOSTILE, 6, 1);
+		}
 		if (isBurning()) {
 			attackEntityFrom(DamageSource.ON_FIRE, 6.66f);
 			if (hurtTime == 1) {
@@ -64,6 +68,7 @@ public class EntityDruden extends ModEntityMob {
 			}
 		}
 	}
+	
 	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
