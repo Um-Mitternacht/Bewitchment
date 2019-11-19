@@ -15,8 +15,6 @@ import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
 import com.bewitchment.common.block.tile.entity.TileEntityStatue;
-import com.bewitchment.common.entity.misc.ModEntityPotion;
-import com.bewitchment.common.entity.misc.ModEntityTippedArrow;
 import com.bewitchment.common.fortune.*;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
@@ -157,8 +155,6 @@ public class ModRegistries {
 			}
 		}
 		catch (Exception ignored) {}
-		event.getRegistry().register(EntityEntryBuilder.create().entity(ModEntityPotion.class).id(new ResourceLocation(Bewitchment.MODID, "potion"), ModEntities.entity_id++).name("ThrownPotion").tracker(64, 1, true).build());
-		event.getRegistry().register(EntityEntryBuilder.create().entity(ModEntityTippedArrow.class).id(new ResourceLocation(Bewitchment.MODID, "arrow"), ModEntities.entity_id++).name("Arrow").tracker(64, 1, true).build());
 		
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/owl"));

@@ -132,7 +132,7 @@ public class BlockStatue extends ModBlockContainer {
         public static final PropertyInteger HEIGHT = PropertyInteger.create("height", 0, 3);
 
         public BlockFiller() {
-            super("filler", Blocks.GOLD_BLOCK);
+            super("statue_filler", Blocks.GOLD_BLOCK);
             setDefaultState(getBlockState().getBaseState().withProperty(HEIGHT, 0));
         }
 
