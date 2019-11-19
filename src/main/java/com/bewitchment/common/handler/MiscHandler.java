@@ -7,8 +7,10 @@ import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.entity.ai.EntityAIFindEntityNearestPlayer;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,11 +32,14 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
@@ -48,6 +53,16 @@ public class MiscHandler {
 		if (BewitchmentAPI.hasAlchemist(evt.getUser())){
 			evt.setBoosted(true);
 			evt.setBottles(evt.getBottles() + 1);
+		}
+	}
+
+	@SubscribeEvent
+	public void onFindAttackEntity(LivingSetAttackTargetEvent event) {
+		if (!event.getEntity().world.isRemote && event.getEntityLiving() instanceof ModEntityMob) {
+			ModEntityMob mob = (ModEntityMob) event.getEntityLiving();
+			if (mob.summoner != null && event.getTarget() != null && event.getTarget().getPersistentID() == mob.summoner) {
+				mob.setAttackTarget(null);
+			}
 		}
 	}
 

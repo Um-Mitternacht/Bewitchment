@@ -47,9 +47,9 @@ public abstract class ModEntityMob extends EntityMob {
 				}
 				else lifeTimeTicks--;
 			}
-			if (summoner != null) {
+			if (summoner != null && ticksElytraFlying % 60 == 0) {
 				EntityPlayer player = world.getPlayerEntityByUUID(summoner);
-				if (player != null && this.getAttackTarget() == player) {
+				if (player != null && ((this.getAttackTarget() != player.getAttackingEntity() && this.getAttackTarget() != player.getLastAttackedEntity()) || this.getAttackTarget() == null)) {
 					this.setAttackTarget(player.getAttackingEntity() == null ? player.getLastAttackedEntity() : player.getAttackingEntity());
 				}
 			}

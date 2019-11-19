@@ -116,7 +116,12 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 	protected boolean canDropLoot() {
 		return true;
 	}
-	
+
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+
 	public void setCustomNameTag(@NotNull String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());

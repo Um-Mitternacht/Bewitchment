@@ -60,9 +60,12 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.SOUL_SAND.getDefaultState());
 						flag = true;
 					}
-					else if (block == Blocks.BRICK_BLOCK || block instanceof BlockStoneBrick || block == ModObjects.embittered_bricks) {
-						world.setBlockState(pos0, Blocks.NETHER_BRICK.getDefaultState());
+					else if (block == Blocks.BRICK_BLOCK) {
+						world.setBlockState(pos0, ModObjects.scorned_bricks[0].getDefaultState());
 						flag = true;
+					}
+					else if (block instanceof BlockStoneBrick) {
+						world.setBlockState(pos0, Blocks.NETHER_BRICK.getDefaultState());
 					}
 					else if (block == Blocks.WOOL) {
 						world.setBlockState(pos0, Blocks.WOOL.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED));
