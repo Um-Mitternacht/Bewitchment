@@ -48,6 +48,11 @@ repositories {
     maven { url "http://repo.spongepowered.org/maven" }    
 }
 
+configurations {
+    shade
+    compile.extendsFrom shade
+}
+
 dependencies {
     deobfProvided "mezz.jei:jei_1.12.2:4.15.0.292"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
@@ -63,14 +68,8 @@ dependencies {
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
-    implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
-        exclude module: "asm-commons"
-        exclude module: "asm-tree"
-        exclude module: "launchwrapper"
-        exclude module: "guava"
-        exclude module: "log4j-core"
-        exclude module: "gson"
-        exclude module: "commons-io"
+    shade('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        transitive = false
     }
     implementation 'org.jetbrains:annotations:15.0'
 }
@@ -80,8 +79,21 @@ jar {
             'FMLCorePlugin': 'com.bewitchment.core.BewitchmentFMLLoadingPlugin',
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': 'mixins.bewitchment.json',
-            'FMLCorePluginContainsFMLMod': 'true'
+            'FMLCorePluginContainsFMLMod': 'true',
+            'ForceLoadAsMod': 'true'
     )
+
+    configurations.shade.each { dep ->
+        from(project.zipTree(dep)) {
+            rename 'LICENSE.txt', 'org/spongepowered/LICENSE.txt'
+
+            exclude 'META-INF/*.SF'
+            exclude 'META-INF/*.RSA'
+            exclude 'META-INF/*.MF'
+
+            exclude '**/*.html'
+        }
+    }
 }
 
 processResources {
@@ -96,6 +108,13 @@ processResources {
     }
 }
 
+mixin {
+    add sourceSets.main, "mixins.bewitchment.refmap.json"
+}
+
 sourceSets {
-    main { output.resourcesDir = output.classesDir }
+    main {
+        output.resourcesDir = output.classesDir
+        refMap = "mixins.bewitchment.refmap.json"
+    }
 }
