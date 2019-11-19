@@ -13,4 +13,9 @@ public class EntityDemoness extends EntityDemon {
 	public int getBrightnessForRender() {
 		return 15728880;
 	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
 }

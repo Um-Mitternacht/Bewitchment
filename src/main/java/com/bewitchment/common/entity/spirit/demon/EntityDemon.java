@@ -255,6 +255,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		}
 	}
 	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+	
 	public boolean isTrading() {
 		return this.buyer != null;
 	}
