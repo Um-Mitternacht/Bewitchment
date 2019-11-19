@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityPotion.class)
 public abstract class MixinEntityPotion {
-
+	
 	@Inject(method = "onImpact", at = @At("HEAD"))
 	protected void applyEffects(RayTraceResult result, CallbackInfo ci) {
 		Object obj = this;
@@ -27,5 +27,5 @@ public abstract class MixinEntityPotion {
 			}
 		}
 	}
-
+	
 }

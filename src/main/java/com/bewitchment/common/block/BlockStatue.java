@@ -63,11 +63,8 @@ public class BlockStatue extends ModBlockContainer {
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
-	}	@Override
-	public int quantityDropped(Random random) {
-		return 1;
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		for (int i = 0; i < this.statue.getHeight() - 1; i++) {
@@ -79,18 +76,18 @@ public class BlockStatue extends ModBlockContainer {
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+	public int quantityDropped(Random random) {
+		return 1;
 	}
 	
 	public static class BlockFiller extends ModBlock {
 		public static final PropertyInteger HEIGHT = PropertyInteger.create("height", 0, 3);
-		
+
 		public BlockFiller() {
 			super("statue_filler", Blocks.GOLD_BLOCK);
 			setDefaultState(getBlockState().getBaseState().withProperty(HEIGHT, 0));
 		}
-		
+
 		private int getHeightAbove(BlockPos pos, World world) {
 			int height = 0;
 			while (world.getBlockState(pos.up()).getBlock() instanceof BlockFiller) {
@@ -99,68 +96,68 @@ public class BlockStatue extends ModBlockContainer {
 			}
 			return height;
 		}
-		
+
 		private BlockPos getStatuePos(World world, BlockPos pos) {
 			for (int i = 0; i < 5; i++) {
 				if (world.getBlockState(pos.down(i)).getBlock() instanceof BlockStatue) return pos.down(i);
 			}
 			return null;
 		}
-		
+
 		@Override
 		public boolean isOpaqueCube(IBlockState state) {
 			return false;
 		}
-		
+
 		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.INVISIBLE;
 		}
-		
-		
+
+
 		@Override
 		public int quantityDropped(Random random) {
 			return 0;
 		}
-		
+
 		@Override
 		public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
 			return false;
 		}
-		
-		
+
+
 		@Override
 		public IBlockState getStateFromMeta(int meta) {
 			return getDefaultState().withProperty(HEIGHT, meta);
 		}
-		
+
 		@Override
 		public int getMetaFromState(IBlockState state) {
 			return state.getValue(HEIGHT);
 		}
-		
+
 		@Override
 		protected BlockStateContainer createBlockState() {
 			return new BlockStateContainer(this, HEIGHT);
 		}
-		
+
 		@Override
 		public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 			return BlockFaceShape.UNDEFINED;
 		}
-		
+
 		@Override
 		public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
 			return false;
 		}
-		
+
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			int height = 1;
 			if (source instanceof World) height = getHeightAbove(pos, (World) source);
 			return new AxisAlignedBB(0, -state.getValue(HEIGHT) - 1, 0, 1, height + 1, 1);
 		}
-		
+
 		@Override
 		public void breakBlock(World world, BlockPos pos, IBlockState state) {
 			BlockPos statuePos = getStatuePos(world, pos);
@@ -170,7 +167,7 @@ public class BlockStatue extends ModBlockContainer {
 			}
 			else super.breakBlock(world, pos, state);
 		}
-		
+
 		@Override
 		public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 			BlockPos statuePos = getStatuePos(worldIn, pos);
@@ -179,17 +176,26 @@ public class BlockStatue extends ModBlockContainer {
 			}
 			return ItemStack.EMPTY;
 		}
-		
+
 		@Override
 		public boolean addHitEffects(IBlockState state, World worldObj, RayTraceResult target, ParticleManager manager) {
 			return false;
 		}
-		
+
 		@Override
 		public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
 			return false;
 		}
-	}	@Override
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+	}
+	
+
+
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return FULL_BLOCK_AABB.expand(0, statue.getHeight() - 1, 0);
 	}
@@ -210,9 +216,6 @@ public class BlockStatue extends ModBlockContainer {
 	}
 	
 
-	
-
-	
 	@Override
 	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing face) {
 		BlockPos pos0 = world.getBlockState(pos).getBlock().isReplaceable(world, pos) ? pos : pos.offset(face);

@@ -16,20 +16,20 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 public class WitchesCauldronEvent extends Event {
 	private TileEntityWitchesCauldron cauldron;
 	private World world;
-
+	
 	public WitchesCauldronEvent(TileEntityWitchesCauldron cauldron, World world) {
 		this.cauldron = cauldron;
 		this.world = world;
 	}
-
+	
 	public TileEntityWitchesCauldron getCauldron() {
 		return cauldron;
 	}
-
+	
 	public World getWorld() {
 		return world;
 	}
-
+	
 	/**
 	 * CreatePotionEvent is fired whenever a potion is about to be created and bottled.
 	 * <p>
@@ -40,39 +40,39 @@ public class WitchesCauldronEvent extends Event {
 		private EntityPlayer user;
 		private int bottles;
 		private boolean boosted;
-
+		
 		public CreatePotionEvent(TileEntityWitchesCauldron cauldron, EntityPlayer user, int bottles, boolean boosted) {
 			super(cauldron, cauldron.getWorld());
 			this.user = user;
 			this.bottles = bottles;
 			this.boosted = boosted;
 		}
-
+		
 		public EntityPlayer getUser() {
 			return user;
 		}
-
+		
 		public void setUser(EntityPlayer user) {
 			this.user = user;
 		}
-
+		
 		public int getBottles() {
 			return bottles;
 		}
-
+		
 		public void setBottles(int bottles) {
 			this.bottles = bottles;
 		}
-
+		
 		public boolean isBoosted() {
 			return boosted;
 		}
-
+		
 		public void setBoosted(boolean boosted) {
 			this.boosted = boosted;
 		}
 	}
-
+	
 	/**
 	 * PotionCreatedEvent is fired AFTER the potion to be created is determined.
 	 * <p>
@@ -83,34 +83,34 @@ public class WitchesCauldronEvent extends Event {
 		private EntityPlayer user;
 		private int bottles;
 		private ItemStack potionStack;
-
+		
 		public PotionCreatedEvent(TileEntityWitchesCauldron cauldron, EntityPlayer user, int bottles, ItemStack potionStack) {
 			super(cauldron, cauldron.getWorld());
 			this.user = user;
 			this.bottles = bottles;
 			this.potionStack = potionStack;
 		}
-
+		
 		public EntityPlayer getUser() {
 			return user;
 		}
-
+		
 		public void setUser(EntityPlayer user) {
 			this.user = user;
 		}
-
+		
 		public int getBottles() {
 			return bottles;
 		}
-
+		
 		public void setBottles(int bottles) {
 			this.bottles = bottles;
 		}
-
+		
 		public ItemStack getPotionStack() {
 			return potionStack;
 		}
-
+		
 		public void setPotionStack(ItemStack potionStack) {
 			this.potionStack = potionStack;
 		}
