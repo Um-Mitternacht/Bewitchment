@@ -1,6 +1,5 @@
 package com.bewitchment.api.event;
 
-import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

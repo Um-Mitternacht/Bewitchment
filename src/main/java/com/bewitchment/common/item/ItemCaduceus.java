@@ -1,7 +1,6 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModEntities;
@@ -21,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.bewitchment.common.entity.util.ModEntityMob.SKIN;
 
 public class ItemCaduceus extends Item {
 	public ItemCaduceus() {

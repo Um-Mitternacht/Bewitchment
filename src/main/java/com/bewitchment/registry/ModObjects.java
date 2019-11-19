@@ -7,7 +7,6 @@ import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.api.registry.item.ItemFume;
 import com.bewitchment.client.misc.Statues;
-import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.*;
 import com.bewitchment.common.block.tile.entity.*;

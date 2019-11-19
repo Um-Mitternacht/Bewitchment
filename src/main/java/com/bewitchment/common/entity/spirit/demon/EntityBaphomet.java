@@ -3,7 +3,6 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.IPledgeable;
-import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.*;

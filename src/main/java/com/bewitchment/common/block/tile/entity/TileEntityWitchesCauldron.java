@@ -3,7 +3,6 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.api.message.SpawnBubble;
