@@ -19,10 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @SuppressWarnings({"ConstantConditions"})
 public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, Capability.IStorage<ExtendedPlayer> {
@@ -101,7 +98,10 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	public List<Curse> getCurses() {
 		List<Curse> curseList = new ArrayList<>();
-		curses.keySet().forEach(s -> curseList.add(GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(s))));
+		curses.keySet().forEach(s -> {
+			Curse curse = GameRegistry.findRegistry(Curse.class).getValue(new ResourceLocation(s));
+			if (curse != null) curseList.add(curse);
+		});
 		return curseList;
 	}
 	
