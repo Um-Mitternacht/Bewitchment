@@ -52,7 +52,7 @@ public class ModConfig {
 		public static class TreeGen {
 			@Config.Comment("The biome IDs that Bewitchment trees are blacklisted from spawning")
 			public Integer[] treeGenBlacklist = {};
-
+			
 			@Config.Comment("The chance for cypress trees to spawn. Set to 0 to disable.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int cypressChance = 20;

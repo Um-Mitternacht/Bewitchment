@@ -108,8 +108,8 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x9e0000 : 0xffffff, ModObjects.bottle_of_blood);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
-
-        TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
+		
+		TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
 	}
 	
 	@Override
@@ -170,7 +170,7 @@ public class ClientProxy extends ServerProxy {
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
 	}
-
+	
 	@Override
 	public void setStatueTEISR(Item item) {
 		item.setTileEntityItemStackRenderer(new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance));

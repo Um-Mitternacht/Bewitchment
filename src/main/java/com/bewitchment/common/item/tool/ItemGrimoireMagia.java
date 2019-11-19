@@ -32,7 +32,7 @@ public class ItemGrimoireMagia extends Item {
 		stack.getTagCompound().setInteger("amount", amount);
 		return stack;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {

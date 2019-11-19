@@ -38,17 +38,16 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 		super.preRenderCallback(entity, partialTickTime);
 		GlStateManager.scale(1.5, 1.5, 1.5);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	private static class LayerHeldWeapon implements LayerRenderer<EntityLivingBase> {
-
+		
 		final RenderLivingBase<?> livingEntityRenderer;
-
-		LayerHeldWeapon(RenderLivingBase<?> livingEntityRendererIn)
-		{
+		
+		LayerHeldWeapon(RenderLivingBase<?> livingEntityRendererIn) {
 			this.livingEntityRenderer = livingEntityRendererIn;
 		}
-
+		
 		public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 			boolean flag = entitylivingbaseIn.getPrimaryHand() == EnumHandSide.RIGHT;
 			ItemStack itemstack = flag ? entitylivingbaseIn.getHeldItemOffhand() : entitylivingbaseIn.getHeldItemMainhand();
@@ -63,7 +62,11 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 				GlStateManager.popMatrix();
 			}
 		}
-
+		
+		public boolean shouldCombineTextures() {
+			return false;
+		}
+		
 		private void renderHeldItem(EntityLivingBase entityLivingBase, ItemStack itemStack) {
 			if (!itemStack.isEmpty()) {
 				GlStateManager.pushMatrix();
@@ -73,10 +76,6 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entityLivingBase, itemStack, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, false);
 				GlStateManager.popMatrix();
 			}
-		}
-
-		public boolean shouldCombineTextures() {
-			return false;
 		}
 	}
 }

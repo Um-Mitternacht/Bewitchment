@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
+public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 	
 	protected EntityLeonard(World world) {
@@ -47,7 +47,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 	protected boolean isValidLightLevel() {
 		return false;
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
@@ -55,7 +55,13 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 			this.bossInfo.setName(this.getDisplayName());
 		}
 	}
-
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		this.setEquipmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
@@ -72,7 +78,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 		boolean buffed = ticksExisted % 600 > 5;
 		if (!buffed) {
 			if (!world.isRemote) {
-				((WorldServer) world).spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX, posY, posZ, 128, width, height+1, width, 0.1);
+				((WorldServer) world).spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX, posY, posZ, 128, width, height + 1, width, 0.1);
 				world.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 5, 1);
 			}
 			this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300));
@@ -87,23 +93,27 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 			if (!launchFireball && getDistance(player) > 4) {
 				double d0 = getDistanceSq(player);
 				double d1 = player.posX - this.posX;
-				double d2 = player.getEntityBoundingBox().minY + (double)(player.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+				double d2 = player.getEntityBoundingBox().minY + (double) (player.height / 2.0F) - (this.posY + (double) (this.height / 2.0F));
 				double d3 = player.posZ - this.posZ;
 				float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
-				world.playEvent(null, 1018, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
-				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double)f, d2, d3 + this.getRNG().nextGaussian() * (double)f);
-				entitysmallfireball.posY = posY + (double)(height / 2.0F) + 0.5D;
+				world.playEvent(null, 1018, new BlockPos((int) this.posX, (int) this.posY, (int) this.posZ), 0);
+				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+				entitysmallfireball.posY = posY + (double) (height / 2.0F) + 0.5D;
 				world.spawnEntity(entitysmallfireball);
 				this.swingArm(EnumHand.MAIN_HAND);
 			}
 		}
 	}
-
+	
 	@Override
-	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
-		return !potioneffectIn.getPotion().isBadEffect();
+	public boolean attackEntityAsMob(Entity entityIn) {
+		if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			player.addPotionEffect(new PotionEffect(ModPotions.magic_weakness, 60, 0));
+		}
+		return super.attackEntityAsMob(entityIn);
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -112,17 +122,17 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-
+	
 	@Override
 	protected boolean canDropLoot() {
 		return true;
 	}
-
+	
 	@Override
-	protected boolean canDespawn() {
-		return false;
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
+		return !potioneffectIn.getPotion().isBadEffect();
 	}
-
+	
 	public void setCustomNameTag(@NotNull String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
@@ -137,28 +147,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 		super.removeTrackingPlayer(player);
 		this.bossInfo.removePlayer(player);
 	}
-
-	@Override
-	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-		super.setEquipmentBasedOnDifficulty(difficulty);
-		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
-	}
-
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		this.setEquipmentBasedOnDifficulty(difficulty);
-		return super.onInitialSpawn(difficulty, data);
-	}
-
-	@Override
-	public boolean attackEntityAsMob(Entity entityIn) {
-		if (entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityIn;
-			player.addPotionEffect(new PotionEffect(ModPotions.magic_weakness, 60, 0));
-		}
-		return super.attackEntityAsMob(entityIn);
-	}
-
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -171,10 +160,21 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable{
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 	}
 	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+	
 	protected void updateAITasks() {
 		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
 	}
-
+	
+	@Override
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+		super.setEquipmentBasedOnDifficulty(difficulty);
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
+	}
+	
 	@Override
 	public String getPledgeName() {
 		return "leonard";

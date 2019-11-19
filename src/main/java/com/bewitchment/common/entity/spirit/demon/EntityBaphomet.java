@@ -32,12 +32,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
+public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-
+	
 	private int mobSpawnTicks = 0;
 	private int pullCooldown = 0;
-
+	
 	protected EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
@@ -50,6 +50,13 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 		return false;
 	}
 	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setInteger("mobSpawnTicks", mobSpawnTicks);
+		tag.setInteger("pullCooldown", pullCooldown);
+	}
+	
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.mobSpawnTicks = compound.getInteger("mobSpawnTicks");
@@ -58,12 +65,11 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 			this.bossInfo.setName(this.getDisplayName());
 		}
 	}
-
+	
 	@Override
-	public void writeEntityToNBT(NBTTagCompound tag) {
-		super.writeEntityToNBT(tag);
-		tag.setInteger("mobSpawnTicks", mobSpawnTicks);
-		tag.setInteger("pullCooldown", pullCooldown);
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		this.setEquipmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
 	}
 	
 	@Override
@@ -92,25 +98,6 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 	}
 	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(666);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return false;
-	}
-
-	@Override
-	protected boolean canDropLoot() {
-		return true;
-	}
-
-	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
@@ -123,22 +110,21 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 	}
 	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+	
 	protected void updateAITasks() {
 		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
 	}
-
+	
 	@Override
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.caduceus));
 	}
-
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		this.setEquipmentBasedOnDifficulty(difficulty);
-		return super.onInitialSpawn(difficulty, data);
-	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
@@ -147,7 +133,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 			boolean buffed = ticksExisted % 600 > 5;
 			if (!buffed) {
 				if (!world.isRemote) {
-					((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 100, width, height+1, width, 0.1);
+					((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 100, width, height + 1, width, 0.1);
 					world.playSound(null, posX, posY, posZ, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.HOSTILE, 5, 1);
 				}
 				this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300));
@@ -162,9 +148,10 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 				temp.getDataManager().set(SKIN, rand.nextInt(temp.getSkinTypes()));
 				temp.setPosition(posX + rand.nextGaussian() * 0.8, posY + 0.5, posZ + rand.nextGaussian() * 0.8);
 				world.spawnEntity(temp);
-				if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height+1, temp.width, 0.1);
+				if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height + 1, temp.width, 0.1);
 				mobSpawnTicks = 180;
-			} else if (mobSpawnTicks > 0){
+			}
+			else if (mobSpawnTicks > 0) {
 				mobSpawnTicks--;
 			}
 			if (getDistance(player) > 10 && pullCooldown <= 0) {
@@ -172,24 +159,25 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 				player.motionZ += (posZ - getAttackTarget().posZ) / 10;
 				if (!world.isRemote) ((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));
 				pullCooldown = 50;
-			} else if (pullCooldown > 0) {
+			}
+			else if (pullCooldown > 0) {
 				pullCooldown--;
 			}
 			boolean launchFireball = ticksExisted % 80 > 5;
 			if (!launchFireball && getDistance(player) > 2) {
 				double d0 = getDistanceSq(player);
 				double d1 = player.posX - this.posX;
-				double d2 = player.getEntityBoundingBox().minY + (double)(player.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+				double d2 = player.getEntityBoundingBox().minY + (double) (player.height / 2.0F) - (this.posY + (double) (this.height / 2.0F));
 				double d3 = player.posZ - this.posZ;
 				float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
-				world.playEvent(null, 1018, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
-				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double)f, d2, d3 + this.getRNG().nextGaussian() * (double)f);
-				entitysmallfireball.posY = posY + (double)(height / 2.0F) + 0.5D;
+				world.playEvent(null, 1018, new BlockPos((int) this.posX, (int) this.posY, (int) this.posZ), 0);
+				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+				entitysmallfireball.posY = posY + (double) (height / 2.0F) + 0.5D;
 				world.spawnEntity(entitysmallfireball);
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (entityIn instanceof EntityPlayer) {
@@ -199,7 +187,21 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable{
 		}
 		return super.attackEntityAsMob(entityIn);
 	}
-
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(666);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
+	}
+	
+	@Override
+	protected boolean canDropLoot() {
+		return true;
+	}
+	
 	@Override
 	public String getPledgeName() {
 		return "baphomet";

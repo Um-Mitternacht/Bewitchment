@@ -34,11 +34,10 @@ public class ExtendedWorld extends WorldSavedData {
 		return data;
 	}
 
-	public static void pledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon){
+	public static void pledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
 		ExtendedWorld extendedWorld = get(world);
 		List<UUID> players = new ArrayList<>();
-		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName()))
-			players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
+		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
@@ -71,12 +70,12 @@ public class ExtendedWorld extends WorldSavedData {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setString("demon", entry.getKey());
 		NBTTagList players = new NBTTagList();
-		for(UUID uuid : entry.getValue()) players.appendTag(new NBTTagString(uuid.toString()));
+		for (UUID uuid : entry.getValue()) players.appendTag(new NBTTagString(uuid.toString()));
 		data.setTag("players", players);
 		list.appendTag(data);
 	}
 
-	private void readPledge(Map<String, Collection<UUID>> map, NBTTagCompound tag){
+	private void readPledge(Map<String, Collection<UUID>> map, NBTTagCompound tag) {
 		List<UUID> players = new ArrayList<>();
 		String demon = tag.getString("demon");
 		for (NBTBase player : tag.getTagList("players", Constants.NBT.TAG_STRING))

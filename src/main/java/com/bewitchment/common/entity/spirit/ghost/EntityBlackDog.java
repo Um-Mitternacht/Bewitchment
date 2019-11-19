@@ -67,12 +67,7 @@ public class EntityBlackDog extends ModEntityMob {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
 	}
-
-	@Override
-	protected boolean canDespawn() {
-		return !hasCustomName();
-	}
-
+	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean flag = super.attackEntityFrom(source, amount);
@@ -111,5 +106,10 @@ public class EntityBlackDog extends ModEntityMob {
 		PathNavigateGround path = new PathNavigateGround(this, world);
 		path.setBreakDoors(true);
 		return path;
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
 	}
 }

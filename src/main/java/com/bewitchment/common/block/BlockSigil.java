@@ -113,11 +113,6 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return 4;
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		EnumFacing facing = state.getValue(FACING);
@@ -141,7 +136,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ() + 1, 0, 0, 0);
 		}
 	}
-	
+
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		EnumFacing enumfacing = state.getValue(FACING);
@@ -169,6 +164,11 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, VARIATION, FACING);
+	}
+	
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 4;
 	}
 	
 	@Override

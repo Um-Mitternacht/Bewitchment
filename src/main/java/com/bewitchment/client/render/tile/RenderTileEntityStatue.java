@@ -31,16 +31,16 @@ public class RenderTileEntityStatue extends TileEntitySpecialRenderer<TileEntity
 		GlStateManager.rotate(180, 0, 0, 1);
 		bindTexture(loc);
 		if (!tile.item && tile.getWorld().getBlockState(tile.getPos()).getPropertyKeys().contains(BlockHorizontal.FACING)) {
-            EnumFacing face = tile.getWorld().getBlockState(tile.getPos()).getValue(BlockHorizontal.FACING);
-            GlStateManager.rotate(face == EnumFacing.WEST ? 270 : face == EnumFacing.EAST ? 90 : face == EnumFacing.SOUTH ? 180 : 0, 0, 1, 0);
-        }
+			EnumFacing face = tile.getWorld().getBlockState(tile.getPos()).getValue(BlockHorizontal.FACING);
+			GlStateManager.rotate(face == EnumFacing.WEST ? 270 : face == EnumFacing.EAST ? 90 : face == EnumFacing.SOUTH ? 180 : 0, 0, 1, 0);
+		}
 		model.render(null, 0, 0, 0, 0, 0, 0.0625f);
 		GlStateManager.popMatrix();
 	}
 
 	public static class ForwardingTEISR extends TileEntityItemStackRenderer {
-		private TileEntityStatue statueRender = new TileEntityStatue();
 		private final TileEntityItemStackRenderer compose;
+		private TileEntityStatue statueRender = new TileEntityStatue();
 
 		public ForwardingTEISR(TileEntityItemStackRenderer compose) {
 			this.compose = compose;
@@ -53,7 +53,8 @@ public class RenderTileEntityStatue extends TileEntitySpecialRenderer<TileEntity
 				statueRender.name = ((BlockStatue) block).statue.getName();
 				statueRender.item = true;
 				TileEntityRendererDispatcher.instance.render(this.statueRender, 0.0D, 0.0D, 0.0D, 0.0F, 0, 0);
-			} else {
+			}
+			else {
 				compose.renderByItem(itemStack);
 			}
 		}

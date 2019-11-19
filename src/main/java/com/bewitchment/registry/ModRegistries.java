@@ -657,7 +657,7 @@ public class ModRegistries {
 			public boolean isCounted(EntityPlayer player) {
 				return !player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.isEmpty();
 			}
-
+			
 			@Override
 			public int getNumber(EntityPlayer player) {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.size();

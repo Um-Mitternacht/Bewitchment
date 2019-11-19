@@ -42,7 +42,7 @@ public class ItemCaduceus extends Item {
 				temp.lifeTimeTicks = 400;
 				temp.summoner = player.getPersistentID();
 				temp.setAttackTarget(target);
-
+				
 				temp.setPosition(pos.getX() + itemRand.nextGaussian() * 0.8, pos.getY() + 1, pos.getZ() + itemRand.nextGaussian() * 0.8);
 				world.spawnEntity(temp);
 			}

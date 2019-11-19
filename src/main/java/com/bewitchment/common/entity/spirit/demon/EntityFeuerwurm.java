@@ -56,6 +56,14 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
+	public boolean shouldRenderInPass(int pass) {
+		if (getDataManager().get(ModEntityMob.SPECTRAL)) {
+			return pass == 1;
+		}
+		return pass == 0;
+	}
+	
+	@Override
 	public int getSkinTypes() {
 		return 9;
 	}
@@ -128,13 +136,5 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && (!BewitchmentAPI.hasBesmirched(p))));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirched(e)));
-	}
-
-	@Override
-	public boolean shouldRenderInPass(int pass) {
-		 if (getDataManager().get(ModEntityMob.SPECTRAL)){
-		 	return pass == 1;
-		}
-		return pass == 0;
 	}
 }

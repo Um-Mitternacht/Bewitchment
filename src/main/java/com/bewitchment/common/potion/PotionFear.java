@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PotionFear extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/fear.png");
-
+	
 	public PotionFear() {
 		super("fear", true, 0x10c440);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -42,12 +42,12 @@ public class PotionFear extends ModPotion {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 	}
-
+	
 	@SubscribeEvent
 	public void movePlayer(TickEvent.PlayerTickEvent event) {
 		if (event.player.isPotionActive(this) && event.phase == TickEvent.Phase.END) {
