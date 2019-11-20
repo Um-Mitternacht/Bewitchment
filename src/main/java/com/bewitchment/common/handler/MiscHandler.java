@@ -7,10 +7,12 @@ import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -54,10 +56,15 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void onFindAttackEntity(LivingSetAttackTargetEvent event) {
-		if (!event.getEntity().world.isRemote && event.getEntityLiving() instanceof ModEntityMob) {
-			ModEntityMob mob = (ModEntityMob) event.getEntityLiving();
-			if (mob.summoner != null && event.getTarget() != null && event.getTarget().getPersistentID() == mob.summoner) {
-				mob.setAttackTarget(null);
+		if (!event.getEntity().world.isRemote) {
+			if (event.getEntityLiving() instanceof ModEntityMob) {
+				ModEntityMob mob = (ModEntityMob) event.getEntityLiving();
+				if (mob.summoner != null && event.getTarget() != null && event.getTarget().getPersistentID() == mob.summoner) {
+					mob.setAttackTarget(null);
+				}
+			}
+			if (event.getEntityLiving() instanceof EntityTameable && event.getTarget() instanceof EntityDruden) {
+				((EntityTameable) event.getEntityLiving()).setAttackTarget(null);
 			}
 		}
 	}
