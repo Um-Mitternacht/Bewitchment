@@ -38,7 +38,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 	private int mobSpawnTicks = 0;
 	private int pullCooldown = 0;
 	
-	protected EntityBaphomet(World world) {
+	public EntityBaphomet(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
 		setSize(1.0f, 3.6f);

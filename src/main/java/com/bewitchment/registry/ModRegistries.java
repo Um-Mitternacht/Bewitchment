@@ -221,6 +221,8 @@ public class ModRegistries {
 		event.getRegistry().register(new RitualConjureWither());
 		event.getRegistry().register(new RitualConjureDemon());
 		event.getRegistry().register(new RitualConjureImp());
+		event.getRegistry().register(new RitualConjureBaphomet());
+		event.getRegistry().register(new RitualConjureLeonard());
 		event.getRegistry().register(new RitualSpiritualRift());
 		event.getRegistry().register(new RitualCurseCleansing(true));
 		event.getRegistry().register(new RitualCurseCleansing(false));

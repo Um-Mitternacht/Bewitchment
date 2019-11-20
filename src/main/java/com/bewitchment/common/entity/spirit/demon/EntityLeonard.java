@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
 public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
 	
-	protected EntityLeonard(World world) {
+	public EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
 		setSize(1.0f, 3.8f);
