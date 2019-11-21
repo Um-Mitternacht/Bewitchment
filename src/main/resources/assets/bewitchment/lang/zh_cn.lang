@@ -963,3 +963,4 @@ tarot.has_boss=%s laughed in the face of danger.
 tarot.no_boss=%s hasn't conquered any great creatures, yet.
 
 ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.
+tooltip.leonards_wand.uses=%d uses remaining

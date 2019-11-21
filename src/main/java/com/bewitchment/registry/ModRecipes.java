@@ -3,6 +3,7 @@ package com.bewitchment.registry;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.api.registry.RecipeWand;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.block.BlockStatue;
@@ -72,6 +73,8 @@ public class ModRecipes {
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
+
+		ForgeRegistries.RECIPES.register(new RecipeWand().setRegistryName("minecraft", "leonards_wand"));
 	}
 	
 	public static void postInit() {

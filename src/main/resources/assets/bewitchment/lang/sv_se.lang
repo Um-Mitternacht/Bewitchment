@@ -858,3 +858,4 @@ tc.aspect.luna=Månen
 tc.aspect.sol=Solen
 
 ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.
+tooltip.leonards_wand.uses=%d uses remaining

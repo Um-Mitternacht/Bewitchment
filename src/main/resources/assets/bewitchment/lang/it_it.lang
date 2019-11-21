@@ -959,3 +959,4 @@ tc.aspect.luna=La Luna
 tc.aspect.sol=Il Sole
 
 ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.
+tooltip.leonards_wand.uses=%d uses remaining

@@ -808,3 +808,4 @@ tc.aspect.stellae=Hv�zdy, Souhv�zd�, Asterismus
 tc.aspect.luna=M�s�c
 tc.aspect.sol=Slunce
 ritual.cannot_start=You don't feel anything happening, maybe you touched some symbol you shouldn't have lately.
+tooltip.leonards_wand.uses=%d uses remaining
