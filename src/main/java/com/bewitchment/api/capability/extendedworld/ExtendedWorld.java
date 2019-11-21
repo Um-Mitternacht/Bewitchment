@@ -33,7 +33,7 @@ public class ExtendedWorld extends WorldSavedData {
 		}
 		return data;
 	}
-
+	
 	public static void pledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
 		ExtendedWorld extendedWorld = get(world);
 		List<UUID> players = new ArrayList<>();
@@ -42,7 +42,7 @@ public class ExtendedWorld extends WorldSavedData {
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		NBTTagList storedCauldrons = nbt.getTagList("storedCauldrons", Constants.NBT.TAG_COMPOUND);
@@ -65,7 +65,7 @@ public class ExtendedWorld extends WorldSavedData {
 		nbt.setTag("demonPledges", demonPledges);
 		return nbt;
 	}
-
+	
 	private void writePledge(Map.Entry<String, Collection<UUID>> entry, NBTTagList list) {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setString("demon", entry.getKey());
@@ -74,7 +74,7 @@ public class ExtendedWorld extends WorldSavedData {
 		data.setTag("players", players);
 		list.appendTag(data);
 	}
-
+	
 	private void readPledge(Map<String, Collection<UUID>> map, NBTTagCompound tag) {
 		List<UUID> players = new ArrayList<>();
 		String demon = tag.getString("demon");

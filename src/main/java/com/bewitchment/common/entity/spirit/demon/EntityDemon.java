@@ -124,6 +124,11 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 	
 	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+	
+	@Override
 	protected void updateAITasks() {
 		if (!this.isTrading() && this.timeUntilReset > 0) {
 			--this.timeUntilReset;
@@ -253,11 +258,6 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 			trades.get(list.get(0)).addMerchantRecipe(this, this.recipeList, this.rand);
 			if (j <= 3 && list.size() > 1) trades.get(list.get(1)).addMerchantRecipe(this, this.recipeList, this.rand);
 		}
-	}
-	
-	@Override
-	protected boolean canDespawn() {
-		return false;
 	}
 	
 	public boolean isTrading() {

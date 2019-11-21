@@ -37,15 +37,15 @@ public class RenderTileEntityStatue extends TileEntitySpecialRenderer<TileEntity
 		model.render(null, 0, 0, 0, 0, 0, 0.0625f);
 		GlStateManager.popMatrix();
 	}
-
+	
 	public static class ForwardingTEISR extends TileEntityItemStackRenderer {
 		private final TileEntityItemStackRenderer compose;
 		private TileEntityStatue statueRender = new TileEntityStatue();
-
+		
 		public ForwardingTEISR(TileEntityItemStackRenderer compose) {
 			this.compose = compose;
 		}
-
+		
 		@Override
 		public void renderByItem(ItemStack itemStack) {
 			Block block = Block.getBlockFromItem(itemStack.getItem());
