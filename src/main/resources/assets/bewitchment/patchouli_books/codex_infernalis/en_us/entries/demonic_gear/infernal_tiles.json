@@ -31,38 +31,56 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Idols",
-	  "text": "Idols are small, crude figures of major demons. They can be placed on altars, acting as both a Pentacle, as well as attracting the positive attention (a rare commodity) of the demon they depict. So far, only the way to only create the idol of Master Leonard is known, and is as follows:"
+	  "title": "Statue",
+	  "text": "Statues are large figures of major demons. They can be placed on altars, acting as both a Pentacle, as well as attracting the positive attention (a rare commodity) of the demon they depict."
 	},
 	{
 	  "type": "crafting",
-	  "title": "Stone",
-	  "recipe": "bewitchment:stone_leonard_idol"
+	  "title": "Leonard",
+	  "recipe": "bewitchment:stone_leonard_statue",
+      "recipe2": "bewitchment:gold_leonard_statue"
 	},
 	{
 	  "type": "crafting",
-	  "title": "Gold",
-	  "recipe": "bewitchment:gold_leonard_idol"
+	  "title": "Leonard",
+	  "recipe": "bewitchment:nether_brick_leonard_statue",
+      "recipe2": "bewitchment:scorned_brick_leonard_statue"
 	},
-	{
-	  "type": "crafting",
-	  "title": "Terracotta",
-	  "recipe": "bewitchment:terracotta_leonard_idol"
-	},
-	{
-	  "type": "crafting",
-	  "title": "Nether Brick",
-	  "recipe": "bewitchment:nether_brick_leonard_idol"
-	},
-	{
-	  "type": "crafting",
-	  "title": "Nethersteel",
-	  "recipe": "bewitchment:nethersteel_leonard_idol"
-	},
-	{
-	  "type": "crafting",
-	  "title": "Scorned Brick",
-	  "recipe": "bewitchment:scorned_brick_leonard_idol"
-	}
+    {
+      "type": "crafting",
+      "title": "Baphomet",
+      "recipe": "bewitchment:stone_baphomet_statue",
+      "recipe2": "bewitchment:gold_baphomet_statue"
+    },
+    {
+      "type": "crafting",
+      "title": "Baphomet",
+      "recipe": "bewitchment:nether_brick_baphomet_statue",
+      "recipe2": "bewitchment:scorned_brick_baphomet_statue"
+    },
+    {
+      "type": "crafting",
+      "title": "Lilith",
+      "recipe": "bewitchment:stone_lilith_statue",
+      "recipe2": "bewitchment:gold_lilith_statue"
+    },
+    {
+      "type": "crafting",
+      "title": "Lilith",
+      "recipe": "bewitchment:nether_brick_lilith_statue",
+      "recipe2": "bewitchment:scorned_brick_lilith_statue"
+    },
+    {
+      "type": "crafting",
+      "title": "Herne",
+      "recipe": "bewitchment:stone_herne_statue",
+      "recipe2": "bewitchment:gold_herne_statue"
+    },
+    {
+      "type": "crafting",
+      "title": "Herne",
+      "recipe": "bewitchment:nether_brick_herne_statue",
+      "recipe2": "bewitchment:scorned_brick_herne_statue"
+    }
   ]
 }

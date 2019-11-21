@@ -19,7 +19,8 @@
 	{
 	  "type": "entity",
 	  "entity": "bewitchment:baphomet",
-	  "scale": 0.9
+	  "scale": 0.9,
+      "text": "$(o)Wouldst thou like to live deliciously?"
 	},
 	{
 	  "type": "text",

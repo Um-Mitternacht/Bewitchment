@@ -255,6 +255,7 @@ public class ModRegistries {
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu_brown"), Collections.singletonList(Util.get("logWood")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
 		
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getDyeDamage()))));
+		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "wash_sigil"), Collections.singletonList(Util.get(new ItemStack(ModObjects.dragons_blood_broom))), Collections.singletonList(new ItemStack(ModObjects.dragons_blood_broom))));
 		
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "blue_ink_cap"), Arrays.asList(Util.get(Blocks.BROWN_MUSHROOM), Util.get("dyeBlue"), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.liquid_witchcraft)), Collections.singletonList(new ItemStack(ModObjects.blue_ink_cap))));
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "frostflower"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, OreDictionary.WILDCARD_VALUE)), Util.get(Items.SNOWBALL), Util.get(ModObjects.perpetual_ice), Util.get(ModObjects.liquid_witchcraft)), Collections.singletonList(new ItemStack(ModObjects.frostflower))));

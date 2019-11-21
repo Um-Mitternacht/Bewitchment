@@ -157,7 +157,7 @@ public class ItemBoxSealedEvil extends Item {
 				case 16:
 					int random2 = rand.nextInt(3) + 1;
 					for (int i = 0; i < random2; i++) {
-						ModEntityMob temp = (ModEntityMob) ModEntities.shadow_person_standard.newInstance(worldIn);
+						ModEntityMob temp = (ModEntityMob) ModEntities.shadow_person.newInstance(worldIn);
 						temp.setAttackTarget(player);
 						temp.setPosition(player.posX + rand.nextGaussian() * 2, player.posY + 0.5, player.posZ + rand.nextGaussian() * 2);
 						worldIn.spawnEntity(temp);

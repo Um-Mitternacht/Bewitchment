@@ -49,7 +49,7 @@ public class ModEntities {
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);
 	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
 	
-	public static final EntityEntry shadow_person_standard = createEntityEntry(EntityShadowPerson.class, "shadow_person", 0x000000, 0x000000);
+	public static final EntityEntry shadow_person = createEntityEntry(EntityShadowPerson.class, "shadow_person", 0x000000, 0x000000);
 	
 	public static final EntityEntry druden = createEntityEntry(EntityDruden.class, "druden", 0x228B22, 0x8A3324, EnumCreatureType.MONSTER, ModConfig.mobSpawns.druden.drudenWeight, ModConfig.mobSpawns.druden.drudenMin, ModConfig.mobSpawns.druden.drudenMax, Arrays.asList(ModConfig.mobSpawns.druden.drudenBiomes));
 	public static final EntityEntry baphomet = createEntityEntry(EntityBaphomet.class, "baphomet", 0x472f22, 0x690303);
