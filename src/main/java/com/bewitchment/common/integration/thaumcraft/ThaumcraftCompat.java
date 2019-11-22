@@ -102,6 +102,26 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.pure_filament), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.AURA, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_stitching), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.MAGIC, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.sanguine_cloth), new AspectList().add(Aspect.CRAFT, 4).add(DEMON, 4));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.witches_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.witches_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.witches_robes), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.witches_pants), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.alchemist_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.ALCHEMY, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.alchemist_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.ALCHEMY, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.alchemist_robes), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.ALCHEMY, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.alchemist_pants), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.ALCHEMY, 6));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_witch_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_witch_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_witch_robes), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.green_witch_pants), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_robes), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
 		//Materials
 		event.register.registerObjectTag(new ItemStack(ModObjects.amethyst), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(Aspect.LIFE, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.garnet), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(STAR, 4));
