@@ -187,6 +187,9 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.LIFE, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_vampire_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 3).add(DEMON, 3));
 		
+		event.register.registerObjectTag(new ItemStack(ModObjects.leonards_wand), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15).add(DEMON, 15).add(Aspect.ENERGY, 15));
+		event.register.registerObjectTag(new ItemStack(ModObjects.caduceus), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.FIRE, 15).add(DEMON, 15).add(Aspect.DARKNESS, 15));
+		
 		//Add some of our aspects to existing items in vanilla
 		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.
 		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.
