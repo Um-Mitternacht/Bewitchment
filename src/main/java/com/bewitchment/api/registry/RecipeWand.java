@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.NonNullList;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -20,6 +21,7 @@ public class RecipeWand extends ShapelessRecipes {
         super("bewitchment:leonards_wand", new ItemStack(ModObjects.leonards_wand), NonNullList.from(Ingredient.EMPTY, Util.get(ModObjects.leonards_wand), Util.get(Items.SPLASH_POTION)));
     }
 
+    @NotNull
     @Override
     public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         ItemStack wand = ItemStack.EMPTY;
@@ -53,9 +55,10 @@ public class RecipeWand extends ShapelessRecipes {
         return i >= 2 && i1 >= 2;
     }
 
+    @NotNull
     @Override
     public ItemStack getRecipeOutput() {
-        return ItemStack.EMPTY;
+        return new ItemStack(ModObjects.leonards_wand);
     }
 
     @Override

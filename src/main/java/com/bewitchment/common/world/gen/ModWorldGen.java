@@ -2,6 +2,7 @@ package com.bewitchment.common.world.gen;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
+import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
 import com.bewitchment.common.world.gen.structures.WorldGenMenhir;
 import com.bewitchment.common.world.gen.structures.WorldGenStonecircle;
 import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
@@ -29,6 +30,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraftforge.fml.common.Loader;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -69,35 +71,6 @@ public class ModWorldGen implements IWorldGenerator {
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
 	}
 	
-	private static int getGround(World world, int x, int z) {
-		int y = world.getHeight(x, z);
-		boolean foundGround = false;
-		while (!foundGround && y-- >= 31) {
-			Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-			foundGround = blockAt == Blocks.GRASS || blockAt == Blocks.SAND || blockAt == Blocks.SNOW || blockAt == Blocks.SNOW_LAYER || blockAt == Blocks.GLASS || blockAt == Blocks.MYCELIUM;
-			if (blockAt == Blocks.FLOWING_WATER || blockAt == Blocks.WATER) {        //Prevent spawning in lakes/rivers
-				y = -1;
-				break;
-			}
-		}
-		return y;
-	}
-	
-	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround) {
-		int zwidth = template.getSize().getZ();
-		int xwidth = template.getSize().getX();
-		// check all the corners to see which ones are replaceable
-		boolean corner1 = isCornerValid(world, posAboveGround);
-		boolean corner2 = isCornerValid(world, posAboveGround.add(xwidth, 0, zwidth));
-		// if Y > 31 and all corners pass the test, it's okay to spawn the structure
-		return posAboveGround.getY() > 31 && corner1 && corner2;
-	}
-	
-	private static boolean isCornerValid(World world, BlockPos pos) {
-		int highestBlock = getGround(world, pos.getX(), pos.getZ());
-		return highestBlock > pos.getY() - 1 && highestBlock < pos.getY() + 3;
-	}
-	
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
 		if (Arrays.asList(ModConfig.worldGen.worldGenWhitelist).contains(world.provider.getDimension())) {
@@ -108,14 +81,17 @@ public class ModWorldGen implements IWorldGenerator {
 			generateOre(world, rand, garnetOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.garnetChance, ModConfig.worldGen.oreGen.garnetMin, ModConfig.worldGen.oreGen.garnetMax);
 			generateOre(world, rand, opalOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.opalChance, ModConfig.worldGen.oreGen.opalMin, ModConfig.worldGen.oreGen.opalMax);
 			if (!Arrays.asList(ModConfig.worldGen.treeGen.treeGenBlacklist).contains(Biome.getIdForBiome(world.getBiome(new BlockPos(chunkX * 16 + 8, world.getHeight(), chunkZ * 16 + 8))))) {
-				generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-				generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
-				generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+				if (!Loader.isModLoaded("dynamictrees") || !DynamicTreesCompat.replaceWorldGen()) {
+					generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
+					generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));
+					generateTree(world, rand, juniperTree, ModObjects.juniper_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.juniperChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+				}
 				generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 			}
 		}
-		
-		if (ModConfig.worldGen.enableStructures && world.provider.getDimension() == 0) {    //Overworld Gen
+
+		//Overworld Gen
+		if (ModConfig.worldGen.enableStructures && world.provider.getDimension() == 0) {
 			generateStructure(wickerman, world, rand, 0.002, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(burnedWickerman, world, rand, 0.002, chunkX, chunkZ, 1, 1, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(stonecircle1, world, rand, 0.002, chunkX, chunkZ, 0, 0, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST));
@@ -191,5 +167,34 @@ public class ModWorldGen implements IWorldGenerator {
 		if (rand.nextDouble() < chance && biomes.test(world.getBiome(pos)) && biomes.test(world.getBiome(pos.add(7, 0, 7)))) {
 			structure.generate(world, rand, pos);
 		}
+	}
+
+	private static int getGround(World world, int x, int z) {
+		int y = world.getHeight(x, z);
+		boolean foundGround = false;
+		while (!foundGround && y-- >= 31) {
+			Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+			foundGround = blockAt == Blocks.GRASS || blockAt == Blocks.SAND || blockAt == Blocks.SNOW || blockAt == Blocks.SNOW_LAYER || blockAt == Blocks.GLASS || blockAt == Blocks.MYCELIUM;
+			if (blockAt == Blocks.FLOWING_WATER || blockAt == Blocks.WATER) {        //Prevent spawning in lakes/rivers
+				y = -1;
+				break;
+			}
+		}
+		return y;
+	}
+
+	public static boolean canSpawnHere(Template template, World world, BlockPos posAboveGround) {
+		int zwidth = template.getSize().getZ();
+		int xwidth = template.getSize().getX();
+		// check all the corners to see which ones are replaceable
+		boolean corner1 = isCornerValid(world, posAboveGround);
+		boolean corner2 = isCornerValid(world, posAboveGround.add(xwidth, 0, zwidth));
+		// if Y > 31 and all corners pass the test, it's okay to spawn the structure
+		return posAboveGround.getY() > 31 && corner1 && corner2;
+	}
+
+	private static boolean isCornerValid(World world, BlockPos pos) {
+		int highestBlock = getGround(world, pos.getX(), pos.getZ());
+		return highestBlock > pos.getY() - 1 && highestBlock < pos.getY() + 3;
 	}
 }

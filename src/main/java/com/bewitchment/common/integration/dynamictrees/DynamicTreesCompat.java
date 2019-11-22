@@ -1,6 +1,7 @@
 package com.bewitchment.common.integration.dynamictrees;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -24,7 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
-
 
 public class DynamicTreesCompat {
     public static ILeavesProperties cypressLeavesProperties;
@@ -42,7 +43,7 @@ public class DynamicTreesCompat {
     @Optional.Method(modid = "dynamictrees")
     @SubscribeEvent
     public static void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
-        //event.register(new BiomeDataBasePopulator());
+        event.register(new BiomeDataBasePopulator());
     }
 
     public static void preInit() {
@@ -77,10 +78,9 @@ public class DynamicTreesCompat {
         juniperTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
         dragonsbloodTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
         itemRegistry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
-//        if (ModConfigs.replaceVanillaSapling) {
-//            MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
-//        }
-
+        if (ModConfig.compat.replaceSapling) {
+            MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
+        }
     }
 
     public static void init() {
@@ -88,14 +88,6 @@ public class DynamicTreesCompat {
 
     @SideOnly(Side.CLIENT)
     public static void clientPreInit() {
-        ModelHelper.regModel(cypressTree.getDynamicBranch());
-        ModelHelper.regModel(elderTree.getDynamicBranch());
-        ModelHelper.regModel(juniperTree.getDynamicBranch());
-        ModelHelper.regModel(dragonsbloodTree.getDynamicBranch());
-        ModelHelper.regModel(cypressTree.getCommonSpecies().getSeed());
-        ModelHelper.regModel(elderTree.getCommonSpecies().getSeed());
-        ModelHelper.regModel(juniperTree.getCommonSpecies().getSeed());
-        ModelHelper.regModel(dragonsbloodTree.getCommonSpecies().getSeed());
         ModelHelper.regModel(cypressTree);
         ModelHelper.regModel(elderTree);
         ModelHelper.regModel(juniperTree);
@@ -103,5 +95,9 @@ public class DynamicTreesCompat {
         LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).forEach((key, leaves) -> {
             ModelLoader.setCustomStateMapper(leaves, (new StateMap.Builder()).ignore(new IProperty[]{BlockLeaves.DECAYABLE}).build());
         });
+    }
+
+    public static boolean replaceWorldGen() {
+        return ModConfig.compat.genDynamic && WorldGenRegistry.isWorldGenEnabled();
     }
 }

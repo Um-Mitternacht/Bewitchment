@@ -1,7 +1,6 @@
 package com.bewitchment.common.integration.dynamictrees;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.common.block.util.ModBlockLeaves;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
