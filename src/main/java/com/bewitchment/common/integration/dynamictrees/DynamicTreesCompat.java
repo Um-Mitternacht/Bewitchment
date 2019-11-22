@@ -18,7 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -40,9 +40,9 @@ public class DynamicTreesCompat {
     public DynamicTreesCompat() {
     }
 
-    @Optional.Method(modid = "dynamictrees")
+    @Method(modid = "dynamictrees")
     @SubscribeEvent
-    public static void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
+    public void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
         event.register(new BiomeDataBasePopulator());
     }
 

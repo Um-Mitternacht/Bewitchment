@@ -4,8 +4,6 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFlareBottom;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenMound;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenRoots;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -57,14 +55,12 @@ public class TreeDragonsBlood extends TreeFamily {
             this.generateSeed();
             this.setupStandardSeedDropping();
             this.addGenFeature(new FeatureGenClearVolume(6));
-            this.addGenFeature(new FeatureGenFlareBottom());
-            this.addGenFeature(new FeatureGenMound(5));
-            this.addGenFeature((new FeatureGenRoots(11)).setScaler(this.getRootScaler()));
+            this.addGenFeature((new FeatureGenRoots(8)).setScaler(this.getRootScaler()));
         }
 
         protected BiFunction<Integer, Integer, Integer> getRootScaler() {
             return (inRadius, trunkRadius) -> {
-                float scale = MathHelper.clamp(trunkRadius >= 11 ? (float)trunkRadius / 20.0F : 0.0F, 0.0F, 1.0F);
+                float scale = MathHelper.clamp(trunkRadius >= 8 ? (float)trunkRadius / 20.0F : 0.0F, 0.0F, 1.0F);
                 return (int)((float)inRadius * scale);
             };
         }

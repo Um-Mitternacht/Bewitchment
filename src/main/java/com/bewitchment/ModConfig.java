@@ -57,16 +57,16 @@ public class ModConfig {
 			public Integer[] treeGenBlacklist = {};
 			
 			@Config.Comment("The chance for cypress trees to spawn. Set to 0 to disable.")
-			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int cypressChance = 20;
+			@Config.RangeDouble(min = 0, max = 1.0)
+			public double cypressChance = 0.05;
 			
 			@Config.Comment("The chance for elder trees to spawn. Set to 0 to disable.")
-			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int elderChance = 20;
+			@Config.RangeDouble(min = 0, max = 1.0)
+			public double elderChance = 0.05;
 			
 			@Config.Comment("The chance for juniper trees to spawn. Set to 0 to disable.")
-			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int juniperChance = 20;
+			@Config.RangeDouble(min = 0, max = 1.0)
+			public double juniperChance = 0.05;
 		}
 		
 		public static class OreGen {

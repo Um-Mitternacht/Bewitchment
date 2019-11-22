@@ -128,8 +128,8 @@ public class ModWorldGen implements IWorldGenerator {
 			gen.generate(world, rand, new BlockPos(chunkX * 16, rand.nextInt(maxHeight - minHeight) + minHeight, chunkZ * 16));
 	}
 	
-	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, int chance, Predicate<Biome> predicate) {
-		if (chance != 0 && rand.nextInt(chance) == 0) {
+	private void generateTree(World world, Random rand, WorldGenerator gen, Block block, int chunkX, int chunkZ, double chance, Predicate<Biome> predicate) {
+		if (chance != 0 && rand.nextDouble() < chance) {
 			int x = chunkX * 16 + 8;
 			int z = chunkZ * 16 + 8;
 			BlockPos pos = new BlockPos(x, world.getHeight(x, z), z);
