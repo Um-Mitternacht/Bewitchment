@@ -46,17 +46,31 @@ public class ItemLeonardsWand extends Item {
 			}
 			playerIn.addStat(StatList.getObjectUseStats(this));
 			int uses = itemstack.getTagCompound().getInteger("uses");
-			if (uses -1 <= 0) {
+			if (uses - 1 <= 0) {
 				itemstack.setTagCompound(null);
-			} else {
-				itemstack.getTagCompound().setInteger("uses", uses-1);
+			}
+			else {
+				itemstack.getTagCompound().setInteger("uses", uses - 1);
 			}
 			itemstack.damageItem(1, playerIn);
 			return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
-
+	
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (stack.hasTagCompound()) {
+			tooltip.add(I18n.format("tooltip.leonards_wand.uses", stack.getTagCompound().getInteger("uses")));
+		}
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return stack.hasTagCompound();
+	}
+	
 	@Override
 	public boolean isEnchantable(ItemStack stack) {
 		return false;
@@ -75,18 +89,5 @@ public class ItemLeonardsWand extends Item {
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return false;
-	}
-
-	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return stack.hasTagCompound();
-	}
-
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if (stack.hasTagCompound()) {
-			tooltip.add(I18n.format("tooltip.leonards_wand.uses", stack.getTagCompound().getInteger("uses")));
-		}
-		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 }

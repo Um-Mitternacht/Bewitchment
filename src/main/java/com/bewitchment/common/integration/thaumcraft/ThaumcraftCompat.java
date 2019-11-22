@@ -209,8 +209,11 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerEntityTag("demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
-		ThaumcraftApi.registerEntityTag("shadow_person_standard", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
+		ThaumcraftApi.registerEntityTag("shadow_person", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
 		
 		ThaumcraftApi.registerEntityTag("ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
+		
+		ThaumcraftApi.registerEntityTag("leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
+		ThaumcraftApi.registerEntityTag("baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
 	}
 }

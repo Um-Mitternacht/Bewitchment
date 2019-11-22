@@ -183,13 +183,14 @@ public class BlockStatue extends ModBlockContainer {
 		public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
 			return false;
 		}
-	}	@Override
+	}
+
+	@Override
 	public int quantityDropped(Random random) {
 		return 1;
 	}
 	
 
-	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();

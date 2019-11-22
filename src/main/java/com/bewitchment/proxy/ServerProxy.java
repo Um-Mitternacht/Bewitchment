@@ -40,7 +40,7 @@ public class ServerProxy {
 		}
 		return false;
 	}
-
+	
 	public void preInit(FMLPreInitializationEvent event) {
 		ModObjects.preInit();
 		if (Loader.isModLoaded("dynamictrees")) {
