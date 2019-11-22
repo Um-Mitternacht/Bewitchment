@@ -52,7 +52,7 @@ public class TreeCypress extends TreeFamily {
             this.generateSeed();
             this.setupStandardSeedDropping();
             this.addGenFeature(new FeatureGenClearVolume(6));
-            this.addGenFeature(new FeatureGenConiferTopper(DynamicTreesCompat.juniperLeavesProperties));
+            this.addGenFeature(new FeatureGenConiferTopper(DynamicTreesCompat.cypressLeavesProperties));
         }
 
         public boolean isBiomePerfect(Biome biome) {
