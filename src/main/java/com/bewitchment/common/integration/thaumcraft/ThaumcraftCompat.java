@@ -63,6 +63,7 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.embergrass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.AVERSION, 8));
 		event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.blue_ink_cap), new AspectList().add(Aspect.SENSES, 4).add(Aspect.DARKNESS, 4));
 		//Saplings
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MIND, 3));
@@ -111,6 +112,7 @@ public class ThaumcraftCompat {
 		//Food
 		event.register.registerObjectTag(new ItemStack(ModObjects.elderberries), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_berries), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.stew_of_the_grotesque), new AspectList().add(DEMON, 3).add(Aspect.MAGIC, 3).add(Aspect.SENSES, 3).add(MOON, 3));
 		//Mob Drops
 		event.register.registerObjectTag(new ItemStack(ModObjects.lizard_leg), new AspectList().add(Aspect.MOTION, 4).add(Aspect.EARTH, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.owlets_wing), new AspectList().add(Aspect.BEAST, 3).add(Aspect.AIR, 2).add(MOON, 2));
@@ -175,6 +177,7 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
+		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
