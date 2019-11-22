@@ -3,6 +3,8 @@ package com.bewitchment.proxy;
 import baubles.api.BaublesApi;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.TarotInfo;
+import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
@@ -11,6 +13,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +40,13 @@ public class ServerProxy {
 		}
 		return false;
 	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+		ModObjects.preInit();
+		if (Loader.isModLoaded("dynamictrees")) {
+			DynamicTreesCompat.preInit();
+		}
+	}
 	
 	public void handleTarot(List<TarotInfo> infoList) {
 	}
@@ -45,9 +56,6 @@ public class ServerProxy {
 	}
 	
 	public void registerRendersInit() {
-	}
-	
-	public void registerRendersPreInit() {
 	}
 	
 	public void registerTexture(Item item, String variant) {

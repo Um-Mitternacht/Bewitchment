@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RecipeWand extends ShapelessRecipes {
     public RecipeWand() {
-        super("bewitchment:leonards_wand", ItemStack.EMPTY, NonNullList.from(Ingredient.EMPTY, Util.get(ModObjects.leonards_wand), Util.get(Items.SPLASH_POTION)));
+        super("bewitchment:leonards_wand", new ItemStack(ModObjects.leonards_wand), NonNullList.from(Ingredient.EMPTY, Util.get(ModObjects.leonards_wand), Util.get(Items.SPLASH_POTION)));
     }
 
     @Override

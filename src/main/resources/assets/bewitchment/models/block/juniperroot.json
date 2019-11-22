@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:block/smartmodel/branch",
+  "textures": {
+    "bark": "bewitchment:blocks/juniper_wood_side",
+    "rings": "bewitchment:blocks/juniper_wood_end"
+  }
+}

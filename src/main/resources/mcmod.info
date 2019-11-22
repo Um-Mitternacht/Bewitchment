@@ -12,6 +12,7 @@
 	  "Sunconure11",
 	  "Ingoleth",
 	  "MoriyaShiine",
+      "Samaritans",
 	  "and a whole lot of awesome people from our discord server!",
 	  "And our awesome patrons!"
 	],
@@ -26,7 +27,8 @@
 	"dependencies": [
 	  "baubles",
 	  "forge",
-	  "patchouli"
+	  "patchouli",
+      "dynamictrees"
 	],
 	"useDependencyInformation": true
   }

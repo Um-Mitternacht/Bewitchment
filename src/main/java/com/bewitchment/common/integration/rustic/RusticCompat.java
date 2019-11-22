@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rustic.common.items.ModItems;
 import rustic.common.potions.PotionsRustic;
 
-public class BewitchmentRustic {
+public class RusticCompat {
 	@SubscribeEvent
 	public void registerBrew(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));

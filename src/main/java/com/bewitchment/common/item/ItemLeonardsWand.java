@@ -41,7 +41,7 @@ public class ItemLeonardsWand extends Item {
 			worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SPLASH_POTION_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if (!worldIn.isRemote) {
 				EntityPotion entitypotion = new EntityPotion(worldIn, playerIn, potion);
-				entitypotion.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.5F, 1.0F);
+				entitypotion.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 1F, 1.0F);
 				worldIn.spawnEntity(entitypotion);
 			}
 			playerIn.addStat(StatList.getObjectUseStats(this));

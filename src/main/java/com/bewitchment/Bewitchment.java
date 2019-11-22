@@ -31,10 +31,11 @@ import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandCurse;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
-import com.bewitchment.common.integration.misc.BewitchmentMowzies;
-import com.bewitchment.common.integration.misc.BewitchmentQuark;
-import com.bewitchment.common.integration.rustic.BewitchmentRustic;
-import com.bewitchment.common.integration.thaumcraft.BewitchmentThaumcraft;
+import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
+import com.bewitchment.common.integration.misc.MowziesCompat;
+import com.bewitchment.common.integration.misc.QuarkCompat;
+import com.bewitchment.common.integration.rustic.RusticCompat;
+import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
@@ -60,10 +61,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-@Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY)
+@Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY, dependencies = Bewitchment.DEPENDENCIES)
 public class Bewitchment {
 	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.21-testbuild13", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
-	
+	public static final String DEPENDENCIES = "after:dynamictrees@[1.12.2-0.9.1e,)";
 	public static final Logger logger = LogManager.getLogger(NAME);
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
@@ -82,12 +83,11 @@ public class Bewitchment {
 		logger.info("Remember when I told you how my");
 		logger.info("Kin is different in some ways?");
 		
-		proxy.registerRendersPreInit();
-		ModObjects.preInit();
+		Bewitchment.proxy.preInit(event);
 		
 		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
-		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
+		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 		
 		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
 		MinecraftForge.EVENT_BUS.register(new MaterialHandler());
@@ -96,10 +96,11 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new CurseHandler());
-		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new BewitchmentThaumcraft());
-		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new BewitchmentQuark());
-		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new BewitchmentMowzies());
-		if (Loader.isModLoaded("rustic")) MinecraftForge.EVENT_BUS.register(new BewitchmentRustic());
+		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
+		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new QuarkCompat());
+		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new MowziesCompat());
+		if (Loader.isModLoaded("rustic")) MinecraftForge.EVENT_BUS.register(new RusticCompat());
+		if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());

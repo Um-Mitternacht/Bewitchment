@@ -23,7 +23,7 @@ import static vazkii.quark.world.feature.Frogs.gildedFrogLeg;
 import static vazkii.quark.world.feature.UndergroundBiomes.glowceliumEnabled;
 import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
 
-public class BewitchmentQuark {
+public class QuarkCompat {
 	
 	@SubscribeEvent
 	public void registerBrew(RegistryEvent.Register<Brew> event) {
