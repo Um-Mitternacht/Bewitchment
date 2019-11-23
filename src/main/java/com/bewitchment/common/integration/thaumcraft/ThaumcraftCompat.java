@@ -174,6 +174,11 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6).add(Aspect.EXCHANGE, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottled_hellfire), new AspectList().add(Aspect.FIRE, 6).add(DEMON, 6).add(Aspect.DARKNESS, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.birch_soul), new AspectList().add(Aspect.PLANT, 6).add(Aspect.SOUL, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.swirl_of_depths), new AspectList().add(Aspect.WATER, 6).add(Aspect.DARKNESS, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.oil_of_vitriol), new AspectList().add(Aspect.ALCHEMY, 6).add(Aspect.AVERSION, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.otherworldly_tears), new AspectList().add(STAR, 6).add(Aspect.WATER, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.heaven_extract), new AspectList().add(SUN, 6).add(Aspect.AIR, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.stone_ichor), new AspectList().add(Aspect.EARTH, 6).add(Aspect.ENTROPY, 6));
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.hellfire), new AspectList().add(Aspect.FIRE, 6).add(DEMON, 6).add(Aspect.DARKNESS, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.frostfire), new AspectList().add(Aspect.FIRE, 6).add(Aspect.COLD, 6).add(Aspect.EXCHANGE, 6));
