@@ -118,7 +118,7 @@ public class ModWorldGen implements IWorldGenerator {
 				generateMoss(world, rand, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP));
 			}
 		}
-
+		
 		//Overworld Gen
 		if (ModConfig.worldGen.enableStructures && world.provider.getDimension() == 0) {
 			generateStructure(wickerman, world, rand, ModConfig.worldGen.structureGen.wickermanChance, chunkX, chunkZ, 2, 4, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
