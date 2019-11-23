@@ -38,49 +38,49 @@
 	  "type": "crafting",
 	  "title": "Leonard",
 	  "recipe": "bewitchment:stone_leonard_statue",
-      "recipe2": "bewitchment:gold_leonard_statue"
+	  "recipe2": "bewitchment:gold_leonard_statue"
 	},
 	{
 	  "type": "crafting",
 	  "title": "Leonard",
 	  "recipe": "bewitchment:nether_brick_leonard_statue",
-      "recipe2": "bewitchment:scorned_brick_leonard_statue"
+	  "recipe2": "bewitchment:scorned_brick_leonard_statue"
 	},
-    {
-      "type": "crafting",
-      "title": "Baphomet",
-      "recipe": "bewitchment:stone_baphomet_statue",
-      "recipe2": "bewitchment:gold_baphomet_statue"
-    },
-    {
-      "type": "crafting",
-      "title": "Baphomet",
-      "recipe": "bewitchment:nether_brick_baphomet_statue",
-      "recipe2": "bewitchment:scorned_brick_baphomet_statue"
-    },
-    {
-      "type": "crafting",
-      "title": "Lilith",
-      "recipe": "bewitchment:stone_lilith_statue",
-      "recipe2": "bewitchment:gold_lilith_statue"
-    },
-    {
-      "type": "crafting",
-      "title": "Lilith",
-      "recipe": "bewitchment:nether_brick_lilith_statue",
-      "recipe2": "bewitchment:scorned_brick_lilith_statue"
-    },
-    {
-      "type": "crafting",
-      "title": "Herne",
-      "recipe": "bewitchment:stone_herne_statue",
-      "recipe2": "bewitchment:gold_herne_statue"
-    },
-    {
-      "type": "crafting",
-      "title": "Herne",
-      "recipe": "bewitchment:nether_brick_herne_statue",
-      "recipe2": "bewitchment:scorned_brick_herne_statue"
-    }
+	{
+	  "type": "crafting",
+	  "title": "Baphomet",
+	  "recipe": "bewitchment:stone_baphomet_statue",
+	  "recipe2": "bewitchment:gold_baphomet_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Baphomet",
+	  "recipe": "bewitchment:nether_brick_baphomet_statue",
+	  "recipe2": "bewitchment:scorned_brick_baphomet_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Lilith",
+	  "recipe": "bewitchment:stone_lilith_statue",
+	  "recipe2": "bewitchment:gold_lilith_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Lilith",
+	  "recipe": "bewitchment:nether_brick_lilith_statue",
+	  "recipe2": "bewitchment:scorned_brick_lilith_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Herne",
+	  "recipe": "bewitchment:stone_herne_statue",
+	  "recipe2": "bewitchment:gold_herne_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Herne",
+	  "recipe": "bewitchment:nether_brick_herne_statue",
+	  "recipe2": "bewitchment:scorned_brick_herne_statue"
+	}
   ]
 }

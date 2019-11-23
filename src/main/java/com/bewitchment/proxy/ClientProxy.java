@@ -84,41 +84,9 @@ public class ClientProxy extends ServerProxy {
 	}
 	
 	@Override
-	public void handleTarot(List<TarotInfo> infoList) {
-		EntityPlayer p = Minecraft.getMinecraft().player;
-		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
-		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
-			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
-		}
-		else {
-			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
-			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
-			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
-		}
-	}
-	
-	@Override
-	public boolean isFancyGraphicsEnabled() {
-		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
-	}
-	
-	@Override
-	public void registerRendersInit() {
-		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
-			int type = state.getValue(BlockGlyph.TYPE);
-			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
-		}, ModObjects.glyph);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x9e0000 : 0xffffff, ModObjects.bottle_of_blood);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
-		
-		TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
-	}
-	
-	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityCypressBroom.class, RenderCypressBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityElderBroom.class, RenderElderBroom::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityJuniperBroom.class, RenderJuniperBroom::new);
@@ -151,10 +119,42 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityStatue());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
-
+		
 		if (Loader.isModLoaded("dynamictrees")) {
 			DynamicTreesCompat.clientPreInit();
 		}
+	}
+	
+	@Override
+	public void handleTarot(List<TarotInfo> infoList) {
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		p.openGui(Bewitchment.instance, GuiHandler.ModGui.TAROT_TABLE.ordinal(), p.world, (int) p.posX, (int) p.posY, (int) p.posZ);
+		if (Minecraft.getMinecraft().currentScreen instanceof GuiTarotTable) {
+			Minecraft.getMinecraft().addScheduledTask(() -> ((GuiTarotTable) Minecraft.getMinecraft().currentScreen).loadData(infoList));
+		}
+		else {
+			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
+			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
+			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
+		}
+	}
+	
+	@Override
+	public boolean isFancyGraphicsEnabled() {
+		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
+	}
+	
+	@Override
+	public void registerRendersInit() {
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tintIndex) -> {
+			int type = state.getValue(BlockGlyph.TYPE);
+			return type == BlockGlyph.GOLDEN ? 0xe3dc3c : type == BlockGlyph.NETHER ? 0xbb0000 : type == BlockGlyph.ENDER ? 0x770077 : 0xffffff;
+		}, ModObjects.glyph);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0xe6c44f : 0xffffff, ModObjects.snake_venom);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x9e0000 : 0xffffff, ModObjects.bottle_of_blood);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
+		
+		TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
 	}
 	
 	@Override

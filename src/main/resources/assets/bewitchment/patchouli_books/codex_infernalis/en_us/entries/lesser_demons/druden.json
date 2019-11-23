@@ -15,7 +15,7 @@
 	  "type": "entity",
 	  "entity": "bewitchment:druden",
 	  "scale": 0.85,
-      "text": "$(o)Not to be confused with a Dryad."
+	  "text": "$(o)Not to be confused with a Dryad."
 	}
   ]
 }

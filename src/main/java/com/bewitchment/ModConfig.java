@@ -21,7 +21,7 @@ public class ModConfig {
 	
 	@Config.Comment("Mob spawn settings")
 	public static final MobSpawns mobSpawns = new MobSpawns();
-
+	
 	@Config.Comment("Compat Settings")
 	public static final Compat compat = new Compat();
 	
@@ -350,12 +350,12 @@ public class ModConfig {
 		@Config.Comment("it is wednesday my dudes")
 		public boolean wednesday = false;
 	}
-
+	
 	public static class Compat {
 		@Config.RequiresMcRestart
 		@Config.Comment("Enable replacing saplings with dynamic trees seeds upon planting (Must have DynamicTrees installed")
 		public boolean replaceSapling = true;
-
+		
 		@Config.RequiresMcRestart
 		@Config.Comment("Enable world gen of dynamic Bewitchment trees instead of the regular trees")
 		public boolean genDynamic = true;
