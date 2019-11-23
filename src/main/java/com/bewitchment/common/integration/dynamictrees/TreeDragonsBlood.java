@@ -29,7 +29,7 @@ public class TreeDragonsBlood extends TreeFamily {
 	public TreeDragonsBlood() {
 		super(new ResourceLocation(Bewitchment.MODID, "dragonsblood"));
 		IBlockState primLog = ModObjects.dragons_blood_wood.getDefaultState();
-		this.setPrimitiveLog(primLog, new ItemStack(ModObjects.cypress_wood));
+		this.setPrimitiveLog(primLog, new ItemStack(ModObjects.dragons_blood_wood));
 		DynamicTreesCompat.dragonsbloodLeavesProperties.setTree(this);
 		this.surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, this.getName() + "root");
 	}
