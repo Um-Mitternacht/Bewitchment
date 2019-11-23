@@ -63,6 +63,7 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.embergrass), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.AVERSION, 8));
 		event.register.registerObjectTag(new ItemStack(ModObjects.spanish_moss), new AspectList().add(Aspect.PLANT, 2).add(Aspect.AIR, 2).add(Aspect.MAGIC, 2));
 		event.register.registerObjectTag(new ItemStack(ModObjects.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.frostflower), new AspectList().add(Aspect.PLANT, 8).add(Aspect.COLD, 8));
 		event.register.registerObjectTag(new ItemStack(ModObjects.blue_ink_cap), new AspectList().add(Aspect.SENSES, 4).add(Aspect.DARKNESS, 4));
 		//Saplings
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
@@ -102,6 +103,8 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.pure_filament), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.AURA, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_stitching), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.MAGIC, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.sanguine_cloth), new AspectList().add(Aspect.CRAFT, 4).add(DEMON, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.golden_thread), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.DESIRE, 4));
+		event.register.registerObjectTag(new ItemStack(ModObjects.spirit_string), new AspectList().add(Aspect.CRAFT, 4).add(Aspect.SOUL, 4));
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(MOON, 6));
@@ -121,7 +124,7 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_cowl), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_robes), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
-		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_hat), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.besmirched_pants), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(DEMON, 6));
 		//Materials
 		event.register.registerObjectTag(new ItemStack(ModObjects.amethyst), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.ALCHEMY, 4).add(Aspect.LIFE, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.garnet), new AspectList().add(Aspect.DESIRE, 4).add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4).add(STAR, 4));
