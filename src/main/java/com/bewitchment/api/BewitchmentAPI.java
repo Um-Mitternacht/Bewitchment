@@ -139,7 +139,7 @@ public class BewitchmentAPI {
 		}
 		return (armorItem.contains(ModObjects.besmirched_cowl) || armorItem.contains(ModObjects.besmirched_hat)) && armorItem.contains(ModObjects.besmirched_robes) && armorItem.contains(ModObjects.besmirched_pants);
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return true if player has full set of green witch gear
@@ -165,7 +165,7 @@ public class BewitchmentAPI {
 		}
 		return (armorItem.contains(ModObjects.alchemist_cowl) || armorItem.contains(ModObjects.alchemist_hat)) && armorItem.contains(ModObjects.alchemist_robes) && armorItem.contains(ModObjects.alchemist_pants);
 	}
-
+	
 	/**
 	 * @param entity the entity to check
 	 * @return true if player has full set of witch gear

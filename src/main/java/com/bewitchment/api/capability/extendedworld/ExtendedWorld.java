@@ -42,7 +42,7 @@ public class ExtendedWorld extends WorldSavedData {
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
 	}
-
+	
 	public static boolean playerPledgedToDemon(World world, EntityPlayer player, String demon) {
 		ExtendedWorld extendedWorld = get(world);
 		Collection<UUID> players = extendedWorld.demonPledgedPlayers.get(demon);

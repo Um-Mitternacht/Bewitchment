@@ -73,7 +73,7 @@ public class ModRecipes {
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
-
+		
 		ForgeRegistries.RECIPES.register(new RecipeWand().setRegistryName("minecraft", "leonards_wand"));
 	}
 	

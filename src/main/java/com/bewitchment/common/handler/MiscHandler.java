@@ -60,7 +60,7 @@ public class MiscHandler {
 		}
 		if (ExtendedWorld.playerPledgedToDemon(event.getUser().world, event.getUser(), "leonard")) {
 			EntityPlayer player = event.getUser();
-			List<Entity> entities = player.world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX-32, player.posY-32, player.posZ-32, player.posX+32, player.posY+32, player.posZ+32), e -> e instanceof IPledgeable);
+			List<Entity> entities = player.world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 32, player.posY - 32, player.posZ - 32, player.posX + 32, player.posY + 32, player.posZ + 32), e -> e instanceof IPledgeable);
 			for (Entity entity : entities) {
 				if (entity instanceof EntityLeonard) {
 					event.setBoosted(true);
