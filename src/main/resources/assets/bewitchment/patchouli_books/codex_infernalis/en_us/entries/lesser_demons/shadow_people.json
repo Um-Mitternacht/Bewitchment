@@ -14,7 +14,8 @@
 	{
 	  "type": "entity",
 	  "entity": "bewitchment:shadow_person",
-	  "scale": 0.8
+	  "scale": 0.8,
+	  "text": "$(o)FORMLESS WORDS ENVELOP ME"	  
 	}
   ]
 }
