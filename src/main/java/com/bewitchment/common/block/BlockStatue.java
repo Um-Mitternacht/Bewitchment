@@ -184,13 +184,13 @@ public class BlockStatue extends ModBlockContainer {
 			return false;
 		}
 	}
-
+	
 	@Override
 	public int quantityDropped(Random random) {
 		return 1;
 	}
 	
-
+	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();

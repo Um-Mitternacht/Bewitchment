@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TreeElder extends TreeFamily {
 	private final BlockSurfaceRoot surfaceRootBlock;
-
+	
 	public TreeElder() {
 		super(new ResourceLocation(Bewitchment.MODID, "elder"));
 		IBlockState primLog = ModObjects.elder_wood.getDefaultState();
@@ -26,24 +26,24 @@ public class TreeElder extends TreeFamily {
 		DynamicTreesCompat.elderLeavesProperties.setTree(this);
 		this.surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, this.getName() + "root");
 	}
-
+	
 	public void createSpecies() {
 		this.setCommonSpecies(new SpeciesElder(this));
 	}
-
+	
 	public List<Block> getRegisterableBlocks(List<Block> blockList) {
 		blockList.add(this.surfaceRootBlock);
 		return super.getRegisterableBlocks(blockList);
 	}
-
+	
 	public boolean isThick() {
 		return true;
 	}
-
+	
 	public BlockSurfaceRoot getSurfaceRoots() {
 		return this.surfaceRootBlock;
 	}
-
+	
 	public class SpeciesElder extends Species {
 		SpeciesElder(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.elderLeavesProperties);
@@ -53,11 +53,11 @@ public class TreeElder extends TreeFamily {
 			this.setupStandardSeedDropping();
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
-
+		
 		public boolean isThick() {
 			return true;
 		}
-
+		
 		public boolean isBiomePerfect(Biome biome) {
 			return BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST);
 		}

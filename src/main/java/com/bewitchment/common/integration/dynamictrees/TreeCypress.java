@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TreeCypress extends TreeFamily {
 	private final BlockSurfaceRoot surfaceRootBlock;
-
+	
 	public TreeCypress() {
 		super(new ResourceLocation(Bewitchment.MODID, "cypress"));
 		IBlockState primLog = ModObjects.cypress_wood.getDefaultState();
@@ -28,24 +28,24 @@ public class TreeCypress extends TreeFamily {
 		DynamicTreesCompat.cypressLeavesProperties.setTree(this);
 		this.surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, this.getName() + "root");
 	}
-
+	
 	public void createSpecies() {
 		this.setCommonSpecies(new SpeciesCypress(this));
 	}
-
+	
 	public List<Block> getRegisterableBlocks(List<Block> blockList) {
 		blockList.add(this.surfaceRootBlock);
 		return super.getRegisterableBlocks(blockList);
 	}
-
+	
 	public boolean isThick() {
 		return true;
 	}
-
+	
 	public BlockSurfaceRoot getSurfaceRoots() {
 		return this.surfaceRootBlock;
 	}
-
+	
 	public class SpeciesCypress extends Species {
 		SpeciesCypress(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.cypressLeavesProperties);
@@ -57,11 +57,11 @@ public class TreeCypress extends TreeFamily {
 			this.addDropCreator(new DropCreatorSeed(5));
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
-
+		
 		public boolean isThick() {
 			return false;
 		}
-
+		
 		public boolean isBiomePerfect(Biome biome) {
 			return BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST);
 		}

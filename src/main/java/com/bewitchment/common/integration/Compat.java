@@ -29,32 +29,32 @@ import static vazkii.quark.world.feature.UndergroundBiomes.glowceliumEnabled;
 import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
 
 public class Compat {
-    @Optional.Method(modid = "mowziesmobs")
-    @SubscribeEvent
-    public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
-        event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
-    }
-
-    @Optional.Method(modid = "quark")
-    @SubscribeEvent
-    public void registerQuarkBrew(RegistryEvent.Register<Brew> event) {
-        event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "prismarine_haste"), Util.get(Items.PRISMARINE_CRYSTALS), new PotionEffect(MobEffects.HASTE, (20 * 30))));
-        if (ModuleLoader.isFeatureEnabled(Frogs.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "frog_boost"), Util.get(gildedFrogLeg), new PotionEffect(MobEffects.JUMP_BOOST, (20 * 30))));
-        if (ModuleLoader.isFeatureEnabled(Biotite.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "biotite_resistance"), Util.get(biotite), new PotionEffect(MobEffects.RESISTANCE, (20 * 30))));
-        if (ModuleLoader.isFeatureEnabled(UndergroundBiomes.class) && enableDangerSight && glowceliumEnabled)
-            event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "danger_sight"), Util.get(glowshroom), new PotionEffect(dangerSight, (20 * 30))));
-        if (ModuleLoader.isFeatureEnabled(CaveRoots.class) && enableFlowers) {
-            event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blueberry"), Util.get(new ItemStack(root_flower, 1, 0)), new PotionEffect(blue_effect, (20 * 30))));
-            event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blackening"), Util.get(new ItemStack(root_flower, 1, 1)), new PotionEffect(black_effect, (20 * 30))));
-            event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "whitening"), Util.get(new ItemStack(root_flower, 1, 2)), new PotionEffect(white_effect, (20 * 30))));
-        }
-        if (ModuleLoader.isFeatureEnabled(Crabs.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "stability"), Util.get(crabShell), new PotionEffect(resilience, (20 * 30))));
-    }
-
-    @Optional.Method(modid = "rustic")
-    @SubscribeEvent
-    public void registerBrew(RegistryEvent.Register<Brew> event) {
-        event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
-        event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
-    }
+	@Optional.Method(modid = "mowziesmobs")
+	@SubscribeEvent
+	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
+	}
+	
+	@Optional.Method(modid = "quark")
+	@SubscribeEvent
+	public void registerQuarkBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "prismarine_haste"), Util.get(Items.PRISMARINE_CRYSTALS), new PotionEffect(MobEffects.HASTE, (20 * 30))));
+		if (ModuleLoader.isFeatureEnabled(Frogs.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "frog_boost"), Util.get(gildedFrogLeg), new PotionEffect(MobEffects.JUMP_BOOST, (20 * 30))));
+		if (ModuleLoader.isFeatureEnabled(Biotite.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "biotite_resistance"), Util.get(biotite), new PotionEffect(MobEffects.RESISTANCE, (20 * 30))));
+		if (ModuleLoader.isFeatureEnabled(UndergroundBiomes.class) && enableDangerSight && glowceliumEnabled)
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "danger_sight"), Util.get(glowshroom), new PotionEffect(dangerSight, (20 * 30))));
+		if (ModuleLoader.isFeatureEnabled(CaveRoots.class) && enableFlowers) {
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blueberry"), Util.get(new ItemStack(root_flower, 1, 0)), new PotionEffect(blue_effect, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blackening"), Util.get(new ItemStack(root_flower, 1, 1)), new PotionEffect(black_effect, (20 * 30))));
+			event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "whitening"), Util.get(new ItemStack(root_flower, 1, 2)), new PotionEffect(white_effect, (20 * 30))));
+		}
+		if (ModuleLoader.isFeatureEnabled(Crabs.class)) event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "stability"), Util.get(crabShell), new PotionEffect(resilience, (20 * 30))));
+	}
+	
+	@Optional.Method(modid = "rustic")
+	@SubscribeEvent
+	public void registerBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
+	}
 }

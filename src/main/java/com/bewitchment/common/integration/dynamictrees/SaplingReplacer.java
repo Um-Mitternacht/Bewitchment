@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class SaplingReplacer {
 	public SaplingReplacer() {
 	}
-
+	
 	@SubscribeEvent
 	public void onPlaceSaplingEvent(BlockEvent.PlaceEvent event) {
 		IBlockState state = event.getPlacedBlock();
@@ -30,7 +30,7 @@ public class SaplingReplacer {
 		else if (state.getBlock() == ModObjects.juniper_sapling) {
 			species = TreeRegistry.findSpecies(new ResourceLocation(Bewitchment.MODID, "juniper"));
 		}
-
+		
 		if (species != null) {
 			event.getWorld().setBlockToAir(event.getPos());
 			if (!species.plantSapling(event.getWorld(), event.getPos())) {

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TreeJuniper extends TreeFamily {
 	private final BlockSurfaceRoot surfaceRootBlock;
-
+	
 	public TreeJuniper() {
 		super(new ResourceLocation(Bewitchment.MODID, "juniper"));
 		IBlockState primLog = ModObjects.juniper_wood.getDefaultState();
@@ -26,24 +26,24 @@ public class TreeJuniper extends TreeFamily {
 		DynamicTreesCompat.juniperLeavesProperties.setTree(this);
 		this.surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, this.getName() + "root");
 	}
-
+	
 	public void createSpecies() {
 		this.setCommonSpecies(new SpeciesJuniper(this));
 	}
-
+	
 	public List<Block> getRegisterableBlocks(List<Block> blockList) {
 		blockList.add(this.surfaceRootBlock);
 		return super.getRegisterableBlocks(blockList);
 	}
-
+	
 	public boolean isThick() {
 		return true;
 	}
-
+	
 	public BlockSurfaceRoot getSurfaceRoots() {
 		return this.surfaceRootBlock;
 	}
-
+	
 	public class SpeciesJuniper extends Species {
 		SpeciesJuniper(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.juniperLeavesProperties);
@@ -53,11 +53,11 @@ public class TreeJuniper extends TreeFamily {
 			this.setupStandardSeedDropping();
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
-
+		
 		public boolean isThick() {
 			return true;
 		}
-
+		
 		public boolean isBiomePerfect(Biome biome) {
 			return BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST);
 		}

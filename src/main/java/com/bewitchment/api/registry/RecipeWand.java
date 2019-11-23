@@ -20,25 +20,25 @@ public class RecipeWand extends ShapelessRecipes {
 	public RecipeWand() {
 		super("bewitchment:leonards_wand", new ItemStack(ModObjects.leonards_wand), NonNullList.from(Ingredient.EMPTY, Util.get(ModObjects.leonards_wand), Util.get(Items.SPLASH_POTION)));
 	}
-
+	
 	@NotNull
 	@Override
 	public ItemStack getRecipeOutput() {
 		return new ItemStack(ModObjects.leonards_wand);
 	}
-
+	
 	@NotNull
 	@Override
 	public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
 		ItemStack wand = ItemStack.EMPTY;
-
+		
 		for (int i = 0; i < var1.getSizeInventory(); ++i) {
 			ItemStack stack = var1.getStackInSlot(i);
 			if (!stack.isEmpty() && stack.getItem() == ModObjects.leonards_wand) {
 				wand = stack;
 			}
 		}
-
+		
 		if (wand.isEmpty()) {
 			return ItemStack.EMPTY;
 		}
@@ -56,12 +56,12 @@ public class RecipeWand extends ShapelessRecipes {
 			return wandCopy;
 		}
 	}
-
+	
 	@Override
 	public boolean canFit(int i, int i1) {
 		return i >= 2 && i1 >= 2;
 	}
-
+	
 	@Override
 	public boolean isDynamic() {
 		return true;

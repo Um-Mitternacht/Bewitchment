@@ -98,7 +98,7 @@ public class Bewitchment {
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
 		if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
-
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
 	
