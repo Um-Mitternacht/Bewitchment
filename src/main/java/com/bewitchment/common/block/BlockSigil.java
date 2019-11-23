@@ -111,7 +111,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return null;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
@@ -136,7 +136,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 				world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + rand.nextGaussian() / 5, pos.getY() + rand.nextGaussian() / 5 + 0.5, pos.getZ() + 1, 0, 0, 0);
 		}
 	}
-
+	
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		EnumFacing enumfacing = state.getValue(FACING);

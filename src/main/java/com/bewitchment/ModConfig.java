@@ -1,6 +1,5 @@
 package com.bewitchment;
 
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Config;
@@ -157,40 +156,40 @@ public class ModConfig {
 			@Config.RangeInt(min = 0, max = 255)
 			public int opalMax = 42;
 		}
-
+		
 		public static class StructureGen {
 			@Config.Comment("The chance for wickerman to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double wickermanChance = 0.002;
-
+			
 			@Config.Comment("The chance for burned wickerman to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double burnedwickermanChance = 0.001;
-
+			
 			@Config.Comment("The chance for stone circle type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double stonecircle1Chance = 0.001;
-
+			
 			@Config.Comment("The chance for stone circle type 2 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double stonecircle2Chance = 0.001;
-
+			
 			@Config.Comment("The chance for menhir type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double menhir1Chance = 0.001;
-
+			
 			@Config.Comment("The chance for menhir type 2 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double menhir2Chance = 0.001;
-
+			
 			@Config.Comment("The chance for menhirtaiga to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double menhirtaigaChance = 0.005;
-
+			
 			@Config.Comment("The chance for menhirmegataiga to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double menhirmegataigaChance = 0.005;
-
+			
 			@Config.Comment("The chance for menhircoldtaiga to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double menhircoldtaigaChance = 0.005;
