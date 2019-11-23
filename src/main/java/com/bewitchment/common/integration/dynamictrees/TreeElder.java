@@ -11,12 +11,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.List;
-import java.util.function.BiFunction;
 
 public class TreeElder extends TreeFamily {
     private final BlockSurfaceRoot surfaceRootBlock;

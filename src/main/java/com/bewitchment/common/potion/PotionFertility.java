@@ -42,6 +42,7 @@ public class PotionFertility extends ModPotion {
 					IGrowable growable = ((IGrowable) world.getBlockState(pos0).getBlock());
 					if (growable.canGrow(world, pos0, world.getBlockState(pos0), true)) {
 						growable.grow(world, world.rand, pos0, world.getBlockState(pos0));
+						growable.grow(world, world.rand, pos0, world.getBlockState(pos0));
 						flag = true;
 					}
 				}

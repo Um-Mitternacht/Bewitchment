@@ -3,6 +3,7 @@ package com.bewitchment.common.integration.dynamictrees;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
+import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.systems.featuregen.*;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -47,7 +48,8 @@ public class TreeCypress extends TreeFamily {
     public class SpeciesCypress extends Species {
         SpeciesCypress(TreeFamily treeFamily) {
             super(treeFamily.getName(), treeFamily, DynamicTreesCompat.cypressLeavesProperties);
-            this.setBasicGrowingParameters(0.4F, 14.0F, 4, 4, 1.0F);
+            this.setBasicGrowingParameters(0.3F, 14.0F, 4, 4, 1.0F);
+            this.setGrowthLogicKit(new ConiferLogic(6.0f).setHorizontalLimiter(1.6f).setHeightVariation(4));
             this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
             this.generateSeed();
             this.setupStandardSeedDropping();
@@ -60,7 +62,7 @@ public class TreeCypress extends TreeFamily {
         }
 
         public boolean isThick() {
-            return true;
+            return false;
         }
     }
 }

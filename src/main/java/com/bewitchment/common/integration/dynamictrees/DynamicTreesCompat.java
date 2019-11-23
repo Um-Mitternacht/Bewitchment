@@ -2,7 +2,10 @@ package com.bewitchment.common.integration.dynamictrees;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
+import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModRegistries;
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
@@ -16,16 +19,19 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DynamicTreesCompat {
     public static ILeavesProperties cypressLeavesProperties;
@@ -48,10 +54,9 @@ public class DynamicTreesCompat {
 
     public static void preInit() {
         IForgeRegistry<Block> blockRegistry = GameRegistry.findRegistry(Block.class);
-        IForgeRegistry<Item> itemRegistry = GameRegistry.findRegistry(Item.class);
-        cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves));
+        cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "conifer")));
         elderLeavesProperties = new LeavesProperties(ModObjects.elder_leaves.getDefaultState(), new ItemStack(ModObjects.elder_leaves));
-        juniperLeavesProperties = new LeavesProperties(ModObjects.juniper_leaves.getDefaultState(), new ItemStack(ModObjects.juniper_leaves));
+        juniperLeavesProperties = new LeavesProperties(ModObjects.juniper_leaves.getDefaultState(), new ItemStack(ModObjects.juniper_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "acacia")));
         dragonsbloodLeavesProperties = new LeavesProperties(ModObjects.dragons_blood_leaves.getDefaultState(), new ItemStack(ModObjects.dragons_blood_leaves));
         LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 0, cypressLeavesProperties);
         LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 1, elderLeavesProperties);
@@ -77,7 +82,11 @@ public class DynamicTreesCompat {
         elderTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
         juniperTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
         dragonsbloodTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
-        itemRegistry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+        for (Item toRegister : treeItems) {
+            toRegister.setTranslationKey(toRegister.getRegistryName().toString().replace(":", "."));
+            ForgeRegistries.ITEMS.register(toRegister);
+            Bewitchment.proxy.registerTexture(toRegister, "normal");
+        }
         if (ModConfig.compat.replaceSapling) {
             MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
         }
