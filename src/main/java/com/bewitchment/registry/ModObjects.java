@@ -499,10 +499,10 @@ public class ModObjects {
 		public void applyEffects(EntityLivingBase entity) {
 			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
 				ExtendedPlayer ep = entity.getCapability(ExtendedPlayer.CAPABILITY, null);
-				List<Curse> weakerCurses = ep.getCurses().stream().filter(Curse::isLesser).collect(Collectors.toList());
+				List<Curse> weakerCurses = ep.getCurses().stream().filter(Curse::isLesser).filter(c -> !c.isPositive()).collect(Collectors.toList());
 				for (Curse curse : weakerCurses) {
-					// 70% chance to remove curse for each lesser curse
-					if (entity.getRNG().nextDouble() < 0.7) ep.removeCurse(curse);
+					// 50% chance to remove curse for each lesser curse
+					if (entity.getRNG().nextDouble() < 0.5) ep.removeCurse(curse);
 				}
 			}
 		}

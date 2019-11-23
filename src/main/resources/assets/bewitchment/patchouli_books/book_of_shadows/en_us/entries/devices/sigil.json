@@ -24,45 +24,100 @@
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:mending"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_mending",
+      "text": "Causes a target to regenerate health"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:ruin"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_ruin",
+      "text": "Ills a target touching the sigil"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:binding"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_binding",
+      "text": "Inflicts temporary paralysis"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:cleansing"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_cleansing",
+      "text": "Removes debuffs from target"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:failure"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_failure",
+      "text": "Causes rituals to fail for a target for some time"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:purity"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_purity",
+      "text": "Removes some lesser curses, but not all"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:luck"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_luck",
+      "text": "Increases the chance of finding better loot in chests for a period of time"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:battle"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_battle",
+      "text": "Provides a minor strength and resistance buff"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:disorientation"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_disorientation",
+      "text": "Confuses mobs and players"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:shrieking"
 	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_shrieking",
+      "text": "Shrieks at a target, $(o)very loudly"
+    },
 	{
 	  "type": "bewitchment:sigil_recipe",
 	  "recipe": "bewitchment:sentinel"
-	}
+	},
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_sentinel",
+      "text": "Summons spooky ghosts to attack the target"
+    }
   ]
 }
