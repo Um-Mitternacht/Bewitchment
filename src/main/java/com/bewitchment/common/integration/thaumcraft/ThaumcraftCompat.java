@@ -202,6 +202,9 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		
+		//Sigils
+		//TODO
+		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
@@ -212,6 +215,8 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.wood_ash), new AspectList().add(Aspect.PLANT, 3).add(Aspect.ENTROPY, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.LIFE, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.bottle_of_vampire_blood), new AspectList().add(Aspect.WATER, 3).add(Aspect.DEATH, 3).add(DEMON, 3));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.box_of_sealed_evil), new AspectList().add(Aspect.DESIRE, 15).add(DEMON, 15).add(Aspect.DARKNESS, 15).add(Aspect.VOID, 15));
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.leonards_wand), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15).add(DEMON, 15).add(Aspect.ENERGY, 15));
 		event.register.registerObjectTag(new ItemStack(ModObjects.caduceus), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.FIRE, 15).add(DEMON, 15).add(Aspect.DARKNESS, 15));
