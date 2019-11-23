@@ -2,9 +2,14 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.api.registry.Contract;
+import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractIllager;
@@ -21,16 +26,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.*;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
@@ -205,5 +215,24 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 	@Override
 	public String getPledgeName() {
 		return "baphomet";
+	}
+
+	@Override
+	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
+			if (ExtendedWorld.playerPledgedToDemon(player.world, player, this.getPledgeName())) {
+				if (player.experienceLevel >= 6) {
+					player.addExperienceLevel(-6);
+					ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+					List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(Curse::isPositive).filter(c -> c instanceof Contract).collect(Collectors.toList());
+					Contract contract = (Contract) contracts.get(player.getRNG().nextInt(contracts.size()));
+					if (ep != null) ep.addCurse(contract, 7);
+					if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
+					player.sendStatusMessage(new TextComponentTranslation("baphomet.getcontract", I18n.format(contract.getRegistryName().toString().replace(":", "."))), true);
+					return true;
+				} else player.sendStatusMessage(new TextComponentTranslation("baphomet.lowlevel"), true);
+			} else player.sendStatusMessage(new TextComponentTranslation("baphomet.notpledged"), true);
+		}
+		return super.processInteract(player, hand);
 	}
 }

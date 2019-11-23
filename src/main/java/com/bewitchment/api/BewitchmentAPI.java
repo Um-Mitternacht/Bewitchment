@@ -131,7 +131,7 @@ public class BewitchmentAPI {
 	 * @param entity the entity to check
 	 * @return true if player has full set of besmirched gear
 	 */
-	public static boolean hasBesmirched(EntityLivingBase entity) {
+	public static boolean hasBesmirchedGear(EntityLivingBase entity) {
 		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
 		List<Item> armorItem = new ArrayList<>();
 		for (ItemStack is : armor) {
@@ -139,18 +139,44 @@ public class BewitchmentAPI {
 		}
 		return (armorItem.contains(ModObjects.besmirched_cowl) || armorItem.contains(ModObjects.besmirched_hat)) && armorItem.contains(ModObjects.besmirched_robes) && armorItem.contains(ModObjects.besmirched_pants);
 	}
+
+	/**
+	 * @param entity the entity to check
+	 * @return true if player has full set of green witch gear
+	 */
+	public static boolean hasGreenWitchGear(EntityLivingBase entity) {
+		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
+		List<Item> armorItem = new ArrayList<>();
+		for (ItemStack is : armor) {
+			armorItem.add(is.getItem());
+		}
+		return (armorItem.contains(ModObjects.green_witch_cowl) || armorItem.contains(ModObjects.green_witch_hat)) && armorItem.contains(ModObjects.green_witch_robes) && armorItem.contains(ModObjects.green_witch_pants);
+	}
 	
 	/**
 	 * @param entity the entity to check
 	 * @return true if player has full set of alchemist gear
 	 */
-	public static boolean hasAlchemist(EntityLivingBase entity) {
+	public static boolean hasAlchemistGear(EntityLivingBase entity) {
 		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
 		List<Item> armorItem = new ArrayList<>();
 		for (ItemStack is : armor) {
 			armorItem.add(is.getItem());
 		}
 		return (armorItem.contains(ModObjects.alchemist_cowl) || armorItem.contains(ModObjects.alchemist_hat)) && armorItem.contains(ModObjects.alchemist_robes) && armorItem.contains(ModObjects.alchemist_pants);
+	}
+
+	/**
+	 * @param entity the entity to check
+	 * @return true if player has full set of witch gear
+	 */
+	public static boolean hasWitchesGear(EntityLivingBase entity) {
+		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
+		List<Item> armorItem = new ArrayList<>();
+		for (ItemStack is : armor) {
+			armorItem.add(is.getItem());
+		}
+		return (armorItem.contains(ModObjects.witches_cowl) || armorItem.contains(ModObjects.witches_hat)) && armorItem.contains(ModObjects.witches_robes) && armorItem.contains(ModObjects.witches_pants);
 	}
 	
 	public static float getSilverWeakness(EntityLivingBase entity) {

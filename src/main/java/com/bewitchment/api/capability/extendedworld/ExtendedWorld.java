@@ -13,7 +13,7 @@ import net.minecraftforge.common.util.Constants;
 
 import java.util.*;
 
-@SuppressWarnings({"ConstantConditions", "SameReturnValue", "NullableProblems", "WeakerAccess"})
+@SuppressWarnings({"ConstantConditions", "SameReturnValue", "WeakerAccess"})
 public class ExtendedWorld extends WorldSavedData {
 	private static final String TAG = Bewitchment.MODID + ".world_data";
 	
@@ -41,6 +41,12 @@ public class ExtendedWorld extends WorldSavedData {
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
+	}
+
+	public static boolean playerPledgedToDemon(World world, EntityPlayer player, String demon) {
+		ExtendedWorld extendedWorld = get(world);
+		Collection<UUID> players = extendedWorld.demonPledgedPlayers.get(demon);
+		return players != null && players.contains(player.getPersistentID());
 	}
 	
 	@Override

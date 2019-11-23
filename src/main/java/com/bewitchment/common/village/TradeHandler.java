@@ -213,11 +213,11 @@ public class TradeHandler {
 			ItemStack itemStack = new ItemStack(sellingItem.getItem(), sellingPrice.getPrice(random), sellingItem.getMetadata());
 			if (sellingItem.getItem() instanceof ItemBow || sellingItem.getItem() instanceof ItemEnchantedBook) itemStack = sellingItem;
 			boolean reduced = false;
-			if (iMerchant.getCustomer() != null && BewitchmentAPI.hasBesmirched(iMerchant.getCustomer())) {
+			if (iMerchant.getCustomer() != null && BewitchmentAPI.hasBesmirchedGear(iMerchant.getCustomer())) {
 				reduced = true;
 			}
 			else if (iMerchant instanceof EntityDemon && ((EntityDemon) iMerchant).lastBuyer != null) {
-				reduced = BewitchmentAPI.hasBesmirched(((EntityDemon) iMerchant).lastBuyer);
+				reduced = BewitchmentAPI.hasBesmirchedGear(((EntityDemon) iMerchant).lastBuyer);
 			}
 			ItemStack itemStack1 = getRandomDemonPrice(random, reduced);
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));

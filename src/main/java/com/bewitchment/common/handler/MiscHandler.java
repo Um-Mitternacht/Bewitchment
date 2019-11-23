@@ -3,14 +3,19 @@ package com.bewitchment.common.handler;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
+import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
+import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
@@ -25,6 +30,7 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.*;
@@ -47,10 +53,20 @@ import java.util.Objects;
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
 	@SubscribeEvent
-	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent evt) {
-		if (BewitchmentAPI.hasAlchemist(evt.getUser())) {
-			evt.setBoosted(true);
-			evt.setBottles(evt.getBottles() + 1);
+	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
+		if (BewitchmentAPI.hasAlchemistGear(event.getUser())) {
+			event.setBoosted(true);
+			event.setBottles(event.getBottles() + 1);
+		}
+		if (ExtendedWorld.playerPledgedToDemon(event.getUser().world, event.getUser(), "leonard")) {
+			EntityPlayer player = event.getUser();
+			List<Entity> entities = player.world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX-32, player.posY-32, player.posZ-32, player.posX+32, player.posY+32, player.posZ+32), e -> e instanceof IPledgeable);
+			for (Entity entity : entities) {
+				if (entity instanceof EntityLeonard) {
+					event.setBoosted(true);
+					event.setBottles(event.getBottles() + 1);
+				}
+			}
 		}
 	}
 	
@@ -65,6 +81,9 @@ public class MiscHandler {
 			}
 			if (event.getEntityLiving() instanceof EntityTameable && event.getTarget() instanceof EntityDruden) {
 				((EntityTameable) event.getEntityLiving()).setAttackTarget(null);
+			}
+			if (event.getEntityLiving() instanceof IPledgeable && event.getTarget() instanceof EntityPlayer && ExtendedWorld.playerPledgedToDemon(event.getEntityLiving().world, (EntityPlayer) event.getTarget(), ((IPledgeable) event.getEntityLiving()).getPledgeName())) {
+				((EntityMob) event.getEntityLiving()).setAttackTarget(null);
 			}
 		}
 	}
