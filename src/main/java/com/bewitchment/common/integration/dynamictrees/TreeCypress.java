@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
+import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.*;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -50,11 +51,11 @@ public class TreeCypress extends TreeFamily {
             super(treeFamily.getName(), treeFamily, DynamicTreesCompat.cypressLeavesProperties);
             this.setBasicGrowingParameters(0.3F, 14.0F, 4, 4, 1.0F);
             this.setGrowthLogicKit(new ConiferLogic(6.0f).setHorizontalLimiter(1.6f).setHeightVariation(4));
-            this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
+            this.envFactor(BiomeDictionary.Type.COLD, 1.05F);
+            this.envFactor(BiomeDictionary.Type.CONIFEROUS, 1.05F);
             this.generateSeed();
-            this.setupStandardSeedDropping();
+            this.addDropCreator(new DropCreatorSeed(5));
             this.addGenFeature(new FeatureGenClearVolume(6));
-            this.addGenFeature(new FeatureGenConiferTopper(DynamicTreesCompat.cypressLeavesProperties));
         }
 
         public boolean isBiomePerfect(Biome biome) {
