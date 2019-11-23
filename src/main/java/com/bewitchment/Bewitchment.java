@@ -31,10 +31,8 @@ import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandCurse;
 import com.bewitchment.common.command.CommandFortune;
 import com.bewitchment.common.handler.*;
+import com.bewitchment.common.integration.Compat;
 import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
-import com.bewitchment.common.integration.misc.MowziesCompat;
-import com.bewitchment.common.integration.misc.QuarkCompat;
-import com.bewitchment.common.integration.rustic.RusticCompat;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
@@ -96,13 +94,11 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new CurseHandler());
+		MinecraftForge.EVENT_BUS.register(new Compat());
 		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
-		if (Loader.isModLoaded("quark")) MinecraftForge.EVENT_BUS.register(new QuarkCompat());
-		if (Loader.isModLoaded("mowziesmobs")) MinecraftForge.EVENT_BUS.register(new MowziesCompat());
-		if (Loader.isModLoaded("rustic")) MinecraftForge.EVENT_BUS.register(new RusticCompat());
 		if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
-		
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
 	}
 	
