@@ -20,15 +20,15 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import java.util.Random;
 
 public class WorldGenStonecircle extends WorldGenerator {
-	private int type;
 	
-	public WorldGenStonecircle(int type) {
+	public WorldGenStonecircle() {
 		super();
-		this.type = type;
 	}
 	
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
+		int type = rand.nextInt(1) + 1;
+
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();

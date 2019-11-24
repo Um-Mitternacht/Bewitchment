@@ -22,24 +22,24 @@ import java.util.Random;
 
 @SuppressWarnings("NullableProblems")
 public class WorldGenWickerman extends WorldGenerator {
-	private boolean burned;
 	
-	public WorldGenWickerman(boolean burned) {
+	public WorldGenWickerman() {
 		super();
-		this.burned = burned;
 	}
 	
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
+		boolean burned = rand.nextBoolean();
+
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
 		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + (burned ? ":burnedwickerman" : ":wickerman")));
-		
+
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
 			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
-			PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos) null).setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
+			PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.values()[rand.nextInt(Rotation.values().length)]).setIgnoreEntities(false).setChunk((ChunkPos) null).setReplacedBlock((Block) null).setIgnoreStructureBlock(false);
 			template.addBlocksToWorld(worldIn, burned ? position : position.add(0, 1, 0), placementsettings);
 			if (!burned) {
 				// Spawn Villager
