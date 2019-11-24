@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class PotionMortalCoil extends ModPotion {
 	public PotionMortalCoil() {
-		super("mortal_coil", true, 0x00ff00);
+		super("mortal_coil", true, 0x4B3621);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
