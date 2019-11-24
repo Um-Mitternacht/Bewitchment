@@ -110,6 +110,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			player.addPotionEffect(new PotionEffect(ModPotions.mortal_coil, 60, 0));
+			player.addPotionEffect(new PotionEffect(ModPotions.magic_weakness, 60, 0));
 		}
 		return super.attackEntityAsMob(entityIn);
 	}
