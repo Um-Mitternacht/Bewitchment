@@ -691,6 +691,7 @@ jei.brew=Brew
 jei.incense=Incense
 
 #DEMON NAMES AND TITLES
+//Mainline names
 entity.bewitchment.given_name.0=Bael
 entity.bewitchment.given_name.1=Agares
 entity.bewitchment.given_name.2=Vassago
@@ -1094,6 +1095,26 @@ entity.bewitchment.given_name.387=Satan
 entity.bewitchment.given_name.388=Lucifer
 entity.bewitchment.given_name.389=Blotnik
 entity.bewitchment.given_name.390=Boruta
+entity.bewitchment.given_name.391=Bludnik
+entity.bewitchment.given_name.392=Enepsigos
+entity.bewitchment.given_name.393=Abezethibou
+entity.bewitchment.given_name.394=Mastema
+entity.bewitchment.given_name.395=Penemue
+entity.bewitchment.given_name.396=Daniel
+entity.bewitchment.given_name.397=Acedia
+entity.bewitchment.given_name.398=Temeluchus
+entity.bewitchment.given_name.399=Gello
+entity.bewitchment.given_name.400=Isacaron
+entity.bewitchment.given_name.401=Fulad-zereh
+entity.bewitchment.given_name.402=Chuchunya
+entity.bewitchment.given_name.403=Enyo
+entity.bewitchment.given_name.404=Harut
+entity.bewitchment.given_name.405=Marut
+entity.bewitchment.given_name.406=Nisroch
+entity.bewitchment.given_name.407=Nelchael
+entity.bewitchment.given_name.408=Iblis
+entity.bewitchment.given_name.409=Awar
+entity.bewitchment.given_name.410=Dasim
 
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
