@@ -23,12 +23,12 @@ public class RitualConjureBaphomet extends Ritual {
 	public RitualConjureBaphomet() {
 		super(new ResourceLocation(Bewitchment.MODID, "conjure_baphomet"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.demon_heart), Util.get(ModObjects.pentacle), Util.get(ModObjects.bottled_hellfire), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.sanguine_cloth)), s -> s instanceof EntitySheep, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
-
+	
 	@Override
 	public String getPreconditionMessage() {
 		return "ritual.precondition.sacrifice";
 	}
-
+	
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
@@ -40,7 +40,7 @@ public class RitualConjureBaphomet extends Ritual {
 			world.spawnEntity(entity);
 		}
 	}
-
+	
 	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		for (int i = 0; i < 25; i++) {

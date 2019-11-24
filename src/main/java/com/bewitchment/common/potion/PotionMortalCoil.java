@@ -1,13 +1,8 @@
 package com.bewitchment.common.potion;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
