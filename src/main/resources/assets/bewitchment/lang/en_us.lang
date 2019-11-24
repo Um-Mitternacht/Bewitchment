@@ -1017,6 +1017,7 @@ entity.bewitchment.given_name.323=The Smoke Man
 entity.bewitchment.given_name.324=Mephistopheles
 entity.bewitchment.given_name.325=Behemoth
 
+//Bionicle
 entity.bewitchment.given_name.326=Teridax
 entity.bewitchment.given_name.327=Makuta
 entity.bewitchment.given_name.328=Icarax
@@ -1032,11 +1033,13 @@ entity.bewitchment.given_name.337=Spiriah
 entity.bewitchment.given_name.338=Tridax
 entity.bewitchment.given_name.339=Vamprah
 
+//Stephen King
 entity.bewitchment.given_name.340=It
 entity.bewitchment.given_name.341=Pennywise
 entity.bewitchment.given_name.342=The Crimson King
 entity.bewitchment.given_name.343=Dandelo
 
+//Elder Scrolls
 entity.bewitchment.given_name.344=Jyggalag
 entity.bewitchment.given_name.345=Sheogorath
 entity.bewitchment.given_name.346=Azura
@@ -1057,12 +1060,14 @@ entity.bewitchment.given_name.360=Vaermina
 entity.bewitchment.given_name.361=Velehk Sain
 entity.bewitchment.given_name.362=The Ruddy Man
 
+//Various references/in-jokes
 entity.bewitchment.given_name.363=King in Yellow
 entity.bewitchment.given_name.364=Salem
 entity.bewitchment.given_name.365=Cake Guy
 entity.bewitchment.given_name.366=Vanir
 entity.bewitchment.given_name.367=Pax
 
+//SCP Foundation, aka Cyber's nightmares
 entity.bewitchment.given_name.368=The Scarlet King
 entity.bewitchment.given_name.369=Ambassador of Alagadda
 entity.bewitchment.given_name.370=Black Lord
@@ -1070,6 +1075,7 @@ entity.bewitchment.given_name.371=White Lord
 entity.bewitchment.given_name.372=Yellow Lord
 entity.bewitchment.given_name.373=Red Lord
 
+//Continuation of mainline demon names
 entity.bewitchment.given_name.374=Faraii
 entity.bewitchment.given_name.375=Clauneck
 entity.bewitchment.given_name.376=Leonard
