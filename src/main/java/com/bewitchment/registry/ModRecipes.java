@@ -11,10 +11,9 @@ import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.common.entity.living.*;
-import com.bewitchment.common.entity.spirit.demon.EntityDemon;
-import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
-import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
+import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
 import com.ferreusveritas.dynamictrees.ModTrees;
@@ -387,6 +386,11 @@ public class ModRecipes {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityFeuerwurm, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityShadowPerson, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
+		
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGhost, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
+		
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDruden, Sets.newHashSet(new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.heart), new ItemStack(ModObjects.oak_apple_gall, 4)));
 	}
 	
 	private static void furnaceInit() {
