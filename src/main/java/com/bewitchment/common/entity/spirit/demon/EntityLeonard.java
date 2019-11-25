@@ -66,7 +66,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
-			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 50, 0, false, true));
+			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 70, 0, false, true));
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 6, 1);
 			this.swingArm(EnumHand.MAIN_HAND);
 		}
