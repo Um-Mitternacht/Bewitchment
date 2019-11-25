@@ -1175,6 +1175,8 @@ entity.bewitchment.prefix.50=High-King
 entity.bewitchment.prefix.51=Overlord
 entity.bewitchment.prefix.52=Consort
 entity.bewitchment.prefix.53=Viceroy
+entity.bewitchment.prefix.54=Senator
+entity.bewitchment.prefix.55=Burgrave
 
 #Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
