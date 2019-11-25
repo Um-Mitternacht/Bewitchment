@@ -165,12 +165,12 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 					((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 100, width, height + 1, width, 0.1);
 					world.playSound(null, posX, posY, posZ, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.HOSTILE, 5, 1);
 				}
-				this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300));
-				this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 300));
-				this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300));
+				this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300, 1));
+				this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 300, 1));
+				this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300, 1));
 				return;
 			}
-			boolean lowHealth = getHealth() / getMaxHealth() < 0.2;
+			boolean lowHealth = getHealth() / getMaxHealth() < 0.3;
 			if (lowHealth && mobSpawnTicks <= 0) {
 				int amount = rand.nextInt(3) + 1;
 				for (int i = 0; i < amount; i++) {
@@ -183,6 +183,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 					if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height + 1, temp.width, 0.1);
 				}
 				mobSpawnTicks = 180;
+				this.swingArm(EnumHand.MAIN_HAND);
 			}
 			else if (mobSpawnTicks > 0) {
 				mobSpawnTicks--;
@@ -191,7 +192,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 				player.motionX += (posX - getAttackTarget().posX) / 10;
 				player.motionZ += (posZ - getAttackTarget().posZ) / 10;
 				if (!world.isRemote) ((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));
-				pullCooldown = 50;
+				pullCooldown = 40;
 			}
 			else if (pullCooldown > 0) {
 				pullCooldown--;
@@ -228,6 +229,12 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(666);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
+	}
+
+	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.caduceus, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
 	}
 
 	@Override

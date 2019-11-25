@@ -384,7 +384,7 @@ public class ModRecipes {
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityHellhound, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.hellhound_horn, 2), new ItemStack(Items.BLAZE_POWDER, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityFeuerwurm, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
 		
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon || e instanceof EntityLeonard || e instanceof EntityBaphomet, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
 	}
 	
 	private static void furnaceInit() {

@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.IPledgeable;
+import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.Entity;
@@ -24,12 +25,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
@@ -73,15 +76,20 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 6, 1);
 			this.swingArm(EnumHand.MAIN_HAND);
 		}
-		boolean buffed = ticksExisted % 600 > 5;
+		if (this.getHealth() / this.getMaxHealth() < 0.25) {
+			if (this.getAttackTarget() != null && !this.getAttackTarget().isPotionActive(ModPotions.mortal_coil)) {
+				this.getAttackTarget().addPotionEffect(new PotionEffect(ModPotions.mortal_coil, 6000));
+			}
+		}
+		boolean buffed = ticksExisted % 450 > 5;
 		if (!buffed) {
 			if (!world.isRemote) {
 				((WorldServer) world).spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX, posY, posZ, 128, width, height + 1, width, 0.1);
 				world.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 5, 1);
 			}
-			this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300));
-			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 300));
-			this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300));
+			this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 300, 1));
+			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 300, 1));
+			this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300, 1));
 			this.swingArm(EnumHand.MAIN_HAND);
 			return;
 		}
@@ -107,7 +115,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;
-			player.addPotionEffect(new PotionEffect(ModPotions.mortal_coil, 60, 0));
 			player.addPotionEffect(new PotionEffect(ModPotions.magic_weakness, 60, 0));
 		}
 		return super.attackEntityAsMob(entityIn);
@@ -169,6 +176,19 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
 	}
 	
+	@Override
+	public void onDeath(DamageSource cause) {
+		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(posX - 16, posY - 16, posZ - 16, posX + 16, posY + 16, posZ + 16));
+		for (EntityPlayer player : players) player.removeActivePotionEffect(ModPotions.mortal_coil);
+		super.onDeath(cause);
+	}
+
+	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.leonards_wand, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
+	}
+
 	@Override
 	public String getPledgeName() {
 		return "leonard";

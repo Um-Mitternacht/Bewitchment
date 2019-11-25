@@ -161,8 +161,8 @@ public class ModRegistries {
 		for (int i = 0; i < 4; i++) LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/demon" + i));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/imp"));
 
-		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
-		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
+//		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
+//		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 	}
 	
 	@SubscribeEvent
