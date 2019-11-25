@@ -1132,6 +1132,9 @@ entity.bewitchment.given_name.409=Awar
 entity.bewitchment.given_name.410=Dasim
 entity.bewitchment.given_name.411=Sut
 entity.bewitchment.given_name.412=Zalambur
+entity.bewitchment.given_name.413=Aicha Kandicha
+entity.bewitchment.given_name.414=Bungisngis
+entity.bewitchment.given_name.415=Sarangay
 
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
@@ -1187,6 +1190,13 @@ entity.bewitchment.prefix.50=High-King
 entity.bewitchment.prefix.51=Overlord
 entity.bewitchment.prefix.52=Consort
 entity.bewitchment.prefix.53=Viceroy
+entity.bewitchment.prefix.54=Senator
+entity.bewitchment.prefix.55=Burgrave
+entity.bewitchment.prefix.56=Gentleman
+entity.bewitchment.prefix.57=Princely Count
+entity.bewitchment.prefix.58=Colonel
+entity.bewitchment.prefix.59=Cadet
+entity.bewitchment.prefix.60=Marshal
 
 # Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane

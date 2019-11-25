@@ -165,7 +165,7 @@ public class ModConfig {
 			@Config.Comment("The chance for stone circle type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
 			public double stonecircleChance = 0.002;
-
+			
 			
 			@Config.Comment("The chance for menhir type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)

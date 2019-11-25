@@ -62,21 +62,21 @@ public class ModRecipes {
 	public static List<SpinningWheelRecipe> spinningWheelRecipes = new ArrayList<>();
 	public static List<Ritual> ritualRecipes = new ArrayList<>();
 	public static List<CauldronRecipe> cauldronRecipes = new ArrayList<>();
-
+	
 	public static void init() {
 		furnaceInit();
-
+		
 		altarInit();
 		petsInit();
-
+		
 		craftingRecipesInit();
-
+		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 		ModObjects.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.ARMOR_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 	}
-
+	
 	private static void craftingRecipesInit() {
 		ForgeRegistries.RECIPES.register(new RecipeTippedArrow() {
 			@Override
@@ -86,10 +86,10 @@ public class ModRecipes {
 				return stack;
 			}
 		}.setRegistryName("minecraft", "tippedarrow"));
-
+		
 		ForgeRegistries.RECIPES.register(new RecipeWand().setRegistryName(Bewitchment.MODID, "leonards_wand"));
 	}
-
+	
 	private static void petsInit() {
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityOcelot.class));
 		BewitchmentAPI.VALID_PETS.add(EntityRegistry.getEntry(EntityWolf.class));
@@ -414,7 +414,7 @@ public class ModRecipes {
 			if (item instanceof Seed && !item.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(item)).isEmpty())
 				GameRegistry.addSmelting(item, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
 	}
-
+	
 	protected static void addCauldronRecipes() {
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "focal_chalk"), Arrays.asList(Util.get(ModObjects.ritual_chalk), Util.get(ModObjects.liquid_witchcraft), Util.get("nuggetGold")), Arrays.asList(new ItemStack(ModObjects.focal_chalk), new ItemStack(ModObjects.empty_jar))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "fiery_chalk"), Arrays.asList(Util.get(ModObjects.ritual_chalk), Util.get(Items.BLAZE_POWDER), Util.get("netherrack")), Collections.singletonList(new ItemStack(ModObjects.fiery_chalk))));
@@ -426,13 +426,13 @@ public class ModRecipes {
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "slimeball"), Collections.singletonList(Util.get(ModObjects.hoof)), Collections.singletonList(new ItemStack(Items.SLIME_BALL))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "iron_gall_ink"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("nuggetIron")), Collections.singletonList(new ItemStack(ModObjects.iron_gall_ink, 3))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu_brown"), Collections.singletonList(Util.get("logWood")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
-
+		
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getDyeDamage()))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "wash_sigil"), Collections.singletonList(Util.get(new ItemStack(ModObjects.dragons_blood_broom))), Collections.singletonList(new ItemStack(ModObjects.dragons_blood_broom))));
-
+		
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "blue_ink_cap"), Arrays.asList(Util.get(Blocks.BROWN_MUSHROOM), Util.get("dyeBlue"), Util.get(ModObjects.iron_gall_ink), Util.get(ModObjects.liquid_witchcraft)), Collections.singletonList(new ItemStack(ModObjects.blue_ink_cap))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "frostflower"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, OreDictionary.WILDCARD_VALUE)), Util.get(Items.SNOWBALL), Util.get(ModObjects.perpetual_ice), Util.get(ModObjects.liquid_witchcraft)), Collections.singletonList(new ItemStack(ModObjects.frostflower))));
-
+		
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_allium"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 2)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_allium))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_azure_bluet"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 3)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_azure_bluet))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_blue_orchid"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 1)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_blue_orchid))));
@@ -443,11 +443,11 @@ public class ModRecipes {
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_red"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 4)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_red))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_white"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 6)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_white))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_poppy"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 0)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_poppy))));
-
+		
 		//There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
 	}
-
+	
 	protected static void addOvenRecipes() {
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit"), new ItemStack(Blocks.SAPLING, 1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit_alt"), new ItemStack(Blocks.SAPLING, 1, 5), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
@@ -459,7 +459,7 @@ public class ModRecipes {
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "droplet_of_wisdom"), new ItemStack(ModObjects.elder_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
-
+		
 		if (Loader.isModLoaded("dynamictrees")) {
 			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {
 				Species species = family.getCommonSpecies();
@@ -468,16 +468,16 @@ public class ModRecipes {
 				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
 			}
 		}
-
+		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm"), new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModObjects.ectoplasm, 3), 0.65f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f, false));
-
+		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand"), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.BLAZE_POWDER, 1, 0), new ItemStack(ModObjects.dimensional_sand, 2), 0.8f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt0"), new ItemStack(Items.SHULKER_SHELL), new ItemStack(Items.CHORUS_FRUIT_POPPED, 1, 0), new ItemStack(ModObjects.dimensional_sand, 4), 1, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt1"), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModObjects.dimensional_sand, 2), 0.75f, false));
 	}
-
+	
 	protected static void addDistilleryRecipes() {
 		distilleryRecipes.add(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "bottled_frostfire"), Arrays.asList(Util.get(Items.GLASS_BOTTLE), Util.get(ModObjects.perpetual_ice), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.fiery_unguent)), Arrays.asList(new ItemStack(ModObjects.bottled_frostfire), new ItemStack(ModObjects.empty_jar, 2))));
 		distilleryRecipes.add(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "cleansing_balm"), Arrays.asList(Util.get(ModObjects.acacia_resin), Util.get("cropWhiteSage"), Util.get("salt"), Util.get("cropGarlic")), Arrays.asList(new ItemStack(ModObjects.cleansing_balm), new ItemStack(ModObjects.wood_ash))));
@@ -491,7 +491,7 @@ public class ModRecipes {
 		distilleryRecipes.add(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "stone_ichor"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get("stone"), Util.get("nuggetIron"), Util.get("gravel")), Arrays.asList(new ItemStack(ModObjects.stone_ichor), new ItemStack(ModObjects.empty_jar))));
 		distilleryRecipes.add(new DistilleryRecipe(new ResourceLocation(Bewitchment.MODID, "heaven_extract"), Arrays.asList(Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.birch_soul), Util.get("feather"), Util.get(ModObjects.owlets_wing)), Arrays.asList(new ItemStack(ModObjects.heaven_extract), new ItemStack(ModObjects.empty_jar))));
 	}
-
+	
 	protected static void addSpinningWheelRecipes() {
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "cobweb"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get("string")), Collections.singletonList(new ItemStack(Blocks.WEB))));
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "witches_stitching"), Arrays.asList(Util.get("string"), Util.get("string"), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.liquid_witchcraft)), Arrays.asList(new ItemStack(ModObjects.witches_stitching, 2), new ItemStack(ModObjects.empty_jar, 2))));
@@ -513,7 +513,7 @@ public class ModRecipes {
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_robes"), Arrays.asList(Util.get(ModObjects.witches_robes), Util.get(ModObjects.pure_filament), Util.get("treeSapling"), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.green_witch_robes))));
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_pants"), Arrays.asList(Util.get(ModObjects.witches_pants), Util.get(ModObjects.pure_filament), Util.get("treeSapling"), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.green_witch_pants))));
 	}
-
+	
 	protected static void addRitualRecipe() {
 		ritualRecipes.add(new RitualSolarGlory());
 		ritualRecipes.add(new RitualHighMoon());

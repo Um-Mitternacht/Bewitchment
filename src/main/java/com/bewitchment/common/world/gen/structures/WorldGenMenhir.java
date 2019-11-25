@@ -25,11 +25,11 @@ public class WorldGenMenhir extends WorldGenerator {
 	
 	/**
 	 * type has 5 possible values:
-	 *         1. default variant1
-	 *         2. default variant2
-	 *         3. regular taiga variant
-	 *         4. megataiga (redwood) variant
-	 *         5. cold taiga variant
+	 * 1. default variant1
+	 * 2. default variant2
+	 * 3. regular taiga variant
+	 * 4. megataiga (redwood) variant
+	 * 5. cold taiga variant
 	 */
 	
 	public WorldGenMenhir() {
