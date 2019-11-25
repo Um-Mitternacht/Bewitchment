@@ -314,6 +314,8 @@ public class ModObjects {
 	public static final Item nazar = new ItemNazar();
 	public static final Item token_of_remedies = new ItemTokenOfRemedies();
 	public static final ModItemBauble hecates_visage = new ItemHecatesVisage();
+	public static final Item triskelion = new ItemTriskelion();
+	public static final Item vampiric_amulet = new ItemVampiricAmulet();
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item juniper_key = new ItemJuniperKey();
