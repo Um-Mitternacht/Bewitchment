@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class PotionMortalCoil extends ModPotion {
 	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/mortal_coil.png");
+	
 	public PotionMortalCoil() {
 		super("mortal_coil", true, 0x4B3621);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -29,14 +30,14 @@ public class PotionMortalCoil extends ModPotion {
 			else event.getEntityLiving().setDead();
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
 		mc.getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
