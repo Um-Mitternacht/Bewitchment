@@ -70,8 +70,8 @@ public class RenderLeonard extends RenderLiving<EntityLeonard> {
 		private void renderHeldItem(EntityLivingBase entityLivingBase, ItemStack itemStack) {
 			if (!itemStack.isEmpty()) {
 				GlStateManager.pushMatrix();
-				GlStateManager.translate(-0.5, 0.625, -0.375);
-				GlStateManager.rotate(220.0F, -1.0F, 0.0F, 0.0F);
+				GlStateManager.translate(-0.5, 0.375, -0.125);
+				GlStateManager.rotate(170.0F, -1.0F, 0.0F, 0.0F);
 				GlStateManager.scale(1.5, 1.5, 1.5);
 				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entityLivingBase, itemStack, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, false);
 				GlStateManager.popMatrix();

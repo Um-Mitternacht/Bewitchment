@@ -41,14 +41,6 @@
 	},
 	{
 	  "type": "bewitchment:oven_recipe",
-	  "recipe": "bewitchment:cloudy_oil_alt1"
-	},
-	{
-	  "type": "bewitchment:oven_recipe",
-	  "recipe": "bewitchment:cloudy_oil_alt2"
-	},
-	{
-	  "type": "bewitchment:oven_recipe",
 	  "recipe": "bewitchment:acacia_resin",
 	  "text": "A rather hard to find fume with great powers in healing"
 	},
