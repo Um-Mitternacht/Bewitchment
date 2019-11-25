@@ -10,7 +10,7 @@
 	{
 	  "type": "bewitchment:spinning_wheel_recipe",
 	  "recipe": "bewitchment:sanguine_cloth",
-      "text": "$(o)Blood infused fabric~"
+	  "text": "$(o)Blood infused fabric~"
 	}
   ]
 }

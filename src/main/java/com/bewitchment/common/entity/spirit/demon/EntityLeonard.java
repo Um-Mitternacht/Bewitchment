@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.IPledgeable;
-import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.Entity;
@@ -20,7 +19,6 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
@@ -134,6 +132,13 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		return !potioneffectIn.getPotion().isBadEffect();
 	}
 	
+	@Override
+	public void onDeath(DamageSource cause) {
+		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(posX - 16, posY - 16, posZ - 16, posX + 16, posY + 16, posZ + 16));
+		for (EntityPlayer player : players) player.removeActivePotionEffect(ModPotions.mortal_coil);
+		super.onDeath(cause);
+	}
+	
 	public void setCustomNameTag(@NotNull String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
@@ -162,6 +167,12 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	}
 	
 	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.leonards_wand, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
+	}
+	
+	@Override
 	protected boolean canDespawn() {
 		return false;
 	}
@@ -176,19 +187,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
 	}
 	
-	@Override
-	public void onDeath(DamageSource cause) {
-		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(posX - 16, posY - 16, posZ - 16, posX + 16, posY + 16, posZ + 16));
-		for (EntityPlayer player : players) player.removeActivePotionEffect(ModPotions.mortal_coil);
-		super.onDeath(cause);
-	}
-
-	@Override
-	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		this.dropItem(ModObjects.leonards_wand, 1);
-		this.dropItem(ModObjects.demon_heart, 1);
-	}
-
 	@Override
 	public String getPledgeName() {
 		return "leonard";

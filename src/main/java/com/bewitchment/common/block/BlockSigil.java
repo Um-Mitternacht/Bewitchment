@@ -147,15 +147,10 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return false;
-	}
-
-	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		return super.canPlaceBlockOnSide(worldIn, pos, side) && worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		return ((TileEntitySigil) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);
@@ -174,6 +169,11 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return 4;
+	}
+	
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return false;
 	}
 	
 	@Override

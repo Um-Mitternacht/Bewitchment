@@ -22,7 +22,6 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
@@ -116,6 +115,12 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.caduceus, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
 	}
 	
 	@Override
@@ -230,13 +235,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-
-	@Override
-	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		this.dropItem(ModObjects.caduceus, 1);
-		this.dropItem(ModObjects.demon_heart, 1);
-	}
-
+	
 	@Override
 	public String getPledgeName() {
 		return "baphomet";
