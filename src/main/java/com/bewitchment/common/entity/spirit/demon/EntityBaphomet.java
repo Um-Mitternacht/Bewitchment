@@ -40,8 +40,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable {
-	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-	
 	private int mobSpawnTicks = 0;
 	private int pullCooldown = 0;
 	
@@ -63,7 +61,8 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		tag.setInteger("mobSpawnTicks", mobSpawnTicks);
 		tag.setInteger("pullCooldown", pullCooldown);
 	}
-	
+
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.mobSpawnTicks = compound.getInteger("mobSpawnTicks");
@@ -83,20 +82,11 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-	
+
+	@Override
 	public void setCustomNameTag(String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
-	}
-	
-	public void addTrackingPlayer(EntityPlayerMP player) {
-		super.addTrackingPlayer(player);
-		this.bossInfo.addPlayer(player);
-	}
-	
-	public void removeTrackingPlayer(EntityPlayerMP player) {
-		super.removeTrackingPlayer(player);
-		this.bossInfo.removePlayer(player);
 	}
 	
 	@Override

@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -45,7 +46,6 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 		@Override
 		public void doRenderLayer(EntityBlackDog entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
 			renderer.bindTexture(TEX[entity.getDataManager().get(ModEntityMob.SKIN)]);
-			GlStateManager.color(0.5f, 0.5f, 0.5f);
 			GlStateManager.enableBlend();
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(true);

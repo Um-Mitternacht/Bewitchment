@@ -1,6 +1,8 @@
 package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
@@ -33,8 +35,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
-	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-	
 	public EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
@@ -143,16 +143,8 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
 	}
-	
-	public void addTrackingPlayer(EntityPlayerMP player) {
-		super.addTrackingPlayer(player);
-		this.bossInfo.addPlayer(player);
-	}
-	
-	public void removeTrackingPlayer(EntityPlayerMP player) {
-		super.removeTrackingPlayer(player);
-		this.bossInfo.removePlayer(player);
-	}
+
+
 	
 	@Override
 	protected void initEntityAI() {
