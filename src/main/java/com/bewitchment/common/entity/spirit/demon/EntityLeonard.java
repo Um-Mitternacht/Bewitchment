@@ -19,13 +19,11 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.*;
@@ -40,7 +38,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
 		setSize(1.0f, 3.8f);
-		inventoryHandsDropChances[0] = 1;
+		inventoryHandsDropChances[0] = 0;
 	}
 	
 	@Override
@@ -122,11 +120,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(500);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
-	}
-	
-	@Override
-	protected boolean canDropLoot() {
-		return true;
 	}
 	
 	@Override

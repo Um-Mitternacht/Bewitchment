@@ -14,7 +14,7 @@ import java.util.List;
 
 public abstract class Curse extends IForgeRegistryEntry.Impl<Curse> {
 	public final double chance;
-	private final List<Ingredient> input;
+	public final List<Ingredient> input;
 	private final boolean lesser, positive;
 	private final CurseCondition condition;
 	

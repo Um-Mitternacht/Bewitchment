@@ -22,14 +22,12 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -52,7 +50,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
 		isImmuneToFire = true;
 		setSize(1.0f, 3.6f);
-		inventoryHandsDropChances[0] = 1;
+		inventoryHandsDropChances[0] = 0;
 	}
 	
 	@Override
@@ -174,12 +172,16 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 			}
 			boolean lowHealth = getHealth() / getMaxHealth() < 0.2;
 			if (lowHealth && mobSpawnTicks <= 0) {
-				EntityFeuerwurm temp = (EntityFeuerwurm) ModEntities.feuerwurm.newInstance(world);
-				temp.setAttackTarget(player);
-				temp.getDataManager().set(SKIN, rand.nextInt(temp.getSkinTypes()));
-				temp.setPosition(posX + rand.nextGaussian() * 0.8, posY + 0.5, posZ + rand.nextGaussian() * 0.8);
-				world.spawnEntity(temp);
-				if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height + 1, temp.width, 0.1);
+				int amount = rand.nextInt(3) + 1;
+				for (int i = 0; i < amount; i++) {
+					EntityFeuerwurm temp = (EntityFeuerwurm) ModEntities.feuerwurm.newInstance(world);
+					temp.setAttackTarget(player);
+					temp.getDataManager().set(SKIN, rand.nextInt(temp.getSkinTypes()));
+					temp.setPosition(posX + rand.nextGaussian() * 0.8, posY + 0.5, posZ + rand.nextGaussian() * 0.8);
+					temp.addPotionEffect(new PotionEffect(MobEffects.SPEED, 600, 2));
+					world.spawnEntity(temp);
+					if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height + 1, temp.width, 0.1);
+				}
 				mobSpawnTicks = 180;
 			}
 			else if (mobSpawnTicks > 0) {
@@ -227,12 +229,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-	
-	@Override
-	protected boolean canDropLoot() {
-		return true;
-	}
-	
+
 	@Override
 	public String getPledgeName() {
 		return "baphomet";
