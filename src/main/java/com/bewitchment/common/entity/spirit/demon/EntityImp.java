@@ -35,11 +35,6 @@ public class EntityImp extends ModEntityMob {
 		experienceValue = 100;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	@Override
 	protected int getSkinTypes() {
 		return 6;

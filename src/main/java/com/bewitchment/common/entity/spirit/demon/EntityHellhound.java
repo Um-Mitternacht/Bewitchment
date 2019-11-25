@@ -34,11 +34,6 @@ public class EntityHellhound extends ModEntityMob {
 		experienceValue = 20;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	@Override
 	protected int getSkinTypes() {
 		return 6;

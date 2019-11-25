@@ -50,11 +50,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 		return BewitchmentAPI.DEMON;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	@Override
 	public boolean shouldRenderInPass(int pass) {
 		if (getDataManager().get(ModEntityMob.SPECTRAL)) {

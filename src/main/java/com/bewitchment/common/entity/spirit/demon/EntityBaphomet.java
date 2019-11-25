@@ -84,11 +84,6 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		return BewitchmentAPI.DEMON;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	public void setCustomNameTag(String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());

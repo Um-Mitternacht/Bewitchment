@@ -74,7 +74,6 @@ public class RenderDruden extends RenderLiving<EntityDruden> {
 				this.renderer.setLightmap(entitylivingbaseIn);
 				GlStateManager.disableBlend();
 				GlStateManager.enableAlpha();
-				
 			}
 		}
 		

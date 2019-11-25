@@ -53,7 +53,8 @@ public class EntityDruden extends ModEntityMob {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
-			this.heal(1);
+			this.heal(2);
+			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 2));
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.HOSTILE, 6, 1);
 		}
 		if (isBurning()) {

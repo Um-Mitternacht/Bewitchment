@@ -9,11 +9,6 @@ public class EntityDemoness extends EntityDemon {
 		super(world);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
 	@Override
 	protected boolean canDespawn() {
 		return false;
