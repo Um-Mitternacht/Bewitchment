@@ -1177,6 +1177,11 @@ entity.bewitchment.prefix.52=Consort
 entity.bewitchment.prefix.53=Viceroy
 entity.bewitchment.prefix.54=Senator
 entity.bewitchment.prefix.55=Burgrave
+entity.bewitchment.prefix.56=Gentleman
+entity.bewitchment.prefix.57=Princely Count
+entity.bewitchment.prefix.58=Colonel
+entity.bewitchment.prefix.59=Cadet
+entity.bewitchment.prefix.60=Marshal
 
 #Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
