@@ -31,6 +31,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -103,7 +104,8 @@ public class ModWorldGen implements IWorldGenerator {
 			generateOre(world, rand, amethystOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.amethystChance, ModConfig.worldGen.oreGen.amethystMin, ModConfig.worldGen.oreGen.amethystMax);
 			generateOre(world, rand, garnetOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.garnetChance, ModConfig.worldGen.oreGen.garnetMin, ModConfig.worldGen.oreGen.garnetMax);
 			generateOre(world, rand, opalOre, chunkX, chunkZ, ModConfig.worldGen.oreGen.opalChance, ModConfig.worldGen.oreGen.opalMin, ModConfig.worldGen.oreGen.opalMax);
-			if (!Arrays.asList(ModConfig.worldGen.treeGen.treeGenBlacklist).contains(world.getBiome(new BlockPos(chunkX * 16 + 8, world.getHeight(), chunkZ * 16 + 8)).getBiomeName())) {
+			ResourceLocation biomeResource = world.getBiome(new BlockPos(chunkX * 16 + 8, world.getHeight(), chunkZ * 16 + 8)).getRegistryName();
+			if (biomeResource != null && !Arrays.asList(ModConfig.worldGen.treeGen.treeGenBlacklist).contains(biomeResource.getPath())) {
 				if (!Loader.isModLoaded("dynamictrees") || !DynamicTreesCompat.replaceWorldGen()) {
 					generateTree(world, rand, cypressTree, ModObjects.cypress_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.cypressChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
 					generateTree(world, rand, elderTree, ModObjects.elder_sapling, chunkX, chunkZ, ModConfig.worldGen.treeGen.elderChance, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD));

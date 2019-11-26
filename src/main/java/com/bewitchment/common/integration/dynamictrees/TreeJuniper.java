@@ -37,7 +37,7 @@ public class TreeJuniper extends TreeFamily {
 	}
 	
 	public boolean isThick() {
-		return true;
+		return false;
 	}
 	
 	public BlockSurfaceRoot getSurfaceRoots() {

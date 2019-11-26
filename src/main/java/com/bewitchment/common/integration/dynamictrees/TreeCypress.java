@@ -39,7 +39,7 @@ public class TreeCypress extends TreeFamily {
 	}
 	
 	public boolean isThick() {
-		return true;
+		return false;
 	}
 	
 	public BlockSurfaceRoot getSurfaceRoots() {

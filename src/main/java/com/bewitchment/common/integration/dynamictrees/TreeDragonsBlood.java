@@ -71,7 +71,7 @@ public class TreeDragonsBlood extends TreeFamily {
 		
 		@Override
 		public boolean isThick() {
-			return true;
+			return false;
 		}
 		
 		@Override

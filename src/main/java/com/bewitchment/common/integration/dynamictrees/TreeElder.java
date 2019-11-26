@@ -37,7 +37,7 @@ public class TreeElder extends TreeFamily {
 	}
 	
 	public boolean isThick() {
-		return true;
+		return false;
 	}
 	
 	public BlockSurfaceRoot getSurfaceRoots() {
@@ -47,7 +47,7 @@ public class TreeElder extends TreeFamily {
 	public class SpeciesElder extends Species {
 		SpeciesElder(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.elderLeavesProperties);
-			this.setBasicGrowingParameters(0.4F, 14.0F, 4, 4, 1.0F);
+			this.setBasicGrowingParameters(0.4F, 14.0F, 3, 2, 1.0F);
 			this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
 			this.generateSeed();
 			this.setupStandardSeedDropping();
