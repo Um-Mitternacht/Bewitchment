@@ -39,7 +39,7 @@ public class WorldGenMenhir extends WorldGenerator {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		int type = getType(worldIn, rand, position);
-
+		
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
@@ -54,7 +54,7 @@ public class WorldGenMenhir extends WorldGenerator {
 		}
 		return false;
 	}
-
+	
 	private int getType(World world, Random rand, BlockPos position) {
 		Biome current = world.getBiome(position);
 		if (current == Biomes.TAIGA) return 3;

@@ -374,7 +374,7 @@ public class ModRegistries {
 		}
 		catch (Exception ignored) {}
 	}
-
+	
 	@SubscribeEvent
 	public static void registerTarots(RegistryEvent.Register<Tarot> event) {
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "player"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/00player.png")) {

@@ -145,12 +145,12 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		}
 		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
 	}
-
+	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		return super.canPlaceBlockOnSide(worldIn, pos, side) && worldIn.getBlockState(pos.offset(side.getOpposite())).getBlockFaceShape(worldIn, pos.offset(side.getOpposite()), side) == BlockFaceShape.SOLID;
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		return ((TileEntitySigil) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);

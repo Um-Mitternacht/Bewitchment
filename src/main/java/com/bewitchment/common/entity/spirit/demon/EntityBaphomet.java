@@ -30,10 +30,10 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.*;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -61,7 +61,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		tag.setInteger("mobSpawnTicks", mobSpawnTicks);
 		tag.setInteger("pullCooldown", pullCooldown);
 	}
-
+	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
@@ -82,7 +82,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	@Override
 	public void setCustomNameTag(String name) {
 		super.setCustomNameTag(name);

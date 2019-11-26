@@ -1,8 +1,6 @@
 package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
-import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
@@ -16,7 +14,6 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -28,7 +25,9 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.*;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -143,8 +142,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
 	}
-
-
+	
 	
 	@Override
 	protected void initEntityAI() {

@@ -3,7 +3,6 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelShadowPersonClassic;
 import com.bewitchment.client.model.entity.spirit.demon.ModelShadowPersonSlim;
-import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityShadowPerson;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.Minecraft;
@@ -53,17 +52,17 @@ public class RenderShadowPerson extends RenderLiving<EntityShadowPerson> {
 		else this.mainModel = regModel;
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}
-
+	
 	private static class LayerEyes implements LayerRenderer<EntityShadowPerson> {
 		private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson_eyes.png");
 		private static final ResourceLocation TEX1 = new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson_hatdemon_eyes.png");
-
+		
 		private final RenderShadowPerson renderer;
-
+		
 		private LayerEyes(RenderShadowPerson renderer) {
 			this.renderer = renderer;
 		}
-
+		
 		@Override
 		public void doRenderLayer(EntityShadowPerson entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 			if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.isChild()) {
@@ -73,11 +72,11 @@ public class RenderShadowPerson extends RenderLiving<EntityShadowPerson> {
 				else {
 					this.renderer.bindTexture(TEX1);
 				}
-
+				
 				GlStateManager.enableBlend();
 				GlStateManager.disableAlpha();
 				GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-
+				
 				int i = 61680;
 				int j = i % 65536;
 				int k = i / 65536;
@@ -95,7 +94,7 @@ public class RenderShadowPerson extends RenderLiving<EntityShadowPerson> {
 				GlStateManager.enableAlpha();
 			}
 		}
-
+		
 		@Override
 		public boolean shouldCombineTextures() {
 			return false;
