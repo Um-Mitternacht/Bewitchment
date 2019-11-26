@@ -22,7 +22,6 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
@@ -31,18 +30,16 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.*;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable {
-	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-	
 	private int mobSpawnTicks = 0;
 	private int pullCooldown = 0;
 	
@@ -65,6 +62,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		tag.setInteger("pullCooldown", pullCooldown);
 	}
 	
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.mobSpawnTicks = compound.getInteger("mobSpawnTicks");
@@ -85,24 +83,10 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		return BewitchmentAPI.DEMON;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
-	}
-	
+	@Override
 	public void setCustomNameTag(String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
-	}
-	
-	public void addTrackingPlayer(EntityPlayerMP player) {
-		super.addTrackingPlayer(player);
-		this.bossInfo.addPlayer(player);
-	}
-	
-	public void removeTrackingPlayer(EntityPlayerMP player) {
-		super.removeTrackingPlayer(player);
-		this.bossInfo.removePlayer(player);
 	}
 	
 	@Override
@@ -116,6 +100,12 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.caduceus, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
 	}
 	
 	@Override
@@ -230,13 +220,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 	}
-
-	@Override
-	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		this.dropItem(ModObjects.caduceus, 1);
-		this.dropItem(ModObjects.demon_heart, 1);
-	}
-
+	
 	@Override
 	public String getPledgeName() {
 		return "baphomet";

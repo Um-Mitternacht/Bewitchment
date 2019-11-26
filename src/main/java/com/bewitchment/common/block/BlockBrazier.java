@@ -67,7 +67,7 @@ public class BlockBrazier extends ModBlockContainer {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		if (stateIn.getValue(LIT) && rand.nextDouble() < 0.33) {
-			for (int i = 0; i < 8; i++) world.spawnParticle(EnumParticleTypes.CLOUD, pos.getX() + 0.5 + rand.nextGaussian()/4, pos.getY() + 1.2, pos.getZ() + 0.5 + rand.nextGaussian()/4, 0, 0.01, 0);
+			for (int i = 0; i < 8; i++) world.spawnParticle(EnumParticleTypes.CLOUD, pos.getX() + 0.5 + rand.nextGaussian() / 4, pos.getY() + 1.2, pos.getZ() + 0.5 + rand.nextGaussian() / 4, 0, 0.01, 0);
 		}
 	}
 	

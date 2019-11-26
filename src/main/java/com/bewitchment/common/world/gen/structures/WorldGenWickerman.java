@@ -30,12 +30,12 @@ public class WorldGenWickerman extends WorldGenerator {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		boolean burned = rand.nextBoolean();
-
+		
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
 		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + (burned ? ":burnedwickerman" : ":wickerman")));
-
+		
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
 			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);

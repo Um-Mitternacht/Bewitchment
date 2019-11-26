@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.IPledgeable;
-import com.bewitchment.common.potion.util.ModPotion;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.Entity;
@@ -15,12 +14,10 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
@@ -28,15 +25,15 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.*;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
-	private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-	
 	public EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
@@ -134,20 +131,18 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		return !potioneffectIn.getPotion().isBadEffect();
 	}
 	
+	@Override
+	public void onDeath(DamageSource cause) {
+		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(posX - 16, posY - 16, posZ - 16, posX + 16, posY + 16, posZ + 16));
+		for (EntityPlayer player : players) player.removeActivePotionEffect(ModPotions.mortal_coil);
+		super.onDeath(cause);
+	}
+	
 	public void setCustomNameTag(@NotNull String name) {
 		super.setCustomNameTag(name);
 		this.bossInfo.setName(this.getDisplayName());
 	}
 	
-	public void addTrackingPlayer(EntityPlayerMP player) {
-		super.addTrackingPlayer(player);
-		this.bossInfo.addPlayer(player);
-	}
-	
-	public void removeTrackingPlayer(EntityPlayerMP player) {
-		super.removeTrackingPlayer(player);
-		this.bossInfo.removePlayer(player);
-	}
 	
 	@Override
 	protected void initEntityAI() {
@@ -159,6 +154,12 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	@Override
+	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+		this.dropItem(ModObjects.leonards_wand, 1);
+		this.dropItem(ModObjects.demon_heart, 1);
 	}
 	
 	@Override
@@ -176,19 +177,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
 	}
 	
-	@Override
-	public void onDeath(DamageSource cause) {
-		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(posX - 16, posY - 16, posZ - 16, posX + 16, posY + 16, posZ + 16));
-		for (EntityPlayer player : players) player.removeActivePotionEffect(ModPotions.mortal_coil);
-		super.onDeath(cause);
-	}
-
-	@Override
-	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		this.dropItem(ModObjects.leonards_wand, 1);
-		this.dropItem(ModObjects.demon_heart, 1);
-	}
-
 	@Override
 	public String getPledgeName() {
 		return "leonard";

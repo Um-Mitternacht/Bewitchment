@@ -20,8 +20,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityFeuerwurm extends ModEntityMob {
@@ -48,11 +46,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender() {
-		return 15728880;
 	}
 	
 	@Override

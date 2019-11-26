@@ -58,7 +58,7 @@
 		"bewitchment:textures/gui/patchouli/dragonsblood.png"
 	  ],
 	  "border": true,
-      "text": "but in turn they can have Sigils applied to them, which it will then apply to the rider."
+	  "text": "but in turn they can have Sigils applied to them, which it will then apply to the rider."
 	}
   ]
 }

@@ -45,33 +45,6 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/01witch.png"
-	  ],
-	  "border": true,
-	  "title": "Witch",
-	  "text": "The player owns spells, and how many"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/02enderman.png"
-	  ],
-	  "border": true,
-	  "title": "Enderman",
-	  "text": "The player has the End Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/03cat.png"
-	  ],
-	  "border": true,
-	  "title": "Cat",
-	  "text": "The player is infused"
-	},
-	{
-	  "type": "image",
-	  "images": [
 		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
 	  ],
 	  "border": true,
@@ -90,15 +63,6 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/06companions.png"
-	  ],
-	  "border": true,
-	  "title": "Companions",
-	  "text": "The player has a familiar, reversed if the familiar is not nearby"
-	},
-	{
-	  "type": "image",
-	  "images": [
 		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
 	  ],
 	  "border": true,
@@ -108,65 +72,11 @@
 	{
 	  "type": "image",
 	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/08silver_sword.png"
-	  ],
-	  "border": true,
-	  "title": "Silver Sword",
-	  "text": "If reversed, the player is a witch hunter"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/09evoker.png"
-	  ],
-	  "border": true,
-	  "title": "Evoker",
-	  "text": "If reversed, the player is a spectre"
-	},
-	{
-	  "type": "image",
-	  "images": [
 		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
 	  ],
 	  "border": true,
 	  "title": "Diamonds",
 	  "text": "The player has a fortune active, reversed if the fortune is negative"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/11iron_golem.png"
-	  ],
-	  "border": true,
-	  "title": "Iron Golem",
-	  "text": "The player has the Overworld Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/12zombie.png"
-	  ],
-	  "border": true,
-	  "title": "Zombie",
-	  "text": "The player has at least one protection poppet, and the amount of poppets"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/13wither_skeleton.png"
-	  ],
-	  "border": true,
-	  "title": "Wither Skeleton",
-	  "text": "The player has the Nether Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/14villager.png"
-	  ],
-	  "border": true,
-	  "title": "Villager",
-	  "text": "The player is in a coven, and how many members"
 	},
 	{
 	  "type": "image",
@@ -185,24 +95,6 @@
 	  "border": true,
 	  "title": "Ender Dragon",
 	  "text": "The player has killed at least 100 mobs, and the amount of mobs killed / 100"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/17star.png"
-	  ],
-	  "border": true,
-	  "title": "Star",
-	  "text": "The player has the Dream Infusion"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/18moon.png"
-	  ],
-	  "border": true,
-	  "title": "Moon",
-	  "text": "The player is a vampire, or werewolf if reversed"
 	},
 	{
 	  "type": "image",

@@ -1,8 +1,10 @@
 package com.bewitchment.api.capability.extendedworld;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
 import com.bewitchment.common.entity.util.IPledgeable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -41,6 +43,9 @@ public class ExtendedWorld extends WorldSavedData {
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
+		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
+			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
+		}
 	}
 	
 	public static boolean playerPledgedToDemon(World world, EntityPlayer player, String demon) {

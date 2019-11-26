@@ -249,6 +249,10 @@ item.bewitchment.fortunes_favor.name=Fortune's Favor
 tooltip.bewitchment.fortunes_favor=A pair of enchanted gloves that boost mining speed and give more drops from ores.
 item.bewitchment.hecates_visage.name=Hecate's Visage
 tooltip.bewitchment.hecates_visage=Lowers the cost of starting a ritual.
+item.bewitchment.triskelion.name=Triskelion Amulet
+tooltip.bewitchment.triskelion=Gives strength at the cost of some Magic Power.
+item.bewitchment.vampiric_amulet.name=Vampiric Amulet
+tooltip.bewitchment.vampiric_amulet=A chance to negate some damage and heal at the cost of some Magic Power.
 
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
@@ -1135,6 +1139,11 @@ entity.bewitchment.given_name.412=Zalambur
 entity.bewitchment.given_name.413=Aicha Kandicha
 entity.bewitchment.given_name.414=Bungisngis
 entity.bewitchment.given_name.415=Sarangay
+entity.bewitchment.given_name.416=Balor
+entity.bewitchment.given_name.417=Mullin
+entity.bewitchment.given_name.418=Dagon
+entity.bewitchment.given_name.419=Robals
+entity.bewitchment.given_name.420=Melchom
 
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President

@@ -45,7 +45,6 @@ public class RenderBlackDog extends RenderLiving<EntityBlackDog> {
 		@Override
 		public void doRenderLayer(EntityBlackDog entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
 			renderer.bindTexture(TEX[entity.getDataManager().get(ModEntityMob.SKIN)]);
-			GlStateManager.color(0.5f, 0.5f, 0.5f);
 			GlStateManager.enableBlend();
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
