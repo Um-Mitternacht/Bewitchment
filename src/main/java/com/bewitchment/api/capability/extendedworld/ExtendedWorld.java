@@ -21,7 +21,7 @@ public class ExtendedWorld extends WorldSavedData {
 	
 	public final List<NBTTagCompound> storedCauldrons = new ArrayList<>();
 	public final List<NBTTagCompound> storedPoppetShelves = new ArrayList<>();
-	public final Map<String, Collection<UUID>> demonPledgedPlayers = new HashMap<>(); //demon name - players
+	public final Map<String, Set<UUID>> demonPledgedPlayers = new HashMap<>(); //demon name - players
 	
 	public ExtendedWorld(String name) {
 		super(name);
@@ -38,7 +38,7 @@ public class ExtendedWorld extends WorldSavedData {
 	
 	public static void pledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
 		ExtendedWorld extendedWorld = get(world);
-		List<UUID> players = new ArrayList<>();
+		Set<UUID> players = new HashSet<>();
 		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
@@ -47,10 +47,22 @@ public class ExtendedWorld extends WorldSavedData {
 			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
 		}
 	}
+
+	public static void depledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
+		ExtendedWorld extendedWorld = get(world);
+		Set<UUID> players = new HashSet<>();
+		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
+		players.remove(player.getPersistentID());
+		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
+		extendedWorld.markDirty();
+		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
+			((AbstractGreaterDemon) demon).bossInfo.addPlayer((EntityPlayerMP) player);
+		}
+	}
 	
 	public static boolean playerPledgedToDemon(World world, EntityPlayer player, String demon) {
 		ExtendedWorld extendedWorld = get(world);
-		Collection<UUID> players = extendedWorld.demonPledgedPlayers.get(demon);
+		Set<UUID> players = extendedWorld.demonPledgedPlayers.get(demon);
 		return players != null && players.contains(player.getPersistentID());
 	}
 	
@@ -77,7 +89,7 @@ public class ExtendedWorld extends WorldSavedData {
 		return nbt;
 	}
 	
-	private void writePledge(Map.Entry<String, Collection<UUID>> entry, NBTTagList list) {
+	private void writePledge(Map.Entry<String, Set<UUID>> entry, NBTTagList list) {
 		NBTTagCompound data = new NBTTagCompound();
 		data.setString("demon", entry.getKey());
 		NBTTagList players = new NBTTagList();
@@ -86,8 +98,8 @@ public class ExtendedWorld extends WorldSavedData {
 		list.appendTag(data);
 	}
 	
-	private void readPledge(Map<String, Collection<UUID>> map, NBTTagCompound tag) {
-		List<UUID> players = new ArrayList<>();
+	private void readPledge(Map<String, Set<UUID>> map, NBTTagCompound tag) {
+		Set<UUID> players = new HashSet<>();
 		String demon = tag.getString("demon");
 		for (NBTBase player : tag.getTagList("players", Constants.NBT.TAG_STRING))
 			players.add(UUID.fromString(((NBTTagString) player).getString()));

@@ -37,7 +37,7 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 		player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 750, 3));
-		List<Entity> entities = world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 5, player.posY - 5, player.posZ - 5, player.posX + 5, player.posY + 5, player.posZ + 5), e -> e instanceof IPledgeable);
+		List<Entity> entities = world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 8, player.posY - 5, player.posZ - 8, player.posX + 8, player.posY + 5, player.posZ + 8), e -> e instanceof IPledgeable);
 		if (!entities.isEmpty() && (BewitchmentAPI.hasAlchemistGear(player) || BewitchmentAPI.hasBesmirchedGear(player) || BewitchmentAPI.hasGreenWitchGear(player) || BewitchmentAPI.hasWitchesGear(player))) {
 			IPledgeable boss = (IPledgeable) entities.get(0);
 			if (boss instanceof EntityBaphomet && player.getHeldItem(EnumHand.OFF_HAND).getItem() == ModObjects.pentacle) {

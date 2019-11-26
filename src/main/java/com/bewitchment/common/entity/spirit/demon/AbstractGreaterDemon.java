@@ -4,7 +4,9 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.BossInfo;
@@ -35,5 +37,13 @@ public abstract class AbstractGreaterDemon extends ModEntityMob implements IPled
 	@Override
 	public void removeTrackingPlayer(EntityPlayerMP player) {
 		this.bossInfo.removePlayer(player);
+	}
+
+	@Override
+	public boolean hitByEntity(Entity entity) {
+		if (entity instanceof EntityPlayer) {
+			ExtendedWorld.depledgePlayerToDemon(world, (EntityPlayer) entity, this);
+		}
+		return super.hitByEntity(entity);
 	}
 }

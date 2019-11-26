@@ -403,8 +403,8 @@ item.bewitchment.snake_venom.name=Snake Venom
 item.bewitchment.bottle_of_blood.name=Bottle of Blood
 item.bewitchment.bottle_of_vampire_blood.name=Bottle of Vampire Blood
 
-item.bewitchment.caduceus.name=Caduceus
-item.bewitchment.leonards_wand.name=Leonard's Wand
+item.bewitchment.caduceus.name=§bCaduceus§r
+item.bewitchment.leonards_wand.name=§bLeonard's Wand§r
 tooltip.leonards_wand.uses=%d uses remaining
 
 item.bewitchment.hoof.name=Hoof
