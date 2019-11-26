@@ -47,7 +47,7 @@ public class ExtendedWorld extends WorldSavedData {
 			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
 		}
 	}
-
+	
 	public static void depledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
 		ExtendedWorld extendedWorld = get(world);
 		Set<UUID> players = new HashSet<>();

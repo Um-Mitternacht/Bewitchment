@@ -25,6 +25,14 @@ public abstract class AbstractGreaterDemon extends ModEntityMob implements IPled
 		return BewitchmentAPI.DEMON;
 	}
 	
+	@Override
+	public boolean hitByEntity(Entity entity) {
+		if (entity instanceof EntityPlayer) {
+			ExtendedWorld.depledgePlayerToDemon(world, (EntityPlayer) entity, this);
+		}
+		return super.hitByEntity(entity);
+	}
+	
 	public boolean isNonBoss() {
 		return false;
 	}
@@ -37,13 +45,5 @@ public abstract class AbstractGreaterDemon extends ModEntityMob implements IPled
 	@Override
 	public void removeTrackingPlayer(EntityPlayerMP player) {
 		this.bossInfo.removePlayer(player);
-	}
-
-	@Override
-	public boolean hitByEntity(Entity entity) {
-		if (entity instanceof EntityPlayer) {
-			ExtendedWorld.depledgePlayerToDemon(world, (EntityPlayer) entity, this);
-		}
-		return super.hitByEntity(entity);
 	}
 }

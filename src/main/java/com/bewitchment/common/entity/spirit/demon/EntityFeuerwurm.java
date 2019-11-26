@@ -118,6 +118,11 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 	
 	@Override
+	protected boolean canDropLoot() {
+		return !getDataManager().get(SPECTRAL);
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(7, new EntityAIWanderAvoidWater(this, 0.4D, 0.0F));
@@ -129,10 +134,5 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && (!BewitchmentAPI.hasBesmirchedGear(p))));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
-	}
-
-	@Override
-	protected boolean canDropLoot() {
-		return !getDataManager().get(SPECTRAL);
 	}
 }
