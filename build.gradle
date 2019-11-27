@@ -2,15 +2,15 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
-	    maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://plugins.gradle.org/m2/" }
         maven {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/maven'
-        }	
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-	    classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
+        classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
@@ -18,7 +18,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.12.2-0.0.21-prerelease3"
+version = "1.12.2-0.0.21-prerelease4"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -45,7 +45,7 @@ repositories {
     maven { url "http://maven.tterrag.com" }
     maven { url "https://maven.blamejared.com" }
     maven { url "https://maven.mcmoddev.com/" }
-    maven { url "http://repo.spongepowered.org/maven" }    
+    maven { url "http://repo.spongepowered.org/maven" }
 }
 
 configurations {
@@ -65,7 +65,7 @@ dependencies {
     deobfProvided "curse.maven:mowzies-mobs:2699705"
     deobfProvided "curse.maven:chisel:2809394"
     deobfProvided "curse.maven:ctm:2809915"
-    deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"	
+    deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"
     compile "baubles:Baubles:1.12:1.5.2"
     compile "vazkii.patchouli:Patchouli:1.0-20.99"
     shade('org.spongepowered:mixin:0.7.11-SNAPSHOT') {

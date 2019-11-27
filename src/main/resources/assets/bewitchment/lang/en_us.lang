@@ -1154,7 +1154,30 @@ entity.bewitchment.given_name.427=Pluton
 entity.bewitchment.given_name.428=Pan
 entity.bewitchment.given_name.429=Eurynome
 entity.bewitchment.given_name.430=Thamuz
+entity.bewitchment.given_name.431=Hutgin
+entity.bewitchment.given_name.432=Martintet
+entity.bewitchment.given_name.433=Ikwaokinyapippilele
+entity.bewitchment.given_name.434=Irvene
+entity.bewitchment.given_name.435=Absinthe
+entity.bewitchment.given_name.436=Bezaliel
+entity.bewitchment.given_name.437=Gadreel
+entity.bewitchment.given_name.438=Sethiel
+entity.bewitchment.given_name.439=Koshbiel
+entity.bewitchment.given_name.440=Berstuk
+entity.bewitchment.given_name.441=Tir
+entity.bewitchment.given_name.442=Herne
+entity.bewitchment.given_name.443=Lilith
+entity.bewitchment.given_name.444=Wormwood
 
+//Misc Names
+entity.bewitchment.given_name.445=Ael
+entity.bewitchment.given_name.446=Phoenicopterus
+entity.bewitchment.given_name.447=Malum
+entity.bewitchment.given_name.448=Tartarus
+entity.bewitchment.given_name.449=Erebus
+entity.bewitchment.given_name.450=Apsinthion
+
+//Titles
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
 entity.bewitchment.prefix.2=Duke
