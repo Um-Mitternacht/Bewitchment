@@ -17,12 +17,10 @@ public class ItemTokenOfRemedies extends ModItemBauble {
 	
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase living) {
-		if (living.ticksExisted % 40 == 0 && (living.isPotionActive(MobEffects.BLINDNESS) || living.isPotionActive(MobEffects.NAUSEA) || living.isPotionActive(MobEffects.POISON) || living.isPotionActive(MobEffects.WEAKNESS) || living.isPotionActive(MobEffects.WITHER)) && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
+		if (living.ticksExisted % 80 == 0 && (living.isPotionActive(MobEffects.BLINDNESS) || living.isPotionActive(MobEffects.NAUSEA) || living.isPotionActive(MobEffects.WEAKNESS) && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20))) {
 			living.removePotionEffect(MobEffects.BLINDNESS);
 			living.removePotionEffect(MobEffects.NAUSEA);
-			living.removePotionEffect(MobEffects.POISON);
 			living.removePotionEffect(MobEffects.WEAKNESS);
-			living.removePotionEffect(MobEffects.WITHER);
 		}
 	}
 	
