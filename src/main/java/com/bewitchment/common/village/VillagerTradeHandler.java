@@ -52,10 +52,9 @@ public class VillagerTradeHandler {
 			career.addTrade(2, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.garnet), new EntityVillager.PriceInfo(1, 3)));
 			career.addTrade(2, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.amethyst), new EntityVillager.PriceInfo(1, 3)));
 			career.addTrade(3, new TradeHandler.ItemsForDemon(new ItemStack(Items.EMERALD), new EntityVillager.PriceInfo(1, 3)));
-			//career.addTrade(3, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.triskelion_amulet), new EntityVillager.PriceInfo(1, 1)));
+			career.addTrade(3, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.triskelion), new EntityVillager.PriceInfo(1, 1)));
 			career.addTrade(3, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.silver_ingot), new EntityVillager.PriceInfo(10, 13)));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.box_of_sealed_evil), new EntityVillager.PriceInfo(1, 2)));
-			//career.addTrade(4, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.demonic_contract), new EntityVillager.PriceInfo(1, 1)));
 			//career.addTrade(4, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.diabolical_vein), new EntityVillager.PriceInfo(1, 3)));
 			career.addTrade(4, new TradeHandler.RandomIdolForDemon());
 			career.addTrade(5, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.fortunes_favor), new EntityVillager.PriceInfo(1, 1)));
@@ -80,7 +79,6 @@ public class VillagerTradeHandler {
 			ItemStack powerBow = new ItemStack(Items.BOW);
 			powerBow.addEnchantment(Enchantments.POWER, 2);
 			career.addTrade(3, new TradeHandler.ItemsForDemon(powerBow, new EntityVillager.PriceInfo(1, 1)));
-			//career.addTrade(4, new TradeHandler.DemonItemForItems(new ItemStack(ModObjects.demonic_contract), new EntityVillager.PriceInfo(5, 7)));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.demon_heart), new EntityVillager.PriceInfo(1, 1)));
 			career.addTrade(4, new TradeHandler.EnchantedItemForDemon(Items.DIAMOND_SWORD, new EntityVillager.PriceInfo(1, 1), 30));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.bottled_hellfire), new EntityVillager.PriceInfo(1, 3)));
