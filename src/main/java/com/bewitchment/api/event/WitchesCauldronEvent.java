@@ -73,11 +73,11 @@ public class WitchesCauldronEvent extends Event {
 		public void setBoosted(boolean boosted) {
 			this.boosted = boosted;
 		}
-
+		
 		public boolean allowsHigher() {
 			return allowHigher;
 		}
-
+		
 		public void setAllowHigher(boolean allowHigher) {
 			this.allowHigher = allowHigher;
 		}

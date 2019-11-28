@@ -37,7 +37,7 @@ public class ArmorHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void greenWitchRegen(TickEvent.PlayerTickEvent event) {
 		EntityPlayer player = event.player;
@@ -47,7 +47,7 @@ public class ArmorHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void greenWitchHarvest(BlockEvent.HarvestDropsEvent event) {
 		EntityPlayer player = event.getHarvester();
