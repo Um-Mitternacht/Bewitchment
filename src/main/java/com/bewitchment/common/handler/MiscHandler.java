@@ -63,7 +63,7 @@ public class MiscHandler {
 			List<Entity> entities = player.world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 32, player.posY - 32, player.posZ - 32, player.posX + 32, player.posY + 32, player.posZ + 32), e -> e instanceof IPledgeable);
 			for (Entity entity : entities) {
 				if (entity instanceof EntityLeonard) {
-					event.setBoosted(true);
+					event.setAllowHigher(true);
 					event.setBottles(event.getBottles() + 1);
 				}
 			}

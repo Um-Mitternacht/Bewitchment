@@ -40,12 +40,14 @@ public class WitchesCauldronEvent extends Event {
 		private EntityPlayer user;
 		private int bottles;
 		private boolean boosted;
+		private boolean allowHigher;
 		
 		public CreatePotionEvent(TileEntityWitchesCauldron cauldron, EntityPlayer user, int bottles, boolean boosted) {
 			super(cauldron, cauldron.getWorld());
 			this.user = user;
 			this.bottles = bottles;
 			this.boosted = boosted;
+			this.allowHigher = false;
 		}
 		
 		public EntityPlayer getUser() {
@@ -70,6 +72,14 @@ public class WitchesCauldronEvent extends Event {
 		
 		public void setBoosted(boolean boosted) {
 			this.boosted = boosted;
+		}
+
+		public boolean allowsHigher() {
+			return allowHigher;
+		}
+
+		public void setAllowHigher(boolean allowHigher) {
+			this.allowHigher = allowHigher;
 		}
 	}
 	

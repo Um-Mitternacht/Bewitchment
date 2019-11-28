@@ -112,13 +112,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 						if (tank.canDrainFluidType(tank.getFluid()) && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 							int bottles = 3;
 							boolean boosted = false;
-							/*if (BewitchmentAPI.hasAlchemist(player)) {
-								bottles++;
-								boosted = true;
-							}*/
 							WitchesCauldronEvent.CreatePotionEvent createPotion = new WitchesCauldronEvent.CreatePotionEvent(this, player, bottles, boosted);
 							if (!MinecraftForge.EVENT_BUS.post(createPotion)) {
-								ItemStack createdPotion = createPotion(createPotion.isBoosted());
+								ItemStack createdPotion = createPotion(createPotion.isBoosted(), createPotion.allowsHigher());
 								WitchesCauldronEvent.PotionCreatedEvent potionCreated = new WitchesCauldronEvent.PotionCreatedEvent(this, createPotion.getUser(), createPotion.getBottles(), createdPotion);
 								if (!MinecraftForge.EVENT_BUS.post(potionCreated)) {
 									Util.replaceAndConsumeItem(potionCreated.getUser(), hand, potionCreated.getPotionStack());
@@ -223,7 +219,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		return ((((double) tank.getFluidAmount() / Fluid.BUCKET_VOLUME) - 1) * (2 / 5d)) + (3 / 5d);
 	}
 	
-	private ItemStack createPotion(boolean boosted) {
+	private ItemStack createPotion(boolean boosted, boolean allowHigher) {
 		List<PotionEffect> finalEffects = new ArrayList<>();
 		boolean noParticles = contains(inventory, new ItemStack(ModObjects.ravens_feather)), splash = contains(inventory, new ItemStack(Items.GUNPOWDER)), lingering = contains(inventory, new ItemStack(ModObjects.owlets_wing)) && splash;
 		int duration = 1, potency = boosted ? 2 : 1;
@@ -233,7 +229,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			if (inventory.getStackInSlot(i).getItem() == Items.REDSTONE) duration++;
 			else if (inventory.getStackInSlot(i).getItem() == Items.GLOWSTONE_DUST) potency++;
 		}
-		potency = Math.min(2, potency); //todo: allow 3 when familiars etc exist
+		potency = Math.min(allowHigher ? 3 : 2, potency); //todo: allow 3 when familiars etc exist
 		duration = Math.min(3, duration);
 		for (PotionEffect effect : effects) finalEffects.add(new PotionEffect(effect.getPotion(), (int) (effect.getDuration() * (1d / potency) * duration), effect.getAmplifier() + potency - 1, effect.getIsAmbient(), !noParticles));
 		List<PotionEffect> toBeginning = new ArrayList<>();
@@ -308,7 +304,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 									}
 								}
 								else if (mode == 3) {
-									setTargetColor(PotionUtils.getColor(createPotion(false)));
+									setTargetColor(PotionUtils.getColor(createPotion(false, false)));
 									Brew brew = GameRegistry.findRegistry(Brew.class).getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
 									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
 										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
