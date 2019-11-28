@@ -79,8 +79,9 @@ public class EntityDruden extends ModEntityMob {
 		if (flag) {
 			attackTimer = 10;
 			world.setEntityState(this, (byte) 4);
+			world.playSound(null, getPosition(), SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.3F, 1);
 			if (entity instanceof EntityLivingBase) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.fear, 100, 0, false, false));
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.fear, 500, 0, false, false));
 			}
 		}
 		return flag;
