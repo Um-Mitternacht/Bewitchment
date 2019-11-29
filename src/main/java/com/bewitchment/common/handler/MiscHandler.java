@@ -21,7 +21,6 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -185,7 +184,7 @@ public class MiscHandler {
 			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void takeBlood(LivingDeathEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getSource().getTrueSource() instanceof EntityPlayer) {
@@ -197,7 +196,7 @@ public class MiscHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void depledgeGoats(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof AbstractGreaterDemon && event.getSource().getTrueSource() instanceof EntityPlayer) {

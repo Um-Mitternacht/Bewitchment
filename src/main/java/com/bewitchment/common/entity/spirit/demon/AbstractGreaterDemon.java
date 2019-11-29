@@ -4,12 +4,8 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityPotion;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
@@ -26,7 +22,7 @@ public abstract class AbstractGreaterDemon extends ModEntityMob implements IPled
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-
+	
 	public boolean isNonBoss() {
 		return false;
 	}
