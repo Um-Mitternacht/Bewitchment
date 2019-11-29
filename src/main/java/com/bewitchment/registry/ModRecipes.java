@@ -471,7 +471,8 @@ public class ModRecipes {
 				Species species = family.getCommonSpecies();
 				String name = species.getSaplingName().toString().toLowerCase();
 				name = name.substring(name.indexOf(":") + 1);
-				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
+				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin :
+						name.contains("cypress") ? ModObjects.ebb_of_death : name.contains("elder") ? ModObjects.droplet_of_wisdom : name.contains("juniper") ? ModObjects.essence_of_vitality : ModObjects.cloudy_oil), 0.75f));
 			}
 		}
 		

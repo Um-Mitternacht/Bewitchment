@@ -16,6 +16,7 @@ import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.*;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
+import com.bewitchment.common.item.food.ItemFoodSeed;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
@@ -419,8 +420,8 @@ public class ModObjects {
 	public static final Item white_sage_seeds = Util.registerItem(new ItemModSeeds(crop_white_sage, Blocks.FARMLAND), "white_sage_seeds", "listAllseed");
 	public static final Item wormwood_seeds = Util.registerItem(new ItemModSeeds(crop_wormwood, Blocks.FARMLAND), "wormwood_seeds", "listAllseed");
 	//Food
-	public static final Item elderberries = Util.registerItem(new ItemFood(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100), 0.1f), "elderberries");
-	public static final Item juniper_berries = Util.registerItem(new ItemFood(1, 0.5f, false), "juniper_berries");
+	public static final Item elderberries = Util.registerItem(new ItemFoodSeed(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100), 0.1f), "elderberries");
+	public static final Item juniper_berries = Util.registerItem(new ItemFoodSeed(1, 0.5f, false), "juniper_berries");
 	public static final Item stew_of_the_grotesque = new ItemStewOfTheGrotesque();
 	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");

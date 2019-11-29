@@ -49,9 +49,8 @@ public class TreeElder extends TreeFamily {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.elderLeavesProperties);
 			this.setBasicGrowingParameters(0.4F, 14.0F, 3, 2, 1.0F);
 			this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
-			this.generateSeed();
-			this.addDropCreator(new DropCreatorFruit(ModObjects.elderberries, 13));
-			this.setupStandardSeedDropping();
+			this.setSeedStack(new ItemStack(ModObjects.elderberries));
+			this.addDropCreator(new DropCreatorFruit(ModObjects.elderberries, 45));
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
 		

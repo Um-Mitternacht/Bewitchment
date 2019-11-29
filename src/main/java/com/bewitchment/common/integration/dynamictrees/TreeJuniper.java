@@ -49,9 +49,8 @@ public class TreeJuniper extends TreeFamily {
 			super(treeFamily.getName(), treeFamily, DynamicTreesCompat.juniperLeavesProperties);
 			this.setBasicGrowingParameters(0.4F, 14.0F, 4, 4, 1.0F);
 			this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
-			this.generateSeed();
-			this.setupStandardSeedDropping();
-			this.addDropCreator(new DropCreatorFruit(ModObjects.juniper_berries, 13));
+			this.setSeedStack(new ItemStack(ModObjects.juniper_berries));
+			this.addDropCreator(new DropCreatorFruit(ModObjects.elderberries, 40));
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
 		

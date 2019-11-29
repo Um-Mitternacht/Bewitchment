@@ -2,7 +2,9 @@ package com.bewitchment.common.integration.dynamictrees;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
+import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
+import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
@@ -20,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -70,8 +73,6 @@ public class DynamicTreesCompat {
 		blockRegistry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 		ArrayList<Item> treeItems = new ArrayList<>();
 		cypressTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
-		elderTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
-		juniperTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
 		dragonsbloodTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
 		for (Item toRegister : treeItems) {
 			toRegister.setTranslationKey(toRegister.getRegistryName().toString().replace(":", "."));
@@ -81,6 +82,11 @@ public class DynamicTreesCompat {
 		if (ModConfig.compat.replaceSapling) {
 			MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
 		}
+		ResourceLocation seedConvertion = new ResourceLocation(Bewitchment.MODID, "seeds");
+		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "cypress"), seedConvertion, cypressTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.cypress_sapling), Util.get(ModItems.dirtBucket));
+		//GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "elder"), seedConvertion, elderTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.elder_sapling), Util.get(ModItems.dirtBucket));
+		//GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "juniper"), seedConvertion, juniperTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.juniper_sapling), Util.get(ModItems.dirtBucket));
+		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
 	}
 	
 	public static void init() {
