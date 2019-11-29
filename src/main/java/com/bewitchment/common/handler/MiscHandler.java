@@ -8,6 +8,7 @@ import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
 import com.bewitchment.common.entity.util.IPledgeable;
@@ -20,6 +21,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -38,6 +40,7 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -191,6 +194,12 @@ public class MiscHandler {
 					Util.replaceAndConsumeItem(player, EnumHand.OFF_HAND, new ItemStack(ModObjects.bottle_of_blood));
 				}
 			}
+		}
+	}
+
+	public void depledgeGoats(LivingHurtEvent event) {
+		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof AbstractGreaterDemon && event.getSource().getTrueSource() instanceof EntityPlayer) {
+			ExtendedWorld.depledgePlayerToDemon(event.getEntityLiving().world, (EntityPlayer) event.getSource().getTrueSource(), (IPledgeable) event.getEntityLiving());
 		}
 	}
 }

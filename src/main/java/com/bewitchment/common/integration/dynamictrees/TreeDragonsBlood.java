@@ -57,7 +57,7 @@ public class TreeDragonsBlood extends TreeFamily {
 			this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
 			this.generateSeed();
 			this.setupStandardSeedDropping();
-			this.addDropCreator(new DropCreatorResin(10));
+			this.addDropCreator(new DropCreatorFruit(ModObjects.dragons_blood_resin, 10));
 			this.addGenFeature(new FeatureGenClearVolume(6));
 			this.addGenFeature((new FeatureGenRoots(7)).setScaler(this.getRootScaler()));
 		}

@@ -51,6 +51,7 @@ public class TreeJuniper extends TreeFamily {
 			this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
 			this.generateSeed();
 			this.setupStandardSeedDropping();
+			this.addDropCreator(new DropCreatorFruit(ModObjects.juniper_berries, 13));
 			this.addGenFeature(new FeatureGenClearVolume(6));
 		}
 		
