@@ -1,15 +1,9 @@
 package com.bewitchment.common.item.poppet;
 
-import com.bewitchment.Util;
 import com.bewitchment.common.item.ItemTaglock;
-import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
