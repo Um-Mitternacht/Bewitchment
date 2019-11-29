@@ -14,6 +14,7 @@ import com.bewitchment.common.entity.living.*;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
+import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
 import com.ferreusveritas.dynamictrees.ModTrees;
@@ -46,6 +47,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import scala.Dynamic;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
 import vazkii.botania.common.item.ModItems;
@@ -471,11 +473,13 @@ public class ModRecipes {
 				Species species = family.getCommonSpecies();
 				String name = species.getSaplingName().toString().toLowerCase();
 				name = name.substring(name.indexOf(":") + 1);
-				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin :
-						name.contains("cypress") ? ModObjects.ebb_of_death : name.contains("elder") ? ModObjects.droplet_of_wisdom : name.contains("juniper") ? ModObjects.essence_of_vitality : ModObjects.cloudy_oil), 0.75f));
+				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
 			}
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cypress_seed"), DynamicTreesCompat.cypressTree.getCommonSpecies().getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.ebb_of_death), 0.75f));
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "elder_seed"), new ItemStack(ModObjects.elderberries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "juniper_seed"), new ItemStack(ModObjects.juniper_berries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		}
-		
+
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm"), new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModObjects.ectoplasm, 3), 0.65f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f, false));
