@@ -443,6 +443,8 @@ item.bewitchment.poppet_wasting.name=Poppet of Wasting
 item.bewitchment.poppet_waterprotection.name=Water Protection Poppet
 tooltip.bewitchment.poppet.bound=Bound to %s
 
+poppet.not_found=The target of this poppet is not found
+
 item.bewitchment.sigil_mending.name=Sigil of Mending
 item.bewitchment.sigil_ruin.name=Sigil of Ruin
 item.bewitchment.sigil_binding.name=Sigil of Binding

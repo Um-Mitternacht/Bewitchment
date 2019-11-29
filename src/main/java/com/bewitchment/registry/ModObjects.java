@@ -20,6 +20,8 @@ import com.bewitchment.common.item.food.ItemFoodSeed;
 import com.bewitchment.common.item.food.ItemGarlic;
 import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
+import com.bewitchment.common.item.poppet.ItemPoppet;
+import com.bewitchment.common.item.poppet.ItemVoodooPoppet;
 import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
@@ -400,7 +402,7 @@ public class ModObjects {
 	public static final Item poppet_tool = Util.registerItem(new ItemPoppet(true), "poppet_tool");
 	public static final Item poppet_vampiric = Util.registerItem(new ItemPoppet(false), "poppet_vampiric");
 	public static final Item poppet_voodooprotection = Util.registerItem(new ItemPoppet(false), "poppet_voodooprotection");
-	public static final Item poppet_voodoo = Util.registerItem(new ItemPoppet(false), "poppet_voodoo");
+	public static final Item poppet_voodoo = Util.registerItem(new ItemVoodooPoppet(), "poppet_voodoo");
 	public static final Item poppet_wasting = Util.registerItem(new ItemPoppet(false), "poppet_wasting");
 	public static final Item poppet_waterprotection = Util.registerItem(new ItemPoppet(true), "poppet_waterprotection");
 	//Plants
