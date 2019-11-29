@@ -31,7 +31,7 @@ minecraft {
     version = "1.12.2-14.23.5.2838"
     runDir = "run"
     mappings = "stable_39"
-    clientRunArgs += "--username=Samaritans"
+    clientRunArgs += "--username=Bewitchment"
     clientJvmArgs += "-Dfml.coreMods.load=com.bewitchment.core.BewitchmentFMLLoadingPlugin"
     serverJvmArgs += "-Dfml.coreMods.load=com.bewitchment.core.BewitchmentFMLLoadingPlugin"
 }

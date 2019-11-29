@@ -1,0 +1,91 @@
+{
+  "name": "Poppets",
+  "category": "gear",
+  "icon": "bewitchment:poppet",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Poppets are small dolls bound to a target, usually the owner, in order to protect them from all manner of harm, from fire to spirits to even voodoo. That being said, Poppets may also be used by witches who wish to cast voodoo and similar such effects on those who oppose them. Poppets may either be carried on the witch’s person, or placed on a special shelf to keep them safe. Spanish Moss is vital to the creation of Poppets, so a trip to the swamp may be a good idea."
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet",
+      "text": "The base poppet for all your crafting, does nothing"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_armor",
+      "text": "Prevents armor items from breaking, instead the poppet breaks. (W.I.P)"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_tool",
+      "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one more use. (W.I.P)"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_binding",
+      "text": "Slows those who attack you"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_clumsy",
+      "text": "Has a chance to make attackers drop their weapons"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_deathprotection",
+      "text": "Helps you cheat death, just once"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_earthprotection",
+      "text": "Reduces fall damage"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_flameprotection",
+      "text": "Reduces fire damage"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_waterprotection",
+      "text": "Protects the owner from drowning for a short while"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_hungerprotection",
+      "text": "Reduces starvation damage and feeds the user a little bit"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_judgement",
+      "text": "Lowers damage from vampires and werewolves (W.I.P)"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_spiritbane",
+      "text": "Reduces damage from spirits"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_vampiric",
+      "text": "Redirects damage you are taking to whoever its bound to. $(r)Must be carried in inventory"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_voodooprotection",
+      "text": "protects from vampiric and voodoo poppets. (W.I.P)"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_voodoo",
+      "text": "It's weird, also W.I.P"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_wasting",
+      "text": "Induces hunger for whoever attacks the owner of this poppet"
+    }
+  ]
+}

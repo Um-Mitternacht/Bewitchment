@@ -188,7 +188,8 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 				}
 			}
 			if (world.getTotalWorldTime() % 20 == 0) {
-				if (tank.getFluid() != null && Arrays.asList(ModConfig.misc.heatSources).contains(world.getBlockState(pos.down()).getBlock().getTranslationKey()) && heatTimer <= 5) heatTimer++;
+				String transKey = world.getBlockState(pos.down()).getBlock().getTranslationKey();
+				if (tank.getFluid() != null && Arrays.asList(ModConfig.misc.heatSources).contains(transKey) && heatTimer <= 5) heatTimer++;
 				else if (heatTimer > 0) heatTimer--;
 			}
 			if (heatTimer >= 5 && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {

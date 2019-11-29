@@ -39,7 +39,9 @@ public class ModConfig {
 		
 		@Config.Comment("The list of blocks that the witches' cauldron will count as heat sources.")
 		//FIXME: Add nitor from BlocksTC in Thaumcraft as a valid heat source. Note that it's got several color variants.
-		public String[] heatSources = {Blocks.FIRE.getTranslationKey(), Blocks.LAVA.getTranslationKey(), Blocks.MAGMA.getTranslationKey(), ModObjects.hellfire.getTranslationKey(), ModBlocks.blazeBlock.getTranslationKey()};
+		public String[] heatSources = {Blocks.FIRE.getTranslationKey(), Blocks.LAVA.getTranslationKey(), Blocks.MAGMA.getTranslationKey(), "tile.bewitchment.hellfire", "tile.blazeBlock",
+		"tile.nitor_white", "tile.nitor_orange", "tile.nitor_magenta", "tile.nitor_lightblue", "tile.nitor_yellow", "tile.nitor_lime", "tile.nitor_pink", "tile.nitor_gray",
+		"tile.nitor_silver", "tile.nitor_cyan", "tile.nitor_purple", "tile.nitor_blue", "tile.nitor_brown", "tile.nitor_green", "tile.nitor_red", "tile.nitor_black"};
 		
 		@Config.Comment("The amount of blocks an altar should scan per tick.")
 		@Config.RangeInt(min = 0, max = Short.MAX_VALUE)
