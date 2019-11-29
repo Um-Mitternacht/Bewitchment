@@ -185,7 +185,8 @@ public class MiscHandler {
 			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
-	
+
+	@SubscribeEvent
 	public void takeBlood(LivingDeathEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
@@ -197,6 +198,7 @@ public class MiscHandler {
 		}
 	}
 
+	@SubscribeEvent
 	public void depledgeGoats(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof AbstractGreaterDemon && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			ExtendedWorld.depledgePlayerToDemon(event.getEntityLiving().world, (EntityPlayer) event.getSource().getTrueSource(), (IPledgeable) event.getEntityLiving());

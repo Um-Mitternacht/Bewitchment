@@ -46,6 +46,7 @@ public class ItemCaduceus extends Item {
 				temp.setPosition(pos.getX() + itemRand.nextGaussian() * 0.8, pos.getY() + 1, pos.getZ() + itemRand.nextGaussian() * 0.8);
 				world.spawnEntity(temp);
 			}
+			player.getCooldownTracker().setCooldown(this, 40);
 			player.getHeldItem(hand).damageItem(1, player);
 		}
 		return EnumActionResult.SUCCESS;

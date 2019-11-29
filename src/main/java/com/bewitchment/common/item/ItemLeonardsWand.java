@@ -53,6 +53,7 @@ public class ItemLeonardsWand extends Item {
 				itemstack.getTagCompound().setInteger("uses", uses - 1);
 			}
 			itemstack.damageItem(1, playerIn);
+			playerIn.getCooldownTracker().setCooldown(this, 10);
 			return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
