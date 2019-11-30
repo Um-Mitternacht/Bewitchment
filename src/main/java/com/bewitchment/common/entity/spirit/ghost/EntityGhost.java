@@ -69,8 +69,8 @@ public class EntityGhost extends ModEntityMob {
 		this.tasks.addTask(3, new AIMoveRandom());
 		this.tasks.addTask(3, new EntityAILookIdle(this));
 		this.tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true, EntityGhost.class));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, EntityGhost.class));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
 	}
 	
 	@Override
