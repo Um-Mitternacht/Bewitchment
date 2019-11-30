@@ -19,21 +19,17 @@ import java.util.Random;
 public class DropCreatorFruit extends DropCreator {
 	private final Item fruit;
 	private final int chance;
-
+	
 	public DropCreatorFruit(Item item, int chance) {
 		super(new ResourceLocation(Bewitchment.MODID, item.getRegistryName().getPath()));
 		this.fruit = item;
 		this.chance = chance;
 	}
-
-	public List<ItemStack> getLeavesDrop(IBlockAccess access, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, int fortune) {
-		return this.getLeafDrops(access, species, breakPos, random, dropList, fortune);
-	}
-
+	
 	public List<ItemStack> getHarvestDrop(World world, Species species, BlockPos leafPos, Random random, List<ItemStack> dropList, int soilLife, int fortune) {
 		return this.getLeafDrops(world, species, leafPos, random, dropList, fortune);
 	}
-
+	
 	public List<ItemStack> getVoluntaryDrop(World world, Species species, BlockPos rootPos, Random random, List<ItemStack> dropList, int soilLife) {
 		BlockPos treePos = rootPos.up();
 		IBlockState trunk = world.getBlockState(treePos);
@@ -41,10 +37,14 @@ public class DropCreatorFruit extends DropCreator {
 		if (branch != null && branch.getRadius(trunk) >= 8 && 0.33F > random.nextFloat()) {
 			dropList.add(new ItemStack(this.fruit, 1, 0));
 		}
-
+		
 		return dropList;
 	}
-
+	
+	public List<ItemStack> getLeavesDrop(IBlockAccess access, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, int fortune) {
+		return this.getLeafDrops(access, species, breakPos, random, dropList, fortune);
+	}
+	
 	protected List<ItemStack> getLeafDrops(IBlockAccess access, Species species, BlockPos leafPos, Random random, List<ItemStack> dropList, int fortune) {
 		int chance = this.chance;
 		if (fortune > 0) {
@@ -53,11 +53,11 @@ public class DropCreatorFruit extends DropCreator {
 				chance = 2;
 			}
 		}
-
+		
 		if (random.nextInt(chance) == 0) {
 			dropList.add(new ItemStack(this.fruit, 1, 0));
 		}
-
+		
 		return dropList;
 	}
 }

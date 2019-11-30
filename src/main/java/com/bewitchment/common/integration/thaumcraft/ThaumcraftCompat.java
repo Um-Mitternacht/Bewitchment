@@ -211,6 +211,13 @@ public class ThaumcraftCompat {
 		//TODO
 		
 		//Misc
+		event.register.registerObjectTag(new ItemStack(ModObjects.vampiric_amulet), new AspectList().add(Aspect.MAGIC, 16).add(Aspect.DARKNESS, 16).add(MOON, 16));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.triskelion), new AspectList().add(Aspect.DESIRE, 16).add(Aspect.AVERSION, 16).add(SUN, 16));
+		event.register.registerObjectTag(new ItemStack(ModObjects.fortunes_favor), new AspectList().add(Aspect.DESIRE, 16).add(Aspect.EARTH, 16).add(Aspect.MAGIC, 16));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.hecates_visage), new AspectList().add(Aspect.AURA, 16).add(Aspect.FIRE, 16).add(Aspect.MAGIC, 16));
+		
 		event.register.registerObjectTag(new ItemStack(ModObjects.dimensional_sand), new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.DARKNESS, 4).add(STAR, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.ectoplasm), new AspectList().add(Aspect.SOUL, 5).add(Aspect.DEATH, 5));
 		event.register.registerObjectTag(new ItemStack(ModObjects.oak_apple_gall), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.ENTROPY, 2));

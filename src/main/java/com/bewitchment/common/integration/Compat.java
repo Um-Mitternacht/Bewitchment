@@ -1,5 +1,7 @@
 package com.bewitchment.common.integration;
 
+import c4.consecration.common.init.ConsecrationItems;
+import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Brew;
@@ -33,6 +35,12 @@ public class Compat {
 	@SubscribeEvent
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
+	}
+	
+	@Optional.Method(modid = "consecration")
+	@SubscribeEvent
+	public void registerConsecrationBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "consecrated_water"), Util.get(ConsecrationItems.blessedDust), new PotionEffect(ConsecrationPotions.HOLY_POTION, 1)));
 	}
 	
 	@Optional.Method(modid = "quark")

@@ -47,7 +47,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import scala.Dynamic;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
 import vazkii.botania.common.item.ModItems;
@@ -479,7 +478,7 @@ public class ModRecipes {
 			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "elder_seed"), new ItemStack(ModObjects.elderberries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
 			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "juniper_seed"), new ItemStack(ModObjects.juniper_berries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		}
-
+		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm"), new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModObjects.ectoplasm, 3), 0.65f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f, false));
