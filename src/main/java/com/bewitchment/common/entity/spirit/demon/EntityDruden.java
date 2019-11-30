@@ -90,11 +90,11 @@ public class EntityDruden extends ModEntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.00);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.14);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(24);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.7);
 	}
 	
 	@Override
