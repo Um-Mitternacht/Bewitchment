@@ -7,7 +7,7 @@
 		{
 		  "type": "item",
 		  "name": "patchouli:guide_book",
-		  "weight": 2,
+		  "weight": 3,
 		  "functions": [
 			{
 			  "function": "set_count",
@@ -25,7 +25,7 @@
 		{
 		  "type": "item",
 		  "name": "bewitchment:dragons_blood_sapling",
-		  "weight": 3,
+		  "weight": 2,
 		  "functions": [
 			{
 			  "function": "set_count",
@@ -38,8 +38,78 @@
 		},
 		{
 		  "type": "item",
-		  "name": "bewitchment:fortunes_favor",
+		  "name": "bewitchment:scorned_bricks",
 		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 16
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:nethersteel",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 16
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:hellebore",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 4
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:dragons_blood_resin",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 4
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:heart",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 3
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:fortunes_favor",
+		  "weight": 1,
 		  "functions": [
 			{
 			  "function": "set_count",
@@ -52,8 +122,22 @@
 		},
 		{
 		  "type": "item",
+		  "name": "bewitchment:hellhound_horn",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 4
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
 		  "name": "bewitchment:hecates_visage",
-		  "weight": 2,
+		  "weight": 1,
 		  "functions": [
 			{
 			  "function": "set_count",
