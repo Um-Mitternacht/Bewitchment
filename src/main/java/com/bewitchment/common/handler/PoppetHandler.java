@@ -8,14 +8,17 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PoppetHandler {
@@ -149,6 +152,14 @@ public class PoppetHandler {
 					}
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void toolProtection(PlayerDestroyItemEvent event) {
+		if (!event.getEntityPlayer().world.isRemote && event.getOriginal().getItem() != ModObjects.poppet_tool && Util.attemptDamagePoppet(event.getEntityPlayer(), ModObjects.poppet_tool)) {
+			event.getEntityPlayer().setHeldItem(event.getHand(), event.getOriginal());
+			event.getEntityPlayer().playSound(SoundEvents.ENTITY_ILLAGER_CAST_SPELL, 5, 1);
 		}
 	}
 	
