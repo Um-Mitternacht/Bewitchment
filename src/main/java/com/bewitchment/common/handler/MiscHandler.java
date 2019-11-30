@@ -23,6 +23,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -182,7 +183,8 @@ public class MiscHandler {
 		}
 		strength = Math.min(strength, 2);
 		for (Potion potion : potions) {
-			player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
+			if (potion == MobEffects.SATURATION) player.addPotionEffect(new PotionEffect(potion, 60, 1));
+			else player.addPotionEffect(new PotionEffect(potion, 20 * length, strength));
 		}
 	}
 

@@ -1,12 +1,9 @@
 package com.bewitchment.common.item.poppet;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.Block;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
@@ -41,8 +38,7 @@ public class ItemVoodooPoppet extends ItemPoppet {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("boundName")) {
-            //todo: not limit it to player target
-            EntityPlayer target = Util.findPlayer(stack.getTagCompound().getString("boundId"));
+            EntityLivingBase target = world.getEntities(EntityLivingBase.class, e -> e != null && e.getPersistentID().toString().equals(stack.getTagCompound().getString("boundId"))).stream().findFirst().orElse(null);
             if (target != null) {
                 if (player.isSneaking()) {
                     List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
