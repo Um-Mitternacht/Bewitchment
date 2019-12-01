@@ -9,8 +9,6 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -21,19 +19,18 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
- * Created by Joseph on 11/30/2019.
+ * Original code by Zabi94, modified by Sunconure11 afterwards.
  */
 public class RitualBiomeShift extends Ritual {
-	public RitualBiomeShift(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
-		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get("treeSapling"), Util.get("logWood"), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.boline))), null, null, 10, 780, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
+	public RitualBiomeShift() {
+		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get("treeSapling"), Util.get("logWood"), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.boline))), null, null, 200, 1300, 33, BlockGlyph.NORMAL, BlockGlyph.NORMAL, BlockGlyph.NORMAL);
 	}
 	
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		NonNullList<ItemStack> recipe = AdapterIRitual.getItemsUsedForInput(data);
+		NonNullList<ItemStack> recipe = Ritual.getItemsUsedForInput(data);
 		int id = Biome.getIdForBiome(Biomes.PLAINS);
 		for (ItemStack is : recipe) {
 			if (is.getItem() == ModObjects.boline && is.hasTagCompound() && is.getTagCompound().hasKey("biome_id")) {
@@ -55,16 +52,6 @@ public class RitualBiomeShift extends Ritual {
 			mpos.move(EnumFacing.EAST);
 		}
 		walker.complete();
-	}
-	
-	@Override
-	public NonNullList<ItemStack> getOutput(NonNullList<ItemStack> input, NBTTagCompound data) {
-		NonNullList<ItemStack> oldOutput = super.getOutput(input, data);
-		Optional<ItemStack> oldBoline = input.parallelStream().filter(is -> is.getItem() == ModObjects.boline).findFirst();
-		if (oldBoline.isPresent()) {
-			oldOutput.parallelStream().filter(is -> is.getItem() == ModObjects.boline).findFirst().ifPresent(is -> is.setItemDamage(is.getItemDamage() + 50));
-		}
-		return oldOutput;
 	}
 	
 }
