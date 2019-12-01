@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -154,7 +153,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void toolProtection(PlayerDestroyItemEvent event) {
 		if (!event.getEntityPlayer().world.isRemote && event.getOriginal().getItem() != ModObjects.poppet_tool && Util.attemptDamagePoppet(event.getEntityPlayer(), ModObjects.poppet_tool)) {
