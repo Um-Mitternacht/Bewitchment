@@ -3,6 +3,7 @@ package com.bewitchment.api.registry;
 import com.bewitchment.Util;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.item.tool.ItemAthame;
+import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -78,6 +79,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			ItemStack stack = inventory.getStackInSlot(i);
 			if (stack.getItem() instanceof ItemAthame) stack.damageItem(20, caster);
+			if (stack.getItem() instanceof ItemBoline) stack.damageItem(20, caster);
 			else inventory.extractItem(i, 1, false);
 		}
 		if (!world.isRemote && output != null) for (ItemStack stack : output) InventoryHelper.spawnItemStack(world, altarPos.getX(), altarPos.getY(), altarPos.getZ(), stack.copy());

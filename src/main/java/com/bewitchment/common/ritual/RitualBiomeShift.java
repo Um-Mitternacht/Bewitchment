@@ -29,7 +29,7 @@ import java.util.Optional;
  */
 public class RitualBiomeShift extends Ritual {
 	public RitualBiomeShift(ResourceLocation registryName, NonNullList<Ingredient> input, NonNullList<ItemStack> output, int timeInTicks, int circles, int altarStartingPower, int powerPerTick) {
-		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get(OreDictionary.tree), Util.get(ModObjects.birch_soul), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1)), Util.get(new ItemStack(Blocks.TALLGRASS, 1, 1))), null, null, 10, 780, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get("treeSapling"), Util.get("logWood"), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.boline))), null, null, 10, 780, 30, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
 	}
 	
 	@Override
