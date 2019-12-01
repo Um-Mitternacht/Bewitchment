@@ -4,10 +4,10 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,7 +19,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -42,7 +41,7 @@ public class RitualBiomeShift extends Ritual {
 			}
 		}
 		int radius = (int) MathHelper.sqrt(64 * (1 + 2) * (1 + 2));
-		BiomeChangerWalker walker = new BiomeChangerWalker(id);
+		BiomeChangingUtils.BiomeChangerWalker walker = new BiomeChangingUtils.BiomeChangerWalker(id);
 		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 		mpos.setPos(effectivePos.getX() - radius, 0, effectivePos.getZ() - radius);
 		for (int x = -radius; x <= radius; x++) {

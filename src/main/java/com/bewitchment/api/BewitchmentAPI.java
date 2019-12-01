@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 
@@ -21,35 +22,33 @@ import java.util.function.Predicate;
 
 @SuppressWarnings({"unused", "SameReturnValue", "ConstantConditions"})
 public class BewitchmentAPI {
+	
 	/**
 	 * a Map of loot for mobs to drop when killed with the Athame
 	 */
 	public static final Map<Predicate<EntityLivingBase>, Collection<ItemStack>> ATHAME_LOOT = new HashMap<>();
-	
 	/**
 	 * a Map of AltarUpgrades for the Witches' Atlar to search for
 	 */
 	public static final Map<Predicate<BlockWorldState>, AltarUpgrade> ALTAR_UPGRADES = new HashMap<>();
-	
 	/**
 	 * A list of pets to be chosen for the meet pet fortune
 	 */
 	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
-	
 	/**
 	 * The Demon creature attribute. Used for well, demons.
 	 */
 	public static EnumCreatureAttribute DEMON = EnumHelper.addCreatureAttribute("DEMON");
-	
 	/**
 	 * The Spirit creature attribute. Used for ghosts and pretty much most spirits that aren't demons or fae.
 	 */
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("SPIRIT");
-	
 	/**
 	 * The Fairy creature attribute. This is for future usage ATM.
 	 */
 	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
+	private static BewitchmentAPI INSTANCE;
+	public BiomeDictionary.Type IMMUTABLE;
 	
 	/**
 	 * @param entity the entity to check
@@ -177,6 +176,22 @@ public class BewitchmentAPI {
 			armorItem.add(is.getItem());
 		}
 		return (armorItem.contains(ModObjects.witches_cowl) || armorItem.contains(ModObjects.witches_hat)) && armorItem.contains(ModObjects.witches_robes) && armorItem.contains(ModObjects.witches_pants);
+	}
+	
+	public static final void setupAPI(BewitchmentAPI api) {
+		if (INSTANCE == null) {
+			INSTANCE = api;
+		}
+		else {
+			throw new IllegalStateException("Bewitchment API already initialized");
+		}
+	}
+	
+	public static final BewitchmentAPI getAPI() {
+		if (INSTANCE != null) {
+			return INSTANCE;
+		}
+		throw new IllegalStateException("Bewitchment API not ready yet");
 	}
 	
 	public static float getSilverWeakness(EntityLivingBase entity) {
