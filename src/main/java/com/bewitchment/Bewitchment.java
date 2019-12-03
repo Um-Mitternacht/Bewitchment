@@ -126,7 +126,7 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(TarotMessage.Handler.class, TarotMessage.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
-
+		
 		for (Item item : ForgeRegistries.ITEMS) {
 			if (Util.isRelated(true, item, "silver")) MaterialHandler.SILVER_ARMOR.add(item);
 			if (Util.isRelated(false, item, "silver")) MaterialHandler.SILVER_TOOLS.add(item);

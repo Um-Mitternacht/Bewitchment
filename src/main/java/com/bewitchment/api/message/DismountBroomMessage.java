@@ -8,21 +8,21 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class DismountBroomMessage implements IMessage {
 
-    @Override
-    public void fromBytes(ByteBuf byteBuf) {
+	@Override
+	public void fromBytes(ByteBuf byteBuf) {
 
-    }
+	}
 
-    @Override
-    public void toBytes(ByteBuf byteBuf) {
+	@Override
+	public void toBytes(ByteBuf byteBuf) {
 
-    }
+	}
 
-    public static class Handler implements IMessageHandler<DismountBroomMessage, IMessage> {
-        public IMessage onMessage(DismountBroomMessage message, MessageContext ctx) {
-            EntityPlayerMP player = ctx.getServerHandler().player;
-            player.dismountRidingEntity();
-            return null;
-        }
-    }
+	public static class Handler implements IMessageHandler<DismountBroomMessage, IMessage> {
+		public IMessage onMessage(DismountBroomMessage message, MessageContext ctx) {
+			EntityPlayerMP player = ctx.getServerHandler().player;
+			player.dismountRidingEntity();
+			return null;
+		}
+	}
 }
