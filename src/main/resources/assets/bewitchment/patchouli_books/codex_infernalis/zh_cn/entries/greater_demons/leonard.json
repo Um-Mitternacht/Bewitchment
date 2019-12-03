@@ -1,0 +1,30 @@
+{
+  "name": "大宗师伦纳德",
+  "category": "greater_demons",
+  "icon": "bewitchment:leonards_wand",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "有些仪式讲的是一个被称为伦纳德的恶魔，许多名字，如森林的黑山羊，阿扎泽尔，晨星和圣殿骑士的僭王。然而，其中许多是矛盾的，他似乎是一个女巫所崇拜的恶魔。"
+	},
+	{
+	  "type": "text",
+	  "text": "那些召唤他的人通常被迫沉溺于一种被称为“大乱炖”的肮脏混合物中，同时手持绿色蜡烛，穿着全套女巫长袍，以接受他的赐福。"
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:leonard",
+	  "scale": 0.9
+	},
+	{
+	  "type": "text",
+	  "title": "召唤",
+	  "text": "召唤伦纳德大师是相当困难的，羔羊的血需要洒在仪式上。我已经记录仪式如下："
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:conjure_leonard",
+	  "name": "伦纳德之祭"
+	}
+  ]
+}

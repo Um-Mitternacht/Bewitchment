@@ -1,0 +1,27 @@
+{
+  "name": "炼金术士袍服",
+  "category": "gear",
+  "icon": "bewitchment:alchemist_hat",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "把女巫缝线和用元素烟雾熏蒸过的银灰色羊毛绣到普通的女巫长袍上来制得，它提高了穿着者对酿造工艺的熟练程度（女巫釡锅中的额外酿造工艺），既提高药效，也减少药水对使用者的负面影响。"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:alchemist_hat"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:alchemist_hood"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:alchemist_robes"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:alchemist_pants"
+	}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "血污布料",
+  "category": "demonic_gear",
+  "icon": "bewitchment:sanguine_cloth",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "当黑羊的羊毛被浸泡在被献祭者的血液中时，就能制作出血污布料。这种织物可用来制作污渍袍服，以及莉莉丝崇拜者的首选服装，也在一些仪式上被用作反应物。也有人认为，这种材料正是恶魔的服装。"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:sanguine_cloth",
+	  "text": "$(o)浸血的织物"
+	}
+  ]
+}
