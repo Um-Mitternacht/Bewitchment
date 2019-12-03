@@ -1,0 +1,47 @@
+{
+  "name": "恶魔契约",
+  "category": "demonic_gear",
+  "icon": "bewitchment:contract",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "许多恶魔向凡人提供契约，而契约通常必须用鲜血签署...履行这些亵渎的交易时，乙方会为甲方提供自己来自地狱的力量。名声，财富，任何东西...$(br)$(o)墨水对我来说不值任何东西$(playername)...现在签名吧"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "契约：渴血",
+	  "text": "你将获取杀死杂鱼来获得力量的能力。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "契约：饕餮之怒",
+	  "text": "一旦契约完成，你将能够通过杀死活物来治愈自己。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "契约：狂战士",
+	  "text": "完成契约后，你的血量越低，造成的伤害越高。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "契约：点燃",
+	  "text": "契约完成后，你将在采矿时自动熔炼矿石。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "契约：火焰抗性",
+	  "text": "契约完成后，你受到的火焰伤害会减少"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:contract",
+	  "title": "摩诃钵特摩",
+	  "text": "激活时，将目标的巫媒放在副手。目标将冻结成块，并分裂成几份。杀死他们。"
+	}
+  ]
+}

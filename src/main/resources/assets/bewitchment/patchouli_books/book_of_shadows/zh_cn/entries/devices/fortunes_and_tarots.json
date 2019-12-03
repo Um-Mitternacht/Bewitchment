@@ -1,0 +1,127 @@
+{
+  "name": "命运和塔罗牌",
+  "category": "devices",
+  "icon": "bewitchment:crystal_ball",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "罗列所有的占卜"
+	},
+	{
+	  "type": "empty",
+	  "draw_filler": false
+	},
+	{
+	  "type": "text",
+	  "title": "占卜水晶球",
+	  "text": "水晶球一般都很神奇。它们最常用来预测未来和宣布命运，但也有人声称它们可以用于其他事情，比如远程窥探。声称能做到这一点的女巫通常无法证明是否属实……"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:crystal_ball"
+	},
+	{
+	  "type": "text",
+	  "title": "塔罗牌",
+	  "text": "最初只是简单的纸牌游戏，但许多人已经发现这些纸牌具有揭示秘密和预测未来的神奇力量"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_table"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:tarot_cards"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/00player.png"
+	  ],
+	  "border": true,
+	  "title": "你",
+	  "text": "你是个巫师"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
+	  ],
+	  "border": true,
+	  "title": "守卫者",
+	  "text": "你已经杀死过boss，以及有多少个独特的boss被杀死过"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
+	  ],
+	  "border": true,
+	  "title": "幻术师",
+	  "text": "你有一个激活的药水效果，以及最高级别"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
+	  ],
+	  "border": true,
+	  "title": "坐骑",
+	  "text": "你拥有坐骑（不是同伴），以及同伴的数量"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
+	  ],
+	  "border": true,
+	  "title": "钻石",
+	  "text": "你有一个正面的命运，牌面翻转则为负面"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/15wither.png"
+	  ],
+	  "border": true,
+	  "title": "凋灵",
+	  "text": "你与一个灵魂有一纸契约，以及契约的总数量"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
+	  ],
+	  "border": true,
+	  "title": "末影龙",
+	  "text": "你至少杀死过100只怪物，以及 杀怪数量 / 100"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
+	  ],
+	  "border": true,
+	  "title": "日",
+	  "text": "你被祝福，牌面翻转则为被诅咒"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
+	  ],
+	  "border": true,
+	  "title": "要塞",
+	  "text": "你举行过一个仪式，以及举行仪式的次数"
+	},
+	{
+	  "type": "image",
+	  "images": [
+		"bewitchment:textures/gui/patchouli/tarot/21world.png"
+	  ],
+	  "border": true,
+	  "title": "世界",
+	  "text": "你至少探索过100个区块，以及探索过的区块数 / 100"
+	}
+  ]
+}

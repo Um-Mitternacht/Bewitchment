@@ -1,0 +1,27 @@
+{
+  "name": "污渍袍服",
+  "category": "demonic_gear",
+  "icon": "bewitchment:besmirched_hat",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "普通女巫袍服的一种升级形制，将血污布料、金线和恶魔血管缝在普通长袍上来制成。穿上它们时，恶魔会减少对你的攻击欲望，它还可以增幅黑魔法的效果，比如诅咒等。"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_hat"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_hood"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_robes"
+	},
+	{
+	  "type": "bewitchment:spinning_wheel_recipe",
+	  "recipe": "bewitchment:besmirched_pants"
+	}
+  ]
+}
