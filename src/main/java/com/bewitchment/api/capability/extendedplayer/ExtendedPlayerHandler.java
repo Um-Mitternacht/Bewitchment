@@ -11,10 +11,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -74,21 +72,6 @@ public class ExtendedPlayerHandler {
 			else {
 				cap.canRitual = true;
 				ExtendedPlayer.syncToClient(event.player);
-			}
-			if (event.player.ticksExisted % 20 == 0) {
-				NBTTagList list = cap.exploredChunks;
-				long pos = ChunkPos.asLong(event.player.chunkCoordX, event.player.chunkCoordZ);
-				boolean found = false;
-				for (int i = 0; i < list.tagCount(); i++) {
-					if (((NBTTagLong) list.get(i)).getLong() == pos) {
-						found = true;
-						break;
-					}
-				}
-				if (!found) {
-					list.appendTag(new NBTTagLong(pos));
-					ExtendedPlayer.syncToClient(event.player);
-				}
 			}
 		}
 	}
