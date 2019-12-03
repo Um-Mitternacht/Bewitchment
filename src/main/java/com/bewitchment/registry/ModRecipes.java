@@ -545,7 +545,7 @@ public class ModRecipes {
 		ritualRecipes.add(new RitualConjureBaphomet());
 		ritualRecipes.add(new RitualConjureLeonard());
 		ritualRecipes.add(new RitualSpiritualRift());
-		ritualRecipes.add(new RitualBiomeShift());
+		//ritualRecipes.add(new RitualBiomeShift());
 		ritualRecipes.add(new RitualCurseCleansing(true));
 		ritualRecipes.add(new RitualCurseCleansing(false));
 		ritualRecipes.add(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));

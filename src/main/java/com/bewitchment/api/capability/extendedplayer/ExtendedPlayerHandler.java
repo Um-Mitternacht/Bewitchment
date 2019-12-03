@@ -26,6 +26,8 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.List;
+
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
 	private static final ResourceLocation LOC = new ResourceLocation(Bewitchment.MODID, "extended_player");
@@ -53,7 +55,8 @@ public class ExtendedPlayerHandler {
 				}
 			}
 			if (cap.curses != null) {  //check "curse conditions"
-				for (Curse curse : cap.getCurses()) {
+				List<Curse> curses = cap.getCurses();
+				for (Curse curse : curses) {
 					if (curse.getCurseCondition() == Curse.CurseCondition.EXIST && event.player.getRNG().nextDouble() < curse.chance) curse.doCurse(event, event.player);
 					if (curse.getCurseCondition() == Curse.CurseCondition.INSTANT) {
 						curse.doCurse(event, event.player);

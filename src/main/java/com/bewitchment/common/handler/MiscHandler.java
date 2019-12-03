@@ -5,6 +5,8 @@ import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.event.WitchesCauldronEvent;
+import com.bewitchment.api.message.DismountBroomMessage;
+import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
@@ -21,6 +23,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -39,6 +42,7 @@ import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
+import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
@@ -203,6 +207,13 @@ public class MiscHandler {
 	public void depledgeGoats(LivingHurtEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof AbstractGreaterDemon && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			ExtendedWorld.depledgePlayerToDemon(event.getEntityLiving().world, (EntityPlayer) event.getSource().getTrueSource(), (IPledgeable) event.getEntityLiving());
+		}
+	}
+
+	@SubscribeEvent
+	public void dismountBroom(EntityMountEvent event) {
+		if (!event.getEntityBeingMounted().world.isRemote && event.isDismounting() && event.getEntityBeingMounted() instanceof EntityBroom && event.getEntityMounting() instanceof EntityPlayerMP) {
+			Bewitchment.network.sendTo(new DismountBroomMessage(), (EntityPlayerMP) event.getEntityMounting());
 		}
 	}
 }

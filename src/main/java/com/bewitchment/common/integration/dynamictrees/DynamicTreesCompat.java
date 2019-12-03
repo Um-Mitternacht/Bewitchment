@@ -99,6 +99,10 @@ public class DynamicTreesCompat {
 		ModelHelper.regModel(elderTree);
 		ModelHelper.regModel(juniperTree);
 		ModelHelper.regModel(dragonsbloodTree);
+		ModelHelper.regModel(cypressTree.getDynamicBranch());
+		ModelHelper.regModel(elderTree.getDynamicBranch());
+		ModelHelper.regModel(juniperTree.getDynamicBranch());
+		ModelHelper.regModel(dragonsbloodTree.getDynamicBranch());
 		LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).forEach((key, leaves) -> {
 			ModelLoader.setCustomStateMapper(leaves, (new StateMap.Builder()).ignore(new IProperty[]{BlockLeaves.DECAYABLE}).build());
 		});
