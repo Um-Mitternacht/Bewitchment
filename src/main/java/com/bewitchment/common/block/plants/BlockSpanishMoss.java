@@ -76,7 +76,7 @@ public class BlockSpanishMoss extends BlockVine {
 				Block block;
 				BlockPos blockpos3;
 				if (enumfacing1.getAxis().isHorizontal() && !state.getValue(getPropertyFor(enumfacing1))) {
-					if (!flag) {
+					if (!flag && !terminalPiece) {
 						blockpos3 = pos.offset(enumfacing1);
 						iblockstate = worldIn.getBlockState(blockpos3);
 						block = iblockstate.getBlock();

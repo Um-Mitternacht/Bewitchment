@@ -124,12 +124,14 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	
 	//called every second
 	public void updateCurses() {
+		List<String> toRemove = new ArrayList<>();
 		for (String curs : curses.keySet()) {
 			curses.replace(curs, curses.get(curs), curses.get(curs) - 20);
 			if (curses.get(curs) <= 0) {
-				curses.remove(curs);
+				toRemove.add(curs);
 			}
 		}
+		toRemove.forEach(s -> curses.remove(s));
 	}
 	
 	private void addNewCouple(Map.Entry<String, Integer> entry, NBTTagList list) {
