@@ -272,6 +272,7 @@ public class ModRecipes {
 		Util.registerAltarUpgradeOreDict("gemAbalone", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemCowry", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemCowrie", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("dustSalt", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeItem(ModObjects.demon_heart, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 4, 0));
 		Util.registerAltarUpgradeItem(ModObjects.grimoire_magia, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		//Addendum 2000-2: While making repairs to SRA units in Sector 3382 on
@@ -336,6 +337,8 @@ public class ModRecipes {
 		//Consecration Stuff
 		if (Loader.isModLoaded("consecration")) {
 			Util.registerAltarUpgradeItem(ConsecrationItems.blessedDust, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+			Util.registerAltarUpgradeItem(ConsecrationItems.holyWater, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.12));
+			Util.registerAltarUpgradeItem(ConsecrationItems.fireStick, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.14));
 		}
 		
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
