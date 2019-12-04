@@ -20,7 +20,7 @@
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:poppet_tool",
-	  "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one more use. (W.I.P)"
+	  "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one last use."
 	},
 	{
 	  "type": "crafting",
@@ -75,12 +75,12 @@
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:poppet_voodooprotection",
-	  "text": "protects from vampiric and voodoo poppets. (W.I.P)"
+	  "text": "Protects from vampiric and voodoo poppets. (W.I.P)"
 	},
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:poppet_voodoo",
-	  "text": "It's weird, also W.I.P"
+	  "text": "Bound it to a target and right click with Bone Needles in your inventory will deal some damage to said target."
 	},
 	{
 	  "type": "crafting",

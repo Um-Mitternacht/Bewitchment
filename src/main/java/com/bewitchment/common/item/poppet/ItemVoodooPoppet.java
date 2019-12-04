@@ -44,7 +44,7 @@ public class ItemVoodooPoppet extends ItemPoppet {
                     List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
                     for (ItemStack itemStack : inv) {
                         if (itemStack.getItem() == ModObjects.bone_needle) {
-                            target.attackEntityFrom(DamageSource.MAGIC, 3);
+                            target.attackEntityFrom(DamageSource.MAGIC, 2);
                             itemStack.shrink(1);
                             stack.damageItem(1, player);
                             return new ActionResult<>(EnumActionResult.SUCCESS, stack);
