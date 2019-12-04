@@ -1,0 +1,60 @@
+{
+  "name": "火盆",
+  "category": "devices",
+  "icon": "bewitchment:brazier",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "一种特殊容器，用于放置需要燃烧的试剂。视所燃烧的试剂而定，火盆将给予玩家各种效果，比如给予被动的速度提升，到制作浓烈的熏香等等，不一而足，有时甚至可以用来召唤彼岸的生物，因为点燃物品是一种辅助其穿过两界之间的屏障从而进入灵魂世界、进而与上述灵魂类生物进行沟通的有效手段。"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:brazier",
+	  "text": "火盆也可以用来熏香，当点燃时，会在一定范围内提供特殊效果。一些阴险的人已经隐隐谈及这些手段，比如用火盆向目标施以恶毒的诅咒等等..."
+	},
+	{
+	  "type": "text",
+	  "title": "Incense",
+	  "text": "当一定量的试剂配以龙血树脂作为催化剂在火盆中燃烧时，就会产生熏香。此时，它会给昏睡于烟雾内的使用者带来某些被动性的效果，同时抵御接触烟雾的黑暗生物。"
+	},
+	{
+	  "type": "text",
+	  "text": "然而，由于这种烟雾的空灵性质，香料引起的效果根本不能像符文或药剂的效果一样强烈，除非..."
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:vitality",
+	  "text": "加强吸香者的肉身，使其能够造成更大的伤害，以及减少自身所受的伤害。"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:deftness",
+	  "text": "提升吸香者的速度和敏觉"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:invigorating",
+	  "text": "使吸香者全面提升耐力，并让他们更快地破坏方块。"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:cats_eye",
+	  "text": "刺激吸香者的双目，让他们在黑暗中能够看清楚，就像猫一样。"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:fullness",
+	  "text": "使吸香者感觉不出饥饿，并允许他们抗住更多的击打。"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:intensity",
+	  "text": "在燃烧着熏香的火盆旁边并排摆放另外一个火盆，并点燃本种熏香，可以提升其他熏香的效果等级。与浓度不兼容。"
+	},
+	{
+	  "type": "bewitchment:incense_recipe",
+	  "recipe": "bewitchment:concentration",
+	  "text": "增浓并富集并排火盆的烟雾，使其效果停留更长时间。与强度不兼容。"
+	}
+  ]
+}

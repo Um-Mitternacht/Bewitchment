@@ -1,0 +1,60 @@
+{
+  "name": "蒸馏塔",
+  "category": "devices",
+  "icon": "bewitchment:distillery",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "用来制造比女巫烤箱单独产生的烟雾更高级的烟雾。某些其他化合物也可以用这种装置产生。蒸馏塔需要魔法能量，必须使用烈焰粉作为燃料。"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:distillery"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:cleansing_balm",
+	  "text": "有着净化能力的药膏"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:demonic_elixir",
+	  "text": "一份注入了恶魔的本质的邪恶混合物"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:fiery_unguent",
+	  "text": "辣要素Get"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:bottled_frostfire",
+	  "text": "一种奇怪的逆火，摸起来是凉的，放置后，将铁矿石投入后会炼制成寒铁。"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:oil_of_vitriol",
+	  "text": "残酷而痛苦的批评"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:swirl_of_depths",
+	  "text": "$(o)可能有点催眠"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:heaven_extract",
+	  "text": "来自天堂"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:stone_ichor",
+	  "text": "土质混合物"
+	},
+	{
+	  "type": "bewitchment:distillery_recipe",
+	  "recipe": "bewitchment:otherworld_tears",
+	  "text": "如果你仔细听，你可以听到它们在哭泣"
+	}
+  ]
+}

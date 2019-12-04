@@ -1,0 +1,35 @@
+{
+  "name": "寒铁",
+  "category": "gear",
+  "icon": "bewitchment:cold_iron_ingot",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "这种在霜火中锻造的铁料保持着它原本的特性，对灵魂类生物有着统治级别的克制力，是奥伯龙的克星，也是寻常灵魂的克星。"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/armor/cold_iron_helmet",
+	  "recipe2": "bewitchment:equipment/armor/cold_iron_chestplate"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/armor/cold_iron_leggings",
+	  "recipe2": "bewitchment:equipment/armor/cold_iron_boots"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/tool/cold_iron_sword",
+	  "recipe2": "bewitchment:equipment/tool/cold_iron_pickaxe"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/tool/cold_iron_hoe",
+	  "recipe2": "bewitchment:equipment/tool/cold_iron_axe"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:equipment/tool/cold_iron_shovel"
+	}
+  ]
+}

@@ -73,6 +73,10 @@ public class DynamicTreesCompat {
 		ArrayList<Item> treeItems = new ArrayList<>();
 		cypressTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
 		dragonsbloodTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
+		cypressTree.getRegisterableItems(treeItems);
+		dragonsbloodTree.getRegisterableItems(treeItems);
+		elderTree.getRegisterableItems(treeItems);
+		juniperTree.getRegisterableItems(treeItems);
 		for (Item toRegister : treeItems) {
 			toRegister.setTranslationKey(toRegister.getRegistryName().toString().replace(":", "."));
 			ForgeRegistries.ITEMS.register(toRegister);
@@ -83,8 +87,6 @@ public class DynamicTreesCompat {
 		}
 		ResourceLocation seedConvertion = new ResourceLocation(Bewitchment.MODID, "seeds");
 		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "cypress"), seedConvertion, cypressTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.cypress_sapling), Util.get(ModItems.dirtBucket));
-		//GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "elder"), seedConvertion, elderTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.elder_sapling), Util.get(ModItems.dirtBucket));
-		//GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "juniper"), seedConvertion, juniperTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.juniper_sapling), Util.get(ModItems.dirtBucket));
 		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
 	}
 	
@@ -97,6 +99,10 @@ public class DynamicTreesCompat {
 		ModelHelper.regModel(elderTree);
 		ModelHelper.regModel(juniperTree);
 		ModelHelper.regModel(dragonsbloodTree);
+		ModelHelper.regModel(cypressTree.getDynamicBranch());
+		ModelHelper.regModel(elderTree.getDynamicBranch());
+		ModelHelper.regModel(juniperTree.getDynamicBranch());
+		ModelHelper.regModel(dragonsbloodTree.getDynamicBranch());
 		LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).forEach((key, leaves) -> {
 			ModelLoader.setCustomStateMapper(leaves, (new StateMap.Builder()).ignore(new IProperty[]{BlockLeaves.DECAYABLE}).build());
 		});

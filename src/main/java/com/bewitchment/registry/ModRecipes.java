@@ -1,5 +1,6 @@
 package com.bewitchment.registry;
 
+import c4.consecration.common.init.ConsecrationItems;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
@@ -271,6 +272,7 @@ public class ModRecipes {
 		Util.registerAltarUpgradeOreDict("gemAbalone", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemCowry", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeOreDict("gemCowrie", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeOreDict("dustSalt", new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		Util.registerAltarUpgradeItem(ModObjects.demon_heart, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 4, 0));
 		Util.registerAltarUpgradeItem(ModObjects.grimoire_magia, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		//Addendum 2000-2: While making repairs to SRA units in Sector 3382 on
@@ -332,11 +334,20 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ItemsTC.pechWand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.35));
 		}
 		
+		//Consecration Stuff
+		if (Loader.isModLoaded("consecration")) {
+			Util.registerAltarUpgradeItem(ConsecrationItems.blessedDust, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+			Util.registerAltarUpgradeItem(ConsecrationItems.holyWater, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.12));
+			Util.registerAltarUpgradeItem(ConsecrationItems.fireStick, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.14));
+		}
+		
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockRedstoneTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockLantern, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockEndRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.325));
+		Util.registerAltarUpgradeItem(ModObjects.leonards_wand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.56));
+		Util.registerAltarUpgradeItem(ModObjects.caduceus, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.78));
 		Util.registerAltarUpgradeItem(Items.BLAZE_ROD, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
 	}
 	
@@ -545,6 +556,7 @@ public class ModRecipes {
 		ritualRecipes.add(new RitualConjureBaphomet());
 		ritualRecipes.add(new RitualConjureLeonard());
 		ritualRecipes.add(new RitualSpiritualRift());
+		//ritualRecipes.add(new RitualBiomeShift());
 		ritualRecipes.add(new RitualCurseCleansing(true));
 		ritualRecipes.add(new RitualCurseCleansing(false));
 		ritualRecipes.add(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));

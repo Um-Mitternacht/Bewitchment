@@ -571,16 +571,5 @@ public class ModRegistries {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
 			}
 		});
-		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "world"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/21world.png")) {
-			@Override
-			public boolean isCounted(EntityPlayer player) {
-				return getNumber(player) > 0;
-			}
-			
-			@Override
-			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).exploredChunks.tagCount() / 100;
-			}
-		});
 	}
 }

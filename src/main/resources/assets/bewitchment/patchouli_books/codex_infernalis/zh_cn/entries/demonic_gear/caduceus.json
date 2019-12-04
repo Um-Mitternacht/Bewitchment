@@ -1,0 +1,16 @@
+﻿{
+  "name": "巴弗灭的双蛇杖",
+  "category": "demonic_gear",
+  "icon": "bewitchment:caduceus",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "一个特别的手杖，装饰着缠结的蛇。一旦山羊被解封，手杖可以召唤幽灵浴火虫作为持有者的爪牙，如果恶魔学家即将被杀死时持有双蛇杖，这手杖将奇迹般地让他们恢复生命，但同时会有大量消耗。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:caduceus",
+	  "text": "双蛇杖无法修复或附魔"
+	}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "三曲腿护身符",
+  "category": "gear",
+  "icon": "bewitchment:triskelion",
+  "pages": [
+	{
+	  "type": "text",
+	  "text": "一个金色的护身符，装饰着一个漩涡的形状，它消耗魔力以赋予其持有者巨大的力量。最初是由一个古代文明所制造，但制造它的方式已经消失了。然而，可以在宝箱中发现残存的这种护身符，或者搏杀一些特定的古老强大的生灵。"
+	},
+	{
+	  "type": "spotlight",
+	  "item": "bewitchment:triskelion",
+	  "text": "只能通过怪物掉落或恶魔交易获得"
+	}
+  ]
+}

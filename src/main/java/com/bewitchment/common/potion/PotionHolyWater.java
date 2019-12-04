@@ -21,6 +21,7 @@ public class PotionHolyWater extends ModPotion {
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
-		if (living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || living.isImmuneToFire() || BewitchmentAPI.getColdIronWeakness(living) > 1) living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
+		if (living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || living.isImmuneToFire() || BewitchmentAPI.getColdIronWeakness(living) > 1)
+			living.attackEntityFrom(DamageSource.causeIndirectMagicDamage(source, indirectSource), 8 * (amplifier + 1));
 	}
 }
