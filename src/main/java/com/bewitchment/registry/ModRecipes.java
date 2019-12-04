@@ -71,7 +71,6 @@ public class ModRecipes {
 		
 		altarInit();
 		petsInit();
-		
 		craftingRecipesInit();
 		
 		ModObjects.TOOL_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));

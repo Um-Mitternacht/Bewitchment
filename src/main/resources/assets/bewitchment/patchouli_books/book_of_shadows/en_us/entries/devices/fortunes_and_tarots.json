@@ -113,15 +113,6 @@
 	  "border": true,
 	  "title": "Stronghold",
 	  "text": "The player has cast a ritual, and the amount cast"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/21world.png"
-	  ],
-	  "border": true,
-	  "title": "World",
-	  "text": "The player has explored at least 100 chunks, and the amount of chunks / 100"
 	}
   ]
 }

@@ -6,6 +6,7 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
@@ -46,7 +47,7 @@ public class RitualSpiritualRift extends Ritual {
 				int rand = world.rand.nextInt(4);
 				if (rand == 0) entity = new EntityVex(world);
 				else if (rand == 1) entity = new EntityBlackDog(world);
-				else if (rand == 2) entity = new EntitySkeleton(world);
+				else if (rand == 2) entity = new EntityGhost(world);
 				else entity = new EntityZombie(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
