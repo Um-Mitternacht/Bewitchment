@@ -115,6 +115,8 @@ public class EntityFeuerwurm extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1.50);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.25);
 	}
 	
 	@Override

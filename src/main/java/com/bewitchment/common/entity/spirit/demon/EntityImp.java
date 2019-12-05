@@ -76,6 +76,7 @@ public class EntityImp extends ModEntityMob {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(5.00);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2.50);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);

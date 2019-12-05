@@ -124,6 +124,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(500);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(6.16);
 	}
 	
 	@Override
