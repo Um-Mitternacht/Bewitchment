@@ -18,8 +18,8 @@ public class ItemVoodooPoppet extends ItemPoppet {
 	public ItemVoodooPoppet() {
 		super(false);
 	}
-
-
+	
+	
 	//todo: set target on fire when item burns, need to find a hook or something
 	//    @Override
 	//    public boolean onEntityItemUpdate(EntityItem entityItem) {
@@ -33,7 +33,7 @@ public class ItemVoodooPoppet extends ItemPoppet {
 	//        }
 	//        return super.onEntityItemUpdate(entityItem);
 	//    }
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);

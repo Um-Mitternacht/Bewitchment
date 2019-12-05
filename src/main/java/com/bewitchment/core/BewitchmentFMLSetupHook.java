@@ -13,7 +13,7 @@ public class BewitchmentFMLSetupHook implements IFMLCallHook {
 	
 	@Override
 	public void injectData(Map<String, Object> map) {
-
+	
 	}
 	
 	@Override
