@@ -25,7 +25,7 @@ public class ItemFortuneFavor extends ModItemBauble {
 	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		if (Util.hasBauble(event.getHarvester(), this)) {
+		if (Util.hasBauble(event.getHarvester(), this) && !event.isSilkTouching()) {
 			List<ItemStack> drops = new ArrayList<>(event.getDrops());
 			event.getDrops().clear();
 			for (ItemStack stack : drops) {
