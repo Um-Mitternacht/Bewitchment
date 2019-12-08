@@ -1,25 +1,5 @@
 package com.bewitchment.common.ritual;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
-import com.bewitchment.api.registry.Ritual;
-import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.world.BiomeChangingUtils;
-import com.bewitchment.registry.ModObjects;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Biomes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.items.ItemStackHandler;
-
-import java.util.Arrays;
-
 /**
  * Original code by Zabi94, modified by Sunconure11 afterwards.
  */

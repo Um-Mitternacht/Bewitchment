@@ -10,7 +10,6 @@ import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;

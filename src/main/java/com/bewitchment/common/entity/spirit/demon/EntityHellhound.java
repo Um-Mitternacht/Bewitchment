@@ -93,6 +93,7 @@ public class EntityHellhound extends ModEntityMob {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.25);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1.00);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.95);

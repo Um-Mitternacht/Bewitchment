@@ -161,16 +161,16 @@ public class ModConfig {
 		public static class StructureGen {
 			@Config.Comment("The chance for wickerman to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double wickermanChance = 0.0015;
+			public double wickermanChance = 0.001;
 			
 			@Config.Comment("The chance for stone circle type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double stonecircleChance = 0.002;
+			public double stonecircleChance = 0.001;
 			
 			
 			@Config.Comment("The chance for menhir type 1 to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double menhirChance = 0.002;
+			public double menhirChance = 0.001;
 		}
 	}
 	

@@ -47,7 +47,7 @@ public class EntityGhost extends ModEntityMob {
 	
 	@Override
 	protected boolean isValidLightLevel() {
-		return !world.isDaytime();
+		return true;
 	}
 	
 	@Override
