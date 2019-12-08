@@ -40,6 +40,10 @@ public class ItemFortuneFavor extends ModItemBauble {
 	
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 100, 0));
+		if (player.world.getTotalWorldTime() % 20 == 0) {
+			PotionEffect potioneffect = player.getActivePotionMap().get(MobEffects.HASTE);
+			if (potioneffect == null)
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 100, 0));
+		}
 	}
 }

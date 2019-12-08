@@ -162,8 +162,7 @@ public class ModRegistries {
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/imp"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/druden"));
 		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/feuerwurm"));
-		//		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/baphomet"));
-		//		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
+		LootTableList.register(new ResourceLocation(Bewitchment.MODID, "entities/ghost"));
 	}
 	
 	@SubscribeEvent
