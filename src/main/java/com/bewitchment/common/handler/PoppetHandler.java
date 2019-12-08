@@ -20,6 +20,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import javax.annotation.Nullable;
+
 public class PoppetHandler {
 	@SubscribeEvent
 	public void deathProtection(LivingDeathEvent event) {
@@ -161,8 +163,9 @@ public class PoppetHandler {
 			event.getEntityPlayer().playSound(SoundEvents.ENTITY_ILLAGER_CAST_SPELL, 5, 1);
 		}
 	}
-	
+
+	@Nullable
 	private Entity getEntity(World world, String uuid) {
-		return world.getLoadedEntityList().stream().filter(e -> e.getPersistentID().toString().equals(uuid)).findFirst().orElse(null);
+		return world.getEntities(Entity.class, e -> e != null && e.getPersistentID().toString().equals(uuid)).stream().findFirst().orElse(null);
 	}
 }
