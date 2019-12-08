@@ -26,10 +26,19 @@ public class BlockBushSpreading extends BlockBush {
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(world, pos, state, rand);
 		if (rand.nextInt(35) == 0 && state.getValue(TIMES_SPREAD) < TIMES_SPREAD.getAllowedValues().size() - 1) {
-			int i = rand.nextInt(4);
-			BlockPos pos0 = i == 0 ? pos.north() : i == 1 ? pos.south() : i == 2 ? pos.east() : pos.west();
-			if (canSustainBush(world.getBlockState(pos0.down())) && world.isAirBlock(pos0)) world.setBlockState(pos0, rand.nextInt(10) == 0 ? world.getBlockState(pos) : world.getBlockState(pos).cycleProperty(TIMES_SPREAD));
+			BlockPos pos0 = pos.add(rand.nextInt(9) - 4, rand.nextInt(3) - 2, rand.nextInt(9) - 4);
+			if (checkSurrounding(world, pos) && canSustainBush(world.getBlockState(pos0.down())) && world.isAirBlock(pos0)) world.setBlockState(pos0, rand.nextInt(10) == 0 ? world.getBlockState(pos) : world.getBlockState(pos).cycleProperty(TIMES_SPREAD));
 		}
+	}
+
+	private boolean checkSurrounding(World world, BlockPos pos) {
+		int count = 0;
+		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -4, -4), pos.add(4, 4, 4))) {
+			if (world.getBlockState(current).getBlock() == this) {
+				count++;
+			}
+		}
+		return count < 6;
 	}
 	
 	@Override

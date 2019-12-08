@@ -41,7 +41,7 @@ import java.util.*;
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
 	private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
 	private static final int[] defaultColor = {0, 63, 255};
-	public final FluidTank tank = new FluidTank(Fluid.BUCKET_VOLUME);
+	public final FluidTank tank = new FluidTank(null, Fluid.BUCKET_VOLUME);
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
@@ -93,7 +93,21 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		tag.setString("name", name);
 		return super.writeToNBT(tag);
 	}
-	
+
+//	@Override
+//	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+//		return (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY);
+//	}
+//
+//	@Nullable
+//	@Override
+//	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+//		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+//			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(this.tank);
+//		}
+//		return super.getCapability(capability, facing);
+//	}
+
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory};

@@ -425,11 +425,11 @@ public class ModRecipes {
 	
 	private static void furnacePostInit() {
 		for (Block block : ForgeRegistries.BLOCKS) {
-			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
+			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
 		}
 		if (Loader.isModLoaded("dynamictrees")) for (Item item : ForgeRegistries.ITEMS)
 			if (item instanceof Seed && !item.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(item)).isEmpty())
-				GameRegistry.addSmelting(item, new ItemStack(ModObjects.wood_ash, 4), 0.15f);
+				GameRegistry.addSmelting(item, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
 	}
 	
 	protected static void addCauldronRecipes() {
@@ -466,27 +466,27 @@ public class ModRecipes {
 	}
 	
 	protected static void addOvenRecipes() {
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit"), new ItemStack(Blocks.SAPLING, 1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit_alt"), new ItemStack(Blocks.SAPLING, 1, 5), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.oak_spirit), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "spruce_heart"), new ItemStack(Blocks.SAPLING, 1, 1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.spruce_heart), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "birch_soul"), new ItemStack(Blocks.SAPLING, 1, 2), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.birch_soul), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil"), new ItemStack(Blocks.SAPLING, 1, 3), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.cloudy_oil), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "acacia_resin"), new ItemStack(Blocks.SAPLING, 1, 4), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.acacia_resin), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ebb_of_death"), new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.ebb_of_death), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "droplet_of_wisdom"), new ItemStack(ModObjects.elder_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit"), new ItemStack(Blocks.SAPLING, 1), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.oak_spirit), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oak_spirit_alt"), new ItemStack(Blocks.SAPLING, 1, 5), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.oak_spirit), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "spruce_heart"), new ItemStack(Blocks.SAPLING, 1, 1), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.spruce_heart), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "birch_soul"), new ItemStack(Blocks.SAPLING, 1, 2), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.birch_soul), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil"), new ItemStack(Blocks.SAPLING, 1, 3), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.cloudy_oil), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "acacia_resin"), new ItemStack(Blocks.SAPLING, 1, 4), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.acacia_resin), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ebb_of_death"), new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.ebb_of_death), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "droplet_of_wisdom"), new ItemStack(ModObjects.elder_sapling), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "liquid_witchcraft"), new ItemStack(ModObjects.mandrake_root), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.liquid_witchcraft), 0.75f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "essence_of_vitality"), new ItemStack(ModObjects.juniper_sapling), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		
 		if (Loader.isModLoaded("dynamictrees")) {
 			for (TreeFamilyVanilla family : ModTrees.baseFamilies) {
 				Species species = family.getCommonSpecies();
 				String name = species.getSaplingName().toString().toLowerCase();
 				name = name.substring(name.indexOf(":") + 1);
-				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
+				ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, name), species.getSeedStack(1), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(name.contains("oak") ? ModObjects.oak_spirit : name.contains("spruce") ? ModObjects.spruce_heart : name.contains("birch") ? ModObjects.birch_soul : name.contains("acacia") ? ModObjects.acacia_resin : ModObjects.cloudy_oil), 0.75f));
 			}
-			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cypress_seed"), DynamicTreesCompat.cypressTree.getCommonSpecies().getSeedStack(1), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.ebb_of_death), 0.75f));
-			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "elder_seed"), new ItemStack(ModObjects.elderberries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
-			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "juniper_seed"), new ItemStack(ModObjects.juniper_berries), new ItemStack(ModObjects.wood_ash, 4), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cypress_seed"), DynamicTreesCompat.cypressTree.getCommonSpecies().getSeedStack(1), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.ebb_of_death), 0.75f));
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "elder_seed"), new ItemStack(ModObjects.elderberries), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.droplet_of_wisdom), 0.75f));
+			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "juniper_seed"), new ItemStack(ModObjects.juniper_berries), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		}
 		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));

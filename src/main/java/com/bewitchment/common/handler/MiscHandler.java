@@ -17,6 +17,7 @@ import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -212,8 +213,13 @@ public class MiscHandler {
 
 	@SubscribeEvent
 	public void dismountBroom(EntityMountEvent event) {
-		if (!event.getEntityBeingMounted().world.isRemote && event.isDismounting() && event.getEntityBeingMounted() instanceof EntityBroom && event.getEntityMounting() instanceof EntityPlayerMP) {
-			Bewitchment.network.sendTo(new DismountBroomMessage(), (EntityPlayerMP) event.getEntityMounting());
+		if (event.isDismounting() && event.getEntityBeingMounted() instanceof EntityBroom) {
+			if (!event.getEntityBeingMounted().world.isRemote && event.getEntityMounting() instanceof EntityPlayerMP) {
+				Bewitchment.network.sendTo(new DismountBroomMessage(), (EntityPlayerMP) event.getEntityMounting());
+			}
+			if (event.getEntityBeingMounted().world.isRemote && event.getEntityMounting() instanceof EntityPlayerSP) {
+				Bewitchment.network.sendToServer(new DismountBroomMessage());
+			}
 		}
 	}
 }
