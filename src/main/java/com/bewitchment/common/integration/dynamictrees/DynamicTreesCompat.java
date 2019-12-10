@@ -71,8 +71,6 @@ public class DynamicTreesCompat {
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).values());
 		blockRegistry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 		ArrayList<Item> treeItems = new ArrayList<>();
-		cypressTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
-		dragonsbloodTree.getCommonSpecies().getSeed().ifValid(treeItems::add);
 		cypressTree.getRegisterableItems(treeItems);
 		dragonsbloodTree.getRegisterableItems(treeItems);
 		elderTree.getRegisterableItems(treeItems);
