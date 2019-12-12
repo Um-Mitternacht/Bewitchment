@@ -1180,6 +1180,7 @@ entity.bewitchment.given_name.447=Malum
 entity.bewitchment.given_name.448=Tartarus
 entity.bewitchment.given_name.449=Erebus
 entity.bewitchment.given_name.450=Apsinthion
+entity.bewitchment.given_name.451=Sperion
 
 //Titles
 entity.bewitchment.prefix.0=King
@@ -1243,6 +1244,7 @@ entity.bewitchment.prefix.57=Princely Count
 entity.bewitchment.prefix.58=Colonel
 entity.bewitchment.prefix.59=Cadet
 entity.bewitchment.prefix.60=Marshal
+entity.bewitchment.prefix.61=Bishop
 
 # Thaumcraft aspects
 tc.aspect.diabolus=Demon, Unholy, Profane
