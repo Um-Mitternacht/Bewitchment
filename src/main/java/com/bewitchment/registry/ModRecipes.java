@@ -23,6 +23,7 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
 import com.google.common.collect.Sets;
+import its_meow.betteranimalsplus.util.HeadTypes;
 import net.minecraft.block.*;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.EntityWither;
@@ -319,6 +320,10 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ModItems.terraformRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.3));
 			Util.registerAltarUpgradeItem(ModItems.tornadoRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 			Util.registerAltarUpgradeItem(ModItems.waterRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
+		}
+		
+		if (Loader.isModLoaded("betteranimalsplus")) {
+			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(1)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		}
 		
 		//Thaumcraft stuff
