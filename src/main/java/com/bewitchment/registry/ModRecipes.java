@@ -326,6 +326,7 @@ public class ModRecipes {
 		
 		if (Loader.isModLoaded("betteranimalsplus")) {
 			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(1)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(2)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		}
 		
 		//Thaumcraft stuff
