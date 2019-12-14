@@ -1,8 +1,8 @@
 {
   "name": "Witches' Oven and Distillery",
   "category": "distilling_and_smelting",
-  "icon": "bewitchment:witches_oven",
-  "sortnum": "0",
+  "icon": "bewitchment:distillery",
+  "priority": true,
   "pages": [
     {
       "type": "text",

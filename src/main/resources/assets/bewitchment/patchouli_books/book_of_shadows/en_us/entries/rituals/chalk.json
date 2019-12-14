@@ -1,29 +1,9 @@
 {
-  "name": "Chalk",
+  "name": "Circles",
   "category": "rituals",
   "icon": "bewitchment:focal_chalk",
   "priority": true,
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:ritual_chalk",
-	  "text": "The first form of chalk, both used on its own and as a base for the other chalks."
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:focal_chalk",
-	  "text": "The heart of any circle ritual."
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:fiery_chalk",
-	  "text": "Used for rituals of a more diabolic nature."
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:phasing_chalk",
-	  "text": "Used for rituals that require communication with other dimensions or across large areas."
-	},
 	{
 	  "type": "multiblock",
 	  "name": "Small Glyph Setup",

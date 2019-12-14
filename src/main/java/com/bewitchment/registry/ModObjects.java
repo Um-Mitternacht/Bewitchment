@@ -534,8 +534,8 @@ public class ModObjects {
 	public static final Item sigil_shrieking = Util.registerItem(new ItemSigil(0, false) {
 		@Override
 		public void applyEffects(EntityLivingBase entity) {
-			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 60.0F, 1.0F);
-			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 80, 0));
+			if (entity instanceof EntityPlayer && entity.world.isRemote) entity.world.playSound((EntityPlayer) entity, entity.getPosition(), SoundEvents.ENTITY_GHAST_HURT, SoundCategory.BLOCKS, 100.0F, 1.0F);
+			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 100, 0));
 		}
 	}, "sigil_shrieking");
 	public static final Item sigil_sentinel = Util.registerItem(new ItemSigil(600, false) {

@@ -1,5 +1,6 @@
 {
   "name": "Cauldron and Brewing",
-  "icon": "bewitchment:witches_oven",
+  "description": "The witches cauldron can be used to do a multitude of things.",
+  "icon": "bewitchment:textures/gui/patchouli/icons/book_of_shadows/cauldron.png",
   "sortnum": 4
 }

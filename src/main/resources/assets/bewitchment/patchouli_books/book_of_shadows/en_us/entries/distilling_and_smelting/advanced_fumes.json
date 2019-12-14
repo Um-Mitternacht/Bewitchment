@@ -1,7 +1,7 @@
 {
   "name": "Advanced Fumes",
   "category": "distilling_and_smelting",
-  "icon": "bewitchment:witches_oven",
+  "icon": "bewitchment:cleansing_balm",
   "pages": [
     {
       "type": "text",

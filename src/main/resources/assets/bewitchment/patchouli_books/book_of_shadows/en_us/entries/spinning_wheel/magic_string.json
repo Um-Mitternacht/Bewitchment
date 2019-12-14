@@ -1,7 +1,8 @@
 {
   "name": "Magic String",
   "category": "spinning_wheel",
-  "icon": "bewitchment:spinning_wheel",
+  "icon": "bewitchment:spirit_string",
+  "priority": true,
   "pages": [
     {
       "type": "text",
