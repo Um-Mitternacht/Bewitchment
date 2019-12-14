@@ -469,7 +469,7 @@ public class ModRecipes {
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_tulip_white"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 6)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_tulip_white))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_poppy"), Arrays.asList(Util.get(new ItemStack(Blocks.RED_FLOWER, 1, 0)), Util.get(ModObjects.cloudy_oil), Util.get(ModObjects.bone_needle), Util.get(ModObjects.dragons_blood_resin)), Collections.singletonList(new ItemStack(ModObjects.flower_siphoning_poppy))));
 		
-		//There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
+		// There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
 	}
 	

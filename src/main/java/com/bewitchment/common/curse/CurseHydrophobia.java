@@ -6,7 +6,10 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,7 +21,7 @@ import java.util.Arrays;
 
 public class CurseHydrophobia extends Curse {
 	public CurseHydrophobia() {
-		super(new ResourceLocation(Bewitchment.MODID, "hydrophobia"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get(ModObjects.fiery_unguent), Util.get(ModObjects.tallow), Util.get("bone"), Util.get("bone"), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST);
+		super(new ResourceLocation(Bewitchment.MODID, "hydrophobia"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get("coquina"), Util.get("coquina"), Util.get(Blocks.STONE), Util.get(new ItemStack(Items.DYE, 1, 0)), Util.get(Items.PRISMARINE_SHARD), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
