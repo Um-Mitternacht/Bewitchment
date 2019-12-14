@@ -7,7 +7,7 @@
     {
       "type": "crafting",
       "recipe": "bewitchment:poppet",
-      "text": "The base poppet for all your crafting, does nothing and cannot be bound. $(br)$(o)Note: Poppets must be bound to become active. Bind poppets by holding a poppet in one hand and a taglock of the target another"
+      "text": "The base poppet for all your crafting, does nothing and cannot be bound."
     }
   ]
 }
