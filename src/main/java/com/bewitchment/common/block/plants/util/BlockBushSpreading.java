@@ -30,7 +30,7 @@ public class BlockBushSpreading extends BlockBush {
 			if (checkSurrounding(world, pos) && canSustainBush(world.getBlockState(pos0.down())) && world.isAirBlock(pos0)) world.setBlockState(pos0, rand.nextInt(10) == 0 ? world.getBlockState(pos) : world.getBlockState(pos).cycleProperty(TIMES_SPREAD));
 		}
 	}
-
+	
 	private boolean checkSurrounding(World world, BlockPos pos) {
 		int count = 0;
 		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -4, -4), pos.add(4, 4, 4))) {
