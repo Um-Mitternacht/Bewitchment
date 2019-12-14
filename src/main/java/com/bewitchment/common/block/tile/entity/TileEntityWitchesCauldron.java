@@ -93,21 +93,21 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		tag.setString("name", name);
 		return super.writeToNBT(tag);
 	}
-
-//	@Override
-//	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-//		return (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY);
-//	}
-//
-//	@Nullable
-//	@Override
-//	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-//		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
-//			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(this.tank);
-//		}
-//		return super.getCapability(capability, facing);
-//	}
-
+	
+	//	@Override
+	//	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+	//		return (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY);
+	//	}
+	//
+	//	@Nullable
+	//	@Override
+	//	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+	//		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+	//			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(this.tank);
+	//		}
+	//		return super.getCapability(capability, facing);
+	//	}
+	
 	@Override
 	public ItemStackHandler[] getInventories() {
 		return new ItemStackHandler[]{inventory};

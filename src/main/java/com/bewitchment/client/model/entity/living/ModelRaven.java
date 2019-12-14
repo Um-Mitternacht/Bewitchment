@@ -228,7 +228,7 @@ public class ModelRaven extends ModelBase {
 		if (entity instanceof EntityRaven) {
 			EntityRaven bird = (EntityRaven) entity;
 			float peckTime = bird.getPeckTime();
-			if (peckTime <= 60) {
+			if (peckTime <= 60 && !bird.isSitting()) {
 				this.neck.rotateAngleX = (float) Math.toRadians((peckTime % (60F / peckTime))) * 6F + (float) Math.toRadians(30);
 			}
 			else {

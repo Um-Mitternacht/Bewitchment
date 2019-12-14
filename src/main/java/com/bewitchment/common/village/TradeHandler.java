@@ -10,10 +10,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBow;
-import net.minecraft.item.ItemEnchantedBook;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -147,6 +144,29 @@ public class TradeHandler {
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
 			ItemStack itemStack = getRandomBauble(random);
+			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
+			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
+		}
+		
+		
+	}
+	
+	public static class RandomSeedsforEmeralds implements EntityVillager.ITradeList {
+		public EntityVillager.PriceInfo emeraldPriceInfo;
+		
+		public RandomSeedsforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo) {
+			this.emeraldPriceInfo = emeraldPriceInfo;
+		}
+		
+		private ItemStack getRandomSeed(Random random) {
+			List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
+			if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
+			return new ItemStack(Items.MELON_SEEDS);
+		}
+		
+		@Override
+		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
+			ItemStack itemStack = getRandomSeed(random);
 			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}

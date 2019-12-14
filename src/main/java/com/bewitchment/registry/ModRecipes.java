@@ -23,6 +23,7 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
 import com.google.common.collect.Sets;
+import its_meow.betteranimalsplus.util.HeadTypes;
 import net.minecraft.block.*;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.EntityWither;
@@ -50,6 +51,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
+import vazkii.botania.common.block.BlockGaiaHead;
 import vazkii.botania.common.item.ModItems;
 
 import java.util.ArrayList;
@@ -319,6 +321,12 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ModItems.terraformRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.3));
 			Util.registerAltarUpgradeItem(ModItems.tornadoRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 			Util.registerAltarUpgradeItem(ModItems.waterRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
+			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockGaiaHead, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 5, 0));
+		}
+		
+		if (Loader.isModLoaded("betteranimalsplus")) {
+			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(1)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(2)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		}
 		
 		//Thaumcraft stuff
