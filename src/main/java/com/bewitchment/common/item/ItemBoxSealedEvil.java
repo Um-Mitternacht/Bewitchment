@@ -32,7 +32,6 @@ import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -68,7 +67,7 @@ public class ItemBoxSealedEvil extends Item {
 					player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 24000, 0));
 					break;
 				case 4:
-					List<Block> ores = GameRegistry.findRegistry(Block.class).getValuesCollection().stream().filter(b -> b instanceof BlockOre).collect(Collectors.toList());
+					List<Block> ores = ForgeRegistries.BLOCKS.getValuesCollection().stream().filter(b -> b instanceof BlockOre).collect(Collectors.toList());
 					for (Block ore : ores) InventoryHelper.spawnItemStack(worldIn, player.posX, player.posY + 0.5, player.posZ, new ItemStack(ore));
 					break;
 				case 5:
@@ -97,7 +96,7 @@ public class ItemBoxSealedEvil extends Item {
 					final String[] demons = {"leonard", "baphomet", "lilith", "herne"};
 					String demon = demons[rand.nextInt(demons.length)];
 					String mat = rand.nextBoolean() ? "nether_brick" : "scorned_brick";
-					Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(Bewitchment.MODID, mat + "_" + demon + "_statue"));
+					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, mat + "_" + demon + "_statue"));
 					if (item != null) Util.giveItem(player, new ItemStack(item));
 					else Util.giveItem(player, new ItemStack(ModObjects.nether_brick_leonard_statue));
 					break;
@@ -111,7 +110,7 @@ public class ItemBoxSealedEvil extends Item {
 					Util.giveItem(player, new ItemStack(ModObjects.blue_ink_cap));
 					Util.giveItem(player, new ItemStack(ModObjects.spanish_moss));
 					String[] type = {"allium", "azure_bluet", "blue_orchid", "dandelion", "oxeye_daisy", "poppy", "tulip_orange", "tulip_pink", "tulip_red", "tulip_white"};
-					Block flower = GameRegistry.findRegistry(Block.class).getValue(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_" + type[rand.nextInt(10)]));
+					Block flower = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Bewitchment.MODID, "flower_siphoning_" + type[rand.nextInt(10)]));
 					if (flower != null) Util.giveItem(player, new ItemStack(flower));
 					else Util.giveItem(player, new ItemStack(ModObjects.flower_siphoning_poppy));
 					Util.giveItem(player, new ItemStack(ModObjects.dragons_blood_sapling));
@@ -221,7 +220,7 @@ public class ItemBoxSealedEvil extends Item {
 	}
 	
 	private ItemStack getRandomBauble(Random random) {
-		List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
+		List<Item> baubles = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
 		if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
 		return new ItemStack(ModObjects.girdle_of_the_dryads);
 	}

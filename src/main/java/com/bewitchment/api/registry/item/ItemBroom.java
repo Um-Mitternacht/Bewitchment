@@ -17,6 +17,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -57,7 +58,7 @@ public class ItemBroom extends Item {
 				entity.rotationPitch = player.rotationPitch;
 				if (this == ModObjects.dragons_blood_broom && player.getHeldItem(hand).hasTagCompound()) {
 					String boundSigil = player.getHeldItem(hand).getTagCompound().getString("sigil");
-					((EntityDragonsBloodBroom) entity).sigil = (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(boundSigil));
+					((EntityDragonsBloodBroom) entity).sigil = (ItemSigil) ForgeRegistries.ITEMS.getValue(new ResourceLocation(boundSigil));
 				}
 				entity.item = player.getHeldItem(hand).splitStack(1);
 				world.spawnEntity(entity);

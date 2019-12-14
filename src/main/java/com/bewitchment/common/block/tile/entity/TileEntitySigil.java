@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.HashSet;
 import java.util.List;
@@ -91,7 +91,7 @@ public class TileEntitySigil extends ModTileEntity implements ITickable {
 	}
 	
 	private void readUpdateTag(NBTTagCompound tag) {
-		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(tag.getString("sigil")));
+		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("sigil")));
 		cooldown = tag.getInteger("cooldown");
 		whiteList = tag.getBoolean("whitelist");
 		NBTTagList playerList = tag.getTagList("playerList", Constants.NBT.TAG_STRING);

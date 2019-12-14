@@ -14,6 +14,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class EntityDragonsBloodBroom extends EntityBroom {
@@ -51,7 +52,7 @@ public class EntityDragonsBloodBroom extends EntityBroom {
 	
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {
-		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(tag.getString("sigil")));
+		sigil = tag.getString("sigil").isEmpty() ? null : (ItemSigil) ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("sigil")));
 		super.readEntityFromNBT(tag);
 	}
 	

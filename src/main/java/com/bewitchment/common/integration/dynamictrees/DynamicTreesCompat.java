@@ -46,7 +46,7 @@ public class DynamicTreesCompat {
 	}
 	
 	public static void preInit() {
-		IForgeRegistry<Block> blockRegistry = GameRegistry.findRegistry(Block.class);
+		IForgeRegistry<Block> blockRegistry = ForgeRegistries.BLOCKS;
 		cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "conifer")));
 		elderLeavesProperties = new LeavesProperties(ModObjects.elder_leaves.getDefaultState(), new ItemStack(ModObjects.elder_leaves));
 		juniperLeavesProperties = new LeavesProperties(ModObjects.juniper_leaves.getDefaultState(), new ItemStack(ModObjects.juniper_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "acacia")));

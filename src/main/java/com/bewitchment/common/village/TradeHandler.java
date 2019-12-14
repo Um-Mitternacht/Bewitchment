@@ -14,7 +14,7 @@ import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.List;
 import java.util.Random;
@@ -136,7 +136,7 @@ public class TradeHandler {
 		}
 		
 		private ItemStack getRandomBauble(Random random) {
-			List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
+			List<Item> baubles = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ModItemBauble).collect(Collectors.toList());
 			if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
 			return new ItemStack(ModObjects.girdle_of_the_dryads);
 		}
@@ -159,7 +159,7 @@ public class TradeHandler {
 		}
 		
 		private ItemStack getRandomSeed(Random random) {
-			List<Item> baubles = GameRegistry.findRegistry(Item.class).getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
+			List<Item> baubles = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
 			if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
 			return new ItemStack(Items.MELON_SEEDS);
 		}
@@ -273,7 +273,7 @@ public class TradeHandler {
 			final String[] variants = {"stone", "gold", "nether_brick", "scorned_brick"};
 			String demon = demons[random.nextInt(demons.length)];
 			String variant = variants[random.nextInt(variants.length)];
-			Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_statue"));
+			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_statue"));
 			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_statue);
 			if (item != null) itemstack1 = new ItemStack(item);
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));

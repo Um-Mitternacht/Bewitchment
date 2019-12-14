@@ -125,7 +125,7 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntitySkull && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 5 && ((TileEntitySkull) s.getTileEntity()).getSkullType() != 1, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getTileEntity() instanceof TileEntityStatue, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		Util.registerAltarUpgradeItem(ModObjects.pentacle, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 3, 0));
-		List<Block> statues = GameRegistry.findRegistry(Block.class).getValuesCollection().stream().filter(i -> i instanceof BlockStatue).collect(Collectors.toList());
+		List<Block> statues = ForgeRegistries.BLOCKS.getValuesCollection().stream().filter(i -> i instanceof BlockStatue).collect(Collectors.toList());
 		for (Block statue : statues) {
 			Util.registerAltarUpgradeItem(Item.getItemFromBlock(statue), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		}

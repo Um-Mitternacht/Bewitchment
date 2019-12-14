@@ -13,6 +13,7 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -30,6 +31,7 @@ public class EntityGhost extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/ghost"));
 		isImmuneToFire = true;
 		this.moveHelper = new AIMoveControl(this);
+		setPathPriority(PathNodeType.BLOCKED, -1);
 	}
 	
 	private boolean isCharging() {
