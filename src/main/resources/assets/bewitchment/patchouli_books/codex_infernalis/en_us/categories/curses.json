@@ -2,5 +2,5 @@
   "name": "Curses",
   "description": "Curses are a form of darker magic used to cause mischief or torment others. All Curses are cast with the help of the Brazier. Reagents must be placed in the Brazier, along with the Taglock of the desired target, then lit aflame.",
   "icon": "bewitchment:textures/gui/patchouli/icons/codex_infernalis/curses.png",
-  "sortnum": 3
+  "sortnum": 4
 }
