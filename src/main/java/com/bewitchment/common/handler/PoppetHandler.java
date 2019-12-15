@@ -114,17 +114,6 @@ public class PoppetHandler {
 	}
 	
 	@SubscribeEvent
-	public void judgement(LivingDamageEvent event) {
-		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
-			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if (Util.attemptDamagePoppet(player, ModObjects.poppet_judgement) && (BewitchmentAPI.isWerewolf(attacker) || BewitchmentAPI.isVampire(attacker))) {
-				event.setAmount(event.getAmount() * 0.6f);
-			}
-		}
-	}
-	
-	@SubscribeEvent
 	public void spiritProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
