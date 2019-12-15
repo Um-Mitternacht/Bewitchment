@@ -35,11 +35,6 @@ public class BlockDropHandler {
 	
 	@SubscribeEvent
 	public void harvestDrops(BlockEvent.HarvestDropsEvent event) {
-		replaceDrop(event, s -> s.getBlock() == ModObjects.salt_ore, new ItemStack(ModObjects.salt, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel()) + event.getWorld().rand.nextInt(4)), 100, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.amethyst_ore, new ItemStack(ModObjects.amethyst, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.garnet_ore, new ItemStack(ModObjects.garnet, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
-		replaceDrop(event, s -> s.getBlock() == ModObjects.opal_ore, new ItemStack(ModObjects.opal, getFortuneDropAmount(event.getWorld().rand, event.getFortuneLevel())), 100, 1, false);
-		
 		replaceDrop(event, s -> s.getBlock() == ModObjects.elder_leaves, new ItemStack(ModObjects.elderberries), 2, 0, false);
 		replaceDrop(event, s -> s.getBlock() == ModObjects.juniper_leaves, new ItemStack(ModObjects.juniper_berries), 2, 0, false);
 		replaceDrop(event, s -> s.getBlock() == Blocks.DEADBUSH, new ItemStack(ModObjects.white_sage_seeds), 15, 2, false);
