@@ -20,6 +20,26 @@
 	  "type": "entity",
 	  "entity": "bewitchment:black_dog",
 	  "scale": 0.5
-	}
+	},
+    {
+      "type": "text",
+      "title": "Druden",
+      "text": "Often confused with dryads, druden can be seen as the darker version of them. These hags stalk dark forests and attack humans who enter their realm. They are known to partake in the Wild Hunt as well."
+    },
+    {
+      "type": "entity",
+      "entity": "bewitchment:druden",
+      "scale": 0.8
+    },
+    {
+      "type": "text",
+      "title": "Ghosts",
+      "text": "Ghosts are the souls of the dead, either rising on their own to finish things they were not able to finish in life, to warn others of danger, or in some cases, intentionally conjured by a witch. They may also haunt certain ancient structures, or possibly even locations where they were killed when they were living, in order to torment those who caused their unfair death."
+    },
+    {
+      "type": "entity",
+      "entity": "bewitchment:ghost",
+      "scale": 0.7
+    }
   ]
 }
