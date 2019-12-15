@@ -115,7 +115,8 @@ public class Bewitchment {
 		proxy.registerRendersInit();
 		
 		ModRecipes.init();
-		
+		Compat.init();
+
 		int id = -1;
 		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);

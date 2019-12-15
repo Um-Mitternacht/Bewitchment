@@ -4,15 +4,18 @@ import c4.consecration.common.init.ConsecrationItems;
 import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Brew;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
+import its_meow.betteranimalsplus.util.HeadTypes;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rustic.common.items.ModItems;
@@ -31,6 +34,10 @@ import static vazkii.quark.world.feature.UndergroundBiomes.glowceliumEnabled;
 import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
 
 public class Compat {
+	public static void init() {
+		registerBAPHeadAlter();
+	}
+
 	@Optional.Method(modid = "mowziesmobs")
 	@SubscribeEvent
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
@@ -64,5 +71,11 @@ public class Compat {
 	public void registerBrew(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
+	}
+
+	@Optional.Method(modid = "betteranimalsplus")
+	public static void registerBAPHeadAlter() {
+		Util.registerAltarUpgradeItem(HeadTypes.REINDEERHEAD.getItem(1), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
+		Util.registerAltarUpgradeItem(HeadTypes.REINDEERHEAD.getItem(2), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 	}
 }

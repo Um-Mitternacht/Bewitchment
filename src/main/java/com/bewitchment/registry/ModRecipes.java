@@ -324,11 +324,6 @@ public class ModRecipes {
 			BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockGaiaHead, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 5, 0));
 		}
 		
-		if (Loader.isModLoaded("betteranimalsplus")) {
-			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(1)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
-			Util.registerAltarUpgradeItemStack(new ItemStack(HeadTypes.REINDEERHEAD.getItem(2)), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
-		}
-		
 		//Thaumcraft stuff
 		if (Loader.isModLoaded("thaumcraft")) {
 			Util.registerAltarUpgradeItem(ItemsTC.thaumiumSword, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.25));
