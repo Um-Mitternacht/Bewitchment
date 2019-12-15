@@ -80,7 +80,7 @@ public class ItemContract extends Item {
 					else if (offhand.getItem() instanceof ItemTaglock && offhand.hasTagCompound() && offhand.getTagCompound().hasKey("boundId")) {
 						EntityPlayer target = Util.findPlayer(offhand.getTagCompound().getString("boundId"));
 						if (target != null && target.hasCapability(ExtendedPlayer.CAPABILITY, null)) {
-							target.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(temp, 7);
+							target.getCapability(ExtendedPlayer.CAPABILITY, null).addCurse(temp, 1);
 							player.getHeldItem(hand).shrink(1);
 							return new ActionResult<>(EnumActionResult.PASS, ItemStack.EMPTY);
 						}

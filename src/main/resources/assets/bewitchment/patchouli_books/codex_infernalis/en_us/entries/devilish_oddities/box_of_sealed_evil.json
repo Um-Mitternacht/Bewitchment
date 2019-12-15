@@ -1,6 +1,6 @@
 {
   "name": "Box of Sealed Evil",
-  "category": "demonic_gear",
+  "category": "devilish_oddities",
   "icon": "bewitchment:box_of_sealed_evil",
   "pages": [
 	{
@@ -10,7 +10,7 @@
 	{
 	  "type": "spotlight",
 	  "item": "bewitchment:box_of_sealed_evil",
-	  "text": "$(o)Surprise, Pandor's box~"
+	  "text": "$(o)Surprise, Pandora's box~"
 	}
   ]
 }

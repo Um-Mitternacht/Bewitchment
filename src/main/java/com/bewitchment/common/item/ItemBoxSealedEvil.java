@@ -45,7 +45,7 @@ public class ItemBoxSealedEvil extends Item {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
-		Random rand = player.getRNG();
+		Random rand = itemRand;
 		if (!player.isSneaking() && !worldIn.isRemote) {
 			switch (rand.nextInt(24)) {
 				case 0:
