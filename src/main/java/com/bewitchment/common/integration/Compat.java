@@ -35,7 +35,9 @@ import static vazkii.quark.world.feature.UndergroundBiomes.glowshroom;
 
 public class Compat {
 	public static void init() {
-		registerBAPHeadAlter();
+		if (Loader.isModLoaded("betteranimalsplus")) {
+			BAPCompat.registerBAPHeadAlter();
+		}
 	}
 
 	@Optional.Method(modid = "mowziesmobs")
@@ -71,11 +73,5 @@ public class Compat {
 	public void registerBrew(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "blazing_trail"), Util.get(ModItems.CHILI_PEPPER), new PotionEffect(PotionsRustic.BLAZING_TRAIL_POTION, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "iron_skin"), Util.get(ModItems.IRONBERRIES), new PotionEffect(PotionsRustic.IRON_SKIN_POTION, (20 * 30))));
-	}
-
-	@Optional.Method(modid = "betteranimalsplus")
-	public static void registerBAPHeadAlter() {
-		Util.registerAltarUpgradeItem(HeadTypes.REINDEERHEAD.getItem(1), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
-		Util.registerAltarUpgradeItem(HeadTypes.REINDEERHEAD.getItem(2), new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 1, 0));
 	}
 }
