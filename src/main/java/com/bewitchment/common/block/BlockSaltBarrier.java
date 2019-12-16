@@ -43,6 +43,12 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 		return state.getBlock() == this;
 	}
 	
+	@Nullable
+	@Override
+	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EntityLiving entity) {
+		return PathNodeType.BLOCKED;
+	}
+	
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
 	}
@@ -73,7 +79,7 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return 0;
 	}
-	
+
 	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return new ItemStack(getItemDropped(state, world.rand, 0));

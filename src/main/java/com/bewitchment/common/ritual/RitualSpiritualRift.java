@@ -5,13 +5,14 @@ import com.bewitchment.Util;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.entity.spirit.demon.EntityDruden;
+import com.bewitchment.common.entity.spirit.demon.EntityShadowPerson;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityVex;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumParticleTypes;
@@ -41,12 +42,19 @@ public class RitualSpiritualRift extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(4) + 2; i++) {
+			for (int i = 0; i < world.rand.nextInt(11) + 2; i++) {
 				EntityLiving entity;
-				int rand = world.rand.nextInt(4);
+				int rand = world.rand.nextInt(11);
 				if (rand == 0) entity = new EntityVex(world);
 				else if (rand == 1) entity = new EntityBlackDog(world);
 				else if (rand == 2) entity = new EntityGhost(world);
+				else if (rand == 3) entity = new EntityDruden(world);
+				else if (rand == 4) entity = new EntitySkeleton(world);
+				else if (rand == 5) entity = new EntityHusk(world);
+				else if (rand == 6) entity = new EntityStray(world);
+				else if (rand == 7) entity = new EntityShadowPerson(world);
+				else if (rand == 8) entity = new EntityEnderman(world);
+				else if (rand == 9) entity = new EntityEndermite(world);
 				else entity = new EntityZombie(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;

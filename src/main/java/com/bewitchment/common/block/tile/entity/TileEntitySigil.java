@@ -5,7 +5,6 @@ import com.bewitchment.common.item.ItemSigil;
 import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
