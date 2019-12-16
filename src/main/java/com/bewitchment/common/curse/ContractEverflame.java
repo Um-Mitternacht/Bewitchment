@@ -14,7 +14,7 @@ public class ContractEverflame extends Curse {
 	public ContractEverflame() {
 		super(new ResourceLocation(Bewitchment.MODID, "everflame"), null, false, false, CurseCondition.EXIST, 0.0002);
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		for (BlockPos temp : BlockPos.getAllInBoxMutable(target.getPosition().add(-2, -2, -2), target.getPosition().add(2, 2, 2))) {

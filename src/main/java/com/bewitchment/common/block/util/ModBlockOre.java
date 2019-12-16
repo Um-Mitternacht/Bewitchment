@@ -15,12 +15,12 @@ public class ModBlockOre extends ModBlock {
 	public ModBlockOre(String name, Block base, String... oreDictionaryNames) {
 		super(name, base, oreDictionaryNames);
 	}
-
+	
 	@Override
 	public int quantityDropped(Random random) {
 		return this == ModObjects.salt_ore ? 1 + random.nextInt(3) : 1;
 	}
-
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		if (this == ModObjects.garnet_ore) {
@@ -37,7 +37,7 @@ public class ModBlockOre extends ModBlock {
 		}
 		return Item.getItemFromBlock(this);
 	}
-
+	
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
 		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(this.getBlockState().getValidStates().iterator().next(), random, fortune)) {
@@ -51,7 +51,7 @@ public class ModBlockOre extends ModBlock {
 			return this.quantityDropped(random);
 		}
 	}
-
+	
 	@Override
 	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
 		Random rand = world instanceof World ? ((World) world).rand : new Random();

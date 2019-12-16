@@ -16,7 +16,7 @@ public class ContractMahapadma extends Contract {
 	public ContractMahapadma() {
 		super(new ResourceLocation(Bewitchment.MODID, "mahapadma"), false, false, CurseCondition.INSTANT, null, Arrays.asList(Item.getItemFromBlock(Blocks.ICE), Items.WATER_BUCKET, Items.SLIME_BALL));
 	}
-
+	
 	@Override
 	public boolean doCurse(Event event, EntityPlayer target) {
 		for (BlockPos pos : BlockPos.MutableBlockPos.getAllInBoxMutable(target.getPosition().add(-1, -2, -1), target.getPosition().add(1, 2, 1))) {
