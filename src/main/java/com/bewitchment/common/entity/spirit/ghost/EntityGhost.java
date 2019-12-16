@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.spirit.ghost;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.block.BlockSaltBarrier;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +14,6 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
