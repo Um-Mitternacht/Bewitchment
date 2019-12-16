@@ -4,11 +4,9 @@ import c4.consecration.common.init.ConsecrationItems;
 import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Brew;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
-import its_meow.betteranimalsplus.util.HeadTypes;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -39,7 +37,7 @@ public class Compat {
 			BAPCompat.registerBAPHeadAlter();
 		}
 	}
-
+	
 	@Optional.Method(modid = "mowziesmobs")
 	@SubscribeEvent
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {

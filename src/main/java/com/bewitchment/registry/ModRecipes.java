@@ -23,7 +23,6 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
 import com.google.common.collect.Sets;
-import its_meow.betteranimalsplus.util.HeadTypes;
 import net.minecraft.block.*;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.EntityWither;
