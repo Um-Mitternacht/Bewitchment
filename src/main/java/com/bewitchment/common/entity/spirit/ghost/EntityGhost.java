@@ -32,23 +32,14 @@ public class EntityGhost extends ModEntityMob {
 		isImmuneToFire = true;
 		this.moveHelper = new AIMoveControl(this);
 	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		if (isSaltNearTarget(world, this.getPosition())) {
-			setAttackTarget(null);
-		}
-	}
-
+	
 	private boolean isSaltNearTarget(World world, BlockPos pos) {
 		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -4, -4), pos.add(4, 4, 4))) {
-			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier)
-				return true;
+			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
 		}
 		return false;
 	}
-
+	
 	private boolean isCharging() {
 		return charging;
 	}
@@ -60,6 +51,14 @@ public class EntityGhost extends ModEntityMob {
 	@Override
 	protected int getSkinTypes() {
 		return 5;
+	}
+	
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if (isSaltNearTarget(world, this.getPosition())) {
+			setAttackTarget(null);
+		}
 	}
 	
 	@Override
