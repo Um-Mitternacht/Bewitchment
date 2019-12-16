@@ -1,9 +1,13 @@
 package com.bewitchment.common.item.poppet;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
@@ -19,20 +23,19 @@ public class ItemVoodooPoppet extends ItemPoppet {
 		super(false);
 	}
 	
-	
-	//todo: set target on fire when item burns, need to find a hook or something
-	//    @Override
-	//    public boolean onEntityItemUpdate(EntityItem entityItem) {
-	//        Block current = entityItem.world.getBlockState(entityItem.getPosition()).getBlock();
-	//        if (current == Blocks.LAVA || current == Blocks.FLOWING_LAVA || current == Blocks.FIRE || current == ModObjects.hellfire) {
-	//            ItemStack poppet = entityItem.getItem();
-	//            if (poppet.hasTagCompound() && poppet.getTagCompound().hasKey("boundId")) {
-	//                EntityPlayer target = Util.findPlayer(poppet.getTagCompound().getString("boundId"));
-	//                if (target != null) target.setFire(20);
-	//            }
-	//        }
-	//        return super.onEntityItemUpdate(entityItem);
-	//    }
+
+	@Override
+	public boolean onEntityItemUpdate(EntityItem entityItem) {
+		Block current = entityItem.world.getBlockState(entityItem.getPosition().down()).getBlock();
+		if (current == Blocks.LAVA || current == Blocks.FLOWING_LAVA) {
+			ItemStack poppet = entityItem.getItem();
+			if (poppet.hasTagCompound() && poppet.getTagCompound().hasKey("boundId")) {
+				EntityPlayer target = Util.findPlayer(poppet.getTagCompound().getString("boundId"));
+				if (target != null) target.setFire(20);
+			}
+		}
+		return super.onEntityItemUpdate(entityItem);
+	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {

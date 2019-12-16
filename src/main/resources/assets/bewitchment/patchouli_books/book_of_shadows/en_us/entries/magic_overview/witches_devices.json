@@ -2,6 +2,7 @@
   "name": "Witch's Devices",
   "category": "magic_overview",
   "icon": "bewitchment:witches_cauldron",
+  "sortnum": 1,
   "pages": [
 	{
 	  "type": "text",

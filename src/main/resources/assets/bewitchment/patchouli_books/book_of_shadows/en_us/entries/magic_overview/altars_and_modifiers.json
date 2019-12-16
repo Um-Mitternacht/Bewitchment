@@ -1,7 +1,8 @@
 {
   "name": "Altars and Modifiers",
-  "category": "magical_overview",
+  "category": "magic_overview",
   "icon": "bewitchment:pentacle",
+  "sortnum": 0,
   "pages": [
 	{
 	  "type": "text",
@@ -33,7 +34,7 @@
 	},
 	{
 	  "type": "text",
-	  "text": "Cups: Glass Bottles, Flower Pots, Goblets, and Filled Goblets. $(br)Swords: Vanilla swords, Silver Swords, Athames, Bolines. $(br)Wands: Candles, Torches, End Rods. $(br)Pentacles: Precious Gems, Skulls and Heads, the Pentacle itself."
+	  "text": "Cups: Glass Bottles, Flower Pots, Goblets, and Filled Goblets. $(br2)Swords: Vanilla swords, Silver Swords, Athames, Bolines. $(br2)Wands: Candles, Torches, End Rods. $(br2)Pentacles: Precious Gems, Skulls and Heads, the Pentacle itself."
 	}
   ]
 }

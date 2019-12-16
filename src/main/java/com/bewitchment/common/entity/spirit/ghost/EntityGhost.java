@@ -2,7 +2,9 @@ package com.bewitchment.common.entity.spirit.ghost;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.block.BlockSaltBarrier;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -31,9 +33,24 @@ public class EntityGhost extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/ghost"));
 		isImmuneToFire = true;
 		this.moveHelper = new AIMoveControl(this);
-		setPathPriority(PathNodeType.BLOCKED, -1);
 	}
-	
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if (isSaltNearTarget(world, this.getPosition())) {
+			setAttackTarget(null);
+		}
+	}
+
+	private boolean isSaltNearTarget(World world, BlockPos pos) {
+		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -4, -4), pos.add(4, 4, 4))) {
+			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier)
+				return true;
+		}
+		return false;
+	}
+
 	private boolean isCharging() {
 		return charging;
 	}

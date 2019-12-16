@@ -81,10 +81,4 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		return new ItemStack(getItemDropped(state, world.rand, 0));
 	}
-
-	@Nullable
-	@Override
-	public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EntityLiving entity) {
-		return PathNodeType.BLOCKED;
-	}
 }

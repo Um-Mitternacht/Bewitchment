@@ -2,6 +2,7 @@
   "name": "Advanced Fumes",
   "category": "distilling_and_smelting",
   "icon": "bewitchment:cleansing_balm",
+  "sortnum": 2,
   "pages": [
 	{
 	  "type": "text",
@@ -21,11 +22,6 @@
 	  "type": "bewitchment:distillery_recipe",
 	  "recipe": "bewitchment:fiery_unguent",
 	  "text": "Get your spicy memes here"
-	},
-	{
-	  "type": "bewitchment:distillery_recipe",
-	  "recipe": "bewitchment:bottled_frostfire",
-	  "text": "A strange anti-fire that is cold to the touch. When placed, it can smelt iron ore into Cold Iron when thrown in"
 	},
 	{
 	  "type": "bewitchment:distillery_recipe",
