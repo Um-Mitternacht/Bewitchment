@@ -2,7 +2,6 @@ package com.bewitchment.common.fortune;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -15,8 +14,7 @@ public class FortuneCourage extends Fortune {
 	
 	@Override
 	public boolean apply(EntityPlayer player) {
-		if (!player.world.isRemote && player.getAttackingEntity() != null)
-		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
+		if (!player.world.isRemote && player.getAttackingEntity() != null) player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 }
