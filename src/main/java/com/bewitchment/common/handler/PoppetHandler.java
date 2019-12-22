@@ -31,6 +31,7 @@ public class PoppetHandler {
 				event.setCanceled(true);
 				player.setHealth(4f);
 				player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 1000, 1));
+				player.playSound(SoundEvents.EVOCATION_ILLAGER_CAST_SPELL, 2, 1);
 			}
 		}
 	}
@@ -42,6 +43,7 @@ public class PoppetHandler {
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_binding)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 				source.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 2));
+				source.playSound(SoundEvents.ENTITY_LEASHKNOT_PLACE, 5, 1);
 			}
 		}
 	}
@@ -55,6 +57,7 @@ public class PoppetHandler {
 			if (!held.isEmpty() && Util.attemptDamagePoppet(player, ModObjects.poppet_clumsy)) {
 				InventoryHelper.spawnItemStack(source.getEntityWorld(), source.posX, source.posY, source.posZ, held);
 				source.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
+				source.playSound(SoundEvents.ENTITY_PLAYER_BIG_FALL, 2, 1);
 			}
 		}
 	}
@@ -66,6 +69,7 @@ public class PoppetHandler {
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_wasting)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 				source.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 1));
+				source.playSound(SoundEvents.ENTITY_ZOMBIE_AMBIENT, 2, 1);
 			}
 		}
 	}
@@ -120,10 +124,12 @@ public class PoppetHandler {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_spiritbane) && BewitchmentAPI.isSpirit(attacker)) {
 				event.setAmount(event.getAmount() * 0.6f);
+				event.getEntity().playSound(SoundEvents.ENTITY_ENDERDRAGON_GROWL, 2, 1);
 			}
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@SubscribeEvent
 	public void vampiric(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer) {
@@ -135,6 +141,7 @@ public class PoppetHandler {
 					Entity entity = getEntity(player.world, uuid);
 					if (entity instanceof EntityLivingBase) {
 						if (entity.attackEntityFrom(event.getSource(), event.getAmount())) {
+							event.getEntity().playSound(SoundEvents.ENTITY_WITCH_DRINK, 2, 1);
 							event.setAmount(0);
 							stack.damageItem(1, player);
 							if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, player);
