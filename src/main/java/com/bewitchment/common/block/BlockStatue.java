@@ -42,9 +42,12 @@ public class BlockStatue extends ModBlockContainer {
 		return new TileEntityStatue();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
+	}	public float getEnchantPowerBonus(World world, BlockPos pos) {
+		return 3.5f;
 	}
 	
 	@Override
@@ -106,6 +109,7 @@ public class BlockStatue extends ModBlockContainer {
 			return false;
 		}
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.INVISIBLE;
@@ -122,7 +126,7 @@ public class BlockStatue extends ModBlockContainer {
 			return false;
 		}
 		
-		
+		@SuppressWarnings("deprecation")
 		@Override
 		public IBlockState getStateFromMeta(int meta) {
 			return getDefaultState().withProperty(HEIGHT, meta);
@@ -138,6 +142,7 @@ public class BlockStatue extends ModBlockContainer {
 			return new BlockStateContainer(this, HEIGHT);
 		}
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 			return BlockFaceShape.UNDEFINED;
@@ -148,6 +153,7 @@ public class BlockStatue extends ModBlockContainer {
 			return false;
 		}
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			int height = 1;
@@ -165,6 +171,7 @@ public class BlockStatue extends ModBlockContainer {
 			else super.breakBlock(world, pos, state);
 		}
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 			BlockPos statuePos = getStatuePos(worldIn, pos);
@@ -185,6 +192,8 @@ public class BlockStatue extends ModBlockContainer {
 		}
 	}
 	
+
+	
 	@Override
 	public int quantityDropped(Random random) {
 		return 1;
@@ -196,7 +205,7 @@ public class BlockStatue extends ModBlockContainer {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 	}
 	
-	
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return FULL_BLOCK_AABB.expand(0, statue.getHeight() - 1, 0);

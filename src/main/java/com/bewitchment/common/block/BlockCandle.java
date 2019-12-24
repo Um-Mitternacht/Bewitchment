@@ -32,11 +32,6 @@ public class BlockCandle extends BlockCandleBase {
 		Blocks.FIRE.setFireInfo(this, 0, 0);
 	}
 	
-	public float getEnchantPowerBonus(World world, BlockPos pos)
-	{
-		return 0.5f;
-	}
-	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
@@ -85,6 +80,10 @@ public class BlockCandle extends BlockCandleBase {
 	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;
+	}
+	
+	public float getEnchantPowerBonus(World world, BlockPos pos) {
+		return 0.5f;
 	}
 	
 	@Override

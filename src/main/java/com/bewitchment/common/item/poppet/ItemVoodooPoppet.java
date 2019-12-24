@@ -23,7 +23,7 @@ public class ItemVoodooPoppet extends ItemPoppet {
 		super(false);
 	}
 	
-
+	
 	@Override
 	public boolean onEntityItemUpdate(EntityItem entityItem) {
 		Block current = entityItem.world.getBlockState(entityItem.getPosition().down()).getBlock();
