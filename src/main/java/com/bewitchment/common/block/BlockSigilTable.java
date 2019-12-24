@@ -27,6 +27,7 @@ public class BlockSigilTable extends ModBlockContainer {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);

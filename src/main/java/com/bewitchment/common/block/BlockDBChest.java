@@ -44,6 +44,7 @@ public class BlockDBChest extends ModBlockContainer {
 		return new TileEntityDBChest();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
@@ -54,12 +55,14 @@ public class BlockDBChest extends ModBlockContainer {
 		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasCustomBreakingProgress(IBlockState state) {
 		return true;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;

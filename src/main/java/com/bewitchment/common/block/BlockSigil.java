@@ -69,6 +69,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		return BlockRenderLayer.CUTOUT;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.byIndex(meta);
 		return this.getDefaultState().withProperty(FACING, enumfacing);
@@ -78,11 +79,13 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		return state.getValue(FACING).getIndex();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return state.withProperty(VARIATION, Math.abs(pos.getX() + pos.getY() + pos.getZ() * 2) % 10);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		switch (state.getValue(FACING)) {
 			case EAST:
@@ -101,11 +104,13 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		return UP_AABB;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Nullable
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
@@ -137,6 +142,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		EnumFacing enumfacing = state.getValue(FACING);
@@ -156,6 +162,7 @@ public class BlockSigil extends ModBlock implements ITileEntityProvider {
 		return ((TileEntitySigil) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;

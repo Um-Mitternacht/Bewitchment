@@ -86,6 +86,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void damageSlot(EntityPlayer player, int slot) {
 		ItemStack stack = handler.getStackInSlot(slot);
 		stack.damageItem(1, player);

@@ -18,6 +18,7 @@ import java.util.Set;
 @Mixin(EntityArrow.class)
 public abstract class MixinEntityTippedArrow {
 	
+	@SuppressWarnings("deprecation")
 	@Inject(method = "onHit", at = @At("HEAD"))
 	protected void applyEffects(RayTraceResult result, CallbackInfo ci) {
 		Object obj = this;
