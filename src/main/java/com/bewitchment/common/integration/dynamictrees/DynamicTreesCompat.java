@@ -63,6 +63,7 @@ public class DynamicTreesCompat {
 		elderTree.registerSpecies(Species.REGISTRY);
 		juniperTree.registerSpecies(Species.REGISTRY);
 		dragonsbloodTree.registerSpecies(Species.REGISTRY);
+		Species.REGISTRY.getValue(new ResourceLocation("dynamictrees", "oak")).addDropCreator(new DropCreatorFruit(ModObjects.oak_apple_gall, 30));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		cypressTree.getRegisterableBlocks(treeBlocks);
 		elderTree.getRegisterableBlocks(treeBlocks);
