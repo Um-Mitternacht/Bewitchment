@@ -224,22 +224,25 @@ public class Util {
 	 * @param poppet the poppet variant to find
 	 * @return true if poppet found and damaged
 	 */
-	public static boolean attemptDamagePoppet(EntityPlayer entity, Item poppet) {
+	public static boolean attemptDamagePoppet(EntityLivingBase entity, Item poppet) {
 		World world = entity.getEntityWorld();
 		ExtendedWorld ext = ExtendedWorld.get(world);
-		
-		for (int i = 0; i < entity.inventory.getSizeInventory(); i++) {
-			ItemStack stack = entity.inventory.getStackInSlot(i);
-			if (stack.getItem() == poppet && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
-				String uuid = stack.getTagCompound().getString("boundId");
-				if (entity.getUniqueID().toString().equals(uuid)) {
-					stack.damageItem(1, entity);
-					if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, entity);
-					return true;
+
+		if (entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+				ItemStack stack = player.inventory.getStackInSlot(i);
+				if (stack.getItem() == poppet && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
+					String uuid = stack.getTagCompound().getString("boundId");
+					if (entity.getUniqueID().toString().equals(uuid)) {
+						stack.damageItem(1, entity);
+						if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, entity);
+						return true;
+					}
 				}
 			}
 		}
-		
+
 		for (NBTTagCompound poppetShelves : ext.storedPoppetShelves) {
 			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
 			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {

@@ -2,6 +2,7 @@ package com.bewitchment.common.block.tile.entity;
 
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -87,7 +88,7 @@ public class TileEntityPoppetShelf extends ModTileEntity {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void damageSlot(EntityPlayer player, int slot) {
+	public void damageSlot(EntityLivingBase player, int slot) {
 		ItemStack stack = handler.getStackInSlot(slot);
 		stack.damageItem(1, player);
 		if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, player);

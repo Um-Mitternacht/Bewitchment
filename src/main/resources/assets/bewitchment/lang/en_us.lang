@@ -447,6 +447,7 @@ item.bewitchment.poppet_waterprotection.name=Water Protection Poppet
 tooltip.bewitchment.poppet.bound=Bound to %s
 
 poppet.not_found=The target of this poppet is not found
+poppet.protection=The target was protected from your voodoo magic!
 
 item.bewitchment.sigil_mending.name=Sigil of Mending
 item.bewitchment.sigil_ruin.name=Sigil of Ruin

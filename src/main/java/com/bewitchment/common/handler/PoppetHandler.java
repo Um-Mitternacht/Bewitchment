@@ -2,6 +2,7 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.event.VoodooEvent;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -133,22 +134,29 @@ public class PoppetHandler {
 	@SubscribeEvent
 	public void vampiric(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-				ItemStack stack = player.inventory.getStackInSlot(i);
+			EntityPlayer caster = (EntityPlayer) event.getEntityLiving();
+			for (int i = 0; i < caster.inventory.getSizeInventory(); i++) {
+				ItemStack stack = caster.inventory.getStackInSlot(i);
 				if (stack.getItem() == ModObjects.poppet_vampiric && stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId")) {
 					String uuid = stack.getTagCompound().getString("boundId");
-					Entity entity = getEntity(player.world, uuid);
-					if (entity instanceof EntityLivingBase) {
-						if (entity.attackEntityFrom(event.getSource(), event.getAmount())) {
+					Entity target = getEntity(caster.world, uuid);
+					if (target instanceof EntityLivingBase && target != caster) {
+						if (target.attackEntityFrom(event.getSource(), event.getAmount())) {
 							event.getEntity().playSound(SoundEvents.ENTITY_WITCH_DRINK, 2, 1);
 							event.setAmount(0);
-							stack.damageItem(1, player);
-							if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, player);
+							stack.damageItem(1, caster);
+							if (stack.getItemDamage() == stack.getItem().getMaxDamage()) stack.damageItem(1, caster);
 						}
 					}
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void voodooProtection(VoodooEvent event) {
+		if (!event.getTarget().world.isRemote && Util.attemptDamagePoppet(event.getTarget(), ModObjects.poppet_voodooprotection)) {
+			event.setCanceled(true);
 		}
 	}
 	
