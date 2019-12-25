@@ -74,7 +74,10 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 		if (!world.isRemote) {
 			if (player.isSneaking()) {
 				int last = getLastNonEmptySlot(inventory);
-				if (last > -1) InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(last, inventory.getStackInSlot(last).getCount(), false));
+				if (last > -1) {
+					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), inventory.extractItem(last, inventory.getStackInSlot(last).getCount(), false));
+					stopRitual(false);
+				}
 			}
 			else {
 				ItemStack stack = player.getHeldItem(hand);

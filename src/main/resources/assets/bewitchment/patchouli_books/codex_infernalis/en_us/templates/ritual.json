@@ -141,6 +141,18 @@
 	  "y": 50,
 	  "width": 64,
 	  "height": 64
+	},
+	{
+	  "type": "text",
+	  "text": "#startingCost",
+	  "x": 26,
+	  "y": 136
+	},
+	{
+	  "type": "text",
+	  "text": "#runningCost",
+	  "x": 26,
+	  "y": 143
 	}
   ]
 }
