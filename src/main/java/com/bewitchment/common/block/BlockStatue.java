@@ -46,8 +46,6 @@ public class BlockStatue extends ModBlockContainer {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
-	}	public float getEnchantPowerBonus(World world, BlockPos pos) {
-		return 3.5f;
 	}
 	
 	@Override
@@ -56,6 +54,8 @@ public class BlockStatue extends ModBlockContainer {
 			world.setBlockToAir(pos.up(i));
 		}
 		super.breakBlock(world, pos, state);
+	}	public float getEnchantPowerBonus(World world, BlockPos pos) {
+		return 3.5f;
 	}
 	
 	@Override
@@ -193,6 +193,7 @@ public class BlockStatue extends ModBlockContainer {
 	}
 	
 
+	
 	
 	@Override
 	public int quantityDropped(Random random) {

@@ -152,7 +152,7 @@ public class PoppetHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void voodooProtection(VoodooEvent event) {
 		if (!event.getTarget().world.isRemote && Util.attemptDamagePoppet(event.getTarget(), ModObjects.poppet_voodooprotection)) {

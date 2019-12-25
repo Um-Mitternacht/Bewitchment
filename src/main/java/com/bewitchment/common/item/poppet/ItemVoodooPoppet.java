@@ -1,7 +1,6 @@
 package com.bewitchment.common.item.poppet;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.event.VoodooEvent;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;

@@ -227,7 +227,7 @@ public class Util {
 	public static boolean attemptDamagePoppet(EntityLivingBase entity, Item poppet) {
 		World world = entity.getEntityWorld();
 		ExtendedWorld ext = ExtendedWorld.get(world);
-
+		
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
@@ -242,7 +242,7 @@ public class Util {
 				}
 			}
 		}
-
+		
 		for (NBTTagCompound poppetShelves : ext.storedPoppetShelves) {
 			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
 			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
