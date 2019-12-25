@@ -125,7 +125,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 	
 	@Override
 	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
+		if (hand == EnumHand.MAIN_HAND) {
 			if (ExtendedWorld.playerPledgedToDemon(player.world, player, this.getPledgeName())) {
 				if (player.experienceLevel >= 6) {
 					player.addExperienceLevel(-6);
