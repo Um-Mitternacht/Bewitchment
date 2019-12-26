@@ -157,6 +157,20 @@ public class ThaumcraftCompat {
 		event.register.registerObjectTag(new ItemStack(ModObjects.phasing_chalk), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EARTH, 4).add(Aspect.MIND, 4).add(Aspect.ELDRITCH, 4));
 		event.register.registerObjectTag(new ItemStack(ModObjects.taglock), new AspectList().add(Aspect.SOUL, 8).add(Aspect.LIFE, 8));
 		
+		//Sigil
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_battle), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_binding), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_cleansing), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_disorientation), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_failure), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_luck), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_mending), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_purity), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_ruin), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_sentinel), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_shrieking), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
+		
 		//Fumes
 		event.register.registerObjectTag(new ItemStack(ModObjects.demonic_elixir), new AspectList().add(DEMON, 6).add(Aspect.FIRE, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.cleansing_balm), new AspectList().add(Aspect.PROTECT, 6).add(Aspect.AURA, 6));

@@ -9,16 +9,16 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 public class VoodooEvent extends Event {
 	private EntityLivingBase target;
 	private EntityPlayer caster;
-
+	
 	public VoodooEvent(EntityPlayer caster, EntityLivingBase target) {
 		this.caster = caster;
 		this.target = target;
 	}
-
+	
 	public EntityLivingBase getTarget() {
 		return target;
 	}
-
+	
 	public EntityPlayer getCaster() {
 		return caster;
 	}
