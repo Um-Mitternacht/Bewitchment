@@ -59,7 +59,6 @@ dependencies {
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.5"
     deobfProvided "vazkii.botania:Botania:r1.10-363.119"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:8.1.1"
-    deobfProvided "curse.maven:rustic:2841018"
     deobfProvided "curse.maven:quark:2759240"
     deobfProvided "curse.maven:autoreglib:2746011"
     deobfProvided "curse.maven:mowzies-mobs:2699705"
