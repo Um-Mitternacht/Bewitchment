@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
+import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -115,5 +117,12 @@ public class DynamicTreesCompat {
 	@SubscribeEvent
 	public void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
 		event.register(new BiomeDataBasePopulator());
+	}
+
+	public static void addFurnaceRecipes() {
+		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed)
+				.filter(i -> i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> {
+					GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
+				});
 	}
 }

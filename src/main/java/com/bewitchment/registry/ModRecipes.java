@@ -429,9 +429,9 @@ public class ModRecipes {
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
 		}
-		if (Loader.isModLoaded("dynamictrees")) for (Item item : ForgeRegistries.ITEMS)
-			if (item instanceof Seed && !item.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(item)).isEmpty())
-				GameRegistry.addSmelting(item, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
+		if (Loader.isModLoaded("dynamictrees")) {
+			DynamicTreesCompat.addFurnaceRecipes();
+		}
 	}
 	
 	protected static void addCauldronRecipes() {
