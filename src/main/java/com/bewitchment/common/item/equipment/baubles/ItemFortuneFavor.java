@@ -25,17 +25,19 @@ public class ItemFortuneFavor extends ModItemBauble {
 	
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		if (Util.hasBauble(event.getHarvester(), this) && !event.isSilkTouching()) {
+		Block block = event.getState().getBlock();
+		if (shouldIncrease(block) && Util.hasBauble(event.getHarvester(), this) && !event.isSilkTouching()) {
 			List<ItemStack> drops = new ArrayList<>(event.getDrops());
 			event.getDrops().clear();
 			for (ItemStack stack : drops) {
-				Block block = event.getState().getBlock();
-				if (block == Blocks.COAL_ORE || block == Blocks.DIAMOND_ORE || block == Blocks.EMERALD_ORE || block == Blocks.LAPIS_ORE || block == ModObjects.salt_ore || block == ModObjects.amethyst_ore || block == ModObjects.garnet_ore || block == ModObjects.opal_ore) {
-					stack.setCount(stack.getCount() + itemRand.nextInt(2));
-				}
+				stack.setCount(stack.getCount() + itemRand.nextInt(2));
 				event.getDrops().add(stack);
 			}
 		}
+	}
+
+	private boolean shouldIncrease(Block block) {
+		return block == Blocks.COAL_ORE || block == Blocks.DIAMOND_ORE || block == Blocks.EMERALD_ORE || block == Blocks.LAPIS_ORE || block == ModObjects.salt_ore || block == ModObjects.amethyst_ore || block == ModObjects.garnet_ore || block == ModObjects.opal_ore
 	}
 	
 	@Override
