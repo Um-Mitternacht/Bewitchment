@@ -19,7 +19,6 @@ import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.ritual.*;
 import com.ferreusveritas.dynamictrees.ModTrees;
-import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamilyVanilla;
 import com.google.common.collect.Sets;

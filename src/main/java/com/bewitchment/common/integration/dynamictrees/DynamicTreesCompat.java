@@ -113,16 +113,15 @@ public class DynamicTreesCompat {
 		return ModConfig.compat.genDynamic && WorldGenRegistry.isWorldGenEnabled();
 	}
 	
+	public static void addFurnaceRecipes() {
+		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed).filter(i -> i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> {
+			GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
+		});
+	}
+	
 	@Method(modid = "dynamictrees")
 	@SubscribeEvent
 	public void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
 		event.register(new BiomeDataBasePopulator());
-	}
-
-	public static void addFurnaceRecipes() {
-		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed)
-				.filter(i -> i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> {
-					GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
-				});
 	}
 }
