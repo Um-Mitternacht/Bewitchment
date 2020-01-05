@@ -37,7 +37,7 @@ public class ItemFortuneFavor extends ModItemBauble {
 	}
 
 	private boolean shouldIncrease(Block block) {
-		return block == Blocks.COAL_ORE || block == Blocks.DIAMOND_ORE || block == Blocks.EMERALD_ORE || block == Blocks.LAPIS_ORE || block == ModObjects.salt_ore || block == ModObjects.amethyst_ore || block == ModObjects.garnet_ore || block == ModObjects.opal_ore
+		return block == Blocks.COAL_ORE || block == Blocks.DIAMOND_ORE || block == Blocks.EMERALD_ORE || block == Blocks.LAPIS_ORE || block == ModObjects.salt_ore || block == ModObjects.amethyst_ore || block == ModObjects.garnet_ore || block == ModObjects.opal_ore;
 	}
 	
 	@Override
