@@ -1,0 +1,10 @@
+{
+  "entries":[
+    {
+      "key": "MATSTUDCOLDIRON", "name": "research.MATSTUDCOLDIRON.title",
+      "icons": [ "bewitchment:cold_iron_ingot" ], "category": "GOLEMANCY", "location": [ -3, -3 ],
+      "parents": [ "MATSTUDIRON" ], "meta": [ "REVERSE","ROUND" ],
+      "stages": [ { "text": "research.MATSTUDCOLDIRON.stage.1", "required_research":["f_MATCOLDIRON"] } ]
+    }
+  ]
+}

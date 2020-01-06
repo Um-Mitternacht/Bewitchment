@@ -1,17 +1,34 @@
 package com.bewitchment.common.integration.thaumcraft;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.AspectRegistryEvent;
+import thaumcraft.api.golems.EnumGolemTrait;
+import thaumcraft.api.golems.GolemHelper;
+import thaumcraft.api.golems.parts.GolemMaterial;
+import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.research.ScanItem;
+import thaumcraft.api.research.ScanOreDictionary;
+import thaumcraft.api.research.ScanningManager;
+import thaumcraft.common.config.ConfigResearch;
+import thaumcraft.common.golems.EntityThaumcraftGolem;
+import thaumcraft.common.golems.GolemProperties;
 
 @SuppressWarnings({"deprecation", "WeakerAccess", "unused"})
 public class ThaumcraftCompat {
@@ -19,13 +36,43 @@ public class ThaumcraftCompat {
 	public static final Aspect MOON = getOrCreateAspect("luna", 0x808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/luna.png"));
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
-	
+
+	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[] {ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
+
+	public static void init() {
+		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
+		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATCOLDIRON", new String[]{"ingotColdIron", "blockColdIron", "nuggetColdIron"}));
+		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_ingot, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, BLESSED}));
+	}
+
+
 	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
 		Aspect a = Aspect.getAspect(tag);
 		if (a != null) return a;
 		return new Aspect(tag, color, components, image, 1);
 	}
-	
+
+	@SubscribeEvent
+	public void handleColdIronGolems(LivingHurtEvent event){
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!entity.world.isRemote) {
+			Entity source = event.getSource().getImmediateSource();
+			if (source instanceof EntityLivingBase){
+				float weakness = BewitchmentAPI.getColdIronWeakness(entity);
+				if (weakness > 1 && isColdIronGolem((EntityLivingBase) source)) event.setAmount(event.getAmount() * weakness * 2);
+				weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
+				if (weakness > 1 && isColdIronGolem(entity)) {
+					event.setAmount(event.getAmount() * 0.4F);
+					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
+				}
+			}
+		}
+	}
+
+	public static boolean isColdIronGolem(EntityLivingBase golem){
+		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(BLESSED);
+	}
+
 	@SubscribeEvent
 	public void aspectRegistrationEvent(AspectRegistryEvent event) {
 		//Technical
@@ -276,4 +323,6 @@ public class ThaumcraftCompat {
 		ThaumcraftApi.registerEntityTag("leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
 		ThaumcraftApi.registerEntityTag("baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
 	}
+
+
 }

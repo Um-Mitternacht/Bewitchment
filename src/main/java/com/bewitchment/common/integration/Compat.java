@@ -5,6 +5,7 @@ import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Brew;
+import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import net.minecraft.init.Items;
@@ -33,6 +34,9 @@ public class Compat {
 	public static void init() {
 		if (Loader.isModLoaded("betteranimalsplus")) {
 			BAPCompat.registerBAPHeadAlter();
+		}
+		if (Loader.isModLoaded("thaumcraft")){
+			ThaumcraftCompat.init();
 		}
 	}
 	

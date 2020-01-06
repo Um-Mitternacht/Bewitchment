@@ -1256,10 +1256,18 @@ entity.bewitchment.prefix.59=Cadet
 entity.bewitchment.prefix.60=Marshal
 entity.bewitchment.prefix.61=Bishop
 
-# Thaumcraft aspects
+# Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
 tc.aspect.stellae=Stars, Constellation, Asterism
 tc.aspect.luna=The Moon
 tc.aspect.sol=The Sun
+
+research.MATSTUDCOLDIRON.title=Material Studies: Cold Iron
+research.MATSTUDCOLDIRON.stage.1=Like mundane iron, cold iron is quite sturdy but heavy. <BR>However, unlike mundane iron, cold iron has several arcane properties, especially in terms of warding off demons and spirits.
+golem.material.coldiron=Cold Iron
+golem.material.text.coldiron=The golem is crafted from cold iron. While it shares many identical characteristics with iron, it provides additional strength against demons and spirits.
+
+golem.trait.blessed=Blessed
+golem.trait.text.blessed=The golem is particularly strong against demons and spirits.
 
 ritual.cannot_start=You don't feel anything happening...
