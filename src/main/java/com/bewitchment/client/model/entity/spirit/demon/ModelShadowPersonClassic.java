@@ -100,7 +100,7 @@ public class ModelShadowPersonClassic extends ModelBiped {
 		else {
 			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
 		}
-		float swingMod = 0.3F;
+		float swingMod = 0.13F;
 		
 		this.bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
