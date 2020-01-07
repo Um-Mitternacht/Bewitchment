@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 public class EntityHellhound extends ModEntityMob {
 	public EntityHellhound(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/hellhound"));
-		setSize(0.8f, 1.0f);
+		setSize(1.0f, 1.25f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);
 		setPathPriority(PathNodeType.LAVA, 8);
