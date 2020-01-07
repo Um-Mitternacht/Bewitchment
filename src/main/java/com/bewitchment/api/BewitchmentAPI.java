@@ -205,7 +205,7 @@ public class BewitchmentAPI {
 	
 	public static float getColdIronWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman || entity.getClass().getName().endsWith("EntityPixie") || entity.getClass().getName().endsWith("EntityHirschgeist") || entity.getClass().getName().endsWith("EntityFairy")) {
+		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman || entity.getClass().getName().endsWith("EntityPixie") || entity.getClass().getName().endsWith("EntityHirschgeist") || entity.getClass().getName().endsWith("EntityPech") || entity.getClass().getName().endsWith("EntityFairy")) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}
