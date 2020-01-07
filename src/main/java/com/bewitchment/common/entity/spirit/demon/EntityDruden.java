@@ -134,6 +134,6 @@ public class EntityDruden extends ModEntityMob {
 	
 	@Override
 	protected boolean isValidLightLevel() {
-		return false;
+		return true;
 	}
 }
