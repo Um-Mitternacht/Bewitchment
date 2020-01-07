@@ -35,7 +35,7 @@ public class Compat {
 		if (Loader.isModLoaded("betteranimalsplus")) {
 			BAPCompat.registerBAPHeadAlter();
 		}
-		if (Loader.isModLoaded("thaumcraft")){
+		if (Loader.isModLoaded("thaumcraft")) {
 			ThaumcraftCompat.init();
 		}
 	}

@@ -188,11 +188,11 @@ public class BlockStatue extends ModBlockContainer {
 		public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
 			return false;
 		}
-	}	public float getEnchantPowerBonus(World world, BlockPos pos) {
-		return 3.5f;
 	}
 	
-
+	public float getEnchantPowerBonus(World world, BlockPos pos) {
+		return 3.5f;
+	}
 	
 	
 	@Override

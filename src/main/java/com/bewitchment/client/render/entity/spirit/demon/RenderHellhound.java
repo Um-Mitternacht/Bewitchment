@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelHellhound;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -16,6 +17,12 @@ public class RenderHellhound extends RenderLiving<EntityHellhound> {
 	
 	public RenderHellhound(RenderManager manager) {
 		super(manager, new ModelHellhound(), 0.3f);
+	}
+	
+	@Override
+	protected void preRenderCallback(EntityHellhound entity, float partialTickTime) {
+		super.preRenderCallback(entity, partialTickTime);
+		GlStateManager.scale(1.3, 1.3, 1.3);
 	}
 	
 	@Override
