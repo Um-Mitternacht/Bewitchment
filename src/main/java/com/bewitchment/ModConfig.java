@@ -342,7 +342,7 @@ public class ModConfig {
 		
 		public static class Druden {
 			@Config.Comment("The list of BiomeDictionary types that the druden will spawn in.")
-			public String[] drudenBiomes = {Type.FOREST.getName(), Type.DENSE.getName()};
+			public String[] drudenBiomes = {Type.FOREST.getName(), Type.DENSE.getName(), Type.CONIFEROUS.getName()};
 			
 			@Config.Comment("The weight chance for druden to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
