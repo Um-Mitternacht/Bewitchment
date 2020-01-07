@@ -147,6 +147,8 @@ public class EntitySnake extends ModEntityTameable {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+		
 		if (milkTimer > 0) milkTimer--;
 		if (!onGround && motionY <= 0) motionY *= 0.6;
 		

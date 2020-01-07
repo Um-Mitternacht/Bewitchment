@@ -64,6 +64,12 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+	}
+	
+	@Override
 	protected float getSoundVolume() {
 		return 0.5f;
 	}

@@ -17,11 +17,6 @@ public class EntityLizard extends ModEntityAnimal {
 	}
 	
 	@Override
-	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() == Items.SPIDER_EYE;
-	}
-	
-	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}
@@ -49,5 +44,16 @@ public class EntityLizard extends ModEntityAnimal {
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+	}
+	
+	@Override
+	public boolean isBreedingItem(ItemStack stack) {
+		return stack.getItem() == Items.SPIDER_EYE;
 	}
 }
