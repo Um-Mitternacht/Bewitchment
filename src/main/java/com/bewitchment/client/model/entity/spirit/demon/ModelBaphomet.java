@@ -488,7 +488,7 @@ public class ModelBaphomet extends ModelBiped {
 	@Override
 	public void postRenderArm(float scale, EnumHandSide side) {
 
-		GlStateManager.translate(0, -0.35, 0);
+		GlStateManager.translate(0, -0.3, 0);
 		super.postRenderArm(scale, side);
 	}
 	
