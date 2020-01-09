@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -24,8 +25,7 @@ public class ContractMahapadma extends Contract {
 				target.world.setBlockState(pos, target.getRNG().nextBoolean() ? Blocks.PACKED_ICE.getDefaultState() : Blocks.ICE.getDefaultState());
 			}
 		}
-		target.setDead();
-		target.setHealth(0);
+		target.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
 		return true;
 	}
 }
