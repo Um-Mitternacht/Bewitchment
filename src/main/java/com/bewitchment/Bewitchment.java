@@ -67,6 +67,7 @@ public class Bewitchment {
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
 		public ItemStack createIcon() {
+			setBackgroundImageName("item_search.png");
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
 

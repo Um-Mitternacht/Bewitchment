@@ -27,7 +27,7 @@ public class RenderLizard extends RenderLiving<EntityLizard> {
 	@Override
 	protected void preRenderCallback(EntityLizard entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		if (entity.isChild()) GlStateManager.scale(0.4, 0.4, 0.4);
-		else GlStateManager.scale(0.6, 0.6, 0.6);
+		if (entity.isChild()) GlStateManager.scale(0.2, 0.2, 0.2);
+		else GlStateManager.scale(0.4, 0.4, 0.4);
 	}
 }
