@@ -3,8 +3,10 @@ package com.bewitchment.client.model.entity.spirit.demon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -376,6 +378,13 @@ public class ModelLeonard extends ModelBiped {
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
 		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
+	}
+	
+	@Override
+	public void postRenderArm(float scale, EnumHandSide side) {
+		
+		GlStateManager.translate(0, -0.3, 0);
+		super.postRenderArm(scale, side);
 	}
 	
 	/**

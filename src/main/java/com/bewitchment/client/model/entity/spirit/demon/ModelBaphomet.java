@@ -3,8 +3,10 @@ package com.bewitchment.client.model.entity.spirit.demon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -18,8 +20,8 @@ public class ModelBaphomet extends ModelBiped {
 	public ModelRenderer stomach;
 	public ModelRenderer boobs;
 	public ModelRenderer head;
-	public ModelRenderer leftArm00;
-	public ModelRenderer rightArm00;
+	public ModelRenderer bipedLeftArm;
+	public ModelRenderer bipedRightArm;
 	public ModelRenderer leftLeg00;
 	public ModelRenderer rightLeg00;
 	public ModelRenderer leftWing00;
@@ -253,11 +255,11 @@ public class ModelBaphomet extends ModelBiped {
 		this.rHoof.mirror = true;
 		this.rHoof.setRotationPoint(0.0F, 7.9F, 0.0F);
 		this.rHoof.addBox(-1.5F, 0.0F, -2.8F, 3, 2, 4, 0.0F);
-		this.rightArm00 = new ModelRenderer(this, 46, 19);
-		this.rightArm00.mirror = true;
-		this.rightArm00.setRotationPoint(-5.0F, 1.9F, 0.0F);
-		this.rightArm00.addBox(-2.0F, -2.0F, -2.0F, 3, 8, 4, 0.0F);
-		this.setRotateAngle(rightArm00, 0.08726646259971647F, 0.0F, 0.10000736613927509F);
+		this.bipedRightArm = new ModelRenderer(this, 46, 19);
+		this.bipedRightArm.mirror = true;
+		this.bipedRightArm.setRotationPoint(-5.0F, 1.9F, 0.0F);
+		this.bipedRightArm.addBox(-2.0F, -2.0F, -2.0F, 3, 8, 4, 0.0F);
+		this.setRotateAngle(bipedRightArm, 0.08726646259971647F, 0.0F, 0.10000736613927509F);
 		this.boobLeft = new ModelRenderer(this, 18, 52);
 		this.boobLeft.setRotationPoint(1.6F, 1.9F, -0.8F);
 		this.boobLeft.addBox(-1.5F, 0.0F, -2.0F, 3, 3, 3, 0.0F);
@@ -388,10 +390,10 @@ public class ModelBaphomet extends ModelBiped {
 		this.boobs.setRotationPoint(0.0F, 1.9F, -0.9F);
 		this.boobs.addBox(-3.5F, 0.0F, -2.0F, 7, 3, 3, 0.0F);
 		this.setRotateAngle(boobs, -0.6108652381980153F, 0.0F, 0.0F);
-		this.leftArm00 = new ModelRenderer(this, 46, 19);
-		this.leftArm00.setRotationPoint(5.0F, 1.9F, 0.0F);
-		this.leftArm00.addBox(-1.0F, -2.0F, -2.0F, 3, 8, 4, 0.0F);
-		this.setRotateAngle(leftArm00, 0.08726646259971647F, 0.0F, -0.10000736613927509F);
+		this.bipedLeftArm = new ModelRenderer(this, 46, 19);
+		this.bipedLeftArm.setRotationPoint(5.0F, 1.9F, 0.0F);
+		this.bipedLeftArm.addBox(-1.0F, -2.0F, -2.0F, 3, 8, 4, 0.0F);
+		this.setRotateAngle(bipedLeftArm, 0.08726646259971647F, 0.0F, -0.10000736613927509F);
 		this.leftLeg02 = new ModelRenderer(this, 0, 44);
 		this.leftLeg02.setRotationPoint(0.0F, 6.0F, 0.2F);
 		this.leftLeg02.addBox(-1.0F, 0.0F, -1.5F, 2, 8, 3, 0.0F);
@@ -411,7 +413,7 @@ public class ModelBaphomet extends ModelBiped {
 		this.rightWing01.addChild(this.rightFeathers00);
 		this.head.addChild(this.rightEar);
 		this.torch02a.addChild(this.torch03b);
-		this.rightArm00.addChild(this.rightArm01);
+		this.bipedRightArm.addChild(this.rightArm01);
 		this.torch02a.addChild(this.torch03c);
 		this.head.addChild(this.torch00);
 		this.rHorn02a.addChild(this.rHorn03a);
@@ -438,7 +440,7 @@ public class ModelBaphomet extends ModelBiped {
 		this.rightLeg01.addChild(this.rightLeg02);
 		this.bodyChest.addChild(this.leftWing00);
 		this.rightLeg02.addChild(this.rHoof);
-		this.bodyChest.addChild(this.rightArm00);
+		this.bodyChest.addChild(this.bipedRightArm);
 		this.bodyChest.addChild(this.boobLeft);
 		this.jawLower.addChild(this.beard);
 		this.head.addChild(this.rHorn01);
@@ -464,7 +466,7 @@ public class ModelBaphomet extends ModelBiped {
 		this.bodyChest.addChild(this.leftLeg00);
 		this.lHorn01.addChild(this.lHorn02a);
 		this.rightWing01.addChild(this.rightWing02);
-		this.leftArm00.addChild(this.leftArm01);
+		this.bipedLeftArm.addChild(this.leftArm01);
 		this.hips.addChild(this.backLoincloth00);
 		this.torch01a.addChild(this.torch02a);
 		this.stomach.addChild(this.hips);
@@ -472,7 +474,7 @@ public class ModelBaphomet extends ModelBiped {
 		this.rHorn03a.addChild(this.rHorn03d_1);
 		this.leftWing01.addChild(this.leftFeathers00);
 		this.bodyChest.addChild(this.boobs);
-		this.bodyChest.addChild(this.leftArm00);
+		this.bodyChest.addChild(this.bipedLeftArm);
 		this.leftLeg01.addChild(this.leftLeg02);
 		this.leftWing01.addChild(this.leftWing02);
 	}
@@ -498,10 +500,17 @@ public class ModelBaphomet extends ModelBiped {
 		this.leftLeg00.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
 		this.rightLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
 		
-		this.rightArm00.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
-		this.leftArm00.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
+		this.bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
+		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
 		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
+	}
+	
+	@Override
+	public void postRenderArm(float scale, EnumHandSide side) {
+		
+		GlStateManager.translate(0, -0.35, 0);
+		super.postRenderArm(scale, side);
 	}
 	
 	/**
