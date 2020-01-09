@@ -1,14 +1,10 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import com.bewitchment.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -16,18 +12,17 @@ import net.minecraft.util.math.MathHelper;
  * Created using Tabula 7.0.1
  */
 public class ModelLeonard extends ModelBiped {
-/*	public ModelRenderer bipedBody;
-	public ModelRenderer bipedHead;
-	public ModelRenderer bipedLeftArm;
-	public ModelRenderer bipedRightArm;
-	public ModelRenderer bipedLeftLeg;
-	public ModelRenderer bipedRightLeg;
-	*/
+	public ModelRenderer bipedBody;
 	public ModelRenderer chestFur01;
 	public ModelRenderer chestFur02;
 	public ModelRenderer beltBuckle01;
 	public ModelRenderer beltBuckle02;
 	public ModelRenderer beltBuckle03;
+	public ModelRenderer bipedHead;
+	public ModelRenderer bipedLeftArm;
+	public ModelRenderer bipedRightArm;
+	public ModelRenderer bipedLeftLeg;
+	public ModelRenderer bipedRightLeg;
 	public ModelRenderer muzzleUpper;
 	public ModelRenderer muzzleLower;
 	public ModelRenderer snout;
@@ -364,24 +359,25 @@ public class ModelLeonard extends ModelBiped {
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
-		this.bipedLeftLeg.rotateAngleX *= 0.5F;
-		this.bipedRightLeg.rotateAngleX *= 0.5F;
-
-		this.bipedLeftLeg.rotateAngleZ -= 0.06981317007977318F;
-		this.bipedRightLeg.rotateAngleZ += 0.06981317007977318F;
-
-
-		this.bipedRightArm.rotateAngleX *= 0.3F;
-		this.bipedLeftArm.rotateAngleX *= 0.3F;
+		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
+		
+		if (flag) {
+			this.bipedHead.rotateAngleX = -((float) Math.PI / 4F);
+		}
+		else {
+			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
+		}
+		float swingMod = 0.3F;
+		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
+		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
+		
+		this.bipedRightArm.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount;
+		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount;
+		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
-
-	@Override
-	public void postRenderArm(float scale, EnumHandSide side) {
-		GlStateManager.translate(0.025F, -0.22, 0);
-		super.postRenderArm(scale, side);
-	}
-
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
