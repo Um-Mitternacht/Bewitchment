@@ -382,8 +382,7 @@ public class ModelLeonard extends ModelBiped {
 	
 	@Override
 	public void postRenderArm(float scale, EnumHandSide side) {
-		
-		GlStateManager.translate(0, -0.3, 0);
+		GlStateManager.translate(0.025F, -0.22, 0);
 		super.postRenderArm(scale, side);
 	}
 	

@@ -70,7 +70,7 @@ public class Bewitchment {
 			setBackgroundImageName("item_search.png");
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
-
+		
 		@Override
 		public boolean hasSearchBar() {
 			return true;
