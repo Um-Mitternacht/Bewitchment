@@ -1,4 +1,5 @@
-﻿#BLOCKS
+﻿
+#BLOCKS
 tile.bewitchment.blessed_stone.name=Blessed Stone
 tooltip.bewitchment.blessed_stone=Gives infinite altar power. Creative only.
 
