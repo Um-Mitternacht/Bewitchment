@@ -69,6 +69,11 @@ public class Bewitchment {
 		public ItemStack createIcon() {
 			return new ItemStack(ModObjects.stone_witches_altar);
 		}
+
+		@Override
+		public boolean hasSearchBar() {
+			return true;
+		}
 	};
 	@Mod.Instance
 	public static Bewitchment instance;
