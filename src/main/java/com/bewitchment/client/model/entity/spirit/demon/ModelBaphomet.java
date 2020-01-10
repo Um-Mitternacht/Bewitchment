@@ -497,8 +497,14 @@ public class ModelBaphomet extends ModelBiped {
 			this.head.rotateAngleX = headPitch * 0.017453292F;
 		}
 		float swingMod = 0.3F;
-		this.leftLeg00.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
-		this.rightLeg00.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
+		this.bipedLeftLeg.rotateAngleX *= 0.5F;
+		this.bipedRightLeg.rotateAngleX *= 0.5F;
+		
+		this.bipedLeftLeg.rotateAngleX -= 0.25F;
+		this.bipedRightLeg.rotateAngleX -= 0.25F;
+		
+		bipedRightLeg.rotateAngleZ += 0.13962634015954636F;
+		bipedLeftLeg.rotateAngleZ -= 0.13962634015954636F;
 		
 		this.bipedRightArm.rotateAngleX *= 0.3F;
 		this.bipedLeftArm.rotateAngleX *= 0.3F;
