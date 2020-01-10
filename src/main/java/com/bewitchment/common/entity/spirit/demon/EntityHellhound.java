@@ -13,11 +13,10 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityHellhound extends ModEntityMob {
@@ -69,6 +68,26 @@ public class EntityHellhound extends ModEntityMob {
 				if (ticksExisted % 20 == 0 && isInLava()) heal(2);
 			}
 		}
+	}
+	
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_WOLF_GROWL;
+	}
+	
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	{
+		return SoundEvents.ENTITY_WOLF_HURT;
+	}
+	
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound()
+	{
+		return SoundEvents.ENTITY_WOLF_DEATH;
 	}
 	
 	@Override
