@@ -483,36 +483,37 @@ public class ModelBaphomet extends ModelBiped {
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
-
+		
 		if (flag) {
 			this.bipedHead.rotateAngleX = -((float) Math.PI / 4F);
-		} else {
+		}
+		else {
 			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
 		}
-
+		
 		this.bipedBody.rotateAngleY = 0.0F;
 		float f = 1.0F;
-
+		
 		if (flag) {
 			f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
 			f = f / 0.2F;
 			f = f * f * f;
 		}
-
+		
 		if (f < 1.0F) {
 			f = 1.0F;
 		}
-
+		
 		float swingMod = 0.3F;
 		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
 		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
-
-
+		
+		
 		this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
 		this.bipedRightArm.rotateAngleZ = 0.10000736613927509F;
 		this.bipedLeftArm.rotateAngleZ = -0.10000736613927509F;
-
+		
 		if (this.isRiding) {
 			this.bipedRightArm.rotateAngleX += -((float) Math.PI / 5F);
 			this.bipedLeftArm.rotateAngleX += -((float) Math.PI / 5F);
@@ -523,10 +524,10 @@ public class ModelBaphomet extends ModelBiped {
 			this.bipedLeftLeg.rotateAngleY = -((float) Math.PI / 10F);
 			this.bipedLeftLeg.rotateAngleZ = -0.07853982F;
 		}
-
+		
 		this.bipedRightArm.rotateAngleY = 0.0F;
 		this.bipedRightArm.rotateAngleZ = 0.0F;
-
+		
 		switch (this.leftArmPose) {
 			case EMPTY:
 				this.bipedLeftArm.rotateAngleY = 0.0F;
@@ -539,7 +540,7 @@ public class ModelBaphomet extends ModelBiped {
 				this.bipedLeftArm.rotateAngleX = this.bipedLeftArm.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
 				this.bipedLeftArm.rotateAngleY = 0.0F;
 		}
-
+		
 		switch (this.rightArmPose) {
 			case EMPTY:
 				this.bipedRightArm.rotateAngleY = 0.0F;
@@ -552,17 +553,17 @@ public class ModelBaphomet extends ModelBiped {
 				this.bipedRightArm.rotateAngleX = this.bipedRightArm.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
 				this.bipedRightArm.rotateAngleY = 0.0F;
 		}
-
+		
 		if (this.swingProgress > 0.0F) {
 			EnumHandSide enumhandside = this.getMainHand(entity);
 			ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
 			float f1 = this.swingProgress;
 			this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
-
+			
 			if (enumhandside == EnumHandSide.LEFT) {
 				this.bipedBody.rotateAngleY *= -1.0F;
 			}
-
+			
 			this.bipedRightArm.rotationPointZ = MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F;
 			this.bipedRightArm.rotationPointX = -MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F;
 			this.bipedLeftArm.rotationPointZ = -MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F;
@@ -580,30 +581,31 @@ public class ModelBaphomet extends ModelBiped {
 			modelrenderer.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
 			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
 		}
-
-
+		
+		
 		this.bipedBody.rotateAngleX = 0.0F;
 		this.bipedHead.rotationPointY = 0.0F;
-
+		
 		this.bipedRightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
 		this.bipedLeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
 		this.bipedRightArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 		this.bipedLeftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-
+		
 		if (this.rightArmPose == ArmPose.BOW_AND_ARROW) {
 			this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY;
 			this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY + 0.4F;
 			this.bipedRightArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 			this.bipedLeftArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
-		} else if (this.leftArmPose == ArmPose.BOW_AND_ARROW) {
+		}
+		else if (this.leftArmPose == ArmPose.BOW_AND_ARROW) {
 			this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY - 0.4F;
 			this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY;
 			this.bipedRightArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 			this.bipedLeftArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 		}
-
+		
 		copyModelAngles(this.bipedHead, this.bipedHeadwear);
-
+		
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	

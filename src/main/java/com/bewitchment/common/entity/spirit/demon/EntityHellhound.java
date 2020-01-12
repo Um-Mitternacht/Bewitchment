@@ -72,21 +72,13 @@ public class EntityHellhound extends ModEntityMob {
 	
 	@Nullable
 	@Override
-	protected SoundEvent getAmbientSound() {
-		return SoundEvents.ENTITY_WOLF_GROWL;
-	}
-	
-	@Nullable
-	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
-	{
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 		return SoundEvents.ENTITY_WOLF_HURT;
 	}
 	
 	@Nullable
 	@Override
-	protected SoundEvent getDeathSound()
-	{
+	protected SoundEvent getDeathSound() {
 		return SoundEvents.ENTITY_WOLF_DEATH;
 	}
 	
@@ -128,5 +120,11 @@ public class EntityHellhound extends ModEntityMob {
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityFeuerwurm || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+	}
+	
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_WOLF_GROWL;
 	}
 }
