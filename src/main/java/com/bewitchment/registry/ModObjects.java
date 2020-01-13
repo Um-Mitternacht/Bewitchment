@@ -91,7 +91,7 @@ public class ModObjects {
 	public static final Block block_of_opal = new ModBlock("block_of_opal", Blocks.DIAMOND_BLOCK, "blockOpal");
 	public static final Block[] block_of_silver = createChiselBlocks("block_of_silver", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockSilver"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
 	public static final Block[] block_of_cold_iron = createChiselBlocks("block_of_cold_iron", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockColdIron"), "symbol", "bevel", "sun", "moon", "cup", "pentacle", "sword", "wand", "pentagram");
-	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.ROCK, SoundType.STONE, 5, 30, "pickaxe", 0, "blockSalt");
+	public static final Block block_of_salt = new ModBlock("block_of_salt", Material.SAND, SoundType.SAND, 1, 15, "shovel", 0, "blockSalt");
 	public static final Block amethyst_ore = new ModBlockOre("amethyst_ore", Blocks.REDSTONE_ORE, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlockOre("garnet_ore", Blocks.REDSTONE_ORE, "oreGarnet");
 	public static final Block opal_ore = new ModBlockOre("opal_ore", Blocks.REDSTONE_ORE, "oreOpal");
