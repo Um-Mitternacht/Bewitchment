@@ -1,0 +1,12 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:hellhound_horn"
+	}
+  ],
+  "result": {
+	"item": "minecraft:blaze_powder",
+	"count": 3
+  }
+}

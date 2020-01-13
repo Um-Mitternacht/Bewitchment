@@ -10,6 +10,7 @@
 	}
   },
   "result": {
-	"item": "bewitchment:coquina_bricks"
+	"item": "bewitchment:coquina_bricks",
+	"count": 4	
   }
 }
