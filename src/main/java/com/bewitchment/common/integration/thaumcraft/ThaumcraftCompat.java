@@ -40,7 +40,7 @@ public class ThaumcraftCompat {
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATCOLDIRON", new String[]{"ingotColdIron", "blockColdIron", "nuggetColdIron"}));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATDRAGONSBLOOD", new String[]{"resinDragonsBlood", "blockDragonsBloodResin"}));
 		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_ingot, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, BLESSED}));
-		GolemMaterial.register(new GolemMaterial("DRAGONSBLOOD", new String[]{"MATSTUDDRAGONSBLOOD"}, new ResourceLocation("bewitchment", "textures/entity/dragonsbloodgolem.png"), 4786944, 10, 1, 2, new ItemStack(ModObjects.dragons_blood_resin_block, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.FRAGILE, EnumGolemTrait.LIGHT, UNCANNY}));
+		GolemMaterial.register(new GolemMaterial("DRAGONSBLOOD", new String[]{"MATSTUDDRAGONSBLOOD"}, new ResourceLocation("bewitchment", "textures/entity/dragonsbloodgolem.png"), 4786944, 10, 1, 2, new ItemStack(ModObjects.dragons_blood_resin_block, 1), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.FRAGILE, EnumGolemTrait.LIGHT, UNCANNY}));
 	}
 	
 	
