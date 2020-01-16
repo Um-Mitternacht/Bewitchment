@@ -60,7 +60,7 @@ public class ThaumcraftCompat {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
 	
-	//Todo: Apply slowness to mobs attacked by this + make mobs flee it's presence.
+	//Todo: Apply slowness to all mobs attacked by this + make mobs flee it's presence.
 	@SubscribeEvent
 	public void handleDragonsBloodGolems(LivingHurtEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
