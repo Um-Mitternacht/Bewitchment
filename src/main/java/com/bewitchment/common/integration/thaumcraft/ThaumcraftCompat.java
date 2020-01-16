@@ -60,6 +60,7 @@ public class ThaumcraftCompat {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
 	
+	//Todo: Only inflict slowness, no other special effects.
 	@SubscribeEvent
 	public void handleDragonsBloodGolems(LivingHurtEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
