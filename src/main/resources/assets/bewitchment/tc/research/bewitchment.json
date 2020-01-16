@@ -8,6 +8,33 @@
 	  ],
 	  "category": "GOLEMANCY",
 	  "location": [
+		-4,
+		-4
+	  ],
+	  "parents": [
+		"MATSTUDDRAGONSBLOOD"
+	  ],
+	  "meta": [
+		"REVERSE",
+		"ROUND"
+	  ],
+	  "stages": [
+		{
+		  "text": "research.MATSTUDCOLDIRON.stage.1",
+		  "required_research": [
+			"f_MATCOLDIRON"
+		  ]
+		}
+	  ]
+	},
+	{
+	  "key": "MATSTUDDRAGONSBLOOD",
+	  "name": "research.MATSTUDDRAGONSBLOOD.title",
+	  "icons": [
+		"bewitchment:dragons_blood_resin"
+	  ],
+	  "category": "GOLEMANCY",
+	  "location": [
 		-3,
 		-3
 	  ],
@@ -20,9 +47,9 @@
 	  ],
 	  "stages": [
 		{
-		  "text": "research.MATSTUDCOLDIRON.stage.1",
+		  "text": "research.MATSTUDDRAGONSBLOOD.stage.1",
 		  "required_research": [
-			"f_MATCOLDIRON"
+			"f_MATDRAGONSBLOOD"
 		  ]
 		}
 	  ]

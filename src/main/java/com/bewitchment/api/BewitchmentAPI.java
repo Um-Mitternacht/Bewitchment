@@ -194,6 +194,15 @@ public class BewitchmentAPI {
 		throw new IllegalStateException("Bewitchment API not ready yet");
 	}
 	
+	public static float getCursedMethod(EntityLivingBase entity) {
+		float fin = 1;
+		if (entity.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD || entity.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER || entity.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD || entity.getCreatureAttribute() != DEMON || entity.getCreatureAttribute() != SPIRIT || entity.getCreatureAttribute() != FAE || !entity.getClass().getName().endsWith("EntityBlaze") || !entity.getClass().getName().endsWith("EntityVex") || !entity.getClass().getName().endsWith("EntityGhast") || !entity.getClass().getName().endsWith("EntityEnderman") || !entity.getClass().getName().endsWith("EntityPixie") || !entity.getClass().getName().endsWith("EntityHirschgeist") || !entity.getClass().getName().endsWith("EntityPech") || !entity.getClass().getName().endsWith("EntityFairy") || !entity.getClass().getName().endsWith("Golem") || !isVampire(entity) || !isWerewolf(entity)) {
+			fin = 1.5f;
+			if (entity instanceof EntityPlayer) fin *= 1.5f;
+		}
+		return fin;
+	}
+	
 	public static float getSilverWeakness(EntityLivingBase entity) {
 		float fin = 1;
 		if (isVampire(entity) || isWerewolf(entity) || entity.isEntityUndead()) {

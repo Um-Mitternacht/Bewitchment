@@ -1268,7 +1268,15 @@ research.MATSTUDCOLDIRON.stage.1=Like mundane iron, cold iron is quite sturdy bu
 golem.material.coldiron=Cold Iron
 golem.material.text.coldiron=The golem is crafted from cold iron. While it shares many identical characteristics with iron, it provides additional strength against demons and spirits.
 
+research.MATSTUDDRAGONSBLOOD.title=Material Studies: Dragons Blood Resin
+research.MATSTUDDRAGONSBLOOD.stage.1=The resin from a Dragon's Blood Tree was of particular interest to you, in hopes of making a golem aligned with the occult. <BR>However, what you created was a messy golem that falls apart rather easily. It also somewhat resembles human flesh, and it repulses you as a result.
+golem.material.dragonsblood=Dragons Blood Resin
+golem.material.text.dragonsblood=The golem is crafted from Dragon's Blood Resin. It's... a mess.
+
 golem.trait.blessed=Blessed
 golem.trait.text.blessed=The golem is particularly strong against demons and spirits.
+
+golem.trait.uncanny=Uncanny
+golem.trait.text.uncanny=This golem has an uncanny resemblance to human flesh. Even other living beings are slightly repulsed.
 
 ritual.cannot_start=You don't feel anything happening...

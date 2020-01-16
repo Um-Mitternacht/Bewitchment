@@ -33,11 +33,14 @@ public class ThaumcraftCompat {
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
 	
 	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
+	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
 	
 	public static void init() {
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATCOLDIRON", new String[]{"ingotColdIron", "blockColdIron", "nuggetColdIron"}));
+		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATDRAGONSBLOOD", new String[]{"resinDragonsBlood", "blockDragonsBloodResin"}));
 		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_ingot, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, BLESSED}));
+		GolemMaterial.register(new GolemMaterial("DRAGONSBLOOD", new String[]{"MATSTUDDRAGONSBLOOD"}, new ResourceLocation("bewitchment", "textures/entity/dragonsbloodgolem.png"), 4786944, 10, 1, 2, new ItemStack(ModObjects.dragons_blood_resin_block, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.FRAGILE, EnumGolemTrait.LIGHT, UNCANNY}));
 	}
 	
 	
@@ -49,6 +52,27 @@ public class ThaumcraftCompat {
 	
 	public static boolean isColdIronGolem(EntityLivingBase golem) {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(BLESSED);
+	}
+	
+	public static boolean isDragonsBloodGolem(EntityLivingBase golem) {
+		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
+	}
+	
+	@SubscribeEvent
+	public void handleDragonsBloodGolems(LivingHurtEvent event) {
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!entity.world.isRemote) {
+			Entity source = event.getSource().getImmediateSource();
+			if (source instanceof EntityLivingBase) {
+				float weakness = BewitchmentAPI.getCursedMethod(entity);
+				if (weakness > 1 && isDragonsBloodGolem((EntityLivingBase) source)) event.setAmount(event.getAmount() * weakness * 1.3f);
+				weakness = BewitchmentAPI.getCursedMethod((EntityLivingBase) source);
+				if (weakness > 1 && isDragonsBloodGolem(entity)) {
+					event.setAmount(event.getAmount() * 0.2F);
+					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 2);
+				}
+			}
+		}
 	}
 	
 	@SubscribeEvent
