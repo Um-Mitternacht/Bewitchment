@@ -8,7 +8,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -64,12 +66,13 @@ public class ThaumcraftCompat {
 		if (!entity.world.isRemote) {
 			Entity source = event.getSource().getImmediateSource();
 			if (source instanceof EntityLivingBase) {
-				float weakness = BewitchmentAPI.getCursedMethod(entity);
+				float weakness = BewitchmentAPI.getColdIronWeakness(entity);
 				if (weakness > 1 && isDragonsBloodGolem((EntityLivingBase) source)) event.setAmount(event.getAmount() * weakness * 1.3f);
-				weakness = BewitchmentAPI.getCursedMethod((EntityLivingBase) source);
+				weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
 				if (weakness > 1 && isDragonsBloodGolem(entity)) {
 					event.setAmount(event.getAmount() * 0.2F);
 					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 2);
+					((EntityLivingBase) source).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 0, false, false));
 				}
 			}
 		}
