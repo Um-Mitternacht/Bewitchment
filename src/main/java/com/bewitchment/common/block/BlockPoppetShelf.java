@@ -72,18 +72,20 @@ public class BlockPoppetShelf extends ModBlockContainer {
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
-		IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		for (int slot = 0; slot < handler.getSlots(); slot++) {
-			ItemStack stack = handler.getStackInSlot(slot);
-			InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-		}
-		ExtendedWorld ext = ExtendedWorld.get(world);
-		for (NBTTagCompound poppet : ext.storedPoppetShelves) {
-			if (poppet.getInteger("dimension") == world.provider.getDimension() && poppet.getLong("position") == pos.toLong()) {
-				ext.storedPoppetShelves.remove(poppet);
-				ext.markDirty();
-				break;
+		if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
+			TileEntityPoppetShelf tile = (TileEntityPoppetShelf) world.getTileEntity(pos);
+			IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			for (int slot = 0; slot < handler.getSlots(); slot++) {
+				ItemStack stack = handler.getStackInSlot(slot);
+				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+			}
+			ExtendedWorld ext = ExtendedWorld.get(world);
+			for (NBTTagCompound poppet : ext.storedPoppetShelves) {
+				if (poppet.getInteger("dimension") == world.provider.getDimension() && poppet.getLong("position") == pos.toLong()) {
+					ext.storedPoppetShelves.remove(poppet);
+					ext.markDirty();
+					break;
+				}
 			}
 		}
 		super.breakBlock(world, pos, state);
