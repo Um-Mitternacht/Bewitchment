@@ -7,6 +7,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -40,19 +41,21 @@ public class CauldronTeleport implements IMessage {
 		@Override
 		public IMessage onMessage(CauldronTeleport message, MessageContext ctx) {
 			if (ctx.side.isServer()) {
-				EntityPlayer player = ctx.getServerHandler().player;
-				ExtendedWorld ext = ExtendedWorld.get(player.world);
-				for (NBTTagCompound cauldron : ext.storedCauldrons) {
-					if (player.dimension == cauldron.getInteger("dimension")) {
-						BlockPos pos = BlockPos.fromLong(cauldron.getLong("position"));
-						if (player.world.getTileEntity(pos) instanceof TileEntityWitchesCauldron && ((TileEntityWitchesCauldron) player.world.getTileEntity(pos)).getName().equals(message.message)) {
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-							Util.teleportPlayer(player, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-							break;
+				ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
+					EntityPlayer player = ctx.getServerHandler().player;
+					ExtendedWorld ext = ExtendedWorld.get(player.world);
+					for (NBTTagCompound cauldron : ext.storedCauldrons) {
+						if (player.dimension == cauldron.getInteger("dimension")) {
+							BlockPos pos = BlockPos.fromLong(cauldron.getLong("position"));
+							if (player.world.getTileEntity(pos) instanceof TileEntityWitchesCauldron && ((TileEntityWitchesCauldron) player.world.getTileEntity(pos)).getName().equals(message.message)) {
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
+								Util.teleportPlayer(player, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
+								break;
+							}
 						}
 					}
-				}
+				});
 			}
 			return null;
 		}
