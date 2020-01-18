@@ -1268,6 +1268,11 @@ research.MATSTUDCOLDIRON.stage.1=Like mundane iron, cold iron is quite sturdy bu
 golem.material.coldiron=Cold Iron
 golem.material.text.coldiron=The golem is crafted from cold iron. While it shares many identical characteristics with iron, it provides additional strength against demons and spirits.
 
+research.MATSTUDSILVER.title=Material Studies: Silver
+research.MATSTUDSILVER.stage.1=Silver, being a precious metal, has been sought out for trading. However, silver is very soft and malleable, albeit not as malleable as gold. <BR>Undead seem to be repulsed by silver, as do some other creatures of the night, however.
+golem.material.silver=Silver
+golem.material.text.silver=The golem is crafted from silver. This soft and malleable metal is also potent against the undead.
+
 research.MATSTUDDRAGONSBLOOD.title=Material Studies: Dragon's Blood Resin
 research.MATSTUDDRAGONSBLOOD.stage.1=The resin from a Dragon's Blood Tree was of particular interest to you, in hopes of making a golem aligned with the occult. <BR>However, what you created was a messy golem that falls apart rather easily. It also somewhat resembles human flesh, and it repulses you as a result. <BR>You are confident you will find a better material to fit this role.
 golem.material.dragonsblood=Dragon's Blood Resin
@@ -1275,6 +1280,9 @@ golem.material.text.dragonsblood=The golem is crafted from Dragon's Blood Resin.
 
 golem.trait.blessed=Blessed
 golem.trait.text.blessed=The golem is particularly strong against demons and spirits.
+
+golem.trait.extra_blessed=Blessed
+golem.trait.text.extra_blessed=The golem is particularly strong against undead.
 
 golem.trait.uncanny=Uncanny
 golem.trait.text.uncanny=This golem has an uncanny resemblance to human flesh. Even other living beings are slightly repulsed.
