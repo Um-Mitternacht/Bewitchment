@@ -36,6 +36,7 @@ public class ThaumcraftCompat {
 	
 	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
+	public static final EnumGolemTrait EXTRA_BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "EXTRA_BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	
 	public static void init() {
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
@@ -58,6 +59,10 @@ public class ThaumcraftCompat {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(BLESSED);
 	}
 	
+	public static boolean isSilverGolem(EntityLivingBase golem) {
+		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(EXTRA_BLESSED);
+	}
+	
 	public static boolean isDragonsBloodGolem(EntityLivingBase golem) {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
@@ -76,6 +81,23 @@ public class ThaumcraftCompat {
 					event.setAmount(event.getAmount() * 0.2F);
 					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 2);
 					((EntityLivingBase) source).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 0, false, false));
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void handleSilverGolem(LivingHurtEvent event) {
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!entity.world.isRemote) {
+			Entity source = event.getSource().getImmediateSource();
+			if (source instanceof EntityLivingBase) {
+				float weakness = BewitchmentAPI.getSilverWeakness(entity);
+				if (weakness > 1 && isSilverGolem((EntityLivingBase) source)) event.setAmount(event.getAmount() * weakness * 2);
+				weakness = BewitchmentAPI.getSilverWeakness((EntityLivingBase) source);
+				if (weakness > 1 && isSilverGolem(entity)) {
+					event.setAmount(event.getAmount() * 0.4F);
+					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
 				}
 			}
 		}
