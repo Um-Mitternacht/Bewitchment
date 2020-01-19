@@ -262,10 +262,10 @@ public class ModObjects {
 	public static final Block dragons_blood_poppet_shelf = new BlockPoppetShelf("dragons_blood");
 	
 	//Armor
-	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet");
-	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate");
-	public static final Item silver_leggings = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.LEGS), "silver_leggings");
-	public static final Item silver_boots = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.FEET), "silver_boots");
+	public static final Item silver_helmet = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.HEAD), "silver_helmet", "helmetSilver");
+	public static final Item silver_chestplate = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.CHEST), "silver_chestplate", "chestplateSilver");
+	public static final Item silver_leggings = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.LEGS), "silver_leggings", "leggingsSilver");
+	public static final Item silver_boots = Util.registerItem(new ItemArmor(ARMOR_SILVER, 0, EntityEquipmentSlot.FEET), "silver_boots", "bootsSilver");
 	public static final Item cold_iron_helmet = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.HEAD), "cold_iron_helmet");
 	public static final Item cold_iron_chestplate = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.CHEST), "cold_iron_chestplate");
 	public static final Item cold_iron_leggings = Util.registerItem(new ItemArmor(ARMOR_COLD_IRON, 0, EntityEquipmentSlot.LEGS), "cold_iron_leggings");
@@ -287,11 +287,11 @@ public class ModObjects {
 	public static final Item green_witch_robes = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.CHEST, Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_robes");
 	public static final Item green_witch_pants = Util.registerItem(new ItemWitchesArmor(EntityEquipmentSlot.LEGS, Bewitchment.MODID + ":textures/models/armor/green_witch_robes"), "green_witch_pants");
 	//Tools
-	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword");
-	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe");
-	public static final Item silver_axe = Util.registerItem(new ModItemAxe(TOOL_SILVER), "silver_axe");
-	public static final Item silver_shovel = Util.registerItem(new ItemSpade(TOOL_SILVER), "silver_shovel");
-	public static final Item silver_hoe = Util.registerItem(new ItemHoe(TOOL_SILVER), "silver_hoe");
+	public static final Item silver_sword = Util.registerItem(new ItemSword(TOOL_SILVER), "silver_sword", "swordSilver");
+	public static final Item silver_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_SILVER), "silver_pickaxe", "pickaxeSilver");
+	public static final Item silver_axe = Util.registerItem(new ModItemAxe(TOOL_SILVER), "silver_axe", "axeSilver");
+	public static final Item silver_shovel = Util.registerItem(new ItemSpade(TOOL_SILVER), "silver_shovel", "shovelSilver");
+	public static final Item silver_hoe = Util.registerItem(new ItemHoe(TOOL_SILVER), "silver_hoe", "hoeSilver");
 	public static final Item cold_iron_sword = Util.registerItem(new ItemSword(TOOL_COLD_IRON), "cold_iron_sword", Collections.singletonList(s -> s.getDisplayName().equalsIgnoreCase("Hudson Bat") || s.getDisplayName().equalsIgnoreCase("Masashi Bat") || s.getDisplayName().equalsIgnoreCase("Emmanuel Bat") || s.getDisplayName().equalsIgnoreCase("Michael Bat") || s.getDisplayName().equalsIgnoreCase("Yoshihiro Bat") || s.getDisplayName().equalsIgnoreCase("Lewis Bat") || s.getDisplayName().equalsIgnoreCase("Katushiro Bat") || s.getDisplayName().equalsIgnoreCase("Ashley Bat")));
 	public static final Item cold_iron_pickaxe = Util.registerItem(new ModItemPickaxe(TOOL_COLD_IRON), "cold_iron_pickaxe");
 	public static final Item cold_iron_axe = Util.registerItem(new ModItemAxe(TOOL_COLD_IRON), "cold_iron_axe");
@@ -408,7 +408,7 @@ public class ModObjects {
 	public static final Item poppet_wasting = Util.registerItem(new ItemPoppet(false), "poppet_wasting");
 	public static final Item poppet_waterprotection = Util.registerItem(new ItemPoppet(true), "poppet_waterprotection");
 	//Plants
-	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum");
+	public static final Item aconitum = Util.registerItem("aconitum", "cropAconitum", "wolfsbane");
 	public static final Item belladonna = Util.registerItem("belladonna", "cropBelladonna");
 	public static final Item garlic = new ItemGarlic();
 	public static final Item hellebore = Util.registerItem("hellebore", "cropHellebore");
