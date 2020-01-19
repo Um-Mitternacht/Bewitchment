@@ -213,13 +213,13 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void dismountBroom(EntityMountEvent event) {
-		/*if (event.isDismounting() && event.getEntityBeingMounted() instanceof EntityBroom) {
+		if (event.isDismounting() && event.getEntityBeingMounted() instanceof EntityBroom) {
 			if (!event.getEntityBeingMounted().world.isRemote && event.getEntityMounting() instanceof EntityPlayerMP) {
 				Bewitchment.network.sendTo(new DismountBroomMessage(), (EntityPlayerMP) event.getEntityMounting());
 			}
 			if (event.getEntityBeingMounted().world.isRemote && event.getEntityMounting() instanceof EntityPlayerSP) {
 				Bewitchment.network.sendToServer(new DismountBroomMessage());
 			}
-		}*/
+		}
 	}
 }
