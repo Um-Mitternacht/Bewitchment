@@ -101,12 +101,18 @@ public abstract class EntityBroom extends Entity {
 	protected void readEntityFromNBT(NBTTagCompound tag) {
 		item = tag.hasKey("item") ? new ItemStack(tag.getCompoundTag("item")) : ItemStack.EMPTY;
 		canFly = tag.getBoolean("canFly");
+		motionX = tag.getDouble("motionX");
+		motionY = tag.getDouble("motionY");
+		motionZ = tag.getDouble("motionZ");
 	}
 	
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound tag) {
 		if (item != null) tag.setTag("item", item.serializeNBT());
 		tag.setBoolean("canFly", canFly);
+		tag.setDouble("motionX", motionX);
+		tag.setDouble("motionY", motionY);
+		tag.setDouble("motionZ", motionZ);
 	}
 	
 	@Override
