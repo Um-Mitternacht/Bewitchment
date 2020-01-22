@@ -29,7 +29,7 @@ public class ItemWitchesArmor extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped _default) {
-		ModelBiped model = new ModelWitchesArmor(slot, stack.getItem() == ModObjects.witches_hat || stack.getItem() == ModObjects.besmirched_hat || stack.getItem() == ModObjects.alchemist_hat || stack.getItem() == ModObjects.green_witch_hat);
+		ModelBiped model = ModelWitchesArmor.getInstance(slot, stack.getItem() == ModObjects.witches_hat || stack.getItem() == ModObjects.besmirched_hat || stack.getItem() == ModObjects.alchemist_hat || stack.getItem() == ModObjects.green_witch_hat);
 		model.setModelAttributes(_default);
 		return model;
 	}

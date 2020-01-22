@@ -4,12 +4,18 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * witches_attire_4 - Ingoleth, cybercat5555
  * Created using Tabula 5.1.0
  */
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelWitchesArmor extends ModelArmor {
+
+	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
+
 	public final ModelRenderer bipedRightArm;
 	public final ModelRenderer bipedRightLeg;
 	public final ModelRenderer bipedHead;
@@ -279,5 +285,12 @@ public class ModelWitchesArmor extends ModelArmor {
 		super.bipedRightLeg = bipedRightLeg;
 		super.bipedLeftLeg = bipedLeftLeg;
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+	}
+
+	public static ModelWitchesArmor getInstance(EntityEquipmentSlot slot, boolean hat) {
+		if (slot.getSlotType() != EntityEquipmentSlot.Type.ARMOR) {
+			return null;
+		}
+		return INSTANCES.computeIfAbsent(slot, k -> new ModelWitchesArmor(slot, hat));
 	}
 }
