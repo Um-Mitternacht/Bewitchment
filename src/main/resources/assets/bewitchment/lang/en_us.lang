@@ -462,6 +462,9 @@ item.bewitchment.sigil_disorientation.name=Sigil of Disorientation
 item.bewitchment.sigil_shrieking.name=Sigil of Shrieking
 item.bewitchment.sigil_sentinel.name=Sigil of Sentinel
 
+item.bewitchment.cold_iron_plate.name=Cold Iron Plate
+item.bewitchment_silver_plate.name=Silver Plate
+
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom
 entity.bewitchment.elder_broom.name=Elder Broom
