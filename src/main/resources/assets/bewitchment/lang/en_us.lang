@@ -1274,17 +1274,19 @@ golem.material.silver=Silver
 golem.material.text.silver=The golem is crafted from silver. This soft and malleable metal is also potent against the undead.
 
 research.MATSTUDDRAGONSBLOOD.title=Material Studies: Dragon's Blood Resin
-research.MATSTUDDRAGONSBLOOD.stage.1=The resin from a Dragon's Blood Tree was of particular interest to you, in hopes of making a golem aligned with the occult. <BR>However, what you created was a messy golem that falls apart rather easily. It also somewhat resembles human flesh, and it repulses you as a result. <BR>You are confident you will find a better material to fit this role.
+research.MATSTUDDRAGONSBLOOD.stage.1=The resin from the Dragon's Blood tree has several interesting properties, especially its structure that greatly resembles that of human flesh. <BR>While it may not be ideally suited as material for golems, working with it may be an interesting, if ghoulish, experience.
+##OLD TEXT: The resin from a Dragon's Blood Tree was of particular interest to you, in hopes of making a golem aligned with the occult. <BR>However, what you created was a messy golem that falls apart rather easily. It also somewhat resembles human flesh, and it repulses you as a result. <BR>You are confident you will find a better material to fit this role.
+
 golem.material.dragonsblood=Dragon's Blood Resin
 golem.material.text.dragonsblood=The golem is crafted from Dragon's Blood Resin. It's... a mess.
 
-golem.trait.blessed=Blessed
-golem.trait.text.blessed=The golem is particularly strong against demons and spirits.
+golem.trait.spiritual_ward=Spiritual Ward
+golem.trait.text.spiritual_ward=The golem is particularly strong against demons and spirits.
 
-golem.trait.extra_blessed=Blessed
-golem.trait.text.extra_blessed=The golem is particularly strong against undead.
+golem.trait.blessed=Blessed
+golem.trait.text.extra_blessed=The golem is particularly strong against the undead.
 
 golem.trait.uncanny=Uncanny
-golem.trait.text.uncanny=This golem has an uncanny resemblance to human flesh. Even other living beings are slightly repulsed.
+golem.trait.text.uncanny=This golem has an uncanny resemblance to human flesh. Even other mobs are slightly repulsed.
 
 ritual.cannot_start=You don't feel anything happening...

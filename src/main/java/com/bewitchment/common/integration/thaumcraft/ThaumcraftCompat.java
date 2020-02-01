@@ -6,14 +6,19 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.RandomPositionGenerator;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.Path;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.ThaumcraftApi;
@@ -27,25 +32,28 @@ import thaumcraft.api.research.ScanOreDictionary;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
+import java.util.List;
+
 @SuppressWarnings({"deprecation", "WeakerAccess", "unused"})
 public class ThaumcraftCompat {
 	public static final Aspect SUN = getOrCreateAspect("sol", 0xffd300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/sol.png"));
 	public static final Aspect MOON = getOrCreateAspect("luna", 0x808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/luna.png"));
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
-	
-	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
+
+	//TODO: NEW ICON FOR SPIRITUAL_WARD
+	public static final EnumGolemTrait SPIRITUAL_WARD = EnumHelper.addEnum(EnumGolemTrait.class, "SPIRITUAL_WARD", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
-	public static final EnumGolemTrait EXTRA_BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "EXTRA_BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
+	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	
 	public static void init() {
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATCOLDIRON", new String[]{"ingotColdIron", "blockColdIron", "nuggetColdIron"}));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATDRAGONSBLOOD", new String[]{"resinDragonsBlood", "blockDragonsBloodResin"}));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATSILVER", new String[]{"ingotSilver", "blockSilver", "plateSilver", "dustSilver", "nuggetSilver", "oreSilver"}));
-		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_ingot, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, BLESSED}));
+		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_ingot, 2), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, SPIRITUAL_WARD}));
 		GolemMaterial.register(new GolemMaterial("DRAGONSBLOOD", new String[]{"MATSTUDDRAGONSBLOOD"}, new ResourceLocation("bewitchment", "textures/entity/dragonsbloodgolem.png"), 4786944, 10, 1, 1, new ItemStack(ModObjects.dragons_blood_resin_block, 1), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.FRAGILE, EnumGolemTrait.CLUMSY, EnumGolemTrait.LIGHT, UNCANNY}));
-		GolemMaterial.register(new GolemMaterial("SILVER", new String[]{"MATSTUDSILVER"}, new ResourceLocation("bewitchment", "textures/entity/silvergolem.png"), 10922156, 14, 3, 2, new ItemStack(ModObjects.silver_ingot, 6), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.LIGHT, EXTRA_BLESSED}));
+		GolemMaterial.register(new GolemMaterial("SILVER", new String[]{"MATSTUDSILVER"}, new ResourceLocation("bewitchment", "textures/entity/silvergolem.png"), 10922156, 14, 3, 2, new ItemStack(ModObjects.silver_ingot, 6), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.LIGHT, BLESSED}));
 	}
 	
 	
@@ -56,11 +64,11 @@ public class ThaumcraftCompat {
 	}
 	
 	public static boolean isColdIronGolem(EntityLivingBase golem) {
-		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(BLESSED);
+		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(SPIRITUAL_WARD);
 	}
 	
 	public static boolean isSilverGolem(EntityLivingBase golem) {
-		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(EXTRA_BLESSED);
+		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(BLESSED);
 	}
 	
 	public static boolean isDragonsBloodGolem(EntityLivingBase golem) {
@@ -73,18 +81,27 @@ public class ThaumcraftCompat {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (!entity.world.isRemote) {
 			Entity source = event.getSource().getImmediateSource();
-			if (source instanceof EntityLivingBase) {
-				float weakness = BewitchmentAPI.getColdIronWeakness(entity);
-				if (weakness > 1 && isDragonsBloodGolem((EntityLivingBase) source)) event.setAmount(event.getAmount() * weakness * 1.3f);
-				weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
-				if (weakness > 1 && isDragonsBloodGolem(entity)) {
-					event.setAmount(event.getAmount() * 0.2F);
-					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 2);
-					((EntityLivingBase) source).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 0, false, false));
-				}
+			if (source instanceof EntityLivingBase && isDragonsBloodGolem((EntityLivingBase) source)) {
+				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void handleDragonsBloodGolems(LivingEvent.LivingUpdateEvent event){
+		if (isDragonsBloodGolem(event.getEntityLiving()) && event.getEntityLiving().getRNG().nextInt(20) == 0){
+			EntityThaumcraftGolem golem = (EntityThaumcraftGolem) event.getEntityLiving();
+			List<EntityMob> mobsNearby = golem.world.getEntitiesWithinAABB(EntityMob.class, golem.getEntityBoundingBox().grow(8));
+			mobsNearby.forEach(mob -> {
+				Vec3d vec3d = RandomPositionGenerator.findRandomTargetBlockAwayFrom(golem, 16, 7, new Vec3d(mob.posX, mob.posY, mob.posZ));
+				if (vec3d != null && mob.getDistanceSq(vec3d.x, vec3d.y, vec3d.z) >= mob.getDistanceSq(golem)) {
+					Path path = mob.getNavigator().getPathToXYZ(vec3d.x, vec3d.y, vec3d.z);
+					if (path != null) mob.getNavigator().setPath(path, 1);
+				}
+			});
+		}
+	}
+
 	
 	@SubscribeEvent
 	public void handleSilverGolem(LivingHurtEvent event) {
