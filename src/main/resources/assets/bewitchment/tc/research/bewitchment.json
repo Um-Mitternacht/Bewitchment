@@ -4,7 +4,7 @@
 	  "key": "MATSTUDCOLDIRON",
 	  "name": "research.MATSTUDCOLDIRON.title",
 	  "icons": [
-		"bewitchment:cold_iron_ingot"
+		"bewitchment:cold_iron_plate"
 	  ],
 	  "category": "GOLEMANCY",
 	  "location": [
@@ -31,7 +31,7 @@
 	  "key": "MATSTUDSILVER",
 	  "name": "research.MATSTUDSILVER.title",
 	  "icons": [
-		"bewitchment:silver_ingot"
+		"bewitchment:silver_plate"
 	  ],
 	  "category": "GOLEMANCY",
 	  "location": [
