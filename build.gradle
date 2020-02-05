@@ -18,7 +18,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.12.2-0.0.21.8"
+version = "1.12.2-0.0.21.9"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
