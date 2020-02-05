@@ -372,26 +372,26 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(Items.GOLD_INGOT), new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 10).add(SUN, 5));
 		
 		//Entities
-		ThaumcraftApi.registerEntityTag("owl", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(MOON, 8));
-		ThaumcraftApi.registerEntityTag("snake", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 10).add(DEMON, 8));
-		ThaumcraftApi.registerEntityTag("raven", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(Aspect.DARKNESS, 8));
-		ThaumcraftApi.registerEntityTag("toad", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.ALCHEMY, 8));
+		ThaumcraftApi.registerEntityTag("bewitchment.owl", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(MOON, 8));
+		ThaumcraftApi.registerEntityTag("bewitchment.snake", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 10).add(DEMON, 8));
+		ThaumcraftApi.registerEntityTag("bewitchment.raven", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 10).add(Aspect.DARKNESS, 8));
+		ThaumcraftApi.registerEntityTag("bewitchment.toad", new AspectList().add(Aspect.BEAST, 10).add(Aspect.WATER, 10).add(Aspect.ALCHEMY, 8));
 		
-		ThaumcraftApi.registerEntityTag("lizard", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(SUN, 8));
+		ThaumcraftApi.registerEntityTag("bewitchment.lizard", new AspectList().add(Aspect.BEAST, 10).add(Aspect.EARTH, 10).add(SUN, 8));
 		
-		ThaumcraftApi.registerEntityTag("black_dog", new AspectList().add(Aspect.SOUL, 25).add(Aspect.BEAST, 25).add(Aspect.AVERSION, 16));
-		ThaumcraftApi.registerEntityTag("hellhound", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
-		ThaumcraftApi.registerEntityTag("feuerwurm", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
-		ThaumcraftApi.registerEntityTag("demon", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
-		ThaumcraftApi.registerEntityTag("demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
-		ThaumcraftApi.registerEntityTag("imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
-		ThaumcraftApi.registerEntityTag("druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
-		ThaumcraftApi.registerEntityTag("shadow_person", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
+		ThaumcraftApi.registerEntityTag("bewitchment.black_dog", new AspectList().add(Aspect.SOUL, 25).add(Aspect.BEAST, 25).add(Aspect.AVERSION, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.hellhound", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.feuerwurm", new AspectList().add(Aspect.BEAST, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.demon", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.demoness", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.shadow_person", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
 		
-		ThaumcraftApi.registerEntityTag("ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
+		ThaumcraftApi.registerEntityTag("bewitchment.ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
 		
-		ThaumcraftApi.registerEntityTag("leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
-		ThaumcraftApi.registerEntityTag("baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
+		ThaumcraftApi.registerEntityTag("bewitchment.leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
+		ThaumcraftApi.registerEntityTag("bewitchment.baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
 	}
 	
 	
