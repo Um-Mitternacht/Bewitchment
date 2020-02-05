@@ -463,7 +463,7 @@ item.bewitchment.sigil_shrieking.name=Sigil of Shrieking
 item.bewitchment.sigil_sentinel.name=Sigil of Sentinel
 
 item.bewitchment.cold_iron_plate.name=Cold Iron Plate
-item.bewitchment_silver_plate.name=Silver Plate
+item.bewitchment.silver_plate.name=Silver Plate
 
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom
@@ -1287,7 +1287,7 @@ golem.trait.spiritual_ward=Spiritual Ward
 golem.trait.text.spiritual_ward=The golem is particularly strong against demons and spirits.
 
 golem.trait.blessed=Blessed
-golem.trait.text.extra_blessed=The golem is particularly strong against the undead.
+golem.trait.text.blessed=The golem is particularly strong against the undead.
 
 golem.trait.uncanny=Uncanny
 golem.trait.text.uncanny=This golem has an uncanny resemblance to human flesh. Even other mobs are slightly repulsed.
