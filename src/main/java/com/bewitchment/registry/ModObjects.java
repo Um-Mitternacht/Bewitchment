@@ -362,12 +362,12 @@ public class ModObjects {
 	public static final Item silver_nugget = Util.registerItem("silver_nugget", "nuggetSilver");
 	public static final Item cold_iron_nugget = Util.registerItem("cold_iron_nugget", "nuggetColdIron");
 	public static final Item salt = new ItemSalt();
-
+	
 	//Compat Materials
 	public static final Item cold_iron_plate = Util.registerItem("cold_iron_plate", "plateColdIron");
 	public static final Item silver_plate = Util.registerItem("silver_plate", "plateSilver");
-
-
+	
+	
 	//Oven
 	public static final Item unfired_jar = Util.registerItem("unfired_jar");
 	public static final Item empty_jar = Util.registerItem("empty_jar");

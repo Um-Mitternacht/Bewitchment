@@ -13,9 +13,9 @@ import java.util.Map;
  */
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelWitchesArmor extends ModelArmor {
-
+	
 	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
-
+	
 	public final ModelRenderer bipedRightArm;
 	public final ModelRenderer bipedRightLeg;
 	public final ModelRenderer bipedHead;
@@ -266,6 +266,13 @@ public class ModelWitchesArmor extends ModelArmor {
 		this.bipedRightLeg.addChild(this.tunicRightBack);
 	}
 	
+	public static ModelWitchesArmor getInstance(EntityEquipmentSlot slot, boolean hat) {
+		if (slot.getSlotType() != EntityEquipmentSlot.Type.ARMOR) {
+			return null;
+		}
+		return INSTANCES.computeIfAbsent(slot, k -> new ModelWitchesArmor(slot, hat));
+	}
+	
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (hat) hat1.showModel = slot == EntityEquipmentSlot.HEAD;
@@ -285,12 +292,5 @@ public class ModelWitchesArmor extends ModelArmor {
 		super.bipedRightLeg = bipedRightLeg;
 		super.bipedLeftLeg = bipedLeftLeg;
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-	}
-
-	public static ModelWitchesArmor getInstance(EntityEquipmentSlot slot, boolean hat) {
-		if (slot.getSlotType() != EntityEquipmentSlot.Type.ARMOR) {
-			return null;
-		}
-		return INSTANCES.computeIfAbsent(slot, k -> new ModelWitchesArmor(slot, hat));
 	}
 }

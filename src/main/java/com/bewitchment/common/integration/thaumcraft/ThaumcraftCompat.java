@@ -1,7 +1,6 @@
 package com.bewitchment.common.integration.thaumcraft;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModObjects;
 import com.google.gson.JsonObject;
@@ -13,9 +12,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -28,7 +25,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -44,12 +40,12 @@ import java.util.List;
 import java.util.function.BooleanSupplier;
 
 @SuppressWarnings({"deprecation", "WeakerAccess", "unused"})
-public class ThaumcraftCompat implements IConditionFactory{
+public class ThaumcraftCompat implements IConditionFactory {
 	public static final Aspect SUN = getOrCreateAspect("sol", 0xffd300, new Aspect[]{Aspect.FIRE, Aspect.LIGHT}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/sol.png"));
 	public static final Aspect MOON = getOrCreateAspect("luna", 0x808080, new Aspect[]{Aspect.EARTH, Aspect.DARKNESS}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/luna.png"));
 	public static final Aspect STAR = getOrCreateAspect("stellae", 0x73c2fb, new Aspect[]{SUN, Aspect.VOID}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/stellae.png"));
 	public static final Aspect DEMON = getOrCreateAspect("diabolus", 0x960018, new Aspect[]{Aspect.SOUL, Aspect.AVERSION}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/diabolus.png"));
-
+	
 	//TODO: NEW ICON FOR SPIRITUAL_WARD
 	public static final EnumGolemTrait SPIRITUAL_WARD = EnumHelper.addEnum(EnumGolemTrait.class, "SPIRITUAL_WARD", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
@@ -63,7 +59,7 @@ public class ThaumcraftCompat implements IConditionFactory{
 		GolemMaterial.register(new GolemMaterial("COLDIRON", new String[]{"MATSTUDCOLDIRON"}, new ResourceLocation("bewitchment", "textures/entity/coldirongolem.png"), 2699070, 20, 8, 3, new ItemStack(ModObjects.cold_iron_plate), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.FIREPROOF, SPIRITUAL_WARD}));
 		GolemMaterial.register(new GolemMaterial("DRAGONSBLOOD", new String[]{"MATSTUDDRAGONSBLOOD"}, new ResourceLocation("bewitchment", "textures/entity/dragonsbloodgolem.png"), 4786944, 10, 1, 1, new ItemStack(ModObjects.dragons_blood_resin_block, 1), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.FRAGILE, EnumGolemTrait.CLUMSY, EnumGolemTrait.LIGHT, UNCANNY}));
 		GolemMaterial.register(new GolemMaterial("SILVER", new String[]{"MATSTUDSILVER"}, new ResourceLocation("bewitchment", "textures/entity/silvergolem.png"), 10922156, 14, 3, 2, new ItemStack(ModObjects.silver_plate), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.LIGHT, BLESSED}));
-
+		
 	}
 	
 	
@@ -96,10 +92,10 @@ public class ThaumcraftCompat implements IConditionFactory{
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
-	public void handleDragonsBloodGolems(LivingEvent.LivingUpdateEvent event){
-		if (isDragonsBloodGolem(event.getEntityLiving()) && event.getEntityLiving().getRNG().nextInt(20) == 0){
+	public void handleDragonsBloodGolems(LivingEvent.LivingUpdateEvent event) {
+		if (isDragonsBloodGolem(event.getEntityLiving()) && event.getEntityLiving().getRNG().nextInt(20) == 0) {
 			EntityThaumcraftGolem golem = (EntityThaumcraftGolem) event.getEntityLiving();
 			List<EntityMob> mobsNearby = golem.world.getEntitiesWithinAABB(EntityMob.class, golem.getEntityBoundingBox().grow(8));
 			mobsNearby.forEach(mob -> {
@@ -111,7 +107,7 @@ public class ThaumcraftCompat implements IConditionFactory{
 			});
 		}
 	}
-
+	
 	
 	@SubscribeEvent
 	public void handleSilverGolem(LivingHurtEvent event) {
@@ -397,8 +393,8 @@ public class ThaumcraftCompat implements IConditionFactory{
 		ThaumcraftApi.registerEntityTag("leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
 		ThaumcraftApi.registerEntityTag("baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
 	}
-
-
+	
+	
 	@Override
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
 		return () -> Loader.isModLoaded("thaumcraft");
