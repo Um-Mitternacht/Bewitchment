@@ -70,6 +70,7 @@ dependencies {
     deobfProvided "curse.maven:constructs-armory:2821527"
     deobfProvided "curse.maven:miskatonic-mysteries:2835243"
     deobfProvided "curse.maven:elementaristics:2826887"
+    deobfProvided "curse.maven:immersive-engineering:2799143"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.554"
     deobfProvided "curse.maven:hwyla:2568751"
     deobfProvided "curse.maven:wawla-what-are-we-looking-at:2875678"
