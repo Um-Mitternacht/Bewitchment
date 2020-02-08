@@ -67,29 +67,6 @@ public class EntityDruden extends ModEntityMob {
 		}
 	}
 	
-	public void onEntityUpdate()
-	{
-		int i = this.getAir();
-		super.onEntityUpdate();
-		
-		if (this.isEntityAlive() && !this.isInWater())
-		{
-			--i;
-			this.setAir(i);
-			
-			if (this.getAir() == -20)
-			{
-				this.setAir(0);
-				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
-			}
-		}
-		else
-		{
-			this.setAir(300);
-		}
-	}
-	
-	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return super.attackEntityFrom(source, amount * (source.getImmediateSource() instanceof EntityLivingBase && ((EntityLivingBase) source.getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemAxe ? 3 : 1));
@@ -136,6 +113,24 @@ public class EntityDruden extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && !BewitchmentAPI.hasBesmirchedGear(p)));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityVillager || e instanceof EntitySpider || e instanceof EntityEnderman || e instanceof EntitySilverfish || e instanceof EntityGolem || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+	}
+	
+	public void onEntityUpdate() {
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater()) {
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20) {
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else {
+			this.setAir(300);
+		}
 	}
 	
 	@Override

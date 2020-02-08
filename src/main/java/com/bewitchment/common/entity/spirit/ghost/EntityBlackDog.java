@@ -45,28 +45,6 @@ public class EntityBlackDog extends ModEntityMob {
 	public void fall(float distance, float damageMultiplier) {
 	}
 	
-	public void onEntityUpdate()
-	{
-		int i = this.getAir();
-		super.onEntityUpdate();
-		
-		if (this.isEntityAlive() && !this.isInWater())
-		{
-			--i;
-			this.setAir(i);
-			
-			if (this.getAir() == -20)
-			{
-				this.setAir(0);
-				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
-			}
-		}
-		else
-		{
-			this.setAir(300);
-		}
-	}
-	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
@@ -77,12 +55,12 @@ public class EntityBlackDog extends ModEntityMob {
 		return 5;
 	}
 	
-	//Todo: Make it so they become more powerful if hit by lightning
-	
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
+	
+	//Todo: Make it so they become more powerful if hit by lightning
 	
 	@Override
 	public void onLivingUpdate() {
@@ -128,6 +106,24 @@ public class EntityBlackDog extends ModEntityMob {
 		PathNavigateGround path = new PathNavigateGround(this, world);
 		path.setBreakDoors(true);
 		return path;
+	}
+	
+	public void onEntityUpdate() {
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater()) {
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20) {
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else {
+			this.setAir(300);
+		}
 	}
 	
 	@Override

@@ -54,28 +54,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		}
 	}
 	
-	public void onEntityUpdate()
-	{
-		int i = this.getAir();
-		super.onEntityUpdate();
-		
-		if (this.isEntityAlive() && !this.isInWater())
-		{
-			--i;
-			this.setAir(i);
-			
-			if (this.getAir() == -20)
-			{
-				this.setAir(0);
-				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
-			}
-		}
-		else
-		{
-			this.setAir(300);
-		}
-	}
-	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		this.setEquipmentBasedOnDifficulty(difficulty);
@@ -166,7 +144,6 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		this.bossInfo.setName(this.getDisplayName());
 	}
 	
-	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -177,6 +154,24 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+	}
+	
+	public void onEntityUpdate() {
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater()) {
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20) {
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else {
+			this.setAir(300);
+		}
 	}
 	
 	@Override

@@ -95,6 +95,24 @@ public class EntityGhost extends ModEntityMob {
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
 	}
 	
+	public void onEntityUpdate() {
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater()) {
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20) {
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else {
+			this.setAir(300);
+		}
+	}
+	
 	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
@@ -106,28 +124,6 @@ public class EntityGhost extends ModEntityMob {
 	}
 	
 	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	public void onEntityUpdate()
-	{
-		int i = this.getAir();
-		super.onEntityUpdate();
-		
-		if (this.isEntityAlive() && !this.isInWater())
-		{
-			--i;
-			this.setAir(i);
-			
-			if (this.getAir() == -20)
-			{
-				this.setAir(0);
-				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
-			}
-		}
-		else
-		{
-			this.setAir(300);
-		}
 	}
 	
 	@Override
