@@ -12,6 +12,7 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -41,6 +42,28 @@ public class EntityShadowPerson extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.65);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.22);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.5);
+	}
+	
+	public void onEntityUpdate()
+	{
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater())
+		{
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20)
+			{
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAir(300);
+		}
 	}
 	
 	@Override

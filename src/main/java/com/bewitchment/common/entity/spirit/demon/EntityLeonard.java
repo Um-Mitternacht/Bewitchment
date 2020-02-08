@@ -54,6 +54,28 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		}
 	}
 	
+	public void onEntityUpdate()
+	{
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater())
+		{
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20)
+			{
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAir(300);
+		}
+	}
+	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		this.setEquipmentBasedOnDifficulty(difficulty);

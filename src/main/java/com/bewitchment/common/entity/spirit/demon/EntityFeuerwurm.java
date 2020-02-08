@@ -56,6 +56,28 @@ public class EntityFeuerwurm extends ModEntityMob {
 		return pass == 0;
 	}
 	
+	public void onEntityUpdate()
+	{
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater())
+		{
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20)
+			{
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAir(300);
+		}
+	}
+	
 	@Override
 	public int getSkinTypes() {
 		return 9;
@@ -80,7 +102,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (isWet()) {
-			attackEntityFrom(DamageSource.DROWN, 2.5f);
+			attackEntityFrom(DamageSource.MAGIC, 2.5f);
 			if (hurtTime == 1) {
 				for (int i = 0; i < 20; i++)
 					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX + (rand.nextDouble() - 0.5) * width, posY + rand.nextDouble() * height, posZ + (rand.nextDouble() - 0.5) * width, 0, 0, 0);

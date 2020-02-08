@@ -14,6 +14,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -48,6 +49,28 @@ public class EntityImp extends ModEntityMob {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
 		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
+	}
+	
+	public void onEntityUpdate()
+	{
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater())
+		{
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20)
+			{
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAir(300);
+		}
 	}
 	
 	@Override

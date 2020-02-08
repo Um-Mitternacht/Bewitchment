@@ -45,6 +45,28 @@ public class EntityBlackDog extends ModEntityMob {
 	public void fall(float distance, float damageMultiplier) {
 	}
 	
+	public void onEntityUpdate()
+	{
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater())
+		{
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20)
+			{
+				this.setAir(0);
+				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAir(300);
+		}
+	}
+	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.SPIRIT;
