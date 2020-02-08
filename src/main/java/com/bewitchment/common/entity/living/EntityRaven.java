@@ -132,18 +132,18 @@ public class EntityRaven extends ModEntityTameable {
 		super.onLivingUpdate();
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
 			this.heal(2);
-			if (!onGround && motionY <= 0) motionY *= 0.6;
-			if (shearTimer > 0) shearTimer--;
-			
-			if (!this.onGround || this.getMoveHelper().isUpdating()) {
-				if (this.getPeckTime() <= 61) {
-					this.setPeckTime(80);
-				}
+		}
+		if (!onGround && motionY <= 0) motionY *= 0.6;
+		if (shearTimer > 0) shearTimer--;
+		
+		if (!this.onGround || this.getMoveHelper().isUpdating()) {
+			if (this.getPeckTime() <= 61) {
+				this.setPeckTime(80);
 			}
-			
-			if (!this.world.isRemote && this.setPeckTime(this.getPeckTime() - 1) <= 0) {
-				this.setPeckTime(this.getNewPeck());
-			}
+		}
+		
+		if (!this.world.isRemote && this.setPeckTime(this.getPeckTime() - 1) <= 0) {
+			this.setPeckTime(this.getNewPeck());
 		}
 	}
 	
