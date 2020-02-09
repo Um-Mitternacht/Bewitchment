@@ -346,6 +346,11 @@ public class ModObjects {
 	public static final Block scorned_brick_herne_statue = new BlockStatue(Statues.scorned_brick_herne_statue);
 	public static final Block gold_herne_statue = new BlockStatue(Statues.gold_herne_statue);
 	
+	public static final Block stone_moloch_statue = new BlockStatue(Statues.stone_moloch_statue);
+	public static final Block nether_brick_moloch_statue = new BlockStatue(Statues.nether_brick_moloch_statue);
+	public static final Block scorned_brick_moloch_statue = new BlockStatue(Statues.scorned_brick_moloch_statue);
+	public static final Block gold_moloch_statue = new BlockStatue(Statues.gold_moloch_statue);
+	
 	public static final Block filler = new BlockStatue.BlockFiller();
 	
 	//Util Items

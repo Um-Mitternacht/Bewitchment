@@ -1,10 +1,7 @@
 package com.bewitchment.client.misc;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.client.model.block.ModelBaphometStatue;
-import com.bewitchment.client.model.block.ModelHerneStatue;
-import com.bewitchment.client.model.block.ModelLeonardStatue;
-import com.bewitchment.client.model.block.ModelLilithStatue;
+import com.bewitchment.client.model.block.*;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBase;
@@ -40,6 +37,12 @@ public class Statues {
 	public static Statue gold_herne_statue = new Statue("gold_herne_statue", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/gold.png"), herne, 4);
 	public static Statue nether_brick_herne_statue = new Statue("nether_brick_herne_statue", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/nether_brick.png"), herne, 4);
 	public static Statue scorned_brick_herne_statue = new Statue("scorned_brick_herne_statue", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/herne/scorned_brick.png"), herne, 4);
+	
+	private static ModelBase moloch = new ModelMolochStatue();
+	public static Statue stone_moloch_statue = new Statue("stone_moloch_statue", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/moloch/stone.png"), moloch, 4);
+	public static Statue gold_moloch_statue = new Statue("gold_moloch_statue", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/moloch/gold.png"), moloch, 4);
+	public static Statue nether_brick_moloch_statue = new Statue("nether_brick_moloch_statue", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/moloch/nether_brick.png"), moloch, 4);
+	public static Statue scorned_brick_moloch_statue = new Statue("scorned_brick_moloch_statue", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/moloch/scorned_brick.png"), moloch, 4);
 	
 	public static class Statue {
 		private final String name;
