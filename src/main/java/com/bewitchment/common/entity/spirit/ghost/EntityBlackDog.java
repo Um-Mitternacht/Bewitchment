@@ -117,8 +117,7 @@ public class EntityBlackDog extends ModEntityMob {
 			this.setAir(i);
 			
 			if (this.getAir() == -20) {
-				this.setAir(0);
-				this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+				this.setAir(300);
 			}
 		}
 		else {
