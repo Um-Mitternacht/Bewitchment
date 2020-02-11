@@ -185,6 +185,7 @@ public class ModConfig {
 		public final Hellhound hellhound = new Hellhound();
 		public final Feuerwurm feuerwurm = new Feuerwurm();
 		public final Druden druden = new Druden();
+		public final Cleaver cleaver = new Cleaver();
 		
 		public static class Lizard {
 			@Config.Comment("The list of BiomeDictionary types that the lizard will spawn in.")
@@ -338,6 +339,23 @@ public class ModConfig {
 			@Config.Comment("The maximum amount of feuerwurms to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int feuerwurmMax = 4;
+		}
+		
+		public static class Cleaver {
+			@Config.Comment("The list of BiomeDictionary types that the cleaver will spawn in.")
+			public String[] cleaverBiomes = {Type.NETHER.getName(), Type.WASTELAND.getName()};
+			
+			@Config.Comment("The weight chance for a cleaver to spawn.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int cleaverWeight = 1;
+			
+			@Config.Comment("The minimum amount of cleavers to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int cleaverMin = 0;
+			
+			@Config.Comment("The maximum amount of cleavers to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int cleaverMax = 2;
 		}
 		
 		public static class Druden {

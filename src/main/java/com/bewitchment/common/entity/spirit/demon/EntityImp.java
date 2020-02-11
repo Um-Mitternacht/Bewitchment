@@ -31,7 +31,7 @@ public class EntityImp extends ModEntityMob {
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
-		experienceValue = 100;
+		experienceValue = 75;
 	}
 	
 	@Override
@@ -79,7 +79,7 @@ public class EntityImp extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(5.00);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2.50);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(65);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
 	

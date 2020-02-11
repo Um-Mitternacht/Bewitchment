@@ -45,6 +45,8 @@ public class ModEntities {
 	public static final EntityEntry hellhound = createEntityEntry(EntityHellhound.class, "hellhound", 0x555555, 0xed2939, EnumCreatureType.MONSTER, ModConfig.mobSpawns.hellhound.hellhoundWeight, ModConfig.mobSpawns.hellhound.hellhoundMin, ModConfig.mobSpawns.hellhound.hellhoundMax, Arrays.asList(ModConfig.mobSpawns.hellhound.hellhoundBiomes));
 	public static final EntityEntry feuerwurm = createEntityEntry(EntityFeuerwurm.class, "feuerwurm", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.feuerwurm.feuerwurmWeight, ModConfig.mobSpawns.feuerwurm.feuerwurmMin, ModConfig.mobSpawns.feuerwurm.feuerwurmMax, Arrays.asList(ModConfig.mobSpawns.feuerwurm.feuerwurmBiomes));
 	
+	public static final EntityEntry cleaver = createEntityEntry(EntityCleaver.class, "cleaver", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.cleaver.cleaverWeight, ModConfig.mobSpawns.cleaver.cleaverMin, ModConfig.mobSpawns.cleaver.cleaverMax, Arrays.asList(ModConfig.mobSpawns.cleaver.cleaverBiomes));
+	
 	public static final EntityEntry demon = createEntityEntry(EntityDemon.class, "demon", 0x555555, 0xed2939);
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);
 	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
