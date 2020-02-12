@@ -29,6 +29,6 @@ public class RenderCleaver extends RenderLiving<EntityCleaver> {
 	@Override
 	protected void preRenderCallback(EntityCleaver entity, float partialTickTime) {
 		super.preRenderCallback(entity, partialTickTime);
-		GlStateManager.scale(2.0, 2.0, 2.0);
+		GlStateManager.scale(1.3, 1.3, 1.3);
 	}
 }
