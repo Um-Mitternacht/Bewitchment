@@ -14,7 +14,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 

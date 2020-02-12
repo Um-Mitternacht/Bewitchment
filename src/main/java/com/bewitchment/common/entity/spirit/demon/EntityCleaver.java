@@ -34,6 +34,11 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
@@ -59,10 +64,5 @@ public class EntityCleaver extends ModEntityMob {
 		else {
 			this.setAir(300);
 		}
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
 	}
 }

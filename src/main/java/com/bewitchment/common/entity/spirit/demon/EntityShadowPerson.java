@@ -12,7 +12,6 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 

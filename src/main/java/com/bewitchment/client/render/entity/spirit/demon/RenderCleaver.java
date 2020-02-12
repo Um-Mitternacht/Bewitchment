@@ -2,9 +2,7 @@ package com.bewitchment.client.render.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelCleaver;
-import com.bewitchment.client.model.entity.spirit.demon.ModelImp;
 import com.bewitchment.common.entity.spirit.demon.EntityCleaver;
-import com.bewitchment.common.entity.spirit.demon.EntityImp;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
