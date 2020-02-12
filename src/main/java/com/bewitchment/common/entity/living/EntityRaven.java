@@ -11,6 +11,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
@@ -32,6 +33,7 @@ import net.minecraft.world.World;
 public class EntityRaven extends ModEntityTameable {
 	protected static final DataParameter<Integer> PECK_TIME = EntityDataManager.<Integer>createKey(EntityRaven.class, DataSerializers.VARINT);
 	protected int shearTimer;
+	public int timeUntilNextShed;
 	
 	public EntityRaven(World world) {
 		this(world, new ResourceLocation(Bewitchment.MODID, "entities/raven"), Items.GOLD_NUGGET, Items.IRON_NUGGET, ModObjects.cold_iron_nugget, ModObjects.silver_nugget);
@@ -41,6 +43,7 @@ public class EntityRaven extends ModEntityTameable {
 		super(world, lootTableLocation, tameItems);
 		setSize(0.4f, 0.4f);
 		this.setPeckTime(this.getNewPeck());
+		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		moveHelper = new EntityFlyHelper(this);
 	}
 	
@@ -118,12 +121,17 @@ public class EntityRaven extends ModEntityTameable {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		tag.setInteger("shearTimer", shearTimer);
+		tag.setInteger("shedTime", this.timeUntilNextShed);
 		super.writeEntityToNBT(tag);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		shearTimer = tag.getInteger("shearTimer");
+		if (tag.hasKey("shedTime"))
+		{
+			this.timeUntilNextShed = tag.getInteger("shedTime");
+		}
 		super.readEntityFromNBT(tag);
 	}
 	
@@ -144,6 +152,12 @@ public class EntityRaven extends ModEntityTameable {
 		
 		if (!this.world.isRemote && this.setPeckTime(this.getPeckTime() - 1) <= 0) {
 			this.setPeckTime(this.getNewPeck());
+		}
+		
+		if (!this.world.isRemote && !this.isChild())
+		{
+			this.dropItem(ModObjects.ravens_feather, 1);
+			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		}
 	}
 	

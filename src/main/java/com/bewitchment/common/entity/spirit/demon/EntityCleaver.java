@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class EntityCleaver extends ModEntityMob {
 	protected EntityCleaver(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cleaver"));
-		setSize(1.5f, 4.5f);
+		setSize(1.0f, 2.5f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
