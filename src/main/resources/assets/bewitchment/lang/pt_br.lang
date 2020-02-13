@@ -1,6 +1,6 @@
 ﻿﻿#BLOCKS
 tile.bewitchment.blessed_stone.name=Pedra abençoada
-tooltip.bewitchment.blessed_stone=Fornece poder infinito para o altar. Criativo apenas.
+tooltip.bewitchment.blessed_stone=Fornece poder infinito ao altar. Criativo apenas.
 
 tile.bewitchment.block_of_amethyst.name=Bloco de ametista
 tile.bewitchment.block_of_garnet.name=Bloco de granada
@@ -15,7 +15,7 @@ tile.bewitchment.opal_ore.name=Minério de opala
 tile.bewitchment.silver_ore.name=Minério de prata
 tile.bewitchment.salt_ore.name=Minério de sal
 
-tile.bewitchment.purifying_earth.name=Terra purificadora
+tile.bewitchment.purifying_earth.name=Terra purificante
 
 tile.bewitchment.coquina.name=Coquina
 tile.bewitchment.coquina_bricks.name=Tijolos de coquina
@@ -165,8 +165,8 @@ tile.bewitchment.witches_oven.name=Forno das bruxas
 tile.bewitchment.distillery.name=Destilaria
 tile.bewitchment.spinning_wheel.name=Roca de fiar
 tile.bewitchment.crystal_ball.name=Bola de cristal
-tile.bewitchment.tarot_table.name=Mesa de tarot
-item.bewitchment.tarot_cards.name=Cartas de tarot
+tile.bewitchment.tarot_table.name=Mesa de tarô
+item.bewitchment.tarot_cards.name=Cartas de tarô
 tooltip.bewitchment.tarot_cards=Essas cartas estão ligadas ao futuro de %s
 tile.bewitchment.frostfire.name=Fogo frio
 tile.bewitchment.hellfire.name=Fogo infernal
@@ -220,7 +220,7 @@ tooltip.bewitchment.cold_iron_armor_description.name=Proteção contra espírito
 tooltip.bewitchment.cold_iron_tool_description.name=Causa dano extra a espíritos
 
 item.bewitchment.athame.name=Athame
-tooltip.bewitchment.athame=Essa adaga cerimonial também permite você conseguir loot especial de criaturas
+tooltip.bewitchment.athame=Essa adaga cerimonial permite a você conseguir itens especiais de criaturas
 item.bewitchment.boline.name=Boline
 
 item.bewitchment.broom.name=Vassoura
@@ -229,7 +229,7 @@ item.bewitchment.elder_broom.name=Vassoura de sabugueiro
 item.bewitchment.juniper_broom.name=Vassoura de zimbro
 item.bewitchment.dragons_blood_broom.name=Vassoura de dragoeiro
 
-item.bewitchment.waystone.name=Pedra da marcação
+item.bewitchment.waystone.name=Pedra de marcação
 tooltip.bewitchment.waystone=Vinculado a %d %d %d (%s)
 tooltip.bewitchment.waystone.unbound=Não vinculada
 
@@ -245,7 +245,7 @@ tooltip.bewitchment.hellish_bauble=Esse amuleto impõe o respeito dos demônios,
 item.bewitchment.horseshoe.name=Ferradura
 tooltip.bewitchment.horseshoe=Ferraduras parecem ser bugigangas da sorte no geral. Aparentemente espíritos se afastam de você.
 item.bewitchment.nazar.name=Olho turco
-tooltip.bewitchment.nazar=Um amuleto que afasta a má sorte e fornece uma certa imunidade a ataques mágicos.
+tooltip.bewitchment.nazar=Um amuleto que afasta a má sorte e fornece uma certa imunidade à ataques mágicos.
 item.bewitchment.token_of_remedies.name=Medalhão de curas
 tooltip.bewitchment.token_of_remedies=Parece que a gema no seu centro absorve enfermidades.
 item.bewitchment.fortunes_favor.name=Favor da fortuna
@@ -253,7 +253,7 @@ tooltip.bewitchment.fortunes_favor=Um par de luvas encantadas que acelera a velo
 item.bewitchment.hecates_visage.name=Tiara de Hécate
 tooltip.bewitchment.hecates_visage=Diminui o custo de iniciar um ritual.
 item.bewitchment.triskelion.name=Amuleto de tríscele
-tooltip.bewitchment.triskelion=Provém força ao custo de um pouco de poder mágico.
+tooltip.bewitchment.triskelion=Concede força ao custo de um pouco de poder mágico.
 item.bewitchment.vampiric_amulet.name=Amuleto vampírico
 tooltip.bewitchment.vampiric_amulet=Chance de negar parte do dano recebido e curar ao custo de um pouco de poder mágico.
 
@@ -287,7 +287,7 @@ item.bewitchment.bottled_frostfire.name=Fogo frio engarrafado
 item.bewitchment.bottled_hellfire.name=Fogo infernal engarrafado
 item.bewitchment.bone_needle.name=Agulha de osso
 item.bewitchment.taglock.name=Taglock
-tooltip.bewitchment.taglock=Ligado a %s
+tooltip.bewitchment.taglock=Tags de %s
 
 item.bewitchment.contract.name=Contrato demoníaco
 
@@ -295,7 +295,7 @@ tooltip.bewitchment.berserker_entities=%d/%d Aldeões/Jogadores mortos
 tooltip.bewitchment.devouring_rage_entities=%d/%d Vidas ceifadas
 
 tooltip.bewitchment.contract_bound=Vinculado a %s
-tooltip.bewitchment.contract_items=%d/%d %s Obtidos
+tooltip.bewitchment.contract_items=%d/%d %s obtidos
 
 bewitchment.berserker=Pacto: Berserker
 bewitchment.desiccation=Pacto: Dessecação
@@ -334,7 +334,7 @@ item.bewitchment.fiery_unguent.name=Unguento ígneo
 item.bewitchment.swirl_of_depths.name=Redemoinho das profundezas
 item.bewitchment.oil_of_vitriol.name=Óleo de vitríolo
 item.bewitchment.otherworldly_tears.name=Lágrimas transcendentais
-item.bewitchment.heaven_extract.name=Extrato dos céus
+item.bewitchment.heaven_extract.name=Extrato celeste
 item.bewitchment.stone_ichor.name=Icor rochoso
 
 item.bewitchment.diabolical_vein.name=Veia diabólica
@@ -349,7 +349,7 @@ tooltip.bewitchment.aconitum=Uma flor venenosa usada para caçar licantropos
 item.bewitchment.belladonna.name=Beladona
 tooltip.bewitchment.belladonna=Uma planta muito tóxica, e um dos principais componentes do unguento de vassoura
 item.bewitchment.garlic.name=Alho
-tooltip.bewitchment.garlic=Uma tempero comum que afasta os mortos-vivos
+tooltip.bewitchment.garlic=Um tempero comum que afasta os mortos-vivos
 item.bewitchment.hellebore.name=Hellebore roxa
 tooltip.bewitchment.hellebore=Uma flor bonita e venenosa ligada a demônios
 item.bewitchment.mandrake_root.name=Raiz de mandrágora
@@ -386,7 +386,7 @@ tooltip.bewitchment.hellebore_seeds=Sementes de uma planta aparentemente inofens
 item.bewitchment.mandrake_seeds.name=Sementes de mandrágora
 tooltip.bewitchment.mandrake_seeds=Sementes de uma planta com uma raiz estranha
 item.bewitchment.white_sage_seeds.name=Sementes de sálvia branca
-tooltip.bewitchment.white_sage_seeds=Sementes de Seed from an evergreen perennial shrub
+tooltip.bewitchment.white_sage_seeds=Sementes de um arbusto perene vívido
 item.bewitchment.wormwood_seeds.name=Sementes de absinto
 tooltip.bewitchment.wormwood_seeds=Sementes de uma erva fina
 
@@ -400,7 +400,7 @@ item.bewitchment.owlets_wing.name=Asa de coruja
 item.bewitchment.ravens_feather.name=Pena de corvo
 item.bewitchment.adders_fork.name=Lingua de cobra
 item.bewitchment.toe_of_frog.name=Dedos de rã
-item.bewitchment.hellhound_horn.name=Chifre de cão demoníaco
+item.bewitchment.hellhound_horn.name=Chifre de cão infernal
 item.bewitchment.heart.name=Coração
 item.bewitchment.demon_heart.name=Coração de demônio
 item.bewitchment.snake_venom.name=Veneno de cobra
@@ -413,7 +413,7 @@ tooltip.leonards_wand.uses=%d usos restantes
 
 item.bewitchment.hoof.name=Casco
 item.bewitchment.eye_of_old.name=Olho do velho
-item.bewitchment.tongue_of_dog.name=Lingua de cão
+item.bewitchment.tongue_of_dog.name=Lingua de cachorro
 
 item.bewitchment.catechu_brown.name=Cauchu marrom
 item.bewitchment.dimensional_sand.name=Areia dimensional
@@ -444,7 +444,7 @@ item.bewitchment.poppet_vampiric.name=Boneco vampírico
 item.bewitchment.poppet_voodoo.name=Boneco de vodu
 item.bewitchment.poppet_voodooprotection.name=Boneco de proteção contra vodu
 item.bewitchment.poppet_wasting.name=Boneco do desperdício
-item.bewitchment.poppet_waterprotection.name=Boneco de proteção contra água
+item.bewitchment.poppet_waterprotection.name=Boneco de proteção contra a água
 tooltip.bewitchment.poppet.bound=Ligado a %s
 
 poppet.not_found=O alvo desse boneco não foi encontrado
@@ -496,7 +496,7 @@ entity.Villager.bewitchment.alchemist=Alquimista
 entity.Villager.bewitchment.witch=Bruxa de covil
 
 #ENCHANTMENT
-enchantment.bewitchment.magic_protection=Proteção contra magias
+enchantment.bewitchment.magic_protection=Proteção contra magia
 enchantment.bewitchment.magic_protection.desc=Reduz o dano mágico recebido.
 
 #POTION
@@ -552,8 +552,8 @@ incense.bewitchment.concentration=Concentração
 
 curse.bewitchment.return_to_sender=Devolver ao remetente
 curse.bewitchment.misfortune=Maldição da desgraça
-curse.bewitchment.conflagration=Maldição do incêndio
-curse.bewitchment.solar_hatred=Maldição da intolerância ao sol
+curse.bewitchment.conflagration=Maldição da conflagração
+curse.bewitchment.solar_hatred=Maldição da intolerância solar
 curse.bewitchment.overheating=Maldição do superaquecimento
 curse.bewitchment.hydrophobia=Maldição da hidrofobia
 curse.bewitchment.lightning_rod=Maldição do pára-raio
@@ -635,12 +635,12 @@ ritual.bewitchment.deluge=Ritual do dilúvio
 ritual.bewitchment.teleport=Rito da passagem
 ritual.bewitchment.perception=Ritual da percepção
 ritual.bewitchment.hungry_flames=Ritual das chamas famintas
-ritual.bewitchment.frenzied_growth=Ritual of Frenzied Growth
-ritual.bewitchment.revealing=Ritual of Revealing
+ritual.bewitchment.frenzied_growth=Ritual do crescimento frenético
+ritual.bewitchment.revealing=Ritual da revelação
 ritual.bewitchment.call_of_the_wild=Chamado da natureza
-ritual.bewitchment.lesser_hellmouth=Rito das mandíbulas do inferno inferiores
-ritual.bewitchment.hellmouth=Rito das mandíbulas do inferno
-ritual.bewitchment.greater_hellmouth=Rito das mandíbulas do inferno superiores
+ritual.bewitchment.lesser_hellmouth=Rito das mandíbulas infernais inferiores
+ritual.bewitchment.hellmouth=Rito das mandíbulas infernais
+ritual.bewitchment.greater_hellmouth=Rito das mandíbulas infernais superiores
 ritual.bewitchment.conjure_witch=Conjurar uma bruxa
 ritual.bewitchment.conjure_wither=Conjurar um Wither
 ritual.bewitchment.conjure_demon=Conjurar um demônio
@@ -670,7 +670,7 @@ itemGroup.bewitchment=Bewitchment
 altar.power_info=%d/%d (x%d)
 altar.no_power=A sua fonte de magia não é forte o suficiente
 
-tarot.no_cards=Você precisa estar com cartas de tarot na mão para usar isso
+tarot.no_cards=Você precisa estar com cartas de tarô na mão para usar isso
 tarot.no_player=Você precisa ligar um jogador ao taglock
 tarot.player_offline=%s está offline
 
@@ -686,7 +686,7 @@ advancements.bewitchment.mined_opal.title=Brincadeira com cores
 advancements.bewitchment.mined_opal.description=Minere opala
 advancements.bewitchment.mined_garnet.title=Romã
 advancements.bewitchment.mined_garnet.description=Minere granada
-advancements.bewitchment.mined_salt.title=Todos esses sabores, e você prefere salgar a relação
+advancements.bewitchment.mined_salt.title=Com tantos sabores, e você prefere salgar a relação
 advancements.bewitchment.mined_salt.description=Minere sal
 advancements.bewitchment.mined_silver.title=Metal lunar
 advancements.bewitchment.mined_silver.description=Minere prata
@@ -702,7 +702,7 @@ advancements.bewitchment.obtained_box.title=Mecânicas surpresas
 advancements.bewitchment.obtained_box.description=Obtenha uma caixa do mal selado, ela está no jogo
 
 commands.fortune.get=A sorte de %s: %s
-commands.fortune.set=A sorte de %s foi setada para %s
+commands.fortune.set=A sorte de %s foi definida para %s
 commands.fortune.remove=A fortuna de %s foi removida
 commands.fortune.execute=A fortuna de %s foi aplicada
 commands.fortune.nofortune=%s não tem uma sorte
@@ -717,7 +717,7 @@ commands.curse.clear=Foram retiradas todas as maldições de %s
 commands.curse.empty=%s não tem nenhuma maldição ativa
 
 jei.ritual=Ritual
-jei.ritual.startingPower=Poder para inicar: %d
+jei.ritual.startingPower=Poder para iniciar: %d
 jei.ritual.runningPower=Poder para manter: %d
 
 jei.cauldron=Caldeirão
@@ -1261,18 +1261,18 @@ entity.bewitchment.prefix.60=Marechal
 entity.bewitchment.prefix.61=Bispo
 
 # Thaumcraft compat
-tc.aspect.diabolus=Demônico, Pecaminoso, Profano
+tc.aspect.diabolus=Demoníaco, Pecaminoso, Profano
 tc.aspect.stellae=Estrelas, Constelação, Asterismo
 tc.aspect.luna=A lua
 tc.aspect.sol=O sol
 
-research.MATSTUDCOLDIRON.title=Estudos de material: Ferro frio
-research.MATSTUDCOLDIRON.stage.1=Da mesma forma que o ferro comum, o ferro frio é deveras forte, porém pesado. <BR>Porém, diferente do ferro comum, o ferro frio tem muitas propriedades arcanas, especialmente na hora de lidar contra demônios e espíritos.
+research.MATSTUDCOLDIRON.title=Estudo de material: Ferro frio
+research.MATSTUDCOLDIRON.stage.1=Da mesma forma que o ferro comum, o ferro frio é deveras forte, mas pesado. <BR>Porém, diferente do ferro comum, o ferro frio tem muitas propriedades arcanas, especialmente na hora de lidar com demônios e espíritos.
 golem.material.coldiron=Ferro frio
 golem.material.text.coldiron=O golem é feito de ferro frio. Enquanto ele compartilha várias similaridades com o ferro normal, ele provém força adicional contra demônios e espíritos.
 
 research.MATSTUDSILVER.title=Estudos de material: Prata
-research.MATSTUDSILVER.stage.1=A prata, sendo um metal precioso, é utilizado em trocas. Porém, a prata é muito suave e maleável, mas não tanto quanto o ouro. <BR>Os mortos-vivos são afastados pela prata, da mesma forma que outras criaturas da noite.
+research.MATSTUDSILVER.stage.1=A prata, sendo um metal precioso, é utilizada em trocas. Porém, a prata é muito suave e maleável, mas não tanto quanto o ouro. <BR>Os mortos-vivos são afastados pela prata, da mesma forma que outras criaturas da noite.
 golem.material.silver=Prata
 golem.material.text.silver=O golem é feito de prata. Esse metal suave e maleável também é poderoso contra os mortos-vivos.
 
