@@ -296,16 +296,15 @@ public class ModelCleaver extends ModelBiped {
 			f = 1.0F;
 		}
 		
+		float swingMod = 0.3F;
+		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
+		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
+		
+		
 		this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
 		this.bipedRightArm.rotateAngleZ = 0.10000736613927509F;
 		this.bipedLeftArm.rotateAngleZ = -0.10000736613927509F;
-		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-		this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
-		this.bipedRightLeg.rotateAngleY = 0.0F;
-		this.bipedLeftLeg.rotateAngleY = 0.0F;
-		this.bipedRightLeg.rotateAngleZ = 0.06981317007977318F;
-		this.bipedLeftLeg.rotateAngleZ = -0.06981317007977318F;
 		
 		if (this.isRiding) {
 			this.bipedRightArm.rotateAngleX += -((float) Math.PI / 5F);
@@ -375,24 +374,9 @@ public class ModelCleaver extends ModelBiped {
 			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
 		}
 		
-		if (this.isSneak) {
-			this.bipedBody.rotateAngleX = 0.5F;
-			this.bipedRightArm.rotateAngleX += 0.4F;
-			this.bipedLeftArm.rotateAngleX += 0.4F;
-			this.bipedRightLeg.rotationPointZ = 4.0F;
-			this.bipedLeftLeg.rotationPointZ = 4.0F;
-			this.bipedRightLeg.rotationPointY = 9.0F;
-			this.bipedLeftLeg.rotationPointY = 9.0F;
-			this.bipedHead.rotationPointY = 1.0F;
-		}
-		else {
-			this.bipedBody.rotateAngleX = 0.0F;
-			this.bipedRightLeg.rotationPointZ = 0.1F;
-			this.bipedLeftLeg.rotationPointZ = 0.1F;
-			this.bipedRightLeg.rotationPointY = 12.0F;
-			this.bipedLeftLeg.rotationPointY = 12.0F;
-			this.bipedHead.rotationPointY = 0.0F;
-		}
+		
+		this.bipedBody.rotateAngleX = 0.0F;
+		this.bipedHead.rotationPointY = 0.0F;
 		
 		this.bipedRightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
 		this.bipedLeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
