@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -22,9 +23,12 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("ConstantConditions")
 public class EntityOwl extends EntityRaven {
+	public int timeUntilNextShed;
+	
 	public EntityOwl(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN);
 		setSize(0.4f, 0.9f);
+		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 	}
 	
 	@Override
@@ -64,9 +68,29 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("shedTime", this.timeUntilNextShed);
+		super.writeEntityToNBT(tag);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		shearTimer = tag.getInteger("shearTimer");
+		if (tag.hasKey("shedTime")) {
+			this.timeUntilNextShed = tag.getInteger("shedTime");
+		}
+		super.readEntityFromNBT(tag);
+	}
+	
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+		
+		if (!this.world.isRemote && !this.isChild()) {
+			this.dropItem(Items.FEATHER, 1);
+			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+		}
 	}
 	
 	@Override
