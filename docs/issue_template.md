@@ -17,3 +17,6 @@
 
 
 ### If this is a question, developer commentary, or a suggestion, ignore this template
+
+
+### NOTICE FOR TRANSLATIONS: Feuerwurm is untranslatable, and this is deliberate. It is derived from "fire" and "worm" in German, due to past names of said mob having issues with translations in some languages, mainly Romance languages. However, if your language does not use latin characters, translate it into your equivalent of either "Fire Snake" or "Fire Worm."
