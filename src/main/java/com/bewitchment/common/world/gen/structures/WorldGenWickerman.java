@@ -47,7 +47,7 @@ public class WorldGenWickerman extends WorldGenerator {
 				villager.setPosition(position.getX() + 6, position.getY() + 11, position.getZ() + 3);
 				worldIn.spawnEntity(villager);
 				// Spawn Random Animals
-				int amount = rand.nextInt(4);
+				int amount = rand.nextInt(5);
 				for (int i = 0; i < amount; i++) {
 					spawnAnimal(worldIn, position.getX() + 6, position.getY() + 7, position.getZ() + 3, rand);
 				}
@@ -59,7 +59,7 @@ public class WorldGenWickerman extends WorldGenerator {
 	
 	private void spawnAnimal(World world, int x, int y, int z, Random random) {
 		EntityAnimal spawn;
-		switch (random.nextInt(4)) {
+		switch (random.nextInt(5)) {
 			case 0:
 				spawn = new EntityCow(world);
 				break;
@@ -71,6 +71,9 @@ public class WorldGenWickerman extends WorldGenerator {
 				break;
 			case 3:
 				spawn = new EntityChicken(world);
+				break;
+			case 4:
+				spawn = new EntityHorse(world);
 				break;
 			default:
 				spawn = null;
