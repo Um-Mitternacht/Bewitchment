@@ -341,6 +341,11 @@ public class ModRecipes {
 			Util.registerAltarUpgradeItem(ConsecrationItems.fireStick, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.14));
 		}
 		
+		//Elementaristics Stuff
+		if (Loader.isModLoaded("elementaristics")) {
+			Util.registerAltarUpgradeItem(de.aelpecyem.elementaristics.init.ModItems.thaumagral_wood, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.24));
+		}
+		
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockRedstoneTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
