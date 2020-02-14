@@ -680,8 +680,8 @@ tarot.player_offline=%s is offline
 
 juniper_key.invalid=You must hold a valid Juniper Key to use this block
 
-skeleton_key.invalid.xp=The Skeleton Key requires experience
-skeleton_key.invalid.me=The Skeleton Key requires magic energy
+skeleton_key.invalid.xp=The Skeleton Key drains you to the touch
+skeleton_key.invalid.me=The Skeleton Key refuses to take on the right shape
 
 advancements.bewitchment.crafted_altar.title=Witchworker
 advancements.bewitchment.crafted_altar.description=Craft a Stone Witches' Altar
