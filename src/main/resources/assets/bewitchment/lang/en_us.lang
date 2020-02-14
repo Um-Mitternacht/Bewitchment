@@ -465,6 +465,10 @@ item.bewitchment.sigil_sentinel.name=Sigil of Sentinel
 item.bewitchment.cold_iron_plate.name=Cold Iron Plate
 item.bewitchment.silver_plate.name=Silver Plate
 
+
+item.bewitchment.skeleton_key.name=Skeleton Key
+tooltip.bewitchment.skeleton_key=Open juniper locks
+
 #ENTITY
 entity.bewitchment.cypress_broom.name=Cypress Broom
 entity.bewitchment.elder_broom.name=Elder Broom
@@ -675,6 +679,9 @@ tarot.no_player=You must bind a player to the taglock
 tarot.player_offline=%s is offline
 
 juniper_key.invalid=You must hold a valid Juniper Key to use this block
+
+skeleton_key.invalid.xp=The Skeleton Key requires experience
+skeleton_key.invalid.me=The Skeleton Key requires magic energy
 
 advancements.bewitchment.crafted_altar.title=Witchworker
 advancements.bewitchment.crafted_altar.description=Craft a Stone Witches' Altar

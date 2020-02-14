@@ -1,6 +1,8 @@
 package com.bewitchment.common.item.tool;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.event.LockCheckEvent;
 import com.bewitchment.common.block.BlockJuniperChest;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
@@ -13,8 +15,10 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,8 +40,8 @@ public class ItemJuniperKey extends Item {
 		}
 		return stack;
 	}
-	
-	public static boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack) {
+
+	private static boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack) {
 		if (stack.hasTagCompound()) {
 			if (stack.getTagCompound().getInteger("dimension") == dimension) {
 				if (world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door && world.getBlockState(pos.down()).getBlock() == ModObjects.juniper_door.door) return canAccess(world, pos.down(), dimension, stack);
@@ -45,6 +49,34 @@ public class ItemJuniperKey extends Item {
 			}
 		}
 		return false;
+	}
+
+	public static boolean checkAccess(World world, BlockPos pos, EntityPlayer player, boolean direct){
+		LockCheckEvent pre = new LockCheckEvent(player, pos);
+		boolean result = false;
+		MinecraftForge.EVENT_BUS.post(pre);
+		if (pre.isCanceled()) return true;
+		for (ItemStack stack : Bewitchment.proxy.getEntireInventory(pre.getUser())) {
+			LockCheckEvent.KeyCheckEvent keyCheck = new LockCheckEvent.KeyCheckEvent(pre.getUser(), pre.getLock(), stack);
+			player = keyCheck.getUser();
+			pos = keyCheck.getLock();
+			MinecraftForge.EVENT_BUS.post(keyCheck);
+			if (keyCheck.isCanceled()){
+				result = true;
+				break;
+			}
+			if (canAccess(world, keyCheck.getLock(), world.provider.getDimension(), keyCheck.getKey())) {
+				result = true;
+				break;
+			}
+		}
+
+		LockCheckEvent.LockCheckedEvent post = new LockCheckEvent.LockCheckedEvent(player, pos, result, direct);
+		MinecraftForge.EVENT_BUS.post(post);
+		if (!world.isRemote && !post.isOpened() && post.shouldSendMessage()){
+			player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
+		}
+		return post.isOpened();
 	}
 	
 	@Override

@@ -468,6 +468,7 @@ public class ModObjects {
 	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin", "resinDragonsBlood");
 	public static final Item box_of_sealed_evil = new ItemBoxSealedEvil();
 	public static final Item contract = new ItemContract();
+	public static final Item skeleton_key = new ItemSkeletonKey();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override

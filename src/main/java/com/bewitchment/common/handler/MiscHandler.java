@@ -4,19 +4,30 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.api.capability.magicpower.MagicPower;
+import com.bewitchment.api.event.LockCheckEvent;
 import com.bewitchment.api.event.WitchesCauldronEvent;
 import com.bewitchment.api.message.DismountBroomMessage;
 import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.BlockBrazier;
+import com.bewitchment.common.block.BlockJuniperChest;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
+import com.bewitchment.common.block.util.ModBlockFenceGate;
+import com.bewitchment.common.block.util.ModBlockTrapdoor;
 import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.common.item.ItemSkeletonKey;
+import com.bewitchment.common.item.util.ModItemDoor;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockDoor;
+import net.minecraft.block.BlockTrapDoor;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
@@ -38,6 +49,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
@@ -77,7 +89,40 @@ public class MiscHandler {
 			}
 		}
 	}
-	
+
+	@SubscribeEvent
+	public void handleSkeletonKey(LockCheckEvent.LockCheckedEvent event){
+		if (!event.isOpened() && !event.getUser().world.isRemote){
+
+			for (ItemStack stack : Bewitchment.proxy.getEntireInventory(event.getUser())) {
+				if (stack.getItem() instanceof ItemSkeletonKey){
+					event.setSendMessage(false);
+					IBlockState state = event.getUser().world.getBlockState(event.getLock());
+					float mult = 1;
+					if (state.getBlock() instanceof BlockContainer){
+						mult = 4;
+					}else if(state.getBlock() instanceof BlockTrapDoor){
+						mult = 3;
+					}else if (state.getBlock() instanceof BlockDoor){
+						mult = 2;
+					}
+					if (event.getUser().experienceLevel < 10){
+						event.getUser().sendStatusMessage(new TextComponentTranslation("skeleton_key.invalid.xp"), true);
+						return;
+					}
+					if (MagicPower.attemptDrain(null, event.getUser(), Math.round(250 * mult))) {
+						stack.damageItem(1, event.getUser());
+						event.getUser().addExperienceLevel(-10);
+						event.setResult(true);
+					}else{
+						event.getUser().sendStatusMessage(new TextComponentTranslation("skeleton_key.invalid.me"), true);
+					}
+					return;
+				}
+			}
+		}
+	}
+
 	@SubscribeEvent
 	public void onFindAttackEntity(LivingSetAttackTargetEvent event) {
 		if (!event.getEntity().world.isRemote) {
