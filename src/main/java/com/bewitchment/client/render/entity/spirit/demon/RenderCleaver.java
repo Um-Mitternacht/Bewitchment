@@ -7,6 +7,7 @@ import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +20,7 @@ public class RenderCleaver extends RenderLiving<EntityCleaver> {
 	public RenderCleaver(RenderManager manager) {
 		super(manager, new ModelCleaver(), 0.3f);
 		this.addLayer(new LayerHeldItem(this));
+		this.addLayer(new LayerBipedArmor(this));
 	}
 	
 	@Override
