@@ -33,7 +33,7 @@ public class EntityHellhound extends ModEntityMob {
 	
 	@Override
 	protected int getSkinTypes() {
-		return 6;
+		return 4;
 	}
 	
 	@Override
