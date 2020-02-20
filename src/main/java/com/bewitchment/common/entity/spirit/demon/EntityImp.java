@@ -35,7 +35,7 @@ public class EntityImp extends ModEntityMob {
 	
 	@Override
 	protected int getSkinTypes() {
-		return 6;
+		return 7;
 	}
 	
 	@Override
