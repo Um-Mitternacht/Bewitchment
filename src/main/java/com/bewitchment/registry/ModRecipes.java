@@ -538,6 +538,9 @@ public class ModRecipes {
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_hood"), Arrays.asList(Util.get(ModObjects.witches_cowl), Util.get(ModObjects.pure_filament), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11)), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.green_witch_cowl))));
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_robes"), Arrays.asList(Util.get(ModObjects.witches_robes), Util.get(ModObjects.pure_filament), Util.get("treeSapling"), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.green_witch_robes))));
 		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_pants"), Arrays.asList(Util.get(ModObjects.witches_pants), Util.get(ModObjects.pure_filament), Util.get("treeSapling"), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.green_witch_pants))));
+		
+		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "green_witch_fleece"), Arrays.asList(Util.get("treeLeaves"), Util.get(Items.LEATHER), Util.get(new ItemStack(Blocks.WOOL, 1, 11)), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 11))), Collections.singletonList(new ItemStack(ModObjects.greenwitch_fleece, 3))));
+		spinningWheelRecipes.add(new SpinningWheelRecipe(new ResourceLocation(Bewitchment.MODID, "besmirched_fleece"), Arrays.asList(Util.get(ModObjects.sanguine_cloth), Util.get(ModObjects.golden_thread), Util.get(new ItemStack(Blocks.WOOL, 1, 15)), Ingredient.fromStacks(new ItemStack(Blocks.WOOL, 1, 15))), Collections.singletonList(new ItemStack(ModObjects.besmirched_fleece, 3))));
 	}
 	
 	protected static void addRitualRecipe() {
