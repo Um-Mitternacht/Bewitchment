@@ -40,7 +40,7 @@ public class ItemJuniperKey extends Item {
 		}
 		return stack;
 	}
-
+	
 	private static boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack) {
 		if (stack.hasTagCompound()) {
 			if (stack.getTagCompound().getInteger("dimension") == dimension) {
@@ -50,8 +50,8 @@ public class ItemJuniperKey extends Item {
 		}
 		return false;
 	}
-
-	public static boolean checkAccess(World world, BlockPos pos, EntityPlayer player, boolean direct){
+	
+	public static boolean checkAccess(World world, BlockPos pos, EntityPlayer player, boolean direct) {
 		LockCheckEvent pre = new LockCheckEvent(player, pos);
 		boolean result = false;
 		MinecraftForge.EVENT_BUS.post(pre);
@@ -61,7 +61,7 @@ public class ItemJuniperKey extends Item {
 			player = keyCheck.getUser();
 			pos = keyCheck.getLock();
 			MinecraftForge.EVENT_BUS.post(keyCheck);
-			if (keyCheck.isCanceled()){
+			if (keyCheck.isCanceled()) {
 				result = true;
 				break;
 			}
@@ -70,10 +70,10 @@ public class ItemJuniperKey extends Item {
 				break;
 			}
 		}
-
+		
 		LockCheckEvent.LockCheckedEvent post = new LockCheckEvent.LockCheckedEvent(player, pos, result, direct);
 		MinecraftForge.EVENT_BUS.post(post);
-		if (!world.isRemote && !post.isOpened() && post.shouldSendMessage()){
+		if (!world.isRemote && !post.isOpened() && post.shouldSendMessage()) {
 			player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
 		}
 		return post.isOpened();

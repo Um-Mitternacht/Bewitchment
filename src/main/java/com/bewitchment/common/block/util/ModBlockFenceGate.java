@@ -29,29 +29,7 @@ public class ModBlockFenceGate extends BlockFenceGate {
 		Util.registerBlock(this, name, base, oreDictionaryNames);
 		if (base == ModObjects.juniper_planks) setResistance(Integer.MAX_VALUE);
 	}
-
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		if (placer instanceof EntityPlayer) {
-			BlockPos pos0 = pos;
-			while (worldIn.getBlockState(pos0).getBlock() != ModObjects.juniper_door.door) pos0 = pos0.up();
-			Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
-		}
-
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-
-	@Override
-	public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
-		if (this != ModObjects.juniper_fence_gate) super.onNeighborChange(world, pos, neighbor);
-	}
-
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (this == ModObjects.juniper_fence_gate) {
@@ -59,15 +37,15 @@ public class ModBlockFenceGate extends BlockFenceGate {
 				return true;
 			}
 		}
-
+		
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
-
+	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return state.getBlock() == ModObjects.juniper_fence_gate ? EnumPushReaction.BLOCK : super.getPushReaction(state);
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
 	}
-
+	
 	@Override
 	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
 		float val = super.getPlayerRelativeBlockHardness(state, player, worldIn, pos);
@@ -77,7 +55,29 @@ public class ModBlockFenceGate extends BlockFenceGate {
 		}
 		return val;
 	}
-
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		if (placer instanceof EntityPlayer) {
+			BlockPos pos0 = pos;
+			while (worldIn.getBlockState(pos0).getBlock() != ModObjects.juniper_door.door) pos0 = pos0.up();
+			Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
+		}
+		
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return state.getBlock() == ModObjects.juniper_fence_gate ? EnumPushReaction.BLOCK : super.getPushReaction(state);
+	}
+	
 	@Override
 	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
 		if (this == ModObjects.juniper_fence_gate && entity instanceof EntityZombie) {
@@ -85,9 +85,9 @@ public class ModBlockFenceGate extends BlockFenceGate {
 		}
 		else return super.canEntityDestroy(state, world, pos, entity);
 	}
-
+	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
+		if (this != ModObjects.juniper_fence_gate) super.onNeighborChange(world, pos, neighbor);
 	}
 }

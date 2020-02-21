@@ -6,13 +6,13 @@
 	},
 	{
 	  "item": "bewitchment:scorned_bricks"
-	},	
+	},
 	{
 	  "item": "minecraft:nether_wart_block"
 	},
 	{
 	  "item": "minecraft:nether_wart_block"
-	}	
+	}
   ],
   "result": {
 	"item": "bewitchment:mossy_scorned_bricks",

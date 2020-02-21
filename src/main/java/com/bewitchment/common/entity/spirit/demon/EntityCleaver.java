@@ -3,7 +3,6 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -77,6 +76,12 @@ public class EntityCleaver extends ModEntityMob {
 		}
 	}
 	
+	@Override
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+		super.setEquipmentBasedOnDifficulty(difficulty);
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+	}
+	
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 		
@@ -85,12 +90,6 @@ public class EntityCleaver extends ModEntityMob {
 		}
 		
 		return flag;
-	}
-	
-	@Override
-	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-		super.setEquipmentBasedOnDifficulty(difficulty);
-		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
 	}
 	
 	@Override

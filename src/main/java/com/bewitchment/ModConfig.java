@@ -43,7 +43,7 @@ public class ModConfig {
 		@Config.Comment("The maximum power a Grimoire Magia can have.")
 		@Config.RangeInt(min = 0)
 		public int maxGrimoirePower = 1000;
-
+		
 		@Config.Comment("The maximum damage a Skeleton Key can take.")
 		@Config.RangeInt(min = 0, max = 128)
 		public int maxSkeletonKeyUses = 10;

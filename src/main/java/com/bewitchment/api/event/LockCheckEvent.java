@@ -29,12 +29,12 @@ public class LockCheckEvent extends Event {
 		return user;
 	}
 
-	public BlockPos getLock() {
-		return lock;
-	}
-
 	public void setUser(EntityPlayer user) {
 		this.user = user;
+	}
+
+	public BlockPos getLock() {
+		return lock;
 	}
 
 	public void setLock(BlockPos lock) {
@@ -49,6 +49,7 @@ public class LockCheckEvent extends Event {
 	public static class LockCheckedEvent extends LockCheckEvent {
 		private boolean result;
 		private boolean sendMessage;
+
 		public LockCheckedEvent(EntityPlayer user, BlockPos lock, boolean result, boolean sendMessage) {
 			super(user, lock);
 			this.result = result;
@@ -79,6 +80,7 @@ public class LockCheckEvent extends Event {
 	@Cancelable
 	public static class KeyCheckEvent extends LockCheckEvent {
 		private ItemStack key;
+
 		public KeyCheckEvent(EntityPlayer user, BlockPos lock, ItemStack key) {
 			super(user, lock);
 			this.key = key;
