@@ -122,7 +122,9 @@ public class ModObjects {
 	public static final Block mossy_scorned_bricks = new ModBlock("mossy_scorned_bricks", Blocks.STONE);
 	
 	//Decorative wools and carpets
-	
+	//Todo: Carpet blocks
+	public static final Block greenwitch_fleece = new ModBlock("greenwitch_fleece", Blocks.WOOL);
+	public static final Block besmirched_fleece = new ModBlock("besmirched_fleece", Blocks.WOOL);
 	
 	public static final Block dragons_blood_resin_block = new ModBlock("dragons_blood_resin_block", Blocks.SLIME_BLOCK, "blockDragonsBloodResin");
 	//Util Blocks
