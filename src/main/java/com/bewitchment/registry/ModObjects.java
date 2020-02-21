@@ -119,6 +119,7 @@ public class ModObjects {
 	public static final Block scorned_brick_stairs = new ModBlockStairs("scorned_brick_stairs", scorned_bricks[0]);
 	public static final ModBlockSlab scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks[0]);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks[0]);
+	public static final Block mossy_scorned_bricks = new ModBlock("mossy_scorned_bricks", Blocks.STONE);
 	
 	public static final Block dragons_blood_resin_block = new ModBlock("dragons_blood_resin_block", Blocks.SLIME_BLOCK, "blockDragonsBloodResin");
 	//Util Blocks
