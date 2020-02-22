@@ -80,6 +80,7 @@ public class EntityImp extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(85);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
 	}
 	
 	@Override

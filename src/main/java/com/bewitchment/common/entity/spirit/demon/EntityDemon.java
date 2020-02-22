@@ -104,6 +104,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(195);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.7D);
 	}
 	
 	@Override

@@ -41,6 +41,7 @@ public class EntityShadowPerson extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.65);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.22);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.5);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.9D);
 	}
 	
 	@Override

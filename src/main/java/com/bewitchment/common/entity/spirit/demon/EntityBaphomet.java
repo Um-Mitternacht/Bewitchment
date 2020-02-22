@@ -237,6 +237,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.70);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(13.616);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(6.66);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.9D);
 	}
 	
 	@Override
