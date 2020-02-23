@@ -8,7 +8,6 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.BlockLantern;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.tile.entity.TileEntityStatue;
 import com.bewitchment.common.entity.living.*;
@@ -344,7 +343,6 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockRedstoneTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
-		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockLantern, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.25));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockEndRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.325));
 		Util.registerAltarUpgradeItem(ModObjects.leonards_wand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.56));
 		Util.registerAltarUpgradeItem(ModObjects.caduceus, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.78));
@@ -547,7 +545,6 @@ public class ModRecipes {
 		ritualRecipes.add(new RitualPerception());
 		ritualRecipes.add(new RitualHungryFlames());
 		ritualRecipes.add(new RitualFrenziedGrowth());
-		ritualRecipes.add(new RitualRevealing());
 		ritualRecipes.add(new RitualCallOfTheWild());
 		ritualRecipes.add(new RitualLesserHellMouth());
 		ritualRecipes.add(new RitualHellmouth());

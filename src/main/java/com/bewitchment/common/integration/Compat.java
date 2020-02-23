@@ -4,7 +4,6 @@ import c4.consecration.common.init.ConsecrationItems;
 import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
-import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Brew;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;

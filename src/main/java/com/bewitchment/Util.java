@@ -12,7 +12,6 @@ import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.BlockSpanishMoss;
 import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
-import com.bewitchment.common.item.ItemLantern;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRegistries;
 import net.minecraft.block.*;
@@ -64,8 +63,8 @@ public class Util {
 		if (mat == Material.TNT || mat == Material.VINE) Blocks.FIRE.setFireInfo(block, 15, 100);
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
-		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockWitchesLight) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof BlockStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
-			Item item = block instanceof BlockLantern ? new ItemLantern(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey()) : new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
+		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof BlockStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
+			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			if (block instanceof BlockStatue) Bewitchment.proxy.setStatueTEISR(item);
 			ForgeRegistries.ITEMS.register(item);
 			Bewitchment.proxy.registerTexture(item, (block instanceof BlockBush || block instanceof BlockStatue) ? "inventory" : "normal");

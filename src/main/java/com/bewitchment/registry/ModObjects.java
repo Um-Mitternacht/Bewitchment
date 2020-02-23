@@ -81,7 +81,6 @@ public class ModObjects {
 	public static final Block salt_barrier = new BlockSaltBarrier();
 	public static final Block glyph = registerTileEntity(new BlockGlyph(), TileEntityGlyph.class);
 	public static final Block placed_item = registerTileEntity(new BlockPlacedItem(), TileEntityPlacedItem.class);
-	public static final Block witches_light = new BlockWitchesLight();
 	public static final Block sigil = registerTileEntity(new BlockSigil(), TileEntitySigil.class);
 	//Material Blocks
 	public static final Block blessed_stone = new ModBlock("blessed_stone", Blocks.BEDROCK);
@@ -147,23 +146,6 @@ public class ModObjects {
 	public static final Block green_candle = new BlockCandle("green_candle");
 	public static final Block red_candle = new BlockCandle("red_candle");
 	public static final Block black_candle = new BlockCandle("black_candle");
-	//Lanterns
-	public static final Block white_lantern = new BlockLantern("white_lantern");
-	public static final Block orange_lantern = new BlockLantern("orange_lantern");
-	public static final Block magenta_lantern = new BlockLantern("magenta_lantern");
-	public static final Block light_blue_lantern = new BlockLantern("light_blue_lantern");
-	public static final Block yellow_lantern = new BlockLantern("yellow_lantern");
-	public static final Block lime_lantern = new BlockLantern("lime_lantern");
-	public static final Block pink_lantern = new BlockLantern("pink_lantern");
-	public static final Block gray_lantern = new BlockLantern("gray_lantern");
-	public static final Block light_gray_lantern = new BlockLantern("light_gray_lantern");
-	public static final Block cyan_lantern = new BlockLantern("cyan_lantern");
-	public static final Block purple_lantern = new BlockLantern("purple_lantern");
-	public static final Block blue_lantern = new BlockLantern("blue_lantern");
-	public static final Block brown_lantern = new BlockLantern("brown_lantern");
-	public static final Block green_lantern = new BlockLantern("green_lantern");
-	public static final Block red_lantern = new BlockLantern("red_lantern");
-	public static final Block black_lantern = new BlockLantern("black_lantern");
 	//Plants
 	public static final Block embergrass = new BlockEmbergrass();
 	public static final Block torchwood = new BlockTorchwood();
