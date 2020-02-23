@@ -45,10 +45,10 @@ public class Statues {
 	public static Statue scorned_brick_moloch_statue = new Statue("scorned_brick_moloch_statue", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/moloch/scorned_brick.png"), moloch, 3);
 	
 	private static ModelBase lenny_idol = new ModelLeonardIdol();
-	public static Statue stone_leonard_idol = new Statue("stone_leonard_idol", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/stone.png"), lenny_idol, 2);
+	public static Statue stone_leonard_idol = new Statue("stone_leonard_idol", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_stone.png"), lenny_idol, 2);
 	public static Statue gold_leonard_idol = new Statue("gold_leonard_idol", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_gold.png"), lenny_idol, 2);
-	public static Statue nether_brick_leonard_idol = new Statue("nether_brick_leonard_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/nether_brick.png"), lenny_idol, 2);
-	public static Statue scorned_brick_leonard_idol = new Statue("scorned_brick_leonard_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue/leonard/scorned_brick.png"), lenny_idol, 2);
+	public static Statue nether_brick_leonard_idol = new Statue("nether_brick_leonard_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_netherbrick.png"), lenny_idol, 2);
+	public static Statue scorned_brick_leonard_idol = new Statue("scorned_brick_leonard_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_scorned.png"), lenny_idol, 2);
 	
 	public static class Statue {
 		private final String name;
