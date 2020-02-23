@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderDemoness extends RenderDemon {
-	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_3.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_4.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_5.png")};
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demoness_3.png")};
 	
 	public RenderDemoness(RenderManager manager) {
 		super(manager, new ModelDemoness());

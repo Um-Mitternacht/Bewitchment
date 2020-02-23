@@ -219,7 +219,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	@Override
 	protected int getSkinTypes() {
-		return 6;
+		return 4;
 	}
 	
 	@Override
