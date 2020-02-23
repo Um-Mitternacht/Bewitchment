@@ -288,6 +288,11 @@ tile.bewitchment.nether_brick_moloch_statue.name=Nether Brick Moloch Statue
 tile.bewitchment.scorned_brick_moloch_statue.name=Scorned Brick Moloch Statue
 tile.bewitchment.gold_moloch_statue.name=Gold Moloch Statue
 
+tile.bewitchment.stone_leonard_idol.name=Stone Leonard Idol
+tile.bewitchment.nether_brick_leonard_idol.name=Nether Brick Leonard Idol
+tile.bewitchment.scorned_brick_leonard_idol.name=Scorned Brick Leonard Idol
+tile.bewitchment.gold_leonard_idol.name=Gold Leonard Idol
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire
 item.bewitchment.bone_needle.name=Bone Needle
