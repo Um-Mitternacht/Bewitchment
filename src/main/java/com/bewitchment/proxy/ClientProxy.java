@@ -66,8 +66,6 @@ import java.util.function.Predicate;
 @SuppressWarnings({"ConstantConditions", "unused", "WeakerAccess"})
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
-	public static final Map<Item, ModelBase> IDOL_MODELS = new HashMap<>();
-	public static final Map<Item, ResourceLocation> IDOL_TEXTURES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void stitch(TextureStitchEvent.Pre event) {
@@ -75,16 +73,12 @@ public class ClientProxy extends ServerProxy {
 		event.getMap().registerSprite(ModParticleBubble.TEX);
 	}
 	
-	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
-		IDOL_MODELS.put(item, model);
-		IDOL_TEXTURES.put(item, texture);
-	}
-	
 	@Override
 	public List<ItemStack> getEntireInventory(EntityPlayer unused) {
 		return super.getEntireInventory(Minecraft.getMinecraft().player);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public boolean doesPlayerHaveAdvancement(EntityPlayer player, ResourceLocation name) {
 		if (player instanceof EntityPlayerSP) {
 			ClientAdvancementManager manager = ((EntityPlayerSP) player).connection.getAdvancementManager();
@@ -134,7 +128,6 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityStatue());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
 		
 		if (Loader.isModLoaded("dynamictrees")) {
 			DynamicTreesCompat.clientPreInit();
@@ -171,34 +164,6 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
 		
 		TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
-		
-		// Register lenny model
-		ModelBase lenny = new ModelLeonardIdol();
-		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_stone.png"));
-		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_gold.png"));
-		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_netherbrick.png"));
-		registerIdol(ModObjects.scorned_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_scorned.png"));
-		
-		// Register lilith model
-		ModelBase lilith = new ModelLilithIdol();
-		registerIdol(ModObjects.stone_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/stone.png"));
-		registerIdol(ModObjects.gold_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/gold.png"));
-		registerIdol(ModObjects.nether_brick_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/scorned_brick.png"));
-		
-		// Register baphomet model
-		ModelBase baphomet = new ModelBaphometIdol();
-		registerIdol(ModObjects.stone_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/stone.png"));
-		registerIdol(ModObjects.gold_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/gold.png"));
-		registerIdol(ModObjects.nether_brick_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/scorned_brick.png"));
-		
-		// Register herne model
-		ModelBase herne = new ModelHerneIdol();
-		registerIdol(ModObjects.stone_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/stone.png"));
-		registerIdol(ModObjects.gold_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/gold.png"));
-		registerIdol(ModObjects.nether_brick_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
 	}
 	
 	@Override
