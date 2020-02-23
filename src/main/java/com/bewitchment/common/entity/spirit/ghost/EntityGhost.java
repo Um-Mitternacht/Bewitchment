@@ -79,6 +79,7 @@ public class EntityGhost extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.25);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
 	}
 	
 	@Override

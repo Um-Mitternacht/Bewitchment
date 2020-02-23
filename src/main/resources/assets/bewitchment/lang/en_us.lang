@@ -193,10 +193,10 @@ item.bewitchment.alchemist_hood.name=Alchemist's Hood
 item.bewitchment.alchemist_hat.name=Alchemist's Hat
 item.bewitchment.alchemist_robes.name=Alchemist's Robes
 item.bewitchment.alchemist_pants.name=Alchemist's Pants
-item.bewitchment.green_witch_hood.name=Green Witch Hood
-item.bewitchment.green_witch_hat.name=Green Witch Hat
-item.bewitchment.green_witch_robes.name=Green Witch Robes
-item.bewitchment.green_witch_pants.name=Green Witch Pants
+item.bewitchment.green_witch_hood.name=Hedgewitches' Hood
+item.bewitchment.green_witch_hat.name=Hedgewitches' Hat
+item.bewitchment.green_witch_robes.name=Hedgewitches' Robes
+item.bewitchment.green_witch_pants.name=Hedgewitches' Pants
 item.bewitchment.besmirched_hood.name=Besmirched Hood
 item.bewitchment.besmirched_hat.name=Besmirched Hat
 item.bewitchment.besmirched_robes.name=Besmirched Robes
@@ -351,7 +351,7 @@ item.bewitchment.golden_thread.name=Golden Thread
 
 tile.bewitchment.mossy_scorned_bricks.name=Mossy Scorned Bricks
 
-tile.bewitchment.greenwitch_fleece.name=Greenwitch Fleece
+tile.bewitchment.greenwitch_fleece.name=Hedgewitch Fleece
 tile.bewitchment.besmirched_fleece.name=Besmirched Fleece
 
 item.bewitchment.aconitum.name=Aconitum
@@ -718,6 +718,8 @@ advancements.bewitchment.wore_green_witch_set.title=Druid
 advancements.bewitchment.wore_green_witch_set.description=Wear a full set of the Greenwitch Robes and a Girdle of the Dryads
 advancements.bewitchment.obtained_box.title=Surprise Mechanics
 advancements.bewitchment.obtained_box.description=Obtain a Box of Sealed Evil, it's in the game
+advancements.bewitchment.argonaut.title=Argonaut
+advancements.bewitchment.argonaut.description=FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT!
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

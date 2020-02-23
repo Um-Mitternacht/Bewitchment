@@ -86,6 +86,7 @@ public class EntityBlackDog extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(24);
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
 	}
 	
 	@Override

@@ -387,6 +387,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 		ThaumcraftApi.registerEntityTag("bewitchment.imp", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.FIRE, 16));
 		ThaumcraftApi.registerEntityTag("bewitchment.druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
 		ThaumcraftApi.registerEntityTag("bewitchment.shadow_person", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
+		ThaumcraftApi.registerEntityTag("bewitchment.cleaver", new AspectList().add(Aspect.AVERSION, 25).add(DEMON, 25).add(Aspect.BEAST, 25));
 		
 		ThaumcraftApi.registerEntityTag("bewitchment.ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
 		

@@ -10,9 +10,11 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
@@ -30,11 +32,6 @@ public class EntityCleaver extends ModEntityMob {
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 25;
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -80,6 +77,16 @@ public class EntityCleaver extends ModEntityMob {
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	public boolean attackEntityAsMob(Entity entityIn) {
