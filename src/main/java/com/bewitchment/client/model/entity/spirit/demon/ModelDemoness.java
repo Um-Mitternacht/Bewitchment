@@ -14,7 +14,7 @@ import net.minecraft.util.math.MathHelper;
  */
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelDemoness extends ModelBiped {
-	public ModelRenderer body;
+	public ModelRenderer bipedBody;
 	public ModelRenderer lWing01;
 	public ModelRenderer rWing01;
 	public ModelRenderer boobs;
@@ -80,9 +80,9 @@ public class ModelDemoness extends ModelBiped {
 		this.bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
 		this.bipedRightArm.addBox(-2.0F, -2.0F, -2.0F, 3, 14, 4, 0.0F);
 		this.setRotateAngle(bipedRightArm, 0.0F, 0.0F, 0.10000736613927509F);
-		this.body = new ModelRenderer(this, 19, 17);
-		this.body.setRotationPoint(0.0F, -7.0F, 0.0F);
-		this.body.addBox(-4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F);
+		this.bipedBody = new ModelRenderer(this, 19, 17);
+		this.bipedBody.setRotationPoint(0.0F, -7.0F, 0.0F);
+		this.bipedBody.addBox(-4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F);
 		this.rWing01 = new ModelRenderer(this, 26, 38);
 		this.rWing01.mirror = true;
 		this.rWing01.setRotationPoint(-2.5F, 3.2F, 1.4F);
@@ -308,8 +308,8 @@ public class ModelDemoness extends ModelBiped {
 		this.rHorn01.setRotationPoint(-2.9F, -7.4F, -0.5F);
 		this.rHorn01.addBox(-1.0F, -2.0F, -1.0F, 2, 2, 2, 0.0F);
 		this.setRotateAngle(rHorn01, -0.17453292519943295F, -0.13962634015954636F, -0.13962634015954636F);
-		this.body.addChild(this.bipedRightArm);
-		this.body.addChild(this.rWing01);
+		this.bipedBody.addChild(this.bipedRightArm);
+		this.bipedBody.addChild(this.rWing01);
 		this.rightLeg02.addChild(this.rightHoof);
 		this.bipedHead.addChild(this.lHorn01);
 		this.rHorn04.addChild(this.rHorn05);
@@ -318,7 +318,7 @@ public class ModelDemoness extends ModelBiped {
 		this.lWing01.addChild(this.lWing02);
 		this.rHorn03a.addChild(this.rHorn03c);
 		this.lHorn02a.addChild(this.lHorn02b);
-		this.body.addChild(this.lWing01);
+		this.bipedBody.addChild(this.lWing01);
 		this.rWing01.addChild(this.rWing02);
 		this.lHorn04.addChild(this.lHorn05);
 		this.tail03.addChild(this.tail04);
@@ -327,7 +327,7 @@ public class ModelDemoness extends ModelBiped {
 		this.rHorn01.addChild(this.rHorn02a);
 		this.tailTip01.addChild(this.tailTip02);
 		this.leftLeg02.addChild(this.leftHoof);
-		this.body.addChild(this.bipedLeftArm);
+		this.bipedBody.addChild(this.bipedLeftArm);
 		this.lWing02.addChild(this.lWingMembrane);
 		this.rHorn02a.addChild(this.rHorn02b);
 		this.rHorn03a.addChild(this.rHorn04);
@@ -345,8 +345,8 @@ public class ModelDemoness extends ModelBiped {
 		this.rHorn02a.addChild(this.rHorn03d);
 		this.lHorn03a.addChild(this.lHorn03d_1);
 		this.lWing03.addChild(this.lWing04);
-		this.body.addChild(this.boobs);
-		this.body.addChild(this.bipedHead);
+		this.bipedBody.addChild(this.boobs);
+		this.bipedBody.addChild(this.bipedHead);
 		this.rHorn03a.addChild(this.rHorn03d_1);
 		this.lowerBody.addChild(this.tail01);
 		this.rHorn03a.addChild(this.rHorn03b);
@@ -360,7 +360,7 @@ public class ModelDemoness extends ModelBiped {
 		this.lHorn03a.addChild(this.lHorn03c);
 		this.leftLeg01.addChild(this.leftLeg02);
 		this.rWing02.addChild(this.rWingMembrane);
-		this.body.addChild(this.lowerBody);
+		this.bipedBody.addChild(this.lowerBody);
 		this.lHorn02a.addChild(this.lHorn03a);
 		this.lowerBody.addChild(this.bipedRightLeg);
 		this.bipedHead.addChild(this.rHorn01);
@@ -368,7 +368,7 @@ public class ModelDemoness extends ModelBiped {
 	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.body.render(f5);
+		this.bipedBody.render(f5);
 	}
 	
 	private static float triangleWave(float x, float y) {
