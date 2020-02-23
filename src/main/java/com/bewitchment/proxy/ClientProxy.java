@@ -75,6 +75,11 @@ public class ClientProxy extends ServerProxy {
 		event.getMap().registerSprite(ModParticleBubble.TEX);
 	}
 	
+	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
+		IDOL_MODELS.put(item, model);
+		IDOL_TEXTURES.put(item, texture);
+	}
+	
 	@Override
 	public List<ItemStack> getEntireInventory(EntityPlayer unused) {
 		return super.getEntireInventory(Minecraft.getMinecraft().player);
@@ -216,11 +221,6 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
-	}
-	
-	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
-		IDOL_MODELS.put(item, model);
-		IDOL_TEXTURES.put(item, texture);
 	}
 	
 	@Override

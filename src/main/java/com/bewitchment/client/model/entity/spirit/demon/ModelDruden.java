@@ -421,13 +421,13 @@ public class ModelDruden extends ModelBase {
 		this.leftAntler06a.addChild(this.leftAntler06b);
 	}
 	
+	private static float triangleWave(float x, float y) {
+		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
+	}
+	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.bipedBody.render(f5);
-	}
-	
-	private static float triangleWave(float x, float y) {
-		return (Math.abs(x % y - y * 0.5f) - y * 0.25f) / (y * 0.25f);
 	}
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
