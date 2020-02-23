@@ -283,6 +283,11 @@ tile.bewitchment.nether_brick_lilith_statue.name=Nether Brick Lilith Statue
 tile.bewitchment.scorned_brick_lilith_statue.name=Scorned Brick Lilith Statue
 tile.bewitchment.gold_lilith_statue.name=Gold Lilith Statue
 
+tile.bewitchment.stone_moloch_statue.name=Stone Moloch Statue
+tile.bewitchment.nether_brick_moloch_statue.name=Nether Brick Moloch Statue
+tile.bewitchment.scorned_brick_moloch_statue.name=Scorned Brick Moloch Statue
+tile.bewitchment.gold_moloch_statue.name=Gold Moloch Statue
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire
 item.bewitchment.bone_needle.name=Bone Needle
@@ -343,6 +348,11 @@ item.bewitchment.witches_stitching.name=Witches' Stitching
 item.bewitchment.sanguine_cloth.name=Sanguine Cloth
 item.bewitchment.spirit_string.name=Spirit String
 item.bewitchment.golden_thread.name=Golden Thread
+
+tile.bewitchment.mossy_scorned_bricks.name=Mossy Scorned Bricks
+
+tile.bewitchment.greenwitch_fleece.name=Greenwitch Fleece
+tile.bewitchment.besmirched_fleece.name=Besmirched Fleece
 
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
@@ -492,6 +502,7 @@ entity.bewitchment.demoness.name=Demoness
 entity.bewitchment.imp.name=Imp
 entity.bewitchment.druden.name=Druden
 entity.bewitchment.shadow_person.name=Shadow Person
+entity.bewitchment.cleaver.name=Cleaver
 
 entity.bewitchment.baphomet.name=Baphomet
 entity.bewitchment.leonard.name=Leonard
