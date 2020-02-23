@@ -338,6 +338,11 @@ public class ModObjects {
 	public static final Block nether_brick_moloch_statue = new BlockStatue(Statues.nether_brick_moloch_statue);
 	public static final Block scorned_brick_moloch_statue = new BlockStatue(Statues.scorned_brick_moloch_statue);
 	public static final Block gold_moloch_statue = new BlockStatue(Statues.gold_moloch_statue);
+	//Leonard Idols
+	public static final Block stone_leonard_idol = new BlockStatue(Statues.stone_leonard_idol);
+	public static final Block nether_brick_leonard_idol = new BlockStatue(Statues.nether_brick_leonard_idol);
+	public static final Block scorned_brick_leonard_idol = new BlockStatue(Statues.scorned_brick_leonard_idol);
+	public static final Block gold_leonard_idol = new BlockStatue(Statues.gold_leonard_idol);
 	
 	public static final Block filler = new BlockStatue.BlockFiller();
 	

@@ -63,7 +63,6 @@ public class ModRegistries {
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		GameRegistry.registerTileEntity(TileEntityIdol.class, new ResourceLocation(Bewitchment.MODID, "idol"));
 		GameRegistry.registerTileEntity(TileEntityStatue.class, new ResourceLocation(Bewitchment.MODID, "statue"));
 		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
 		GameRegistry.registerTileEntity(TileEntityDragonsBlood.class, new ResourceLocation(Bewitchment.MODID, "dragons_blood"));
