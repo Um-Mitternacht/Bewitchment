@@ -3,6 +3,10 @@ package com.bewitchment.proxy;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.TarotInfo;
 import com.bewitchment.client.gui.GuiTarotTable;
+import com.bewitchment.client.model.block.ModelBaphometIdol;
+import com.bewitchment.client.model.block.ModelHerneIdol;
+import com.bewitchment.client.model.block.ModelLeonardIdol;
+import com.bewitchment.client.model.block.ModelLilithIdol;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderDragonsBloodBroom;
@@ -33,6 +37,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -53,12 +58,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "unused", "WeakerAccess"})
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
+	public static final Map<Item, ModelBase> IDOL_MODELS = new HashMap<>();
+	public static final Map<Item, ResourceLocation> IDOL_TEXTURES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void stitch(TextureStitchEvent.Pre event) {
@@ -156,6 +165,34 @@ public class ClientProxy extends ServerProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? 0x590000 : 0xffffff, ModObjects.bottle_of_vampire_blood);
 		
 		TileEntityItemStackRenderer.instance = new RenderTileEntityStatue.ForwardingTEISR(TileEntityItemStackRenderer.instance);
+		
+		// Register lenny model
+		ModelBase lenny = new ModelLeonardIdol();
+		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
+		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
+		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
+		registerIdol(ModObjects.scorned_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/scorned_brick.png"));
+		
+		// Register lilith model
+		ModelBase lilith = new ModelLilithIdol();
+		registerIdol(ModObjects.stone_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/stone.png"));
+		registerIdol(ModObjects.gold_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/gold.png"));
+		registerIdol(ModObjects.nether_brick_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/nether_brick.png"));
+		registerIdol(ModObjects.scorned_brick_lilith_idol, lilith, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/lilith/scorned_brick.png"));
+		
+		// Register baphomet model
+		ModelBase baphomet = new ModelBaphometIdol();
+		registerIdol(ModObjects.stone_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/stone.png"));
+		registerIdol(ModObjects.gold_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/gold.png"));
+		registerIdol(ModObjects.nether_brick_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/nether_brick.png"));
+		registerIdol(ModObjects.scorned_brick_baphomet_idol, baphomet, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/baphomet/scorned_brick.png"));
+		
+		// Register herne model
+		ModelBase herne = new ModelHerneIdol();
+		registerIdol(ModObjects.stone_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/stone.png"));
+		registerIdol(ModObjects.gold_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/gold.png"));
+		registerIdol(ModObjects.nether_brick_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/nether_brick.png"));
+		registerIdol(ModObjects.scorned_brick_herne_idol, herne, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/herne/scorned_brick.png"));
 	}
 	
 	@Override
@@ -179,6 +216,11 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
 		ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(properties).build());
+	}
+	
+	public static void registerIdol(Item item, ModelBase model, ResourceLocation texture) {
+		IDOL_MODELS.put(item, model);
+		IDOL_TEXTURES.put(item, texture);
 	}
 	
 	@Override

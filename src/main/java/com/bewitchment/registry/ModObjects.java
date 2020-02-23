@@ -6,6 +6,7 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.api.registry.item.ItemBroom;
 import com.bewitchment.api.registry.item.ItemFume;
+import com.bewitchment.api.registry.item.ItemIdol;
 import com.bewitchment.client.misc.Statues;
 import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.*;
@@ -164,6 +165,30 @@ public class ModObjects {
 	public static final Block flower_siphoning_tulip_red = new BlockSiphoningFlower("tulip_red");
 	public static final Block flower_siphoning_tulip_white = new BlockSiphoningFlower("tulip_white");
 	public static final Block flower_siphoning_poppy = new BlockSiphoningFlower("poppy");
+	
+	//Lenny Idol
+	public static final Item stone_leonard_idol = createIdol("stone_leonard_idol", Blocks.STONE);
+	public static final Item gold_leonard_idol = createIdol("gold_leonard_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_leonard_idol = createIdol("nether_brick_leonard_idol", Blocks.NETHER_BRICK);
+	public static final Item scorned_brick_leonard_idol = createIdol("scorned_brick_leonard_idol", scorned_bricks[0]);
+	
+	//Lilith Idol
+	public static final Item stone_lilith_idol = createIdol("stone_lilith_idol", Blocks.STONE);
+	public static final Item gold_lilith_idol = createIdol("gold_lilith_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_lilith_idol = createIdol("nether_brick_lilith_idol", Blocks.NETHER_BRICK);
+	public static final Item scorned_brick_lilith_idol = createIdol("scorned_brick_lilith_idol", scorned_bricks[0]);
+	
+	//Baphomet Idol
+	public static final Item stone_baphomet_idol = createIdol("stone_baphomet_idol", Blocks.STONE);
+	public static final Item gold_baphomet_idol = createIdol("gold_baphomet_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_baphomet_idol = createIdol("nether_brick_baphomet_idol", Blocks.NETHER_BRICK);
+	public static final Item scorned_brick_baphomet_idol = createIdol("scorned_brick_baphomet_idol", scorned_bricks[0]);
+	
+	//Herne Idol
+	public static final Item stone_herne_idol = createIdol("stone_herne_idol", Blocks.STONE);
+	public static final Item gold_herne_idol = createIdol("gold_herne_idol", Blocks.GOLD_BLOCK);
+	public static final Item nether_brick_herne_idol = createIdol("nether_brick_herne_idol", Blocks.NETHER_BRICK);
+	public static final Item scorned_brick_herne_idol = createIdol("scorned_brick_herne_idol", scorned_bricks[0]);
 	
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
@@ -577,6 +602,10 @@ public class ModObjects {
 			}
 		}
 		return list.toArray(new Block[0]);
+	}
+	
+	private static Item createIdol(String name, Block base) {
+		return Util.registerItem(new ItemIdol(name, base), name);
 	}
 	
 	private static Block registerTileEntity(Block block, Class<? extends TileEntity> tile) {
