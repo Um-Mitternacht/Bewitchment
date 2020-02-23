@@ -134,6 +134,7 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlacedItem.class, new RenderTileEntityPlacedItem());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, new RenderTileEntityStatue());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPoppetShelf.class, new RenderTileEntityPoppetShelf());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIdol.class, new RenderTileEntityIdol());
 		
 		if (Loader.isModLoaded("dynamictrees")) {
 			DynamicTreesCompat.clientPreInit();
