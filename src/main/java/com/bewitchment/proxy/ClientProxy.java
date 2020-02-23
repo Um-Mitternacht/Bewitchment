@@ -174,10 +174,10 @@ public class ClientProxy extends ServerProxy {
 		
 		// Register lenny model
 		ModelBase lenny = new ModelLeonardIdol();
-		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/stone.png"));
-		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/gold.png"));
-		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/nether_brick.png"));
-		registerIdol(ModObjects.scorned_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/leonard/scorned_brick.png"));
+		registerIdol(ModObjects.stone_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_stone.png"));
+		registerIdol(ModObjects.gold_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_gold.png"));
+		registerIdol(ModObjects.nether_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_netherbrick.png"));
+		registerIdol(ModObjects.scorned_brick_leonard_idol, lenny, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_leonard_scorned.png"));
 		
 		// Register lilith model
 		ModelBase lilith = new ModelLilithIdol();
