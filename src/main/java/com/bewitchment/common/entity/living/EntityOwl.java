@@ -5,6 +5,7 @@ import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -52,6 +54,11 @@ public class EntityOwl extends ModEntityTameable {
 	}
 	
 	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	@Override
 	public boolean isBreedingItem(ItemStack stack) {
 		return stack.getItem() == Items.RABBIT;
 	}
@@ -64,11 +71,6 @@ public class EntityOwl extends ModEntityTameable {
 			return true;
 		}
 		else return super.processInteract(player, hand);
-	}
-	
-	@Override
-	public int getMaxSpawnedInChunk() {
-		return 2;
 	}
 	
 	@Override
@@ -147,5 +149,10 @@ public class EntityOwl extends ModEntityTameable {
 	@Override
 	protected float getSoundVolume() {
 		return 0.5f;
+	}
+	
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 	}
 }
