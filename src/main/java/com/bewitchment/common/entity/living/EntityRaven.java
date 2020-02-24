@@ -42,7 +42,7 @@ public class EntityRaven extends ModEntityTameable {
 		super(world, lootTableLocation, tameItems);
 		setSize(0.4f, 0.4f);
 		this.setPeckTime(this.getNewPeck());
-		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+		this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
 		moveHelper = new EntityFlyHelper(this);
 	}
 	
@@ -76,7 +76,7 @@ public class EntityRaven extends ModEntityTameable {
 	
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
-		if (!world.isRemote && player.getHeldItem(hand).getItem() instanceof ItemBoline && shearTimer == 0 && !(this instanceof EntityOwl)) {
+		if (!world.isRemote && player.getHeldItem(hand).getItem() instanceof ItemBoline && shearTimer == 0) {
 			InventoryHelper.spawnItemStack(world, posX, posY, posZ, new ItemStack(ModObjects.ravens_feather, 1 + world.rand.nextInt(3)));
 			shearTimer = 12000;
 			return true;
@@ -154,7 +154,7 @@ public class EntityRaven extends ModEntityTameable {
 		
 		if (!this.world.isRemote && !this.isChild()) {
 			this.dropItem(ModObjects.ravens_feather, 1);
-			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+			this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
 		}
 	}
 	

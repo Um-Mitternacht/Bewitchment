@@ -3,10 +3,6 @@ package com.bewitchment.proxy;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.TarotInfo;
 import com.bewitchment.client.gui.GuiTarotTable;
-import com.bewitchment.client.model.block.ModelBaphometIdol;
-import com.bewitchment.client.model.block.ModelHerneIdol;
-import com.bewitchment.client.model.block.ModelLeonardIdol;
-import com.bewitchment.client.model.block.ModelLilithIdol;
 import com.bewitchment.client.render.entity.living.*;
 import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
 import com.bewitchment.client.render.entity.misc.RenderDragonsBloodBroom;
@@ -37,7 +33,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -58,9 +53,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 
 @SuppressWarnings({"ConstantConditions", "unused", "WeakerAccess"})

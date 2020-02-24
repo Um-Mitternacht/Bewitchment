@@ -1,12 +1,13 @@
 package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.registry.ModSounds;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFleeSun;
-import net.minecraft.entity.ai.EntityAITargetNonTamed;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityParrot;
@@ -19,16 +20,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @SuppressWarnings("ConstantConditions")
-public class EntityOwl extends EntityRaven {
+public class EntityOwl extends ModEntityTameable {
 	public int timeUntilNextShed;
+	protected int shearTimer;
 	
 	public EntityOwl(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN);
 		setSize(0.4f, 0.9f);
-		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+		this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
 	}
 	
 	@Override
@@ -54,6 +57,17 @@ public class EntityOwl extends EntityRaven {
 	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, aiSit);
+		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() / 2));
+		tasks.addTask(2, new EntityAIAttackMelee(this, 0.5, false));
+		tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue()));
+		tasks.addTask(4, new EntityAIFollowOwnerFlying(this, getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).getAttributeValue(), 10, 2));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
+		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
 		tasks.addTask(1, new EntityAIFleeSun(this, 1));
 		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityBat || e instanceof EntityChicken || e instanceof EntityLizard || e instanceof EntityParrot || e instanceof EntityRabbit || e.getClass().getName().endsWith("Rat")));
 	}
@@ -69,6 +83,7 @@ public class EntityOwl extends EntityRaven {
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("shearTimer", shearTimer);
 		tag.setInteger("shedTime", this.timeUntilNextShed);
 		super.writeEntityToNBT(tag);
 	}
@@ -83,23 +98,35 @@ public class EntityOwl extends EntityRaven {
 	}
 	
 	@Override
+	protected int getSkinTypes() {
+		return 4;
+	}
+	
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
+			this.heal(2);
+		}
+		if (!onGround && motionY <= 0) motionY *= 0.6;
+		if (shearTimer > 0) shearTimer--;
 		
 		if (!this.world.isRemote && !this.isChild()) {
 			this.dropItem(Items.FEATHER, 1);
-			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+			this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
 		}
+	}
+	
+	@Override
+	protected void updateFallState(double y, boolean grounded, IBlockState state, BlockPos pos) {
+	}
+	
+	@Override
+	public void fall(float distance, float damageMultiplier) {
 	}
 	
 	@Override
 	protected float getSoundVolume() {
 		return 0.5f;
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 4;
 	}
 }
