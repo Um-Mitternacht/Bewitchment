@@ -55,6 +55,11 @@ public class EntityOwl extends ModEntityTameable {
 	}
 	
 	@Override
+	public int getMaxSpawnedInChunk() {
+		return 2;
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
