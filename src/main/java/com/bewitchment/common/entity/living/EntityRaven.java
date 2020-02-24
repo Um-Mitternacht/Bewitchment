@@ -42,7 +42,7 @@ public class EntityRaven extends ModEntityTameable {
 		super(world, lootTableLocation, tameItems);
 		setSize(0.4f, 0.4f);
 		this.setPeckTime(this.getNewPeck());
-		this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
+		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		moveHelper = new EntityFlyHelper(this);
 	}
 	
@@ -152,9 +152,9 @@ public class EntityRaven extends ModEntityTameable {
 			this.setPeckTime(this.getNewPeck());
 		}
 		
-		if (!this.world.isRemote && !this.isChild()) {
+		if (!this.world.isRemote && !this.isChild() && --this.timeUntilNextShed <= 0) {
 			this.dropItem(ModObjects.ravens_feather, 1);
-			this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
+			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		}
 	}
 	

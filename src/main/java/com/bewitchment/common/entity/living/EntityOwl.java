@@ -17,6 +17,8 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathNavigate;
+import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -31,7 +33,17 @@ public class EntityOwl extends ModEntityTameable {
 	public EntityOwl(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN);
 		setSize(0.4f, 0.9f);
-		this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
+		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
+		moveHelper = new EntityFlyHelper(this);
+	}
+	
+	@Override
+	protected PathNavigate createNavigator(World world) {
+		PathNavigateFlying path = new PathNavigateFlying(this, world);
+		path.setCanEnterDoors(true);
+		path.setCanFloat(true);
+		path.setCanOpenDoors(false);
+		return path;
 	}
 	
 	@Override
@@ -118,9 +130,9 @@ public class EntityOwl extends ModEntityTameable {
 		if (!onGround && motionY <= 0) motionY *= 0.6;
 		if (shearTimer > 0) shearTimer--;
 		
-		if (!this.world.isRemote && !this.isChild()) {
+		if (!this.world.isRemote && !this.isChild() && --this.timeUntilNextShed <= 0) {
 			this.dropItem(Items.FEATHER, 1);
-			this.timeUntilNextShed = this.rand.nextInt(12000) + 12000;
+			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		}
 	}
 	
