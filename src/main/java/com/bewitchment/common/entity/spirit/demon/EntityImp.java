@@ -103,6 +103,7 @@ public class EntityImp extends ModEntityMob {
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> p.getDistanceSq(this) < 2 && !BewitchmentAPI.hasBesmirchedGear(p)));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityHellhound || e instanceof EntityFeuerwurm) && !BewitchmentAPI.hasBesmirchedGear(e)));
