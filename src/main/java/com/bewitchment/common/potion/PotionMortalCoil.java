@@ -26,11 +26,11 @@ public class PotionMortalCoil extends ModPotion {
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingUpdateEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving().isPotionActive(this) && event.getEntityLiving().getActivePotionEffect(this).getDuration() == 1) {
-			if (event.getEntityLiving() instanceof EntityPlayer) event.getEntityLiving().attackEntityFrom(DamageSource.WITHER, Integer.MAX_VALUE);
-			else event.getEntityLiving().setDead();
+			event.getEntityLiving().attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
@@ -38,6 +38,7 @@ public class PotionMortalCoil extends ModPotion {
 		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
