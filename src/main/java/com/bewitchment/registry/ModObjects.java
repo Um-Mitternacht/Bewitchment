@@ -94,7 +94,7 @@ public class ModObjects {
 	public static final Block amethyst_ore = new ModBlockOre("amethyst_ore", Blocks.REDSTONE_ORE, "oreAmethyst");
 	public static final Block garnet_ore = new ModBlockOre("garnet_ore", Blocks.REDSTONE_ORE, "oreGarnet");
 	public static final Block opal_ore = new ModBlockOre("opal_ore", Blocks.REDSTONE_ORE, "oreOpal");
-	public static final Block silver_ore = new ModBlock("silver_ore", Blocks.REDSTONE_ORE, "oreSilver");
+	public static final Block silver_ore = new ModBlock("silver_ore", Blocks.IRON_ORE, "oreSilver");
 	public static final Block salt_ore = new ModBlockOre("salt_ore", Blocks.COAL_ORE, "oreSalt");
 	
 	public static final Block purifying_earth = new BlockPurifyingEarth();
