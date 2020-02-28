@@ -14,12 +14,6 @@ import net.minecraft.util.math.MathHelper;
  * Created using Tabula 7.0.1
  */
 public class ModelCleaver extends ModelBiped {
-	public ModelRenderer bipedBody;
-	public ModelRenderer bipedLeftArm;
-	public ModelRenderer bipedRightArm;
-	public ModelRenderer bipedLeftLeg;
-	public ModelRenderer bipedRightLeg;
-	public ModelRenderer bipedHead;
 	public ModelRenderer loincloth;
 	public ModelRenderer loinclothBack;
 	public ModelRenderer leftLeg02;
@@ -295,7 +289,7 @@ public class ModelCleaver extends ModelBiped {
 			f = 1.0F;
 		}
 		
-		float swingMod = 0.3F;
+		float swingMod = 0.6F;
 		this.bipedLeftLeg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - 0.26F;
 		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - 0.26F;
 		
@@ -402,7 +396,7 @@ public class ModelCleaver extends ModelBiped {
 	
 	@Override
 	public void postRenderArm(float scale, EnumHandSide side) {
-		GlStateManager.translate(0.025F, -0.22, 0);
+		GlStateManager.translate(0.025F, -0.3, 0);
 		super.postRenderArm(scale, side);
 	}
 	
