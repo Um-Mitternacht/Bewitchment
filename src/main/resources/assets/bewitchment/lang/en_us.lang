@@ -1289,6 +1289,16 @@ entity.bewitchment.prefix.59=Cadet
 entity.bewitchment.prefix.60=Marshal
 entity.bewitchment.prefix.61=Bishop
 entity.bewitchment.prefix.62=Guard
+entity.bewitchment.prefix.63=Chief
+entity.bewitchment.prefix.64=Specialist
+entity.bewitchment.prefix.65=Landgrave
+entity.bewitchment.prefix.66=King of Kings
+entity.bewitchment.prefix.67=Despot
+entity.bewitchment.prefix.68=Basileus
+entity.bewitchment.prefix.69=Dominus
+entity.bewitchment.prefix.70=Rex
+entity.bewitchment.prefix.71=Sir
+entity.bewitchment.prefix.72=Vice Admiral
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
