@@ -132,6 +132,7 @@ public class ModObjects {
 	//Todo: Carpet blocks
 	public static final Block greenwitch_fleece = new ModBlock("greenwitch_fleece", Blocks.WOOL);
 	public static final Block besmirched_fleece = new ModBlock("besmirched_fleece", Blocks.WOOL);
+	public static final Block alchemists_fleece = new ModBlock("alchemists_fleece", Blocks.WOOL);
 	
 	public static final Block dragons_blood_resin_block = new ModBlock("dragons_blood_resin_block", Blocks.SLIME_BLOCK, "blockDragonsBloodResin");
 	//Util Blocks
