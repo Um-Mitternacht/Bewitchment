@@ -124,6 +124,10 @@ public class ModObjects {
 	public static final Block nethersteel_stairs = new ModBlockStairs("nethersteel_stairs", nethersteel[0]);
 	public static final Block coquina_stairs = new ModBlockStairs("coquina_stairs", coquina[0]);
 	
+	public static final Block coquina_slab = new ModBlockSlab("coquina_slab", coquina[0]);
+	public static final Block nethersteel_slab = new ModBlockSlab("nethersteel_slab", nethersteel[0]);
+	public static final Block mossy_scorned_brick_slab = new ModBlockSlab("mossy_scorned_brick_slab", mossy_scorned_bricks);
+	
 	//Decorative wools and carpets
 	//Todo: Carpet blocks
 	public static final Block greenwitch_fleece = new ModBlock("greenwitch_fleece", Blocks.WOOL);
