@@ -120,6 +120,10 @@ public class ModObjects {
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks[0]);
 	public static final Block mossy_scorned_bricks = new ModBlock("mossy_scorned_bricks", Blocks.STONE);
 	
+	public static final Block mossy_scorned_brick_stairs = new ModBlockStairs("mossy_scorned_brick_stairs", mossy_scorned_bricks);
+	public static final Block nethersteel_stairs = new ModBlockStairs("nethersteel_stairs", nethersteel[0]);
+	public static final Block coquina_stairs = new ModBlockStairs("coquina_stairs", coquina[0]);
+	
 	//Decorative wools and carpets
 	//Todo: Carpet blocks
 	public static final Block greenwitch_fleece = new ModBlock("greenwitch_fleece", Blocks.WOOL);
