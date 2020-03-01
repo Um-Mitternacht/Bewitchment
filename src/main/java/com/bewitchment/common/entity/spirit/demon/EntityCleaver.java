@@ -46,6 +46,12 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		setEquipmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
@@ -76,6 +82,13 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
+		if (itemEntity.getItem().getItem() instanceof ItemSword) {
+			super.updateEquipmentIfNeeded(itemEntity);
+		}
+	}
+	
+	@Override
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
@@ -100,14 +113,7 @@ public class EntityCleaver extends ModEntityMob {
 		
 		return flag;
 	}
-
-	@Override
-	protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
-		if (itemEntity.getItem().getItem() instanceof ItemSword) {
-			super.updateEquipmentIfNeeded(itemEntity);
-		}
-	}
-
+	
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -118,11 +124,5 @@ public class EntityCleaver extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35);
 		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-	}
-
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		setEquipmentBasedOnDifficulty(difficulty);
-		return super.onInitialSpawn(difficulty, data);
 	}
 }

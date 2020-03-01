@@ -4,7 +4,6 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
