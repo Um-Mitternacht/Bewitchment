@@ -725,6 +725,8 @@ advancements.bewitchment.obtained_box.title=Surprise Mechanics
 advancements.bewitchment.obtained_box.description=Obtain a Box of Sealed Evil, it's in the game
 advancements.bewitchment.argonaut.title=Argonaut
 advancements.bewitchment.argonaut.description=FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT!
+advancements.bewitchment.ghost.title=Purification in Progress
+advancements.bewitchment.ghost.description=Kill a ghost
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
