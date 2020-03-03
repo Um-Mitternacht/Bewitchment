@@ -1300,6 +1300,9 @@ entity.bewitchment.prefix.69=Dominus
 entity.bewitchment.prefix.70=Rex
 entity.bewitchment.prefix.71=Sir
 entity.bewitchment.prefix.72=Vice Admiral
+entity.bewitchment.prefix.73=Ensign
+entity.bewitchment.prefix.74=Scout
+entity.bewitchment.prefix.75=Officer
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
