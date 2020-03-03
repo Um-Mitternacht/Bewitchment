@@ -390,12 +390,12 @@ public class ModObjects {
 	//Distillery
 	public static final Item cleansing_balm = Util.registerItem(new ItemFume(), "cleansing_balm");
 	public static final Item demonic_elixir = Util.registerItem(new ItemFume(), "demonic_elixir");
-	public static final Item fiery_unguent = Util.registerItem(new ItemFume(), "fiery_unguent");
-	public static final Item swirl_of_depths = Util.registerItem(new ItemFume(), "swirl_of_depths");
+	public static final Item fiery_unguent = Util.registerItem(new ItemFume(), "fiery_unguent", "elementalFume");
+	public static final Item swirl_of_depths = Util.registerItem(new ItemFume(), "swirl_of_depths", "elementalFume");
 	public static final Item oil_of_vitriol = Util.registerItem(new ItemFume(), "oil_of_vitriol");
 	public static final Item otherworldly_tears = Util.registerItem(new ItemFume(), "otherworldly_tears");
-	public static final Item heaven_extract = Util.registerItem(new ItemFume(), "heaven_extract");
-	public static final Item stone_ichor = Util.registerItem(new ItemFume(), "stone_ichor");
+	public static final Item heaven_extract = Util.registerItem(new ItemFume(), "heaven_extract", "elementalFume");
+	public static final Item stone_ichor = Util.registerItem(new ItemFume(), "stone_ichor", "elementalFume");
 	//Spinning Wheel
 	public static final Item diabolical_vein = Util.registerItem("diabolical_vein");
 	public static final Item pure_filament = Util.registerItem("pure_filament");
