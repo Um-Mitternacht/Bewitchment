@@ -392,9 +392,9 @@ public class ModelWerewolf<T extends LivingEntity> extends EntityModel<T> implem
 		bipedRightLeg.rotateAngleY = 1 / 10f;
 		chest.rotateAngleY = MathHelper.sin(MathHelper.sqrt(swingProgress) * ((float) Math.PI) * 2) * 0.2f;
 		lArm01.rotateAngleY = 0;
-		lArm01.rotateAngleZ = -1/4f;
+		lArm01.rotateAngleZ = -1 / 4f;
 		rArm01.rotateAngleY = 0;
-		rArm01.rotateAngleZ = 1/4f;
+		rArm01.rotateAngleZ = 1 / 4f;
 		RendererModel arm = entity.swingingHand == Hand.MAIN_HAND ? rArm01 : lArm01;
 		int val = (arm == rArm01 ? 1 : -1);
 		if (val < 0) chest.rotateAngleY *= -1;
