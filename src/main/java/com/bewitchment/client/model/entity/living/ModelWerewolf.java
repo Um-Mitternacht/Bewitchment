@@ -1,21 +1,12 @@
 package com.bewitchment.client.model.entity.living;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.entity.model.IHasArm;
-import net.minecraft.client.renderer.entity.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-import javax.annotation.Nonnull;
 
 public class ModelWerewolf extends ModelBase {
 	public ModelRenderer chest;
@@ -378,7 +369,7 @@ public class ModelWerewolf extends ModelBase {
 	}
 	
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.chest.render(f5);
 	}
 	
@@ -408,7 +399,7 @@ public class ModelWerewolf extends ModelBase {
 	}
 	
 	@Override
-	public void postRenderArm(float scale, EnumHandSide side){
+	public void postRenderArm(float scale, EnumHandSide side) {
 		(side == HandSide.LEFT ? lArm01 : rArm01).postRender(scale);
 	}
 	
