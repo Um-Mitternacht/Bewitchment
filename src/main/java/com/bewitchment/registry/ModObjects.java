@@ -26,10 +26,7 @@ import com.bewitchment.common.item.tool.ItemAthame;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.item.tool.ItemJuniperKey;
-import com.bewitchment.common.item.util.ModItemAxe;
-import com.bewitchment.common.item.util.ModItemBauble;
-import com.bewitchment.common.item.util.ModItemDoor;
-import com.bewitchment.common.item.util.ModItemPickaxe;
+import com.bewitchment.common.item.util.*;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenDragonTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
@@ -374,6 +371,8 @@ public class ModObjects {
 	public static final Item cold_iron_plate = Util.registerItem("cold_iron_plate", "plateColdIron");
 	public static final Item silver_plate = Util.registerItem("silver_plate", "plateSilver");
 	
+	//Technical content
+	public static final Item hidden_bat = new ItemHiddenBat();
 	
 	//Oven
 	public static final Item unfired_jar = Util.registerItem("unfired_jar");

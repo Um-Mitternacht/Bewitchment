@@ -1225,6 +1225,14 @@ entity.bewitchment.given_name.454=Krampus
 entity.bewitchment.given_name.455=Raktabija
 entity.bewitchment.given_name.456=Geryon
 
+//ARG References
+
+entity.bewitchment.given_name.457=Haruspex
+entity.bewitchment.given_name.458=Izuxe
+
+//More misc names
+//Coming soon
+
 //Hazbin Hotel
 //Coming soon
 
@@ -1305,6 +1313,7 @@ entity.bewitchment.prefix.72=Vice Admiral
 entity.bewitchment.prefix.73=Ensign
 entity.bewitchment.prefix.74=Scout
 entity.bewitchment.prefix.75=Officer
+entity.bewitchment.prefix.76=Haruspex
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
