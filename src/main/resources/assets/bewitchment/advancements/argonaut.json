@@ -1,7 +1,7 @@
 {
   "display": {
 	"icon": {
-	  "item": "minecraft:iron_sword"
+	  "item": "bewitchment:athame"
 	},
 	"title": {
 	  "translate": "advancements.bewitchment.argonaut.title"

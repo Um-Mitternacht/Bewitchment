@@ -1,0 +1,26 @@
+{
+  "display": {
+	"icon": {
+	  "item": "bewitchment:cleaver_sword"
+	},
+	"title": {
+	  "translate": "advancements.bewitchment.slash.title"
+	},
+	"description": {
+	  "translate": "advancements.bewitchment.slash.description"
+	}
+  },
+  "parent": "bewitchment:argonaut",
+  "criteria": {
+	"cleaver": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:cleaver_sword"
+		  }
+		]
+	  }
+	}
+  }
+}

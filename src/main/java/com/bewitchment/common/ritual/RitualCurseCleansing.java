@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class RitualCurseCleansing extends Ritual {
 	private static final List<Ingredient> lesser_input = Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.birch_soul), Util.get(Items.WATER_BUCKET));
-	private static final List<Ingredient> greater_input = Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.birch_soul), Util.get(Items.WATER_BUCKET), Util.get(ModObjects.garlic), Util.get(ModObjects.silver_ingot));
+	private static final List<Ingredient> greater_input = Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get(ModObjects.cleansing_balm), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.birch_soul), Util.get(Items.WATER_BUCKET), Util.get("cropGarlic"), Util.get("ingotSilver"));
 	private boolean lesser;
 	
 	public RitualCurseCleansing(boolean lesser) {

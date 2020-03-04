@@ -214,6 +214,8 @@ item.bewitchment.cold_iron_axe.name=Cold Iron Axe
 item.bewitchment.cold_iron_shovel.name=Cold Iron Shovel
 item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 
+item.bewitchment.cleaver_sword.name=Cleaver Blade
+
 tooltip.bewitchment.silver_armor_description.name=Protects against undead
 tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
 tooltip.bewitchment.cold_iron_armor_description.name=Protects against demons and spirits
@@ -355,9 +357,18 @@ item.bewitchment.spirit_string.name=Spirit String
 item.bewitchment.golden_thread.name=Golden Thread
 
 tile.bewitchment.mossy_scorned_bricks.name=Mossy Scorned Bricks
+tile.bewitchment.mossy_scorned_brick_slab.name=Mossy Scorned Brick Slab
+tile.bewitchment.mossy_scorned_brick_stairs.name=Mossy Scorned Brick Stairs
+
+tile.bewitchment.coquina_slab.name=Coquina Slab
+tile.bewitchment.coquina_stairs.name=Coquina Stairs
+
+tile.bewitchment.nethersteel_slab.name=Nethersteel Slab
+tile.bewitchment.nethersteel_stairs.name=Nethersteel Stairs
 
 tile.bewitchment.greenwitch_fleece.name=Hedgewitch Fleece
 tile.bewitchment.besmirched_fleece.name=Besmirched Fleece
+tile.bewitchment.alchemists_fleece.name=Alchemist Fleece
 
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
@@ -727,6 +738,8 @@ advancements.bewitchment.argonaut.title=Argonaut
 advancements.bewitchment.argonaut.description=FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT! FIREBOLT!
 advancements.bewitchment.ghost.title=Purification in Progress
 advancements.bewitchment.ghost.description=Kill a ghost
+advancements.bewitchment.slash.title=Hack and Slash
+advancements.bewitchment.slash.description=Obtain a cleaver's sword
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.util;
 
-import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import net.minecraft.item.Item;
 

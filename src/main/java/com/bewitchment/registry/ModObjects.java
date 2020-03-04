@@ -66,6 +66,7 @@ public class ModObjects {
 	
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 260, 6, 2, 14);
+	public static final Item.ToolMaterial TOOL_HELLISH = EnumHelper.addToolMaterial("hellish", 2, 616, 16, 3.0f, 26);
 	
 	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");
@@ -293,6 +294,7 @@ public class ModObjects {
 	public static final Item cold_iron_hoe = Util.registerItem(new ItemHoe(TOOL_COLD_IRON), "cold_iron_hoe");
 	public static final Item athame = new ItemAthame();
 	public static final Item boline = new ItemBoline();
+	public static final Item cleaver_sword = new ItemCleaver();
 	public static final Item broom = Util.registerItem(new ItemBroom(null), "broom");
 	public static final Item cypress_broom = Util.registerItem(new ItemBroom(ModEntities.cypress_broom), "cypress_broom");
 	public static final Item elder_broom = Util.registerItem(new ItemBroom(ModEntities.elder_broom), "elder_broom");
