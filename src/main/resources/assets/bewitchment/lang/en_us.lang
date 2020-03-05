@@ -387,16 +387,16 @@ tooltip.bewitchment.wormwood=An incredibly weedy herb
 tile.bewitchment.spanish_moss.name=Spanish Moss
 tile.bewitchment.spanish_moss_end.name=Spanish Moss
 
-tile.bewitchment.flower_siphoning_allium.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_azure_bluet.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_blue_orchid.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_dandelion.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_oxeye_daisy.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_poppy.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_tulip_orange.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_tulip_red.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_tulip_pink.name=Siphoning Flower
-tile.bewitchment.flower_siphoning_tulip_white.name=Siphoning Flower
+tile.bewitchment.flower_siphoning_allium.name=Allium?
+tile.bewitchment.flower_siphoning_azure_bluet.name=Azure Bluet?
+tile.bewitchment.flower_siphoning_blue_orchid.name=Blue Orchid?
+tile.bewitchment.flower_siphoning_dandelion.name=Dandelion?
+tile.bewitchment.flower_siphoning_oxeye_daisy.name=Oxeye Daisy?
+tile.bewitchment.flower_siphoning_poppy.name=Poppy?
+tile.bewitchment.flower_siphoning_tulip_orange.name=Tulip?
+tile.bewitchment.flower_siphoning_tulip_red.name=Tulip?
+tile.bewitchment.flower_siphoning_tulip_pink.name=Tulip?
+tile.bewitchment.flower_siphoning_tulip_white.name=Tulip?
 
 tile.bewitchment.blue_ink_cap.name=Blue Ink Cap
 tile.bewitchment.frostflower.name=Frost Flower
