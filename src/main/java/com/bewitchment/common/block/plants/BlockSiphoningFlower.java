@@ -8,6 +8,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -30,6 +33,12 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 	public BlockSiphoningFlower(String name) {
 		super();
 		Util.registerBlock(this, "flower_siphoning_" + name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0);
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(I18n.format("tooltip.bewitchment.siphoning_flower"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
 	@Nullable
