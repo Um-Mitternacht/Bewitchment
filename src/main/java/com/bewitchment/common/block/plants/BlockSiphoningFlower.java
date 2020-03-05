@@ -20,6 +20,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -37,7 +38,7 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(I18n.format("tooltip.bewitchment.siphoning_flower"));
+		tooltip.add(TextFormatting.RED + I18n.format("tooltip.bewitchment.siphoning_flower"));
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
