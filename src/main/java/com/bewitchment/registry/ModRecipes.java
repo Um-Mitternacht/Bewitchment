@@ -6,6 +6,7 @@ import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.registry.*;
+import com.bewitchment.common.block.BlockCandelabra;
 import com.bewitchment.common.block.BlockCandle;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.BlockStatue;
@@ -343,6 +344,7 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.05));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockRedstoneTorch, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.1));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandelabra, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.225));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockEndRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.325));
 		Util.registerAltarUpgradeItem(ModObjects.leonards_wand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.56));
 		Util.registerAltarUpgradeItem(ModObjects.caduceus, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.78));
