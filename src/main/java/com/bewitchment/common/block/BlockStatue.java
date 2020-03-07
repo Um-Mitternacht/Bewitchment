@@ -6,6 +6,7 @@ import com.bewitchment.common.block.util.ModBlock;
 import com.bewitchment.common.block.util.ModBlockContainer;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
@@ -54,6 +55,11 @@ public class BlockStatue extends ModBlockContainer {
 			world.setBlockToAir(pos.up(i));
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
