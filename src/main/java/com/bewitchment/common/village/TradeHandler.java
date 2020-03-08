@@ -159,8 +159,8 @@ public class TradeHandler {
 		}
 		
 		private ItemStack getRandomSeed(Random random) {
-			List<Item> baubles = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
-			if (!baubles.isEmpty()) return new ItemStack(baubles.get(random.nextInt(baubles.size())));
+			List<Item> seeds = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
+			if (!seeds.isEmpty()) return new ItemStack(seeds.get(random.nextInt(seeds.size())));
 			return new ItemStack(Items.MELON_SEEDS);
 		}
 		
