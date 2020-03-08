@@ -6,6 +6,16 @@
   "variants": {
 	"normal": [
 	  {}
+	],
+	"lit=false": [
+	  {
+		"model": "bewitchment:candelabra_gold"
+	  }
+	],
+	"lit=true": [
+	  {
+		"model": "bewitchment:candelabra_gold"
+	  }
 	]
   }
 }
