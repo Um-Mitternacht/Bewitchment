@@ -355,6 +355,22 @@ public class ModObjects {
 	public static final Block nether_brick_leonard_idol = new BlockStatue(Statues.nether_brick_leonard_idol);
 	public static final Block scorned_brick_leonard_idol = new BlockStatue(Statues.scorned_brick_leonard_idol);
 	public static final Block gold_leonard_idol = new BlockStatue(Statues.gold_leonard_idol);
+	//Herne Idols
+	public static final Block stone_herne_idol = new BlockStatue(Statues.stone_herne_idol);
+	public static final Block nether_brick_herne_idol = new BlockStatue(Statues.nether_brick_herne_idol);
+	public static final Block scorned_brick_herne_idol = new BlockStatue(Statues.scorned_brick_herne_idol);
+	public static final Block gold_herne_idol = new BlockStatue(Statues.gold_herne_idol);
+	//Baphomet Idols
+	public static final Block stone_baphomet_idol = new BlockStatue(Statues.stone_baphomet_idol);
+	public static final Block nether_brick_baphomet_idol = new BlockStatue(Statues.nether_brick_baphomet_idol);
+	public static final Block scorned_brick_baphomet_idol = new BlockStatue(Statues.scorned_brick_baphomet_idol);
+	public static final Block gold_baphomet_idol = new BlockStatue(Statues.gold_baphomet_idol);
+	//Lilith Idols
+	public static final Block stone_lilith_idol = new BlockStatue(Statues.stone_lilith_idol);
+	public static final Block nether_brick_lilith_idol = new BlockStatue(Statues.nether_brick_lilith_idol);
+	public static final Block scorned_brick_lilith_idol = new BlockStatue(Statues.scorned_brick_lilith_idol);
+	public static final Block gold_lilith_idol = new BlockStatue(Statues.gold_lilith_idol);
+	//Moloch Idols... IF I HAD ANY
 	
 	public static final Block filler = new BlockStatue.BlockFiller();
 	
