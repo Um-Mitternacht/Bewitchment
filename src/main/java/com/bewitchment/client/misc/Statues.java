@@ -63,10 +63,10 @@ public class Statues {
 	public static Statue scorned_brick_herne_idol = new Statue("scorned_brick_herne_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_herne_scorned.png"), herne_idol, 2);
 	
 	private static ModelBase baphomet_idol = new ModelBaphometIdol();
-	public static Statue stone_baphomet_idol = new Statue("stone_baphomet_idol", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_stone.png"), baphomet_idol, 2);
-	public static Statue gold_baphomet_idol = new Statue("gold_baphomet_idol", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_gold.png"), baphomet_idol, 2);
-	public static Statue nether_brick_baphomet_idol = new Statue("nether_brick_baphomet_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_netherbrick.png"), baphomet_idol, 2);
-	public static Statue scorned_brick_baphomet_idol = new Statue("scorned_brick_baphomet_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_scorned.png"), baphomet_idol, 2);
+	public static Statue stone_baphomet_idol = new Statue("stone_baphomet_idol", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_stone.png"), baphomet_idol, 1);
+	public static Statue gold_baphomet_idol = new Statue("gold_baphomet_idol", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_gold.png"), baphomet_idol, 1);
+	public static Statue nether_brick_baphomet_idol = new Statue("nether_brick_baphomet_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_netherbrick.png"), baphomet_idol, 1);
+	public static Statue scorned_brick_baphomet_idol = new Statue("scorned_brick_baphomet_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_scorned.png"), baphomet_idol, 1);
 	
 	public static class Statue {
 		private final String name;
