@@ -367,14 +367,14 @@ public class ModRecipes {
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityCreeper, Sets.newHashSet(new ItemStack(Items.SKULL, 1, 4)));
 		
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBlaze, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGhast, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 8)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBlaze, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2), new ItemStack(Items.BLAZE_ROD, 4)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGhast, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 8), new ItemStack(Items.GHAST_TEAR, 6)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntitySilverfish, Sets.newHashSet(new ItemStack(ModObjects.silver_nugget, 2)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityEndermite, Sets.newHashSet(new ItemStack(ModObjects.dimensional_sand, 2)));
 		
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityEnderman, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVex, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityEnderman, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 2), new ItemStack(ModObjects.dimensional_sand, 4)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityVex, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGuardian, Sets.newHashSet(new ItemStack(ModObjects.eye_of_old)));
 		
@@ -388,21 +388,27 @@ public class ModRecipes {
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityLizard, Sets.newHashSet(new ItemStack(ModObjects.lizard_leg, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityOwl, Sets.newHashSet(new ItemStack(ModObjects.owlets_wing, 2)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityRaven && !(e instanceof EntityOwl), Sets.newHashSet(new ItemStack(ModObjects.ravens_feather, 4)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityRaven, Sets.newHashSet(new ItemStack(ModObjects.ravens_feather, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityToad, Sets.newHashSet(new ItemStack(ModObjects.toe_of_frog, 4)));
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntitySnake, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBlackDog, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityHellhound, Sets.newHashSet(new ItemStack(ModObjects.tongue_of_dog), new ItemStack(ModObjects.hellhound_horn, 2), new ItemStack(Items.BLAZE_POWDER, 4)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityFeuerwurm, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityFeuerwurm, Sets.newHashSet(new ItemStack(ModObjects.adders_fork, 3), new ItemStack(Items.BLAZE_POWDER, 2), new ItemStack(ModObjects.hellhound_horn, 2)));
 		
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart)));
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityShadowPerson, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityImp, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(ModObjects.hoof, 2), new ItemStack(Items.BLAZE_POWDER, 4), new ItemStack(ModObjects.hellhound_horn, 2)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDemon, Sets.newHashSet(new ItemStack(ModObjects.demon_heart), new ItemStack(ModObjects.hoof, 2), new ItemStack(Items.BLAZE_POWDER, 16), new ItemStack(ModObjects.hellhound_horn, 2)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityShadowPerson, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4)));
+		
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityCleaver, Sets.newHashSet(new ItemStack(ModObjects.heart), new ItemStack(ModObjects.hoof, 2), new ItemStack(Items.BEEF, 2), new ItemStack(Items.BLAZE_POWDER, 4), new ItemStack(ModObjects.hellhound_horn, 2)));
 		
 		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityGhost, Sets.newHashSet(new ItemStack(ModObjects.ectoplasm, 4), new ItemStack(ModObjects.spectral_dust)));
 		
-		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDruden, Sets.newHashSet(new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.heart), new ItemStack(ModObjects.oak_apple_gall, 4)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityDruden, Sets.newHashSet(new ItemStack(ModObjects.cypress_sapling), new ItemStack(ModObjects.heart), new ItemStack(ModObjects.oak_apple_gall, 4), new ItemStack(ModObjects.hoof, 2), new ItemStack(ModObjects.hellhound_horn, 2)));
+		
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityBaphomet, Sets.newHashSet(new ItemStack(ModObjects.demon_heart, 4), new ItemStack(ModObjects.hoof, 2), new ItemStack(Items.BLAZE_POWDER, 16), new ItemStack(ModObjects.adders_fork, 4), new ItemStack(ModObjects.hellhound_horn, 3)));
+		BewitchmentAPI.ATHAME_LOOT.put(e -> e instanceof EntityLeonard, Sets.newHashSet(new ItemStack(ModObjects.demon_heart, 4), new ItemStack(ModObjects.hellebore, 6), new ItemStack(Items.BLAZE_POWDER, 32), new ItemStack(ModObjects.belladonna, 4), new ItemStack(ModObjects.hellhound_horn, 3)));
 	}
 	
 	private static void furnaceInit() {
