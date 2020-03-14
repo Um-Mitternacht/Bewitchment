@@ -7,17 +7,16 @@
   ],
   "key": {
 	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotBrickNether"
+	  "item": "bewitchment:scorned_bricks"
 	},
 	"D": {
 	  "item": "bewitchment:liquid_witchcraft"
 	},
 	"R": {
-	  "item": "bewitchment:pentacle"
+	  "item": "minecraft:arrow"
 	}
   },
   "result": {
-	"item": "bewitchment:nether_brick_baphomet_idol"
+	"item": "bewitchment:scorned_brick_herne_idol"
   }
 }
