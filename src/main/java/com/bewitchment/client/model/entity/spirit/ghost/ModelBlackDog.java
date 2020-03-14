@@ -130,6 +130,15 @@ public class ModelBlackDog extends ModelBase {
 			this.rightforeleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount + 0f;
 			
 			tail.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
+			boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+			this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+			
+			if (flag) {
+				this.head.rotateAngleX = -((float) Math.PI / 4F);
+			}
+			else {
+				this.head.rotateAngleX = headPitch * 0.017453292F;
+			}
 		}
 	}
 	
