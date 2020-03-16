@@ -511,6 +511,8 @@ public class ModRecipes {
 		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_4"), new ItemStack(Items.FISH, 1), new ItemStack(Items.COOKED_FISH), new ItemStack(ModObjects.cloudy_oil), 0.35f));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_5"), new ItemStack(Items.FISH, 1, 1), new ItemStack(Items.COOKED_FISH, 1), new ItemStack(ModObjects.cloudy_oil), 0.35f));
+		
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_7"), new ItemStack(Items.RABBIT, 1), new ItemStack(Items.COOKED_RABBIT), new ItemStack(ModObjects.tallow), 0.35f));
 	}
 	
 	protected static void addDistilleryRecipes() {
