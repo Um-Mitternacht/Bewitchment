@@ -503,6 +503,14 @@ public class ModRecipes {
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand"), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.BLAZE_POWDER, 1, 0), new ItemStack(ModObjects.dimensional_sand, 2), 0.8f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt0"), new ItemStack(Items.SHULKER_SHELL), new ItemStack(Items.CHORUS_FRUIT_POPPED, 1, 0), new ItemStack(ModObjects.dimensional_sand, 4), 1, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt1"), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModObjects.dimensional_sand, 2), 0.75f, false));
+		
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook"), new ItemStack(Items.BEEF, 1), new ItemStack(Items.COOKED_BEEF), new ItemStack(ModObjects.tallow), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_2"), new ItemStack(Items.PORKCHOP, 1), new ItemStack(Items.COOKED_PORKCHOP), new ItemStack(ModObjects.tallow), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_3"), new ItemStack(Items.MUTTON, 1), new ItemStack(Items.COOKED_MUTTON), new ItemStack(ModObjects.tallow), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_6"), new ItemStack(Items.CHICKEN, 1), new ItemStack(Items.COOKED_CHICKEN), new ItemStack(ModObjects.tallow), 0.35f));
+		
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_4"), new ItemStack(Items.FISH, 1), new ItemStack(Items.COOKED_FISH), new ItemStack(ModObjects.cloudy_oil), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_5"), new ItemStack(Items.FISH, 1, 1), new ItemStack(Items.COOKED_FISH, 1), new ItemStack(ModObjects.cloudy_oil), 0.35f));
 	}
 	
 	protected static void addDistilleryRecipes() {

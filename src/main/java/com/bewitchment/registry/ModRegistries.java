@@ -265,7 +265,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "deviants_decomposure"), Util.get(ModObjects.elderberries), new PotionEffect(ModPotions.deviants_decomposure, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sleeping"), Util.get(Blocks.RED_FLOWER), new PotionEffect(ModPotions.sleeping, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "volatility"), Util.get(Items.FIRE_CHARGE), new PotionEffect(ModPotions.volatility, (20 * 45))));
-		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "grace"), Util.get("feather"), new PotionEffect(ModPotions.grace, (20 * 30))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "grace"), Util.get(Items.FEATHER), new PotionEffect(ModPotions.grace, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "shell_armor"), Util.get("coquina"), new PotionEffect(ModPotions.shell_armor, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "deflection"), Util.get(Items.CHORUS_FRUIT_POPPED), new PotionEffect(ModPotions.deflection, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "revealing"), Util.get(Items.ENDER_PEARL, ModObjects.eye_of_old), new PotionEffect(ModPotions.revealing, 1)));
