@@ -3,6 +3,7 @@ package com.bewitchment.api.capability.magicpower;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesAltar;
+import com.bewitchment.common.item.tool.ItemBastardsGrimoire;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -46,7 +47,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		if (player != null) {
 			List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
 			for (ItemStack stack : inv) {
-				if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
+				if (stack.getItem() instanceof ItemGrimoireMagia || stack.getItem() instanceof ItemBastardsGrimoire && stack.hasTagCompound()) {
 					NBTTagCompound tag = stack.getTagCompound();
 					MagicPower cap = new MagicPower();
 					cap.amount = tag.getInteger("amount");

@@ -22,10 +22,7 @@ import com.bewitchment.common.item.food.ItemHeart;
 import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
 import com.bewitchment.common.item.poppet.ItemPoppet;
 import com.bewitchment.common.item.poppet.ItemVoodooPoppet;
-import com.bewitchment.common.item.tool.ItemAthame;
-import com.bewitchment.common.item.tool.ItemBoline;
-import com.bewitchment.common.item.tool.ItemGrimoireMagia;
-import com.bewitchment.common.item.tool.ItemJuniperKey;
+import com.bewitchment.common.item.tool.*;
 import com.bewitchment.common.item.util.*;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenDragonTree;
@@ -323,6 +320,7 @@ public class ModObjects {
 	public static final Item vampiric_amulet = new ItemVampiricAmulet();
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
+	public static final Item bastards_grimoire = new ItemBastardsGrimoire();
 	public static final Item juniper_key = new ItemJuniperKey();
 	
 	//Lenny Statue
