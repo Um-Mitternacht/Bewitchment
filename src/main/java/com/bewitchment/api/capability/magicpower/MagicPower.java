@@ -47,7 +47,7 @@ public class MagicPower implements ICapabilitySerializable<NBTTagCompound>, Capa
 		if (player != null) {
 			List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
 			for (ItemStack stack : inv) {
-				if (stack.getItem() instanceof ItemGrimoireMagia || stack.getItem() instanceof ItemBastardsGrimoire && stack.hasTagCompound()) {
+				if ((stack.getItem() instanceof ItemGrimoireMagia || stack.getItem() instanceof ItemBastardsGrimoire) && stack.hasTagCompound()) {
 					NBTTagCompound tag = stack.getTagCompound();
 					MagicPower cap = new MagicPower();
 					cap.amount = tag.getInteger("amount");
