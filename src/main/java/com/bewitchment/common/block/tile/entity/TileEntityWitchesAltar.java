@@ -6,6 +6,7 @@ import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.item.tool.ItemBastardsGrimoire;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
@@ -95,7 +96,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
 					for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 						ItemStack stack = player.inventory.getStackInSlot(i);
-						if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
+						if ((stack.getItem() instanceof ItemGrimoireMagia || stack.getItem() instanceof ItemBastardsGrimoire) && stack.hasTagCompound()) {
 							MagicPower temp = new MagicPower();
 							temp.amount = stack.getTagCompound().getInteger("amount");
 							temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
