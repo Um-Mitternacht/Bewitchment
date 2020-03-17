@@ -1,6 +1,5 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
@@ -14,7 +13,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Collections;
 import java.util.List;
 
 /**

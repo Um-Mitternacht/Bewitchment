@@ -36,12 +36,6 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 		Util.registerBlock(this, "flower_siphoning_" + name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0);
 	}
 	
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(TextFormatting.RED + I18n.format("tooltip.bewitchment.siphoning_flower"));
-		super.addInformation(stack, worldIn, tooltip, flagIn);
-	}
-	
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
@@ -86,5 +80,11 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 			te.markDirty();
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(TextFormatting.RED + I18n.format("tooltip.bewitchment.siphoning_flower"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 }

@@ -30,29 +30,13 @@ import java.util.Random;
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt {
 	
+	public static final PropertyBool LIT = PropertyBool.create("lit");
 	//Todo: Change this bounding box. Right now, it's just the candle bounding box.
 	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.38, 0, 0.38, 0.62, 0.5, 0.62);
-	public static final PropertyBool LIT = PropertyBool.create("lit");
 	
 	public BlockCandelabra(String name) {
 		super("candelabra_" + name, Material.IRON, SoundType.METAL, 1, 1, "pickaxe", 1);
 		Blocks.FIRE.setFireInfo(this, 0, 0);
-	}
-	
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return BOX;
-	}
-	
-	//Todo: Set this to the proper values
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
 	}
 	
 	@Override
@@ -81,6 +65,11 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	}
 	
 	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return BOX;
+	}
+	
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -88,6 +77,17 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
+	}
+	
+	//Todo: Set this to the proper values
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
 	}
 	
 	@Override

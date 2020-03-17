@@ -58,13 +58,11 @@ public class BlockStatue extends ModBlockContainer {
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
-	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
+	}	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
@@ -195,6 +193,8 @@ public class BlockStatue extends ModBlockContainer {
 			return false;
 		}
 	}
+	
+
 	
 	public float getEnchantPowerBonus(World world, BlockPos pos) {
 		return 3.5f;
