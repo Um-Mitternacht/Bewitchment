@@ -14,6 +14,7 @@ import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
 import com.bewitchment.common.block.tile.entity.TileEntityStatue;
+import com.bewitchment.common.crafting.RecipeJuniperKeyRing;
 import com.bewitchment.common.fortune.*;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantment;
@@ -24,6 +25,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -575,5 +577,10 @@ public class ModRegistries {
 				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
 			}
 		});
+	}
+
+	@SubscribeEvent
+	public void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event){
+	//	event.getRegistry().register(new RecipeJuniperKeyRing());
 	}
 }

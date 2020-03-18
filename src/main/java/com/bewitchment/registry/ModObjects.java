@@ -321,7 +321,8 @@ public class ModObjects {
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item bastards_grimoire = new ItemBastardsGrimoire();
-	public static final Item juniper_key = new ItemJuniperKey();
+	public static final Item juniper_key = Util.registerItem(new ItemJuniperKey(), "juniper_key");
+	public static final Item juniper_key_ring = Util.registerItem(new ItemJuniperKeyRing(), "juniper_key_ring");
 	
 	//Lenny Statue
 	public static final Block stone_leonard_statue = new BlockStatue(Statues.stone_leonard_statue);

@@ -50,7 +50,7 @@ public class ModItemDoor extends ItemDoor {
 		if (flag != EnumActionResult.FAIL && this == ModObjects.juniper_door) {
 			BlockPos pos0 = pos;
 			while (world.getBlockState(pos0).getBlock() != ModObjects.juniper_door.door) pos0 = pos0.up();
-			Util.giveItem(player, ItemJuniperKey.setTags(world, pos0, new ItemStack(ModObjects.juniper_key)));
+			Util.giveItem(player,  ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos0, new ItemStack(ModObjects.juniper_key)));
 		}
 		return flag;
 	}

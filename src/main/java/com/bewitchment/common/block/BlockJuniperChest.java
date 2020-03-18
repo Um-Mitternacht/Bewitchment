@@ -58,7 +58,7 @@ public class BlockJuniperChest extends ModBlockContainer {
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
-		if (placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ItemJuniperKey.setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
+		if (placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
 	}
 	
 	@Override
