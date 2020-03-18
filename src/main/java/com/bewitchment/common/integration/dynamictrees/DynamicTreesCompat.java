@@ -89,6 +89,8 @@ public class DynamicTreesCompat {
 		ResourceLocation seedConvertion = new ResourceLocation(Bewitchment.MODID, "seeds");
 		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "cypress"), seedConvertion, cypressTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.cypress_sapling), Util.get(ModItems.dirtBucket));
 		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
+		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "juniper"), seedConvertion, juniperTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.juniper_sapling), Util.get(ModItems.dirtBucket));
+		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "elder"), seedConvertion, elderTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.elder_sapling), Util.get(ModItems.dirtBucket));
 	}
 	
 	public static void init() {
