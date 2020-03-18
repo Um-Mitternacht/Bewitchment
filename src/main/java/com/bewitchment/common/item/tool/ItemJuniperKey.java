@@ -28,29 +28,62 @@ import java.util.List;
 public class ItemJuniperKey extends Item {
 	public ItemJuniperKey() {
 		super();
-		Util.registerItem(this, "juniper_key");
 	}
 	
-	public static ItemStack setTags(World world, BlockPos pos, ItemStack stack) {
-		if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
-			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setLong("location", pos.toLong());
-			stack.getTagCompound().setInteger("dimension", world.provider.getDimension());
-			stack.getTagCompound().setString("dimensionName", world.provider.getDimensionType().getName());
-		}
-		return stack;
-	}
-	
-	private static boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack) {
-		if (stack.hasTagCompound()) {
-			if (stack.getTagCompound().getInteger("dimension") == dimension) {
-				if (world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door && world.getBlockState(pos.down()).getBlock() == ModObjects.juniper_door.door) return canAccess(world, pos.down(), dimension, stack);
-				return stack.getTagCompound().getLong("location") == pos.toLong();
-			}
+
+
+	public boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack, NBTTagCompound data){
+		if (data.getInteger("dimension") == dimension) {
+			if (world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door && world.getBlockState(pos.down()).getBlock() == ModObjects.juniper_door.door) return canAccess(world, pos.down(), dimension, stack);
+			return data.getLong("location") == pos.toLong();
 		}
 		return false;
 	}
+
+	public ItemStack setTags(World world, BlockPos pos, ItemStack stack){
+		stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setLong("location", pos.toLong());
+		stack.getTagCompound().setInteger("dimension", world.provider.getDimension());
+		stack.getTagCompound().setString("dimensionName", world.provider.getDimensionType().getName());
+		return stack;
+	}
 	
+
+	
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player.isCreative() && (world.getBlockState(pos).getBlock() instanceof BlockJuniperChest || world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door)) {
+			setTagCompound(world, pos, stack);
+			return EnumActionResult.SUCCESS;
+		}
+		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
+			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
+		}
+	}
+
+
+	private static ItemStack setTagCompound(World world, BlockPos pos, ItemStack stack) {
+		if (stack.getItem() instanceof ItemJuniperKey && !stack.hasTagCompound() || !stack.getTagCompound().hasKey("location")) {
+			return ((ItemJuniperKey) stack.getItem()).setTags(world, pos, stack);
+		}
+		return stack;
+	}
+
+	private static boolean canAccess(IBlockAccess world, BlockPos pos, int dimension, ItemStack stack) {
+		if (stack.getItem() instanceof ItemJuniperKey && stack.hasTagCompound()){
+			return ((ItemJuniperKey) stack.getItem()).canAccess(world, pos, dimension, stack, stack.getTagCompound());
+		}
+		return false;
+	}
+
 	public static boolean checkAccess(World world, BlockPos pos, EntityPlayer player, boolean direct) {
 		LockCheckEvent pre = new LockCheckEvent(player, pos);
 		boolean result = false;
@@ -70,31 +103,12 @@ public class ItemJuniperKey extends Item {
 				break;
 			}
 		}
-		
+
 		LockCheckEvent.LockCheckedEvent post = new LockCheckEvent.LockCheckedEvent(player, pos, result, direct);
 		MinecraftForge.EVENT_BUS.post(post);
 		if (!world.isRemote && !post.isOpened() && post.shouldSendMessage()) {
 			player.sendStatusMessage(new TextComponentTranslation("juniper_key.invalid"), true);
 		}
 		return post.isOpened();
-	}
-	
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		ItemStack stack = player.getHeldItem(hand);
-		if (player.isCreative() && (world.getBlockState(pos).getBlock() instanceof BlockJuniperChest || world.getBlockState(pos).getBlock() == ModObjects.juniper_door.door)) {
-			setTags(world, pos, stack);
-			return EnumActionResult.SUCCESS;
-		}
-		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-			BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
-		}
 	}
 }
