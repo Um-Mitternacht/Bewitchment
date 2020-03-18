@@ -581,6 +581,6 @@ public class ModRegistries {
 
 	@SubscribeEvent
 	public void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event){
-	//	event.getRegistry().register(new RecipeJuniperKeyRing());
+		event.getRegistry().register(new RecipeJuniperKeyRing());
 	}
 }
