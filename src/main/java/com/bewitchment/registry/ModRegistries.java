@@ -580,7 +580,7 @@ public class ModRegistries {
 	}
 
 	@SubscribeEvent
-	public void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event){
-		event.getRegistry().register(new RecipeJuniperKeyRing());
+	public static void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event){
+		event.getRegistry().register(new RecipeJuniperKeyRing().setRegistryName(new ResourceLocation(Bewitchment.MODID, "recipe_keyring")));
 	}
 }

@@ -3,9 +3,7 @@ package com.bewitchment.common.crafting;
 import com.bewitchment.common.item.tool.ItemJuniperKey;
 import com.bewitchment.common.item.tool.ItemJuniperKeyRing;
 import com.bewitchment.registry.ModObjects;
-import com.google.common.collect.Lists;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,7 +23,7 @@ public class RecipeJuniperKeyRing extends net.minecraftforge.registries.IForgeRe
             ItemStack stack = inv.getStackInSlot(i);
             if (stack.getItem() instanceof ItemJuniperKey){
                 list.add(stack);
-            }else{
+            }else if (!stack.isEmpty()){
                 return false;
             }
         }

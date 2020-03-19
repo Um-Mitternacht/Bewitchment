@@ -17,7 +17,7 @@ import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import com.bewitchment.common.item.ItemSkeletonKey;
+import com.bewitchment.common.item.tool.ItemSkeletonKey;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

@@ -266,6 +266,10 @@ tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d
 item.bewitchment.juniper_key.name=Juniper Key
 tooltip.bewitchment.juniper_key=Grants access to %d, %d, %d, %s
 
+item.bewitchment.juniper_key_ring.name=Juniper Keyring
+tooltip.bewitchment.juniper_key_ring.header=Grants access to:
+tooltip.bewitchment.juniper_key_ring=-> %d, %d, %d, %s
+
 tile.bewitchment.stone_leonard_statue.name=Stone Leonard Statue
 tile.bewitchment.nether_brick_leonard_statue.name=Nether Brick Leonard Statue
 tile.bewitchment.scorned_brick_leonard_statue.name=Scorned Brick Leonard Statue

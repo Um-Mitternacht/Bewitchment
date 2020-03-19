@@ -1,25 +1,14 @@
 package com.bewitchment.common.item.tool;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.Util;
-import com.bewitchment.api.event.LockCheckEvent;
-import com.bewitchment.common.block.BlockJuniperChest;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -41,10 +30,15 @@ public class ItemJuniperKeyRing extends ItemJuniperKey {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-		//if (stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-	//		BlockPos pos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
-//			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), stack.getTagCompound().getString("dimensionName")));
-//		}
+		if (stack.hasTagCompound() ){
+			tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5) + ".header"));
+			getKeyTags(stack.getTagCompound()).forEach(tag -> {
+				if (tag.hasKey("location")) {
+					BlockPos pos = BlockPos.fromLong(tag.getLong("location"));
+					tooltip.add(I18n.format("tooltip." + getTranslationKey().substring(5), pos.getX(), pos.getY(), pos.getZ(), tag.getString("dimensionName")));
+				}
+			});
+		}
 	}
 
 	@Override
@@ -56,7 +50,7 @@ public class ItemJuniperKeyRing extends ItemJuniperKey {
 
 	public static List<NBTTagCompound> getKeyTags(NBTTagCompound keyRingData){
 		List<NBTTagCompound> tags = new ArrayList<>();
-		keyRingData.getTagList("Keys", Constants.NBT.TAG_LIST).forEach(nbt -> {
+		keyRingData.getTagList("Keys", Constants.NBT.TAG_COMPOUND).forEach(nbt -> {
 			tags.add((NBTTagCompound) nbt);
 		});
 		return tags;
@@ -64,7 +58,7 @@ public class ItemJuniperKeyRing extends ItemJuniperKey {
 
 	public static ItemStack addKeyTag(ItemStack keyRing, NBTTagCompound keyTag){
 		if (keyRing.getItem() instanceof ItemJuniperKeyRing){
-			keyRing.getTagCompound().getTagList("Keys", Constants.NBT.TAG_LIST).appendTag(keyTag);
+			keyRing.getTagCompound().getTagList("Keys", Constants.NBT.TAG_COMPOUND).appendTag(keyTag);
 		}
 		return keyRing;
 	}
