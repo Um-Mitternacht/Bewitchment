@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class ItemJuniperKeyRing extends ItemJuniperKey {
@@ -63,7 +64,7 @@ public class ItemJuniperKeyRing extends ItemJuniperKey {
 		return keyRing;
 	}
 
-	public static ItemStack createKeyRing(ItemStack keyRing, List<NBTTagCompound> keys){
+	public static ItemStack createKeyRing(ItemStack keyRing, Set<NBTTagCompound> keys){
 		keyRing.setTagCompound(new NBTTagCompound());
 		keyRing.getTagCompound().setTag("Keys", new NBTTagList());
 		keys.forEach(tag -> addKeyTag(keyRing, tag));

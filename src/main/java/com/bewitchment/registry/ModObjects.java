@@ -318,6 +318,7 @@ public class ModObjects {
 	public static final ModItemBauble hecates_visage = new ItemHecatesVisage();
 	public static final Item triskelion = new ItemTriskelion();
 	public static final Item vampiric_amulet = new ItemVampiricAmulet();
+	public static final Item gluttons_sash = new ItemGluttonsSash();
 	//Misc Tools
 	public static final Item grimoire_magia = new ItemGrimoireMagia();
 	public static final Item bastards_grimoire = new ItemBastardsGrimoire();
