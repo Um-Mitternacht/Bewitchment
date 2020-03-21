@@ -15,7 +15,7 @@ public class ItemGluttonsSash extends ModItemBauble {
 	
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if (player instanceof EntityPlayer && ((EntityPlayer) player).getFoodStats().needFood() && player.world.getTotalWorldTime() % 20 == 0 && MagicPower.attemptDrain(null, (EntityPlayer) player, 1)) {
+		if (!player.world.isRemote && player instanceof EntityPlayer && ((EntityPlayer) player).getFoodStats().needFood() && player.world.getTotalWorldTime() % 20 == 0 && MagicPower.attemptDrain(null, (EntityPlayer) player, 5)) {
 			((EntityPlayer) player).getFoodStats().addStats(1, 1);
 		}
 	}

@@ -11,6 +11,7 @@ import com.bewitchment.common.block.*;
 import com.bewitchment.common.block.plants.*;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.block.util.*;
+import com.bewitchment.common.entity.misc.EntitySilverArrow;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.*;
@@ -33,6 +34,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -43,6 +45,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
@@ -308,6 +311,21 @@ public class ModObjects {
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	public static final Item caduceus = new ItemCaduceus();
 	public static final Item leonards_wand = new ItemLeonardsWand();
+
+	public static final Item silver_arrow = Util.registerItem(new ItemArrow() {
+		@Override
+		public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
+			return new EntitySilverArrow(worldIn, shooter, false);
+		}
+	},"silver_arrow");
+
+	public static final Item cold_iron_arrow = Util.registerItem(new ItemArrow() {
+		@Override
+		public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
+			return new EntitySilverArrow(worldIn, shooter, true);
+		}
+	},"cold_iron_arrow");
+
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();
@@ -324,7 +342,7 @@ public class ModObjects {
 	public static final Item bastards_grimoire = new ItemBastardsGrimoire();
 	public static final Item juniper_key = Util.registerItem(new ItemJuniperKey(), "juniper_key");
 	public static final Item juniper_key_ring = Util.registerItem(new ItemJuniperKeyRing(), "juniper_key_ring");
-	
+
 	//Lenny Statue
 	public static final Block stone_leonard_statue = new BlockStatue(Statues.stone_leonard_statue);
 	public static final Block nether_brick_leonard_statue = new BlockStatue(Statues.nether_brick_leonard_statue);

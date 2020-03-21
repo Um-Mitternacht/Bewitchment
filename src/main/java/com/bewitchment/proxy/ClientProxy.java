@@ -4,10 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.message.TarotInfo;
 import com.bewitchment.client.gui.GuiTarotTable;
 import com.bewitchment.client.render.entity.living.*;
-import com.bewitchment.client.render.entity.misc.RenderCypressBroom;
-import com.bewitchment.client.render.entity.misc.RenderDragonsBloodBroom;
-import com.bewitchment.client.render.entity.misc.RenderElderBroom;
-import com.bewitchment.client.render.entity.misc.RenderJuniperBroom;
+import com.bewitchment.client.render.entity.misc.*;
 import com.bewitchment.client.render.entity.spirit.demon.*;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderBlackDog;
 import com.bewitchment.client.render.entity.spirit.ghost.RenderGhost;
@@ -17,10 +14,7 @@ import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.container.ContainerTarotTable;
 import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.entity.living.*;
-import com.bewitchment.common.entity.misc.EntityCypressBroom;
-import com.bewitchment.common.entity.misc.EntityDragonsBloodBroom;
-import com.bewitchment.common.entity.misc.EntityElderBroom;
-import com.bewitchment.common.entity.misc.EntityJuniperBroom;
+import com.bewitchment.common.entity.misc.*;
 import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
@@ -113,6 +107,9 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBaphomet.class, RenderBaphomet::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeonard.class, RenderLeonard::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCleaver.class, RenderCleaver::new);
+
+
+		RenderingRegistry.registerEntityRenderingHandler(EntitySilverArrow.class, RenderSilverArrow::new);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlyph.class, new RenderTileEntityGlyph());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWitchesCauldron.class, new RenderTileEntityWitchesCauldron());
