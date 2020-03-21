@@ -50,7 +50,8 @@ public class ModelCleaver extends ModelBiped {
 	public ModelRenderer rHorn04;
 	public ModelRenderer loincloth02;
 	
-	public ModelCleaver() {
+	public ModelCleaver(float modelSize) {
+		super(modelSize);
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.lHorn03 = new ModelRenderer(this, 38, 43);
@@ -355,7 +356,7 @@ public class ModelCleaver extends ModelBiped {
 			this.bipedLeftArm.rotationPointX = MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F;
 			this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY;
 			this.bipedLeftArm.rotateAngleY += this.bipedBody.rotateAngleY;
-			this.bipedLeftArm.rotateAngleX += this.bipedBody.rotateAngleY;
+			this .bipedLeftArm.rotateAngleX += this.bipedBody.rotateAngleY;
 			f1 = 1.0F - this.swingProgress;
 			f1 = f1 * f1;
 			f1 = f1 * f1;
