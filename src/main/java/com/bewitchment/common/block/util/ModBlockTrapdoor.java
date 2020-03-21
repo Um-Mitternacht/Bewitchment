@@ -44,7 +44,7 @@ public class ModBlockTrapdoor extends BlockTrapDoor {
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
-		if (this == ModObjects.juniper_trapdoor && placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer,  ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
+		if (this == ModObjects.juniper_trapdoor && placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
 	}
 	
 	@Override

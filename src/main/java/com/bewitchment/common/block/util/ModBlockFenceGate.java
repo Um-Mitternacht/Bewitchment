@@ -67,7 +67,7 @@ public class ModBlockFenceGate extends BlockFenceGate {
 		if (placer instanceof EntityPlayer) {
 			BlockPos pos0 = pos;
 			while (worldIn.getBlockState(pos0).getBlock() != ModObjects.juniper_door.door) pos0 = pos0.up();
-			Util.giveItem((EntityPlayer) placer,  ((ItemJuniperKey) ModObjects.juniper_key).setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
+			Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
 		}
 		
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);

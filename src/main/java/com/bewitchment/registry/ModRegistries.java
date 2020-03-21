@@ -579,9 +579,9 @@ public class ModRegistries {
 			}
 		});
 	}
-
+	
 	@SubscribeEvent
-	public static void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event){
+	public static void registerSpecialRecipes(RegistryEvent.Register<IRecipe> event) {
 		event.getRegistry().register(new RecipeJuniperKeyRing().setRegistryName(new ResourceLocation(Bewitchment.MODID, "recipe_keyring")));
 		event.getRegistry().register(new RecipeDuplicateKey().setRegistryName(new ResourceLocation(Bewitchment.MODID, "recipe_duplicate_key")));
 	}
