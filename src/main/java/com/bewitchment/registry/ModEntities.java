@@ -53,8 +53,9 @@ public class ModEntities {
 	public static final EntityEntry druden = createEntityEntry(EntityDruden.class, "druden", 0x228B22, 0x8A3324, EnumCreatureType.MONSTER, ModConfig.mobSpawns.druden.drudenWeight, ModConfig.mobSpawns.druden.drudenMin, ModConfig.mobSpawns.druden.drudenMax, Arrays.asList(ModConfig.mobSpawns.druden.drudenBiomes));
 	public static final EntityEntry baphomet = createEntityEntry(EntityBaphomet.class, "baphomet", 0x472f22, 0x690303);
 	public static final EntityEntry leonard = createEntityEntry(EntityLeonard.class, "leonard", 0x472f22, 0xe8c91a);
-
+	
 	public static final EntityEntry silver_arrow = createEntityEntry(EntitySilverArrow.class, "silver_arrow");
+	
 	private static EntityEntry createEntityEntry(Class<? extends Entity> clazz, String name) {
 		return EntityEntryBuilder.create().entity(clazz).id(new ResourceLocation(Bewitchment.MODID, name), entity_id++).name(Bewitchment.MODID + "." + name).tracker(128, 1, true).build();
 	}

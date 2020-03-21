@@ -65,9 +65,6 @@ public class BlockStatue extends ModBlockContainer {
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
-	}	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
@@ -80,6 +77,9 @@ public class BlockStatue extends ModBlockContainer {
 			te.name = statue.getName();
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
+	}	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	public static class BlockFiller extends ModBlock {

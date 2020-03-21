@@ -22,19 +22,18 @@ public class RenderCleaver extends RenderLiving<EntityCleaver> {
 	public RenderCleaver(RenderManager manager) {
 		super(manager, new ModelCleaver(1), 0.3f);
 		this.addLayer(new LayerHeldItem(this));
-		this.addLayer(new LayerBipedArmor(this){
+		this.addLayer(new LayerBipedArmor(this) {
 			@Override
 			protected void initArmor() {
 				this.modelLeggings = new ModelBiped(0.5F); //add biped model here, but with parts in cleaver-size or so
 				this.modelArmor = new ModelBiped(1);
 			}
+			
 			@Override
-			protected void setModelSlotVisible(ModelBiped p_188359_1_, EntityEquipmentSlot slotIn)
-			{
+			protected void setModelSlotVisible(ModelBiped p_188359_1_, EntityEquipmentSlot slotIn) {
 				this.setModelVisible(p_188359_1_);
-
-				switch (slotIn)
-				{
+				
+				switch (slotIn) {
 					case HEAD:
 						p_188359_1_.bipedHead.showModel = true;
 						p_188359_1_.bipedHeadwear.showModel = true;

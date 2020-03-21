@@ -311,21 +311,21 @@ public class ModObjects {
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	public static final Item caduceus = new ItemCaduceus();
 	public static final Item leonards_wand = new ItemLeonardsWand();
-
+	
 	public static final Item silver_arrow = Util.registerItem(new ItemArrow() {
 		@Override
 		public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
 			return new EntitySilverArrow(worldIn, shooter, false);
 		}
-	},"silver_arrow");
-
+	}, "silver_arrow");
+	
 	public static final Item cold_iron_arrow = Util.registerItem(new ItemArrow() {
 		@Override
 		public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
 			return new EntitySilverArrow(worldIn, shooter, true);
 		}
-	},"cold_iron_arrow");
-
+	}, "cold_iron_arrow");
+	
 	//Baubles
 	public static final ModItemBauble girdle_of_the_dryads = new ItemGirdleOfTheDryads();
 	public static final ModItemBauble hellish_bauble = new ItemHellishBauble();
@@ -342,7 +342,7 @@ public class ModObjects {
 	public static final Item bastards_grimoire = new ItemBastardsGrimoire();
 	public static final Item juniper_key = Util.registerItem(new ItemJuniperKey(), "juniper_key");
 	public static final Item juniper_key_ring = Util.registerItem(new ItemJuniperKeyRing(), "juniper_key_ring");
-
+	
 	//Lenny Statue
 	public static final Block stone_leonard_statue = new BlockStatue(Statues.stone_leonard_statue);
 	public static final Block nether_brick_leonard_statue = new BlockStatue(Statues.nether_brick_leonard_statue);
