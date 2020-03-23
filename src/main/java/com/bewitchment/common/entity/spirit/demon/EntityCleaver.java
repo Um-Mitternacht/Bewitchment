@@ -87,6 +87,11 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.CLEAVER_IDLE;
+	}
+	
+	@Override
 	protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
 		if (itemEntity.getItem().getItem() instanceof ItemSword || itemEntity.getItem().getItem() instanceof ItemArmor || itemEntity.getItem().getItem() instanceof ItemShield) {
 			super.updateEquipmentIfNeeded(itemEntity);
@@ -111,16 +116,6 @@ public class EntityCleaver extends ModEntityMob {
 		return BewitchmentAPI.DEMON;
 	}
 	
-	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-		
-		if (flag) {
-			this.applyEnchantments(this, entityIn);
-		}
-		
-		return flag;
-	}
-	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
 		return ModSounds.CLEAVER_HURT;
@@ -131,9 +126,14 @@ public class EntityCleaver extends ModEntityMob {
 		return ModSounds.CLEAVER_DEATH;
 	}
 	
-	@Override
-	protected SoundEvent getAmbientSound() {
-		return ModSounds.CLEAVER_IDLE;
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+		}
+		
+		return flag;
 	}
 	
 	@Override

@@ -13,10 +13,12 @@ public class ModSounds {
 	public static final SoundEvent TOAD_DEATH = createSoundEvent("toad_death");
 	public static final SoundEvent TOAD_HURT = createSoundEvent("toad_hurt");
 	public static final SoundEvent TOAD_IDLE = createSoundEvent("toad_idle");
-	
 	public static final SoundEvent CLEAVER_DEATH = createSoundEvent("cleaver_death");
 	public static final SoundEvent CLEAVER_HURT = createSoundEvent("cleaver_hurt");
 	public static final SoundEvent CLEAVER_IDLE = createSoundEvent("cleaver_idle");
+	public static final SoundEvent BAFOMETYR_DEATH = createSoundEvent("bafometyr_death");
+	public static final SoundEvent BAFOMETYR_HURT = createSoundEvent("bafometyr_hurt");
+	public static final SoundEvent BAFOMETYR_IDLE = createSoundEvent("bafometyr_idle");
 	
 	private static SoundEvent createSoundEvent(String name) {
 		ResourceLocation id = new ResourceLocation(Bewitchment.MODID, name);

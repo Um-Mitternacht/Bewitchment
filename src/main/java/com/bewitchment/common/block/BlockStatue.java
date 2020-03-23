@@ -77,9 +77,6 @@ public class BlockStatue extends ModBlockContainer {
 			te.name = statue.getName();
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
-	}	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
 	}
 	
 	public static class BlockFiller extends ModBlock {
@@ -192,6 +189,9 @@ public class BlockStatue extends ModBlockContainer {
 		public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
 			return false;
 		}
+	}	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 
