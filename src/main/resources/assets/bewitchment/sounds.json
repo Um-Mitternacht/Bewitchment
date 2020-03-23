@@ -54,7 +54,7 @@
 	  "bewitchment:cleaver_hurt_1"
 	]
   },
-  "cleaver_idle": {
+  "cleaver_living": {
 	"sounds": [
 	  "bewitchment:cleaver_living_0",
 	  "bewitchment:cleaver_living_1",
