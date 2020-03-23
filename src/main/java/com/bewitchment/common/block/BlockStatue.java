@@ -189,12 +189,12 @@ public class BlockStatue extends ModBlockContainer {
 		public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
 			return false;
 		}
-	}	@Override
+	}
+	
+	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;
 	}
-	
-
 	
 	
 	public float getEnchantPowerBonus(World world, BlockPos pos) {

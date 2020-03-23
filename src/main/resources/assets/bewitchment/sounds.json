@@ -41,5 +41,24 @@
 	  "bewitchment:toad_idle_1",
 	  "bewitchment:toad_idle_2"
 	]
+  },
+  "cleaver_death": {
+	"sounds": [
+	  "bewitchment:cleaver_death_0",
+	  "bewitchment:cleaver_death_1"
+	]
+  },
+  "cleaver_hurt": {
+	"sounds": [
+	  "bewitchment:cleaver_hurt_0",
+	  "bewitchment:cleaver_hurt_1"
+	]
+  },
+  "cleaver_idle": {
+	"sounds": [
+	  "bewitchment:cleaver_living_0",
+	  "bewitchment:cleaver_living_1",
+	  "bewitchment:cleaver_living_2"
+	]
   }
 }
