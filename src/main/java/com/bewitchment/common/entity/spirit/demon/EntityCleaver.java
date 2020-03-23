@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
@@ -19,6 +20,7 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -117,6 +119,21 @@ public class EntityCleaver extends ModEntityMob {
 		}
 		
 		return flag;
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.CLEAVER_HURT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.CLEAVER_DEATH;
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.CLEAVER_IDLE;
 	}
 	
 	@Override
