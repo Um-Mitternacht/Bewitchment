@@ -143,7 +143,7 @@ public class EntityCleaver extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3.50);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2.50);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.55);
 		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
 	}
