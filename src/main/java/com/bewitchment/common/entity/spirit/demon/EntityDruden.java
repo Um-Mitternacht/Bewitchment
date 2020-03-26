@@ -33,7 +33,7 @@ public class EntityDruden extends ModEntityMob {
 	
 	public EntityDruden(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/druden"));
-		setSize(1.425f, 4.0f);
+		setSize(1.425f, 3.7f);
 		isImmuneToFire = false;
 		experienceValue = 45;
 	}
