@@ -30,7 +30,6 @@ import com.bewitchment.common.world.gen.tree.WorldGenDragonTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
 import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -122,6 +121,8 @@ public class ModObjects {
 	public static final Block nethersteel_fence = new ModBlockFence("nethersteel_fence", nethersteel[0]);
 	
 	public static final Block alchemists_carpet = new ModCarpet("alchemists_carpet", Blocks.WOOL);
+	public static final Block hedgewitches_carpet = new ModCarpet("hedgewitches_carpet", Blocks.WOOL);
+	public static final Block besmirched_carpet = new ModCarpet("besmirched_carpet", Blocks.WOOL);
 	
 	public static final Block mossy_scorned_brick_stairs = new ModBlockStairs("mossy_scorned_brick_stairs", mossy_scorned_bricks);
 	public static final Block nethersteel_stairs = new ModBlockStairs("nethersteel_stairs", nethersteel[0]);

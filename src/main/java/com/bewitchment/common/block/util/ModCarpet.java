@@ -1,21 +1,13 @@
 package com.bewitchment.common.block.util;
 
-import com.bewitchment.Util;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Joseph on 3/26/2020.
@@ -29,8 +21,9 @@ public class ModCarpet extends ModBlock {
 		super(name, base, oreDictionaryNames);
 	}
 	
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return CARPET_AABB;
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 	
 	@Override
@@ -39,13 +32,12 @@ public class ModCarpet extends ModBlock {
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
+	public boolean causesSuffocation(IBlockState state) {
 		return false;
 	}
 	
-	@Override
-	public boolean causesSuffocation(IBlockState state) {
-		return false;
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return CARPET_AABB;
 	}
 	
 	@Override
@@ -54,21 +46,22 @@ public class ModCarpet extends ModBlock {
 	}
 	
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
-	}
-	
-	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos p_189540_5_) {
 		this.checkForDrop(worldIn, pos, state);
 	}
 	
+	@Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+		return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
+	}
+	
 	private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state) {
-		if(!this.canBlockStay(worldIn, pos)) {
+		if (!this.canBlockStay(worldIn, pos)) {
 			this.dropBlockAsItem(worldIn, pos, state, 0);
 			worldIn.setBlockToAir(pos);
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
