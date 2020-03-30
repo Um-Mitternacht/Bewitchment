@@ -74,9 +74,12 @@ public class CommandFortune extends CommandBase {
 				if (args.length == 2) {
 					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null) throw new CommandException("commands.fortune.nofortune", player.getDisplayNameString());
 					else {
-						while (!player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.apply(player)) ;
-						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;
-						sender.sendMessage(new TextComponentTranslation("commands.fortune.execute", args[0]));
+						if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.apply(player)) {
+							player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;
+							sender.sendMessage(new TextComponentTranslation("commands.fortune.execute", args[0]));
+						} else {
+							sender.sendMessage(new TextComponentTranslation("commands.fortune.execute.fail", args[0]));
+						}
 					}
 				}
 				else throw new CommandException("commands.generic.syntax");

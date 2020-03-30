@@ -3,6 +3,8 @@ package com.bewitchment.common.fortune;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 
 public class FortuneDropItem extends Fortune {
@@ -12,6 +14,7 @@ public class FortuneDropItem extends Fortune {
 	
 	@Override
 	public boolean apply(EntityPlayer player) {
-		return player.dropItem(player.getActiveItemStack().splitStack(player.getActiveItemStack().getCount()), false) != null;
+		ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
+		return player.dropItem(stack.splitStack(stack.getCount()), false) != null;
 	}
 }

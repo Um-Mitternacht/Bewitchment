@@ -48,7 +48,7 @@ public class CauldronTeleport implements IMessage {
 							BlockPos pos = BlockPos.fromLong(cauldron.getLong("position"));
 							if (player.world.getTileEntity(pos) instanceof TileEntityWitchesCauldron && ((TileEntityWitchesCauldron) player.world.getTileEntity(pos)).getName().equals(message.message)) {
 								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-								Util.teleportPlayer(player, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+								Util.teleportPlayer(player, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5);
 								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
 								break;
 							}

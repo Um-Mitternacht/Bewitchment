@@ -752,6 +752,7 @@ commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
 commands.fortune.remove=%s's fortune has been removed
 commands.fortune.execute=%s's fortune has been applied
+commands.fortune.execute.fail=%s's fortune failed to apply, condition not met!
 commands.fortune.nofortune=%s does not have a fortune
 commands.fortune.null=%s is not a fortune
 
