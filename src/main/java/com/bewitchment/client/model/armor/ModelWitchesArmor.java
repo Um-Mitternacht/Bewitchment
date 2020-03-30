@@ -15,6 +15,9 @@ import java.util.Map;
 public class ModelWitchesArmor extends ModelArmor {
 	
 	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
+
+	public static final ModelWitchesArmor HAT = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, true);
+	public static final ModelWitchesArmor COWL = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, false);
 	
 	public final ModelRenderer bipedRightArm;
 	public final ModelRenderer bipedRightLeg;
@@ -269,6 +272,9 @@ public class ModelWitchesArmor extends ModelArmor {
 	public static ModelWitchesArmor getInstance(EntityEquipmentSlot slot, boolean hat) {
 		if (slot.getSlotType() != EntityEquipmentSlot.Type.ARMOR) {
 			return null;
+		}
+		if (slot == EntityEquipmentSlot.HEAD) {
+			return hat ? HAT : COWL;
 		}
 		return INSTANCES.computeIfAbsent(slot, k -> new ModelWitchesArmor(slot, hat));
 	}
