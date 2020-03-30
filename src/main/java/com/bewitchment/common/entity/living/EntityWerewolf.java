@@ -16,8 +16,8 @@ import javax.annotation.Nullable;
  * Created by Joseph on 3/29/2020.
  */
 public class EntityWerewolf extends ModEntityMob {
-	private static final ResourceLocation AFRICAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/african_elephant.png");
-	private static final ResourceLocation ASIAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/asian_elephant.png");
+	//private static final ResourceLocation AFRICAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/african_elephant.png");
+	//private static final ResourceLocation ASIAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/asian_elephant.png");
 	
 	protected EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
@@ -28,17 +28,17 @@ public class EntityWerewolf extends ModEntityMob {
 		return true;
 	}
 	
-	@Override
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-		BlockPos pos = getPosition();
-		World world = getEntityWorld();
-		
-		if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.SAVANNA))) {
-			return (IEntityLivingData) AFRICAN;
-		}
-		else if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.JUNGLE))) {
-			return (IEntityLivingData) ASIAN;
-		}
-		return data;
-	}
+	//@Override
+	//public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+	//	BlockPos pos = getPosition();
+	//	World world = getEntityWorld();
+	//
+	//	if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.SAVANNA))) {
+	//		return (IEntityLivingData) AFRICAN;
+	//	}
+	//	else if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.JUNGLE))) {
+	//		return (IEntityLivingData) ASIAN;
+	//	}
+	//	return data;
+	//}
 }
