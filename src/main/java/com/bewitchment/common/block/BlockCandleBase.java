@@ -2,6 +2,7 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
@@ -43,6 +44,11 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	}
 	
 	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
+	
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -50,6 +56,11 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, LIT);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 	
 	@Override

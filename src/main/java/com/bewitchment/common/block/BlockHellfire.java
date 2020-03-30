@@ -5,6 +5,7 @@ import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -40,6 +41,11 @@ public class BlockHellfire extends BlockFire {
 			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
