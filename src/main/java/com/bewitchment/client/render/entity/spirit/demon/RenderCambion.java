@@ -1,7 +1,7 @@
 package com.bewitchment.client.render.entity.spirit.demon;
 
-import com.bewitchment.client.model.entity.spirit.demon.ModelCambion;
-import com.bewitchment.client.model.entity.spirit.demon.ModelImp;
+import com.bewitchment.Bewitchment;
+import com.bewitchment.client.model.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.demon.EntityCambion;
 import com.bewitchment.common.entity.spirit.demon.EntityImp;
 import com.bewitchment.common.entity.util.ModEntityMob;
@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
  * Created by Joseph on 3/30/2020.
  */
 public class RenderCambion extends RenderLiving<EntityCambion> {
+	
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/shadowperson_hatdemon.png")};
+	private static final ModelBase slimModel = new ModelCambionSlim();
+	private static final ModelBase regModel = new ModelCambion();
 	
 	public RenderCambion(RenderManager manager) {
 		super(manager, new ModelCambion(), 0.3f);
