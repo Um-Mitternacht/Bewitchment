@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public class EntityWerewolf extends ModEntityMob {
 	//private static final ResourceLocation AFRICAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/african_elephant.png");
 	//private static final ResourceLocation ASIAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/asian_elephant.png");
-	
+
 	protected EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
 	}
