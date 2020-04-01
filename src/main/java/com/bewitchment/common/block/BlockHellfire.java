@@ -44,17 +44,17 @@ public class BlockHellfire extends BlockFire {
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
-	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (!world.isRemote && entity instanceof EntityLivingBase) {
 			entity.attackEntityFrom(DamageSource.IN_FIRE, 2);
 			entity.setFire(5);
 			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.hellfire, 200, 0));
 		}
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override

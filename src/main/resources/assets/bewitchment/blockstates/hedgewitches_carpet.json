@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "bewitchment:hedgewitches_carpet" }
-    }
+  "variants": {
+	"normal": {
+	  "model": "bewitchment:hedgewitches_carpet"
+	}
+  }
 }

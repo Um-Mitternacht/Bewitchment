@@ -14,11 +14,9 @@ import java.util.Map;
 @SuppressWarnings({"WeakerAccess", "NullableProblems"})
 public class ModelWitchesArmor extends ModelArmor {
 	
-	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
-
 	public static final ModelWitchesArmor HAT = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, true);
 	public static final ModelWitchesArmor COWL = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, false);
-	
+	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
 	public final ModelRenderer bipedRightArm;
 	public final ModelRenderer bipedRightLeg;
 	public final ModelRenderer bipedHead;

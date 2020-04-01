@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "bewitchment:besmirched_carpet" }
-    }
+  "variants": {
+	"normal": {
+	  "model": "bewitchment:besmirched_carpet"
+	}
+  }
 }

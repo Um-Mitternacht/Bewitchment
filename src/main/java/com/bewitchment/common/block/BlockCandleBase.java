@@ -44,23 +44,18 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
-	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 	
 	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, LIT);
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, LIT);
 	}
 	
 	@Override
@@ -70,6 +65,11 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	
 	@Override
 	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 	

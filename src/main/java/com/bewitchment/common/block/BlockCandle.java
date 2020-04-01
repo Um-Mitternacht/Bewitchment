@@ -77,11 +77,6 @@ public class BlockCandle extends BlockCandleBase {
 		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
 	}
 	
-	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
 	public float getEnchantPowerBonus(World world, BlockPos pos) {
 		return 0.5f;
 	}
@@ -89,5 +84,10 @@ public class BlockCandle extends BlockCandleBase {
 	@Override
 	public int getLightValue(IBlockState state) {
 		return state.getValue(LIT) ? 9 : 0;
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 }

@@ -43,6 +43,11 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	}
 	
 	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
+	
+	@Override
 	public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		return state.getBlock() == this;
 	}
@@ -55,11 +60,6 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
-	}
-	
-	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override

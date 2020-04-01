@@ -53,11 +53,6 @@ public class BlockFrostfire extends ModBlockContainer {
 	}
 	
 	@Override
-	public EnumPushReaction getPushReaction(IBlockState state) {
-		return EnumPushReaction.DESTROY;
-	}
-	
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextBoolean()) world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
@@ -76,6 +71,11 @@ public class BlockFrostfire extends ModBlockContainer {
 	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (!world.isRemote && entity instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) entity.attackEntityFrom(DamageSource.MAGIC, 2);
+	}
+	
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
 	}
 	
 	@Override
