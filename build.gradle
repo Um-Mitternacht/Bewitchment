@@ -58,7 +58,7 @@ dependencies {
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.7"
     deobfProvided "vazkii.botania:Botania:r1.10-363.119"
-    deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:8.2.0"
+    deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.0"
     deobfProvided "curse.maven:quark:2889332"
     deobfProvided "curse.maven:autoreglib:2746011"
     deobfProvided "curse.maven:mowzies-mobs:2699705"
