@@ -9,7 +9,6 @@ import com.bewitchment.api.registry.Brew;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
-import de.aelpecyem.elementaristics.init.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
