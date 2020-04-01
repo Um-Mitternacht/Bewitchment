@@ -2,23 +2,19 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.init.Items;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 3/29/2020.
  */
 public class EntityWerewolf extends ModEntityMob {
-	//private static final ResourceLocation AFRICAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/african_elephant.png");
-	//private static final ResourceLocation ASIAN = new ResourceLocation(Bewitchment.MODID, "textures/entity/elephants/asian_elephant.png");
-
+	private static final DataParameter<Integer> WEREWOLF_TYPE = EntityDataManager.<Integer>createKey(EntityWerewolf.class, DataSerializers.VARINT);
+	
 	protected EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
 	}
@@ -26,6 +22,33 @@ public class EntityWerewolf extends ModEntityMob {
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(WEREWOLF_TYPE, Integer.valueOf(0));
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("WerewolfType", this.getWerewolfType());
+	}
+	
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setWerewolfType(compound.getInteger("WerewolfType"));
+	}
+	
+	@Override
+	public int getWerewolfType() {
+		return ((Integer)this.dataManager.get(WEREWOLF_TYPE)).intValue();
+	}
+	
+	@Override
+	public void setWerewolfType (int werewolfTypeId) {
+		this.dataManager.set(WEREWOLF_TYPE, Integer.valueOf(werewolfTypeId));
 	}
 	
 	//@Override
