@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.*;
 import com.bewitchment.common.entity.spirit.demon.EntityCambion;
 import com.bewitchment.common.entity.spirit.demon.EntityImp;
+import com.bewitchment.common.entity.spirit.demon.EntityShadowPerson;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,8 +23,17 @@ public class RenderCambion extends RenderLiving<EntityCambion> {
 	private static final ModelBase slimModel = new ModelCambionSlim();
 	private static final ModelBase regModel = new ModelCambion();
 	
-	public RenderCambion(RenderManager manager) {
-		super(manager, new ModelCambion(), 0.3f);
+	public RenderCambion(RenderManager manager, ModelBase model) {
+		super(manager, model, 0.3f);
+	}
+	
+	@Override
+	public void doRender(EntityCambion entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		if (entity.getDataManager().get(ModEntityMob.SKIN) >= 2) {
+			this.mainModel = slimModel;
+		}
+		else this.mainModel = regModel;
+		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}
 	
 	@Override
