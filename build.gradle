@@ -68,7 +68,7 @@ dependencies {
     deobfProvided "curse.maven:miskatonic-mysteries:2835243"
     deobfProvided "curse.maven:elementaristics:2826887"
     deobfProvided "curse.maven:hwyla:2568751"
-    deobfProvided "curse.maven:wawla-what-are-we-looking-at:2875678"
+    deobfProvided "curse.maven:wawla-what-are-we-looking-at:2916368"
     deobfProvided "curse.maven:just-enough-resources-jer:2728585"
     deobfProvided "curse.maven:serene-seasons:2799213"    
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"
