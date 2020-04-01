@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 
@@ -71,6 +72,11 @@ public class EntityWerewolf extends ModEntityMob {
 	private int getRandomWerewolfType() {
 		Biome biome = this.world.getBiome(new BlockPos(this));
 		int i = this.rand.nextInt(100);
+		if (biome.isSnowyBiome())
+		{
+			return 1;
+		}
+		
 		return i < 50 ? 0 : (i < 90 ? 5 : 2);
 	}
 	
