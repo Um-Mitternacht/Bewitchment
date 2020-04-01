@@ -190,6 +190,7 @@ public class ModConfig {
 		public final Feuerwurm feuerwurm = new Feuerwurm();
 		public final Druden druden = new Druden();
 		public final Cleaver cleaver = new Cleaver();
+		public final Werewolf werewolf = new Werewolf();
 		
 		public static class Lizard {
 			@Config.Comment("The list of BiomeDictionary types that the lizard will spawn in.")
@@ -377,6 +378,23 @@ public class ModConfig {
 			@Config.Comment("The maximum amount of druden to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int drudenMax = 1;
+		}
+		
+		public static class Werewolf {
+			@Config.Comment("The list of BiomeDictionary types that the werewolf will spawn in.")
+			public String[] werewolfBiomes = {Type.FOREST.getName(), Type.CONIFEROUS.getName(), Type.SNOWY.getName()};
+			
+			@Config.Comment("The weight chance for werewolves to spawn.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int werewolfWeight = 6;
+			
+			@Config.Comment("The minimum amount of werewolves to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int werewolfMin = 1;
+			
+			@Config.Comment("The maximum amount of werewolves to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int werewolfMax = 4;
 		}
 	}
 	

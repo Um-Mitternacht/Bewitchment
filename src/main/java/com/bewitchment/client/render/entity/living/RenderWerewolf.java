@@ -1,17 +1,22 @@
 package com.bewitchment.client.render.entity.living;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.client.model.entity.living.ModelToad;
+import com.bewitchment.client.model.entity.living.ModelWerewolf;
 import com.bewitchment.common.entity.living.EntityWerewolf;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
 /**
  * Created by Joseph on 3/31/2020.
  */
+@SideOnly(Side.CLIENT)
 public class RenderWerewolf extends RenderLiving<EntityWerewolf> {
 	private static final ResourceLocation ARCTIC = new ResourceLocation(Bewitchment.MODID, "textures/entity/werewolf/werewolf_arctic.png");
 	private static final ResourceLocation BLACK = new ResourceLocation(Bewitchment.MODID, "textures/entity/werewolf/werewolf_black.png");
@@ -20,8 +25,8 @@ public class RenderWerewolf extends RenderLiving<EntityWerewolf> {
 	private static final ResourceLocation RED = new ResourceLocation(Bewitchment.MODID, "textures/entity/werewolf/werewolf_red.png");
 	private static final ResourceLocation TIMBER = new ResourceLocation(Bewitchment.MODID, "textures/entity/werewolf/werewolf_timber.png");
 	
-	public RenderWerewolf(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
-		super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+	public RenderWerewolf(RenderManager manager) {
+		super(manager, new ModelWerewolf(), 0.3f);
 	}
 	
 	@Nullable

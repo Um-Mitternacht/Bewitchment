@@ -3,6 +3,7 @@ package com.bewitchment.client.model.entity.living;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelWerewolf extends ModelBase {
@@ -387,7 +388,7 @@ public class ModelWerewolf extends ModelBase {
 		lArm01.rotateAngleZ = -1 / 4f;
 		rArm01.rotateAngleY = 0;
 		rArm01.rotateAngleZ = 1 / 4f;
-		//ModelRenderer arm = entity.swingingHand == Hand.MAIN_HAND ? rArm01 : lArm01;
+		//ModelRenderer arm = entity.swingingHand == EnumHand.MAIN_HAND ? rArm01 : lArm01;
 		//int val = (arm == rArm01 ? 1 : -1);
 		//if (val < 0) chest.rotateAngleY *= -1;
 		//arm.rotateAngleX -= (float) Math.sin(swingProgress * Math.PI) * (val < 0 ? 1.5f : 1.75f);
