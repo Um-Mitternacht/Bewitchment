@@ -4,10 +4,12 @@ import c4.consecration.common.init.ConsecrationItems;
 import c4.consecration.common.init.ConsecrationPotions;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Brew;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
+import de.aelpecyem.elementaristics.init.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -46,6 +48,7 @@ public class Compat {
 	@Optional.Method(modid = "mowziesmobs")
 	@SubscribeEvent
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
+		Util.registerAltarUpgradeItem(ItemHandler.ICE_CRYSTAL, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
 	}
 	

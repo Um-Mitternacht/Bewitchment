@@ -22,6 +22,7 @@ tile.bewitchment.coquina_bricks.name=Coquina Bricks
 tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 
 tile.bewitchment.nethersteel.name=Nethersteel
+tile.bewitchment.nethersteel_fence.name=Nethersteel Fence
 
 tile.bewitchment.perpetual_ice.name=Perpetual Ice
 tile.bewitchment.perpetual_ice_stairs.name=Perpetual Ice Stairs
@@ -375,6 +376,10 @@ tile.bewitchment.greenwitch_fleece.name=Hedgewitch Fleece
 tile.bewitchment.besmirched_fleece.name=Besmirched Fleece
 tile.bewitchment.alchemists_fleece.name=Alchemist Fleece
 
+tile.bewitchment.hedgewitch_carpet.name=Hedgewitch Carpet
+tile.bewitchment.besmirched_carpet.name=Besmirched Carpet
+tile.bewitchment.alchemists_carpet.name=Alchemist Carpet
+
 item.bewitchment.aconitum.name=Aconitum
 tooltip.bewitchment.aconitum=A poisonous flower used to hunt Lycanthropes
 item.bewitchment.belladonna.name=Belladonna
@@ -519,6 +524,8 @@ entity.bewitchment.ghost.name=Ghost
 
 entity.bewitchment.hellhound.name=Hellhound
 entity.bewitchment.feuerwurm.name=Feuerwurm
+
+entity.bewitchment.werewolf.name=Werewolf
 
 entity.bewitchment.demon.name=Demon
 entity.bewitchment.demoness.name=Demoness
