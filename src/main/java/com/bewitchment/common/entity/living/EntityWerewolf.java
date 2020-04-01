@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 
@@ -48,6 +47,13 @@ public class EntityWerewolf extends ModEntityMob {
 		this.setWerewolfType(compound.getInteger("WerewolfType"));
 	}
 	
+	public boolean getCanSpawnHere()
+	{
+		if(world.getCurrentMoonPhaseFactor() == 1.0f)
+			return super.getCanSpawnHere();
+		return true;
+	}
+	
 	@Nullable
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
@@ -72,8 +78,7 @@ public class EntityWerewolf extends ModEntityMob {
 	private int getRandomWerewolfType() {
 		Biome biome = this.world.getBiome(new BlockPos(this));
 		int i = this.rand.nextInt(100);
-		if (biome.isSnowyBiome())
-		{
+		if (biome.isSnowyBiome()) {
 			return 1;
 		}
 		

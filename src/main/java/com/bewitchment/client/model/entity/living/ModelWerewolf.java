@@ -3,7 +3,6 @@ package com.bewitchment.client.model.entity.living;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelWerewolf extends ModelBase {

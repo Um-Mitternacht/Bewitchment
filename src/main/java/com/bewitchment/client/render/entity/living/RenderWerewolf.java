@@ -1,10 +1,8 @@
 package com.bewitchment.client.render.entity.living;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.client.model.entity.living.ModelToad;
 import com.bewitchment.client.model.entity.living.ModelWerewolf;
 import com.bewitchment.common.entity.living.EntityWerewolf;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
