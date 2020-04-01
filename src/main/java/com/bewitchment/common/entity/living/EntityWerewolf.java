@@ -47,13 +47,6 @@ public class EntityWerewolf extends ModEntityMob {
 		this.setWerewolfType(compound.getInteger("WerewolfType"));
 	}
 	
-	public boolean getCanSpawnHere()
-	{
-		if(world.getCurrentMoonPhaseFactor() == 1.0f)
-			return super.getCanSpawnHere();
-		return true;
-	}
-	
 	@Nullable
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
@@ -72,6 +65,12 @@ public class EntityWerewolf extends ModEntityMob {
 		this.setWerewolfType(i);
 		
 		return livingdata;
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		if (!world.isDaytime()) if (world.getCurrentMoonPhaseFactor() == 1.0) return super.getCanSpawnHere();
+		return false;
 	}
 	
 	//WIP
