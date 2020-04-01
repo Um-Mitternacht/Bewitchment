@@ -9,6 +9,8 @@ import com.bewitchment.api.registry.Brew;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
+import com.miskatonicmysteries.registry.ModObjects;
+import com.miskatonicmysteries.registry.ModPotions;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -42,6 +44,16 @@ public class Compat {
 		if (Loader.isModLoaded("elementaristics")) {
 			ElementaristicsCompat.registerElementaristicsStuff();
 		}
+		if (Loader.isModLoaded("miskatonicmysteries")) {
+			MiskatonicMysteriesCompat.registerMiskatonicMysteriesStuff();
+		}
+	}
+	
+	//Todo: Find out why this isn't working
+	@Optional.Method(modid = "miskatonicmysteries")
+	@SubscribeEvent
+	public static void registerManiaBrews(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "a_poem_for_byzantium"), Util.get(ModObjects.infested_wheat), new PotionEffect(ModPotions.mania, (600))));
 	}
 	
 	@Optional.Method(modid = "mowziesmobs")

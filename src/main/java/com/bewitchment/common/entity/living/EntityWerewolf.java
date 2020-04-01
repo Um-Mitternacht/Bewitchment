@@ -37,17 +37,6 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
-	}
-	
-	@Override
-	protected boolean canDespawn() {
-		return !hasCustomName();
-	}
-	
-	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("WerewolfType", this.getWerewolfType());
@@ -79,9 +68,20 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
+	}
+	
+	@Override
 	public boolean getCanSpawnHere() {
 		if (!world.isDaytime()) if (world.getCurrentMoonPhaseFactor() == 1.0) return super.getCanSpawnHere();
 		return false;
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
 	}
 	
 	//WIP

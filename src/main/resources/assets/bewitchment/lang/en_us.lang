@@ -24,6 +24,10 @@ tile.bewitchment.chiseled_coquina.name=Chiseled Coquina
 tile.bewitchment.nethersteel.name=Nethersteel
 tile.bewitchment.nethersteel_fence.name=Nethersteel Fence
 
+tile.bewitchment.candelabra_gold.name=Golden Candelabra
+tile.bewitchment.candelabra_silver.name=Silver Candelabra
+tile.bewitchment.candelabra_iron.name=Iron Candelabra
+
 tile.bewitchment.perpetual_ice.name=Perpetual Ice
 tile.bewitchment.perpetual_ice_stairs.name=Perpetual Ice Stairs
 tile.bewitchment.perpetual_ice_slab.name=Perpetual Ice Slab
