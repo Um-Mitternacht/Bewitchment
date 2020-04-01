@@ -37,6 +37,17 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("WerewolfType", this.getWerewolfType());
