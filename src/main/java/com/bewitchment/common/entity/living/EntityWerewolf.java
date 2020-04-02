@@ -144,18 +144,4 @@ public class EntityWerewolf extends ModEntityMob {
 			this.typeData = type;
 		}
 	}
-	
-	//@Override
-	//public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-	//	BlockPos pos = getPosition();
-	//	World world = getEntityWorld();
-	//
-	//	if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.SAVANNA))) {
-	//		return (IEntityLivingData) AFRICAN;
-	//	}
-	//	else if (this.world.getBiomeForCoordsBody(pos, world.getBiome(BiomeDictionary.Type.JUNGLE))) {
-	//		return (IEntityLivingData) ASIAN;
-	//	}
-	//	return data;
-	//}
 }
