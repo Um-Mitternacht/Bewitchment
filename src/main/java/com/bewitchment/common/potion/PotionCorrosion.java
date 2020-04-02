@@ -8,6 +8,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 /**
  * Created by Joseph on 4/2/2020.
  */
+
+//Todo: Everything.
 public class PotionCorrosion extends ModPotion {
 	protected PotionCorrosion(String name, boolean isNegative, int color) {
 		super("corrosion", true, 0x0BDA51);
