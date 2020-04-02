@@ -3,8 +3,15 @@ package com.bewitchment.common.entity.living;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.AbstractIllager;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -72,9 +79,28 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
+	protected void initEntityAI() {
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
+		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
+		tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem || e instanceof EntitySheep || e instanceof EntityCow || e instanceof EntityChicken || e instanceof EntityLlama || e instanceof EntityPig));
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
+		if (!world.isRemote && world.isDaytime() && canDespawn()) setDead();
 	}
 	
 	public boolean attackEntityAsMob(Entity entityIn) {
@@ -103,11 +129,6 @@ public class EntityWerewolf extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8D);
 		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-	}
-	
-	@Override
-	protected boolean canDespawn() {
-		return !hasCustomName();
 	}
 	
 	private int getRandomWerewolfType() {
