@@ -59,7 +59,7 @@ public class WorldGenWickerman extends WorldGenerator {
 	
 	private void spawnAnimal(World world, int x, int y, int z, Random random) {
 		EntityAnimal spawn;
-		switch (random.nextInt(5)) {
+		switch (random.nextInt(8)) {
 			case 0:
 				spawn = new EntityCow(world);
 				break;
@@ -74,6 +74,15 @@ public class WorldGenWickerman extends WorldGenerator {
 				break;
 			case 4:
 				spawn = new EntityHorse(world);
+				break;
+			case 5:
+				spawn = new EntityMule(world);
+				break;
+			case 6:
+				spawn = new EntityDonkey(world);
+				break;
+			case 7:
+				spawn = new EntityRabbit(world);
 				break;
 			default:
 				spawn = null;
