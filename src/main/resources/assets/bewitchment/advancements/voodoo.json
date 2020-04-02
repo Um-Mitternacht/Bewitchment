@@ -10,7 +10,7 @@
 	  "translate": "advancements.bewitchment.voodoo.description"
 	}
   },
-  "parent": "bewitchment:root",
+  "parent": "bewitchment:loom",
   "criteria": {
 	"voodoo": {
 	  "trigger": "minecraft:inventory_changed",

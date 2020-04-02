@@ -768,6 +768,10 @@ advancements.bewitchment.cauldron.title=Eye of newt, and toe of frog
 advancements.bewitchment.cauldron.description=Craft a cauldron
 advancements.bewitchment.distillery.title=Oozing substances
 advancements.bewitchment.distillery.description=Craft a distillery
+advancements.bewitchment.loom.title=Lore of the Loom
+advancements.bewitchment.loom.description=Craft a loom
+advancements.bewitchment.oven.title=Hansel and Gretel
+advancements.bewitchment.oven.description=Craft an oven
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

@@ -10,7 +10,7 @@
 	  "translate": "advancements.bewitchment.wore_green_witch_set.description"
 	}
   },
-  "parent": "bewitchment:crafted_altar",
+  "parent": "bewitchment:loom",
   "criteria": {
 	"hat": {
 	  "trigger": "minecraft:inventory_changed",
