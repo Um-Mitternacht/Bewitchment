@@ -51,28 +51,6 @@ public class EntityWerewolf extends ModEntityMob {
 		this.setWerewolfType(compound.getInteger("WerewolfType"));
 	}
 	
-	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-		
-		if (flag) {
-			this.applyEnchantments(this, entityIn);
-		}
-		
-		return flag;
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8D);
-		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-	}
-	
 	@Nullable
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
@@ -99,10 +77,32 @@ public class EntityWerewolf extends ModEntityMob {
 		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
 	}
 	
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+		}
+		
+		return flag;
+	}
+	
 	@Override
 	public boolean getCanSpawnHere() {
 		if (!world.isDaytime()) if (world.getCurrentMoonPhaseFactor() == 1.0) return super.getCanSpawnHere();
 		return false;
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8D);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
 	}
 	
 	@Override
@@ -116,10 +116,14 @@ public class EntityWerewolf extends ModEntityMob {
 		BlockPos pos = getPosition();
 		int i = this.rand.nextInt(100);
 		if (biome.isSnowyBiome()) {
-			return 1;
+			return i < 50 ? 1 : 5;
 		}
-		if (BiomeDictionary.hasType(this.world.getBiomeForCoordsBody(pos), BiomeDictionary.Type.CONIFEROUS)) {
-			return 3;
+		if (!biome.isSnowyBiome() && BiomeDictionary.hasType(this.world.getBiomeForCoordsBody(pos), BiomeDictionary.Type.CONIFEROUS)) {
+			return i < 50 ? 3 : 2;
+		}
+		
+		if (!biome.isSnowyBiome() && BiomeDictionary.hasType(this.world.getBiomeForCoordsBody(pos), BiomeDictionary.Type.FOREST)) {
+			return i < 50 ? 4 : 0;
 		}
 		
 		return i < 50 ? 0 : (i < 90 ? 5 : 2);
