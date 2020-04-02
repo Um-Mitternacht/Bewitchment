@@ -11,7 +11,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -111,24 +110,12 @@ public class EntityWerewolf extends ModEntityMob {
 		return !hasCustomName();
 	}
 	
-	//WIP
 	private int getRandomWerewolfType() {
-		Biome biome = this.world.getBiome(new BlockPos(this));
-		BlockPos pos = getPosition();
-		int i = this.rand.nextInt(100);
-		
-		if (biome.isSnowyBiome()) {
-			return i < 50 ? 1 : 5;
-		}
-		if (!biome.isSnowyBiome() && BiomeDictionary.hasType(this.world.getBiomeForCoordsBody(pos), BiomeDictionary.Type.CONIFEROUS)) {
-			return i < 50 ? 3 : 2;
-		}
-		
-		if (!biome.isSnowyBiome() && BiomeDictionary.hasType(this.world.getBiomeForCoordsBody(pos), BiomeDictionary.Type.FOREST)) {
-			return i < 50 ? 4 : 0;
-		}
-		
-		return i < 50 ? 0 : (i < 90 ? 5 : 2);
+		boolean flag = rand.nextBoolean();
+		Biome biome = world.getBiome(getPosition());
+		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SNOWY)) return flag ? 1 : 5;
+		else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.CONIFEROUS)) return flag ? 3 : 2;
+		else return flag ? 4 : 0;
 	}
 	
 	public int getWerewolfType() {

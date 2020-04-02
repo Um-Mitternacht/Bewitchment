@@ -758,6 +758,16 @@ advancements.bewitchment.ghost.title=Purification in Progress
 advancements.bewitchment.ghost.description=Kill a ghost
 advancements.bewitchment.slash.title=Rip and Tear
 advancements.bewitchment.slash.description=Obtain a cleaver's sword
+advancements.bewitchment.voodoo.title=Who Do The Voodoo
+advancements.bewitchment.voodoo.description=Craft a Poppet
+advancements.bewitchment.beast.title=Das Tier in Mir
+advancements.bewitchment.beast.description=Kill a werewolf
+advancements.bewitchment.burn.title=Controlled Burn
+advancements.bewitchment.burn.description=Kill a drude
+advancements.bewitchment.cauldron.title=Eye of newt, and toe of frog
+advancements.bewitchment.cauldron.description=Craft a cauldron
+advancements.bewitchment.distillery.title=Oozing substances
+advancements.bewitchment.distillery.description=Craft a distillery
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
