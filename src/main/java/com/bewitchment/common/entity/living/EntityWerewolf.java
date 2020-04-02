@@ -2,11 +2,14 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
@@ -45,6 +48,28 @@ public class EntityWerewolf extends ModEntityMob {
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setWerewolfType(compound.getInteger("WerewolfType"));
+	}
+	
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+		}
+		
+		return flag;
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(55);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8D);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
 	}
 	
 	@Nullable
