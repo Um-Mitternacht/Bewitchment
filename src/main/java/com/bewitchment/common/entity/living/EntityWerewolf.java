@@ -115,6 +115,7 @@ public class EntityWerewolf extends ModEntityMob {
 		Biome biome = this.world.getBiome(new BlockPos(this));
 		BlockPos pos = getPosition();
 		int i = this.rand.nextInt(100);
+		
 		if (biome.isSnowyBiome()) {
 			return i < 50 ? 1 : 5;
 		}
