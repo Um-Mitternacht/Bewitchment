@@ -305,6 +305,21 @@ tile.bewitchment.nether_brick_leonard_idol.name=Nether Brick Leonard Idol
 tile.bewitchment.scorned_brick_leonard_idol.name=Scorned Brick Leonard Idol
 tile.bewitchment.gold_leonard_idol.name=Gold Leonard Idol
 
+tile.bewitchment.stone_herne_idol.name=Stone Herne Idol
+tile.bewitchment.nether_brick_herne_idol.name=Nether Brick Herne Idol
+tile.bewitchment.scorned_brick_herne_idol.name=Scorned Brick Herne Idol
+tile.bewitchment.gold_herne_idol.name=Gold Herne Idol
+
+tile.bewitchment.stone_lilith_idol.name=Stone Lilith Idol
+tile.bewitchment.nether_brick_lilith_idol.name=Nether Brick Lilith Idol
+tile.bewitchment.scorned_brick_lilith_idol.name=Scorned Brick Lilith Idol
+tile.bewitchment.gold_lilith_idol.name=Gold Lilith Idol
+
+tile.bewitchment.stone_baphomet_idol.name=Stone Baphomet Idol
+tile.bewitchment.nether_brick_baphomet_idol.name=Nether Brick Baphomet Idol
+tile.bewitchment.scorned_brick_baphomet_idol.name=Scorned Brick Baphomet Idol
+tile.bewitchment.gold_baphomet_idol.name=Gold Baphomet Idol
+
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire
 item.bewitchment.bone_needle.name=Bone Needle
@@ -537,6 +552,7 @@ entity.bewitchment.imp.name=Imp
 entity.bewitchment.druden.name=Druden
 entity.bewitchment.shadow_person.name=Shadow Person
 entity.bewitchment.cleaver.name=Cleaver
+entity.bewitchment.cambion.name=Cambion
 
 entity.bewitchment.baphomet.name=Baphomet
 entity.bewitchment.leonard.name=Leonard

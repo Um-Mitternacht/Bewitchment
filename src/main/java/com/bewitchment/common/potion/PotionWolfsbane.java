@@ -1,6 +1,7 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.entity.living.EntityWerewolf;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.entity.Entity;
@@ -22,6 +23,6 @@ public class PotionWolfsbane extends ModPotion {
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
-		if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityHellhound) living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
+		if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityWerewolf || living instanceof EntityHellhound) living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
 	}
 }

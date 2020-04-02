@@ -42,15 +42,17 @@ public class ModEntities {
 	public static final EntityEntry hellhound = createEntityEntry(EntityHellhound.class, "hellhound", 0x555555, 0xed2939, EnumCreatureType.MONSTER, ModConfig.mobSpawns.hellhound.hellhoundWeight, ModConfig.mobSpawns.hellhound.hellhoundMin, ModConfig.mobSpawns.hellhound.hellhoundMax, Arrays.asList(ModConfig.mobSpawns.hellhound.hellhoundBiomes));
 	public static final EntityEntry feuerwurm = createEntityEntry(EntityFeuerwurm.class, "feuerwurm", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.feuerwurm.feuerwurmWeight, ModConfig.mobSpawns.feuerwurm.feuerwurmMin, ModConfig.mobSpawns.feuerwurm.feuerwurmMax, Arrays.asList(ModConfig.mobSpawns.feuerwurm.feuerwurmBiomes));
 	
-	public static final EntityEntry werewolf = createEntityEntry(EntityWerewolf.class, "werewolf", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.werewolf.werewolfWeight, ModConfig.mobSpawns.werewolf.werewolfMin, ModConfig.mobSpawns.werewolf.werewolfMax, Arrays.asList(ModConfig.mobSpawns.werewolf.werewolfBiomes));
+	public static final EntityEntry werewolf = createEntityEntry(EntityWerewolf.class, "werewolf", 0x9F8170, 0x954535, EnumCreatureType.MONSTER, ModConfig.mobSpawns.werewolf.werewolfWeight, ModConfig.mobSpawns.werewolf.werewolfMin, ModConfig.mobSpawns.werewolf.werewolfMax, Arrays.asList(ModConfig.mobSpawns.werewolf.werewolfBiomes));
 	
-	public static final EntityEntry cleaver = createEntityEntry(EntityCleaver.class, "cleaver", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.cleaver.cleaverWeight, ModConfig.mobSpawns.cleaver.cleaverMin, ModConfig.mobSpawns.cleaver.cleaverMax, Arrays.asList(ModConfig.mobSpawns.cleaver.cleaverBiomes));
+	public static final EntityEntry cleaver = createEntityEntry(EntityCleaver.class, "cleaver", 0x5C4033, 0x483C32, EnumCreatureType.MONSTER, ModConfig.mobSpawns.cleaver.cleaverWeight, ModConfig.mobSpawns.cleaver.cleaverMin, ModConfig.mobSpawns.cleaver.cleaverMax, Arrays.asList(ModConfig.mobSpawns.cleaver.cleaverBiomes));
 	
 	public static final EntityEntry demon = createEntityEntry(EntityDemon.class, "demon", 0x555555, 0xed2939);
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);
 	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
 	
 	public static final EntityEntry shadow_person = createEntityEntry(EntityShadowPerson.class, "shadow_person", 0x000000, 0x000000);
+	
+	public static final EntityEntry cambion = createEntityEntry(EntityCambion.class, "cambion", 0xC41E3A, 0x483C32);
 	
 	public static final EntityEntry druden = createEntityEntry(EntityDruden.class, "druden", 0x228B22, 0x8A3324, EnumCreatureType.MONSTER, ModConfig.mobSpawns.druden.drudenWeight, ModConfig.mobSpawns.druden.drudenMin, ModConfig.mobSpawns.druden.drudenMax, Arrays.asList(ModConfig.mobSpawns.druden.drudenBiomes));
 	public static final EntityEntry baphomet = createEntityEntry(EntityBaphomet.class, "baphomet", 0x472f22, 0x690303);
