@@ -27,7 +27,7 @@ public class EntityWerewolf extends ModEntityMob {
 	
 	protected EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
-		setSize(1.200f, 3.6f);
+		setSize(1.200f, 3.2f);
 	}
 	
 	@Override
