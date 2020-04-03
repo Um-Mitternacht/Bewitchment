@@ -18,7 +18,7 @@ public class PotionCorrosion extends ModPotion {
 	public static final UUID MODIFIER_UUID = UUID.fromString("e8506ffe-e2b4-4f19-8669-becb8e3eb666");
 	public static final AttributeModifier MODIFIER = (new AttributeModifier(MODIFIER_UUID, "Armor reduction", 1, 1)).setSaved(true);
 	
-	protected PotionCorrosion(String name, boolean isNegative, int color) {
+	protected PotionCorrosion() {
 		super("corrosion", true, 0x0BDA51);
 	}
 	
