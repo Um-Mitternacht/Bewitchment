@@ -39,4 +39,5 @@ public class ModPotions {
 	public static Potion hellfire = new PotionHellfire();
 	public static Potion fear = new PotionFear();
 	public static Potion mortal_coil = new PotionMortalCoil();
+	public static Potion corrosion = new PotionCorrosion();
 }

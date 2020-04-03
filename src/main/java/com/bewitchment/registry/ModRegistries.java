@@ -276,6 +276,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sinking"), Util.get("nuggetGold", "nuggetIron", "nuggetColdIron", "nuggetCopper", "nuggetTin", "nuggetBronze", "nuggetLead"), new PotionEffect(ModPotions.sinking, (20 * 20))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "cursed_leaps"), Util.get(ModObjects.toe_of_frog), new PotionEffect(ModPotions.cursed_leaps, 1)));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "fear"), Util.get(ModObjects.demon_heart), new PotionEffect(ModPotions.fear, (20 * 30))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "corrosion"), Util.get(ModObjects.oil_of_vitriol), new PotionEffect(ModPotions.corrosion, (20 * 30))));
 	}
 	
 	@SubscribeEvent
