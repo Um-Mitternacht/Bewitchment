@@ -1,10 +1,8 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.util.ModPotion;
-import com.sun.jna.platform.win32.Guid;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
