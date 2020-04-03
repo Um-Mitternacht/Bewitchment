@@ -16,13 +16,14 @@ import java.util.UUID;
 
 //Todo: Everything.
 public class PotionCorrosion extends ModPotion {
+	public static final AttributeModifier attributeModifier = new AttributeModifier(UUID.fromString("e8506ffe-e2b4-4f19-8669-becb8e3eb666"));
+	
 	protected PotionCorrosion(String name, boolean isNegative, int color) {
 		super("corrosion", true, 0x0BDA51);
 	}
 	
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingUpdateEvent event) {
-		AttributeModifier attributeModifier = new AttributeModifier(UUID.fromString("e8506ffe-e2b4-4f19-8669-becb8e3eb666"));
 		
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving().isPotionActive(this)) {
 			event.getEntityLiving().getEntityAttribute(SharedMonsterAttributes.ARMOR).getModifier(UUID.fromString("e8506ffe-e2b4-4f19-8669-becb8e3eb666"));
