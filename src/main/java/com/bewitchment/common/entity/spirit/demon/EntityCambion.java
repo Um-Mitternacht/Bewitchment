@@ -90,6 +90,11 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
+	protected boolean canEquipItem(ItemStack stack) {
+		return super.canEquipItem(stack);
+	}
+	
+	@Override
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
