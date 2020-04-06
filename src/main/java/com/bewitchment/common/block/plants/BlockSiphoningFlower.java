@@ -60,7 +60,7 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 	
 	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (world.getTileEntity(pos) instanceof TileEntitySiphoningFlower) {
+		if (world.getTileEntity(pos) instanceof TileEntitySiphoningFlower && entity instanceof EntityLivingBase && entity.isNonBoss()) {
 			TileEntitySiphoningFlower te = (TileEntitySiphoningFlower) world.getTileEntity(pos);
 			if (te != null && !te.isBound()) {
 				te.boundId = entity.getPersistentID().toString();
