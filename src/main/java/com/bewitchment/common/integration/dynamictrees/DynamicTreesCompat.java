@@ -44,9 +44,6 @@ public class DynamicTreesCompat {
 	public static TreeFamily juniperTree;
 	public static TreeFamily dragonsbloodTree;
 	
-	public DynamicTreesCompat() {
-	}
-	
 	public static void preInit() {
 		IForgeRegistry<Block> blockRegistry = ForgeRegistries.BLOCKS;
 		cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "conifer")));
@@ -91,9 +88,6 @@ public class DynamicTreesCompat {
 		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
 	}
 	
-	public static void init() {
-	}
-	
 	@SideOnly(Side.CLIENT)
 	public static void clientPreInit() {
 		ModelHelper.regModel(cypressTree);
@@ -114,9 +108,9 @@ public class DynamicTreesCompat {
 	}
 	
 	public static void addFurnaceRecipes() {
-		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed).filter(i -> i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> {
-			GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
-		});
+		ForgeRegistries.ITEMS.getValuesCollection().stream()
+				.filter(i -> i instanceof Seed && i != Seed.NULLSEED && !i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty())
+				.forEach(i -> GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f));
 	}
 	
 	@Method(modid = "dynamictrees")

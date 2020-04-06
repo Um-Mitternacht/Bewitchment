@@ -432,7 +432,9 @@ public class ModRecipes {
 	
 	private static void furnacePostInit() {
 		for (Block block : ForgeRegistries.BLOCKS) {
-			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
+			if (block instanceof BlockSapling && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(block)).isEmpty()) {
+				GameRegistry.addSmelting(block, new ItemStack(ModObjects.wood_ash, 1), 0.15f);
+			}
 		}
 		if (Loader.isModLoaded("dynamictrees")) {
 			DynamicTreesCompat.addFurnaceRecipes();
