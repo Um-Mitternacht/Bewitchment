@@ -98,7 +98,7 @@ public class BiomeChangingUtils {
 		 * @see BewitchmentAPI#IMMUTABLE
 		 */
 		public boolean visit(Chunk ch, BlockPos pos) {
-			if (BiomeDictionary.hasType(ch.getWorld().getBiome(pos), BewitchmentAPI.getAPI().IMMUTABLE)) {
+			if (BiomeDictionary.hasType(ch.getWorld().getBiome(pos), BewitchmentAPI.IMMUTABLE)) {
 				return false;
 			}
 			return visitImmutable(ch, pos);

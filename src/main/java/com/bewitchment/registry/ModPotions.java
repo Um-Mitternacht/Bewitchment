@@ -41,4 +41,5 @@ public class ModPotions {
 	public static Potion mortal_coil = new PotionMortalCoil();
 	public static Potion corrosion = new PotionCorrosion();
 	public static Potion bulk = new PotionBulk();
+	public static Potion butterfingers = new PotionButterfingers();
 }

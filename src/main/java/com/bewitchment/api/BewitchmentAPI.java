@@ -48,7 +48,7 @@ public class BewitchmentAPI {
 	 */
 	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
 	private static BewitchmentAPI INSTANCE;
-	public BiomeDictionary.Type IMMUTABLE;
+	public static BiomeDictionary.Type IMMUTABLE;
 	
 	/**
 	 * @param entity the entity to check
@@ -185,13 +185,6 @@ public class BewitchmentAPI {
 		else {
 			throw new IllegalStateException("Bewitchment API already initialized");
 		}
-	}
-	
-	public static final BewitchmentAPI getAPI() {
-		if (INSTANCE != null) {
-			return INSTANCE;
-		}
-		throw new IllegalStateException("Bewitchment API not ready yet");
 	}
 	
 	public static float getSilverWeakness(EntityLivingBase entity) {
