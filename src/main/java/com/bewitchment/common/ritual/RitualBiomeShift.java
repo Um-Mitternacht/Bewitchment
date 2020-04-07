@@ -8,18 +8,15 @@ import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.client.model.animation.ModelBlockAnimation;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
