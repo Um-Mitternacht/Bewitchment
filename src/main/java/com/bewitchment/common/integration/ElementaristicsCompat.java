@@ -3,8 +3,6 @@ package com.bewitchment.common.integration;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.AltarUpgrade;
 import de.aelpecyem.elementaristics.init.ModItems;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 /**
  * Created by Joseph on 2/22/2020.

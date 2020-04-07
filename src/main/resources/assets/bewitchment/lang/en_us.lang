@@ -395,7 +395,7 @@ tile.bewitchment.greenwitch_fleece.name=Hedgewitch Fleece
 tile.bewitchment.besmirched_fleece.name=Besmirched Fleece
 tile.bewitchment.alchemists_fleece.name=Alchemist Fleece
 
-tile.bewitchment.hedgewitch_carpet.name=Hedgewitch Carpet
+tile.bewitchment.hedgewitches_carpet.name=Hedgewitch Carpet
 tile.bewitchment.besmirched_carpet.name=Besmirched Carpet
 tile.bewitchment.alchemists_carpet.name=Alchemist Carpet
 
@@ -608,6 +608,7 @@ bewitchment.fear=Fear
 bewitchment.mortal_coil=Mortal Coil
 bewitchment.corrosion=Corrosion
 bewitchment.bulk=Bulk
+bewitchment.butterfingers=Butterfingers
 
 incense.bewitchment.vitality=Vitality
 incense.bewitchment.deftness=Deftness
@@ -730,6 +731,7 @@ ritual.bewitchment.wednesday=Rite of Wednesday
 ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
 ritual.bewitchment.lesser_curse_cleansing=Rite of Lesser Curse Cleansing
 ritual.bewitchment.greater_curse_cleansing=Rite of Greater Curse Cleansing
+ritual.bewitchment.biome_shift=Rite of Shifting Seasons
 
 #INFO
 itemGroup.bewitchment=Bewitchment

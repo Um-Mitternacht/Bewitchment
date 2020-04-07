@@ -47,8 +47,8 @@ public class BewitchmentAPI {
 	 * The Fairy creature attribute. This is for future usage ATM.
 	 */
 	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
-	private static BewitchmentAPI INSTANCE;
 	public static BiomeDictionary.Type IMMUTABLE;
+	private static BewitchmentAPI INSTANCE;
 	
 	/**
 	 * @param entity the entity to check

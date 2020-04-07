@@ -5,16 +5,13 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
-import com.bewitchment.common.item.ItemWaystone;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -23,7 +20,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Original code by Zabi94, modified by Sunconure11 afterwards.

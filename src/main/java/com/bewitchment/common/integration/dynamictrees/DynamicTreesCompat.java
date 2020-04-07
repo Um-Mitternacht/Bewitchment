@@ -108,9 +108,7 @@ public class DynamicTreesCompat {
 	}
 	
 	public static void addFurnaceRecipes() {
-		ForgeRegistries.ITEMS.getValuesCollection().stream()
-				.filter(i -> i instanceof Seed && i != Seed.NULLSEED && !i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty())
-				.forEach(i -> GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f));
+		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed && i != Seed.NULLSEED && !i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f));
 	}
 	
 	@Method(modid = "dynamictrees")
