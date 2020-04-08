@@ -290,6 +290,26 @@
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:cursed_leaps",
 	  "text": "Throws the target into the air, making them unable to act and then taking fall damage"
-	}
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:fear",
+	  "text": "You suddenly feel dread overcome you."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:bulk",
+	  "text": "Armor is more effective."
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:corrosion",
+	  "text": "Armor is less effective."
+	},	
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:butterfingers",
+	  "text": "Drops held items"
+	}	
   ]
 }
