@@ -46,9 +46,9 @@ public class RenderCleaver extends RenderLiving<EntityCleaver> {
 						p_188359_1_.bipedRightArm.showModel = true;
 						p_188359_1_.bipedLeftArm.showModel = true;
 						
-						p_188359_1_.bipedBody.offsetY = -0.35f;
-						p_188359_1_.bipedRightArm.offsetY = -0.35f;
-						p_188359_1_.bipedLeftArm.offsetY = -0.35f;
+						p_188359_1_.bipedBody.offsetY = -0.30f;
+						p_188359_1_.bipedRightArm.offsetY = -0.30f;
+						p_188359_1_.bipedLeftArm.offsetY = -0.30f;
 						break;
 					case LEGS:
 						p_188359_1_.bipedBody.showModel = false;
