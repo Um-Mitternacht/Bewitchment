@@ -279,6 +279,8 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "corrosion"), Util.get(ModObjects.oil_of_vitriol), new PotionEffect(ModPotions.corrosion, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "bulk"), Util.get(ModObjects.stone_ichor), new PotionEffect(ModPotions.bulk, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "butterfingers"), Util.get(ModObjects.cloudy_oil), new PotionEffect(ModPotions.butterfingers, 1)));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "rhino_hide"), Util.get(Items.DIAMOND), new PotionEffect(ModPotions.rhino_hide, (20 * 30))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "paper_skin"), Util.get(Items.PAPER), new PotionEffect(ModPotions.paper_skin, (20 * 30))));
 	}
 	
 	@SubscribeEvent

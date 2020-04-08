@@ -1,23 +1,23 @@
 {
   "display": {
 	"icon": {
-	  "item": "bewitchment:spinning_wheel"
+	  "item": "bewitchment:sigil_table"
 	},
 	"title": {
-	  "translate": "advancements.bewitchment.loom.title"
+	  "translate": "advancements.bewitchment.sigil_table.title"
 	},
 	"description": {
-	  "translate": "advancements.bewitchment.loom.description"
+	  "translate": "advancements.bewitchment.sigil_table.description"
 	}
   },
   "parent": "bewitchment:distillery",
   "criteria": {
-	"loom": {
+	"sigil_table": {
 	  "trigger": "minecraft:inventory_changed",
 	  "conditions": {
 		"items": [
 		  {
-			"item": "bewitchment:spinning_wheel"
+			"item": "bewitchment:sigil_table"
 		  }
 		]
 	  }

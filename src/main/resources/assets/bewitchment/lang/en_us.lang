@@ -609,6 +609,8 @@ bewitchment.mortal_coil=Mortal Coil
 bewitchment.corrosion=Corrosion
 bewitchment.bulk=Bulk
 bewitchment.butterfingers=Butterfingers
+bewitchment.rhino_hide=Rhino Hide
+bewitchment.paper_skin=Paper Skin
 
 incense.bewitchment.vitality=Vitality
 incense.bewitchment.deftness=Deftness
@@ -789,9 +791,13 @@ advancements.bewitchment.cauldron.description=Craft a cauldron
 advancements.bewitchment.distillery.title=Oozing substances
 advancements.bewitchment.distillery.description=Craft a distillery
 advancements.bewitchment.loom.title=Lore of the Loom
-advancements.bewitchment.loom.description=Craft a loom
+advancements.bewitchment.loom.description=Craft a spinning wheel
 advancements.bewitchment.oven.title=Hansel and Gretel
 advancements.bewitchment.oven.description=Craft an oven
+advancements.bewitchment.sigil_table.title=Written in False Cinnabar
+advancements.bewitchment.sigil_table.description=Craft a sigil table
+advancements.bewitchment.diabolus.title=Deal with the Devil
+advancements.bewitchment.diabolus.description=Get a contract from a demon
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

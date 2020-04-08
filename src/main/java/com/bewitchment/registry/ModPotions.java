@@ -42,4 +42,6 @@ public class ModPotions {
 	public static Potion corrosion = new PotionCorrosion();
 	public static Potion bulk = new PotionBulk();
 	public static Potion butterfingers = new PotionButterfingers();
+	public static Potion rhino_hide = new PotionRhinoHide();
+	public static Potion paper_skin = new PotionPaperSkin();
 }

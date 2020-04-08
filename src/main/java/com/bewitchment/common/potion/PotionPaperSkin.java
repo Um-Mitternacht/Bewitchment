@@ -18,6 +18,6 @@ public class PotionPaperSkin extends ModPotion {
 	
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-		super.affectEntity(source, indirectSource, living, 2, health);
+		super.affectEntity(source, indirectSource, living, -1, health);
 	}
 }
