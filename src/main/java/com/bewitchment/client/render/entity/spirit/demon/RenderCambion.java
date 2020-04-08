@@ -56,13 +56,13 @@ public class RenderCambion extends RenderLiving<EntityCambion> {
 						p_188359_1_.bipedLeftArm.offsetY = -0.10f;
 						break;
 					case LEGS:
-						p_188359_1_.bipedBody.showModel = false;
-						p_188359_1_.bipedRightLeg.showModel = false;
-						p_188359_1_.bipedLeftLeg.showModel = false;
+						p_188359_1_.bipedBody.showModel = true;
+						p_188359_1_.bipedRightLeg.showModel = true;
+						p_188359_1_.bipedLeftLeg.showModel = true;
 						break;
 					case FEET:
-						p_188359_1_.bipedRightLeg.showModel = false;
-						p_188359_1_.bipedLeftLeg.showModel = false;
+						p_188359_1_.bipedRightLeg.showModel = true;
+						p_188359_1_.bipedLeftLeg.showModel = true;
 				}
 			}
 		});
