@@ -305,11 +305,11 @@
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:corrosion",
 	  "text": "Armor is less effective."
-	},	
+	},
 	{
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:butterfingers",
 	  "text": "Drops held items"
-	}	
+	}
   ]
 }
