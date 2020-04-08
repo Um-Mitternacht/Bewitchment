@@ -37,6 +37,9 @@ public class RenderCleaver extends RenderLiving<EntityCleaver> {
 					case HEAD:
 						p_188359_1_.bipedHead.showModel = true;
 						p_188359_1_.bipedHeadwear.showModel = true;
+						
+						p_188359_1_.bipedHead.offsetY = -0.40f;
+						p_188359_1_.bipedHeadwear.offsetY = -0.40f;
 						break;
 					case CHEST:
 						p_188359_1_.bipedBody.showModel = true;
