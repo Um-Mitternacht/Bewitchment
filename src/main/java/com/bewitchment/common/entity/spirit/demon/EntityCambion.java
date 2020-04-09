@@ -13,6 +13,10 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemShield;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -26,6 +30,7 @@ import javax.annotation.Nullable;
  * Created by Joseph on 3/30/2020.
  */
 public class EntityCambion extends ModEntityMob {
+	private static final DataParameter<Integer> CAMBION_TYPE = EntityDataManager.<Integer>createKey(EntityCambion.class, DataSerializers.VARINT);
 	public int attackTimer = 0;
 	
 	protected EntityCambion(World world) {
@@ -106,23 +111,73 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	protected int getSkinTypes() {
-		return 4;
-	}
-	
-	@Override
 	protected boolean isValidLightLevel() {
 		return true;
 	}
 	
 	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(CAMBION_TYPE, Integer.valueOf(0));
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("CambionType", this.getCambionType());
+	}
+	
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setCambionType(compound.getInteger("CambionType"));
+	}
+	
+	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		data = super.onInitialSpawn(difficulty, data);
+		int i = this.getRandomCambionType();
+		boolean flag = false;
+		
+		if (data instanceof EntityCambion.CambionTypeData) {
+			i = ((EntityCambion.CambionTypeData) data).typeData;
+			flag = true;
+		}
+		else {
+			data = new EntityCambion.CambionTypeData(i);
+		}
+		
+		this.setCambionType(i);
+		
 		setEquipmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	private int getRandomCambionType() {
+		int flag = rand.nextInt();
+		if (this.addedToChunk) for (int i = 0; i < 4; ++i) {
+			return flag;
+		}
+		return flag;
+	}
+	
+	public int getCambionType() {
+		return ((Integer) this.dataManager.get(CAMBION_TYPE)).intValue();
+	}
+	
+	public void setCambionType(int cambionTypeId) {
+		this.dataManager.set(CAMBION_TYPE, Integer.valueOf(cambionTypeId));
 	}
 	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
+	}
+	
+	public static class CambionTypeData implements IEntityLivingData {
+		public int typeData;
+		
+		public CambionTypeData(int type) {
+			this.typeData = type;
+		}
 	}
 }

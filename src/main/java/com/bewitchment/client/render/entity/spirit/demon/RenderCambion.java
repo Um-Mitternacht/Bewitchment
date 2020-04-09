@@ -4,7 +4,6 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelCambion;
 import com.bewitchment.client.model.entity.spirit.demon.ModelCambionSlim;
 import com.bewitchment.common.entity.spirit.demon.EntityCambion;
-import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -20,7 +19,10 @@ import net.minecraft.util.ResourceLocation;
  */
 public class RenderCambion extends RenderLiving<EntityCambion> {
 	
-	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_3.png")};
+	private static final ResourceLocation MALE_1 = new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_0.png");
+	private static final ResourceLocation MALE_2 = new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_1.png");
+	private static final ResourceLocation FEMALE_1 = new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_2.png");
+	private static final ResourceLocation FEMALE_2 = new ResourceLocation(Bewitchment.MODID, "textures/entity/cambion_3.png");
 	private static final ModelBase slimModel = new ModelCambionSlim();
 	private static final ModelBase regModel = new ModelCambion();
 	
@@ -70,7 +72,7 @@ public class RenderCambion extends RenderLiving<EntityCambion> {
 	
 	@Override
 	public void doRender(EntityCambion entity, double x, double y, double z, float entityYaw, float partialTicks) {
-		if (entity.getDataManager().get(ModEntityMob.SKIN) >= 4) {
+		if (entity.getCambionType() > 1) {
 			this.mainModel = slimModel;
 		}
 		else this.mainModel = regModel;
@@ -79,7 +81,17 @@ public class RenderCambion extends RenderLiving<EntityCambion> {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityCambion entity) {
-		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
+		switch (entity.getCambionType()) {
+			case 0:
+			default:
+				return MALE_1;
+			case 1:
+				return MALE_2;
+			case 2:
+				return FEMALE_1;
+			case 3:
+				return FEMALE_2;
+		}
 	}
 	
 	@Override
