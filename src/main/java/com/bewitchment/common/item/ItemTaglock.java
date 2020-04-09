@@ -63,7 +63,7 @@ public class ItemTaglock extends Item {
 			for (EntityPlayer player0 : world.playerEntities) {
 				if (player0.getBedLocation() != null && player0.getBedLocation().equals(pos)) {
 					setTags(player, hand, player0);
-					if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+					if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 1.0F, 1.0F);
 					return EnumActionResult.SUCCESS;
 				}
 			}
