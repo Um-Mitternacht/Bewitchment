@@ -51,7 +51,7 @@ public class ArmorHandler {
 	@SubscribeEvent
 	public void greenWitchHarvest(BlockEvent.HarvestDropsEvent event) {
 		EntityPlayer player = event.getHarvester();
-		if (player != null && !player.world.isRemote && BewitchmentAPI.hasGreenWitchGear(player) && event.getState().getBlock() instanceof BlockCrops && player.getRNG().nextBoolean()) {
+		if (player != null && !player.world.isRemote && BewitchmentAPI.hasGreenWitchGear(player) && event.getState().getBlock() instanceof BlockCrops && ((BlockCrops) event.getState().getBlock()).isMaxAge(event.getState()) && player.getRNG().nextBoolean()) {
 			List<ItemStack> result = new ArrayList<>(event.getDrops());
 			event.getDrops().clear();
 			for (ItemStack stack : result) stack.shrink(-player.getRNG().nextInt(3));
