@@ -394,6 +394,12 @@ public class ModelCleaver extends ModelBiped {
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
+	@Override
+	public void postRenderArm(float scale, EnumHandSide side) {
+		GlStateManager.translate(0.025F, -0.3, 0);
+		super.postRenderArm(scale, side);
+	}
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
