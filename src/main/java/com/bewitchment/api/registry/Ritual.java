@@ -118,3 +118,4 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		}
 		return Util.areISListsEqual(input, handler);
 	}
+}
