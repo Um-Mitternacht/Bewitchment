@@ -97,25 +97,24 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 		for (int x = 0; x < small.length; x++) {
 			for (int z = 0; z < small.length; z++) {
 				IBlockState state = world.getBlockState(pos.add(x - small.length / 2, 0, z - small.length / 2));
-				if (small[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) != BlockGlyph.GOLDEN && (state.getValue(BlockGlyph.TYPE) != circles[0] && circles[0] != BlockGlyph.ANY)))) return false;
+				if (small[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) == BlockGlyph.GOLDEN || (state.getValue(BlockGlyph.TYPE) != circles[0] && circles[0] != BlockGlyph.ANY)))) return false;
 			}
 		}
-		if (circles[1] != -1) {
+		if (circles[1] >= 0) {
 			for (int x = 0; x < medium.length; x++) {
 				for (int z = 0; z < medium.length; z++) {
 					IBlockState state = world.getBlockState(pos.add(x - medium.length / 2, 0, z - medium.length / 2));
-					if (medium[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) != BlockGlyph.GOLDEN && (state.getValue(BlockGlyph.TYPE) != circles[1] && circles[1] != BlockGlyph.ANY)))) return false;
+					if (medium[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) == BlockGlyph.GOLDEN || (state.getValue(BlockGlyph.TYPE) != circles[1] && circles[1] != BlockGlyph.ANY)))) return false;
 				}
 			}
 		}
-		if (circles[2] != -1) {
+		if (circles[2] >= 0) {
 			for (int x = 0; x < large.length; x++) {
 				for (int z = 0; z < large.length; z++) {
 					IBlockState state = world.getBlockState(pos.add(x - large.length / 2, 0, z - large.length / 2));
-					if (large[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) != BlockGlyph.GOLDEN && (state.getValue(BlockGlyph.TYPE) != circles[2] && circles[2] != BlockGlyph.ANY)))) return false;
+					if (large[x][z] == 1 && (state.getBlock() != ModObjects.glyph || (state.getValue(BlockGlyph.TYPE) == BlockGlyph.GOLDEN || (state.getValue(BlockGlyph.TYPE) != circles[2] && circles[2] != BlockGlyph.ANY)))) return false;
 				}
 			}
 		}
 		return Util.areISListsEqual(input, handler);
 	}
-}
