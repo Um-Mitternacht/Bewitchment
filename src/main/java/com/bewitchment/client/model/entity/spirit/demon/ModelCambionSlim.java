@@ -341,8 +341,8 @@ public class ModelCambionSlim extends ModelBiped {
 		}
 		
 		float swingMod = 0.6F;
-		this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-		this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
+		this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.3F * limbSwingAmount / f;
+		this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.3F * limbSwingAmount / f;
 		this.rightLeg.rotateAngleY = 0.0F;
 		this.leftLeg.rotateAngleY = 0.0F;
 		this.rightLeg.rotateAngleZ = 0.0F;
