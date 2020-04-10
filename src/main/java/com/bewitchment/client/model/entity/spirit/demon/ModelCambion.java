@@ -400,7 +400,7 @@ public class ModelCambion extends ModelBiped {
 			this.leftArm.rotationPointX = MathHelper.cos(this.body.rotateAngleY) * 5.0F;
 			this.rightArm.rotateAngleY += this.body.rotateAngleY;
 			this.leftArm.rotateAngleY += this.body.rotateAngleY;
-			this.leftArm.rotateAngleX += this.body.rotateAngleY;
+			this.leftArm.rotateAngleY += this.body.rotateAngleY;
 			f1 = 1.0F - this.swingProgress;
 			f1 = f1 * f1;
 			f1 = f1 * f1;
