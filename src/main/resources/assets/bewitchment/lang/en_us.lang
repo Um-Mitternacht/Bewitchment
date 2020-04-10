@@ -213,6 +213,9 @@ item.bewitchment.silver_axe.name=Silver Axe
 item.bewitchment.silver_shovel.name=Silver Shovel
 item.bewitchment.silver_hoe.name=Silver Hoe
 
+item.bewitchment.silver_arrow.name=Silver Arrow
+item.bewitchment.cold_iron_arrow.name=Cold Iron Arrow
+
 item.bewitchment.cold_iron_sword.name=Cold Iron Sword
 item.bewitchment.cold_iron_pickaxe.name=Cold Iron Pickaxe
 item.bewitchment.cold_iron_axe.name=Cold Iron Axe
