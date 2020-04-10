@@ -87,7 +87,7 @@ public class EntityCambion extends ModEntityMob {
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
-		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 	}
 	
 	@Override
