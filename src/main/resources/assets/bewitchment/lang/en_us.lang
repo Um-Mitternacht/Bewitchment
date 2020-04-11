@@ -1312,6 +1312,7 @@ entity.bewitchment.given_name.458=Izuxe
 //More misc names
 entity.bewitchment.given_name.459=Old Scratch
 entity.bewitchment.given_name.460=Abrahel
+entity.bewitchment.given_name.461=Chungus
 
 //Hazbin Hotel
 //Coming soon
@@ -1394,6 +1395,7 @@ entity.bewitchment.prefix.73=Ensign
 entity.bewitchment.prefix.74=Scout
 entity.bewitchment.prefix.75=Officer
 entity.bewitchment.prefix.76=Haruspex
+entity.bewitchment.prefix.77=Big
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
