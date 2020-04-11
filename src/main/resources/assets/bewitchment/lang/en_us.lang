@@ -1159,7 +1159,7 @@ entity.bewitchment.given_name.323=The Smoke Man
 entity.bewitchment.given_name.324=Mephistopheles
 entity.bewitchment.given_name.325=Behemoth
 
-# Bionicle
+# BIONICLE
 entity.bewitchment.given_name.326=Teridax
 entity.bewitchment.given_name.327=Makuta
 entity.bewitchment.given_name.328=Icarax
@@ -1330,7 +1330,22 @@ entity.bewitchment.given_name.473=Velvet
 entity.bewitchment.given_name.474=Vox
 
 //More misc names
-//Coming soon
+entity.bewitchment.given_name.475=Hatred
+entity.bewitchment.given_name.476=Malice
+entity.bewitchment.given_name.477=Greed
+entity.bewitchment.given_name.478=Desire
+entity.bewitchment.given_name.479=Contempt
+entity.bewitchment.given_name.480=Anger
+entity.bewitchment.given_name.481=Dlmwviufo
+entity.bewitchment.given_name.482=Tolib
+entity.bewitchment.given_name.483=Szro
+entity.bewitchment.given_name.484=Qlblfh
+entity.bewitchment.given_name.485=Hzwmvhh
+entity.bewitchment.given_name.486=Fmwvihgzmwrmt
+entity.bewitchment.given_name.487=Uizfwfovmg
+entity.bewitchment.given_name.488=Ferrous
+entity.bewitchment.given_name.489=Dumah
+entity.bewitchment.given_name.490=Maalik
 
 //Titles
 entity.bewitchment.prefix.0=King
