@@ -801,6 +801,10 @@ advancements.bewitchment.sigil_table.title=Written in False Cinnabar
 advancements.bewitchment.sigil_table.description=Craft a sigil table
 advancements.bewitchment.diabolus.title=Deal with the Devil
 advancements.bewitchment.diabolus.description=Get a contract from a demon
+advancements.bewitchment.fda.title=Not FDA Approved
+advancements.bewitchment.fda.description=Craft flying ointment
+advancements.bewitchment.broom.title=Take Flight
+advancements.bewitchment.broom.description=Craft any broom
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
