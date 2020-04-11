@@ -1,5 +1,5 @@
 {
-    "parent": "block/wall_post",
+    "parent": "block/wall_side",
     "textures": {
         "wall": "bewitchment:blocks/coquina"
     }

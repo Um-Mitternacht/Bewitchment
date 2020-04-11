@@ -1,44 +1,19 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-	"model": "wall_post",
-	"uvlock": true,
-	"textures": {
-	  "texture": "bewitchment:blocks/coquina"
-	}
-  },
-  "variants": {
-	"normal": [
-	  {
-		"model": "bewitchment:block/coquina_wall_inventory"
-	  }
-	],
-	"north": {
-	  "true": {
-		"submodel": "bewitchment:block/coquina_wall_side"
-	  },
-	  "false": {}
-	},
-	"south": {
-	  "true": {
-		"submodel": "bewitchment:block/coquina_wall_side",
-		"y": 180
-	  },
-	  "false": {}
-	},
-	"east": {
-	  "true": {
-		"submodel": "bewitchment:block/coquina_wall_side",
-		"y": 90
-	  },
-	  "false": {}
-	},
-	"west": {
-	  "true": {
-		"submodel": "bewitchment:block/coquina_wall_side",
-		"y": 270
-	  },
-	  "false": {}
-	}
-  }
+    "multipart": [
+        {   "when": { "up": "true" },
+            "apply": { "model": "bewitchment:coquina_wall_post" }
+        },
+        {   "when": { "north": "true" },
+            "apply": { "model": "bewitchment:coquina_wall_side", "uvlock": true  }
+        },
+        {   "when": { "east": "true" },
+            "apply": { "model": "bewitchment:coquina_wall_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true" },
+            "apply": { "model": "bewitchment:coquina_wall_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true" },
+            "apply": { "model": "bewitchment:coquina_wall_side", "y": 270, "uvlock": true }
+        }
+    ]
 }
