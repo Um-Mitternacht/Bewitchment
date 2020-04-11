@@ -35,7 +35,7 @@ public class EntityCambion extends ModEntityMob {
 	private static final DataParameter<Integer> CAMBION_TYPE = EntityDataManager.<Integer>createKey(EntityCambion.class, DataSerializers.VARINT);
 	public int attackTimer = 0;
 	
-	protected EntityCambion(World world) {
+	public EntityCambion(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cambion"));
 		experienceValue = 25;
 	}

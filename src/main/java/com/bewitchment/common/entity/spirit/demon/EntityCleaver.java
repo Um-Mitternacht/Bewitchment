@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * Created by Joseph on 2/10/2020.
  */
 public class EntityCleaver extends ModEntityMob {
-	protected EntityCleaver(World world) {
+	public EntityCleaver(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cleaver"));
 		setSize(1.0f, 2.5f);
 		isImmuneToFire = true;
