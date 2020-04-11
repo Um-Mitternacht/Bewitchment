@@ -31,6 +31,7 @@ public class EntityToad extends ModEntityTameable {
 	public EntityToad(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
 		setSize(1, 0.3f);
+		experienceValue = 5;
 	}
 	
 	@Override

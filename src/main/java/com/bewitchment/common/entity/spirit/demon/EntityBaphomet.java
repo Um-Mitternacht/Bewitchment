@@ -48,6 +48,7 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		isImmuneToFire = true;
 		setSize(1.0f, 3.6f);
 		inventoryHandsDropChances[0] = 0;
+		experienceValue = 185;
 	}
 	
 	@Override

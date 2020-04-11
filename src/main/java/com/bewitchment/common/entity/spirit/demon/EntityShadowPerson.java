@@ -22,6 +22,7 @@ public class EntityShadowPerson extends ModEntityMob {
 		setSize(1, 2.25f);
 		dataManager.set(SPECTRAL, true);
 		isImmuneToFire = true;
+		experienceValue = 45;
 		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
 	}
 	

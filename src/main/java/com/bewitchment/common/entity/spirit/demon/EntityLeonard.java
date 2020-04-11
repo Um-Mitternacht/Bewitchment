@@ -39,6 +39,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		isImmuneToFire = true;
 		setSize(1.0f, 3.8f);
 		inventoryHandsDropChances[0] = 0;
+		experienceValue = 165;
 	}
 	
 	@Override

@@ -14,6 +14,7 @@ public class EntityLizard extends ModEntityAnimal {
 	public EntityLizard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		setSize(1, 0.3f);
+		experienceValue = 5;
 	}
 	
 	@Override

@@ -37,6 +37,7 @@ public class EntityOwl extends ModEntityTameable {
 		setSize(0.4f, 0.9f);
 		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		moveHelper = new EntityFlyHelper(this);
+		experienceValue = 5;
 	}
 	
 	@Override

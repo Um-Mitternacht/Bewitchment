@@ -29,6 +29,7 @@ public class EntityBlackDog extends ModEntityMob {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/black_dog"));
 		setSize(1.08f, 1.53f);
 		experienceValue = 35;
+		isImmuneToFire = true;
 	}
 	
 	@Override

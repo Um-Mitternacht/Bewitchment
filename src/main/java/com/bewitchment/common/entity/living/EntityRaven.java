@@ -44,6 +44,7 @@ public class EntityRaven extends ModEntityTameable {
 		this.setPeckTime(this.getNewPeck());
 		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		moveHelper = new EntityFlyHelper(this);
+		experienceValue = 5;
 	}
 	
 	@Override

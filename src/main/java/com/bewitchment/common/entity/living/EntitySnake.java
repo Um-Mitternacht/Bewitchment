@@ -40,6 +40,7 @@ public class EntitySnake extends ModEntityTameable {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
 		setSize(1, 0.3f);
 		this.setHissTime(this.getNewHiss());
+		experienceValue = 5;
 	}
 	
 	@Override

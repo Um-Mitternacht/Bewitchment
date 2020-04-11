@@ -30,11 +30,12 @@ public class EntityGhost extends ModEntityMob {
 	public EntityGhost(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/ghost"));
 		isImmuneToFire = true;
+		experienceValue = 35;
 		this.moveHelper = new AIMoveControl(this);
 	}
 	
 	private boolean isSaltNearTarget(World world, BlockPos pos) {
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -4, -4), pos.add(4, 4, 4))) {
+		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -16, -4), pos.add(4, 16, 4))) {
 			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
 		}
 		return false;
