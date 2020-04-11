@@ -117,6 +117,7 @@ public class ModObjects {
 	public static final ModBlockSlab scorned_bricks_slab = new ModBlockSlab("scorned_bricks_slab", scorned_bricks[0]);
 	public static final Block scorned_brick_fence = new ModBlockFence("scorned_brick_fence", scorned_bricks[0]);
 	public static final Block mossy_scorned_bricks = new ModBlock("mossy_scorned_bricks", Blocks.STONE);
+	public static final Block despair_bricks = new ModBlock("despair_bricks", Blocks.STONE);
 	
 	public static final Block nethersteel_fence = new ModBlockFence("nethersteel_fence", nethersteel[0]);
 	
@@ -131,6 +132,8 @@ public class ModObjects {
 	public static final Block coquina_slab = new ModBlockSlab("coquina_slab", coquina[0]);
 	public static final Block nethersteel_slab = new ModBlockSlab("nethersteel_slab", nethersteel[0]);
 	public static final Block mossy_scorned_brick_slab = new ModBlockSlab("mossy_scorned_brick_slab", mossy_scorned_bricks);
+	
+	public static final Block coquina_wall = new ModBlockWall("coquina_wall", coquina[0]);
 	
 	//Walls
 	
