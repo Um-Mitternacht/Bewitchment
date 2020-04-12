@@ -77,6 +77,7 @@ public class ModRecipes {
 		ModObjects.TOOL_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 		ModObjects.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.ARMOR_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
+		ModObjects.ARMOR_WITCHES.setRepairItem(new ItemStack(ModObjects.witches_stitching));
 	}
 	
 	private static void craftingRecipesInit() {
