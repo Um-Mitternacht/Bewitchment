@@ -1,0 +1,26 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "half_slab",
+	"textures": {
+	  "top": "bewitchment:blocks/crying_scorned_bricks",
+	  "bottom": "#top",
+	  "side": "#top"
+	}
+  },
+  "variants": {
+	"normal": [
+	  {}
+	],
+	"half=bottom,variant=default": [
+	  {
+		"model": "half_slab"
+	  }
+	],
+	"half=top,variant=default": [
+	  {
+		"model": "upper_slab"
+	  }
+	]
+  }
+}
