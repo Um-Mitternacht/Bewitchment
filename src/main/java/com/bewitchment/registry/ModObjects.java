@@ -125,6 +125,8 @@ public class ModObjects {
 	public static final Block coquina_fence = new ModBlockFence("coquina_fence", coquina[0]);
 	public static final Block mossy_scorned_brick_fence = new ModBlockFence("mossy_scorned_brick_fence", mossy_scorned_bricks);
 	public static final Block crying_scorned_brick_fence = new ModBlockFence("crying_scorned_brick_fence", crying_scorned_bricks);
+	public static final Block despair_brick_fence = new ModBlockFence("despair_brick_fence", despair_bricks);
+	public static final Block ochre_despair_brick_fence = new ModBlockFence("ochre_despair_brick_fence", ochre_despair_bricks);
 	
 	public static final Block alchemists_carpet = new ModCarpet("alchemists_carpet", Blocks.WOOL);
 	public static final Block hedgewitches_carpet = new ModCarpet("hedgewitches_carpet", Blocks.WOOL);
