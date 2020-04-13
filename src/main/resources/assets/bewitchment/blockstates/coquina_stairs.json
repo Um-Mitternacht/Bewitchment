@@ -3,7 +3,7 @@
   "defaults": {
 	"model": "stairs",
 	"textures": {
-	  "top": "bewitchment:blocks/coquina_bricks",
+	  "top": "bewitchment:blocks/coquina",
 	  "bottom": "#top",
 	  "side": "#top"
 	}

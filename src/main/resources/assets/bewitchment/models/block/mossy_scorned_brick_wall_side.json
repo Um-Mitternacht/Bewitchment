@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_side",
+  "textures": {
+	"wall": "bewitchment:blocks/mossy_scorned_bricks"
+  }
+}
