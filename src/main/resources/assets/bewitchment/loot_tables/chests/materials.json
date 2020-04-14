@@ -42,6 +42,20 @@
 		},
 		{
 		  "type": "item",
+		  "name": "bewitchment:salt",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 16
+			  }
+			}
+		  ]
+		},		
+		{
+		  "type": "item",
 		  "name": "bewitchment:elder_sapling",
 		  "weight": 1,
 		  "functions": [

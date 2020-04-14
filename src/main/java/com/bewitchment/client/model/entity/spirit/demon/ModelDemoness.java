@@ -377,6 +377,9 @@ public class ModelDemoness extends ModelBiped {
 	
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+		float add = entity.getUniqueID().hashCode() * 0.003F;
+		float mul = 0.1F;
+		float div = 40F;
 		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 		
@@ -395,6 +398,7 @@ public class ModelDemoness extends ModelBiped {
 		this.loincloth.rotateAngleX = Math.abs(this.bipedLeftLeg.rotateAngleX / 10F) - 0.23f - 0.026F;
 		
 		tail01.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
+		this.tail01.rotateAngleZ = (float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	

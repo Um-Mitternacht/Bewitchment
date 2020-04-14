@@ -269,7 +269,7 @@ public class TradeHandler {
 		
 		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
 			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
-			final String[] demons = {"leonard", "baphomet", "lilith", "herne"};
+			final String[] demons = {"leonard", "baphomet", "lilith", "herne", "moloch"};
 			final String[] variants = {"stone", "gold", "nether_brick", "scorned_brick"};
 			String demon = demons[random.nextInt(demons.length)];
 			String variant = variants[random.nextInt(variants.length)];

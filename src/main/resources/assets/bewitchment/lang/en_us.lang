@@ -1426,6 +1426,19 @@ entity.bewitchment.prefix.74=Scout
 entity.bewitchment.prefix.75=Officer
 entity.bewitchment.prefix.76=Haruspex
 entity.bewitchment.prefix.77=Big
+entity.bewitchment.prefix.78=High Mage
+entity.bewitchment.prefix.79=Mage
+entity.bewitchment.prefix.80=Corpse-Singer
+entity.bewitchment.prefix.81=Obsidian-Seer
+entity.bewitchment.prefix.82=Scorned
+entity.bewitchment.prefix.83=Venom-Tongue
+entity.bewitchment.prefix.84=Bloodbather
+entity.bewitchment.prefix.85=Wizard
+entity.bewitchment.prefix.86=Grand Wizard
+entity.bewitchment.prefix.87=Mercenary
+entity.bewitchment.prefix.88=Soothsayer
+entity.bewitchment.prefix.89=Archmage
+entity.bewitchment.prefix.90=Augur
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
