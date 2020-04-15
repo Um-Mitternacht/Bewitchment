@@ -2,7 +2,7 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.common.entity.util.ModEntityAnimal;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
@@ -31,12 +31,13 @@ import javax.annotation.Nullable;
 /**
  * Created by Joseph on 3/30/2020.
  */
-public class EntityCambion extends ModEntityMob {
+public class EntityCambion extends ModEntityAnimal {
 	private static final DataParameter<Integer> CAMBION_TYPE = EntityDataManager.<Integer>createKey(EntityCambion.class, DataSerializers.VARINT);
 	public int attackTimer = 0;
 	
 	public EntityCambion(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cambion"));
+		setSize(0.8f, 1.6f);
 		experienceValue = 25;
 	}
 	
@@ -46,6 +47,11 @@ public class EntityCambion extends ModEntityMob {
 	
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.EVOCATION_ILLAGER_DEATH;
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override
@@ -68,18 +74,6 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
-		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.2D);
-	}
-	
-	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.75, false));
@@ -91,9 +85,16 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.2D);
 	}
 	
 	protected SoundEvent getAmbientSound() {
@@ -124,25 +125,9 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(CAMBION_TYPE, Integer.valueOf(0));
-	}
-	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound compound) {
-		super.writeEntityToNBT(compound);
-		compound.setInteger("CambionType", this.getCambionType());
-	}
-	
-	public void readEntityFromNBT(NBTTagCompound compound) {
-		super.readEntityFromNBT(compound);
-		this.setCambionType(compound.getInteger("CambionType"));
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	@Override
@@ -165,6 +150,23 @@ public class EntityCambion extends ModEntityMob {
 		return super.onInitialSpawn(difficulty, data);
 	}
 	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(CAMBION_TYPE, Integer.valueOf(0));
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("CambionType", this.getCambionType());
+	}
+	
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setCambionType(compound.getInteger("CambionType"));
+	}
+	
 	private int getRandomCambionType() {
 		int flag = rand.nextInt();
 		if (this.addedToChunk) for (int i = 0; i < 4; ++i) {
@@ -179,11 +181,6 @@ public class EntityCambion extends ModEntityMob {
 	
 	public void setCambionType(int cambionTypeId) {
 		this.dataManager.set(CAMBION_TYPE, Integer.valueOf(cambionTypeId));
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
 	}
 	
 	public static class CambionTypeData implements IEntityLivingData {
