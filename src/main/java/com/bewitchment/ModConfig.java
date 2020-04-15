@@ -382,7 +382,7 @@ public class ModConfig {
 		
 		public static class Werewolf {
 			@Config.Comment("The list of BiomeDictionary types that the werewolf will spawn in.")
-			public String[] werewolfBiomes = {Type.FOREST.getName(), Type.CONIFEROUS.getName(), Type.SNOWY.getName()};
+			public String[] werewolfBiomes = {Type.FOREST.getName(), Type.CONIFEROUS.getName(), Type.SNOWY.getName(), Type.SPOOKY.getName(), Type.MAGICAL.getName()};
 			
 			@Config.Comment("The weight chance for werewolves to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
