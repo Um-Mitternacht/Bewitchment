@@ -54,24 +54,18 @@ public class EntityCambion extends ModEntityAnimal {
 		return BewitchmentAPI.DEMON;
 	}
 	
+	//Todo: Redo everything.
 	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		boolean flag = super.attackEntityAsMob(entity);
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		
 		if (flag) {
-			attackTimer = 10;
-			int i = this.rand.nextInt(100);
-			world.setEntityState(this, (byte) 4);
-			if (entity instanceof EntityLivingBase) {
-				if (i < 10) {
-					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, false));
-				}
-				else if (i < 10) {
-					entity.setFire(25);
-				}
-			}
+			this.applyEnchantments(this, entityIn);
 		}
+		
 		return flag;
 	}
+	
 	
 	@Override
 	protected void initEntityAI() {
