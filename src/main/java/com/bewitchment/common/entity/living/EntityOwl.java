@@ -51,8 +51,7 @@ public class EntityOwl extends ModEntityTameable {
 	
 	@Override
 	public boolean getCanSpawnHere() {
-		if (!world.isDaytime()) return super.getCanSpawnHere();
-		return false;
+		return !world.isDaytime() && super.getCanSpawnHere();
 	}
 	
 	@Override
