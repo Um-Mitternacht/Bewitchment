@@ -3,7 +3,7 @@
   "defaults": {
 	"model": "stairs",
 	"textures": {
-	  "top": "bewitchment:blocks/ochre_despair_brick",
+	  "top": "bewitchment:blocks/ochre_despair_bricks",
 	  "bottom": "#top",
 	  "side": "#top"
 	}
