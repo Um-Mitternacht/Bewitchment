@@ -194,7 +194,7 @@ public class ModConfig {
 		
 		public static class Lizard {
 			@Config.Comment("The list of BiomeDictionary types that the lizard will spawn in.")
-			public String[] lizardBiomes = {Type.FOREST.getName()};
+			public String[] lizardBiomes = {Type.FOREST.getName(), Type.SWAMP.getName(), Type.JUNGLE.getName()};
 			
 			@Config.Comment("The weight chance for lizards to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -211,7 +211,7 @@ public class ModConfig {
 		
 		public static class Owl {
 			@Config.Comment("The list of BiomeDictionary types that the owl will spawn in.")
-			public String[] owlBiomes = {Type.FOREST.getName(), Type.DENSE.getName()};
+			public String[] owlBiomes = {Type.FOREST.getName(), Type.DENSE.getName(), Type.SPOOKY.getName()};
 			
 			@Config.Comment("The weight chance for owls to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -228,7 +228,7 @@ public class ModConfig {
 		
 		public static class Raven {
 			@Config.Comment("The list of BiomeDictionary types that the raven will spawn in.")
-			public String[] ravenBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName()};
+			public String[] ravenBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.SPOOKY.getName()};
 			
 			@Config.Comment("The weight chance for ravens to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -245,7 +245,7 @@ public class ModConfig {
 		
 		public static class Snek {
 			@Config.Comment("The list of BiomeDictionary types that the snake will spawn in.")
-			public String[] snakeBiomes = {Type.PLAINS.getName(), Type.HILLS.getName()};
+			public String[] snakeBiomes = {Type.PLAINS.getName(), Type.HILLS.getName(), Type.SANDY.getName()};
 			
 			@Config.Comment("The weight chance for snakes to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -262,7 +262,7 @@ public class ModConfig {
 		
 		public static class Toad {
 			@Config.Comment("The list of BiomeDictionary types that the toad will spawn in.")
-			public String[] toadBiomes = {Type.SWAMP.getName()};
+			public String[] toadBiomes = {Type.SWAMP.getName(), Type.WET.getName(), Type.JUNGLE.getName()};
 			
 			@Config.Comment("The weight chance for toads to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -279,7 +279,7 @@ public class ModConfig {
 		
 		public static class BlackDog {
 			@Config.Comment("The list of BiomeDictionary types that the black dog will spawn in.")
-			public String[] blackDogBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.FOREST.getName(), Type.SPOOKY.getName()};
+			public String[] blackDogBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.FOREST.getName(), Type.SPOOKY.getName(), Type.MAGICAL.getName()};
 			
 			@Config.Comment("The weight chance for black dogs to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -297,7 +297,7 @@ public class ModConfig {
 		
 		public static class Ghost {
 			@Config.Comment("The list of BiomeDictionary types that the ghost will spawn in.")
-			public String[] ghostBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.FOREST.getName(), Type.SPOOKY.getName()};
+			public String[] ghostBiomes = {Type.PLAINS.getName(), Type.WASTELAND.getName(), Type.FOREST.getName(), Type.SPOOKY.getName(), Type.MAGICAL.getName()};
 			
 			@Config.Comment("The weight chance for ghosts to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -348,7 +348,7 @@ public class ModConfig {
 		
 		public static class Cleaver {
 			@Config.Comment("The list of BiomeDictionary types that the cleaver will spawn in.")
-			public String[] cleaverBiomes = {Type.NETHER.getName(), Type.WASTELAND.getName()};
+			public String[] cleaverBiomes = {Type.NETHER.getName()};
 			
 			@Config.Comment("The weight chance for a cleaver to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -365,7 +365,7 @@ public class ModConfig {
 		
 		public static class Druden {
 			@Config.Comment("The list of BiomeDictionary types that the druden will spawn in.")
-			public String[] drudenBiomes = {Type.FOREST.getName(), Type.DENSE.getName(), Type.CONIFEROUS.getName()};
+			public String[] drudenBiomes = {Type.FOREST.getName(), Type.DENSE.getName(), Type.CONIFEROUS.getName(), Type.MAGICAL.getName()};
 			
 			@Config.Comment("The weight chance for druden to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)

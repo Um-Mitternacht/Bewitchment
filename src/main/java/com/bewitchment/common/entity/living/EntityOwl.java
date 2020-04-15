@@ -50,6 +50,12 @@ public class EntityOwl extends ModEntityTameable {
 	}
 	
 	@Override
+	public boolean getCanSpawnHere() {
+		if (!world.isDaytime()) return super.getCanSpawnHere();
+		return false;
+	}
+	
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
