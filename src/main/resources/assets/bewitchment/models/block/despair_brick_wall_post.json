@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_post",
+  "textures": {
+	"wall": "bewitchment:blocks/despair_bricks"
+  }
+}
