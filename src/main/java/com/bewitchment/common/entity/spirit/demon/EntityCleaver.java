@@ -10,6 +10,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemShield;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -31,6 +33,8 @@ import javax.annotation.Nullable;
  * Created by Joseph on 2/10/2020.
  */
 public class EntityCleaver extends ModEntityMob {
+	public int attackTimer = 0;
+	
 	public EntityCleaver(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cleaver"));
 		setSize(1.0f, 2.5f);
@@ -131,9 +135,25 @@ public class EntityCleaver extends ModEntityMob {
 		
 		if (flag) {
 			this.applyEnchantments(this, entityIn);
+			attackTimer = 10;
+			int i = this.rand.nextInt(100);
+			world.setEntityState(this, (byte) 4);
+			if (entityIn instanceof EntityLivingBase) {
+				if (i < 3) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
+					entityIn.motionZ -= 1.5;
+					if (entityIn instanceof EntityPlayer) ((EntityPlayerMP) entityIn).connection.sendPacket(new SPacketEntityVelocity(entityIn));
+				}
+			}
 		}
 		
 		return flag;
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	@Override

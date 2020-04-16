@@ -224,6 +224,8 @@ item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 
 item.bewitchment.cleaver_sword.name=Cleaver Blade
 
+item.bewitchment.garlic_grilled.name=Grilled Garlic
+
 tooltip.bewitchment.silver_armor_description.name=Protects against undead
 tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
 tooltip.bewitchment.cold_iron_armor_description.name=Protects against demons and spirits
