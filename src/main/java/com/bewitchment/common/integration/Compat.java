@@ -61,6 +61,7 @@ public class Compat {
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {
 		Util.registerAltarUpgradeItem(ItemHandler.ICE_CRYSTAL, new AltarUpgrade(AltarUpgrade.Type.PENTACLE, 2, 0));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "poison_resistance"), Util.get(ItemHandler.NAGA_FANG), new PotionEffect(PotionHandler.POISON_RESIST, (600))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "mowzie_vision"), Util.get(ItemHandler.GLOWING_JELLY), new PotionEffect(MobEffects.NIGHT_VISION, (600))));
 	}
 	
 	@Optional.Method(modid = "consecration")
