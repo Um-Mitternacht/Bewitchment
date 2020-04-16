@@ -188,6 +188,24 @@ tile.bewitchment.coquina_wall.name=Coquina Wall
 tile.bewitchment.embittered_brick_wall.name=Embittered Brick Wall
 tile.bewitchment.nethersteel_wall.name=Nethersteel Wall
 
+tile.bewitchment.mossy_scorned_brick_fence.name=Mossy Scorned Brick Fence
+tile.bewitchment.crying_scorned_brick_fence.name=Warped Scorned Brick Fence
+tile.bewitchment.despair_brick_fence.name=Despair Brick Fence
+tile.bewitchment.ochre_despair_brick_fence.name=Ochre Despair Brick Fence
+tile.bewitchment.coquina_fence.name=Coquina Fence
+
+tile.bewitchment.despair_bricks.name=Despair Bricks
+tile.bewitchment.ochre_despair_bricks.name=Ochre Despair Bricks
+tile.bewitchment.crying_scorned_bricks.name=Crying Scorned Bricks
+
+tile.bewitchment.despair_brick_stairs.name=Despair Brick Stairs
+tile.bewitchment.ochre_despair_brick_stairs.name=Ochre Despair Brick Stairs
+tile.bewitchment.crying_scorned_brick_stairs.name=Warped Scorned Brick Stairs
+
+tile.bewitchment.crying_scorned_brick_slab.name=Warped Scorned Brick Slab
+tile.bewitchment.ochre_despair_brick_slab.name=Ochre Despair Brick Slab
+tile.bewitchment.despair_brick_slab.name=Despair Brick Slab
+
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
 item.bewitchment.silver_chestplate.name=Silver Chestplate
