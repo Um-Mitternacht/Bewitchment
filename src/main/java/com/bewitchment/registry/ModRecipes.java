@@ -431,6 +431,8 @@ public class ModRecipes {
 		GameRegistry.addSmelting(ModObjects.unfired_jar, new ItemStack(ModObjects.empty_jar), 0.15f);
 		
 		GameRegistry.addSmelting(ModObjects.golden_thread, new ItemStack(Items.GOLD_NUGGET), 0.15f);
+		
+		GameRegistry.addSmelting(ModObjects.garlic, new ItemStack(ModObjects.garlic_grilled), 0.25f);
 	}
 	
 	private static void furnacePostInit() {
@@ -519,6 +521,8 @@ public class ModRecipes {
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_5"), new ItemStack(Items.FISH, 1, 1), new ItemStack(Items.COOKED_FISH, 1, 1), new ItemStack(ModObjects.cloudy_oil), 0.35f));
 		
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_7"), new ItemStack(Items.RABBIT, 1), new ItemStack(Items.COOKED_RABBIT), new ItemStack(ModObjects.tallow), 0.35f));
+		
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_8"), new ItemStack(ModObjects.garlic, 1), new ItemStack(ModObjects.garlic_grilled), new ItemStack(ModObjects.cloudy_oil), 0.35f));
 	}
 	
 	protected static void addDistilleryRecipes() {

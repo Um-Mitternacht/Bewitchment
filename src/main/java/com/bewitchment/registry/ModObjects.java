@@ -17,10 +17,7 @@ import com.bewitchment.common.integration.chisel.ModBlockChisel;
 import com.bewitchment.common.item.*;
 import com.bewitchment.common.item.equipment.armor.ItemWitchesArmor;
 import com.bewitchment.common.item.equipment.baubles.*;
-import com.bewitchment.common.item.food.ItemFoodSeed;
-import com.bewitchment.common.item.food.ItemGarlic;
-import com.bewitchment.common.item.food.ItemHeart;
-import com.bewitchment.common.item.food.ItemStewOfTheGrotesque;
+import com.bewitchment.common.item.food.*;
 import com.bewitchment.common.item.poppet.ItemPoppet;
 import com.bewitchment.common.item.poppet.ItemVoodooPoppet;
 import com.bewitchment.common.item.tool.*;
@@ -540,6 +537,8 @@ public class ModObjects {
 	public static final Item box_of_sealed_evil = new ItemBoxSealedEvil();
 	public static final Item contract = new ItemContract();
 	public static final Item skeleton_key = new ItemSkeletonKey();
+	
+	public static final Item garlic_grilled = new ItemGarlicGrilled();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
