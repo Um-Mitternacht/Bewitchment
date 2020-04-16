@@ -539,6 +539,7 @@ public class ModObjects {
 	public static final Item skeleton_key = new ItemSkeletonKey();
 	
 	public static final Item garlic_grilled = new ItemGarlicGrilled();
+	public static final Item elderberry_jelly = new ItemElderberryJelly();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override

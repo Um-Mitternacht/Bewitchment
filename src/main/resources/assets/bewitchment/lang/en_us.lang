@@ -179,6 +179,10 @@ tile.bewitchment.brazier.name=Brazier
 tile.bewitchment.sigil_table.name=Sigil Table
 tile.bewitchment.sigil.name=Placed Sigil
 
+tile.bewitchment.scorned_brick_wall.name=Scorned Brick Wall
+tile.bewitchment.crying_scorned_brick_wall.name=Warped Scorned Brick Wall
+tile.bewitchment.mossy_scorned_brick_wall.name=Mossy Scorned Brick Wall
+
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
 item.bewitchment.silver_chestplate.name=Silver Chestplate
@@ -225,6 +229,7 @@ item.bewitchment.cold_iron_hoe.name=Cold Iron Hoe
 item.bewitchment.cleaver_sword.name=Cleaver Blade
 
 item.bewitchment.garlic_grilled.name=Grilled Garlic
+item.bewitchment.elderberry_jelly.name=Elderberry Jelly
 
 tooltip.bewitchment.silver_armor_description.name=Protects against undead
 tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
