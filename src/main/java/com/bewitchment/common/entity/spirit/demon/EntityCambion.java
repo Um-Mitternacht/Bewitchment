@@ -61,6 +61,14 @@ public class EntityCambion extends ModEntityAnimal {
 		
 		if (flag) {
 			this.applyEnchantments(this, entityIn);
+			attackTimer = 10;
+			int i = this.rand.nextInt(100);
+			world.setEntityState(this, (byte) 4);
+			if (entityIn instanceof EntityLivingBase) {
+				if (i < 10) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, false));
+				}
+			}
 		}
 		
 		return flag;
