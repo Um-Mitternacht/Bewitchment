@@ -182,6 +182,11 @@ tile.bewitchment.sigil.name=Placed Sigil
 tile.bewitchment.scorned_brick_wall.name=Scorned Brick Wall
 tile.bewitchment.crying_scorned_brick_wall.name=Warped Scorned Brick Wall
 tile.bewitchment.mossy_scorned_brick_wall.name=Mossy Scorned Brick Wall
+tile.bewitchment.despair_brick_wall.name=Despair Brick Wall
+tile.bewitchment.ochre_despair_brick_wall.name=Ochre Despair Brick Wall
+tile.bewitchment.coquina_wall.name=Coquina Wall
+tile.bewitchment.embittered_brick_wall.name=Embittered Brick Wall
+tile.bewitchment.nethersteel_wall.name=Nethersteel Wall
 
 #ITEMS
 item.bewitchment.silver_helmet.name=Silver Helmet
