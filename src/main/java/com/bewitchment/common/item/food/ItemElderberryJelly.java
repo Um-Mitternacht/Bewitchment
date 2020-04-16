@@ -11,12 +11,6 @@ import net.minecraft.world.World;
 public class ItemElderberryJelly extends ItemFood {
 	public ItemElderberryJelly() {
 		super(5, 0.8f, false);
-		Util.registerItem(this, "garlic_grilled");
-	}
-	
-	@Override
-	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		super.onFoodEaten(stack, world, player);
-		if (BewitchmentAPI.isVampire(player)) player.setFire(25);
+		Util.registerItem(this, "elderberry_jelly");
 	}
 }
