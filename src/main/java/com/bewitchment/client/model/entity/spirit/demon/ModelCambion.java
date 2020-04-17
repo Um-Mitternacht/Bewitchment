@@ -442,7 +442,7 @@ public class ModelCambion extends ModelBiped {
 	
 	@Override
 	public void postRenderArm(float scale, EnumHandSide side) {
-		GlStateManager.translate(0.025F, -0.6, 0);
+		GlStateManager.translate(0.023F, 0.1, 0);
 		super.postRenderArm(scale, side);
 	}
 	

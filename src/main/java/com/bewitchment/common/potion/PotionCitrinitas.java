@@ -1,6 +1,7 @@
 package com.bewitchment.common.potion;
 
 import com.bewitchment.common.potion.util.ModPotion;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -87,6 +88,14 @@ public class PotionCitrinitas extends ModPotion {
 					}
 					else if (block == Blocks.DOUBLE_STONE_SLAB2) {
 						world.setBlockState(pos0, Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockDoubleStoneSlab.VARIANT, BlockStoneSlab.EnumType.SAND));
+						flag = true;
+					}
+					else if (block == Blocks.STONEBRICK) {
+						world.setBlockState(pos0, ModObjects.despair_bricks.getDefaultState());
+						flag = true;
+					}
+					else if (block == Blocks.STONE_BRICK_STAIRS) {
+						world.setBlockState(pos0, ModObjects.despair_brick_stairs.getDefaultState());
 						flag = true;
 					}
 					else if (block == Blocks.STONE_SLAB2) {
