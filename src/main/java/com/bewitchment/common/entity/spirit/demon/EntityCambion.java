@@ -149,6 +149,8 @@ public class EntityCambion extends ModEntityAnimal {
 		this.setCambionType(i);
 		
 		setEquipmentBasedOnDifficulty(difficulty);
+		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
+		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
 	}
 	

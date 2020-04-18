@@ -58,6 +58,7 @@ public class EntityCleaver extends ModEntityMob {
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		setEquipmentBasedOnDifficulty(difficulty);
+		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
 	}
 	
