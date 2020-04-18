@@ -171,6 +171,12 @@ public class EntityCambion extends ModEntityAnimal {
 		this.setCambionType(compound.getInteger("CambionType"));
 	}
 	
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (!world.isRemote & isChild()) setDead();
+	}
+	
 	private int getRandomCambionType() {
 		int flag = rand.nextInt();
 		if (this.addedToChunk) for (int i = 0; i < 4; ++i) {
