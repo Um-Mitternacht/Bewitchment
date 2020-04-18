@@ -342,15 +342,10 @@ public class ModelCambionSlim extends ModelBiped {
 		float swingMod = 0.3F;
 		this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
 		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
-		this.bipedRightLeg.rotateAngleY = 0.0F;
-		this.bipedLeftLeg.rotateAngleY = 0.0F;
-		this.bipedRightLeg.rotateAngleZ = 0.0F;
-		this.bipedLeftLeg.rotateAngleZ = 0.0F;
 		
 		this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
 		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
-		this.bipedRightArm.rotateAngleZ = 0.0F;
-		this.bipedLeftArm.rotateAngleZ = 0.0F;
+
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
