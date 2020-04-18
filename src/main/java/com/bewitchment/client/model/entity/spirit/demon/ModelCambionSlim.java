@@ -456,6 +456,11 @@ public class ModelCambionSlim extends ModelBiped {
 		super.postRenderArm(scale, side);
 	}
 	
+	protected ModelRenderer getArmForSide(EnumHandSide side)
+	{
+		return side == EnumHandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
+	}
+	
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */

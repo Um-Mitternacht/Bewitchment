@@ -3,6 +3,9 @@ package com.bewitchment.client.model.entity.living;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelWerewolf extends ModelBiped {
@@ -372,6 +375,7 @@ public class ModelWerewolf extends ModelBiped {
 	
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 		tail01.rotateAngleY = (MathHelper.cos(limbSwing * 1 / 3f) * 1.4f * limbSwingAmount / 4) + MathHelper.sin(ageInTicks / 4) / 6;
 		tail01.rotateAngleX = 1;
 		head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180f);
@@ -387,18 +391,23 @@ public class ModelWerewolf extends ModelBiped {
 		lArm01.rotateAngleZ = -1 / 4f;
 		rArm01.rotateAngleY = 0;
 		rArm01.rotateAngleZ = 1 / 4f;
-		//ModelRenderer arm = entity.swingingHand == EnumHand.MAIN_HAND ? rArm01 : lArm01;
-		//int val = (arm == rArm01 ? 1 : -1);
-		//if (val < 0) chest.rotateAngleY *= -1;
-		//arm.rotateAngleX -= (float) Math.sin(swingProgress * Math.PI) * (val < 0 ? 1.5f : 1.75f);
-		//arm.rotateAngleY = (float) Math.sin(swingProgress * Math.PI) / 3 * -val;
-		//arm.rotateAngleZ = (float) Math.sin(swingProgress * Math.PI * val) + (2 / 7f * val);
+		ModelRenderer arm = ((EntityLivingBase) entity).swingingHand == EnumHand.MAIN_HAND ? rArm01 : lArm01;
+		int val = (arm == rArm01 ? 1 : -1);
+		if (val < 0) chest.rotateAngleY *= -1;
+		arm.rotateAngleX -= (float) Math.sin(swingProgress * Math.PI) * (val < 0 ? 1.5f : 1.75f);
+		arm.rotateAngleY = (float) Math.sin(swingProgress * Math.PI) / 3 * -val;
+		arm.rotateAngleZ = (float) Math.sin(swingProgress * Math.PI * val) + (2 / 7f * val);
 	}
 	
-	//@Override
-	//public void postRenderArm(float scale, EnumHandSide side) {
-	//	(side == HandSide.LEFT ? lArm01 : rArm01).postRender(scale);
-	//}
+	public void postRenderArm(float scale, EnumHandSide side)
+	{
+		this.getArmForSide(side).postRender(scale);
+	}
+	
+	protected ModelRenderer getArmForSide(EnumHandSide side)
+	{
+		return side == EnumHandSide.LEFT ? this.lArm01 : this.rArm01;
+	}
 	
 	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
