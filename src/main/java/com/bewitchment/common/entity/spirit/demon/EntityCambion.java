@@ -37,7 +37,7 @@ public class EntityCambion extends ModEntityAnimal {
 	
 	public EntityCambion(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cambion"));
-		setSize(0.8f, 1.6f);
+		setSize(0.8f, 2.0f);
 		experienceValue = 25;
 	}
 	
